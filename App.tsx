@@ -1,12 +1,14 @@
 
 import React, { useState } from 'react';
 import type { ReactNode } from 'react';
-import Fluidoterapia from './Fluidoterapia'; // Import the fluid therapy calculator
-import Hemogasometria from './Hemogasometria'; // Import the new calculator component
-import CalculadoraEnergetica from './CalculadoraEnergetica'; // Import the new energy calculator
-import TransfusaoSanguinea from './TransfusaoSanguinea'; // Import the new transfusion calculator
-import EscalasDeDorScreen from './EscalasDeDorScreen'; // Import the new pain scales screen
-import EmergenciasVet from './EmergenciasVet'; // Import the new emergencies app
+import Fluidoterapia from './Fluidoterapia';
+import Hemogasometria from './Hemogasometria';
+import CalculadoraEnergetica from './CalculadoraEnergetica';
+import TransfusaoSanguinea from './TransfusaoSanguinea';
+import EscalasDeDorScreen from './EscalasDeDorScreen';
+import EmergenciasVet from './EmergenciasVet';
+import { useNotification } from './hooks/useNotification';
+import Notification from './components/Notification';
 
 // --- ICON COMPONENTS --- //
 
@@ -76,12 +78,13 @@ const appData: AppCategory[] = [
 const App = () => {
   const [page, setPage] = useState('home');
   const [activeApp, setActiveApp] = useState<string | null>(null);
+  const { notifications, showNotification, removeNotification } = useNotification();
 
   const handleAppClick = (appName: string, isImplemented: boolean) => {
     if (isImplemented) {
         setActiveApp(appName);
     } else {
-        alert('Este aplicativo ainda não foi implementado.');
+        showNotification('Este aplicativo ainda não foi implementado.', 'warning');
     }
   };
 
@@ -96,7 +99,16 @@ const App = () => {
 
   if (page === 'home') {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-white text-center p-4">
+      <>
+        {notifications.map(notification => (
+          <Notification
+            key={notification.id}
+            message={notification.message}
+            type={notification.type}
+            onClose={() => removeNotification(notification.id)}
+          />
+        ))}
+        <div className="flex flex-col items-center justify-center min-h-screen bg-white text-center p-4">
         <img
           src="https://res.cloudinary.com/dwta1roq1/image/upload/w_300,q_auto/LOGOAPP"
           alt="Logo do aplicativo mostrando três gatos estilizados em preto, branco e preto com branco, com o texto 'LUZAUM'S GUIDEBOOK' sobreposto em letras verdes"
@@ -136,7 +148,16 @@ const App = () => {
 
   // App list view
   return (
-    <div className="bg-white min-h-screen p-4 sm:p-6">
+    <>
+      {notifications.map(notification => (
+        <Notification
+          key={notification.id}
+          message={notification.message}
+          type={notification.type}
+          onClose={() => removeNotification(notification.id)}
+        />
+      ))}
+      <div className="bg-white min-h-screen p-4 sm:p-6">
         <div className="max-w-4xl mx-auto">
             <button onClick={handleBackToHome} className="mb-6 text-gray-900 hover:text-black font-semibold">
                 &larr; Voltar para o Início
@@ -169,7 +190,8 @@ const App = () => {
                 </div>
             ))}
         </div>
-    </div>
+      </div>
+    </>
   );
 };
 
