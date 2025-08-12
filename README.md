@@ -5,6 +5,7 @@ Seu companheiro clínico, anestésico e cirúrgico. Uma plataforma elegante e pr
 ## 🚀 Características
 
 - **UI Moderna**: Interface elegante construída com Shadcn/UI e Tailwind CSS
+- **Dark Mode**: Suporte completo para modo escuro e claro
 - **Design Responsivo**: Funciona perfeitamente em desktop, tablet e mobile
 - **Navegação Intuitiva**: Sistema de navegação fluido e organizado por categorias
 - **Integração de Apps**: Preparado para integrar todos os seus aplicativos veterinários
@@ -19,6 +20,7 @@ Seu companheiro clínico, anestésico e cirúrgico. Uma plataforma elegante e pr
 - **Radix UI** - Componentes acessíveis
 - **Lucide React** - Ícones
 - **Vite** - Build tool
+- **OKLCH Colors** - Sistema de cores moderno
 
 ## 📁 Estrutura do Projeto
 
@@ -29,11 +31,14 @@ LuzaumGuidebook/
 │   │   ├── button.tsx
 │   │   ├── card.tsx
 │   │   ├── badge.tsx
-│   │   └── navigation-menu.tsx
+│   │   ├── navigation-menu.tsx
+│   │   └── dropdown-menu.tsx
 │   ├── Layout.tsx          # Layout principal
 │   ├── HeroSection.tsx     # Seção hero da página inicial
 │   ├── AppCard.tsx         # Card dos aplicativos
-│   └── AppIntegration.tsx  # Integração de apps externos
+│   ├── AppIntegration.tsx  # Integração de apps externos
+│   ├── theme-provider.tsx  # Gerenciamento de tema
+│   └── theme-toggle.tsx    # Toggle de tema
 ├── lib/
 │   └── utils.ts           # Utilitários (cn function)
 ├── App.tsx                # Componente principal
@@ -45,16 +50,31 @@ LuzaumGuidebook/
 
 ## 🎨 Design System
 
-### Cores
-- **Primária**: Verde (#16a34a) - Representa saúde e natureza
-- **Secundária**: Azul (#2563eb) - Representa confiança e tecnologia
-- **Acentos**: Gradientes suaves entre verde e azul
+### Cores (OKLCH)
+- **Primária**: Azul moderno com alta acessibilidade
+- **Secundária**: Tons neutros para elementos secundários
+- **Acentos**: Gradientes suaves e transições elegantes
+- **Dark Mode**: Paleta otimizada para modo escuro
 
 ### Componentes
 - **Cards**: Design limpo com sombras sutis e hover effects
 - **Botões**: Múltiplas variantes (default, outline, ghost)
 - **Navegação**: Menu dropdown elegante com categorias
 - **Badges**: Indicadores de status coloridos
+- **Theme Toggle**: Seletor de tema com animações
+
+## 🌙 Dark Mode
+
+O aplicativo suporta três modos de tema:
+
+1. **Light Mode**: Tema claro padrão
+2. **Dark Mode**: Tema escuro para ambientes com pouca luz
+3. **System**: Segue automaticamente a preferência do sistema
+
+### Como Usar
+- Clique no ícone de sol/lua no cabeçalho
+- Selecione entre Light, Dark ou System
+- A preferência é salva automaticamente
 
 ## 📱 Apps Integrados
 
@@ -110,7 +130,7 @@ LuzaumGuidebook/
   implemented: true,
   description: "Descrição do app",
   category: "Calculadoras",
-  color: 'bg-green-100',
+  color: 'bg-primary/10',
   component: MeuComponente
 }
 ```
@@ -125,9 +145,8 @@ LuzaumGuidebook/
   implemented: false,
   description: "Descrição do app externo",
   category: "Guias",
-  color: 'bg-blue-100',
-  externalUrl: '/caminho-para-app',
-  status: 'available'
+  color: 'bg-muted',
+  externalUrl: '/caminho-para-app'
 }
 ```
 
@@ -135,6 +154,7 @@ LuzaumGuidebook/
 
 ### UI/UX
 - ✅ Design moderno e profissional
+- ✅ Dark mode completo
 - ✅ Navegação intuitiva
 - ✅ Responsividade completa
 - ✅ Animações suaves
@@ -146,20 +166,22 @@ LuzaumGuidebook/
 - ✅ Estrutura modular
 - ✅ Configuração centralizada
 - ✅ Preparado para escalabilidade
+- ✅ Sistema de temas robusto
 
 ### Performance
 - ✅ Lazy loading de componentes
 - ✅ Otimização de imagens
-- ✅ CSS otimizado
+- ✅ CSS otimizado com OKLCH
 - ✅ Build otimizado
+- ✅ Transições suaves
 
 ## 🔮 Próximos Passos
 
 1. **Integração de Apps Externos**: Conectar com outros projetos
-2. **Sistema de Temas**: Modo escuro/claro
-3. **PWA**: Funcionalidade offline
-4. **Analytics**: Métricas de uso
-5. **Backend**: Sistema de usuários e dados
+2. **PWA**: Funcionalidade offline
+3. **Analytics**: Métricas de uso
+4. **Backend**: Sistema de usuários e dados
+5. **Mais Temas**: Temas personalizados
 
 ## 📄 Licença
 

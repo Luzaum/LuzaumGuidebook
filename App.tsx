@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import type { ReactNode } from 'react';
+import { ThemeProvider } from './components/theme-provider';
 import Layout from './components/Layout';
 import HeroSection from './components/HeroSection';
 import AppCard from './components/AppCard';
@@ -53,7 +54,7 @@ const appData: AppCategory[] = [
         implemented: true,
         description: "Cálculo de necessidades energéticas para cães e gatos",
         category: "Calculadoras",
-        color: 'bg-green-100',
+        color: 'bg-primary/10',
         component: CalculadoraEnergetica
       },
       {
@@ -63,7 +64,7 @@ const appData: AppCategory[] = [
         implemented: true,
         description: "Cálculo de fluidoterapia com protocolos específicos",
         category: "Calculadoras",
-        color: 'bg-blue-100',
+        color: 'bg-primary/10',
         component: Fluidoterapia
       },
       {
@@ -73,7 +74,7 @@ const appData: AppCategory[] = [
         implemented: true,
         description: "Cálculo de transfusão sanguínea e compatibilidade",
         category: "Calculadoras",
-        color: 'bg-red-100',
+        color: 'bg-primary/10',
         component: TransfusaoSanguinea
       },
       {
@@ -83,7 +84,7 @@ const appData: AppCategory[] = [
         implemented: false,
         description: "Cálculo de infusão contínua de medicamentos",
         category: "Calculadoras",
-        color: 'bg-blue-100'
+        color: 'bg-muted'
       },
       {
         id: 'calculadora-toxicidade',
@@ -92,7 +93,7 @@ const appData: AppCategory[] = [
         implemented: false,
         description: "Cálculo de doses tóxicas e antídotos",
         category: "Calculadoras",
-        color: 'bg-yellow-100'
+        color: 'bg-muted'
       },
     ],
   },
@@ -109,7 +110,7 @@ const appData: AppCategory[] = [
         implemented: true,
         description: "Protocolos de emergência e primeiros socorros",
         category: "Emergências",
-        color: 'bg-red-100',
+        color: 'bg-primary/10',
         component: EmergenciasVet
       },
     ],
@@ -127,7 +128,7 @@ const appData: AppCategory[] = [
         implemented: false,
         description: "Guia completo de terapia antibiótica",
         category: "Guias",
-        color: 'bg-cyan-100',
+        color: 'bg-muted',
         externalUrl: '/Antibioticoterapia'
       },
       {
@@ -137,7 +138,7 @@ const appData: AppCategory[] = [
         implemented: false,
         description: "Formulário completo de medicamentos",
         category: "Guias",
-        color: 'bg-teal-100',
+        color: 'bg-muted',
         externalUrl: '/BularioVET'
       },
       {
@@ -147,7 +148,7 @@ const appData: AppCategory[] = [
         implemented: false,
         description: "Guia de compatibilidade de medicamentos",
         category: "Guias",
-        color: 'bg-purple-100',
+        color: 'bg-muted',
         externalUrl: '/CRIVET'
       },
     ],
@@ -165,17 +166,17 @@ const appData: AppCategory[] = [
         implemented: true,
         description: "Escalas de dor e protocolos de analgesia",
         category: "Avaliações",
-        color: 'bg-orange-100',
+        color: 'bg-primary/10',
         component: EscalasDeDorScreen
       },
       {
         id: 'glasgow',
         name: "Escala de Coma Glasgow",
-        icon: <Brain className="h-6 w-6 text-gray-600" />,
+        icon: <Brain className="h-6 w-6 text-muted-foreground" />,
         implemented: false,
         description: "Avaliação do nível de consciência",
         category: "Avaliações",
-        color: 'bg-purple-100'
+        color: 'bg-muted'
       },
       {
         id: 'estadiamento-iris',
@@ -184,7 +185,7 @@ const appData: AppCategory[] = [
         implemented: false,
         description: "Estadiamento de doença renal",
         category: "Avaliações",
-        color: 'bg-sky-100'
+        color: 'bg-muted'
       },
     ],
   },
@@ -201,7 +202,7 @@ const appData: AppCategory[] = [
         implemented: true,
         description: "Interpretação de hemogasometria arterial e venosa",
         category: "Exames",
-        color: 'bg-rose-100',
+        color: 'bg-primary/10',
         component: Hemogasometria
       },
     ],
@@ -219,7 +220,7 @@ const appData: AppCategory[] = [
         implemented: false,
         description: "Questões de residência veterinária",
         category: "Quizzes",
-        color: 'bg-indigo-100',
+        color: 'bg-muted',
         externalUrl: '/vetpro'
       },
     ],
@@ -228,7 +229,7 @@ const appData: AppCategory[] = [
 
 // --- MAIN APP COMPONENT --- //
 
-const App = () => {
+const AppContent = () => {
   const [currentView, setCurrentView] = useState<'home' | 'apps' | 'app'>('home');
   const [activeApp, setActiveApp] = useState<AppItem | null>(null);
 
@@ -282,12 +283,12 @@ const App = () => {
           {appData.map((category) => (
             <div key={category.id} className="space-y-4">
               <div className="flex items-center space-x-3">
-                <div className="p-2 bg-green-100 rounded-lg">
+                <div className="p-2 bg-primary/10 rounded-lg">
                   {category.icon}
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900">{category.title}</h2>
-                  <p className="text-gray-600">{category.description}</p>
+                  <h2 className="text-2xl font-bold text-foreground">{category.title}</h2>
+                  <p className="text-muted-foreground">{category.description}</p>
                 </div>
               </div>
               
@@ -316,6 +317,14 @@ const App = () => {
     <Layout showHeader={false}>
       <HeroSection onGetStarted={handleGetStarted} />
     </Layout>
+  );
+};
+
+const App = () => {
+  return (
+    <ThemeProvider defaultTheme="system" storageKey="luzaum-theme">
+      <AppContent />
+    </ThemeProvider>
   );
 };
 

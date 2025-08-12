@@ -28,8 +28,8 @@ const AppCard: React.FC<AppCardProps> = ({
       className={cn(
         "group cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-[1.02] border-2",
         implemented 
-          ? "hover:border-green-300 hover:bg-green-50/50" 
-          : "opacity-60 border-gray-200",
+          ? "hover:border-primary/30 hover:bg-accent/50" 
+          : "opacity-60 border-muted",
         className
       )}
       onClick={implemented ? onClick : undefined}
@@ -39,16 +39,16 @@ const AppCard: React.FC<AppCardProps> = ({
           <div className="flex items-center space-x-3">
             <div className={cn(
               "p-2 rounded-lg transition-colors",
-              implemented ? "bg-green-100 group-hover:bg-green-200" : "bg-gray-100"
+              implemented ? "bg-primary/10 group-hover:bg-primary/20" : "bg-muted"
             )}>
               {icon}
             </div>
             <div className="flex-1">
-              <CardTitle className="text-lg font-semibold text-gray-900 group-hover:text-green-800 transition-colors">
+              <CardTitle className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
                 {name}
               </CardTitle>
               {description && (
-                <CardDescription className="text-sm text-gray-600 mt-1">
+                <CardDescription className="text-sm text-muted-foreground mt-1">
                   {description}
                 </CardDescription>
               )}
@@ -58,7 +58,7 @@ const AppCard: React.FC<AppCardProps> = ({
             variant={implemented ? "default" : "secondary"}
             className={cn(
               "text-xs",
-              implemented ? "bg-green-100 text-green-800" : "bg-gray-100 text-gray-600"
+              implemented ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"
             )}
           >
             {implemented ? "Disponível" : "Em breve"}
@@ -71,7 +71,7 @@ const AppCard: React.FC<AppCardProps> = ({
           <Button 
             variant="outline" 
             size="sm" 
-            className="w-full border-green-200 text-green-700 hover:bg-green-50 hover:border-green-300"
+            className="w-full border-primary/20 text-primary hover:bg-primary/5 hover:border-primary/30"
           >
             Abrir Aplicativo
           </Button>

@@ -3,6 +3,7 @@ import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from './ui/navigation-menu';
 import { Home, Calculator, Heart, BookOpen, Activity, Brain, TestTube, Stethoscope } from 'lucide-react';
+import { ThemeToggle } from './theme-toggle';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -13,41 +14,41 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children, onBack, title, showHeader = true }) => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
+    <div className="min-h-screen bg-background">
       {showHeader && (
-        <header className="bg-white/80 backdrop-blur-sm border-b border-green-200 sticky top-0 z-50">
-          <div className="container mx-auto px-4 py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                {onBack && (
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={onBack}
-                    className="text-green-700 hover:text-green-800"
-                  >
-                    ← Voltar
-                  </Button>
-                )}
-                <div className="flex items-center space-x-3">
-                  <img
-                    src="https://res.cloudinary.com/dwta1roq1/image/upload/w_40,h_40,c_fit,q_auto,f_auto/LOGOAPP"
-                    alt="Logo Luzaum's Guidebook"
-                    className="h-10 w-10"
-                  />
-                  <div>
-                    <h1 className="text-xl font-bold text-green-800">Luzaum's Guidebook</h1>
-                    {title && (
-                      <p className="text-sm text-green-600">{title}</p>
-                    )}
-                  </div>
+        <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+          <div className="container flex h-16 items-center">
+            <div className="flex items-center space-x-4">
+              {onBack && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={onBack}
+                  className="text-foreground hover:text-foreground/80"
+                >
+                  ← Voltar
+                </Button>
+              )}
+              <div className="flex items-center space-x-3">
+                <img
+                  src="https://res.cloudinary.com/dwta1roq1/image/upload/w_40,h_40,c_fit,q_auto,f_auto/LOGOAPP"
+                  alt="Logo Luzaum's Guidebook"
+                  className="h-10 w-10"
+                />
+                <div>
+                  <h1 className="text-xl font-bold text-foreground">Luzaum's Guidebook</h1>
+                  {title && (
+                    <p className="text-sm text-muted-foreground">{title}</p>
+                  )}
                 </div>
               </div>
-              
+            </div>
+            
+            <div className="ml-auto flex items-center space-x-4">
               <NavigationMenu>
                 <NavigationMenuList>
                   <NavigationMenuItem>
-                    <NavigationMenuTrigger className="text-green-700">
+                    <NavigationMenuTrigger className="text-foreground">
                       Categorias
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
@@ -55,14 +56,14 @@ const Layout: React.FC<LayoutProps> = ({ children, onBack, title, showHeader = t
                         <div className="row-span-3">
                           <NavigationMenuLink asChild>
                             <a
-                              className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-green-500 to-green-600 p-6 no-underline outline-none focus:shadow-md"
+                              className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-primary to-primary/80 p-6 no-underline outline-none focus:shadow-md"
                               href="#"
                             >
-                              <Calculator className="h-6 w-6 text-white" />
-                              <div className="mb-2 mt-4 text-lg font-medium text-white">
+                              <Calculator className="h-6 w-6 text-primary-foreground" />
+                              <div className="mb-2 mt-4 text-lg font-medium text-primary-foreground">
                                 Calculadoras
                               </div>
-                              <p className="text-sm leading-tight text-green-100">
+                              <p className="text-sm leading-tight text-primary-foreground/80">
                                 Ferramentas de cálculo para fluidoterapia, transfusão e mais.
                               </p>
                             </a>
@@ -115,6 +116,8 @@ const Layout: React.FC<LayoutProps> = ({ children, onBack, title, showHeader = t
                   </NavigationMenuItem>
                 </NavigationMenuList>
               </NavigationMenu>
+              
+              <ThemeToggle />
             </div>
           </div>
         </header>
