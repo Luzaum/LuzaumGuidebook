@@ -309,9 +309,19 @@ const AppContent = () => {
     );
   }
 
-  // Splash screen as initial view
+  // Splash screen as initial view, pré-carregando ícones usados na grade
   return (
-    <SplashScreen onComplete={() => setCurrentView('apps')} />
+    <SplashScreen
+      onComplete={() => setCurrentView('apps')}
+      assetsToPreload={[
+        "https://res.cloudinary.com/dwta1roq1/image/upload/w_120,q_auto/LOGOAPP",
+        "https://res.cloudinary.com/dwta1roq1/image/upload/w_40,h_40,c_fit,q_auto,f_auto/logo/calculadora-energetica",
+        "https://res.cloudinary.com/dwta1roq1/image/upload/w_40,h_40,c_fit,q_auto,f_auto/logo/calculadora-fluidoterapia",
+        "https://res.cloudinary.com/dwta1roq1/image/upload/w_40,h_40,c_fit,q_auto,f_auto/logo/transfusao-sanguinea",
+        "https://res.cloudinary.com/dwta1roq1/image/upload/w_40,h_40,c_fit,q_auto,f_auto/logo/escala-de-dor",
+        "https://res.cloudinary.com/dwta1roq1/image/upload/w_40,h_40,c_fit,q_auto,f_auto/logo/hemogasometria"
+      ]}
+    />
   );
 };
 
