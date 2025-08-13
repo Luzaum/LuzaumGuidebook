@@ -3,12 +3,9 @@ import React, { useState } from 'react';
 import type { ReactNode } from 'react';
 import { ThemeProvider } from './components/theme-provider';
 import Layout from './components/Layout';
-import HeroSection from './components/HeroSection';
 import AppCard from './components/AppCard';
-import { Button } from './components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './components/ui/card';
-import { Badge } from './components/ui/badge';
-import { Calculator, Heart, BookOpen, Activity, Brain, TestTube, Stethoscope, Home, ArrowLeft } from 'lucide-react';
+import { Calculator, Heart, BookOpen, Activity, Brain, TestTube, Stethoscope } from 'lucide-react';
+import SplashScreen from './components/SplashScreen';
 
 // Import existing apps
 import Fluidoterapia from './Fluidoterapia';
@@ -230,7 +227,7 @@ const appData: AppCategory[] = [
 // --- MAIN APP COMPONENT --- //
 
 const AppContent = () => {
-  const [currentView, setCurrentView] = useState<'home' | 'apps' | 'app'>('home');
+  const [currentView, setCurrentView] = useState<'splash' | 'apps' | 'app'>('splash');
   const [activeApp, setActiveApp] = useState<AppItem | null>(null);
 
   const handleGetStarted = () => {
@@ -278,7 +275,7 @@ const AppContent = () => {
   // Render apps list
   if (currentView === 'apps') {
     return (
-      <Layout onBack={handleBackToHome} title="Aplicativos" showHeader={true}>
+      <Layout title="Aplicativos" showHeader={true}>
         <div className="space-y-8">
           {appData.map((category) => (
             <div key={category.id} className="space-y-4">
@@ -312,11 +309,9 @@ const AppContent = () => {
     );
   }
 
-  // Render home page
+  // Splash screen as initial view
   return (
-    <Layout showHeader={false}>
-      <HeroSection onGetStarted={handleGetStarted} />
-    </Layout>
+    <SplashScreen onComplete={() => setCurrentView('apps')} />
   );
 };
 
