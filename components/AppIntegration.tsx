@@ -27,13 +27,13 @@ const AppIntegration: React.FC<AppIntegrationProps> = ({
   const getStatusColor = () => {
     switch (status) {
       case 'available':
-        return 'bg-green-100 text-green-800';
+        return 'bg-primary/10 text-primary';
       case 'coming-soon':
-        return 'bg-yellow-100 text-yellow-800';
+        return 'bg-accent text-foreground';
       case 'beta':
-        return 'bg-blue-100 text-blue-800';
+        return 'bg-secondary text-secondary-foreground';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-muted text-muted-foreground';
     }
   };
 
@@ -57,18 +57,18 @@ const AppIntegration: React.FC<AppIntegrationProps> = ({
   };
 
   return (
-    <Card className="group hover:shadow-lg transition-all duration-300 border-2 hover:border-green-300">
+    <Card className="group hover:shadow-lg transition-all duration-300 border hover:border-primary/40">
       <CardHeader className="pb-4">
         <div className="flex items-start justify-between">
           <div className="flex items-center space-x-3">
-            <div className="p-2 bg-green-100 rounded-lg group-hover:bg-green-200 transition-colors">
+            <div className="p-2 bg-primary/10 rounded-md group-hover:bg-primary/20 transition-colors">
               {icon}
             </div>
             <div className="flex-1">
-              <CardTitle className="text-lg font-semibold text-gray-900 group-hover:text-green-800 transition-colors">
+              <CardTitle className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
                 {appName}
               </CardTitle>
-              <CardDescription className="text-sm text-gray-600 mt-1">
+              <CardDescription className="text-sm text-muted-foreground mt-1">
                 {description}
               </CardDescription>
             </div>
@@ -82,11 +82,11 @@ const AppIntegration: React.FC<AppIntegrationProps> = ({
       <CardContent className="pt-0">
         {features.length > 0 && (
           <div className="mb-4">
-            <h4 className="text-sm font-medium text-gray-700 mb-2">Funcionalidades:</h4>
-            <ul className="text-sm text-gray-600 space-y-1">
+            <h4 className="text-sm font-medium text-foreground mb-2">Funcionalidades:</h4>
+            <ul className="text-sm text-muted-foreground space-y-1">
               {features.map((feature, index) => (
                 <li key={index} className="flex items-center space-x-2">
-                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                  <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
                   <span>{feature}</span>
                 </li>
               ))}
@@ -99,7 +99,7 @@ const AppIntegration: React.FC<AppIntegrationProps> = ({
             onClick={handleOpenApp}
             variant="outline"
             size="sm"
-            className="w-full border-green-200 text-green-700 hover:bg-green-50 hover:border-green-300 group"
+            className="w-full border-primary/30 text-primary hover:bg-primary/10 hover:border-primary/40 group"
           >
             <span>Abrir Aplicativo</span>
             <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -107,7 +107,7 @@ const AppIntegration: React.FC<AppIntegrationProps> = ({
         )}
         
         {status === 'coming-soon' && (
-          <div className="text-center py-2 text-sm text-gray-500">
+          <div className="text-center py-2 text-sm text-muted-foreground">
             Em desenvolvimento
           </div>
         )}
