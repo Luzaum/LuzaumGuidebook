@@ -141,7 +141,7 @@ const appData: AppCategory[] = [
       {
         id: 'crivet',
         name: "CRIVET",
-        icon: <img src="https://res.cloudinary.com/dwta1roq1/image/upload/w_40,h_40,c_fit,q_auto,f_auto/logo/crivet" alt="CRIVET" className="h-8 w-8 object-contain" />,
+        icon: <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 text-primary text-xs font-semibold">CRV</span>,
         implemented: false,
         description: "Guia de compatibilidade de medicamentos",
         category: "Guias",
