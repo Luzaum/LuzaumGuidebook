@@ -26,9 +26,9 @@ const AppCard: React.FC<AppCardProps> = ({
   return (
     <Card 
       className={cn(
-        "group cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-[1.02] border-2",
+        "group cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-[1.01] border",
         implemented 
-          ? "hover:border-primary/30 hover:bg-accent/50" 
+          ? "hover:border-primary/40 hover:bg-accent/40" 
           : "opacity-60 border-muted",
         className
       )}
@@ -38,13 +38,13 @@ const AppCard: React.FC<AppCardProps> = ({
         <div className="flex items-start justify-between">
           <div className="flex items-center space-x-3">
             <div className={cn(
-              "p-2 rounded-lg transition-colors",
+              "p-2 rounded-md transition-colors",
               implemented ? "bg-primary/10 group-hover:bg-primary/20" : "bg-muted"
             )}>
               {icon}
             </div>
             <div className="flex-1">
-              <CardTitle className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+              <CardTitle className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
                 {name}
               </CardTitle>
               {description && (
@@ -71,7 +71,7 @@ const AppCard: React.FC<AppCardProps> = ({
           <Button 
             variant="outline" 
             size="sm" 
-            className="w-full border-primary/20 text-primary hover:bg-primary/5 hover:border-primary/30"
+            className="w-full border-primary/30 text-primary hover:bg-primary/10 hover:border-primary/40"
           >
             Abrir Aplicativo
           </Button>
