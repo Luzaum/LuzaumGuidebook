@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
-import { Calculator, Heart, BookOpen, Activity, Brain, TestTube, Stethoscope, Zap } from 'lucide-react';
+import { Calculator, Heart, BookOpen, Activity, Zap } from 'lucide-react';
 
 interface HeroSectionProps {
   onGetStarted: () => void;
@@ -31,8 +31,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onGetStarted }) => {
               <div className="relative">
                 <img
                   src="https://res.cloudinary.com/dwta1roq1/image/upload/w_120,q_auto/LOGOAPP"
-                  alt="Logo Luzaum's Guidebook"
-                  className="h-24 w-24 mx-auto"
+                  alt="Logo Vetius"
+                  className="h-32 w-32 md:h-40 md:w-40 mx-auto drop-shadow-xl"
                 />
                 <div className="absolute -top-2 -right-2 bg-primary text-primary-foreground rounded-full p-1">
                   <Zap className="h-4 w-4" />
@@ -40,25 +40,29 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onGetStarted }) => {
               </div>
             </div>
 
-            <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
-              Luzaum's{' '}
-              <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-                Guidebook
+            <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-4">
+              <span className="bg-gradient-to-r from-primary to-[oklch(0.68_0.18_150)] bg-clip-text text-transparent">
+                Vetius
               </span>
             </h1>
             
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-              Seu companheiro clínico, anestésico e cirúrgico. 
-              Ferramentas essenciais para a prática veterinária moderna.
+            <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
+              seu companheiro veterinário, sempre que precisar!
             </p>
 
-            <Button
-              onClick={onGetStarted}
-              size="lg"
-              className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-            >
-              Explorar Aplicativos
-            </Button>
+            <div className="flex justify-center">
+              <Button
+                onClick={onGetStarted}
+                size="lg"
+                className="group relative isolate overflow-hidden rounded-2xl px-12 py-6 text-xl font-semibold text-primary-foreground shadow-lg transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
+                bg-gradient-to-br from-[oklch(0.78_0.2_150)] via-[oklch(0.72_0.2_150)] to-[oklch(0.66_0.18_150)] hover:scale-[1.03]
+                hover:shadow-2xl hover:shadow-[oklch(0.75_0.2_150)/25] active:scale-[0.98]"
+              >
+                <span className="relative z-10">Explorar aplicativos</span>
+                <span className="pointer-events-none absolute inset-0 -z-0 opacity-100 transition-opacity duration-500 bg-[radial-gradient(120%_120%_at_50%_0%,white/25_0%,transparent_60%)]" />
+                <span className="pointer-events-none absolute -inset-[200%] -z-10 animate-[spin_6s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_340deg,white_340deg_360deg)]" />
+              </Button>
+            </div>
           </div>
         </div>
 
@@ -83,25 +87,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onGetStarted }) => {
           </div>
         </div>
 
-        {/* Stats Section */}
-        <div className="bg-muted/50 backdrop-blur-sm border-t">
-          <div className="max-w-4xl mx-auto px-4 py-12">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              <div>
-                <div className="text-3xl font-bold text-primary mb-2">6+</div>
-                <div className="text-muted-foreground">Aplicativos Ativos</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-primary mb-2">100%</div>
-                <div className="text-muted-foreground">Gratuito</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-primary mb-2">24/7</div>
-                <div className="text-muted-foreground">Disponível</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* Stats Section removed as requested */}
       </div>
     </div>
   );

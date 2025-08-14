@@ -325,25 +325,17 @@ const AppContent = () => {
     );
   }
 
-  // Splash screen as initial view, pré-carregando ícones usados na grade
+  // Render home directly (splash removed)
   return (
-    <SplashScreen
-      onComplete={() => setCurrentView('home')}
-      assetsToPreload={[
-        "https://res.cloudinary.com/dwta1roq1/image/upload/w_120,q_auto/LOGOAPP",
-        "https://res.cloudinary.com/dwta1roq1/image/upload/w_40,h_40,c_fit,q_auto,f_auto/logo/calculadora-energetica",
-        "https://res.cloudinary.com/dwta1roq1/image/upload/w_40,h_40,c_fit,q_auto,f_auto/logo/calculadora-fluidoterapia",
-        "https://res.cloudinary.com/dwta1roq1/image/upload/w_40,h_40,c_fit,q_auto,f_auto/logo/transfusao-sanguinea",
-        "https://res.cloudinary.com/dwta1roq1/image/upload/w_40,h_40,c_fit,q_auto,f_auto/logo/escala-de-dor",
-        "https://res.cloudinary.com/dwta1roq1/image/upload/w_40,h_40,c_fit,q_auto,f_auto/logo/hemogasometria"
-      ]}
-    />
+    <Layout showHeader={true}>
+      <HeroSection onGetStarted={() => setCurrentView('apps')} />
+    </Layout>
   );
 };
 
 const App = () => {
   return (
-    <ThemeProvider defaultTheme="system" storageKey="luzaum-theme">
+    <ThemeProvider defaultTheme="system" storageKey="vetius-theme">
       <AuthProvider>
         <AppContent />
       </AuthProvider>

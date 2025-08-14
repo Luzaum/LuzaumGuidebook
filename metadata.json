@@ -1,6 +1,6 @@
 {
-  "name": "Luzaum's Guidebook",
-  "description": "An application for personal veterinary use, featuring a collection of calculators, guides, and assessment tools for veterinary medicine.",
+  "name": "Vetius",
+  "description": "Seu companheiro veterinário, sempre que precisar! Calculadoras, guias e ferramentas clínicas.",
   "requestFramePermissions": [],
   "prompt": ""
 }
