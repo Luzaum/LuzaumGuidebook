@@ -1,9 +1,10 @@
 import React from 'react';
 import { Button } from './ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from './ui/navigation-menu';
-import { Home, Calculator, Heart, BookOpen, Activity, Brain, TestTube, Stethoscope } from 'lucide-react';
+import { Calculator, Heart, BookOpen, Activity } from 'lucide-react';
 import { ThemeToggle } from './theme-toggle';
+import UserMenu from './UserMenu';
+import { useAuth } from './AuthProvider';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -13,6 +14,8 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children, onBack, title, showHeader = true }) => {
+  const { isAuthenticated } = useAuth();
+
   return (
     <div className="min-h-screen bg-background">
       {showHeader && (
@@ -33,7 +36,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onBack, title, showHeader = t
                 <img
                   src="https://res.cloudinary.com/dwta1roq1/image/upload/w_40,h_40,c_fit,q_auto,f_auto/LOGOAPP"
                   alt="Logo Luzaum's Guidebook"
-                  className="h-10 w-10"
+                  className="h-10 w-10 rounded-lg"
                 />
                 <div>
                   <h1 className="text-xl font-semibold text-foreground">Luzaum's Guidebook</h1>
@@ -116,8 +119,10 @@ const Layout: React.FC<LayoutProps> = ({ children, onBack, title, showHeader = t
                   </NavigationMenuItem>
                 </NavigationMenuList>
               </NavigationMenu>
-              
               <ThemeToggle />
+              {isAuthenticated ? (
+                <UserMenu />
+              ) : null}
             </div>
           </div>
         </header>

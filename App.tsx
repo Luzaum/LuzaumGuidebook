@@ -1,11 +1,14 @@
 
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import { ThemeProvider } from './components/theme-provider';
 import Layout from './components/Layout';
 import AppCard from './components/AppCard';
 import { Calculator, Heart, BookOpen, Activity, Brain, TestTube, Stethoscope } from 'lucide-react';
 import SplashScreen from './components/SplashScreen';
+import HeroSection from './components/HeroSection';
+import { AuthProvider, useAuth } from './components/AuthProvider';
+import LoginCard from './components/LoginCard';
 
 // Import existing apps
 import Fluidoterapia from './Fluidoterapia';
@@ -122,7 +125,7 @@ const appData: AppCategory[] = [
         id: 'guia-antibioticos',
         name: "Guia de Antibióticos",
         icon: <img src="https://res.cloudinary.com/dwta1roq1/image/upload/w_40,h_40,c_fit,q_auto,f_auto/logo/antibioticoterapia" alt="Antibióticos" className="h-8 w-8 object-contain" />,
-        implemented: false,
+        implemented: true,
         description: "Guia completo de terapia antibiótica",
         category: "Guias",
         color: 'bg-muted',
@@ -132,7 +135,7 @@ const appData: AppCategory[] = [
         id: 'bulario-vet',
         name: "Bulário Veterinário",
         icon: <img src="https://res.cloudinary.com/dwta1roq1/image/upload/w_40,h_40,c_fit,q_auto,f_auto/logo-bulario/app" alt="Bulário" className="h-8 w-8 object-contain" />,
-        implemented: false,
+        implemented: true,
         description: "Formulário completo de medicamentos",
         category: "Guias",
         color: 'bg-muted',
@@ -142,7 +145,7 @@ const appData: AppCategory[] = [
         id: 'crivet',
         name: "CRIVET",
         icon: <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 text-primary text-xs font-semibold">CRV</span>,
-        implemented: false,
+        implemented: true,
         description: "Guia de compatibilidade de medicamentos",
         category: "Guias",
         color: 'bg-muted',
@@ -227,8 +230,9 @@ const appData: AppCategory[] = [
 // --- MAIN APP COMPONENT --- //
 
 const AppContent = () => {
-  const [currentView, setCurrentView] = useState<'splash' | 'apps' | 'app'>('splash');
+  const [currentView, setCurrentView] = useState<'splash' | 'home' | 'apps' | 'app'>('splash');
   const [activeApp, setActiveApp] = useState<AppItem | null>(null);
+  const { isAuthenticated, openExternalApp } = useAuth();
 
   const handleGetStarted = () => {
     setCurrentView('apps');
@@ -241,8 +245,7 @@ const AppContent = () => {
     }
 
     if (app.externalUrl) {
-      // Handle external app navigation
-      window.location.href = app.externalUrl;
+      openExternalApp(app.externalUrl);
       return;
     }
 
@@ -273,9 +276,22 @@ const AppContent = () => {
   }
 
   // Render apps list
+  if (currentView === 'home') {
+    return (
+      <Layout showHeader={true}>
+        <HeroSection onGetStarted={() => setCurrentView('apps')} />
+      </Layout>
+    );
+  }
+
   if (currentView === 'apps') {
     return (
       <Layout title="Aplicativos" showHeader={true}>
+        {!isAuthenticated && (
+          <div className="mb-8">
+            <LoginCard />
+          </div>
+        )}
         <div className="space-y-8">
           {appData.map((category) => (
             <div key={category.id} className="space-y-4">
@@ -312,7 +328,7 @@ const AppContent = () => {
   // Splash screen as initial view, pré-carregando ícones usados na grade
   return (
     <SplashScreen
-      onComplete={() => setCurrentView('apps')}
+      onComplete={() => setCurrentView('home')}
       assetsToPreload={[
         "https://res.cloudinary.com/dwta1roq1/image/upload/w_120,q_auto/LOGOAPP",
         "https://res.cloudinary.com/dwta1roq1/image/upload/w_40,h_40,c_fit,q_auto,f_auto/logo/calculadora-energetica",
@@ -328,7 +344,9 @@ const AppContent = () => {
 const App = () => {
   return (
     <ThemeProvider defaultTheme="system" storageKey="luzaum-theme">
-      <AppContent />
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
     </ThemeProvider>
   );
 };
