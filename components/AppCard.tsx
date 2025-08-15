@@ -38,7 +38,7 @@ const AppCard: React.FC<AppCardProps> = ({
         <div className="flex items-start justify-between">
           <div className="flex items-start gap-3">
             <div className={cn(
-              "p-2 rounded-md transition-colors shrink-0",
+              "p-2 rounded-md transition-colors shrink-0 size-12 flex items-center justify-center",
               implemented ? "bg-primary/10 group-hover:bg-primary/20" : "bg-muted"
             )}>
               {icon}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
-import { Calculator, Heart, BookOpen, Activity, Zap } from 'lucide-react';
+import { Calculator, Heart, BookOpen, Activity } from 'lucide-react';
 import Logo from './Logo';
 
 interface HeroSectionProps {
@@ -30,10 +30,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onGetStarted }) => {
             {/* Logo and Title */}
             <div className="flex justify-center mb-8">
               <div className="relative">
-                <Logo className="h-36 w-36 md:h-48 md:w-48 mx-auto drop-shadow-xl object-contain" />
-                <div className="absolute -top-2 -right-2 bg-primary text-primary-foreground rounded-full p-1">
-                  <Zap className="h-4 w-4" />
-                </div>
+                <Logo className="h-56 w-56 md:h-72 md:w-72 mx-auto drop-shadow-xl object-contain" />
               </div>
             </div>
 

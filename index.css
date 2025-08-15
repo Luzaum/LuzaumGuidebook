@@ -97,6 +97,9 @@ html, body {
   transition: background-color 200ms ease, color 200ms ease;
 }
 
+/* Utilitário: tamanho máximo para logos internas */
+.size-12 { width: 3rem; height: 3rem; }
+
 /* Mobile friendly tweaks */
 @media (max-width: 640px) {
   .container { padding-left: 1rem; padding-right: 1rem; }

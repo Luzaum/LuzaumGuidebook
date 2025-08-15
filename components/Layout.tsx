@@ -35,7 +35,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onBack, title, showHeader = t
                 </Button>
               )}
               <div className="flex items-center space-x-3">
-                <Logo className="h-12 w-12 rounded-lg object-contain" />
+                <Logo className="h-14 w-14 md:h-16 md:w-16 rounded-lg object-contain" />
                 <div>
                   <h1 className="text-xl font-semibold text-foreground">Vetius</h1>
                   {title ? (
