@@ -10,7 +10,13 @@ const FALLBACK_SRC = 'https://res.cloudinary.com/dwta1roq1/image/upload/w_240,q_
 
 const Logo: React.FC<LogoProps> = ({ className = '', size = 40 }) => {
   const [index, setIndex] = useState<number>(0);
-  const src = index < CANDIDATES.length ? CANDIDATES[index] : FALLBACK_SRC;
+  const metaOverride = (typeof document !== 'undefined')
+    ? (document.querySelector('meta[name="VITE_LOGO_URL"]') as HTMLMetaElement | null)?.content
+    : undefined;
+  const sources = metaOverride && metaOverride.length > 0
+    ? [metaOverride, ...CANDIDATES]
+    : CANDIDATES;
+  const src = index < sources.length ? sources[index] : FALLBACK_SRC;
   return (
     <img
       src={src}

@@ -51,9 +51,10 @@ const Layout: React.FC<LayoutProps> = ({ children, onBack, title, showHeader = t
               {/* Categorias removido conforme pedido */}
               <ThemeToggle />
               {!isAuthenticated && (
-                <a href="#login">
-                  <Button size="sm" variant="default">Cadastrar</Button>
-                </a>
+                <Button size="sm" variant="default" onClick={() => {
+                  const el = document.getElementById('signup') || document.getElementById('login');
+                  el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}>Cadastrar</Button>
               )}
               {isAuthenticated ? (
                 <UserMenu />

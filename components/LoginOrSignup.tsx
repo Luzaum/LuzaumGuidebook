@@ -43,7 +43,7 @@ const LoginOrSignup: React.FC = () => {
         <HashTool />
       </div>
       <div>
-        <Card className="border-primary/20">
+        <Card id="signup" className="border-primary/20">
           <CardHeader>
             <CardTitle>Cadastro</CardTitle>
             <CardDescription>Crie sua conta e enviaremos para aprovação</CardDescription>

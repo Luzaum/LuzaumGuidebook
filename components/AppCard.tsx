@@ -26,7 +26,7 @@ const AppCard: React.FC<AppCardProps> = ({
   return (
     <Card 
       className={cn(
-        "group cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-[1.01] border",
+        "group cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-[1.01] border h-full flex flex-col",
         implemented 
           ? "hover:border-primary/40 hover:bg-accent/40" 
           : "opacity-60 border-muted",
@@ -36,19 +36,19 @@ const AppCard: React.FC<AppCardProps> = ({
     >
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between">
-          <div className="flex items-center space-x-3">
+          <div className="flex items-start gap-3">
             <div className={cn(
-              "p-2 rounded-md transition-colors",
+              "p-2 rounded-md transition-colors shrink-0",
               implemented ? "bg-primary/10 group-hover:bg-primary/20" : "bg-muted"
             )}>
               {icon}
             </div>
-            <div className="flex-1">
-              <CardTitle className="text-base font-semibold text-foreground group-hover:text-primary transition-colors">
+            <div className="flex-1 min-w-0">
+              <CardTitle className="text-base font-semibold text-foreground group-hover:text-primary transition-colors truncate">
                 {name}
               </CardTitle>
               {description && (
-                <CardDescription className="text-sm text-muted-foreground mt-1">
+                <CardDescription className="mt-1 text-sm text-muted-foreground line-clamp-3">
                   {description}
                 </CardDescription>
               )}
@@ -57,7 +57,7 @@ const AppCard: React.FC<AppCardProps> = ({
           <Badge 
             variant={implemented ? "default" : "secondary"}
             className={cn(
-              "text-xs",
+              "text-xs whitespace-nowrap",
               implemented ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"
             )}
           >
@@ -67,7 +67,7 @@ const AppCard: React.FC<AppCardProps> = ({
       </CardHeader>
       
       {implemented && (
-        <CardContent className="pt-0">
+        <CardContent className="pt-0 mt-auto">
           <Button 
             variant="outline" 
             size="sm" 
