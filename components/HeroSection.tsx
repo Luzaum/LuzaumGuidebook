@@ -30,7 +30,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onGetStarted }) => {
             {/* Logo and Title */}
             <div className="flex justify-center mb-8">
               <div className="relative">
-                <Logo className="h-56 w-56 md:h-72 md:w-72 mx-auto drop-shadow-xl object-contain" />
+                <Logo className="h-72 w-72 md:h-96 md:w-96 mx-auto drop-shadow-xl object-contain" />
               </div>
             </div>
 
