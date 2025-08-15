@@ -279,7 +279,20 @@ const AppContent = () => {
   if (currentView === 'home') {
     return (
       <Layout showHeader={true}>
-        <HeroSection onGetStarted={() => setCurrentView('apps')} />
+        <HeroSection
+          onGetStarted={() => {
+            if (isAuthenticated) {
+              setCurrentView('apps');
+            } else {
+              document.getElementById('login')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }}
+        />
+        {!isAuthenticated && (
+          <div className="mt-8">
+            <LoginCard />
+          </div>
+        )}
       </Layout>
     );
   }
@@ -287,11 +300,6 @@ const AppContent = () => {
   if (currentView === 'apps') {
     return (
       <Layout title="Aplicativos" showHeader={true}>
-        {!isAuthenticated && (
-          <div className="mb-8">
-            <LoginCard />
-          </div>
-        )}
         <div className="space-y-8">
           {appData.map((category) => (
             <div key={category.id} className="space-y-4">

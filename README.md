@@ -1,13 +1,13 @@
-# Luzaum's Guidebook
+# Vetius
 
-Seu companheiro clínico, anestésico e cirúrgico. Uma plataforma elegante e profissional para ferramentas veterinárias.
+SEU COMPANHEIRO CLÍNICO, ANESTÉSICO E CIRÚRGICO, SEMPRE QUE PRECISAR, NA PALMA DAS MÃOS!
 
 ## 🚀 Características
 
 - **UI Moderna**: Interface elegante construída com Shadcn/UI e Tailwind CSS
 - **Dark Mode**: Suporte completo para modo escuro e claro
 - **Design Responsivo**: Funciona perfeitamente em desktop, tablet e mobile
-- **Navegação Intuitiva**: Sistema de navegação fluido e organizado por categorias
+- **Navegação Intuitiva**: Sistema de navegação fluido
 - **Integração de Apps**: Preparado para integrar todos os seus aplicativos veterinários
 - **Performance Otimizada**: Carregamento rápido e experiência suave
 
@@ -38,7 +38,8 @@ LuzaumGuidebook/
 │   ├── AppCard.tsx         # Card dos aplicativos
 │   ├── AppIntegration.tsx  # Integração de apps externos
 │   ├── theme-provider.tsx  # Gerenciamento de tema
-│   └── theme-toggle.tsx    # Toggle de tema
+│   ├── theme-toggle.tsx    # Toggle de tema
+│   └── Logo.tsx            # Componente de logo com fallback
 ├── lib/
 │   └── utils.ts           # Utilitários (cn function)
 ├── App.tsx                # Componente principal
@@ -51,16 +52,15 @@ LuzaumGuidebook/
 ## 🎨 Design System
 
 ### Cores (OKLCH)
-- **Primária**: Azul moderno com alta acessibilidade
-- **Secundária**: Tons neutros para elementos secundários
-- **Acentos**: Gradientes suaves e transições elegantes
+- **Primária**: Verde de UI
+- **Background**: Branco (claro) / Escuro (escuro)
+- **Acentos**: Gradientes verdes e transições elegantes
 - **Dark Mode**: Paleta otimizada para modo escuro
 
 ### Componentes
 - **Cards**: Design limpo com sombras sutis e hover effects
 - **Botões**: Múltiplas variantes (default, outline, ghost)
-- **Navegação**: Menu dropdown elegante com categorias
-- **Badges**: Indicadores de status coloridos
+- **Badges**: Indicadores de status com sombra suave
 - **Theme Toggle**: Seletor de tema com animações
 
 ## 🌙 Dark Mode
@@ -78,25 +78,12 @@ O aplicativo suporta três modos de tema:
 
 ## 📱 Apps Integrados
 
-### Calculadoras
-- ✅ **Calculadora Energética** - Cálculo de RER e MER
-- ✅ **Fluidoterapia** - Protocolos de fluidoterapia
-- ✅ **Transfusão Sanguínea** - Cálculos de transfusão
-
-### Emergências
-- ✅ **Emergências Veterinárias** - Protocolos de emergência
-
-### Avaliações
-- ✅ **Analgesia e Controle de Dor** - Escalas de dor
-
-### Exames
-- ✅ **Hemogasometria** - Interpretação de exames
-
-### Apps Externos (Integração Futura)
-- 🔄 **Guia de Antibióticos** - Terapia antibiótica
-- 🔄 **Bulário Veterinário** - Formulário de medicamentos
-- 🔄 **CRIVET** - Compatibilidade de medicamentos
-- 🔄 **Quiz Residência** - Questões de residência
+- ✅ **Calculadora Energética**
+- ✅ **Fluidoterapia**
+- ✅ **Transfusão Sanguínea**
+- ✅ **Emergências Veterinárias**
+- ✅ **Analgesia e Controle de Dor**
+- ✅ **Hemogasometria**
 
 ## 🚀 Como Executar
 
@@ -115,78 +102,6 @@ O aplicativo suporta três modos de tema:
    npm run build
    ```
 
-## 🔧 Como Adicionar Novos Apps
+## 🖼️ Logo do app
 
-### 1. App Interno (Componente React)
-
-1. Crie seu componente na raiz do projeto
-2. Adicione ao array `appData` no `App.tsx`:
-
-```typescript
-{
-  id: 'meu-app',
-  name: "Meu App",
-  icon: <MeuIcone />,
-  implemented: true,
-  description: "Descrição do app",
-  category: "Calculadoras",
-  color: 'bg-primary/10',
-  component: MeuComponente
-}
-```
-
-### 2. App Externo (URL)
-
-```typescript
-{
-  id: 'app-externo',
-  name: "App Externo",
-  icon: <IconeExterno />,
-  implemented: false,
-  description: "Descrição do app externo",
-  category: "Guias",
-  color: 'bg-muted',
-  externalUrl: '/caminho-para-app'
-}
-```
-
-## 🎯 Melhorias Implementadas
-
-### UI/UX
-- ✅ Design moderno e profissional
-- ✅ Dark mode completo
-- ✅ Navegação intuitiva
-- ✅ Responsividade completa
-- ✅ Animações suaves
-- ✅ Feedback visual claro
-
-### Arquitetura
-- ✅ Componentes reutilizáveis
-- ✅ Sistema de tipos TypeScript
-- ✅ Estrutura modular
-- ✅ Configuração centralizada
-- ✅ Preparado para escalabilidade
-- ✅ Sistema de temas robusto
-
-### Performance
-- ✅ Lazy loading de componentes
-- ✅ Otimização de imagens
-- ✅ CSS otimizado com OKLCH
-- ✅ Build otimizado
-- ✅ Transições suaves
-
-## 🔮 Próximos Passos
-
-1. **Integração de Apps Externos**: Conectar com outros projetos
-2. **PWA**: Funcionalidade offline
-3. **Analytics**: Métricas de uso
-4. **Backend**: Sistema de usuários e dados
-5. **Mais Temas**: Temas personalizados
-
-## 📄 Licença
-
-Este projeto é desenvolvido para uso veterinário e educacional.
-
----
-
-**Desenvolvido com ❤️ para a comunidade veterinária**
+Coloque sua imagem em `public/logo-vetius.png` (PNG, fundo transparente recomendado). O app faz fallback automático para a logo anterior se o arquivo não existir.

@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { Calculator, Heart, BookOpen, Activity, Zap } from 'lucide-react';
+import Logo from './Logo';
 
 interface HeroSectionProps {
   onGetStarted: () => void;
@@ -29,11 +30,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onGetStarted }) => {
             {/* Logo and Title */}
             <div className="flex justify-center mb-8">
               <div className="relative">
-                <img
-                  src="https://res.cloudinary.com/dwta1roq1/image/upload/w_120,q_auto/LOGOAPP"
-                  alt="Logo Vetius"
-                  className="h-32 w-32 md:h-40 md:w-40 mx-auto drop-shadow-xl"
-                />
+                <Logo className="h-36 w-36 md:h-48 md:w-48 mx-auto drop-shadow-xl object-contain" />
                 <div className="absolute -top-2 -right-2 bg-primary text-primary-foreground rounded-full p-1">
                   <Zap className="h-4 w-4" />
                 </div>
@@ -46,21 +43,20 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onGetStarted }) => {
               </span>
             </h1>
             
-            <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
-              seu companheiro veterinário, sempre que precisar!
+            <p className="text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed text-center">
+              SEU COMPANHEIRO CLÍNICO, ANESTÉSICO E CIRÚRGICO, SEMPRE QUE PRECISAR, NA PALMA DAS MÃOS!
             </p>
 
             <div className="flex justify-center">
               <Button
                 onClick={onGetStarted}
                 size="lg"
-                className="group relative isolate overflow-hidden rounded-2xl px-12 py-6 text-xl font-semibold text-primary-foreground shadow-lg transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
-                bg-gradient-to-br from-[oklch(0.78_0.2_150)] via-[oklch(0.72_0.2_150)] to-[oklch(0.66_0.18_150)] hover:scale-[1.03]
-                hover:shadow-2xl hover:shadow-[oklch(0.75_0.2_150)/25] active:scale-[0.98]"
+                className="relative overflow-hidden rounded-2xl px-14 py-7 text-2xl font-semibold text-primary-foreground shadow-lg transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
+                bg-gradient-to-b from-[oklch(0.78_0.2_150)] to-[oklch(0.68_0.18_150)] hover:shadow-[0_20px_50px_-10px_rgba(34,197,94,0.35)] hover:translate-y-[-1px]"
               >
                 <span className="relative z-10">Explorar aplicativos</span>
-                <span className="pointer-events-none absolute inset-0 -z-0 opacity-100 transition-opacity duration-500 bg-[radial-gradient(120%_120%_at_50%_0%,white/25_0%,transparent_60%)]" />
-                <span className="pointer-events-none absolute -inset-[200%] -z-10 animate-[spin_6s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_340deg,white_340deg_360deg)]" />
+                <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_120%_at_50%_0%,white/15_0%,transparent_60%)]" />
+                <span className="pointer-events-none absolute inset-x-0 -bottom-1 h-1 bg-gradient-to-r from-transparent via-white/70 to-transparent opacity-70" />
               </Button>
             </div>
           </div>

@@ -13,6 +13,7 @@ type AuthContextShape = {
   login: (email: string, password: string) => Promise<void>;
   logout: () => void;
   openExternalApp: (url: string) => void;
+  loginWithProfile: (profile: { email: string; name: string; avatarUrl?: string }) => Promise<void>;
 };
 
 const AuthContext = createContext<AuthContextShape | undefined>(undefined);
@@ -37,6 +38,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       name: displayName.charAt(0).toUpperCase() + displayName.slice(1),
       email,
       avatarUrl: `https://ui-avatars.com/api/?background=2ecc71&color=ffffff&name=${encodeURIComponent(displayName)}`,
+    };
+    setUser(fakeUser);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(fakeUser));
+  }, []);
+
+  const loginWithProfile = useCallback(async (profile: { email: string; name: string; avatarUrl?: string }) => {
+    const fakeUser: AuthUser = {
+      id: `uid_${Math.random().toString(36).slice(2)}`,
+      name: profile.name,
+      email: profile.email,
+      avatarUrl: profile.avatarUrl,
     };
     setUser(fakeUser);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(fakeUser));
@@ -67,7 +79,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     login,
     logout,
     openExternalApp,
-  }), [user, login, logout, openExternalApp]);
+    loginWithProfile,
+  }), [user, login, logout, openExternalApp, loginWithProfile]);
 
   return (
     <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

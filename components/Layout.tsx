@@ -5,6 +5,7 @@ import { Calculator, Heart, BookOpen, Activity } from 'lucide-react';
 import { ThemeToggle } from './theme-toggle';
 import UserMenu from './UserMenu';
 import { useAuth } from './AuthProvider';
+import Logo from './Logo';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -33,17 +34,13 @@ const Layout: React.FC<LayoutProps> = ({ children, onBack, title, showHeader = t
                 </Button>
               )}
               <div className="flex items-center space-x-3">
-                <img
-                  src="https://res.cloudinary.com/dwta1roq1/image/upload/w_40,h_40,c_fit,q_auto,f_auto/LOGOAPP"
-                  alt="Logo Vetius"
-                  className="h-10 w-10 rounded-lg"
-                />
+                <Logo className="h-12 w-12 rounded-lg object-contain" />
                 <div>
                   <h1 className="text-xl font-semibold text-foreground">Vetius</h1>
                   {title ? (
                     <p className="text-sm text-muted-foreground">{title}</p>
                   ) : (
-                    <p className="text-sm text-muted-foreground">seu companheiro veterinário, sempre que precisar!</p>
+                    <p className="text-sm text-muted-foreground">SEU COMPANHEIRO CLÍNICO, ANESTÉSICO E CIRÚRGICO, SEMPRE QUE PRECISAR, NA PALMA DAS MÃOS!</p>
                   )}
                 </div>
               </div>
