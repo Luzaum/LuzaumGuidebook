@@ -29,8 +29,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onGetStarted }) => {
           <div className="max-w-4xl mx-auto">
             {/* Logo and Title */}
             <div className="flex justify-center mb-8">
-              <div className="relative">
-                <Logo className="h-72 w-72 md:h-96 md:w-96 mx-auto drop-shadow-xl object-contain" />
+              <div className="relative w-[90vw] max-w-[56rem]">
+                <Logo className="w-full h-auto mx-auto drop-shadow-xl object-contain" />
               </div>
             </div>
 
