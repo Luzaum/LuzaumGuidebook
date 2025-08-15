@@ -76,7 +76,14 @@ const LoginCard: React.FC = () => {
                 type="tel"
                 placeholder="(XX) XXXXX-XXXX"
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={(e) => {
+                  const only = (e.target.value.match(/\d/g) || []).join('');
+                  let masked = only;
+                  if (only.length > 0) masked = `(${only.slice(0,2)}`;
+                  if (only.length >= 3) masked += `) ${only.slice(2,7)}`;
+                  if (only.length >= 8) masked += `-${only.slice(7,11)}`;
+                  setPhone(masked);
+                }}
                 required={mode==='phone'}
               />
             </div>

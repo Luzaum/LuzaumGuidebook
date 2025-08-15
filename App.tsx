@@ -7,6 +7,7 @@ import AppCard from './components/AppCard';
 import { Calculator, Heart, BookOpen, Activity, Brain, TestTube, Stethoscope } from 'lucide-react';
 import SplashScreen from './components/SplashScreen';
 import HeroSection from './components/HeroSection';
+import HashTool from './components/HashTool';
 import { AuthProvider, useAuth } from './components/AuthProvider';
 import LoginCard from './components/LoginCard';
 
@@ -291,6 +292,7 @@ const AppContent = () => {
         {!isAuthenticated && (
           <div className="mt-8">
             <LoginCard />
+            <HashTool />
           </div>
         )}
       </Layout>
