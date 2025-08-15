@@ -6,6 +6,7 @@ import { ThemeToggle } from './theme-toggle';
 import UserMenu from './UserMenu';
 import { useAuth } from './AuthProvider';
 import Logo from './Logo';
+import { Button } from './ui/button';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -40,7 +41,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onBack, title, showHeader = t
                   {title ? (
                     <p className="text-sm text-muted-foreground">{title}</p>
                   ) : (
-                    <p className="text-sm text-muted-foreground">SEU COMPANHEIRO CLÍNICO, ANESTÉSICO E CIRÚRGICO, SEMPRE QUE PRECISAR, NA PALMA DAS MÃOS!</p>
+                    <p className="text-sm text-muted-foreground">Seu companheiro clínico, anestésico e cirúrgico, sempre que precisar, na palma das mãos!</p>
                   )}
                 </div>
               </div>
@@ -49,6 +50,11 @@ const Layout: React.FC<LayoutProps> = ({ children, onBack, title, showHeader = t
             <div className="ml-auto flex items-center space-x-4">
               {/* Categorias removido conforme pedido */}
               <ThemeToggle />
+              {!isAuthenticated && (
+                <a href="#login">
+                  <Button size="sm" variant="default">Cadastrar</Button>
+                </a>
+              )}
               {isAuthenticated ? (
                 <UserMenu />
               ) : null}

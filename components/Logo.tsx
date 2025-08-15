@@ -5,11 +5,12 @@ interface LogoProps {
   size?: number; // pixels
 }
 
-const PREFERRED_SRC = '/logo-vetius.png';
+const CANDIDATES = ['/Vetius.png', '/Vetius.svg', '/Vetius.webp', '/logo-vetius.png'];
 const FALLBACK_SRC = 'https://res.cloudinary.com/dwta1roq1/image/upload/w_240,q_auto/LOGOAPP';
 
 const Logo: React.FC<LogoProps> = ({ className = '', size = 40 }) => {
-  const [src, setSrc] = useState<string>(PREFERRED_SRC);
+  const [index, setIndex] = useState<number>(0);
+  const src = index < CANDIDATES.length ? CANDIDATES[index] : FALLBACK_SRC;
   return (
     <img
       src={src}
@@ -17,7 +18,7 @@ const Logo: React.FC<LogoProps> = ({ className = '', size = 40 }) => {
       width={size}
       height={size}
       className={className}
-      onError={() => setSrc(FALLBACK_SRC)}
+      onError={() => setIndex((i) => i + 1)}
     />
   );
 };

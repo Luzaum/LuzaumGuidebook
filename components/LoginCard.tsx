@@ -5,9 +5,11 @@ import { useAuth } from './AuthProvider';
 import GoogleSignIn from './GoogleSignIn';
 import { verifyCredentials, normalizePhone } from '../services/sheets';
 import { hashSha256 } from '../utils/crypto';
+import { useToast } from './ToastProvider';
 
 const LoginCard: React.FC = () => {
   const { login } = useAuth();
+  const { show } = useToast();
   const [mode, setMode] = useState<'email' | 'phone'>('email');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -32,8 +34,11 @@ const LoginCard: React.FC = () => {
       const user = await verifyCredentials(identifier, passHash);
       if (!user) throw new Error('Credenciais inválidas');
       await login(user.email || identifier, 'verified');
+      show('Login realizado com sucesso!', 'success');
     } catch (err) {
-      setError((err as Error).message);
+      const msg = (err as Error).message;
+      setError(msg);
+      show(msg, 'error');
     } finally {
       setLoading(false);
     }

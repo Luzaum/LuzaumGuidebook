@@ -73,7 +73,7 @@ const AppCard: React.FC<AppCardProps> = ({
             size="sm" 
             className="w-full border-primary/30 text-primary hover:bg-primary/10 hover:border-primary/40"
           >
-            Abrir Aplicativo
+            Abrir
           </Button>
         </CardContent>
       )}

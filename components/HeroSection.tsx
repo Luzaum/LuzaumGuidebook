@@ -44,7 +44,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onGetStarted }) => {
             </h1>
             
             <p className="text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed text-center">
-              SEU COMPANHEIRO CLÍNICO, ANESTÉSICO E CIRÚRGICO, SEMPRE QUE PRECISAR, NA PALMA DAS MÃOS!
+              Seu companheiro clínico, anestésico e cirúrgico, sempre que precisar, na palma das mãos!
             </p>
 
             <div className="flex justify-center">

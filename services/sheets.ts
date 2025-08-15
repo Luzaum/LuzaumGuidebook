@@ -61,7 +61,7 @@ export async function verifyCredentials(identifier: string, passwordHash: string
 
 // Optional: append via Google Apps Script web app (POST)
 export async function appendUserViaAppsScript(user: SheetUser): Promise<boolean> {
-  const url = import.meta.env.VITE_APPS_SCRIPT_URL as string | undefined;
+  const url = (import.meta as any).env?.VITE_APPS_SCRIPT_URL || (document.querySelector('meta[name="VITE_APPS_SCRIPT_URL"]') as HTMLMetaElement | null)?.content || undefined;
   if (!url) return false;
   const payload = {
     sheet: SHEET_NAME,

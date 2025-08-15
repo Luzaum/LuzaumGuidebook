@@ -10,6 +10,9 @@ import HeroSection from './components/HeroSection';
 import HashTool from './components/HashTool';
 import { AuthProvider, useAuth } from './components/AuthProvider';
 import LoginCard from './components/LoginCard';
+import LoginOrSignup from './components/LoginOrSignup';
+import Toaster from './components/Toaster';
+import { ToastProvider } from './components/ToastProvider';
 
 // Import existing apps
 import Fluidoterapia from './Fluidoterapia';
@@ -291,8 +294,7 @@ const AppContent = () => {
         />
         {!isAuthenticated && (
           <div className="mt-8">
-            <LoginCard />
-            <HashTool />
+            <LoginOrSignup />
           </div>
         )}
       </Layout>
@@ -315,7 +317,7 @@ const AppContent = () => {
                 </div>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
                 {category.apps.map((app) => (
                   <AppCard
                     key={app.id}
@@ -346,9 +348,12 @@ const AppContent = () => {
 const App = () => {
   return (
     <ThemeProvider defaultTheme="system" storageKey="vetius-theme">
-      <AuthProvider>
-        <AppContent />
-      </AuthProvider>
+      <ToastProvider>
+        <AuthProvider>
+          <AppContent />
+          <Toaster />
+        </AuthProvider>
+      </ToastProvider>
     </ThemeProvider>
   );
 };

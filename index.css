@@ -97,6 +97,13 @@ html, body {
   transition: background-color 200ms ease, color 200ms ease;
 }
 
+/* Mobile friendly tweaks */
+@media (max-width: 640px) {
+  .container { padding-left: 1rem; padding-right: 1rem; }
+  .result-card, .card { border-radius: 0.75rem; }
+  .modal-content { width: 95%; padding: 1rem; }
+}
+
 /* Modal styles */
 .modal {
   position: fixed;
