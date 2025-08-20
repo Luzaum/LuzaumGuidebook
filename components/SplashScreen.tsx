@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Logo from './Logo';
 
 interface SplashScreenProps {
   onComplete: () => void;
@@ -70,11 +71,9 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete, durationMs = 60
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-background via-muted/20 to-background">
       <div className="flex flex-col items-center w-full max-w-sm px-8">
-        <img
-          src="https://res.cloudinary.com/dwta1roq1/image/upload/w_240,q_auto/LOGOAPP"
-          alt="Logo Luzaum's Guidebook"
-          className="h-32 w-32 md:h-40 md:w-40 drop-shadow-lg mb-8 select-none"
-          draggable={false}
+        <Logo
+          size={128}
+          className="md:h-40 md:w-40 drop-shadow-lg mb-8 select-none"
         />
 
         <div className="w-full">

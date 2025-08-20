@@ -6,6 +6,7 @@ import GoogleSignIn from './GoogleSignIn';
 import { verifyCredentials, normalizePhone } from '../services/sheets';
 import { hashSha256 } from '../utils/crypto';
 import { useToast } from './ToastProvider';
+import Logo from './Logo';
 
 const LoginCard: React.FC = () => {
   const { login } = useAuth();
@@ -48,7 +49,7 @@ const LoginCard: React.FC = () => {
     <Card id="login" className="max-w-md w-full mx-auto border-primary/20 shadow-lg">
       <CardHeader>
         <div className="flex items-center space-x-3">
-          <img src="/logo-vetius.png" alt="Logo" className="h-10 w-10 rounded" onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'https://res.cloudinary.com/dwta1roq1/image/upload/w_64,q_auto/LOGOAPP' }} />
+          <Logo size={40} className="rounded" />
           <div>
             <CardTitle>Entrar</CardTitle>
             <CardDescription>Acesse para integrar com seus outros apps</CardDescription>

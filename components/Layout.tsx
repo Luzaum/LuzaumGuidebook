@@ -6,7 +6,6 @@ import { ThemeToggle } from './theme-toggle';
 import UserMenu from './UserMenu';
 import { useAuth } from './AuthProvider';
 import Logo from './Logo';
-import { Button } from './ui/button';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -35,7 +34,8 @@ const Layout: React.FC<LayoutProps> = ({ children, onBack, title, showHeader = t
                 </Button>
               )}
               <div className="flex items-center space-x-3">
-                <Logo className="h-14 w-14 md:h-16 md:w-16 rounded-lg object-contain" />
+                <Logo size={40} className="rounded-lg md:hidden" />
+                <Logo size={48} className="rounded-lg hidden md:block" />
                 <div>
                   <h1 className="text-xl font-semibold text-foreground">Vetius</h1>
                   {title ? (
