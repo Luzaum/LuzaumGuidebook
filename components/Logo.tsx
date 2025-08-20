@@ -24,14 +24,8 @@ const Logo: React.FC<LogoProps> = ({ className = '', size = 60 }) => {
       alt="Logo Vetius"
       width={size}
       height={size}
-      className={`object-contain ${className}`}
+      className={`w-full h-full object-cover ${className}`}
       onError={() => setIndex((i) => i + 1)}
-      style={{
-        minWidth: `${size}px`,
-        minHeight: `${size}px`,
-        maxWidth: '100%',
-        maxHeight: '100%'
-      }}
     />
   );
 };

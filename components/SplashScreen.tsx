@@ -71,10 +71,9 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete, durationMs = 60
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-background via-muted/20 to-background">
       <div className="flex flex-col items-center w-full max-w-sm px-8">
-        <Logo
-          size={128}
-          className="md:h-40 md:w-40 drop-shadow-lg mb-8 select-none"
-        />
+        <div className="w-32 h-32 md:w-40 md:h-40 drop-shadow-lg mb-8 select-none">
+          <Logo className="drop-shadow-lg select-none" />
+        </div>
 
         <div className="w-full">
           <div className="h-3 w-full rounded-full bg-muted overflow-hidden border border-border">

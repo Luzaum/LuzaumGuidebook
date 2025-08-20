@@ -34,8 +34,9 @@ const Layout: React.FC<LayoutProps> = ({ children, onBack, title, showHeader = t
                 </Button>
               )}
               <div className="flex items-center space-x-3">
-                <Logo size={40} className="rounded-lg md:hidden" />
-                <Logo size={48} className="rounded-lg hidden md:block" />
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg overflow-hidden">
+                  <Logo className="rounded-lg" />
+                </div>
                 <div>
                   <h1 className="text-xl font-semibold text-foreground">Vetius</h1>
                   {title ? (
