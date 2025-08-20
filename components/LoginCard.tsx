@@ -49,7 +49,7 @@ const LoginCard: React.FC = () => {
     <Card id="login" className="max-w-md w-full mx-auto border-primary/20 shadow-lg">
       <CardHeader>
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded overflow-hidden">
+          <div className="w-12 h-12 rounded overflow-hidden bg-muted/20 flex items-center justify-center">
             <Logo className="rounded" />
           </div>
           <div>

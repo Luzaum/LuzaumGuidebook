@@ -34,7 +34,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onBack, title, showHeader = t
                 </Button>
               )}
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg overflow-hidden">
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden bg-muted/20 flex items-center justify-center">
                   <Logo className="rounded-lg" />
                 </div>
                 <div>
