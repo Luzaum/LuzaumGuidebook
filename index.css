@@ -4,80 +4,52 @@
 
 @layer base {
   :root {
-    --radius: 0.75rem;
-    /* Light: fundo branco, UI verde claro */
-    --background: 1 0 0;
-    --foreground: 0.22 0.02 265;
-    --card: 1 0 0;
-    --card-foreground: 0.22 0.02 265;
-    --popover: 1 0 0;
-    --popover-foreground: 0.22 0.02 265;
-    /* Brand Green claro */
-    --primary: 0.8 0.18 150;
-    --primary-foreground: 0.12 0.02 265;
-    /* Neutrals */
-    --secondary: 0.985 0 0;
-    --secondary-foreground: 0.28 0.02 265;
-    --muted: 0.97 0 0;
-    --muted-foreground: 0.5 0.02 265;
-    --accent: 0.97 0 0;
-    --accent-foreground: 0.28 0.02 265;
-    --destructive: 0.6 0.23 25;
-    --destructive-foreground: 0.99 0 0;
-    --border: 0.92 0 0;
-    --input: 0.92 0 0;
-    --ring: 0.72 0.22 150;
-    /* Charts */
-    --chart-1: 0.64 0.22 41.116;
-    --chart-2: 0.6 0.12 184.704;
-    --chart-3: 0.4 0.07 227.392;
-    --chart-4: 0.83 0.19 84.429;
-    --chart-5: 0.77 0.19 70.08;
-    /* Sidebar */
-    --sidebar: 0.985 0 0;
-    --sidebar-foreground: 0.22 0.02 265;
-    --sidebar-primary: 0.72 0.22 150;
-    --sidebar-primary-foreground: 0.99 0 0;
-    --sidebar-accent: 0.97 0 0;
-    --sidebar-accent-foreground: 0.28 0.02 265;
-    --sidebar-border: 0.92 0 0;
-    --sidebar-ring: 0.72 0.22 150;
+    --background: 210 50% 98%;
+    --foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 93%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+    --primary: 220 70% 35%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --accent: 210 60% 60%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+    --ring: 215 20.2% 65.1%;
+    --radius: 0.5rem;
+    --surface: 210 50% 95%;
+    --surface-2: 210 50% 90%;
   }
-
   .dark {
-    /* Dark: fundo preto, UI verde */
-    --background: 0.13 0 0;
-    --foreground: 0.98 0 0;
-    --card: 0.16 0 0;
-    --card-foreground: 0.98 0 0;
-    --popover: 0.16 0 0;
-    --popover-foreground: 0.98 0 0;
-    --primary: 0.67 0.18 150;
-    --primary-foreground: 0.99 0 0;
-    --secondary: 0.22 0 0;
-    --secondary-foreground: 0.98 0 0;
-    --muted: 0.22 0 0;
-    --muted-foreground: 0.75 0.01 260;
-    --accent: 0.22 0 0;
-    --accent-foreground: 0.98 0 0;
-    --destructive: 0.65 0.2 25;
-    --destructive-foreground: 0.99 0 0;
-    --border: 1 0 0 / 10%;
-    --input: 1 0 0 / 15%;
-    --ring: 0.67 0.18 150;
-    --chart-1: 0.49 0.24 264.376;
-    --chart-2: 0.65 0.18 162.48;
-    --chart-3: 0.77 0.19 70.08;
-    --chart-4: 0.63 0.26 303.9;
-    --chart-5: 0.65 0.24 16.439;
-    --sidebar: 0.2 0.01 260;
-    --sidebar-foreground: 0.98 0 0;
-    --sidebar-primary: 0.65 0.18 150;
-    --sidebar-primary-foreground: 0.99 0 0;
-    --sidebar-accent: 0.26 0.005 260;
-    --sidebar-accent-foreground: 0.98 0 0;
-    --sidebar-border: 1 0 0 / 10%;
-    --sidebar-ring: 0.65 0.18 150;
+    --background: 224 71% 8%;
+    --foreground: 213 31% 91%;
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+    --accent: 196 80% 70%;
+    --accent-foreground: 210 40% 98%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+    --primary: 196 80% 70%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --ring: 216 34% 17%;
+    --radius: 0.5rem;
+    --surface: 224 71% 11%;
+    --surface-2: 224 71% 15%;
   }
 }
 
@@ -85,20 +57,39 @@
   * {
     @apply border-border;
   }
-  html, body, button, input, select, textarea { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  html, body {
+    @apply h-full;
+  }
 }
 
-/* Ensure base colors apply even without Tailwind processing */
-html, body {
-  background-color: oklch(var(--background));
-  color: oklch(var(--foreground));
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transition: background-color 200ms ease, color 200ms ease;
+/* Custom animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.animate-float {
+  animation: float 5s ease-in-out infinite;
 }
 
-/* Utilitário: tamanho máximo para logos internas */
-.size-12 { width: 3rem; height: 3rem; }
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
 
 /* Mobile friendly tweaks */
 @media (max-width: 640px) {
