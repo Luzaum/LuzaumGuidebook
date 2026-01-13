@@ -147,7 +147,7 @@ function checkSampleType(po2, temp) {
         emoji = '❓';
     }
     if (temp) {
-         message += `<br><small class="text-gray-900">Nota: A análise assume que os valores foram corrigidos para a temperatura do paciente de ${temp}°C.</small>`;
+         message += `<br><small class="text-muted-foreground">Nota: A análise assume que os valores foram corrigidos para a temperatura do paciente de ${temp}°C.</small>`;
     }
     return { probableType, message, emoji };
 }
@@ -471,26 +471,24 @@ const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
     return (
         <>
         <style>{`
-            :root { --main-bg: #f9fafb; }
-            body { font-family: 'Inter', sans-serif; background-color: var(--main-bg); }
             .result-card, .quiz-feedback { transition: all 0.3s ease-in-out; transform: translateY(20px); opacity: 0; }
             .result-card.visible, .quiz-feedback.visible { transform: translateY(0); opacity: 1; }
             .input-group label { transition: all 0.2s ease; }
-            .input-group input:focus + label, .input-group input:not(:placeholder-shown) + label { transform: translateY(-1.5rem) scale(0.8); color: #111827; }
-            .input-group input:not(:placeholder-shown) + label { color: #111827; }
-            .tab-button { transition: all 0.3s; color: #111827; }
-            .tab-button.active { border-color: #4f46e5; color: #111827; background-color: #eef2ff; }
-            .quiz-option.selected { background-color: #dbeafe; border-color: #3b82f6; }
-            .quiz-option.correct { background-color: #dcfce7 !important; border-color: #22c55e !important; }
-            .quiz-option.incorrect { background-color: #fee2e2 !important; border-color: #ef4444 !important; }
+            .input-group input:focus + label, .input-group input:not(:placeholder-shown) + label { transform: translateY(-1.5rem) scale(0.8); color: hsl(var(--foreground)); }
+            .input-group input:not(:placeholder-shown) + label { color: hsl(var(--foreground)); }
+            .tab-button { transition: all 0.3s; }
+            .tab-button.active { border-color: hsl(var(--primary)); color: hsl(var(--foreground)); background-color: hsl(var(--background)); }
+            .quiz-option.selected { background-color: hsl(var(--primary) / 0.1); border-color: hsl(var(--primary)); }
+            .quiz-option.correct { background-color: hsl(142 76% 36% / 0.1) !important; border-color: hsl(142 76% 36%) !important; }
+            .quiz-option.incorrect { background-color: hsl(0 84% 60% / 0.1) !important; border-color: hsl(0 84% 60%) !important; }
             .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; }
             .modal-overlay.visible { opacity: 1; visibility: visible; }
-            .modal-content { background: white; padding: 2rem; border-radius: 1rem; max-width: 90%; width: 600px; max-height: 90vh; overflow-y: auto; transform: scale(0.9); transition: transform 0.3s; }
-            .flowchart-box { border: 1px solid #9ca3af; padding: 0.5rem; border-radius: 0.5rem; background-color: #f3f4f6; text-align: center; margin: 0.5rem 0; color: #111827; }
-            .flowchart-arrow { text-align: center; font-size: 1.5rem; color: #111827; }
+            .modal-content { background: hsl(var(--card)); padding: 2rem; border-radius: 1rem; max-width: 90%; width: 600px; max-height: 90vh; overflow-y: auto; transform: scale(0.9); transition: transform 0.3s; }
+            .flowchart-box { border: 1px solid hsl(var(--border)); padding: 0.5rem; border-radius: 0.5rem; background-color: hsl(var(--surface)); text-align: center; margin: 0.5rem 0; color: hsl(var(--foreground)); }
+            .flowchart-arrow { text-align: center; font-size: 1.5rem; color: hsl(var(--foreground)); }
         `}</style>
         <div className="container mx-auto p-4 md:p-8 max-w-4xl">
-             <button onClick={onBack} className="mb-6 bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-lg hover:bg-green-700 transition-transform transform hover:scale-105">
+             <button onClick={onBack} className="mb-6 bg-primary text-primary-foreground font-bold py-2 px-4 rounded-lg shadow-lg hover:bg-primary/90 transition-transform transform hover:scale-105">
                 &larr; Voltar para a Lista
             </button>
             <header className="text-center mb-8">
@@ -499,33 +497,33 @@ const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
                     alt="Ícone do aplicativo de Hemogasometria Veterinária, com um cão, uma gota de sangue e uma fita de DNA"
                     className="mx-auto mb-4"
                 />
-                <h1 className="text-4xl font-bold text-gray-900 mb-2">HemoGaso Vet 🩸</h1>
-                <p className="text-lg text-gray-900">Análise Inteligente de Hemogasometria para Cães e Gatos</p>
+                <h1 className="text-4xl font-bold text-foreground mb-2">HemoGaso Vet 🩸</h1>
+                <p className="text-lg text-muted-foreground">Análise Inteligente de Hemogasometria para Cães e Gatos</p>
             </header>
             
-            <div className="mb-6 border-b border-gray-200">
+            <div className="mb-6 border-b border-border">
                  <nav className="flex space-x-4" aria-label="Tabs">
-                    <button className={`tab-button font-medium py-3 px-4 border-b-2 border-transparent hover:border-indigo-600 ${activeTab === 'analyzer' ? 'active' : ''}`} onClick={() => setActiveTab('analyzer')}>Analisador Clínico</button>
-                    <button className={`tab-button font-medium py-3 px-4 border-b-2 border-transparent hover:border-indigo-600 ${activeTab === 'quiz' ? 'active' : ''}`} onClick={() => setActiveTab('quiz')}>🧠 Modo Quiz</button>
+                    <button className={`tab-button font-medium py-3 px-4 border-b-2 border-transparent transition-colors ${activeTab === 'analyzer' ? 'border-primary bg-background text-foreground' : 'text-muted-foreground hover:text-foreground hover:border-primary/50'}`} onClick={() => setActiveTab('analyzer')}>Analisador Clínico</button>
+                    <button className={`tab-button font-medium py-3 px-4 border-b-2 border-transparent transition-colors ${activeTab === 'quiz' ? 'border-primary bg-background text-foreground' : 'text-muted-foreground hover:text-foreground hover:border-primary/50'}`} onClick={() => setActiveTab('quiz')}>🧠 Modo Quiz</button>
                  </nav>
             </div>
             
             {activeTab === 'analyzer' && (
                 <div>
-                    <main className="bg-white p-6 rounded-2xl shadow-lg">
+                    <main className="bg-card p-6 rounded-2xl shadow-lg">
                         <form onSubmit={handleAnalyzerSubmit} className="space-y-6">
                             {/* Input fields */}
                              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
-                                    <label htmlFor="species" className="block text-sm font-medium text-gray-900 mb-2">Espécie 🐾</label>
-                                    <select id="species" value={inputs.species} onChange={handleInputChange} className="w-full p-3 bg-gray-100 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition text-gray-900">
+                                    <label htmlFor="species" className="block text-sm font-medium text-foreground mb-2">Espécie 🐾</label>
+                                    <select id="species" value={inputs.species} onChange={handleInputChange} className="w-full p-3 bg-background border-2 border-input rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition text-foreground placeholder:text-muted-foreground">
                                         <option value="dog">Cão</option>
                                         <option value="cat">Gato</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <label htmlFor="declaredSampleType" className="block text-sm font-medium text-gray-900 mb-2">Tipo de Amostra (declarado) 💉</label>
-                                    <select id="declaredSampleType" value={inputs.declaredSampleType} onChange={handleInputChange} className="w-full p-3 bg-gray-100 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition text-gray-900">
+                                    <label htmlFor="declaredSampleType" className="block text-sm font-medium text-foreground mb-2">Tipo de Amostra (declarado) 💉</label>
+                                    <select id="declaredSampleType" value={inputs.declaredSampleType} onChange={handleInputChange} className="w-full p-3 bg-background border-2 border-input rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition text-foreground placeholder:text-muted-foreground">
                                         <option value="arterial">Arterial</option>
                                         <option value="venous">Venosa</option>
                                     </select>
@@ -533,22 +531,22 @@ const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
                             </div>
                             
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-4">
-                                <div className="relative input-group"><input type="number" step="0.01" id="ph" placeholder=" " value={inputs.ph} onChange={handleInputChange} className="w-full p-3 bg-gray-100 border-2 border-gray-200 rounded-lg peer focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition pt-6 text-gray-900" required /><label htmlFor="ph" className="absolute left-3 top-4 text-gray-900 pointer-events-none">pH 🧪</label></div>
-                                <div className="relative input-group"><input type="number" step="0.1" id="pco2" placeholder=" " value={inputs.pco2} onChange={handleInputChange} className="w-full p-3 bg-gray-100 border-2 border-gray-200 rounded-lg peer focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition pt-6 text-gray-900" required /><label htmlFor="pco2" className="absolute left-3 top-4 text-gray-900 pointer-events-none">pCO₂ (mmHg) 💨</label></div>
-                                <div className="relative input-group"><input type="number" step="0.1" id="hco3" placeholder=" " value={inputs.hco3} onChange={handleInputChange} className="w-full p-3 bg-gray-100 border-2 border-gray-200 rounded-lg peer focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition pt-6 text-gray-900" required /><label htmlFor="hco3" className="absolute left-3 top-4 text-gray-900 pointer-events-none">HCO₃⁻ (mEq/L) 🛡️</label></div>
-                                <div className="relative input-group"><input type="number" step="0.1" id="po2" placeholder=" " value={inputs.po2} onChange={handleInputChange} className="w-full p-3 bg-gray-100 border-2 border-gray-200 rounded-lg peer focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition pt-6 text-gray-900" required /><label htmlFor="po2" className="absolute left-3 top-4 text-gray-900 pointer-events-none">pO₂ (mmHg) 😮‍💨</label></div>
-                                <div className="relative input-group"><input type="number" step="0.1" id="temp" placeholder=" " value={inputs.temp} onChange={handleInputChange} className="w-full p-3 bg-gray-100 border-2 border-gray-200 rounded-lg peer focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition pt-6 text-gray-900" required /><label htmlFor="temp" className="absolute left-3 top-4 text-gray-900 pointer-events-none">Temperatura (°C) 🌡️</label></div>
-                                <div className="relative input-group"><input type="number" step="1" id="fio2" placeholder=" " value={inputs.fio2} onChange={handleInputChange} className="w-full p-3 bg-gray-100 border-2 border-gray-200 rounded-lg peer focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition pt-6 text-gray-900" required /><label htmlFor="fio2" className="absolute left-3 top-4 text-gray-900 pointer-events-none">FiO₂ (%) 🌬️</label></div>
+                                <div className="relative input-group"><input type="number" step="0.01" id="ph" placeholder=" " value={inputs.ph} onChange={handleInputChange} className="w-full p-3 bg-background border-2 border-input rounded-lg peer focus:ring-2 focus:ring-primary focus:border-primary transition pt-6 text-foreground placeholder:text-muted-foreground" required /><label htmlFor="ph" className="absolute left-3 top-4 text-foreground pointer-events-none">pH 🧪</label></div>
+                                <div className="relative input-group"><input type="number" step="0.1" id="pco2" placeholder=" " value={inputs.pco2} onChange={handleInputChange} className="w-full p-3 bg-background border-2 border-input rounded-lg peer focus:ring-2 focus:ring-primary focus:border-primary transition pt-6 text-foreground placeholder:text-muted-foreground" required /><label htmlFor="pco2" className="absolute left-3 top-4 text-foreground pointer-events-none">pCO₂ (mmHg) 💨</label></div>
+                                <div className="relative input-group"><input type="number" step="0.1" id="hco3" placeholder=" " value={inputs.hco3} onChange={handleInputChange} className="w-full p-3 bg-background border-2 border-input rounded-lg peer focus:ring-2 focus:ring-primary focus:border-primary transition pt-6 text-foreground placeholder:text-muted-foreground" required /><label htmlFor="hco3" className="absolute left-3 top-4 text-foreground pointer-events-none">HCO₃⁻ (mEq/L) 🛡️</label></div>
+                                <div className="relative input-group"><input type="number" step="0.1" id="po2" placeholder=" " value={inputs.po2} onChange={handleInputChange} className="w-full p-3 bg-background border-2 border-input rounded-lg peer focus:ring-2 focus:ring-primary focus:border-primary transition pt-6 text-foreground placeholder:text-muted-foreground" required /><label htmlFor="po2" className="absolute left-3 top-4 text-foreground pointer-events-none">pO₂ (mmHg) 😮‍💨</label></div>
+                                <div className="relative input-group"><input type="number" step="0.1" id="temp" placeholder=" " value={inputs.temp} onChange={handleInputChange} className="w-full p-3 bg-background border-2 border-input rounded-lg peer focus:ring-2 focus:ring-primary focus:border-primary transition pt-6 text-foreground placeholder:text-muted-foreground" required /><label htmlFor="temp" className="absolute left-3 top-4 text-foreground pointer-events-none">Temperatura (°C) 🌡️</label></div>
+                                <div className="relative input-group"><input type="number" step="1" id="fio2" placeholder=" " value={inputs.fio2} onChange={handleInputChange} className="w-full p-3 bg-background border-2 border-input rounded-lg peer focus:ring-2 focus:ring-primary focus:border-primary transition pt-6 text-foreground placeholder:text-muted-foreground" required /><label htmlFor="fio2" className="absolute left-3 top-4 text-foreground pointer-events-none">FiO₂ (%) 🌬️</label></div>
                             </div>
 
                              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-4">
-                                 <div className="relative input-group"><input type="number" step="0.1" id="na" placeholder=" " value={inputs.na} onChange={handleInputChange} className="w-full p-3 bg-gray-100 border-2 border-gray-200 rounded-lg peer focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition pt-6 text-gray-900" /><label htmlFor="na" className="absolute left-3 top-4 text-gray-900 pointer-events-none">Na⁺ (mEq/L) 🧂</label></div>
-                                <div className="relative input-group"><input type="number" step="0.1" id="k" placeholder=" " value={inputs.k} onChange={handleInputChange} className="w-full p-3 bg-gray-100 border-2 border-gray-200 rounded-lg peer focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition pt-6 text-gray-900" /><label htmlFor="k" className="absolute left-3 top-4 text-gray-900 pointer-events-none">K⁺ (mEq/L) 🍌</label></div>
-                                <div className="relative input-group"><input type="number" step="0.1" id="cl" placeholder=" " value={inputs.cl} onChange={handleInputChange} className="w-full p-3 bg-gray-100 border-2 border-gray-200 rounded-lg peer focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition pt-6 text-gray-900" /><label htmlFor="cl" className="absolute left-3 top-4 text-gray-900 pointer-events-none">Cl⁻ (mEq/L)</label></div>
-                                <div className="relative input-group"><input type="number" step="0.1" id="albumin" placeholder=" " value={inputs.albumin} onChange={handleInputChange} className="w-full p-3 bg-gray-100 border-2 border-gray-200 rounded-lg peer focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition pt-6 text-gray-900" /><label htmlFor="albumin" className="absolute left-3 top-4 text-gray-900 pointer-events-none">Albumina (g/dL)</label></div>
+                                 <div className="relative input-group"><input type="number" step="0.1" id="na" placeholder=" " value={inputs.na} onChange={handleInputChange} className="w-full p-3 bg-background border-2 border-input rounded-lg peer focus:ring-2 focus:ring-primary focus:border-primary transition pt-6 text-foreground placeholder:text-muted-foreground" /><label htmlFor="na" className="absolute left-3 top-4 text-foreground pointer-events-none">Na⁺ (mEq/L) 🧂</label></div>
+                                <div className="relative input-group"><input type="number" step="0.1" id="k" placeholder=" " value={inputs.k} onChange={handleInputChange} className="w-full p-3 bg-background border-2 border-input rounded-lg peer focus:ring-2 focus:ring-primary focus:border-primary transition pt-6 text-foreground placeholder:text-muted-foreground" /><label htmlFor="k" className="absolute left-3 top-4 text-foreground pointer-events-none">K⁺ (mEq/L) 🍌</label></div>
+                                <div className="relative input-group"><input type="number" step="0.1" id="cl" placeholder=" " value={inputs.cl} onChange={handleInputChange} className="w-full p-3 bg-background border-2 border-input rounded-lg peer focus:ring-2 focus:ring-primary focus:border-primary transition pt-6 text-foreground placeholder:text-muted-foreground" /><label htmlFor="cl" className="absolute left-3 top-4 text-foreground pointer-events-none">Cl⁻ (mEq/L)</label></div>
+                                <div className="relative input-group"><input type="number" step="0.1" id="albumin" placeholder=" " value={inputs.albumin} onChange={handleInputChange} className="w-full p-3 bg-background border-2 border-input rounded-lg peer focus:ring-2 focus:ring-primary focus:border-primary transition pt-6 text-foreground placeholder:text-muted-foreground" /><label htmlFor="albumin" className="absolute left-3 top-4 text-foreground pointer-events-none">Albumina (g/dL)</label></div>
                             </div>
                             <div className="flex justify-center pt-4">
-                                <button type="submit" className="bg-indigo-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-300 transform hover:scale-105 transition-transform">Analisar Resultados</button>
+                                <button type="submit" className="bg-primary text-primary-foreground font-bold py-3 px-8 rounded-lg hover:bg-primary/90 focus:outline-none focus:ring-4 focus:ring-primary/30 transform hover:scale-105 transition-transform">Analisar Resultados</button>
                             </div>
                         </form>
                     </main>
@@ -557,9 +555,9 @@ const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
                         <div className="mt-8 space-y-4">
                             {alerts.length > 0 && (
                                 <div className="mt-8 space-y-3">
-                                    <h2 className="text-2xl font-bold text-gray-900 mb-4">Alertas Clínicos</h2>
+                                    <h2 className="text-2xl font-bold text-foreground mb-4">Alertas Clínicos</h2>
                                     {alerts.map((alert, index) => {
-                                        const colors = { critical: 'bg-red-100 border-red-500 text-red-900', warning: 'bg-yellow-100 border-yellow-500 text-yellow-900' };
+                                        const colors = { critical: 'bg-destructive/10 border-destructive text-destructive dark:bg-destructive/20 dark:text-destructive', warning: 'bg-yellow-100 dark:bg-yellow-900/20 border-yellow-500 dark:border-yellow-600 text-yellow-900 dark:text-yellow-300' };
                                         return (
                                             <div key={index} className={`p-4 border-l-4 rounded-r-lg ${colors[alert.type]} flex items-center justify-between result-card ${showResults ? 'visible' : ''}`} style={{ transitionDelay: `${index * 100}ms`}} role="alert">
                                                 <div>
@@ -574,19 +572,19 @@ const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
                             )}
                              <ResultCard title="1. Verificação da Amostra" content={analysisResult.sampleCheck.message} emoji={analysisResult.sampleCheck.emoji} dataKey="sampleType" openModal={openModal} delay={0} />
                              <ResultCard title="2. Status do pH" content={`pH ${analysisResult.phStatus.state}`} emoji={analysisResult.phStatus.emoji} dataKey="diagnosis" openModal={openModal} delay={100} />
-                             <ResultCard title="3. Distúrbio Primário" content={`${analysisResult.primaryDisorder.disorder} <br/><small class="text-gray-900">Causa: ${analysisResult.primaryDisorder.cause}</small>`} emoji={analysisResult.primaryDisorder.emoji} dataKey="diagnosis" openModal={openModal} delay={200} />
+                             <ResultCard title="3. Distúrbio Primário" content={`${analysisResult.primaryDisorder.disorder} <br/><small class="text-muted-foreground">Causa: ${analysisResult.primaryDisorder.cause}</small>`} emoji={analysisResult.primaryDisorder.emoji} dataKey="diagnosis" openModal={openModal} delay={200} />
                              <ResultCard title="4. Análise Ventilatoria" content={analysisResult.ventilationStatus.state} emoji={analysisResult.ventilationStatus.emoji} dataKey="ventilation" openModal={openModal} delay={300} />
-                             <ResultCard title="5. Avaliação da Compensação (Cães)" content={`Status: ${analysisResult.compensation.status}<br><small class="text-gray-900">Esperado: ${JSON.stringify(analysisResult.compensation.expected)}</small>${analysisResult.compensation.mixedDisorder ? `<br><strong class="text-gray-900">Distúrbio Misto Sugerido: ${analysisResult.compensation.mixedDisorder}</strong>` : ''}`} emoji='⚖️' dataKey="compensation" openModal={openModal} delay={400} />
+                             <ResultCard title="5. Avaliação da Compensação (Cães)" content={`Status: ${analysisResult.compensation.status}<br><small class="text-muted-foreground">Esperado: ${JSON.stringify(analysisResult.compensation.expected)}</small>${analysisResult.compensation.mixedDisorder ? `<br><strong class="text-foreground">Distúrbio Misto Sugerido: ${analysisResult.compensation.mixedDisorder}</strong>` : ''}`} emoji='⚖️' dataKey="compensation" openModal={openModal} delay={400} />
                              <ResultCard title="6. Avaliação da Oxigenação" content={analysisResult.oxygenation.content} emoji={analysisResult.oxygenation.emoji} dataKey="oxygenation" openModal={openModal} delay={500} />
                              <ElectrolyteCard electrolyteStatus={analysisResult.electrolyteStatus} openModal={openModal} delay={600} />
                              <ResultCard title="8. Anion Gap (AG)" content={`AG: ${analysisResult.anionGap.value} mEq/L<br>AG Corrigido: ${analysisResult.anionGap.correctedValue} mEq/L<br><strong>Interpretação: ${analysisResult.anionGap.interpretation}</strong>`} emoji=' Gap ' dataKey="anionGap" openModal={openModal} delay={700} />
                              <ResultCard title="9. Principais Diagnósticos Diferenciais" content={`<ul>${analysisResult.differentials.map(d => `<li class="ml-4 list-disc">${d}</li>`).join('')}</ul>`} emoji='🩺' dataKey="differentials" openModal={openModal} delay={800} />
                         </div>
                     )}
-                     <div className="mt-8 text-gray-900">
-                        <details className="bg-gray-100 border border-gray-200 rounded-lg">
-                            <summary className="font-semibold p-3 cursor-pointer hover:bg-gray-200 rounded-t-lg">📖 Guia de Boas Práticas de Coleta</summary>
-                            <div className="p-4 border-t border-gray-300 space-y-3 text-sm">
+                     <div className="mt-8 text-foreground">
+                        <details className="bg-card border border-border rounded-lg">
+                            <summary className="font-semibold p-3 cursor-pointer hover:bg-surface rounded-t-lg text-foreground">📖 Guia de Boas Práticas de Coleta</summary>
+                            <div className="p-4 border-t border-border space-y-3 text-sm text-muted-foreground">
                                 <p><strong>Origem da Amostra:</strong> Amostra arterial é essencial para avaliar oxigenação. A venosa é útil para o componente metabólico.</p>
                                 <p><strong>Bolhas de Ar:</strong> Remova bolhas da seringa imediatamente. Elas alteram drasticamente pCO₂ e pO₂.</p>
                                 <p><strong>Tempo de Análise:</strong> Analise em até 5 minutos. Se não, armazene em gelo (4°C) por no máximo 4 horas.</p>
@@ -601,16 +599,16 @@ const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
             )}
             
             {activeTab === 'quiz' && quizCase && (
-                <div className="bg-white p-6 rounded-2xl shadow-lg">
-                    <div className="flex justify-between items-center mb-6 text-gray-900">
-                        <h2 className="text-2xl font-bold">Caso Clínico Interativo</h2>
-                        <button onClick={handleNewQuizCase} className="bg-indigo-100 font-semibold py-2 px-4 rounded-lg hover:bg-indigo-200 transition">Gerar Novo Caso</button>
+                <div className="bg-card p-6 rounded-2xl shadow-lg">
+                    <div className="flex justify-between items-center mb-6 text-foreground">
+                        <h2 className="text-2xl font-bold text-foreground">Caso Clínico Interativo</h2>
+                        <button onClick={handleNewQuizCase} className="bg-primary/10 text-primary font-semibold py-2 px-4 rounded-lg hover:bg-primary/20 transition">Gerar Novo Caso</button>
                     </div>
-                    <div className="bg-gray-100 p-4 rounded-lg mb-6">
-                        <p className="text-gray-900 font-bold"><strong>Espécie:</strong> {quizCase.inputs.species === 'dog' ? 'Cão 🐕' : 'Gato 🐈'}</p>
+                    <div className="bg-surface p-4 rounded-lg mb-6">
+                        <p className="text-foreground font-bold"><strong>Espécie:</strong> {quizCase.inputs.species === 'dog' ? 'Cão 🐕' : 'Gato 🐈'}</p>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-2 text-center">
                             {numericQuizKeys.map(key => (
-                                <div key={key} className="bg-indigo-50 p-2 rounded text-gray-900 font-medium">
+                                <div key={key} className="bg-primary/10 p-2 rounded text-foreground font-medium">
                                     <strong>{key.toUpperCase()}:</strong> {(quizCase.inputs[key] as number).toFixed(key === 'ph' ? 2 : 1)}
                                 </div>
                             ))}
@@ -634,7 +632,7 @@ const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
                              return null;
                         })}
                         <div className="flex justify-center pt-6">
-                            <button type="submit" className="bg-green-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300 transform hover:scale-105 transition-transform">Corrigir Exercício</button>
+                            <button type="submit" className="bg-primary text-primary-foreground font-bold py-3 px-8 rounded-lg hover:bg-primary/90 focus:outline-none focus:ring-4 focus:ring-primary/30 transform hover:scale-105 transition-transform">Corrigir Exercício</button>
                         </div>
                     </form>
                 </div>
@@ -642,12 +640,12 @@ const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
 
             {modalData && (
                 <div className="modal-overlay visible" onClick={() => setModalData(null)}>
-                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                    <div className="modal-content bg-card" onClick={(e) => e.stopPropagation()}>
                         <div className="flex justify-between items-center mb-4">
-                            <h3 className="text-2xl font-bold text-gray-900">{modalData.title}</h3>
-                            <button onClick={() => setModalData(null)} className="text-gray-900 hover:text-black text-2xl">&times;</button>
+                            <h3 className="text-2xl font-bold text-foreground">{modalData.title}</h3>
+                            <button onClick={() => setModalData(null)} className="text-foreground hover:text-foreground/80 text-2xl">&times;</button>
                         </div>
-                        <div className="text-gray-900 space-y-4" dangerouslySetInnerHTML={{ __html: modalData.content }} />
+                        <div className="text-foreground space-y-4" dangerouslySetInnerHTML={{ __html: modalData.content }} />
                     </div>
                 </div>
             )}
@@ -658,14 +656,14 @@ const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
 
 // --- SUB-COMPONENTS ---
 const ResultCard = ({ title, content, emoji, dataKey, openModal, delay }) => (
-    <div className={`result-card bg-white p-5 rounded-xl shadow-md border border-gray-200 flex items-start space-x-4 visible`} style={{transitionDelay: `${delay}ms`}}>
+    <div className={`result-card bg-card p-5 rounded-xl shadow-md border border-border flex items-start space-x-4 visible`} style={{transitionDelay: `${delay}ms`}}>
         <div className="text-3xl">{emoji}</div>
         <div className="flex-grow">
             <div className="flex justify-between items-center">
-                <h3 className="font-bold text-lg text-gray-900">{title}</h3>
-                {dataKey && <button onClick={() => openModal(dataKey)} className="text-xl">❓</button>}
+                <h3 className="font-bold text-lg text-foreground">{title}</h3>
+                {dataKey && <button onClick={() => openModal(dataKey)} className="text-xl text-muted-foreground hover:text-foreground">❓</button>}
             </div>
-            <div className="text-gray-900 mt-1" dangerouslySetInnerHTML={{ __html: content }} />
+            <div className="text-foreground mt-1" dangerouslySetInnerHTML={{ __html: content }} />
         </div>
     </div>
 );
@@ -673,16 +671,16 @@ const ResultCard = ({ title, content, emoji, dataKey, openModal, delay }) => (
 const ElectrolyteCard = ({ electrolyteStatus, openModal, delay }) => {
     if (electrolyteStatus.length === 0) return null;
     return (
-        <div className={`result-card bg-white p-5 rounded-xl shadow-md border border-gray-200 flex items-start space-x-4 visible`} style={{transitionDelay: `${delay}ms`}}>
+        <div className={`result-card bg-card p-5 rounded-xl shadow-md border border-border flex items-start space-x-4 visible`} style={{transitionDelay: `${delay}ms`}}>
             <div className="text-3xl">⚡</div>
             <div className="flex-grow">
-                <h3 className="font-bold text-lg text-gray-900">7. Análise de Eletrólitos e Albumina</h3>
+                <h3 className="font-bold text-lg text-foreground">7. Análise de Eletrólitos e Albumina</h3>
                 {electrolyteStatus.map(e => {
-                    const colorClass = e.status === 'Normal' ? 'text-green-700' : 'text-red-700';
+                    const colorClass = e.status === 'Normal' ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400';
                     return (
-                        <div key={e.name} className="py-1 flex items-center justify-between text-gray-900">
-                            <span><strong>{e.name}:</strong> {e.value} {e.unit} <span className={`${colorClass} font-bold`}>({e.status})</span> <small>Ref: {e.ref}</small></span>
-                            <button onClick={() => openModal(e.status.toLowerCase())} className="ml-2 text-xl">❓</button>
+                        <div key={e.name} className="py-1 flex items-center justify-between text-foreground">
+                            <span><strong>{e.name}:</strong> {e.value} {e.unit} <span className={`${colorClass} font-bold`}>({e.status})</span> <small className="text-muted-foreground">Ref: {e.ref}</small></span>
+                            <button onClick={() => openModal(e.status.toLowerCase())} className="ml-2 text-xl text-muted-foreground hover:text-foreground">❓</button>
                         </div>
                     );
                 })}
@@ -715,10 +713,10 @@ const QuizQuestion = ({ qKey, text, options, quizCase, userAnswers, setUserAnswe
 
     return (
         <div>
-            <p className="font-semibold text-gray-900 mb-3">{text}</p>
+            <p className="font-semibold text-foreground mb-3">{text}</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {options.map(opt => {
-                    let classes = 'quiz-option text-gray-900 border-2 border-gray-300 p-3 rounded-lg cursor-pointer hover:bg-gray-100';
+                    let classes = 'quiz-option text-foreground border-2 border-border p-3 rounded-lg cursor-pointer hover:bg-surface';
                     if (quizSubmitted) {
                         if (opt === correctAnswer) classes += ' correct';
                         if (opt === selectedValue && !isCorrect) classes += ' incorrect';
@@ -730,7 +728,7 @@ const QuizQuestion = ({ qKey, text, options, quizCase, userAnswers, setUserAnswe
             </div>
             {quizSubmitted && (
                  <div className="mt-2">
-                    <div className={`quiz-feedback visible p-3 rounded-lg flex items-center justify-between text-gray-900 ${isCorrect ? 'bg-green-50' : 'bg-red-50'}`}>
+                    <div className={`quiz-feedback visible p-3 rounded-lg flex items-center justify-between text-foreground ${isCorrect ? 'bg-green-50 dark:bg-green-900/20' : 'bg-red-50 dark:bg-red-900/20'}`}>
                         <span dangerouslySetInnerHTML={{ __html: `${isCorrect ? '✔️ <strong>Correto!</strong>' : '❌ <strong>Incorreto.</strong>'} ${getExplanation()}` }} />
                         {explanationData[qKey] && <button onClick={() => openModal(qKey)} className="ml-2 text-xl">❓</button>}
                     </div>

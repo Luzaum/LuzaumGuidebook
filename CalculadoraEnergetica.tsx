@@ -192,7 +192,7 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
     // --- HELPER COMPONENTS ---
     const HelpIcon = ({ term, ...props }) => (
         <span
-            className="inline-flex items-center justify-center w-5 h-5 ml-2 text-sm font-bold text-white bg-slate-400 rounded-full cursor-pointer transition-colors hover:bg-slate-600 shrink-0"
+            className="inline-flex items-center justify-center w-5 h-5 ml-2 text-sm font-bold text-primary-foreground bg-muted-foreground rounded-full cursor-pointer transition-colors hover:bg-foreground shrink-0"
             role="button"
             aria-label="Abrir guia"
             onClick={(e) => { e.stopPropagation(); setModalContent(knowledgeBase[term]); }}
@@ -204,9 +204,9 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
         if (!content) return null;
         return (
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50" onClick={onClose}>
-                <div className="bg-white rounded-lg shadow-xl max-w-lg w-full p-6" onClick={(e) => e.stopPropagation()}>
-                    <h3 className="text-xl font-bold text-slate-800 mb-4">{content.title}</h3>
-                    <div className="text-slate-600 space-y-4" dangerouslySetInnerHTML={{ __html: content.content }} />
+                <div className="bg-card text-card-foreground border border-border rounded-lg shadow-xl max-w-lg w-full p-6" onClick={(e) => e.stopPropagation()}>
+                    <h3 className="text-xl font-bold text-foreground mb-4">{content.title}</h3>
+                    <div className="text-muted-foreground space-y-4" dangerouslySetInnerHTML={{ __html: content.content }} />
                     <button onClick={onClose} className="mt-6 w-full py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition">Fechar</button>
                 </div>
             </div>
@@ -363,52 +363,51 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
         <>
             <style>{`
                 .nav-button { transition: all 0.2s ease; }
-                .nav-button.active { background-color: #4f46e5; color: white; font-weight: 600; }
                 .result-card, .progression-section, #food-precaution-alert { transition: all 0.3s ease-in-out; }
                 .result-card.show, .progression-section.show, #food-precaution-alert.show { transform: scale(1); opacity: 1; }
                 .goal-radio:checked + label {
-                    border-color: #4f46e5;
-                    background-color: #eef2ff;
+                    border-color: hsl(var(--primary));
+                    background-color: hsl(var(--primary) / 0.1);
                     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
                 }
                 .input-field {
-                    background-color: #fff;
-                    border: 1px solid #d1d5db;
-                    color: #111827;
+                    background-color: hsl(var(--background));
+                    border: 1px solid hsl(var(--input));
+                    color: hsl(var(--foreground));
                     padding: 0.75rem;
                     border-radius: 0.5rem;
                     width: 100%;
                 }
                 .input-field::placeholder {
-                    color: #9ca3af;
+                    color: hsl(var(--muted-foreground));
                 }
                 /* Custom Scrollbar for Indications Tab */
                 #food-catalog::-webkit-scrollbar {
                     width: 10px;
                 }
                 #food-catalog::-webkit-scrollbar-track {
-                    background-color: #f1f5f9; /* slate-100 */
+                    background-color: hsl(var(--muted));
                 }
                 #food-catalog::-webkit-scrollbar-thumb {
-                    background-color: #ffffff;
+                    background-color: hsl(var(--border));
                     border-radius: 5px;
                 }
                 /* For Firefox */
                 #food-catalog {
                     scrollbar-width: thin;
-                    scrollbar-color: #ffffff #f1f5f9;
+                    scrollbar-color: hsl(var(--border)) hsl(var(--muted));
                 }
             `}</style>
             <Modal content={modalContent} onClose={() => setModalContent(null)} />
             
             {idealWeightModalOpenFor && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-60" onClick={() => setIdealWeightModalOpenFor(null)}>
-                    <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full p-6 text-slate-800" onClick={(e) => e.stopPropagation()}>
+                    <div className="bg-card text-card-foreground border border-border rounded-lg shadow-xl max-w-2xl w-full p-6" onClick={(e) => e.stopPropagation()}>
                         <h2 className="text-2xl font-bold mb-4">
                             Guia de Peso Ideal - {idealWeightModalOpenFor === 'dog' ? 'Cães' : 'Gatos'}
                         </h2>
                         <div className="max-h-[70vh] overflow-y-auto pr-4">
-                            <h3 className="text-xl font-semibold text-slate-700 mb-2">
+                            <h3 className="text-xl font-semibold text-foreground mb-2">
                                 Escore de Condição Corporal para {idealWeightModalOpenFor === 'dog' ? 'Cães' : 'Gatos'}
                             </h3>
                             <img
@@ -420,32 +419,32 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                 alt={`Tabela de escore de condição corporal para ${idealWeightModalOpenFor === 'dog' ? 'cães' : 'gatos'}, mostrando os escores de 1 a 9`}
                                 className="w-full rounded-lg mb-4 border"
                             />
-                            <h3 className="text-xl font-semibold text-slate-700 mt-6 mb-2">
+                            <h3 className="text-xl font-semibold text-foreground mt-6 mb-2">
                                 Como Estimar o Peso Ideal?
                             </h3>
-                            <p className="text-slate-600 mb-4">
+                            <p className="text-muted-foreground mb-4">
                                 Use a tabela acima para encontrar o Escore de Condição Corporal (ECC) do seu {idealWeightModalOpenFor === 'dog' ? 'cão' : 'gato'}. Cada ponto acima do escore 5 (Ideal) representa cerca de 10-15% de excesso de peso. Informe os dados abaixo para estimar o peso ideal.
                             </p>
-                            <div className="calculadora-container bg-slate-50 p-4 rounded-lg border border-slate-200">
+                            <div className="calculadora-container bg-muted p-4 rounded-lg border border-border">
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     <div>
-                                        <label htmlFor="iwc-weight" className="block text-sm font-medium text-slate-700 mb-1">Peso Atual (kg)</label>
+                                        <label htmlFor="iwc-weight" className="block text-sm font-medium text-foreground mb-1">Peso Atual (kg)</label>
                                         <input
                                             type="number"
                                             id="iwc-weight"
                                             value={iwcInput.weight}
                                             onChange={(e) => setIwcInput(prev => ({ ...prev, weight: e.target.value }))}
                                             placeholder="Ex: 7.2"
-                                            className="w-full p-3 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400"
+                                            className="w-full p-3 bg-card border border-input rounded-lg text-foreground placeholder:text-muted-foreground"
                                         />
                                     </div>
                                     <div>
-                                        <label htmlFor="iwc-ecc" className="block text-sm font-medium text-slate-700 mb-1">Escore Corporal (ECC)</label>
+                                        <label htmlFor="iwc-ecc" className="block text-sm font-medium text-foreground mb-1">Escore Corporal (ECC)</label>
                                         <select
                                             id="iwc-ecc"
                                             value={iwcInput.ecc}
                                             onChange={(e) => setIwcInput(prev => ({ ...prev, ecc: e.target.value }))}
-                                            className="w-full p-2 border border-slate-300 rounded-md bg-white text-slate-900"
+                                            className="w-full p-2 border border-input rounded-md bg-card text-foreground"
                                         >
                                             <option value="6">ECC 6/9 (~13% acima)</option>
                                             <option value="7">ECC 7/9 (~25% acima)</option>
@@ -472,27 +471,27 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                 </button>
                                 {iwcResult && (
                                     <div
-                                        className="mt-4 text-center text-slate-700 bg-indigo-50 p-3 rounded-md"
+                                        className="mt-4 text-center text-foreground bg-primary/10 p-3 rounded-md"
                                         dangerouslySetInnerHTML={{ __html: iwcResult }}
                                     />
                                 )}
                             </div>
                         </div>
-                        <button onClick={() => setIdealWeightModalOpenFor(null)} className="mt-6 w-full py-2 bg-slate-600 text-white rounded-lg font-semibold hover:bg-slate-700 transition">
+                        <button onClick={() => setIdealWeightModalOpenFor(null)} className="mt-6 w-full py-2 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90 transition">
                             Fechar
                         </button>
                     </div>
                 </div>
             )}
             
-            <div className="w-full max-w-3xl mx-auto bg-white rounded-2xl shadow-lg p-4 md:p-8">
-                <button onClick={onBack} className="mb-6 bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-lg hover:bg-green-700 transition-transform transform hover:scale-105">
+            <div className="w-full max-w-3xl mx-auto bg-card text-card-foreground border border-border rounded-2xl shadow-lg p-4 md:p-8">
+                <button onClick={onBack} className="mb-6 bg-primary text-primary-foreground font-bold py-2 px-4 rounded-lg shadow-lg hover:bg-primary/90 transition-transform transform hover:scale-105">
                     &larr; Voltar para a Lista
                 </button>
-                <div className="flex justify-center mb-8 bg-slate-100 rounded-full p-1 border border-slate-200 text-sm md:text-base">
-                    <button onClick={() => handleTabSwitch('energia')} className={`nav-button w-1/3 py-2 rounded-full text-slate-700 ${activeTab === 'energia' && 'active'}`}>Energia</button>
-                    <button onClick={() => handleTabSwitch('racao')} className={`nav-button w-1/3 py-2 rounded-full text-slate-700 ${activeTab === 'racao' && 'active'}`}>Ração</button>
-                    <button onClick={() => handleTabSwitch('indicacoes')} className={`nav-button w-1/3 py-2 rounded-full text-slate-700 ${activeTab === 'indicacoes' && 'active'}`}>Indicações</button>
+                <div className="flex justify-center mb-8 bg-muted rounded-full p-1 border border-border text-sm md:text-base">
+                    <button onClick={() => handleTabSwitch('energia')} className={`nav-button w-1/3 py-2 rounded-full transition-colors ${activeTab === 'energia' ? 'bg-background text-foreground' : 'text-muted-foreground hover:text-foreground'}`}>Energia</button>
+                    <button onClick={() => handleTabSwitch('racao')} className={`nav-button w-1/3 py-2 rounded-full transition-colors ${activeTab === 'racao' ? 'bg-background text-foreground' : 'text-muted-foreground hover:text-foreground'}`}>Ração</button>
+                    <button onClick={() => handleTabSwitch('indicacoes')} className={`nav-button w-1/3 py-2 rounded-full transition-colors ${activeTab === 'indicacoes' ? 'bg-background text-foreground' : 'text-muted-foreground hover:text-foreground'}`}>Indicações</button>
                 </div>
 
                 {activeTab === 'energia' && (
@@ -503,23 +502,23 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                 alt="Logo do aplicativo de calculadora energética para cães e gatos, mostrando os animais ao lado de uma balança de precisão"
                                 className="mx-auto mb-4"
                             />
-                            <h1 className="text-2xl md:text-3xl font-bold text-slate-800">Cálculo de Energia</h1>
+                            <h1 className="text-2xl md:text-3xl font-bold text-foreground">Cálculo de Energia</h1>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                             <div>
-                                <label htmlFor="species" className="block text-sm font-medium text-slate-700 mb-2">Espécie</label>
-                                <select id="species" value={species} onChange={(e) => setSpecies(e.target.value)} className="w-full p-3 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition text-slate-900">
+                                <label htmlFor="species" className="block text-sm font-medium text-foreground mb-2">Espécie</label>
+                                <select id="species" value={species} onChange={(e) => setSpecies(e.target.value)} className="w-full p-3 bg-background border border-input rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition text-foreground placeholder:text-muted-foreground">
                                     <option value="dog">Cão 🐶</option>
                                     <option value="cat">Gato 🐱</option>
                                 </select>
                             </div>
                             <div>
-                                <label htmlFor="weight" className="block text-sm font-medium text-slate-700 mb-2">Peso Atual (kg)</label>
+                                <label htmlFor="weight" className="block text-sm font-medium text-foreground mb-2">Peso Atual (kg)</label>
                                 <input type="number" id="weight" placeholder="Ex: 15.5" value={weight} onChange={e => setWeight(e.target.value)} className="input-field" step="0.1" min="0.1"/>
                             </div>
                             <div>
-                                <label htmlFor="status" className="flex items-center text-sm font-medium text-slate-700 mb-2">Estado Fisiológico <HelpIcon term="status" /></label>
-                                <select id="status" value={status} onChange={e => setStatus(e.target.value)} className="w-full p-3 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition text-slate-900">
+                                <label htmlFor="status" className="flex items-center text-sm font-medium text-foreground mb-2">Estado Fisiológico <HelpIcon term="status" /></label>
+                                <select id="status" value={status} onChange={e => setStatus(e.target.value)} className="w-full p-3 bg-background border border-input rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition text-foreground placeholder:text-muted-foreground">
                                     {Object.keys(factors[species]).map(key => <option key={key} value={key}>{key}</option>)}
                                 </select>
                             </div>
@@ -535,7 +534,7 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                     <p className="text-2xl font-bold text-blue-800">{calculationResults?.rer.toFixed(1) || 0} <span className="text-lg font-medium">kcal/dia</span></p>
                                 </div>
                             </div>
-                            <div className="result-card bg-indigo-50 border-l-4 border-indigo-500 p-4 rounded-lg flex items-center justify-between">
+                            <div className="result-card bg-primary/10 border-l-4 border-indigo-500 p-4 rounded-lg flex items-center justify-between">
                                 <div>
                                     <h3 className="font-bold text-indigo-800">Fator (k)</h3>
                                     <p className="text-sm text-indigo-600">{calculationResults?.factorDesc || 'Multiplicador.'}</p>
@@ -553,23 +552,23 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
 
                         {isCritical && calculationResults && (
                             <div className="progression-section mt-8">
-                                <h2 className="text-xl font-bold text-slate-800 text-center mb-4">Plano de Progressão Alimentar</h2>
+                                <h2 className="text-xl font-bold text-foreground text-center mb-4">Plano de Progressão Alimentar</h2>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-                                        <h3 className="font-semibold text-slate-700 mb-3 text-center">Protocolo de 3 Dias</h3>
-                                        <ul className="space-y-2 text-sm text-slate-800">
-                                            <li className="flex justify-between p-2 bg-white rounded"><span>Dia 1 (33%):</span> <strong className="text-slate-900">{(calculationResults.rer * 0.33).toFixed(1)} kcal</strong></li>
-                                            <li className="flex justify-between p-2 bg-white rounded"><span>Dia 2 (66%):</span> <strong className="text-slate-900">{(calculationResults.rer * 0.66).toFixed(1)} kcal</strong></li>
-                                            <li className="flex justify-between p-2 bg-white rounded"><span>Dia 3 (100%):</span> <strong className="text-slate-900">{calculationResults.rer.toFixed(1)} kcal</strong></li>
+                                    <div className="bg-muted p-4 rounded-lg border border-border">
+                                        <h3 className="font-semibold text-foreground mb-3 text-center">Protocolo de 3 Dias</h3>
+                                        <ul className="space-y-2 text-sm text-foreground">
+                                            <li className="flex justify-between p-2 bg-card rounded"><span>Dia 1 (33%):</span> <strong className="text-foreground">{(calculationResults.rer * 0.33).toFixed(1)} kcal</strong></li>
+                                            <li className="flex justify-between p-2 bg-card rounded"><span>Dia 2 (66%):</span> <strong className="text-foreground">{(calculationResults.rer * 0.66).toFixed(1)} kcal</strong></li>
+                                            <li className="flex justify-between p-2 bg-card rounded"><span>Dia 3 (100%):</span> <strong className="text-foreground">{calculationResults.rer.toFixed(1)} kcal</strong></li>
                                         </ul>
                                     </div>
-                                    <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-                                        <h3 className="font-semibold text-slate-700 mb-3 text-center">Protocolo de 4 Dias</h3>
-                                        <ul className="space-y-2 text-sm text-slate-800">
-                                            <li className="flex justify-between p-2 bg-white rounded"><span>Dia 1 (25%):</span> <strong className="text-slate-900">{(calculationResults.rer * 0.25).toFixed(1)} kcal</strong></li>
-                                            <li className="flex justify-between p-2 bg-white rounded"><span>Dia 2 (50%):</span> <strong className="text-slate-900">{(calculationResults.rer * 0.50).toFixed(1)} kcal</strong></li>
-                                            <li className="flex justify-between p-2 bg-white rounded"><span>Dia 3 (75%):</span> <strong className="text-slate-900">{(calculationResults.rer * 0.75).toFixed(1)} kcal</strong></li>
-                                            <li className="flex justify-between p-2 bg-white rounded"><span>Dia 4 (100%):</span> <strong className="text-slate-900">{calculationResults.rer.toFixed(1)} kcal</strong></li>
+                                    <div className="bg-muted p-4 rounded-lg border border-border">
+                                        <h3 className="font-semibold text-foreground mb-3 text-center">Protocolo de 4 Dias</h3>
+                                        <ul className="space-y-2 text-sm text-foreground">
+                                            <li className="flex justify-between p-2 bg-card rounded"><span>Dia 1 (25%):</span> <strong className="text-foreground">{(calculationResults.rer * 0.25).toFixed(1)} kcal</strong></li>
+                                            <li className="flex justify-between p-2 bg-card rounded"><span>Dia 2 (50%):</span> <strong className="text-foreground">{(calculationResults.rer * 0.50).toFixed(1)} kcal</strong></li>
+                                            <li className="flex justify-between p-2 bg-card rounded"><span>Dia 3 (75%):</span> <strong className="text-foreground">{(calculationResults.rer * 0.75).toFixed(1)} kcal</strong></li>
+                                            <li className="flex justify-between p-2 bg-card rounded"><span>Dia 4 (100%):</span> <strong className="text-foreground">{calculationResults.rer.toFixed(1)} kcal</strong></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -581,19 +580,19 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                 {activeTab === 'racao' && (
                     <div id="page-calc-racao">
                          <div className="text-center mb-6">
-                            <h1 className="text-2xl md:text-3xl font-bold text-slate-800">Plano e Prescrição Diária</h1>
-                            <p className="mt-2 text-slate-600">Defina a meta, selecione o alimento e veja a quantidade diária.</p>
+                            <h1 className="text-2xl md:text-3xl font-bold text-foreground">Plano e Prescrição Diária</h1>
+                            <p className="mt-2 text-muted-foreground">Defina a meta, selecione o alimento e veja a quantidade diária.</p>
                         </div>
 
                         {!isCritical ? (
-                        <div className="bg-slate-50 p-6 rounded-lg mb-6 border border-slate-200">
-                            <h3 className="font-semibold text-slate-700 text-lg mb-4">1. Defina a Meta Nutricional</h3>
+                        <div className="bg-muted p-6 rounded-lg mb-6 border border-border">
+                            <h3 className="font-semibold text-foreground text-lg mb-4">1. Defina a Meta Nutricional</h3>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
                                 {goalOptions.map(goal => (
                                     <div key={goal.id}>
                                         <input type="radio" id={goal.id} name="nutritionalGoal" value={goal.id} checked={nutritionalGoal === goal.id} onChange={(e) => setNutritionalGoal(e.target.value)} className="hidden goal-radio" />
-                                        <label htmlFor={goal.id} className="flex items-center justify-center p-3 w-full text-center rounded-lg border-2 cursor-pointer transition-all bg-white border-slate-300 hover:bg-slate-100">
-                                            <span className="font-medium text-slate-800">{goal.label}</span>
+                                        <label htmlFor={goal.id} className="flex items-center justify-center p-3 w-full text-center rounded-lg border-2 cursor-pointer transition-all bg-card border-input hover:bg-muted">
+                                            <span className="font-medium text-foreground">{goal.label}</span>
                                             <HelpIcon term={goal.id} />
                                         </label>
                                     </div>
@@ -601,7 +600,7 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                             </div>
                             {(nutritionalGoal === 'deficit' || nutritionalGoal === 'surplus') && (
                                 <div className="mt-4">
-                                    <label htmlFor="targetWeight" className="block text-sm font-medium text-slate-700 mb-2 flex items-center">
+                                    <label htmlFor="targetWeight" className="block text-sm font-medium text-foreground mb-2 flex items-center">
                                         {nutritionalGoal === 'deficit' ? 'Peso Ideal para Perda (kg)' : 'Peso Ideal para Ganho (kg)'}
                                         <span
                                             className="inline-flex items-center justify-center w-5 h-5 ml-2 text-sm font-bold text-white bg-blue-500 rounded-full cursor-pointer transition-colors hover:bg-blue-700 shrink-0"
@@ -630,11 +629,11 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                              </div>
                         )}
                         
-                        <div className="bg-slate-50 p-6 rounded-lg mb-6 border border-slate-200">
-                            <h3 className="font-semibold text-slate-700 text-lg mb-4">2. Selecione o Alimento</h3>
+                        <div className="bg-muted p-6 rounded-lg mb-6 border border-border">
+                            <h3 className="font-semibold text-foreground text-lg mb-4">2. Selecione o Alimento</h3>
                             <div className="mb-4">
-                                <label htmlFor="predefined-food-select" className="block text-sm font-medium text-slate-700 mb-2">Selecionar Alimento ({species === 'dog' ? 'Cães' : 'Gatos'})</label>
-                                <select id="predefined-food-select" value={predefinedFoodIndex} onChange={handlePredefinedFoodChange} className="w-full p-3 bg-white border border-slate-300 rounded-lg text-slate-900">
+                                <label htmlFor="predefined-food-select" className="block text-sm font-medium text-foreground mb-2">Selecionar Alimento ({species === 'dog' ? 'Cães' : 'Gatos'})</label>
+                                <select id="predefined-food-select" value={predefinedFoodIndex} onChange={handlePredefinedFoodChange} className="w-full p-3 bg-card border border-input rounded-lg text-foreground">
                                     <option value="">Selecione um alimento...</option>
                                     {sortedFoods.map((food, i) => <option key={i} value={i}>{food.name}</option>)}
                                 </select>
@@ -657,12 +656,12 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                     })}
                                 </div>
                             )}
-                            <div className="text-center my-2 text-sm text-slate-500">ou</div>
-                            <h4 className="font-medium text-slate-700 mb-2">Adicionar Manualmente</h4>
+                            <div className="text-center my-2 text-sm text-muted-foreground">ou</div>
+                            <h4 className="font-medium text-foreground mb-2">Adicionar Manualmente</h4>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <input type="text" value={customFoodName} onChange={e => {setCustomFoodName(e.target.value); setPredefinedFoodIndex('');}} placeholder="Nome do alimento" className="input-field col-span-3 md:col-span-1"/>
                                 <input type="number" value={customFoodCalories} onChange={e => {setCustomFoodCalories(e.target.value); setPredefinedFoodIndex('');}} placeholder="Calorias" className="input-field"/>
-                                <select value={customFoodUnit} onChange={e => {setCustomFoodUnit(e.target.value); setPredefinedFoodIndex('');}} className="p-3 bg-white border border-slate-300 rounded-lg text-slate-900">
+                                <select value={customFoodUnit} onChange={e => {setCustomFoodUnit(e.target.value); setPredefinedFoodIndex('');}} className="p-3 bg-card border border-input rounded-lg text-foreground">
                                     <option value="g">kcal/g</option>
                                     <option value="lata">kcal/lata</option>
                                     <option value="sache">kcal/sachê</option>
@@ -672,35 +671,35 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                             <button onClick={handleAddFood} className="w-full mt-4 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition">Adicionar Alimento à Lista</button>
                         </div>
                         <div>
-                            <h3 className="font-semibold text-slate-700 text-lg mb-4">3. Prescrição Diária</h3>
+                            <h3 className="font-semibold text-foreground text-lg mb-4">3. Prescrição Diária</h3>
                             <div id="food-list" className="space-y-4">
                                 {foodPrescriptionList.length === 0 ? (
-                                    <p className="text-center text-slate-500">Nenhum alimento adicionado ainda.</p>
+                                    <p className="text-center text-muted-foreground">Nenhum alimento adicionado ainda.</p>
                                 ) : foodPrescriptionList.map((food, i) => {
                                     const unitLabel = food.unit === 'g' ? 'g' : (food.unit === 'ml' ? 'mL' : food.unit);
                                     
                                     if(isCritical) {
                                         const rerKcal = calculationResults?.rer || 0;
                                         return (
-                                             <div key={i} className="bg-white p-4 rounded-lg border border-slate-200">
-                                                <h4 className="font-bold text-slate-800 text-lg mb-3">{food.name}</h4>
+                                             <div key={i} className="bg-card p-4 rounded-lg border border-border">
+                                                <h4 className="font-bold text-foreground text-lg mb-3">{food.name}</h4>
                                                 <p className='text-sm text-center text-red-600 mb-2'>Paciente crítico: usando plano de progressão para meta de manutenção (RER).</p>
-                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-800">
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-foreground">
                                                     <div>
-                                                        <h5 className="font-semibold text-slate-700 mb-2 text-center">Protocolo de 3 Dias</h5>
+                                                        <h5 className="font-semibold text-foreground mb-2 text-center">Protocolo de 3 Dias</h5>
                                                         <ul className="space-y-1">
-                                                            <li className="flex justify-between p-1.5 bg-slate-50 rounded"><span>Dia 1 (33%):</span> <strong className="text-slate-900">{((rerKcal * 0.33) / food.calories).toFixed(1)} {unitLabel}/dia</strong></li>
-                                                            <li className="flex justify-between p-1.5 bg-slate-50 rounded"><span>Dia 2 (66%):</span> <strong className="text-slate-900">{((rerKcal * 0.66) / food.calories).toFixed(1)} {unitLabel}/dia</strong></li>
-                                                            <li className="flex justify-between p-1.5 bg-slate-50 rounded"><span>Dia 3 (100%):</span> <strong className="text-slate-900">{(rerKcal / food.calories).toFixed(1)} {unitLabel}/dia</strong></li>
+                                                            <li className="flex justify-between p-1.5 bg-muted rounded"><span>Dia 1 (33%):</span> <strong className="text-foreground">{((rerKcal * 0.33) / food.calories).toFixed(1)} {unitLabel}/dia</strong></li>
+                                                            <li className="flex justify-between p-1.5 bg-muted rounded"><span>Dia 2 (66%):</span> <strong className="text-foreground">{((rerKcal * 0.66) / food.calories).toFixed(1)} {unitLabel}/dia</strong></li>
+                                                            <li className="flex justify-between p-1.5 bg-muted rounded"><span>Dia 3 (100%):</span> <strong className="text-foreground">{(rerKcal / food.calories).toFixed(1)} {unitLabel}/dia</strong></li>
                                                         </ul>
                                                     </div>
                                                     <div>
-                                                        <h5 className="font-semibold text-slate-700 mb-2 text-center">Protocolo de 4 Dias</h5>
+                                                        <h5 className="font-semibold text-foreground mb-2 text-center">Protocolo de 4 Dias</h5>
                                                         <ul className="space-y-1">
-                                                            <li className="flex justify-between p-1.5 bg-slate-50 rounded"><span>Dia 1 (25%):</span> <strong className="text-slate-900">{((rerKcal * 0.25) / food.calories).toFixed(1)} {unitLabel}/dia</strong></li>
-                                                            <li className="flex justify-between p-1.5 bg-slate-50 rounded"><span>Dia 2 (50%):</span> <strong className="text-slate-900">{((rerKcal * 0.50) / food.calories).toFixed(1)} {unitLabel}/dia</strong></li>
-                                                            <li className="flex justify-between p-1.5 bg-slate-50 rounded"><span>Dia 3 (75%):</span> <strong className="text-slate-900">{((rerKcal * 0.75) / food.calories).toFixed(1)} {unitLabel}/dia</strong></li>
-                                                            <li className="flex justify-between p-1.5 bg-slate-50 rounded"><span>Dia 4 (100%):</span> <strong className="text-slate-900">{(rerKcal / food.calories).toFixed(1)} {unitLabel}/dia</strong></li>
+                                                            <li className="flex justify-between p-1.5 bg-muted rounded"><span>Dia 1 (25%):</span> <strong className="text-foreground">{((rerKcal * 0.25) / food.calories).toFixed(1)} {unitLabel}/dia</strong></li>
+                                                            <li className="flex justify-between p-1.5 bg-muted rounded"><span>Dia 2 (50%):</span> <strong className="text-foreground">{((rerKcal * 0.50) / food.calories).toFixed(1)} {unitLabel}/dia</strong></li>
+                                                            <li className="flex justify-between p-1.5 bg-muted rounded"><span>Dia 3 (75%):</span> <strong className="text-foreground">{((rerKcal * 0.75) / food.calories).toFixed(1)} {unitLabel}/dia</strong></li>
+                                                            <li className="flex justify-between p-1.5 bg-muted rounded"><span>Dia 4 (100%):</span> <strong className="text-foreground">{(rerKcal / food.calories).toFixed(1)} {unitLabel}/dia</strong></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -710,8 +709,8 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                         const amount = (targetKcal > 0 && food.calories > 0) ? (targetKcal / food.calories).toFixed(1) : '0.0';
                                         
                                         return (
-                                            <div key={i} className="bg-white p-4 rounded-lg border border-slate-200">
-                                                <h4 className="font-bold text-slate-800 text-lg mb-3">{food.name}</h4>
+                                            <div key={i} className="bg-card p-4 rounded-lg border border-border">
+                                                <h4 className="font-bold text-foreground text-lg mb-3">{food.name}</h4>
                                                 <div className="flex justify-between items-center p-3 bg-blue-50 rounded-md">
                                                     <span className="flex items-center text-md font-semibold text-blue-800">
                                                         {goalOptions.find(g => g.id === nutritionalGoal)?.label || 'Meta:'}
@@ -733,7 +732,7 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                 {activeTab === 'indicacoes' && (
                      <div id="page-indicacoes">
                         <div className="text-center mb-8">
-                            <h1 className="text-2xl md:text-3xl font-bold text-slate-800">Guia de Alimentos ({species === 'dog' ? 'Cães' : 'Gatos'})</h1>
+                            <h1 className="text-2xl md:text-3xl font-bold text-foreground">Guia de Alimentos ({species === 'dog' ? 'Cães' : 'Gatos'})</h1>
                         </div>
                         <div id="food-catalog" className="space-y-4 max-h-[60vh] overflow-y-auto pr-2">
                             {sortedFoods.map((food, i) => {
@@ -746,14 +745,14 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                     }
                                 }
                                 return (
-                                <div key={i} className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-                                    <h4 className="font-bold text-slate-800">{food.name}</h4>
-                                    <div className="mt-2 grid grid-cols-1 md:grid-cols-3 gap-2 text-sm text-slate-800">
-                                        <div className="text-center bg-white p-2 rounded"><strong>kcal/kg ou /L:</strong> {kcalDisplay}</div>
-                                        <div className="text-center bg-white p-2 rounded"><strong>% PB:</strong> {food.protein}</div>
-                                        <div className="text-center bg-white p-2 rounded"><strong>% EE:</strong> {food.fat}</div>
+                                <div key={i} className="bg-muted p-4 rounded-lg border border-border">
+                                    <h4 className="font-bold text-foreground">{food.name}</h4>
+                                    <div className="mt-2 grid grid-cols-1 md:grid-cols-3 gap-2 text-sm text-foreground">
+                                        <div className="text-center bg-card p-2 rounded"><strong>kcal/kg ou /L:</strong> {kcalDisplay}</div>
+                                        <div className="text-center bg-card p-2 rounded"><strong>% PB:</strong> {food.protein}</div>
+                                        <div className="text-center bg-card p-2 rounded"><strong>% EE:</strong> {food.fat}</div>
                                     </div>
-                                    <p className="mt-3 text-sm text-slate-600"><strong className="text-slate-800">Indicação Principal:</strong> {food.indication}</p>
+                                    <p className="mt-3 text-sm text-muted-foreground"><strong className="text-foreground">Indicação Principal:</strong> {food.indication}</p>
                                     
                                     {food.alerts && food.alerts.length > 0 && (
                                         <div className="mt-3 space-y-2">
