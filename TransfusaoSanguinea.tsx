@@ -7,7 +7,7 @@ const knowledgeBase = {
     },
     desired_pcv: {
         title: '🎯 Escolhendo o VG/Ht Desejado e a Fórmula',
-        content: `<p>A meta da transfusão não é normalizar o VG/Ht, mas sim <strong>resolver os sinais clínicos de hipóxia</strong> (fraqueza, taquicardia, taquipneia).</p><h4>Parâmetros Comuns:</h4><ul><li><strong>Cães:</strong> Um alvo de 25-28% é geralmente suficiente.</li><li><strong>Gatos:</strong> Um alvo de 20-25% é geralmente suficiente.</li></ul><p>Atingir valores normais (>35%) com uma única transfusão é raramente necessário e aumenta o risco de sobrecarga de volume.</p><h4>Fórmula de Cálculo:</h4><p>O volume necessário é calculado usando a seguinte fórmula:</p><div class="bg-slate-200 p-2 rounded text-center font-mono">Volume (mL) = Vol. Sanguíneo Total × (VG Desejado - VG Atual) / VG da Bolsa</div><p>Onde o <strong>Volume Sanguíneo Total</strong> é estimado como:</p><ul><li><strong>Cães:</strong> 90 mL/kg</li><li><strong>Gatos:</strong> 60 mL/kg</li></ul>`
+        content: `<p>A meta da transfusão não é normalizar o VG/Ht, mas sim <strong>resolver os sinais clínicos de hipóxia</strong> (fraqueza, taquicardia, taquipneia).</p><h4>Parâmetros Comuns:</h4><ul><li><strong>Cães:</strong> Um alvo de 25-28% é geralmente suficiente.</li><li><strong>Gatos:</strong> Um alvo de 20-25% é geralmente suficiente.</li></ul><p>Atingir valores normais (>35%) com uma única transfusão é raramente necessário e aumenta o risco de sobrecarga de volume.</p><h4>Fórmula de Cálculo:</h4><p>O volume necessário é calculado usando a seguinte fórmula:</p><div class="bg-muted p-2 rounded text-center font-mono">Volume (mL) = Vol. Sanguíneo Total × (VG Desejado - VG Atual) / VG da Bolsa</div><p>Onde o <strong>Volume Sanguíneo Total</strong> é estimado como:</p><ul><li><strong>Cães:</strong> 90 mL/kg</li><li><strong>Gatos:</strong> 60 mL/kg</li></ul>`
     },
     phys_state: {
         title: '🧑‍⚕️ Influência do Estado Fisiológico',
@@ -31,11 +31,11 @@ const knowledgeBase = {
     },
     initial_rate_why: {
         title: '🤔 Por que a Taxa Inicial é Lenta?',
-        content: `<p>A transfusão começa com uma taxa de teste lenta (ex: 0.25-1 mL/kg/h) nos primeiros 15-30 minutos como uma medida de segurança crítica.</p><p><strong>Fisiologia da Reação:</strong> A maioria das reações transfusionais agudas graves, como a hemolítica ou anafilática, ocorre rapidamente. Iniciar lentamente permite:</p><ul><li><strong>Detecção Precoce:</strong> Observar o paciente para detectar os primeiros sinais de reação (febre, taquicardia, prurido).</li><li><strong>Minimização do Dano:</strong> Se uma reação ocorrer, o volume de hemocomponente incompatível administrado será mínimo, reduzindo a severidade da reação.</li></ul><p>É uma janela de oportunidade para interromper o procedimento antes que danos significativos ocorram.</p><p class="text-sm text-slate-500"><em>Fonte: Consenso TRACS.</em></p>`
+        content: `<p>A transfusão começa com uma taxa de teste lenta (ex: 0.25-1 mL/kg/h) nos primeiros 15-30 minutos como uma medida de segurança crítica.</p><p><strong>Fisiologia da Reação:</strong> A maioria das reações transfusionais agudas graves, como a hemolítica ou anafilática, ocorre rapidamente. Iniciar lentamente permite:</p><ul><li><strong>Detecção Precoce:</strong> Observar o paciente para detectar os primeiros sinais de reação (febre, taquicardia, prurido).</li><li><strong>Minimização do Dano:</strong> Se uma reação ocorrer, o volume de hemocomponente incompatível administrado será mínimo, reduzindo a severidade da reação.</li></ul><p>É uma janela de oportunidade para interromper o procedimento antes que danos significativos ocorram.</p><p class="text-sm text-muted-foreground"><em>Fonte: Consenso TRACS.</em></p>`
     },
     maintenance_rate_why: {
         title: '🤔 Por que a Taxa de Manutenção é Mais Alta?',
-        content: `<p>Após o período de teste inicial sem reações, a taxa de infusão é aumentada para garantir que a transfusão seja concluída dentro de um prazo seguro, que não deve exceder <strong>4 horas</strong>.</p><p><strong>O Risco do Tempo:</strong></p><ul><li><strong>Risco de Contaminação Bacteriana:</strong> O sangue à temperatura ambiente é um excelente meio de cultura. O risco de sepse transfusional aumenta significativamente após 4 horas.</li><li><strong>Viabilidade Celular:</strong> A qualidade dos componentes pode se deteriorar com o tempo fora da refrigeração.</li></ul><p>A taxa de manutenção é um equilíbrio entre rapidez e segurança (evitar sobrecarga circulatória).</p><p class="text-sm text-slate-500"><em>Fonte: Davidow, B. (2013). Veterinary Clinics: Small Animal Practice.</em></p>`
+        content: `<p>Após o período de teste inicial sem reações, a taxa de infusão é aumentada para garantir que a transfusão seja concluída dentro de um prazo seguro, que não deve exceder <strong>4 horas</strong>.</p><p><strong>O Risco do Tempo:</strong></p><ul><li><strong>Risco de Contaminação Bacteriana:</strong> O sangue à temperatura ambiente é um excelente meio de cultura. O risco de sepse transfusional aumenta significativamente após 4 horas.</li><li><strong>Viabilidade Celular:</strong> A qualidade dos componentes pode se deteriorar com o tempo fora da refrigeração.</li></ul><p>A taxa de manutenção é um equilíbrio entre rapidez e segurança (evitar sobrecarga circulatória).</p><p class="text-sm text-muted-foreground"><em>Fonte: Davidow, B. (2013). Veterinary Clinics: Small Animal Practice.</em></p>`
     },
     anticoagulants: {
         title: '🧪 Anticoagulantes na Coleta',
@@ -77,6 +77,200 @@ const reactionsData = [
     { name: 'Toxicidade por Citrato (Hipocalcemia)', signs: 'Tremores musculares, fasciculações, arritmias cardíacas, hipotensão.', treatment: 'Diminuir drasticamente a velocidade. Gluconato de cálcio 10% (0.5-1.5 mL/kg IV LENTAMENTE) com monitoramento de ECG.', prevention: 'Raro. Infusão lenta, especialmente em neonatos, hepatopatas ou transfusões maciças.' }
 ];
 
+// --- HELPER COMPONENTS (fora do componente principal) ---
+const HelpIcon = React.memo(function HelpIcon({ term, onOpenModal }: { term: string; onOpenModal: (term: string) => void }) {
+    return (
+        <span className="help-icon" onClick={(e) => { e.stopPropagation(); onOpenModal(term); }}>?</span>
+    );
+});
+
+const Modal = React.memo(function Modal({ term, onClose, knowledgeBase }: { term: string | null; onClose: () => void; knowledgeBase: any }) {
+    if (!term) return null;
+    const data = knowledgeBase[term];
+    if (!data) return null;
+    return (
+        <div className="fixed inset-0 bg-black bg-opacity-60 items-center justify-center p-4 z-50 flex" onClick={onClose}>
+            <div className="bg-card text-card-foreground border border-border rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
+                <div className="sticky top-0 bg-card p-4 border-b border-border flex justify-between items-center">
+                    <h3 className="text-xl font-bold text-foreground" dangerouslySetInnerHTML={{ __html: data.title }}></h3>
+                    <button onClick={onClose} className="text-3xl text-muted-foreground hover:text-foreground">&times;</button>
+                </div>
+                <div className="p-6 prose max-w-none text-foreground" dangerouslySetInnerHTML={{ __html: data.content }}></div>
+            </div>
+        </div>
+    );
+});
+
+// --- SUB-COMPONENTS for TABS (definidos antes do componente principal) ---
+
+const PrepGuideTab = ({ openModal }) => {
+    return (
+        <div className="space-y-6">
+            <div className="bg-card p-6 rounded-xl shadow-lg">
+                <h3 className="text-2xl font-semibold text-foreground mb-4">Guia Prático de Preparo para Transfusão</h3>
+                <div className="prose max-w-none">
+                    <p>A segurança transfusional começa muito antes da primeira gota. Cada passo é um ponto de controle crítico para prevenir complicações.</p>
+                    <h4>1. Verificação e Compatibilidade</h4>
+                    <p>Realize uma verificação cruzada rigorosa: confirme a identidade do paciente, o tipo sanguíneo do receptor e da bolsa, e o resultado da prova cruzada. Inspecione visualmente a bolsa: procure por vazamentos, descoloração (tons roxos/escuros podem indicar hemólise ou contaminação bacteriana) e a presença de coágulos grosseiros.<HelpIcon term="visual_inspection" onOpenModal={openModal} /></p>
+                    
+                    <div className="mt-6 p-4 border border-border rounded-lg">
+                        <h2 className="text-xl font-semibold text-foreground text-center mb-2">Princípios da Transfusão Sanguínea em Caninos</h2>
+                        <img src="https://res.cloudinary.com/dwta1roq1/image/upload/q_auto,f_auto/transfusao/cao" alt="Infográfico resumindo a transfusão de sangue em cães, com ênfase no sistema DEA 1 e na sensibilização após a primeira transfusão incompatível" style={{width: '100%', borderRadius: '0.5rem'}} />
+                    </div>
+
+                    <div className="mt-6 p-4 border border-border rounded-lg">
+                        <h2 className="text-xl font-semibold text-foreground text-center mb-2">Princípios da Transfusão Sanguínea em Felinos</h2>
+                        <img src="https://res.cloudinary.com/dwta1roq1/image/upload/q_auto,f_auto/transfusao/gato" alt="Infográfico resumindo a transfusão de sangue em gatos, com ênfase nos tipos sanguíneos A, B e AB e a importância dos aloanticorpos" style={{width: '100%', borderRadius: '0.5rem'}} />
+                    </div>
+
+                    <h4>2. Aquecimento do Hemocomponente</h4>
+                    <p>Produtos contendo eritrócitos (CH, ST) devem ser aquecidos gradualmente até a temperatura corporal (~37°C). Use um banho-maria com termômetro ou um aquecedor de fluidos em linha. <strong>NUNCA</strong> use micro-ondas ou água fervente.<HelpIcon term="warming_blood" onOpenModal={openModal} /></p>
+                    <h4>3. Acesso Venoso e Equipamento</h4>
+                    <p>Utilize um cateter intravenoso dedicado, de calibre apropriado para o paciente e para a velocidade da infusão. Todos os hemocomponentes devem, obrigatoriamente, ser administrados através de um <strong>equipo de transfusão com filtro</strong> (poro padrão de 170-260 mícrons).<HelpIcon term="filter_use" onOpenModal={openModal} /></p>
+                    <h4>4. Compatibilidade de Fluidos</h4>
+                    <p>A única solução cristaloide segura para administrar na mesma linha de uma transfusão é <strong>NaCl 0.9% (solução salina isotônica)</strong>. Fluidos contendo cálcio (ex: Ringer com Lactato) são <strong>absolutamente contraindicados</strong>.<HelpIcon term="fluid_compatibility" onOpenModal={openModal} /></p>
+                </div>
+            </div>
+            <div className="bg-card p-6 rounded-xl shadow-lg">
+                <h3 className="text-2xl font-semibold text-foreground mb-4">Monitoramento Detalhado do Paciente 🩺</h3>
+                <p className="mb-4">Monitore a cada 15 min na 1ª hora, depois a cada 30-60 min até o final.</p>
+                <div className="space-y-4 divide-y divide-border">
+                     <div className="monitoring-item pt-4 first:pt-0">
+                        <strong className="text-lg text-foreground">🌡️ Temperatura Retal</strong>
+                        <p><strong>Como medir:</strong> Use um termômetro retal digital lubrificado.</p>
+                        <p><strong>Valores Normais:</strong> Cães e Gatos: 38.0°C a 39.2°C.</p>
+                        <p><strong>Relevância na Transfusão:</strong> Um aumento &gt;1°C em relação ao basal é o sinal mais comum de uma reação transfusional (FNHTR, hemolítica, sepse). Hipotermia pode ocorrer com a infusão rápida de sangue frio.</p>
+                    </div>
+                    <div className="monitoring-item pt-4">
+                        <strong className="text-lg text-foreground">❤️ Frequência Cardíaca (FC) e Qualidade do Pulso</strong>
+                        <p><strong>Como medir:</strong> Ausculte o tórax com um estetoscópio ou palpe o pulso femoral (conte as batidas em 15s e multiplique por 4). Avalie a qualidade do pulso (ex: forte, fraco, filiforme).</p>
+                        <p><strong>Valores Normais (repouso):</strong> Cães: 60-140 bpm (varia com porte); Gatos: 140-220 bpm.</p>
+                        <p><strong>Relevância na Transfusão:</strong> Taquicardia é um sinal precoce de reação hemolítica, anafilaxia ou sobrecarga de volume (TACO). Bradicardia é rara, mas pode ocorrer em colapso.</p>
+                    </div>
+                    <div className="monitoring-item pt-4">
+                        <strong className="text-lg text-foreground">💨 Frequência e Padrão Respiratório (FR)</strong>
+                        <p><strong>Como medir:</strong> Observe os movimentos do tórax (conte em 15s e multiplique por 4). Note o esforço (dispneia) ou sons anormais (tosse).</p>
+                        <p><strong>Valores Normais (repouso):</strong> Cães: 10-30 mpm; Gatos: 20-40 mpm.</p>
+                        <p><strong>Relevância na Transfusão:</strong> Taquipneia/Dispneia é um sinal crítico de <strong>sobrecarga circulatória (TACO)</strong> ou lesão pulmonar (TRALI). Ausculte o pulmão para detectar crepitações.</p>
+                    </div>
+                    <div className="monitoring-item pt-4">
+                        <strong className="text-lg text-foreground">👄 Cor das Mucosas e TPC</strong>
+                        <p><strong>Como medir:</strong> Levante o lábio e observe a cor da gengiva. Pressione firmemente e conte o tempo para a cor retornar (Tempo de Preenchimento Capilar).</p>
+                        <p><strong>Valores Normais:</strong> Mucosas róseas e úmidas; TPC &lt; 2 segundos.</p>
+                        <p><strong>Relevância na Transfusão:</strong> Palidez (choque), hiperemia (sepse/anafilaxia), icterícia (hemólise) ou TPC aumentado (&gt;2s) são sinais de alerta importantes.</p>
+                    </div>
+                    <div className="monitoring-item pt-4">
+                        <strong className="text-lg text-foreground">🩸 Pressão Arterial (PA)</strong>
+                        <p><strong>Como medir:</strong> Use métodos Doppler ou oscilométricos com manguito de largura apropriada (40% da circunferência do membro).</p>
+                        <p><strong>Valores Normais (Sistólica):</strong> 110-160 mmHg.</p>
+                        <p><strong>Relevância na Transfusão:</strong> Hipotensão (PA &lt; 90 mmHg sistólica) é um sinal grave de reação hemolítica, anafilaxia ou sepse. Hipertensão pode ser vista em TACO.</p>
+                    </div>
+                    <div className="monitoring-item pt-4">
+                        <strong className="text-lg text-foreground">🧠 Estado Mental e Comportamento</strong>
+                        <p><strong>Como avaliar:</strong> Observe a interação do paciente com o ambiente. Mudanças sutis como inquietação, ansiedade ou letargia podem ser os primeiros sinais de uma complicação, precedendo alterações nos sinais vitais.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+const CrossmatchGuideTab = () => (
+    <div className="prose max-w-none bg-card p-6 rounded-xl shadow-lg text-foreground">
+        <h3 className="text-2xl font-semibold text-foreground">Guia Aprofundado: Prova de Compatibilidade Cruzada (Cross-match)</h3>
+        <p>A prova cruzada é a sua rede de segurança final. Este guia detalha o método em tubo, considerado o padrão-ouro.</p>
+        
+        <h4>Materiais Necessários:</h4>
+        <ul>
+            <li>Amostras de sangue em tubo com EDTA (tampa roxa) e tubo seco (tampa vermelha) do <strong>DOADOR</strong> e do <strong>RECEPTOR</strong>.</li>
+            <li>Tubos de ensaio de vidro (12x75 mm), pipetas Pasteur ou micropipetas, centrífuga, microscópio e lâminas.</li>
+            <li>Solução salina (NaCl 0.9%).</li>
+        </ul>
+
+        <h4>Passo 1: Preparo das Hemácias Lavadas (para Doador e Receptor)</h4>
+        <ol>
+            <li>Centrifugue o sangue do tubo de EDTA para separar o plasma das hemácias. Descarte o plasma.</li>
+            <li>Adicione 2-3 gotas do concentrado de hemácias a um tubo de ensaio.</li>
+            <li><strong>Lave as hemácias:</strong> Encha o tubo com salina, tampe e inverta suavemente. Centrifugue a ~1000g (ou ~3000 RPM numa centrífuga padrão) por 1 minuto.</li>
+            <li>Aspire cuidadosamente o sobrenadante. Repita a lavagem mais duas vezes (total de 3 lavagens). A lavagem remove proteínas plasmáticas que podem causar pseudoaglutinação.</li>
+            <li>Após a última lavagem, prepare uma <strong>suspensão de hemácias a 3-5%</strong>: adicione 0.1 mL do botão de hemácias lavadas a 2 mL de salina. A solução deve ter uma cor vermelho-cereja transparente.</li>
+        </ol>
+
+        <h4>Passo 2: Realização das Provas e Controles</h4>
+        <p>Para cada tubo, adicione os componentes na ordem listada:</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="border-l-4 border-destructive bg-destructive/10 p-4 rounded"><strong>Prova Maior (CRÍTICA):</strong><br/>2 gotas de <strong>soro/plasma do RECEPTOR</strong><br/>+ 1 gota de <strong>suspensão de hemácias do DOADOR</strong></div>
+            <div className="border-l-4 border-primary bg-primary/10 p-4 rounded"><strong>Prova Menor:</strong><br/>2 gotas de <strong>soro/plasma do DOADOR</strong><br/>+ 1 gota de <strong>suspensão de hemácias do RECEPTOR</strong></div>
+            <div className="border-l-4 border-border bg-muted p-4 rounded"><strong>Controle do Receptor:</strong><br/>2 gotas de <strong>soro/plasma do RECEPTOR</strong><br/>+ 1 gota de <strong>suspensão de hemácias do RECEPTOR</strong></div>
+            <div className="border-l-4 border-border bg-muted p-4 rounded"><strong>Controle do Doador:</strong><br/>2 gotas de <strong>soro/plasma do DOADOR</strong><br/>+ 1 gota de <strong>suspensão de hemácias do DOADOR</strong></div>
+        </div>
+        <p className="mt-4">Os tubos de controle servem para detectar autoaglutinação. Se algum controle for positivo, a interpretação das provas principais é invalidada.</p>
+
+        <h4>Passo 3: Incubação e Leitura</h4>
+        <ol>
+            <li>Misture e incube todos os tubos por 15-30 minutos à temperatura ambiente.</li>
+            <li>Centrifugue levemente (ex: 1000g por 15 segundos) para facilitar a visualização do botão celular.</li>
+            <li>
+                <strong>Leitura Macroscópica:</strong>
+                <p>Examine o sobrenadante e o botão de hemácias. A incompatibilidade é indicada por:</p>
+                <ul>
+                    <li><strong>Hemólise:</strong> Sobrenadante rosado/vermelho.</li>
+                    <li><strong>Aglutinação:</strong> O botão de hemácias não se ressuspende suavemente, formando agregados sólidos ou "grãos de areia".</li>
+                </ul>
+                <div className="mt-4 p-4 border border-border rounded-lg bg-muted">
+                    <h3 className="text-lg font-semibold text-foreground">Exemplos de Graus de Aglutinação</h3>
+                    <p>A imagem abaixo demonstra os graus de reação. Uma reação de 2+ ou superior é considerada uma incompatibilidade significativa.</p>
+                    <img src="https://res.cloudinary.com/dwta1roq1/image/upload/q_auto,f_auto/aglutinacao/transfusao-2" alt="Imagem ilustrando quatro graus de aglutinação macroscópica em testes de compatibilidade sanguínea, de ausente a severa" style={{width: '100%', borderRadius: '0.5rem', marginTop: '1rem'}} />
+                </div>
+            </li>
+            <li><strong>Leitura Microscópica:</strong> Coloque uma gota da mistura em uma lâmina e examine em menor aumento. Procure por cachos de hemácias (como "cachos de uva") para confirmar a microaglutinação. Não confunda com *rouleaux* (empilhamento de moedas), que geralmente se dispersa com uma gota de salina.</li>
+        </ol>
+
+        <h4>Passo 4: Interpretação Final</h4>
+        <ul>
+            <li>✅ <strong>Compatível:</strong> Nenhuma aglutinação ou hemólise na Prova Maior e Menor. Os controles devem ser negativos. A transfusão é considerada segura.</li>
+            <li>🚨 <strong>Incompatível:</strong> Presença de aglutinação e/ou hemólise na Prova Maior. <strong>NÃO TRANSFUNDIR!</strong> Isso prediz uma reação hemolítica aguda grave.</li>
+            <li>⚠️ <strong>Incompatibilidade Menor:</strong> Uma reação positiva apenas na Prova Menor indica que o plasma do doador tem anticorpos contra as hemácias do receptor. O risco é menor (os anticorpos são diluídos), mas a transfusão deve ser feita com cautela e lentamente, ou um doador diferente deve ser considerado.</li>
+        </ul>
+        <p className="text-sm text-muted-foreground"><em>Fonte: Baseado em diretrizes do ACVIM e do livro "Small Animal Transfusion Medicine" (2ª ed.) de Plumb.</em></p>
+    </div>
+);
+
+const ReactionsGuideTab = () => (
+    <div className="space-y-4">
+        <div className="bg-card p-6 rounded-xl shadow-lg">
+            <h3 className="text-2xl font-semibold mb-3 text-foreground">Gerenciador de Reações Agudas 🚨</h3>
+            <p className="text-muted-foreground mb-4 text-lg">Ao suspeitar de qualquer reação, a primeira ação é <strong>SEMPRE PARAR A TRANSFUSÃO</strong> e manter o acesso IV com NaCl 0.9%.</p>
+            <div className="space-y-4">
+                {reactionsData.map(reaction => (
+                    <div key={reaction.name} className="border border-border rounded-lg p-4">
+                        <h4 className="font-semibold text-lg text-destructive">{reaction.name}</h4>
+                        <p className="mt-1"><strong>Sinais Clínicos:</strong> {reaction.signs}</p>
+                        <p className="mt-1"><strong>Tratamento Específico:</strong> {reaction.treatment}</p>
+                        <p className="mt-1"><strong>Prevenção:</strong> {reaction.prevention}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+);
+
+const DrugsGuideTab = () => (
+    <div className="space-y-4">
+        <div className="bg-card p-6 rounded-xl shadow-lg">
+            <h3 className="text-2xl font-semibold mb-3 text-foreground">Guia Rápido de Fármacos 💊</h3>
+            <div className="divide-y divide-border">
+                {drugsData.map(drug => (
+                    <div key={drug.name} className="py-4">
+                        <h4 className="font-semibold text-lg text-foreground">{drug.name}</h4>
+                        <p className="text-muted-foreground"><strong>Indicação:</strong> {drug.indication}</p>
+                        <p className="text-muted-foreground"><strong>Dose:</strong> {drug.dose}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+);
 
 const TransfusaoSanguinea = ({ onBack }: { onBack: () => void }) => {
     const [activeTab, setActiveTab] = useState('calculator');
@@ -199,139 +393,53 @@ const TransfusaoSanguinea = ({ onBack }: { onBack: () => void }) => {
             case 'crossmatch': return <CrossmatchGuideTab />;
             case 'reactions': return <ReactionsGuideTab />;
             case 'drugs': return <DrugsGuideTab />;
-            default: return <CalculatorTab />;
+            default: return (
+                <CalculatorTab 
+                    species={species}
+                    setSpecies={setSpecies}
+                    weight={weight}
+                    setWeight={setWeight}
+                    currentPcv={currentPcv}
+                    setCurrentPcv={setCurrentPcv}
+                    desiredPcv={desiredPcv}
+                    setDesiredPcv={setDesiredPcv}
+                    product={product}
+                    setProduct={setProduct}
+                    bagPcv={bagPcv}
+                    setBagPcv={setBagPcv}
+                    physState={physState}
+                    setPhysState={setPhysState}
+                    isHighRisk={isHighRisk}
+                    setIsHighRisk={setIsHighRisk}
+                    isActiveHemorrhage={isActiveHemorrhage}
+                    setIsActiveHemorrhage={setIsActiveHemorrhage}
+                    isFirstTransfusionDog={isFirstTransfusionDog}
+                    setIsFirstTransfusionDog={setIsFirstTransfusionDog}
+                    results={results}
+                    handleCalculateTransfusion={handleCalculateTransfusion}
+                    plasmaDose={plasmaDose}
+                    collectionVolume={collectionVolume}
+                    setCollectionVolume={setCollectionVolume}
+                    anticoagulantType={anticoagulantType}
+                    setAnticoagulantType={setAnticoagulantType}
+                    anticoagulantResult={anticoagulantResult}
+                    handleCalculateAnticoagulant={handleCalculateAnticoagulant}
+                    setModalTerm={setModalTerm}
+                />
+            );
         }
     };
-
-    const HelpIcon = ({ term }) => (
-        <span className="help-icon" onClick={(e) => { e.stopPropagation(); setModalTerm(term); }}>?</span>
-    );
-    
-    const Modal = ({ term, onClose }) => {
-        if (!term) return null;
-        const data = knowledgeBase[term];
-        return (
-            <div className="fixed inset-0 bg-black bg-opacity-60 items-center justify-center p-4 z-50 flex" onClick={onClose}>
-                <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
-                    <div className="sticky top-0 bg-white p-4 border-b flex justify-between items-center">
-                        <h3 className="text-xl font-bold text-slate-900" dangerouslySetInnerHTML={{ __html: data.title }}></h3>
-                        <button onClick={onClose} className="text-3xl text-slate-500 hover:text-slate-800">&times;</button>
-                    </div>
-                    <div className="p-6 prose max-w-none text-slate-700" dangerouslySetInnerHTML={{ __html: data.content }}></div>
-                </div>
-            </div>
-        );
-    };
-
-    const CalculatorTab = () => (
-        <div className="space-y-8">
-            <div className="bg-white p-6 rounded-xl shadow-lg space-y-6">
-                <h3 className="text-2xl font-semibold text-slate-800 border-b pb-2">Calculadora de Volume e Taxas</h3>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div className="space-y-4">
-                        <div>
-                            <label className="block text-sm font-medium text-slate-700">Paciente 🐾</label>
-                            <select value={species} onChange={e => setSpecies(e.target.value)} className="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white text-slate-900">
-                                <option value="dog">Cão 🐶</option>
-                                <option value="cat">Gato 🐱</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label htmlFor="weight" className="block text-sm font-medium text-slate-700">Peso (kg)</label>
-                            <input type="number" id="weight" value={weight} onChange={e => setWeight(e.target.value)} className="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white text-slate-900" placeholder="25" />
-                        </div>
-                        <div>
-                            <label htmlFor="current-pcv" className="block text-sm font-medium text-slate-700">VG/Ht Atual (%)<HelpIcon term="pcv" /></label>
-                            <input type="number" id="current-pcv" value={currentPcv} onChange={e => setCurrentPcv(e.target.value)} disabled={product === 'plasma'} className="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white text-slate-900" placeholder="15" />
-                        </div>
-                        <div>
-                            <label htmlFor="desired-pcv" className="block text-sm font-medium text-slate-700">VG/Ht Desejado (%)<HelpIcon term="desired_pcv" /></label>
-                            <input type="number" id="desired-pcv" value={desiredPcv} onChange={e => setDesiredPcv(e.target.value)} disabled={product === 'plasma'} className="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white text-slate-900" placeholder="25" />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-slate-700">Hemocomponente 🩸<HelpIcon term="components" /></label>
-                            <select id="product" value={product} onChange={e => setProduct(e.target.value)} className="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white text-slate-900">
-                                <option value="whole_blood">Sangue Total (ST)</option>
-                                <option value="rbc">Concentrado de Hemácias (CH)</option>
-                                <option value="plasma">Plasma (PFC/PC)</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label htmlFor="bag-pcv" className="block text-sm font-medium text-slate-700">VG da Bolsa (%)<HelpIcon term="bag_pcv" /></label>
-                            <input type="number" id="bag-pcv" value={bagPcv} onChange={e => setBagPcv(e.target.value)} disabled={product === 'plasma'} className="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white text-slate-900" placeholder="80" />
-                        </div>
-                    </div>
-                    <div className="space-y-4">
-                        <fieldset>
-                             <label className="text-base font-medium text-slate-800 flex items-center">Estado Fisiológico do Receptor <HelpIcon term="phys_state" /></label>
-                            <select value={physState} onChange={e => setPhysState(e.target.value)} className="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white text-slate-900">
-                                <option value="adult">Adulto Hígido</option>
-                                <option value="pediatric">Filhote/Pediátrico</option>
-                                <option value="senior">Idoso/Geriátrico</option>
-                                <option value="obese">Obeso</option>
-                            </select>
-                        </fieldset>
-                        <fieldset>
-                            <legend className="text-base font-medium text-slate-800 flex items-center">Condições de Risco Adicionais <HelpIcon term="risk_conditions" /></legend>
-                            <div className="mt-2 space-y-2">
-                                <div className="relative flex items-start"><div className="flex h-5 items-center"><input id="cardiac-renal" type="checkbox" checked={isHighRisk} onChange={e => setIsHighRisk(e.target.checked)} className="h-4 w-4 rounded border-slate-300 text-amber-600 focus:ring-amber-500" /></div><div className="ml-3 text-sm"><label htmlFor="cardiac-renal" className="font-medium text-slate-700">Doença Cardíaca/Renal ❤️</label></div></div>
-                                <div className="relative flex items-start"><div className="flex h-5 items-center"><input id="active-hemorrhage" type="checkbox" checked={isActiveHemorrhage} onChange={e => setIsActiveHemorrhage(e.target.checked)} className="h-4 w-4 rounded border-slate-300 text-amber-600 focus:ring-amber-500" /></div><div className="ml-3 text-sm"><label htmlFor="active-hemorrhage" className="font-medium text-slate-700">Hemorragia Aguda Ativa</label></div></div>
-                                {species === 'dog' && <div className="relative flex items-start"><div className="flex h-5 items-center"><input id="first-transfusion-dog" type="checkbox" checked={isFirstTransfusionDog} onChange={e => setIsFirstTransfusionDog(e.target.checked)} className="h-4 w-4 rounded border-slate-300 text-amber-600 focus:ring-amber-500" /></div><div className="ml-3 text-sm"><label htmlFor="first-transfusion-dog" className="font-medium text-slate-700">Primeira Transfusão (Cão) ☝️<HelpIcon term="first_transfusion" /></label></div></div>}
-                            </div>
-                        </fieldset>
-                    </div>
-                </div>
-                <div className="flex justify-center pt-4">
-                    <button onClick={handleCalculateTransfusion} className="w-full md:w-2/3 bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg transition-transform transform hover:scale-105 text-lg">Calcular Volume e Taxas</button>
-                </div>
-            </div>
-            
-            {results && (
-                <div className="bg-blue-50 border-l-8 border-blue-500 p-6 rounded-r-lg">
-                    <h3 className="text-2xl font-semibold text-slate-800 mb-4">Resultados da Transfusão 📈</h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-                        <div className="bg-white p-4 rounded-lg shadow"><p className="text-sm text-slate-500">Volume Total</p><p className="text-3xl font-bold text-blue-600">{results.totalVolume} mL</p></div>
-                        <div className="bg-white p-4 rounded-lg shadow"><p className="text-sm text-slate-500 flex items-center justify-center">Taxa Inicial (15-30min)<HelpIcon term="initial_rate_why" /></p><p className="text-2xl font-bold text-blue-600">{results.initialRate} mL/h</p></div>
-                        <div className="bg-white p-4 rounded-lg shadow"><p className="text-sm text-slate-500 flex items-center justify-center">Taxa de Manutenção<HelpIcon term="maintenance_rate_why" /></p><p className="text-2xl font-bold text-blue-600">{results.maintenanceRate} mL/h</p></div>
-                    </div>
-                    {results.alerts.length > 0 && <div className="mt-6">
-                        <h4 className="font-semibold text-lg text-amber-800 mb-2">⚠️ Alertas de Segurança</h4>
-                        <div className="space-y-2">
-                            {results.alerts.map((alert, i) => (
-                                <div key={i} className={`p-3 rounded-r-md ${alert.type === 'danger' ? 'bg-red-50 border-l-4 border-red-500 text-red-800' : 'bg-yellow-50 border-l-4 border-yellow-500 text-yellow-800'}`} dangerouslySetInnerHTML={{ __html: alert.text }}></div>
-                            ))}
-                        </div>
-                    </div>}
-                </div>
-            )}
-            {plasmaDose && (
-                <div className="mt-4 bg-yellow-50 border-l-4 border-yellow-500 text-yellow-800 p-4 rounded-lg"><p className="font-bold">💡 Dosagem de Plasma:</p><p>A dose inicial padrão para coagulopatias ou hipoproteinemia é de <strong>10 a 20 mL/kg</strong>. O volume calculado de <strong><span>{plasmaDose}</span></strong> é uma sugestão inicial. Ajuste conforme a resposta clínica e laboratorial.</p></div>
-            )}
-
-            <div className="bg-white p-6 rounded-xl shadow-lg space-y-4">
-                <h3 className="text-2xl font-semibold text-slate-800 border-b pb-2">Calculadora de Anticoagulante (Coleta)</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
-                    <div><label htmlFor="collection-volume" className="block text-sm font-medium text-slate-700">Volume de Sangue a Coletar (mL)</label><input type="number" id="collection-volume" value={collectionVolume} onChange={e => setCollectionVolume(e.target.value)} className="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white text-slate-900" placeholder="50" /></div>
-                    <div><label htmlFor="anticoagulant-type" className="block text-sm font-medium text-slate-700">Tipo de Anticoagulante<HelpIcon term="anticoagulants" /></label><select id="anticoagulant-type" value={anticoagulantType} onChange={e => setAnticoagulantType(e.target.value)} className="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white text-slate-900"><option value="cpda1">CPDA-1</option><option value="citrate">Citrato de Sódio (3.2-3.8%)</option></select></div>
-                    <div><button onClick={handleCalculateAnticoagulant} className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md">Calcular</button></div>
-                </div>
-                {anticoagulantResult && <div className="text-center bg-green-50 text-green-800 p-4 mt-4 rounded-lg"><p className="text-lg">Volume de anticoagulante necessário: <strong className="text-xl">{anticoagulantResult}</strong></p></div>}
-            </div>
-        </div>
-    );
     
     return (
-        <div className='bg-slate-100 min-h-screen'>
+        <div className='bg-background min-h-screen text-foreground'>
         <style>{`
            .tab-button.active {
-                border-bottom-color: #f59e0b;
-                color: #f59e0b;
                 font-weight: 600;
             }
             .help-icon {
                 cursor: pointer;
                 font-weight: bold;
-                color: #3b82f6;
+                color: hsl(var(--primary));
                 margin-left: 5px;
                 display: inline-flex;
                 align-items: center;
@@ -339,28 +447,28 @@ const TransfusaoSanguinea = ({ onBack }: { onBack: () => void }) => {
                 width: 22px;
                 height: 22px;
                 border-radius: 50%;
-                background-color: #eff6ff;
+                background-color: hsl(var(--primary) / 0.1);
                 font-size: 14px;
                 transition: all 0.2s ease;
                 flex-shrink: 0;
             }
             .help-icon:hover {
-                background-color: #dbeafe;
+                background-color: hsl(var(--primary) / 0.2);
                 transform: scale(1.1);
             }
             .prose p, .prose ul, .prose ol, .prose blockquote { margin-bottom: 1em; }
             .prose h4 { margin-top: 1.5em; margin-bottom: 0.5em; }
             .prose ul, .prose ol { padding-left: 1.5em; }
-            .prose strong { color: #1e293b; }
+            .prose strong { color: hsl(var(--foreground)); }
             .monitoring-item p {
                 margin-top: 0.5rem;
-                color: #475569;
+                color: hsl(var(--muted-foreground));
                 font-size: 0.95rem;
             }
         `}</style>
-         <Modal term={modalTerm} onClose={() => setModalTerm(null)} />
-         <div className="container mx-auto max-w-5xl p-4 sm:p-6 text-slate-800">
-             <button onClick={onBack} className="mb-6 bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-lg hover:bg-green-700 transition-transform transform hover:scale-105">
+         <Modal term={modalTerm} onClose={() => setModalTerm(null)} knowledgeBase={knowledgeBase} />
+         <div className="container mx-auto max-w-5xl p-4 sm:p-6">
+             <button onClick={onBack} className="mb-6 bg-primary text-primary-foreground font-bold py-2 px-4 rounded-lg shadow-lg hover:bg-primary/90 transition-transform transform hover:scale-105">
                 &larr; Voltar para a Lista
             </button>
             <header className="text-center mb-8">
@@ -369,17 +477,17 @@ const TransfusaoSanguinea = ({ onBack }: { onBack: () => void }) => {
                     alt="Logo do aplicativo de banco de sangue veterinário, mostrando um cão e um gato dentro de uma gota de sangue com um eletrocardiograma"
                     className="mx-auto mb-4"
                 />
-                <h1 className="text-4xl md:text-5xl font-bold text-slate-900">HemoVet Companion</h1>
-                <p className="text-slate-600 mt-2 text-lg">O seu guia clínico completo para a medicina transfusional.</p>
+                <h1 className="text-4xl md:text-5xl font-bold text-foreground">HemoVet Companion</h1>
+                <p className="text-muted-foreground mt-2 text-lg">O seu guia clínico completo para a medicina transfusional.</p>
             </header>
 
-            <div className="mb-6 border-b border-slate-200 sticky top-0 bg-slate-100 z-10">
+            <div className="mb-6 border-b border-border sticky top-0 bg-background z-10">
                 <nav className="flex -mb-px space-x-4 md:space-x-8 overflow-x-auto">
                     {['calculator', 'prep', 'crossmatch', 'reactions', 'drugs'].map(tab => (
                         <button 
                             key={tab}
                             onClick={() => setActiveTab(tab)}
-                            className={`tab-button text-base md:text-lg py-3 px-2 border-b-2 border-transparent font-medium text-slate-600 hover:text-amber-600 hover:border-amber-400 whitespace-nowrap ${activeTab === tab ? 'active' : ''}`}>
+                            className={`tab-button text-base md:text-lg py-3 px-2 border-b-2 border-transparent font-medium transition-colors whitespace-nowrap ${activeTab === tab ? 'active text-primary border-primary' : 'text-muted-foreground hover:text-foreground hover:border-primary/50'}`}>
                                 { {calculator: 'Calculadora 🧮', prep: 'Preparo e Guias 📋', crossmatch: 'Prova Cruzada 🔬', reactions: 'Reações 🚨', drugs: 'Fármacos 💊'}[tab] }
                         </button>
                     ))}
@@ -394,176 +502,170 @@ const TransfusaoSanguinea = ({ onBack }: { onBack: () => void }) => {
     );
 };
 
-// --- SUB-COMPONENTS for TABS ---
+type CalculatorTabProps = {
+  species: string;
+  setSpecies: (v: string) => void;
+  weight: string;
+  setWeight: (v: string) => void;
+  currentPcv: string;
+  setCurrentPcv: (v: string) => void;
+  desiredPcv: string;
+  setDesiredPcv: (v: string) => void;
+  product: string;
+  setProduct: (v: string) => void;
+  bagPcv: string;
+  setBagPcv: (v: string) => void;
+  physState: string;
+  setPhysState: (v: string) => void;
+  isHighRisk: boolean;
+  setIsHighRisk: (v: boolean) => void;
+  isActiveHemorrhage: boolean;
+  setIsActiveHemorrhage: (v: boolean) => void;
+  isFirstTransfusionDog: boolean;
+  setIsFirstTransfusionDog: (v: boolean) => void;
+  results: any;
+  handleCalculateTransfusion: () => void;
+  plasmaDose: string | null;
+  collectionVolume: string;
+  setCollectionVolume: (v: string) => void;
+  anticoagulantType: string;
+  setAnticoagulantType: (v: string) => void;
+  anticoagulantResult: string | null;
+  handleCalculateAnticoagulant: () => void;
+  setModalTerm: (term: string) => void;
+};
 
-const PrepGuideTab = ({ openModal }) => {
-    const HelpIcon = ({ term }) => <span className="help-icon" onClick={(e) => { e.stopPropagation(); openModal(term); }}>?</span>;
+const CalculatorTab = React.memo(function CalculatorTab({
+    species,
+    setSpecies,
+    weight,
+    setWeight,
+    currentPcv,
+    setCurrentPcv,
+    desiredPcv,
+    setDesiredPcv,
+    product,
+    setProduct,
+    bagPcv,
+    setBagPcv,
+    physState,
+    setPhysState,
+    isHighRisk,
+    setIsHighRisk,
+    isActiveHemorrhage,
+    setIsActiveHemorrhage,
+    isFirstTransfusionDog,
+    setIsFirstTransfusionDog,
+    results,
+    handleCalculateTransfusion,
+    plasmaDose,
+    collectionVolume,
+    setCollectionVolume,
+    anticoagulantType,
+    setAnticoagulantType,
+    anticoagulantResult,
+    handleCalculateAnticoagulant,
+    setModalTerm,
+}: CalculatorTabProps) {
     return (
-        <div className="space-y-6">
-            <div className="bg-white p-6 rounded-xl shadow-lg">
-                <h3 className="text-2xl font-semibold text-slate-800 mb-4">Guia Prático de Preparo para Transfusão</h3>
-                <div className="prose max-w-none">
-                    <p>A segurança transfusional começa muito antes da primeira gota. Cada passo é um ponto de controle crítico para prevenir complicações.</p>
-                    <h4>1. Verificação e Compatibilidade</h4>
-                    <p>Realize uma verificação cruzada rigorosa: confirme a identidade do paciente, o tipo sanguíneo do receptor e da bolsa, e o resultado da prova cruzada. Inspecione visualmente a bolsa: procure por vazamentos, descoloração (tons roxos/escuros podem indicar hemólise ou contaminação bacteriana) e a presença de coágulos grosseiros.<HelpIcon term="visual_inspection" /></p>
-                    
-                    <div className="mt-6 p-4 border border-slate-200 rounded-lg">
-                        <h2 className="text-xl font-semibold text-slate-700 text-center mb-2">Princípios da Transfusão Sanguínea em Caninos</h2>
-                        <img src="https://res.cloudinary.com/dwta1roq1/image/upload/q_auto,f_auto/transfusao/cao" alt="Infográfico resumindo a transfusão de sangue em cães, com ênfase no sistema DEA 1 e na sensibilização após a primeira transfusão incompatível" style={{width: '100%', borderRadius: '0.5rem'}} />
+        <div className="space-y-8">
+            <div className="bg-card text-card-foreground border border-border p-6 rounded-xl shadow-lg space-y-6">
+                <h3 className="text-2xl font-semibold text-foreground border-b border-border pb-2">Calculadora de Volume e Taxas</h3>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div className="space-y-4">
+                        <div>
+                            <label className="block text-sm font-medium text-foreground">Paciente 🐾</label>
+                            <select value={species} onChange={e => setSpecies(e.target.value)} className="mt-1 block w-full rounded-md border-input shadow-sm focus:border-primary focus:ring-primary bg-card text-foreground">
+                                <option value="dog">Cão 🐶</option>
+                                <option value="cat">Gato 🐱</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label htmlFor="weight" className="block text-sm font-medium text-foreground">Peso (kg)</label>
+                            <input type="number" id="weight" value={weight} onChange={e => setWeight(e.target.value)} className="mt-1 block w-full rounded-md border-input shadow-sm focus:border-primary focus:ring-primary bg-card text-foreground" placeholder="25" />
+                        </div>
+                        <div>
+                            <label htmlFor="current-pcv" className="block text-sm font-medium text-foreground">VG/Ht Atual (%)<HelpIcon term="pcv" onOpenModal={setModalTerm} /></label>
+                            <input type="number" id="current-pcv" value={currentPcv} onChange={e => setCurrentPcv(e.target.value)} disabled={product === 'plasma'} className="mt-1 block w-full rounded-md border-input shadow-sm focus:border-primary focus:ring-primary bg-card text-foreground" placeholder="15" />
+                        </div>
+                        <div>
+                            <label htmlFor="desired-pcv" className="block text-sm font-medium text-foreground">VG/Ht Desejado (%)<HelpIcon term="desired_pcv" onOpenModal={setModalTerm} /></label>
+                            <input type="number" id="desired-pcv" value={desiredPcv} onChange={e => setDesiredPcv(e.target.value)} disabled={product === 'plasma'} className="mt-1 block w-full rounded-md border-input shadow-sm focus:border-primary focus:ring-primary bg-card text-foreground" placeholder="25" />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-foreground">Hemocomponente 🩸<HelpIcon term="components" onOpenModal={setModalTerm} /></label>
+                            <select id="product" value={product} onChange={e => setProduct(e.target.value)} className="mt-1 block w-full rounded-md border-input shadow-sm focus:border-primary focus:ring-primary bg-card text-foreground">
+                                <option value="whole_blood">Sangue Total (ST)</option>
+                                <option value="rbc">Concentrado de Hemácias (CH)</option>
+                                <option value="plasma">Plasma (PFC/PC)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label htmlFor="bag-pcv" className="block text-sm font-medium text-foreground">VG da Bolsa (%)<HelpIcon term="bag_pcv" onOpenModal={setModalTerm} /></label>
+                            <input type="number" id="bag-pcv" value={bagPcv} onChange={e => setBagPcv(e.target.value)} disabled={product === 'plasma'} className="mt-1 block w-full rounded-md border-input shadow-sm focus:border-primary focus:ring-primary bg-card text-foreground" placeholder="80" />
+                        </div>
                     </div>
-
-                    <div className="mt-6 p-4 border border-slate-200 rounded-lg">
-                        <h2 className="text-xl font-semibold text-slate-700 text-center mb-2">Princípios da Transfusão Sanguínea em Felinos</h2>
-                        <img src="https://res.cloudinary.com/dwta1roq1/image/upload/q_auto,f_auto/transfusao/gato" alt="Infográfico resumindo a transfusão de sangue em gatos, com ênfase nos tipos sanguíneos A, B e AB e a importância dos aloanticorpos" style={{width: '100%', borderRadius: '0.5rem'}} />
+                    <div className="space-y-4">
+                        <fieldset>
+                             <label className="text-base font-medium text-foreground flex items-center">Estado Fisiológico do Receptor <HelpIcon term="phys_state" onOpenModal={setModalTerm} /></label>
+                            <select value={physState} onChange={e => setPhysState(e.target.value)} className="mt-1 block w-full rounded-md border-input shadow-sm focus:border-primary focus:ring-primary bg-card text-foreground">
+                                <option value="adult">Adulto Hígido</option>
+                                <option value="pediatric">Filhote/Pediátrico</option>
+                                <option value="senior">Idoso/Geriátrico</option>
+                                <option value="obese">Obeso</option>
+                            </select>
+                        </fieldset>
+                        <fieldset>
+                            <legend className="text-base font-medium text-foreground flex items-center">Condições de Risco Adicionais <HelpIcon term="risk_conditions" onOpenModal={setModalTerm} /></legend>
+                            <div className="mt-2 space-y-2">
+                                <div className="relative flex items-start"><div className="flex h-5 items-center"><input id="cardiac-renal" type="checkbox" checked={isHighRisk} onChange={e => setIsHighRisk(e.target.checked)} className="h-4 w-4 rounded border-input text-primary focus:ring-primary" /></div><div className="ml-3 text-sm"><label htmlFor="cardiac-renal" className="font-medium text-foreground">Doença Cardíaca/Renal ❤️</label></div></div>
+                                <div className="relative flex items-start"><div className="flex h-5 items-center"><input id="active-hemorrhage" type="checkbox" checked={isActiveHemorrhage} onChange={e => setIsActiveHemorrhage(e.target.checked)} className="h-4 w-4 rounded border-input text-primary focus:ring-primary" /></div><div className="ml-3 text-sm"><label htmlFor="active-hemorrhage" className="font-medium text-foreground">Hemorragia Aguda Ativa</label></div></div>
+                                {species === 'dog' && <div className="relative flex items-start"><div className="flex h-5 items-center"><input id="first-transfusion-dog" type="checkbox" checked={isFirstTransfusionDog} onChange={e => setIsFirstTransfusionDog(e.target.checked)} className="h-4 w-4 rounded border-input text-primary focus:ring-primary" /></div><div className="ml-3 text-sm"><label htmlFor="first-transfusion-dog" className="font-medium text-foreground">Primeira Transfusão (Cão) ☝️<HelpIcon term="first_transfusion" onOpenModal={setModalTerm} /></label></div></div>}
+                            </div>
+                        </fieldset>
                     </div>
-
-                    <h4>2. Aquecimento do Hemocomponente</h4>
-                    <p>Produtos contendo eritrócitos (CH, ST) devem ser aquecidos gradualmente até a temperatura corporal (~37°C). Use um banho-maria com termômetro ou um aquecedor de fluidos em linha. <strong>NUNCA</strong> use micro-ondas ou água fervente.<HelpIcon term="warming_blood" /></p>
-                    <h4>3. Acesso Venoso e Equipamento</h4>
-                    <p>Utilize um cateter intravenoso dedicado, de calibre apropriado para o paciente e para a velocidade da infusão. Todos os hemocomponentes devem, obrigatoriamente, ser administrados através de um <strong>equipo de transfusão com filtro</strong> (poro padrão de 170-260 mícrons).<HelpIcon term="filter_use" /></p>
-                    <h4>4. Compatibilidade de Fluidos</h4>
-                    <p>A única solução cristaloide segura para administrar na mesma linha de uma transfusão é <strong>NaCl 0.9% (solução salina isotônica)</strong>. Fluidos contendo cálcio (ex: Ringer com Lactato) são <strong>absolutamente contraindicados</strong>.<HelpIcon term="fluid_compatibility" /></p>
+                </div>
+                <div className="flex justify-center pt-4">
+                    <button onClick={handleCalculateTransfusion} className="w-full md:w-2/3 bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 px-4 rounded-lg shadow-lg transition-transform transform hover:scale-105 text-lg">Calcular Volume e Taxas</button>
                 </div>
             </div>
-            <div className="bg-white p-6 rounded-xl shadow-lg">
-                <h3 className="text-2xl font-semibold text-slate-800 mb-4">Monitoramento Detalhado do Paciente 🩺</h3>
-                <p className="mb-4">Monitore a cada 15 min na 1ª hora, depois a cada 30-60 min até o final.</p>
-                <div className="space-y-4 divide-y divide-slate-200">
-                     <div className="monitoring-item pt-4 first:pt-0">
-                        <strong className="text-lg text-slate-700">🌡️ Temperatura Retal</strong>
-                        <p><strong>Como medir:</strong> Use um termômetro retal digital lubrificado.</p>
-                        <p><strong>Valores Normais:</strong> Cães e Gatos: 38.0°C a 39.2°C.</p>
-                        <p><strong>Relevância na Transfusão:</strong> Um aumento &gt;1°C em relação ao basal é o sinal mais comum de uma reação transfusional (FNHTR, hemolítica, sepse). Hipotermia pode ocorrer com a infusão rápida de sangue frio.</p>
+            
+            {results && (
+                <div className="bg-primary/10 border-l-8 border-primary p-6 rounded-r-lg">
+                    <h3 className="text-2xl font-semibold text-foreground mb-4">Resultados da Transfusão 📈</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                        <div className="bg-card p-4 rounded-lg shadow"><p className="text-sm text-muted-foreground">Volume Total</p><p className="text-3xl font-bold text-primary">{results.totalVolume} mL</p></div>
+                        <div className="bg-card p-4 rounded-lg shadow"><p className="text-sm text-muted-foreground flex items-center justify-center">Taxa Inicial (15-30min)<HelpIcon term="initial_rate_why" onOpenModal={setModalTerm} /></p><p className="text-2xl font-bold text-primary">{results.initialRate} mL/h</p></div>
+                        <div className="bg-card p-4 rounded-lg shadow"><p className="text-sm text-muted-foreground flex items-center justify-center">Taxa de Manutenção<HelpIcon term="maintenance_rate_why" onOpenModal={setModalTerm} /></p><p className="text-2xl font-bold text-primary">{results.maintenanceRate} mL/h</p></div>
                     </div>
-                    <div className="monitoring-item pt-4">
-                        <strong className="text-lg text-slate-700">❤️ Frequência Cardíaca (FC) e Qualidade do Pulso</strong>
-                        <p><strong>Como medir:</strong> Ausculte o tórax com um estetoscópio ou palpe o pulso femoral (conte as batidas em 15s e multiplique por 4). Avalie a qualidade do pulso (ex: forte, fraco, filiforme).</p>
-                        <p><strong>Valores Normais (repouso):</strong> Cães: 60-140 bpm (varia com porte); Gatos: 140-220 bpm.</p>
-                        <p><strong>Relevância na Transfusão:</strong> Taquicardia é um sinal precoce de reação hemolítica, anafilaxia ou sobrecarga de volume (TACO). Bradicardia é rara, mas pode ocorrer em colapso.</p>
-                    </div>
-                    <div className="monitoring-item pt-4">
-                        <strong className="text-lg text-slate-700">💨 Frequência e Padrão Respiratório (FR)</strong>
-                        <p><strong>Como medir:</strong> Observe os movimentos do tórax (conte em 15s e multiplique por 4). Note o esforço (dispneia) ou sons anormais (tosse).</p>
-                        <p><strong>Valores Normais (repouso):</strong> Cães: 10-30 mpm; Gatos: 20-40 mpm.</p>
-                        <p><strong>Relevância na Transfusão:</strong> Taquipneia/Dispneia é um sinal crítico de <strong>sobrecarga circulatória (TACO)</strong> ou lesão pulmonar (TRALI). Ausculte o pulmão para detectar crepitações.</p>
-                    </div>
-                    <div className="monitoring-item pt-4">
-                        <strong className="text-lg text-slate-700">👄 Cor das Mucosas e TPC</strong>
-                        <p><strong>Como medir:</strong> Levante o lábio e observe a cor da gengiva. Pressione firmemente e conte o tempo para a cor retornar (Tempo de Preenchimento Capilar).</p>
-                        <p><strong>Valores Normais:</strong> Mucosas róseas e úmidas; TPC &lt; 2 segundos.</p>
-                        <p><strong>Relevância na Transfusão:</strong> Palidez (choque), hiperemia (sepse/anafilaxia), icterícia (hemólise) ou TPC aumentado (&gt;2s) são sinais de alerta importantes.</p>
-                    </div>
-                    <div className="monitoring-item pt-4">
-                        <strong className="text-lg text-slate-700">🩸 Pressão Arterial (PA)</strong>
-                        <p><strong>Como medir:</strong> Use métodos Doppler ou oscilométricos com manguito de largura apropriada (40% da circunferência do membro).</p>
-                        <p><strong>Valores Normais (Sistólica):</strong> 110-160 mmHg.</p>
-                        <p><strong>Relevância na Transfusão:</strong> Hipotensão (PA &lt; 90 mmHg sistólica) é um sinal grave de reação hemolítica, anafilaxia ou sepse. Hipertensão pode ser vista em TACO.</p>
-                    </div>
-                    <div className="monitoring-item pt-4">
-                        <strong className="text-lg text-slate-700">🧠 Estado Mental e Comportamento</strong>
-                        <p><strong>Como avaliar:</strong> Observe a interação do paciente com o ambiente. Mudanças sutis como inquietação, ansiedade ou letargia podem ser os primeiros sinais de uma complicação, precedendo alterações nos sinais vitais.</p>
-                    </div>
+                    {results.alerts.length > 0 && <div className="mt-6">
+                        <h4 className="font-semibold text-lg text-foreground mb-2">⚠️ Alertas de Segurança</h4>
+                        <div className="space-y-2">
+                            {results.alerts.map((alert, i) => {
+                                const alertKey = `${alert.type}-${alert.text?.substring(0, 30) ?? ""}-${i}`;
+                                return (
+                                    <div key={alertKey} className={`p-3 rounded-r-md ${alert.type === 'danger' ? 'bg-destructive/10 border-l-4 border-destructive text-destructive dark:bg-destructive/20 dark:text-destructive' : 'bg-yellow-100 dark:bg-yellow-900/20 border-l-4 border-yellow-500 dark:border-yellow-600 text-yellow-900 dark:text-yellow-300'}`} dangerouslySetInnerHTML={{ __html: alert.text }}></div>
+                                );
+                            })}
+                        </div>
+                    </div>}
                 </div>
+            )}
+            {plasmaDose && (
+                <div className="mt-4 bg-yellow-100 dark:bg-yellow-900/20 border-l-4 border-yellow-500 dark:border-yellow-600 text-yellow-900 dark:text-yellow-300 p-4 rounded-lg"><p className="font-bold">💡 Dosagem de Plasma:</p><p>A dose inicial padrão para coagulopatias ou hipoproteinemia é de <strong>10 a 20 mL/kg</strong>. O volume calculado de <strong><span>{plasmaDose}</span></strong> é uma sugestão inicial. Ajuste conforme a resposta clínica e laboratorial.</p></div>
+            )}
+
+            <div className="bg-card p-6 rounded-xl shadow-lg space-y-4">
+                <h3 className="text-2xl font-semibold text-foreground border-b pb-2">Calculadora de Anticoagulante (Coleta)</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+                    <div><label htmlFor="collection-volume" className="block text-sm font-medium text-foreground">Volume de Sangue a Coletar (mL)</label><input type="number" id="collection-volume" value={collectionVolume} onChange={e => setCollectionVolume(e.target.value)} className="mt-1 block w-full rounded-md border-input shadow-sm focus:border-primary focus:ring-primary bg-card text-foreground" placeholder="50" /></div>
+                    <div><label htmlFor="anticoagulant-type" className="block text-sm font-medium text-foreground">Tipo de Anticoagulante<HelpIcon term="anticoagulants" onOpenModal={setModalTerm} /></label><select id="anticoagulant-type" value={anticoagulantType} onChange={e => setAnticoagulantType(e.target.value)} className="mt-1 block w-full rounded-md border-input shadow-sm focus:border-primary focus:ring-primary bg-card text-foreground"><option value="cpda1">CPDA-1</option><option value="citrate">Citrato de Sódio (3.2-3.8%)</option></select></div>
+                    <div><button onClick={handleCalculateAnticoagulant} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-2 px-4 rounded-lg shadow-md">Calcular</button></div>
+                </div>
+                {anticoagulantResult && <div className="text-center bg-green-100 dark:bg-green-900/20 text-green-900 dark:text-green-300 p-4 mt-4 rounded-lg"><p className="text-lg">Volume de anticoagulante necessário: <strong className="text-xl">{anticoagulantResult}</strong></p></div>}
             </div>
         </div>
     );
-}
-
-const CrossmatchGuideTab = () => (
-    <div className="prose max-w-none bg-white p-6 rounded-xl shadow-lg text-gray-900">
-        <h3 className="text-2xl font-semibold text-slate-800">Guia Aprofundado: Prova de Compatibilidade Cruzada (Cross-match)</h3>
-        <p>A prova cruzada é a sua rede de segurança final. Este guia detalha o método em tubo, considerado o padrão-ouro.</p>
-        
-        <h4>Materiais Necessários:</h4>
-        <ul>
-            <li>Amostras de sangue em tubo com EDTA (tampa roxa) e tubo seco (tampa vermelha) do <strong>DOADOR</strong> e do <strong>RECEPTOR</strong>.</li>
-            <li>Tubos de ensaio de vidro (12x75 mm), pipetas Pasteur ou micropipetas, centrífuga, microscópio e lâminas.</li>
-            <li>Solução salina (NaCl 0.9%).</li>
-        </ul>
-
-        <h4>Passo 1: Preparo das Hemácias Lavadas (para Doador e Receptor)</h4>
-        <ol>
-            <li>Centrifugue o sangue do tubo de EDTA para separar o plasma das hemácias. Descarte o plasma.</li>
-            <li>Adicione 2-3 gotas do concentrado de hemácias a um tubo de ensaio.</li>
-            <li><strong>Lave as hemácias:</strong> Encha o tubo com salina, tampe e inverta suavemente. Centrifugue a ~1000g (ou ~3000 RPM numa centrífuga padrão) por 1 minuto.</li>
-            <li>Aspire cuidadosamente o sobrenadante. Repita a lavagem mais duas vezes (total de 3 lavagens). A lavagem remove proteínas plasmáticas que podem causar pseudoaglutinação.</li>
-            <li>Após a última lavagem, prepare uma <strong>suspensão de hemácias a 3-5%</strong>: adicione 0.1 mL do botão de hemácias lavadas a 2 mL de salina. A solução deve ter uma cor vermelho-cereja transparente.</li>
-        </ol>
-
-        <h4>Passo 2: Realização das Provas e Controles</h4>
-        <p>Para cada tubo, adicione os componentes na ordem listada:</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="border-l-4 border-red-500 bg-red-50 p-4 rounded"><strong>Prova Maior (CRÍTICA):</strong><br/>2 gotas de <strong>soro/plasma do RECEPTOR</strong><br/>+ 1 gota de <strong>suspensão de hemácias do DOADOR</strong></div>
-            <div className="border-l-4 border-blue-500 bg-blue-50 p-4 rounded"><strong>Prova Menor:</strong><br/>2 gotas de <strong>soro/plasma do DOADOR</strong><br/>+ 1 gota de <strong>suspensão de hemácias do RECEPTOR</strong></div>
-            <div className="border-l-4 border-gray-400 bg-gray-50 p-4 rounded"><strong>Controle do Receptor:</strong><br/>2 gotas de <strong>soro/plasma do RECEPTOR</strong><br/>+ 1 gota de <strong>suspensão de hemácias do RECEPTOR</strong></div>
-            <div className="border-l-4 border-gray-400 bg-gray-50 p-4 rounded"><strong>Controle do Doador:</strong><br/>2 gotas de <strong>soro/plasma do DOADOR</strong><br/>+ 1 gota de <strong>suspensão de hemácias do DOADOR</strong></div>
-        </div>
-        <p className="mt-4">Os tubos de controle servem para detectar autoaglutinação. Se algum controle for positivo, a interpretação das provas principais é invalidada.</p>
-
-        <h4>Passo 3: Incubação e Leitura</h4>
-        <ol>
-            <li>Misture e incube todos os tubos por 15-30 minutos à temperatura ambiente.</li>
-            <li>Centrifugue levemente (ex: 1000g por 15 segundos) para facilitar a visualização do botão celular.</li>
-            <li>
-                <strong>Leitura Macroscópica:</strong>
-                <p>Examine o sobrenadante e o botão de hemácias. A incompatibilidade é indicada por:</p>
-                <ul>
-                    <li><strong>Hemólise:</strong> Sobrenadante rosado/vermelho.</li>
-                    <li><strong>Aglutinação:</strong> O botão de hemácias não se ressuspende suavemente, formando agregados sólidos ou "grãos de areia".</li>
-                </ul>
-                <div className="mt-4 p-4 border border-slate-200 rounded-lg bg-slate-50">
-                    <h3 className="text-lg font-semibold text-slate-700">Exemplos de Graus de Aglutinação</h3>
-                    <p>A imagem abaixo demonstra os graus de reação. Uma reação de 2+ ou superior é considerada uma incompatibilidade significativa.</p>
-                    <img src="https://res.cloudinary.com/dwta1roq1/image/upload/q_auto,f_auto/aglutinacao/transfusao-2" alt="Imagem ilustrando quatro graus de aglutinação macroscópica em testes de compatibilidade sanguínea, de ausente a severa" style={{width: '100%', borderRadius: '0.5rem', marginTop: '1rem'}} />
-                </div>
-            </li>
-            <li><strong>Leitura Microscópica:</strong> Coloque uma gota da mistura em uma lâmina e examine em menor aumento. Procure por cachos de hemácias (como "cachos de uva") para confirmar a microaglutinação. Não confunda com *rouleaux* (empilhamento de moedas), que geralmente se dispersa com uma gota de salina.</li>
-        </ol>
-
-        <h4>Passo 4: Interpretação Final</h4>
-        <ul>
-            <li>✅ <strong>Compatível:</strong> Nenhuma aglutinação ou hemólise na Prova Maior e Menor. Os controles devem ser negativos. A transfusão é considerada segura.</li>
-            <li>🚨 <strong>Incompatível:</strong> Presença de aglutinação e/ou hemólise na Prova Maior. <strong>NÃO TRANSFUNDIR!</strong> Isso prediz uma reação hemolítica aguda grave.</li>
-            <li>⚠️ <strong>Incompatibilidade Menor:</strong> Uma reação positiva apenas na Prova Menor indica que o plasma do doador tem anticorpos contra as hemácias do receptor. O risco é menor (os anticorpos são diluídos), mas a transfusão deve ser feita com cautela e lentamente, ou um doador diferente deve ser considerado.</li>
-        </ul>
-        <p className="text-sm text-slate-500"><em>Fonte: Baseado em diretrizes do ACVIM e do livro "Small Animal Transfusion Medicine" (2ª ed.) de Plumb.</em></p>
-    </div>
-);
-
-const ReactionsGuideTab = () => (
-    <div className="space-y-4">
-        <div className="bg-white p-6 rounded-xl shadow-lg">
-            <h3 className="text-2xl font-semibold mb-3 text-slate-800">Gerenciador de Reações Agudas 🚨</h3>
-            <p className="text-slate-600 mb-4 text-lg">Ao suspeitar de qualquer reação, a primeira ação é <strong>SEMPRE PARAR A TRANSFUSÃO</strong> e manter o acesso IV com NaCl 0.9%.</p>
-            <div className="space-y-4">
-                {reactionsData.map(reaction => (
-                    <div key={reaction.name} className="border border-slate-200 rounded-lg p-4">
-                        <h4 className="font-semibold text-lg text-red-600">{reaction.name}</h4>
-                        <p className="mt-1"><strong>Sinais Clínicos:</strong> {reaction.signs}</p>
-                        <p className="mt-1"><strong>Tratamento Específico:</strong> {reaction.treatment}</p>
-                        <p className="mt-1"><strong>Prevenção:</strong> {reaction.prevention}</p>
-                    </div>
-                ))}
-            </div>
-        </div>
-    </div>
-);
-
-const DrugsGuideTab = () => (
-    <div className="space-y-4">
-        <div className="bg-white p-6 rounded-xl shadow-lg">
-            <h3 className="text-2xl font-semibold mb-3 text-slate-800">Guia Rápido de Fármacos 💊</h3>
-            <div className="divide-y divide-slate-200">
-                {drugsData.map(drug => (
-                    <div key={drug.name} className="py-4">
-                        <h4 className="font-semibold text-lg text-slate-800">{drug.name}</h4>
-                        <p className="text-slate-600"><strong>Indicação:</strong> {drug.indication}</p>
-                        <p className="text-slate-600"><strong>Dose:</strong> {drug.dose}</p>
-                    </div>
-                ))}
-            </div>
-        </div>
-    </div>
-);
+});
 
 export default TransfusaoSanguinea;

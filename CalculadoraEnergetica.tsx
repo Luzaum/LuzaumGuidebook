@@ -163,6 +163,31 @@ const knowledgeBase = {
     foodAmount: { title: "Cálculo da Quantidade de Alimento", content: "Após determinar a meta calórica diária do paciente (seja para manutenção, perda ou ganho de peso), a quantidade de um alimento específico é calculada dividindo essa meta pela densidade energética do alimento.<br/><br/><strong>Fórmula:</strong><br/><code>Quantidade Diária = Meta de Energia (kcal/dia) / Calorias do Alimento (kcal por unidade)</code><br/><br/><strong>Exemplo:</strong> Se a meta de um paciente é de <strong>300 kcal/dia</strong> e a ração escolhida possui <strong>3.0 kcal/g</strong>, o cálculo é:<br/><code>300 kcal/dia / 3.0 kcal/g = <strong>100 gramas por dia</strong></code><br/><br/>Este cálculo garante que o paciente receba a quantidade exata de calorias para atingir seu objetivo nutricional." }
 };
 
+// --- HELPER COMPONENTS (fora do componente principal) ---
+const HelpIcon = React.memo(function HelpIcon({ term, onOpenModal, ...props }: { term: string; onOpenModal: (content: any) => void; [key: string]: any }) {
+    return (
+        <span
+            className="inline-flex items-center justify-center w-5 h-5 ml-2 text-sm font-bold text-primary-foreground bg-muted-foreground rounded-full cursor-pointer transition-colors hover:bg-foreground shrink-0"
+            role="button"
+            aria-label="Abrir guia"
+            onClick={(e) => { e.stopPropagation(); onOpenModal(knowledgeBase[term]); }}
+            {...props}
+        >?</span>
+    );
+});
+
+const Modal = React.memo(function Modal({ content, onClose }: { content: any; onClose: () => void }) {
+    if (!content) return null;
+    return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50" onClick={onClose}>
+            <div className="bg-card text-card-foreground border border-border rounded-lg shadow-xl max-w-lg w-full p-6" onClick={(e) => e.stopPropagation()}>
+                <h3 className="text-xl font-bold text-foreground mb-4">{content.title}</h3>
+                <div className="text-muted-foreground space-y-4" dangerouslySetInnerHTML={{ __html: content.content }} />
+                <button onClick={onClose} className="mt-6 w-full py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition">Fechar</button>
+            </div>
+        </div>
+    );
+});
 
 const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
     // --- STATE MANAGEMENT ---
@@ -187,31 +212,6 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
     const [idealWeightModalOpenFor, setIdealWeightModalOpenFor] = useState(null); // 'dog' or 'cat'
     const [iwcInput, setIwcInput] = useState({ weight: '', ecc: '6' });
     const [iwcResult, setIwcResult] = useState('');
-
-
-    // --- HELPER COMPONENTS ---
-    const HelpIcon = ({ term, ...props }) => (
-        <span
-            className="inline-flex items-center justify-center w-5 h-5 ml-2 text-sm font-bold text-primary-foreground bg-muted-foreground rounded-full cursor-pointer transition-colors hover:bg-foreground shrink-0"
-            role="button"
-            aria-label="Abrir guia"
-            onClick={(e) => { e.stopPropagation(); setModalContent(knowledgeBase[term]); }}
-            {...props}
-        >?</span>
-    );
-
-    const Modal = ({ content, onClose }) => {
-        if (!content) return null;
-        return (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50" onClick={onClose}>
-                <div className="bg-card text-card-foreground border border-border rounded-lg shadow-xl max-w-lg w-full p-6" onClick={(e) => e.stopPropagation()}>
-                    <h3 className="text-xl font-bold text-foreground mb-4">{content.title}</h3>
-                    <div className="text-muted-foreground space-y-4" dangerouslySetInnerHTML={{ __html: content.content }} />
-                    <button onClick={onClose} className="mt-6 w-full py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition">Fechar</button>
-                </div>
-            </div>
-        );
-    };
 
     // --- DERIVED STATE & CALCULATIONS ---
     const calculationResults = useMemo(() => {
@@ -593,7 +593,7 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                         <input type="radio" id={goal.id} name="nutritionalGoal" value={goal.id} checked={nutritionalGoal === goal.id} onChange={(e) => setNutritionalGoal(e.target.value)} className="hidden goal-radio" />
                                         <label htmlFor={goal.id} className="flex items-center justify-center p-3 w-full text-center rounded-lg border-2 cursor-pointer transition-all bg-card border-input hover:bg-muted">
                                             <span className="font-medium text-foreground">{goal.label}</span>
-                                            <HelpIcon term={goal.id} />
+                                            <HelpIcon term={goal.id} onOpenModal={setModalContent} />
                                         </label>
                                     </div>
                                 ))}
@@ -635,7 +635,7 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                 <label htmlFor="predefined-food-select" className="block text-sm font-medium text-foreground mb-2">Selecionar Alimento ({species === 'dog' ? 'Cães' : 'Gatos'})</label>
                                 <select id="predefined-food-select" value={predefinedFoodIndex} onChange={handlePredefinedFoodChange} className="w-full p-3 bg-card border border-input rounded-lg text-foreground">
                                     <option value="">Selecione um alimento...</option>
-                                    {sortedFoods.map((food, i) => <option key={i} value={i}>{food.name}</option>)}
+                                    {sortedFoods.map((food, i) => <option key={`${food.name}-${food.calories ?? ""}-${i}`} value={i}>{food.name}</option>)}
                                 </select>
                             </div>
                              {selectedFoodAlerts && selectedFoodAlerts.length > 0 && (
@@ -648,7 +648,7 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                         };
                                         const icon = { red: '🚨', yellow: '⚠️', green: '✅' };
                                         return (
-                                            <div key={alertIndex} className={`p-3 rounded-r-md text-sm flex items-start ${alertClasses[alert.type]}`}>
+                                            <div key={`${alert.type}-${alert.text?.substring(0, 20) ?? ""}-${alertIndex}`} className={`p-3 rounded-r-md text-sm flex items-start ${alertClasses[alert.type]}`}>
                                                 <span className="mr-2 text-base">{icon[alert.type]}</span>
                                                 <p dangerouslySetInnerHTML={{ __html: alert.text }} />
                                             </div>
@@ -677,11 +677,12 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                     <p className="text-center text-muted-foreground">Nenhum alimento adicionado ainda.</p>
                                 ) : foodPrescriptionList.map((food, i) => {
                                     const unitLabel = food.unit === 'g' ? 'g' : (food.unit === 'ml' ? 'mL' : food.unit);
+                                    const foodKey = `${food.name}-${food.calories ?? ""}-${food.unit ?? ""}-${i}`;
                                     
                                     if(isCritical) {
                                         const rerKcal = calculationResults?.rer || 0;
                                         return (
-                                             <div key={i} className="bg-card p-4 rounded-lg border border-border">
+                                             <div key={foodKey} className="bg-card p-4 rounded-lg border border-border">
                                                 <h4 className="font-bold text-foreground text-lg mb-3">{food.name}</h4>
                                                 <p className='text-sm text-center text-red-600 mb-2'>Paciente crítico: usando plano de progressão para meta de manutenção (RER).</p>
                                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-foreground">
@@ -709,12 +710,12 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                         const amount = (targetKcal > 0 && food.calories > 0) ? (targetKcal / food.calories).toFixed(1) : '0.0';
                                         
                                         return (
-                                            <div key={i} className="bg-card p-4 rounded-lg border border-border">
+                                            <div key={foodKey} className="bg-card p-4 rounded-lg border border-border">
                                                 <h4 className="font-bold text-foreground text-lg mb-3">{food.name}</h4>
                                                 <div className="flex justify-between items-center p-3 bg-blue-50 rounded-md">
                                                     <span className="flex items-center text-md font-semibold text-blue-800">
                                                         {goalOptions.find(g => g.id === nutritionalGoal)?.label || 'Meta:'}
-                                                        <HelpIcon term="foodAmount" />
+                                                        <HelpIcon term="foodAmount" onOpenModal={setModalContent} />
                                                     </span>
                                                     <strong className="text-xl font-bold text-blue-800">
                                                         {targetKcal > 0 ? `${amount} ${unitLabel}/dia` : 'Insira o peso ideal'}
@@ -744,8 +745,9 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                         kcalDisplay = `${food.calories.toFixed(0)} /unidade`;
                                     }
                                 }
+                                const foodCatalogKey = `${food.name}-${food.calories ?? ""}-${food.unit ?? ""}-${i}`;
                                 return (
-                                <div key={i} className="bg-muted p-4 rounded-lg border border-border">
+                                <div key={foodCatalogKey} className="bg-muted p-4 rounded-lg border border-border">
                                     <h4 className="font-bold text-foreground">{food.name}</h4>
                                     <div className="mt-2 grid grid-cols-1 md:grid-cols-3 gap-2 text-sm text-foreground">
                                         <div className="text-center bg-card p-2 rounded"><strong>kcal/kg ou /L:</strong> {kcalDisplay}</div>
@@ -764,7 +766,7 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                                 };
                                                 const icon = { red: '🚨', yellow: '⚠️', green: '✅' };
                                                 return (
-                                                    <div key={alertIndex} className={`p-3 rounded-r-md text-sm flex items-start ${alertClasses[alert.type]}`}>
+                                                    <div key={`${alert.type}-${alert.text?.substring(0, 20) ?? ""}-${alertIndex}`} className={`p-3 rounded-r-md text-sm flex items-start ${alertClasses[alert.type]}`}>
                                                         <span className="mr-2 text-base">{icon[alert.type]}</span>
                                                         <p dangerouslySetInnerHTML={{ __html: alert.text }} />
                                                     </div>
