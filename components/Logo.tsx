@@ -18,13 +18,16 @@ const Logo: React.FC<LogoProps> = ({ className = '', size = 60 }) => {
     : CANDIDATES;
   const src = index < sources.length ? sources[index] : FALLBACK_SRC;
   
+  // Detectar se é SVG
+  const isSvg = src.toLowerCase().endsWith('.svg') || src.includes('svg');
+  
   return (
     <img
       src={src}
       alt="Logo Vetius"
       width={size}
       height={size}
-      className={`w-full h-full object-contain ${className}`}
+      className={className || 'h-full w-full object-contain select-none'}
       onError={() => setIndex((i) => i + 1)}
     />
   );

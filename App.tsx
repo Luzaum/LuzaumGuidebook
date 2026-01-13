@@ -1,147 +1,74 @@
-
-import React, { useState } from 'react'
+import React from 'react'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { ThemeProvider } from './utils/theme'
-import { Navbar } from './components/Navbar'
-import { Hero } from './components/Hero'
-import { MiniAppGrid } from './components/MiniAppGrid'
-import { HowVetiusHelps } from './components/HowVetiusHelps'
-import { Footer } from './components/Footer'
+import { AuthProvider } from './components/AuthProvider'
+import { AUTH_ENABLED } from './config/features'
+import { AppLayout } from './layouts/AppLayout'
+import { Home } from './pages/Home'
+import { ModuleIframe } from './pages/ModuleIframe'
+import { ModulePlanned } from './pages/ModulePlanned'
+import { CalculadoraEnergeticaPage } from './pages/CalculadoraEnergeticaPage'
+import { FluidoterapiaPage } from './pages/FluidoterapiaPage'
+import { TransfusaoSanguineaPage } from './pages/TransfusaoSanguineaPage'
+import { HemogasometriaPage } from './pages/HemogasometriaPage'
+import { NeurologiaPage } from './pages/NeurologiaPage'
+import LoginOrSignup from './components/LoginOrSignup'
 
-// Import existing apps
-import Fluidoterapia from './Fluidoterapia'
-import Hemogasometria from './Hemogasometria'
-import CalculadoraEnergetica from './CalculadoraEnergetica'
-import TransfusaoSanguinea from './TransfusaoSanguinea'
-import EscalasDeDorScreen from './EscalasDeDorScreen'
-import EmergenciasVet from './EmergenciasVet'
-
-type View = 'home' | 'apps' | 'app'
-
-interface AppData {
-  id: string
-  title: string
-  component: React.ComponentType<{ onBack: () => void }>
-}
-
-const apps: Record<string, AppData> = {
-  'calculadora-energetica': {
-    id: 'calculadora-energetica',
-    title: 'Calculadora Energética',
-    component: CalculadoraEnergetica
-  },
-  'fluidoterapia': {
-    id: 'fluidoterapia',
-    title: 'Fluidoterapia',
-    component: Fluidoterapia
-  },
-  'transfusao-sanguinea': {
-    id: 'transfusao-sanguinea',
-    title: 'Transfusão Sanguínea',
-    component: TransfusaoSanguinea
-  },
-  'emergencias-veterinarias': {
-    id: 'emergencias-veterinarias',
-    title: 'Emergências Veterinárias',
-    component: EmergenciasVet
-  },
-  'escalas-dor': {
-    id: 'escalas-dor',
-    title: 'Escalas de Dor',
-    component: EscalasDeDorScreen
-  },
-  'hemogasometria': {
-    id: 'hemogasometria',
-    title: 'Hemogasometria',
-    component: Hemogasometria
+function AppContent() {
+  // Se AUTH_ENABLED é false, vai direto para o app
+  if (!AUTH_ENABLED) {
+    return (
+      <BrowserRouter>
+        <ThemeProvider>
+          <Routes>
+            <Route element={<AppLayout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/calculadora-energetica" element={<CalculadoraEnergeticaPage />} />
+              <Route path="/fluidoterapia" element={<FluidoterapiaPage />} />
+              <Route path="/transfusao-sanguinea" element={<TransfusaoSanguineaPage />} />
+              <Route path="/hemogasometria" element={<HemogasometriaPage />} />
+              <Route path="/dor" element={<ModuleIframe />} />
+              <Route path="/emergencias" element={<ModuleIframe />} />
+              <Route path="/peconhentos" element={<ModuleIframe />} />
+              <Route path="/antibioticoterapia" element={<ModuleIframe />} />
+              <Route path="/crivet" element={<ModuleIframe />} />
+              <Route path="/neurologia" element={<NeurologiaPage />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Route>
+          </Routes>
+        </ThemeProvider>
+      </BrowserRouter>
+    )
   }
+
+  // Se AUTH_ENABLED é true, mostra tela de login
+  return (
+    <BrowserRouter>
+      <ThemeProvider>
+        <AuthProvider>
+          <Routes>
+            <Route path="/login" element={<LoginOrSignup />} />
+            <Route element={<AppLayout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/calculadora-energetica" element={<CalculadoraEnergeticaPage />} />
+              <Route path="/fluidoterapia" element={<FluidoterapiaPage />} />
+              <Route path="/transfusao-sanguinea" element={<TransfusaoSanguineaPage />} />
+              <Route path="/hemogasometria" element={<HemogasometriaPage />} />
+              <Route path="/dor" element={<ModuleIframe />} />
+              <Route path="/emergencias" element={<ModuleIframe />} />
+              <Route path="/peconhentos" element={<ModuleIframe />} />
+              <Route path="/antibioticoterapia" element={<ModuleIframe />} />
+              <Route path="/crivet" element={<ModuleIframe />} />
+              <Route path="/neurologia" element={<NeurologiaPage />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Route>
+          </Routes>
+        </AuthProvider>
+      </ThemeProvider>
+    </BrowserRouter>
+  )
 }
 
 export function App() {
-  const [currentView, setCurrentView] = useState<View>('home')
-  const [currentApp, setCurrentApp] = useState<string | null>(null)
-
-  const handleAppClick = (appId: string) => {
-    if (apps[appId]) {
-      setCurrentApp(appId)
-      setCurrentView('app')
-    }
-  }
-
-  const handleBackToHome = () => {
-    setCurrentView('home')
-    setCurrentApp(null)
-  }
-
-  const handleBackToApps = () => {
-    setCurrentView('apps')
-    setCurrentApp(null)
-  }
-
-  const handleExploreApps = () => {
-    setCurrentView('apps')
-  }
-
-  const handleNavbarAppClick = () => {
-    setCurrentView('apps')
-  }
-
-  // Render specific app
-  if (currentView === 'app' && currentApp && apps[currentApp]) {
-    const AppComponent = apps[currentApp].component
-    return (
-      <ThemeProvider>
-        <div className="min-h-screen flex flex-col bg-background text-foreground">
-          <Navbar onAppClick={handleNavbarAppClick} />
-          <main className="flex-grow pt-20">
-            <div className="container mx-auto px-4">
-              <div className="mb-6">
-                <button
-                  onClick={handleBackToApps}
-                  className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                  </svg>
-                  Voltar aos aplicativos
-                </button>
-                <h1 className="text-3xl font-bold mt-4">{apps[currentApp].title}</h1>
-              </div>
-              <AppComponent onBack={handleBackToApps} />
-            </div>
-          </main>
-        </div>
-      </ThemeProvider>
-    )
-  }
-
-  // Render apps list
-  if (currentView === 'apps') {
-    return (
-      <ThemeProvider>
-        <div className="min-h-screen flex flex-col bg-background text-foreground">
-          <Navbar onAppClick={handleNavbarAppClick} />
-          <main className="flex-grow pt-20">
-            <MiniAppGrid onAppClick={handleAppClick} />
-            <HowVetiusHelps />
-          </main>
-          <Footer />
-        </div>
-      </ThemeProvider>
-    )
-  }
-
-  // Render home
-  return (
-    <ThemeProvider>
-      <div className="min-h-screen flex flex-col bg-background text-foreground">
-        <Navbar onAppClick={handleNavbarAppClick} />
-        <main className="flex-grow">
-          <Hero onExploreApps={handleExploreApps} />
-          <MiniAppGrid onAppClick={handleAppClick} />
-          <HowVetiusHelps />
-        </main>
-        <Footer />
-      </div>
-    </ThemeProvider>
-  )
+  return <AppContent />
 }

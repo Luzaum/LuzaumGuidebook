@@ -5,7 +5,7 @@ type ButtonProps = {
   variant?: 'primary' | 'secondary' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
   className?: string
-  onClick?: () => void
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
   type?: 'button' | 'submit' | 'reset'
   icon?: React.ReactNode
   iconPosition?: 'left' | 'right'

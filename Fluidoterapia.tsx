@@ -284,7 +284,6 @@ const Fluidoterapia = ({ onBack }: { onBack: () => void }) => {
     return (
         <>
             <style>{`
-                body { font-family: 'Inter', sans-serif; background-color: #f0f4f8; }
                 .card { background-color: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
                 .input-group { margin-bottom: 1.5rem; }
                 .input-label { display: block; font-weight: 600; color: #111827; margin-bottom: 0.5rem; }
@@ -318,20 +317,7 @@ const Fluidoterapia = ({ onBack }: { onBack: () => void }) => {
              {activeModal && activeModalData && (
                 <Modal id={activeModal} title={activeModalData.title} content={activeModalData.content} onClose={() => setActiveModal(null)} />
             )}
-            <div className="p-4 sm:p-8">
-                <div className="max-w-4xl mx-auto">
-                    <button onClick={onBack} className="mb-6 bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-lg hover:bg-green-700 transition-transform transform hover:scale-105">
-                        &larr; Voltar para a Lista
-                    </button>
-                    <header className="text-center mb-8">
-                        <img 
-                            src="https://res.cloudinary.com/dwta1roq1/image/upload/w_120,q_auto,f_auto/logo/calculadora-fluidoterapia" 
-                            alt="Ícone da Calculadora de Fluidoterapia, com um cão e um gato olhando para uma bolsa de fluido estilizada como uma calculadora"
-                            className="mx-auto mb-4"
-                        />
-                        <h1 className="text-4xl font-bold text-gray-900">Calculadora de Fluidoterapia 💧</h1>
-                        <p className="text-gray-900 mt-2">Cálculo de taxas para cães e gatos com base em diretrizes clínicas.</p>
-                    </header>
+            <div>
                     <div className="card mb-8">
                         <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">1. Selecione a Espécie</h2>
                         <div className="flex justify-center gap-8">
@@ -454,7 +440,6 @@ const Fluidoterapia = ({ onBack }: { onBack: () => void }) => {
                             </Collapsible>
                         </main>
                     )}
-                </div>
             </div>
         </>
     );
