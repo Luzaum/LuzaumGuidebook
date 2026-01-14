@@ -1,0 +1,86 @@
+import type { DosePreset } from '../../types/presets'
+
+export const ketaminePresets: DosePreset[] = [
+  // CRI – analgesia
+  {
+    id: 'ketamine_cri_micro_2',
+    label: 'CRI 2 mcg/kg/min',
+    mode: 'CRI',
+    species: 'both',
+    unit: 'mcg/kg/min',
+    value: 2,
+    tags: ['analgesia', 'wind-up'],
+    note: 'Limite inferior da microdose analgésica.',
+    apply: { setTargetConcentrationMgMl: 1, preferMinimalVolume: true },
+  },
+  {
+    id: 'ketamine_cri_micro_5',
+    label: 'CRI 5 mcg/kg/min',
+    mode: 'CRI',
+    species: 'both',
+    unit: 'mcg/kg/min',
+    value: 5,
+    tags: ['analgesia', 'wind-up'],
+    note: 'Boa dose "meio termo" para analgesia adjuvante.',
+    apply: { setTargetConcentrationMgMl: 1, preferMinimalVolume: true },
+  },
+  {
+    id: 'ketamine_cri_micro_10',
+    label: 'CRI 10 mcg/kg/min',
+    mode: 'CRI',
+    species: 'both',
+    unit: 'mcg/kg/min',
+    value: 10,
+    tags: ['analgesia'],
+    note: 'Topo da faixa analgésica — acima disso aumenta risco de disforia em acordado.',
+    apply: { setTargetConcentrationMgMl: 1, preferMinimalVolume: true },
+  },
+
+  // Bolus de ataque (antes da CRI)
+  {
+    id: 'ketamine_bolus_load_0_25',
+    label: 'Bolus 0,25 mg/kg IV lento',
+    mode: 'BOLUS',
+    species: 'both',
+    route: 'IV',
+    unit: 'mg/kg',
+    value: 0.25,
+    tags: ['loading', 'analgesia'],
+    note: 'Dose de ataque antes de iniciar a bomba (administrar lentamente).',
+  },
+  {
+    id: 'ketamine_bolus_load_0_5',
+    label: 'Bolus 0,5 mg/kg IV lento',
+    mode: 'BOLUS',
+    species: 'both',
+    route: 'IV',
+    unit: 'mg/kg',
+    value: 0.5,
+    tags: ['loading', 'analgesia'],
+    note: 'Ataque mais alto; cuidado em cardiopatas/hipertensos.',
+  },
+
+  // Bolus indução/contenção
+  {
+    id: 'ketamine_bolus_dog_iv_3',
+    label: 'Cão: 3 mg/kg IV',
+    mode: 'BOLUS',
+    species: 'dog',
+    route: 'IV',
+    unit: 'mg/kg',
+    value: 3,
+    tags: ['induction'],
+    note: 'Preferir associar benzodiazepínico.',
+  },
+  {
+    id: 'ketamine_bolus_cat_im_7_5',
+    label: 'Gato: 7,5 mg/kg IM',
+    mode: 'BOLUS',
+    species: 'cat',
+    route: 'IM',
+    unit: 'mg/kg',
+    value: 7.5,
+    tags: ['restraint'],
+    note: 'Contenção química; monitorar recuperação (ambiente calmo).',
+  },
+]

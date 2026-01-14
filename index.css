@@ -63,6 +63,7 @@
   }
   html, body {
     @apply h-full;
+    position: relative;
   }
 }
 

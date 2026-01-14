@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Outlet, useNavigate, useLocation } from 'react-router-dom'
+import { Outlet, useNavigate, useLocation, Link } from 'react-router-dom'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { modules } from '../modules/registry'
 import { Menu, X, Home } from 'lucide-react'
@@ -18,17 +18,21 @@ export function AppLayout() {
   const isActive = (route: string) => location.pathname === route
 
   return (
-    <div className="min-h-screen flex bg-background">
+    <div className="min-h-dvh flex bg-background">
       {/* Sidebar Desktop */}
       <aside className="hidden lg:flex flex-col w-72 border-r border-border bg-background/95 backdrop-blur-sm">
-        <div className="flex flex-col items-center pt-4 pb-2 overflow-visible gap-0 border-b border-border">
+        <Link
+          to="/"
+          className="flex flex-col items-center pt-4 pb-2 cursor-pointer select-none overflow-visible gap-0 border-b border-border"
+          aria-label="Voltar para a Home"
+        >
           <Logo 
             size={144} 
             className="h-36 w-36 select-none object-contain drop-shadow-[0_0_28px_rgba(96,165,250,0.35)] transition-all duration-300"
           />
           <span className="neon-wave neon-wave-glow -mt-4 text-xl font-semibold tracking-wide">Vetius</span>
           <div className="my-3 h-px w-10/12 bg-border opacity-40" />
-        </div>
+        </Link>
 
         <nav className="flex-1 overflow-y-auto p-4 space-y-6">
           {/* Hub Button */}
@@ -151,12 +155,19 @@ export function AppLayout() {
               >
                 <X className="h-5 w-5" />
               </button>
-              <Logo 
-                size={144} 
-                className="h-36 w-36 select-none object-contain drop-shadow-[0_0_28px_rgba(96,165,250,0.35)] transition-all duration-300"
-              />
-              <span className="neon-wave neon-wave-glow -mt-4 text-xl font-semibold tracking-wide">Vetius</span>
-              <div className="my-3 h-px w-10/12 bg-border opacity-40" />
+              <Link
+                to="/"
+                onClick={() => setSidebarOpen(false)}
+                className="flex flex-col items-center cursor-pointer select-none overflow-visible gap-0"
+                aria-label="Voltar para a Home"
+              >
+                <Logo 
+                  size={144} 
+                  className="h-36 w-36 select-none object-contain drop-shadow-[0_0_28px_rgba(96,165,250,0.35)] transition-all duration-300"
+                />
+                <span className="neon-wave neon-wave-glow -mt-4 text-xl font-semibold tracking-wide">Vetius</span>
+                <div className="my-3 h-px w-10/12 bg-border opacity-40" />
+              </Link>
             </div>
 
             <nav className="p-4 space-y-6">
@@ -291,12 +302,16 @@ export function AppLayout() {
             >
               <Menu className="h-6 w-6" />
             </button>
-            <div className="flex flex-col items-center gap-0">
+            <Link
+              to="/"
+              className="flex flex-col items-center gap-0 cursor-pointer select-none"
+              aria-label="Voltar para a Home"
+            >
               <div className="h-12 w-12">
                 <Logo size={48} />
               </div>
               <span className="neon-wave neon-wave-glow -mt-2 text-xs font-semibold tracking-wide">Vetius</span>
-            </div>
+            </Link>
             <ThemeToggle />
           </div>
         </header>

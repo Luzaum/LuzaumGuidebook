@@ -12,6 +12,7 @@ import { FluidoterapiaPage } from './pages/FluidoterapiaPage'
 import { TransfusaoSanguineaPage } from './pages/TransfusaoSanguineaPage'
 import { HemogasometriaPage } from './pages/HemogasometriaPage'
 import { NeurologiaPage } from './pages/NeurologiaPage'
+import CrivetPage from './modules/crivet/pages/CrivetPage'
 import LoginOrSignup from './components/LoginOrSignup'
 
 function AppContent() {
@@ -31,7 +32,7 @@ function AppContent() {
               <Route path="/emergencias" element={<ModuleIframe />} />
               <Route path="/peconhentos" element={<ModuleIframe />} />
               <Route path="/antibioticoterapia" element={<ModuleIframe />} />
-              <Route path="/crivet" element={<ModuleIframe />} />
+              <Route path="/crivet" element={<CrivetPage />} />
               <Route path="/neurologia" element={<NeurologiaPage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Route>
@@ -58,7 +59,7 @@ function AppContent() {
               <Route path="/emergencias" element={<ModuleIframe />} />
               <Route path="/peconhentos" element={<ModuleIframe />} />
               <Route path="/antibioticoterapia" element={<ModuleIframe />} />
-              <Route path="/crivet" element={<ModuleIframe />} />
+              <Route path="/crivet" element={<CrivetPage />} />
               <Route path="/neurologia" element={<NeurologiaPage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Route>

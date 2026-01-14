@@ -1,0 +1,811 @@
+import React, { useState, useCallback, useMemo, useEffect } from 'react'
+import { ClipboardList, AlertTriangle } from 'lucide-react'
+import { DoseUnit } from '../engine/conversions'
+import { calculateDirectInfusion, calculatePreparation } from '../engine/calculateCRI'
+import { getClinicalAlerts, doseRanges } from '../engine/alerts'
+import { suggestPumpRate } from '../utils/pumpRate'
+import { suggestRates, preferredRateHint } from '../data/tooltips.pumpRate'
+import { formatNumberPtBR } from '../../../utils/format'
+import { CompatibilityPanel } from './CompatibilityPanel'
+import { FieldLabel } from './FieldLabel'
+import { ClinicalAlertBanner } from './ClinicalAlertBanner'
+import { convertDose } from '../engine/conversions'
+import { evaluateDrugAlerts } from '../engine/drugAlerts'
+import { convertToPatientFlags } from '../utils/patientFlags'
+import type { Drug } from '../data/drugs'
+import type { Species, PhysiologyState, Comorbidity } from '../types/patient'
+import type { FluidType } from '../types/patient'
+import type { DiluentId, IndicatedDose } from '../types/drug'
+
+const SYRINGE_VOLUMES = [10, 20, 60] as const
+const BAG_VOLUMES = [100, 250, 500, 1000] as const
+
+type InfusionCalculatorProps = {
+  patientWeight: string
+  selectedDrug: Drug | null
+  species: Species
+  physiology: PhysiologyState
+  comorbidities: Comorbidity[]
+}
+
+type AppError = { type?: string; level?: string; title?: string; message: string } | string | null | undefined
+
+function renderError(err: AppError): string {
+  if (!err) return ''
+  if (typeof err === 'string') return err
+  if (typeof err === 'object' && 'message' in err) return err.message
+  return 'Erro inesperado.'
+}
+
+function renderErrorTitle(err: AppError): string {
+  if (!err) return '⛔ Atenção'
+  if (typeof err === 'string') return '⛔ Atenção'
+  if (typeof err === 'object' && 'title' in err && err.title) return err.title
+  if (typeof err === 'object' && 'message' in err) return '⛔ Atenção'
+  return '⛔ Atenção'
+}
+
+export default function InfusionCalculator({
+  patientWeight,
+  selectedDrug,
+  species,
+  physiology,
+  comorbidities,
+}: InfusionCalculatorProps) {
+  const weightKg = Number(patientWeight) || 0
+
+  const [dose, setDose] = useState('')
+  const [doseUnit, setDoseUnit] = useState<DoseUnit>('mcg/kg/min')
+  const [concentration, setConcentration] = useState('')
+  const [isCustomConcentration, setIsCustomConcentration] = useState(false)
+  const [dilutionType, setDilutionType] = useState<'syringe' | 'bag'>('syringe')
+  const [dilutionVolume, setDilutionVolume] = useState('20')
+  const [fluidType, setFluidType] = useState<FluidType>('NaCl 0.9%')
+  const [mode, setMode] = useState<'direct' | 'preparation'>('direct')
+  const [pumpRate, setPumpRate] = useState<number | null>(null)
+  const [userOverrodeRate, setUserOverrodeRate] = useState(false)
+  const [showCalculation, setShowCalculation] = useState(false)
+
+  useEffect(() => {
+    if (selectedDrug) {
+      if (selectedDrug.concentrations.length > 0) {
+        setConcentration(selectedDrug.concentrations[0].toString())
+        setIsCustomConcentration(false)
+      } else {
+        setConcentration('')
+        setIsCustomConcentration(true)
+      }
+      setDose('')
+      setUserOverrodeRate(false) // Reset quando trocar fármaco
+      setPumpRate(null)
+
+      // Forçar unidade recomendada ao selecionar fármaco
+      if (selectedDrug.recommendedUnit) {
+        setDoseUnit(selectedDrug.recommendedUnit as DoseUnit)
+      } else if (selectedDrug.unitRules?.preferredDoseUnit) {
+        // Fallback para sistema antigo (compatibilidade)
+        setDoseUnit(selectedDrug.unitRules.preferredDoseUnit as DoseUnit)
+      }
+    }
+  }, [selectedDrug]) // Removido 'mode' das dependências para não zerar dose ao trocar modo
+
+  // Taxa automática quando mudar veículo ou peso (se usuário não tiver sobrescrito)
+  useEffect(() => {
+    if (userOverrodeRate) return
+    if (!weightKg || weightKg <= 0) return
+    if (mode !== 'preparation') return
+
+    const suggested = suggestPumpRate({ vehicle: dilutionType, weightKg })
+    setPumpRate(suggested)
+  }, [mode, dilutionType, weightKg, userOverrodeRate])
+
+  // Ajustar volume quando trocar tipo de veículo
+  const volumes = dilutionType === 'bag' ? BAG_VOLUMES : SYRINGE_VOLUMES
+  useEffect(() => {
+    const currentVolume = parseFloat(dilutionVolume) || 0
+    const volumesArray = Array.from(volumes)
+    if (!volumesArray.includes(currentVolume as any)) {
+      setDilutionVolume(dilutionType === 'bag' ? '250' : '20')
+    }
+  }, [dilutionType])
+
+  const weight = weightKg // Mantido para compatibilidade com código existente
+  const doseValue = useMemo(() => parseFloat(dose) || 0, [dose])
+  const concentrationValue = useMemo(() => parseFloat(concentration) || 0, [concentration])
+  const pumpRateValue = pumpRate ?? 0
+  const vehicleVolume = useMemo(() => parseFloat(dilutionVolume) || 0, [dilutionVolume])
+
+  const isValidDirect = useMemo(
+    () => weight > 0 && doseValue > 0 && concentrationValue > 0 && selectedDrug?.hasCRI,
+    [weight, doseValue, concentrationValue, selectedDrug],
+  )
+
+  const isValidPreparation = useMemo(
+    () =>
+      weight > 0 &&
+      doseValue > 0 &&
+      concentrationValue > 0 &&
+      pumpRateValue > 0 &&
+      vehicleVolume > 0 &&
+      selectedDrug?.hasCRI,
+    [weight, doseValue, concentrationValue, pumpRateValue, vehicleVolume, selectedDrug],
+  )
+
+  const clinicalAlerts = useMemo(
+    () => (selectedDrug ? getClinicalAlerts(selectedDrug.id, species, physiology, comorbidities) : []),
+    [selectedDrug, species, physiology, comorbidities],
+  )
+
+  // Alertas baseados em condições do paciente × fármaco selecionado
+  const patientFlags = useMemo(
+    () => convertToPatientFlags(physiology, comorbidities),
+    [physiology, comorbidities],
+  )
+
+  const drugPatientAlerts = useMemo(() => {
+    if (!selectedDrug) return []
+    return evaluateDrugAlerts({ drugId: selectedDrug.id, flags: patientFlags })
+  }, [selectedDrug, patientFlags])
+
+  const doseRangeAlert = useMemo(() => {
+    if (!isValidDirect || !selectedDrug || !doseRanges[selectedDrug.id]) return null
+    const range = doseRanges[selectedDrug.id]
+    const normalized = doseUnit === 'mcg/kg/min'
+      ? (doseValue * 60) / 1000
+      : doseUnit === 'mcg/kg/h'
+      ? doseValue / 1000
+      : doseUnit === 'mg/kg/min'
+      ? doseValue * 60
+      : doseValue
+
+    if (normalized < range.min) {
+      return { severity: 'warning' as const, message: range.subdoseMessage }
+    }
+    if (normalized > range.max) {
+      return { severity: 'critical' as const, message: range.overdoseMessage }
+    }
+    return null
+  }, [isValidDirect, selectedDrug, doseUnit, doseValue])
+
+  const directResult = useMemo(() => {
+    if (!isValidDirect) return null
+    return calculateDirectInfusion(doseValue, doseUnit, weight, concentrationValue)
+  }, [isValidDirect, doseValue, doseUnit, weight, concentrationValue])
+
+  const preparationResult = useMemo(() => {
+    if (!isValidPreparation) return null
+    return calculatePreparation(doseValue, doseUnit, weight, pumpRateValue, vehicleVolume, concentrationValue)
+  }, [isValidPreparation, doseValue, doseUnit, weight, pumpRateValue, vehicleVolume, concentrationValue])
+
+  const handleDoseChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    setDose(event.target.value)
+  }, [])
+
+  const handleDoseUnit = useCallback((unit: DoseUnit) => setDoseUnit(unit), [])
+
+  const handleConcentrationChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    setConcentration(event.target.value)
+    setIsCustomConcentration(true)
+  }, [])
+
+  const handleConcentrationSelect = useCallback((value: string) => {
+    if (value === 'custom') {
+      setIsCustomConcentration(true)
+      setConcentration('')
+    } else {
+      setConcentration(value)
+      setIsCustomConcentration(false)
+    }
+  }, [])
+
+  const handlePumpRateChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const value = parseFloat(event.target.value) || 0
+      setPumpRate(value)
+      setUserOverrodeRate(true)
+    },
+    [],
+  )
+
+  const handlePumpRatePreset = useCallback(
+    (rate: number) => {
+      setPumpRate(rate)
+      setUserOverrodeRate(true)
+    },
+    [],
+  )
+
+  const suggestedRates = useMemo(() => suggestRates(dilutionType), [dilutionType])
+  const pumpRateHint = useMemo(
+    () => (pumpRateValue > 0 ? preferredRateHint(pumpRateValue, dilutionType) : null),
+    [pumpRateValue, dilutionType],
+  )
+
+  const ALL_UNITS: DoseUnit[] = ['mcg/kg/min', 'mcg/kg/h', 'mg/kg/min', 'mg/kg/h']
+
+  // Calcular dose indicada baseada no fármaco, modo, espécie e unidade selecionada
+  const indicatedDose = useMemo(() => {
+    if (!selectedDrug?.indicatedDoses || selectedDrug.indicatedDoses.length === 0) return null
+
+    // Por enquanto, ambos os modos (direct/preparation) são CRI
+    // Se no futuro houver modo BOLUS, adicionar lógica aqui
+    const currentMode: 'CRI' | 'BOLUS' = 'CRI'
+    const currentSpecies = species === 'dog' ? 'cao' : species === 'cat' ? 'gato' : 'ambos'
+
+    // Filtrar por modo e espécie
+    const matching = selectedDrug.indicatedDoses.filter((dose) => {
+      const modeMatch = dose.mode === currentMode
+      const speciesMatch = dose.species === 'ambos' || dose.species === currentSpecies
+      return modeMatch && speciesMatch
+    })
+
+    if (matching.length === 0) return null
+
+    // Pegar a primeira correspondência (pode melhorar com lógica de prioridade depois)
+    const dose = matching[0]
+
+    // Para bolus, não converter unidades (já está em dose única)
+    // Para CRI, converter para a unidade selecionada
+    let convertedMin = dose.range.min
+    let convertedMax = dose.range.max
+
+    if (dose.mode === 'CRI') {
+      convertedMin = convertDose(dose.range.min, dose.unit as DoseUnit, doseUnit)
+      convertedMax = convertDose(dose.range.max, dose.unit as DoseUnit, doseUnit)
+    } else {
+      // Para BOLUS, manter o valor original (não é por hora/minuto)
+      convertedMin = dose.range.min
+      convertedMax = dose.range.max
+    }
+
+    return {
+      min: convertedMin,
+      max: convertedMax,
+      purpose: dose.purpose,
+      note: dose.note,
+    }
+  }, [selectedDrug, mode, species, doseUnit])
+
+  const indicatedText = indicatedDose
+    ? `${formatNumberPtBR(indicatedDose.min, 2)}–${formatNumberPtBR(indicatedDose.max, 2)} para ${indicatedDose.purpose}`
+    : null
+
+  // Mapear FluidType para DiluentId
+  const getDiluentId = (fluidType: FluidType): DiluentId => {
+    if (fluidType === 'NaCl 0.9%') return 'NaCl_09'
+    if (fluidType === 'Ringer Lactato') return 'RL'
+    if (fluidType === 'SG 5%') return 'D5W'
+    return 'NaCl_09' // default
+  }
+
+  return (
+    <div className="space-y-6 overflow-visible">
+      <div className="flex items-center justify-between">
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+          <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-sky-100 text-sky-700 text-xs font-black">
+            3
+          </span>
+          Cálculo de infusão
+        </h2>
+        {(isValidDirect || isValidPreparation) && (
+          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
+            Pronto
+          </span>
+        )}
+      </div>
+
+      {clinicalAlerts.length > 0 && (
+        <div className="space-y-3">
+          {clinicalAlerts.map((alert) => (
+            <div
+              key={`${alert.severity}-${alert.message}`}
+              className={`rounded-lg border p-4 ${
+                alert.severity === 'critical'
+                  ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
+                  : alert.severity === 'warning'
+                  ? 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800'
+                  : 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800'
+              }`}
+            >
+              <div className="flex gap-3">
+                <AlertTriangle
+                  className={`w-5 h-5 flex-shrink-0 ${
+                    alert.severity === 'critical'
+                      ? 'text-red-500'
+                      : alert.severity === 'warning'
+                      ? 'text-amber-500'
+                      : 'text-blue-500'
+                  }`}
+                />
+                <div className="space-y-1">
+                  {alert.title && (
+                    <p
+                      className={`font-semibold text-sm ${
+                        alert.severity === 'critical'
+                          ? 'text-red-900 dark:text-red-100'
+                          : alert.severity === 'warning'
+                          ? 'text-amber-900 dark:text-amber-100'
+                          : 'text-blue-900 dark:text-blue-100'
+                      }`}
+                    >
+                      {alert.title}
+                    </p>
+                  )}
+                  <p
+                    className={`text-sm ${
+                      alert.severity === 'critical'
+                        ? 'text-red-800 dark:text-red-200'
+                        : alert.severity === 'warning'
+                        ? 'text-amber-800 dark:text-amber-200'
+                        : 'text-blue-800 dark:text-blue-200'
+                    }`}
+                  >
+                    {alert.message}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {doseRangeAlert && (
+        <div
+          className={`rounded-lg border p-4 ${
+            doseRangeAlert.severity === 'critical'
+              ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
+              : 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800'
+          }`}
+        >
+          <div className="flex gap-3">
+            <AlertTriangle
+              className={`w-5 h-5 flex-shrink-0 ${
+                doseRangeAlert.severity === 'critical' ? 'text-red-500' : 'text-amber-500'
+              }`}
+            />
+            <p
+              className={`text-sm font-semibold ${
+                doseRangeAlert.severity === 'critical'
+                  ? 'text-red-900 dark:text-red-100'
+                  : 'text-amber-900 dark:text-amber-100'
+              }`}
+            >
+              {doseRangeAlert.message}
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Alertas baseados em condições do paciente × fármaco */}
+      {drugPatientAlerts.length > 0 && (
+        <div className="space-y-2">
+          {drugPatientAlerts.map((alert) => (
+            <ClinicalAlertBanner
+              key={alert.id}
+              level={alert.level}
+              title={alert.title}
+              message={alert.short}
+              helpTitle={alert.title}
+              helpContent={
+                <div className="space-y-4 text-sm leading-relaxed">
+                  <div>
+                    <p className="font-semibold mb-2">Por que isso importa</p>
+                    <ul className="list-disc pl-5 space-y-1">
+                      {alert.why.map((reason, idx) => (
+                        <li key={idx}>{reason}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-semibold mb-2">Conduta sugerida</p>
+                    <ul className="list-disc pl-5 space-y-1">
+                      {alert.actions.map((action, idx) => (
+                        <li key={idx}>{action}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              }
+            />
+          ))}
+        </div>
+      )}
+
+      <div className="space-y-4">
+        <div className="space-y-2">
+          <FieldLabel
+            text="Dose alvo"
+            tooltipId="dose_help"
+            rightSlot={
+              indicatedText ? (
+                <span className="ml-3 rounded-md border border-yellow-400/30 bg-yellow-500/10 px-2 py-1 text-xs font-semibold text-yellow-200">
+                  🟡 Dose indicada: {indicatedText}
+                </span>
+              ) : null
+            }
+          />
+          <div className="flex gap-2">
+            <input
+              type="number"
+              value={dose}
+              onChange={handleDoseChange}
+              placeholder="0.0"
+              step="0.01"
+              className="flex-1 rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 px-3 text-sm focus:border-sky-500 focus:ring-sky-500"
+            />
+          </div>
+          <div className="space-y-2">
+            <div className="flex flex-wrap gap-2">
+              {ALL_UNITS.map((unit) => {
+                const isRecommended = unit === selectedDrug?.recommendedUnit
+                const isSelected = unit === doseUnit
+
+                return (
+                  <button
+                    key={unit}
+                    type="button"
+                    onClick={() => handleDoseUnit(unit)}
+                    className={[
+                      'px-3 py-2 rounded-md border text-xs transition flex items-center gap-2',
+                      isSelected
+                        ? 'bg-white/10 border-white/25'
+                        : 'bg-transparent border-white/10 hover:bg-white/5',
+                      isRecommended
+                        ? 'border-[#39ff14] text-[#39ff14] shadow-[0_0_0_1px_#39ff14]'
+                        : 'text-white/80',
+                    ]
+                      .filter(Boolean)
+                      .join(' ')}
+                  >
+                    <span>{unit}</span>
+                    {isRecommended && (
+                      <span className="rounded-full bg-[#39ff14]/10 px-2 py-0.5 text-[10px] font-semibold text-[#39ff14]">
+                        Recomendada
+                      </span>
+                    )}
+                  </button>
+                )
+              })}
+            </div>
+            {/* Painel explicativo da unidade recomendada */}
+            {selectedDrug?.recommendedUnit && (
+              <div className="mt-2 rounded-lg border border-[#39ff14]/30 bg-[#39ff14]/5 p-3 text-sm text-white/90">
+                <p className="font-semibold text-[#39ff14]">
+                  Unidade recomendada: {selectedDrug.recommendedUnit}
+                </p>
+                <ul className="mt-2 list-disc pl-5 space-y-1 text-white/85">
+                  {(selectedDrug.recommendedUnitWhy ?? []).map((line: string) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
+                <p className="mt-2 text-xs text-white/60">
+                  Dica: o CRIVET aceita qualquer unidade, mas manter a recomendada reduz risco de erro (min↔hora e
+                  mcg↔mg).
+                </p>
+              </div>
+            )}
+            {/* Banner de alerta para unidade incomum (opcional) */}
+            {selectedDrug?.unitRules?.unitHints?.[doseUnit] && (
+              <div
+                className={`rounded-md border p-2 text-xs ${
+                  selectedDrug.unitRules.unitHints[doseUnit].level === 'critical'
+                    ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-800 dark:text-red-200'
+                    : selectedDrug.unitRules.unitHints[doseUnit].level === 'warning'
+                    ? 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-200'
+                    : 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800 text-blue-800 dark:text-blue-200'
+                }`}
+              >
+                <p className="font-semibold">
+                  {selectedDrug.unitRules.unitHints[doseUnit].level === 'critical' && '⛔ '}
+                  {selectedDrug.unitRules.unitHints[doseUnit].level === 'warning' && '⚠️ '}
+                  {selectedDrug.unitRules.unitHints[doseUnit].level === 'info' && 'ℹ️ '}
+                  {selectedDrug.unitRules.unitHints[doseUnit].message}
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <FieldLabel text="Concentração do fármaco" tooltipId="drug_concentration_help" />
+          {!isCustomConcentration && selectedDrug?.concentrations.length ? (
+            <select
+              value={concentration}
+              onChange={(event) => handleConcentrationSelect(event.target.value)}
+              className="w-full rounded-md border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 py-2 px-3 text-sm focus:border-sky-500 focus:ring-sky-500"
+            >
+              {selectedDrug.concentrations.map((c) => (
+                <option key={c} value={c}>
+                  {c} mg/mL
+                </option>
+              ))}
+              <option value="custom">Custom...</option>
+            </select>
+          ) : (
+            <div className="flex gap-2">
+              <input
+                type="number"
+                value={concentration}
+                onChange={handleConcentrationChange}
+                placeholder="Conc. (mg/mL)"
+                step="0.01"
+                className="flex-1 rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 px-3 text-sm focus:border-sky-500 focus:ring-sky-500"
+              />
+              {selectedDrug?.concentrations.length ? (
+                <button
+                  onClick={() => handleConcentrationSelect(selectedDrug.concentrations[0].toString())}
+                  className="px-3 rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm text-slate-700 dark:text-slate-200"
+                >
+                  Lista
+                </button>
+              ) : null}
+            </div>
+          )}
+        </div>
+
+        {mode === 'preparation' && (
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <FieldLabel text="Taxa da bomba (mL/h)" tooltipId="rate_help" />
+              <div className="flex gap-2">
+                <input
+                  type="number"
+                  value={pumpRateValue || ''}
+                  onChange={handlePumpRateChange}
+                  placeholder="0"
+                  step="0.1"
+                  min="0"
+                  className="flex-1 rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 px-3 text-sm focus:border-sky-500 focus:ring-sky-500"
+                />
+              </div>
+              {suggestedRates.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {suggestedRates.map((rate) => (
+                    <button
+                      key={rate}
+                      type="button"
+                      onClick={() => handlePumpRatePreset(rate)}
+                      className="px-3 py-1 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition"
+                    >
+                      {rate} mL/h
+                    </button>
+                  ))}
+                </div>
+              )}
+              {pumpRateHint && (
+                <div className="rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-3">
+                  <p className="text-sm text-blue-800 dark:text-blue-200">
+                    <span className="font-semibold">💡 Sugestão do CRIVET:</span> {pumpRateHint.message}
+                  </p>
+                </div>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              <FieldLabel text="Volume do veículo" tooltipId="vehicle_help" />
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => setDilutionType('syringe')}
+                  className={`px-4 py-2 rounded-md border text-sm transition ${
+                    dilutionType === 'syringe'
+                      ? 'bg-sky-50 dark:bg-sky-900/20 border-sky-500 text-sky-700 dark:text-sky-300 font-medium'
+                      : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
+                  }`}
+                >
+                  Seringa
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setDilutionType('bag')}
+                  className={`px-4 py-2 rounded-md border text-sm transition ${
+                    dilutionType === 'bag'
+                      ? 'bg-sky-50 dark:bg-sky-900/20 border-sky-500 text-sky-700 dark:text-sky-300 font-medium'
+                      : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
+                  }`}
+                >
+                  Bolsa
+                </button>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {volumes.map((vol) => (
+                  <button
+                    key={vol}
+                    type="button"
+                    onClick={() => setDilutionVolume(vol.toString())}
+                    className={[
+                      'rounded-md border px-3 py-2 text-xs transition',
+                      dilutionVolume === vol.toString()
+                        ? 'bg-white/10 border-white/25'
+                        : 'bg-transparent border-white/10 hover:bg-white/5',
+                    ].join(' ')}
+                  >
+                    {vol} mL
+                  </button>
+                ))}
+                <input
+                  type="number"
+                  value={dilutionVolume}
+                  onChange={(e) => setDilutionVolume(e.target.value)}
+                  placeholder="Custom"
+                  step="1"
+                  min="1"
+                  className="flex-1 rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 px-3 text-sm focus:border-sky-500 focus:ring-sky-500"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <FieldLabel text="Tipo de fluido" tooltipId="compatibility_help" />
+              <select
+                value={fluidType}
+                onChange={(e) => setFluidType(e.target.value as FluidType)}
+                className="w-full rounded-md border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 py-2 px-3 text-sm focus:border-sky-500 focus:ring-sky-500"
+              >
+                <option value="NaCl 0.9%">NaCl 0,9% (SF)</option>
+                <option value="Ringer Lactato">Ringer Lactato</option>
+                <option value="SG 5%">Solução Glicosada 5%</option>
+              </select>
+              {selectedDrug && (
+                <CompatibilityPanel compat={selectedDrug.compatibility} selectedDiluentId={getDiluentId(fluidType)} />
+              )}
+            </div>
+          </div>
+        )}
+
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={() => setMode('direct')}
+            className={`px-4 py-2 rounded-md border text-sm transition ${
+              mode === 'direct'
+                ? 'bg-sky-50 dark:bg-sky-900/20 border-sky-500 text-sky-700 dark:text-sky-300 font-medium'
+                : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
+            }`}
+          >
+            Infusão direta
+          </button>
+          <button
+            type="button"
+            onClick={() => setMode('preparation')}
+            className={`px-4 py-2 rounded-md border text-sm transition ${
+              mode === 'preparation'
+                ? 'bg-sky-50 dark:bg-sky-900/20 border-sky-500 text-sky-700 dark:text-sky-300 font-medium'
+                : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
+            }`}
+          >
+            Preparo (seringa/bolsa)
+          </button>
+        </div>
+      </div>
+
+      {isValidDirect && mode === 'direct' && directResult && (
+        <div className="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+          <div className="flex items-center gap-2 mb-2">
+            <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300">Resultado</h3>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <p className="text-xs text-slate-600 dark:text-slate-400">Taxa de infusão</p>
+              <p className="text-lg font-semibold text-slate-900 dark:text-white">
+                {formatNumberPtBR(directResult.rateMlHr, 2)} <span className="text-sm font-normal">mL/h</span>
+              </p>
+            </div>
+            <div>
+              <p className="text-xs text-slate-600 dark:text-slate-400">Taxa por minuto</p>
+              <p className="text-lg font-semibold text-slate-900 dark:text-white">
+                {formatNumberPtBR(directResult.rateMlMin, 4)} <span className="text-sm font-normal">mL/min</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isValidPreparation && mode === 'preparation' && preparationResult && (
+        <div className="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+          {preparationResult.error ? (
+            <div className="rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 p-4">
+              <div className="flex gap-3">
+                <AlertTriangle className="w-5 h-5 text-red-500 flex-shrink-0" />
+                <div className="space-y-1">
+                  <p className="font-bold text-sm text-red-900 dark:text-red-100">
+                    {renderErrorTitle(preparationResult.error as any)}
+                  </p>
+                  <p className="text-sm text-red-800 dark:text-red-200">
+                    {renderError(preparationResult.error as any)}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <>
+              <div className="flex items-center gap-2 mb-2">
+                <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300">Resultado</h3>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div>
+                  <p className="text-xs text-slate-600 dark:text-slate-400">Volume fármaco</p>
+                  <p className="text-lg font-semibold text-slate-900 dark:text-white">
+                    {formatNumberPtBR(preparationResult.drugVolumeMl, 2)} <span className="text-sm font-normal">mL</span>
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs text-slate-600 dark:text-slate-400">Volume diluente</p>
+                  <p className="text-lg font-semibold text-slate-900 dark:text-white">
+                    {formatNumberPtBR(preparationResult.diluentVolumeMl, 2)} <span className="text-sm font-normal">mL</span>
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs text-slate-600 dark:text-slate-400">Conc. final</p>
+                  <p className="text-lg font-semibold text-slate-900 dark:text-white">
+                    {formatNumberPtBR(preparationResult.finalConcentrationMgMl, 4)} <span className="text-sm font-normal">mg/mL</span>
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs text-slate-600 dark:text-slate-400">Total fármaco</p>
+                  <p className="text-lg font-semibold text-slate-900 dark:text-white">
+                    {formatNumberPtBR(preparationResult.totalDrugMg, 2)} <span className="text-sm font-normal">mg</span>
+                  </p>
+                </div>
+              </div>
+
+              <div className="rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-4 flex gap-3">
+                <ClipboardList className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
+                <div className="space-y-1 text-sm text-blue-800 dark:text-blue-200">
+                  <p>
+                    Preparar {formatNumberPtBR(vehicleVolume)} mL ({dilutionType === 'syringe' ? 'seringa' : 'bolsa'}). Aspirar{' '}
+                    {formatNumberPtBR(preparationResult.drugVolumeMl, 2)} mL do fármaco e completar com{' '}
+                    {formatNumberPtBR(preparationResult.diluentVolumeMl, 2)} mL de diluente.
+                  </p>
+                  <p>Taxa na bomba: {formatNumberPtBR(pumpRateValue, 1)} mL/h. Fluido: {fluidType}.</p>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+      )}
+
+      {((isValidDirect && directResult) || (isValidPreparation && preparationResult)) && (
+        <div className="mt-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 p-4">
+          <div className="flex items-center justify-between">
+            <button
+              type="button"
+              onClick={() => setShowCalculation(!showCalculation)}
+              className="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white hover:text-sky-600 dark:hover:text-sky-400"
+            >
+              <span>{showCalculation ? '▼' : '▶'}</span>
+              <span>Cálculo explicado</span>
+            </button>
+
+            {showCalculation && (
+              <button
+                type="button"
+                className="text-xs text-sky-600 dark:text-sky-400 hover:underline"
+                onClick={() => {
+                  const steps = mode === 'direct' ? directResult?.steps || [] : preparationResult?.steps || []
+                  navigator.clipboard.writeText(steps.join('\n'))
+                }}
+              >
+                Copiar
+              </button>
+            )}
+          </div>
+
+          {showCalculation && (
+            <div className="mt-3 space-y-2">
+              {(mode === 'direct' ? directResult?.steps : preparationResult?.steps)?.map((line, idx) => (
+                <div
+                  key={`${idx}-${line.slice(0, 20)}`}
+                  className="flex gap-2 rounded-lg bg-white dark:bg-slate-800 px-3 py-2"
+                >
+                  <span className="opacity-60 text-slate-500 dark:text-slate-400">{idx + 1}.</span>
+                  <span className="text-sm text-slate-900 dark:text-white">{line}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}

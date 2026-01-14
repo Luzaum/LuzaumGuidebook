@@ -97,12 +97,11 @@ export const modules: Module[] = [
   },
   {
     id: 'crivet',
-    title: 'CRIVET',
-    description: 'Calculadora de CRI e bolus com passo a passo e biblioteca farmacológica',
+    title: 'CRIVET 2.0',
+    description: 'Calculadora auditável de CRI veterinário',
     route: '/crivet',
-    status: 'iframe',
+    status: 'internal',
     icon: Syringe,
-    iframeUrl: 'https://crivet.netlify.app',
   },
   {
     id: 'neurologia',

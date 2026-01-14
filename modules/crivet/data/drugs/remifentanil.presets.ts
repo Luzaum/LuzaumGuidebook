@@ -1,0 +1,86 @@
+import type { DosePreset } from '@/modules/crivet/types/presets'
+
+export const remifentanilPresets: DosePreset[] = [
+  // ICU sedation
+  {
+    id: 'remi_cri_0_05',
+    label: 'UTI: 0,05 mcg/kg/min',
+    mode: 'CRI',
+    species: 'both',
+    unit: 'mcg/kg/min',
+    value: 0.05,
+    tags: ['icu', 'sedation'],
+    note: 'Pós-op imediato; titulação fina.',
+    apply: { preferMinimalVolume: true },
+  },
+  {
+    id: 'remi_cri_0_1',
+    label: 'UTI: 0,1 mcg/kg/min',
+    mode: 'CRI',
+    species: 'both',
+    unit: 'mcg/kg/min',
+    value: 0.1,
+    tags: ['icu', 'sedation'],
+    note: 'Topo UTI; monitorar ventilação.',
+    apply: { preferMinimalVolume: true },
+  },
+
+  // Maintenance intraop
+  {
+    id: 'remi_cri_0_2',
+    label: 'Intraop: 0,2 mcg/kg/min (comum)',
+    mode: 'CRI',
+    species: 'both',
+    unit: 'mcg/kg/min',
+    value: 0.2,
+    tags: ['anesthesia'],
+    note: 'Manutenção padrão intraop.',
+    apply: { preferMinimalVolume: true },
+  },
+  {
+    id: 'remi_cri_0_5',
+    label: 'Intraop: 0,5 mcg/kg/min (alto)',
+    mode: 'CRI',
+    species: 'both',
+    unit: 'mcg/kg/min',
+    value: 0.5,
+    tags: ['anesthesia'],
+    note: 'Topo faixa típica; apneia/bradicardia mais prováveis.',
+    apply: { preferMinimalVolume: true },
+  },
+  {
+    id: 'remi_cri_1_0',
+    label: 'Cirurgia dolorosa: 1,0 mcg/kg/min',
+    mode: 'CRI',
+    species: 'both',
+    unit: 'mcg/kg/min',
+    value: 1.0,
+    tags: ['very_painful'],
+    note: 'Alto risco de apneia/tórax rígido. Exige ventilação.',
+    apply: { preferMinimalVolume: true },
+  },
+
+  // Co-induction (CRI curta)
+  {
+    id: 'remi_coind_2_5',
+    label: 'Co-indução: 2,5 mcg/kg/min',
+    mode: 'CRI',
+    species: 'both',
+    unit: 'mcg/kg/min',
+    value: 2.5,
+    tags: ['induction'],
+    note: 'Pré-oxigenar/intubar; apneia é provável.',
+    apply: { preferMinimalVolume: true },
+  },
+  {
+    id: 'remi_coind_5',
+    label: 'Co-indução: 5,0 mcg/kg/min',
+    mode: 'CRI',
+    species: 'both',
+    unit: 'mcg/kg/min',
+    value: 5.0,
+    tags: ['induction'],
+    note: 'Muito alto; apneia quase certa.',
+    apply: { preferMinimalVolume: true },
+  },
+]
