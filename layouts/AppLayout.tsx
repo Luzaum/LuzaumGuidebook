@@ -210,7 +210,15 @@ export function AppLayout() {
                                 : 'text-slate-200/90 dark:text-foreground hover:bg-slate-800/40 dark:hover:bg-surface/50'
                             }`}
                           >
-                            <Icon className="h-4 w-4" />
+                            {module.iconImage ? (
+                              <img 
+                                src={module.iconImage} 
+                                alt={`${module.title} logo`}
+                                className="h-4 w-4 object-contain dark:invert dark:brightness-0 dark:contrast-200"
+                              />
+                            ) : (
+                              <Icon className="h-4 w-4" />
+                            )}
                             <span className="truncate">{module.title}</span>
                           </button>
                         </li>

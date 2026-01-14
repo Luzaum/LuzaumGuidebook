@@ -498,9 +498,9 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                     <div id="page-calc-energia">
                          <div className="text-center mb-8">
                             <img 
-                                src="https://res.cloudinary.com/dwta1roq1/image/upload/w_120,q_auto,f_auto/logo/calculadora-energetica" 
-                                alt="Logo do aplicativo de calculadora energética para cães e gatos, mostrando os animais ao lado de uma balança de precisão"
-                                className="mx-auto mb-4"
+                                src="/cecg-logo.png" 
+                                alt="Logo CECG - Calculadora Energética para Cães e Gatos"
+                                className="mx-auto mb-4 h-24 w-auto object-contain dark:invert dark:brightness-0 dark:contrast-200"
                             />
                             <h1 className="text-2xl md:text-3xl font-bold text-foreground">Cálculo de Energia</h1>
                         </div>

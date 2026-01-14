@@ -9,6 +9,8 @@ import { fentanylRecommendedUnit, fentanylRecommendedUnitWhy, fentanylIndicatedD
 import { ketamineIndicatedDoses } from './drugs/ketamine'
 import { midazolamIndicatedDoses } from './drugs/midazolam'
 import { remifentanilIndicatedDoses } from './drugs/remifentanil'
+import { dobutamineRecommendedUnit, dobutamineRecommendedUnitWhy, dobutamineIndicatedDoses } from './drugs/dobutamine'
+import { norepinephrineRecommendedUnit, norepinephrineRecommendedUnitWhy, norepinephrineIndicatedDoses } from './drugs/norepinephrine'
 
 export type DrugCategory =
   | 'Analgésicos e Anestésicos'
@@ -121,6 +123,9 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [12.5],
     compatibility: defaultCompatibility,
+    recommendedUnit: dobutamineRecommendedUnit,
+    recommendedUnitWhy: dobutamineRecommendedUnitWhy,
+    indicatedDoses: dobutamineIndicatedDoses,
   },
   {
     id: 'dopamina',
@@ -145,6 +150,9 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [1, 2],
     compatibility: defaultCompatibility,
+    recommendedUnit: norepinephrineRecommendedUnit,
+    recommendedUnitWhy: norepinephrineRecommendedUnitWhy,
+    indicatedDoses: norepinephrineIndicatedDoses,
   },
   {
     id: 'nitroprussiato',
@@ -210,14 +218,6 @@ export const drugs: Drug[] = [
     category: 'Antimicrobianos',
     hasCRI: true,
     concentrations: [100],
-    compatibility: defaultCompatibility,
-  },
-  {
-    id: 'doxiciclina',
-    name: 'Doxiciclina',
-    category: 'Antimicrobianos',
-    hasCRI: true,
-    concentrations: [10],
     compatibility: defaultCompatibility,
   },
   {

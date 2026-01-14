@@ -17,6 +17,7 @@ export interface DoseRange {
 }
 
 export const doseRanges: Record<string, DoseRange> = {
+  // Cetamina: 0.6-2.0 mg/kg/h (baseado em indicatedDoses: 2-10 mcg/kg/min = 0.12-0.6 mg/kg/h, mas faixa mais ampla para cobrir todos os casos)
   cetamina: {
     min: 0.6,
     max: 2.0,
@@ -24,6 +25,33 @@ export const doseRanges: Record<string, DoseRange> = {
     subdoseMessage: 'SUBDOSE: abaixo de 0,6 mg/kg/h → analgesia/sedação pode ser insuficiente.',
     overdoseMessage:
       'SOBREDOSE: acima de 2,0 mg/kg/h → risco de depressão cardiorrespiratória, salivação, recuperação prolongada.',
+  },
+  // Fentanil: 1-20 mcg/kg/h = 0.001-0.02 mg/kg/h (baseado em indicatedDoses: analgesia 1-7, anestesia 5-20)
+  fentanil: {
+    min: 0.001, // 1 mcg/kg/h
+    max: 0.02, // 20 mcg/kg/h
+    unit: 'mg/kg/h',
+    subdoseMessage: 'SUBDOSE: abaixo de 1 mcg/kg/h → analgesia pode ser insuficiente. Reavaliar dose e titulação.',
+    overdoseMessage:
+      'SOBREDOSE: acima de 20 mcg/kg/h → risco de depressão respiratória severa, apneia e necessidade de ventilação mecânica.',
+  },
+  // Remifentanil: 0.05-1.0 mcg/kg/min = 0.003-0.06 mg/kg/h (baseado em indicatedDoses: UTI 0.05-0.1, manutenção 0.1-0.5, cirurgia 0.5-1.0)
+  remifentanil: {
+    min: 0.003, // 0.05 mcg/kg/min
+    max: 0.06, // 1.0 mcg/kg/min
+    unit: 'mg/kg/h',
+    subdoseMessage: 'SUBDOSE: abaixo de 0,05 mcg/kg/min → analgesia pode ser insuficiente. Reavaliar dose e titulação.',
+    overdoseMessage:
+      'SOBREDOSE: acima de 1,0 mcg/kg/min → risco de apneia, depressão respiratória e necessidade de ventilação mecânica.',
+  },
+  // Midazolam: 0.1-1.0 mg/kg/h (baseado em indicatedDoses: padrão 0.1-0.5, refratário 0.5-1.0)
+  midazolam: {
+    min: 0.1,
+    max: 1.0,
+    unit: 'mg/kg/h',
+    subdoseMessage: 'SUBDOSE: abaixo de 0,1 mg/kg/h → sedação/efeito anticonvulsivante pode ser insuficiente.',
+    overdoseMessage:
+      'SOBREDOSE: acima de 1,0 mg/kg/h → risco de sedação profunda, depressão respiratória e recuperação prolongada.',
   },
 }
 

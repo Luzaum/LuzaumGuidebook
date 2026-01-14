@@ -23,6 +23,7 @@ export interface Module {
   route: string
   status: ModuleStatus
   icon: LucideIcon
+  iconImage?: string // URL da imagem para substituir o ícone
   iframeUrl?: string
 }
 
@@ -34,6 +35,7 @@ export const modules: Module[] = [
     route: '/calculadora-energetica',
     status: 'internal',
     icon: Calculator,
+    iconImage: '/cecg-logo.png', // Logo customizada
   },
   {
     id: 'fluidoterapia',

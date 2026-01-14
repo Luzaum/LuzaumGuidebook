@@ -147,26 +147,6 @@ export default function InfusionCalculator({
     return evaluateDrugAlerts({ drugId: selectedDrug.id, flags: patientFlags })
   }, [selectedDrug, patientFlags])
 
-  const doseRangeAlert = useMemo(() => {
-    if (!isValidDirect || !selectedDrug || !doseRanges[selectedDrug.id]) return null
-    const range = doseRanges[selectedDrug.id]
-    const normalized = doseUnit === 'mcg/kg/min'
-      ? (doseValue * 60) / 1000
-      : doseUnit === 'mcg/kg/h'
-      ? doseValue / 1000
-      : doseUnit === 'mg/kg/min'
-      ? doseValue * 60
-      : doseValue
-
-    if (normalized < range.min) {
-      return { severity: 'warning' as const, message: range.subdoseMessage }
-    }
-    if (normalized > range.max) {
-      return { severity: 'critical' as const, message: range.overdoseMessage }
-    }
-    return null
-  }, [isValidDirect, selectedDrug, doseUnit, doseValue])
-
   const directResult = useMemo(() => {
     if (!isValidDirect) return null
     return calculateDirectInfusion(doseValue, doseUnit, weight, concentrationValue)
@@ -269,6 +249,31 @@ export default function InfusionCalculator({
   const indicatedText = indicatedDose
     ? `${formatNumberPtBR(indicatedDose.min, 2)}–${formatNumberPtBR(indicatedDose.max, 2)} para ${indicatedDose.purpose}`
     : null
+
+  // Alerta de sobredose/subdose baseado no indicatedDose
+  const doseRangeAlert = useMemo(() => {
+    // Usar indicatedDose dinâmico ao invés de doseRanges fixo
+    // Verificar se temos os dados necessários
+    if (!selectedDrug || !indicatedDose) return null
+    // Não precisa de isValidDirect aqui, apenas verificar se doseValue é válido
+    if (!doseValue || doseValue <= 0) return null
+    
+    const { min, max } = indicatedDose
+
+    if (doseValue < min) {
+      return {
+        severity: 'warning' as const,
+        message: `SUBDOSE: abaixo de ${formatNumberPtBR(min, 2)} ${doseUnit} → dose pode ser insuficiente. Reavaliar dose e titulação.`,
+      }
+    }
+    if (doseValue > max) {
+      return {
+        severity: 'critical' as const,
+        message: `SOBREDOSE: acima de ${formatNumberPtBR(max, 2)} ${doseUnit} → risco de efeitos adversos graves. Reavaliar dose imediatamente.`,
+      }
+    }
+    return null
+  }, [selectedDrug, doseUnit, doseValue, indicatedDose])
 
   // Mapear FluidType para DiluentId
   const getDiluentId = (fluidType: FluidType): DiluentId => {

@@ -50,7 +50,15 @@ export function ModuleCard({ module }: ModuleCardProps) {
 
         {/* Icon */}
         <div className="p-3 bg-surface/50 rounded-lg inline-block text-primary w-fit">
-          <Icon className="h-6 w-6" />
+          {module.iconImage ? (
+            <img 
+              src={module.iconImage} 
+              alt={`${module.title} logo`}
+              className="h-6 w-6 object-contain dark:invert dark:brightness-0 dark:contrast-200"
+            />
+          ) : (
+            <Icon className="h-6 w-6" />
+          )}
         </div>
 
         {/* Title */}

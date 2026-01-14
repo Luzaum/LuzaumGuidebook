@@ -17,12 +17,18 @@ import {
   Cat,
 } from 'lucide-react'
 
-const miniApps = [
+const miniApps: Array<{
+  id: string
+  title: string
+  description: string
+  icon: React.ReactNode
+  implemented: boolean
+}> = [
   {
     id: 'calculadora-energetica',
     title: 'Calculadora Energética',
     description: 'Cálculo de necessidades energéticas para cães e gatos',
-    icon: <Calculator className="h-6 w-6" />,
+    icon: <img src="/cecg-logo.png" alt="CECG Logo" className="h-6 w-6 object-contain dark:invert dark:brightness-0 dark:contrast-200" />,
     implemented: true,
   },
   {
