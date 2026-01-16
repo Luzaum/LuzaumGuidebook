@@ -28,7 +28,7 @@ const miniApps: Array<{
     id: 'calculadora-energetica',
     title: 'Calculadora Energética',
     description: 'Cálculo de necessidades energéticas para cães e gatos',
-    icon: <img src="/cecg-logo.png" alt="CECG Logo" className="h-6 w-6 object-contain dark:invert dark:brightness-0 dark:contrast-200" />,
+    icon: <Calculator className="h-6 w-6" />,
     implemented: true,
   },
   {
@@ -131,7 +131,7 @@ export function MiniAppGrid({ onAppClick }: MiniAppGridProps) {
           {miniApps.map((app) => (
             <div key={app.id}>
               <Card
-                className="p-6 cursor-pointer group hover:border-primary/50 transition-all duration-300"
+                className="relative overflow-hidden p-6 cursor-pointer group hover:border-primary/50 transition-all duration-300"
                 onClick={() => handleAppClick(app.id, app.implemented)}
               >
                 <div className="mb-4 p-3 bg-surface/50 rounded-lg inline-block text-primary group-hover:scale-110 transition-transform duration-300">

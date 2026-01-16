@@ -4,6 +4,7 @@ import {
   ketamineCompatibilityToDrugCompatibility,
   fentanylCompatibilityToDrugCompatibility,
   remifentanilCompatibilityToDrugCompatibility,
+  dobutamineCompatibilityToDrugCompatibility,
 } from './drugs/compatibility.helpers'
 import { fentanylRecommendedUnit, fentanylRecommendedUnitWhy, fentanylIndicatedDoses } from './drugs/fentanyl'
 import { ketamineIndicatedDoses } from './drugs/ketamine'
@@ -11,6 +12,7 @@ import { midazolamIndicatedDoses } from './drugs/midazolam'
 import { remifentanilIndicatedDoses } from './drugs/remifentanil'
 import { dobutamineRecommendedUnit, dobutamineRecommendedUnitWhy, dobutamineIndicatedDoses } from './drugs/dobutamine'
 import { norepinephrineRecommendedUnit, norepinephrineRecommendedUnitWhy, norepinephrineIndicatedDoses } from './drugs/norepinephrine'
+import { norepinephrineCompatibilityToDrugCompatibility } from './drugs/compatibility.helpers'
 
 export type DrugCategory =
   | 'Analgésicos e Anestésicos'
@@ -122,7 +124,7 @@ export const drugs: Drug[] = [
     category: 'Agentes Cardiovasculares',
     hasCRI: true,
     concentrations: [12.5],
-    compatibility: defaultCompatibility,
+    compatibility: dobutamineCompatibilityToDrugCompatibility(),
     recommendedUnit: dobutamineRecommendedUnit,
     recommendedUnitWhy: dobutamineRecommendedUnitWhy,
     indicatedDoses: dobutamineIndicatedDoses,
@@ -149,7 +151,7 @@ export const drugs: Drug[] = [
     category: 'Agentes Cardiovasculares',
     hasCRI: true,
     concentrations: [1, 2],
-    compatibility: defaultCompatibility,
+    compatibility: norepinephrineCompatibilityToDrugCompatibility(),
     recommendedUnit: norepinephrineRecommendedUnit,
     recommendedUnitWhy: norepinephrineRecommendedUnitWhy,
     indicatedDoses: norepinephrineIndicatedDoses,

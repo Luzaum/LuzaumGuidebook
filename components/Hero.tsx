@@ -31,9 +31,9 @@ export function Hero({ onExploreApps }: HeroProps) {
 
       <div className="container relative z-10 mx-auto px-4">
         <div className="flex flex-col items-center text-center mb-12">
-          <div className="w-60 h-60 md:w-78 md:h-78 mb-6 drop-shadow-lg relative">
+          <div className="w-[960px] h-[960px] md:w-[1248px] md:h-[1248px] mb-6 drop-shadow-lg relative max-w-[90vw] max-h-[90vh]">
             <img
-              src="https://uploadthingy.s3.us-west-1.amazonaws.com/uqx8z1Pxb4rR6VJkom5v9g/image.png"
+              src="/apps/VETIUS.png"
               alt="Vetius Logo"
               className="w-full h-full object-contain animate-[pulse_3s_ease-in-out_infinite]"
               style={{

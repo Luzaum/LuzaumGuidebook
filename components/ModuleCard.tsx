@@ -1,7 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Module } from '../modules/registry'
-import { Button } from './ui/button'
 
 interface ModuleCardProps {
   module: Module
@@ -21,23 +20,23 @@ export function ModuleCard({ module }: ModuleCardProps) {
 
   return (
     <div
-      className={`h-full rounded-2xl border bg-surface-2/60 dark:bg-surface-2/40 backdrop-blur transition-all duration-300 ${
+      className={`relative overflow-hidden h-full rounded-2xl border bg-surface-2/60 dark:bg-surface-2/40 backdrop-blur transition-all duration-300 ${
         isPlanned
           ? 'opacity-60 cursor-not-allowed'
           : 'cursor-pointer hover:border-primary/50 hover:shadow-lg'
       }`}
       onClick={handleClick}
     >
-      <div className="flex h-full flex-col p-6">
-        {/* Badge */}
-        <div className="mb-3">
+      <div className="flex h-full flex-col">
+        {/* TAG */}
+        <div className="px-6 pt-4">
           <span
-            className={`inline-block px-2 py-1 text-xs font-semibold rounded-full ${
+            className={`inline-flex rounded-full px-3 py-1 text-xs font-medium ${
               module.status === 'internal'
-                ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300'
+                ? 'bg-white/10 text-white/80'
                 : module.status === 'iframe'
-                ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400'
+                ? 'bg-white/10 text-white/80'
+                : 'bg-white/5 text-white/60'
             }`}
           >
             {module.status === 'internal'
@@ -48,43 +47,71 @@ export function ModuleCard({ module }: ModuleCardProps) {
           </span>
         </div>
 
-        {/* Icon */}
-        <div className="p-3 bg-surface/50 rounded-lg inline-block text-primary w-fit">
+        {/* LOGO — SEM RESERVA DE ALTURA */}
+        <div className="flex justify-center pt-2 pb-0">
           {module.iconImage ? (
-            <img 
-              src={module.iconImage} 
-              alt={`${module.title} logo`}
-              className="h-6 w-6 object-contain dark:invert dark:brightness-0 dark:contrast-200"
+            <img
+              src={module.iconImage}
+              alt={module.title}
+              className={`w-full max-w-[280px] object-contain ${
+                module.id === 'escalas-dor' ? 'scale-[1.3]' :
+                module.id === 'neurologia' ? 'scale-125' :
+                module.id === 'emergencias-veterinarias' ? 'scale-[1.2]' :
+                module.id === 'crivet' || module.id === 'transfusao-sanguinea' || module.id === 'fluidoterapia' || module.id === 'calculadora-energetica' || module.id === 'antibioticoterapia' ? 'scale-125' : ''
+              }`}
+              draggable={false}
+              loading="lazy"
+              onError={(e) => {
+                // Se a imagem não carregar, mostra placeholder
+                const target = e.target as HTMLImageElement
+                target.style.display = 'none'
+                const placeholder = target.parentElement?.querySelector('.logo-placeholder') as HTMLElement
+                if (placeholder) placeholder.style.display = 'flex'
+              }}
             />
-          ) : (
-            <Icon className="h-6 w-6" />
+          ) : null}
+          {/* Placeholder escondido - aparece se imagem falhar */}
+          <div
+            className="logo-placeholder hidden flex-col items-center justify-center w-full max-w-[280px] min-h-[100px] bg-white/5 rounded-lg border border-dashed border-white/20"
+          >
+            <Icon className="h-10 w-10 text-white/40 mb-1" />
+            <span className="text-xs text-white/50 text-center px-2">
+              Sem logo ainda
+            </span>
+          </div>
+          {/* Placeholder quando não há imagem configurada */}
+          {!module.iconImage && (
+            <div className="flex flex-col items-center justify-center w-full max-w-[280px] min-h-[100px] bg-white/5 rounded-lg border border-dashed border-white/20">
+              <Icon className="h-10 w-10 text-white/40 mb-1" />
+              <span className="text-xs text-white/50 text-center px-2">
+                Sem logo ainda
+              </span>
+            </div>
           )}
         </div>
 
-        {/* Title */}
-        <h3 className="mt-3 text-lg font-semibold leading-snug line-clamp-1 text-foreground">
-          {module.title}
-        </h3>
+        {/* TEXTO — COLADO NA LOGO */}
+        <div className="px-6 pt-0 -mt-1">
+          <h3 className="m-0 text-center text-xl font-semibold leading-tight text-white">
+            {module.title}
+          </h3>
+          <p className="mt-0 text-center text-sm leading-snug text-white/70 line-clamp-3">
+            {module.description}
+          </p>
+        </div>
 
-        {/* Description */}
-        <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
-          {module.description}
-        </p>
-
-        {/* Footer */}
-        <div className="mt-auto pt-6">
+        {/* BOTÃO — EMPURRADO PRA BAIXO */}
+        <div className="mt-auto px-6 pb-5 pt-4">
           {isAvailable ? (
-            <Button
-              variant="primary"
-              className="w-full rounded-full"
+            <button
               onClick={handleClick}
+              className="h-12 w-full rounded-full bg-sky-300/90 font-semibold text-slate-900 hover:bg-sky-300 transition-colors"
             >
               Abrir
-            </Button>
+            </button>
           ) : (
-            <div className="flex flex-col items-center gap-2">
-              <div className="h-10 w-full rounded-full opacity-0" aria-hidden="true" />
-              <span className="text-xs text-muted-foreground">Em breve</span>
+            <div className="h-12 w-full rounded-full bg-white/5 flex items-center justify-center">
+              <span className="text-xs text-white/60">Em breve</span>
             </div>
           )}
         </div>

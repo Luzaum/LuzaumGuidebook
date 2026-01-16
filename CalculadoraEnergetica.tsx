@@ -496,14 +496,12 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
 
                 {activeTab === 'energia' && (
                     <div id="page-calc-energia">
-                         <div className="text-center mb-8">
-                            <img 
-                                src="/cecg-logo.png" 
-                                alt="Logo CECG - Calculadora Energética para Cães e Gatos"
-                                className="mx-auto mb-4 h-24 w-auto object-contain dark:invert dark:brightness-0 dark:contrast-200"
-                            />
+                         <header className="mb-6">
                             <h1 className="text-2xl md:text-3xl font-bold text-foreground">Cálculo de Energia</h1>
-                        </div>
+                            <p className="mt-1 text-sm text-muted-foreground">
+                                Cálculo de necessidades energéticas para cães e gatos
+                            </p>
+                        </header>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                             <div>
                                 <label htmlFor="species" className="block text-sm font-medium text-foreground mb-2">Espécie</label>

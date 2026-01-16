@@ -13,6 +13,7 @@ import {
   Worm,
   LucideIcon,
 } from 'lucide-react'
+import calcEnergeticaLogo from '@/assets/logos/logo-calculadora-energetica.png'
 
 export type ModuleStatus = 'internal' | 'iframe' | 'planned'
 
@@ -35,7 +36,7 @@ export const modules: Module[] = [
     route: '/calculadora-energetica',
     status: 'internal',
     icon: Calculator,
-    iconImage: '/cecg-logo.png', // Logo customizada
+    iconImage: calcEnergeticaLogo,
   },
   {
     id: 'fluidoterapia',
@@ -44,6 +45,7 @@ export const modules: Module[] = [
     route: '/fluidoterapia',
     status: 'internal',
     icon: Droplets,
+    iconImage: '/apps/fluido.png',
   },
   {
     id: 'transfusao-sanguinea',
@@ -52,6 +54,7 @@ export const modules: Module[] = [
     route: '/transfusao-sanguinea',
     status: 'internal',
     icon: Heart,
+    iconImage: '/apps/transfusao.png',
   },
   {
     id: 'hemogasometria',
@@ -60,6 +63,7 @@ export const modules: Module[] = [
     route: '/hemogasometria',
     status: 'internal',
     icon: TestTube,
+    iconImage: '/apps/HEMOGASO.png',
   },
   {
     id: 'escalas-dor',
@@ -69,6 +73,7 @@ export const modules: Module[] = [
     status: 'iframe',
     icon: Cat,
     iframeUrl: 'https://analgesiavet.netlify.app',
+    iconImage: '/apps/dor.png',
   },
   {
     id: 'emergencias-veterinarias',
@@ -78,6 +83,7 @@ export const modules: Module[] = [
     status: 'iframe',
     icon: Zap,
     iframeUrl: 'https://emergencias-vet.netlify.app',
+    iconImage: '/apps/emergencia.png',
   },
   {
     id: 'peconhentos',
@@ -87,6 +93,7 @@ export const modules: Module[] = [
     status: 'iframe',
     icon: Worm,
     iframeUrl: 'https://aapvet.netlify.app',
+    iconImage: '/apps/aap.png',
   },
   {
     id: 'antibioticoterapia',
@@ -96,14 +103,16 @@ export const modules: Module[] = [
     status: 'iframe',
     icon: Pill,
     iframeUrl: 'https://antibioticoterapia.netlify.app',
+    iconImage: '/apps/ATB.png',
   },
   {
     id: 'crivet',
-    title: 'CRIVET 2.0',
+    title: 'CRI VET',
     description: 'Calculadora auditável de CRI veterinário',
     route: '/crivet',
     status: 'internal',
     icon: Syringe,
+    iconImage: '/apps/CRIVET.png',
   },
   {
     id: 'neurologia',
@@ -112,6 +121,7 @@ export const modules: Module[] = [
     route: '/neurologia',
     status: 'planned',
     icon: Brain,
+    iconImage: '/apps/NEURO.png',
   },
 ]
 

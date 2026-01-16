@@ -5,7 +5,7 @@ interface LogoProps {
   size?: number; // pixels
 }
 
-const CANDIDATES = ['/Vetius.png', '/Vetius.svg', '/Vetius.webp', '/logo-vetius.png'];
+const CANDIDATES = ['/apps/VETIUS.png', '/Vetius.png', '/Vetius.svg', '/Vetius.webp', '/logo-vetius.png'];
 const FALLBACK_SRC = 'https://res.cloudinary.com/dwta1roq1/image/upload/w_240,q_auto/LOGOAPP';
 
 const Logo: React.FC<LogoProps> = ({ className = '', size = 60 }) => {

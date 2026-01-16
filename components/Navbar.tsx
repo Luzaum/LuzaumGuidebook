@@ -49,9 +49,9 @@ export function Navbar({ onAppClick }: NavbarProps) {
       <div className="container mx-auto px-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <img
-            src="https://uploadthingy.s3.us-west-1.amazonaws.com/uqx8z1Pxb4rR6VJkom5v9g/image.png"
+            src="/apps/VETIUS.png"
             alt="Vetius Logo"
-            className="h-10 w-auto mix-blend-multiply dark:mix-blend-screen"
+            className="h-[200px] w-auto mix-blend-multiply dark:mix-blend-screen"
           />
           <span className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
             Vetius

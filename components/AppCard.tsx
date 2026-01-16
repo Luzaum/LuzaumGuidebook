@@ -12,6 +12,8 @@ interface AppCardProps {
   category: string;
   onClick: () => void;
   className?: string;
+  image?: string;
+  imageClassName?: string;
 }
 
 const AppCard: React.FC<AppCardProps> = ({
@@ -21,7 +23,9 @@ const AppCard: React.FC<AppCardProps> = ({
   description,
   category,
   onClick,
-  className
+  className,
+  image,
+  imageClassName
 }) => {
   return (
     <Card 
@@ -34,15 +38,29 @@ const AppCard: React.FC<AppCardProps> = ({
       )}
       onClick={implemented ? onClick : undefined}
     >
+      {image && (
+        <div className="h-[120px] flex items-center justify-center">
+          <img
+            src={image}
+            alt={name}
+            className={cn("h-full max-w-[82%] object-contain", imageClassName)}
+            draggable={false}
+            loading="lazy"
+          />
+        </div>
+      )}
+      
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between">
           <div className="flex items-start gap-3">
-            <div className={cn(
-              "p-2 rounded-md transition-colors shrink-0 size-12 flex items-center justify-center",
-              implemented ? "bg-primary/10 group-hover:bg-primary/20" : "bg-muted"
-            )}>
-              {icon}
-            </div>
+            {!image && (
+              <div className={cn(
+                "p-2 rounded-md transition-colors shrink-0 size-12 flex items-center justify-center",
+                implemented ? "bg-primary/10 group-hover:bg-primary/20" : "bg-muted"
+              )}>
+                {icon}
+              </div>
+            )}
             <div className="flex-1 min-w-0">
               <CardTitle className="text-base font-semibold text-foreground group-hover:text-primary transition-colors truncate">
                 {name}

@@ -27,8 +27,8 @@ export function AppLayout() {
           aria-label="Voltar para a Home"
         >
           <Logo 
-            size={144} 
-            className="h-36 w-36 select-none object-contain drop-shadow-[0_0_28px_rgba(96,165,250,0.35)] transition-all duration-300"
+            size={360} 
+            className="h-[360px] w-[360px] select-none object-contain drop-shadow-[0_0_28px_rgba(96,165,250,0.35)] transition-all duration-300"
           />
           <span className="neon-wave neon-wave-glow -mt-4 text-xl font-semibold tracking-wide">Vetius</span>
           <div className="my-3 h-px w-10/12 bg-border opacity-40" />

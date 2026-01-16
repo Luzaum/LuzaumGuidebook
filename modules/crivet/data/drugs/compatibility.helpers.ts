@@ -3,6 +3,8 @@ import { ketamineCompatibility } from './ketamine.compat'
 import { midazolamCompatibility } from './midazolam.compat'
 import { fentanylCompatibility } from './fentanyl.compat'
 import { remifentanilCompatibility } from './remifentanil.compat'
+import { dobutamineCompatibility } from './dobutamine.compat'
+import { norepinephrineCompatibility } from './norepinephrine.compat'
 
 // Helper para converter ketamineCompatibility para DrugCompatibility
 export function ketamineCompatibilityToDrugCompatibility(): DrugCompatibility {
@@ -89,6 +91,90 @@ export function remifentanilCompatibilityToDrugCompatibility(): DrugCompatibilit
         message: caution,
       })) as CompatibilityItem[] || []),
     ],
+  }
+}
+
+// Helper para converter dobutamineCompatibility para DrugCompatibility
+export function dobutamineCompatibilityToDrugCompatibility(): DrugCompatibility {
+  const materialWarnings: string[] = []
+  if (dobutamineCompatibility.materialWarning) {
+    materialWarnings.push(dobutamineCompatibility.materialWarning)
+  }
+  if (dobutamineCompatibility.practicalWarnings) {
+    materialWarnings.push(...dobutamineCompatibility.practicalWarnings)
+  }
+
+  return {
+    diluents: [
+      {
+        diluentId: 'D5W',
+        label: 'Glicose 5%',
+        status: 'compatible',
+        reason: 'Diluente preferencial para dobutamina.',
+      },
+      {
+        diluentId: 'NaCl_09',
+        label: 'NaCl 0,9%',
+        status: 'compatible',
+        reason: 'Compatível para infusão.',
+      },
+      {
+        diluentId: 'RL',
+        label: 'Ringer Lactato',
+        status: 'compatible',
+        reason: 'Compatível para infusão.',
+      },
+    ],
+    compatibleDiluent: dobutamineCompatibility.compatibleDiluent || [],
+    compatibleMeds: dobutamineCompatibility.compatibleMeds || [],
+    incompatibilities: dobutamineCompatibility.incompatibilities?.map((item) => ({
+      name: item.drug,
+      severity: item.severity,
+      message: item.why,
+    })) as CompatibilityItem[],
+    materialWarnings,
+  }
+}
+
+// Helper para converter norepinephrineCompatibility para DrugCompatibility
+export function norepinephrineCompatibilityToDrugCompatibility(): DrugCompatibility {
+  const materialWarnings: string[] = []
+  if (norepinephrineCompatibility.materialWarnings) {
+    materialWarnings.push(norepinephrineCompatibility.materialWarnings)
+  }
+  if (norepinephrineCompatibility.practicalWarnings) {
+    materialWarnings.push(...norepinephrineCompatibility.practicalWarnings)
+  }
+
+  return {
+    diluents: [
+      {
+        diluentId: 'D5W',
+        label: 'Glicose 5% (SG5%)',
+        status: 'compatible',
+        reason: 'Diluente preferencial - pH levemente ácido protege a molécula da oxidação.',
+      },
+      {
+        diluentId: 'NaCl_09',
+        label: 'NaCl 0,9%',
+        status: 'compatible',
+        reason: 'Compatível para infusão. Estabilidade reduzida - trocar em até 12–24h.',
+      },
+      {
+        diluentId: 'RL',
+        label: 'Ringer Lactato',
+        status: 'compatible',
+        reason: 'Compatível para infusão. Estabilidade reduzida - trocar em até 12–24h.',
+      },
+    ],
+    compatibleDiluent: norepinephrineCompatibility.compatibleDiluent || [],
+    compatibleMeds: norepinephrineCompatibility.compatibleMeds || [],
+    incompatibilities: norepinephrineCompatibility.incompatibilities?.map((item) => ({
+      name: item.drug,
+      severity: item.severity,
+      message: item.why,
+    })) as CompatibilityItem[],
+    materialWarnings,
   }
 }
 
