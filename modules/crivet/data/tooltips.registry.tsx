@@ -94,7 +94,7 @@ export const TOOLTIP_REGISTRY: Record<TooltipId, React.ReactNode> = {
     <div className="space-y-2 text-sm leading-relaxed">
       <p className="font-semibold">Cetamina — CRI analgésica</p>
       <p>2–10 mcg/kg/min (0,12–0,6 mg/kg/h). Bolus ataque: 0,25–0,5 mg/kg IV lento.</p>
-      <p className="opacity-80">Acima de 10 mcg/kg/min em acordado → maior risco de disforia/psicomimético.</p>
+      <p className="opacity-80">Acima de 10 mcg/kg/min tende a TIVA; nunca usar isolada.</p>
     </div>
   ),
 
@@ -106,7 +106,10 @@ export const TOOLTIP_REGISTRY: Record<TooltipId, React.ReactNode> = {
           <b>Cães:</b> 2–5 mg/kg IV (com benzodiazepínico).
         </li>
         <li>
-          <b>Gatos:</b> 2–5 mg/kg IV (com benzo) ou 5–10 mg/kg IM (contenção).
+          <b>Gatos:</b> 2–5 mg/kg IV (sempre com benzo) ou 5–10 mg/kg IM (contenção).
+        </li>
+        <li>
+          <b>TIVA:</b> 10–50 mcg/kg/min com benzo + opioide.
         </li>
       </ul>
     </div>
@@ -119,6 +122,7 @@ export const TOOLTIP_REGISTRY: Record<TooltipId, React.ReactNode> = {
         Em CRI analgésica a taxa pode ficar muito baixa (ex.: 0,05 mL/h com 100 mg/mL). Diluir para 1–2 mg/mL melhora
         precisão e segurança.
       </p>
+      <p className="opacity-80">Para bolus/indução em pacientes pequenos, considerar 10 mg/mL (1:10).</p>
     </div>
   ),
 

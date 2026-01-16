@@ -9,6 +9,8 @@ import { formatNumberPtBR } from '../../../utils/format'
 import { CompatibilityPanel } from './CompatibilityPanel'
 import { FieldLabel } from './FieldLabel'
 import { ClinicalAlertBanner } from './ClinicalAlertBanner'
+import { DrugProfileWarning } from './DrugProfileWarning'
+import { getDrugProfileValidation } from '../utils/drugProfileRegistry'
 import { convertDose } from '../engine/conversions'
 import { evaluateDrugAlerts } from '../engine/drugAlerts'
 import { convertToPatientFlags } from '../utils/patientFlags'
@@ -298,6 +300,21 @@ export default function InfusionCalculator({
           </span>
         )}
       </div>
+
+      {/* Aviso de perfil incompleto */}
+      {selectedDrug && (() => {
+        const validation = getDrugProfileValidation(selectedDrug.id)
+        if (validation.completeness < 100) {
+          return (
+            <DrugProfileWarning
+              validation={validation}
+              drugName={selectedDrug.name}
+              showDetails={true}
+            />
+          )
+        }
+        return null
+      })()}
 
       {clinicalAlerts.length > 0 && (
         <div className="space-y-3">
@@ -652,7 +669,11 @@ export default function InfusionCalculator({
                 <option value="SG 5%">Solução Glicosada 5%</option>
               </select>
               {selectedDrug && (
-                <CompatibilityPanel compat={selectedDrug.compatibility} selectedDiluentId={getDiluentId(fluidType)} />
+                <CompatibilityPanel 
+                  compat={selectedDrug.compatibility} 
+                  selectedDiluentId={getDiluentId(fluidType)}
+                  drugId={selectedDrug.id}
+                />
               )}
             </div>
           </div>

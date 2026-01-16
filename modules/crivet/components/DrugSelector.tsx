@@ -3,14 +3,62 @@ import { Pill, Search, Sparkles } from 'lucide-react'
 import { Drug, categories, drugs } from '../data/drugs'
 import { HelpModal } from './HelpModal'
 import { CATEGORY_STYLES, mapCategoryToStyle } from '../ui/categoryStyles'
+import { DrugProfileStatusBadge } from './DrugProfileWarning'
+import { getDrugProfileValidation, getDrugProfile } from '../utils/drugProfileRegistry'
+import { normalizeDrug } from '../services/normalizeDrug'
 
 type DrugSelectorProps = {
   selectedDrug: Drug | null
   onSelectDrug: (drug: Drug) => void
 }
 
-function HelpButtonWithModal({ title, content }: { title: string; content: React.ReactNode }) {
+function HelpButtonWithModal({ 
+  title, 
+  drugId 
+}: { 
+  title: string
+  drugId: string 
+}) {
   const [open, setOpen] = useState(false)
+
+  // Obter perfil e normalizar
+  const profile = getDrugProfile(drugId)
+  const normalized = profile ? normalizeDrug(profile) : null
+
+  // Verificar se há conteúdo para exibir
+  const hasContent = normalized && normalized.helpDrawer.sections.length > 0
+
+  // Renderizar conteúdo
+  const content = hasContent ? (
+    <div className="space-y-6">
+      {normalized!.helpDrawer.sections.map((section, idx) => (
+        <div key={idx} className="space-y-3">
+          <h3 className="text-base font-semibold text-white border-b border-white/10 pb-2">
+            {section.title}
+          </h3>
+          <div className="space-y-2 text-white/90">
+            {section.content.map((paragraph, pIdx) => (
+              <p key={pIdx} className="text-sm leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  ) : (
+    <div className="space-y-3">
+      <p className="text-sm text-red-400 font-medium">
+        ⚠️ Erro de Desenvolvimento
+      </p>
+      <p className="text-sm text-white/80">
+        Fármaco sem conteúdo normalizado. Verifique import/normalizer.
+      </p>
+      <p className="text-xs text-white/60 mt-2">
+        Este fármaco não possui informações no formato esperado. Em produção, isso não deve acontecer porque a importação será bloqueada.
+      </p>
+    </div>
+  )
 
   return (
     <>
@@ -19,6 +67,8 @@ function HelpButtonWithModal({ title, content }: { title: string; content: React
         onClick={() => setOpen(true)}
         className="h-7 w-7 rounded-full border border-white/30 hover:bg-white/20 text-white/90 hover:text-white transition-colors flex items-center justify-center text-sm font-medium"
         aria-label={`Ajuda: ${title}`}
+        disabled={!hasContent}
+        title={hasContent ? 'Informações sobre o fármaco' : 'Sem informações disponíveis'}
       >
         ?
       </button>
@@ -86,12 +136,7 @@ export default function DrugSelector({ selectedDrug, onSelectDrug }: DrugSelecto
                 <span className="text-[11px] font-semibold opacity-90">{categoryStyle.label}</span>
                 <HelpButtonWithModal
                   title={`Sobre ${selectedDrug.name}`}
-                  content={
-                    <p>
-                      Informações detalhadas sobre este fármaco estarão disponíveis em breve. Por enquanto, use as
-                      concentrações disponíveis e siga os alertas clínicos exibidos.
-                    </p>
-                  }
+                  drugId={selectedDrug.id}
                 />
                 <Sparkles className="w-5 h-5 text-white/80 animate-pulse" />
               </div>
@@ -150,6 +195,16 @@ export default function DrugSelector({ selectedDrug, onSelectDrug }: DrugSelecto
                         {drug.name}
                       </span>
                       {selectedDrug?.id === drug.id && <Sparkles className="w-4 h-4 text-sky-500 animate-pulse" />}
+                      <DrugProfileStatusBadge
+                        completeness={(() => {
+                          const validation = getDrugProfileValidation(drug.id)
+                          return validation.completeness
+                        })()}
+                        hasCritical={(() => {
+                          const validation = getDrugProfileValidation(drug.id)
+                          return validation.missing.some((m) => m.severity === 'critical')
+                        })()}
+                      />
                     </button>
                   ))}
                 </div>

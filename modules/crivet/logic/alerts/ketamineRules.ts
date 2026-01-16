@@ -6,8 +6,8 @@ export const KETAMINE_RULES: DrugRule[] = [
     when: ['cardiopata_icc'],
     alert: {
       level: 'warning',
-      title: 'ICC/Doença cardíaca × Cetamina',
-      short: 'Pode aumentar demanda miocárdica (FC/PA). Cautela em CMH/estenose.',
+      title: 'Cardiopatia × Cetamina',
+      short: 'Pode aumentar FC/PA e demanda miocárdica. Cautela em CMH felina.',
       why: ['Estímulo simpático aumenta consumo de O₂ e trabalho cardíaco.'],
       actions: [
         'Evitar em cardiopatia descompensada; se usar, doses baixas e monitorização rigorosa.',
@@ -29,9 +29,9 @@ export const KETAMINE_RULES: DrugRule[] = [
     drugId: 'cetamina',
     when: ['glaucoma'],
     alert: {
-      level: 'critical',
+      level: 'warning',
       title: 'Glaucoma/lesão ocular × Cetamina',
-      short: 'Evitar: pode aumentar pressão intraocular e piorar condição ocular.',
+      short: 'Pode aumentar pressão intraocular. Evitar quando houver alternativa.',
       why: ['Pode aumentar PIO e causar nistagmo/hipertonia.'],
       actions: ['Preferir outra estratégia anestésica/sedativa.'],
     },
@@ -47,6 +47,17 @@ export const KETAMINE_RULES: DrugRule[] = [
       actions: [
         'Preferir doses mais baixas e monitorar recuperação; evitar se anúrico/obstruído.',
       ],
+    },
+  },
+  {
+    drugId: 'cetamina',
+    when: ['convulsao_nao_controlada'],
+    alert: {
+      level: 'warning',
+      title: 'Convulsões não controladas × Cetamina',
+      short: 'Pode reduzir limiar convulsivo; associar benzodiazepínico.',
+      why: ['Pode precipitar/exacerbar atividade convulsiva em alguns cenários.'],
+      actions: ['Associar midazolam e evitar doses altas/isoladas.'],
     },
   },
 ]

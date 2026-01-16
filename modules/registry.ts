@@ -119,7 +119,7 @@ export const modules: Module[] = [
     title: 'Neurologia',
     description: 'Localização didática',
     route: '/neurologia',
-    status: 'planned',
+    status: 'internal',
     icon: Brain,
     iconImage: '/apps/NEURO.png',
   },

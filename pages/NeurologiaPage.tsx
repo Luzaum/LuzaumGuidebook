@@ -1,6 +1,6 @@
 import React from 'react'
-import { ModulePlanned } from './ModulePlanned'
+import { NeurologiaApp } from '../modules/neurologia/App'
 
 export function NeurologiaPage() {
-  return <ModulePlanned />
+  return <NeurologiaApp />
 }

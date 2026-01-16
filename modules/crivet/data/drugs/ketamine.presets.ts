@@ -38,6 +38,17 @@ export const ketaminePresets: DosePreset[] = [
 
   // Bolus de ataque (antes da CRI)
   {
+    id: 'ketamine_bolus_analgesic_0_25',
+    label: 'Bolus Analgésico 0,25 mg/kg IV lento',
+    mode: 'BOLUS',
+    species: 'both',
+    route: 'IV',
+    unit: 'mg/kg',
+    value: 0.25,
+    tags: ['loading', 'analgesia', 'ataque'],
+    note: 'Infundir em 2–3 min para reduzir disforia/apneia.',
+  },
+  {
     id: 'ketamine_bolus_analgesic_0_5',
     label: 'Bolus Analgésico 0,5 mg/kg IV lento',
     mode: 'BOLUS',

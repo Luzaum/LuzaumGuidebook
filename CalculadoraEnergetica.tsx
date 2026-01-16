@@ -1,6 +1,8 @@
 
 
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import { COMMERCIAL_FOODS, generateAutomaticWarnings } from './data/foodsCommercial';
+import type { CommercialFood } from './data/types/commercialFood';
 
 // --- DATA ---
 const factors = {
@@ -202,6 +204,15 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
     const [customFoodUnit, setCustomFoodUnit] = useState('g');
     const [foodPrescriptionList, setFoodPrescriptionList] = useState([]);
     
+    // Commercial foods state
+    const [selectedCommercialFoodId, setSelectedCommercialFoodId] = useState('');
+    const [commercialFoodFilters, setCommercialFoodFilters] = useState({
+        species: species === 'dog' ? 'DOG' as const : 'CAT' as const,
+        lifeStage: 'ALL' as const,
+        neuterStatus: 'ANY' as const,
+        isTherapeutic: undefined as boolean | undefined,
+    });
+    
     const [modalContent, setModalContent] = useState(null);
 
     // --- State for Ração Tab ---
@@ -283,6 +294,13 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
         setStatus('Adulto Castrado / Inativo');
         setFoodPrescriptionList([]);
         setPredefinedFoodIndex('');
+        setSelectedCommercialFoodId('');
+        setCommercialFoodFilters({
+            species: species === 'dog' ? 'DOG' : 'CAT',
+            lifeStage: 'ALL',
+            neuterStatus: 'ANY',
+            isTherapeutic: undefined,
+        })
     }, [species]);
 
     useEffect(() => {
@@ -352,6 +370,53 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
         const food = sortedFoods[parseInt(predefinedFoodIndex, 10)];
         return food?.alerts || null;
     }, [predefinedFoodIndex, sortedFoods]);
+
+    // Filter commercial foods
+    const filteredCommercialFoods = useMemo(() => {
+        return COMMERCIAL_FOODS.filter((food) => {
+            if (food.species !== commercialFoodFilters.species) return false;
+            if (
+                commercialFoodFilters.lifeStage !== 'ALL' &&
+                food.lifeStage !== commercialFoodFilters.lifeStage
+            )
+                return false;
+            if (
+                commercialFoodFilters.neuterStatus !== 'ANY' &&
+                food.neuterStatus !== commercialFoodFilters.neuterStatus &&
+                food.neuterStatus !== 'ANY'
+            )
+                return false;
+            if (
+                commercialFoodFilters.isTherapeutic !== undefined &&
+                food.isTherapeutic !== commercialFoodFilters.isTherapeutic
+            )
+                return false;
+            return true;
+        })
+    }, [commercialFoodFilters])
+
+    const selectedCommercialFood = useMemo(() => {
+        return COMMERCIAL_FOODS.find((f) => f.id === selectedCommercialFoodId) || null
+    }, [selectedCommercialFoodId])
+
+    const commercialFoodWarnings = useMemo(() => {
+        if (!selectedCommercialFood) return []
+        return generateAutomaticWarnings(selectedCommercialFood)
+    }, [selectedCommercialFood])
+
+    const handleAddCommercialFood = () => {
+        if (!selectedCommercialFood) return
+        // Convert to format compatible with existing food list
+        const foodToAdd = {
+            name: `${selectedCommercialFood.brand} ${selectedCommercialFood.line ? selectedCommercialFood.line + ' ' : ''}${selectedCommercialFood.product}`,
+            calories: selectedCommercialFood.me_kcal_per_kg / 1000, // Convert kcal/kg to kcal/g
+            unit: 'g',
+            isCommercial: true,
+            commercialData: selectedCommercialFood,
+        }
+        setFoodPrescriptionList((prev) => [...prev, foodToAdd])
+        setSelectedCommercialFoodId('')
+    }
 
     const goalOptions = [
         { id: 'maintenance', label: '⚖️ Manutenção' },
@@ -656,6 +721,233 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                         
                         <div className="bg-muted p-6 rounded-lg mb-6 border border-border">
                             <h3 className="font-semibold text-foreground text-lg mb-4">2. Selecione o Alimento</h3>
+                            
+                            {/* Banco de Alimentos Comerciais */}
+                            <div className="mb-6 pb-6 border-b border-border">
+                                <h4 className="font-medium text-foreground mb-3 flex items-center gap-2">
+                                    <span className="text-lg">📦</span>
+                                    Banco de Alimentos Comerciais
+                                </h4>
+                                
+                                {/* Filtros */}
+                                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
+                                    <select
+                                        value={commercialFoodFilters.lifeStage}
+                                        onChange={(e) =>
+                                            setCommercialFoodFilters((prev) => ({
+                                                ...prev,
+                                                lifeStage: e.target.value as any,
+                                            }))
+                                        }
+                                        className="p-2 bg-card border border-input rounded-lg text-sm text-foreground"
+                                    >
+                                        <option value="ALL">Todos os estágios</option>
+                                        <option value="PUPPY">Filhotes</option>
+                                        <option value="ADULT">Adulto</option>
+                                        <option value="SENIOR">Sênior</option>
+                                    </select>
+                                    
+                                    <select
+                                        value={commercialFoodFilters.neuterStatus}
+                                        onChange={(e) =>
+                                            setCommercialFoodFilters((prev) => ({
+                                                ...prev,
+                                                neuterStatus: e.target.value as any,
+                                            }))
+                                        }
+                                        className="p-2 bg-card border border-input rounded-lg text-sm text-foreground"
+                                    >
+                                        <option value="ANY">Qualquer status</option>
+                                        <option value="NEUTERED">Castrado</option>
+                                        <option value="INTACT">Inteiro</option>
+                                    </select>
+                                    
+                                    <select
+                                        value={commercialFoodFilters.isTherapeutic === undefined ? 'all' : commercialFoodFilters.isTherapeutic ? 'therapeutic' : 'regular'}
+                                        onChange={(e) =>
+                                            setCommercialFoodFilters((prev) => ({
+                                                ...prev,
+                                                isTherapeutic:
+                                                    e.target.value === 'all'
+                                                        ? undefined
+                                                        : e.target.value === 'therapeutic',
+                                            }))
+                                        }
+                                        className="p-2 bg-card border border-input rounded-lg text-sm text-foreground"
+                                    >
+                                        <option value="all">Todos</option>
+                                        <option value="regular">Regular</option>
+                                        <option value="therapeutic">Terapêutico</option>
+                                    </select>
+                                    
+                                    <button
+                                        onClick={() => {
+                                            setCommercialFoodFilters({
+                                                species: species === 'dog' ? 'DOG' : 'CAT',
+                                                lifeStage: 'ALL',
+                                                neuterStatus: 'ANY',
+                                                isTherapeutic: undefined,
+                                            })
+                                            setSelectedCommercialFoodId('')
+                                        }}
+                                        className="p-2 bg-slate-200 dark:bg-slate-700 text-foreground rounded-lg text-sm hover:bg-slate-300 dark:hover:bg-slate-600 transition"
+                                    >
+                                        Limpar filtros
+                                    </button>
+                                </div>
+                                
+                                {/* Seleção de alimento comercial */}
+                                <select
+                                    value={selectedCommercialFoodId}
+                                    onChange={(e) => {
+                                        setSelectedCommercialFoodId(e.target.value)
+                                        setPredefinedFoodIndex('')
+                                        setCustomFoodName('')
+                                        setCustomFoodCalories('')
+                                    }}
+                                    className="w-full p-3 bg-card border border-input rounded-lg text-foreground mb-3"
+                                >
+                                    <option value="">Selecione um alimento comercial...</option>
+                                    {filteredCommercialFoods.map((food) => (
+                                        <option key={food.id} value={food.id}>
+                                            {food.brand} {food.line ? `- ${food.line}` : ''}: {food.product}
+                                        </option>
+                                    ))}
+                                </select>
+                                
+                                {/* Informações do alimento comercial selecionado */}
+                                {selectedCommercialFood && (
+                                    <div className="bg-card p-4 rounded-lg border border-border mb-3">
+                                        <div className="flex items-start justify-between mb-3">
+                                            <div>
+                                                <h5 className="font-bold text-foreground text-base">
+                                                    {selectedCommercialFood.brand}
+                                                    {selectedCommercialFood.line && ` - ${selectedCommercialFood.line}`}
+                                                </h5>
+                                                <p className="text-sm text-foreground mt-1">
+                                                    {selectedCommercialFood.product}
+                                                </p>
+                                            </div>
+                                            {selectedCommercialFood.isTherapeutic && (
+                                                <span className="px-2 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 text-xs font-semibold rounded">
+                                                    Terapêutico
+                                                </span>
+                                            )}
+                                        </div>
+                                        
+                                        {/* ME e valores principais */}
+                                        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-3">
+                                            <div className="bg-muted p-2 rounded text-center">
+                                                <p className="text-xs text-muted-foreground mb-1">ME</p>
+                                                <p className="font-bold text-foreground text-sm">
+                                                    {selectedCommercialFood.me_kcal_per_kg.toLocaleString('pt-BR')} kcal/kg
+                                                </p>
+                                            </div>
+                                            {(() => {
+                                                const protein = selectedCommercialFood.guarantees.find(
+                                                    (g) => g.key === 'protein_min_gkg'
+                                                )
+                                                const fat = selectedCommercialFood.guarantees.find(
+                                                    (g) => g.key === 'fat_min_gkg'
+                                                )
+                                                const fiber = selectedCommercialFood.guarantees.find(
+                                                    (g) => g.key === 'fiber_max_gkg'
+                                                )
+                                                const moisture = selectedCommercialFood.guarantees.find(
+                                                    (g) => g.key === 'moisture_max_gkg'
+                                                )
+                                                return (
+                                                    <>
+                                                        {protein && (
+                                                            <div className="bg-muted p-2 rounded text-center">
+                                                                <p className="text-xs text-muted-foreground mb-1">PB mín</p>
+                                                                <p className="font-bold text-foreground text-sm">
+                                                                    {(protein.value / 10).toFixed(1)}%
+                                                                </p>
+                                                            </div>
+                                                        )}
+                                                        {fat && (
+                                                            <div className="bg-muted p-2 rounded text-center">
+                                                                <p className="text-xs text-muted-foreground mb-1">EE mín</p>
+                                                                <p className="font-bold text-foreground text-sm">
+                                                                    {(fat.value / 10).toFixed(1)}%
+                                                                </p>
+                                                            </div>
+                                                        )}
+                                                        {fiber && (
+                                                            <div className="bg-muted p-2 rounded text-center">
+                                                                <p className="text-xs text-muted-foreground mb-1">FB máx</p>
+                                                                <p className="font-bold text-foreground text-sm">
+                                                                    {(fiber.value / 10).toFixed(1)}%
+                                                                </p>
+                                                            </div>
+                                                        )}
+                                                        {moisture && (
+                                                            <div className="bg-muted p-2 rounded text-center">
+                                                                <p className="text-xs text-muted-foreground mb-1">Umidade máx</p>
+                                                                <p className="font-bold text-foreground text-sm">
+                                                                    {(moisture.value / 10).toFixed(1)}%
+                                                                </p>
+                                                            </div>
+                                                        )}
+                                                    </>
+                                                )
+                                            })()}
+                                        </div>
+                                        
+                                        {/* Warnings automáticos */}
+                                        {commercialFoodWarnings.length > 0 && (
+                                            <div className="space-y-2 mb-3">
+                                                {commercialFoodWarnings.map((warning, idx) => {
+                                                    const colorClass =
+                                                        warning.type === 'high_fat'
+                                                            ? 'bg-red-100 dark:bg-red-900/20 border-red-500 text-red-800 dark:text-red-300'
+                                                            : warning.type === 'ultra_low_fat'
+                                                            ? 'bg-blue-100 dark:bg-blue-900/20 border-blue-500 text-blue-800 dark:text-blue-300'
+                                                            : warning.type === 'renal_diet'
+                                                            ? 'bg-emerald-100 dark:bg-emerald-900/20 border-emerald-500 text-emerald-800 dark:text-emerald-300'
+                                                            : 'bg-purple-100 dark:bg-purple-900/20 border-purple-500 text-purple-800 dark:text-purple-300'
+                                                    return (
+                                                        <div
+                                                            key={idx}
+                                                            className={`p-2 rounded text-xs border-l-4 ${colorClass}`}
+                                                        >
+                                                            {warning.message}
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        )}
+                                        
+                                        {/* Functional notes */}
+                                        {selectedCommercialFood.functionalNotes &&
+                                            selectedCommercialFood.functionalNotes.length > 0 && (
+                                                <div className="mb-3">
+                                                    <p className="text-xs font-semibold text-muted-foreground mb-1">
+                                                        Características:
+                                                    </p>
+                                                    <ul className="text-xs text-foreground space-y-1">
+                                                        {selectedCommercialFood.functionalNotes.map((note, idx) => (
+                                                            <li key={idx} className="flex items-start gap-1">
+                                                                <span>•</span>
+                                                                <span>{note}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            )}
+                                        
+                                        <button
+                                            onClick={handleAddCommercialFood}
+                                            className="w-full py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition text-sm"
+                                        >
+                                            Adicionar à Lista
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                            
+                            {/* Alimentos predefinidos (legado) */}
                             <div className="mb-4">
                                 <label htmlFor="predefined-food-select" className="block text-sm font-medium text-foreground mb-2">Selecionar Alimento ({species === 'dog' ? 'Cães' : 'Gatos'})</label>
                                 <select id="predefined-food-select" value={predefinedFoodIndex} onChange={handlePredefinedFoodChange} className="w-full p-3 bg-card border border-input rounded-lg text-foreground">
@@ -732,18 +1024,117 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                             </div>
                                         )
                                     } else {
-                                        const amount = (targetKcal > 0 && food.calories > 0) ? (targetKcal / food.calories).toFixed(1) : '0.0';
+                                        // Calcular quantidade: para alimentos comerciais usa me_kcal_per_kg, senão usa calories (kcal/g)
+                                        let amount = '0.0'
+                                        if (targetKcal > 0) {
+                                            if (food.isCommercial && food.commercialData) {
+                                                // Alimento comercial: g_dia = (kcal_dia / me_kcal_per_kg) * 1000
+                                                amount = (
+                                                    (targetKcal / food.commercialData.me_kcal_per_kg) *
+                                                    1000
+                                                ).toFixed(1)
+                                            } else if (food.calories > 0) {
+                                                // Alimento predefinido/custom: quantidade = kcal_dia / (kcal/unidade)
+                                                amount = (targetKcal / food.calories).toFixed(1)
+                                            }
+                                        }
                                         
                                         return (
                                             <div key={foodKey} className="bg-card p-4 rounded-lg border border-border">
                                                 <h4 className="font-bold text-foreground text-lg mb-3">{food.name}</h4>
+                                                
+                                                {/* Informações adicionais para alimentos comerciais */}
+                                                {food.isCommercial && food.commercialData && (
+                                                    <div className="mb-3 space-y-2">
+                                                        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
+                                                            <div className="bg-muted p-2 rounded text-center">
+                                                                <p className="text-muted-foreground mb-1">ME</p>
+                                                                <p className="font-semibold text-foreground">
+                                                                    {food.commercialData.me_kcal_per_kg.toLocaleString('pt-BR')} kcal/kg
+                                                                </p>
+                                                            </div>
+                                                            {(() => {
+                                                                const protein = food.commercialData.guarantees.find(
+                                                                    (g) => g.key === 'protein_min_gkg'
+                                                                )
+                                                                const fat = food.commercialData.guarantees.find(
+                                                                    (g) => g.key === 'fat_min_gkg'
+                                                                )
+                                                                const fiber = food.commercialData.guarantees.find(
+                                                                    (g) => g.key === 'fiber_max_gkg'
+                                                                )
+                                                                return (
+                                                                    <>
+                                                                        {protein && (
+                                                                            <div className="bg-muted p-2 rounded text-center">
+                                                                                <p className="text-muted-foreground mb-1">PB</p>
+                                                                                <p className="font-semibold text-foreground">
+                                                                                    {(protein.value / 10).toFixed(1)}%
+                                                                                </p>
+                                                                            </div>
+                                                                        )}
+                                                                        {fat && (
+                                                                            <div className="bg-muted p-2 rounded text-center">
+                                                                                <p className="text-muted-foreground mb-1">EE</p>
+                                                                                <p className="font-semibold text-foreground">
+                                                                                    {(fat.value / 10).toFixed(1)}%
+                                                                                </p>
+                                                                            </div>
+                                                                        )}
+                                                                        {fiber && (
+                                                                            <div className="bg-muted p-2 rounded text-center">
+                                                                                <p className="text-muted-foreground mb-1">FB</p>
+                                                                                <p className="font-semibold text-foreground">
+                                                                                    {(fiber.value / 10).toFixed(1)}%
+                                                                                </p>
+                                                                            </div>
+                                                                        )}
+                                                                    </>
+                                                                )
+                                                            })()}
+                                                        </div>
+                                                        
+                                                        {/* Warnings do alimento comercial */}
+                                                        {(() => {
+                                                            const warnings = generateAutomaticWarnings(food.commercialData)
+                                                            if (warnings.length === 0) return null
+                                                            return (
+                                                                <div className="space-y-1">
+                                                                    {warnings.map((warning, idx) => {
+                                                                        const colorClass =
+                                                                            warning.type === 'high_fat'
+                                                                                ? 'bg-red-50 dark:bg-red-900/10 border-red-300 text-red-700 dark:text-red-300'
+                                                                                : warning.type === 'ultra_low_fat'
+                                                                                ? 'bg-blue-50 dark:bg-blue-900/10 border-blue-300 text-blue-700 dark:text-blue-300'
+                                                                                : warning.type === 'renal_diet'
+                                                                                ? 'bg-emerald-50 dark:bg-emerald-900/10 border-emerald-300 text-emerald-700 dark:text-emerald-300'
+                                                                                : 'bg-purple-50 dark:bg-purple-900/10 border-purple-300 text-purple-700 dark:text-purple-300'
+                                                                        return (
+                                                                            <div
+                                                                                key={idx}
+                                                                                className={`p-1.5 rounded text-xs border-l-2 ${colorClass}`}
+                                                                            >
+                                                                                {warning.message}
+                                                                            </div>
+                                                                        )
+                                                                    })}
+                                                                </div>
+                                                            )
+                                                        })()}
+                                                    </div>
+                                                )}
+                                                
                                                 <div className="flex justify-between items-center p-3 bg-blue-50 rounded-md">
                                                     <span className="flex items-center text-md font-semibold text-blue-800">
                                                         {goalOptions.find(g => g.id === nutritionalGoal)?.label || 'Meta:'}
                                                         <HelpIcon term="foodAmount" onOpenModal={setModalContent} />
                                                     </span>
                                                     <strong className="text-xl font-bold text-blue-800">
-                                                        {targetKcal > 0 ? `${amount} ${unitLabel}/dia` : 'Insira o peso ideal'}
+                                                        {targetKcal > 0
+                                                            ? food.isCommercial
+                                                                ? `${amount} g/dia`
+                                                                : `${amount} ${unitLabel}/dia`
+                                                            : 'Insira o peso ideal'}
                                                     </strong>
                                                 </div>
                                             </div>

@@ -10,6 +10,7 @@ type PatientFlags = {
   renalDisease?: boolean // principalmente relevante em gatos
   uncontrolledSeizures?: boolean
   decompensatedHeartFailure?: boolean
+  urethralObstruction?: boolean
 }
 
 type KetamineInputs = {
@@ -38,15 +39,15 @@ export function getKetamineAlerts(input: KetamineInputs): AppAlert[] {
       level: 'critical',
       title: '⛔ CMH felina (HCM): evitar cetamina',
       message:
-        'Pode aumentar trabalho cardíaco e consumo de O₂. Prefira alternativa e monitore ECG/PA se uso inevitável.',
+        'Aumenta FC e consumo de O₂, reduz enchimento diastólico. Contraindicada em HCM felina.',
     })
   }
 
   if (p.glaucoma || p.openGlobe) {
     a.push({
-      level: 'critical',
-      title: '⛔ Olho: evitar em glaucoma ou ferimento global aberto',
-      message: 'Risco de piora de pressão intraocular e dano ocular (princípio de precaução).',
+      level: 'warning',
+      title: '⚠️ Glaucoma / lesão ocular: cautela',
+      message: 'Pode aumentar pressão intraocular. Evitar quando houver alternativa.',
     })
   }
 
@@ -54,7 +55,7 @@ export function getKetamineAlerts(input: KetamineInputs): AppAlert[] {
     a.push({
       level: 'warning',
       title: '⚠️ Hipertensão grave: cautela',
-      message: 'Pode elevar PA e FC. Iniciar baixo, titular e monitorar pressão.',
+      message: 'Efeito simpaticomimético pode elevar PA/FC. Preferir microdose e monitorar PAM.',
     })
   }
 
@@ -63,24 +64,24 @@ export function getKetamineAlerts(input: KetamineInputs): AppAlert[] {
       level: 'warning',
       title: '⚠️ Suspeita de PIC elevada (TCE): usar com critério',
       message:
-        'Hoje pode ser aceitável sob ventilação/monitorização, mas o risco é maior. Preferir equipe e monitorização intensiva.',
+        'Uso aceitável se ventilado e normocápnico; evitar em respiração espontânea instável.',
     })
   }
 
   if (p.uncontrolledSeizures) {
     a.push({
       level: 'warning',
-      title: '⚠️ Convulsões não controladas: evitar',
-      message: 'Pode precipitar/exacerbar sinais neurológicos em alguns cenários. Priorize controle anticonvulsivante.',
+      title: '⚠️ Epilepsia/convulsões: cautela',
+      message: 'Pode reduzir limiar convulsivo. Associar midazolam e evitar doses altas.',
     })
   }
 
-  if (p.species === 'cat' && p.renalDisease) {
+  if (p.species === 'cat' && (p.renalDisease || p.urethralObstruction)) {
     a.push({
       level: 'warning',
-      title: '⚠️ Gato com doença renal/obstrução: risco de efeito prolongado',
+      title: '⚠️ Gato renal/obstruído: risco de efeito prolongado',
       message:
-        'A cetamina pode ter eliminação renal relevante em gatos; pode prolongar sedação e aumentar toxicidade. Reduzir dose/evitar CRI prolongada.',
+        'Excreção renal ativa pode prolongar efeito. Reduzir dose e evitar redoses.',
     })
   }
 
@@ -93,21 +94,21 @@ export function getKetamineAlerts(input: KetamineInputs): AppAlert[] {
         level: 'critical',
         title: '🚨 CRI muito alta para animal acordado',
         message:
-          'Acima de 20 mcg/kg/min: alto risco de disforia intensa, rigidez, sialorreia, nistagmo, hipertensão e convulsões. Reavaliar dose e indicação.',
+          'Acima de 20 mcg/kg/min: alto risco de disforia/rigidez/hipertensão. Reavaliar e confirmar associação com benzo + opioide.',
       })
     } else if (d > ketamineSafetyThresholds.criAnalgesiaUpperMcgKgMin) {
       a.push({
         level: 'warning',
         title: '⚠️ Acima da faixa analgésica típica',
         message:
-          'Acima de 10 mcg/kg/min pode causar efeitos psicomiméticos/disforia em paciente acordado. Manter na faixa analgésica quando objetivo for dor.',
+          'Acima de 10 mcg/kg/min tende a TIVA; nunca usar isolada. Manter faixa analgésica quando objetivo for dor.',
       })
     } else if (d < 2) {
       a.push({
         level: 'info',
         title: 'ℹ️ Abaixo da faixa analgésica',
         message:
-          'Abaixo de 2 mcg/kg/min pode falhar em bloquear NMDA (analgesia insuficiente). Reavaliar dor e titulação.',
+          'Abaixo de 2 mcg/kg/min pode falhar em bloquear NMDA. Reavaliar dor e titulação.',
       })
     }
   }
