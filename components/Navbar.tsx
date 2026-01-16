@@ -51,7 +51,7 @@ export function Navbar({ onAppClick }: NavbarProps) {
           <img
             src="/apps/VETIUS.png"
             alt="Vetius Logo"
-            className="h-[200px] w-auto mix-blend-multiply dark:mix-blend-screen"
+            className="h-[1200px] w-auto mix-blend-multiply dark:mix-blend-screen object-contain"
           />
           <span className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
             Vetius

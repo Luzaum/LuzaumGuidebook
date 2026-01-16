@@ -7,7 +7,7 @@ import {
   dobutamineCompatibilityToDrugCompatibility,
 } from './drugs/compatibility.helpers'
 import { fentanylRecommendedUnit, fentanylRecommendedUnitWhy, fentanylIndicatedDoses } from './drugs/fentanyl'
-import { ketamineIndicatedDoses } from './drugs/ketamine'
+import { ketamineIndicatedDoses, ketamineRecommendedUnit, ketamineRecommendedUnitWhy } from './drugs/ketamine'
 import { midazolamIndicatedDoses } from './drugs/midazolam'
 import { remifentanilIndicatedDoses } from './drugs/remifentanil'
 import { dobutamineRecommendedUnit, dobutamineRecommendedUnitWhy, dobutamineIndicatedDoses } from './drugs/dobutamine'
@@ -98,6 +98,8 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [50, 100],
     compatibility: ketamineCompatibilityToDrugCompatibility(),
+    recommendedUnit: ketamineRecommendedUnit,
+    recommendedUnitWhy: ketamineRecommendedUnitWhy,
     indicatedDoses: ketamineIndicatedDoses,
   },
   {

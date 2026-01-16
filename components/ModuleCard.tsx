@@ -57,7 +57,7 @@ export function ModuleCard({ module }: ModuleCardProps) {
                 module.id === 'escalas-dor' ? 'scale-[1.3]' :
                 module.id === 'neurologia' ? 'scale-125' :
                 module.id === 'emergencias-veterinarias' ? 'scale-[1.2]' :
-                module.id === 'crivet' || module.id === 'transfusao-sanguinea' || module.id === 'fluidoterapia' || module.id === 'calculadora-energetica' || module.id === 'antibioticoterapia' ? 'scale-125' : ''
+                module.id === 'crivet' || module.id === 'transfusao-sanguinea' || module.id === 'fluidoterapia' || module.id === 'calculadora-energetica' || module.id === 'antibioticoterapia' || module.id === 'hemogasometria' ? 'scale-125' : ''
               }`}
               draggable={false}
               loading="lazy"

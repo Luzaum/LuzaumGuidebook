@@ -488,10 +488,37 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                 <button onClick={onBack} className="mb-6 bg-primary text-primary-foreground font-bold py-2 px-4 rounded-lg shadow-lg hover:bg-primary/90 transition-transform transform hover:scale-105">
                     &larr; Voltar para a Lista
                 </button>
-                <div className="flex justify-center mb-8 bg-muted rounded-full p-1 border border-border text-sm md:text-base">
-                    <button onClick={() => handleTabSwitch('energia')} className={`nav-button w-1/3 py-2 rounded-full transition-colors ${activeTab === 'energia' ? 'bg-background text-foreground' : 'text-muted-foreground hover:text-foreground'}`}>Energia</button>
-                    <button onClick={() => handleTabSwitch('racao')} className={`nav-button w-1/3 py-2 rounded-full transition-colors ${activeTab === 'racao' ? 'bg-background text-foreground' : 'text-muted-foreground hover:text-foreground'}`}>Ração</button>
-                    <button onClick={() => handleTabSwitch('indicacoes')} className={`nav-button w-1/3 py-2 rounded-full transition-colors ${activeTab === 'indicacoes' ? 'bg-background text-foreground' : 'text-muted-foreground hover:text-foreground'}`}>Indicações</button>
+                <div className="flex justify-center gap-2 mb-8 text-sm md:text-base">
+                    <button 
+                        onClick={() => handleTabSwitch('energia')} 
+                        className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                            activeTab === 'energia' 
+                                ? 'bg-sky-500/20 text-sky-400 border-2 border-sky-400 shadow-[0_0_20px_rgba(56,189,248,0.5)]' 
+                                : 'bg-muted/50 text-muted-foreground border-2 border-transparent hover:bg-muted hover:text-foreground'
+                        }`}
+                    >
+                        ⚡ Energia
+                    </button>
+                    <button 
+                        onClick={() => handleTabSwitch('racao')} 
+                        className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                            activeTab === 'racao' 
+                                ? 'bg-sky-500/20 text-sky-400 border-2 border-sky-400 shadow-[0_0_20px_rgba(56,189,248,0.5)]' 
+                                : 'bg-muted/50 text-muted-foreground border-2 border-transparent hover:bg-muted hover:text-foreground'
+                        }`}
+                    >
+                        🍽️ Ração
+                    </button>
+                    <button 
+                        onClick={() => handleTabSwitch('indicacoes')} 
+                        className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                            activeTab === 'indicacoes' 
+                                ? 'bg-sky-500/20 text-sky-400 border-2 border-sky-400 shadow-[0_0_20px_rgba(56,189,248,0.5)]' 
+                                : 'bg-muted/50 text-muted-foreground border-2 border-transparent hover:bg-muted hover:text-foreground'
+                        }`}
+                    >
+                        📋 Indicações
+                    </button>
                 </div>
 
                 {activeTab === 'energia' && (

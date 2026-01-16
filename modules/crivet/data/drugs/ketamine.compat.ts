@@ -1,9 +1,9 @@
 export const ketamineCompatibility = {
-  compatibleDiluent: ['NaCl 0,9% (SF)', 'Ringer Lactato (RL)', 'Glicose 5% (SG 5%)', 'Ringer simples'],
+  compatibleDiluent: ['NaCl 0,9% (SF)', 'Ringer Lactato (RL)', 'Glicose 5% (SG 5%)'],
   physicalIncompatibilities: [
     {
       drug: 'Diazepam',
-      why: 'Incompatibilidade física: precipita/cristaliza rapidamente (aspecto branco/leitoso).',
+      why: 'Incompatibilidade física: precipita/cristaliza (não misturar na mesma seringa/linha).',
       severity: 'critical',
     },
     {
@@ -18,10 +18,10 @@ export const ketamineCompatibility = {
     },
   ],
   cocktailOftenUsed: [
+    'Midazolam (preferível para prevenir disforia)',
+    'Lidocaína (MLK)',
     'Morfina',
     'Fentanil',
-    'Lidocaína (MLK/FLK — avaliar paciente e doença)',
-    'Midazolam (geralmente aceito em diluição; atenção a compatibilidade local)',
-    'Dexmedetomidina (avaliar cardiopatas descompensados)',
+    'Dexmedetomidina',
   ],
 }
