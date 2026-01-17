@@ -6,6 +6,10 @@ export interface FoodItem {
   protein: string;
   fat: string;
   indication: string;
+  lifeStage: 'PUPPY' | 'ADULT' | 'SENIOR' | 'ALL';
+  neuterStatus: 'NEUTERED' | 'INTACT' | 'ANY';
+  isTherapeutic: boolean;
+  therapeuticIndications?: string[];
   alerts?: Array<{
     type: 'green' | 'red' | 'yellow';
     text: string;

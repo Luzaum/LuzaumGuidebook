@@ -1,73 +1,59 @@
-/**
- * Modelo Normalizado de Fármaco para UI
- * Contrato único interno que aceita dados de formatos diferentes
- */
+export type AlertLevel = "SAFE" | "MONITOR" | "WARNING" | "CRITICAL" | "BLOCK";
 
-export interface HelpDrawerSection {
-  title: string
-  content: string[] // Array de strings para renderizar como parágrafos ou lista
-}
+export type NormalizedHelpSection = {
+  id: string;
+  title: string;
+  content: string[]; // plain text lines (render bullets/paragraphs)
+};
 
-export interface NormalizedHelpDrawer {
-  sections: HelpDrawerSection[]
-}
+export type NormalizedDoseEntry = {
+  label: string;
+  route?: string;
+  unit: string; // e.g. "mcg/kg/min" or "mg/kg"
+  range?: [number, number];
+  fixed?: number;
+  notes?: string[];
+  equivalences?: string[];
+};
 
-export interface NormalizedCompatibility {
-  diluentsAllowed: string[] // Lista de diluentes compatíveis
-  incompatible: Array<{
-    agent: string
-    why: string
-    risk?: string
-  }>
-}
+export type NormalizedDrug = {
+  id: string;
+  namePt: string;
+  nameEn: string;
+  synonyms: string[];
 
-export interface NormalizedDose {
-  cri?: {
-    mcgkgmin?: { min: number; max: number; note?: string }
-    mgkgh?: { min: number; max: number; note?: string }
-  }
-  bolus?: {
-    mgkg?: { min: number; max: number; note?: string }
-    mcgkg?: { min: number; max: number; note?: string }
-    ukg?: { min: number; max: number; note?: string }
-  }
-}
+  class: string[];
 
-export interface NormalizedDoses {
-  dog: NormalizedDose
-  cat: NormalizedDose
-}
-
-export interface NormalizedIndications {
-  primary: string[]
-  secondary: string[]
-  all: string[] // Concatenação de primary + secondary para facilitar exibição
-}
-
-/**
- * Contrato único interno para UI
- * Todos os campos são obrigatórios para garantir que a UI nunca caia no fallback
- */
-export interface NormalizedDrug {
-  // Identidade (obrigatórios)
-  id: string
-  namePt: string
-  nameEn: string
-
-  // Summary (taglines para exibição rápida)
   summary: {
-    taglines: string[]
-  }
+    taglines: string[];
+  };
 
-  // Help Drawer (conteúdo do botão "?")
-  helpDrawer: NormalizedHelpDrawer
+  core: {
+    mechanism: string[];
+    pharmacodynamics: string[];
+    pharmacokinetics: string[];
+  };
 
-  // Compatibilidade
-  compatibility: NormalizedCompatibility
+  indications: string[];
 
-  // Doses
-  doses: NormalizedDoses
+  doses: {
+    dog: { cri: NormalizedDoseEntry[]; bolus: NormalizedDoseEntry[] };
+    cat: { cri: NormalizedDoseEntry[]; bolus: NormalizedDoseEntry[] };
+  };
 
-  // Indicações (obrigatório para UI)
-  indications: NormalizedIndications
-}
+  compatibility: {
+    diluentsAllowed: string[]; // e.g. ["NaCl 0.9%", "Ringer Lactato", "Glicose 5%"]
+    incompatible: { agent: string; why?: string }[];
+    ySiteOnly: string[];
+    notes: string[];
+  };
+
+  helpDrawer: {
+    sections: NormalizedHelpSection[];
+  };
+
+  meta: {
+    rawSchemaVersion?: string;
+    sources?: string[]; // optional
+  };
+};

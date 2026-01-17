@@ -36,125 +36,125 @@ const factors = {
 
 const predefinedFoods = [
     // --- Cães & Gatos ---
-    { name: "Hill's a/d Urgent Care (Úmido)", species: ['dog', 'cat'], calories: 1.175, unit: 'g', protein: '8.5%', fat: '5.2%', indication: 'Convalescença, anorexia, pós-cirurgia, lesão.', alerts: [ { type: 'green', text: 'Excelente para pacientes anoréxicos ou que necessitam de suporte calórico em pequenos volumes.' }, { type: 'red', text: 'Alto teor de gordura e proteína: <strong>contraindicado</strong> em pancreatite, hiperlipidemia, e DRC/encefalopatia hepática não compensadas.' } ] },
-    { name: "Premier Nutrição Clínica Recuperação (Úmido)", species: ['dog', 'cat'], calories: 1.3, unit: 'g', protein: '11.0%', fat: '9.0%', indication: 'Suporte nutricional em recuperação, pós-cirúrgico.', alerts: [ { type: 'green', text: 'Alto aporte calórico e proteico para recuperação rápida.' }, { type: 'red', text: 'Contraindicado em pancreatite, hiperlipidemia, e DRC/encefalopatia hepática não compensadas devido ao alto teor de gordura e proteína.' } ] },
-    { name: "Royal Canin Recovery (Úmido)", species: ['dog', 'cat'], calories: 1.183, unit: 'g', protein: '12.7%', fat: '6.4%', indication: 'Convalescença, anorexia, pós-cirurgia, cuidados intensivos.', alerts: [ { type: 'green', text: 'Textura mousse ideal para alimentação por sonda e pacientes com dificuldade de apreensão do alimento.' }, { type: 'red', text: 'Contraindicado em encefalopatia hepática, pancreatite e hiperlipidemia agudas devido ao alto teor de gordura.' } ] },
-    { name: "FN Vet Care Recuperação (lata)", species: ['dog', 'cat'], calories: 1.25, unit: 'g', protein: '11.5%', fat: '7.5%', indication: 'Recuperação de cães e gatos debilitados, anorexia ou convalescença.', alerts: [ { type: 'yellow', text: 'Teor de gordura moderado, usar com cautela em pacientes com histórico de pancreatite.' } ] },
-    { name: "Nutralife Intensiv (pó)", species: ['dog', 'cat'], calories: 5.86, unit: 'g', protein: '29%', fat: '46%', indication: 'Recuperação, anorexia, crescimento, atletas.', alerts: [ { type: 'red', text: 'Gordura extremamente elevada (46%). <strong>Contraindicado</strong> em pancreatite, hiperlipidemia, encefalopatia hepática e DRC descompensada.' } ], dilution: {scoop_g: 16, water_ml: 30} },
-    { name: "Nutralife (pasta)", species: ['dog', 'cat'], calories: 5.441, unit: 'g', protein: '15.3%', fat: '38%', indication: 'Recuperação, anorexia (pasta palatável).', alerts: [ { type: 'green', text: 'Muito palatável, fácil de administrar como suplemento para estimular o apetite.' }, { type: 'red', text: 'Alto teor de gordura (38%). <strong>Contraindicado</strong> em pancreatite, hiperlipidemia, e DRC.' } ] },
-    { name: "Nutrapet (pasta)", species: ['dog', 'cat'], calories: 5.5, unit: 'g', protein: '2%', fat: '40%', indication: 'Suplemento energético rápido.', alerts: [ { type: 'yellow', text: 'Teor proteico insignificante. Não supre necessidades proteicas para recuperação de massa magra.' }, { type: 'red', text: 'Extremamente rico em gordura (40%). <strong>Contraindicado</strong> em pancreatite e hiperlipidemia.' } ] },
-    { name: "Petmilk (pó)", species: ['dog', 'cat'], calories: 5.986, unit: 'g', protein: '35%', fat: '36.8%', indication: 'Substituto do leite materno para cães e gatos neonatos.', alerts: [ { type: 'green', text: 'Formulado para ser um substituto completo do leite materno.' }, { type: 'yellow', text: 'A diluição incorreta é a principal causa de diarreia ou constipação em filhotes. Siga as instruções rigorosamente.' } ], dilution: {scoop_g: 8, water_ml: 40} },
-    { name: "Support First Milk (pó)", species: ['dog', 'cat'], calories: 0.9, unit: 'g', protein: '41%', fat: '20%', indication: 'Substituto do leite materno.', alerts: [ { type: 'yellow', text: 'A informação sobre a densidade calórica é inconsistente, usar com cautela. Diluição incorreta pode causar distúrbios gastrointestinais.' } ], dilution: {scoop_g: 10, water_ml: 50} },
-    { name: "Orga Milk (pó)", species: ['dog', 'cat'], calories: 5.378, unit: 'g', protein: '32%', fat: '35%', indication: 'Substituto do leite materno.', alerts: [ { type: 'yellow', text: 'Risco de distúrbios gastrointestinais com preparo inadequado.' } ], dilution: {scoop_g: 8, water_ml: 40} },
+    { name: "Hill's a/d Urgent Care (Úmido)", species: ['dog', 'cat'], calories: 1.175, unit: 'g', protein: '8.5%', fat: '5.2%', indication: 'Convalescença, anorexia, pós-cirurgia, lesão.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], alerts: [ { type: 'green', text: 'Excelente para pacientes anoréxicos ou que necessitam de suporte calórico em pequenos volumes.' }, { type: 'red', text: 'Alto teor de gordura e proteína: <strong>contraindicado</strong> em pancreatite, hiperlipidemia, e DRC/encefalopatia hepática não compensadas.' } ] },
+    { name: "Premier Nutrição Clínica Recuperação (Úmido)", species: ['dog', 'cat'], calories: 1.300, unit: 'g', protein: '11.0%', fat: '9.0%', indication: 'Suporte nutricional em recuperação, pós-cirúrgico.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], alerts: [ { type: 'green', text: 'Alto aporte calórico e proteico para recuperação rápida.' }, { type: 'red', text: 'Contraindicado em pancreatite, hiperlipidemia, e DRC/encefalopatia hepática não compensadas devido ao alto teor de gordura e proteína.' } ] },
+    { name: "Royal Canin Recovery (Úmido)", species: ['dog', 'cat'], calories: 1.100, unit: 'g', protein: '12.7%', fat: '6.4%', indication: 'Convalescença, anorexia, pós-cirurgia, cuidados intensivos.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], alerts: [ { type: 'green', text: 'Textura mousse ideal para alimentação por sonda e pacientes com dificuldade de apreensão do alimento.' }, { type: 'red', text: 'Contraindicado em encefalopatia hepática, pancreatite e hiperlipidemia agudas devido ao alto teor de gordura.' } ] },
+    { name: "FN Vet Care Recuperação (lata)", species: ['dog', 'cat'], calories: 1.180, unit: 'g', protein: '11.5%', fat: '7.5%', indication: 'Recuperação de cães e gatos debilitados, anorexia ou convalescença.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], alerts: [ { type: 'yellow', text: 'Teor de gordura moderado, usar com cautela em pacientes com histórico de pancreatite.' } ] },
+    { name: "Nutralife Intensiv (pó)", species: ['dog', 'cat'], calories: 4.000, unit: 'g', protein: '29%', fat: '46%', indication: 'Recuperação, anorexia, crescimento, atletas.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [], alerts: [ { type: 'red', text: 'Gordura extremamente elevada (46%). <strong>Contraindicado</strong> em pancreatite, hiperlipidemia, encefalopatia hepática e DRC descompensada.' } ], dilution: {scoop_g: 16, water_ml: 30} },
+    { name: "Nutralife (pasta)", species: ['dog', 'cat'], calories: 4.500, unit: 'g', protein: '15.3%', fat: '38%', indication: 'Recuperação, anorexia (pasta palatável).', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [], alerts: [ { type: 'green', text: 'Muito palatável, fácil de administrar como suplemento para estimular o apetite.' }, { type: 'red', text: 'Alto teor de gordura (38%). <strong>Contraindicado</strong> em pancreatite, hiperlipidemia, e DRC.' } ] },
+    { name: "Nutrapet (pasta)", species: ['dog', 'cat'], calories: 4.500, unit: 'g', protein: '2%', fat: '40%', indication: 'Suplemento energético rápido.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [], alerts: [ { type: 'yellow', text: 'Teor proteico insignificante. Não supre necessidades proteicas para recuperação de massa magra.' }, { type: 'red', text: 'Extremamente rico em gordura (40%). <strong>Contraindicado</strong> em pancreatite e hiperlipidemia.' } ] },
+    { name: "Petmilk (pó)", species: ['dog', 'cat'], calories: 4.800, unit: 'g', protein: '35%', fat: '36.8%', indication: 'Substituto do leite materno para cães e gatos neonatos.', lifeStage: 'PUPPY', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [], alerts: [ { type: 'green', text: 'Formulado para ser um substituto completo do leite materno.' }, { type: 'yellow', text: 'A diluição incorreta é a principal causa de diarreia ou constipação em filhotes. Siga as instruções rigorosamente.' } ], dilution: {scoop_g: 8, water_ml: 40} },
+    { name: "Support First Milk (pó)", species: ['dog', 'cat'], calories: 4.800, unit: 'g', protein: '41%', fat: '20%', indication: 'Substituto do leite materno.', lifeStage: 'PUPPY', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [], alerts: [ { type: 'yellow', text: 'A informação sobre a densidade calórica é inconsistente, usar com cautela. Diluição incorreta pode causar distúrbios gastrointestinais.' } ], dilution: {scoop_g: 10, water_ml: 50} },
+    { name: "Orga Milk (pó)", species: ['dog', 'cat'], calories: 4.800, unit: 'g', protein: '32%', fat: '35%', indication: 'Substituto do leite materno.', lifeStage: 'PUPPY', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [], alerts: [ { type: 'yellow', text: 'Risco de distúrbios gastrointestinais com preparo inadequado.' } ], dilution: {scoop_g: 8, water_ml: 40} },
     
     // --- Cães ---
-    { name: "Royal Canin Mini Adult", species: ['dog'], calories: 3.744, unit: 'g', protein: '25.0%', fat: '14.0%', indication: 'Cães pequenos (10 meses a 8 anos, 4-10 kg)' },
-    { name: "Royal Canin Maxi Adult", species: ['dog'], calories: 3.970, unit: 'g', protein: '26.0%', fat: '17.0%', indication: 'Cães grandes (15 meses a 5 anos, 26-44 kg)' },
-    { name: "Premier Pet Nutrição Clínica Obesidade Cães Pequeno Porte", species: ['dog'], calories: 2.979, unit: 'g', protein: '35.5%', fat: '8.0%', indication: 'Cães com obesidade, pequeno porte', alerts: [ { type: 'green', text: 'Ideal para perda de peso: baixa caloria com alta proteína para manter a massa magra e promover saciedade.' } ] },
-    { name: "Premier Pet Ambientes Internos Cães Adultos Castrados", species: ['dog'], calories: 3.601, unit: 'g', protein: '31.5%', fat: '11.5%', indication: 'Cães castrados, raças pequenas' },
-    { name: "Premier Pet Golden Fórmula Cães Adultos Frango e Arroz", species: ['dog'], calories: 3.797, unit: 'g', protein: '23.0%', fat: '12.0%', indication: 'Cães adultos' },
-    { name: "Hill's Science Diet Cães Adultos Raças Pequenas e Mini Frango", species: ['dog'], calories: 3.720, unit: 'g', protein: '21.0 - 24.5%', fat: '13.0%', indication: 'Cães adultos, raças pequenas e mini' },
-    { name: "Hill's Science Diet Cães Filhotes Raças Pequenas e Mini Frango", species: ['dog'], calories: 3.775, unit: 'g', protein: '25.0 - 30.0%', fat: '16.0 - 20.6%', indication: 'Filhotes, raças pequenas e mini' },
-    { name: "Purina Pro Plan Cães Adultos Mini e Pequeno Porte Optihealth", species: ['dog'], calories: 4.050, unit: 'g', protein: '29.0%', fat: '17.0%', indication: 'Cães adultos, mini e pequeno porte' },
-    { name: "Purina Pro Plan Cães Adultos Médio Porte Optihealth", species: ['dog'], calories: 3.980, unit: 'g', protein: '26.0%', fat: '15.0%', indication: 'Cães adultos, médio porte' },
-    { name: "Purina Pro Plan Cães Adultos Grande e Gigante Porte Optihealth", species: ['dog'], calories: 3.800, unit: 'g', protein: '26.0%', fat: '12.0%', indication: 'Cães adultos, grande e gigante porte' },
-    { name: "Purina Pro Plan Cães Filhotes Mini e Pequeno Porte Optistart", species: ['dog'], calories: 4.240, unit: 'g', protein: '32.0%', fat: '20.0%', indication: 'Filhotes, mini e pequeno porte' },
-    { name: "Purina Pro Plan Cães Filhotes Grande e Gigante Porte Optistart", species: ['dog'], calories: 4.000, unit: 'g', protein: '28.0%', fat: '17.0%', indication: 'Filhotes, grande e gigante porte' },
-    { name: "Biofresh Cão Adulto Light", species: ['dog'], calories: 3.16, unit: 'g', protein: '28%', fat: '4.8%-8.5%', indication: 'Controle de peso para cães de raças pequenas.' },
-    { name: "Complett Peptide 1.5 (líquido)", species: ['dog'], calories: 1.5, unit: 'ml', protein: '19% VET', fat: '43% VET', indication: 'Suporte hipercalórico para cães e (com extremo cuidado) gatos em UTI.', alerts: [ { type: 'red', text: 'Taurina insuficiente para gatos como única fonte. <strong>Uso em felinos apenas com suplementação e monitoramento rigoroso.</strong>' }, { type: 'red', text: 'Gordura extremamente alta. Cautela máxima em pancreatite ou hiperlipidemia.' }, { type: 'green', text: 'Hipercalórico e com proteína hidrolisada, útil para recuperação em cães quando dietas veterinárias não são toleradas.' } ] },
-    { name: "Equilíbrio Veterinary Hypoallergenic (Seco, Cães)", species: ['dog'], calories: 4.072, unit: 'g', protein: '21.0%', fat: '18.0%', indication: 'Alergias/intolerâncias alimentares com manifestações dermatológicas/digestivas.', alerts: [ { type: 'red', text: '<strong>Contraindicado</strong> para pacientes com insuficiência renal e hepática.' }, { type: 'green', text: 'Proteína de soja hidrolisada é uma boa opção para dieta de eliminação.' } ] },
-    { name: "Farmina Vet Life Gastrointestinal (Cães)", species: ['dog'], calories: 3.507, unit: 'g', protein: 'N/A', fat: 'N/A', indication: 'Manejo de distúrbios gastrointestinais.' },
-    { name: "Farmina Vet Life Hypoallergenic Egg & Rice (Seco, Cães)", species: ['dog'], calories: 3.891, unit: 'g', protein: '15.5%', fat: '13.0%', indication: 'Manutenção nutricional, redução de intolerância alimentar.' },
-    { name: "Farmina Vet Life Hypoallergenic Fish & Potato (Seco, Cães)", species: ['dog'], calories: 3.562, unit: 'g', protein: '15.5%', fat: '13.0%', indication: 'Redução de intolerância alimentar, suporte à função da pele, alergias alimentares.' },
-    { name: "Farmina Vet Life Obesity & Diabetic (Cães)", species: ['dog'], calories: 3.507, unit: 'g', protein: 'N/A', fat: 'N/A', indication: 'Manejo da obesidade e diabetes.' },
-    { name: "Farmina Vet Life Recoup (Úmido, Cães)", species: ['dog'], calories: 1.111, unit: 'g', protein: '11.6%', fat: '5.7%', indication: 'Recuperação nutricional.' },
-    { name: "Farmina Vet Life UltraHypo (Seco, Cães)", species: ['dog'], calories: 3.840, unit: 'g', protein: '18.0%', fat: '15.0%', indication: 'Alergias/intolerâncias, dieta de eliminação, dermatite atópica refratária.', alerts: [ { type: 'red', text: '<strong>Contraindicado</strong> para filhotes, gestantes/lactantes.' } ] },
-    { name: "FN Vet Care Hipoalergênica (Médio/Grande, Cães)", species: ['dog'], calories: 3.610, unit: 'g', protein: '21.0%', fat: '13.0%', indication: 'Reações adversas a alimentos (hipersensibilidade/intolerância), diarreias crônicas.' },
-    { name: "FN Vet Care Hipoalergênica (Mini/Pequeno, Cães)", species: ['dog'], calories: 3.610, unit: 'g', protein: '23.0%', fat: '14.0%', indication: 'Reações adversas a alimentos (hipersensibilidade/intolerância), diarreias crônicas.' },
-    { name: "Formula Natural Vet Care Gastrointestinal Cães", species: ['dog'], calories: 3.8, unit: 'g', protein: '25%', fat: '15.5%', indication: 'Suporte à saúde digestiva.', alerts: [ { type: 'green', text: 'Alta digestibilidade, ideal para quadros de gastroenterites agudas ou crônicas.' } ] },
-    { name: "Formula Natural Vet Care Obesidade Cães", species: ['dog'], calories: 3.0, unit: 'g', protein: '30%', fat: '8.5%', indication: 'Manejo da obesidade em cães.' },
-    { name: "Formula Natural Vet Care Osteoartrite Cães", species: ['dog'], calories: 3.5, unit: 'g', protein: '25%', fat: '11%', indication: 'Suporte à saúde articular.', alerts: [ { type: 'green', text: 'Contém condroprotetores (glucosamina e condroitina) e EPA/DHA para auxiliar no manejo da osteoartrite.' } ] },
-    { name: "Formula Natural Vet Care Renal Cães", species: ['dog'], calories: 4.0, unit: 'g', protein: '14%', fat: '17%', indication: 'Suporte à função renal.', alerts: [ { type: 'green', text: 'Fósforo e proteína controlados para auxiliar no manejo da Doença Renal Crônica (DRC).' }, { type: 'red', text: '<strong>Contraindicado</strong> para filhotes em crescimento, fêmeas gestantes/lactantes.' } ] },
-    { name: "Fresubin Original (líquido)", species: ['dog'], calories: 1.0, unit: 'ml', protein: '15% VET', fat: '30% VET', indication: 'Suporte nutricional por sonda em cães (quando dietas vet não disponíveis).', alerts: [ { type: 'red', text: '<strong>CONTRAINDICADO COMO ÚNICA FONTE PARA GATOS</strong> (sem taurina). Perfil de aminoácidos não ideal para carnívoros.' }, { type: 'yellow', text: 'Produto de uso humano. Utilizar em animais apenas sob estrita supervisão veterinária.' } ] },
-    { name: "Hill's d/d Pato & Arroz (Seco, Cães)", species: ['dog'], calories: 3.713, unit: 'g', protein: '15.1%', fat: '14.3%', indication: 'Sensibilidades alimentares, dermatites pruriginosas, gastroenterite crônica, DII.' },
-    { name: "Hill's i/d (Seco, Cães)", species: ['dog'], calories: 3.598, unit: 'g', protein: '26.2%', fat: '13.6%', indication: 'Manejo de distúrbios gastrointestinais.', alerts: [ { type: 'green', text: 'Altamente digestível e com prebióticos (tecnologia ActivBiome+), excelente para a maioria das diarreias agudas.' } ] },
-    { name: "Hill's i/d (Úmido, Cães)", species: ['dog'], calories: 1.017, unit: 'g', protein: '4.0%', fat: '1.5%', indication: 'Distúrbios gastrointestinais.', alerts: [ { type: 'green', text: 'Baixo teor de gordura, ideal para condições que exigem restrição de gordura, como recuperação de pancreatite.' } ] },
-    { name: "Hill's i/d Low Fat (Seco, Cães)", species: ['dog'], calories: 3.311, unit: 'g', protein: '24%', fat: '6.9%', indication: 'Manejo de distúrbios gastrointestinais sensíveis à gordura.', alerts: [ { type: 'green', text: 'Teor de gordura muito baixo, excelente opção para pancreatite, linfangiectasia e hiperlipidemia.' }, { type: 'red', text: '<strong>Contraindicado</strong> para filhotes, gestantes/lactantes.' } ] },
-    { name: "Hill's j/d (Úmido, Cães)", species: ['dog'], calories: 1.351, unit: 'g', protein: '17.0%', fat: '11.0%', indication: 'Suporte ao metabolismo das articulações (osteoartrite).' },
-    { name: "Hill's j/d Joint Care (Seco, Cães)", species: ['dog'], calories: 3.618, unit: 'g', protein: '17.6%', fat: '14.5%', indication: 'Suporte à saúde articular.', alerts: [ { type: 'green', text: 'Clinicamente comprovado para melhorar a mobilidade. Enriquecido com EPA, glucosamina e condroitina.' }, { type: 'red', text: '<strong>Contraindicado</strong> para filhotes em crescimento, cadelas gestantes/lactantes.' } ] },
-    { name: "Hill's k/d (Seco, Cães)", species: ['dog'], calories: 4.021, unit: 'g', protein: '13.9%', fat: '20.5%', indication: 'Suporte à função renal crônica.', alerts: [ { type: 'green', text: 'Padrão-ouro para o manejo da Doença Renal Crônica (DRC), ajudando a retardar a progressão.' }, { type: 'red', text: 'Restrição proteica severa: <strong>contraindicado</strong> para filhotes em crescimento, fêmeas gestantes/lactantes ou em condições que exijam alto aporte proteico.' }, { type: 'yellow', text: 'A palatabilidade pode ser um desafio em pacientes renais anoréxicos. Considere opções úmidas ou palatabilizantes.' } ] },
-    { name: "Hill's l/d Hepatic Care (Seco, Cães)", species: ['dog'], calories: 4.067, unit: 'g', protein: '16.7%', fat: '21.9%', indication: 'Suporte à função hepática.', alerts: [ { type: 'green', text: 'Proteína e cobre controlados, ideal para a maioria das doenças hepáticas, incluindo shunts portossistêmicos.' }, { type: 'red', text: 'Alto teor de gordura: <strong>contraindicado</strong> para pacientes com hiperlipidemia, pancreatite ou risco de pancreatite.' } ] },
-    { name: "Hill's Science Diet Cães Adultos Raças Grandes Frango", species: ['dog'], calories: 0, unit: 'g', protein: '21.0 - 24.5%', fat: '13.0 - 16.3%', indication: 'Cães adultos, raças grandes' },
-    { name: "Hill's u/d (Úmido, Cães)", species: ['dog'], calories: 1.377, unit: 'g', protein: '4.1%', fat: '7.9%', indication: 'Dissolução de urólitos de urato e cistina.' },
-    { name: "Hill's u/d Urinary Care (Seco, Cães)", species: ['dog'], calories: 3.98, unit: 'g', protein: '10.2%', fat: '18.8%', indication: 'Prevenção de cálculos de urato e cistina.', alerts: [ { type: 'green', text: 'Dieta de eleição para prevenção de cálculos de urato e cistina, comum em Dálmatas e Bulldogs.' }, { type: 'red', text: 'Proteína e purinas muito baixas. <strong>Não é uma dieta de manutenção geral</strong>. Risco de deficiência proteica se usada incorretamente.' } ] },
-    { name: "Hill's z/d Food Sensitive (Seco, Cães)", species: ['dog'], calories: 3.534, unit: 'g', protein: '17.6%', fat: '14.4%', indication: 'Manejo de sensibilidades alimentares com proteína hidrolisada.', alerts: [ { type: 'green', text: 'Proteína altamente hidrolisada (ActivBiome+), excelente para dieta de eliminação e manejo de alergias alimentares severas.' } ] },
-    { name: "Premier Gourmet Cães Carne (Sachê)", species: ['dog'], calories: 0.690, unit: 'sache', protein: '9.5%', fat: '0.7%', indication: 'Complemento alimentar, hidratação.' },
-    { name: "Premier Gourmet Cães Salmão (Sachê)", species: ['dog'], calories: 0.603, unit: 'sache', protein: '8.5%', fat: '0.6%', indication: 'Complemento alimentar, hidratação.' },
-    { name: "Premier Nutrição Clínica Hipoalergênico (Cães)", species: ['dog'], calories: 3.86, unit: 'g', protein: '22%', fat: '16%', indication: 'Manejo de sensibilidades alimentares.' },
-    { name: "Premier Nutrição Clínica Obesidade (Cães)", species: ['dog'], calories: 3.0, unit: 'g', protein: '30%', fat: '8.5%', indication: 'Manejo da obesidade canina.' },
-    { name: "Pro Plan HA Hydrolyzed (Seco, Cães)", species: ['dog'], calories: 3.750, unit: 'g', protein: '19.0%', fat: '11.0%', indication: 'Testes de eliminação, gastroenterite/dermatite alérgica, DII, pancreatite.' },
-    { name: "Pro Plan HA Vegetarian (Seco, Cães)", species: ['dog'], calories: 3.695, unit: 'g', protein: '18.0%', fat: '8.0%', indication: 'Opção vegetariana para dieta de eliminação, DII, dermatite alérgica.' },
-    { name: "Purina Pro Plan Reduced Calorie Cães Adultos", species: ['dog'], calories: 0, unit: 'g', protein: '26.0%', fat: '4.0 - 8.0%', indication: 'Cães adultos com sobrepeso' },
-    { name: "Royal Canin Anallergenic (Seco, Cães)", species: ['dog'], calories: 3.741, unit: 'g', protein: '18.0%', fat: '16.5%', indication: 'Alergias alimentares severas (dermatológicas/gastrointestinais), DII, Dermatite Atópica Canina associada à AFR, testes de eliminação.', alerts: [ { type: 'green', text: 'Proteína de pena extensivamente hidrolisada. Padrão-ouro para os casos mais severos de alergia alimentar.' }, { type: 'red', text: '<strong>Contraindicado</strong> em casos de pancreatite, crescimento, gestação/lactação.' } ] },
-    { name: "Royal Canin GI High Energy (Seco, Cães)", species: ['dog'], calories: 3.902, unit: 'g', protein: '23.0%', fat: '18.0%', indication: 'Distúrbios gastrointestinais, baixo peso.', alerts: [ { type: 'yellow', text: 'Alta energia e gordura. Não indicada para condições que exigem restrição de gordura como pancreatite.' } ] },
-    { name: "Royal Canin GI Low Fat (Úmido, Cães)", species: ['dog'], calories: 0.895, unit: 'g', protein: '8.1%', fat: '1.7%', indication: 'Condições que requerem restrição de gordura (pancreatite).' },
-    { name: "Royal Canin Hypoallergenic (Cães)", species: ['dog'], calories: 3.902, unit: 'g', protein: '21%', fat: '19%', indication: 'Manejo de reações adversas a alimentos.' },
-    { name: "Royal Canin Medium Adult", species: ['dog'], calories: 0, unit: 'g', protein: '25.0%', fat: '14.0%', indication: 'Cães médios (acima de 12 meses, 11-25 kg)' },
-    { name: "Royal Canin Mini Puppy", species: ['dog'], calories: 0, unit: 'g', protein: '31.0%', fat: '20.0%', indication: 'Filhotes de cães pequenos (2-10 meses, até 10 kg)' },
-    { name: "Royal Canin Renal Support A (Seco, Cães)", species: ['dog'], calories: 3.868, unit: 'g', protein: '12.0%', fat: '16.0%', indication: 'Suporte à função renal crônica.' },
-    { name: "Royal Canin Renal Support F (Cães)", species: ['dog'], calories: 3.779, unit: 'g', protein: '11.5%-15.5%', fat: '14%', indication: 'Suporte à função renal.' },
-    { name: "Royal Canin Satiety Support (Cães)", species: ['dog'], calories: 2.956, unit: 'g', protein: '28%', fat: '7.5%-11.5%', indication: 'Controle de peso e saciedade.', alerts: [ { type: 'green', text: 'Alto teor de fibras promove grande saciedade, sendo muito eficaz para perda de peso.' }, { type: 'yellow', text: 'O alto teor de fibra pode causar constipação ou flatulência em alguns animais. A transição deve ser lenta.' } ] },
-    { name: "Specific CDD-HY Food Allergen Management (Seco, Cães)", species: ['dog'], calories: 3.710, unit: 'g', protein: '22.8%', fat: '11.8%', indication: 'Intolerâncias/alergias alimentares, má absorção intestinal, IPE, dieta de exclusão.' },
-    { name: "Support AIG Cães (pó)", species: ['dog'], calories: 4.96, unit: 'g', protein: 'N/I', fat: 'N/I', indication: 'Anorexia, convalescença, pós-operatório.', alerts: [ { type: 'yellow', text: 'Falta de transparência nos dados de Proteína Bruta (PB) e Extrato Etéreo (EE). Usar com cautela.' } ], dilution: {scoop_g: 11, water_ml: 20} },
-    { name: "Virbac HPM Hypoallergy A2 (Seco, Cães)", species: ['dog'], calories: 3.770, unit: 'g', protein: '24.0%', fat: '18.0%', indication: 'Alergias/intolerâncias, distúrbios digestivos/cutâneos, dieta de eliminação.' },
+    { name: "Royal Canin Mini Adult", species: ['dog'], calories: 3.744, unit: 'g', protein: '25.0%', fat: '14.0%', indication: 'Cães pequenos (10 meses a 8 anos, 4-10 kg)', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Royal Canin Maxi Adult", species: ['dog'], calories: 3.970, unit: 'g', protein: '26.0%', fat: '17.0%', indication: 'Cães grandes (15 meses a 5 anos, 26-44 kg)', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Premier Pet Nutrição Clínica Obesidade Cães Pequeno Porte", species: ['dog'], calories: 2.979, unit: 'g', protein: '35.5%', fat: '8.0%', indication: 'Cães com obesidade, pequeno porte', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['WEIGHT_LOSS'], alerts: [ { type: 'green', text: 'Ideal para perda de peso: baixa caloria com alta proteína para manter a massa magra e promover saciedade.' } ] },
+    { name: "Premier Pet Ambientes Internos Cães Adultos Castrados", species: ['dog'], calories: 3.601, unit: 'g', protein: '31.5%', fat: '11.5%', indication: 'Cães castrados, raças pequenas', lifeStage: 'ADULT', neuterStatus: 'NEUTERED', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Premier Pet Golden Fórmula Cães Adultos Frango e Arroz", species: ['dog'], calories: 3.797, unit: 'g', protein: '23.0%', fat: '12.0%', indication: 'Cães adultos', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Hill's Science Diet Cães Adultos Raças Pequenas e Mini Frango", species: ['dog'], calories: 3.720, unit: 'g', protein: '21.0 - 24.5%', fat: '13.0%', indication: 'Cães adultos, raças pequenas e mini', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Hill's Science Diet Cães Filhotes Raças Pequenas e Mini Frango", species: ['dog'], calories: 3.775, unit: 'g', protein: '25.0 - 30.0%', fat: '16.0 - 20.6%', indication: 'Filhotes, raças pequenas e mini', lifeStage: 'PUPPY', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Purina Pro Plan Cães Adultos Mini e Pequeno Porte Optihealth", species: ['dog'], calories: 4.050, unit: 'g', protein: '29.0%', fat: '17.0%', indication: 'Cães adultos, mini e pequeno porte', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Purina Pro Plan Cães Adultos Médio Porte Optihealth", species: ['dog'], calories: 3.980, unit: 'g', protein: '26.0%', fat: '15.0%', indication: 'Cães adultos, médio porte', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Purina Pro Plan Cães Adultos Grande e Gigante Porte Optihealth", species: ['dog'], calories: 3.800, unit: 'g', protein: '26.0%', fat: '12.0%', indication: 'Cães adultos, grande e gigante porte', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Purina Pro Plan Cães Filhotes Mini e Pequeno Porte Optistart", species: ['dog'], calories: 4.240, unit: 'g', protein: '32.0%', fat: '20.0%', indication: 'Filhotes, mini e pequeno porte', lifeStage: 'PUPPY', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Purina Pro Plan Cães Filhotes Grande e Gigante Porte Optistart", species: ['dog'], calories: 4.000, unit: 'g', protein: '28.0%', fat: '17.0%', indication: 'Filhotes, grande e gigante porte', lifeStage: 'PUPPY', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Biofresh Cão Adulto Light", species: ['dog'], calories: 3.16, unit: 'g', protein: '28%', fat: '4.8%-8.5%', indication: 'Controle de peso para cães de raças pequenas.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Complett Peptide 1.5 (líquido)", species: ['dog'], calories: 1.5, unit: 'ml', protein: '19% VET', fat: '43% VET', indication: 'Suporte hipercalórico para cães e (com extremo cuidado) gatos em UTI.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [], alerts: [ { type: 'red', text: 'Taurina insuficiente para gatos como única fonte. <strong>Uso em felinos apenas com suplementação e monitoramento rigoroso.</strong>' }, { type: 'red', text: 'Gordura extremamente alta. Cautela máxima em pancreatite ou hiperlipidemia.' }, { type: 'green', text: 'Hipercalórico e com proteína hidrolisada, útil para recuperação em cães quando dietas veterinárias não são toleradas.' } ] },
+    { name: "Equilíbrio Veterinary Hypoallergenic (Seco, Cães)", species: ['dog'], calories: 4.072, unit: 'g', protein: '21.0%', fat: '18.0%', indication: 'Alergias/intolerâncias alimentares com manifestações dermatológicas/digestivas.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['ALLERGY'], alerts: [ { type: 'red', text: '<strong>Contraindicado</strong> para pacientes com insuficiência renal e hepática.' }, { type: 'green', text: 'Proteína de soja hidrolisada é uma boa opção para dieta de eliminação.' } ] },
+    { name: "Farmina Vet Life Gastrointestinal (Cães)", species: ['dog'], calories: 3.507, unit: 'g', protein: 'N/A', fat: 'N/A', indication: 'Manejo de distúrbios gastrointestinais.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'] },
+    { name: "Farmina Vet Life Hypoallergenic Egg & Rice (Seco, Cães)", species: ['dog'], calories: 3.891, unit: 'g', protein: '15.5%', fat: '13.0%', indication: 'Manutenção nutricional, redução de intolerância alimentar.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['ALLERGY'] },
+    { name: "Farmina Vet Life Hypoallergenic Fish & Potato (Seco, Cães)", species: ['dog'], calories: 3.562, unit: 'g', protein: '15.5%', fat: '13.0%', indication: 'Redução de intolerância alimentar, suporte à função da pele, alergias alimentares.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['ALLERGY'] },
+    { name: "Farmina Vet Life Obesity & Diabetic (Cães)", species: ['dog'], calories: 3.507, unit: 'g', protein: 'N/A', fat: 'N/A', indication: 'Manejo da obesidade e diabetes.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['WEIGHT_LOSS'] },
+    { name: "Farmina Vet Life Recoup (Úmido, Cães)", species: ['dog'], calories: 1.111, unit: 'g', protein: '11.6%', fat: '5.7%', indication: 'Recuperação nutricional.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'] },
+    { name: "Farmina Vet Life UltraHypo (Seco, Cães)", species: ['dog'], calories: 3.840, unit: 'g', protein: '18.0%', fat: '15.0%', indication: 'Alergias/intolerâncias, dieta de eliminação, dermatite atópica refratária.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['ALLERGY'], alerts: [ { type: 'red', text: '<strong>Contraindicado</strong> para filhotes, gestantes/lactantes.' } ] },
+    { name: "FN Vet Care Hipoalergênica (Médio/Grande, Cães)", species: ['dog'], calories: 3.610, unit: 'g', protein: '21.0%', fat: '13.0%', indication: 'Reações adversas a alimentos (hipersensibilidade/intolerância), diarreias crônicas.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['ALLERGY', 'GI'] },
+    { name: "FN Vet Care Hipoalergênica (Mini/Pequeno, Cães)", species: ['dog'], calories: 3.610, unit: 'g', protein: '23.0%', fat: '14.0%', indication: 'Reações adversas a alimentos (hipersensibilidade/intolerância), diarreias crônicas.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['ALLERGY', 'GI'] },
+    { name: "Formula Natural Vet Care Gastrointestinal Cães", species: ['dog'], calories: 3.8, unit: 'g', protein: '25%', fat: '15.5%', indication: 'Suporte à saúde digestiva.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], alerts: [ { type: 'green', text: 'Alta digestibilidade, ideal para quadros de gastroenterites agudas ou crônicas.' } ] },
+    { name: "Formula Natural Vet Care Obesidade Cães", species: ['dog'], calories: 3.0, unit: 'g', protein: '30%', fat: '8.5%', indication: 'Manejo da obesidade em cães.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['WEIGHT_LOSS'] },
+    { name: "Formula Natural Vet Care Osteoartrite Cães", species: ['dog'], calories: 3.5, unit: 'g', protein: '25%', fat: '11%', indication: 'Suporte à saúde articular.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['JOINT'], alerts: [ { type: 'green', text: 'Contém condroprotetores (glucosamina e condroitina) e EPA/DHA para auxiliar no manejo da osteoartrite.' } ] },
+    { name: "Formula Natural Vet Care Renal Cães", species: ['dog'], calories: 4.0, unit: 'g', protein: '14%', fat: '17%', indication: 'Suporte à função renal.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['CKD'], alerts: [ { type: 'green', text: 'Fósforo e proteína controlados para auxiliar no manejo da Doença Renal Crônica (DRC).' }, { type: 'red', text: '<strong>Contraindicado</strong> para filhotes em crescimento, fêmeas gestantes/lactantes.' } ] },
+    { name: "Fresubin Original (líquido)", species: ['dog'], calories: 1.0, unit: 'ml', protein: '15% VET', fat: '30% VET', indication: 'Suporte nutricional por sonda em cães (quando dietas vet não disponíveis).', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [], alerts: [ { type: 'red', text: '<strong>CONTRAINDICADO COMO ÚNICA FONTE PARA GATOS</strong> (sem taurina). Perfil de aminoácidos não ideal para carnívoros.' }, { type: 'yellow', text: 'Produto de uso humano. Utilizar em animais apenas sob estrita supervisão veterinária.' } ] },
+    { name: "Hill's d/d Pato & Arroz (Seco, Cães)", species: ['dog'], calories: 3.713, unit: 'g', protein: '15.1%', fat: '14.3%', indication: 'Sensibilidades alimentares, dermatites pruriginosas, gastroenterite crônica, DII.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['ALLERGY', 'GI'] },
+    { name: "Hill's i/d (Seco, Cães)", species: ['dog'], calories: 3.598, unit: 'g', protein: '26.2%', fat: '13.6%', indication: 'Manejo de distúrbios gastrointestinais.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], alerts: [ { type: 'green', text: 'Altamente digestível e com prebióticos (tecnologia ActivBiome+), excelente para a maioria das diarreias agudas.' } ] },
+    { name: "Hill's i/d (Úmido, Cães)", species: ['dog'], calories: 1.017, unit: 'g', protein: '4.0%', fat: '1.5%', indication: 'Distúrbios gastrointestinais.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], alerts: [ { type: 'green', text: 'Baixo teor de gordura, ideal para condições que exigem restrição de gordura, como recuperação de pancreatite.' } ] },
+    { name: "Hill's i/d Low Fat (Seco, Cães)", species: ['dog'], calories: 3.311, unit: 'g', protein: '24%', fat: '6.9%', indication: 'Manejo de distúrbios gastrointestinais sensíveis à gordura.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], alerts: [ { type: 'green', text: 'Teor de gordura muito baixo, excelente opção para pancreatite, linfangiectasia e hiperlipidemia.' }, { type: 'red', text: '<strong>Contraindicado</strong> para filhotes, gestantes/lactantes.' } ] },
+    { name: "Hill's j/d (Úmido, Cães)", species: ['dog'], calories: 1.351, unit: 'g', protein: '17.0%', fat: '11.0%', indication: 'Suporte ao metabolismo das articulações (osteoartrite).', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['JOINT'] },
+    { name: "Hill's j/d Joint Care (Seco, Cães)", species: ['dog'], calories: 3.618, unit: 'g', protein: '17.6%', fat: '14.5%', indication: 'Suporte à saúde articular.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['JOINT'], alerts: [ { type: 'green', text: 'Clinicamente comprovado para melhorar a mobilidade. Enriquecido com EPA, glucosamina e condroitina.' }, { type: 'red', text: '<strong>Contraindicado</strong> para filhotes em crescimento, cadelas gestantes/lactantes.' } ] },
+    { name: "Hill's k/d (Seco, Cães)", species: ['dog'], calories: 4.021, unit: 'g', protein: '13.9%', fat: '20.5%', indication: 'Suporte à função renal crônica.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['CKD'], alerts: [ { type: 'green', text: 'Padrão-ouro para o manejo da Doença Renal Crônica (DRC), ajudando a retardar a progressão.' }, { type: 'red', text: 'Restrição proteica severa: <strong>contraindicado</strong> para filhotes em crescimento, fêmeas gestantes/lactantes ou em condições que exijam alto aporte proteico.' }, { type: 'yellow', text: 'A palatabilidade pode ser um desafio em pacientes renais anoréxicos. Considere opções úmidas ou palatabilizantes.' } ] },
+    { name: "Hill's l/d Hepatic Care (Seco, Cães)", species: ['dog'], calories: 4.067, unit: 'g', protein: '16.7%', fat: '21.9%', indication: 'Suporte à função hepática.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['HEPATIC'], alerts: [ { type: 'green', text: 'Proteína e cobre controlados, ideal para a maioria das doenças hepáticas, incluindo shunts portossistêmicos.' }, { type: 'red', text: 'Alto teor de gordura: <strong>contraindicado</strong> para pacientes com hiperlipidemia, pancreatite ou risco de pancreatite.' } ] },
+    { name: "Hill's Science Diet Cães Adultos Raças Grandes Frango", species: ['dog'], calories: 0, unit: 'g', protein: '21.0 - 24.5%', fat: '13.0 - 16.3%', indication: 'Cães adultos, raças grandes', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Hill's u/d (Úmido, Cães)", species: ['dog'], calories: 1.377, unit: 'g', protein: '4.1%', fat: '7.9%', indication: 'Dissolução de urólitos de urato e cistina.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['URINARY'] },
+    { name: "Hill's u/d Urinary Care (Seco, Cães)", species: ['dog'], calories: 3.98, unit: 'g', protein: '10.2%', fat: '18.8%', indication: 'Prevenção de cálculos de urato e cistina.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['URINARY'], alerts: [ { type: 'green', text: 'Dieta de eleição para prevenção de cálculos de urato e cistina, comum em Dálmatas e Bulldogs.' }, { type: 'red', text: 'Proteína e purinas muito baixas. <strong>Não é uma dieta de manutenção geral</strong>. Risco de deficiência proteica se usada incorretamente.' } ] },
+    { name: "Hill's z/d Food Sensitive (Seco, Cães)", species: ['dog'], calories: 3.534, unit: 'g', protein: '17.6%', fat: '14.4%', indication: 'Manejo de sensibilidades alimentares com proteína hidrolisada.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['ALLERGY'], alerts: [ { type: 'green', text: 'Proteína altamente hidrolisada (ActivBiome+), excelente para dieta de eliminação e manejo de alergias alimentares severas.' } ] },
+    { name: "Premier Gourmet Cães Carne (Sachê)", species: ['dog'], calories: 0.690, unit: 'sache', protein: '9.5%', fat: '0.7%', indication: 'Complemento alimentar, hidratação.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Premier Gourmet Cães Salmão (Sachê)", species: ['dog'], calories: 0.603, unit: 'sache', protein: '8.5%', fat: '0.6%', indication: 'Complemento alimentar, hidratação.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Premier Nutrição Clínica Hipoalergênico (Cães)", species: ['dog'], calories: 3.86, unit: 'g', protein: '22%', fat: '16%', indication: 'Manejo de sensibilidades alimentares.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['ALLERGY'] },
+    { name: "Premier Nutrição Clínica Obesidade (Cães)", species: ['dog'], calories: 3.0, unit: 'g', protein: '30%', fat: '8.5%', indication: 'Manejo da obesidade canina.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['WEIGHT_LOSS'] },
+    { name: "Pro Plan HA Hydrolyzed (Seco, Cães)", species: ['dog'], calories: 3.750, unit: 'g', protein: '19.0%', fat: '11.0%', indication: 'Testes de eliminação, gastroenterite/dermatite alérgica, DII, pancreatite.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['ALLERGY', 'GI'] },
+    { name: "Pro Plan HA Vegetarian (Seco, Cães)", species: ['dog'], calories: 3.695, unit: 'g', protein: '18.0%', fat: '8.0%', indication: 'Opção vegetariana para dieta de eliminação, DII, dermatite alérgica.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['ALLERGY', 'GI'] },
+    { name: "Purina Pro Plan Reduced Calorie Cães Adultos", species: ['dog'], calories: 0, unit: 'g', protein: '26.0%', fat: '4.0 - 8.0%', indication: 'Cães adultos com sobrepeso', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Royal Canin Anallergenic (Seco, Cães)", species: ['dog'], calories: 3.741, unit: 'g', protein: '18.0%', fat: '16.5%', indication: 'Alergias alimentares severas (dermatológicas/gastrointestinais), DII, Dermatite Atópica Canina associada à AFR, testes de eliminação.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['ALLERGY'], alerts: [ { type: 'green', text: 'Proteína de pena extensivamente hidrolisada. Padrão-ouro para os casos mais severos de alergia alimentar.' }, { type: 'red', text: '<strong>Contraindicado</strong> em casos de pancreatite, crescimento, gestação/lactação.' } ] },
+    { name: "Royal Canin GI High Energy (Seco, Cães)", species: ['dog'], calories: 3.902, unit: 'g', protein: '23.0%', fat: '18.0%', indication: 'Distúrbios gastrointestinais, baixo peso.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], alerts: [ { type: 'yellow', text: 'Alta energia e gordura. Não indicada para condições que exigem restrição de gordura como pancreatite.' } ] },
+    { name: "Royal Canin GI Low Fat (Úmido, Cães)", species: ['dog'], calories: 0.895, unit: 'g', protein: '8.1%', fat: '1.7%', indication: 'Condições que requerem restrição de gordura (pancreatite).', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'] },
+    { name: "Royal Canin Hypoallergenic (Cães)", species: ['dog'], calories: 3.902, unit: 'g', protein: '21%', fat: '19%', indication: 'Manejo de reações adversas a alimentos.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['ALLERGY'] },
+    { name: "Royal Canin Medium Adult", species: ['dog'], calories: 0, unit: 'g', protein: '25.0%', fat: '14.0%', indication: 'Cães médios (acima de 12 meses, 11-25 kg)', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Royal Canin Mini Puppy", species: ['dog'], calories: 0, unit: 'g', protein: '31.0%', fat: '20.0%', indication: 'Filhotes de cães pequenos (2-10 meses, até 10 kg)', lifeStage: 'PUPPY', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Royal Canin Renal Support A (Seco, Cães)", species: ['dog'], calories: 3.868, unit: 'g', protein: '12.0%', fat: '16.0%', indication: 'Suporte à função renal crônica.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['CKD'] },
+    { name: "Royal Canin Renal Support F (Cães)", species: ['dog'], calories: 3.779, unit: 'g', protein: '11.5%-15.5%', fat: '14%', indication: 'Suporte à função renal.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['CKD'] },
+    { name: "Royal Canin Satiety Support (Cães)", species: ['dog'], calories: 2.956, unit: 'g', protein: '28%', fat: '7.5%-11.5%', indication: 'Controle de peso e saciedade.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['WEIGHT_LOSS'], alerts: [ { type: 'green', text: 'Alto teor de fibras promove grande saciedade, sendo muito eficaz para perda de peso.' }, { type: 'yellow', text: 'O alto teor de fibra pode causar constipação ou flatulência em alguns animais. A transição deve ser lenta.' } ] },
+    { name: "Specific CDD-HY Food Allergen Management (Seco, Cães)", species: ['dog'], calories: 3.710, unit: 'g', protein: '22.8%', fat: '11.8%', indication: 'Intolerâncias/alergias alimentares, má absorção intestinal, IPE, dieta de exclusão.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['ALLERGY', 'GI'] },
+    { name: "Support AIG Cães (pó)", species: ['dog'], calories: 4.96, unit: 'g', protein: 'N/I', fat: 'N/I', indication: 'Anorexia, convalescença, pós-operatório.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [], alerts: [ { type: 'yellow', text: 'Falta de transparência nos dados de Proteína Bruta (PB) e Extrato Etéreo (EE). Usar com cautela.' } ], dilution: {scoop_g: 11, water_ml: 20} },
+    { name: "Virbac HPM Hypoallergy A2 (Seco, Cães)", species: ['dog'], calories: 3.770, unit: 'g', protein: '24.0%', fat: '18.0%', indication: 'Alergias/intolerâncias, distúrbios digestivos/cutâneos, dieta de eliminação.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['ALLERGY', 'GI'] },
 
     // --- Gatos ---
-    { name: 'Royal Canin Indoor Adult', species: ['cat'], calories: 3.534, unit: 'g', protein: '27.0%', fat: '11.0 - 15.0%', indication: 'Gatos adultos de ambiente interno (1-7 anos)' },
-    { name: 'Royal Canin Kitten', species: ['cat'], calories: 3.823, unit: 'g', protein: '34.0%', fat: '16.0%', indication: 'Filhotes (4 meses a 1 ano)' },
-    { name: 'Royal Canin Sterilised 37', species: ['cat'], calories: 3.815, unit: 'g', protein: '35.0 - 37.0%', fat: '10.0 - 12.0%', indication: 'Gatos castrados (1-7 anos)' },
-    { name: 'Premier Pet Gato Adulto Light', species: ['cat'], calories: 3.813, unit: 'g', protein: '41.0%', fat: '9.0%', indication: 'Gatos adultos com sobrepeso' },
-    { name: 'Premier Pet Gatos Castrados 6 meses a 6 anos – Salmão', species: ['cat'], calories: 3.856, unit: 'g', protein: '38.0%', fat: '12.0%', indication: 'Gatos castrados (6 meses a 6 anos)' },
-    { name: 'Premier Pet Golden Gatos Adultos Castrados Frango e Carne', species: ['cat'], calories: 3.750, unit: 'g', protein: '33.5%', fat: '9.5%', indication: 'Gatos castrados' },
-    { name: 'Premier Pet Golden Gatos Adultos Frango', species: ['cat'], calories: 3.912, unit: 'g', protein: '36.0%', fat: 'N/A', indication: 'Gatos adultos' },
-    { name: 'Hill\'s Science Diet Gatos Adulto Optimal Care Frango', species: ['cat'], calories: 4.025, unit: 'g', protein: '33.4 - 34.4%', fat: '21.4 - 22.2%', indication: 'Gatos adultos' },
-    { name: 'Hill\'s Science Diet Gatos Filhotes Healthy Development Frango', species: ['cat'], calories: 4.076, unit: 'g', protein: '33.0 - 38.4%', fat: '19.0 - 25.4%', indication: 'Filhotes' },
-    { name: 'Whiskas Gatos Adulto Carne Seca', species: ['cat'], calories: 3.730, unit: 'g', protein: '30.0%', fat: '9.0%', indication: 'Gatos adultos' },
-    { name: 'Whiskas Gatos Adulto Peixe Seca', species: ['cat'], calories: 3.730, unit: 'g', protein: '30.0%', fat: '9.0%', indication: 'Gatos adultos' },
-    { name: 'Purina Pro Plan Gatos Adulto Optiprebio Frango (Úmida)', species: ['cat'], calories: 0.950, unit: 'g', protein: '11.5%', fat: '3.0%', indication: 'Gatos adultos (úmida)' },
-    { name: "Biofresh Gatos Castrados", species: ['cat'], calories: 3.81, unit: 'g', protein: '46%', fat: '12%', indication: 'Manutenção de peso para gatos castrados.' },
-    { name: "Biofresh Gatos Filhotes", species: ['cat'], calories: 4.32, unit: 'g', protein: '44.0%', fat: '22.0%', indication: 'Crescimento e desenvolvimento saudável de filhotes.' },
-    { name: "Fancy Feast Latas (Classic Patê)", species: ['cat'], calories: 1.08, unit: 'lata', protein: '11.0%', fat: '2.0%', indication: 'Alimento completo e balanceado, alta palatabilidade.' },
-    { name: "Farmina N&D Prime (Frango e Romã)", species: ['cat'], calories: 3.569, unit: 'g', protein: '46.0%', fat: '11.0%', indication: 'Nutrição geral de alta qualidade.' },
-    { name: "Farmina Vet Life Gastrointestinal (Úmido, Gatos)", species: ['cat'], calories: 1.222, unit: 'g', protein: '9.4%', fat: '5.7%', indication: 'Manejo de distúrbios gastrointestinais.' },
-    { name: "Farmina Vet Life Obesity (Úmido, Gatos)", species: ['cat'], calories: 0.882, unit: 'g', protein: '12%', fat: '2.4%', indication: 'Perda de peso.' },
-    { name: "Finotrato Cat Stix (média)", species: ['cat'], calories: 0.56, unit: 'g', protein: '5.8%', fat: '1.0%', indication: 'Complemento alimentar, alta palatabilidade.' },
-    { name: "Formula Natural Vet Care Renal Gatos", species: ['cat'], calories: 4.1, unit: 'g', protein: '24%', fat: '18%', indication: 'Suporte à função renal.', alerts: [ { type: 'green', text: 'Fósforo e proteína controlados para auxiliar no manejo da Doença Renal Crônica (DRC).' }, { type: 'red', text: '<strong>Contraindicado</strong> para filhotes, gestantes, lactantes e pacientes com depleção proteica.' } ] },
-    { name: 'GranPlus Choice Gatos Adultos (Frango e Carne)', species: ['cat'], calories: 3.75, unit: 'g', protein: '36.0%', fat: '9.0%', indication: 'Equilíbrio nutricional, saúde urinária e intestinal.' },
-    { name: "Guabi Natural Adulto Frango (Seco, Gatos)", species: ['cat'], calories: 4.150, unit: 'g', protein: '36.0%', fat: '17.0%', indication: 'Nutrição geral de alta qualidade, saúde intestinal e urinária.' },
-    { name: "Guabi Natural Sachê Carne (Úmido, Gatos)", species: ['cat'], calories: 0.094, unit: 'sache', protein: '4.0%', fat: '0.5%', indication: 'Hidratação, palatabilidade, complemento alimentar.' },
-    { name: "Hill's i/d (Seco, Gatos)", species: ['cat'], calories: 4.031, unit: 'g', protein: '36.8%', fat: '19.9%', indication: 'Distúrbios gastrointestinais, má digestão.', alerts: [ { type: 'green', text: 'Altamente digestível, excelente para a maioria dos distúrbios gastrointestinais agudos ou crônicos.' } ] },
-    { name: "Hill's j/d (Seco, Gatos)", species: ['cat'], calories: 4.024, unit: 'g', protein: '32.0%', fat: '20.0%', indication: 'Suporte ao metabolismo das articulações (osteoartrite).' },
-    { name: "Hill's k/d (Seco, Gatos)", species: ['cat'], calories: 3.811, unit: 'g', protein: '21.0%', fat: '15.0%', indication: 'Suporte à função renal crônica.' },
-    { name: "Hill's k/d (Úmido, Gatos)", species: ['cat'], calories: 1.165, unit: 'g', protein: '7.8%', fat: '6%', indication: 'Suporte à função renal crônica.', alerts: [ { type: 'green', text: 'Auxilia na hidratação de pacientes renais e possui proteína e fósforo restritos para suportar a função renal.' }, { type: 'red', text: '<strong>Contraindicado</strong> para filhotes, gestantes e lactantes.' } ] },
-    { name: "Hills Metabolic (Gatos)", species: ['cat'], calories: 3.476, unit: 'g', protein: '38.2%', fat: '12.8%', indication: 'Perda e manutenção de peso.', alerts: [ { type: 'green', text: 'Clinicamente comprovado para perda de peso segura, atuando no metabolismo individual do gato.' }, { type: 'yellow', text: 'A perda de peso em gatos deve ser lenta (0.5-1% do peso/semana) para evitar o risco de lipidose hepática.' } ] },
-    { name: "Hiperkcal Nutricuper Cat (pó)", species: ['cat'], calories: 4.761, unit: 'g', protein: 'N/I', fat: 'N/I', indication: 'Suplemento hipercalórico para ganho de peso.', alerts: [ { type: 'yellow', text: 'Faltam dados de PB e EE. Usar com cautela, especialmente em pacientes com comorbidades.' } ], dilution: {scoop_g: 10, water_ml: 20} },
-    { name: 'Inaba Churu (média)', species: ['cat'], calories: 0.44, unit: 'g', protein: '8.5%', fat: '0.5%', indication: 'Hidratação, agrado, administração de medicamentos.', alerts: [ { type: 'yellow', text: 'Não é um alimento completo. Use apenas como petisco ou para melhorar a palatabilidade de outras rações.' } ] },
-    { name: 'Optimum Sachê (Salmão/Frango)', species: ['cat'], calories: 0.874, unit: 'sache', protein: '8.5%', fat: '3.0%', indication: 'Nutrição completa, absorção de nutrientes, controle de peso.' },
-    { name: "Premier Gourmet Gatos Castrados (Sachê)", species: ['cat'], calories: 0.442, unit: 'sache', protein: '9.5%', fat: '0.2%', indication: 'Complemento alimentar, hidratação, saciedade.' },
-    { name: "Premier Nutrição Clínica Renal (Seco, Gatos)", species: ['cat'], calories: 4.497, unit: 'g', protein: '24.0%', fat: '20.0%', indication: 'Auxílio no tratamento da doença renal crônica.' },
-    { name: "Premier Nutrição Clínica Urinário (Seco, Gatos)", species: ['cat'], calories: 4.143, unit: 'g', protein: '25.0%', fat: '20.0%', indication: 'Auxílio na dissolução de cálculos de estruvita.', alerts: [ { type: 'green', text: 'Formulado para controle de pH urinário e dissolução de cálculos de estruvita.' }, { type: 'red', text: '<strong>Contraindicado</strong> para gatos com DRC, histórico de cálculos de oxalato, filhotes, gestantes/lactantes.' } ] },
-    { name: 'Purina Pro Plan Gatos Castrados Optirenal Salmão', species: ['cat'], calories: 0, unit: 'g', protein: '40.0%', fat: '12.0 - 15.0%', indication: 'Gatos castrados' },
-    { name: 'Purina Pro Plan Gatos Filhotes Optistart Frango', species: ['cat'], calories: 0, unit: 'g', protein: 'N/A', fat: 'N/A', indication: 'Filhotes' },
-    { name: 'Quatree Life Gatos Castrados (Salmão)', species: ['cat'], calories: 3.77, unit: 'g', protein: 'N/A', fat: 'N/A', indication: 'Manutenção de peso para gatos castrados.' },
-    { name: 'Quatree Supreme Gatos Castrados', species: ['cat'], calories: 3.82, unit: 'g', protein: '40%', fat: '12%', indication: 'Manutenção de peso para gatos castrados.' },
-    { name: "Royal Canin Hypoallergenic (Gatos)", species: ['cat'], calories: 3.923, unit: 'g', protein: '25.5%', fat: '20%', indication: 'Manejo de reações adversas a alimentos.' },
-    { name: 'Royal Canin Renal (Seca, Gatos)', species: ['cat'], calories: 3.953, unit: 'g', protein: '21.0%', fat: '15.0%', indication: 'Suporte à função renal crônica.' },
-    { name: 'Royal Canin Renal (Úmida, Gatos)', species: ['cat'], calories: 1.277, unit: 'lata', protein: '6.0%', fat: '6.0%', indication: 'Suporte à função renal crônica.' },
-    { name: "Royal Canin Satiety Support (Gatos)", species: ['cat'], calories: 2.956, unit: 'g', protein: '32%', fat: '8.6%-10%', indication: 'Controle de peso e saciedade.' },
-    { name: 'Royal Canin Sterilised Loaf (Úmido, Gatos)', species: ['cat'], calories: 0.795, unit: 'g', protein: '9.0%', fat: '0.5%', indication: 'Manutenção do peso ideal e saúde urinária de gatos castrados.' },
-    { name: "Royal Canin Urinary SO (Gatos)", species: ['cat'], calories: 3.659, unit: 'g', protein: '32.5%', fat: '13%', indication: 'Saúde urinária, dissolução de estruvita.', alerts: [ { type: 'green', text: 'Promove um ambiente urinário desfavorável à formação de cálculos de estruvita e oxalato de cálcio (Controle RSS).' }, { type: 'red', text: '<strong>Não utilizar</strong> em animais com doença renal crônica, insuficiência cardíaca, acidose metabólica ou durante crescimento, gestação e lactação.' } ] },
-    { name: 'Whiskas Sachê Carne ao Molho (Úmida)', species: ['cat'], calories: 0, unit: 'sache', protein: '8.0%', fat: '3.0%', indication: 'Gatos adultos (úmida)' },
-    { name: "Support AIG Gatos (pó)", species: ['cat'], calories: 4.96, unit: 'g', protein: 'N/I', fat: 'N/I', indication: 'Anorexia, convalescença, pós-operatório.', alerts: [ { type: 'yellow', text: 'Falta de transparência nos dados de Proteína Bruta (PB) e Extrato Etéreo (EE). Usar com cautela.' } ], dilution: {scoop_g: 11, water_ml: 20} },
+    { name: 'Royal Canin Indoor Adult', species: ['cat'], calories: 3.534, unit: 'g', protein: '27.0%', fat: '11.0 - 15.0%', indication: 'Gatos adultos de ambiente interno (1-7 anos)', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: 'Royal Canin Kitten', species: ['cat'], calories: 3.823, unit: 'g', protein: '34.0%', fat: '16.0%', indication: 'Filhotes (4 meses a 1 ano)', lifeStage: 'PUPPY', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: 'Royal Canin Sterilised 37', species: ['cat'], calories: 3.815, unit: 'g', protein: '35.0 - 37.0%', fat: '10.0 - 12.0%', indication: 'Gatos castrados (1-7 anos)', lifeStage: 'ADULT', neuterStatus: 'NEUTERED', isTherapeutic: false, therapeuticIndications: [] },
+    { name: 'Premier Pet Gato Adulto Light', species: ['cat'], calories: 3.813, unit: 'g', protein: '41.0%', fat: '9.0%', indication: 'Gatos adultos com sobrepeso', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: 'Premier Pet Gatos Castrados 6 meses a 6 anos – Salmão', species: ['cat'], calories: 3.856, unit: 'g', protein: '38.0%', fat: '12.0%', indication: 'Gatos castrados (6 meses a 6 anos)', lifeStage: 'ADULT', neuterStatus: 'NEUTERED', isTherapeutic: false, therapeuticIndications: [] },
+    { name: 'Premier Pet Golden Gatos Adultos Castrados Frango e Carne', species: ['cat'], calories: 3.750, unit: 'g', protein: '33.5%', fat: '9.5%', indication: 'Gatos castrados', lifeStage: 'ADULT', neuterStatus: 'NEUTERED', isTherapeutic: false, therapeuticIndications: [] },
+    { name: 'Premier Pet Golden Gatos Adultos Frango', species: ['cat'], calories: 3.912, unit: 'g', protein: '36.0%', fat: 'N/A', indication: 'Gatos adultos', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: 'Hill\'s Science Diet Gatos Adulto Optimal Care Frango', species: ['cat'], calories: 4.025, unit: 'g', protein: '33.4 - 34.4%', fat: '21.4 - 22.2%', indication: 'Gatos adultos', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: 'Hill\'s Science Diet Gatos Filhotes Healthy Development Frango', species: ['cat'], calories: 4.076, unit: 'g', protein: '33.0 - 38.4%', fat: '19.0 - 25.4%', indication: 'Filhotes', lifeStage: 'PUPPY', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: 'Whiskas Gatos Adulto Carne Seca', species: ['cat'], calories: 3.730, unit: 'g', protein: '30.0%', fat: '9.0%', indication: 'Gatos adultos', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: 'Whiskas Gatos Adulto Peixe Seca', species: ['cat'], calories: 3.730, unit: 'g', protein: '30.0%', fat: '9.0%', indication: 'Gatos adultos', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: 'Purina Pro Plan Gatos Adulto Optiprebio Frango (Úmida)', species: ['cat'], calories: 0.950, unit: 'g', protein: '11.5%', fat: '3.0%', indication: 'Gatos adultos (úmida)', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Biofresh Gatos Castrados", species: ['cat'], calories: 3.81, unit: 'g', protein: '46%', fat: '12%', indication: 'Manutenção de peso para gatos castrados.', lifeStage: 'ADULT', neuterStatus: 'NEUTERED', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Biofresh Gatos Filhotes", species: ['cat'], calories: 4.32, unit: 'g', protein: '44.0%', fat: '22.0%', indication: 'Crescimento e desenvolvimento saudável de filhotes.', lifeStage: 'PUPPY', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Fancy Feast Latas (Classic Patê)", species: ['cat'], calories: 1.08, unit: 'lata', protein: '11.0%', fat: '2.0%', indication: 'Alimento completo e balanceado, alta palatabilidade.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Farmina N&D Prime (Frango e Romã)", species: ['cat'], calories: 3.569, unit: 'g', protein: '46.0%', fat: '11.0%', indication: 'Nutrição geral de alta qualidade.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Farmina Vet Life Gastrointestinal (Úmido, Gatos)", species: ['cat'], calories: 1.222, unit: 'g', protein: '9.4%', fat: '5.7%', indication: 'Manejo de distúrbios gastrointestinais.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'] },
+    { name: "Farmina Vet Life Obesity (Úmido, Gatos)", species: ['cat'], calories: 0.882, unit: 'g', protein: '12%', fat: '2.4%', indication: 'Perda de peso.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['WEIGHT_LOSS'] },
+    { name: "Finotrato Cat Stix (média)", species: ['cat'], calories: 0.56, unit: 'g', protein: '5.8%', fat: '1.0%', indication: 'Complemento alimentar, alta palatabilidade.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Formula Natural Vet Care Renal Gatos", species: ['cat'], calories: 4.1, unit: 'g', protein: '24%', fat: '18%', indication: 'Suporte à função renal.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['CKD'], alerts: [ { type: 'green', text: 'Fósforo e proteína controlados para auxiliar no manejo da Doença Renal Crônica (DRC).' }, { type: 'red', text: '<strong>Contraindicado</strong> para filhotes, gestantes, lactantes e pacientes com depleção proteica.' } ] },
+    { name: 'GranPlus Choice Gatos Adultos (Frango e Carne)', species: ['cat'], calories: 3.75, unit: 'g', protein: '36.0%', fat: '9.0%', indication: 'Equilíbrio nutricional, saúde urinária e intestinal.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Guabi Natural Adulto Frango (Seco, Gatos)", species: ['cat'], calories: 4.150, unit: 'g', protein: '36.0%', fat: '17.0%', indication: 'Nutrição geral de alta qualidade, saúde intestinal e urinária.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Guabi Natural Sachê Carne (Úmido, Gatos)", species: ['cat'], calories: 0.094, unit: 'sache', protein: '4.0%', fat: '0.5%', indication: 'Hidratação, palatabilidade, complemento alimentar.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Hill's i/d (Seco, Gatos)", species: ['cat'], calories: 4.031, unit: 'g', protein: '36.8%', fat: '19.9%', indication: 'Distúrbios gastrointestinais, má digestão.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], alerts: [ { type: 'green', text: 'Altamente digestível, excelente para a maioria dos distúrbios gastrointestinais agudos ou crônicos.' } ] },
+    { name: "Hill's j/d (Seco, Gatos)", species: ['cat'], calories: 4.024, unit: 'g', protein: '32.0%', fat: '20.0%', indication: 'Suporte ao metabolismo das articulações (osteoartrite).', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['JOINT'] },
+    { name: "Hill's k/d (Seco, Gatos)", species: ['cat'], calories: 3.811, unit: 'g', protein: '21.0%', fat: '15.0%', indication: 'Suporte à função renal crônica.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['CKD'] },
+    { name: "Hill's k/d (Úmido, Gatos)", species: ['cat'], calories: 1.165, unit: 'g', protein: '7.8%', fat: '6%', indication: 'Suporte à função renal crônica.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['CKD'], alerts: [ { type: 'green', text: 'Auxilia na hidratação de pacientes renais e possui proteína e fósforo restritos para suportar a função renal.' }, { type: 'red', text: '<strong>Contraindicado</strong> para filhotes, gestantes e lactantes.' } ] },
+    { name: "Hills Metabolic (Gatos)", species: ['cat'], calories: 3.476, unit: 'g', protein: '38.2%', fat: '12.8%', indication: 'Perda e manutenção de peso.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['WEIGHT_LOSS'], alerts: [ { type: 'green', text: 'Clinicamente comprovado para perda de peso segura, atuando no metabolismo individual do gato.' }, { type: 'yellow', text: 'A perda de peso em gatos deve ser lenta (0.5-1% do peso/semana) para evitar o risco de lipidose hepática.' } ] },
+    { name: "Hiperkcal Nutricuper Cat (pó)", species: ['cat'], calories: 4.761, unit: 'g', protein: 'N/I', fat: 'N/I', indication: 'Suplemento hipercalórico para ganho de peso.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [], alerts: [ { type: 'yellow', text: 'Faltam dados de PB e EE. Usar com cautela, especialmente em pacientes com comorbidades.' } ], dilution: {scoop_g: 10, water_ml: 20} },
+    { name: 'Inaba Churu (média)', species: ['cat'], calories: 0.44, unit: 'g', protein: '8.5%', fat: '0.5%', indication: 'Hidratação, agrado, administração de medicamentos.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [], alerts: [ { type: 'yellow', text: 'Não é um alimento completo. Use apenas como petisco ou para melhorar a palatabilidade de outras rações.' } ] },
+    { name: 'Optimum Sachê (Salmão/Frango)', species: ['cat'], calories: 0.874, unit: 'sache', protein: '8.5%', fat: '3.0%', indication: 'Nutrição completa, absorção de nutrientes, controle de peso.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Premier Gourmet Gatos Castrados (Sachê)", species: ['cat'], calories: 0.442, unit: 'sache', protein: '9.5%', fat: '0.2%', indication: 'Complemento alimentar, hidratação, saciedade.', lifeStage: 'ADULT', neuterStatus: 'NEUTERED', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Premier Nutrição Clínica Renal (Seco, Gatos)", species: ['cat'], calories: 4.497, unit: 'g', protein: '24.0%', fat: '20.0%', indication: 'Auxílio no tratamento da doença renal crônica.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['CKD'] },
+    { name: "Premier Nutrição Clínica Urinário (Seco, Gatos)", species: ['cat'], calories: 4.143, unit: 'g', protein: '25.0%', fat: '20.0%', indication: 'Auxílio na dissolução de cálculos de estruvita.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['URINARY'], alerts: [ { type: 'green', text: 'Formulado para controle de pH urinário e dissolução de cálculos de estruvita.' }, { type: 'red', text: '<strong>Contraindicado</strong> para gatos com DRC, histórico de cálculos de oxalato, filhotes, gestantes/lactantes.' } ] },
+    { name: 'Purina Pro Plan Gatos Castrados Optirenal Salmão', species: ['cat'], calories: 0, unit: 'g', protein: '40.0%', fat: '12.0 - 15.0%', indication: 'Gatos castrados', lifeStage: 'ADULT', neuterStatus: 'NEUTERED', isTherapeutic: false, therapeuticIndications: [] },
+    { name: 'Purina Pro Plan Gatos Filhotes Optistart Frango', species: ['cat'], calories: 0, unit: 'g', protein: 'N/A', fat: 'N/A', indication: 'Filhotes', lifeStage: 'PUPPY', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: 'Quatree Life Gatos Castrados (Salmão)', species: ['cat'], calories: 3.77, unit: 'g', protein: 'N/A', fat: 'N/A', indication: 'Manutenção de peso para gatos castrados.', lifeStage: 'ADULT', neuterStatus: 'NEUTERED', isTherapeutic: false, therapeuticIndications: [] },
+    { name: 'Quatree Supreme Gatos Castrados', species: ['cat'], calories: 3.82, unit: 'g', protein: '40%', fat: '12%', indication: 'Manutenção de peso para gatos castrados.', lifeStage: 'ADULT', neuterStatus: 'NEUTERED', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Royal Canin Hypoallergenic (Gatos)", species: ['cat'], calories: 3.923, unit: 'g', protein: '25.5%', fat: '20%', indication: 'Manejo de reações adversas a alimentos.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['ALLERGY'] },
+    { name: 'Royal Canin Renal (Seca, Gatos)', species: ['cat'], calories: 3.953, unit: 'g', protein: '21.0%', fat: '15.0%', indication: 'Suporte à função renal crônica.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['CKD'] },
+    { name: 'Royal Canin Renal (Úmida, Gatos)', species: ['cat'], calories: 1.277, unit: 'lata', protein: '6.0%', fat: '6.0%', indication: 'Suporte à função renal crônica.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['CKD'] },
+    { name: "Royal Canin Satiety Support (Gatos)", species: ['cat'], calories: 2.956, unit: 'g', protein: '32%', fat: '8.6%-10%', indication: 'Controle de peso e saciedade.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['WEIGHT_LOSS'] },
+    { name: 'Royal Canin Sterilised Loaf (Úmido, Gatos)', species: ['cat'], calories: 0.795, unit: 'g', protein: '9.0%', fat: '0.5%', indication: 'Manutenção do peso ideal e saúde urinária de gatos castrados.', lifeStage: 'ADULT', neuterStatus: 'NEUTERED', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Royal Canin Urinary SO (Gatos)", species: ['cat'], calories: 3.659, unit: 'g', protein: '32.5%', fat: '13%', indication: 'Saúde urinária, dissolução de estruvita.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['URINARY'], alerts: [ { type: 'green', text: 'Promove um ambiente urinário desfavorável à formação de cálculos de estruvita e oxalato de cálcio (Controle RSS).' }, { type: 'red', text: '<strong>Não utilizar</strong> em animais com doença renal crônica, insuficiência cardíaca, acidose metabólica ou durante crescimento, gestação e lactação.' } ] },
+    { name: 'Whiskas Sachê Carne ao Molho (Úmida)', species: ['cat'], calories: 0, unit: 'sache', protein: '8.0%', fat: '3.0%', indication: 'Gatos adultos (úmida)', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Support AIG Gatos (pó)", species: ['cat'], calories: 4.96, unit: 'g', protein: 'N/I', fat: 'N/I', indication: 'Anorexia, convalescença, pós-operatório.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [], alerts: [ { type: 'yellow', text: 'Falta de transparência nos dados de Proteína Bruta (PB) e Extrato Etéreo (EE). Usar com cautela.' } ], dilution: {scoop_g: 11, water_ml: 20} },
 ];
 
 const knowledgeBase = {
@@ -204,7 +204,10 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
     const [customFoodUnit, setCustomFoodUnit] = useState('g');
     const [foodPrescriptionList, setFoodPrescriptionList] = useState([]);
     
-    // Commercial foods state
+    // Unified food bank state
+    const [selectedUnifiedFoodId, setSelectedUnifiedFoodId] = useState('');
+    
+    // Commercial foods state (keeping for backward compatibility)
     const [selectedCommercialFoodId, setSelectedCommercialFoodId] = useState('');
     const [commercialFoodFilters, setCommercialFoodFilters] = useState({
         species: species === 'dog' ? 'DOG' as const : 'CAT' as const,
@@ -371,7 +374,92 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
         return food?.alerts || null;
     }, [predefinedFoodIndex, sortedFoods]);
 
-    // Filter commercial foods
+    // Unified food bank: combine commercial foods and predefined foods
+    const unifiedFoods = useMemo(() => {
+        // Convert predefined foods to unified format
+        const convertedPredefined = predefinedFoods
+            .filter((food) => {
+                const foodSpecies = food.species.includes('dog') ? 'DOG' : food.species.includes('cat') ? 'CAT' : null;
+                return foodSpecies === commercialFoodFilters.species;
+            })
+            .filter((food) => {
+                // Apply filters
+                const foodLifeStage = food.lifeStage || 'ALL';
+                if (
+                    commercialFoodFilters.lifeStage !== 'ALL' &&
+                    foodLifeStage !== commercialFoodFilters.lifeStage &&
+                    foodLifeStage !== 'ALL'
+                )
+                    return false;
+                
+                const foodNeuterStatus = food.neuterStatus || 'ANY';
+                if (
+                    commercialFoodFilters.neuterStatus !== 'ANY' &&
+                    foodNeuterStatus !== commercialFoodFilters.neuterStatus &&
+                    foodNeuterStatus !== 'ANY'
+                )
+                    return false;
+                
+                const foodIsTherapeutic = food.isTherapeutic ?? false;
+                if (
+                    commercialFoodFilters.isTherapeutic !== undefined &&
+                    foodIsTherapeutic !== commercialFoodFilters.isTherapeutic
+                )
+                    return false;
+                
+                return true;
+            })
+            .map((food) => ({
+                id: `predefined-${food.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}`,
+                name: food.name,
+                species: food.species.includes('dog') ? 'DOG' as const : 'CAT' as const,
+                lifeStage: (food.lifeStage || 'ALL') as 'PUPPY' | 'ADULT' | 'SENIOR' | 'ALL',
+                neuterStatus: (food.neuterStatus || 'ANY') as 'NEUTERED' | 'INTACT' | 'ANY',
+                isTherapeutic: food.isTherapeutic ?? false,
+                therapeuticIndications: food.therapeuticIndications || [],
+                calories: food.calories,
+                unit: food.unit,
+                protein: food.protein,
+                fat: food.fat,
+                indication: food.indication,
+                alerts: food.alerts,
+                dilution: food.dilution,
+                isPredefined: true,
+            }));
+        
+        // Convert commercial foods to unified format
+        const convertedCommercial = COMMERCIAL_FOODS.filter((food) => {
+            if (food.species !== commercialFoodFilters.species) return false;
+            if (
+                commercialFoodFilters.lifeStage !== 'ALL' &&
+                food.lifeStage !== commercialFoodFilters.lifeStage
+            )
+                return false;
+            if (
+                commercialFoodFilters.neuterStatus !== 'ANY' &&
+                food.neuterStatus !== commercialFoodFilters.neuterStatus &&
+                food.neuterStatus !== 'ANY'
+            )
+                return false;
+            if (
+                commercialFoodFilters.isTherapeutic !== undefined &&
+                food.isTherapeutic !== commercialFoodFilters.isTherapeutic
+            )
+                return false;
+            return true;
+        }).map((food) => ({
+            ...food,
+            isPredefined: false,
+        }));
+        
+        // Combine and sort: commercial foods first (by date), then predefined foods
+        return [
+            ...convertedCommercial.sort((a, b) => b.updatedAtISO.localeCompare(a.updatedAtISO)),
+            ...convertedPredefined,
+        ];
+    }, [commercialFoodFilters]);
+    
+    // Filter commercial foods and sort by updatedAtISO (most recent first) - keep for backward compatibility
     const filteredCommercialFoods = useMemo(() => {
         return COMMERCIAL_FOODS.filter((food) => {
             if (food.species !== commercialFoodFilters.species) return false;
@@ -392,8 +480,17 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
             )
                 return false;
             return true;
+        }).sort((a, b) => {
+            // Sort by updatedAtISO descending (most recent first)
+            // This groups all recent foods together regardless of isTherapeutic
+            return b.updatedAtISO.localeCompare(a.updatedAtISO);
         })
     }, [commercialFoodFilters])
+
+    // Selected food from unified bank
+    const selectedUnifiedFood = useMemo(() => {
+        return unifiedFoods.find((f) => f.id === selectedUnifiedFoodId) || null
+    }, [selectedUnifiedFoodId, unifiedFoods])
 
     const selectedCommercialFood = useMemo(() => {
         return COMMERCIAL_FOODS.find((f) => f.id === selectedCommercialFoodId) || null
@@ -403,6 +500,37 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
         if (!selectedCommercialFood) return []
         return generateAutomaticWarnings(selectedCommercialFood)
     }, [selectedCommercialFood])
+
+    const handleAddUnifiedFood = () => {
+        if (!selectedUnifiedFood) return
+        
+        let foodToAdd;
+        if (selectedUnifiedFood.isPredefined) {
+            // Predefined food
+            foodToAdd = {
+                name: selectedUnifiedFood.name,
+                calories: selectedUnifiedFood.calories,
+                unit: selectedUnifiedFood.unit,
+                protein: selectedUnifiedFood.protein,
+                fat: selectedUnifiedFood.fat,
+                alerts: selectedUnifiedFood.alerts,
+                dilution: selectedUnifiedFood.dilution,
+                isCommercial: false,
+            }
+        } else {
+            // Commercial food
+            foodToAdd = {
+                name: `${selectedUnifiedFood.brand} ${selectedUnifiedFood.line ? selectedUnifiedFood.line + ' ' : ''}${selectedUnifiedFood.product}`,
+                calories: selectedUnifiedFood.me_kcal_per_kg / 1000, // Convert kcal/kg to kcal/g
+                unit: 'g',
+                isCommercial: true,
+                commercialData: selectedUnifiedFood,
+            }
+        }
+        
+        setFoodPrescriptionList((prev) => [...prev, foodToAdd])
+        setSelectedUnifiedFoodId('')
+    }
 
     const handleAddCommercialFood = () => {
         if (!selectedCommercialFood) return
@@ -722,11 +850,11 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                         <div className="bg-muted p-6 rounded-lg mb-6 border border-border">
                             <h3 className="font-semibold text-foreground text-lg mb-4">2. Selecione o Alimento</h3>
                             
-                            {/* Banco de Alimentos Comerciais */}
+                            {/* Banco de Alimentos */}
                             <div className="mb-6 pb-6 border-b border-border">
                                 <h4 className="font-medium text-foreground mb-3 flex items-center gap-2">
                                     <span className="text-lg">📦</span>
-                                    Banco de Alimentos Comerciais
+                                    Banco de Alimentos
                                 </h4>
                                 
                                 {/* Filtros */}
@@ -796,27 +924,239 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                     </button>
                                 </div>
                                 
-                                {/* Seleção de alimento comercial */}
+                                {/* Seleção de alimento - Banco Unificado */}
                                 <select
-                                    value={selectedCommercialFoodId}
+                                    value={selectedUnifiedFoodId}
                                     onChange={(e) => {
-                                        setSelectedCommercialFoodId(e.target.value)
+                                        setSelectedUnifiedFoodId(e.target.value)
+                                        setSelectedCommercialFoodId('')
                                         setPredefinedFoodIndex('')
                                         setCustomFoodName('')
                                         setCustomFoodCalories('')
                                     }}
                                     className="w-full p-3 bg-card border border-input rounded-lg text-foreground mb-3"
                                 >
-                                    <option value="">Selecione um alimento comercial...</option>
-                                    {filteredCommercialFoods.map((food) => (
+                                    <option value="">Selecione um alimento...</option>
+                                    {unifiedFoods.map((food) => (
                                         <option key={food.id} value={food.id}>
-                                            {food.brand} {food.line ? `- ${food.line}` : ''}: {food.product}
+                                            {food.isPredefined 
+                                                ? food.name 
+                                                : `${food.brand} ${food.line ? `- ${food.line}` : ''}: ${food.product}`}
                                         </option>
                                     ))}
                                 </select>
                                 
-                                {/* Informações do alimento comercial selecionado */}
-                                {selectedCommercialFood && (
+                                {/* Informações do alimento selecionado */}
+                                {selectedUnifiedFood && !selectedUnifiedFood.isPredefined && (
+                                    <div className="bg-card p-4 rounded-lg border border-border mb-3">
+                                        <div className="flex items-start justify-between mb-3">
+                                            <div>
+                                                <h5 className="font-bold text-foreground text-base">
+                                                    {selectedUnifiedFood.brand}
+                                                    {selectedUnifiedFood.line && ` - ${selectedUnifiedFood.line}`}
+                                                </h5>
+                                                <p className="text-sm text-foreground mt-1">
+                                                    {selectedUnifiedFood.product}
+                                                </p>
+                                            </div>
+                                            {selectedUnifiedFood.isTherapeutic && (
+                                                <span className="px-2 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 text-xs font-semibold rounded">
+                                                    Terapêutico
+                                                </span>
+                                            )}
+                                        </div>
+                                        
+                                        {/* ME e valores principais */}
+                                        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-3">
+                                            <div className="bg-muted p-2 rounded text-center">
+                                                <p className="text-xs text-muted-foreground mb-1">ME</p>
+                                                <p className="font-bold text-foreground text-sm">
+                                                    {selectedUnifiedFood.me_kcal_per_kg.toLocaleString('pt-BR')} kcal/kg
+                                                </p>
+                                            </div>
+                                            {(() => {
+                                                const protein = selectedUnifiedFood.guarantees.find(
+                                                    (g) => g.key === 'protein_min_gkg'
+                                                )
+                                                const fat = selectedUnifiedFood.guarantees.find(
+                                                    (g) => g.key === 'fat_min_gkg'
+                                                )
+                                                const fiber = selectedUnifiedFood.guarantees.find(
+                                                    (g) => g.key === 'fiber_max_gkg'
+                                                )
+                                                const moisture = selectedUnifiedFood.guarantees.find(
+                                                    (g) => g.key === 'moisture_max_gkg'
+                                                )
+                                                return (
+                                                    <>
+                                                        {protein && (
+                                                            <div className="bg-muted p-2 rounded text-center">
+                                                                <p className="text-xs text-muted-foreground mb-1">PB mín</p>
+                                                                <p className="font-bold text-foreground text-sm">
+                                                                    {(protein.value / 10).toFixed(1)}%
+                                                                </p>
+                                                            </div>
+                                                        )}
+                                                        {fat && (
+                                                            <div className="bg-muted p-2 rounded text-center">
+                                                                <p className="text-xs text-muted-foreground mb-1">EE mín</p>
+                                                                <p className="font-bold text-foreground text-sm">
+                                                                    {(fat.value / 10).toFixed(1)}%
+                                                                </p>
+                                                            </div>
+                                                        )}
+                                                        {fiber && (
+                                                            <div className="bg-muted p-2 rounded text-center">
+                                                                <p className="text-xs text-muted-foreground mb-1">FB máx</p>
+                                                                <p className="font-bold text-foreground text-sm">
+                                                                    {(fiber.value / 10).toFixed(1)}%
+                                                                </p>
+                                                            </div>
+                                                        )}
+                                                        {moisture && (
+                                                            <div className="bg-muted p-2 rounded text-center">
+                                                                <p className="text-xs text-muted-foreground mb-1">Umidade máx</p>
+                                                                <p className="font-bold text-foreground text-sm">
+                                                                    {(moisture.value / 10).toFixed(1)}%
+                                                                </p>
+                                                            </div>
+                                                        )}
+                                                    </>
+                                                )
+                                            })()}
+                                        </div>
+                                        
+                                        {/* Warnings automáticos */}
+                                        {(() => {
+                                            const warnings = generateAutomaticWarnings(selectedUnifiedFood)
+                                            if (warnings.length === 0) return null
+                                            return (
+                                            <div className="space-y-2 mb-3">
+                                                    {warnings.map((warning, idx) => {
+                                                    const colorClass =
+                                                        warning.type === 'high_fat'
+                                                            ? 'bg-red-100 dark:bg-red-900/20 border-red-500 text-red-800 dark:text-red-300'
+                                                            : warning.type === 'ultra_low_fat'
+                                                            ? 'bg-blue-100 dark:bg-blue-900/20 border-blue-500 text-blue-800 dark:text-blue-300'
+                                                            : warning.type === 'renal_diet'
+                                                            ? 'bg-emerald-100 dark:bg-emerald-900/20 border-emerald-500 text-emerald-800 dark:text-emerald-300'
+                                                            : 'bg-purple-100 dark:bg-purple-900/20 border-purple-500 text-purple-800 dark:text-purple-300'
+                                                    return (
+                                                        <div
+                                                            key={idx}
+                                                            className={`p-2 rounded text-xs border-l-4 ${colorClass}`}
+                                                        >
+                                                            {warning.message}
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                            )
+                                        })()}
+                                        
+                                        {/* Functional notes */}
+                                        {selectedUnifiedFood.functionalNotes &&
+                                            selectedUnifiedFood.functionalNotes.length > 0 && (
+                                                <div className="mb-3">
+                                                    <p className="text-xs font-semibold text-muted-foreground mb-1">
+                                                        Características:
+                                                    </p>
+                                                    <ul className="text-xs text-foreground space-y-1">
+                                                        {selectedUnifiedFood.functionalNotes.map((note, idx) => (
+                                                            <li key={idx} className="flex items-start gap-1">
+                                                                <span>•</span>
+                                                                <span>{note}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            )}
+                                        
+                                        <button
+                                            onClick={handleAddUnifiedFood}
+                                            className="w-full py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition text-sm"
+                                        >
+                                            Adicionar à Lista
+                                        </button>
+                                    </div>
+                                )}
+                                
+                                {/* Informações do alimento predefinido selecionado */}
+                                {selectedUnifiedFood && selectedUnifiedFood.isPredefined && (
+                                    <div className="bg-card p-4 rounded-lg border border-border mb-3">
+                                        <div className="flex items-start justify-between mb-3">
+                                            <div>
+                                                <h5 className="font-bold text-foreground text-base">
+                                                    {selectedUnifiedFood.name}
+                                                </h5>
+                                                <p className="text-sm text-foreground mt-1">
+                                                    {selectedUnifiedFood.indication}
+                                                </p>
+                                            </div>
+                                            {selectedUnifiedFood.isTherapeutic && (
+                                                <span className="px-2 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 text-xs font-semibold rounded">
+                                                    Terapêutico
+                                                </span>
+                                )}
+                            </div>
+                            
+                                        {/* Valores nutricionais */}
+                                        <div className="grid grid-cols-3 gap-3 mb-3">
+                                            <div className="bg-muted p-2 rounded text-center">
+                                                <p className="text-xs text-muted-foreground mb-1">Calorias</p>
+                                                <p className="font-bold text-foreground text-sm">
+                                                    {selectedUnifiedFood.calories} {selectedUnifiedFood.unit === 'g' ? 'kcal/g' : selectedUnifiedFood.unit === 'ml' ? 'kcal/mL' : `kcal/${selectedUnifiedFood.unit}`}
+                                                </p>
+                            </div>
+                                            {selectedUnifiedFood.protein && selectedUnifiedFood.protein !== 'N/A' && (
+                                                <div className="bg-muted p-2 rounded text-center">
+                                                    <p className="text-xs text-muted-foreground mb-1">PB</p>
+                                                    <p className="font-bold text-foreground text-sm">
+                                                        {selectedUnifiedFood.protein}
+                                                    </p>
+                                                </div>
+                                            )}
+                                            {selectedUnifiedFood.fat && selectedUnifiedFood.fat !== 'N/A' && (
+                                                <div className="bg-muted p-2 rounded text-center">
+                                                    <p className="text-xs text-muted-foreground mb-1">EE</p>
+                                                    <p className="font-bold text-foreground text-sm">
+                                                        {selectedUnifiedFood.fat}
+                                                    </p>
+                                                </div>
+                                            )}
+                                        </div>
+                                        
+                                        {/* Alerts do alimento predefinido */}
+                                        {selectedUnifiedFood.alerts && selectedUnifiedFood.alerts.length > 0 && (
+                                            <div className="space-y-2 mb-3">
+                                                {selectedUnifiedFood.alerts.map((alert, alertIndex) => {
+                                        const alertClasses = {
+                                            red: 'bg-red-100 border-l-4 border-red-500 text-red-800',
+                                            yellow: 'bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800',
+                                            green: 'bg-green-100 border-l-4 border-green-500 text-green-800'
+                                        };
+                                        const icon = { red: '🚨', yellow: '⚠️', green: '✅' };
+                                        return (
+                                            <div key={`${alert.type}-${alert.text?.substring(0, 20) ?? ""}-${alertIndex}`} className={`p-3 rounded-r-md text-sm flex items-start ${alertClasses[alert.type]}`}>
+                                                <span className="mr-2 text-base">{icon[alert.type]}</span>
+                                                <p dangerouslySetInnerHTML={{ __html: alert.text }} />
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            )}
+                                        
+                                        <button
+                                            onClick={handleAddUnifiedFood}
+                                            className="w-full py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition text-sm"
+                                        >
+                                            Adicionar à Lista
+                                        </button>
+                                    </div>
+                                )}
+                                
+                                {/* Informações do alimento comercial selecionado (legado - mantido para compatibilidade) */}
+                                {selectedCommercialFood && !selectedUnifiedFood && (
                                     <div className="bg-card p-4 rounded-lg border border-border mb-3">
                                         <div className="flex items-start justify-between mb-3">
                                             <div>
@@ -947,33 +1287,6 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                 )}
                             </div>
                             
-                            {/* Alimentos predefinidos (legado) */}
-                            <div className="mb-4">
-                                <label htmlFor="predefined-food-select" className="block text-sm font-medium text-foreground mb-2">Selecionar Alimento ({species === 'dog' ? 'Cães' : 'Gatos'})</label>
-                                <select id="predefined-food-select" value={predefinedFoodIndex} onChange={handlePredefinedFoodChange} className="w-full p-3 bg-card border border-input rounded-lg text-foreground">
-                                    <option value="">Selecione um alimento...</option>
-                                    {sortedFoods.map((food, i) => <option key={`${food.name}-${food.calories ?? ""}-${i}`} value={i}>{food.name}</option>)}
-                                </select>
-                            </div>
-                             {selectedFoodAlerts && selectedFoodAlerts.length > 0 && (
-                                <div id="food-precaution-alert" className="mt-3 space-y-2">
-                                    {selectedFoodAlerts.map((alert, alertIndex) => {
-                                        const alertClasses = {
-                                            red: 'bg-red-100 border-l-4 border-red-500 text-red-800',
-                                            yellow: 'bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800',
-                                            green: 'bg-green-100 border-l-4 border-green-500 text-green-800'
-                                        };
-                                        const icon = { red: '🚨', yellow: '⚠️', green: '✅' };
-                                        return (
-                                            <div key={`${alert.type}-${alert.text?.substring(0, 20) ?? ""}-${alertIndex}`} className={`p-3 rounded-r-md text-sm flex items-start ${alertClasses[alert.type]}`}>
-                                                <span className="mr-2 text-base">{icon[alert.type]}</span>
-                                                <p dangerouslySetInnerHTML={{ __html: alert.text }} />
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            )}
-                            <div className="text-center my-2 text-sm text-muted-foreground">ou</div>
                             <h4 className="font-medium text-foreground mb-2">Adicionar Manualmente</h4>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <input type="text" value={customFoodName} onChange={e => {setCustomFoodName(e.target.value); setPredefinedFoodIndex('');}} placeholder="Nome do alimento" className="input-field col-span-3 md:col-span-1"/>

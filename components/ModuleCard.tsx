@@ -54,7 +54,7 @@ export function ModuleCard({ module }: ModuleCardProps) {
               src={module.iconImage}
               alt={module.title}
               className={`w-full max-w-[280px] object-contain ${
-                module.id === 'escalas-dor' ? 'scale-[1.3]' :
+                module.id === 'escalas-dor' ? 'scale-[1.69]' :
                 module.id === 'neurologia' ? 'scale-125' :
                 module.id === 'emergencias-veterinarias' ? 'scale-[1.2]' :
                 module.id === 'crivet' || module.id === 'transfusao-sanguinea' || module.id === 'fluidoterapia' || module.id === 'calculadora-energetica' || module.id === 'antibioticoterapia' || module.id === 'hemogasometria' ? 'scale-125' : ''

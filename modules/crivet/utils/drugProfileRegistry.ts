@@ -6,12 +6,22 @@
 import type { DrugProfile } from '../types/drugProfile'
 import { validateDrugProfile, type ValidationResult } from './drugProfileValidation'
 import { ketamineProfile } from '../data/drugs/ketamine.profile'
+import { dobutamineProfile } from '../data/drugs/dobutamine.profile'
+import { norepinephrineProfile } from '../data/drugs/norepinephrine.profile'
+import { fentanylProfile } from '../data/drugs/fentanyl.profile'
+import { remifentanilProfile } from '../data/drugs/remifentanil.profile'
+import { lidocaineProfile } from '../data/drugs/lidocaine.profile'
 import { normalizeDrug } from '../services/normalizeDrug'
 import { lintClinical, type ClinicalLintResult } from '../services/clinicalLint'
 
 // Registry de perfis completos (somente fármacos que seguem o padrão completo)
 const DRUG_PROFILE_REGISTRY: Record<string, Partial<DrugProfile>> = {
   cetamina: ketamineProfile as Partial<DrugProfile>,
+  dobutamina: dobutamineProfile as Partial<DrugProfile>,
+  norepinefrina: norepinephrineProfile as Partial<DrugProfile>,
+  fentanil: fentanylProfile as Partial<DrugProfile>,
+  remifentanil: remifentanilProfile as Partial<DrugProfile>,
+  lidocaina: lidocaineProfile as Partial<DrugProfile>,
   // Adicionar outros fármacos conforme forem completados
 }
 

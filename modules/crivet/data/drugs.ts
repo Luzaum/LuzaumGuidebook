@@ -125,7 +125,7 @@ export const drugs: Drug[] = [
     name: 'Dobutamina',
     category: 'Agentes Cardiovasculares',
     hasCRI: true,
-    concentrations: [12.5],
+    concentrations: [12.5, 50],
     compatibility: dobutamineCompatibilityToDrugCompatibility(),
     recommendedUnit: dobutamineRecommendedUnit,
     recommendedUnitWhy: dobutamineRecommendedUnitWhy,

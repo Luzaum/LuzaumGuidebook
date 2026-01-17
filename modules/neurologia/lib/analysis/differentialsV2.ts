@@ -1,0 +1,589 @@
+import type { Differential, NeuroAxis } from '../../types/analysis'
+
+type PatientData = {
+  species: 'dog' | 'cat' | null
+  lifeStage: 'neonate' | 'pediatric' | 'adult' | 'geriatric' | null
+  comorbidities: string[]
+}
+
+type HistoryData = {
+  temporalPattern: 'peragudo' | 'agudo' | 'subagudo' | 'cronico' | 'episodico' | null
+  evolutionPattern: 'melhorando' | 'estatico' | 'flutuante' | 'progressivo' | null
+  trauma: boolean
+  toxin: boolean
+  fever: boolean
+}
+
+type DifferentialCandidate = {
+  name: string
+  category: Differential['category']
+  baseScore: number
+  axes: NeuroAxis[]
+  species?: ('dog' | 'cat')[]
+  lifeStages?: ('neonate' | 'pediatric' | 'adult' | 'geriatric')[]
+  temporalPreference?: ('peragudo' | 'agudo' | 'subagudo' | 'cronico' | 'episodico')[]
+  evolutionPreference?: ('melhorando' | 'estatico' | 'flutuante' | 'progressivo')[]
+  traumaBoost?: boolean
+  comorbidityBoost?: string[]
+}
+
+const DIFFERENTIAL_CANDIDATES: DifferentialCandidate[] = [
+  // PROSENCEFALO
+  {
+    name: 'Meningoencefalite',
+    category: 'INFLAMATORIA',
+    baseScore: 50,
+    axes: ['PROSENCEFALO'],
+    species: ['dog'],
+    lifeStages: ['pediatric', 'adult'],
+    temporalPreference: ['agudo', 'subagudo'],
+    evolutionPreference: ['progressivo'],
+  },
+  {
+    name: 'Neoplasia intracraniana',
+    category: 'NEOPLASICA',
+    baseScore: 45,
+    axes: ['PROSENCEFALO'],
+    temporalPreference: ['cronico', 'subagudo'],
+    evolutionPreference: ['progressivo'],
+  },
+  {
+    name: 'Acidente vascular cerebral (AVC)',
+    category: 'VASCULAR',
+    baseScore: 40,
+    axes: ['PROSENCEFALO'],
+    temporalPreference: ['peragudo'],
+    comorbidityBoost: ['cardiac', 'hypertension'],
+  },
+  {
+    name: 'Intoxicação (metais pesados, organofosforados)',
+    category: 'TOXICO_METABOLICA',
+    baseScore: 35,
+    axes: ['PROSENCEFALO'],
+    temporalPreference: ['peragudo', 'agudo'],
+  },
+
+  // TRONCO_ENCEFALICO
+  {
+    name: 'Encefalite de tronco',
+    category: 'INFLAMATORIA',
+    baseScore: 50,
+    axes: ['TRONCO_ENCEFALICO'],
+    species: ['dog'],
+    temporalPreference: ['agudo', 'subagudo'],
+  },
+  {
+    name: 'Neoplasia de tronco encefálico',
+    category: 'NEOPLASICA',
+    baseScore: 45,
+    axes: ['TRONCO_ENCEFALICO'],
+    temporalPreference: ['cronico', 'subagudo'],
+  },
+  {
+    name: 'Infarto de tronco (FCE)',
+    category: 'VASCULAR',
+    baseScore: 40,
+    axes: ['TRONCO_ENCEFALICO'],
+    temporalPreference: ['peragudo'],
+  },
+
+  // VESTIBULAR_PERIFERICO
+  {
+    name: 'Otite média/interna',
+    category: 'INFECCIOSA',
+    baseScore: 60,
+    axes: ['VESTIBULAR_PERIFERICO'],
+    temporalPreference: ['agudo', 'subagudo'],
+  },
+  {
+    name: 'Doença vestibular idiopática',
+    category: 'IDIOPATICA',
+    baseScore: 55,
+    axes: ['VESTIBULAR_PERIFERICO'],
+    species: ['dog'],
+    lifeStages: ['geriatric'],
+    temporalPreference: ['peragudo', 'agudo'],
+    evolutionPreference: ['melhorando'],
+  },
+  {
+    name: 'Pólipo nasofaríngeo (gato)',
+    category: 'NEOPLASICA',
+    baseScore: 50,
+    axes: ['VESTIBULAR_PERIFERICO'],
+    species: ['cat'],
+    lifeStages: ['pediatric', 'adult'],
+  },
+  {
+    name: 'Hipotireoidismo (cão)',
+    category: 'ENDOCRINA',
+    baseScore: 40,
+    axes: ['VESTIBULAR_PERIFERICO'],
+    species: ['dog'],
+    comorbidityBoost: ['endocrine'],
+  },
+  {
+    name: 'Ototoxicidade',
+    category: 'TOXICO_METABOLICA',
+    baseScore: 35,
+    axes: ['VESTIBULAR_PERIFERICO'],
+    temporalPreference: ['peragudo', 'agudo'],
+  },
+
+  // VESTIBULAR_CENTRAL
+  {
+    name: 'Infarto vestibular central (FCE)',
+    category: 'VASCULAR',
+    baseScore: 50,
+    axes: ['VESTIBULAR_CENTRAL'],
+    temporalPreference: ['peragudo'],
+  },
+  {
+    name: 'Encefalite vestibular',
+    category: 'INFLAMATORIA',
+    baseScore: 45,
+    axes: ['VESTIBULAR_CENTRAL'],
+    temporalPreference: ['agudo'],
+  },
+  {
+    name: 'Neoplasia vestibular central',
+    category: 'NEOPLASICA',
+    baseScore: 40,
+    axes: ['VESTIBULAR_CENTRAL'],
+    temporalPreference: ['cronico'],
+  },
+
+  // CEREBELO
+  {
+    name: 'Abiotrofia cerebelar',
+    category: 'DEGENERATIVA',
+    baseScore: 50,
+    axes: ['CEREBELO'],
+    species: ['dog'],
+    lifeStages: ['pediatric', 'adult'],
+    temporalPreference: ['cronico'],
+    evolutionPreference: ['progressivo'],
+  },
+  {
+    name: 'Neoplasia cerebelar',
+    category: 'NEOPLASICA',
+    baseScore: 45,
+    axes: ['CEREBELO'],
+    temporalPreference: ['cronico', 'subagudo'],
+  },
+  {
+    name: 'Inflamação cerebelar',
+    category: 'INFLAMATORIA',
+    baseScore: 40,
+    axes: ['CEREBELO'],
+    temporalPreference: ['agudo'],
+  },
+  {
+    name: 'Intoxicação (metronidazol, outras)',
+    category: 'TOXICO_METABOLICA',
+    baseScore: 35,
+    axes: ['CEREBELO'],
+    temporalPreference: ['agudo'],
+  },
+
+  // MEDULA C1-C5, C6-T2, T3-L3, L4-S3
+  {
+    name: 'Hérnia de disco intervertebral (IVDD)',
+    category: 'COMPRESSIVA',
+    baseScore: 70,
+    axes: ['MEDULA_C1_C5', 'MEDULA_C6_T2', 'MEDULA_T3_L3', 'MEDULA_L4_S3'],
+    species: ['dog'],
+    temporalPreference: ['peragudo', 'agudo'],
+  },
+  {
+    name: 'Trauma espinhal',
+    category: 'TRAUMATICA',
+    baseScore: 65,
+    axes: ['MEDULA_C1_C5', 'MEDULA_C6_T2', 'MEDULA_T3_L3', 'MEDULA_L4_S3'],
+    temporalPreference: ['peragudo'],
+    traumaBoost: true,
+  },
+  {
+    name: 'Mielite (inflamatória/infecciosa)',
+    category: 'INFLAMATORIA',
+    baseScore: 50,
+    axes: ['MEDULA_C1_C5', 'MEDULA_C6_T2', 'MEDULA_T3_L3', 'MEDULA_L4_S3'],
+    temporalPreference: ['agudo', 'subagudo'],
+  },
+  {
+    name: 'Neoplasia espinhal',
+    category: 'NEOPLASICA',
+    baseScore: 45,
+    axes: ['MEDULA_C1_C5', 'MEDULA_C6_T2', 'MEDULA_T3_L3', 'MEDULA_L4_S3'],
+    temporalPreference: ['cronico', 'subagudo'],
+  },
+  {
+    name: 'Infarto fibrocartilaginoso (FCE)',
+    category: 'VASCULAR',
+    baseScore: 40,
+    axes: ['MEDULA_C1_C5', 'MEDULA_C6_T2', 'MEDULA_T3_L3'],
+    temporalPreference: ['peragudo'],
+  },
+
+  // CAUDA_EQUINA
+  {
+    name: 'Estenose lombossacra/cauda equina',
+    category: 'COMPRESSIVA',
+    baseScore: 60,
+    axes: ['CAUDA_EQUINA'],
+    species: ['dog'],
+    lifeStages: ['adult', 'geriatric'],
+    temporalPreference: ['cronico'],
+  },
+  {
+    name: 'IVDD lombossacra',
+    category: 'COMPRESSIVA',
+    baseScore: 55,
+    axes: ['CAUDA_EQUINA'],
+    species: ['dog'],
+    temporalPreference: ['peragudo', 'agudo'],
+  },
+  {
+    name: 'Discospondilite',
+    category: 'INFECCIOSA',
+    baseScore: 45,
+    axes: ['CAUDA_EQUINA'],
+    temporalPreference: ['subagudo', 'cronico'],
+  },
+
+  // NEUROMUSCULAR
+  {
+    name: 'Miastenia gravis',
+    category: 'IDIOPATICA',
+    baseScore: 60,
+    axes: ['NEUROMUSCULAR'],
+    evolutionPreference: ['flutuante', 'episodico'],
+  },
+  {
+    name: 'Polirradiculoneurite (síndrome de Coonhound)',
+    category: 'INFLAMATORIA',
+    baseScore: 55,
+    axes: ['NEUROMUSCULAR'],
+    species: ['dog'],
+    temporalPreference: ['agudo'],
+    evolutionPreference: ['progressivo'],
+  },
+  {
+    name: 'Botulismo',
+    category: 'TOXICO_METABOLICA',
+    baseScore: 50,
+    axes: ['NEUROMUSCULAR'],
+    temporalPreference: ['peragudo', 'agudo'],
+  },
+  {
+    name: 'Miopatia inflamatória',
+    category: 'INFLAMATORIA',
+    baseScore: 45,
+    axes: ['NEUROMUSCULAR'],
+    temporalPreference: ['agudo', 'subagudo'],
+  },
+]
+
+export function generateDifferentials(
+  caseState: any,
+  neuroLocalization: { primary: NeuroAxis; secondary?: NeuroAxis[] },
+): Differential[] {
+  const patient: PatientData = {
+    species: caseState.patient?.species || null,
+    lifeStage: caseState.patient?.lifeStage || null,
+    comorbidities: caseState.patient?.comorbidities || [],
+  }
+
+  const history: HistoryData = {
+    temporalPattern: caseState.complaint?.temporalPattern || null,
+    evolutionPattern: caseState.complaint?.evolutionPattern || null,
+    trauma: caseState.complaint?.trauma || false,
+    toxin: caseState.complaint?.toxin || false,
+    fever: caseState.complaint?.fever || false,
+  }
+
+  const axesToMatch = [neuroLocalization.primary, ...(neuroLocalization.secondary || [])]
+
+  // Filtrar candidatos compatíveis
+  const compatibleCandidates = DIFFERENTIAL_CANDIDATES.filter((candidate) =>
+    candidate.axes.some((axis) => axesToMatch.includes(axis)),
+  )
+
+  // Calcular scores
+  const scored = compatibleCandidates.map((candidate) => {
+    let score = candidate.baseScore
+
+    // Ajustes por eixo
+    if (candidate.axes.includes(neuroLocalization.primary)) {
+      score *= 1.2
+    }
+
+    // Ajustes por espécie
+    if (candidate.species && patient.species && !candidate.species.includes(patient.species)) {
+      score *= 0.7
+    }
+
+    // Ajustes por life stage
+    if (candidate.lifeStages && patient.lifeStage && !candidate.lifeStages.includes(patient.lifeStage)) {
+      score *= 0.8
+    }
+
+    // Ajustes por padrão temporal
+    if (candidate.temporalPreference && history.temporalPattern && candidate.temporalPreference.includes(history.temporalPattern)) {
+      score *= 1.3
+    } else if (candidate.temporalPreference && history.temporalPattern) {
+      score *= 0.9
+    }
+
+    // Ajustes por evolução
+    if (candidate.evolutionPreference && history.evolutionPattern && candidate.evolutionPreference.includes(history.evolutionPattern)) {
+      score *= 1.2
+    }
+
+    // Boost por trauma
+    if (candidate.traumaBoost && history.trauma) {
+      score *= 1.5
+    }
+
+    // Boost por comorbidades
+    if (candidate.comorbidityBoost && candidate.comorbidityBoost.some((c) => patient.comorbidities.includes(c))) {
+      score *= 1.3
+    }
+
+    return { candidate, score }
+  })
+
+  // Ordenar e pegar top 5
+  const topCandidates = scored
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 5)
+    .map((item) => buildDifferential(item.candidate, item.score, patient, history, neuroLocalization))
+
+  // Se não tiver 5, completar com diferenciais genéricos
+  while (topCandidates.length < 5) {
+    const generic = buildGenericDifferential(topCandidates.length + 1, neuroLocalization.primary)
+    topCandidates.push(generic)
+  }
+
+  // Normalizar likelihood (0-100)
+  const maxScore = topCandidates[0]?.likelihood || 100
+  return topCandidates.map((dx) => ({
+    ...dx,
+    likelihood: Math.min(100, Math.round((dx.likelihood / maxScore) * 100)),
+  }))
+}
+
+function buildDifferential(
+  candidate: DifferentialCandidate,
+  score: number,
+  patient: PatientData,
+  history: HistoryData,
+  localization: { primary: NeuroAxis; secondary?: NeuroAxis[] },
+): Differential {
+  const why: string[] = []
+  why.push(`Compatível com localização em ${getAxisLabel(localization.primary)}`)
+  if (history.temporalPattern) {
+    why.push(`Curso ${history.temporalPattern} compatível`)
+  }
+  if (patient.species) {
+    why.push(`Espécie: ${patient.species === 'dog' ? 'cão' : 'gato'}`)
+  }
+  if (patient.comorbidities.length > 0) {
+    why.push(`Comorbidades: ${patient.comorbidities.join(', ')}`)
+  }
+
+  const diagnostics = getDiagnosticsForCategory(candidate.category, localization.primary)
+  const treatment = getTreatmentForCategory(candidate.category, patient.comorbidities)
+
+  return {
+    name: candidate.name,
+    category: candidate.category,
+    likelihood: Math.min(100, Math.round(score)),
+    why,
+    diagnostics,
+    treatment,
+  }
+}
+
+function buildGenericDifferential(index: number, axis: NeuroAxis): Differential {
+  return {
+    name: `Diferencial amplo ${index} - ${getAxisLabel(axis)}`,
+    category: 'IDIOPATICA',
+    likelihood: Math.max(20, 100 - index * 15),
+    why: ['Diferencial amplo baseado na localização', 'Requer investigação adicional'],
+    diagnostics: [
+      {
+        test: 'Exame neurológico completo',
+        priority: 'ALTA',
+        whatItAdds: 'Avaliação detalhada do sistema nervoso',
+        expectedFindings: 'Achados variáveis',
+        limitations: 'Depende da experiência do examinador',
+      },
+      {
+        test: 'Hemograma e bioquímica sérica',
+        priority: 'ALTA',
+        whatItAdds: 'Avaliação sistêmica e metabólica',
+        expectedFindings: 'Possíveis alterações sistêmicas',
+        limitations: 'Podem ser normais em doenças focais',
+      },
+    ],
+    treatment: [
+      {
+        phase: '0-6H',
+        plan: ['Estabilização e suporte', 'Monitorização neurológica', 'Analgesia se indicada'],
+        cautions: ['Evitar sedação excessiva', 'Monitorar função respiratória'],
+      },
+      {
+        phase: 'DEFINITIVO',
+        plan: ['Tratar conforme diagnóstico específico', 'Reabilitação neurológica', 'Monitorização contínua'],
+        cautions: [],
+      },
+    ],
+  }
+}
+
+function getAxisLabel(axis: NeuroAxis): string {
+  const labels: Record<NeuroAxis, string> = {
+    PROSENCEFALO: 'prosencéfalo',
+    TRONCO_ENCEFALICO: 'tronco encefálico',
+    CEREBELO: 'cerebelo',
+    VESTIBULAR_PERIFERICO: 'vestibular periférico',
+    VESTIBULAR_CENTRAL: 'vestibular central',
+    MEDULA_C1_C5: 'medula cervical (C1-C5)',
+    MEDULA_C6_T2: 'medula cervicotorácica (C6-T2)',
+    MEDULA_T3_L3: 'medula toracolombar (T3-L3)',
+    MEDULA_L4_S3: 'medula lombossacra (L4-S3)',
+    CAUDA_EQUINA: 'cauda equina',
+    NEUROMUSCULAR: 'neuromuscular',
+    MULTIFOCAL_OU_DIFUSA: 'multifocal/difusa',
+    INDETERMINADO: 'indeterminado',
+  }
+  return labels[axis]
+}
+
+function getDiagnosticsForCategory(
+  category: Differential['category'],
+  axis: NeuroAxis,
+): Differential['diagnostics'] {
+  const base = [
+    {
+      test: 'Exame neurológico completo',
+      priority: 'ALTA' as const,
+      whatItAdds: 'Avaliação detalhada do sistema nervoso',
+      expectedFindings: 'Achados compatíveis com a localização',
+      limitations: 'Depende da experiência do examinador',
+    },
+    {
+      test: 'Hemograma e bioquímica sérica',
+      priority: 'ALTA' as const,
+      whatItAdds: 'Avaliação sistêmica e metabólica',
+      expectedFindings: 'Possíveis alterações sistêmicas',
+      limitations: 'Podem ser normais em doenças focais',
+    },
+  ]
+
+  if (axis.startsWith('MEDULA_') || axis === 'CAUDA_EQUINA') {
+    return [
+      ...base,
+      {
+        test: 'Ressonância magnética (preferencial)',
+        priority: 'ALTA' as const,
+        whatItAdds: 'Visualização detalhada da medula espinhal',
+        expectedFindings: 'Compressão, lesão ou sinal alterado',
+        limitations: 'Disponibilidade e necessidade de anestesia',
+      },
+      {
+        test: 'Tomografia computadorizada',
+        priority: 'MEDIA' as const,
+        whatItAdds: 'Visualização de estruturas ósseas e compressão',
+        expectedFindings: 'Alterações ósseas ou compressão',
+        limitations: 'Menor resolução para tecidos moles',
+      },
+    ]
+  }
+
+  if (axis === 'PROSENCEFALO' || axis === 'TRONCO_ENCEFALICO' || axis === 'CEREBELO') {
+    return [
+      ...base,
+      {
+        test: 'Ressonância magnética',
+        priority: 'ALTA' as const,
+        whatItAdds: 'Visualização detalhada do encéfalo',
+        expectedFindings: 'Lesões, massas ou alterações de sinal',
+        limitations: 'Disponibilidade e necessidade de anestesia',
+      },
+      {
+        test: 'Análise de líquor',
+        priority: 'MEDIA' as const,
+        whatItAdds: 'Avaliação inflamatória e infecciosa',
+        expectedFindings: 'Pleocitose, proteinorraquia ou agentes',
+        limitations: 'Risco de herniação em pressão intracraniana elevada',
+      },
+    ]
+  }
+
+  if (axis === 'VESTIBULAR_PERIFERICO') {
+    return [
+      ...base,
+      {
+        test: 'Exame otoscópico e otológico',
+        priority: 'ALTA' as const,
+        whatItAdds: 'Avaliação de orelha média/interna',
+        expectedFindings: 'Otite, massa ou alterações estruturais',
+        limitations: 'Pode requerer anestesia',
+      },
+      {
+        test: 'Imagem (TC/RM) de cabeça',
+        priority: 'MEDIA' as const,
+        whatItAdds: 'Visualização de estruturas do ouvido interno',
+        expectedFindings: 'Massa, inflamação ou alterações',
+        limitations: 'Disponibilidade e custo',
+      },
+    ]
+  }
+
+  return base
+}
+
+function getTreatmentForCategory(
+  category: Differential['category'],
+  comorbidities: string[],
+): Differential['treatment'] {
+  const cautions: string[] = []
+  if (comorbidities.includes('renal')) {
+    cautions.push('Evitar AINEs em disfunção renal')
+  }
+  if (comorbidities.includes('hepatic')) {
+    cautions.push('Ajustar metabolização hepática de fármacos')
+  }
+  if (comorbidities.includes('cardiac')) {
+    cautions.push('Monitorar função cardiovascular')
+  }
+
+  const baseTreatment: Differential['treatment'] = [
+    {
+      phase: '0-6H',
+      plan: ['Estabilização e suporte', 'Monitorização neurológica', 'Analgesia multimodal se indicada'],
+      cautions,
+    },
+    {
+      phase: 'DEFINITIVO',
+      plan: ['Tratar conforme diagnóstico específico', 'Reabilitação neurológica', 'Monitorização contínua'],
+      cautions: [],
+    },
+  ]
+
+  if (category === 'COMPRESSIVA') {
+    baseTreatment[1].plan.unshift('Avaliar necessidade de descompressão cirúrgica')
+  }
+
+  if (category === 'INFLAMATORIA' || category === 'INFECCIOSA') {
+    baseTreatment[1].plan.unshift('Terapia anti-inflamatória/antimicrobiana conforme indicação')
+  }
+
+  if (category === 'TOXICO_METABOLICA') {
+    baseTreatment[0].plan.unshift('Remoção/suporte para toxina')
+    baseTreatment[1].plan.unshift('Correção de distúrbio metabólico se presente')
+  }
+
+  return baseTreatment
+}

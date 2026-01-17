@@ -1,525 +1,341 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
-import {
-  Brain,
-  FileText,
-  Download,
-  Copy,
-  CheckCircle2,
-  AlertTriangle,
-  RefreshCw,
-} from 'lucide-react'
+import { Brain, AlertTriangle, CheckCircle2, FileText } from 'lucide-react'
 import { Button } from '../UI/Button'
 import { Card } from '../UI/Card'
-import { AppState, AnalysisResult } from '../../types'
-import { normalizeFindings } from '../../lib/analysis/normalizeSelections'
-import {
-  analyzeNeuroLocalization,
-  getLocationDisplayName,
-  LocalizationResult,
-} from '../../lib/analysis/neuroLocalization'
-import {
-  generateDifferentials,
-  DifferentialDiagnosis,
-} from '../../lib/analysis/differentials'
-import { exportToPDF } from '../../lib/report/pdfExporter'
-import {
-  CaseBundle,
-  PatientProfile as NewPatientProfile,
-  ClinicalHistory,
-  NeuroExamFindings,
-} from '../../types/case'
+import { InlineBanner } from '../UI/InlineBanner'
+import { useCaseStore } from '../../stores/caseStore'
+import { buildCaseReport } from '../../lib/analysis/report'
+import type { CaseReport } from '../../types/analysis'
 
-interface Step5Props {
-  result: AnalysisResult | null
-  onRestart: () => void
-}
+export function Step5Analysis() {
+  const analysis = useCaseStore((s) => s.analysis)
+  const setAnalysis = useCaseStore((s) => s.setAnalysis)
+  const patient = useCaseStore((s) => s.patient)
+  const complaint = useCaseStore((s) => s.complaint)
+  const neuroExam = useCaseStore((s) => s.neuroExam)
 
-export function Step5Analysis({ result, onRestart }: Step5Props) {
-  const [analyzed, setAnalyzed] = useState(false)
-  const [localization, setLocalization] = useState<LocalizationResult | null>(
-    null,
-  )
-  const [differentials, setDifferentials] = useState<DifferentialDiagnosis[]>(
-    [],
-  )
-  const [copied, setCopied] = useState(false)
-
-  // Get state from localStorage to build caseBundle
-  const getAppState = (): AppState | null => {
-    try {
-      const stored = localStorage.getItem('vetneuro-app-state')
-      return stored ? JSON.parse(stored) : null
-    } catch {
-      return null
-    }
-  }
-
-  const buildCaseBundle = (state: AppState): CaseBundle => {
-    // Convert old PatientProfile to new format
-    const patient: NewPatientProfile = {
-      species: state.patient.species === 'Dog' ? 'dog' : 'cat',
-      breed: undefined,
-      ageRange: state.patient.physiologicState.includes('Pediátrico' as any)
-        ? 'pediatric'
-        : state.patient.physiologicState.includes('Geriátrico' as any)
-          ? 'geriatric'
-          : 'adult',
-      ageYears: state.patient.age.years,
-      sex: state.patient.sex === 'M' ? 'male' : 'female',
-      neutered: state.patient.physiologicState.includes('Castrado' as any),
-      weight: state.patient.weight,
-      comorbidities: state.patient.comorbidities,
-      medications: state.patient.medications.map((m) => m.name),
-    }
-
-    // Convert temporal pattern to course
-    const courseMap: Record<string, any> = {
-      'Peragudo (<24h)': 'peracute',
-      'Agudo (24-48h)': 'acute',
-      'Subagudo (dias)': 'subacute',
-      'Crônico (semanas/meses)': 'chronic',
-      Episódico: 'episodic',
-    }
-    const progressionMap: Record<string, any> = {
-      Progressivo: 'progressive',
-      Estático: 'static',
-      Melhorando: 'improving',
-      Flutuante: 'fluctuating',
-    }
-    const history: ClinicalHistory = {
-      chiefComplaint: state.chiefComplaints.join(', '),
-      course: courseMap[state.patient.temporalPattern || ''] || 'acute',
-      progression:
-        progressionMap[state.patient.course || ''] || 'progressive',
-      trauma: state.patient.redFlags.some((f) =>
-        f.toLowerCase().includes('trauma'),
-      ),
-      toxin: state.patient.redFlags.some((f) =>
-        f.toLowerCase().includes('tox'),
-      ),
-      fever: state.patient.redFlags.some((f) =>
-        f.toLowerCase().includes('febr'),
-      ),
-      onset: state.patient.temporalPattern || '',
-      duration: state.patient.temporalPattern || '',
-    }
-    const neuroExam: NeuroExamFindings = {
-      mentation: state.exam.findings.mentation || '',
-      behavior: state.exam.findings.behavior || '',
-      head_posture: state.exam.findings.head_posture || '',
-      ambulation: state.exam.findings.ambulation || '',
-      gait_thoracic: state.exam.findings.gait_thoracic || '',
-      gait_pelvic: state.exam.findings.gait_pelvic || '',
-      ataxia_type: state.exam.findings.ataxia_type || '',
-      proprioception_thoracic_left:
-        state.exam.findings.proprioception_thoracic_left || '',
-      proprioception_thoracic_right:
-        state.exam.findings.proprioception_thoracic_right || '',
-      proprioception_pelvic_left:
-        state.exam.findings.proprioception_pelvic_left || '',
-      proprioception_pelvic_right:
-        state.exam.findings.proprioception_pelvic_right || '',
-      menace_left: state.exam.findings.menace_left || '',
-      menace_right: state.exam.findings.menace_right || '',
-      plr_left: state.exam.findings.plr_left || '',
-      plr_right: state.exam.findings.plr_right || '',
-      nystagmus: state.exam.findings.nystagmus || '',
-      strabismus: state.exam.findings.strabismus || '',
-      cn_facial_sensation: state.exam.findings.cn_facial_sensation || '',
-      cn_swallowing: state.exam.findings.cn_swallowing || '',
-      reflex_patellar_left: state.exam.findings.reflex_patellar_left || '',
-      reflex_patellar_right: state.exam.findings.reflex_patellar_right || '',
-      reflex_withdrawal_left_thoracic:
-        state.exam.findings.reflex_withdrawal_left_thoracic || '',
-      reflex_withdrawal_right_thoracic:
-        state.exam.findings.reflex_withdrawal_right_thoracic || '',
-      reflex_panniculus: state.exam.findings.reflex_panniculus || '',
-      deep_pain: state.exam.findings.deep_pain || '',
-      pain_cervical: state.exam.findings.pain_cervical || '',
-      pain_thoracolumbar: state.exam.findings.pain_thoracolumbar || '',
-      pain_lumbosacral: state.exam.findings.pain_lumbosacral || '',
-    }
-    return {
-      patient,
-      history,
-      neuroExam,
-      meta: {
-        createdAt: state.exam.timestamp,
-        version: '1.0',
-      },
-    }
-  }
-
-  const handleAnalyze = () => {
-    const appState = getAppState()
-    if (!appState) {
-      alert('Erro ao carregar dados do exame')
-      return
-    }
-    const caseBundle = buildCaseBundle(appState)
-    // Normalize findings
-    const normalized = normalizeFindings(caseBundle.neuroExam)
-    // Run neurolocalization
-    const locResults = analyzeNeuroLocalization(normalized)
-    const primaryLoc = locResults[0]
-    if (!primaryLoc) {
-      alert(
-        'Não foi possível determinar a neurolocalização com os dados fornecidos',
-      )
-      return
-    }
-    // Generate differentials
-    const diffs = generateDifferentials(
-      primaryLoc.location,
-      caseBundle.patient,
-      caseBundle.history,
-      normalized,
-    )
-    setLocalization(primaryLoc)
-    setDifferentials(diffs)
-    setAnalyzed(true)
-  }
-
-  const handleExportPDF = () => {
-    const appState = getAppState()
-    if (!localization || !appState) return
-    const caseBundle = buildCaseBundle(appState)
-    exportToPDF({
-      caseBundle,
-      localization,
-      differentials,
+  const runAnalysis = () => {
+    setAnalysis({ status: 'running' })
+    const caseState = { patient, complaint, neuroExam }
+    const report = buildCaseReport(caseState)
+    setAnalysis({
+      status: report.neuroLocalization.status === 'ok' ? 'done' : 'insufficient_data',
+      report,
     })
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  const handleCopySummary = () => {
-    if (!localization) return
-    const summary = `
-NEUROLOCALIZAÇÃO: ${getLocationDisplayName(localization.location)}
-Padrão Motor: ${localization.motorNeuronPattern}
-Confiança: ${Math.round(localization.confidence * 100)}%
+  const status = analysis?.status || 'idle'
+  const report: CaseReport | undefined = analysis?.report
 
-TOP 5 DIAGNÓSTICOS DIFERENCIAIS:
-${differentials.map((dx, i) => `${i + 1}. ${dx.name}`).join('\n')}
-    `.trim()
-    navigator.clipboard.writeText(summary)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+  const getAxisLabel = (axis: string): string => {
+    const labels: Record<string, string> = {
+      PROSENCEFALO: 'Prosencéfalo',
+      TRONCO_ENCEFALICO: 'Tronco Encefálico',
+      CEREBELO: 'Cerebelo',
+      VESTIBULAR_PERIFERICO: 'Vestibular Periférico',
+      VESTIBULAR_CENTRAL: 'Vestibular Central',
+      MEDULA_C1_C5: 'Medula Espinhal Cervical (C1-C5)',
+      MEDULA_C6_T2: 'Medula Espinhal Cervicotorácica (C6-T2)',
+      MEDULA_T3_L3: 'Medula Espinhal Toracolombar (T3-L3)',
+      MEDULA_L4_S3: 'Medula Espinhal Lombossacra (L4-S3)',
+      CAUDA_EQUINA: 'Cauda Equina',
+      NEUROMUSCULAR: 'Neuromuscular',
+      MULTIFOCAL_OU_DIFUSA: 'Multifocal ou Difusa',
+      INDETERMINADO: 'Indeterminado',
+    }
+    return labels[axis] || axis
   }
 
-  if (!analyzed) {
+  const getMotorPatternLabel = (pattern: string): string => {
+    const labels: Record<string, string> = {
+      UMN: 'Neurônio Motor Superior (UMN)',
+      LMN: 'Neurônio Motor Inferior (LMN)',
+      VESTIBULAR: 'Vestibular',
+      CEREBELAR: 'Cerebelar',
+      NEUROMUSCULAR: 'Neuromuscular',
+      INDEFINIDO: 'Indefinido',
+    }
+    return labels[pattern] || pattern
+  }
+
+  const getCategoryLabel = (cat: string): string => {
+    const labels: Record<string, string> = {
+      INFLAMATORIA: 'Inflamatória',
+      INFECCIOSA: 'Infecciosa',
+      NEOPLASICA: 'Neoplásica',
+      VASCULAR: 'Vascular',
+      DEGENERATIVA: 'Degenerativa',
+      TRAUMATICA: 'Traumática',
+      TOXICO_METABOLICA: 'Tóxico-Metabólica',
+      COMPRESSIVA: 'Compressiva',
+      IDIOPATICA: 'Idiopática',
+    }
+    return labels[cat] || cat
+  }
+
+  if (status === 'idle') {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center space-y-6 pb-24">
         <motion.div
-          initial={{
-            scale: 0.9,
-            opacity: 0,
-          }}
-          animate={{
-            scale: 1,
-            opacity: 1,
-          }}
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
           className="text-center space-y-4"
         >
-          <div className="w-20 h-20 mx-auto bg-gradient-to-br from-gold to-yellow-600 rounded-full flex items-center justify-center">
+          <div className="w-20 h-20 mx-auto bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg shadow-yellow-500/50">
             <Brain className="w-10 h-10 text-white" />
           </div>
-          <h2 className="text-2xl font-bold text-foreground">
-            Análise do Caso
-          </h2>
+          <h2 className="text-2xl font-bold text-foreground">Análise do Caso</h2>
           <p className="text-muted-foreground max-w-md">
-            Clique no botão abaixo para analisar os achados neurológicos e gerar
-            o relatório completo com neurolocalização e diagnósticos
-            diferenciais.
+            Clique no botão abaixo para analisar os achados neurológicos e gerar o relatório completo com
+            neurolocalização e diagnósticos diferenciais.
           </p>
         </motion.div>
 
-        <Button
-          onClick={handleAnalyze}
-          size="lg"
-          className="bg-gradient-to-r from-gold to-yellow-600 hover:from-yellow-600 hover:to-gold text-black font-bold px-8 py-4 text-lg"
+        <motion.button
+          onClick={runAnalysis}
+          disabled={status === 'running'}
+          className={`
+            px-8 py-4 text-lg font-bold rounded-xl
+            bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600
+            hover:from-yellow-500 hover:via-yellow-600 hover:to-yellow-700
+            text-black shadow-lg shadow-yellow-500/50
+            transition-all duration-300
+            disabled:opacity-50 disabled:cursor-not-allowed
+            ${status === 'running' ? '' : 'animate-pulse'}
+          `}
+          whileTap={{ scale: 0.95 }}
         >
-          <Brain className="w-5 h-5 mr-2" />
-          Analisar Caso
-        </Button>
+          <Brain className="w-5 h-5 mr-2 inline-block" />
+          {status === 'running' ? 'Analisando…' : 'Analisar Caso'}
+        </motion.button>
       </div>
     )
   }
 
-  return (
-    <div className="space-y-6 pb-24">
-      {/* Header with actions */}
-      <motion.div
-        initial={{
-          opacity: 0,
-          y: 20,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
-      >
-        <div>
-          <h2 className="text-2xl font-bold text-foreground">
-            Análise Completa
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            Resultados baseados nos achados neurológicos
-          </p>
-        </div>
-        <div className="flex gap-2">
-          <Button onClick={handleCopySummary} variant="secondary" size="sm">
-            {copied ? (
-              <CheckCircle2 className="w-4 h-4 mr-2" />
-            ) : (
-              <Copy className="w-4 h-4 mr-2" />
-            )}
-            {copied ? 'Copiado!' : 'Copiar Resumo'}
-          </Button>
-          <Button onClick={handleExportPDF} variant="primary" size="sm">
-            <Download className="w-4 h-4 mr-2" />
-            Exportar PDF
-          </Button>
-        </div>
-      </motion.div>
-
-      {/* Neurolocalization Card */}
-      {localization && (
+  if (status === 'running') {
+    return (
+      <div className="min-h-[60vh] flex flex-col items-center justify-center space-y-6 pb-24">
         <motion.div
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            delay: 0.1,
-          }}
+          animate={{ rotate: 360 }}
+          transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+          className="w-16 h-16 border-4 border-yellow-500 border-t-transparent rounded-full"
+        />
+        <p className="text-muted-foreground">Analisando caso…</p>
+      </div>
+    )
+  }
+
+  if (status === 'insufficient_data' && report) {
+    return (
+      <div className="space-y-6 pb-24">
+        <motion.button
+          onClick={runAnalysis}
+          disabled={true}
+          className={`
+            w-full px-8 py-4 text-lg font-bold rounded-xl
+            bg-gradient-to-r from-red-500 to-red-600
+            text-white shadow-lg
+            transition-all duration-300
+            opacity-50 cursor-not-allowed
+          `}
         >
-          <Card className="p-6 border-gold/30 bg-gradient-to-br from-gold/5 to-transparent">
-            <div className="flex items-start gap-4">
-              <div className="p-3 bg-gold/20 rounded-lg">
-                <Brain className="w-6 h-6 text-gold" />
+          <AlertTriangle className="w-5 h-5 mr-2 inline-block" />
+          Analisar Caso (Dados Insuficientes)
+        </motion.button>
+
+        <InlineBanner
+          variant="error"
+          title="Dados Insuficientes"
+          message={[
+            'Não foi possível achar a neurolocalização com os dados fornecidos.',
+            ...(report.neuroLocalization.missing || []).map((m) => `• ${m}`),
+          ]}
+        />
+      </div>
+    )
+  }
+
+  if (status === 'done' && report) {
+    return (
+      <div className="space-y-6 pb-24">
+        {/* Identificação */}
+        <Card className="p-6">
+          <h3 className="text-lg font-semibold text-gold mb-3 flex items-center gap-2">
+            <FileText className="w-5 h-5" />
+            Identificação
+          </h3>
+          <p className="text-foreground/90 text-sm whitespace-pre-line">{report.patientSummary}</p>
+        </Card>
+
+        {/* História/Queixa */}
+        <Card className="p-6">
+          <h3 className="text-lg font-semibold text-gold mb-3">História/Queixa Principal</h3>
+          <p className="text-foreground/90 text-sm whitespace-pre-line">{report.historySummary}</p>
+        </Card>
+
+        {/* Exame */}
+        <Card className="p-6">
+          <h3 className="text-lg font-semibold text-gold mb-3">Resumo do Exame Neurológico</h3>
+          <p className="text-foreground/90 text-sm whitespace-pre-line">{report.examSummary}</p>
+        </Card>
+
+        {/* Neurolocalização */}
+        <Card className="p-6 border-gold/30">
+          <h3 className="text-xl font-bold text-gold mb-4 flex items-center gap-2">
+            <Brain className="w-6 h-6" />
+            Neurolocalização
+          </h3>
+
+          <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <p className="text-sm text-muted-foreground mb-1">Localização Provável</p>
+                <p className="text-lg font-semibold text-foreground">{getAxisLabel(report.neuroLocalization.primary)}</p>
               </div>
-              <div className="flex-1">
-                <h3 className="text-lg font-bold text-foreground mb-2">
-                  Neurolocalização Provável
-                </h3>
-                <p className="text-2xl font-bold text-gold mb-3">
-                  {getLocationDisplayName(localization.location)}
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <p className="text-xs text-muted-foreground">
-                      Padrão Motor
-                    </p>
-                    <p className="text-sm font-semibold text-foreground">
-                      {localization.motorNeuronPattern}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground">Confiança</p>
-                    <div className="flex items-center gap-2">
-                      <div className="flex-1 h-2 bg-neutral-700 rounded-full overflow-hidden">
-                        <motion.div
-                          initial={{
-                            width: 0,
-                          }}
-                          animate={{
-                            width: `${localization.confidence * 100}%`,
-                          }}
-                          transition={{
-                            duration: 1,
-                            ease: 'easeOut',
-                          }}
-                          className="h-full bg-gradient-to-r from-gold to-green-500"
-                        />
-                      </div>
-                      <span className="text-sm font-bold text-foreground">
-                        {Math.round(localization.confidence * 100)}%
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-3">
-                  <div>
-                    <p className="text-sm font-semibold text-foreground mb-2">
-                      Achados que Suportam:
-                    </p>
-                    <ul className="space-y-1">
-                      {localization.reasons.map(
-                        (reason, idx) =>
-                          reason && (
-                            <li
-                              key={idx}
-                              className="text-sm text-foreground/90 flex gap-2"
-                            >
-                              <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
-                              <span>{reason}</span>
-                            </li>
-                          ),
-                      )}
-                    </ul>
-                  </div>
-
-                  {localization.redFlags.length > 0 && (
-                    <div className="p-3 bg-red-900/20 border border-red-900/30 rounded-lg">
-                      <p className="text-sm font-semibold text-red-400 mb-2 flex items-center gap-2">
-                        <AlertTriangle className="w-4 h-4" />
-                        Alertas Importantes
-                      </p>
-                      <ul className="space-y-1">
-                        {localization.redFlags.map((flag, idx) => (
-                          <li
-                            key={idx}
-                            className="text-sm text-red-200 flex gap-2"
-                          >
-                            <span>•</span>
-                            <span>{flag}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
+              <div>
+                <p className="text-sm text-muted-foreground mb-1">Distribuição</p>
+                <p className="text-lg font-semibold text-foreground capitalize">{report.neuroLocalization.distribution.toLowerCase()}</p>
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground mb-1">Padrão Motor</p>
+                <p className="text-lg font-semibold text-foreground">{getMotorPatternLabel(report.neuroLocalization.motorPattern)}</p>
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground mb-1">Confiança</p>
+                <p className="text-lg font-semibold text-foreground">{report.neuroLocalization.confidence}%</p>
               </div>
             </div>
-          </Card>
-        </motion.div>
-      )}
 
-      {/* Differentials Card */}
-      <motion.div
-        initial={{
-          opacity: 0,
-          y: 20,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          delay: 0.2,
-        }}
-      >
-        <Card className="p-6">
-          <h3 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
-            <FileText className="w-5 h-5 text-gold" />
+            <div>
+              <p className="text-sm font-semibold text-gold mb-2">Raciocínio de Neurolocalização (Síntese)</p>
+              <p className="text-foreground/90 text-sm leading-relaxed whitespace-pre-line">
+                {report.neuroLocalization.narrative}
+              </p>
+            </div>
+
+            {report.neuroLocalization.supportiveFindings.length > 0 && (
+              <div>
+                <p className="text-sm font-semibold text-green-400 mb-2">Achados que Suportam</p>
+                <ul className="list-disc list-inside space-y-1 text-sm text-foreground/80">
+                  {report.neuroLocalization.supportiveFindings.map((finding, idx) => (
+                    <li key={idx}>{finding}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {report.neuroLocalization.contradictoryFindings.length > 0 && (
+              <div>
+                <p className="text-sm font-semibold text-orange-400 mb-2">Achados Contraditórios</p>
+                <ul className="list-disc list-inside space-y-1 text-sm text-foreground/80">
+                  {report.neuroLocalization.contradictoryFindings.map((finding, idx) => (
+                    <li key={idx}>{finding}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </Card>
+
+        {/* TOP 5 DDx */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold text-gold flex items-center gap-2">
+            <CheckCircle2 className="w-6 h-6" />
             Top 5 Diagnósticos Diferenciais
           </h3>
-          <div className="space-y-4">
-            {differentials.map((dx, index) => (
-              <div
-                key={index}
-                className="p-4 bg-card border border-border rounded-lg hover:border-gold/30 transition-all"
-              >
-                <div className="flex items-start gap-3">
-                  <div className="flex-shrink-0 w-8 h-8 bg-gold/20 rounded-full flex items-center justify-center">
-                    <span className="text-sm font-bold text-gold">
-                      {index + 1}
-                    </span>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="font-semibold text-foreground mb-2">
-                      {dx.name}
-                    </h4>
-                    <div className="space-y-2">
-                      <div>
-                        <p className="text-xs font-semibold text-muted-foreground mb-1">
-                          Justificativas:
-                        </p>
-                        <ul className="space-y-1">
-                          {dx.justifications.slice(0, 4).map((just, idx) => (
-                            <li
-                              key={idx}
-                              className="text-xs text-foreground/80 flex gap-2"
-                            >
-                              <span className="text-gold">•</span>
-                              <span>{just}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div>
-                        <p className="text-xs font-semibold text-muted-foreground mb-1">
-                          Exames Principais:
-                        </p>
-                        <div className="flex flex-wrap gap-1">
-                          {dx.diagnostics.slice(0, 3).map((diag, idx) => (
-                            <span
-                              key={idx}
-                              className="text-xs px-2 py-1 bg-blue-900/20 text-blue-400 rounded"
-                            >
-                              {diag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+
+          {report.differentials.map((dx, idx) => (
+            <Card key={idx} className="p-6">
+              <div className="flex items-start justify-between mb-3">
+                <div>
+                  <h4 className="text-lg font-semibold text-foreground">
+                    {idx + 1}. {dx.name}
+                  </h4>
+                  <p className="text-sm text-muted-foreground">Categoria: {getCategoryLabel(dx.category)}</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-sm text-muted-foreground mb-1">Probabilidade</p>
+                  <p className="text-xl font-bold text-gold">{dx.likelihood}%</p>
                 </div>
               </div>
-            ))}
-          </div>
-        </Card>
-      </motion.div>
 
-      {/* Treatment Summary */}
-      <motion.div
-        initial={{
-          opacity: 0,
-          y: 20,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          delay: 0.3,
-        }}
-      >
-        <Card className="p-6">
-          <h3 className="text-lg font-bold text-foreground mb-4">
-            Tratamento Imediato (0-6h)
-          </h3>
-          <div className="space-y-2">
-            {Array.from(new Set(differentials.flatMap((dx) => dx.treatment)))
-              .slice(0, 6)
-              .map((treatment, idx) => (
-                <div
-                  key={idx}
-                  className="flex gap-2 text-sm text-foreground/90"
-                >
-                  <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span>{treatment}</span>
+              <div className="space-y-4 mt-4">
+                <div>
+                  <p className="text-sm font-semibold text-blue-400 mb-2">Justificativas</p>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-foreground/80">
+                    {dx.why.map((reason, i) => (
+                      <li key={i}>{reason}</li>
+                    ))}
+                  </ul>
                 </div>
-              ))}
-          </div>
-        </Card>
-      </motion.div>
 
-      {/* Restart Button */}
-      <motion.div
-        initial={{
-          opacity: 0,
-        }}
-        animate={{
-          opacity: 1,
-        }}
-        transition={{
-          delay: 0.4,
-        }}
-        className="flex justify-center pt-6"
-      >
-        <Button onClick={onRestart} variant="secondary" size="lg">
-          <RefreshCw className="w-5 h-5 mr-2" />
-          Iniciar Novo Exame
-        </Button>
-      </motion.div>
-    </div>
-  )
+                <div>
+                  <p className="text-sm font-semibold text-purple-400 mb-2">Como Diagnosticar</p>
+                  <div className="space-y-2">
+                    {dx.diagnostics.map((diag, i) => (
+                      <div key={i} className="p-3 bg-neutral-800/50 rounded-lg border border-neutral-700">
+                        <div className="flex items-start justify-between mb-1">
+                          <p className="text-sm font-medium text-foreground">{diag.test}</p>
+                          <span
+                            className={`text-xs px-2 py-1 rounded ${
+                              diag.priority === 'ALTA'
+                                ? 'bg-red-900/50 text-red-300'
+                                : diag.priority === 'MEDIA'
+                                  ? 'bg-yellow-900/50 text-yellow-300'
+                                  : 'bg-blue-900/50 text-blue-300'
+                            }`}
+                          >
+                            {diag.priority}
+                          </span>
+                        </div>
+                        <p className="text-xs text-muted-foreground mb-1">
+                          <span className="font-semibold">O que adiciona:</span> {diag.whatItAdds}
+                        </p>
+                        <p className="text-xs text-muted-foreground mb-1">
+                          <span className="font-semibold">Achados esperados:</span> {diag.expectedFindings}
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          <span className="font-semibold">Limitações:</span> {diag.limitations}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-sm font-semibold text-green-400 mb-2">Como Tratar</p>
+                  {dx.treatment.map((tx, i) => (
+                    <div key={i} className="mb-3 p-3 bg-neutral-800/50 rounded-lg border border-neutral-700">
+                      <p className="text-sm font-semibold text-foreground mb-2">
+                        {tx.phase === '0-6H' ? 'Fase Inicial (0-6h)' : 'Tratamento Definitivo'}
+                      </p>
+                      <ul className="list-disc list-inside space-y-1 text-sm text-foreground/80 mb-2">
+                        {tx.plan.map((item, j) => (
+                          <li key={j}>{item}</li>
+                        ))}
+                      </ul>
+                      {tx.cautions.length > 0 && (
+                        <div className="mt-2 pt-2 border-t border-neutral-700">
+                          <p className="text-xs font-semibold text-orange-400 mb-1">Cautelas:</p>
+                          <ul className="list-disc list-inside space-y-1 text-xs text-orange-300/80">
+                            {tx.cautions.map((caution, j) => (
+                              <li key={j}>{caution}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  return null
 }

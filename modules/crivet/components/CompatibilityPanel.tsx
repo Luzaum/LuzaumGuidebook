@@ -108,7 +108,13 @@ function getDiluentStatus(
 export function CompatibilityPanel({ compat, selectedDiluentId, drugId }: Props) {
   // Obter perfil normalizado se drugId foi fornecido
   const profile = drugId ? getDrugProfile(drugId) : null
-  const normalized = profile ? normalizeDrug(profile) : null
+  let normalized = null
+  try {
+    normalized = profile ? normalizeDrug(profile) : null
+  } catch (error) {
+    console.warn(`Erro ao normalizar fármaco ${drugId}:`, error)
+    normalized = null
+  }
 
   const diluentStatus = selectedDiluentId 
     ? getDiluentStatus(compat, selectedDiluentId, normalized?.compatibility) 

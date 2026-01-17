@@ -1,29 +1,47 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import {
-  PatientProfile,
-  Species,
-  Sex,
-  PhysiologicState,
-  TimeCourse,
-  Course,
-} from '../../types'
 import { Button } from '../UI/Button'
 import { Card } from '../UI/Card'
 import { Chip } from '../UI/Chip'
 import { Slider } from '../UI/Slider'
-import { Dog, Cat, AlertTriangle } from 'lucide-react'
+import { Dog, Cat } from 'lucide-react'
+import type { Patient } from '../../stores/caseStore'
+import { normalizePatient } from '../../lib/validation/normalizePatient'
 
 interface Step1Props {
-  data: PatientProfile
-  updateData: (data: Partial<PatientProfile>) => void
+  patient: Patient
+  setPatient: (patch: Partial<Patient>) => void
 }
 
-export function Step1PatientInfo({ data, updateData }: Step1Props) {
-  const toggleArrayItem = <T extends string>(current: T[], item: T): T[] => {
-    return current.includes(item)
-      ? current.filter((i) => i !== item)
-      : [...current, item]
+const COMORBIDITY_LABELS: Record<string, string> = {
+  renal: 'Renopata',
+  hepatic: 'Hepatopata',
+  cardiac: 'Cardiopata',
+  endocrine: 'Endocrinopata',
+  respiratory: 'Pneumopata',
+  neoplasia: 'Neoplasia',
+  immunosuppressed: 'Imunossuprimido',
+  coagulopathy: 'Coagulopata',
+  hypertension: 'Hipertensão',
+  toxin_exposure: 'Exposição a toxinas',
+  recent_trauma: 'Trauma recente',
+  infectious_risk: 'Risco infeccioso',
+}
+
+const COMORBIDITIES = Object.keys(COMORBIDITY_LABELS) as Array<keyof typeof COMORBIDITY_LABELS>
+
+export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
+  const handleSetPatient = (patch: Partial<Patient>) => {
+    const normalized = normalizePatient({ ...patient, ...patch })
+    setPatient(normalized)
+  }
+
+  const toggleComorbidity = (comorbidity: string) => {
+    const current = patient.comorbidities
+    const newComorbidities = current.includes(comorbidity)
+      ? current.filter((c) => c !== comorbidity)
+      : [...current, comorbidity]
+    setPatient({ comorbidities: newComorbidities })
   }
 
   return (
@@ -49,24 +67,16 @@ export function Step1PatientInfo({ data, updateData }: Step1Props) {
       {/* Species */}
       <section className="grid grid-cols-2 gap-4">
         <Button
-          variant={data.species === Species.Dog ? 'primary' : 'secondary'}
-          onClick={() =>
-            updateData({
-              species: Species.Dog,
-            })
-          }
+          variant={patient.species === 'dog' ? 'primary' : 'secondary'}
+          onClick={() => handleSetPatient({ species: 'dog' })}
           className="h-24 flex flex-col gap-2"
         >
           <Dog size={32} />
           <span>Cão</span>
         </Button>
         <Button
-          variant={data.species === Species.Cat ? 'primary' : 'secondary'}
-          onClick={() =>
-            updateData({
-              species: Species.Cat,
-            })
-          }
+          variant={patient.species === 'cat' ? 'primary' : 'secondary'}
+          onClick={() => handleSetPatient({ species: 'cat' })}
           className="h-24 flex flex-col gap-2"
         >
           <Cat size={32} />
@@ -79,32 +89,18 @@ export function Step1PatientInfo({ data, updateData }: Step1Props) {
         <div className="space-y-6">
           <Slider
             label="Idade (anos)"
-            value={data.age.years}
+            value={patient.ageYears || 0}
             min={0}
             max={20}
-            onChange={(v) =>
-              updateData({
-                age: {
-                  ...data.age,
-                  years: v,
-                },
-              })
-            }
+            onChange={(v) => handleSetPatient({ ageYears: v })}
             unit="anos"
           />
           <Slider
             label="Idade (meses)"
-            value={data.age.months}
+            value={patient.ageMonths || 0}
             min={0}
             max={11}
-            onChange={(v) =>
-              updateData({
-                age: {
-                  ...data.age,
-                  months: v,
-                },
-              })
-            }
+            onChange={(v) => handleSetPatient({ ageMonths: v })}
             unit="meses"
           />
           <div className="pt-4 border-t border-white/5">
@@ -113,10 +109,10 @@ export function Step1PatientInfo({ data, updateData }: Step1Props) {
             </label>
             <input
               type="number"
-              value={data.weight || ''}
+              value={patient.weightKg || ''}
               onChange={(e) =>
-                updateData({
-                  weight: parseFloat(e.target.value),
+                handleSetPatient({
+                  weightKg: e.target.value ? parseFloat(e.target.value) : null,
                 })
               }
               className="w-full bg-neutral-900 border border-neutral-700 rounded-xl p-3 text-white focus:border-gold focus:ring-1 focus:ring-gold outline-none"
@@ -126,137 +122,132 @@ export function Step1PatientInfo({ data, updateData }: Step1Props) {
         </div>
       </Card>
 
-      {/* Sex & State */}
+      {/* Sex & Reproductive Status */}
       <Card>
         <div className="space-y-4">
-          <div className="flex gap-2">
-            <Button
-              size="sm"
-              variant={data.sex === Sex.Male ? 'primary' : 'secondary'}
-              onClick={() =>
-                updateData({
-                  sex: Sex.Male,
-                })
-              }
-              className="flex-1"
-            >
-              Macho
-            </Button>
-            <Button
-              size="sm"
-              variant={data.sex === Sex.Female ? 'primary' : 'secondary'}
-              onClick={() =>
-                updateData({
-                  sex: Sex.Female,
-                })
-              }
-              className="flex-1"
-            >
-              Fêmea
-            </Button>
+          <div>
+            <label className="text-sm font-medium text-neutral-300 mb-2 block">
+              Sexo
+            </label>
+            <div className="flex gap-2">
+              <Button
+                size="sm"
+                variant={patient.sex === 'male' ? 'primary' : 'secondary'}
+                onClick={() => handleSetPatient({ sex: 'male' })}
+                className="flex-1"
+              >
+                Macho
+              </Button>
+              <Button
+                size="sm"
+                variant={patient.sex === 'female' ? 'primary' : 'secondary'}
+                onClick={() => handleSetPatient({ sex: 'female' })}
+                className="flex-1"
+              >
+                Fêmea
+              </Button>
+            </div>
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            {Object.values(PhysiologicState).map((state) => (
-              <Chip
-                key={state}
-                label={state}
-                selected={data.physiologicState.includes(state)}
-                onClick={() =>
-                  updateData({
-                    physiologicState: toggleArrayItem(
-                      data.physiologicState,
-                      state,
-                    ),
-                  })
-                }
-              />
-            ))}
+          <div>
+            <label className="text-sm font-medium text-neutral-300 mb-2 block">
+              Estado Reprodutivo
+            </label>
+            <div className="flex gap-2">
+              <Button
+                size="sm"
+                variant={patient.reproStatus === 'intact' ? 'primary' : 'secondary'}
+                onClick={() => handleSetPatient({ reproStatus: 'intact' })}
+                className="flex-1"
+              >
+                Inteiro
+              </Button>
+              <Button
+                size="sm"
+                variant={patient.reproStatus === 'neutered' ? 'primary' : 'secondary'}
+                onClick={() => handleSetPatient({ reproStatus: 'neutered' })}
+                className="flex-1"
+              >
+                Castrado
+              </Button>
+            </div>
           </div>
+
+          {/* Life Stage */}
+          <div>
+            <label className="text-sm font-medium text-neutral-300 mb-2 block">
+              Estágio de Vida
+            </label>
+            <div className="grid grid-cols-2 gap-2">
+              {(['neonate', 'pediatric', 'adult', 'geriatric'] as const).map((stage) => {
+                const labels: Record<typeof stage, string> = {
+                  neonate: 'Neonato',
+                  pediatric: 'Pediátrico',
+                  adult: 'Adulto',
+                  geriatric: 'Geriátrico',
+                }
+                return (
+                  <Button
+                    key={stage}
+                    size="sm"
+                    variant={patient.lifeStage === stage ? 'primary' : 'secondary'}
+                    onClick={() => handleSetPatient({ lifeStage: stage })}
+                  >
+                    {labels[stage]}
+                  </Button>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Gestante/Lactante (apenas se fêmea) */}
+          {patient.sex === 'female' && (
+            <div>
+              <label className="text-sm font-medium text-neutral-300 mb-2 block">
+                Estado Fisiológico
+              </label>
+              <div className="flex gap-2">
+                <Button
+                  size="sm"
+                  variant={patient.pregnant ? 'primary' : 'secondary'}
+                  onClick={() =>
+                    handleSetPatient({ pregnant: !patient.pregnant })
+                  }
+                  className="flex-1"
+                >
+                  Gestante
+                </Button>
+                <Button
+                  size="sm"
+                  variant={patient.lactating ? 'primary' : 'secondary'}
+                  onClick={() =>
+                    handleSetPatient({ lactating: !patient.lactating })
+                  }
+                  className="flex-1"
+                >
+                  Lactante
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       </Card>
 
-      {/* Clinical Context */}
+      {/* Comorbidades */}
       <section className="space-y-4">
-        <h3 className="text-lg font-semibold text-white">Contexto Clínico</h3>
-
+        <h3 className="text-lg font-semibold text-white">Comorbidades</h3>
         <Card>
-          <label className="text-sm font-medium text-neutral-300 mb-3 block">
-            Padrão Temporal (Obrigatório)
-          </label>
-          <div className="grid grid-cols-1 gap-2">
-            {Object.values(TimeCourse).map((tc) => (
-              <button
-                key={tc}
-                onClick={() =>
-                  updateData({
-                    temporalPattern: tc,
-                  })
-                }
-                className={`text-left p-3 rounded-lg border transition-all ${data.temporalPattern === tc ? 'bg-gold/20 border-gold text-gold' : 'bg-neutral-800 border-transparent text-neutral-400 hover:bg-neutral-700'}`}
-              >
-                {tc}
-              </button>
-            ))}
-          </div>
-        </Card>
-
-        <Card>
-          <label className="text-sm font-medium text-neutral-300 mb-3 block">
-            Evolução
-          </label>
+          <p className="text-sm text-neutral-400 mb-4">
+            Selecione todas as comorbidades relevantes para este paciente.
+          </p>
           <div className="flex flex-wrap gap-2">
-            {Object.values(Course).map((c) => (
+            {COMORBIDITIES.map((comorbidity) => (
               <Chip
-                key={c}
-                label={c}
-                selected={data.course === c}
-                onClick={() =>
-                  updateData({
-                    course: c,
-                  })
-                }
+                key={comorbidity}
+                label={COMORBIDITY_LABELS[comorbidity]}
+                selected={patient.comorbidities.includes(comorbidity)}
+                onClick={() => toggleComorbidity(comorbidity)}
               />
-            ))}
-          </div>
-        </Card>
-      </section>
-
-      {/* Red Flags */}
-      <section className="space-y-4">
-        <div className="flex items-center gap-2 text-red-400">
-          <AlertTriangle size={20} />
-          <h3 className="text-lg font-semibold">
-            Sinais de Alerta (Red Flags)
-          </h3>
-        </div>
-        <Card className="border-red-900/30 bg-red-900/5">
-          <div className="space-y-2">
-            {[
-              'Coma / Estupor',
-              'Convulsão ativa / Status',
-              'Dispneia / Choque',
-              'Suspeita de herniação',
-              'Tetraplegia aguda',
-              'Ausência de nocicepção',
-              'Dor severa',
-            ].map((flag) => (
-              <label
-                key={flag}
-                className="flex items-center gap-3 p-2 hover:bg-red-900/20 rounded cursor-pointer"
-              >
-                <input
-                  type="checkbox"
-                  checked={data.redFlags.includes(flag)}
-                  onChange={() =>
-                    updateData({
-                      redFlags: toggleArrayItem(data.redFlags, flag),
-                    })
-                  }
-                  className="w-5 h-5 rounded border-red-500 text-red-500 focus:ring-red-500 bg-transparent"
-                />
-                <span className="text-neutral-200">{flag}</span>
-              </label>
             ))}
           </div>
         </Card>

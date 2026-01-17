@@ -1,17 +1,12 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronDown, ChevronUp, CheckCircle2, Circle } from 'lucide-react'
-import { NeuroExam } from '../../types'
-import { HelpButton } from '../UI/HelpButton'
-import { HelpModal } from '../UI/HelpModal'
-import {
-  getHelpTopicComplete,
-  requireHelpId,
-} from '../../lib/help/helpTopicsComplete'
+import { HelpButton } from '../help/HelpButton'
+import { useUiStore } from '../../stores/uiStore'
 
 interface Step3Props {
-  exam: NeuroExam
-  updateExam: (key: string, value: any) => void
+  exam: Record<string, any>
+  updateExam: (exam: Record<string, any>) => void
 }
 
 interface SectionHeaderProps {
@@ -23,7 +18,7 @@ interface SectionHeaderProps {
   }
   isOpen: boolean
   onToggle: () => void
-  onHelpClick: (id: string) => void
+  theme: 'dark' | 'light'
 }
 
 function SectionHeader({
@@ -32,7 +27,7 @@ function SectionHeader({
   progress,
   isOpen,
   onToggle,
-  onHelpClick,
+  theme,
 }: SectionHeaderProps) {
   return (
     <button
@@ -53,12 +48,7 @@ function SectionHeader({
             )}
           </div>
         </div>
-        <HelpButton
-          onClick={(e) => {
-            e?.stopPropagation()
-            onHelpClick(helpTopicId)
-          }}
-        />
+        <HelpButton topicId={helpTopicId} theme={theme} size="md" />
         {isOpen ? (
           <ChevronUp className="w-5 h-5 text-gold" />
         ) : (
@@ -97,16 +87,15 @@ function SectionIntro({ text, howToObserve }: SectionIntroProps) {
 
 interface ExamItemProps {
   label: string
-  helpTopicId: string
+  helpTopicId?: string
   howToTestSummary: string
   options: Array<{
     value: string
     label: string
-    helpTopicId: string
+    helpTopicId?: string
   }>
   currentValue: any
   onSelect: (value: string) => void
-  onHelpClick: (id: string) => void
 }
 
 function ExamItem({
@@ -116,13 +105,13 @@ function ExamItem({
   options,
   currentValue,
   onSelect,
-  onHelpClick,
-}: ExamItemProps) {
+  theme,
+}: ExamItemProps & { theme: 'dark' | 'light' }) {
   return (
     <div className="p-4 bg-card border border-border rounded-xl hover:border-gold/30 transition-all">
       <div className="flex items-center gap-2 mb-2">
         <label className="text-sm font-semibold text-foreground">{label}</label>
-        <HelpButton onClick={() => onHelpClick(helpTopicId)} size="sm" />
+        {helpTopicId && <HelpButton topicId={helpTopicId} theme={theme} size="sm" />}
       </div>
       <p className="text-xs text-muted-foreground italic mb-3">
         {howToTestSummary}
@@ -144,10 +133,15 @@ function ExamItem({
           return (
             <div key={opt.value} className="flex items-center gap-1">
               <motion.button
+                type="button"
                 whileTap={{
                   scale: 0.95,
                 }}
-                onClick={() => onSelect(opt.value)}
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  onSelect(opt.value)
+                }}
                 className={`
                   px-3 py-2 rounded-lg text-sm font-medium border-2 transition-all flex items-center gap-2
                   ${
@@ -168,7 +162,7 @@ function ExamItem({
                 )}
                 {opt.label}
               </motion.button>
-              <HelpButton onClick={() => onHelpClick(opt.helpTopicId)} size="sm" />
+              {opt.helpTopicId && <HelpButton topicId={opt.helpTopicId} theme={theme} size="sm" />}
             </div>
           )
         })}
@@ -178,6 +172,7 @@ function ExamItem({
 }
 
 export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
+  const theme = useUiStore((s) => s.theme)
   const [openSections, setOpenSections] = useState<Record<number, boolean>>({
     1: true,
     2: false,
@@ -186,10 +181,6 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
     5: false,
     6: false,
   })
-  const [helpModalOpen, setHelpModalOpen] = useState(false)
-  const [currentHelpTopicId, setCurrentHelpTopicId] = useState<string | null>(
-    null,
-  )
 
   const toggleSection = (section: number) => {
     setOpenSections((prev) => ({
@@ -198,14 +189,17 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
     }))
   }
 
-  const openHelp = (topicId: string) => {
-    setCurrentHelpTopicId(requireHelpId(topicId))
-    setHelpModalOpen(true)
+  // Wrapper para manter compatibilidade com chamadas handleUpdateExam(key, value)
+  const handleUpdateExam = (key: string, value: any) => {
+    updateExam({
+      ...exam,
+      [key]: value,
+    })
   }
 
   const getProgress = (keys: string[]) => {
     const filled = keys.filter(
-      (key) => exam.findings[key] !== undefined && exam.findings[key] !== null,
+      (key) => exam[key] !== undefined && exam[key] !== null,
     ).length
     return {
       filled,
@@ -242,7 +236,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
           progress={getProgress(['mentation', 'behavior', 'head_posture'])}
           isOpen={openSections[1]}
           onToggle={() => toggleSection(1)}
-          onHelpClick={openHelp}
+          theme={theme}
         />
         {openSections[1] && (
           <div className="p-4 space-y-4">
@@ -257,95 +251,90 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
 
             <ExamItem
               label="Nível de Consciência"
-              helpTopicId="test_consciousness"
               howToTestSummary="Observe responsividade espontânea, depois chamada/estímulo tátil; nociceptivo só se necessário."
               options={[
                 {
                   value: 'Alerta',
                   label: 'Alerta',
-                  helpTopicId: 'opt_conscious_alert',
+                  helpTopicId: 'help_s1_consciencia_alerta',
                 },
                 {
                   value: 'Deprimido',
                   label: 'Deprimido',
-                  helpTopicId: 'opt_conscious_depressed',
+                  helpTopicId: 'help_s1_consciencia_deprimido',
                 },
                 {
                   value: 'Estupor',
                   label: 'Estupor',
-                  helpTopicId: 'opt_conscious_stupor',
+                  helpTopicId: 'help_s1_consciencia_estupor',
                 },
                 {
                   value: 'Coma',
                   label: 'Coma',
-                  helpTopicId: 'opt_conscious_coma',
+                  helpTopicId: 'help_s1_consciencia_coma',
                 },
               ]}
-              currentValue={exam.findings['mentation']}
-              onSelect={(value) => updateExam('mentation', value)}
-              onHelpClick={openHelp}
+              currentValue={exam['mentation']}
+              onSelect={(value) => handleUpdateExam('mentation', value)}
+              theme={theme}
             />
 
             <ExamItem
               label="Comportamento"
-              helpTopicId="test_behavior"
               howToTestSummary="Observe interação, resposta ao ambiente, reatividade e sinais de dor/medo."
               options={[
                 {
                   value: 'Normal',
                   label: 'Normal',
-                  helpTopicId: 'opt_behavior_normal',
                 },
                 {
                   value: 'Desorientado',
                   label: 'Desorientado',
-                  helpTopicId: 'opt_behavior_disoriented',
+                  helpTopicId: 'help_s1_comportamento_desorientado',
                 },
                 {
                   value: 'Agressivo',
                   label: 'Agressivo',
-                  helpTopicId: 'opt_behavior_aggressive',
+                  helpTopicId: 'help_s1_comportamento_agressivo',
                 },
                 {
                   value: 'Vocalização',
                   label: 'Vocalização',
-                  helpTopicId: 'opt_behavior_vocalization',
+                  helpTopicId: 'help_s1_comportamento_vocalizacao',
                 },
               ]}
-              currentValue={exam.findings['behavior']}
-              onSelect={(value) => updateExam('behavior', value)}
-              onHelpClick={openHelp}
+              currentValue={exam['behavior']}
+              onSelect={(value) => handleUpdateExam('behavior', value)}
+              theme={theme}
             />
 
             <ExamItem
               label="Postura da Cabeça"
-              helpTopicId="test_head_posture"
               howToTestSummary="Observe posição da cabeça em repouso e durante movimento."
               options={[
                 {
                   value: 'Normal',
                   label: 'Normal',
-                  helpTopicId: 'opt_headposture_normal',
                 },
                 {
                   value: 'Head Tilt',
                   label: 'Head Tilt',
-                  helpTopicId: 'opt_headposture_headtilt',
+                  helpTopicId: 'help_s1_postura_cabeca_headtilt',
                 },
                 {
                   value: 'Opistótono',
                   label: 'Opistótono',
-                  helpTopicId: 'opt_headposture_opisthotonus',
+                  helpTopicId: 'help_s1_postura_cabeca_opistotono',
                 },
                 {
                   value: 'Cabeça Baixa',
                   label: 'Cabeça Baixa',
-                  helpTopicId: 'opt_headposture_headlow',
+                  helpTopicId: 'help_s1_postura_cabeca_cabeca_baixa',
                 },
               ]}
-              currentValue={exam.findings['head_posture']}
-              onSelect={(value) => updateExam('head_posture', value)}
-              onHelpClick={openHelp}
+              currentValue={exam['head_posture']}
+              onSelect={(value) => handleUpdateExam('head_posture', value)}
+              theme={theme}
             />
           </div>
         )}
@@ -364,7 +353,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
           ])}
           isOpen={openSections[2]}
           onToggle={() => toggleSection(2)}
-          onHelpClick={openHelp}
+          theme={theme}
         />
         {openSections[2] && (
           <div className="p-4 space-y-4">
@@ -379,128 +368,112 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
 
             <ExamItem
               label="Capacidade de Deambular"
-              helpTopicId="test_ambulation"
+              helpTopicId="help_s2_deambular_capacidade"
               howToTestSummary="Observe se o paciente consegue se movimentar sem auxílio."
               options={[
                 {
                   value: 'Ambulatório',
                   label: 'Ambulatório',
-                  helpTopicId: 'opt_ambulation_ambulatory',
                 },
                 {
                   value: 'Com Apoio',
                   label: 'Com Apoio',
-                  helpTopicId: 'opt_ambulation_supported',
                 },
                 {
                   value: 'Não Ambulatório',
                   label: 'Não Ambulatório',
-                  helpTopicId: 'opt_ambulation_nonambulatory',
                 },
                 {
                   value: 'Plegia',
                   label: 'Plegia',
-                  helpTopicId: 'opt_ambulation_plegia',
                 },
               ]}
-              currentValue={exam.findings['ambulation']}
-              onSelect={(value) => updateExam('ambulation', value)}
-              onHelpClick={openHelp}
+              currentValue={exam['ambulation']}
+              onSelect={(value) => handleUpdateExam('ambulation', value)}
+              theme={theme}
             />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <ExamItem
                 label="Membros Torácicos"
-                helpTopicId="test_gait_thoracic"
+                helpTopicId="help_s2_membros_toracicos"
                 howToTestSummary="Avalie força e coordenação dos membros anteriores."
                 options={[
                   {
                     value: 'Normal',
                     label: 'Normal',
-                    helpTopicId: 'opt_gait_normal',
                   },
                   {
                     value: 'Ataxia',
                     label: 'Ataxia',
-                    helpTopicId: 'opt_gait_ataxia',
                   },
                   {
                     value: 'Paresia',
                     label: 'Paresia',
-                    helpTopicId: 'opt_gait_paresis',
                   },
                   {
                     value: 'Plegia',
                     label: 'Plegia',
-                    helpTopicId: 'opt_gait_plegia',
                   },
                 ]}
-                currentValue={exam.findings['gait_thoracic']}
-                onSelect={(value) => updateExam('gait_thoracic', value)}
-                onHelpClick={openHelp}
+                currentValue={exam['gait_thoracic']}
+                onSelect={(value) => handleUpdateExam('gait_thoracic', value)}
+                theme={theme}
               />
 
               <ExamItem
                 label="Membros Pélvicos"
-                helpTopicId="test_gait_pelvic"
+                helpTopicId="help_s2_membros_pelvicos"
                 howToTestSummary="Avalie força e coordenação dos membros posteriores."
                 options={[
                   {
                     value: 'Normal',
                     label: 'Normal',
-                    helpTopicId: 'opt_gait_normal',
                   },
                   {
                     value: 'Ataxia',
                     label: 'Ataxia',
-                    helpTopicId: 'opt_gait_ataxia',
                   },
                   {
                     value: 'Paresia',
                     label: 'Paresia',
-                    helpTopicId: 'opt_gait_paresis',
                   },
                   {
                     value: 'Plegia',
                     label: 'Plegia',
-                    helpTopicId: 'opt_gait_plegia',
                   },
                 ]}
-                currentValue={exam.findings['gait_pelvic']}
-                onSelect={(value) => updateExam('gait_pelvic', value)}
-                onHelpClick={openHelp}
+                currentValue={exam['gait_pelvic']}
+                onSelect={(value) => handleUpdateExam('gait_pelvic', value)}
+                theme={theme}
               />
             </div>
 
             <ExamItem
               label="Tipo de Ataxia (se houver)"
-              helpTopicId="test_ataxia_type"
+              helpTopicId="help_s2_tipo_ataxia"
               howToTestSummary="Identifique o padrão de descoordenação para localizar a lesão."
               options={[
                 {
                   value: 'Ausente',
                   label: 'Ausente',
-                  helpTopicId: 'opt_ataxia_none',
                 },
                 {
                   value: 'Proprioceptiva',
                   label: 'Proprioceptiva',
-                  helpTopicId: 'opt_ataxia_proprioceptive',
                 },
                 {
                   value: 'Vestibular',
                   label: 'Vestibular',
-                  helpTopicId: 'opt_ataxia_vestibular',
                 },
                 {
                   value: 'Cerebelar',
                   label: 'Cerebelar',
-                  helpTopicId: 'opt_ataxia_cerebelar',
                 },
               ]}
-              currentValue={exam.findings['ataxia_type']}
-              onSelect={(value) => updateExam('ataxia_type', value)}
-              onHelpClick={openHelp}
+              currentValue={exam['ataxia_type']}
+              onSelect={(value) => handleUpdateExam('ataxia_type', value)}
+              theme={theme}
             />
           </div>
         )}
@@ -510,7 +483,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
       <div className="bg-card border border-border rounded-xl overflow-hidden shadow-lg">
         <SectionHeader
           title="3. Reações Posturais (Propriocepção)"
-          helpTopicId="sec_postural_reactions"
+          helpTopicId="help_s3_reacoes_posturais_geral"
           progress={getProgress([
             'proprioception_thoracic_left',
             'proprioception_thoracic_right',
@@ -519,7 +492,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
           ])}
           isOpen={openSections[3]}
           onToggle={() => toggleSection(3)}
-          onHelpClick={openHelp}
+          theme={theme}
         />
         {openSections[3] && (
           <div className="p-4 space-y-4">
@@ -535,114 +508,102 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <ExamItem
                 label="Torácico Esquerdo"
-                helpTopicId="test_postural_thoracic_left"
+                helpTopicId="help_s3_reacoes_posturais_geral"
                 howToTestSummary="Teste propriocepção e hopping do membro anterior esquerdo."
                 options={[
                   {
                     value: 'Normal',
                     label: 'Normal',
-                    helpTopicId: 'opt_postural_normal',
                   },
                   {
                     value: 'Diminuído',
                     label: 'Diminuído',
-                    helpTopicId: 'opt_postural_decreased',
                   },
                   {
                     value: 'Ausente',
                     label: 'Ausente',
-                    helpTopicId: 'opt_postural_absent',
                   },
                 ]}
-                currentValue={exam.findings['proprioception_thoracic_left']}
+                currentValue={exam['proprioception_thoracic_left']}
                 onSelect={(value) =>
-                  updateExam('proprioception_thoracic_left', value)
+                  handleUpdateExam('proprioception_thoracic_left', value)
                 }
-                onHelpClick={openHelp}
+                theme={theme}
               />
 
               <ExamItem
                 label="Torácico Direito"
-                helpTopicId="test_postural_thoracic_right"
+                helpTopicId="help_s3_reacoes_posturais_geral"
                 howToTestSummary="Teste propriocepção e hopping do membro anterior direito."
                 options={[
                   {
                     value: 'Normal',
                     label: 'Normal',
-                    helpTopicId: 'opt_postural_normal',
                   },
                   {
                     value: 'Diminuído',
                     label: 'Diminuído',
-                    helpTopicId: 'opt_postural_decreased',
                   },
                   {
                     value: 'Ausente',
                     label: 'Ausente',
-                    helpTopicId: 'opt_postural_absent',
                   },
                 ]}
-                currentValue={exam.findings['proprioception_thoracic_right']}
+                currentValue={exam['proprioception_thoracic_right']}
                 onSelect={(value) =>
-                  updateExam('proprioception_thoracic_right', value)
+                  handleUpdateExam('proprioception_thoracic_right', value)
                 }
-                onHelpClick={openHelp}
+                theme={theme}
               />
 
               <ExamItem
                 label="Pélvico Esquerdo"
-                helpTopicId="test_postural_pelvic_left"
+                helpTopicId="help_s3_reacoes_posturais_geral"
                 howToTestSummary="Teste propriocepção e hopping do membro posterior esquerdo."
                 options={[
                   {
                     value: 'Normal',
                     label: 'Normal',
-                    helpTopicId: 'opt_postural_normal',
                   },
                   {
                     value: 'Diminuído',
                     label: 'Diminuído',
-                    helpTopicId: 'opt_postural_decreased',
                   },
                   {
                     value: 'Ausente',
                     label: 'Ausente',
-                    helpTopicId: 'opt_postural_absent',
                   },
                 ]}
-                currentValue={exam.findings['proprioception_pelvic_left']}
+                currentValue={exam['proprioception_pelvic_left']}
                 onSelect={(value) =>
-                  updateExam('proprioception_pelvic_left', value)
+                  handleUpdateExam('proprioception_pelvic_left', value)
                 }
-                onHelpClick={openHelp}
+                theme={theme}
               />
 
               <ExamItem
                 label="Pélvico Direito"
-                helpTopicId="test_postural_pelvic_right"
+                helpTopicId="help_s3_reacoes_posturais_geral"
                 howToTestSummary="Teste propriocepção e hopping do membro posterior direito."
                 options={[
                   {
                     value: 'Normal',
                     label: 'Normal',
-                    helpTopicId: 'opt_postural_normal',
                   },
                   {
                     value: 'Diminuído',
                     label: 'Diminuído',
-                    helpTopicId: 'opt_postural_decreased',
                   },
                   {
                     value: 'Ausente',
                     label: 'Ausente',
-                    helpTopicId: 'opt_postural_absent',
                   },
                 ]}
-                currentValue={exam.findings['proprioception_pelvic_right']}
+                currentValue={exam['proprioception_pelvic_right']}
                 onSelect={(value) =>
-                  updateExam('proprioception_pelvic_right', value)
+                  handleUpdateExam('proprioception_pelvic_right', value)
                 }
-                onHelpClick={openHelp}
+                theme={theme}
               />
             </div>
           </div>
@@ -666,7 +627,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
           ])}
           isOpen={openSections[4]}
           onToggle={() => toggleSection(4)}
-          onHelpClick={openHelp}
+          theme={theme}
         />
         {openSections[4] && (
           <div className="p-4 space-y-4">
@@ -684,51 +645,42 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                 <h4 className="text-sm font-semibold text-foreground">
                   Ameaça (Menace) - II/VII
                 </h4>
-                <HelpButton
-                  onClick={() => openHelp('cn_menace_response')}
-                  size="sm"
-                />
+                <HelpButton topicId="help_s4_menace_ii_vii" theme={theme} size="sm" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <ExamItem
                   label="Olho Esquerdo"
-                  helpTopicId="test_menace_left"
                   howToTestSummary="Movimento rápido em direção ao olho esquerdo."
                   options={[
                     {
                       value: 'Presente',
                       label: 'Presente',
-                      helpTopicId: 'opt_menace_present',
                     },
                     {
                       value: 'Ausente',
                       label: 'Ausente',
-                      helpTopicId: 'opt_menace_absent',
                     },
                   ]}
-                  currentValue={exam.findings['menace_left']}
-                  onSelect={(value) => updateExam('menace_left', value)}
-                  onHelpClick={openHelp}
+                  currentValue={exam['menace_left']}
+                  onSelect={(value) => handleUpdateExam('menace_left', value)}
+                  theme={theme}
                 />
                 <ExamItem
                   label="Olho Direito"
-                  helpTopicId="test_menace_right"
                   howToTestSummary="Movimento rápido em direção ao olho direito."
                   options={[
                     {
                       value: 'Presente',
                       label: 'Presente',
-                      helpTopicId: 'opt_menace_present',
                     },
                     {
                       value: 'Ausente',
                       label: 'Ausente',
-                      helpTopicId: 'opt_menace_absent',
                     },
                   ]}
-                  currentValue={exam.findings['menace_right']}
-                  onSelect={(value) => updateExam('menace_right', value)}
-                  onHelpClick={openHelp}
+                  currentValue={exam['menace_right']}
+                  onSelect={(value) => handleUpdateExam('menace_right', value)}
+                  theme={theme}
                 />
               </div>
             </div>
@@ -738,102 +690,90 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                 <h4 className="text-sm font-semibold text-foreground">
                   Reflexo Pupilar (PLR) - II/III
                 </h4>
-                <HelpButton onClick={() => openHelp('test_plr')} size="sm" />
+                <HelpButton topicId="help_s4_plr_ii_iii" theme={theme} size="sm" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <ExamItem
                   label="Olho Esquerdo"
-                  helpTopicId="test_plr_left"
                   howToTestSummary="Luz focal no olho esquerdo, observar miose."
                   options={[
                     {
                       value: 'Normal',
                       label: 'Normal',
-                      helpTopicId: 'opt_plr_normal',
                     },
                     {
                       value: 'Lento',
                       label: 'Lento',
-                      helpTopicId: 'opt_plr_slow',
                     },
                     {
                       value: 'Ausente',
                       label: 'Ausente',
-                      helpTopicId: 'opt_plr_absent',
                     },
                   ]}
-                  currentValue={exam.findings['plr_left']}
-                  onSelect={(value) => updateExam('plr_left', value)}
-                  onHelpClick={openHelp}
+                  currentValue={exam['plr_left']}
+                  onSelect={(value) => handleUpdateExam('plr_left', value)}
+                  theme={theme}
                 />
                 <ExamItem
                   label="Olho Direito"
-                  helpTopicId="test_plr_right"
                   howToTestSummary="Luz focal no olho direito, observar miose."
                   options={[
                     {
                       value: 'Normal',
                       label: 'Normal',
-                      helpTopicId: 'opt_plr_normal',
                     },
                     {
                       value: 'Lento',
                       label: 'Lento',
-                      helpTopicId: 'opt_plr_slow',
                     },
                     {
                       value: 'Ausente',
                       label: 'Ausente',
-                      helpTopicId: 'opt_plr_absent',
                     },
                   ]}
-                  currentValue={exam.findings['plr_right']}
-                  onSelect={(value) => updateExam('plr_right', value)}
-                  onHelpClick={openHelp}
+                  currentValue={exam['plr_right']}
+                  onSelect={(value) => handleUpdateExam('plr_right', value)}
+                  theme={theme}
                 />
               </div>
             </div>
 
             <ExamItem
               label="Nistagmo Patológico"
-              helpTopicId="test_nystagmus"
+              helpTopicId="help_s4_nistagmo"
               howToTestSummary="Observe movimento rítmico involuntário dos olhos."
               options={[
                 {
                   value: 'Ausente',
                   label: 'Ausente',
-                  helpTopicId: 'opt_nystagmus_absent',
                 },
                 {
                   value: 'Presente',
                   label: 'Presente',
-                  helpTopicId: 'opt_nystagmus_present',
                 },
               ]}
-              currentValue={exam.findings['nystagmus']}
-              onSelect={(value) => updateExam('nystagmus', value)}
-              onHelpClick={openHelp}
+              currentValue={exam['nystagmus']}
+              onSelect={(value) => handleUpdateExam('nystagmus', value)}
+              theme={theme}
             />
 
             <ExamItem
               label="Estrabismo"
-              helpTopicId="test_strabismus"
+              helpTopicId="help_s4_estrabismo"
               howToTestSummary="Observe desvio anormal dos olhos."
               options={[
                 {
                   value: 'Ausente',
                   label: 'Ausente',
-                  helpTopicId: 'opt_strabismus_absent',
                 },
                 {
                   value: 'Presente',
                   label: 'Presente',
-                  helpTopicId: 'opt_strabismus_present',
                 },
               ]}
-              currentValue={exam.findings['strabismus']}
-              onSelect={(value) => updateExam('strabismus', value)}
-              onHelpClick={openHelp}
+              currentValue={exam['strabismus']}
+              onSelect={(value) => handleUpdateExam('strabismus', value)}
+              theme={theme}
             />
 
             <ExamItem
@@ -857,35 +797,32 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                   helpTopicId: 'opt_facial_absent',
                 },
               ]}
-              currentValue={exam.findings['cn_facial_sensation']}
-              onSelect={(value) => updateExam('cn_facial_sensation', value)}
-              onHelpClick={openHelp}
+              currentValue={exam['cn_facial_sensation']}
+              onSelect={(value) => handleUpdateExam('cn_facial_sensation', value)}
+              theme={theme}
             />
 
             <ExamItem
               label="Reflexo de Deglutição (IX/X)"
-              helpTopicId="test_swallow"
+              helpTopicId="help_s4_degluticao_ix_x"
               howToTestSummary="Observe deglutição espontânea; avaliar tosse/engasgos."
               options={[
                 {
                   value: 'Normal',
                   label: 'Normal',
-                  helpTopicId: 'opt_swallow_normal',
                 },
                 {
                   value: 'Diminuído',
                   label: 'Diminuído',
-                  helpTopicId: 'opt_swallow_decreased',
                 },
                 {
                   value: 'Ausente',
                   label: 'Ausente',
-                  helpTopicId: 'opt_swallow_absent',
                 },
               ]}
-              currentValue={exam.findings['cn_swallowing']}
-              onSelect={(value) => updateExam('cn_swallowing', value)}
-              onHelpClick={openHelp}
+              currentValue={exam['cn_swallowing']}
+              onSelect={(value) => handleUpdateExam('cn_swallowing', value)}
+              theme={theme}
             />
           </div>
         )}
@@ -905,7 +842,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
           ])}
           isOpen={openSections[5]}
           onToggle={() => toggleSection(5)}
-          onHelpClick={openHelp}
+          theme={theme}
         />
         {openSections[5] && (
           <div className="p-4 space-y-4">
@@ -923,10 +860,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                 <h4 className="text-sm font-semibold text-foreground">
                   Reflexo Patelar (Membros Pélvicos)
                 </h4>
-                <HelpButton
-                  onClick={() => openHelp('test_patellar')}
-                  size="sm"
-                />
+                <HelpButton topicId="help_s5_patelar" theme={theme} size="sm" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <ExamItem
@@ -955,11 +889,11 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                       helpTopicId: 'opt_reflex_absent',
                     },
                   ]}
-                  currentValue={exam.findings['reflex_patellar_left']}
+                  currentValue={exam['reflex_patellar_left']}
                   onSelect={(value) =>
-                    updateExam('reflex_patellar_left', value)
+                    handleUpdateExam('reflex_patellar_left', value)
                   }
-                  onHelpClick={openHelp}
+                  theme={theme}
                 />
                 <ExamItem
                   label="Direito"
@@ -987,11 +921,11 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                       helpTopicId: 'opt_reflex_absent',
                     },
                   ]}
-                  currentValue={exam.findings['reflex_patellar_right']}
+                  currentValue={exam['reflex_patellar_right']}
                   onSelect={(value) =>
-                    updateExam('reflex_patellar_right', value)
+                    handleUpdateExam('reflex_patellar_right', value)
                   }
-                  onHelpClick={openHelp}
+                  theme={theme}
                 />
               </div>
             </div>
@@ -1001,10 +935,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                 <h4 className="text-sm font-semibold text-foreground">
                   Flexor/Retirada (Membros Torácicos)
                 </h4>
-                <HelpButton
-                  onClick={() => openHelp('reflex_withdrawal_flexor')}
-                  size="sm"
-                />
+                <HelpButton topicId="help_s5_retirada_flexor" theme={theme} size="sm" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <ExamItem
@@ -1034,12 +965,12 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                     },
                   ]}
                   currentValue={
-                    exam.findings['reflex_withdrawal_left_thoracic']
+                    exam['reflex_withdrawal_left_thoracic']
                   }
                   onSelect={(value) =>
-                    updateExam('reflex_withdrawal_left_thoracic', value)
+                    handleUpdateExam('reflex_withdrawal_left_thoracic', value)
                   }
-                  onHelpClick={openHelp}
+                  theme={theme}
                 />
                 <ExamItem
                   label="Direito"
@@ -1068,40 +999,37 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                     },
                   ]}
                   currentValue={
-                    exam.findings['reflex_withdrawal_right_thoracic']
+                    exam['reflex_withdrawal_right_thoracic']
                   }
                   onSelect={(value) =>
-                    updateExam('reflex_withdrawal_right_thoracic', value)
+                    handleUpdateExam('reflex_withdrawal_right_thoracic', value)
                   }
-                  onHelpClick={openHelp}
+                  theme={theme}
                 />
               </div>
             </div>
 
             <ExamItem
               label="Reflexo Cutâneo do Tronco (Panniculus)"
-              helpTopicId="test_panniculus"
+              helpTopicId="help_s5_panniculus"
               howToTestSummary="Pinçar pele lateral do tórax, observar contração."
               options={[
                 {
                   value: 'Normal',
                   label: 'Normal',
-                  helpTopicId: 'opt_panniculus_normal',
                 },
                 {
                   value: 'Cutoff',
                   label: 'Corte (Cutoff)',
-                  helpTopicId: 'opt_panniculus_cutoff',
                 },
                 {
                   value: 'Ausente',
                   label: 'Ausente',
-                  helpTopicId: 'opt_panniculus_absent',
                 },
               ]}
-              currentValue={exam.findings['reflex_panniculus']}
-              onSelect={(value) => updateExam('reflex_panniculus', value)}
-              onHelpClick={openHelp}
+              currentValue={exam['reflex_panniculus']}
+              onSelect={(value) => handleUpdateExam('reflex_panniculus', value)}
+              theme={theme}
             />
           </div>
         )}
@@ -1120,7 +1048,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
           ])}
           isOpen={openSections[6]}
           onToggle={() => toggleSection(6)}
-          onHelpClick={openHelp}
+          theme={theme}
         />
         {openSections[6] && (
           <div className="p-4 space-y-4">
@@ -1135,131 +1063,112 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
 
             <ExamItem
               label="Dor Profunda (Nocicepção)"
-              helpTopicId="test_deep_pain"
+              helpTopicId="help_s6_dor_profunda"
               howToTestSummary="Estímulo forte e controlado em falange, procurando resposta consciente (virar cabeça, vocalizar, tentar morder)."
               options={[
                 {
                   value: 'Presente',
                   label: 'Presente',
-                  helpTopicId: 'opt_deep_pain_present',
                 },
                 {
                   value: 'Ausente',
                   label: 'Ausente',
-                  helpTopicId: 'opt_deep_pain_absent',
                 },
                 {
                   value: 'Duvidoso',
                   label: 'Duvidoso',
-                  helpTopicId: 'opt_deep_pain_equivocal',
                 },
               ]}
-              currentValue={exam.findings['deep_pain']}
-              onSelect={(value) => updateExam('deep_pain', value)}
-              onHelpClick={openHelp}
+              currentValue={exam['deep_pain']}
+              onSelect={(value) => handleUpdateExam('deep_pain', value)}
+              theme={theme}
             />
 
             <div className="pt-4 border-t border-border">
               <h4 className="text-gold font-semibold mb-4 flex items-center gap-2">
                 Palpação de Coluna (Dor Espinhal)
-                <HelpButton
-                  onClick={() => openHelp('test_spinal_pain')}
-                  size="sm"
-                />
               </h4>
 
               <div className="space-y-4">
                 <ExamItem
                   label="Cervical"
-                  helpTopicId="test_spinal_pain_cervical"
+                  helpTopicId="help_s6_palpacao_coluna_cervical"
                   howToTestSummary="Palpar vértebras cervicais, mobilizar pescoço suavemente."
                   options={[
                     {
                       value: 'Ausente',
                       label: 'Ausente',
-                      helpTopicId: 'opt_pain_none',
                     },
                     {
                       value: 'Leve',
                       label: 'Leve',
-                      helpTopicId: 'opt_pain_mild',
                     },
                     {
                       value: 'Moderada',
                       label: 'Moderada',
-                      helpTopicId: 'opt_pain_moderate',
                     },
                     {
                       value: 'Severa',
                       label: 'Severa',
-                      helpTopicId: 'opt_pain_severe',
                     },
                   ]}
-                  currentValue={exam.findings['pain_cervical']}
-                  onSelect={(value) => updateExam('pain_cervical', value)}
-                  onHelpClick={openHelp}
+                  currentValue={exam['pain_cervical']}
+                  onSelect={(value) => handleUpdateExam('pain_cervical', value)}
+                  theme={theme}
                 />
 
                 <ExamItem
                   label="Toracolombar"
-                  helpTopicId="test_spinal_pain_thoracolumbar"
+                  helpTopicId="help_s6_palpacao_coluna_tl"
                   howToTestSummary="Palpar vértebras toracolombares (T3-L3)."
                   options={[
                     {
                       value: 'Ausente',
                       label: 'Ausente',
-                      helpTopicId: 'opt_pain_none',
                     },
                     {
                       value: 'Leve',
                       label: 'Leve',
-                      helpTopicId: 'opt_pain_mild',
                     },
                     {
                       value: 'Moderada',
                       label: 'Moderada',
-                      helpTopicId: 'opt_pain_moderate',
                     },
                     {
                       value: 'Severa',
                       label: 'Severa',
-                      helpTopicId: 'opt_pain_severe',
                     },
                   ]}
-                  currentValue={exam.findings['pain_thoracolumbar']}
-                  onSelect={(value) => updateExam('pain_thoracolumbar', value)}
-                  onHelpClick={openHelp}
+                  currentValue={exam['pain_thoracolumbar']}
+                  onSelect={(value) => handleUpdateExam('pain_thoracolumbar', value)}
+                  theme={theme}
                 />
 
                 <ExamItem
                   label="Lombossacra"
-                  helpTopicId="test_spinal_pain_lumbosacral"
+                  helpTopicId="help_s6_palpacao_coluna_ls"
                   howToTestSummary="Palpar região lombossacra e cauda equina."
                   options={[
                     {
                       value: 'Ausente',
                       label: 'Ausente',
-                      helpTopicId: 'opt_pain_none',
                     },
                     {
                       value: 'Leve',
                       label: 'Leve',
-                      helpTopicId: 'opt_pain_mild',
                     },
                     {
                       value: 'Moderada',
                       label: 'Moderada',
-                      helpTopicId: 'opt_pain_moderate',
                     },
                     {
                       value: 'Severa',
                       label: 'Severa',
-                      helpTopicId: 'opt_pain_severe',
                     },
                   ]}
-                  currentValue={exam.findings['pain_lumbosacral']}
-                  onSelect={(value) => updateExam('pain_lumbosacral', value)}
-                  onHelpClick={openHelp}
+                  currentValue={exam['pain_lumbosacral']}
+                  onSelect={(value) => handleUpdateExam('pain_lumbosacral', value)}
+                  theme={theme}
                 />
               </div>
             </div>
@@ -1267,14 +1176,6 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
         )}
       </div>
 
-      {/* Help Modal */}
-      <HelpModal
-        isOpen={helpModalOpen}
-        onClose={() => setHelpModalOpen(false)}
-        topic={
-          currentHelpTopicId ? getHelpTopicComplete(currentHelpTopicId) : null
-        }
-      />
     </div>
   )
 }

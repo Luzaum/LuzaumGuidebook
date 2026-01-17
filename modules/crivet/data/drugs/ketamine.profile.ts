@@ -3,39 +3,55 @@ import type { DrugProfile } from '../../types/drugProfile'
 export const ketamineProfile: DrugProfile = {
   // Seção 1: Identidade
   drug_id: 'cetamina',
-  name_pt: 'Cetamina (Cloridrato de Cetamina)',
-  name_en: 'Ketamine HCl',
-  synonyms: ['Ketamine', 'Cloridrato de cetamina', 'Dissociativo NMDA'],
-  class: ['Anestésico dissociativo', 'Antagonista não-competitivo NMDA', 'Adjunto analgésico anti-hiperalgésico'],
+  name_pt: 'Cetamina (cloridrato de cetamina)',
+  name_en: 'Ketamine (ketamine hydrochloride)',
+  synonyms: ['Ketamine HCl', 'Cetamina HCl', 'Ketaset', 'Ketalar', 'Vetaset', 'Dopalen (varia por país/registro)'],
+  class: ['Anestésico dissociativo', 'Antagonista NMDA', 'Agente analgésico adjuvante (anti-hiperalgesia/anti-wind-up)', 'Simpaticomimético dose-dependente'],
 
   // Seção 2: Perfil Farmacológico
   core_concepts: {
     taglines: [
-      'Antagonismo NMDA (não-competitivo): reduz sensibilização central e fenômenos de wind-up (dor que "se amplifica" com estímulos repetidos).',
-      'Dissociação tálamo–córtex/limbo: estado cataleptoide (aparenta "acordado", olhos abertos, reflexos podem persistir), porém sem resposta adequada ao estímulo nociceptivo.',
-      'Ações adicionais descritas para dissociativos: interação com receptores opioides, monoaminérgicos, muscarínicos e canais de cálcio voltagem-dependentes (explica parte de analgesia/bronco e delirium de emergência).',
+      'Antagonismo NMDA reduz sensibilização central (wind-up) → útil como adjuvante analgésico, inclusive em CRI.',
+      'Dissociativo: analgesia moderada + catalepsia, mas relaxamento muscular ruim → geralmente combinar com benzodiazepínico e/ou opioide.',
+      'Simpaticomimético dose-dependente → pode ↑ FC/PA e ↑ consumo de O2; reduzir dose em cardiopatas/hipertensos.',
+      'Gato: pode haver excreção urinária de fármaco inalterado → obstrução urinária/uroabdome pode prolongar sedação.',
     ],
     mechanism: {
-      receptors_targets: ['NMDA', 'Opioides', 'Monoaminérgicos', 'Muscarínicos'],
+      receptors_targets: ['NMDA (principal)', 'Modulação da sensibilização espinhal (anti-wind-up)', 'Efeito simpaticomimético dose-dependente (via catecolaminas/endógeno)'],
       primary_effects: {
-        cns: 'Antagonismo NMDA reduz wind-up e sensibilização central. Dissociação tálamo-córtex/limbo com preservação relativa do tronco encefálico.',
-        cardiovascular: 'Tendência simpaticomimética clínica (↑ FC/PA/DC) por estímulo simpático — útil em hipotensão/choque selecionados, perigoso em cardiopatias com limitação de enchimento/afterload.',
-        respiratory: 'Em doses/bolus rápidos pode haver eventos respiratórios (apneia) e disforia na recuperação se usada isoladamente/sem sedativo.',
+        cardiovascular:
+          'Simpaticomimético dose-dependente: pode ↑ FC e ↑ demanda miocárdica de O2; em alguns protocolos é escolhido quando se quer evitar vasodilatação/hipotensão de outros indutores, mas exige cautela em cardiopatas/hipertensos.',
+        respiratory:
+          'Depressão respiratória geralmente menor que indutores GABAérgicos em doses sedativas, porém pode ocorrer hipoventilação/apneia quando combinado com outros depressores ou em doses de indução; manter via aérea e ventilação prontas.',
+        cns: 'Dissociação + catalepsia; pode ↑ metabolismo cerebral e não é recomendado quando há risco de ICP elevada (TCE etc.).',
+        renal_hepatic:
+          'Cães: metabolismo hepático com eliminação renal de metabólitos (efeito clínico mais guiado por farmacodinâmica); gatos: pode haver excreção urinária de fármaco inalterado → retenção urinária pode prolongar sedação.',
+        gi: 'Sem alvo principal; efeito clínico indireto (estresse/catecolaminas).',
       },
-      clinical_metaphor: 'Dissociativo NMDA: reduz "memória da dor" (wind-up) e dissocia consciência mantendo reflexos.',
+      clinical_metaphor: '"Desliga o amplificador da dor": o NMDA é o botão do \'volume\' da sensibilização central. A cetamina baixa esse volume; se você gira demais (dose alta), ela também "pisa no acelerador" do coração.',
     },
     pharmacodynamics: {
-      onset_iv: '≈ 45–90 s (indução IV em combinação típica com benzodiazepínico)',
-      onset_im: '≤ 10 min (efeito clínico)',
-      peak: '≈ 1 min (IV) | ≈ 10 min (IM)',
-      duration: '≈ 20 min (combinações tipo cetamina–diazepam/associados). Em infusão analgésica baixa, redução de resposta a manipulação dolorosa sob anestesia pode aparecer em ~10 min.',
-      dependencies: ['Reservas de catecolaminas', 'Função hepática', 'Função renal (gatos)'],
+      onset_iv: 'rápido (minutos; indução/efeito titulável quando IV)',
+      onset_im: 'minutos (mais lento que IV; útil em contenção/sedação IM)',
+      peak: 'minutos após IV/IM (dependente de dose e combinações)',
+      duration: 'variável com dose e combinação; analgesia adjuvante pode persistir horas (ex.: guias rápidos citam 4–6 h em alguns usos IM/SC/VO)',
+      dependencies: [
+        'Dose (simpatomimético e efeitos adversos ↑ com dose)',
+        'Coadministração (opioide/benzodiazepínico reduz disforia e melhora qualidade da sedação)',
+        'Estado cardiovascular (cardiopatia/hipertensão)',
+        'Pressão intracraniana (risco/benefício em TCE)',
+        'Patologias urinárias em gatos (excreção urinária pode prolongar sedação)',
+      ],
     },
     pharmacokinetics: {
-      metabolism: 'Hepático: desmetilação → norketamina (metabólito ativo), seguida de hidroxilação e conjugação → metabólitos hidrossolúveis inativos.',
-      excretion: 'Renal (metabólitos/conjugados; em felinos, maior fração de excreção urinária sem metabolismo adicional).',
-      dog_vs_cat: 'No gato, a cetamina é biotransformada a norketamina, porém a norketamina é excretada na urina sem metabolismo adicional significativo (diferença clínica importante). Usar com cautela em disfunção hepática e/ou renal → risco de prolongamento de efeito.',
-      active_metabolites: 'Norketamina (ativo; excreção renal em gatos sem metabolismo adicional)',
+      metabolism:
+        'Predominantemente hepático em cães (metabólitos com eliminação renal); em gatos, pode haver fração excretada inalterada na urina (relevante clinicamente em obstrução/uroabdome).',
+      excretion: 'Renal (metabólitos e/ou fração inalterada conforme espécie).',
+      dog_vs_cat:
+        'Gatos: excreção urinária inalterada pode tornar a duração mais imprevisível quando não há eliminação urinária (obstrução/ruptura vesical). Cães: efeito mais previsível, porém ainda dose/combinação-dependente.',
+      active_metabolites:
+        'Potencial de metabólitos com atividade é descrito em farmacologia geral, mas no CRIVET focar no impacto clínico: duração/recuperação e variabilidade por espécie/condição urinária.',
+      accumulation: 'Risco de prolongamento/recuperação agitada aumenta com doses repetidas/associação inadequada e com retenção urinária em gatos.',
     },
     formulation_notes: {
       stability: 'Compatível com NaCl 0,9%, Ringer Lactato, Glicose 5%',
@@ -45,139 +61,148 @@ export const ketamineProfile: DrugProfile = {
 
   species_notes: {
     dogs: {
-      key_point: 'Metabolismo principalmente hepático; duração geralmente previsível.',
+      key_point: 'Excelente adjuvante em sedação e analgesia multimodal; para indução, combinar com benzodiazepínico/opioide por relaxamento muscular e melhor recuperação.',
       high_risk_notes: [
-        'Bolus muito rápido pode causar apneia/disforia',
-        'Dose alta exige associação (benzo/opioide) e planejamento ventilatório',
+        'Cautela em cardiopatas/hipertensos (efeito simpaticomimético dose-dependente).',
+        'Cautela/evitar em suspeita de ICP elevada (TCE).',
+        'Pode aumentar pressão intraocular → cautela em glaucoma/trauma ocular.',
       ],
-      metabolism_excretion: 'Metabolismo hepático → norketamina → conjugação → excreção renal',
+      metabolism_excretion: 'Metabolismo hepático predominante, eliminação renal de metabólitos (efeito clínico mais guiado por dose/combinações).',
     },
     cats: {
-      key_point: 'Maior relevância de excreção renal de droga ativa/metabólitos ativos. Risco de prolongamento em DRC/obstrução uretral.',
+      key_point: 'Útil IM/IV em sedação/indução; atenção especial a doença cardíaca e a condições urinárias (obstrução/uroabdome) por possível excreção urinária inalterada → sedação prolongada.',
       high_risk_notes: [
-        'HCM: contraindicação forte',
-        'DRC/obstrução uretral: risco de efeito prolongado importante',
-        'Norketamina excretada inalterada na urina sem metabolismo adicional',
+        'Cautela em cardiopatas/hipertensos (simpaticomimético).',
+        'Pode prolongar sedação se não houver eliminação urinária (obstrução/ruptura vesical).',
+        'Cautela/evitar em risco de ICP elevada (TCE) e em glaucoma/trauma ocular.',
       ],
-      metabolism_excretion: 'Metabolismo hepático → norketamina → excreção renal sem metabolismo adicional (particularidade felina)',
+      metabolism_excretion: 'Pode ser excretada inalterada na urina; eliminação urinária prejudicada pode prolongar sedação.',
     },
   },
 
   // Seção 3: Indicações e Contraindicações
   indications: {
     primary: [
-      'Adjunto analgésico em baixa dose (microdose/low-dose CRI) — Dor aguda moderada a intensa (multimodal), especialmente quando se deseja efeito poupador de opioide',
-      'Pacientes críticos (trauma, pancreatite, politrauma) como adjuvante analgésico — visando reduzir sensibilização central e consumo de opioide',
-      'Analgesia intraoperatória por CRI — Como parte de anestesia balanceada para reduzir resposta autonômica à dor e reduzir inalatório (MAC-sparing)',
-      'Indução anestésica (associada, não "solo") — Indução em paciente com risco de hipotensão (selecionado) quando se quer preservar drive simpático, sempre associando benzodiazepínico',
+      'Adjuvante analgésico (anti-wind-up) em dor moderada a intensa, inclusive em CRI (intra e pós-operatório).',
+      'Sedação/IMobilização (IM) para contenção e pequenos procedimentos, geralmente em combinação com opioide e/ou alfa-2.',
+      'Indução anestésica como parte de coindução (ex.: com benzodiazepínico/opioide), especialmente quando se quer reduzir dose de indutor e preservar estabilidade hemodinâmica relativa.',
     ],
     secondary: [
-      'Procedimentos curtos/diagnóstico por imagem quando protocolo dissociativo fizer sentido',
-      'Broncodilatação: útil como adjunto em asma felina/broncoespasmo',
+      'Componente de protocolos combinados (ex.: DKT/DKB/TKX e variações) em cães e gatos.',
+      'Analgesia "resgate" em pacientes com hiperalgesia/tolerância a opioides (multimodal).',
     ],
   },
 
   contraindications: {
     absolute: [
       {
-        condition: 'Gato com cardiomiopatia hipertrófica/obstrutiva suspeita',
-        why: 'Efeito simpático pode aumentar FC/consumo de O2 e piorar enchimento diastólico, precipitando descompensação.',
+        condition: 'Suspeita/risco de hipertensão intracraniana (ex.: TCE com sinais neurológicos e risco de ICP elevada)',
+        why: 'Pode aumentar metabolismo cerebral e não é recomendada em risco de ICP elevada conforme referência de emergência.',
         level: 'CRITICAL',
       },
     ],
     relative: [
       {
-        condition: 'Gato com DRC/azotemia/obstrução uretral',
-        why: 'Em felinos, metabolismo/excreção favorece eliminação urinária com menor metabolismo adicional; pode prolongar efeito quando a excreção renal está comprometida.',
+        condition: 'Cardiopatia significativa / HCM/HOCM / insuficiência cardíaca descompensada / hipertensão grave',
+        why: 'Atividade simpaticomimética dose-dependente → pode piorar taquicardia, consumo de O2 e pressão arterial; reduzir dose e monitorar de perto.',
         level: 'WARNING',
       },
       {
-        condition: 'Suspeita de pressão intracraniana elevada',
-        why: 'Dissociativos podem aumentar fluxo sanguíneo cerebral/CMRO2 e elevar ICP; risco é menor se ventilação controlada e eucapnia forem garantidas.',
+        condition: 'Glaucoma ou trauma ocular',
+        why: 'Pode aumentar pressão intraocular; pode ser clinicamente relevante em glaucoma/trauma ocular.',
+        level: 'WARNING',
+      },
+      {
+        condition: 'Obstrução uretral / uroabdome (gatos)',
+        why: 'Pode ocorrer excreção urinária inalterada; retenção urinária pode prolongar sedação até remoção da urina do corpo.',
+        level: 'WARNING',
+      },
+      {
+        condition: 'Hepatopatia/nefropatia graves',
+        why: 'Guias rápidos citam evitar em nefro/hepatopatas graves; risco de recuperação imprevisível e maior sensibilidade clínica.',
         level: 'MONITOR',
-      },
-      {
-        condition: 'Epilepsia/convulsões',
-        why: 'Há recomendação clássica de evitar; porém evidências citadas sugerem que pode não reduzir limiar convulsivo em epilépticos e pode ter efeitos anticonvulsivantes/neuroprotetores — trate como decisão caso-a-caso.',
-        level: 'WARNING',
-      },
-      {
-        condition: 'Glaucoma/lesão ocular penetrante',
-        why: 'Preocupação tradicional com pressão intraocular; escolha alternativa quando possível.',
-        level: 'WARNING',
-      },
-      {
-        condition: 'Hipertensão grave',
-        why: 'Simpaticomimético clínico pode piorar hipertensão.',
-        level: 'WARNING',
       },
     ],
   },
 
   // Seção 4: Doses
   doses: {
-    unit_standard_cri: 'mcg/kg/min',
+    unit_standard_cri: 'mg/kg/h',
     dog: {
       bolus: {
         mgkg: {
-          min: 0.25,
-          max: 0.5,
-          note: 'Loading analgésico (pré-CRI) — IV lento (2-3 min); objetivo é "carregar" compartimento central antes da CRI',
+          min: 2,
+          max: 7,
+          note: 'IV (coindução/sedação profunda) frequentemente com benzodiazepínico/opioide; IM para sedação/contenção. Dissociação, inibidor NMDA.',
         },
+        mcgkg: { min: 0, max: 0, note: 'N/A' },
+        ukg: { min: 0, max: 0, note: 'N/A' },
         route: 'IV',
-        loading_dose: {
-          min: 0.25,
-          max: 0.5,
-        },
+        loading_dose: { min: 0, max: 0 },
       },
       cri: {
-        mcgkgmin: {
-          min: 2,
-          max: 10,
-          note: 'Analgesia pós-operatória (CRI baixa) 2-5 mcg/kg/min = 0,12-0,3 mg/kg/h. Analgesia intraoperatória (CRI moderada) 10 mcg/kg/min = 0,6 mg/kg/h',
-        },
+        mcgkgmin: { min: 0, max: 0, note: 'N/A (padrão do CRIVET para cetamina: mg/kg/h).' },
         mgkgh: {
-          min: 0.12,
-          max: 0.6,
+          min: 0.6,
+          max: 1.8,
+          note: 'Infusão contínua para dissociação e analgesia adjuvante. Dissociação, inibidor NMDA.',
         },
         titration: {
-          increment: 'Aumentar gradualmente: 2→5→10 mcg/kg/min conforme resposta',
-          interval: 'Reavaliar em 10–15 min',
+          increment: '0.6→1.0→1.5→1.8 mg/kg/h (conforme analgesia e efeitos adversos)',
+          interval: 'Reavaliar a cada 15–30 min (dor, FC/PA, ventilação, qualidade de recuperação).',
         },
-        max: 50,
+        max: 1.8,
+      },
+      adjustments: {
+        obesity: 'Preferir peso magro/estimado para iniciar; titular ao efeito (analgesia/recuperação).',
+        shock: 'Evitar escalar agressivamente se choque for hipovolêmico não corrigido; priorizar estabilização e analgesia multimodal.',
+        hypoalbuminemia: 'Sem ajuste fixo obrigatório no CRIVET; iniciar baixo e titular (sensibilidade clínica pode aumentar em doentes críticos).',
+        comorbidities:
+          'Cardiopatia/hipertensão: reduzir 25–50% e evitar bolus altos; TCE/ICP: evitar; glaucoma/trauma ocular: evitar/monitorar; hepatopata/nefropata grave: evitar ou usar dose mínima.',
+      },
+      therapeutic_targets: {
+        target_map: 'N/A',
+        target_etco2: 'Manter ventilação adequada; se sedação profunda/associação com depressores, monitorar EtCO2/SpO2.',
+        analgesia_scale: 'Objetivo: queda ≥2 pontos em escala de dor usada no hospital + redução de alodinia/hiperalgesia (quando presente).',
+        sedation_target: 'Sedação suficiente para procedimento com preservação de via aérea (quando possível) e recuperação tranquila.',
       },
     },
     cat: {
       bolus: {
         mgkg: {
-          min: 0.25,
-          max: 5,
-          note: 'Loading analgésico 0,25-0,5 mg/kg IV lento. Indução anestésica 2-5 mg/kg IV sempre associada a benzo/hipnótico',
+          min: 2,
+          max: 7.5,
+          note: 'IV para sedação/coindução; IM para sedação/contenção. Dissociação, inibidor NMDA.',
         },
+        mcgkg: { min: 0, max: 0, note: 'N/A' },
+        ukg: { min: 0, max: 0, note: 'N/A' },
         route: 'IV',
-        loading_dose: {
-          min: 0.25,
-          max: 0.5,
-        },
+        loading_dose: { min: 0, max: 0 },
       },
       cri: {
-        mcgkgmin: {
-          min: 2,
-          max: 10,
-          note: 'Analgesia pós-operatória (CRI baixa) 2-5 mcg/kg/min = 0,12-0,3 mg/kg/h. Analgesia intraoperatória (CRI moderada) 10 mcg/kg/min = 0,6 mg/kg/h. Titrar com foco em analgesia e comportamento na recuperação; monitorar mais de perto em suspeita de DRC',
-        },
+        mcgkgmin: { min: 0, max: 0, note: 'N/A (padrão do CRIVET para cetamina: mg/kg/h).' },
         mgkgh: {
-          min: 0.12,
-          max: 0.6,
+          min: 0.6,
+          max: 1.8,
+          note: 'Infusão contínua para dissociação e analgesia adjuvante. Dissociação, inibidor NMDA. Usar extremo cuidado e doses menores em cardiopatas/hipertensos; em obstrução urinária/uroabdome pode prolongar sedação (preferir evitar).',
         },
         titration: {
-          increment: 'Evitar escalar agressivamente em felinos com comorbidades cardíacas/renais',
-          interval: 'Reavaliar em 10–15 min',
+          increment: '0.6→1.0→1.5→1.8 mg/kg/h (se apropriado e bem monitorado)',
+          interval: 'Reavaliar a cada 15–30 min.',
         },
-        max: 50,
+        max: 1.8,
       },
       adjustments: {
-        comorbidities: 'Em gatos, considere maior risco de prolongamento em disfunção renal (metabolismo/excreção com particularidade felina)',
+        obesity: 'Preferir peso magro/ideal para iniciar e titular ao efeito.',
+        shock: 'Evitar escalada agressiva; priorizar estabilização e multimodal.',
+        hypoalbuminemia: 'Sem ajuste fixo; iniciar baixo e titular pela resposta/EA.',
+        comorbidities: 'Cardiopatia/hipertensão: reduzir 25–50% e evitar bolus; TCE/ICP: evitar; glaucoma/trauma ocular: evitar/monitorar; obstrução uretral/uroabdome: evitar (prolonga).',
+      },
+      therapeutic_targets: {
+        target_map: 'N/A',
+        target_etco2: 'Monitorar ventilação (EtCO2/SpO2) se sedação profunda ou associação com depressores.',
+        analgesia_scale: 'Redução clara de dor e hiperalgesia; melhora funcional e menor necessidade de resgates opioides.',
+        sedation_target: 'Contenção/indução com recuperação tranquila (sempre combinar para reduzir disforia).',
       },
     },
   },
@@ -186,155 +211,184 @@ export const ketamineProfile: DrugProfile = {
   presentations: [
     {
       concentration_mg_ml: 100,
-      label: '100 mg/mL (10%) — Dopalen/Vetaset/Cetamin',
-      examples: ['Dopalen', 'Vetaset', 'Cetamin'],
-      concentration_trap_warning: 'Concentração 100 mg/mL (10%) é "alto risco" para pequenos pacientes — favorece erro de volume. Preferir diluição para CRI e, muitas vezes, também para bolus em gatos.',
+      concentration_percent: 10,
+      volume_ml: 10,
+      total_mg: 1000,
+      label: '100 mg/mL (10%) — frasco-ampola 10 mL',
+      examples: ['Ketaset', 'Ketalar', 'Vetaset', 'genéricos'],
+      concentration_trap_warning: 'ALTA concentração (100 mg/mL): risco de erro de dose/diluição em CRI e em pequenos pacientes.',
     },
     {
       concentration_mg_ml: 50,
-      label: '50 mg/mL (5%)',
-      concentration_trap_warning: 'Ainda concentrado para CRI sem diluição.',
+      volume_ml: 10,
+      total_mg: 500,
+      label: '50 mg/mL — frasco-ampola 10 mL',
+      examples: ['genéricos (varia por país)'],
+      concentration_trap_warning: 'Confirmar mg/mL no rótulo (há variações comerciais).',
+    },
+    {
+      concentration_mg_ml: 10,
+      volume_ml: 20,
+      total_mg: 200,
+      label: '10 mg/mL — frasco (uso hospitalar, varia por país)',
+      examples: ['genéricos (varia por país)'],
+      concentration_trap_warning: 'Menos comum; útil para reduzir erro em pequenos pacientes.',
     },
   ],
 
   // Seção 6: Diluição
   dilution_and_preparation: {
     hard_rules: [
-      'CRI requer diluição (bloquear cálculo se usar 50-100 mg/mL como concentração final)',
-      'Bolus IV deve ser lento para reduzir apneia/disforia',
+      'Para analgesia/CRI, usar sempre diluída e com bomba (seringa/equipo).',
+      'Evitar usar cetamina isolada para sedação: preferir combinar com opioide e/ou benzodiazepínico para melhor qualidade e menos recuperação agitada.',
+      'Em gatos com obstrução uretral/uroabdome: evitar (ou usar com extrema cautela), pois a sedação pode se prolongar.',
     ],
     recommended_targets: [
       {
         target_mg_ml: 1,
-        use_cases: ['CRI analgésica (2–10 mcg/kg/min)'],
-        how_to_make: 'Facilita taxas >0,1 mL/h em pacientes pequenos e melhora acurácia de bomba',
-        recipe: 'Diluir 1:100 a partir de 100 mg/mL (1 mL cetamina 100 mg/mL + 99 mL diluente = 1 mg/mL)',
+        use_cases: ['CRI analgésica em cães/gatos', 'Facilitar taxas em mL/h'],
+        how_to_make: 'Meta simples para CRI: 1 mg/mL.',
+        recipe: 'Adicionar 1 mL de cetamina 100 mg/mL em 99 mL de diluente = 1 mg/mL.',
       },
       {
         target_mg_ml: 2,
-        use_cases: ['CRI mista (MLK) com taxas práticas'],
-        how_to_make: 'Ajustar conforme volume de seringa',
-        recipe: 'Diluir conforme necessidade',
-      },
-      {
-        target_mg_ml: 10,
-        use_cases: ['Bolus/indução em pequenos pacientes'],
-        how_to_make: '1:10 reduz risco de erro (ex.: 0,15 mL vira 1,5 mL, mais fácil de dosar)',
-        recipe: '1 mL cetamina 100 mg/mL + 9 mL diluente = 10 mg/mL',
+        use_cases: ['CRI analgésica quando se deseja reduzir volume total'],
+        how_to_make: 'Concentração intermediária para CRI.',
+        recipe: 'Adicionar 2 mL de cetamina 100 mg/mL em 98 mL de diluente = 2 mg/mL.',
       },
     ],
-    diluents_allowed: ['NaCl 0,9%', 'Ringer Lactato', 'Glicose 5%'],
+    diluents_allowed: ['NaCl 0,9%', 'Ringer Lactato', 'Glicose 5% (D5W)'],
+    preferred_diluent: {
+      diluent: 'NaCl 0,9%',
+      why: 'Disponibilidade ampla e prática para CRI em seringa; compatibilidade clínica usual.',
+    },
+    stability: [
+      {
+        diluent: 'NaCl 0,9%',
+        max_time_hours: 24,
+        light_protection: false,
+        syringe_bag_change: 'Trocar bolsa/seringa pelo menos a cada 24 h (ou conforme protocolo institucional).',
+      },
+      {
+        diluent: 'Ringer Lactato',
+        max_time_hours: 24,
+        light_protection: false,
+        syringe_bag_change: 'Trocar bolsa/seringa pelo menos a cada 24 h.',
+      },
+      {
+        diluent: 'Glicose 5% (D5W)',
+        max_time_hours: 24,
+        light_protection: false,
+        syringe_bag_change: 'Trocar bolsa/seringa pelo menos a cada 24 h.',
+      },
+    ],
+    dedicated_line_required: false,
+    dedicated_line_why: 'Preferível para CRIs (organização/segurança), mas não estritamente obrigatório se compatibilidade e flush forem garantidos.',
   },
 
   // Seção 7: Compatibilidade
   compatibility: {
+    diluents_allowed: ['NaCl 0,9%', 'Ringer Lactato', 'Glicose 5% (D5W)'],
+    diluents_ok: ['NaCl 0,9%', 'Ringer Lactato', 'D5W'],
+    diluentsAllowed: ['NaCl 0,9%', 'Ringer Lactato', 'D5W'],
+    diluents: ['NaCl 0,9%', 'Ringer Lactato', 'D5W'],
     compatible_in_syringe_or_bag: [
-      'Midazolam (preferível para prevenir disforia)',
-      'Lidocaína (MLK)',
-      'Morfina',
-      'Fentanil',
-      'Remifentanil',
-      'Dexmedetomidina',
+      'Opioides (ex.: morfina/fentanil/metadona) — uso em associação é descrito em protocolos',
+      'Benzodiazepínicos (ex.: midazolam) — frequentemente associados (qualidade de sedação/anestesia)',
+      'Lidocaína (em esquemas tipo MLK: morfina–lidocaína–cetamina é descrito)',
     ],
-    compatible_y_site_only: [
-      'Opioides (ex.: fentanil, morfina/metadona, remifentanil)',
-      'Lidocaína (MLK)',
-      'Midazolam (para reduzir disforia e melhorar relaxamento)',
-    ],
+    compatible_y_site_only: ['Sem padronização robusta no acervo para Y-site; se necessário, usar flush e observar precipitação/turvação.'],
     incompatible: [
       {
-        agent: 'Diazepam',
-        why: 'Não misturar na mesma seringa, risco de incompatibilidade física',
+        agent: 'Misturas múltiplas sem validação (na mesma seringa/bolsa)',
+        why: 'Risco de incompatibilidade físico-química e erro de dose; preferir preparar separadamente ou seguir receita padronizada do protocolo.',
         risk: 'precipitação',
-      },
-      {
-        agent: 'Barbitúricos (ex.: tiopental)',
-        why: 'Incompatibilidade físico-química',
-        risk: 'precipitação',
-      },
-      {
-        agent: 'Bicarbonato de sódio',
-        why: 'pH alcalino pode inativar/alterar a estabilidade',
-        risk: 'inativação',
       },
     ],
+    avoid_same_syringe_or_precipitation_risk: ['Evitar misturar com fármacos sem compatibilidade confirmada por fonte (principalmente quando houver solventes não aquosos/propilenoglicol).'],
     dedicated_line_rules: [
-      'Compatibilidade pode variar por concentração/tempo/material; quando em dúvida, via exclusiva ou Y-site testado institucionalmente',
+      'Em CRI analgésica, preferir linha dedicada quando múltiplas infusões simultâneas ou quando houver risco de incompatibilidade.',
+      'Se co-infusão for inevitável, realizar flush e checar visualmente precipitação.',
     ],
   },
 
   // Seção 8: Administração e Titulação
   administration_and_titration: {
     bolus_guidance: [
-      'Administrar lentamente (2-3 min) para reduzir apneia/disforia',
-      'Evitar bolus rápido ("tiro")',
-      'Associar benzodiazepínico conforme protocolo',
+      'IV: administrar lentamente e com coindução (benzodiazepínico/opioide) para reduzir rigidez e recuperação agitada.',
+      'IM: útil para contenção/sedação; preferir associar opioide ± alfa-2 conforme estabilidade do paciente.',
     ],
     titration_rules: [
-      'Reavaliar em 10–15 min',
-      'Se dor persiste e hemodinâmica tolera → escalar CRI (ex.: 2→5; 5→10)',
-      'Se disforia/rigidez importante → reduzir e reforçar benzo/sedação ambiental',
+      'Para CRI analgésica: iniciar baixo (ex.: 0.12 mg/kg/h) e escalar conforme dor e efeitos adversos.',
+      'Reavaliar a cada 15–30 min durante escalonamento.',
+      'Se ocorrer disforia/recuperação ruim, reduzir dose e reforçar associação com opioide/benzodiazepínico.',
     ],
     monitoring_minimum: [
-      'PA (idealmente invasiva em CRI intraop/choque)',
-      'FC/ritmo (ECG se disponível)',
-      'Ventilação (EtCO2/SpO2), sobretudo em bolus/associações',
+      'FC e ritmo (ECG se disponível, especialmente em cardiopatas/hipertensos)',
+      'PA',
+      'SpO2 (e EtCO2 se sedação profunda/anestesia)',
       'Temperatura',
-      'Dor (escores) e qualidade de recuperação (disforia)',
-      'Diurese, creatinina/ureia (gatos ou DRC)',
+      'Nível de sedação/qualidade de recuperação',
+      'Dor (escala) e necessidade de resgates',
     ],
     endpoints: {
       desired_effect: [
-        'Redução de wind-up/sensibilização central',
-        'Redução de necessidade de opioide/anestésico inalatório',
-        'Analgesia adequada com mínimo de disforia',
+        'Melhora objetiva da analgesia (redução de resgates, menor alodinia/hiperalgesia, paciente mais confortável)',
+        'Sedação suficiente para procedimento com manutenção segura de via aérea/ventilação (quando aplicável)',
       ],
       toxicity_signs: [
-        'Disforia/delirium de emergência',
-        'Rigidez muscular/catalepsia persistente',
-        'Apneia/hipoventilação após bolus rápido',
-        'Prolongamento de recuperação (especialmente em gatos renais)',
+        'Recuperação agitada/disforia',
+        'Taquicardia/hipertensão importantes (simpaticomimético)',
+        'Hipoventilação/apneia (especialmente com outros depressores)',
+        'Sinais neurológicos indesejáveis em risco de ICP',
       ],
     },
     therapeutic_failure: {
-      check_first: ['Associação adequada (benzo/opioide)', 'Velocidade de administração (bolus lento)', 'Comorbidades que afetam clearance'],
+      check_first: [
+        'Dor subtratada (precisa reforço de opioide/analgesia regional)',
+        'Dose insuficiente (CRI muito baixa)',
+        'Associação inadequada (cetamina isolada → sedação ruim/disforia)',
+        'Hipóxia/hipercapnia/acidose ou hipotermia afetando resposta',
+      ],
       common_causes: [
-        'Dose insuficiente sem associação adequada',
-        'Bolus rápido causando apneia/disforia',
-        'Falha em ajustar para comorbidades (renal em gatos)',
+        'Hiperalgesia intensa exigindo multimodal (opioide + regional + AINE quando possível)',
+        'Procedimento mais doloroso do que o previsto (precisa escalonar abordagem)',
       ],
       when_to_change: [
-        'Se disforia persistir apesar de benzo adequado',
-        'Se dor persistir após escalonamento apropriado',
-        'Se houver sinais de toxicidade/prolongamento',
+        'Se EA cardiovasculares/oculares/neurológicos → reduzir/cessar e trocar por alternativa (ex.: opioide/alpha-2/alfaxalona conforme caso).',
+        'Se obstrução urinária/uroabdome em gato e sedação prolongando → priorizar desobstrução/drenagem e evitar novas doses.',
       ],
     },
   },
 
   // Seção 9: Efeitos Adversos
   adverse_effects_and_toxicity: {
-    common: [
-      'Rigidez muscular/catalepsia e reflexos persistentes — Fenótipo dissociativo; melhora com benzodiazepínico/associação adequada',
-      'Disforia/delirium de emergência — Efeito CNS e recuperação sem sedação adequada; risco maior se reverter sedativo antes da "dissociação" cessar',
-    ],
+    common: ['Recuperação possivelmente agitada/disforia (especialmente se usada isolada)', 'Taquicardia e/ou hipertensão (dose-dependente)', 'Hipoventilação quando associada a outros depressores'],
     serious: [
-      'Apneia/hipoventilação após bolus rápido — Efeito dose/velocidade-dependente + sinergia com outros depressores',
-      'Prolongamento importante em gato com disfunção renal — Particularidade de metabolismo/excreção felina e dependência renal',
+      'Piora clínica em pacientes com risco de ICP elevada (não recomendado)',
+      'Aumento clinicamente relevante de pressão intraocular (glaucoma/trauma ocular)',
+      'Sedação prolongada em gatos com eliminação urinária comprometida (obstrução/uroabdome)',
+    ],
+    subdose_signs: ['Analgesia insuficiente (continua necessitando resgates frequentes)', 'Sedação insuficiente para contenção/procedimento'],
+    overdose_signs: [
+      'Disforia grave/recuperação ruim',
+      'Hipertensão/taquicardia marcantes',
+      'Depressão respiratória/apneia (sobretudo com associações)',
     ],
     management: [
-      'Reduzir/parar CRI se disforia importante',
-      'Associar benzodiazepínico para rigidez/catalepsia',
-      'Suporte ventilatório se apneia',
-      'Monitorar recuperação prolongada (especialmente gatos renais)',
+      'Reduzir/cessar cetamina; reforçar sedação/analgesia com opioide e/ou benzodiazepínico conforme necessidade clínica.',
+      'Suporte ventilatório e via aérea se hipoventilação/apneia.',
+      'Em cardiopatas/hipertensos: reduzir dose e tratar instabilidade conforme quadro (analgesia alternativa/controle hemodinâmico).',
+      'Em gato com obstrução/uroabdome: remover urina do corpo (desobstrução/drenagem) para reduzir prolongamento.',
     ],
     special_events: [
       {
-        event: 'Disforia de emergência',
-        management: 'Manter ambiente calmo; evitar reverter sedativos precocemente; tratar com benzo/opioide conforme necessidade',
+        event: 'disforia/recuperação agitada',
+        management: 'Evitar cetamina isolada; combinar com opioide ± benzodiazepínico; reduzir dose; ambiente calmo e baixa estimulação.',
       },
       {
-        event: 'Prolongamento em gato renal',
-        management: 'Reduzir dose; evitar redoses; monitorar diurese e creatinina',
+        event: 'sedação prolongada em gato com obstrução urinária/uroabdome',
+        management: 'Priorizar correção da condição urinária (desobstrução/drenagem); evitar redoses; monitorar até recuperação.',
       },
     ],
   },
@@ -342,79 +396,63 @@ export const ketamineProfile: DrugProfile = {
   // Seção 10: Alertas por Comorbidade
   alerts_by_comorbidity: [
     {
-      key: 'ketamine_cat_ckd',
-      level: 'WARNING',
-      title: 'Gato com DRC/azotemia/obstrução uretral',
-      why: 'Felinos: cetamina/norketamina dependem fortemente de excreção urinária (com particularidade felina). Risco de efeito prolongado.',
+      key: 'ketamine_any_icp',
+      level: 'BLOCK',
+      title: 'Risco de ICP elevada (TCE etc.): evitar cetamina',
+      why: 'Referência de emergência descreve que aumenta metabolismo cerebral e não é recomendada quando há risco de ICP elevada.',
       action: [
-        'Reduzir dose',
-        'Preferir CRI baixa e monitorar recuperação',
-        'Evite em DRC avançada',
+        'Bloquear uso quando "ICP elevada/TCE" selecionado.',
+        'Sugerir alternativa de sedação/anestesia conforme cenário (ex.: opioide + benzodiazepínico; indução com agentes alternativos).',
       ],
+      dose_adjustment: {
+        suggest_alternative: 'Preferir protocolos sem cetamina em suspeita de ICP elevada.',
+      },
+    },
+    {
+      key: 'ketamine_any_glaucoma',
+      level: 'WARNING',
+      title: 'Glaucoma/trauma ocular: cetamina pode ↑ PIO',
+      why: 'Pode causar aumento leve de pressão intraocular, relevante em glaucoma/trauma ocular.',
+      action: ['Evitar quando possível.', 'Se inevitável, usar menor dose e monitorar clinicamente.'],
+      dose_adjustment: {
+        reduce_percent: 25,
+        avoid_bolus: false,
+        require_monitoring: ['PA', 'profundidade anestésica/sedação'],
+      },
+    },
+    {
+      key: 'ketamine_any_hypertension_cardiac',
+      level: 'WARNING',
+      title: 'Cardiopatia/hipertensão: reduzir dose (simpaticomimético)',
+      why: 'Atividade simpaticomimética é dose-dependente; recomendada cautela e redução em cardiopatas/hipertensos.',
+      action: ['Iniciar com 25–50% menos dose.', 'Evitar bolus altos; preferir coindução/CRI baixa.', 'Monitorar PA/ECG.'],
+      dose_adjustment: {
+        reduce_percent: 40,
+        avoid_bolus: true,
+        require_monitoring: ['PA', 'ECG (se possível)', 'SpO2/EtCO2 se sedação profunda'],
+      },
+    },
+    {
+      key: 'ketamine_cat_uo_uroabdomen',
+      level: 'CRITICAL',
+      title: 'Gato com obstrução uretral/uroabdome: risco de sedação prolongada',
+      why: 'Pode ser excretada inalterada na urina em gatos; retenção/uroabdome pode prolongar sedação até remoção da urina do corpo.',
+      action: ['Evitar cetamina se possível.', 'Se já usada e sedação prolonga, priorizar desobstrução/drenagem.', 'Evitar redoses.'],
+      dose_adjustment: {
+        avoid_bolus: true,
+        suggest_alternative: 'Preferir alternativas que não dependam de eliminação urinária imediata.',
+      },
+    },
+    {
+      key: 'ketamine_any_hepato_nephro_severe',
+      level: 'MONITOR',
+      title: 'Hepato/nefropatia grave: evitar ou usar dose mínima',
+      why: 'Guia rápido sugere evitar em nefro/hepato graves; recuperação pode ser imprevisível.',
+      action: ['Preferir alternativa quando possível.', 'Se usar, dose mínima e monitorização intensiva.'],
       dose_adjustment: {
         reduce_percent: 30,
-        avoid_bolus: false,
-        require_monitoring: ['Diurese', 'Creatinina/Ureia', 'Recuperação'],
-        suggest_alternative: 'Considerar alternativa em DRC avançada',
-      },
-    },
-    {
-      key: 'ketamine_suspected_hcm_cat',
-      level: 'CRITICAL',
-      title: 'Gato com HCM/suspeita',
-      why: '↑ FC/consumo O2 e piora do enchimento diastólico pode descompensar HCM.',
-      action: [
-        'Evitar cetamina',
-        'Preferir alternativa (alfaxalona/etomidato conforme cenário) e monitorização avançada',
-      ],
-      dose_adjustment: {
-        suggest_alternative: 'Alfaxalona ou Etomidato',
-      },
-    },
-    {
-      key: 'ketamine_increased_icp',
-      level: 'MONITOR',
-      title: 'Suspeita de ICP elevada',
-      why: 'Dissociativos podem ↑ CBF/CMRO2 e ICP. Se usar, garanta ventilação controlada e eucapnia; associe benzo/hipnótico conforme técnica.',
-      action: [
-        'Garantir ventilação controlada e eucapnia',
-        'Associar benzo/hipnótico conforme técnica',
-        'Monitorar PA e neurologia',
-      ],
-      dose_adjustment: {
-        require_monitoring: ['EtCO2', 'PA', 'Neurologia'],
-      },
-    },
-    {
-      key: 'glaucoma_or_open_globe',
-      level: 'WARNING',
-      title: 'Glaucoma/lesão ocular penetrante',
-      why: 'Possível aumento de pressão intraocular; escolha alternativa quando possível.',
-      action: ['Preferir outra estratégia anestésica/sedativa'],
-      dose_adjustment: {
-        suggest_alternative: 'Alternativa sem risco de PIO',
-      },
-    },
-    {
-      key: 'seizure_disorder',
-      level: 'WARNING',
-      title: 'Epilepsia/convulsões',
-      why: 'Pode não reduzir limiar convulsivo em epilépticos; evidências sugerem efeitos anticonvulsivantes/neuroprotetores — decisão caso-a-caso.',
-      action: [
-        'Associar midazolam',
-        'Evitar doses altas/isoladas',
-        'Tratar como decisão caso-a-caso',
-      ],
-    },
-    {
-      key: 'severe_hypertension',
-      level: 'WARNING',
-      title: 'Hipertensão grave',
-      why: 'Simpaticomimético clínico pode piorar hipertensão.',
-      action: ['Preferir microdose', 'Monitorar PA continuamente'],
-      dose_adjustment: {
-        reduce_percent: 20,
-        require_monitoring: ['PA invasiva'],
+        avoid_bolus: true,
+        require_monitoring: ['PA', 'SpO2', 'temperatura', 'qualidade de recuperação'],
       },
     },
   ],
@@ -422,131 +460,180 @@ export const ketamineProfile: DrugProfile = {
   // Seção 11: Presets
   presets: [
     {
-      id: 'postop_low',
-      label: 'Pós-operatório (CRI baixa) 🟩',
-      dose_mcgkgmin: 2,
-      clinical_target: 'Adjuvante analgésico conservador',
+      id: 'cri_analgesia_low',
+      label: 'CRI dissociação/analgesia (início) 🟩',
+      dose_mgkgh: 0.6,
+      limits: { min: 0.6, max: 1.0 },
+      clinical_target: 'Infusão contínua para dissociação e analgesia adjuvante. Dissociação, inibidor NMDA.',
+      linked_alerts: ['ketamine_any_hypertension_cardiac', 'ketamine_any_icp', 'ketamine_cat_uo_uroabdomen'],
     },
     {
-      id: 'postop_high',
-      label: 'Pós-operatório (CRI alta) 🟨',
-      dose_mcgkgmin: 5,
-      clinical_target: 'Maior intensidade analgésica mantendo faixa de low-dose',
+      id: 'cri_analgesia_typical',
+      label: 'CRI dissociação/analgesia (típica) 🟨',
+      dose_mgkgh: 1.2,
+      limits: { min: 1.0, max: 1.5 },
+      clinical_target: 'Infusão contínua para dissociação e analgesia. Dissociação, inibidor NMDA.',
+      linked_alerts: ['ketamine_any_hypertension_cardiac', 'ketamine_any_icp', 'ketamine_cat_uo_uroabdomen'],
     },
     {
-      id: 'intraop_analgesia',
-      label: 'Intraoperatório (CRI 10) 🟧',
-      dose_mcgkgmin: 10,
-      clinical_target: 'Equivalente a 0,6 mg/kg/h, descrita como low-dose analgésica adjunta e usada para MAC-sparing',
+      id: 'cri_analgesia_high',
+      label: 'CRI dissociação/analgesia (alta) 🟧',
+      dose_mgkgh: 1.8,
+      limits: { min: 1.5, max: 1.8 },
+      clinical_target: 'Infusão contínua em faixa alta. Dissociação, inibidor NMDA. Monitorar efeitos adversos.',
+      linked_alerts: ['ketamine_any_hypertension_cardiac', 'ketamine_any_icp', 'ketamine_cat_uo_uroabdomen'],
     },
     {
-      id: 'loading_bolus',
-      label: 'Bolus de ataque (loading) 💉',
-      dose_mgkg: 0.25,
-      clinical_target: 'Padroniza início de CRI (evita "demorar" para fazer efeito)',
+      id: 'bolus_dissociation',
+      label: 'Bolus dissociação (IM/IV) 🟨',
+      dose_mgkg: 5,
+      limits: { min: 2, max: 7 },
+      clinical_target: 'Dissociação, inibidor NMDA. Cães: 2-7 mg/kg; Gatos: 2-7,5 mg/kg.',
+      linked_alerts: ['ketamine_any_hypertension_cardiac', 'ketamine_any_icp', 'ketamine_any_glaucoma'],
     },
   ],
 
   // Seção 12: Templates de Cálculo
   calculation_templates: {
     cri: {
-      required_inputs: ['weight_kg', 'dose_mcg_per_kg_min', 'final_concentration_mg_per_ml'],
-      algorithm: [
-        '1) Calcular mcg/min: peso(kg) × dose(mcg/kg/min)',
-        '2) Converter para mg/h: (mcg/min × 60) ÷ 1000',
-        '3) Converter para mL/h: mg/h ÷ concentração final (mg/mL)',
-      ],
-      outputs: ['rate_ml_per_h'],
+      required_inputs: ['weight_kg', 'dose_mgkgh', 'final_concentration_mg_ml'],
+      algorithm: ['Dose total (mg/h) = dose_mgkgh × weight_kg', 'Taxa (mL/h) = dose_total_mg_h ÷ final_concentration_mg_ml'],
+      conversions: ['Se necessário: mg/kg/h → mg/h (multiplica pelo peso)', 'Se solução em mg/mL: taxa mL/h = mg/h ÷ mg/mL'],
       hard_safety_checks: [
         {
-          if: 'final_concentration_mg_per_ml >= 50',
+          if: "has_comorbidity('icp_elevated')",
           then: 'BLOCK',
-          message: 'Concentração final muito alta para CRI. Diluir para 1-2 mg/mL.',
+          message: 'Risco de ICP elevada: evitar cetamina.',
         },
         {
-          if: 'species == "cat" AND comorbidities_any IN ["DRC","azotemia","injuria_renal_aguda","obstrucao_uretral"] AND planned_cri_mcg_per_kg_min >= 5',
-          then: 'BLOCK',
-          message: 'Risco aumentado de recuperação prolongada em felino com comprometimento renal. Prefira CRI baixa e reavalie necessidade.',
+          if: "species == 'cat' && (has_comorbidity('urethral_obstruction') || has_comorbidity('uroabdomen'))",
+          then: 'WARN',
+          message: 'Gato com obstrução/uroabdome: cetamina pode prolongar sedação; prefira evitar.',
         },
       ],
       soft_safety_checks: [
         {
-          if: 'calculated_volume_ml < 0.1',
+          if: "has_comorbidity('hypertension') || has_comorbidity('cardiac_disease')",
           then: 'WARN',
-          message: 'Volume muito pequeno → alto risco de erro. Recomenda-se diluir (ex.: para 10 mg/mL) e recalcular.',
+          message: 'Cardiopata/hipertenso: reduzir 25–50% e monitorar PA/ECG.',
+        },
+        {
+          if: 'dose_mgkgh > 1.8',
+          then: 'WARN',
+          message: 'Dose acima da faixa recomendada de CRI (1.8 mg/kg/h) aumenta risco de EA e recuperação ruim.',
         },
       ],
+      outputs: ['dose_total_mg_h', 'rate_ml_h'],
+      error_cost: 'Superdose pode causar disforia grave, hipertensão/taquicardia e depressão respiratória (em associação).',
     },
     bolus: {
-      required_inputs: ['weight_kg', 'dose_mg_per_kg', 'stock_concentration_mg_per_ml'],
-      algorithm: [
-        '1) Dose total (mg): peso(kg) × dose(mg/kg)',
-        '2) Volume (mL): dose total (mg) ÷ concentração estoque (mg/mL)',
+      required_inputs: ['weight_kg', 'dose_mgkg', 'drug_concentration_mg_ml'],
+      algorithm: ['Dose total (mg) = dose_mgkg × weight_kg', 'Volume (mL) = dose_total_mg ÷ drug_concentration_mg_ml'],
+      hard_safety_checks: [
+        {
+          if: "has_comorbidity('icp_elevated')",
+          then: 'BLOCK',
+          message: 'Risco de ICP elevada: evitar cetamina.',
+        },
       ],
-      outputs: ['volume_ml'],
       soft_safety_checks: [
         {
-          if: 'calculated_bolus_volume_ml < 0.1',
+          if: "species == 'cat' && (has_comorbidity('urethral_obstruction') || has_comorbidity('uroabdomen'))",
           then: 'WARN',
-          message: 'Volume muito pequeno → alto risco de erro. Recomenda-se diluir (ex.: para 10 mg/mL) e recalcular.',
+          message: 'Gato com obstrução/uroabdome: risco de sedação prolongada.',
         },
         {
-          if: 'weight_kg <= 5 && stock_concentration_mg_per_ml >= 100',
+          if: "has_comorbidity('cardiac_disease') || has_comorbidity('hypertension')",
           then: 'WARN',
-          message: 'Paciente pequeno + frasco 100 mg/mL: considerar diluir para 10 mg/mL.',
+          message: 'Cardiopatia/hipertensão: reduzir dose e evitar bolus altos.',
         },
       ],
+      outputs: ['dose_total_mg', 'volume_ml'],
+      error_cost: 'Erro de 10× com frasco 100 mg/mL é plausível e perigoso (EA cardiovasculares/recuperação ruim).',
     },
     dilution_builder: {
-      required_inputs: ['stock_concentration_mg_per_ml', 'target_concentration_mg_per_ml', 'final_volume_ml'],
+      required_inputs: ['stock_concentration_mg_ml', 'stock_volume_ml', 'diluent_volume_ml'],
       algorithm: [
-        '1) Quantidade total de fármaco necessária (mg): alvo(mg/mL) × volume final (mL)',
-        '2) Volume do estoque (mL): mg necessários ÷ concentração do estoque (mg/mL)',
-        '3) Completar com diluente até volume final',
+        'Total (mg) = stock_concentration_mg_ml × stock_volume_ml',
+        'Volume final (mL) = stock_volume_ml + diluent_volume_ml',
+        'Concentração final (mg/mL) = total_mg ÷ volume_final_ml',
       ],
-      outputs: ['drug_volume_ml', 'diluent_volume_ml'],
+      hard_safety_checks: [
+        {
+          if: 'stock_concentration_mg_ml >= 100 && diluent_volume_ml == 0',
+          then: 'WARN',
+          message: 'Usar 100 mg/mL sem diluição aumenta risco de erro (especialmente em CRI e pequenos pacientes).',
+        },
+      ],
+      soft_safety_checks: [
+        {
+          if: 'final_concentration_mg_ml < 0.5 || final_concentration_mg_ml > 5',
+          then: 'INFO',
+          message: 'Faixa prática comum para CRI costuma ficar ~1–2 mg/mL (ajuste para facilitar taxa e reduzir erro).',
+        },
+      ],
+      outputs: ['final_concentration_mg_ml', 'final_volume_ml'],
+      error_cost: 'Concentração errada altera diretamente taxa calculada → subdose (dor) ou overdose (EA).',
     },
   },
 
   // Seção 13: Bloco Didático
   how_we_got_here_block: {
-    title: 'Como chegamos a este resultado',
+    title: 'Como chegamos a este resultado (Cetamina CRI)',
     render_steps: [
-      { step: 1, label: 'Dose por minuto', formula: 'dose_total_mcg_min = dose_mcgkgmin × peso_kg' },
-      { step: 2, label: 'Converter para hora', formula: 'dose_total_mcg_h = dose_total_mcg_min × 60' },
-      { step: 3, label: 'Converter concentração', formula: 'conc_mcg_ml = conc_mg_ml × 1000' },
-      { step: 4, label: 'Taxa final', formula: 'taxa_ml_h = dose_total_mcg_h ÷ conc_mcg_ml' },
+      {
+        step: 1,
+        label: 'Converter dose em mg por hora',
+        formula: 'mg/h = (mg/kg/h) × peso(kg)',
+      },
+      {
+        step: 2,
+        label: 'Converter mg/h em mL/h',
+        formula: 'mL/h = (mg/h) ÷ concentração(mg/mL)',
+      },
     ],
     interpretation_rules: [
-      'CRI analgésica (2-10 mcg/kg/min): foco em anti-hiperalgesia, não inconsciência',
-      'Se disforia: checar associação com benzodiazepínico e velocidade de bolus',
-      'Reavaliar em 10–15 min; escalar se necessário mantendo hemodinâmica estável',
+      'Cetamina para analgesia é adjuvante: quase sempre combine com opioide ± benzodiazepínico.',
+      'Se aparecer disforia/recuperação ruim, reduza dose e reforce associação; ambiente calmo ajuda.',
+      'Em cardiopatas/hipertensos, use a menor dose eficaz (simpaticomimético dose-dependente).',
     ],
     example: {
-      scenario: 'Cão 20 kg, CRI 5 mcg/kg/min, concentração final 1 mg/mL',
-      calculation: [
-        '1) 20 kg × 5 mcg/kg/min = 100 mcg/min',
-        '2) 100 mcg/min × 60 = 6000 mcg/h = 6 mg/h',
-        '3) 1 mg/mL = 1000 mcg/mL',
-        '4) 6000 mcg/h ÷ 1000 mcg/mL = 6 mL/h',
-      ],
-      result: 'Taxa de infusão: 6 mL/h',
+      scenario: 'Cão 20 kg, CRI 1.2 mg/kg/h, solução 1 mg/mL',
+      calculation: ['mg/h = 1.2 × 20 = 24 mg/h', 'mL/h = 24 ÷ 1 = 24 mL/h'],
+      result: 'Programar bomba em 24 mL/h; reavaliar dor/PA/FC a cada 15–30 min e ajustar.',
     },
   },
 
   // Seção 14: Integrações
   protocol_integrations: {
     enabled: true,
-    protocols: ['MLK', 'Neuroanestesia'],
-    why_combo_exists: 'MLK combina três fármacos complementares: Morfina (opioide), Lidocaína (analgesia local/anti-hiperalgésica) e Cetamina (anti-NMDA). Potencia analgesia multimodal e reduz necessidade de anestésico inalatório.',
+    protocols: ['MLK', 'sedacao_im', 'coinducao', 'analgesia_multimodal'],
+    why_combo_exists:
+      'A cetamina reduz sensibilização central (NMDA) e é frequentemente usada em associação (opioide/benzodiazepínico; e em MLK com morfina + lidocaína) para potencializar analgesia e reduzir necessidade de outros agentes.',
     rules: [
       {
-        if: 'species == "cat" AND comorbidities_any IN ["DRC","azotemia","injuria_renal_aguda","obstrucao_uretral"]',
+        if: "has_comorbidity('icp_elevated')",
+        then: {
+          action: 'REMOVE_DRUG',
+          drug_id: 'cetamina',
+          message: 'Risco de ICP elevada: evitar cetamina.',
+        },
+      },
+      {
+        if: "species == 'cat' && (has_comorbidity('urethral_obstruction') || has_comorbidity('uroabdomen'))",
+        then: {
+          action: 'PREFER_ALTERNATIVE',
+          drug_id: 'cetamina',
+          message: 'Gato com obstrução/uroabdome: risco de sedação prolongada; prefira alternativa.',
+        },
+      },
+      {
+        if: "has_comorbidity('cardiac_disease') || has_comorbidity('hypertension')",
         then: {
           action: 'REDUCE_DOSE',
-          drug_id: 'ketamine_hcl',
-          factor: 0.5,
-          message: 'Reduzir dose de cetamina em 50% em felinos com comprometimento renal',
+          drug_id: 'cetamina',
+          factor: 0.6,
+          message: 'Cardiopatia/hipertensão: reduzir dose (simpaticomimético dose-dependente) e monitorar PA/ECG.',
         },
       },
     ],
@@ -557,40 +644,16 @@ export const ketamineProfile: DrugProfile = {
     format: 'mermaid',
     flows: [
       {
-        id: 'acute_pain_ketamine_cri',
-        title: 'Dor aguda moderada–intensa: quando ligar CRI de cetamina (multimodal)',
-        mermaid: `flowchart TD
-A[Confirmar cenário de dor e objetivo] --> B{Triagem de risco rápida}
-B -->|Gato HCM| X[CONTRAINDICADO: evitar cetamina]
-B -->|Gato DRC/obstrução| Y[WARNING: preferir CRI baixa]
-B -->|ICP ↑| Z[MONITOR: garantir eucapnia]
-B -->|Sem fatores críticos| C[OK: prosseguir]
-C --> D[Iniciar loading 0,25 mg/kg IV lento]
-D --> E[Iniciar CRI 2 mcg/kg/min pós-op OU 10 mcg/kg/min intraop]
-E --> F[Reavaliar em 10–15 min]
-F -->|Dor persiste + hemodinâmica OK| G[Escalar CRI: 2→5 ou 5→10]
-F -->|Disforia/rigidez| H[Reduzir CRI + reforçar benzo]
-G --> I[Parar CRI com plano de transição]
-H --> I
-I --> J[Garantir analgesia de base: opioide/NSAID]
-`,
+        id: 'ketamine_analgesia_cri',
+        title: 'Cetamina como adjuvante analgésico (CRI) — decisão prática',
+        mermaid:
+          'flowchart TD\nA[Paciente com dor moderada-intensa / hiperalgesia] --> B{Risco de ICP elevada?}\nB -- Sim --> C[EVITAR cetamina (BLOCK) -> usar multimodal sem NMDA]\nB -- Não --> D{Cardiopatia/hipertensão significativa?}\nD -- Sim --> E[Iniciar dose 25-50% menor + PA/ECG]\nD -- Não --> F[Iniciar CRI 0.12 mg/kg/h]\nE --> G[Reavaliar dor/PA/FC em 15-30 min]\nF --> G\nG --> H{Analgesia adequada?}\nH -- Sim --> I[Manter dose + monitorar]\nH -- Não --> J[Escalonar 0.12 -> 0.3 -> 0.6 mg/kg/h]\nJ --> K{EA: disforia/HTN/taquicardia/hipoventilacao?}\nK -- Sim --> L[Reduzir/cessar + reforcar opioide/BDZ e suporte]\nK -- Não --> G',
       },
       {
-        id: 'induction_ketamine_benzo',
-        title: 'Indução com cetamina: como reduzir disforia e manter segurança ventilatória',
-        mermaid: `flowchart TD
-A[Definir se cetamina é apropriada] --> B{Gato HCM?}
-B -->|Sim| X[Evitar: usar alternativa]
-B -->|Não| C{Hipertensão grave?}
-C -->|Sim| Y[Evitar/alternativa]
-C -->|Não| D[Preparar associação e monitorização]
-D --> E[Associar benzodiazepínico/hipnótico]
-E --> F[Administrar bolus IV LENTO 2-3 min]
-F --> G[Monitorar EtCO2/SpO2]
-G --> H[Antecipar recuperação]
-H --> I[Evitar reverter sedativos precocemente]
-I --> J[Manter ambiente calmo]
-`,
+        id: 'ketamine_cat_urinary',
+        title: 'Gato com obstrução uretral/uroabdome — alerta de sedação prolongada',
+        mermaid:
+          'flowchart TD\nA[Gato com sedacao planejada] --> B{Obstrucao uretral ou uroabdome?}\nB -- Sim --> C[Preferir evitar cetamina (CRITICAL)]\nC --> D[Escolher alternativa + priorizar desobstrucao/drenagem]\nB -- Nao --> E[Se usar cetamina: sempre em combo + monitorar recuperacao]',
       },
     ],
   },
@@ -598,47 +661,58 @@ I --> J[Manter ambiente calmo]
   // Seção 16: UI Copy
   ui_copy: {
     critical_warning_banner:
-      'Cetamina é dose-dependente. Microdose = analgesia anti-hiperalgésica. Dose alta = dissociação e risco de disforia se usada isolada. Regra CRIVET: evitar cetamina isolada (associar benzo + opioide).',
+      'Nunca use cetamina isolada para sedação: combine com opioide ± benzodiazepínico e reduza dose em cardiopatas/hipertensos; evite se houver risco de ICP elevada.',
     alert_messages: {
-      short: 'Frasco 100 mg/mL em paciente pequeno: risco alto de erro. Considere diluir para 10 mg/mL.',
-      long: 'Concentração 100 mg/mL (10%) é "alto risco" para pequenos pacientes — favorece erro de volume. Preferir diluição para CRI e, muitas vezes, também para bolus em gatos.',
+      short: 'Cautela: simpaticomimético e pode causar disforia — use em combo e monitore PA/FC.',
+      long: 'Cetamina (NMDA) ajuda na analgesia anti-wind-up, mas é simpaticomimética (dose-dependente) e pode aumentar PIO/ICP em contextos específicos; em gatos com obstrução/uroabdome pode prolongar sedação. Prefira combinação com opioide ± benzodiazepínico e titule pela resposta.',
     },
-    block_message: 'Não misturar cetamina e diazepam na mesma seringa (risco de incompatibilidade física).',
+    block_message: 'Uso bloqueado: risco de ICP elevada (TCE etc.) — evitar cetamina.',
     common_errors: [
-      'Usar cetamina como sedativo isolado → disforia',
-      'Bolus rápido → apneia/disforia',
-      'Subdosar sem loading → efeito demorado',
-      'Não diluir CRI → erro de volume/velocidade',
-      'Ignorar comorbidades renais em gatos → prolongamento',
+      'Usar cetamina sozinha → recuperação agitada/disforia.',
+      'Esquecer que frasco 100 mg/mL facilita erro de 10× em pequenos pacientes/CRI.',
+      'Usar dose padrão em cardiopata/hipertenso → taquicardia/hipertensão.',
+      'Usar em gato com obstrução/uroabdome → sedação prolongada.',
     ],
   },
 
   // Seção 17: Referências
   references: [
     {
-      section: 'core_concepts',
-      source: 'Veterinary Anesthesia and Analgesia (Lumb & Jones), 6th ed.',
-      edition: '6th',
-      what_it_supported: [
-        'Mecanismo e alvos farmacológicos dos dissociativos',
-        'PK: pico IV 1 min/IM 10 min; metabolismo hepático; particularidades em gatos; cautela hepato/renal',
-        'Indução 45–90 s e duração ~20 min; risco de delirium e cuidado com reversão precoce',
-      ],
+      section: 'mechanism/contraindications/species_notes (ICP, PIO, cardiopatia/hipertensão, obstrução urinária em gatos, MLK)',
+      source: 'Textbook of Small Animal Emergency Medicine (Wiley Blackwell) — seção de sedação/analgesia e indução (Ketamine: NMDA, simpatomimético dose-dependente, ICP/PIO, excreção urinária em gatos, MLK)',
+      page: 'PDF p.1260',
+      edition: '1',
     },
     {
-      section: 'doses',
-      source: 'Textbook of Small Animal Emergency Medicine (Wiley Blackwell) – Pain management',
-      what_it_supported: [
-        'Low-dose ketamine infusion (0,6 mg/kg/h) como adjunto analgésico em cães e gatos',
-        'Observação de início de efeito sob anestesia em ~10 min; onset exato em cães/gatos não totalmente determinado',
-      ],
+      section: 'doses.cri (exemplo de CRI 0.6 mg/kg/h) e protocolos associados',
+      source: 'Textbook of Small Animal Emergency Medicine (Wiley Blackwell) — protocolos/estudos citando Ketamine CRI 0.6 mg/kg/h',
+      page: 'PDF p.1264–1265',
+      edition: '1',
     },
     {
-      section: 'doses',
-      source: 'Small Animal Neurological Emergencies',
-      what_it_supported: [
-        'CRI: 10 mcg/kg/min (intraop) e 2–5 mcg/kg/min (pós-op) precedidas por loading 0,25 mg/kg; similar em cães e gatos',
-      ],
+      section: 'presentations/protocols (ketamine 100 mg/mL; combinações DKB/TKX e receitas)',
+      source: 'Veterinary Anesthesia and Analgesia (Lumb & Jones), 6th ed. — protocolos com Ketamine (100 mg/mL) e combinações (DKB/TKX)',
+      page: 'PDF p.1061',
+      edition: '6',
+      year: 2024,
+    },
+    {
+      section: 'doses (exemplo IV em gatos para ecocardiografia) e efeito em FC',
+      source: 'Nelson & Couto (6ª ed.) — sedação para eco (acepromazina seguida de ketamine 2 mg/kg IV ou 5–10 mg/gato IV; pode ↑ FC)',
+      page: 'PDF p.50',
+      edition: '6',
+    },
+    {
+      section: 'quick_doses (dose analgésica IM/SC/VO e duração 4–6 h; evitar em nefro/hepato/cardiopatas graves; recuperação possivelmente agitada)',
+      source: 'Guia Prático de Sedação e Analgesia na Rotina de Cães e Gatos (2023) — guia rápido de analgésicos (Cetamina 0,1–1,0 IM/SC/VO; 4–6 h; notas de cautela)',
+      page: 'PDF p.52',
+      edition: '2023',
+    },
+    {
+      section: 'sedation_choices (IM/IV doses práticas cães e gatos em combos; notas de "no ketamine" em sopro cardíaco felino)',
+      source: 'Ultimate Veterinary Notes Bundle — tabelas de escolhas de sedação canina e felina (inclui doses IM/IV e recomendações de cautela)',
+      page: 'PDF p.82–83',
+      edition: 'bundle',
     },
   ],
 }

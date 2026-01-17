@@ -21,12 +21,18 @@ function HelpButtonWithModal({
 }) {
   const [open, setOpen] = useState(false)
 
-  // Obter perfil e normalizar
+  // Obter perfil e normalizar com tratamento de erro
   const profile = getDrugProfile(drugId)
-  const normalized = profile ? normalizeDrug(profile) : null
+  let normalized = null
+  try {
+    normalized = profile ? normalizeDrug(profile) : null
+  } catch (error) {
+    console.warn(`Erro ao normalizar fármaco ${drugId}:`, error)
+    normalized = null
+  }
 
   // Verificar se há conteúdo para exibir
-  const hasContent = normalized && normalized.helpDrawer.sections.length > 0
+  const hasContent = normalized && normalized.helpDrawer && normalized.helpDrawer.sections && normalized.helpDrawer.sections.length > 0
 
   // Renderizar conteúdo
   const content = hasContent ? (

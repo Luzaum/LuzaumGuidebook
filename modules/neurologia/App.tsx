@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Header } from './components/Layout/Header'
 import { Stepper } from './components/Wizard/Stepper'
@@ -8,209 +8,200 @@ import { Step2ChiefComplaint } from './components/Steps/Step2ChiefComplaint'
 import { Step3NeuroExam } from './components/Steps/Step3NeuroExam'
 import { Step4Review } from './components/Steps/Step4Review'
 import { Step5Analysis } from './components/Steps/Step5Analysis'
-import { useLocalStorage } from './hooks/useLocalStorage'
-import { useDarkMode } from './hooks/useDarkMode'
-import { AppState, PatientProfile, AnalysisResult } from './types'
+import { ThemeSync } from './components/ThemeSync'
+import { Modal } from './components/UI/Modal'
+import { Button } from './components/UI/Button'
+import { useCaseStore } from './stores/caseStore'
+import { useUiStore } from './stores/uiStore'
 import { analyzeNeuroExam } from './lib/neuroEngine'
 import { getDiagnosticPlan } from './lib/diagnosticPlanner'
 import { ETIOLOGIES } from './lib/etiologyLibrary'
-
-const INITIAL_STATE: AppState = {
-  currentStep: 1,
-  patient: {
-    species: null,
-    age: {
-      years: 0,
-      months: 0,
-    },
-    sex: null,
-    physiologicState: [],
-    weight: 0,
-    comorbidities: [],
-    medications: [],
-    temporalPattern: null,
-    course: null,
-    redFlags: [],
-  },
-  chiefComplaints: [],
-  exam: {
-    findings: {},
-    timestamp: new Date().toISOString(),
-  },
-  analysis: null,
-  theme: 'dark',
-}
+import type { AnalysisResult, PatientProfile as LegacyPatientProfile } from './types'
 
 export function NeurologiaApp() {
-  const [state, setState] = useLocalStorage<AppState>(
-    'vetneuro-app-state',
-    INITIAL_STATE,
-  )
-
-  useDarkMode() // inicializa o hook de tema
+  const [showResetModal, setShowResetModal] = useState(false)
+  const currentStep = useCaseStore((s) => s.currentStep)
+  const patient = useCaseStore((s) => s.patient)
+  const complaint = useCaseStore((s) => s.complaint)
+  const neuroExam = useCaseStore((s) => s.neuroExam)
+  const analysis = useCaseStore((s) => s.analysis)
+  const setCurrentStep = useCaseStore((s) => s.setCurrentStep)
+  const setPatient = useCaseStore((s) => s.setPatient)
+  const setComplaint = useCaseStore((s) => s.setComplaint)
+  const setNeuroExam = useCaseStore((s) => s.setNeuroExam)
+  const setAnalysis = useCaseStore((s) => s.setAnalysis)
+  const resetCase = useCaseStore((s) => s.resetCase)
 
   const handleReset = () => {
-    if (
-      confirm(
-        'Deseja iniciar um novo exame? Todos os dados atuais serão perdidos.',
-      )
-    ) {
-      setState(INITIAL_STATE)
-    }
+    setShowResetModal(true)
+  }
+
+  const confirmReset = () => {
+    resetCase()
+    setShowResetModal(false)
+  }
+
+  const goHome = () => {
+    setCurrentStep(1)
+    window.scrollTo(0, 0)
   }
 
   const nextStep = () => {
-    if (state.currentStep === 4) {
+    if (currentStep === 4) {
       runAnalysis()
     }
-    setState((prev) => ({
-      ...prev,
-      currentStep: Math.min(prev.currentStep + 1, 5),
-    }))
+    setCurrentStep(Math.min(currentStep + 1, 5))
     window.scrollTo(0, 0)
   }
 
   const prevStep = () => {
-    setState((prev) => ({
-      ...prev,
-      currentStep: Math.max(prev.currentStep - 1, 1),
-    }))
+    setCurrentStep(Math.max(currentStep - 1, 1))
     window.scrollTo(0, 0)
   }
 
-  const updatePatient = (data: Partial<PatientProfile>) => {
-    setState((prev) => ({
-      ...prev,
-      patient: {
-        ...prev.patient,
-        ...data,
-      },
-    }))
-  }
-
-  const toggleComplaint = (complaint: string) => {
-    setState((prev) => {
-      const current = prev.chiefComplaints
-      const newComplaints = current.includes(complaint)
-        ? current.filter((c) => c !== complaint)
-        : [...current, complaint]
-      return {
-        ...prev,
-        chiefComplaints: newComplaints,
-      }
-    })
-  }
-
-  const updateExam = (key: string, value: any) => {
-    setState((prev) => ({
-      ...prev,
-      exam: {
-        ...prev.exam,
-        findings: {
-          ...prev.exam.findings,
-          [key]: value,
-        },
-      },
-    }))
-  }
-
   const runAnalysis = () => {
-    const localization = analyzeNeuroExam(state.exam, state.patient)
-    const diagnostics = getDiagnosticPlan(localization, state.patient)
+    // Converter patient do caseStore para formato legado temporariamente
+    const legacyPatient: LegacyPatientProfile = {
+      species: patient.species === 'dog' ? 'Dog' : 'Cat',
+      age: {
+        years: patient.ageYears || 0,
+        months: patient.ageMonths || 0,
+      },
+      sex: patient.sex === 'male' ? 'M' : 'F',
+      physiologicState: [
+        ...(patient.reproStatus === 'neutered' ? ['Castrado'] : []),
+        ...(patient.reproStatus === 'intact' ? ['Inteiro'] : []),
+        ...(patient.pregnant ? ['Gestante'] : []),
+        ...(patient.lactating ? ['Lactante'] : []),
+        ...(patient.lifeStage === 'pediatric' ? ['Pediátrico'] : []),
+        ...(patient.lifeStage === 'geriatric' ? ['Geriátrico'] : []),
+      ] as any[],
+      weight: patient.weightKg || 0,
+      comorbidities: patient.comorbidities,
+      medications: [],
+      temporalPattern: complaint.temporalPattern as any,
+      course: complaint.evolutionPattern as any,
+      redFlags: complaint.redFlags,
+    }
+
+    const legacyExam = {
+      findings: neuroExam,
+      timestamp: new Date().toISOString(),
+    }
+
+    const localization = analyzeNeuroExam(legacyExam, legacyPatient)
+    const diagnostics = getDiagnosticPlan(localization, legacyPatient)
     const etiologies = ETIOLOGIES.slice(0, 5)
     const result: AnalysisResult = {
       localization,
       etiologies,
       diagnostics,
-      alerts: state.patient.redFlags,
+      alerts: complaint.redFlags,
     }
-    setState((prev) => ({
-      ...prev,
-      analysis: result,
-    }))
+    setAnalysis(result)
   }
 
   const isNextDisabled = () => {
-    if (state.currentStep === 1) {
-      return !state.patient.species || !state.patient.temporalPattern
+    if (currentStep === 1) {
+      return !patient.species
     }
-    if (state.currentStep === 2) {
-      return state.chiefComplaints.length === 0
+    if (currentStep === 2) {
+      return complaint.chiefComplaintIds.length === 0 || !complaint.temporalPattern
     }
     return false
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-gold/30">
-      <Header onReset={handleReset} />
+    <>
+      <ThemeSync />
+      <Modal
+        isOpen={showResetModal}
+        onClose={() => setShowResetModal(false)}
+        title="Confirmar Reinício do Exame"
+        size="sm"
+      >
+        <div className="space-y-4">
+          <p className="text-white/90">
+            Deseja iniciar um novo exame? Todos os dados atuais serão perdidos.
+          </p>
+          <div className="flex gap-3 justify-end">
+            <Button variant="secondary" onClick={() => setShowResetModal(false)}>
+              Cancelar
+            </Button>
+            <Button variant="primary" onClick={confirmReset}>
+              Confirmar
+            </Button>
+          </div>
+        </div>
+      </Modal>
+      <div className="min-h-screen bg-background text-foreground font-sans selection:bg-gold/30">
+        <Header onReset={handleReset} onGoHome={goHome} />
 
-      {state.currentStep < 5 && (
-        <Stepper currentStep={state.currentStep} totalSteps={5} />
-      )}
+        {currentStep < 5 && (
+          <Stepper currentStep={currentStep} totalSteps={5} />
+        )}
 
-      <main className="container max-w-3xl mx-auto px-4 pt-32 pb-32 relative z-10">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={state.currentStep}
-            initial={{
-              opacity: 0,
-              x: 20,
-            }}
-            animate={{
-              opacity: 1,
-              x: 0,
-            }}
-            exit={{
-              opacity: 0,
-              x: -20,
-            }}
-            transition={{
-              duration: 0.3,
-            }}
-          >
-            {state.currentStep === 1 && (
-              <Step1PatientInfo
-                data={state.patient}
-                updateData={updatePatient}
-              />
-            )}
-            {state.currentStep === 2 && (
-              <Step2ChiefComplaint
-                selectedComplaints={state.chiefComplaints}
-                toggleComplaint={toggleComplaint}
-              />
-            )}
-            {state.currentStep === 3 && (
-              <Step3NeuroExam exam={state.exam} updateExam={updateExam} />
-            )}
-            {state.currentStep === 4 && (
-              <Step4Review
-                state={state}
-                onEditStep={(step) =>
-                  setState((prev) => ({
-                    ...prev,
-                    currentStep: step,
-                  }))
-                }
-              />
-            )}
-            {state.currentStep === 5 && (
-              <Step5Analysis result={state.analysis} onRestart={handleReset} />
-            )}
-          </motion.div>
-        </AnimatePresence>
-      </main>
+        <main className="container max-w-3xl mx-auto px-4 pt-32 pb-32 relative z-10 pointer-events-auto">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentStep}
+              initial={{
+                opacity: 0,
+                x: 20,
+              }}
+              animate={{
+                opacity: 1,
+                x: 0,
+              }}
+              exit={{
+                opacity: 0,
+                x: -20,
+              }}
+              transition={{
+                duration: 0.3,
+              }}
+            >
+              {currentStep === 1 && (
+                <Step1PatientInfo
+                  patient={patient}
+                  setPatient={setPatient}
+                />
+              )}
+              {currentStep === 2 && (
+                <Step2ChiefComplaint
+                  complaint={complaint}
+                  setComplaint={setComplaint}
+                />
+              )}
+              {currentStep === 3 && (
+                <Step3NeuroExam exam={neuroExam} updateExam={setNeuroExam} />
+              )}
+              {currentStep === 4 && (
+                <Step4Review
+                  patient={patient}
+                  complaint={complaint}
+                  exam={neuroExam}
+                  onEditStep={(step) => setCurrentStep(step)}
+                />
+              )}
+              {currentStep === 5 && (
+                <Step5Analysis />
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </main>
 
-      {state.currentStep < 5 && (
-        <WizardNavigation
-          currentStep={state.currentStep}
-          totalSteps={5}
-          onBack={prevStep}
-          onNext={nextStep}
-          isNextDisabled={isNextDisabled()}
-          nextLabel={state.currentStep === 4 ? 'Analisar com IA' : 'Continuar'}
-        />
-      )}
-    </div>
+        {currentStep < 5 && (
+          <WizardNavigation
+            currentStep={currentStep}
+            totalSteps={5}
+            onBack={prevStep}
+            onNext={nextStep}
+            isNextDisabled={isNextDisabled()}
+            nextLabel={currentStep === 4 ? 'Analisar com IA' : 'Continuar'}
+          />
+        )}
+      </div>
+    </>
   )
 }
