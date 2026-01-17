@@ -2,187 +2,233 @@ import type { HelpTopic } from '../../types/helpTopics'
 
 export const section6DorNocicepcao: HelpTopic[] = [
   {
-    id: 'sec6-intro-dor-nocicepcao',
-    title: 'Dor e nocicepção: visão geral',
+    id: 's6-dor-nocicepcao-geral',
+    title: 'Dor e nocicepção (visão geral) — por que isso muda tudo',
     whatItAssesses:
-      'Avaliação de dor espinhal (dor à palpação) e de nocicepção, especialmente dor profunda, que tem grande valor prognóstico em mielopatias compressivas graves.',
+      'Avalia (1) dor à palpação/manipulação da coluna (dor espinhal/radicular) e (2) percepção dolorosa profunda (nocicepção consciente), com alto valor prognóstico em mielopatias compressivas graves. Dor espinhal direciona segmento suspeito e sugere etiologias compressivas/inflamatórias/traumáticas. Dor profunda é um dos marcadores mais relevantes para prognóstico e urgência em paraplegia/tetraplegia por lesão medular aguda.',
     neuroanatomy:
-      'Dor profunda envolve vias nociceptivas profundas (incluindo tratos espinotalâmicos e outras vias ascendentes) e requer integração central para resposta dirigida. A dor espinhal sugere inflamação/compressão meníngea, radiculopatia ou lesão vertebral/discal.',
+      'Dor superficial/profunda: nociceptores periféricos → nervos periféricos → medula → vias ascendentes (incluindo tratos espinotalâmicos e vias multissinápticas) → tronco/tálamo/córtex. Dor espinhal envolve estruturas vertebrais, discos, ligamentos, meninges e raízes nervosas (radiculopatia). Nocicepção profunda exige condução ascendente suficiente e integração central para produzir resposta comportamental dirigida. Retirada é reflexo segmentar e pode persistir sem percepção consciente.',
     howToPerform:
-      'Avalie dor de forma segura e graduada. Diferencie reflexo de retirada (medular) de resposta consciente (vocalizar, virar a cabeça, tentar morder). Para palpação de coluna, aplique pressão progressiva e observe postura, tensão e vocalização.',
+      'Faça de forma progressiva e segura. Diferencie retirada reflexa (medular) de resposta consciente dirigida (vira a cabeça, vocaliza de forma específica, tenta morder). Registre lateralidade, segmento e intensidade (leve/moderada/severa).',
     interpretation:
-      'Perda de dor profunda em pélvicos com plegia é red flag e muda urgência/prognóstico em compressões medulares. Dor espinhal focal ajuda a direcionar segmento suspeito (cervical vs toracolombar vs lombossacra).',
+      'Dor espinhal focal + déficits neurológicos = priorizar lesão compressiva local (ex.: IVDD, fratura/luxação, neoplasia). Dor profunda ausente em paciente paraplégico sugere comprometimento medular grave e pior prognóstico, elevando urgência diagnóstica/terapêutica.',
     pitfalls:
-      'Ansiedade e manipulação podem causar vocalização sem dor real. Sedação pode mascarar dor. Sempre correlacione com exame ortopédico e histórico. Quando aparece: IVDD, trauma, meningite, neoplasias espinhais, instabilidades vertebrais.',
+      'Confundir vocalização por medo com dor verdadeira; confundir retirada reflexa com dor profunda; estimular demais e causar lesão; avaliar sob sedação intensa sem considerar efeito.',
   },
   {
-    id: 'sec6-dorprofunda-oquee',
-    title: 'Dor profunda (nocicepção): o que avalia',
+    id: 's6-dor-profunda-oquee',
+    title: 'Dor profunda (nocicepção) — o que avalia e como testar corretamente',
     whatItAssesses:
-      'Percepção consciente de estímulo doloroso intenso em estruturas profundas (ex.: falange) — diferente do reflexo de retirada.',
+      'Percepção consciente de estímulo doloroso intenso aplicado em estruturas profundas (ex.: falange), distinguindo de reflexos medulares. Em compressões medulares graves, a presença/ausência de dor profunda é um dos principais indicadores prognósticos e influencia urgência e escolha terapêutica.',
     neuroanatomy:
-      'Aferência nociceptiva profunda ascende pela medula para centros superiores. Requer integridade significativa da medula (múltiplas vias) e processamento central para resposta consciente.',
+      'Aferência nociceptiva profunda → medula → vias ascendentes profundas/multissinápticas → tronco/tálamo/córtex. A resposta dirigida depende de integração central. Retirada = reflexo segmentar (não prova consciência). Dor profunda = percepção cortical (ou pelo menos subcortical integrada) com comportamento dirigido.',
     howToPerform:
-      'Aplique estímulo nociceptivo intenso e seguro (pressão firme em dígito com pinça hemostática protegida, evitando lesão). Observe resposta dirigida: virar a cabeça, vocalizar de forma específica, tentar morder. Não interpretar apenas retirada do membro.',
+      'Aplicar estímulo nociceptivo intenso e controlado em dígito (pressão firme na falange com instrumento protegido). Observar resposta dirigida: virar a cabeça, vocalizar de forma específica, tentativa de morder/retirar o corpo. Não considerar apenas retirada do membro.',
     interpretation:
-      'Presente: melhor prognóstico em compressões graves (quando comparado à ausência). Ausente: prognóstico mais reservado e urgência maior em casos compressivos agudos. "Duvidoso" indica necessidade de repetição e avaliação por examinador experiente.',
+      'Presente: sugere preservação de vias profundas e prognóstico funcional melhor que ausência. Ausente: sugere lesão medular severa (ou depressão global), com prognóstico mais reservado em muitos quadros compressivos agudos.',
     pitfalls:
-      'Retirada reflexa NÃO é dor profunda. Sedação, choque, hipotermia e estupor reduzem resposta consciente. Quando aparece: Principalmente em avaliação de paraplegia/tetraplegia por lesões medulares graves.',
+      'Interpretar retirada como dor profunda; aplicar estímulo fraco; testar em paciente sedado/hipotérmico/choque e concluir ausência.',
   },
   {
-    id: 'sec6-dorprofunda-presente',
-    title: 'Dor profunda: Presente',
-    whatItAssesses: 'Há resposta consciente dirigida ao estímulo doloroso intenso.',
-    neuroanatomy: 'Indica preservação de vias nociceptivas profundas e integração central.',
-    howToPerform: 'Confirme com estímulo adequado e observe resposta dirigida (não apenas retirada).',
+    id: 's6-dor-profunda-presente',
+    title: 'Dor profunda — Presente',
+    whatItAssesses:
+      'Confirma que o paciente percebe conscientemente o estímulo doloroso profundo. Melhora estratificação prognóstica e ajuda a priorizar investigação conforme gravidade.',
+    neuroanatomy: 'Vias nociceptivas profundas preservadas, com integração central. Condução ascendente e processamento central suficientes para comportamento dirigido.',
+    howToPerform: 'Confirmar resposta dirigida (vira a cabeça/vocaliza dirigida/tenta morder). Repetir rapidamente no outro lado se necessário.',
     interpretation:
-      'Em mielopatias compressivas graves, presença de dor profunda é um dos melhores marcadores prognósticos funcionais quando comparado à ausência.',
-    pitfalls: 'Interpretação pode variar; se dúvida, marque como duvidoso e repita. Quando aparece: Paraparesia/paraplegia com preservação parcial medular.',
+      'Em paraplegia por mielopatia compressiva aguda, presença geralmente se associa a chance maior de recuperação funcional do que ausência.',
+    pitfalls: 'Considerar qualquer vocalização como dirigida; o comportamento deve estar claramente relacionado ao estímulo.',
   },
   {
-    id: 'sec6-dorprofunda-ausente',
-    title: 'Dor profunda: Ausente',
-    whatItAssesses: 'Não há resposta consciente dirigida ao estímulo nociceptivo profundo, apesar de técnica adequada.',
-    neuroanatomy: 'Sugere comprometimento medular severo (vias profundas) ou depressão central importante.',
-    howToPerform:
-      'Confirme técnica e evite lesão. Verifique se o paciente está sedado/estuporoso. Diferencie retirada reflexa de resposta consciente.',
-    interpretation:
-      'Red flag: em compressões agudas graves, ausência de dor profunda está associada a pior prognóstico e aumenta urgência diagnóstica/terapêutica. Documente tempo de evolução e progressão.',
-    pitfalls:
-      'Sedação, hipotermia e choque podem abolir resposta. Reavaliar após estabilização. Quando aparece: IVDD grave, trauma medular severo, mielite extensa.',
-  },
-  {
-    id: 'sec6-dorprofunda-duvidoso',
-    title: 'Dor profunda: Duvidoso',
-    whatItAssesses: 'Não é possível confirmar resposta consciente dirigida com segurança no momento.',
+    id: 's6-dor-profunda-ausente',
+    title: 'Dor profunda — Ausente (RED FLAG)',
+    whatItAssesses:
+      'Não há resposta consciente dirigida ao estímulo nociceptivo profundo (com técnica correta). É red flag prognóstica e pode indicar necessidade de ação rápida em casos compressivos agudos severos.',
     neuroanatomy:
-      'A interpretação depende de distinguir reflexo de retirada (medular) de percepção consciente (central).',
+      'Vias nociceptivas profundas comprometidas ou depressão central importante. Falha de transmissão/integração das vias profundas impede percepção consciente.',
     howToPerform:
-      'Repita com técnica padronizada, em ambiente calmo, com avaliador experiente. Considere analgesia prévia e estabilização hemodinâmica/temperatura.',
+      'Confirmar técnica, avaliar se o paciente está sedado/estuporoso/hipotérmico. Diferenciar retirada reflexa de percepção. Idealmente confirmar por examinador experiente.',
     interpretation:
-      'Use como alerta: planeje reavaliação seriada e priorize outros dados (reflexos, tônus, propriocepção, imagem) para conduzir o caso.',
-    pitfalls:
-      'Vocalização inespecífica por medo pode confundir. A resposta deve ser dirigida ao estímulo. Quando aparece: Pacientes muito estressados, sedados, doloridos ou com consciência alterada.',
+      'Sugere comprometimento medular severo em muitos cenários. Associar ao tempo de evolução e progressão. Eleva urgência para imagem e decisão terapêutica quando indicado.',
+    pitfalls: 'Concluir ausência em paciente sedado/choque; usar estímulo inadequado; não correlacionar com mentação.',
   },
   {
-    id: 'sec6-palpacao-cervical-ausente',
-    title: 'Palpação de coluna: Dor cervical ausente',
-    whatItAssesses: 'Não há evidência de dor à palpação/manipulação cervical.',
-    neuroanatomy: 'Ausência de dor não exclui mielopatia cervical (pode existir compressão sem dor).',
+    id: 's6-dor-profunda-duvidoso',
+    title: 'Dor profunda — Duvidoso',
+    whatItAssesses:
+      'Não é possível afirmar com segurança presença/ausência de resposta consciente dirigida. Evita erro crítico. O correto é repetir e integrar com outros achados e evolução.',
+    neuroanatomy:
+      'A distinção depende de separar reflexo medular de resposta comportamental central. Respostas podem ser suprimidas por sedação, choque, fadiga, estresse extremo ou alteração de consciência.',
     howToPerform:
-      'Palpe musculatura paravertebral e processos espinhosos cervicais com pressão progressiva. Observe resistência, vocalização, rigidez e postura antálgica.',
-    interpretation:
-      'Se há tetraparesia/ataxia com dor cervical ausente, ainda considere mielopatia cervical compressiva/degenerativa. Integre com marcha e reflexos torácicos.',
-    pitfalls: 'Paciente ansioso pode "travar" sem dor. Faça movimentos suaves. Quando aparece: Mielopatias cervicais sem componente doloroso evidente.',
+      'Repetir teste em ambiente calmo, com contenção mínima, avaliador experiente. Reavaliar após estabilização (temperatura, perfusão, analgesia adequada).',
+    interpretation: 'Tratar como alerta: planejar reavaliações seriadas e priorizar imagem/monitoramento conforme quadro.',
+    pitfalls: 'Forçar interpretação; repetir estímulo excessivamente e lesionar tecido.',
   },
   {
-    id: 'sec6-palpacao-cervical-leve',
-    title: 'Palpação de coluna: Dor cervical leve',
-    whatItAssesses: 'Desconforto discreto à palpação cervical.',
-    neuroanatomy: 'Pode indicar doença discal cervical leve, dor muscular ou irritação meníngea inicial.',
-    howToPerform: 'Pressão progressiva e observação de sinais sutis (tensão, evitar movimento, olhar para o local).',
-    interpretation:
-      'Com déficits neurológicos em torácicos/pélvicos, aumenta suspeita de origem cervical. Com sinais sistêmicos (febre), considere meningite/meningoencefalite.',
-    pitfalls: 'Dor miofascial não é sempre neurológica. Correlacione com exame ortopédico. Quando aparece: IVDD cervical inicial, dor muscular, meningite.',
-  },
-  {
-    id: 'sec6-palpacao-cervical-moderada',
-    title: 'Palpação de coluna: Dor cervical moderada',
-    whatItAssesses: 'Dor evidente com resistência e/ou vocalização ao palpar/manipular região cervical.',
-    neuroanatomy: 'Compatível com radiculopatia cervical, IVDD cervical, meningite ou trauma.',
-    howToPerform: 'Evite manipulação excessiva. Observe postura (cabeça baixa, rigidez). Considere analgesia antes de testes adicionais.',
-    interpretation:
-      'Com déficits neurológicos e dor cervical moderada, priorize lesão cervical. Se febre/rigidez generalizada, investigue meningite/meningoencefalite.',
-    pitfalls: 'Dor pode ser referida de ombro/torácica. Correlacione com exame ortopédico. Quando aparece: IVDD cervical, meningite, trauma cervical.',
-  },
-  {
-    id: 'sec6-palpacao-cervical-severa',
-    title: 'Palpação de coluna: Dor cervical severa',
-    whatItAssesses: 'Dor intensa com vocalização forte, espasmo e resistência marcante.',
-    neuroanatomy: 'Sugere doença discal/instabilidade/trauma severo, ou meningite importante. Pode acompanhar déficits neurológicos graves.',
-    howToPerform: 'Interrompa manipulação agressiva. Priorize analgesia e segurança. Considere emergência (risco de compressão severa/instabilidade).',
-    interpretation:
-      'Red flag. Direciona investigação urgente (imagem) e manejo analgésico. Se houver tetraparesia progressiva, suspeite compressão grave.',
-    pitfalls:
-      'Reatividade por medo pode aumentar vocalização, mas severidade com rigidez e postura antálgica sustenta dor real. Quando aparece: IVDD cervical grave, fraturas/luxações, meningite severa.',
-  },
-  {
-    id: 'sec6-palpacao-tl-ausente',
-    title: 'Palpação de coluna: Dor toracolombar ausente',
-    whatItAssesses: 'Sem dor evidente à palpação toracolombar.',
-    neuroanatomy: 'Mielopatias toracolombares podem ocorrer sem dor (ex.: algumas compressões crônicas/degenerativas).',
+    id: 's6-dor-coluna-cervical-oquee',
+    title: 'Palpação de coluna cervical — o que avalia',
+    whatItAssesses:
+      'Dor à palpação e manipulação cervical (músculos paravertebrais, processos espinhosos, mobilidade), sugerindo dor espinhal/radicular nessa região. Dor cervical focal orienta lesões compressivas (ex.: IVDD cervical), inflamatórias (meningite), traumáticas (instabilidade/fratura) ou radiculopatias.',
+    neuroanatomy:
+      'Estruturas dolorosas: discos, ligamentos, articulações facetárias, músculos, meninges e raízes nervosas cervicais. Dor radicular pode causar hiperestesia e resistência ao movimento. Inflamação meníngea pode gerar rigidez e dor difusa.',
     howToPerform:
-      'Palpe processos espinhosos e musculatura paravertebral T3–L3 com pressão progressiva, observando sinais sutis.',
+      'Palpar suavemente musculatura e processos, aumentar pressão gradualmente. Observar rigidez, espasmo, postura antálgica (cabeça baixa), vocalização, tentativa de escapar. Evitar manipulações bruscas.',
     interpretation:
-      'Se há paresia/ataxia pélvica com dor ausente, ainda considere T3–L3 e use reflexos (patelar/panniculus) para sustentar localização.',
-    pitfalls: 'Palpação muito suave pode perder dor discreta. Repita com técnica consistente. Quando aparece: Mielopatias toracolombares sem componente doloroso.',
+      'Dor cervical + déficits em 4 membros sugere mielopatia cervical. Dor cervical intensa com mentação alterada/febre sugere meningite/encefalite. Dor ausente não exclui doença cervical.',
+    pitfalls: 'Confundir medo com dor; não avaliar ortopedia de ombro; manipular demais em suspeita de instabilidade.',
   },
   {
-    id: 'sec6-palpacao-tl-leve',
-    title: 'Palpação de coluna: Dor toracolombar leve',
-    whatItAssesses: 'Desconforto discreto em T3–L3.',
-    neuroanatomy: 'Pode indicar doença discal toracolombar inicial ou dor muscular.',
-    howToPerform: 'Pressão progressiva e observação de sinais sutis (tensão/evitação).',
-    interpretation: 'Com ataxia/paresia pélvica, reforça segmento toracolombar como fonte provável.',
-    pitfalls: 'Dor ortopédica de quadril/lombo pode ser confundida. Quando aparece: IVDD inicial, dor muscular, instabilidade leve.',
+    id: 's6-dor-coluna-cervical-ausente',
+    title: 'Dor cervical — Ausente',
+    whatItAssesses:
+      'Sem evidência de dor à palpação/manipulação cervical no momento. Ajuda a diferenciar mielopatias dolorosas vs não dolorosas, mas não exclui doença.',
+    neuroanatomy: 'Dor pode não estar presente mesmo com compressão medular cervical. Algumas mielopatias degenerativas/compressivas crônicas podem ter pouca dor.',
+    howToPerform: 'Palpação progressiva e observação de sinais sutis (tensão/evitação).',
+    interpretation: 'Se há tetraparesia/ataxia com dor ausente, ainda considerar lesão cervical e usar reflexos/propriocepção para localização.',
+    pitfalls: 'Pressão insuficiente ou paciente muito calmo pode mascarar dor leve.',
   },
   {
-    id: 'sec6-palpacao-tl-moderada',
-    title: 'Palpação de coluna: Dor toracolombar moderada',
-    whatItAssesses: 'Dor evidente à palpação toracolombar com resistência/vocalização.',
-    neuroanatomy: 'Compatível com IVDD toracolombar, trauma local, meningite focal, neoplasia espinhal.',
-    howToPerform: 'Evite excessos. Registre nível aproximado de maior dor. Considere analgesia e investigação direcionada.',
-    interpretation: 'Com paresia/ataxia pélvica e patelar aumentado, reforça T3–L3 compressivo/inflamatório.',
-    pitfalls: 'Dor pode ser referida. Correlacione com panniculus e propriocepção. Quando aparece: IVDD T3–L3, trauma, tumores.',
+    id: 's6-dor-coluna-cervical-leve',
+    title: 'Dor cervical — Leve',
+    whatItAssesses:
+      'Desconforto discreto em região cervical. Pode indicar doença discal inicial, dor muscular ou inflamação meníngea leve.',
+    neuroanatomy: 'Músculos paravertebrais, discos cervicais, raízes nervosas. Hiperestesia pode ser radicular ou miofascial.',
+    howToPerform: 'Pressão progressiva e observação de sinais sutis (tensão, evitar flexão/extensão).',
+    interpretation: 'Com déficits neurológicos, reforça foco cervical. Sem déficits, considerar ortopedia/mialgia.',
+    pitfalls: 'Interpretar como neurológico primário sem exame ortopédico.',
   },
   {
-    id: 'sec6-palpacao-tl-severa',
-    title: 'Palpação de coluna: Dor toracolombar severa',
-    whatItAssesses: 'Dor intensa com espasmo e vocalização marcante em região toracolombar.',
-    neuroanatomy: 'Sugere compressão/lesão severa (IVDD grave, fratura/luxação, compressão tumoral aguda).',
-    howToPerform: 'Priorize analgesia e segurança. Evite manipulação vigorosa. Se déficit neurológico progressivo, trate como emergência.',
+    id: 's6-dor-coluna-cervical-moderada',
+    title: 'Dor cervical — Moderada',
+    whatItAssesses:
+      'Dor evidente com resistência e/ou vocalização. Aumenta probabilidade de IVDD, radiculopatia ou meningite, dependendo do contexto.',
+    neuroanatomy: 'Disco/meninges/raízes cervicais; articulações facetárias. Dor gera espasmo, rigidez e resposta protetora.',
+    howToPerform: 'Evitar movimentos amplos. Documentar nível de maior dor. Considerar analgesia antes de repetir testes.',
     interpretation:
-      'Red flag, especialmente se associada a paraparesia/paraplegia. Direciona necessidade de imagem e intervenção rápida quando indicado.',
-    pitfalls:
-      'Ansiedade pode amplificar resposta, mas severidade com espasmo e postura antálgica sustenta dor real. Quando aparece: IVDD extrusiva grave, trauma, instabilidade vertebral.',
+      'Com tetraparesia/ataxia, reforça lesão cervical compressiva. Com febre/rigidez generalizada, considerar inflamatório/infeccioso.',
+    pitfalls: 'Manipular repetidamente e piorar dor ou risco em instabilidade.',
   },
   {
-    id: 'sec6-palpacao-ls-ausente',
-    title: 'Palpação de coluna: Dor lombossacra ausente',
-    whatItAssesses: 'Sem dor evidente em região lombossacra.',
-    neuroanatomy: 'Síndrome lombossacra pode existir com dor variável; ausência não exclui.',
-    howToPerform: 'Palpe L7–S1 e músculos adjacentes. Avalie dor à extensão de quadril e manipulação suave da cauda (se aplicável).',
+    id: 's6-dor-coluna-cervical-severa',
+    title: 'Dor cervical — Severa (RED FLAG)',
+    whatItAssesses:
+      'Dor intensa com espasmo e aversão marcante à palpação/movimento. Pode indicar compressão/instabilidade grave (IVDD severa, fratura/luxação) ou meningite intensa.',
+    neuroanatomy:
+      'Estruturas cervicais e possíveis raízes nervosas; em trauma, instabilidade vertebral. Dor intensa gera hiperatividade simpática e postura antálgica.',
+    howToPerform: 'Interromper estímulos agressivos. Priorizar analgesia e segurança. Proceder com imagem quando indicado.',
+    interpretation: 'Tratar como emergência clínica quando associado a déficits progressivos. Evitar manipulação excessiva.',
+    pitfalls: 'Confundir com medo; porém espasmo + postura antálgica sustentam dor real.',
+  },
+  {
+    id: 's6-dor-coluna-toracolombar-oquee',
+    title: 'Palpação de coluna toracolombar — o que avalia',
+    whatItAssesses:
+      'Dor à palpação/manipulação T3–L3, sugerindo dor espinhal/radicular toracolombar. É extremamente comum em IVDD toracolombar, e orienta nível suspeito e prioridade de imagem.',
+    neuroanatomy:
+      'Discos toracolombares, ligamentos, meninges e raízes nervosas. Dor local pode coexistir com sinais UMN em pélvicos (patelar aumentado) por lesão T3–L3.',
+    howToPerform:
+      'Palpar processos espinhosos e musculatura paravertebral com pressão progressiva. Observar espasmo, postura cifótica, vocalização, evitação.',
     interpretation:
-      'Se há sinais LMN pélvicos (patelar diminuído) e disfunção urinária, considere lombossacra mesmo sem dor marcante.',
-    pitfalls: 'Dor pode ser intermitente; correlacione com história de dor ao levantar/subir. Quando aparece: Alguns casos crônicos ou compensados.',
+      'Dor toracolombar + paresia/ataxia pélvica = forte suspeita de T3–L3 compressivo. Dor ausente não exclui mielopatia crônica/degenerativa.',
+    pitfalls: 'Confundir dor de quadril/abdome com dor espinhal; não correlacionar com panniculus.',
   },
   {
-    id: 'sec6-palpacao-ls-leve',
-    title: 'Palpação de coluna: Dor lombossacra leve',
-    whatItAssesses: 'Desconforto discreto em região lombossacra.',
-    neuroanatomy: 'Pode indicar síndrome lombossacra inicial/cauda equina ou dor muscular local.',
-    howToPerform: 'Pressão progressiva e avaliação de postura. Teste extensão de quadril com cuidado.',
-    interpretation: 'Com sinais LMN pélvicos (reflexos diminuídos) e/ou dor ao levantar, aumenta suspeita de cauda equina.',
-    pitfalls: 'Dor de quadril/joelho pode ser confundida com lombossacra. Quando aparece: Doença lombossacra inicial.',
+    id: 's6-dor-coluna-toracolombar-ausente',
+    title: 'Dor toracolombar — Ausente',
+    whatItAssesses:
+      'Sem dor evidente em T3–L3. Ajuda a separar quadros dolorosos vs não dolorosos, mas não exclui mielopatia.',
+    neuroanatomy: 'Mielopatias podem ocorrer sem dor marcada. Compressões crônicas/degenerativas podem ter dor mínima.',
+    howToPerform: 'Pressão progressiva e observação de sinais sutis.',
+    interpretation: 'Se há sinais UMN em pélvicos, ainda considerar T3–L3 mesmo sem dor.',
+    pitfalls: 'Palpação muito superficial pode perder dor leve.',
   },
   {
-    id: 'sec6-palpacao-ls-moderada',
-    title: 'Palpação de coluna: Dor lombossacra moderada',
-    whatItAssesses: 'Dor evidente em L7–S1 com resistência/vocalização.',
-    neuroanatomy: 'Compatível com compressão radicular/cauda equina, instabilidade lombossacra, estenose.',
-    howToPerform: 'Evite manipulação excessiva. Documente nível e reproduza com técnica consistente. Considere analgesia antes de testes adicionais.',
+    id: 's6-dor-coluna-toracolombar-leve',
+    title: 'Dor toracolombar — Leve',
+    whatItAssesses:
+      'Desconforto discreto em região toracolombar. Pode representar IVDD inicial ou dor muscular.',
+    neuroanatomy: 'Discos/ligamentos/músculos toracolombares. Dor pode preceder déficits neurológicos em alguns quadros.',
+    howToPerform: 'Pressão progressiva; observar cifose discreta e tensão.',
+    interpretation: 'Com déficits pélvicos, aumenta suspeita de IVDD. Sem déficits, considerar ortopedia/mialgia.',
+    pitfalls: 'Não integrar com história temporal e evolução.',
+  },
+  {
+    id: 's6-dor-coluna-toracolombar-moderada',
+    title: 'Dor toracolombar — Moderada',
+    whatItAssesses:
+      'Dor evidente em T3–L3. Sugere fortemente doença discal/trauma local/neoplasia espinhal, dependendo do contexto.',
+    neuroanatomy: 'Estruturas toracolombares e possível radiculopatia. Dor + sinais UMN em pélvicos reforçam lesão toracolombar.',
+    howToPerform: 'Evitar repetição excessiva; documentar nível aproximado. Considerar analgesia.',
+    interpretation: 'Com patelar aumentado e propriocepção alterada, fortalece T3–L3.',
+    pitfalls: 'Confundir dor abdominal com toracolombar sem exame complementar.',
+  },
+  {
+    id: 's6-dor-coluna-toracolombar-severa',
+    title: 'Dor toracolombar — Severa (RED FLAG)',
+    whatItAssesses:
+      'Dor intensa em T3–L3 com espasmo e vocalização marcante. Pode indicar compressão severa (ex.: extrusão discal) e risco de progressão neurológica rápida.',
+    neuroanatomy:
+      'Disco/meninges/raízes nervosas toracolombares. Dor intensa pode coexistir com perda de função motora se compressão grave.',
+    howToPerform:
+      'Priorizar analgesia e segurança. Evitar manipulação vigorosa. Considerar imagem urgente se déficits estão presentes/progressivos.',
+    interpretation: 'Red flag principalmente se associado a paraparesia/paraplegia ou piora rápida.',
+    pitfalls: 'Subestimar gravidade e não correlacionar com nocicepção profunda.',
+  },
+  {
+    id: 's6-dor-coluna-lombossacra-oquee',
+    title: 'Palpação lombossacra — o que avalia',
+    whatItAssesses:
+      'Dor em L7–S1 e estruturas adjacentes, sugerindo síndrome lombossacra/cauda equina, radiculopatia ou dor local. Importante em quadros de dor ao levantar/subir, déficits LMN, cauda flácida e alterações urinárias.',
+    neuroanatomy:
+      'Cauda equina (raízes nervosas), articulação lombossacra e estruturas de suporte. Compressão radicular causa dor, fraqueza e, em casos graves, disfunção autonômica (bexiga).',
+    howToPerform:
+      'Palpar L7–S1, avaliar dor à extensão de quadril com cuidado, observar aversão e tensão. Evitar movimentos bruscos.',
     interpretation:
-      'Com reflexos pélvicos diminuídos e disfunção urinária, reforça L4–S3/cauda equina como localização provável.',
-    pitfalls: 'Dor pode ser de quadril; diferencie com exame ortopédico. Quando aparece: Síndrome da cauda equina, estenose lombossacra.',
+      'Dor lombossacra + reflexos diminuídos pélvicos e alterações urinárias sugerem L4–S3/cauda equina.',
+    pitfalls: 'Confundir dor de quadril/joelho com lombossacra sem exame ortopédico.',
   },
   {
-    id: 'sec6-palpacao-ls-severa',
-    title: 'Palpação de coluna: Dor lombossacra severa',
-    whatItAssesses: 'Dor intensa em região lombossacra, frequentemente com espasmo e aversão à extensão de quadril.',
-    neuroanatomy: 'Sugere compressão severa de raízes/cauda equina ou instabilidade importante.',
-    howToPerform: 'Priorize analgesia e contenção segura. Evite provocar dor repetidamente. Planeje investigação direcionada (imagem).',
-    interpretation:
-      'Red flag, especialmente se houver déficits LMN, cauda flácida ou alterações urinárias. Direciona manejo mais agressivo e imagem.',
-    pitfalls: 'Dor severa pode impedir exame completo. Reavaliar após analgesia. Quando aparece: Estenose lombossacra grave, compressões radiculares severas.',
+    id: 's6-dor-coluna-lombossacra-ausente',
+    title: 'Dor lombossacra — Ausente',
+    whatItAssesses:
+      'Sem dor evidente em L7–S1. Dor pode ser intermitente; ausência não exclui doença lombossacra.',
+    neuroanatomy:
+      'Síndrome lombossacra pode ter dor variável. Compressão crônica pode alternar dor e limitação.',
+    howToPerform: 'Palpação progressiva e avaliação funcional (história de dor ao levantar/subir).',
+    interpretation: 'Se sinais LMN e urinários existirem, manter suspeita mesmo sem dor marcada.',
+    pitfalls: 'Excluir cauda equina apenas por ausência de dor.',
+  },
+  {
+    id: 's6-dor-coluna-lombossacra-leve',
+    title: 'Dor lombossacra — Leve',
+    whatItAssesses:
+      'Desconforto discreto em L7–S1. Pode sugerir doença lombossacra inicial.',
+    neuroanatomy: 'Estruturas lombossacras e raízes nervosas iniciais. Irritação radicular pode produzir dor antes de déficits motores claros.',
+    howToPerform: 'Palpação progressiva; observar aversão leve e rigidez ao movimento.',
+    interpretation: 'Com história compatível, reforça suspeita de síndrome lombossacra.',
+    pitfalls: 'Confundir com dor de quadril.',
+  },
+  {
+    id: 's6-dor-coluna-lombossacra-moderada',
+    title: 'Dor lombossacra — Moderada',
+    whatItAssesses:
+      'Dor evidente em L7–S1. Aumenta probabilidade de compressão radicular/cauda equina.',
+    neuroanatomy:
+      'Raízes nervosas da cauda equina e articulação lombossacra. Compressão radicular → dor, paresia, possível disfunção autonômica.',
+    howToPerform: 'Evitar repetição; documentar resposta e correlacionar com déficits LMN e urinários.',
+    interpretation: 'Com patelar diminuído e alterações urinárias, reforça localização L4–S3.',
+    pitfalls: 'Não correlacionar com exame de cauda e perineal (se existir no app).',
+  },
+  {
+    id: 's6-dor-coluna-lombossacra-severa',
+    title: 'Dor lombossacra — Severa (RED FLAG)',
+    whatItAssesses:
+      'Dor intensa lombossacra com aversão marcante. Sugere compressão severa de raízes/instabilidade importante e risco funcional (inclusive urinário).',
+    neuroanatomy:
+      'Cauda equina e estruturas lombossacras. Compressão intensa pode comprometer condução motora e autonômica.',
+    howToPerform: 'Priorizar analgesia e contenção segura. Planejar imagem direcionada quando indicado.',
+    interpretation: 'Red flag especialmente com déficits LMN, cauda flácida ou disfunção urinária.',
+    pitfalls: 'Continuar provocando dor repetidamente durante o exame.',
   },
 ]

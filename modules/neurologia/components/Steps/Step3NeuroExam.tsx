@@ -232,7 +232,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
       <div className="bg-card border border-border rounded-xl overflow-hidden shadow-lg">
         <SectionHeader
           title="1. Mentação e Comportamento"
-          helpTopicId="sec_mentation_behavior"
+          helpTopicId="s1-mentacao-comportamento-geral"
           progress={getProgress(['mentation', 'behavior', 'head_posture'])}
           isOpen={openSections[1]}
           onToggle={() => toggleSection(1)}
@@ -256,22 +256,22 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                 {
                   value: 'Alerta',
                   label: 'Alerta',
-                  helpTopicId: 'help_s1_consciencia_alerta',
+                  helpTopicId: 's1-nivel-consciencia-alerta',
                 },
                 {
                   value: 'Deprimido',
                   label: 'Deprimido',
-                  helpTopicId: 'help_s1_consciencia_deprimido',
+                  helpTopicId: 's1-nivel-consciencia-deprimido',
                 },
                 {
                   value: 'Estupor',
                   label: 'Estupor',
-                  helpTopicId: 'help_s1_consciencia_estupor',
+                  helpTopicId: 's1-nivel-consciencia-estupor',
                 },
                 {
                   value: 'Coma',
                   label: 'Coma',
-                  helpTopicId: 'help_s1_consciencia_coma',
+                  helpTopicId: 's1-nivel-consciencia-coma',
                 },
               ]}
               currentValue={exam['mentation']}
@@ -286,21 +286,22 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                 {
                   value: 'Normal',
                   label: 'Normal',
+                  helpTopicId: 's1-comportamento-normal',
                 },
                 {
                   value: 'Desorientado',
                   label: 'Desorientado',
-                  helpTopicId: 'help_s1_comportamento_desorientado',
+                  helpTopicId: 's1-comportamento-desorientado',
                 },
                 {
                   value: 'Agressivo',
                   label: 'Agressivo',
-                  helpTopicId: 'help_s1_comportamento_agressivo',
+                  helpTopicId: 's1-comportamento-agressivo',
                 },
                 {
                   value: 'Vocalização',
                   label: 'Vocalização',
-                  helpTopicId: 'help_s1_comportamento_vocalizacao',
+                  helpTopicId: 's1-comportamento-vocalizacao',
                 },
               ]}
               currentValue={exam['behavior']}
@@ -315,21 +316,22 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                 {
                   value: 'Normal',
                   label: 'Normal',
+                  helpTopicId: 's1-postura-cabeca-normal',
                 },
                 {
                   value: 'Head Tilt',
                   label: 'Head Tilt',
-                  helpTopicId: 'help_s1_postura_cabeca_headtilt',
+                  helpTopicId: 's1-postura-cabeca-headtilt',
                 },
                 {
                   value: 'Opistótono',
                   label: 'Opistótono',
-                  helpTopicId: 'help_s1_postura_cabeca_opistotono',
+                  helpTopicId: 's1-postura-cabeca-opistotono',
                 },
                 {
                   value: 'Cabeça Baixa',
                   label: 'Cabeça Baixa',
-                  helpTopicId: 'help_s1_postura_cabeca_cabeca_baixa',
+                  helpTopicId: 's1-postura-cabeca-cabeca-baixa',
                 },
               ]}
               currentValue={exam['head_posture']}
@@ -344,7 +346,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
       <div className="bg-card border border-border rounded-xl overflow-hidden shadow-lg">
         <SectionHeader
           title="2. Marcha e Postura"
-          helpTopicId="sec_gait_posture"
+          helpTopicId="s2-marcha-postura-geral"
           progress={getProgress([
             'ambulation',
             'gait_thoracic',
@@ -368,24 +370,28 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
 
             <ExamItem
               label="Capacidade de Deambular"
-              helpTopicId="help_s2_deambular_capacidade"
+              helpTopicId="s2-marcha-postura-geral"
               howToTestSummary="Observe se o paciente consegue se movimentar sem auxílio."
               options={[
                 {
                   value: 'Ambulatório',
                   label: 'Ambulatório',
+                  helpTopicId: 's2-capacidade-ambulatorio',
                 },
                 {
                   value: 'Com Apoio',
                   label: 'Com Apoio',
+                  helpTopicId: 's2-capacidade-com-apoio',
                 },
                 {
                   value: 'Não Ambulatório',
                   label: 'Não Ambulatório',
+                  helpTopicId: 's2-capacidade-nao-ambulatorio',
                 },
                 {
                   value: 'Plegia',
                   label: 'Plegia',
+                  helpTopicId: 's2-capacidade-plegia',
                 },
               ]}
               currentValue={exam['ambulation']}
@@ -396,24 +402,28 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <ExamItem
                 label="Membros Torácicos"
-                helpTopicId="help_s2_membros_toracicos"
+                helpTopicId="s2-marcha-postura-geral"
                 howToTestSummary="Avalie força e coordenação dos membros anteriores."
                 options={[
                   {
                     value: 'Normal',
                     label: 'Normal',
+                    helpTopicId: 's2-membros-toracicos-normal',
                   },
                   {
                     value: 'Ataxia',
                     label: 'Ataxia',
+                    helpTopicId: 's2-membros-toracicos-ataxia',
                   },
                   {
                     value: 'Paresia',
                     label: 'Paresia',
+                    helpTopicId: 's2-membros-toracicos-paresia',
                   },
                   {
                     value: 'Plegia',
                     label: 'Plegia',
+                    helpTopicId: 's2-membros-toracicos-plegia',
                   },
                 ]}
                 currentValue={exam['gait_thoracic']}
@@ -423,24 +433,28 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
 
               <ExamItem
                 label="Membros Pélvicos"
-                helpTopicId="help_s2_membros_pelvicos"
+                helpTopicId="s2-marcha-postura-geral"
                 howToTestSummary="Avalie força e coordenação dos membros posteriores."
                 options={[
                   {
                     value: 'Normal',
                     label: 'Normal',
+                    helpTopicId: 's2-membros-pelvicos-normal',
                   },
                   {
                     value: 'Ataxia',
                     label: 'Ataxia',
+                    helpTopicId: 's2-membros-pelvicos-ataxia',
                   },
                   {
                     value: 'Paresia',
                     label: 'Paresia',
+                    helpTopicId: 's2-membros-pelvicos-paresia',
                   },
                   {
                     value: 'Plegia',
                     label: 'Plegia',
+                    helpTopicId: 's2-membros-pelvicos-plegia',
                   },
                 ]}
                 currentValue={exam['gait_pelvic']}
@@ -451,24 +465,28 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
 
             <ExamItem
               label="Tipo de Ataxia (se houver)"
-              helpTopicId="help_s2_tipo_ataxia"
+              helpTopicId="s2-marcha-postura-geral"
               howToTestSummary="Identifique o padrão de descoordenação para localizar a lesão."
               options={[
                 {
                   value: 'Ausente',
                   label: 'Ausente',
+                  helpTopicId: 's2-tipo-ataxia-ausente',
                 },
                 {
                   value: 'Proprioceptiva',
                   label: 'Proprioceptiva',
+                  helpTopicId: 's2-tipo-ataxia-proprioceptiva',
                 },
                 {
                   value: 'Vestibular',
                   label: 'Vestibular',
+                  helpTopicId: 's2-tipo-ataxia-vestibular',
                 },
                 {
                   value: 'Cerebelar',
                   label: 'Cerebelar',
+                  helpTopicId: 's2-tipo-ataxia-cerebelar',
                 },
               ]}
               currentValue={exam['ataxia_type']}
@@ -1046,7 +1064,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
       <div className="bg-card border border-border rounded-xl overflow-hidden shadow-lg">
         <SectionHeader
           title="6. Dor e Nocicepção"
-          helpTopicId="sec_pain_nociception"
+          helpTopicId="s6-dor-nocicepcao-geral"
           progress={getProgress([
             'deep_pain',
             'pain_cervical',
@@ -1070,20 +1088,23 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
 
             <ExamItem
               label="Dor Profunda (Nocicepção)"
-              helpTopicId="help_s6_dor_profunda"
+              helpTopicId="s6-dor-profunda-oquee"
               howToTestSummary="Estímulo forte e controlado em falange, procurando resposta consciente (virar cabeça, vocalizar, tentar morder)."
               options={[
                 {
                   value: 'Presente',
                   label: 'Presente',
+                  helpTopicId: 's6-dor-profunda-presente',
                 },
                 {
                   value: 'Ausente',
                   label: 'Ausente',
+                  helpTopicId: 's6-dor-profunda-ausente',
                 },
                 {
                   value: 'Duvidoso',
                   label: 'Duvidoso',
+                  helpTopicId: 's6-dor-profunda-duvidoso',
                 },
               ]}
               currentValue={exam['deep_pain']}
@@ -1099,24 +1120,28 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
               <div className="space-y-4">
                 <ExamItem
                   label="Cervical"
-                  helpTopicId="help_s6_palpacao_coluna_cervical"
+                  helpTopicId="s6-dor-coluna-cervical-oquee"
                   howToTestSummary="Palpar vértebras cervicais, mobilizar pescoço suavemente."
                   options={[
                     {
                       value: 'Ausente',
                       label: 'Ausente',
+                      helpTopicId: 's6-dor-coluna-cervical-ausente',
                     },
                     {
                       value: 'Leve',
                       label: 'Leve',
+                      helpTopicId: 's6-dor-coluna-cervical-leve',
                     },
                     {
                       value: 'Moderada',
                       label: 'Moderada',
+                      helpTopicId: 's6-dor-coluna-cervical-moderada',
                     },
                     {
                       value: 'Severa',
                       label: 'Severa',
+                      helpTopicId: 's6-dor-coluna-cervical-severa',
                     },
                   ]}
                   currentValue={exam['pain_cervical']}
@@ -1126,24 +1151,28 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
 
                 <ExamItem
                   label="Toracolombar"
-                  helpTopicId="help_s6_palpacao_coluna_tl"
+                  helpTopicId="s6-dor-coluna-toracolombar-oquee"
                   howToTestSummary="Palpar vértebras toracolombares (T3-L3)."
                   options={[
                     {
                       value: 'Ausente',
                       label: 'Ausente',
+                      helpTopicId: 's6-dor-coluna-toracolombar-ausente',
                     },
                     {
                       value: 'Leve',
                       label: 'Leve',
+                      helpTopicId: 's6-dor-coluna-toracolombar-leve',
                     },
                     {
                       value: 'Moderada',
                       label: 'Moderada',
+                      helpTopicId: 's6-dor-coluna-toracolombar-moderada',
                     },
                     {
                       value: 'Severa',
                       label: 'Severa',
+                      helpTopicId: 's6-dor-coluna-toracolombar-severa',
                     },
                   ]}
                   currentValue={exam['pain_thoracolumbar']}
@@ -1153,24 +1182,28 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
 
                 <ExamItem
                   label="Lombossacra"
-                  helpTopicId="help_s6_palpacao_coluna_ls"
+                  helpTopicId="s6-dor-coluna-lombossacra-oquee"
                   howToTestSummary="Palpar região lombossacra e cauda equina."
                   options={[
                     {
                       value: 'Ausente',
                       label: 'Ausente',
+                      helpTopicId: 's6-dor-coluna-lombossacra-ausente',
                     },
                     {
                       value: 'Leve',
                       label: 'Leve',
+                      helpTopicId: 's6-dor-coluna-lombossacra-leve',
                     },
                     {
                       value: 'Moderada',
                       label: 'Moderada',
+                      helpTopicId: 's6-dor-coluna-lombossacra-moderada',
                     },
                     {
                       value: 'Severa',
                       label: 'Severa',
+                      helpTopicId: 's6-dor-coluna-lombossacra-severa',
                     },
                   ]}
                   currentValue={exam['pain_lumbosacral']}

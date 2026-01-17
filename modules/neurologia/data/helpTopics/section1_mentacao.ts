@@ -2,168 +2,153 @@ import type { HelpTopic } from '../../types/helpTopics'
 
 export const section1Mentacao: HelpTopic[] = [
   {
-    id: 'sec1-mentacao-alerta',
-    title: 'Mentação: Alerta',
+    id: 's1-mentacao-comportamento-geral',
+    title: 'Mentação e comportamento (visão geral) — por que isso localiza lesão',
     whatItAssesses:
-      'Estado de consciência e responsividade preservados: o paciente interage adequadamente com o ambiente, acompanha estímulos e responde de forma apropriada.',
+      'Avalia o nível de consciência (arousal) e a qualidade do comportamento/resposta ao ambiente, que refletem a integridade do prosencéfalo (córtex/tálamo) e do sistema ativador reticular ascendente (SARA) no tronco encefálico. Mentação é um dos achados mais úteis para diferenciar lesões intracranianas (prosencéfalo/tronco) de doenças medulares. Alterações de mentação mudam completamente neurolocalização e prioridades diagnósticas.',
     neuroanatomy:
-      'A mentação depende principalmente do sistema reticular ativador ascendente (SRAA) no tronco encefálico e de conexões talamocorticais. Lesões no tronco encefálico (SRAA) e/ou disfunções metabólicas difusas reduzem mentação; lesões focais em prosencéfalo alteram comportamento e consciência de forma variável.',
+      'Arousal depende do SARA (tronco encefálico) projetando para tálamo e córtex. Comportamento e cognição dependem do prosencéfalo (córtex cerebral, sistema límbico) e suas conexões subcorticais. Arousal é a "ligação" do SNC (vigília). O conteúdo de consciência (atenção, orientação, comportamento) é mais cortical. Lesões difusas metabólicas/toxinas podem deprimir globalmente; lesões estruturais focais tendem a produzir déficits lateralizados e/ou sinais focais adicionais.',
     howToPerform:
-      'Observe o paciente antes de manipular: postura, atenção ao ambiente, resposta ao seu chamado/voz, exploração olfativa/visual, interação social. Em seguida, aplique estímulos leves (palma, ruído moderado) e avalie orientação e resposta.',
+      'Observar o paciente antes de manipular: postura espontânea, interação com tutor, resposta a ruídos/estímulos leves. Depois, avaliar reatividade dirigida (chamar, bater palmas, oferecer estímulo visual) e resposta a manuseio. Registrar estado (alerta/deprimido/estupor/coma) e comportamento (normal/desorientado/agressivo/vocalização).',
     interpretation:
-      'Mentação normal reduz (não exclui) lesões centrais graves do tronco encefálico. Em síndromes vestibulares periféricas, a mentação tende a permanecer normal. Se houver sinais neurológicos relevantes com mentação intacta, procure pistas de lesão focal (ex.: déficits posturais/NC) ou periférica.',
+      'Mentação alterada sugere prosencéfalo ou tronco encefálico (ou encefalopatia metabólica). Medula espinhal isolada geralmente não altera mentação. Desorientação/alteração comportamental com déficits posturais contralaterais sugere prosencéfalo. Estupor/coma com sinais de nervos cranianos sugere tronco.',
     pitfalls:
-      'Sedação, dor intensa, hipotermia, hipoglicemia, choque e hipoxemia podem simular alteração de mentação. Avalie sempre sinais vitais e contexto clínico antes de concluir neurolocalização. Quando aparece: Condição normal ou quadros neurológicos periféricos (ex.: vestibular periférico), e muitas lesões medulares puras sem acometimento encefálico.',
+      'Confundir dor/ansiedade com alteração neurológica; avaliar após sedativos/analgésicos sem considerar efeito; interpretar depressão por hipotensão/hipoxemia/hipoglicemia como lesão primária do SNC.',
   },
   {
-    id: 'sec1-mentacao-deprimido',
-    title: 'Mentação: Deprimido',
+    id: 's1-nivel-consciencia-alerta',
+    title: 'Nível de consciência — Alerta',
     whatItAssesses:
-      'Redução do nível de alerta: o paciente responde a estímulos, mas com lentidão, menor interesse e menor interação. Ainda é despertável com facilidade.',
-    neuroanatomy:
-      'Pode ocorrer por disfunção difusa encefálica (metabólica/tóxica), envolvimento do SRAA (tronco encefálico) ou aumento de pressão intracraniana. Lesões prosencefálicas também podem reduzir responsividade, especialmente se extensas ou bilaterais.',
-    howToPerform:
-      'Compare a resposta a estímulos auditivos (voz/palmas), visuais (movimento) e táteis (toque). Note latência de resposta, atenção sustentada e capacidade de orientar-se.',
+      'Vigília preservada: paciente atento, responsivo e com reatividade apropriada ao ambiente. Ajuda a excluir depressão central importante e favorece lesões não encefálicas (ex.: medulares) quando outros achados concordam.',
+    neuroanatomy: 'SARA funcional e conexões tálamo-corticais preservadas. Arousal e atenção intactos; respostas comportamentais compatíveis com o ambiente.',
+    howToPerform: 'Observar resposta a estímulos leves (voz, palmas, aproximação), interação com tutor e foco visual.',
     interpretation:
-      'Se depressão vem acompanhada de déficits de nervos cranianos (ex.: PLR alterado, deglutição diminuída) ou sinais vestibulares centrais, aumente peso para tronco encefálico. Se depressão + déficits posturais contralaterais sem múltiplos NC, favorece prosencéfalo.',
-    pitfalls:
-      'Dor, febre, desidratação e sedativos/analgésicos podem reduzir interação. Diferencie de "quieto por medo" observando se há orientação e respostas consistentes. Quando aparece: Encefalopatias metabólicas (hepática/urêmica/hipoglicemia), encefalites/meningoencefalites, AVC, trauma craniano, hipertensão intracraniana.',
+      'Com déficit locomotor/proprioceptivo e mentação normal, aumenta suspeita de lesão medular/periférica. Não exclui prosencéfalo se sinais focais existirem (ex.: convulsões).',
+    pitfalls: 'Classificar como alerta em animal altamente estressado/hiperreativo sem avaliar orientação.',
   },
   {
-    id: 'sec1-mentacao-estupor',
-    title: 'Mentação: Estupor',
+    id: 's1-nivel-consciencia-deprimido',
+    title: 'Nível de consciência — Deprimido',
     whatItAssesses:
-      'Estado de consciência severamente reduzido: o paciente só responde a estímulos intensos (dor) e tende a retornar rapidamente ao estado não responsivo.',
+      'Redução de responsividade, mas paciente desperta facilmente e mantém alguma interação. Sugere disfunção intracraniana (prosencéfalo/tronco) ou encefalopatia metabólica, hipoperfusão, dor intensa ou efeitos farmacológicos.',
     neuroanatomy:
-      'Indica disfunção importante do SRAA no tronco encefálico e/ou disfunção cerebral difusa grave (metabólica, tóxica, edema difuso, hipertensão intracraniana).',
-    howToPerform:
-      'Aplique estímulos graduais: voz alta, palmas, toque firme e, por fim, estímulo nociceptivo apropriado (ex.: pressão digital em dígitos). Observe abertura ocular, vocalização, retirada e resposta dirigida.',
+      'Pode envolver SARA (tronco) ou prosencéfalo difusamente; também causas extracranianas (metabólicas). Menor arousal/atenção por disfunção central ou por distúrbio sistêmico (hipoglicemia, hipoxemia, uremia).',
+    howToPerform: 'Observar resposta a estímulos auditivos/táteis; verificar se responde de forma dirigida e consistente.',
     interpretation:
-      'É um red flag. Priorize estabilização e triagem metabólica (glicemia, eletrólitos, gasometria/oxigenação, PA) antes de assumir lesão focal. Se houver sinais focais concomitantes (anisocoria, déficits de NC), pense em herniação/lesão de tronco.',
-    pitfalls:
-      'Pós-ictal pode simular estupor. Diferencie por história de crise recente e melhora progressiva em horas. Sedação profunda/anestésicos também confundem. Quando aparece: Trauma cranioencefálico grave, intoxicações, encefalites graves, edema cerebral difuso, crises prolongadas (pós-ictal profundo), hipoglicemia severa.',
+      'Se associada a déficits de nervos cranianos ou alterações posturais assimétricas, favorece lesão intracraniana. Se associada a sinais sistêmicos (desidratação, choque), considerar encefalopatia secundária.',
+    pitfalls: 'Ignorar hipotensão/hipoxemia/hipoglicemia e atribuir depressão ao SNC primariamente.',
   },
   {
-    id: 'sec1-mentacao-coma',
-    title: 'Mentação: Coma',
+    id: 's1-nivel-consciencia-estupor',
+    title: 'Nível de consciência — Estupor (RED FLAG)',
     whatItAssesses:
-      'Inconsciência: ausência de resposta a estímulos, inclusive nociceptivos, exceto reflexos espinhais automáticos.',
+      'Paciente responde apenas a estímulos intensos e rapidamente retorna à não responsividade. Sinal de disfunção grave do SARA/tronco encefálico, aumento de pressão intracraniana, intoxicações ou encefalopatias graves.',
     neuroanatomy:
-      'Coma resulta de disfunção grave do SRAA (tronco encefálico) ou disfunção encefálica difusa bilateral (prosencéfalo) por causas metabólicas/tóxicas ou aumento crítico de pressão intracraniana.',
-    howToPerform:
-      'Confirme ausência de resposta dirigida à dor (não confundir com reflexos). Avalie sinais vitais, padrão respiratório, reflexos de tronco (PLR, movimentos oculares, reflexo corneano se você incluir futuramente) e postura (decerebração/descerebelação).',
-    interpretation:
-      'Red flag máximo. A prioridade é ABC, glicemia imediata, oxigenação, PA e suspeita de hipertensão intracraniana. Neurolocalização pode ser impossível sem dados adicionais.',
-    pitfalls:
-      'Anestesia/sedação profunda e hipotermia podem mimetizar coma. Sempre correlacione com histórico medicamentoso e temperatura. Quando aparece: Intoxicações severas, hipoglicemia extrema, edema cerebral, herniação, hemorragia intracraniana, encefalites fulminantes.',
+      'SARA no tronco encefálico e conexões tálamo-corticais. Arousal severamente comprometido → pouco conteúdo de consciência.',
+    howToPerform: 'Aplicar estímulo forte (voz alta, estímulo tátil firme) de forma ética e observar se há resposta direcionada.',
+    interpretation: 'Emergência neurológica. Correlacionar com pupilas/PLR, respiração e sinais de tronco.',
+    pitfalls: 'Confundir com sedação/analgesia profunda ou choque. Sempre correlacionar com sinais vitais e medicações.',
   },
   {
-    id: 'sec1-comportamento-normal',
-    title: 'Comportamento: Normal',
+    id: 's1-nivel-consciencia-coma',
+    title: 'Nível de consciência — Coma (RED FLAG)',
     whatItAssesses:
-      'Interação, orientação, reatividade e padrão de resposta compatíveis com o esperado para espécie/indivíduo no ambiente clínico.',
+      'Ausência de resposta voluntária e de interação com o ambiente; paciente não desperta a estímulos. Indica disfunção central extrema (SARA/tronco) ou encefalopatia metabólica/toxicológica grave e exige abordagem de emergência.',
     neuroanatomy:
-      'O comportamento é modulado por circuitos corticais (prosencéfalo), sistema límbico e conexões talâmicas. Alterações focais podem causar mudanças sutis mesmo com mentação preservada.',
-    howToPerform:
-      'Observe espontaneamente e durante manipulação leve: busca por tutor, resposta a comandos, exploração e postura. Compare com relato do tutor.',
-    interpretation: 'Comportamento normal reduz probabilidade de prosencéfalo difusamente acometido, mas não exclui lesões focais pequenas.',
-    pitfalls:
-      'Ansiedade e ambiente hospitalar alteram comportamento sem lesão neurológica. Utilize o "baseline" do tutor. Quando aparece: Normalidade ou doença neurológica restrita a medula/periférico.',
+      'Tronco encefálico (SARA) e/ou lesão difusa cortical severa. Falha global do arousal; pode ocorrer por herniação, edema, intoxicação, hipoglicemia/hipóxia severa.',
+    howToPerform: 'Confirmar ausência de resposta a estímulos apropriados, avaliar reflexos de tronco (pupilas/PLR) e padrão respiratório.',
+    interpretation: 'Emergência crítica. Priorizar estabilização e investigação de causas reversíveis imediatas.',
+    pitfalls: 'Assumir coma por lesão estrutural sem checar glicemia, oxigenação, perfusão e fármacos.',
   },
   {
-    id: 'sec1-comportamento-desorientado',
-    title: 'Comportamento: Desorientado',
+    id: 's1-comportamento-normal',
+    title: 'Comportamento — Normal',
     whatItAssesses:
-      'Dificuldade de reconhecer ambiente/estímulos; pode haver andar em círculos, ficar preso em cantos, resposta inadequada a comandos e alteração de interação.',
-    neuroanatomy:
-      'Sugere disfunção cortical/subcortical do prosencéfalo (integração sensorial, consciência do ambiente). Também pode ocorrer em encefalopatias metabólicas difusas.',
-    howToPerform:
-      'Observe marcha espontânea no consultório, resposta ao tutor, orientação espacial (evitar obstáculos) e resposta a estímulos auditivos/visuais.',
+      'Orientação, interação social e reatividade apropriadas. Ajuda a separar doenças medulares/periféricas de doenças encefálicas (quando combinado a mentação e déficits focais).',
+    neuroanatomy: 'Integração cortical e límbica preservada. Processamento sensorial e resposta comportamental adequados.',
+    howToPerform: 'Observar resposta ao tutor, exploração do ambiente e reatividade proporcional.',
     interpretation:
-      'Desorientação com déficits posturais contralaterais aumenta suspeita de lesão prosencefálica focal. Desorientação com sinais sistêmicos e sem lateralização forte pode ser metabólico/tóxico.',
-    pitfalls:
-      'Déficit visual pode simular desorientação. Correlacione com testes de visão/ameaça e PLR. Quando aparece: Prosencéfalo (tumor, AVC, encefalite), encefalopatias metabólicas (hepática/urêmica), pós-ictal.',
+      'Comportamento normal com déficits de marcha e reflexos sugere lesão fora do prosencéfalo. Não exclui epilepsia interictal ou lesão focal pequena.',
+    pitfalls: 'Interpretar ansiedade como comportamento anormal neurológico.',
   },
   {
-    id: 'sec1-comportamento-agressivo',
-    title: 'Comportamento: Agressivo',
+    id: 's1-comportamento-desorientado',
+    title: 'Comportamento — Desorientado',
     whatItAssesses:
-      'Resposta agressiva desproporcional ao estímulo/ambiente, podendo representar dor, medo ou disfunção encefálica (desinibição).',
+      'Alteração de percepção/integração ambiental (andar sem propósito, perder rotas, "olhar vazio", respostas inadequadas). É marcador forte de disfunção do prosencéfalo ou encefalopatia metabólica/toxicológica.',
     neuroanatomy:
-      'Agressividade por disfunção neurológica pode ocorrer por envolvimento do sistema límbico e áreas frontotemporais (prosencéfalo), alterando limiar de resposta e inibição.',
-    howToPerform:
-      'Avalie contexto (dor, manipulação), gatilhos e se há mudança recente relatada pelo tutor. Garanta contenção segura e considere analgesia/sedação quando necessário.',
+      'Prosencéfalo (córtex associativo) e sistema límbico; também pode ocorrer em encefalopatias difusas. Falha no processamento cortical/atenção e integração sensorial.',
+    howToPerform: 'Observar exploração, resposta ao chamado, reconhecimento do tutor e capacidade de se orientar no espaço.',
     interpretation:
-      'Se agressividade é nova e acompanhada de outros sinais centrais (convulsões, desorientação, déficits posturais), aumenta suspeita de prosencéfalo. Se associada a dor espinhal/otite, pode ser reatividade por dor.',
-    pitfalls:
-      'Muitos animais são agressivos por medo/ansiedade. Não neurolocalize apenas por agressividade sem outros achados. Quando aparece: Dor intensa, encefalopatias, tumores/encefalites, pós-ictal.',
+      'Com déficits posturais contralaterais e/ou alterações de ameaça, sugere prosencéfalo. Se junto de sinais sistêmicos, considerar metabólico/toxina.',
+    pitfalls: 'Confundir com senilidade sem correlacionar com início, curso e outros déficits.',
   },
   {
-    id: 'sec1-comportamento-vocalizacao',
-    title: 'Comportamento: Vocalização',
+    id: 's1-comportamento-agressivo',
+    title: 'Comportamento — Agressivo',
     whatItAssesses:
-      'Vocalização anormal (gemido/latido/miado) sem estímulo claro, podendo indicar dor, disforia ou alteração encefálica.',
+      'Agressividade desproporcional ou alteração abrupta de limiar comportamental. Pode refletir dor intensa, medo, ou alteração límbica/prosencefálica (mudança comportamental neurológica).',
     neuroanatomy:
-      'Vocalização pode ser expressão de dor (nocicepção), disforia por encefalopatia ou alterações do prosencéfalo (comportamento).',
-    howToPerform:
-      'Avalie se ocorre ao manipular coluna, cabeça, orelhas ou abdômen. Observe se cessa com analgesia/sedação e associe a postura corporal.',
+      'Sistema límbico (amígdala, hipotálamo) e conexões corticais; também influência de dor periférica. Alterações límbicas mudam reatividade emocional; dor e estresse ativam vias simpáticas.',
+    howToPerform: 'Registrar contexto: dor/manuseio, presença do tutor, estímulos. Priorizar segurança e evitar provocação.',
     interpretation:
-      'Vocalização com dor espinhal localizável reforça coluna/medula. Vocalização + desorientação/alteração de mentação pode sugerir encefalopatia.',
-    pitfalls:
-      'Ansiedade e ambiente hospitalar podem aumentar vocalização. Sempre correlacione com dor e sinais vitais. Quando aparece: Dor discal/trauma, meningite, otite interna, encefalopatias.',
+      'Agressividade isolada raramente localiza; deve ser interpretada com mentação, déficits focais e história. Dor cervical/toracolombar severa pode justificar agressão ao toque.',
+    pitfalls: 'Assumir lesão encefálica sem avaliar dor/ansiedade e sinais vitais.',
   },
   {
-    id: 'sec1-cabeca-normal',
-    title: 'Postura da cabeça: Normal',
-    whatItAssesses: 'Cabeça alinhada ao tronco, sem inclinação, hiperextensão ou flexão persistente.',
+    id: 's1-comportamento-vocalizacao',
+    title: 'Comportamento — Vocalização',
+    whatItAssesses:
+      'Vocalização espontânea ou desencadeada, possivelmente por dor, disforia, ansiedade ou encefalopatia. Ajuda a reconhecer dor espinhal/radicular e estados disautonômicos/encefalopáticos.',
     neuroanatomy:
-      'A postura da cabeça depende de controle vestibular, cerebelar e vias motoras cervicais. Normalidade sugere ausência de síndrome vestibular evidente naquele momento.',
-    howToPerform: 'Observe em repouso e durante marcha. Compare com posição habitual relatada pelo tutor.',
+      'Dor: nociceptores periféricos + vias ascendentes; disforia: circuitos centrais (córtex/límbico). Dor ativa circuitos nociceptivos e simpáticos; encefalopatia pode gerar disinibição e vocalização.',
+    howToPerform: 'Diferenciar vocalização ao toque (dor) de vocalização espontânea contínua (disforia/encefalopatia). Correlacionar com palpação de coluna.',
     interpretation:
-      'Não exclui vestibular episódico ou discreto. Se há nistagmo/ataxia vestibular sem head tilt, ainda pode haver vestibular.',
-    pitfalls:
-      'Dor cervical pode levar a postura antálgica discreta. Avalie palpação cervical. Quando aparece: Normalidade ou síndromes não vestibulares.',
+      'Vocalização à palpação sugere dor espinhal. Vocalização sem relação com estímulo pode acompanhar encefalite/metabólico/toxina.',
+    pitfalls: 'Assumir dor sempre; alguns animais vocalizam por medo. Usar história e exame físico.',
   },
   {
-    id: 'sec1-cabeca-headtilt',
-    title: 'Postura da cabeça: Head tilt (inclinação)',
+    id: 's1-postura-cabeca-normal',
+    title: 'Postura da cabeça — Normal',
     whatItAssesses:
-      'Inclinação lateral da cabeça, tipicamente associada à síndrome vestibular (central ou periférica).',
-    neuroanatomy:
-      'O sistema vestibular (orelha interna, nervo VIII, núcleos vestibulares no tronco encefálico e conexões cerebelares) mantém equilíbrio e posição da cabeça. Head tilt ocorre por assimetria vestibular.',
-    howToPerform:
-      'Observe cabeça em repouso e na marcha. Note direção do tilt e se há queda para um lado, nistagmo ou estrabismo concomitantes.',
-    interpretation:
-      'Head tilt + mentação normal favorece vestibular periférico. Head tilt + mentação alterada e/ou déficits posturais importantes favorece vestibular central (tronco/cerebelo).',
-    pitfalls:
-      'Dor cervical pode simular inclinação. Diferencie por presença de nistagmo/ataxia vestibular e pela resposta à palpação cervical. Quando aparece: Otite média/interna, vestibular idiopático, lesões de tronco encefálico, cerebelo.',
+      'Alinhamento normal cabeça/pescoço, sem desvios persistentes. Serve como referência para identificar síndrome vestibular, dor cervical ou postura de hipertensão intracraniana.',
+    neuroanatomy: 'Vestibular periférico/central, músculos cervicais e integração postural. Controle postural normal do eixo cabeça-pescoço.',
+    howToPerform: 'Observar em repouso e durante marcha/viradas; procurar assimetria persistente.',
+    interpretation: 'Não exclui vestibular se sinais forem episódicos; integrar com nistagmo e ataxia vestibular.',
+    pitfalls: 'Avaliar apenas parado e não observar durante marcha.',
   },
   {
-    id: 'sec1-cabeca-opistotono',
-    title: 'Postura da cabeça: Opistótono',
+    id: 's1-postura-cabeca-headtilt',
+    title: 'Postura da cabeça — Head tilt (inclinação)',
     whatItAssesses:
-      'Hiperextensão rígida de cabeça/pescoço e, por vezes, extensão do tronco. É um sinal neurológico grave.',
+      'Inclinação persistente da cabeça, típica de disfunção vestibular. Sinal-chave de síndrome vestibular. Associado a nistagmo/estrabismo e ataxia vestibular, diferencia periférico vs central quando combinado com mentação e déficits posturais.',
     neuroanatomy:
-      'Pode refletir lesões do tronco encefálico/cerebelo (desinibição/extensão postural) ou estados de hipertensão intracraniana. Posturas anormais (decerebração/descerebelação) são marcadores de acometimento central importante.',
-    howToPerform:
-      'Observe postura em repouso. Diferencie de extensão por dor. Verifique mentação, padrão respiratório e outros sinais de tronco.',
+      'Sistema vestibular periférico (orelha interna/VIII) ou central (núcleos vestibulares no tronco e conexões cerebelares). Assimetria vestibular → desequilíbrio no reflexo vestíbulo-ocular/postural → inclinação para compensar.',
+    howToPerform: 'Observar em repouso e marcha; registrar lado da inclinação e sinais associados (nistagmo, queda, rotação).',
     interpretation:
-      'É red flag. Aumenta peso para lesão central grave e necessidade de estabilização e imagem urgente quando possível.',
-    pitfalls:
-      'Rigidez por dor/espasmo pode confundir; porém opistótono costuma vir com outros sinais centrais e alteração de mentação. Quando aparece: Trauma craniano grave, encefalites severas, herniação, lesões cerebelares/tronco.',
+      'Mentação normal e ausência de déficits posturais severos favorecem vestibular periférico. Mentação alterada e múltiplos déficits de NC favorecem vestibular central.',
+    pitfalls: 'Confundir com torcicolo doloroso. Sempre checar dor cervical e nistagmo.',
   },
   {
-    id: 'sec1-cabeca-cabecabaixa',
-    title: 'Postura da cabeça: Cabeça baixa',
+    id: 's1-postura-cabeca-opistotono',
+    title: 'Postura da cabeça — Opistótono (RED FLAG)',
     whatItAssesses:
-      'Flexão sustentada do pescoço ou manter a cabeça abaixo do nível habitual, podendo indicar dor cervical, fraqueza cervical ou letargia.',
+      'Extensão rígida de cabeça/pescoço e às vezes do tronco, sugerindo disfunção central grave. Pode ocorrer em lesões de tronco encefálico, cerebelo, intoxicações ou aumento de pressão intracraniana. É sinal de gravidade e exige correlação com mentação e nervos cranianos.',
     neuroanatomy:
-      'Dor cervical pode advir de meningite/meningoencefalite, doença discal cervical ou lesões musculoesqueléticas. Fraqueza cervical pode ocorrer em doenças neuromusculares.',
-    howToPerform:
-      'Observe em repouso e ao caminhar. Palpe suavemente musculatura e coluna cervical. Verifique se o animal evita extensão/flexão.',
-    interpretation:
-      'Se associada a dor cervical à palpação e rigidez, aumenta suspeita de doença cervical/meníngea. Se sem dor e com fraqueza generalizada, considere neuromuscular/metabólico.',
-    pitfalls:
-      'Postura antálgica por otite ou dor torácica pode alterar posição da cabeça. Correlacione com exame geral. Quando aparece: Doença discal cervical, meningite, dor muscular cervical, fraqueza neuromuscular.',
+      'Tronco encefálico (controle postural) e cerebelo; vias extensores e modulação central. Desbalanço entre vias facilitadoras/inibitórias de tônus extensor pode gerar extensão sustentada.',
+    howToPerform: 'Observar postura espontânea; não provocar. Avaliar mentação, pupilas/PLR e sinais de tronco.',
+    interpretation: 'Red flag: priorizar estabilização e investigação intracraniana/metabólica.',
+    pitfalls: 'Confundir com rigidez por dor severa. Avaliar dor cervical e sinais sistêmicos.',
+  },
+  {
+    id: 's1-postura-cabeca-cabeca-baixa',
+    title: 'Postura da cabeça — Cabeça baixa',
+    whatItAssesses:
+      'Manutenção persistente de cabeça/colo em flexão ou posição baixa. Sugere dor cervical, fraqueza muscular (neuromuscular) ou postura antálgica; pode aparecer também em doença sistêmica grave.',
+    neuroanatomy:
+      'Músculos cervicais, estruturas cervical (disco/meninges/raízes), junção neuromuscular (se fraqueza). Dor leva a postura protetora; fraqueza muscular limita sustentação da cabeça.',
+    howToPerform: 'Observar durante repouso e ao tentar movimentar. Palpar coluna cervical buscando dor/espasmo.',
+    interpretation: 'Com dor cervical à palpação → suspeitar lesão cervical dolorosa. Sem dor, considerar neuromuscular ou sistêmico.',
+    pitfalls: 'Assumir vestibular. Cabeça baixa ≠ head tilt.',
   },
 ]
