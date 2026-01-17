@@ -437,18 +437,7 @@ export default function InfusionCalculator({
 
       <div className="space-y-4">
         <div className="space-y-2">
-          <FieldLabel text="Dose alvo" tooltipId="dose_help" />
-          <div className="flex gap-2">
-            <input
-              type="number"
-              value={dose}
-              onChange={handleDoseChange}
-              placeholder="0.0"
-              step="0.01"
-              className="flex-1 rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 px-3 text-sm focus:border-sky-500 focus:ring-sky-500"
-            />
-          </div>
-          {/* Dose indicada em destaque amarelo com botão "?" */}
+          {/* Dose indicada em destaque amarelo com botão "?" - ACIMA do campo Dose alvo */}
           {indicatedDose && (
             <>
               <div className="rounded-lg border-2 border-yellow-400/50 bg-yellow-500/15 dark:bg-yellow-500/10 p-3 flex items-start justify-between gap-3">
@@ -496,6 +485,17 @@ export default function InfusionCalculator({
               </HelpModal>
             </>
           )}
+          <FieldLabel text="Dose alvo" tooltipId="dose_help" />
+          <div className="flex gap-2">
+            <input
+              type="number"
+              value={dose}
+              onChange={handleDoseChange}
+              placeholder="0.0"
+              step="0.01"
+              className="flex-1 rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 px-3 text-sm focus:border-sky-500 focus:ring-sky-500"
+            />
+          </div>
           <div className="space-y-2">
             <div className="flex flex-wrap gap-2">
               {ALL_UNITS.map((unit) => {

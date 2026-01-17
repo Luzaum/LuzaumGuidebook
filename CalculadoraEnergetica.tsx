@@ -130,7 +130,7 @@ function getNutritionProfileBadge(profile: NutritionProfile): { text: string; co
 
 const predefinedFoods = [
     // --- Cães & Gatos ---
-    { name: "Hill's a/d Urgent Care (Úmido)", species: ['dog', 'cat'], calories: 1.175, unit: 'g', protein: '8.5%', fat: '5.2%', indication: 'Convalescença, anorexia, pós-cirurgia, lesão.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], alerts: [ { type: 'green', text: 'Excelente para pacientes anoréxicos ou que necessitam de suporte calórico em pequenos volumes.' }, { type: 'red', text: 'Alto teor de gordura e proteína: <strong>contraindicado</strong> em pancreatite, hiperlipidemia, e DRC/encefalopatia hepática não compensadas.' } ] },
+    { name: "Hill's a/d Urgent Care (Úmido)", species: ['dog', 'cat'], calories: 1.175, unit: 'g', protein: '8.5%', fat: '5.2%', indication: 'Convalescença, anorexia, pós-cirurgia, lesão; alta palatabilidade e densidade calórica para suporte intensivo.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], alerts: [ { type: 'green', text: 'Excelente para pacientes anoréxicos ou que necessitam de suporte calórico em pequenos volumes.' }, { type: 'red', text: 'Alto teor de gordura e proteína: <strong>contraindicado</strong> em pancreatite, hiperlipidemia, e DRC/encefalopatia hepática não compensadas.' } ] },
     { name: "Premier Nutrição Clínica Recuperação (Úmido)", species: ['dog', 'cat'], calories: 1.300, unit: 'g', protein: '11.0%', fat: '9.0%', indication: 'Suporte nutricional em recuperação, pós-cirúrgico.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], alerts: [ { type: 'green', text: 'Alto aporte calórico e proteico para recuperação rápida.' }, { type: 'red', text: 'Contraindicado em pancreatite, hiperlipidemia, e DRC/encefalopatia hepática não compensadas devido ao alto teor de gordura e proteína.' } ] },
     { name: "Royal Canin Recovery (Úmido)", species: ['dog', 'cat'], calories: 1.100, unit: 'g', protein: '12.7%', fat: '6.4%', indication: 'Convalescença, anorexia, pós-cirurgia, cuidados intensivos.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], nutritionProfile: 'VET_RECOVERY_COMPLETE', isCompleteAndBalanced: true, requiresVetSupervision: true, alerts: [ { type: 'green', text: 'Textura mousse ideal para alimentação por sonda e pacientes com dificuldade de apreensão do alimento.' }, { type: 'red', text: 'Contraindicado em encefalopatia hepática, pancreatite e hiperlipidemia agudas devido ao alto teor de gordura.' } ] },
     { name: "FN Vet Care Recuperação (lata)", species: ['dog', 'cat'], calories: 1.180, unit: 'g', protein: '11.5%', fat: '7.5%', indication: 'Recuperação de cães e gatos debilitados, anorexia ou convalescença.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], alerts: [ { type: 'yellow', text: 'Teor de gordura moderado, usar com cautela em pacientes com histórico de pancreatite.' } ] },
@@ -177,7 +177,7 @@ const predefinedFoods = [
     { name: "Hill's j/d (Úmido, Cães)", species: ['dog'], calories: 1.351, unit: 'g', protein: '17.0%', fat: '11.0%', indication: 'Suporte ao metabolismo das articulações (osteoartrite).', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['JOINT'] },
     { name: "Hill's j/d Joint Care (Seco, Cães)", species: ['dog'], calories: 3.618, unit: 'g', protein: '17.6%', fat: '14.5%', indication: 'Suporte à saúde articular.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['JOINT'], alerts: [ { type: 'green', text: 'Clinicamente comprovado para melhorar a mobilidade. Enriquecido com EPA, glucosamina e condroitina.' }, { type: 'red', text: '<strong>Contraindicado</strong> para filhotes em crescimento, cadelas gestantes/lactantes.' } ] },
     { name: "Hill's k/d (Seco, Cães)", species: ['dog'], calories: 4.021, unit: 'g', protein: '13.9%', fat: '20.5%', indication: 'Suporte à função renal crônica.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['CKD'], alerts: [ { type: 'green', text: 'Padrão-ouro para o manejo da Doença Renal Crônica (DRC), ajudando a retardar a progressão.' }, { type: 'red', text: 'Restrição proteica severa: <strong>contraindicado</strong> para filhotes em crescimento, fêmeas gestantes/lactantes ou em condições que exijam alto aporte proteico.' }, { type: 'yellow', text: 'A palatabilidade pode ser um desafio em pacientes renais anoréxicos. Considere opções úmidas ou palatabilizantes.' } ] },
-    { name: "Hill's l/d Hepatic Care (Seco, Cães)", species: ['dog'], calories: 4.067, unit: 'g', protein: '16.7%', fat: '21.9%', indication: 'Suporte à função hepática.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['HEPATIC'], alerts: [ { type: 'green', text: 'Proteína e cobre controlados, ideal para a maioria das doenças hepáticas, incluindo shunts portossistêmicos.' }, { type: 'red', text: 'Alto teor de gordura: <strong>contraindicado</strong> para pacientes com hiperlipidemia, pancreatite ou risco de pancreatite.' } ] },
+    { name: "Hill's l/d Hepatic Care (Seco, Cães)", species: ['dog'], calories: 4.040, unit: 'g', protein: '18.1%', fat: '23.6%', indication: 'Suporte à função hepática (doenças hepáticas crônicas/insuficiência hepática; conforme prescrição veterinária).', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['HEPATIC'], alerts: [ { type: 'green', text: 'Proteína e cobre controlados, ideal para a maioria das doenças hepáticas, incluindo shunts portossistêmicos.' }, { type: 'red', text: 'Alto teor de gordura: <strong>contraindicado</strong> para pacientes com hiperlipidemia, pancreatite ou risco de pancreatite.' } ] },
     { name: "Hill's Science Diet Cães Adultos Raças Grandes Frango", species: ['dog'], calories: 0, unit: 'g', protein: '21.0 - 24.5%', fat: '13.0 - 16.3%', indication: 'Cães adultos, raças grandes', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
     { name: "Hill's u/d (Úmido, Cães)", species: ['dog'], calories: 1.377, unit: 'g', protein: '4.1%', fat: '7.9%', indication: 'Dissolução de urólitos de urato e cistina.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['URINARY'] },
     { name: "Hill's u/d Urinary Care (Seco, Cães)", species: ['dog'], calories: 3.98, unit: 'g', protein: '10.2%', fat: '18.8%', indication: 'Prevenção de cálculos de urato e cistina.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['URINARY'], alerts: [ { type: 'green', text: 'Dieta de eleição para prevenção de cálculos de urato e cistina, comum em Dálmatas e Bulldogs.' }, { type: 'red', text: 'Proteína e purinas muito baixas. <strong>Não é uma dieta de manutenção geral</strong>. Risco de deficiência proteica se usada incorretamente.' } ] },
@@ -226,11 +226,12 @@ const predefinedFoods = [
     { name: 'GranPlus Choice Gatos Adultos (Frango e Carne)', species: ['cat'], calories: 3.75, unit: 'g', protein: '36.0%', fat: '9.0%', indication: 'Equilíbrio nutricional, saúde urinária e intestinal.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
     { name: "Guabi Natural Adulto Frango (Seco, Gatos)", species: ['cat'], calories: 4.150, unit: 'g', protein: '36.0%', fat: '17.0%', indication: 'Nutrição geral de alta qualidade, saúde intestinal e urinária.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
     { name: "Guabi Natural Sachê Carne (Úmido, Gatos)", species: ['cat'], calories: 0.094, unit: 'sache', protein: '4.0%', fat: '0.5%', indication: 'Hidratação, palatabilidade, complemento alimentar.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Hill's Gastrointestinal Biome Stress (Seco, Gatos)", species: ['cat'], calories: 3.807, unit: 'g', protein: '37.3%', fat: '17.0%', indication: 'Distúrbios gastrointestinais responsivos à fibra (constipação, diarreia infecciosa/antibiótico-responsiva, megacólon responsivo à fibra) + suporte do microbioma (ActivBiome+) e modulação do estresse.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'] },
     { name: "Hill's i/d (Seco, Gatos)", species: ['cat'], calories: 4.031, unit: 'g', protein: '36.8%', fat: '19.9%', indication: 'Distúrbios gastrointestinais, má digestão.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], alerts: [ { type: 'green', text: 'Altamente digestível, excelente para a maioria dos distúrbios gastrointestinais agudos ou crônicos.' } ] },
     { name: "Hill's j/d (Seco, Gatos)", species: ['cat'], calories: 4.024, unit: 'g', protein: '32.0%', fat: '20.0%', indication: 'Suporte ao metabolismo das articulações (osteoartrite).', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['JOINT'] },
     { name: "Hill's k/d (Seco, Gatos)", species: ['cat'], calories: 3.811, unit: 'g', protein: '21.0%', fat: '15.0%', indication: 'Suporte à função renal crônica.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['CKD'] },
     { name: "Hill's k/d (Úmido, Gatos)", species: ['cat'], calories: 1.165, unit: 'g', protein: '7.8%', fat: '6%', indication: 'Suporte à função renal crônica.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['CKD'], alerts: [ { type: 'green', text: 'Auxilia na hidratação de pacientes renais e possui proteína e fósforo restritos para suportar a função renal.' }, { type: 'red', text: '<strong>Contraindicado</strong> para filhotes, gestantes e lactantes.' } ] },
-    { name: "Hills Metabolic (Gatos)", species: ['cat'], calories: 3.476, unit: 'g', protein: '38.2%', fat: '12.8%', indication: 'Perda e manutenção de peso.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['WEIGHT_LOSS'], alerts: [ { type: 'green', text: 'Clinicamente comprovado para perda de peso segura, atuando no metabolismo individual do gato.' }, { type: 'yellow', text: 'A perda de peso em gatos deve ser lenta (0.5-1% do peso/semana) para evitar o risco de lipidose hepática.' } ] },
+    { name: "Hill's Metabolic (Seco, Gatos)", species: ['cat'], calories: 3.455, unit: 'g', protein: '37.6%', fat: '13.0%', indication: 'Perda e manutenção de peso (obesidade/sobrepeso) com suporte de saciedade/metabolismo; indicado para gatos.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['WEIGHT_LOSS'], alerts: [ { type: 'green', text: 'Clinicamente comprovado para perda de peso segura, atuando no metabolismo individual do gato.' }, { type: 'yellow', text: 'A perda de peso em gatos deve ser lenta (0.5-1% do peso/semana) para evitar o risco de lipidose hepática.' } ] },
     { name: "Hiperkcal Nutricuper Cat (pó)", species: ['cat'], calories: 4.761, unit: 'g', protein: 'N/I', fat: 'N/I', indication: 'Suplemento hipercalórico para ganho de peso.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [], alerts: [ { type: 'yellow', text: 'Faltam dados de PB e EE. Usar com cautela, especialmente em pacientes com comorbidades.' } ], dilution: {scoop_g: 10, water_ml: 20} },
     { name: 'Inaba Churu (média)', species: ['cat'], calories: 0.44, unit: 'g', protein: '8.5%', fat: '0.5%', indication: 'Hidratação, agrado, administração de medicamentos.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [], nutritionProfile: 'SUPPLEMENT', isCompleteAndBalanced: false, requiresVetSupervision: false, speciesSafetyNotes: { cat: ['Não usar como dieta exclusiva.'] }, alerts: [ { type: 'yellow', text: 'Não é um alimento completo. Use apenas como petisco ou para melhorar a palatabilidade de outras rações.' } ] },
     { name: 'Optimum Sachê (Salmão/Frango)', species: ['cat'], calories: 0.874, unit: 'sache', protein: '8.5%', fat: '3.0%', indication: 'Nutrição completa, absorção de nutrientes, controle de peso.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
@@ -239,8 +240,32 @@ const predefinedFoods = [
     { name: "Premier Nutrição Clínica Urinário (Seco, Gatos)", species: ['cat'], calories: 4.143, unit: 'g', protein: '25.0%', fat: '20.0%', indication: 'Auxílio na dissolução de cálculos de estruvita.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['URINARY'], alerts: [ { type: 'green', text: 'Formulado para controle de pH urinário e dissolução de cálculos de estruvita.' }, { type: 'red', text: '<strong>Contraindicado</strong> para gatos com DRC, histórico de cálculos de oxalato, filhotes, gestantes/lactantes.' } ] },
     { name: 'Purina Pro Plan Gatos Castrados Optirenal Salmão', species: ['cat'], calories: 0, unit: 'g', protein: '40.0%', fat: '12.0 - 15.0%', indication: 'Gatos castrados', lifeStage: 'ADULT', neuterStatus: 'NEUTERED', isTherapeutic: false, therapeuticIndications: [] },
     { name: 'Purina Pro Plan Gatos Filhotes Optistart Frango', species: ['cat'], calories: 0, unit: 'g', protein: 'N/A', fat: 'N/A', indication: 'Filhotes', lifeStage: 'PUPPY', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
-    { name: 'Quatree Life Gatos Castrados (Salmão)', species: ['cat'], calories: 3.77, unit: 'g', protein: 'N/A', fat: 'N/A', indication: 'Manutenção de peso para gatos castrados.', lifeStage: 'ADULT', neuterStatus: 'NEUTERED', isTherapeutic: false, therapeuticIndications: [] },
+    // --- Quatree (Linha Completa) ---
+    // Cães - Supreme
+    { name: "Quatree Supreme Adultos Raças Médias e Grandes", species: ['dog'], calories: 4.2, unit: 'g', protein: '26.0%', fat: '16.0%', indication: 'Cães adultos de raças médias e grandes; suporte nutricional completo para manutenção de peso, digestão eficiente e saúde articular.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Quatree Supreme Adultos Raças Pequenas", species: ['dog'], calories: 4.2, unit: 'g', protein: '25.0%', fat: '15.0%', indication: 'Cães adultos de raças pequenas; alimentação completa e balanceada.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Quatree Supreme Filhotes", species: ['dog'], calories: 4.3, unit: 'g', protein: '28.0%', fat: '18.0%', indication: 'Cães filhotes; suporte ao crescimento saudável do sistema músculo-esquelético e imunológico.', lifeStage: 'PUPPY', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Quatree Supreme Sênior +7", species: ['dog'], calories: 3.8, unit: 'g', protein: '24.0%', fat: '14.0%', indication: 'Cães idosos +7 anos; manutenção de peso, suporte articular e digestivo.', lifeStage: 'SENIOR', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Quatree Supreme Adultos Dermato", species: ['dog'], calories: 4.15, unit: 'g', protein: '24.0%', fat: '15.0%', indication: 'Cães com sensibilidade digestiva/cutânea; alimentação hipoalergênica livre dos principais alergênicos.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Quatree Supreme Adultos Light/Castrados", species: ['dog'], calories: 3.5, unit: 'g', protein: '22.0%', fat: '12.0%', indication: 'Cães adultos com tendência a sobrepeso ou castrados; controle calórico e saciedade prolongada.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: ['WEIGHT_LOSS'] },
+    
+    // Cães - Life
+    { name: "Quatree Life Adultos Raças Médias e Grandes", species: ['dog'], calories: 3.95, unit: 'g', protein: '24.0%', fat: '14.0%', indication: 'Cães adultos; alimento Premium Especial natural com antioxidantes e complexo vegetal para bem-estar geral.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Quatree Life Adultos Raças Pequenas", species: ['dog'], calories: 3.95, unit: 'g', protein: '23.0%', fat: '13.0%', indication: 'Cães adultos de pequeno porte; alimento premium especial natural.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Quatree Life Filhotes", species: ['dog'], calories: 4.0, unit: 'g', protein: '26.0%', fat: '16.0%', indication: 'Cães filhotes; crescimento equilibrado com antioxidantes naturais e vegetais funcionais.', lifeStage: 'PUPPY', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    
+    // Cães - Gourmet
+    { name: "Quatree Gourmet Cães", species: ['dog'], calories: 3.6, unit: 'g', protein: '22.0%', fat: '12.0%', indication: 'Cães adultos e filhotes; nutrição completa diária com altas fontes de proteínas e gordura moderada.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    
+    // Gatos - Life
+    { name: "Quatree Life Gatos Adultos", species: ['cat'], calories: 3.9, unit: 'g', protein: '35.0%', fat: '18.0%', indication: 'Gatos adultos; premium especial natural com fibras que auxiliam no trato urinário, bolas de pelo e saciedade.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: 'Quatree Life Gatos Castrados', species: ['cat'], calories: 3.7, unit: 'g', protein: '33.0%', fat: '16.0%', indication: 'Gatos adultos castrados; controle de peso, trato urinário e saciedade.', lifeStage: 'ADULT', neuterStatus: 'NEUTERED', isTherapeutic: false, therapeuticIndications: ['WEIGHT_LOSS'] },
+    
+    // Gatos - Supreme
     { name: 'Quatree Supreme Gatos Castrados', species: ['cat'], calories: 3.82, unit: 'g', protein: '40%', fat: '12%', indication: 'Manutenção de peso para gatos castrados.', lifeStage: 'ADULT', neuterStatus: 'NEUTERED', isTherapeutic: false, therapeuticIndications: [] },
+    
+    // Gatos - Gourmet
+    { name: "Quatree Gourmet Gatos", species: ['cat'], calories: 3.9, unit: 'g', protein: '32.0%', fat: '16.0%', indication: 'Gatos adultos e filhotes; alimento completo com proteínas de alta qualidade e ômegas para pele e pelagem.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
     { name: "Royal Canin Hypoallergenic (Gatos)", species: ['cat'], calories: 3.923, unit: 'g', protein: '25.5%', fat: '20%', indication: 'Manejo de reações adversas a alimentos.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['ALLERGY'] },
     { name: 'Royal Canin Renal (Seca, Gatos)', species: ['cat'], calories: 3.953, unit: 'g', protein: '21.0%', fat: '15.0%', indication: 'Suporte à função renal crônica.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['CKD'] },
     { name: 'Royal Canin Renal (Úmida, Gatos)', species: ['cat'], calories: 1.277, unit: 'lata', protein: '6.0%', fat: '6.0%', indication: 'Suporte à função renal crônica.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['CKD'] },
@@ -261,13 +286,13 @@ const predefinedFoods = [
     { name: "Royal Canin Gastrointestinal Low Fat (Seco, Cães)", species: ['dog'], calories: 3.180, unit: 'g', protein: '22.0%', fat: '7.0%', indication: 'Distúrbios gastrointestinais que exigem restrição lipídica, como pancreatite, hiperlipidemia e má digestão.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'] },
     { name: "Royal Canin Urinary S/O (Seco, Cães)", species: ['dog'], calories: 3.900, unit: 'g', protein: '18.0%', fat: '15.0%', indication: 'Dissolução e prevenção de cálculos urinários de estruvita e oxalato de cálcio.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['URINARY'] },
     { name: "Hill's Prescription Diet c/d Multicare (Seco, Cães)", species: ['dog'], calories: 4.021, unit: 'g', protein: '16.9%', fat: '16.0%', indication: 'Suporte à saúde urinária, dissolução e prevenção de estruvita e oxalato de cálcio.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['URINARY'] },
-    { name: "Hill's Prescription Diet Metabolic (Seco, Cães)", species: ['dog'], calories: 3.100, unit: 'g', protein: '27.0%', fat: '11.0%', indication: 'Perda e manutenção de peso por ativação metabólica e aumento de saciedade.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['WEIGHT_LOSS'] },
+    { name: "Hill's Metabolic (Seco, Cães)", species: ['dog'], calories: 3.124, unit: 'g', protein: '28.0%', fat: '11.7%', indication: 'Perda e manutenção de peso (obesidade/sobrepeso) com alta saciedade por fibras; indicado para cães adultos.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['WEIGHT_LOSS'] },
     { name: "Hill's Prescription Diet Derm Complete (Seco, Cães)", species: ['dog'], calories: 3.500, unit: 'g', protein: '18.0%', fat: '15.0%', indication: 'Manejo de alergias alimentares e ambientais com suporte à barreira cutânea.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['ALLERGY'] },
     { name: "Pro Plan Veterinary Diets HA Hydrolyzed (Seco, Cães)", species: ['dog'], calories: null, unit: 'g', protein: null, fat: null, indication: 'Hipoalergênica com proteína hidrolisada para alergias/intolerâncias alimentares; destinada a cães adultos.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['ALLERGY', 'GI'] },
     { name: "Royal Canin Renal (Úmido, Cães)", species: ['dog'], calories: null, unit: 'g', protein: null, fat: null, indication: 'Suporte à função renal em casos de insuficiência renal crônica; baixo fósforo e proteínas de alta qualidade (patê).', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['CKD'] },
     
     // Gatos - Terapêuticas
-    { name: "Hill's Prescription Diet c/d Multicare (Gatos)", species: ['cat'], calories: 3.870, unit: 'g', protein: '32.0%', fat: '15.0%', indication: 'Dissolução e prevenção de cálculos urinários de estruvita.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['URINARY'] },
+    { name: "Hill's c/d Multicare (Seco, Gatos)", species: ['cat'], calories: 3.844, unit: 'g', protein: '33.8%', fat: '16.1%', indication: 'Suporte urinário: auxílio à dissolução/recorrência de estruvita, manejo de DITUIF/cistite idiopática e inflamação urinária inferior; condições urinárias desfavoráveis à formação de estruvita e CaOx.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['URINARY'] },
     { name: "Hill's Prescription Diet Metabolic (Gatos)", species: ['cat'], calories: 3.150, unit: 'g', protein: '39.0%', fat: '10.0%', indication: 'Perda e manutenção de peso em gatos obesos.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['WEIGHT_LOSS'] },
     { name: "Royal Canin Gastrointestinal (Seco, Gatos)", species: ['cat'], calories: 4.000, unit: 'g', protein: '36.0%', fat: '15.0%', indication: 'Distúrbios gastrointestinais agudos e crônicos, má digestão.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'] },
     { name: "Royal Canin Gastrointestinal (Úmido, Gatos)", species: ['cat'], calories: null, unit: 'g', protein: null, fat: null, indication: 'Distúrbios gastrointestinais, má digestão, enteropatias agudas/crônicas (versão úmida).', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'] },
@@ -285,7 +310,7 @@ const knowledgeBase = {
 const HelpIcon = React.memo(function HelpIcon({ term, onOpenModal, ...props }: { term: string; onOpenModal: (content: any) => void; [key: string]: any }) {
     return (
         <span
-            className="inline-flex items-center justify-center w-5 h-5 ml-2 text-sm font-bold text-primary-foreground bg-muted-foreground rounded-full cursor-pointer transition-colors hover:bg-foreground shrink-0"
+            className="inline-flex items-center justify-center w-5 h-5 ml-2 text-sm font-bold text-white dark:text-gray-900 bg-indigo-600 dark:bg-indigo-300 rounded-full cursor-pointer transition-colors hover:bg-indigo-700 dark:hover:bg-indigo-400 shrink-0"
             role="button"
             aria-label="Abrir guia"
             onClick={(e) => { e.stopPropagation(); onOpenModal(knowledgeBase[term]); }}
@@ -331,6 +356,9 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
         neuterStatus: 'ANY' as const,
         isTherapeutic: undefined as boolean | undefined,
     });
+    
+    // Estado para busca de alimentos
+    const [foodSearchQuery, setFoodSearchQuery] = useState('');
     
     const [modalContent, setModalContent] = useState(null);
 
@@ -448,14 +476,24 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
             speciesSafetyNotes: Object.keys(speciesSafetyNotes).length > 0 ? speciesSafetyNotes : undefined,
         } as FoodItem;
     }, []);
-    
+
     const isCritical = status.toLowerCase().includes('crítico') || status.toLowerCase().includes('hospitalizado');
-    const sortedFoods = useMemo(() => 
-        [...predefinedFoods]
-        .map(migrateFood)
+    const sortedFoods = useMemo(() => {
+        const foods = [...predefinedFoods]
+            .map(migrateFood)
         .filter(food => food.species.includes(species))
-        .sort((a, b) => a.name.localeCompare(b.name)), 
-    [species, migrateFood]);
+            .sort((a, b) => a.name.localeCompare(b.name, 'pt-BR', { sensitivity: 'base' }));
+        
+        // Aplicar filtro de busca se houver query
+        if (foodSearchQuery.trim()) {
+            const query = foodSearchQuery.toLowerCase().trim();
+            return foods.filter(food => 
+                food.name.toLowerCase().includes(query)
+            );
+        }
+        
+        return foods;
+    }, [species, migrateFood, foodSearchQuery]);
 
     // --- EFFECTS ---
     useEffect(() => {
@@ -629,12 +667,32 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
             };
         });
         
-        // Combine and sort: commercial foods first (by date), then predefined foods
-        return [
-            ...convertedCommercial.sort((a, b) => b.updatedAtISO.localeCompare(a.updatedAtISO)),
-            ...convertedPredefined,
-        ];
-    }, [commercialFoodFilters, migrateFood]);
+        // Combine and sort alphabetically
+        const allFoods = [...convertedCommercial, ...convertedPredefined];
+        
+        // Aplicar filtro de busca se houver query
+        let filteredFoods = allFoods;
+        if (foodSearchQuery.trim()) {
+            const query = foodSearchQuery.toLowerCase().trim();
+            filteredFoods = allFoods.filter(food => {
+                const name = food.isPredefined 
+                    ? food.name 
+                    : `${food.brand} ${food.line ? `- ${food.line}` : ''}: ${food.product}`;
+                return name.toLowerCase().includes(query);
+            });
+        }
+        
+        // Sort alphabetically
+        return filteredFoods.sort((a, b) => {
+            const nameA = a.isPredefined 
+                ? a.name 
+                : `${a.brand} ${a.line ? `- ${a.line}` : ''}: ${a.product}`;
+            const nameB = b.isPredefined 
+                ? b.name 
+                : `${b.brand} ${b.line ? `- ${b.line}` : ''}: ${b.product}`;
+            return nameA.localeCompare(nameB, 'pt-BR', { sensitivity: 'base' });
+        });
+    }, [commercialFoodFilters, migrateFood, foodSearchQuery]);
     
     // Filter commercial foods and sort by updatedAtISO (most recent first) - keep for backward compatibility
     const filteredCommercialFoods = useMemo(() => {
@@ -974,14 +1032,19 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                 
                 {activeTab === 'racao' && (
                     <div id="page-calc-racao">
-                         <div className="text-center mb-6">
-                            <h1 className="text-2xl md:text-3xl font-bold text-foreground">Plano e Prescrição Diária</h1>
-                            <p className="mt-2 text-muted-foreground">Defina a meta, selecione o alimento e veja a quantidade diária.</p>
+                         <div className="text-center mb-8">
+                            <h1 className="text-3xl md:text-4xl font-bold text-foreground bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-4">
+                                Plano e Prescrição Diária
+                            </h1>
+                            <p className="mt-2 text-muted-foreground text-lg">Defina a meta, selecione o alimento e veja a quantidade diária.</p>
                         </div>
 
                         {!isCritical ? (
-                        <div className="bg-muted p-6 rounded-lg mb-6 border border-border">
-                            <h3 className="font-semibold text-foreground text-lg mb-4">1. Defina a Meta Nutricional</h3>
+                        <div className="bg-gradient-to-br from-muted to-muted/50 p-6 rounded-xl mb-6 border-2 border-border shadow-md">
+                            <h3 className="font-semibold text-foreground text-xl mb-5 flex items-center gap-2">
+                                <span className="text-2xl">1️⃣</span>
+                                <span>Defina a Meta Nutricional</span>
+                            </h3>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
                                 {goalOptions.map(goal => (
                                     <div key={goal.id}>
@@ -1024,15 +1087,83 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                              </div>
                         )}
                         
-                        <div className="bg-muted p-6 rounded-lg mb-6 border border-border">
-                            <h3 className="font-semibold text-foreground text-lg mb-4">2. Selecione o Alimento</h3>
+                        <div className="bg-gradient-to-br from-muted to-muted/50 p-6 rounded-xl mb-6 border-2 border-border shadow-md">
+                            <h3 className="font-semibold text-foreground text-xl mb-5 flex items-center gap-2">
+                                <span className="text-2xl">2️⃣</span>
+                                <span>Selecione o Alimento</span>
+                            </h3>
                             
                             {/* Banco de Alimentos */}
                             <div className="mb-6 pb-6 border-b border-border">
-                                <h4 className="font-medium text-foreground mb-3 flex items-center gap-2">
-                                    <span className="text-lg">📦</span>
+                                <h4 className="font-medium text-foreground mb-4 text-xl">
                                     Banco de Alimentos
                                 </h4>
+                                
+                                {/* Campo de Busca */}
+                                <div className="mb-4">
+                                    <div className="relative">
+                                        <input
+                                            type="text"
+                                            placeholder="Buscar alimento (ex: digite 'hill' para Hill's)..."
+                                            value={foodSearchQuery}
+                                            onChange={(e) => setFoodSearchQuery(e.target.value)}
+                                            className="w-full p-3 pl-10 bg-card border-2 border-input rounded-lg text-foreground focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:focus:ring-indigo-800 transition-all"
+                                        />
+                                        <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground">🔍</span>
+                                        {foodSearchQuery && (
+                                            <button
+                                                onClick={() => {
+                                                    setFoodSearchQuery('');
+                                                    setSelectedUnifiedFoodId('');
+                                                }}
+                                                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition"
+                                                aria-label="Limpar busca"
+                                            >
+                                                ✕
+                                            </button>
+                                        )}
+                                    </div>
+                                    
+                                    {/* Lista de resultados da busca - clicáveis */}
+                                    {foodSearchQuery.trim() && unifiedFoods.length > 0 && (
+                                        <div className="mt-3 max-h-64 overflow-y-auto border-2 border-border rounded-lg bg-card shadow-lg">
+                                            <div className="p-2 text-xs text-muted-foreground border-b border-border sticky top-0 bg-muted/80 backdrop-blur-sm z-10">
+                                                {unifiedFoods.length} alimento{unifiedFoods.length !== 1 ? 's' : ''} encontrado{unifiedFoods.length !== 1 ? 's' : ''}
+                                            </div>
+                                            <div className="divide-y divide-border">
+                                                {unifiedFoods.slice(0, 20).map((food) => {
+                                                    const displayName = food.isPredefined 
+                                                        ? food.name 
+                                                        : `${food.brand} ${food.line ? `- ${food.line}` : ''}: ${food.product}`;
+                                                    return (
+                                                        <button
+                                                            key={food.id}
+                                                            onClick={() => {
+                                                                setSelectedUnifiedFoodId(food.id);
+                                                                setFoodSearchQuery(''); // Limpar busca após seleção
+                                                            }}
+                                                            className="w-full text-left p-3 hover:bg-muted transition-colors focus:bg-muted focus:outline-none"
+                                                        >
+                                                            <div className="flex items-center justify-between">
+                                                                <span className="text-sm font-medium text-foreground">{displayName}</span>
+                                                                {food.isTherapeutic && (
+                                                                    <span className="ml-2 px-2 py-0.5 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 text-xs rounded">
+                                                                        Terapêutico
+                                                                    </span>
+                                                                )}
+                                                            </div>
+                                                        </button>
+                                                    );
+                                                })}
+                                                {unifiedFoods.length > 20 && (
+                                                    <div className="p-2 text-xs text-muted-foreground text-center">
+                                                        ... e mais {unifiedFoods.length - 20} alimento{unifiedFoods.length - 20 !== 1 ? 's' : ''}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
                                 
                                 {/* Filtros */}
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
@@ -1102,37 +1233,46 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                 </div>
                                 
                                 {/* Seleção de alimento - Banco Unificado */}
-                                <select
-                                    value={selectedUnifiedFoodId}
+                                <div className="mb-3">
+                                    <select
+                                        value={selectedUnifiedFoodId}
                                     onChange={(e) => {
-                                        setSelectedUnifiedFoodId(e.target.value)
-                                        setSelectedCommercialFoodId('')
+                                            setSelectedUnifiedFoodId(e.target.value)
+                                            setSelectedCommercialFoodId('')
                                         setPredefinedFoodIndex('')
                                         setCustomFoodName('')
                                         setCustomFoodCalories('')
                                     }}
-                                    className="w-full p-3 bg-card border border-input rounded-lg text-foreground mb-3"
-                                >
-                                    <option value="">Selecione um alimento...</option>
-                                    {unifiedFoods.map((food) => (
-                                        <option key={food.id} value={food.id}>
-                                            {food.isPredefined 
+                                        className="w-full p-3 bg-card border-2 border-input rounded-lg text-foreground focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:focus:ring-indigo-800 transition-all appearance-none cursor-pointer"
+                                    >
+                                        <option value="">Selecione um alimento...</option>
+                                        {unifiedFoods.map((food) => {
+                                            const displayName = food.isPredefined 
                                                 ? food.name 
-                                                : `${food.brand} ${food.line ? `- ${food.line}` : ''}: ${food.product}`}
+                                                : `${food.brand} ${food.line ? `- ${food.line}` : ''}: ${food.product}`;
+                                            return (
+                                        <option key={food.id} value={food.id}>
+                                                    {displayName}
                                         </option>
-                                    ))}
+                                            );
+                                        })}
                                 </select>
+                                    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none">🍽️</span>
+                                </div>
                                 
                                 {/* Informações do alimento selecionado */}
                                 {selectedUnifiedFood && !selectedUnifiedFood.isPredefined && (
-                                    <div className="bg-card p-4 rounded-lg border border-border mb-3">
-                                        <div className="flex items-start justify-between mb-3">
-                                            <div>
-                                                <h5 className="font-bold text-foreground text-base">
-                                                    {selectedUnifiedFood.brand}
-                                                    {selectedUnifiedFood.line && ` - ${selectedUnifiedFood.line}`}
-                                                </h5>
-                                                <p className="text-sm text-foreground mt-1">
+                                    <div className="bg-gradient-to-br from-card to-muted/50 p-5 rounded-xl border-2 border-border shadow-lg mb-3">
+                                        <div className="flex items-start justify-between mb-4">
+                                            <div className="flex-1">
+                                                <div className="flex items-center gap-2 mb-1">
+                                                    <span className="text-2xl">🍖</span>
+                                                    <h5 className="font-bold text-foreground text-lg">
+                                                        {selectedUnifiedFood.brand}
+                                                        {selectedUnifiedFood.line && ` - ${selectedUnifiedFood.line}`}
+                                                    </h5>
+                                                </div>
+                                                <p className="text-sm text-muted-foreground ml-8">
                                                     {selectedUnifiedFood.product}
                                                 </p>
                                             </div>
@@ -1153,10 +1293,12 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                         </div>
                                         
                                         {/* ME e valores principais */}
-                                        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-3">
-                                            <div className="bg-muted p-2 rounded text-center">
-                                                <p className="text-xs text-muted-foreground mb-1">ME</p>
-                                                <p className="font-bold text-foreground text-sm">
+                                        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-4">
+                                            <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-indigo-900/20 dark:to-indigo-800/20 p-3 rounded-lg text-center border border-indigo-200 dark:border-indigo-800">
+                                                <p className="text-xs text-muted-foreground mb-1 flex items-center justify-center gap-1">
+                                                    <span>⚡</span> ME
+                                                </p>
+                                                <p className="font-bold text-indigo-700 dark:text-indigo-300 text-sm">
                                                     {selectedUnifiedFood.me_kcal_per_kg.toLocaleString('pt-BR')} kcal/kg
                                                 </p>
                                             </div>
@@ -1269,13 +1411,13 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                 
                                 {/* Informações do alimento predefinido selecionado */}
                                 {selectedUnifiedFood && selectedUnifiedFood.isPredefined && (
-                                    <div className="bg-card p-4 rounded-lg border border-border mb-3">
-                                        <div className="flex items-start justify-between mb-3">
-                                            <div>
-                                                <h5 className="font-bold text-foreground text-base">
+                                    <div className="bg-gradient-to-br from-card to-muted/50 p-5 rounded-xl border-2 border-border shadow-lg mb-3">
+                                        <div className="flex items-start justify-between mb-4">
+                                            <div className="flex-1">
+                                                <h5 className="font-bold text-foreground text-lg mb-1">
                                                     {selectedUnifiedFood.name}
                                                 </h5>
-                                                <p className="text-sm text-foreground mt-1">
+                                                <p className="text-sm text-muted-foreground">
                                                     {selectedUnifiedFood.indication}
                                                 </p>
                                             </div>
@@ -1296,25 +1438,31 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                         </div>
                             
                                         {/* Valores nutricionais */}
-                                        <div className="grid grid-cols-3 gap-3 mb-3">
-                                            <div className="bg-muted p-2 rounded text-center">
-                                                <p className="text-xs text-muted-foreground mb-1">Calorias</p>
-                                                <p className="font-bold text-foreground text-sm">
+                                        <div className="grid grid-cols-3 gap-3 mb-4">
+                                            <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-indigo-900/20 dark:to-indigo-800/20 p-3 rounded-lg text-center border border-indigo-200 dark:border-indigo-800">
+                                                <p className="text-xs text-muted-foreground mb-1 flex items-center justify-center gap-1">
+                                                    <span>⚡</span> Calorias
+                                                </p>
+                                                <p className="font-bold text-indigo-700 dark:text-indigo-300 text-sm">
                                                     {selectedUnifiedFood.calories} {selectedUnifiedFood.unit === 'g' ? 'kcal/g' : selectedUnifiedFood.unit === 'ml' ? 'kcal/mL' : `kcal/${selectedUnifiedFood.unit}`}
                                                 </p>
-                            </div>
+                                            </div>
                                             {selectedUnifiedFood.protein && selectedUnifiedFood.protein !== 'N/A' && (
-                                                <div className="bg-muted p-2 rounded text-center">
-                                                    <p className="text-xs text-muted-foreground mb-1">PB</p>
-                                                    <p className="font-bold text-foreground text-sm">
+                                                <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-3 rounded-lg text-center border border-green-200 dark:border-green-800">
+                                                    <p className="text-xs text-muted-foreground mb-1 flex items-center justify-center gap-1">
+                                                        <span>🥩</span> PB
+                                                    </p>
+                                                    <p className="font-bold text-green-700 dark:text-green-300 text-sm">
                                                         {selectedUnifiedFood.protein}
                                                     </p>
                                                 </div>
                                             )}
                                             {selectedUnifiedFood.fat && selectedUnifiedFood.fat !== 'N/A' && (
-                                                <div className="bg-muted p-2 rounded text-center">
-                                                    <p className="text-xs text-muted-foreground mb-1">EE</p>
-                                                    <p className="font-bold text-foreground text-sm">
+                                                <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 dark:from-yellow-900/20 dark:to-yellow-800/20 p-3 rounded-lg text-center border border-yellow-200 dark:border-yellow-800">
+                                                    <p className="text-xs text-muted-foreground mb-1 flex items-center justify-center gap-1">
+                                                        <span>🧈</span> EE
+                                                    </p>
+                                                    <p className="font-bold text-yellow-700 dark:text-yellow-300 text-sm">
                                                         {selectedUnifiedFood.fat}
                                                     </p>
                                                 </div>
@@ -1343,9 +1491,10 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                         
                                         <button
                                             onClick={handleAddUnifiedFood}
-                                            className="w-full py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition text-sm"
+                                            className="w-full py-3 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white rounded-lg font-semibold hover:from-indigo-700 hover:to-indigo-800 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 text-sm"
                                         >
-                                            Adicionar à Lista
+                                            <span>➕</span>
+                                            <span>Adicionar à Lista</span>
                                         </button>
                                     </div>
                                 )}

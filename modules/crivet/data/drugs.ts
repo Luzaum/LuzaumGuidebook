@@ -18,6 +18,7 @@ import { dexmedetomidineRecommendedUnit, dexmedetomidineRecommendedUnitWhy, dexm
 import { propofolRecommendedUnit, propofolRecommendedUnitWhy, propofolIndicatedDoses } from './drugs/propofol'
 import { methadoneRecommendedUnit, methadoneRecommendedUnitWhy, methadoneIndicatedDoses } from './drugs/methadone'
 import { insulinRegularRecommendedUnit, insulinRegularRecommendedUnitWhy, insulinRegularIndicatedDoses } from './drugs/insulinRegular'
+import { metoclopramidaRecommendedUnit, metoclopramidaRecommendedUnitWhy, metoclopramidaIndicatedDoses } from './drugs/metoclopramida'
 
 export type DrugCategory =
   | 'Analgésicos e Anestésicos'
@@ -307,6 +308,9 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [5],
     compatibility: defaultCompatibility,
+    recommendedUnit: metoclopramidaRecommendedUnit,
+    recommendedUnitWhy: metoclopramidaRecommendedUnitWhy,
+    indicatedDoses: metoclopramidaIndicatedDoses,
   },
   {
     id: 'maropitant',

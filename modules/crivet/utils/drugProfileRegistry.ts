@@ -17,6 +17,7 @@ import { methadoneProfile } from '../data/drugs/methadone.profile'
 import { ephedrineProfile } from '../data/drugs/ephedrine.profile'
 import { maropitantProfile } from '../data/drugs/maropitant.profile'
 import { insulinRegularProfile } from '../data/drugs/insulinRegular.profile'
+import { metoclopramidaProfile } from '../data/drugs/metoclopramida.profile'
 import { normalizeDrug } from '../services/normalizeDrug'
 import { lintClinical, type ClinicalLintResult } from '../services/clinicalLint'
 
@@ -34,6 +35,7 @@ const DRUG_PROFILE_REGISTRY: Record<string, Partial<DrugProfile>> = {
   efedrina: ephedrineProfile as Partial<DrugProfile>,
   maropitant: maropitantProfile as Partial<DrugProfile>,
   insulina_regular: insulinRegularProfile as Partial<DrugProfile>,
+  metoclopramida: metoclopramidaProfile as Partial<DrugProfile>,
   // Adicionar outros fármacos conforme forem completados
 }
 
