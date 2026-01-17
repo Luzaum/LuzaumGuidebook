@@ -262,6 +262,27 @@ export function Step5Analysis() {
           </div>
         </Card>
 
+        {/* Cautelas por Comorbidade */}
+        {report.comorbidityCautions && report.comorbidityCautions.length > 0 && (
+          <Card className="p-6 border-orange-500/30 bg-orange-900/10">
+            <h3 className="text-lg font-semibold text-orange-400 mb-3 flex items-center gap-2">
+              <AlertTriangle className="w-5 h-5" />
+              Cautelas por Comorbidade
+            </h3>
+            <p className="text-sm text-neutral-300 mb-3">
+              As seguintes considerações devem ser observadas devido às comorbidades identificadas no paciente:
+            </p>
+            <ul className="space-y-2">
+              {report.comorbidityCautions.map((caution, idx) => (
+                <li key={idx} className="text-sm text-neutral-200 flex items-start gap-2">
+                  <span className="text-orange-400 mt-1">•</span>
+                  <span>{caution}</span>
+                </li>
+              ))}
+            </ul>
+          </Card>
+        )}
+
         {/* TOP 5 DDx */}
         <div className="space-y-4">
           <h3 className="text-xl font-bold text-gold flex items-center gap-2">

@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { COMMERCIAL_FOODS, generateAutomaticWarnings } from './data/foodsCommercial';
 import type { CommercialFood } from './data/types/commercialFood';
+import type { FoodItem, NutritionProfile, FoodUnit, CaloriesInfo } from './data/types/foodTypes';
 
 // --- DATA ---
 const factors = {
@@ -34,11 +35,104 @@ const factors = {
     }
 };
 
+// Helper function para normalizar unidades e obter calorias
+function getCaloriesPerGramOrMl(food: FoodItem | CommercialFood): CaloriesInfo {
+    if ('unit' in food && food.unit) {
+        // Se já tem unit definido, usar diretamente
+        if (food.unit === 'g' || food.unit === 'ml') {
+            return { kcalPerUnit: food.calories, unit: food.unit };
+        }
+        // Normalizar outras unidades
+        if (food.unit === 'L' || food.unit === 'l') {
+            return { kcalPerUnit: food.calories, unit: 'ml' };
+        }
+        if (food.unit === 'kg') {
+            return { kcalPerUnit: food.calories / 1000, unit: 'g' };
+        }
+        // Default: assumir gramas
+        return { kcalPerUnit: food.calories, unit: 'g' };
+    }
+    // Fallback: assumir gramas
+    return { kcalPerUnit: food.calories || 0, unit: 'g' };
+}
+
+// Função para determinar nutritionProfile baseado nas características do alimento
+function determineNutritionProfile(food: Partial<FoodItem>): NutritionProfile {
+    const name = food.name?.toLowerCase() || '';
+    
+    // Recovery completo
+    if (name.includes('recovery') || name.includes('recuperação') || 
+        name.includes('a/d') || name.includes('urgent care')) {
+        if (name.includes('liquid') || name.includes('líquido')) {
+            return 'SUPPORT_ENTERAL';
+        }
+        return 'VET_RECOVERY_COMPLETE';
+    }
+    
+    // Enterais humanas
+    if (name.includes('fresubin') || name.includes('complett peptide') || 
+        name.includes('complett') && name.includes('líquido')) {
+        return 'HUMAN_ENTERAL';
+    }
+    
+    // Suplementos
+    if (name.includes('churu') || name.includes('cat stix') || 
+        name.includes('nutrapet') || name.includes('nutralife') && name.includes('pasta') ||
+        name.includes('gourmet') && (name.includes('sachê') || name.includes('sache'))) {
+        return 'SUPPLEMENT';
+    }
+    
+    // Terapêuticos
+    if (food.isTherapeutic) {
+        return 'VET_THERAPEUTIC_COMPLETE';
+    }
+    
+    // Default: completo
+    return 'COMPLETE';
+}
+
+// Função para determinar se é completo e balanceado
+function determineIsCompleteAndBalanced(profile: NutritionProfile): boolean {
+    return profile === 'COMPLETE' || 
+           profile === 'VET_THERAPEUTIC_COMPLETE' || 
+           profile === 'VET_RECOVERY_COMPLETE' ||
+           profile === 'SUPPORT_ENTERAL'; // Assumindo que enterais de suporte são completas
+}
+
+// Função para determinar se requer supervisão veterinária
+function determineRequiresVetSupervision(profile: NutritionProfile, isTherapeutic: boolean): boolean {
+    return profile === 'VET_THERAPEUTIC_COMPLETE' ||
+           profile === 'VET_RECOVERY_COMPLETE' ||
+           profile === 'SUPPORT_ENTERAL' ||
+           profile === 'HUMAN_ENTERAL' ||
+           isTherapeutic;
+}
+
+// Função para obter badge do nutritionProfile
+function getNutritionProfileBadge(profile: NutritionProfile): { text: string; color: string } {
+    switch (profile) {
+        case 'COMPLETE':
+            return { text: 'Completo', color: 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300' };
+        case 'VET_THERAPEUTIC_COMPLETE':
+            return { text: 'Terapêutico', color: 'bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300' };
+        case 'VET_RECOVERY_COMPLETE':
+            return { text: 'Recovery', color: 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300' };
+        case 'SUPPORT_ENTERAL':
+            return { text: 'Suporte enteral', color: 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300' };
+        case 'SUPPLEMENT':
+            return { text: 'Suplemento', color: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300' };
+        case 'HUMAN_ENTERAL':
+            return { text: 'Enteral humana (cuidado)', color: 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300' };
+        default:
+            return { text: 'Completo', color: 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300' };
+    }
+}
+
 const predefinedFoods = [
     // --- Cães & Gatos ---
     { name: "Hill's a/d Urgent Care (Úmido)", species: ['dog', 'cat'], calories: 1.175, unit: 'g', protein: '8.5%', fat: '5.2%', indication: 'Convalescença, anorexia, pós-cirurgia, lesão.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], alerts: [ { type: 'green', text: 'Excelente para pacientes anoréxicos ou que necessitam de suporte calórico em pequenos volumes.' }, { type: 'red', text: 'Alto teor de gordura e proteína: <strong>contraindicado</strong> em pancreatite, hiperlipidemia, e DRC/encefalopatia hepática não compensadas.' } ] },
     { name: "Premier Nutrição Clínica Recuperação (Úmido)", species: ['dog', 'cat'], calories: 1.300, unit: 'g', protein: '11.0%', fat: '9.0%', indication: 'Suporte nutricional em recuperação, pós-cirúrgico.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], alerts: [ { type: 'green', text: 'Alto aporte calórico e proteico para recuperação rápida.' }, { type: 'red', text: 'Contraindicado em pancreatite, hiperlipidemia, e DRC/encefalopatia hepática não compensadas devido ao alto teor de gordura e proteína.' } ] },
-    { name: "Royal Canin Recovery (Úmido)", species: ['dog', 'cat'], calories: 1.100, unit: 'g', protein: '12.7%', fat: '6.4%', indication: 'Convalescença, anorexia, pós-cirurgia, cuidados intensivos.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], alerts: [ { type: 'green', text: 'Textura mousse ideal para alimentação por sonda e pacientes com dificuldade de apreensão do alimento.' }, { type: 'red', text: 'Contraindicado em encefalopatia hepática, pancreatite e hiperlipidemia agudas devido ao alto teor de gordura.' } ] },
+    { name: "Royal Canin Recovery (Úmido)", species: ['dog', 'cat'], calories: 1.100, unit: 'g', protein: '12.7%', fat: '6.4%', indication: 'Convalescença, anorexia, pós-cirurgia, cuidados intensivos.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], nutritionProfile: 'VET_RECOVERY_COMPLETE', isCompleteAndBalanced: true, requiresVetSupervision: true, alerts: [ { type: 'green', text: 'Textura mousse ideal para alimentação por sonda e pacientes com dificuldade de apreensão do alimento.' }, { type: 'red', text: 'Contraindicado em encefalopatia hepática, pancreatite e hiperlipidemia agudas devido ao alto teor de gordura.' } ] },
     { name: "FN Vet Care Recuperação (lata)", species: ['dog', 'cat'], calories: 1.180, unit: 'g', protein: '11.5%', fat: '7.5%', indication: 'Recuperação de cães e gatos debilitados, anorexia ou convalescença.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], alerts: [ { type: 'yellow', text: 'Teor de gordura moderado, usar com cautela em pacientes com histórico de pancreatite.' } ] },
     { name: "Nutralife Intensiv (pó)", species: ['dog', 'cat'], calories: 4.000, unit: 'g', protein: '29%', fat: '46%', indication: 'Recuperação, anorexia, crescimento, atletas.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [], alerts: [ { type: 'red', text: 'Gordura extremamente elevada (46%). <strong>Contraindicado</strong> em pancreatite, hiperlipidemia, encefalopatia hepática e DRC descompensada.' } ], dilution: {scoop_g: 16, water_ml: 30} },
     { name: "Nutralife (pasta)", species: ['dog', 'cat'], calories: 4.500, unit: 'g', protein: '15.3%', fat: '38%', indication: 'Recuperação, anorexia (pasta palatável).', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [], alerts: [ { type: 'green', text: 'Muito palatável, fácil de administrar como suplemento para estimular o apetite.' }, { type: 'red', text: 'Alto teor de gordura (38%). <strong>Contraindicado</strong> em pancreatite, hiperlipidemia, e DRC.' } ] },
@@ -75,7 +169,7 @@ const predefinedFoods = [
     { name: "Formula Natural Vet Care Obesidade Cães", species: ['dog'], calories: 3.0, unit: 'g', protein: '30%', fat: '8.5%', indication: 'Manejo da obesidade em cães.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['WEIGHT_LOSS'] },
     { name: "Formula Natural Vet Care Osteoartrite Cães", species: ['dog'], calories: 3.5, unit: 'g', protein: '25%', fat: '11%', indication: 'Suporte à saúde articular.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['JOINT'], alerts: [ { type: 'green', text: 'Contém condroprotetores (glucosamina e condroitina) e EPA/DHA para auxiliar no manejo da osteoartrite.' } ] },
     { name: "Formula Natural Vet Care Renal Cães", species: ['dog'], calories: 4.0, unit: 'g', protein: '14%', fat: '17%', indication: 'Suporte à função renal.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['CKD'], alerts: [ { type: 'green', text: 'Fósforo e proteína controlados para auxiliar no manejo da Doença Renal Crônica (DRC).' }, { type: 'red', text: '<strong>Contraindicado</strong> para filhotes em crescimento, fêmeas gestantes/lactantes.' } ] },
-    { name: "Fresubin Original", species: ['dog'], calories: 1.000, unit: 'L', protein: '4.0%', fat: '3.8%', indication: 'Nutrição enteral quando dietas veterinárias não estão disponíveis.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
+    { name: "Fresubin Original", species: ['dog'], calories: 1.000, unit: 'ml', protein: '4.0%', fat: '3.8%', indication: 'Nutrição enteral quando dietas veterinárias não estão disponíveis.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [], nutritionProfile: 'HUMAN_ENTERAL', isCompleteAndBalanced: false, requiresVetSupervision: true, speciesSafetyNotes: { cat: ['Evitar uso exclusivo/prolongado (taurina/perfil mineral).'] } },
     { name: "Hill's d/d Pato & Arroz (Seco, Cães)", species: ['dog'], calories: 3.713, unit: 'g', protein: '15.1%', fat: '14.3%', indication: 'Sensibilidades alimentares, dermatites pruriginosas, gastroenterite crônica, DII.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['ALLERGY', 'GI'] },
     { name: "Hill's i/d (Seco, Cães)", species: ['dog'], calories: 3.598, unit: 'g', protein: '26.2%', fat: '13.6%', indication: 'Manejo de distúrbios gastrointestinais.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], alerts: [ { type: 'green', text: 'Altamente digestível e com prebióticos (tecnologia ActivBiome+), excelente para a maioria das diarreias agudas.' } ] },
     { name: "Hill's i/d (Úmido, Cães)", species: ['dog'], calories: 1.017, unit: 'g', protein: '4.0%', fat: '1.5%', indication: 'Distúrbios gastrointestinais.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['GI'], alerts: [ { type: 'green', text: 'Baixo teor de gordura, ideal para condições que exigem restrição de gordura, como recuperação de pancreatite.' } ] },
@@ -138,7 +232,7 @@ const predefinedFoods = [
     { name: "Hill's k/d (Úmido, Gatos)", species: ['cat'], calories: 1.165, unit: 'g', protein: '7.8%', fat: '6%', indication: 'Suporte à função renal crônica.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['CKD'], alerts: [ { type: 'green', text: 'Auxilia na hidratação de pacientes renais e possui proteína e fósforo restritos para suportar a função renal.' }, { type: 'red', text: '<strong>Contraindicado</strong> para filhotes, gestantes e lactantes.' } ] },
     { name: "Hills Metabolic (Gatos)", species: ['cat'], calories: 3.476, unit: 'g', protein: '38.2%', fat: '12.8%', indication: 'Perda e manutenção de peso.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['WEIGHT_LOSS'], alerts: [ { type: 'green', text: 'Clinicamente comprovado para perda de peso segura, atuando no metabolismo individual do gato.' }, { type: 'yellow', text: 'A perda de peso em gatos deve ser lenta (0.5-1% do peso/semana) para evitar o risco de lipidose hepática.' } ] },
     { name: "Hiperkcal Nutricuper Cat (pó)", species: ['cat'], calories: 4.761, unit: 'g', protein: 'N/I', fat: 'N/I', indication: 'Suplemento hipercalórico para ganho de peso.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [], alerts: [ { type: 'yellow', text: 'Faltam dados de PB e EE. Usar com cautela, especialmente em pacientes com comorbidades.' } ], dilution: {scoop_g: 10, water_ml: 20} },
-    { name: 'Inaba Churu (média)', species: ['cat'], calories: 0.44, unit: 'g', protein: '8.5%', fat: '0.5%', indication: 'Hidratação, agrado, administração de medicamentos.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [], alerts: [ { type: 'yellow', text: 'Não é um alimento completo. Use apenas como petisco ou para melhorar a palatabilidade de outras rações.' } ] },
+    { name: 'Inaba Churu (média)', species: ['cat'], calories: 0.44, unit: 'g', protein: '8.5%', fat: '0.5%', indication: 'Hidratação, agrado, administração de medicamentos.', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [], nutritionProfile: 'SUPPLEMENT', isCompleteAndBalanced: false, requiresVetSupervision: false, speciesSafetyNotes: { cat: ['Não usar como dieta exclusiva.'] }, alerts: [ { type: 'yellow', text: 'Não é um alimento completo. Use apenas como petisco ou para melhorar a palatabilidade de outras rações.' } ] },
     { name: 'Optimum Sachê (Salmão/Frango)', species: ['cat'], calories: 0.874, unit: 'sache', protein: '8.5%', fat: '3.0%', indication: 'Nutrição completa, absorção de nutrientes, controle de peso.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: false, therapeuticIndications: [] },
     { name: "Premier Gourmet Gatos Castrados (Sachê)", species: ['cat'], calories: 0.442, unit: 'sache', protein: '9.5%', fat: '0.2%', indication: 'Complemento alimentar, hidratação, saciedade.', lifeStage: 'ADULT', neuterStatus: 'NEUTERED', isTherapeutic: false, therapeuticIndications: [] },
     { name: "Premier Nutrição Clínica Renal (Seco, Gatos)", species: ['cat'], calories: 4.497, unit: 'g', protein: '24.0%', fat: '20.0%', indication: 'Auxílio no tratamento da doença renal crônica.', lifeStage: 'ADULT', neuterStatus: 'ANY', isTherapeutic: true, therapeuticIndications: ['CKD'] },
@@ -307,12 +401,61 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
         return 0;
     }, [calculationResults, nutritionalGoal, targetWeight, species]);
 
+    // Função para migrar alimentos adicionando campos faltantes
+    const migrateFood = useCallback((food: any): FoodItem => {
+        // Se já tem os campos, retornar como está
+        if ('nutritionProfile' in food && food.nutritionProfile) {
+            return food as FoodItem;
+        }
+        
+        // Determinar campos baseado nas características
+        const nutritionProfile = determineNutritionProfile(food);
+        const isCompleteAndBalanced = determineIsCompleteAndBalanced(nutritionProfile);
+        const requiresVetSupervision = determineRequiresVetSupervision(nutritionProfile, food.isTherapeutic || false);
+        
+        // Normalizar unit
+        let unit: FoodUnit = 'g';
+        if (food.unit === 'ml' || food.unit === 'L' || food.unit === 'l') {
+            unit = 'ml';
+        } else if (food.unit === 'g' || food.unit === 'kg') {
+            unit = 'g';
+        } else {
+            unit = 'g'; // default
+        }
+        
+        // Normalizar calories se necessário
+        let calories = food.calories || 0;
+        if (food.unit === 'kg' && calories > 0) {
+            calories = calories / 1000; // converter kcal/kg para kcal/g
+        }
+        
+        // Determinar speciesSafetyNotes
+        const speciesSafetyNotes: { dog?: string[]; cat?: string[] } = {};
+        if (nutritionProfile === 'HUMAN_ENTERAL' && food.species?.includes('cat')) {
+            speciesSafetyNotes.cat = ['Gatos: risco por taurina e perfil mineral inadequado se uso exclusivo/prolongado.'];
+        }
+        if (nutritionProfile === 'SUPPLEMENT' && food.species?.includes('cat')) {
+            speciesSafetyNotes.cat = ['Não usar como dieta exclusiva.'];
+        }
+        
+        return {
+            ...food,
+            nutritionProfile,
+            isCompleteAndBalanced,
+            requiresVetSupervision,
+            unit,
+            calories,
+            speciesSafetyNotes: Object.keys(speciesSafetyNotes).length > 0 ? speciesSafetyNotes : undefined,
+        } as FoodItem;
+    }, []);
+    
     const isCritical = status.toLowerCase().includes('crítico') || status.toLowerCase().includes('hospitalizado');
     const sortedFoods = useMemo(() => 
         [...predefinedFoods]
+        .map(migrateFood)
         .filter(food => food.species.includes(species))
         .sort((a, b) => a.name.localeCompare(b.name)), 
-    [species]);
+    [species, migrateFood]);
 
     // --- EFFECTS ---
     useEffect(() => {
@@ -398,8 +541,9 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
 
     // Unified food bank: combine commercial foods and predefined foods
     const unifiedFoods = useMemo(() => {
-        // Convert predefined foods to unified format
+        // Convert predefined foods to unified format with migration
         const convertedPredefined = predefinedFoods
+            .map(migrateFood)
             .filter((food) => {
                 const foodSpecies = food.species.includes('dog') ? 'DOG' : food.species.includes('cat') ? 'CAT' : null;
                 return foodSpecies === commercialFoodFilters.species;
@@ -446,10 +590,14 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                 indication: food.indication,
                 alerts: food.alerts,
                 dilution: food.dilution,
+                nutritionProfile: food.nutritionProfile || determineNutritionProfile(food),
+                isCompleteAndBalanced: food.isCompleteAndBalanced ?? determineIsCompleteAndBalanced(food.nutritionProfile || determineNutritionProfile(food)),
+                requiresVetSupervision: food.requiresVetSupervision ?? determineRequiresVetSupervision(food.nutritionProfile || determineNutritionProfile(food), food.isTherapeutic ?? false),
+                speciesSafetyNotes: food.speciesSafetyNotes,
                 isPredefined: true,
             }));
         
-        // Convert commercial foods to unified format
+        // Convert commercial foods to unified format with migration
         const convertedCommercial = COMMERCIAL_FOODS.filter((food) => {
             if (food.species !== commercialFoodFilters.species) return false;
             if (
@@ -468,18 +616,25 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                 food.isTherapeutic !== commercialFoodFilters.isTherapeutic
             )
                 return false;
+            
             return true;
-        }).map((food) => ({
-            ...food,
-            isPredefined: false,
-        }));
+        }).map((food) => {
+            const profile = food.nutritionProfile || determineNutritionProfile(food);
+            return {
+                ...food,
+                nutritionProfile: profile,
+                isCompleteAndBalanced: food.isCompleteAndBalanced ?? determineIsCompleteAndBalanced(profile),
+                requiresVetSupervision: food.requiresVetSupervision ?? determineRequiresVetSupervision(profile, food.isTherapeutic),
+                isPredefined: false,
+            };
+        });
         
         // Combine and sort: commercial foods first (by date), then predefined foods
         return [
             ...convertedCommercial.sort((a, b) => b.updatedAtISO.localeCompare(a.updatedAtISO)),
             ...convertedPredefined,
         ];
-    }, [commercialFoodFilters]);
+    }, [commercialFoodFilters, migrateFood]);
     
     // Filter commercial foods and sort by updatedAtISO (most recent first) - keep for backward compatibility
     const filteredCommercialFoods = useMemo(() => {
@@ -981,9 +1136,18 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                                     {selectedUnifiedFood.product}
                                                 </p>
                                             </div>
-                                            {selectedUnifiedFood.isTherapeutic && (
-                                                <span className="px-2 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 text-xs font-semibold rounded">
-                                                    Terapêutico
+                                            {(() => {
+                                                const profile = selectedUnifiedFood.nutritionProfile || determineNutritionProfile(selectedUnifiedFood);
+                                                const badge = getNutritionProfileBadge(profile);
+                                                return (
+                                                    <span className={`px-2 py-1 ${badge.color} text-xs font-semibold rounded`}>
+                                                        {badge.text}
+                                                    </span>
+                                                );
+                                            })()}
+                                            {selectedUnifiedFood.requiresVetSupervision && (
+                                                <span className="ml-2 px-2 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300 text-xs font-semibold rounded">
+                                                    ⚕️ Uso sob supervisão
                                                 </span>
                                             )}
                                         </div>
@@ -1115,12 +1279,21 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                                     {selectedUnifiedFood.indication}
                                                 </p>
                                             </div>
-                                            {selectedUnifiedFood.isTherapeutic && (
-                                                <span className="px-2 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 text-xs font-semibold rounded">
-                                                    Terapêutico
+                                            {(() => {
+                                                const profile = selectedUnifiedFood.nutritionProfile || determineNutritionProfile(selectedUnifiedFood);
+                                                const badge = getNutritionProfileBadge(profile);
+                                                return (
+                                                    <span className={`px-2 py-1 ${badge.color} text-xs font-semibold rounded`}>
+                                                        {badge.text}
+                                                    </span>
+                                                );
+                                            })()}
+                                            {selectedUnifiedFood.requiresVetSupervision && (
+                                                <span className="ml-2 px-2 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300 text-xs font-semibold rounded">
+                                                    ⚕️ Uso sob supervisão
                                                 </span>
-                                )}
-                            </div>
+                                            )}
+                                        </div>
                             
                                         {/* Valores nutricionais */}
                                         <div className="grid grid-cols-3 gap-3 mb-3">
@@ -1472,6 +1645,77 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                                                             : 'Insira o peso ideal'}
                                                     </strong>
                                                 </div>
+                                                
+                                                {/* Mensagens de segurança baseadas em nutritionProfile */}
+                                                {(() => {
+                                                    const foodItem = food.isCommercial 
+                                                        ? null 
+                                                        : sortedFoods.find(f => f.name === food.name);
+                                                    if (!foodItem) return null;
+                                                    
+                                                    const profile = foodItem.nutritionProfile || determineNutritionProfile(foodItem);
+                                                    const isComplete = foodItem.isCompleteAndBalanced ?? determineIsCompleteAndBalanced(profile);
+                                                    
+                                                    if (isComplete) return null;
+                                                    
+                                                    if (profile === 'SUPPLEMENT') {
+                                                        return (
+                                                            <div className="mt-3 p-3 bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 text-yellow-800 dark:text-yellow-300 rounded">
+                                                                <p className="text-sm font-semibold mb-1">⚠️ Suplemento</p>
+                                                                <p className="text-xs">Isso não é dieta completa. Use como complemento/estratégia de palatabilidade, não como única fonte.</p>
+                                                            </div>
+                                                        );
+                                                    }
+                                                    
+                                                    if (profile === 'HUMAN_ENTERAL') {
+                                                        const hasCat = foodItem.species?.includes('cat');
+                                                        return (
+                                                            <div className="mt-3 p-3 bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 text-red-800 dark:text-red-300 rounded">
+                                                                <p className="text-sm font-semibold mb-1">🚨 Enteral Humana</p>
+                                                                <p className="text-xs mb-1">Enteral humana: risco de desequilíbrio (ex.: taurina em gatos, minerais). Use apenas por curto prazo e com supervisão.</p>
+                                                                {hasCat && foodItem.speciesSafetyNotes?.cat && (
+                                                                    <p className="text-xs mt-1 font-semibold">{foodItem.speciesSafetyNotes.cat[0]}</p>
+                                                                )}
+                                                            </div>
+                                                        );
+                                                    }
+                                                    
+                                                    if (profile === 'SUPPORT_ENTERAL' && !isComplete) {
+                                                        return (
+                                                            <div className="mt-3 p-3 bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 text-red-800 dark:text-red-300 rounded">
+                                                                <p className="text-sm font-semibold mb-1">⚠️ Suporte Enteral</p>
+                                                                <p className="text-xs">Este produto não é completo e balanceado. Use apenas sob supervisão veterinária.</p>
+                                                            </div>
+                                                        );
+                                                    }
+                                                    
+                                                    return null;
+                                                })()}
+                                                
+                                                {/* Tipo de alimento */}
+                                                {(() => {
+                                                    const foodItem = food.isCommercial 
+                                                        ? null 
+                                                        : sortedFoods.find(f => f.name === food.name);
+                                                    if (!foodItem) return null;
+                                                    
+                                                    const profile = foodItem.nutritionProfile || determineNutritionProfile(foodItem);
+                                                    const badge = getNutritionProfileBadge(profile);
+                                                    
+                                                    return (
+                                                        <div className="mt-2 flex items-center gap-2 text-xs text-muted-foreground">
+                                                            <span>Tipo:</span>
+                                                            <span className={`px-2 py-1 ${badge.color} rounded text-xs font-semibold`}>
+                                                                {badge.text}
+                                                            </span>
+                                                            {foodItem.requiresVetSupervision && (
+                                                                <span className="text-orange-600 dark:text-orange-400">
+                                                                    ⚕️ Uso sob supervisão
+                                                                </span>
+                                                            )}
+                                                        </div>
+                                                    );
+                                                })()}
                                             </div>
                                         )
                                     }

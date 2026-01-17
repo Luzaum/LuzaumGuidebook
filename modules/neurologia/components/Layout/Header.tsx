@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Brain, Moon, Sun, RotateCcw } from 'lucide-react'
+import { Moon, Sun, RotateCcw } from 'lucide-react'
 import { Button } from '../UI/Button'
 import { useUiStore } from '../../stores/uiStore'
 import Logo from '../../../../components/Logo'
@@ -41,18 +41,22 @@ export function Header({ onReset, onGoHome }: HeaderProps) {
           {/* Separador */}
           <div className="h-6 w-px bg-white/20" />
 
-          {/* Logo VetNeuro - volta para etapa 1 do wizard */}
+          {/* Logo NeuroVet - volta para etapa 1 do wizard */}
           <button
             type="button"
             onClick={onGoHome}
             className="inline-flex items-center gap-3 hover:opacity-90 focus:outline-none transition-opacity"
             aria-label="Voltar ao início do wizard"
           >
-            <div className="p-2 rounded-xl bg-gold/20">
-              <Brain className="w-6 h-6 text-gold" />
+            <div className="h-10 w-10 flex items-center justify-center">
+              <img
+                src="/apps/NEURO.png"
+                alt="NeuroVet Logo"
+                className="w-10 h-10 object-contain drop-shadow-[0_0_12px_rgba(245,197,66,0.35)]"
+              />
             </div>
             <div className="text-left">
-              <h1 className="text-lg font-semibold text-white">VetNeuro</h1>
+              <h1 className="text-lg font-semibold text-white">NeuroVet</h1>
               <p className="text-xs text-white/60">
                 Assistente inteligente de neurologia veterinária
               </p>

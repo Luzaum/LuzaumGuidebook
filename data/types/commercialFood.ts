@@ -34,6 +34,8 @@ export type GuaranteeRow = {
   note?: string
 }
 
+import type { NutritionProfile } from './foodTypes';
+
 export type CommercialFood = {
   id: string // slug estável
   brand: string
@@ -47,6 +49,11 @@ export type CommercialFood = {
   isTherapeutic: boolean
   therapeuticIndications?: string[] // ex: ["WEIGHT_LOSS", "CKD"]
   cautions?: string[] // ex: ["PANCREATITIS_RISK_HIGH_FAT"]
+  
+  nutritionProfile?: NutritionProfile
+  isCompleteAndBalanced?: boolean
+  requiresVetSupervision?: boolean
+  speciesSafetyNotes?: { dog?: string[]; cat?: string[] }
 
   me_kcal_per_kg: number
   me_method_note?: string // ex: "Cálculo NRC (rótulo)"

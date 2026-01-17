@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import type { HelpTopic } from '../../types/helpTopics'
 
 type Props = {
@@ -9,9 +9,27 @@ type Props = {
 }
 
 export function HelpModal({ open, onClose, topic, theme }: Props) {
-  if (!open || !topic) return null
-
   const isDark = theme === 'dark'
+
+  // Fechar com ESC e bloquear scroll
+  useEffect(() => {
+    if (!open) return
+
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+    }
+
+    // Bloquear scroll do body quando modal aberto
+    document.body.style.overflow = 'hidden'
+    document.addEventListener('keydown', handleEsc)
+
+    return () => {
+      document.body.style.overflow = ''
+      document.removeEventListener('keydown', handleEsc)
+    }
+  }, [open, onClose])
+
+  if (!open || !topic) return null
 
   return (
     <div

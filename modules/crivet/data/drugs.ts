@@ -17,6 +17,7 @@ import { lidocaineRecommendedUnit, lidocaineRecommendedUnitWhy, lidocaineIndicat
 import { dexmedetomidineRecommendedUnit, dexmedetomidineRecommendedUnitWhy, dexmedetomidineIndicatedDoses } from './drugs/dexmedetomidine'
 import { propofolRecommendedUnit, propofolRecommendedUnitWhy, propofolIndicatedDoses } from './drugs/propofol'
 import { methadoneRecommendedUnit, methadoneRecommendedUnitWhy, methadoneIndicatedDoses } from './drugs/methadone'
+import { insulinRegularRecommendedUnit, insulinRegularRecommendedUnitWhy, insulinRegularIndicatedDoses } from './drugs/insulinRegular'
 
 export type DrugCategory =
   | 'Analgésicos e Anestésicos'
@@ -291,8 +292,11 @@ export const drugs: Drug[] = [
     name: 'Insulina Regular',
     category: 'Endócrino',
     hasCRI: true,
-    concentrations: [100],
+    concentrations: [100, 1, 0.5], // 100 U/mL (frasco), 1 U/mL (diluição padrão cão), 0.5 U/mL (diluição padrão gato)
     compatibility: defaultCompatibility,
+    recommendedUnit: insulinRegularRecommendedUnit,
+    recommendedUnitWhy: insulinRegularRecommendedUnitWhy,
+    indicatedDoses: insulinRegularIndicatedDoses,
   },
 
   // Antieméticos / Pró-cinéticos

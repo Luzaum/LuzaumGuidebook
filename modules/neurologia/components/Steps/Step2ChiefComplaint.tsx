@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Card } from '../UI/Card'
-import { HelpButton } from '../UI/HelpButton'
 import {
   Activity,
   AlertCircle,
@@ -25,11 +24,71 @@ interface Step2Props {
 }
 
 const COMPLAINTS = [
+  // Convulsões e síncope
   {
-    id: 'Convulsão',
+    id: 'ConvulsaoFocal',
     icon: Zap,
-    label: 'Convulsão',
+    label: 'Convulsão Focal',
   },
+  {
+    id: 'ConvulsaoGeneralizada',
+    icon: Zap,
+    label: 'Convulsão Generalizada',
+  },
+  {
+    id: 'ClusterConvulsoes',
+    icon: Zap,
+    label: 'Cluster de Convulsões',
+  },
+  {
+    id: 'Sincope',
+    icon: TrendingUp,
+    label: 'Síncope / Colapso',
+  },
+  // Alterações de consciência e comportamento
+  {
+    id: 'AlteracaoConsciencia',
+    icon: Brain,
+    label: 'Alteração de Nível de Consciência',
+  },
+  {
+    id: 'Comportamento',
+    icon: Brain,
+    label: 'Alteração Comportamental',
+  },
+  {
+    id: 'AndarCirculos',
+    icon: Activity,
+    label: 'Andar em Círculos / Head Pressing',
+  },
+  // Cegueira e visão
+  {
+    id: 'Cegueira',
+    icon: EyeOff,
+    label: 'Cegueira Aguda',
+  },
+  {
+    id: 'Anisocoria',
+    icon: EyeOff,
+    label: 'Anisocoria / Alteração Pupilar',
+  },
+  // Vestibular
+  {
+    id: 'HeadTilt',
+    icon: Activity,
+    label: 'Head Tilt (Cabeça Inclinada)',
+  },
+  {
+    id: 'Vertigem',
+    icon: Activity,
+    label: 'Vertigem / Vômito Vestibular',
+  },
+  {
+    id: 'Nistagmo',
+    icon: Activity,
+    label: 'Nistagmo',
+  },
+  // Locomoção e coordenação
   {
     id: 'Ataxia',
     icon: MoveDiagonal,
@@ -41,40 +100,37 @@ const COMPLAINTS = [
     label: 'Paresia / Paralisia',
   },
   {
-    id: 'Comportamento',
-    icon: Brain,
-    label: 'Alteração Comportamental',
+    id: 'Tetraparesia',
+    icon: Footprints,
+    label: 'Tetraparesia',
   },
   {
-    id: 'Dor',
+    id: 'Paraparesia',
+    icon: Footprints,
+    label: 'Paraparesia',
+  },
+  {
+    id: 'Hipermetria',
+    icon: MoveDiagonal,
+    label: 'Hipermetria / Tremor de Intenção',
+  },
+  // Dor espinhal
+  {
+    id: 'DorCervical',
     icon: AlertCircle,
-    label: 'Dor Espinhal / Cervical',
+    label: 'Dor Espinhal Cervical',
   },
   {
-    id: 'HeadTilt',
-    icon: Activity,
-    label: 'Head Tilt (Cabeça Inclinada)',
+    id: 'DorToracolombar',
+    icon: AlertCircle,
+    label: 'Dor Espinhal Toracolombar',
   },
   {
-    id: 'Cegueira',
-    icon: EyeOff,
-    label: 'Cegueira Aguda',
+    id: 'DorLombossacra',
+    icon: AlertCircle,
+    label: 'Dor Espinhal Lombossacra',
   },
-  {
-    id: 'AlteracaoConsciencia',
-    icon: Brain,
-    label: 'Alteração de Nível de Consciência',
-  },
-  {
-    id: 'AndarCirculos',
-    icon: Activity,
-    label: 'Andar em Círculos / Head Pressing',
-  },
-  {
-    id: 'Tremores',
-    icon: TrendingUp,
-    label: 'Tremores / Mioclonias',
-  },
+  // Nervos cranianos e funções
   {
     id: 'DisfuncaoFacial',
     icon: AlertCircle,
@@ -86,14 +142,41 @@ const COMPLAINTS = [
     label: 'Disfagia / Regurgitação',
   },
   {
+    id: 'Disfonia',
+    icon: AlertCircle,
+    label: 'Disfonia / Alteração de Voz',
+  },
+  // Funções autonômicas
+  {
     id: 'DisfuncaoUrinaria',
     icon: Droplet,
     label: 'Disfunção Urinária / Fecal',
   },
   {
+    id: 'IncontinenciaUrinaria',
+    icon: Droplet,
+    label: 'Incontinência Urinária',
+  },
+  {
+    id: 'RetencaoUrinaria',
+    icon: Droplet,
+    label: 'Retenção Urinária',
+  },
+  // Outros
+  {
+    id: 'Tremores',
+    icon: TrendingUp,
+    label: 'Tremores / Mioclonias',
+  },
+  {
+    id: 'FraquezaFlacida',
+    icon: Footprints,
+    label: 'Fraqueza Flácida / Intolerância ao Exercício',
+  },
+  {
     id: 'Colapso',
     icon: TrendingUp,
-    label: 'Colapso / Intolerância ao Exercício',
+    label: 'Colapso Recorrente',
   },
   {
     id: 'Outros',
@@ -173,27 +256,6 @@ export function Step2ChiefComplaint({ complaint, setComplaint }: Step2Props) {
 
   return (
     <div className="space-y-8 pb-24">
-      {/* Banner Red Flags */}
-      {hasRedFlags && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-red-900/30 border-2 border-red-500/50 rounded-xl p-4"
-        >
-          <div className="flex items-center gap-3">
-            <AlertTriangle className="w-6 h-6 text-red-400" />
-            <div>
-              <p className="text-red-300 font-semibold">
-                Red flag selecionada: considerar urgência
-              </p>
-              <p className="text-red-200/80 text-sm">
-                {complaint.redFlags.length} sinal(is) de alerta marcado(s)
-              </p>
-            </div>
-          </div>
-        </motion.div>
-      )}
-
       <motion.div
         initial={{
           opacity: 0,
@@ -357,49 +419,73 @@ export function Step2ChiefComplaint({ complaint, setComplaint }: Step2Props) {
         />
       </Card>
 
-      {/* Red Flags */}
+      {/* Red Flags - Painel Destacado */}
       <section className="space-y-4">
-        <div className="flex items-center gap-2 text-red-400">
-          <AlertTriangle size={20} />
-          <h3 className="text-lg font-semibold">
-            Sinais de Alerta (Red Flags)
-          </h3>
-        </div>
-        <Card className="border-red-900/30 bg-red-900/5">
-          <p className="text-sm text-neutral-400 mb-4">
-            Marque todos os sinais de alerta presentes. Estes indicam urgência ou
-            gravidade aumentada.
-          </p>
-          <div className="space-y-2">
-            {RED_FLAGS.map((flag) => (
-              <label
-                key={flag.id}
-                className="flex items-start gap-3 p-2 hover:bg-red-900/20 rounded cursor-pointer group"
-                title={flag.tooltip}
-              >
-                <input
-                  type="checkbox"
-                  checked={complaint.redFlags.includes(flag.id)}
-                  onChange={() => toggleRedFlag(flag.id)}
-                  className="mt-0.5 w-5 h-5 rounded border-red-500 text-red-500 focus:ring-red-500 bg-transparent pointer-events-auto"
-                />
-                <div className="flex-1 flex items-start gap-2">
-                  <div className="flex-1">
-                    <span className="text-neutral-200">{flag.label}</span>
-                    <p className="text-xs text-neutral-400 mt-1">{flag.tooltip}</p>
-                  </div>
-                  <HelpButton
-                    onClick={(e) => {
-                      e?.stopPropagation()
-                      // Placeholder para tooltip detalhado
-                    }}
-                    size="sm"
-                  />
-                </div>
-              </label>
-            ))}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="bg-gradient-to-r from-red-900/40 via-red-800/30 to-red-900/40 border-2 border-red-500/60 rounded-xl p-5 shadow-[0_0_20px_rgba(239,68,68,0.15)]"
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <div className="p-2 bg-red-500/20 rounded-lg">
+              <AlertTriangle size={24} className="text-red-400" />
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-red-300">
+                ⚠️ ALERTAS - Sinais de Urgência (Red Flags)
+              </h3>
+              <p className="text-sm text-red-200/80 mt-1">
+                Marque todos os sinais de alerta presentes. Estes indicam necessidade de intervenção imediata ou urgência neurológica.
+              </p>
+            </div>
           </div>
-        </Card>
+
+          {hasRedFlags && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              className="mb-4 p-3 bg-red-950/50 border border-red-600/50 rounded-lg"
+            >
+              <p className="text-red-200 font-semibold text-sm">
+                {complaint.redFlags.length} sinal(is) de alerta selecionado(s) — considerar estabilização imediata e referência para neurologia/cuidados intensivos se necessário.
+              </p>
+            </motion.div>
+          )}
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {RED_FLAGS.map((flag) => {
+              const isSelected = complaint.redFlags.includes(flag.id)
+              return (
+                <motion.label
+                  key={flag.id}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`
+                    flex items-start gap-3 p-3 rounded-lg border cursor-pointer transition-all
+                    ${isSelected
+                      ? 'bg-red-500/20 border-red-500/60 shadow-[0_0_10px_rgba(239,68,68,0.2)]'
+                      : 'bg-red-900/20 border-red-700/40 hover:bg-red-900/30 hover:border-red-600/50'
+                    }
+                  `}
+                  title={flag.tooltip}
+                >
+                  <input
+                    type="checkbox"
+                    checked={isSelected}
+                    onChange={() => toggleRedFlag(flag.id)}
+                    className="mt-1 w-5 h-5 rounded border-red-500 text-red-500 focus:ring-2 focus:ring-red-500 bg-transparent pointer-events-auto cursor-pointer"
+                  />
+                  <div className="flex-1">
+                    <span className={`text-sm font-medium ${isSelected ? 'text-red-200' : 'text-neutral-200'}`}>
+                      {flag.label}
+                    </span>
+                    <p className="text-xs text-neutral-400 mt-1 leading-relaxed">{flag.tooltip}</p>
+                  </div>
+                </motion.label>
+              )
+            })}
+          </div>
+        </motion.div>
       </section>
     </div>
   )

@@ -14,6 +14,9 @@ import { lidocaineProfile } from '../data/drugs/lidocaine.profile'
 import { dexmedetomidineProfile } from '../data/drugs/dexmedetomidine.profile'
 import { propofolProfile } from '../data/drugs/propofol.profile'
 import { methadoneProfile } from '../data/drugs/methadone.profile'
+import { ephedrineProfile } from '../data/drugs/ephedrine.profile'
+import { maropitantProfile } from '../data/drugs/maropitant.profile'
+import { insulinRegularProfile } from '../data/drugs/insulinRegular.profile'
 import { normalizeDrug } from '../services/normalizeDrug'
 import { lintClinical, type ClinicalLintResult } from '../services/clinicalLint'
 
@@ -28,6 +31,9 @@ const DRUG_PROFILE_REGISTRY: Record<string, Partial<DrugProfile>> = {
   dexmedetomidina: dexmedetomidineProfile as Partial<DrugProfile>,
   propofol: propofolProfile as Partial<DrugProfile>,
   metadona: methadoneProfile as Partial<DrugProfile>,
+  efedrina: ephedrineProfile as Partial<DrugProfile>,
+  maropitant: maropitantProfile as Partial<DrugProfile>,
+  insulina_regular: insulinRegularProfile as Partial<DrugProfile>,
   // Adicionar outros fármacos conforme forem completados
 }
 

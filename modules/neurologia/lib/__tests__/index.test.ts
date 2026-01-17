@@ -1,5 +1,5 @@
 /**
- * Suite de testes unitários para VetNeuro
+ * Suite de testes unitários para NeuroVet
  * Para executar quando Vitest estiver instalado:
  * npm run test
  */
@@ -14,7 +14,7 @@ import { testFindForbiddenEnglish, testReplaceForbiddenEnglish } from '../qualit
  * Pode ser chamado manualmente no console do navegador
  */
 export function runAllTests() {
-  console.log('🧪 Executando suite de testes VetNeuro...\n')
+  console.log('🧪 Executando suite de testes NeuroVet...\n')
 
   try {
     testValidateMinimumData()

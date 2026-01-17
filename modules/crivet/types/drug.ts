@@ -43,8 +43,8 @@ export type DrugUnitRules = {
 export type IndicatedDose = {
   mode: 'CRI' | 'BOLUS'
   species: 'cao' | 'gato' | 'ambos'
-  unit: 'mcg/kg/min' | 'mcg/kg/h' | 'mg/kg/min' | 'mg/kg/h'
+  unit: 'mcg/kg/min' | 'mcg/kg/h' | 'mg/kg/min' | 'mg/kg/h' | 'U/kg/h' | 'U/kg/min'
   range: { min: number; max: number }
   purpose: string // "Analgesia", "Anestesia (ventilado)", etc
-  note?: string // opcional
+  note?: string // opcional - deve incluir explicação fisiologia por trás da dose
 }

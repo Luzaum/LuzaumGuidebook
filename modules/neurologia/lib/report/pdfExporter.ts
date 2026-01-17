@@ -252,6 +252,15 @@ export function exportToPDF(report: CaseReport, caseState: any): void {
     }
   }
 
+  // 10. CAUTELAS POR COMORBIDADE
+  if (report.comorbidityCautions && report.comorbidityCautions.length > 0) {
+    addSection('10. CAUTELAS POR COMORBIDADE')
+    addText('As seguintes considerações devem ser observadas devido às comorbidades identificadas:', 10, false)
+    report.comorbidityCautions.forEach((caution, idx) => {
+      addText(`• ${caution}`, 9, false)
+    })
+  }
+
   // 11. REFERÊNCIAS BIBLIOGRÁFICAS
   addSection('11. REFERÊNCIAS BIBLIOGRÁFICAS')
   addText('• Practical Guide to Canine and Feline Neurology (Dewey & Costa, 5th ed.)', 9, false)
@@ -266,7 +275,7 @@ export function exportToPDF(report: CaseReport, caseState: any): void {
   doc.setTextColor(128, 128, 128)
   const generatedDate = new Date(report.generatedAtISO).toLocaleString('pt-BR')
   doc.text(`Gerado em: ${generatedDate}`, 105, yPos, { align: 'center' })
-  doc.text('VetNeuro - Sistema de Exame Neurológico Veterinário', 105, yPos + 5, {
+  doc.text('NeuroVet - Sistema de Exame Neurológico Veterinário', 105, yPos + 5, {
     align: 'center',
   })
 

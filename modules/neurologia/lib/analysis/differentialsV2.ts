@@ -5,6 +5,7 @@ import {
   convertToDifferential,
   type LoadedDifferential,
 } from '../../data/differentials/loader'
+import { getComorbidityScoreBoost } from '../engine/comorbidityRules'
 
 type PatientData = {
   species: 'dog' | 'cat' | null
@@ -360,6 +361,10 @@ export function generateDifferentials(
         score *= 1.3
       }
 
+      // Boost por comorbidades
+      const comorbidityBoost = getComorbidityScoreBoost(patient.comorbidities, loaded.name)
+      score += comorbidityBoost
+
       return {
         loaded,
         score,
@@ -423,10 +428,16 @@ export function generateDifferentials(
         score *= 1.5
       }
 
-      // Boost por comorbidades
+      // Boost por comorbidades (sistema antigo para compatibilidade)
       if (candidate.comorbidityBoost && candidate.comorbidityBoost.some((c) => patient.comorbidities.includes(c))) {
         score *= 1.3
       }
+
+      // Boost por comorbidades (novo sistema baseado em regras)
+      // Aplicar boost para qualquer DDx que se beneficie das comorbidades do paciente
+      // Usar nome do candidato como ID aproximado (pode ser melhorado com mapeamento específico)
+      const comorbidityBoost = getComorbidityScoreBoost(patient.comorbidities, candidate.name.toLowerCase().replace(/[^a-z0-9]/g, '_'))
+      score += comorbidityBoost
 
       return { candidate, score }
     })

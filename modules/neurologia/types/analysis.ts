@@ -65,4 +65,5 @@ export type CaseReport = {
   examSummary: string
   neuroLocalization: NeuroLocalizationResult
   differentials: Differential[]
+  comorbidityCautions?: string[] // Cautelas consolidadas por comorbidades
 }

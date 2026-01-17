@@ -10,6 +10,7 @@ import { CompatibilityPanel } from './CompatibilityPanel'
 import { FieldLabel } from './FieldLabel'
 import { ClinicalAlertBanner } from './ClinicalAlertBanner'
 import { DrugProfileWarning } from './DrugProfileWarning'
+import { HelpModal } from './HelpModal'
 import { getDrugProfileValidation } from '../utils/drugProfileRegistry'
 import { convertDose } from '../engine/conversions'
 import { evaluateDrugAlerts } from '../engine/drugAlerts'
@@ -58,6 +59,7 @@ export default function InfusionCalculator({
 
   const [dose, setDose] = useState('')
   const [doseUnit, setDoseUnit] = useState<DoseUnit>('mcg/kg/min')
+  const [physiologyModalOpen, setPhysiologyModalOpen] = useState(false)
   const [concentration, setConcentration] = useState('')
   const [isCustomConcentration, setIsCustomConcentration] = useState(false)
   const [dilutionType, setDilutionType] = useState<'syringe' | 'bag'>('syringe')
@@ -203,7 +205,7 @@ export default function InfusionCalculator({
     [pumpRateValue, dilutionType],
   )
 
-  const ALL_UNITS: DoseUnit[] = ['mcg/kg/min', 'mcg/kg/h', 'mg/kg/min', 'mg/kg/h']
+  const ALL_UNITS: DoseUnit[] = ['mcg/kg/min', 'mcg/kg/h', 'mg/kg/min', 'mg/kg/h', 'U/kg/h', 'U/kg/min']
 
   // Calcular dose indicada baseada no fármaco, modo, espécie e unidade selecionada
   const indicatedDose = useMemo(() => {
@@ -435,17 +437,7 @@ export default function InfusionCalculator({
 
       <div className="space-y-4">
         <div className="space-y-2">
-          <FieldLabel
-            text="Dose alvo"
-            tooltipId="dose_help"
-            rightSlot={
-              indicatedText ? (
-                <span className="ml-3 rounded-md border border-yellow-400/30 bg-yellow-500/10 px-2 py-1 text-xs font-semibold text-yellow-200">
-                  🟡 Dose indicada: {indicatedText}
-                </span>
-              ) : null
-            }
-          />
+          <FieldLabel text="Dose alvo" tooltipId="dose_help" />
           <div className="flex gap-2">
             <input
               type="number"
@@ -456,6 +448,54 @@ export default function InfusionCalculator({
               className="flex-1 rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 px-3 text-sm focus:border-sky-500 focus:ring-sky-500"
             />
           </div>
+          {/* Dose indicada em destaque amarelo com botão "?" */}
+          {indicatedDose && (
+            <>
+              <div className="rounded-lg border-2 border-yellow-400/50 bg-yellow-500/15 dark:bg-yellow-500/10 p-3 flex items-start justify-between gap-3">
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-yellow-400 dark:text-yellow-300 font-semibold text-sm">
+                      🟡 Dose indicada:
+                    </span>
+                    <span className="text-yellow-900 dark:text-yellow-100 font-bold text-sm">
+                      {formatNumberPtBR(indicatedDose.min, 2)}–{formatNumberPtBR(indicatedDose.max, 2)} {doseUnit}
+                    </span>
+                  </div>
+                  <p className="text-yellow-800 dark:text-yellow-200 text-xs font-medium">
+                    Para: {indicatedDose.purpose}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  aria-label="Explicar fisiologia da dose indicada"
+                  onClick={() => setPhysiologyModalOpen(true)}
+                  className="flex-shrink-0 h-6 w-6 flex items-center justify-center rounded-full border border-yellow-400/50 bg-yellow-500/20 text-xs font-bold text-yellow-900 dark:text-yellow-100 hover:bg-yellow-500/30 active:scale-95 transition"
+                >
+                  ?
+                </button>
+              </div>
+              <HelpModal
+                open={physiologyModalOpen}
+                title={`Por que ${formatNumberPtBR(indicatedDose.min, 2)}–${formatNumberPtBR(indicatedDose.max, 2)} ${doseUnit} para ${indicatedDose.purpose}?`}
+                onClose={() => setPhysiologyModalOpen(false)}
+              >
+                <div className="space-y-3">
+                  <div>
+                    <h3 className="font-semibold text-white mb-2">Fisiologia por trás desta dose:</h3>
+                    <div className="text-white/90 whitespace-pre-line">
+                      {indicatedDose.note || 
+                        'Informação de fisiologia não disponível para esta dose. Por favor, adicione as informações de fisiologia nas doses indicadas do fármaco.'}
+                    </div>
+                  </div>
+                  <div className="pt-3 border-t border-white/10">
+                    <p className="text-xs text-white/60">
+                      Esta dose foi baseada em protocolos clínicos validados e literatura veterinária especializada.
+                    </p>
+                  </div>
+                </div>
+              </HelpModal>
+            </>
+          )}
           <div className="space-y-2">
             <div className="flex flex-wrap gap-2">
               {ALL_UNITS.map((unit) => {

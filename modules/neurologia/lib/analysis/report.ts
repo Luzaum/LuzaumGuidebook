@@ -2,6 +2,7 @@ import { validateMinimumData } from './validate'
 import { determineNeuroLocalization } from './localization'
 import { generateDifferentials } from './differentialsV2'
 import { replaceForbiddenEnglish, auditCaseReport } from '../quality/noEnglish'
+import { getCombinedComorbidityCautions } from '../engine/comorbidityRules'
 import type { CaseReport } from '../../types/analysis'
 
 export function buildCaseReport(caseState: any): CaseReport {
@@ -36,6 +37,12 @@ export function buildCaseReport(caseState: any): CaseReport {
   const neuroLocalization = determineNeuroLocalization(caseState)
   const differentials = generateDifferentials(caseState, neuroLocalization)
 
+  // Gerar cautelas por comorbidades
+  const comorbidities = caseState?.patient?.comorbidities || []
+  const comorbidityCautions = comorbidities.length > 0
+    ? getCombinedComorbidityCautions(comorbidities)
+    : []
+
   // Construir report inicial
   let report: CaseReport = {
     generatedAtISO: now,
@@ -44,6 +51,7 @@ export function buildCaseReport(caseState: any): CaseReport {
     examSummary,
     neuroLocalization,
     differentials,
+    comorbidityCautions,
   }
 
   // Aplicar sanitização de inglês
@@ -82,7 +90,7 @@ export function buildCaseReport(caseState: any): CaseReport {
   if (import.meta.env.DEV) {
     const audit = auditCaseReport(report)
     if (audit.length > 0) {
-      console.warn('[VetNeuro] Termos em inglês detectados após sanitização:', audit)
+      console.warn('[NeuroVet] Termos em inglês detectados após sanitização:', audit)
     }
   }
 

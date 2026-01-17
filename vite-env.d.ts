@@ -30,3 +30,17 @@ declare module '*.webp' {
   const src: string
   export default src
 }
+
+// Tipagem para Unicorn Studio
+declare global {
+  interface Window {
+    UnicornStudio?: {
+      isInitialized: boolean
+    }
+  }
+  const UnicornStudio: {
+    init: () => void
+  }
+}
+
+export {}
