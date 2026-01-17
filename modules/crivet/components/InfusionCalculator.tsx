@@ -826,6 +826,92 @@ export default function InfusionCalculator({
                   <p>Taxa na bomba: {formatNumberPtBR(pumpRateValue, 1)} mL/h. Fluido: {fluidType}.</p>
                 </div>
               </div>
+
+              {/* Tabela de protocolo de insulina - apenas para insulina em bolsa de 250 mL */}
+              {selectedDrug?.id === 'insulina_regular' && dilutionType === 'bag' && vehicleVolume === 250 && (
+                <div className="rounded-lg bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-400/50 dark:border-yellow-500/30 p-4 space-y-3">
+                  <div className="flex items-center gap-2">
+                    <span className="text-lg">💉</span>
+                    <h4 className="font-bold text-sm text-yellow-900 dark:text-yellow-100">
+                      Protocolo "Bolsa de Insulina Regular" para CAD
+                    </h4>
+                  </div>
+                  
+                  <div className="space-y-2 text-sm">
+                    <div className="bg-white dark:bg-slate-800 rounded-md p-3 border border-yellow-200 dark:border-yellow-800">
+                      <p className="font-semibold text-yellow-900 dark:text-yellow-100 mb-2">Preparo da bolsa (CRI):</p>
+                      <p className="text-yellow-800 dark:text-yellow-200 mb-1">
+                        Adicionar insulina regular em <span className="font-semibold">250 mL de NaCl 0,9%</span>
+                      </p>
+                      <ul className="list-disc pl-5 space-y-1 text-yellow-800 dark:text-yellow-200">
+                        <li><span className="font-semibold">Cão:</span> 2,2 U/kg na bolsa (250 mL)</li>
+                        <li><span className="font-semibold">Gato:</span> 1,1 U/kg na bolsa (250 mL)</li>
+                      </ul>
+                      <p className="text-xs text-yellow-700 dark:text-yellow-300 mt-2 italic">
+                        Monitorar glicemia a cada 1–2 h e ajustar para que a glicose não caia &gt; 50–100 mg/dL/h.
+                      </p>
+                    </div>
+
+                    <div className="bg-white dark:bg-slate-800 rounded-md p-3 border border-yellow-200 dark:border-yellow-800">
+                      <p className="font-semibold text-yellow-900 dark:text-yellow-100 mb-2">
+                        Tabela de controle da glicemia durante a CRI (bolsa)
+                      </p>
+                      <div className="overflow-x-auto">
+                        <table className="w-full text-xs border-collapse">
+                          <thead>
+                            <tr className="bg-yellow-100 dark:bg-yellow-900/30">
+                              <th className="border border-yellow-300 dark:border-yellow-700 px-2 py-1.5 text-left font-semibold text-yellow-900 dark:text-yellow-100">
+                                Glicemia (mg/dL)
+                              </th>
+                              <th className="border border-yellow-300 dark:border-yellow-700 px-2 py-1.5 text-left font-semibold text-yellow-900 dark:text-yellow-100">
+                                Taxa da bolsa (mL/h)
+                              </th>
+                              <th className="border border-yellow-300 dark:border-yellow-700 px-2 py-1.5 text-left font-semibold text-yellow-900 dark:text-yellow-100">
+                                Dextrose no cristalóide (%)
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody className="text-yellow-800 dark:text-yellow-200">
+                            <tr>
+                              <td className="border border-yellow-300 dark:border-yellow-700 px-2 py-1.5 font-semibold">&gt; 350</td>
+                              <td className="border border-yellow-300 dark:border-yellow-700 px-2 py-1.5">10</td>
+                              <td className="border border-yellow-300 dark:border-yellow-700 px-2 py-1.5">0</td>
+                            </tr>
+                            <tr className="bg-yellow-50 dark:bg-yellow-900/10">
+                              <td className="border border-yellow-300 dark:border-yellow-700 px-2 py-1.5 font-semibold">250–350</td>
+                              <td className="border border-yellow-300 dark:border-yellow-700 px-2 py-1.5">7</td>
+                              <td className="border border-yellow-300 dark:border-yellow-700 px-2 py-1.5">0</td>
+                            </tr>
+                            <tr>
+                              <td className="border border-yellow-300 dark:border-yellow-700 px-2 py-1.5 font-semibold">150–250</td>
+                              <td className="border border-yellow-300 dark:border-yellow-700 px-2 py-1.5">5</td>
+                              <td className="border border-yellow-300 dark:border-yellow-700 px-2 py-1.5">2,5</td>
+                            </tr>
+                            <tr className="bg-yellow-50 dark:bg-yellow-900/10">
+                              <td className="border border-yellow-300 dark:border-yellow-700 px-2 py-1.5 font-semibold">100–150</td>
+                              <td className="border border-yellow-300 dark:border-yellow-700 px-2 py-1.5">3–5</td>
+                              <td className="border border-yellow-300 dark:border-yellow-700 px-2 py-1.5">5</td>
+                            </tr>
+                            <tr className="bg-red-50 dark:bg-red-900/20">
+                              <td className="border border-yellow-300 dark:border-yellow-700 px-2 py-1.5 font-semibold text-red-700 dark:text-red-300">≤ 100</td>
+                              <td className="border border-yellow-300 dark:border-yellow-700 px-2 py-1.5 text-red-700 dark:text-red-300 font-semibold">
+                                Suspender CRI de insulina
+                              </td>
+                              <td className="border border-yellow-300 dark:border-yellow-700 px-2 py-1.5">Manter 5%</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    <div className="bg-amber-50 dark:bg-amber-900/20 rounded-md p-2 border border-amber-200 dark:border-amber-800">
+                      <p className="text-xs text-amber-800 dark:text-amber-200">
+                        <span className="font-semibold">⚠️ Nota de segurança:</span> Em diabetes ambulatorial, a AAHA não recomenda diluir insulina por risco de resultados imprevisíveis/contaminação—isso não invalida protocolos de UTI/CAD, mas é um alerta para "não banalizar diluição" fora do contexto hospitalar.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
             </>
           )}
         </div>

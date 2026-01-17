@@ -240,9 +240,20 @@ export function convertToDifferential(
   }
 
   // Adicionar cautelas por comorbidades
-  const relevantCautions = loaded.rules.comorbidityCautions.filter((c) => patient.comorbidities.includes(c.toLowerCase()))
+  const relevantCautions = loaded.rules.comorbidityCautions.filter((c) => {
+    const comorbIds = Array.isArray(patient.comorbidities) 
+      ? (typeof patient.comorbidities[0] === 'string'
+          ? patient.comorbidities as string[]
+          : patient.comorbidities.map((item: any) => item.key || item))
+      : []
+    return comorbIds.includes(c.toLowerCase())
+  })
+
+  // Gerar ID único baseado no nome
+  const ddxId = loaded.name.toLowerCase().replace(/[^a-z0-9]/g, '_').replace(/\s+/g, '_').replace(/_+/g, '_')
 
   return {
+    id: ddxId,
     name: loaded.name,
     category: loaded.category,
     likelihood: 0, // Será calculado pelo sistema de scoring

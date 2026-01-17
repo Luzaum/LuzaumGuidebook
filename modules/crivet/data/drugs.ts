@@ -5,20 +5,24 @@ import {
   fentanylCompatibilityToDrugCompatibility,
   remifentanilCompatibilityToDrugCompatibility,
   dobutamineCompatibilityToDrugCompatibility,
+  norepinephrineCompatibilityToDrugCompatibility,
+  maropitantCompatibilityToDrugCompatibility,
+  ephedrineCompatibilityToDrugCompatibility,
 } from './drugs/compatibility.helpers'
 import { fentanylRecommendedUnit, fentanylRecommendedUnitWhy, fentanylIndicatedDoses } from './drugs/fentanyl'
 import { ketamineIndicatedDoses, ketamineRecommendedUnit, ketamineRecommendedUnitWhy } from './drugs/ketamine'
 import { midazolamIndicatedDoses } from './drugs/midazolam'
-import { remifentanilIndicatedDoses } from './drugs/remifentanil'
+import { remifentanilIndicatedDoses, remifentanilRecommendedUnit, remifentanilRecommendedUnitWhy } from './drugs/remifentanil'
 import { dobutamineRecommendedUnit, dobutamineRecommendedUnitWhy, dobutamineIndicatedDoses } from './drugs/dobutamine'
 import { norepinephrineRecommendedUnit, norepinephrineRecommendedUnitWhy, norepinephrineIndicatedDoses } from './drugs/norepinephrine'
-import { norepinephrineCompatibilityToDrugCompatibility } from './drugs/compatibility.helpers'
 import { lidocaineRecommendedUnit, lidocaineRecommendedUnitWhy, lidocaineIndicatedDoses } from './drugs/lidocaine'
 import { dexmedetomidineRecommendedUnit, dexmedetomidineRecommendedUnitWhy, dexmedetomidineIndicatedDoses } from './drugs/dexmedetomidine'
 import { propofolRecommendedUnit, propofolRecommendedUnitWhy, propofolIndicatedDoses } from './drugs/propofol'
 import { methadoneRecommendedUnit, methadoneRecommendedUnitWhy, methadoneIndicatedDoses } from './drugs/methadone'
 import { insulinRegularRecommendedUnit, insulinRegularRecommendedUnitWhy, insulinRegularIndicatedDoses } from './drugs/insulinRegular'
 import { metoclopramidaRecommendedUnit, metoclopramidaRecommendedUnitWhy, metoclopramidaIndicatedDoses } from './drugs/metoclopramida'
+import { maropitantRecommendedUnit, maropitantRecommendedUnitWhy, maropitantIndicatedDoses } from './drugs/maropitant'
+import { ephedrineRecommendedUnit, ephedrineRecommendedUnitWhy, ephedrineIndicatedDoses } from './drugs/ephedrine'
 
 export type DrugCategory =
   | 'Analgésicos e Anestésicos'
@@ -74,6 +78,8 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [1],
     compatibility: remifentanilCompatibilityToDrugCompatibility(),
+    recommendedUnit: remifentanilRecommendedUnit,
+    recommendedUnitWhy: remifentanilRecommendedUnitWhy,
     indicatedDoses: remifentanilIndicatedDoses,
   },
   {
@@ -163,7 +169,10 @@ export const drugs: Drug[] = [
     category: 'Agentes Cardiovasculares',
     hasCRI: true,
     concentrations: [50],
-    compatibility: defaultCompatibility,
+    compatibility: ephedrineCompatibilityToDrugCompatibility(),
+    recommendedUnit: ephedrineRecommendedUnit,
+    recommendedUnitWhy: ephedrineRecommendedUnitWhy,
+    indicatedDoses: ephedrineIndicatedDoses,
   },
   {
     id: 'norepinefrina',
@@ -318,7 +327,10 @@ export const drugs: Drug[] = [
     category: 'Antieméticos / Pró-cinéticos',
     hasCRI: true,
     concentrations: [10],
-    compatibility: defaultCompatibility,
+    compatibility: maropitantCompatibilityToDrugCompatibility(),
+    recommendedUnit: maropitantRecommendedUnit,
+    recommendedUnitWhy: maropitantRecommendedUnitWhy,
+    indicatedDoses: maropitantIndicatedDoses,
   },
 ]
 

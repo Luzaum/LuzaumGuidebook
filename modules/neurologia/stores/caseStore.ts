@@ -29,19 +29,24 @@ export type RedFlagId =
   | 'anisocoria_acute'
   | 'dysphagia_aspiration_risk'
 
-export type ComorbidityId =
+export type ComorbidityKey =
   | 'renal'
-  | 'hepatic'
-  | 'cardiac'
-  | 'endocrine'
-  | 'respiratory'
-  | 'neoplasia'
-  | 'immunosuppressed'
-  | 'coagulopathy'
-  | 'hypertension'
-  | 'toxin_exposure'
-  | 'recent_trauma'
-  | 'infectious_risk'
+  | 'hepatica'
+  | 'cardiaca'
+  | 'endocrina'
+  | 'respiratoria'
+  | 'neuromuscular'
+  | 'neoplasica'
+  | 'imunomediada'
+  | 'hipertensao'
+  | 'coagulopatia'
+
+export type ComorbidityItem = {
+  key: ComorbidityKey
+  label: string // ex.: "Renopata (DRC/IRA)"
+  severity?: 'leve' | 'moderada' | 'grave'
+  notes?: string // opcional (ex.: "DRC IRIS 3", "HCM", etc)
+}
 
 type Patient = {
   species: Species | null
@@ -53,7 +58,7 @@ type Patient = {
   lifeStage: LifeStage | null
   pregnant: boolean
   lactating: boolean
-  comorbidities: ComorbidityId[]
+  comorbidities: ComorbidityItem[]
 }
 
 type ComplaintContext = {
@@ -104,7 +109,7 @@ const emptyPatient: Patient = {
   lifeStage: null,
   pregnant: false,
   lactating: false,
-  comorbidities: [],
+  comorbidities: [], // Array de ComorbidityItem
 }
 
 const emptyComplaint: ComplaintContext = {

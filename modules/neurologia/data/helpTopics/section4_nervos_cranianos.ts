@@ -2,267 +2,141 @@ import type { HelpTopic } from '../../types/helpTopics'
 
 export const section4NervosCranianos: HelpTopic[] = [
   {
-    id: 'sec4-intro-nervos-cranianos',
-    title: 'Nervos cranianos: visão geral',
+    id: 's4-nervos-cranianos-geral',
+    title: 'Nervos cranianos (visão geral)',
     whatItAssesses:
-      'Avaliação de funções sensoriais e motoras associadas aos nervos cranianos e suas conexões no tronco encefálico, prosencéfalo e cerebelo.',
+      'Integração sensorial e motora entre receptores periféricos (olho, face, faringe) e núcleos de nervos cranianos no tronco encefálico, além de conexões com prosencéfalo e cerebelo. Déficits de nervos cranianos ajudam a diferenciar lesões periféricas (ex.: facial) de lesões centrais (tronco encefálico) e, quando combinados à mentação, refinam neurolocalização (prosencéfalo vs tronco encefálico).',
     neuroanatomy:
-      'Muitos nervos cranianos têm núcleos no tronco encefálico. Déficits de NC associados a alteração de mentação aumentam suspeita de tronco encefálico/SRAA. Alguns testes (ameaça) dependem também de córtex (prosencéfalo).',
+      'Núcleos dos nervos cranianos localizam-se majoritariamente no tronco encefálico (mesencéfalo/ponte/bulbo). A via de ameaça envolve retina→II→tálamo/córtex visual (prosencéfalo) e eferência pelo VII. PLR envolve II aferente e III parassimpático (Edinger–Westphal) e gânglio ciliar. Testes misturam reflexos (PLR) e respostas com componente cortical/aprendido (ameaça). A interpretação exige separar aferência, integração central e eferência.',
     howToPerform:
-      'Realize o exame com o animal calmo e em ambiente com boa iluminação. Compare sempre esquerda vs direita. Documente lateralidade e consistência. Evite repetir estímulos de forma exagerada para não dessensibilizar.',
+      'Realizar em ambiente calmo, com boa iluminação. Sempre comparar lados (E/D). Registrar lateralidade e consistência. Correlacionar com mentação, marcha e reações posturais.',
     interpretation:
-      'Déficits múltiplos de nervos cranianos com mentação alterada frequentemente indicam lesão de tronco encefálico. Ameaça ausente com PLR normal sugere deficiência cortical/visual, não necessariamente III.',
+      'Múltiplos déficits de NC + mentação alterada = forte suspeita de tronco encefálico. Ameaça ausente com PLR normal sugere disfunção cortical/cegueira sem falha pupilar. Achados vestibulares (nistagmo/estrabismo/head tilt) podem ser periféricos ou centrais, e mentação é um dos melhores discriminadores.',
     pitfalls:
-      'Olho seco, dor ocular, catarata, cegueira prévia e sedação podem interferir. Sempre correlacione com exame oftálmico básico e histórico. Quando aparece: Lesões centrais (tronco/prosencéfalo), síndrome vestibular central, neuropatias cranianas periféricas (ex.: facial).',
+      'Não comparar lados; confundir reflexo com resposta cortical; ignorar doenças oculares/medicações (atropina/opioides) e interpretar como lesão neurológica central.',
   },
   {
-    id: 'sec4-menace-oquee',
-    title: 'Ameaça (Menace): o que avalia',
+    id: 's4-ameaca-oquee',
+    title: 'Ameaça (Menace) — o que avalia e como interpretar',
     whatItAssesses:
-      'Resposta de piscar/retirar a cabeça diante de um gesto ameaçador. Avalia via visual e processamento cortical, com componente motor facial.',
+      'Resposta de piscar/retirada da cabeça diante de um gesto ameaçador. Avalia visão funcional e processamento cortical, com eferência motora facial. Ajuda a diferenciar cegueira/lesão cortical (prosencéfalo) de alterações da via pupilar (II/III). É essencial em queixas como "cegueira" ou alterações comportamentais.',
     neuroanatomy:
-      'Via aferente: retina → nervo óptico (II) → tratos ópticos → córtex visual (prosencéfalo). Via eferente: córtex/cerebelo modulam → nervo facial (VII) para piscar. Não é um reflexo puro; exige integridade cortical e aprendizado.',
+      'Aferência: retina→nervo óptico (II)→trato óptico→núcleo geniculado lateral/tálamo→córtex visual. Integração: córtex visual e conexões cerebelares de modulação. Eferência: nervo facial (VII) para piscar. Não é reflexo puro: exige componente cortical e aprendizado. Pode falhar em filhotes e em animais muito ansiosos/letárgicos.',
     howToPerform:
-      'Cubra um olho e faça um gesto rápido em direção ao outro sem deslocar ar (evite soprar). Observe piscar e/ou retração da cabeça. Repita do outro lado.',
+      'Cobrir um olho. Fazer gesto rápido em direção ao outro sem deslocar ar (não assoprar). Observar piscar (orbicular do olho) e/ou retração da cabeça. Repetir no outro lado.',
     interpretation:
-      'Menace ausente com PLR normal sugere lesão cortical/visual (prosencéfalo) ou cegueira, não necessariamente lesão do III. Menace ausente + PLR alterado sugere lesão mais anterior (retina/II) ou via pupilar.',
+      'Ameaça ausente com PLR normal: suspeitar de cegueira cortical/lesão do prosencéfalo ou doença retiniana que preserve PLR. Ameaça ausente com PLR alterado: suspeitar de retina/II/via pupilar. Se o animal enxerga mas não pisca, considerar lesão do VII.',
     pitfalls:
-      'Filhotes podem não ter menace plenamente desenvolvido. Animais ansiosos podem fechar olhos por medo. Doença ocular dolorosa reduz resposta. Quando aparece: Lesões prosencefálicas, cegueira, doenças retinianas, lesões do VII (se piscar ausente).',
+      'Assoprar (ativa reflexos não visuais), tocar vibrissas, avaliar em filhote muito jovem, ignorar catarata/uveíte/dor ocular.',
   },
   {
-    id: 'sec4-menaceE-presente',
-    title: 'Ameaça (Menace) olho esquerdo: Presente',
-    whatItAssesses: 'Resposta de ameaça preservada no olho esquerdo.',
-    neuroanatomy: 'Sugere integridade funcional do sistema visual cortical associado e do nervo facial (piscar) do lado testado.',
-    howToPerform: 'Teste com o olho direito coberto e gesto sem deslocar ar. Confirme consistência em 2–3 tentativas.',
-    interpretation:
-      'Ajuda a excluir cegueira cortical/ocular significativa no lado testado, mas deve ser correlacionado com PLR e exame ocular.',
-    pitfalls:
-      'Resposta pode ser "aprendida" e variar. Não use isoladamente para concluir visão normal. Quando aparece: Normalidade ou lesões não envolvendo via visual/cortical relevante.',
-  },
-  {
-    id: 'sec4-menaceE-ausente',
-    title: 'Ameaça (Menace) olho esquerdo: Ausente',
-    whatItAssesses: 'Ausência de piscar/retirada diante de ameaça no olho esquerdo.',
-    neuroanatomy:
-      'Pode refletir cegueira (retina/II), lesão cortical contralateral (prosencéfalo), disfunção cerebelar (modulação) ou lesão do VII (se não pisca).',
-    howToPerform: 'Garanta que não há deslocamento de ar. Repita e compare com o outro olho. Correlacione com PLR esquerdo e exame ocular básico.',
-    interpretation:
-      'Se PLR normal e menace ausente, suspeite de deficiência cortical/visual (prosencéfalo) ou cegueira não pupilar. Se PLR também alterado, priorize retina/II ou via pupilar.',
-    pitfalls:
-      'Catarata, uveíte, dor ocular e filhote muito jovem interferem. Verifique reflexo palpebral (quando disponível) e exame ocular. Quando aparece: Lesões prosencefálicas, cegueira, doença retiniana, lesão do VII.',
-  },
-  {
-    id: 'sec4-menaceD-presente',
-    title: 'Ameaça (Menace) olho direito: Presente',
-    whatItAssesses: 'Resposta de ameaça preservada no olho direito.',
-    neuroanatomy: 'Integridade funcional da via visual cortical associada e eferência facial para piscar.',
-    howToPerform: 'Cubra o olho esquerdo e faça gesto sem deslocar ar. Confirme consistência.',
-    interpretation: 'Sugere função visual cortical preservada no lado testado, mas correlacione com PLR e exame ocular.',
-    pitfalls: 'Pode variar com estresse. Use em conjunto com outros testes. Quando aparece: Normalidade.',
-  },
-  {
-    id: 'sec4-menaceD-ausente',
-    title: 'Ameaça (Menace) olho direito: Ausente',
-    whatItAssesses: 'Ausência de resposta de ameaça no olho direito.',
-    neuroanatomy: 'Pode ser lesão da via visual (retina/II), prosencéfalo contralateral, cerebelo (modulação) ou VII (eferente).',
-    howToPerform: 'Evite deslocar ar. Compare com olho esquerdo. Integre com PLR direito e exame ocular.',
-    interpretation:
-      'Menace ausente + PLR normal favorece problema cortical/visual. Menace ausente + PLR alterado favorece retina/II/via pupilar.',
-    pitfalls: 'Doença ocular/filhote/ansiedade. Não concluir sem correlação. Quando aparece: Lesões prosencefálicas, cegueira, lesão VII.',
-  },
-  {
-    id: 'sec4-plr-oquee',
-    title: 'Reflexo pupilar à luz (PLR): o que avalia',
+    id: 's4-ameaca-olho-esquerdo',
+    title: 'Ameaça (Menace) — Olho esquerdo',
     whatItAssesses:
-      'Constrição pupilar diante de luz. Avalia integridade da via pupilar (II aferente, III parassimpático e vias centrais associadas).',
-    neuroanatomy:
-      'Aferência: retina → nervo óptico (II). Integração: área pré-tectal → núcleo de Edinger–Westphal. Eferência: nervo oculomotor (III) → gânglio ciliar → músculo esfíncter da pupila.',
+      'Função visual e integração cortical associada ao olho esquerdo, com resposta motora facial (piscar). Permite lateralizar déficit visual/cortical e cruzar com PLR e exame ocular.',
+    neuroanatomy: 'Aferência via II; processamento cortical; eferência pelo VII (piscar). Depende de percepção visual e resposta aprendida; pode ser inconsistente em estresse ou letargia.',
     howToPerform:
-      'Em ambiente com pouca luz, ilumine um olho com lanterna e observe constrição direta e consensual (se você optar por avaliar). Registre como normal/lento/ausente.',
+      'Cobrir o olho direito e aplicar gesto sem deslocar ar no campo visual do olho esquerdo. Observar piscar/retração. Repetir 2–3 vezes.',
     interpretation:
-      'PLR ausente sugere falha aferente (retina/II) ou eferente (III/parassimpático), ou lesão ocular grave. PLR preservado com menace ausente favorece lesão cortical/visual (prosencéfalo) ou cegueira não pupilar.',
-    pitfalls:
-      'Atropina, opioides, uveíte, sinequias, glaucoma e dor ocular alteram PLR. Avalie pupilas e contexto medicamentoso. Quando aparece: Útil em diferenciar cegueira cortical vs ocular/II/III.',
+      'Ausência unilateral com PLR normal sugere lesão cortical contralateral ao olho testado ou cegueira funcional; ausência com PLR alterado sugere via óptica/pupilar. Presença sugere via funcional, mas não exclui déficits sutis.',
+    pitfalls: 'Interpretar como visão normal sem correlacionar com comportamento visual e PLR.',
   },
   {
-    id: 'sec4-plrE-normal',
-    title: 'PLR olho esquerdo: Normal',
-    whatItAssesses: 'Constrição pupilar normal no olho esquerdo ao estímulo luminoso.',
-    neuroanatomy: 'Sugere via pupilar funcional (II e III) no circuito avaliado.',
-    howToPerform: 'Ilumine o olho esquerdo e observe constrição direta. Compare com o outro olho.',
-    interpretation:
-      'Se menace está ausente com PLR normal, isso aumenta suspeita de lesão cortical/visual (prosencéfalo) ou cegueira não pupilar.',
-    pitfalls: 'PLR normal não garante visão normal (menace/córtex). Correlacione com comportamento visual. Quando aparece: Normalidade ou lesões fora da via pupilar.',
-  },
-  {
-    id: 'sec4-plrE-lento',
-    title: 'PLR olho esquerdo: Lento',
-    whatItAssesses: 'Constrição pupilar mais lenta ou incompleta no olho esquerdo.',
-    neuroanatomy: 'Pode indicar comprometimento parcial da aferência (retina/II) ou eferência (III/parassimpático), ou alterações oculares.',
-    howToPerform: 'Padronize intensidade de luz e distância. Compare com o outro olho. Observe se há anisocoria em repouso.',
-    interpretation:
-      'PLR lento unilateral deve ser correlacionado com visão, pupilas, dor ocular e histórico medicamentoso. Se associado a mentação alterada e outros déficits de NC, aumenta suspeita de tronco.',
-    pitfalls:
-      'Iluminação ambiente e estresse alteram avaliação. Repetir em condições padronizadas. Quando aparece: Uveíte, neuropatia óptica parcial, disfunção autonômica, compressões.',
-  },
-  {
-    id: 'sec4-plrE-ausente',
-    title: 'PLR olho esquerdo: Ausente',
-    whatItAssesses: 'Ausência de constrição pupilar no olho esquerdo ao estímulo luminoso.',
-    neuroanatomy: 'Pode ser falha aferente (retina/II), falha eferente (III/parassimpático) ou doença ocular severa.',
-    howToPerform: 'Confirme com luz adequada. Avalie também a pupila em repouso e, se possível, resposta consensual no outro olho.',
-    interpretation:
-      'PLR ausente é red flag oftálmica/neurológica. Se associado a alteração de mentação e outros déficits de NC, considere tronco encefálico. Se isolado, priorize avaliação ocular/II/III.',
-    pitfalls:
-      'Atropina/tropicamida e dor ocular podem confundir. Checar história e exame ocular. Quando aparece: Descolamento de retina, neuropatia óptica grave, compressão do III, glaucoma severo, midríase farmacológica.',
-  },
-  {
-    id: 'sec4-plrD-normal',
-    title: 'PLR olho direito: Normal',
-    whatItAssesses: 'Constrição pupilar normal no olho direito ao estímulo luminoso.',
-    neuroanatomy: 'Via pupilar funcional do lado avaliado.',
-    howToPerform: 'Ilumine o olho direito e observe constrição direta. Compare com esquerdo.',
-    interpretation: 'Menace ausente com PLR normal sugere problema cortical/visual e não necessariamente via pupilar.',
-    pitfalls: 'PLR preservado não confirma visão. Avalie comportamento visual. Quando aparece: Normalidade.',
-  },
-  {
-    id: 'sec4-plrD-lento',
-    title: 'PLR olho direito: Lento',
-    whatItAssesses: 'Constrição pupilar lenta/incompleta no olho direito.',
-    neuroanatomy: 'Disfunção parcial da via pupilar aferente/eferente ou doença ocular.',
-    howToPerform: 'Repetir com luz padronizada, comparar com olho esquerdo e observar anisocoria.',
-    interpretation:
-      'Se acompanhado por outros déficits de NC e mentação alterada, aumenta suspeita de tronco encefálico; se isolado, priorize avaliação ocular/II/III.',
-    pitfalls: 'Ambiente claro e estresse interferem. Ajuste iluminação. Quando aparece: Uveíte, neuropatia óptica parcial, disfunção autonômica.',
-  },
-  {
-    id: 'sec4-plrD-ausente',
-    title: 'PLR olho direito: Ausente',
-    whatItAssesses: 'Ausência de PLR no olho direito.',
-    neuroanatomy: 'Falha do II (aferente), III/parassimpático (eferente) ou doença ocular grave.',
-    howToPerform: 'Confirmar com luz adequada e correlacionar com pupila em repouso e outros sinais oculares/neurológicos.',
-    interpretation:
-      'Red flag. Se combinado a múltiplos déficits de NC e alteração de mentação, considerar tronco encefálico/herniação; se isolado, priorizar oftálmico.',
-    pitfalls:
-      'Fármacos midriáticos e dor ocular. Verificar histórico. Quando aparece: Descolamento de retina, neuropatia óptica grave, compressão do III, glaucoma severo, midríase farmacológica.',
-  },
-  {
-    id: 'sec4-nistagmo-presente',
-    title: 'Nistagmo patológico: Presente',
+    id: 's4-ameaca-olho-direito',
+    title: 'Ameaça (Menace) — Olho direito',
     whatItAssesses:
-      'Movimento rítmico involuntário dos olhos. Quando patológico, sugere síndrome vestibular (periférica ou central).',
-    neuroanatomy:
-      'O nistagmo decorre de desequilíbrio vestibular. Núcleos vestibulares no tronco e conexões cerebelares modulam reflexos oculomotores.',
-    howToPerform:
-      'Observe em repouso e com mudança de posição da cabeça (quando seguro). Descreva direção (horizontal/vertical/rotatório) se você optar por detalhar no futuro.',
+      'Função visual e integração cortical associada ao olho direito, com eferência facial. Avalia simetria visual e auxilia na suspeita de lesão cortical lateralizada.',
+    neuroanatomy: 'II (aferente) → córtex; VII (eferente). Resposta com componente cortical, variável com estresse/sedação.',
+    howToPerform: 'Cobrir o olho esquerdo e aplicar gesto sem deslocar ar no olho direito. Repetir 2–3 vezes.',
     interpretation:
-      'Nistagmo + mentação normal tende a periférico; nistagmo com mentação alterada e déficits posturais importantes sugere central. Nistagmo vertical é mais sugestivo de central.',
-    pitfalls:
-      'Nistagmo fisiológico pode ocorrer com rotação extrema da cabeça. Avalie em posição neutra. Quando aparece: Otite interna, vestibular idiopático, AVC/encefalite de tronco, lesões cerebelares.',
+      'Mesma lógica do olho esquerdo: PLR normal + menace ausente sugere cortical/cegueira; PLR alterado sugere retina/II/III.',
+    pitfalls: 'Não isolar o olho contralateral e induzir resposta por outros estímulos.',
   },
   {
-    id: 'sec4-nistagmo-ausente',
-    title: 'Nistagmo patológico: Ausente',
-    whatItAssesses: 'Não há nistagmo visível durante o exame.',
-    neuroanatomy: 'Ausência de nistagmo não exclui vestibular (pode ser episódico ou compensado).',
-    howToPerform: 'Observe olhos em repouso e durante movimentos suaves de cabeça (se seguro).',
-    interpretation:
-      'Se há head tilt/ataxia vestibular mas sem nistagmo, ainda pode haver síndrome vestibular compensada ou fase tardia.',
-    pitfalls: 'Ambiente muito iluminado e estresse podem dificultar observar nistagmo sutil. Quando aparece: Normalidade ou vestibular compensado.',
-  },
-  {
-    id: 'sec4-estrabismo-presente',
-    title: 'Estrabismo: Presente',
+    id: 's4-plr-oquee',
+    title: 'Reflexo pupilar à luz (PLR) — o que avalia',
     whatItAssesses:
-      'Desalinhamento ocular (um olho desvia). Pode estar associado a vestibular, paresia de nervos oculomotores ou lesões centrais.',
+      'Constrição pupilar diante de luz. Avalia principalmente a via pupilar: aferência (II), integração (pré-tectal/Edinger–Westphal) e eferência parassimpática (III → gânglio ciliar). Diferencia lesões da via pupilar (retina/II/III) de cegueira cortical. É crucial em cegueira aguda, anisocoria e suspeita de herniação/lesão de tronco encefálico.',
     neuroanatomy:
-      'O controle ocular envolve nervos III, IV e VI (núcleos no tronco) e modulação vestibular. Estrabismo posicional é comum em vestibular.',
-    howToPerform: 'Observe posição ocular em repouso. Avalie simetria. Se no futuro você incluir movimentos oculares (III/IV/VI), correlacione.',
-    interpretation:
-      'Estrabismo com head tilt/nistagmo sugere vestibular. Estrabismo com outros déficits de NC e mentação alterada sugere tronco.',
-    pitfalls:
-      'Algumas raças têm estrabismo basal. Compare com histórico e com posição habitual. Quando aparece: Otite interna, vestibular central, lesões oculomotoras, trauma.',
-  },
-  {
-    id: 'sec4-estrabismo-ausente',
-    title: 'Estrabismo: Ausente',
-    whatItAssesses: 'Não há desalinhamento ocular evidente.',
-    neuroanatomy: 'Ausência não exclui vestibular ou lesões oculomotoras sutis.',
-    howToPerform: 'Observe olhos em repouso e em diferentes posições (quando seguro).',
-    interpretation: 'Use em conjunto com nistagmo/head tilt e demais nervos cranianos.',
-    pitfalls: 'Estrabismo pode ser intermitente/posicional. Quando aparece: Normalidade ou vestibular sem estrabismo.',
-  },
-  {
-    id: 'sec4-sensfacial-normal',
-    title: 'Sensibilidade facial (V): Normal',
-    whatItAssesses: 'Resposta apropriada ao toque/pinçamento leve na face, com reação simétrica.',
-    neuroanatomy:
-      'O nervo trigêmeo (V) conduz sensibilidade facial e tem núcleos no tronco encefálico. A via aferente integra-se a respostas motoras e percepção consciente.',
+      'Retina→II→núcleo pré-tectal→Edinger–Westphal (mesencéfalo)→III→gânglio ciliar→músculo esfíncter da pupila. Reflexo autonômico. Não exige córtex. Portanto PLR pode estar normal mesmo com cegueira cortical.',
     howToPerform:
-      'Toque suavemente regiões inervadas pelo trigêmeo (V) — focinho, face lateral, vibrissas — e observe retração/evitação. Seja delicado para não induzir aversão.',
-    interpretation: 'Normalidade reduz suspeita de lesão do V/tronco, mas não exclui lesões centrais pequenas.',
-    pitfalls: 'Animais agressivos podem reagir por comportamento. Avalie simetria e consistência. Quando aparece: Normalidade.',
-  },
-  {
-    id: 'sec4-sensfacial-diminuido',
-    title: 'Sensibilidade facial (V): Diminuído',
-    whatItAssesses: 'Resposta reduzida ao toque/dor leve na face.',
-    neuroanatomy: 'Sugere disfunção do V (periférica) ou dos núcleos/feixes no tronco encefálico.',
-    howToPerform: 'Compare lados com estímulo igual. Observe se há assimetria e associe a outros déficits de NC.',
+      'Em ambiente com pouca luz, iluminar um olho com lanterna. Observar constrição direta (e, se desejar, consensual). Classificar: normal, lento, ausente. Repetir no outro olho.',
     interpretation:
-      'Déficit facial sensitivo + outros déficits de NC e mentação alterada aumenta suspeita de tronco encefálico. Se isolado, pode ser neuropatia periférica do V.',
-    pitfalls:
-      'Dor severa pode levar o paciente a evitar contato, confundindo avaliação. Use estímulos padronizados e delicados. Quando aparece: Lesões de tronco, neuropatias cranianas, neoplasias de base de crânio.',
+      'PLR ausente indica problema aferente (retina/II) ou eferente (III/parassimpático) ou doença ocular grave. PLR normal com menace ausente sugere lesão cortical/cegueira sem falha pupilar.',
+    pitfalls: 'Ignorar drogas (atropina/tropicamida), glaucoma/uveíte, dor ocular, luz ambiente forte e distância variável.',
   },
   {
-    id: 'sec4-sensfacial-ausente',
-    title: 'Sensibilidade facial (V): Ausente',
-    whatItAssesses: 'Ausência de resposta ao estímulo sensitivo na face (com técnica adequada).',
-    neuroanatomy: 'Indica disfunção importante do trigêmeo ou tronco encefálico.',
-    howToPerform: 'Confirme com estímulo leve e moderado, evitando lesão. Compare lados. Correlacione com outros NC e mentação.',
-    interpretation:
-      'Déficit grave sugere lesão significativa e frequentemente acompanha outros sinais de tronco. Priorize investigação central quando houver mentação alterada.',
-    pitfalls:
-      'Sedação e estupor/coma reduzem responsividade global. Não interpretar isoladamente. Quando aparece: Lesões de tronco extensas, neuropatia trigeminal severa, massas de base craniana.',
-  },
-  {
-    id: 'sec4-degluticao-normal',
-    title: 'Reflexo de deglutição (IX/X): Normal',
+    id: 's4-plr-olho-esquerdo',
+    title: 'PLR — Olho esquerdo (normal/lento/ausente)',
     whatItAssesses:
-      'Deglutição eficaz sem engasgos e resposta apropriada ao estímulo orofaríngeo (quando avaliado de forma segura).',
-    neuroanatomy:
-      'Nervos IX (glossofaríngeo) e X (vago) coordenam parte do reflexo de deglutição; núcleos localizam-se no tronco encefálico. Disfunção pode indicar lesão bulbar.',
-    howToPerform:
-      'Observe ingestão de água/alimento (se permitido). Inspecione sinais de tosse/engasgo. Evite estímulos invasivos em pacientes de alto risco. Se houver suspeita, priorize avaliação funcional e segurança.',
+      'Integridade da via pupilar do olho esquerdo. Em conjunto com menace e comportamento visual, ajuda a localizar falha ocular/óptica vs cortical vs tronco encefálico.',
+    neuroanatomy: 'II aferente esquerdo, integração mesencefálica, III parassimpático. Reflexo autonômico (não cortical).',
+    howToPerform: 'Iluminar o olho esquerdo e observar constrição. Classificar. Comparar com direito.',
     interpretation:
-      'Normalidade reduz suspeita de lesão bulbar/tronco. Se houver alteração de mentação e outros déficits de NC, ainda pode haver risco.',
-    pitfalls:
-      'Sedação, dor oral e doenças laríngeas podem confundir. Avalie risco de aspiração antes de testar agressivamente. Quando aparece: Normalidade.',
+      'Lento sugere comprometimento parcial (ocular/II/III). Ausente é red flag (retina/II/III/doença ocular grave). Normal não garante visão normal (menace pode estar ausente em cegueira cortical).',
+    pitfalls: 'Avaliar com luz ambiente alta ou após colírios midriáticos.',
   },
   {
-    id: 'sec4-degluticao-diminuido',
-    title: 'Reflexo de deglutição (IX/X): Diminuído',
-    whatItAssesses: 'Disfagia, engasgos, deglutição fraca ou atrasada; risco aumentado de aspiração.',
-    neuroanatomy:
-      'Sugere disfunção bulbar (tronco encefálico) envolvendo IX/X, ou doença neuromuscular que comprometa musculatura faríngea/laríngea.',
-    howToPerform:
-      'Priorize segurança: observe deglutição espontânea e sinais de tosse/engasgo. Se necessário, encaminhe para avaliação de deglutição/laringe. Não force água em pacientes com suspeita.',
+    id: 's4-plr-olho-direito',
+    title: 'PLR — Olho direito (normal/lento/ausente)',
+    whatItAssesses:
+      'Integridade da via pupilar do olho direito. Permite comparação lateralizada e identifica anisocoria/lesão de II/III.',
+    neuroanatomy: 'II aferente direito, núcleos no mesencéfalo, III parassimpático. Reflexo autonômico independente do córtex.',
+    howToPerform: 'Iluminar olho direito, observar e classificar. Comparar com esquerdo.',
     interpretation:
-      'Déficit de deglutição + mentação alterada e outros déficits de NC é altamente sugestivo de tronco encefálico. Mesmo isolado, é red flag respiratória por aspiração.',
-    pitfalls:
-      'Dor oral/lesões dentárias e doença laríngea podem causar disfagia sem lesão neurológica central. Sempre correlacionar com exame da cavidade oral e vias aéreas. Quando aparece: Lesões de tronco, polineuropatias, miastenia gravis, botulismo, massas faríngeas.',
+      'Mesma lógica do olho esquerdo: ausente é red flag, lento sugere parcial, normal não exclui cegueira cortical.',
+    pitfalls: 'Não padronizar distância/intensidade da lanterna.',
   },
   {
-    id: 'sec4-degluticao-ausente',
-    title: 'Reflexo de deglutição (IX/X): Ausente',
-    whatItAssesses: 'Incapacidade de deglutir, com risco extremo de aspiração e comprometimento de via aérea.',
-    neuroanatomy: 'Indica disfunção grave bulbar (tronco encefálico) ou falência neuromuscular severa.',
+    id: 's4-nistagmo-oquee',
+    title: 'Nistagmo patológico — o que avalia',
+    whatItAssesses:
+      'Atividade anormal do sistema vestibular gerando movimentos oculares rítmicos involuntários. É um dos sinais mais úteis para síndrome vestibular e, junto com mentação e déficits posturais, ajuda a diferenciar vestibular periférico vs central.',
+    neuroanatomy:
+      'Aparelho vestibular (periférico) → nervo vestibular (VIII) → núcleos vestibulares no tronco → conexões com III/IV/VI e cerebelo. Desequilíbrio vestibular gera assimetria no reflexo vestíbulo-ocular (VOR), resultando em nistagmo.',
     howToPerform:
-      'Não ofertar líquidos/alimento. Avaliar necessidade de proteção de via aérea e suporte. Encaminhar para emergência/UTI se necessário.',
+      'Observar olhos em repouso. Se seguro, observar com mudança suave de posição da cabeça. Registrar presença/ausência (e futuramente direção).',
     interpretation:
-      'Red flag máximo. Priorize estabilização e investigação urgente. Na neurolocalização, pesa fortemente para tronco encefálico/bulbo ou doença neuromuscular difusa grave.',
+      'Mentação normal e poucos déficits centrais sugerem periférico. Mentação alterada, déficits posturais severos e sinais adicionais de NC sugerem vestibular central. Nistagmo vertical é mais sugestivo de central.',
+    pitfalls: 'Confundir nistagmo fisiológico com patológico; avaliar em rotação extrema de cabeça; ignorar sedação.',
+  },
+  {
+    id: 's4-estrabismo-oquee',
+    title: 'Estrabismo — o que avalia',
+    whatItAssesses:
+      'Desalinhamento ocular, frequentemente associado a vestibular (posicional) ou disfunção dos nervos oculomotores (III/IV/VI). Ajuda a identificar vestibular e disfunções de tronco encefálico/oculomotoras.',
+    neuroanatomy:
+      'III/IV/VI (núcleos no tronco) e conexões vestibulares/cerebelares. Alterações vestibulares podem gerar estrabismo posicional pela assimetria do VOR.',
+    howToPerform: 'Observar olhos em repouso. Se seguro, avaliar se é posicional (muda com posição da cabeça). Registrar presente/ausente.',
+    interpretation:
+      'Com head tilt/nistagmo sugere vestibular. Com outros déficits de NC e mentação alterada sugere tronco encefálico.',
+    pitfalls: 'Não considerar estrabismo basal de raça; não correlacionar com sinais vestibulares.',
+  },
+  {
+    id: 's4-sensibilidade-facial-v',
+    title: 'Sensibilidade facial (V) — o que avalia',
+    whatItAssesses:
+      'Aferência sensitiva da face pelo nervo trigêmeo (V). Déficits sensitivos faciais podem indicar lesões periféricas (V) ou centrais (tronco encefálico), e ajudam a localizar doença de base de crânio.',
+    neuroanatomy:
+      'V aferente sensitivo → núcleos do trigêmeo no tronco. Integração com respostas comportamentais/motoras. Transmissão sensorial somática; respostas dirigidas dependem de percepção e reatividade comportamental.',
+    howToPerform:
+      'Toque/pressão leve em regiões inervadas pelo V (focinho, face lateral, vibrissas). Observar reação (retração/evitação). Comparar lados.',
+    interpretation:
+      'Diminuído/ausente unilateral sugere lesão do V ipsilateral ou tronco. Associado a múltiplos déficits de NC e mentação alterada: forte suspeita de tronco encefálico.',
+    pitfalls: 'Animal agressivo reage por comportamento; sedação reduz reação; estímulo inconsistente.',
+  },
+  {
+    id: 's4-degluticao-ix-x',
+    title: 'Reflexo de deglutição (IX/X) — o que avalia',
+    whatItAssesses:
+      'Função bulbar relacionada a deglutição e proteção de via aérea, envolvendo IX (glossofaríngeo) e X (vago). Disfagia é red flag por risco de aspiração e sugere lesão bulbar/tronco encefálico ou doença neuromuscular difusa.',
+    neuroanatomy:
+      'Núcleos bulbares no tronco (bulbo). Conexões com laringe/faringe e coordenação neuromuscular. Reflexo e padrão motor complexo; falhas aumentam risco de aspiração e pneumonia.',
+    howToPerform:
+      'Preferir observação funcional (engasgos, tosse pós-água, dificuldade). Evitar estímulos invasivos. Em suspeita importante, não forçar água/alimento.',
+    interpretation:
+      'Diminuído/ausente + mentação alterada e outros NC = alta suspeita de tronco encefálico. Mesmo isolado é emergência funcional pela aspiração.',
     pitfalls:
-      'Sedação profunda pode abolir reflexos. Reavalie se há histórico de fármacos e nível de consciência. Quando aparece: Lesões bulbares extensas, botulismo grave, miastenia grave, trauma craniano/herniação.',
+      'Testar oferecendo água em paciente com risco; confundir doença laríngea/obstrução com disfunção neurológica sem avaliar vias aéreas.',
   },
 ]

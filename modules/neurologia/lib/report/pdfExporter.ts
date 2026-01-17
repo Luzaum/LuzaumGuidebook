@@ -252,13 +252,50 @@ export function exportToPDF(report: CaseReport, caseState: any): void {
     }
   }
 
-  // 10. CAUTELAS POR COMORBIDADE
-  if (report.comorbidityCautions && report.comorbidityCautions.length > 0) {
-    addSection('10. CAUTELAS POR COMORBIDADE')
-    addText('As seguintes considerações devem ser observadas devido às comorbidades identificadas:', 10, false)
-    report.comorbidityCautions.forEach((caution, idx) => {
-      addText(`• ${caution}`, 9, false)
-    })
+  // 10. IMPACTO DAS COMORBIDADES
+  if (
+    report.comorbidityImpact &&
+    (report.comorbidityImpact.alerts.length > 0 ||
+      report.comorbidityImpact.cautions.length > 0 ||
+      report.comorbidityImpact.diagnosticAdds.length > 0 ||
+      report.comorbidityImpact.diagnosticAvoids.length > 0)
+  ) {
+    addSection('10. IMPACTO DAS COMORBIDADES')
+
+    // Alertas
+    if (report.comorbidityImpact.alerts.length > 0) {
+      addText('⚠️ Alertas Clínicos:', 10, true)
+      report.comorbidityImpact.alerts.forEach((alert) => {
+        addText(`• ${alert}`, 9, false)
+      })
+      yPos += 2
+    }
+
+    // Cautelas Terapêuticas
+    if (report.comorbidityImpact.cautions.length > 0) {
+      addText('💊 Cautelas Terapêuticas:', 10, true)
+      report.comorbidityImpact.cautions.forEach((caution) => {
+        addText(`• ${caution}`, 9, false)
+      })
+      yPos += 2
+    }
+
+    // Exames a Adicionar
+    if (report.comorbidityImpact.diagnosticAdds.length > 0) {
+      addText('🧪 Exames Recomendados Adicionais:', 10, true)
+      report.comorbidityImpact.diagnosticAdds.forEach((add) => {
+        addText(`• ${add}`, 9, false)
+      })
+      yPos += 2
+    }
+
+    // Evitar/Ajustar (em destaque)
+    if (report.comorbidityImpact.diagnosticAvoids.length > 0) {
+      addText('🚫 Evitar/Ajustar (Em Destaque):', 10, true, [200, 0, 0])
+      report.comorbidityImpact.diagnosticAvoids.forEach((avoid) => {
+        addText(`• ${avoid}`, 9, false, [200, 50, 0])
+      })
+    }
   }
 
   // 11. REFERÊNCIAS BIBLIOGRÁFICAS

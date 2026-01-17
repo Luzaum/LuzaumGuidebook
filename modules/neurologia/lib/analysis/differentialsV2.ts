@@ -383,7 +383,14 @@ export function generateDifferentials(
         }
       })
 
-    results.push(...topLibrary)
+    results.push(...topLibrary.map((dx) => {
+      // Garantir que tem ID (convertToDifferential já gera, mas garantir compatibilidade)
+      if (!dx.id) {
+        const ddxId = dx.name.toLowerCase().replace(/[^a-z0-9]/g, '_').replace(/\s+/g, '_').replace(/_+/g, '_')
+        return { ...dx, id: ddxId }
+      }
+      return dx
+    }))
   }
 
   // PASSO 2: Se não tiver 5 diferenciais, completar com candidatos hardcoded
@@ -484,13 +491,22 @@ function buildDifferential(
     why.push(`Espécie: ${patient.species === 'dog' ? 'cão' : 'gato'}`)
   }
   if (patient.comorbidities.length > 0) {
-    why.push(`Comorbidades: ${patient.comorbidities.join(', ')}`)
+    const comorbLabels = Array.isArray(patient.comorbidities)
+      ? patient.comorbidities.map((c: any) => (typeof c === 'string' ? c : c.label || c.key)).join(', ')
+      : ''
+    if (comorbLabels) {
+      why.push(`Comorbidades: ${comorbLabels}`)
+    }
   }
 
   const diagnostics = getDiagnosticsForCategory(candidate.category, localization.primary)
   const treatment = getTreatmentForCategory(candidate.category, patient.comorbidities)
 
+  // Gerar ID único baseado no nome
+  const ddxId = candidate.name.toLowerCase().replace(/[^a-z0-9]/g, '_').replace(/\s+/g, '_').replace(/_+/g, '_')
+
   return {
+    id: ddxId,
     name: candidate.name,
     category: candidate.category,
     likelihood: Math.min(100, Math.round(score)),
@@ -501,8 +517,12 @@ function buildDifferential(
 }
 
 function buildGenericDifferential(index: number, axis: NeuroAxis): Differential {
+  const name = `Diferencial amplo ${index} - ${getAxisLabel(axis)}`
+  const ddxId = `diferencial_amplo_${index}_${axis.toLowerCase()}`
+  
   return {
-    name: `Diferencial amplo ${index} - ${getAxisLabel(axis)}`,
+    id: ddxId,
+    name,
     category: 'IDIOPATICA',
     likelihood: Math.max(20, 100 - index * 15),
     why: ['Diferencial amplo baseado na localização', 'Requer investigação adicional'],
@@ -642,11 +662,17 @@ function getDiagnosticsForCategory(
 
 function getTreatmentForCategory(
   category: Differential['category'],
-  comorbidities: string[],
+  comorbidities: any[],
 ): Differential['treatment'] {
   const cautions: string[] = []
-  if (comorbidities.includes('renal')) {
-    cautions.push('Evitar AINEs em disfunção renal')
+  
+  // Extrair keys de comorbidades (suporta string[] ou ComorbidityItem[])
+  const comorbKeys = Array.isArray(comorbidities)
+    ? comorbidities.map((c: any) => (typeof c === 'string' ? c : c.key || c)).filter(Boolean)
+    : []
+  
+  if (comorbKeys.includes('renal') || comorbKeys.includes('hepatica')) {
+    cautions.push('Ajustar doses conforme função renal/hepática')
   }
   if (comorbidities.includes('hepatic')) {
     cautions.push('Ajustar metabolização hepática de fármacos')

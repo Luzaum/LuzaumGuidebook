@@ -31,6 +31,7 @@ export type NeuroLocalizationResult = {
 }
 
 export type Differential = {
+  id: string // ID único para boost de comorbidades
   name: string
   category:
     | 'INFLAMATORIA'
@@ -65,5 +66,10 @@ export type CaseReport = {
   examSummary: string
   neuroLocalization: NeuroLocalizationResult
   differentials: Differential[]
-  comorbidityCautions?: string[] // Cautelas consolidadas por comorbidades
+  comorbidityImpact?: {
+    alerts: string[]
+    cautions: string[]
+    diagnosticAdds: string[]
+    diagnosticAvoids: string[]
+  }
 }

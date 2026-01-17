@@ -38,9 +38,25 @@ export function sanitizePatient(patient: Partial<Patient>): Partial<Patient> {
     sanitized.lactating = false
   }
 
-  // Comorbidades: garantir que é array e remover duplicatas
+  // Comorbidades: garantir que é array de ComorbidityItem e remover duplicatas por key
   if (Array.isArray(sanitized.comorbidities)) {
-    sanitized.comorbidities = [...new Set(sanitized.comorbidities)]
+    // Migrar formato antigo (string[]) para novo (ComorbidityItem[])
+    const migrated = sanitized.comorbidities.map((c: any) => {
+      if (typeof c === 'string') {
+        // Formato antigo: converter para ComorbidityItem
+        return { key: c as any, label: c }
+      }
+      return c // Já é ComorbidityItem
+    })
+
+    // Remover duplicatas por key
+    const seen = new Set<string>()
+    sanitized.comorbidities = migrated.filter((c: any) => {
+      const key = c.key || c
+      if (seen.has(key)) return false
+      seen.add(key)
+      return true
+    })
   } else {
     sanitized.comorbidities = []
   }

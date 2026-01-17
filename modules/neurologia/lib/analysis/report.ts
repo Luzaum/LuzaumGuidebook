@@ -2,7 +2,7 @@ import { validateMinimumData } from './validate'
 import { determineNeuroLocalization } from './localization'
 import { generateDifferentials } from './differentialsV2'
 import { replaceForbiddenEnglish, auditCaseReport } from '../quality/noEnglish'
-import { getCombinedComorbidityCautions } from '../engine/comorbidityRules'
+import { applyComorbidityRules } from '../engine/comorbidityRules'
 import type { CaseReport } from '../../types/analysis'
 
 export function buildCaseReport(caseState: any): CaseReport {
@@ -37,12 +37,6 @@ export function buildCaseReport(caseState: any): CaseReport {
   const neuroLocalization = determineNeuroLocalization(caseState)
   const differentials = generateDifferentials(caseState, neuroLocalization)
 
-  // Gerar cautelas por comorbidades
-  const comorbidities = caseState?.patient?.comorbidities || []
-  const comorbidityCautions = comorbidities.length > 0
-    ? getCombinedComorbidityCautions(comorbidities)
-    : []
-
   // Construir report inicial
   let report: CaseReport = {
     generatedAtISO: now,
@@ -51,7 +45,18 @@ export function buildCaseReport(caseState: any): CaseReport {
     examSummary,
     neuroLocalization,
     differentials,
-    comorbidityCautions,
+  }
+
+  // Aplicar regras de comorbidades (boosts em DDx + summary de impacto)
+  const comorbidities = caseState?.patient?.comorbidities || []
+  if (comorbidities.length > 0) {
+    const { updatedReport } = applyComorbidityRules({
+      report,
+      comorbidities: Array.isArray(comorbidities) && typeof comorbidities[0] === 'string'
+        ? comorbidities.map(c => ({ key: c as any, label: c }))
+        : comorbidities,
+    })
+    report = updatedReport
   }
 
   // Aplicar sanitização de inglês
@@ -118,7 +123,13 @@ function buildPatientSummary(s: any): string {
   const w = s?.patient?.weightKg ? `${s.patient.weightKg} kg` : '—'
   const com =
     Array.isArray(s?.patient?.comorbidities) && s.patient.comorbidities.length
-      ? s.patient.comorbidities.join(', ')
+      ? s.patient.comorbidities
+          .map((c: any) => {
+            const label = typeof c === 'string' ? c : c.label || c.key
+            const severity = typeof c === 'object' && c.severity ? ` (${c.severity})` : ''
+            return `${label}${severity}`
+          })
+          .join(', ')
       : 'Nenhuma informada'
   return `Espécie: ${sp} | Idade: ${age} | Sexo: ${sex} | Reprodutivo: ${repro} | Fase: ${phys} | Peso: ${w} | Comorbidades: ${com}`
 }

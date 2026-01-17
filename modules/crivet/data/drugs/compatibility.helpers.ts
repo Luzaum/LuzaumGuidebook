@@ -178,6 +178,68 @@ export function norepinephrineCompatibilityToDrugCompatibility(): DrugCompatibil
   }
 }
 
+// Helper para maropitant (baseado no profile)
+export function maropitantCompatibilityToDrugCompatibility(): DrugCompatibility {
+  return {
+    diluents: [
+      {
+        diluentId: 'NaCl_09',
+        label: 'NaCl 0,9%',
+        status: 'compatible',
+        reason: 'Compatibilidade garantida conforme perfil do fármaco.',
+      },
+    ],
+    compatibleDiluent: ['NaCl 0,9%'],
+    compatibleMeds: [],
+    incompatibilities: [
+      {
+        name: 'Outros fármacos na mesma seringa',
+        severity: 'warning',
+        message: 'Ausência de dados de compatibilidade - evitar misturas.',
+      },
+    ],
+    materialWarnings: ['Preferir via exclusiva se IV para evitar interações.'],
+  }
+}
+
+// Helper para efedrina (baseado no profile)
+export function ephedrineCompatibilityToDrugCompatibility(): DrugCompatibility {
+  return {
+    diluents: [
+      {
+        diluentId: 'NaCl_09',
+        label: 'NaCl 0,9%',
+        status: 'compatible',
+        reason: 'Diluente padrão e previsível para preparo em seringa.',
+      },
+      {
+        diluentId: 'RL',
+        label: 'Ringer Lactato',
+        status: 'compatible',
+        reason: 'Compatível para infusão.',
+      },
+      {
+        diluentId: 'D5W',
+        label: 'Glicose 5%',
+        status: 'compatible',
+        reason: 'Compatível para infusão.',
+      },
+    ],
+    compatibleDiluent: ['NaCl 0,9%', 'Ringer Lactato', 'Glicose 5%'],
+    compatibleMeds: [],
+    incompatibilities: [
+      {
+        name: 'Misturas com outros fármacos no mesmo corpo de seringa',
+        severity: 'warning',
+        message: 'Ausência de tabela de compatibilidade específica - risco depende de concentração/pH.',
+      },
+    ],
+    materialWarnings: [
+      'Se via compartilhada: administrar, fazer flush com cristaloide e reavaliar efeito antes de outras drogas.',
+    ],
+  }
+}
+
 // Compatibility padrão (quando não há dados)
 export const defaultCompatibility: DrugCompatibility = {
   diluents: [

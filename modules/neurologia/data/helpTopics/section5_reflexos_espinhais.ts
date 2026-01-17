@@ -2,250 +2,257 @@ import type { HelpTopic } from '../../types/helpTopics'
 
 export const section5ReflexosEspinhais: HelpTopic[] = [
   {
-    id: 'sec5-intro-reflexos-espinhais',
-    title: 'Reflexos espinhais: visão geral',
+    id: 's5-reflexos-geral',
+    title: 'Reflexos espinhais (visão geral) — UMN vs LMN',
     whatItAssesses:
-      'Reflexos segmentares avaliam integridade do arco reflexo (nervo periférico → medula segmentar → nervo periférico) e ajudam a diferenciar lesões de neurônio motor superior (UMN) versus neurônio motor inferior (LMN).',
+      'Avalia integridade do arco reflexo segmentar (aferência periférica → medula segmentar → eferência periférica) e auxilia a diferenciar sinais de neurônio motor superior (UMN) de neurônio motor inferior (LMN). Reflexos são fundamentais para neurolocalização medular: permitem separar lesão acima do segmento (UMN: reflexos aumentados) de lesão no segmento/raiz/nervo (LMN: reflexos diminuídos/ausentes).',
     neuroanatomy:
-      'UMN (lesão acima do segmento) tende a aumentar reflexos e tônus (desinibição). LMN (lesão no segmento/raiz/nervo) reduz reflexos e tônus e causa atrofia neurogênica.',
+      'UMN: vias descendentes (ex.: corticoespinal/reticuloespinal) modulam e inibem arcos reflexos segmentares. LMN: corpo celular no corno ventral, raiz ventral, plexo e nervos periféricos. UMN lesado → perda de inibição → hiperreflexia/hipertonia. LMN lesado → falha do arco reflexo → hiporreflexia/hipotonia/atrofia neurogênica.',
     howToPerform:
-      'Avalie com o animal relaxado, em decúbito lateral quando necessário. Compare esquerda vs direita. Documente: normal/aumentado/diminuído/ausente. Sempre correlacione com tônus, atrofia, propriocepção e marcha.',
+      'Paciente preferencialmente em decúbito lateral, relaxado. Executar teste de forma padronizada e comparar lados (E/D). Registrar: normal/aumentado/diminuído/ausente. Correlacionar com tônus, atrofia, marcha e propriocepção.',
     interpretation:
-      'Reflexos aumentados com paresia sugerem UMN (ex.: T3–L3 para pélvicos). Reflexos diminuídos/ausentes sugerem LMN (ex.: L4–S3 para pélvicos; C6–T2 para torácicos).',
+      'Reflexos pélvicos aumentados sugerem lesão cranial a L4 (tipicamente T3–L3). Reflexos pélvicos diminuídos sugerem L4–S3 (LMN). Reflexos torácicos diminuídos sugerem C6–T2. Use sempre em conjunto com propriocepção e nervos cranianos.',
     pitfalls:
-      'Ansiedade, dor e tensão muscular podem aumentar resistência e confundir tônus/reflexo. Sedação pode reduzir reflexos. Reavalie se necessário. Quando aparece: Mielopatias segmentares, radiculopatias, neuropatias periféricas, doenças neuromusculares.',
+      'Ansiedade/dor aumentam reflexos e tônus; sedação reduz reflexos. Posição do membro inadequada altera resposta. Não comparar lados causa erro de interpretação.',
   },
   {
-    id: 'sec5-retirada-oquee',
-    title: 'Reflexo flexor/retirada (membro torácico): o que avalia',
+    id: 's5-retirada-toracico-oquee',
+    title: 'Reflexo flexor/retirada (membro torácico) — o que avalia',
     whatItAssesses:
-      'Reflexo de retirada do membro em resposta a estímulo nociceptivo. Avalia arco reflexo periférico/segmentar e integridade de LMN do membro.',
+      'Reflexo de flexão do membro em resposta a estímulo nociceptivo distal. Avalia arco reflexo e função LMN do membro torácico. Ajuda a identificar lesões segmentares C6–T2, plexo braquial e nervos periféricos. Também ajuda a diferenciar UMN vs LMN em membros torácicos quando integrado ao tônus e à marcha.',
     neuroanatomy:
-      'Aferência: nociceptores → nervos periféricos. Integração: segmentos medulares cervicais (principalmente C6–T2 para torácicos). Eferência: LMN → músculos flexores.',
+      'Aferência nociceptiva periférica → medula cervical (principalmente C6–T2) → interneurônios → LMN → nervos periféricos → músculos flexores. É um reflexo medular: pode ocorrer sem percepção consciente. A intensidade pode aumentar com desinibição UMN ou com dor/ansiedade.',
     howToPerform:
-      'Aplique estímulo nociceptivo apropriado em dígitos (pressão firme) e observe flexão de múltiplas articulações (ombro/cotovelo/cárpica). Compare lados. Evite lesão tecidual.',
+      'Com o animal em decúbito, aplicar estímulo nociceptivo controlado em dígitos (pressão firme, sem lesionar). Observar flexão coordenada de múltiplas articulações. Repetir e comparar lados.',
     interpretation:
-      'Retirada diminuída/ausente sugere LMN (C6–T2, raiz/plexo/nervo) ou sedação profunda. Retirada aumentada pode ocorrer com UMN acima do segmento por desinibição, mas também por hiperexcitabilidade/dor.',
+      'Diminuído/ausente sugere LMN (C6–T2/plexo/nervo). Aumentado pode ocorrer em lesão UMN acima de C6, mas também por reatividade dolorosa. Não usar retirada como prova de dor profunda.',
     pitfalls:
-      'A retirada é um reflexo e não prova percepção consciente de dor. Diferencie retirada reflexa de resposta dirigida (vocalizar, virar a cabeça). Quando aparece: Lesões C6–T2, plexopatias, neuropatias, mielopatias UMN acima de C6.',
+      'Confundir retirada reflexa com dor profunda; estímulo fraco gera falso "diminuído"; paciente tenso gera falso "aumentado".',
   },
   {
-    id: 'sec5-retirada-esq-normal',
-    title: 'Retirada torácico esquerdo: Normal',
-    whatItAssesses: 'Resposta de flexão normal do membro torácico esquerdo ao estímulo nociceptivo.',
-    neuroanatomy: 'Arco reflexo e LMN do membro torácico esquerdo preservados (C6–T2/plexo/nervos).',
-    howToPerform: 'Estímulo firme em dígitos e observar flexão coordenada. Compare com o lado direito.',
-    interpretation: 'Se há paresia com retirada normal e tônus aumentado, aumenta suspeita de UMN (lesão acima de C6).',
-    pitfalls:
-      'Estimulação insuficiente pode parecer normal fraco; padronize intensidade. Quando aparece: Normalidade ou lesões UMN acima do segmento.',
-  },
-  {
-    id: 'sec5-retirada-esq-aumentado',
-    title: 'Retirada torácico esquerdo: Aumentado',
-    whatItAssesses: 'Resposta exagerada ou muito rápida de retirada.',
-    neuroanatomy: 'Pode ocorrer por desinibição UMN acima do segmento ou por hiperexcitabilidade associada à dor/ansiedade.',
-    howToPerform: 'Padronize estímulo. Observe se há hiperreflexia consistente. Correlacione com dor local e ansiedade.',
-    interpretation:
-      'Se associado a outros sinais UMN (tônus aumentado, propriocepção alterada), favorece lesão acima de C6. Se isolado com dor local, pode ser reatividade dolorosa.',
-    pitfalls: 'Animais ansiosos reagem exageradamente. Reavalie em ambiente calmo. Quando aparece: Mielopatias cervicais altas (UMN), dor intensa.',
-  },
-  {
-    id: 'sec5-retirada-esq-diminuido',
-    title: 'Retirada torácico esquerdo: Diminuído',
-    whatItAssesses: 'Retirada fraca, lenta ou incompleta do membro torácico esquerdo.',
-    neuroanatomy: 'Sugere disfunção LMN (C6–T2, raiz, plexo braquial, nervos periféricos) ou efeito de sedação/fadiga.',
-    howToPerform: 'Repita e compare com lado direito. Avalie tônus, atrofia e dor/lesão ortopédica.',
-    interpretation:
-      'Com paresia e tônus baixo, reforça LMN. Combine com achados de marcha: fraqueza flácida e diminuição de reflexos segmentares.',
-    pitfalls:
-      'Dor ortopédica severa pode reduzir resposta por proteção. Avalie dor e função articular. Quando aparece: Plexopatia, radiculopatia, neuropatia periférica, mielopatia C6–T2.',
-  },
-  {
-    id: 'sec5-retirada-esq-ausente',
-    title: 'Retirada torácico esquerdo: Ausente',
-    whatItAssesses: 'Ausência de retirada do membro torácico esquerdo ao estímulo nociceptivo.',
-    neuroanatomy: 'Indica falha importante do arco reflexo/LMN (C6–T2/plexo/nervo) ou depressão neurológica severa.',
-    howToPerform: 'Confirmar com estímulo adequado e comparar com o outro lado. Avaliar sedação e nível de consciência.',
-    interpretation:
-      'Forte evidência para lesão LMN do membro. Correlacione com tônus baixo e possível atrofia. Se mentação gravemente alterada, pode haver supressão global.',
-    pitfalls:
-      'Não confundir com falta de resposta dirigida; aqui é ausência do reflexo motor. Checar técnica e sedação. Quando aparece: Avulsão/lesão grave de plexo braquial, neuropatia severa, lesão segmentar C6–T2.',
-  },
-  {
-    id: 'sec5-retirada-dir-normal',
-    title: 'Retirada torácico direito: Normal',
-    whatItAssesses: 'Resposta de flexão normal do membro torácico direito ao estímulo nociceptivo.',
-    neuroanatomy: 'Arco reflexo e LMN do membro torácico direito preservados.',
-    howToPerform: 'Estimule dígitos e observe flexão. Compare com esquerdo.',
-    interpretation: 'Retirada normal com paresia pode indicar UMN (lesão acima de C6) ou déficit não motor periférico.',
-    pitfalls: 'Padronize estímulo para evitar falso normal. Quando aparece: Normalidade ou UMN acima do segmento.',
-  },
-  {
-    id: 'sec5-retirada-dir-aumentado',
-    title: 'Retirada torácico direito: Aumentado',
-    whatItAssesses: 'Retirada exagerada no membro torácico direito.',
-    neuroanatomy: 'Pode refletir desinibição UMN acima do segmento ou reatividade dolorosa.',
-    howToPerform: 'Padronize estímulo e observe consistência. Correlacione com dor e ansiedade.',
-    interpretation: 'Se houver outros sinais UMN, favorece lesão acima de C6. Isolado pode ser dor/ansiedade.',
-    pitfalls: 'Ambiente e contenção aumentam reatividade. Quando aparece: Mielopatias cervicais altas, dor intensa.',
-  },
-  {
-    id: 'sec5-retirada-dir-diminuido',
-    title: 'Retirada torácico direito: Diminuído',
-    whatItAssesses: 'Retirada fraca/lenta no membro torácico direito.',
-    neuroanatomy: 'Sugere disfunção LMN (C6–T2/plexo/nervo) ou efeito de sedação.',
-    howToPerform: 'Repita, compare e avalie tônus/atrofia/dor local.',
-    interpretation: 'Com tônus baixo e paresia flácida, reforça LMN. Integre com marcha e outros reflexos.',
-    pitfalls: 'Dor ortopédica pode reduzir resposta. Quando aparece: Plexopatia, neuropatia periférica, mielopatia C6–T2.',
-  },
-  {
-    id: 'sec5-retirada-dir-ausente',
-    title: 'Retirada torácico direito: Ausente',
-    whatItAssesses: 'Sem retirada do membro torácico direito ao estímulo.',
-    neuroanatomy: 'Indica falha grave do arco reflexo/LMN (C6–T2/plexo/nervo) ou depressão severa.',
-    howToPerform: 'Confirmar com técnica adequada e comparar com o lado esquerdo. Avaliar sedação/consciência.',
-    interpretation: 'Forte evidência de lesão LMN do membro. Correlacione com atrofia e perda de tônus.',
-    pitfalls: 'Checar intensidade do estímulo e condição do paciente. Quando aparece: Lesões graves de plexo, neuropatias severas, lesão segmentar C6–T2.',
-  },
-  {
-    id: 'sec5-patelar-oquee',
-    title: 'Reflexo patelar (pélvico): o que avalia',
+    id: 's5-retirada-toracico-esq-normal',
+    title: 'Retirada torácico esquerdo — Normal',
     whatItAssesses:
-      'Extensão do joelho após percussão do tendão patelar. Avalia arco reflexo femoral e segmentos L4–L6 (principalmente L4–L5).',
-    neuroanatomy:
-      'Aferência/eferência via nervo femoral (LMN) com integração em L4–L6. Lesões UMN craniais (T3–L3) removem inibição e aumentam reflexo; lesões LMN (L4–S3) reduzem/abolam.',
-    howToPerform:
-      'Com o animal em decúbito lateral, mantenha o membro em leve flexão. Percuta o tendão patelar e observe extensão do joelho. Compare lados. Evite tensão excessiva.',
+      'Resposta reflexa de retirada normal do membro torácico esquerdo. Serve como controle lateral e auxilia a definir se há disfunção LMN ipsilateral.',
+    neuroanatomy: 'Arco reflexo íntegro envolvendo segmentos C6–T2 e nervos periféricos do lado esquerdo. Reflexo segmentar preservado; não depende do córtex.',
+    howToPerform: 'Estimular dígitos do membro esquerdo com intensidade padronizada e observar flexão consistente.',
     interpretation:
-      'Patelar aumentado sugere UMN para pélvicos (lesão T3–L3). Patelar diminuído/ausente sugere LMN (L4–S3, femoral). Combine com propriocepção e tônus.',
-    pitfalls:
-      'Ansiedade e tensão muscular podem aumentar reflexo. Dor no joelho ou ortopedia interfere. Patelar pode estar normal com outras disfunções (não é teste único). Quando aparece: Mielopatias toracolombares (aumentado), radiculopatias/neuropatias (diminuído), lesões lombossacras.',
+      'Se houver paresia com retirada normal e tônus aumentado, sugere UMN (lesão acima de C6). Se retirada normal e sem paresia, compatível com normalidade.',
+    pitfalls: 'Não padronizar estímulo e comparar com lado direito.',
   },
   {
-    id: 'sec5-patelar-esq-normal',
-    title: 'Patelar pélvico esquerdo: Normal',
-    whatItAssesses: 'Extensão do joelho apropriada e simétrica no lado esquerdo.',
-    neuroanatomy: 'Arco reflexo femoral e segmentos L4–L6 funcionais no lado esquerdo.',
-    howToPerform: 'Percuta tendão patelar com membro relaxado e compare com lado direito.',
-    interpretation:
-      'Se há paresia pélvica com patelar normal, considere lesões UMN leves, dor, ou problemas não femorais; integre com propriocepção e nocicepção.',
-    pitfalls: 'Tensão muscular pode mascarar. Ajuste posição do membro. Quando aparece: Normalidade ou lesões fora de L4–L6.',
-  },
-  {
-    id: 'sec5-patelar-esq-aumentado',
-    title: 'Patelar pélvico esquerdo: Aumentado',
-    whatItAssesses: 'Extensão exagerada/repetitiva no lado esquerdo.',
-    neuroanatomy: 'Sugerindo desinibição UMN acima de L4 (tipicamente T3–L3) para pélvicos.',
-    howToPerform: 'Padronize percussão, compare com direito e correlacione com tônus aumentado.',
-    interpretation:
-      'Com paresia e propriocepção alterada em pélvicos, aumenta suspeita de lesão T3–L3. Se há também ataxia proprioceptiva, reforça mielopatia toracolombar.',
-    pitfalls: 'Ansiedade pode aumentar reflexos. Reavaliar com paciente relaxado. Quando aparece: IVDD T3–L3, mielopatias compressivas/degenerativas.',
-  },
-  {
-    id: 'sec5-patelar-esq-diminuido',
-    title: 'Patelar pélvico esquerdo: Diminuído',
-    whatItAssesses: 'Extensão fraca/lenta no lado esquerdo.',
-    neuroanatomy: 'Sugere envolvimento LMN em L4–S3, nervo femoral ou musculatura do quadríceps.',
-    howToPerform: 'Confirme com repetição, compare com direito e avalie tônus/atrofia de quadríceps.',
-    interpretation:
-      'Com paresia flácida, propriocepção alterada e patelar diminuído, reforça lesão L4–S3/LMN. Considere também radiculopatia lombar.',
-    pitfalls: 'Dor no joelho ou ruptura de ligamento pode interferir na resposta. Quando aparece: Doença lombossacra, neuropatia femoral, polineuropatia.',
-  },
-  {
-    id: 'sec5-patelar-esq-ausente',
-    title: 'Patelar pélvico esquerdo: Ausente',
-    whatItAssesses: 'Sem extensão do joelho no lado esquerdo.',
-    neuroanatomy: 'Indica falha do arco reflexo femoral/LMN (L4–L6) ou lesão muscular severa.',
-    howToPerform: 'Confirme técnica/posição, compare com outro lado, avalie atrofia e tônus.',
-    interpretation:
-      'Fortemente sugestivo de lesão LMN (L4–S3) no lado afetado. Integre com bexiga e cauda se houver sinais lombossacros.',
-    pitfalls: 'Sedação intensa e dor podem reduzir resposta. Reavaliar se necessário. Quando aparece: Lesão severa lombar/raízes, neuropatia femoral grave, trauma.',
-  },
-  {
-    id: 'sec5-patelar-dir-normal',
-    title: 'Patelar pélvico direito: Normal',
-    whatItAssesses: 'Resposta patelar apropriada e simétrica no lado direito.',
-    neuroanatomy: 'Arco reflexo femoral e segmentos L4–L6 preservados no lado direito.',
-    howToPerform: 'Percuta tendão patelar e compare com esquerdo.',
-    interpretation: 'Paresia com patelar normal exige integração com propriocepção e dor profunda para localização/prognóstico.',
-    pitfalls: 'Posicionamento inadequado pode gerar falso normal. Quando aparece: Normalidade ou lesões fora de L4–L6.',
-  },
-  {
-    id: 'sec5-patelar-dir-aumentado',
-    title: 'Patelar pélvico direito: Aumentado',
-    whatItAssesses: 'Resposta patelar exagerada no lado direito.',
-    neuroanatomy: 'Sugere desinibição UMN para pélvicos (lesão T3–L3).',
-    howToPerform: 'Padronize estímulo e compare. Correlacione com tônus aumentado e propriocepção.',
-    interpretation: 'Com déficits posturais pélvicos e dor toracolombar, reforça T3–L3.',
-    pitfalls: 'Tensão/ansiedade aumentam reflexo. Quando aparece: Mielopatias toracolombares.',
-  },
-  {
-    id: 'sec5-patelar-dir-diminuido',
-    title: 'Patelar pélvico direito: Diminuído',
-    whatItAssesses: 'Resposta patelar reduzida no lado direito.',
-    neuroanatomy: 'Sugere LMN (L4–S3) ou nervo femoral no lado direito.',
-    howToPerform: 'Repita, compare e avalie quadríceps/tônus.',
-    interpretation: 'Com paresia flácida e possível atrofia, reforça lesão lombossacra/LMN.',
-    pitfalls: 'Dor no joelho interfere. Quando aparece: Doenças lombossacras e neuropatias.',
-  },
-  {
-    id: 'sec5-patelar-dir-ausente',
-    title: 'Patelar pélvico direito: Ausente',
-    whatItAssesses: 'Sem resposta patelar no lado direito.',
-    neuroanatomy: 'Falha severa do arco reflexo femoral (L4–L6) / LMN no lado direito.',
-    howToPerform: 'Confirme técnica, compare lado oposto e avalie sinais de LMN.',
-    interpretation: 'Fortemente sugestivo de lesão LMN direita. Integre com sinais urinários/cauda se presentes.',
-    pitfalls: 'Sedação intensa e dor podem reduzir reflexo. Quando aparece: Trauma, radiculopatias graves, neuropatia femoral severa.',
-  },
-  {
-    id: 'sec5-panniculus-oquee',
-    title: 'Reflexo cutâneo do tronco (panniculus): o que avalia',
+    id: 's5-retirada-toracico-esq-aumentado',
+    title: 'Retirada torácico esquerdo — Aumentado',
     whatItAssesses:
-      'Contração do músculo cutâneo do tronco após estímulo cutâneo; usado para localizar nível aproximado de lesão medular toracolombar (cutoff).',
+      'Retirada exagerada/hiperativa do membro torácico esquerdo. Pode apontar desinibição UMN acima de C6, mas precisa ser distinguido de reatividade dolorosa.',
     neuroanatomy:
-      'Aferência entra nos segmentos toracolombares; eferência via nervo torácico lateral para o músculo cutâneo. Lesões medulares interrompem vias ascendentes, criando "cutoff" alguns segmentos caudal ao local real da lesão.',
-    howToPerform:
-      'Com o animal em estação ou decúbito, pinçe levemente a pele ao longo do tronco de caudal para cranial (bilateral). Observe contração/tremor cutâneo. Identifique ponto onde a resposta "retorna" (cutoff caudal à lesão).',
+      'Possível desinibição de vias descendentes (UMN) que normalmente modulam arcos reflexos cervicais. Perda de inibição UMN → hiperreflexia; dor/ansiedade também aumentam resposta.',
+    howToPerform: 'Padronizar estímulo e observar se a resposta é consistentemente exagerada. Correlacionar com tônus e outros sinais UMN.',
     interpretation:
-      'Presença de cutoff sugere lesão entre T3–L3. O nível do cutoff é geralmente 1–2 segmentos caudal ao local da lesão (estimativa, não exata).',
-    pitfalls:
-      'Obesidade, pelagem espessa, ansiedade e estímulo fraco dificultam. Não confundir com tremor por estresse. Quando aparece: IVDD toracolombar, trauma, mielites/tumores toracolombares.',
+      'Se associado a tônus aumentado e déficits posturais, favorece lesão UMN cranial a C6. Se isolado e paciente reativo, pode ser dor/ansiedade.',
+    pitfalls: 'Concluir UMN sem avaliar tônus, marcha e propriocepção.',
   },
   {
-    id: 'sec5-panniculus-normal',
-    title: 'Panniculus: Normal',
-    whatItAssesses: 'Contração cutânea presente ao estímulo ao longo do tronco, sem ponto de corte.',
-    neuroanatomy:
-      'Sugere integridade funcional do circuito do panniculus e ausência de interrupção significativa das vias ascendentes no tronco.',
-    howToPerform: 'Estimule do caudal ao cranial bilateralmente e observe resposta consistente.',
-    interpretation:
-      'Não exclui mielopatia (especialmente se lesão não toracolombar ou se técnica limitada). Integre com propriocepção e marcha.',
-    pitfalls: 'Estimulação inadequada pode dar falso normal. Padronize. Quando aparece: Normalidade ou lesões fora do eixo toracolombar significativo.',
-  },
-  {
-    id: 'sec5-panniculus-cutoff',
-    title: 'Panniculus: Corte (cutoff)',
+    id: 's5-retirada-toracico-esq-diminuido',
+    title: 'Retirada torácico esquerdo — Diminuído',
     whatItAssesses:
-      'Presença de um ponto no tronco a partir do qual a contração cutânea não ocorre caudalmente, mas volta a ocorrer cranialmente.',
-    neuroanatomy:
-      'Indica interrupção das vias ascendentes associadas à lesão medular. O cutoff costuma ser observado caudal ao nível real da lesão por anatomia segmentar.',
-    howToPerform:
-      'Marque mentalmente o nível onde a resposta retorna (cutoff). Repita dos dois lados para confirmar. Registre o nível aproximado (região/vertebra).',
-    interpretation: 'Sugere fortemente lesão toracolombar (T3–L3). Use para guiar imagem e palpação direcionada.',
-    pitfalls:
-      'Pode ser impreciso por variação anatômica e técnica. Não use como única forma de localizar. Quando aparece: IVDD T3–L3, trauma toracolombar, tumores/mielites nessa região.',
+      'Retirada fraca/lenta do membro torácico esquerdo. Sinal clássico de disfunção LMN (C6–T2/plexo/nervo).',
+    neuroanatomy: 'Arco reflexo comprometido em C6–T2, raízes/plexo braquial ou nervos periféricos. Falha do arco reflexo → menor recrutamento muscular.',
+    howToPerform: 'Repetir teste, avaliar tônus e atrofia. Comparar com lado direito.',
+    interpretation: 'Com hipotonia/atrofia, reforça LMN. Se o animal está sedado, considerar efeito farmacológico.',
+    pitfalls: 'Dor ortopédica severa pode reduzir uso do membro e parecer déficit neurológico.',
   },
   {
-    id: 'sec5-panniculus-ausente',
-    title: 'Panniculus: Ausente',
-    whatItAssesses: 'Ausência de contração cutânea ao estímulo ao longo do tronco.',
+    id: 's5-retirada-toracico-esq-ausente',
+    title: 'Retirada torácico esquerdo — Ausente',
+    whatItAssesses:
+      'Ausência de retirada no membro torácico esquerdo ao estímulo nociceptivo. Sugere lesão LMN severa do membro torácico (plexo/raízes/nervo) ou depressão neurológica global importante.',
+    neuroanatomy: 'Falha grave do arco reflexo C6–T2/plexo/nervo periférico. Sem condução aferente/eferente suficiente para gerar resposta motora reflexa.',
+    howToPerform: 'Confirmar técnica e intensidade adequada; avaliar sedação/consciência e outros reflexos do mesmo membro.',
+    interpretation: 'Forte evidência de LMN no membro. Correlacionar com hipotonia, atrofia e perda de sensibilidade local.',
+    pitfalls: 'Estimulação inadequada, paciente sedado ou com dor sistêmica intensa pode confundir.',
+  },
+  {
+    id: 's5-retirada-toracico-dir-normal',
+    title: 'Retirada torácico direito — Normal',
+    whatItAssesses:
+      'Resposta reflexa normal do membro torácico direito. Controle lateral e suporte para interpretação de lateralização.',
+    neuroanatomy: 'Arco reflexo C6–T2 direito preservado. Reflexo segmentar íntegro.',
+    howToPerform: 'Mesmo método do lado esquerdo, comparando intensidade e velocidade.',
+    interpretation: 'Paresia com retirada normal sugere UMN cranial ao segmento; retirada normal não exclui doença encefálica.',
+    pitfalls: 'Não comparar com o lado oposto.',
+  },
+  {
+    id: 's5-retirada-toracico-dir-aumentado',
+    title: 'Retirada torácico direito — Aumentado',
+    whatItAssesses:
+      'Resposta exagerada no membro torácico direito. Pode refletir UMN acima de C6 ou reatividade dolorosa/ansiosa.',
+    neuroanatomy: 'Desinibição UMN ou hiperexcitabilidade periférica por dor. Hiperreflexia por perda de modulação descendente ou por estímulo exagerado.',
+    howToPerform: 'Padronizar estímulo, correlacionar com tônus e reações posturais.',
+    interpretation: 'Sustenta UMN se houver hipertonia e déficits posturais; caso contrário considerar dor/ansiedade.',
+    pitfalls: 'Concluir UMN sem avaliação global.',
+  },
+  {
+    id: 's5-retirada-toracico-dir-diminuido',
+    title: 'Retirada torácico direito — Diminuído',
+    whatItAssesses:
+      'Retirada reduzida no membro torácico direito. Sinal de LMN (C6–T2/plexo/nervo) no lado direito.',
+    neuroanatomy: 'Arco reflexo alterado em C6–T2/plexo/nervo periférico. Recrutamento motor insuficiente por falha reflexa.',
+    howToPerform: 'Repetir; avaliar tônus e possível atrofia. Comparar com esquerdo.',
+    interpretation: 'Reforça LMN se associado a hipotonia/atrofia. Pode ser influenciado por sedação.',
+    pitfalls: 'Dor ortopédica confunde interpretação.',
+  },
+  {
+    id: 's5-retirada-toracico-dir-ausente',
+    title: 'Retirada torácico direito — Ausente',
+    whatItAssesses:
+      'Ausência de retirada do membro torácico direito. Aponta lesão LMN severa do membro torácico direito ou depressão global grave.',
+    neuroanatomy: 'Falha grave do arco reflexo em C6–T2/plexo/nervo. Arco reflexo interrompido.',
+    howToPerform: 'Confirmar técnica; considerar sedação/estupor; correlacionar com outros reflexos do membro.',
+    interpretation: 'Forte evidência de LMN direita; correlacionar com marcha e tônus.',
+    pitfalls: 'Estímulo insuficiente ou técnica inconsistente.',
+  },
+  {
+    id: 's5-patelar-oquee',
+    title: 'Reflexo patelar (pélvico) — o que avalia',
+    whatItAssesses:
+      'Extensão do joelho após percussão do tendão patelar. Avalia nervo femoral e segmentos L4–L6 (principalmente L4–L5). É o reflexo mais útil para diferenciar lesões UMN (T3–L3) de LMN (L4–S3) em membros pélvicos.',
     neuroanatomy:
-      'Pode indicar lesão extensa/difusa, falha do circuito periférico (nervo torácico lateral/músculo cutâneo) ou depressão global (sedação).',
-    howToPerform:
-      'Confirme com estímulo adequado e paciente relaxado. Verifique se há resposta cranial (perto de escápulas) e se o animal está sedado.',
+      'Aferência/eferência via nervo femoral; integração em L4–L6. UMN cranial a L4 remove inibição → hiperreflexia. Lesão em L4–L6/femoral reduz arco reflexo → hiporreflexia.',
+    howToPerform: 'Animal em decúbito lateral, membro em leve flexão. Percutir tendão patelar e observar extensão do joelho. Comparar lados.',
     interpretation:
-      'Se compatível com outros sinais de mielopatia grave, aumenta gravidade. Se isolado, revise técnica e considere sedação ou fatores periféricos.',
+      'Aumentado + paresia pélvica → suspeitar T3–L3. Diminuído/ausente → suspeitar L4–S3/femoral/plexo lombar.',
+    pitfalls: 'Tensão muscular ou posição errada do membro. Dor articular/ortopédica altera resposta.',
+  },
+  {
+    id: 's5-patelar-esq-normal',
+    title: 'Patelar esquerdo — Normal',
+    whatItAssesses:
+      'Arco reflexo patelar esquerdo preservado. Serve como controle e auxilia na lateralização de LMN.',
+    neuroanatomy: 'Nervo femoral e segmentos L4–L6 íntegros no lado esquerdo. Reflexo segmentar funcional.',
+    howToPerform: 'Percutir tendão patelar com membro relaxado. Comparar com direito.',
+    interpretation:
+      'Se há paresia com patelar normal, considerar UMN leve, dor, ou lesões fora de L4–L6. Integrar com propriocepção e panniculus.',
+    pitfalls: 'Falso normal por técnica inadequada.',
+  },
+  {
+    id: 's5-patelar-esq-aumentado',
+    title: 'Patelar esquerdo — Aumentado',
+    whatItAssesses:
+      'Hiperreflexia patelar esquerda. Sinal clássico de UMN para membros pélvicos (lesão T3–L3).',
+    neuroanatomy:
+      'Arco patelar intacto (L4–L6) com perda de modulação descendente (lesão cranial). Desinibição UMN → resposta exagerada.',
+    howToPerform: 'Padronizar percussão. Correlacionar com hipertonia e propriocepção alterada.',
+    interpretation: 'Com paresia/ataxia pélvica, reforça T3–L3. Se bilateral, sugere lesão midline/compressiva.',
+    pitfalls: 'Ansiedade/tensão aumentam reflexo e confundem.',
+  },
+  {
+    id: 's5-patelar-esq-diminuido',
+    title: 'Patelar esquerdo — Diminuído',
+    whatItAssesses:
+      'Hiporreflexia patelar esquerda. Sugere lesão LMN (L4–S3) ou nervo femoral/plexo lombar.',
+    neuroanatomy: 'Comprometimento do arco reflexo (femoral/L4–L6) no lado esquerdo. Falha do arco reflexo → contração reduzida do quadríceps.',
+    howToPerform: 'Repetir com posicionamento correto; avaliar atrofia de quadríceps e tônus.',
+    interpretation:
+      'Com paresia flácida e hipotonia, reforça LMN. Integrar com reflexo de retirada pélvico (se disponível) e função urinária.',
+    pitfalls: 'Dor de joelho (ortopédica) reduz extensão e simula hiporreflexia.',
+  },
+  {
+    id: 's5-patelar-esq-ausente',
+    title: 'Patelar esquerdo — Ausente',
+    whatItAssesses:
+      'Ausência de reflexo patelar esquerdo. Forte evidência de lesão LMN no arco femoral/L4–L6 ou lesão muscular severa.',
+    neuroanatomy: 'Arco reflexo patelar (femoral/L4–L6) interrompido no lado esquerdo. Sem disparo reflexo efetivo do quadríceps.',
+    howToPerform: 'Confirmar técnica e posição. Avaliar quadríceps e tônus. Comparar com direito.',
+    interpretation:
+      'Reforça lesão lombar/plexo/nervo periférico. Se bilateral, pensar em polineuropatia/lesão lombossacra extensa.',
+    pitfalls: 'Sedação intensa, hipotermia ou técnica falha podem reduzir reflexo.',
+  },
+  {
+    id: 's5-patelar-dir-normal',
+    title: 'Patelar direito — Normal',
+    whatItAssesses:
+      'Arco patelar direito preservado. Permite comparação lateral e ajuda a detectar lesão unilateral.',
+    neuroanatomy: 'Femoral e L4–L6 íntegros no lado direito. Reflexo segmentar funcional.',
+    howToPerform: 'Percutir tendão patelar direito e comparar com esquerdo.',
+    interpretation: 'Integre com propriocepção e marcha para neurolocalização completa.',
+    pitfalls: 'Não relaxar o membro leva a falso normal/alterado.',
+  },
+  {
+    id: 's5-patelar-dir-aumentado',
+    title: 'Patelar direito — Aumentado',
+    whatItAssesses:
+      'Hiperreflexia patelar direita. Sugere UMN cranial a L4 (T3–L3) no controle dos pélvicos.',
+    neuroanatomy: 'Arco intacto (L4–L6) com desinibição descendente. Perda de modulação UMN → reflexo exagerado.',
+    howToPerform: 'Padronizar percussão; correlacionar com hipertonia e propriocepção.',
+    interpretation: 'Com paresia/ataxia pélvica, reforça T3–L3. Bilateral reforça lesão central.',
+    pitfalls: 'Ansiedade e dor aumentam resposta.',
+  },
+  {
+    id: 's5-patelar-dir-diminuido',
+    title: 'Patelar direito — Diminuído',
+    whatItAssesses:
+      'Hiporreflexia patelar direita. Sugere LMN direita (L4–S3/femoral/plexo).',
+    neuroanatomy: 'Comprometimento do arco femoral/L4–L6 à direita. Falha reflexa reduz extensão do joelho.',
+    howToPerform: 'Repetir e comparar. Avaliar quadríceps e tônus.',
+    interpretation: 'Com hipotonia/atrofia, reforça LMN. Se bilateral, pensar em doença lombossacra difusa.',
+    pitfalls: 'Dor ortopédica confunde.',
+  },
+  {
+    id: 's5-patelar-dir-ausente',
+    title: 'Patelar direito — Ausente',
+    whatItAssesses:
+      'Ausência de reflexo patelar direito. Forte evidência de LMN no arco patelar direito.',
+    neuroanatomy: 'Arco reflexo femoral/L4–L6 interrompido. Sem disparo reflexo do quadríceps.',
+    howToPerform: 'Confirmar técnica/posição; correlacionar com tônus/atrofia e história.',
+    interpretation: 'Refina neurolocalização para L4–S3 (ou femoral/plexo).',
+    pitfalls: 'Sedação/hipotermia reduzem reflexos.',
+  },
+  {
+    id: 's5-panniculus-oquee',
+    title: 'Reflexo cutâneo do tronco (panniculus) — o que avalia',
+    whatItAssesses:
+      'Contração do músculo cutâneo do tronco em resposta a estímulo cutâneo; útil para estimar nível de lesão toracolombar por presença de cutoff. Ajuda a localizar segmento suspeito em mielopatias toracolombares (especialmente T3–L3) e orientar imagem/palpação.',
+    neuroanatomy:
+      'Aferência entra em segmentos toracolombares; eferência via nervo torácico lateral para o músculo cutâneo. Cutoff tende a ocorrer alguns segmentos caudal ao local real. Interrupção de vias ascendentes → ausência caudal ao cutoff; retorno cranial indica segmentos acima preservados.',
+    howToPerform:
+      'Pinçar pele ao longo do tronco (bilateral) do caudal para cranial até observar retorno da resposta. Registrar nível onde a resposta retorna (cutoff).',
+    interpretation: 'Cutoff sugere lesão T3–L3. Usar como estimativa, não localização exata.',
     pitfalls:
-      'Muito comum falso negativo por técnica/pelagem/obesidade. Repetir e correlacionar. Quando aparece: Lesões extensas, polineuropatias, sedação profunda.',
+      'Falso negativo por pelagem/obesidade, estímulo fraco, ansiedade e técnica inconsistente.',
+  },
+  {
+    id: 's5-panniculus-normal',
+    title: 'Panniculus — Normal',
+    whatItAssesses:
+      'Resposta presente ao longo do tronco sem ponto de corte. Sugere ausência de interrupção significativa das vias avaliadas nessa faixa do tronco.',
+    neuroanatomy: 'Circuito periférico e medular preservado ao longo do tronco. Vias ascendentes e eferentes funcionais para o reflexo.',
+    howToPerform: 'Pinçar pele bilateralmente do caudal ao cranial e observar contração cutânea.',
+    interpretation:
+      'Não exclui mielopatia (especialmente se lesão não toracolombar). Integre com propriocepção e marcha.',
+    pitfalls: 'Falso normal por observação inadequada do músculo cutâneo.',
+  },
+  {
+    id: 's5-panniculus-cutoff',
+    title: 'Panniculus — Corte (cutoff)',
+    whatItAssesses:
+      'Presença de um nível no tronco onde a resposta está ausente caudalmente e retorna cranialmente. É um dos achados mais práticos para orientar neurolocalização toracolombar.',
+    neuroanatomy:
+      'Interrupção de vias ascendentes associadas a lesão medular toracolombar. Falha de condução ascendente impede resposta caudal; retorno cranial indica via preservada acima.',
+    howToPerform: 'Confirmar bilateralmente, repetir para consistência e registrar nível aproximado.',
+    interpretation: 'Sugere fortemente lesão entre T3–L3. Serve para guiar RM/TC/estudo radiográfico.',
+    pitfalls: 'Assumir nível exato (é estimativa). Técnica pobre gera cutoff falso.',
+  },
+  {
+    id: 's5-panniculus-ausente',
+    title: 'Panniculus — Ausente',
+    whatItAssesses:
+      'Ausência de resposta ao longo do tronco. Pode sugerir lesão extensa/difusa, falha periférica do circuito ou depressão global.',
+    neuroanatomy:
+      'Possível envolvimento difuso de vias ou falha periférica do músculo cutâneo/nervo. Sem resposta reflexa por falha do circuito ou supressão global.',
+    howToPerform:
+      'Confirmar técnica e intensidade, avaliar se há sedação profunda e checar em regiões cranializadas.',
+    interpretation: 'Interpretar com cautela; correlacionar com quadro geral e outros reflexos.',
+    pitfalls: 'Falso negativo por pelagem/obesidade/estímulo fraco.',
   },
 ]

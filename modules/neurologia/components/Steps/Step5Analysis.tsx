@@ -262,26 +262,91 @@ export function Step5Analysis() {
           </div>
         </Card>
 
-        {/* Cautelas por Comorbidade */}
-        {report.comorbidityCautions && report.comorbidityCautions.length > 0 && (
-          <Card className="p-6 border-orange-500/30 bg-orange-900/10">
-            <h3 className="text-lg font-semibold text-orange-400 mb-3 flex items-center gap-2">
-              <AlertTriangle className="w-5 h-5" />
-              Cautelas por Comorbidade
-            </h3>
-            <p className="text-sm text-neutral-300 mb-3">
-              As seguintes considerações devem ser observadas devido às comorbidades identificadas no paciente:
-            </p>
-            <ul className="space-y-2">
-              {report.comorbidityCautions.map((caution, idx) => (
-                <li key={idx} className="text-sm text-neutral-200 flex items-start gap-2">
-                  <span className="text-orange-400 mt-1">•</span>
-                  <span>{caution}</span>
-                </li>
-              ))}
-            </ul>
-          </Card>
-        )}
+        {/* Impacto das Comorbidades */}
+        {report.comorbidityImpact &&
+          (report.comorbidityImpact.alerts.length > 0 ||
+            report.comorbidityImpact.cautions.length > 0 ||
+            report.comorbidityImpact.diagnosticAdds.length > 0 ||
+            report.comorbidityImpact.diagnosticAvoids.length > 0) && (
+            <Card className="p-6 border-indigo-500/30 bg-indigo-900/10">
+              <h3 className="text-xl font-bold text-indigo-400 mb-4 flex items-center gap-2">
+                <AlertTriangle className="w-6 h-6" />
+                Impacto das Comorbidades
+              </h3>
+
+              {/* Alertas */}
+              {report.comorbidityImpact.alerts.length > 0 && (
+                <div className="mb-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-lg">⚠️</span>
+                    <h4 className="text-base font-semibold text-orange-400">Alertas Clínicos</h4>
+                  </div>
+                  <ul className="space-y-1 ml-6">
+                    {report.comorbidityImpact.alerts.map((alert, idx) => (
+                      <li key={idx} className="text-sm text-neutral-200 flex items-start gap-2">
+                        <span className="text-orange-400 mt-1">•</span>
+                        <span>{alert}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Cautelas Terapêuticas */}
+              {report.comorbidityImpact.cautions.length > 0 && (
+                <div className="mb-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-lg">💊</span>
+                    <h4 className="text-base font-semibold text-yellow-400">Cautelas Terapêuticas</h4>
+                  </div>
+                  <ul className="space-y-1 ml-6">
+                    {report.comorbidityImpact.cautions.map((caution, idx) => (
+                      <li key={idx} className="text-sm text-neutral-200 flex items-start gap-2">
+                        <span className="text-yellow-400 mt-1">•</span>
+                        <span>{caution}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Exames a Adicionar */}
+              {report.comorbidityImpact.diagnosticAdds.length > 0 && (
+                <div className="mb-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-lg">🧪</span>
+                    <h4 className="text-base font-semibold text-blue-400">Exames Recomendados</h4>
+                  </div>
+                  <ul className="space-y-1 ml-6">
+                    {report.comorbidityImpact.diagnosticAdds.map((add, idx) => (
+                      <li key={idx} className="text-sm text-neutral-200 flex items-start gap-2">
+                        <span className="text-blue-400 mt-1">•</span>
+                        <span>{add}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* O que Evitar/Ajustar */}
+              {report.comorbidityImpact.diagnosticAvoids.length > 0 && (
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-lg">🚫</span>
+                    <h4 className="text-base font-semibold text-red-400">Evitar/Ajustar</h4>
+                  </div>
+                  <ul className="space-y-1 ml-6">
+                    {report.comorbidityImpact.diagnosticAvoids.map((avoid, idx) => (
+                      <li key={idx} className="text-sm text-neutral-200 flex items-start gap-2">
+                        <span className="text-red-400 mt-1">•</span>
+                        <span>{avoid}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </Card>
+          )}
 
         {/* TOP 5 DDx */}
         <div className="space-y-4">

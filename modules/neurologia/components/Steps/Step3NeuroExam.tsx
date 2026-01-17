@@ -483,7 +483,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
       <div className="bg-card border border-border rounded-xl overflow-hidden shadow-lg">
         <SectionHeader
           title="3. Reações Posturais (Propriocepção)"
-          helpTopicId="help_s3_reacoes_posturais_geral"
+          helpTopicId="s3-propriocepcao-geral"
           progress={getProgress([
             'proprioception_thoracic_left',
             'proprioception_thoracic_right',
@@ -508,7 +508,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <ExamItem
                 label="Torácico Esquerdo"
-                helpTopicId="help_s3_reacoes_posturais_geral"
+                helpTopicId="s3-toracico-esquerdo"
                 howToTestSummary="Teste propriocepção e hopping do membro anterior esquerdo."
                 options={[
                   {
@@ -533,7 +533,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
 
               <ExamItem
                 label="Torácico Direito"
-                helpTopicId="help_s3_reacoes_posturais_geral"
+                helpTopicId="s3-toracico-direito"
                 howToTestSummary="Teste propriocepção e hopping do membro anterior direito."
                 options={[
                   {
@@ -558,7 +558,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
 
               <ExamItem
                 label="Pélvico Esquerdo"
-                helpTopicId="help_s3_reacoes_posturais_geral"
+                helpTopicId="s3-pelvico-esquerdo"
                 howToTestSummary="Teste propriocepção e hopping do membro posterior esquerdo."
                 options={[
                   {
@@ -583,7 +583,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
 
               <ExamItem
                 label="Pélvico Direito"
-                helpTopicId="help_s3_reacoes_posturais_geral"
+                helpTopicId="s3-pelvico-direito"
                 howToTestSummary="Teste propriocepção e hopping do membro posterior direito."
                 options={[
                   {
@@ -614,7 +614,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
       <div className="bg-card border border-border rounded-xl overflow-hidden shadow-lg">
         <SectionHeader
           title="4. Nervos Cranianos"
-          helpTopicId="sec_cranial_nerves"
+          helpTopicId="s4-nervos-cranianos-geral"
           progress={getProgress([
             'menace_left',
             'menace_right',
@@ -645,11 +645,12 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                 <h4 className="text-sm font-semibold text-foreground">
                   Ameaça (Menace) - II/VII
                 </h4>
-                <HelpButton topicId="help_s4_menace_ii_vii" theme={theme} size="sm" />
+                <HelpButton topicId="s4-ameaca-oquee" theme={theme} size="sm" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <ExamItem
                   label="Olho Esquerdo"
+                  helpTopicId="s4-ameaca-olho-esquerdo"
                   howToTestSummary="Movimento rápido em direção ao olho esquerdo."
                   options={[
                     {
@@ -667,6 +668,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                 />
                 <ExamItem
                   label="Olho Direito"
+                  helpTopicId="s4-ameaca-olho-direito"
                   howToTestSummary="Movimento rápido em direção ao olho direito."
                   options={[
                     {
@@ -690,11 +692,12 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                 <h4 className="text-sm font-semibold text-foreground">
                   Reflexo Pupilar (PLR) - II/III
                 </h4>
-                <HelpButton topicId="help_s4_plr_ii_iii" theme={theme} size="sm" />
+                <HelpButton topicId="s4-plr-oquee" theme={theme} size="sm" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <ExamItem
                   label="Olho Esquerdo"
+                  helpTopicId="s4-plr-olho-esquerdo"
                   howToTestSummary="Luz focal no olho esquerdo, observar miose."
                   options={[
                     {
@@ -716,6 +719,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                 />
                 <ExamItem
                   label="Olho Direito"
+                  helpTopicId="s4-plr-olho-direito"
                   howToTestSummary="Luz focal no olho direito, observar miose."
                   options={[
                     {
@@ -740,7 +744,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
 
             <ExamItem
               label="Nistagmo Patológico"
-              helpTopicId="help_s4_nistagmo"
+              helpTopicId="s4-nistagmo-oquee"
               howToTestSummary="Observe movimento rítmico involuntário dos olhos."
               options={[
                 {
@@ -759,7 +763,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
 
             <ExamItem
               label="Estrabismo"
-              helpTopicId="help_s4_estrabismo"
+              helpTopicId="s4-estrabismo-oquee"
               howToTestSummary="Observe desvio anormal dos olhos."
               options={[
                 {
@@ -778,7 +782,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
 
             <ExamItem
               label="Sensibilidade Facial (V)"
-              helpTopicId="test_facial_sensation"
+              helpTopicId="s4-sensibilidade-facial-v"
               howToTestSummary="Toque leve na face, observe retirada/piscar."
               options={[
                 {
@@ -804,7 +808,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
 
             <ExamItem
               label="Reflexo de Deglutição (IX/X)"
-              helpTopicId="help_s4_degluticao_ix_x"
+              helpTopicId="s4-degluticao-ix-x"
               howToTestSummary="Observe deglutição espontânea; avaliar tosse/engasgos."
               options={[
                 {
@@ -832,7 +836,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
       <div className="bg-card border border-border rounded-xl overflow-hidden shadow-lg">
         <SectionHeader
           title="5. Reflexos Espinhais"
-          helpTopicId="sec_spinal_reflexes"
+          helpTopicId="s5-reflexos-geral"
           progress={getProgress([
             'reflex_patellar_left',
             'reflex_patellar_right',
@@ -860,33 +864,33 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                 <h4 className="text-sm font-semibold text-foreground">
                   Reflexo Patelar (Membros Pélvicos)
                 </h4>
-                <HelpButton topicId="help_s5_patelar" theme={theme} size="sm" />
+                <HelpButton topicId="s5-patelar-oquee" theme={theme} size="sm" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <ExamItem
                   label="Esquerdo"
-                  helpTopicId="test_patellar_left"
+                  helpTopicId="s5-patelar-esq-normal"
                   howToTestSummary="Percutir ligamento patelar esquerdo."
                   options={[
                     {
                       value: 'Normal',
                       label: 'Normal',
-                      helpTopicId: 'opt_reflex_normal',
+                      helpTopicId: 's5-patelar-esq-normal',
                     },
                     {
                       value: 'Aumentado',
                       label: 'Aumentado',
-                      helpTopicId: 'opt_reflex_increased',
+                      helpTopicId: 's5-patelar-esq-aumentado',
                     },
                     {
                       value: 'Diminuído',
                       label: 'Diminuído',
-                      helpTopicId: 'opt_reflex_decreased',
+                      helpTopicId: 's5-patelar-esq-diminuido',
                     },
                     {
                       value: 'Ausente',
                       label: 'Ausente',
-                      helpTopicId: 'opt_reflex_absent',
+                      helpTopicId: 's5-patelar-esq-ausente',
                     },
                   ]}
                   currentValue={exam['reflex_patellar_left']}
@@ -897,28 +901,28 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                 />
                 <ExamItem
                   label="Direito"
-                  helpTopicId="test_patellar_right"
+                  helpTopicId="s5-patelar-dir-normal"
                   howToTestSummary="Percutir ligamento patelar direito."
                   options={[
                     {
                       value: 'Normal',
                       label: 'Normal',
-                      helpTopicId: 'opt_reflex_normal',
+                      helpTopicId: 's5-patelar-dir-normal',
                     },
                     {
                       value: 'Aumentado',
                       label: 'Aumentado',
-                      helpTopicId: 'opt_reflex_increased',
+                      helpTopicId: 's5-patelar-dir-aumentado',
                     },
                     {
                       value: 'Diminuído',
                       label: 'Diminuído',
-                      helpTopicId: 'opt_reflex_decreased',
+                      helpTopicId: 's5-patelar-dir-diminuido',
                     },
                     {
                       value: 'Ausente',
                       label: 'Ausente',
-                      helpTopicId: 'opt_reflex_absent',
+                      helpTopicId: 's5-patelar-dir-ausente',
                     },
                   ]}
                   currentValue={exam['reflex_patellar_right']}
@@ -935,33 +939,33 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                 <h4 className="text-sm font-semibold text-foreground">
                   Flexor/Retirada (Membros Torácicos)
                 </h4>
-                <HelpButton topicId="help_s5_retirada_flexor" theme={theme} size="sm" />
+                <HelpButton topicId="s5-retirada-toracico-oquee" theme={theme} size="sm" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <ExamItem
                   label="Esquerdo"
-                  helpTopicId="test_withdrawal_thoracic_left"
+                  helpTopicId="s5-retirada-toracico-esq-normal"
                   howToTestSummary="Pinçar dígito do membro anterior esquerdo."
                   options={[
                     {
                       value: 'Normal',
                       label: 'Normal',
-                      helpTopicId: 'opt_reflex_normal',
+                      helpTopicId: 's5-retirada-toracico-esq-normal',
                     },
                     {
                       value: 'Aumentado',
                       label: 'Aumentado',
-                      helpTopicId: 'opt_reflex_increased',
+                      helpTopicId: 's5-retirada-toracico-esq-aumentado',
                     },
                     {
                       value: 'Diminuído',
                       label: 'Diminuído',
-                      helpTopicId: 'opt_reflex_decreased',
+                      helpTopicId: 's5-retirada-toracico-esq-diminuido',
                     },
                     {
                       value: 'Ausente',
                       label: 'Ausente',
-                      helpTopicId: 'opt_reflex_absent',
+                      helpTopicId: 's5-retirada-toracico-esq-ausente',
                     },
                   ]}
                   currentValue={
@@ -974,28 +978,28 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                 />
                 <ExamItem
                   label="Direito"
-                  helpTopicId="test_withdrawal_thoracic_right"
+                  helpTopicId="s5-retirada-toracico-dir-normal"
                   howToTestSummary="Pinçar dígito do membro anterior direito."
                   options={[
                     {
                       value: 'Normal',
                       label: 'Normal',
-                      helpTopicId: 'opt_reflex_normal',
+                      helpTopicId: 's5-retirada-toracico-dir-normal',
                     },
                     {
                       value: 'Aumentado',
                       label: 'Aumentado',
-                      helpTopicId: 'opt_reflex_increased',
+                      helpTopicId: 's5-retirada-toracico-dir-aumentado',
                     },
                     {
                       value: 'Diminuído',
                       label: 'Diminuído',
-                      helpTopicId: 'opt_reflex_decreased',
+                      helpTopicId: 's5-retirada-toracico-dir-diminuido',
                     },
                     {
                       value: 'Ausente',
                       label: 'Ausente',
-                      helpTopicId: 'opt_reflex_absent',
+                      helpTopicId: 's5-retirada-toracico-dir-ausente',
                     },
                   ]}
                   currentValue={
@@ -1011,20 +1015,23 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
 
             <ExamItem
               label="Reflexo Cutâneo do Tronco (Panniculus)"
-              helpTopicId="help_s5_panniculus"
+              helpTopicId="s5-panniculus-oquee"
               howToTestSummary="Pinçar pele lateral do tórax, observar contração."
               options={[
                 {
                   value: 'Normal',
                   label: 'Normal',
+                  helpTopicId: 's5-panniculus-normal',
                 },
                 {
                   value: 'Cutoff',
                   label: 'Corte (Cutoff)',
+                  helpTopicId: 's5-panniculus-cutoff',
                 },
                 {
                   value: 'Ausente',
                   label: 'Ausente',
+                  helpTopicId: 's5-panniculus-ausente',
                 },
               ]}
               currentValue={exam['reflex_panniculus']}
