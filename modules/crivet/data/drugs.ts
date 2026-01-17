@@ -13,6 +13,10 @@ import { remifentanilIndicatedDoses } from './drugs/remifentanil'
 import { dobutamineRecommendedUnit, dobutamineRecommendedUnitWhy, dobutamineIndicatedDoses } from './drugs/dobutamine'
 import { norepinephrineRecommendedUnit, norepinephrineRecommendedUnitWhy, norepinephrineIndicatedDoses } from './drugs/norepinephrine'
 import { norepinephrineCompatibilityToDrugCompatibility } from './drugs/compatibility.helpers'
+import { lidocaineRecommendedUnit, lidocaineRecommendedUnitWhy, lidocaineIndicatedDoses } from './drugs/lidocaine'
+import { dexmedetomidineRecommendedUnit, dexmedetomidineRecommendedUnitWhy, dexmedetomidineIndicatedDoses } from './drugs/dexmedetomidine'
+import { propofolRecommendedUnit, propofolRecommendedUnitWhy, propofolIndicatedDoses } from './drugs/propofol'
+import { methadoneRecommendedUnit, methadoneRecommendedUnitWhy, methadoneIndicatedDoses } from './drugs/methadone'
 
 export type DrugCategory =
   | 'Analgésicos e Anestésicos'
@@ -46,6 +50,9 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [20],
     compatibility: defaultCompatibility,
+    recommendedUnit: lidocaineRecommendedUnit,
+    recommendedUnitWhy: lidocaineRecommendedUnitWhy,
+    indicatedDoses: lidocaineIndicatedDoses,
   },
   {
     id: 'fentanil',
@@ -82,6 +89,9 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [10],
     compatibility: defaultCompatibility,
+    recommendedUnit: methadoneRecommendedUnit,
+    recommendedUnitWhy: methadoneRecommendedUnitWhy,
+    indicatedDoses: methadoneIndicatedDoses,
   },
   {
     id: 'butorfanol',
@@ -109,6 +119,9 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [0.5],
     compatibility: defaultCompatibility,
+    recommendedUnit: dexmedetomidineRecommendedUnit,
+    recommendedUnitWhy: dexmedetomidineRecommendedUnitWhy,
+    indicatedDoses: dexmedetomidineIndicatedDoses,
   },
   {
     id: 'propofol',
@@ -117,6 +130,9 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [10],
     compatibility: defaultCompatibility,
+    recommendedUnit: propofolRecommendedUnit,
+    recommendedUnitWhy: propofolRecommendedUnitWhy,
+    indicatedDoses: propofolIndicatedDoses,
   },
 
   // Agentes Cardiovasculares
@@ -276,22 +292,6 @@ export const drugs: Drug[] = [
     category: 'Endócrino',
     hasCRI: true,
     concentrations: [100],
-    compatibility: defaultCompatibility,
-  },
-  {
-    id: 'insulina_nph',
-    name: 'Insulina NPH',
-    category: 'Endócrino',
-    hasCRI: true,
-    concentrations: [100],
-    compatibility: defaultCompatibility,
-  },
-  {
-    id: 'insulina_pzi',
-    name: 'Insulina PZI',
-    category: 'Endócrino',
-    hasCRI: true,
-    concentrations: [40, 100],
     compatibility: defaultCompatibility,
   },
 

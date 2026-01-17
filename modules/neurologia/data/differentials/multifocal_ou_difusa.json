@@ -1,0 +1,179 @@
+[
+  {
+    "name": "Meningoencefalite/meningoencefalomielite (inflamatória)",
+    "category": "INFLAMATORIA",
+    "rules": {
+      "course": ["AGUDO", "SUBAGUDO"],
+      "ageStages": ["ADULTO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["alteracao_mentacao", "progressivo"],
+      "comorbidityCautions": ["IMUNOSSUPRIMIDO"]
+    },
+    "whyTemplates": [
+      "Combinação de sinais encefálicos e medulares sugere distribuição multifocal.",
+      "Curso agudo/subagudo favorece inflamação."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM de encéfalo + coluna",
+        "priority": "ALTA",
+        "whatItAssesses": "Mapeia lesões multifocais.",
+        "expectedFindings": "Lesões múltiplas em SNC.",
+        "limitations": "Pode ser dispendioso."
+      },
+      {
+        "test": "Líquor",
+        "priority": "ALTA",
+        "whatItAssesses": "Confirma inflamação.",
+        "expectedFindings": "Pleocitose/proteína elevada.",
+        "limitations": "Contraindicações se hipertensão intracraniana."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte intensivo", "Controle de convulsões se presentes"],
+        "cautions": ["Evitar imunossupressão sem excluir infecciosa quando possível"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Terapia dirigida (imuno vs antimicrobiana)"],
+        "cautions": ["Monitorização rigorosa"]
+      }
+    }
+  },
+  {
+    "name": "Doença infecciosa sistêmica com envolvimento neurológico",
+    "category": "INFECCIOSA",
+    "rules": {
+      "course": ["AGUDO", "SUBAGUDO"],
+      "ageStages": ["ADULTO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["febre", "progressivo"],
+      "comorbidityCautions": ["IMUNOSSUPRIMIDO"]
+    },
+    "whyTemplates": [
+      "Sinais neurológicos multifocais com possível contexto sistêmico.",
+      "Imunossupressão aumenta risco."
+    ],
+    "diagnostics": [
+      {
+        "test": "Hemograma/bioquímica + testes infecciosos direcionados",
+        "priority": "ALTA",
+        "whatItAssesses": "Confirma inflamação sistêmica e agentes.",
+        "expectedFindings": "Inflamação, alterações orgânicas, testes positivos conforme região.",
+        "limitations": "Seleção do painel depende de epidemiologia local."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte", "Antimicrobiano empírico conforme suspeita clínica"],
+        "cautions": ["Ajustar em renopatas/hepatopatas"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Terapia específica conforme agente"],
+        "cautions": ["Reavaliar resposta"]
+      }
+    }
+  },
+  {
+    "name": "Encefalopatia metabólica/toxêmica (hepática/urêmica)",
+    "category": "TOXICO_METABOLICA",
+    "rules": {
+      "course": ["AGUDO", "SUBAGUDO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["alteracao_mentacao"],
+      "comorbidityCautions": ["RENOPATA", "HEPATOPATA"]
+    },
+    "whyTemplates": [
+      "Sinais difusos com pouca lateralização podem ser metabólicos.",
+      "Comorbidades sistêmicas aumentam probabilidade."
+    ],
+    "diagnostics": [
+      {
+        "test": "Bioquímica completa + eletrólitos + (amônia quando indicado)",
+        "priority": "ALTA",
+        "whatItAssesses": "Confirma distúrbio metabólico.",
+        "expectedFindings": "Alterações renais/hepáticas/eletrolíticas.",
+        "limitations": "Pode coexistir com lesão estrutural."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Correção metabólica", "Suporte intensivo"],
+        "cautions": ["Ajustar fluidos e fármacos conforme órgão"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Tratar doença base"],
+        "cautions": ["Monitorar recorrência"]
+      }
+    }
+  },
+  {
+    "name": "Intoxicação (agente neurotóxico)",
+    "category": "TOXICO_METABOLICA",
+    "rules": {
+      "course": ["AGUDO"],
+      "ageStages": ["ADULTO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["alteracao_mentacao"],
+      "comorbidityCautions": ["HEPATOPATA"]
+    },
+    "whyTemplates": [
+      "Instalação aguda e sinais difusos podem ocorrer por toxinas.",
+      "Histórico ambiental/medicamentoso é fundamental."
+    ],
+    "diagnostics": [
+      {
+        "test": "Anamnese de exposição + exames laboratoriais",
+        "priority": "ALTA",
+        "whatItAssesses": "Sustenta intoxicação e orienta suporte.",
+        "expectedFindings": "Achados variáveis e inespecíficos.",
+        "limitations": "Confirmatórios raros na prática."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Descontaminação quando indicada", "Suporte intensivo"],
+        "cautions": ["Evitar fármacos hepatotóxicos"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Terapia específica se agente identificado"],
+        "cautions": ["Monitorar complicações"]
+      }
+    }
+  },
+  {
+    "name": "Neoplasia multifocal/metastática ou linfoma do SNC",
+    "category": "NEOPLASICA",
+    "rules": {
+      "course": ["SUBAGUDO", "CRONICO"],
+      "ageStages": ["GERIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["progressivo"],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "Sinais multifocais progressivos podem ocorrer em linfoma/metástases.",
+      "Idade avançada aumenta probabilidade."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM de encéfalo/coluna + estadiamento (tórax/abdômen)",
+        "priority": "ALTA",
+        "whatItAssesses": "Define extensão e suspeita neoplásica.",
+        "expectedFindings": "Lesões múltiplas e/ou infiltração.",
+        "limitations": "Diagnóstico definitivo pode exigir citologia/histologia."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte", "Controle de edema se necessário"],
+        "cautions": []
+      },
+      "DEFINITIVO": {
+        "plan": ["Tratamento oncológico direcionado ou paliativo"],
+        "cautions": ["Prognóstico variável"]
+      }
+    }
+  }
+]

@@ -1,0 +1,193 @@
+[
+  {
+    "name": "Doença do disco intervertebral (IVDD) lombar (L4–S1)",
+    "category": "COMPRESSIVA",
+    "rules": {
+      "course": ["PERAGUDO", "AGUDO", "SUBAGUDO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO"],
+      "redFlagsBoost": ["nao_ambulatorio", "dor_coluna"],
+      "comorbidityCautions": ["CARDIOPATA", "RENOPATA"]
+    },
+    "whyTemplates": [
+      "Déficit motor pélvico com padrão de neurônio motor inferior (patelar e/ou retirada diminuídos) sugere L4–S3.",
+      "Dor lombar pode estar presente em compressões discais.",
+      "Curso agudo/subagudo é compatível com extrusão/protrusão discal."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM/TC de coluna lombar",
+        "priority": "ALTA",
+        "whatItAssesses": "Confirma compressão e define local exato.",
+        "expectedFindings": "Compressão extradural e/ou intradural por material discal.",
+        "limitations": "Requer anestesia; TC pode ser menos sensível para intramedular."
+      },
+      {
+        "test": "Radiografias lombares (triagem)",
+        "priority": "BAIXA",
+        "whatItAssesses": "Sugere discopatia/espondilose.",
+        "expectedFindings": "Alterações degenerativas, redução de espaço discal.",
+        "limitations": "Baixa sensibilidade/especificidade para compressão real."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Analgesia multimodal", "Restrição de movimento", "Suporte e enfermagem"],
+        "cautions": [
+          "Ajustar analgesia em renopatas/hepatopatas",
+          "Monitorar retenção urinária se presente"
+        ]
+      },
+      "DEFINITIVO": {
+        "plan": [
+          "Cirurgia descompressiva quando indicada ou manejo conservador selecionado",
+          "Reabilitação e fisioterapia"
+        ],
+        "cautions": ["Prognóstico piora se houver perda de nocicepção profunda"]
+      }
+    }
+  },
+  {
+    "name": "Trauma lombossacro (fratura/luxação) com lesão de raízes/segmento",
+    "category": "TRAUMATICA",
+    "rules": {
+      "course": ["PERAGUDO", "AGUDO"],
+      "ageStages": ["ADULTO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["inicio_agudo", "dor_coluna"],
+      "comorbidityCautions": ["PNEUMOPATA", "CARDIOPATA"]
+    },
+    "whyTemplates": [
+      "Início agudo associado a trauma pode causar sinais LMN em pélvicos.",
+      "Dor lombar e incapacidade de deambular podem ser marcantes."
+    ],
+    "diagnostics": [
+      {
+        "test": "TC de coluna lombossacra (preferível) ou radiografias",
+        "priority": "ALTA",
+        "whatItAssesses": "Detecta fraturas, luxações e instabilidade.",
+        "expectedFindings": "Lesões ósseas/instabilidade em L4–S3.",
+        "limitations": "RX pode perder lesões sutis; TC requer anestesia/sedação."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Imobilização", "Analgesia potente", "Suporte intensivo"],
+        "cautions": ["Avaliar politrauma e choque"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Cirurgia estabilizadora quando indicada", "Reabilitação"],
+        "cautions": ["Monitorar função urinária e sensibilidade perineal se aplicável"]
+      }
+    }
+  },
+  {
+    "name": "Neoplasia espinhal lombar (extradural/intradural/intramedular)",
+    "category": "NEOPLASICA",
+    "rules": {
+      "course": ["CRONICO", "SUBAGUDO"],
+      "ageStages": ["GERIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["progressivo"],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "Curso crônico/progressivo com sinais LMN pélvicos é compatível com lesão expansiva lombar.",
+      "Pode haver dor lombar persistente."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM de coluna lombar (ou TC com contraste)",
+        "priority": "ALTA",
+        "whatItAssesses": "Localiza massa e compartimento (extra/intradural/intramedular).",
+        "expectedFindings": "Lesão expansiva com compressão.",
+        "limitations": "Diagnóstico definitivo pode exigir biópsia."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Analgesia", "Suporte"],
+        "cautions": []
+      },
+      "DEFINITIVO": {
+        "plan": ["Cirurgia/radioterapia/quimioterapia conforme tipo; paliativo quando necessário"],
+        "cautions": ["Prognóstico depende de tipo e acessibilidade"]
+      }
+    }
+  },
+  {
+    "name": "Mielite lombar (inflamatória/infecciosa)",
+    "category": "INFLAMATORIA",
+    "rules": {
+      "course": ["AGUDO", "SUBAGUDO"],
+      "ageStages": ["ADULTO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["progressivo"],
+      "comorbidityCautions": ["IMUNOSSUPRIMIDO"]
+    },
+    "whyTemplates": [
+      "Déficits neurológicos progressivos com/sem dor podem ocorrer em mielite lombar.",
+      "Pode coexistir com sinais sistêmicos dependendo da causa."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM de coluna lombar",
+        "priority": "ALTA",
+        "whatItAssesses": "Detecta edema/realce intramedular.",
+        "expectedFindings": "Lesão intramedular com realce.",
+        "limitations": "Pode ser inespecífica."
+      },
+      {
+        "test": "Líquor (quando indicado)",
+        "priority": "MEDIA",
+        "whatItAssesses": "Confirma inflamação e orienta etiologia.",
+        "expectedFindings": "Pleocitose/proteína elevada.",
+        "limitations": "Interpretação depende do contexto e pode ser inespecífica."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte", "Analgesia se dor", "Considerar antimicrobiano empírico conforme suspeita"],
+        "cautions": ["Evitar imunossupressão antes de excluir infecciosa quando possível"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Terapia dirigida (imuno ou antimicrobiana) + reabilitação"],
+        "cautions": []
+      }
+    }
+  },
+  {
+    "name": "Polirradiculoneurite com apresentação semelhante a LMN pélvicos (diferencial importante)",
+    "category": "INFLAMATORIA",
+    "rules": {
+      "course": ["AGUDO"],
+      "ageStages": ["ADULTO"],
+      "species": ["CAO"],
+      "redFlagsBoost": ["fraqueza_generalizada"],
+      "comorbidityCautions": ["PNEUMOPATA"]
+    },
+    "whyTemplates": [
+      "Pode simular lesão L4–S3 por hiporreflexia e fraqueza, mas tende a ascender e envolver membros torácicos.",
+      "Histórico de fraqueza generalizada e progressão rápida sugere neuropatia periférica."
+    ],
+    "diagnostics": [
+      {
+        "test": "Eletrodiagnóstico (EMG/velocidade condução) ± líquor",
+        "priority": "MEDIA",
+        "whatItAssesses": "Diferencia neuropatia periférica de mielopatia.",
+        "expectedFindings": "Alterações compatíveis com neuropatia; líquor pode ter dissociação albuminocitológica.",
+        "limitations": "Nem sempre disponível em clínica geral."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte intensivo", "Monitorar função respiratória", "Fisioterapia passiva"],
+        "cautions": ["Risco de hipoventilação/aspiração"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Suporte e reabilitação; geralmente autolimitada"],
+        "cautions": ["Evitar imunossupressão indiscriminada"]
+      }
+    }
+  }
+]

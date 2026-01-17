@@ -1,0 +1,180 @@
+[
+  {
+    "name": "Estenose lombossacra degenerativa (síndrome da cauda equina)",
+    "category": "DEGENERATIVA",
+    "rules": {
+      "course": ["CRONICO", "SUBAGUDO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO"],
+      "redFlagsBoost": ["dor_coluna", "intolerancia_exercicio"],
+      "comorbidityCautions": ["CARDIOPATA"]
+    },
+    "whyTemplates": [
+      "Dor lombossacra e intolerância ao exercício são típicas.",
+      "Sinais podem ser flutuantes e piorar com atividade.",
+      "Pode haver fraqueza pélvica discreta e alterações de cauda/períneo (quando avaliados)."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM lombossacra (preferível) ou TC",
+        "priority": "ALTA",
+        "whatItAssesses": "Confirma compressão de raízes/estenose do canal.",
+        "expectedFindings": "Estenose, protrusões discais, hipertrofia ligamentar/facetária.",
+        "limitations": "Requer anestesia; correlação clínico-imagem é essencial."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Analgesia", "Restrição de atividade"],
+        "cautions": ["Ajustar analgesia em renopatas/hepatopatas"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Manejo conservador (controle de peso, fisioterapia) ou cirurgia descompressiva selecionada"],
+        "cautions": ["Prognóstico varia; acompanhar resposta funcional"]
+      }
+    }
+  },
+  {
+    "name": "Protrusão/extrusão discal lombossacra (L7–S1)",
+    "category": "COMPRESSIVA",
+    "rules": {
+      "course": ["AGUDO", "SUBAGUDO"],
+      "ageStages": ["ADULTO"],
+      "species": ["CAO"],
+      "redFlagsBoost": ["dor_coluna"],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "Dor lombossacra com sinais neurológicos compatíveis com raízes.",
+      "Pode piorar com extensão de quadris e atividade."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM/TC lombossacra",
+        "priority": "ALTA",
+        "whatItAssesses": "Confirma compressão discal/foraminal.",
+        "expectedFindings": "Material discal protruso e compressão radicular.",
+        "limitations": "Interpretação deve correlacionar com exame."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Analgesia", "Restrição"],
+        "cautions": []
+      },
+      "DEFINITIVO": {
+        "plan": ["Cirurgia descompressiva se refratário ou déficit importante"],
+        "cautions": []
+      }
+    }
+  },
+  {
+    "name": "Discospondilite lombossacra",
+    "category": "INFECCIOSA",
+    "rules": {
+      "course": ["SUBAGUDO", "CRONICO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO"],
+      "redFlagsBoost": ["dor_coluna"],
+      "comorbidityCautions": ["RENOPATA"]
+    },
+    "whyTemplates": [
+      "Dor lombossacra marcada e progressiva pode indicar discospondilite.",
+      "Pode haver febre ou sinais sistêmicos (quando presentes no contexto)."
+    ],
+    "diagnostics": [
+      {
+        "test": "Radiografias seriadas + RM/TC se disponível",
+        "priority": "MEDIA",
+        "whatItAssesses": "Detecta alterações infecciosas discais/vertebrais.",
+        "expectedFindings": "Lise de platôs vertebrais, esclerose, colapso discal.",
+        "limitations": "RX pode ser normal no início; RM é mais sensível."
+      },
+      {
+        "test": "Hemocultura/urocultura",
+        "priority": "MEDIA",
+        "whatItAssesses": "Identifica agente e guia antibiótico.",
+        "expectedFindings": "Cultura positiva em parte dos casos.",
+        "limitations": "Pode ser negativo mesmo com doença."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Analgesia", "Antibioticoterapia empírica conforme suspeita"],
+        "cautions": ["Ajustar antibióticos em renopatas"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Antibioticoterapia prolongada dirigida + repouso + controle de dor"],
+        "cautions": ["Monitorar resposta com imagem/labs"]
+      }
+    }
+  },
+  {
+    "name": "Neoplasia lombossacra (raízes/ossos/tecidos moles)",
+    "category": "NEOPLASICA",
+    "rules": {
+      "course": ["CRONICO", "SUBAGUDO"],
+      "ageStages": ["GERIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["progressivo"],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "Dor persistente e progressiva com déficit neurológico lombossacro pode indicar neoplasia.",
+      "Idade avançada aumenta probabilidade."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM/TC lombossacra",
+        "priority": "ALTA",
+        "whatItAssesses": "Detecta massa e compartimento.",
+        "expectedFindings": "Lesão expansiva/compressiva.",
+        "limitations": "Definição histológica pode exigir biópsia."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Analgesia forte", "Suporte"],
+        "cautions": []
+      },
+      "DEFINITIVO": {
+        "plan": ["Tratamento oncológico (cirurgia/radioterapia/quimio) ou paliativo"],
+        "cautions": []
+      }
+    }
+  },
+  {
+    "name": "Trauma lombossacro com lesão de raízes",
+    "category": "TRAUMATICA",
+    "rules": {
+      "course": ["PERAGUDO", "AGUDO"],
+      "ageStages": ["ADULTO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["inicio_agudo", "dor_coluna"],
+      "comorbidityCautions": ["PNEUMOPATA"]
+    },
+    "whyTemplates": [
+      "Início agudo após trauma pode lesar raízes da cauda equina e causar dor intensa.",
+      "Pode coexistir com outras lesões ortopédicas."
+    ],
+    "diagnostics": [
+      {
+        "test": "TC/RX lombossacra + avaliação de politrauma",
+        "priority": "ALTA",
+        "whatItAssesses": "Detecta fraturas/luxações.",
+        "expectedFindings": "Instabilidade e lesões ósseas.",
+        "limitations": "Lesão radicular pode ocorrer sem grandes achados em RX."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Imobilização", "Analgesia", "Suporte intensivo"],
+        "cautions": ["Tratar politrauma concomitante"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Estabilização cirúrgica quando indicada + reabilitação"],
+        "cautions": []
+      }
+    }
+  }
+]

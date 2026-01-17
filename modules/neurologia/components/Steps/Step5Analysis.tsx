@@ -6,6 +6,7 @@ import { Card } from '../UI/Card'
 import { InlineBanner } from '../UI/InlineBanner'
 import { useCaseStore } from '../../stores/caseStore'
 import { buildCaseReport } from '../../lib/analysis/report'
+import { exportToPDF } from '../../lib/report/pdfExporter'
 import type { CaseReport } from '../../types/analysis'
 
 export function Step5Analysis() {
@@ -24,6 +25,17 @@ export function Step5Analysis() {
       report,
     })
     window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const handleExportPDF = () => {
+    if (!report) return
+    const caseState = { patient, complaint, neuroExam }
+    try {
+      exportToPDF(report, caseState)
+    } catch (error) {
+      console.error('Erro ao gerar PDF:', error)
+      alert('Erro ao gerar PDF. Verifique o console para mais detalhes.')
+    }
   }
 
   const status = analysis?.status || 'idle'
@@ -160,6 +172,17 @@ export function Step5Analysis() {
   if (status === 'done' && report) {
     return (
       <div className="space-y-6 pb-24">
+        {/* Botão de Exportar PDF */}
+        <motion.button
+          onClick={handleExportPDF}
+          className="w-full px-6 py-3 text-base font-semibold rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <FileText className="w-5 h-5" />
+          Exportar Relatório em PDF
+        </motion.button>
+
         {/* Identificação */}
         <Card className="p-6">
           <h3 className="text-lg font-semibold text-gold mb-3 flex items-center gap-2">

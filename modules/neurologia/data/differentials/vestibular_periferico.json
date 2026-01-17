@@ -1,0 +1,217 @@
+[
+  {
+    "name": "Otite média/interna",
+    "category": "INFECCIOSA",
+    "rules": {
+      "course": ["AGUDO", "SUBAGUDO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["vestibular", "dor_otica"],
+      "comorbidityCautions": ["RENOPATA"]
+    },
+    "whyTemplates": [
+      "Síndrome vestibular periférica típica: head tilt, ataxia vestibular e nistagmo, com mentação preservada.",
+      "Pode haver sinais otológicos concomitantes ou dor na manipulação auricular.",
+      "Ausência de déficits posturais marcantes favorece acometimento periférico."
+    ],
+    "diagnostics": [
+      {
+        "test": "Otoscopia completa (idealmente sob sedação) + citologia auricular",
+        "priority": "ALTA",
+        "whatItAssesses": "Avalia doença de conduto e sugere envolvimento de ouvido médio.",
+        "expectedFindings": "Otite externa, secreção, inflamação; possível ruptura timpânica.",
+        "limitations": "Otite média/interna pode existir com otoscopia pouco expressiva."
+      },
+      {
+        "test": "TC de bula timpânica (ou RM)",
+        "priority": "ALTA",
+        "whatItAssesses": "Confirma otite média/interna e extensão.",
+        "expectedFindings": "Opacificação/espessamento de bula, alteração de ouvido interno.",
+        "limitations": "Requer anestesia e pode não estar disponível."
+      },
+      {
+        "test": "Cultura (secreção / material de bula quando possível)",
+        "priority": "MEDIA",
+        "whatItAssesses": "Guia antibioticoterapia.",
+        "expectedFindings": "Crescimento bacteriano conforme etiologia.",
+        "limitations": "Coleta profunda nem sempre viável sem procedimento."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": [
+          "Antiemético se vômitos/vertigem intensa",
+          "Analgesia se dor otológica",
+          "Antibioticoterapia empírica se suspeita forte (ajustar após cultura)"
+        ],
+        "cautions": [
+          "Evitar fármacos potencialmente ototóxicos se membrana timpânica comprometida",
+          "Ajustar antibiótico em renopatas"
+        ]
+      },
+      "DEFINITIVO": {
+        "plan": [
+          "Antibioticoterapia por período prolongado conforme resposta/cultura",
+          "Tratamento completo de otite externa associada",
+          "Considerar cirurgia (ablação/osteotomia de bula) em casos refratários"
+        ],
+        "cautions": ["Monitorar melhora clínica vestibular e recidivas"]
+      }
+    }
+  },
+  {
+    "name": "Doença vestibular idiopática (síndrome geriátrica)",
+    "category": "IDIOPATICA",
+    "rules": {
+      "course": ["PERAGUDO", "AGUDO"],
+      "ageStages": ["GERIATRICO"],
+      "species": ["CAO"],
+      "redFlagsBoost": ["inicio_agudo"],
+      "comorbidityCautions": ["CARDIOPATA"]
+    },
+    "whyTemplates": [
+      "Instalação súbita de head tilt e ataxia vestibular em paciente geriátrico.",
+      "Mentação e reações posturais geralmente preservadas (ou minimamente afetadas).",
+      "Tende a estabilizar ou melhorar em dias."
+    ],
+    "diagnostics": [
+      {
+        "test": "Exame neurológico completo (triagem central vs periférico)",
+        "priority": "ALTA",
+        "whatItAssesses": "Confirma padrão periférico e exclui sinais centrais.",
+        "expectedFindings": "Mentação normal, sem déficits posturais significativos, sem múltiplos NC.",
+        "limitations": "Alguns pacientes podem ter achados discretos que confundem."
+      },
+      {
+        "test": "Avaliação otológica básica (otoscopia) ± imagem se dúvida",
+        "priority": "MEDIA",
+        "whatItAssesses": "Exclui otite significativa.",
+        "expectedFindings": "Otoscopia sem alterações relevantes.",
+        "limitations": "Otite média pode ser silenciosa."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": [
+          "Suporte (ambiente seguro, evitar quedas)",
+          "Antiemético/anti-vertigem se necessário",
+          "Hidratação e alimentação assistida se anorexia"
+        ],
+        "cautions": ["Evitar sedação excessiva em cardiopatas/geriátricos frágeis"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Reavaliações seriadas; geralmente autolimitada"],
+        "cautions": ["Se não houver melhora em 72h–7 dias, reconsiderar diagnóstico (central/otite)"]
+      }
+    }
+  },
+  {
+    "name": "Pólipo nasofaríngeo (gatos)",
+    "category": "COMPRESSIVA",
+    "rules": {
+      "course": ["SUBAGUDO", "CRONICO"],
+      "ageStages": ["PEDIATRICO", "ADULTO"],
+      "species": ["GATO"],
+      "redFlagsBoost": ["vestibular"],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "Sinais vestibulares periféricos em gato, por vezes com sinais respiratórios altos/otite.",
+      "Curso mais arrastado sugere lesão expansiva benigna."
+    ],
+    "diagnostics": [
+      {
+        "test": "Otoscopia e inspeção de nasofaringe (idealmente sob anestesia)",
+        "priority": "ALTA",
+        "whatItAssesses": "Visualiza massa/pólipo.",
+        "expectedFindings": "Massa pedunculada em nasofaringe ou ouvido médio.",
+        "limitations": "Pode exigir equipamento e anestesia."
+      },
+      {
+        "test": "Imagem (TC/RM de bula e nasofaringe)",
+        "priority": "MEDIA",
+        "whatItAssesses": "Define extensão e planejamento terapêutico.",
+        "expectedFindings": "Massa em bula/nasofaringe, opacificação associada.",
+        "limitations": "Disponibilidade/custo."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Controle de vertigem/vômitos", "Suporte"],
+        "cautions": []
+      },
+      "DEFINITIVO": {
+        "plan": ["Tração do pólipo ± osteotomia de bula se recorrência", "Anti-inflamatório conforme indicação"],
+        "cautions": ["Risco de síndrome de Horner e recidiva; monitorar pós-operatório"]
+      }
+    }
+  },
+  {
+    "name": "Ototoxicidade (ex.: aminoglicosídeos tópicos em orelha comprometida)",
+    "category": "TOXICO_METABOLICA",
+    "rules": {
+      "course": ["AGUDO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["vestibular"],
+      "comorbidityCautions": ["RENOPATA"]
+    },
+    "whyTemplates": [
+      "Início após uso de medicação otológica em orelha com possível lesão timpânica.",
+      "Síndrome vestibular periférica sem mentação alterada."
+    ],
+    "diagnostics": [
+      {
+        "test": "Anamnese farmacológica dirigida (medicações otológicas e sistêmicas)",
+        "priority": "ALTA",
+        "whatItAssesses": "Correlação temporal com exposição.",
+        "expectedFindings": "Uso recente de fármacos ototóxicos.",
+        "limitations": "Depende de histórico preciso."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suspender agente suspeito", "Antiemético/anti-vertigem", "Suporte"],
+        "cautions": ["Ajustar suporte em renopatas"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Reabilitação e monitoramento; recuperação pode ser parcial"],
+        "cautions": ["Evitar reexposição"]
+      }
+    }
+  },
+  {
+    "name": "Hipotireoidismo associado a neuropatia vestibular (cães)",
+    "category": "TOXICO_METABOLICA",
+    "rules": {
+      "course": ["CRONICO", "SUBAGUDO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO"],
+      "redFlagsBoost": [],
+      "comorbidityCautions": ["CARDIOPATA"]
+    },
+    "whyTemplates": [
+      "Sinais vestibulares periféricos com curso mais arrastado em cão adulto/idoso.",
+      "Pode coexistir com sinais sistêmicos (ganho de peso, letargia)."
+    ],
+    "diagnostics": [
+      {
+        "test": "Painel tireoidiano (T4 total, T4 livre, TSH)",
+        "priority": "MEDIA",
+        "whatItAssesses": "Confirma hipotireoidismo.",
+        "expectedFindings": "T4 reduzido com TSH elevado (quando aplicável).",
+        "limitations": "Doença não tireoidiana pode reduzir T4 (eutireoid sick)."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte vestibular conforme necessidade"],
+        "cautions": []
+      },
+      "DEFINITIVO": {
+        "plan": ["Reposição hormonal conforme diagnóstico", "Reavaliação clínica"],
+        "cautions": ["Cautela em cardiopatas; ajustar com acompanhamento"]
+      }
+    }
+  }
+]

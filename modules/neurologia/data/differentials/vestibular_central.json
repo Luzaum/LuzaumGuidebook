@@ -1,0 +1,193 @@
+[
+  {
+    "name": "Acidente vascular encefálico (tronco/cerebelo)",
+    "category": "VASCULAR",
+    "rules": {
+      "course": ["PERAGUDO", "AGUDO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["inicio_agudo", "alteracao_mentacao"],
+      "comorbidityCautions": ["CARDIOPATA", "ENDOCRINOPATA"]
+    },
+    "whyTemplates": [
+      "Início peragudo com síndrome vestibular + sinais centrais (mentação alterada e/ou déficits posturais).",
+      "Tende a não ser progressivo após fase inicial."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM de encéfalo (idealmente com DWI)",
+        "priority": "ALTA",
+        "whatItAssesses": "Confirma isquemia/hemorragia em tronco/cerebelo.",
+        "expectedFindings": "Restrição à difusão ou sinais de hemorragia.",
+        "limitations": "Disponibilidade/custo."
+      },
+      {
+        "test": "Pressão arterial + investigação de comorbidades",
+        "priority": "ALTA",
+        "whatItAssesses": "Procura fatores predisponentes (HAS, endocrinopatias, cardiopatias).",
+        "expectedFindings": "Hipertensão e/ou doença de base.",
+        "limitations": "Nem sempre identifica causa primária."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte intensivo", "Controle hemodinâmico", "Prevenção de aspiração"],
+        "cautions": ["Evitar hipotensão e hipoxemia"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Controle da doença base", "Reabilitação e fisioterapia"],
+        "cautions": ["Monitorar recorrência"]
+      }
+    }
+  },
+  {
+    "name": "Encefalite/meningoencefalite (central)",
+    "category": "INFLAMATORIA",
+    "rules": {
+      "course": ["AGUDO", "SUBAGUDO"],
+      "ageStages": ["ADULTO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["alteracao_mentacao", "deficit_nc"],
+      "comorbidityCautions": ["IMUNOSSUPRIMIDO"]
+    },
+    "whyTemplates": [
+      "Vestibular central sugerido por déficits posturais e/ou mentação alterada.",
+      "Curso agudo-subagudo favorece inflamação/infeção."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM de encéfalo",
+        "priority": "ALTA",
+        "whatItAssesses": "Identifica lesões inflamatórias em tronco/cerebelo.",
+        "expectedFindings": "Hiperintensidades em T2/FLAIR e realce.",
+        "limitations": "Pode ser inespecífica."
+      },
+      {
+        "test": "Líquor (se seguro)",
+        "priority": "ALTA",
+        "whatItAssesses": "Confirma inflamação e orienta etiologia.",
+        "expectedFindings": "Pleocitose e proteína elevada.",
+        "limitations": "Risco se hipertensão intracraniana."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte", "Antiemético", "Avaliar necessidade de antimicrobiano empírico"],
+        "cautions": ["Evitar imunossupressão antes de excluir infecciosa quando possível"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Terapia dirigida (imunossupressora ou antimicrobiana)"],
+        "cautions": ["Monitorar efeitos adversos e recidivas"]
+      }
+    }
+  },
+  {
+    "name": "Neoplasia em fossa caudal",
+    "category": "NEOPLASICA",
+    "rules": {
+      "course": ["SUBAGUDO", "CRONICO"],
+      "ageStages": ["GERIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["progressivo"],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "Curso crônico/progressivo com síndrome vestibular central.",
+      "Pode associar outros déficits de tronco encefálico."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM de encéfalo com contraste",
+        "priority": "ALTA",
+        "whatItAssesses": "Localiza massa em tronco/cerebelo.",
+        "expectedFindings": "Lesão expansiva com efeito de massa.",
+        "limitations": "Histologia nem sempre possível."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Controle de edema e suporte"],
+        "cautions": ["Prognóstico reservado dependendo da localização"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Radioterapia/cirurgia quando viável; cuidados paliativos"],
+        "cautions": []
+      }
+    }
+  },
+  {
+    "name": "Extensão intracraniana de otite (periférico → central)",
+    "category": "INFECCIOSA",
+    "rules": {
+      "course": ["SUBAGUDO"],
+      "ageStages": ["ADULTO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["deficit_nc", "vestibular"],
+      "comorbidityCautions": ["RENOPATA"]
+    },
+    "whyTemplates": [
+      "Vestibular com sinais centrais em paciente com possível doença otológica.",
+      "Curso subagudo favorece extensão infecciosa."
+    ],
+    "diagnostics": [
+      {
+        "test": "TC/RM de bula + encéfalo",
+        "priority": "ALTA",
+        "whatItAssesses": "Confirma otite média/interna e extensão central.",
+        "expectedFindings": "Opacificação de bula e sinais de envolvimento central.",
+        "limitations": "Requer anestesia."
+      },
+      {
+        "test": "Cultura e antibiograma (quando possível)",
+        "priority": "MEDIA",
+        "whatItAssesses": "Direciona antibiótico.",
+        "expectedFindings": "Crescimento bacteriano.",
+        "limitations": "Amostra profunda pode ser difícil."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Antibioticoterapia empírica", "Suporte vestibular", "Analgesia"],
+        "cautions": ["Ajustar antibiótico em renopatas"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Antibioticoterapia prolongada dirigida", "Cirurgia se refratário"],
+        "cautions": []
+      }
+    }
+  },
+  {
+    "name": "Malformação/inflamação cerebelar envolvendo vias vestibulares",
+    "category": "DEGENERATIVA",
+    "rules": {
+      "course": ["CRONICO", "SUBAGUDO"],
+      "ageStages": ["PEDIATRICO", "ADULTO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["ataxia_cerebelar"],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "Sinais vestibulares com achados cerebelares (hipermetria, tremor de intenção) sugerem envolvimento central.",
+      "Curso pode ser crônico ou subagudo dependendo da causa."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM de encéfalo",
+        "priority": "ALTA",
+        "whatItAssesses": "Avalia cerebelo e tronco.",
+        "expectedFindings": "Hipoplasia, atrofia ou lesões inflamatórias.",
+        "limitations": "Algumas degenerações têm RM pouco específica."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte", "Controle de náusea/vertigem"],
+        "cautions": []
+      },
+      "DEFINITIVO": {
+        "plan": ["Tratamento direcionado à causa quando identificável", "Reabilitação"],
+        "cautions": []
+      }
+    }
+  }
+]

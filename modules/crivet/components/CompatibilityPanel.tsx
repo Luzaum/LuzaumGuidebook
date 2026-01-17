@@ -128,9 +128,32 @@ export function CompatibilityPanel({ compat, selectedDiluentId, drugId }: Props)
     (normalized?.compatibility.incompatible && normalized.compatibility.incompatible.length > 0) ||
     (compat.incompatibilities && compat.incompatibilities.length > 0)
 
+  // Verificar se o fármaco não pode ser diluído (diluentsAllowed vazio ou perfil indica)
+  const cannotBeDiluted = 
+    (normalized?.compatibility.diluentsAllowed && normalized.compatibility.diluentsAllowed.length === 0) &&
+    (!compat.diluents || compat.diluents.length === 0) &&
+    (!compat.compatibleDiluent || compat.compatibleDiluent.length === 0) &&
+    drugId === 'lidocaina' // Específico para lidocaína conforme perfil
+
   return (
     <div className="mt-2 rounded-md border border-white/10 bg-white/5 p-3 text-sm">
       <p className="font-semibold mb-2 text-white/90">Compatibilidade com o fluido selecionado</p>
+
+      {/* Aviso especial para fármacos que não podem ser diluídos */}
+      {cannotBeDiluted && (
+        <div className="mb-3 rounded-md border-2 border-red-400/50 bg-red-900/20 p-3">
+          <div className="flex items-start gap-2">
+            <AlertTriangle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="font-semibold text-red-300 mb-1">⚠️ Este fármaco NÃO deve ser diluído</p>
+              <p className="text-white/80 text-xs leading-relaxed">
+                A lidocaína não pode ser diluída em nenhum diluente para uso antiarrítmico IV. 
+                Use a concentração do frasco diretamente ou siga protocolo institucional específico para CRI.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {diluentStatus ? (
         <div className="flex items-start gap-3">

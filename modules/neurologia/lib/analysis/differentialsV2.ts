@@ -1,4 +1,10 @@
 import type { Differential, NeuroAxis } from '../../types/analysis'
+import {
+  getDifferentialsFromLibrary,
+  hasLibraryForAxis,
+  convertToDifferential,
+  type LoadedDifferential,
+} from '../../data/differentials/loader'
 
 type PatientData = {
   species: 'dog' | 'cat' | null
@@ -12,6 +18,7 @@ type HistoryData = {
   trauma: boolean
   toxin: boolean
   fever: boolean
+  redFlags: string[]
 }
 
 type DifferentialCandidate = {
@@ -299,76 +306,154 @@ export function generateDifferentials(
     trauma: caseState.complaint?.trauma || false,
     toxin: caseState.complaint?.toxin || false,
     fever: caseState.complaint?.fever || false,
+    redFlags: caseState.complaint?.redFlags || [],
   }
 
   const axesToMatch = [neuroLocalization.primary, ...(neuroLocalization.secondary || [])]
 
-  // Filtrar candidatos compatíveis
-  const compatibleCandidates = DIFFERENTIAL_CANDIDATES.filter((candidate) =>
-    candidate.axes.some((axis) => axesToMatch.includes(axis)),
-  )
+  const results: Differential[] = []
 
-  // Calcular scores
-  const scored = compatibleCandidates.map((candidate) => {
-    let score = candidate.baseScore
+  // PASSO 1: Tentar carregar da biblioteca JSON se disponível
+  if (hasLibraryForAxis(neuroLocalization.primary)) {
+    const libraryDifferentials = getDifferentialsFromLibrary(neuroLocalization.primary)
 
-    // Ajustes por eixo
-    if (candidate.axes.includes(neuroLocalization.primary)) {
-      score *= 1.2
-    }
+    // Calcular scores para diferenciais da biblioteca
+    const scoredLibrary = libraryDifferentials.map((loaded) => {
+      let score = 70 // Base score para diferenciais da biblioteca
 
-    // Ajustes por espécie
-    if (candidate.species && patient.species && !candidate.species.includes(patient.species)) {
-      score *= 0.7
-    }
+      // Match de curso temporal
+      if (
+        history.temporalPattern &&
+        loaded.rules.course.map((c) => c.toLowerCase()).includes(history.temporalPattern.toLowerCase())
+      ) {
+        score *= 1.3
+      }
 
-    // Ajustes por life stage
-    if (candidate.lifeStages && patient.lifeStage && !candidate.lifeStages.includes(patient.lifeStage)) {
-      score *= 0.8
-    }
+      // Match de espécie
+      if (
+        patient.species &&
+        loaded.rules.species.map((s) => s.toLowerCase()).includes(patient.species.toUpperCase().substring(0, 3))
+      ) {
+        score *= 1.2
+      }
 
-    // Ajustes por padrão temporal
-    if (candidate.temporalPreference && history.temporalPattern && candidate.temporalPreference.includes(history.temporalPattern)) {
-      score *= 1.3
-    } else if (candidate.temporalPreference && history.temporalPattern) {
-      score *= 0.9
-    }
+      // Match de life stage
+      if (
+        patient.lifeStage &&
+        loaded.rules.ageStages.map((a) => a.toLowerCase()).includes(patient.lifeStage.toLowerCase())
+      ) {
+        score *= 1.15
+      }
 
-    // Ajustes por evolução
-    if (candidate.evolutionPreference && history.evolutionPattern && candidate.evolutionPreference.includes(history.evolutionPattern)) {
-      score *= 1.2
-    }
+      // Boost por red flags
+      if (history.redFlags.length > 0) {
+        const matchingRedFlags = loaded.rules.redFlagsBoost.filter((rf) =>
+          history.redFlags.some((h) => h.toLowerCase().includes(rf.toLowerCase())),
+        )
+        if (matchingRedFlags.length > 0) {
+          score *= 1.2
+        }
+      }
 
-    // Boost por trauma
-    if (candidate.traumaBoost && history.trauma) {
-      score *= 1.5
-    }
+      // Boost por trauma
+      if (history.trauma && loaded.rules.redFlagsBoost.includes('inicio_agudo')) {
+        score *= 1.3
+      }
 
-    // Boost por comorbidades
-    if (candidate.comorbidityBoost && candidate.comorbidityBoost.some((c) => patient.comorbidities.includes(c))) {
-      score *= 1.3
-    }
+      return {
+        loaded,
+        score,
+      }
+    })
 
-    return { candidate, score }
-  })
+    // Ordenar e pegar os melhores da biblioteca
+    const topLibrary = scoredLibrary
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 5)
+      .map((item) => {
+        const dx = convertToDifferential(item.loaded, patient, history)
+        return {
+          ...dx,
+          likelihood: Math.min(100, Math.round(item.score)),
+        }
+      })
 
-  // Ordenar e pegar top 5
-  const topCandidates = scored
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 5)
-    .map((item) => buildDifferential(item.candidate, item.score, patient, history, neuroLocalization))
-
-  // Se não tiver 5, completar com diferenciais genéricos
-  while (topCandidates.length < 5) {
-    const generic = buildGenericDifferential(topCandidates.length + 1, neuroLocalization.primary)
-    topCandidates.push(generic)
+    results.push(...topLibrary)
   }
 
-  // Normalizar likelihood (0-100)
-  const maxScore = topCandidates[0]?.likelihood || 100
-  return topCandidates.map((dx) => ({
+  // PASSO 2: Se não tiver 5 diferenciais, completar com candidatos hardcoded
+  if (results.length < 5) {
+    const compatibleCandidates = DIFFERENTIAL_CANDIDATES.filter((candidate) =>
+      candidate.axes.some((axis) => axesToMatch.includes(axis)),
+    )
+
+    // Calcular scores para candidatos hardcoded
+    const scored = compatibleCandidates.map((candidate) => {
+      let score = candidate.baseScore
+
+      // Ajustes por eixo
+      if (candidate.axes.includes(neuroLocalization.primary)) {
+        score *= 1.2
+      }
+
+      // Ajustes por espécie
+      if (candidate.species && patient.species && !candidate.species.includes(patient.species)) {
+        score *= 0.7
+      }
+
+      // Ajustes por life stage
+      if (candidate.lifeStages && patient.lifeStage && !candidate.lifeStages.includes(patient.lifeStage)) {
+        score *= 0.8
+      }
+
+      // Ajustes por padrão temporal
+      if (candidate.temporalPreference && history.temporalPattern && candidate.temporalPreference.includes(history.temporalPattern)) {
+        score *= 1.3
+      } else if (candidate.temporalPreference && history.temporalPattern) {
+        score *= 0.9
+      }
+
+      // Ajustes por evolução
+      if (candidate.evolutionPreference && history.evolutionPattern && candidate.evolutionPreference.includes(history.evolutionPattern)) {
+        score *= 1.2
+      }
+
+      // Boost por trauma
+      if (candidate.traumaBoost && history.trauma) {
+        score *= 1.5
+      }
+
+      // Boost por comorbidades
+      if (candidate.comorbidityBoost && candidate.comorbidityBoost.some((c) => patient.comorbidities.includes(c))) {
+        score *= 1.3
+      }
+
+      return { candidate, score }
+    })
+
+    // Adicionar candidatos hardcoded (evitando duplicatas por nome)
+    const existingNames = new Set(results.map((r) => r.name.toLowerCase()))
+    const additional = scored
+      .sort((a, b) => b.score - a.score)
+      .filter((item) => !existingNames.has(item.candidate.name.toLowerCase()))
+      .slice(0, 5 - results.length)
+      .map((item) => buildDifferential(item.candidate, item.score, patient, history, neuroLocalization))
+
+    results.push(...additional)
+  }
+
+  // PASSO 3: Completar até 5 com diferenciais genéricos se necessário
+  while (results.length < 5) {
+    const generic = buildGenericDifferential(results.length + 1, neuroLocalization.primary)
+    results.push(generic)
+  }
+
+  // PASSO 4: Normalizar likelihood (0-100) mantendo top 5
+  const top5 = results.slice(0, 5)
+  const maxScore = top5[0]?.likelihood || 100
+  return top5.map((dx) => ({
     ...dx,
-    likelihood: Math.min(100, Math.round((dx.likelihood / maxScore) * 100)),
+    likelihood: Math.min(100, Math.max(10, Math.round((dx.likelihood / maxScore) * 100))),
   }))
 }
 

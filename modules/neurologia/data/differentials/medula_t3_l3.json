@@ -1,0 +1,186 @@
+[
+  {
+    "name": "Doença do disco intervertebral (IVDD) toracolombar",
+    "category": "COMPRESSIVA",
+    "rules": {
+      "course": ["PERAGUDO", "AGUDO", "SUBAGUDO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO"],
+      "redFlagsBoost": ["nao_ambulatorio", "dor_coluna"],
+      "comorbidityCautions": ["CARDIOPATA"]
+    },
+    "whyTemplates": [
+      "Paresia/ataxia pélvica com padrão UMN e dor toracolombar é altamente sugestivo.",
+      "Curso peragudo/agudo é comum em extrusão discal."
+    ],
+    "diagnostics": [
+      {
+        "test": "Imagem avançada (TC/RM) de coluna toracolombar",
+        "priority": "ALTA",
+        "whatItAssesses": "Confirma compressão e localiza disco.",
+        "expectedFindings": "Compressão extradural por material discal.",
+        "limitations": "Requer anestesia."
+      },
+      {
+        "test": "Radiografias (triagem)",
+        "priority": "BAIXA",
+        "whatItAssesses": "Sugere doença discal.",
+        "expectedFindings": "Redução de espaço/discocalcificação.",
+        "limitations": "Baixa sensibilidade e não mede compressão."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Analgesia multimodal", "Restrição de movimento", "Suporte"],
+        "cautions": ["Ajustar analgesia em hepatopatas/renopatas"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Cirurgia descompressiva se indicado ou manejo conservador selecionado"],
+        "cautions": ["Nocicepção profunda ausente piora prognóstico"]
+      }
+    }
+  },
+  {
+    "name": "Evento isquêmico medular (FCE)",
+    "category": "VASCULAR",
+    "rules": {
+      "course": ["PERAGUDO"],
+      "ageStages": ["ADULTO"],
+      "species": ["CAO"],
+      "redFlagsBoost": ["inicio_agudo"],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "Instalação peraguda frequentemente durante atividade, com pouca dor espinhal após início.",
+      "Déficit assimétrico pode ocorrer."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM de medula toracolombar",
+        "priority": "ALTA",
+        "whatItAssesses": "Confirma lesão intramedular compatível.",
+        "expectedFindings": "Lesão intramedular focal/segmentar.",
+        "limitations": "Pode ser sutil nas primeiras horas."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte", "Analgesia se dor", "Iniciar reabilitação precoce quando estável"],
+        "cautions": []
+      },
+      "DEFINITIVO": {
+        "plan": ["Fisioterapia intensiva e reabilitação"],
+        "cautions": ["Prognóstico geralmente bom se nocicepção preservada"]
+      }
+    }
+  },
+  {
+    "name": "Mielite (inflamatória/infecciosa)",
+    "category": "INFLAMATORIA",
+    "rules": {
+      "course": ["AGUDO", "SUBAGUDO"],
+      "ageStages": ["ADULTO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["progressivo"],
+      "comorbidityCautions": ["IMUNOSSUPRIMIDO"]
+    },
+    "whyTemplates": [
+      "Déficit neurológico progressivo com/sem dor sugere inflamação medular.",
+      "Pode haver sinais sistêmicos conforme etiologia."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM de coluna",
+        "priority": "ALTA",
+        "whatItAssesses": "Detecta lesões intramedulares.",
+        "expectedFindings": "Realce/edema medular.",
+        "limitations": "Pode ser inespecífico."
+      },
+      {
+        "test": "Líquor (se indicado)",
+        "priority": "MEDIA",
+        "whatItAssesses": "Confirma inflamação.",
+        "expectedFindings": "Pleocitose/proteína elevada.",
+        "limitations": "Nem sempre necessário se imagem conclusiva."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte", "Analgesia se dor", "Considerar antimicrobiano conforme suspeita"],
+        "cautions": ["Evitar imunossupressão sem excluir infecciosa quando possível"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Terapia dirigida (imuno ou antimicrobiana)", "Reabilitação"],
+        "cautions": []
+      }
+    }
+  },
+  {
+    "name": "Neoplasia espinhal (extradural/intradural/intramedular)",
+    "category": "NEOPLASICA",
+    "rules": {
+      "course": ["CRONICO", "SUBAGUDO"],
+      "ageStages": ["GERIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["progressivo"],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "Curso crônico/progressivo com possível dor toracolombar.",
+      "Idade avançada aumenta suspeita."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM/TC de coluna",
+        "priority": "ALTA",
+        "whatItAssesses": "Localiza massa e compartimento.",
+        "expectedFindings": "Lesão expansiva com compressão.",
+        "limitations": "Histologia nem sempre viável."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Analgesia", "Suporte"],
+        "cautions": []
+      },
+      "DEFINITIVO": {
+        "plan": ["Cirurgia/radioterapia/quimioterapia conforme tipo; paliativo"],
+        "cautions": []
+      }
+    }
+  },
+  {
+    "name": "Trauma toracolombar",
+    "category": "TRAUMATICA",
+    "rules": {
+      "course": ["PERAGUDO", "AGUDO"],
+      "ageStages": ["ADULTO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["inicio_agudo", "dor_coluna"],
+      "comorbidityCautions": ["PNEUMOPATA", "CARDIOPATA"]
+    },
+    "whyTemplates": [
+      "Início agudo associado a evento traumático.",
+      "Dor espinhal e déficit neurológico compatíveis com lesão medular."
+    ],
+    "diagnostics": [
+      {
+        "test": "TC de coluna (preferível) ou radiografias",
+        "priority": "ALTA",
+        "whatItAssesses": "Detecta fraturas/luxações.",
+        "expectedFindings": "Instabilidade óssea.",
+        "limitations": "RX pode perder fraturas sutis."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Imobilização", "Analgesia", "Suporte intensivo"],
+        "cautions": ["Avaliar politrauma concomitante"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Cirurgia estabilizadora quando indicada", "Reabilitação"],
+        "cautions": []
+      }
+    }
+  }
+]

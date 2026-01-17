@@ -1,0 +1,187 @@
+[
+  {
+    "name": "Miastenia gravis (adquirida)",
+    "category": "INFLAMATORIA",
+    "rules": {
+      "course": ["EPISODICO", "SUBAGUDO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["fraqueza_flutuante"],
+      "comorbidityCautions": ["PNEUMOPATA"]
+    },
+    "whyTemplates": [
+      "Fraqueza flutuante e piora com exercício é altamente sugestiva.",
+      "Reflexos podem estar normais ou diminuídos; quadro pode ser episódico.",
+      "Risco de megaesôfago e aspiração em cães."
+    ],
+    "diagnostics": [
+      {
+        "test": "Anticorpos anti-receptor de ACh (AChR Ab)",
+        "priority": "ALTA",
+        "whatItAssesses": "Confirma miastenia adquirida.",
+        "expectedFindings": "Título elevado em grande parte dos casos.",
+        "limitations": "Pode ser negativo em fases iniciais ou formas focais."
+      },
+      {
+        "test": "Radiografias torácicas (triagem de megaesôfago/aspiração)",
+        "priority": "ALTA",
+        "whatItAssesses": "Detecta complicações respiratórias.",
+        "expectedFindings": "Megaesôfago e/ou pneumonia aspirativa.",
+        "limitations": "Pode ser normal se forma localizada."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte", "Prevenção de aspiração", "Oxigenoterapia se necessário"],
+        "cautions": ["Evitar sedativos que deprimam respiração; alto risco de aspiração"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Terapia anticolinesterásica e manejo alimentar", "Tratar pneumonia aspirativa se presente"],
+        "cautions": ["Monitorar resposta clínica e complicações respiratórias"]
+      }
+    }
+  },
+  {
+    "name": "Polirradiculoneurite aguda (tipo Coonhound paralysis)",
+    "category": "INFLAMATORIA",
+    "rules": {
+      "course": ["AGUDO"],
+      "ageStages": ["ADULTO"],
+      "species": ["CAO"],
+      "redFlagsBoost": ["progressivo", "fraqueza_generalizada"],
+      "comorbidityCautions": ["PNEUMOPATA"]
+    },
+    "whyTemplates": [
+      "Paresia flácida ascendente com hiporreflexia sugere neuropatia periférica aguda.",
+      "Risco de comprometimento respiratório em casos graves."
+    ],
+    "diagnostics": [
+      {
+        "test": "Eletrodiagnóstico (EMG/condução)",
+        "priority": "MEDIA",
+        "whatItAssesses": "Confirma neuropatia periférica.",
+        "expectedFindings": "Alterações compatíveis com desmielinização/axonal.",
+        "limitations": "Nem sempre disponível."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte intensivo", "Enfermagem rigorosa", "Monitorar ventilação"],
+        "cautions": ["Risco de hipoventilação/aspiração; virar paciente frequentemente"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Suporte e reabilitação; geralmente recuperação gradual"],
+        "cautions": ["Evitar terapia agressiva sem diagnóstico"]
+      }
+    }
+  },
+  {
+    "name": "Botulismo",
+    "category": "TOXICO_METABOLICA",
+    "rules": {
+      "course": ["AGUDO"],
+      "ageStages": ["ADULTO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["fraqueza_generalizada"],
+      "comorbidityCautions": ["PNEUMOPATA"]
+    },
+    "whyTemplates": [
+      "Paresia flácida aguda com hiporreflexia e risco respiratório.",
+      "Histórico alimentar/exposição pode existir."
+    ],
+    "diagnostics": [
+      {
+        "test": "Histórico de exposição + exclusão de outras causas",
+        "priority": "ALTA",
+        "whatItAssesses": "Sustenta suspeita clínica.",
+        "expectedFindings": "Compatibilidade temporal com ingestão/exposição.",
+        "limitations": "Testes confirmatórios raramente disponíveis."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte intensivo", "Monitoramento respiratório", "Enfermagem"],
+        "cautions": ["Alto risco de insuficiência respiratória"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Suporte prolongado até recuperação neuromuscular"],
+        "cautions": ["Prognóstico depende do suporte"]
+      }
+    }
+  },
+  {
+    "name": "Miopatia inflamatória (polimiosite)",
+    "category": "INFLAMATORIA",
+    "rules": {
+      "course": ["SUBAGUDO", "CRONICO"],
+      "ageStages": ["ADULTO"],
+      "species": ["CAO"],
+      "redFlagsBoost": ["progressivo"],
+      "comorbidityCautions": ["HEPATOPATA"]
+    },
+    "whyTemplates": [
+      "Fraqueza generalizada progressiva pode indicar doença muscular.",
+      "Pode haver dor muscular e intolerância ao exercício."
+    ],
+    "diagnostics": [
+      {
+        "test": "CK sérica (creatina quinase) + exames musculares",
+        "priority": "ALTA",
+        "whatItAssesses": "Sugere lesão muscular.",
+        "expectedFindings": "CK elevada (variável).",
+        "limitations": "Pode ser normal em alguns casos."
+      },
+      {
+        "test": "EMG e biópsia muscular (quando possível)",
+        "priority": "MEDIA",
+        "whatItAssesses": "Confirma miopatia e define etiologia.",
+        "expectedFindings": "Inflamação muscular.",
+        "limitations": "Procedimentos especializados."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte", "Analgesia se dor"],
+        "cautions": ["Ajustar fármacos em hepatopatas"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Terapia imunomoduladora conforme diagnóstico"],
+        "cautions": ["Monitorar efeitos adversos"]
+      }
+    }
+  },
+  {
+    "name": "Alterações eletrolíticas (ex.: hipocalemia) com fraqueza",
+    "category": "TOXICO_METABOLICA",
+    "rules": {
+      "course": ["AGUDO", "SUBAGUDO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["fraqueza_generalizada"],
+      "comorbidityCautions": ["RENOPATA", "ENDOCRINOPATA"]
+    },
+    "whyTemplates": [
+      "Fraqueza generalizada pode ser primariamente metabólica.",
+      "Comorbidades (renal/endócrina) aumentam probabilidade."
+    ],
+    "diagnostics": [
+      {
+        "test": "Bioquímica sérica + eletrólitos",
+        "priority": "ALTA",
+        "whatItAssesses": "Identifica distúrbios eletrolíticos associados.",
+        "expectedFindings": "Hipocalemia/hipofosfatemia/alterações associadas.",
+        "limitations": "Pode coexistir com doença neurológica estrutural."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Correção eletrolítica cuidadosa", "Suporte"],
+        "cautions": ["Correção lenta; monitorar ECG quando indicado"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Tratar causa base (renal/endócrina)"],
+        "cautions": ["Reavaliar resposta neurológica após correção"]
+      }
+    }
+  }
+]

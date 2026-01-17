@@ -11,6 +11,9 @@ import { norepinephrineProfile } from '../data/drugs/norepinephrine.profile'
 import { fentanylProfile } from '../data/drugs/fentanyl.profile'
 import { remifentanilProfile } from '../data/drugs/remifentanil.profile'
 import { lidocaineProfile } from '../data/drugs/lidocaine.profile'
+import { dexmedetomidineProfile } from '../data/drugs/dexmedetomidine.profile'
+import { propofolProfile } from '../data/drugs/propofol.profile'
+import { methadoneProfile } from '../data/drugs/methadone.profile'
 import { normalizeDrug } from '../services/normalizeDrug'
 import { lintClinical, type ClinicalLintResult } from '../services/clinicalLint'
 
@@ -22,6 +25,9 @@ const DRUG_PROFILE_REGISTRY: Record<string, Partial<DrugProfile>> = {
   fentanil: fentanylProfile as Partial<DrugProfile>,
   remifentanil: remifentanilProfile as Partial<DrugProfile>,
   lidocaina: lidocaineProfile as Partial<DrugProfile>,
+  dexmedetomidina: dexmedetomidineProfile as Partial<DrugProfile>,
+  propofol: propofolProfile as Partial<DrugProfile>,
+  metadona: methadoneProfile as Partial<DrugProfile>,
   // Adicionar outros fármacos conforme forem completados
 }
 

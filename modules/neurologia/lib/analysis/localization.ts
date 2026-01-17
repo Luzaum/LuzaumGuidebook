@@ -388,7 +388,7 @@ export function determineNeuroLocalization(caseState: any): NeuroLocalizationRes
   confidence = Math.max(20, confidence) // Mínimo 20% de confiança se passou do threshold
 
   // Gerar narrativa
-  const narrative = buildNarrative(primary, motorPattern, distribution, supportiveFindings, contradictoryFindings)
+  const narrative = buildNarrative(primary, motorPattern, distribution, supportiveFindings, contradictoryFindings, confidence)
 
   return {
     status: 'ok',
@@ -409,6 +409,7 @@ function buildNarrative(
   distribution: string,
   supportive: string[],
   contradictory: string[],
+  confidence: number,
 ): string {
   const axisLabels: Record<NeuroAxis, string> = {
     PROSENCEFALO: 'prosencéfalo',
@@ -442,47 +443,43 @@ function buildNarrative(
     INDETERMINADA: 'indeterminada',
   }
 
-  // Construir narrativa veterinária estruturada (8-12 linhas)
-  let text = `Os achados do exame neurológico sugerem principalmente lesão no(a) ${axisLabels[primary]}, com padrão ${motorLabels[motorPattern]} e distribuição ${distLabels[distribution] || distribution.toLowerCase()}. `
+  // Construir narrativa veterinária estruturada (6-10 linhas) seguindo formato FASE 5
+  const primaryLabel = axisLabels[primary] || primary.toLowerCase()
+  
+  // Início: síndrome
+  let text = `Quadro compatível com disfunção ${primaryLabel}. `
 
-  // Citar achados principais (mentação, distribuição, posturais, NC)
-  const keyFindings: string[] = []
+  // Citar 2-5 achados-chave que sustentam (dos supportiveFindings)
   if (supportive.length > 0) {
-    // Extrair achados de mentação
-    const mentacaoFindings = supportive.filter((f) => f.toLowerCase().includes('consciência') || f.toLowerCase().includes('comportamento'))
-    if (mentacaoFindings.length > 0) keyFindings.push(mentacaoFindings[0])
-
-    // Extrair achados de distribuição de membros
-    const membrosFindings = supportive.filter(
-      (f) => f.toLowerCase().includes('torácic') || f.toLowerCase().includes('pélvic') || f.toLowerCase().includes('quadripare') || f.toLowerCase().includes('parapare'),
-    )
-    if (membrosFindings.length > 0) keyFindings.push(membrosFindings[0])
-
-    // Extrair achados posturais
-    const posturaisFindings = supportive.filter((f) => f.toLowerCase().includes('postural') || f.toLowerCase().includes('propriocepção'))
-    if (posturaisFindings.length > 0) keyFindings.push(posturaisFindings[0])
-
-    // Extrair achados de NC
-    const ncFindings = supportive.filter((f) => f.toLowerCase().includes('nervo') || f.toLowerCase().includes('menace') || f.toLowerCase().includes('pupilar'))
-    if (ncFindings.length > 0) keyFindings.push(ncFindings[0])
+    const keyFindings = supportive.slice(0, 3).join(', ')
+    text += `Os achados clínicos que sustentam esta localização incluem: ${keyFindings}. `
   }
 
-  if (keyFindings.length > 0) {
-    text += `A lateralização e distribuição dos déficits (${keyFindings.slice(0, 2).join('; ')}) reforçam esta localização. `
+  // Se confiança baixa, mencionar limitações
+  if (confidence < 50) {
+    const missingElements: string[] = []
+    if (supportive.length === 0) missingElements.push('achados suportadores limitados')
+    if (contradictory.length > 0) missingElements.push('achados contraditórios presentes')
+    if (missingElements.length > 0) {
+      text += `A neurolocalização permanece limitada por ${missingElements.join(' e ')} no exame neurológico. `
+    }
   }
 
-  // Mencionar padrão motor se relevante
+  // Padrão motor quando aplicável
   if (motorPattern === 'UMN' || motorPattern === 'LMN') {
     text += `O padrão de ${motorLabels[motorPattern]} está evidenciado pela combinação de reflexos espinhais e tônus muscular observados. `
   }
 
-  // Contradições
+  // Distribuição
+  text += `A distribuição dos déficits é ${distLabels[distribution] || distribution.toLowerCase()}, sugerindo ${distribution === 'FOCAL' ? 'uma lesão localizada' : distribution === 'MULTIFOCAL' ? 'múltiplas lesões' : 'um processo difuso'}. `
+
+  // Contradições (se houver)
   if (contradictory.length > 0) {
     text += `Contudo, observa-se ${contradictory[0].toLowerCase()}, o que pode indicar envolvimento de múltiplos eixos neurológicos ou evolução da lesão. `
   }
 
-  // Conclusão
-  text += `A confiança na neurolocalização é baseada na consistência dos achados do exame neurológico completo.`
+  // Finalizar com próximos passos
+  text += `Os próximos passos diagnósticos devem priorizar exames de imagem e análise de líquor para confirmar a localização e estabelecer etiologia.`
 
   return text
 }
