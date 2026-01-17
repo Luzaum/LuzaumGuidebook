@@ -14,6 +14,9 @@ export const section5ReflexosEspinhais: HelpTopic[] = [
       'Reflexos pélvicos aumentados sugerem lesão cranial a L4 (tipicamente T3–L3). Reflexos pélvicos diminuídos sugerem L4–S3 (LMN). Reflexos torácicos diminuídos sugerem C6–T2. Use sempre em conjunto com propriocepção e nervos cranianos.',
     pitfalls:
       'Ansiedade/dor aumentam reflexos e tônus; sedação reduz reflexos. Posição do membro inadequada altera resposta. Não comparar lados causa erro de interpretação.',
+    tags: ['reflexos', 'UMN', 'LMN', 'arco-reflexo', 'segmentar', 'hiperreflexia', 'hiporreflexia'],
+    severityWeight: 2,
+    localizationHint: ['UMN-T3-L3', 'LMN-L4-S3', 'LMN-C6-T2'],
   },
   {
     id: 's5-retirada-toracico-oquee',
@@ -123,6 +126,9 @@ export const section5ReflexosEspinhais: HelpTopic[] = [
     interpretation:
       'Aumentado + paresia pélvica → suspeitar T3–L3. Diminuído/ausente → suspeitar L4–S3/femoral/plexo lombar.',
     pitfalls: 'Tensão muscular ou posição errada do membro. Dor articular/ortopédica altera resposta.',
+    tags: ['patelar', 'reflexo-pelvico', 'femoral', 'L4-L6', 'UMN', 'LMN', 'T3-L3', 'L4-S3'],
+    severityWeight: 3,
+    localizationHint: ['UMN-T3-L3', 'LMN-L4-S3', 'femoral', 'plexo-lombar'],
   },
   {
     id: 's5-patelar-esq-normal',

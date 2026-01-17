@@ -14,6 +14,9 @@ export const section1Mentacao: HelpTopic[] = [
       'Mentação alterada sugere prosencéfalo ou tronco encefálico (ou encefalopatia metabólica). Medula espinhal isolada geralmente não altera mentação. Desorientação/alteração comportamental com déficits posturais contralaterais sugere prosencéfalo. Estupor/coma com sinais de nervos cranianos sugere tronco.',
     pitfalls:
       'Confundir dor/ansiedade com alteração neurológica; avaliar após sedativos/analgésicos sem considerar efeito; interpretar depressão por hipotensão/hipoxemia/hipoglicemia como lesão primária do SNC.',
+    tags: ['mentacao', 'comportamento', 'arousal', 'SARA', 'prosencefalo', 'tronco-encefalico'],
+    severityWeight: 3,
+    localizationHint: ['prosencefalo', 'tronco-encefalico', 'encefalopatia-metabolica'],
   },
   {
     id: 's1-nivel-consciencia-alerta',
@@ -48,6 +51,9 @@ export const section1Mentacao: HelpTopic[] = [
     howToPerform: 'Aplicar estímulo forte (voz alta, estímulo tátil firme) de forma ética e observar se há resposta direcionada.',
     interpretation: 'Emergência neurológica. Correlacionar com pupilas/PLR, respiração e sinais de tronco.',
     pitfalls: 'Confundir com sedação/analgesia profunda ou choque. Sempre correlacionar com sinais vitais e medicações.',
+    tags: ['estupor', 'red-flag', 'SARA', 'tronco-encefalico', 'pressao-intracraniana'],
+    severityWeight: 3,
+    localizationHint: ['tronco-encefalico', 'encefalopatia-severa'],
   },
   {
     id: 's1-nivel-consciencia-coma',
@@ -128,6 +134,9 @@ export const section1Mentacao: HelpTopic[] = [
     interpretation:
       'Mentação normal e ausência de déficits posturais severos favorecem vestibular periférico. Mentação alterada e múltiplos déficits de NC favorecem vestibular central.',
     pitfalls: 'Confundir com torcicolo doloroso. Sempre checar dor cervical e nistagmo.',
+    tags: ['head-tilt', 'vestibular', 'VIII', 'tronco-encefalico', 'periferico', 'central'],
+    severityWeight: 2,
+    localizationHint: ['vestibular-periferico', 'vestibular-central', 'tronco-encefalico', 'VIII'],
   },
   {
     id: 's1-postura-cabeca-opistotono',

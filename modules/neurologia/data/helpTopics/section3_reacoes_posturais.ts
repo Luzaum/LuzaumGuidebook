@@ -14,6 +14,9 @@ export const section3ReacoesPosturais: HelpTopic[] = [
       'Déficits indicam doença neurológica em qualquer ponto do arco: nervo periférico, medula ou encéfalo. A distribuição ajuda na neurolocalização.',
     pitfalls:
       'Avaliar em animal sentado, piso escorregadio, dor ortopédica não considerada ou interpretar fraqueza como déficit proprioceptivo.',
+    tags: ['propriocepcao', 'vias-longas', 'reacoes-posturais', 'consciente', 'sensitivo-motor'],
+    severityWeight: 2,
+    localizationHint: ['prosencefalo', 'tronco-encefalico', 'medula', 'periferico'],
   },
   {
     id: 's3-toracico-esquerdo',
@@ -26,6 +29,9 @@ export const section3ReacoesPosturais: HelpTopic[] = [
     interpretation:
       'Déficit isolado sugere lesão lateralizada. Déficits bilaterais sugerem lesão cervical ou encefálica. Déficits em torácicos ajudam a diferenciar lesões cervicais (C1–T2) de lesões toracolombares.',
     pitfalls: 'Confundir incapacidade motora com déficit sensorial.',
+    tags: ['propriocepcao', 'toracico', 'esquerdo', 'vias-longas', 'C1-T2'],
+    severityWeight: 2,
+    localizationHint: ['C1-T2', 'prosencefalo-contralateral', 'periferico-ipsilateral'],
   },
   {
     id: 's3-toracico-direito',
@@ -37,6 +43,9 @@ export const section3ReacoesPosturais: HelpTopic[] = [
     interpretation:
       'Déficit unilateral aponta para lesão contralateral encefálica ou ipsilateral periférica. Comparação bilateral é essencial para identificar lateralização da lesão.',
     pitfalls: 'Não comparar com o lado oposto.',
+    tags: ['propriocepcao', 'toracico', 'direito', 'vias-longas', 'C1-T2'],
+    severityWeight: 2,
+    localizationHint: ['C1-T2', 'prosencefalo-contralateral', 'periferico-ipsilateral'],
   },
   {
     id: 's3-pelvico-esquerdo',
@@ -47,6 +56,9 @@ export const section3ReacoesPosturais: HelpTopic[] = [
     interpretation:
       'Déficits apenas em pélvicos com torácicos normais sugerem lesão T3–S3. Fundamental para identificar lesões toracolombares (T3–L3) ou lombossacras.',
     pitfalls: 'Avaliar com dor ortopédica não controlada.',
+    tags: ['propriocepcao', 'pelvico', 'esquerdo', 'vias-longas', 'T3-S3'],
+    severityWeight: 2,
+    localizationHint: ['T3-L3', 'L4-S3', 'medula-toracolombar'],
   },
   {
     id: 's3-pelvico-direito',
@@ -57,5 +69,8 @@ export const section3ReacoesPosturais: HelpTopic[] = [
     interpretation:
       'Déficits bilaterais reforçam mielopatia; unilateral sugere lateralização. Confirma simetria e lateralização do déficit neurológico.',
     pitfalls: 'Não correlacionar com reflexos patelares.',
+    tags: ['propriocepcao', 'pelvico', 'direito', 'vias-longas', 'T3-S3'],
+    severityWeight: 2,
+    localizationHint: ['T3-L3', 'L4-S3', 'medula-toracolombar'],
   },
 ]

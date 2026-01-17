@@ -14,6 +14,9 @@ export const section2MarchaPostura: HelpTopic[] = [
       'Pélvicos afetados com torácicos normais sugere lesão T3–S3 (medular). Quatro membros afetados sugere lesão cervical (C1–T2) ou encefálica difusa. Ataxia vestibular frequentemente acompanha head tilt/nistagmo. Ataxia cerebelar se manifesta com hipermetria e tremor de intenção.',
     pitfalls:
       'Confundir fraqueza ortopédica com paresia; avaliar em piso escorregadio; não observar curvas; interpretar ansiedade como incoordenação.',
+    tags: ['marcha', 'postura', 'paresia', 'ataxia', 'plegia', 'UMN', 'LMN', 'proprioceptivo', 'vestibular', 'cerebelar'],
+    severityWeight: 3,
+    localizationHint: ['T3-S3', 'C1-T2', 'prosencefalo', 'tronco-encefalico', 'cerebelo', 'vestibular'],
   },
   {
     id: 's2-capacidade-ambulatorio',
@@ -165,6 +168,9 @@ export const section2MarchaPostura: HelpTopic[] = [
     interpretation:
       'Com reflexos aumentados e paresia, favorece UMN medular. Frequentemente acompanha déficits posturais.',
     pitfalls: 'Confundir com vestibular/cerebelar sem checar nistagmo e hipermetria.',
+    tags: ['ataxia-proprioceptiva', 'vias-longas', 'medula', 'T3-L3', 'C1-T2', 'UMN'],
+    severityWeight: 2,
+    localizationHint: ['medula-T3-L3', 'medula-C1-T2', 'prosencefalo', 'vias-ascendentes-longas'],
   },
   {
     id: 's2-tipo-ataxia-vestibular',

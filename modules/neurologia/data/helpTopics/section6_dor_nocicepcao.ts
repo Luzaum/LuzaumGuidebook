@@ -52,6 +52,9 @@ export const section6DorNocicepcao: HelpTopic[] = [
     interpretation:
       'Sugere comprometimento medular severo em muitos cenários. Associar ao tempo de evolução e progressão. Eleva urgência para imagem e decisão terapêutica quando indicado.',
     pitfalls: 'Concluir ausência em paciente sedado/choque; usar estímulo inadequado; não correlacionar com mentação.',
+    tags: ['dor-profunda', 'nocicepcao', 'red-flag', 'prognostico', 'vias-profundas'],
+    severityWeight: 3,
+    localizationHint: ['medula-severa', 'compressiva-grave'],
   },
   {
     id: 's6-dor-profunda-duvidoso',

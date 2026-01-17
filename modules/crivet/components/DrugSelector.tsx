@@ -4,8 +4,8 @@ import { Drug, categories, drugs } from '../data/drugs'
 import { HelpModal } from './HelpModal'
 import { CATEGORY_STYLES, mapCategoryToStyle } from '../ui/categoryStyles'
 import { DrugProfileStatusBadge } from './DrugProfileWarning'
-import { getDrugProfileValidation, getDrugProfile } from '../utils/drugProfileRegistry'
-import { normalizeDrug } from '../services/normalizeDrug'
+import { getDrugProfileValidation } from '../utils/drugProfileRegistry'
+import { getDrug } from '../services/getDrug'
 
 type DrugSelectorProps = {
   selectedDrug: Drug | null
@@ -21,24 +21,14 @@ function HelpButtonWithModal({
 }) {
   const [open, setOpen] = useState(false)
 
-  // Obter perfil e normalizar com tratamento de erro
-  const profile = getDrugProfile(drugId)
-  let normalized = null
-  try {
-    normalized = profile ? normalizeDrug(profile) : null
-  } catch (error) {
-    console.warn(`Erro ao normalizar fármaco ${drugId}:`, error)
-    normalized = null
-  }
+  // Obter fármaco normalizado (sempre retorna NormalizedDrug válido com pelo menos uma seção)
+  const normalized = getDrug(drugId)
 
-  // Verificar se há conteúdo para exibir
-  const hasContent = normalized && normalized.helpDrawer && normalized.helpDrawer.sections && normalized.helpDrawer.sections.length > 0
-
-  // Renderizar conteúdo
-  const content = hasContent ? (
+  // Renderizar conteúdo (sempre há pelo menos uma seção garantida por normalizeDrug)
+  const content = (
     <div className="space-y-6">
-      {normalized!.helpDrawer.sections.map((section, idx) => (
-        <div key={idx} className="space-y-3">
+      {normalized.helpDrawer.sections.map((section, idx) => (
+        <div key={section.id || idx} className="space-y-3">
           <h3 className="text-base font-semibold text-white border-b border-white/10 pb-2">
             {section.title}
           </h3>
@@ -52,18 +42,6 @@ function HelpButtonWithModal({
         </div>
       ))}
     </div>
-  ) : (
-    <div className="space-y-3">
-      <p className="text-sm text-red-400 font-medium">
-        ⚠️ Erro de Desenvolvimento
-      </p>
-      <p className="text-sm text-white/80">
-        Fármaco sem conteúdo normalizado. Verifique import/normalizer.
-      </p>
-      <p className="text-xs text-white/60 mt-2">
-        Este fármaco não possui informações no formato esperado. Em produção, isso não deve acontecer porque a importação será bloqueada.
-      </p>
-    </div>
   )
 
   return (
@@ -73,8 +51,7 @@ function HelpButtonWithModal({
         onClick={() => setOpen(true)}
         className="h-7 w-7 rounded-full border border-white/30 hover:bg-white/20 text-white/90 hover:text-white transition-colors flex items-center justify-center text-sm font-medium"
         aria-label={`Ajuda: ${title}`}
-        disabled={!hasContent}
-        title={hasContent ? 'Informações sobre o fármaco' : 'Sem informações disponíveis'}
+        title="Informações sobre o fármaco"
       >
         ?
       </button>

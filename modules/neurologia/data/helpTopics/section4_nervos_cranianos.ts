@@ -14,6 +14,9 @@ export const section4NervosCranianos: HelpTopic[] = [
       'Múltiplos déficits de NC + mentação alterada = forte suspeita de tronco encefálico. Ameaça ausente com PLR normal sugere disfunção cortical/cegueira sem falha pupilar. Achados vestibulares (nistagmo/estrabismo/head tilt) podem ser periféricos ou centrais, e mentação é um dos melhores discriminadores.',
     pitfalls:
       'Não comparar lados; confundir reflexo com resposta cortical; ignorar doenças oculares/medicações (atropina/opioides) e interpretar como lesão neurológica central.',
+    tags: ['nervos-cranianos', 'tronco-encefalico', 'prosencefalo', 'II', 'III', 'VII', 'VIII', 'IX', 'X'],
+    severityWeight: 2,
+    localizationHint: ['tronco-encefalico', 'prosencefalo', 'periferico'],
   },
   {
     id: 's4-ameaca-oquee',
@@ -28,6 +31,9 @@ export const section4NervosCranianos: HelpTopic[] = [
       'Ameaça ausente com PLR normal: suspeitar de cegueira cortical/lesão do prosencéfalo ou doença retiniana que preserve PLR. Ameaça ausente com PLR alterado: suspeitar de retina/II/via pupilar. Se o animal enxerga mas não pisca, considerar lesão do VII.',
     pitfalls:
       'Assoprar (ativa reflexos não visuais), tocar vibrissas, avaliar em filhote muito jovem, ignorar catarata/uveíte/dor ocular.',
+    tags: ['ameaca', 'menace', 'visao', 'II', 'VII', 'prosencefalo', 'cortico'],
+    severityWeight: 2,
+    localizationHint: ['prosencefalo', 'retina', 'II', 'VII'],
   },
   {
     id: 's4-ameaca-olho-esquerdo',
