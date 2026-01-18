@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import type { TooltipId } from '../data/help.registry'
 import { HELP_REGISTRY } from '../data/help.registry'
 import { HelpModal } from './HelpModal'
+import { HelpContentRenderer } from './HelpContent'
 
 type Props = {
   id: TooltipId
@@ -10,6 +11,11 @@ type Props = {
 export function HelpButton({ id }: Props) {
   const [open, setOpen] = useState(false)
   const item = HELP_REGISTRY[id]
+
+  if (!item) {
+    console.warn(`Help ID "${id}" nao encontrado no registry`)
+    return null
+  }
 
   return (
     <>
@@ -23,7 +29,7 @@ export function HelpButton({ id }: Props) {
       </button>
 
       <HelpModal open={open} title={item.title} onClose={() => setOpen(false)}>
-        {item.content}
+        <HelpContentRenderer content={item} />
       </HelpModal>
     </>
   )

@@ -1,10 +1,10 @@
+import type { HelpContent, HelpSection } from '../types/help';
+import type { IndicatedDose } from '../types/drug';
+import type { Preset, ComorbidityAlert } from '../types/drugProfile';
+
 export type AlertLevel = "SAFE" | "MONITOR" | "WARNING" | "CRITICAL" | "BLOCK";
 
-export type NormalizedHelpSection = {
-  id: string;
-  title: string;
-  content: string[]; // plain text lines (render bullets/paragraphs)
-};
+export type NormalizedHelpSection = HelpSection;
 
 export type NormalizedDoseEntry = {
   label: string;
@@ -17,9 +17,7 @@ export type NormalizedDoseEntry = {
 };
 
 // Tipos auxiliares para normalizeDrug
-export type NormalizedHelpDrawer = {
-  sections: Array<{ id: string; title: string; content: string[] }>;
-};
+export type NormalizedHelpDrawer = HelpContent;
 
 export type NormalizedCompatibility = {
   diluentsAllowed: string[];
@@ -60,8 +58,6 @@ export type NormalizedIndications = {
 };
 
 // Importar tipos do DrugProfile para reutilizar
-import type { IndicatedDose } from '../types/drug';
-import type { Preset, ComorbidityAlert } from '../types/drugProfile';
 
 export type NormalizedDrug = {
   id: string;
@@ -95,9 +91,7 @@ export type NormalizedDrug = {
     notes: string[];
   };
 
-  helpDrawer: {
-    sections: NormalizedHelpSection[];
-  };
+  helpDrawer: NormalizedHelpDrawer;
 
   // Campos adicionais para UI
   recommendedUnit?: string; // Unidade recomendada (ex: "mcg/kg/h")
@@ -119,4 +113,6 @@ export type NormalizedDrug = {
     rawSchemaVersion?: string;
     sources?: string[]; // optional
   };
+
+  completeness: number; // 0-100 score of how complete the drug data is
 };

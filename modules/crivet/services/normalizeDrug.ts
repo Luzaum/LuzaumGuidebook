@@ -6,6 +6,7 @@
 import type { NormalizedDrug, NormalizedHelpDrawer, NormalizedCompatibility, NormalizedDoses, NormalizedIndications } from '../models/normalizedDrug'
 import type { DrugProfile, Preset, ComorbidityAlert } from '../types/drugProfile'
 import type { IndicatedDose } from '../types/drug'
+import type { HelpItem, HelpLevel, HelpSection } from '../types/help'
 
 /**
  * Função auxiliar para coletar conteúdo de uma seção de forma segura
@@ -46,134 +47,166 @@ function normalizeTaglines(raw: any): string[] {
  * Normaliza help drawer com seções
  * GARANTE que nunca retorna vazio - sempre tem pelo menos uma seção útil
  */
-function normalizeHelpDrawer(raw: any): NormalizedHelpDrawer {
-  const sections: Array<{ id: string; title: string; content: string[] }> = []
-  let sectionCounter = 0
+function normalizeHelpDrawer(raw: any, fallbackTitle: string): NormalizedHelpDrawer {
+  const title =
+    typeof raw.help?.title === 'string' && raw.help.title.trim()
+      ? raw.help.title.trim()
+      : fallbackTitle
 
-  // Seção "Resumo"
+  const mergedByLevel = new Map<HelpLevel, HelpItem[]>()
+  const allowedLevels: HelpLevel[] = ['CRITICAL', 'IMPORTANT', 'INFO']
+  const allowedHighlights = new Set(['red', 'yellow', 'green'])
+
+  const pushItems = (level: HelpLevel, items: HelpItem[]) => {
+    if (!items.length) return
+    const current = mergedByLevel.get(level) ?? []
+    mergedByLevel.set(level, current.concat(items))
+  }
+
+  const rawSections = Array.isArray(raw.help?.sections) ? raw.help.sections : []
+  rawSections.forEach((section: any) => {
+    if (!section || !allowedLevels.includes(section.level)) return
+    if (!Array.isArray(section.items)) return
+
+    const items: HelpItem[] = section.items
+      .map((item: any) => {
+        if (!item || typeof item.text !== 'string') return null
+        const text = item.text.trim()
+        if (!text) return null
+        const highlight = allowedHighlights.has(item.highlight) ? item.highlight : undefined
+        return { text, highlight }
+      })
+      .filter(Boolean) as HelpItem[]
+
+    pushItems(section.level, items)
+  })
+
+  const infoItems: HelpItem[] = []
+  const addItems = (lines: string[], prefix?: string) => {
+    lines.forEach((line) => {
+      const text = line.trim()
+      if (!text) return
+      infoItems.push({ text: prefix ? `${prefix}: ${text}` : text })
+    })
+  }
+
   const summaryContent = collectSectionContent(
     raw.ui_copy?.critical_warning_banner,
     ...(Array.isArray(raw.core_concepts?.taglines) ? raw.core_concepts.taglines : []),
     raw.core_concepts?.mechanism_big_picture_ptbr,
   )
   if (summaryContent.length > 0) {
-    sections.push({
-      id: `summary-${sectionCounter++}`,
-      title: 'Resumo',
-      content: summaryContent,
-    })
+    addItems(summaryContent)
   } else {
-    // Se não há resumo, criar um básico com informações disponíveis
     const basicInfo: string[] = []
     if (raw.name_pt || raw.namePt || raw.name) {
-      basicInfo.push(`Fármaco: ${raw.name_pt || raw.namePt || raw.name}`)
+      basicInfo.push(`Farmaco: ${raw.name_pt || raw.namePt || raw.name}`)
     }
     if (Array.isArray(raw.class) && raw.class.length > 0) {
       basicInfo.push(`Classe: ${raw.class.join(', ')}`)
     }
-    if (basicInfo.length > 0) {
-      sections.push({
-        id: `summary-${sectionCounter++}`,
-        title: 'Informações Básicas',
-        content: basicInfo,
-      })
-    }
+    addItems(basicInfo)
   }
 
-  // Seção "Mecanismo de Ação"
+  // ... (existing code for mechanism, pd, pk, indications, doses)
+
+  // ... (mechanism)
   const mechanismContent: string[] = []
   if (raw.core_concepts?.mechanism) {
     const mech = raw.core_concepts.mechanism
     if (mech.receptors_targets && Array.isArray(mech.receptors_targets)) {
-      mechanismContent.push(`Receptores/Alvos: ${mech.receptors_targets.join(', ')}`)
+      mechanismContent.push(`**Receptores/Alvos:** ${mech.receptors_targets.join('; ')}`)
     }
     if (mech.clinical_metaphor) {
       mechanismContent.push(mech.clinical_metaphor)
     }
     if (mech.primary_effects) {
       const effects = mech.primary_effects
-      if (effects.cardiovascular) mechanismContent.push(`Cardiovascular: ${effects.cardiovascular}`)
-      if (effects.respiratory) mechanismContent.push(`Respiratório: ${effects.respiratory}`)
-      if (effects.cns) mechanismContent.push(`Sistema Nervoso Central: ${effects.cns}`)
-      if (effects.renal_hepatic) mechanismContent.push(`Renal/Hepático: ${effects.renal_hepatic}`)
-      if (effects.gi) mechanismContent.push(`Gastrointestinal: ${effects.gi}`)
+      if (effects.cardiovascular) mechanismContent.push(`**Cardiovascular:** ${effects.cardiovascular}`)
+      if (effects.respiratory) mechanismContent.push(`**Respiratorio:** ${effects.respiratory}`)
+      if (effects.cns) mechanismContent.push(`**Sistema Nervoso Central:** ${effects.cns}`)
+      if (effects.renal_hepatic) mechanismContent.push(`**Renal/Hepatico:** ${effects.renal_hepatic}`)
+      if (effects.gi) mechanismContent.push(`**Gastrointestinal:** ${effects.gi}`)
     }
   } else if (raw.core_concepts?.mechanism_big_picture_ptbr) {
     const mechBig = raw.core_concepts.mechanism_big_picture_ptbr
     if (typeof mechBig === 'string') {
       mechanismContent.push(mechBig)
     } else if (Array.isArray(mechBig)) {
-      mechanismContent.push(...mechBig.filter((s) => typeof s === 'string'))
+      mechanismContent.push(...mechBig.filter((s: any) => typeof s === 'string'))
     }
   }
-  if (mechanismContent.length > 0) {
-    sections.push({
-      id: `mechanism-${sectionCounter++}`,
-      title: 'Mecanismo de Ação',
-      content: mechanismContent,
-    })
-  }
+  addItems(mechanismContent, 'Mecanismo')
 
-  // Seção "Farmacodinâmica"
   const pharmacodynamicsContent: string[] = []
   if (raw.core_concepts?.pharmacodynamics) {
     const pd = raw.core_concepts.pharmacodynamics
-    if (pd.onset_iv) pharmacodynamicsContent.push(`Início IV: ${pd.onset_iv}`)
-    if (pd.onset_im) pharmacodynamicsContent.push(`Início IM: ${pd.onset_im}`)
-    if (pd.peak) pharmacodynamicsContent.push(`Pico: ${pd.peak}`)
-    if (pd.duration) pharmacodynamicsContent.push(`Duração: ${pd.duration}`)
+    if (pd.onset_iv) pharmacodynamicsContent.push(`**Inicio IV:** ${pd.onset_iv}`)
+    if (pd.onset_im) pharmacodynamicsContent.push(`**Inicio IM:** ${pd.onset_im}`)
+    if (pd.peak) pharmacodynamicsContent.push(`**Pico:** ${pd.peak}`)
+    if (pd.duration) pharmacodynamicsContent.push(`**Duracao:** ${pd.duration}`)
     if (pd.dependencies && Array.isArray(pd.dependencies)) {
-      pharmacodynamicsContent.push(`Dependências: ${pd.dependencies.join(', ')}`)
+      pharmacodynamicsContent.push(`**Dependencias:** ${pd.dependencies.join('; ')}`)
     }
   } else if (raw.pharmacodynamics) {
-    // Fallback para formato legado
     const pd = raw.pharmacodynamics
     if (typeof pd === 'string') pharmacodynamicsContent.push(pd)
     else if (typeof pd === 'object') {
       Object.entries(pd).forEach(([key, value]) => {
-        if (value) pharmacodynamicsContent.push(`${key}: ${value}`)
+        if (value) pharmacodynamicsContent.push(`**${key}:** ${value}`)
       })
     }
   }
-  if (pharmacodynamicsContent.length > 0) {
-    sections.push({
-      id: `pharmacodynamics-${sectionCounter++}`,
-      title: 'Farmacodinâmica',
-      content: pharmacodynamicsContent,
-    })
-  }
+  addItems(pharmacodynamicsContent, 'Farmacodinamica')
 
-  // Seção "Farmacocinética"
   const pharmacokineticsContent: string[] = []
   if (raw.core_concepts?.pharmacokinetics) {
     const pk = raw.core_concepts.pharmacokinetics
-    if (pk.metabolism) pharmacokineticsContent.push(`Metabolismo: ${pk.metabolism}`)
-    if (pk.excretion) pharmacokineticsContent.push(`Excreção: ${pk.excretion}`)
-    if (pk.dog_vs_cat) pharmacokineticsContent.push(`Diferenças cão/gato: ${pk.dog_vs_cat}`)
-    if (pk.active_metabolites) pharmacokineticsContent.push(`Metabólitos ativos: ${pk.active_metabolites}`)
-    if (pk.accumulation) pharmacokineticsContent.push(`Acúmulo: ${pk.accumulation}`)
+    if (pk.metabolism) pharmacokineticsContent.push(`**Metabolismo:** ${pk.metabolism}`)
+    if (pk.excretion) pharmacokineticsContent.push(`**Excrecao:** ${pk.excretion}`)
+    if (pk.dog_vs_cat) pharmacokineticsContent.push(`**Diferencas cao/gato:** ${pk.dog_vs_cat}`)
+    if (pk.active_metabolites) pharmacokineticsContent.push(`**Metabolitos ativos:** ${pk.active_metabolites}`)
+    if (pk.accumulation) pharmacokineticsContent.push(`**Acumulo:** ${pk.accumulation}`)
   } else if (raw.pharmacokinetics) {
-    // Fallback para formato legado
     const pk = raw.pharmacokinetics
     if (typeof pk === 'string') pharmacokineticsContent.push(pk)
     else if (typeof pk === 'object') {
       Object.entries(pk).forEach(([key, value]) => {
-        if (value) pharmacokineticsContent.push(`${key}: ${value}`)
+        if (value) pharmacokineticsContent.push(`**${key}:** ${value}`)
       })
     }
   }
-  if (pharmacokineticsContent.length > 0) {
-    sections.push({
-      id: `pharmacokinetics-${sectionCounter++}`,
-      title: 'Farmacocinética',
-      content: pharmacokineticsContent,
-    })
+  addItems(pharmacokineticsContent, 'Farmacocinetica')
+
+  const contraindicationsContent: string[] = []
+  if (raw.contraindications) {
+    if (Array.isArray(raw.contraindications.absolute)) {
+      raw.contraindications.absolute.forEach((c: any) => {
+        contraindicationsContent.push(`**ABSOLUTA:** **${c.condition}** - ${c.why}`)
+      })
+    }
+    if (Array.isArray(raw.contraindications.relative)) {
+      raw.contraindications.relative.forEach((c: any) => {
+        contraindicationsContent.push(`**Relativa:** **${c.condition}** - ${c.why}`)
+      })
+    }
+  }
+  if (contraindicationsContent.length > 0) {
+    pushItems('CRITICAL', contraindicationsContent.map(s => ({ text: s })))
   }
 
-  // Seção "Indicações"
+  const alertsContent: string[] = []
+  if (Array.isArray(raw.alerts_by_comorbidity)) {
+    raw.alerts_by_comorbidity.forEach((a: any) => {
+      alertsContent.push(`**${a.title}:** ${a.why}`)
+    })
+  }
+  if (alertsContent.length > 0) {
+    pushItems('IMPORTANT', alertsContent.map(s => ({ text: s })))
+  }
+
   const indicationsContent: string[] = []
   if (Array.isArray(raw.indications)) {
-    // Formato legado: array direto
     indicationsContent.push(...raw.indications.filter((s) => typeof s === 'string'))
   } else if (raw.indications) {
     if (Array.isArray(raw.indications.primary)) {
@@ -188,15 +221,8 @@ function normalizeHelpDrawer(raw: any): NormalizedHelpDrawer {
       else if (Array.isArray(when)) indicationsContent.push(...when.filter((s: any) => typeof s === 'string'))
     }
   }
-  if (indicationsContent.length > 0) {
-    sections.push({
-      id: `indications-${sectionCounter++}`,
-      title: 'Indicações',
-      content: indicationsContent,
-    })
-  }
+  addItems(indicationsContent, 'Indicacoes')
 
-  // Seção "Doses"
   const dosesContent: string[] = []
   if (raw.doses) {
     if (raw.doses.dog) {
@@ -211,7 +237,7 @@ function normalizeHelpDrawer(raw: any): NormalizedHelpDrawer {
         if (bolus.mgkg) dogDoses.push(`Bolus: ${bolus.mgkg.min}-${bolus.mgkg.max} mg/kg${bolus.mgkg.note ? ` (${bolus.mgkg.note})` : ''}`)
         if (bolus.mcgkg) dogDoses.push(`Bolus: ${bolus.mcgkg.min}-${bolus.mcgkg.max} mcg/kg${bolus.mcgkg.note ? ` (${bolus.mcgkg.note})` : ''}`)
       }
-      if (dogDoses.length > 0) dosesContent.push(`Cão: ${dogDoses.join('; ')}`)
+      if (dogDoses.length > 0) dosesContent.push(`Cao: ${dogDoses.join('; ')}`)
     }
     if (raw.doses.cat) {
       const catDoses: string[] = []
@@ -228,29 +254,53 @@ function normalizeHelpDrawer(raw: any): NormalizedHelpDrawer {
       if (catDoses.length > 0) dosesContent.push(`Gato: ${catDoses.join('; ')}`)
     }
   }
-  if (dosesContent.length > 0) {
-    sections.push({
-      id: `doses-${sectionCounter++}`,
-      title: 'Doses',
-      content: dosesContent,
-    })
+  addItems(dosesContent, 'Doses')
+
+  // Diluição e Preparo
+  const dilutionContent: string[] = []
+  if (raw.dilution_and_preparation) {
+    const dil = raw.dilution_and_preparation
+    if (Array.isArray(dil.hard_rules)) {
+      dilutionContent.push(...dil.hard_rules)
+    }
+    if (Array.isArray(dil.recommended_targets)) {
+      dil.recommended_targets.forEach((t: any) => {
+        if (t.recipe) dilutionContent.push(`Preparo Sugerido: ${t.recipe}`)
+      })
+    }
+  }
+  if (dilutionContent.length > 0) {
+    addItems(dilutionContent, 'Diluicao e Preparo')
   }
 
-  // GARANTIR que sempre há pelo menos uma seção
-  // Se não há nenhuma seção, criar uma seção padrão útil
-  if (sections.length === 0) {
-    sections.push({
-      id: `default-${sectionCounter++}`,
-      title: 'Informações',
-      content: [
-        'Informações detalhadas sobre este fármaco estão sendo adicionadas.',
-        'Para uso seguro, consulte bula ou referências farmacológicas atualizadas.',
+  if (mergedByLevel.size === 0 && infoItems.length > 0) {
+    pushItems('INFO', infoItems)
+  }
+
+  if (!mergedByLevel.has('CRITICAL') && !mergedByLevel.has('INFO')) {
+    pushItems('INFO', infoItems.length > 0 ? infoItems : [
+      { text: 'Informacoes detalhadas estao sendo adicionadas.' },
+      { text: 'Para uso seguro, consulte bula ou referencias atualizadas.' },
+    ])
+  }
+
+  const orderedSections: HelpSection[] = allowedLevels
+    .map((level) => ({ level, items: mergedByLevel.get(level) ?? [] }))
+    .filter((section) => section.items.length > 0)
+
+  if (orderedSections.length === 0) {
+    orderedSections.push({
+      level: 'INFO',
+      items: [
+        { text: 'Informacoes detalhadas estao sendo adicionadas.' },
+        { text: 'Para uso seguro, consulte bula ou referencias atualizadas.' },
       ],
     })
   }
 
-  return { sections }
+  return { title, sections: orderedSections }
 }
+
 
 /**
  * Normaliza compatibilidade com diluentes
@@ -276,7 +326,7 @@ function normalizeCompatibility(raw: any): NormalizedCompatibility {
   if (Array.isArray(raw.compatibility?.diluents)) {
     diluentsAllowed.push(...raw.compatibility.diluents)
   }
-  
+
   // Normalizar nomes de diluentes (case-insensitive, remover variações)
   const normalizedDiluents = diluentsAllowed.map((d) => {
     const lower = d.toLowerCase().trim()
@@ -292,7 +342,7 @@ function normalizeCompatibility(raw: any): NormalizedCompatibility {
     }
     return d.trim()
   })
-  
+
   // Remover duplicatas
   const uniqueDiluents = Array.from(new Set(normalizedDiluents)).filter((d) => d.length > 0)
 
@@ -337,8 +387,8 @@ function normalizeCompatibility(raw: any): NormalizedCompatibility {
   // GARANTIR que sempre há pelo menos um diluente padrão se não houver dados
   // Isso evita "Sem dados de compatibilidade" na UI
   // NaCl 0,9% é geralmente seguro para a maioria dos fármacos
-  const finalDiluentsAllowed = uniqueDiluents.length > 0 
-    ? uniqueDiluents 
+  const finalDiluentsAllowed = uniqueDiluents.length > 0
+    ? uniqueDiluents
     : ['NaCl 0,9%'] // Default seguro
 
   return {
@@ -437,24 +487,23 @@ export function normalizeDrug(raw: any): NormalizedDrug {
 
   // Normalizar todas as seções
   const taglines = normalizeTaglines(raw)
-  const helpDrawer = normalizeHelpDrawer(raw)
+  const helpDrawer = normalizeHelpDrawer(raw, `${namePt} - Ajuda Clinica`)
   const compatibility = normalizeCompatibility(raw)
   const doses = normalizeDoses(raw)
   const indications = normalizeIndications(raw)
 
-  // Garantir que helpDrawer sempre tem pelo menos uma seção
+  // Garantir que helpDrawer sempre tem pelo menos uma secao
   if (helpDrawer.sections.length === 0) {
     helpDrawer.sections.push({
-      id: 'default-info',
-      title: 'Informações',
-      content: [`Informações sobre ${namePt} estão sendo adicionadas.`],
+      level: 'INFO',
+      items: [{ text: `Informacoes sobre ${namePt} estao sendo adicionadas.` }],
     })
   }
 
   // Garantir que compatibility sempre tem dados
   const finalCompatibility = {
-    diluentsAllowed: compatibility.diluentsAllowed.length > 0 
-      ? compatibility.diluentsAllowed 
+    diluentsAllowed: compatibility.diluentsAllowed.length > 0
+      ? compatibility.diluentsAllowed
       : ['NaCl 0,9%'], // Default seguro
     incompatible: compatibility.incompatible,
   }
@@ -464,13 +513,13 @@ export function normalizeDrug(raw: any): NormalizedDrug {
   // Por enquanto, vamos extrair do profile se existir
   const indicatedDoses: IndicatedDose[] = []
   const presets: Preset[] = raw.presets || []
-  
+
   // Extrair recommendedUnit do profile (unit_standard_cri ou unit_display_override)
   let recommendedUnit: string | undefined = raw.doses?.unit_standard_cri
   if (raw.doses?.unit_display_override?.show_as) {
     recommendedUnit = raw.doses.unit_display_override.show_as
   }
-  
+
   // Extrair recommendedUnitWhy (pode vir de ui_copy ou ser gerado)
   const recommendedUnitWhy: string[] = []
   if (raw.ui_copy?.unit_recommendation_reasons) {
@@ -485,14 +534,14 @@ export function normalizeDrug(raw: any): NormalizedDrug {
   const alertRules: NormalizedDrug['alerts'] = {
     rules: [],
   }
-  
+
   /**
    * Mapeia key de comorbidade para PatientFlag
    */
   function mapComorbidityKeyToFlags(key: string): string[] {
     const flags: string[] = []
     const keyLower = key.toLowerCase()
-    
+
     // Mapear comorbidades
     if (keyLower.includes('hepatopata') || keyLower.includes('hepat') || keyLower.includes('liver')) {
       flags.push('hepatopata')
@@ -512,7 +561,7 @@ export function normalizeDrug(raw: any): NormalizedDrug {
         flags.push('endocrino_diabetes') // default
       }
     }
-    
+
     // Mapear idade fisiológica
     if (keyLower.includes('neonato') || keyLower.includes('filhote') || keyLower.includes('neonate') || keyLower.includes('puppy')) {
       flags.push('neonato')
@@ -520,7 +569,7 @@ export function normalizeDrug(raw: any): NormalizedDrug {
     if (keyLower.includes('geriatrico') || keyLower.includes('idoso') || keyLower.includes('geriatric') || keyLower.includes('elderly')) {
       flags.push('geriatrico')
     }
-    
+
     // Mapear condições específicas
     if (keyLower.includes('shunt')) {
       flags.push('shunt')
@@ -537,14 +586,14 @@ export function normalizeDrug(raw: any): NormalizedDrug {
     if (keyLower.includes('convulsao') || keyLower.includes('seizure')) {
       flags.push('convulsao_nao_controlada')
     }
-    
+
     return flags
   }
-  
+
   if (Array.isArray(raw.alerts_by_comorbidity)) {
     raw.alerts_by_comorbidity.forEach((alert: ComorbidityAlert) => {
       const when = mapComorbidityKeyToFlags(alert.key)
-      
+
       if (when.length > 0) {
         alertRules.rules.push({
           when,
@@ -557,6 +606,20 @@ export function normalizeDrug(raw: any): NormalizedDrug {
       }
     })
   }
+
+  // Calcular completude
+  const completeness = calculateCompleteness({
+    namePt,
+    class: raw.class,
+    taglines,
+    helpDrawer,
+    doses,
+    indications: indications.all,
+    compatibility: finalCompatibility,
+    alerts: alertRules,
+    presets,
+    sources: raw.references,
+  })
 
   return {
     id,
@@ -574,7 +637,7 @@ export function normalizeDrug(raw: any): NormalizedDrug {
     },
     indications: indications.all.length > 0 ? indications.all : [],
     doses: {
-      dog: { cri: [], bolus: [] },
+      dog: { cri: [], bolus: [] }, // TODO: Mapear doses normalizadas corretamente se normalizeDoses evoluir
       cat: { cri: [], bolus: [] },
     },
     compatibility: {
@@ -593,5 +656,126 @@ export function normalizeDrug(raw: any): NormalizedDrug {
       rawSchemaVersion: '2.0',
       sources: raw.references?.map((r: any) => r.source || r).filter(Boolean) || [],
     },
+    completeness,
   }
+}
+
+/**
+ * Calcula a porcentagem de completude do perfil do fármaco
+ */
+function calculateCompleteness(data: {
+  namePt: string;
+  class?: string[];
+  taglines: string[];
+  helpDrawer: NormalizedHelpDrawer;
+  doses: NormalizedDoses;
+  indications: string[];
+  compatibility: NormalizedCompatibility;
+  alerts: { rules: any[] };
+  presets: Preset[];
+  sources?: any[];
+}): number {
+  let score = 0;
+
+  // 1. Identificação (10%)
+  if (data.namePt && data.namePt !== 'Fármaco sem nome' && !data.namePt.includes('Fármaco unknown')) {
+    score += 5;
+  }
+  if (Array.isArray(data.class) && data.class.length > 0) {
+    score += 5;
+  }
+
+  // 2. Resumo (10%)
+  // Verifica se tem taglines reais (não placeholders e nem vazias)
+  const hasRealTaglines = data.taglines.length > 0 &&
+    !data.taglines.some(t => t.includes('Informações básicas disponíveis') || t.includes('Fármaco ') || t.includes('Informacoes sobre'));
+  if (hasRealTaglines) {
+    score += 10;
+  }
+
+  // 3. Conteúdo Clínico (40%)
+
+  // Helper para verificar se doses têm valores reais (> 0)
+  const hasRealDoseValues = (dosesObj: any) => {
+    if (!dosesObj) return false;
+    let hasValue = false;
+
+    // Check CRI
+    if (dosesObj.cri) {
+      if (dosesObj.cri.mcgkgmin && (dosesObj.cri.mcgkgmin.min > 0 || dosesObj.cri.mcgkgmin.max > 0)) hasValue = true;
+      if (dosesObj.cri.mgkgh && (dosesObj.cri.mgkgh.min > 0 || dosesObj.cri.mgkgh.max > 0)) hasValue = true;
+      if (dosesObj.cri.u_kg_h && (dosesObj.cri.u_kg_h.min > 0 || dosesObj.cri.u_kg_h.max > 0)) hasValue = true;
+    }
+
+    // Check Bolus
+    if (dosesObj.bolus) {
+      if (dosesObj.bolus.mgkg && (dosesObj.bolus.mgkg.min > 0 || dosesObj.bolus.mgkg.max > 0)) hasValue = true;
+      if (dosesObj.bolus.mcgkg && (dosesObj.bolus.mcgkg.min > 0 || dosesObj.bolus.mcgkg.max > 0)) hasValue = true;
+      if (dosesObj.bolus.ukg && (dosesObj.bolus.ukg.min > 0 || dosesObj.bolus.ukg.max > 0)) hasValue = true;
+    }
+
+    return hasValue;
+  };
+
+  const hasDogDoses = hasRealDoseValues(data.doses.dog);
+  const hasCatDoses = hasRealDoseValues(data.doses.cat);
+
+  if (hasDogDoses && hasCatDoses) score += 20;
+  else if (hasDogDoses || hasCatDoses) score += 10;
+
+  // Indicações (10%)
+  const hasRealIndications = data.indications.length > 0 &&
+    !data.indications.some(i => i === '' || i.includes('Indicacoes'));
+  if (hasRealIndications) {
+    score += 10;
+  }
+
+  // Compatibilidade (10%)
+  // Considera completo se tem incompatibilidades listadas E diluentes definidos
+  // Apenas diluentes genéricos (NaCl, etc) não conta muito se não tiver incompatibilidades,
+  // pois todo fármaco seguro tem esses diluentes. O valor está nas restrições.
+  const hasIncompatibilities = data.compatibility.incompatible.length > 0;
+  const hasSpecificDiluents = data.compatibility.diluentsAllowed.length > 0 &&
+    !(data.compatibility.diluentsAllowed.length === 1 && data.compatibility.diluentsAllowed[0] === 'NaCl 0,9%');
+
+  if (hasIncompatibilities || (hasSpecificDiluents && data.compatibility.diluentsAllowed.length > 1)) {
+    score += 10;
+  }
+
+  // 4. Detalhes (Help Drawer) (30%)
+  // Precisamos verificar se as seções realmente contêm texto útil
+  // O normalizeHelpDrawer já faz um filtro básico, mas vamos garantir
+
+  const helpText = JSON.stringify(data.helpDrawer).toLowerCase();
+
+  // Mecanismo (10%)
+  const hasMechanism = helpText.includes('mecanismo') || helpText.includes('receptores');
+  if (hasMechanism) score += 10;
+
+  // PK/PD (10%)
+  const hasPD_PK = helpText.includes('farmacodinamica') || helpText.includes('farmacocinetica');
+  if (hasPD_PK) score += 10;
+
+  // Outras seções úteis (além das padrão e INFO) (10%)
+  const usefulSections = data.helpDrawer.sections.filter(
+    s => s.level !== 'INFO' &&
+      !s.items.some(i => i.text.includes('Informacoes sobre') && i.text.includes('adicionadas'))
+  );
+  if (usefulSections.length > 0) {
+    score += 10;
+  }
+
+  // 5. Extras (10%)
+  if (data.alerts.rules.length > 0) { // Separar alerts e presets
+    score += 5;
+  }
+  if (data.presets.length > 0) {
+    score += 5;
+  }
+
+  if (Array.isArray(data.sources) && data.sources.length > 0) {
+    score += 5;
+  }
+
+  return Math.min(100, Math.max(0, score));
 }

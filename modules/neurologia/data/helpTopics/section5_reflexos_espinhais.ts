@@ -54,6 +54,9 @@ export const section5ReflexosEspinhais: HelpTopic[] = [
     interpretation:
       'Se associado a tônus aumentado e déficits posturais, favorece lesão UMN cranial a C6. Se isolado e paciente reativo, pode ser dor/ansiedade.',
     pitfalls: 'Concluir UMN sem avaliar tônus, marcha e propriocepção.',
+    diagnosticWeight: 2,
+    neuroLocalization: ['C1_C5', 'brainstem'],
+    neuronType: ['UMN'],
   },
   {
     id: 's5-retirada-toracico-esq-diminuido',
@@ -74,6 +77,9 @@ export const section5ReflexosEspinhais: HelpTopic[] = [
     howToPerform: 'Confirmar técnica e intensidade adequada; avaliar sedação/consciência e outros reflexos do mesmo membro.',
     interpretation: 'Forte evidência de LMN no membro. Correlacionar com hipotonia, atrofia e perda de sensibilidade local.',
     pitfalls: 'Estimulação inadequada, paciente sedado ou com dor sistêmica intensa pode confundir.',
+    diagnosticWeight: 3,
+    neuroLocalization: ['C6_T2', 'peripheral_nerve'],
+    neuronType: ['LMN'],
   },
   {
     id: 's5-retirada-toracico-dir-normal',
@@ -151,6 +157,9 @@ export const section5ReflexosEspinhais: HelpTopic[] = [
     howToPerform: 'Padronizar percussão. Correlacionar com hipertonia e propriocepção alterada.',
     interpretation: 'Com paresia/ataxia pélvica, reforça T3–L3. Se bilateral, sugere lesão midline/compressiva.',
     pitfalls: 'Ansiedade/tensão aumentam reflexo e confundem.',
+    diagnosticWeight: 3,
+    neuroLocalization: ['T3_L3', 'C6_T2', 'C1_C5', 'brainstem'], // Lesão cranial a L4
+    neuronType: ['UMN'],
   },
   {
     id: 's5-patelar-esq-diminuido',
@@ -173,6 +182,9 @@ export const section5ReflexosEspinhais: HelpTopic[] = [
     interpretation:
       'Reforça lesão lombar/plexo/nervo periférico. Se bilateral, pensar em polineuropatia/lesão lombossacra extensa.',
     pitfalls: 'Sedação intensa, hipotermia ou técnica falha podem reduzir reflexo.',
+    diagnosticWeight: 3,
+    neuroLocalization: ['L4_S3', 'peripheral_nerve'],
+    neuronType: ['LMN'],
   },
   {
     id: 's5-patelar-dir-normal',
@@ -248,6 +260,9 @@ export const section5ReflexosEspinhais: HelpTopic[] = [
     howToPerform: 'Confirmar bilateralmente, repetir para consistência e registrar nível aproximado.',
     interpretation: 'Sugere fortemente lesão entre T3–L3. Serve para guiar RM/TC/estudo radiográfico.',
     pitfalls: 'Assumir nível exato (é estimativa). Técnica pobre gera cutoff falso.',
+    diagnosticWeight: 3,
+    neuroLocalization: ['T3_L3'],
+    suggestedTests: ['MRI', 'CT', 'radiography'],
   },
   {
     id: 's5-panniculus-ausente',

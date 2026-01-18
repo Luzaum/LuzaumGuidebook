@@ -17,6 +17,10 @@ export const section1Mentacao: HelpTopic[] = [
     tags: ['mentacao', 'comportamento', 'arousal', 'SARA', 'prosencefalo', 'tronco-encefalico'],
     severityWeight: 3,
     localizationHint: ['prosencefalo', 'tronco-encefalico', 'encefalopatia-metabolica'],
+    diagnosticWeight: 3,
+    neuroLocalization: ['forebrain', 'brainstem'],
+    mimics: ['metabolic', 'toxic'],
+    suggestedTests: ['bloodwork', 'electrolytes', 'MRI'],
   },
   {
     id: 's1-nivel-consciencia-alerta',
@@ -54,6 +58,12 @@ export const section1Mentacao: HelpTopic[] = [
     tags: ['estupor', 'red-flag', 'SARA', 'tronco-encefalico', 'pressao-intracraniana'],
     severityWeight: 3,
     localizationHint: ['tronco-encefalico', 'encefalopatia-severa'],
+    diagnosticWeight: 3,
+    neuroLocalization: ['brainstem', 'forebrain'],
+    urgencyFlag: true,
+    emergencyTriggers: ['coma'], // Estupor próximo de coma
+    mimics: ['metabolic', 'toxic', 'drug_effect'],
+    suggestedTests: ['bloodwork', 'electrolytes', 'CT', 'MRI'],
   },
   {
     id: 's1-nivel-consciencia-coma',
@@ -65,6 +75,12 @@ export const section1Mentacao: HelpTopic[] = [
     howToPerform: 'Confirmar ausência de resposta a estímulos apropriados, avaliar reflexos de tronco (pupilas/PLR) e padrão respiratório.',
     interpretation: 'Emergência crítica. Priorizar estabilização e investigação de causas reversíveis imediatas.',
     pitfalls: 'Assumir coma por lesão estrutural sem checar glicemia, oxigenação, perfusão e fármacos.',
+    diagnosticWeight: 3,
+    neuroLocalization: ['brainstem', 'forebrain'],
+    urgencyFlag: true,
+    emergencyTriggers: ['coma'],
+    mimics: ['metabolic', 'toxic', 'drug_effect'],
+    suggestedTests: ['bloodwork', 'electrolytes', 'CT', 'MRI'],
   },
   {
     id: 's1-comportamento-normal',
@@ -88,6 +104,10 @@ export const section1Mentacao: HelpTopic[] = [
     interpretation:
       'Com déficits posturais contralaterais e/ou alterações de ameaça, sugere prosencéfalo. Se junto de sinais sistêmicos, considerar metabólico/toxina.',
     pitfalls: 'Confundir com senilidade sem correlacionar com início, curso e outros déficits.',
+    diagnosticWeight: 2,
+    neuroLocalization: ['forebrain'],
+    mimics: ['metabolic', 'toxic', 'behavioral'],
+    suggestedTests: ['bloodwork', 'MRI', 'CSF'],
   },
   {
     id: 's1-comportamento-agressivo',
@@ -137,6 +157,10 @@ export const section1Mentacao: HelpTopic[] = [
     tags: ['head-tilt', 'vestibular', 'VIII', 'tronco-encefalico', 'periferico', 'central'],
     severityWeight: 2,
     localizationHint: ['vestibular-periferico', 'vestibular-central', 'tronco-encefalico', 'VIII'],
+    diagnosticWeight: 3,
+    neuroLocalization: ['vestibular_peripheral', 'vestibular_central', 'brainstem', 'cerebellum'],
+    cranialNerves: [8],
+    suggestedTests: ['otoscopy', 'MRI', 'CT'],
   },
   {
     id: 's1-postura-cabeca-opistotono',
@@ -148,6 +172,11 @@ export const section1Mentacao: HelpTopic[] = [
     howToPerform: 'Observar postura espontânea; não provocar. Avaliar mentação, pupilas/PLR e sinais de tronco.',
     interpretation: 'Red flag: priorizar estabilização e investigação intracraniana/metabólica.',
     pitfalls: 'Confundir com rigidez por dor severa. Avaliar dor cervical e sinais sistêmicos.',
+    diagnosticWeight: 3,
+    urgencyFlag: true,
+    neuroLocalization: ['brainstem', 'cerebellum'],
+    clinicalAlerts: ['Opistótono sugere herniação ou lesão grave de tronco/cerebelo.'],
+    suggestedTests: ['MRI', 'CT'],
   },
   {
     id: 's1-postura-cabeca-cabeca-baixa',

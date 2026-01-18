@@ -493,11 +493,11 @@ const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
             </button>
             <header className="text-center mb-8">
                 <img 
-                    src="https://res.cloudinary.com/dwta1roq1/image/upload/w_120,q_auto,f_auto/logo/hemogasometria" 
+                    src="/apps/HEMOGASO.png" 
                     alt="Ícone do aplicativo de Hemogasometria Veterinária, com um cão, uma gota de sangue e uma fita de DNA"
-                    className="mx-auto mb-4"
+                    className="mx-auto mb-0 w-40 h-auto"
                 />
-                <h1 className="text-4xl font-bold text-foreground mb-2">HemoGaso Vet 🩸</h1>
+                <h1 className="text-4xl font-bold text-foreground mb-2">HemogasometriaVET 🩸</h1>
                 <p className="text-lg text-muted-foreground">Análise Inteligente de Hemogasometria para Cães e Gatos</p>
             </header>
             

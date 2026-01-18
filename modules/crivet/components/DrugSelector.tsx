@@ -2,9 +2,11 @@ import React, { useCallback, useMemo, useState } from 'react'
 import { Pill, Search, Sparkles } from 'lucide-react'
 import { Drug, categories, drugs } from '../data/drugs'
 import { HelpModal } from './HelpModal'
+import { HelpContentRenderer } from './HelpContent'
 import { CATEGORY_STYLES, mapCategoryToStyle } from '../ui/categoryStyles'
 import { DrugProfileStatusBadge } from './DrugProfileWarning'
 import { getDrugProfileValidation } from '../utils/drugProfileRegistry'
+import { getMissingFieldsBySection } from '../utils/drugProfileValidation'
 import { getDrug } from '../services/getDrug'
 
 type DrugSelectorProps = {
@@ -24,25 +26,8 @@ function HelpButtonWithModal({
   // Obter fármaco normalizado (sempre retorna NormalizedDrug válido com pelo menos uma seção)
   const normalized = getDrug(drugId)
 
-  // Renderizar conteúdo (sempre há pelo menos uma seção garantida por normalizeDrug)
-  const content = (
-    <div className="space-y-6">
-      {normalized.helpDrawer.sections.map((section, idx) => (
-        <div key={section.id || idx} className="space-y-3">
-          <h3 className="text-base font-semibold text-white border-b border-white/10 pb-2">
-            {section.title}
-          </h3>
-          <div className="space-y-2 text-white/90">
-            {section.content.map((paragraph, pIdx) => (
-              <p key={pIdx} className="text-sm leading-relaxed">
-                {paragraph}
-              </p>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  )
+  const helpTitle = normalized.helpDrawer.title || title
+  const content = <HelpContentRenderer content={normalized.helpDrawer} />
 
   return (
     <>
@@ -55,7 +40,7 @@ function HelpButtonWithModal({
       >
         ?
       </button>
-      <HelpModal open={open} title={title} onClose={() => setOpen(false)}>
+      <HelpModal open={open} title={helpTitle} onClose={() => setOpen(false)}>
         {content}
       </HelpModal>
     </>
@@ -103,6 +88,8 @@ export default function DrugSelector({ selectedDrug, onSelectDrug }: DrugSelecto
 
       {selectedDrug && (() => {
         const categoryStyle = CATEGORY_STYLES[mapCategoryToStyle(selectedDrug.category)]
+        const validation = getDrugProfileValidation(selectedDrug.id)
+        const missingBySection = getMissingFieldsBySection(validation)
         return (
           <div className={`rounded-xl border px-3 py-2 ${categoryStyle.className}`}>
             <div className="flex items-center justify-between">
@@ -123,6 +110,44 @@ export default function DrugSelector({ selectedDrug, onSelectDrug }: DrugSelecto
                 />
                 <Sparkles className="w-5 h-5 text-white/80 animate-pulse" />
               </div>
+            </div>
+            <div className="mt-3 rounded-lg border border-white/15 bg-white/5 p-3 text-sm text-white/90">
+              <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wide opacity-80">
+                <span>Completude</span>
+                <span className="text-sm font-bold normal-case">{validation.completeness}%</span>
+              </div>
+              <div className="mt-1 text-xs opacity-80">{validation.missing.length} campos faltando</div>
+              {validation.missing.length === 0 ? (
+                <div className="mt-2 text-xs opacity-90">Nenhum campo faltando.</div>
+              ) : (
+                <div className="mt-2 space-y-3">
+                  {Object.entries(missingBySection).map(([section, fields]) => (
+                    <div key={section} className="text-xs">
+                      <div className="font-semibold uppercase tracking-wide opacity-80">{section}</div>
+                      <ul className="mt-1 space-y-1">
+                        {fields.map((field) => (
+                          <li key={`${field.section}-${field.field}`} className="flex items-start gap-2">
+                            <span
+                              className={
+                                field.severity === 'critical'
+                                  ? 'text-red-200'
+                                  : field.severity === 'warning'
+                                  ? 'text-yellow-200'
+                                  : 'text-green-200'
+                              }
+                            >
+                              {field.severity === 'critical' ? '!' : field.severity === 'warning' ? '~' : 'i'}
+                            </span>
+                            <span>
+                              <code className="text-[10px] bg-black/20 px-1 rounded">{field.field}</code> {field.description}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         )
@@ -158,38 +183,38 @@ export default function DrugSelector({ selectedDrug, onSelectDrug }: DrugSelecto
                   {category}
                 </button>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 p-3">
-                  {list.map((drug) => (
-                    <button
-                      key={drug.id}
-                      onClick={() => handleSelect(drug)}
-                      className={`group relative flex items-center justify-between p-3 rounded-lg text-left transition-all duration-200 border-2 ${
-                        selectedDrug?.id === drug.id
-                          ? 'bg-gradient-to-br from-sky-50 to-sky-100 dark:from-sky-900/30 dark:to-sky-800/30 border-sky-500 shadow-md'
-                          : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-sky-300 dark:hover:border-sky-600 hover:shadow-md'
-                      }`}
-                    >
-                      <span
-                        className={`font-semibold text-sm ${
+                  {list.map((drug) => {
+                    const validation = getDrugProfileValidation(drug.id)
+                    const hasCritical = validation.missing.some((m) => m.severity === 'critical')
+                    return (
+                      <button
+                        key={drug.id}
+                        onClick={() => handleSelect(drug)}
+                        className={`group relative flex items-center justify-between p-3 rounded-lg text-left transition-all duration-200 border-2 ${
                           selectedDrug?.id === drug.id
-                            ? 'text-sky-900 dark:text-sky-100'
-                            : 'text-slate-700 dark:text-slate-300 group-hover:text-sky-700 dark:group-hover:text-sky-400'
+                            ? 'bg-gradient-to-br from-sky-50 to-sky-100 dark:from-sky-900/30 dark:to-sky-800/30 border-sky-500 shadow-md'
+                            : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-sky-300 dark:hover:border-sky-600 hover:shadow-md'
                         }`}
                       >
-                        {drug.name}
-                      </span>
-                      {selectedDrug?.id === drug.id && <Sparkles className="w-4 h-4 text-sky-500 animate-pulse" />}
-                      <DrugProfileStatusBadge
-                        completeness={(() => {
-                          const validation = getDrugProfileValidation(drug.id)
-                          return validation.completeness
-                        })()}
-                        hasCritical={(() => {
-                          const validation = getDrugProfileValidation(drug.id)
-                          return validation.missing.some((m) => m.severity === 'critical')
-                        })()}
-                      />
-                    </button>
-                  ))}
+                        <span
+                          className={`font-semibold text-sm ${
+                            selectedDrug?.id === drug.id
+                              ? 'text-sky-900 dark:text-sky-100'
+                              : 'text-slate-700 dark:text-slate-300 group-hover:text-sky-700 dark:group-hover:text-sky-400'
+                          }`}
+                        >
+                          {drug.name}
+                        </span>
+                        <div className="flex items-center gap-2">
+                          {selectedDrug?.id === drug.id && <Sparkles className="w-4 h-4 text-sky-500 animate-pulse" />}
+                          <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                            {validation.completeness}%
+                          </span>
+                          <DrugProfileStatusBadge completeness={validation.completeness} hasCritical={hasCritical} />
+                        </div>
+                      </button>
+                    )
+                  })}
                 </div>
               </div>
             ))}

@@ -55,6 +55,9 @@ export const section6DorNocicepcao: HelpTopic[] = [
     tags: ['dor-profunda', 'nocicepcao', 'red-flag', 'prognostico', 'vias-profundas'],
     severityWeight: 3,
     localizationHint: ['medula-severa', 'compressiva-grave'],
+    diagnosticWeight: 3,
+    urgencyFlag: true,
+    clinicalAlerts: ['AUSÊNCIA DE DOR PROFUNDA = Prognóstico reservado. Requer descompressão/estabilização imediata (<24-48h).'],
   },
   {
     id: 's6-dor-profunda-duvidoso',
@@ -122,6 +125,10 @@ export const section6DorNocicepcao: HelpTopic[] = [
     howToPerform: 'Interromper estímulos agressivos. Priorizar analgesia e segurança. Proceder com imagem quando indicado.',
     interpretation: 'Tratar como emergência clínica quando associado a déficits progressivos. Evitar manipulação excessiva.',
     pitfalls: 'Confundir com medo; porém espasmo + postura antálgica sustentam dor real.',
+    diagnosticWeight: 3,
+    urgencyFlag: true,
+    neuroLocalization: ['C1_C5', 'C6_T2'],
+    suggestedTests: ['MRI', 'CT', 'radiography'],
   },
   {
     id: 's6-dor-coluna-toracolombar-oquee',
@@ -177,6 +184,10 @@ export const section6DorNocicepcao: HelpTopic[] = [
       'Priorizar analgesia e segurança. Evitar manipulação vigorosa. Considerar imagem urgente se déficits estão presentes/progressivos.',
     interpretation: 'Red flag principalmente se associado a paraparesia/paraplegia ou piora rápida.',
     pitfalls: 'Subestimar gravidade e não correlacionar com nocicepção profunda.',
+    diagnosticWeight: 3,
+    urgencyFlag: true,
+    neuroLocalization: ['T3_L3'],
+    suggestedTests: ['MRI', 'CT', 'radiography'],
   },
   {
     id: 's6-dor-coluna-lombossacra-oquee',
@@ -233,5 +244,9 @@ export const section6DorNocicepcao: HelpTopic[] = [
     howToPerform: 'Priorizar analgesia e contenção segura. Planejar imagem direcionada quando indicado.',
     interpretation: 'Red flag especialmente com déficits LMN, cauda flácida ou disfunção urinária.',
     pitfalls: 'Continuar provocando dor repetidamente durante o exame.',
+    diagnosticWeight: 3,
+    urgencyFlag: true,
+    neuroLocalization: ['L4_S3'],
+    suggestedTests: ['MRI', 'CT', 'radiography'],
   },
 ]

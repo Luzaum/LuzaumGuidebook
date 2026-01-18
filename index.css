@@ -126,6 +126,40 @@
   grid-auto-rows: 1fr;
 }
 
+@layer components {
+  .help-critical {
+    color: #b91c1c;
+    font-weight: 600;
+  }
+
+  .help-important {
+    color: #a16207;
+    font-weight: 500;
+  }
+
+  .help-info {
+    color: #15803d;
+  }
+
+  .hl-red {
+    background-color: #fee2e2;
+    padding: 0 4px;
+    border-radius: 4px;
+  }
+
+  .hl-yellow {
+    background-color: #fef3c7;
+    padding: 0 4px;
+    border-radius: 4px;
+  }
+
+  .hl-green {
+    background-color: #dcfce7;
+    padding: 0 4px;
+    border-radius: 4px;
+  }
+}
+
 /* Neon wave text */
 .neon-wave {
   background: linear-gradient(

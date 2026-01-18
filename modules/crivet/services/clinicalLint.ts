@@ -36,7 +36,7 @@ export function lintClinical(normalized: NormalizedDrug): ClinicalLintResult {
     })
   } else {
     // Verificar se pelo menos uma seção tem conteúdo
-    const hasContent = normalized.helpDrawer.sections.some((section) => section.content && section.content.length > 0)
+    const hasContent = normalized.helpDrawer.sections.some((section) => section.items && section.items.length > 0)
     if (!hasContent) {
       issues.push({
         severity: 'ERROR',
@@ -82,7 +82,7 @@ export function lintClinical(normalized: NormalizedDrug): ClinicalLintResult {
   const requiresDilution = 
     normalized.doses.dog.cri || normalized.doses.cat.cri || // Tem CRI = geralmente requer diluição
     normalized.helpDrawer.sections.some((s) => 
-      s.content.some((c) => c.toLowerCase().includes('diluir') || c.toLowerCase().includes('iv'))
+      s.items.some((item) => item.text.toLowerCase().includes('diluir') || item.text.toLowerCase().includes('iv'))
     )
 
   if (requiresDilution && (!normalized.compatibility.diluentsAllowed || normalized.compatibility.diluentsAllowed.length === 0)) {
@@ -102,10 +102,10 @@ export function lintClinical(normalized: NormalizedDrug): ClinicalLintResult {
     })
   }
 
-  if (normalized.helpDrawer.sections.length < 3) {
+  if (normalized.helpDrawer.sections.length < 2) {
     issues.push({
       severity: 'WARNING',
-      message: 'Help drawer com poucas seções: recomenda-se ter pelo menos 3 seções (Resumo, Mecanismo, Indicações)',
+      message: 'Help drawer com poucos niveis: recomenda-se ter pelo menos IMPORTANT + INFO',
       field: 'helpDrawer.sections',
     })
   }

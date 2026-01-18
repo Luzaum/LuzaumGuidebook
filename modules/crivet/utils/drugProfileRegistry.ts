@@ -5,38 +5,71 @@
 
 import type { DrugProfile } from '../types/drugProfile'
 import { validateDrugProfile, type ValidationResult } from './drugProfileValidation'
-import { ketamineProfile } from '../data/drugs/ketamine.profile'
-import { dobutamineProfile } from '../data/drugs/dobutamine.profile'
-import { norepinephrineProfile } from '../data/drugs/norepinephrine.profile'
-import { fentanylProfile } from '../data/drugs/fentanyl.profile'
-import { remifentanilProfile } from '../data/drugs/remifentanil.profile'
-import { lidocaineProfile } from '../data/drugs/lidocaine.profile'
-import { dexmedetomidineProfile } from '../data/drugs/dexmedetomidine.profile'
-import { propofolProfile } from '../data/drugs/propofol.profile'
-import { methadoneProfile } from '../data/drugs/methadone.profile'
-import { ephedrineProfile } from '../data/drugs/ephedrine.profile'
-import { maropitantProfile } from '../data/drugs/maropitant.profile'
-import { insulinRegularProfile } from '../data/drugs/insulinRegular.profile'
-import { metoclopramidaProfile } from '../data/drugs/metoclopramida.profile'
 import { normalizeDrug } from '../services/normalizeDrug'
 import { lintClinical, type ClinicalLintResult } from '../services/clinicalLint'
 
+// Importações de todos os perfis
+import { cetaminaProfile } from '../data/drugs/cetamina.profile'
+import { dobutaminaProfile } from '../data/drugs/dobutamina.profile'
+import { norepinefrinaProfile } from '../data/drugs/norepinefrina.profile'
+import { fentanilProfile } from '../data/drugs/fentanil.profile'
+import { remifentanilProfile } from '../data/drugs/remifentanil.profile'
+import { lidocainaProfile } from '../data/drugs/lidocaina.profile'
+import { dexmedetomidinaProfile } from '../data/drugs/dexmedetomidina.profile'
+import { propofolProfile } from '../data/drugs/propofol.profile'
+import { metadonaProfile } from '../data/drugs/metadona.profile'
+import { efedrinaProfile } from '../data/drugs/efedrina.profile'
+import { maropitantProfile } from '../data/drugs/maropitant.profile'
+import { insulina_regularProfile } from '../data/drugs/insulina_regular.profile'
+import { metoclopramidaProfile } from '../data/drugs/metoclopramida.profile'
+import { morfinaProfile } from '../data/drugs/morfina.profile'
+import { butorfanolProfile } from '../data/drugs/butorfanol.profile'
+import { dopaminaProfile } from '../data/drugs/dopamina.profile'
+import { nitroprussiatoProfile } from '../data/drugs/nitroprussiato.profile'
+import { diltiazemProfile } from '../data/drugs/diltiazem.profile'
+import { esmololProfile } from '../data/drugs/esmolol.profile'
+import { vasopressinaProfile } from '../data/drugs/vasopressina.profile'
+import { ceftriaxonaProfile } from '../data/drugs/ceftriaxona.profile'
+import { meropenemProfile } from '../data/drugs/meropenem.profile'
+import { enrofloxacinaProfile } from '../data/drugs/enrofloxacina.profile'
+import { cefalexinaProfile } from '../data/drugs/cefalexina.profile'
+import { clindamicinaProfile } from '../data/drugs/clindamicina.profile'
+import { metronidazolProfile } from '../data/drugs/metronidazol.profile'
+import { rocuronioProfile } from '../data/drugs/rocuronio.profile'
+import { mlkProfile } from '../data/drugs/mlk.profile'
+import { flkProfile } from '../data/drugs/flk.profile'
+
 // Registry de perfis completos (somente fármacos que seguem o padrão completo)
 const DRUG_PROFILE_REGISTRY: Record<string, Partial<DrugProfile>> = {
-  cetamina: ketamineProfile as Partial<DrugProfile>,
-  dobutamina: dobutamineProfile as Partial<DrugProfile>,
-  norepinefrina: norepinephrineProfile as Partial<DrugProfile>,
-  fentanil: fentanylProfile as Partial<DrugProfile>,
+  cetamina: cetaminaProfile as Partial<DrugProfile>,
+  dobutamina: dobutaminaProfile as Partial<DrugProfile>,
+  norepinefrina: norepinefrinaProfile as Partial<DrugProfile>,
+  fentanil: fentanilProfile as Partial<DrugProfile>,
   remifentanil: remifentanilProfile as Partial<DrugProfile>,
-  lidocaina: lidocaineProfile as Partial<DrugProfile>,
-  dexmedetomidina: dexmedetomidineProfile as Partial<DrugProfile>,
+  lidocaina: lidocainaProfile as Partial<DrugProfile>,
+  dexmedetomidina: dexmedetomidinaProfile as Partial<DrugProfile>,
   propofol: propofolProfile as Partial<DrugProfile>,
-  metadona: methadoneProfile as Partial<DrugProfile>,
-  efedrina: ephedrineProfile as Partial<DrugProfile>,
+  metadona: metadonaProfile as Partial<DrugProfile>,
+  efedrina: efedrinaProfile as Partial<DrugProfile>,
   maropitant: maropitantProfile as Partial<DrugProfile>,
-  insulina_regular: insulinRegularProfile as Partial<DrugProfile>,
+  insulina_regular: insulina_regularProfile as Partial<DrugProfile>,
   metoclopramida: metoclopramidaProfile as Partial<DrugProfile>,
-  // Adicionar outros fármacos conforme forem completados
+  morfina: morfinaProfile as Partial<DrugProfile>,
+  butorfanol: butorfanolProfile as Partial<DrugProfile>,
+  dopamina: dopaminaProfile as Partial<DrugProfile>,
+  nitroprussiato: nitroprussiatoProfile as Partial<DrugProfile>,
+  diltiazem: diltiazemProfile as Partial<DrugProfile>,
+  esmolol: esmololProfile as Partial<DrugProfile>,
+  vasopressina: vasopressinaProfile as Partial<DrugProfile>,
+  ceftriaxona: ceftriaxonaProfile as Partial<DrugProfile>,
+  meropenem: meropenemProfile as Partial<DrugProfile>,
+  enrofloxacina: enrofloxacinaProfile as Partial<DrugProfile>,
+  cefalexina: cefalexinaProfile as Partial<DrugProfile>,
+  clindamicina: clindamicinaProfile as Partial<DrugProfile>,
+  metronidazol: metronidazolProfile as Partial<DrugProfile>,
+  rocuronio: rocuronioProfile as Partial<DrugProfile>,
+  mlk: mlkProfile as Partial<DrugProfile>,
+  flk: flkProfile as Partial<DrugProfile>,
 }
 
 // Cache de validações
@@ -59,7 +92,7 @@ export function getDrugProfileValidation(drugId: string): ValidationResult {
 
   const profile = getDrugProfile(drugId)
   const validation = validateDrugProfile(profile || {})
-  
+
   validationCache.set(drugId, validation)
   return validation
 }
@@ -83,7 +116,7 @@ export function getAllDrugProfileStatus(): Array<{
 }> {
   // Importar lista de fármacos do registry principal
   const { drugs } = require('../data/drugs')
-  
+
   return drugs.map((drug: { id: string; name: string }) => ({
     drugId: drug.id,
     name: drug.name,

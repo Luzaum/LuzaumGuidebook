@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { AlertTriangle, Info, XCircle } from 'lucide-react'
 import { HelpModal } from './HelpModal'
+import { HelpContentRenderer } from './HelpContent'
+import type { HelpContent } from '../types/help'
 import type { AlertLevel } from '../types/patientFlags'
 
 type Props = {
@@ -8,7 +10,7 @@ type Props = {
   title: string
   message: string
   helpTitle: string
-  helpContent: React.ReactNode
+  helpContent: HelpContent
 }
 
 export function ClinicalAlertBanner({ level, title, message, helpTitle, helpContent }: Props) {
@@ -64,7 +66,7 @@ export function ClinicalAlertBanner({ level, title, message, helpTitle, helpCont
         </div>
       </div>
       <HelpModal open={helpOpen} title={helpTitle} onClose={() => setHelpOpen(false)}>
-        {helpContent}
+        <HelpContentRenderer content={helpContent} />
       </HelpModal>
     </>
   )

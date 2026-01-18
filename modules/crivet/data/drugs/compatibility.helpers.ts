@@ -1,10 +1,10 @@
 import type { DrugCompatibility, CompatibilityItem } from '../../types/drug'
-import { ketamineCompatibility } from './ketamine.compat'
+import { ketamineCompatibility } from './cetamina.compat'
 import { midazolamCompatibility } from './midazolam.compat'
-import { fentanylCompatibility } from './fentanyl.compat'
+import { fentanylCompatibility } from './fentanil.compat'
 import { remifentanilCompatibility } from './remifentanil.compat'
-import { dobutamineCompatibility } from './dobutamine.compat'
-import { norepinephrineCompatibility } from './norepinephrine.compat'
+import { dobutamineCompatibility } from './dobutamina.compat'
+import { norepinephrineCompatibility } from './norepinefrina.compat'
 
 // Helper para converter ketamineCompatibility para DrugCompatibility
 export function ketamineCompatibilityToDrugCompatibility(): DrugCompatibility {
@@ -97,8 +97,8 @@ export function remifentanilCompatibilityToDrugCompatibility(): DrugCompatibilit
 // Helper para converter dobutamineCompatibility para DrugCompatibility
 export function dobutamineCompatibilityToDrugCompatibility(): DrugCompatibility {
   const materialWarnings: string[] = []
-  if (dobutamineCompatibility.materialWarning) {
-    materialWarnings.push(dobutamineCompatibility.materialWarning)
+  if (dobutamineCompatibility.materialWarnings) {
+    materialWarnings.push(dobutamineCompatibility.materialWarnings)
   }
   if (dobutamineCompatibility.practicalWarnings) {
     materialWarnings.push(...dobutamineCompatibility.practicalWarnings)

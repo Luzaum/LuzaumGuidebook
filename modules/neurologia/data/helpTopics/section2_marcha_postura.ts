@@ -59,6 +59,11 @@ export const section2MarchaPostura: HelpTopic[] = [
     interpretation:
       'Em mielopatia aguda, plegia + dor profunda ausente é red flag prognóstica. Com reflexos ausentes, considerar LMN/periférico.',
     pitfalls: 'Confundir espasmos reflexos com movimento voluntário.',
+    diagnosticWeight: 3,
+    urgencyFlag: true,
+    emergencyTriggers: ['acute_plegia'],
+    neuroLocalization: ['C1_C5', 'C6_T2', 'T3_L3', 'L4_S3', 'peripheral_nerve', 'neuromuscular'],
+    clinicalAlerts: ['Plegia aguda sem dor profunda = Prognóstico reservado. Requer ação imediata.'],
   },
   {
     id: 's2-membros-toracicos-normal',
@@ -102,6 +107,9 @@ export const section2MarchaPostura: HelpTopic[] = [
     howToPerform: 'Confirmar ausência de movimento voluntário; avaliar retirada e tônus.',
     interpretation: 'Se retirada ausente e hipotonia/atrofia → LMN. Se retirada preservada/aumentada com hipertonia → UMN cranial.',
     pitfalls: 'Assumir encefálico sem avaliar reflexos segmentares.',
+    diagnosticWeight: 3,
+    urgencyFlag: true,
+    neuroLocalization: ['C1_C5', 'C6_T2', 'peripheral_nerve'],
   },
   {
     id: 's2-membros-pelvicos-normal',
@@ -146,6 +154,9 @@ export const section2MarchaPostura: HelpTopic[] = [
     howToPerform: 'Confirmar ausência de movimento voluntário, avaliar patelar/retirada e dor profunda.',
     interpretation: 'Plegia + dor profunda ausente = red flag prognóstica. Reflexos aumentados sugerem UMN; ausentes sugerem LMN.',
     pitfalls: 'Confundir espasmo reflexo com movimento voluntário.',
+    diagnosticWeight: 3,
+    urgencyFlag: true,
+    neuroLocalization: ['T3_L3', 'L4_S3', 'peripheral_nerve'],
   },
   {
     id: 's2-tipo-ataxia-ausente',
@@ -171,6 +182,8 @@ export const section2MarchaPostura: HelpTopic[] = [
     tags: ['ataxia-proprioceptiva', 'vias-longas', 'medula', 'T3-L3', 'C1-T2', 'UMN'],
     severityWeight: 2,
     localizationHint: ['medula-T3-L3', 'medula-C1-T2', 'prosencefalo', 'vias-ascendentes-longas'],
+    diagnosticWeight: 2,
+    neuroLocalization: ['C1_C5', 'C6_T2', 'T3_L3'], // Lesão medular predominante
   },
   {
     id: 's2-tipo-ataxia-vestibular',
@@ -183,6 +196,9 @@ export const section2MarchaPostura: HelpTopic[] = [
     interpretation:
       'Mentação normal favorece periférico; mentação alterada e déficits posturais severos favorecem central.',
     pitfalls: 'Rotular como vestibular sem examinar nervos cranianos e mentação.',
+    diagnosticWeight: 3,
+    neuroLocalization: ['vestibular_peripheral', 'vestibular_central'],
+    cranialNerves: [8],
   },
   {
     id: 's2-tipo-ataxia-cerebelar',
@@ -195,5 +211,8 @@ export const section2MarchaPostura: HelpTopic[] = [
     interpretation:
       'Se força está preservada e há hipermetria/tremor de intenção, favorece cerebelar. Pode coexistir com sinais vestibulares.',
     pitfalls: 'Confundir hipermetria com paresia; cerebelar geralmente não causa paresia marcada.',
+    diagnosticWeight: 3,
+    neuroLocalization: ['cerebellum'],
+    clinicalAlerts: ['Ataxia cerebelar pura preserva força (sem paresia).'],
   },
 ]

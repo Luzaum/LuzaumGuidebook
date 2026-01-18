@@ -3,6 +3,8 @@
  * Schema oficial para garantir que todos os fármacos tenham informações completas
  */
 
+import type { HelpContent } from './help'
+
 export type AlertLevel = 'SAFE' | 'MONITOR' | 'WARNING' | 'CRITICAL' | 'BLOCK'
 export type Species = 'dog' | 'cat' | 'both'
 export type Route = 'IV' | 'IM' | 'SC' | 'PO'
@@ -409,6 +411,9 @@ export interface DrugProfile {
 
   // Seção 16
   ui_copy?: UICopy
+
+  // Ajuda clÇðnica estruturada (botÇœo "?")
+  help?: HelpContent
 
   // Seção 17
   references?: Reference[]

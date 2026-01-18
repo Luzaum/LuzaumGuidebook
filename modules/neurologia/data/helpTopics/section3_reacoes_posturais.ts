@@ -32,6 +32,8 @@ export const section3ReacoesPosturais: HelpTopic[] = [
     tags: ['propriocepcao', 'toracico', 'esquerdo', 'vias-longas', 'C1-T2'],
     severityWeight: 2,
     localizationHint: ['C1-T2', 'prosencefalo-contralateral', 'periferico-ipsilateral'],
+    diagnosticWeight: 2,
+    neuroLocalization: ['C1_C5', 'C6_T2', 'brainstem', 'forebrain', 'peripheral_nerve'],
   },
   {
     id: 's3-toracico-direito',
@@ -46,6 +48,8 @@ export const section3ReacoesPosturais: HelpTopic[] = [
     tags: ['propriocepcao', 'toracico', 'direito', 'vias-longas', 'C1-T2'],
     severityWeight: 2,
     localizationHint: ['C1-T2', 'prosencefalo-contralateral', 'periferico-ipsilateral'],
+    diagnosticWeight: 2,
+    neuroLocalization: ['C1_C5', 'C6_T2', 'brainstem', 'forebrain', 'peripheral_nerve'],
   },
   {
     id: 's3-pelvico-esquerdo',
@@ -59,6 +63,8 @@ export const section3ReacoesPosturais: HelpTopic[] = [
     tags: ['propriocepcao', 'pelvico', 'esquerdo', 'vias-longas', 'T3-S3'],
     severityWeight: 2,
     localizationHint: ['T3-L3', 'L4-S3', 'medula-toracolombar'],
+    diagnosticWeight: 2,
+    neuroLocalization: ['T3_L3', 'L4_S3', 'C1_C5', 'C6_T2', 'brainstem', 'forebrain', 'peripheral_nerve'],
   },
   {
     id: 's3-pelvico-direito',
@@ -72,5 +78,7 @@ export const section3ReacoesPosturais: HelpTopic[] = [
     tags: ['propriocepcao', 'pelvico', 'direito', 'vias-longas', 'T3-S3'],
     severityWeight: 2,
     localizationHint: ['T3-L3', 'L4-S3', 'medula-toracolombar'],
+    diagnosticWeight: 2,
+    neuroLocalization: ['T3_L3', 'L4_S3', 'C1_C5', 'C6_T2', 'brainstem', 'forebrain', 'peripheral_nerve'],
   },
 ]

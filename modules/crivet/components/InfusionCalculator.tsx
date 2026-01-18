@@ -11,6 +11,7 @@ import { FieldLabel } from './FieldLabel'
 import { ClinicalAlertBanner } from './ClinicalAlertBanner'
 import { DrugProfileWarning } from './DrugProfileWarning'
 import { HelpModal } from './HelpModal'
+import { HelpContentRenderer } from './HelpContent'
 import { getDrugProfileValidation } from '../utils/drugProfileRegistry'
 import { convertDose } from '../engine/conversions'
 import { evaluateDrugAlerts } from '../engine/drugAlerts'
@@ -319,10 +320,10 @@ export default function InfusionCalculator({
       })()}
 
       {clinicalAlerts.length > 0 && (
-        <div className="space-y-3">
-          {clinicalAlerts.map((alert) => (
+        <div className="space-y-2">
+          {clinicalAlerts.map((alert, index) => (
             <div
-              key={`${alert.severity}-${alert.message}`}
+              key={index}
               className={`rounded-lg border p-4 ${
                 alert.severity === 'critical'
                   ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
@@ -331,7 +332,7 @@ export default function InfusionCalculator({
                   : 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800'
               }`}
             >
-              <div className="flex gap-3">
+              <div className="flex items-start gap-3">
                 <AlertTriangle
                   className={`w-5 h-5 flex-shrink-0 ${
                     alert.severity === 'critical'
@@ -341,27 +342,25 @@ export default function InfusionCalculator({
                       : 'text-blue-500'
                   }`}
                 />
-                <div className="space-y-1">
-                  {alert.title && (
-                    <p
-                      className={`font-semibold text-sm ${
-                        alert.severity === 'critical'
-                          ? 'text-red-900 dark:text-red-100'
-                          : alert.severity === 'warning'
-                          ? 'text-amber-900 dark:text-amber-100'
-                          : 'text-blue-900 dark:text-blue-100'
-                      }`}
-                    >
-                      {alert.title}
-                    </p>
-                  )}
+                <div className="flex-1">
                   <p
-                    className={`text-sm ${
+                    className={`text-sm font-semibold ${
                       alert.severity === 'critical'
                         ? 'text-red-800 dark:text-red-200'
                         : alert.severity === 'warning'
                         ? 'text-amber-800 dark:text-amber-200'
                         : 'text-blue-800 dark:text-blue-200'
+                    }`}
+                  >
+                    {alert.title}
+                  </p>
+                  <p
+                    className={`text-sm mt-1 ${
+                      alert.severity === 'critical'
+                        ? 'text-red-700 dark:text-red-200'
+                        : alert.severity === 'warning'
+                        ? 'text-amber-700 dark:text-amber-200'
+                        : 'text-blue-700 dark:text-blue-200'
                     }`}
                   >
                     {alert.message}
@@ -400,7 +399,6 @@ export default function InfusionCalculator({
         </div>
       )}
 
-      {/* Alertas baseados em condições do paciente × fármaco */}
       {drugPatientAlerts.length > 0 && (
         <div className="space-y-2">
           {drugPatientAlerts.map((alert) => (
@@ -410,26 +408,23 @@ export default function InfusionCalculator({
               title={alert.title}
               message={alert.short}
               helpTitle={alert.title}
-              helpContent={
-                <div className="space-y-4 text-sm leading-relaxed">
-                  <div>
-                    <p className="font-semibold mb-2">Por que isso importa</p>
-                    <ul className="list-disc pl-5 space-y-1">
-                      {alert.why.map((reason, idx) => (
-                        <li key={idx}>{reason}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="font-semibold mb-2">Conduta sugerida</p>
-                    <ul className="list-disc pl-5 space-y-1">
-                      {alert.actions.map((action, idx) => (
-                        <li key={idx}>{action}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              }
+              helpContent={{
+                title: alert.title,
+                sections: [
+                  {
+                    level: alert.level === 'critical' ? 'CRITICAL' : alert.level === 'warning' ? 'IMPORTANT' : 'INFO',
+                    items: alert.why.map((reason) => ({ text: reason })),
+                  },
+                  ...(alert.actions.length
+                    ? [
+                        {
+                          level: 'INFO',
+                          items: alert.actions.map((action) => ({ text: action, highlight: 'green' })),
+                        },
+                      ]
+                    : []),
+                ],
+              }}
             />
           ))}
         </div>
@@ -437,17 +432,17 @@ export default function InfusionCalculator({
 
       <div className="space-y-4">
         <div className="space-y-2">
-          {/* Dose indicada em destaque amarelo com botão "?" - ACIMA do campo Dose alvo */}
+          {/* Dose indicada em destaque amarelo com botao "?" - ACIMA do campo Dose alvo */}
           {indicatedDose && (
             <>
               <div className="rounded-lg border-2 border-yellow-400/50 bg-yellow-500/15 dark:bg-yellow-500/10 p-3 flex items-start justify-between gap-3">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="text-yellow-400 dark:text-yellow-300 font-semibold text-sm">
-                      🟡 Dose indicada:
+                      Dose indicada:
                     </span>
                     <span className="text-yellow-900 dark:text-yellow-100 font-bold text-sm">
-                      {formatNumberPtBR(indicatedDose.min, 2)}–{formatNumberPtBR(indicatedDose.max, 2)} {doseUnit}
+                      {formatNumberPtBR(indicatedDose.min, 2)}-{formatNumberPtBR(indicatedDose.max, 2)} {doseUnit}
                     </span>
                   </div>
                   <p className="text-yellow-800 dark:text-yellow-200 text-xs font-medium">
@@ -465,23 +460,35 @@ export default function InfusionCalculator({
               </div>
               <HelpModal
                 open={physiologyModalOpen}
-                title={`Por que ${formatNumberPtBR(indicatedDose.min, 2)}–${formatNumberPtBR(indicatedDose.max, 2)} ${doseUnit} para ${indicatedDose.purpose}?`}
+                title={`Por que ${formatNumberPtBR(indicatedDose.min, 2)}-${formatNumberPtBR(indicatedDose.max, 2)} ${doseUnit} para ${indicatedDose.purpose}?`}
                 onClose={() => setPhysiologyModalOpen(false)}
               >
-                <div className="space-y-3">
-                  <div>
-                    <h3 className="font-semibold text-white mb-2">Fisiologia por trás desta dose:</h3>
-                    <div className="text-white/90 whitespace-pre-line">
-                      {indicatedDose.note || 
-                        'Informação de fisiologia não disponível para esta dose. Por favor, adicione as informações de fisiologia nas doses indicadas do fármaco.'}
-                    </div>
-                  </div>
-                  <div className="pt-3 border-t border-white/10">
-                    <p className="text-xs text-white/60">
-                      Esta dose foi baseada em protocolos clínicos validados e literatura veterinária especializada.
-                    </p>
-                  </div>
-                </div>
+                <HelpContentRenderer
+                  content={{
+                    title: `Por que ${formatNumberPtBR(indicatedDose.min, 2)}-${formatNumberPtBR(indicatedDose.max, 2)} ${doseUnit} para ${indicatedDose.purpose}?`,
+                    sections: [
+                      {
+                        level: 'IMPORTANT',
+                        items: [
+                          {
+                            text:
+                              indicatedDose.note ||
+                              'Informacao de fisiologia nao disponivel para esta dose. Adicione as notas nas doses indicadas do farmaco.',
+                          },
+                        ],
+                      },
+                      {
+                        level: 'INFO',
+                        items: [
+                          {
+                            text:
+                              'Esta dose foi baseada em protocolos clinicos validados e literatura veterinaria especializada.',
+                          },
+                        ],
+                      },
+                    ],
+                  }}
+                />
               </HelpModal>
             </>
           )}

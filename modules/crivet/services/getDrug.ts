@@ -80,8 +80,8 @@ export function getDrug(drugId: string): NormalizedDrug {
       const fallback = normalizeDrug(minimalProfile)
       // Adicionar seção de erro ao help drawer
       fallback.helpDrawer.sections.push({
-        title: 'Aviso',
-        content: [`Erro ao processar alguns dados do perfil: ${String(error)}`],
+        level: 'IMPORTANT',
+        items: [{ text: `Erro ao processar alguns dados do perfil: ${String(error)}` }],
       })
       
       normalizedCache.set(drugId, fallback)
