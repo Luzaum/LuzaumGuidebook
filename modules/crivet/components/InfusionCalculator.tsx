@@ -262,7 +262,7 @@ export default function InfusionCalculator({
     if (!selectedDrug || !indicatedDose) return null
     // Não precisa de isValidDirect aqui, apenas verificar se doseValue é válido
     if (!doseValue || doseValue <= 0) return null
-    
+
     const { min, max } = indicatedDose
 
     if (doseValue < min) {
@@ -324,44 +324,32 @@ export default function InfusionCalculator({
           {clinicalAlerts.map((alert, index) => (
             <div
               key={index}
-              className={`rounded-lg border p-4 ${
-                alert.severity === 'critical'
+              className={`rounded-lg border p-4 ${alert.severity === 'critical'
                   ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
-                  : alert.severity === 'warning'
-                  ? 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800'
-                  : 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800'
-              }`}
+                  : 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800'
+                }`}
             >
               <div className="flex items-start gap-3">
                 <AlertTriangle
-                  className={`w-5 h-5 flex-shrink-0 ${
-                    alert.severity === 'critical'
+                  className={`w-5 h-5 flex-shrink-0 ${alert.severity === 'critical'
                       ? 'text-red-500'
-                      : alert.severity === 'warning'
-                      ? 'text-amber-500'
-                      : 'text-blue-500'
-                  }`}
+                      : 'text-amber-500'
+                    }`}
                 />
                 <div className="flex-1">
                   <p
-                    className={`text-sm font-semibold ${
-                      alert.severity === 'critical'
+                    className={`text-sm font-semibold ${alert.severity === 'critical'
                         ? 'text-red-800 dark:text-red-200'
-                        : alert.severity === 'warning'
-                        ? 'text-amber-800 dark:text-amber-200'
-                        : 'text-blue-800 dark:text-blue-200'
-                    }`}
+                        : 'text-amber-800 dark:text-amber-200'
+                      }`}
                   >
                     {alert.title}
                   </p>
                   <p
-                    className={`text-sm mt-1 ${
-                      alert.severity === 'critical'
+                    className={`text-sm mt-1 ${alert.severity === 'critical'
                         ? 'text-red-700 dark:text-red-200'
-                        : alert.severity === 'warning'
-                        ? 'text-amber-700 dark:text-amber-200'
-                        : 'text-blue-700 dark:text-blue-200'
-                    }`}
+                        : 'text-amber-700 dark:text-amber-200'
+                      }`}
                   >
                     {alert.message}
                   </p>
@@ -374,24 +362,21 @@ export default function InfusionCalculator({
 
       {doseRangeAlert && (
         <div
-          className={`rounded-lg border p-4 ${
-            doseRangeAlert.severity === 'critical'
+          className={`rounded-lg border p-4 ${doseRangeAlert.severity === 'critical'
               ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
               : 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800'
-          }`}
+            }`}
         >
           <div className="flex gap-3">
             <AlertTriangle
-              className={`w-5 h-5 flex-shrink-0 ${
-                doseRangeAlert.severity === 'critical' ? 'text-red-500' : 'text-amber-500'
-              }`}
+              className={`w-5 h-5 flex-shrink-0 ${doseRangeAlert.severity === 'critical' ? 'text-red-500' : 'text-amber-500'
+                }`}
             />
             <p
-              className={`text-sm font-semibold ${
-                doseRangeAlert.severity === 'critical'
+              className={`text-sm font-semibold ${doseRangeAlert.severity === 'critical'
                   ? 'text-red-900 dark:text-red-100'
                   : 'text-amber-900 dark:text-amber-100'
-              }`}
+                }`}
             >
               {doseRangeAlert.message}
             </p>
@@ -417,11 +402,11 @@ export default function InfusionCalculator({
                   },
                   ...(alert.actions.length
                     ? [
-                        {
-                          level: 'INFO',
-                          items: alert.actions.map((action) => ({ text: action, highlight: 'green' })),
-                        },
-                      ]
+                      {
+                        level: 'INFO',
+                        items: alert.actions.map((action) => ({ text: action, highlight: 'green' })),
+                      },
+                    ]
                     : []),
                 ],
               }}
@@ -556,13 +541,12 @@ export default function InfusionCalculator({
             {/* Banner de alerta para unidade incomum (opcional) */}
             {selectedDrug?.unitRules?.unitHints?.[doseUnit] && (
               <div
-                className={`rounded-md border p-2 text-xs ${
-                  selectedDrug.unitRules.unitHints[doseUnit].level === 'critical'
+                className={`rounded-md border p-2 text-xs ${selectedDrug.unitRules.unitHints[doseUnit].level === 'critical'
                     ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-800 dark:text-red-200'
                     : selectedDrug.unitRules.unitHints[doseUnit].level === 'warning'
-                    ? 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-200'
-                    : 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800 text-blue-800 dark:text-blue-200'
-                }`}
+                      ? 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-200'
+                      : 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800 text-blue-800 dark:text-blue-200'
+                  }`}
               >
                 <p className="font-semibold">
                   {selectedDrug.unitRules.unitHints[doseUnit].level === 'critical' && '⛔ '}
@@ -656,22 +640,20 @@ export default function InfusionCalculator({
                 <button
                   type="button"
                   onClick={() => setDilutionType('syringe')}
-                  className={`px-4 py-2 rounded-md border text-sm transition ${
-                    dilutionType === 'syringe'
+                  className={`px-4 py-2 rounded-md border text-sm transition ${dilutionType === 'syringe'
                       ? 'bg-sky-50 dark:bg-sky-900/20 border-sky-500 text-sky-700 dark:text-sky-300 font-medium'
                       : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
-                  }`}
+                    }`}
                 >
                   Seringa
                 </button>
                 <button
                   type="button"
                   onClick={() => setDilutionType('bag')}
-                  className={`px-4 py-2 rounded-md border text-sm transition ${
-                    dilutionType === 'bag'
+                  className={`px-4 py-2 rounded-md border text-sm transition ${dilutionType === 'bag'
                       ? 'bg-sky-50 dark:bg-sky-900/20 border-sky-500 text-sky-700 dark:text-sky-300 font-medium'
                       : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
-                  }`}
+                    }`}
                 >
                   Bolsa
                 </button>
@@ -716,8 +698,8 @@ export default function InfusionCalculator({
                 <option value="SG 5%">Solução Glicosada 5%</option>
               </select>
               {selectedDrug && (
-                <CompatibilityPanel 
-                  compat={selectedDrug.compatibility} 
+                <CompatibilityPanel
+                  compat={selectedDrug.compatibility}
                   selectedDiluentId={getDiluentId(fluidType)}
                   drugId={selectedDrug.id}
                 />
@@ -733,7 +715,7 @@ export default function InfusionCalculator({
                     Protocolo "Bolsa de Insulina Regular" para CAD
                   </h4>
                 </div>
-                
+
                 <div className="space-y-2 text-sm">
                   <div className="bg-white dark:bg-slate-800 rounded-md p-3 border border-yellow-200 dark:border-yellow-800">
                     <p className="font-semibold text-yellow-900 dark:text-yellow-100 mb-2">Preparo da bolsa (CRI):</p>
@@ -816,22 +798,20 @@ export default function InfusionCalculator({
           <button
             type="button"
             onClick={() => setMode('direct')}
-            className={`px-4 py-2 rounded-md border text-sm transition ${
-              mode === 'direct'
+            className={`px-4 py-2 rounded-md border text-sm transition ${mode === 'direct'
                 ? 'bg-sky-50 dark:bg-sky-900/20 border-sky-500 text-sky-700 dark:text-sky-300 font-medium'
                 : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
-            }`}
+              }`}
           >
             Infusão direta
           </button>
           <button
             type="button"
             onClick={() => setMode('preparation')}
-            className={`px-4 py-2 rounded-md border text-sm transition ${
-              mode === 'preparation'
+            className={`px-4 py-2 rounded-md border text-sm transition ${mode === 'preparation'
                 ? 'bg-sky-50 dark:bg-sky-900/20 border-sky-500 text-sky-700 dark:text-sky-300 font-medium'
                 : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
-            }`}
+              }`}
           >
             Preparo (seringa/bolsa)
           </button>

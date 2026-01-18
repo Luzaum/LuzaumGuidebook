@@ -10,15 +10,9 @@ const LEVEL_LABELS: Record<HelpLevel, string> = {
 }
 
 const LEVEL_CLASS: Record<HelpLevel, string> = {
-  CRITICAL: 'help-critical',
-  IMPORTANT: 'help-important',
-  INFO: 'help-info',
-}
-
-const HIGHLIGHT_CLASS: Record<HelpHighlight, string> = {
-  red: 'hl-red',
-  yellow: 'hl-yellow',
-  green: 'hl-green',
+  CRITICAL: 'help-critical text-red-500',
+  IMPORTANT: 'help-important text-amber-500',
+  INFO: 'help-info text-sky-500',
 }
 
 function mergeSections(sections: HelpSection[]): Array<{ level: HelpLevel; items: HelpItem[] }> {
@@ -50,39 +44,61 @@ export function HelpContentRenderer({ content }: { content: HelpContent }) {
       : [{ level: 'INFO', items: [{ text: 'Conteudo em atualizacao.' }] }]
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       {resolvedSections.map((section) => (
-        <details key={section.level} open={section.level === 'CRITICAL'} className="rounded-lg border border-white/10 bg-white/5 p-3">
-          <summary className="cursor-pointer list-none">
-            <span className={`text-xs tracking-[0.2em] uppercase ${LEVEL_CLASS[section.level]}`}>
+        <div key={section.level} className="rounded-lg border border-slate-700/50 bg-slate-900/40 p-4">
+          <div className="mb-3 flex items-center gap-2 border-b border-slate-700/50 pb-2">
+            <span className={`text-xs font-black tracking-widest uppercase ${LEVEL_CLASS[section.level]}`}>
               {LEVEL_LABELS[section.level]}
             </span>
-          </summary>
-          <div className="mt-3 space-y-2">
+          </div>
+
+          <div className="space-y-3">
             {section.items.map((item, idx) => {
-              const highlightClass = item.highlight ? HIGHLIGHT_CLASS[item.highlight] : ''
 
               const renderWithBold = (text: string) => {
                 const parts = text.split(/(\*\*.*?\*\*)/g)
                 return parts.map((part, i) => {
                   if (part.startsWith('**') && part.endsWith('**')) {
-                    return <strong key={i} className="font-extrabold inherit-color">{part.slice(2, -2)}</strong>
+                    const cleanContent = part.slice(2, -2).trim()
+
+                    // Style logic
+                    let styleClass = 'text-sky-300 bg-sky-900/30' // Default INFO color
+
+                    if (section.level === 'CRITICAL') {
+                      // CRITICAL Highlight -> White BG, Red Text (High Contrast) for ALL bold keywords
+                      styleClass = 'text-red-600 bg-white font-black px-2 py-0.5 rounded-sm uppercase tracking-wide shadow-sm shadow-red-500/20'
+                    } else if (section.level === 'IMPORTANT') {
+                      // Important -> Amber
+                      styleClass = 'text-amber-200 bg-amber-950/40 border border-amber-900/30'
+                    }
+
+                    return (
+                      <strong
+                        key={i}
+                        className={`font-bold px-1.5 rounded mx-0.5 ${styleClass}`}
+                      >
+                        {cleanContent}
+                      </strong>
+                    )
                   }
                   return part
                 })
               }
 
               return (
-                <div key={`${section.level}-${idx}`} className="flex items-start gap-2">
-                  <span className={`${LEVEL_CLASS[section.level]} mt-1 text-[8px]`}>*</span>
-                  <p className={`text-sm leading-relaxed ${LEVEL_CLASS[section.level]}`}>
-                    {highlightClass ? <span className={highlightClass}>{renderWithBold(item.text)}</span> : renderWithBold(item.text)}
+                <div key={`${section.level}-${idx}`} className="flex items-start gap-3 text-sm text-slate-300 leading-relaxed">
+                  <span className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${section.level === 'CRITICAL' ? 'bg-red-500' :
+                    section.level === 'IMPORTANT' ? 'bg-amber-500' : 'bg-blue-500'
+                    }`} />
+                  <p>
+                    {renderWithBold(item.text)}
                   </p>
                 </div>
               )
             })}
           </div>
-        </details>
+        </div>
       ))}
     </div>
   )

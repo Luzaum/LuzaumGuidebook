@@ -1,11 +1,22 @@
+export type RichTextSpan =
+  | { type: 'text'; value: string }
+  | { type: 'highlight'; color: 'yellow' | 'red' | 'green' | 'orange' | 'blue'; value: string }
+  | { type: 'underline'; value: string }
+  | { type: 'bold'; value: string }
+
+export type RichContent = {
+  type: 'paragraph' | 'bullet'
+  content: RichTextSpan[]
+}
+
 export type HelpTopic = {
   id: string
   title: string
-  whatItAssesses: string
-  neuroanatomy: string
-  howToPerform: string
-  interpretation: string
-  pitfalls: string
+  whatItAssesses: string | RichContent[]
+  neuroanatomy: string | RichContent[]
+  howToPerform: string | RichContent[]
+  interpretation: string | RichContent[]
+  pitfalls: string | RichContent[]
   imageSlot?: {
     enabled: boolean
     caption: string

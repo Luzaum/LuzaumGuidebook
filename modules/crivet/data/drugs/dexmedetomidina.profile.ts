@@ -283,10 +283,6 @@ export const dexmedetomidinaProfile: DrugProfile = {
 
   // Seção 7: Compatibilidade
   compatibility: {
-    diluents_allowed: ['NaCl 0,9%'],
-    diluents_ok: ['NaCl 0,9%'],
-    diluentsAllowed: ['NaCl 0,9%'],
-    diluents: ['NaCl 0,9%'],
     compatible_in_syringe_or_bag: [
       'Opioides (ex.: fentanil/remifentanil) – uso comum em protocolos multimodais (titulados e monitorizados)',
       'Cetamina (protocolos multimodais) – uso comum',
@@ -299,8 +295,8 @@ export const dexmedetomidinaProfile: DrugProfile = {
         risk: 'precipitação',
       },
     ],
-    avoid_same_syringe_or_precipitation_risk: ['Misturas sem referência de compatibilidade local (polifarmácia em Y-site)'],
     dedicated_line_rules: [
+      'Misturas sem referência de compatibilidade local (polifarmácia em Y-site): evitar ou usar Y-site com flush.',
       'Se co-infusão for necessária e não houver tabela institucional de compatibilidade, priorizar linha dedicada ou flush entre drogas.',
       'Inspecionar solução/língua: turvação/precipitado = descartar.',
     ],
@@ -477,9 +473,9 @@ export const dexmedetomidinaProfile: DrugProfile = {
       },
     },
     {
-      key: 'dex_icp_neuro',
+      key: 'dex_pic_neuro',
       level: 'MONITOR',
-      title: 'Doença neurológica/ICP: cautela hemodinâmica',
+      title: 'Doença neurológica/PIC: cautela hemodinâmica',
       why: 'O ponto crítico é manter PPC (pressão de perfusão cerebral): bradicardia/hipotensão podem prejudicar.',
       action: ['Evitar hipotensão; preferir titulação e monitorização.', 'Manter ventilação e oxigenação adequadas.'],
       dose_adjustment: {

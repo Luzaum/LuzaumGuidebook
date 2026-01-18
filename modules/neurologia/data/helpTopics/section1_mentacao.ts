@@ -3,17 +3,135 @@ import type { HelpTopic } from '../../types/helpTopics'
 export const section1Mentacao: HelpTopic[] = [
   {
     id: 's1-mentacao-comportamento-geral',
-    title: 'Mentação e comportamento (visão geral) — por que isso localiza lesão',
-    whatItAssesses:
-      'Avalia o nível de consciência (arousal) e a qualidade do comportamento/resposta ao ambiente, que refletem a integridade do prosencéfalo (córtex/tálamo) e do sistema ativador reticular ascendente (SARA) no tronco encefálico. Mentação é um dos achados mais úteis para diferenciar lesões intracranianas (prosencéfalo/tronco) de doenças medulares. Alterações de mentação mudam completamente neurolocalização e prioridades diagnósticas.',
-    neuroanatomy:
-      'Arousal depende do SARA (tronco encefálico) projetando para tálamo e córtex. Comportamento e cognição dependem do prosencéfalo (córtex cerebral, sistema límbico) e suas conexões subcorticais. Arousal é a "ligação" do SNC (vigília). O conteúdo de consciência (atenção, orientação, comportamento) é mais cortical. Lesões difusas metabólicas/toxinas podem deprimir globalmente; lesões estruturais focais tendem a produzir déficits lateralizados e/ou sinais focais adicionais.',
-    howToPerform:
-      'Observar o paciente antes de manipular: postura espontânea, interação com tutor, resposta a ruídos/estímulos leves. Depois, avaliar reatividade dirigida (chamar, bater palmas, oferecer estímulo visual) e resposta a manuseio. Registrar estado (alerta/deprimido/estupor/coma) e comportamento (normal/desorientado/agressivo/vocalização).',
-    interpretation:
-      'Mentação alterada sugere prosencéfalo ou tronco encefálico (ou encefalopatia metabólica). Medula espinhal isolada geralmente não altera mentação. Desorientação/alteração comportamental com déficits posturais contralaterais sugere prosencéfalo. Estupor/coma com sinais de nervos cranianos sugere tronco.',
-    pitfalls:
-      'Confundir dor/ansiedade com alteração neurológica; avaliar após sedativos/analgésicos sem considerar efeito; interpretar depressão por hipotensão/hipoxemia/hipoglicemia como lesão primária do SNC.',
+    title: 'Mentação e comportamento (visão geral)',
+    whatItAssesses: [
+      {
+        type: 'paragraph',
+        content: [
+          { type: 'text', value: 'Avalia o ' },
+          { type: 'highlight', color: 'yellow', value: 'nível de consciência (arousal)' },
+          { type: 'text', value: ' e a qualidade do ' },
+          { type: 'highlight', color: 'yellow', value: 'comportamento' },
+          { type: 'text', value: ', refletindo a integridade do ' },
+          { type: 'highlight', color: 'blue', value: 'prosencéfalo' },
+          { type: 'text', value: ' e do ' },
+          { type: 'highlight', color: 'blue', value: 'sistema ativador reticular ascendente (SARA)' },
+          { type: 'text', value: ' no tronco encefálico.' },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          { type: 'bold', value: '👉 Alterações de mentação mudam completamente a neurolocalização e a prioridade diagnóstica.' },
+        ],
+      },
+    ],
+    neuroanatomy: [
+      {
+        type: 'bullet',
+        content: [
+          { type: 'text', value: 'O ' },
+          { type: 'bold', value: 'arousal' },
+          { type: 'text', value: ' depende do ' },
+          { type: 'highlight', color: 'blue', value: 'SARA' },
+          { type: 'text', value: ' (tronco encefálico → tálamo → córtex).' },
+        ],
+      },
+      {
+        type: 'bullet',
+        content: [
+          { type: 'text', value: 'O ' },
+          { type: 'bold', value: 'conteúdo da consciência' },
+          { type: 'text', value: ' (atenção, orientação) depende do ' },
+          { type: 'highlight', color: 'blue', value: 'prosencéfalo' },
+          { type: 'text', value: '.' },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          { type: 'highlight', color: 'orange', value: 'Lesões difusas metabólicas' },
+          { type: 'text', value: ' tendem a deprimir globalmente.' },
+        ],
+      },
+      {
+        type: 'paragraph',
+        content: [
+          { type: 'highlight', color: 'orange', value: 'Lesões estruturais focais' },
+          { type: 'text', value: ' tendem a causar déficits lateralizados.' },
+        ],
+      },
+    ],
+    howToPerform: [
+      {
+        type: 'bullet',
+        content: [
+          { type: 'text', value: 'Observe antes de manipular: postura, interação, resposta ao ambiente.' },
+        ],
+      },
+      {
+        type: 'bullet',
+        content: [
+          { type: 'text', value: 'Avalie resposta a voz, estímulo visual e manuseio.' },
+        ],
+      },
+      {
+        type: 'bullet',
+        content: [
+          { type: 'text', value: 'Classifique: ' },
+          { type: 'bold', value: 'alerta, letárgico, estupor ou coma' },
+          { type: 'text', value: '.' },
+        ],
+      },
+    ],
+    interpretation: [
+      {
+        type: 'paragraph',
+        content: [
+          { type: 'highlight', color: 'red', value: 'Mentação alterada' },
+          { type: 'text', value: ' → sugere prosencéfalo ou tronco encefálico.' },
+        ],
+      },
+      {
+        type: 'bullet',
+        content: [
+          { type: 'text', value: 'Medula espinhal isolada ' },
+          { type: 'highlight', color: 'green', value: 'NÃO altera mentação' },
+          { type: 'text', value: '.' },
+        ],
+      },
+      {
+        type: 'bullet',
+        content: [
+          { type: 'text', value: 'Estupor/coma + déficits de pares cranianos → ' },
+          { type: 'highlight', color: 'red', value: 'forte suspeita de tronco encefálico' },
+          { type: 'text', value: '.' },
+        ],
+      },
+    ],
+    pitfalls: [
+      {
+        type: 'bullet',
+        content: [
+          { type: 'highlight', color: 'orange', value: 'Confundir dor/ansiedade' },
+          { type: 'text', value: ' com alteração neurológica.' },
+        ],
+      },
+      {
+        type: 'bullet',
+        content: [
+          { type: 'text', value: 'Interpretar depressão por sedativos/analgésicos como lesão primária.' },
+        ],
+      },
+      {
+        type: 'bullet',
+        content: [
+          { type: 'text', value: 'Ignorar ' },
+          { type: 'highlight', color: 'orange', value: 'hipoglicemia, hipóxia ou hipotensão' },
+          { type: 'text', value: '.' },
+        ],
+      },
+    ],
     tags: ['mentacao', 'comportamento', 'arousal', 'SARA', 'prosencefalo', 'tronco-encefalico'],
     severityWeight: 3,
     localizationHint: ['prosencefalo', 'tronco-encefalico', 'encefalopatia-metabolica'],

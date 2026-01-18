@@ -23,7 +23,7 @@ export const cetaminaProfile: DrugProfile = {
           'Simpaticomimético dose-dependente: pode ↑ FC e ↑ demanda miocárdica de O2; em alguns protocolos é escolhido quando se quer evitar vasodilatação/hipotensão de outros indutores, mas exige cautela em cardiopatas/hipertensos.',
         respiratory:
           'Depressão respiratória geralmente menor que indutores GABAérgicos em doses sedativas, porém pode ocorrer hipoventilação/apneia quando combinado com outros depressores ou em doses de indução; manter via aérea e ventilação prontas.',
-        cns: 'Dissociação + catalepsia; pode ↑ metabolismo cerebral e não é recomendado quando há risco de ICP elevada (TCE etc.).',
+        cns: 'Dissociação + catalepsia; pode ↑ metabolismo cerebral e não é recomendado quando há risco de PIC elevada (TCE etc.).',
         renal_hepatic:
           'Cães: metabolismo hepático com eliminação renal de metabólitos (efeito clínico mais guiado por farmacodinâmica); gatos: pode haver excreção urinária de fármaco inalterado → retenção urinária pode prolongar sedação.',
         gi: 'Sem alvo principal; efeito clínico indireto (estresse/catecolaminas).',
@@ -64,7 +64,7 @@ export const cetaminaProfile: DrugProfile = {
       key_point: 'Excelente adjuvante em sedação e analgesia multimodal; para indução, combinar com benzodiazepínico/opioide por relaxamento muscular e melhor recuperação.',
       high_risk_notes: [
         'Cautela em cardiopatas/hipertensos (efeito simpaticomimético dose-dependente).',
-        'Cautela/evitar em suspeita de ICP elevada (TCE).',
+        'Cautela/evitar em suspeita de PIC elevada (TCE).',
         'Pode aumentar pressão intraocular → cautela em glaucoma/trauma ocular.',
       ],
       metabolism_excretion: 'Metabolismo hepático predominante, eliminação renal de metabólitos (efeito clínico mais guiado por dose/combinações).',
@@ -74,7 +74,7 @@ export const cetaminaProfile: DrugProfile = {
       high_risk_notes: [
         'Cautela em cardiopatas/hipertensos (simpaticomimético).',
         'Pode prolongar sedação se não houver eliminação urinária (obstrução/ruptura vesical).',
-        'Cautela/evitar em risco de ICP elevada (TCE) e em glaucoma/trauma ocular.',
+        'Cautela/evitar em risco de PIC elevada (TCE) e em glaucoma/trauma ocular.',
       ],
       metabolism_excretion: 'Pode ser excretada inalterada na urina; eliminação urinária prejudicada pode prolongar sedação.',
     },
@@ -96,8 +96,8 @@ export const cetaminaProfile: DrugProfile = {
   contraindications: {
     absolute: [
       {
-        condition: 'Suspeita/risco de hipertensão intracraniana (ex.: TCE com sinais neurológicos e risco de ICP elevada)',
-        why: 'Pode aumentar metabolismo cerebral e não é recomendada em risco de ICP elevada conforme referência de emergência.',
+        condition: 'Suspeita/risco de hipertensão intracraniana (ex.: TCE com sinais neurológicos e risco de PIC elevada)',
+        why: 'Pode aumentar metabolismo cerebral e não é recomendada em risco de PIC elevada conforme referência de emergência.',
         level: 'CRITICAL',
       },
     ],
@@ -158,7 +158,7 @@ export const cetaminaProfile: DrugProfile = {
         shock: 'Evitar escalar agressivamente se choque for hipovolêmico não corrigido; priorizar estabilização e analgesia multimodal.',
         hypoalbuminemia: 'Sem ajuste fixo obrigatório no CRIVET; iniciar baixo e titular (sensibilidade clínica pode aumentar em doentes críticos).',
         comorbidities:
-          'Cardiopatia/hipertensão: reduzir 25–50% e evitar bolus altos; TCE/ICP: evitar; glaucoma/trauma ocular: evitar/monitorar; hepatopata/nefropata grave: evitar ou usar dose mínima.',
+          'Cardiopatia/hipertensão: reduzir 25–50% e evitar bolus altos; TCE/PIC: evitar; glaucoma/trauma ocular: evitar/monitorar; hepatopata/nefropata grave: evitar ou usar dose mínima.',
       },
       therapeutic_targets: {
         target_map: 'N/A',
@@ -196,7 +196,7 @@ export const cetaminaProfile: DrugProfile = {
         obesity: 'Preferir peso magro/ideal para iniciar e titular ao efeito.',
         shock: 'Evitar escalada agressiva; priorizar estabilização e multimodal.',
         hypoalbuminemia: 'Sem ajuste fixo; iniciar baixo e titular pela resposta/EA.',
-        comorbidities: 'Cardiopatia/hipertensão: reduzir 25–50% e evitar bolus; TCE/ICP: evitar; glaucoma/trauma ocular: evitar/monitorar; obstrução uretral/uroabdome: evitar (prolonga).',
+        comorbidities: 'Cardiopatia/hipertensão: reduzir 25–50% e evitar bolus; TCE/PIC: evitar; glaucoma/trauma ocular: evitar/monitorar; obstrução uretral/uroabdome: evitar (prolonga).',
       },
       therapeutic_targets: {
         target_map: 'N/A',
@@ -288,10 +288,6 @@ export const cetaminaProfile: DrugProfile = {
 
   // Seção 7: Compatibilidade
   compatibility: {
-    diluents_allowed: ['NaCl 0,9%', 'Ringer Lactato', 'Glicose 5% (D5W)'],
-    diluents_ok: ['NaCl 0,9%', 'Ringer Lactato', 'D5W'],
-    diluentsAllowed: ['NaCl 0,9%', 'Ringer Lactato', 'D5W'],
-    diluents: ['NaCl 0,9%', 'Ringer Lactato', 'D5W'],
     compatible_in_syringe_or_bag: [
       'Opioides (ex.: morfina/fentanil/metadona) — uso em associação é descrito em protocolos',
       'Benzodiazepínicos (ex.: midazolam) — frequentemente associados (qualidade de sedação/anestesia)',
@@ -305,8 +301,8 @@ export const cetaminaProfile: DrugProfile = {
         risk: 'precipitação',
       },
     ],
-    avoid_same_syringe_or_precipitation_risk: ['Evitar misturar com fármacos sem compatibilidade confirmada por fonte (principalmente quando houver solventes não aquosos/propilenoglicol).'],
     dedicated_line_rules: [
+      'Evitar misturar com fármacos sem compatibilidade confirmada por fonte (principalmente quando houver solventes não aquosos/propilenoglicol).',
       'Em CRI analgésica, preferir linha dedicada quando múltiplas infusões simultâneas ou quando houver risco de incompatibilidade.',
       'Se co-infusão for inevitável, realizar flush e checar visualmente precipitação.',
     ],
@@ -340,7 +336,7 @@ export const cetaminaProfile: DrugProfile = {
         'Recuperação agitada/disforia',
         'Taquicardia/hipertensão importantes (simpaticomimético)',
         'Hipoventilação/apneia (especialmente com outros depressores)',
-        'Sinais neurológicos indesejáveis em risco de ICP',
+        'Sinais neurológicos indesejáveis em risco de PIC',
       ],
     },
     therapeutic_failure: {
@@ -365,7 +361,7 @@ export const cetaminaProfile: DrugProfile = {
   adverse_effects_and_toxicity: {
     common: ['Recuperação possivelmente agitada/disforia (especialmente se usada isolada)', 'Taquicardia e/ou hipertensão (dose-dependente)', 'Hipoventilação quando associada a outros depressores'],
     serious: [
-      'Piora clínica em pacientes com risco de ICP elevada (não recomendado)',
+      'Piora clínica em pacientes com risco de PIC elevada (não recomendado)',
       'Aumento clinicamente relevante de pressão intraocular (glaucoma/trauma ocular)',
       'Sedação prolongada em gatos com eliminação urinária comprometida (obstrução/uroabdome)',
     ],
@@ -396,16 +392,16 @@ export const cetaminaProfile: DrugProfile = {
   // Seção 10: Alertas por Comorbidade
   alerts_by_comorbidity: [
     {
-      key: 'ketamine_any_icp',
+      key: 'ketamine_any_pic',
       level: 'BLOCK',
-      title: 'Risco de ICP elevada (TCE etc.): evitar cetamina',
-      why: 'Referência de emergência descreve que aumenta metabolismo cerebral e não é recomendada quando há risco de ICP elevada.',
+      title: 'Risco de PIC elevada (TCE etc.): evitar cetamina',
+      why: 'Referência de emergência descreve que aumenta metabolismo cerebral e não é recomendada quando há risco de PIC elevada.',
       action: [
-        'Bloquear uso quando "ICP elevada/TCE" selecionado.',
+        'Bloquear uso quando "PIC elevada/TCE" selecionado.',
         'Sugerir alternativa de sedação/anestesia conforme cenário (ex.: opioide + benzodiazepínico; indução com agentes alternativos).',
       ],
       dose_adjustment: {
-        suggest_alternative: 'Preferir protocolos sem cetamina em suspeita de ICP elevada.',
+        suggest_alternative: 'Preferir protocolos sem cetamina em suspeita de PIC elevada.',
       },
     },
     {
@@ -465,7 +461,7 @@ export const cetaminaProfile: DrugProfile = {
       dose_mgkgh: 0.6,
       limits: { min: 0.6, max: 1.0 },
       clinical_target: 'Infusão contínua para dissociação e analgesia adjuvante. Dissociação, inibidor NMDA.',
-      linked_alerts: ['ketamine_any_hypertension_cardiac', 'ketamine_any_icp', 'ketamine_cat_uo_uroabdomen'],
+      linked_alerts: ['ketamine_any_hypertension_cardiac', 'ketamine_any_pic', 'ketamine_cat_uo_uroabdomen'],
     },
     {
       id: 'cri_analgesia_typical',
@@ -473,7 +469,7 @@ export const cetaminaProfile: DrugProfile = {
       dose_mgkgh: 1.2,
       limits: { min: 1.0, max: 1.5 },
       clinical_target: 'Infusão contínua para dissociação e analgesia. Dissociação, inibidor NMDA.',
-      linked_alerts: ['ketamine_any_hypertension_cardiac', 'ketamine_any_icp', 'ketamine_cat_uo_uroabdomen'],
+      linked_alerts: ['ketamine_any_hypertension_cardiac', 'ketamine_any_pic', 'ketamine_cat_uo_uroabdomen'],
     },
     {
       id: 'cri_analgesia_high',
@@ -481,7 +477,7 @@ export const cetaminaProfile: DrugProfile = {
       dose_mgkgh: 1.8,
       limits: { min: 1.5, max: 1.8 },
       clinical_target: 'Infusão contínua em faixa alta. Dissociação, inibidor NMDA. Monitorar efeitos adversos.',
-      linked_alerts: ['ketamine_any_hypertension_cardiac', 'ketamine_any_icp', 'ketamine_cat_uo_uroabdomen'],
+      linked_alerts: ['ketamine_any_hypertension_cardiac', 'ketamine_any_pic', 'ketamine_cat_uo_uroabdomen'],
     },
     {
       id: 'bolus_dissociation',
@@ -489,7 +485,7 @@ export const cetaminaProfile: DrugProfile = {
       dose_mgkg: 5,
       limits: { min: 2, max: 7 },
       clinical_target: 'Dissociação, inibidor NMDA. Cães: 2-7 mg/kg; Gatos: 2-7,5 mg/kg.',
-      linked_alerts: ['ketamine_any_hypertension_cardiac', 'ketamine_any_icp', 'ketamine_any_glaucoma'],
+      linked_alerts: ['ketamine_any_hypertension_cardiac', 'ketamine_any_pic', 'ketamine_any_glaucoma'],
     },
   ],
 
@@ -501,9 +497,9 @@ export const cetaminaProfile: DrugProfile = {
       conversions: ['Se necessário: mg/kg/h → mg/h (multiplica pelo peso)', 'Se solução em mg/mL: taxa mL/h = mg/h ÷ mg/mL'],
       hard_safety_checks: [
         {
-          if: "has_comorbidity('icp_elevated')",
+          if: "has_comorbidity('pic_elevated')",
           then: 'BLOCK',
-          message: 'Risco de ICP elevada: evitar cetamina.',
+          message: 'Risco de PIC elevada: evitar cetamina.',
         },
         {
           if: "species == 'cat' && (has_comorbidity('urethral_obstruction') || has_comorbidity('uroabdomen'))",
@@ -531,9 +527,9 @@ export const cetaminaProfile: DrugProfile = {
       algorithm: ['Dose total (mg) = dose_mgkg × weight_kg', 'Volume (mL) = dose_total_mg ÷ drug_concentration_mg_ml'],
       hard_safety_checks: [
         {
-          if: "has_comorbidity('icp_elevated')",
+          if: "has_comorbidity('pic_elevated')",
           then: 'BLOCK',
-          message: 'Risco de ICP elevada: evitar cetamina.',
+          message: 'Risco de PIC elevada: evitar cetamina.',
         },
       ],
       soft_safety_checks: [
@@ -612,11 +608,11 @@ export const cetaminaProfile: DrugProfile = {
       'A cetamina reduz sensibilização central (NMDA) e é frequentemente usada em associação (opioide/benzodiazepínico; e em MLK com morfina + lidocaína) para potencializar analgesia e reduzir necessidade de outros agentes.',
     rules: [
       {
-        if: "has_comorbidity('icp_elevated')",
+        if: "has_comorbidity('pic_elevated')",
         then: {
           action: 'REMOVE_DRUG',
           drug_id: 'cetamina',
-          message: 'Risco de ICP elevada: evitar cetamina.',
+          message: 'Risco de PIC elevada: evitar cetamina.',
         },
       },
       {
@@ -647,7 +643,7 @@ export const cetaminaProfile: DrugProfile = {
         id: 'ketamine_analgesia_cri',
         title: 'Cetamina como adjuvante analgésico (CRI) — decisão prática',
         mermaid:
-          'flowchart TD\nA[Paciente com dor moderada-intensa / hiperalgesia] --> B{Risco de ICP elevada?}\nB -- Sim --> C[EVITAR cetamina (BLOCK) -> usar multimodal sem NMDA]\nB -- Não --> D{Cardiopatia/hipertensão significativa?}\nD -- Sim --> E[Iniciar dose 25-50% menor + PA/ECG]\nD -- Não --> F[Iniciar CRI 0.12 mg/kg/h]\nE --> G[Reavaliar dor/PA/FC em 15-30 min]\nF --> G\nG --> H{Analgesia adequada?}\nH -- Sim --> I[Manter dose + monitorar]\nH -- Não --> J[Escalonar 0.12 -> 0.3 -> 0.6 mg/kg/h]\nJ --> K{EA: disforia/HTN/taquicardia/hipoventilacao?}\nK -- Sim --> L[Reduzir/cessar + reforcar opioide/BDZ e suporte]\nK -- Não --> G',
+          'flowchart TD\nA[Paciente com dor moderada-intensa / hiperalgesia] --> B{Risco de PIC elevada?}\nB -- Sim --> C[EVITAR cetamina (BLOCK) -> usar multimodal sem NMDA]\nB -- Não --> D{Cardiopatia/hipertensão significativa?}\nD -- Sim --> E[Iniciar dose 25-50% menor + PA/ECG]\nD -- Não --> F[Iniciar CRI 0.12 mg/kg/h]\nE --> G[Reavaliar dor/PA/FC em 15-30 min]\nF --> G\nG --> H{Analgesia adequada?}\nH -- Sim --> I[Manter dose + monitorar]\nH -- Não --> J[Escalonar 0.12 -> 0.3 -> 0.6 mg/kg/h]\nJ --> K{EA: disforia/HTN/taquicardia/hipoventilacao?}\nK -- Sim --> L[Reduzir/cessar + reforcar opioide/BDZ e suporte]\nK -- Não --> G',
       },
       {
         id: 'ketamine_cat_urinary',
@@ -661,12 +657,12 @@ export const cetaminaProfile: DrugProfile = {
   // Seção 16: UI Copy
   ui_copy: {
     critical_warning_banner:
-      'Nunca use cetamina isolada para sedação: combine com opioide ± benzodiazepínico e reduza dose em cardiopatas/hipertensos; evite se houver risco de ICP elevada.',
+      'Nunca use cetamina isolada para sedação: combine com opioide ± benzodiazepínico e reduza dose em cardiopatas/hipertensos; evite se houver risco de PIC elevada.',
     alert_messages: {
       short: 'Cautela: simpaticomimético e pode causar disforia — use em combo e monitore PA/FC.',
-      long: 'Cetamina (NMDA) ajuda na analgesia anti-wind-up, mas é simpaticomimética (dose-dependente) e pode aumentar PIO/ICP em contextos específicos; em gatos com obstrução/uroabdome pode prolongar sedação. Prefira combinação com opioide ± benzodiazepínico e titule pela resposta.',
+      long: 'Cetamina (NMDA) ajuda na analgesia anti-wind-up, mas é simpaticomimética (dose-dependente) e pode aumentar PIO/PIC em contextos específicos; em gatos com obstrução/uroabdome pode prolongar sedação. Prefira combinação com opioide ± benzodiazepínico e titule pela resposta.',
     },
-    block_message: 'Uso bloqueado: risco de ICP elevada (TCE etc.) — evitar cetamina.',
+    block_message: 'Uso bloqueado: risco de PIC elevada (TCE etc.) — evitar cetamina.',
     common_errors: [
       'Usar cetamina sozinha → recuperação agitada/disforia.',
       'Esquecer que frasco 100 mg/mL facilita erro de 10× em pequenos pacientes/CRI.',
@@ -678,8 +674,8 @@ export const cetaminaProfile: DrugProfile = {
   // Seção 17: Referências
   references: [
     {
-      section: 'mechanism/contraindications/species_notes (ICP, PIO, cardiopatia/hipertensão, obstrução urinária em gatos, MLK)',
-      source: 'Textbook of Small Animal Emergency Medicine (Wiley Blackwell) — seção de sedação/analgesia e indução (Ketamine: NMDA, simpatomimético dose-dependente, ICP/PIO, excreção urinária em gatos, MLK)',
+      section: 'mechanism/contraindications/species_notes (PIC, PIO, cardiopatia/hipertensão, obstrução urinária em gatos, MLK)',
+      source: 'Textbook of Small Animal Emergency Medicine (Wiley Blackwell) — seção de sedação/analgesia e indução (Ketamine: NMDA, simpatomimético dose-dependente, PIC/PIO, excreção urinária em gatos, MLK)',
       page: 'PDF p.1260',
       edition: '1',
     },

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
-import type { HelpTopic } from '../../types/helpTopics'
+import type { HelpTopic, RichContent } from '../../types/helpTopics'
+import { RichTextRenderer } from './RichTextRenderer'
 
 type Props = {
   open: boolean
@@ -72,11 +73,11 @@ export function HelpModal({ open, onClose, topic, theme }: Props) {
         </div>
 
         <div className="p-4 space-y-4 max-h-[70vh] overflow-auto">
-          <Section title="O que avalia" text={topic.whatItAssesses} isDark={isDark} />
-          <Section title="Neuroanatomia / Neurofisiologia" text={topic.neuroanatomy} isDark={isDark} />
-          <Section title="Como executar" text={topic.howToPerform} isDark={isDark} />
-          <Section title="Interpretação clínica" text={topic.interpretation} isDark={isDark} />
-          <Section title="Armadilhas comuns" text={topic.pitfalls} isDark={isDark} />
+          <Section title="O que avalia" content={topic.whatItAssesses} isDark={isDark} />
+          <Section title="Neuroanatomia / Neurofisiologia" content={topic.neuroanatomy} isDark={isDark} />
+          <Section title="Como executar" content={topic.howToPerform} isDark={isDark} />
+          <Section title="Interpretação clínica" content={topic.interpretation} isDark={isDark} />
+          <Section title="Armadilhas comuns" content={topic.pitfalls} isDark={isDark} />
 
           {topic.imageSlot?.enabled && (
             <div
@@ -105,13 +106,16 @@ export function HelpModal({ open, onClose, topic, theme }: Props) {
   )
 }
 
-function Section({ title, text, isDark }: { title: string; text: string; isDark: boolean }) {
+function Section({ title, content, isDark }: { title: string; content: string | RichContent[]; isDark: boolean }) {
+  if (!content || (Array.isArray(content) && content.length === 0)) return null
+
   return (
     <div className="space-y-1">
-      <div className={`text-sm font-semibold ${isDark ? 'text-gold' : 'text-yellow-600'}`}>{title}</div>
-      <div className={`text-sm leading-relaxed whitespace-pre-wrap ${isDark ? 'opacity-90' : 'text-neutral-700'}`}>
-        {text}
+      <div className={`text-sm font-semibold flex items-center gap-2 ${isDark ? 'text-gold' : 'text-yellow-600'}`}>
+        {/* Ícone semântico baseado no título se desejado, ou apenas título */}
+        {title}
       </div>
+      <RichTextRenderer content={content} isDark={isDark} />
     </div>
   )
 }

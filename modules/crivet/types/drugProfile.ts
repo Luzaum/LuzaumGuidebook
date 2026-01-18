@@ -248,6 +248,7 @@ export interface Preset {
   label: string
   dose_mcgkgmin?: number
   dose_mgkg?: number
+  dose_mcgkg?: number
   dose_mgkgh?: number
   limits?: {
     min?: number

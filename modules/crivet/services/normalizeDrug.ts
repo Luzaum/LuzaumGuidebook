@@ -182,12 +182,12 @@ function normalizeHelpDrawer(raw: any, fallbackTitle: string): NormalizedHelpDra
   if (raw.contraindications) {
     if (Array.isArray(raw.contraindications.absolute)) {
       raw.contraindications.absolute.forEach((c: any) => {
-        contraindicationsContent.push(`**ABSOLUTA:** **${c.condition}** - ${c.why}`)
+        contraindicationsContent.push(`**${c.condition}** - ${c.why}`)
       })
     }
     if (Array.isArray(raw.contraindications.relative)) {
       raw.contraindications.relative.forEach((c: any) => {
-        contraindicationsContent.push(`**Relativa:** **${c.condition}** - ${c.why}`)
+        contraindicationsContent.push(`**${c.condition}** - ${c.why}`)
       })
     }
   }
@@ -195,14 +195,25 @@ function normalizeHelpDrawer(raw: any, fallbackTitle: string): NormalizedHelpDra
     pushItems('CRITICAL', contraindicationsContent.map(s => ({ text: s })))
   }
 
-  const alertsContent: string[] = []
+  const alertsCritical: string[] = []
+  const alertsImportant: string[] = []
+
   if (Array.isArray(raw.alerts_by_comorbidity)) {
     raw.alerts_by_comorbidity.forEach((a: any) => {
-      alertsContent.push(`**${a.title}:** ${a.why}`)
+      const text = `**${a.title}:** ${a.why}`
+      if (a.level === 'CRITICAL' || a.level === 'BLOCK') {
+        alertsCritical.push(text)
+      } else {
+        alertsImportant.push(text)
+      }
     })
   }
-  if (alertsContent.length > 0) {
-    pushItems('IMPORTANT', alertsContent.map(s => ({ text: s })))
+
+  if (alertsCritical.length > 0) {
+    pushItems('CRITICAL', alertsCritical.map(s => ({ text: s })))
+  }
+  if (alertsImportant.length > 0) {
+    pushItems('IMPORTANT', alertsImportant.map(s => ({ text: s })))
   }
 
   const indicationsContent: string[] = []

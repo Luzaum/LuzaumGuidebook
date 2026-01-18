@@ -263,10 +263,6 @@ export const propofolProfile: DrugProfile = {
 
   // Seção 7: Compatibilidade
   compatibility: {
-    diluents_allowed: ['NaCl 0,9%', 'Ringer Lactato'],
-    diluents_ok: ['NaCl 0,9%', 'Ringer Lactato'],
-    diluentsAllowed: ['NaCl 0,9%', 'Ringer Lactato'],
-    diluents: ['NaCl 0,9%', 'Ringer Lactato'],
     compatible_in_syringe_or_bag: [],
     compatible_y_site_only: ['Cristaloides em linha correndo (NaCl 0,9%, Ringer Lactato) para administração IV'],
     incompatible: [
@@ -276,8 +272,8 @@ export const propofolProfile: DrugProfile = {
         risk: 'precipitação',
       },
     ],
-    avoid_same_syringe_or_precipitation_risk: ['Evitar misturar com outros fármacos na mesma seringa/bolsa; usar linha dedicada.'],
     dedicated_line_rules: [
+      'Evitar misturar com outros fármacos na mesma seringa/bolsa; usar linha dedicada.',
       'Preferir via exclusiva para CRI de propofol.',
       'Se precisar usar a mesma via, manter Y-site distante e assegurar flushing adequado (evitar bolus inadvertido).',
     ],
@@ -440,7 +436,7 @@ export const propofolProfile: DrugProfile = {
       ],
     },
     {
-      key: 'propofol_increased_icp',
+      key: 'propofol_increased_pic',
       level: 'MONITOR',
       title: 'PIC elevada: pode ser favorável, mas exige PA/ventilação sob controle',
       why: 'Propofol reduz CBF/CMRO2 e PIC, mas pode reduzir PAM; hipercapnia por hipoventilação aumenta PIC.',
@@ -473,7 +469,7 @@ export const propofolProfile: DrugProfile = {
       dose_mgkgh: 18,
       limits: { min: 6, max: 30 },
       clinical_target: 'Plano anestésico estável (associar analgesia)',
-      linked_alerts: ['propofol_increased_icp'],
+      linked_alerts: ['propofol_increased_pic'],
     },
     {
       id: 'tiva_with_opioid_ketamine',

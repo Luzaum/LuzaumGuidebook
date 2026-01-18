@@ -105,8 +105,8 @@ export const fentanilProfile: DrugProfile = {
         level: 'WARNING',
       },
       {
-        condition: 'TCE/ICP elevada (especialmente se ventilação não controlada)',
-        why: 'Risco indireto por hipoventilação → hipercapnia → vasodilatação cerebral → piora de ICP; usar somente com controle ventilatório.',
+        condition: 'TCE/PIC elevada (especialmente se ventilação não controlada)',
+        why: 'Risco indireto por hipoventilação → hipercapnia → vasodilatação cerebral → piora de PIC; usar somente com controle ventilatório.',
         level: 'WARNING',
       },
       {
@@ -284,10 +284,6 @@ export const fentanilProfile: DrugProfile = {
 
   // Seção 7: Compatibilidade
   compatibility: {
-    diluents_allowed: ['NaCl 0,9%', 'Ringer Lactato', 'Glicose 5% (D5W)'],
-    diluents_ok: ['NaCl 0,9%', 'Ringer Lactato', 'D5W'],
-    diluentsAllowed: ['NaCl 0,9%', 'Ringer Lactato', 'D5W'],
-    diluents: ['NaCl 0,9%', 'Ringer Lactato', 'D5W'],
     compatible_in_syringe_or_bag: [
       'Protocolos multimodais com coadministração (não necessariamente na mesma seringa): lidocaína e cetamina (conceito MLK).',
       'Em prática, preferir padronização do serviço para misturas na mesma seringa/bolsa.',
@@ -300,10 +296,8 @@ export const fentanilProfile: DrugProfile = {
         risk: 'precipitação',
       },
     ],
-    avoid_same_syringe_or_precipitation_risk: [
-      'Evitar misturar com fármacos sem compatibilidade confirmada (principalmente soluções com solventes especiais).',
-    ],
     dedicated_line_rules: [
+      'Evitar misturar com fármacos sem compatibilidade confirmada (principalmente soluções com solventes especiais).',
       'Preferir linha dedicada quando múltiplos CRIs simultâneos.',
       'Se via compartilhada: flush antes/depois e checar turvação/precipitação.',
     ],
@@ -381,11 +375,11 @@ export const fentanilProfile: DrugProfile = {
       dose_adjustment: { reduce_percent: 30, avoid_bolus: false, require_monitoring: ['SpO2', 'EtCO2 (ideal)', 'FR/esforço'] },
     },
     {
-      key: 'fentanyl_head_trauma_icp',
+      key: 'fentanyl_head_trauma_pic',
       level: 'WARNING',
-      title: 'TCE/ICP elevada: usar só com ventilação controlada',
-      why: 'Hipoventilação → hipercapnia → vasodilatação cerebral e potencial piora de ICP.',
-      action: ['Se ICP elevada, preferir controle ventilatório (EtCO2 alvo) e titulação conservadora', 'Evitar se não houver suporte'],
+      title: 'TCE/PIC elevada: usar só com ventilação controlada',
+      why: 'Hipoventilação → hipercapnia → vasodilatação cerebral e potencial piora de PIC.',
+      action: ['Se PIC elevada, preferir controle ventilatório (EtCO2 alvo) e titulação conservadora', 'Evitar se não houver suporte'],
       dose_adjustment: { reduce_percent: 25, avoid_bolus: false, require_monitoring: ['EtCO2', 'PA', 'neurológico'] },
     },
     {
@@ -420,7 +414,7 @@ export const fentanilProfile: DrugProfile = {
       dose_mcgkgmin: 0.066,
       limits: { min: 0.033, max: 0.083 },
       clinical_target: 'Analgesia aguda com titulação fina (equivale a 2–5 µg/kg/h).',
-      linked_alerts: ['fentanyl_resp_disease', 'fentanyl_head_trauma_icp'],
+      linked_alerts: ['fentanyl_resp_disease', 'fentanyl_head_trauma_pic'],
     },
     {
       id: 'intraop_typical',
@@ -569,11 +563,11 @@ export const fentanilProfile: DrugProfile = {
         },
       },
       {
-        if: "has_comorbidity('icp_elevated') && !has_monitoring('EtCO2')",
+        if: "has_comorbidity('pic_elevated') && !has_monitoring('EtCO2')",
         then: {
           action: 'PREFER_ALTERNATIVE',
           drug_id: 'fentanil',
-          message: 'Suspeita de ICP elevada sem EtCO2/ventilação controlada: evitar por risco de hipercapnia.',
+          message: 'Suspeita de PIC elevada sem EtCO2/ventilação controlada: evitar por risco de hipercapnia.',
         },
       },
     ],
