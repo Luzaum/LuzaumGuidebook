@@ -19,66 +19,60 @@ export const fentanylDoses = {
 // Sistema de unidade recomendada (sem bloqueios)
 export const fentanylRecommendedUnit = 'mcg/kg/h'
 export const fentanylRecommendedUnitWhy = [
-  'É a forma mais usada para CRI de fentanil em UTI e pós-operatório (padrão em hora).',
-  'Reduz erro de 60× (quando alguém confunde min vs h).',
-  'Reduz erro de 1000× (mcg vs mg), porque o fentanil comercial é 50 mcg/mL.',
+  'É a forma mais usada para CRI de opioide potente na rotina, com menor risco de erro que mcg/kg/min para a equipe.',
 ]
 
 import type { IndicatedDose } from '../../types/drug'
 
 export const fentanylIndicatedDoses: IndicatedDose[] = [
-  // CRI - Cão - Analgesia/UTI
   {
     mode: 'CRI',
     species: 'cao',
     unit: 'mcg/kg/h',
     range: { min: 2, max: 5 },
-    purpose: 'Analgesia/UTI',
-    note: '🔴 FISIOLOGIA: Fentanil é agonista μ-opioide puro, 100x mais potente que morfina. Em doses baixas (2-5 mcg/kg/h), proporciona analgesia eficaz com menor risco de depressão respiratória. Meia-vida curta (~30-60 min) permite ajuste rápido. 🟢 PROTOCOLO: Iniciar em 2-3 mcg/kg/h e titular conforme escala de dor. Monitorar SpO2 e EtCO2. Redosar se necessário.',
+    purpose: 'Analgesia (CRI comum)',
+    routine_default: '3 mcg/kg/h',
+    note: 'Faixas maiores (anestesia/TIVA) mantenha em preset avançado se ventilado.',
   },
-  // CRI - Cão - Anestesia
-  {
-    mode: 'CRI',
-    species: 'cao',
-    unit: 'mcg/kg/h',
-    range: { min: 10, max: 20 },
-    purpose: 'Anestesia (ventilado)',
-    note: '🔴 FISIOLOGIA: Doses altas (10-20 mcg/kg/h) proporcionam analgesia intensa e redução significativa de MAC (anestesia-sparing). Depressão respiratória é dose-dependente e esperada. 🟢 PROTOCOLO: Apenas em pacientes intubados e ventilados. Monitorar PA, FC, EtCO2 e profundidade anestésica. Associar com anestésicos inalatórios ou propofol.',
-  },
-  // CRI - Gato - Analgesia
   {
     mode: 'CRI',
     species: 'gato',
     unit: 'mcg/kg/h',
     range: { min: 1, max: 4 },
     purpose: 'Analgesia',
-    note: '🔴 FISIOLOGIA: Gatos podem ser mais sensíveis a opioides. Doses menores (1-4 mcg/kg/h) são geralmente suficientes para analgesia. Meia-vida pode ser mais longa em gatos. 🟢 PROTOCOLO: Iniciar em 1-2 mcg/kg/h e titular conforme resposta. Monitorar ventilação e sedação. Evitar doses altas sem necessidade.',
+    routine_default: '2 mcg/kg/h',
   },
-  // CRI - Gato - Anestesia
+  // Mantendo faixas de anestesia como secundárias/avançadas
+  {
+    mode: 'CRI',
+    species: 'cao',
+    unit: 'mcg/kg/h',
+    range: { min: 10, max: 20 },
+    purpose: 'Anestesia (ventilado)',
+    note: 'Apenas ventilado. Depressão respiratória dose-dependente.',
+  },
   {
     mode: 'CRI',
     species: 'gato',
     unit: 'mcg/kg/h',
     range: { min: 5, max: 10 },
     purpose: 'Anestesia',
-    note: '🔴 FISIOLOGIA: Doses anestésicas em gatos (5-10 mcg/kg/h) proporcionam redução de MAC e analgesia. Cautela com depressão respiratória e bradicardia. 🟢 PROTOCOLO: Apenas em pacientes intubados e ventilados. Monitorar PA, FC, EtCO2. Associar com anestésicos inalatórios ou propofol.',
+    note: 'Apenas ventilado.',
   },
-  // Bolus - Cão
   {
     mode: 'BOLUS',
     species: 'cao',
-    unit: 'mcg/kg/h', // Será tratado como mcg/kg para bolus
+    unit: 'mcg/kg',
     range: { min: 2, max: 5 },
     purpose: 'Bolus ataque',
-    note: '🔴 FISIOLOGIA: Bolus IV de fentanil (2-5 mcg/kg) proporciona início rápido de analgesia. Pico em 2-5 min. Duração ~30-60 min. 🟢 PROTOCOLO: Administrar IV lento (1-2 min) para reduzir risco de apneia. Monitorar ventilação. Pode ser seguido de CRI para manutenção.',
+    routine_default: '2 mcg/kg',
   },
-  // Bolus - Gato
   {
     mode: 'BOLUS',
     species: 'gato',
-    unit: 'mcg/kg/h', // Será tratado como mcg/kg para bolus
+    unit: 'mcg/kg',
     range: { min: 1, max: 2 },
     purpose: 'Bolus ataque',
-    note: '🔴 FISIOLOGIA: Gatos são mais sensíveis. Bolus menores (1-2 mcg/kg) são suficientes. Risco de apneia e sedação profunda. 🟢 PROTOCOLO: Administrar IV muito lento (2-3 min). Monitorar ventilação rigorosamente. Ter suporte ventilatório disponível.',
+    routine_default: '1 mcg/kg',
   },
 ]

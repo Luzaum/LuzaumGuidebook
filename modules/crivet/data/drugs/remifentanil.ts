@@ -26,58 +26,58 @@ export const remiDoses = {
 // Sistema de unidade recomendada
 export const remifentanilRecommendedUnit = 'mcg/kg/min'
 export const remifentanilRecommendedUnitWhy = [
-  'Unidade padrão para CRI de remifentanil em anestesia e UTI.',
-  'Permite titulação fina e precisa (0.05-1.0 mcg/kg/min).',
-  'Evita confusão com conversões e reduz erros de cálculo.',
-  'Padrão internacional para opioides de ação ultracurta.',
+  'Droga ultracurta; titulação por minuto é o padrão mais seguro e comum em CRI.',
 ]
 
 import type { IndicatedDose } from '../../types/drug'
 
 export const remifentanilIndicatedDoses: IndicatedDose[] = [
-  // CRI - Manutenção (cão)
+  // Bolus - Evitar
+  {
+    mode: 'BOLUS',
+    species: 'cao',
+    unit: 'mcg/kg',
+    range: { min: 1, max: 1 },
+    purpose: 'Adjunto analgésico à anestesia geral',
+    routine_default: 'EVITAR bolus como regra',
+    note: 'O próprio monógrafo reforça que bolus antes do CRI geralmente é evitado por bradicardia severa.',
+  },
+  // CRI - Cão
   {
     mode: 'CRI',
     species: 'cao',
     unit: 'mcg/kg/min',
-    range: { min: 0.1, max: 0.2 },
-    purpose: 'Manutenção analgesia',
-    note: '🔴 FISIOLOGIA: Remifentanil é metabolizado por esterases plasmáticas, independente de função hepática/renal. Meia-vida ultracurta (~3-5 min) permite despertar rápido e previsível. 🟢 PROTOCOLO: Iniciar em 0.1 mcg/kg/min e titular conforme necessidade anestésica e resposta ventilatória. Monitorar EtCO2 rigorosamente.',
+    range: { min: 0.1, max: 0.3 },
+    purpose: 'Adjunto analgésico à anestesia geral',
+    routine_default: '0.15 mcg/kg/min',
+    note: 'Planejar analgesia alternativa ao desligar (dor rebote).',
   },
-  // CRI - Cirurgia muito dolorosa (cão)
+  // Bolus - Gato - Evitar
   {
-    mode: 'CRI',
-    species: 'cao',
-    unit: 'mcg/kg/min',
-    range: { min: 0.5, max: 1.0 },
-    purpose: 'Cirurgia muito dolorosa',
-    note: '🔴 FISIOLOGIA: Doses altas (0.5-1.0 mcg/kg/min) proporcionam analgesia intensa mas com risco significativo de apneia e depressão respiratória. 🟢 PROTOCOLO: Usar apenas em pacientes ventilados. Monitorar PA, FC e EtCO2 continuamente.',
+    mode: 'BOLUS',
+    species: 'gato',
+    unit: 'mcg/kg',
+    range: { min: 2.5, max: 2.5 },
+    purpose: 'Adjunto analgésico à anestesia geral',
+    routine_default: 'EVITAR bolus como regra',
+    note: 'Mesma lógica: bolus antes do CRI geralmente é evitado por bradicardia severa.',
   },
-  // CRI - UTI sedação (cão)
-  {
-    mode: 'CRI',
-    species: 'cao',
-    unit: 'mcg/kg/min',
-    range: { min: 0.05, max: 0.1 },
-    purpose: 'UTI sedação',
-    note: '🔴 FISIOLOGIA: Doses baixas mantêm sedação leve com menor risco de acúmulo. Clearance rápido permite ajuste rápido. 🟢 PROTOCOLO: Ideal para pacientes críticos que precisam de avaliação neurológica frequente.',
-  },
-  // CRI - Manutenção (gato)
+  // CRI - Gato
   {
     mode: 'CRI',
     species: 'gato',
     unit: 'mcg/kg/min',
-    range: { min: 0.067, max: 0.1 },
-    purpose: 'Manutenção analgesia',
-    note: '🔴 FISIOLOGIA: Gatos podem ser mais sensíveis a opioides. Doses ligeiramente menores (0.067-0.1 mcg/kg/min) são geralmente suficientes. 🟢 PROTOCOLO: Iniciar em 0.067 mcg/kg/min e titular conforme resposta. Monitorar ventilação e profundidade anestésica.',
+    range: { min: 0.2, max: 0.4 },
+    purpose: 'Adjunto analgésico à anestesia geral',
+    routine_default: '0.25 mcg/kg/min',
   },
-  // CRI - Indução/Co-indução (ambos) - ALERTA
+  // CRI - Indução/Co-indução (Manter como opção secundária/alerta)
   {
     mode: 'CRI',
     species: 'ambos',
     unit: 'mcg/kg/min',
     range: { min: 2.5, max: 5.0 },
-    purpose: 'Indução/Co-indução',
-    note: '🔴 FISIOLOGIA: Doses muito altas (2.5-5.0 mcg/kg/min) causam apneia imediata e bradicardia severa. ⛔ ALERTA CRÍTICO: NUNCA usar bolus IV. Iniciar CRI diretamente. 🟢 PROTOCOLO: Apenas em pacientes intubados e ventilados. Monitoramento invasivo obrigatório.',
+    purpose: 'Indução/Co-indução (Apenas Ventilado)',
+    note: '⛔ ALERTA CRÍTICO: Doses de indução causam apneia imediata. Apenas em pacientes intubados/ventilados.',
   },
 ]

@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react'
+import { HelpCircle } from 'lucide-react'
 import { helpTopicsById } from '../../data/helpTopics'
 import type { HelpTopic } from '../../types/helpTopics'
 import { HelpModal } from './HelpModal'
@@ -19,7 +20,7 @@ export function HelpButton({ topicId, theme, size = 'sm' }: Props) {
   // Se não achar topic, não renderizar (evita placeholder feio)
   if (!topic) return null
 
-  const dims = size === 'sm' ? 'w-6 h-6 text-xs' : 'w-8 h-8 text-sm'
+  const dims = size === 'sm' ? 'w-7 h-7 min-w-[28px] min-h-[28px] p-0' : 'w-8 h-8 min-w-[32px] min-h-[32px] p-0'
   const isDark = theme === 'dark'
 
   return (
@@ -42,7 +43,7 @@ export function HelpButton({ topicId, theme, size = 'sm' }: Props) {
         aria-label="Abrir ajuda"
         title="Ajuda"
       >
-        ?
+        <HelpCircle className={size === 'sm' ? 'w-4 h-4' : 'w-5 h-5'} strokeWidth={2.5} />
       </button>
 
       <HelpModal open={open} onClose={() => setOpen(false)} topic={topic} theme={theme} />

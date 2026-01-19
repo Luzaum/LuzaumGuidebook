@@ -111,58 +111,203 @@ export const norepinefrinaProfile: DrugProfile = {
     { concentration_mg_ml: 2, label: '2 mg/mL Ampola 4ml (comum)', total_mg: 8, volume_ml: 4 }
   ],
 
+
+
+  // Seção 7: Compatibilidade
+  compatibility: {
+    compatible_in_syringe_or_bag: ['NaCl 0.9%'],
+    compatible_y_site_only: [],
+    incompatible: [
+      {
+        agent: 'Bicarbonato de Sódio',
+        why: 'Inativação de catecolaminas em pH alcalino.',
+        risk: 'Perda de eficácia.',
+      },
+    ],
+    dedicated_line_rules: [
+      'Norepinefrina é vasopressor titulável: usar bomba de infusão e via dedicada.',
+      'Evitar misturas no mesmo lúmen.',
+    ],
+  },
+
+  // Seção 11: Presets
+  presets: [
+    {
+      id: 'sepsis_start',
+      label: 'Choque Séptico (Início) ⚡',
+      dose_mcgkgmin: 0.1,
+      clinical_target: 'Recuperar PAM > 65mmHg (titular)',
+      linked_alerts: [],
+    },
+  ],
+
+  // Seção 12: Templates de Cálculo
+  calculation_templates: {
+    cri: {
+      required_inputs: [
+        'species',
+        'weight_kg',
+        'dose_mcgkgmin',
+        'pump_rate_ml_h',
+        'final_volume_ml',
+        'drug_concentration_mg_ml',
+        'diluent',
+      ],
+      algorithm: [
+        '1) Calcular dose/min (mcg) = dose (mcg/kg/min) × peso (kg)',
+        '2) Calcular dose/hora (mcg) = dose/min × 60',
+        '3) Concentração necessária (mcg/mL) = dose/hora ÷ taxa da bomba (mL/h)',
+        '4) Total de fármaco (mcg) na bolsa = conc. necessária × volume final (mL)',
+        '5) Converter para mg = total (mcg) ÷ 1000',
+        '6) Volume de fármaco a aspirar (mL) = total (mg) ÷ concentração da ampola (mg/mL)',
+        '7) Volume de diluente (mL) = volume final - volume de fármaco',
+      ],
+      hard_safety_checks: [
+        {
+          if: 'dose_mcgkgmin <= 0',
+          then: 'BLOCK',
+          message: 'Dose deve ser maior que zero.',
+        },
+        {
+          if: 'pump_rate_ml_h <= 0',
+          then: 'BLOCK',
+          message: 'Taxa da bomba deve ser maior que zero.',
+        },
+        {
+          if: 'drug_concentration_mg_ml <= 0',
+          then: 'BLOCK',
+          message: 'Concentração do fármaco inválida.',
+        },
+        {
+          if: "diluent != 'Glicosado 5%' && diluent != 'D5W' && diluent != 'SG 5%'",
+          then: 'WARN',
+          message: 'ℹ️ Sugestão: Norepinefrina é mais estável em Glicosado 5% (D5W) devido ao pH levemente ácido que previne oxidação. NaCl 0,9% é aceitável para uso imediato (até 12-24h).',
+        },
+      ],
+      soft_safety_checks: [
+        {
+          if: 'dose_mcgkgmin > 2',
+          then: 'WARN',
+          message:
+            'Dose > 2 mcg/kg/min: risco altíssimo de vasoconstrição excessiva/hipoperfusão periférica. Monitorização invasiva mandatória.',
+        },
+        {
+          if: 'drug_volume_ml < 0.1',
+          then: 'WARN',
+          message: 'Volume de fármaco muito baixo (< 0.1 mL). Aumente o volume final da solução ou a taxa para reduzir erro de pipetagem.',
+        },
+      ],
+      outputs: ['drug_volume_ml', 'diluent_volume_ml', 'total_drug_mg'],
+      error_cost: 'Erro de diluição ou diluente errado (D5W) viola protocolo de segurança.',
+    },
+    bolus: {
+      required_inputs: [],
+      algorithm: [],
+      hard_safety_checks: [
+        {
+          if: 'true',
+          then: 'BLOCK',
+          message: 'Bloqueado: norepinefrina não deve ser administrada em bolus. Uso exclusivo em CRI titulável.',
+        },
+      ],
+      soft_safety_checks: [],
+      outputs: [],
+      error_cost: 'Bolus causa pico hipertensivo perigoso.',
+    },
+    dilution_builder: {
+      required_inputs: ['final_volume_ml', 'target_mcg_ml', 'drug_concentration_mg_ml', 'diluent'],
+      algorithm: [
+        '1) Total necessário (mcg) = meta (mcg/mL) × volume final (mL)',
+        '2) Total em mg = total (mcg) ÷ 1000',
+        '3) Volume a aspirar (mL) = total (mg) ÷ concentração da ampola (mg/mL)',
+      ],
+      hard_safety_checks: [
+
+      ],
+      soft_safety_checks: [
+        {
+          if: 'drug_volume_ml < 0.1',
+          then: 'WARN',
+          message: 'Volume a aspirar < 0.1 mL: risco de erro. Aumente o volume total ou a concentração alvo.',
+        },
+      ],
+      outputs: ['drug_volume_ml', 'diluent_volume_ml'],
+      error_cost: 'Seleção incorreta de diluente.',
+    },
+  },
+
   dilution_and_preparation: {
     hard_rules: [
-      'CRI obrigatória (Bomba)',
-      'Nunca bolus',
-      'Não misturar com bicarbonato'
+      'Norepinefrina é vasopressor titulável: usar bomba de infusão e, idealmente, via central; se periférica, usar veia calibrosa.',
+      'Rotular sempre: concentração final (mcg/mL), dose-alvo (mcg/kg/min) e taxa (mL/h).',
+      '✅ Diluente PREFERENCIAL: Glicosado 5% (D5W) - protege contra oxidação. NaCl 0,9% é compatível mas menos estável (trocar em 12-24h).',
     ],
     recommended_targets: [
       {
         target_mg_ml: 0.016,
-        use_cases: ['UTI Padrao'],
-        how_to_make: '4mg em 250ml = 16mcg/ml'
+        use_cases: ['UTI Padrão (Solução 16 mcg/mL)'],
+        how_to_make: '4 mg (1 ampola típica) em 250 mL SG 5% (D5W)',
       },
       {
-        target_mg_ml: 0.032, // 32 mcg/mL
-        use_cases: ['Restrição de volume'],
-        how_to_make: '8mg em 250ml = 32mcg/ml'
-      }
+        target_mg_ml: 0.032,
+        use_cases: ['Restrição de volume / Dose alta'],
+        how_to_make: '8 mg (2 ampolas) em 250 mL SG 5% (D5W)',
+      },
     ],
-    diluents_allowed: ['NaCl 0.9%', 'D5W']
+    diluents_allowed: ['Glicosado 5%', 'NaCl 0.9%'],
+    preferred_diluent: {
+      diluent: 'Glicosado 5%',
+      why: 'Maior estabilidade (pH ácido previne oxidação das catecolaminas). NaCl 0,9% é aceitável (menor estabilidade).',
+    },
+    stability: [
+      {
+        diluent: 'Glicosado 5% (D5W)',
+        max_time_hours: 48,
+        light_protection: true,
+        syringe_bag_change: 'D5W protege a molécula da oxidação. Proteger da luz.',
+      },
+      {
+        diluent: 'NaCl 0.9%',
+        max_time_hours: 12,
+        light_protection: true,
+        syringe_bag_change: 'Menor estabilidade em solução salina (oxidação facilitada). Trocar em 12-24h.',
+      },
+    ],
+
+    dedicated_line_required: true,
+    dedicated_line_why: 'Variações de fluxo por bólus de outros fármacos causam instabilidade grave da PA.',
   },
 
-  compatibility: {
-    compatible_in_syringe_or_bag: ['NaCl 0.9%', 'D5W'],
-    incompatible: [
-      { agent: 'Bicarbonato de Sódio', why: 'Inativação de catecolaminas em pH alcalino' }
-    ]
+  // Seção 16: UI Copy
+  ui_copy: {
+    critical_warning_banner:
+      'Norepinefrina: Preferir **Glicosado 5% (D5W)** para maior estabilidade. Uso em NaCl 0,9% é aceitável (trocar a cada 12h).',
+    alert_messages: {
+      short: 'Use bomba. Titule PAM/Lactato.',
+      long: 'D5W é preferível para estabilidade. Doses > 2mcg/kg/min exigem monitorização invasiva por risco de isquemia.',
+    },
+    block_message: 'Bloqueado: norepinefrina não deve ser administrada em bolus. Use apenas CRI titulável.',
   },
 
+  // Seção 14: Alertas por Comorbidade (e Diluente)
   alerts_by_comorbidity: [
     {
-      key: 'hypovolemia',
-      title: 'Choque Hipovolêmico',
-      level: 'CRITICAL',
-      why: 'Vasopressor com hipovolemia piora perfusão.',
-      action: ['Ressuscitar volume antes']
+      key: 'norepi_diluent_saline_warning',
+      level: 'MONITOR',
+      title: 'DILUENTE (NaCl 0,9%)',
+      why: 'NaCl 0,9% tem menor capacidade de proteger a norepinefrina da oxidação que o D5W. A solução pode perder potência mais rápido.',
+      action: ['Trocar a solução a cada 12-24h se usar NaCl.', 'Proteger da luz.'],
+      dose_adjustment: {
+        suggest_alternative: 'Considerar D5W se disponível para infusões longas.',
+      },
     },
     {
-      key: 'cardiac',
-      title: 'Cardiopatia',
-      level: 'WARNING',
-      why: 'Aumento de pós-carga pode reduzir DC.',
-      action: ['Monitorar inotropismo', 'Considerar dobutamina']
-    }
-  ],
-
-  presets: [
-    {
-      id: 'sepsis_start',
-      label: 'Choque Séptico (Início)',
-      dose_mcgkgmin: 0.1,
-      clinical_target: 'Recuperar PAM > 65mmHg'
-    }
+      key: 'hypovolemia',
+      title: 'Hipovolemia não corrigida',
+      level: 'CRITICAL',
+      why: 'Vasopressor com hipovolemia "esconde" o choque e piora perfusão visceral (isquemia).',
+      action: ['Ressuscitar volume ANTES de iniciar norepinefrina.'],
+    },
   ],
 
   help: {
@@ -171,18 +316,18 @@ export const norepinefrinaProfile: DrugProfile = {
       {
         level: 'CRITICAL',
         items: [
-          { text: 'Somente APÓS volume adequado.' },
-          { text: 'Incompatível com Bicarbonato.' },
-          { text: 'Risco de necrose por extravasamento.' }
-        ]
+          { text: '🟥 Diluir preferencialmente em **Glicosado 5% (D5W)** para estabilidade. NaCl 0,9% oxida mais rápido.' },
+          { text: 'Somente APÓS volume adequado (corrigir hipovolemia antes).' },
+          { text: 'Risco de necrose extensa por extravasamento (preferir central ou veia calibrosa).' },
+        ],
       },
       {
         level: 'IMPORTANT',
         items: [
-          { text: 'Titule a cada 2-5 min.' },
-          { text: 'Alvo: Perfusão (lactato), não só PAM.' }
-        ]
-      }
-    ]
-  }
+          { text: 'Incompatível com Bicarbonato (inativação) e soluções alcalinas.' },
+          { text: 'Monitorar PAM (invasiva ideal) e perfusão (lactato/SvO2).' },
+        ],
+      },
+    ],
+  },
 }

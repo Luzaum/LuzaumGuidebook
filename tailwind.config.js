@@ -65,6 +65,18 @@ module.exports = {
           DEFAULT: "hsl(var(--surface))",
           2: "hsl(var(--surface-2))",
         },
+        // VetEletrolitico Colors
+        "vet-primary": "#ec7f13",
+        "vet-primary-hover": "#d66e0a",
+        "vet-bg-light": "#f8f7f6",
+        "vet-bg-dark": "#221910",
+        "vet-surface-dark": "#332619",
+        "vet-surface-darker": "#1a120b",
+        "vet-surface-hover": "#483623",
+        "vet-text-main": "#FFFFFF",
+        "vet-text-secondary": "#c9ad92",
+        "vet-border-brown": "#4e3d2a",
+        "vet-input-bg": "#332619",
       },
       borderRadius: {
         lg: "var(--radius)",

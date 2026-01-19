@@ -1,4 +1,4 @@
-import type { DrugCompatibility, DrugUnitRules, IndicatedDose } from '../types/drug'
+import type { DrugCompatibility, DrugUnitRules, IndicatedDose, UnitSafetyBlock } from '../types/drug'
 import {
   defaultCompatibility,
   ketamineCompatibilityToDrugCompatibility,
@@ -19,10 +19,12 @@ import { lidocaineRecommendedUnit, lidocaineRecommendedUnitWhy, lidocaineIndicat
 import { dexmedetomidineRecommendedUnit, dexmedetomidineRecommendedUnitWhy, dexmedetomidineIndicatedDoses } from './drugs/dexmedetomidine'
 import { propofolRecommendedUnit, propofolRecommendedUnitWhy, propofolIndicatedDoses } from './drugs/propofol'
 import { methadoneRecommendedUnit, methadoneRecommendedUnitWhy, methadoneIndicatedDoses } from './drugs/methadone'
-import { insulinRegularRecommendedUnit, insulinRegularRecommendedUnitWhy, insulinRegularIndicatedDoses } from './drugs/insulinRegular'
+import { insulinRegularRecommendedUnit, insulinRegularRecommendedUnitWhy, insulinRegularIndicatedDoses, insulinSafetyBlocks } from './drugs/insulinRegular'
 import { metoclopramidaRecommendedUnit, metoclopramidaRecommendedUnitWhy, metoclopramidaIndicatedDoses } from './drugs/metoclopramida'
 import { maropitantRecommendedUnit, maropitantRecommendedUnitWhy, maropitantIndicatedDoses } from './drugs/maropitant'
 import { ephedrineRecommendedUnit, ephedrineRecommendedUnitWhy, ephedrineIndicatedDoses } from './drugs/ephedrine'
+import { morphineSafetyBlocks } from './drugs/morphine.blocks'
+import { remifentanilSafetyBlocks } from './drugs/remifentanil.blocks'
 
 export type DrugCategory =
   | 'Analgésicos e Anestésicos'
@@ -45,6 +47,7 @@ export interface Drug {
   recommendedUnit?: string // unidade recomendada (ex: "mcg/kg/h")
   recommendedUnitWhy?: string[] // razões para usar a unidade recomendada
   indicatedDoses?: IndicatedDose[] // faixas de dose indicadas por modo, espécie e finalidade
+  safetyBlocks?: UnitSafetyBlock[] // Bloqueios de segurança por unidade
 }
 
 export const drugs: Drug[] = [
@@ -81,6 +84,7 @@ export const drugs: Drug[] = [
     recommendedUnit: remifentanilRecommendedUnit,
     recommendedUnitWhy: remifentanilRecommendedUnitWhy,
     indicatedDoses: remifentanilIndicatedDoses,
+    safetyBlocks: remifentanilSafetyBlocks,
   },
   {
     id: 'morfina',
@@ -89,6 +93,7 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [10, 1],
     compatibility: defaultCompatibility,
+    safetyBlocks: morphineSafetyBlocks,
   },
   {
     id: 'metadona',
@@ -307,6 +312,7 @@ export const drugs: Drug[] = [
     recommendedUnit: insulinRegularRecommendedUnit,
     recommendedUnitWhy: insulinRegularRecommendedUnitWhy,
     indicatedDoses: insulinRegularIndicatedDoses,
+    safetyBlocks: insulinSafetyBlocks,
   },
 
   // Antieméticos / Pró-cinéticos

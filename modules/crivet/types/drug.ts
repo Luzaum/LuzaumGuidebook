@@ -40,11 +40,18 @@ export type DrugUnitRules = {
   unitHints?: Record<string, UnitHint> // alertas por unidade (opcional)
 }
 
+export type UnitSafetyBlock = {
+  drugId?: string // opcional se estiver dentro do objeto da droga
+  block_if_unit: string[]
+  message: string
+}
+
 export type IndicatedDose = {
   mode: 'CRI' | 'BOLUS'
   species: 'cao' | 'gato' | 'ambos'
-  unit: 'mcg/kg/min' | 'mcg/kg/h' | 'mg/kg/min' | 'mg/kg/h' | 'U/kg/h' | 'U/kg/min'
+  unit: 'mcg/kg/min' | 'mcg/kg/h' | 'mg/kg/min' | 'mg/kg/h' | 'U/kg/h' | 'U/kg/min' | 'mg/kg' | 'mcg/kg' | 'U/kg'
   range: { min: number; max: number }
   purpose: string // "Analgesia", "Anestesia (ventilado)", etc
   note?: string // opcional - deve incluir explicação fisiologia por trás da dose
+  routine_default?: string // ex: "50 mcg/kg/min" - valor/faixa mais comum na rotina para pre-seleção visual
 }

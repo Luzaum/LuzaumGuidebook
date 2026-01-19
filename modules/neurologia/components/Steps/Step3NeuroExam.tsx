@@ -144,14 +144,13 @@ function ExamItem({
                 }}
                 className={`
                   px-3 py-2 rounded-lg text-sm font-medium border-2 transition-all flex items-center gap-2
-                  ${
-                    isSelected
-                      ? isNormal
-                        ? 'bg-green-900/30 border-green-500 text-green-400 shadow-[0_0_12px_rgba(34,197,94,0.3)]'
-                        : isAltered
+                  ${isSelected
+                    ? isNormal
+                      ? 'bg-green-900/30 border-green-500 text-green-400 shadow-[0_0_12px_rgba(34,197,94,0.3)]'
+                      : isAltered
                         ? 'bg-red-900/30 border-red-500 text-red-400 shadow-[0_0_12px_rgba(239,68,68,0.3)]'
                         : 'bg-gold/20 border-gold text-gold shadow-[0_0_12px_rgba(245,197,66,0.3)]'
-                      : 'bg-card border-border text-muted-foreground hover:border-gold/50 hover:text-foreground'
+                    : 'bg-card border-border text-muted-foreground hover:border-gold/50 hover:text-foreground'
                   }
                 `}
               >
@@ -665,7 +664,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                 </h4>
                 <HelpButton topicId="s4-ameaca-oquee" theme={theme} size="sm" />
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <ExamItem
                   label="Olho Esquerdo"
                   helpTopicId="s4-ameaca-olho-esquerdo"
@@ -712,7 +711,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                 </h4>
                 <HelpButton topicId="s4-plr-oquee" theme={theme} size="sm" />
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <ExamItem
                   label="Olho Esquerdo"
                   helpTopicId="s4-plr-olho-esquerdo"
@@ -884,7 +883,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                 </h4>
                 <HelpButton topicId="s5-patelar-oquee" theme={theme} size="sm" />
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <ExamItem
                   label="Esquerdo"
                   helpTopicId="s5-patelar-esq-normal"
@@ -959,7 +958,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                 </h4>
                 <HelpButton topicId="s5-retirada-toracico-oquee" theme={theme} size="sm" />
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <ExamItem
                   label="Esquerdo"
                   helpTopicId="s5-retirada-toracico-esq-normal"

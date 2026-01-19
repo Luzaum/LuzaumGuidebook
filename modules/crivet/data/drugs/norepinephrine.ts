@@ -24,48 +24,36 @@ export const norepinephrineDoses = {
 
 export const norepinephrineRecommendedUnit = 'mcg/kg/min'
 export const norepinephrineRecommendedUnitWhy = [
-  'Unidade padrão para vasopressores em CRI.',
-  'Dose é por MINUTO, não por hora.',
-  'Facilita titulação por MAP e perfusão.',
-  'Permite ajuste fino conforme resposta clínica (lactato, diurese, extremidades).',
+  'Vasopressor de escolha em choque vasodilatado; titulação por minuto.',
 ]
 
 export const norepinephrineIndicatedDoses: IndicatedDose[] = [
-  // CRI - Cão - Inicial
-  {
-    mode: 'CRI',
-    species: 'cao',
-    unit: 'mcg/kg/min',
-    range: { min: 0.05, max: 0.1 },
-    purpose: 'Dose inicial - Choque distributivo/vasoplegia',
-    note: 'Iniciar após otimização volêmica. Titular +0.05 mcg/kg/min a cada 5–10 min. Monitorar MAP invasiva (alvo: ≥65 mmHg) e perfusão (lactato, diurese, extremidades).',
-  },
-  // CRI - Cão - Manutenção
   {
     mode: 'CRI',
     species: 'cao',
     unit: 'mcg/kg/min',
     range: { min: 0.1, max: 1.0 },
-    purpose: 'Manutenção usual - Choque distributivo/vasoplegia',
-    note: 'Dose de manutenção após resposta inicial. Continuar monitoramento MAP e perfusão. Reavaliar volume responsivo se doses sobem.',
+    purpose: 'Vasopressor (faixa comum)',
+    routine_default: '0.1 mcg/kg/min',
+    note: 'Iniciar 0.05-0.1 após volume. Titular MAP ≥65 mmHg. Manter até 2.0 mcg/kg/min como preset alto com alerta.',
   },
-  // CRI - Cão - Choque Refratário
   {
     mode: 'CRI',
     species: 'cao',
     unit: 'mcg/kg/min',
-    range: { min: 1.0, max: 3.0 },
-    purpose: 'Choque refratário - Doses altas',
-    note: 'Usar apenas em choque refratário após otimização volêmica. Reavaliar volume responsivo e considerar vasopressina adjuvante se doses sobem muito. Monitoramento intensivo obrigatório.',
+    range: { min: 0.1, max: 2.0 },
+    purpose: 'Vasopressor (faixa reportada alta)',
+    routine_default: '0.1 mcg/kg/min',
+    note: 'Usar alertas de hipoperfusão periférica/vasoconstrição excessiva. Considerar vasopressina se >1-2 mcg/kg/min.',
   },
-  // CRI - Gato
   {
     mode: 'CRI',
     species: 'gato',
     unit: 'mcg/kg/min',
     range: { min: 0.05, max: 0.5 },
-    purpose: 'Choque distributivo/vasoplegia (gatos mais sensíveis)',
-    note: 'Gatos são mais sensíveis à vasoconstrição renal. Iniciar 0.05–0.1 mcg/kg/min. Titular +0.05 mcg/kg/min a cada 5–10 min. Monitorar débito urinário rigorosamente. Teto absoluto: 0.5 mcg/kg/min. Alvo MAP: ≥60 mmHg.',
+    purpose: 'Choque distributivo (gatos sensíveis)',
+    routine_default: '0.05 mcg/kg/min',
+    note: 'Gatos são mais sensíveis à vasoconstrição renal. Monitorar débito urinário rigorosamente. Teto prudente: 0.5 mcg/kg/min.',
   },
 ]
 

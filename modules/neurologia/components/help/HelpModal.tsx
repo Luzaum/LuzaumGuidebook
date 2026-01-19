@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { X } from 'lucide-react'
 import type { HelpTopic, RichContent } from '../../types/helpTopics'
 import { RichTextRenderer } from './RichTextRenderer'
 
@@ -34,7 +35,7 @@ export function HelpModal({ open, onClose, topic, theme }: Props) {
 
   return (
     <div
-      className="fixed inset-0 z-[80] flex items-center justify-center px-4 pointer-events-auto"
+      className="fixed inset-0 z-[80] flex items-center justify-center sm:px-4 pointer-events-auto"
       role="dialog"
       aria-modal="true"
       aria-label={`Ajuda: ${topic.title}`}
@@ -47,13 +48,16 @@ export function HelpModal({ open, onClose, topic, theme }: Props) {
 
       <div
         className={[
-          'relative w-full max-w-xl rounded-2xl border shadow-xl',
+          'relative w-full flex flex-col',
+          'fixed inset-0 sm:relative sm:inset-auto sm:max-w-xl sm:rounded-2xl sm:shadow-xl sm:h-auto',
+          'h-[100dvh] sm:h-auto sm:max-h-[85vh]', // Mobile full height, desktop auto height constrained
           isDark
             ? 'bg-neutral-900 border-neutral-700 text-neutral-100'
             : 'bg-white border-neutral-200 text-neutral-900',
         ].join(' ')}
       >
-        <div className="flex items-start justify-between gap-3 p-4 border-b border-neutral-700/30">
+        {/* Header - Sticky on mobile naturally due to flex col */}
+        <div className="shrink-0 flex items-start justify-between gap-3 p-4 border-b border-neutral-700/30">
           <div>
             <div className="text-xs uppercase tracking-wide opacity-70">Ajuda Clínica</div>
             <h3 className="text-lg font-semibold leading-snug">{topic.title}</h3>
@@ -63,16 +67,17 @@ export function HelpModal({ open, onClose, topic, theme }: Props) {
             type="button"
             onClick={onClose}
             className={[
-              'shrink-0 rounded-full px-3 py-1 text-sm font-medium',
-              isDark ? 'bg-neutral-800 hover:bg-neutral-700' : 'bg-neutral-100 hover:bg-neutral-200',
+              'shrink-0 rounded-full p-2',
+              isDark ? 'hover:bg-neutral-800' : 'hover:bg-neutral-100',
             ].join(' ')}
             aria-label="Fechar ajuda"
           >
-            Fechar
+            <X className="w-6 h-6" />
           </button>
         </div>
 
-        <div className="p-4 space-y-4 max-h-[70vh] overflow-auto">
+        {/* Content - Scrollable */}
+        <div className="flex-1 p-4 space-y-4 overflow-y-auto overscroll-contain">
           <Section title="O que avalia" content={topic.whatItAssesses} isDark={isDark} />
           <Section title="Neuroanatomia / Neurofisiologia" content={topic.neuroanatomy} isDark={isDark} />
           <Section title="Como executar" content={topic.howToPerform} isDark={isDark} />
@@ -92,11 +97,12 @@ export function HelpModal({ open, onClose, topic, theme }: Props) {
           )}
         </div>
 
-        <div className="p-4 border-t border-neutral-700/30 flex justify-end">
+        {/* Footer - Sticky bottom */}
+        <div className="shrink-0 p-4 border-t border-neutral-700/30 flex justify-end pb-[env(safe-area-inset-bottom)]">
           <button
             type="button"
             onClick={onClose}
-            className="rounded-xl px-4 py-2 text-sm font-semibold bg-yellow-500 text-black hover:bg-yellow-400 transition-colors"
+            className="w-full sm:w-auto rounded-xl px-6 py-3 sm:py-2 text-sm font-semibold bg-yellow-500 text-black hover:bg-yellow-400 transition-colors"
           >
             Entendi
           </button>

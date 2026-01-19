@@ -610,7 +610,7 @@ export function normalizeDrug(raw: any): NormalizedDrug {
           when,
           level: alert.level,
           title: alert.title,
-          short: alert.title, // Usar title como short (pode ser melhorado depois)
+          short: alert.why, // Use 'why' as the short message (avoids duplicating title)
           why: [alert.why],
           actions: alert.action || [],
         })

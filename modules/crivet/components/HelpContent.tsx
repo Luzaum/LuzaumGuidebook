@@ -91,7 +91,7 @@ export function HelpContentRenderer({ content }: { content: HelpContent }) {
                   <span className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${section.level === 'CRITICAL' ? 'bg-red-500' :
                     section.level === 'IMPORTANT' ? 'bg-amber-500' : 'bg-blue-500'
                     }`} />
-                  <p>
+                  <p className="whitespace-pre-wrap">
                     {renderWithBold(item.text)}
                   </p>
                 </div>

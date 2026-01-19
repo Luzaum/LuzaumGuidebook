@@ -24,7 +24,7 @@ export const insulinRegularIndicatedDoses: IndicatedDose[] = [
     unit: 'U/kg/h',
     range: { min: 0.025, max: 0.1 },
     purpose: 'Cetoacidose diabética (CAD) / Síndrome hiperglicêmica hiperosmolar (HHS)',
-    note: '🔴 FISIOLOGIA: Em CAD/HHS, o objetivo primário é reverter a cetogênese e reduzir glicose de forma GRADUAL (~50–75 mg/dL/h), NÃO normalizar rapidamente. A queda rápida aumenta risco de edema cerebral (HHS) e hipocalemia/hipofosfatemia por shift eletrolítico. A insulina promove captação celular de glicose, mas também desloca K+, P e Mg para o intracelular. Sem fluidoterapia adequada e correção eletrolítica, a insulina pode piorar perfusão. Em CAD, a meta é resolver cetose mantendo glicose suficiente (200–250 mg/dL) para continuar infundindo insulina. Em HHS, a dose é ~50% menor e pode ser postergada até hidratação adequada para evitar queda rápida de osmolalidade. 🟢 PROTOCOLO: CRI IV é preferível (ou IM intermitente se não houver bomba). Preparar diluição 1 U/mL (1 mL U-100 + 99 mL NaCl) ou protocolo "bolsa 250 mL" (2,2 U/kg em 250 mL, iniciar 10 mL/h). Prime ~50 mL para saturar adsorção ao plástico. Monitorar glicemia q1–2h inicialmente e K+/P/Mg seriados. Iniciar dextrose no fluido quando BG < 250 mg/dL para manter insulina e resolver cetose.',
+    note: '🔴 **FISIOLOGIA**: O alvo na CAD é **parar a cetogênese**, não normalizar a glicemia imediatamente. A insulina permite o uso da glicose pela célula, mas também desloca **Potássio (K+)** e Fósforo para dentro dela — risco de arritmias se não houver reposição.\n\n⚠️ **SEGURANÇA**: A queda da glicemia deve ser **GRADUAL (50–75 mg/dL/h)**. Se cair muito rápido, há risco de edema cerebral.\n\n🟢 **PROTOCOLO**: Use CRI IV ou protocolo de "Bolsa de 250 mL". Quando a glicemia baixar de **250 mg/dL**, NÃO PARE A INSULINA! Adicione **dextrose** ao fluido do paciente para continuar tratando a cetose sem causar hipoglicemia.',
   },
   // CRI - Gato - CAD
   {
@@ -33,7 +33,7 @@ export const insulinRegularIndicatedDoses: IndicatedDose[] = [
     unit: 'U/kg/h',
     range: { min: 0.0125, max: 0.05 },
     purpose: 'CAD/HHS — Gatos (mais sensíveis)',
-    note: '🔴 FISIOLOGIA: Gatos têm menor reserva gliconeogênica e maior sensibilidade a insulina comparado a cães. O risco de hipoglicemia silenciosa é maior, especialmente com doses > 0.05 U/kg/h. A resposta varia mais entre indivíduos. Protocolos conservadores (0.0125–0.05 U/kg/h inicial) são seguros e efetivos. Gatos tendem a receber menos insulina efetiva quando se usa sliding-scale ajustado por glicemia. Alguns protocolos usam preparo "bolsa 250 mL" com 1,1 U/kg total (vs 2,2 U/kg em cães). 🟢 PROTOCOLO: Preparar bolsa com 1,1 U/kg em 250 mL NaCl, prime 50 mL, iniciar 5–10 mL/h e ajustar por sliding-scale. Ou diluir para 0.5 U/mL (0.5 mL U-100 + 99.5 mL NaCl). Monitorar glicemia q1–2h rigorosamente. Iniciar dextrose quando BG < 250 mg/dL. Teto: 0.1 U/kg/h.',
+    note: '🔴 **FISIOLOGIA**: Gatos têm menor reserva e maior sensibilidade. Hipoglicemia silenciosa é risco real. O alvo é reverter a cetose com segurança.\n\n⚠️ **SEGURANÇA**: Cautela com doses > 0.05 U/kg/h. Gatos são muito sensíveis a shifts de **Potássio (K+)**. Monitorar eletrólitos é lei.\n\n🟢 **PROTOCOLO**: Use doses conservadoras (comece com ~1.1 U/kg na bolsa de 250 mL). Quando a glicemia baixar de **250 mg/dL**, inicie dextrose. Ajuste pela tabela (sliding-scale) com rigor.',
   },
   // Bolus IM - Cão
   {
@@ -52,5 +52,13 @@ export const insulinRegularIndicatedDoses: IndicatedDose[] = [
     range: { min: 0.05, max: 0.1 },
     purpose: 'IM intermitente (uso com cautela)',
     note: 'Uso com cautela em gatos — risco alto de hipoglicemia. Aplicar IM a cada 4–6 h. Monitorar glicemia rigorosamente. Preferir CRI sempre que possível para maior segurança.',
+  },
+]
+import type { UnitSafetyBlock } from '../../types/drug'
+
+export const insulinSafetyBlocks: UnitSafetyBlock[] = [
+  {
+    block_if_unit: ['mcg/kg/h', 'mg/kg/h', 'mcg/kg/min'],
+    message: 'Insulina regular é sempre em U/kg/h (nunca em massa).',
   },
 ]

@@ -1,0 +1,814 @@
+export const fentanylPresentations = [
+  { label: 'Fentanil 50 mcg/mL (0,05 mg/mL) — padrão', mcgPerMl: 50, mgPerMl: 0.05 },
+]
+
+export const fentanylDoses = {
+  dog: {
+    bolusLoading: { min: 3, max: 5, unit: 'mcg/kg' as const },
+    criAnalgesia: { min: 3, max: 7, unit: 'mcg/kg/h' as const },
+    criAnesthesia: { min: 10, max: 20, unit: 'mcg/kg/h' as const },
+    criPrimaryAgent: { min: 5, max: 40, unit: 'mcg/kg/h' as const }, // Agente primário em cães graves
+  },
+  cat: {
+    bolusLoading: { min: 2, max: 5, unit: 'mcg/kg' as const },
+    criAnalgesia: { min: 3, max: 7, unit: 'mcg/kg/h' as const },
+    criAnesthesia: { min: 5, max: 10, unit: 'mcg/kg/h' as const },
+  },
+}
+
+// Sistema de unidade recomendada (sem bloqueios)
+export const fentanylRecommendedUnit = 'mcg/kg/h'
+export const fentanylRecommendedUnitWhy = [
+  'É a forma mais usada para CRI de fentanil em UTI e pós-operatório (padrão em hora).',
+  'Reduz erro de 60× (quando alguém confunde min vs h).',
+  'Reduz erro de 1000× (mcg vs mg), porque o fentanil comercial é 50 mcg/mL.',
+]
+
+import type { IndicatedDose } from '../../types/drug'
+
+export const fentanylIndicatedDoses: IndicatedDose[] = [
+  // CRI - Cão - Analgesia/UTI
+  {
+    mode: 'CRI',
+    species: 'cao',
+    unit: 'mcg/kg/h',
+    range: { min: 2, max: 5 },
+    purpose: 'Analgesia/UTI',
+    note: '🔴 FISIOLOGIA: Fentanil é agonista μ-opioide puro, 100x mais potente que morfina. Em doses baixas (2-5 mcg/kg/h), proporciona analgesia eficaz com menor risco de depressão respiratória. Meia-vida curta (~30-60 min) permite ajuste rápido. 🟢 PROTOCOLO: Iniciar em 2-3 mcg/kg/h e titular conforme escala de dor. Monitorar SpO2 e EtCO2. Redosar se necessário.',
+  },
+  // CRI - Cão - Anestesia
+  {
+    mode: 'CRI',
+    species: 'cao',
+    unit: 'mcg/kg/h',
+    range: { min: 10, max: 20 },
+    purpose: 'Anestesia (ventilado)',
+    note: '🔴 FISIOLOGIA: Doses altas (10-20 mcg/kg/h) proporcionam analgesia intensa e redução significativa de MAC (anestesia-sparing). Depressão respiratória é dose-dependente e esperada. 🟢 PROTOCOLO: Apenas em pacientes intubados e ventilados. Monitorar PA, FC, EtCO2 e profundidade anestésica. Associar com anestésicos inalatórios ou propofol.',
+  },
+  // CRI - Gato - Analgesia
+  {
+    mode: 'CRI',
+    species: 'gato',
+    unit: 'mcg/kg/h',
+    range: { min: 1, max: 4 },
+    purpose: 'Analgesia',
+    note: '🔴 FISIOLOGIA: Gatos podem ser mais sensíveis a opioides. Doses menores (1-4 mcg/kg/h) são geralmente suficientes para analgesia. Meia-vida pode ser mais longa em gatos. 🟢 PROTOCOLO: Iniciar em 1-2 mcg/kg/h e titular conforme resposta. Monitorar ventilação e sedação. Evitar doses altas sem necessidade.',
+  },
+  // CRI - Gato - Anestesia
+  {
+    mode: 'CRI',
+    species: 'gato',
+    unit: 'mcg/kg/h',
+    range: { min: 5, max: 10 },
+    purpose: 'Anestesia',
+    note: '🔴 FISIOLOGIA: Doses anestésicas em gatos (5-10 mcg/kg/h) proporcionam redução de MAC e analgesia. Cautela com depressão respiratória e bradicardia. 🟢 PROTOCOLO: Apenas em pacientes intubados e ventilados. Monitorar PA, FC, EtCO2. Associar com anestésicos inalatórios ou propofol.',
+  },
+  // Bolus - Cão
+  {
+    mode: 'BOLUS',
+    species: 'cao',
+    unit: 'mcg/kg/h', // Será tratado como mcg/kg para bolus
+    range: { min: 2, max: 5 },
+    purpose: 'Bolus ataque',
+    note: '🔴 FISIOLOGIA: Bolus IV de fentanil (2-5 mcg/kg) proporciona início rápido de analgesia. Pico em 2-5 min. Duração ~30-60 min. 🟢 PROTOCOLO: Administrar IV lento (1-2 min) para reduzir risco de apneia. Monitorar ventilação. Pode ser seguido de CRI para manutenção.',
+  },
+  // Bolus - Gato
+  {
+    mode: 'BOLUS',
+    species: 'gato',
+    unit: 'mcg/kg/h', // Será tratado como mcg/kg para bolus
+    range: { min: 1, max: 2 },
+    purpose: 'Bolus ataque',
+    note: '🔴 FISIOLOGIA: Gatos são mais sensíveis. Bolus menores (1-2 mcg/kg) são suficientes. Risco de apneia e sedação profunda. 🟢 PROTOCOLO: Administrar IV muito lento (2-3 min). Monitorar ventilação rigorosamente. Ter suporte ventilatório disponível.',
+  },
+]
+export type KetaminePresentation = {
+  label: string
+  mgPerMl: number // 50 ou 100
+}
+
+export const ketaminePresentations: KetaminePresentation[] = [
+  { label: 'Cetamina 100 mg/mL (10%) — Dopalen/Vetaset/Cetamin', mgPerMl: 100 },
+  { label: 'Cetamina 50 mg/mL (5%)', mgPerMl: 50 },
+]
+
+// Doses base (para o app mostrar e usar como defaults)
+export const ketamineDoses = {
+  criAnalgesia: {
+    // microdose analgésica
+    dog: { mcgKgMin: { min: 2, max: 10 }, mgKgH: { min: 0.12, max: 0.6 } },
+    cat: { mcgKgMin: { min: 2, max: 10 }, mgKgH: { min: 0.12, max: 0.6 } },
+    bolusLoadingMgKgIV: {
+      min: 0.25,
+      max: 0.5,
+      note: 'IV lento (2–3 min) antes de iniciar a bomba',
+    },
+  },
+  criTiva: {
+    // TIVA (sempre associado)
+    dog: { mcgKgMin: { min: 10, max: 50 } },
+    cat: { mcgKgMin: { min: 10, max: 50 } },
+    note: 'Nunca isolado: exigir benzo + opioide e via aérea protegida',
+  },
+  bolusInductionRestraint: {
+    dog: {
+      ivMgKg: { min: 2, max: 5, note: 'Preferir associar benzodiazepínico' },
+    },
+    cat: {
+      ivMgKg: { min: 2, max: 5, note: 'Sempre associado a benzodiazepínico' },
+      imMgKg: { min: 5, max: 10, note: 'Contenção química; monitorar recuperação' },
+    },
+  },
+}
+
+// Regras de alerta por dose (para o motor do app)
+export const ketamineSafetyThresholds = {
+  criAnalgesiaUpperMcgKgMin: 10, // acima disso: psicomimético/disforia em acordado
+  criHighRiskMcgKgMin: 20, // acima disso: sobredose provável em acordado
+}
+
+// Sistema de unidade recomendada (sem bloqueios)
+export const ketamineRecommendedUnit = 'mcg/kg/min'
+export const ketamineRecommendedUnitWhy = [
+  'CRI de cetamina é por MINUTO (mcg/kg/min).',
+  'Evita erro 60× quando alguém converte errado para hora.',
+  'Mantém a faixa analgésica (2–10 mcg/kg/min) clara no app.',
+]
+
+import type { IndicatedDose } from '../../types/drug'
+
+export const ketamineIndicatedDoses: IndicatedDose[] = [
+  // CRI - Analgesia (microdose)
+  {
+    mode: 'CRI',
+    species: 'ambos',
+    unit: 'mcg/kg/min',
+    range: { min: 2, max: 10 },
+    purpose: 'Analgesia (microdose)',
+  },
+  // Bolus - Ataque CRI
+  {
+    mode: 'BOLUS',
+    species: 'ambos',
+    unit: 'mg/kg/min', // será convertido para mg/kg
+    range: { min: 0.25, max: 0.5 },
+    purpose: 'Bolus ataque CRI',
+    note: 'Bolus em mg/kg IV lento (2–3 min)',
+  },
+  // CRI - TIVA
+  {
+    mode: 'CRI',
+    species: 'ambos',
+    unit: 'mcg/kg/min',
+    range: { min: 10, max: 50 },
+    purpose: 'TIVA (associado)',
+    note: 'Nunca usar isolado; associar benzo + opioide e monitorar via aérea',
+  },
+  // Bolus - Indução/Contenção
+  {
+    mode: 'BOLUS',
+    species: 'cao',
+    unit: 'mg/kg/min', // será convertido para mg/kg
+    range: { min: 2, max: 5 },
+    purpose: 'Indução/Contenção',
+    note: 'Bolus em mg/kg IV (preferir associar benzodiazepínico)',
+  },
+  {
+    mode: 'BOLUS',
+    species: 'gato',
+    unit: 'mg/kg/min', // será convertido para mg/kg
+    range: { min: 2, max: 5 },
+    purpose: 'Indução/Contenção',
+    note: 'Bolus em mg/kg IV (sempre com benzo) ou 5–10 mg/kg IM',
+  },
+]
+export const midazolamPresentations = [
+  { label: 'Midazolam 5 mg/mL (padrão)', mgPerMl: 5 },
+  { label: 'Midazolam 1 mg/mL (raro) ⚠️', mgPerMl: 1 },
+]
+
+export const midazolamDoses = {
+  bolusIV: {
+    dog: { min: 0.1, max: 0.5, unit: 'mg/kg' as const },
+    cat: { min: 0.1, max: 0.3, unit: 'mg/kg' as const },
+  },
+  cri: {
+    standard: { min: 0.1, max: 0.5, unit: 'mg/kg/h' as const },
+    refractorySE: { max: 1.0, unit: 'mg/kg/h' as const },
+    inCocktails: { min: 0.1, max: 0.2, unit: 'mg/kg/h' as const },
+  },
+}
+
+export const midazolamSafetyThresholds = {
+  criHighRiskMgKgH: 1.0,
+}
+
+import type { IndicatedDose } from '../../types/drug'
+
+export const midazolamIndicatedDoses: IndicatedDose[] = [
+  // CRI - Padrão
+  {
+    mode: 'CRI',
+    species: 'ambos',
+    unit: 'mg/kg/h',
+    range: { min: 0.1, max: 0.5 },
+    purpose: 'Sedação/Anticonvulsivante',
+  },
+  // CRI - Refratário
+  {
+    mode: 'CRI',
+    species: 'ambos',
+    unit: 'mg/kg/h',
+    range: { min: 0.5, max: 1.0 },
+    purpose: 'Status epilepticus refratário',
+  },
+  // Bolus - Cão
+  {
+    mode: 'BOLUS',
+    species: 'cao',
+    unit: 'mg/kg/h', // será convertido para mg/kg
+    range: { min: 0.1, max: 0.5 },
+    purpose: 'Bolus IV',
+    note: 'Bolus em mg/kg (não por hora)',
+  },
+  // Bolus - Gato
+  {
+    mode: 'BOLUS',
+    species: 'gato',
+    unit: 'mg/kg/h', // será convertido para mg/kg
+    range: { min: 0.1, max: 0.3 },
+    purpose: 'Bolus IV',
+    note: 'Bolus em mg/kg (não por hora)',
+  },
+]
+export const remifentanilVials = [
+  { label: 'Remifentanil 1 mg (pó)', mg: 1 },
+  { label: 'Remifentanil 2 mg (pó)', mg: 2 },
+  { label: 'Remifentanil 5 mg (pó)', mg: 5 },
+]
+
+// Reconstituição: 1 mL por 1 mg -> solução mãe 1 mg/mL (1000 mcg/mL)
+export const remiReconstitution = {
+  motherSolution: { mgPerMl: 1, mcgPerMl: 1000 },
+  warning: 'NUNCA administrar solução mãe diretamente (concentração altíssima).',
+  step: 'Adicionar 1 mL de diluente para cada 1 mg de pó → 1 mg/mL.',
+}
+
+export const remiTargets = {
+  finalConcentrationMcgMlOptions: [50, 20], // 50 padrão; 20 para pequenos/gatos
+}
+
+export const remiDoses = {
+  unitStandard: 'mcg/kg/min' as const,
+  inductionCoInduction: { min: 2.5, max: 5.0 },
+  maintenance: { min: 0.1, max: 0.5 },
+  veryPainful: { max: 1.0 },
+  icuSedation: { min: 0.05, max: 0.1 },
+}
+
+// Sistema de unidade recomendada
+export const remifentanilRecommendedUnit = 'mcg/kg/min'
+export const remifentanilRecommendedUnitWhy = [
+  'Unidade padrão para CRI de remifentanil em anestesia e UTI.',
+  'Permite titulação fina e precisa (0.05-1.0 mcg/kg/min).',
+  'Evita confusão com conversões e reduz erros de cálculo.',
+  'Padrão internacional para opioides de ação ultracurta.',
+]
+
+import type { IndicatedDose } from '../../types/drug'
+
+export const remifentanilIndicatedDoses: IndicatedDose[] = [
+  // CRI - Manutenção (cão)
+  {
+    mode: 'CRI',
+    species: 'cao',
+    unit: 'mcg/kg/min',
+    range: { min: 0.1, max: 0.2 },
+    purpose: 'Manutenção analgesia',
+    note: '🔴 FISIOLOGIA: Remifentanil é metabolizado por esterases plasmáticas, independente de função hepática/renal. Meia-vida ultracurta (~3-5 min) permite despertar rápido e previsível. 🟢 PROTOCOLO: Iniciar em 0.1 mcg/kg/min e titular conforme necessidade anestésica e resposta ventilatória. Monitorar EtCO2 rigorosamente.',
+  },
+  // CRI - Cirurgia muito dolorosa (cão)
+  {
+    mode: 'CRI',
+    species: 'cao',
+    unit: 'mcg/kg/min',
+    range: { min: 0.5, max: 1.0 },
+    purpose: 'Cirurgia muito dolorosa',
+    note: '🔴 FISIOLOGIA: Doses altas (0.5-1.0 mcg/kg/min) proporcionam analgesia intensa mas com risco significativo de apneia e depressão respiratória. 🟢 PROTOCOLO: Usar apenas em pacientes ventilados. Monitorar PA, FC e EtCO2 continuamente.',
+  },
+  // CRI - UTI sedação (cão)
+  {
+    mode: 'CRI',
+    species: 'cao',
+    unit: 'mcg/kg/min',
+    range: { min: 0.05, max: 0.1 },
+    purpose: 'UTI sedação',
+    note: '🔴 FISIOLOGIA: Doses baixas mantêm sedação leve com menor risco de acúmulo. Clearance rápido permite ajuste rápido. 🟢 PROTOCOLO: Ideal para pacientes críticos que precisam de avaliação neurológica frequente.',
+  },
+  // CRI - Manutenção (gato)
+  {
+    mode: 'CRI',
+    species: 'gato',
+    unit: 'mcg/kg/min',
+    range: { min: 0.067, max: 0.1 },
+    purpose: 'Manutenção analgesia',
+    note: '🔴 FISIOLOGIA: Gatos podem ser mais sensíveis a opioides. Doses ligeiramente menores (0.067-0.1 mcg/kg/min) são geralmente suficientes. 🟢 PROTOCOLO: Iniciar em 0.067 mcg/kg/min e titular conforme resposta. Monitorar ventilação e profundidade anestésica.',
+  },
+  // CRI - Indução/Co-indução (ambos) - ALERTA
+  {
+    mode: 'CRI',
+    species: 'ambos',
+    unit: 'mcg/kg/min',
+    range: { min: 2.5, max: 5.0 },
+    purpose: 'Indução/Co-indução',
+    note: '🔴 FISIOLOGIA: Doses muito altas (2.5-5.0 mcg/kg/min) causam apneia imediata e bradicardia severa. ⛔ ALERTA CRÍTICO: NUNCA usar bolus IV. Iniciar CRI diretamente. 🟢 PROTOCOLO: Apenas em pacientes intubados e ventilados. Monitoramento invasivo obrigatório.',
+  },
+]
+import type { IndicatedDose } from '../../types/drug'
+
+export const dobutaminePresentations = [
+  { label: 'Dobutamina 12,5 mg/mL (frasco 20 mL = 250 mg)', mgPerMl: 12.5 },
+]
+
+export const dobutamineDoses = {
+  dog: {
+    criStart: { min: 2.5, max: 5.0, unit: 'mcg/kg/min' as const },
+    criUsual: { min: 5.0, max: 15.0, unit: 'mcg/kg/min' as const },
+    criMax: { max: 20, unit: 'mcg/kg/min' as const },
+    titration: 'Aumentar 2.5 mcg/kg/min a cada 15–30 min conforme resposta',
+    alert: 'Risco elevado de taquiarritmia acima de 20 mcg/kg/min',
+  },
+  cat: {
+    criStart: { min: 0.5, max: 1.0, unit: 'mcg/kg/min' as const },
+    criUsual: { min: 0.5, max: 4.0, unit: 'mcg/kg/min' as const },
+    criMax: { max: 5.0, unit: 'mcg/kg/min' as const },
+    titration: 'Aumentar 0.5 mcg/kg/min a cada 15–30 min conforme resposta',
+    alert: 'RISCO DE TREMOR/CONVULSÃO acima de 5 mcg/kg/min. Desligar imediatamente se surgirem sinais neurológicos.',
+  },
+}
+
+export const dobutamineRecommendedUnit = 'mcg/kg/min'
+export const dobutamineRecommendedUnitWhy = [
+  'Unidade padrão para inotrópicos em CRI.',
+  'Facilita titulação e monitoramento da resposta hemodinâmica.',
+  'Permite ajuste fino conforme resposta clínica (pulso, perfusão, lactato).',
+]
+
+export const dobutamineIndicatedDoses: IndicatedDose[] = [
+  // CRI - Cão
+  {
+    mode: 'CRI',
+    species: 'cao',
+    unit: 'mcg/kg/min',
+    range: { min: 2.5, max: 20 },
+    purpose: 'Suporte inotrópico (choque cardiogênico, baixo débito, sepse com disfunção miocárdica)',
+    note: 'Iniciar em 2.5–5.0 µg/kg/min. Titular +2.5 µg/kg/min a cada 15–30 min conforme resposta. Manutenção usual: 5–15 µg/kg/min. Teto segurança: 20 µg/kg/min.',
+  },
+  // CRI - Gato
+  {
+    mode: 'CRI',
+    species: 'gato',
+    unit: 'mcg/kg/min',
+    range: { min: 0.5, max: 5.0 },
+    purpose: 'Suporte inotrópico (com extrema cautela)',
+    note: 'Teto ABSOLUTO: 5.0 µg/kg/min. Iniciar em 0.5–1.0 µg/kg/min. Titular +0.5 µg/kg/min a cada 15–30 min. Monitorar sinais neurológicos (tremores/convulsões). Desligar imediatamente se surgirem.',
+  },
+]
+
+import type { IndicatedDose } from '../../types/drug'
+
+export const norepinephrinePresentations = [
+  { label: 'Norepinefrina 1 mg/mL (ampola 4 mL = 4 mg)', mgPerMl: 1 },
+  { label: 'Norepinefrina 2 mg/mL', mgPerMl: 2 },
+]
+
+export const norepinephrineDoses = {
+  dog: {
+    criStart: { min: 0.05, max: 0.1, unit: 'mcg/kg/min' as const },
+    criUsual: { min: 0.1, max: 1.0, unit: 'mcg/kg/min' as const },
+    criMax: { max: 3.0, unit: 'mcg/kg/min' as const },
+    titration: 'Aumentar 0.05 mcg/kg/min a cada 5–10 min conforme resposta',
+    alert: 'Choque refratário: até 1.0–3.0 mcg/kg/min. Reavaliar volume responsivo e considerar vasopressina adjuvante.',
+  },
+  cat: {
+    criStart: { min: 0.05, max: 0.1, unit: 'mcg/kg/min' as const },
+    criUsual: { min: 0.1, max: 0.5, unit: 'mcg/kg/min' as const },
+    criMax: { max: 0.5, unit: 'mcg/kg/min' as const },
+    titration: 'Aumentar 0.05 mcg/kg/min a cada 5–10 min conforme resposta',
+    alert: 'Gatos são mais sensíveis à vasoconstrição renal. Monitorar débito urinário rigorosamente. Teto: 0.5 mcg/kg/min.',
+  },
+}
+
+export const norepinephrineRecommendedUnit = 'mcg/kg/min'
+export const norepinephrineRecommendedUnitWhy = [
+  'Unidade padrão para vasopressores em CRI.',
+  'Dose é por MINUTO, não por hora.',
+  'Facilita titulação por MAP e perfusão.',
+  'Permite ajuste fino conforme resposta clínica (lactato, diurese, extremidades).',
+]
+
+export const norepinephrineIndicatedDoses: IndicatedDose[] = [
+  // CRI - Cão - Inicial
+  {
+    mode: 'CRI',
+    species: 'cao',
+    unit: 'mcg/kg/min',
+    range: { min: 0.05, max: 0.1 },
+    purpose: 'Dose inicial - Choque distributivo/vasoplegia',
+    note: 'Iniciar após otimização volêmica. Titular +0.05 mcg/kg/min a cada 5–10 min. Monitorar MAP invasiva (alvo: ≥65 mmHg) e perfusão (lactato, diurese, extremidades).',
+  },
+  // CRI - Cão - Manutenção
+  {
+    mode: 'CRI',
+    species: 'cao',
+    unit: 'mcg/kg/min',
+    range: { min: 0.1, max: 1.0 },
+    purpose: 'Manutenção usual - Choque distributivo/vasoplegia',
+    note: 'Dose de manutenção após resposta inicial. Continuar monitoramento MAP e perfusão. Reavaliar volume responsivo se doses sobem.',
+  },
+  // CRI - Cão - Choque Refratário
+  {
+    mode: 'CRI',
+    species: 'cao',
+    unit: 'mcg/kg/min',
+    range: { min: 1.0, max: 3.0 },
+    purpose: 'Choque refratário - Doses altas',
+    note: 'Usar apenas em choque refratário após otimização volêmica. Reavaliar volume responsivo e considerar vasopressina adjuvante se doses sobem muito. Monitoramento intensivo obrigatório.',
+  },
+  // CRI - Gato
+  {
+    mode: 'CRI',
+    species: 'gato',
+    unit: 'mcg/kg/min',
+    range: { min: 0.05, max: 0.5 },
+    purpose: 'Choque distributivo/vasoplegia (gatos mais sensíveis)',
+    note: 'Gatos são mais sensíveis à vasoconstrição renal. Iniciar 0.05–0.1 mcg/kg/min. Titular +0.05 mcg/kg/min a cada 5–10 min. Monitorar débito urinário rigorosamente. Teto absoluto: 0.5 mcg/kg/min. Alvo MAP: ≥60 mmHg.',
+  },
+]
+
+import type { IndicatedDose } from '../../types/drug'
+
+export const lidocaineRecommendedUnit = 'mcg/kg/min'
+export const lidocaineRecommendedUnitWhy = [
+  'Unidade padrão para antiarrítmicos em CRI.',
+  'Facilita titulação e monitoramento da resposta antiarrítmica.',
+  'Permite ajuste fino conforme ritmo cardíaco e sinais de toxicidade.',
+]
+
+export const lidocaineIndicatedDoses: IndicatedDose[] = [
+  // CRI - Cão
+  {
+    mode: 'CRI',
+    species: 'cao',
+    unit: 'mcg/kg/min',
+    range: { min: 25, max: 80 },
+    purpose: 'Taquiarritmias ventriculares (VT) e ectopia ventricular',
+    note: 'Bolus inicial 2–4 mg/kg IV lento. CRI 25–80 mcg/kg/min após resposta ao bolus. Monitorar SNC e PA.',
+  },
+  // CRI - Gato
+  {
+    mode: 'CRI',
+    species: 'gato',
+    unit: 'mcg/kg/min',
+    range: { min: 10, max: 40 },
+    purpose: 'Taquiarritmias ventriculares (alto risco de toxicidade)',
+    note: 'Bolus inicial 0.25–0.5 mg/kg IV lento. CRI 10–40 mcg/kg/min com monitorização intensiva. Gatos são muito sensíveis à toxicidade.',
+  },
+  // Bolus - Cão
+  {
+    mode: 'bolus',
+    species: 'cao',
+    unit: 'mg/kg',
+    range: { min: 2, max: 4 },
+    purpose: 'Bolus IV para VT',
+    note: 'IV lento. Repetir até dose total 8 mg/kg em ≥10 min se necessário.',
+  },
+  // Bolus - Gato
+  {
+    mode: 'bolus',
+    species: 'gato',
+    unit: 'mg/kg',
+    range: { min: 0.25, max: 0.5 },
+    purpose: 'Bolus IV para VT (alto risco)',
+    note: 'IV lento. Pode considerar até 1 mg/kg em situações selecionadas. Repetir 0.15–0.25 mg/kg até dose total 4 mg/kg se efetivo.',
+  },
+]
+import type { IndicatedDose } from '../../types/drug'
+
+export const dexmedetomidineRecommendedUnit = 'mcg/kg/h'
+export const dexmedetomidineRecommendedUnitWhy = [
+  'Unidade padrão para dexmedetomidina em CRI.',
+  'Facilita titulação fina da sedação/analgesia.',
+  'Permite ajuste conforme resposta hemodinâmica e necessidade de sedação.',
+  'Faixa típica: 0,25–2 mcg/kg/h.',
+]
+
+export const dexmedetomidineIndicatedDoses: IndicatedDose[] = [
+  // CRI - Cão
+  {
+    mode: 'CRI',
+    species: 'cao',
+    unit: 'mcg/kg/h',
+    range: { min: 0.25, max: 2.0 },
+    purpose: 'Sedação/analgesia e MAC-sparing',
+    note: '🔴 FISIOLOGIA: Dexmedetomidina é agonista α2-adrenérgico seletivo. Em CRI (0.25-2 mcg/kg/h), proporciona sedação, analgesia e redução de MAC. Efeitos: bradicardia, vasoconstrição periférica, redução de secreções. Metabolismo hepático. 🟢 PROTOCOLO: Iniciar baixo (0.25-0.5 mcg/kg/h) e titular. Monitorar PA, FC, perfusão periférica. Evitar em cardiopatas graves ou hipotensão não corrigida.',
+  },
+  // CRI - Gato
+  {
+    mode: 'CRI',
+    species: 'gato',
+    unit: 'mcg/kg/h',
+    range: { min: 0.25, max: 2.0 },
+    purpose: 'Sedação/analgesia e MAC-sparing',
+    note: '🔴 FISIOLOGIA: Gatos podem ser mais sensíveis, especialmente cardiopatas e hipotérmicos. Efeitos similares: sedação, analgesia, bradicardia, vasoconstrição. 🟢 PROTOCOLO: Iniciar muito baixo (0.25 mcg/kg/h), sobretudo em cardiopatas/hipotérmicos. Titular com cautela. Monitorar PA, FC, perfusão. Atenção à bradicardia severa.',
+  },
+  // Bolus - Cão
+  {
+    mode: 'BOLUS',
+    species: 'cao',
+    unit: 'mcg/kg/h', // Será tratado como mcg/kg para bolus
+    range: { min: 1, max: 10 },
+    purpose: 'Sedação/analgesia para procedimentos',
+    note: '🔴 FISIOLOGIA: Bolus IM/IV/SC (1-10 mcg/kg) proporciona sedação e analgesia de curta duração. Via IV tem início mais rápido. Efeitos: sedação, analgesia, bradicardia, vasoconstrição. 🟢 PROTOCOLO: IM/IV/SC. Em IV, aplicar lentamente e titular ao efeito. Monitorar PA, FC, perfusão. Ter atipamezol disponível se necessário.',
+  },
+  // Bolus - Gato
+  {
+    mode: 'BOLUS',
+    species: 'gato',
+    unit: 'mcg/kg/h', // Será tratado como mcg/kg para bolus
+    range: { min: 1, max: 10 },
+    purpose: 'Sedação/analgesia para procedimentos',
+    note: '🔴 FISIOLOGIA: Gatos podem ter resposta mais variável. Efeitos similares: sedação, analgesia, bradicardia, vasoconstrição, hipotermia. Risco de vômito. 🟢 PROTOCOLO: IM/IV/SC. Em IV, aplicar muito lentamente e titular ao efeito. Atenção à bradicardia, hipotermia e vômito. Monitorar PA, FC, perfusão. Ter atipamezol disponível.',
+  },
+]
+import type { IndicatedDose } from '../../types/drug'
+
+export const propofolRecommendedUnit = 'mg/kg/h'
+export const propofolRecommendedUnitWhy = [
+  'Unidade padrão para propofol em CRI/TIVA.',
+  'Facilita cálculo e monitoramento da taxa de infusão.',
+  'Permite ajuste fino conforme profundidade anestésica e resposta hemodinâmica.',
+  'Faixa típica: 6–30 mg/kg/h (cães) e 12–60 mg/kg/h (gatos).',
+]
+
+export const propofolIndicatedDoses: IndicatedDose[] = [
+  // CRI - Cão
+  {
+    mode: 'CRI',
+    species: 'cao',
+    unit: 'mg/kg/h',
+    range: { min: 6, max: 30 },
+    purpose: 'Manutenção de anestesia (TIVA)',
+    note: '🔴 FISIOLOGIA: Propofol é anestésico hipnótico que atua via modulação GABA. Em CRI (6-30 mg/kg/h = 0.1-0.5 mg/kg/min), mantém anestesia estável. Metabolismo hepático rápido permite despertar rápido. Em associações (fentanil/cetamina), doses menores (6-18 mg/kg/h) são suficientes. 🟢 PROTOCOLO: Sempre associar analgesia (opioide). Monitorar PA, FC, EtCO2. Titular conforme profundidade anestésica. Evitar infusões prolongadas sem monitoramento.',
+  },
+  // CRI - Gato
+  {
+    mode: 'CRI',
+    species: 'gato',
+    unit: 'mg/kg/h',
+    range: { min: 12, max: 60 },
+    purpose: 'Manutenção de anestesia (TIVA)',
+    note: '🔴 FISIOLOGIA: Gatos podem precisar de doses maiores (12-60 mg/kg/h = 0.2-1.0 mg/kg/min) devido a diferenças farmacocinéticas. Meia-vida pode ser mais longa em infusões prolongadas. Gatos anêmicos têm risco aumentado de toxicidade (oxidação de hemoglobina). 🟢 PROTOCOLO: Iniciar em 12-18 mg/kg/h e titular. Evitar repetição/prolongamento em gatos anêmicos. Monitorar cor da mucosa e hemoglobina. Sempre associar analgesia.',
+  },
+  // Bolus - Cão
+  {
+    mode: 'BOLUS',
+    species: 'cao',
+    unit: 'mg/kg/h', // Será tratado como mg/kg para bolus
+    range: { min: 1, max: 6 },
+    purpose: 'Indução de anestesia',
+    note: '🔴 FISIOLOGIA: Propofol causa depressão cardiovascular e respiratória dose-dependente. Administração lenta reduz apneia e hipotensão. 🟢 PROTOCOLO: Titrar em bolus incrementais lentos (0.5-1 mg/kg por vez) até intubação. Administrar lentamente (~60-90 s). Ter suporte ventilatório disponível. Monitorar PA e SpO2.',
+  },
+  // Bolus - Gato
+  {
+    mode: 'BOLUS',
+    species: 'gato',
+    unit: 'mg/kg/h', // Será tratado como mg/kg para bolus
+    range: { min: 1, max: 10 },
+    purpose: 'Indução de anestesia',
+    note: '🔴 FISIOLOGIA: Gatos têm faixa ampla (1-10 mg/kg) dependendo de estado clínico e premedicação. Doentes/premedicados precisam de menos. Risco de toxicidade em anêmicos. 🟢 PROTOCOLO: Titrar lentamente ao efeito. Em doente/premedicado, frequentemente 2-5 mg/kg é suficiente. Evitar repetição em gatos anêmicos. Monitorar cor da mucosa.',
+  },
+]
+import type { IndicatedDose } from '../../types/drug'
+
+export const methadoneRecommendedUnit = 'mg/kg'
+export const methadoneRecommendedUnitWhy = [
+  'Unidade padrão para metadona em bolus (IM/IV).',
+  'Facilita cálculo e monitoramento da dose de analgesia.',
+  'Permite ajuste fino conforme resposta à dor e monitorização respiratória.',
+  'Para CRI, usar mg/kg/h conforme protocolo.',
+]
+
+export const methadoneIndicatedDoses: IndicatedDose[] = [
+  // CRI - Cão
+  {
+    mode: 'CRI',
+    species: 'cao',
+    unit: 'mg/kg/h',
+    range: { min: 0.05, max: 0.2 },
+    purpose: 'Analgesia estável perioperatória (poupador de anestésico)',
+    note: '🔴 FISIOLOGIA: Metadona é agonista μ-opioide com meia-vida longa (~3-5 h). Em CRI (0.05-0.2 mg/kg/h), mantém concentração plasmática estável, reduzindo necessidade de anestésicos inalatórios (MAC-sparing). Metabolismo hepático extenso. 🟢 PROTOCOLO: Usar como centro 0.1 mg/kg/h e titular conforme dor, sedação e ventilação. Monitorar SpO2 e EtCO2. Redosar se necessário.',
+  },
+  // Bolus - Cão
+  {
+    mode: 'BOLUS',
+    species: 'cao',
+    unit: 'mg/kg/h', // Será tratado como mg/kg para bolus
+    range: { min: 0.5, max: 1.0 },
+    purpose: 'Analgesia perioperatória (IM/IV)',
+    note: '🔴 FISIOLOGIA: Metadona em bolus (0.5-1.0 mg/kg) proporciona analgesia de longa duração (4-6 h). Pico em 30-60 min (IM) ou 5-15 min (IV). 🟢 PROTOCOLO: Faixa recomendada q3-4h. IV: titular lentamente ao efeito. IM: absorção mais lenta mas previsível. Monitorar ventilação e sedação.',
+  },
+  // Bolus - Gato
+  {
+    mode: 'BOLUS',
+    species: 'gato',
+    unit: 'mg/kg/h', // Será tratado como mg/kg para bolus
+    range: { min: 0.3, max: 0.5 },
+    purpose: 'Analgesia perioperatória (IM/IV)',
+    note: '🔴 FISIOLOGIA: Gatos podem precisar de doses ligeiramente menores (0.3-0.5 mg/kg). Duração similar (4-6 h). Via SC tem absorção mais variável. 🟢 PROTOCOLO: Faixa recomendada q4h. Guia prático: 0.1-0.5 mg/kg IM/IV/SC. Preferir IV/IM quando possível (SC mais variável). Monitorar ventilação.',
+  },
+]
+import type { IndicatedDose } from '../../types/drug'
+
+export const insulinRegularPresentations = [
+  { label: 'Insulina Regular 100 U/mL (frasco 10 mL)', mgPerMl: 100 },
+  { label: 'Insulina Regular 100 U/mL (frasco 3 mL)', mgPerMl: 100 },
+  { label: 'Insulina diluída 1 U/mL (preparo)', mgPerMl: 1 },
+  { label: 'Insulina diluída 0.5 U/mL (preparo)', mgPerMl: 0.5 },
+]
+
+export const insulinRegularRecommendedUnit = 'U/kg/h'
+export const insulinRegularRecommendedUnitWhy = [
+  'Unidade padrão para insulina em CRI para tratamento de cetoacidose diabética (CAD).',
+  'Dose é em UNIDADES por kg por hora (U/kg/h), não mg/kg/h.',
+  'Permite titulação fina conforme resposta glicêmica seriada.',
+  'Meta: reduzir glicemia gradualmente (50–75 mg/dL/h).',
+  'IMPORTANTE: Frasco comercial tem 100 U/mL — SEMPRE diluir antes de usar IV.',
+]
+
+export const insulinRegularIndicatedDoses: IndicatedDose[] = [
+  // CRI - Cão - CAD
+  {
+    mode: 'CRI',
+    species: 'cao',
+    unit: 'U/kg/h',
+    range: { min: 0.025, max: 0.1 },
+    purpose: 'Cetoacidose diabética (CAD) / Síndrome hiperglicêmica hiperosmolar (HHS)',
+    note: '🔴 **FISIOLOGIA**: O alvo na CAD é **parar a cetogênese**, não normalizar a glicemia imediatamente. A insulina permite o uso da glicose pela célula, mas também desloca **Potássio (K+)** e Fósforo para dentro dela — risco de arritmias se não houver reposição.\n\n⚠️ **SEGURANÇA**: A queda da glicemia deve ser **GRADUAL (50–75 mg/dL/h)**. Se cair muito rápido, há risco de edema cerebral.\n\n🟢 **PROTOCOLO**: Use CRI IV ou protocolo de "Bolsa de 250 mL". Quando a glicemia baixar de **250 mg/dL**, NÃO PARE A INSULINA! Adicione **dextrose** ao fluido do paciente para continuar tratando a cetose sem causar hipoglicemia.',
+  },
+  // CRI - Gato - CAD
+  {
+    mode: 'CRI',
+    species: 'gato',
+    unit: 'U/kg/h',
+    range: { min: 0.0125, max: 0.05 },
+    purpose: 'CAD/HHS — Gatos (mais sensíveis)',
+    note: '🔴 **FISIOLOGIA**: Gatos têm menor reserva e maior sensibilidade. Hipoglicemia silenciosa é risco real. O alvo é reverter a cetose com segurança.\n\n⚠️ **SEGURANÇA**: Cautela com doses > 0.05 U/kg/h. Gatos são muito sensíveis a shifts de **Potássio (K+)**. Monitorar eletrólitos é lei.\n\n🟢 **PROTOCOLO**: Use doses conservadoras (comece com ~1.1 U/kg na bolsa de 250 mL). Quando a glicemia baixar de **250 mg/dL**, inicie dextrose. Ajuste pela tabela (sliding-scale) com rigor.',
+  },
+  // Bolus IM - Cão
+  {
+    mode: 'BOLUS',
+    species: 'cao',
+    unit: 'U/kg',
+    range: { min: 0.2, max: 0.25 },
+    purpose: 'IM intermitente (alternativa quando não há bomba)',
+    note: 'ALTERNATIVA se não há bomba: 0,2–0,25 U/kg IM inicial, depois 0,1 U/kg IM q2–4h (ajustar ±25%). Evitar SC no início se desidratado/hipotenso. Preferir CRI sempre que possível.',
+  },
+  // Bolus IM - Gato
+  {
+    mode: 'BOLUS',
+    species: 'gato',
+    unit: 'U/kg',
+    range: { min: 0.05, max: 0.1 },
+    purpose: 'IM intermitente (uso com cautela)',
+    note: 'Uso com cautela em gatos — risco alto de hipoglicemia. Aplicar IM a cada 4–6 h. Monitorar glicemia rigorosamente. Preferir CRI sempre que possível para maior segurança.',
+  },
+]
+import type { IndicatedDose } from '../../types/drug'
+
+export const metoclopramidaRecommendedUnit = 'mg/kg/h'
+export const metoclopramidaRecommendedUnitWhy = [
+  'Unidade padrão para metoclopramida em CRI para tratamento de vômito persistente.',
+  'CRI costuma ter melhor eficácia clínica que bolus repetidos (especialmente em parvovirose).',
+  'Meta: reduzir frequência de vômitos e promover esvaziamento gástrico sem excitação/tremores.',
+  'IMPORTANTE: Não usar se houver suspeita de obstrução GI/corpo estranho/perfuração.',
+]
+
+export const metoclopramidaIndicatedDoses: IndicatedDose[] = [
+  // CRI - Cão - Vômito persistente/Pró-cinético
+  {
+    mode: 'CRI',
+    species: 'cao',
+    unit: 'mg/kg/h',
+    range: { min: 0.04, max: 0.08 },
+    purpose: 'Vômito persistente / Pró-cinético GI superior',
+    note: '🔴 FISIOLOGIA: Metoclopramida bloqueia receptores D2 no centro do vômito (CRTZ) e age como pró-cinético no GI superior. Em CRI, mantém níveis estáveis e geralmente tem melhor eficácia clínica que bolus repetidos, especialmente em parvovirose e vômito persistente. A dose de 0.04–0.08 mg/kg/h equivale a 1–2 mg/kg/dia. Em gatos, a eficácia antiemética é menor (CRTZ menos dependente de D2) e há maior risco de efeitos extrapiramidais (excitação/tremores). 🟢 PROTOCOLO: Preferir CRI IV ao invés de bolus repetidos. Iniciar no mínimo da faixa (0.04 mg/kg/h) e subir conforme resposta e ausência de sinais extrapiramidais. Reavaliar vômito e status neurológico em 30–60 min. Se surgirem tremores/excitação, reduzir 25–50% ou suspender e trocar para maropitant/ondansetron. Proteger da luz em CRI (fotossensível). Reduzir dose em insuficiência renal (25% menor). BLOQUEAR se suspeita de obstrução GI.',
+  },
+  // CRI - Gato - Conservadora
+  {
+    mode: 'CRI',
+    species: 'gato',
+    unit: 'mg/kg/h',
+    range: { min: 0.03, max: 0.06 },
+    purpose: 'CRI conservadora — Gatos (maior risco de efeitos SNC)',
+    note: '🔴 FISIOLOGIA: Em gatos, a CRTZ é menos dependente de D2, então a eficácia antiemética da metoclopramida é frequentemente inferior. Além disso, há maior risco de sinais extrapiramidais (excitação/tremores/ataxia), especialmente com doses > 0.06 mg/kg/h. Por isso, doses conservadoras (0.03–0.06 mg/kg/h, equivalente a 0.72–1.44 mg/kg/dia) são recomendadas quando a metoclopramida é usada em gatos. 🟢 PROTOCOLO: Preferir maropitant ou ondansetron quando o objetivo é antiemese pura. Se usar metoclopramida, manter dose conservadora (iniciar 0.03 mg/kg/h) e monitorar rigorosamente sinais extrapiramidais. Se surgirem tremores/excitação, suspender imediatamente. Reduzir dose em insuficiência renal. BLOQUEAR se suspeita de obstrução GI.',
+  },
+  // Bolus - Cão
+  {
+    mode: 'BOLUS',
+    species: 'cao',
+    unit: 'mg/kg',
+    range: { min: 0.1, max: 0.5 },
+    purpose: 'Antiemético/Pró-cinético (bolus IV)',
+    note: 'Dose típica antiemética/pró-cinética q6–8h. Preferir dose menor (0.1–0.2 mg/kg) em cães sensíveis/idosos/renais. Se objetivo é vômito persistente, considerar CRI ao invés de bolus repetidos. IV lento quando possível. BLOQUEAR se suspeita de obstrução GI.',
+  },
+  // Bolus - Gato
+  {
+    mode: 'BOLUS',
+    species: 'gato',
+    unit: 'mg/kg',
+    range: { min: 0.1, max: 0.3 },
+    purpose: 'Bolus IV (uso com cautela)',
+    note: 'Em gatos, preferir menor dose por maior risco de excitação/tremores e menor eficácia antiemética. Preferir maropitant/ondansetron quando objetivo é antiemese pura. IV lento. BLOQUEAR se suspeita de obstrução GI.',
+  },
+]
+import type { IndicatedDose } from '../../types/drug'
+
+// Sistema de unidade recomendada
+export const maropitantRecommendedUnit = 'mg/kg/h'
+export const maropitantRecommendedUnitWhy = [
+  'Unidade padrão para CRI de maropitant em uso prolongado.',
+  'Facilita cálculo de infusão contínua (0.05-0.1 mg/kg/h).',
+  'Evita confusão entre bolus (mg/kg) e CRI (mg/kg/h).',
+  'Padrão para antieméticos em infusão contínua.',
+]
+
+export const maropitantIndicatedDoses: IndicatedDose[] = [
+  // Bolus - Cão
+  {
+    mode: 'BOLUS',
+    species: 'cao',
+    unit: 'mg/kg/h', // Será tratado como mg/kg para bolus
+    range: { min: 1, max: 1 },
+    purpose: 'Antiemético padrão',
+    note: '🔴 FISIOLOGIA: Maropitant bloqueia o receptor NK-1 (substância P) no centro do vômito (área postrema e NTS), inibindo tanto o estímulo central quanto periférico. 🟢 PROTOCOLO: Administrar 1 mg/kg por via SC (preferível) ou IV lento. Duração de efeito ~24h. Evitar IM em gatos (dor local significativa).',
+  },
+  // Bolus - Gato
+  {
+    mode: 'BOLUS',
+    species: 'gato',
+    unit: 'mg/kg/h', // Será tratado como mg/kg para bolus
+    range: { min: 1, max: 1 },
+    purpose: 'Antiemético padrão',
+    note: '🔴 FISIOLOGIA: Gatos apresentam meia-vida mais curta e maior sensibilidade local à injeção. Via IV lenta é preferível para evitar dor. 🟢 PROTOCOLO: Administrar 1 mg/kg por via IV lenta. NUNCA usar IM/SC em gatos devido à dor local intensa. Duração ~24h.',
+  },
+  // CRI - Cão
+  {
+    mode: 'CRI',
+    species: 'cao',
+    unit: 'mg/kg/h',
+    range: { min: 0.05, max: 0.1 },
+    purpose: 'Antiemético contínuo',
+    note: '🔴 FISIOLOGIA: CRI de maropitant mantém concentração plasmática estável, útil em casos de vômitos persistentes ou prevenção perioperatória prolongada. Metabolismo hepático requer monitoramento em uso prolongado. 🟢 PROTOCOLO: Iniciar em 0.05 mg/kg/h e ajustar conforme resposta clínica. Máximo 0.1 mg/kg/h. Monitorar função hepática em uso >48h.',
+  },
+  // CRI - Gato
+  {
+    mode: 'CRI',
+    species: 'gato',
+    unit: 'mg/kg/h',
+    range: { min: 0.05, max: 0.1 },
+    purpose: 'Antiemético contínuo',
+    note: '🔴 FISIOLOGIA: CRI em gatos mantém efeito antiemético sem necessidade de redosagem frequente. Cautela em hepatopatas devido ao metabolismo hepático. 🟢 PROTOCOLO: Iniciar em 0.05 mg/kg/h. Manter dose mínima eficaz. Evitar uso prolongado (>48h) sem monitoramento hepático.',
+  },
+]
+import type { IndicatedDose } from '../../types/drug'
+
+// Sistema de unidade recomendada
+export const ephedrineRecommendedUnit = 'mg/kg/h' // Para bolus, será tratado como mg/kg
+export const ephedrineRecommendedUnitWhy = [
+  'Efedrina é usada principalmente como bolus IV (0.1-0.2 mg/kg).',
+  'CRI não é uso típico; se hipotensão persistente, preferir vasopressor direto em CRI.',
+  'Unidade mg/kg facilita cálculo de bolus e evita confusão.',
+  'Padrão para vasopressores de ação curta em bolus.',
+]
+
+export const ephedrineIndicatedDoses: IndicatedDose[] = [
+  // Bolus - Cão
+  {
+    mode: 'BOLUS',
+    species: 'cao',
+    unit: 'mg/kg/h', // Será tratado como mg/kg para bolus
+    range: { min: 0.1, max: 0.2 },
+    purpose: 'Hipotensão intra-anestésica',
+    note: '🔴 FISIOLOGIA: Efedrina é simpaticomimético misto (ação direta α/β + liberação de noradrenalina endógena). Aumenta PA e DC via múltiplos mecanismos. Taquifilaxia é esperada com doses repetidas (depleção de estoques de NE). 🟢 PROTOCOLO: Bolus IV lento, titulado ao efeito pressórico. Reavaliar PA/FC em 1-3 min. Duração típica ~10-15 min. Se 2ª dose for pouco efetiva, suspeitar taquifilaxia e migrar para vasopressor direto (norepinefrina/dobutamina).',
+  },
+  // Bolus - Gato
+  {
+    mode: 'BOLUS',
+    species: 'gato',
+    unit: 'mg/kg/h', // Será tratado como mg/kg para bolus
+    range: { min: 0.1, max: 0.2 },
+    purpose: 'Hipotensão intra-anestésica',
+    note: '🔴 FISIOLOGIA: Gatos podem responder bem a efedrina, mas cautela em HCM devido ao risco de piorar taquicardia e obstrução dinâmica. Simpaticomimese pode aumentar demanda miocárdica. 🟢 PROTOCOLO: Bolus IV lento, dose mínima efetiva. Evitar em HCM com obstrução dinâmica. Monitorar ECG e PA invasiva se possível. Se resposta cai após repetição, trocar estratégia.',
+  },
+]

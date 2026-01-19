@@ -23,29 +23,27 @@ export const dobutamineDoses = {
 
 export const dobutamineRecommendedUnit = 'mcg/kg/min'
 export const dobutamineRecommendedUnitWhy = [
-  'Unidade padrão para inotrópicos em CRI.',
-  'Facilita titulação e monitoramento da resposta hemodinâmica.',
-  'Permite ajuste fino conforme resposta clínica (pulso, perfusão, lactato).',
+  'Padrão para inotrópico de ação rápida; titulação por minuto.',
 ]
 
 export const dobutamineIndicatedDoses: IndicatedDose[] = [
-  // CRI - Cão
   {
     mode: 'CRI',
     species: 'cao',
     unit: 'mcg/kg/min',
     range: { min: 2.5, max: 20 },
-    purpose: 'Suporte inotrópico (choque cardiogênico, baixo débito, sepse com disfunção miocárdica)',
-    note: 'Iniciar em 2.5–5.0 µg/kg/min. Titular +2.5 µg/kg/min a cada 15–30 min conforme resposta. Manutenção usual: 5–15 µg/kg/min. Teto segurança: 20 µg/kg/min.',
+    purpose: 'Inotropia (titrate to effect)',
+    routine_default: '5 mcg/kg/min',
+    note: 'Titular conforme perfusão, FC/ritmo, PA. Teto segurança: 20 µg/kg/min.',
   },
-  // CRI - Gato
   {
     mode: 'CRI',
     species: 'gato',
     unit: 'mcg/kg/min',
     range: { min: 0.5, max: 5.0 },
-    purpose: 'Suporte inotrópico (com extrema cautela)',
-    note: 'Teto ABSOLUTO: 5.0 µg/kg/min. Iniciar em 0.5–1.0 µg/kg/min. Titular +0.5 µg/kg/min a cada 15–30 min. Monitorar sinais neurológicos (tremores/convulsões). Desligar imediatamente se surgirem.',
+    purpose: 'Suporte inotrópico',
+    routine_default: '2.5 mcg/kg/min',
+    note: 'Teto ABSOLUTO: 5.0 µg/kg/min. Desligar se surgirem sinais SNC.',
   },
 ]
 

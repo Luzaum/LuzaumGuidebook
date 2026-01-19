@@ -44,57 +44,65 @@ export const ketamineSafetyThresholds = {
 }
 
 // Sistema de unidade recomendada (sem bloqueios)
-export const ketamineRecommendedUnit = 'mcg/kg/min'
+export const ketamineRecommendedUnit = 'mg/kg/h'
 export const ketamineRecommendedUnitWhy = [
-  'CRI de cetamina é por MINUTO (mcg/kg/min).',
-  'Evita erro 60× quando alguém converte errado para hora.',
-  'Mantém a faixa analgésica (2–10 mcg/kg/min) clara no app.',
+  'Em tabelas de CRI e na prática, mg/kg/h é menos propenso a erro do que mcg/kg/min; o app pode exibir equivalência.',
 ]
 
 import type { IndicatedDose } from '../../types/drug'
 
 export const ketamineIndicatedDoses: IndicatedDose[] = [
-  // CRI - Analgesia (microdose)
+  {
+    mode: 'CRI',
+    species: 'cao',
+    unit: 'mg/kg/h',
+    range: { min: 0.1, max: 1.0 },
+    purpose: 'Analgesia/anti-hiperalgesia (CRI comum)',
+    routine_default: '0.3 mg/kg/h',
+    note: 'Equivalente: ~1.7–16.7 mcg/kg/min.',
+  },
+  // Mantendo versões em mcg/kg/min para suporte legado/TIVA alta se necessário, mas convertendo para mg/kg/h onde possível
+  {
+    mode: 'CRI',
+    species: 'ambos', // Mantendo para compatibilidade
+    unit: 'mg/kg/h',
+    range: { min: 0.1, max: 1.0 },
+    purpose: 'Analgesia (microdose)',
+    routine_default: '0.3 mg/kg/h',
+  },
   {
     mode: 'CRI',
     species: 'ambos',
     unit: 'mcg/kg/min',
-    range: { min: 2, max: 10 },
-    purpose: 'Analgesia (microdose)',
+    range: { min: 10, max: 50 }, // TIVA alta mantida
+    purpose: 'TIVA (associado)',
+    note: 'Doses anestésicas. Nunca usar isolado; associar benzo + opioide e monitorar via aérea',
   },
-  // Bolus - Ataque CRI
+  // Bolus - Ataque
   {
     mode: 'BOLUS',
     species: 'ambos',
-    unit: 'mg/kg/min', // será convertido para mg/kg
+    unit: 'mg/kg',
     range: { min: 0.25, max: 0.5 },
     purpose: 'Bolus ataque CRI',
-    note: 'Bolus em mg/kg IV lento (2–3 min)',
-  },
-  // CRI - TIVA
-  {
-    mode: 'CRI',
-    species: 'ambos',
-    unit: 'mcg/kg/min',
-    range: { min: 10, max: 50 },
-    purpose: 'TIVA (associado)',
-    note: 'Nunca usar isolado; associar benzo + opioide e monitorar via aérea',
+    routine_default: '0.5 mg/kg',
+    note: 'IV lento (2–3 min)',
   },
   // Bolus - Indução/Contenção
   {
     mode: 'BOLUS',
     species: 'cao',
-    unit: 'mg/kg/min', // será convertido para mg/kg
+    unit: 'mg/kg',
     range: { min: 2, max: 5 },
     purpose: 'Indução/Contenção',
-    note: 'Bolus em mg/kg IV (preferir associar benzodiazepínico)',
+    note: 'IV (preferir associar benzodiazepínico)',
   },
   {
     mode: 'BOLUS',
     species: 'gato',
-    unit: 'mg/kg/min', // será convertido para mg/kg
-    range: { min: 2, max: 5 },
+    unit: 'mg/kg',
+    range: { min: 2, max: 5 }, // IV
     purpose: 'Indução/Contenção',
-    note: 'Bolus em mg/kg IV (sempre com benzo) ou 5–10 mg/kg IM',
+    note: 'IV (sempre com benzo) ou 5–10 mg/kg IM',
   },
 ]

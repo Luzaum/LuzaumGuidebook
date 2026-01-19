@@ -191,10 +191,11 @@ export const insulina_regularProfile: DrugProfile = {
   ],
   dilution_and_preparation: {
     hard_rules: [
+      '🟥 DKA: preparar INSULINA REGULAR apenas em NaCl 0,9% (SF). NÃO preparar em Glicosado 5% (D5W).',
+      '🟨 Dextrose (2,5–5%) deve ser ajustada no fluido do paciente conforme glicemia, mantendo insulina para resolver cetose.',
       'Em CAD/HHS, evitar SC no início (absorção imprevisível em desidratação/hipotensão).',
       'Preferir NaCl 0,9% como diluente do preparo de insulina (seringa/bolsa).',
       'Primar/descartar ~50 mL iniciais quando usar bolsa/linha para reduzir subdosagem por adsorção ao plástico.',
-      'Quando BG < 250 mg/dL, adicionar dextrose aos fluidos (não "parar" insulina; manter para resolver cetose).',
     ],
     recommended_targets: [
       {
@@ -246,10 +247,6 @@ export const insulina_regularProfile: DrugProfile = {
       'Evita variação de entrega por co-infusão/flush e reduz risco de erros e incompatibilidades.',
   },
   compatibility: {
-    diluents_allowed: ['NaCl 0,9%'],
-    diluents_ok: ['NaCl 0,9%'],
-    diluentsAllowed: ['NaCl 0,9%'],
-    diluents: ['NaCl 0,9%'],
     compatible_in_syringe_or_bag: [],
     compatible_y_site_only: [],
     incompatible: [
@@ -264,10 +261,7 @@ export const insulina_regularProfile: DrugProfile = {
         risk: 'inativação',
       },
     ],
-    avoid_same_syringe_or_precipitation_risk: [
-      'Não co-misturar com outros fármacos (usar linha dedicada).',
-      'Evitar preparar a insulina em D5W; preparar em NaCl 0,9% e adicionar dextrose ao fluido do paciente quando indicado.',
-    ],
+
     dedicated_line_rules: [
       'Linha dedicada sempre que possível.',
       'Se Y-site for inevitável, minimizar flush e documentar qualquer alteração de taxa.',
@@ -486,9 +480,9 @@ export const insulina_regularProfile: DrugProfile = {
         },
         {
           if: "diluent == 'Glicosado 5%'",
-          then: 'WARN',
+          then: 'BLOCK',
           message:
-            'Evite preparar insulina em D5W. Prepare em NaCl 0,9% e adicione dextrose ao fluido do paciente quando BG < 250 mg/dL.',
+            '🟥 Em DKA, preparar INSULINA REGULAR apenas em NaCl 0,9% (SF). NÃO preparar em Glicosado 5% (D5W). Dextrose entra no fluido do paciente conforme a tabela.',
         },
       ],
       soft_safety_checks: [

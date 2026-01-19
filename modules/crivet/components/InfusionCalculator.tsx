@@ -13,6 +13,8 @@ import { DrugProfileWarning } from './DrugProfileWarning'
 import { HelpModal } from './HelpModal'
 import { HelpContentRenderer } from './HelpContent'
 import { getDrugProfileValidation } from '../utils/drugProfileRegistry'
+import { InsulinDKAProtocolCard } from './cards/InsulinDKAProtocolCard'
+import { INSULIN_CONCENTRATIONS, InsulinConcentrationOption } from '../data/drugs/insulin_concentrations'
 import { convertDose } from '../engine/conversions'
 import { evaluateDrugAlerts } from '../engine/drugAlerts'
 import { convertToPatientFlags } from '../utils/patientFlags'
@@ -325,30 +327,30 @@ export default function InfusionCalculator({
             <div
               key={index}
               className={`rounded-lg border p-4 ${alert.severity === 'critical'
-                  ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
-                  : 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800'
+                ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
+                : 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800'
                 }`}
             >
               <div className="flex items-start gap-3">
                 <AlertTriangle
                   className={`w-5 h-5 flex-shrink-0 ${alert.severity === 'critical'
-                      ? 'text-red-500'
-                      : 'text-amber-500'
+                    ? 'text-red-500'
+                    : 'text-amber-500'
                     }`}
                 />
                 <div className="flex-1">
                   <p
                     className={`text-sm font-semibold ${alert.severity === 'critical'
-                        ? 'text-red-800 dark:text-red-200'
-                        : 'text-amber-800 dark:text-amber-200'
+                      ? 'text-red-800 dark:text-red-200'
+                      : 'text-amber-800 dark:text-amber-200'
                       }`}
                   >
                     {alert.title}
                   </p>
                   <p
                     className={`text-sm mt-1 ${alert.severity === 'critical'
-                        ? 'text-red-700 dark:text-red-200'
-                        : 'text-amber-700 dark:text-amber-200'
+                      ? 'text-red-700 dark:text-red-200'
+                      : 'text-amber-700 dark:text-amber-200'
                       }`}
                   >
                     {alert.message}
@@ -363,8 +365,8 @@ export default function InfusionCalculator({
       {doseRangeAlert && (
         <div
           className={`rounded-lg border p-4 ${doseRangeAlert.severity === 'critical'
-              ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
-              : 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800'
+            ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
+            : 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800'
             }`}
         >
           <div className="flex gap-3">
@@ -374,8 +376,8 @@ export default function InfusionCalculator({
             />
             <p
               className={`text-sm font-semibold ${doseRangeAlert.severity === 'critical'
-                  ? 'text-red-900 dark:text-red-100'
-                  : 'text-amber-900 dark:text-amber-100'
+                ? 'text-red-900 dark:text-red-100'
+                : 'text-amber-900 dark:text-amber-100'
                 }`}
             >
               {doseRangeAlert.message}
@@ -397,13 +399,13 @@ export default function InfusionCalculator({
                 title: alert.title,
                 sections: [
                   {
-                    level: alert.level === 'critical' ? 'CRITICAL' : alert.level === 'warning' ? 'IMPORTANT' : 'INFO',
+                    level: (alert.level === 'critical' ? 'CRITICAL' : alert.level === 'warning' ? 'IMPORTANT' : 'INFO') as 'CRITICAL' | 'IMPORTANT' | 'INFO',
                     items: alert.why.map((reason) => ({ text: reason })),
                   },
                   ...(alert.actions.length
                     ? [
                       {
-                        level: 'INFO',
+                        level: 'INFO' as const,
                         items: alert.actions.map((action) => ({ text: action, highlight: 'green' })),
                       },
                     ]
@@ -542,10 +544,10 @@ export default function InfusionCalculator({
             {selectedDrug?.unitRules?.unitHints?.[doseUnit] && (
               <div
                 className={`rounded-md border p-2 text-xs ${selectedDrug.unitRules.unitHints[doseUnit].level === 'critical'
-                    ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-800 dark:text-red-200'
-                    : selectedDrug.unitRules.unitHints[doseUnit].level === 'warning'
-                      ? 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-200'
-                      : 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800 text-blue-800 dark:text-blue-200'
+                  ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-800 dark:text-red-200'
+                  : selectedDrug.unitRules.unitHints[doseUnit].level === 'warning'
+                    ? 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-200'
+                    : 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800 text-blue-800 dark:text-blue-200'
                   }`}
               >
                 <p className="font-semibold">
@@ -556,43 +558,136 @@ export default function InfusionCalculator({
                 </p>
               </div>
             )}
+            {/* Banner de alerta crítico para unidade BLOQUEADA (safetyBlocks) */}
+            {selectedDrug?.safetyBlocks?.filter(block => block.block_if_unit.includes(doseUnit)).map((block, idx) => (
+              <div
+                key={`block-${idx}`}
+                className="rounded-md border p-2 text-xs bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-800 dark:text-red-200"
+              >
+                <p className="font-semibold">
+                  ⛔ {block.message}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
 
+        {selectedDrug?.id === 'insulina_regular' && (
+          <div className="mb-4">
+            <InsulinDKAProtocolCard />
+          </div>
+        )}
+
         <div className="space-y-2">
-          <FieldLabel text="Concentração do fármaco" tooltipId="drug_concentration_help" />
-          {!isCustomConcentration && selectedDrug?.concentrations.length ? (
-            <select
-              value={concentration}
-              onChange={(event) => handleConcentrationSelect(event.target.value)}
-              className="w-full rounded-md border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 py-2 px-3 text-sm focus:border-sky-500 focus:ring-sky-500"
-            >
-              {selectedDrug.concentrations.map((c) => (
-                <option key={c} value={c}>
-                  {c} mg/mL
-                </option>
-              ))}
-              <option value="custom">Custom...</option>
-            </select>
-          ) : (
-            <div className="flex gap-2">
-              <input
-                type="number"
-                value={concentration}
-                onChange={handleConcentrationChange}
-                placeholder="Conc. (mg/mL)"
-                step="0.01"
-                className="flex-1 rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 px-3 text-sm focus:border-sky-500 focus:ring-sky-500"
-              />
-              {selectedDrug?.concentrations.length ? (
-                <button
-                  onClick={() => handleConcentrationSelect(selectedDrug.concentrations[0].toString())}
-                  className="px-3 rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm text-slate-700 dark:text-slate-200"
+          <FieldLabel
+            text={selectedDrug?.id === 'insulina_regular' ? "Apresentação / Concentração (Insulina)" : "Concentração do fármaco"}
+            tooltipId="drug_concentration_help"
+          />
+          {selectedDrug?.id === 'insulina_regular' ? (
+            <div className="space-y-3">
+              <div className="relative">
+                <select
+                  value={concentration} // Value is the numeric concentration (e.g. 100 or 40)
+                  onChange={(event) => {
+                    const val = event.target.value;
+                    if (val === 'custom') {
+                      setIsCustomConcentration(true);
+                      setConcentration('');
+                    } else {
+                      // Find the option to get the exact numeric value just in case, though value holds it
+                      // Actually, we can just use the value directly if it's unique enough or handle logic
+                      // But here value is the concentration string.
+                      // Let's rely on the numeric value.
+                      setConcentration(val);
+                      setIsCustomConcentration(false);
+                    }
+                  }}
+                  className="w-full rounded-md border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 py-3 px-3 text-sm focus:border-sky-500 focus:ring-sky-500 shadow-sm"
                 >
-                  Lista
-                </button>
-              ) : null}
+                  <option value="" disabled>Selecione a insulina...</option>
+                  {INSULIN_CONCENTRATIONS.map((opt) => (
+                    <option key={opt.id} value={opt.units_per_ml}>
+                      {opt.concentration_label}
+                    </option>
+                  ))}
+                  <option value="custom">Outra / Diluição Customizada...</option>
+                </select>
+              </div>
+
+              {/* Show selected insulin details/warnings */}
+              {!isCustomConcentration && concentration && (() => {
+                const selectedOpt = INSULIN_CONCENTRATIONS.find(opt => opt.units_per_ml.toString() === concentration);
+                if (selectedOpt) {
+                  return (
+                    <div className={`text-xs p-3 rounded-md border ${selectedOpt.u_strength === 'U-40'
+                      ? 'bg-red-50 dark:bg-red-900/10 border-red-200 dark:border-red-800 text-red-800 dark:text-red-300'
+                      : 'bg-slate-50 dark:bg-slate-900/30 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400'
+                      }`}>
+                      <div className="flex gap-2 items-start">
+                        <span className="mt-0.5">{selectedOpt.u_strength === 'U-40' ? '⚠️' : 'ℹ️'}</span>
+                        <div>
+                          <p className="font-semibold">{selectedOpt.name_commercial} ({selectedOpt.u_strength})</p>
+                          <p>{selectedOpt.notes_syringe_match}</p>
+                          {selectedOpt.mg_per_ml_if_known && (
+                            <p className="mt-1 opacity-75">Conc. massa: ~{selectedOpt.mg_per_ml_if_known} mg/mL</p>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  )
+                }
+                return null;
+              })()}
+
+              {isCustomConcentration && (
+                <div className="animate-in fade-in slide-in-from-top-1 duration-200">
+                  <label className="block text-xs text-slate-500 mb-1">Concentração manual (U/mL):</label>
+                  <input
+                    type="number"
+                    value={concentration}
+                    onChange={handleConcentrationChange}
+                    placeholder="Ex: 100"
+                    step="0.1"
+                    className="w-full rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 px-3 text-sm focus:border-sky-500 focus:ring-sky-500"
+                  />
+                </div>
+              )}
             </div>
+          ) : (
+            /* STANDARD SELECTOR FOR OTHER DRUGS */
+            !isCustomConcentration && selectedDrug?.concentrations.length ? (
+              <select
+                value={concentration}
+                onChange={(event) => handleConcentrationSelect(event.target.value)}
+                className="w-full rounded-md border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 py-2 px-3 text-sm focus:border-sky-500 focus:ring-sky-500"
+              >
+                {selectedDrug.concentrations.map((c) => (
+                  <option key={c} value={c}>
+                    {c} mg/mL
+                  </option>
+                ))}
+                <option value="custom">Custom...</option>
+              </select>
+            ) : (
+              <div className="flex gap-2">
+                <input
+                  type="number"
+                  value={concentration}
+                  onChange={handleConcentrationChange}
+                  placeholder="Conc. (mg/mL)"
+                  step="0.01"
+                  className="flex-1 rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 px-3 text-sm focus:border-sky-500 focus:ring-sky-500"
+                />
+                {selectedDrug?.concentrations.length ? (
+                  <button
+                    onClick={() => handleConcentrationSelect(selectedDrug.concentrations[0].toString())}
+                    className="px-3 rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm text-slate-700 dark:text-slate-200"
+                  >
+                    Lista
+                  </button>
+                ) : null}
+              </div>
+            )
           )}
         </div>
 
@@ -641,8 +736,8 @@ export default function InfusionCalculator({
                   type="button"
                   onClick={() => setDilutionType('syringe')}
                   className={`px-4 py-2 rounded-md border text-sm transition ${dilutionType === 'syringe'
-                      ? 'bg-sky-50 dark:bg-sky-900/20 border-sky-500 text-sky-700 dark:text-sky-300 font-medium'
-                      : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
+                    ? 'bg-sky-50 dark:bg-sky-900/20 border-sky-500 text-sky-700 dark:text-sky-300 font-medium'
+                    : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
                     }`}
                 >
                   Seringa
@@ -651,8 +746,8 @@ export default function InfusionCalculator({
                   type="button"
                   onClick={() => setDilutionType('bag')}
                   className={`px-4 py-2 rounded-md border text-sm transition ${dilutionType === 'bag'
-                      ? 'bg-sky-50 dark:bg-sky-900/20 border-sky-500 text-sky-700 dark:text-sky-300 font-medium'
-                      : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
+                    ? 'bg-sky-50 dark:bg-sky-900/20 border-sky-500 text-sky-700 dark:text-sky-300 font-medium'
+                    : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
                     }`}
                 >
                   Bolsa
@@ -799,8 +894,8 @@ export default function InfusionCalculator({
             type="button"
             onClick={() => setMode('direct')}
             className={`px-4 py-2 rounded-md border text-sm transition ${mode === 'direct'
-                ? 'bg-sky-50 dark:bg-sky-900/20 border-sky-500 text-sky-700 dark:text-sky-300 font-medium'
-                : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
+              ? 'bg-sky-50 dark:bg-sky-900/20 border-sky-500 text-sky-700 dark:text-sky-300 font-medium'
+              : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
               }`}
           >
             Infusão direta
@@ -809,8 +904,8 @@ export default function InfusionCalculator({
             type="button"
             onClick={() => setMode('preparation')}
             className={`px-4 py-2 rounded-md border text-sm transition ${mode === 'preparation'
-                ? 'bg-sky-50 dark:bg-sky-900/20 border-sky-500 text-sky-700 dark:text-sky-300 font-medium'
-                : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
+              ? 'bg-sky-50 dark:bg-sky-900/20 border-sky-500 text-sky-700 dark:text-sky-300 font-medium'
+              : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
               }`}
           >
             Preparo (seringa/bolsa)

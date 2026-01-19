@@ -134,8 +134,13 @@ export function NeurologiaApp() {
           </div>
         </div>
       </Modal>
-      <div className="min-h-screen bg-background text-foreground font-sans selection:bg-gold/30">
-        <Header onReset={handleReset} onGoHome={goHome} />
+      <div className="min-h-[100dvh] bg-background text-foreground font-sans selection:bg-gold/30">
+        <Header
+          onReset={handleReset}
+          onGoHome={goHome}
+          onBack={prevStep}
+          showBack={currentStep > 1}
+        />
 
         {currentStep < 5 && (
           <Stepper currentStep={currentStep} totalSteps={5} />

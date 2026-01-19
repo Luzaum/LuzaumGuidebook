@@ -12,6 +12,7 @@ import {
   AlertTriangle,
   Worm,
   LucideIcon,
+  Activity,
 } from 'lucide-react'
 import calcEnergeticaLogo from '@/assets/logos/logo-calculadora-energetica.png'
 
@@ -122,6 +123,14 @@ export const modules: Module[] = [
     status: 'internal',
     icon: Brain,
     iconImage: '/apps/NEURO.png',
+  },
+  {
+    id: 'veteletrolitico',
+    title: 'VetEletrolítico',
+    description: 'Cálculo e reposição de eletrólitos (K+, Na+, Mg2+, etc.)',
+    route: '/veteletrolitico',
+    status: 'internal',
+    icon: Activity,
   },
 ]
 
