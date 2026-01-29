@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Rifa 1-200 - Financeiro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    gridTemplateColumns: {
+                        '20': 'repeat(20, minmax(0, 1fr))'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            /* Ocultar elementos desnecessários na impressão */
+            #numberGrid,
+            .bg-indigo-700,
+            .bg-gradient-to-r,
+            footer {
+                display: none !important;
+            }
+
+            /* Resetar estilos para impressão */
+            body {
+                background: white !important;
+                padding: 10mm !important;
+                font-size: 10pt !important;
+            }
+
+            /* Estilo do container principal */
+            .max-w-6xl {
+                max-width: 100% !important;
+                box-shadow: none !important;
+                border: none !important;
+            }
+
+            /* Título de impressão */
+            .print-header {
+                display: block !important;
+                text-align: center;
+                margin-bottom: 15px;
+                border-bottom: 2px solid #333;
+                padding-bottom: 10px;
+            }
+
+            /* Tabela simplificada */
+            table {
+                width: 100% !important;
+                border-collapse: collapse !important;
+                font-size: 9pt !important;
+            }
+
+            thead {
+                background: #f0f0f0 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            th {
+                padding: 6px 4px !important;
+                border: 1px solid #333 !important;
+                font-weight: bold !important;
+                font-size: 9pt !important;
+                text-align: left !important;
+            }
+
+            td {
+                padding: 4px !important;
+                border: 1px solid #999 !important;
+                font-size: 8pt !important;
+            }
+
+            /* Ocultar inputs e mostrar apenas valores */
+            input,
+            select {
+                border: none !important;
+                background: transparent !important;
+                padding: 0 !important;
+                font-size: 8pt !important;
+                color: #000 !important;
+            }
+
+            /* Ocultar linhas vazias */
+            tr:has(input[value=""]):has(select[value="Não Pago"]) {
+                display: none !important;
+            }
+
+            /* Quebra de página */
+            @page {
+                margin: 15mm;
+                size: A4 portrait;
+            }
+
+            /* Evitar quebra dentro de linhas */
+            tr {
+                page-break-inside: avoid;
+            }
+        }
+
+        input::placeholder {
+            color: #cbd5e1;
+        }
+
+        /* Cabeçalho de impressão (oculto na tela) */
+        .print-header {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen p-4 md:p-8 font-sans">
+
+    <!-- Cabeçalho de Impressão (visível apenas ao imprimir) -->
+    <div class="print-header">
+        <h1 style="font-size: 16pt; font-weight: bold; margin: 0;">🎫 Rifa do Residente Luis - Lista de Participantes
+        </h1>
+        <p style="font-size: 9pt; margin: 5px 0 0 0; color: #666;">Valor por número: R$ 35,00 | Data de impressão: <span
+                id="print-date"></span></p>
+    </div>
+
+    <div class="max-w-6xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+        <!-- Header -->
+        <div class="bg-indigo-700 p-6 text-white flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-4">
+                <img src="../CESTAS.png" alt="Rifa de Cestas"
+                    class="w-16 h-16 md:w-20 md:h-20 rounded-lg shadow-lg object-cover">
+                <div>
+                    <h1 class="text-2xl font-bold">🎫 Rifa do Residente Luis</h1>
+                    <p class="text-indigo-100 opacity-90">Controle Financeiro: R$ 35,00 por número</p>
+                </div>
+            </div>
+            <div class="flex gap-3 no-print">
+                <button onclick="exportToCSV()"
+                    class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold transition-all flex items-center gap-2 shadow-md">
+                    📥 Exportar Excel (.csv)
+                </button>
+                <button onclick="prepareAndPrint()"
+                    class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg font-semibold transition-all">
+                    🖨️ Imprimir
+                </button>
+            </div>
+        </div>
+
+        <!-- Estatísticas Rápidas e Financeiro -->
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 p-6 bg-slate-50 border-b border-gray-200">
+            <div class="p-4 bg-white rounded-lg border border-gray-200 shadow-sm text-center">
+                <span class="block text-xs font-bold uppercase text-gray-400 mb-1">Total Cotas</span>
+                <span class="text-2xl font-black text-gray-700">200</span>
+            </div>
+            <div id="stat-pago"
+                class="p-4 bg-white rounded-lg border border-gray-200 shadow-sm text-center border-l-4 border-l-green-500">
+                <span class="block text-xs font-bold uppercase text-green-600 mb-1">Pagos</span>
+                <span class="text-2xl font-black text-green-600">0</span>
+            </div>
+            <div id="stat-pendente"
+                class="p-4 bg-white rounded-lg border border-gray-200 shadow-sm text-center border-l-4 border-l-red-500">
+                <span class="block text-xs font-bold uppercase text-red-600 mb-1">Pendentes</span>
+                <span class="text-2xl font-black text-red-600">200</span>
+            </div>
+            <div class="p-4 bg-white rounded-lg border border-gray-200 shadow-sm text-center">
+                <span class="block text-xs font-bold uppercase text-gray-400 mb-1">Meta (%)</span>
+                <span id="stat-percent" class="text-2xl font-black text-indigo-600">0%</span>
+            </div>
+            <div id="stat-financeiro"
+                class="p-4 bg-indigo-50 rounded-lg border border-indigo-200 shadow-sm text-center md:col-span-1 col-span-2">
+                <span class="block text-xs font-bold uppercase text-indigo-700 mb-1">Arrecadação Total</span>
+                <span id="total-dinheiro" class="text-2xl font-black text-indigo-800">R$ 0,00</span>
+            </div>
+        </div>
+
+        <!-- Tabela -->
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse" id="rifaTable">
+                <thead class="bg-gray-100 text-gray-700 uppercase text-[10px] tracking-wider font-bold">
+                    <tr>
+                        <th class="px-4 py-4 border-b w-16 text-center">Nº</th>
+                        <th class="px-4 py-4 border-b">Nome do Participante</th>
+                        <th class="px-4 py-4 border-b w-56">Telefone / Contato</th>
+                        <th class="px-4 py-4 border-b w-44 text-center">Status de Pagamento</th>
+                        <th class="px-4 py-4 border-b w-32">Data da Reserva</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody" class="divide-y divide-gray-100">
+                    <!-- Gerado via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Visualização em Grade dos Números -->
+    <div class="max-w-6xl mx-auto mt-8 bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+        <div class="bg-gradient-to-r from-indigo-700 to-purple-700 p-6 text-white">
+            <h2 class="text-2xl font-bold mb-2">📊 Mapa Visual da Rifa</h2>
+            <p class="text-indigo-100 opacity-90">Visualização rápida de todos os números</p>
+        </div>
+
+        <div class="p-6">
+            <!-- Legenda -->
+            <div class="flex flex-wrap gap-4 mb-6 justify-center">
+                <div class="flex items-center gap-2">
+                    <div
+                        class="w-10 h-10 bg-green-500 rounded-lg shadow-md flex items-center justify-center text-white font-bold text-sm">
+                        1
+                    </div>
+                    <span class="text-sm font-semibold text-gray-700">Disponível</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div
+                        class="w-10 h-10 bg-red-500 rounded-lg shadow-md flex items-center justify-center text-white font-bold text-sm">
+                        2
+                    </div>
+                    <span class="text-sm font-semibold text-gray-700">Vendido / Pago</span>
+                </div>
+            </div>
+
+            <!-- Grade de Números (20 colunas x 10 linhas = 200) -->
+            <div id="numberGrid" class="grid grid-cols-20 gap-1 md:gap-2">
+                <!-- Gerado via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-8 text-center text-gray-400 text-sm no-print">
+        Valor por número: <strong>R$ 35,00</strong> | Potencial Total: <strong>R$ 7.000,00</strong>
+    </footer>
+
+    <script>
+        const tableBody = document.getElementById('tableBody');
+        const statPago = document.getElementById('stat-pago').querySelector('span:last-child');
+        const statPendente = document.getElementById('stat-pendente').querySelector('span:last-child');
+        const statPercent = document.getElementById('stat-percent');
+        const totalDinheiro = document.getElementById('total-dinheiro');
+
+        const VALOR_RIFA = 35.00;
+        const DB_NAME = 'RifaDatabase';
+        const DB_VERSION = 1;
+        const STORE_NAME = 'participantes';
+
+        let db = null;
+
+        // ========== INDEXEDDB - BANCO DE DADOS ROBUSTO ==========
+
+        function initDatabase() {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open(DB_NAME, DB_VERSION);
+
+                request.onerror = () => {
+                    console.error('Erro ao abrir banco de dados:', request.error);
+                    reject(request.error);
+                };
+
+                request.onsuccess = () => {
+                    db = request.result;
+                    console.log('✅ Banco de dados conectado com sucesso!');
+                    resolve(db);
+                };
+
+                request.onupgradeneeded = (event) => {
+                    db = event.target.result;
+
+                    // Criar object store se não existir
+                    if (!db.objectStoreNames.contains(STORE_NAME)) {
+                        const objectStore = db.createObjectStore(STORE_NAME, { keyPath: 'numero' });
+                        objectStore.createIndex('status', 'status', { unique: false });
+                        objectStore.createIndex('nome', 'nome', { unique: false });
+                        console.log('📦 Object Store criado com sucesso!');
+                    }
+                };
+            });
+        }
+
+        function saveParticipante(numero, data) {
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction([STORE_NAME], 'readwrite');
+                const objectStore = transaction.objectStore(STORE_NAME);
+
+                const participante = {
+                    numero: numero,
+                    nome: data.nome || '',
+                    telefone: data.telefone || '',
+                    status: data.status || 'Não Pago',
+                    dataReserva: data.dataReserva || ''
+                };
+
+                const request = objectStore.put(participante);
+
+                request.onsuccess = () => resolve(participante);
+                request.onerror = () => reject(request.error);
+            });
+        }
+
+        function getParticipante(numero) {
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction([STORE_NAME], 'readonly');
+                const objectStore = transaction.objectStore(STORE_NAME);
+                const request = objectStore.get(numero);
+
+                request.onsuccess = () => resolve(request.result);
+                request.onerror = () => reject(request.error);
+            });
+        }
+
+        function getAllParticipantes() {
+            return new Promise((resolve, reject) => {
+                const transaction = db.transaction([STORE_NAME], 'readonly');
+                const objectStore = transaction.objectStore(STORE_NAME);
+                const request = objectStore.getAll();
+
+                request.onsuccess = () => resolve(request.result);
+                request.onerror = () => reject(request.error);
+            });
+        }
+
+        // ========== INTERFACE E TABELA ==========
+
+        async function initTable() {
+            const numberGrid = document.getElementById('numberGrid');
+
+            for (let i = 1; i <= 200; i++) {
+                // Criar linha da tabela
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-indigo-50/30 transition-colors";
+                tr.dataset.number = i;
+                tr.innerHTML = `
+                    <td class="px-4 py-3 border-b font-bold text-gray-500 text-center bg-gray-50/50">${i}</td>
+                    <td class="px-4 py-3 border-b">
+                        <input type="text" placeholder="Nome do comprador" 
+                               class="nome-input w-full p-2 bg-transparent border-b border-transparent focus:border-indigo-300 outline-none transition-all text-sm"
+                               data-numero="${i}">
+                    </td>
+                    <td class="px-4 py-3 border-b">
+                        <input type="text" placeholder="(00) 00000-0000" 
+                               class="telefone-input w-full p-2 bg-transparent border-b border-transparent focus:border-indigo-300 outline-none transition-all text-sm"
+                               data-numero="${i}">
+                    </td>
+                    <td class="px-4 py-3 border-b text-center">
+                        <select class="status-select bg-red-50 text-red-600 p-2 rounded-lg text-xs font-bold outline-none cursor-pointer w-full border border-red-200"
+                                data-numero="${i}">
+                            <option value="Não Pago" selected>🔴 Pendente</option>
+                            <option value="Pago">🟢 Pago (R$ 35)</option>
+                        </select>
+                    </td>
+                    <td class="px-4 py-3 border-b">
+                        <input type="date" 
+                               class="data-input w-full p-1 bg-transparent outline-none text-xs text-gray-500"
+                               data-numero="${i}">
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+
+                // Criar célula da grade visual
+                const gridCell = document.createElement('div');
+                gridCell.id = `grid-${i}`;
+                gridCell.className = "w-full h-20 bg-green-500 rounded-lg shadow-md hover:scale-105 transition-transform cursor-pointer p-2";
+                gridCell.style.display = "flex";
+                gridCell.style.flexDirection = "column";
+                gridCell.style.alignItems = "center";
+                gridCell.style.justifyContent = "flex-start";
+                gridCell.style.paddingTop = "8px";
+                gridCell.innerHTML = `
+                    <div style="font-size: 1.25rem; font-weight: bold; color: white; line-height: 1; height: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">${i}</div>
+                    <div class="grid-nome" style="font-size: 0.65rem; font-weight: normal; color: rgba(255,255,255,0.9); text-align: center; width: 100%; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></div>
+                `;
+                gridCell.title = `Número ${i} - Disponível`;
+                numberGrid.appendChild(gridCell);
+            }
+
+            // Adicionar event listeners para auto-save
+            attachEventListeners();
+
+            // Carregar dados salvos
+            await loadSavedData();
+        }
+
+        function attachEventListeners() {
+            // Auto-save em inputs de nome
+            document.querySelectorAll('.nome-input').forEach(input => {
+                input.addEventListener('blur', async (e) => {
+                    const numero = parseInt(e.target.dataset.numero);
+                    updateGridName(numero, e.target.value);
+                    await saveCurrentRow(numero);
+                });
+            });
+
+            // Auto-save em inputs de telefone
+            document.querySelectorAll('.telefone-input').forEach(input => {
+                input.addEventListener('blur', async (e) => {
+                    const numero = parseInt(e.target.dataset.numero);
+                    await saveCurrentRow(numero);
+                });
+            });
+
+            // Auto-save em selects de status
+            document.querySelectorAll('.status-select').forEach(select => {
+                select.addEventListener('change', async (e) => {
+                    const numero = parseInt(e.target.dataset.numero);
+                    updateStatus(e.target);
+                    await saveCurrentRow(numero);
+                });
+            });
+
+            // Auto-save em inputs de data
+            document.querySelectorAll('.data-input').forEach(input => {
+                input.addEventListener('change', async (e) => {
+                    const numero = parseInt(e.target.dataset.numero);
+                    await saveCurrentRow(numero);
+                });
+            });
+        }
+
+        async function saveCurrentRow(numero) {
+            const row = document.querySelector(`tr[data-number="${numero}"]`);
+            if (!row) return;
+
+            const nomeInput = row.querySelector('.nome-input');
+            const telefoneInput = row.querySelector('.telefone-input');
+            const statusSelect = row.querySelector('.status-select');
+            const dataInput = row.querySelector('.data-input');
+
+            const data = {
+                nome: nomeInput.value,
+                telefone: telefoneInput.value,
+                status: statusSelect.value,
+                dataReserva: dataInput.value
+            };
+
+            try {
+                await saveParticipante(numero, data);
+                console.log(`💾 Número ${numero} salvo automaticamente!`);
+            } catch (error) {
+                console.error(`Erro ao salvar número ${numero}:`, error);
+            }
+        }
+
+        async function loadSavedData() {
+            try {
+                const participantes = await getAllParticipantes();
+                console.log(`📂 Carregando ${participantes.length} registros salvos...`);
+
+                participantes.forEach(p => {
+                    const row = document.querySelector(`tr[data-number="${p.numero}"]`);
+                    if (!row) return;
+
+                    const nomeInput = row.querySelector('.nome-input');
+                    const telefoneInput = row.querySelector('.telefone-input');
+                    const statusSelect = row.querySelector('.status-select');
+                    const dataInput = row.querySelector('.data-input');
+
+                    if (nomeInput) nomeInput.value = p.nome || '';
+                    if (telefoneInput) telefoneInput.value = p.telefone || '';
+                    if (statusSelect) {
+                        statusSelect.value = p.status || 'Não Pago';
+                        updateStatus(statusSelect);
+                    }
+                    if (dataInput) dataInput.value = p.dataReserva || '';
+
+                    // Atualizar nome na grade visual
+                    updateGridName(p.numero, p.nome || '');
+                });
+
+                updateStats();
+                console.log('✅ Dados carregados com sucesso!');
+            } catch (error) {
+                console.error('Erro ao carregar dados:', error);
+            }
+        }
+
+        function updateGridName(numero, nome) {
+            const gridCell = document.getElementById(`grid-${numero}`);
+            if (gridCell) {
+                const nomeElement = gridCell.querySelector('.grid-nome');
+                if (nomeElement) {
+                    nomeElement.textContent = nome || '';
+                    // Atualizar tooltip
+                    const status = nome ? 'Reservado' : 'Disponível';
+                    gridCell.title = `Número ${numero} - ${status}${nome ? ': ' + nome : ''}`;
+                }
+            }
+        }
+
+        function updateStatus(select) {
+            // Atualizar visual do select
+            if (select.value === "Pago") {
+                select.classList.remove('bg-red-50', 'text-red-600', 'border-red-200');
+                select.classList.add('bg-green-50', 'text-green-700', 'border-green-200');
+            } else {
+                select.classList.remove('bg-green-50', 'text-green-700', 'border-green-200');
+                select.classList.add('bg-red-50', 'text-red-600', 'border-red-200');
+            }
+
+            // Atualizar grade visual
+            const numero = select.dataset.numero;
+            const gridCell = document.getElementById(`grid-${numero}`);
+
+            if (gridCell) {
+                if (select.value === "Pago") {
+                    // Vermelho = Vendido/Pago
+                    gridCell.className = "w-full aspect-square bg-red-500 rounded-lg shadow-md flex items-center justify-center text-white font-bold text-sm md:text-base hover:scale-105 transition-transform cursor-pointer";
+                    gridCell.title = `Número ${numero} - Vendido/Pago`;
+                } else {
+                    // Verde = Disponível
+                    gridCell.className = "w-full aspect-square bg-green-500 rounded-lg shadow-md flex items-center justify-center text-white font-bold text-sm md:text-base hover:scale-105 transition-transform cursor-pointer";
+                    gridCell.title = `Número ${numero} - Disponível`;
+                }
+            }
+
+            updateStats();
+        }
+
+        function updateStats() {
+            const selects = document.querySelectorAll('.status-select');
+            let pagos = 0;
+            selects.forEach(s => { if (s.value === "Pago") pagos++; });
+
+            const totalArrecadado = pagos * VALOR_RIFA;
+
+            statPago.innerText = pagos;
+            statPendente.innerText = 200 - pagos;
+            statPercent.innerText = Math.round((pagos / 200) * 100) + '%';
+
+            // Formatação de Moeda Brasileira
+            totalDinheiro.innerText = totalArrecadado.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            });
+        }
+
+        function exportToCSV() {
+            const rows = document.querySelectorAll('#tableBody tr');
+            // Header do CSV
+            let csvContent = "\uFEFF"; // Byte Order Mark para Excel reconhecer acentos
+            csvContent += "Numero;Nome;Telefone;Status;Valor;Data Reserva\n";
+
+            rows.forEach(row => {
+                const inputs = row.querySelectorAll('input');
+                const select = row.querySelector('select');
+                const numero = row.cells[0].innerText;
+                const nome = inputs[0].value || "Vazio";
+                const telefone = inputs[1].value || "Vazio";
+                const status = select.value;
+                const valor = status === "Pago" ? "35,00" : "0,00";
+                const data = inputs[2].value || "";
+
+                csvContent += `${numero};${nome};${telefone};${status};${valor};${data}\n`;
+            });
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", `rifa_status_financeiro_${new Date().toLocaleDateString()}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function prepareAndPrint() {
+            // Atualizar data de impressão
+            const printDate = document.getElementById('print-date');
+            if (printDate) {
+                const now = new Date();
+                printDate.textContent = now.toLocaleDateString('pt-BR') + ' às ' + now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+            }
+
+            // Imprimir
+            window.print();
+        }
+
+        // ========== INICIALIZAÇÃO ==========
+
+        window.onload = async () => {
+            try {
+                await initDatabase();
+                await initTable();
+            } catch (error) {
+                console.error('Erro na inicialização:', error);
+                alert('Erro ao inicializar o banco de dados. Por favor, recarregue a página.');
+            }
+        };
+    </script>
+</body>
+
+</html>

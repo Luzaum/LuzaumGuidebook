@@ -13,6 +13,7 @@ import {
   Worm,
   LucideIcon,
   Activity,
+  Ticket,
 } from 'lucide-react'
 import calcEnergeticaLogo from '@/assets/logos/logo-calculadora-energetica.png'
 
@@ -131,6 +132,16 @@ export const modules: Module[] = [
     route: '/veteletrolitico',
     status: 'internal',
     icon: Activity,
+  },
+  {
+    id: 'rifa-luis',
+    title: 'Rifa do Residente Luis',
+    description: 'Gestor de Rifa Profissional - Controle Financeiro',
+    route: '/rifa',
+    status: 'iframe',
+    icon: Ticket,
+    iframeUrl: '/apps/rifa/index.html',
+    iconImage: '/apps/CESTAS.png',
   },
 ]
 

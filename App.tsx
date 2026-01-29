@@ -36,6 +36,7 @@ function AppContent() {
               <Route path="/crivet" element={<CrivetPage />} />
               <Route path="/neurologia" element={<NeurologiaPage />} />
               <Route path="/veteletrolitico" element={<VeteletroliticoPage />} />
+              <Route path="/rifa" element={<ModuleIframe />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Route>
           </Routes>
@@ -64,6 +65,7 @@ function AppContent() {
               <Route path="/crivet" element={<CrivetPage />} />
               <Route path="/neurologia" element={<NeurologiaPage />} />
               <Route path="/veteletrolitico" element={<VeteletroliticoPage />} />
+              <Route path="/rifa" element={<ModuleIframe />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Route>
           </Routes>

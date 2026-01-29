@@ -42,7 +42,7 @@ export function ModuleIframe() {
     try {
       return new URL(url).origin
     } catch {
-      return url
+      return window.location.origin
     }
   }, [])
 
@@ -100,7 +100,7 @@ export function ModuleIframe() {
 
   return (
     <div className="min-h-screen flex flex-col bg-background overflow-hidden">
-      <div 
+      <div
         ref={headerRef}
         className="border-b border-border bg-background/95 backdrop-blur-sm sticky top-0 z-10 flex-shrink-0"
       >
@@ -132,13 +132,12 @@ export function ModuleIframe() {
         </div>
       </div>
       <main className="flex-1 min-h-0 overflow-hidden p-0 sm:p-6">
-        <div 
-          className={`mx-auto w-full max-w-7xl h-full overflow-hidden ${
-            isMobile 
-              ? 'rounded-none border-0' 
+        <div
+          className={`mx-auto w-full max-w-7xl h-full overflow-hidden ${isMobile
+              ? 'rounded-none border-0'
               : 'rounded-xl border border-border/50'
-          }`}
-          style={{ 
+            }`}
+          style={{
             height: headerH > 0 ? `calc(100dvh - ${headerH}px)` : '100dvh'
           }}
         >
