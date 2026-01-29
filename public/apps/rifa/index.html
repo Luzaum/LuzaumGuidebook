@@ -224,10 +224,20 @@
                 </div>
             </div>
 
-            <!-- Grade de Números (20 colunas x 10 linhas = 200) -->
-            <div id="numberGrid" class="grid grid-cols-20 gap-1 md:gap-2">
+            <!-- Grade de Números (10 colunas x 20 linhas = 200) -->
+            <div id="numberGrid" class="grid grid-cols-10 gap-2 md:gap-3">
                 <!-- Gerado via JavaScript -->
             </div>
+        </div>
+
+        <!-- Avisos de Cobrança -->
+        <div id="pendingPayments" class="max-w-6xl mx-auto mt-6 mb-6 no-print">
+            <!-- Gerado via JavaScript -->
+        </div>
+
+        <!-- Avisos de Telefones Faltantes -->
+        <div id="missingPhones" class="max-w-6xl mx-auto mt-6 mb-6 no-print">
+            <!-- Gerado via JavaScript -->
         </div>
     </div>
 
@@ -367,10 +377,10 @@
                 gridCell.style.flexDirection = "column";
                 gridCell.style.alignItems = "center";
                 gridCell.style.justifyContent = "flex-start";
-                gridCell.style.paddingTop = "8px";
+                gridCell.style.paddingTop = "10px";
                 gridCell.innerHTML = `
                     <div style="font-size: 1.25rem; font-weight: bold; color: white; line-height: 1; height: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">${i}</div>
-                    <div class="grid-nome" style="font-size: 0.65rem; font-weight: normal; color: rgba(255,255,255,0.9); text-align: center; width: 100%; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></div>
+                    <div class="grid-nome" style="font-size: 1.05rem; font-weight: normal; color: rgba(255,255,255,0.9); text-align: center; width: 100%; margin-top: 6px; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; max-height: 3em;"></div>
                 `;
                 gridCell.title = `Número ${i} - Disponível`;
                 numberGrid.appendChild(gridCell);
@@ -438,6 +448,9 @@
             try {
                 await saveParticipante(numero, data);
                 console.log(`💾 Número ${numero} salvo automaticamente!`);
+
+                // Atualizar cor do card na grade
+                updateGridName(numero, data.nome, data.status);
             } catch (error) {
                 console.error(`Erro ao salvar número ${numero}:`, error);
             }
@@ -465,8 +478,8 @@
                     }
                     if (dataInput) dataInput.value = p.dataReserva || '';
 
-                    // Atualizar nome na grade visual
-                    updateGridName(p.numero, p.nome || '');
+                    // Atualizar nome e cor na grade visual
+                    updateGridName(p.numero, p.nome || '', p.status || 'Não Pago');
                 });
 
                 updateStats();
@@ -476,16 +489,35 @@
             }
         }
 
-        function updateGridName(numero, nome) {
+        function updateGridName(numero, nome, status = 'Não Pago') {
             const gridCell = document.getElementById(`grid-${numero}`);
             if (gridCell) {
                 const nomeElement = gridCell.querySelector('.grid-nome');
                 if (nomeElement) {
                     nomeElement.textContent = nome || '';
-                    // Atualizar tooltip
-                    const status = nome ? 'Reservado' : 'Disponível';
-                    gridCell.title = `Número ${numero} - ${status}${nome ? ': ' + nome : ''}`;
                 }
+
+                // Aplicar estilos inline consistentes
+                gridCell.style.display = "flex";
+                gridCell.style.flexDirection = "column";
+                gridCell.style.alignItems = "center";
+                gridCell.style.justifyContent = "flex-start";
+                gridCell.style.paddingTop = "10px";
+
+                // Determinar cor baseado no status e nome
+                let bgColor = 'bg-green-500'; // Padrão: disponível
+                let statusText = 'Disponível';
+
+                if (status === 'Pago') {
+                    bgColor = 'bg-red-500';
+                    statusText = 'Vendido/Pago';
+                } else if (nome && nome.trim() !== '') {
+                    bgColor = 'bg-yellow-500';
+                    statusText = 'Reservado (Pendente)';
+                }
+
+                gridCell.className = `w-full h-20 ${bgColor} rounded-lg shadow-md hover:scale-105 transition-transform cursor-pointer p-2`;
+                gridCell.title = `Número ${numero} - ${statusText}${nome ? ': ' + nome : ''}`;
             }
         }
 
@@ -501,18 +533,11 @@
 
             // Atualizar grade visual
             const numero = select.dataset.numero;
-            const gridCell = document.getElementById(`grid-${numero}`);
-
-            if (gridCell) {
-                if (select.value === "Pago") {
-                    // Vermelho = Vendido/Pago
-                    gridCell.className = "w-full aspect-square bg-red-500 rounded-lg shadow-md flex items-center justify-center text-white font-bold text-sm md:text-base hover:scale-105 transition-transform cursor-pointer";
-                    gridCell.title = `Número ${numero} - Vendido/Pago`;
-                } else {
-                    // Verde = Disponível
-                    gridCell.className = "w-full aspect-square bg-green-500 rounded-lg shadow-md flex items-center justify-center text-white font-bold text-sm md:text-base hover:scale-105 transition-transform cursor-pointer";
-                    gridCell.title = `Número ${numero} - Disponível`;
-                }
+            const row = document.querySelector(`tr[data-number="${numero}"]`);
+            if (row) {
+                const nomeInput = row.querySelector('.nome-input');
+                const nome = nomeInput?.value || '';
+                updateGridName(numero, nome, select.value);
             }
 
             updateStats();
@@ -534,6 +559,159 @@
                 style: 'currency',
                 currency: 'BRL'
             });
+
+            // Atualizar avisos de cobrança
+            updatePendingPayments();
+
+            // Atualizar avisos de telefones faltantes
+            updateMissingPhones();
+        }
+
+        function updatePendingPayments() {
+            const pendingContainer = document.getElementById('pendingPayments');
+            const rows = document.querySelectorAll('#tableBody tr');
+            const pending = [];
+
+            rows.forEach(row => {
+                const numero = row.dataset.number;
+                const nomeInput = row.querySelector('.nome-input');
+                const telefoneInput = row.querySelector('.telefone-input');
+                const statusSelect = row.querySelector('.status-select');
+                const dataInput = row.querySelector('.data-input');
+
+                const nome = nomeInput?.value?.trim() || '';
+                const telefone = telefoneInput?.value?.trim() || '';
+                const status = statusSelect?.value || 'Não Pago';
+                const data = dataInput?.value || '';
+
+                // Se tem nome mas não está pago
+                if (nome && status === 'Não Pago') {
+                    pending.push({ numero, nome, telefone, data });
+                }
+            });
+
+            if (pending.length === 0) {
+                pendingContainer.innerHTML = '';
+                return;
+            }
+
+            // Criar HTML dos avisos
+            let html = `
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 rounded-lg shadow-lg p-6">
+                    <div class="flex items-start gap-3 mb-4">
+                        <div class="flex-shrink-0">
+                            <svg class="w-6 h-6 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-yellow-800 mb-1">⚠️ Avisos de Cobrança</h3>
+                            <p class="text-sm text-yellow-700 mb-3">${pending.length} pessoa(s) com número reservado mas ainda não pago:</p>
+                            <div class="space-y-2">
+            `;
+
+            pending.forEach(p => {
+                const telefoneDisplay = p.telefone ? `📞 ${p.telefone}` : '📞 Sem telefone';
+                const dataDisplay = p.data ? `📅 ${new Date(p.data).toLocaleDateString('pt-BR')}` : '';
+
+                html += `
+                    <div class="bg-white rounded-lg p-3 border border-yellow-200 hover:border-yellow-400 transition-colors">
+                        <div class="flex items-center justify-between flex-wrap gap-2">
+                            <div class="flex items-center gap-3">
+                                <span class="inline-flex items-center justify-center w-8 h-8 bg-yellow-500 text-white font-bold rounded-full text-sm">${p.numero}</span>
+                                <span class="font-semibold text-gray-800">${p.nome}</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-gray-600">
+                                <span>${telefoneDisplay}</span>
+                                ${dataDisplay ? `<span>${dataDisplay}</span>` : ''}
+                                <span class="text-yellow-600 font-semibold">R$ 35,00</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            pendingContainer.innerHTML = html;
+        }
+
+        function updateMissingPhones() {
+            const missingContainer = document.getElementById('missingPhones');
+            const rows = document.querySelectorAll('#tableBody tr');
+            const missing = [];
+
+            rows.forEach(row => {
+                const numero = row.dataset.number;
+                const nomeInput = row.querySelector('.nome-input');
+                const telefoneInput = row.querySelector('.telefone-input');
+                const statusSelect = row.querySelector('.status-select');
+                const dataInput = row.querySelector('.data-input');
+
+                const nome = nomeInput?.value?.trim() || '';
+                const telefone = telefoneInput?.value?.trim() || '';
+                const status = statusSelect?.value || 'Não Pago';
+                const data = dataInput?.value || '';
+
+                // Se está pago, tem nome mas não tem telefone
+                if (status === 'Pago' && nome && !telefone) {
+                    missing.push({ numero, nome, data });
+                }
+            });
+
+            if (missing.length === 0) {
+                missingContainer.innerHTML = '';
+                return;
+            }
+
+            // Criar HTML dos avisos
+            let html = `
+                <div class="bg-purple-50 border-l-4 border-purple-400 rounded-lg shadow-lg p-6">
+                    <div class="flex items-start gap-3 mb-4">
+                        <div class="flex-shrink-0">
+                            <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-purple-800 mb-1">📞 Telefones Faltantes</h3>
+                            <p class="text-sm text-purple-700 mb-3">${missing.length} pessoa(s) que pagaram mas ainda sem telefone cadastrado:</p>
+                            <div class="space-y-2">
+            `;
+
+            missing.forEach(p => {
+                const dataDisplay = p.data ? `📅 ${new Date(p.data).toLocaleDateString('pt-BR')}` : '';
+
+                html += `
+                    <div class="bg-white rounded-lg p-3 border border-purple-200 hover:border-purple-400 transition-colors">
+                        <div class="flex items-center justify-between flex-wrap gap-2">
+                            <div class="flex items-center gap-3">
+                                <span class="inline-flex items-center justify-center w-8 h-8 bg-purple-500 text-white font-bold rounded-full text-sm">${p.numero}</span>
+                                <span class="font-semibold text-gray-800">${p.nome}</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-gray-600">
+                                ${dataDisplay ? `<span>${dataDisplay}</span>` : ''}
+                                <span class="text-purple-600 font-semibold">✅ Pago</span>
+                                <span class="text-red-600 font-semibold">❌ Sem telefone</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            missingContainer.innerHTML = html;
         }
 
         function exportToCSV() {
