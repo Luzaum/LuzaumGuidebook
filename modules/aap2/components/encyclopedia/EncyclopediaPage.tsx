@@ -1,138 +1,47 @@
-import React, { useMemo } from 'react';
-import { ANIMAL_CATEGORIES } from '../../data/animals';
-import { AIImage } from '../shared/AIImage';
+import React, { useState, useEffect } from 'react';
+import { EncyclopediaSidebar } from './EncyclopediaSidebar';
+import { EncyclopediaDetail } from './EncyclopediaDetail';
+import { ALL_ANIMALS } from '../../data/animals';
 
 interface EncyclopediaPageProps {
     searchQuery: string;
     onSearchQueryChange: (value: string) => void;
+    selectedAnimalId: string | null;
     onSelectSpecies: (animalId: string) => void;
 }
-
-const CATEGORY_TONE: Record<string, { badge: string; title: string; border: string }> = {
-    cobras: {
-        badge: 'bg-red-500/10 text-red-600',
-        title: 'text-red-600',
-        border: 'border-red-500/30',
-    },
-    aranhas: {
-        badge: 'bg-orange-500/10 text-orange-600',
-        title: 'text-orange-600',
-        border: 'border-orange-500/30',
-    },
-    escorpioes: {
-        badge: 'bg-amber-500/10 text-amber-600',
-        title: 'text-amber-600',
-        border: 'border-amber-500/30',
-    },
-    sapos: {
-        badge: 'bg-lime-500/10 text-lime-600',
-        title: 'text-lime-600',
-        border: 'border-lime-500/30',
-    },
-    outros: {
-        badge: 'bg-emerald-500/10 text-emerald-600',
-        title: 'text-emerald-600',
-        border: 'border-emerald-500/30',
-    },
-};
 
 export const EncyclopediaPage: React.FC<EncyclopediaPageProps> = ({
     searchQuery,
     onSearchQueryChange,
+    selectedAnimalId,
     onSelectSpecies,
 }) => {
-    const normalizedQuery = searchQuery.trim().toLowerCase();
+    // Selection state is now controlled by parent (AAP2Module)
 
-    const filteredCategories = useMemo(() => {
-        if (!normalizedQuery) {
-            return ANIMAL_CATEGORIES;
-        }
-
-        return ANIMAL_CATEGORIES.map(category => ({
-            ...category,
-            animals: category.animals.filter(animal => {
-                const haystack = [
-                    animal.name,
-                    animal.accidentName,
-                    animal.identification,
-                    animal.epidemiology,
-                    ...animal.signs.map(sign => sign.name),
-                ].join(' ').toLowerCase();
-                return haystack.includes(normalizedQuery);
-            }),
-        })).filter(category => category.animals.length > 0);
-    }, [normalizedQuery]);
-
-    const totalResults = filteredCategories.reduce((acc, category) => acc + category.animals.length, 0);
+    const selectedAnimal = selectedAnimalId ? ALL_ANIMALS.find(a => a.id === selectedAnimalId) : null;
 
     return (
-        <>
-            <h2 className="page-title">Enciclopedia de Especies</h2>
-            <p className="page-description">
-                Consulte morfologia, sinais clinicos e condutas por especie. A busca filtra por nome, acidente e sinais.
-            </p>
+        <div className="flex h-full overflow-hidden bg-slate-50">
+            <EncyclopediaSidebar
+                searchQuery={searchQuery}
+                onSearchChange={onSearchQueryChange}
+                selectedAnimalId={selectedAnimalId}
+                onSelectAnimal={onSelectSpecies}
+            />
 
-            <section className="form-section">
-                <label className="form-label" htmlFor="encyclopedia-search">Busca rapida</label>
-                <input
-                    id="encyclopedia-search"
-                    className="form-input"
-                    placeholder="Ex.: jararaca, edema, urina escura..."
-                    type="text"
-                    value={searchQuery}
-                    onChange={e => onSearchQueryChange(e.target.value)}
-                />
-                <p className="page-description" style={{ marginTop: '0.75rem', marginBottom: 0 }}>
-                    {totalResults} resultado(s) encontrado(s).
-                </p>
-            </section>
-
-            {filteredCategories.length === 0 && (
-                <section className="results-section">
-                    <p className="page-description" style={{ marginBottom: 0 }}>
-                        Nenhuma especie encontrada para esta busca.
+            {selectedAnimal ? (
+                <EncyclopediaDetail animal={selectedAnimal} />
+            ) : (
+                <div className="flex-1 flex flex-col items-center justify-center text-slate-400 p-8 text-center bg-slate-50/50">
+                    <div className="w-24 h-24 bg-slate-100 rounded-full flex items-center justify-center mb-6 shadow-inner">
+                        <span className="material-symbols-outlined text-5xl text-slate-300">menu_book</span>
+                    </div>
+                    <h2 className="text-xl font-bold text-slate-700 mb-2">Enciclopédia de Espécies</h2>
+                    <p className="max-w-md text-slate-500">
+                        Selecione uma espécie na barra lateral para visualizar informações detalhadas sobre identificação, sinais clínicos e tratamento.
                     </p>
-                </section>
+                </div>
             )}
-
-            {filteredCategories.map(category => {
-                const tone = CATEGORY_TONE[category.id] ?? {
-                    badge: 'bg-slate-500/10 text-slate-700',
-                    title: 'text-slate-700',
-                    border: 'border-slate-300',
-                };
-
-                return (
-                    <section key={category.id} className="form-section">
-                        <div className="flex items-center gap-3 mb-4">
-                            <h3 className={`text-xl font-black ${tone.title}`}>{category.label}</h3>
-                            <span className={`text-xs font-bold uppercase tracking-wider px-2 py-1 rounded-full ${tone.badge}`}>
-                                {category.animals.length} especie(s)
-                            </span>
-                        </div>
-
-                        <div className="card-grid">
-                            {category.animals.map(animal => (
-                                <button
-                                    key={animal.id}
-                                    type="button"
-                                    className={`animal-card ${tone.border}`}
-                                    onClick={() => onSelectSpecies(animal.id)}
-                                >
-                                    <AIImage
-                                        animalId={animal.id}
-                                        animalName={animal.name}
-                                        imagePrompt={animal.imagePrompt}
-                                        staticImagePath={animal.staticImagePath}
-                                    />
-                                    <h4 className="animal-card-name">{animal.name}</h4>
-                                    <p className="animal-card-accident">{animal.accidentName}</p>
-                                </button>
-                            ))}
-                        </div>
-                    </section>
-                );
-            })}
-        </>
+        </div>
     );
 };

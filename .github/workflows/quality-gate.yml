@@ -1,0 +1,41 @@
+name: quality-gate
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+
+jobs:
+  validate-profiles:
+    name: Drug Profiles Quality Gate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # ── Fase 1 + 2.5: presença de seções + richness ───────────────────────
+      - name: Validate Drug Profiles (PRs — normal mode)
+        if: github.event_name == 'pull_request'
+        run: npm run validate:profiles
+
+      - name: Validate Drug Profiles (main — strict mode)
+        if: github.event_name != 'pull_request'
+        run: npm run validate:profiles:strict
+
+      # ── Fase 3: validar referências do catálogo ───────────────────────────
+      - name: Validate References Catalog
+        run: npm run validate:refs
+
+      # ── Fase 3: validar rulesets por classe clínica ───────────────────────
+      - name: Validate Rulesets
+        run: npm run validate:rulesets

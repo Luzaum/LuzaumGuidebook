@@ -6,7 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "validate:profiles": "tsx scripts/validate-drug-profiles.ts",
+    "validate:profiles:strict": "tsx scripts/validate-drug-profiles.ts --strict",
+    "validate:refs": "tsx scripts/validate-references-catalog.ts",
+    "validate:rulesets": "tsx scripts/validate-rulesets.ts",
+    "normalize:refs": "tsx scripts/normalize-references.ts",
+    "scaffold:profiles": "tsx scripts/scaffold-missing-sections.ts"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.15",
@@ -34,8 +40,11 @@
   "devDependencies": {
     "@types/node": "^22.14.0",
     "autoprefixer": "^10.4.20",
+    "fast-glob": "^3.3.3",
+    "picocolors": "^1.1.1",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.13",
+    "tsx": "^4.21.0",
     "typescript": "~5.8.2",
     "vite": "^6.2.0"
   }

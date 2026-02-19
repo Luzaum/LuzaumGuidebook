@@ -10,6 +10,7 @@ interface AIImageProps {
     animalName: string;
     imagePrompt: string;
     staticImagePath?: string;
+    className?: string;
 }
 
 export const AIImage: React.FC<AIImageProps> = ({
@@ -17,6 +18,7 @@ export const AIImage: React.FC<AIImageProps> = ({
     animalName,
     imagePrompt,
     staticImagePath,
+    className = '',
 }) => {
     const { getImage, setImage } = useImageCache();
     const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -66,7 +68,7 @@ export const AIImage: React.FC<AIImageProps> = ({
                 <img
                     src={finalUrl}
                     alt={`Fotografia de ${animalName}`}
-                    className="ai-image"
+                    className={`ai-image ${className}`}
                     loading="lazy"
                     decoding="async"
                     onError={e => {

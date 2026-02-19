@@ -18,6 +18,8 @@ export interface Animal {
     accidentName: string;        // ex: 'Acidente Botrópico'
     imagePrompt: string;         // prompt para geração de imagem por IA
     staticImagePath?: string;    // caminho para imagem estática em /public/images/
+    family?: string;             // ex: 'Viperidae'
+    riskLevel?: 'high' | 'moderate' | 'low' | 'infectious'; // Nível de risco/toxicidade
     identification: string;      // descrição morfológica para identificação
     signs: ClinicalSign[];
     epidemiology: string;
@@ -81,7 +83,7 @@ export interface ImageCacheEntry {
 
 // --- Navegação ---
 
-export type AppPage = 'home' | 'bulario' | 'suspeitas' | 'tratamentos' | 'enciclopedia' | 'species_detail';
+export type AppPage = 'home' | 'bulario' | 'suspeitas' | 'tratamentos' | 'enciclopedia' | 'species_detail' | 'nova_consulta' | 'relatorio' | 'relatorio_detalhado' | 'historico';
 
 // --- Respostas da API ---
 

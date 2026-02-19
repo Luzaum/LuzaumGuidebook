@@ -12,6 +12,8 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
             {
                 id: 'jararaca',
                 name: 'Jararaca (Bothrops spp.)',
+                family: 'Viperidae',
+                riskLevel: 'high',
                 accidentName: 'Acidente Botrópico',
                 staticImagePath: '/images/jararaca.jpg',
                 imagePrompt: 'A photorealistic, detailed photograph of a Jararaca snake (Bothrops spp.) in the Brazilian rainforest. The image clearly shows its distinctive triangular head and the dark, V-shaped patterns on its brown and gray scales. The snake is coiled on the forest floor, surrounded by damp leaves and vegetation.',
@@ -31,6 +33,8 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
             {
                 id: 'cascavel',
                 name: 'Cascavel (Crotalus durissus)',
+                family: 'Viperidae',
+                riskLevel: 'high',
                 accidentName: 'Acidente Crotálico',
                 staticImagePath: '/images/cascavel.jpg',
                 imagePrompt: 'A highly detailed, photorealistic image of a South American rattlesnake (Crotalus durissus) in a dry, sunny Brazilian Cerrado environment. Focus on the diamond-shaped patterns on its back and the characteristic rattle at the end of its tail. The snake is basking on reddish earth near sparse vegetation.',
@@ -50,6 +54,8 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
             {
                 id: 'coral-verdadeira',
                 name: 'Coral-Verdadeira (Micrurus spp.)',
+                family: 'Elapidae',
+                riskLevel: 'high',
                 accidentName: 'Acidente Micrúrico ou Elapídico',
                 staticImagePath: '/images/coral-verdadeira.jpeg',
                 imagePrompt: 'Macro photograph of a true coral snake (Micrurus spp.) in Brazil, showcasing its vibrant, complete rings of red, black, and white/yellow. The snake is on a dark, natural background that makes its colors pop. The image is sharp and focuses on the smooth scales and rounded head.',
@@ -69,6 +75,8 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
             {
                 id: 'surucucu',
                 name: 'Surucucu-pico-de-jaca (Lachesis muta)',
+                family: 'Viperidae',
+                riskLevel: 'high',
                 accidentName: 'Acidente Laquético',
                 staticImagePath: '/images/surucucu.jpeg',
                 imagePrompt: 'Photorealistic image of a Bushmaster snake (Lachesis muta), the "surucucu-pico-de-jaca", in the Amazon rainforest. The snake has a large body with a pattern of dark diamond shapes on a lighter brown/yellowish background. Emphasize its rough, tuberculate scales, which give it the "pico-de-jaca" (jackfruit-skin) name, and the spine at the tip of its tail.',
@@ -94,6 +102,8 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
             {
                 id: 'aranha-marrom',
                 name: 'Aranha-marrom (Loxosceles spp.)',
+                family: 'Sicariidae',
+                riskLevel: 'high',
                 accidentName: 'Loxoscelismo',
                 staticImagePath: '/images/aranha-marrom.jpg',
                 imagePrompt: 'A detailed macro photo of a brown recluse spider (Loxosceles spp.). The image must clearly show the characteristic violin-shaped marking on its cephalothorax and its six eyes arranged in pairs. The spider is on a wooden surface, simulating an attic or shed environment.',
@@ -112,6 +122,8 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
             {
                 id: 'armadeira',
                 name: 'Armadeira (Phoneutria spp.)',
+                family: 'Ctenidae',
+                riskLevel: 'high',
                 accidentName: 'Foneutrismo',
                 staticImagePath: '/images/armadeira.jpg',
                 imagePrompt: 'A dramatic, National Geographic style photograph of a Brazilian wandering spider (Phoneutria spp.) in its defensive posture. The spider is reared up on its back legs, with its front legs raised high, displaying the red hairs on its chelicerae. The background is slightly blurred to emphasize the spider\'s intimidating display.',
@@ -130,6 +142,8 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
             {
                 id: 'viuva-negra',
                 name: 'Viúva-negra (Latrodectus spp.)',
+                family: 'Theridiidae',
+                riskLevel: 'high',
                 accidentName: 'Latrodectismo',
                 staticImagePath: '/images/viuva-negra.jpeg',
                 imagePrompt: 'A striking macro photograph of a female black widow spider (Latrodectus spp.). The focus is on the iconic red hourglass marking on the underside of its shiny, black, bulbous abdomen. The spider is hanging upside down in its irregular, messy web.',
@@ -154,6 +168,8 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
             {
                 id: 'escorpiao-amarelo',
                 name: 'Escorpião-amarelo (Tityus serrulatus)',
+                family: 'Buthidae',
+                riskLevel: 'high',
                 accidentName: 'Escorpionismo',
                 staticImagePath: '/images/escorpiao-amarelo.jpg',
                 imagePrompt: 'A clear, top-down photograph of a Brazilian yellow scorpion (Tityus serrulatus) on a dark, slightly reflective surface. The image highlights its pale yellow color, darker dorsal stripe, and the serrated segments on its tail. The lighting should be dramatic, casting slight shadows.',
@@ -179,6 +195,8 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
             {
                 id: 'sapo-cururu',
                 name: 'Sapo-cururu (Rhinella spp.)',
+                family: 'Bufonidae',
+                riskLevel: 'moderate',
                 accidentName: 'Envenenamento por Sapo',
                 staticImagePath: '/images/sapo-cururu.jpg',
                 imagePrompt: 'A realistic, eye-level photograph of a Cane Toad (Rhinella spp.) sitting on a grassy lawn at dusk. The image should detail its warty skin and the large, prominent parotoid glands behind its eyes. The toad looks directly at the camera.',
@@ -204,6 +222,8 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
             {
                 id: 'taturana',
                 name: 'Taturana (Lonomia obliqua)',
+                family: 'Saturniidae',
+                riskLevel: 'high',
                 accidentName: 'Erucismo (Lonomismo)',
                 staticImagePath: '/images/taturana-lonomia.jpg',
                 imagePrompt: 'A close-up, macro shot of a colony of Lonomia obliqua caterpillars clustered on a tree trunk. The image must clearly show their green-brown bodies covered in spine-like bristles that resemble tiny pine trees. The lighting should highlight the texture and danger of the caterpillars.',
@@ -222,6 +242,8 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
             {
                 id: 'abelhas',
                 name: 'Abelhas (Ataque Massivo)',
+                family: 'Apidae',
+                riskLevel: 'high',
                 accidentName: 'Apismo (Ataque Múltiplo)',
                 staticImagePath: '/images/abelhas.jpg',
                 imagePrompt: 'A dramatic, action photograph of a swarm of agitated Africanized honey bees flying out from a hive. The focus is on the motion and density of the swarm, conveying a sense of danger. Some bees are in sharp focus while others are blurred by motion.',
@@ -240,6 +262,8 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
             {
                 id: 'vespas',
                 name: 'Vespas / Marimbondos (Ataque Massivo)',
+                family: 'Vespidae',
+                riskLevel: 'moderate',
                 accidentName: 'Envenenamento por Vespas',
                 staticImagePath: '/images/vespas.jpg',
                 imagePrompt: 'A sharp, detailed photograph of a group of large paper wasps (Marimbondos) on their characteristic gray, papery nest under the eaves of a wooden shed. The wasps have slender bodies, long legs, and distinct yellow and black markings. One wasp is in flight nearby.',
@@ -257,6 +281,8 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
             {
                 id: 'angiostrongilose',
                 name: 'Lesmas e Caracóis (Angiostrongilose)',
+                family: 'Gastropoda',
+                riskLevel: 'infectious',
                 accidentName: 'Angiostrongilose',
                 staticImagePath: '/images/lesmas-caracois.jpg',
                 imagePrompt: 'A photorealistic macro shot of a common garden slug slowly moving across a wet green leaf, leaving a glistening slime trail behind. In the slightly blurred background, a garden snail is also visible. The lighting is soft, as if after a rain.',

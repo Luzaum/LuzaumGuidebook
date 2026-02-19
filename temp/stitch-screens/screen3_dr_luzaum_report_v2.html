@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dr. Luzaum AI Analysis Report</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#6D28D9", // Slightly muted violet
+                        "primary-light": "#8B5CF6",
+                        "secondary": "#64748b",
+                        "danger": "#DC2626", // Muted crimson
+                        "background-warm": "#F8F7F4", // Soft cream/light-gray
+                        "surface": "#FFFFFF",
+                        "glass-white": "rgba(255, 255, 255, 0.7)",
+                        "glass-border": "rgba(0, 0, 0, 0.05)",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    boxShadow: {
+                        "soft": "0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.04)",
+                        "glass": "0 8px 32px 0 rgba(31, 38, 135, 0.07)",
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .glass-panel {
+            @apply bg-glass-white backdrop-blur-[12px] border border-glass-border shadow-glass;
+        }
+        .diagnosis-gauge {
+            background: conic-gradient(
+                #6D28D9 0% 92%, 
+                #f1f5f9 92% 100%
+            );
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F8F7F4; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e2e8f0; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #cbd5e1; 
+        }
+    </style>
+</head>
+<body class="bg-background-warm text-slate-800 font-display min-h-screen flex flex-col">
+<header class="sticky top-0 z-50 glass-panel border-b border-glass-border">
+<div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-8 rounded bg-primary text-white">
+<span class="material-symbols-outlined text-[20px]">pets</span>
+</div>
+<div>
+<h1 class="text-slate-900 text-lg font-bold tracking-tight leading-none">Dr. Luzaum AI</h1>
+<span class="text-xs text-secondary font-medium tracking-wide">Veterinary Toxicology</span>
+</div>
+</div>
+<div class="hidden md:flex items-center px-3 py-1 rounded-full bg-primary/5 border border-primary/20">
+<span class="relative flex h-2 w-2 mr-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-40"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="text-xs font-bold text-primary tracking-wide uppercase">Análise Concluída</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="hidden sm:flex items-center justify-center gap-2 h-9 px-4 rounded bg-white border border-slate-200 hover:bg-slate-50 transition text-sm font-medium text-slate-600 group">
+<span class="material-symbols-outlined text-[18px] text-slate-400 group-hover:text-slate-600 transition">print</span>
+<span>Print</span>
+</button>
+<button class="flex items-center justify-center gap-2 h-9 px-4 rounded bg-primary hover:bg-primary-light transition text-sm font-bold text-white shadow-sm">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>PDF Export</span>
+</button>
+<button class="sm:hidden p-2 text-secondary hover:text-slate-900">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow p-4 sm:p-6 lg:p-8 max-w-[1400px] mx-auto w-full">
+<div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 text-primary text-sm font-semibold mb-1">
+<span class="material-symbols-outlined text-[16px]">id_card</span>
+<span>Protocolo #8492XJ</span>
+</div>
+<h2 class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight leading-tight">Relatório de Análise Clínica</h2>
+<p class="text-secondary mt-1">Gerado em 24 de Outubro, 2023 às 14:32</p>
+</div>
+<div class="md:hidden flex self-start items-center px-3 py-1 rounded-full bg-primary/5 border border-primary/20">
+<span class="relative flex h-2 w-2 mr-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-40"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="text-xs font-bold text-primary tracking-wide uppercase">Análise Concluída</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<div class="lg:col-span-4 flex flex-col gap-6">
+<section class="bg-surface rounded-xl p-5 shadow-soft border border-slate-100">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-slate-900 font-bold text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">folder_shared</span>
+                        Síntese do Caso
+                    </h3>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-slate-50 border border-slate-100 p-3 rounded-lg flex flex-col gap-1">
+<span class="text-[10px] text-secondary font-bold uppercase tracking-wider">Espécie</span>
+<div class="flex items-center gap-2 text-slate-800 font-bold">
+<span class="material-symbols-outlined text-primary text-sm">pets</span>
+                            Canino
+                        </div>
+</div>
+<div class="bg-slate-50 border border-slate-100 p-3 rounded-lg flex flex-col gap-1">
+<span class="text-[10px] text-secondary font-bold uppercase tracking-wider">Peso</span>
+<div class="flex items-center gap-2 text-slate-800 font-bold">
+<span class="material-symbols-outlined text-primary text-sm">scale</span>
+                            12.5 kg
+                        </div>
+</div>
+<div class="bg-slate-50 border border-slate-100 p-3 rounded-lg flex flex-col gap-1">
+<span class="text-[10px] text-secondary font-bold uppercase tracking-wider">Localização</span>
+<div class="flex items-center gap-2 text-slate-800 font-bold">
+<span class="material-symbols-outlined text-primary text-sm">location_on</span>
+                            MG
+                        </div>
+</div>
+<div class="bg-slate-50 border border-slate-100 p-3 rounded-lg flex flex-col gap-1">
+<span class="text-[10px] text-secondary font-bold uppercase tracking-wider">Idade Est.</span>
+<div class="flex items-center gap-2 text-slate-800 font-bold">
+<span class="material-symbols-outlined text-primary text-sm">calendar_today</span>
+                            4 Anos
+                        </div>
+</div>
+</div>
+<div class="mt-3 bg-primary/5 border border-primary/10 p-3 rounded-lg flex flex-col gap-1">
+<span class="text-[10px] text-primary font-bold uppercase tracking-wider mb-1">Comorbidades</span>
+<div class="flex items-center gap-2 text-slate-700 font-semibold">
+<span class="material-symbols-outlined text-primary text-sm">ecg_heart</span>
+                        Cardiopatia Dilatada
+                    </div>
+</div>
+</section>
+<section class="bg-surface rounded-xl p-6 relative overflow-hidden shadow-soft border border-slate-100">
+<h3 class="text-slate-900 font-bold text-lg mb-6 flex items-center gap-2 relative z-10">
+<span class="material-symbols-outlined text-primary">medical_services</span>
+                    Diagnóstico Provável
+                </h3>
+<div class="flex flex-col items-center justify-center mb-6 relative z-10">
+<div class="relative w-48 h-48 rounded-full diagnosis-gauge flex items-center justify-center mb-4">
+<div class="w-40 h-40 bg-white rounded-full shadow-inner flex flex-col items-center justify-center z-10">
+<span class="text-5xl font-black text-slate-900 tracking-tighter">92<span class="text-2xl text-slate-400">%</span></span>
+<span class="text-[10px] text-primary font-bold uppercase tracking-wider mt-1">Confiança AI</span>
+</div>
+</div>
+<h4 class="text-2xl font-bold text-slate-900 text-center mb-1">Acidente Botrópico</h4>
+<p class="text-secondary text-sm text-center">Bothrops (Jararaca)</p>
+</div>
+<div class="space-y-3 relative z-10">
+<div class="flex items-center justify-between text-sm">
+<span class="text-slate-600 flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                            Edema Local
+                        </span>
+<span class="text-emerald-600 font-bold text-[10px] bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100 uppercase tracking-wider">Match</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-slate-600 flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                            Hemorragia
+                        </span>
+<span class="text-emerald-600 font-bold text-[10px] bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100 uppercase tracking-wider">Match</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-slate-600 flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                            Ação Proteolítica
+                        </span>
+<span class="text-emerald-600 font-bold text-[10px] bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100 uppercase tracking-wider">Match</span>
+</div>
+<div class="border-t border-slate-100 my-2"></div>
+<div class="flex items-center justify-between text-sm opacity-50">
+<span class="text-slate-600 flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+                            Neurotoxidade
+                        </span>
+<span class="text-slate-400 font-bold text-[10px] bg-slate-50 px-2 py-0.5 rounded border border-slate-100 uppercase tracking-wider">No Match</span>
+</div>
+</div>
+</section>
+<section class="rounded-xl p-5 border border-danger/20 bg-danger/[0.02] shadow-sm relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="text-danger font-black text-lg mb-3 flex items-center gap-2 uppercase tracking-wide">
+<span class="material-symbols-outlined">warning</span>
+                        Contraindicações
+                    </h3>
+<div class="bg-white/80 p-4 rounded-lg border border-danger/10 mb-2">
+<p class="text-danger font-black text-lg mb-1">NÃO USAR AINES</p>
+<p class="text-slate-600 text-sm leading-relaxed">
+                            Alto risco de agravar hemorragias e insuficiência renal aguda em acidentes botrópicos.
+                        </p>
+</div>
+<div class="flex gap-2 text-[11px] text-danger font-semibold px-1">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span>Monitorar tempo de coagulação a cada 4h.</span>
+</div>
+</div>
+</section>
+</div>
+<div class="lg:col-span-8 flex flex-col gap-6">
+<section class="bg-surface rounded-xl p-6 lg:p-8 h-full shadow-soft border border-slate-100">
+<div class="flex flex-wrap items-center justify-between mb-8 gap-4">
+<div>
+<h3 class="text-slate-900 font-bold text-2xl flex items-center gap-3">
+<span class="p-2 rounded-lg bg-primary/10 text-primary material-symbols-outlined">medication</span>
+                            Conduta Terapêutica
+                        </h3>
+<p class="text-secondary mt-1 text-sm">Protocolo sugerido baseado em peso e espécie.</p>
+</div>
+<button class="text-primary hover:text-primary-light text-sm font-bold transition flex items-center gap-1 bg-primary/5 px-3 py-1.5 rounded-lg border border-primary/10">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+                        Editar Protocolo
+                    </button>
+</div>
+<div class="relative">
+<div class="absolute left-[19px] top-4 bottom-10 w-0.5 bg-slate-100"></div>
+<div class="space-y-8">
+<div class="relative pl-12 group">
+<div class="absolute left-0 top-0 w-10 h-10 rounded-full bg-primary border-4 border-white flex items-center justify-center text-white font-bold shadow-sm z-10">1</div>
+<div class="bg-slate-50/50 border border-slate-100 rounded-xl p-5 hover:bg-white hover:border-primary/20 hover:shadow-md transition duration-300">
+<div class="flex flex-wrap justify-between items-start gap-4 mb-3">
+<div>
+<h4 class="text-xl font-bold text-slate-900">Soro Antibotrópico</h4>
+<span class="text-primary text-xs font-bold uppercase tracking-wider">Neutralização da Toxina</span>
+</div>
+<div class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-black uppercase border border-primary/10 tracking-widest">
+                                        Prioridade Alta
+                                    </div>
+</div>
+<div class="grid md:grid-cols-2 gap-4 mt-4">
+<div class="bg-white p-4 rounded-lg border border-slate-100">
+<p class="text-secondary text-[10px] uppercase font-bold mb-1 tracking-wider">Dose Recomendada</p>
+<p class="text-slate-800 font-bold text-xl">3 a 5 Frascos</p>
+<p class="text-slate-400 text-xs mt-1">Diluir em solução fisiológica</p>
+</div>
+<div class="bg-white p-4 rounded-lg border border-slate-100">
+<p class="text-secondary text-[10px] uppercase font-bold mb-1 tracking-wider">Via de Administração</p>
+<p class="text-slate-800 font-bold text-xl">Intravenosa (IV)</p>
+<p class="text-slate-400 text-xs mt-1">Infusão lenta (20-30 min)</p>
+</div>
+</div>
+<div class="mt-4 flex items-start gap-2 text-xs text-slate-600 bg-amber-50/50 p-3 rounded-lg border border-amber-100">
+<span class="material-symbols-outlined text-amber-600 text-[18px]">warning</span>
+<p class="font-medium">Monitorar reações anafiláticas durante a infusão. Manter adrenalina disponível.</p>
+</div>
+</div>
+</div>
+<div class="relative pl-12 group">
+<div class="absolute left-0 top-0 w-10 h-10 rounded-full bg-white border-2 border-slate-200 flex items-center justify-center text-slate-400 font-bold z-10">2</div>
+<div class="bg-slate-50/50 border border-slate-100 rounded-xl p-5 hover:bg-white hover:border-primary/20 hover:shadow-md transition duration-300">
+<div class="flex flex-wrap justify-between items-start gap-4 mb-3">
+<div>
+<h4 class="text-xl font-bold text-slate-900">Fluidoterapia</h4>
+<span class="text-secondary text-xs font-bold uppercase tracking-wider">Manutenção da Perfusão Renal</span>
+</div>
+</div>
+<div class="grid md:grid-cols-3 gap-4 mt-4">
+<div class="bg-white p-4 rounded-lg border border-slate-100">
+<p class="text-secondary text-[10px] uppercase font-bold mb-1 tracking-wider">Solução</p>
+<p class="text-slate-800 font-bold">Ringer Lactato</p>
+</div>
+<div class="bg-white p-4 rounded-lg border border-slate-100">
+<p class="text-secondary text-[10px] uppercase font-bold mb-1 tracking-wider">Taxa</p>
+<p class="text-slate-800 font-bold">60 ml/kg/dia</p>
+</div>
+<div class="bg-white p-4 rounded-lg border border-slate-100">
+<p class="text-secondary text-[10px] uppercase font-bold mb-1 tracking-wider">Volume Total</p>
+<p class="text-slate-800 font-bold">~750 ml / 24h</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative pl-12 group">
+<div class="absolute left-0 top-0 w-10 h-10 rounded-full bg-white border-2 border-slate-200 flex items-center justify-center text-slate-400 font-bold z-10">3</div>
+<div class="bg-slate-50/50 border border-slate-100 rounded-xl p-5 hover:bg-white hover:border-primary/20 hover:shadow-md transition duration-300">
+<div class="flex flex-wrap justify-between items-start gap-4 mb-3">
+<div>
+<h4 class="text-xl font-bold text-slate-900">Analgesia</h4>
+<span class="text-secondary text-xs font-bold uppercase tracking-wider">Controle da Dor Aguda</span>
+</div>
+</div>
+<div class="flex flex-col gap-3 mt-4">
+<div class="flex items-center justify-between bg-white p-4 rounded-lg border border-slate-100">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">medication_liquid</span>
+</div>
+<div>
+<p class="text-slate-900 font-bold">Tramadol</p>
+<p class="text-slate-400 text-xs font-medium">Opioide</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-slate-900 font-black">2-4 mg/kg</p>
+<p class="text-slate-400 text-[10px] font-bold uppercase tracking-wider">BID ou TID</p>
+</div>
+</div>
+<div class="flex items-center justify-between bg-white p-4 rounded-lg border border-slate-100">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">medication_liquid</span>
+</div>
+<div>
+<p class="text-slate-900 font-bold">Dipirona</p>
+<p class="text-slate-400 text-xs font-medium">Analgésico</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-slate-900 font-black">25 mg/kg</p>
+<p class="text-slate-400 text-[10px] font-bold uppercase tracking-wider">TID</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="border-t border-slate-200 pt-6 pb-2">
+<h5 class="text-slate-900 text-sm font-bold mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">menu_book</span>
+                    Referências Literárias &amp; Base de Conhecimento
+                </h5>
+<div class="grid md:grid-cols-2 gap-4">
+<div class="flex gap-3 items-start p-3 rounded-lg hover:bg-white hover:shadow-sm transition cursor-pointer border border-transparent hover:border-slate-100">
+<div class="w-10 h-14 bg-slate-200 rounded-sm flex-shrink-0 shadow-sm border border-slate-300/50"></div>
+<div>
+<p class="text-slate-900 text-sm font-bold leading-tight">Toxicologia Aplicada à Medicina Veterinária</p>
+<p class="text-secondary text-xs mt-1">Spinosa, H. S. et al.</p>
+</div>
+</div>
+<div class="flex gap-3 items-start p-3 rounded-lg hover:bg-white hover:shadow-sm transition cursor-pointer border border-transparent hover:border-slate-100">
+<div class="w-10 h-14 bg-slate-200 rounded-sm flex-shrink-0 shadow-sm border border-slate-300/50"></div>
+<div>
+<p class="text-slate-900 text-sm font-bold leading-tight">Guia de Animais Peçonhentos</p>
+<p class="text-secondary text-xs mt-1">Ministério da Saúde</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<footer class="mt-auto border-t border-slate-200 py-6 px-4 bg-slate-50/50">
+<div class="max-w-[1400px] mx-auto text-center">
+<p class="text-secondary text-[10px] font-medium uppercase tracking-widest max-w-2xl mx-auto leading-relaxed">
+            © 2023 Dr. Luzaum AI. This report is an auxiliary tool for diagnosis. The final clinical decision is the exclusive responsibility of the veterinarian.
+        </p>
+</div>
+</footer>
+
+</body></html>

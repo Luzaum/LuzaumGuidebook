@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { RevealWaveImage } from '../components/ui/reveal-wave-image'
+import Logo from '../components/Logo'
 import { ArrowRight, ShieldCheck, BookOpen, Zap, Layers, Users, Brain, Mail, User, ChevronRight, ExternalLink, X } from 'lucide-react'
 
 /* ─── Footer Content Data ───────────────────────────────────────── */
@@ -455,7 +456,7 @@ export function LandingPage() {
                         {/* Brand — spans full row on mobile, 2 cols on md */}
                         <div className="col-span-2">
                             <div className="flex items-center gap-3 mb-3 sm:mb-4">
-                                <img src="/vetius-logo.svg" alt="Vetius" className="w-7 h-7 sm:w-8 sm:h-8" onError={(e) => (e.currentTarget.style.display = 'none')} />
+                                <Logo className="w-7 h-7 sm:w-8 sm:h-8" />
                                 <span className="text-lg sm:text-xl font-bold text-foreground">Vetius</span>
                             </div>
                             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs mb-5 sm:mb-6">

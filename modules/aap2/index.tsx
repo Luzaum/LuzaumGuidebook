@@ -8,10 +8,33 @@ import { SuspeitasPage } from './components/suspeitas/SuspeitasPage';
 import { TratamentosPage } from './components/tratamentos/TratamentosPage';
 import { Modal } from './components/ui';
 import { EncyclopediaPage } from './components/encyclopedia/EncyclopediaPage';
-import { SpeciesDetailPage } from './components/encyclopedia/SpeciesDetail';
 import { Dashboard } from './components/dashboard/Dashboard';
+import { NovaConsultaPage } from './components/nova-consulta/NovaConsultaPage';
+import { DrLuzaumReportPage } from './components/relatorio/DrLuzaumReportPage';
+import { RelatorioDetalhadoPage } from './components/relatorio/RelatorioDetalhadoPage';
+import { DrLuzaumHistoryPage } from './components/relatorio/DrLuzaumHistoryPage';
 import { sanitizeHtml } from './utils/sanitizeHtml';
 import './styles/tokens.css';
+
+/* ── Patient data shared across Dr. Luzaum pages ───────────────── */
+interface LuzaumPatient {
+    species: string | null;
+    weight: string;
+    age: string;
+    breed: string;
+    history: string;
+}
+
+/* ── Derive diagnosis from selected signs ───────────────────────── */
+function deriveDiagnosis(signs: string[]): { name: string; sciName: string; confidence: number } {
+    const hasNeuro = signs.some(s => ['fraqueza', 'ataxia', 'tremores', 'paralisia', 'ptose', 'midriase'].includes(s));
+    const hasHemo = signs.some(s => ['hemorragia', 'equimose', 'mioglobinuria'].includes(s));
+    const hasEdema = signs.includes('edema');
+    if (hasNeuro && hasHemo) return { name: 'Acidente Crotálico', sciName: 'Crotalus durissus', confidence: 88 };
+    if (hasHemo || hasEdema) return { name: 'Acidente Botrópico', sciName: 'Bothrops (Jararaca)', confidence: 92 };
+    if (hasNeuro) return { name: 'Acidente Elapídico', sciName: 'Micrurus spp.', confidence: 72 };
+    return { name: 'Envenenamento Indeterminado', sciName: 'Análise pendente', confidence: 45 };
+}
 
 const AAP2Module: React.FC = () => {
     const [page, setPage] = useState<AppPage>('home');
@@ -19,6 +42,11 @@ const AAP2Module: React.FC = () => {
     const [selectedSpeciesId, setSelectedSpeciesId] = useState<string | null>(null);
     const [encyclopediaSearch, setEncyclopediaSearch] = useState('');
     const [isDarkMode, setIsDarkMode] = useState(() => document.documentElement.classList.contains('dark'));
+
+    // Dr. Luzaum state
+    const [luzaumPatient, setLuzaumPatient] = useState<LuzaumPatient>({ species: null, weight: '', age: '', breed: '', history: '' });
+    const [luzaumSigns, setLuzaumSigns] = useState<string[]>([]);
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -40,7 +68,7 @@ const AAP2Module: React.FC = () => {
 
     const openSpeciesDetail = useCallback((animalId: string) => {
         setSelectedSpeciesId(animalId);
-        setPage('species_detail');
+        setPage('enciclopedia');
     }, []);
 
     const openEncyclopedia = useCallback((initialQuery?: string) => {
@@ -48,9 +76,29 @@ const AAP2Module: React.FC = () => {
             setEncyclopediaSearch(initialQuery);
         }
         setPage('enciclopedia');
+        // Optional: clear selection when opening main encyclopedia link?
+        // setSelectedSpeciesId(null); 
+    }, []);
+
+    const handleNovaConsultaSubmit = useCallback((patient: LuzaumPatient, signs: string[]) => {
+        setLuzaumPatient(patient);
+        setLuzaumSigns(signs);
+        setPage('relatorio');
+    }, []);
+
+    const handleNewConsulta = useCallback(() => {
+        setLuzaumPatient({ species: null, weight: '', age: '', breed: '', history: '' });
+        setLuzaumSigns([]);
+        setPage('nova_consulta');
+    }, []);
+
+    const handleViewDetailed = useCallback(() => {
+        setPage('relatorio_detalhado');
     }, []);
 
     const renderPage = () => {
+        const dx = deriveDiagnosis(luzaumSigns);
+
         switch (page) {
             case 'bulario':
                 return <BularioPage onHelpClick={showHelp} />;
@@ -63,15 +111,48 @@ const AAP2Module: React.FC = () => {
                     <EncyclopediaPage
                         searchQuery={encyclopediaSearch}
                         onSearchQueryChange={setEncyclopediaSearch}
-                        onSelectSpecies={openSpeciesDetail}
+                        selectedAnimalId={selectedSpeciesId}
+                        onSelectSpecies={setSelectedSpeciesId}
                     />
                 );
-            case 'species_detail':
+            // case 'species_detail': removed, integrated into encyclopedia
+            case 'nova_consulta':
                 return (
-                    <SpeciesDetailPage
-                        animalId={selectedSpeciesId}
-                        onBackToEncyclopedia={() => setPage('enciclopedia')}
-                        onHelpClick={showHelp}
+                    <NovaConsultaPage
+                        onNavigateToReport={handleNovaConsultaSubmit}
+                        onBack={() => setPage('home')}
+                    />
+                );
+            case 'relatorio':
+                return (
+                    <DrLuzaumReportPage
+                        patient={luzaumPatient}
+                        selectedSigns={luzaumSigns}
+                        onBack={() => setPage('nova_consulta')}
+                        onNewConsulta={handleNewConsulta}
+                    />
+                );
+            case 'relatorio_detalhado':
+                return (
+                    <RelatorioDetalhadoPage
+                        patient={luzaumPatient}
+                        selectedSigns={luzaumSigns}
+                        diagnosis={dx.name}
+                        diagnosisSciName={dx.sciName}
+                        confidence={dx.confidence}
+                        onBack={() => setPage('relatorio')}
+                        onNewConsulta={handleNewConsulta}
+                    />
+                );
+            case 'historico':
+                return (
+                    <DrLuzaumHistoryPage
+                        onBack={() => setPage('home')}
+                        onNewTriage={handleNewConsulta}
+                        onViewReport={(id) => {
+                            // detailed view not linked to specific ID yet, going to generic view
+                            setPage('relatorio_detalhado');
+                        }}
                     />
                 );
             default:
@@ -82,22 +163,22 @@ const AAP2Module: React.FC = () => {
     if (page === 'home') {
         return (
             <div id="aap2-module-root" className="relative">
-                <button
-                    onClick={() => navigate('/hub')}
-                    className="absolute top-4 left-4 z-50 flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white dark:bg-slate-800/60 dark:hover:bg-slate-700/80 dark:border-slate-600/40 dark:text-slate-200 transition-all duration-200 shadow-lg group cursor-pointer"
-                    title="Voltar ao Hub de Aplicativos"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                    </svg>
-                    Voltar ao Hub
-                </button>
                 <Dashboard
                     onNavigate={setPage}
                     onOpenEncyclopedia={openEncyclopedia}
                     isDarkMode={isDarkMode}
                     toggleTheme={toggleTheme}
+                    onBackToHub={() => navigate('/hub')}
                 />
+            </div>
+        );
+    }
+
+    // Full-page chrome-free view for Dr. Luzaum pages
+    if (page === 'nova_consulta' || page === 'relatorio' || page === 'relatorio_detalhado') {
+        return (
+            <div id="aap2-module-root">
+                {renderPage()}
             </div>
         );
     }
