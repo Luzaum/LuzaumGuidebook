@@ -1025,3 +1025,78 @@
         flex-direction: column;
     }
 }
+
+/* ============================================================
+   DARK MODE OVERRIDES
+   ============================================================ */
+
+:root.dark #aap2-module-root {
+    /* --- Superfícies --- */
+    --color-bg: #0f172a;
+    /* Slate 900 */
+    --color-surface: #1e293b;
+    /* Slate 800 */
+    --color-surface-alt: #334155;
+    /* Slate 700 */
+    --color-border: #334155;
+    /* Slate 700 */
+
+    /* --- Texto --- */
+    --color-text: #f8fafc;
+    /* Slate 50 */
+    --color-text-muted: #94a3b8;
+    /* Slate 400 */
+    --color-text-light: #64748b;
+    /* Slate 500 */
+
+    /* --- Sombras (mais intensas no escuro) --- */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.5);
+
+    /* --- Ajustes Específicos --- */
+    --color-primary-light: #2e1065;
+    /* Violet 950 */
+    --color-primary-alpha: rgba(139, 92, 246, 0.2);
+}
+
+:root.dark #aap2-module-root .btn--ghost {
+    color: #a78bfa;
+    /* Violet 400 */
+    border-color: #a78bfa;
+}
+
+:root.dark #aap2-module-root .btn--ghost:hover {
+    background-color: rgba(167, 139, 250, 0.1);
+}
+
+:root.dark #aap2-module-root .form-input,
+:root.dark #aap2-module-root .form-select,
+:root.dark #aap2-module-root .form-textarea {
+    background-color: #1e293b;
+    border-color: #475569;
+    color: #f8fafc;
+}
+
+:root.dark #aap2-module-root .form-input:focus,
+:root.dark #aap2-module-root .form-select:focus,
+:root.dark #aap2-module-root .form-textarea:focus {
+    border-color: #8b5cf6;
+    /* Violet 500 */
+}
+
+:root.dark #aap2-module-root .checkbox-label {
+    background-color: #1e293b;
+    border-color: #475569;
+}
+
+:root.dark #aap2-module-root .checkbox-label:hover {
+    background-color: #334155;
+}
+
+:root.dark #aap2-module-root .checkbox-label--selected {
+    background-color: rgba(139, 92, 246, 0.2);
+    border-color: #8b5cf6;
+    color: #a78bfa;
+}

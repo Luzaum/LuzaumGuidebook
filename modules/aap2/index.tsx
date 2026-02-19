@@ -1,7 +1,7 @@
 // ============================================================
 // AAP2 Module — Acidentes com Animais Peçonhentos
 // ============================================================
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import type { AppPage } from './types';
 import { EXPLANATIONS } from './data/explanations';
 import { Header } from './components/layout/Header';
@@ -9,16 +9,35 @@ import { BularioPage } from './components/bulario/index';
 import { SuspeitasPage } from './components/suspeitas/SuspeitasPage';
 import { TratamentosPage } from './components/tratamentos/TratamentosPage';
 import { Modal } from './components/ui';
+import { EncyclopediaPage } from './components/encyclopedia/EncyclopediaPage';
+import { SpeciesDetailPage } from './components/encyclopedia/SpeciesDetail';
 
 // Importa estilos globais do módulo
 import './styles/tokens.css';
 
 import { Dashboard } from './components/dashboard/Dashboard';
 
+
+
 // ---- Main Module Component ----
 const AAP2Module: React.FC = () => {
     const [page, setPage] = useState<AppPage>('home');
     const [helpModal, setHelpModal] = useState<{ title: string; content: string } | null>(null);
+
+    // Dark Mode State Management
+    const [isDarkMode, setIsDarkMode] = useState(() => document.documentElement.classList.contains('dark'));
+
+    useEffect(() => {
+        if (isDarkMode) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }, [isDarkMode]);
+
+    const toggleTheme = useCallback(() => {
+        setIsDarkMode(prev => !prev);
+    }, []);
 
     const showHelp = useCallback((title: string, content?: string) => {
         const finalContent = content ?? EXPLANATIONS[title];
@@ -43,7 +62,23 @@ const AAP2Module: React.FC = () => {
     if (page === 'home') {
         return (
             <div id="aap2-module-root">
-                <Dashboard onNavigate={setPage} />
+                <Dashboard onNavigate={setPage} isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+            </div>
+        );
+    }
+
+    if (page === 'enciclopedia') {
+        return (
+            <div id="aap2-module-root">
+                <EncyclopediaPage onNavigate={setPage} isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+            </div>
+        );
+    }
+
+    if (page === 'species_detail') {
+        return (
+            <div id="aap2-module-root">
+                <SpeciesDetailPage onNavigate={setPage} isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
             </div>
         );
     }
@@ -61,7 +96,7 @@ const AAP2Module: React.FC = () => {
                 </Modal>
             )}
 
-            <Header currentPage={page} onNavigate={setPage} />
+            <Header currentPage={page} onNavigate={setPage} isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
 
             <main className="main-content">
                 {renderPage()}

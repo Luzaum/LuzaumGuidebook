@@ -7,36 +7,57 @@ import type { AppPage } from '../../types';
 interface HeaderProps {
     currentPage: AppPage;
     onNavigate: (page: AppPage) => void;
+    isDarkMode: boolean;
+    toggleTheme: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => (
-    <header className="header">
-        <button
-            className="header-brand"
-            onClick={() => onNavigate('home')}
-            aria-label="Ir para a página inicial"
-        >
-            <span className="header-icon" aria-hidden="true">🐍</span>
-            <span className="header-title">Animais Peçonhentos</span>
-        </button>
+export const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate, isDarkMode, toggleTheme }) => (
+    <header className={`header ${isDarkMode ? 'bg-slate-900 border-slate-700 text-white' : ''}`}>
+        <div className="flex items-center justify-between w-full px-4">
+            <button
+                className="header-brand flex items-center gap-2"
+                onClick={() => onNavigate('home')}
+                aria-label="Ir para a página inicial"
+            >
+                <span className="header-icon text-2xl" aria-hidden="true">🐍</span>
+                <span className={`header-title font-bold text-lg ${isDarkMode ? 'text-white' : 'text-slate-800'}`}>Animais Peçonhentos</span>
+            </button>
 
-        <nav className="header-nav" aria-label="Navegação principal">
-            {(
-                [
-                    { page: 'bulario', label: 'Bulário' },
-                    { page: 'suspeitas', label: 'Suspeitas' },
-                    { page: 'tratamentos', label: 'Tratamentos' },
-                ] as { page: AppPage; label: string }[]
-            ).map(({ page, label }) => (
+            <div className="flex items-center gap-4">
+                <nav className="header-nav flex gap-2" aria-label="Navegação principal">
+                    {(
+                        [
+                            { page: 'bulario', label: 'Bulário' },
+                            { page: 'suspeitas', label: 'Suspeitas' },
+                            { page: 'tratamentos', label: 'Tratamentos' },
+                        ] as { page: AppPage; label: string }[]
+                    ).map(({ page, label }) => (
+                        <button
+                            key={page}
+                            className={`header-nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-colors ${currentPage === page
+                                    ? 'bg-aap-primary text-white'
+                                    : isDarkMode
+                                        ? 'text-slate-300 hover:bg-slate-800'
+                                        : 'text-slate-600 hover:bg-slate-100'
+                                }`}
+                            onClick={() => onNavigate(page)}
+                            aria-current={currentPage === page ? 'page' : undefined}
+                        >
+                            {label}
+                        </button>
+                    ))}
+                </nav>
+
+                <div className={`h-6 w-px ${isDarkMode ? 'bg-slate-700' : 'bg-slate-200'}`}></div>
+
                 <button
-                    key={page}
-                    className={`header-nav-btn ${currentPage === page ? 'header-nav-btn--active' : ''}`}
-                    onClick={() => onNavigate(page)}
-                    aria-current={currentPage === page ? 'page' : undefined}
+                    className={`p-2 rounded-lg transition-colors ${isDarkMode ? 'text-yellow-400 hover:bg-slate-800' : 'text-slate-500 hover:bg-white/50 hover:text-aap-primary'}`}
+                    onClick={toggleTheme}
+                    title={isDarkMode ? "Mudar para modo claro" : "Mudar para modo escuro"}
                 >
-                    {label}
+                    <span className="material-symbols-outlined">{isDarkMode ? 'light_mode' : 'dark_mode'}</span>
                 </button>
-            ))}
-        </nav>
+            </div>
+        </div>
     </header>
 );

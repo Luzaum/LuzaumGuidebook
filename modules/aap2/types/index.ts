@@ -81,7 +81,7 @@ export interface ImageCacheEntry {
 
 // --- Navegação ---
 
-export type AppPage = 'home' | 'bulario' | 'suspeitas' | 'tratamentos';
+export type AppPage = 'home' | 'bulario' | 'suspeitas' | 'tratamentos' | 'enciclopedia' | 'species_detail';
 
 // --- Respostas da API ---
 
