@@ -18,7 +18,8 @@ const ENCYCLOPEDIA_DATA = {
             risk: "Alto Risco",
             riskColor: "red",
             image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDR7HjByJK-mUIWZj4SxZOAlOcuowii2jlC8j8N5og3Ba4CvsDdo_0OtyFGP-a1HugtzA8xLrSkKmwN_62L6DF58DjO8gKK-nRRR4z1dQOxpdckQOQzGj-jJRh0yIM-1AyURjGJdugtKtnByU3ZErUl0vLS9AwmUy5e6wgSdJGqfkJ2LtEtP8p0dVgJghFoljrhU_Iu2bCpUx8nA1QVMrpWj-4E8WKmqkpkk80RV7SOe-04wQds4rNWvi72wVGL-9Zmfd4u9RV83aWs",
-            icon: "cruelty_free"
+            icon: "cruelty_free",
+            morphology: "Cabeça triangular, fosseta loreal, cauda lisa."
         },
         {
             name: "Cascavel",
@@ -26,7 +27,8 @@ const ENCYCLOPEDIA_DATA = {
             risk: "Alto Risco",
             riskColor: "red",
             image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA-YlcrGg0gUI_Mh7j3MBbM3txhzaEgNah7rdOpLr3FYWFIPdyj0zh34EDWi0ryqwkV-o5VAuOUMAcxclTO8KyCkVkM2ru7_cMsxs1X1MYtrMfHC_F0m3GiqVjAyZP89KzZ4J5baIGv0OxLsFJ-KiKvcaZ07VcdUMqSVYaGpFnSfU8x_KOzDSta3c0hshc6i_6A3PTcVj_ItS3DzK0FaF2-hwNaZ4zjlDvkZbqtFeu7VWXUc8euhxboU_NqZQBwYys6jqGnComg-hQG",
-            icon: "cruelty_free"
+            icon: "cruelty_free",
+            morphology: "Guizo na ponta da cauda."
         },
         {
             name: "Surucucu",
@@ -34,15 +36,17 @@ const ENCYCLOPEDIA_DATA = {
             risk: "Alto Risco",
             riskColor: "red",
             image: null, // Placeholder in original
-            icon: "cruelty_free"
+            icon: "cruelty_free",
+            morphology: "Escamas 'pico de jaca', cauda com espinho."
         },
         {
             name: "Coral Verdadeira",
             scientificName: "Micrurus spp.",
             risk: "Alto Risco",
             riskColor: "red",
-            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBy7E4y5wDq62Z1qg9E7c2Q8a5T6z5n6dM3rS1k5P1F8e2C9t4G6x7J3V5b1K8L9M2N4O7P0R3S6T9U2V5W8X1Y4Z7a0B3c6D9E2F5G8H1I4J7K0L3M6N9O2P5Q8R1S4T7U/1280", // Placeholder for Coral if needed, or use generic
-            icon: "cruelty_free"
+            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBy7E4y5wDq62Z1qg9E7c2Q8a5T6z5n6dM3rS1k5P1F8e2C9t4G6x7J3V5b1K8L9M2N4O7P0R3S6T9U2V5W8X1Y4Z7a0B3c6D9E2F5G8H1I4J7K0L3M6N9O2P5Q8R1S4T7U/1280",
+            icon: "cruelty_free",
+            morphology: "Anéis vermelhos, pretos e brancos/amarelos."
         }
     ],
     escorpioes: [
@@ -52,7 +56,8 @@ const ENCYCLOPEDIA_DATA = {
             risk: "Alto Risco",
             riskColor: "yellow",
             image: null,
-            icon: "warning"
+            icon: "warning",
+            morphology: "Serrilha no 3º e 4º anéis da cauda."
         },
         {
             name: "Escorpião Marrom",
@@ -60,7 +65,8 @@ const ENCYCLOPEDIA_DATA = {
             risk: "Risco Moderado",
             riskColor: "yellow",
             image: null,
-            icon: "warning"
+            icon: "warning",
+            morphology: "Coloração marrom, pernas manchadas."
         },
         {
             name: "Escorpião Preto",
@@ -68,7 +74,8 @@ const ENCYCLOPEDIA_DATA = {
             risk: "Risco Moderado",
             riskColor: "yellow",
             image: null,
-            icon: "warning"
+            icon: "warning",
+            morphology: "Coloração escura, comum na Amazônia."
         }
     ],
     aranhas: [
@@ -78,7 +85,8 @@ const ENCYCLOPEDIA_DATA = {
             risk: "Alto Risco",
             riskColor: "orange",
             image: null,
-            icon: "dangerous"
+            icon: "dangerous",
+            morphology: "Postura de defesa erguida, quelíceras vermelhas."
         },
         {
             name: "Aranha Marrom",
@@ -86,7 +94,8 @@ const ENCYCLOPEDIA_DATA = {
             risk: "Alto Risco",
             riskColor: "orange",
             image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBGeHjiOWPqmdsYvqg83TQQPspE_VakODHDGmdWQqQbJgluoLS-tU4YVmtbS7lr0P1FjcX1C_xxQxFAy9Mp_fa7e5e_lDr2djAQS9Fy685n1rGMn3wdvQ8LHu5S2VTfaKtDeUwlpDTTPiG8iqtFvPIntmup81BninnJUFdWQqeo5qeAblVP1VsHLqGu6flXfopKh2rWBkNCmgvtBqBz84KugIHk4gMzEimSu_qpBduHk5c0XEJkza8v8al5-tdsuCEgSl1u23FuJwKc",
-            icon: "dangerous"
+            icon: "dangerous",
+            morphology: "Desenho de violino no cefalotórax."
         },
         {
             name: "Viúva Negra",
@@ -94,7 +103,8 @@ const ENCYCLOPEDIA_DATA = {
             risk: "Risco Moderado",
             riskColor: "orange",
             image: null,
-            icon: "dangerous"
+            icon: "dangerous",
+            morphology: "Ampulheta vermelha no abdômen ventral."
         }
     ],
     outros: [
@@ -104,7 +114,8 @@ const ENCYCLOPEDIA_DATA = {
             risk: "Alto Risco",
             riskColor: "green",
             image: null,
-            icon: "nature_people"
+            icon: "nature_people",
+            morphology: "Cerdas em forma de pinheirinho."
         },
         {
             name: "Abelhas",
@@ -112,7 +123,8 @@ const ENCYCLOPEDIA_DATA = {
             risk: "Risco Moderado",
             riskColor: "green",
             image: null,
-            icon: "nature_people"
+            icon: "nature_people",
+            morphology: "Corpo peludo, listrado de amarelo e preto."
         },
         {
             name: "Arraia",
@@ -120,13 +132,14 @@ const ENCYCLOPEDIA_DATA = {
             risk: "Doloroso",
             riskColor: "green",
             image: null,
-            icon: "water_drop"
+            icon: "water_drop",
+            morphology: "Ferrão serrilhado na base da cauda."
         }
     ]
 };
 
 export const EncyclopediaPage: React.FC<EncyclopediaPageProps> = ({ onNavigate, isDarkMode, toggleTheme }) => {
-    const userImage = "https://lh3.googleusercontent.com/aida-public/AB6AXuAWe7Fd0Mjd6RDb7RdyROid-tuPRGsdEPxvqY7YHESxTQv7ypRv-kEgqdcllYihBE-F-L1ZthZwpDvPCbKh-BBFMg19pJE5Ao2IrjPfNytbvncVqjUC42T1JW4RfU98nRr5o2EOrrPSSls1Vx43b8Ok1flg_FhMkXFt5_UhS3PZe78jFV3e1FHaxGkQYCQ5JoqaHxlzTqO0sEm9mP7vAjKjniHR6tB-BB5f_MNvUiEPaOD29N7I-jCPgL3uLw4tN9gDQQwXijaUYYVt";
+    // User image is no longer displayed in sidebar, but keeping if needed elsewhere or removing if unused. Removed usage.
 
     const renderAnimalCard = (animal: any) => (
         <div
@@ -136,7 +149,7 @@ export const EncyclopediaPage: React.FC<EncyclopediaPageProps> = ({ onNavigate, 
         >
             <div className="h-[25%] p-5 flex items-start justify-between z-20 relative border-b border-white/10 bg-white/5 backdrop-blur-sm">
                 <div>
-                    <h3 className={`text-2xl font-black ${isDarkMode ? 'text-white' : 'text-white'} leading-tight drop-shadow-md`}>{animal.name}</h3>
+                    <h3 className={`text-2xl font-black text-white leading-tight drop-shadow-md`}>{animal.name}</h3>
                     <p className="text-base italic text-slate-300 font-serif mt-0.5">{animal.scientificName}</p>
                 </div>
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center text-${animal.riskColor}-500 bg-white/10 backdrop-blur-md shadow-inner`}>
@@ -147,17 +160,20 @@ export const EncyclopediaPage: React.FC<EncyclopediaPageProps> = ({ onNavigate, 
                 {animal.image ? (
                     <img alt={animal.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src={animal.image} />
                 ) : (
-                    <div className="w-full h-full flex items-center justify-center text-slate-600">
+                    <div className={`w-full h-full flex items-center justify-center ${isDarkMode ? 'text-slate-500' : 'text-slate-400'}`}>
                         <span className="material-symbols-outlined text-6xl opacity-50">image_not_supported</span>
                     </div>
                 )}
 
                 <div className={`absolute inset-0 bg-gradient-to-t from-${animal.riskColor}-900/60 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300`}></div>
 
-                <div className="absolute bottom-6 left-0 right-0 flex justify-center location-tag z-30">
-                    <div className="flex items-center gap-2 text-sm font-semibold text-slate-200 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full shadow-xl border border-white/10">
-                        <span className={`material-symbols-outlined text-${animal.riskColor}-500`}>location_on</span>
-                        Comum no Brasil
+                <div className="absolute bottom-6 left-0 right-0 flex justify-center location-tag z-30 px-4 group-hover:translate-y-0 translate-y-2 transition-transform duration-300">
+                    <div className="flex flex-col items-center gap-1 text-center font-medium text-slate-100 bg-black/60 backdrop-blur-md px-4 py-2 rounded-2xl shadow-xl border border-white/10 max-w-full">
+                        <div className="flex items-center gap-2">
+                            <span className={`material-symbols-outlined text-${animal.riskColor}-400 text-lg`}>visibility</span>
+                            <span className="text-xs uppercase tracking-wide opacity-80">Identificação</span>
+                        </div>
+                        <span className="text-sm leading-tight text-white/95 font-semibold">{animal.morphology}</span>
                     </div>
                 </div>
             </div>
@@ -207,13 +223,6 @@ export const EncyclopediaPage: React.FC<EncyclopediaPageProps> = ({ onNavigate, 
                         </div>
                     </nav>
                     <div className="p-4">
-                        <div className="mb-4">
-                            <p className="px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Acesso Rápido</p>
-                            <button className="w-full flex items-center gap-3 bg-blue-50 text-blue-700 py-3 px-4 rounded-xl hover:bg-blue-100 transition-all font-semibold text-sm">
-                                <span className="material-symbols-outlined text-xl">phone_in_talk</span>
-                                Centro de Intoxicações
-                            </button>
-                        </div>
                         <button
                             className="w-full flex items-center justify-center gap-2 bg-aap-primary hover:bg-aap-primary-dark text-white py-3 px-4 rounded-xl shadow-lg shadow-aap-primary/25 transition-all active:scale-95 font-semibold text-sm"
                             onClick={() => onNavigate('suspeitas')}
@@ -221,18 +230,6 @@ export const EncyclopediaPage: React.FC<EncyclopediaPageProps> = ({ onNavigate, 
                             <span className="material-symbols-outlined text-xl">add</span>
                             Nova Consulta
                         </button>
-                    </div>
-                    <div className={`p-4 border-t ${isDarkMode ? 'border-slate-700 bg-slate-800/50' : 'border-slate-200/60 bg-white/50'}`}>
-                        <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-full bg-cover bg-center border-2 border-white shadow-sm" style={{ backgroundImage: `url('${userImage}')` }}></div>
-                            <div className="flex-1 min-w-0">
-                                <p className={`text-sm font-bold truncate ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Dr. Julia Santos</p>
-                                <p className="text-xs text-slate-500 truncate">Veterinária Chefe</p>
-                            </div>
-                            <button className="text-slate-400 hover:text-aap-primary">
-                                <span className="material-symbols-outlined text-xl">logout</span>
-                            </button>
-                        </div>
                     </div>
                 </div>
             </aside>
@@ -283,7 +280,7 @@ export const EncyclopediaPage: React.FC<EncyclopediaPageProps> = ({ onNavigate, 
                 <div className="flex-1 flex flex-col p-8 gap-10 overflow-y-auto">
                     <div>
                         <h1 className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Animais Peçonhentos</h1>
-                        <p className="text-slate-500 mt-1">Catálogo de referência rápida para diagnóstico clínico</p>
+                        <p className={`${isDarkMode ? 'text-slate-400' : 'text-slate-500'} mt-1`}>Catálogo de referência rápida para diagnóstico clínico</p>
                     </div>
 
                     {/* Serpentes */}

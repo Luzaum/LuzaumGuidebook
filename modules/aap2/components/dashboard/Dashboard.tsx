@@ -9,10 +9,6 @@ interface DashboardProps {
 }
 
 export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, isDarkMode, toggleTheme }) => {
-    // Sidebar state if needed, though for now it's static in the snippet
-    // Images from snippet
-    const userImage = "https://lh3.googleusercontent.com/aida-public/AB6AXuAWe7Fd0Mjd6RDb7RdyROid-tuPRGsdEPxvqY7YHESxTQv7ypRv-kEgqdcllYihBE-F-L1ZthZwpDvPCbKh-BBFMg19pJE5Ao2IrjPfNytbvncVqjUC42T1JW4RfU98nRr5o2EOrrPSSls1Vx43b8Ok1flg_FhMkXFt5_UhS3PZe78jFV3e1FHaxGkQYCQ5JoqaHxlzTqO0sEm9mP7vAjKjniHR6tB-BB5f_MNvUiEPaOD29N7I-jCPgL3uLw4tN9gDQQwXijaUYYVt";
-
     // Quick Actions Handling
     const handleQuickAction = (action: AppPage) => {
         onNavigate(action);
@@ -61,13 +57,6 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, isDarkMode, to
                         </div>
                     </nav>
                     <div className="p-4">
-                        <div className="mb-4">
-                            <p className="px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Acesso Rápido</p>
-                            <button className="w-full flex items-center gap-3 bg-blue-50 text-blue-700 py-3 px-4 rounded-xl hover:bg-blue-100 transition-all font-semibold text-sm">
-                                <span className="material-symbols-outlined text-xl">phone_in_talk</span>
-                                Centro de Intoxicações
-                            </button>
-                        </div>
                         <button
                             className="w-full flex items-center justify-center gap-2 bg-aap-primary hover:bg-aap-primary-dark text-white py-3 px-4 rounded-xl shadow-lg shadow-aap-primary/25 transition-all active:scale-95 font-semibold text-sm"
                             onClick={() => onNavigate('suspeitas')}
@@ -76,18 +65,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, isDarkMode, to
                             Nova Consulta
                         </button>
                     </div>
-                    <div className="p-4 border-t border-slate-200/60 bg-white/50">
-                        <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-full bg-cover bg-center border-2 border-white shadow-sm" style={{ backgroundImage: `url('${userImage}')` }}></div>
-                            <div className="flex-1 min-w-0">
-                                <p className={`text-sm font-bold truncate ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Dr. Julia Santos</p>
-                                <p className="text-xs text-slate-500 truncate">Veterinária Chefe</p>
-                            </div>
-                            <button className="text-slate-400 hover:text-aap-primary">
-                                <span className="material-symbols-outlined text-xl">logout</span>
-                            </button>
-                        </div>
-                    </div>
+                    {/* User Profile removed as per request */}
                 </div>
             </aside>
 
@@ -251,7 +229,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, isDarkMode, to
                         </div>
                     </section>
 
-                    {/* Quick Actions - FROM SNIPPET 2 */}
+                    {/* Quick Actions */}
                     <section className="mb-10">
                         <h3 className={`text-lg font-bold mb-5 flex items-center gap-2 ${isDarkMode ? 'text-white' : 'text-slate-800'}`}>
                             <span className="material-symbols-outlined text-aap-primary">bolt</span>
@@ -259,7 +237,10 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, isDarkMode, to
                         </h3>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             {/* Card 1: Ferramenta de Suspeitas */}
-                            <div className="glass-panel p-6 rounded-2xl shadow-sm hover:shadow-md transition-all group cursor-pointer relative overflow-hidden" onClick={() => handleQuickAction('suspeitas')}>
+                            <div
+                                className={`glass-panel p-6 rounded-2xl shadow-sm hover:shadow-md transition-all group cursor-pointer relative overflow-hidden ${isDarkMode ? 'bg-slate-800/80 border-slate-700' : 'bg-white border-slate-200'}`}
+                                onClick={() => handleQuickAction('suspeitas')}
+                            >
                                 <div className="absolute right-0 top-0 w-32 h-32 bg-aap-primary/5 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-aap-primary/10 transition-all"></div>
                                 <div className="flex justify-between items-start mb-4">
                                     <div className="p-3 bg-purple-100 text-aap-primary rounded-xl group-hover:bg-aap-primary group-hover:text-white transition-colors">
@@ -267,30 +248,36 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, isDarkMode, to
                                     </div>
                                     <span className="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded-full">Novo</span>
                                 </div>
-                                <h4 className="text-lg font-bold text-slate-900 mb-1">Ferramenta de Suspeitas</h4>
-                                <p className="text-slate-500 text-sm mb-4 leading-relaxed">Auxílio diagnóstico rápido para casos de envenenamento baseados em sintomas clínicos.</p>
+                                <h4 className={`text-lg font-bold mb-1 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Ferramenta de Suspeitas</h4>
+                                <p className={`text-sm mb-4 leading-relaxed ${isDarkMode ? 'text-slate-300' : 'text-slate-500'}`}>Auxílio diagnóstico rápido para casos de envenenamento baseados em sintomas clínicos.</p>
                                 <button className="text-aap-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
                                     Iniciar Diagnóstico <span className="material-symbols-outlined text-sm">arrow_forward</span>
                                 </button>
                             </div>
 
                             {/* Card 2: Bulário Peçonhento */}
-                            <div className="glass-panel p-6 rounded-2xl shadow-sm hover:shadow-md transition-all group cursor-pointer relative overflow-hidden" onClick={() => handleQuickAction('bulario')}>
+                            <div
+                                className={`glass-panel p-6 rounded-2xl shadow-sm hover:shadow-md transition-all group cursor-pointer relative overflow-hidden ${isDarkMode ? 'bg-slate-800/80 border-slate-700' : 'bg-white border-slate-200'}`}
+                                onClick={() => handleQuickAction('bulario')}
+                            >
                                 <div className="absolute right-0 top-0 w-32 h-32 bg-blue-100/50 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-blue-100 transition-all"></div>
                                 <div className="flex justify-between items-start mb-4">
                                     <div className="p-3 bg-blue-50 text-blue-600 rounded-xl group-hover:bg-blue-600 group-hover:text-white transition-colors">
                                         <span className="material-symbols-outlined text-3xl">menu_book</span>
                                     </div>
                                 </div>
-                                <h4 className="text-lg font-bold text-slate-900 mb-1">Bulário Peçonhento</h4>
-                                <p className="text-slate-500 text-sm mb-4 leading-relaxed">Enciclopédia completa de espécies, toxinas e antídotos disponíveis.</p>
+                                <h4 className={`text-lg font-bold mb-1 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Bulário Peçonhento</h4>
+                                <p className={`text-sm mb-4 leading-relaxed ${isDarkMode ? 'text-slate-300' : 'text-slate-500'}`}>Enciclopédia completa de espécies, toxinas e antídotos disponíveis.</p>
                                 <button className="text-blue-600 font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
                                     Acessar Bulário <span className="material-symbols-outlined text-sm">arrow_forward</span>
                                 </button>
                             </div>
 
                             {/* Card 3: Protocolos de Emergência */}
-                            <div className="glass-panel p-6 rounded-2xl shadow-sm hover:shadow-md transition-all group cursor-pointer border-l-4 border-l-red-500 relative overflow-hidden" onClick={() => handleQuickAction('tratamentos')}>
+                            <div
+                                className={`glass-panel p-6 rounded-2xl shadow-sm hover:shadow-md transition-all group cursor-pointer border-l-4 border-l-red-500 relative overflow-hidden ${isDarkMode ? 'bg-slate-800/80 border-slate-700' : 'bg-white border-slate-200'}`}
+                                onClick={() => handleQuickAction('tratamentos')}
+                            >
                                 <div className="absolute right-0 top-0 w-32 h-32 bg-red-100/50 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-red-100 transition-all"></div>
                                 <div className="flex justify-between items-start mb-4">
                                     <div className="p-3 bg-red-50 text-red-600 rounded-xl group-hover:bg-red-600 group-hover:text-white transition-colors">
@@ -300,8 +287,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, isDarkMode, to
                                         <span className="w-1.5 h-1.5 bg-red-600 rounded-full"></span> Urgente
                                     </span>
                                 </div>
-                                <h4 className="text-lg font-bold text-slate-900 mb-1">Protocolos de Emergência</h4>
-                                <p className="text-slate-500 text-sm mb-4 leading-relaxed">Guias passo-a-passo para estabilização de pacientes críticos.</p>
+                                <h4 className={`text-lg font-bold mb-1 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Protocolos de Emergência</h4>
+                                <p className={`text-sm mb-4 leading-relaxed ${isDarkMode ? 'text-slate-300' : 'text-slate-500'}`}>Guias passo-a-passo para estabilização de pacientes críticos.</p>
                                 <button className="text-red-600 font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
                                     Ver Protocolos <span className="material-symbols-outlined text-sm">arrow_forward</span>
                                 </button>

@@ -11,7 +11,6 @@ interface SpeciesDetailPageProps {
 
 export const SpeciesDetailPage: React.FC<SpeciesDetailPageProps> = ({ onNavigate, isDarkMode, toggleTheme }) => {
     // Reusing sidebar structure with active state logic mock
-    const userImage = "https://lh3.googleusercontent.com/aida-public/AB6AXuAWe7Fd0Mjd6RDb7RdyROid-tuPRGsdEPxvqY7YHESxTQv7ypRv-kEgqdcllYihBE-F-L1ZthZwpDvPCbKh-BBFMg19pJE5Ao2IrjPfNytbvncVqjUC42T1JW4RfU98nRr5o2EOrrPSSls1Vx43b8Ok1flg_FhMkXFt5_UhS3PZe78jFV3e1FHaxGkQYCQ5JoqaHxlzTqO0sEm9mP7vAjKjniHR6tB-BB5f_MNvUiEPaOD29N7I-jCPgL3uLw4tN9gDQQwXijaUYYVt";
 
     return (
         <div className={`text-slate-800 antialiased overflow-hidden h-screen flex w-full transition-colors duration-300 ${isDarkMode ? 'bg-aap-background-dark text-white' : 'bg-aap-background-light'}`}>
@@ -56,13 +55,6 @@ export const SpeciesDetailPage: React.FC<SpeciesDetailPageProps> = ({ onNavigate
                         </div>
                     </nav>
                     <div className="p-4">
-                        <div className="mb-4">
-                            <p className="px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Acesso Rápido</p>
-                            <button className="w-full flex items-center gap-3 bg-blue-50 text-blue-700 py-3 px-4 rounded-xl hover:bg-blue-100 transition-all font-semibold text-sm">
-                                <span className="material-symbols-outlined text-xl">phone_in_talk</span>
-                                Centro de Intoxicações
-                            </button>
-                        </div>
                         <button
                             className="w-full flex items-center justify-center gap-2 bg-aap-primary hover:bg-aap-primary-dark text-white py-3 px-4 rounded-xl shadow-lg shadow-aap-primary/25 transition-all active:scale-95 font-semibold text-sm"
                             onClick={() => onNavigate('suspeitas')}
@@ -70,18 +62,6 @@ export const SpeciesDetailPage: React.FC<SpeciesDetailPageProps> = ({ onNavigate
                             <span className="material-symbols-outlined text-xl">add</span>
                             Nova Consulta
                         </button>
-                    </div>
-                    <div className={`p-4 border-t ${isDarkMode ? 'border-slate-700 bg-slate-800/50' : 'border-slate-200/60 bg-white/50'}`}>
-                        <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-full bg-cover bg-center border-2 border-white shadow-sm" style={{ backgroundImage: `url('${userImage}')` }}></div>
-                            <div className="flex-1 min-w-0">
-                                <p className={`text-sm font-bold truncate ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Dr. Julia Santos</p>
-                                <p className="text-xs text-slate-500 truncate">Veterinária Chefe</p>
-                            </div>
-                            <button className="text-slate-400 hover:text-aap-primary">
-                                <span className="material-symbols-outlined text-xl">logout</span>
-                            </button>
-                        </div>
                     </div>
                 </div>
             </aside>

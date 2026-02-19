@@ -1055,10 +1055,7 @@
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
     --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.5);
 
-    /* --- Ajustes Específicos --- */
-    --color-primary-light: #2e1065;
-    /* Violet 950 */
-    --color-primary-alpha: rgba(139, 92, 246, 0.2);
+    /* --- Ajustes Específicos removidos daqui para ficar agrupado abaixo --- */
 }
 
 :root.dark #aap2-module-root .btn--ghost {
@@ -1099,4 +1096,65 @@
     background-color: rgba(139, 92, 246, 0.2);
     border-color: #8b5cf6;
     color: #a78bfa;
+}
+
+/* --- Dark Mode Color Overrides --- */
+:root.dark #aap2-module-root {
+    /* Primary Colors - Lighter for dark mode */
+    --color-primary: #a78bfa;
+    /* Violet 400 */
+    --color-primary-dark: #8b5cf6;
+    /* Violet 500 */
+    --color-primary-light: #4c1d95;
+    /* Violet 900 */
+
+    /* Text Colors */
+    --color-text: #f1f5f9;
+    /* Slate 100 */
+    --color-text-muted: #cbd5e1;
+    /* Slate 300 */
+    --color-text-light: #94a3b8;
+    /* Slate 400 */
+
+    /* Backgrounds */
+    --color-bg: #0f172a;
+    /* Slate 900 */
+    --color-surface: #1e293b;
+    /* Slate 800 */
+    --color-surface-alt: #334155;
+    /* Slate 700 */
+    --color-border: #334155;
+    /* Slate 700 */
+}
+
+/* Badge Overrides for Dark Mode */
+:root.dark #aap2-module-root .significance-badge--pathognomonic {
+    background-color: rgba(127, 29, 29, 0.5);
+    /* Red 900/50 */
+    color: #fca5a5;
+    /* Red 300 */
+}
+
+:root.dark #aap2-module-root .significance-badge--characteristic {
+    background-color: rgba(120, 53, 15, 0.5);
+    /* Amber 900/50 */
+    color: #fcd34d;
+    /* Amber 300 */
+}
+
+:root.dark #aap2-module-root .significance-badge--general {
+    background-color: rgba(6, 78, 59, 0.5);
+    /* Emerald 900/50 */
+    color: #6ee7b7;
+    /* Emerald 300 */
+}
+
+/* Enriched Text & Help Button Override */
+:root.dark #aap2-module-root .help-btn {
+    background-color: rgba(167, 139, 250, 0.2);
+    color: #a78bfa;
+}
+
+:root.dark #aap2-module-root .help-btn:hover {
+    background-color: rgba(167, 139, 250, 0.4);
 }
