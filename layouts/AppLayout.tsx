@@ -26,8 +26,8 @@ export function AppLayout() {
           className="flex flex-col items-center pt-4 pb-2 cursor-pointer select-none overflow-visible gap-0 border-b border-border"
           aria-label="Voltar para a Home"
         >
-          <Logo 
-            size={80} 
+          <Logo
+            size={80}
             className="h-20 w-20 select-none object-contain drop-shadow-[0_0_28px_rgba(96,165,250,0.35)] transition-all duration-300"
           />
           <span className="neon-wave neon-wave-glow -mt-4 text-xl font-semibold tracking-wide">Vetius</span>
@@ -39,11 +39,10 @@ export function AppLayout() {
           <div>
             <button
               onClick={() => navigate('/')}
-              className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${
-                isActive('/')
+              className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${isActive('/')
                   ? 'bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary font-medium'
                   : 'text-foreground hover:bg-surface/50'
-              }`}
+                }`}
             >
               <Home className="h-4 w-4" />
               <span>Hub</span>
@@ -62,11 +61,10 @@ export function AppLayout() {
                     <li key={module.id}>
                       <button
                         onClick={() => navigate(module.route)}
-                        className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${
-                          isActive(module.route)
+                        className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${isActive(module.route)
                             ? 'bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary font-medium'
                             : 'text-foreground hover:bg-surface/50'
-                        }`}
+                          }`}
                       >
                         <Icon className="h-4 w-4" />
                         <span className="truncate">{module.title}</span>
@@ -90,11 +88,10 @@ export function AppLayout() {
                     <li key={module.id}>
                       <button
                         onClick={() => navigate(module.route)}
-                        className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${
-                          isActive(module.route)
+                        className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${isActive(module.route)
                             ? 'bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary font-medium'
                             : 'text-foreground hover:bg-surface/50'
-                        }`}
+                          }`}
                       >
                         <Icon className="h-4 w-4" />
                         <span className="truncate">{module.title}</span>
@@ -118,11 +115,10 @@ export function AppLayout() {
                     <li key={module.id}>
                       <button
                         onClick={() => navigate(module.route)}
-                        className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors opacity-60 ${
-                          isActive(module.route)
+                        className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors opacity-60 ${isActive(module.route)
                             ? 'bg-slate-800/50 dark:bg-slate-700/50 text-white'
                             : 'text-slate-200/90 dark:text-foreground hover:bg-slate-800/40 dark:hover:bg-surface/50'
-                        }`}
+                          }`}
                       >
                         <Icon className="h-4 w-4" />
                         <span className="truncate">{module.title}</span>
@@ -161,8 +157,8 @@ export function AppLayout() {
                 className="flex flex-col items-center cursor-pointer select-none overflow-visible gap-0"
                 aria-label="Voltar para a Home"
               >
-                <Logo 
-                  size={96} 
+                <Logo
+                  size={96}
                   className="h-24 w-24 select-none object-contain drop-shadow-[0_0_28px_rgba(96,165,250,0.35)] transition-all duration-300"
                 />
                 <span className="neon-wave neon-wave-glow -mt-4 text-xl font-semibold tracking-wide">Vetius</span>
@@ -178,11 +174,10 @@ export function AppLayout() {
                     navigate('/')
                     setSidebarOpen(false)
                   }}
-                  className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${
-                    isActive('/')
+                  className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${isActive('/')
                       ? 'bg-slate-800/50 dark:bg-slate-700/50 text-white'
                       : 'text-slate-200/90 dark:text-foreground hover:bg-slate-800/40 dark:hover:bg-surface/50'
-                  }`}
+                    }`}
                 >
                   <Home className="h-4 w-4" />
                   <span>Hub</span>
@@ -204,15 +199,14 @@ export function AppLayout() {
                               navigate(module.route)
                               setSidebarOpen(false)
                             }}
-                            className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${
-                              isActive(module.route)
+                            className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${isActive(module.route)
                                 ? 'bg-slate-800/50 dark:bg-slate-700/50 text-white'
                                 : 'text-slate-200/90 dark:text-foreground hover:bg-slate-800/40 dark:hover:bg-surface/50'
-                            }`}
+                              }`}
                           >
                             {module.iconImage ? (
-                              <img 
-                                src={module.iconImage} 
+                              <img
+                                src={module.iconImage}
                                 alt={`${module.title} logo`}
                                 className="h-4 w-4 object-contain dark:invert dark:brightness-0 dark:contrast-200"
                               />
@@ -243,11 +237,10 @@ export function AppLayout() {
                               navigate(module.route)
                               setSidebarOpen(false)
                             }}
-                            className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${
-                              isActive(module.route)
+                            className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${isActive(module.route)
                                 ? 'bg-slate-800/50 dark:bg-slate-700/50 text-white'
                                 : 'text-slate-200/90 dark:text-foreground hover:bg-slate-800/40 dark:hover:bg-surface/50'
-                            }`}
+                              }`}
                           >
                             <Icon className="h-4 w-4" />
                             <span className="truncate">{module.title}</span>
@@ -274,11 +267,10 @@ export function AppLayout() {
                               navigate(module.route)
                               setSidebarOpen(false)
                             }}
-                            className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors opacity-60 ${
-                              isActive(module.route)
+                            className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors opacity-60 ${isActive(module.route)
                                 ? 'bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary font-medium'
                                 : 'text-foreground hover:bg-surface/50'
-                            }`}
+                              }`}
                           >
                             <Icon className="h-4 w-4" />
                             <span className="truncate">{module.title}</span>
@@ -325,10 +317,15 @@ export function AppLayout() {
         </header>
 
         {/* Page Content */}
+        {/* Page Content */}
         <main className="flex-1 overflow-auto">
-          <div className="mx-auto w-full max-w-7xl px-6">
+          {isActive('/') ? (
             <Outlet />
-          </div>
+          ) : (
+            <div className="mx-auto w-full max-w-7xl px-6">
+              <Outlet />
+            </div>
+          )}
         </main>
       </div>
     </div>

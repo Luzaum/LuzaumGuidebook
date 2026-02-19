@@ -15,6 +15,7 @@ import { NeurologiaPage } from './pages/NeurologiaPage'
 import CrivetPage from './modules/crivet/pages/CrivetPage'
 import VeteletroliticoPage from './modules/veteletrolitico/App'
 import LoginOrSignup from './components/LoginOrSignup'
+import AAP2Module from './modules/aap2/index'
 
 function AppContent() {
   // Se AUTH_ENABLED é false, vai direto para o app
@@ -31,7 +32,7 @@ function AppContent() {
               <Route path="/hemogasometria" element={<HemogasometriaPage />} />
               <Route path="/dor" element={<ModuleIframe />} />
               <Route path="/emergencias" element={<ModuleIframe />} />
-              <Route path="/peconhentos" element={<ModuleIframe />} />
+              <Route path="/peconhentos" element={<AAP2Module />} />
               <Route path="/antibioticoterapia" element={<ModuleIframe />} />
               <Route path="/crivet" element={<CrivetPage />} />
               <Route path="/neurologia" element={<NeurologiaPage />} />
@@ -60,7 +61,7 @@ function AppContent() {
               <Route path="/hemogasometria" element={<HemogasometriaPage />} />
               <Route path="/dor" element={<ModuleIframe />} />
               <Route path="/emergencias" element={<ModuleIframe />} />
-              <Route path="/peconhentos" element={<ModuleIframe />} />
+              <Route path="/peconhentos" element={<AAP2Module />} />
               <Route path="/antibioticoterapia" element={<ModuleIframe />} />
               <Route path="/crivet" element={<CrivetPage />} />
               <Route path="/neurologia" element={<NeurologiaPage />} />

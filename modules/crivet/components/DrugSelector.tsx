@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react'
-import { Pill, Search, Sparkles } from 'lucide-react'
+import { Pill, Search, Sparkles, ChevronDown, ChevronRight } from 'lucide-react'
 import { Drug, categories, drugs } from '../data/drugs'
 import { HelpModal } from './HelpModal'
 import { HelpContentRenderer } from './HelpContent'
@@ -14,18 +14,15 @@ type DrugSelectorProps = {
   onSelectDrug: (drug: Drug) => void
 }
 
-function HelpButtonWithModal({ 
-  title, 
-  drugId 
-}: { 
+function HelpButtonWithModal({
+  title,
+  drugId
+}: {
   title: string
-  drugId: string 
+  drugId: string
 }) {
   const [open, setOpen] = useState(false)
-
-  // Obter fármaco normalizado (sempre retorna NormalizedDrug válido com pelo menos uma seção)
   const normalized = getDrug(drugId)
-
   const helpTitle = normalized.helpDrawer.title || title
   const content = <HelpContentRenderer content={normalized.helpDrawer} />
 
@@ -34,7 +31,7 @@ function HelpButtonWithModal({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="h-7 w-7 rounded-full border border-white/30 hover:bg-white/20 text-white/90 hover:text-white transition-colors flex items-center justify-center text-sm font-medium"
+        className="crivet-help-btn"
         aria-label={`Ajuda: ${title}`}
         title="Informações sobre o fármaco"
       >
@@ -49,9 +46,19 @@ function HelpButtonWithModal({
 
 export default function DrugSelector({ selectedDrug, onSelectDrug }: DrugSelectorProps) {
   const [searchTerm, setSearchTerm] = useState('')
+  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set(categories))
 
   const handleSearch = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value)
+  }, [])
+
+  const toggleCategory = useCallback((category: string) => {
+    setExpandedCategories(prev => {
+      const next = new Set(prev)
+      if (next.has(category)) next.delete(category)
+      else next.add(category)
+      return next
+    })
   }, [])
 
   const filteredDrugs = useMemo(() => {
@@ -76,70 +83,76 @@ export default function DrugSelector({ selectedDrug, onSelectDrug }: DrugSelecto
   )
 
   return (
-    <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/70 p-6 space-y-6 shadow-sm">
-      <div className="flex items-center justify-between">
-        <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-          <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-sky-100 text-sky-700 text-xs font-black">
-            2
+    <section className="crivet-card" aria-labelledby="drug-selector-title">
+      {/* Card header */}
+      <div className="crivet-card-header">
+        <div className="crivet-step-badge">2</div>
+        <h2 id="drug-selector-title" className="crivet-card-title">Seleção de fármaco</h2>
+        {selectedDrug && (
+          <span className="crivet-status-pill crivet-status-pill--active ml-auto">
+            {selectedDrug.name}
           </span>
-          Seleção de fármaco
-        </h2>
+        )}
       </div>
 
+      {/* Selected drug banner */}
       {selectedDrug && (() => {
         const categoryStyle = CATEGORY_STYLES[mapCategoryToStyle(selectedDrug.category)]
         const validation = getDrugProfileValidation(selectedDrug.id)
         const missingBySection = getMissingFieldsBySection(validation)
         return (
-          <div className={`rounded-xl border px-3 py-2 ${categoryStyle.className}`}>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-2">
-                  <Pill className="w-6 h-6" />
-                </div>
-                <div>
-                  <p className="text-xs uppercase tracking-wider opacity-80 font-semibold">Selecionado</p>
-                  <p className="text-lg font-bold">{selectedDrug.name}</p>
-                </div>
+          <div className={`crivet-drug-selected-banner ${categoryStyle.className}`}>
+            <div className="flex items-center gap-3">
+              <div className="crivet-drug-icon-wrap">
+                <Pill className="w-5 h-5" aria-hidden="true" />
               </div>
-              <div className="flex items-center gap-2">
-                <span className="text-[11px] font-semibold opacity-90">{categoryStyle.label}</span>
-                <HelpButtonWithModal
-                  title={`Sobre ${selectedDrug.name}`}
-                  drugId={selectedDrug.id}
-                />
-                <Sparkles className="w-5 h-5 text-white/80 animate-pulse" />
+              <div>
+                <p className="text-[11px] uppercase tracking-widest opacity-75 font-semibold">Selecionado</p>
+                <p className="text-base font-bold leading-tight">{selectedDrug.name}</p>
               </div>
             </div>
-            <div className="mt-3 rounded-lg border border-white/15 bg-white/5 p-3 text-sm text-white/90">
-              <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wide opacity-80">
-                <span>Completude</span>
+            <div className="flex items-center gap-2">
+              <span className="text-[11px] font-semibold opacity-80 hidden sm:block">{categoryStyle.label}</span>
+              <HelpButtonWithModal
+                title={`Sobre ${selectedDrug.name}`}
+                drugId={selectedDrug.id}
+              />
+              <Sparkles className="w-4 h-4 text-white/70 animate-pulse" aria-hidden="true" />
+            </div>
+
+            {/* Completeness bar */}
+            <div className="col-span-2 mt-2 rounded-lg border border-white/15 bg-black/10 p-3">
+              <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wide opacity-80 mb-1.5">
+                <span>Completude do perfil</span>
                 <span className="text-sm font-bold normal-case">{validation.completeness}%</span>
               </div>
-              <div className="mt-1 text-xs opacity-80">{validation.missing.length} campos faltando</div>
-              {validation.missing.length === 0 ? (
-                <div className="mt-2 text-xs opacity-90">Nenhum campo faltando.</div>
-              ) : (
-                <div className="mt-2 space-y-3">
+              <div className="h-1.5 rounded-full bg-white/20 overflow-hidden">
+                <div
+                  className="h-full rounded-full bg-white/80 transition-all duration-500"
+                  style={{ width: `${validation.completeness}%` }}
+                  role="progressbar"
+                  aria-valuenow={validation.completeness}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                />
+              </div>
+              {validation.missing.length > 0 && (
+                <div className="mt-2 space-y-2">
                   {Object.entries(missingBySection).map(([section, fields]) => (
                     <div key={section} className="text-xs">
-                      <div className="font-semibold uppercase tracking-wide opacity-80">{section}</div>
-                      <ul className="mt-1 space-y-1">
+                      <div className="font-semibold uppercase tracking-wide opacity-70">{section}</div>
+                      <ul className="mt-1 space-y-0.5">
                         {fields.map((field) => (
-                          <li key={`${field.section}-${field.field}`} className="flex items-start gap-2">
-                            <span
-                              className={
-                                field.severity === 'critical'
-                                  ? 'text-red-200'
-                                  : field.severity === 'warning'
-                                  ? 'text-yellow-200'
-                                  : 'text-green-200'
-                              }
-                            >
+                          <li key={`${field.section}-${field.field}`} className="flex items-start gap-1.5">
+                            <span className={
+                              field.severity === 'critical' ? 'text-red-200' :
+                                field.severity === 'warning' ? 'text-yellow-200' : 'text-green-200'
+                            }>
                               {field.severity === 'critical' ? '!' : field.severity === 'warning' ? '~' : 'i'}
                             </span>
-                            <span>
-                              <code className="text-[10px] bg-black/20 px-1 rounded">{field.field}</code> {field.description}
+                            <span className="opacity-80">
+                              <code className="text-[10px] bg-black/20 px-1 rounded">{field.field}</code>{' '}
+                              {field.description}
                             </span>
                           </li>
                         ))}
@@ -153,18 +166,22 @@ export default function DrugSelector({ selectedDrug, onSelectDrug }: DrugSelecto
         )
       })()}
 
+      {/* Search */}
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 pointer-events-none" />
+        <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" aria-hidden="true" />
         <input
+          id="drug-search"
           value={searchTerm}
           onChange={handleSearch}
           placeholder="Buscar fármaco..."
-          className="w-full h-12 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 pl-10 pr-3 text-base text-slate-800 dark:text-slate-100 focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+          aria-label="Buscar fármaco"
+          className="crivet-search-input"
         />
         {searchTerm && (
           <button
+            type="button"
             onClick={() => setSearchTerm('')}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
+            className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-500 dark:text-slate-400 hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors flex items-center justify-center text-xs font-bold cursor-pointer"
             aria-label="Limpar busca"
           >
             ×
@@ -172,55 +189,72 @@ export default function DrugSelector({ selectedDrug, onSelectDrug }: DrugSelecto
         )}
       </div>
 
-      <div className="border rounded-xl border-slate-200 dark:border-slate-700 overflow-hidden bg-white dark:bg-slate-900/60">
+      {/* Drug list */}
+      <div className="crivet-drug-list">
         {searchTerm && Object.keys(grouped).length === 0 ? (
-          <div className="p-8 text-center text-slate-600 dark:text-slate-400">Nenhum fármaco encontrado.</div>
+          <div className="p-10 text-center">
+            <Search className="w-8 h-8 text-slate-300 dark:text-slate-600 mx-auto mb-3" aria-hidden="true" />
+            <p className="text-slate-500 dark:text-slate-400 text-sm">Nenhum fármaco encontrado para "<strong>{searchTerm}</strong>"</p>
+          </div>
         ) : (
-          <div className="divide-y divide-slate-200 dark:divide-slate-800">
-            {Object.entries(grouped).map(([category, list]) => (
-              <div key={category}>
-                <button className="w-full text-left px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-800">
-                  {category}
-                </button>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 p-3">
-                  {list.map((drug) => {
-                    const validation = getDrugProfileValidation(drug.id)
-                    const hasCritical = validation.missing.some((m) => m.severity === 'critical')
-                    return (
-                      <button
-                        key={drug.id}
-                        onClick={() => handleSelect(drug)}
-                        className={`group relative flex items-center justify-between p-3 rounded-lg text-left transition-all duration-200 border-2 ${
-                          selectedDrug?.id === drug.id
-                            ? 'bg-gradient-to-br from-sky-50 to-sky-100 dark:from-sky-900/30 dark:to-sky-800/30 border-sky-500 shadow-md'
-                            : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-sky-300 dark:hover:border-sky-600 hover:shadow-md'
-                        }`}
-                      >
-                        <span
-                          className={`font-semibold text-sm ${
-                            selectedDrug?.id === drug.id
-                              ? 'text-sky-900 dark:text-sky-100'
-                              : 'text-slate-700 dark:text-slate-300 group-hover:text-sky-700 dark:group-hover:text-sky-400'
-                          }`}
-                        >
-                          {drug.name}
-                        </span>
-                        <div className="flex items-center gap-2">
-                          {selectedDrug?.id === drug.id && <Sparkles className="w-4 h-4 text-sky-500 animate-pulse" />}
-                          <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
-                            {validation.completeness}%
-                          </span>
-                          <DrugProfileStatusBadge completeness={validation.completeness} hasCritical={hasCritical} />
-                        </div>
-                      </button>
-                    )
-                  })}
+          <div className="divide-y divide-slate-100 dark:divide-slate-800">
+            {Object.entries(grouped).map(([category, list]) => {
+              const isExpanded = expandedCategories.has(category) || !!searchTerm
+              return (
+                <div key={category}>
+                  <button
+                    type="button"
+                    onClick={() => toggleCategory(category)}
+                    className="crivet-category-header"
+                    aria-expanded={isExpanded}
+                  >
+                    <span>{category}</span>
+                    <div className="flex items-center gap-2">
+                      <span className="crivet-category-count">{list.length}</span>
+                      {isExpanded
+                        ? <ChevronDown className="w-3.5 h-3.5 text-slate-400" aria-hidden="true" />
+                        : <ChevronRight className="w-3.5 h-3.5 text-slate-400" aria-hidden="true" />
+                      }
+                    </div>
+                  </button>
+                  {isExpanded && (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 p-3">
+                      {list.map((drug) => {
+                        const validation = getDrugProfileValidation(drug.id)
+                        const hasCritical = validation.missing.some((m) => m.severity === 'critical')
+                        const isSelected = selectedDrug?.id === drug.id
+                        return (
+                          <button
+                            key={drug.id}
+                            type="button"
+                            onClick={() => handleSelect(drug)}
+                            aria-pressed={isSelected}
+                            className={`crivet-drug-btn ${isSelected ? 'crivet-drug-btn--selected' : ''}`}
+                          >
+                            <span className={`font-semibold text-sm truncate ${isSelected
+                                ? 'text-cyan-900 dark:text-cyan-100'
+                                : 'text-slate-700 dark:text-slate-300'
+                              }`}>
+                              {drug.name}
+                            </span>
+                            <div className="flex items-center gap-1.5 flex-shrink-0">
+                              {isSelected && <Sparkles className="w-3.5 h-3.5 text-cyan-500 animate-pulse" aria-hidden="true" />}
+                              <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500">
+                                {validation.completeness}%
+                              </span>
+                              <DrugProfileStatusBadge completeness={validation.completeness} hasCritical={hasCritical} />
+                            </div>
+                          </button>
+                        )
+                      })}
+                    </div>
+                  )}
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         )}
       </div>
-    </div>
+    </section>
   )
 }

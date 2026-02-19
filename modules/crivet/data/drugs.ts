@@ -1,4 +1,5 @@
 import type { DrugCompatibility, DrugUnitRules, IndicatedDose, UnitSafetyBlock } from '../types/drug'
+import type { DrugProfile } from '../types/drugProfile'
 import {
   defaultCompatibility,
   ketamineCompatibilityToDrugCompatibility,
@@ -26,6 +27,37 @@ import { ephedrineRecommendedUnit, ephedrineRecommendedUnitWhy, ephedrineIndicat
 import { morphineSafetyBlocks } from './drugs/morphine.blocks'
 import { remifentanilSafetyBlocks } from './drugs/remifentanil.blocks'
 
+// New Profile Imports
+import { lidocainaProfile } from './drugs/lidocaina.profile'
+import { fentanilProfile } from './drugs/fentanil.profile'
+import { remifentanilProfile } from './drugs/remifentanil.profile'
+import { morfinaProfile } from './drugs/morfina.profile'
+import { metadonaProfile } from './drugs/metadona.profile'
+import { butorfanolProfile } from './drugs/butorfanol.profile'
+import { cetaminaProfile } from './drugs/cetamina.profile'
+import { dexmedetomidinaProfile } from './drugs/dexmedetomidina.profile'
+import { propofolProfile } from './drugs/propofol.profile'
+import { dobutaminaProfile } from './drugs/dobutamina.profile'
+import { dopaminaProfile } from './drugs/dopamina.profile'
+import { efedrinaProfile } from './drugs/efedrina.profile'
+import { norepinefrinaProfile } from './drugs/norepinefrina.profile'
+import { nitroprussiatoProfile } from './drugs/nitroprussiato.profile'
+import { diltiazemProfile } from './drugs/diltiazem.profile'
+import { esmololProfile } from './drugs/esmolol.profile'
+import { vasopressinaProfile } from './drugs/vasopressina.profile'
+import { ceftriaxonaProfile } from './drugs/ceftriaxona.profile'
+import { meropenemProfile } from './drugs/meropenem.profile'
+import { enrofloxacinaProfile } from './drugs/enrofloxacina.profile'
+import { cefalexinaProfile } from './drugs/cefalexina.profile'
+import { clindamicinaProfile } from './drugs/clindamicina.profile'
+import { metronidazolProfile } from './drugs/metronidazol.profile'
+import { rocuronioProfile } from './drugs/rocuronio.profile'
+import { mlkProfile } from './drugs/mlk.profile'
+import { flkProfile } from './drugs/flk.profile'
+import { insulina_regularProfile } from './drugs/insulina_regular.profile'
+import { metoclopramidaProfile } from './drugs/metoclopramida.profile'
+import { maropitantProfile } from './drugs/maropitant.profile'
+
 export type DrugCategory =
   | 'Analgésicos e Anestésicos'
   | 'Agentes Cardiovasculares'
@@ -48,6 +80,7 @@ export interface Drug {
   recommendedUnitWhy?: string[] // razões para usar a unidade recomendada
   indicatedDoses?: IndicatedDose[] // faixas de dose indicadas por modo, espécie e finalidade
   safetyBlocks?: UnitSafetyBlock[] // Bloqueios de segurança por unidade
+  profile?: DrugProfile // ✅ NOVO: Perfil completo vinculado
 }
 
 export const drugs: Drug[] = [
@@ -62,6 +95,7 @@ export const drugs: Drug[] = [
     recommendedUnit: lidocaineRecommendedUnit,
     recommendedUnitWhy: lidocaineRecommendedUnitWhy,
     indicatedDoses: lidocaineIndicatedDoses,
+    profile: lidocainaProfile,
   },
   {
     id: 'fentanil',
@@ -73,6 +107,7 @@ export const drugs: Drug[] = [
     recommendedUnit: fentanylRecommendedUnit,
     recommendedUnitWhy: fentanylRecommendedUnitWhy,
     indicatedDoses: fentanylIndicatedDoses,
+    profile: fentanilProfile,
   },
   {
     id: 'remifentanil',
@@ -85,6 +120,7 @@ export const drugs: Drug[] = [
     recommendedUnitWhy: remifentanilRecommendedUnitWhy,
     indicatedDoses: remifentanilIndicatedDoses,
     safetyBlocks: remifentanilSafetyBlocks,
+    profile: remifentanilProfile,
   },
   {
     id: 'morfina',
@@ -94,6 +130,7 @@ export const drugs: Drug[] = [
     concentrations: [10, 1],
     compatibility: defaultCompatibility,
     safetyBlocks: morphineSafetyBlocks,
+    profile: morfinaProfile,
   },
   {
     id: 'metadona',
@@ -105,6 +142,7 @@ export const drugs: Drug[] = [
     recommendedUnit: methadoneRecommendedUnit,
     recommendedUnitWhy: methadoneRecommendedUnitWhy,
     indicatedDoses: methadoneIndicatedDoses,
+    profile: metadonaProfile,
   },
   {
     id: 'butorfanol',
@@ -113,6 +151,7 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [10],
     compatibility: defaultCompatibility,
+    profile: butorfanolProfile,
   },
   {
     id: 'cetamina',
@@ -124,6 +163,7 @@ export const drugs: Drug[] = [
     recommendedUnit: ketamineRecommendedUnit,
     recommendedUnitWhy: ketamineRecommendedUnitWhy,
     indicatedDoses: ketamineIndicatedDoses,
+    profile: cetaminaProfile,
   },
   {
     id: 'dexmedetomidina',
@@ -135,6 +175,7 @@ export const drugs: Drug[] = [
     recommendedUnit: dexmedetomidineRecommendedUnit,
     recommendedUnitWhy: dexmedetomidineRecommendedUnitWhy,
     indicatedDoses: dexmedetomidineIndicatedDoses,
+    profile: dexmedetomidinaProfile,
   },
   {
     id: 'propofol',
@@ -146,6 +187,7 @@ export const drugs: Drug[] = [
     recommendedUnit: propofolRecommendedUnit,
     recommendedUnitWhy: propofolRecommendedUnitWhy,
     indicatedDoses: propofolIndicatedDoses,
+    profile: propofolProfile,
   },
 
   // Agentes Cardiovasculares
@@ -159,6 +201,7 @@ export const drugs: Drug[] = [
     recommendedUnit: dobutamineRecommendedUnit,
     recommendedUnitWhy: dobutamineRecommendedUnitWhy,
     indicatedDoses: dobutamineIndicatedDoses,
+    profile: dobutaminaProfile,
   },
   {
     id: 'dopamina',
@@ -167,6 +210,7 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [5],
     compatibility: defaultCompatibility,
+    profile: dopaminaProfile,
   },
   {
     id: 'efedrina',
@@ -178,6 +222,7 @@ export const drugs: Drug[] = [
     recommendedUnit: ephedrineRecommendedUnit,
     recommendedUnitWhy: ephedrineRecommendedUnitWhy,
     indicatedDoses: ephedrineIndicatedDoses,
+    profile: efedrinaProfile,
   },
   {
     id: 'norepinefrina',
@@ -189,6 +234,7 @@ export const drugs: Drug[] = [
     recommendedUnit: norepinephrineRecommendedUnit,
     recommendedUnitWhy: norepinephrineRecommendedUnitWhy,
     indicatedDoses: norepinephrineIndicatedDoses,
+    profile: norepinefrinaProfile,
   },
   {
     id: 'nitroprussiato',
@@ -197,6 +243,7 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [25],
     compatibility: defaultCompatibility,
+    profile: nitroprussiatoProfile,
   },
   {
     id: 'diltiazem',
@@ -205,6 +252,7 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [5],
     compatibility: defaultCompatibility,
+    profile: diltiazemProfile,
   },
   {
     id: 'esmolol',
@@ -213,6 +261,7 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [10, 250],
     compatibility: defaultCompatibility,
+    profile: esmololProfile,
   },
   {
     id: 'vasopressina',
@@ -221,6 +270,7 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [20],
     compatibility: defaultCompatibility,
+    profile: vasopressinaProfile,
   },
 
   // Antimicrobianos
@@ -231,6 +281,7 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [100],
     compatibility: defaultCompatibility,
+    profile: ceftriaxonaProfile,
   },
   {
     id: 'meropenem',
@@ -239,6 +290,7 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [50],
     compatibility: defaultCompatibility,
+    profile: meropenemProfile,
   },
   {
     id: 'enrofloxacina',
@@ -247,6 +299,7 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [25, 50, 100],
     compatibility: defaultCompatibility,
+    profile: enrofloxacinaProfile,
   },
   {
     id: 'cefalexina',
@@ -255,6 +308,7 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [100],
     compatibility: defaultCompatibility,
+    profile: cefalexinaProfile,
   },
   {
     id: 'clindamicina',
@@ -263,6 +317,7 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [150],
     compatibility: defaultCompatibility,
+    profile: clindamicinaProfile,
   },
   {
     id: 'metronidazol',
@@ -271,6 +326,7 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [5],
     compatibility: defaultCompatibility,
+    profile: metronidazolProfile,
   },
 
   // Bloqueadores Neuromusculares
@@ -281,6 +337,7 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [10],
     compatibility: defaultCompatibility,
+    profile: rocuronioProfile,
   },
 
   // Infusões Combinadas
@@ -291,6 +348,7 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [],
     compatibility: defaultCompatibility,
+    profile: mlkProfile,
   },
   {
     id: 'flk',
@@ -299,6 +357,7 @@ export const drugs: Drug[] = [
     hasCRI: true,
     concentrations: [],
     compatibility: defaultCompatibility,
+    profile: flkProfile,
   },
 
   // Endócrino
@@ -313,6 +372,7 @@ export const drugs: Drug[] = [
     recommendedUnitWhy: insulinRegularRecommendedUnitWhy,
     indicatedDoses: insulinRegularIndicatedDoses,
     safetyBlocks: insulinSafetyBlocks,
+    profile: insulina_regularProfile,
   },
 
   // Antieméticos / Pró-cinéticos
@@ -326,6 +386,7 @@ export const drugs: Drug[] = [
     recommendedUnit: metoclopramidaRecommendedUnit,
     recommendedUnitWhy: metoclopramidaRecommendedUnitWhy,
     indicatedDoses: metoclopramidaIndicatedDoses,
+    profile: metoclopramidaProfile,
   },
   {
     id: 'maropitant',
@@ -337,6 +398,7 @@ export const drugs: Drug[] = [
     recommendedUnit: maropitantRecommendedUnit,
     recommendedUnitWhy: maropitantRecommendedUnitWhy,
     indicatedDoses: maropitantIndicatedDoses,
+    profile: maropitantProfile,
   },
 ]
 

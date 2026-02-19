@@ -86,8 +86,11 @@ export default function InfusionCalculator({
       setUserOverrodeRate(false) // Reset quando trocar fármaco
       setPumpRate(null)
 
-      // Forçar unidade recomendada ao selecionar fármaco
-      if (selectedDrug.recommendedUnit) {
+      // Forçar unidade recomendada ao selecionar fármaco (Prioridade: Profile > Legacy > Fallback)
+      const profileUnit = selectedDrug.profile?.doses?.unit_standard_cri
+      if (profileUnit) {
+        setDoseUnit(profileUnit as DoseUnit)
+      } else if (selectedDrug.recommendedUnit) {
         setDoseUnit(selectedDrug.recommendedUnit as DoseUnit)
       } else if (selectedDrug.unitRules?.preferredDoseUnit) {
         // Fallback para sistema antigo (compatibilidade)
@@ -212,6 +215,42 @@ export default function InfusionCalculator({
 
   // Calcular dose indicada baseada no fármaco, modo, espécie e unidade selecionada
   const indicatedDose = useMemo(() => {
+    // 1. Tentar ler do NOVO Profile (Prioridade)
+    if (selectedDrug?.profile?.doses) {
+      const speciesKey = species === 'dog' ? 'dog' : 'cat'
+      const dosesNode = selectedDrug.profile.doses[speciesKey]
+
+      // CRI Calculator foca em CRI. Se não tiver, tenta Bolus apenas se não houver CRI (mas aqui é calculator de CRI)
+      if (dosesNode?.cri) {
+        // Encontrar a unidade base dos dados no profile
+        const stdUnit = selectedDrug.profile.doses.unit_standard_cri as DoseUnit || 'mcg/kg/min'
+
+        // Mapear unidade para chave do objeto (ex: mg/kg/h -> mgkgh)
+        const unitKey = stdUnit.replace(/\//g, '') as 'mgkgh' | 'mgkg' | 'mcgkgmin' // simplificado
+
+        // Tentar ler os valores usando a chave da unidade padrão
+        // @ts-ignore - Acesso dinâmico seguro pois verificamos existência
+        const doseData = dosesNode.cri[unitKey] || Object.values(dosesNode.cri)[0] // Fallback para primeira chave se unitKey falhar
+
+        if (doseData) {
+          const min = doseData.min
+          const max = doseData.max
+
+          // Converter de StandardUnit para SelectedUnit
+          const convertedMin = convertDose(min, stdUnit, doseUnit)
+          const convertedMax = convertDose(max, stdUnit, doseUnit)
+
+          return {
+            min: convertedMin,
+            max: convertedMax,
+            purpose: 'Infusão Contínua (CRI)',
+            note: doseData.note || selectedDrug.profile.doses.dog?.therapeutic_targets?.target_map || ''
+          }
+        }
+      }
+    }
+
+    // 2. Fallback para Legacy
     if (!selectedDrug?.indicatedDoses || selectedDrug.indicatedDoses.length === 0) return null
 
     // Por enquanto, ambos os modos (direct/preparation) são CRI
@@ -291,16 +330,13 @@ export default function InfusionCalculator({
   }
 
   return (
-    <div className="space-y-6 overflow-visible">
-      <div className="flex items-center justify-between">
-        <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-          <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-sky-100 text-sky-700 text-xs font-black">
-            3
-          </span>
-          Cálculo de infusão
-        </h2>
+    <section className="crivet-card" aria-labelledby="infusion-calc-title">
+      <div className="crivet-card-header">
+        <div className="crivet-step-badge">3</div>
+        <h2 id="infusion-calc-title" className="crivet-card-title">Cálculo de infusão</h2>
         {(isValidDirect || isValidPreparation) && (
-          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
+          <span className="crivet-status-pill crivet-status-pill--ready ml-auto">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
             Pronto
           </span>
         )}
@@ -422,7 +458,7 @@ export default function InfusionCalculator({
           {/* Dose indicada em destaque amarelo com botao "?" - ACIMA do campo Dose alvo */}
           {indicatedDose && (
             <>
-              <div className="rounded-lg border-2 border-yellow-400/50 bg-yellow-500/15 dark:bg-yellow-500/10 p-3 flex items-start justify-between gap-3">
+              <div className="crivet-indicated-dose">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="text-yellow-400 dark:text-yellow-300 font-semibold text-sm">
@@ -487,13 +523,15 @@ export default function InfusionCalculator({
               onChange={handleDoseChange}
               placeholder="0.0"
               step="0.01"
-              className="flex-1 rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 px-3 text-sm focus:border-sky-500 focus:ring-sky-500"
+              className="crivet-input flex-1"
+              aria-label="Dose alvo"
             />
           </div>
           <div className="space-y-2">
             <div className="flex flex-wrap gap-2">
               {ALL_UNITS.map((unit) => {
-                const isRecommended = unit === selectedDrug?.recommendedUnit
+                const profileRec = selectedDrug?.profile?.doses?.unit_standard_cri
+                const isRecommended = unit === (profileRec || selectedDrug?.recommendedUnit)
                 const isSelected = unit === doseUnit
 
                 return (
@@ -501,17 +539,14 @@ export default function InfusionCalculator({
                     key={unit}
                     type="button"
                     onClick={() => handleDoseUnit(unit)}
+                    aria-pressed={isSelected}
                     className={[
-                      'px-3 py-2 rounded-md border text-xs transition flex items-center gap-2',
-                      isSelected
-                        ? 'bg-white/10 border-white/25'
-                        : 'bg-transparent border-white/10 hover:bg-white/5',
+                      'crivet-unit-btn',
+                      isSelected ? 'crivet-unit-btn--selected' : '',
                       isRecommended
-                        ? 'border-[#39ff14] text-[#39ff14] shadow-[0_0_0_1px_#39ff14]'
-                        : 'text-white/80',
-                    ]
-                      .filter(Boolean)
-                      .join(' ')}
+                        ? 'crivet-unit-btn--recommended ring-2 ring-[#39ff14] shadow-[0_0_12px_rgba(57,255,20,0.6)] border-[#39ff14] z-10'
+                        : '',
+                    ].filter(Boolean).join(' ')}
                   >
                     <span>{unit}</span>
                     {isRecommended && (
@@ -659,7 +694,7 @@ export default function InfusionCalculator({
               <select
                 value={concentration}
                 onChange={(event) => handleConcentrationSelect(event.target.value)}
-                className="w-full rounded-md border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 py-2 px-3 text-sm focus:border-sky-500 focus:ring-sky-500"
+                className="crivet-select"
               >
                 {selectedDrug.concentrations.map((c) => (
                   <option key={c} value={c}>
@@ -676,12 +711,14 @@ export default function InfusionCalculator({
                   onChange={handleConcentrationChange}
                   placeholder="Conc. (mg/mL)"
                   step="0.01"
-                  className="flex-1 rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 px-3 text-sm focus:border-sky-500 focus:ring-sky-500"
+                  className="crivet-input flex-1"
+                  aria-label="Concentração do fármaco"
                 />
                 {selectedDrug?.concentrations.length ? (
                   <button
+                    type="button"
                     onClick={() => handleConcentrationSelect(selectedDrug.concentrations[0].toString())}
-                    className="px-3 rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm text-slate-700 dark:text-slate-200"
+                    className="crivet-preset-btn px-4"
                   >
                     Lista
                   </button>
@@ -703,7 +740,8 @@ export default function InfusionCalculator({
                   placeholder="0"
                   step="0.1"
                   min="0"
-                  className="flex-1 rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 px-3 text-sm focus:border-sky-500 focus:ring-sky-500"
+                  className="crivet-input flex-1"
+                  aria-label="Taxa da bomba em mL/h"
                 />
               </div>
               {suggestedRates.length > 0 && (
@@ -713,7 +751,7 @@ export default function InfusionCalculator({
                       key={rate}
                       type="button"
                       onClick={() => handlePumpRatePreset(rate)}
-                      className="px-3 py-1 rounded-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition"
+                      className="crivet-preset-btn"
                     >
                       {rate} mL/h
                     </button>
@@ -721,9 +759,10 @@ export default function InfusionCalculator({
                 </div>
               )}
               {pumpRateHint && (
-                <div className="rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-3">
-                  <p className="text-sm text-blue-800 dark:text-blue-200">
-                    <span className="font-semibold">💡 Sugestão do CRIVET:</span> {pumpRateHint.message}
+                <div className="crivet-pump-hint">
+                  <p className="text-sm text-cyan-800 dark:text-cyan-200 flex items-center gap-2">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>
+                    <span className="font-semibold">Sugestão do CRIVET:</span> {pumpRateHint.message}
                   </p>
                 </div>
               )}
@@ -735,20 +774,16 @@ export default function InfusionCalculator({
                 <button
                   type="button"
                   onClick={() => setDilutionType('syringe')}
-                  className={`px-4 py-2 rounded-md border text-sm transition ${dilutionType === 'syringe'
-                    ? 'bg-sky-50 dark:bg-sky-900/20 border-sky-500 text-sky-700 dark:text-sky-300 font-medium'
-                    : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
-                    }`}
+                  aria-pressed={dilutionType === 'syringe'}
+                  className={`crivet-vehicle-btn ${dilutionType === 'syringe' ? 'crivet-vehicle-btn--active' : ''}`}
                 >
                   Seringa
                 </button>
                 <button
                   type="button"
                   onClick={() => setDilutionType('bag')}
-                  className={`px-4 py-2 rounded-md border text-sm transition ${dilutionType === 'bag'
-                    ? 'bg-sky-50 dark:bg-sky-900/20 border-sky-500 text-sky-700 dark:text-sky-300 font-medium'
-                    : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
-                    }`}
+                  aria-pressed={dilutionType === 'bag'}
+                  className={`crivet-vehicle-btn ${dilutionType === 'bag' ? 'crivet-vehicle-btn--active' : ''}`}
                 >
                   Bolsa
                 </button>
@@ -759,12 +794,8 @@ export default function InfusionCalculator({
                     key={vol}
                     type="button"
                     onClick={() => setDilutionVolume(vol.toString())}
-                    className={[
-                      'rounded-md border px-3 py-2 text-xs transition',
-                      dilutionVolume === vol.toString()
-                        ? 'bg-white/10 border-white/25'
-                        : 'bg-transparent border-white/10 hover:bg-white/5',
-                    ].join(' ')}
+                    aria-pressed={dilutionVolume === vol.toString()}
+                    className={`crivet-vol-btn ${dilutionVolume === vol.toString() ? 'crivet-vol-btn--active' : ''}`}
                   >
                     {vol} mL
                   </button>
@@ -776,7 +807,8 @@ export default function InfusionCalculator({
                   placeholder="Custom"
                   step="1"
                   min="1"
-                  className="flex-1 rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 py-2 px-3 text-sm focus:border-sky-500 focus:ring-sky-500"
+                  className="crivet-input flex-1"
+                  aria-label="Volume customizado"
                 />
               </div>
             </div>
@@ -786,7 +818,8 @@ export default function InfusionCalculator({
               <select
                 value={fluidType}
                 onChange={(e) => setFluidType(e.target.value as FluidType)}
-                className="w-full rounded-md border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 py-2 px-3 text-sm focus:border-sky-500 focus:ring-sky-500"
+                className="crivet-select"
+                aria-label="Tipo de fluido diluente"
               >
                 <option value="NaCl 0.9%">NaCl 0,9% (SF)</option>
                 <option value="Ringer Lactato">Ringer Lactato</option>
@@ -889,24 +922,22 @@ export default function InfusionCalculator({
           </div>
         )}
 
-        <div className="flex gap-2">
+        <div className="crivet-mode-tabs" role="tablist" aria-label="Modo de cálculo">
           <button
             type="button"
+            role="tab"
+            aria-selected={mode === 'direct'}
             onClick={() => setMode('direct')}
-            className={`px-4 py-2 rounded-md border text-sm transition ${mode === 'direct'
-              ? 'bg-sky-50 dark:bg-sky-900/20 border-sky-500 text-sky-700 dark:text-sky-300 font-medium'
-              : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
-              }`}
+            className={`crivet-mode-tab ${mode === 'direct' ? 'crivet-mode-tab--active' : ''}`}
           >
             Infusão direta
           </button>
           <button
             type="button"
+            role="tab"
+            aria-selected={mode === 'preparation'}
             onClick={() => setMode('preparation')}
-            className={`px-4 py-2 rounded-md border text-sm transition ${mode === 'preparation'
-              ? 'bg-sky-50 dark:bg-sky-900/20 border-sky-500 text-sky-700 dark:text-sky-300 font-medium'
-              : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
-              }`}
+            className={`crivet-mode-tab ${mode === 'preparation' ? 'crivet-mode-tab--active' : ''}`}
           >
             Preparo (seringa/bolsa)
           </button>
@@ -914,22 +945,25 @@ export default function InfusionCalculator({
       </div>
 
       {isValidDirect && mode === 'direct' && directResult && (
-        <div className="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-          <div className="flex items-center gap-2 mb-2">
-            <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300">Resultado</h3>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <p className="text-xs text-slate-600 dark:text-slate-400">Taxa de infusão</p>
-              <p className="text-lg font-semibold text-slate-900 dark:text-white">
-                {formatNumberPtBR(directResult.rateMlHr, 2)} <span className="text-sm font-normal">mL/h</span>
-              </p>
+        <div className="crivet-result-section">
+          <h3 className="text-xs font-bold uppercase tracking-widest text-emerald-700 dark:text-emerald-400 mb-3 flex items-center gap-2">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
+            Resultado
+          </h3>
+          <div className="crivet-result-grid">
+            <div className="crivet-result-item">
+              <span className="crivet-result-label">Taxa de infusão</span>
+              <span className="crivet-result-value">
+                {formatNumberPtBR(directResult.rateMlHr, 2)}
+                <span className="crivet-result-unit">mL/h</span>
+              </span>
             </div>
-            <div>
-              <p className="text-xs text-slate-600 dark:text-slate-400">Taxa por minuto</p>
-              <p className="text-lg font-semibold text-slate-900 dark:text-white">
-                {formatNumberPtBR(directResult.rateMlMin, 4)} <span className="text-sm font-normal">mL/min</span>
-              </p>
+            <div className="crivet-result-item">
+              <span className="crivet-result-label">Taxa por minuto</span>
+              <span className="crivet-result-value">
+                {formatNumberPtBR(directResult.rateMlMin, 4)}
+                <span className="crivet-result-unit">mL/min</span>
+              </span>
             </div>
           </div>
         </div>
@@ -953,45 +987,50 @@ export default function InfusionCalculator({
             </div>
           ) : (
             <>
-              <div className="flex items-center gap-2 mb-2">
-                <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300">Resultado</h3>
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <div>
-                  <p className="text-xs text-slate-600 dark:text-slate-400">Volume fármaco</p>
-                  <p className="text-lg font-semibold text-slate-900 dark:text-white">
-                    {formatNumberPtBR(preparationResult.drugVolumeMl, 2)} <span className="text-sm font-normal">mL</span>
-                  </p>
+              <h3 className="text-xs font-bold uppercase tracking-widest text-emerald-700 dark:text-emerald-400 mb-3 flex items-center gap-2">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
+                Resultado
+              </h3>
+              <div className="crivet-result-grid crivet-result-grid-4">
+                <div className="crivet-result-item">
+                  <span className="crivet-result-label">Volume fármaco</span>
+                  <span className="crivet-result-value">
+                    {formatNumberPtBR(preparationResult.drugVolumeMl, 2)}
+                    <span className="crivet-result-unit">mL</span>
+                  </span>
                 </div>
-                <div>
-                  <p className="text-xs text-slate-600 dark:text-slate-400">Volume diluente</p>
-                  <p className="text-lg font-semibold text-slate-900 dark:text-white">
-                    {formatNumberPtBR(preparationResult.diluentVolumeMl, 2)} <span className="text-sm font-normal">mL</span>
-                  </p>
+                <div className="crivet-result-item">
+                  <span className="crivet-result-label">Volume diluente</span>
+                  <span className="crivet-result-value">
+                    {formatNumberPtBR(preparationResult.diluentVolumeMl, 2)}
+                    <span className="crivet-result-unit">mL</span>
+                  </span>
                 </div>
-                <div>
-                  <p className="text-xs text-slate-600 dark:text-slate-400">Conc. final</p>
-                  <p className="text-lg font-semibold text-slate-900 dark:text-white">
-                    {formatNumberPtBR(preparationResult.finalConcentrationMgMl, 4)} <span className="text-sm font-normal">mg/mL</span>
-                  </p>
+                <div className="crivet-result-item">
+                  <span className="crivet-result-label">Conc. final</span>
+                  <span className="crivet-result-value">
+                    {formatNumberPtBR(preparationResult.finalConcentrationMgMl, 4)}
+                    <span className="crivet-result-unit">mg/mL</span>
+                  </span>
                 </div>
-                <div>
-                  <p className="text-xs text-slate-600 dark:text-slate-400">Total fármaco</p>
-                  <p className="text-lg font-semibold text-slate-900 dark:text-white">
-                    {formatNumberPtBR(preparationResult.totalDrugMg, 2)} <span className="text-sm font-normal">mg</span>
-                  </p>
+                <div className="crivet-result-item">
+                  <span className="crivet-result-label">Total fármaco</span>
+                  <span className="crivet-result-value">
+                    {formatNumberPtBR(preparationResult.totalDrugMg, 2)}
+                    <span className="crivet-result-unit">mg</span>
+                  </span>
                 </div>
               </div>
 
-              <div className="rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-4 flex gap-3">
-                <ClipboardList className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
-                <div className="space-y-1 text-sm text-blue-800 dark:text-blue-200">
+              <div className="crivet-instruction-box">
+                <ClipboardList className="w-5 h-5 text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <div className="space-y-1 text-sm text-cyan-900 dark:text-cyan-100">
                   <p>
                     Preparar {formatNumberPtBR(vehicleVolume)} mL ({dilutionType === 'syringe' ? 'seringa' : 'bolsa'}). Aspirar{' '}
-                    {formatNumberPtBR(preparationResult.drugVolumeMl, 2)} mL do fármaco e completar com{' '}
-                    {formatNumberPtBR(preparationResult.diluentVolumeMl, 2)} mL de diluente.
+                    <strong>{formatNumberPtBR(preparationResult.drugVolumeMl, 2)} mL</strong> do fármaco e completar com{' '}
+                    <strong>{formatNumberPtBR(preparationResult.diluentVolumeMl, 2)} mL</strong> de diluente.
                   </p>
-                  <p>Taxa na bomba: {formatNumberPtBR(pumpRateValue, 1)} mL/h. Fluido: {fluidType}.</p>
+                  <p className="text-xs opacity-80">Taxa na bomba: <strong>{formatNumberPtBR(pumpRateValue, 1)} mL/h</strong> · Fluido: {fluidType}</p>
                 </div>
               </div>
             </>
@@ -1000,21 +1039,29 @@ export default function InfusionCalculator({
       )}
 
       {((isValidDirect && directResult) || (isValidPreparation && preparationResult)) && (
-        <div className="mt-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 p-4">
+        <div className="crivet-calc-toggle">
           <div className="flex items-center justify-between">
             <button
               type="button"
               onClick={() => setShowCalculation(!showCalculation)}
-              className="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-white hover:text-sky-600 dark:hover:text-sky-400"
+              className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer"
+              aria-expanded={showCalculation}
             >
-              <span>{showCalculation ? '▼' : '▶'}</span>
+              <svg
+                width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+                strokeLinecap="round" strokeLinejoin="round"
+                className={`transition-transform duration-200 ${showCalculation ? 'rotate-90' : ''}`}
+                aria-hidden="true"
+              >
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
               <span>Cálculo explicado</span>
             </button>
 
             {showCalculation && (
               <button
                 type="button"
-                className="text-xs text-sky-600 dark:text-sky-400 hover:underline"
+                className="text-xs text-cyan-600 dark:text-cyan-400 hover:underline cursor-pointer"
                 onClick={() => {
                   const steps = mode === 'direct' ? directResult?.steps || [] : preparationResult?.steps || []
                   navigator.clipboard.writeText(steps.join('\n'))
@@ -1026,20 +1073,20 @@ export default function InfusionCalculator({
           </div>
 
           {showCalculation && (
-            <div className="mt-3 space-y-2">
+            <div className="mt-3 space-y-1.5">
               {(mode === 'direct' ? directResult?.steps : preparationResult?.steps)?.map((line, idx) => (
                 <div
                   key={`${idx}-${line.slice(0, 20)}`}
-                  className="flex gap-2 rounded-lg bg-white dark:bg-slate-800 px-3 py-2"
+                  className="crivet-calc-step"
                 >
-                  <span className="opacity-60 text-slate-500 dark:text-slate-400">{idx + 1}.</span>
-                  <span className="text-sm text-slate-900 dark:text-white">{line}</span>
+                  <span className="text-xs font-bold text-slate-400 dark:text-slate-500 w-5 flex-shrink-0 mt-0.5">{idx + 1}.</span>
+                  <span className="text-sm text-slate-700 dark:text-slate-300">{line}</span>
                 </div>
               ))}
             </div>
           )}
         </div>
       )}
-    </div>
+    </section>
   )
 }

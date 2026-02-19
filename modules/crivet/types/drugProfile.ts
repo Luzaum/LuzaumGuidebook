@@ -126,6 +126,8 @@ export interface SpeciesDoses {
   }
   cri?: {
     mcgkgmin?: DoseRange
+    mgkgmin?: DoseRange // Para propofol, etc.
+    mukgmin?: DoseRange // Para vasopressina
     mgkgh?: DoseRange
     titration?: {
       increment: string
@@ -134,6 +136,12 @@ export interface SpeciesDoses {
     maintenance?: DoseRange
     rescue?: DoseRange
     max?: number
+  }
+  epidural?: {
+    mgkg?: DoseRange
+    mcgkg?: DoseRange
+    route?: string // "Epidural" ou custom
+    volume_mlkg?: DoseRange // Para volume total
   }
   adjustments?: DoseAdjustment
   therapeutic_targets?: TherapeuticTargets
@@ -159,7 +167,9 @@ export interface Presentation {
 
 // Seção 6: Diluição
 export interface DilutionTarget {
-  target_mg_ml: number
+  target_mg_ml?: number
+  target_mcg_ml?: number
+  target_u_ml?: number
   use_cases: string[]
   how_to_make: string
   recipe?: string // "1 mL + X mL = Y mg/mL"
@@ -194,6 +204,7 @@ export interface Compatibility {
     why: string
     risk?: string // "precipitação", "inativação", "adsorção"
   }>
+  avoid_same_syringe_or_precipitation_risk?: string[] // avisos de mistura/precipitação
   dedicated_line_rules?: string[]
 }
 
@@ -247,8 +258,11 @@ export interface Preset {
   id: string
   label: string
   dose_mcgkgmin?: number
+  dose_mgkgmin?: number // Para propofol
+  dose_mukgmin?: number // Para vasopressina
   dose_mgkg?: number
   dose_mcgkg?: number
+  dose_ukg?: number // Para vasopressina bolus
   dose_mgkgh?: number
   limits?: {
     min?: number

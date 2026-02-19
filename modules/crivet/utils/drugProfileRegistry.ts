@@ -33,6 +33,7 @@ import { ceftriaxonaProfile } from '../data/drugs/ceftriaxona.profile'
 import { meropenemProfile } from '../data/drugs/meropenem.profile'
 import { enrofloxacinaProfile } from '../data/drugs/enrofloxacina.profile'
 import { cefalexinaProfile } from '../data/drugs/cefalexina.profile'
+
 import { clindamicinaProfile } from '../data/drugs/clindamicina.profile'
 import { metronidazolProfile } from '../data/drugs/metronidazol.profile'
 import { rocuronioProfile } from '../data/drugs/rocuronio.profile'
@@ -65,6 +66,7 @@ const DRUG_PROFILE_REGISTRY: Record<string, Partial<DrugProfile>> = {
   meropenem: meropenemProfile as Partial<DrugProfile>,
   enrofloxacina: enrofloxacinaProfile as Partial<DrugProfile>,
   cefalexina: cefalexinaProfile as Partial<DrugProfile>,
+
   clindamicina: clindamicinaProfile as Partial<DrugProfile>,
   metronidazol: metronidazolProfile as Partial<DrugProfile>,
   rocuronio: rocuronioProfile as Partial<DrugProfile>,

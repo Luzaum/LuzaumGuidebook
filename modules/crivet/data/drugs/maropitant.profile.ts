@@ -80,59 +80,67 @@ export const maropitantProfile: DrugProfile = {
     ],
   },
   doses: {
-    unit_standard_cri: 'mg/kg',
+    unit_standard_cri: 'mcg/kg/h',
     dog: {
       bolus: {
-        mgkg: { min: 1, max: 1 },
+        mgkg: { min: 1, max: 1, note: 'SC ou IV lento q24h. Dose padrão: 1 mg/kg. IV: refrigerar solução antes de aplicar para reduzir dor local.' },
         route: 'SC',
         loading_dose: { min: 1, max: 1 },
       },
       cri: {
-        mgkgh: { min: 0.05, max: 0.1 },
-        titration: {
-          increment: 'Ajustar conforme resposta clínica',
-          interval: '24 h',
+        mgkgh: {
+          min: 0.03,
+          max: 0.1,
+          note: 'CRI IV (30–100 mcg/kg/h = 0,03–0,1 mg/kg/h). Dose de ataque: 1 mg/kg IV lento antes de iniciar CRI (garante bloqueio NK1 inicial). Evitar >100 mcg/kg/h. Indicações: pancreatite grave, oncológico com vômito persistente, pós-op abdominal prolongado, uremia grave. Duração: 3–5 dias aceitável; monitorar enzimas hepáticas em uso prolongado.',
         },
-        max: 1,
+        titration: {
+          increment: 'Iniciar em 30 mcg/kg/h; aumentar conforme resposta antiemética',
+          interval: 'Reavaliar resposta a cada 12–24h',
+        },
+        max: 100,
       },
       adjustments: {
-        obesity: 'Calcular pelo peso magro',
-        shock: 'Sem ajuste direto',
-        hypoalbuminemia: 'Monitorar resposta',
-        comorbidities: 'Reduzir intervalo em hepatopatas',
+        obesity: 'Calcular pelo peso magro/ideal',
+        shock: 'Sem ajuste direto; preferir IV em paciente crítico',
+        hypoalbuminemia: 'Alta ligação proteica: fração livre aumenta em hipoalbuminemia — monitorar resposta',
+        comorbidities: 'Hepatopatia: reduzir dose e monitorar enzimas hepáticas. Obstrução GI: contraindicado (mascarar sinais).',
       },
       therapeutic_targets: {
-        target_map: 'N/A (não é vasopressor).',
-        target_etco2: 'N/A (não é sedativo/anestésico).',
-        analgesia_scale: 'N/A (não é analgésico).',
-        sedation_target: 'N/A (não é sedativo).',
+        target_map: 'N/A.',
+        target_etco2: 'N/A.',
+        analgesia_scale: 'N/A.',
+        sedation_target: 'N/A.',
       },
     },
     cat: {
       bolus: {
-        mgkg: { min: 1, max: 1 },
+        mgkg: { min: 1, max: 1, note: 'IV lento (preferencial em gatos). SC: dor local significativa — refrigerar solução antes de aplicar. q24h.' },
         route: 'IV',
         loading_dose: { min: 1, max: 1 },
       },
       cri: {
-        mgkgh: { min: 0.05, max: 0.1 },
-        titration: {
-          increment: 'Manter dose mínima eficaz',
-          interval: '24 h',
+        mgkgh: {
+          min: 0.03,
+          max: 0.06,
+          note: 'CRI IV (30–60 mcg/kg/h = 0,03–0,06 mg/kg/h). Dose de ataque: 1 mg/kg IV lento antes de iniciar CRI. Gatos mais sensíveis à hipotensão leve — evitar >60 mcg/kg/h. Monitorar PA.',
         },
-        max: 1,
+        titration: {
+          increment: 'Iniciar em 30 mcg/kg/h; ajustar conforme resposta',
+          interval: 'Reavaliar a cada 12–24h; monitorar PA',
+        },
+        max: 60,
       },
       adjustments: {
         obesity: 'Usar peso ideal',
-        shock: 'Preferir IV lento',
-        hypoalbuminemia: 'Monitorar',
-        comorbidities: 'Evitar uso prolongado em hepatopatas',
+        shock: 'Preferir IV lento; monitorar PA (hipotensão leve possível)',
+        hypoalbuminemia: 'Monitorar resposta e PA',
+        comorbidities: 'Hepatopatia: evitar uso prolongado; monitorar enzimas. Obstrução GI: contraindicado.',
       },
       therapeutic_targets: {
-        target_map: 'N/A (não é vasopressor).',
-        target_etco2: 'N/A (não é sedativo/anestésico).',
-        analgesia_scale: 'N/A (não é analgésico).',
-        sedation_target: 'N/A (não é sedativo).',
+        target_map: 'N/A.',
+        target_etco2: 'N/A.',
+        analgesia_scale: 'N/A.',
+        sedation_target: 'N/A.',
       },
     },
   },
@@ -153,48 +161,60 @@ export const maropitantProfile: DrugProfile = {
   ],
   dilution_and_preparation: {
     hard_rules: [
-      'Não misturar com outros fármacos na mesma seringa',
-      'Administração IV deve ser lenta',
+      'Não misturar com outros fármacos na mesma seringa.',
+      'Administração IV deve ser lenta (>1 min para bolus).',
+      'CRI: dose de ataque 1 mg/kg IV lento ANTES de iniciar a infusão contínua.',
+      'SC em gatos: refrigerar a solução antes de aplicar — reduz dor local significativamente.',
+      'Evitar mistura com fármacos altamente alcalinos na mesma linha.',
     ],
     recommended_targets: [
       {
         target_mg_ml: 10,
-        use_cases: ['Bolus SC/IV'],
-        how_to_make: 'Usar apresentação comercial',
-        recipe: 'Pronto para uso',
+        use_cases: ['Bolus SC/IV — usar apresentação comercial diretamente'],
+        how_to_make: 'Usar apresentação 10 mg/mL sem diluição para bolus.',
+        recipe: 'Pronto para uso (10 mg/mL).',
+      },
+      {
+        target_mg_ml: 0.2,
+        use_cases: ['CRI — concentração 200 mcg/mL (padrão)'],
+        how_to_make: 'Diluir 10 mg/mL em NaCl 0,9% ou Glicose 5%.',
+        recipe: '5 mL (50 mg) + 245 mL NaCl 0,9% = 250 mL a 0,2 mg/mL (200 mcg/mL). Calcular velocidade (mL/h) pela dose-alvo (mcg/kg/h) e peso.',
+      },
+      {
+        target_mg_ml: 0.1,
+        use_cases: ['CRI — concentração 100 mcg/mL (pacientes pequenos)'],
+        how_to_make: 'Diluição mais conservadora.',
+        recipe: '2,5 mL (25 mg) + 247,5 mL NaCl 0,9% = 250 mL a 0,1 mg/mL (100 mcg/mL).',
       },
     ],
-    diluents_allowed: ['NaCl 0,9%'],
+    diluents_allowed: ['NaCl 0,9%', 'Glicose 5%'],
     preferred_diluent: {
       diluent: 'NaCl 0,9%',
-      why: 'Compatibilidade garantida',
+      why: 'Compatibilidade padrão. Glicose 5% também compatível.',
     },
     stability: [
       {
         diluent: 'NaCl 0,9%',
         max_time_hours: 24,
         light_protection: false,
+        syringe_bag_change: 'Trocar a cada 24h.',
       },
     ],
     dedicated_line_required: false,
     dedicated_line_why:
-      'Pode ser administrado por via compartilhada, mas prefira via exclusiva se IV para evitar interações.',
+      'Pode compartilhar via; evitar mistura com fármacos altamente alcalinos.',
   },
   compatibility: {
-    diluents_allowed: ['NaCl 0,9%'],
-    diluents_ok: ['NaCl 0,9%'],
-    diluentsAllowed: ['NaCl 0,9%'],
-    diluents: ['NaCl 0,9%'],
-    compatible_in_syringe_or_bag: [],
+    compatible_in_syringe_or_bag: ['NaCl 0,9%', 'Glicose 5%'],
     compatible_y_site_only: [],
     incompatible: [
       {
-        agent: 'Outros fármacos na mesma seringa',
+        agent: 'Outros fármacos na mesma seringa (sem dados de compatibilidade)',
         why: 'Ausência de dados de compatibilidade',
         risk: 'inativação',
       },
     ],
-    dedicated_line_rules: ['Preferir via exclusiva se IV'],
+    dedicated_line_rules: ['Preferir via exclusiva se IV; evitar mistura com fármacos altamente alcalinos.'],
   },
   administration_and_titration: {
     bolus_guidance: [
@@ -340,8 +360,8 @@ export const maropitantProfile: DrugProfile = {
       {
         if: "patient_has('hepatopathy') && treatment_duration > 48",
         then: {
-          action: 'WARN',
-          message: 'Uso prolongado em hepatopata requer monitoramento de função hepática.',
+          action: 'PREFER_ALTERNATIVE',
+          message: 'Uso prolongado em hepatopata requer monitoramento de função hepática; considerar alternativa se possível.',
         },
       },
     ],

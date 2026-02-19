@@ -77,6 +77,13 @@ module.exports = {
         "vet-text-secondary": "#c9ad92",
         "vet-border-brown": "#4e3d2a",
         "vet-input-bg": "#332619",
+
+        // AAP2 Colors
+        "aap-primary": "#7e40e7",
+        "aap-primary-light": "#efe9fc",
+        "aap-primary-dark": "#5e2bb8",
+        "aap-background-light": "#f3f4f6",
+        "aap-background-dark": "#171121",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -97,11 +104,15 @@ module.exports = {
           to: { height: 0 },
         },
         "float": {
-          "0%,100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-20px)" },
+        },
+        "float-delayed": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-15px)" },
         },
         "glow": {
-          "0%,100%": { opacity: 0.8 },
+          "0%, 100%": { opacity: 0.8 },
           "50%": { opacity: 1 },
         },
       },
@@ -109,7 +120,8 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "caret-blink": "caret-blink 1.25s ease-out infinite",
-        "float": "float 5s ease-in-out infinite",
+        "float": "float 6s ease-in-out infinite",
+        "float-delayed": "float-delayed 7s ease-in-out 3s infinite",
         "glow": "glow 3s ease-in-out infinite",
       },
       fontFamily: {

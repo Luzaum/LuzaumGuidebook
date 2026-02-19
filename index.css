@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -27,6 +29,7 @@
     --surface: 210 50% 95%;
     --surface-2: 210 50% 90%;
   }
+
   .dark {
     --background: 224 71% 8%;
     --foreground: 213 31% 91%;
@@ -57,46 +60,1145 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
-  html, body {
+
+  html,
+  body {
     @apply h-full;
     position: relative;
   }
 }
 
-/* Custom animations */
-@keyframes float {
-  0%, 100% {
+/* ============================================================
+   CRIVET DESIGN SYSTEM — UI UX Pro Max
+   Healthcare Teal + Dark Mode Professional
+   Palette: Primary #0891B2 (Cyan-600) | CTA #059669 (Emerald-600)
+   Style: Glassmorphism + Clinical Precision
+   Font: Inter (system) — clean, legible, medical-grade
+   ============================================================ */
+
+/* ---------- CriVET CSS Tokens ---------- */
+:root {
+  --cv-primary: #0891b2;
+  /* Cyan-600 — healthcare teal */
+  --cv-primary-light: #22d3ee;
+  /* Cyan-400 */
+  --cv-primary-dark: #0e7490;
+  /* Cyan-700 */
+  --cv-cta: #059669;
+  /* Emerald-600 — health green */
+  --cv-cta-light: #10b981;
+  /* Emerald-500 */
+  --cv-rose: #e11d48;
+  /* Rose-600 — alerts */
+  --cv-amber: #d97706;
+  /* Amber-600 — warnings */
+  --cv-neon: #39ff14;
+  /* Neon green — recommended unit */
+
+  --cv-bg-light: #f0fdfa;
+  /* Teal-50 */
+  --cv-bg-dark: #020617;
+  /* Slate-950 */
+  --cv-surface-light: rgba(255, 255, 255, 0.85);
+  --cv-surface-dark: rgba(15, 23, 42, 0.80);
+  --cv-glass-border-light: rgba(8, 145, 178, 0.15);
+  --cv-glass-border-dark: rgba(34, 211, 238, 0.12);
+
+  --cv-radius-card: 1rem;
+  --cv-radius-btn: 0.625rem;
+  --cv-shadow-card: 0 4px 24px rgba(8, 145, 178, 0.08), 0 1px 4px rgba(0, 0, 0, 0.06);
+  --cv-shadow-hover: 0 8px 32px rgba(8, 145, 178, 0.18), 0 2px 8px rgba(0, 0, 0, 0.08);
+  --cv-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- CriVET Page Root ---------- */
+.crivet-page-root {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--cv-bg-light);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.dark .crivet-page-root {
+  background-color: #030712;
+}
+
+/* ---------- Ambient Background Orbs ---------- */
+.crivet-ambient-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.crivet-ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.12;
+}
+
+.dark .crivet-ambient-orb {
+  opacity: 0.08;
+}
+
+.crivet-ambient-orb-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #0891b2, transparent 70%);
+  top: -200px;
+  left: -150px;
+  animation: cv-orb-drift 18s ease-in-out infinite;
+}
+
+.crivet-ambient-orb-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #059669, transparent 70%);
+  bottom: -100px;
+  right: -100px;
+  animation: cv-orb-drift 22s ease-in-out infinite reverse;
+}
+
+.crivet-ambient-orb-3 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, #7c3aed, transparent 70%);
+  top: 40%;
+  left: 60%;
+  animation: cv-orb-drift 15s ease-in-out infinite 5s;
+}
+
+@keyframes cv-orb-drift {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+
+  66% {
+    transform: translate(-20px, 30px) scale(0.95);
+  }
+}
+
+/* ---------- CriVET Header ---------- */
+.crivet-header {
+  text-align: center;
+  padding: 1.5rem 0 0.5rem;
+}
+
+.crivet-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 1rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(8, 145, 178, 0.15), rgba(5, 150, 105, 0.10));
+  border: 1px solid rgba(8, 145, 178, 0.3);
+  color: var(--cv-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  backdrop-filter: blur(8px);
+}
+
+.dark .crivet-header-badge {
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.12), rgba(16, 185, 129, 0.08));
+  border-color: rgba(34, 211, 238, 0.25);
+  color: var(--cv-primary-light);
+}
+
+.crivet-header-title {
+  font-size: 1.875rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #0f172a;
+  background: linear-gradient(135deg, #0891b2 0%, #0e7490 50%, #059669 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.375rem;
+}
+
+.dark .crivet-header-title {
+  background: linear-gradient(135deg, #22d3ee 0%, #0891b2 50%, #10b981 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.crivet-header-subtitle {
+  font-size: 0.875rem;
+  color: #64748b;
+  font-weight: 400;
+}
+
+.dark .crivet-header-subtitle {
+  color: #94a3b8;
+}
+
+/* ---------- CriVET Card (Glass) ---------- */
+.crivet-card {
+  position: relative;
+  border-radius: var(--cv-radius-card);
+  border: 1px solid var(--cv-glass-border-light);
+  background: var(--cv-surface-light);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  box-shadow: var(--cv-shadow-card);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: var(--cv-transition);
+}
+
+.dark .crivet-card {
+  border-color: var(--cv-glass-border-dark);
+  background: var(--cv-surface-dark);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(34, 211, 238, 0.06);
+}
+
+.crivet-card:hover {
+  box-shadow: var(--cv-shadow-hover);
+}
+
+/* ---------- Card Header ---------- */
+.crivet-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.crivet-card-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.dark .crivet-card-title {
+  color: #f1f5f9;
+}
+
+/* ---------- Step Badge ---------- */
+.crivet-step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--cv-primary), var(--cv-primary-dark));
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(8, 145, 178, 0.4);
+}
+
+/* ---------- Status Pill ---------- */
+.crivet-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.crivet-status-pill--active {
+  background: rgba(8, 145, 178, 0.1);
+  border: 1px solid rgba(8, 145, 178, 0.25);
+  color: var(--cv-primary-dark);
+}
+
+.dark .crivet-status-pill--active {
+  background: rgba(34, 211, 238, 0.1);
+  border-color: rgba(34, 211, 238, 0.2);
+  color: var(--cv-primary-light);
+}
+
+.crivet-status-pill--ready {
+  background: rgba(5, 150, 105, 0.1);
+  border: 1px solid rgba(5, 150, 105, 0.25);
+  color: #065f46;
+}
+
+.dark .crivet-status-pill--ready {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.25);
+  color: #6ee7b7;
+}
+
+/* ---------- Field Group + Label ---------- */
+.crivet-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.crivet-field-label {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #64748b;
+}
+
+.dark .crivet-field-label {
+  color: #94a3b8;
+}
+
+/* ---------- Weight Input ---------- */
+.crivet-weight-input-wrapper {
+  position: relative;
+}
+
+.crivet-weight-input {
+  width: 100%;
+  height: 4.5rem;
+  border-radius: 0.875rem;
+  border: 2px solid #e2e8f0;
+  background: white;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.03em;
+  transition: var(--cv-transition);
+  outline: none;
+  padding-right: 2.5rem;
+}
+
+.crivet-weight-input:focus {
+  border-color: var(--cv-primary);
+  box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.15);
+}
+
+.dark .crivet-weight-input {
+  background: #0f172a;
+  border-color: #1e293b;
+  color: #f1f5f9;
+}
+
+.dark .crivet-weight-input:focus {
+  border-color: var(--cv-primary-light);
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.15);
+}
+
+.crivet-weight-unit {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+/* ---------- Toggle Buttons (Physiology / Comorbidity) ---------- */
+.crivet-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.625rem 0.5rem;
+  border-radius: 0.625rem;
+  border: 1.5px solid #e2e8f0;
+  background: white;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: var(--cv-transition);
+  white-space: nowrap;
+}
+
+.dark .crivet-toggle-btn {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: #1e293b;
+  color: #94a3b8;
+}
+
+.crivet-toggle-btn:hover:not(.crivet-toggle-btn--active-teal):not(.crivet-toggle-btn--active-rose) {
+  border-color: var(--cv-primary);
+  color: var(--cv-primary-dark);
+  background: rgba(8, 145, 178, 0.05);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(8, 145, 178, 0.12);
+}
+
+.dark .crivet-toggle-btn:hover:not(.crivet-toggle-btn--active-teal):not(.crivet-toggle-btn--active-rose) {
+  border-color: var(--cv-primary-light);
+  color: var(--cv-primary-light);
+}
+
+.crivet-toggle-btn--active-teal {
+  background: linear-gradient(135deg, #0891b2, #0e7490);
+  border-color: #0891b2;
+  color: white;
+  box-shadow: 0 4px 12px rgba(8, 145, 178, 0.35);
+  transform: translateY(-1px);
+}
+
+.crivet-toggle-btn--active-rose {
+  background: linear-gradient(135deg, #e11d48, #be123c);
+  border-color: #e11d48;
+  color: white;
+  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.35);
+  transform: translateY(-1px);
+}
+
+.crivet-comorbidity-icon {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+/* ---------- Species Buttons ---------- */
+.crivet-species-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.25rem 1rem;
+  border-radius: 0.875rem;
+  border: 2px solid #e2e8f0;
+  background: white;
+  cursor: pointer;
+  transition: var(--cv-transition);
+  overflow: hidden;
+}
+
+.dark .crivet-species-btn {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: #1e293b;
+}
+
+.crivet-species-btn:hover:not(.crivet-species-btn--active) {
+  border-color: var(--cv-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(8, 145, 178, 0.15);
+}
+
+.crivet-species-btn--active {
+  border-color: var(--cv-primary);
+  background: linear-gradient(135deg, rgba(8, 145, 178, 0.08), rgba(14, 116, 144, 0.05));
+  box-shadow: 0 4px 20px rgba(8, 145, 178, 0.2);
+  transform: translateY(-2px);
+}
+
+.dark .crivet-species-btn--active {
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(8, 145, 178, 0.06));
+}
+
+.crivet-species-icon-wrap {
+  color: #94a3b8;
+  transition: var(--cv-transition);
+}
+
+.crivet-species-icon-wrap--active {
+  color: var(--cv-primary);
+}
+
+.dark .crivet-species-icon-wrap--active {
+  color: var(--cv-primary-light);
+}
+
+.crivet-species-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #475569;
+  transition: var(--cv-transition);
+}
+
+.crivet-species-btn--active .crivet-species-label {
+  color: var(--cv-primary-dark);
+}
+
+.dark .crivet-species-btn--active .crivet-species-label {
+  color: var(--cv-primary-light);
+}
+
+.crivet-species-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 0.75rem;
+  border: 2px solid var(--cv-primary);
+  pointer-events: none;
+  animation: cv-ring-pulse 2s ease-in-out infinite;
+}
+
+@keyframes cv-ring-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ---------- Drug Selector Banner ---------- */
+.crivet-drug-selected-banner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  align-items: start;
+  border-radius: 0.875rem;
+  padding: 0.875rem 1rem;
+}
+
+.crivet-drug-selected-banner>*:nth-child(3) {
+  grid-column: 1 / -1;
+}
+
+.crivet-drug-icon-wrap {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* ---------- Search Input ---------- */
+.crivet-search-input {
+  width: 100%;
+  height: 2.875rem;
+  border-radius: 0.75rem;
+  border: 1.5px solid #e2e8f0;
+  background: white;
+  padding: 0 2.5rem 0 2.75rem;
+  font-size: 0.9375rem;
+  color: #0f172a;
+  transition: var(--cv-transition);
+  outline: none;
+}
+
+.crivet-search-input:focus {
+  border-color: var(--cv-primary);
+  box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.12);
+}
+
+.dark .crivet-search-input {
+  background: #0f172a;
+  border-color: #1e293b;
+  color: #f1f5f9;
+}
+
+.dark .crivet-search-input:focus {
+  border-color: var(--cv-primary-light);
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.12);
+}
+
+.crivet-search-input::placeholder {
+  color: #94a3b8;
+}
+
+/* ---------- Drug List ---------- */
+.crivet-drug-list {
+  border-radius: 0.875rem;
+  border: 1.5px solid #e2e8f0;
+  overflow: hidden;
+  background: white;
+}
+
+.dark .crivet-drug-list {
+  border-color: #1e293b;
+  background: rgba(15, 23, 42, 0.5);
+}
+
+.crivet-category-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.625rem 1rem;
+  background: #f8fafc;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #64748b;
+  cursor: pointer;
+  transition: var(--cv-transition);
+  text-align: left;
+}
+
+.dark .crivet-category-header {
+  background: rgba(15, 23, 42, 0.8);
+  color: #94a3b8;
+}
+
+.crivet-category-header:hover {
+  background: rgba(8, 145, 178, 0.05);
+  color: var(--cv-primary-dark);
+}
+
+.dark .crivet-category-header:hover {
+  background: rgba(34, 211, 238, 0.06);
+  color: var(--cv-primary-light);
+}
+
+.crivet-category-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.375rem;
+  border-radius: 9999px;
+  background: rgba(8, 145, 178, 0.1);
+  color: var(--cv-primary-dark);
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+
+.dark .crivet-category-count {
+  background: rgba(34, 211, 238, 0.1);
+  color: var(--cv-primary-light);
+}
+
+/* ---------- Drug Button ---------- */
+.crivet-drug-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: 0.625rem;
+  border: 1.5px solid #e2e8f0;
+  background: #f8fafc;
+  cursor: pointer;
+  transition: var(--cv-transition);
+  text-align: left;
+  overflow: hidden;
+}
+
+.dark .crivet-drug-btn {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: #1e293b;
+}
+
+.crivet-drug-btn:hover:not(.crivet-drug-btn--selected) {
+  border-color: var(--cv-primary);
+  background: rgba(8, 145, 178, 0.05);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(8, 145, 178, 0.12);
+}
+
+.dark .crivet-drug-btn:hover:not(.crivet-drug-btn--selected) {
+  border-color: rgba(34, 211, 238, 0.4);
+  background: rgba(34, 211, 238, 0.05);
+}
+
+.crivet-drug-btn--selected {
+  background: linear-gradient(135deg, rgba(8, 145, 178, 0.12), rgba(14, 116, 144, 0.08));
+  border-color: var(--cv-primary);
+  box-shadow: 0 2px 12px rgba(8, 145, 178, 0.2);
+  transform: translateY(-1px);
+}
+
+.dark .crivet-drug-btn--selected {
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.12), rgba(8, 145, 178, 0.08));
+  border-color: rgba(34, 211, 238, 0.5);
+}
+
+/* ---------- Help Button ---------- */
+.crivet-help-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--cv-transition);
+  flex-shrink: 0;
+}
+
+.crivet-help-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ---------- InfusionCalculator Card ---------- */
+.crivet-infusion-card {
+  position: relative;
+  border-radius: var(--cv-radius-card);
+  border: 1px solid var(--cv-glass-border-light);
+  background: var(--cv-surface-light);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  box-shadow: var(--cv-shadow-card);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: var(--cv-transition);
+}
+
+.dark .crivet-infusion-card {
+  border-color: var(--cv-glass-border-dark);
+  background: var(--cv-surface-dark);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(34, 211, 238, 0.06);
+}
+
+/* ---------- Mode Toggle (Direct / Preparation) ---------- */
+.crivet-mode-tabs {
+  display: flex;
+  gap: 0.375rem;
+  background: #f1f5f9;
+  padding: 0.25rem;
+  border-radius: 0.75rem;
+}
+
+.dark .crivet-mode-tabs {
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.crivet-mode-tab {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--cv-transition);
+  color: #64748b;
+  background: transparent;
+}
+
+.dark .crivet-mode-tab {
+  color: #94a3b8;
+}
+
+.crivet-mode-tab--active {
+  background: white;
+  color: var(--cv-primary-dark);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dark .crivet-mode-tab--active {
+  background: rgba(8, 145, 178, 0.2);
+  color: var(--cv-primary-light);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ---------- Form Inputs (generic) ---------- */
+.crivet-input {
+  width: 100%;
+  border-radius: 0.625rem;
+  border: 1.5px solid #e2e8f0;
+  background: white;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.9375rem;
+  color: #0f172a;
+  transition: var(--cv-transition);
+  outline: none;
+}
+
+.crivet-input:focus {
+  border-color: var(--cv-primary);
+  box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.12);
+}
+
+.dark .crivet-input {
+  background: #0f172a;
+  border-color: #1e293b;
+  color: #f1f5f9;
+}
+
+.dark .crivet-input:focus {
+  border-color: var(--cv-primary-light);
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.12);
+}
+
+.crivet-select {
+  width: 100%;
+  border-radius: 0.625rem;
+  border: 1.5px solid #e2e8f0;
+  background: white;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.9375rem;
+  color: #0f172a;
+  transition: var(--cv-transition);
+  outline: none;
+  cursor: pointer;
+}
+
+.crivet-select:focus {
+  border-color: var(--cv-primary);
+  box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.12);
+}
+
+.dark .crivet-select {
+  background: #0f172a;
+  border-color: #1e293b;
+  color: #f1f5f9;
+}
+
+/* ---------- Indicated Dose Banner ---------- */
+.crivet-indicated-dose {
+  border-radius: 0.75rem;
+  border: 2px solid rgba(234, 179, 8, 0.4);
+  background: linear-gradient(135deg, rgba(234, 179, 8, 0.1), rgba(245, 158, 11, 0.06));
+  padding: 0.875rem 1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.dark .crivet-indicated-dose {
+  border-color: rgba(234, 179, 8, 0.3);
+  background: linear-gradient(135deg, rgba(234, 179, 8, 0.08), rgba(245, 158, 11, 0.04));
+}
+
+/* ---------- Result Cards ---------- */
+.crivet-result-section {
+  border-radius: 0.875rem;
+  border: 1.5px solid rgba(5, 150, 105, 0.25);
+  background: linear-gradient(135deg, rgba(5, 150, 105, 0.06), rgba(16, 185, 129, 0.03));
+  padding: 1.25rem;
+  animation: cv-result-appear 0.3s ease-out;
+}
+
+.dark .crivet-result-section {
+  border-color: rgba(16, 185, 129, 0.2);
+  background: linear-gradient(135deg, rgba(5, 150, 105, 0.1), rgba(16, 185, 129, 0.05));
+}
+
+@keyframes cv-result-appear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
     transform: translateY(0);
   }
+}
+
+.crivet-result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.875rem;
+}
+
+@media (min-width: 640px) {
+  .crivet-result-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.crivet-result-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.crivet-result-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748b;
+}
+
+.dark .crivet-result-label {
+  color: #94a3b8;
+}
+
+.crivet-result-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #065f46;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.dark .crivet-result-value {
+  color: #6ee7b7;
+}
+
+.crivet-result-unit {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #10b981;
+  margin-left: 0.25rem;
+}
+
+/* ---------- Instruction Box ---------- */
+.crivet-instruction-box {
+  border-radius: 0.75rem;
+  border: 1.5px solid rgba(8, 145, 178, 0.2);
+  background: linear-gradient(135deg, rgba(8, 145, 178, 0.06), rgba(34, 211, 238, 0.03));
+  padding: 1rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.dark .crivet-instruction-box {
+  border-color: rgba(34, 211, 238, 0.15);
+  background: linear-gradient(135deg, rgba(8, 145, 178, 0.1), rgba(34, 211, 238, 0.04));
+}
+
+/* ---------- Calculation Steps ---------- */
+.crivet-calc-toggle {
+  border-radius: 0.875rem;
+  border: 1.5px solid #e2e8f0;
+  background: #f8fafc;
+  padding: 1rem;
+  overflow: hidden;
+  transition: var(--cv-transition);
+}
+
+.dark .crivet-calc-toggle {
+  border-color: #1e293b;
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.crivet-calc-step {
+  display: flex;
+  gap: 0.75rem;
+  border-radius: 0.5rem;
+  background: white;
+  padding: 0.5rem 0.75rem;
+  animation: cv-result-appear 0.2s ease-out;
+}
+
+.dark .crivet-calc-step {
+  background: rgba(15, 23, 42, 0.8);
+}
+
+/* ---------- Pump Rate Preset Buttons ---------- */
+.crivet-preset-btn {
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1.5px solid #e2e8f0;
+  background: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: var(--cv-transition);
+}
+
+.dark .crivet-preset-btn {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: #1e293b;
+  color: #94a3b8;
+}
+
+.crivet-preset-btn:hover {
+  border-color: var(--cv-primary);
+  color: var(--cv-primary-dark);
+  background: rgba(8, 145, 178, 0.05);
+}
+
+.dark .crivet-preset-btn:hover {
+  border-color: rgba(34, 211, 238, 0.4);
+  color: var(--cv-primary-light);
+}
+
+/* ---------- Vehicle Toggle (Syringe / Bag) ---------- */
+.crivet-vehicle-btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.625rem;
+  border: 1.5px solid #e2e8f0;
+  background: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: var(--cv-transition);
+}
+
+.dark .crivet-vehicle-btn {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: #1e293b;
+  color: #94a3b8;
+}
+
+.crivet-vehicle-btn--active {
+  background: linear-gradient(135deg, rgba(8, 145, 178, 0.12), rgba(14, 116, 144, 0.08));
+  border-color: var(--cv-primary);
+  color: var(--cv-primary-dark);
+  box-shadow: 0 2px 8px rgba(8, 145, 178, 0.2);
+}
+
+.dark .crivet-vehicle-btn--active {
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.12), rgba(8, 145, 178, 0.08));
+  border-color: rgba(34, 211, 238, 0.5);
+  color: var(--cv-primary-light);
+}
+
+/* ---------- Volume Preset Buttons ---------- */
+.crivet-vol-btn {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: var(--cv-transition);
+}
+
+.crivet-vol-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.crivet-vol-btn--active {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+/* ---------- Unit Selector Buttons ---------- */
+.crivet-unit-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  transition: var(--cv-transition);
+}
+
+.crivet-unit-btn:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.crivet-unit-btn--selected {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: white;
+}
+
+.crivet-unit-btn--recommended {
+  border-color: var(--cv-neon) !important;
+  color: var(--cv-neon) !important;
+  box-shadow: 0 0 0 1px var(--cv-neon);
+}
+
+/* ---------- Pump Rate Hint ---------- */
+.crivet-pump-hint {
+  border-radius: 0.75rem;
+  border: 1.5px solid rgba(8, 145, 178, 0.2);
+  background: rgba(8, 145, 178, 0.06);
+  padding: 0.75rem 1rem;
+}
+
+.dark .crivet-pump-hint {
+  border-color: rgba(34, 211, 238, 0.15);
+  background: rgba(34, 211, 238, 0.06);
+}
+
+/* ---------- Scrollbar (for drug list) ---------- */
+.crivet-drug-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.crivet-drug-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.crivet-drug-list::-webkit-scrollbar-thumb {
+  background: rgba(8, 145, 178, 0.3);
+  border-radius: 9999px;
+}
+
+
+/* Custom animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
   50% {
     transform: translateY(-10px);
   }
 }
+
 .animate-float {
   animation: float 5s ease-in-out infinite;
 }
 
 @keyframes glow {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.8;
   }
+
   50% {
     opacity: 1;
   }
 }
+
 .animate-glow {
   animation: glow 3s ease-in-out infinite;
 }
 
 /* Mobile friendly tweaks */
 @media (max-width: 640px) {
-  .container { padding-left: 1rem; padding-right: 1rem; }
-  .result-card, .card { border-radius: 0.75rem; }
-  .modal-content { width: 95%; padding: 1rem; }
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .result-card,
+  .card {
+    border-radius: 0.75rem;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 1rem;
+  }
 }
 
 /* Auxilia a densidade dos cards dos mini-apps sem alterar o conteúdo interno */
@@ -117,7 +1219,7 @@
 .line-clamp-3 {
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;  
+  -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
@@ -162,14 +1264,12 @@
 
 /* Neon wave text */
 .neon-wave {
-  background: linear-gradient(
-    90deg,
-    #60a5fa,
-    #22d3ee,
-    #3b82f6,
-    #a78bfa,
-    #60a5fa
-  );
+  background: linear-gradient(90deg,
+      #60a5fa,
+      #22d3ee,
+      #3b82f6,
+      #a78bfa,
+      #60a5fa);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -184,9 +1284,17 @@
 }
 
 @keyframes neonGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* pulse do glow (opcional, dá "vida") */
@@ -195,9 +1303,12 @@
 }
 
 @keyframes neonGlow {
-  0%, 100% {
+
+  0%,
+  100% {
     filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.35));
   }
+
   50% {
     filter: drop-shadow(0 0 14px rgba(96, 165, 250, 0.55));
   }
@@ -252,25 +1363,21 @@ input[type="range"] {
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
-  background: linear-gradient(
-    to right,
-    #F5C542 0%,
-    #F5C542 var(--slider-progress, 0%),
-    rgba(255, 255, 255, 0.1) var(--slider-progress, 0%),
-    rgba(255, 255, 255, 0.1) 100%
-  );
+  background: linear-gradient(to right,
+      #F5C542 0%,
+      #F5C542 var(--slider-progress, 0%),
+      rgba(255, 255, 255, 0.1) var(--slider-progress, 0%),
+      rgba(255, 255, 255, 0.1) 100%);
   height: 6px;
   border-radius: 3px;
 }
 
 .dark input[type="range"]::-webkit-slider-runnable-track {
-  background: linear-gradient(
-    to right,
-    #F5C542 0%,
-    #F5C542 var(--slider-progress, 0%),
-    rgba(255, 255, 255, 0.1) var(--slider-progress, 0%),
-    rgba(255, 255, 255, 0.1) 100%
-  );
+  background: linear-gradient(to right,
+      #F5C542 0%,
+      #F5C542 var(--slider-progress, 0%),
+      rgba(255, 255, 255, 0.1) var(--slider-progress, 0%),
+      rgba(255, 255, 255, 0.1) 100%);
 }
 
 input[type="range"]::-moz-range-track {

@@ -24,7 +24,28 @@ export default function CrivetPage() {
   const handleDrugSelect = useCallback((drug: Drug) => setSelectedDrugId(drug.id), [])
 
   return (
-    <div className="mx-auto max-w-5xl p-4 space-y-6">
+    <div className="crivet-page-root min-h-screen">
+      {/* Ambient background */}
+      <div className="crivet-ambient-bg" aria-hidden="true">
+        <div className="crivet-ambient-orb crivet-ambient-orb-1" />
+        <div className="crivet-ambient-orb crivet-ambient-orb-2" />
+        <div className="crivet-ambient-orb crivet-ambient-orb-3" />
+      </div>
+
+      <div className="relative mx-auto max-w-5xl px-4 py-6 space-y-5">
+        {/* Header */}
+        <header className="crivet-header">
+          <div className="crivet-header-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+            </svg>
+            CriVET
+          </div>
+          <h1 className="crivet-header-title">Calculadora de Infusão Veterinária</h1>
+          <p className="crivet-header-subtitle">Cálculo preciso de CRI para cães e gatos</p>
+        </header>
+
+        {/* Steps */}
         <PatientBlock
           species={species}
           physiology={physiology}
@@ -45,6 +66,7 @@ export default function CrivetPage() {
           physiology={physiology}
           comorbidities={comorbidities}
         />
+      </div>
     </div>
   )
 }

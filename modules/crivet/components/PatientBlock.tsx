@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { Cat, Dog } from 'lucide-react'
+import { Cat, Dog, Weight } from 'lucide-react'
 import { Comorbidity, PhysiologyState, Species } from '../types/patient'
 import { FieldLabel } from './FieldLabel'
 import type { TooltipId } from '../data/help.registry'
@@ -18,6 +18,13 @@ type PatientBlockProps = {
 const physiologyOptions: PhysiologyState[] = ['Neonato', 'Filhote', 'Adulto', 'Idoso']
 const comorbidityOptions: Comorbidity[] = ['Cardiopata', 'Endocrinopata', 'Hepatopata', 'Renopata']
 
+const comorbidityIcons: Record<Comorbidity, string> = {
+  Cardiopata: '♥',
+  Endocrinopata: '⚡',
+  Hepatopata: '◈',
+  Renopata: '◉',
+}
+
 export default function PatientBlock({
   species,
   physiology,
@@ -32,55 +39,60 @@ export default function PatientBlock({
     onWeightChange(event.target.value)
   }, [onWeightChange])
 
-  const summary = `Paciente: ${species === 'dog' ? 'Cão' : 'Gato'} • ${weight || '0'} kg • ${physiology} • ${
-    comorbidities.length > 0 ? comorbidities.join(', ') : 'Sem comorbidades'
-  }`
+  const summary = `${species === 'dog' ? 'Cão' : 'Gato'} • ${weight || '—'} kg • ${physiology}${comorbidities.length > 0 ? ' • ' + comorbidities.join(', ') : ''
+    }`
 
   return (
-    <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/70 p-6 space-y-6 shadow-sm">
-      <div className="flex items-center justify-between">
-        <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-          <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-sky-100 text-sky-700 text-xs font-black">
-            1
+    <section className="crivet-card" aria-labelledby="patient-block-title">
+      {/* Card header */}
+      <div className="crivet-card-header">
+        <div className="crivet-step-badge">1</div>
+        <h2 id="patient-block-title" className="crivet-card-title">Paciente</h2>
+        {weight && (
+          <span className="crivet-status-pill crivet-status-pill--active ml-auto">
+            {summary}
           </span>
-          Paciente
-        </h2>
+        )}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {/* Species + Weight */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         <SpeciesSelector species={species} onChange={onSpeciesChange} />
 
-        <div className="space-y-3">
-          <label className="text-sm font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wide">
+        <div className="crivet-field-group">
+          <label className="crivet-field-label" htmlFor="patient-weight">
+            <Weight className="w-3.5 h-3.5" aria-hidden="true" />
             Peso (kg)
           </label>
-          <input
-            type="number"
-            value={weight}
-            onChange={handleWeight}
-            placeholder="0.0"
-            min="0"
-            step="0.1"
-            className="w-full h-[72px] rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-center text-2xl font-bold text-slate-900 dark:text-white focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
-          />
+          <div className="crivet-weight-input-wrapper">
+            <input
+              id="patient-weight"
+              type="number"
+              value={weight}
+              onChange={handleWeight}
+              placeholder="0.0"
+              min="0"
+              step="0.1"
+              className="crivet-weight-input"
+              aria-label="Peso do paciente em quilogramas"
+            />
+            <span className="crivet-weight-unit">kg</span>
+          </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="space-y-3">
-          <div className="flex items-center gap-2">
-            <FieldLabel text="Estado fisiológico" tooltipId={'physiology_age_help' as TooltipId} className="uppercase tracking-wide" />
-          </div>
+      {/* Physiology + Comorbidities */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        <div className="crivet-field-group">
+          <FieldLabel text="Estado fisiológico" tooltipId={'physiology_age_help' as TooltipId} className="crivet-field-label" />
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             {physiologyOptions.map((option) => (
               <button
                 key={option}
+                type="button"
                 onClick={() => onPhysiologyChange(option)}
-                className={`py-3 px-3 rounded-xl text-sm font-semibold border-2 transition-all duration-200 ${
-                  physiology === option
-                    ? 'bg-gradient-to-br from-sky-500 to-sky-600 dark:from-sky-600 dark:to-sky-700 border-sky-500 text-white shadow-lg shadow-sky-500/30'
-                    : 'bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-sky-300 dark:hover:border-sky-600 hover:shadow-md'
-                }`}
+                aria-pressed={physiology === option}
+                className={`crivet-toggle-btn ${physiology === option ? 'crivet-toggle-btn--active-teal' : ''}`}
               >
                 {option}
               </button>
@@ -88,23 +100,20 @@ export default function PatientBlock({
           </div>
         </div>
 
-        <div className="space-y-3">
-          <div className="flex items-center gap-2">
-            <FieldLabel text="Comorbidades" tooltipId={'comorbidities_help' as TooltipId} className="uppercase tracking-wide" />
-          </div>
+        <div className="crivet-field-group">
+          <FieldLabel text="Comorbidades" tooltipId={'comorbidities_help' as TooltipId} className="crivet-field-label" />
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             {comorbidityOptions.map((option) => {
               const selected = comorbidities.includes(option)
               return (
                 <button
                   key={option}
+                  type="button"
                   onClick={() => onComorbidityToggle(option)}
-                  className={`py-3 px-3 rounded-xl text-sm font-semibold border-2 transition-all duration-200 ${
-                    selected
-                      ? 'bg-gradient-to-br from-rose-500 to-rose-600 dark:from-rose-600 dark:to-rose-700 border-rose-500 text-white shadow-lg shadow-rose-500/30'
-                      : 'bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-rose-300 dark:hover:border-rose-600 hover:shadow-md'
-                  }`}
+                  aria-pressed={selected}
+                  className={`crivet-toggle-btn ${selected ? 'crivet-toggle-btn--active-rose' : ''}`}
                 >
+                  <span className="crivet-comorbidity-icon" aria-hidden="true">{comorbidityIcons[option]}</span>
                   {option}
                 </button>
               )
@@ -112,11 +121,7 @@ export default function PatientBlock({
           </div>
         </div>
       </div>
-
-      <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
-        <p className="text-sm font-mono text-slate-700 dark:text-slate-300 text-center">{summary}</p>
-      </div>
-    </div>
+    </section>
   )
 }
 
@@ -130,51 +135,40 @@ function SpeciesSelector({ species, onChange }: SpeciesSelectorProps) {
   const handleCat = useCallback(() => onChange('cat'), [onChange])
 
   return (
-    <div className="space-y-3">
-      <label className="text-sm font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wide">
+    <div className="crivet-field-group">
+      <label className="crivet-field-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 3" />
+        </svg>
         Espécie
       </label>
       <div className="grid grid-cols-2 gap-3">
         <button
+          type="button"
           onClick={handleDog}
-          className={`group relative flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-200 ${
-            species === 'dog'
-              ? 'border-sky-500 bg-gradient-to-br from-sky-50 to-sky-100 dark:from-sky-900/30 dark:to-sky-800/30 shadow-lg shadow-sky-500/20'
-              : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 hover:border-sky-300 dark:hover:border-sky-700 hover:shadow-md'
-          }`}
+          aria-pressed={species === 'dog'}
+          className={`crivet-species-btn ${species === 'dog' ? 'crivet-species-btn--active' : ''}`}
+          id="species-dog"
         >
-          <Dog
-            className={`w-10 h-10 mb-2 transition-colors ${
-              species === 'dog' ? 'text-sky-600 dark:text-sky-400' : 'text-slate-400 dark:text-slate-500 group-hover:text-sky-500'
-            }`}
-          />
-          <span className={`text-lg font-bold ${species === 'dog' ? 'text-sky-900 dark:text-sky-100' : 'text-slate-600 dark:text-slate-400'}`}>
-            🐶 Cão
-          </span>
-          {species === 'dog' && (
-            <div className="absolute inset-0 rounded-xl ring-2 ring-sky-500 ring-offset-2 dark:ring-offset-slate-800" />
-          )}
+          <div className={`crivet-species-icon-wrap ${species === 'dog' ? 'crivet-species-icon-wrap--active' : ''}`}>
+            <Dog className="w-8 h-8" aria-hidden="true" />
+          </div>
+          <span className="crivet-species-label">Cão</span>
+          {species === 'dog' && <div className="crivet-species-ring" aria-hidden="true" />}
         </button>
 
         <button
+          type="button"
           onClick={handleCat}
-          className={`group relative flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all duration-200 ${
-            species === 'cat'
-              ? 'border-sky-500 bg-gradient-to-br from-sky-50 to-sky-100 dark:from-sky-900/30 dark:to-sky-800/30 shadow-lg shadow-sky-500/20'
-              : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 hover:border-sky-300 dark:hover:border-sky-700 hover:shadow-md'
-          }`}
+          aria-pressed={species === 'cat'}
+          className={`crivet-species-btn ${species === 'cat' ? 'crivet-species-btn--active' : ''}`}
+          id="species-cat"
         >
-          <Cat
-            className={`w-10 h-10 mb-2 transition-colors ${
-              species === 'cat' ? 'text-sky-600 dark:text-sky-400' : 'text-slate-400 dark:text-slate-500 group-hover:text-sky-500'
-            }`}
-          />
-          <span className={`text-lg font-bold ${species === 'cat' ? 'text-sky-900 dark:text-sky-100' : 'text-slate-600 dark:text-slate-400'}`}>
-            🐱 Gato
-          </span>
-          {species === 'cat' && (
-            <div className="absolute inset-0 rounded-xl ring-2 ring-sky-500 ring-offset-2 dark:ring-offset-slate-800" />
-          )}
+          <div className={`crivet-species-icon-wrap ${species === 'cat' ? 'crivet-species-icon-wrap--active' : ''}`}>
+            <Cat className="w-8 h-8" aria-hidden="true" />
+          </div>
+          <span className="crivet-species-label">Gato</span>
+          {species === 'cat' && <div className="crivet-species-ring" aria-hidden="true" />}
         </button>
       </div>
     </div>

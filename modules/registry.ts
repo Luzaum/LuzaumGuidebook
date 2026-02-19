@@ -92,9 +92,8 @@ export const modules: Module[] = [
     title: 'Animais Peçonhentos',
     description: 'Condutas em acidentes por serpentes, aranhas, escorpiões e outros animais peçonhentos',
     route: '/peconhentos',
-    status: 'iframe',
+    status: 'internal',
     icon: Worm,
-    iframeUrl: 'https://aapvet.netlify.app',
     iconImage: '/apps/aap.png',
   },
   {

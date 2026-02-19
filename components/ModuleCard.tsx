@@ -20,30 +20,28 @@ export function ModuleCard({ module }: ModuleCardProps) {
 
   return (
     <div
-      className={`relative overflow-hidden h-full rounded-2xl border bg-surface-2/60 dark:bg-surface-2/40 backdrop-blur transition-all duration-300 ${
-        isPlanned
+      className={`relative overflow-hidden h-full rounded-2xl border bg-surface-2/60 dark:bg-surface-2/40 backdrop-blur transition-all duration-300 ${isPlanned
           ? 'opacity-60 cursor-not-allowed'
           : 'cursor-pointer hover:border-primary/50 hover:shadow-lg'
-      }`}
+        }`}
       onClick={handleClick}
     >
       <div className="flex h-full flex-col">
         {/* TAG */}
         <div className="px-6 pt-4">
           <span
-            className={`inline-flex rounded-full px-3 py-1 text-xs font-medium ${
-              module.status === 'internal'
-                ? 'bg-white/10 text-white/80'
+            className={`inline-flex rounded-full px-3 py-1 text-xs font-medium ${module.status === 'internal'
+                ? 'bg-sky-100 text-sky-800 dark:bg-white/10 dark:text-white/80'
                 : module.status === 'iframe'
-                ? 'bg-white/10 text-white/80'
-                : 'bg-white/5 text-white/60'
-            }`}
+                  ? 'bg-emerald-100 text-emerald-800 dark:bg-white/10 dark:text-white/80'
+                  : 'bg-slate-100 text-slate-600 dark:bg-white/5 dark:text-white/60'
+              }`}
           >
             {module.status === 'internal'
               ? 'INTERNO'
               : module.status === 'iframe'
-              ? 'EXTERNO'
-              : 'EM BREVE'}
+                ? 'EXTERNO'
+                : 'EM BREVE'}
           </span>
         </div>
 
@@ -53,12 +51,11 @@ export function ModuleCard({ module }: ModuleCardProps) {
             <img
               src={module.iconImage}
               alt={module.title}
-              className={`w-full max-w-[280px] object-contain ${
-                module.id === 'escalas-dor' ? 'scale-[1.69]' :
-                module.id === 'neurologia' ? 'scale-125' :
-                module.id === 'emergencias-veterinarias' ? 'scale-[1.2]' :
-                module.id === 'crivet' || module.id === 'transfusao-sanguinea' || module.id === 'fluidoterapia' || module.id === 'calculadora-energetica' || module.id === 'antibioticoterapia' || module.id === 'hemogasometria' ? 'scale-125' : ''
-              }`}
+              className={`w-full max-w-[280px] object-contain ${module.id === 'escalas-dor' ? 'scale-[1.69]' :
+                  module.id === 'neurologia' ? 'scale-125' :
+                    module.id === 'emergencias-veterinarias' ? 'scale-[1.2]' :
+                      module.id === 'crivet' || module.id === 'transfusao-sanguinea' || module.id === 'fluidoterapia' || module.id === 'calculadora-energetica' || module.id === 'antibioticoterapia' || module.id === 'hemogasometria' ? 'scale-125' : ''
+                }`}
               draggable={false}
               loading="lazy"
               onError={(e) => {
@@ -72,18 +69,18 @@ export function ModuleCard({ module }: ModuleCardProps) {
           ) : null}
           {/* Placeholder escondido - aparece se imagem falhar */}
           <div
-            className="logo-placeholder hidden flex-col items-center justify-center w-full max-w-[280px] min-h-[100px] bg-white/5 rounded-lg border border-dashed border-white/20"
+            className="logo-placeholder hidden flex-col items-center justify-center w-full max-w-[280px] min-h-[100px] bg-slate-100 dark:bg-white/5 rounded-lg border border-dashed border-slate-300 dark:border-white/20"
           >
-            <Icon className="h-10 w-10 text-white/40 mb-1" />
-            <span className="text-xs text-white/50 text-center px-2">
+            <Icon className="h-10 w-10 text-slate-400 dark:text-white/40 mb-1" />
+            <span className="text-xs text-slate-500 dark:text-white/50 text-center px-2">
               Sem logo ainda
             </span>
           </div>
           {/* Placeholder quando não há imagem configurada */}
           {!module.iconImage && (
-            <div className="flex flex-col items-center justify-center w-full max-w-[280px] min-h-[100px] bg-white/5 rounded-lg border border-dashed border-white/20">
-              <Icon className="h-10 w-10 text-white/40 mb-1" />
-              <span className="text-xs text-white/50 text-center px-2">
+            <div className="flex flex-col items-center justify-center w-full max-w-[280px] min-h-[100px] bg-slate-100 dark:bg-white/5 rounded-lg border border-dashed border-slate-300 dark:border-white/20">
+              <Icon className="h-10 w-10 text-slate-400 dark:text-white/40 mb-1" />
+              <span className="text-xs text-slate-500 dark:text-white/50 text-center px-2">
                 Sem logo ainda
               </span>
             </div>
@@ -92,10 +89,10 @@ export function ModuleCard({ module }: ModuleCardProps) {
 
         {/* TEXTO — COLADO NA LOGO */}
         <div className="px-6 pt-0 -mt-1">
-          <h3 className="m-0 text-center text-xl font-semibold leading-tight text-white">
+          <h3 className="m-0 text-center text-xl font-semibold leading-tight text-slate-900 dark:text-white">
             {module.title}
           </h3>
-          <p className="mt-0 text-center text-sm leading-snug text-white/70 line-clamp-3">
+          <p className="mt-0 text-center text-sm leading-snug text-slate-600 dark:text-white/70 line-clamp-3">
             {module.description}
           </p>
         </div>
@@ -110,8 +107,8 @@ export function ModuleCard({ module }: ModuleCardProps) {
               Abrir
             </button>
           ) : (
-            <div className="h-12 w-full rounded-full bg-white/5 flex items-center justify-center">
-              <span className="text-xs text-white/60">Em breve</span>
+            <div className="h-12 w-full rounded-full bg-slate-100 dark:bg-white/5 flex items-center justify-center">
+              <span className="text-xs text-slate-500 dark:text-white/60">Em breve</span>
             </div>
           )}
         </div>

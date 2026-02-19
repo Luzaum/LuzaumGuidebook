@@ -134,19 +134,31 @@ const REQUIRED_FIELDS: Array<{
       description: 'Doses de CRI para cães (valores > 0)',
       check: (p) => {
         const cri = p.doses?.dog?.cri;
-        if (!cri) return false;
-        return (cri.mcgkgmin?.max ?? 0) > 0 || (cri.mgkgh?.max ?? 0) > 0;
+        const hasValidCri = cri && (
+          (cri.mcgkgmin?.max ?? 0) > 0 ||
+          (cri.mgkgh?.max ?? 0) > 0 ||
+          (cri.mgkgmin?.max ?? 0) > 0 ||
+          (cri.mukgmin?.max ?? 0) > 0
+        );
+        if (hasValidCri) return true;
+        return !!p.doses?.dog?.bolus;
       },
     },
     {
       path: 'doses.cat.cri',
       section: 'Doses - Gato',
       severity: 'critical',
-      description: 'Doses de CRI para gatos (valores > 0)',
+      description: 'Doses de CRI ou Bolus para gatos',
       check: (p) => {
         const cri = p.doses?.cat?.cri;
-        if (!cri) return false;
-        return (cri.mcgkgmin?.max ?? 0) > 0 || (cri.mgkgh?.max ?? 0) > 0;
+        const hasValidCri = cri && (
+          (cri.mcgkgmin?.max ?? 0) > 0 ||
+          (cri.mgkgh?.max ?? 0) > 0 ||
+          (cri.mgkgmin?.max ?? 0) > 0 ||
+          (cri.mukgmin?.max ?? 0) > 0
+        );
+        if (hasValidCri) return true;
+        return !!p.doses?.cat?.bolus;
       },
     },
 
@@ -182,9 +194,8 @@ const REQUIRED_FIELDS: Array<{
       severity: 'critical',
       description: 'Incompatibilidades (bloqueio de erros)',
       check: (p) => !!p.compatibility && (
-        (p.compatibility.incompatible && p.compatibility.incompatible.length > 0) ||
-        (Array.isArray((p.compatibility as any).diluents_allowed) && (p.compatibility as any).diluents_allowed.length > 1) ||
-        (Array.isArray((p.compatibility as any).diluentsAllowed) && (p.compatibility as any).diluentsAllowed.length > 1)
+        (Array.isArray(p.compatibility.incompatible) && p.compatibility.incompatible.length > 0) ||
+        (Array.isArray(p.compatibility.compatible_in_syringe_or_bag) && p.compatibility.compatible_in_syringe_or_bag.length > 0)
       ),
     },
 
