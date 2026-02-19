@@ -1,12 +1,9 @@
-// ============================================================
-// AIImage — Componente de imagem com geração por IA e fallback estático
-// ============================================================
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { fetchAIImage, buildImagePrompt } from '../../services/aiService';
 import { useImageCache } from '../../hooks/useImageCache';
 import { ALL_ANIMALS } from '../../data/animals';
 
-const ENABLE_AI_IMAGE = true; // Feature flag: desabilitar em dev se necessário
+const ENABLE_AI_IMAGE = true;
 
 interface AIImageProps {
     animalId: string;
@@ -25,21 +22,11 @@ export const AIImage: React.FC<AIImageProps> = ({
     const [imageUrl, setImageUrl] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
+    const [staticFailed, setStaticFailed] = useState(false);
     const hasFetched = useRef(false);
 
-    // Resolve imagem estática de /public/images/ como fallback confiável
-    const resolvedStaticUrl = useMemo(() => {
-        if (staticImagePath) return staticImagePath;
-        // Fallback automático por ID do animal
-        const ext = ['jpg', 'jpeg', 'png'];
-        for (const e of ext) {
-            // Retorna o primeiro caminho provável; o browser vai 404 silenciosamente
-            return `/images/${animalId}.${e === 'jpg' ? 'jpg' : e}`;
-        }
-        return undefined;
-    }, [animalId, staticImagePath]);
+    const resolvedStaticUrl = useMemo(() => staticImagePath, [staticImagePath]);
 
-    // Prompt completo com anatomia e estilo fotorrealista
     const animalMeta = useMemo(() => ALL_ANIMALS.find(a => a.id === animalId), [animalId]);
     const fullPrompt = useMemo(() => {
         if (!animalMeta?.identification || !imagePrompt) return '';
@@ -47,12 +34,10 @@ export const AIImage: React.FC<AIImageProps> = ({
     }, [animalMeta, animalName, imagePrompt]);
 
     useEffect(() => {
-        // Se há imagem estática, não precisa gerar
-        if (resolvedStaticUrl) return;
+        if (resolvedStaticUrl && !staticFailed) return;
         if (!ENABLE_AI_IMAGE || !fullPrompt) return;
         if (hasFetched.current) return;
 
-        // Verifica cache primeiro
         const cached = getImage(animalName, fullPrompt);
         if (cached) {
             setImageUrl(cached);
@@ -68,13 +53,12 @@ export const AIImage: React.FC<AIImageProps> = ({
                 setImage(animalName, fullPrompt, dataUrl);
             })
             .catch(e => {
-                console.error('[AIImage] Falha ao gerar imagem:', e);
                 setError(e.message || 'Falha ao gerar imagem.');
             })
             .finally(() => setIsLoading(false));
-    }, [animalName, fullPrompt, getImage, setImage, resolvedStaticUrl]);
+    }, [animalName, fullPrompt, getImage, setImage, resolvedStaticUrl, staticFailed]);
 
-    const finalUrl = resolvedStaticUrl || imageUrl;
+    const finalUrl = resolvedStaticUrl && !staticFailed ? resolvedStaticUrl : imageUrl;
 
     if (finalUrl) {
         return (
@@ -86,8 +70,8 @@ export const AIImage: React.FC<AIImageProps> = ({
                     loading="lazy"
                     decoding="async"
                     onError={e => {
-                        // Se a imagem estática falhar, tenta gerar por IA
                         if (resolvedStaticUrl) {
+                            setStaticFailed(true);
                             (e.target as HTMLImageElement).style.display = 'none';
                         }
                     }}
@@ -106,7 +90,7 @@ export const AIImage: React.FC<AIImageProps> = ({
             )}
             {error && <span className="ai-image-error">{error}</span>}
             {!isLoading && !error && (
-                <span className="ai-image-unavailable">Imagem não disponível</span>
+                <span className="ai-image-unavailable">Imagem nao disponivel</span>
             )}
         </div>
     );

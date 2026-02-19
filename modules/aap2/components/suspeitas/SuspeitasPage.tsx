@@ -11,6 +11,7 @@ import { fetchAIAnalysis } from '../../services/aiService';
 import type { PatientData, DiagnosisResult, Animal, Comorbidity } from '../../types';
 import { HelpButton, Modal, SignificanceBadge, Loader } from '../ui';
 import { AnimalDetailView } from '../bulario/index';
+import { sanitizeHtml } from '../../utils/sanitizeHtml';
 
 interface SuspeitasPageProps {
     onHelpClick: (title: string, content?: string) => void;
@@ -233,7 +234,7 @@ export const SuspeitasPage: React.FC<SuspeitasPageProps> = ({ onHelpClick }) => 
                 )}
                 {aiError && <p className="error-message">{aiError}</p>}
                 {aiResult && (
-                    <div className="ai-result" dangerouslySetInnerHTML={{ __html: aiResult }} />
+                    <div className="ai-result" dangerouslySetInnerHTML={{ __html: sanitizeHtml(aiResult) }} />
                 )}
             </section>
 
@@ -262,7 +263,9 @@ const DiagnosisResultCard: React.FC<{
                 <span className="result-card-animal"> ({result.animal.name})</span>
             </h4>
             <div className="result-card-actions">
-                <span className="result-probability">{result.probability}%</span>
+                <span className="result-probability" title="Compatibilidade clinica relativa">
+                    Compatibilidade: {result.probability}%
+                </span>
                 <button className="btn btn--ghost btn--sm" onClick={onPreview}>Ver no Bulário</button>
             </div>
         </div>

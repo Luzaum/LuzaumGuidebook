@@ -14,6 +14,22 @@
     border-right: 1px solid rgba(231, 229, 228, 0.6);
 }
 
+/* ---- Dark Mode Overrides ---- */
+
+:root.dark .glass-panel {
+    background: rgba(15, 10, 30, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(124, 58, 237, 0.12);
+}
+
+:root.dark .glass-sidebar {
+    background: rgba(18, 10, 38, 0.92);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-right: 1px solid rgba(124, 58, 237, 0.25);
+}
+
 /* ID Card Hover Effects */
 /* ID Card Hover Effects */
 .id-hub-container:hover .id-card:not(:hover) {
@@ -37,7 +53,6 @@
 }
 
 .id-card:hover {
-    flex: 2;
     transform: scale(1.02);
     z-index: 10;
 }
@@ -66,4 +81,16 @@
         'wght' 400,
         'GRAD' 0,
         'opsz' 24
+}
+
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid #7c3aed;
+    outline-offset: 2px;
+}
+
+@media (hover: none) {
+    .id-card:hover {
+        transform: none;
+    }
 }

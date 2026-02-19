@@ -1,31 +1,58 @@
-// ============================================================
-// UI COMPONENTS — Componentes reutilizáveis de interface
-// ============================================================
-
-// --- Modal.tsx ---
-// Overlay com foco preso e fechamento por ESC ou clique fora.
-
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
+import { EXPLANATIONS } from '../../data/explanations';
 
 export const Modal: React.FC<{ children: React.ReactNode; onClose: () => void }> = ({ children, onClose }) => {
+    const dialogRef = useRef<HTMLDivElement | null>(null);
+
     useEffect(() => {
-        const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+        const container = dialogRef.current;
+        if (!container) return;
+
+        const focusable = container.querySelectorAll<HTMLElement>(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusable.length > 0) {
+            focusable[0].focus();
+        }
+
+        const handleKey = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                onClose();
+                return;
+            }
+            if (e.key !== 'Tab') return;
+
+            const items = container.querySelectorAll<HTMLElement>(
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            );
+            if (items.length === 0) return;
+
+            const first = items[0];
+            const last = items[items.length - 1];
+            const active = document.activeElement as HTMLElement | null;
+
+            if (e.shiftKey && active === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && active === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        };
+
         document.addEventListener('keydown', handleKey);
         return () => document.removeEventListener('keydown', handleKey);
     }, [onClose]);
 
     return (
         <div className="modal-overlay" onClick={onClose} role="dialog" aria-modal="true">
-            <div className="modal-content" onClick={e => e.stopPropagation()}>
-                <button className="modal-close-btn" onClick={onClose} aria-label="Fechar">×</button>
+            <div className="modal-content" ref={dialogRef} onClick={e => e.stopPropagation()}>
+                <button className="modal-close-btn" onClick={onClose} aria-label="Fechar">x</button>
                 {children}
             </div>
         </div>
     );
 };
-
-// --- HelpButton.tsx ---
-// Botão "?" inline que abre modal de explicação fisiopatológica.
 
 export const HelpButton: React.FC<{
     onClick: (e: React.MouseEvent) => void;
@@ -33,18 +60,16 @@ export const HelpButton: React.FC<{
 }> = ({ onClick, className }) => (
     <button
         className={`help-btn ${className ?? ''}`}
-        onClick={e => { e.stopPropagation(); onClick(e); }}
-        aria-label="Ver explicação"
+        onClick={e => {
+            e.stopPropagation();
+            onClick(e);
+        }}
+        aria-label="Ver explicacao"
+        type="button"
     >
         ?
     </button>
 );
-
-// --- EnrichedText.tsx ---
-// Renderiza texto com botões de ajuda inline para termos do glossário.
-
-import { useMemo } from 'react';
-import { EXPLANATIONS } from '../../data/explanations';
 
 export const EnrichedText: React.FC<{
     text: string;
@@ -63,23 +88,20 @@ export const EnrichedText: React.FC<{
             const originalTerm = Object.keys(EXPLANATIONS).find(
                 t => t.toLowerCase() === part.toLowerCase()
             );
-            if (originalTerm) {
-                return (
-                    <React.Fragment key={i}>
-                        {part}
-                        <HelpButton onClick={() => onHelpClick(originalTerm)} />
-                    </React.Fragment>
-                );
+            if (!originalTerm) {
+                return <React.Fragment key={i}>{part}</React.Fragment>;
             }
-            return <React.Fragment key={i}>{part}</React.Fragment>;
+            return (
+                <React.Fragment key={i}>
+                    {part}
+                    <HelpButton onClick={() => onHelpClick(originalTerm)} />
+                </React.Fragment>
+            );
         });
     }, [text, onHelpClick]);
 
     return <>{nodes}</>;
 };
-
-// --- Loader.tsx ---
-// Spinner de carregamento acessível.
 
 export const Loader: React.FC<{ label?: string }> = ({ label = 'Carregando...' }) => (
     <span className="loader-wrapper" role="status" aria-label={label}>
@@ -88,16 +110,7 @@ export const Loader: React.FC<{ label?: string }> = ({ label = 'Carregando...' }
     </span>
 );
 
-// --- SignificanceBadge.tsx ---
-// Badge colorido para nível de significância de sinal clínico.
-
 export type SignificanceLevel = 'pathognomonic' | 'characteristic' | 'general';
-
-const SIGNIFICANCE_LABELS: Record<SignificanceLevel, string> = {
-    pathognomonic: 'Patognomônico',
-    characteristic: 'Característico',
-    general: 'Geral',
-};
 
 export const SignificanceBadge: React.FC<{ level: SignificanceLevel; name: string }> = ({ level, name }) => (
     <span className={`significance-badge significance-badge--${level}`}>

@@ -10,7 +10,7 @@ import { ANIMAL_CATEGORIES } from '../../data/animals';
 import type { Animal, AnimalCategory } from '../../types';
 import { AIImage } from '../shared/AIImage';
 import { HelpButton, SignificanceBadge } from '../ui';
-import { EXPLANATIONS } from '../../data/explanations';
+import { renderSafeFormattedText } from '../../utils/renderSafeFormattedText';
 
 interface BularioPageProps {
     onHelpClick: (title: string, content?: string) => void;
@@ -107,11 +107,6 @@ interface AnimalDetailViewProps {
 }
 
 export const AnimalDetailView: React.FC<AnimalDetailViewProps> = ({ animal, onHelpClick }) => {
-    const formatText = (text: string) =>
-        text
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .replace(/\n/g, '<br />');
-
     return (
         <article className="animal-detail" style={{ borderLeft: `5px solid ${animal.categoryColor}` }}>
             <h2 className="animal-detail-name" style={{ color: animal.categoryColor }}>{animal.name}</h2>
@@ -150,13 +145,13 @@ export const AnimalDetailView: React.FC<AnimalDetailViewProps> = ({ animal, onHe
             {/* Diagnóstico */}
             <section className="animal-detail-section">
                 <h3 className="section-title">Diagnóstico</h3>
-                <p dangerouslySetInnerHTML={{ __html: formatText(animal.diagnosis) }} />
+                <div>{renderSafeFormattedText(animal.diagnosis)}</div>
             </section>
 
             {/* Tratamento */}
             <section className="animal-detail-section">
                 <h3 className="section-title">Tratamento</h3>
-                <p dangerouslySetInnerHTML={{ __html: formatText(animal.treatment) }} />
+                <div>{renderSafeFormattedText(animal.treatment)}</div>
             </section>
         </article>
     );

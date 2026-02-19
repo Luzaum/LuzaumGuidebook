@@ -4,7 +4,8 @@ import { ThemeProvider } from './utils/theme'
 import { AuthProvider } from './components/AuthProvider'
 import { AUTH_ENABLED } from './config/features'
 import { AppLayout } from './layouts/AppLayout'
-import { Home } from './pages/Home'
+import { LandingPage } from './pages/LandingPage'
+import { Hub } from './pages/Hub'
 import { ModuleIframe } from './pages/ModuleIframe'
 import { ModulePlanned } from './pages/ModulePlanned'
 import { CalculadoraEnergeticaPage } from './pages/CalculadoraEnergeticaPage'
@@ -25,7 +26,8 @@ function AppContent() {
         <ThemeProvider>
           <Routes>
             <Route element={<AppLayout />}>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/hub" element={<Hub />} />
               <Route path="/calculadora-energetica" element={<CalculadoraEnergeticaPage />} />
               <Route path="/fluidoterapia" element={<FluidoterapiaPage />} />
               <Route path="/transfusao-sanguinea" element={<TransfusaoSanguineaPage />} />
@@ -54,7 +56,8 @@ function AppContent() {
           <Routes>
             <Route path="/login" element={<LoginOrSignup />} />
             <Route element={<AppLayout />}>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/hub" element={<Hub />} />
               <Route path="/calculadora-energetica" element={<CalculadoraEnergeticaPage />} />
               <Route path="/fluidoterapia" element={<FluidoterapiaPage />} />
               <Route path="/transfusao-sanguinea" element={<TransfusaoSanguineaPage />} />

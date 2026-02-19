@@ -1158,3 +1158,11 @@
 :root.dark #aap2-module-root .help-btn:hover {
     background-color: rgba(167, 139, 250, 0.4);
 }
+
+#aap2-module-root button:focus-visible,
+#aap2-module-root input:focus-visible,
+#aap2-module-root select:focus-visible,
+#aap2-module-root textarea:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}

@@ -38,10 +38,10 @@ export function AppLayout() {
           {/* Hub Button */}
           <div>
             <button
-              onClick={() => navigate('/')}
-              className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${isActive('/')
-                  ? 'bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary font-medium'
-                  : 'text-foreground hover:bg-surface/50'
+              onClick={() => navigate('/hub')}
+              className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${isActive('/hub')
+                ? 'bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary font-medium'
+                : 'text-foreground hover:bg-surface/50'
                 }`}
             >
               <Home className="h-4 w-4" />
@@ -62,8 +62,8 @@ export function AppLayout() {
                       <button
                         onClick={() => navigate(module.route)}
                         className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${isActive(module.route)
-                            ? 'bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary font-medium'
-                            : 'text-foreground hover:bg-surface/50'
+                          ? 'bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary font-medium'
+                          : 'text-foreground hover:bg-surface/50'
                           }`}
                       >
                         <Icon className="h-4 w-4" />
@@ -89,8 +89,8 @@ export function AppLayout() {
                       <button
                         onClick={() => navigate(module.route)}
                         className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${isActive(module.route)
-                            ? 'bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary font-medium'
-                            : 'text-foreground hover:bg-surface/50'
+                          ? 'bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary font-medium'
+                          : 'text-foreground hover:bg-surface/50'
                           }`}
                       >
                         <Icon className="h-4 w-4" />
@@ -116,8 +116,8 @@ export function AppLayout() {
                       <button
                         onClick={() => navigate(module.route)}
                         className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors opacity-60 ${isActive(module.route)
-                            ? 'bg-slate-800/50 dark:bg-slate-700/50 text-white'
-                            : 'text-slate-200/90 dark:text-foreground hover:bg-slate-800/40 dark:hover:bg-surface/50'
+                          ? 'bg-slate-800/50 dark:bg-slate-700/50 text-white'
+                          : 'text-slate-200/90 dark:text-foreground hover:bg-slate-800/40 dark:hover:bg-surface/50'
                           }`}
                       >
                         <Icon className="h-4 w-4" />
@@ -171,12 +171,12 @@ export function AppLayout() {
               <div>
                 <button
                   onClick={() => {
-                    navigate('/')
+                    navigate('/hub')
                     setSidebarOpen(false)
                   }}
-                  className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${isActive('/')
-                      ? 'bg-slate-800/50 dark:bg-slate-700/50 text-white'
-                      : 'text-slate-200/90 dark:text-foreground hover:bg-slate-800/40 dark:hover:bg-surface/50'
+                  className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${isActive('/hub')
+                    ? 'bg-slate-800/50 dark:bg-slate-700/50 text-white'
+                    : 'text-slate-200/90 dark:text-foreground hover:bg-slate-800/40 dark:hover:bg-surface/50'
                     }`}
                 >
                   <Home className="h-4 w-4" />
@@ -200,8 +200,8 @@ export function AppLayout() {
                               setSidebarOpen(false)
                             }}
                             className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${isActive(module.route)
-                                ? 'bg-slate-800/50 dark:bg-slate-700/50 text-white'
-                                : 'text-slate-200/90 dark:text-foreground hover:bg-slate-800/40 dark:hover:bg-surface/50'
+                              ? 'bg-slate-800/50 dark:bg-slate-700/50 text-white'
+                              : 'text-slate-200/90 dark:text-foreground hover:bg-slate-800/40 dark:hover:bg-surface/50'
                               }`}
                           >
                             {module.iconImage ? (
@@ -238,8 +238,8 @@ export function AppLayout() {
                               setSidebarOpen(false)
                             }}
                             className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${isActive(module.route)
-                                ? 'bg-slate-800/50 dark:bg-slate-700/50 text-white'
-                                : 'text-slate-200/90 dark:text-foreground hover:bg-slate-800/40 dark:hover:bg-surface/50'
+                              ? 'bg-slate-800/50 dark:bg-slate-700/50 text-white'
+                              : 'text-slate-200/90 dark:text-foreground hover:bg-slate-800/40 dark:hover:bg-surface/50'
                               }`}
                           >
                             <Icon className="h-4 w-4" />
@@ -268,8 +268,8 @@ export function AppLayout() {
                               setSidebarOpen(false)
                             }}
                             className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors opacity-60 ${isActive(module.route)
-                                ? 'bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary font-medium'
-                                : 'text-foreground hover:bg-surface/50'
+                              ? 'bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary font-medium'
+                              : 'text-foreground hover:bg-surface/50'
                               }`}
                           >
                             <Icon className="h-4 w-4" />
@@ -319,7 +319,7 @@ export function AppLayout() {
         {/* Page Content */}
         {/* Page Content */}
         <main className="flex-1 overflow-auto">
-          {isActive('/') ? (
+          {(isActive('/') || isActive('/hub')) ? (
             <Outlet />
           ) : (
             <div className="mx-auto w-full max-w-7xl px-6">
