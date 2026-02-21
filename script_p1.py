@@ -1,0 +1,138 @@
+import re
+
+with open(r"c:\PROJETOS VET\Vetius\Hemogasometria.tsx", "r", encoding="utf-8") as f:
+    text = f.read()
+
+# Let's write the new component code to a separate file first.
+new_component = """
+// --- NEW PRESETS DATA ---
+const presets = {
+    dog: {
+        ph: { baixo: 7.20, normal: 7.40, alto: 7.55 },
+        pco2: { baixo: 25.0, normal: 38.0, alto: 55.0 },
+        po2: { baixo: 60.0, normal: 95.0, alto: 120.0 },
+        hco3: { baixo: 15.0, normal: 22.0, alto: 30.0 },
+        na: { baixo: 130, normal: 145, alto: 160 },
+        k: { baixo: 3.0, normal: 4.5, alto: 6.5 },
+        cl: { baixo: 100, normal: 115, alto: 130 },
+        albumin: { baixo: 1.5, normal: 2.8, alto: 4.0 },
+    },
+    cat: {
+        ph: { baixo: 7.20, normal: 7.40, alto: 7.55 },
+        pco2: { baixo: 22.0, normal: 31.0, alto: 45.0 },
+        po2: { baixo: 70.0, normal: 105.0, alto: 130.0 },
+        hco3: { baixo: 12.0, normal: 18.0, alto: 26.0 },
+        na: { baixo: 135, normal: 150, alto: 165 },
+        k: { baixo: 2.8, normal: 4.2, alto: 6.0 },
+        cl: { baixo: 100, normal: 115, alto: 130 },
+        albumin: { baixo: 2.0, normal: 3.5, alto: 4.8 },
+    }
+};
+
+const PresetsButtons = ({ param, species, setInputs }) => {
+    const handlePreset = (level) => {
+        const val = presets[species]?.[param]?.[level];
+        if (val !== undefined) setInputs(prev => ({ ...prev, [param]: String(val) }));
+    };
+    return (
+        <div className="flex gap-1 mt-1 justify-end">
+            <button type="button" onClick={() => handlePreset('baixo')} className="text-[10px] bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-1.5 py-0.5 rounded border border-red-200 dark:border-red-800 hover:bg-red-200 transition-colors">⬇ Baixo</button>
+            <button type="button" onClick={() => handlePreset('normal')} className="text-[10px] bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-1.5 py-0.5 rounded border border-green-200 dark:border-green-800 hover:bg-green-200 transition-colors">✅ Normal</button>
+            <button type="button" onClick={() => handlePreset('alto')} className="text-[10px] bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-1.5 py-0.5 rounded border border-red-200 dark:border-red-800 hover:bg-red-200 transition-colors">⬆ Alto</button>
+        </div>
+    );
+};
+
+// --- MAIN COMPONENT ---
+const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
+    const [activeTab, setActiveTab] = useState('analyzer');
+    const [modalData, setModalData] = useState<{title: string, content: string} | null>(null);
+    
+    // --- Analyzer State ---
+    const [inputs, setInputs] = useState({
+        species: 'dog', declaredSampleType: 'arterial', fio2: '21',
+        ph: '', pco2: '', hco3: '', po2: '', temp: '', na: '', k: '', cl: '', albumin: '',
+        glucose: '', lactate: '', be: ''
+    });
+    const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(null);
+    const [showResults, setShowResults] = useState(false);
+
+    // --- Quiz State ---
+    const [quizCase, setQuizCase] = useState<QuizCase | null>(null);
+    const [userAnswers, setUserAnswers] = useState<{[key: string]: string}>({});
+    const [quizSubmitted, setQuizSubmitted] = useState(false);
+
+    useEffect(() => { handleNewQuizCase(); }, []);
+
+    const handleNewQuizCase = useCallback(() => {
+        setQuizCase(generateQuizCase());
+        setUserAnswers({});
+        setQuizSubmitted(false);
+    }, []);
+    
+    const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { id, value } = e.target;
+        setInputs(prev => ({ ...prev, [id]: value }));
+        setShowResults(false);
+    }, []);
+
+    const handleSpeciesChange = (species: string) => {
+        setInputs(prev => ({ ...prev, species }));
+        setShowResults(false);
+    };
+
+    const handleAnalyzerSubmit = useCallback((e: React.FormEvent) => {
+        e.preventDefault();
+        const numericInputs: any = {};
+        for(const key in inputs) {
+            const parsed = parseFloat(inputs[key as keyof typeof inputs]);
+            numericInputs[key] = isNaN(parsed) ? ((key === 'species' || key === 'declaredSampleType') ? inputs[key] : null) : parsed;
+        }
+        const analysis = analyzeBloodGas(numericInputs);
+        setAnalysisResult(analysis);
+        setShowResults(true);
+    }, [inputs]);
+
+    const handleReset = () => {
+        setInputs({ species: 'dog', declaredSampleType: 'arterial', fio2: '21', ph: '', pco2: '', hco3: '', po2: '', temp: '', na: '', k: '', cl: '', albumin: '', glucose: '', lactate: '', be: '' });
+        setShowResults(false);
+        setAnalysisResult(null);
+    };
+
+    const handleQuizSubmit = useCallback((e: React.FormEvent) => {
+        e.preventDefault();
+        setQuizSubmitted(true);
+    }, []);
+
+    const openModal = useCallback((key: string) => {
+        if (explanationData[key as keyof typeof explanationData]) setModalData((explanationData as any)[key]);
+    }, []);
+    
+    const alerts = useMemo(() => {
+        if (!showResults || !analysisResult) return [];
+        const alertsList = [];
+        const { anionGap, compensation, electrolyteStatus, sampleCheck } = analysisResult;
+
+        if (anionGap.interpretation === 'Alto Anion Gap (Normoclorêmico)') alertsList.push({type: 'warning', msg: `O Ânion Gap corrigido está elevado (<strong>${anionGap.correctedValue}</strong>), indicando acúmulo de ânions não mensurados.`, key: 'anionGap'});
+        if (compensation.mixedDisorder) alertsList.push({type: 'warning', msg: `A compensação parece inadequada, sugerindo um <strong>distúrbio misto</strong>: ${compensation.mixedDisorder}.`, key: 'compensation'});
+        
+        electrolyteStatus.forEach(e => { 
+            if (e.alert && !e.status.toLowerCase().includes('hipercalemia')) alertsList.push({type: 'warning', msg: e.alert, key: e.status.toLowerCase()});
+        });
+
+        if (sampleCheck.probableType !== inputs.declaredSampleType && sampleCheck.probableType !== 'mista/indeterminada') alertsList.push({type: 'critical', msg: `A amostra foi declarada como <strong>${inputs.declaredSampleType === 'arterial' ? 'Arterial' : 'Venosa'}</strong>, mas a pO₂ sugere que a origem é <strong>${sampleCheck.probableType === 'arterial' ? 'Arterial' : 'Venosa'}</strong>. A interpretação deve ser ajustada.`, key: 'sampleType'});
+        const phValue = parseFloat(inputs.ph);
+        if (phValue < 7.2 || phValue > 7.6) alertsList.push({type: 'critical', msg: `O pH de <strong>${phValue}</strong> está em um nível crítico e representa risco de vida.`, key: 'diagnosis'});
+        electrolyteStatus.forEach(e => { 
+            if (e.status.toLowerCase().includes('hipercalemia')) alertsList.push({type: 'critical', msg: e.alert, key: 'hipercalemia'});
+        });
+        return alertsList;
+    }, [showResults, analysisResult, inputs]);
+
+    const numericQuizKeys: (keyof QuizInputs)[] = ['ph', 'pco2', 'hco3', 'po2', 'temp', 'na', 'k', 'cl', 'albumin', 'fio2'];
+"""
+
+with open(r"c:\PROJETOS VET\Vetius\p1.txt", "w", encoding="utf-8") as f:
+    f.write(new_component)
+
+print("Part 1 created")

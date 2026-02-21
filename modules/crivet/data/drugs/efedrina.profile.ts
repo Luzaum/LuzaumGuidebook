@@ -269,10 +269,6 @@ export const efedrinaProfile: DrugProfile = {
       'Pode ser administrada em bolus por via existente; ainda assim, fazer flushing e evitar mistura no mesmo corpo de seringa com outros fármacos.',
   },
   compatibility: {
-    diluents_allowed: ['NaCl 0,9%', 'Ringer Lactato', 'Glicose 5%'],
-    diluents_ok: ['NaCl 0,9%', 'Ringer Lactato', 'Glicose 5%'],
-    diluentsAllowed: ['NaCl 0,9%', 'Ringer Lactato', 'Glicose 5%'],
-    diluents: ['NaCl 0,9%', 'Ringer Lactato', 'Glicose 5%'],
     compatible_in_syringe_or_bag: ['Administração IV em linha com cristaloide correndo (com flushing)'],
     compatible_y_site_only: [
       'Preferir Y-site e flushing entre drogas quando a via é compartilhada (regra de segurança, dados específicos variam por concentração).',

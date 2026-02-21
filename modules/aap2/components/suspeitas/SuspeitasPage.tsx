@@ -10,7 +10,7 @@ import { useDiagnosis } from '../../hooks/useDiagnosis';
 import { fetchAIAnalysis } from '../../services/aiService';
 import type { PatientData, DiagnosisResult, Animal, Comorbidity } from '../../types';
 import { HelpButton, Modal, SignificanceBadge, Loader } from '../ui';
-import { AnimalDetailView } from '../bulario/index';
+import { EncyclopediaDetail } from '../encyclopedia/EncyclopediaDetail';
 import { sanitizeHtml } from '../../utils/sanitizeHtml';
 
 interface SuspeitasPageProps {
@@ -241,8 +241,8 @@ export const SuspeitasPage: React.FC<SuspeitasPageProps> = ({ onHelpClick }) => 
             {/* ---- MODAL DE PREVIEW DO ANIMAL ---- */}
             {previewAnimal && (
                 <Modal onClose={() => setPreviewAnimal(null)}>
-                    <div className="modal-scroll-body">
-                        <AnimalDetailView animal={previewAnimal} onHelpClick={onHelpClick} />
+                    <div className="modal-scroll-body rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700">
+                        <EncyclopediaDetail animal={previewAnimal} />
                     </div>
                 </Modal>
             )}
@@ -266,7 +266,7 @@ const DiagnosisResultCard: React.FC<{
                 <span className="result-probability" title="Compatibilidade clinica relativa">
                     Compatibilidade: {result.probability}%
                 </span>
-                <button className="btn btn--ghost btn--sm" onClick={onPreview}>Ver no Bulário</button>
+                <button className="btn btn--ghost btn--sm" onClick={onPreview}>Ver na Enciclopedia</button>
             </div>
         </div>
         <div className="result-signs">
@@ -276,3 +276,4 @@ const DiagnosisResultCard: React.FC<{
         </div>
     </li>
 );
+

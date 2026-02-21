@@ -44,11 +44,11 @@ export function Home() {
         <div className="relative z-10 w-full px-4 sm:px-8 lg:px-12 pointer-events-none h-full flex items-center">
 
           <div className="max-w-xl mr-auto p-8 md:p-10 rounded-3xl animate-in fade-in slide-in-from-left duration-700
-                            bg-blue-950/20 dark:bg-blue-900/10 backdrop-blur-md border border-blue-500/20 shadow-[0_8px_32px_rgba(0,0,0,0.12)]">
+                            bg-[#0a1532] backdrop-blur-md border border-blue-500/20 shadow-[0_8px_32px_rgba(0,0,0,0.12)]">
 
             {/* Título - Interativo */}
             <div className="pointer-events-auto">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.1] mb-6 drop-shadow-sm">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-blue-50 leading-[1.1] mb-6 drop-shadow-sm">
                 Medicina Veterinária de <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
                   Alta Precisão

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Animal } from '../../types';
 import { AIImage } from '../shared/AIImage';
 import { renderSafeFormattedText } from '../../utils/renderSafeFormattedText';
@@ -7,198 +7,213 @@ interface EncyclopediaDetailProps {
     animal: Animal;
 }
 
-type Tab = 'identification' | 'signs' | 'diagnosis' | 'treatment';
+interface GlossaryContent {
+    title: string;
+    content: string;
+}
+
+const RISK_LABELS: Record<string, string> = {
+    high: 'Alta toxicidade',
+    moderate: 'Moderado / Venenoso',
+    low: 'Baixa toxicidade',
+    infectious: 'Infeccioso / Parasitario',
+};
+
+// Placeholder scaffold: voce pode editar depois com textos finais.
+const COMPLEX_TERM_GLOSSARY: Record<string, string> = {
+    'Dor local intensa e imediata': 'Explicacao pendente. Descreva a fisiopatologia da dor local e sua relevancia clinica.',
+    'Edema progressivo e duro': 'Explicacao pendente. Defina edema progressivo e o impacto prognostico.',
+    'Hemorragia local e sistemica': 'Explicacao pendente. Descreva mecanismo hemorrágico e risco de coagulopatia.',
+    'Necrose tecidual': 'Explicacao pendente. Explique necrose, tempo de evolucao e sinais de gravidade.',
+    'Hipotensao e choque': 'Explicacao pendente. Diferencie hipotensao inicial de choque instalado.',
+};
+
+const getRiskBadgeColor = (level?: string) => {
+    switch (level) {
+        case 'high':
+            return 'bg-red-500/20 text-red-200 border-red-400/30';
+        case 'moderate':
+            return 'bg-amber-500/20 text-amber-200 border-amber-400/30';
+        case 'low':
+            return 'bg-blue-500/20 text-blue-200 border-blue-400/30';
+        case 'infectious':
+            return 'bg-purple-500/20 text-purple-200 border-purple-400/30';
+        default:
+            return 'bg-slate-500/20 text-slate-200 border-slate-400/30';
+    }
+};
+
+const normalize = (value: string) =>
+    value
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase();
+
+const getSignificanceClass = (significance: string) => {
+    if (significance === 'pathognomonic') return 'bg-purple-500/20 text-purple-200';
+    if (significance === 'characteristic') return 'bg-blue-500/20 text-blue-200';
+    return 'bg-slate-500/20 text-slate-300';
+};
+
+const getSignificanceLabel = (significance: string) => {
+    if (significance === 'pathognomonic') return 'Patognomonico';
+    if (significance === 'characteristic') return 'Caracteristico';
+    return 'Geral';
+};
 
 export const EncyclopediaDetail: React.FC<EncyclopediaDetailProps> = ({ animal }) => {
-    const [activeTab, setActiveTab] = useState<Tab>('identification');
-
-    // Extract scientific name and common name
+    const [glossaryModal, setGlossaryModal] = useState<GlossaryContent | null>(null);
     const match = animal.name.match(/^(.*?)\s*(\(.*?\))?$/);
     const commonName = match ? match[1] : animal.name;
     const scientificName = match ? match[2] : '';
+    const riskLabel = RISK_LABELS[animal.riskLevel ?? 'low'] ?? 'Desconhecido';
+    const hasContraindication = useMemo(() => normalize(animal.treatment).includes('nao usar'), [animal.treatment]);
 
-    const getRiskBadgeColor = (level?: string) => {
-        switch (level) {
-            case 'high': return 'bg-red-100 text-red-600';
-            case 'moderate': return 'bg-amber-100 text-amber-600';
-            case 'low': return 'bg-blue-100 text-blue-600';
-            case 'infectious': return 'bg-purple-100 text-purple-600';
-            default: return 'bg-slate-100 text-slate-600';
-        }
+    const openGlossary = (term: string, fallbackText: string) => {
+        setGlossaryModal({
+            title: term,
+            content: COMPLEX_TERM_GLOSSARY[term] ?? `Explicacao pendente para "${term}". ${fallbackText}`,
+        });
     };
 
-    const riskLabel = {
-        'high': 'Altamente Peçonhenta',
-        'moderate': 'Moderado / Venenoso',
-        'low': 'Baixa Toxicidade',
-        'infectious': 'Infeccioso / Parasitário',
-    }[animal.riskLevel || 'low'] || 'Desconhecido';
-
     return (
-        <div className="flex-1 flex flex-col h-full overflow-y-auto bg-slate-50/50">
-            {/* Header / Hero */}
-            <header className="p-8 pb-0">
-                <section className="flex flex-col md:flex-row gap-8 items-start mb-8">
-                    <div className="flex-1 space-y-4">
-                        <div className="flex gap-2 flex-wrap">
-                            <span className={`text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider flex items-center gap-1 ${getRiskBadgeColor(animal.riskLevel)}`}>
-                                <span className="material-symbols-outlined text-xs">warning</span> {riskLabel}
-                            </span>
-                            {animal.family && (
-                                <span className="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">
-                                    {animal.family}
-                                </span>
-                            )}
-                        </div>
-                        <div>
-                            <h1 className="text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-                                {commonName} <span className="text-slate-400 font-normal italic text-2xl lg:text-3xl block lg:inline mt-1 lg:mt-0">{scientificName}</span>
-                            </h1>
-                            <p className="mt-4 text-base lg:text-lg text-slate-600 max-w-2xl leading-relaxed">
-                                {animal.identification}
-                            </p>
-                        </div>
-                        {/* Action Buttons Placeholder - could be hooked up to real actions if needed */}
-                        {/* 
-                        <div className="flex gap-4 pt-2">
-                            <button className="bg-primary text-white px-5 py-2.5 rounded-xl font-bold flex items-center gap-2 shadow-lg shadow-primary/30 hover:bg-primary-dark transition-all text-sm">
-                                <span className="material-symbols-outlined">medical_services</span> Protocolo de Emergência
-                            </button>
-                        </div>
-                        */}
-                    </div>
-
-                    <div className="w-full md:w-[350px] lg:w-[400px] shrink-0">
-                        <div className="relative rounded-[2rem] overflow-hidden shadow-2xl group border-[6px] border-white ring-1 ring-slate-900/5 aspect-[4/3]">
-                            <AIImage
-                                animalId={animal.id}
-                                animalName={animal.name}
-                                imagePrompt={animal.imagePrompt}
-                                staticImagePath={animal.staticImagePath}
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            />
-                            <div className="absolute bottom-4 left-4 bg-black/40 backdrop-blur-md text-white text-[10px] px-3 py-1 rounded-full flex items-center gap-1">
-                                <span className="material-symbols-outlined text-xs">photo_camera</span> Espécime Adulto
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Tabs */}
-                <nav className="flex border-b border-slate-200 gap-6 lg:gap-8 overflow-x-auto">
-                    {[
-                        { id: 'identification', label: 'Identificação' },
-                        { id: 'signs', label: 'Sinais Clínicos' },
-                        { id: 'diagnosis', label: 'Diagnóstico' },
-                        { id: 'treatment', label: 'Tratamento' }
-                    ].map((tab) => (
+        <div className="h-full overflow-y-auto bg-transparent p-6 lg:p-8">
+            {glossaryModal && (
+                <div className="tooltip-modal-overlay" onClick={() => setGlossaryModal(null)} role="dialog" aria-modal="true">
+                    <div className="tooltip-modal-content" onClick={(e) => e.stopPropagation()}>
                         <button
-                            key={tab.id}
-                            onClick={() => setActiveTab(tab.id as Tab)}
-                            className={`pb-4 text-sm whitespace-nowrap transition-colors border-b-2 px-1 ${activeTab === tab.id
-                                    ? 'font-bold text-primary border-primary'
-                                    : 'font-medium text-slate-500 hover:text-slate-800 border-transparent'
-                                }`}
+                            type="button"
+                            className="tooltip-modal-close"
+                            onClick={() => setGlossaryModal(null)}
+                            aria-label="Fechar"
                         >
-                            {tab.label}
+                            x
                         </button>
-                    ))}
-                </nav>
-            </header>
+                        <h3 className="tooltip-modal-title">{glossaryModal.title}</h3>
+                        <div className="tooltip-modal-body">{glossaryModal.content}</div>
+                    </div>
+                </div>
+            )}
 
-            {/* Content Area */}
-            <div className="p-8 pt-6 grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div className="lg:col-span-2 space-y-8">
+            <section className="mb-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
+                <div className="space-y-4 rounded-3xl border border-white/10 bg-white/45 p-6 backdrop-blur-xl dark:bg-slate-900/45">
+                    <div className="flex flex-wrap gap-2">
+                        <span className={`inline-flex items-center gap-1 rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-wider ${getRiskBadgeColor(animal.riskLevel)}`}>
+                            <span className="material-symbols-outlined text-xs">warning</span>
+                            {riskLabel}
+                        </span>
+                        {animal.family && (
+                            <span className="inline-flex items-center rounded-full bg-slate-100/80 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:bg-slate-800/80 dark:text-slate-300">
+                                {animal.family}
+                            </span>
+                        )}
+                    </div>
 
-                    {activeTab === 'identification' && (
-                        <div className="space-y-6">
-                            <div className="glass-panel p-6 rounded-2xl border border-slate-200 bg-white">
-                                <h3 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
-                                    <span className="material-symbols-outlined text-primary">visibility</span>
-                                    Morfologia Detalhada
-                                </h3>
-                                <p className="text-slate-600 leading-relaxed">{animal.identification}</p>
-                                <div className="mt-6 p-4 bg-blue-50 rounded-xl text-blue-800 text-sm flex gap-3 items-start">
-                                    <span className="material-symbols-outlined shrink-0">info</span>
-                                    <div>
-                                        <strong>Dica Prática:</strong> Observe o padrão das escamas e o formato da cabeça. Fotos do animal trazido pelo tutor podem ser cruciais para confirmar a identificação.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-                    {activeTab === 'signs' && (
-                        <div className="space-y-8">
-                            <div className="space-y-6">
-                                <h3 className="flex items-center gap-2 text-lg font-bold text-slate-800">
-                                    <span className="material-symbols-outlined text-primary">clinical_notes</span>
-                                    Quadro Clínico
-                                </h3>
-                                <div className="grid gap-4">
-                                    {animal.signs.map((sign, index) => (
-                                        <div key={index} className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow group">
-                                            <div className="flex justify-between items-start mb-2">
-                                                <h4 className="font-bold text-slate-900 text-base">{sign.name}</h4>
-                                                <span className={`text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider ${sign.significance === 'pathognomonic'
-                                                        ? 'bg-purple-100 text-purple-700'
-                                                        : sign.significance === 'characteristic'
-                                                            ? 'bg-blue-100 text-blue-700'
-                                                            : 'bg-slate-100 text-slate-500'
-                                                    }`}>
-                                                    {sign.significance === 'pathognomonic' ? 'Patognomônico' : sign.significance === 'characteristic' ? 'Característico' : 'Geral'}
-                                                </span>
-                                            </div>
-                                            <p className="text-sm text-slate-500 leading-relaxed">{sign.explanation}</p>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-                    {activeTab === 'diagnosis' && (
-                        <div className="glass-panel p-6 rounded-2xl border border-slate-200 bg-white typography-slate">
-                            {renderSafeFormattedText(animal.diagnosis)}
-                        </div>
-                    )}
-
-                    {activeTab === 'treatment' && (
-                        <div className="glass-panel p-6 rounded-2xl border border-slate-200 bg-white typography-slate">
-                            {renderSafeFormattedText(animal.treatment)}
-                        </div>
-                    )}
-
+                    <div>
+                        <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 lg:text-4xl">
+                            {commonName}
+                        </h1>
+                        {scientificName && (
+                            <p className="mt-1 text-lg italic text-slate-500 dark:text-slate-300">
+                                {scientificName}
+                            </p>
+                        )}
+                        <p className="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                            {animal.identification}
+                        </p>
+                    </div>
                 </div>
 
-                {/* Side Panels - Always visible or contextual? The design shows specific panels. */}
+                <div className="rounded-3xl border border-white/10 bg-white/45 p-3 backdrop-blur-xl dark:bg-slate-900/45">
+                    <div className="overflow-hidden rounded-2xl border border-white/10">
+                        <AIImage
+                            animalId={animal.id}
+                            animalName={animal.name}
+                            imagePrompt={animal.imagePrompt}
+                            staticImagePath={animal.staticImagePath}
+                            className="h-[260px] w-full object-cover lg:h-[300px]"
+                        />
+                    </div>
+                </div>
+            </section>
+
+            <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1.8fr_1fr]">
                 <div className="space-y-6">
-                    {/* Contraindication - Layout: Red Gradient Card */}
-                    {animal.treatment.toLowerCase().includes('não usar') && (
-                        <div className="bg-gradient-to-br from-red-500 to-red-700 p-6 rounded-2xl text-white shadow-xl shadow-red-200 relative overflow-hidden">
-                            <div className="absolute -right-4 -top-4 opacity-10">
-                                <span className="material-symbols-outlined text-9xl">block</span>
+                    <div className="rounded-3xl border border-white/10 bg-white/45 p-6 backdrop-blur-xl dark:bg-slate-900/45">
+                        <h3 className="mb-3 flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-slate-100">
+                            <span className="material-symbols-outlined text-[#7e40e7]">visibility</span>
+                            Identificacao e morfologia
+                        </h3>
+                        <p className="leading-relaxed text-slate-600 dark:text-slate-300">{animal.identification}</p>
+                    </div>
+
+                    <div className="space-y-4 rounded-3xl border border-white/10 bg-white/45 p-6 backdrop-blur-xl dark:bg-slate-900/45">
+                        <h3 className="mb-1 flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-slate-100">
+                            <span className="material-symbols-outlined text-[#7e40e7]">clinical_notes</span>
+                            Sinais clinicos
+                        </h3>
+                        {animal.signs.map((sign) => (
+                            <div key={sign.name} className="rounded-2xl border border-white/10 bg-white/50 p-5 backdrop-blur-xl dark:bg-slate-900/45">
+                                <div className="mb-2 flex items-start justify-between gap-2">
+                                    <div className="flex items-start gap-2">
+                                        <h4 className="text-base font-bold text-slate-900 dark:text-slate-100">{sign.name}</h4>
+                                        <button
+                                            type="button"
+                                            className="help-btn mt-[1px]"
+                                            onClick={() => openGlossary(sign.name, sign.explanation)}
+                                            aria-label={`Explicar termo: ${sign.name}`}
+                                            title="Ver explicacao"
+                                        >
+                                            ?
+                                        </button>
+                                    </div>
+                                    <span className={`rounded-full px-2 py-1 text-[10px] font-bold uppercase tracking-wider ${getSignificanceClass(sign.significance)}`}>
+                                        {getSignificanceLabel(sign.significance)}
+                                    </span>
+                                </div>
+                                <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">{sign.explanation}</p>
                             </div>
-                            <h4 className="flex items-center gap-2 font-bold uppercase tracking-wider mb-2 text-sm text-red-100">
-                                <span className="material-symbols-outlined text-lg">warning</span> Contraindicação
+                        ))}
+                    </div>
+
+                    <div className="typography-slate rounded-3xl border border-white/10 bg-white/50 p-6 backdrop-blur-xl dark:bg-slate-900/45 dark:text-slate-100">
+                        <h3 className="mb-3 flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-slate-100">
+                            <span className="material-symbols-outlined text-[#7e40e7]">lab_profile</span>
+                            Diagnostico
+                        </h3>
+                        {renderSafeFormattedText(animal.diagnosis)}
+                    </div>
+
+                    <div className="typography-slate rounded-3xl border border-white/10 bg-white/50 p-6 backdrop-blur-xl dark:bg-slate-900/45 dark:text-slate-100">
+                        <h3 className="mb-3 flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-slate-100">
+                            <span className="material-symbols-outlined text-[#7e40e7]">medication</span>
+                            Tratamento
+                        </h3>
+                        {renderSafeFormattedText(animal.treatment)}
+                    </div>
+                </div>
+
+                <div className="space-y-5">
+                    {hasContraindication && (
+                        <div className="overflow-hidden rounded-3xl border border-red-400/30 bg-gradient-to-br from-red-600/85 to-red-700/85 p-6 text-white">
+                            <h4 className="mb-2 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-red-100">
+                                <span className="material-symbols-outlined text-base">warning</span>
+                                Contraindicacao
                             </h4>
-                            <p className="text-lg font-black mb-2 leading-tight">ATENÇÃO ÀS RESTRIÇÕES</p>
-                            <p className="text-xs text-red-50 leading-relaxed opacity-90">
-                                Verifique cuidadosamente as contraindicações no protocolo de tratamento (ex: AINEs em acidentes botrópicos).
+                            <p className="text-lg font-black leading-tight">Atencao as restricoes</p>
+                            <p className="mt-2 text-xs leading-relaxed text-red-50/90">
+                                Revise as restricoes da terapia antes de iniciar o protocolo, principalmente em pacientes com risco renal.
                             </p>
                         </div>
                     )}
 
-                    {/* Quick Stats / Info */}
-                    <div className="glass-panel p-6 rounded-2xl border border-slate-200 bg-primary/5">
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 bg-primary/10 text-primary rounded-lg">
-                                <span className="material-symbols-outlined">local_hospital</span>
-                            </div>
-                            <h4 className="font-bold text-slate-900">Gravidade</h4>
+                    <div className="rounded-3xl border border-white/10 bg-white/50 p-6 backdrop-blur-xl dark:bg-slate-900/45">
+                        <div className="mb-3 flex items-center gap-2">
+                            <span className="material-symbols-outlined text-[#7e40e7]">local_hospital</span>
+                            <h4 className="font-bold text-slate-900 dark:text-slate-100">Gravidade</h4>
                         </div>
-                        <p className="text-sm text-slate-600 mb-4">
-                            O {animal.accidentName} é classificado como de risco <strong>{riskLabel}</strong>. O prognóstico depende da rapidez do atendimento.
+                        <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                            O {animal.accidentName} e classificado como de risco <strong>{riskLabel}</strong>. O prognostico depende da velocidade do atendimento e suporte intensivo.
                         </p>
                     </div>
                 </div>

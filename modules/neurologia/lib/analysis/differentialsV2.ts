@@ -264,7 +264,8 @@ const DIFFERENTIAL_CANDIDATES: DifferentialCandidate[] = [
     category: 'IDIOPATICA',
     baseScore: 60,
     axes: ['NEUROMUSCULAR'],
-    evolutionPreference: ['flutuante', 'episodico'],
+    temporalPreference: ['episodico'],
+    evolutionPreference: ['flutuante'],
   },
   {
     name: 'Polirradiculoneurite (síndrome de Coonhound)',
@@ -519,7 +520,7 @@ function buildDifferential(
 function buildGenericDifferential(index: number, axis: NeuroAxis): Differential {
   const name = `Diferencial amplo ${index} - ${getAxisLabel(axis)}`
   const ddxId = `diferencial_amplo_${index}_${axis.toLowerCase()}`
-  
+
   return {
     id: ddxId,
     name,
@@ -665,12 +666,12 @@ function getTreatmentForCategory(
   comorbidities: any[],
 ): Differential['treatment'] {
   const cautions: string[] = []
-  
+
   // Extrair keys de comorbidades (suporta string[] ou ComorbidityItem[])
   const comorbKeys = Array.isArray(comorbidities)
     ? comorbidities.map((c: any) => (typeof c === 'string' ? c : c.key || c)).filter(Boolean)
     : []
-  
+
   if (comorbKeys.includes('renal') || comorbKeys.includes('hepatica')) {
     cautions.push('Ajustar doses conforme função renal/hepática')
   }

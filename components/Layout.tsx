@@ -47,12 +47,12 @@ const Layout: React.FC<LayoutProps> = ({ children, onBack, title, showHeader = t
                 </div>
               </div>
             </div>
-            
+
             <div className="ml-auto flex items-center space-x-4">
               {/* Categorias removido conforme pedido */}
               <ThemeToggle />
               {!isAuthenticated && (
-                <Button size="sm" variant="default" onClick={() => {
+                <Button size="sm" variant="primary" onClick={() => {
                   const el = document.getElementById('signup') || document.getElementById('login');
                   el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }}>Cadastrar</Button>
@@ -64,7 +64,7 @@ const Layout: React.FC<LayoutProps> = ({ children, onBack, title, showHeader = t
           </div>
         </header>
       )}
-      
+
       <main className="container mx-auto px-4 py-8">
         {children}
       </main>

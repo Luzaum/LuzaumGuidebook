@@ -34,6 +34,8 @@ export interface AnimalCategory {
     animals: Animal[];
 }
 
+export type AnimalCategoryId = AnimalCategory['id'];
+
 // --- Protocolos de Tratamento ---
 
 export interface ProtocolSection {
@@ -83,7 +85,7 @@ export interface ImageCacheEntry {
 
 // --- Navegação ---
 
-export type AppPage = 'home' | 'bulario' | 'suspeitas' | 'tratamentos' | 'enciclopedia' | 'species_detail' | 'nova_consulta' | 'relatorio' | 'relatorio_detalhado' | 'historico';
+export type AppPage = 'home' | 'suspeitas' | 'tratamentos' | 'enciclopedia' | 'nova_consulta' | 'relatorio' | 'relatorio_detalhado' | 'historico';
 
 // --- Respostas da API ---
 

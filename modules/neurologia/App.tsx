@@ -62,12 +62,12 @@ export function NeurologiaApp() {
   const runAnalysis = () => {
     // Converter patient do caseStore para formato legado temporariamente
     const legacyPatient: LegacyPatientProfile = {
-      species: patient.species === 'dog' ? 'Dog' : 'Cat',
+      species: (patient.species === 'dog' ? 'Dog' : 'Cat') as any,
       age: {
         years: patient.ageYears || 0,
         months: patient.ageMonths || 0,
       },
-      sex: patient.sex === 'male' ? 'M' : 'F',
+      sex: (patient.sex === 'male' ? 'M' : 'F') as any,
       physiologicState: [
         ...(patient.reproStatus === 'neutered' ? ['Castrado'] : []),
         ...(patient.reproStatus === 'intact' ? ['Inteiro'] : []),
@@ -77,7 +77,7 @@ export function NeurologiaApp() {
         ...(patient.lifeStage === 'geriatric' ? ['Geriátrico'] : []),
       ] as any[],
       weight: patient.weightKg || 0,
-      comorbidities: patient.comorbidities,
+      comorbidities: patient.comorbidities.map(c => c.label),
       medications: [],
       temporalPattern: complaint.temporalPattern as any,
       course: complaint.evolutionPattern as any,
@@ -98,7 +98,7 @@ export function NeurologiaApp() {
       diagnostics,
       alerts: complaint.redFlags,
     }
-    setAnalysis(result)
+    setAnalysis({ status: 'done', report: result })
   }
 
   const isNextDisabled = () => {

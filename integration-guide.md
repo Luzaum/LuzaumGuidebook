@@ -11,21 +11,21 @@ O Luzaum's Guidebook foi projetado para ser o hub central de todos os seus aplic
 
 ## 🔗 Integração Externa (Recomendada)
 
-### Para Apps Existentes (BularioVET, CRIVET, etc.)
+### Para Apps Existentes (CRIVET, Neurologia, etc.)
 
 1. **Configure o roteamento** no seu app principal para aceitar navegação externa
 2. **Adicione o app** ao array `appData` no `App.tsx`:
 
 ```typescript
 {
-  id: 'bulario-vet',
-  name: "Bulário Veterinário",
-  icon: <img src="https://res.cloudinary.com/dwta1roq1/image/upload/w_40,h_40,c_fit,q_auto,f_auto/logo-bulario/app" alt="Bulário" className="h-8 w-8 object-contain" />,
+  id: 'meu-app-externo',
+  name: "Meu App Externo",
+  icon: <MeuIcone />,
   implemented: false,
   description: "Formulário completo de medicamentos",
   category: "Guias",
   color: 'bg-teal-100',
-  externalUrl: '/BularioVET', // URL do seu app
+  externalUrl: '/MeuAppExterno', // URL do seu app
   status: 'available'
 }
 ```
@@ -36,7 +36,7 @@ O Luzaum's Guidebook foi projetado para ser o hub central de todos os seus aplic
 
 ```javascript
 // Exemplo com Express.js
-app.use('/BularioVET', express.static('path/to/BularioVET/dist'));
+app.use('/MeuAppExterno', express.static('path/to/MeuAppExterno/dist'));
 app.use('/CRIVET', express.static('path/to/CRIVET/dist'));
 app.use('/Antibioticoterapia', express.static('path/to/Antibioticoterapia/dist'));
 ```
@@ -161,7 +161,7 @@ const MeuApp = ({ onBack }) => {
 ```
 projeto-principal/
 ├── LuzaumGuidebook/          # Hub principal
-├── BularioVET/              # App externo
+├── MeuAppExterno/           # App externo
 ├── CRIVET/                  # App externo
 ├── Antibioticoterapia/      # App externo
 └── server.js                # Servidor para servir todos os apps
@@ -185,8 +185,8 @@ server {
         try_files $uri $uri/ /index.html;
     }
 
-    location /BularioVET {
-        alias /path/to/BularioVET/dist;
+    location /MeuAppExterno {
+        alias /path/to/MeuAppExterno/dist;
         try_files $uri $uri/ /index.html;
     }
 

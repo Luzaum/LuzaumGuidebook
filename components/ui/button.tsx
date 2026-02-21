@@ -2,8 +2,8 @@ import React from 'react'
 
 type ButtonProps = {
   children: React.ReactNode
-  variant?: 'primary' | 'secondary' | 'ghost'
-  size?: 'sm' | 'md' | 'lg'
+  variant?: 'primary' | 'secondary' | 'ghost' | 'outline'
+  size?: 'sm' | 'md' | 'lg' | 'icon'
   className?: string
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
   type?: 'button' | 'submit' | 'reset'
@@ -30,12 +30,14 @@ export function Button({
     secondary:
       'bg-surface-2 text-primary hover:bg-surface-2/80 hover:shadow-md',
     ghost: 'bg-transparent hover:bg-surface-2/50 text-primary',
+    outline: 'bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white',
   }
 
   const sizeStyles = {
     sm: 'text-sm px-3 py-1.5',
     md: 'px-5 py-2.5',
     lg: 'text-lg px-6 py-3',
+    icon: 'p-2 aspect-square',
   }
 
   const combinedClassName = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`

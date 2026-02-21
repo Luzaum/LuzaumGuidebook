@@ -1,0 +1,293 @@
+﻿<!DOCTYPE html>
+<html class="dark" lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VETIUS - Receituario Vet</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          primary: '#38ff14',
+          'primary-dark': '#2cc90f',
+          'background-light': '#f6f8f5',
+          'background-dark': '#12230f',
+          'surface-dark': '#1a2e16',
+          'surface-hover': '#22381d',
+          'border-dark': '#274b20'
+        },
+        fontFamily: {
+          display: ['Manrope', 'sans-serif']
+        },
+        boxShadow: {
+          neon: '0 0 15px -3px rgba(56,255,20,0.3)',
+          'neon-hover': '0 0 25px -5px rgba(56,255,20,0.5)'
+        }
+      }
+    }
+  }
+</script>
+<style>
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #12230f; }
+::-webkit-scrollbar-thumb { background: #274b20; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #38ff14; }
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex flex-col overflow-x-hidden selection:bg-primary selection:text-background-dark">
+<header class="sticky top-0 z-50 w-full border-b border-border-dark bg-background-dark/95 backdrop-blur-sm">
+  <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 sm:h-20">
+      <div class="flex items-center gap-3">
+        <div class="flex items-center justify-center size-10 rounded-lg bg-primary/10 text-primary border border-primary/20 shadow-neon">
+          <span class="material-symbols-outlined text-2xl">pets</span>
+        </div>
+        <div class="flex flex-col">
+          <h1 class="text-xl font-bold tracking-tight text-white leading-none">VETIUS</h1>
+          <span class="text-xs font-medium text-primary uppercase tracking-wider">Receituario</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 sm:gap-4">
+        <button aria-label="Notifications" class="hidden sm:flex items-center justify-center size-10 rounded-lg bg-surface-dark hover:bg-surface-hover text-slate-300 hover:text-white transition-colors border border-transparent hover:border-border-dark">
+          <span class="material-symbols-outlined">notifications</span>
+        </button>
+        <button aria-label="Settings" class="hidden sm:flex items-center justify-center size-10 rounded-lg bg-surface-dark hover:bg-surface-hover text-slate-300 hover:text-white transition-colors border border-transparent hover:border-border-dark" onclick="window.top.location.href='/receituario-vet/configuracao'">
+          <span class="material-symbols-outlined">settings</span>
+        </button>
+        <div class="h-8 w-px bg-border-dark mx-1 hidden sm:block"></div>
+        <button class="flex items-center gap-3 pl-1 pr-1 sm:pr-4 rounded-full sm:rounded-lg hover:bg-surface-dark transition-all group" onclick="window.top.location.href='/receituario-vet/configuracao'">
+          <div class="size-9 rounded-full bg-gradient-to-br from-primary to-green-700 p-[2px]">
+            <img alt="Doctor Profile" class="rounded-full h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdyvLWLlABSk3DlBxZzj7Kq65Tu0j6H634kCm_Whb1nPkUK5eBBQHky8qQNwciXZ5oNsNvtpZlR4FiYVBr8cwMHws9s28yZenka2UZP7HZ_PLP_mbPn6u7IRjBora-dP41Y8jaulEfebysLccwaUxC1NvAJ2F46QBiNh0x-I1-Z6l6ix7OOU4DUUfBmT2CFhtwygxI2xK22DDEbJiaX6e5IWJltphUGqSsKbPyhTMzwBRdpan-UP_m_jvq8K46--OObm1l8YVAx69x"/>
+          </div>
+          <div class="hidden sm:flex flex-col items-start">
+            <span class="text-sm font-bold text-white group-hover:text-primary transition-colors">Dr. Silva</span>
+            <span class="text-[10px] text-slate-400 font-medium">Veterinario Chefe</span>
+          </div>
+          <span class="material-symbols-outlined text-slate-400 group-hover:text-white hidden sm:block">expand_more</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="flex-1 w-full max-w-[1440px] mx-auto p-4 sm:p-6 lg:p-8 flex flex-col gap-8">
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 border-b border-border-dark pb-6">
+    <div class="space-y-2">
+      <div class="flex items-center gap-2 text-primary mb-1">
+        <span class="material-symbols-outlined text-sm">calendar_today</span>
+        <span class="text-xs font-bold uppercase tracking-widest" id="today-label">Hoje</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">Painel de <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-600">Controle</span></h2>
+      <p class="text-slate-400 max-w-lg">Gerencie receitas, pacientes e protocolos clinicos com agilidade e precisao.</p>
+    </div>
+    <div class="flex gap-2">
+      <button class="inline-flex items-center justify-center gap-2 px-4 py-2 bg-surface-dark border border-border-dark hover:border-primary/50 text-white text-sm font-semibold rounded-lg transition-all" onclick="window.top.location.href='/receituario-vet/nova-receita'">
+        <span class="material-symbols-outlined text-[18px]">history</span>
+        Historico
+      </button>
+      <button class="inline-flex items-center justify-center gap-2 px-4 py-2 bg-primary text-background-dark hover:bg-primary-dark text-sm font-bold rounded-lg shadow-neon hover:shadow-neon-hover transition-all" onclick="window.top.location.href='/receituario-vet/nova-receita'">
+        <span class="material-symbols-outlined text-[18px]">add</span>
+        Nova Consulta
+      </button>
+    </div>
+  </div>
+
+  <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[minmax(180px,auto)]">
+    <div class="group relative col-span-1 md:col-span-2 lg:col-span-2 row-span-1 lg:row-span-2 overflow-hidden rounded-2xl bg-gradient-to-br from-surface-dark to-[#0f1f0c] border border-border-dark hover:border-primary transition-all duration-300 shadow-lg hover:shadow-neon">
+      <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 pointer-events-none"></div>
+      <div class="absolute right-0 top-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+        <span class="material-symbols-outlined text-[180px] text-primary -mr-8 -mt-8">prescriptions</span>
+      </div>
+      <div class="relative h-full flex flex-col justify-between p-6 sm:p-8 z-10">
+        <div>
+          <div class="inline-flex items-center justify-center size-14 rounded-xl bg-primary text-background-dark mb-6 shadow-neon group-hover:scale-110 transition-transform duration-300">
+            <span class="material-symbols-outlined text-3xl font-bold">add_circle</span>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-bold text-white mb-2 group-hover:text-primary transition-colors">CRIAR NOVA RECEITA</h3>
+          <p class="text-slate-400 max-w-sm">Inicie uma nova prescricao completa para seu paciente. Acesse o banco de medicamentos e protocolos.</p>
+        </div>
+        <div class="mt-8 flex items-center gap-2 text-primary font-bold text-sm tracking-wide uppercase group-hover:translate-x-2 transition-transform">
+          Comecar agora <span class="material-symbols-outlined">arrow_forward</span>
+        </div>
+      </div>
+      <a class="absolute inset-0 z-20" href="/receituario-vet/nova-receita" target="_top"></a>
+    </div>
+
+    <div class="group relative overflow-hidden rounded-2xl bg-surface-dark hover:bg-[#152912] border border-border-dark hover:border-primary/50 transition-all duration-300">
+      <div class="relative h-full flex flex-col justify-between p-6 z-10">
+        <div class="flex items-center justify-center size-12 rounded-lg bg-surface-hover text-primary"><span class="material-symbols-outlined text-2xl">settings_account_box</span></div>
+        <div>
+          <h4 class="text-lg font-bold text-white mb-1 group-hover:text-primary transition-colors">Configurar Medico</h4>
+          <p class="text-sm text-slate-400">Dados da clinica e profissional</p>
+        </div>
+      </div>
+      <a class="absolute inset-0 z-20" href="/receituario-vet/configuracao" target="_top"></a>
+    </div>
+
+    <div class="group relative overflow-hidden rounded-2xl bg-surface-dark hover:bg-[#152912] border border-border-dark hover:border-primary/50 transition-all duration-300">
+      <div class="relative h-full flex flex-col justify-between p-6 z-10">
+        <div class="flex items-center justify-center size-12 rounded-lg bg-surface-hover text-primary"><span class="material-symbols-outlined text-2xl">vaccines</span></div>
+        <div>
+          <h4 class="text-lg font-bold text-white mb-1 group-hover:text-primary transition-colors">Cadastrar Medicamento</h4>
+          <p class="text-sm text-slate-400">Adicione novos farmacos</p>
+        </div>
+      </div>
+      <a class="absolute inset-0 z-20" href="/receituario-vet/catalogo" target="_top"></a>
+    </div>
+
+    <div class="group relative col-span-1 md:col-span-2 lg:col-span-2 overflow-hidden rounded-2xl bg-surface-dark hover:bg-[#152912] border border-border-dark hover:border-primary/50 transition-all duration-300">
+      <div class="relative h-full flex flex-col sm:flex-row items-start sm:items-center justify-between p-6 z-10 gap-4">
+        <div class="flex items-center gap-4">
+          <div class="flex items-center justify-center size-12 rounded-lg bg-surface-hover text-primary"><span class="material-symbols-outlined text-2xl">assignment</span></div>
+          <div>
+            <h4 class="text-lg font-bold text-white mb-1 group-hover:text-primary transition-colors">Nova Prescricao</h4>
+            <p class="text-sm text-slate-400">Editor completo com visualizacao rapida</p>
+          </div>
+        </div>
+        <span class="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors hidden sm:block">arrow_forward_ios</span>
+      </div>
+      <a class="absolute inset-0 z-20" href="/receituario-vet/nova-receita" target="_top"></a>
+    </div>
+  </section>
+
+  <section class="flex flex-col gap-5 mt-4">
+    <div class="flex items-center justify-between px-1">
+      <h3 class="text-xl font-bold text-white flex items-center gap-2">
+        <span class="w-1.5 h-6 bg-primary rounded-full"></span>
+        Ultimas Receitas
+      </h3>
+      <a class="text-sm font-medium text-primary hover:text-white transition-colors flex items-center gap-1 group" href="/receituario-vet/nova-receita" target="_top">
+        Ver todas
+        <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">chevron_right</span>
+      </a>
+    </div>
+
+    <div class="w-full overflow-hidden rounded-xl border border-border-dark bg-surface-dark shadow-xl">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-background-dark/50 border-b border-border-dark text-slate-400 text-xs uppercase tracking-wider">
+              <th class="p-4 font-semibold w-44">Data</th>
+              <th class="p-4 font-semibold min-w-[170px]">Paciente</th>
+              <th class="p-4 font-semibold min-w-[180px]">Tutor</th>
+              <th class="p-4 font-semibold w-40 text-right">Acoes</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-border-dark text-sm" id="rx-history-rows"></tbody>
+        </table>
+      </div>
+      <div class="bg-background-dark/30 border-t border-border-dark px-4 py-3 flex items-center justify-between">
+        <span class="text-xs text-slate-500" id="rx-history-count">Mostrando 0 receita(s)</span>
+        <button class="size-8 flex items-center justify-center rounded-lg border border-border-dark bg-surface-dark text-slate-400 hover:bg-surface-hover" onclick="window.top.location.href='/receituario-vet/nova-receita'">
+          <span class="material-symbols-outlined text-sm">open_in_new</span>
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="border-t border-border-dark bg-background-dark mt-auto py-6">
+  <div class="max-w-[1440px] mx-auto px-4 text-center text-slate-500 text-sm">
+    <p>© 2023 VETIUS. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var DB_KEY = 'receituario-vet:db:v1';
+  var rowsTarget = document.getElementById('rx-history-rows');
+  var countTarget = document.getElementById('rx-history-count');
+  var todayLabel = document.getElementById('today-label');
+
+  if (todayLabel) {
+    var now = new Date();
+    todayLabel.textContent = 'Hoje, ' + now.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
+  }
+
+  function openEditor() {
+    if (window.top) {
+      window.top.location.href = '/receituario-vet/nova-receita';
+      return;
+    }
+    window.location.href = '/receituario-vet/nova-receita';
+  }
+
+  window.__openRxEditor = openEditor;
+
+  function safeHistory() {
+    try {
+      var raw = localStorage.getItem(DB_KEY);
+      if (!raw) return [];
+      var parsed = JSON.parse(raw);
+      if (!parsed || !Array.isArray(parsed.history)) return [];
+      return parsed.history.slice().sort(function (a, b) {
+        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+      });
+    } catch (_err) {
+      return [];
+    }
+  }
+
+  function formatDate(value) {
+    var date = new Date(value);
+    if (Number.isNaN(date.getTime())) return '-';
+    return date.toLocaleString('pt-BR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  }
+
+  function renderHistory() {
+    if (!rowsTarget || !countTarget) return;
+    var history = safeHistory().slice(0, 12);
+    countTarget.textContent = 'Mostrando ' + history.length + ' receita(s)';
+
+    if (!history.length) {
+      rowsTarget.innerHTML = '<tr><td class="p-4 text-slate-400" colspan="4">Nenhuma receita registrada ainda.</td></tr>';
+      return;
+    }
+
+    rowsTarget.innerHTML = history.map(function (entry) {
+      var patient = (entry.patientName || '-');
+      var tutor = (entry.tutorName || '-');
+      var initial = patient.trim().charAt(0).toUpperCase() || '-';
+      return (
+        '<tr class="group hover:bg-surface-hover transition-colors">' +
+          '<td class="p-4 text-slate-300 font-medium whitespace-nowrap">' + formatDate(entry.createdAt) + '</td>' +
+          '<td class="p-4">' +
+            '<div class="flex items-center gap-3">' +
+              '<div class="size-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-bold text-white">' + initial + '</div>' +
+              '<p class="text-white font-bold group-hover:text-primary transition-colors">' + patient + '</p>' +
+            '</div>' +
+          '</td>' +
+          '<td class="p-4 text-slate-300">' + tutor + '</td>' +
+          '<td class="p-4 text-right">' +
+            '<div class="flex items-center justify-end gap-2">' +
+              '<button class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-background-dark transition-colors" title="Visualizar" onclick="window.__openRxEditor()">' +
+                '<span class="material-symbols-outlined text-[20px]">visibility</span>' +
+              '</button>' +
+              '<button class="p-2 rounded-lg text-slate-400 hover:text-primary hover:bg-background-dark transition-colors" title="Editar" onclick="window.__openRxEditor()">' +
+                '<span class="material-symbols-outlined text-[20px]">edit</span>' +
+              '</button>' +
+            '</div>' +
+          '</td>' +
+        '</tr>'
+      );
+    }).join('');
+  }
+
+  renderHistory();
+})();
+</script>
+</body>
+</html>

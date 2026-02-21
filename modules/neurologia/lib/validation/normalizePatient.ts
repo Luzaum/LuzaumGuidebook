@@ -1,4 +1,4 @@
-import type { Sex } from '../stores/caseStore'
+import type { Sex } from '../../stores/caseStore'
 
 export function normalizePatient<T extends { sex?: Sex | null; pregnant?: boolean; lactating?: boolean }>(
   p: T,

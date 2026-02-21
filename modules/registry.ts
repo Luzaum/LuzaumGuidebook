@@ -8,6 +8,7 @@ import {
   Syringe,
   Scissors,
   Pill,
+  FileText,
   Brain,
   AlertTriangle,
   Worm,
@@ -105,6 +106,15 @@ export const modules: Module[] = [
     icon: Pill,
     iframeUrl: 'https://antibioticoterapia.netlify.app',
     iconImage: '/apps/ATB.png',
+  },
+  {
+    id: 'receituario-vet',
+    title: 'Receituário Vet',
+    description: 'Painel inicial do receituário veterinário com fluxo clínico e prescrições',
+    route: '/receituario-vet',
+    status: 'internal',
+    icon: FileText,
+    iconImage: '/images/receituario-vet/reeceita.png',
   },
   {
     id: 'crivet',

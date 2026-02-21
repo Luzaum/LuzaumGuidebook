@@ -1,0 +1,55 @@
+modules/neurologia/components/Steps/Step4Review.tsx(138,70): error TS2538: Type 'ComorbidityItem' cannot be used as an index type.
+modules/neurologia/components/Steps/Step5Analysis.tsx(110,21): error TS2367: This comparison appears to be unintentional because the types '"idle"' and '"running"' have no overlap.
+modules/neurologia/components/Steps/Step5Analysis.tsx(118,15): error TS2367: This comparison appears to be unintentional because the types '"idle"' and '"running"' have no overlap.
+modules/neurologia/components/Steps/Step5Analysis.tsx(123,12): error TS2367: This comparison appears to be unintentional because the types '"idle"' and '"running"' have no overlap.
+modules/neurologia/components/UI/HelpModal.tsx(23,64): error TS2322: Type 'string | RichContent[]' is not assignable to type 'ReactNode'.
+  Type 'RichContent[]' is not assignable to type 'ReactNode'.
+    Type 'RichContent[]' is not assignable to type 'Iterable<ReactNode>'.
+      The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.
+        Type 'IteratorResult<RichContent, any>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+          Type 'IteratorYieldResult<RichContent>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+            Type 'IteratorYieldResult<RichContent>' is not assignable to type 'IteratorYieldResult<ReactNode>'.
+              Type 'RichContent' is not assignable to type 'ReactNode'.
+                Type 'RichContent' is missing the following properties from type 'ReactPortal': children, props, key
+modules/neurologia/components/UI/HelpModal.tsx(31,64): error TS2322: Type 'string | RichContent[]' is not assignable to type 'ReactNode'.
+  Type 'RichContent[]' is not assignable to type 'ReactNode'.
+    Type 'RichContent[]' is not assignable to type 'Iterable<ReactNode>'.
+      The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.
+        Type 'IteratorResult<RichContent, any>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+          Type 'IteratorYieldResult<RichContent>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+            Type 'IteratorYieldResult<RichContent>' is not assignable to type 'IteratorYieldResult<ReactNode>'.
+              Type 'RichContent' is not assignable to type 'ReactNode'.
+                Type 'RichContent' is missing the following properties from type 'ReactPortal': children, props, key
+modules/neurologia/components/UI/HelpModal.tsx(39,64): error TS2322: Type 'string | RichContent[]' is not assignable to type 'ReactNode'.
+  Type 'RichContent[]' is not assignable to type 'ReactNode'.
+    Type 'RichContent[]' is not assignable to type 'Iterable<ReactNode>'.
+      The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.
+        Type 'IteratorResult<RichContent, any>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+          Type 'IteratorYieldResult<RichContent>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+            Type 'IteratorYieldResult<RichContent>' is not assignable to type 'IteratorYieldResult<ReactNode>'.
+              Type 'RichContent' is not assignable to type 'ReactNode'.
+                Type 'RichContent' is missing the following properties from type 'ReactPortal': children, props, key
+modules/neurologia/components/UI/HelpModal.tsx(47,64): error TS2322: Type 'string | RichContent[]' is not assignable to type 'ReactNode'.
+  Type 'RichContent[]' is not assignable to type 'ReactNode'.
+    Type 'RichContent[]' is not assignable to type 'Iterable<ReactNode>'.
+      The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.
+        Type 'IteratorResult<RichContent, any>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+          Type 'IteratorYieldResult<RichContent>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+            Type 'IteratorYieldResult<RichContent>' is not assignable to type 'IteratorYieldResult<ReactNode>'.
+              Type 'RichContent' is not assignable to type 'ReactNode'.
+                Type 'RichContent' is missing the following properties from type 'ReactPortal': children, props, key
+modules/neurologia/components/UI/HelpModal.tsx(55,64): error TS2322: Type 'string | RichContent[]' is not assignable to type 'ReactNode'.
+  Type 'RichContent[]' is not assignable to type 'ReactNode'.
+    Type 'RichContent[]' is not assignable to type 'Iterable<ReactNode>'.
+      The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.
+        Type 'IteratorResult<RichContent, any>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+          Type 'IteratorYieldResult<RichContent>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+            Type 'IteratorYieldResult<RichContent>' is not assignable to type 'IteratorYieldResult<ReactNode>'.
+              Type 'RichContent' is not assignable to type 'ReactNode'.
+                Type 'RichContent' is missing the following properties from type 'ReactPortal': children, props, key
+modules/neurologia/lib/analysis/differentials.ts(87,43): error TS2367: This comparison appears to be unintentional because the types '"episodic" | "acute" | "subacute" | "peracute"' and '"progressive"' have no overlap.
+modules/neurologia/lib/analysis/differentialsV2.ts(6,8): error TS2459: Module '"../../data/differentials/loader"' declares 'LoadedDifferential' locally, but it is not exported.
+modules/neurologia/lib/analysis/differentialsV2.ts(126,5): error TS2322: Type '"ENDOCRINA"' is not assignable to type '"INFLAMATORIA" | "INFECCIOSA" | "NEOPLASICA" | "VASCULAR" | "DEGENERATIVA" | "TRAUMATICA" | "TOXICO_METABOLICA" | "COMPRESSIVA" | "IDIOPATICA"'.
+modules/neurologia/lib/analysis/differentialsV2.ts(267,40): error TS2322: Type '"episodico"' is not assignable to type '"melhorando" | "estatico" | "flutuante" | "progressivo"'.
+modules/neurologia/lib/analysis/localization.ts(131,7): error TS2365: Operator '+' cannot be applied to types 'boolean' and 'boolean'.
+modules/neurologia/lib/validation/normalizePatient.ts(1,26): error TS2307: Cannot find module '../stores/caseStore' or its corresponding type declarations.

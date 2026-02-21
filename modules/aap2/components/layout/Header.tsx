@@ -10,7 +10,6 @@ interface HeaderProps {
 
 const NAV_ITEMS: { page: AppPage; label: string }[] = [
     { page: 'enciclopedia', label: 'Enciclopedia' },
-    { page: 'bulario', label: 'Bulario' },
     { page: 'suspeitas', label: 'Suspeitas' },
     { page: 'tratamentos', label: 'Tratamentos' },
 ];
@@ -24,13 +23,15 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate, isDarkM
                 aria-label="Ir para a pagina inicial"
             >
                 <span className="material-symbols-outlined header-icon text-2xl" aria-hidden="true">pets</span>
-                <span className={`header-title font-bold text-lg ${isDarkMode ? 'text-white' : 'text-slate-800'}`}>Animais Peconhentos</span>
+                <span className={`header-title font-bold text-lg ${isDarkMode ? 'text-white' : 'text-slate-800'}`}>
+                    Animais Peconhentos
+                </span>
             </button>
 
             <div className="flex items-center gap-4">
                 <nav className="header-nav flex gap-2" aria-label="Navegacao principal">
                     {NAV_ITEMS.map(({ page, label }) => {
-                        const isActive = currentPage === page || (page === 'enciclopedia' && currentPage === 'species_detail');
+                        const isActive = currentPage === page;
                         return (
                             <button
                                 key={page}
@@ -49,7 +50,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate, isDarkM
                     })}
                 </nav>
 
-                <div className={`h-6 w-px ${isDarkMode ? 'bg-slate-700' : 'bg-slate-200'}`}></div>
+                <div className={`h-6 w-px ${isDarkMode ? 'bg-slate-700' : 'bg-slate-200'}`} />
 
                 <button
                     className={`p-2 rounded-lg transition-colors ${isDarkMode ? 'text-yellow-400 hover:bg-slate-800' : 'text-slate-500 hover:bg-white/50 hover:text-aap-primary'}`}

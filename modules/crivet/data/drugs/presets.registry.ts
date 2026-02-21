@@ -1,10 +1,10 @@
 import type { DosePreset } from '../../types/presets'
-import { fentanylPresets } from './fentanyl.presets'
-import { ketaminePresets } from './ketamine.presets'
+import { fentanylPresets } from './fentanil.presets'
+import { ketaminePresets } from './cetamina.presets'
 import { midazolamPresets } from './midazolam.presets'
 import { remifentanilPresets } from './remifentanil.presets'
-import { dobutaminePresets } from './dobutamine.presets'
-import { norepinephrinePresets } from './norepinephrine.presets'
+import { dobutaminePresets } from './dobutamina.presets'
+import { norepinephrinePresets } from './norepinefrina.presets'
 
 /**
  * Registro central de presets por ID de droga.

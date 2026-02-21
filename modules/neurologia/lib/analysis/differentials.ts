@@ -28,11 +28,11 @@ export function generateDifferentials(
     locationKey,
     patient.species,
     patient.ageYears ||
-      (patient.ageRange === 'pediatric'
-        ? 1
-        : patient.ageRange === 'geriatric'
-          ? 10
-          : 5),
+    (patient.ageRange === 'pediatric'
+      ? 1
+      : patient.ageRange === 'geriatric'
+        ? 10
+        : 5),
     history.course,
     findings.spinalPainPresent,
   )
@@ -84,7 +84,7 @@ export function generateDifferentials(
         }
       }
 
-      if (history.course === 'chronic' || history.course === 'progressive') {
+      if (history.course === 'chronic' || history.progression === 'progressive') {
         if (dx.name.includes('Neoplasia')) {
           score *= 1.4
           justifications.push(`Curso crônico/progressivo típico de neoplasia`)

@@ -67,11 +67,12 @@ export function DiseaseProgressionChips({
               onClick={() => !disabled && onChange(option.id)}
               disabled={disabled}
               whileTap={disabled ? {} : { scale: 0.95 }}
+              style={isSelected ? { boxShadow: `0 0 12px ${option.color}40` } : undefined}
               className={`
                 px-4 py-3 rounded-lg border-2 font-medium text-sm transition-all
                 ${
                   isSelected
-                    ? `${option.bgColor} ${option.borderColor} ${option.textColor} shadow-[0_0_12px_${option.color}40]`
+                    ? `${option.bgColor} ${option.borderColor} ${option.textColor}`
                     : 'bg-neutral-800 border-neutral-700 text-neutral-400 hover:border-neutral-600 hover:text-neutral-300'
                 }
                 ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}

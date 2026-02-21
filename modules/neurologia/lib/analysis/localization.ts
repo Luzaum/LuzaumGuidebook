@@ -128,9 +128,9 @@ export function determineNeuroLocalization(caseState: any): NeuroLocalizationRes
 
     // Verificar múltiplos déficits de NC (indica central)
     const hasMultipleCNDeficits =
-      (exam.plr_left === 'Lento' || exam.plr_left === 'Ausente') +
-        (exam.plr_right === 'Lento' || exam.plr_right === 'Ausente') +
-        (exam.cn_swallowing === 'Diminuído' || exam.cn_swallowing === 'Ausente') >=
+      (exam.plr_left === 'Lento' || exam.plr_left === 'Ausente' ? 1 : 0) +
+      (exam.plr_right === 'Lento' || exam.plr_right === 'Ausente' ? 1 : 0) +
+      (exam.cn_swallowing === 'Diminuído' || exam.cn_swallowing === 'Ausente' ? 1 : 0) >=
       2
 
     // VESTIBULAR_CENTRAL: se alteração de mentação OU déficits posturais OU paresia/UMN OU múltiplos NC
@@ -445,7 +445,7 @@ function buildNarrative(
 
   // Construir narrativa veterinária estruturada (6-10 linhas) seguindo formato FASE 5
   const primaryLabel = axisLabels[primary] || primary.toLowerCase()
-  
+
   // Início: síndrome
   let text = `Quadro compatível com disfunção ${primaryLabel}. `
 

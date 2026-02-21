@@ -15,7 +15,7 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
                 family: 'Viperidae',
                 riskLevel: 'high',
                 accidentName: 'Acidente Botrópico',
-                staticImagePath: '/images/jararaca.jpg',
+                staticImagePath: '/images/aap2/jararaca.jpg',
                 imagePrompt: 'A photorealistic, detailed photograph of a Jararaca snake (Bothrops spp.) in the Brazilian rainforest. The image clearly shows its distinctive triangular head and the dark, V-shaped patterns on its brown and gray scales. The snake is coiled on the forest floor, surrounded by damp leaves and vegetation.',
                 identification: 'Corpo robusto, fosseta loreal (orifício entre olho e narina) visível, cabeça triangular bem destacada do corpo. Padrão de manchas que lembram um "V" invertido ou "gancho de telefone". A cor varia do cinza ao marrom.',
                 signs: [
@@ -36,7 +36,7 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
                 family: 'Viperidae',
                 riskLevel: 'high',
                 accidentName: 'Acidente Crotálico',
-                staticImagePath: '/images/cascavel.jpg',
+                staticImagePath: '/images/aap2/cascavel.jpg',
                 imagePrompt: 'A highly detailed, photorealistic image of a South American rattlesnake (Crotalus durissus) in a dry, sunny Brazilian Cerrado environment. Focus on the diamond-shaped patterns on its back and the characteristic rattle at the end of its tail. The snake is basking on reddish earth near sparse vegetation.',
                 identification: 'Presença de guizo ou chocalho na ponta da cauda. Fosseta loreal presente. Padrão de losangos escuros no dorso sobre um fundo mais claro (marrom ou acinzentado). Animal de áreas abertas (Cerrado).',
                 signs: [
@@ -57,7 +57,7 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
                 family: 'Elapidae',
                 riskLevel: 'high',
                 accidentName: 'Acidente Micrúrico ou Elapídico',
-                staticImagePath: '/images/coral-verdadeira.jpeg',
+                staticImagePath: '/images/aap2/coral-verdadeira.jpeg',
                 imagePrompt: 'Macro photograph of a true coral snake (Micrurus spp.) in Brazil, showcasing its vibrant, complete rings of red, black, and white/yellow. The snake is on a dark, natural background that makes its colors pop. The image is sharp and focuses on the smooth scales and rounded head.',
                 identification: 'Padrão clássico de anéis coloridos (vermelho, preto, branco/amarelo) que circundam todo o corpo. Dentes pequenos, fixos (proteróglifas). Não possui fosseta loreal. Cabeça arredondada, pouco distinta do corpo.',
                 signs: [
@@ -78,7 +78,7 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
                 family: 'Viperidae',
                 riskLevel: 'high',
                 accidentName: 'Acidente Laquético',
-                staticImagePath: '/images/surucucu.jpeg',
+                staticImagePath: '/images/aap2/surucucu.jpeg',
                 imagePrompt: 'Photorealistic image of a Bushmaster snake (Lachesis muta), the "surucucu-pico-de-jaca", in the Amazon rainforest. The snake has a large body with a pattern of dark diamond shapes on a lighter brown/yellowish background. Emphasize its rough, tuberculate scales, which give it the "pico-de-jaca" (jackfruit-skin) name, and the spine at the tip of its tail.',
                 identification: 'A maior cobra peçonhenta das Américas. Corpo grosso, com escamas salientes e quilhadas (aspecto de "casca de jaca"). Cor de fundo amarelada ou rosada, com grandes losangos pretos no dorso. Cauda termina com um espinho córneo. Fosseta loreal presente.',
                 signs: [
@@ -105,7 +105,7 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
                 family: 'Sicariidae',
                 riskLevel: 'high',
                 accidentName: 'Loxoscelismo',
-                staticImagePath: '/images/aranha-marrom.jpg',
+                staticImagePath: '/images/aap2/aranha-marrom.jpg',
                 imagePrompt: 'A detailed macro photo of a brown recluse spider (Loxosceles spp.). The image must clearly show the characteristic violin-shaped marking on its cephalothorax and its six eyes arranged in pairs. The spider is on a wooden surface, simulating an attic or shed environment.',
                 identification: 'Corpo marrom-claro a escuro, pernas longas e finas. Característica principal: um desenho em forma de violino no cefalotórax. Possui 6 olhos dispostos em 3 pares. Noturna, vive em frestas, atrás de móveis, roupas e entulhos.',
                 signs: [
@@ -125,7 +125,7 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
                 family: 'Ctenidae',
                 riskLevel: 'high',
                 accidentName: 'Foneutrismo',
-                staticImagePath: '/images/armadeira.jpg',
+                staticImagePath: '/images/aap2/armadeira.jpg',
                 imagePrompt: 'A dramatic, National Geographic style photograph of a Brazilian wandering spider (Phoneutria spp.) in its defensive posture. The spider is reared up on its back legs, with its front legs raised high, displaying the red hairs on its chelicerae. The background is slightly blurred to emphasize the spider\'s intimidating display.',
                 identification: 'Aranha grande, agressiva e de cor marrom. Quando ameaçada, assume uma postura característica, apoiando-se nas pernas traseiras e erguendo as dianteiras, exibindo quelíceras com pelos vermelhos. Não constrói teias, é caçadora.',
                 signs: [
@@ -145,7 +145,7 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
                 family: 'Theridiidae',
                 riskLevel: 'high',
                 accidentName: 'Latrodectismo',
-                staticImagePath: '/images/viuva-negra.jpeg',
+                staticImagePath: '/images/aap2/viuva-negra.jpeg',
                 imagePrompt: 'A striking macro photograph of a female black widow spider (Latrodectus spp.). The focus is on the iconic red hourglass marking on the underside of its shiny, black, bulbous abdomen. The spider is hanging upside down in its irregular, messy web.',
                 identification: 'Corpo preto brilhante com uma mancha vermelha característica em forma de ampulheta no abdômen ventral. Constroem teias irregulares e tridimensionais perto do solo.',
                 signs: [
@@ -171,7 +171,7 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
                 family: 'Buthidae',
                 riskLevel: 'high',
                 accidentName: 'Escorpionismo',
-                staticImagePath: '/images/escorpiao-amarelo.jpg',
+                staticImagePath: '/images/aap2/escorpiao-amarelo.jpg',
                 imagePrompt: 'A clear, top-down photograph of a Brazilian yellow scorpion (Tityus serrulatus) on a dark, slightly reflective surface. The image highlights its pale yellow color, darker dorsal stripe, and the serrated segments on its tail. The lighting should be dramatic, casting slight shadows.',
                 identification: 'Corpo amarelo-claro com tronco e segmento final da cauda (telson) mais escuros. Pernas e cauda sem manchas. Característica chave: serrilha no 3º e 4º segmentos da cauda. Altamente adaptado a ambientes urbanos.',
                 signs: [
@@ -198,7 +198,7 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
                 family: 'Bufonidae',
                 riskLevel: 'moderate',
                 accidentName: 'Envenenamento por Sapo',
-                staticImagePath: '/images/sapo-cururu.jpg',
+                staticImagePath: '/images/aap2/sapo-cururu.jpg',
                 imagePrompt: 'A realistic, eye-level photograph of a Cane Toad (Rhinella spp.) sitting on a grassy lawn at dusk. The image should detail its warty skin and the large, prominent parotoid glands behind its eyes. The toad looks directly at the camera.',
                 identification: 'Sapo grande, de pele rugosa e verrucosa. Possui glândulas parotoides grandes e salientes atrás dos olhos, de onde secreta o veneno (uma substância leitosa) quando comprimido.',
                 signs: [
@@ -225,7 +225,7 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
                 family: 'Saturniidae',
                 riskLevel: 'high',
                 accidentName: 'Erucismo (Lonomismo)',
-                staticImagePath: '/images/taturana-lonomia.jpg',
+                staticImagePath: '/images/aap2/taturana-lonomia.jpg',
                 imagePrompt: 'A close-up, macro shot of a colony of Lonomia obliqua caterpillars clustered on a tree trunk. The image must clearly show their green-brown bodies covered in spine-like bristles that resemble tiny pine trees. The lighting should highlight the texture and danger of the caterpillars.',
                 identification: 'Lagarta de cor marrom-esverdeada com espinhos ramificados em forma de "pinheirinho". Vivem em colônias agrupadas em troncos de árvores, especialmente frutíferas.',
                 signs: [
@@ -245,7 +245,7 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
                 family: 'Apidae',
                 riskLevel: 'high',
                 accidentName: 'Apismo (Ataque Múltiplo)',
-                staticImagePath: '/images/abelhas.jpg',
+                staticImagePath: '/images/aap2/abelhas.jpg',
                 imagePrompt: 'A dramatic, action photograph of a swarm of agitated Africanized honey bees flying out from a hive. The focus is on the motion and density of the swarm, conveying a sense of danger. Some bees are in sharp focus while others are blurred by motion.',
                 identification: 'Geralmente abelhas africanizadas (Apis mellifera scutellata). O ataque ocorre em enxame. A característica chave é a presença de múltiplos ferrões com bulbo de veneno deixados na pele, pois o ferrão é farpado.',
                 signs: [
@@ -265,7 +265,7 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
                 family: 'Vespidae',
                 riskLevel: 'moderate',
                 accidentName: 'Envenenamento por Vespas',
-                staticImagePath: '/images/vespas.jpg',
+                staticImagePath: '/images/aap2/vespas.jpg',
                 imagePrompt: 'A sharp, detailed photograph of a group of large paper wasps (Marimbondos) on their characteristic gray, papery nest under the eaves of a wooden shed. The wasps have slender bodies, long legs, and distinct yellow and black markings. One wasp is in flight nearby.',
                 identification: 'Várias espécies (gêneros Polistes, Polybia, etc.). Corpo mais liso e cintura mais fina que as abelhas. O ferrão é liso, permitindo múltiplas picadas pelo mesmo indivíduo. Não deixam o ferrão na vítima.',
                 signs: [
@@ -284,7 +284,7 @@ export const ANIMAL_CATEGORIES: AnimalCategory[] = [
                 family: 'Gastropoda',
                 riskLevel: 'infectious',
                 accidentName: 'Angiostrongilose',
-                staticImagePath: '/images/lesmas-caracois.jpg',
+                staticImagePath: '/images/aap2/lesmas-caracois.jpg',
                 imagePrompt: 'A photorealistic macro shot of a common garden slug slowly moving across a wet green leaf, leaving a glistening slime trail behind. In the slightly blurred background, a garden snail is also visible. The lighting is soft, as if after a rain.',
                 identification: 'A doença não é causada por veneno, mas pela ingestão de moluscos (hospedeiros intermediários) infectados com larvas do verme Angiostrongylus cantonensis ou A. vasorum. Cães e gatos se infectam ao ingerir o molusco ou alimentos contaminados com seu muco.',
                 signs: [
@@ -309,3 +309,4 @@ export const ALL_ANIMALS = ANIMAL_CATEGORIES.flatMap(cat =>
         categoryColor: cat.color,
     }))
 );
+

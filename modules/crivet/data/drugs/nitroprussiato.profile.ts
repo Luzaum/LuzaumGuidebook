@@ -16,8 +16,7 @@ export const nitroprussiatoProfile: DrugProfile = {
     mechanism: {
       clinical_metaphor: 'Abre as comportas vasculares instantaneamente para "desafogar" o coração.',
       primary_effects: {
-        vascular: 'Vasodilatação intensa e imediata (Doação de NO no músculo liso vascular).',
-        cardiovascular: 'Redução abrupta da PA média, pré e pós-carga.',
+        cardiovascular: 'Vasodilatação intensa e imediata (Doação de NO no músculo liso vascular). Redução abrupta da PA média, pré e pós-carga.',
       },
     },
     pharmacodynamics: {
@@ -191,8 +190,7 @@ export const nitroprussiatoProfile: DrugProfile = {
         diluent: 'Glicose 5%',
         max_time_hours: 24,
         light_protection: true,
-        syringe_bag_change: '24h',
-        note: 'Trocar solução a cada 4-24h se exposta (mesmo protegida).',
+        syringe_bag_change: 'Trocar solução a cada 4-24h se exposta (mesmo protegida). (Anteriormente 24h)',
       },
     ],
     dedicated_line_required: true,

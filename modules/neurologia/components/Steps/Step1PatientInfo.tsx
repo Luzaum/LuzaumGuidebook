@@ -13,8 +13,6 @@ interface Step1Props {
   setPatient: (patch: Partial<Patient>) => void
 }
 
-import type { ComorbidityKey, ComorbidityItem } from '../../stores/caseStore'
-
 const COMORBIDITY_CONFIG: Record<
   ComorbidityKey,
   { label: string; description?: string }
@@ -296,11 +294,10 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
               return (
                 <div
                   key={key}
-                  className={`p-3 rounded-lg border transition-all ${
-                    isSelected
+                  className={`p-3 rounded-lg border transition-all ${isSelected
                       ? 'border-gold/50 bg-gold/10'
                       : 'border-white/10 bg-white/5 hover:border-white/20'
-                  }`}
+                    }`}
                 >
                   <div className="flex items-start justify-between gap-3">
                     <button
@@ -312,7 +309,7 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
                         <input
                           type="checkbox"
                           checked={isSelected}
-                          onChange={() => {}}
+                          onChange={() => { }}
                           className="w-4 h-4 rounded border-neutral-600 text-gold focus:ring-gold bg-transparent"
                         />
                         <span className={`font-medium ${isSelected ? 'text-gold' : 'text-neutral-200'}`}>
@@ -337,11 +334,10 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
                             onClick={() =>
                               updateComorbiditySeverity(key, severity === sev ? undefined : sev)
                             }
-                            className={`px-3 py-1 text-xs rounded transition-colors ${
-                              severity === sev
+                            className={`px-3 py-1 text-xs rounded transition-colors ${severity === sev
                                 ? 'bg-gold/20 text-gold border border-gold/40'
                                 : 'bg-white/5 text-neutral-400 border border-white/10 hover:border-white/20'
-                            }`}
+                              }`}
                           >
                             {sev.charAt(0).toUpperCase() + sev.slice(1)}
                           </button>

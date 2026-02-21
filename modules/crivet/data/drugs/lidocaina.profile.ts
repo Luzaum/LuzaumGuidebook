@@ -294,10 +294,6 @@ export const lidocainaProfile: DrugProfile = {
 
   // Seção 7: Compatibilidade
   compatibility: {
-    diluents_allowed: [], // ⚠️ IMPORTANTE: Lidocaína NÃO deve ser diluída
-    diluents_ok: [],
-    diluentsAllowed: [],
-    diluents: [],
     compatible_in_syringe_or_bag: [
       'Em prática anestésica, lidocaína é frequentemente usada em conjunto com opioides e cetamina (conceito MLK); idealmente, seguir padronização/validação do serviço para misturas na mesma seringa/bolsa.',
     ],

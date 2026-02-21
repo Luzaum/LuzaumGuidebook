@@ -248,10 +248,6 @@ export const metoclopramidaProfile: DrugProfile = {
     dedicated_line_why: 'Preferível se houver múltiplas drogas em Y-site; se não, ao menos flush padronizado e documentação.',
   },
   compatibility: {
-    diluents_allowed: ['NaCl 0,9%'],
-    diluents_ok: ['NaCl 0,9%'],
-    diluentsAllowed: ['NaCl 0,9%'],
-    diluents: ['NaCl 0,9%'],
     compatible_in_syringe_or_bag: [],
     compatible_y_site_only: [],
     incompatible: [

@@ -1,17 +1,16 @@
 import React from 'react'
 
-type CardProps = {
+type CardProps = React.HTMLAttributes<HTMLDivElement> & {
   children: React.ReactNode
   variant?: 'default' | 'metric' | 'featured'
   className?: string
-  onClick?: () => void
 }
 
 export function Card({
   children,
   variant = 'default',
   className = '',
-  onClick,
+  ...props
 }: CardProps) {
   const baseStyles = 'rounded-2xl transition-all duration-200 backdrop-blur-md'
 
@@ -26,7 +25,7 @@ export function Card({
   const combinedClassName = `${baseStyles} ${variantStyles[variant]} ${className}`
 
   return (
-    <div className={combinedClassName} onClick={onClick}>
+    <div className={combinedClassName} {...props}>
       {children}
     </div>
   )

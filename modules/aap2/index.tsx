@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import type { AppPage } from './types';
+import { useTheme } from '../../utils/theme';
+import type { AnimalCategoryId, AppPage } from './types';
 import { EXPLANATIONS } from './data/explanations';
-import { Header } from './components/layout/Header';
-import { BularioPage } from './components/bulario/index';
+import { AAP2Layout } from './components/layout/AAP2Layout';
 import { SuspeitasPage } from './components/suspeitas/SuspeitasPage';
 import { TratamentosPage } from './components/tratamentos/TratamentosPage';
 import { Modal } from './components/ui';
@@ -25,6 +25,12 @@ interface LuzaumPatient {
     history: string;
 }
 
+interface EncyclopediaNavigationParams {
+    query?: string;
+    categoryId?: AnimalCategoryId | null;
+    animalId?: string | null;
+}
+
 /* ── Derive diagnosis from selected signs ───────────────────────── */
 function deriveDiagnosis(signs: string[]): { name: string; sciName: string; confidence: number } {
     const hasNeuro = signs.some(s => ['fraqueza', 'ataxia', 'tremores', 'paralisia', 'ptose', 'midriase'].includes(s));
@@ -40,22 +46,18 @@ const AAP2Module: React.FC = () => {
     const [page, setPage] = useState<AppPage>('home');
     const [helpModal, setHelpModal] = useState<{ title: string; content: string } | null>(null);
     const [selectedSpeciesId, setSelectedSpeciesId] = useState<string | null>(null);
+    const [selectedCategoryId, setSelectedCategoryId] = useState<AnimalCategoryId | null>(null);
     const [encyclopediaSearch, setEncyclopediaSearch] = useState('');
-    const [isDarkMode, setIsDarkMode] = useState(() => document.documentElement.classList.contains('dark'));
+
+    // --- Global Theme Integration ---
+    const { theme, toggleTheme } = useTheme();
+    const isDarkMode = theme === 'dark';
 
     // Dr. Luzaum state
     const [luzaumPatient, setLuzaumPatient] = useState<LuzaumPatient>({ species: null, weight: '', age: '', breed: '', history: '' });
     const [luzaumSigns, setLuzaumSigns] = useState<string[]>([]);
 
     const navigate = useNavigate();
-
-    useEffect(() => {
-        document.documentElement.classList.toggle('dark', isDarkMode);
-    }, [isDarkMode]);
-
-    const toggleTheme = useCallback(() => {
-        setIsDarkMode(prev => !prev);
-    }, []);
 
     const showHelp = useCallback((title: string, content?: string) => {
         const finalContent = content ?? EXPLANATIONS[title];
@@ -66,18 +68,21 @@ const AAP2Module: React.FC = () => {
 
     const closeHelp = useCallback(() => setHelpModal(null), []);
 
-    const openSpeciesDetail = useCallback((animalId: string) => {
-        setSelectedSpeciesId(animalId);
-        setPage('enciclopedia');
-    }, []);
-
-    const openEncyclopedia = useCallback((initialQuery?: string) => {
-        if (typeof initialQuery === 'string') {
-            setEncyclopediaSearch(initialQuery);
+    const openEncyclopedia = useCallback((params?: EncyclopediaNavigationParams) => {
+        if (typeof params?.query === 'string') {
+            setEncyclopediaSearch(params.query);
+        }
+        if (params?.categoryId !== undefined) {
+            setSelectedCategoryId(params.categoryId);
+        } else if (params?.query !== undefined) {
+            setSelectedCategoryId(null);
+        }
+        if (params?.animalId !== undefined) {
+            setSelectedSpeciesId(params.animalId);
+        } else if (params?.categoryId !== undefined || params?.query !== undefined) {
+            setSelectedSpeciesId(null);
         }
         setPage('enciclopedia');
-        // Optional: clear selection when opening main encyclopedia link?
-        // setSelectedSpeciesId(null); 
     }, []);
 
     const handleNovaConsultaSubmit = useCallback((patient: LuzaumPatient, signs: string[]) => {
@@ -92,16 +97,18 @@ const AAP2Module: React.FC = () => {
         setPage('nova_consulta');
     }, []);
 
-    const handleViewDetailed = useCallback(() => {
-        setPage('relatorio_detalhado');
-    }, []);
-
     const renderPage = () => {
         const dx = deriveDiagnosis(luzaumSigns);
 
         switch (page) {
-            case 'bulario':
-                return <BularioPage onHelpClick={showHelp} />;
+            case 'home':
+                return (
+                    <Dashboard
+                        onNavigate={setPage}
+                        onOpenEncyclopedia={openEncyclopedia}
+                        isDarkMode={isDarkMode}
+                    />
+                );
             case 'suspeitas':
                 return <SuspeitasPage onHelpClick={showHelp} />;
             case 'tratamentos':
@@ -111,11 +118,12 @@ const AAP2Module: React.FC = () => {
                     <EncyclopediaPage
                         searchQuery={encyclopediaSearch}
                         onSearchQueryChange={setEncyclopediaSearch}
+                        selectedCategoryId={selectedCategoryId}
+                        onSelectCategory={setSelectedCategoryId}
                         selectedAnimalId={selectedSpeciesId}
                         onSelectSpecies={setSelectedSpeciesId}
                     />
                 );
-            // case 'species_detail': removed, integrated into encyclopedia
             case 'nova_consulta':
                 return (
                     <NovaConsultaPage
@@ -160,20 +168,6 @@ const AAP2Module: React.FC = () => {
         }
     };
 
-    if (page === 'home') {
-        return (
-            <div id="aap2-module-root" className="relative">
-                <Dashboard
-                    onNavigate={setPage}
-                    onOpenEncyclopedia={openEncyclopedia}
-                    isDarkMode={isDarkMode}
-                    toggleTheme={toggleTheme}
-                    onBackToHub={() => navigate('/hub')}
-                />
-            </div>
-        );
-    }
-
     // Full-page chrome-free view for Dr. Luzaum pages
     if (page === 'nova_consulta' || page === 'relatorio' || page === 'relatorio_detalhado') {
         return (
@@ -195,15 +189,16 @@ const AAP2Module: React.FC = () => {
                 </Modal>
             )}
 
-            <Header currentPage={page} onNavigate={setPage} isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
-
-            <main className="main-content">
+            <AAP2Layout
+                currentPage={page}
+                onNavigate={setPage}
+                onOpenEncyclopedia={openEncyclopedia}
+                isDarkMode={isDarkMode}
+                toggleTheme={toggleTheme}
+                onBackToHub={() => navigate('/hub')}
+            >
                 {renderPage()}
-            </main>
-
-            <footer className="footer">
-                <p>Ferramenta de apoio clinico. Nao substitui o julgamento do medico veterinario.</p>
-            </footer>
+            </AAP2Layout>
         </div>
     );
 };

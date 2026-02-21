@@ -43,7 +43,7 @@ type DifferentialJSON = {
   }
 }
 
-type LoadedDifferential = {
+export type LoadedDifferential = {
   name: string
   category: Differential['category']
   rules: DifferentialJSON['rules']
@@ -241,10 +241,10 @@ export function convertToDifferential(
 
   // Adicionar cautelas por comorbidades
   const relevantCautions = loaded.rules.comorbidityCautions.filter((c) => {
-    const comorbIds = Array.isArray(patient.comorbidities) 
+    const comorbIds = Array.isArray(patient.comorbidities)
       ? (typeof patient.comorbidities[0] === 'string'
-          ? patient.comorbidities as string[]
-          : patient.comorbidities.map((item: any) => item.key || item))
+        ? patient.comorbidities as string[]
+        : patient.comorbidities.map((item: any) => item.key || item))
       : []
     return comorbIds.includes(c.toLowerCase())
   })

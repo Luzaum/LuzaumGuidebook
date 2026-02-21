@@ -47,7 +47,7 @@ export function lintClinical(normalized: NormalizedDrug): ClinicalLintResult {
   }
 
   // Verificar Indicações
-  if (!normalized.indications || normalized.indications.all.length === 0) {
+  if (!normalized.indications || normalized.indications.length === 0) {
     issues.push({
       severity: 'ERROR',
       message: 'Indicações vazias: fármaco não possui indicações de uso cadastradas',
@@ -56,10 +56,10 @@ export function lintClinical(normalized: NormalizedDrug): ClinicalLintResult {
   }
 
   // Verificar Doses
-  const hasDogCRI = !!(normalized.doses.dog.cri?.mcgkgmin || normalized.doses.dog.cri?.mgkgh)
-  const hasDogBolus = !!(normalized.doses.dog.bolus?.mgkg || normalized.doses.dog.bolus?.mcgkg || normalized.doses.dog.bolus?.ukg)
-  const hasCatCRI = !!(normalized.doses.cat.cri?.mcgkgmin || normalized.doses.cat.cri?.mgkgh)
-  const hasCatBolus = !!(normalized.doses.cat.bolus?.mgkg || normalized.doses.cat.bolus?.mcgkg || normalized.doses.cat.bolus?.ukg)
+  const hasDogCRI = normalized.doses.dog.cri && normalized.doses.dog.cri.length > 0
+  const hasDogBolus = normalized.doses.dog.bolus && normalized.doses.dog.bolus.length > 0
+  const hasCatCRI = normalized.doses.cat.cri && normalized.doses.cat.cri.length > 0
+  const hasCatBolus = normalized.doses.cat.bolus && normalized.doses.cat.bolus.length > 0
 
   if (!hasDogCRI && !hasDogBolus) {
     issues.push({
@@ -79,9 +79,9 @@ export function lintClinical(normalized: NormalizedDrug): ClinicalLintResult {
 
   // Verificar Compatibilidade (se fármaco requer diluição/uso IV)
   // Esta verificação é condicional: só bloqueia se o fármaco claramente requer diluição
-  const requiresDilution = 
+  const requiresDilution =
     normalized.doses.dog.cri || normalized.doses.cat.cri || // Tem CRI = geralmente requer diluição
-    normalized.helpDrawer.sections.some((s) => 
+    normalized.helpDrawer.sections.some((s) =>
       s.items.some((item) => item.text.toLowerCase().includes('diluir') || item.text.toLowerCase().includes('iv'))
     )
 

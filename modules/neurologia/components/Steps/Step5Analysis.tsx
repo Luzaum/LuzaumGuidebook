@@ -107,20 +107,19 @@ export function Step5Analysis() {
 
         <motion.button
           onClick={runAnalysis}
-          disabled={status === 'running'}
+          disabled={false}
           className={`
             px-8 py-4 text-lg font-bold rounded-xl
             bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600
             hover:from-yellow-500 hover:via-yellow-600 hover:to-yellow-700
             text-black shadow-lg shadow-yellow-500/50
             transition-all duration-300
-            disabled:opacity-50 disabled:cursor-not-allowed
-            ${status === 'running' ? '' : 'animate-pulse'}
+            animate-pulse
           `}
           whileTap={{ scale: 0.95 }}
         >
           <Brain className="w-5 h-5 mr-2 inline-block" />
-          {status === 'running' ? 'Analisando…' : 'Analisar Caso'}
+          Analisar Caso
         </motion.button>
       </div>
     )
@@ -388,13 +387,12 @@ export function Step5Analysis() {
                         <div className="flex items-start justify-between mb-1">
                           <p className="text-sm font-medium text-foreground">{diag.test}</p>
                           <span
-                            className={`text-xs px-2 py-1 rounded ${
-                              diag.priority === 'ALTA'
+                            className={`text-xs px-2 py-1 rounded ${diag.priority === 'ALTA'
                                 ? 'bg-red-900/50 text-red-300'
                                 : diag.priority === 'MEDIA'
                                   ? 'bg-yellow-900/50 text-yellow-300'
                                   : 'bg-blue-900/50 text-blue-300'
-                            }`}
+                              }`}
                           >
                             {diag.priority}
                           </span>

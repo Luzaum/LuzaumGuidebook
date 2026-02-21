@@ -135,7 +135,7 @@ export function Step4Review({ patient, complaint, exam, onEditStep }: Step4Props
             <>
               <span className="text-neutral-400">Comorbidades:</span>
               <span className="text-white">
-                {patient.comorbidities.map((c) => COMORBIDITY_LABELS[c] || c).join(', ')}
+                {patient.comorbidities.map((c) => COMORBIDITY_LABELS[c.key] || c.label).join(', ')}
               </span>
             </>
           )}

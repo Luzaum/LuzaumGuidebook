@@ -1,333 +1,269 @@
-import React, { useMemo, useState } from 'react';
-import type { AppPage } from '../../types';
+import React from 'react';
+import { Zap, BrainCircuit, Stethoscope, BookOpen, BriefcaseMedical, ArrowRight } from 'lucide-react';
+import type { AnimalCategoryId, AppPage } from '../../types';
 import './dashboard.css';
 
 interface DashboardProps {
     onNavigate: (page: AppPage) => void;
-    onOpenEncyclopedia: (initialQuery?: string) => void;
+    onOpenEncyclopedia: (params?: { categoryId?: AnimalCategoryId }) => void;
     isDarkMode: boolean;
-    toggleTheme: () => void;
-    onBackToHub: () => void;
 }
 
-const IDENTIFICATION_CARDS = [
+const IDENTIFICATION_CARDS: Array<{
+    label: string;
+    subtitle: string;
+    bg: string;
+    categoryId: AnimalCategoryId;
+    desc: string;
+}> = [
     {
-        label: 'Serpentes',
+        label: 'Cobras',
         subtitle: 'Bothrops, Crotalus, Micrurus, Lachesis',
-        bg: '/images/aap2/jararaca.jpg',
-        query: 'serpentes',
-        desc: 'Identifique jararacas, cascavéis, corais e surucucus por características visuais e sintomas.'
+        bg: '/images/aap2/home-jararaca.jpg',
+        categoryId: 'cobras',
+        desc: 'Identifique jararacas, cascaveis, corais e surucucus por caracteristicas visuais e sintomas.',
     },
     {
-        label: 'Escorpiões',
+        label: 'Escorpioes',
         subtitle: 'Tityus serrulatus (Amarelo), Tityus bahiensis',
-        bg: '/images/aap2/escorpiao-amarelo.jpg',
-        query: 'escorpiao',
-        desc: 'Escorpião amarelo é o mais perigoso. Identifique pelo serrilhado na cauda e coloração.'
+        bg: '/images/aap2/home-escorpiao-amarelo.jpg',
+        categoryId: 'escorpioes',
+        desc: 'Escorpiao amarelo e o mais perigoso. Identifique pelo serrilhado na cauda e coloracao.',
     },
     {
         label: 'Aranhas',
         subtitle: 'Phoneutria (Armadeira), Loxosceles (Marrom)',
-        bg: '/images/aap2/armadeira.jpg',
-        query: 'aranha',
-        desc: 'Armadeira assume postura de defesa. Aranha-marrom possui desenho de violino no dorso.'
+        bg: '/images/aap2/home-aranha-marrom.jpg',
+        categoryId: 'aranhas',
+        desc: 'Armadeira assume postura de defesa. Aranha-marrom possui desenho de violino no dorso.',
     },
     {
-        label: 'Anfíbios',
+        label: 'Sapos',
         subtitle: 'Rhinella (Sapo-cururu), Phyllomedusa',
-        bg: '/images/aap2/sapo-cururu.jpg',
-        query: 'sapo',
-        desc: 'Intoxicação por bufotoxinas. Contato com mucosas ou ingestão acidental por cães.'
+        bg: '/images/aap2/home-sapo-cururu.jpg',
+        categoryId: 'sapos',
+        desc: 'Intoxicacao por bufotoxinas. Contato com mucosas ou ingestao acidental por caes.',
     },
     {
-        label: 'Moluscos / Outros',
+        label: 'Outros & Invertebrados',
         subtitle: 'Lagartas (Lonomia), Caramujos, Abelhas',
-        bg: '/images/aap2/lesmas-caracois.jpg',
-        query: 'molusco',
-        desc: 'Acidentes com animais peçonhentos atípicos e invertebrados terrestres.'
+        bg: '/images/aap2/home-snail.jpg',
+        categoryId: 'outros',
+        desc: 'Acidentes com animais peconhentos atipicos e invertebrados terrestres.',
     },
 ];
 
-const QUICK_ACTIONS: { page: AppPage; title: string; description: string; icon: string; color: string; bg: string }[] = [
-    {
-        page: 'nova_consulta',
-        title: 'Dr. Luzaum AI',
-        description: 'Triagem inteligente: informe sinais e receba análise e protocolo.',
-        icon: 'psychology',
-        color: 'text-[#7e40e7]',
-        bg: 'bg-[#7e40e7]/10',
-    },
-    {
-        page: 'suspeitas',
-        title: 'Ferramenta de Suspeitas',
-        description: 'Ranqueie hipóteses por sinais clínicos.',
-        icon: 'stethoscope',
-        color: 'text-blue-600',
-        bg: 'bg-blue-100',
-    },
-    {
-        page: 'bulario',
-        title: 'Bulário Peçonhento',
-        description: 'Enciclopédia de espécies e tratamentos.',
-        icon: 'menu_book',
-        color: 'text-amber-600',
-        bg: 'bg-amber-100',
-    },
-    {
-        page: 'tratamentos',
-        title: 'Protocolos',
-        description: 'Guias de emergência e estabilização.',
-        icon: 'medical_services',
-        color: 'text-red-600',
-        bg: 'bg-red-100',
-    },
-];
-
-export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenEncyclopedia, isDarkMode, toggleTheme, onBackToHub }) => {
-    const [searchTerm, setSearchTerm] = useState('');
-
-    const handleSearchSubmit = () => {
-        if (searchTerm.trim()) {
-            onOpenEncyclopedia(searchTerm.trim());
-        }
+const actionCards: Array<{
+    id: AppPage;
+    title: string;
+    description: string;
+    icon: React.ElementType;
+    badge: string | null;
+    theme: {
+        text: string;
+        textDark: string;
+        borderHover: string;
+        borderDarkHover: string;
+        shadowHover: string;
+        waveColor: string;
+        waveColorHover: string;
+        iconBg: string;
+        iconBgDark: string;
     };
+    linkText: string;
+}> = [
+    {
+        id: 'historico',
+        title: 'Dr. Luzaum AI',
+        description: 'Triagem inteligente: informe sinais e receba analise e protocolo.',
+        icon: BrainCircuit,
+        badge: 'NOVO',
+        theme: {
+            text: 'text-[#7e40e7]',
+            textDark: 'text-[#a78bfa]',
+            borderHover: 'hover:border-[#7e40e7]/40',
+            borderDarkHover: 'dark:hover:border-[#a78bfa]/40',
+            shadowHover: 'hover:shadow-[#7e40e7]/20',
+            waveColor: 'bg-[#7e40e7]/10',
+            waveColorHover: 'group-hover:bg-[#7e40e7]/20',
+            iconBg: 'bg-white',
+            iconBgDark: 'dark:bg-slate-800',
+        },
+        linkText: 'ACESSAR',
+    },
+    {
+        id: 'suspeitas',
+        title: 'Ferramenta de Suspeitas',
+        description: 'Ranqueie hipoteses por sinais clinicos.',
+        icon: Stethoscope,
+        badge: null,
+        theme: {
+            text: 'text-blue-600',
+            textDark: 'text-blue-400',
+            borderHover: 'hover:border-blue-400/40',
+            borderDarkHover: 'dark:hover:border-blue-400/40',
+            shadowHover: 'hover:shadow-blue-500/20',
+            waveColor: 'bg-blue-500/10',
+            waveColorHover: 'group-hover:bg-blue-500/20',
+            iconBg: 'bg-white',
+            iconBgDark: 'dark:bg-slate-800',
+        },
+        linkText: 'ACESSAR',
+    },
+    {
+        id: 'enciclopedia',
+        title: 'Enciclopedia',
+        description: 'Categorias, fichas completas e protocolos em cards.',
+        icon: BookOpen,
+        badge: null,
+        theme: {
+            text: 'text-amber-600',
+            textDark: 'text-amber-400',
+            borderHover: 'hover:border-amber-400/40',
+            borderDarkHover: 'dark:hover:border-amber-400/40',
+            shadowHover: 'hover:shadow-amber-500/20',
+            waveColor: 'bg-amber-500/10',
+            waveColorHover: 'group-hover:bg-amber-500/20',
+            iconBg: 'bg-white',
+            iconBgDark: 'dark:bg-slate-800',
+        },
+        linkText: 'ACESSAR',
+    },
+    {
+        id: 'tratamentos',
+        title: 'Protocolos',
+        description: 'Guias de emergencia e estabilizacao.',
+        icon: BriefcaseMedical,
+        badge: null,
+        theme: {
+            text: 'text-red-600',
+            textDark: 'text-red-400',
+            borderHover: 'hover:border-red-400/40',
+            borderDarkHover: 'dark:hover:border-red-400/40',
+            shadowHover: 'hover:shadow-red-500/20',
+            waveColor: 'bg-red-500/10',
+            waveColorHover: 'group-hover:bg-red-500/20',
+            iconBg: 'bg-white',
+            iconBgDark: 'dark:bg-slate-800',
+        },
+        linkText: 'ACESSAR',
+    },
+];
 
+export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenEncyclopedia, isDarkMode }) => {
     return (
-        <div className={`min-h-screen w-full flex overflow-hidden font-display ${isDarkMode ? 'bg-[#171121] text-slate-100' : 'bg-[#f3f4f6] text-slate-900'}`}>
-            {/* Sidebar with Glassmorphism */}
-            <aside className={`hidden lg:flex w-72 h-full flex-col justify-between glass-sidebar shrink-0 z-20 transition-all duration-300 border-r ${isDarkMode ? 'border-slate-800' : 'border-slate-200'}`}>
-                <div className="flex flex-col h-full">
-                    <div className="p-6 flex items-center gap-3">
-                        <div className="bg-gradient-to-br from-[#7e40e7] to-[#5e2bb8] rounded-xl w-10 h-10 flex items-center justify-center shadow-lg shadow-[#7e40e7]/30 text-white">
-                            <span className="material-symbols-outlined text-2xl">pets</span>
-                        </div>
-                        <div>
-                            <h1 className={`text-lg font-bold leading-none tracking-tight ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>AAP2 Vetius</h1>
-                            <p className="text-[#7e40e7] text-xs font-bold mt-1 tracking-wide">Toxicologia Veterinária</p>
-                        </div>
-                    </div>
-
-                    <nav className="flex-1 px-4 py-4 space-y-1 overflow-y-auto">
-                        <p className="px-4 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">Menu Principal</p>
-                        <button
-                            onClick={() => onNavigate('home')}
-                            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-semibold transition-all ${isDarkMode ? 'bg-[#7e40e7]/20 text-[#7e40e7]' : 'bg-[#7e40e7]/10 text-[#7e40e7]'}`}
+        <div className="w-full h-full">
+            <section className="mb-10">
+                <h3 className={`text-lg font-bold mb-5 flex items-center gap-2 ${isDarkMode ? 'text-white' : 'text-slate-800'}`}>
+                    <span className="material-symbols-outlined text-[#7e40e7]">visibility</span>
+                    Guia de Identificacao Rapida
+                </h3>
+                <div className="species-card-container flex gap-4 h-[450px] w-full">
+                    {IDENTIFICATION_CARDS.map((card) => (
+                        <div
+                            key={card.label}
+                            className="species-card rounded-2xl group/link relative flex cursor-pointer"
+                            onClick={() => onOpenEncyclopedia({ categoryId: card.categoryId })}
                         >
-                            <span className="material-symbols-outlined">dashboard</span>
-                            <span>Dashboard</span>
-                        </button>
-                        <button
-                            onClick={() => onNavigate('enciclopedia')}
-                            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all group ${isDarkMode ? 'text-slate-400 hover:bg-slate-800 hover:text-white' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'}`}
-                        >
-                            <span className="material-symbols-outlined">menu_book</span>
-                            <span>Enciclopédia</span>
-                        </button>
-                        <button
-                            onClick={() => onNavigate('bulario')}
-                            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all group ${isDarkMode ? 'text-slate-400 hover:bg-slate-800 hover:text-white' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'}`}
-                        >
-                            <span className="material-symbols-outlined">inventory_2</span>
-                            <span>Bulário</span>
-                        </button>
-                        <button
-                            onClick={() => onNavigate('tratamentos')}
-                            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all group ${isDarkMode ? 'text-slate-400 hover:bg-slate-800 hover:text-white' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'}`}
-                        >
-                            <span className="material-symbols-outlined">medical_services</span>
-                            <span>Protocolos</span>
-                        </button>
-
-                        <div className="pt-6 pb-2">
-                            <p className="px-4 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">Ferramentas</p>
-                            <button
-                                onClick={() => onNavigate('suspeitas')}
-                                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all group ${isDarkMode ? 'text-slate-400 hover:bg-slate-800 hover:text-white' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'}`}
-                            >
-                                <span className="material-symbols-outlined">stethoscope</span>
-                                <span>Suspeitas</span>
-                            </button>
-                        </div>
-
-                        <div className="pt-6 pb-2">
-                            <p className="px-4 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">Sistema</p>
-                            <button
-                                onClick={() => { }}
-                                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all group ${isDarkMode ? 'text-slate-400 hover:bg-slate-800 hover:text-white' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'}`}
-                            >
-                                <span className="material-symbols-outlined">settings</span>
-                                <span>Configurações</span>
-                            </button>
-                            <button
-                                onClick={() => { }}
-                                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all group ${isDarkMode ? 'text-slate-400 hover:bg-slate-800 hover:text-white' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'}`}
-                            >
-                                <span className="material-symbols-outlined">help</span>
-                                <span>Suporte</span>
-                            </button>
-                        </div>
-                    </nav>
-
-                    <div className="p-4">
-                        <button
-                            onClick={() => onNavigate('historico')}
-                            className="w-full flex items-center justify-center gap-2 bg-[#7e40e7] hover:bg-[#5e2bb8] text-white py-3.5 px-4 rounded-xl shadow-lg shadow-[#7e40e7]/25 transition-all active:scale-95 font-bold text-sm tracking-tight"
-                        >
-                            <span className="material-symbols-outlined text-xl">psychology</span>
-                            <span>Dr. Luzaum AI</span>
-                        </button>
-                    </div>
-
-                    <div className={`p-4 border-t ${isDarkMode ? 'border-slate-800 bg-slate-900/50' : 'border-slate-200/60 bg-white/50'}`}>
-                        <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-full bg-cover bg-center border-2 border-white shadow-sm" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAWe7Fd0Mjd6RDb7RdyROid-tuPRGsdEPxvqY7YHESxTQv7ypRv-kEgqdcllYihBE-F-L1ZthZwpDvPCbKh-BBFMg19pJE5Ao2IrjPfNytbvncVqjUC42T1JW4RfU98nRr5o2EOrrPSSls1Vx43b8Ok1flg_FhMkXFt5_UhS3PZe78jFV3e1FHaxGkQYCQ5JoqaHxlzTqO0sEm9mP7vAjKjniHR6tB-BB5f_MNvUiEPaOD29N7I-jCPgL3uLw4tN9gDQQwXijaUYYVt')" }}></div>
-                            <div className="flex-1 min-w-0">
-                                <p className={`text-sm font-bold truncate ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Dr. Julia Santos</p>
-                                <p className="text-xs text-slate-500 truncate">Veterinária Chefe</p>
-                            </div>
-                            <button
-                                onClick={onBackToHub}
-                                className="text-slate-400 hover:text-[#7e40e7] transition-colors p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
-                                title="Voltar ao Hub"
-                            >
-                                <span className="material-symbols-outlined text-xl">logout</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </aside>
-
-            <main className="flex-1 flex flex-col h-full overflow-hidden relative">
-                {/* Background Blobs */}
-                <div className={`absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2 pointer-events-none ${isDarkMode ? 'bg-purple-900/20' : 'bg-purple-200/40'}`}></div>
-                <div className={`absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-3xl -z-10 -translate-x-1/3 translate-y-1/3 pointer-events-none ${isDarkMode ? 'bg-blue-900/20' : 'bg-blue-100/40'}`}></div>
-
-                {/* Header */}
-                <header className={`flex items-center justify-between px-8 py-5 glass-panel border-b border-l-0 border-r-0 border-t-0 z-10 shrink-0 sticky top-0 ${isDarkMode ? 'border-slate-800' : 'border-white/50'}`}>
-                    <div className="flex items-center gap-4 flex-1">
-                        <h2 className={`text-2xl font-bold tracking-tight hidden md:block ${isDarkMode ? 'text-white' : 'text-slate-800'}`}>Dashboard</h2>
-                        <div className="max-w-md w-full ml-8 relative group">
-                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <span className="material-symbols-outlined text-slate-400 group-focus-within:text-[#7e40e7] transition-colors">search</span>
-                            </div>
-                            <input
-                                className={`block w-full pl-10 pr-3 py-2.5 border-none rounded-xl text-sm transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-[#7e40e7]/50 ${isDarkMode ? 'bg-slate-800/80 text-white placeholder-slate-500 hover:bg-slate-800 focus:bg-slate-800' : 'bg-white/60 text-slate-900 placeholder-slate-400 focus:bg-white'}`}
-                                placeholder="Pesquisar por espécies, toxinas ou sintomas..."
-                                type="text"
-                                value={searchTerm}
-                                onChange={e => setSearchTerm(e.target.value)}
-                                onKeyDown={e => e.key === 'Enter' && handleSearchSubmit()}
+                            <div
+                                className="image-bg absolute inset-0 bg-cover bg-center transition-transform duration-700"
+                                style={{ backgroundImage: `url('${card.bg}')` }}
                             />
-                        </div>
-                    </div>
-                    <div className="flex items-center gap-4">
-                        <button className={`relative p-2 rounded-lg transition-colors ${isDarkMode ? 'text-slate-400 hover:bg-slate-800 hover:text-[#7e40e7]' : 'text-slate-500 hover:bg-white/50 hover:text-[#7e40e7]'}`}>
-                            <span className="material-symbols-outlined">notifications</span>
-                            <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
-                        </button>
-                        <button className={`p-2 rounded-lg transition-colors ${isDarkMode ? 'text-slate-400 hover:bg-slate-800 hover:text-[#7e40e7]' : 'text-slate-500 hover:bg-white/50 hover:text-[#7e40e7]'}`}>
-                            <span className="material-symbols-outlined">chat_bubble</span>
-                        </button>
-                        <div className={`h-8 w-px mx-2 ${isDarkMode ? 'bg-slate-800' : 'bg-slate-200'}`}></div>
-
-                        <button
-                            onClick={toggleTheme}
-                            className={`p-2 rounded-xl transition-colors ${isDarkMode ? 'bg-slate-800 hover:bg-slate-700 text-yellow-400' : 'bg-white/50 hover:bg-white text-slate-600 hover:text-[#7e40e7]'}`}
-                            title={isDarkMode ? 'Modo claro' : 'Modo escuro'}
-                        >
-                            <span className="material-symbols-outlined">{isDarkMode ? 'light_mode' : 'dark_mode'}</span>
-                        </button>
-
-                        <div className="text-right hidden lg:block ml-2">
-                            <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Status do Sistema</p>
-                            <p className="text-xs font-bold text-[#7e40e7] flex items-center justify-end gap-1">
-                                <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span> Online
-                            </p>
-                        </div>
-                    </div>
-                </header>
-
-                <div className="flex-1 overflow-y-auto p-8 scroll-smooth pb-20">
-                    {/* Identification Guide (Accordion) */}
-                    <section className="mb-10">
-                        <h3 className={`text-lg font-bold mb-5 flex items-center gap-2 ${isDarkMode ? 'text-white' : 'text-slate-800'}`}>
-                            <span className="material-symbols-outlined text-[#7e40e7]">visibility</span>
-                            Guia de Identificação Rápida
-                        </h3>
-                        <div className="species-card-container flex gap-4 h-[450px] w-full">
-                            {IDENTIFICATION_CARDS.map((card, idx) => (
-                                <div
-                                    key={card.label}
-                                    className="species-card rounded-2xl group/link relative flex cursor-pointer"
-                                    onClick={() => onOpenEncyclopedia(card.query)}
-                                >
-                                    <div
-                                        className="image-bg absolute inset-0 bg-cover bg-center transition-transform duration-700"
-                                        style={{ backgroundImage: `url('${card.bg}')` }}
-                                    ></div>
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                                    <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col justify-end h-full">
-                                        <h4 className="text-white text-2xl font-bold mb-1 translate-y-8 group-hover/link:translate-y-0 transition-transform duration-300">{card.label}</h4>
-                                        <div className="overlay-content text-white/90">
-                                            <p className="text-xs font-bold text-[#efe9fc] uppercase tracking-wider mb-2">{card.subtitle}</p>
-                                            <p className="text-xs leading-relaxed mb-4 text-slate-200 line-clamp-3">
-                                                {card.desc}
-                                            </p>
-                                            <span className="inline-flex items-center gap-2 text-xs font-bold bg-white/20 hover:bg-white/30 transition px-3 py-1.5 rounded-lg backdrop-blur-sm">
-                                                Ver Detalhes <span className="material-symbols-outlined text-xs">open_in_new</span>
-                                            </span>
-                                        </div>
-                                    </div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                            <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col justify-end h-full">
+                                <h4 className="text-white text-2xl font-bold mb-1 translate-y-8 group-hover/link:translate-y-0 transition-transform duration-300">
+                                    {card.label}
+                                </h4>
+                                <div className="overlay-content text-white/90">
+                                    <p className="text-xs font-bold text-[#efe9fc] uppercase tracking-wider mb-2">{card.subtitle}</p>
+                                    <p className="text-xs leading-relaxed mb-4 text-slate-200 line-clamp-3">
+                                        {card.desc}
+                                    </p>
+                                    <span className="inline-flex items-center gap-2 text-xs font-bold bg-white/20 hover:bg-white/30 transition px-3 py-1.5 rounded-lg backdrop-blur-sm">
+                                        Ver na Enciclopedia <span className="material-symbols-outlined text-xs">open_in_new</span>
+                                    </span>
                                 </div>
-                            ))}
+                            </div>
                         </div>
-                    </section>
+                    ))}
+                </div>
+            </section>
 
-                    {/* Quick Actions Grid */}
-                    <section className="mb-10">
-                        <h3 className={`text-lg font-bold mb-5 flex items-center gap-2 ${isDarkMode ? 'text-white' : 'text-slate-800'}`}>
-                            <span className="material-symbols-outlined text-[#7e40e7]">bolt</span>
-                            Ações Rápidas
-                        </h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-                            {QUICK_ACTIONS.map((action, idx) => (
-                                <button
-                                    key={action.title}
-                                    onClick={() => onNavigate(action.page)}
-                                    className={`glass-panel p-6 rounded-2xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group cursor-pointer relative overflow-hidden text-left ${isDarkMode ? 'bg-slate-900/40 border-slate-800 hover:border-[#7e40e7]/40' : 'bg-white border-slate-200 hover:border-[#7e40e7]/40'} ${idx === 0 ? 'ring-1 ring-[#7e40e7]/30' : ''}`}
-                                >
-                                    <div className={`absolute right-0 top-0 w-32 h-32 rounded-full blur-3xl -mr-10 -mt-10 transition-all opacity-0 group-hover:opacity-100 ${action.bg.replace('bg-', 'bg-').replace('100', '500/20')}`}></div>
+            <section className="mb-10 relative z-10">
+                <div className="flex items-center gap-3 mb-8">
+                    <div className="p-2 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-lg shadow-purple-500/30">
+                        <Zap size={20} strokeWidth={2.5} />
+                    </div>
+                    <h3 className={`text-xl font-bold tracking-tight ${isDarkMode ? 'text-white' : 'text-slate-800'}`}>
+                        Acoes Rapidas
+                    </h3>
+                </div>
 
-                                    <div className="flex justify-between items-start mb-4 relative z-10">
-                                        <div className={`p-3 rounded-xl transition-colors ${isDarkMode ? 'bg-slate-800 group-hover:bg-slate-700' : 'bg-slate-100 group-hover:bg-white'} ${action.color}`}>
-                                            <span className="material-symbols-outlined text-3xl">{action.icon}</span>
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                    {actionCards.map((card) => {
+                        const Icon = card.icon;
+
+                        return (
+                            <div
+                                key={card.id}
+                                onClick={() => onNavigate(card.id)}
+                                className={`
+                                    group relative overflow-hidden rounded-3xl
+                                    ${isDarkMode ? 'bg-slate-800/40 border-white/10' : 'bg-white/40 border-white/60'}
+                                    backdrop-blur-xl border
+                                    shadow-[0_8px_30px_rgb(0,0,0,0.04)]
+                                    transition-all duration-400 ease-out
+                                    hover:-translate-y-2 ${isDarkMode ? 'hover:bg-slate-800/60' : 'hover:bg-white/60'}
+                                    ${card.theme.borderHover} ${card.theme.borderDarkHover}
+                                    ${card.theme.shadowHover} hover:shadow-2xl
+                                    flex flex-col h-full cursor-pointer
+                                `}
+                            >
+                                <div className={`wave-element ${card.theme.waveColor} ${card.theme.waveColorHover}`} />
+                                <div className={`wave-element ${card.theme.waveColor} opacity-50 animation-delay-1000 bottom-[-190px]`} />
+
+                                <div className="relative z-10 p-6 flex flex-col h-full">
+                                    <div className="flex justify-between items-start mb-6">
+                                        <div className={`
+                                            w-12 h-12 rounded-2xl flex items-center justify-center
+                                            shadow-sm ring-1 ${isDarkMode ? 'ring-white/10' : 'ring-black/5'}
+                                            transition-transform duration-300 group-hover:scale-110
+                                            ${card.theme.iconBg} ${card.theme.iconBgDark}
+                                            ${isDarkMode ? card.theme.textDark : card.theme.text}
+                                        `}>
+                                            <Icon size={24} strokeWidth={2} />
                                         </div>
-                                        {idx === 0 && (
-                                            <span className="bg-[#7e40e7]/10 text-[#7e40e7] text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full border border-[#7e40e7]/20">Novo</span>
+
+                                        {card.badge && (
+                                            <span className="px-3 py-1 text-[10px] font-bold tracking-wider uppercase bg-gradient-to-r from-[#7e40e7] to-indigo-500 text-white rounded-full shadow-md shadow-[#7e40e7]/20">
+                                                {card.badge}
+                                            </span>
                                         )}
                                     </div>
 
-                                    <h4 className={`text-lg font-bold mb-1 relative z-10 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>{action.title}</h4>
-                                    <p className={`text-xs mb-4 leading-relaxed relative z-10 ${isDarkMode ? 'text-slate-400' : 'text-slate-500'}`}>{action.description}</p>
-
-                                    <div className={`font-bold text-xs flex items-center gap-1 group-hover:gap-2 transition-all relative z-10 ${action.color}`}>
-                                        Acessar <span className="material-symbols-outlined text-xs">arrow_forward</span>
+                                    <div className="mb-8 flex-grow">
+                                        <h4 className={`text-lg font-bold mb-2 transition-colors ${isDarkMode ? 'text-white group-hover:text-slate-200' : 'text-slate-800 group-hover:text-black'}`}>
+                                            {card.title}
+                                        </h4>
+                                        <p className={`text-sm font-medium leading-relaxed transition-colors line-clamp-3 ${isDarkMode ? 'text-slate-400 group-hover:text-slate-300' : 'text-slate-500 group-hover:text-slate-700'}`}>
+                                            {card.description}
+                                        </p>
                                     </div>
-                                </button>
-                            ))}
-                        </div>
-                    </section>
 
-                    {/* Footer */}
-                    <div className={`mt-10 pt-6 border-t flex flex-col md:flex-row justify-between items-center text-xs ${isDarkMode ? 'border-slate-800 text-slate-500' : 'border-slate-200 text-slate-400'}`}>
-                        <p>© 2026 AAP2 Vetius. Todos os direitos reservados.</p>
-                        <div className="flex gap-4 mt-2 md:mt-0">
-                            <span className="cursor-pointer hover:text-[#7e40e7]">Termos de Uso</span>
-                            <span className="cursor-pointer hover:text-[#7e40e7]">Privacidade</span>
-                        </div>
-                    </div>
+                                    <div className={`
+                                        flex items-center gap-2 mt-auto font-bold text-xs tracking-wide
+                                        transition-all duration-300 group-hover:gap-3
+                                        ${isDarkMode ? card.theme.textDark : card.theme.text}
+                                    `}>
+                                        {card.linkText}
+                                        <ArrowRight size={16} strokeWidth={2.5} className="transition-transform duration-300 group-hover:translate-x-1" />
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })}
                 </div>
-            </main>
+            </section>
         </div>
     );
 };

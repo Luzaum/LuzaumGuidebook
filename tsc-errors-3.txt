@@ -1,0 +1,94 @@
+modules/crivet/data/drugs/ketamine.index.ts(4,15): error TS2307: Cannot find module './ketamine.compat' or its corresponding type declarations.
+modules/crivet/data/drugs/ketamine.index.ts(6,15): error TS2307: Cannot find module './ketamine.presets' or its corresponding type declarations.
+modules/crivet/data/drugs/ketamine.index.ts(7,15): error TS2307: Cannot find module './ketamine.profile' or its corresponding type declarations.
+modules/crivet/data/drugs/morfina.profile.ts(114,9): error TS2322: Type '"IM/SC/IV"' is not assignable to type 'Route'.
+modules/crivet/data/drugs/morfina.profile.ts(148,9): error TS2322: Type '"IM/SC/IV"' is not assignable to type 'Route'.
+modules/crivet/data/drugs/nitroprussiato.profile.ts(19,9): error TS2353: Object literal may only specify known properties, and 'vascular' does not exist in type '{ cardiovascular?: string; respiratory?: string; cns?: string; renal_hepatic?: string; gi?: string; }'.
+modules/crivet/data/drugs/nitroprussiato.profile.ts(195,9): error TS2353: Object literal may only specify known properties, and 'note' does not exist in type 'Stability'.
+modules/crivet/data/drugs/presets.registry.ts(2,33): error TS2307: Cannot find module './fentanyl.presets' or its corresponding type declarations.
+modules/crivet/data/drugs/presets.registry.ts(3,33): error TS2307: Cannot find module './ketamine.presets' or its corresponding type declarations.
+modules/crivet/data/drugs/presets.registry.ts(6,35): error TS2307: Cannot find module './dobutamine.presets' or its corresponding type declarations.
+modules/crivet/data/drugs/presets.registry.ts(7,39): error TS2307: Cannot find module './norepinephrine.presets' or its corresponding type declarations.
+modules/crivet/services/clinicalLint.ts(50,57): error TS2339: Property 'all' does not exist on type 'string[]'.
+modules/crivet/services/clinicalLint.ts(59,50): error TS2339: Property 'mcgkgmin' does not exist on type 'NormalizedDoseEntry[]'.
+modules/crivet/services/clinicalLint.ts(59,88): error TS2339: Property 'mgkgh' does not exist on type 'NormalizedDoseEntry[]'.
+modules/crivet/services/clinicalLint.ts(60,54): error TS2339: Property 'mgkg' does not exist on type 'NormalizedDoseEntry[]'.
+modules/crivet/services/clinicalLint.ts(60,90): error TS2339: Property 'mcgkg' does not exist on type 'NormalizedDoseEntry[]'.
+modules/crivet/services/clinicalLint.ts(60,127): error TS2339: Property 'ukg' does not exist on type 'NormalizedDoseEntry[]'.
+modules/crivet/services/clinicalLint.ts(61,50): error TS2339: Property 'mcgkgmin' does not exist on type 'NormalizedDoseEntry[]'.
+modules/crivet/services/clinicalLint.ts(61,88): error TS2339: Property 'mgkgh' does not exist on type 'NormalizedDoseEntry[]'.
+modules/crivet/services/clinicalLint.ts(62,54): error TS2339: Property 'mgkg' does not exist on type 'NormalizedDoseEntry[]'.
+modules/crivet/services/clinicalLint.ts(62,90): error TS2339: Property 'mcgkg' does not exist on type 'NormalizedDoseEntry[]'.
+modules/crivet/services/clinicalLint.ts(62,127): error TS2339: Property 'ukg' does not exist on type 'NormalizedDoseEntry[]'.
+modules/neurologia/App.tsx(65,7): error TS2322: Type '"Dog" | "Cat"' is not assignable to type 'Species'.
+  Type '"Dog"' is not assignable to type 'Species'.
+modules/neurologia/App.tsx(70,7): error TS2322: Type '"M" | "F"' is not assignable to type 'Sex'.
+  Type '"M"' is not assignable to type 'Sex'.
+modules/neurologia/App.tsx(80,7): error TS2322: Type 'ComorbidityItem[]' is not assignable to type 'string[]'.
+  Type 'ComorbidityItem' is not assignable to type 'string'.
+modules/neurologia/App.tsx(101,17): error TS2345: Argument of type 'AnalysisResult' is not assignable to parameter of type '{ status: "done" | "idle" | "running" | "insufficient_data"; report?: any; }'.
+  Property 'status' is missing in type 'AnalysisResult' but required in type '{ status: "done" | "idle" | "running" | "insufficient_data"; report?: any; }'.
+modules/neurologia/components/Steps/Step1PatientInfo.tsx(7,15): error TS2459: Module '"../../stores/caseStore"' declares 'Patient' locally, but it is not exported.
+modules/neurologia/components/Steps/Step1PatientInfo.tsx(8,15): error TS2300: Duplicate identifier 'ComorbidityKey'.
+modules/neurologia/components/Steps/Step1PatientInfo.tsx(8,31): error TS2300: Duplicate identifier 'ComorbidityItem'.
+modules/neurologia/components/Steps/Step1PatientInfo.tsx(16,15): error TS2300: Duplicate identifier 'ComorbidityKey'.
+modules/neurologia/components/Steps/Step1PatientInfo.tsx(16,31): error TS2300: Duplicate identifier 'ComorbidityItem'.
+modules/neurologia/components/Steps/Step2ChiefComplaint.tsx(17,15): error TS2459: Module '"../../stores/caseStore"' declares 'ComplaintContext' locally, but it is not exported.
+modules/neurologia/components/Steps/Step4Review.tsx(6,15): error TS2459: Module '"../../stores/caseStore"' declares 'Patient' locally, but it is not exported.
+modules/neurologia/components/Steps/Step4Review.tsx(7,15): error TS2459: Module '"../../stores/caseStore"' declares 'ComplaintContext' locally, but it is not exported.
+modules/neurologia/components/Steps/Step5Analysis.tsx(110,21): error TS2367: This comparison appears to be unintentional because the types '"idle"' and '"running"' have no overlap.
+modules/neurologia/components/Steps/Step5Analysis.tsx(118,15): error TS2367: This comparison appears to be unintentional because the types '"idle"' and '"running"' have no overlap.
+modules/neurologia/components/Steps/Step5Analysis.tsx(123,12): error TS2367: This comparison appears to be unintentional because the types '"idle"' and '"running"' have no overlap.
+modules/neurologia/components/UI/HelpModal.tsx(23,64): error TS2322: Type 'string | RichContent[]' is not assignable to type 'ReactNode'.
+  Type 'RichContent[]' is not assignable to type 'ReactNode'.
+    Type 'RichContent[]' is not assignable to type 'Iterable<ReactNode>'.
+      The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.
+        Type 'IteratorResult<RichContent, any>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+          Type 'IteratorYieldResult<RichContent>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+            Type 'IteratorYieldResult<RichContent>' is not assignable to type 'IteratorYieldResult<ReactNode>'.
+              Type 'RichContent' is not assignable to type 'ReactNode'.
+                Type 'RichContent' is missing the following properties from type 'ReactPortal': children, props, key
+modules/neurologia/components/UI/HelpModal.tsx(31,64): error TS2322: Type 'string | RichContent[]' is not assignable to type 'ReactNode'.
+  Type 'RichContent[]' is not assignable to type 'ReactNode'.
+    Type 'RichContent[]' is not assignable to type 'Iterable<ReactNode>'.
+      The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.
+        Type 'IteratorResult<RichContent, any>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+          Type 'IteratorYieldResult<RichContent>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+            Type 'IteratorYieldResult<RichContent>' is not assignable to type 'IteratorYieldResult<ReactNode>'.
+              Type 'RichContent' is not assignable to type 'ReactNode'.
+                Type 'RichContent' is missing the following properties from type 'ReactPortal': children, props, key
+modules/neurologia/components/UI/HelpModal.tsx(39,64): error TS2322: Type 'string | RichContent[]' is not assignable to type 'ReactNode'.
+  Type 'RichContent[]' is not assignable to type 'ReactNode'.
+    Type 'RichContent[]' is not assignable to type 'Iterable<ReactNode>'.
+      The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.
+        Type 'IteratorResult<RichContent, any>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+          Type 'IteratorYieldResult<RichContent>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+            Type 'IteratorYieldResult<RichContent>' is not assignable to type 'IteratorYieldResult<ReactNode>'.
+              Type 'RichContent' is not assignable to type 'ReactNode'.
+                Type 'RichContent' is missing the following properties from type 'ReactPortal': children, props, key
+modules/neurologia/components/UI/HelpModal.tsx(47,64): error TS2322: Type 'string | RichContent[]' is not assignable to type 'ReactNode'.
+  Type 'RichContent[]' is not assignable to type 'ReactNode'.
+    Type 'RichContent[]' is not assignable to type 'Iterable<ReactNode>'.
+      The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.
+        Type 'IteratorResult<RichContent, any>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+          Type 'IteratorYieldResult<RichContent>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+            Type 'IteratorYieldResult<RichContent>' is not assignable to type 'IteratorYieldResult<ReactNode>'.
+              Type 'RichContent' is not assignable to type 'ReactNode'.
+                Type 'RichContent' is missing the following properties from type 'ReactPortal': children, props, key
+modules/neurologia/components/UI/HelpModal.tsx(55,64): error TS2322: Type 'string | RichContent[]' is not assignable to type 'ReactNode'.
+  Type 'RichContent[]' is not assignable to type 'ReactNode'.
+    Type 'RichContent[]' is not assignable to type 'Iterable<ReactNode>'.
+      The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.
+        Type 'IteratorResult<RichContent, any>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+          Type 'IteratorYieldResult<RichContent>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+            Type 'IteratorYieldResult<RichContent>' is not assignable to type 'IteratorYieldResult<ReactNode>'.
+              Type 'RichContent' is not assignable to type 'ReactNode'.
+                Type 'RichContent' is missing the following properties from type 'ReactPortal': children, props, key
+modules/neurologia/lib/analysis/differentials.ts(87,43): error TS2367: This comparison appears to be unintentional because the types '"episodic" | "acute" | "subacute" | "peracute"' and '"progressive"' have no overlap.
+modules/neurologia/lib/analysis/differentialsV2.ts(6,8): error TS2459: Module '"../../data/differentials/loader"' declares 'LoadedDifferential' locally, but it is not exported.
+modules/neurologia/lib/analysis/differentialsV2.ts(126,5): error TS2322: Type '"ENDOCRINA"' is not assignable to type '"INFLAMATORIA" | "INFECCIOSA" | "NEOPLASICA" | "VASCULAR" | "DEGENERATIVA" | "TRAUMATICA" | "TOXICO_METABOLICA" | "COMPRESSIVA" | "IDIOPATICA"'.
+modules/neurologia/lib/analysis/differentialsV2.ts(267,40): error TS2322: Type '"episodico"' is not assignable to type '"melhorando" | "estatico" | "flutuante" | "progressivo"'.
+modules/neurologia/lib/analysis/localization.ts(131,7): error TS2365: Operator '+' cannot be applied to types 'boolean' and 'boolean'.
+modules/neurologia/lib/state/sanitizers.ts(1,15): error TS2459: Module '"../../stores/caseStore"' declares 'Patient' locally, but it is not exported.
+modules/neurologia/lib/state/sanitizers.ts(1,24): error TS2459: Module '"../../stores/caseStore"' declares 'ComplaintContext' locally, but it is not exported.
+modules/neurologia/lib/validation/normalizePatient.ts(1,26): error TS2307: Cannot find module '../stores/caseStore' or its corresponding type declarations.

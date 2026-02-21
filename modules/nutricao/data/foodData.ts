@@ -30,6 +30,9 @@ export const predefinedFoods: FoodItem[] = [
     protein: '8.5%',
     fat: '5.2%',
     indication: 'Convalescença, anorexia, pós-cirurgia, lesão.',
+    lifeStage: 'ALL',
+    neuterStatus: 'ANY',
+    isTherapeutic: true,
     alerts: [
       {
         type: 'green',

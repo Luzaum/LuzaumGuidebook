@@ -111,7 +111,7 @@ export const morfinaProfile: DrugProfile = {
           max: 0.5,
           note: '0.1-0.5 mg/kg IM/SC. Se IV: 0.1-0.2 mg/kg LENTO (diluído).',
         },
-        route: 'IM/SC/IV',
+        route: 'IV',
       },
       cri: {
         mgkgh: {
@@ -145,7 +145,7 @@ export const morfinaProfile: DrugProfile = {
           max: 0.2,
           note: 'Dose reduzida: 0.05-0.1 mg/kg. Máximo 0.2 mg/kg. Monitorar disforia.',
         },
-        route: 'IM/SC/IV',
+        route: 'IV',
       },
       cri: {
         mgkgh: {

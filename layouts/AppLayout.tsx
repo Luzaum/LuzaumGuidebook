@@ -16,129 +16,27 @@ export function AppLayout() {
   const plannedModules = modules.filter((m) => m.status === 'planned')
 
   const isActive = (route: string) => location.pathname === route
+  const isImmersiveModuleRoute =
+    location.pathname.startsWith('/peconhentos') ||
+    location.pathname.startsWith('/receituario-vet')
+  const isFullBleedRoute =
+    isActive('/') ||
+    isActive('/hub') ||
+    isImmersiveModuleRoute
+
+  if (isImmersiveModuleRoute) {
+    return (
+      <div className="min-h-dvh w-full bg-background">
+        <Outlet />
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-dvh flex bg-background">
-      {/* Sidebar Desktop */}
-      <aside className="hidden lg:flex flex-col w-72 border-r border-border bg-background/95 backdrop-blur-sm">
-        <Link
-          to="/"
-          className="flex flex-col items-center pt-4 pb-2 cursor-pointer select-none overflow-visible gap-0 border-b border-border"
-          aria-label="Voltar para a Home"
-        >
-          <Logo
-            size={80}
-            className="h-20 w-20 select-none object-contain drop-shadow-[0_0_28px_rgba(96,165,250,0.35)] transition-all duration-300"
-          />
-          <span className="neon-wave neon-wave-glow -mt-4 text-xl font-semibold tracking-wide">Vetius</span>
-          <div className="my-3 h-px w-10/12 bg-border opacity-40" />
-        </Link>
-
-        <nav className="flex-1 overflow-y-auto p-4 space-y-6">
-          {/* Hub Button */}
-          <div>
-            <button
-              onClick={() => navigate('/hub')}
-              className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${isActive('/hub')
-                ? 'bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary font-medium'
-                : 'text-foreground hover:bg-surface/50'
-                }`}
-            >
-              <Home className="h-4 w-4" />
-              <span>Hub</span>
-            </button>
-          </div>
-
-          {internalModules.length > 0 && (
-            <div>
-              <h3 className="text-xs font-semibold text-muted-foreground uppercase mb-2">
-                Módulos Internos
-              </h3>
-              <ul className="space-y-1">
-                {internalModules.map((module) => {
-                  const Icon = module.icon
-                  return (
-                    <li key={module.id}>
-                      <button
-                        onClick={() => navigate(module.route)}
-                        className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${isActive(module.route)
-                          ? 'bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary font-medium'
-                          : 'text-foreground hover:bg-surface/50'
-                          }`}
-                      >
-                        <Icon className="h-4 w-4" />
-                        <span className="truncate">{module.title}</span>
-                      </button>
-                    </li>
-                  )
-                })}
-              </ul>
-            </div>
-          )}
-
-          {iframeModules.length > 0 && (
-            <div>
-              <h3 className="text-xs font-semibold text-muted-foreground uppercase mb-2">
-                Módulos Externos
-              </h3>
-              <ul className="space-y-1">
-                {iframeModules.map((module) => {
-                  const Icon = module.icon
-                  return (
-                    <li key={module.id}>
-                      <button
-                        onClick={() => navigate(module.route)}
-                        className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${isActive(module.route)
-                          ? 'bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary font-medium'
-                          : 'text-foreground hover:bg-surface/50'
-                          }`}
-                      >
-                        <Icon className="h-4 w-4" />
-                        <span className="truncate">{module.title}</span>
-                      </button>
-                    </li>
-                  )
-                })}
-              </ul>
-            </div>
-          )}
-
-          {plannedModules.length > 0 && (
-            <div>
-              <h3 className="text-xs font-semibold text-muted-foreground uppercase mb-2">
-                Em Desenvolvimento
-              </h3>
-              <ul className="space-y-1">
-                {plannedModules.map((module) => {
-                  const Icon = module.icon
-                  return (
-                    <li key={module.id}>
-                      <button
-                        onClick={() => navigate(module.route)}
-                        className={`w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors opacity-60 ${isActive(module.route)
-                          ? 'bg-slate-800/50 dark:bg-slate-700/50 text-white'
-                          : 'text-slate-200/90 dark:text-foreground hover:bg-slate-800/40 dark:hover:bg-surface/50'
-                          }`}
-                      >
-                        <Icon className="h-4 w-4" />
-                        <span className="truncate">{module.title}</span>
-                      </button>
-                    </li>
-                  )
-                })}
-              </ul>
-            </div>
-          )}
-        </nav>
-
-        <div className="p-4 border-t border-border">
-          <ThemeToggle />
-        </div>
-      </aside>
-
-      {/* Mobile Sidebar */}
+      {/* Mobile & Desktop Drawer Sidebar */}
       {sidebarOpen && (
-        <div className="lg:hidden fixed inset-0 z-50">
+        <div className="fixed inset-0 z-50">
           <div
             className="fixed inset-0 bg-black/50"
             onClick={() => setSidebarOpen(false)}
@@ -208,7 +106,7 @@ export function AppLayout() {
                               <img
                                 src={module.iconImage}
                                 alt={`${module.title} logo`}
-                                className="h-4 w-4 object-contain dark:invert dark:brightness-0 dark:contrast-200"
+                                className={`h-4 w-4 object-contain ${module.id === 'receituario-vet' ? '' : 'dark:invert dark:brightness-0 dark:contrast-200'}`}
                               />
                             ) : (
                               <Icon className="h-4 w-4" />
@@ -293,7 +191,7 @@ export function AppLayout() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Header */}
-        <header className="lg:hidden sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm">
+        <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm">
           <div className="flex items-center justify-between p-4">
             <button
               onClick={() => setSidebarOpen(true)}
@@ -318,11 +216,11 @@ export function AppLayout() {
 
         {/* Page Content */}
         {/* Page Content */}
-        <main className="flex-1 overflow-auto">
-          {(isActive('/') || isActive('/hub')) ? (
+        <main className="flex-1 overflow-auto flex flex-col relative w-full h-full">
+          {isFullBleedRoute ? (
             <Outlet />
           ) : (
-            <div className="mx-auto w-full max-w-7xl px-6">
+            <div className="mx-auto w-full max-w-7xl px-6 pb-6">
               <Outlet />
             </div>
           )}

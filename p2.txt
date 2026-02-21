@@ -1,0 +1,116 @@
+
+    return (
+        <div className="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col w-full">
+            <header className="sticky top-0 z-50 flex items-center justify-between border-b border-solid border-slate-200 dark:border-border-dark bg-white/90 dark:bg-[#101623]/90 backdrop-blur-md px-6 py-3 lg:px-10">
+                <div className="flex items-center gap-4">
+                    <button onClick={onBack} className="flex items-center justify-center size-10 rounded-lg hover:bg-slate-100 dark:hover:bg-card-dark text-slate-600 dark:text-slate-300 transition-colors">
+                        <span className="material-symbols-outlined">arrow_back</span>
+                    </button>
+                    <div className="size-8 text-primary dark:text-blue-500 bg-primary/10 rounded-lg flex items-center justify-center">
+                        <span className="material-symbols-outlined text-2xl">science</span>
+                    </div>
+                    <h1 className="text-xl font-bold leading-tight tracking-tight text-slate-900 dark:text-white">Hemogasometria<span className="text-primary dark:text-blue-500">VET</span></h1>
+                </div>
+            </header>
+
+            <main className="flex-1 p-6 lg:p-10 w-full max-w-[1600px] mx-auto">
+                {activeTab === 'analyzer' && (
+                    <div className="flex flex-col gap-6 lg:gap-8">
+                        {/* Intro Section */}
+                        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                            <div>
+                                <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Nova Análise</h2>
+                                <p className="text-slate-500 dark:text-slate-400 mt-1">Insira os dados do paciente e os parâmetros da hemogasometria para interpretação inteligente.</p>
+                            </div>
+                            <div className="flex gap-3">
+                                <button className="px-4 py-2 bg-slate-200 dark:bg-card-dark hover:bg-slate-300 dark:hover:bg-border-dark text-slate-700 dark:text-slate-200 rounded-lg font-medium transition-colors flex items-center gap-2" onClick={() => setActiveTab('quiz')}>
+                                    <span className="material-symbols-outlined text-sm">school</span> Modo Quiz
+                                </button>
+                                <button onClick={handleReset} className="px-4 py-2 bg-slate-200 dark:bg-card-dark hover:bg-slate-300 dark:hover:bg-border-dark text-red-600 dark:text-red-400 rounded-lg font-medium transition-colors flex items-center gap-2">
+                                    <span className="material-symbols-outlined text-sm">restart_alt</span> Resetar
+                                </button>
+                            </div>
+                        </div>
+
+                        <form onSubmit={handleAnalyzerSubmit}>
+                            {/* Dashboard Grid */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-start">
+                                {/* 1. Patient Info Card */}
+                                <section className="bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-border-dark shadow-sm overflow-hidden h-full">
+                                    <div className="p-5 border-b border-slate-100 dark:border-border-dark bg-slate-50 dark:bg-card-dark flex items-center gap-3">
+                                        <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+                                            <span className="material-symbols-outlined">pets</span>
+                                        </div>
+                                        <h3 className="font-bold text-lg text-slate-800 dark:text-white">Informações do Paciente</h3>
+                                    </div>
+                                    <div className="p-5 space-y-4">
+                                        <div className="grid grid-cols-2 gap-3 mb-2">
+                                            <label className="cursor-pointer group">
+                                                <input checked={inputs.species === 'dog'} onChange={() => handleSpeciesChange('dog')} className="peer sr-only" name="species" type="radio"/>
+                                                <div className="flex flex-col items-center justify-center p-3 rounded-lg border-2 border-slate-200 dark:border-border-dark bg-slate-50 dark:bg-input-dark peer-checked:border-primary dark:peer-checked:border-primary peer-checked:bg-blue-50 dark:peer-checked:bg-primary/10 transition-all">
+                                                    <span className="material-symbols-outlined text-3xl mb-1 text-slate-400 dark:text-slate-500 peer-checked:text-primary dark:peer-checked:text-blue-400">sound_detection_dog_barking</span>
+                                                    <span className="text-xs font-bold text-slate-600 dark:text-slate-300">Cão</span>
+                                                </div>
+                                            </label>
+                                            <label className="cursor-pointer group">
+                                                <input checked={inputs.species === 'cat'} onChange={() => handleSpeciesChange('cat')} className="peer sr-only" name="species" type="radio"/>
+                                                <div className="flex flex-col items-center justify-center p-3 rounded-lg border-2 border-slate-200 dark:border-border-dark bg-slate-50 dark:bg-input-dark peer-checked:border-primary dark:peer-checked:border-primary peer-checked:bg-blue-50 dark:peer-checked:bg-primary/10 transition-all">
+                                                    <span className="material-symbols-outlined text-3xl mb-1 text-slate-400 dark:text-slate-500 peer-checked:text-primary dark:peer-checked:text-blue-400">cruelty_free</span>
+                                                    <span className="text-xs font-bold text-slate-600 dark:text-slate-300">Gato</span>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        
+                                        <div className="grid grid-cols-2 gap-4">
+                                            <div className="space-y-1">
+                                                <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 ml-1">Temp (°C)</label>
+                                                <input id="temp" value={inputs.temp} onChange={handleInputChange} className="w-full px-4 py-3 bg-slate-50 dark:bg-input-dark border border-slate-200 dark:border-border-dark rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all font-mono font-medium" placeholder="38.5" step="0.1" type="number" required/>
+                                            </div>
+                                            <div className="space-y-1">
+                                                <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 ml-1">FiO₂ (%)</label>
+                                                <input id="fio2" value={inputs.fio2} onChange={handleInputChange} className="w-full px-4 py-3 bg-slate-50 dark:bg-input-dark border border-slate-200 dark:border-border-dark rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all font-mono font-medium" placeholder="21" step="1" type="number" required/>
+                                            </div>
+                                        </div>
+                                        <div className="space-y-1">
+                                            <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 ml-1">Tipo de Amostra</label>
+                                            <select id="declaredSampleType" value={inputs.declaredSampleType} onChange={handleInputChange} className="w-full px-4 py-3 bg-slate-50 dark:bg-input-dark border border-slate-200 dark:border-border-dark rounded-lg text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all appearance-none cursor-pointer">
+                                                <option value="arterial">Arterial</option>
+                                                <option value="venous">Venosa</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                {/* 2. Gases Card */}
+                                <section className="bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-border-dark shadow-sm overflow-hidden h-full">
+                                    <div className="p-5 border-b border-slate-100 dark:border-border-dark bg-slate-50 dark:bg-card-dark flex items-center gap-3">
+                                        <div className="p-2 rounded-lg bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400">
+                                            <span className="material-symbols-outlined">air</span>
+                                        </div>
+                                        <h3 className="font-bold text-lg text-slate-800 dark:text-white">Gases Sanguíneos</h3>
+                                    </div>
+                                    <div className="p-5 space-y-5">
+                                        <div className="space-y-1 relative group">
+                                            <div className="flex justify-between items-center px-1">
+                                                <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">pH</label>
+                                                <span className="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 px-1.5 py-0.5 rounded">Ref: 7.35-7.45</span>
+                                            </div>
+                                            <input id="ph" value={inputs.ph} onChange={handleInputChange} className="w-full px-4 py-3 bg-slate-50 dark:bg-input-dark border border-slate-200 dark:border-border-dark rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all font-mono text-lg font-medium" placeholder="7.40" step="0.01" type="number" required/>
+                                            <PresetsButtons param="ph" species={inputs.species} setInputs={setInputs} />
+                                        </div>
+                                        <div className="space-y-1 relative group">
+                                            <div className="flex justify-between items-center px-1">
+                                                <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">pCO₂ (mmHg)</label>
+                                            </div>
+                                            <input id="pco2" value={inputs.pco2} onChange={handleInputChange} className="w-full px-4 py-3 bg-slate-50 dark:bg-input-dark border border-slate-200 dark:border-border-dark rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all font-mono text-lg font-medium" placeholder="40.0" step="0.1" type="number" required/>
+                                            <PresetsButtons param="pco2" species={inputs.species} setInputs={setInputs} />
+                                        </div>
+                                        <div className="space-y-1 relative group">
+                                            <div className="flex justify-between items-center px-1">
+                                                <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">pO₂ (mmHg)</label>
+                                            </div>
+                                            <input id="po2" value={inputs.po2} onChange={handleInputChange} className="w-full px-4 py-3 bg-slate-50 dark:bg-input-dark border border-slate-200 dark:border-border-dark rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all font-mono text-lg font-medium" placeholder="95.0" step="0.1" type="number" required/>
+                                            <PresetsButtons param="po2" species={inputs.species} setInputs={setInputs} />
+                                        </div>
+                                    </div>
+                                </section>

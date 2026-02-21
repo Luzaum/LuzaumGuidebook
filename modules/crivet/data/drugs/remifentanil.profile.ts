@@ -248,10 +248,6 @@ export const remifentanilProfile: DrugProfile = {
 
   // Seção 7: Compatibilidade
   compatibility: {
-    diluents_allowed: ['NaCl 0,9%', 'Glicose 5% (D5W)'],
-    diluents_ok: ['NaCl 0,9%', 'D5W'],
-    diluentsAllowed: ['NaCl 0,9%', 'D5W'],
-    diluents: ['NaCl 0,9%', 'D5W'],
     compatible_in_syringe_or_bag: ['Preferir administrar como infusão dedicada quando possível (segurança e redução de erros).'],
     compatible_y_site_only: ['Se necessário, Y-site apenas com validação do serviço + flush e observação de turvação/precipitação.'],
     incompatible: [

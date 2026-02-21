@@ -34,15 +34,16 @@ export type Differential = {
   id: string // ID único para boost de comorbidades
   name: string
   category:
-    | 'INFLAMATORIA'
-    | 'INFECCIOSA'
-    | 'NEOPLASICA'
-    | 'VASCULAR'
-    | 'DEGENERATIVA'
-    | 'TRAUMATICA'
-    | 'TOXICO_METABOLICA'
-    | 'COMPRESSIVA'
-    | 'IDIOPATICA'
+  | 'INFLAMATORIA'
+  | 'INFECCIOSA'
+  | 'NEOPLASICA'
+  | 'VASCULAR'
+  | 'DEGENERATIVA'
+  | 'TRAUMATICA'
+  | 'TOXICO_METABOLICA'
+  | 'COMPRESSIVA'
+  | 'IDIOPATICA'
+  | 'ENDOCRINA'
   likelihood: number // 0-100
   why: string[]
   diagnostics: {

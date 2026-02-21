@@ -48,7 +48,7 @@ export type ComorbidityItem = {
   notes?: string // opcional (ex.: "DRC IRIS 3", "HCM", etc)
 }
 
-type Patient = {
+export type Patient = {
   species: Species | null
   ageYears: number | null
   ageMonths: number | null
@@ -61,7 +61,7 @@ type Patient = {
   comorbidities: ComorbidityItem[]
 }
 
-type ComplaintContext = {
+export type ComplaintContext = {
   chiefComplaintIds: string[] // ids dos cards de queixa
   temporalPattern: TemporalPattern | null
   evolutionPattern: EvolutionPattern | null

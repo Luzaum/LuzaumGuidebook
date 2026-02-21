@@ -179,7 +179,7 @@ export function LandingPage() {
                 <div className="relative z-10 w-full px-4 sm:px-8 lg:px-16 pointer-events-none h-full flex items-end sm:items-center">
                     {/* Card: full-width on mobile, max-xl on larger */}
                     <div className="w-full sm:max-w-lg md:max-w-xl mr-auto p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl animate-in fade-in slide-in-from-bottom sm:slide-in-from-left duration-700
-                          bg-background/70 sm:bg-blue-950/25 sm:dark:bg-blue-900/15 backdrop-blur-md border border-white/10 sm:border-blue-500/20 shadow-[0_8px_32px_rgba(0,0,0,0.24)]">
+                          bg-[#0a1532] backdrop-blur-md border border-white/10 sm:border-blue-500/20 shadow-[0_8px_32px_rgba(0,0,0,0.24)]">
 
                         {/* Badge */}
                         <div className="pointer-events-auto mb-4 sm:mb-6">
@@ -190,16 +190,16 @@ export function LandingPage() {
                         </div>
 
                         <div className="pointer-events-auto">
-                            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.1] mb-4 sm:mb-6 drop-shadow-sm">
+                            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-blue-50 leading-[1.1] mb-4 sm:mb-6 drop-shadow-sm">
                                 Medicina Veterinária de{' '}
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
                                     Alta Precisão
                                 </span>
                             </h1>
 
-                            <p className="text-base sm:text-lg md:text-xl text-foreground/80 sm:text-blue-50 dark:text-blue-100/90 leading-relaxed font-medium mb-6 sm:mb-8 drop-shadow-sm">
+                            <p className="text-base sm:text-lg md:text-xl text-blue-100/90 leading-relaxed font-medium mb-6 sm:mb-8 drop-shadow-sm">
                                 Ferramentas de decisão clínica baseadas nas últimas evidências de{' '}
-                                <strong className="text-foreground sm:text-white">Plumb's, Nelson & Couto, Ettinger, BSAVA, ACVIM</strong> e muito mais!
+                                <strong className="text-white">Plumb's, Nelson & Couto, Ettinger, BSAVA, ACVIM</strong> e muito mais!
                             </p>
 
                             <button
@@ -212,7 +212,7 @@ export function LandingPage() {
                         </div>
 
                         {/* Trust badges - hidden on tiny screens */}
-                        <div className="hidden sm:flex mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-white/10 flex-wrap gap-4 sm:gap-5 text-xs sm:text-sm font-medium text-foreground/70 sm:text-blue-100/80 pointer-events-auto">
+                        <div className="hidden sm:flex mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-white/10 flex-wrap gap-4 sm:gap-5 text-xs sm:text-sm font-medium text-blue-100/80 pointer-events-auto">
                             <div className="flex items-center gap-2">
                                 <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0" />
                                 <span>Validado por Especialistas</span>

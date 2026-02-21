@@ -241,10 +241,6 @@ export const metadonaProfile: DrugProfile = {
 
   // Seção 7: Compatibilidade
   compatibility: {
-    diluents_allowed: ['NaCl 0,9%', 'Ringer Lactato', 'Glicose 5%'],
-    diluents_ok: ['NaCl 0,9%', 'Ringer Lactato', 'Glicose 5%'],
-    diluentsAllowed: ['NaCl 0,9%', 'Ringer Lactato', 'Glicose 5%'],
-    diluents: ['NaCl 0,9%', 'Ringer Lactato', 'Glicose 5%'],
     compatible_in_syringe_or_bag: ['Cristaloides para administração IV (em linha correndo), com flushing adequado'],
     compatible_y_site_only: [
       'Protocolos com benzodiazepínicos/indutores devem preferir administração separada e flush entre fármacos (regra prática de segurança)',

@@ -10,8 +10,6 @@ export function ModuleIframe() {
   const location = useLocation()
   const { theme } = useTheme()
   const iframeRef = useRef<HTMLIFrameElement>(null)
-  const headerRef = useRef<HTMLDivElement>(null)
-  const [headerH, setHeaderH] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
   const module = getModuleByRoute(location.pathname)
 
@@ -23,18 +21,6 @@ export function ModuleIframe() {
     checkMobile()
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
-  }, [])
-
-  // Medir altura do header
-  useLayoutEffect(() => {
-    const updateHeaderHeight = () => {
-      if (headerRef.current) {
-        setHeaderH(headerRef.current.offsetHeight)
-      }
-    }
-    updateHeaderHeight()
-    window.addEventListener('resize', updateHeaderHeight)
-    return () => window.removeEventListener('resize', updateHeaderHeight)
   }, [])
 
   // Extrair origin do iframeUrl
@@ -99,10 +85,9 @@ export function ModuleIframe() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-background overflow-hidden">
+    <div className="h-[100dvh] flex flex-col bg-background overflow-hidden relative">
       <div
-        ref={headerRef}
-        className="border-b border-border bg-background/95 backdrop-blur-sm sticky top-0 z-10 flex-shrink-0"
+        className="border-b border-border bg-background/95 backdrop-blur-sm sticky top-0 z-10 flex-none"
       >
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
           <div className="flex items-center gap-2 sm:gap-4 min-w-0">
@@ -131,15 +116,12 @@ export function ModuleIframe() {
           )}
         </div>
       </div>
-      <main className="flex-1 min-h-0 overflow-hidden p-0 sm:p-6">
+      <main className="flex-1 overflow-hidden p-0 sm:p-6 w-full mx-auto max-w-7xl">
         <div
-          className={`mx-auto w-full max-w-7xl h-full overflow-hidden ${isMobile
-              ? 'rounded-none border-0'
-              : 'rounded-xl border border-border/50'
+          className={`h-full w-full overflow-hidden ${isMobile
+            ? 'rounded-none border-0'
+            : 'rounded-xl border border-border/50'
             }`}
-          style={{
-            height: headerH > 0 ? `calc(100dvh - ${headerH}px)` : '100dvh'
-          }}
         >
           <iframe
             ref={iframeRef}

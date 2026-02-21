@@ -3,18 +3,17 @@ import { useNavigate } from 'react-router-dom'
 import { modules } from '../modules/registry'
 import { ModuleCard } from '../components/ModuleCard'
 import { ArrowLeft, Layers } from 'lucide-react'
+import { AuroraBackground } from '../components/ui/aurora-background'
 
 export function Hub() {
     const navigate = useNavigate()
 
-    return (
-        <div className="relative w-full overflow-x-hidden">
-            {/* Background Decorativo */}
-            <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
-                <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] opacity-30 animate-pulse" />
-                <div className="absolute bottom-[-5%] left-[-5%] w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px] opacity-20" />
-            </div>
+    const premiumIds = ['neurologia', 'peconhentos', 'antibioticoterapia', 'transfusao-sanguinea', 'crivet', 'receituario-vet']
+    const premiumModules = modules.filter(m => premiumIds.includes(m.id))
+    const freeModules = modules.filter(m => !premiumIds.includes(m.id))
 
+    return (
+        <AuroraBackground className="w-full relative min-h-screen">
             <section className="py-10 sm:py-14 lg:py-16 relative">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -43,16 +42,41 @@ export function Hub() {
                         </p>
                     </div>
 
-                    {/* Grid de Módulos: 1 col on xs, 2 on sm, 3 on lg, 4 on xl */}
-                    <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                        {modules.map((module) => (
-                            <div key={module.id} className="transform transition-all duration-300 hover:-translate-y-1 active:scale-[0.98]">
-                                <ModuleCard module={module} />
-                            </div>
-                        ))}
+                    {/* FREE MODULES SECTION */}
+                    <div className="mb-14">
+                        <div className="flex justify-center mb-8">
+                            <span className="inline-flex items-center gap-1.5 rounded-md border border-green-500/30 bg-green-500/10 px-3 py-1 text-sm font-bold uppercase tracking-widest text-green-600 dark:text-green-400">
+                                <span className="h-2 w-2 rounded-full bg-green-500"></span>
+                                Essencial (Grátis)
+                            </span>
+                        </div>
+                        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                            {freeModules.map((module) => (
+                                <div key={module.id} className="transform transition-all duration-300 hover:-translate-y-1 active:scale-[0.98]">
+                                    <ModuleCard module={module} />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* PREMIUM MODULES SECTION */}
+                    <div className="mb-14">
+                        <div className="flex justify-center mb-8">
+                            <span className="inline-flex items-center gap-1.5 rounded-md border border-amber-500/40 bg-amber-500/10 px-3 py-1 text-sm font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400">
+                                <span className="h-2 w-2 rounded-full bg-amber-500"></span>
+                                Premium
+                            </span>
+                        </div>
+                        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                            {premiumModules.map((module) => (
+                                <div key={module.id} className="transform transition-all duration-300 hover:-translate-y-1 active:scale-[0.98]">
+                                    <ModuleCard module={module} />
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>
-        </div>
+        </AuroraBackground>
     )
 }
