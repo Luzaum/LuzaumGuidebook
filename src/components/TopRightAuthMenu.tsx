@@ -104,17 +104,17 @@ export function TopRightAuthMenu() {
           Área logada
         </DropdownMenuItem>
 
-        <DropdownMenuItem onSelect={() => navigate('/receituario-vet/configuracao')}>
+        <DropdownMenuItem onSelect={() => navigate('/conta/perfil')}>
           <UserRound className="mr-2 h-4 w-4" />
           Alterar perfil
         </DropdownMenuItem>
 
-        <DropdownMenuItem onSelect={() => navigate('/receituario-vet/configuracoes')}>
+        <DropdownMenuItem onSelect={() => navigate('/conta/configuracoes')}>
           <Settings className="mr-2 h-4 w-4" />
           Configurações
         </DropdownMenuItem>
 
-        <DropdownMenuItem onSelect={() => navigate('/clinic/setup')}>
+        <DropdownMenuItem onSelect={() => navigate('/conta/clinica')}>
           <Building2 className="mr-2 h-4 w-4" />
           Minha clínica
         </DropdownMenuItem>
