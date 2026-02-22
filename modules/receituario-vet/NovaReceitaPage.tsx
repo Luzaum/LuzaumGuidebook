@@ -2135,9 +2135,11 @@ export default function NovaReceitaPage() {
                             {item.controlled ? <p className="mt-1 text-xs font-bold text-amber-400">Receita controlada</p> : null}
                           </div>
                           <div className="flex flex-wrap items-center gap-2">
-                            <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${status === 'ok' ? 'border border-emerald-700/60 bg-emerald-500/10 text-emerald-300' : 'border border-amber-700/60 bg-amber-500/10 text-amber-300'}`}>
-                              {status === 'ok' ? 'OK' : 'incompleto'}
-                            </span>
+                            {status !== 'ok' ? (
+                              <span className="rounded-full border border-amber-700/60 bg-amber-500/10 px-2 py-0.5 text-xs font-semibold text-amber-300">
+                                incompleto
+                              </span>
+                            ) : null}
                             <button type="button" className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-xs hover:bg-[color:var(--rxv-surface)]" onClick={() => movePrescriptionItem(index, -1)}>↑</button>
                             <button type="button" className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-xs hover:bg-[color:var(--rxv-surface)]" onClick={() => movePrescriptionItem(index, 1)}>↓</button>
                             <button type="button" className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-xs hover:bg-[color:var(--rxv-surface)]" onClick={() => openEditModal(item)}>Editar</button>

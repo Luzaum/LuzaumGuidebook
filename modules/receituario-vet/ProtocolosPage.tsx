@@ -24,6 +24,7 @@ const ROUTE_OPTIONS: RouteGroup[] = ['ORAL', 'OTOLOGICO', 'OFTALMICO', 'TOPICO',
 const PRESENTATION_OPTIONS = ['Comprimido', 'Cápsula', 'Solução oral', 'Suspensão oral', 'Gotas', 'Injetável', 'Ampola', 'Pomada']
 const DOSE_UNIT_OPTIONS = ['mg/kg', 'mcg/kg', 'g/kg', 'mL/kg', 'UI/kg', 'comprimido/kg', 'gota/kg', 'mg', 'mL', 'comprimido', 'gota', 'cápsula']
 const CONCENTRATION_UNIT_OPTIONS = ['mg/mL', 'mg/comprimido', 'mg/cápsula', 'mcg/mL', 'UI/mL', 'g/mL', '%']
+const DEFAULT_CONCENTRATION_UNIT = CONCENTRATION_UNIT_OPTIONS[0]
 
 const COMMON_EXAMS = [
   'Hemograma completo',
@@ -79,6 +80,54 @@ function toNumber(raw: string): number | null {
   return parsed
 }
 
+function simulationGaugePercent(value: number | null): number {
+  if (value === null || !Number.isFinite(value) || value <= 0) return 10
+  const normalized = Math.log10(value + 1) / Math.log10(101)
+  return Math.max(10, Math.min(100, Math.round(normalized * 100)))
+}
+
+function joinConcentration(value: string, unit: string): string {
+  const normalizedValue = value.trim()
+  const normalizedUnit = unit.trim()
+  if (!normalizedValue) return ''
+  return normalizedUnit ? `${normalizedValue} ${normalizedUnit}` : normalizedValue
+}
+
+function splitConcentration(raw: string): { value: string; unit: string } {
+  const normalized = raw.trim()
+  if (!normalized) return { value: '', unit: DEFAULT_CONCENTRATION_UNIT }
+  const foundUnit = CONCENTRATION_UNIT_OPTIONS.find((unit) =>
+    normalized.toLowerCase().endsWith(unit.toLowerCase())
+  )
+  if (!foundUnit) {
+    return { value: normalized, unit: DEFAULT_CONCENTRATION_UNIT }
+  }
+  const value = normalized.slice(0, normalized.length - foundUnit.length).trim()
+  return {
+    value,
+    unit: foundUnit,
+  }
+}
+
+function createManualProtocolItemDraft(): RxProtocol['items'][number] {
+  const base = createDefaultItem('medication', 'ORAL')
+  return {
+    ...base,
+    name: '',
+    presentation: '',
+    concentration: '',
+    doseValue: '',
+    doseUnit: 'mg/kg',
+    durationDays: '',
+    frequencyType: 'timesPerDay',
+    timesPerDay: '',
+    everyHours: '',
+    instruction: '',
+    observations: '',
+    controlled: false,
+  }
+}
+
 export default function ProtocolosPage() {
   const navigate = useNavigate()
   const initialDb = useMemo(() => loadRxDb(), [])
@@ -97,7 +146,9 @@ export default function ProtocolosPage() {
   const [selectedDrugPresentationId, setSelectedDrugPresentationId] = useState(initialDb.catalog[0]?.presentations[0]?.id || '')
   const [addItemModalOpen, setAddItemModalOpen] = useState(false)
   const [addItemMode, setAddItemMode] = useState<'catalogo' | 'manual'>('catalogo')
-  const [manualItemDraft, setManualItemDraft] = useState(() => createDefaultItem('medication'))
+  const [manualItemDraft, setManualItemDraft] = useState(() => createManualProtocolItemDraft())
+  const [manualConcentrationValue, setManualConcentrationValue] = useState('')
+  const [manualConcentrationUnit, setManualConcentrationUnit] = useState(DEFAULT_CONCENTRATION_UNIT)
   const [simulationWeightKg, setSimulationWeightKg] = useState(10)
   const [simulationWeightInput, setSimulationWeightInput] = useState('10')
   const [draft, setDraft] = useState<RxProtocol>(() => initialDb.protocols[0] ? cloneProtocol(initialDb.protocols[0]) : createEmptyProtocol(initialDb.protocolFolders[0]?.id))
@@ -194,7 +245,9 @@ export default function ProtocolosPage() {
   }
 
   const addManualItem = () => {
+    if (!manualItemDraft.name.trim()) return
     const fresh = createDefaultItem('medication')
+    const concentration = joinConcentration(manualConcentrationValue, manualConcentrationUnit)
     setDraft((prev) => ({
       ...prev,
       requiresSpecialControl: prev.requiresSpecialControl || !!manualItemDraft.controlled,
@@ -202,19 +255,24 @@ export default function ProtocolosPage() {
         ...prev.items,
         {
           ...manualItemDraft,
+          concentration,
           id: fresh.id,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
         },
       ],
     }))
-    setManualItemDraft(createDefaultItem('medication'))
+    setManualItemDraft(createManualProtocolItemDraft())
+    setManualConcentrationValue('')
+    setManualConcentrationUnit(DEFAULT_CONCENTRATION_UNIT)
     setAddItemModalOpen(false)
   }
 
   const openAddItemModal = () => {
     setAddItemMode('catalogo')
-    setManualItemDraft(createDefaultItem('medication'))
+    setManualItemDraft(createManualProtocolItemDraft())
+    setManualConcentrationValue('')
+    setManualConcentrationUnit(DEFAULT_CONCENTRATION_UNIT)
     setAddItemModalOpen(true)
   }
 
@@ -300,18 +358,18 @@ export default function ProtocolosPage() {
         </>
       }
     >
-      <div className="grid grid-cols-1 gap-6 xl:grid-cols-12">
-        <aside className="rxv-card p-4 xl:col-span-3">
+      <div className="rxv-protocol-layout grid grid-cols-1 gap-6 xl:grid-cols-12">
+        <aside className="rxv-card rxv-protocol-glass rxv-protocol-rail p-4 xl:col-span-3">
           <div className="mb-3 flex items-center justify-between">
             <h3 className="text-sm font-black uppercase tracking-wide text-[color:var(--rxv-muted)]">Pastas</h3>
             <button type="button" className="rxv-btn-secondary px-2 py-1 text-xs" onClick={() => setFolderModalOpen(true)}>Gerenciar</button>
           </div>
           <div className="mb-3 grid grid-cols-1 gap-2">
-            <button type="button" className={`rounded-lg border px-3 py-2 text-left text-xs font-semibold ${selectedFolderId === 'all' ? 'border-[#39ff14]/50 bg-[#39ff14]/12' : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]'}`} onClick={() => setSelectedFolderId('all')}>
+            <button type="button" className={`rxv-protocol-chip rounded-lg border px-3 py-2 text-left text-xs font-semibold ${selectedFolderId === 'all' ? 'border-[#39ff14]/50 bg-[#39ff14]/12' : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]'}`} onClick={() => setSelectedFolderId('all')}>
               Todos
             </button>
             {folders.map((folder) => (
-              <button key={folder.id} type="button" className={`rounded-lg border px-3 py-2 text-left text-xs font-semibold ${selectedFolderId === folder.id ? 'border-[#39ff14]/50 bg-[#39ff14]/12' : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]'}`} onClick={() => setSelectedFolderId(folder.id)}>
+              <button key={folder.id} type="button" className={`rxv-protocol-chip rounded-lg border px-3 py-2 text-left text-xs font-semibold ${selectedFolderId === folder.id ? 'border-[#39ff14]/50 bg-[#39ff14]/12' : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]'}`} onClick={() => setSelectedFolderId(folder.id)}>
                 <span className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-[15px]" style={{ color: folder.color }}>{folder.icon}</span>
                   {folder.name}
@@ -319,10 +377,10 @@ export default function ProtocolosPage() {
               </button>
             ))}
           </div>
-          <input className="mb-3 w-full rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-3 py-2 text-sm" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Buscar protocolo..." />
+          <input className="rxv-protocol-search mb-3 w-full rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-3 py-2 text-sm" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Buscar protocolo..." />
           <div className="max-h-[58vh] space-y-2 overflow-y-auto pr-1">
             {visibleProtocols.map((protocol) => (
-              <button key={protocol.id} type="button" className={`w-full rounded-xl border px-3 py-2 text-left ${selectedProtocolId === protocol.id ? 'border-[#5de747]/50 bg-[#5de747]/10' : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/70'}`} onClick={() => selectProtocol(protocol)}>
+              <button key={protocol.id} type="button" className={`rxv-protocol-list-item w-full rounded-xl border px-3 py-2 text-left ${selectedProtocolId === protocol.id ? 'border-[#5de747]/50 bg-[#5de747]/10' : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/70'}`} onClick={() => selectProtocol(protocol)}>
                 <p className="text-sm font-bold">{protocol.name}</p>
                 <p className="text-xs text-[color:var(--rxv-muted)]">{protocol.items.length} fármacos - {protocol.durationLabel || 'duração livre'}</p>
                 {protocol.requiresSpecialControl ? (
@@ -335,33 +393,33 @@ export default function ProtocolosPage() {
           </div>
         </aside>
 
-        <main className="space-y-6 xl:col-span-6">
-          <section className="rxv-card p-5">
+        <main className="space-y-6 xl:col-span-6 rxv-protocol-main rxv-protocol-form">
+          <section className="rxv-card rxv-protocol-glass p-5">
             <div className="mb-3 flex items-center justify-between">
               <h2 className="text-lg font-bold">Dados do Protocolo</h2>
               <button type="button" className="rounded border border-red-800/70 px-3 py-1 text-xs text-red-300 hover:bg-red-950/40" onClick={deleteProtocolDraft}>Excluir</button>
             </div>
-            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-              <label className="text-xs text-[color:var(--rxv-muted)] md:col-span-2">Nome
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 rxv-protocol-drug-fields">
+              <label className="rxv-protocol-field text-xs text-[color:var(--rxv-muted)] md:col-span-2">Nome
                 <input className="mt-1 w-full px-3 py-2" value={draft.name} onChange={(e) => setDraft((prev) => ({ ...prev, name: e.target.value }))} />
               </label>
-              <label className="text-xs text-[color:var(--rxv-muted)] md:col-span-2">Descrição
+              <label className="rxv-protocol-field text-xs text-[color:var(--rxv-muted)] md:col-span-2">Descrição
                 <textarea className="mt-1 w-full px-3 py-2" rows={2} value={draft.summary} onChange={(e) => setDraft((prev) => ({ ...prev, summary: e.target.value }))} />
               </label>
-              <label className="text-xs text-[color:var(--rxv-muted)]">Pasta
+              <label className="rxv-protocol-field text-xs text-[color:var(--rxv-muted)]">Pasta
                 <select className="mt-1 w-full px-3 py-2" value={draft.folderId} onChange={(e) => setDraft((prev) => ({ ...prev, folderId: e.target.value }))}>
                   {folders.map((folder) => <option key={folder.id} value={folder.id}>{folder.name}</option>)}
                 </select>
               </label>
-              <label className="text-xs text-[color:var(--rxv-muted)]">Espécie
+              <label className="rxv-protocol-field text-xs text-[color:var(--rxv-muted)]">Espécie
                 <select className="mt-1 w-full px-3 py-2" value={draft.species} onChange={(e) => setDraft((prev) => ({ ...prev, species: e.target.value as RxProtocol['species'] }))}>
                   <option value="Caes">Cães</option><option value="Gatos">Gatos</option><option value="Geral">Geral</option>
                 </select>
               </label>
-              <label className="text-xs text-[color:var(--rxv-muted)]">Duração resumida
+              <label className="rxv-protocol-field text-xs text-[color:var(--rxv-muted)]">Duração resumida
                 <input className="mt-1 w-full px-3 py-2" value={draft.durationLabel} onChange={(e) => setDraft((prev) => ({ ...prev, durationLabel: e.target.value }))} placeholder="Ex.: 7 dias" />
               </label>
-              <label className="text-xs text-[color:var(--rxv-muted)]">Tags (virgula)
+              <label className="rxv-protocol-field text-xs text-[color:var(--rxv-muted)]">Tags (vírgula)
                 <input className="mt-1 w-full px-3 py-2" value={draft.tags.join(', ')} onChange={(e) => setDraft((prev) => ({ ...prev, tags: e.target.value.split(',').map((item) => item.trim()).filter(Boolean) }))} />
               </label>
               <label className="flex items-center gap-2 text-xs text-[color:var(--rxv-muted)] md:col-span-2">
@@ -376,7 +434,7 @@ export default function ProtocolosPage() {
             </div>
           </section>
 
-          <section className="rxv-card p-5">
+          <section className="rxv-card rxv-protocol-glass p-5">
             <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
               <h2 className="text-lg font-bold">Fármacos do Protocolo</h2>
               <button type="button" className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-1.5 text-xs" onClick={openAddItemModal}>
@@ -384,63 +442,121 @@ export default function ProtocolosPage() {
                 Adicionar medicamento
               </button>
             </div>
-            <div className="space-y-2">
-              {draft.items.map((item, idx) => (
-                <div key={item.id} className="rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/60 p-3">
-                  <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-                    <p className="text-sm font-bold">Item {idx + 1}</p>
-                    <div className="flex items-center gap-2">
-                      <label className="flex items-center gap-1 text-[11px] text-slate-300">
-                        <input
-                          type="checkbox"
-                          className="h-3.5 w-3.5 rounded"
-                          checked={!!item.controlled}
-                          onChange={(e) => updateItem(idx, { controlled: e.target.checked })}
-                        />
-                        Controlado
-                      </label>
-                      <button type="button" className="rounded border border-red-800/70 px-2 py-1 text-[11px] text-red-300 hover:bg-red-950/40" onClick={() => setDraft((prev) => ({ ...prev, items: prev.items.filter((_, i) => i !== idx) }))}>Remover</button>
+            <div className="rxv-protocol-order-hint mb-3 rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/70 px-3 py-2 text-xs text-[color:var(--rxv-muted)]">
+              Ordem de preenchimento: Nome + apresentação · Concentração (valor + unidade) · Dose (valor + unidade) · Via + duração · Frequência + vezes ao dia/intervalo.
+            </div>
+            <div className="space-y-2 rxv-protocol-drug-fields">
+              {draft.items.map((item, idx) => {
+                const concentrationParts = splitConcentration(item.concentration)
+                return (
+                  <div key={item.id} className="rxv-protocol-drug-card rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/60 p-3">
+                    <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+                      <p className="text-sm font-bold">Item {idx + 1}</p>
+                      <div className="flex items-center gap-2">
+                        <label className="flex items-center gap-1 text-[11px] text-slate-300">
+                          <input
+                            type="checkbox"
+                            className="h-3.5 w-3.5 rounded"
+                            checked={!!item.controlled}
+                            onChange={(e) => updateItem(idx, { controlled: e.target.checked })}
+                          />
+                          Controlado
+                        </label>
+                        <button type="button" className="rounded border border-red-800/70 px-2 py-1 text-[11px] text-red-300 hover:bg-red-950/40" onClick={() => setDraft((prev) => ({ ...prev, items: prev.items.filter((_, i) => i !== idx) }))}>Remover</button>
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+                        <label className="rxv-protocol-field text-[11px] font-semibold uppercase tracking-wide text-[color:var(--rxv-muted)]">
+                          Nome do medicamento
+                          <input className="mt-1 px-2 py-1.5 text-sm" value={item.name} onChange={(e) => updateItem(idx, { name: e.target.value })} placeholder="Ex.: Amoxicilina + Clavulanato" />
+                        </label>
+                        <label className="rxv-protocol-field text-[11px] font-semibold uppercase tracking-wide text-[color:var(--rxv-muted)]">
+                          Apresentação
+                          <select className="mt-1 px-2 py-1.5 text-sm" value={item.presentation} onChange={(e) => updateItem(idx, { presentation: e.target.value })}>
+                            <option value="">Selecione</option>
+                            {PRESENTATION_OPTIONS.map((presentation) => <option key={presentation} value={presentation}>{presentation}</option>)}
+                          </select>
+                        </label>
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+                        <label className="rxv-protocol-field text-[11px] font-semibold uppercase tracking-wide text-[color:var(--rxv-muted)]">
+                          Concentração (valor)
+                          <input
+                            className="mt-1 px-2 py-1.5 text-sm"
+                            value={concentrationParts.value}
+                            onChange={(e) => updateItem(idx, { concentration: joinConcentration(e.target.value, concentrationParts.unit) })}
+                            placeholder="Ex.: 250"
+                          />
+                        </label>
+                        <label className="rxv-protocol-field text-[11px] font-semibold uppercase tracking-wide text-[color:var(--rxv-muted)]">
+                          Medida da concentração
+                          <select
+                            className="mt-1 px-2 py-1.5 text-sm"
+                            value={concentrationParts.unit}
+                            onChange={(e) => updateItem(idx, { concentration: joinConcentration(concentrationParts.value, e.target.value) })}
+                          >
+                            {CONCENTRATION_UNIT_OPTIONS.map((unit) => <option key={unit} value={unit}>{unit}</option>)}
+                          </select>
+                        </label>
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+                        <label className="rxv-protocol-field text-[11px] font-semibold uppercase tracking-wide text-[color:var(--rxv-muted)]">
+                          Dose (valor)
+                          <input className="mt-1 px-2 py-1.5 text-sm" value={item.doseValue} onChange={(e) => updateItem(idx, { doseValue: e.target.value })} placeholder="Ex.: 25" />
+                        </label>
+                        <label className="rxv-protocol-field text-[11px] font-semibold uppercase tracking-wide text-[color:var(--rxv-muted)]">
+                          Unidade da dose
+                          <select className="mt-1 px-2 py-1.5 text-sm" value={item.doseUnit} onChange={(e) => updateItem(idx, { doseUnit: e.target.value })}>
+                            {DOSE_UNIT_OPTIONS.map((unit) => <option key={unit} value={unit}>{unit}</option>)}
+                          </select>
+                        </label>
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+                        <label className="rxv-protocol-field text-[11px] font-semibold uppercase tracking-wide text-[color:var(--rxv-muted)]">
+                          Via
+                          <select className="mt-1 px-2 py-1.5 text-sm" value={item.routeGroup} onChange={(e) => updateItem(idx, { routeGroup: e.target.value as RouteGroup })}>
+                            {ROUTE_OPTIONS.map((route) => <option key={route} value={route}>{route}</option>)}
+                          </select>
+                        </label>
+                        <label className="rxv-protocol-field text-[11px] font-semibold uppercase tracking-wide text-[color:var(--rxv-muted)]">
+                          Duração (dias)
+                          <input className="mt-1 px-2 py-1.5 text-sm" value={item.durationDays} onChange={(e) => updateItem(idx, { durationDays: e.target.value })} placeholder="Ex.: 7" />
+                        </label>
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+                        <label className="rxv-protocol-field text-[11px] font-semibold uppercase tracking-wide text-[color:var(--rxv-muted)]">
+                          Frequência
+                          <select className="mt-1 px-2 py-1.5 text-sm" value={item.frequencyType} onChange={(e) => updateItem(idx, { frequencyType: e.target.value as RxProtocol['items'][number]['frequencyType'] })}>
+                            <option value="timesPerDay">X vezes ao dia</option>
+                            <option value="everyHours">A cada X horas</option>
+                          </select>
+                        </label>
+                        {item.frequencyType === 'everyHours' ? (
+                          <label className="rxv-protocol-field text-[11px] font-semibold uppercase tracking-wide text-[color:var(--rxv-muted)]">
+                            Intervalo em horas
+                            <input className="mt-1 px-2 py-1.5 text-sm" value={item.everyHours} onChange={(e) => updateItem(idx, { everyHours: e.target.value })} placeholder="Ex.: 12" />
+                          </label>
+                        ) : (
+                          <label className="rxv-protocol-field text-[11px] font-semibold uppercase tracking-wide text-[color:var(--rxv-muted)]">
+                            Vezes ao dia
+                            <input className="mt-1 px-2 py-1.5 text-sm" value={item.timesPerDay} onChange={(e) => updateItem(idx, { timesPerDay: e.target.value })} placeholder="Ex.: 2" />
+                          </label>
+                        )}
+                      </div>
                     </div>
                   </div>
-                  <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
-                    <input className="px-2 py-1.5 text-sm" value={item.name} onChange={(e) => updateItem(idx, { name: e.target.value })} placeholder="Nome" />
-                    <input
-                      list="rx-concentration-hints"
-                      className="px-2 py-1.5 text-sm"
-                      value={item.concentration}
-                      onChange={(e) => updateItem(idx, { concentration: e.target.value })}
-                      placeholder="Concentração"
-                    />
-                    <input className="px-2 py-1.5 text-sm" value={item.doseValue} onChange={(e) => updateItem(idx, { doseValue: e.target.value })} placeholder="Dose" />
-                    <select className="px-2 py-1.5 text-sm" value={item.doseUnit} onChange={(e) => updateItem(idx, { doseUnit: e.target.value })}>
-                      {DOSE_UNIT_OPTIONS.map((unit) => <option key={unit} value={unit}>{unit}</option>)}
-                    </select>
-                    <select className="px-2 py-1.5 text-sm" value={item.routeGroup} onChange={(e) => updateItem(idx, { routeGroup: e.target.value as RouteGroup })}>
-                      {ROUTE_OPTIONS.map((route) => <option key={route} value={route}>{route}</option>)}
-                    </select>
-                    <select className="px-2 py-1.5 text-sm" value={item.presentation} onChange={(e) => updateItem(idx, { presentation: e.target.value })}>
-                      {PRESENTATION_OPTIONS.map((presentation) => <option key={presentation} value={presentation}>{presentation}</option>)}
-                    </select>
-                    <input className="px-2 py-1.5 text-sm" value={item.durationDays} onChange={(e) => updateItem(idx, { durationDays: e.target.value })} placeholder="Duração (dias)" />
-                    <select className="px-2 py-1.5 text-sm" value={item.frequencyType} onChange={(e) => updateItem(idx, { frequencyType: e.target.value as RxProtocol['items'][number]['frequencyType'] })}>
-                      <option value="timesPerDay">X vezes ao dia</option>
-                      <option value="everyHours">A cada X horas</option>
-                    </select>
-                    {item.frequencyType === 'everyHours' ? (
-                      <input className="px-2 py-1.5 text-sm" value={item.everyHours} onChange={(e) => updateItem(idx, { everyHours: e.target.value })} placeholder="Intervalo em horas" />
-                    ) : (
-                      <input className="px-2 py-1.5 text-sm" value={item.timesPerDay} onChange={(e) => updateItem(idx, { timesPerDay: e.target.value })} placeholder="Vezes ao dia" />
-                    )}
-                  </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
-            <datalist id="rx-concentration-hints">
-              {CONCENTRATION_UNIT_OPTIONS.map((option) => <option key={option} value={option} />)}
-            </datalist>
           </section>
 
-          <section className="rxv-card p-5">
+          <section className="rxv-card rxv-protocol-glass p-5">
             <h2 className="mb-3 text-lg font-bold">Recomendações e Exames</h2>
             <div className="space-y-2">
               {draft.recommendations.map((line, idx) => (
@@ -506,8 +622,8 @@ export default function ProtocolosPage() {
             </div>
           </section>
         </main>
-        <aside className="space-y-4 xl:col-span-3">
-          <section className="rxv-card p-5">
+        <aside className="space-y-4 xl:col-span-3 rxv-protocol-side">
+          <section className="rxv-card rxv-protocol-glass p-5">
             <h3 className="mb-3 text-sm font-black uppercase tracking-wide text-[color:var(--rxv-muted)]">Resumo</h3>
             <p className="text-lg font-bold">{draft.name || 'Novo Protocolo'}</p>
             <p className="text-sm text-[color:var(--rxv-muted)]">{draft.items.length} fármacos - {draft.recommendations.length} recomendações</p>
@@ -520,7 +636,7 @@ export default function ProtocolosPage() {
             </div>
           </section>
 
-          <section className="rxv-card p-5">
+          <section className="rxv-card rxv-protocol-glass p-5">
             <div className="mb-3 flex items-center gap-2">
               <span className="material-symbols-outlined text-[#39ff14]">science</span>
               <h3 className="text-sm font-black uppercase tracking-wide text-[color:var(--rxv-muted)]">Simulação de Dose</h3>
@@ -575,10 +691,19 @@ export default function ProtocolosPage() {
             <div className="space-y-2">
               {draft.items.slice(0, 4).map((item) => {
                 const quantity = calculateMedicationQuantity(item, simulationState)
+                const gauge = simulationGaugePercent(quantity.perDose)
+                const gaugeStyle = { ['--rxv-dose-gauge' as '--rxv-dose-gauge']: `${gauge}%` } as React.CSSProperties
                 return (
-                  <div key={`sim-${item.id}`} className="rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/60 p-3">
-                    <p className="text-sm font-bold">{item.name || 'Item sem nome'}</p>
-                    <p className="text-xs text-[color:var(--rxv-muted)]">{item.presentation || 'Sem apresentação'} - {item.concentration || 'Sem concentração'}</p>
+                  <div key={`sim-${item.id}`} className="rxv-protocol-sim-card rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/60 p-3" style={gaugeStyle}>
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <p className="text-sm font-bold">{item.name || 'Item sem nome'}</p>
+                        <p className="text-xs text-[color:var(--rxv-muted)]">{item.presentation || 'Sem apresentação'} - {item.concentration || 'Sem concentração'}</p>
+                      </div>
+                      <div className="rxv-dose-meter" aria-hidden="true">
+                        <span>{quantity.perDose !== null ? quantity.perDose.toFixed(1) : '--'}</span>
+                      </div>
+                    </div>
                     <p className="mt-1 text-sm font-semibold text-[#7bf069]">
                       {quantity.perDose !== null
                         ? `${quantity.perDose.toFixed(2)} ${quantity.unit || 'unidade'} por dose`
@@ -600,7 +725,7 @@ export default function ProtocolosPage() {
 
       {addItemModalOpen ? (
         <div className="fixed inset-0 z-[95] flex items-center justify-center bg-black/60 px-4 py-8" onClick={() => setAddItemModalOpen(false)}>
-          <div className="w-full max-w-3xl rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface)] p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+          <div className="rxv-protocol-modal w-full max-w-3xl rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface)] p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="mb-4 flex items-center justify-between">
               <h3 className="text-lg font-bold">Adicionar medicamento ao protocolo</h3>
               <button type="button" className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-xs" onClick={() => setAddItemModalOpen(false)}>
@@ -627,8 +752,8 @@ export default function ProtocolosPage() {
 
             {addItemMode === 'catalogo' ? (
               <div className="space-y-4">
-                <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-                  <label className="text-xs text-[color:var(--rxv-muted)]">
+                <div className="grid grid-cols-1 gap-3 md:grid-cols-2 rxv-protocol-drug-fields">
+                  <label className="rxv-protocol-field text-xs text-[color:var(--rxv-muted)]">
                     Fármaco do catálogo
                     <select
                       className="mt-1 w-full px-3 py-2"
@@ -647,7 +772,7 @@ export default function ProtocolosPage() {
                       ))}
                     </select>
                   </label>
-                  <label className="text-xs text-[color:var(--rxv-muted)]">
+                  <label className="rxv-protocol-field text-xs text-[color:var(--rxv-muted)]">
                     Apresentação
                     <select
                       className="mt-1 w-full px-3 py-2"
@@ -680,16 +805,20 @@ export default function ProtocolosPage() {
               </div>
             ) : (
               <div className="space-y-4">
-                <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-                  <label className="text-xs text-[color:var(--rxv-muted)]">
+                <div className="rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/65 p-3 text-xs text-[color:var(--rxv-muted)]">
+                  Preencha sem valores pré-definidos seguindo a ordem clínica de cadastro.
+                </div>
+                <div className="grid grid-cols-1 gap-3 md:grid-cols-2 rxv-protocol-drug-fields">
+                  <label className="rxv-protocol-field text-xs text-[color:var(--rxv-muted)]">
                     Nome do medicamento
                     <input
                       className="mt-1 w-full px-3 py-2"
                       value={manualItemDraft.name}
                       onChange={(e) => setManualItemDraft((prev) => ({ ...prev, name: e.target.value }))}
+                      placeholder="Ex.: Dipirona Sódica"
                     />
                   </label>
-                  <label className="text-xs text-[color:var(--rxv-muted)]">
+                  <label className="rxv-protocol-field text-xs text-[color:var(--rxv-muted)]">
                     Apresentação
                     <select
                       className="mt-1 w-full px-3 py-2"
@@ -704,25 +833,42 @@ export default function ProtocolosPage() {
                       ))}
                     </select>
                   </label>
-                  <label className="text-xs text-[color:var(--rxv-muted)]">
-                    Concentração / força
+
+                  <label className="rxv-protocol-field text-xs text-[color:var(--rxv-muted)]">
+                    Concentração (valor)
                     <input
                       className="mt-1 w-full px-3 py-2"
-                      value={manualItemDraft.concentration}
-                      onChange={(e) => setManualItemDraft((prev) => ({ ...prev, concentration: e.target.value }))}
-                      placeholder="Ex.: 250 mg/comprimido"
+                      value={manualConcentrationValue}
+                      onChange={(e) => setManualConcentrationValue(e.target.value)}
+                      placeholder="Ex.: 500"
                     />
                   </label>
-                  <label className="text-xs text-[color:var(--rxv-muted)]">
-                    Dose
+                  <label className="rxv-protocol-field text-xs text-[color:var(--rxv-muted)]">
+                    Medida da concentração
+                    <select
+                      className="mt-1 w-full px-3 py-2"
+                      value={manualConcentrationUnit}
+                      onChange={(e) => setManualConcentrationUnit(e.target.value)}
+                    >
+                      {CONCENTRATION_UNIT_OPTIONS.map((unit) => (
+                        <option key={unit} value={unit}>
+                          {unit}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+
+                  <label className="rxv-protocol-field text-xs text-[color:var(--rxv-muted)]">
+                    Dose (valor)
                     <input
                       className="mt-1 w-full px-3 py-2"
                       value={manualItemDraft.doseValue}
                       onChange={(e) => setManualItemDraft((prev) => ({ ...prev, doseValue: e.target.value }))}
+                      placeholder="Ex.: 25"
                     />
                   </label>
-                  <label className="text-xs text-[color:var(--rxv-muted)]">
-                    Unidade de dose
+                  <label className="rxv-protocol-field text-xs text-[color:var(--rxv-muted)]">
+                    Unidade da dose
                     <select
                       className="mt-1 w-full px-3 py-2"
                       value={manualItemDraft.doseUnit}
@@ -735,7 +881,8 @@ export default function ProtocolosPage() {
                       ))}
                     </select>
                   </label>
-                  <label className="text-xs text-[color:var(--rxv-muted)]">
+
+                  <label className="rxv-protocol-field text-xs text-[color:var(--rxv-muted)]">
                     Via
                     <select
                       className="mt-1 w-full px-3 py-2"
@@ -749,15 +896,17 @@ export default function ProtocolosPage() {
                       ))}
                     </select>
                   </label>
-                  <label className="text-xs text-[color:var(--rxv-muted)]">
+                  <label className="rxv-protocol-field text-xs text-[color:var(--rxv-muted)]">
                     Duração (dias)
                     <input
                       className="mt-1 w-full px-3 py-2"
                       value={manualItemDraft.durationDays}
                       onChange={(e) => setManualItemDraft((prev) => ({ ...prev, durationDays: e.target.value }))}
+                      placeholder="Ex.: 7"
                     />
                   </label>
-                  <label className="text-xs text-[color:var(--rxv-muted)]">
+
+                  <label className="rxv-protocol-field text-xs text-[color:var(--rxv-muted)]">
                     Frequência
                     <select
                       className="mt-1 w-full px-3 py-2"
@@ -771,24 +920,27 @@ export default function ProtocolosPage() {
                     </select>
                   </label>
                   {manualItemDraft.frequencyType === 'everyHours' ? (
-                    <label className="text-xs text-[color:var(--rxv-muted)]">
+                    <label className="rxv-protocol-field text-xs text-[color:var(--rxv-muted)]">
                       Intervalo (horas)
                       <input
                         className="mt-1 w-full px-3 py-2"
                         value={manualItemDraft.everyHours}
                         onChange={(e) => setManualItemDraft((prev) => ({ ...prev, everyHours: e.target.value }))}
+                        placeholder="Ex.: 12"
                       />
                     </label>
                   ) : (
-                    <label className="text-xs text-[color:var(--rxv-muted)]">
+                    <label className="rxv-protocol-field text-xs text-[color:var(--rxv-muted)]">
                       Vezes ao dia
                       <input
                         className="mt-1 w-full px-3 py-2"
                         value={manualItemDraft.timesPerDay}
                         onChange={(e) => setManualItemDraft((prev) => ({ ...prev, timesPerDay: e.target.value }))}
+                        placeholder="Ex.: 2"
                       />
                     </label>
                   )}
+
                   <label className="flex items-center gap-2 text-xs text-[color:var(--rxv-muted)] md:col-span-2">
                     <input
                       type="checkbox"
@@ -814,7 +966,7 @@ export default function ProtocolosPage() {
 
       {folderModalOpen ? (
         <div className="fixed inset-0 z-[90] flex items-center justify-center bg-black/60 px-4 py-8" onClick={() => setFolderModalOpen(false)}>
-          <div className="w-full max-w-2xl rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface)] p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+          <div className="rxv-protocol-modal w-full max-w-2xl rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface)] p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="mb-4 flex items-center justify-between">
               <h3 className="text-lg font-bold text-white">Gerenciar Pastas</h3>
               <button type="button" className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-xs" onClick={() => setFolderModalOpen(false)}>Fechar</button>
@@ -847,5 +999,8 @@ export default function ProtocolosPage() {
     </ReceituarioChrome>
   )
 }
+
+
+
 
 

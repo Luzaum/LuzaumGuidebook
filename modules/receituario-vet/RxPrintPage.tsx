@@ -125,6 +125,15 @@ function onlyDigits(value: string): string {
   return value.replace(/\D/g, '')
 }
 
+function normalizeWhatsAppPhone(value: string): string {
+  const digits = onlyDigits(value)
+  if (!digits) return ''
+  if (digits.startsWith('00')) return digits.slice(2)
+  if (digits.startsWith('55')) return digits
+  if (digits.length === 10 || digits.length === 11) return `55${digits}`
+  return digits
+}
+
 function sanitizeFilePart(value: string): string {
   return (value || 'SEM_DADO')
     .normalize('NFD')
@@ -447,21 +456,24 @@ export default function RxPrintPage() {
   }
 
   const openWhatsApp = async () => {
-    const phone = onlyDigits(share.whatsappPhone)
+    const phone = normalizeWhatsAppPhone(share.whatsappPhone)
     if (!phone) {
       pushToast('Informe o telefone para WhatsApp.')
       return
     }
 
-    const file = await buildPdfFile()
-    const shared = await tryShareFile(file, 'Receita Veterinária', share.whatsappMessage)
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(share.whatsappMessage)}`, '_blank', 'noopener,noreferrer')
-    if (shared) {
-      pushToast('WhatsApp aberto com mensagem e PDF compartilhado.')
-      return
+    const message = (share.whatsappMessage || '').trim()
+    const query = message ? `?text=${encodeURIComponent(message)}` : ''
+    window.open(`https://wa.me/${phone}${query}`, '_blank', 'noopener,noreferrer')
+    pushToast('WhatsApp aberto direto na conversa para revisão da mensagem.')
+
+    try {
+      const file = await buildPdfFile()
+      triggerFileDownload(file)
+      pushToast('PDF baixado para anexar na conversa do WhatsApp.')
+    } catch {
+      pushToast('WhatsApp aberto. Não foi possível preparar o PDF neste momento.')
     }
-    triggerFileDownload(file)
-    pushToast('WhatsApp aberto para revisão da mensagem. PDF baixado para anexar.')
   }
 
   const openEmail = async () => {

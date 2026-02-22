@@ -484,7 +484,7 @@ export default function TemplatesPage() {
         </main>
 
         <aside className="xl:col-span-4">
-          <div className="sticky top-24 max-h-[calc(100vh-120px)] space-y-3 overflow-hidden">
+          <div className="sticky top-24 max-h-[calc(100vh-120px)] space-y-3 overflow-y-auto pr-1">
             <div className="rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] p-2 text-xs text-[color:var(--rxv-muted)]">
               Área ativa: <strong className="text-[color:var(--rxv-text)]">{ZONE_LABELS.find((zone) => zone.key === activeZone)?.label}</strong>
             </div>

@@ -84,7 +84,10 @@ export const vasopressinaProfile: DrugProfile = {
   ],
 
   doses: {
-    unit_standard_cri: 'mukgmin', // Mili-unidades/kg/min
+    // 🆘 CRÍTICO — UNIDADES: dose em mU/kg/min (MILIUNIDADES por kg por minuto)
+    // A ampola comercial é 20 U/mL (= 20.000 mU/mL). Confundir U com mU = erro 1000×
+    // Engine verifica: se concentração inserida >= 10 U/mL → bloqueia e exige pré-diluição
+    unit_standard_cri: 'mukgmin', // mU/kg/min — MILIUNIDADES (1 U = 1.000 mU)
     dog: {
       bolus: {
         ukg: { min: 0.8, max: 0.8, note: 'PCR APENAS: 0.8 U/kg IV dose única (alternativa à epinefrina). Em choque: CRI apenas.' },
@@ -172,22 +175,29 @@ export const vasopressinaProfile: DrugProfile = {
 
   dilution_and_preparation: {
     hard_rules: [
-      'NUNCA confundir Unidades (U) com Miliunidades (mU). Erro de 1000x é fatal (necrose/isquemia maciça).',
-      'Diluir sempre. A ampola é muito concentrada (20 U/mL) para uso direto em CRI.',
-      'CRI OBRIGATÓRIA para choque (não fazer bolus repetido).',
+      '🆘 CRÍTICO — UNIDADES: A dose é em mU/kg/min (MILIUNIDADES). A ampola comercial é 20 U/mL. 1 U = 1.000 mU. Erro de unidade = dose 1.000× maior = necrose isquêmica maciça/morte.',
+      '⛔ PRÉ-DILUIÇÃO OBRIGATÓRIA: a engine BLOQUEIA uso de ampola (≥ 10 U/mL) diretamente na seringa de CRI. O usuário deve inserir a concentração APÓS pré-diluição (0,1–1 U/mL).',
+      'PRÉ-DILUIÇÃO antes da CRI (Plumb\'s Veterinary Drug Handbook): escolha uma das opções e use ESSA concentração na engine.',
+      'CRI OBRIGATÓRIA para choque (não fazer bolus repetido exceto PCR).',
     ],
     recommended_targets: [
       {
-        target_u_ml: 0.1, // 100 mU/mL
-        use_cases: ['Padrão (Seguro)', 'CRI'],
-        how_to_make: 'Diluir 1 U (0.05 mL da ampola) em 9.95 mL = 10 mL (difícil aspirar). MELHOR: 10 U (0.5 mL) em 100 mL.',
-        recipe: 'Diluir 0.5 mL da ampola (10 U) em 100 mL NaCl 0.9% = 0.1 U/mL.',
+        target_u_ml: 0.1, // 100 mU/mL — OPÇÃO A (padrão, mais segura)
+        use_cases: ['Padrão UTI — opção mais segura (menor risco de erro de taxa)', 'Cães pequenos e gatos', 'CRI em qualquer paciente'],
+        how_to_make: 'ETAPA 1 (pré-diluição): aspirar 0,5 mL da ampola (20 U/mL) = 10 U. Adicionar 99,5 mL de NaCl 0,9% → solução mãe 0,1 U/mL (100 mU/mL). ETAPA 2: usar essa solução mãe para calcular o volume a aspirar para a seringa de CRI.',
+        recipe: '0,5 mL da ampola (20 U/mL) + 99,5 mL NaCl 0,9% = 100 mL a 0,1 U/mL = 100 mU/mL.',
       },
       {
-        target_u_ml: 1, // 1000 mU/mL
-        use_cases: ['Restrição hídrica extrema', 'Grandes animais'],
-        how_to_make: 'Diluir 1 mL (20 U) em 19 mL = 20 mL de 1 U/mL. Ou 1 ampola (20 U) em 20 mL.',
-        recipe: '1 U/mL = 1000 mU/mL.',
+        target_u_ml: 0.5, // 500 mU/mL — OPÇÃO B (intermediária)
+        use_cases: ['CRI padrão em cães médios/grandes (volumes práticos)', 'Restrição hídrica moderada'],
+        how_to_make: 'ETAPA 1: aspirar 0,5 mL da ampola (10 U) + 19,5 mL NaCl 0,9% = 20 mL a 0,5 U/mL. ETAPA 2: usar para calcular seringa.',
+        recipe: '0,5 mL da ampola (20 U/mL) + 19,5 mL NaCl 0,9% = 20 mL a 0,5 U/mL = 500 mU/mL.',
+      },
+      {
+        target_u_ml: 1.0, // 1000 mU/mL — OPÇÃO C (concentrada, restrição hídrica)
+        use_cases: ['Restrição hídrica extrema', 'Doses altas de resgate'],
+        how_to_make: 'ETAPA 1: aspirar 1 mL da ampola (20 U) + 19 mL NaCl 0,9% = 20 mL a 1 U/mL. ETAPA 2: usar para calcular seringa.',
+        recipe: '1 mL da ampola (20 U/mL) + 19 mL NaCl 0,9% = 20 mL a 1 U/mL = 1.000 mU/mL.',
       },
     ],
     diluents_allowed: ['NaCl 0,9%', 'Glicose 5%'],
@@ -206,8 +216,19 @@ export const vasopressinaProfile: DrugProfile = {
   },
 
   ui_copy: {
-    critical_warning_banner: 'CUIDADO UNIDADES: Dose é em mU/kg/min. Ampola é em U/mL. (1 U = 1000 mU).',
-    common_errors: ['Prescrever em U/kg/min (dose 1000x maior = morte).', 'Achar que substitui volume.'],
+    critical_warning_banner:
+      '🆘 CRÍTICO — UNIDADES: A dose é em mU/kg/min (MILIUNIDADES). A ampola é 20 U/mL. 1 U = 1.000 mU. Confundir U com mU = dose 1.000× maior = necrose isquêmica generalizada/morte. PRÉ-DILUIÇÃO OBRIGATÓRIA antes de qualquer CRI (ver receitas de diluição).',
+    alert_messages: {
+      short: 'Dose: mU/kg/min. Ampola: 20 U/mL. 1 U = 1.000 mU. Pré-diluir SEMPRE.',
+      long: 'Vasopressina é vasopressor não-adrenérgico com dose clínica de 0,5–5 mU/kg/min (miliunidades). A ampola comercial é altamente concentrada (20 U/mL). Confundir a unidade de prescrição (mU) com a unidade da ampola (U) resulta em dose 1.000× maior — potencialmente fatal por vasoconstrição maciça/isquemia. Pré-diluição para 0,1–1 U/mL é obrigatória (Plumb\'s). A engine bloqueia qualquer tentativa de uso da ampola diretamente na CRI.',
+    },
+    block_message: '⛔ BLOQUEADO: Concentração de ampola (≥ 10 U/mL) não permitida para CRI direta. Selecione concentração APÓS pré-diluição (0,1 / 0,5 / 1,0 U/mL) e reinsira.',
+    common_errors: [
+      'Prescrever em U/kg/min em vez de mU/kg/min (dose 1.000× maior — fatal).',
+      'Usar ampola (20 U/mL) diretamente na seringa de CRI sem pré-diluição.',
+      'Achar que vasopressina substitui expansão volêmica (é vasopressor de resgate, não volume).',
+      'Não considerar isquemia de extremidades/mesentérica em doses altas prolongadas.',
+    ],
   },
 
   presets: [

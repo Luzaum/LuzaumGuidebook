@@ -143,15 +143,15 @@ export const cetaminaProfile: DrugProfile = {
       cri: {
         mcgkgmin: { min: 0, max: 0, note: 'N/A (padrão do CRIVET para cetamina: mg/kg/h).' },
         mgkgh: {
-          min: 0.6,
-          max: 1.8,
-          note: 'Infusão contínua para dissociação e analgesia adjuvante. Dissociação, inibidor NMDA.',
+          min: 0.1,
+          max: 1.0,
+          note: 'Sub-dissociativa/analgesia adjuvante: 0,1–0,6 mg/kg/h (Plumb\'s Veterinary Drug Handbook; Textbook SAEM 2019). Dose máxima aceitável: 1,0 mg/kg/h (início de efeito dissociativo leve). Faixa anterior de 0,6–1,8 mg/kg/h é dissociativa/anestésica — requer protocolo de anestesia completo e não é recomendada para analgesia adjuvante rotineira. Iniciar em 0,1–0,2 mg/kg/h e titular ao efeito analgésico.',
         },
         titration: {
-          increment: '0.6→1.0→1.5→1.8 mg/kg/h (conforme analgesia e efeitos adversos)',
-          interval: 'Reavaliar a cada 15–30 min (dor, FC/PA, ventilação, qualidade de recuperação).',
+          increment: '0,1 → 0,2 → 0,3 → 0,6 mg/kg/h (titular por analgesia e efeitos adversos; acima de 0,6 mg/kg/h monitorar para disforia/dissociação)',
+          interval: 'Reavaliar a cada 15–30 min (dor, FC/PA, ventilação, qualidade de recuperação, comportamento).',
         },
-        max: 1.8,
+        max: 1.0,
       },
       adjustments: {
         obesity: 'Preferir peso magro/estimado para iniciar; titular ao efeito (analgesia/recuperação).',
@@ -182,15 +182,15 @@ export const cetaminaProfile: DrugProfile = {
       cri: {
         mcgkgmin: { min: 0, max: 0, note: 'N/A (padrão do CRIVET para cetamina: mg/kg/h).' },
         mgkgh: {
-          min: 0.6,
-          max: 1.8,
-          note: 'Infusão contínua para dissociação e analgesia adjuvante. Dissociação, inibidor NMDA. Usar extremo cuidado e doses menores em cardiopatas/hipertensos; em obstrução urinária/uroabdome pode prolongar sedação (preferir evitar).',
+          min: 0.1,
+          max: 1.0,
+          note: 'Sub-dissociativa/analgesia adjuvante: 0,1–0,6 mg/kg/h (Plumb\'s; Textbook SAEM). Máximo: 1,0 mg/kg/h. Em gatos: usar extremo cuidado; iniciar baixo (0,1 mg/kg/h); doses acima de 0,6 mg/kg/h aumentam disforia, sedação prolongada e em obstrução urinária/uroabdome podem prolongar recuperação (preferir evitar). Cardiopatas/hipertensos: reduzir 25–50%.',
         },
         titration: {
-          increment: '0.6→1.0→1.5→1.8 mg/kg/h (se apropriado e bem monitorado)',
+          increment: '0,1 → 0,2 → 0,4 → 0,6 mg/kg/h (se apropriado e monitorado; parar ao primeiro sinal de disforia/comportamento anormal)',
           interval: 'Reavaliar a cada 15–30 min.',
         },
-        max: 1.8,
+        max: 1.0,
       },
       adjustments: {
         obesity: 'Preferir peso magro/ideal para iniciar e titular ao efeito.',

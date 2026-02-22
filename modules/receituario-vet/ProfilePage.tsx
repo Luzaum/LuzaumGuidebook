@@ -9,6 +9,16 @@ import {
   upsertPrescriberProfile,
   updateProfile,
 } from './rxDb'
+import {
+  PROFILE_IMAGE_FIELDS,
+  isDataImageUrl,
+  removeProfileImageByUrl,
+  uploadProfileImageDataUrl,
+} from './rxSupabaseStorage'
+
+const MAX_UPLOAD_DIMENSION = 1200
+const MAX_DATA_URL_LENGTH = 1_400_000
+const IMAGE_QUALITY_STEPS = [0.92, 0.82, 0.72, 0.62, 0.52, 0.45]
 
 function emptyProfile(): ProfileSettings {
   return {
@@ -27,6 +37,82 @@ function emptyProfile(): ProfileSettings {
   }
 }
 
+function isQuotaExceededError(error: unknown): boolean {
+  if (typeof DOMException !== 'undefined' && error instanceof DOMException) {
+    return error.name === 'QuotaExceededError' || error.name === 'NS_ERROR_DOM_QUOTA_REACHED'
+  }
+
+  if (error instanceof Error) {
+    return /quota|exceeded.*quota|ns_error_dom_quota_reached/i.test(error.message)
+  }
+
+  return false
+}
+
+function readFileAsDataUrl(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onload = () => resolve(String(reader.result || ''))
+    reader.onerror = () => reject(new Error('Nao foi possivel ler o arquivo selecionado.'))
+    reader.readAsDataURL(file)
+  })
+}
+
+function loadImage(file: File): Promise<HTMLImageElement> {
+  return new Promise((resolve, reject) => {
+    const objectUrl = URL.createObjectURL(file)
+    const image = new Image()
+    image.onload = () => {
+      URL.revokeObjectURL(objectUrl)
+      resolve(image)
+    }
+    image.onerror = () => {
+      URL.revokeObjectURL(objectUrl)
+      reject(new Error('Nao foi possivel processar a imagem selecionada.'))
+    }
+    image.src = objectUrl
+  })
+}
+
+async function optimizeImageDataUrl(file: File): Promise<string> {
+  const image = await loadImage(file)
+  const maxSide = Math.max(image.width, image.height)
+  const scale = maxSide > MAX_UPLOAD_DIMENSION ? MAX_UPLOAD_DIMENSION / maxSide : 1
+  const width = Math.max(1, Math.round(image.width * scale))
+  const height = Math.max(1, Math.round(image.height * scale))
+  const canvas = document.createElement('canvas')
+  canvas.width = width
+  canvas.height = height
+  const context = canvas.getContext('2d')
+
+  if (!context) {
+    throw new Error('Nao foi possivel preparar a imagem para upload.')
+  }
+
+  context.drawImage(image, 0, 0, width, height)
+
+  for (const quality of IMAGE_QUALITY_STEPS) {
+    const dataUrl = canvas.toDataURL('image/webp', quality)
+    if (dataUrl.length <= MAX_DATA_URL_LENGTH) {
+      return dataUrl
+    }
+  }
+
+  return canvas.toDataURL('image/webp', IMAGE_QUALITY_STEPS[IMAGE_QUALITY_STEPS.length - 1])
+}
+
+async function toStorableImageDataUrl(file: File): Promise<string> {
+  if (!file.type.startsWith('image/')) {
+    throw new Error('Selecione apenas arquivos de imagem.')
+  }
+
+  if (file.size <= 350_000) {
+    return readFileAsDataUrl(file)
+  }
+
+  return optimizeImageDataUrl(file)
+}
+
 export default function ProfilePage() {
   const initialDb = useMemo(() => loadRxDb(), [])
   const initialProfiles = initialDb.prescriberProfiles.length > 0
@@ -40,15 +126,25 @@ export default function ProfilePage() {
   const [profile, setProfile] = useState<ProfileSettings>({ ...initialProfiles[0], adminId: 'ADMIN' })
   const [saved, setSaved] = useState(false)
   const [saveModalOpen, setSaveModalOpen] = useState(false)
+  const [saveError, setSaveError] = useState('')
+  const [saving, setSaving] = useState(false)
 
   const currentProfileExists = profiles.some((entry) => entry.id === selectedProfileId)
 
-  const onUpload = (field: 'clinicLogoDataUrl' | 'signatureDataUrl' | 'mapaSignatureDataUrl') => (event: ChangeEvent<HTMLInputElement>) => {
+  const onUpload = (field: 'clinicLogoDataUrl' | 'signatureDataUrl' | 'mapaSignatureDataUrl') => async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
     if (!file) return
-    const reader = new FileReader()
-    reader.onload = () => setProfile((prev) => ({ ...prev, [field]: String(reader.result || '') }))
-    reader.readAsDataURL(file)
+
+    setSaveError('')
+    try {
+      const dataUrl = await toStorableImageDataUrl(file)
+      setProfile((prev) => ({ ...prev, [field]: dataUrl }))
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Nao foi possivel carregar a imagem.'
+      setSaveError(message)
+    } finally {
+      event.target.value = ''
+    }
   }
 
   const loadProfile = (profileId: string) => {
@@ -76,47 +172,84 @@ export default function ProfilePage() {
     setSelectedProfileId('new')
     setProfileName('')
     setProfile(emptyProfile())
+    setSaveError('')
   }
 
-  const saveProfile = () => {
-    const normalizedName = profileName.trim() || 'Perfil sem nome'
-    const baseDb = loadRxDb()
-    const nextProfile = createPrescriberProfileFromSettings(
-      { ...profile, adminId: 'ADMIN' },
-      normalizedName,
-      currentProfileExists ? selectedProfileId : undefined
-    )
+  const saveProfile = async () => {
+    setSaving(true)
+    setSaveError('')
 
-    let nextDb = updateProfile(baseDb, { ...profile, adminId: 'ADMIN' })
-    nextDb = upsertPrescriberProfile(nextDb, nextProfile)
+    try {
+      const normalizedName = profileName.trim() || 'Perfil sem nome'
+      const baseDb = loadRxDb()
+      const activeStoredProfile = currentProfileExists
+        ? profiles.find((entry) => entry.id === selectedProfileId) || null
+        : null
+      const profileToPersist: ProfileSettings = { ...profile, adminId: 'ADMIN' }
 
-    saveRxDb(nextDb)
-    const hydratedProfiles = nextDb.prescriberProfiles.length > 0
-      ? nextDb.prescriberProfiles
-      : [createPrescriberProfileFromSettings(nextDb.profile, 'Perfil padrão', 'default')]
+      for (const field of PROFILE_IMAGE_FIELDS) {
+        const nextValue = profileToPersist[field]
+        if (!isDataImageUrl(nextValue)) continue
 
-    setDb(nextDb)
-    setProfiles(hydratedProfiles)
-    setSelectedProfileId(nextProfile.id)
-    setProfileName(nextProfile.profileName)
-    setProfile({
-      adminId: 'ADMIN',
-      fullName: nextProfile.fullName,
-      crmv: nextProfile.crmv,
-      uf: nextProfile.uf,
-      specialty: nextProfile.specialty,
-      clinicName: nextProfile.clinicName,
-      clinicCnpj: nextProfile.clinicCnpj,
-      clinicAddress: nextProfile.clinicAddress,
-      clinicPhone: nextProfile.clinicPhone,
-      clinicLogoDataUrl: nextProfile.clinicLogoDataUrl,
-      signatureDataUrl: nextProfile.signatureDataUrl,
-      mapaSignatureDataUrl: nextProfile.mapaSignatureDataUrl,
-    })
+        const uploaded = await uploadProfileImageDataUrl({
+          dataUrl: nextValue,
+          field,
+          profileId: currentProfileExists ? selectedProfileId : normalizedName,
+        })
 
-    setSaveModalOpen(false)
-    setSaved(true)
-    window.setTimeout(() => setSaved(false), 2200)
+        const previousValue = String(activeStoredProfile?.[field] || '').trim()
+        profileToPersist[field] = uploaded.publicUrl
+        if (previousValue && previousValue !== uploaded.publicUrl) {
+          void removeProfileImageByUrl(previousValue)
+        }
+      }
+
+      const nextProfile = createPrescriberProfileFromSettings(
+        profileToPersist,
+        normalizedName,
+        currentProfileExists ? selectedProfileId : undefined
+      )
+
+      let nextDb = updateProfile(baseDb, profileToPersist)
+      nextDb = upsertPrescriberProfile(nextDb, nextProfile)
+
+      saveRxDb(nextDb)
+      const hydratedProfiles = nextDb.prescriberProfiles.length > 0
+        ? nextDb.prescriberProfiles
+        : [createPrescriberProfileFromSettings(nextDb.profile, 'Perfil padrão', 'default')]
+
+      setDb(nextDb)
+      setProfiles(hydratedProfiles)
+      setSelectedProfileId(nextProfile.id)
+      setProfileName(nextProfile.profileName)
+      setProfile({
+        adminId: 'ADMIN',
+        fullName: nextProfile.fullName,
+        crmv: nextProfile.crmv,
+        uf: nextProfile.uf,
+        specialty: nextProfile.specialty,
+        clinicName: nextProfile.clinicName,
+        clinicCnpj: nextProfile.clinicCnpj,
+        clinicAddress: nextProfile.clinicAddress,
+        clinicPhone: nextProfile.clinicPhone,
+        clinicLogoDataUrl: nextProfile.clinicLogoDataUrl,
+        signatureDataUrl: nextProfile.signatureDataUrl,
+        mapaSignatureDataUrl: nextProfile.mapaSignatureDataUrl,
+      })
+
+      setSaveModalOpen(false)
+      setSaved(true)
+      window.setTimeout(() => setSaved(false), 2200)
+    } catch (error) {
+      if (isQuotaExceededError(error)) {
+        setSaveError('Nao foi possivel salvar: armazenamento do navegador cheio. Reduza o tamanho das imagens e tente novamente.')
+      } else {
+        const message = error instanceof Error ? error.message : 'Nao foi possivel salvar este perfil.'
+        setSaveError(message)
+      }
+    } finally {
+      setSaving(false)
+    }
   }
 
   return (
@@ -134,7 +267,14 @@ export default function ProfilePage() {
             <span className="material-symbols-outlined text-[18px]">add</span>
             Novo perfil
           </button>
-          <button type="button" className="rxv-btn-primary inline-flex items-center gap-2 px-3 py-2 text-sm" onClick={() => setSaveModalOpen(true)}>
+          <button
+            type="button"
+            className="rxv-btn-primary inline-flex items-center gap-2 px-3 py-2 text-sm"
+            onClick={() => {
+              setSaveError('')
+              setSaveModalOpen(true)
+            }}
+          >
             <span className="material-symbols-outlined text-[18px]">save</span>
             Salvar Perfil
           </button>
@@ -276,6 +416,12 @@ export default function ProfilePage() {
         </section>
       </div>
 
+      {saveError && !saveModalOpen ? (
+        <div className="mt-4 rounded-xl border border-red-500/60 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+          {saveError}
+        </div>
+      ) : null}
+
       {saveModalOpen ? (
         <div className="fixed inset-0 z-[95] flex items-center justify-center bg-black/60 px-4 py-8" onClick={() => setSaveModalOpen(false)}>
           <div className="w-full max-w-md rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface)] p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
@@ -290,12 +436,17 @@ export default function ProfilePage() {
                 placeholder="Ex.: Clínica Central - Dr. Carlos"
               />
             </label>
+            {saveError ? (
+              <p className="mt-3 rounded-lg border border-red-500/60 bg-red-500/10 px-3 py-2 text-xs text-red-200">
+                {saveError}
+              </p>
+            ) : null}
             <div className="mt-5 flex justify-end gap-2">
               <button type="button" className="rxv-btn-secondary px-3 py-2 text-sm" onClick={() => setSaveModalOpen(false)}>
                 Cancelar
               </button>
-              <button type="button" className="rxv-btn-primary px-3 py-2 text-sm" onClick={saveProfile}>
-                Salvar perfil
+              <button type="button" className="rxv-btn-primary px-3 py-2 text-sm" onClick={saveProfile} disabled={saving}>
+                {saving ? 'Salvando...' : 'Salvar perfil'}
               </button>
             </div>
           </div>

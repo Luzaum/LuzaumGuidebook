@@ -27,3 +27,9 @@ dist-ssr
 build/
 *.exe
 *.zip
+
+# Variáveis de ambiente — NÃO commitar!
+.env
+.env.local
+.env.production
+.env.*.local

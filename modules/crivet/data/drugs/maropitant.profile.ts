@@ -80,7 +80,11 @@ export const maropitantProfile: DrugProfile = {
     ],
   },
   doses: {
-    unit_standard_cri: 'mcg/kg/h',
+    // ⚠ NOTA CLÍNICA: Maropitant é um fármaco de dose DIÁRIA (1 mg/kg SC/IV q24h).
+    // CRI de maropitant é off-label, pouco padronizada e gera volumes impraticáveis em
+    // seringas de ≤20 mL (< 0,1 mL em pacientes de 10 kg). BSAVA Gastro 3rd ed. descreve
+    // apenas a dose diária. A CRI abaixo existe apenas para uso excepcional documentado.
+    unit_standard_cri: 'mcg/kg/h', // ⚠ CRI NÃO RECOMENDADA para rotina — ver bolus/dose diária
     dog: {
       bolus: {
         mgkg: { min: 1, max: 1, note: 'SC ou IV lento q24h. Dose padrão: 1 mg/kg. IV: refrigerar solução antes de aplicar para reduzir dor local.' },
@@ -311,11 +315,17 @@ export const maropitantProfile: DrugProfile = {
       error_cost: 'Erro de dose pode resultar em eficácia reduzida ou toxicidade.',
     },
     cri: {
+      // ⚠ CRI NÃO RECOMENDADA PARA ROTINA
+      // Maropitant é fármaco de dose diária (1 mg/kg SC/IV q24h) e altamente ligado a proteínas.
+      // Em seringa de 20 mL com taxa de 5 mL/h → volume de fármaco < 0,1 mL (impraticável/perigoso).
+      // Use CRI somente em situações excepcionais com pré-diluição obrigatória para ≥ 0,1 mg/mL.
       required_inputs: ['weight_kg', 'dose_mgkgh', 'drug_concentration_mg_ml'],
       algorithm: [
-        '1) Dose total (mg) = dose_mgkgh × peso_kg',
-        '2) Volume/hora (mL/h) = mg/h ÷ concentração_mg_ml',
-        '3) Monitorar eficácia e função hepática em uso prolongado',
+        '⚠ ATENÇÃO: CRI de maropitant não é uso padrão. Prefira dose diária (1 mg/kg SC ou IV lento q24h).',
+        '1) Se CRI excepcional for necessária: pré-diluir para 0,1–0,2 mg/mL antes de calcular a seringa.',
+        '2) Dose total (mg) = dose_mgkgh × peso_kg',
+        '3) Volume/hora (mL/h) = mg/h ÷ concentração_após_pré_diluição_mg_ml',
+        '4) Monitorar eficácia e função hepática em uso prolongado',
       ],
       hard_safety_checks: [
         {
@@ -323,10 +333,21 @@ export const maropitantProfile: DrugProfile = {
           then: 'WARN',
           message: 'Dose acima do máximo recomendado (0,1 mg/kg/h); reavaliar necessidade.',
         },
+        {
+          if: 'drug_concentration_mg_ml > 0.5 && vehicle_volume_ml <= 20',
+          then: 'WARN',
+          message: '⚠ Volume de fármaco provavelmente < 0,2 mL nesta seringa. Pré-diluir para 0,1–0,2 mg/mL antes. Sem pré-diluição, erro de aspiração pode ser > 50%.',
+        },
       ],
-      soft_safety_checks: [],
+      soft_safety_checks: [
+        {
+          if: 'true',
+          then: 'INFO',
+          message: '📋 PADRÃO RECOMENDADO: Maropitant 1 mg/kg SC (cão) ou IV lento (gato) q24h. CRI é excepcional — prefira a via convencional sempre que possível (BSAVA Gastroenterology 3rd ed.).',
+        },
+      ],
       outputs: ['cri_mg_per_hour', 'cri_ml_per_hour'],
-      error_cost: 'Dose excessiva em CRI pode causar acumulação e toxicidade hepática.',
+      error_cost: 'Volume impraticável em seringas pequenas → erro de aspiração e dose errada. Prefira dose diária padronizada.',
     },
   },
   how_we_got_here_block: {
@@ -378,16 +399,19 @@ export const maropitantProfile: DrugProfile = {
     ],
   },
   ui_copy: {
-    critical_warning_banner: 'Antiemético potente pode mascarar doenças obstrutivas.',
+    critical_warning_banner:
+      'Antiemético potente NK-1: pode mascarar obstrução GI. Dose padrão: 1 mg/kg SC (cão) ou IV lento (gato) q24h. CRI não é recomendada para rotina — volumes impraticáveis em seringas pequenas.',
     alert_messages: {
-      short: 'Cautela em hepatopatas',
-      long: 'O maropitant é metabolizado no fígado e pode acumular em uso prolongado. Sempre investigue a causa base do vômito antes de usar antieméticos.',
+      short: 'Dose diária: 1 mg/kg SC/IV. CRI é excepcional e exige pré-diluição.',
+      long: 'Maropitant (NK-1) é fármaco de dose diária (1 mg/kg SC/IV q24h). É altamente ligado a proteínas plasmáticas e metabolizado pelo fígado. CRI não é uso padronizado em rotina (BSAVA Gastroenterology 3rd ed.) e gera volumes impraticáveis em seringas de ≤20 mL (< 0,1 mL em cão de 10 kg). Se CRI for necessária em situação excepcional, pré-diluir para ≥ 0,1 mg/mL antes de preparar. Sempre investigate a causa base do vômito.',
     },
     block_message: 'Uso bloqueado por contraindicação absoluta.',
     common_errors: [
-      'Usar sem investigar causa do vômito',
-      'Aplicar IM em gatos',
-      'Uso prolongado sem monitoramento hepático',
+      'Tentar CRI em seringa pequena sem pré-diluição (volume de fármaco < 0,1 mL).',
+      'Usar sem investigar causa do vômito (pode mascarar obstrução GI).',
+      'Aplicar IM em gatos (dor local significativa — preferir IV lento).',
+      'Uso prolongado em hepatopatas sem monitoramento de enzimas hepáticas.',
+      'Confundir dose IV lento com CRI contínua — são estratégias distintas.',
     ],
   },
   references: [

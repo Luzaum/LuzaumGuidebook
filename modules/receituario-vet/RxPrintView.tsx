@@ -231,7 +231,7 @@ export function RxPrintView({
   const signatureOverride = zoneOverride('signature')
 
   return (
-    <div className="rounded-xl border border-slate-300 bg-white text-slate-900 shadow-2xl" style={rootStyle}>
+    <div className="rxv-print-preview rounded-xl border border-slate-300 bg-white text-slate-900 shadow-2xl" style={rootStyle}>
       <div className="border-b border-slate-200 bg-slate-100 px-4 py-2 text-xs font-bold uppercase tracking-widest text-slate-500">
         Visualização rápida
       </div>
@@ -356,15 +356,13 @@ export function RxPrintView({
                         >
                           {item.index}. {item.title}
                         </h4>
-                        <span
-                          className={`rounded px-2 py-0.5 text-[10px] font-bold uppercase ${
-                            item.status === 'ok' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'
-                          }`}
-                        >
-                          {item.status === 'ok' ? 'OK' : 'incompleto'}
-                        </span>
+                        {item.status !== 'ok' ? (
+                          <span className="rounded bg-amber-100 px-2 py-0.5 text-[10px] font-bold uppercase text-amber-700">
+                            incompleto
+                          </span>
+                        ) : null}
                       </div>
-                      {item.subtitle ? <p className="mb-1 text-slate-500" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 2, 9)}pt` }}>{item.subtitle}</p> : null}
+                      {item.subtitle ? <p className="mb-1" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 2, 9)}pt`, color: '#64748b' }}>{item.subtitle}</p> : null}
                       <p className="whitespace-pre-line leading-relaxed" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt` }}>
                         {highlightInstructionSegments(item.instruction)}
                       </p>

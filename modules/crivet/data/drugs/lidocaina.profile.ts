@@ -300,15 +300,25 @@ export const lidocainaProfile: DrugProfile = {
     compatible_y_site_only: ['Se necessário, Y-site com flush e observação; preferir não misturar sem compatibilidade confirmada pelo serviço.'],
     incompatible: [
       {
+        agent: 'Norepinefrina / Dopamina / Epinefrina (mesma seringa ou bolsa)',
+        why: 'Catecolaminas requerem veículo com pH baixo e são instáveis em mições alcalinas. Lidocaína muda o pH do meio e pode inativar ou precipitar a catecolamina (Plumb\'s Veterinary Drug Handbook — seção Lidocaine Compatibility). Risco: perda de efeito vasoativo + embolismo por precipitado.',
+        risk: 'inativação do vasopressor / precipitação',
+      },
+      {
         agent: 'Misturas não validadas (mesma seringa/bolsa)',
         why: 'Risco de incompatibilidade físico-química e erro de dose; padronizar protocolo institucional.',
         risk: 'precipitação',
       },
     ],
-    avoid_same_syringe_or_precipitation_risk: ['Evitar misturar com fármacos sem compatibilidade confirmada no serviço.'],
+    avoid_same_syringe_or_precipitation_risk: [
+      'Evitar misturar com norepinefrina, dopamina ou epinefrina na mesma seringa/bolsa (incompatibilidade de pH).',
+      'Se linha compartilhada com catecolamina: Y-site com flush rigoroso entre as infusões e preferir lume dedicado.',
+      'Evitar misturar com fármacos sem compatibilidade confirmada no serviço.',
+    ],
     dedicated_line_rules: [
       'Preferir linha/lúmen dedicado se múltiplos CRIs simultâneos.',
       'Se via compartilhada: flush antes/depois e checar turvação.',
+      'NUNCA misturar com norepinefrina/dopamina/epinefrina na mesma seringa — administrar em vias separadas.',
     ],
   },
 

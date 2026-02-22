@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import './receituarioChrome.css'
 
 type RxSection =
+  | 'hub'
   | 'home'
   | 'nova'
   | 'drafts'
@@ -13,22 +14,24 @@ type RxSection =
   | 'controle'
   | 'templates'
   | 'settings'
+  | 'dev'
   | 'print'
 type RxTheme = 'dark' | 'light'
 
 const THEME_KEY = 'receituario-vet:theme:v1'
 
 const NAV_ITEMS: Array<{ key: RxSection; label: string; to: string; icon: string }> = [
-  { key: 'home', label: 'Home', to: '/receituario-vet', icon: 'grid_view' },
+  { key: 'hub', label: 'HUB', to: '/receituario-vet', icon: 'hub' },
   { key: 'nova', label: 'Nova Receita', to: '/receituario-vet/nova-receita', icon: 'description' },
-  { key: 'drafts', label: 'Rascunhos', to: '/receituario-vet/rascunhos', icon: 'draft' },
-  { key: 'protocolos', label: 'Protocolos', to: '/receituario-vet/protocolos', icon: 'inventory_2' },
-  { key: 'controle', label: 'Controle Especial', to: '/receituario-vet/controle-especial', icon: 'shield' },
-  { key: 'perfil', label: 'Configurar Médico', to: '/receituario-vet/configuracao', icon: 'assignment_ind' },
-  { key: 'clientes', label: 'Tutores e Pacientes', to: '/receituario-vet/clientes', icon: 'group' },
   { key: 'catalogo', label: 'Catálogo', to: '/receituario-vet/catalogo', icon: 'content_paste' },
+  { key: 'drafts', label: 'Rascunhos', to: '/receituario-vet/rascunhos', icon: 'draft' },
+  { key: 'clientes', label: 'Tutores e Pacientes', to: '/receituario-vet/clientes', icon: 'group' },
+  { key: 'controle', label: 'Controle Especial', to: '/receituario-vet/controle-especial', icon: 'shield' },
+  { key: 'protocolos', label: 'Protocolos', to: '/receituario-vet/protocolos', icon: 'inventory_2' },
+  { key: 'perfil', label: 'Configurar Médico', to: '/receituario-vet/configuracao', icon: 'assignment_ind' },
   { key: 'templates', label: 'Templates', to: '/receituario-vet/templates', icon: 'palette' },
   { key: 'settings', label: 'Configurações', to: '/receituario-vet/configuracoes', icon: 'settings' },
+  { key: 'dev', label: 'Desenvolvimento', to: '/receituario-vet/desenvolvimento', icon: 'science' },
 ]
 
 function readTheme(): RxTheme {
@@ -101,20 +104,26 @@ function SidebarContent({
 }) {
   return (
     <div className={`rxv-sidebar h-full ${expanded ? 'expanded' : 'collapsed'}`}>
-      <div className="rxv-sidebar-brand-wrap">
-        <button type="button" className="rxv-sidebar-brand" title="Receituário Vet" onClick={onTogglePin}>
-          <img src="/images/receituario-vet/reeceita.png" alt="Logo Receituário Vet" className="rxv-sidebar-brand-logo" />
-          <span className="rxv-sidebar-brand-copy">
-            <strong>Receituário Vet</strong>
-            <small>{pinned ? 'Menu fixo' : 'Menu automático'}</small>
-          </span>
+      <div className="rxv-sidebar-head">
+        <button
+          type="button"
+          className="rxv-sidebar-toggle rxv-sidebar-toggle-compact"
+          title={expanded ? 'Guardar menu lateral' : 'Abrir menu lateral'}
+          onClick={onTogglePin}
+        >
           <span className="material-symbols-outlined text-[18px]">{expanded ? 'left_panel_close' : 'right_panel_open'}</span>
+          <span className="rxv-sidebar-toggle-label">{pinned ? 'Guardar menu' : 'Fixar menu'}</span>
         </button>
       </div>
 
       <div className="rxv-sidebar-rail-top" />
 
       <nav className="rxv-sidebar-nav">
+        <Link to="/receituario-vet" className="rxv-sidebar-app-logo" title="Voltar para página inicial do Receituário">
+          <img src="/apps/REECEITA.png" alt="Logo do app Receituário Vet" className="rxv-sidebar-app-logo-image" />
+          <span className="rxv-sidebar-app-logo-title">ReceituarioVET</span>
+        </Link>
+
         {NAV_ITEMS.map((item) => {
           const active = section === item.key || locationPath === item.to
           return (
@@ -125,6 +134,16 @@ function SidebarContent({
             </Link>
           )
         })}
+
+        <button
+          type="button"
+          className="rxv-nav-item rxv-nav-toggle"
+          title={pinned ? 'Guardar menu lateral' : 'Fixar menu lateral'}
+          onClick={onTogglePin}
+        >
+          <span className="material-symbols-outlined text-[20px]">{pinned ? 'left_panel_close' : 'right_panel_open'}</span>
+          <span className="rxv-nav-label">{pinned ? 'Guardar menu' : 'Fixar menu'}</span>
+        </button>
       </nav>
 
       <div className="rxv-sidebar-footer">
@@ -147,7 +166,7 @@ export default function ReceituarioChrome({ section, title, subtitle, actions, c
   const location = useLocation()
   const [theme, setTheme] = useState<RxTheme>(() => readTheme())
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [sidebarPinned, setSidebarPinned] = useState(false)
+  const [sidebarPinned, setSidebarPinned] = useState(true)
   const [sidebarHovered, setSidebarHovered] = useState(false)
   const [sidebarUser] = useState<SidebarUserIdentity>(() => readSidebarUserIdentity())
 
@@ -158,6 +177,10 @@ export default function ReceituarioChrome({ section, title, subtitle, actions, c
   useEffect(() => {
     setMobileMenuOpen(false)
   }, [location.pathname])
+
+  useEffect(() => {
+    if (!sidebarPinned) setSidebarHovered(false)
+  }, [sidebarPinned])
 
   const dark = theme === 'dark'
 
@@ -172,18 +195,18 @@ export default function ReceituarioChrome({ section, title, subtitle, actions, c
   const pageClass = dark ? 'rxv-dark' : 'rxv-light'
   const sidebarExpanded = sidebarPinned || sidebarHovered
   const sidebarClass = `rxv-sidebar-shell ${sidebarExpanded ? 'expanded' : 'collapsed'}`
+  const handleTopbarMenuClick = () => {
+    if (typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches) {
+      setSidebarPinned((prev) => !prev)
+      setSidebarHovered(false)
+      return
+    }
+    setMobileMenuOpen(true)
+  }
 
   const topRight = useMemo(
     () => (
       <div className="flex items-center gap-2">
-        <button
-          type="button"
-          className="rxv-icon-btn hidden lg:inline-flex"
-          title={sidebarPinned ? 'Recolher menu lateral' : 'Fixar menu lateral'}
-          onClick={() => setSidebarPinned((prev) => !prev)}
-        >
-          <span className="material-symbols-outlined text-[20px]">{sidebarPinned ? 'left_panel_close' : 'right_panel_open'}</span>
-        </button>
         <button
           type="button"
           className="rxv-icon-btn"
@@ -202,7 +225,7 @@ export default function ReceituarioChrome({ section, title, subtitle, actions, c
         </button>
       </div>
     ),
-    [dark, navigate, sidebarPinned]
+    [dark, navigate]
   )
 
   return (
@@ -212,8 +235,12 @@ export default function ReceituarioChrome({ section, title, subtitle, actions, c
       <div className="rxv-layout">
         <aside
           className={`rxv-desktop-sidebar ${sidebarClass}`}
-          onMouseEnter={() => setSidebarHovered(true)}
-          onMouseLeave={() => setSidebarHovered(false)}
+          onMouseEnter={() => {
+            if (!sidebarPinned) setSidebarHovered(true)
+          }}
+          onMouseLeave={() => {
+            if (!sidebarPinned) setSidebarHovered(false)
+          }}
         >
           <SidebarContent
             section={section}
@@ -229,7 +256,7 @@ export default function ReceituarioChrome({ section, title, subtitle, actions, c
           <header className="rxv-topbar">
             <div className="rxv-topbar-row">
               <div className="flex items-center gap-2">
-                <button type="button" className="rxv-icon-btn lg:hidden" onClick={() => setMobileMenuOpen(true)} title="Abrir menu">
+                <button type="button" className="rxv-icon-btn rxv-top-menu-btn" onClick={handleTopbarMenuClick} title={sidebarPinned ? 'Guardar menu lateral' : 'Abrir menu lateral'}>
                   <span className="material-symbols-outlined text-[20px]">menu</span>
                 </button>
               </div>
@@ -237,11 +264,11 @@ export default function ReceituarioChrome({ section, title, subtitle, actions, c
               <button
                 type="button"
                 className="rxv-top-logo"
-                title="Voltar para Home VETIUS"
+                title="Ir para página inicial do VETIUS"
                 onClick={() => navigate('/hub')}
               >
-                <img src="/apps/VETIUS.png" alt="Ícone VETIUS" className="h-5 w-5 rounded-sm object-contain" />
-                <span>VETIUS</span>
+                <img src="/apps/VETIUS.png" alt="Ícone VETIUS" className="rxv-top-logo-image" />
+                <span className="rxv-top-logo-text">VETIUS</span>
               </button>
 
               <div className="flex justify-end">{topRight}</div>

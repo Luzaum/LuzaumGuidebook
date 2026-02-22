@@ -20,21 +20,21 @@ export function ModuleCard({ module }: ModuleCardProps) {
 
   return (
     <div
-      className={`relative overflow-hidden h-full rounded-2xl border bg-surface-2/60 dark:bg-surface-2/40 backdrop-blur transition-all duration-300 ${isPlanned
-          ? 'opacity-60 cursor-not-allowed'
-          : 'cursor-pointer hover:border-primary/50 hover:shadow-lg'
+      className={`relative overflow-hidden rounded-2xl border bg-surface-2/60 dark:bg-surface-2/40 backdrop-blur transition-all duration-300 ${isPlanned
+        ? 'opacity-60 cursor-not-allowed'
+        : 'cursor-pointer hover:border-primary/50 hover:shadow-lg'
         }`}
       onClick={handleClick}
     >
-      <div className="flex h-full flex-col">
+      <div className="flex flex-col">
         {/* TAG */}
-        <div className="px-6 pt-4">
+        <div className="px-4 pt-3">
           <span
-            className={`inline-flex rounded-full px-3 py-1 text-xs font-medium ${module.status === 'internal'
-                ? 'bg-sky-100 text-sky-800 dark:bg-white/10 dark:text-white/80'
-                : module.status === 'iframe'
-                  ? 'bg-emerald-100 text-emerald-800 dark:bg-white/10 dark:text-white/80'
-                  : 'bg-slate-100 text-slate-600 dark:bg-white/5 dark:text-white/60'
+            className={`inline-flex rounded-full px-2.5 py-0.5 text-[10px] font-medium tracking-wide uppercase ${module.status === 'internal'
+              ? 'bg-sky-100 text-sky-800 dark:bg-white/10 dark:text-white/80'
+              : module.status === 'iframe'
+                ? 'bg-emerald-100 text-emerald-800 dark:bg-white/10 dark:text-white/80'
+                : 'bg-slate-100 text-slate-600 dark:bg-white/5 dark:text-white/60'
               }`}
           >
             {module.status === 'internal'
@@ -45,69 +45,60 @@ export function ModuleCard({ module }: ModuleCardProps) {
           </span>
         </div>
 
-        {/* LOGO — SEM RESERVA DE ALTURA */}
-        <div className="flex justify-center pt-2 pb-0">
+        {/* LOGO — altura fixa, centralizada, sem distorção */}
+        <div className="flex items-center justify-center h-[300px] overflow-hidden px-4 py-2">
           {module.iconImage ? (
             <img
               src={module.iconImage}
               alt={module.title}
-              className={`w-full max-w-[280px] object-contain ${module.id === 'escalas-dor' ? 'scale-[1.69]' :
-                  module.id === 'neurologia' ? 'scale-125' :
-                    module.id === 'emergencias-veterinarias' ? 'scale-[1.2]' :
-                      module.id === 'crivet' || module.id === 'transfusao-sanguinea' || module.id === 'fluidoterapia' || module.id === 'calculadora-energetica' || module.id === 'antibioticoterapia' || module.id === 'hemogasometria' ? 'scale-125' : ''
-                }`}
+              className="h-full w-full object-contain"
               draggable={false}
               loading="lazy"
               onError={(e) => {
-                // Se a imagem não carregar, mostra placeholder
                 const target = e.target as HTMLImageElement
                 target.style.display = 'none'
                 const placeholder = target.parentElement?.querySelector('.logo-placeholder') as HTMLElement
                 if (placeholder) placeholder.style.display = 'flex'
               }}
             />
-          ) : null}
-          {/* Placeholder escondido - aparece se imagem falhar */}
-          <div
-            className="logo-placeholder hidden flex-col items-center justify-center w-full max-w-[280px] min-h-[100px] bg-slate-100 dark:bg-white/5 rounded-lg border border-dashed border-slate-300 dark:border-white/20"
-          >
-            <Icon className="h-10 w-10 text-slate-400 dark:text-white/40 mb-1" />
-            <span className="text-xs text-slate-500 dark:text-white/50 text-center px-2">
-              Sem logo ainda
-            </span>
-          </div>
-          {/* Placeholder quando não há imagem configurada */}
-          {!module.iconImage && (
-            <div className="flex flex-col items-center justify-center w-full max-w-[280px] min-h-[100px] bg-slate-100 dark:bg-white/5 rounded-lg border border-dashed border-slate-300 dark:border-white/20">
+          ) : (
+            <div className="flex flex-col items-center justify-center w-full h-full bg-slate-100 dark:bg-white/5 rounded-lg border border-dashed border-slate-300 dark:border-white/20">
               <Icon className="h-10 w-10 text-slate-400 dark:text-white/40 mb-1" />
               <span className="text-xs text-slate-500 dark:text-white/50 text-center px-2">
                 Sem logo ainda
               </span>
             </div>
           )}
+          {/* Placeholder de fallback (imagem com erro) */}
+          <div className="logo-placeholder hidden flex-col items-center justify-center w-full h-full bg-slate-100 dark:bg-white/5 rounded-lg border border-dashed border-slate-300 dark:border-white/20">
+            <Icon className="h-10 w-10 text-slate-400 dark:text-white/40 mb-1" />
+            <span className="text-xs text-slate-500 dark:text-white/50 text-center px-2">
+              Sem logo ainda
+            </span>
+          </div>
         </div>
 
-        {/* TEXTO — COLADO NA LOGO */}
-        <div className="px-6 pt-0 -mt-1">
-          <h3 className="m-0 text-center text-xl font-semibold leading-tight text-slate-900 dark:text-white">
+        {/* TEXTO */}
+        <div className="px-4 pt-1 pb-0">
+          <h3 className="text-center text-[15px] font-semibold leading-tight text-slate-900 dark:text-white">
             {module.title}
           </h3>
-          <p className="mt-0 text-center text-sm leading-snug text-slate-600 dark:text-white/70 line-clamp-3">
+          <p className="mt-0.5 text-center text-[12px] leading-snug text-slate-600 dark:text-white/70 line-clamp-2 min-h-[32px]">
             {module.description}
           </p>
         </div>
 
-        {/* BOTÃO — EMPURRADO PRA BAIXO */}
-        <div className="mt-auto px-6 pb-5 pt-4">
+        {/* BOTÃO */}
+        <div className="px-4 pb-4 pt-3">
           {isAvailable ? (
             <button
               onClick={handleClick}
-              className="h-12 w-full rounded-full bg-sky-300/90 font-semibold text-slate-900 hover:bg-sky-300 transition-colors"
+              className="h-10 w-full rounded-full bg-sky-300/90 font-semibold text-sm text-slate-900 hover:bg-sky-300 transition-colors"
             >
               Abrir
             </button>
           ) : (
-            <div className="h-12 w-full rounded-full bg-slate-100 dark:bg-white/5 flex items-center justify-center">
+            <div className="h-10 w-full rounded-full bg-slate-100 dark:bg-white/5 flex items-center justify-center">
               <span className="text-xs text-slate-500 dark:text-white/60">Em breve</span>
             </div>
           )}
