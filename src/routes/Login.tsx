@@ -1,67 +1,102 @@
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { signIn } from '../lib/auth'
+import { useEffect, useMemo, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
+import TravelConnectSignIn from '@/components/ui/travel-connect-signin'
+import { getSession, requestPasswordReset, signIn, signInWithGoogle } from '../lib/auth'
+
+function normalizeTargetPath(value: string | null | undefined) {
+  const target = String(value || '').trim()
+  if (!target) return null
+  if (!target.startsWith('/')) return '/app'
+  return target
+}
 
 export default function Login() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [err, setErr] = useState('')
-  const [loading, setLoading] = useState(false)
   const nav = useNavigate()
+  const location = useLocation()
+  const [checkingSession, setCheckingSession] = useState(true)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
+  const nextPath = useMemo(() => {
+    const params = new URLSearchParams(location.search)
+    const queryTarget = normalizeTargetPath(params.get('next'))
+    const stateTarget =
+      typeof (location.state as { from?: string } | null)?.from === 'string'
+        ? normalizeTargetPath((location.state as { from?: string }).from)
+        : null
+    return queryTarget ?? stateTarget ?? '/app'
+  }, [location.search, location.state])
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search)
+    const rawError = params.get('error_description') || params.get('error')
+    if (rawError) {
+      setError(decodeURIComponent(rawError))
+    }
+  }, [location.search])
+
+  useEffect(() => {
+    let alive = true
+
+    ;(async () => {
+      try {
+        const session = await getSession()
+        if (!alive) return
+        if (session) {
+          nav(nextPath, { replace: true })
+          return
+        }
+      } catch {
+        // no-op
+      } finally {
+        if (alive) {
+          setCheckingSession(false)
+        }
+      }
+    })()
+
+    return () => {
+      alive = false
+    }
+  }, [nav, nextPath])
+
+  async function handleSubmit(payload: { email: string; password: string }) {
     setLoading(true)
-    setErr('')
+    setError('')
 
     try {
-      await signIn(email, password)
-      nav('/app')
-    } catch (error) {
-      const message = error instanceof Error ? error.message : 'Falha ao entrar.'
-      setErr(message)
+      await signIn(payload.email, payload.password)
+      nav(nextPath, { replace: true })
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Falha ao entrar.'
+      setError(message)
+      throw new Error(message)
     } finally {
       setLoading(false)
     }
   }
 
+  async function handleGoogleSignIn() {
+    setError('')
+    await signInWithGoogle(nextPath)
+  }
+
+  async function handleForgotPassword(email: string) {
+    await requestPasswordReset(email, nextPath)
+  }
+
+  if (checkingSession) {
+    return <div className="p-6">Carregando autenticação...</div>
+  }
+
   return (
-    <div className="mx-auto max-w-md p-6">
-      <h1 className="mb-4 text-2xl font-semibold">Entrar</h1>
-
-      <form onSubmit={handleSubmit} className="space-y-3">
-        <input
-          className="w-full rounded border p-3"
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          className="w-full rounded border p-3"
-          type="password"
-          placeholder="Senha"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button
-          className="w-full rounded bg-cyan-600 p-3 text-white disabled:cursor-not-allowed disabled:opacity-60"
-          disabled={loading}
-        >
-          {loading ? 'Entrando...' : 'Entrar'}
-        </button>
-      </form>
-
-      {err && <div className="mt-3 text-red-600">{err}</div>}
-
-      <div className="mt-4">
-        Nao tem conta?{' '}
-        <Link to="/signup" className="underline">
-          Criar
-        </Link>
-      </div>
-    </div>
+    <TravelConnectSignIn
+      loading={loading}
+      errorMessage={error}
+      onSubmit={handleSubmit}
+      onGoogleSignIn={handleGoogleSignIn}
+      onForgotPassword={handleForgotPassword}
+      onGoToSignup={() => nav(`/signup?next=${encodeURIComponent(nextPath)}`)}
+    />
   )
 }

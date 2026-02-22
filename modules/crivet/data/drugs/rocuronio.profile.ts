@@ -128,68 +128,82 @@ export const rocuronioProfile: DrugProfile = {
 
   doses: {
     unit_standard_cri: 'mcg/kg/min',
+    // EVIDÊNCIA-ÂNCORA: Plumb's Veterinary Drug Handbook, 10ª ed. (Rocuronium)
+    // Cão: 0,5 mg/kg IV bolus; 0,2 mg/kg/h CRI (≈ 3,33 mcg/kg/min)
+    // Gato: 0,3–0,6 mg/kg IV
+    // Alerta Plumb: laringe pode recuperar mais lentamente que membros pelvianos —
+    // TOF periférico "normal" NÃO garante extubação; reavaliar reflexo laringteo.
     dog: {
       bolus: {
         mgkg: {
-          min: 0.6,
-          max: 1.2,
-          note: 'RSI: 1,2 mg/kg IV (bloqueio rápido ~60 seg). Intubação eletiva: 0,6 mg/kg IV. Manutenção: 0,1–0,2 mg/kg conforme TOF.',
+          min: 0.5,
+          max: 0.5,
+          note:
+            'MODO PADRÃO (Plumb\'s): 0,5 mg/kg IV. Bloqueio completo em ~60–90 seg; duração ~20–35 min.\n' +
+            'MODO EXPERT (off-label / RSI de alta urgente): 1,2 mg/kg IV. Bloqueio mais rápido (~45–60 seg); duração ~60–90 min. \n' +
+            '❗ SE USAR 1,2 mg/kg: exige sugammadex 16 mg/kg para reversão de emergência. Confirmar estoque antes de usar. Fora do padrão do Plumb\'s; alto risco de bloqueio prolongado e dificuldade de reversão com neostigmina.',
         },
         route: 'IV',
-        loading_dose: { min: 0.6, max: 1.2 },
+        loading_dose: { min: 0.5, max: 0.5 },
       },
       cri: {
         mcgkgmin: {
-          min: 5,
-          max: 12,
-          note: 'CRI para manutenção de bloqueio. Sempre guiar por TOF. Ajustar conforme profundidade desejada.',
+          // BASE: Plumb's recomenda 0,2 mg/kg/h = 3,33 mcg/kg/min
+          min: 3,
+          max: 5,
+          note:
+            'BASE (Plumb\'s Vet Drug Handbook): 0,2 mg/kg/h = 3,33 mcg/kg/min.\n' +
+            'Faixa operacional: 3–5 mcg/kg/min (centrado em 3,3).\n' +
+            'Até 8–10 mcg/kg/min em titulação com aviso (use somente guiado por TOF).\n' +
+            '⚠ Alerta crítico (Plumb\'s): a laringe pode recuperar mais lentamente do que o membro pélvico. TOF periférico normal NÃO garante segurança para extubação — avaliar reflexo laríngeo/deglutição antes de extubar.',
         },
         titration: {
-          increment: 'Ajustar por TOF (alvo: 1–2 twitch em TOF-4)',
-          interval: 'Monitorar TOF a cada 15–30 min',
+          increment: 'Ajustar por TOF (alvo: 1–2 twitch em TOF-4). Incrementar 0,5–1 mcg/kg/min por vez.',
+          interval: 'Monitorar TOF a cada 15–30 min; reduce rate se T1/T4 > 0,5.',
         },
-        max: 12,
+        max: 10, // max absoluto com warning acima de 5
       },
       adjustments: {
-        obesity: 'Calcular por peso magro/ideal para RSI; evitar superdosagem.',
-        shock: 'Sem ajuste específico de dose; monitorar duração do bloqueio.',
+        obesity: 'Calcular dose por peso magro/ideal para evitar superdosagem e prolongamento.',
+        shock: 'Sem ajuste específico de dose; monitorar duração do bloqueio (hipotermia e hipoperfusão podem prolongar).',
         hypoalbuminemia: 'Sem ajuste direto; monitorar TOF.',
-        comorbidities: 'Hepatopatia: prolongamento esperado — reduzir dose de manutenção e monitorar TOF. Miastenia: evitar ou usar dose mínima com TOF.',
+        comorbidities:
+          'Hepatopatia: excreção biliar reduzida → prolongamento esperado — reduzir dose de manutenção e monitorar TOF. Miastenia: evitar ou usar dose mínima com TOF contínuo.',
       },
       therapeutic_targets: {
         target_map: 'N/A (não é cardiovascular).',
-        target_etco2: 'Manter normocapnia com ventilação mecânica.',
-        analgesia_scale: 'N/A (sem efeito analgésico — garantir analgesia separada).',
-        sedation_target: 'N/A (sem efeito sedativo — garantir hipnose separada).',
+        target_etco2: 'Manter normocapnia com ventilação mecânica durante todo o bloqueio.',
+        analgesia_scale: 'N/A (sem efeito analgésico — garantir analgesia separada SEMPRE).',
+        sedation_target: 'N/A (sem efeito sedativo — garantir hipnose separada SEMPRE).',
       },
     },
     cat: {
       bolus: {
         mgkg: {
-          min: 0.6,
-          max: 1.2,
-          note: 'Mesmas faixas. RSI: 1,2 mg/kg. Eletiva: 0,6 mg/kg. Monitorar TOF.',
+          min: 0.3,
+          max: 0.6,
+          note: 'Plumb\'s: 0,3–0,6 mg/kg IV. Gatos podem ter variação individual na duração do bloqueio; TOF obrigatório.',
         },
         route: 'IV',
-        loading_dose: { min: 0.6, max: 1.2 },
+        loading_dose: { min: 0.3, max: 0.6 },
       },
       cri: {
         mcgkgmin: {
-          min: 5,
-          max: 12,
-          note: 'CRI guiada por TOF.',
+          min: 3,
+          max: 5,
+          note: 'Mesma base do cão (3–5 mcg/kg/min = 0,18–0,3 mg/kg/h). Monitorar TOF com maior frequência em gatos (variação individual maior). Laringe: mesma prudenência — confirmar reflexo laringteo antes de extubar.',
         },
         titration: {
-          increment: 'Ajustar por TOF',
-          interval: 'Monitorar TOF a cada 15–30 min',
+          increment: 'Ajustar por TOF.',
+          interval: 'Monitorar TOF a cada 15–30 min.',
         },
-        max: 12,
+        max: 8,
       },
       adjustments: {
         obesity: 'Usar peso ideal.',
-        shock: 'Monitorar duração do bloqueio.',
+        shock: 'Monitorar duração do bloqueio (hipoperfusão pode prolongar).',
         hypoalbuminemia: 'Monitorar TOF.',
-        comorbidities: 'Hepatopatia: prolongamento esperado.',
+        comorbidities: 'Hepatopatia: prolongamento esperado; reduzir dose de manutenção.',
       },
       therapeutic_targets: {
         target_map: 'N/A.',
@@ -213,9 +227,11 @@ export const rocuronioProfile: DrugProfile = {
   dilution_and_preparation: {
     hard_rules: [
       '⛔ NUNCA usar sem ventilação mecânica disponível.',
-      '⛔ NUNCA usar sem sedação/hipnose adequada.',
-      'Ter sugammadex disponível antes de usar (especialmente para RSI com 1,2 mg/kg).',
+      '⛔ NUNCA usar sem sedação/hipnose adequada (paciente paralisado com consciência = sofrimento grave).',
+      'Ter sugammadex disponível ANTES de usar — especialmente se usar dose RSI 1,2 mg/kg.',
       'Monitorização TOF obrigatória para uso além do bolus de intubação.',
+      '⚠ Alerta de reversão (Plumb\'s): TOF periférico normal NÃO garante recuperação laringtea. Só extubar após confirmar reflexo de deglutição/laringe.',
+      'REVERSOR: (1°) Sugammadex = reversor específico/preferencial quando disponível. (2°) Alternativa: neostigmina + anticolinérgico (atropina) SOMENTE após evidência de recuperação espontânea (não para reversão de emergência).',
     ],
     recommended_targets: [
       {

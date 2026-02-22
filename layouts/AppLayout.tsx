@@ -4,7 +4,7 @@ import { ThemeToggle } from '../components/ThemeToggle'
 import { modules } from '../modules/registry'
 import { Menu, X, Home } from 'lucide-react'
 import Logo from '../components/Logo'
-import { Button } from '../components/ui/button'
+import { TopRightAuthMenu } from '@/src/components/TopRightAuthMenu'
 
 export function AppLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -210,7 +210,10 @@ export function AppLayout() {
               </div>
               <span className="neon-wave neon-wave-glow -mt-2 text-xs font-semibold tracking-wide">Vetius</span>
             </Link>
-            <ThemeToggle />
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <TopRightAuthMenu />
+            </div>
           </div>
         </header>
 

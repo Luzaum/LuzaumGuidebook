@@ -117,84 +117,105 @@ export const remifentanilProfile: DrugProfile = {
   },
 
   // Seção 4: Doses
+  // ── NOTA DE EVIDÊNCIA ─────────────────────────────────────────────────────
+  // evidence_anchor: Faixas baseadas em prática clínica descrita na literatura
+  // veterinária (Lumb & Jones 6ª ed., Plumb's 10ª ed.); faixa precisa do CRI
+  // em veterinária não tem padronização única — dois modos clínicos são descritos.
+  // ─────────────────────────────────────────────────────────────────────────────
   doses: {
     unit_standard_cri: 'mcg/kg/min',
+    // DOIS MODOS CLÍNICOS (ver presets):
+    //   MODO A – Analgesia adjuvante / UTI: 0,05–0,1 mcg/kg/min (= 3–6 µg/kg/h)
+    //   MODO B – TIVA / Anestesia (anestesia-sparing): 0,1–0,5 mcg/kg/min
+    // Ambos exigem ventilação assistida/monitorada e hard block de bolus IV.
     dog: {
       bolus: {
-        mgkg: { min: 0, max: 0, note: 'Não recomendado (evitar dose de ataque/bolus IV).' },
-        mcgkg: { min: 0, max: 0, note: 'Evitar bolus/ataque IV.' },
-        ukg: { min: 0, max: 0, note: 'Evitar bolus/ataque IV.' },
+        mgkg: { min: 0, max: 0, note: '⛔ Hard block — bolus IV evitado: risco de bradicardia severa/parada atrial súbita.' },
+        mcgkg: { min: 0, max: 0, note: '⛔ Hard block — não usar bolus/ataque.' },
+        ukg: { min: 0, max: 0, note: 'N/A' },
         route: 'IV',
         loading_dose: { min: 0, max: 0 },
       },
       cri: {
         mcgkgmin: {
-          min: 0.1,
-          max: 0.2,
-          note: 'Equivale a 6–12 µg/kg/h (faixa sugerida; pode aumentar para maior anestesia-sparing/analgesia conforme resposta e monitorização).',
+          // Faixa unificada — Modo A mínimo até Modo B máximo
+          min: 0.05,
+          max: 0.5,
+          note:
+            'DOIS MODOS CLÍNICOS:\n' +
+            '• MODO A (analgesia adjuvante / UTI): 0,05–0,1 mcg/kg/min (= 3–6 µg/kg/h). Início analgésico com menor risco ventilatório. Indicado para multimodal intra/pós-operatório e UTI com monitorização.\n' +
+            '• MODO B (TIVA / anestesia-sparing): 0,1–0,5 mcg/kg/min. Permite redução de 30–60% do agente inalante. Exige ventilação mecânica assistida, monitorização de EtCO2/SpO2 e reversão analgésica planejada antes do fim.\n' +
+            'Transição: remifentanil tem meia-vida ~3–5 min — sempre planejar analgésico de "cobertura" (opioide/AINE/bloqueio) antes de interromper a CRI.',
         },
         mgkgh: {
-          min: 0.006,
-          max: 0.012,
-          note: 'Conversão de 0.1–0.2 mcg/kg/min → mg/kg/h (×0.06 ÷1000).',
+          min: 0.003,
+          max: 0.03,
+          note: 'Representação em mg/kg/h: 0,05–0,5 mcg/kg/min × 60 ÷ 1000 = 0,003–0,030 mg/kg/h.',
         },
         titration: {
-          increment: 'Titular em passos pequenos (ex.: +0.02–0.05 mcg/kg/min) conforme dor/necessidade anestésica e ventilação.',
-          interval: 'Reavaliar em 5–10 min após ajuste (analgesia, FC/PA, EtCO2/SpO2).',
+          increment:
+            'Modo A: titular +0,01–0,02 mcg/kg/min a cada 5–10 min. Modo B: titular +0,05 mcg/kg/min conforme plano anestésico e EtCO2.',
+          interval:
+            'Reavaliar em 5–10 min após cada ajuste (FC/PA, EtCO2, SpO2, movimento/resposta à dor).',
         },
         max: 0.5,
       },
       adjustments: {
-        obesity: 'Preferir peso ideal/magro para iniciar e titular ao efeito (reduz risco ventilatório).',
-        shock: 'Titular com cautela; tratar volume/causa; monitorar PA e perfusão.',
-        hypoalbuminemia: 'Menos determinante que em drogas muito proteína-ligadas; ainda assim, iniciar conservador e titular.',
+        obesity: 'Calcular pelo peso magro (alta lipossolubilidade → distribuição desproporcional em obesos).',
+        shock: 'Iniciar Modo A baixo (0,05 mcg/kg/min); tratar volemia e causa antes de titular. Monitorar PA e perfusão continuamente.',
+        hypoalbuminemia: 'Menos determinante vs drogas proteína-ligadas; ainda iniciar conservador.',
         comorbidities:
-          'Hepatopatia/DRC: geralmente favorável (esterases), mas manter monitorização; cardiopatas/bradicárdicos: iniciar mais baixo e evitar qualquer bolus.',
+          'Hepatopatia/DRC: geralmente favorável (metabolismo por esterases, não hepático); Cardiopatas/bradicárdicos: iniciar Modo A mínimo e evitar qualquer bolus.',
       },
       therapeutic_targets: {
-        target_map: 'N/A',
-        target_etco2: 'Manter normocapnia (ou alvo institucional) e evitar hipoventilação; EtCO2 é marcador-chave durante CRI.',
-        analgesia_scale: 'Queda objetiva na escala de dor e menor resposta autonômica à nocicepção.',
-        sedation_target: 'N/A (uso típico intraoperatório; foco é analgesia e estabilidade).',
+        target_map: 'N/A (não pressor/vasopressor).',
+        target_etco2: 'Manter EtCO2 dentro do alvo institucional — EtCO2 é o guia-mestre durante CRI de remifentanil.',
+        analgesia_scale: 'Queda objetiva na escala de dor + redução de resposta autonômica à nocicepção (FC/PA).',
+        sedation_target: 'Foco é analgesia e estabilidade hemodinâmica; hipnose garantida por agente separado.',
       },
     },
     cat: {
       bolus: {
-        mgkg: { min: 0, max: 0, note: 'Não recomendado (evitar dose de ataque/bolus IV).' },
-        mcgkg: { min: 0, max: 0, note: 'Evitar bolus/ataque IV.' },
-        ukg: { min: 0, max: 0, note: 'Evitar bolus/ataque IV.' },
+        mgkg: { min: 0, max: 0, note: '⛔ Hard block — bolus IV evitado: risco de bradicardia severa em gatos.' },
+        mcgkg: { min: 0, max: 0, note: '⛔ Hard block.' },
+        ukg: { min: 0, max: 0, note: 'N/A' },
         route: 'IV',
         loading_dose: { min: 0, max: 0 },
       },
       cri: {
         mcgkgmin: {
-          min: 0.067,
-          max: 0.1,
-          note: 'Equivale a 4–6 µg/kg/h (faixa sugerida; pode aumentar para maior anestesia-sparing/analgesia conforme resposta e monitorização).',
+          min: 0.05,
+          max: 0.3,
+          note:
+            'DOIS MODOS CLÍNICOS (gatos):\n' +
+            '• MODO A (analgesia adjuvante / UTI): 0,05–0,1 mcg/kg/min (= 3–6 µg/kg/h). Iniciar baixo; gatos são mais sensíveis à depressão ventilatória.\n' +
+            '• MODO B (TIVA / anestesia-sparing): 0,1–0,3 mcg/kg/min. Máximo de 0,3 em gatos (conservador vs cão). Ventilação mecânica e monitorização EtCO2 são obrigatórias.\n' +
+            'Planejar cobertura analgésica antes de interromper (meia-vida ~3–5 min).',
         },
         mgkgh: {
-          min: 0.004,
-          max: 0.006,
-          note: 'Conversão de 0.067–0.1 mcg/kg/min → mg/kg/h (×0.06 ÷1000).',
+          min: 0.003,
+          max: 0.018,
+          note: '0,05–0,3 mcg/kg/min × 60 ÷ 1000 = 0,003–0,018 mg/kg/h.',
         },
         titration: {
-          increment: 'Titular em passos pequenos (ex.: +0.01–0.02 mcg/kg/min) conforme resposta e ventilação.',
-          interval: 'Reavaliar em 5–10 min após ajuste.',
+          increment:
+            'Titular +0,01–0,02 mcg/kg/min a cada 5–10 min; gatos tem menor margem — preferir incrementos menores.',
+          interval: 'Reavaliar em 5–10 min após ajuste (EtCO2, SpO2, FC).',
         },
         max: 0.3,
       },
       adjustments: {
-        obesity: 'Preferir peso ideal para iniciar e titular.',
-        shock: 'Titular conservador; tratar causa/volume; monitoração intensiva.',
-        hypoalbuminemia: 'Sem ajuste fixo; titular ao efeito.',
+        obesity: 'Usar peso magro/ideal.',
+        shock: 'Modo A mínimo; tratar causa/volume antes de escalar.',
+        hypoalbuminemia: 'Sem ajuste específico; titular ao efeito.',
         comorbidities:
-          'Hepatopatia/DRC: geralmente favorável (esterases), mas manter monitorização; bradicardia/cardiopatia: iniciar mais baixo e evitar bolus.',
+          'Cardiopatia/HCM: iniciar muito baixo e monitorar FC/PA (bradicardia é problemática em HCM); hepatopatia/DRC: geralmente favorável (esterases).',
       },
       therapeutic_targets: {
-        target_map: 'N/A',
-        target_etco2: 'Evitar hipoventilação/hipercapnia (EtCO2 recomendado).',
+        target_map: 'N/A.',
+        target_etco2: 'Manter EtCO2 rigorosamente — gatos hipoventilam mais facilmente.',
         analgesia_scale: 'Analgesia objetiva sem comprometer ventilação.',
-        sedation_target: 'N/A',
+        sedation_target: 'N/A.',
       },
     },
   },

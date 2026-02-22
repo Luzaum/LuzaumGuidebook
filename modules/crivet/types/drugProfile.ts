@@ -100,6 +100,10 @@ export interface DoseRange {
   min: number
   max: number
   note?: string
+  // Ancora de evidência: de qual referência vem esta faixa
+  evidence_anchor?: 'Plumb' | 'BSAVA' | 'Nelson' | 'Lumb_Jones' | 'Institutional' | 'Expert_consensus'
+  // Nível de evidência: serve para a UI exibir tag de cor
+  evidence_level?: 'strong' | 'moderate' | 'variable' | 'institutional_only'
 }
 
 export interface DoseAdjustment {
@@ -136,6 +140,11 @@ export interface SpeciesDoses {
     maintenance?: DoseRange
     rescue?: DoseRange
     max?: number
+    // Modo clínico (ex: 'UTI adjuvant' | 'TIVA/anesthesia' | 'standard')
+    clinical_mode?: string
+    // Não recomendado para rotina
+    not_recommended_routine?: boolean
+    not_recommended_reason?: string
   }
   epidural?: {
     mgkg?: DoseRange
@@ -151,6 +160,8 @@ export interface Doses {
   unit_standard_cri: string // "mcg/kg/min" | "mg/kg/h"
   dog: SpeciesDoses
   cat: SpeciesDoses
+  // Ancora de evidência global do fármaco
+  evidence_anchor?: 'Plumb' | 'BSAVA' | 'Nelson' | 'Lumb_Jones' | 'Institutional' | 'Expert_consensus'
 }
 
 // Seção 5: Apresentações

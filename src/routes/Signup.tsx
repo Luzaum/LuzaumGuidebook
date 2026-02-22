@@ -1,13 +1,20 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useMemo, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { signUp } from '../lib/auth'
 
 export default function Signup() {
+  const location = useLocation()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [msg, setMsg] = useState('')
   const [err, setErr] = useState('')
   const [loading, setLoading] = useState(false)
+
+  const nextPath = useMemo(() => {
+    const params = new URLSearchParams(location.search)
+    const next = params.get('next') || '/app'
+    return next.startsWith('/') ? next : '/app'
+  }, [location.search])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -60,7 +67,7 @@ export default function Signup() {
 
       <div className="mt-4">
         Ja tem conta?{' '}
-        <Link to="/login" className="underline">
+        <Link to={`/login?next=${encodeURIComponent(nextPath)}`} className="underline">
           Entrar
         </Link>
       </div>

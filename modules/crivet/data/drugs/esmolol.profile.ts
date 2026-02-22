@@ -85,8 +85,8 @@ export const esmololProfile: DrugProfile = {
       key: 'asthma',
       level: 'WARNING',
       title: 'Asma / Bronquite Felina',
-      why: 'Risco de broncoespasmo em doses altas (perda da seletividade).',
-      action: ['Monitorar respiração.', 'Ter broncodilatador à mão.'],
+      why: 'Risco de broncoespasmo em doses altas (perda da seletividade beta-1). Plumb\'s cita broncoespasmo como efeito adverso relevante de betabloqueadores.',
+      action: ['Monitorar FR e ausculta pulmonar.', 'Ter broncodilatador (terbutalina/salbutamol) à mão.', 'Evitar doses acima de 100 mcg/kg/min em asmaáticos.'],
     },
     {
       key: 'diabetes',
@@ -98,9 +98,54 @@ export const esmololProfile: DrugProfile = {
     {
       key: 'icc_decompensated',
       level: 'WARNING',
-      title: 'ICC Descompensada',
-      why: 'Inotropismo negativo.',
-      action: ['Evitar em choque cardiogênico.'],
+      title: 'ICC Descompensada / DMVD grave',
+      why: 'Inotropismo negativo pode precipitar descompensação.',
+      action: ['Evitar em choque cardiogênico.', 'Se usar em ICC controlada: sem bolus; iniciar na menor dose e titular com ECG + PA.'],
+    },
+    {
+      key: 'calcium_channel_blocker_interaction',
+      level: 'CRITICAL',
+      title: 'Diltiazem / Verapamil IV próximo: depressão miocárdica aditiva',
+      why: 'Bloqueadores de canal de cálcio (especialmente diltiazem e verapamil IV) + esmolol = depressão miocárdica aditiva. Plumb\'s lista essa combinação como risco de hipoatensão severa, bradicardia e até assistolia.',
+      action: [
+        'NÃO administrar esmolol e diltiazem/verapamil IV simultâneos ou em sequência próxima sem monitorização intensiva.',
+        'Se combiná-los for necessário: PA invasiva + ECG contínuo + reanimador pronto.',
+        'Preferir análise de risco/benefício criteriosa.',
+      ],
+      dose_adjustment: {
+        avoid_bolus: false,
+        require_monitoring: ['PA invasiva', 'ECG contínuo', 'FC', 'SpO2'],
+        suggest_alternative: 'Monitorar e reduzir dose de ambos se sinais de depressão.',
+      },
+    },
+    {
+      key: 'bronchospasm_asthma_high_dose',
+      level: 'WARNING',
+      title: 'Broncoespasmo / Asma: seletividade reduzida em doses altas',
+      why: 'Esmolol é seletivo beta-1 em doses baixas, mas perde seletividade em doses ≥ 150 mcg/kg/min, podendo causar broncoconstrição (Plumb\'s). Em gatos asmaáticos ou com bronquite crônica felina, o risco é clinicamente relevante.',
+      action: [
+        'Limitar dose a ≤80–100 mcg/kg/min em asmaáticos/bronquite.',
+        'Monitorar ausculta e SpO2.',
+        'Ter terbutalina/salbutamol disponível.',
+      ],
+      dose_adjustment: {
+        reduce_percent: 50,
+        require_monitoring: ['SpO2', 'ausculta pulmonar', 'FR'],
+        suggest_alternative: 'Diltiazem (para controle de ritmo supraventricular em bronquite felina).',
+      },
+    },
+    {
+      key: 'theophylline_interaction',
+      level: 'MONITOR',
+      title: 'Teofilina: antagonismo farmacodinâmico',
+      why: 'Teofilina é antagonista de adenosina e causa efeito cronotrópico positivo. Esmolol antagoniza o efeito adrenérgico, mas teofilina pode reduzir a eficácia do esmolol no controle de frequência (Plumb\'s). A combinação também pode aumentar risco de arritmias.',
+      action: [
+        'Monitorar ECG e frequência cardíaca (pode precisar de doses maiores de esmolol).',
+        'Considerar níveis séricos de teofilina se possível.',
+      ],
+      dose_adjustment: {
+        require_monitoring: ['ECG', 'FC', 'SpO2'],
+      },
     },
   ],
 
@@ -141,10 +186,16 @@ export const esmololProfile: DrugProfile = {
       cri: {
         mcgkgmin: {
           min: 10,
-          max: 100,
-          note: 'Gatos: 10-50 mcg/kg/min inicial.',
+          max: 200, // alinhado com Plumb's e BSAVA ECC
+          note:
+            'Faixa clínica em gatos (Plumb\'s / BSAVA ECC): 10–200 mcg/kg/min.\n' +
+            'ZONAS DE SEGURANÇA:\n' +
+            '• ■ VERDE (≤10 mcg): dose inicial/conservadora; adequado para maioria dos casos com ECG contínuo\n' +
+            '• ■ VERDE (10–100 mcg): faixa de uso clínico padrão\n' +
+            '• ■ AMARELO (100–150 mcg): aceito com monitorização intensiva (ECG, PA, SpO2)\n' +
+            '• ■ LARANJA (150–200 mcg): usar apenas com PA invasiva + ECG contínuo; evitar em ICC/DMVD grave; seletividade beta-1 reduzida (risco de broncoespasmo em asma/bronquite).',
         },
-        max: 150,
+        max: 200,
       },
     },
   },

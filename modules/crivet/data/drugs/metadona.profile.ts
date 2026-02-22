@@ -172,13 +172,29 @@ export const metadonaProfile: DrugProfile = {
         loading_dose: { min: 0.3, max: 0.5 },
       },
       cri: {
-        mcgkgmin: { min: 0, max: 0, note: 'Preferir mg/kg/h; CRI em gatos não está padronizado nesta base — usar bolus e reavaliar.' },
-        mgkgh: { min: 0, max: 0, note: 'Sem faixa CRI padronizada aqui (não bloquear: gato já tem bolus).' },
-        titration: {
-          increment: 'N/A',
-          interval: 'N/A',
+        // ⚠ EVIDÊNCIA VARIÁVEL — não é hard block, mas exige cautela e protocolo
+        // O BSAVA ECC 3ª ed. descreve metadona em gatos apenas como bolus (0,2–0,4 mg/kg IV/IM q4–6h).
+        // CRI não está padronizada no BSAVA ECC; não há dados que a contraindiquem formalmente.
+        // Se usada, deve ser excepcional, com monitorização de SpO2/EtCO2 e protocolo do serviço.
+        mcgkgmin: { min: 0, max: 0, note: 'Não usar mcg/kg/min para metadona — preferir mg/kg/h.' },
+        mgkgh: {
+          min: 0.05,
+          max: 0.15,
+          note:
+            '⚠ EVIDÊNCIA VARIÁVEL (banner amarelo):\n' +
+            'CRI de metadona em gatos NÃO está padronizada no BSAVA ECC 3ª ed. (que descreve apenas bolus IV/IM).\n' +
+            'Se usada em contexto excepcional (p.ex.: analgesia contínua pós-operatória grave, protocolo da UTI do serviço):\n' +
+            '• Faixa cautelosa: 0,05–0,15 mg/kg/h (abaixo da faixa canina)\n' +
+            '• Bolus de ataque (loading dose): 0,3–0,5 mg/kg IV lento antes de iniciar CRI\n' +
+            '• Monitorização obrigatória: SpO2, EtCO2, FR, FC, sedação a cada 15 min\n' +
+            '• Evidência-âncora: prática clínica/protocolo institucional (não em guideline formal)\n' +
+            'Se não houver protocolo do serviço validado → prefira bolus q4–6 h (BSAVA ECC).',
         },
-        max: 0,
+        titration: {
+          increment: 'Iniciar 0,05 mg/kg/h; aumentar em 0,025–0,05 mg/kg/h conforme dor, ventilação e sedação.',
+          interval: 'Reavaliar a cada 15–30 min no início; depois a cada 1–2 h.',
+        },
+        max: 0.2,
       },
       adjustments: {
         obesity: 'Dose inicial pelo peso ideal/ajustado e titular ao efeito.',

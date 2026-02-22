@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from 'react'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useLocation } from 'react-router-dom'
 import { getSession } from '../lib/auth'
 
 type ProtectedRouteProps = {
@@ -7,6 +7,7 @@ type ProtectedRouteProps = {
 }
 
 export function ProtectedRoute({ children }: ProtectedRouteProps) {
+  const location = useLocation()
   const [loading, setLoading] = useState(true)
   const [ok, setOk] = useState(false)
 
@@ -42,7 +43,8 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
   }
 
   if (!ok) {
-    return <Navigate to="/login" replace />
+    const nextPath = `${location.pathname}${location.search}${location.hash}`
+    return <Navigate to={`/login?next=${encodeURIComponent(nextPath)}`} replace />
   }
 
   return <>{children}</>
