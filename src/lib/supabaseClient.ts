@@ -5,8 +5,8 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
-// Expor no window APENAS em desenvolvimento
+// DEV only: expõe o client no console para testes rápidos
 if (import.meta.env.DEV) {
-  // @ts-ignore
-  window.supabase = supabase
+  ;(window as any).supabase = supabase
+  console.log('[DEV] window.supabase exposto ✅')
 }

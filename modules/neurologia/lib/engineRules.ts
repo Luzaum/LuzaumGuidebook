@@ -1,10 +1,10 @@
 export const EXAM_TO_TOPIC_MAP: Record<string, Record<string, string>> = {
     // SEÇÃO 1: MENTAÇÃO
     mentation: {
-        Alerta: 's1-nivel-consciencia-alerta',
-        Deprimido: 's1-nivel-consciencia-deprimido',
-        Estupor: 's1-nivel-consciencia-estupor',
-        Coma: 's1-nivel-consciencia-coma',
+        Alerta: 's1-nível-consciencia-alerta',
+        Deprimido: 's1-nível-consciencia-deprimido',
+        Estupor: 's1-nível-consciencia-estupor',
+        Coma: 's1-nível-consciencia-coma',
     },
     behavior: {
         Normal: 's1-comportamento-normal',
@@ -23,7 +23,7 @@ export const EXAM_TO_TOPIC_MAP: Record<string, Record<string, string>> = {
     ambulation: {
         Ambulatório: 's2-capacidade-ambulatorio',
         'Com Apoio': 's2-capacidade-com-apoio',
-        'Não Ambulatório': 's2-capacidade-nao-ambulatorio',
+        'Não Ambulatório': 's2-capacidade-não-ambulatorio',
         Plegia: 's2-capacidade-plegia',
     },
     gait_thoracic: {

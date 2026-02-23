@@ -59,8 +59,8 @@ export const AAP2Layout: React.FC<AAP2LayoutProps> = ({
                 type="button"
                 onClick={() => setIsSidebarPinned((v) => !v)}
                 className={`absolute left-3 top-3 z-[110] inline-flex h-10 w-10 items-center justify-center rounded-xl border backdrop-blur-xl transition ${isDarkMode ? 'border-white/10 bg-slate-900/70 text-slate-200 hover:bg-slate-800/80' : 'border-slate-200 bg-white/80 text-slate-700 hover:bg-white'}`}
-                title={isSidebarPinned ? 'Ocultar menu lateral automatico' : 'Fixar menu lateral'}
-                aria-label={isSidebarPinned ? 'Ocultar menu lateral automatico' : 'Fixar menu lateral'}
+                title={isSidebarPinned ? 'Ocultar menu lateral automático' : 'Fixar menu lateral'}
+                aria-label={isSidebarPinned ? 'Ocultar menu lateral automático' : 'Fixar menu lateral'}
             >
                 <span className="material-symbols-outlined text-[20px]">{isSidebarPinned ? 'left_panel_close' : 'left_panel_open'}</span>
             </button>

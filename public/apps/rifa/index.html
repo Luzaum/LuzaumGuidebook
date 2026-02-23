@@ -281,7 +281,7 @@
 
                     // Criar object store se não existir
                     if (!db.objectStoreNames.contains(STORE_NAME)) {
-                        const objectStore = db.createObjectStore(STORE_NAME, { keyPath: 'numero' });
+                        const objectStore = db.createObjectStore(STORE_NAME, { keyPath: 'número' });
                         objectStore.createIndex('status', 'status', { unique: false });
                         objectStore.createIndex('nome', 'nome', { unique: false });
                         console.log('📦 Object Store criado com sucesso!');
@@ -290,13 +290,13 @@
             });
         }
 
-        function saveParticipante(numero, data) {
+        function saveParticipante(número, data) {
             return new Promise((resolve, reject) => {
                 const transaction = db.transaction([STORE_NAME], 'readwrite');
                 const objectStore = transaction.objectStore(STORE_NAME);
 
                 const participante = {
-                    numero: numero,
+                    número: número,
                     nome: data.nome || '',
                     telefone: data.telefone || '',
                     status: data.status || 'Não Pago',
@@ -310,11 +310,11 @@
             });
         }
 
-        function getParticipante(numero) {
+        function getParticipante(número) {
             return new Promise((resolve, reject) => {
                 const transaction = db.transaction([STORE_NAME], 'readonly');
                 const objectStore = transaction.objectStore(STORE_NAME);
-                const request = objectStore.get(numero);
+                const request = objectStore.get(número);
 
                 request.onsuccess = () => resolve(request.result);
                 request.onerror = () => reject(request.error);
@@ -347,16 +347,16 @@
                     <td class="px-4 py-3 border-b">
                         <input type="text" placeholder="Nome do comprador" 
                                class="nome-input w-full p-2 bg-transparent border-b border-transparent focus:border-indigo-300 outline-none transition-all text-sm"
-                               data-numero="${i}">
+                               data-número="${i}">
                     </td>
                     <td class="px-4 py-3 border-b">
                         <input type="text" placeholder="(00) 00000-0000" 
                                class="telefone-input w-full p-2 bg-transparent border-b border-transparent focus:border-indigo-300 outline-none transition-all text-sm"
-                               data-numero="${i}">
+                               data-número="${i}">
                     </td>
                     <td class="px-4 py-3 border-b text-center">
                         <select class="status-select bg-red-50 text-red-600 p-2 rounded-lg text-xs font-bold outline-none cursor-pointer w-full border border-red-200"
-                                data-numero="${i}">
+                                data-número="${i}">
                             <option value="Não Pago" selected>🔴 Pendente</option>
                             <option value="Pago">🟢 Pago (R$ 35)</option>
                         </select>
@@ -364,7 +364,7 @@
                     <td class="px-4 py-3 border-b">
                         <input type="date" 
                                class="data-input w-full p-1 bg-transparent outline-none text-xs text-gray-500"
-                               data-numero="${i}">
+                               data-número="${i}">
                     </td>
                 `;
                 tableBody.appendChild(tr);
@@ -397,40 +397,40 @@
             // Auto-save em inputs de nome
             document.querySelectorAll('.nome-input').forEach(input => {
                 input.addEventListener('blur', async (e) => {
-                    const numero = parseInt(e.target.dataset.numero);
-                    updateGridName(numero, e.target.value);
-                    await saveCurrentRow(numero);
+                    const número = parseInt(e.target.dataset.número);
+                    updateGridName(número, e.target.value);
+                    await saveCurrentRow(número);
                 });
             });
 
             // Auto-save em inputs de telefone
             document.querySelectorAll('.telefone-input').forEach(input => {
                 input.addEventListener('blur', async (e) => {
-                    const numero = parseInt(e.target.dataset.numero);
-                    await saveCurrentRow(numero);
+                    const número = parseInt(e.target.dataset.número);
+                    await saveCurrentRow(número);
                 });
             });
 
             // Auto-save em selects de status
             document.querySelectorAll('.status-select').forEach(select => {
                 select.addEventListener('change', async (e) => {
-                    const numero = parseInt(e.target.dataset.numero);
+                    const número = parseInt(e.target.dataset.número);
                     updateStatus(e.target);
-                    await saveCurrentRow(numero);
+                    await saveCurrentRow(número);
                 });
             });
 
             // Auto-save em inputs de data
             document.querySelectorAll('.data-input').forEach(input => {
                 input.addEventListener('change', async (e) => {
-                    const numero = parseInt(e.target.dataset.numero);
-                    await saveCurrentRow(numero);
+                    const número = parseInt(e.target.dataset.número);
+                    await saveCurrentRow(número);
                 });
             });
         }
 
-        async function saveCurrentRow(numero) {
-            const row = document.querySelector(`tr[data-number="${numero}"]`);
+        async function saveCurrentRow(número) {
+            const row = document.querySelector(`tr[data-number="${número}"]`);
             if (!row) return;
 
             const nomeInput = row.querySelector('.nome-input');
@@ -446,13 +446,13 @@
             };
 
             try {
-                await saveParticipante(numero, data);
-                console.log(`💾 Número ${numero} salvo automaticamente!`);
+                await saveParticipante(número, data);
+                console.log(`💾 Número ${número} salvo automaticamente!`);
 
                 // Atualizar cor do card na grade
-                updateGridName(numero, data.nome, data.status);
+                updateGridName(número, data.nome, data.status);
             } catch (error) {
-                console.error(`Erro ao salvar número ${numero}:`, error);
+                console.error(`Erro ao salvar número ${número}:`, error);
             }
         }
 
@@ -462,7 +462,7 @@
                 console.log(`📂 Carregando ${participantes.length} registros salvos...`);
 
                 participantes.forEach(p => {
-                    const row = document.querySelector(`tr[data-number="${p.numero}"]`);
+                    const row = document.querySelector(`tr[data-number="${p.número}"]`);
                     if (!row) return;
 
                     const nomeInput = row.querySelector('.nome-input');
@@ -479,7 +479,7 @@
                     if (dataInput) dataInput.value = p.dataReserva || '';
 
                     // Atualizar nome e cor na grade visual
-                    updateGridName(p.numero, p.nome || '', p.status || 'Não Pago');
+                    updateGridName(p.número, p.nome || '', p.status || 'Não Pago');
                 });
 
                 updateStats();
@@ -489,8 +489,8 @@
             }
         }
 
-        function updateGridName(numero, nome, status = 'Não Pago') {
-            const gridCell = document.getElementById(`grid-${numero}`);
+        function updateGridName(número, nome, status = 'Não Pago') {
+            const gridCell = document.getElementById(`grid-${número}`);
             if (gridCell) {
                 const nomeElement = gridCell.querySelector('.grid-nome');
                 if (nomeElement) {
@@ -517,7 +517,7 @@
                 }
 
                 gridCell.className = `w-full h-20 ${bgColor} rounded-lg shadow-md hover:scale-105 transition-transform cursor-pointer p-2`;
-                gridCell.title = `Número ${numero} - ${statusText}${nome ? ': ' + nome : ''}`;
+                gridCell.title = `Número ${número} - ${statusText}${nome ? ': ' + nome : ''}`;
             }
         }
 
@@ -532,12 +532,12 @@
             }
 
             // Atualizar grade visual
-            const numero = select.dataset.numero;
-            const row = document.querySelector(`tr[data-number="${numero}"]`);
+            const número = select.dataset.número;
+            const row = document.querySelector(`tr[data-number="${número}"]`);
             if (row) {
                 const nomeInput = row.querySelector('.nome-input');
                 const nome = nomeInput?.value || '';
-                updateGridName(numero, nome, select.value);
+                updateGridName(número, nome, select.value);
             }
 
             updateStats();
@@ -573,7 +573,7 @@
             const pending = [];
 
             rows.forEach(row => {
-                const numero = row.dataset.number;
+                const número = row.dataset.number;
                 const nomeInput = row.querySelector('.nome-input');
                 const telefoneInput = row.querySelector('.telefone-input');
                 const statusSelect = row.querySelector('.status-select');
@@ -586,7 +586,7 @@
 
                 // Se tem nome mas não está pago
                 if (nome && status === 'Não Pago') {
-                    pending.push({ numero, nome, telefone, data });
+                    pending.push({ número, nome, telefone, data });
                 }
             });
 
@@ -618,7 +618,7 @@
                     <div class="bg-white rounded-lg p-3 border border-yellow-200 hover:border-yellow-400 transition-colors">
                         <div class="flex items-center justify-between flex-wrap gap-2">
                             <div class="flex items-center gap-3">
-                                <span class="inline-flex items-center justify-center w-8 h-8 bg-yellow-500 text-white font-bold rounded-full text-sm">${p.numero}</span>
+                                <span class="inline-flex items-center justify-center w-8 h-8 bg-yellow-500 text-white font-bold rounded-full text-sm">${p.número}</span>
                                 <span class="font-semibold text-gray-800">${p.nome}</span>
                             </div>
                             <div class="flex items-center gap-3 text-sm text-gray-600">
@@ -647,7 +647,7 @@
             const missing = [];
 
             rows.forEach(row => {
-                const numero = row.dataset.number;
+                const número = row.dataset.number;
                 const nomeInput = row.querySelector('.nome-input');
                 const telefoneInput = row.querySelector('.telefone-input');
                 const statusSelect = row.querySelector('.status-select');
@@ -660,7 +660,7 @@
 
                 // Se está pago, tem nome mas não tem telefone
                 if (status === 'Pago' && nome && !telefone) {
-                    missing.push({ numero, nome, data });
+                    missing.push({ número, nome, data });
                 }
             });
 
@@ -691,7 +691,7 @@
                     <div class="bg-white rounded-lg p-3 border border-purple-200 hover:border-purple-400 transition-colors">
                         <div class="flex items-center justify-between flex-wrap gap-2">
                             <div class="flex items-center gap-3">
-                                <span class="inline-flex items-center justify-center w-8 h-8 bg-purple-500 text-white font-bold rounded-full text-sm">${p.numero}</span>
+                                <span class="inline-flex items-center justify-center w-8 h-8 bg-purple-500 text-white font-bold rounded-full text-sm">${p.número}</span>
                                 <span class="font-semibold text-gray-800">${p.nome}</span>
                             </div>
                             <div class="flex items-center gap-3 text-sm text-gray-600">
@@ -718,19 +718,19 @@
             const rows = document.querySelectorAll('#tableBody tr');
             // Header do CSV
             let csvContent = "\uFEFF"; // Byte Order Mark para Excel reconhecer acentos
-            csvContent += "Numero;Nome;Telefone;Status;Valor;Data Reserva\n";
+            csvContent += "Número;Nome;Telefone;Status;Valor;Data Reserva\n";
 
             rows.forEach(row => {
                 const inputs = row.querySelectorAll('input');
                 const select = row.querySelector('select');
-                const numero = row.cells[0].innerText;
+                const número = row.cells[0].innerText;
                 const nome = inputs[0].value || "Vazio";
                 const telefone = inputs[1].value || "Vazio";
                 const status = select.value;
                 const valor = status === "Pago" ? "35,00" : "0,00";
                 const data = inputs[2].value || "";
 
-                csvContent += `${numero};${nome};${telefone};${status};${valor};${data}\n`;
+                csvContent += `${número};${nome};${telefone};${status};${valor};${data}\n`;
             });
 
             const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });

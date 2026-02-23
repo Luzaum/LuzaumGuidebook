@@ -340,8 +340,8 @@ export default function RxPrintPage() {
 
   const specialControlTargetPharmacy = useMemo<SpecialControlPharmacy>(() => {
     const selected = prescription.recommendations.specialControlPharmacy
-    if (selected === 'humana' || selected === 'manipulacao' || selected === 'veterinaria') return selected
-    return 'veterinaria'
+    if (selected === 'humana' || selected === 'manipulacao' || selected === 'veterinária') return selected
+    return 'veterinária'
   }, [prescription.recommendations.specialControlPharmacy])
 
   const templateForDoc = (doc: ReturnType<typeof renderRxToPrintDoc>) => {
@@ -486,7 +486,7 @@ export default function RxPrintPage() {
     }
 
     triggerFileDownload(file)
-    const bcc = share.includeBcc ? '&bcc=clinica@vetius.local' : ''
+    const bcc = share.includeBcc ? '&bcc=clínica@vetius.local' : ''
     window.location.href = `mailto:${encodeURIComponent(share.email || '')}?subject=${encodeURIComponent(share.emailSubject)}&body=${encodeURIComponent(body)}${bcc}`
     pushToast('Anexo automático indisponível neste navegador. PDF baixado para envio manual.')
   }
@@ -833,7 +833,7 @@ export default function RxPrintPage() {
                       }))
                     }
                   >
-                    <option value="veterinaria">Farmácia veterinária</option>
+                    <option value="veterinária">Farmácia veterinária</option>
                     <option value="manipulacao">Farmácia de manipulação</option>
                     <option value="humana">Farmácia humana</option>
                   </select>

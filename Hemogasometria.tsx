@@ -747,7 +747,7 @@ const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
                                             <ul className="list-disc pl-5 space-y-1 marker:text-slate-400">
                                                 <li>Amostra arterial é essencial para avaliar oxigenação.</li>
                                                 <li>Remova bolhas da seringa imediatamente (alteram pCO₂ e pO₂).</li>
-                                                <li>Analise em até 5 minutos ou armazene em gelo (máx 1 hora).</li>
+                                                <li>Análise em até 5 minutos ou armazene em gelo (máx 1 hora).</li>
                                                 <li>Sempre registre a temperatura para correção pelo analisador.</li>
                                             </ul>
                                         </div>

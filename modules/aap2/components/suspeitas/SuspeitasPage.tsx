@@ -263,7 +263,7 @@ const DiagnosisResultCard: React.FC<{
                 <span className="result-card-animal"> ({result.animal.name})</span>
             </h4>
             <div className="result-card-actions">
-                <span className="result-probability" title="Compatibilidade clinica relativa">
+                <span className="result-probability" title="Compatibilidade clínica relativa">
                     Compatibilidade: {result.probability}%
                 </span>
                 <button className="btn btn--ghost btn--sm" onClick={onPreview}>Ver na Enciclopedia</button>

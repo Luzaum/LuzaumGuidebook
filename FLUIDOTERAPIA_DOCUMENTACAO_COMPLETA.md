@@ -17,7 +17,7 @@ FluidoterapiaPage.tsx
         │     ├── [Coluna esquerda - INPUTS]
         │     └── [Coluna direita - OUTPUTS/RESULTADOS]
         ├── <Collapsible id="ressuscitacao"> Ressuscitação Volêmica
-        ├── <Collapsible id="especificas"> Fluidos para Condições Específicas
+        ├── <Collapsible id="específicas"> Fluidos para Condições Específicas
         └── <Collapsible id="hipertonica"> Calculadora de Salina Hipertônica
 ```
 
@@ -41,7 +41,7 @@ FluidoterapiaPage.tsx
 | `estadoFisiologico` | `string` | `'adulto'` | Define range de taxa de manutenção |
 | `taxaManutencao` | `string` | `'50'` | mL/kg/dia. Ajustado por slider conforme estado fisiológico |
 | `incluirReidratacao` | `boolean` | `false` | Checkbox para habilitar campo de desidratação |
-| `desidratacao` | `string` | `'0'` | Fração decimal (ex: `'0.08'` = 8%). Select com opções de 5% a 12% |
+| `desidratação` | `string` | `'0'` | Fração decimal (ex: `'0.08'` = 8%). Select com opções de 5% a 12% |
 | `tempoReidratacao` | `string` | `'12'` | Horas para repor o déficit. Select: 8, 12, 18, 24h |
 | `incluirPerdas` | `boolean` | `false` | Checkbox para habilitar campo de perdas ativas |
 | `perdas` | `string` | `''` | mL/dia de perdas estimadas (vômito, diarreia etc.) |
@@ -53,7 +53,7 @@ FluidoterapiaPage.tsx
 | `baseHipertonica` | `string` | `'250'` | Volume da bolsa base de NaCl 0.9%: `'250'`, `'500'`, `'flaconete'` |
 | `doseHipertonica` | `string` | `'4'` | Dose em mL/kg. Slider de 2 a 5, passo 0.5 |
 | `activeModal` | `string \| null` | `null` | ID do modal aberto atualmente |
-| `collapsibles` | `object` | `{ressuscitacao: false, especificas: false, hipertonica: false}` | Estado aberto/fechado das 3 seções expansíveis |
+| `collapsibles` | `object` | `{ressuscitacao: false, específicas: false, hipertonica: false}` | Estado aberto/fechado das 3 seções expansíveis |
 
 ---
 
@@ -77,7 +77,7 @@ default ('adulto')               → { min: 40, max: 60  }  mL/kg/dia
 
 ### 2. `results` — Cálculos Principais
 
-**Dependências:** `peso`, `taxaManutencao`, `incluirReidratacao`, `desidratacao`, `incluirPerdas`, `perdas`, `taxaBolus`, `tempoBolus`
+**Dependências:** `peso`, `taxaManutencao`, `incluirReidratacao`, `desidratação`, `incluirPerdas`, `perdas`, `taxaBolus`, `tempoBolus`
 
 ```
 p = parseFloat(peso)
@@ -89,8 +89,8 @@ vManutencao = p × taxaManutencao
 
 // --- REIDRATAÇÃO ---
 vReidratacao = 0
-if (incluirReidratacao && desidratacao > 0):
-    vReidratacao = p × desidratacao × 1000
+if (incluirReidratacao && desidratação > 0):
+    vReidratacao = p × desidratação × 1000
 // Exemplo: 10 kg × 0.08 × 1000 = 800 mL
 
 // --- PERDAS ATIVAS ---
@@ -376,7 +376,7 @@ Botão `?` circular. Abre o modal correspondente ao `modalId`.
 Seção expansível tipo accordion.
 - Estado controlado por `collapsibles[id]`.
 - Ícone ▼ rotaciona 180° quando aberto.
-- IDs válidos: `'ressuscitacao'`, `'especificas'`, `'hipertonica'`
+- IDs válidos: `'ressuscitacao'`, `'específicas'`, `'hipertonica'`
 
 ### `createRateCard(title, rateMlHr, description)`
 Função que gera JSX de um card de taxa de infusão.
@@ -417,7 +417,7 @@ Função que gera JSX do painel de recomendação clínica.
 │                                                             │
 │  • checkbox#incluirReidratacao → "Incluir Reidratação"      │
 │    (Quando marcado, revela:)                                 │
-│    • select#desidratacao + HelpIcon[modalDesidratacao]       │
+│    • select#desidratação + HelpIcon[modalDesidratacao]       │
 │      Opções: 5%, 6%, 7%, 8%, 9%, 10%, 11%, 12%             │
 │    • select#tempoReidratacao → 8h / 12h / 18h / 24h        │
 │    • [Nota Clínica amarela] + HelpIcon[modalNotasClinicas]  │
@@ -516,7 +516,7 @@ Função que gera JSX do painel de recomendação clínica.
 1. **Espécie obrigatória:** O id `mainCalculator` só renderiza após selecionar espécie (cao/gato).
 2. **Peso inválido:** Se `peso <= 0` ou vazio, `results` retorna `null` e os outputs mostram `0.0`.
 3. **Input inválido visual:** Campo `#peso` com ≤ 0 recebe classe `.input-field.invalid` (borda vermelha).
-4. **Desidratação 0 ignorada:** `vReidratacao = 0` se `desidratacao === '0'` (opção padrão "Selecione...").
+4. **Desidratação 0 ignorada:** `vReidratacao = 0` se `desidratação === '0'` (opção padrão "Selecione...").
 5. **Auto-reset de manutenção:** Ao trocar estado fisiológico, se o valor atual sair do range novo → reseta para média.
 6. **Range de bolus por espécie:** Atualizado automaticamente via `bolusRange`.
 7. **Taxa de infusão de bolus:** Calculada em mL/h (convertendo os minutos para horas).

@@ -28,9 +28,9 @@ const NAV_ITEMS: Array<{ key: RxSection; label: string; to: string; icon: string
   { key: 'clientes', label: 'Tutores e Pacientes', to: '/receituario-vet/clientes', icon: 'group' },
   { key: 'controle', label: 'Controle Especial', to: '/receituario-vet/controle-especial', icon: 'shield' },
   { key: 'protocolos', label: 'Protocolos', to: '/receituario-vet/protocolos', icon: 'inventory_2' },
-  { key: 'perfil', label: 'Configurar Médico', to: '/receituario-vet/configuracao', icon: 'assignment_ind' },
+  { key: 'perfil', label: 'Configurar Médico', to: '/receituario-vet/configuração', icon: 'assignment_ind' },
   { key: 'templates', label: 'Templates', to: '/receituario-vet/templates', icon: 'palette' },
-  { key: 'settings', label: 'Configurações', to: '/receituario-vet/configuracoes', icon: 'settings' },
+  { key: 'settings', label: 'Configurações', to: '/receituario-vet/configurações', icon: 'settings' },
   { key: 'dev', label: 'Desenvolvimento', to: '/receituario-vet/desenvolvimento', icon: 'science' },
 ]
 

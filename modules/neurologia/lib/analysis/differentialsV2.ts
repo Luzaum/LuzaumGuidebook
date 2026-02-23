@@ -15,7 +15,7 @@ type PatientData = {
 
 type HistoryData = {
   temporalPattern: 'peragudo' | 'agudo' | 'subagudo' | 'cronico' | 'episodico' | null
-  evolutionPattern: 'melhorando' | 'estatico' | 'flutuante' | 'progressivo' | null
+  evolutionPattern: 'melhorando' | 'estático' | 'flutuante' | 'progressivo' | null
   trauma: boolean
   toxin: boolean
   fever: boolean
@@ -30,7 +30,7 @@ type DifferentialCandidate = {
   species?: ('dog' | 'cat')[]
   lifeStages?: ('neonate' | 'pediatric' | 'adult' | 'geriatric')[]
   temporalPreference?: ('peragudo' | 'agudo' | 'subagudo' | 'cronico' | 'episodico')[]
-  evolutionPreference?: ('melhorando' | 'estatico' | 'flutuante' | 'progressivo')[]
+  evolutionPreference?: ('melhorando' | 'estático' | 'flutuante' | 'progressivo')[]
   traumaBoost?: boolean
   comorbidityBoost?: string[]
 }
@@ -672,7 +672,7 @@ function getTreatmentForCategory(
     ? comorbidities.map((c: any) => (typeof c === 'string' ? c : c.key || c)).filter(Boolean)
     : []
 
-  if (comorbKeys.includes('renal') || comorbKeys.includes('hepatica')) {
+  if (comorbKeys.includes('renal') || comorbKeys.includes('hepática')) {
     cautions.push('Ajustar doses conforme função renal/hepática')
   }
   if (comorbidities.includes('hepatic')) {

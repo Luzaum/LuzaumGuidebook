@@ -19,13 +19,13 @@ const RISK_LABELS: Record<string, string> = {
     infectious: 'Infeccioso / Parasitario',
 };
 
-// Placeholder scaffold: voce pode editar depois com textos finais.
+// Placeholder scaffold: você pode editar depois com textos finais.
 const COMPLEX_TERM_GLOSSARY: Record<string, string> = {
-    'Dor local intensa e imediata': 'Explicacao pendente. Descreva a fisiopatologia da dor local e sua relevancia clinica.',
+    'Dor local intensa e imediata': 'Explicacao pendente. Descreva a fisiopatologia da dor local e sua relevancia clínica.',
     'Edema progressivo e duro': 'Explicacao pendente. Defina edema progressivo e o impacto prognostico.',
-    'Hemorragia local e sistemica': 'Explicacao pendente. Descreva mecanismo hemorrágico e risco de coagulopatia.',
+    'Hemorragia local e sistêmica': 'Explicacao pendente. Descreva mecanismo hemorrágico e risco de coagulopatia.',
     'Necrose tecidual': 'Explicacao pendente. Explique necrose, tempo de evolucao e sinais de gravidade.',
-    'Hipotensao e choque': 'Explicacao pendente. Diferencie hipotensao inicial de choque instalado.',
+    'Hipotensão e choque': 'Explicacao pendente. Diferencie hipotensão inicial de choque instalado.',
 };
 
 const getRiskBadgeColor = (level?: string) => {
@@ -67,7 +67,7 @@ export const EncyclopediaDetail: React.FC<EncyclopediaDetailProps> = ({ animal }
     const commonName = match ? match[1] : animal.name;
     const scientificName = match ? match[2] : '';
     const riskLabel = RISK_LABELS[animal.riskLevel ?? 'low'] ?? 'Desconhecido';
-    const hasContraindication = useMemo(() => normalize(animal.treatment).includes('nao usar'), [animal.treatment]);
+    const hasContraindication = useMemo(() => normalize(animal.treatment).includes('não usar'), [animal.treatment]);
 
     const openGlossary = (term: string, fallbackText: string) => {
         setGlossaryModal({
@@ -142,7 +142,7 @@ export const EncyclopediaDetail: React.FC<EncyclopediaDetailProps> = ({ animal }
                     <div className="rounded-3xl border border-white/10 bg-white/45 p-6 backdrop-blur-xl dark:bg-slate-900/45">
                         <h3 className="mb-3 flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-slate-100">
                             <span className="material-symbols-outlined text-[#7e40e7]">visibility</span>
-                            Identificacao e morfologia
+                            Identificação e morfologia
                         </h3>
                         <p className="leading-relaxed text-slate-600 dark:text-slate-300">{animal.identification}</p>
                     </div>
@@ -150,7 +150,7 @@ export const EncyclopediaDetail: React.FC<EncyclopediaDetailProps> = ({ animal }
                     <div className="space-y-4 rounded-3xl border border-white/10 bg-white/45 p-6 backdrop-blur-xl dark:bg-slate-900/45">
                         <h3 className="mb-1 flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-slate-100">
                             <span className="material-symbols-outlined text-[#7e40e7]">clinical_notes</span>
-                            Sinais clinicos
+                            Sinais clínicos
                         </h3>
                         {animal.signs.map((sign) => (
                             <div key={sign.name} className="rounded-2xl border border-white/10 bg-white/50 p-5 backdrop-blur-xl dark:bg-slate-900/45">
@@ -179,7 +179,7 @@ export const EncyclopediaDetail: React.FC<EncyclopediaDetailProps> = ({ animal }
                     <div className="typography-slate rounded-3xl border border-white/10 bg-white/50 p-6 backdrop-blur-xl dark:bg-slate-900/45 dark:text-slate-100">
                         <h3 className="mb-3 flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-slate-100">
                             <span className="material-symbols-outlined text-[#7e40e7]">lab_profile</span>
-                            Diagnostico
+                            Diagnóstico
                         </h3>
                         {renderSafeFormattedText(animal.diagnosis)}
                     </div>
@@ -198,11 +198,11 @@ export const EncyclopediaDetail: React.FC<EncyclopediaDetailProps> = ({ animal }
                         <div className="overflow-hidden rounded-3xl border border-red-400/30 bg-gradient-to-br from-red-600/85 to-red-700/85 p-6 text-white">
                             <h4 className="mb-2 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-red-100">
                                 <span className="material-symbols-outlined text-base">warning</span>
-                                Contraindicacao
+                                Contraindicação
                             </h4>
-                            <p className="text-lg font-black leading-tight">Atencao as restricoes</p>
+                            <p className="text-lg font-black leading-tight">Atenção as restrições</p>
                             <p className="mt-2 text-xs leading-relaxed text-red-50/90">
-                                Revise as restricoes da terapia antes de iniciar o protocolo, principalmente em pacientes com risco renal.
+                                Revise as restrições da terapia antes de iniciar o protocolo, principalmente em pacientes com risco renal.
                             </p>
                         </div>
                     )}

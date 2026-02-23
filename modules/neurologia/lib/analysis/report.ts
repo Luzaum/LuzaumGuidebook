@@ -148,7 +148,7 @@ function buildHistorySummary(s: any): string {
   const course = s?.complaint?.temporalPattern ? temporalLabels[s.complaint.temporalPattern] || '—' : '—'
   const evolutionLabels: Record<string, string> = {
     melhorando: 'Melhorando',
-    estatico: 'Estático',
+    estático: 'Estático',
     flutuante: 'Flutuante',
     progressivo: 'Progressivo',
   }

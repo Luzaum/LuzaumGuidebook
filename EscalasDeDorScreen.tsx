@@ -40,7 +40,7 @@ const EscalasDeDorScreen = ({ onBack }: { onBack: () => void }) => {
       <main className="flex-grow">
         {/* O componente <iframe> é o elemento HTML padrão para incorporar documentos externos. */}
         <iframe
-          // A propriedade 'src' especifica a URL da página a ser incorporada.
+          // A propriedade 'src' específica a URL da página a ser incorporada.
           src="https://analgesiavet.netlify.app"
           // O 'title' é importante para acessibilidade, descrevendo o conteúdo do iframe para leitores de tela.
           title="Ferramenta externa de Escalas de Dor e Analgesia Veterinária"

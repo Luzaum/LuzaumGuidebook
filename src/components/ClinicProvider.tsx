@@ -44,7 +44,7 @@ export function ClinicProvider({ children }: { children: React.ReactNode }) {
       const nextMembership = await getMyMembership()
       setMembership(nextMembership)
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Falha ao carregar clinica ativa.'
+      const message = err instanceof Error ? err.message : 'Falha ao carregar clínica ativa.'
       setError(message)
       setMembership(null)
     } finally {
@@ -61,7 +61,7 @@ export function ClinicProvider({ children }: { children: React.ReactNode }) {
         const nextMembership = await getMyMembership()
         setMembership(nextMembership)
       } catch (err) {
-        const message = err instanceof Error ? err.message : 'Falha ao criar clinica.'
+        const message = err instanceof Error ? err.message : 'Falha ao criar clínica.'
         setError(message)
         throw new Error(message)
       } finally {

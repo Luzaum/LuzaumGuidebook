@@ -40,7 +40,7 @@ export const section2MarchaPostura: HelpTopic[] = [
     pitfalls: 'Não diferenciar apoio por medo/dor ortopédica.',
   },
   {
-    id: 's2-capacidade-nao-ambulatorio',
+    id: 's2-capacidade-não-ambulatorio',
     title: 'Capacidade de deambular — Não ambulatório',
     whatItAssesses:
       'Paciente não consegue caminhar, mas pode mover membros. É marco de gravidade e influencia prioridades diagnósticas e de estabilização.',

@@ -18,14 +18,14 @@ const COMORBIDITY_CONFIG: Record<
   { label: string; description?: string }
 > = {
   renal: { label: 'Renopata (DRC/IRA)', description: 'Insuficiência renal crônica ou aguda' },
-  hepatica: { label: 'Hepatopata', description: 'Doença hepática' },
-  cardiaca: { label: 'Cardiopata', description: 'Doença cardíaca' },
+  hepática: { label: 'Hepatopata', description: 'Doença hepática' },
+  cardíaca: { label: 'Cardiopata', description: 'Doença cardíaca' },
   endocrina: { label: 'Endocrinopata', description: 'Distúrbios endócrinos (diabetes, hipotireoidismo, etc.)' },
-  respiratoria: { label: 'Pneumopata', description: 'Doença respiratória' },
+  respiratória: { label: 'Pneumopata', description: 'Doença respiratória' },
   neuromuscular: { label: 'Neuromuscular', description: 'Doença neuromuscular' },
   neoplasica: { label: 'Neoplasia', description: 'Neoplasia ativa' },
   imunomediada: { label: 'Imunomediada', description: 'Doença imunomediada' },
-  hipertensao: { label: 'Hipertensão', description: 'Hipertensão arterial sistêmica' },
+  hipertensão: { label: 'Hipertensão', description: 'Hipertensão arterial sistêmica' },
   coagulopatia: { label: 'Coagulopatia', description: 'Distúrbio de coagulação' },
 }
 

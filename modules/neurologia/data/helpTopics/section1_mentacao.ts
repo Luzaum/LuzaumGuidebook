@@ -141,7 +141,7 @@ export const section1Mentacao: HelpTopic[] = [
     suggestedTests: ['bloodwork', 'electrolytes', 'MRI'],
   },
   {
-    id: 's1-nivel-consciencia-alerta',
+    id: 's1-nível-consciencia-alerta',
     title: 'Nível de consciência — Alerta',
     whatItAssesses:
       'Vigília preservada: paciente atento, responsivo e com reatividade apropriada ao ambiente. Ajuda a excluir depressão central importante e favorece lesões não encefálicas (ex.: medulares) quando outros achados concordam.',
@@ -152,7 +152,7 @@ export const section1Mentacao: HelpTopic[] = [
     pitfalls: 'Classificar como alerta em animal altamente estressado/hiperreativo sem avaliar orientação.',
   },
   {
-    id: 's1-nivel-consciencia-deprimido',
+    id: 's1-nível-consciencia-deprimido',
     title: 'Nível de consciência — Deprimido',
     whatItAssesses:
       'Redução de responsividade, mas paciente desperta facilmente e mantém alguma interação. Sugere disfunção intracraniana (prosencéfalo/tronco) ou encefalopatia metabólica, hipoperfusão, dor intensa ou efeitos farmacológicos.',
@@ -164,7 +164,7 @@ export const section1Mentacao: HelpTopic[] = [
     pitfalls: 'Ignorar hipotensão/hipoxemia/hipoglicemia e atribuir depressão ao SNC primariamente.',
   },
   {
-    id: 's1-nivel-consciencia-estupor',
+    id: 's1-nível-consciencia-estupor',
     title: 'Nível de consciência — Estupor (RED FLAG)',
     whatItAssesses:
       'Paciente responde apenas a estímulos intensos e rapidamente retorna à não responsividade. Sinal de disfunção grave do SARA/tronco encefálico, aumento de pressão intracraniana, intoxicações ou encefalopatias graves.',
@@ -184,7 +184,7 @@ export const section1Mentacao: HelpTopic[] = [
     suggestedTests: ['bloodwork', 'electrolytes', 'CT', 'MRI'],
   },
   {
-    id: 's1-nivel-consciencia-coma',
+    id: 's1-nível-consciencia-coma',
     title: 'Nível de consciência — Coma (RED FLAG)',
     whatItAssesses:
       'Ausência de resposta voluntária e de interação com o ambiente; paciente não desperta a estímulos. Indica disfunção central extrema (SARA/tronco) ou encefalopatia metabólica/toxicológica grave e exige abordagem de emergência.',

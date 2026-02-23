@@ -108,7 +108,7 @@ const GROUPS = [
         title: "FERRAMENTAS",
         items: [
             { key: "suspeitas", label: "Suspeitas", icon: Icons.Search },
-            { key: "historico", label: "Dr. Luzaum AI", icon: Icons.Sparkles, badge: "NOVO" },
+            { key: "histórico", label: "Dr. Luzaum AI", icon: Icons.Sparkles, badge: "NOVO" },
         ],
     },
     {

@@ -23,7 +23,7 @@ export default function DevelopmentPage() {
     <ReceituarioChrome
       section="dev"
       title="Desenvolvimento"
-      subtitle="Preview e selecao do icone de receita usado no card principal da Home."
+      subtitle="Preview e seleção do icone de receita usado no card principal da Home."
       actions={
         <button
           type="button"
@@ -37,7 +37,7 @@ export default function DevelopmentPage() {
     >
       <div className="grid grid-cols-1 gap-4 xl:grid-cols-12">
         <section className="rxv-card p-4 xl:col-span-8">
-          <h2 className="mb-3 text-base font-bold">Variacoes disponiveis</h2>
+          <h2 className="mb-3 text-base font-bold">Variações disponíveis</h2>
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
             {HOME_ICON_OPTIONS.map((item) => {
               const active = selectedId === item.id
@@ -82,7 +82,7 @@ export default function DevelopmentPage() {
           <div className="rounded-xl border border-[color:var(--rxv-border)] bg-[linear-gradient(100deg,var(--rxv-primary-soft,#15351b)_0%,var(--rxv-primary-soft-2,#0f2416)_55%,var(--rxv-primary-soft-3,#0d1d13)_100%)] p-4">
             <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--rxv-primary)]/45 bg-[color:var(--rxv-primary)]/14 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wide text-[color:var(--rxv-primary)]">
               <span className="h-2 w-2 rounded-full bg-[color:var(--rxv-primary)]" />
-              Acao rapida
+              Ação rápida
             </span>
             <h3 className="mt-3 text-xl font-black tracking-tight">CRIAR NOVA RECEITA</h3>
             <p className="mt-1 text-xs text-[color:var(--rxv-muted)]">

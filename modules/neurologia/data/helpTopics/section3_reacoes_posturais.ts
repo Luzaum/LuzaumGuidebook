@@ -14,7 +14,7 @@ export const section3ReacoesPosturais: HelpTopic[] = [
       'Déficits indicam doença neurológica em qualquer ponto do arco: nervo periférico, medula ou encéfalo. A distribuição ajuda na neurolocalização.',
     pitfalls:
       'Avaliar em animal sentado, piso escorregadio, dor ortopédica não considerada ou interpretar fraqueza como déficit proprioceptivo.',
-    tags: ['propriocepcao', 'vias-longas', 'reacoes-posturais', 'consciente', 'sensitivo-motor'],
+    tags: ['propriocepcao', 'vias-longas', 'reações-posturais', 'consciente', 'sensitivo-motor'],
     severityWeight: 2,
     localizationHint: ['prosencefalo', 'tronco-encefalico', 'medula', 'periferico'],
   },

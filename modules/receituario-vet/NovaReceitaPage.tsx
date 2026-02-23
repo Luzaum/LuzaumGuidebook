@@ -39,6 +39,16 @@ import {
   RouteGroup,
   SpecialControlPharmacy,
 } from './rxTypes'
+import { useClinic } from '../../src/components/ClinicProvider'
+import type { AdapterDataSource, DataAdapterPatientMatch } from './adapters'
+import { createRxDataAdapter, resolveRxDataSource } from './adapters'
+import { PatientQuickSelect } from './components/PatientQuickSelect'
+import { PatientCreateModal } from './components/PatientCreateModal'
+import { TutorQuickSelect } from './components/TutorQuickSelect'
+import { createPrescriptionDraft, updatePrescriptionDraft, listPrescriptionsByPatient, getPrescriptionById } from '@/src/lib/prescriptionsRecords'
+import { isUuid } from '@/src/lib/isUuid'
+import { SupabaseImportBlock } from './components/SupabaseImportBlock'
+import type { PatientInfo, TutorInfo } from './rxTypes'
 
 type SaveStatus = 'saved' | 'editing' | 'saving' | 'error'
 type ToastType = 'success' | 'error' | 'info'
@@ -80,7 +90,7 @@ const ROUTE_OPTIONS: Array<{ value: RouteGroup; label: string }> = [
 const DOSE_UNIT_OPTIONS = ['mg/kg', 'mcg/kg', 'g/kg', 'mL/kg', 'UI/kg', 'comprimido/kg', 'gota/kg', 'mg', 'mL', 'comprimido', 'gota', 'cápsula']
 const PRESENTATION_OPTIONS = ['Comprimido', 'Cápsula', 'Gotas', 'Suspensão oral', 'Solução oral', 'Pomada', 'Injetável', 'Intravenoso']
 const PHARMACY_OPTIONS: Array<{ value: PharmacyType; label: string }> = [
-  { value: 'veterinaria', label: 'Veterinária' },
+  { value: 'veterinária', label: 'Veterinária' },
   { value: 'humana', label: 'Humana' },
   { value: 'manipulacao', label: 'Manipulação' },
 ]
@@ -120,6 +130,48 @@ const EMPTY_MODAL_STATE: ModalState = {
   useCatalog: true,
   draft: null,
   originalItem: null,
+}
+
+const RX_HEADER_SELECTION_SESSION_KEY = 'vetius:rx:nova-receita:header-selection'
+
+type RxHeaderSelectionSession = {
+  source: AdapterDataSource
+  clinicId: string | null
+  patientRecordId: string
+  patientName: string
+  tutorRecordId: string
+  tutorName: string
+}
+
+function writeHeaderSelectionSession(snapshot: RxHeaderSelectionSession | null) {
+  try {
+    if (!snapshot) {
+      sessionStorage.removeItem(RX_HEADER_SELECTION_SESSION_KEY)
+      return
+    }
+    sessionStorage.setItem(RX_HEADER_SELECTION_SESSION_KEY, JSON.stringify(snapshot))
+  } catch {
+    // noop
+  }
+}
+
+function readHeaderSelectionSession(): RxHeaderSelectionSession | null {
+  try {
+    const raw = sessionStorage.getItem(RX_HEADER_SELECTION_SESSION_KEY)
+    if (!raw) return null
+    const parsed = JSON.parse(raw) as Partial<RxHeaderSelectionSession>
+    const source = parsed.source === 'supabase' ? 'supabase' : 'local'
+    return {
+      source,
+      clinicId: parsed.clinicId ? String(parsed.clinicId) : null,
+      patientRecordId: String(parsed.patientRecordId || '').trim(),
+      patientName: String(parsed.patientName || '').trim(),
+      tutorRecordId: String(parsed.tutorRecordId || '').trim(),
+      tutorName: String(parsed.tutorName || '').trim(),
+    }
+  } catch {
+    return null
+  }
 }
 
 function withTimestamp<T extends { updatedAt: string }>(obj: T): T {
@@ -256,8 +308,8 @@ function hydratePrescription(raw: PrescriptionState | null | undefined): Prescri
       examReasons: uniqueNormalizedLines(raw.recommendations?.examReasons || []),
       specialControlPharmacy:
         raw.recommendations?.specialControlPharmacy === 'humana' ||
-        raw.recommendations?.specialControlPharmacy === 'manipulacao' ||
-        raw.recommendations?.specialControlPharmacy === 'veterinaria'
+          raw.recommendations?.specialControlPharmacy === 'manipulacao' ||
+          raw.recommendations?.specialControlPharmacy === 'veterinária'
           ? raw.recommendations.specialControlPharmacy
           : base.recommendations.specialControlPharmacy,
       standardTemplateId: raw.recommendations?.standardTemplateId || base.recommendations.standardTemplateId,
@@ -412,7 +464,7 @@ function MedicationModal({
       const unique = Array.from(
         new Set(
           selectedCatalogDrug.presentations.flatMap((entry) =>
-            entry.pharmacyTags?.length ? entry.pharmacyTags : [selectedCatalogDrug.pharmacyType || 'veterinaria']
+            entry.pharmacyTags?.length ? entry.pharmacyTags : [selectedCatalogDrug.pharmacyType || 'veterinária']
           )
         )
       )
@@ -427,7 +479,7 @@ function MedicationModal({
     if (availablePharmacyTypes.includes(state.draft.pharmacyType)) return
     onDraftChange((prev) => ({
       ...prev,
-      pharmacyType: availablePharmacyTypes[0] || 'veterinaria',
+      pharmacyType: availablePharmacyTypes[0] || 'veterinária',
     }))
   }, [availablePharmacyTypes, onDraftChange, selectedCatalogDrug, state.draft?.pharmacyType, state.open])
 
@@ -475,7 +527,7 @@ function MedicationModal({
     if (!selectedCatalogDrug) return
     const presentation = selectedCatalogDrug.presentations.find((entry) => entry.id === presentationId)
     if (!presentation) return
-    const presentationPharmacyTypes = presentation.pharmacyTags?.length ? presentation.pharmacyTags : [selectedCatalogDrug.pharmacyType || 'veterinaria']
+    const presentationPharmacyTypes = presentation.pharmacyTags?.length ? presentation.pharmacyTags : [selectedCatalogDrug.pharmacyType || 'veterinária']
     onDraftChange((prev) => ({
       ...prev,
       catalogDrugId: selectedCatalogDrug.id,
@@ -508,11 +560,11 @@ function MedicationModal({
   const concentrationPerUnit = concentrationMatch ? concentrationMatch[4] : ''
   const volumePerDose =
     targetPerDose !== null &&
-    Number.isFinite(targetPerDose) &&
-    concentrationAmount &&
-    concentrationPerValue &&
-    concentrationAmount > 0 &&
-    concentrationUnit.toLowerCase() === baseDoseUnit.toLowerCase()
+      Number.isFinite(targetPerDose) &&
+      concentrationAmount &&
+      concentrationPerValue &&
+      concentrationAmount > 0 &&
+      concentrationUnit.toLowerCase() === baseDoseUnit.toLowerCase()
       ? targetPerDose / (concentrationAmount / concentrationPerValue)
       : null
 
@@ -1105,6 +1157,29 @@ function MedicationModal({
 export default function NovaReceitaPage() {
   const navigate = useNavigate()
   const location = useLocation()
+  const { clinicId } = useClinic()
+  const rxDataSource = useMemo(
+    () => resolveRxDataSource(import.meta.env.VITE_RX_DATA_SOURCE),
+    []
+  )
+  const rxAdapter = useMemo(
+    () =>
+      createRxDataAdapter({
+        source: rxDataSource,
+        clinicId,
+      }),
+    [clinicId, rxDataSource]
+  )
+
+  // Debug: Log data source and adapter being used
+  useEffect(() => {
+    if (import.meta.env.DEV) {
+      console.log('[NovaReceitaPage] DATA SOURCE:', rxDataSource)
+      console.log('[NovaReceitaPage] Using adapter:', rxAdapter.constructor.name)
+    }
+  }, [rxDataSource, rxAdapter])
+
+  const supabaseModeWithoutClinic = rxDataSource === 'supabase' && !clinicId
   const requestedDraftId = useMemo(() => new URLSearchParams(location.search).get('draft')?.trim() || '', [location.search])
   const [db, setDb] = useState(() => loadRxDb())
   const [prescription, setPrescription] = useState<PrescriptionState>(() => {
@@ -1120,14 +1195,22 @@ export default function NovaReceitaPage() {
   const [customExamDraft, setCustomExamDraft] = useState('')
   const [examReasonDraft, setExamReasonDraft] = useState('')
   const [protocolModalOpen, setProtocolModalOpen] = useState(false)
+  const [patientCreateModalOpen, setPatientCreateModalOpen] = useState(false)
   const [protocolSearch, setProtocolSearch] = useState('')
   const [cepLookupLoading, setCepLookupLoading] = useState(false)
   const [cepLookupMessage, setCepLookupMessage] = useState<string | null>(null)
   const [modalState, setModalState] = useState<ModalState>(EMPTY_MODAL_STATE)
+  const [supabaseLoading, setSupabaseLoading] = useState(false)
+  const [supabasePrescriptionId, setSupabasePrescriptionId] = useState<string | null>(null)
+  // Supabase tutor+patient import state
+  const [selectedSupabaseTutor, setSelectedSupabaseTutor] = useState<TutorInfo | null>(null)
+  const [supabasePatientsForTutor, setSupabasePatientsForTutor] = useState<PatientInfo[]>([])
+  const [supabasePatientsLoading, setSupabasePatientsLoading] = useState(false)
   const saveTimeoutRef = useRef<number | null>(null)
   const pendingProtocolImportRef = useRef(false)
   const lastAutoWaterValueRef = useRef('')
   const loadedRequestedDraftIdRef = useRef('')
+  const headerSelectionHydratedRef = useRef(false)
 
   const catalogEntries = useMemo<CatalogModalEntry[]>(() => {
     return db.catalog.flatMap((drug: CatalogDrug) => {
@@ -1145,7 +1228,7 @@ export default function NovaReceitaPage() {
             presentation: 'Comprimido',
             routeGroup: drug.routeGroup,
             doseUnit: drug.doseUnit,
-            pharmacyTypes: [drug.pharmacyType || 'veterinaria'],
+            pharmacyTypes: [drug.pharmacyType || 'veterinária'],
           },
         ]
       }
@@ -1160,7 +1243,7 @@ export default function NovaReceitaPage() {
         presentation: presentation.name || defaultPresentation?.name || 'Comprimido',
         routeGroup: drug.routeGroup,
         doseUnit: drug.doseUnit,
-        pharmacyTypes: presentation.pharmacyTags?.length ? presentation.pharmacyTags : [drug.pharmacyType || 'veterinaria'],
+        pharmacyTypes: presentation.pharmacyTags?.length ? presentation.pharmacyTags : [drug.pharmacyType || 'veterinária']
       }))
     })
   }, [db.catalog])
@@ -1201,6 +1284,178 @@ export default function NovaReceitaPage() {
     setPrescription((prev) => withTimestamp(updater(prev)))
     setSaveStatus('editing')
   }
+
+  const handleDataAdapterError = (action: 'search' | 'save', error: unknown) => {
+    if (import.meta.env.DEV) {
+      console.error(`[RX B1.1] ${action} failed`, error)
+    }
+    pushToast('error', action === 'search'
+      ? 'Não foi possível buscar. Verifique conexao/permissao.'
+      : 'Não foi possível salvar. Verifique conexao/permissao.')
+  }
+
+  const applyPatientTutorToPrescription = (payload: DataAdapterPatientMatch) => {
+    updatePrescription((prev) => ({
+      ...prev,
+      patient: {
+        ...prev.patient,
+        ...payload.patient,
+        patientRecordId: payload.patient.patientRecordId || prev.patient.patientRecordId,
+      },
+      tutor: {
+        ...prev.tutor,
+        ...payload.tutor,
+        tutorRecordId: payload.tutor.tutorRecordId || prev.tutor.tutorRecordId,
+      },
+    }))
+  }
+
+  // Clean up selection when switching data sources
+  useEffect(() => {
+    const patientId = prescription.patient?.patientRecordId
+    const tutorId = prescription.tutor?.tutorRecordId
+
+    if (rxDataSource === 'supabase') {
+      // In Supabase mode, clear non-UUID IDs
+      if (patientId && !isUuid(patientId)) {
+        updatePrescription((prev) => ({
+          ...prev,
+          patient: { ...prev.patient, patientRecordId: '' },
+        }))
+      }
+      if (tutorId && !isUuid(tutorId)) {
+        updatePrescription((prev) => ({
+          ...prev,
+          tutor: { ...prev.tutor, tutorRecordId: '' },
+        }))
+      }
+    }
+  }, [rxDataSource])
+
+  useEffect(() => {
+    if (!headerSelectionHydratedRef.current && !requestedDraftId) return
+
+    const patientRecordId = String(prescription.patient.patientRecordId || '').trim()
+    const tutorRecordId = String(prescription.tutor.tutorRecordId || '').trim()
+
+    if (!patientRecordId && !tutorRecordId) {
+      writeHeaderSelectionSession(null)
+      return
+    }
+
+    writeHeaderSelectionSession({
+      source: rxDataSource,
+      clinicId: clinicId || null,
+      patientRecordId,
+      patientName: String(prescription.patient.name || '').trim(),
+      tutorRecordId,
+      tutorName: String(prescription.tutor.name || '').trim(),
+    })
+  }, [
+    clinicId,
+    prescription.patient.name,
+    prescription.patient.patientRecordId,
+    prescription.tutor.name,
+    prescription.tutor.tutorRecordId,
+    requestedDraftId,
+    rxDataSource,
+  ])
+
+  useEffect(() => {
+    if (headerSelectionHydratedRef.current) return
+    headerSelectionHydratedRef.current = true
+
+    if (requestedDraftId) return
+
+    const sessionSelection = readHeaderSelectionSession()
+    if (!sessionSelection) return
+    if (sessionSelection.source !== rxDataSource) return
+
+    // PATCH 2: Clean legacy non-UUID IDs when in Supabase mode
+    if (sessionSelection.source === 'supabase') {
+      const hasInvalidId =
+        (sessionSelection.patientRecordId && !isUuid(sessionSelection.patientRecordId)) ||
+        (sessionSelection.tutorRecordId && !isUuid(sessionSelection.tutorRecordId))
+      if (hasInvalidId) {
+        writeHeaderSelectionSession(null)
+        return
+      }
+    }
+
+    if (
+      sessionSelection.source === 'supabase' &&
+      sessionSelection.clinicId &&
+      clinicId &&
+      sessionSelection.clinicId !== clinicId
+    ) {
+      return
+    }
+
+    if (prescription.patient.patientRecordId || prescription.tutor.tutorRecordId) {
+      return
+    }
+
+    let cancelled = false
+      ; (async () => {
+        try {
+          const resolvedTutor = sessionSelection.tutorRecordId
+            ? await rxAdapter.getTutorById(sessionSelection.tutorRecordId)
+            : null
+
+          let resolvedPatient = null
+          if (
+            sessionSelection.patientRecordId &&
+            sessionSelection.tutorRecordId &&
+            rxAdapter.listPatientsByTutorId
+          ) {
+            const patients = await rxAdapter.listPatientsByTutorId(sessionSelection.tutorRecordId)
+            resolvedPatient =
+              patients.find((entry) => entry.patientRecordId === sessionSelection.patientRecordId) || null
+          }
+
+          if (cancelled) return
+
+          if (resolvedTutor && resolvedPatient) {
+            applyPatientTutorToPrescription({
+              patient: resolvedPatient,
+              tutor: resolvedTutor,
+            })
+            return
+          }
+
+          updatePrescription((prev) => ({
+            ...prev,
+            patient: {
+              ...prev.patient,
+              patientRecordId: sessionSelection.patientRecordId || prev.patient.patientRecordId,
+              name: resolvedPatient?.name || sessionSelection.patientName || prev.patient.name,
+            },
+            tutor: {
+              ...prev.tutor,
+              tutorRecordId: sessionSelection.tutorRecordId || prev.tutor.tutorRecordId,
+              name: resolvedTutor?.name || sessionSelection.tutorName || prev.tutor.name,
+            },
+          }))
+        } catch (error) {
+          if (cancelled) return
+          if (import.meta.env.DEV) {
+            console.error('[RX B1.1.1] Falha ao reidratar cabecalho do plantao', error)
+          }
+        }
+      })()
+
+    return () => {
+      cancelled = true
+    }
+  }, [
+    applyPatientTutorToPrescription,
+    clinicId,
+    prescription.patient.patientRecordId,
+    prescription.tutor.tutorRecordId,
+    requestedDraftId,
+    rxAdapter,
+    rxDataSource,
+  ])
 
   useEffect(() => {
     if (!requestedDraftId) {
@@ -1317,6 +1572,75 @@ export default function NovaReceitaPage() {
     }
   }
 
+  // DEV: Save prescription to Supabase (draft mode)
+  const saveToSupabase = async () => {
+    if (rxDataSource !== 'supabase') {
+      pushToast('error', 'Modo Supabase não ativado. Configure via VITE_RX_DATA_SOURCE.')
+      return
+    }
+
+    const patientId = prescription.patient?.patientRecordId
+    const tutorId = prescription.tutor?.tutorRecordId
+
+    if (!isUuid(patientId) || !isUuid(tutorId)) {
+      pushToast('error', 'Para salvar no Supabase, selecione um paciente/tutor do Supabase (não do legado/local).')
+      console.warn('[saveToSupabase] IDs inválidos para Supabase', { patientId, tutorId })
+      return
+    }
+
+    setSupabaseLoading(true)
+    try {
+      if (supabasePrescriptionId) {
+        // Update existing
+        const result = await updatePrescriptionDraft(supabasePrescriptionId, { content: prescription })
+        pushToast('success', `Receita atualizada no Supabase (ID: ${result.id})`)
+      } else {
+        // Create new
+        const result = await createPrescriptionDraft({
+          patient_id: prescription.patient.patientRecordId,
+          tutor_id: prescription.tutor.tutorRecordId,
+          content: prescription,
+        })
+        setSupabasePrescriptionId(result.id)
+        pushToast('success', `Receita criada no Supabase (ID: ${result.id})`)
+      }
+    } catch (error) {
+      const msg = error instanceof Error ? error.message : 'Erro ao salvar'
+      pushToast('error', `Falha: ${msg}`)
+      if (import.meta.env.DEV) console.error(error)
+    } finally {
+      setSupabaseLoading(false)
+    }
+  }
+
+  // DEV: List prescriptions from Supabase
+  const listSupabasePrescriptions = async () => {
+    if (rxDataSource !== 'supabase') {
+      pushToast('error', 'Modo Supabase não ativado.')
+      return
+    }
+
+    if (!prescription.patient.patientRecordId) {
+      pushToast('error', 'Paciente obrigatório para listar receitas.')
+      return
+    }
+
+    setSupabaseLoading(true)
+    try {
+      const results = await listPrescriptionsByPatient(prescription.patient.patientRecordId)
+      pushToast('info', `${results.length} receita(s) encontrada(s) no Supabase`)
+      if (import.meta.env.DEV) {
+        console.log('[Supabase Prescriptions]', results)
+      }
+    } catch (error) {
+      const msg = error instanceof Error ? error.message : 'Erro ao listar'
+      pushToast('error', `Falha: ${msg}`)
+      if (import.meta.env.DEV) console.error(error)
+    } finally {
+      setSupabaseLoading(false)
+    }
+  }
+
   const applyAutoInstructionIfNeeded = (item: PrescriptionItem, sourceState: PrescriptionState) => {
     if (!item.autoInstruction || item.manualEdited) return item
     return {
@@ -1427,8 +1751,8 @@ export default function NovaReceitaPage() {
   }, [activeTemplate, db.templates, previewState.recommendations.specialControlTemplateId])
   const previewSpecialControlTargetPharmacy = useMemo<SpecialControlPharmacy>(() => {
     const selected = previewState.recommendations.specialControlPharmacy
-    if (selected === 'humana' || selected === 'manipulacao' || selected === 'veterinaria') return selected
-    return 'veterinaria'
+    if (selected === 'humana' || selected === 'manipulacao' || selected === 'veterinária') return selected
+    return 'veterinária'
   }, [previewState.recommendations.specialControlPharmacy])
 
   const removePrescriptionItem = (itemId: string) => {
@@ -1567,18 +1891,18 @@ export default function NovaReceitaPage() {
       },
       patient: animal
         ? {
-            ...prev.patient,
-            patientRecordId: animal.id || prev.patient.patientRecordId,
-            name: animal.name || prev.patient.name,
-            species: normalizeSpecies(animal.species),
-            breed: animal.breed || prev.patient.breed,
-            coat: animal.coat || prev.patient.coat,
-            sex: normalizePatientSex(animal.sex),
-            reproductiveStatus: (animal.reproductiveStatus || prev.patient.reproductiveStatus) as PrescriptionState['patient']['reproductiveStatus'],
-            ageText: animal.ageText || prev.patient.ageText,
-            weightKg: animal.weightKg || prev.patient.weightKg,
-            weightDate: animal.weightDate || prev.patient.weightDate,
-          }
+          ...prev.patient,
+          patientRecordId: animal.id || prev.patient.patientRecordId,
+          name: animal.name || prev.patient.name,
+          species: normalizeSpecies(animal.species),
+          breed: animal.breed || prev.patient.breed,
+          coat: animal.coat || prev.patient.coat,
+          sex: normalizePatientSex(animal.sex),
+          reproductiveStatus: (animal.reproductiveStatus || prev.patient.reproductiveStatus) as PrescriptionState['patient']['reproductiveStatus'],
+          ageText: animal.ageText || prev.patient.ageText,
+          weightKg: animal.weightKg || prev.patient.weightKg,
+          weightDate: animal.weightDate || prev.patient.weightDate,
+        }
         : prev.patient,
     }))
     pushToast('success', `Cliente "${client.fullName || 'selecionado'}" importado.`)
@@ -1638,7 +1962,7 @@ export default function NovaReceitaPage() {
             <input type="checkbox" className="h-4 w-4 rounded" checked={autosaveEnabled} onChange={(e) => setAutosaveEnabled(e.target.checked)} />
             Autosave
           </label>
-          <Link className="rxv-btn-secondary rxv-top-action inline-flex items-center gap-2 px-3 py-2 text-sm" to="/receituario-vet/configuracao">
+          <Link className="rxv-btn-secondary rxv-top-action inline-flex items-center gap-2 px-3 py-2 text-sm" to="/receituario-vet/configuração">
             <span className="material-symbols-outlined text-[18px]">badge</span>
             Configurar médico
           </Link>
@@ -1658,6 +1982,26 @@ export default function NovaReceitaPage() {
             <span className="material-symbols-outlined text-[18px]">gpp_maybe</span>
             Receituário de controle especial
           </Link>
+          {import.meta.env.DEV && rxDataSource === 'supabase' && (
+            <>
+              <button
+                type="button"
+                className="inline-flex items-center gap-2 rounded-lg border border-amber-700/60 bg-amber-900/20 px-3 py-2 text-xs text-amber-300 hover:bg-amber-900/40 disabled:opacity-50"
+                onClick={saveToSupabase}
+                disabled={supabaseLoading}
+              >
+                {supabaseLoading ? '⏳' : '💾'} {supabasePrescriptionId ? 'Atualizar' : 'Salvar'} Supabase
+              </button>
+              <button
+                type="button"
+                className="inline-flex items-center gap-2 rounded-lg border border-cyan-700/60 bg-cyan-900/20 px-3 py-2 text-xs text-cyan-300 hover:bg-cyan-900/40 disabled:opacity-50"
+                onClick={listSupabasePrescriptions}
+                disabled={supabaseLoading}
+              >
+                {supabaseLoading ? '⏳' : '📋'} Listar Supabase
+              </button>
+            </>
+          )}
           <button type="button" className="rxv-btn-secondary rxv-top-action px-3 py-2 text-sm" onClick={saveNow}>
             Salvar rascunho
           </button>
@@ -1671,65 +2015,242 @@ export default function NovaReceitaPage() {
       }
     >
       <div className="flex items-center gap-2 rounded-xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] p-3 text-sm lg:hidden">
-          <button type="button" className={`flex-1 rounded-lg px-3 py-1.5 ${mobileTab === 'editor' ? 'bg-[#38ff14] font-semibold text-[#10200d]' : 'bg-[#22381d]'}`} onClick={() => setMobileTab('editor')}>
-            Editor
-          </button>
-          <button type="button" className={`flex-1 rounded-lg px-3 py-1.5 ${mobileTab === 'preview' ? 'bg-[#38ff14] font-semibold text-[#10200d]' : 'bg-[#22381d]'}`} onClick={() => setMobileTab('preview')}>
-            Prévia
-          </button>
-        </div>
+        <button type="button" className={`flex-1 rounded-lg px-3 py-1.5 ${mobileTab === 'editor' ? 'bg-[#38ff14] font-semibold text-[#10200d]' : 'bg-[#22381d]'}`} onClick={() => setMobileTab('editor')}>
+          Editor
+        </button>
+        <button type="button" className={`flex-1 rounded-lg px-3 py-1.5 ${mobileTab === 'preview' ? 'bg-[#38ff14] font-semibold text-[#10200d]' : 'bg-[#22381d]'}`} onClick={() => setMobileTab('preview')}>
+          Prévia
+        </button>
+      </div>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-          <div className={`space-y-6 lg:col-span-5 ${mobileTab === 'preview' ? 'hidden lg:block' : ''}`}>
-            <section className="rxv-card p-5">
-              <div className="mb-4 flex items-center justify-between">
-                <h2 className="text-lg font-bold text-[color:var(--rxv-text)]">Identificação</h2>
-                <span className="rounded-full border border-[#3d6f31] bg-[#233c1d] px-2 py-0.5 text-xs text-[#8cff78]">Editável</span>
-              </div>
-              <div className="mb-3 rounded-lg border border-[#2f5a25] bg-[#142712] px-3 py-2 text-xs font-semibold uppercase tracking-wide text-[color:var(--rxv-text)]">
-                Prescritor
-              </div>
-              <div className="mb-5 grid grid-cols-1 gap-3 md:grid-cols-4">
-                <label className="text-xs text-slate-400 md:col-span-2">
-                  Perfil de médico veterinário / clínica
-                  <select
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                    value={prescription.prescriber.profileId || 'default'}
-                    onChange={(e) => applyPrescriberProfile(e.target.value)}
-                  >
-                    {prescriberProfiles.map((profile) => (
-                      <option key={profile.id} value={profile.id}>
-                        {profile.profileName} - {profile.clinicName}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <label className="text-xs text-slate-400">
-                  ID
-                  <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.adminId || 'ADMIN'} readOnly />
-                </label>
-                <label className="text-xs text-slate-400">
-                  Nome do prescritor
-                  <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.name} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, name: e.target.value } }))} />
-                </label>
-                <label className="text-xs text-slate-400">
-                  CRMV
-                  <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.crmv} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, crmv: e.target.value } }))} />
-                </label>
-                <label className="text-xs text-slate-400">
-                  Clínica
-                  <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.clinicName} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, clinicName: e.target.value } }))} />
-                </label>
-              </div>
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+        <div className={`space-y-6 lg:col-span-5 ${mobileTab === 'preview' ? 'hidden lg:block' : ''}`}>
+          <section className="rxv-card p-5">
+            <div className="mb-3 flex items-center justify-between gap-2">
+              <h2 className="text-lg font-bold text-[color:var(--rxv-text)]">Fluxo Plantao</h2>
+              <span className="rounded-full border border-[#3d6f31] bg-[#233c1d] px-2 py-0.5 text-xs text-[#8cff78]">
+                Fonte: {rxDataSource === 'supabase' ? 'Supabase' : 'Local'}
+              </span>
+            </div>
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_auto]">
+              {rxDataSource === 'local' ? (
+                <>
+                  <PatientQuickSelect
+                    adapter={rxAdapter}
+                    disabled={supabaseModeWithoutClinic}
+                    onPick={(payload) => {
+                      applyPatientTutorToPrescription(payload)
+                      pushToast('success', `Paciente "${payload.patient.name}" aplicado na receita.`)
+                    }}
+                    onError={(error) => handleDataAdapterError('search', error)}
+                  />
+                  <div className="flex items-end">
+                    <button
+                      type="button"
+                      className="rxv-btn-primary h-[42px] px-3 py-2 text-sm"
+                      onClick={() => setPatientCreateModalOpen(true)}
+                      disabled={supabaseModeWithoutClinic}
+                    >
+                      + Novo paciente
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <div className="col-span-2 space-y-3">
+                  {/* IMPORTAÇÃO SUPABASE: Busca de tutor + pacientes */}
+                  <div>
+                    <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-300">
+                      Importar Tutor do Banco
+                    </label>
+                    <TutorQuickSelect
+                      adapter={rxAdapter}
+                      value={selectedSupabaseTutor}
+                      disabled={supabaseModeWithoutClinic}
+                      placeholder="Buscar tutor por nome..."
+                      onPick={(tutor) => {
+                        setSelectedSupabaseTutor(tutor)
+                        // Apply tutor to prescription
+                        updatePrescription((prev) => ({
+                          ...prev,
+                          tutor: {
+                            ...prev.tutor,
+                            tutorRecordId: tutor.tutorRecordId,
+                            name: tutor.name,
+                            phone: tutor.phone || prev.tutor.phone,
+                            cpf: tutor.cpf || prev.tutor.cpf,
+                            rg: tutor.rg || prev.tutor.rg,
+                            email: tutor.email || prev.tutor.email,
+                            addressStreet: tutor.addressStreet || prev.tutor.addressStreet,
+                            addressNumber: tutor.addressNumber || prev.tutor.addressNumber,
+                            addressComplement: tutor.addressComplement || prev.tutor.addressComplement,
+                            addressDistrict: tutor.addressDistrict || prev.tutor.addressDistrict,
+                            addressCity: tutor.addressCity || prev.tutor.addressCity,
+                            addressState: tutor.addressState || prev.tutor.addressState,
+                            addressZip: tutor.addressZip || prev.tutor.addressZip,
+                            notes: tutor.notes || prev.tutor.notes,
+                          },
+                        }))
+                        // Load patients for this tutor
+                        if (rxAdapter.listPatientsByTutorId) {
+                          setSupabasePatientsLoading(true)
+                          setSupabasePatientsForTutor([])
+                          void rxAdapter.listPatientsByTutorId(tutor.tutorRecordId)
+                            .then((patients) => {
+                              setSupabasePatientsForTutor(patients)
+                              // Auto-select first patient if only one
+                              if (patients.length === 1) {
+                                const p = patients[0]
+                                updatePrescription((prev) => ({
+                                  ...prev,
+                                  patient: {
+                                    ...prev.patient,
+                                    patientRecordId: p.patientRecordId,
+                                    name: p.name,
+                                    species: p.species,
+                                    breed: p.breed || prev.patient.breed,
+                                    sex: p.sex || prev.patient.sex,
+                                    reproductiveStatus: p.reproductiveStatus || prev.patient.reproductiveStatus,
+                                    ageText: p.ageText || prev.patient.ageText,
+                                    coat: p.coat || prev.patient.coat,
+                                    weightKg: p.weightKg || prev.patient.weightKg,
+                                    weightDate: p.weightDate || prev.patient.weightDate,
+                                  },
+                                }))
+                                pushToast('success', `Tutor "${tutor.name}" e paciente "${p.name}" importados.`)
+                              } else {
+                                pushToast('success', `Tutor "${tutor.name}" importado. Selecione o paciente.`)
+                              }
+                            })
+                            .catch(() => pushToast('error', 'Erro ao buscar pacientes do tutor.'))
+                            .finally(() => setSupabasePatientsLoading(false))
+                        } else {
+                          pushToast('success', `Tutor "${tutor.name}" importado.`)
+                        }
+                      }}
+                      onError={(error) => handleDataAdapterError('search', error)}
+                    />
+                  </div>
 
-              <div className="mb-3 mt-5 rounded-lg border border-[#2f5a25] bg-[#142712] px-3 py-2 text-xs font-semibold uppercase tracking-wide text-[color:var(--rxv-text)]">
-                Tutor / Responsável {hasSpecialControlItems ? '(controle especial)' : ''}
-              </div>
-              {hasSpecialControlItems ? (
-                <div className="mb-3 rounded-lg border px-3 py-2 text-xs" style={{ borderColor: 'var(--rxv-warning-border)', background: 'var(--rxv-warning-bg)', color: 'var(--rxv-warning-text)' }}>
-                  Receita com item controlado detectada. Preencha os dados completos do tutor para rastreabilidade sanitária.
+                  {/* Lista de pacientes do tutor selecionado */}
+                  {selectedSupabaseTutor && (
+                    <div>
+                      <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-300">
+                        Paciente do tutor
+                        {supabasePatientsLoading && <span className="ml-2 text-slate-500">carregando...</span>}
+                      </label>
+                      {!supabasePatientsLoading && supabasePatientsForTutor.length === 0 && (
+                        <p className="rounded-lg border border-[#3b6c2f]/60 bg-[#12270f] px-3 py-2 text-xs text-[#a8e79b]">
+                          Nenhum paciente cadastrado para este tutor. Cadastre um na aba Tutores e Pacientes.
+                        </p>
+                      )}
+                      {supabasePatientsForTutor.length > 0 && (
+                        <select
+                          className="w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white outline-none ring-[#3cff1a] focus:ring-1"
+                          value={prescription.patient.patientRecordId || ''}
+                          onChange={(e) => {
+                            const pid = e.target.value
+                            const p = supabasePatientsForTutor.find((entry) => entry.patientRecordId === pid)
+                            if (!p) return
+                            updatePrescription((prev) => ({
+                              ...prev,
+                              patient: {
+                                ...prev.patient,
+                                patientRecordId: p.patientRecordId,
+                                name: p.name,
+                                species: p.species,
+                                breed: p.breed || prev.patient.breed,
+                                sex: p.sex || prev.patient.sex,
+                                reproductiveStatus: p.reproductiveStatus || prev.patient.reproductiveStatus,
+                                ageText: p.ageText || prev.patient.ageText,
+                                coat: p.coat || prev.patient.coat,
+                                weightKg: p.weightKg || prev.patient.weightKg,
+                                weightDate: p.weightDate || prev.patient.weightDate,
+                              },
+                            }))
+                            pushToast('success', `Paciente "${p.name}" aplicado na receita.`)
+                          }}
+                        >
+                          <option value="">Selecione o paciente</option>
+                          {supabasePatientsForTutor.map((p) => (
+                            <option key={p.patientRecordId} value={p.patientRecordId}>
+                              {p.name} ({p.species || 'Canina'}{p.weightKg ? ` - ${p.weightKg} kg` : ''})
+                            </option>
+                          ))}
+                        </select>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Botão para cadastrar novo tutor/paciente */}
+                  <div className="flex justify-end">
+                    <button
+                      type="button"
+                      className="rxv-btn-secondary px-3 py-2 text-xs"
+                      onClick={() => navigate('/receituario-vet/clientes')}
+                    >
+                      + Cadastrar novo tutor/paciente
+                    </button>
+                  </div>
                 </div>
-              ) : null}
+              )}
+            </div>
+            {supabaseModeWithoutClinic ? (
+              <p className="mt-2 text-xs text-amber-300">
+                Clínica ativa não encontrada. Selecione uma clínica para usar modo Supabase.
+              </p>
+            ) : null}
+          </section>
+
+          <section className="rxv-card p-5">
+            <div className="mb-4 flex items-center justify-between">
+              <h2 className="text-lg font-bold text-[color:var(--rxv-text)]">Identificação</h2>
+              <span className="rounded-full border border-[#3d6f31] bg-[#233c1d] px-2 py-0.5 text-xs text-[#8cff78]">Editável</span>
+            </div>
+            <div className="mb-3 rounded-lg border border-[#2f5a25] bg-[#142712] px-3 py-2 text-xs font-semibold uppercase tracking-wide text-[color:var(--rxv-text)]">
+              Prescritor
+            </div>
+            <div className="mb-5 grid grid-cols-1 gap-3 md:grid-cols-4">
+              <label className="text-xs text-slate-400 md:col-span-2">
+                Perfil de médico veterinário / clínica
+                <select
+                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  value={prescription.prescriber.profileId || 'default'}
+                  onChange={(e) => applyPrescriberProfile(e.target.value)}
+                >
+                  {prescriberProfiles.map((profile) => (
+                    <option key={profile.id} value={profile.id}>
+                      {profile.profileName} - {profile.clinicName}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label className="text-xs text-slate-400">
+                ID
+                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.adminId || 'ADMIN'} readOnly />
+              </label>
+              <label className="text-xs text-slate-400">
+                Nome do prescritor
+                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.name} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, name: e.target.value } }))} />
+              </label>
+              <label className="text-xs text-slate-400">
+                CRMV
+                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.crmv} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, crmv: e.target.value } }))} />
+              </label>
+              <label className="text-xs text-slate-400">
+                Clínica
+                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.clinicName} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, clinicName: e.target.value } }))} />
+              </label>
+            </div>
+
+            <div className="mb-3 mt-5 rounded-lg border border-[#2f5a25] bg-[#142712] px-3 py-2 text-xs font-semibold uppercase tracking-wide text-[color:var(--rxv-text)]">
+              Tutor / Responsável {hasSpecialControlItems ? '(controle especial)' : ''}
+            </div>
+            {hasSpecialControlItems ? (
+              <div className="mb-3 rounded-lg border px-3 py-2 text-xs" style={{ borderColor: 'var(--rxv-warning-border)', background: 'var(--rxv-warning-bg)', color: 'var(--rxv-warning-text)' }}>
+                Receita com item controlado detectada. Preencha os dados completos do tutor para rastreabilidade sanitária.
+              </div>
+            ) : null}
+            {rxDataSource === 'local' && (
               <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                 <label className="text-xs text-slate-400 md:col-span-2">
                   Importar do banco de tutores/pacientes
@@ -1771,308 +2292,593 @@ export default function NovaReceitaPage() {
                     Este tutor ainda não possui paciente cadastrado. Você pode preencher os dados do paciente manualmente abaixo.
                   </p>
                 ) : null}
-                <label className="text-xs text-slate-400">
-                  ID/Registro tutor
-                  <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.tutorRecordId} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, tutorRecordId: e.target.value } }))} />
-                </label>
-                <label className="text-xs text-slate-400">
-                  Nome *
-                  <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.name} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, name: e.target.value } }))} />
-                </label>
-                <label className="text-xs text-slate-400">
-                  Telefone
-                  <input
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                    inputMode="tel"
-                    maxLength={15}
-                    placeholder="(00) 00000-0000"
-                    value={prescription.tutor.phone || ''}
-                    onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, phone: maskPhoneBr(e.target.value) } }))}
-                  />
-                </label>
-                {hasSpecialControlItems ? (
-                  <>
-                    <label className="text-xs text-slate-400">
-                      CPF *
-                      <input
-                        className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                        inputMode="numeric"
-                        maxLength={14}
-                        placeholder="000.000.000-00"
-                        value={prescription.tutor.cpf || ''}
-                        onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, cpf: maskCpf(e.target.value) } }))}
-                      />
-                    </label>
-                    <label className="text-xs text-slate-400">
-                      RG
-                      <input
-                        className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                        maxLength={12}
-                        placeholder="00.000.000-0"
-                        value={prescription.tutor.rg || ''}
-                        onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, rg: maskRg(e.target.value) } }))}
-                      />
-                    </label>
-                    <label className="text-xs text-slate-400 md:col-span-2">
-                      Rua *
-                      <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.addressStreet || ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, addressStreet: e.target.value } }))} />
-                    </label>
-                    <label className="text-xs text-slate-400">
-                      Número *
-                      <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.addressNumber || ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, addressNumber: e.target.value } }))} />
-                    </label>
-                    <label className="text-xs text-slate-400">
-                      Complemento
-                      <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.addressComplement || ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, addressComplement: e.target.value } }))} />
-                    </label>
-                    <label className="text-xs text-slate-400">
-                      Bairro *
-                      <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.addressDistrict || ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, addressDistrict: e.target.value } }))} />
-                    </label>
-                    <label className="text-xs text-slate-400">
-                      Cidade *
-                      <input
-                        className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                        list="rx-tutor-city-options"
-                        placeholder="Digite ou selecione a cidade"
-                        value={prescription.tutor.addressCity || ''}
-                        onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, addressCity: e.target.value } }))}
-                      />
-                    </label>
-                    <label className="text-xs text-slate-400">
-                      Estado *
-                      <input
-                        className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                        list="rx-tutor-state-options"
-                        placeholder="UF ou nome do estado"
-                        value={prescription.tutor.addressState || ''}
-                        onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, addressState: e.target.value } }))}
-                        onBlur={(e) =>
-                          updatePrescription((prev) => ({
-                            ...prev,
-                            tutor: { ...prev.tutor, addressState: normalizeStateInput(e.target.value || prev.tutor.addressState || '') },
-                          }))
-                        }
-                      />
-                    </label>
-                    <label className="text-xs text-slate-400">
-                      CEP *
-                      <div className="mt-1 flex gap-2">
-                        <input
-                          className="w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                          inputMode="numeric"
-                          maxLength={9}
-                          placeholder="00000-000"
-                          value={prescription.tutor.addressZip || ''}
-                          onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, addressZip: maskCep(e.target.value) } }))}
-                          onBlur={(e) => void fetchCepForTutor(e.target.value)}
-                        />
-                        <button
-                          type="button"
-                          className="rounded-lg border border-[#3f6f31] px-2 text-xs font-semibold text-slate-200 hover:bg-[#1f3619]"
-                          disabled={cepLookupLoading}
-                          onClick={() => void fetchCepForTutor(prescription.tutor.addressZip || '')}
-                        >
-                          {cepLookupLoading ? '...' : 'Buscar'}
-                        </button>
-                      </div>
-                    </label>
-                    <datalist id="rx-tutor-state-options">
-                      {BRAZIL_STATE_SUGGESTIONS.map((entry) => (
-                        <option key={entry} value={entry} />
-                      ))}
-                    </datalist>
-                    <datalist id="rx-tutor-city-options">
-                      {tutorCitySuggestions.map((entry) => (
-                        <option key={entry} value={entry} />
-                      ))}
-                    </datalist>
-                    {cepLookupMessage ? <p className="text-[11px] font-semibold text-[#9be78c] md:col-span-2">{cepLookupMessage}</p> : null}
-                  </>
-                ) : null}
-                <label className="text-xs text-slate-400 md:col-span-2">
-                  Observações do tutor
-                  <textarea className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" rows={2} value={prescription.tutor.notes} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, notes: e.target.value } }))} />
-                </label>
               </div>
-
-              <div className="mb-3 mt-5 rounded-lg border border-[#2f5a25] bg-[#142712] px-3 py-2 text-xs font-semibold uppercase tracking-wide text-[color:var(--rxv-text)]">
-                Paciente
-              </div>
-              <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-                <label className="text-xs text-slate-400">
-                  ID/Registro do paciente
-                  <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.patient.patientRecordId} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, patientRecordId: e.target.value } }))} />
-                </label>
-                {selectedClient && selectedClientAnimals.length > 0 ? (
+            )}
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+              <label className="text-xs text-slate-400">
+                ID/Registro tutor
+                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.tutorRecordId} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, tutorRecordId: e.target.value } }))} />
+              </label>
+              <label className="text-xs text-slate-400">
+                Nome *
+                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.name} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, name: e.target.value } }))} />
+              </label>
+              <label className="text-xs text-slate-400">
+                Telefone
+                <input
+                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  inputMode="tel"
+                  maxLength={15}
+                  placeholder="(00) 00000-0000"
+                  value={prescription.tutor.phone || ''}
+                  onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, phone: maskPhoneBr(e.target.value) } }))}
+                />
+              </label>
+              {hasSpecialControlItems ? (
+                <>
                   <label className="text-xs text-slate-400">
-                    Selecionar paciente deste tutor
-                    <select
+                    CPF *
+                    <input
                       className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                      value={prescription.patient.patientRecordId}
-                      onChange={(e) => applyClientFromBank(selectedClient.id, e.target.value)}
-                    >
-                      {selectedClientAnimals.map((animal) => (
-                        <option key={animal.id} value={animal.id}>
-                          #{animal.id} - {animal.name} ({animal.species || 'Canina'})
-                        </option>
-                      ))}
-                    </select>
+                      inputMode="numeric"
+                      maxLength={14}
+                      placeholder="000.000.000-00"
+                      value={prescription.tutor.cpf || ''}
+                      onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, cpf: maskCpf(e.target.value) } }))}
+                    />
                   </label>
-                ) : (
                   <label className="text-xs text-slate-400">
-                    Nome do animal *
+                    RG
+                    <input
+                      className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                      maxLength={12}
+                      placeholder="00.000.000-0"
+                      value={prescription.tutor.rg || ''}
+                      onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, rg: maskRg(e.target.value) } }))}
+                    />
+                  </label>
+                  <label className="text-xs text-slate-400 md:col-span-2">
+                    Rua *
+                    <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.addressStreet || ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, addressStreet: e.target.value } }))} />
+                  </label>
+                  <label className="text-xs text-slate-400">
+                    Número *
+                    <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.addressNumber || ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, addressNumber: e.target.value } }))} />
+                  </label>
+                  <label className="text-xs text-slate-400">
+                    Complemento
+                    <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.addressComplement || ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, addressComplement: e.target.value } }))} />
+                  </label>
+                  <label className="text-xs text-slate-400">
+                    Bairro *
+                    <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.addressDistrict || ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, addressDistrict: e.target.value } }))} />
+                  </label>
+                  <label className="text-xs text-slate-400">
+                    Cidade *
+                    <input
+                      className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                      list="rx-tutor-city-options"
+                      placeholder="Digite ou selecione a cidade"
+                      value={prescription.tutor.addressCity || ''}
+                      onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, addressCity: e.target.value } }))}
+                    />
+                  </label>
+                  <label className="text-xs text-slate-400">
+                    Estado *
+                    <input
+                      className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                      list="rx-tutor-state-options"
+                      placeholder="UF ou nome do estado"
+                      value={prescription.tutor.addressState || ''}
+                      onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, addressState: e.target.value } }))}
+                      onBlur={(e) =>
+                        updatePrescription((prev) => ({
+                          ...prev,
+                          tutor: { ...prev.tutor, addressState: normalizeStateInput(e.target.value || prev.tutor.addressState || '') },
+                        }))
+                      }
+                    />
+                  </label>
+                  <label className="text-xs text-slate-400">
+                    CEP *
                     <div className="mt-1 flex gap-2">
                       <input
-                        list="rx-patient-bank"
                         className="w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                        value={prescription.patient.name}
-                        onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, name: e.target.value } }))}
+                        inputMode="numeric"
+                        maxLength={9}
+                        placeholder="00000-000"
+                        value={prescription.tutor.addressZip || ''}
+                        onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, addressZip: maskCep(e.target.value) } }))}
+                        onBlur={(e) => void fetchCepForTutor(e.target.value)}
                       />
                       <button
                         type="button"
-                        className="rounded-lg border border-[#3f6f31] bg-[#1f3319] px-3 py-2 text-xs font-semibold text-[#9cff8c] hover:bg-[#26431f]"
-                        onClick={() => applyPatientFromBank(prescription.patient.name)}
+                        className="rounded-lg border border-[#3f6f31] px-2 text-xs font-semibold text-slate-200 hover:bg-[#1f3619]"
+                        disabled={cepLookupLoading}
+                        onClick={() => void fetchCepForTutor(prescription.tutor.addressZip || '')}
                       >
-                        Carregar
+                        {cepLookupLoading ? '...' : 'Buscar'}
                       </button>
                     </div>
                   </label>
-                )}
-                <datalist id="rx-patient-bank">
-                  {patientSuggestions.map((patient) => (
-                    <option key={patient.id} value={patient.name} />
-                  ))}
-                </datalist>
-                {selectedClient && selectedClientAnimals.length > 0 ? (
-                  <label className="text-xs text-slate-400 md:col-span-2">
-                    Nome do animal *
+                  <datalist id="rx-tutor-state-options">
+                    {BRAZIL_STATE_SUGGESTIONS.map((entry) => (
+                      <option key={entry} value={entry} />
+                    ))}
+                  </datalist>
+                  <datalist id="rx-tutor-city-options">
+                    {tutorCitySuggestions.map((entry) => (
+                      <option key={entry} value={entry} />
+                    ))}
+                  </datalist>
+                  {cepLookupMessage ? <p className="text-[11px] font-semibold text-[#9be78c] md:col-span-2">{cepLookupMessage}</p> : null}
+                </>
+              ) : null}
+              <label className="text-xs text-slate-400 md:col-span-2">
+                Observações do tutor
+                <textarea className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" rows={2} value={prescription.tutor.notes} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, notes: e.target.value } }))} />
+              </label>
+            </div>
+
+            <div className="mb-3 mt-5 rounded-lg border border-[#2f5a25] bg-[#142712] px-3 py-2 text-xs font-semibold uppercase tracking-wide text-[color:var(--rxv-text)]">
+              Paciente
+            </div>
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+              <label className="text-xs text-slate-400">
+                ID/Registro do paciente
+                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.patient.patientRecordId} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, patientRecordId: e.target.value } }))} />
+              </label>
+              {selectedClient && selectedClientAnimals.length > 0 ? (
+                <label className="text-xs text-slate-400">
+                  Selecionar paciente deste tutor
+                  <select
+                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                    value={prescription.patient.patientRecordId}
+                    onChange={(e) => applyClientFromBank(selectedClient.id, e.target.value)}
+                  >
+                    {selectedClientAnimals.map((animal) => (
+                      <option key={animal.id} value={animal.id}>
+                        #{animal.id} - {animal.name} ({animal.species || 'Canina'})
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              ) : (
+                <label className="text-xs text-slate-400">
+                  Nome do animal *
+                  <div className="mt-1 flex gap-2">
                     <input
-                      className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                      list="rx-patient-bank"
+                      className="w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
                       value={prescription.patient.name}
                       onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, name: e.target.value } }))}
                     />
-                  </label>
-                ) : null}
-                <label className="text-xs text-slate-400">
-                  Espécie *
-                  <select
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                    value={prescription.patient.species}
-                    onChange={(e) =>
-                      updatePrescription((prev) => ({
-                        ...prev,
-                        patient: {
-                          ...prev.patient,
-                          species: e.target.value as PrescriptionState['patient']['species'],
-                          breed: '',
-                          coat: '',
-                        },
-                      }))
-                    }
-                  >
-                    <option value="Canina">Canina</option>
-                    <option value="Felina">Felina</option>
-                  </select>
+                    <button
+                      type="button"
+                      className="rounded-lg border border-[#3f6f31] bg-[#1f3319] px-3 py-2 text-xs font-semibold text-[#9cff8c] hover:bg-[#26431f]"
+                      onClick={() => applyPatientFromBank(prescription.patient.name)}
+                    >
+                      Carregar
+                    </button>
+                  </div>
                 </label>
-                <label className="text-xs text-slate-400">
-                  Raça
-                  <input
-                    list="rx-breed-options"
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                    value={prescription.patient.breed}
-                    onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, breed: e.target.value } }))}
-                    placeholder={prescription.patient.species === 'Canina' ? 'Ex.: Labrador Retriever' : 'Ex.: Siamês'}
-                  />
-                </label>
-                <datalist id="rx-breed-options">
-                  {breedOptions.map((breed) => (
-                    <option key={breed} value={breed} />
-                  ))}
-                </datalist>
-                <label className="text-xs text-slate-400">
-                  Sexo
-                  <select className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.patient.sex} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, sex: e.target.value as PrescriptionState['patient']['sex'] } }))}>
-                    <option value="Macho">Macho</option>
-                    <option value="Fêmea">Fêmea</option>
-                    <option value="Sem dados">Sem dados</option>
-                  </select>
-                </label>
-                <label className="text-xs text-slate-400">
-                  Condição reprodutiva
-                  <select
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                    value={prescription.patient.reproductiveStatus}
-                    onChange={(e) =>
-                      updatePrescription((prev) => ({
-                        ...prev,
-                        patient: { ...prev.patient, reproductiveStatus: e.target.value as PrescriptionState['patient']['reproductiveStatus'] },
-                      }))
-                    }
-                  >
-                    <option value="Castrado">Castrado</option>
-                    <option value="Fértil">Fértil</option>
-                    <option value="Sem dados">Sem dados</option>
-                  </select>
-                </label>
-                <label className="text-xs text-slate-400">
-                  Idade
-                  <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.patient.ageText} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, ageText: e.target.value } }))} />
-                </label>
-                <label className="text-xs text-slate-400">
-                  Nascimento
-                  <input type="date" className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.patient.birthDate} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, birthDate: e.target.value } }))} />
-                </label>
-                <label className="text-xs text-slate-400">
-                  Pelagem
-                  <input
-                    list="rx-coat-options"
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                    value={prescription.patient.coat}
-                    onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, coat: e.target.value } }))}
-                    placeholder={prescription.patient.species === 'Canina' ? 'Ex.: Caramelo' : 'Ex.: Rajado clássico'}
-                  />
-                </label>
-                <datalist id="rx-coat-options">
-                  {coatOptions.map((coat) => (
-                    <option key={coat} value={coat} />
-                  ))}
-                </datalist>
-                <label className="text-xs text-slate-400">
-                  Peso (kg) *
-                  <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.patient.weightKg} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, weightKg: e.target.value } }))} />
-                </label>
+              )}
+              <datalist id="rx-patient-bank">
+                {patientSuggestions.map((patient) => (
+                  <option key={patient.id} value={patient.name} />
+                ))}
+              </datalist>
+              {selectedClient && selectedClientAnimals.length > 0 ? (
                 <label className="text-xs text-slate-400 md:col-span-2">
-                  Observações do paciente
-                  <textarea className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" rows={2} value={prescription.patient.notes} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, notes: e.target.value } }))} />
-                </label>
-                <label className="flex items-center gap-2 text-sm text-slate-300 md:col-span-2">
-                  <input type="checkbox" className="h-4 w-4 rounded border-[#3f6f31] bg-[#12230f]" checked={prescription.patient.showNotesInPrint} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, showNotesInPrint: e.target.checked } }))} />
-                  Exibir observações do paciente na impressão
-                </label>
-              </div>
-            </section>
-
-            <section className="rxv-card p-5">
-              <h2 className="mb-4 text-lg font-bold text-white">Template da Receita Padrão</h2>
-              <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_auto]">
-                <label className="text-xs text-slate-400">
-                  Modelo da receita normal
-                  <select
+                  Nome do animal *
+                  <input
                     className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                    value={prescription.recommendations.standardTemplateId || activeTemplate?.id || ''}
+                    value={prescription.patient.name}
+                    onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, name: e.target.value } }))}
+                  />
+                </label>
+              ) : null}
+              <label className="text-xs text-slate-400">
+                Espécie *
+                <select
+                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  value={prescription.patient.species}
+                  onChange={(e) =>
+                    updatePrescription((prev) => ({
+                      ...prev,
+                      patient: {
+                        ...prev.patient,
+                        species: e.target.value as PrescriptionState['patient']['species'],
+                        breed: '',
+                        coat: '',
+                      },
+                    }))
+                  }
+                >
+                  <option value="Canina">Canina</option>
+                  <option value="Felina">Felina</option>
+                </select>
+              </label>
+              <label className="text-xs text-slate-400">
+                Raça
+                <input
+                  list="rx-breed-options"
+                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  value={prescription.patient.breed}
+                  onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, breed: e.target.value } }))}
+                  placeholder={prescription.patient.species === 'Canina' ? 'Ex.: Labrador Retriever' : 'Ex.: Siamês'}
+                />
+              </label>
+              <datalist id="rx-breed-options">
+                {breedOptions.map((breed) => (
+                  <option key={breed} value={breed} />
+                ))}
+              </datalist>
+              <label className="text-xs text-slate-400">
+                Sexo
+                <select className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.patient.sex} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, sex: e.target.value as PrescriptionState['patient']['sex'] } }))}>
+                  <option value="Macho">Macho</option>
+                  <option value="Fêmea">Fêmea</option>
+                  <option value="Sem dados">Sem dados</option>
+                </select>
+              </label>
+              <label className="text-xs text-slate-400">
+                Condição reprodutiva
+                <select
+                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  value={prescription.patient.reproductiveStatus}
+                  onChange={(e) =>
+                    updatePrescription((prev) => ({
+                      ...prev,
+                      patient: { ...prev.patient, reproductiveStatus: e.target.value as PrescriptionState['patient']['reproductiveStatus'] },
+                    }))
+                  }
+                >
+                  <option value="Castrado">Castrado</option>
+                  <option value="Fértil">Fértil</option>
+                  <option value="Sem dados">Sem dados</option>
+                </select>
+              </label>
+              <label className="text-xs text-slate-400">
+                Idade
+                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.patient.ageText} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, ageText: e.target.value } }))} />
+              </label>
+              <label className="text-xs text-slate-400">
+                Nascimento
+                <input type="date" className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.patient.birthDate} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, birthDate: e.target.value } }))} />
+              </label>
+              <label className="text-xs text-slate-400">
+                Pelagem
+                <input
+                  list="rx-coat-options"
+                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  value={prescription.patient.coat}
+                  onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, coat: e.target.value } }))}
+                  placeholder={prescription.patient.species === 'Canina' ? 'Ex.: Caramelo' : 'Ex.: Rajado clássico'}
+                />
+              </label>
+              <datalist id="rx-coat-options">
+                {coatOptions.map((coat) => (
+                  <option key={coat} value={coat} />
+                ))}
+              </datalist>
+              <label className="text-xs text-slate-400">
+                Peso (kg) *
+                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.patient.weightKg} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, weightKg: e.target.value } }))} />
+              </label>
+              <label className="text-xs text-slate-400 md:col-span-2">
+                Observações do paciente
+                <textarea className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" rows={2} value={prescription.patient.notes} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, notes: e.target.value } }))} />
+              </label>
+              <label className="flex items-center gap-2 text-sm text-slate-300 md:col-span-2">
+                <input type="checkbox" className="h-4 w-4 rounded border-[#3f6f31] bg-[#12230f]" checked={prescription.patient.showNotesInPrint} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, showNotesInPrint: e.target.checked } }))} />
+                Exibir observações do paciente na impressão
+              </label>
+            </div>
+          </section>
+
+          <section className="rxv-card p-5">
+            <h2 className="mb-4 text-lg font-bold text-white">Template da Receita Padrão</h2>
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_auto]">
+              <label className="text-xs text-slate-400">
+                Modelo da receita normal
+                <select
+                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  value={prescription.recommendations.standardTemplateId || activeTemplate?.id || ''}
+                  onChange={(e) =>
+                    updatePrescription((prev) => ({
+                      ...prev,
+                      recommendations: {
+                        ...prev.recommendations,
+                        standardTemplateId: e.target.value,
+                      },
+                    }))
+                  }
+                >
+                  {db.templates
+                    .filter((entry) => entry.documentKindTarget !== 'special-control')
+                    .map((template) => (
+                      <option key={template.id} value={template.id}>
+                        {template.name}
+                      </option>
+                    ))}
+                </select>
+              </label>
+              <div className="flex items-end">
+                <Link
+                  to={`/receituario-vet/templates?template=${encodeURIComponent(prescription.recommendations.standardTemplateId || activeTemplate?.id || '')}`}
+                  state={{ from: '/receituario-vet/nova-receita' }}
+                  className="rxv-btn-secondary inline-flex h-[38px] items-center gap-2 px-3 py-2 text-sm"
+                >
+                  <span className="material-symbols-outlined text-[18px]">palette</span>
+                  Editar template
+                </Link>
+              </div>
+            </div>
+          </section>
+
+          <section className="rxv-card p-5">
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+              <h2 className="text-lg font-bold text-white">Itens da Prescrição</h2>
+              <div className="flex gap-2">
+                <button type="button" className="rxv-btn-secondary px-3 py-1.5 text-sm" onClick={() => setProtocolModalOpen(true)}>
+                  Visualizar lista de protocolos prontos
+                </button>
+                <button type="button" className="rxv-btn-primary px-3 py-1.5 text-sm" onClick={() => openCreateModal('medication')}>
+                  + Adicionar medicamento
+                </button>
+                <button type="button" className="rxv-btn-secondary px-3 py-1.5 text-sm" onClick={() => openCreateModal('hygiene')}>
+                  + Produto higiene
+                </button>
+                <button type="button" className="rxv-btn-secondary px-3 py-1.5 text-sm" onClick={() => openCreateModal('other')}>
+                  + Item livre
+                </button>
+              </div>
+            </div>
+            <div className="space-y-3">
+              {prescription.items.length === 0 ? (
+                <div className="rounded-xl border border-dashed border-[#345f2a] bg-[#142712] px-4 py-6 text-center text-sm text-slate-400">
+                  Nenhum item adicionado.
+                </div>
+              ) : (
+                prescription.items.map((item, index) => {
+                  const status = itemStatus(item, prescription)
+                  const qty = calculateMedicationQuantity(item, prescription)
+                  return (
+                    <article key={item.id} className="rounded-xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] p-4">
+                      <div className="flex flex-wrap items-start justify-between gap-3">
+                        <div>
+                          <h3 className="text-base font-bold text-[color:var(--rxv-text)]">
+                            {item.name || 'Item sem nome'} {item.concentration ? <span className="text-[color:var(--rxv-muted)]">({item.concentration})</span> : null}
+                            {item.commercialName ? <span className="text-[color:var(--rxv-primary)]"> ({item.commercialName})</span> : null}
+                          </h3>
+                          <p className="text-sm text-[color:var(--rxv-muted)]">
+                            Via {item.routeGroup} - {item.frequencyType === 'everyHours' ? `a cada ${item.everyHours || '?'} h` : `${item.timesPerDay || '?'}x/dia`} {item.durationDays ? `- ${item.durationDays} dia(s)` : ''}
+                          </p>
+                          <p className="mt-1 text-xs font-semibold text-[color:var(--rxv-primary)]">{qty.label}</p>
+                          {item.controlled ? <p className="mt-1 text-xs font-bold text-amber-400">Receita controlada</p> : null}
+                        </div>
+                        <div className="flex flex-wrap items-center gap-2">
+                          {status !== 'ok' ? (
+                            <span className="rounded-full border border-amber-700/60 bg-amber-500/10 px-2 py-0.5 text-xs font-semibold text-amber-300">
+                              incompleto
+                            </span>
+                          ) : null}
+                          <button type="button" className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-xs hover:bg-[color:var(--rxv-surface)]" onClick={() => movePrescriptionItem(index, -1)}>↑</button>
+                          <button type="button" className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-xs hover:bg-[color:var(--rxv-surface)]" onClick={() => movePrescriptionItem(index, 1)}>↓</button>
+                          <button type="button" className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-xs hover:bg-[color:var(--rxv-surface)]" onClick={() => openEditModal(item)}>Editar</button>
+                          <button type="button" className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-xs hover:bg-[color:var(--rxv-surface)]" onClick={() => duplicatePrescriptionItem(item)}>Duplicar</button>
+                          <button type="button" className="rounded border border-red-800/70 px-2 py-1 text-xs text-red-300 hover:bg-red-950/40" onClick={() => removePrescriptionItem(item.id)}>Remover</button>
+                        </div>
+                      </div>
+                    </article>
+                  )
+                })
+              )}
+            </div>
+          </section>
+
+          <section className="rxv-card p-5">
+            <h2 className="mb-4 text-lg font-bold text-[color:var(--rxv-text)]">Recomendações</h2>
+            <div className="space-y-2">
+              {prescription.recommendations.bullets.map((bullet, idx) => (
+                <div key={`bullet-${idx}`} className="flex gap-2">
+                  <textarea
+                    className="flex-1 rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-input-bg)] px-3 py-2 text-sm text-[color:var(--rxv-text)]"
+                    rows={2}
+                    value={bullet}
                     onChange={(e) =>
                       updatePrescription((prev) => ({
                         ...prev,
                         recommendations: {
                           ...prev.recommendations,
-                          standardTemplateId: e.target.value,
+                          bullets: prev.recommendations.bullets.filter((_, i) => i !== idx),
+                        },
+                      }))
+                    }
+                  />
+                  <button type="button" className="rounded border border-red-800/70 px-2 text-xs text-red-300 hover:bg-red-950/40" onClick={() => updatePrescription((prev) => ({ ...prev, recommendations: { ...prev.recommendations, bullets: prev.recommendations.bullets.filter((_, i) => i !== idx) } }))}>
+                    Remover
+                  </button>
+                </div>
+              ))}
+            </div>
+            <div className="mt-2">
+              <button type="button" className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-xs hover:bg-[color:var(--rxv-surface)]" onClick={() => updatePrescription((prev) => ({ ...prev, recommendations: { ...prev.recommendations, bullets: [...prev.recommendations.bullets, ''] } }))}>
+                + adicionar recomendação
+              </button>
+            </div>
+            <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
+              <label className="text-xs text-[color:var(--rxv-muted)]">
+                Meta de água (mL/dia)
+                <input className="mt-1 w-full rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-input-bg)] px-3 py-2 text-sm text-[color:var(--rxv-text)]" value={prescription.recommendations.waterMlPerDay} onChange={(e) => updatePrescription((prev) => ({ ...prev, recommendations: { ...prev.recommendations, waterMlPerDay: e.target.value } }))} />
+                <span className="mt-1 block text-[11px] text-[color:var(--rxv-muted)]">Padrão automático: 60 mL/kg/dia (editável).</span>
+              </label>
+            </div>
+
+            <div className="mt-5">
+              <h3 className="mb-2 text-sm font-bold uppercase tracking-wide text-[color:var(--rxv-text)]">Exames sugeridos</h3>
+              <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+                {COMMON_EXAMS.map((exam) => (
+                  <label key={exam} className="flex items-center gap-2 text-sm text-[color:var(--rxv-text)]">
+                    <input
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-[color:var(--rxv-border)] bg-[color:var(--rxv-input-bg)]"
+                      checked={prescription.recommendations.exams.some((entry) => normalizeLooseText(entry) === normalizeLooseText(exam))}
+                      onChange={(e) => toggleExam(exam, e.target.checked)}
+                    />
+                    {exam}
+                  </label>
+                ))}
+              </div>
+              <div className="mt-3 flex gap-2">
+                <input className="flex-1 rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-input-bg)] px-3 py-2 text-sm text-[color:var(--rxv-text)]" value={customExamDraft} onChange={(e) => setCustomExamDraft(e.target.value)} placeholder="Adicionar exame personalizado" />
+                <button type="button"
+                  className="rounded border border-[color:var(--rxv-border)] px-3 py-1.5 text-sm hover:bg-[color:var(--rxv-surface)]"
+                  onClick={() => {
+                    if (!customExamDraft.trim()) return
+                    const canonical = canonicalExamName(customExamDraft.trim())
+                    const isCommon = COMMON_EXAMS.some((entry) => normalizeLooseText(entry) === normalizeLooseText(canonical))
+                    updatePrescription((prev) => ({
+                      ...prev,
+                      recommendations: {
+                        ...prev.recommendations,
+                        exams: isCommon ? uniqueNormalizedLines([...prev.recommendations.exams, canonical]) : prev.recommendations.exams,
+                        customExams: isCommon
+                          ? prev.recommendations.customExams
+                          : uniqueNormalizedLines([...prev.recommendations.customExams, canonical]),
+                      },
+                    }))
+                    setCustomExamDraft('')
+                  }}
+                >
+                  Adicionar
+                </button>
+              </div>
+              {prescription.recommendations.customExams.length > 0 ? (
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {prescription.recommendations.customExams.map((exam, idx) => (
+                    <button type="button" key={`${exam}-${idx}`} className="rounded-full border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface)] px-2 py-1 text-xs text-[color:var(--rxv-text)]" onClick={() => updatePrescription((prev) => ({ ...prev, recommendations: { ...prev.recommendations, customExams: prev.recommendations.customExams.filter((_, i) => i !== idx) } }))}>
+                      {exam} x
+                    </button>
+                  ))}
+                </div>
+              ) : null}
+
+              <div className="mt-4 rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] p-3">
+                <p className="mb-2 text-xs font-bold uppercase tracking-wide text-[color:var(--rxv-text)]">Justificativas dos exames (opcional)</p>
+                {prescription.recommendations.examReasons.length > 0 ? (
+                  <div className="space-y-2">
+                    {prescription.recommendations.examReasons.map((reason, idx) => (
+                      <div key={`exam-reason-${idx}`} className="flex gap-2">
+                        <textarea
+                          className="flex-1 rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-input-bg)] px-3 py-2 text-sm text-[color:var(--rxv-text)]"
+                          rows={2}
+                          value={reason}
+                          onChange={(e) =>
+                            updatePrescription((prev) => ({
+                              ...prev,
+                              recommendations: {
+                                ...prev.recommendations,
+                                examReasons: prev.recommendations.examReasons.filter((_, i) => i !== idx),
+                              },
+                            }))
+                          }
+                        />
+                        <button
+                          type="button"
+                          className="rounded border border-red-800/70 px-2 text-xs text-red-300 hover:bg-red-950/40"
+                          onClick={() =>
+                            updatePrescription((prev) => ({
+                              ...prev,
+                              recommendations: {
+                                ...prev.recommendations,
+                                examReasons: prev.recommendations.examReasons.filter((_, i) => i !== idx),
+                              },
+                            }))
+                          }
+                        >
+                          Remover
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-xs text-[color:var(--rxv-muted)]">Nenhuma justificativa adicionada.</p>
+                )}
+                <div className="mt-2 flex gap-2">
+                  <input
+                    className="flex-1 rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-input-bg)] px-3 py-2 text-sm text-[color:var(--rxv-text)]"
+                    value={examReasonDraft}
+                    onChange={(e) => setExamReasonDraft(e.target.value)}
+                    placeholder="Ex.: Tomografia indicada por suspeita de massa intracraniana."
+                  />
+                  <button
+                    type="button"
+                    className="rounded border border-[color:var(--rxv-border)] px-3 py-1.5 text-sm hover:bg-[color:var(--rxv-surface)]"
+                    onClick={() => {
+                      if (!examReasonDraft.trim()) return
+                      updatePrescription((prev) => ({
+                        ...prev,
+                        recommendations: {
+                          ...prev.recommendations,
+                          examReasons: [...prev.recommendations.examReasons, examReasonDraft.trim()],
+                        },
+                      }))
+                      setExamReasonDraft('')
+                    }}
+                  >
+                    Adicionar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {hasSpecialControlItems ? (
+            <section className="rxv-card p-5">
+              <h2 className="mb-2 text-lg font-bold text-white">Receita de Controle Especial</h2>
+              <p className="mb-3 text-xs text-slate-400">
+                Selecione o tipo de farmácia para marcar automaticamente no modelo da receita controlada.
+              </p>
+              <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                <label className="text-xs text-slate-400">
+                  Tipo de farmácia da receita controlada
+                  <select
+                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                    value={prescription.recommendations.specialControlPharmacy}
+                    onChange={(e) =>
+                      updatePrescription((prev) => ({
+                        ...prev,
+                        recommendations: {
+                          ...prev.recommendations,
+                          specialControlPharmacy: e.target.value as SpecialControlPharmacy,
+                        },
+                      }))
+                    }
+                  >
+                    <option value="veterinária">Farmácia veterinária</option>
+                    <option value="manipulacao">Farmácia de manipulação</option>
+                    <option value="humana">Farmácia humana</option>
+                  </select>
+                </label>
+                <label className="text-xs text-slate-400">
+                  Template da receita controlada
+                  <select
+                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                    value={prescription.recommendations.specialControlTemplateId || specialControlTemplate?.id || ''}
+                    onChange={(e) =>
+                      updatePrescription((prev) => ({
+                        ...prev,
+                        recommendations: {
+                          ...prev.recommendations,
+                          specialControlTemplateId: e.target.value,
                         },
                       }))
                     }
                   >
                     {db.templates
-                      .filter((entry) => entry.documentKindTarget !== 'special-control')
+                      .filter((entry) => entry.documentKindTarget === 'special-control')
                       .map((template) => (
                         <option key={template.id} value={template.id}>
                           {template.name}
@@ -2080,335 +2886,65 @@ export default function NovaReceitaPage() {
                       ))}
                   </select>
                 </label>
-                <div className="flex items-end">
+                <div className="md:col-span-2">
                   <Link
-                    to={`/receituario-vet/templates?template=${encodeURIComponent(prescription.recommendations.standardTemplateId || activeTemplate?.id || '')}`}
+                    to={`/receituario-vet/templates?template=${encodeURIComponent(
+                      prescription.recommendations.specialControlTemplateId || specialControlTemplate?.id || 'rx_br_control_special'
+                    )}&kind=special-control`}
                     state={{ from: '/receituario-vet/nova-receita' }}
-                    className="rxv-btn-secondary inline-flex h-[38px] items-center gap-2 px-3 py-2 text-sm"
+                    className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-2 text-sm"
                   >
                     <span className="material-symbols-outlined text-[18px]">palette</span>
-                    Editar template
+                    Editar template controlado
                   </Link>
                 </div>
               </div>
             </section>
+          ) : null}
 
-            <section className="rxv-card p-5">
-              <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-                <h2 className="text-lg font-bold text-white">Itens da Prescrição</h2>
-                <div className="flex gap-2">
-                  <button type="button" className="rxv-btn-secondary px-3 py-1.5 text-sm" onClick={() => setProtocolModalOpen(true)}>
-                    Visualizar lista de protocolos prontos
-                  </button>
-                  <button type="button" className="rxv-btn-primary px-3 py-1.5 text-sm" onClick={() => openCreateModal('medication')}>
-                    + Adicionar medicamento
-                  </button>
-                  <button type="button" className="rxv-btn-secondary px-3 py-1.5 text-sm" onClick={() => openCreateModal('hygiene')}>
-                    + Produto higiene
-                  </button>
-                  <button type="button" className="rxv-btn-secondary px-3 py-1.5 text-sm" onClick={() => openCreateModal('other')}>
-                    + Item livre
-                  </button>
+          <section className="grid grid-cols-1 gap-2 md:hidden">
+            <Link className="rxv-btn-secondary px-3 py-2 text-center text-sm" to="/receituario-vet/configuração">Configurar médico</Link>
+            <Link className="rxv-btn-secondary px-3 py-2 text-center text-sm" to="/receituario-vet/clientes">Tutores e pacientes</Link>
+            <Link className="rxv-btn-secondary px-3 py-2 text-center text-sm" to="/receituario-vet/catalogo">Catálogo de fármacos</Link>
+            <button type="button" className="rxv-btn-secondary px-3 py-2 text-sm" onClick={() => setProtocolModalOpen(true)}>
+              Visualizar lista de protocolos prontos
+            </button>
+            <button type="button" className="rxv-btn-secondary px-3 py-2 text-sm" onClick={saveNow}>
+              Salvar rascunho
+            </button>
+            <button type="button" className="rxv-btn-secondary px-3 py-2 text-sm" onClick={() => { saveNow(); navigate(`/receituario-vet/rx/${prescription.id}/print?mode=review`) }}>
+              Revisar
+            </button>
+            <button type="button" className="rxv-btn-primary px-3 py-2 text-sm" onClick={() => { saveNow(); navigate(`/receituario-vet/rx/${prescription.id}/print`) }}>
+              Imprimir / Exportar
+            </button>
+          </section>
+        </div>
+
+        <aside className={`lg:col-span-7 ${mobileTab === 'editor' ? 'hidden lg:block' : ''}`}>
+          <div className="sticky top-24">
+            <div className="max-h-[calc(100vh-7.5rem)] space-y-4 overflow-y-auto pr-1 overscroll-contain">
+              {previewPrintDocs.map((doc, idx) => (
+                <div key={`preview-doc-${doc.documentKind || 'standard'}-${idx}`} className="space-y-2">
+                  <div className="rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-3 py-2 text-xs font-semibold uppercase tracking-wide text-[color:var(--rxv-muted)]">
+                    {doc.documentKind === 'special-control' ? 'Prévia: Receita de controle especial' : 'Prévia: Receita padrão'}
+                  </div>
+                  <RxPrintView
+                    doc={doc}
+                    template={doc.documentKind === 'special-control' ? specialControlTemplate : standardTemplate}
+                    signatureDataUrl={selectedPreviewProfile.signatureDataUrl}
+                    mapaSignatureDataUrl={selectedPreviewProfile.mapaSignatureDataUrl}
+                    logoDataUrl={selectedPreviewProfile.clinicLogoDataUrl}
+                    prescriberPhone={selectedPreviewProfile.clinicPhone}
+                    prescriberAddressLine={selectedPreviewProfile.clinicAddress}
+                    tutorCpf={previewState.tutor.cpf || ''}
+                    targetPharmacy={doc.documentKind === 'special-control' ? previewSpecialControlTargetPharmacy : undefined}
+                  />
                 </div>
-              </div>
-              <div className="space-y-3">
-                {prescription.items.length === 0 ? (
-                  <div className="rounded-xl border border-dashed border-[#345f2a] bg-[#142712] px-4 py-6 text-center text-sm text-slate-400">
-                    Nenhum item adicionado.
-                  </div>
-                ) : (
-                  prescription.items.map((item, index) => {
-                    const status = itemStatus(item, prescription)
-                    const qty = calculateMedicationQuantity(item, prescription)
-                    return (
-                      <article key={item.id} className="rounded-xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] p-4">
-                        <div className="flex flex-wrap items-start justify-between gap-3">
-                          <div>
-                            <h3 className="text-base font-bold text-[color:var(--rxv-text)]">
-                              {item.name || 'Item sem nome'} {item.concentration ? <span className="text-[color:var(--rxv-muted)]">({item.concentration})</span> : null}
-                              {item.commercialName ? <span className="text-[color:var(--rxv-primary)]"> ({item.commercialName})</span> : null}
-                            </h3>
-                            <p className="text-sm text-[color:var(--rxv-muted)]">
-                              Via {item.routeGroup} - {item.frequencyType === 'everyHours' ? `a cada ${item.everyHours || '?'} h` : `${item.timesPerDay || '?'}x/dia`} {item.durationDays ? `- ${item.durationDays} dia(s)` : ''}
-                            </p>
-                            <p className="mt-1 text-xs font-semibold text-[color:var(--rxv-primary)]">{qty.label}</p>
-                            {item.controlled ? <p className="mt-1 text-xs font-bold text-amber-400">Receita controlada</p> : null}
-                          </div>
-                          <div className="flex flex-wrap items-center gap-2">
-                            {status !== 'ok' ? (
-                              <span className="rounded-full border border-amber-700/60 bg-amber-500/10 px-2 py-0.5 text-xs font-semibold text-amber-300">
-                                incompleto
-                              </span>
-                            ) : null}
-                            <button type="button" className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-xs hover:bg-[color:var(--rxv-surface)]" onClick={() => movePrescriptionItem(index, -1)}>↑</button>
-                            <button type="button" className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-xs hover:bg-[color:var(--rxv-surface)]" onClick={() => movePrescriptionItem(index, 1)}>↓</button>
-                            <button type="button" className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-xs hover:bg-[color:var(--rxv-surface)]" onClick={() => openEditModal(item)}>Editar</button>
-                            <button type="button" className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-xs hover:bg-[color:var(--rxv-surface)]" onClick={() => duplicatePrescriptionItem(item)}>Duplicar</button>
-                            <button type="button" className="rounded border border-red-800/70 px-2 py-1 text-xs text-red-300 hover:bg-red-950/40" onClick={() => removePrescriptionItem(item.id)}>Remover</button>
-                          </div>
-                        </div>
-                      </article>
-                    )
-                  })
-                )}
-              </div>
-            </section>
-
-            <section className="rxv-card p-5">
-              <h2 className="mb-4 text-lg font-bold text-[color:var(--rxv-text)]">Recomendações</h2>
-              <div className="space-y-2">
-                {prescription.recommendations.bullets.map((bullet, idx) => (
-                  <div key={`bullet-${idx}`} className="flex gap-2">
-                    <textarea
-                      className="flex-1 rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-input-bg)] px-3 py-2 text-sm text-[color:var(--rxv-text)]"
-                      rows={2}
-                      value={bullet}
-                      onChange={(e) =>
-                        updatePrescription((prev) => {
-                          const bullets = [...prev.recommendations.bullets]
-                          bullets[idx] = e.target.value
-                          return { ...prev, recommendations: { ...prev.recommendations, bullets } }
-                        })
-                      }
-                    />
-                    <button type="button" className="rounded border border-red-800/70 px-2 text-xs text-red-300 hover:bg-red-950/40" onClick={() => updatePrescription((prev) => ({ ...prev, recommendations: { ...prev.recommendations, bullets: prev.recommendations.bullets.filter((_, i) => i !== idx) } }))}>
-                      Remover
-                    </button>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-2">
-                <button type="button" className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-xs hover:bg-[color:var(--rxv-surface)]" onClick={() => updatePrescription((prev) => ({ ...prev, recommendations: { ...prev.recommendations, bullets: [...prev.recommendations.bullets, ''] } }))}>
-                  + adicionar recomendação
-                </button>
-              </div>
-              <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
-                <label className="text-xs text-[color:var(--rxv-muted)]">
-                  Meta de água (mL/dia)
-                  <input className="mt-1 w-full rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-input-bg)] px-3 py-2 text-sm text-[color:var(--rxv-text)]" value={prescription.recommendations.waterMlPerDay} onChange={(e) => updatePrescription((prev) => ({ ...prev, recommendations: { ...prev.recommendations, waterMlPerDay: e.target.value } }))} />
-                  <span className="mt-1 block text-[11px] text-[color:var(--rxv-muted)]">Padrão automático: 60 mL/kg/dia (editável).</span>
-                </label>
-              </div>
-
-              <div className="mt-5">
-                <h3 className="mb-2 text-sm font-bold uppercase tracking-wide text-[color:var(--rxv-text)]">Exames sugeridos</h3>
-                <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
-                  {COMMON_EXAMS.map((exam) => (
-                    <label key={exam} className="flex items-center gap-2 text-sm text-[color:var(--rxv-text)]">
-                      <input
-                        type="checkbox"
-                        className="h-4 w-4 rounded border-[color:var(--rxv-border)] bg-[color:var(--rxv-input-bg)]"
-                        checked={prescription.recommendations.exams.some((entry) => normalizeLooseText(entry) === normalizeLooseText(exam))}
-                        onChange={(e) => toggleExam(exam, e.target.checked)}
-                      />
-                      {exam}
-                    </label>
-                  ))}
-                </div>
-                <div className="mt-3 flex gap-2">
-                  <input className="flex-1 rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-input-bg)] px-3 py-2 text-sm text-[color:var(--rxv-text)]" value={customExamDraft} onChange={(e) => setCustomExamDraft(e.target.value)} placeholder="Adicionar exame personalizado" />
-                  <button type="button"
-                    className="rounded border border-[color:var(--rxv-border)] px-3 py-1.5 text-sm hover:bg-[color:var(--rxv-surface)]"
-                    onClick={() => {
-                      if (!customExamDraft.trim()) return
-                      const canonical = canonicalExamName(customExamDraft.trim())
-                      const isCommon = COMMON_EXAMS.some((entry) => normalizeLooseText(entry) === normalizeLooseText(canonical))
-                      updatePrescription((prev) => ({
-                        ...prev,
-                        recommendations: {
-                          ...prev.recommendations,
-                          exams: isCommon ? uniqueNormalizedLines([...prev.recommendations.exams, canonical]) : prev.recommendations.exams,
-                          customExams: isCommon
-                            ? prev.recommendations.customExams
-                            : uniqueNormalizedLines([...prev.recommendations.customExams, canonical]),
-                        },
-                      }))
-                      setCustomExamDraft('')
-                    }}
-                  >
-                    Adicionar
-                  </button>
-                </div>
-                {prescription.recommendations.customExams.length > 0 ? (
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {prescription.recommendations.customExams.map((exam, idx) => (
-                      <button type="button" key={`${exam}-${idx}`} className="rounded-full border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface)] px-2 py-1 text-xs text-[color:var(--rxv-text)]" onClick={() => updatePrescription((prev) => ({ ...prev, recommendations: { ...prev.recommendations, customExams: prev.recommendations.customExams.filter((_, i) => i !== idx) } }))}>
-                        {exam} x
-                      </button>
-                    ))}
-                  </div>
-                ) : null}
-
-                <div className="mt-4 rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] p-3">
-                  <p className="mb-2 text-xs font-bold uppercase tracking-wide text-[color:var(--rxv-text)]">Justificativas dos exames (opcional)</p>
-                  {prescription.recommendations.examReasons.length > 0 ? (
-                    <div className="space-y-2">
-                      {prescription.recommendations.examReasons.map((reason, idx) => (
-                        <div key={`exam-reason-${idx}`} className="flex gap-2">
-                          <textarea
-                            className="flex-1 rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-input-bg)] px-3 py-2 text-sm text-[color:var(--rxv-text)]"
-                            rows={2}
-                            value={reason}
-                            onChange={(e) =>
-                              updatePrescription((prev) => {
-                                const next = [...prev.recommendations.examReasons]
-                                next[idx] = e.target.value
-                                return { ...prev, recommendations: { ...prev.recommendations, examReasons: next } }
-                              })
-                            }
-                          />
-                          <button
-                            type="button"
-                            className="rounded border border-red-800/70 px-2 text-xs text-red-300 hover:bg-red-950/40"
-                            onClick={() =>
-                              updatePrescription((prev) => ({
-                                ...prev,
-                                recommendations: {
-                                  ...prev.recommendations,
-                                  examReasons: prev.recommendations.examReasons.filter((_, i) => i !== idx),
-                                },
-                              }))
-                            }
-                          >
-                            Remover
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                      <p className="text-xs text-[color:var(--rxv-muted)]">Nenhuma justificativa adicionada.</p>
-                  )}
-                  <div className="mt-2 flex gap-2">
-                    <input
-                      className="flex-1 rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-input-bg)] px-3 py-2 text-sm text-[color:var(--rxv-text)]"
-                      value={examReasonDraft}
-                      onChange={(e) => setExamReasonDraft(e.target.value)}
-                      placeholder="Ex.: Tomografia indicada por suspeita de massa intracraniana."
-                    />
-                    <button
-                      type="button"
-                      className="rounded border border-[color:var(--rxv-border)] px-3 py-1.5 text-sm hover:bg-[color:var(--rxv-surface)]"
-                      onClick={() => {
-                        if (!examReasonDraft.trim()) return
-                        updatePrescription((prev) => ({
-                          ...prev,
-                          recommendations: {
-                            ...prev.recommendations,
-                            examReasons: [...prev.recommendations.examReasons, examReasonDraft.trim()],
-                          },
-                        }))
-                        setExamReasonDraft('')
-                      }}
-                    >
-                      Adicionar
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            {hasSpecialControlItems ? (
-              <section className="rxv-card p-5">
-                <h2 className="mb-2 text-lg font-bold text-white">Receita de Controle Especial</h2>
-                <p className="mb-3 text-xs text-slate-400">
-                  Selecione o tipo de farmácia para marcar automaticamente no modelo da receita controlada.
-                </p>
-                <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-                  <label className="text-xs text-slate-400">
-                    Tipo de farmácia da receita controlada
-                    <select
-                      className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                      value={prescription.recommendations.specialControlPharmacy}
-                      onChange={(e) =>
-                        updatePrescription((prev) => ({
-                          ...prev,
-                          recommendations: {
-                            ...prev.recommendations,
-                            specialControlPharmacy: e.target.value as SpecialControlPharmacy,
-                          },
-                        }))
-                      }
-                    >
-                      <option value="veterinaria">Farmácia veterinária</option>
-                      <option value="manipulacao">Farmácia de manipulação</option>
-                      <option value="humana">Farmácia humana</option>
-                    </select>
-                  </label>
-                  <label className="text-xs text-slate-400">
-                    Template da receita controlada
-                    <select
-                      className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                      value={prescription.recommendations.specialControlTemplateId || specialControlTemplate?.id || ''}
-                      onChange={(e) =>
-                        updatePrescription((prev) => ({
-                          ...prev,
-                          recommendations: {
-                            ...prev.recommendations,
-                            specialControlTemplateId: e.target.value,
-                          },
-                        }))
-                      }
-                    >
-                      {db.templates
-                        .filter((entry) => entry.documentKindTarget === 'special-control')
-                        .map((template) => (
-                          <option key={template.id} value={template.id}>
-                            {template.name}
-                          </option>
-                        ))}
-                    </select>
-                  </label>
-                  <div className="md:col-span-2">
-                    <Link
-                      to={`/receituario-vet/templates?template=${encodeURIComponent(
-                        prescription.recommendations.specialControlTemplateId || specialControlTemplate?.id || 'rx_br_control_special'
-                      )}&kind=special-control`}
-                      state={{ from: '/receituario-vet/nova-receita' }}
-                      className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-2 text-sm"
-                    >
-                      <span className="material-symbols-outlined text-[18px]">palette</span>
-                      Editar template controlado
-                    </Link>
-                  </div>
-                </div>
-              </section>
-            ) : null}
-
-            <section className="grid grid-cols-1 gap-2 md:hidden">
-              <Link className="rxv-btn-secondary px-3 py-2 text-center text-sm" to="/receituario-vet/configuracao">Configurar médico</Link>
-              <Link className="rxv-btn-secondary px-3 py-2 text-center text-sm" to="/receituario-vet/clientes">Tutores e pacientes</Link>
-              <Link className="rxv-btn-secondary px-3 py-2 text-center text-sm" to="/receituario-vet/catalogo">Catálogo de fármacos</Link>
-              <button type="button" className="rxv-btn-secondary px-3 py-2 text-sm" onClick={() => setProtocolModalOpen(true)}>Visualizar lista de protocolos prontos</button>
-              <button type="button" className="rxv-btn-secondary px-3 py-2 text-sm" onClick={saveNow}>Salvar rascunho</button>
-              <button type="button" className="rxv-btn-secondary px-3 py-2 text-sm" onClick={() => { saveNow(); navigate(`/receituario-vet/rx/${prescription.id}/print?mode=review`) }}>Revisar</button>
-              <button type="button" className="rxv-btn-primary px-3 py-2 text-sm" onClick={() => { saveNow(); navigate(`/receituario-vet/rx/${prescription.id}/print`) }}>Imprimir / Exportar</button>
-            </section>
-          </div>
-
-          <aside className={`lg:col-span-7 ${mobileTab === 'editor' ? 'hidden lg:block' : ''}`}>
-            <div className="sticky top-24">
-              <div className="max-h-[calc(100vh-7.5rem)] space-y-4 overflow-y-auto pr-1 overscroll-contain">
-                {previewPrintDocs.map((doc, idx) => (
-                  <div key={`preview-doc-${doc.documentKind || 'standard'}-${idx}`} className="space-y-2">
-                    <div className="rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-3 py-2 text-xs font-semibold uppercase tracking-wide text-[color:var(--rxv-muted)]">
-                      {doc.documentKind === 'special-control' ? 'Prévia: Receita de controle especial' : 'Prévia: Receita padrão'}
-                    </div>
-                    <RxPrintView
-                      doc={doc}
-                      template={doc.documentKind === 'special-control' ? specialControlTemplate : standardTemplate}
-                      signatureDataUrl={selectedPreviewProfile.signatureDataUrl}
-                      mapaSignatureDataUrl={selectedPreviewProfile.mapaSignatureDataUrl}
-                      logoDataUrl={selectedPreviewProfile.clinicLogoDataUrl}
-                      prescriberPhone={selectedPreviewProfile.clinicPhone}
-                      prescriberAddressLine={selectedPreviewProfile.clinicAddress}
-                      tutorCpf={previewState.tutor.cpf || ''}
-                      targetPharmacy={doc.documentKind === 'special-control' ? previewSpecialControlTargetPharmacy : undefined}
-                    />
-                  </div>
-                ))}
-              </div>
+              ))}
             </div>
-          </aside>
+          </div>
+        </aside>
       </div>
 
       {protocolModalOpen ? (
@@ -2501,6 +3037,20 @@ export default function NovaReceitaPage() {
           </div>
         </div>
       ) : null}
+
+      {rxDataSource === 'local' && (
+        <PatientCreateModal
+          open={patientCreateModalOpen}
+          onOpenChange={setPatientCreateModalOpen}
+          adapter={rxAdapter}
+          onCreatedAndPicked={(payload) => {
+            applyPatientTutorToPrescription(payload)
+            refreshLegacyLocalSnapshot()
+            pushToast('success', `Paciente "${payload.patient.name}" criado e aplicado.`)
+          }}
+          onError={(error) => handleDataAdapterError('save', error)}
+        />
+      )}
 
       <MedicationModal
         state={modalState}

@@ -14,7 +14,7 @@ export type TemporalPattern =
   | 'episodico'
 export type EvolutionPattern =
   | 'melhorando'
-  | 'estatico'
+  | 'estático'
   | 'flutuante'
   | 'progressivo'
 
@@ -31,14 +31,14 @@ export type RedFlagId =
 
 export type ComorbidityKey =
   | 'renal'
-  | 'hepatica'
-  | 'cardiaca'
+  | 'hepática'
+  | 'cardíaca'
   | 'endocrina'
-  | 'respiratoria'
+  | 'respiratória'
   | 'neuromuscular'
   | 'neoplasica'
   | 'imunomediada'
-  | 'hipertensao'
+  | 'hipertensão'
   | 'coagulopatia'
 
 export type ComorbidityItem = {

@@ -100,7 +100,7 @@ function normalizeState(raw: Partial<PrescriptionState> | null | undefined): Pre
       specialControlPharmacy:
         raw.recommendations?.specialControlPharmacy === 'humana' ||
         raw.recommendations?.specialControlPharmacy === 'manipulacao' ||
-        raw.recommendations?.specialControlPharmacy === 'veterinaria'
+        raw.recommendations?.specialControlPharmacy === 'veterinária'
           ? raw.recommendations.specialControlPharmacy
           : base.recommendations.specialControlPharmacy,
       standardTemplateId: raw.recommendations?.standardTemplateId || base.recommendations.standardTemplateId,

@@ -9,7 +9,7 @@ import { PharmacyType } from './rxTypes'
 
 function buildCatalogControlledTargetPharmacy(
   controlledCatalog: CatalogDrug[]
-): 'veterinaria' | 'humana' | 'manipulacao' | 'mista' {
+): 'veterinária' | 'humana' | 'manipulacao' | 'mista' {
   const tags = new Set<PharmacyType>()
   controlledCatalog.forEach((drug) => {
     if (drug.presentations.length > 0) {
@@ -22,14 +22,14 @@ function buildCatalogControlledTargetPharmacy(
     }
   })
 
-  const hasVeterinaria = tags.has('veterinaria')
+  const hasVeterinaria = tags.has('veterinária')
   const hasHumana = tags.has('humana')
   const hasManipulacao = tags.has('manipulacao')
   const selectedCount = Number(hasVeterinaria) + Number(hasHumana) + Number(hasManipulacao)
   if (selectedCount > 1) return 'mista'
   if (hasManipulacao) return 'manipulacao'
   if (hasHumana) return 'humana'
-  return 'veterinaria'
+  return 'veterinária'
 }
 
 function controlledItemFromDrug(drug: CatalogDrug, index: number) {
@@ -43,7 +43,7 @@ function controlledItemFromDrug(drug: CatalogDrug, index: number) {
   item.commercialName = presentation?.commercialName || ''
   item.routeGroup = drug.routeGroup || 'ORAL'
   item.doseUnit = drug.doseUnit || 'mg/kg'
-  item.pharmacyType = (presentation?.pharmacyTags?.[0] || drug.pharmacyType || 'veterinaria') as PharmacyType
+  item.pharmacyType = (presentation?.pharmacyTags?.[0] || drug.pharmacyType || 'veterinária') as PharmacyType
   item.doseValue = item.doseUnit.includes('/kg') ? '2' : '1'
   item.frequencyType = 'everyHours'
   item.everyHours = index % 2 === 0 ? '12' : '8'

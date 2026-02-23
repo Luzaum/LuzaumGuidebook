@@ -70,7 +70,7 @@ export function HowVetiusHelps() {
               </li>
             </ul>
             <button
-              onClick={() => handleVerExemplos('avaliacoes')}
+              onClick={() => handleVerExemplos('avaliações')}
               className="inline-block mt-6 text-primary hover:underline cursor-pointer"
             >
               Ver exemplos

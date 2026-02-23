@@ -44,14 +44,14 @@ function validateSupabaseEnv() {
   const url = String(import.meta.env.VITE_SUPABASE_URL || '').trim()
   const key = String(import.meta.env.VITE_SUPABASE_ANON_KEY || '').trim()
   if (!url || !key || key.includes('...')) {
-    throw new Error('Supabase nao configurado para upload. Ajuste VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY.')
+    throw new Error('Supabase não configurado para upload. Ajuste VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY.')
   }
 }
 
 function dataUrlToBlob(dataUrl: string): Blob {
   const match = String(dataUrl || '').match(/^data:([^;]+);base64,(.+)$/)
   if (!match) {
-    throw new Error('Formato de imagem invalido para upload.')
+    throw new Error('Formato de imagem inválido para upload.')
   }
 
   const mime = match[1] || 'application/octet-stream'
@@ -82,7 +82,7 @@ function normalizeUploadError(error: unknown, bucket: string): Error {
   const lower = message.toLowerCase()
 
   if (lower.includes('bucket') && (lower.includes('not found') || lower.includes('does not exist'))) {
-    return new Error(`Bucket "${bucket}" nao encontrado no Supabase Storage.`)
+    return new Error(`Bucket "${bucket}" não encontrado no Supabase Storage.`)
   }
 
   if (lower.includes('row-level security') || lower.includes('not authorized') || lower.includes('jwt')) {
@@ -169,7 +169,7 @@ export async function uploadProfileImageDataUrl(params: {
   const { data } = storage.getPublicUrl(filePath)
   const publicUrl = String(data?.publicUrl || '').trim()
   if (!publicUrl) {
-    throw new Error('Upload concluido, mas nao foi possivel gerar URL publica da imagem.')
+    throw new Error('Upload concluido, mas não foi possível gerar URL pública da imagem.')
   }
 
   return {
@@ -186,7 +186,7 @@ export async function removeProfileImageByUrl(fileUrl: string) {
   try {
     const { error } = await supabase.storage.from(ref.bucket).remove([ref.path])
     if (error) {
-      // Nao bloqueia fluxo de salvar perfil por erro de limpeza.
+      // Não bloqueia fluxo de salvar perfil por erro de limpeza.
       console.warn('Falha ao remover imagem antiga do Supabase Storage:', error.message)
     }
   } catch (error) {

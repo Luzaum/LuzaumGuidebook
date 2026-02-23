@@ -496,7 +496,7 @@ export default function InfusionCalculator({
                           {
                             text:
                               indicatedDose.note ||
-                              'Informacao de fisiologia nao disponivel para esta dose. Adicione as notas nas doses indicadas do farmaco.',
+                              'Informação de fisiologia não disponível para esta dose. Adicione as notas nas doses indicadas do fármaco.',
                           },
                         ],
                       },
@@ -505,7 +505,7 @@ export default function InfusionCalculator({
                         items: [
                           {
                             text:
-                              'Esta dose foi baseada em protocolos clinicos validados e literatura veterinaria especializada.',
+                              'Esta dose foi baseada em protocolos clínicos validados e literatura veterinária especializada.',
                           },
                         ],
                       },

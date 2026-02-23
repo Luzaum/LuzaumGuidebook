@@ -53,7 +53,7 @@ function readFileAsDataUrl(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader()
     reader.onload = () => resolve(String(reader.result || ''))
-    reader.onerror = () => reject(new Error('Nao foi possivel ler o arquivo selecionado.'))
+    reader.onerror = () => reject(new Error('Não foi possível ler o arquivo selecionado.'))
     reader.readAsDataURL(file)
   })
 }
@@ -68,7 +68,7 @@ function loadImage(file: File): Promise<HTMLImageElement> {
     }
     image.onerror = () => {
       URL.revokeObjectURL(objectUrl)
-      reject(new Error('Nao foi possivel processar a imagem selecionada.'))
+      reject(new Error('Não foi possível processar a imagem selecionada.'))
     }
     image.src = objectUrl
   })
@@ -86,7 +86,7 @@ async function optimizeImageDataUrl(file: File): Promise<string> {
   const context = canvas.getContext('2d')
 
   if (!context) {
-    throw new Error('Nao foi possivel preparar a imagem para upload.')
+    throw new Error('Não foi possível preparar a imagem para upload.')
   }
 
   context.drawImage(image, 0, 0, width, height)
@@ -140,7 +140,7 @@ export default function ProfilePage() {
       const dataUrl = await toStorableImageDataUrl(file)
       setProfile((prev) => ({ ...prev, [field]: dataUrl }))
     } catch (error) {
-      const message = error instanceof Error ? error.message : 'Nao foi possivel carregar a imagem.'
+      const message = error instanceof Error ? error.message : 'Não foi possível carregar a imagem.'
       setSaveError(message)
     } finally {
       event.target.value = ''
@@ -242,9 +242,9 @@ export default function ProfilePage() {
       window.setTimeout(() => setSaved(false), 2200)
     } catch (error) {
       if (isQuotaExceededError(error)) {
-        setSaveError('Nao foi possivel salvar: armazenamento do navegador cheio. Reduza o tamanho das imagens e tente novamente.')
+        setSaveError('Não foi possível salvar: armazenamento do navegador cheio. Reduza o tamanho das imagens e tente novamente.')
       } else {
-        const message = error instanceof Error ? error.message : 'Nao foi possivel salvar este perfil.'
+        const message = error instanceof Error ? error.message : 'Não foi possível salvar este perfil.'
         setSaveError(message)
       }
     } finally {

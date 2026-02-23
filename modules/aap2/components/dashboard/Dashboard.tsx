@@ -21,7 +21,7 @@ const IDENTIFICATION_CARDS: Array<{
         subtitle: 'Bothrops, Crotalus, Micrurus, Lachesis',
         bg: '/images/aap2/home-jararaca.jpg',
         categoryId: 'cobras',
-        desc: 'Identifique jararacas, cascaveis, corais e surucucus por caracteristicas visuais e sintomas.',
+        desc: 'Identifique jararacas, cascaveis, corais e surucucus por características visuais e sintomas.',
     },
     {
         label: 'Escorpioes',
@@ -42,7 +42,7 @@ const IDENTIFICATION_CARDS: Array<{
         subtitle: 'Rhinella (Sapo-cururu), Phyllomedusa',
         bg: '/images/aap2/home-sapo-cururu.jpg',
         categoryId: 'sapos',
-        desc: 'Intoxicacao por bufotoxinas. Contato com mucosas ou ingestao acidental por caes.',
+        desc: 'Intoxicação por bufotoxinas. Contato com mucosas ou ingestao acidental por caes.',
     },
     {
         label: 'Outros & Invertebrados',
@@ -73,9 +73,9 @@ const actionCards: Array<{
     linkText: string;
 }> = [
     {
-        id: 'historico',
+        id: 'histórico',
         title: 'Dr. Luzaum AI',
-        description: 'Triagem inteligente: informe sinais e receba analise e protocolo.',
+        description: 'Triagem inteligente: informe sinais e receba análise e protocolo.',
         icon: BrainCircuit,
         badge: 'NOVO',
         theme: {
@@ -94,7 +94,7 @@ const actionCards: Array<{
     {
         id: 'suspeitas',
         title: 'Ferramenta de Suspeitas',
-        description: 'Ranqueie hipoteses por sinais clinicos.',
+        description: 'Ranqueie hipoteses por sinais clínicos.',
         icon: Stethoscope,
         badge: null,
         theme: {
@@ -132,7 +132,7 @@ const actionCards: Array<{
     {
         id: 'tratamentos',
         title: 'Protocolos',
-        description: 'Guias de emergencia e estabilizacao.',
+        description: 'Guias de emergência e estabilizacao.',
         icon: BriefcaseMedical,
         badge: null,
         theme: {
@@ -156,7 +156,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenEncyclop
             <section className="mb-10">
                 <h3 className={`text-lg font-bold mb-5 flex items-center gap-2 ${isDarkMode ? 'text-white' : 'text-slate-800'}`}>
                     <span className="material-symbols-outlined text-[#7e40e7]">visibility</span>
-                    Guia de Identificacao Rapida
+                    Guia de Identificação Rapida
                 </h3>
                 <div className="species-card-container flex gap-4 h-[450px] w-full">
                     {IDENTIFICATION_CARDS.map((card) => (
@@ -195,7 +195,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenEncyclop
                         <Zap size={20} strokeWidth={2.5} />
                     </div>
                     <h3 className={`text-xl font-bold tracking-tight ${isDarkMode ? 'text-white' : 'text-slate-800'}`}>
-                        Acoes Rapidas
+                        Ações Rapidas
                     </h3>
                 </div>
 

@@ -58,7 +58,7 @@ export default function AccountHome() {
   return (
     <AccountPageShell
       title="Area logada"
-      subtitle="Resumo completo da conta, sessao ativa e status da clinica."
+      subtitle="Resumo completo da conta, sessao ativa e status da clínica."
     >
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         <article className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
@@ -73,7 +73,7 @@ export default function AccountHome() {
         <article className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
           <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
             <Building2 className="h-4 w-4" />
-            <h2 className="text-sm font-semibold">Clinica ativa</h2>
+            <h2 className="text-sm font-semibold">Clínica ativa</h2>
           </div>
           <p className="mt-3 text-lg font-semibold text-slate-900 dark:text-slate-100">{clinicName || '-'}</p>
           <p className="text-sm text-slate-500">Perfil: {role || '-'}</p>
@@ -82,12 +82,12 @@ export default function AccountHome() {
         <article className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
           <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
             <ShieldCheck className="h-4 w-4" />
-            <h2 className="text-sm font-semibold">Seguranca</h2>
+            <h2 className="text-sm font-semibold">Segurança</h2>
           </div>
           <p className="mt-3 text-lg font-semibold text-slate-900 dark:text-slate-100">
             {emailConfirmed ? 'Email confirmado' : 'Email pendente'}
           </p>
-          <p className="text-sm text-slate-500">Ultimo login: {lastSignIn}</p>
+          <p className="text-sm text-slate-500">Último login: {lastSignIn}</p>
         </article>
 
         <article className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
@@ -101,7 +101,7 @@ export default function AccountHome() {
       </section>
 
       <section className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
-        <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Atalhos rapidos</h2>
+        <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Atalhos rápidos</h2>
         <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           <Link
             to="/conta/perfil"
@@ -110,22 +110,22 @@ export default function AccountHome() {
             Alterar perfil
           </Link>
           <Link
-            to="/conta/configuracoes"
+            to="/conta/configurações"
             className="rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
           >
-            Configuracoes da conta
+            Configurações da conta
           </Link>
           <Link
-            to="/conta/clinica"
+            to="/conta/clínica"
             className="rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
           >
-            Minha clinica
+            Minha clínica
           </Link>
         </div>
       </section>
 
       <section className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
-        <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Dados tecnicos</h2>
+        <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Dados técnicos</h2>
         <div className="mt-3 grid gap-2 text-sm text-slate-600 dark:text-slate-300">
           <p>
             <strong>clinic_id:</strong> {clinicId || '-'}

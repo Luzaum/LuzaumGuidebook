@@ -43,7 +43,7 @@ export interface CatalogDrug {
   name: string
   speciesTargets: string[]
   controlled: boolean
-  pharmacyType: 'humana' | 'veterinaria' | 'manipulacao'
+  pharmacyType: 'humana' | 'veterinária' | 'manipulacao'
   routeGroup: RouteGroup
   doseUnit: string
   notes: string
@@ -254,11 +254,11 @@ function allocateAnimalId(db: RxDatabase, currentId?: string, reserved: Set<stri
   return next
 }
 
-const PHARMACY_TYPE_VALUES: PharmacyType[] = ['humana', 'veterinaria', 'manipulacao']
+const PHARMACY_TYPE_VALUES: PharmacyType[] = ['humana', 'veterinária', 'manipulacao']
 
 function normalizePharmacyTags(
   tags: unknown,
-  fallback: PharmacyType = 'veterinaria'
+  fallback: PharmacyType = 'veterinária'
 ): PharmacyType[] {
   if (!Array.isArray(tags)) return [fallback]
   const normalized = tags
@@ -324,14 +324,14 @@ function seedCatalog(): CatalogDrug[] {
       name: 'Apoquel',
       speciesTargets: ['Caes'],
       controlled: false,
-      pharmacyType: 'veterinaria',
+      pharmacyType: 'veterinária',
       routeGroup: 'ORAL',
       doseUnit: 'mg/kg',
       notes: 'Antipruriginoso.',
       updatedAt: now,
       presentations: [
-        { id: uid('pres'), name: 'Comprimido', concentration: '16 mg/comprimido', unitLabel: 'comprimido', pharmacyTags: ['veterinaria'] },
-        { id: uid('pres'), name: 'Comprimido', concentration: '5.4 mg/comprimido', unitLabel: 'comprimido', pharmacyTags: ['veterinaria'] },
+        { id: uid('pres'), name: 'Comprimido', concentration: '16 mg/comprimido', unitLabel: 'comprimido', pharmacyTags: ['veterinária'] },
+        { id: uid('pres'), name: 'Comprimido', concentration: '5.4 mg/comprimido', unitLabel: 'comprimido', pharmacyTags: ['veterinária'] },
       ],
     },
     {
@@ -351,24 +351,24 @@ function seedCatalog(): CatalogDrug[] {
       name: 'Amoxicilina + Clavulanato',
       speciesTargets: ['Caes', 'Gatos'],
       controlled: false,
-      pharmacyType: 'veterinaria',
+      pharmacyType: 'veterinária',
       routeGroup: 'ORAL',
       doseUnit: 'mg/kg',
       notes: 'Antibiótico de amplo espectro.',
       updatedAt: now,
-      presentations: [{ id: uid('pres'), name: 'Comprimido', concentration: '250 mg/comprimido', unitLabel: 'comprimido', pharmacyTags: ['veterinaria', 'humana'] }],
+      presentations: [{ id: uid('pres'), name: 'Comprimido', concentration: '250 mg/comprimido', unitLabel: 'comprimido', pharmacyTags: ['veterinária', 'humana'] }],
     },
     {
       id: uid('drug'),
       name: 'Meloxicam',
       speciesTargets: ['Caes', 'Gatos'],
       controlled: false,
-      pharmacyType: 'veterinaria',
+      pharmacyType: 'veterinária',
       routeGroup: 'ORAL',
       doseUnit: 'mg/kg',
       notes: 'AINE.',
       updatedAt: now,
-      presentations: [{ id: uid('pres'), name: 'Suspensão Oral', concentration: '0.2 mg/mL', unitLabel: 'mL', pharmacyTags: ['veterinaria'] }],
+      presentations: [{ id: uid('pres'), name: 'Suspensão Oral', concentration: '0.2 mg/mL', unitLabel: 'mL', pharmacyTags: ['veterinária'] }],
     },
     {
       id: uid('drug'),
@@ -380,19 +380,19 @@ function seedCatalog(): CatalogDrug[] {
       doseUnit: 'mg/kg',
       notes: 'Uso controlado.',
       updatedAt: now,
-      presentations: [{ id: uid('pres'), name: 'Cápsula', concentration: '50 mg/cápsula', unitLabel: 'cápsula', pharmacyTags: ['veterinaria', 'humana', 'manipulacao'] }],
+      presentations: [{ id: uid('pres'), name: 'Cápsula', concentration: '50 mg/cápsula', unitLabel: 'cápsula', pharmacyTags: ['veterinária', 'humana', 'manipulacao'] }],
     },
     {
       id: uid('drug'),
       name: 'Cefalexina',
       speciesTargets: ['Caes', 'Gatos'],
       controlled: false,
-      pharmacyType: 'veterinaria',
+      pharmacyType: 'veterinária',
       routeGroup: 'ORAL',
       doseUnit: 'mg/kg',
       notes: 'Antibiótico oral.',
       updatedAt: now,
-      presentations: [{ id: uid('pres'), name: 'Comprimido', concentration: '500 mg/comprimido', unitLabel: 'comprimido', pharmacyTags: ['veterinaria', 'humana'] }],
+      presentations: [{ id: uid('pres'), name: 'Comprimido', concentration: '500 mg/comprimido', unitLabel: 'comprimido', pharmacyTags: ['veterinária', 'humana'] }],
     },
     {
       id: uid('drug'),
@@ -438,7 +438,7 @@ function createProtocolTemplateItem(partial: Partial<PrescriptionItem>): Prescri
     presentation: partial.presentation || '',
     concentration: partial.concentration || '',
     commercialName: partial.commercialName || '',
-    pharmacyType: partial.pharmacyType || 'veterinaria',
+    pharmacyType: partial.pharmacyType || 'veterinária',
     packageType: partial.packageType || 'caixa',
     pharmacyName: partial.pharmacyName || '',
     observations: partial.observations || '',
@@ -476,7 +476,7 @@ function createProtocolItemFromCatalog(
 ): PrescriptionItem {
   const drug = firstCatalogHit(catalog, query)
   const presentation = drug?.presentations?.[0]
-  const defaultPharmacyType = presentation?.pharmacyTags?.[0] || drug?.pharmacyType || 'veterinaria'
+  const defaultPharmacyType = presentation?.pharmacyTags?.[0] || drug?.pharmacyType || 'veterinária'
   return createProtocolTemplateItem({
     name: drug?.name || fallbackName,
     catalogDrugId: drug?.id || '',
@@ -727,7 +727,7 @@ export function createSpecialControlTemplateStyle(): RxTemplateStyle {
 
 function normalizeCatalogPresentation(
   raw: Partial<CatalogPresentation>,
-  fallbackPharmacyType: PharmacyType = 'veterinaria'
+  fallbackPharmacyType: PharmacyType = 'veterinária'
 ): CatalogPresentation {
   const concentrationValue = repairMojibake(raw.concentrationValue || '')
   const concentrationUnit = repairMojibake(raw.concentrationUnit || '')
@@ -758,7 +758,7 @@ function normalizeCatalogPresentation(
 }
 
 function normalizeCatalogDrug(raw: Partial<CatalogDrug>): CatalogDrug {
-  const normalizedPharmacyType = raw.pharmacyType || 'veterinaria'
+  const normalizedPharmacyType = raw.pharmacyType || 'veterinária'
   return {
     id: raw.id || uid('drug'),
     name: repairMojibake(raw.name || ''),
@@ -1151,7 +1151,7 @@ export function createEmptyDrug(): CatalogDrug {
     name: '',
     speciesTargets: [],
     controlled: false,
-    pharmacyType: 'veterinaria',
+    pharmacyType: 'veterinária',
     routeGroup: 'ORAL',
     doseUnit: 'mg/kg',
     notes: '',
@@ -1168,7 +1168,7 @@ export function createEmptyDrug(): CatalogDrug {
       unitLabel: 'comprimido',
       commercialName: '',
       averagePrice: '',
-      pharmacyTags: ['veterinaria'],
+      pharmacyTags: ['veterinária'],
     }],
   }
 }

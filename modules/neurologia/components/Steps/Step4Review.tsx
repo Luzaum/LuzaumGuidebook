@@ -38,7 +38,7 @@ const TEMPORAL_LABELS: Record<string, string> = {
 
 const EVOLUTION_LABELS: Record<string, string> = {
   melhorando: 'Melhorando',
-  estatico: 'Estático',
+  estático: 'Estático',
   flutuante: 'Flutuante',
   progressivo: 'Progressivo',
 }

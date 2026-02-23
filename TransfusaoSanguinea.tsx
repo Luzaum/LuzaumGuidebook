@@ -15,7 +15,7 @@ const knowledgeBase = {
     },
     risk_conditions: {
         title: '⚠️ Entendendo as Condições de Risco',
-        content: `<p>Estas condições se referem ao <strong>RECEPTOR</strong> e aumentam criticamente o risco de complicações, exigindo monitoramento e taxas de infusão ajustadas.</p><ul><li><strong>Doença Cardíaca/Renal:</strong> Pacientes com função cardíaca ou renal comprometida têm dificuldade em lidar com o volume adicional. O risco de TACO (edema pulmonar) é altíssimo. As taxas de infusão devem ser as mais baixas possíveis (1-2 mL/kg/h).</li><li><strong>Hemorragia Aguda Ativa:</strong> O paciente está perdendo volume e hemácias simultaneamente. Aqui, o objetivo é repor ambos rapidamente. Taxas mais altas são necessárias para estabilizar o paciente. O uso de Sangue Total é preferível.</li><li><strong>Primeira Transfusão (Cão):</strong> Refere-se a um cão que nunca foi transfundido antes. Embora o risco de uma reação aguda na primeira vez seja baixo (devido à ausência de aloanticorpos pré-formados contra DEA 1), esta transfusão pode <strong>sensibilizar</strong> um cão DEA 1 negativo. Uma futura transfusão com sangue DEA 1 positivo pode ser fatal. É um fator de risco para a <strong>vida futura</strong> do paciente.</li></ul>`
+        content: `<p>Estas condições se referem ao <strong>RECEPTOR</strong> e aumentam criticamente o risco de complicações, exigindo monitoramento e taxas de infusão ajustadas.</p><ul><li><strong>Doença Cardíaca/Renal:</strong> Pacientes com função cardíaca ou renal comprometida têm dificuldade em lidar com o volume adicional. O risco de TACO (edema pulmonar) é altíssimo. As taxas de infusão devem ser as mais baixas possíveis (1-2 mL/kg/h).</li><li><strong>Hemorragia Aguda Ativa:</strong> O paciente está perdendo volume e hemácias simultaneamente. Aqui, o objetivo é repor ambos rapidamente. Taxas mais altas são necessárias para estabilizar o paciente. O uso de Sangue Total é preferível.</li><li><strong>Primeira Transfusão (Cão):</strong> Refere-se a um cão que nunca foi transfundido antes. Embora o risco de uma reação aguda na primeira vez seja baixo (devido à ausência de aloanticorpos pré-formados contra DEA 1), está transfusão pode <strong>sensibilizar</strong> um cão DEA 1 negativo. Uma futura transfusão com sangue DEA 1 positivo pode ser fatal. É um fator de risco para a <strong>vida futura</strong> do paciente.</li></ul>`
     },
     components: {
         title: '🩸 Terapia com Hemocomponentes',
@@ -115,12 +115,12 @@ const PrepGuideTab = ({ openModal }) => {
                     
                     <div className="mt-6 p-4 border border-border rounded-lg">
                         <h2 className="text-xl font-semibold text-foreground text-center mb-2">Princípios da Transfusão Sanguínea em Caninos</h2>
-                        <img src="https://res.cloudinary.com/dwta1roq1/image/upload/q_auto,f_auto/transfusao/cao" alt="Infográfico resumindo a transfusão de sangue em cães, com ênfase no sistema DEA 1 e na sensibilização após a primeira transfusão incompatível" style={{width: '100%', borderRadius: '0.5rem'}} />
+                        <img src="https://res.cloudinary.com/dwta1roq1/image/upload/q_auto,f_auto/transfusão/cao" alt="Infográfico resumindo a transfusão de sangue em cães, com ênfase no sistema DEA 1 e na sensibilização após a primeira transfusão incompatível" style={{width: '100%', borderRadius: '0.5rem'}} />
                     </div>
 
                     <div className="mt-6 p-4 border border-border rounded-lg">
                         <h2 className="text-xl font-semibold text-foreground text-center mb-2">Princípios da Transfusão Sanguínea em Felinos</h2>
-                        <img src="https://res.cloudinary.com/dwta1roq1/image/upload/q_auto,f_auto/transfusao/gato" alt="Infográfico resumindo a transfusão de sangue em gatos, com ênfase nos tipos sanguíneos A, B e AB e a importância dos aloanticorpos" style={{width: '100%', borderRadius: '0.5rem'}} />
+                        <img src="https://res.cloudinary.com/dwta1roq1/image/upload/q_auto,f_auto/transfusão/gato" alt="Infográfico resumindo a transfusão de sangue em gatos, com ênfase nos tipos sanguíneos A, B e AB e a importância dos aloanticorpos" style={{width: '100%', borderRadius: '0.5rem'}} />
                     </div>
 
                     <h4>2. Aquecimento do Hemocomponente</h4>
@@ -220,7 +220,7 @@ const CrossmatchGuideTab = () => (
                 <div className="mt-4 p-4 border border-border rounded-lg bg-muted">
                     <h3 className="text-lg font-semibold text-foreground">Exemplos de Graus de Aglutinação</h3>
                     <p>A imagem abaixo demonstra os graus de reação. Uma reação de 2+ ou superior é considerada uma incompatibilidade significativa.</p>
-                    <img src="https://res.cloudinary.com/dwta1roq1/image/upload/q_auto,f_auto/aglutinacao/transfusao-2" alt="Imagem ilustrando quatro graus de aglutinação macroscópica em testes de compatibilidade sanguínea, de ausente a severa" style={{width: '100%', borderRadius: '0.5rem', marginTop: '1rem'}} />
+                    <img src="https://res.cloudinary.com/dwta1roq1/image/upload/q_auto,f_auto/aglutinacao/transfusão-2" alt="Imagem ilustrando quatro graus de aglutinação macroscópica em testes de compatibilidade sanguínea, de ausente a severa" style={{width: '100%', borderRadius: '0.5rem', marginTop: '1rem'}} />
                 </div>
             </li>
             <li><strong>Leitura Microscópica:</strong> Coloque uma gota da mistura em uma lâmina e examine em menor aumento. Procure por cachos de hemácias (como "cachos de uva") para confirmar a microaglutinação. Não confunda com *rouleaux* (empilhamento de moedas), que geralmente se dispersa com uma gota de salina.</li>
@@ -473,7 +473,7 @@ const TransfusaoSanguinea = ({ onBack }: { onBack: () => void }) => {
             </button>
             <header className="text-center mb-8">
                 <img
-                    src="https://res.cloudinary.com/dwta1roq1/image/upload/w_200,q_auto,f_auto/logo/transfusao-sanguinea"
+                    src="https://res.cloudinary.com/dwta1roq1/image/upload/w_200,q_auto,f_auto/logo/transfusão-sanguinea"
                     alt="Logo do aplicativo de banco de sangue veterinário, mostrando um cão e um gato dentro de uma gota de sangue com um eletrocardiograma"
                     className="mx-auto mb-4"
                 />

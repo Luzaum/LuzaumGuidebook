@@ -61,7 +61,7 @@ export default function AccountProfile() {
   return (
     <AccountPageShell
       title="Alterar perfil"
-      subtitle="Atualize os dados principais da conta e mantenha sua identificacao consistente."
+      subtitle="Atualize os dados principais da conta e mantenha sua identificação consistente."
     >
       <form
         onSubmit={handleSubmit}
@@ -84,7 +84,7 @@ export default function AccountProfile() {
             className="w-full rounded-lg border border-slate-300 bg-white p-2.5 text-sm text-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
-            placeholder="usuario-clinica"
+            placeholder="usuario-clínica"
           />
         </div>
 

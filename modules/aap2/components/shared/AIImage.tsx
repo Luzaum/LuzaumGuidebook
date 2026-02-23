@@ -92,7 +92,7 @@ export const AIImage: React.FC<AIImageProps> = ({
             )}
             {error && <span className="ai-image-error">{error}</span>}
             {!isLoading && !error && (
-                <span className="ai-image-unavailable">Imagem nao disponivel</span>
+                <span className="ai-image-unavailable">Imagem não disponível</span>
             )}
         </div>
     );

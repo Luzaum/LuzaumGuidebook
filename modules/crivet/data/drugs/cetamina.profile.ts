@@ -649,7 +649,7 @@ export const cetaminaProfile: DrugProfile = {
         id: 'ketamine_cat_urinary',
         title: 'Gato com obstrução uretral/uroabdome — alerta de sedação prolongada',
         mermaid:
-          'flowchart TD\nA[Gato com sedacao planejada] --> B{Obstrucao uretral ou uroabdome?}\nB -- Sim --> C[Preferir evitar cetamina (CRITICAL)]\nC --> D[Escolher alternativa + priorizar desobstrucao/drenagem]\nB -- Nao --> E[Se usar cetamina: sempre em combo + monitorar recuperacao]',
+          'flowchart TD\nA[Gato com sedacao planejada] --> B{Obstrucao uretral ou uroabdome?}\nB -- Sim --> C[Preferir evitar cetamina (CRITICAL)]\nC --> D[Escolher alternativa + priorizar desobstrucao/drenagem]\nB -- Não --> E[Se usar cetamina: sempre em combo + monitorar recuperacao]',
       },
     ],
   },

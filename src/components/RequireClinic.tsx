@@ -7,7 +7,7 @@ export function RequireClinic({ children }: { children: ReactNode }) {
   const { loading, clinicId } = useClinic()
 
   if (loading) {
-    return <div className="p-6">Carregando clinica...</div>
+    return <div className="p-6">Carregando clínica...</div>
   }
 
   if (!clinicId) {

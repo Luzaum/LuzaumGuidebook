@@ -17,20 +17,20 @@ export default function AccountClinic() {
   const { user } = useAuthSession()
 
   if (loading) {
-    return <div className="p-6">Carregando clinica...</div>
+    return <div className="p-6">Carregando clínica...</div>
   }
 
   return (
     <AccountPageShell
-      title="Minha clinica"
-      subtitle="Dados da clinica vinculada a sua conta e status de acesso multitenancy."
+      title="Minha clínica"
+      subtitle="Dados da clínica vinculada a sua conta e status de acesso multitenancy."
     >
       {clinicId ? (
         <section className="grid gap-4 md:grid-cols-2">
           <article className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
             <div className="flex items-center gap-2 text-slate-700 dark:text-slate-200">
               <Building2 className="h-4 w-4" />
-              <h2 className="text-sm font-semibold">Dados da clinica</h2>
+              <h2 className="text-sm font-semibold">Dados da clínica</h2>
             </div>
             <div className="mt-3 space-y-1 text-sm text-slate-600 dark:text-slate-300">
               <p>
@@ -48,7 +48,7 @@ export default function AccountClinic() {
           <article className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
             <div className="flex items-center gap-2 text-slate-700 dark:text-slate-200">
               <ShieldCheck className="h-4 w-4" />
-              <h2 className="text-sm font-semibold">Vinculo de seguranca</h2>
+              <h2 className="text-sm font-semibold">Vinculo de segurança</h2>
             </div>
             <div className="mt-3 space-y-1 text-sm text-slate-600 dark:text-slate-300">
               <p>
@@ -65,16 +65,16 @@ export default function AccountClinic() {
         </section>
       ) : (
         <section className="rounded-xl border border-amber-300 bg-amber-50 p-4 dark:border-amber-700 dark:bg-amber-900/20">
-          <h2 className="text-sm font-semibold text-amber-900 dark:text-amber-200">Nenhuma clinica ativa</h2>
+          <h2 className="text-sm font-semibold text-amber-900 dark:text-amber-200">Nenhuma clínica ativa</h2>
           <p className="mt-2 text-sm text-amber-800 dark:text-amber-300">
-            Esta conta ainda nao possui clinica configurada. Para continuar com o fluxo SaaS, finalize o setup.
+            Esta conta ainda não possui clínica configurada. Para continuar com o fluxo SaaS, finalize o setup.
           </p>
           <button
             type="button"
             onClick={() => nav('/clinic/setup')}
             className="mt-3 rounded-lg bg-amber-600 px-3 py-2 text-sm font-medium text-white hover:bg-amber-500"
           >
-            Ir para setup de clinica
+            Ir para setup de clínica
           </button>
         </section>
       )}

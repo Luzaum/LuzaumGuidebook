@@ -79,7 +79,7 @@ const CLINICAL_SIGNS: { system: string; icon: string; signs: ClinicalSign[] }[] 
         signs: [
             { id: 'taquicardia', label: 'Taquicardia', system: 'Cardio' },
             { id: 'dispneia', label: 'Dispneia', system: 'Cardio' },
-            { id: 'hipotensao', label: 'Hipotensão', system: 'Cardio' },
+            { id: 'hipotensão', label: 'Hipotensão', system: 'Cardio' },
         ],
     },
 ];

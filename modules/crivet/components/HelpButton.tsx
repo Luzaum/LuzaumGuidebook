@@ -13,7 +13,7 @@ export function HelpButton({ id }: Props) {
   const item = HELP_REGISTRY[id]
 
   if (!item) {
-    console.warn(`Help ID "${id}" nao encontrado no registry`)
+    console.warn(`Help ID "${id}" não encontrado no registry`)
     return null
   }
 

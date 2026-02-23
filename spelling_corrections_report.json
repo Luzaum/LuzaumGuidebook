@@ -1,0 +1,2690 @@
+{
+  "total_corrections": 372,
+  "files_modified": [
+    "App.tsx",
+    "CHECKLIST_INFORMACOES_FARMACOS.md",
+    "EmergenciasVet.tsx",
+    "EscalasDeDorScreen.tsx",
+    "Fluidoterapia.tsx",
+    "FLUIDOTERAPIA_DOCUMENTACAO_COMPLETA.md",
+    "Hemogasometria.tsx",
+    "IFRAME_THEME_SYNC.md",
+    "integration-guide.md",
+    "MULTITENANCY_CLINIC_SETUP.md",
+    "TransfusaoSanguinea.tsx",
+    "components\\DrLuzaumOpinion.tsx",
+    "components\\Footer.tsx",
+    "components\\HowVetiusHelps.tsx",
+    "components\\MiniAppGrid.tsx",
+    "components\\Navbar.tsx",
+    "components\\ui\\travel-connect-signin.tsx",
+    "modules\\registry.ts",
+    "modules\\aap2\\index.tsx",
+    "modules\\aap2\\components\\dashboard\\Dashboard.tsx",
+    "modules\\aap2\\components\\encyclopedia\\EncyclopediaDetail.tsx",
+    "modules\\aap2\\components\\layout\\AAP2Layout.tsx",
+    "modules\\aap2\\components\\nova-consulta\\NovaConsultaPage.tsx",
+    "modules\\aap2\\components\\relatorio\\RelatorioDetalhadoPage.tsx",
+    "modules\\aap2\\components\\shared\\AIImage.tsx",
+    "modules\\aap2\\components\\suspeitas\\SuspeitasPage.tsx",
+    "modules\\aap2\\types\\index.ts",
+    "modules\\crivet\\components\\HelpButton.tsx",
+    "modules\\crivet\\components\\InfusionCalculator.tsx",
+    "modules\\crivet\\data\\drugs\\cetamina.profile.ts",
+    "modules\\crivet\\data\\drugs\\metoclopramida.ts",
+    "modules\\crivet\\services\\clinicalLint.ts",
+    "modules\\crivet\\services\\normalizeDrug.ts",
+    "modules\\crivet\\types\\drugProfile.ts",
+    "modules\\crivet\\ui\\categoryStyles.ts",
+    "modules\\neurologia\\components\\Steps\\Step1PatientInfo.tsx",
+    "modules\\neurologia\\components\\Steps\\Step3NeuroExam.tsx",
+    "modules\\neurologia\\data\\helpTopics\\section1_mentacao.ts",
+    "modules\\neurologia\\data\\helpTopics\\section2_marcha_postura.ts",
+    "modules\\neurologia\\data\\helpTopics\\section3_reacoes_posturais.ts",
+    "modules\\neurologia\\lib\\engineRules.ts",
+    "modules\\neurologia\\lib\\analysis\\localization.ts",
+    "modules\\neurologia\\lib\\engine\\comorbidityRules.ts",
+    "modules\\neurologia\\stores\\caseStore.ts",
+    "modules\\receituario-vet\\App.tsx",
+    "modules\\receituario-vet\\CatalogoPage.tsx",
+    "modules\\receituario-vet\\ControleEspecialPage.tsx",
+    "modules\\receituario-vet\\DevelopmentPage.tsx",
+    "modules\\receituario-vet\\NovaReceitaPage.tsx",
+    "modules\\receituario-vet\\ProfilePage.tsx",
+    "modules\\receituario-vet\\ReceituarioChrome.tsx",
+    "modules\\receituario-vet\\rxAssets.ts",
+    "modules\\receituario-vet\\rxDb.ts",
+    "modules\\receituario-vet\\rxDefaults.ts",
+    "modules\\receituario-vet\\RxPrintPage.tsx",
+    "modules\\receituario-vet\\RxPrintView.tsx",
+    "modules\\receituario-vet\\rxStorage.ts",
+    "modules\\receituario-vet\\rxSupabaseStorage.ts",
+    "modules\\receituario-vet\\rxTypes.ts",
+    "modules\\receituario-vet\\SUPABASE_STORAGE_SETUP.md",
+    "modules\\receituario-vet\\adapters\\LocalAdapter.ts",
+    "modules\\receituario-vet\\adapters\\SupabaseAdapter.ts",
+    "modules\\receituario-vet\\components\\PatientCreateModal.tsx",
+    "modules\\receituario-vet\\components\\PatientQuickSelect.tsx",
+    "modules\\veteletrolitico\\pages\\Identification.tsx",
+    "pages\\Hub.tsx",
+    "public\\apps\\receituario-vet\\homepage.html",
+    "public\\apps\\rifa\\index.html",
+    "services\\ai.ts",
+    "src\\components\\ClinicProvider.tsx",
+    "src\\components\\RequireClinic.tsx",
+    "src\\components\\TopRightAuthMenu.tsx",
+    "src\\components\\account\\AccountPageShell.tsx",
+    "src\\lib\\clinic.ts",
+    "src\\routes\\ClinicSetup.tsx",
+    "src\\routes\\account\\AccountClinic.tsx",
+    "src\\routes\\account\\AccountHome.tsx",
+    "src\\routes\\account\\AccountProfile.tsx",
+    "src\\routes\\account\\AccountSettings.tsx"
+  ],
+  "changes": [
+    {
+      "file": "App.tsx",
+      "line": 58,
+      "original": "configuracoes",
+      "replacement": "configurações",
+      "context": "<Route path=\"/conta/configuracoes\" element={<ProtectedRoute><AccountSettings /></ProtectedRoute>} />"
+    },
+    {
+      "file": "App.tsx",
+      "line": 59,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "<Route path=\"/conta/clinica\" element={<ProtectedRoute><AccountClinic /></ProtectedRoute>} />"
+    },
+    {
+      "file": "App.tsx",
+      "line": 62,
+      "original": "transfusao",
+      "replacement": "transfusão",
+      "context": "<Route path=\"/transfusao-sanguinea\" element={<TransfusaoSanguineaPage />} />"
+    },
+    {
+      "file": "App.tsx",
+      "line": 65,
+      "original": "emergencias",
+      "replacement": "emergências",
+      "context": "<Route path=\"/emergencias\" element={<ModuleIframe />} />"
+    },
+    {
+      "file": "App.tsx",
+      "line": 71,
+      "original": "configuracao",
+      "replacement": "configuração",
+      "context": "<Route path=\"/receituario-vet/configuracao\" element={<ProtectedClinicRoute><ProfilePage /></Protecte"
+    },
+    {
+      "file": "App.tsx",
+      "line": 77,
+      "original": "configuracoes",
+      "replacement": "configurações",
+      "context": "<Route path=\"/receituario-vet/configuracoes\" element={<ProtectedClinicRoute><SettingsPage /></Protec"
+    },
+    {
+      "file": "CHECKLIST_INFORMACOES_FARMACOS.md",
+      "line": 5,
+      "original": "esta",
+      "replacement": "está",
+      "context": "**Uso:** Use esta lista como guia para pesquisar e fornecer todas as informações de cada fármaco."
+    },
+    {
+      "file": "EmergenciasVet.tsx",
+      "line": 43,
+      "original": "especifica",
+      "replacement": "específica",
+      "context": "// A propriedade 'src' especifica a URL da página a ser incorporada."
+    },
+    {
+      "file": "EmergenciasVet.tsx",
+      "line": 44,
+      "original": "emergencias",
+      "replacement": "emergências",
+      "context": "src=\"https://emergencias-vet.netlify.app\""
+    },
+    {
+      "file": "EscalasDeDorScreen.tsx",
+      "line": 43,
+      "original": "especifica",
+      "replacement": "específica",
+      "context": "// A propriedade 'src' especifica a URL da página a ser incorporada."
+    },
+    {
+      "file": "Fluidoterapia.tsx",
+      "line": 51,
+      "original": "desidratacao",
+      "replacement": "desidratação",
+      "context": "const [desidratacao, setDesidratacao] = useState('0');"
+    },
+    {
+      "file": "Fluidoterapia.tsx",
+      "line": 66,
+      "original": "especificas",
+      "replacement": "específicas",
+      "context": "especificas: false,"
+    },
+    {
+      "file": "Fluidoterapia.tsx",
+      "line": 101,
+      "original": "desidratacao",
+      "replacement": "desidratação",
+      "context": "const d = parseFloat(desidratacao);"
+    },
+    {
+      "file": "Fluidoterapia.tsx",
+      "line": 123,
+      "original": "desidratacao",
+      "replacement": "desidratação",
+      "context": "}, [peso, taxaManutencao, incluirReidratacao, desidratacao, incluirPerdas, perdas, taxaBolus, tempoB"
+    },
+    {
+      "file": "Fluidoterapia.tsx",
+      "line": 169,
+      "original": "esta",
+      "replacement": "está",
+      "context": "cards.push(createRateCard(`Taxa Inicial (Primeiras ${tReidratacao} horas)`, taxaInicial, 'Ajuste a b"
+    },
+    {
+      "file": "Fluidoterapia.tsx",
+      "line": 171,
+      "original": "esta",
+      "replacement": "está",
+      "context": "cards.push(createRateCard(`Taxa Subsequente (Após ${tReidratacao} horas)`, taxaSubsequente, 'Após co"
+    },
+    {
+      "file": "Fluidoterapia.tsx",
+      "line": 365,
+      "original": "desidratacao",
+      "replacement": "desidratação",
+      "context": "<label htmlFor=\"desidratacao\" className=\"input-label\">Grau de Desidratação (%) <HelpIcon modalId=\"mo"
+    },
+    {
+      "file": "Fluidoterapia.tsx",
+      "line": 366,
+      "original": "desidratacao",
+      "replacement": "desidratação",
+      "context": "<select id=\"desidratacao\" className=\"input-field mb-4\" value={desidratacao} onChange={e => setDesidr"
+    },
+    {
+      "file": "Fluidoterapia.tsx",
+      "line": 366,
+      "original": "desidratacao",
+      "replacement": "desidratação",
+      "context": "<select id=\"desidratacao\" className=\"input-field mb-4\" value={desidratacao} onChange={e => setDesidr"
+    },
+    {
+      "file": "Fluidoterapia.tsx",
+      "line": 422,
+      "original": "especificas",
+      "replacement": "específicas",
+      "context": "<Collapsible id=\"especificas\" title=\"🔬 Fluidos para Condições Específicas\">"
+    },
+    {
+      "file": "FLUIDOTERAPIA_DOCUMENTACAO_COMPLETA.md",
+      "line": 20,
+      "original": "especificas",
+      "replacement": "específicas",
+      "context": "├── <Collapsible id=\"especificas\"> Fluidos para Condições Específicas"
+    },
+    {
+      "file": "FLUIDOTERAPIA_DOCUMENTACAO_COMPLETA.md",
+      "line": 44,
+      "original": "desidratacao",
+      "replacement": "desidratação",
+      "context": "| `desidratacao` | `string` | `'0'` | Fração decimal (ex: `'0.08'` = 8%). Select com opções de 5% a "
+    },
+    {
+      "file": "FLUIDOTERAPIA_DOCUMENTACAO_COMPLETA.md",
+      "line": 56,
+      "original": "especificas",
+      "replacement": "específicas",
+      "context": "| `collapsibles` | `object` | `{ressuscitacao: false, especificas: false, hipertonica: false}` | Est"
+    },
+    {
+      "file": "FLUIDOTERAPIA_DOCUMENTACAO_COMPLETA.md",
+      "line": 80,
+      "original": "desidratacao",
+      "replacement": "desidratação",
+      "context": "**Dependências:** `peso`, `taxaManutencao`, `incluirReidratacao`, `desidratacao`, `incluirPerdas`, `"
+    },
+    {
+      "file": "FLUIDOTERAPIA_DOCUMENTACAO_COMPLETA.md",
+      "line": 92,
+      "original": "desidratacao",
+      "replacement": "desidratação",
+      "context": "if (incluirReidratacao && desidratacao > 0):"
+    },
+    {
+      "file": "FLUIDOTERAPIA_DOCUMENTACAO_COMPLETA.md",
+      "line": 93,
+      "original": "desidratacao",
+      "replacement": "desidratação",
+      "context": "vReidratacao = p × desidratacao × 1000"
+    },
+    {
+      "file": "FLUIDOTERAPIA_DOCUMENTACAO_COMPLETA.md",
+      "line": 379,
+      "original": "especificas",
+      "replacement": "específicas",
+      "context": "- IDs válidos: `'ressuscitacao'`, `'especificas'`, `'hipertonica'`"
+    },
+    {
+      "file": "FLUIDOTERAPIA_DOCUMENTACAO_COMPLETA.md",
+      "line": 420,
+      "original": "desidratacao",
+      "replacement": "desidratação",
+      "context": "│    • select#desidratacao + HelpIcon[modalDesidratacao]       │"
+    },
+    {
+      "file": "FLUIDOTERAPIA_DOCUMENTACAO_COMPLETA.md",
+      "line": 519,
+      "original": "desidratacao",
+      "replacement": "desidratação",
+      "context": "4. **Desidratação 0 ignorada:** `vReidratacao = 0` se `desidratacao === '0'` (opção padrão \"Selecion"
+    },
+    {
+      "file": "Hemogasometria.tsx",
+      "line": 750,
+      "original": "Analise",
+      "replacement": "Análise",
+      "context": "<li>Analise em até 5 minutos ou armazene em gelo (máx 1 hora).</li>"
+    },
+    {
+      "file": "IFRAME_THEME_SYNC.md",
+      "line": 3,
+      "original": "emergencias",
+      "replacement": "emergências",
+      "context": "Este documento explica como os apps externos (analgesiavet.netlify.app e emergencias-vet.netlify.app"
+    },
+    {
+      "file": "IFRAME_THEME_SYNC.md",
+      "line": 141,
+      "original": "emergencias",
+      "replacement": "emergências",
+      "context": "- ⏳ https://emergencias-vet.netlify.app"
+    },
+    {
+      "file": "integration-guide.md",
+      "line": 217,
+      "original": "Analise",
+      "replacement": "Análise",
+      "context": "3. Analise os exemplos existentes no código"
+    },
+    {
+      "file": "MULTITENANCY_CLINIC_SETUP.md",
+      "line": 1,
+      "original": "Clinica",
+      "replacement": "Clínica",
+      "context": "# Multitenancy (Clinica) - Setup e Fluxo"
+    },
+    {
+      "file": "MULTITENANCY_CLINIC_SETUP.md",
+      "line": 5,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "- Cada usuario pertence a uma clinica."
+    },
+    {
+      "file": "MULTITENANCY_CLINIC_SETUP.md",
+      "line": 6,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "- Primeiro acesso cria clinica + membership (`owner`)."
+    },
+    {
+      "file": "MULTITENANCY_CLINIC_SETUP.md",
+      "line": 28,
+      "original": "funcao",
+      "replacement": "função",
+      "context": "- funcao `public.bootstrap_clinic(clinic_name text)`"
+    },
+    {
+      "file": "MULTITENANCY_CLINIC_SETUP.md",
+      "line": 29,
+      "original": "funcao",
+      "replacement": "função",
+      "context": "- funcao `public.is_member_of_clinic(target_clinic_id uuid)`"
+    },
+    {
+      "file": "MULTITENANCY_CLINIC_SETUP.md",
+      "line": 31,
+      "original": "clinicas",
+      "replacement": "clínicas",
+      "context": "## Policy padrao para tabelas clinicas"
+    },
+    {
+      "file": "MULTITENANCY_CLINIC_SETUP.md",
+      "line": 62,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "2. Rota protegida exige clinica (`RequireClinic`)"
+    },
+    {
+      "file": "MULTITENANCY_CLINIC_SETUP.md",
+      "line": 63,
+      "original": "nao",
+      "replacement": "não",
+      "context": "3. Se usuario nao tem membership:"
+    },
+    {
+      "file": "TransfusaoSanguinea.tsx",
+      "line": 18,
+      "original": "esta",
+      "replacement": "está",
+      "context": "content: `<p>Estas condições se referem ao <strong>RECEPTOR</strong> e aumentam criticamente o risco"
+    },
+    {
+      "file": "TransfusaoSanguinea.tsx",
+      "line": 118,
+      "original": "transfusao",
+      "replacement": "transfusão",
+      "context": "<img src=\"https://res.cloudinary.com/dwta1roq1/image/upload/q_auto,f_auto/transfusao/cao\" alt=\"Infog"
+    },
+    {
+      "file": "TransfusaoSanguinea.tsx",
+      "line": 123,
+      "original": "transfusao",
+      "replacement": "transfusão",
+      "context": "<img src=\"https://res.cloudinary.com/dwta1roq1/image/upload/q_auto,f_auto/transfusao/gato\" alt=\"Info"
+    },
+    {
+      "file": "TransfusaoSanguinea.tsx",
+      "line": 223,
+      "original": "transfusao",
+      "replacement": "transfusão",
+      "context": "<img src=\"https://res.cloudinary.com/dwta1roq1/image/upload/q_auto,f_auto/aglutinacao/transfusao-2\" "
+    },
+    {
+      "file": "TransfusaoSanguinea.tsx",
+      "line": 476,
+      "original": "transfusao",
+      "replacement": "transfusão",
+      "context": "src=\"https://res.cloudinary.com/dwta1roq1/image/upload/w_200,q_auto,f_auto/logo/transfusao-sanguinea"
+    },
+    {
+      "file": "components\\DrLuzaumOpinion.tsx",
+      "line": 51,
+      "original": "esta",
+      "replacement": "está",
+      "context": "Aviso: esta explicação não substitui o julgamento do médico-veterinário. O aplicativo é apenas um gu"
+    },
+    {
+      "file": "components\\Footer.tsx",
+      "line": 46,
+      "original": "emergencias",
+      "replacement": "emergências",
+      "context": "onClick={() => handleLinkClick('emergencias')}"
+    },
+    {
+      "file": "components\\Footer.tsx",
+      "line": 62,
+      "original": "avaliacoes",
+      "replacement": "avaliações",
+      "context": "onClick={() => handleLinkClick('avaliacoes')}"
+    },
+    {
+      "file": "components\\HowVetiusHelps.tsx",
+      "line": 73,
+      "original": "avaliacoes",
+      "replacement": "avaliações",
+      "context": "onClick={() => handleVerExemplos('avaliacoes')}"
+    },
+    {
+      "file": "components\\MiniAppGrid.tsx",
+      "line": 42,
+      "original": "transfusao",
+      "replacement": "transfusão",
+      "context": "id: 'transfusao-sanguinea',"
+    },
+    {
+      "file": "components\\MiniAppGrid.tsx",
+      "line": 49,
+      "original": "emergencias",
+      "replacement": "emergências",
+      "context": "id: 'emergencias-veterinarias',"
+    },
+    {
+      "file": "components\\Navbar.tsx",
+      "line": 75,
+      "original": "emergencias",
+      "replacement": "emergências",
+      "context": "onClick={() => handleNavLinkClick('emergencias')}"
+    },
+    {
+      "file": "components\\Navbar.tsx",
+      "line": 87,
+      "original": "avaliacoes",
+      "replacement": "avaliações",
+      "context": "onClick={() => handleNavLinkClick('avaliacoes')}"
+    },
+    {
+      "file": "components\\Navbar.tsx",
+      "line": 140,
+      "original": "emergencias",
+      "replacement": "emergências",
+      "context": "onClick={() => handleNavLinkClick('emergencias')}"
+    },
+    {
+      "file": "components\\Navbar.tsx",
+      "line": 152,
+      "original": "avaliacoes",
+      "replacement": "avaliações",
+      "context": "onClick={() => handleNavLinkClick('avaliacoes')}"
+    },
+    {
+      "file": "components\\ui\\travel-connect-signin.tsx",
+      "line": 98,
+      "original": "clinicas",
+      "replacement": "clínicas",
+      "context": "subtitle: 'Base pronta para clinicas, equipes e crescimento.',"
+    },
+    {
+      "file": "components\\ui\\travel-connect-signin.tsx",
+      "line": 348,
+      "original": "clinico",
+      "replacement": "clínico",
+      "context": "? 'Entre para continuar seu trabalho clinico com seguranca.'"
+    },
+    {
+      "file": "components\\ui\\travel-connect-signin.tsx",
+      "line": 348,
+      "original": "seguranca",
+      "replacement": "segurança",
+      "context": "? 'Entre para continuar seu trabalho clinico com seguranca.'"
+    },
+    {
+      "file": "components\\ui\\travel-connect-signin.tsx",
+      "line": 383,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "placeholder=\"seuemail@clinica.com\""
+    },
+    {
+      "file": "components\\ui\\travel-connect-signin.tsx",
+      "line": 460,
+      "original": "Nao",
+      "replacement": "Não",
+      "context": "Nao tem conta? <span className=\"font-semibold text-blue-400\">Criar conta</span>"
+    },
+    {
+      "file": "modules\\registry.ts",
+      "line": 54,
+      "original": "transfusao",
+      "replacement": "transfusão",
+      "context": "id: 'transfusao-sanguinea',"
+    },
+    {
+      "file": "modules\\registry.ts",
+      "line": 57,
+      "original": "transfusao",
+      "replacement": "transfusão",
+      "context": "route: '/transfusao-sanguinea',"
+    },
+    {
+      "file": "modules\\registry.ts",
+      "line": 60,
+      "original": "transfusao",
+      "replacement": "transfusão",
+      "context": "iconImage: '/apps/transfusao.png',"
+    },
+    {
+      "file": "modules\\registry.ts",
+      "line": 82,
+      "original": "emergencias",
+      "replacement": "emergências",
+      "context": "id: 'emergencias-veterinarias',"
+    },
+    {
+      "file": "modules\\registry.ts",
+      "line": 85,
+      "original": "emergencias",
+      "replacement": "emergências",
+      "context": "route: '/emergencias',"
+    },
+    {
+      "file": "modules\\registry.ts",
+      "line": 88,
+      "original": "emergencias",
+      "replacement": "emergências",
+      "context": "iframeUrl: 'https://emergencias-vet.netlify.app',"
+    },
+    {
+      "file": "modules\\registry.ts",
+      "line": 89,
+      "original": "emergencia",
+      "replacement": "emergência",
+      "context": "iconImage: '/apps/emergencia.png',"
+    },
+    {
+      "file": "modules\\aap2\\index.tsx",
+      "line": 91,
+      "original": "relatorio",
+      "replacement": "relatório",
+      "context": "setPage('relatorio');"
+    },
+    {
+      "file": "modules\\aap2\\index.tsx",
+      "line": 134,
+      "original": "relatorio",
+      "replacement": "relatório",
+      "context": "case 'relatorio':"
+    },
+    {
+      "file": "modules\\aap2\\index.tsx",
+      "line": 151,
+      "original": "relatorio",
+      "replacement": "relatório",
+      "context": "onBack={() => setPage('relatorio')}"
+    },
+    {
+      "file": "modules\\aap2\\index.tsx",
+      "line": 172,
+      "original": "relatorio",
+      "replacement": "relatório",
+      "context": "if (page === 'nova_consulta' || page === 'relatorio' || page === 'relatorio_detalhado') {"
+    },
+    {
+      "file": "modules\\aap2\\components\\dashboard\\Dashboard.tsx",
+      "line": 24,
+      "original": "caracteristicas",
+      "replacement": "características",
+      "context": "desc: 'Identifique jararacas, cascaveis, corais e surucucus por caracteristicas visuais e sintomas.'"
+    },
+    {
+      "file": "modules\\aap2\\components\\dashboard\\Dashboard.tsx",
+      "line": 45,
+      "original": "Intoxicacao",
+      "replacement": "Intoxicação",
+      "context": "desc: 'Intoxicacao por bufotoxinas. Contato com mucosas ou ingestao acidental por caes.',"
+    },
+    {
+      "file": "modules\\aap2\\components\\dashboard\\Dashboard.tsx",
+      "line": 78,
+      "original": "analise",
+      "replacement": "análise",
+      "context": "description: 'Triagem inteligente: informe sinais e receba analise e protocolo.',"
+    },
+    {
+      "file": "modules\\aap2\\components\\dashboard\\Dashboard.tsx",
+      "line": 97,
+      "original": "clinicos",
+      "replacement": "clínicos",
+      "context": "description: 'Ranqueie hipoteses por sinais clinicos.',"
+    },
+    {
+      "file": "modules\\aap2\\components\\dashboard\\Dashboard.tsx",
+      "line": 135,
+      "original": "emergencia",
+      "replacement": "emergência",
+      "context": "description: 'Guias de emergencia e estabilizacao.',"
+    },
+    {
+      "file": "modules\\aap2\\components\\dashboard\\Dashboard.tsx",
+      "line": 159,
+      "original": "Identificacao",
+      "replacement": "Identificação",
+      "context": "Guia de Identificacao Rapida"
+    },
+    {
+      "file": "modules\\aap2\\components\\dashboard\\Dashboard.tsx",
+      "line": 198,
+      "original": "Acoes",
+      "replacement": "Ações",
+      "context": "Acoes Rapidas"
+    },
+    {
+      "file": "modules\\aap2\\components\\encyclopedia\\EncyclopediaDetail.tsx",
+      "line": 22,
+      "original": "voce",
+      "replacement": "você",
+      "context": "// Placeholder scaffold: voce pode editar depois com textos finais."
+    },
+    {
+      "file": "modules\\aap2\\components\\encyclopedia\\EncyclopediaDetail.tsx",
+      "line": 24,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "'Dor local intensa e imediata': 'Explicacao pendente. Descreva a fisiopatologia da dor local e sua r"
+    },
+    {
+      "file": "modules\\aap2\\components\\encyclopedia\\EncyclopediaDetail.tsx",
+      "line": 28,
+      "original": "hipotensao",
+      "replacement": "hipotensão",
+      "context": "'Hipotensao e choque': 'Explicacao pendente. Diferencie hipotensao inicial de choque instalado.',"
+    },
+    {
+      "file": "modules\\aap2\\components\\encyclopedia\\EncyclopediaDetail.tsx",
+      "line": 28,
+      "original": "Hipotensao",
+      "replacement": "Hipotensão",
+      "context": "'Hipotensao e choque': 'Explicacao pendente. Diferencie hipotensao inicial de choque instalado.',"
+    },
+    {
+      "file": "modules\\aap2\\components\\encyclopedia\\EncyclopediaDetail.tsx",
+      "line": 70,
+      "original": "nao",
+      "replacement": "não",
+      "context": "const hasContraindication = useMemo(() => normalize(animal.treatment).includes('nao usar'), [animal."
+    },
+    {
+      "file": "modules\\aap2\\components\\encyclopedia\\EncyclopediaDetail.tsx",
+      "line": 145,
+      "original": "Identificacao",
+      "replacement": "Identificação",
+      "context": "Identificacao e morfologia"
+    },
+    {
+      "file": "modules\\aap2\\components\\encyclopedia\\EncyclopediaDetail.tsx",
+      "line": 153,
+      "original": "clinicos",
+      "replacement": "clínicos",
+      "context": "Sinais clinicos"
+    },
+    {
+      "file": "modules\\aap2\\components\\encyclopedia\\EncyclopediaDetail.tsx",
+      "line": 182,
+      "original": "Diagnostico",
+      "replacement": "Diagnóstico",
+      "context": "Diagnostico"
+    },
+    {
+      "file": "modules\\aap2\\components\\encyclopedia\\EncyclopediaDetail.tsx",
+      "line": 201,
+      "original": "Contraindicacao",
+      "replacement": "Contraindicação",
+      "context": "Contraindicacao"
+    },
+    {
+      "file": "modules\\aap2\\components\\encyclopedia\\EncyclopediaDetail.tsx",
+      "line": 203,
+      "original": "Atencao",
+      "replacement": "Atenção",
+      "context": "<p className=\"text-lg font-black leading-tight\">Atencao as restricoes</p>"
+    },
+    {
+      "file": "modules\\aap2\\components\\encyclopedia\\EncyclopediaDetail.tsx",
+      "line": 203,
+      "original": "restricoes",
+      "replacement": "restrições",
+      "context": "<p className=\"text-lg font-black leading-tight\">Atencao as restricoes</p>"
+    },
+    {
+      "file": "modules\\aap2\\components\\encyclopedia\\EncyclopediaDetail.tsx",
+      "line": 205,
+      "original": "restricoes",
+      "replacement": "restrições",
+      "context": "Revise as restricoes da terapia antes de iniciar o protocolo, principalmente em pacientes com risco "
+    },
+    {
+      "file": "modules\\aap2\\components\\layout\\AAP2Layout.tsx",
+      "line": 62,
+      "original": "automatico",
+      "replacement": "automático",
+      "context": "title={isSidebarPinned ? 'Ocultar menu lateral automatico' : 'Fixar menu lateral'}"
+    },
+    {
+      "file": "modules\\aap2\\components\\layout\\AAP2Layout.tsx",
+      "line": 63,
+      "original": "automatico",
+      "replacement": "automático",
+      "context": "aria-label={isSidebarPinned ? 'Ocultar menu lateral automatico' : 'Fixar menu lateral'}"
+    },
+    {
+      "file": "modules\\aap2\\components\\nova-consulta\\NovaConsultaPage.tsx",
+      "line": 82,
+      "original": "hipotensao",
+      "replacement": "hipotensão",
+      "context": "{ id: 'hipotensao', label: 'Hipotensão', system: 'Cardio' },"
+    },
+    {
+      "file": "modules\\aap2\\components\\relatorio\\RelatorioDetalhadoPage.tsx",
+      "line": 57,
+      "original": "hipotensao",
+      "replacement": "hipotensão",
+      "context": "hipotensao: { label: 'Hipotensão', severity: 'severe' },"
+    },
+    {
+      "file": "modules\\aap2\\components\\shared\\AIImage.tsx",
+      "line": 95,
+      "original": "disponivel",
+      "replacement": "disponível",
+      "context": "<span className=\"ai-image-unavailable\">Imagem nao disponivel</span>"
+    },
+    {
+      "file": "modules\\aap2\\components\\shared\\AIImage.tsx",
+      "line": 95,
+      "original": "nao",
+      "replacement": "não",
+      "context": "<span className=\"ai-image-unavailable\">Imagem nao disponivel</span>"
+    },
+    {
+      "file": "modules\\aap2\\components\\suspeitas\\SuspeitasPage.tsx",
+      "line": 266,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "<span className=\"result-probability\" title=\"Compatibilidade clinica relativa\">"
+    },
+    {
+      "file": "modules\\aap2\\types\\index.ts",
+      "line": 88,
+      "original": "relatorio",
+      "replacement": "relatório",
+      "context": "export type AppPage = 'home' | 'suspeitas' | 'tratamentos' | 'enciclopedia' | 'nova_consulta' | 'rel"
+    },
+    {
+      "file": "modules\\crivet\\components\\HelpButton.tsx",
+      "line": 16,
+      "original": "nao",
+      "replacement": "não",
+      "context": "console.warn(`Help ID \"${id}\" nao encontrado no registry`)"
+    },
+    {
+      "file": "modules\\crivet\\components\\InfusionCalculator.tsx",
+      "line": 499,
+      "original": "disponivel",
+      "replacement": "disponível",
+      "context": "'Informacao de fisiologia nao disponivel para esta dose. Adicione as notas nas doses indicadas do fa"
+    },
+    {
+      "file": "modules\\crivet\\components\\InfusionCalculator.tsx",
+      "line": 499,
+      "original": "farmaco",
+      "replacement": "fármaco",
+      "context": "'Informacao de fisiologia nao disponivel para esta dose. Adicione as notas nas doses indicadas do fa"
+    },
+    {
+      "file": "modules\\crivet\\components\\InfusionCalculator.tsx",
+      "line": 499,
+      "original": "nao",
+      "replacement": "não",
+      "context": "'Informacao de fisiologia nao disponivel para esta dose. Adicione as notas nas doses indicadas do fa"
+    },
+    {
+      "file": "modules\\crivet\\components\\InfusionCalculator.tsx",
+      "line": 499,
+      "original": "esta",
+      "replacement": "está",
+      "context": "'Informacao de fisiologia nao disponivel para esta dose. Adicione as notas nas doses indicadas do fa"
+    },
+    {
+      "file": "modules\\crivet\\components\\InfusionCalculator.tsx",
+      "line": 499,
+      "original": "Informacao",
+      "replacement": "Informação",
+      "context": "'Informacao de fisiologia nao disponivel para esta dose. Adicione as notas nas doses indicadas do fa"
+    },
+    {
+      "file": "modules\\crivet\\components\\InfusionCalculator.tsx",
+      "line": 508,
+      "original": "clinicos",
+      "replacement": "clínicos",
+      "context": "'Esta dose foi baseada em protocolos clinicos validados e literatura veterinaria especializada.',"
+    },
+    {
+      "file": "modules\\crivet\\components\\InfusionCalculator.tsx",
+      "line": 508,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "'Esta dose foi baseada em protocolos clinicos validados e literatura veterinaria especializada.',"
+    },
+    {
+      "file": "modules\\crivet\\data\\drugs\\cetamina.profile.ts",
+      "line": 652,
+      "original": "Nao",
+      "replacement": "Não",
+      "context": "'flowchart TD\\nA[Gato com sedacao planejada] --> B{Obstrucao uretral ou uroabdome?}\\nB -- Sim --> C["
+    },
+    {
+      "file": "modules\\crivet\\data\\drugs\\metoclopramida.ts",
+      "line": 17,
+      "original": "esta",
+      "replacement": "está",
+      "context": "note: 'Equivale a 1–2 mg/kg/dia. Preferir esta modalidade para vômito persistente/parvo.',"
+    },
+    {
+      "file": "modules\\crivet\\services\\clinicalLint.ts",
+      "line": 108,
+      "original": "niveis",
+      "replacement": "níveis",
+      "context": "message: 'Help drawer com poucos niveis: recomenda-se ter pelo menos IMPORTANT + INFO',"
+    },
+    {
+      "file": "modules\\crivet\\services\\normalizeDrug.ts",
+      "line": 103,
+      "original": "Farmaco",
+      "replacement": "Fármaco",
+      "context": "basicInfo.push(`Farmaco: ${raw.name_pt || raw.namePt || raw.name}`)"
+    },
+    {
+      "file": "modules\\crivet\\services\\normalizeDrug.ts",
+      "line": 147,
+      "original": "Duracao",
+      "replacement": "Duração",
+      "context": "if (pd.duration) pharmacodynamicsContent.push(`**Duracao:** ${pd.duration}`)"
+    },
+    {
+      "file": "modules\\crivet\\services\\normalizeDrug.ts",
+      "line": 284,
+      "original": "Diluicao",
+      "replacement": "Diluição",
+      "context": "addItems(dilutionContent, 'Diluicao e Preparo')"
+    },
+    {
+      "file": "modules\\crivet\\services\\normalizeDrug.ts",
+      "line": 293,
+      "original": "Informacoes",
+      "replacement": "Informações",
+      "context": "{ text: 'Informacoes detalhadas estao sendo adicionadas.' },"
+    },
+    {
+      "file": "modules\\crivet\\services\\normalizeDrug.ts",
+      "line": 294,
+      "original": "referencias",
+      "replacement": "referências",
+      "context": "{ text: 'Para uso seguro, consulte bula ou referencias atualizadas.' },"
+    },
+    {
+      "file": "modules\\crivet\\services\\normalizeDrug.ts",
+      "line": 306,
+      "original": "Informacoes",
+      "replacement": "Informações",
+      "context": "{ text: 'Informacoes detalhadas estao sendo adicionadas.' },"
+    },
+    {
+      "file": "modules\\crivet\\services\\normalizeDrug.ts",
+      "line": 307,
+      "original": "referencias",
+      "replacement": "referências",
+      "context": "{ text: 'Para uso seguro, consulte bula ou referencias atualizadas.' },"
+    },
+    {
+      "file": "modules\\crivet\\services\\normalizeDrug.ts",
+      "line": 501,
+      "original": "Clinica",
+      "replacement": "Clínica",
+      "context": "const helpDrawer = normalizeHelpDrawer(raw, `${namePt} - Ajuda Clinica`)"
+    },
+    {
+      "file": "modules\\crivet\\services\\normalizeDrug.ts",
+      "line": 506,
+      "original": "secao",
+      "replacement": "seção",
+      "context": "// Garantir que helpDrawer sempre tem pelo menos uma secao"
+    },
+    {
+      "file": "modules\\crivet\\services\\normalizeDrug.ts",
+      "line": 510,
+      "original": "Informacoes",
+      "replacement": "Informações",
+      "context": "items: [{ text: `Informacoes sobre ${namePt} estao sendo adicionadas.` }],"
+    },
+    {
+      "file": "modules\\crivet\\services\\normalizeDrug.ts",
+      "line": 702,
+      "original": "Informacoes",
+      "replacement": "Informações",
+      "context": "!data.taglines.some(t => t.includes('Informações básicas disponíveis') || t.includes('Fármaco ') || "
+    },
+    {
+      "file": "modules\\crivet\\services\\normalizeDrug.ts",
+      "line": 773,
+      "original": "Informacoes",
+      "replacement": "Informações",
+      "context": "!s.items.some(i => i.text.includes('Informacoes sobre') && i.text.includes('adicionadas'))"
+    },
+    {
+      "file": "modules\\crivet\\types\\drugProfile.ts",
+      "line": 103,
+      "original": "esta",
+      "replacement": "está",
+      "context": "// Ancora de evidência: de qual referência vem esta faixa"
+    },
+    {
+      "file": "modules\\crivet\\ui\\categoryStyles.ts",
+      "line": 6,
+      "original": "antibiotico",
+      "replacement": "antibiótico",
+      "context": "| 'antibiotico'"
+    },
+    {
+      "file": "modules\\crivet\\ui\\categoryStyles.ts",
+      "line": 9,
+      "original": "antiemetico",
+      "replacement": "antiemético",
+      "context": "| 'antiemetico'"
+    },
+    {
+      "file": "modules\\crivet\\ui\\categoryStyles.ts",
+      "line": 20,
+      "original": "antibiotico",
+      "replacement": "antibiótico",
+      "context": "antibiotico: {"
+    },
+    {
+      "file": "modules\\crivet\\ui\\categoryStyles.ts",
+      "line": 32,
+      "original": "antiemetico",
+      "replacement": "antiemético",
+      "context": "antiemetico: {"
+    },
+    {
+      "file": "modules\\crivet\\ui\\categoryStyles.ts",
+      "line": 42,
+      "original": "antibiotico",
+      "replacement": "antibiótico",
+      "context": "if (category === 'Antimicrobianos') return 'antibiotico'"
+    },
+    {
+      "file": "modules\\crivet\\ui\\categoryStyles.ts",
+      "line": 45,
+      "original": "antiemetico",
+      "replacement": "antiemético",
+      "context": "if (category === 'Antieméticos / Pró-cinéticos') return 'antiemetico'"
+    },
+    {
+      "file": "modules\\neurologia\\components\\Steps\\Step1PatientInfo.tsx",
+      "line": 28,
+      "original": "hipertensao",
+      "replacement": "hipertensão",
+      "context": "hipertensao: { label: 'Hipertensão', description: 'Hipertensão arterial sistêmica' },"
+    },
+    {
+      "file": "modules\\neurologia\\components\\Steps\\Step3NeuroExam.tsx",
+      "line": 258,
+      "original": "nivel",
+      "replacement": "nível",
+      "context": "helpTopicId: 's1-nivel-consciencia-alerta',"
+    },
+    {
+      "file": "modules\\neurologia\\components\\Steps\\Step3NeuroExam.tsx",
+      "line": 263,
+      "original": "nivel",
+      "replacement": "nível",
+      "context": "helpTopicId: 's1-nivel-consciencia-deprimido',"
+    },
+    {
+      "file": "modules\\neurologia\\components\\Steps\\Step3NeuroExam.tsx",
+      "line": 268,
+      "original": "nivel",
+      "replacement": "nível",
+      "context": "helpTopicId: 's1-nivel-consciencia-estupor',"
+    },
+    {
+      "file": "modules\\neurologia\\components\\Steps\\Step3NeuroExam.tsx",
+      "line": 273,
+      "original": "nivel",
+      "replacement": "nível",
+      "context": "helpTopicId: 's1-nivel-consciencia-coma',"
+    },
+    {
+      "file": "modules\\neurologia\\components\\Steps\\Step3NeuroExam.tsx",
+      "line": 388,
+      "original": "nao",
+      "replacement": "não",
+      "context": "helpTopicId: 's2-capacidade-nao-ambulatorio',"
+    },
+    {
+      "file": "modules\\neurologia\\data\\helpTopics\\section1_mentacao.ts",
+      "line": 144,
+      "original": "nivel",
+      "replacement": "nível",
+      "context": "id: 's1-nivel-consciencia-alerta',"
+    },
+    {
+      "file": "modules\\neurologia\\data\\helpTopics\\section1_mentacao.ts",
+      "line": 155,
+      "original": "nivel",
+      "replacement": "nível",
+      "context": "id: 's1-nivel-consciencia-deprimido',"
+    },
+    {
+      "file": "modules\\neurologia\\data\\helpTopics\\section1_mentacao.ts",
+      "line": 167,
+      "original": "nivel",
+      "replacement": "nível",
+      "context": "id: 's1-nivel-consciencia-estupor',"
+    },
+    {
+      "file": "modules\\neurologia\\data\\helpTopics\\section1_mentacao.ts",
+      "line": 187,
+      "original": "nivel",
+      "replacement": "nível",
+      "context": "id: 's1-nivel-consciencia-coma',"
+    },
+    {
+      "file": "modules\\neurologia\\data\\helpTopics\\section2_marcha_postura.ts",
+      "line": 43,
+      "original": "nao",
+      "replacement": "não",
+      "context": "id: 's2-capacidade-nao-ambulatorio',"
+    },
+    {
+      "file": "modules\\neurologia\\data\\helpTopics\\section3_reacoes_posturais.ts",
+      "line": 17,
+      "original": "reacoes",
+      "replacement": "reações",
+      "context": "tags: ['propriocepcao', 'vias-longas', 'reacoes-posturais', 'consciente', 'sensitivo-motor'],"
+    },
+    {
+      "file": "modules\\neurologia\\lib\\engineRules.ts",
+      "line": 4,
+      "original": "nivel",
+      "replacement": "nível",
+      "context": "Alerta: 's1-nivel-consciencia-alerta',"
+    },
+    {
+      "file": "modules\\neurologia\\lib\\engineRules.ts",
+      "line": 5,
+      "original": "nivel",
+      "replacement": "nível",
+      "context": "Deprimido: 's1-nivel-consciencia-deprimido',"
+    },
+    {
+      "file": "modules\\neurologia\\lib\\engineRules.ts",
+      "line": 6,
+      "original": "nivel",
+      "replacement": "nível",
+      "context": "Estupor: 's1-nivel-consciencia-estupor',"
+    },
+    {
+      "file": "modules\\neurologia\\lib\\engineRules.ts",
+      "line": 7,
+      "original": "nivel",
+      "replacement": "nível",
+      "context": "Coma: 's1-nivel-consciencia-coma',"
+    },
+    {
+      "file": "modules\\neurologia\\lib\\engineRules.ts",
+      "line": 26,
+      "original": "nao",
+      "replacement": "não",
+      "context": "'Não Ambulatório': 's2-capacidade-nao-ambulatorio',"
+    },
+    {
+      "file": "modules\\neurologia\\lib\\analysis\\localization.ts",
+      "line": 455,
+      "original": "esta",
+      "replacement": "está",
+      "context": "text += `Os achados clínicos que sustentam esta localização incluem: ${keyFindings}. `"
+    },
+    {
+      "file": "modules\\neurologia\\lib\\engine\\comorbidityRules.ts",
+      "line": 139,
+      "original": "hipertensao",
+      "replacement": "hipertensão",
+      "context": "hipertensao: () => ({"
+    },
+    {
+      "file": "modules\\neurologia\\lib\\engine\\comorbidityRules.ts",
+      "line": 140,
+      "original": "hipertensao",
+      "replacement": "hipertensão",
+      "context": "key: 'hipertensao',"
+    },
+    {
+      "file": "modules\\neurologia\\stores\\caseStore.ts",
+      "line": 41,
+      "original": "hipertensao",
+      "replacement": "hipertensão",
+      "context": "| 'hipertensao'"
+    },
+    {
+      "file": "modules\\receituario-vet\\App.tsx",
+      "line": 143,
+      "original": "configuracao",
+      "replacement": "configuração",
+      "context": "<Link to=\"/receituario-vet/configuracao\" className=\"rxv-home-link-card rxv-card rxv-fade-up delay-20"
+    },
+    {
+      "file": "modules\\receituario-vet\\App.tsx",
+      "line": 164,
+      "original": "configuracoes",
+      "replacement": "configurações",
+      "context": "<Link to=\"/receituario-vet/configuracoes\" className=\"rxv-home-link-card rxv-card rxv-fade-up delay-5"
+    },
+    {
+      "file": "modules\\receituario-vet\\CatalogoPage.tsx",
+      "line": 29,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "{ value: 'veterinaria', label: 'Veterinária' },"
+    },
+    {
+      "file": "modules\\receituario-vet\\CatalogoPage.tsx",
+      "line": 59,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "return unique.length ? unique : ['veterinaria']"
+    },
+    {
+      "file": "modules\\receituario-vet\\CatalogoPage.tsx",
+      "line": 94,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "pharmacyTags: ['veterinaria'],"
+    },
+    {
+      "file": "modules\\receituario-vet\\CatalogoPage.tsx",
+      "line": 138,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "pharmacyType: normalizedPresentations[0]?.pharmacyTags?.[0] || 'veterinaria',"
+    },
+    {
+      "file": "modules\\receituario-vet\\ControleEspecialPage.tsx",
+      "line": 12,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "): 'veterinaria' | 'humana' | 'manipulacao' | 'mista' {"
+    },
+    {
+      "file": "modules\\receituario-vet\\ControleEspecialPage.tsx",
+      "line": 25,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "const hasVeterinaria = tags.has('veterinaria')"
+    },
+    {
+      "file": "modules\\receituario-vet\\ControleEspecialPage.tsx",
+      "line": 32,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "return 'veterinaria'"
+    },
+    {
+      "file": "modules\\receituario-vet\\ControleEspecialPage.tsx",
+      "line": 46,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "item.pharmacyType = (presentation?.pharmacyTags?.[0] || drug.pharmacyType || 'veterinaria') as Pharm"
+    },
+    {
+      "file": "modules\\receituario-vet\\DevelopmentPage.tsx",
+      "line": 26,
+      "original": "selecao",
+      "replacement": "seleção",
+      "context": "subtitle=\"Preview e selecao do icone de receita usado no card principal da Home.\""
+    },
+    {
+      "file": "modules\\receituario-vet\\DevelopmentPage.tsx",
+      "line": 40,
+      "original": "disponiveis",
+      "replacement": "disponíveis",
+      "context": "<h2 className=\"mb-3 text-base font-bold\">Variacoes disponiveis</h2>"
+    },
+    {
+      "file": "modules\\receituario-vet\\DevelopmentPage.tsx",
+      "line": 40,
+      "original": "Variacoes",
+      "replacement": "Variações",
+      "context": "<h2 className=\"mb-3 text-base font-bold\">Variacoes disponiveis</h2>"
+    },
+    {
+      "file": "modules\\receituario-vet\\DevelopmentPage.tsx",
+      "line": 72,
+      "original": "esta",
+      "replacement": "está",
+      "context": "{active ? 'Selecionado' : 'Selecionar esta versao'}"
+    },
+    {
+      "file": "modules\\receituario-vet\\DevelopmentPage.tsx",
+      "line": 85,
+      "original": "Acao",
+      "replacement": "Ação",
+      "context": "Acao rapida"
+    },
+    {
+      "file": "modules\\receituario-vet\\NovaReceitaPage.tsx",
+      "line": 88,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "{ value: 'veterinaria', label: 'Veterinária' },"
+    },
+    {
+      "file": "modules\\receituario-vet\\NovaReceitaPage.tsx",
+      "line": 307,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "raw.recommendations?.specialControlPharmacy === 'veterinaria'"
+    },
+    {
+      "file": "modules\\receituario-vet\\NovaReceitaPage.tsx",
+      "line": 462,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "entry.pharmacyTags?.length ? entry.pharmacyTags : [selectedCatalogDrug.pharmacyType || 'veterinaria'"
+    },
+    {
+      "file": "modules\\receituario-vet\\NovaReceitaPage.tsx",
+      "line": 477,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "pharmacyType: availablePharmacyTypes[0] || 'veterinaria',"
+    },
+    {
+      "file": "modules\\receituario-vet\\NovaReceitaPage.tsx",
+      "line": 525,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "const presentationPharmacyTypes = presentation.pharmacyTags?.length ? presentation.pharmacyTags : [s"
+    },
+    {
+      "file": "modules\\receituario-vet\\NovaReceitaPage.tsx",
+      "line": 1211,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "pharmacyTypes: [drug.pharmacyType || 'veterinaria'],"
+    },
+    {
+      "file": "modules\\receituario-vet\\NovaReceitaPage.tsx",
+      "line": 1226,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "pharmacyTypes: presentation.pharmacyTags?.length ? presentation.pharmacyTags : [drug.pharmacyType ||"
+    },
+    {
+      "file": "modules\\receituario-vet\\NovaReceitaPage.tsx",
+      "line": 1273,
+      "original": "Nao",
+      "replacement": "Não",
+      "context": "? 'Nao foi possivel buscar. Verifique conexao/permissao.'"
+    },
+    {
+      "file": "modules\\receituario-vet\\NovaReceitaPage.tsx",
+      "line": 1273,
+      "original": "possivel",
+      "replacement": "possível",
+      "context": "? 'Nao foi possivel buscar. Verifique conexao/permissao.'"
+    },
+    {
+      "file": "modules\\receituario-vet\\NovaReceitaPage.tsx",
+      "line": 1274,
+      "original": "Nao",
+      "replacement": "Não",
+      "context": ": 'Nao foi possivel salvar. Verifique conexao/permissao.')"
+    },
+    {
+      "file": "modules\\receituario-vet\\NovaReceitaPage.tsx",
+      "line": 1274,
+      "original": "possivel",
+      "replacement": "possível",
+      "context": ": 'Nao foi possivel salvar. Verifique conexao/permissao.')"
+    },
+    {
+      "file": "modules\\receituario-vet\\NovaReceitaPage.tsx",
+      "line": 1637,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "if (selected === 'humana' || selected === 'manipulacao' || selected === 'veterinaria') return select"
+    },
+    {
+      "file": "modules\\receituario-vet\\NovaReceitaPage.tsx",
+      "line": 1638,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "return 'veterinaria'"
+    },
+    {
+      "file": "modules\\receituario-vet\\NovaReceitaPage.tsx",
+      "line": 1848,
+      "original": "configuracao",
+      "replacement": "configuração",
+      "context": "<Link className=\"rxv-btn-secondary rxv-top-action inline-flex items-center gap-2 px-3 py-2 text-sm\" "
+    },
+    {
+      "file": "modules\\receituario-vet\\NovaReceitaPage.tsx",
+      "line": 1921,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "Clinica ativa nao encontrada. Selecione uma clinica para usar modo Supabase."
+    },
+    {
+      "file": "modules\\receituario-vet\\NovaReceitaPage.tsx",
+      "line": 1921,
+      "original": "Clinica",
+      "replacement": "Clínica",
+      "context": "Clinica ativa nao encontrada. Selecione uma clinica para usar modo Supabase."
+    },
+    {
+      "file": "modules\\receituario-vet\\NovaReceitaPage.tsx",
+      "line": 1921,
+      "original": "nao",
+      "replacement": "não",
+      "context": "Clinica ativa nao encontrada. Selecione uma clinica para usar modo Supabase."
+    },
+    {
+      "file": "modules\\receituario-vet\\NovaReceitaPage.tsx",
+      "line": 2574,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "<option value=\"veterinaria\">Farmácia veterinária</option>"
+    },
+    {
+      "file": "modules\\receituario-vet\\NovaReceitaPage.tsx",
+      "line": 2620,
+      "original": "configuracao",
+      "replacement": "configuração",
+      "context": "<Link className=\"rxv-btn-secondary px-3 py-2 text-center text-sm\" to=\"/receituario-vet/configuracao\""
+    },
+    {
+      "file": "modules\\receituario-vet\\ProfilePage.tsx",
+      "line": 56,
+      "original": "Nao",
+      "replacement": "Não",
+      "context": "reader.onerror = () => reject(new Error('Nao foi possivel ler o arquivo selecionado.'))"
+    },
+    {
+      "file": "modules\\receituario-vet\\ProfilePage.tsx",
+      "line": 56,
+      "original": "possivel",
+      "replacement": "possível",
+      "context": "reader.onerror = () => reject(new Error('Nao foi possivel ler o arquivo selecionado.'))"
+    },
+    {
+      "file": "modules\\receituario-vet\\ProfilePage.tsx",
+      "line": 71,
+      "original": "Nao",
+      "replacement": "Não",
+      "context": "reject(new Error('Nao foi possivel processar a imagem selecionada.'))"
+    },
+    {
+      "file": "modules\\receituario-vet\\ProfilePage.tsx",
+      "line": 71,
+      "original": "possivel",
+      "replacement": "possível",
+      "context": "reject(new Error('Nao foi possivel processar a imagem selecionada.'))"
+    },
+    {
+      "file": "modules\\receituario-vet\\ProfilePage.tsx",
+      "line": 89,
+      "original": "Nao",
+      "replacement": "Não",
+      "context": "throw new Error('Nao foi possivel preparar a imagem para upload.')"
+    },
+    {
+      "file": "modules\\receituario-vet\\ProfilePage.tsx",
+      "line": 89,
+      "original": "possivel",
+      "replacement": "possível",
+      "context": "throw new Error('Nao foi possivel preparar a imagem para upload.')"
+    },
+    {
+      "file": "modules\\receituario-vet\\ProfilePage.tsx",
+      "line": 143,
+      "original": "Nao",
+      "replacement": "Não",
+      "context": "const message = error instanceof Error ? error.message : 'Nao foi possivel carregar a imagem.'"
+    },
+    {
+      "file": "modules\\receituario-vet\\ProfilePage.tsx",
+      "line": 143,
+      "original": "possivel",
+      "replacement": "possível",
+      "context": "const message = error instanceof Error ? error.message : 'Nao foi possivel carregar a imagem.'"
+    },
+    {
+      "file": "modules\\receituario-vet\\ProfilePage.tsx",
+      "line": 245,
+      "original": "Nao",
+      "replacement": "Não",
+      "context": "setSaveError('Nao foi possivel salvar: armazenamento do navegador cheio. Reduza o tamanho das imagen"
+    },
+    {
+      "file": "modules\\receituario-vet\\ProfilePage.tsx",
+      "line": 245,
+      "original": "possivel",
+      "replacement": "possível",
+      "context": "setSaveError('Nao foi possivel salvar: armazenamento do navegador cheio. Reduza o tamanho das imagen"
+    },
+    {
+      "file": "modules\\receituario-vet\\ProfilePage.tsx",
+      "line": 247,
+      "original": "Nao",
+      "replacement": "Não",
+      "context": "const message = error instanceof Error ? error.message : 'Nao foi possivel salvar este perfil.'"
+    },
+    {
+      "file": "modules\\receituario-vet\\ProfilePage.tsx",
+      "line": 247,
+      "original": "possivel",
+      "replacement": "possível",
+      "context": "const message = error instanceof Error ? error.message : 'Nao foi possivel salvar este perfil.'"
+    },
+    {
+      "file": "modules\\receituario-vet\\ReceituarioChrome.tsx",
+      "line": 31,
+      "original": "configuracao",
+      "replacement": "configuração",
+      "context": "{ key: 'perfil', label: 'Configurar Médico', to: '/receituario-vet/configuracao', icon: 'assignment_"
+    },
+    {
+      "file": "modules\\receituario-vet\\ReceituarioChrome.tsx",
+      "line": 33,
+      "original": "configuracoes",
+      "replacement": "configurações",
+      "context": "{ key: 'settings', label: 'Configurações', to: '/receituario-vet/configuracoes', icon: 'settings' },"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxAssets.ts",
+      "line": 14,
+      "original": "adicao",
+      "replacement": "adição",
+      "context": "description: 'Documento com canto dobrado e selo de adicao.',"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxAssets.ts",
+      "line": 20,
+      "original": "acao",
+      "replacement": "ação",
+      "context": "description: 'Duas folhas com selo de acao no canto.',"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxAssets.ts",
+      "line": 26,
+      "original": "clinico",
+      "replacement": "clínico",
+      "context": "description: 'Visual clinico com check de validacao.',"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxAssets.ts",
+      "line": 26,
+      "original": "validacao",
+      "replacement": "validação",
+      "context": "description: 'Visual clinico com check de validacao.',"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxAssets.ts",
+      "line": 32,
+      "original": "seguranca",
+      "replacement": "segurança",
+      "context": "description: 'Documento com selo de seguranca especial.',"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxDb.ts",
+      "line": 46,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "pharmacyType: 'humana' | 'veterinaria' | 'manipulacao'"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxDb.ts",
+      "line": 257,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "const PHARMACY_TYPE_VALUES: PharmacyType[] = ['humana', 'veterinaria', 'manipulacao']"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxDb.ts",
+      "line": 261,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "fallback: PharmacyType = 'veterinaria'"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxDb.ts",
+      "line": 327,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "pharmacyType: 'veterinaria',"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxDb.ts",
+      "line": 333,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "{ id: uid('pres'), name: 'Comprimido', concentration: '16 mg/comprimido', unitLabel: 'comprimido', p"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxDb.ts",
+      "line": 334,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "{ id: uid('pres'), name: 'Comprimido', concentration: '5.4 mg/comprimido', unitLabel: 'comprimido', "
+    },
+    {
+      "file": "modules\\receituario-vet\\rxDb.ts",
+      "line": 354,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "pharmacyType: 'veterinaria',"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxDb.ts",
+      "line": 359,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "presentations: [{ id: uid('pres'), name: 'Comprimido', concentration: '250 mg/comprimido', unitLabel"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxDb.ts",
+      "line": 366,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "pharmacyType: 'veterinaria',"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxDb.ts",
+      "line": 371,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "presentations: [{ id: uid('pres'), name: 'Suspensão Oral', concentration: '0.2 mg/mL', unitLabel: 'm"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxDb.ts",
+      "line": 383,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "presentations: [{ id: uid('pres'), name: 'Cápsula', concentration: '50 mg/cápsula', unitLabel: 'cáps"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxDb.ts",
+      "line": 390,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "pharmacyType: 'veterinaria',"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxDb.ts",
+      "line": 395,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "presentations: [{ id: uid('pres'), name: 'Comprimido', concentration: '500 mg/comprimido', unitLabel"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxDb.ts",
+      "line": 441,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "pharmacyType: partial.pharmacyType || 'veterinaria',"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxDb.ts",
+      "line": 479,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "const defaultPharmacyType = presentation?.pharmacyTags?.[0] || drug?.pharmacyType || 'veterinaria'"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxDb.ts",
+      "line": 730,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "fallbackPharmacyType: PharmacyType = 'veterinaria'"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxDb.ts",
+      "line": 761,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "const normalizedPharmacyType = raw.pharmacyType || 'veterinaria'"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxDb.ts",
+      "line": 1154,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "pharmacyType: 'veterinaria',"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxDb.ts",
+      "line": 1171,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "pharmacyTags: ['veterinaria'],"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxDefaults.ts",
+      "line": 25,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "specialControlPharmacy: 'veterinaria',"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxDefaults.ts",
+      "line": 45,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "pharmacyType: 'veterinaria',"
+    },
+    {
+      "file": "modules\\receituario-vet\\RxPrintPage.tsx",
+      "line": 343,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "if (selected === 'humana' || selected === 'manipulacao' || selected === 'veterinaria') return select"
+    },
+    {
+      "file": "modules\\receituario-vet\\RxPrintPage.tsx",
+      "line": 344,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "return 'veterinaria'"
+    },
+    {
+      "file": "modules\\receituario-vet\\RxPrintPage.tsx",
+      "line": 489,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "const bcc = share.includeBcc ? '&bcc=clinica@vetius.local' : ''"
+    },
+    {
+      "file": "modules\\receituario-vet\\RxPrintPage.tsx",
+      "line": 782,
+      "original": "esta",
+      "replacement": "está",
+      "context": "placeholder={activeZoneDefaultText || 'Digite um texto livre para esta seção...'}"
+    },
+    {
+      "file": "modules\\receituario-vet\\RxPrintPage.tsx",
+      "line": 836,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "<option value=\"veterinaria\">Farmácia veterinária</option>"
+    },
+    {
+      "file": "modules\\receituario-vet\\RxPrintView.tsx",
+      "line": 16,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "targetPharmacy?: 'veterinaria' | 'humana' | 'manipulacao' | 'mista'"
+    },
+    {
+      "file": "modules\\receituario-vet\\RxPrintView.tsx",
+      "line": 444,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "Farmácia veterinária ({targetPharmacy === 'veterinaria' || targetPharmacy === 'mista' ? 'X' : ' '}) "
+    },
+    {
+      "file": "modules\\receituario-vet\\rxStorage.ts",
+      "line": 103,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "raw.recommendations?.specialControlPharmacy === 'veterinaria'"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxSupabaseStorage.ts",
+      "line": 47,
+      "original": "nao",
+      "replacement": "não",
+      "context": "throw new Error('Supabase nao configurado para upload. Ajuste VITE_SUPABASE_URL e VITE_SUPABASE_ANON"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxSupabaseStorage.ts",
+      "line": 54,
+      "original": "invalido",
+      "replacement": "inválido",
+      "context": "throw new Error('Formato de imagem invalido para upload.')"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxSupabaseStorage.ts",
+      "line": 85,
+      "original": "nao",
+      "replacement": "não",
+      "context": "return new Error(`Bucket \"${bucket}\" nao encontrado no Supabase Storage.`)"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxSupabaseStorage.ts",
+      "line": 172,
+      "original": "nao",
+      "replacement": "não",
+      "context": "throw new Error('Upload concluido, mas nao foi possivel gerar URL publica da imagem.')"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxSupabaseStorage.ts",
+      "line": 172,
+      "original": "possivel",
+      "replacement": "possível",
+      "context": "throw new Error('Upload concluido, mas nao foi possivel gerar URL publica da imagem.')"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxSupabaseStorage.ts",
+      "line": 189,
+      "original": "Nao",
+      "replacement": "Não",
+      "context": "// Nao bloqueia fluxo de salvar perfil por erro de limpeza."
+    },
+    {
+      "file": "modules\\receituario-vet\\rxTypes.ts",
+      "line": 5,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "export type PharmacyType = 'humana' | 'veterinaria' | 'manipulacao'"
+    },
+    {
+      "file": "modules\\receituario-vet\\rxTypes.ts",
+      "line": 8,
+      "original": "veterinaria",
+      "replacement": "veterinária",
+      "context": "export type SpecialControlPharmacy = 'veterinaria' | 'humana' | 'manipulacao'"
+    },
+    {
+      "file": "modules\\receituario-vet\\SUPABASE_STORAGE_SETUP.md",
+      "line": 1,
+      "original": "Medico",
+      "replacement": "Médico",
+      "context": "# Supabase Storage - Perfil Medico (Receituario Vet)"
+    },
+    {
+      "file": "modules\\receituario-vet\\SUPABASE_STORAGE_SETUP.md",
+      "line": 3,
+      "original": "medico",
+      "replacement": "médico",
+      "context": "Este modulo agora envia imagens de perfil medico para Supabase Storage antes de salvar o perfil no b"
+    },
+    {
+      "file": "modules\\receituario-vet\\SUPABASE_STORAGE_SETUP.md",
+      "line": 15,
+      "original": "nao",
+      "replacement": "não",
+      "context": "Se `VITE_SUPABASE_RX_MEDIA_BUCKET` nao for definido, o app usa `receituario-media` por padrao."
+    },
+    {
+      "file": "modules\\receituario-vet\\SUPABASE_STORAGE_SETUP.md",
+      "line": 54,
+      "original": "nao",
+      "replacement": "não",
+      "context": "- Se o upload falhar, o perfil nao e persistido e a tela exibe erro claro."
+    },
+    {
+      "file": "modules\\receituario-vet\\adapters\\LocalAdapter.ts",
+      "line": 219,
+      "original": "obrigatorio",
+      "replacement": "obrigatório",
+      "context": "throw new Error('Nome do tutor e obrigatorio.')"
+    },
+    {
+      "file": "modules\\receituario-vet\\adapters\\LocalAdapter.ts",
+      "line": 253,
+      "original": "Nao",
+      "replacement": "Não",
+      "context": "throw new Error('Nao foi possivel criar o tutor no modo local.')"
+    },
+    {
+      "file": "modules\\receituario-vet\\adapters\\LocalAdapter.ts",
+      "line": 253,
+      "original": "possivel",
+      "replacement": "possível",
+      "context": "throw new Error('Nao foi possivel criar o tutor no modo local.')"
+    },
+    {
+      "file": "modules\\receituario-vet\\adapters\\LocalAdapter.ts",
+      "line": 262,
+      "original": "obrigatorio",
+      "replacement": "obrigatório",
+      "context": "throw new Error('Tutor obrigatorio para criar paciente.')"
+    },
+    {
+      "file": "modules\\receituario-vet\\adapters\\LocalAdapter.ts",
+      "line": 267,
+      "original": "obrigatorio",
+      "replacement": "obrigatório",
+      "context": "throw new Error('Nome do paciente e obrigatorio.')"
+    },
+    {
+      "file": "modules\\receituario-vet\\adapters\\LocalAdapter.ts",
+      "line": 273,
+      "original": "nao",
+      "replacement": "não",
+      "context": "throw new Error('Tutor nao encontrado no banco local.')"
+    },
+    {
+      "file": "modules\\receituario-vet\\adapters\\SupabaseAdapter.ts",
+      "line": 126,
+      "original": "Clinica",
+      "replacement": "Clínica",
+      "context": "throw new Error('Clinica ativa nao encontrada.')"
+    },
+    {
+      "file": "modules\\receituario-vet\\adapters\\SupabaseAdapter.ts",
+      "line": 126,
+      "original": "nao",
+      "replacement": "não",
+      "context": "throw new Error('Clinica ativa nao encontrada.')"
+    },
+    {
+      "file": "modules\\receituario-vet\\adapters\\SupabaseAdapter.ts",
+      "line": 146,
+      "original": "Nao",
+      "replacement": "Não",
+      "context": "throw new Error(`Nao foi possivel inserir registro em ${table}.`)"
+    },
+    {
+      "file": "modules\\receituario-vet\\adapters\\SupabaseAdapter.ts",
+      "line": 146,
+      "original": "possivel",
+      "replacement": "possível",
+      "context": "throw new Error(`Nao foi possivel inserir registro em ${table}.`)"
+    },
+    {
+      "file": "modules\\receituario-vet\\adapters\\SupabaseAdapter.ts",
+      "line": 161,
+      "original": "Nao",
+      "replacement": "Não",
+      "context": "throw new Error(`Nao foi possivel inserir registro em ${table}.`)"
+    },
+    {
+      "file": "modules\\receituario-vet\\adapters\\SupabaseAdapter.ts",
+      "line": 161,
+      "original": "possivel",
+      "replacement": "possível",
+      "context": "throw new Error(`Nao foi possivel inserir registro em ${table}.`)"
+    },
+    {
+      "file": "modules\\receituario-vet\\adapters\\SupabaseAdapter.ts",
+      "line": 293,
+      "original": "obrigatorio",
+      "replacement": "obrigatório",
+      "context": "if (!name) throw new Error('Nome do tutor e obrigatorio.')"
+    },
+    {
+      "file": "modules\\receituario-vet\\adapters\\SupabaseAdapter.ts",
+      "line": 322,
+      "original": "obrigatorio",
+      "replacement": "obrigatório",
+      "context": "if (!tutorRecordId) throw new Error('Tutor obrigatorio.')"
+    },
+    {
+      "file": "modules\\receituario-vet\\adapters\\SupabaseAdapter.ts",
+      "line": 323,
+      "original": "obrigatorio",
+      "replacement": "obrigatório",
+      "context": "if (!name) throw new Error('Nome do paciente e obrigatorio.')"
+    },
+    {
+      "file": "modules\\receituario-vet\\components\\PatientCreateModal.tsx",
+      "line": 78,
+      "original": "Nao",
+      "replacement": "Não",
+      "context": "return 'Nao foi possivel salvar. Verifique conexao/permissao.'"
+    },
+    {
+      "file": "modules\\receituario-vet\\components\\PatientCreateModal.tsx",
+      "line": 78,
+      "original": "possivel",
+      "replacement": "possível",
+      "context": "return 'Nao foi possivel salvar. Verifique conexao/permissao.'"
+    },
+    {
+      "file": "modules\\receituario-vet\\components\\PatientCreateModal.tsx",
+      "line": 253,
+      "original": "Condicao",
+      "replacement": "Condição",
+      "context": "Condicao reprodutiva"
+    },
+    {
+      "file": "modules\\receituario-vet\\components\\PatientCreateModal.tsx",
+      "line": 314,
+      "original": "Observacoes",
+      "replacement": "Observações",
+      "context": "Observacoes"
+    },
+    {
+      "file": "modules\\receituario-vet\\components\\PatientCreateModal.tsx",
+      "line": 424,
+      "original": "Numero",
+      "replacement": "Número",
+      "context": "Numero"
+    },
+    {
+      "file": "modules\\receituario-vet\\components\\PatientCreateModal.tsx",
+      "line": 472,
+      "original": "Observacoes",
+      "replacement": "Observações",
+      "context": "Observacoes"
+    },
+    {
+      "file": "modules\\receituario-vet\\components\\PatientQuickSelect.tsx",
+      "line": 107,
+      "original": "Clinica",
+      "replacement": "Clínica",
+      "context": "placeholder={disabled ? 'Clinica ativa obrigatoria para modo supabase' : 'Digite ao menos 2 letras'}"
+    },
+    {
+      "file": "modules\\receituario-vet\\components\\PatientQuickSelect.tsx",
+      "line": 146,
+      "original": "Nao",
+      "replacement": "Não",
+      "context": "<p className=\"text-xs text-[#9be78c]\">Tutor: {match.tutor.name || 'Nao informado'}</p>"
+    },
+    {
+      "file": "modules\\veteletrolitico\\pages\\Identification.tsx",
+      "line": 207,
+      "original": "diabetico",
+      "replacement": "diabético",
+      "context": "{ id: 'diabetico', label: 'Diabético', icon: Syringe },"
+    },
+    {
+      "file": "pages\\Hub.tsx",
+      "line": 11,
+      "original": "transfusao",
+      "replacement": "transfusão",
+      "context": "const premiumIds = ['neurologia', 'peconhentos', 'antibioticoterapia', 'transfusao-sanguinea', 'criv"
+    },
+    {
+      "file": "public\\apps\\receituario-vet\\homepage.html",
+      "line": 61,
+      "original": "configuracao",
+      "replacement": "configuração",
+      "context": "<button aria-label=\"Settings\" class=\"hidden sm:flex items-center justify-center size-10 rounded-lg b"
+    },
+    {
+      "file": "public\\apps\\receituario-vet\\homepage.html",
+      "line": 65,
+      "original": "configuracao",
+      "replacement": "configuração",
+      "context": "<button class=\"flex items-center gap-3 pl-1 pr-1 sm:pr-4 rounded-full sm:rounded-lg hover:bg-surface"
+    },
+    {
+      "file": "public\\apps\\receituario-vet\\homepage.html",
+      "line": 71,
+      "original": "Veterinario",
+      "replacement": "Veterinário",
+      "context": "<span class=\"text-[10px] text-slate-400 font-medium\">Veterinario Chefe</span>"
+    },
+    {
+      "file": "public\\apps\\receituario-vet\\homepage.html",
+      "line": 88,
+      "original": "clinicos",
+      "replacement": "clínicos",
+      "context": "<p class=\"text-slate-400 max-w-lg\">Gerencie receitas, pacientes e protocolos clinicos com agilidade "
+    },
+    {
+      "file": "public\\apps\\receituario-vet\\homepage.html",
+      "line": 114,
+      "original": "prescricao",
+      "replacement": "prescrição",
+      "context": "<p class=\"text-slate-400 max-w-sm\">Inicie uma nova prescricao completa para seu paciente. Acesse o b"
+    },
+    {
+      "file": "public\\apps\\receituario-vet\\homepage.html",
+      "line": 127,
+      "original": "Medico",
+      "replacement": "Médico",
+      "context": "<h4 class=\"text-lg font-bold text-white mb-1 group-hover:text-primary transition-colors\">Configurar "
+    },
+    {
+      "file": "public\\apps\\receituario-vet\\homepage.html",
+      "line": 128,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "<p class=\"text-sm text-slate-400\">Dados da clinica e profissional</p>"
+    },
+    {
+      "file": "public\\apps\\receituario-vet\\homepage.html",
+      "line": 131,
+      "original": "configuracao",
+      "replacement": "configuração",
+      "context": "<a class=\"absolute inset-0 z-20\" href=\"/receituario-vet/configuracao\" target=\"_top\"></a>"
+    },
+    {
+      "file": "public\\apps\\receituario-vet\\homepage.html",
+      "line": 139,
+      "original": "farmacos",
+      "replacement": "fármacos",
+      "context": "<p class=\"text-sm text-slate-400\">Adicione novos farmacos</p>"
+    },
+    {
+      "file": "public\\apps\\receituario-vet\\homepage.html",
+      "line": 150,
+      "original": "Prescricao",
+      "replacement": "Prescrição",
+      "context": "<h4 class=\"text-lg font-bold text-white mb-1 group-hover:text-primary transition-colors\">Nova Prescr"
+    },
+    {
+      "file": "public\\apps\\receituario-vet\\homepage.html",
+      "line": 151,
+      "original": "visualizacao",
+      "replacement": "visualização",
+      "context": "<p class=\"text-sm text-slate-400\">Editor completo com visualizacao rapida</p>"
+    },
+    {
+      "file": "public\\apps\\receituario-vet\\homepage.html",
+      "line": 180,
+      "original": "Acoes",
+      "replacement": "Ações",
+      "context": "<th class=\"p-4 font-semibold w-40 text-right\">Acoes</th>"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 284,
+      "original": "numero",
+      "replacement": "número",
+      "context": "const objectStore = db.createObjectStore(STORE_NAME, { keyPath: 'numero' });"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 293,
+      "original": "numero",
+      "replacement": "número",
+      "context": "function saveParticipante(numero, data) {"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 299,
+      "original": "numero",
+      "replacement": "número",
+      "context": "numero: numero,"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 299,
+      "original": "numero",
+      "replacement": "número",
+      "context": "numero: numero,"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 313,
+      "original": "numero",
+      "replacement": "número",
+      "context": "function getParticipante(numero) {"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 317,
+      "original": "numero",
+      "replacement": "número",
+      "context": "const request = objectStore.get(numero);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 350,
+      "original": "numero",
+      "replacement": "número",
+      "context": "data-numero=\"${i}\">"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 355,
+      "original": "numero",
+      "replacement": "número",
+      "context": "data-numero=\"${i}\">"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 359,
+      "original": "numero",
+      "replacement": "número",
+      "context": "data-numero=\"${i}\">"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 367,
+      "original": "numero",
+      "replacement": "número",
+      "context": "data-numero=\"${i}\">"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 400,
+      "original": "numero",
+      "replacement": "número",
+      "context": "const numero = parseInt(e.target.dataset.numero);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 400,
+      "original": "numero",
+      "replacement": "número",
+      "context": "const numero = parseInt(e.target.dataset.numero);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 401,
+      "original": "numero",
+      "replacement": "número",
+      "context": "updateGridName(numero, e.target.value);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 402,
+      "original": "numero",
+      "replacement": "número",
+      "context": "await saveCurrentRow(numero);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 409,
+      "original": "numero",
+      "replacement": "número",
+      "context": "const numero = parseInt(e.target.dataset.numero);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 409,
+      "original": "numero",
+      "replacement": "número",
+      "context": "const numero = parseInt(e.target.dataset.numero);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 410,
+      "original": "numero",
+      "replacement": "número",
+      "context": "await saveCurrentRow(numero);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 417,
+      "original": "numero",
+      "replacement": "número",
+      "context": "const numero = parseInt(e.target.dataset.numero);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 417,
+      "original": "numero",
+      "replacement": "número",
+      "context": "const numero = parseInt(e.target.dataset.numero);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 419,
+      "original": "numero",
+      "replacement": "número",
+      "context": "await saveCurrentRow(numero);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 426,
+      "original": "numero",
+      "replacement": "número",
+      "context": "const numero = parseInt(e.target.dataset.numero);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 426,
+      "original": "numero",
+      "replacement": "número",
+      "context": "const numero = parseInt(e.target.dataset.numero);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 427,
+      "original": "numero",
+      "replacement": "número",
+      "context": "await saveCurrentRow(numero);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 432,
+      "original": "numero",
+      "replacement": "número",
+      "context": "async function saveCurrentRow(numero) {"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 433,
+      "original": "numero",
+      "replacement": "número",
+      "context": "const row = document.querySelector(`tr[data-number=\"${numero}\"]`);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 449,
+      "original": "numero",
+      "replacement": "número",
+      "context": "await saveParticipante(numero, data);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 450,
+      "original": "numero",
+      "replacement": "número",
+      "context": "console.log(`💾 Número ${numero} salvo automaticamente!`);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 453,
+      "original": "numero",
+      "replacement": "número",
+      "context": "updateGridName(numero, data.nome, data.status);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 455,
+      "original": "numero",
+      "replacement": "número",
+      "context": "console.error(`Erro ao salvar número ${numero}:`, error);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 465,
+      "original": "numero",
+      "replacement": "número",
+      "context": "const row = document.querySelector(`tr[data-number=\"${p.numero}\"]`);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 482,
+      "original": "numero",
+      "replacement": "número",
+      "context": "updateGridName(p.numero, p.nome || '', p.status || 'Não Pago');"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 492,
+      "original": "numero",
+      "replacement": "número",
+      "context": "function updateGridName(numero, nome, status = 'Não Pago') {"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 493,
+      "original": "numero",
+      "replacement": "número",
+      "context": "const gridCell = document.getElementById(`grid-${numero}`);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 520,
+      "original": "numero",
+      "replacement": "número",
+      "context": "gridCell.title = `Número ${numero} - ${statusText}${nome ? ': ' + nome : ''}`;"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 535,
+      "original": "numero",
+      "replacement": "número",
+      "context": "const numero = select.dataset.numero;"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 535,
+      "original": "numero",
+      "replacement": "número",
+      "context": "const numero = select.dataset.numero;"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 536,
+      "original": "numero",
+      "replacement": "número",
+      "context": "const row = document.querySelector(`tr[data-number=\"${numero}\"]`);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 540,
+      "original": "numero",
+      "replacement": "número",
+      "context": "updateGridName(numero, nome, select.value);"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 576,
+      "original": "numero",
+      "replacement": "número",
+      "context": "const numero = row.dataset.number;"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 589,
+      "original": "numero",
+      "replacement": "número",
+      "context": "pending.push({ numero, nome, telefone, data });"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 621,
+      "original": "numero",
+      "replacement": "número",
+      "context": "<span class=\"inline-flex items-center justify-center w-8 h-8 bg-yellow-500 text-white font-bold roun"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 650,
+      "original": "numero",
+      "replacement": "número",
+      "context": "const numero = row.dataset.number;"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 663,
+      "original": "numero",
+      "replacement": "número",
+      "context": "missing.push({ numero, nome, data });"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 694,
+      "original": "numero",
+      "replacement": "número",
+      "context": "<span class=\"inline-flex items-center justify-center w-8 h-8 bg-purple-500 text-white font-bold roun"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 721,
+      "original": "Numero",
+      "replacement": "Número",
+      "context": "csvContent += \"Numero;Nome;Telefone;Status;Valor;Data Reserva\\n\";"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 726,
+      "original": "numero",
+      "replacement": "número",
+      "context": "const numero = row.cells[0].innerText;"
+    },
+    {
+      "file": "public\\apps\\rifa\\index.html",
+      "line": 733,
+      "original": "numero",
+      "replacement": "número",
+      "context": "csvContent += `${numero};${nome};${telefone};${status};${valor};${data}\\n`;"
+    },
+    {
+      "file": "services\\ai.ts",
+      "line": 26,
+      "original": "esta",
+      "replacement": "está",
+      "context": "'\\nGere a opinião com esta estrutura, em tópicos curtos e objetivos:',"
+    },
+    {
+      "file": "src\\components\\ClinicProvider.tsx",
+      "line": 47,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "const message = err instanceof Error ? err.message : 'Falha ao carregar clinica ativa.'"
+    },
+    {
+      "file": "src\\components\\ClinicProvider.tsx",
+      "line": 64,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "const message = err instanceof Error ? err.message : 'Falha ao criar clinica.'"
+    },
+    {
+      "file": "src\\components\\RequireClinic.tsx",
+      "line": 10,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "return <div className=\"p-6\">Carregando clinica...</div>"
+    },
+    {
+      "file": "src\\components\\TopRightAuthMenu.tsx",
+      "line": 112,
+      "original": "configuracoes",
+      "replacement": "configurações",
+      "context": "<DropdownMenuItem onSelect={() => navigate('/conta/configuracoes')}>"
+    },
+    {
+      "file": "src\\components\\TopRightAuthMenu.tsx",
+      "line": 117,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "<DropdownMenuItem onSelect={() => navigate('/conta/clinica')}>"
+    },
+    {
+      "file": "src\\components\\account\\AccountPageShell.tsx",
+      "line": 15,
+      "original": "configuracoes",
+      "replacement": "configurações",
+      "context": "{ to: '/conta/configuracoes', label: 'Configuracoes', icon: Settings },"
+    },
+    {
+      "file": "src\\components\\account\\AccountPageShell.tsx",
+      "line": 15,
+      "original": "Configuracoes",
+      "replacement": "Configurações",
+      "context": "{ to: '/conta/configuracoes', label: 'Configuracoes', icon: Settings },"
+    },
+    {
+      "file": "src\\components\\account\\AccountPageShell.tsx",
+      "line": 16,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "{ to: '/conta/clinica', label: 'Minha clinica', icon: Building2 },"
+    },
+    {
+      "file": "src\\components\\account\\AccountPageShell.tsx",
+      "line": 16,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "{ to: '/conta/clinica', label: 'Minha clinica', icon: Building2 },"
+    },
+    {
+      "file": "src\\components\\account\\AccountPageShell.tsx",
+      "line": 39,
+      "original": "Nao",
+      "replacement": "Não",
+      "context": "const activeClinic = clinicName || 'Nao definida'"
+    },
+    {
+      "file": "src\\components\\account\\AccountPageShell.tsx",
+      "line": 68,
+      "original": "Clinica",
+      "replacement": "Clínica",
+      "context": "Clinica: {activeClinic} ({activeRole})"
+    },
+    {
+      "file": "src\\lib\\clinic.ts",
+      "line": 104,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "throw new Error('Resposta invalida ao criar clinica.')"
+    },
+    {
+      "file": "src\\routes\\ClinicSetup.tsx",
+      "line": 33,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "const message = err instanceof Error ? err.message : 'Nao foi possivel criar a clinica.'"
+    },
+    {
+      "file": "src\\routes\\ClinicSetup.tsx",
+      "line": 33,
+      "original": "Nao",
+      "replacement": "Não",
+      "context": "const message = err instanceof Error ? err.message : 'Nao foi possivel criar a clinica.'"
+    },
+    {
+      "file": "src\\routes\\ClinicSetup.tsx",
+      "line": 33,
+      "original": "possivel",
+      "replacement": "possível",
+      "context": "const message = err instanceof Error ? err.message : 'Nao foi possivel criar a clinica.'"
+    },
+    {
+      "file": "src\\routes\\ClinicSetup.tsx",
+      "line": 46,
+      "original": "Clinica",
+      "replacement": "Clínica",
+      "context": "<h1 className=\"mb-2 text-2xl font-semibold\">Criar Clinica</h1>"
+    },
+    {
+      "file": "src\\routes\\ClinicSetup.tsx",
+      "line": 48,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "Este e o primeiro acesso desta conta. Crie sua clinica para ativar o ambiente."
+    },
+    {
+      "file": "src\\routes\\ClinicSetup.tsx",
+      "line": 54,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "placeholder=\"Nome da clinica\""
+    },
+    {
+      "file": "src\\routes\\ClinicSetup.tsx",
+      "line": 64,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "{submitting ? 'Criando clinica...' : 'Criar clinica'}"
+    },
+    {
+      "file": "src\\routes\\ClinicSetup.tsx",
+      "line": 64,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "{submitting ? 'Criando clinica...' : 'Criar clinica'}"
+    },
+    {
+      "file": "src\\routes\\account\\AccountClinic.tsx",
+      "line": 20,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "return <div className=\"p-6\">Carregando clinica...</div>"
+    },
+    {
+      "file": "src\\routes\\account\\AccountClinic.tsx",
+      "line": 25,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "title=\"Minha clinica\""
+    },
+    {
+      "file": "src\\routes\\account\\AccountClinic.tsx",
+      "line": 26,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "subtitle=\"Dados da clinica vinculada a sua conta e status de acesso multitenancy.\""
+    },
+    {
+      "file": "src\\routes\\account\\AccountClinic.tsx",
+      "line": 33,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "<h2 className=\"text-sm font-semibold\">Dados da clinica</h2>"
+    },
+    {
+      "file": "src\\routes\\account\\AccountClinic.tsx",
+      "line": 51,
+      "original": "seguranca",
+      "replacement": "segurança",
+      "context": "<h2 className=\"text-sm font-semibold\">Vinculo de seguranca</h2>"
+    },
+    {
+      "file": "src\\routes\\account\\AccountClinic.tsx",
+      "line": 68,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "<h2 className=\"text-sm font-semibold text-amber-900 dark:text-amber-200\">Nenhuma clinica ativa</h2>"
+    },
+    {
+      "file": "src\\routes\\account\\AccountClinic.tsx",
+      "line": 70,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "Esta conta ainda nao possui clinica configurada. Para continuar com o fluxo SaaS, finalize o setup."
+    },
+    {
+      "file": "src\\routes\\account\\AccountClinic.tsx",
+      "line": 70,
+      "original": "nao",
+      "replacement": "não",
+      "context": "Esta conta ainda nao possui clinica configurada. Para continuar com o fluxo SaaS, finalize o setup."
+    },
+    {
+      "file": "src\\routes\\account\\AccountClinic.tsx",
+      "line": 77,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "Ir para setup de clinica"
+    },
+    {
+      "file": "src\\routes\\account\\AccountHome.tsx",
+      "line": 61,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "subtitle=\"Resumo completo da conta, sessao ativa e status da clinica.\""
+    },
+    {
+      "file": "src\\routes\\account\\AccountHome.tsx",
+      "line": 76,
+      "original": "Clinica",
+      "replacement": "Clínica",
+      "context": "<h2 className=\"text-sm font-semibold\">Clinica ativa</h2>"
+    },
+    {
+      "file": "src\\routes\\account\\AccountHome.tsx",
+      "line": 85,
+      "original": "Seguranca",
+      "replacement": "Segurança",
+      "context": "<h2 className=\"text-sm font-semibold\">Seguranca</h2>"
+    },
+    {
+      "file": "src\\routes\\account\\AccountHome.tsx",
+      "line": 113,
+      "original": "configuracoes",
+      "replacement": "configurações",
+      "context": "to=\"/conta/configuracoes\""
+    },
+    {
+      "file": "src\\routes\\account\\AccountHome.tsx",
+      "line": 116,
+      "original": "Configuracoes",
+      "replacement": "Configurações",
+      "context": "Configuracoes da conta"
+    },
+    {
+      "file": "src\\routes\\account\\AccountHome.tsx",
+      "line": 119,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "to=\"/conta/clinica\""
+    },
+    {
+      "file": "src\\routes\\account\\AccountHome.tsx",
+      "line": 122,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "Minha clinica"
+    },
+    {
+      "file": "src\\routes\\account\\AccountProfile.tsx",
+      "line": 64,
+      "original": "identificacao",
+      "replacement": "identificação",
+      "context": "subtitle=\"Atualize os dados principais da conta e mantenha sua identificacao consistente.\""
+    },
+    {
+      "file": "src\\routes\\account\\AccountProfile.tsx",
+      "line": 87,
+      "original": "clinica",
+      "replacement": "clínica",
+      "context": "placeholder=\"usuario-clinica\""
+    },
+    {
+      "file": "src\\routes\\account\\AccountSettings.tsx",
+      "line": 54,
+      "original": "Configuracoes",
+      "replacement": "Configurações",
+      "context": "function updateSettings(next: AccountSettingsState, feedback = 'Configuracoes atualizadas.') {"
+    },
+    {
+      "file": "src\\routes\\account\\AccountSettings.tsx",
+      "line": 62,
+      "original": "Configuracoes",
+      "replacement": "Configurações",
+      "context": "title=\"Configuracoes\""
+    },
+    {
+      "file": "src\\routes\\account\\AccountSettings.tsx",
+      "line": 70,
+      "original": "Notificacoes",
+      "replacement": "Notificações",
+      "context": "<p className=\"text-sm font-medium text-slate-900 dark:text-slate-100\">Notificacoes por email</p>"
+    },
+    {
+      "file": "src\\routes\\account\\AccountSettings.tsx",
+      "line": 71,
+      "original": "seguranca",
+      "replacement": "segurança",
+      "context": "<p className=\"text-xs text-slate-500\">Receber avisos importantes sobre seguranca e acesso.</p>"
+    },
+    {
+      "file": "src\\routes\\account\\AccountSettings.tsx",
+      "line": 133,
+      "original": "Configuracoes",
+      "replacement": "Configurações",
+      "context": "updateSettings(defaultSettings, 'Configuracoes restauradas para o padrao.')"
+    }
+  ]
+}

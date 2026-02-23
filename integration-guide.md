@@ -214,7 +214,7 @@ Para dúvidas sobre integração:
 
 1. Verifique este guia
 2. Consulte o README.md principal
-3. Analise os exemplos existentes no código
+3. Análise os exemplos existentes no código
 4. Teste a integração em ambiente de desenvolvimento
 
 ---

@@ -2,10 +2,10 @@
 export type Sex = 'Macho' | 'Fêmea' | 'Sem dados' | 'M' | 'F' | 'MN' | 'FN' | 'Desconhecido'
 export type ReproductiveStatus = 'Castrado' | 'Fértil' | 'Sem dados'
 export type ItemCategory = 'medication' | 'hygiene' | 'other'
-export type PharmacyType = 'humana' | 'veterinaria' | 'manipulacao'
+export type PharmacyType = 'humana' | 'veterinária' | 'manipulacao'
 export type PackageType = 'frasco' | 'caixa' | 'bisnaga' | 'ampola' | 'outro'
 export type FrequencyType = 'timesPerDay' | 'everyHours'
-export type SpecialControlPharmacy = 'veterinaria' | 'humana' | 'manipulacao'
+export type SpecialControlPharmacy = 'veterinária' | 'humana' | 'manipulacao'
 
 export type RouteGroup =
   | 'ORAL'

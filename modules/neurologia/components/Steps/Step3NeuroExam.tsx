@@ -255,22 +255,22 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                 {
                   value: 'Alerta',
                   label: 'Alerta',
-                  helpTopicId: 's1-nivel-consciencia-alerta',
+                  helpTopicId: 's1-nível-consciencia-alerta',
                 },
                 {
                   value: 'Deprimido',
                   label: 'Deprimido',
-                  helpTopicId: 's1-nivel-consciencia-deprimido',
+                  helpTopicId: 's1-nível-consciencia-deprimido',
                 },
                 {
                   value: 'Estupor',
                   label: 'Estupor',
-                  helpTopicId: 's1-nivel-consciencia-estupor',
+                  helpTopicId: 's1-nível-consciencia-estupor',
                 },
                 {
                   value: 'Coma',
                   label: 'Coma',
-                  helpTopicId: 's1-nivel-consciencia-coma',
+                  helpTopicId: 's1-nível-consciencia-coma',
                 },
               ]}
               currentValue={exam['mentation']}
@@ -385,7 +385,7 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
                 {
                   value: 'Não Ambulatório',
                   label: 'Não Ambulatório',
-                  helpTopicId: 's2-capacidade-nao-ambulatorio',
+                  helpTopicId: 's2-capacidade-não-ambulatorio',
                 },
                 {
                   value: 'Plegia',

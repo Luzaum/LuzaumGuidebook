@@ -39,14 +39,14 @@ const miniApps: Array<{
     implemented: true,
   },
   {
-    id: 'transfusao-sanguinea',
+    id: 'transfusão-sanguinea',
     title: 'Transfusão Sanguínea',
     description: 'Cálculo de transfusão sanguínea e compatibilidade',
     icon: <Heart className="h-6 w-6" />,
     implemented: true,
   },
   {
-    id: 'emergencias-veterinarias',
+    id: 'emergências-veterinarias',
     title: 'Emergências Veterinárias',
     description: 'Protocolos de emergência e primeiros socorros',
     icon: <Zap className="h-6 w-6" />,

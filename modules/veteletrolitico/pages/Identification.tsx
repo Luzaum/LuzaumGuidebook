@@ -204,7 +204,7 @@ export const Identification: React.FC<IdentificationProps> = ({ onNavigate }) =>
                                                 { id: 'renopata', label: 'Renopata', icon: Droplets },
                                                 { id: 'hepatopata', label: 'Hepatopata', icon: Activity },
                                                 { id: 'hipoalbuminemia', label: 'Hipoalbuminemia', icon: Droplets }, // Using droplets as fluid/blood related
-                                                { id: 'diabetico', label: 'Diabético', icon: Syringe },
+                                                { id: 'diabético', label: 'Diabético', icon: Syringe },
                                             ].map((item) => {
                                                 const isSelected = comorbidities.includes(item.id)
                                                 const Icon = item.icon

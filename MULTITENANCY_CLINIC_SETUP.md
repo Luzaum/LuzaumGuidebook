@@ -1,9 +1,9 @@
-# Multitenancy (Clinica) - Setup e Fluxo
+# Multitenancy (Clínica) - Setup e Fluxo
 
 ## Objetivo
 
-- Cada usuario pertence a uma clinica.
-- Primeiro acesso cria clinica + membership (`owner`).
+- Cada usuario pertence a uma clínica.
+- Primeiro acesso cria clínica + membership (`owner`).
 - O app sempre resolve `clinic_id` ativo antes de permitir area protegida.
 - Inserts no banco devem incluir `clinic_id`.
 
@@ -25,10 +25,10 @@
    - `public.memberships`
 3. E habilita:
    - RLS por membership
-   - funcao `public.bootstrap_clinic(clinic_name text)`
-   - funcao `public.is_member_of_clinic(target_clinic_id uuid)`
+   - função `public.bootstrap_clinic(clinic_name text)`
+   - função `public.is_member_of_clinic(target_clinic_id uuid)`
 
-## Policy padrao para tabelas clinicas
+## Policy padrao para tabelas clínicas
 
 Em qualquer tabela que tenha coluna `clinic_id uuid`, use a regra:
 
@@ -59,8 +59,8 @@ using (
 ## Fluxo de frontend
 
 1. Login
-2. Rota protegida exige clinica (`RequireClinic`)
-3. Se usuario nao tem membership:
+2. Rota protegida exige clínica (`RequireClinic`)
+3. Se usuario não tem membership:
    - redireciona para `/clinic/setup`
 4. Em `/clinic/setup`:
    - chama `bootstrap_clinic`

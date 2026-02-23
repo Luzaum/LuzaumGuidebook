@@ -34,7 +34,7 @@ export const section4NervosCranianos: HelpTopic[] = [
       'Ameaça ausente com PLR normal: suspeitar de cegueira cortical/lesão do prosencéfalo ou doença retiniana que preserve PLR. Ameaça ausente com PLR alterado: suspeitar de retina/II/via pupilar. Se o animal enxerga mas não pisca, considerar lesão do VII.',
     pitfalls:
       'Assoprar (ativa reflexos não visuais), tocar vibrissas, avaliar em filhote muito jovem, ignorar catarata/uveíte/dor ocular.',
-    tags: ['ameaca', 'menace', 'visao', 'II', 'VII', 'prosencefalo', 'cortico'],
+    tags: ['ameaca', 'menace', 'visão', 'II', 'VII', 'prosencefalo', 'cortico'],
     severityWeight: 2,
     localizationHint: ['prosencefalo', 'retina', 'II', 'VII'],
     diagnosticWeight: 2,

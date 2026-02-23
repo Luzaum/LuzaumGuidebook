@@ -12,8 +12,8 @@ type AccountPageShellProps = {
 const accountLinks = [
   { to: '/app', label: 'Area logada', icon: ShieldCheck },
   { to: '/conta/perfil', label: 'Alterar perfil', icon: UserRound },
-  { to: '/conta/configuracoes', label: 'Configuracoes', icon: Settings },
-  { to: '/conta/clinica', label: 'Minha clinica', icon: Building2 },
+  { to: '/conta/configurações', label: 'Configurações', icon: Settings },
+  { to: '/conta/clínica', label: 'Minha clínica', icon: Building2 },
 ]
 
 function buildInitials(name: string): string {
@@ -36,7 +36,7 @@ export function AccountPageShell({ title, subtitle, children }: AccountPageShell
   const displayName = profile?.name || 'Usuario'
   const displayEmail = profile?.email || '-'
   const initials = buildInitials(displayName)
-  const activeClinic = clinicName || 'Nao definida'
+  const activeClinic = clinicName || 'Não definida'
   const activeRole = role || 'member'
 
   return (
@@ -65,7 +65,7 @@ export function AccountPageShell({ title, subtitle, children }: AccountPageShell
                 <p className="truncate text-sm font-semibold">{displayName}</p>
                 <p className="truncate text-xs text-slate-200">{displayEmail}</p>
                 <p className="truncate text-xs text-emerald-300">
-                  Clinica: {activeClinic} ({activeRole})
+                  Clínica: {activeClinic} ({activeRole})
                 </p>
               </div>
             </div>

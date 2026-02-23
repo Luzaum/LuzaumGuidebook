@@ -48,7 +48,7 @@ const Fluidoterapia = ({ onBack }: { onBack: () => void }) => {
     const [estadoFisiologico, setEstadoFisiologico] = useState('adulto');
     const [taxaManutencao, setTaxaManutencao] = useState('50');
     const [incluirReidratacao, setIncluirReidratacao] = useState(false);
-    const [desidratacao, setDesidratacao] = useState('0');
+    const [desidratação, setDesidratacao] = useState('0');
     const [tempoReidratacao, setTempoReidratacao] = useState('12');
     const [incluirPerdas, setIncluirPerdas] = useState(false);
     const [perdas, setPerdas] = useState('');
@@ -63,7 +63,7 @@ const Fluidoterapia = ({ onBack }: { onBack: () => void }) => {
     const [activeModal, setActiveModal] = useState<string | null>(null);
     const [collapsibles, setCollapsibles] = useState({
         ressuscitacao: false,
-        especificas: false,
+        específicas: false,
         hipertonica: false
     });
 
@@ -98,7 +98,7 @@ const Fluidoterapia = ({ onBack }: { onBack: () => void }) => {
 
         let vReidratacao = 0;
         if (incluirReidratacao) {
-            const d = parseFloat(desidratacao);
+            const d = parseFloat(desidratação);
             if (!isNaN(d) && d > 0) {
                 vReidratacao = p * d * 1000;
             }
@@ -120,7 +120,7 @@ const Fluidoterapia = ({ onBack }: { onBack: () => void }) => {
         const taxaInfusaoBolus = vBolus / (tBolus / 60);
 
         return { vManutencao, vReidratacao, vPerdas, vTotal, vBolus, taxaInfusaoBolus };
-    }, [peso, taxaManutencao, incluirReidratacao, desidratacao, incluirPerdas, perdas, taxaBolus, tempoBolus]);
+    }, [peso, taxaManutencao, incluirReidratacao, desidratação, incluirPerdas, perdas, taxaBolus, tempoBolus]);
 
     // --- Handlers & Effects ---
     const handleSelectSpecies = useCallback((s: string) => {
@@ -362,8 +362,8 @@ const Fluidoterapia = ({ onBack }: { onBack: () => void }) => {
                                             <label htmlFor="incluirReidratacao" className="ml-3 input-label cursor-pointer">Incluir Reidratação</label>
                                         </div>
                                         {incluirReidratacao && <div className="mt-4">
-                                            <label htmlFor="desidratacao" className="input-label">Grau de Desidratação (%) <HelpIcon modalId="modalDesidratacao" /></label>
-                                            <select id="desidratacao" className="input-field mb-4" value={desidratacao} onChange={e => setDesidratacao(e.target.value)}>
+                                            <label htmlFor="desidratação" className="input-label">Grau de Desidratação (%) <HelpIcon modalId="modalDesidratacao" /></label>
+                                            <select id="desidratação" className="input-field mb-4" value={desidratação} onChange={e => setDesidratacao(e.target.value)}>
                                                 <option value="0">Selecione...</option><option value="0.05">5%</option><option value="0.06">6%</option><option value="0.07">7%</option><option value="0.08">8%</option><option value="0.09">9%</option><option value="0.10">10%</option><option value="0.11">11%</option><option value="0.12">12%</option>
                                             </select>
                                             <label htmlFor="tempoReidratacao" className="input-label">Tempo de Reidratação (horas)</label>
@@ -419,7 +419,7 @@ const Fluidoterapia = ({ onBack }: { onBack: () => void }) => {
                                 </div>
                                 <div className="mt-4">{ressuscitacaoInfo}</div>
                             </Collapsible>
-                            <Collapsible id="especificas" title="🔬 Fluidos para Condições Específicas">
+                            <Collapsible id="específicas" title="🔬 Fluidos para Condições Específicas">
                                 <div className="input-group">
                                     <label htmlFor="condicaoEspecial" className="input-label">Selecione a condição clínica para ver as recomendações: <HelpIcon modalId={condicaoEspecial} /></label>
                                     <select id="condicaoEspecial" className="input-field" value={condicaoEspecial} onChange={e => setCondicaoEspecial(e.target.value)}><option value="nenhuma">Selecione uma condição...</option><option value="dka">🍬 Cetoacidose Diabética (CAD)</option><option value="tce">🧠 Traumatismo Cranioencefálico (TCE)</option><option value="diarreia_hipercloremica">🚽 Diarreia com Acidose Hiperclorêmica</option><option value="vomito_alcalose">🤮 Vômito com Alcalose Hipoclorêmica</option></select>

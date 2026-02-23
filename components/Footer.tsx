@@ -43,7 +43,7 @@ export function Footer() {
               </li>
               <li>
                 <button
-                  onClick={() => handleLinkClick('emergencias')}
+                  onClick={() => handleLinkClick('emergências')}
                   className="text-muted-foreground hover:text-primary cursor-pointer"
                 >
                   Emergências
@@ -59,7 +59,7 @@ export function Footer() {
               </li>
               <li>
                 <button
-                  onClick={() => handleLinkClick('avaliacoes')}
+                  onClick={() => handleLinkClick('avaliações')}
                   className="text-muted-foreground hover:text-primary cursor-pointer"
                 >
                   Avaliações

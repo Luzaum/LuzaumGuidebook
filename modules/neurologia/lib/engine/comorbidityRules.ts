@@ -42,8 +42,8 @@ const COMORBIDITY_RULES: Record<ComorbidityKey, ComorbidityRuleFunction> = {
       uremia: severity === 'grave' ? 0.25 : 0.15,
     },
   }),
-  hepatica: (severity) => ({
-    key: 'hepatica',
+  hepática: (severity) => ({
+    key: 'hepática',
     alerts: ['Alteração de mentação pode ser exacerbada por encefalopatia hepática.'],
     cautions: [
       'Cautela com fármacos metabolizados no fígado; ajustar dose.',
@@ -57,8 +57,8 @@ const COMORBIDITY_RULES: Record<ComorbidityKey, ComorbidityRuleFunction> = {
       encefalopatia_hepatica: severity === 'grave' ? 0.3 : 0.2,
     },
   }),
-  cardiaca: (severity) => ({
-    key: 'cardiaca',
+  cardíaca: (severity) => ({
+    key: 'cardíaca',
     alerts: ['Eventos vasculares/hipoperfusão podem mimetizar doença neurológica primária.'],
     cautions: [
       'Evitar sobrecarga volêmica; monitorar PA/perfusão.',
@@ -73,8 +73,8 @@ const COMORBIDITY_RULES: Record<ComorbidityKey, ComorbidityRuleFunction> = {
       tromboembolismo: severity === 'grave' ? 0.2 : 0.15,
     },
   }),
-  respiratoria: (severity) => ({
-    key: 'respiratoria',
+  respiratória: (severity) => ({
+    key: 'respiratória',
     alerts: ['Hipoxemia/hipercapnia podem causar depressão de SNC.'],
     cautions: [
       'Evitar sedação excessiva; risco de hipoventilação.',
@@ -136,8 +136,8 @@ const COMORBIDITY_RULES: Record<ComorbidityKey, ComorbidityRuleFunction> = {
       oportunista: 0.15,
     },
   }),
-  hipertensao: () => ({
-    key: 'hipertensao',
+  hipertensão: () => ({
+    key: 'hipertensão',
     alerts: ['Cegueira aguda pode ser por lesão de retina secundária à hipertensão.'],
     cautions: ['Controlar pressão arterial antes de procedimentos que possam aumentar PA.'],
     diagnosticAdds: ['Aferir PA repetida; fundo de olho se cegueira aguda.'],

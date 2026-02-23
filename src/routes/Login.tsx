@@ -86,17 +86,19 @@ export default function Login() {
   }
 
   if (checkingSession) {
-    return <div className="p-6">Carregando autenticação...</div>
+    return <div className="p-6">Carregando autenticacao...</div>
   }
 
   return (
     <TravelConnectSignIn
+      mode="login"
       loading={loading}
       errorMessage={error}
       onSubmit={handleSubmit}
       onGoogleSignIn={handleGoogleSignIn}
       onForgotPassword={handleForgotPassword}
       onGoToSignup={() => nav(`/signup?next=${encodeURIComponent(nextPath)}`)}
+      onBackToVetius={() => nav('/hub')}
     />
   )
 }

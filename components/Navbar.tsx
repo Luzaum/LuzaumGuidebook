@@ -72,7 +72,7 @@ export function Navbar({ onAppClick }: NavbarProps) {
             Guias
           </button>
           <button
-            onClick={() => handleNavLinkClick('emergencias')}
+            onClick={() => handleNavLinkClick('emergências')}
             className="text-foreground hover:text-primary transition-colors"
           >
             Emergências
@@ -84,7 +84,7 @@ export function Navbar({ onAppClick }: NavbarProps) {
             Calculadoras
           </button>
           <button
-            onClick={() => handleNavLinkClick('avaliacoes')}
+            onClick={() => handleNavLinkClick('avaliações')}
             className="text-foreground hover:text-primary transition-colors"
           >
             Avaliações
@@ -137,7 +137,7 @@ export function Navbar({ onAppClick }: NavbarProps) {
               Guias
             </button>
             <button
-              onClick={() => handleNavLinkClick('emergencias')}
+              onClick={() => handleNavLinkClick('emergências')}
               className="text-foreground hover:text-primary p-2 transition-colors text-left"
             >
               Emergências
@@ -149,7 +149,7 @@ export function Navbar({ onAppClick }: NavbarProps) {
               Calculadoras
             </button>
             <button
-              onClick={() => handleNavLinkClick('avaliacoes')}
+              onClick={() => handleNavLinkClick('avaliações')}
               className="text-foreground hover:text-primary p-2 transition-colors text-left"
             >
               Avaliações

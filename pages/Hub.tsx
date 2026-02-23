@@ -8,7 +8,7 @@ import { AuroraBackground } from '../components/ui/aurora-background'
 export function Hub() {
     const navigate = useNavigate()
 
-    const premiumIds = ['neurologia', 'peconhentos', 'antibioticoterapia', 'transfusao-sanguinea', 'crivet', 'receituario-vet']
+    const premiumIds = ['neurologia', 'peconhentos', 'antibioticoterapia', 'transfusão-sanguinea', 'crivet', 'receituario-vet']
     const premiumModules = modules.filter(m => premiumIds.includes(m.id))
     const freeModules = modules.filter(m => !premiumIds.includes(m.id))
 

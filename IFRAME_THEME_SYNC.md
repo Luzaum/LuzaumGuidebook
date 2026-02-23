@@ -1,6 +1,6 @@
 # Sincronização de Tema entre VETIUS e Apps Externos
 
-Este documento explica como os apps externos (analgesiavet.netlify.app e emergencias-vet.netlify.app) devem escutar mensagens do VETIUS para sincronizar o tema.
+Este documento explica como os apps externos (analgesiavet.netlify.app e emergências-vet.netlify.app) devem escutar mensagens do VETIUS para sincronizar o tema.
 
 ## Como funciona
 
@@ -138,7 +138,7 @@ O VETIUS envia mensagens no formato:
 ## Apps que precisam implementar
 
 - ⏳ https://analgesiavet.netlify.app
-- ⏳ https://emergencias-vet.netlify.app
+- ⏳ https://emergências-vet.netlify.app
 - ⏳ https://aapvet.netlify.app (Animais Peçonhentos)
 - ⏳ https://antibioticoterapia.netlify.app
 - ⏳ https://crivet.netlify.app

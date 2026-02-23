@@ -25,7 +25,7 @@ const PROGRESSION_OPTIONS: Array<{
     textColor: 'text-green-400',
   },
   {
-    id: 'estatico',
+    id: 'estático',
     label: 'Estático',
     color: '#eab308',
     bgColor: 'bg-yellow-900/30',

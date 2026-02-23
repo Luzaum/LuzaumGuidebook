@@ -22,7 +22,7 @@ export function createDefaultRecommendations(): RecommendationsState {
     exams: [],
     customExams: [],
     examReasons: [],
-    specialControlPharmacy: 'veterinaria',
+    specialControlPharmacy: 'veterinária',
     standardTemplateId: '',
     specialControlTemplateId: '',
   }
@@ -42,7 +42,7 @@ export function createDefaultItem(
     presentation: '',
     concentration: '',
     commercialName: '',
-    pharmacyType: 'veterinaria',
+    pharmacyType: 'veterinária',
     packageType: 'caixa',
     pharmacyName: '',
     observations: '',

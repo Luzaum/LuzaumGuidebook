@@ -81,7 +81,7 @@ export function sanitizeHistory(complaint: Partial<ComplaintContext>): Partial<C
   // Evolution pattern: garantir único (radio)
   if (
     sanitized.evolutionPattern &&
-    !['melhorando', 'estatico', 'flutuante', 'progressivo'].includes(sanitized.evolutionPattern)
+    !['melhorando', 'estático', 'flutuante', 'progressivo'].includes(sanitized.evolutionPattern)
   ) {
     sanitized.evolutionPattern = null
   }

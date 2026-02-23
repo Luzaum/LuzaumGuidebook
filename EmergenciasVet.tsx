@@ -40,8 +40,8 @@ const EmergenciasVet = ({ onBack }: { onBack: () => void }) => {
       <main className="flex-grow">
         {/* O componente <iframe> é o elemento HTML padrão para incorporar documentos externos. */}
         <iframe
-          // A propriedade 'src' especifica a URL da página a ser incorporada.
-          src="https://emergencias-vet.netlify.app"
+          // A propriedade 'src' específica a URL da página a ser incorporada.
+          src="https://emergências-vet.netlify.app"
           // O 'title' é importante para acessibilidade, descrevendo o conteúdo do iframe para leitores de tela.
           title="Ferramenta externa de Emergências Veterinárias"
           // Classes de estilo para garantir que o iframe preencha completamente seu contêiner pai ('main').

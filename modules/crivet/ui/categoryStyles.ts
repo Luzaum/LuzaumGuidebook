@@ -1,15 +1,15 @@
 import type { DrugCategory as OldDrugCategory } from '../data/drugs'
 
 export type DrugCategory =
-  | 'anestesico'
+  | 'anestésico'
   | 'vasopressor'
-  | 'antibiotico'
+  | 'antibiótico'
   | 'infusao_combinada'
   | 'endocrino'
-  | 'antiemetico'
+  | 'antiemético'
 
 export const CATEGORY_STYLES: Record<DrugCategory, { label: string; className: string }> = {
-  anestesico: {
+  anestésico: {
     label: 'Anestésico',
     className: 'border-lime-400/40 bg-lime-500/15 text-lime-300',
   },
@@ -17,7 +17,7 @@ export const CATEGORY_STYLES: Record<DrugCategory, { label: string; className: s
     label: 'Vasopressor',
     className: 'border-red-400/40 bg-red-500/15 text-red-200',
   },
-  antibiotico: {
+  antibiótico: {
     label: 'Antibiótico',
     className: 'border-orange-400/40 bg-orange-500/15 text-orange-200',
   },
@@ -29,7 +29,7 @@ export const CATEGORY_STYLES: Record<DrugCategory, { label: string; className: s
     label: 'Endócrino',
     className: 'border-yellow-400/40 bg-yellow-500/15 text-yellow-200',
   },
-  antiemetico: {
+  antiemético: {
     label: 'Antiemético',
     className: 'border-slate-400/40 bg-slate-500/15 text-slate-200',
   },
@@ -37,11 +37,11 @@ export const CATEGORY_STYLES: Record<DrugCategory, { label: string; className: s
 
 // Mapear categorias antigas para novas
 export function mapCategoryToStyle(category: OldDrugCategory): DrugCategory {
-  if (category === 'Analgésicos e Anestésicos') return 'anestesico'
+  if (category === 'Analgésicos e Anestésicos') return 'anestésico'
   if (category === 'Agentes Cardiovasculares') return 'vasopressor'
-  if (category === 'Antimicrobianos') return 'antibiotico'
+  if (category === 'Antimicrobianos') return 'antibiótico'
   if (category === 'Infusões Combinadas') return 'infusao_combinada'
   if (category === 'Endócrino') return 'endocrino'
-  if (category === 'Antieméticos / Pró-cinéticos') return 'antiemetico'
-  return 'anestesico' // default
+  if (category === 'Antieméticos / Pró-cinéticos') return 'antiemético'
+  return 'anestésico' // default
 }

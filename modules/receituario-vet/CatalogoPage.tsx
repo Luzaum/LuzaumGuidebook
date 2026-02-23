@@ -26,7 +26,7 @@ const ROUTE_OPTIONS: RouteGroup[] = [
 ]
 
 const PHARMACY_OPTIONS: Array<{ value: PharmacyType; label: string }> = [
-  { value: 'veterinaria', label: 'Veterinária' },
+  { value: 'veterinária', label: 'Veterinária' },
   { value: 'humana', label: 'Humana' },
   { value: 'manipulacao', label: 'Manipulação' },
 ]
@@ -56,7 +56,7 @@ function formatPriceBRLInput(raw: string): string {
 
 function normalizePharmacyTags(tags: PharmacyType[] | undefined): PharmacyType[] {
   const unique = Array.from(new Set((tags || []).filter(Boolean)))
-  return unique.length ? unique : ['veterinaria']
+  return unique.length ? unique : ['veterinária']
 }
 
 function cloneDrug(drug: CatalogDrug): CatalogDrug {
@@ -91,7 +91,7 @@ function createPresentation(): CatalogPresentation {
     unitLabel: 'comprimido',
     commercialName: '',
     averagePrice: '',
-    pharmacyTags: ['veterinaria'],
+    pharmacyTags: ['veterinária'],
   }
 }
 
@@ -135,7 +135,7 @@ export default function CatalogoPage() {
     const normalizedDraft: CatalogDrug = {
       ...draft,
       presentations: normalizedPresentations,
-      pharmacyType: normalizedPresentations[0]?.pharmacyTags?.[0] || 'veterinaria',
+      pharmacyType: normalizedPresentations[0]?.pharmacyTags?.[0] || 'veterinária',
     }
     const nextDb = upsertDrug(loadRxDb(), normalizedDraft)
     saveRxDb(nextDb)

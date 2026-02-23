@@ -140,7 +140,7 @@ export default function ReceituarioVetPage() {
       </section>
 
       <section className="rxv-home-grid-secondary mt-3 grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-5">
-        <Link to="/receituario-vet/configuracao" className="rxv-home-link-card rxv-card rxv-fade-up delay-200 rxv-anim-pulse rxv-shimmer">
+        <Link to="/receituario-vet/configuração" className="rxv-home-link-card rxv-card rxv-fade-up delay-200 rxv-anim-pulse rxv-shimmer">
           <div className="rxv-home-icon-badge">
             <span className="material-symbols-outlined text-[22px]">settings_account_box</span>
           </div>
@@ -161,7 +161,7 @@ export default function ReceituarioVetPage() {
           <h4 className="text-base font-bold">Templates</h4>
         </Link>
 
-        <Link to="/receituario-vet/configuracoes" className="rxv-home-link-card rxv-card rxv-fade-up delay-500 rxv-anim-pulse rxv-shimmer">
+        <Link to="/receituario-vet/configurações" className="rxv-home-link-card rxv-card rxv-fade-up delay-500 rxv-anim-pulse rxv-shimmer">
           <div className="rxv-home-icon-badge">
             <span className="material-symbols-outlined text-[22px]">cloud_upload</span>
           </div>

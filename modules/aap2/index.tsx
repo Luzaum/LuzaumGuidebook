@@ -88,7 +88,7 @@ const AAP2Module: React.FC = () => {
     const handleNovaConsultaSubmit = useCallback((patient: LuzaumPatient, signs: string[]) => {
         setLuzaumPatient(patient);
         setLuzaumSigns(signs);
-        setPage('relatorio');
+        setPage('relatório');
     }, []);
 
     const handleNewConsulta = useCallback(() => {
@@ -131,7 +131,7 @@ const AAP2Module: React.FC = () => {
                         onBack={() => setPage('home')}
                     />
                 );
-            case 'relatorio':
+            case 'relatório':
                 return (
                     <DrLuzaumReportPage
                         patient={luzaumPatient}
@@ -148,11 +148,11 @@ const AAP2Module: React.FC = () => {
                         diagnosis={dx.name}
                         diagnosisSciName={dx.sciName}
                         confidence={dx.confidence}
-                        onBack={() => setPage('relatorio')}
+                        onBack={() => setPage('relatório')}
                         onNewConsulta={handleNewConsulta}
                     />
                 );
-            case 'historico':
+            case 'histórico':
                 return (
                     <DrLuzaumHistoryPage
                         onBack={() => setPage('home')}
@@ -169,7 +169,7 @@ const AAP2Module: React.FC = () => {
     };
 
     // Full-page chrome-free view for Dr. Luzaum pages
-    if (page === 'nova_consulta' || page === 'relatorio' || page === 'relatorio_detalhado') {
+    if (page === 'nova_consulta' || page === 'relatório' || page === 'relatorio_detalhado') {
         return (
             <div id="aap2-module-root">
                 {renderPage()}

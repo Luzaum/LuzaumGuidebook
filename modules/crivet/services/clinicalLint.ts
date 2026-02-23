@@ -105,7 +105,7 @@ export function lintClinical(normalized: NormalizedDrug): ClinicalLintResult {
   if (normalized.helpDrawer.sections.length < 2) {
     issues.push({
       severity: 'WARNING',
-      message: 'Help drawer com poucos niveis: recomenda-se ter pelo menos IMPORTANT + INFO',
+      message: 'Help drawer com poucos níveis: recomenda-se ter pelo menos IMPORTANT + INFO',
       field: 'helpDrawer.sections',
     })
   }

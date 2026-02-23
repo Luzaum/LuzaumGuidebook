@@ -54,7 +54,7 @@ function buildEvidence(signs: string[]): EvidenceBadge[] {
         diarreia: { label: 'Diarreia', severity: 'neutral' },
         dor: { label: 'Dor Local Intensa', severity: 'moderate' },
         marca_picada: { label: 'Marca de Picada', severity: 'neutral' },
-        hipotensao: { label: 'Hipotensão', severity: 'severe' },
+        hipotensão: { label: 'Hipotensão', severity: 'severe' },
     };
     return signs.filter(s => s in map).map(s => map[s]);
 }

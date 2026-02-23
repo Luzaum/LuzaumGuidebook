@@ -101,7 +101,7 @@ function normalizeBootstrapResponse(payload: unknown): BootstrapClinicRpcRespons
     }
   }
 
-  throw new Error('Resposta invalida ao criar clinica.')
+  throw new Error('Resposta invalida ao criar clínica.')
 }
 
 export async function bootstrapClinic(clinicName: string) {

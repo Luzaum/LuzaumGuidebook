@@ -13,7 +13,7 @@ interface RxPrintViewProps {
   prescriberPhone?: string
   prescriberAddressLine?: string
   tutorCpf?: string
-  targetPharmacy?: 'veterinaria' | 'humana' | 'manipulacao' | 'mista'
+  targetPharmacy?: 'veterinária' | 'humana' | 'manipulacao' | 'mista'
   inlineEditNote?: string
   interactive?: boolean
   activeZone?: TemplateZoneKey
@@ -441,7 +441,7 @@ export function RxPrintView({
           <section className="mt-4 rounded border border-slate-300 bg-slate-50 p-3 text-[11px]" style={{ color: '#1f2937' }}>
             <p className="mb-2 font-bold">1ª via - Farmácia | 2ª via - Paciente</p>
             <p className="mb-3">
-              Farmácia veterinária ({targetPharmacy === 'veterinaria' || targetPharmacy === 'mista' ? 'X' : ' '}) {'  '}
+              Farmácia veterinária ({targetPharmacy === 'veterinária' || targetPharmacy === 'mista' ? 'X' : ' '}) {'  '}
               Farmácia de manipulação ({targetPharmacy === 'manipulacao' || targetPharmacy === 'mista' ? 'X' : ' '}) {'  '}
               Farmácia humana ({targetPharmacy === 'humana' || targetPharmacy === 'mista' ? 'X' : ' '})
             </p>

@@ -100,7 +100,7 @@ function normalizeHelpDrawer(raw: any, fallbackTitle: string): NormalizedHelpDra
   } else {
     const basicInfo: string[] = []
     if (raw.name_pt || raw.namePt || raw.name) {
-      basicInfo.push(`Farmaco: ${raw.name_pt || raw.namePt || raw.name}`)
+      basicInfo.push(`Fármaco: ${raw.name_pt || raw.namePt || raw.name}`)
     }
     if (Array.isArray(raw.class) && raw.class.length > 0) {
       basicInfo.push(`Classe: ${raw.class.join(', ')}`)
@@ -123,9 +123,9 @@ function normalizeHelpDrawer(raw: any, fallbackTitle: string): NormalizedHelpDra
     if (mech.primary_effects) {
       const effects = mech.primary_effects
       if (effects.cardiovascular) mechanismContent.push(`**Cardiovascular:** ${effects.cardiovascular}`)
-      if (effects.respiratory) mechanismContent.push(`**Respiratorio:** ${effects.respiratory}`)
+      if (effects.respiratory) mechanismContent.push(`**Respiratório:** ${effects.respiratory}`)
       if (effects.cns) mechanismContent.push(`**Sistema Nervoso Central:** ${effects.cns}`)
-      if (effects.renal_hepatic) mechanismContent.push(`**Renal/Hepatico:** ${effects.renal_hepatic}`)
+      if (effects.renal_hepatic) mechanismContent.push(`**Renal/Hepático:** ${effects.renal_hepatic}`)
       if (effects.gi) mechanismContent.push(`**Gastrointestinal:** ${effects.gi}`)
     }
   } else if (raw.core_concepts?.mechanism_big_picture_ptbr) {
@@ -144,7 +144,7 @@ function normalizeHelpDrawer(raw: any, fallbackTitle: string): NormalizedHelpDra
     if (pd.onset_iv) pharmacodynamicsContent.push(`**Inicio IV:** ${pd.onset_iv}`)
     if (pd.onset_im) pharmacodynamicsContent.push(`**Inicio IM:** ${pd.onset_im}`)
     if (pd.peak) pharmacodynamicsContent.push(`**Pico:** ${pd.peak}`)
-    if (pd.duration) pharmacodynamicsContent.push(`**Duracao:** ${pd.duration}`)
+    if (pd.duration) pharmacodynamicsContent.push(`**Duração:** ${pd.duration}`)
     if (pd.dependencies && Array.isArray(pd.dependencies)) {
       pharmacodynamicsContent.push(`**Dependencias:** ${pd.dependencies.join('; ')}`)
     }
@@ -281,7 +281,7 @@ function normalizeHelpDrawer(raw: any, fallbackTitle: string): NormalizedHelpDra
     }
   }
   if (dilutionContent.length > 0) {
-    addItems(dilutionContent, 'Diluicao e Preparo')
+    addItems(dilutionContent, 'Diluição e Preparo')
   }
 
   if (mergedByLevel.size === 0 && infoItems.length > 0) {
@@ -290,8 +290,8 @@ function normalizeHelpDrawer(raw: any, fallbackTitle: string): NormalizedHelpDra
 
   if (!mergedByLevel.has('CRITICAL') && !mergedByLevel.has('INFO')) {
     pushItems('INFO', infoItems.length > 0 ? infoItems : [
-      { text: 'Informacoes detalhadas estao sendo adicionadas.' },
-      { text: 'Para uso seguro, consulte bula ou referencias atualizadas.' },
+      { text: 'Informações detalhadas estao sendo adicionadas.' },
+      { text: 'Para uso seguro, consulte bula ou referências atualizadas.' },
     ])
   }
 
@@ -303,8 +303,8 @@ function normalizeHelpDrawer(raw: any, fallbackTitle: string): NormalizedHelpDra
     orderedSections.push({
       level: 'INFO',
       items: [
-        { text: 'Informacoes detalhadas estao sendo adicionadas.' },
-        { text: 'Para uso seguro, consulte bula ou referencias atualizadas.' },
+        { text: 'Informações detalhadas estao sendo adicionadas.' },
+        { text: 'Para uso seguro, consulte bula ou referências atualizadas.' },
       ],
     })
   }
@@ -498,16 +498,16 @@ export function normalizeDrug(raw: any): NormalizedDrug {
 
   // Normalizar todas as seções
   const taglines = normalizeTaglines(raw)
-  const helpDrawer = normalizeHelpDrawer(raw, `${namePt} - Ajuda Clinica`)
+  const helpDrawer = normalizeHelpDrawer(raw, `${namePt} - Ajuda Clínica`)
   const compatibility = normalizeCompatibility(raw)
   const doses = normalizeDoses(raw)
   const indications = normalizeIndications(raw)
 
-  // Garantir que helpDrawer sempre tem pelo menos uma secao
+  // Garantir que helpDrawer sempre tem pelo menos uma seção
   if (helpDrawer.sections.length === 0) {
     helpDrawer.sections.push({
       level: 'INFO',
-      items: [{ text: `Informacoes sobre ${namePt} estao sendo adicionadas.` }],
+      items: [{ text: `Informações sobre ${namePt} estao sendo adicionadas.` }],
     })
   }
 
@@ -699,7 +699,7 @@ function calculateCompleteness(data: {
   // 2. Resumo (10%)
   // Verifica se tem taglines reais (não placeholders e nem vazias)
   const hasRealTaglines = data.taglines.length > 0 &&
-    !data.taglines.some(t => t.includes('Informações básicas disponíveis') || t.includes('Fármaco ') || t.includes('Informacoes sobre'));
+    !data.taglines.some(t => t.includes('Informações básicas disponíveis') || t.includes('Fármaco ') || t.includes('Informações sobre'));
   if (hasRealTaglines) {
     score += 10;
   }
@@ -770,7 +770,7 @@ function calculateCompleteness(data: {
   // Outras seções úteis (além das padrão e INFO) (10%)
   const usefulSections = data.helpDrawer.sections.filter(
     s => s.level !== 'INFO' &&
-      !s.items.some(i => i.text.includes('Informacoes sobre') && i.text.includes('adicionadas'))
+      !s.items.some(i => i.text.includes('Informações sobre') && i.text.includes('adicionadas'))
   );
   if (usefulSections.length > 0) {
     score += 10;

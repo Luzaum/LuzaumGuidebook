@@ -30,7 +30,7 @@ export default function ClinicSetup() {
       const state = (location.state || {}) as LocationState
       nav(state.from || '/app', { replace: true })
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Nao foi possivel criar a clinica.'
+      const message = err instanceof Error ? err.message : 'Não foi possível criar a clínica.'
       setLocalError(message)
     } finally {
       setSubmitting(false)
@@ -43,15 +43,15 @@ export default function ClinicSetup() {
 
   return (
     <div className="mx-auto max-w-md p-6">
-      <h1 className="mb-2 text-2xl font-semibold">Criar Clinica</h1>
+      <h1 className="mb-2 text-2xl font-semibold">Criar Clínica</h1>
       <p className="mb-4 text-sm text-slate-600">
-        Este e o primeiro acesso desta conta. Crie sua clinica para ativar o ambiente.
+        Este e o primeiro acesso desta conta. Crie sua clínica para ativar o ambiente.
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-3">
         <input
           className="w-full rounded border p-3"
-          placeholder="Nome da clinica"
+          placeholder="Nome da clínica"
           value={clinicName}
           onChange={(e) => setClinicName(e.target.value)}
           required
@@ -61,7 +61,7 @@ export default function ClinicSetup() {
           disabled={submitting}
           type="submit"
         >
-          {submitting ? 'Criando clinica...' : 'Criar clinica'}
+          {submitting ? 'Criando clínica...' : 'Criar clínica'}
         </button>
       </form>
 
