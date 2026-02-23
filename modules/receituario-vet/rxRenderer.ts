@@ -531,11 +531,11 @@ export function renderRxToPrintDoc(
     documentKind === 'special-control'
       ? []
       : [
-          ...state.recommendations.bullets.filter(Boolean),
-          ...(state.recommendations.waterMlPerDay.trim()
-            ? [`Meta hídrica diária: ${state.recommendations.waterMlPerDay} mL/dia.`]
-            : []),
-        ]
+        ...state.recommendations.bullets.filter(Boolean),
+        ...(state.recommendations.waterMlPerDay.trim()
+          ? [`Meta hídrica diária: ${state.recommendations.waterMlPerDay} mL/dia.`]
+          : []),
+      ]
 
   const selectedExams = uniqueByNormalizedText([
     ...state.recommendations.exams,
@@ -548,15 +548,17 @@ export function renderRxToPrintDoc(
 
   const patientParts: string[] = [state.patient.species]
   if (state.patient.breed.trim()) patientParts.push(state.patient.breed)
+  if (state.patient.color?.trim()) patientParts.push(state.patient.color)
   if (state.patient.weightKg.trim()) patientParts.push(`${state.patient.weightKg} kg`)
+  if (state.patient.microchip?.trim()) patientParts.push(`Microchip: ${state.patient.microchip}`)
   const tutorAddressLine = [
-    state.tutor.addressStreet || '',
-    state.tutor.addressNumber || '',
-    state.tutor.addressComplement || '',
-    state.tutor.addressDistrict || '',
-    state.tutor.addressCity || '',
-    state.tutor.addressState || '',
-    state.tutor.addressZip || '',
+    state.tutor.street || '',
+    state.tutor.number || '',
+    state.tutor.complement || '',
+    state.tutor.neighborhood || '',
+    state.tutor.city || '',
+    state.tutor.state || '',
+    state.tutor.zipcode || '',
   ]
     .filter(Boolean)
     .join(', ')

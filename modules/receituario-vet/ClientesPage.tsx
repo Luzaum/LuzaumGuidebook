@@ -1,28 +1,17 @@
 ﻿import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { supabase } from '@/src/lib/supabaseClient'
+import { useClinic } from '@/src/components/ClinicProvider'
+import { resolveRxDataSource, createRxDataAdapter } from './adapters'
+import { DataAdapterPatientMatch } from './adapters/DataAdapter'
 import ReceituarioChrome from './ReceituarioChrome'
 import { BRAZIL_STATE_SUGGESTIONS, citySuggestionsForState, lookupAddressByCep, normalizeStateInput } from './rxBrazilData'
 import { digitsOnly, maskCep, maskCpf, maskPhoneBr, maskRg } from './rxInputMasks'
 import { breedOptionsForSpecies, coatOptionsForSpecies } from './rxReferenceData'
-import {
-  ClientAnimalRecord,
-  ClientRecord,
-  HistoryRecord,
-  createEmptyClient,
-  createEmptyClientAnimal,
-  loadRxDb,
-  removeClient,
-  saveRxDb,
-  upsertClient,
-} from './rxDb'
-import { useClinic } from '@/src/components/ClinicProvider'
-import { insertTutor, insertPatient, listTutors } from '@/src/lib/clinicRecords'
-import { createRxDataAdapter, resolveRxDataSource } from './adapters'
+import { loadRxDb, createEmptyClient, createEmptyClientAnimal, ClientRecord, ClientAnimalRecord, upsertClient, removeClient, saveRxDb, HistoryRecord } from './rxDb'
+import { TutorInfo, PatientInfo } from './rxTypes'
 import { isUuid } from '@/src/lib/isUuid'
-import type { TutorInfo, PatientInfo } from './rxTypes'
-
-function createClientName(client: ClientRecord) {
-  return client.fullName.trim() || 'Tutor sem nome'
-}
+import { normalizeNeutered } from './rxUtils'
+import { insertTutor, insertPatient, insertWeight } from '@/src/lib/clinicRecords'
 
 function normalizeLooseText(value: string): string {
   return String(value || '')
@@ -33,6 +22,10 @@ function normalizeLooseText(value: string): string {
 }
 
 const NUMERIC_ID_PATTERN = /^\d{5}$/
+
+function createClientName(client: ClientRecord): string {
+  return client.fullName || 'Tutor sem nome'
+}
 
 function isNumericRecordId(value: string | null | undefined): boolean {
   return NUMERIC_ID_PATTERN.test(String(value || '').trim())
@@ -176,32 +169,117 @@ export default function ClientesPage() {
 
   // Load tutors from Supabase when in Supabase mode
   const loadSupabaseTutors = useCallback(async () => {
-    if (rxDataSource !== 'supabase') return
+    if (rxDataSource !== 'supabase') return;
+    console.log('[ClientesPage] REFRESH list', { dataSource: rxDataSource, clinicId })
     setSupabaseLoading(true)
     try {
-      const tutors = await rxAdapter.searchTutorsByName('', 100)
-      setSupabaseTutors(tutors)
+      // Direct query for diagnostics as requested
+      const { data: directData, error: directError } = await supabase
+        .from('tutors')
+        .select('*')
+        .eq('clinic_id', clinicId)
+        .is('deleted_at', null)
+        .order('full_name', { ascending: true })
+
+      console.log('[ClientesPage] LIST result (direct)', { count: directData?.length, data: directData, error: directError })
+
+      if (directData) {
+        // Map raw data to TutorInfo[]
+        const mapped = directData.map(row => ({
+          tutorRecordId: row.id,
+          name: row.full_name || '',
+          fullName: row.full_name || '',
+          full_name: row.full_name || '',
+          phone: row.phone || '',
+          email: row.email || '',
+          documentId: row.document_id || '',
+          document_id: row.document_id || '',
+          cpf: row.cpf || '',
+          rg: row.rg || '',
+          street: row.street || '',
+          number: row.number || '',
+          neighborhood: row.neighborhood || '',
+          city: row.city || '',
+          state: row.state || '',
+          zipcode: row.zipcode || '',
+          complement: row.address_complement || '',
+          notes: row.notes || ''
+        }))
+        setSupabaseTutors(mapped)
+      }
     } catch (err) {
-      if (import.meta.env.DEV) console.error('[ClientesPage] Failed to load Supabase tutors', err)
+      console.error('[ClientesPage] Failed to load Supabase tutors', err)
+      syncToast(`Falha ao carregar lista: ${err instanceof Error ? err.message : String(err)}`)
     } finally {
       setSupabaseLoading(false)
     }
-  }, [rxAdapter, rxDataSource])
+  }, [rxAdapter, rxDataSource, clinicId])
 
   useEffect(() => {
+    console.log('[ClientesPage] active clinic', clinicId)
     if (rxDataSource === 'supabase') {
       void loadSupabaseTutors()
     }
-  }, [rxDataSource, loadSupabaseTutors])
+  }, [rxDataSource, loadSupabaseTutors, clinicId])
 
   // Load patients for a Supabase tutor
   const loadSupabasePatientsForTutor = useCallback(async (tutorId: string) => {
     if (rxDataSource !== 'supabase') return
     if (supabasePatientsMap[tutorId]) return // already loaded
     try {
-      if (rxAdapter.listPatientsByTutorId) {
-        const patients = await rxAdapter.listPatientsByTutorId(tutorId)
-        setSupabasePatientsMap((prev) => ({ ...prev, [tutorId]: patients }))
+      console.log('[ClientesPage] LIST patients (explicit)', { tutorId })
+      const { data, error } = await supabase
+        .from('patients')
+        .select(`
+          id,
+          clinic_id,
+          tutor_id,
+          name,
+          species,
+          breed,
+          sex,
+          neutered,
+          dob,
+          age_text,
+          weight_kg,
+          microchip,
+          coat,
+          color,
+          anamnesis,
+          notes
+        `)
+        .eq('tutor_id', tutorId)
+        .is('deleted_at', null)
+        .order('name', { ascending: true })
+
+      if (error) {
+        console.error('[ClientesPage] Failed to load patients (explicit)', error)
+        throw error
+      }
+
+      if (data) {
+        const mapped: PatientInfo[] = data.map((row: any) => ({
+          patientRecordId: row.id,
+          name: row.name || 'Sem nome',
+          species: (row.species || 'Canina') as any,
+          breed: row.breed || '',
+          sex: (row.sex || 'Sem dados') as any,
+          reproductiveStatus: row.neutered === true || String(row.neutered).toLowerCase() === 'true' || String(row.neutered).toLowerCase() === 'castrado'
+            ? 'Castrado'
+            : (row.neutered === false || String(row.neutered).toLowerCase() === 'false' || String(row.neutered).toLowerCase() === 'fertil' ? 'Fértil' : 'Sem dados'),
+          ageText: row.age_text || '',
+          birthDate: row.dob || '',
+          coat: row.coat || '',
+          color: row.color || '',
+          microchip: row.microchip || '',
+          microchipped: !!row.microchip,
+          weightKg: row.weight_kg || '',
+          weightDate: '',
+          anamnesis: row.anamnesis || '',
+          notes: row.notes || '',
+          showNotesInPrint: false,
+        }))
+        setSupabasePatientsMap((prev) => ({ ...prev, [tutorId]: mapped }))
       }
     } catch (err) {
       if (import.meta.env.DEV) console.error('[ClientesPage] Failed to load patients for tutor', tutorId, err)
@@ -226,6 +304,91 @@ export default function ClientesPage() {
   const [cepLookupLoading, setCepLookupLoading] = useState(false)
   const [cepLookupMessage, setCepLookupMessage] = useState<string | null>(null)
 
+  // Bulk mode state
+  const [isBulkMode, setIsBulkMode] = useState(false)
+  const [selectedTutorIds, setSelectedTutorIds] = useState<Set<string>>(new Set())
+  const [isDeleting, setIsDeleting] = useState(false)
+
+  // Custom Confirm Modal State
+  const [confirmOpen, setConfirmOpen] = useState(false)
+  const [confirmTitle, setConfirmTitle] = useState("")
+  const [confirmDesc, setConfirmDesc] = useState("")
+  const [confirmBusy, setConfirmBusy] = useState(false)
+  const [confirmAction, setConfirmAction] = useState<null | (() => Promise<void> | void)>(null)
+
+  function openConfirm(opts: { title: string; desc: string; onConfirm: () => Promise<void> | void }) {
+    setConfirmTitle(opts.title)
+    setConfirmDesc(opts.desc)
+    setConfirmAction(() => opts.onConfirm)
+    setConfirmOpen(true)
+  }
+
+  // Tutor Delete State (à prova de burrice)
+  const [pendingDeleteTutorId, setPendingDeleteTutorId] = useState<string | null>(null)
+  const [pendingDeleteTutorName, setPendingDeleteTutorName] = useState<string>('')
+  const [isDeleteTutorOpen, setIsDeleteTutorOpen] = useState(false)
+  const [tutorHasPrescriptions, setTutorHasPrescriptions] = useState(false)
+
+  async function openDeleteTutorModal(tutorId: string, tutorName: string) {
+    console.log('[TutorDelete] open modal', { tutorId, tutorName })
+    setPendingDeleteTutorId(tutorId)
+    setPendingDeleteTutorName(tutorName)
+    setTutorHasPrescriptions(false)
+
+    if (clinicId) {
+      const { count, error } = await supabase
+        .from('prescriptions')
+        .select('id', { count: 'exact', head: true })
+        .eq('clinic_id', clinicId)
+        .eq('tutor_id', tutorId)
+
+      if (!error && (count ?? 0) > 0) {
+        console.log('[TutorDelete] tutor has prescriptions', { tutorId, count })
+        setTutorHasPrescriptions(true)
+      }
+    }
+
+    setIsDeleteTutorOpen(true)
+  }
+
+  async function confirmDeleteTutor() {
+    console.log('[TutorDelete] confirm clicked', {
+      pendingDeleteTutorId,
+      pendingDeleteTutorName,
+      activeClinicId: clinicId,
+    })
+
+    if (!pendingDeleteTutorId) {
+      console.warn('[TutorDelete] no pendingDeleteTutorId, aborting')
+      return
+    }
+    if (!clinicId) {
+      console.warn('[TutorDelete] no clinicId, aborting')
+      return
+    }
+
+    setIsDeleting(true)
+    try {
+      const { deleteTutorSoft } = await import('@/src/lib/clinicRecords')
+      await deleteTutorSoft(pendingDeleteTutorId, clinicId)
+      console.log('[TutorDelete] success', { pendingDeleteTutorId })
+      syncToast(tutorHasPrescriptions ? `Tutor ${pendingDeleteTutorName} arquivado.` : `Tutor ${pendingDeleteTutorName} removido.`)
+      void loadSupabaseTutors()
+      if (selectedId === pendingDeleteTutorId) {
+        setSelectedId('')
+        createNewClient()
+      }
+    } catch (err) {
+      console.error('[TutorDelete] failed', { error: err, tutorId: pendingDeleteTutorId })
+      syncToast('Falha ao remover tutor.')
+    } finally {
+      setIsDeleting(false)
+      setIsDeleteTutorOpen(false)
+      setPendingDeleteTutorId(null)
+      setPendingDeleteTutorName('')
+    }
+  }
+
   // List shown in sidebar
   const sidebarClients = rxDataSource === 'supabase' ? [] : db.clients
   const sidebarSupabaseTutors = rxDataSource === 'supabase' ? supabaseTutors : []
@@ -235,8 +398,8 @@ export default function ClientesPage() {
     [db.clients, selectedId]
   )
   const citySuggestions = useMemo(
-    () => citySuggestionsForState(draft.addressState || ''),
-    [draft.addressState]
+    () => citySuggestionsForState(draft.state || ''),
+    [draft.state]
   )
 
   const syncToast = (message: string) => {
@@ -264,13 +427,13 @@ export default function ClientesPage() {
       email: tutor.email || '',
       cpf: tutor.cpf || '',
       rg: tutor.rg || '',
-      addressStreet: tutor.addressStreet || '',
-      addressNumber: tutor.addressNumber || '',
-      addressComplement: tutor.addressComplement || '',
-      addressDistrict: tutor.addressDistrict || '',
-      addressCity: tutor.addressCity || '',
-      addressState: tutor.addressState || '',
-      addressZip: tutor.addressZip || '',
+      street: tutor.street || '',
+      number: tutor.number || '',
+      complement: tutor.complement || '',
+      neighborhood: tutor.neighborhood || '',
+      city: tutor.city || '',
+      state: tutor.state || '',
+      zipcode: tutor.zipcode || '',
       notes: tutor.notes || '',
       animals: patients.map((p) => ({
         ...createEmptyClientAnimal(),
@@ -286,7 +449,10 @@ export default function ClientesPage() {
         weightDate: p.weightDate || '',
         notes: p.notes || '',
         weightHistory: [],
-        anamnesis: '',
+        anamnesis: p.anamnesis || '',
+        color: p.color || '',
+        microchip: p.microchip || '',
+        microchipped: p.microchipped || false,
         updatedAt: new Date().toISOString(),
       })),
       updatedAt: new Date().toISOString(),
@@ -402,14 +568,184 @@ export default function ClientesPage() {
 
     setDraft((prev) => ({
       ...prev,
-      addressZip: maskCep(address.cep || cepDigits),
-      addressStreet: address.street || prev.addressStreet || '',
-      addressDistrict: address.district || prev.addressDistrict || '',
-      addressCity: address.city || prev.addressCity || '',
-      addressState: normalizeStateInput(address.state || prev.addressState || ''),
-      addressComplement: prev.addressComplement || address.complement || '',
+      zipcode: maskCep(address.cep || cepDigits),
+      street: address.street || prev.street || '',
+      neighborhood: address.district || prev.neighborhood || '',
+      city: address.city || prev.city || '',
+      state: normalizeStateInput(address.state || prev.state || ''),
+      complement: prev.complement || address.complement || '',
     }))
     setCepLookupMessage('Endereço preenchido automaticamente pelo CEP.')
+  }
+
+  const toggleTutorSelection = (tutorId: string) => {
+    setSelectedTutorIds((prev) => {
+      const next = new Set(prev)
+      if (next.has(tutorId)) next.delete(tutorId)
+      else next.add(tutorId)
+      return next
+    })
+  }
+
+  const selectAllTutors = () => {
+    const allIds = rxDataSource === 'supabase'
+      ? supabaseTutors.map(t => t.tutorRecordId)
+      : db.clients.map(c => c.id)
+    setSelectedTutorIds(new Set(allIds))
+  }
+
+  const clearTutorSelection = () => {
+    setSelectedTutorIds(new Set())
+  }
+
+  const deleteSingleTutorSupabase = (tutorId: string, name: string) => {
+    openConfirm({
+      title: "Apagar tutor",
+      desc: `Você tem certeza que quer apagar esse tutor do sistema? Isso é irreversível.\n\nTutor: ${name}`,
+      onConfirm: async () => {
+        setIsDeleting(true)
+        console.log('[TutorDelete] START', { tutorId, activeClinicId: clinicId })
+        try {
+          const { data, error } = await supabase
+            .from('tutors')
+            .update({ deleted_at: new Date().toISOString() })
+            .eq('id', tutorId)
+            .eq('clinic_id', clinicId)
+            .select('id, clinic_id')
+
+          console.log('[TutorDelete] RESULT', { data, error })
+
+          if (error) {
+            console.error('[TutorDelete] ERROR', error)
+            syncToast(`Erro ao apagar: ${error.message}`)
+            return
+          }
+
+          if (!data || data.length === 0) {
+            console.warn('[TutorDelete] NOTHING DELETED (data empty). Check clinic_id mismatch or RLS.')
+            syncToast('Nenhum registro apagado. Verifique permissões.')
+            return
+          }
+
+          console.log('[TutorDelete] SUCCESS', { deleted: data })
+          syncToast(`Tutor ${name} removido.`)
+          void loadSupabaseTutors()
+          if (selectedId === tutorId) {
+            setSelectedId('')
+            createNewClient()
+          }
+        } catch (err: any) {
+          console.error('[TutorDelete] UNEXPECTED ERROR', err)
+          syncToast('Falha ao remover tutor.')
+        } finally {
+          setIsDeleting(false)
+        }
+      },
+    })
+  }
+
+  const deletePatientSupabase = (patientId: string, name: string, index: number) => {
+    openConfirm({
+      title: "Apagar paciente",
+      desc: `Você tem certeza que quer apagar o paciente ${name} do sistema? Isso é irreversível.`,
+      onConfirm: async () => {
+        setIsDeleting(true)
+        console.log('[PatientDelete] START', { patientId, activeClinicId: clinicId })
+        try {
+          const { data, error } = await supabase
+            .from('patients')
+            .update({ deleted_at: new Date().toISOString() })
+            .eq('id', patientId)
+            .eq('clinic_id', clinicId)
+            .select('id, clinic_id')
+
+          console.log('[PatientDelete] RESULT', { data, error })
+
+          if (error) {
+            console.error('[PatientDelete] ERROR', error)
+            syncToast(`Erro ao apagar paciente: ${error.message}`)
+            return
+          }
+
+          if (!data || data.length === 0) {
+            console.warn('[PatientDelete] NOTHING DELETED. Check clinic_id mismatch or RLS.')
+            syncToast('Nenhum paciente apagado.')
+            return
+          }
+
+          console.log('[PatientDelete] SUCCESS', { deleted: data })
+          syncToast(`Paciente ${name} removido.`)
+
+          // Local removal
+          setDraft((prev) => ({
+            ...prev,
+            animals: prev.animals.filter((a) => a.id !== patientId),
+          }))
+
+          // Refresh patient map for the current tutor
+          if (selectedId) {
+            void loadSupabasePatientsForTutor(selectedId)
+          }
+        } catch (err: any) {
+          console.error('[PatientDelete] UNEXPECTED ERROR', err)
+          syncToast('Falha ao remover paciente.')
+        } finally {
+          setIsDeleting(false)
+        }
+      },
+    })
+  }
+
+  const deleteMultipleTutorsSupabase = () => {
+    const count = selectedTutorIds.size
+    if (count === 0) return
+    const tutorIds = Array.from(selectedTutorIds)
+
+    openConfirm({
+      title: "Apagar tutores selecionados",
+      desc: `Você tem certeza que quer apagar ${count} tutores do sistema? Isso é irreversível.`,
+      onConfirm: async () => {
+        setIsDeleting(true)
+        console.log('[BulkDelete] START', { count, tutorIds, activeClinicId: clinicId })
+        try {
+          const { data, error } = await supabase
+            .from('tutors')
+            .update({ deleted_at: new Date().toISOString() })
+            .in('id', tutorIds)
+            .eq('clinic_id', clinicId)
+            .select('id, clinic_id')
+
+          console.log('[BulkDelete] RESULT', { data, error })
+
+          if (error) {
+            console.error('[BulkDelete] ERROR', error)
+            syncToast(`Erro ao apagar vários: ${error.message}`)
+            return
+          }
+
+          if (!data || data.length === 0) {
+            console.warn('[BulkDelete] NOTHING DELETED. Check clinic_id mismatch or RLS.')
+            syncToast('Nenhum registro apagado.')
+            return
+          }
+
+          console.log('[BulkDelete] SUCCESS', { deletedCount: data.length })
+          syncToast(`${data.length} tutores removidos.`)
+          setSelectedTutorIds(new Set())
+          setIsBulkMode(false)
+          void loadSupabaseTutors()
+          if (selectedTutorIds.has(selectedId)) {
+            setSelectedId('')
+            createNewClient()
+          }
+        } catch (err: any) {
+          console.error('[BulkDelete] UNEXPECTED ERROR', err)
+          syncToast('Falha ao remover tutores.')
+        } finally {
+          setIsDeleting(false)
+        }
+      },
+    })
   }
 
   const saveClientDraft = async () => {
@@ -423,8 +759,8 @@ export default function ClientesPage() {
       cpf: maskCpf(draft.cpf),
       rg: maskRg(draft.rg),
       phone: maskPhoneBr(draft.phone),
-      addressState: normalizeStateInput(draft.addressState || ''),
-      addressZip: maskCep(draft.addressZip),
+      state: normalizeStateInput(draft.state || ''),
+      zipcode: maskCep(draft.zipcode),
       animals,
       updatedAt: now,
     }
@@ -432,6 +768,13 @@ export default function ClientesPage() {
     if (rxDataSource === 'supabase') {
       // MODO SUPABASE: Salvar tutor E pacientes no banco remoto
       const fullName = nextClient.fullName.trim()
+      console.log('[ClientesPage] SAVE clicked', {
+        dataSource: rxDataSource,
+        activeClinicId: clinicId,
+        tutorId: draft?.id,
+        tutorName: fullName,
+      })
+
       if (!fullName) {
         syncToast('Preencha o nome do tutor antes de salvar.')
         return
@@ -454,19 +797,35 @@ export default function ClientesPage() {
           if (import.meta.env.DEV) {
             console.log('[ClientesPage] Inserting new Supabase tutor:', fullName)
           }
-          const result = await insertTutor(
-            {
-              full_name: fullName,
-              phone: nextClient.phone || undefined,
-              email: nextClient.email || undefined,
-              notes: nextClient.notes || undefined,
-            },
-            clinicId
-          )
-          const inserted = Array.isArray(result) ? result[0] : result
-          tutorId = (inserted as { id: string }).id
-          if (!tutorId) throw new Error('ID do tutor não retornado pelo Supabase.')
-          if (import.meta.env.DEV) console.log('[ClientesPage] New tutor ID:', tutorId)
+          const payloadTutor = {
+            clinic_id: clinicId,
+            full_name: fullName,
+            phone: draft.phone ?? null,
+            email: draft.email ?? null,
+            document_id: draft.documentId ?? null,
+            cpf: draft.cpf ?? null,
+            rg: draft.rg ?? null,
+            street: draft.street ?? null,
+            number: draft.number ?? null,
+            neighborhood: draft.neighborhood ?? null,
+            city: draft.city ?? null,
+            state: draft.state ?? null,
+            zipcode: draft.zipcode ?? null,
+            address_complement: draft.complement ?? null,
+            notes: draft.notes ?? null,
+          }
+          console.log('[DEBUG] tutor payload', payloadTutor)
+          try {
+            const result = await insertTutor(payloadTutor, clinicId)
+            console.log('[DEBUG] tutor result', { data: result, error: null })
+            const inserted = Array.isArray(result) ? result[0] : result
+            tutorId = (inserted as { id: string }).id
+            if (!tutorId) throw new Error('ID do tutor não retornado pelo Supabase.')
+            if (import.meta.env.DEV) console.log('[ClientesPage] New tutor ID:', tutorId)
+          } catch (tutorErr) {
+            console.log('[DEBUG] tutor result', { data: null, error: tutorErr })
+            throw tutorErr
+          }
         }
 
         // 2. Save each animal as a patient linked to this tutor
@@ -479,19 +838,30 @@ export default function ClientesPage() {
             continue
           }
           try {
-            const patientResult = await insertPatient(
-              {
-                tutor_id: tutorId,
-                name: animal.name.trim(),
-                species: animal.species || undefined,
-                breed: animal.breed || undefined,
-                sex: animal.sex || undefined,
-                age_text: animal.ageText || undefined,
-                weight_kg: animal.weightKg || undefined,
-                notes: animal.notes || undefined,
-              },
-              clinicId
-            )
+            const isNeutered = normalizeNeutered(animal.reproductiveStatus)
+            if (import.meta.env.DEV) {
+              console.log('[Patients] saving patient:', animal.name, 'neutered=', isNeutered, typeof isNeutered)
+            }
+            const payloadPatient = {
+              clinic_id: clinicId,
+              tutor_id: tutorId,
+              name: animal.name.trim(),
+              species: animal.species || null,
+              breed: animal.breed || null,
+              sex: animal.sex || null,
+              neutered: normalizeNeutered(animal.reproductiveStatus),
+              // dob removed from payload
+              age_text: animal.ageText || null,
+              weight_kg: animal.weightKg || null,
+              microchip: (animal as any).microchip || null,
+              coat: animal.coat || null,
+              color: (animal as any).color || null,
+              notes: animal.notes || null,
+              anamnesis: (animal as any).anamnesis || null,
+            }
+            console.log('[DEBUG] patient payload', payloadPatient)
+            const patientResult = await insertPatient(payloadPatient, clinicId)
+            console.log('[DEBUG] patient result', { data: patientResult, error: null })
             const insertedPatient = Array.isArray(patientResult) ? patientResult[0] : patientResult
             if (insertedPatient) {
               newPatients.push({
@@ -502,10 +872,14 @@ export default function ClientesPage() {
                 sex: (animal.sex || 'Sem dados') as PatientInfo['sex'],
                 reproductiveStatus: (animal.reproductiveStatus || 'Sem dados') as PatientInfo['reproductiveStatus'],
                 ageText: animal.ageText || '',
-                birthDate: '',
+                birthDate: animal.birthDate || '',
                 coat: animal.coat || '',
+                color: (animal as any).color || '',
+                microchip: (animal as any).microchip || '',
+                microchipped: !!(animal as any).microchip,
                 weightKg: animal.weightKg || '',
                 weightDate: animal.weightDate || '',
+                anamnesis: (animal as any).anamnesis || '',
                 notes: animal.notes || '',
                 showNotesInPrint: false,
               })
@@ -522,9 +896,10 @@ export default function ClientesPage() {
         setDraft((prev) => ({
           ...prev,
           id: tutorId,
-          animals: prev.animals.map((a, idx) => {
+          animals: prev.animals.map((a) => {
             if (isUuid(a.id)) return a // already persisted
-            const saved = newPatients[idx]
+            // Find by name in successfully saved patients
+            const saved = newPatients.find(p => p.name === a.name)
             return saved ? { ...a, id: saved.patientRecordId } : a
           }),
         }))
@@ -537,11 +912,16 @@ export default function ClientesPage() {
         }
 
         const savedCount = animalsToSave.filter((a) => !isUuid(a.id)).length
-        syncToast(`Tutor e ${savedCount} paciente(s) salvos no Supabase com sucesso.`)
-      } catch (error) {
-        const msg = error instanceof Error ? error.message : 'Erro ao salvar'
-        syncToast(`Erro ao salvar tutor: ${msg}`)
-        if (import.meta.env.DEV) console.error('[ClientesPage] Supabase save error:', error)
+        if (savedCount < animalsToSave.length && animalsToSave.some(a => !isUuid(a.id) && !newPatients.some(p => p.name === a.name))) {
+          syncToast(`Tutor salvo ✅, mas alguns pacientes falharam.`)
+        } else {
+          syncToast(`Tutor e ${savedCount} paciente(s) salvos no Supabase com sucesso.`)
+        }
+      } catch (error: any) {
+        console.error('[ClientesPage] SAVE error', error)
+        const detailedMsg = error?.message || error?.details || String(error)
+        const code = error?.code ? ` [Code: ${error.code}]` : ''
+        syncToast(`Falha ao salvar tutor: ${detailedMsg}${code}`)
       } finally {
         setSupabaseSaving(false)
       }
@@ -568,26 +948,30 @@ export default function ClientesPage() {
 
   const deleteSelectedClient = () => {
     if (!selectedClient) return
-    const confirmDelete = window.confirm('Deseja remover este tutor e todos os pacientes vinculados?')
-    if (!confirmDelete) return
-    const nextDb = removeClient(db, selectedClient.id)
-    saveRxDb(nextDb)
-    setDb(nextDb)
-    if (nextDb.clients[0]) {
-      setSelectedId(nextDb.clients[0].id)
-      setDraft(JSON.parse(JSON.stringify(nextDb.clients[0])) as ClientRecord)
-    } else {
-      setSelectedId('')
-      const empty = createEmptyClient()
-      const nextClientId = nextNumericRecordId(nextDb.clients.map((entry) => entry.id))
-      const nextAnimalId = nextNumericRecordId(nextDb.clients.flatMap((entry) => entry.animals.map((animal) => animal.id)))
-      setDraft({
-        ...empty,
-        id: nextClientId,
-        animals: empty.animals.map((animal, idx) => ({ ...animal, id: idx === 0 ? nextAnimalId : animal.id })),
-      })
-    }
-    syncToast('Tutor removido.')
+    openConfirm({
+      title: "Remover tutor (Local)",
+      desc: "Deseja remover este tutor e todos os pacientes vinculados? Esta ação é local e imediata.",
+      onConfirm: () => {
+        const nextDb = removeClient(db, selectedClient.id)
+        saveRxDb(nextDb)
+        setDb(nextDb)
+        if (nextDb.clients[0]) {
+          setSelectedId(nextDb.clients[0].id)
+          setDraft(JSON.parse(JSON.stringify(nextDb.clients[0])) as ClientRecord)
+        } else {
+          setSelectedId('')
+          const empty = createEmptyClient()
+          const nextClientId = nextNumericRecordId(nextDb.clients.map((entry) => entry.id))
+          const nextAnimalId = nextNumericRecordId(nextDb.clients.flatMap((entry) => entry.animals.map((animal) => animal.id)))
+          setDraft({
+            ...empty,
+            id: nextClientId,
+            animals: empty.animals.map((animal, idx) => ({ ...animal, id: idx === 0 ? nextAnimalId : animal.id })),
+          })
+        }
+        syncToast('Tutor removido.')
+      }
+    })
   }
 
   return (
@@ -597,7 +981,7 @@ export default function ClientesPage() {
       subtitle="Banco de dados robusto para receitas controladas: tutor, animais, evolução de peso e histórico clínico."
       actions={
         <>
-          <button type="button" className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-2 text-sm" onClick={createNewClient}>
+          <button type="button" className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-2 text-sm disabled:opacity-50" onClick={createNewClient} disabled={isDeleting}>
             <span className="material-symbols-outlined text-[18px]">add</span>
             Novo tutor
           </button>
@@ -605,7 +989,7 @@ export default function ClientesPage() {
             type="button"
             className="rxv-btn-primary inline-flex items-center gap-2 px-3 py-2 text-sm disabled:opacity-60"
             onClick={() => void saveClientDraft()}
-            disabled={supabaseSaving}
+            disabled={supabaseSaving || isDeleting}
           >
             <span className="material-symbols-outlined text-[18px]">{supabaseSaving ? 'sync' : 'save'}</span>
             {supabaseSaving ? 'Salvando...' : 'Salvar'}
@@ -615,11 +999,38 @@ export default function ClientesPage() {
     >
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-12">
         <aside className="rxv-card p-4 xl:col-span-3">
-          <div className="mb-3 flex items-center justify-between">
-            <h3 className="text-sm font-bold uppercase tracking-wide text-[color:var(--rxv-muted)]">Tutores</h3>
-            <span className="rounded-full border border-[color:var(--rxv-border)] px-2 py-0.5 text-xs text-[color:var(--rxv-muted)]">
-              {rxDataSource === 'supabase' ? supabaseTutors.length : db.clients.length}
-            </span>
+          <div className="mb-3 flex flex-col gap-2">
+            <div className="flex items-center justify-between">
+              <h3 className="text-sm font-bold uppercase tracking-wide text-[color:var(--rxv-muted)]">Tutores</h3>
+              <span className="rounded-full border border-[color:var(--rxv-border)] px-2 py-0.5 text-xs text-[color:var(--rxv-muted)]">
+                {rxDataSource === 'supabase' ? supabaseTutors.length : db.clients.length}
+              </span>
+            </div>
+
+            {rxDataSource === 'supabase' && (
+              <div className="flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  className={`text-[10px] uppercase font-bold px-2 py-1 rounded border transition-colors ${isBulkMode ? 'bg-amber-500/20 border-amber-500/40 text-amber-200' : 'bg-[color:var(--rxv-surface-2)] border-[color:var(--rxv-border)] text-[color:var(--rxv-muted)]'}`}
+                  onClick={() => {
+                    setIsBulkMode(!isBulkMode)
+                    if (isBulkMode) clearTutorSelection()
+                  }}
+                >
+                  {isBulkMode ? 'Cancelar Seleção' : 'Selecionar vários'}
+                </button>
+                {isBulkMode && (
+                  <>
+                    <button type="button" className="text-[10px] uppercase font-bold px-2 py-1 rounded border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] text-[color:var(--rxv-muted)]" onClick={selectAllTutors}>
+                      Todos
+                    </button>
+                    <button type="button" className="text-[10px] uppercase font-bold px-2 py-1 rounded border border-red-700/40 bg-red-900/10 text-red-300 disabled:opacity-30" onClick={deleteMultipleTutorsSupabase} disabled={selectedTutorIds.size === 0 || isDeleting}>
+                      Apagar ({selectedTutorIds.size})
+                    </button>
+                  </>
+                )}
+              </div>
+            )}
           </div>
           <div className="space-y-2">
             {rxDataSource === 'supabase' ? (
@@ -633,18 +1044,52 @@ export default function ClientesPage() {
                 </p>
               ) : (
                 supabaseTutors.map((tutor) => (
-                  <button
-                    type="button"
-                    key={tutor.tutorRecordId}
-                    className={`w-full rounded-xl border px-3 py-2 text-left ${tutor.tutorRecordId === selectedId ? 'border-[#61eb48]/45 bg-[#61eb48]/10' : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/60'
-                      }`}
-                    onClick={() => {
-                      selectSupabaseTutor(tutor)
-                    }}
-                  >
-                    <p className="text-sm font-semibold">{tutor.name || 'Tutor sem nome'}</p>
-                    <p className="text-xs text-[color:var(--rxv-muted)]">{tutor.phone || tutor.email || 'Sem contato'}</p>
-                  </button>
+                  <div key={tutor.tutorRecordId} className="group relative flex items-center gap-2">
+                    {isBulkMode && (
+                      <input
+                        type="checkbox"
+                        className="h-4 w-4 rounded border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] text-[#61eb48] focus:ring-0 focus:ring-offset-0"
+                        checked={selectedTutorIds.has(tutor.tutorRecordId)}
+                        onChange={() => toggleTutorSelection(tutor.tutorRecordId)}
+                      />
+                    )}
+                    <div
+                      role="button"
+                      tabIndex={isBulkMode || isDeleting ? -1 : 0}
+                      className={`flex-1 rounded-xl border px-3 py-2 text-left transition-all ${tutor.tutorRecordId === selectedId ? 'border-[#61eb48]/45 bg-[#61eb48]/10' : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/60'
+                        } ${(isBulkMode || isDeleting) ? 'opacity-60 cursor-default' : 'hover:border-[color:var(--rxv-primary)]/40 pointer-events-auto cursor-pointer'}`}
+                      onClick={() => {
+                        if (!isBulkMode && !isDeleting) selectSupabaseTutor(tutor)
+                      }}
+                      onKeyDown={(e) => {
+                        if (!isBulkMode && !isDeleting && (e.key === 'Enter' || e.key === ' ')) {
+                          e.preventDefault()
+                          selectSupabaseTutor(tutor)
+                        }
+                      }}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="min-w-0">
+                          <p className="truncate text-sm font-semibold">{tutor.full_name || tutor.name || 'Tutor sem nome'}</p>
+                          <p className="truncate text-xs text-[color:var(--rxv-muted)]">{tutor.phone || tutor.email || 'Sem contato'}</p>
+                        </div>
+                        {!isBulkMode && (
+                          <button
+                            type="button"
+                            className="material-symbols-outlined hidden text-[18px] text-red-400 hover:text-red-300 group-hover:block"
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              openDeleteTutorModal(tutor.tutorRecordId, tutor.full_name || tutor.name || '')
+                            }}
+                            aria-label={`Remover tutor ${tutor.full_name || tutor.name}`}
+                            title="Remover tutor"
+                          >
+                            delete
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
                 ))
               )
             ) : (
@@ -749,19 +1194,19 @@ export default function ClientesPage() {
               </label>
               <label className="text-xs text-[color:var(--rxv-muted)] md:col-span-2">
                 Rua *
-                <input className="mt-1 w-full px-3 py-2" value={draft.addressStreet} onChange={(e) => patchField('addressStreet', e.target.value)} />
+                <input className="mt-1 w-full px-3 py-2" value={draft.street} onChange={(e) => patchField('street', e.target.value)} />
               </label>
               <label className="text-xs text-[color:var(--rxv-muted)]">
                 Número *
-                <input className="mt-1 w-full px-3 py-2" value={draft.addressNumber} onChange={(e) => patchField('addressNumber', e.target.value)} />
+                <input className="mt-1 w-full px-3 py-2" value={draft.number} onChange={(e) => patchField('number', e.target.value)} />
               </label>
               <label className="text-xs text-[color:var(--rxv-muted)] md:col-span-2">
                 Complemento
-                <input className="mt-1 w-full px-3 py-2" value={draft.addressComplement} onChange={(e) => patchField('addressComplement', e.target.value)} />
+                <input className="mt-1 w-full px-3 py-2" value={draft.complement} onChange={(e) => patchField('complement', e.target.value)} />
               </label>
               <label className="text-xs text-[color:var(--rxv-muted)]">
                 Bairro *
-                <input className="mt-1 w-full px-3 py-2" value={draft.addressDistrict} onChange={(e) => patchField('addressDistrict', e.target.value)} />
+                <input className="mt-1 w-full px-3 py-2" value={draft.neighborhood} onChange={(e) => patchField('neighborhood', e.target.value)} />
               </label>
               <label className="text-xs text-[color:var(--rxv-muted)]">
                 Estado (UF) *
@@ -769,9 +1214,9 @@ export default function ClientesPage() {
                   className="mt-1 w-full px-3 py-2"
                   list="rx-client-state-options"
                   placeholder="SP ou São Paulo"
-                  value={draft.addressState}
-                  onChange={(e) => patchField('addressState', e.target.value)}
-                  onBlur={(e) => patchField('addressState', normalizeStateInput(e.target.value))}
+                  value={draft.state}
+                  onChange={(e) => patchField('state', e.target.value)}
+                  onBlur={(e) => patchField('state', normalizeStateInput(e.target.value))}
                 />
               </label>
               <label className="text-xs text-[color:var(--rxv-muted)]">
@@ -780,8 +1225,8 @@ export default function ClientesPage() {
                   className="mt-1 w-full px-3 py-2"
                   list="rx-client-city-options"
                   placeholder="Digite para buscar"
-                  value={draft.addressCity}
-                  onChange={(e) => patchField('addressCity', e.target.value)}
+                  value={draft.city}
+                  onChange={(e) => patchField('city', e.target.value)}
                 />
               </label>
               <label className="text-xs text-[color:var(--rxv-muted)]">
@@ -792,14 +1237,14 @@ export default function ClientesPage() {
                     inputMode="numeric"
                     maxLength={9}
                     placeholder="00000-000"
-                    value={draft.addressZip}
-                    onChange={(e) => patchField('addressZip', maskCep(e.target.value))}
+                    value={draft.zipcode}
+                    onChange={(e) => patchField('zipcode', maskCep(e.target.value))}
                     onBlur={(e) => void fetchCep(e.target.value)}
                   />
                   <button
                     type="button"
                     className="rounded-lg border border-[color:var(--rxv-border)] px-3 py-1 text-xs font-semibold text-[color:var(--rxv-muted)] hover:bg-[color:var(--rxv-surface-2)]"
-                    onClick={() => void fetchCep(draft.addressZip)}
+                    onClick={() => void fetchCep(draft.zipcode)}
                     disabled={cepLookupLoading}
                   >
                     {cepLookupLoading ? '...' : 'Buscar'}
@@ -845,7 +1290,17 @@ export default function ClientesPage() {
                   <article key={animal.id} className="rounded-xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] p-4">
                     <div className="mb-2 flex items-center justify-between">
                       <p className="text-sm font-bold">Paciente {index + 1}</p>
-                      <button type="button" className="rounded border border-red-700/60 px-2 py-1 text-xs text-red-300 hover:bg-red-900/20" onClick={() => removeAnimal(index)}>
+                      <button
+                        type="button"
+                        className="rounded border border-red-700/60 px-2 py-1 text-xs text-red-300 hover:bg-red-900/20"
+                        onClick={() => {
+                          if (rxDataSource === 'supabase' && isUuid(animal.id)) {
+                            deletePatientSupabase(animal.id, animal.name, index)
+                          } else {
+                            removeAnimal(index)
+                          }
+                        }}
+                      >
                         Remover
                       </button>
                     </div>
@@ -914,6 +1369,25 @@ export default function ClientesPage() {
                             <option key={entry} value={entry} />
                           ))}
                         </datalist>
+                      </label>
+                      <label className="text-xs text-[color:var(--rxv-muted)]">
+                        Cor
+                        <input className="mt-1 w-full px-3 py-2" value={(animal as any).color || ''} onChange={(e) => patchAnimal(index, 'color' as any, e.target.value)} />
+                      </label>
+                      <label className="text-xs text-[color:var(--rxv-muted)]">
+                        Microchip
+                        <select
+                          className="mt-1 w-full px-3 py-2"
+                          value={typeof (animal as any).microchip === 'boolean' ? ((animal as any).microchip ? 'true' : 'false') : 'false'}
+                          onChange={(e) => patchAnimal(index, 'microchip' as any, e.target.value === 'true')}
+                        >
+                          <option value="false">Não</option>
+                          <option value="true">Sim</option>
+                        </select>
+                      </label>
+                      <label className="text-xs text-[color:var(--rxv-muted)]">
+                        Nascimento
+                        <input type="date" className="mt-1 w-full px-3 py-2" value={animal.birthDate || ''} onChange={(e) => patchAnimal(index, 'birthDate', e.target.value)} />
                       </label>
                       <label className="text-xs text-[color:var(--rxv-muted)]">
                         Peso atual (kg) *
@@ -1021,7 +1495,134 @@ export default function ClientesPage() {
           {toast}
         </div>
       ) : null}
+
+      {/* Custom Confirm Modal */}
+      {confirmOpen && (
+        <div className="fixed inset-0 z-[150] flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+            onClick={() => !confirmBusy && setConfirmOpen(false)}
+          />
+          <div className="relative w-full max-w-sm rounded-2xl border border-white/10 bg-[#0d160e] p-6 shadow-2xl ring-1 ring-white/5 rxv-fade-up">
+            <div className="mb-2 text-xl font-bold text-white">{confirmTitle}</div>
+            <div className="mb-6 text-sm leading-relaxed text-slate-300 whitespace-pre-wrap">{confirmDesc}</div>
+
+            <div className="flex justify-end gap-3">
+              <button
+                type="button"
+                className="rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-white/10 disabled:opacity-40"
+                disabled={confirmBusy}
+                onClick={() => setConfirmOpen(false)}
+              >
+                Não, cancelar
+              </button>
+              <button
+                type="button"
+                className="rounded-xl bg-red-600 px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-red-900/20 transition-all hover:bg-red-500 hover:shadow-red-900/40 active:scale-95 disabled:opacity-50"
+                disabled={confirmBusy}
+                onClick={async () => {
+                  if (!confirmAction) return
+                  try {
+                    setConfirmBusy(true)
+                    await confirmAction()
+                    setConfirmOpen(false)
+                  } catch (err) {
+                    console.error('Confirm action error', err)
+                  } finally {
+                    setConfirmBusy(false)
+                  }
+                }}
+              >
+                {confirmBusy ? (
+                  <div className="flex items-center gap-2">
+                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                    Apagando...
+                  </div>
+                ) : (
+                  "Sim, apagar"
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Tutor Delete Modal */}
+      {isDeleteTutorOpen && (
+        <div className="fixed inset-0 z-[150] flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+            onClick={() => !isDeleting && setIsDeleteTutorOpen(false)}
+          />
+          <div className="relative w-full max-w-sm rounded-2xl border border-white/10 bg-[#0d160e] p-6 shadow-2xl ring-1 ring-white/5 rxv-fade-up">
+            <div className="mb-2 text-xl font-bold text-white">
+              {tutorHasPrescriptions ? '⚠️ Tutor com receitas' : '🗑️ Apagar tutor'}
+            </div>
+            <div className="mb-6 text-sm leading-relaxed text-slate-300 whitespace-pre-wrap">
+              {tutorHasPrescriptions ? (
+                <>
+                  Este tutor possui <strong>receitas emitidas</strong> no sistema.
+                  <br /><br />
+                  Recomendamos <strong>arquivar</strong> o tutor (remoção suave) ao invés de excluir permanentemente, para manter o histórico das receitas.
+                  <br /><br />
+                  O tutor arquivado não aparecerá nas listas, mas seus dados e histórico serão preservados.
+                </>
+              ) : (
+                <>
+                  Você tem certeza que quer apagar esse tutor do sistema? Isso é irreversível.
+                </>
+              )}
+              {pendingDeleteTutorName && <><br /><br />Tutor: <strong>{pendingDeleteTutorName}</strong></>}
+            </div>
+
+            <div className="flex justify-end gap-3">
+              <button
+                type="button"
+                className="rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-white/10 disabled:opacity-40"
+                disabled={isDeleting}
+                onClick={() => setIsDeleteTutorOpen(false)}
+              >
+                Não, cancelar
+              </button>
+              {tutorHasPrescriptions ? (
+                <button
+                  type="button"
+                  className="rounded-xl bg-amber-600 px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-amber-900/20 transition-all hover:bg-amber-500 hover:shadow-amber-900/40 active:scale-95 disabled:opacity-50"
+                  disabled={isDeleting}
+                  onClick={() => void confirmDeleteTutor()}
+                >
+                  {isDeleting ? (
+                    <div className="flex items-center gap-2">
+                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                      Arquivando...
+                    </div>
+                  ) : (
+                    'Arquivar tutor'
+                  )}
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="rounded-xl bg-red-600 px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-red-900/20 transition-all hover:bg-red-500 hover:shadow-red-900/40 active:scale-95 disabled:opacity-50"
+                  disabled={isDeleting}
+                  onClick={() => void confirmDeleteTutor()}
+                >
+                  {isDeleting ? (
+                    <div className="flex items-center gap-2">
+                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                      Apagando...
+                    </div>
+                  ) : (
+                    'Sim, apagar'
+                  )}
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </ReceituarioChrome>
+
   )
 }
 

@@ -135,7 +135,7 @@ export function TutorQuickSelect({
                       setOpen(false)
                     }}
                   >
-                    <p className="text-sm font-semibold text-white">{tutor.name || 'Tutor sem nome'}</p>
+                    <p className="text-sm font-semibold text-white">{tutor.full_name || tutor.name || 'Tutor sem nome'}</p>
                     <p className="text-xs text-slate-400">{tutor.phone || tutor.email || 'Sem telefone/email'}</p>
                   </button>
                 </li>

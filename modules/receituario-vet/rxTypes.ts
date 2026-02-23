@@ -31,8 +31,12 @@ export interface PatientInfo {
   ageText: string
   birthDate: string
   coat: string
+  color: string
+  microchipped: boolean
+  microchip: string
   weightKg: string
   weightDate: string
+  anamnesis: string
   notes: string
   showNotesInPrint: boolean
 }
@@ -40,17 +44,21 @@ export interface PatientInfo {
 export interface TutorInfo {
   tutorRecordId: string
   name: string
+  fullName?: string
+  full_name?: string
   phone: string
+  email?: string
+  documentId?: string
+  document_id?: string
   cpf?: string
   rg?: string
-  email?: string
-  addressStreet?: string
-  addressNumber?: string
-  addressComplement?: string
-  addressDistrict?: string
-  addressCity?: string
-  addressState?: string
-  addressZip?: string
+  street?: string
+  number?: string
+  neighborhood?: string
+  city?: string
+  state?: string
+  zipcode?: string
+  complement?: string
   notes: string
 }
 

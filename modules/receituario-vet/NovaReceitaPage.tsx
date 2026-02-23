@@ -1,4 +1,5 @@
-﻿import React, { useEffect, useMemo, useRef, useState } from 'react'
+﻿console.log("[DEBUG] NovaReceitaPage.tsx evaluation started")
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { RxPrintView } from './RxPrintView'
 import ReceituarioChrome from './ReceituarioChrome'
@@ -1837,8 +1838,8 @@ export default function NovaReceitaPage() {
   )
   const selectedClientAnimals = selectedClient?.animals || []
   const tutorCitySuggestions = useMemo(
-    () => citySuggestionsForState(prescription.tutor.addressState || ''),
-    [prescription.tutor.addressState]
+    () => citySuggestionsForState(prescription.tutor.state || ''),
+    [prescription.tutor.state]
   )
 
   const applyPatientFromBank = (name: string) => {
@@ -1855,13 +1856,16 @@ export default function NovaReceitaPage() {
         sex: normalizePatientSex(found.sex),
         ageText: found.ageText,
         weightKg: found.weightKg,
+        color: (found as any).color || '',
+        microchip: (found as any).microchip || '',
+        anamnesis: (found as any).anamnesis || '',
       },
       tutor: {
         ...prev.tutor,
         tutorRecordId: prev.tutor.tutorRecordId || '',
         name: found.tutorName || prev.tutor.name,
         phone: found.tutorPhone || prev.tutor.phone,
-        addressStreet: found.tutorAddress || prev.tutor.addressStreet || '',
+        street: found.tutorAddress || prev.tutor.street || '',
       },
     }))
   }
@@ -1880,13 +1884,13 @@ export default function NovaReceitaPage() {
         cpf: maskCpf(client.cpf || ''),
         rg: maskRg(client.rg || ''),
         email: client.email || '',
-        addressStreet: client.addressStreet || '',
-        addressNumber: client.addressNumber || '',
-        addressComplement: client.addressComplement || '',
-        addressDistrict: client.addressDistrict || '',
-        addressCity: client.addressCity || '',
-        addressState: normalizeStateInput(client.addressState || ''),
-        addressZip: maskCep(client.addressZip || ''),
+        street: client.street || '',
+        number: client.number || '',
+        complement: client.complement || '',
+        neighborhood: client.neighborhood || '',
+        city: client.city || '',
+        state: normalizeStateInput(client.state || ''),
+        zipcode: maskCep(client.zipcode || ''),
         notes: client.notes || prev.tutor.notes,
       },
       patient: animal
@@ -1897,11 +1901,14 @@ export default function NovaReceitaPage() {
           species: normalizeSpecies(animal.species),
           breed: animal.breed || prev.patient.breed,
           coat: animal.coat || prev.patient.coat,
+          color: (animal as any).color || '',
+          microchip: (animal as any).microchip || '',
           sex: normalizePatientSex(animal.sex),
           reproductiveStatus: (animal.reproductiveStatus || prev.patient.reproductiveStatus) as PrescriptionState['patient']['reproductiveStatus'],
           ageText: animal.ageText || prev.patient.ageText,
           weightKg: animal.weightKg || prev.patient.weightKg,
           weightDate: animal.weightDate || prev.patient.weightDate,
+          anamnesis: (animal as any).anamnesis || '',
         }
         : prev.patient,
     }))
@@ -1929,12 +1936,12 @@ export default function NovaReceitaPage() {
       ...prev,
       tutor: {
         ...prev.tutor,
-        addressZip: maskCep(address.cep || cepDigits),
-        addressStreet: address.street || prev.tutor.addressStreet || '',
-        addressDistrict: address.district || prev.tutor.addressDistrict || '',
-        addressCity: address.city || prev.tutor.addressCity || '',
-        addressState: normalizeStateInput(address.state || prev.tutor.addressState || ''),
-        addressComplement: prev.tutor.addressComplement || address.complement || '',
+        zipcode: maskCep(address.cep || cepDigits),
+        street: address.street || prev.tutor.street || '',
+        neighborhood: address.district || prev.tutor.neighborhood || '',
+        city: address.city || prev.tutor.city || '',
+        state: normalizeStateInput(address.state || prev.tutor.state || ''),
+        complement: prev.tutor.complement || address.complement || '',
       },
     }))
     setCepLookupMessage('Endereço preenchido pelo CEP.')
@@ -2080,13 +2087,13 @@ export default function NovaReceitaPage() {
                             cpf: tutor.cpf || prev.tutor.cpf,
                             rg: tutor.rg || prev.tutor.rg,
                             email: tutor.email || prev.tutor.email,
-                            addressStreet: tutor.addressStreet || prev.tutor.addressStreet,
-                            addressNumber: tutor.addressNumber || prev.tutor.addressNumber,
-                            addressComplement: tutor.addressComplement || prev.tutor.addressComplement,
-                            addressDistrict: tutor.addressDistrict || prev.tutor.addressDistrict,
-                            addressCity: tutor.addressCity || prev.tutor.addressCity,
-                            addressState: tutor.addressState || prev.tutor.addressState,
-                            addressZip: tutor.addressZip || prev.tutor.addressZip,
+                            street: tutor.street || prev.tutor.street,
+                            number: tutor.number || prev.tutor.number,
+                            complement: tutor.complement || prev.tutor.complement,
+                            neighborhood: tutor.neighborhood || prev.tutor.neighborhood,
+                            city: tutor.city || prev.tutor.city,
+                            state: tutor.state || prev.tutor.state,
+                            zipcode: tutor.zipcode || prev.tutor.zipcode,
                             notes: tutor.notes || prev.tutor.notes,
                           },
                         }))
@@ -2339,19 +2346,19 @@ export default function NovaReceitaPage() {
                   </label>
                   <label className="text-xs text-slate-400 md:col-span-2">
                     Rua *
-                    <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.addressStreet || ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, addressStreet: e.target.value } }))} />
+                    <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.street || ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, street: e.target.value } }))} />
                   </label>
                   <label className="text-xs text-slate-400">
                     Número *
-                    <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.addressNumber || ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, addressNumber: e.target.value } }))} />
+                    <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.number || ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, number: e.target.value } }))} />
                   </label>
                   <label className="text-xs text-slate-400">
                     Complemento
-                    <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.addressComplement || ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, addressComplement: e.target.value } }))} />
+                    <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.complement || ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, complement: e.target.value } }))} />
                   </label>
                   <label className="text-xs text-slate-400">
                     Bairro *
-                    <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.addressDistrict || ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, addressDistrict: e.target.value } }))} />
+                    <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.neighborhood || ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, neighborhood: e.target.value } }))} />
                   </label>
                   <label className="text-xs text-slate-400">
                     Cidade *
@@ -2359,8 +2366,8 @@ export default function NovaReceitaPage() {
                       className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
                       list="rx-tutor-city-options"
                       placeholder="Digite ou selecione a cidade"
-                      value={prescription.tutor.addressCity || ''}
-                      onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, addressCity: e.target.value } }))}
+                      value={prescription.tutor.city || ''}
+                      onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, city: e.target.value } }))}
                     />
                   </label>
                   <label className="text-xs text-slate-400">
@@ -2369,12 +2376,12 @@ export default function NovaReceitaPage() {
                       className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
                       list="rx-tutor-state-options"
                       placeholder="UF ou nome do estado"
-                      value={prescription.tutor.addressState || ''}
-                      onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, addressState: e.target.value } }))}
+                      value={prescription.tutor.state || ''}
+                      onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, state: e.target.value } }))}
                       onBlur={(e) =>
                         updatePrescription((prev) => ({
                           ...prev,
-                          tutor: { ...prev.tutor, addressState: normalizeStateInput(e.target.value || prev.tutor.addressState || '') },
+                          tutor: { ...prev.tutor, state: normalizeStateInput(e.target.value || prev.tutor.state || '') },
                         }))
                       }
                     />
@@ -2387,15 +2394,15 @@ export default function NovaReceitaPage() {
                         inputMode="numeric"
                         maxLength={9}
                         placeholder="00000-000"
-                        value={prescription.tutor.addressZip || ''}
-                        onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, addressZip: maskCep(e.target.value) } }))}
+                        value={prescription.tutor.zipcode || ''}
+                        onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, zipcode: maskCep(e.target.value) } }))}
                         onBlur={(e) => void fetchCepForTutor(e.target.value)}
                       />
                       <button
                         type="button"
                         className="rounded-lg border border-[#3f6f31] px-2 text-xs font-semibold text-slate-200 hover:bg-[#1f3619]"
                         disabled={cepLookupLoading}
-                        onClick={() => void fetchCepForTutor(prescription.tutor.addressZip || '')}
+                        onClick={() => void fetchCepForTutor(prescription.tutor.zipcode || '')}
                       >
                         {cepLookupLoading ? '...' : 'Buscar'}
                       </button>
@@ -2565,6 +2572,18 @@ export default function NovaReceitaPage() {
               <label className="text-xs text-slate-400">
                 Peso (kg) *
                 <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.patient.weightKg} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, weightKg: e.target.value } }))} />
+              </label>
+              <label className="text-xs text-slate-400">
+                Cor
+                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.patient.color} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, color: e.target.value } }))} />
+              </label>
+              <label className="text-xs text-slate-400">
+                Microchip
+                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.patient.microchip} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, microchip: e.target.value } }))} />
+              </label>
+              <label className="text-xs text-slate-400 md:col-span-2">
+                Anamnese / Histórico
+                <textarea className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" rows={2} value={prescription.patient.anamnesis} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, anamnesis: e.target.value } }))} />
               </label>
               <label className="text-xs text-slate-400 md:col-span-2">
                 Observações do paciente
@@ -3045,7 +3064,7 @@ export default function NovaReceitaPage() {
           adapter={rxAdapter}
           onCreatedAndPicked={(payload) => {
             applyPatientTutorToPrescription(payload)
-            refreshLegacyLocalSnapshot()
+            setDb(loadRxDb())
             pushToast('success', `Paciente "${payload.patient.name}" criado e aplicado.`)
           }}
           onError={(error) => handleDataAdapterError('save', error)}
@@ -3072,6 +3091,7 @@ export default function NovaReceitaPage() {
     </ReceituarioChrome>
   )
 }
+console.log("[DEBUG] NovaReceitaPage.tsx evaluation finished")
 
 
 

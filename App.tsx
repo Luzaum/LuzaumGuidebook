@@ -1,3 +1,4 @@
+console.log("[DEBUG] App.tsx evaluation started")
 import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { ThemeProvider } from './utils/theme'
@@ -107,6 +108,8 @@ function AppContent() {
   )
 }
 
+console.log("[DEBUG] App.tsx before export App")
 export function App() {
   return <AppContent />
 }
+console.log("[DEBUG] App.tsx evaluation finished")

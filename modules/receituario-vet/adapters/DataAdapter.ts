@@ -11,15 +11,16 @@ export type DataAdapterTutorCreateInput = {
   name: string
   phone?: string
   email?: string
+  documentId?: string
   cpf?: string
   rg?: string
-  addressStreet?: string
-  addressNumber?: string
-  addressComplement?: string
-  addressDistrict?: string
-  addressCity?: string
-  addressState?: string
-  addressZip?: string
+  street?: string
+  number?: string
+  complement?: string
+  neighborhood?: string
+  city?: string
+  state?: string
+  zipcode?: string
   notes?: string
 }
 
@@ -33,8 +34,11 @@ export type DataAdapterPatientCreateInput = {
   ageText?: string
   birthDate?: string
   coat?: string
+  color?: string
+  microchip?: string
   weightKg?: string
   weightDate?: string
+  anamnesis?: string
   notes?: string
   showNotesInPrint?: boolean
 }

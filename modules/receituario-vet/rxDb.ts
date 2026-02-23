@@ -71,9 +71,12 @@ export interface ClientAnimalRecord {
   species: string
   breed: string
   coat: string
+  color: string
+  microchip: string
   sex: string
   reproductiveStatus: string
   ageText: string
+  birthDate: string
   weightKg: string
   weightDate: string
   anamnesis: string
@@ -92,15 +95,16 @@ export interface ClientRecord {
   fullName: string
   cpf: string
   rg: string
+  documentId: string
   phone: string
   email: string
-  addressStreet: string
-  addressNumber: string
-  addressComplement: string
-  addressDistrict: string
-  addressCity: string
-  addressState: string
-  addressZip: string
+  street: string
+  number: string
+  complement: string
+  neighborhood: string
+  city: string
+  state: string
+  zipcode: string
   notes: string
   animals: ClientAnimalRecord[]
   updatedAt: string
@@ -812,19 +816,19 @@ function normalizeTemplate(raw: Partial<RxTemplateStyle>): RxTemplateStyle {
   const base = createDefaultTemplateStyle(raw.id || uid('template'), raw.name || 'Template')
   const sourceZoneStyles = typeof raw.zoneStyles === 'object' && raw.zoneStyles ? raw.zoneStyles : {}
   const zoneStyles: RxTemplateStyle['zoneStyles'] = {}
-  ;(['header', 'patient', 'body', 'recommendations', 'signature'] as TemplateZoneKey[]).forEach((key) => {
-    const style = sourceZoneStyles[key]
-    if (!style) return
-    zoneStyles[key] = {
-      fontFamily: style.fontFamily ? repairMojibake(style.fontFamily) : undefined,
-      fontSizePt: typeof style.fontSizePt === 'number' ? style.fontSizePt : undefined,
-      textColor: style.textColor || undefined,
-      accentColor: style.accentColor || undefined,
-      fontWeight: style.fontWeight || undefined,
-      italic: typeof style.italic === 'boolean' ? style.italic : undefined,
-      underline: typeof style.underline === 'boolean' ? style.underline : undefined,
-    }
-  })
+    ; (['header', 'patient', 'body', 'recommendations', 'signature'] as TemplateZoneKey[]).forEach((key) => {
+      const style = sourceZoneStyles[key]
+      if (!style) return
+      zoneStyles[key] = {
+        fontFamily: style.fontFamily ? repairMojibake(style.fontFamily) : undefined,
+        fontSizePt: typeof style.fontSizePt === 'number' ? style.fontSizePt : undefined,
+        textColor: style.textColor || undefined,
+        accentColor: style.accentColor || undefined,
+        fontWeight: style.fontWeight || undefined,
+        italic: typeof style.italic === 'boolean' ? style.italic : undefined,
+        underline: typeof style.underline === 'boolean' ? style.underline : undefined,
+      }
+    })
 
   return {
     ...base,
@@ -850,13 +854,13 @@ function normalizeTemplate(raw: Partial<RxTemplateStyle>): RxTemplateStyle {
 function normalizeClientAnimal(raw: Partial<ClientAnimalRecord>): ClientAnimalRecord {
   const weightHistory: ClientAnimalRecord['weightHistory'] = Array.isArray(raw.weightHistory)
     ? raw.weightHistory
-        .map((entry) => ({
-          id: entry.id || uid('w'),
-          date: repairMojibake(entry.date || nowIso()),
-          weightKg: repairMojibake(entry.weightKg || ''),
-          source: (entry.source === 'prescription' ? 'prescription' : 'manual') as 'prescription' | 'manual',
-        }))
-        .filter((entry) => !!entry.weightKg.trim())
+      .map((entry) => ({
+        id: entry.id || uid('w'),
+        date: repairMojibake(entry.date || nowIso()),
+        weightKg: repairMojibake(entry.weightKg || ''),
+        source: (entry.source === 'prescription' ? 'prescription' : 'manual') as 'prescription' | 'manual',
+      }))
+      .filter((entry) => !!entry.weightKg.trim())
     : []
 
   const fallbackWeight = repairMojibake(raw.weightKg || '')
@@ -875,9 +879,12 @@ function normalizeClientAnimal(raw: Partial<ClientAnimalRecord>): ClientAnimalRe
     species: repairMojibake(raw.species || 'Canina'),
     breed: repairMojibake(raw.breed || ''),
     coat: repairMojibake(raw.coat || ''),
+    color: repairMojibake(raw.color || ''),
+    microchip: repairMojibake(raw.microchip || ''),
     sex: repairMojibake(raw.sex || 'Sem dados'),
     reproductiveStatus: repairMojibake(raw.reproductiveStatus || 'Sem dados'),
     ageText: repairMojibake(raw.ageText || ''),
+    birthDate: repairMojibake(raw.birthDate || ''),
     weightKg: fallbackWeight,
     weightDate: repairMojibake(raw.weightDate || ''),
     anamnesis: repairMojibake(raw.anamnesis || ''),
@@ -893,17 +900,18 @@ function normalizeClient(raw: Partial<ClientRecord>): ClientRecord {
     fullName: repairMojibake(raw.fullName || ''),
     cpf: repairMojibake(raw.cpf || ''),
     rg: repairMojibake(raw.rg || ''),
+    documentId: repairMojibake(raw.documentId || ''),
     phone: repairMojibake(raw.phone || ''),
     email: repairMojibake(raw.email || ''),
-    addressStreet: repairMojibake(raw.addressStreet || ''),
-    addressNumber: repairMojibake(raw.addressNumber || ''),
-    addressComplement: repairMojibake(raw.addressComplement || ''),
-    addressDistrict: repairMojibake(raw.addressDistrict || ''),
-    addressCity: repairMojibake(raw.addressCity || ''),
-    addressState: repairMojibake(raw.addressState || ''),
-    addressZip: repairMojibake(raw.addressZip || ''),
+    street: repairMojibake(raw.street || (raw as any).addressStreet || ''),
+    number: repairMojibake(raw.number || (raw as any).addressNumber || ''),
+    complement: repairMojibake(raw.complement || (raw as any).addressComplement || ''),
+    neighborhood: repairMojibake(raw.neighborhood || (raw as any).addressDistrict || ''),
+    city: repairMojibake(raw.city || (raw as any).addressCity || ''),
+    state: repairMojibake(raw.state || (raw as any).addressState || ''),
+    zipcode: repairMojibake(raw.zipcode || (raw as any).addressZip || ''),
     notes: repairMojibake(raw.notes || ''),
-    animals: Array.isArray(raw.animals) ? raw.animals.map((entry) => normalizeClientAnimal(entry)) : [],
+    animals: Array.isArray(raw.animals) ? raw.animals.map(normalizeClientAnimal) : [],
     updatedAt: raw.updatedAt || nowIso(),
   }
 }
@@ -938,15 +946,16 @@ function buildLegacyClientsFromPatients(patients: PatientRecord[]): ClientRecord
         fullName: tutorName,
         cpf: '',
         rg: '',
+        documentId: '',
         phone: repairMojibake(patient.tutorPhone || ''),
         email: '',
-        addressStreet: repairMojibake(patient.tutorAddress || ''),
-        addressNumber: '',
-        addressComplement: '',
-        addressDistrict: '',
-        addressCity: '',
-        addressState: '',
-        addressZip: '',
+        street: repairMojibake(patient.tutorAddress || ''),
+        number: '',
+        complement: '',
+        neighborhood: '',
+        city: '',
+        state: '',
+        zipcode: '',
         notes: '',
         animals: [animal],
         updatedAt: patient.updatedAt || nowIso(),
@@ -958,7 +967,7 @@ function buildLegacyClientsFromPatients(patients: PatientRecord[]): ClientRecord
       ? existing.animals.map((entry) => (entry.id === animal.id ? animal : entry))
       : [...existing.animals, animal]
     if (!existing.phone && patient.tutorPhone) existing.phone = repairMojibake(patient.tutorPhone)
-    if (!existing.addressStreet && patient.tutorAddress) existing.addressStreet = repairMojibake(patient.tutorAddress)
+    if (!existing.street && patient.tutorAddress) existing.street = repairMojibake(patient.tutorAddress)
     existing.updatedAt = nowIso()
   })
   return Array.from(map.values())
@@ -985,10 +994,10 @@ export function loadRxDb(): RxDatabase {
     const templatesWithSpecialFlag = templates.map((template) =>
       template.id === 'rx_br_control_special'
         ? {
-            ...template,
-            documentKindTarget: 'special-control' as const,
-            showMapaSignature: template.showMapaSignature ?? true,
-          }
+          ...template,
+          documentKindTarget: 'special-control' as const,
+          showMapaSignature: template.showMapaSignature ?? true,
+        }
         : template
     )
     const templatesWithSpecial = templatesWithSpecialFlag.some((template) => template.documentKindTarget === 'special-control')
@@ -1013,56 +1022,56 @@ export function loadRxDb(): RxDatabase {
       },
       prescriberProfiles: Array.isArray(parsed.prescriberProfiles) && parsed.prescriberProfiles.length > 0
         ? parsed.prescriberProfiles.map((profile) => ({
-            ...defaultProfile,
-            ...profile,
-            id: profile.id || uid('profile'),
-            profileName: repairMojibake(profile.profileName || profile.clinicName || profile.fullName || 'Perfil sem nome'),
-            fullName: repairMojibake(profile.fullName || ''),
-            specialty: repairMojibake(profile.specialty || ''),
-            clinicName: repairMojibake(profile.clinicName || ''),
-            clinicAddress: repairMojibake(profile.clinicAddress || ''),
-            mapaSignatureDataUrl: profile.mapaSignatureDataUrl || '',
-            createdAt: profile.createdAt || nowIso(),
-            updatedAt: profile.updatedAt || nowIso(),
-          }))
+          ...defaultProfile,
+          ...profile,
+          id: profile.id || uid('profile'),
+          profileName: repairMojibake(profile.profileName || profile.clinicName || profile.fullName || 'Perfil sem nome'),
+          fullName: repairMojibake(profile.fullName || ''),
+          specialty: repairMojibake(profile.specialty || ''),
+          clinicName: repairMojibake(profile.clinicName || ''),
+          clinicAddress: repairMojibake(profile.clinicAddress || ''),
+          mapaSignatureDataUrl: profile.mapaSignatureDataUrl || '',
+          createdAt: profile.createdAt || nowIso(),
+          updatedAt: profile.updatedAt || nowIso(),
+        }))
         : base.prescriberProfiles,
       catalog: Array.isArray(parsed.catalog) ? parsed.catalog.map((entry) => normalizeCatalogDrug(entry)) : base.catalog,
       patients: Array.isArray(parsed.patients)
         ? parsed.patients.map((patient) => ({
-            ...patient,
-            name: repairMojibake(patient.name || ''),
-            species: repairMojibake(patient.species || ''),
-            breed: repairMojibake(patient.breed || ''),
-            sex: repairMojibake(patient.sex || ''),
-            ageText: repairMojibake(patient.ageText || ''),
-            tutorName: repairMojibake(patient.tutorName || ''),
-            tutorAddress: repairMojibake(patient.tutorAddress || ''),
-          }))
+          ...patient,
+          name: repairMojibake(patient.name || ''),
+          species: repairMojibake(patient.species || ''),
+          breed: repairMojibake(patient.breed || ''),
+          sex: repairMojibake(patient.sex || ''),
+          ageText: repairMojibake(patient.ageText || ''),
+          tutorName: repairMojibake(patient.tutorName || ''),
+          tutorAddress: repairMojibake(patient.tutorAddress || ''),
+        }))
         : base.patients,
       clients: Array.isArray(parsed.clients) && parsed.clients.length > 0
         ? parsed.clients.map((client) => normalizeClient(client))
         : buildLegacyClientsFromPatients(
-            Array.isArray(parsed.patients)
-              ? parsed.patients.map((patient) => ({
-                  ...patient,
-                  name: repairMojibake(patient.name || ''),
-                  species: repairMojibake(patient.species || ''),
-                  breed: repairMojibake(patient.breed || ''),
-                  sex: repairMojibake(patient.sex || ''),
-                  ageText: repairMojibake(patient.ageText || ''),
-                  tutorName: repairMojibake(patient.tutorName || ''),
-                  tutorAddress: repairMojibake(patient.tutorAddress || ''),
-                }))
-              : base.patients
-          ),
+          Array.isArray(parsed.patients)
+            ? parsed.patients.map((patient) => ({
+              ...patient,
+              name: repairMojibake(patient.name || ''),
+              species: repairMojibake(patient.species || ''),
+              breed: repairMojibake(patient.breed || ''),
+              sex: repairMojibake(patient.sex || ''),
+              ageText: repairMojibake(patient.ageText || ''),
+              tutorName: repairMojibake(patient.tutorName || ''),
+              tutorAddress: repairMojibake(patient.tutorAddress || ''),
+            }))
+            : base.patients
+        ),
       history: Array.isArray(parsed.history)
         ? parsed.history.map((entry) => ({
-            ...entry,
-            patientName: repairMojibake(entry.patientName || '-'),
-            tutorName: repairMojibake(entry.tutorName || '-'),
-            patientId: entry.patientId || undefined,
-            tutorId: entry.tutorId || undefined,
-          }))
+          ...entry,
+          patientName: repairMojibake(entry.patientName || '-'),
+          tutorName: repairMojibake(entry.tutorName || '-'),
+          patientId: entry.patientId || undefined,
+          tutorId: entry.tutorId || undefined,
+        }))
         : base.history,
       protocolFolders,
       protocols: Array.isArray(parsed.protocols)
@@ -1282,10 +1291,10 @@ export function removeProtocolFolder(db: RxDatabase, folderId: string): RxDataba
     protocols: db.protocols.map((protocol) =>
       protocol.folderId === folderId
         ? {
-            ...protocol,
-            folderId: fallbackFolderId,
-            updatedAt: nowIso(),
-          }
+          ...protocol,
+          folderId: fallbackFolderId,
+          updatedAt: nowIso(),
+        }
         : protocol
     ),
   }
@@ -1335,9 +1344,12 @@ export function createEmptyClientAnimal(): ClientAnimalRecord {
     species: 'Canina',
     breed: '',
     coat: '',
+    color: '',
+    microchip: '',
     sex: 'Sem dados',
     reproductiveStatus: 'Sem dados',
     ageText: '',
+    birthDate: '',
     weightKg: '',
     weightDate: '',
     anamnesis: '',
@@ -1353,15 +1365,16 @@ export function createEmptyClient(): ClientRecord {
     fullName: '',
     cpf: '',
     rg: '',
+    documentId: '',
     phone: '',
     email: '',
-    addressStreet: '',
-    addressNumber: '',
-    addressComplement: '',
-    addressDistrict: '',
-    addressCity: '',
-    addressState: '',
-    addressZip: '',
+    street: '',
+    number: '',
+    complement: '',
+    neighborhood: '',
+    city: '',
+    state: '',
+    zipcode: '',
     notes: '',
     animals: [createEmptyClientAnimal()],
     updatedAt: nowIso(),
@@ -1403,13 +1416,13 @@ export function removeClient(db: RxDatabase, clientId: string): RxDatabase {
 
 function buildTutorAddressLine(rx: PrescriptionState): string {
   const parts = [
-    rx.tutor.addressStreet || '',
-    rx.tutor.addressNumber || '',
-    rx.tutor.addressComplement || '',
-    rx.tutor.addressDistrict || '',
-    rx.tutor.addressCity || '',
-    rx.tutor.addressState || '',
-    rx.tutor.addressZip || '',
+    rx.tutor.street || '',
+    rx.tutor.number || '',
+    rx.tutor.complement || '',
+    rx.tutor.neighborhood || '',
+    rx.tutor.city || '',
+    rx.tutor.state || '',
+    rx.tutor.zipcode || '',
   ]
   return parts.filter(Boolean).join(', ')
 }
@@ -1573,13 +1586,13 @@ export function upsertClientFromPrescription(db: RxDatabase, rx: PrescriptionSta
     rg: rx.tutor.rg || existingClient?.rg || '',
     phone: rx.tutor.phone || existingClient?.phone || '',
     email: rx.tutor.email || existingClient?.email || '',
-    addressStreet: rx.tutor.addressStreet || existingClient?.addressStreet || '',
-    addressNumber: rx.tutor.addressNumber || existingClient?.addressNumber || '',
-    addressComplement: rx.tutor.addressComplement || existingClient?.addressComplement || '',
-    addressDistrict: rx.tutor.addressDistrict || existingClient?.addressDistrict || '',
-    addressCity: rx.tutor.addressCity || existingClient?.addressCity || '',
-    addressState: rx.tutor.addressState || existingClient?.addressState || '',
-    addressZip: rx.tutor.addressZip || existingClient?.addressZip || '',
+    street: rx.tutor.street || existingClient?.street || '',
+    number: rx.tutor.number || existingClient?.number || '',
+    complement: rx.tutor.complement || existingClient?.complement || '',
+    neighborhood: rx.tutor.neighborhood || existingClient?.neighborhood || '',
+    city: rx.tutor.city || existingClient?.city || '',
+    state: rx.tutor.state || existingClient?.state || '',
+    zipcode: rx.tutor.zipcode || existingClient?.zipcode || '',
     notes: rx.tutor.notes || existingClient?.notes || '',
     animals: existingClient?.animals?.length
       ? existingClient.animals.some((entry) => entry.id === animal.id)
