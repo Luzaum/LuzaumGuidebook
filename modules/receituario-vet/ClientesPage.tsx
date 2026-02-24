@@ -11,7 +11,7 @@ import { loadRxDb, createEmptyClient, createEmptyClientAnimal, ClientRecord, Cli
 import { TutorInfo, PatientInfo } from './rxTypes'
 import { isUuid } from '@/src/lib/isUuid'
 import { normalizeNeutered } from './rxUtils'
-import { insertTutor, insertPatient, insertWeight } from '@/src/lib/clinicRecords'
+import { insertTutor, insertPatient, insertWeight, insertPatientWeight, loadPatientWeights } from '@/src/lib/clinicRecords'
 
 function normalizeLooseText(value: string): string {
   return String(value || '')
@@ -50,9 +50,26 @@ function parseWeight(value: string): number | null {
 }
 
 function formatWeight(value: string): string {
-  const numeric = parseWeight(value)
-  if (numeric === null) return '-'
+  const numeric = parseFloat(String(value).replace(',', '.'))
+  if (Number.isNaN(numeric)) return '-'
   return `${numeric.toFixed(2).replace('.', ',')} kg`
+}
+
+function formatDateBR(value: string): string {
+  if (!value) return '-'
+  if (/^\d{4}-\d{2}-\d{2}/.test(value)) {
+    const [y, m, d] = value.split('-')
+    return `${d}/${m}/${y}`
+  }
+  const dt = new Date(value)
+  if (Number.isNaN(dt.getTime())) return '-'
+  return dt.toLocaleString('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  })
 }
 
 function formatDate(value: string): string {
@@ -110,8 +127,9 @@ function buildUpdatedAnimalForSave(animal: ClientAnimalRecord): ClientAnimalReco
       source: (entry.source === 'prescription' ? 'prescription' : 'manual') as 'manual' | 'prescription',
     }))
     .filter((entry) => !!entry.weightKg)
+  const isSupabasePatient = isUuid(animal.id)
   const currentWeight = String(animal.weightKg || '').trim()
-  if (currentWeight) {
+  if (currentWeight && !isSupabasePatient) {
     const last = history[history.length - 1]
     if (!last || last.weightKg !== currentWeight) {
       history.push({
@@ -239,12 +257,10 @@ export default function ClientesPage() {
           breed,
           sex,
           neutered,
-          dob,
           age_text,
           weight_kg,
           microchip,
           coat,
-          color,
           anamnesis,
           notes
         `)
@@ -258,33 +274,39 @@ export default function ClientesPage() {
       }
 
       if (data) {
-        const mapped: PatientInfo[] = data.map((row: any) => ({
-          patientRecordId: row.id,
-          name: row.name || 'Sem nome',
-          species: (row.species || 'Canina') as any,
-          breed: row.breed || '',
-          sex: (row.sex || 'Sem dados') as any,
-          reproductiveStatus: row.neutered === true || String(row.neutered).toLowerCase() === 'true' || String(row.neutered).toLowerCase() === 'castrado'
-            ? 'Castrado'
-            : (row.neutered === false || String(row.neutered).toLowerCase() === 'false' || String(row.neutered).toLowerCase() === 'fertil' ? 'Fértil' : 'Sem dados'),
-          ageText: row.age_text || '',
-          birthDate: row.dob || '',
-          coat: row.coat || '',
-          color: row.color || '',
-          microchip: row.microchip || '',
-          microchipped: !!row.microchip,
-          weightKg: row.weight_kg || '',
-          weightDate: '',
-          anamnesis: row.anamnesis || '',
-          notes: row.notes || '',
-          showNotesInPrint: false,
+        const mapped: PatientInfo[] = await Promise.all(data.map(async (row: any) => {
+          const weights = await loadPatientWeights(row.id, clinicId!);
+          return {
+            patientRecordId: row.id,
+            name: row.name || 'Sem nome',
+            species: (row.species || 'Canina') as any,
+            breed: row.breed || '',
+            sex: (row.sex || 'Sem dados') as any,
+            reproductiveStatus: row.neutered === true || String(row.neutered).toLowerCase() === 'true' || String(row.neutered).toLowerCase() === 'castrado'
+              ? 'Castrado'
+              : (row.neutered === false || String(row.neutered).toLowerCase() === 'false' || String(row.neutered).toLowerCase() === 'fertil' ? 'Fértil' : 'Sem dados'),
+            ageText: row.age_text || '',
+            coat: row.coat || '',
+            microchip: row.microchip || '',
+            microchipped: !!row.microchip,
+            weightKg: row.weight_kg || '',
+            weightDate: '',
+            anamnesis: row.anamnesis || '',
+            notes: row.notes || '',
+            showNotesInPrint: false,
+            // We'll use this mapping in selectSupabaseTutor to populate weightHistory
+            _weights: weights
+          }
         }))
         setSupabasePatientsMap((prev) => ({ ...prev, [tutorId]: mapped }))
+        return mapped
       }
+      return []
     } catch (err) {
       if (import.meta.env.DEV) console.error('[ClientesPage] Failed to load patients for tutor', tutorId, err)
+      return []
     }
-  }, [rxAdapter, rxDataSource, supabasePatientsMap])
+  }, [rxAdapter, rxDataSource, clinicId])
 
   // ----- SHARED state -----
   const [selectedId, setSelectedId] = useState<string>('')
@@ -417,48 +439,51 @@ export default function ClientesPage() {
 
   const selectSupabaseTutor = (tutor: TutorInfo) => {
     setSelectedId(tutor.tutorRecordId)
-    // Map TutorInfo back to ClientRecord-like draft
-    const patients = supabasePatientsMap[tutor.tutorRecordId] || []
-    setDraft({
-      ...createEmptyClient(),
-      id: tutor.tutorRecordId,
-      fullName: tutor.name,
-      phone: tutor.phone || '',
-      email: tutor.email || '',
-      cpf: tutor.cpf || '',
-      rg: tutor.rg || '',
-      street: tutor.street || '',
-      number: tutor.number || '',
-      complement: tutor.complement || '',
-      neighborhood: tutor.neighborhood || '',
-      city: tutor.city || '',
-      state: tutor.state || '',
-      zipcode: tutor.zipcode || '',
-      notes: tutor.notes || '',
-      animals: patients.map((p) => ({
-        ...createEmptyClientAnimal(),
-        id: p.patientRecordId,
-        name: p.name,
-        species: p.species || 'Canina',
-        breed: p.breed || '',
-        sex: p.sex || 'Sem dados',
-        reproductiveStatus: p.reproductiveStatus || 'Sem dados',
-        ageText: p.ageText || '',
-        coat: p.coat || '',
-        weightKg: p.weightKg || '',
-        weightDate: p.weightDate || '',
-        notes: p.notes || '',
-        weightHistory: [],
-        anamnesis: p.anamnesis || '',
-        color: p.color || '',
-        microchip: p.microchip || '',
-        microchipped: p.microchipped || false,
+    // Solve 2x click: Load immediately
+    loadSupabasePatientsForTutor(tutor.tutorRecordId).then(patients => {
+      setDraft({
+        ...createEmptyClient(),
+        id: tutor.tutorRecordId,
+        fullName: tutor.name,
+        phone: tutor.phone || '',
+        email: tutor.email || '',
+        cpf: tutor.cpf || '',
+        rg: tutor.rg || '',
+        street: tutor.street || '',
+        number: tutor.number || '',
+        complement: tutor.complement || '',
+        neighborhood: tutor.neighborhood || '',
+        city: tutor.city || '',
+        state: tutor.state || '',
+        zipcode: tutor.zipcode || '',
+        notes: tutor.notes || '',
+        animals: patients.map((p: any) => ({
+          ...createEmptyClientAnimal(),
+          id: p.patientRecordId,
+          name: p.name,
+          species: p.species || 'Canina',
+          breed: p.breed || '',
+          sex: p.sex || 'Sem dados',
+          reproductiveStatus: p.reproductiveStatus || 'Sem dados',
+          ageText: p.ageText || '',
+          coat: p.coat || '',
+          weightKg: p.weightKg || '',
+          weightDate: p.weightDate || '',
+          notes: p.notes || '',
+          weightHistory: (p._weights || []).map((w: any) => ({
+            id: w.id,
+            date: w.measured_at,
+            weightKg: String(w.weight_kg),
+            source: 'manual'
+          })),
+          anamnesis: p.anamnesis || '',
+          microchip: p.microchip || '',
+          microchipped: p.microchipped || false,
+          updatedAt: new Date().toISOString(),
+        })),
         updatedAt: new Date().toISOString(),
-      })),
-      updatedAt: new Date().toISOString(),
+      })
     })
-    // Eagerly load patients if not yet loaded
-    void loadSupabasePatientsForTutor(tutor.tutorRecordId)
     setCepLookupMessage(null)
   }
 
@@ -523,7 +548,7 @@ export default function ClientesPage() {
     }))
   }
 
-  const appendManualWeight = (index: number) => {
+  const appendManualWeight = async (index: number) => {
     const animal = draft.animals[index]
     if (!animal) return
     const currentWeight = String(animal.weightKg || '').trim()
@@ -531,6 +556,38 @@ export default function ClientesPage() {
       syncToast('Preencha o peso atual antes de registrar na evolução.')
       return
     }
+
+    if (rxDataSource === 'supabase' && isUuid(animal.id)) {
+      const weightNum = parseFloat(currentWeight.replace(',', '.'))
+      if (isNaN(weightNum)) {
+        syncToast('Peso inválido.')
+        return
+      }
+
+      console.log('[WeightInsert] UI Action', { patientId: animal.id, weightNum, weightDate: animal.weightDate })
+      const result = await insertPatientWeight({
+        patientId: animal.id,
+        clinicId: clinicId!,
+        weightKg: weightNum,
+        measuredAt: animal.weightDate || undefined,
+      })
+
+      if (!result?.error) {
+        syncToast('Peso registrado no sistema.')
+        // Reload all weights for this patient to ensure UI sync
+        const freshWeights = await loadPatientWeights(animal.id, clinicId!)
+        patchAnimal(index, 'weightHistory', freshWeights.map(w => ({
+          id: w.id,
+          date: w.measured_at,
+          weightKg: String(w.weight_kg),
+          source: 'manual'
+        })))
+      } else {
+        syncToast('Erro ao salvar peso no banco.')
+      }
+      return
+    }
+
     const history = [...(animal.weightHistory || [])]
     const last = history[history.length - 1]
     if (last?.weightKg === currentWeight) {
@@ -850,12 +907,10 @@ export default function ClientesPage() {
               breed: animal.breed || null,
               sex: animal.sex || null,
               neutered: normalizeNeutered(animal.reproductiveStatus),
-              // dob removed from payload
               age_text: animal.ageText || null,
               weight_kg: animal.weightKg || null,
               microchip: (animal as any).microchip || null,
               coat: animal.coat || null,
-              color: (animal as any).color || null,
               notes: animal.notes || null,
               anamnesis: (animal as any).anamnesis || null,
             }
@@ -872,9 +927,7 @@ export default function ClientesPage() {
                 sex: (animal.sex || 'Sem dados') as PatientInfo['sex'],
                 reproductiveStatus: (animal.reproductiveStatus || 'Sem dados') as PatientInfo['reproductiveStatus'],
                 ageText: animal.ageText || '',
-                birthDate: animal.birthDate || '',
                 coat: animal.coat || '',
-                color: (animal as any).color || '',
                 microchip: (animal as any).microchip || '',
                 microchipped: !!(animal as any).microchip,
                 weightKg: animal.weightKg || '',
@@ -906,10 +959,7 @@ export default function ClientesPage() {
 
         // Refresh Supabase tutor list and patient cache
         await loadSupabaseTutors()
-        if (rxAdapter.listPatientsByTutorId) {
-          const refreshed = await rxAdapter.listPatientsByTutorId(tutorId)
-          setSupabasePatientsMap((prev) => ({ ...prev, [tutorId]: refreshed }))
-        }
+        await loadSupabasePatientsForTutor(tutorId)
 
         const savedCount = animalsToSave.filter((a) => !isUuid(a.id)).length
         if (savedCount < animalsToSave.length && animalsToSave.some(a => !isUuid(a.id) && !newPatients.some(p => p.name === a.name))) {
@@ -1371,10 +1421,6 @@ export default function ClientesPage() {
                         </datalist>
                       </label>
                       <label className="text-xs text-[color:var(--rxv-muted)]">
-                        Cor
-                        <input className="mt-1 w-full px-3 py-2" value={(animal as any).color || ''} onChange={(e) => patchAnimal(index, 'color' as any, e.target.value)} />
-                      </label>
-                      <label className="text-xs text-[color:var(--rxv-muted)]">
                         Microchip
                         <select
                           className="mt-1 w-full px-3 py-2"
@@ -1384,10 +1430,6 @@ export default function ClientesPage() {
                           <option value="false">Não</option>
                           <option value="true">Sim</option>
                         </select>
-                      </label>
-                      <label className="text-xs text-[color:var(--rxv-muted)]">
-                        Nascimento
-                        <input type="date" className="mt-1 w-full px-3 py-2" value={animal.birthDate || ''} onChange={(e) => patchAnimal(index, 'birthDate', e.target.value)} />
                       </label>
                       <label className="text-xs text-[color:var(--rxv-muted)]">
                         Peso atual (kg) *
@@ -1439,7 +1481,7 @@ export default function ClientesPage() {
                           ) : (
                             sortedWeightHistory.slice(-6).map((entry) => (
                               <p key={entry.id}>
-                                {formatDate(entry.date)} - {formatWeight(entry.weightKg)}
+                                {formatDateBR(entry.date)} - {formatWeight(entry.weightKg)}
                               </p>
                             ))
                           )}

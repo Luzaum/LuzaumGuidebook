@@ -6,11 +6,11 @@
 }
 
 .rxv-page.rxv-dark {
-  --rxv-bg: #091108;
-  --rxv-bg-soft: #0f1a0f;
-  --rxv-surface: #122014;
-  --rxv-surface-2: #17271a;
-  --rxv-border: #2a4b31;
+  --rxv-bg: #000000;
+  --rxv-bg-soft: #050a05;
+  --rxv-surface: #0a140a;
+  --rxv-surface-2: #0f1d12;
+  --rxv-border: #1a331a;
   --rxv-text: #eef7ef;
   --rxv-muted: #9ab49e;
   --rxv-primary: #39ff14;

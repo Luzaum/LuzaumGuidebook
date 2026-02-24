@@ -24,18 +24,32 @@ export interface PrescriberProfile extends ProfileSettings {
 }
 
 export interface CatalogPresentation {
-  id: string
-  name: string
-  concentration: string
+  id?: string
+  client_id?: string
+  // New schema fields (Supabase)
+  pharmaceutical_form?: string
+  commercial_name?: string
+  value?: number | null
+  value_unit?: string
+  per_value?: number | null
+  per_unit?: string
+  avg_price_brl?: number | null
+  pharmacy_veterinary?: boolean
+  pharmacy_human?: boolean
+  pharmacy_compounding?: boolean
+  // Legacy fields (localStorage compatibility)
+  name?: string
+  presentation?: string
+  concentration?: string
+  commercialName?: string
   secondaryConcentration?: string
   concentrationValue?: string
   concentrationUnit?: string
   concentrationPerValue?: string
   concentrationPerUnit?: string
-  unitLabel: string
-  commercialName?: string
+  unitLabel?: string
   averagePrice?: string
-  pharmacyTags: PharmacyType[]
+  pharmacyTags?: PharmacyType[]
 }
 
 export interface CatalogDrug {
@@ -71,12 +85,12 @@ export interface ClientAnimalRecord {
   species: string
   breed: string
   coat: string
-  color: string
   microchip: string
   sex: string
   reproductiveStatus: string
   ageText: string
-  birthDate: string
+  birthDate?: string
+  color?: string
   weightKg: string
   weightDate: string
   anamnesis: string
@@ -1344,12 +1358,10 @@ export function createEmptyClientAnimal(): ClientAnimalRecord {
     species: 'Canina',
     breed: '',
     coat: '',
-    color: '',
     microchip: '',
     sex: 'Sem dados',
     reproductiveStatus: 'Sem dados',
     ageText: '',
-    birthDate: '',
     weightKg: '',
     weightDate: '',
     anamnesis: '',

@@ -548,7 +548,6 @@ export function renderRxToPrintDoc(
 
   const patientParts: string[] = [state.patient.species]
   if (state.patient.breed.trim()) patientParts.push(state.patient.breed)
-  if (state.patient.color?.trim()) patientParts.push(state.patient.color)
   if (state.patient.weightKg.trim()) patientParts.push(`${state.patient.weightKg} kg`)
   if (state.patient.microchip?.trim()) patientParts.push(`Microchip: ${state.patient.microchip}`)
   const tutorAddressLine = [

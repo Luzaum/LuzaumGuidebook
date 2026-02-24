@@ -1,6 +1,15 @@
 ﻿console.log("[DEBUG] NovaReceitaPage.tsx evaluation started")
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import {
+  RxvField,
+  RxvInput,
+  RxvSelect,
+  RxvTextarea,
+  RxvToggle,
+  RxvChipsMultiSelect,
+  RxvButton,
+} from '../../src/components/receituario/RxvComponents'
 import { RxPrintView } from './RxPrintView'
 import ReceituarioChrome from './ReceituarioChrome'
 import { buildAutoInstruction, calculateMedicationQuantity, itemStatus, renderRxToPrintDoc, resolveFrequency, splitPrescriptionByControl } from './rxRenderer'
@@ -50,6 +59,11 @@ import { createPrescriptionDraft, updatePrescriptionDraft, listPrescriptionsByPa
 import { isUuid } from '@/src/lib/isUuid'
 import { SupabaseImportBlock } from './components/SupabaseImportBlock'
 import type { PatientInfo, TutorInfo } from './rxTypes'
+import {
+  searchMedications,
+  getMedicationPresentations,
+  getMedicationRecommendedDoses,
+} from '../../src/lib/clinicRecords'
 
 type SaveStatus = 'saved' | 'editing' | 'saving' | 'error'
 type ToastType = 'success' | 'error' | 'info'
@@ -369,6 +383,7 @@ interface MedicationModalProps {
   catalogDrugs: CatalogDrug[]
   catalogEntries: CatalogModalEntry[]
   patientState: PrescriptionState
+  clinicId?: string
   onClose: (discard: boolean) => void
   onSave: () => void
   onToggleAutosave: (next: boolean) => void
@@ -381,6 +396,7 @@ function MedicationModal({
   catalogDrugs,
   catalogEntries,
   patientState,
+  clinicId,
   onClose,
   onSave,
   onToggleAutosave,
@@ -389,9 +405,35 @@ function MedicationModal({
 }: MedicationModalProps) {
   const onCloseRef = useRef(onClose)
   const [catalogSearch, setCatalogSearch] = useState('')
+  const [supabaseSearch, setSupabaseSearch] = useState('')
+  const [supabaseResults, setSupabaseResults] = useState<any[]>([])
+  const [isSearchingSupabase, setIsSearchingSupabase] = useState(false)
   const [usePresetPresentation, setUsePresetPresentation] = useState(true)
   const [selectedPresentationId, setSelectedPresentationId] = useState('')
   const [structuredConcentration, setStructuredConcentration] = useState<StructuredConcentration>(defaultStructuredConcentration())
+
+  // Busca no Supabase (Catálogo 3.0)
+  useEffect(() => {
+    const q = supabaseSearch.trim()
+    if (q.length < 2 || !clinicId) {
+      setSupabaseResults([])
+      return
+    }
+
+    const timer = setTimeout(async () => {
+      try {
+        setIsSearchingSupabase(true)
+        const results = await searchMedications(clinicId, q)
+        setSupabaseResults(results)
+      } catch (err) {
+        console.error('[MedicationModal] Supabase search failed', err)
+      } finally {
+        setIsSearchingSupabase(false)
+      }
+    }, 400)
+
+    return () => clearTimeout(timer)
+  }, [supabaseSearch, clinicId])
 
   useEffect(() => {
     onCloseRef.current = onClose
@@ -500,6 +542,69 @@ function MedicationModal({
     onDraftChange((prev) => ({ ...prev, concentration: formatted }))
   }
 
+  const handleSupabaseSelect = async (med: any) => {
+    if (!clinicId) return
+
+    try {
+      const presentations = await getMedicationPresentations(clinicId, med.id)
+      const recommendedDoses = await getMedicationRecommendedDoses(clinicId, med.id)
+
+      // Se tiver dose recomendada para a espécie do paciente, aplicar
+      const patientSpecies = patientState.patient.species === 'Felina' ? 'gato' : 'cão'
+      const bestDose = recommendedDoses.find(d => d.species === patientSpecies) || recommendedDoses[0]
+
+      onDraftChange((prev) => {
+        const firstPres = presentations[0]
+
+        let freqToken: any = ''
+        let timesPerDay = prev.timesPerDay
+        let everyHours = prev.everyHours
+        let fMode = prev.frequencyType
+
+        if (bestDose?.frequency) {
+          const f = bestDose.frequency.toUpperCase()
+          if (f.includes('SID') || f.includes('1 VEZ')) { freqToken = 'SID'; timesPerDay = '1'; fMode = 'timesPerDay' }
+          else if (f.includes('BID') || f.includes('2 VEZES')) { freqToken = 'BID'; timesPerDay = '2'; fMode = 'timesPerDay' }
+          else if (f.includes('TID') || f.includes('3 VEZES')) { freqToken = 'TID'; timesPerDay = '3'; fMode = 'timesPerDay' }
+          else if (f.includes('QID') || f.includes('4 VEZES')) { freqToken = 'QID'; timesPerDay = '4'; fMode = 'timesPerDay' }
+          else if (f.includes('12/12') || f.includes('12 HORAS')) { everyHours = '12'; fMode = 'everyHours' }
+          else if (f.includes('8/8') || f.includes('8 HORAS')) { everyHours = '8'; fMode = 'everyHours' }
+          else if (f.includes('24/24') || f.includes('24 HORAS')) { everyHours = '24'; fMode = 'everyHours' }
+        }
+
+        return {
+          ...prev,
+          catalogDrugId: med.id,
+          name: med.name,
+          controlled: !!med.is_controlled,
+          pharmacyType: (med.pharmacy_origin || 'veterinária') as PharmacyType,
+          routeGroup: (bestDose?.route || med.default_route || 'ORAL') as RouteGroup,
+          doseValue: bestDose ? String(bestDose.dose_value) : prev.doseValue,
+          doseUnit: bestDose ? bestDose.dose_unit : prev.doseUnit,
+          frequencyToken: freqToken,
+          timesPerDay,
+          everyHours,
+          frequencyType: fMode,
+          autoInstruction: true,
+          manualEdited: false,
+          // Se tiver apresentação, pega a primeira
+          presentation: firstPres ? firstPres.pharmaceutical_form || '' : prev.presentation,
+          concentration: firstPres ? firstPres.concentration_text || '' : prev.concentration,
+          commercialName: firstPres ? firstPres.commercial_name || '' : '',
+        }
+      })
+
+      if (presentations.length > 0) {
+        setSelectedPresentationId(presentations[0].id)
+      }
+      setSupabaseSearch('')
+      setSupabaseResults([])
+      setUsePresetPresentation(true)
+    } catch (err) {
+      console.error('[MedicationModal] Error loading Supabase med details', err)
+    }
+  }
+
   const handleCatalogSelect = (entry: CatalogModalEntry) => {
     onDraftChange((prev) => {
       const nextPharmacyType = entry.pharmacyTypes.includes(prev.pharmacyType)
@@ -601,9 +706,47 @@ function MedicationModal({
                 Escrever manualmente
               </button>
             </div>
+            <div className="space-y-4 rounded-xl border border-[#2e5525] bg-[#152913] p-4">
+              <h3 className="text-sm font-bold text-[#39ff14]">Catálogo 3.0 (Supabase)</h3>
+              <div className="flex gap-2">
+                <input
+                  className="flex-1 rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
+                  value={supabaseSearch}
+                  onChange={(e) => setSupabaseSearch(e.target.value)}
+                  placeholder="Buscar medicamentos no banco..."
+                />
+                {isSearchingSupabase && <span className="material-symbols-outlined animate-spin text-[#39ff14]">sync</span>}
+              </div>
+
+              {supabaseResults.length > 0 && (
+                <div className="max-h-48 space-y-2 overflow-y-auto pr-1">
+                  {supabaseResults.map((med) => (
+                    <button
+                      type="button"
+                      key={med.id}
+                      className="flex w-full items-start justify-between rounded-lg border border-[#335c29] bg-[#0c1a0c] px-3 py-2 text-left hover:border-[#39ff14]"
+                      onClick={() => handleSupabaseSelect(med)}
+                    >
+                      <div>
+                        <p className="text-sm font-bold text-white uppercase tracking-tight italic">
+                          {med.name}
+                        </p>
+                        <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">
+                          {med.pharmacy_origin || 'Veterinária'}
+                        </p>
+                      </div>
+                      {med.is_controlled && (
+                        <span className="rounded bg-amber-500/20 px-2 py-0.5 text-[10px] font-bold text-amber-300">CONTROLADO</span>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
             {state.useCatalog ? (
               <section className="space-y-2 rounded-xl border border-[#2e5525] bg-[#152913] p-4">
-                <h3 className="text-sm font-bold text-slate-200">Catálogo rápido</h3>
+                <h3 className="text-sm font-bold text-slate-200">Catálogo rápido (Legado)</h3>
                 <input
                   className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
                   value={catalogSearch}
@@ -612,7 +755,7 @@ function MedicationModal({
                 />
                 <div className="max-h-36 space-y-2 overflow-y-auto pr-1">
                   {filteredCatalog.map((entry) => (
-                    <button type="button" key={`${entry.name}-${entry.concentration}`} className="flex w-full items-start justify-between rounded-lg border border-[#335c29] bg-[#12230f] px-3 py-2 text-left hover:border-[#48a534]" onClick={() => handleCatalogSelect(entry)}>
+                    <button type="button" key={entry.id} className="flex w-full items-start justify-between rounded-lg border border-[#335c29] bg-[#12230f] px-3 py-2 text-left hover:border-[#48a534]" onClick={() => handleCatalogSelect(entry)}>
                       <div>
                         <p className="text-sm font-semibold text-white">
                           {entry.name}
@@ -668,13 +811,13 @@ function MedicationModal({
                     <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
                       <input
                         className="rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                        value={state.draft.presentation}
+                        value={state.draft.presentation ?? ''}
                         onChange={(e) => onDraftChange((prev) => ({ ...prev, presentation: e.target.value }))}
                         placeholder="Apresentação manual"
                       />
                       <input
                         className="rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                        value={state.draft.concentration}
+                        value={state.draft.concentration ?? ''}
                         onChange={(e) => {
                           const nextValue = e.target.value
                           onDraftChange((prev) => ({ ...prev, concentration: nextValue }))
@@ -743,7 +886,7 @@ function MedicationModal({
                 <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Nome do medicamento</label>
                 <input
                   className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                  value={state.draft.name}
+                  value={state.draft.name ?? ''}
                   onChange={(e) => onDraftChange((prev) => ({ ...prev, name: e.target.value }))}
                 />
               </div>
@@ -752,7 +895,7 @@ function MedicationModal({
                 <input
                   list="rx-presentations"
                   className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                  value={state.draft.presentation}
+                  value={state.draft.presentation ?? ''}
                   onChange={(e) => onDraftChange((prev) => ({ ...prev, presentation: e.target.value }))}
                 />
                 <datalist id="rx-presentations">
@@ -765,7 +908,7 @@ function MedicationModal({
                 <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Concentração / força</label>
                 <input
                   className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                  value={state.draft.concentration}
+                  value={state.draft.concentration ?? ''}
                   onChange={(e) => {
                     const nextValue = e.target.value
                     onDraftChange((prev) => ({ ...prev, concentration: nextValue }))
@@ -883,7 +1026,7 @@ function MedicationModal({
                 <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Nome da farmácia (opcional)</label>
                 <input
                   className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                  value={state.draft.pharmacyName}
+                  value={state.draft.pharmacyName ?? ''}
                   onChange={(e) => onDraftChange((prev) => ({ ...prev, pharmacyName: e.target.value }))}
                 />
               </div>
@@ -896,11 +1039,19 @@ function MedicationModal({
                 />
                 Medicamento controlado (receituário de controle especial)
               </label>
+              {state.draft.controlled && (!patientState.tutor.name || (!patientState.tutor.cpf && !patientState.tutor.documentId) || !patientState.tutor.street) && (
+                <div className="flex items-start gap-2 rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 md:col-span-2">
+                  <span className="material-symbols-outlined text-amber-300 text-[18px]">warning</span>
+                  <p className="text-[11px] font-bold text-amber-200 uppercase tracking-tight">
+                    Para medicamentos controlados, os dados do tutor (Nome, CPF/Documento e Endereço) são obrigatórios para a impressão correta da receita.
+                  </p>
+                </div>
+              )}
               <div className="md:col-span-2">
                 <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Observações</label>
                 <input
                   className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                  value={state.draft.observations}
+                  value={state.draft.observations ?? ''}
                   onChange={(e) => onDraftChange((prev) => ({ ...prev, observations: e.target.value }))}
                 />
               </div>
@@ -911,7 +1062,7 @@ function MedicationModal({
                 <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Dose</label>
                 <input
                   className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                  value={state.draft.doseValue}
+                  value={state.draft.doseValue ?? ''}
                   onChange={(e) => onDraftChange((prev) => ({ ...prev, doseValue: e.target.value }))}
                 />
               </div>
@@ -933,7 +1084,7 @@ function MedicationModal({
                 <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Duração (dias)</label>
                 <input
                   className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                  value={state.draft.durationDays}
+                  value={state.draft.durationDays ?? ''}
                   onChange={(e) => onDraftChange((prev) => ({ ...prev, durationDays: e.target.value }))}
                 />
               </div>
@@ -953,7 +1104,7 @@ function MedicationModal({
                   <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Vezes ao dia (1-24)</label>
                   <input
                     className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                    value={state.draft.timesPerDay}
+                    value={state.draft.timesPerDay ?? ''}
                     onChange={(e) => onDraftChange((prev) => ({ ...prev, timesPerDay: e.target.value, frequencyToken: '' }))}
                   />
                 </div>
@@ -962,7 +1113,7 @@ function MedicationModal({
                   <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Intervalo em horas (1-24)</label>
                   <input
                     className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                    value={state.draft.everyHours}
+                    value={state.draft.everyHours ?? ''}
                     onChange={(e) => onDraftChange((prev) => ({ ...prev, everyHours: e.target.value, frequencyToken: '' }))}
                   />
                 </div>
@@ -1034,7 +1185,7 @@ function MedicationModal({
                 <textarea
                   rows={4}
                   className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                  value={state.draft.instruction}
+                  value={state.draft.instruction ?? ''}
                   onChange={(e) =>
                     onDraftChange((prev) => ({
                       ...prev,
@@ -1233,15 +1384,15 @@ export default function NovaReceitaPage() {
           },
         ]
       }
-      return drug.presentations.map((presentation) => ({
+      return drug.presentations.map((presentation: any) => ({
         id: `${drug.id}-${presentation.id}`,
         drugId: drug.id,
         presentationId: presentation.id,
         controlled: !!drug.controlled,
         name: drug.name,
-        commercialName: presentation.commercialName || '',
-        concentration: presentation.concentration || defaultPresentation?.concentration || '',
-        presentation: presentation.name || defaultPresentation?.name || 'Comprimido',
+        commercialName: presentation.commercial_name || presentation.commercialName || '',
+        concentration: presentation.concentration_text || presentation.concentration || defaultPresentation?.concentration || '',
+        presentation: presentation.pharmaceutical_form || presentation.name || defaultPresentation?.name || 'Comprimido',
         routeGroup: drug.routeGroup,
         doseUnit: drug.doseUnit,
         pharmacyTypes: presentation.pharmacyTags?.length ? presentation.pharmacyTags : [drug.pharmacyType || 'veterinária']
@@ -1593,7 +1744,7 @@ export default function NovaReceitaPage() {
     try {
       if (supabasePrescriptionId) {
         // Update existing
-        const result = await updatePrescriptionDraft(supabasePrescriptionId, { content: prescription })
+        const result = await updatePrescriptionDraft(supabasePrescriptionId, { content: prescription }, clinicId || undefined)
         pushToast('success', `Receita atualizada no Supabase (ID: ${result.id})`)
       } else {
         // Create new
@@ -1601,7 +1752,7 @@ export default function NovaReceitaPage() {
           patient_id: prescription.patient.patientRecordId,
           tutor_id: prescription.tutor.tutorRecordId,
           content: prescription,
-        })
+        }, clinicId || undefined)
         setSupabasePrescriptionId(result.id)
         pushToast('success', `Receita criada no Supabase (ID: ${result.id})`)
       }
@@ -1628,7 +1779,7 @@ export default function NovaReceitaPage() {
 
     setSupabaseLoading(true)
     try {
-      const results = await listPrescriptionsByPatient(prescription.patient.patientRecordId)
+      const results = await listPrescriptionsByPatient(prescription.patient.patientRecordId, clinicId || undefined)
       pushToast('info', `${results.length} receita(s) encontrada(s) no Supabase`)
       if (import.meta.env.DEV) {
         console.log('[Supabase Prescriptions]', results)
@@ -1820,6 +1971,34 @@ export default function NovaReceitaPage() {
 
   useEffect(() => {
     if (pendingProtocolImportRef.current) return
+
+    const snapshotKey = 'receituario-vet:protocol-snapshot-to-import'
+    const sessionSnapshot = sessionStorage.getItem(snapshotKey)
+    if (sessionSnapshot) {
+      sessionStorage.removeItem(snapshotKey)
+      try {
+        const parsed = JSON.parse(sessionSnapshot) as RxProtocol
+        pendingProtocolImportRef.current = true
+        importProtocol(parsed)
+        return
+      } catch {
+        // fallback below
+      }
+    }
+
+    const snapshot = localStorage.getItem('receituario-vet:protocol-snapshot')
+    if (snapshot) {
+      localStorage.removeItem('receituario-vet:protocol-snapshot')
+      try {
+        const parsed = JSON.parse(snapshot) as RxProtocol
+        pendingProtocolImportRef.current = true
+        importProtocol(parsed)
+        return
+      } catch {
+        // fallback to id-based import
+      }
+    }
+
     const protocolId = localStorage.getItem('receituario-vet:protocol-to-import')
     if (!protocolId) return
     const protocol = db.protocols.find((entry) => entry.id === protocolId)
@@ -1856,7 +2035,6 @@ export default function NovaReceitaPage() {
         sex: normalizePatientSex(found.sex),
         ageText: found.ageText,
         weightKg: found.weightKg,
-        color: (found as any).color || '',
         microchip: (found as any).microchip || '',
         anamnesis: (found as any).anamnesis || '',
       },
@@ -1901,7 +2079,6 @@ export default function NovaReceitaPage() {
           species: normalizeSpecies(animal.species),
           breed: animal.breed || prev.patient.breed,
           coat: animal.coat || prev.patient.coat,
-          color: (animal as any).color || '',
           microchip: (animal as any).microchip || '',
           sex: normalizePatientSex(animal.sex),
           reproductiveStatus: (animal.reproductiveStatus || prev.patient.reproductiveStatus) as PrescriptionState['patient']['reproductiveStatus'],
@@ -1965,7 +2142,7 @@ export default function NovaReceitaPage() {
       actions={
         <>
           <StatusChip status={saveStatus} />
-          <label className="rxv-btn-secondary rxv-top-action hidden items-center gap-2 px-3 py-2 text-xs sm:flex">
+          <label className="hidden items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/60 px-3 py-2 text-xs font-bold text-slate-300 sm:flex cursor-pointer">
             <input type="checkbox" className="h-4 w-4 rounded" checked={autosaveEnabled} onChange={(e) => setAutosaveEnabled(e.target.checked)} />
             Autosave
           </label>
@@ -1977,47 +2154,50 @@ export default function NovaReceitaPage() {
             <span className="material-symbols-outlined text-[18px]">group</span>
             Tutores e pacientes
           </Link>
-          <Link className="rxv-btn-secondary rxv-top-action inline-flex items-center gap-2 px-3 py-2 text-sm" to="/receituario-vet/catalogo">
+          <Link className="rxv-btn-secondary rxv-top-action inline-flex items-center gap-2 px-3 py-2 text-sm" to="/receituario-vet/catalogo3">
             <span className="material-symbols-outlined text-[18px]">medication</span>
-            Catálogo de fármacos
+            Catálogo
           </Link>
-          <button type="button" className="rxv-btn-secondary rxv-top-action inline-flex items-center gap-2 px-3 py-2 text-sm" onClick={() => setProtocolModalOpen(true)}>
+          <RxvButton variant="secondary" className="rxv-top-action" onClick={() => setProtocolModalOpen(true)}>
             <span className="material-symbols-outlined text-[18px]">inventory_2</span>
-            Visualizar lista de protocolos prontos
-          </button>
+            Protocolos
+          </RxvButton>
           <Link className="rxv-btn-secondary rxv-top-action inline-flex items-center gap-2 px-3 py-2 text-sm" to="/receituario-vet/controle-especial">
             <span className="material-symbols-outlined text-[18px]">gpp_maybe</span>
-            Receituário de controle especial
+            Controle especial
           </Link>
           {import.meta.env.DEV && rxDataSource === 'supabase' && (
             <>
-              <button
-                type="button"
-                className="inline-flex items-center gap-2 rounded-lg border border-amber-700/60 bg-amber-900/20 px-3 py-2 text-xs text-amber-300 hover:bg-amber-900/40 disabled:opacity-50"
+              <RxvButton
+                variant="secondary"
+                className="border-amber-700/60 bg-amber-900/20 text-amber-300 hover:bg-amber-900/40"
                 onClick={saveToSupabase}
-                disabled={supabaseLoading}
+                loading={supabaseLoading}
               >
-                {supabaseLoading ? '⏳' : '💾'} {supabasePrescriptionId ? 'Atualizar' : 'Salvar'} Supabase
-              </button>
-              <button
-                type="button"
-                className="inline-flex items-center gap-2 rounded-lg border border-cyan-700/60 bg-cyan-900/20 px-3 py-2 text-xs text-cyan-300 hover:bg-cyan-900/40 disabled:opacity-50"
+                {supabasePrescriptionId ? 'Atualizar' : 'Salvar'} Supabase
+              </RxvButton>
+              <RxvButton
+                variant="secondary"
+                className="border-cyan-700/60 bg-cyan-900/20 text-cyan-300 hover:bg-cyan-900/40"
                 onClick={listSupabasePrescriptions}
-                disabled={supabaseLoading}
+                loading={supabaseLoading}
               >
-                {supabaseLoading ? '⏳' : '📋'} Listar Supabase
-              </button>
+                Listar Supabase
+              </RxvButton>
             </>
           )}
-          <button type="button" className="rxv-btn-secondary rxv-top-action px-3 py-2 text-sm" onClick={saveNow}>
+          <RxvButton variant="secondary" className="rxv-top-action" onClick={saveNow}>
+            <span className="material-symbols-outlined text-[18px]">save</span>
             Salvar rascunho
-          </button>
-          <button type="button" className="rxv-btn-secondary rxv-top-action px-3 py-2 text-sm" onClick={() => { saveNow(); navigate(`/receituario-vet/rx/${prescription.id}/print?mode=review`) }}>
+          </RxvButton>
+          <RxvButton variant="secondary" className="rxv-top-action" onClick={() => { saveNow(); navigate(`/receituario-vet/rx/${prescription.id}/print?mode=review`) }}>
+            <span className="material-symbols-outlined text-[18px]">preview</span>
             Revisar
-          </button>
-          <button type="button" className="rxv-btn-primary rxv-top-action px-3 py-2 text-sm" onClick={() => { saveNow(); navigate(`/receituario-vet/rx/${prescription.id}/print`) }}>
+          </RxvButton>
+          <RxvButton variant="primary" className="rxv-top-action" onClick={() => { saveNow(); navigate(`/receituario-vet/rx/${prescription.id}/print`) }}>
+            <span className="material-symbols-outlined text-[18px]">print</span>
             Imprimir / Exportar
-          </button>
+          </RxvButton>
         </>
       }
     >
@@ -2233,37 +2413,40 @@ export default function NovaReceitaPage() {
               </label>
               <label className="text-xs text-slate-400">
                 ID
-                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.adminId || 'ADMIN'} readOnly />
+                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.adminId ?? 'ADMIN'} readOnly />
               </label>
               <label className="text-xs text-slate-400">
                 Nome do prescritor
-                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.name} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, name: e.target.value } }))} />
+                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.name ?? ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, name: e.target.value } }))} />
               </label>
               <label className="text-xs text-slate-400">
                 CRMV
-                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.crmv} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, crmv: e.target.value } }))} />
+                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.crmv ?? ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, crmv: e.target.value } }))} />
               </label>
               <label className="text-xs text-slate-400">
                 Clínica
-                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.clinicName} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, clinicName: e.target.value } }))} />
+                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.clinicName ?? ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, clinicName: e.target.value } }))} />
               </label>
             </div>
 
-            <div className="mb-3 mt-5 rounded-lg border border-[#2f5a25] bg-[#142712] px-3 py-2 text-xs font-semibold uppercase tracking-wide text-[color:var(--rxv-text)]">
-              Tutor / Responsável {hasSpecialControlItems ? '(controle especial)' : ''}
+            {/* ── BLOCO A: TUTOR / RESPONSÁVEL ── */}
+            <div className="mb-3 mt-5 flex items-center gap-2 rounded-xl border border-[#2f5a25] bg-[#142712] px-4 py-2.5">
+              <span className="material-symbols-outlined text-[18px] text-[#39ff14]">person</span>
+              <span className="text-xs font-black uppercase tracking-widest text-[color:var(--rxv-text)]">
+                Tutor / Responsável {hasSpecialControlItems ? '(controle especial)' : ''}
+              </span>
             </div>
             {hasSpecialControlItems ? (
-              <div className="mb-3 rounded-lg border px-3 py-2 text-xs" style={{ borderColor: 'var(--rxv-warning-border)', background: 'var(--rxv-warning-bg)', color: 'var(--rxv-warning-text)' }}>
-                Receita com item controlado detectada. Preencha os dados completos do tutor para rastreabilidade sanitária.
+              <div className="mb-3 rounded-xl border px-4 py-3 text-xs font-semibold" style={{ borderColor: 'var(--rxv-warning-border)', background: 'var(--rxv-warning-bg)', color: 'var(--rxv-warning-text)' }}>
+                ⚠️ Receita com item controlado detectada. Preencha os dados completos do tutor para rastreabilidade sanitária.
               </div>
             ) : null}
             {rxDataSource === 'local' && (
-              <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-                <label className="text-xs text-slate-400 md:col-span-2">
-                  Importar do banco de tutores/pacientes
+              <div className="mb-3 grid grid-cols-1 gap-3 md:grid-cols-2">
+                <RxvField label="Importar do banco de tutores/pacientes" className="md:col-span-2">
                   <select
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                    value={selectedClient?.id || ''}
+                    className="w-full rounded-xl border border-slate-800 bg-black/60 px-4 py-3.5 text-sm font-bold text-white outline-none transition-all focus:border-[#39ff14]/50 focus:ring-1 focus:ring-[#39ff14]/20"
+                    value={selectedClient?.id ?? ''}
                     onChange={(e) => {
                       const clientId = e.target.value
                       if (!clientId) return
@@ -2277,13 +2460,12 @@ export default function NovaReceitaPage() {
                       </option>
                     ))}
                   </select>
-                </label>
+                </RxvField>
                 {selectedClient && selectedClientAnimals.length > 0 ? (
-                  <label className="text-xs text-slate-400 md:col-span-2">
-                    Paciente do tutor selecionado
+                  <RxvField label="Paciente do tutor selecionado" className="md:col-span-2">
                     <select
-                      className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                      value={prescription.patient.patientRecordId}
+                      className="w-full rounded-xl border border-slate-800 bg-black/60 px-4 py-3.5 text-sm font-bold text-white outline-none transition-all focus:border-[#39ff14]/50 focus:ring-1 focus:ring-[#39ff14]/20"
+                      value={prescription.patient.patientRecordId ?? ''}
                       onChange={(e) => applyClientFromBank(selectedClient.id, e.target.value)}
                     >
                       {selectedClientAnimals.map((animal) => (
@@ -2292,91 +2474,93 @@ export default function NovaReceitaPage() {
                         </option>
                       ))}
                     </select>
-                  </label>
+                  </RxvField>
                 ) : null}
                 {selectedClient && selectedClientAnimals.length === 0 ? (
-                  <p className="rounded-lg border border-[#3b6c2f] bg-[#12270f] px-3 py-2 text-xs text-[#a8e79b] md:col-span-2">
+                  <p className="rounded-xl border border-[#3b6c2f]/60 bg-[#12270f] px-4 py-3 text-xs font-semibold text-[#a8e79b] md:col-span-2">
                     Este tutor ainda não possui paciente cadastrado. Você pode preencher os dados do paciente manualmente abaixo.
                   </p>
                 ) : null}
               </div>
             )}
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-              <label className="text-xs text-slate-400">
-                ID/Registro tutor
-                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.tutorRecordId} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, tutorRecordId: e.target.value } }))} />
-              </label>
-              <label className="text-xs text-slate-400">
-                Nome *
-                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.name} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, name: e.target.value } }))} />
-              </label>
-              <label className="text-xs text-slate-400">
-                Telefone
-                <input
-                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+              <RxvField label="ID/Registro tutor">
+                <RxvInput
+                  value={prescription.tutor.tutorRecordId ?? ''}
+                  onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, tutorRecordId: e.target.value } }))}
+                />
+              </RxvField>
+              <RxvField label="Nome *">
+                <RxvInput
+                  value={prescription.tutor.name ?? ''}
+                  onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, name: e.target.value } }))}
+                />
+              </RxvField>
+              <RxvField label="Telefone">
+                <RxvInput
                   inputMode="tel"
                   maxLength={15}
                   placeholder="(00) 00000-0000"
-                  value={prescription.tutor.phone || ''}
+                  value={prescription.tutor.phone ?? ''}
                   onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, phone: maskPhoneBr(e.target.value) } }))}
                 />
-              </label>
+              </RxvField>
               {hasSpecialControlItems ? (
                 <>
-                  <label className="text-xs text-slate-400">
-                    CPF *
-                    <input
-                      className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  <RxvField label="CPF *">
+                    <RxvInput
                       inputMode="numeric"
                       maxLength={14}
                       placeholder="000.000.000-00"
-                      value={prescription.tutor.cpf || ''}
+                      value={prescription.tutor.cpf ?? ''}
                       onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, cpf: maskCpf(e.target.value) } }))}
                     />
-                  </label>
-                  <label className="text-xs text-slate-400">
-                    RG
-                    <input
-                      className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  </RxvField>
+                  <RxvField label="RG">
+                    <RxvInput
                       maxLength={12}
                       placeholder="00.000.000-0"
-                      value={prescription.tutor.rg || ''}
+                      value={prescription.tutor.rg ?? ''}
                       onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, rg: maskRg(e.target.value) } }))}
                     />
-                  </label>
-                  <label className="text-xs text-slate-400 md:col-span-2">
-                    Rua *
-                    <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.street || ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, street: e.target.value } }))} />
-                  </label>
-                  <label className="text-xs text-slate-400">
-                    Número *
-                    <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.number || ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, number: e.target.value } }))} />
-                  </label>
-                  <label className="text-xs text-slate-400">
-                    Complemento
-                    <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.complement || ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, complement: e.target.value } }))} />
-                  </label>
-                  <label className="text-xs text-slate-400">
-                    Bairro *
-                    <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.neighborhood || ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, neighborhood: e.target.value } }))} />
-                  </label>
-                  <label className="text-xs text-slate-400">
-                    Cidade *
-                    <input
-                      className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  </RxvField>
+                  <RxvField label="Rua *" className="md:col-span-2">
+                    <RxvInput
+                      value={prescription.tutor.street ?? ''}
+                      onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, street: e.target.value } }))}
+                    />
+                  </RxvField>
+                  <RxvField label="Número *">
+                    <RxvInput
+                      value={prescription.tutor.number ?? ''}
+                      onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, number: e.target.value } }))}
+                    />
+                  </RxvField>
+                  <RxvField label="Complemento">
+                    <RxvInput
+                      value={prescription.tutor.complement ?? ''}
+                      onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, complement: e.target.value } }))}
+                    />
+                  </RxvField>
+                  <RxvField label="Bairro *">
+                    <RxvInput
+                      value={prescription.tutor.neighborhood ?? ''}
+                      onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, neighborhood: e.target.value } }))}
+                    />
+                  </RxvField>
+                  <RxvField label="Cidade *">
+                    <RxvInput
                       list="rx-tutor-city-options"
                       placeholder="Digite ou selecione a cidade"
-                      value={prescription.tutor.city || ''}
+                      value={prescription.tutor.city ?? ''}
                       onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, city: e.target.value } }))}
                     />
-                  </label>
-                  <label className="text-xs text-slate-400">
-                    Estado *
-                    <input
-                      className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  </RxvField>
+                  <RxvField label="Estado *">
+                    <RxvInput
                       list="rx-tutor-state-options"
                       placeholder="UF ou nome do estado"
-                      value={prescription.tutor.state || ''}
+                      value={prescription.tutor.state ?? ''}
                       onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, state: e.target.value } }))}
                       onBlur={(e) =>
                         updatePrescription((prev) => ({
@@ -2385,29 +2569,28 @@ export default function NovaReceitaPage() {
                         }))
                       }
                     />
-                  </label>
-                  <label className="text-xs text-slate-400">
-                    CEP *
-                    <div className="mt-1 flex gap-2">
-                      <input
-                        className="w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  </RxvField>
+                  <RxvField label="CEP *">
+                    <div className="flex gap-2">
+                      <RxvInput
                         inputMode="numeric"
                         maxLength={9}
                         placeholder="00000-000"
-                        value={prescription.tutor.zipcode || ''}
+                        value={prescription.tutor.zipcode ?? ''}
                         onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, zipcode: maskCep(e.target.value) } }))}
                         onBlur={(e) => void fetchCepForTutor(e.target.value)}
+                        className="flex-1"
                       />
-                      <button
-                        type="button"
-                        className="rounded-lg border border-[#3f6f31] px-2 text-xs font-semibold text-slate-200 hover:bg-[#1f3619]"
+                      <RxvButton
+                        variant="secondary"
                         disabled={cepLookupLoading}
-                        onClick={() => void fetchCepForTutor(prescription.tutor.zipcode || '')}
+                        onClick={() => void fetchCepForTutor(prescription.tutor.zipcode ?? '')}
+                        loading={cepLookupLoading}
                       >
-                        {cepLookupLoading ? '...' : 'Buscar'}
-                      </button>
+                        Buscar
+                      </RxvButton>
                     </div>
-                  </label>
+                  </RxvField>
                   <datalist id="rx-tutor-state-options">
                     {BRAZIL_STATE_SUGGESTIONS.map((entry) => (
                       <option key={entry} value={entry} />
@@ -2421,26 +2604,32 @@ export default function NovaReceitaPage() {
                   {cepLookupMessage ? <p className="text-[11px] font-semibold text-[#9be78c] md:col-span-2">{cepLookupMessage}</p> : null}
                 </>
               ) : null}
-              <label className="text-xs text-slate-400 md:col-span-2">
-                Observações do tutor
-                <textarea className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" rows={2} value={prescription.tutor.notes} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, notes: e.target.value } }))} />
-              </label>
+              <RxvField label="Observações do tutor" className="md:col-span-2">
+                <RxvTextarea
+                  rows={2}
+                  value={prescription.tutor.notes ?? ''}
+                  onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, notes: e.target.value } }))}
+                />
+              </RxvField>
             </div>
 
-            <div className="mb-3 mt-5 rounded-lg border border-[#2f5a25] bg-[#142712] px-3 py-2 text-xs font-semibold uppercase tracking-wide text-[color:var(--rxv-text)]">
-              Paciente
+            {/* ── BLOCO B: PACIENTE ── */}
+            <div className="mb-3 mt-5 flex items-center gap-2 rounded-xl border border-[#2f5a25] bg-[#142712] px-4 py-2.5">
+              <span className="material-symbols-outlined text-[18px] text-[#39ff14]">pets</span>
+              <span className="text-xs font-black uppercase tracking-widest text-[color:var(--rxv-text)]">Paciente</span>
             </div>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-              <label className="text-xs text-slate-400">
-                ID/Registro do paciente
-                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.patient.patientRecordId} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, patientRecordId: e.target.value } }))} />
-              </label>
+              <RxvField label="ID/Registro do paciente">
+                <RxvInput
+                  value={prescription.patient.patientRecordId ?? ''}
+                  onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, patientRecordId: e.target.value } }))}
+                />
+              </RxvField>
               {selectedClient && selectedClientAnimals.length > 0 ? (
-                <label className="text-xs text-slate-400">
-                  Selecionar paciente deste tutor
+                <RxvField label="Selecionar paciente deste tutor">
                   <select
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                    value={prescription.patient.patientRecordId}
+                    className="w-full rounded-xl border border-slate-800 bg-black/60 px-4 py-3.5 text-sm font-bold text-white outline-none transition-all focus:border-[#39ff14]/50 focus:ring-1 focus:ring-[#39ff14]/20"
+                    value={prescription.patient.patientRecordId ?? ''}
                     onChange={(e) => applyClientFromBank(selectedClient.id, e.target.value)}
                   >
                     {selectedClientAnimals.map((animal) => (
@@ -2449,26 +2638,24 @@ export default function NovaReceitaPage() {
                       </option>
                     ))}
                   </select>
-                </label>
+                </RxvField>
               ) : (
-                <label className="text-xs text-slate-400">
-                  Nome do animal *
-                  <div className="mt-1 flex gap-2">
-                    <input
+                <RxvField label="Nome do animal *">
+                  <div className="flex gap-2">
+                    <RxvInput
                       list="rx-patient-bank"
-                      className="w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                      value={prescription.patient.name}
+                      value={prescription.patient.name ?? ''}
                       onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, name: e.target.value } }))}
+                      className="flex-1"
                     />
-                    <button
-                      type="button"
-                      className="rounded-lg border border-[#3f6f31] bg-[#1f3319] px-3 py-2 text-xs font-semibold text-[#9cff8c] hover:bg-[#26431f]"
+                    <RxvButton
+                      variant="secondary"
                       onClick={() => applyPatientFromBank(prescription.patient.name)}
                     >
                       Carregar
-                    </button>
+                    </RxvButton>
                   </div>
-                </label>
+                </RxvField>
               )}
               <datalist id="rx-patient-bank">
                 {patientSuggestions.map((patient) => (
@@ -2476,20 +2663,20 @@ export default function NovaReceitaPage() {
                 ))}
               </datalist>
               {selectedClient && selectedClientAnimals.length > 0 ? (
-                <label className="text-xs text-slate-400 md:col-span-2">
-                  Nome do animal *
-                  <input
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                    value={prescription.patient.name}
+                <RxvField label="Nome do animal *" className="md:col-span-2">
+                  <RxvInput
+                    value={prescription.patient.name ?? ''}
                     onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, name: e.target.value } }))}
                   />
-                </label>
+                </RxvField>
               ) : null}
-              <label className="text-xs text-slate-400">
-                Espécie *
-                <select
-                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                  value={prescription.patient.species}
+              <RxvField label="Espécie *">
+                <RxvSelect
+                  value={prescription.patient.species ?? 'Canina'}
+                  options={[
+                    { value: 'Canina', label: 'Canina' },
+                    { value: 'Felina', label: 'Felina' },
+                  ]}
                   onChange={(e) =>
                     updatePrescription((prev) => ({
                       ...prev,
@@ -2501,98 +2688,100 @@ export default function NovaReceitaPage() {
                       },
                     }))
                   }
-                >
-                  <option value="Canina">Canina</option>
-                  <option value="Felina">Felina</option>
-                </select>
-              </label>
-              <label className="text-xs text-slate-400">
-                Raça
-                <input
+                />
+              </RxvField>
+              <RxvField label="Raça">
+                <RxvInput
                   list="rx-breed-options"
-                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                  value={prescription.patient.breed}
+                  value={prescription.patient.breed ?? ''}
                   onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, breed: e.target.value } }))}
                   placeholder={prescription.patient.species === 'Canina' ? 'Ex.: Labrador Retriever' : 'Ex.: Siamês'}
                 />
-              </label>
+              </RxvField>
               <datalist id="rx-breed-options">
                 {breedOptions.map((breed) => (
                   <option key={breed} value={breed} />
                 ))}
               </datalist>
-              <label className="text-xs text-slate-400">
-                Sexo
-                <select className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.patient.sex} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, sex: e.target.value as PrescriptionState['patient']['sex'] } }))}>
-                  <option value="Macho">Macho</option>
-                  <option value="Fêmea">Fêmea</option>
-                  <option value="Sem dados">Sem dados</option>
-                </select>
-              </label>
-              <label className="text-xs text-slate-400">
-                Condição reprodutiva
-                <select
-                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                  value={prescription.patient.reproductiveStatus}
+              <RxvField label="Sexo">
+                <RxvSelect
+                  value={prescription.patient.sex ?? 'Sem dados'}
+                  options={[
+                    { value: 'Macho', label: 'Macho' },
+                    { value: 'Fêmea', label: 'Fêmea' },
+                    { value: 'Sem dados', label: 'Sem dados' },
+                  ]}
+                  onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, sex: e.target.value as PrescriptionState['patient']['sex'] } }))}
+                />
+              </RxvField>
+              <RxvField label="Condição reprodutiva">
+                <RxvSelect
+                  value={prescription.patient.reproductiveStatus ?? 'Sem dados'}
+                  options={[
+                    { value: 'Castrado', label: 'Castrado' },
+                    { value: 'Fértil', label: 'Fértil' },
+                    { value: 'Sem dados', label: 'Sem dados' },
+                  ]}
                   onChange={(e) =>
                     updatePrescription((prev) => ({
                       ...prev,
                       patient: { ...prev.patient, reproductiveStatus: e.target.value as PrescriptionState['patient']['reproductiveStatus'] },
                     }))
                   }
-                >
-                  <option value="Castrado">Castrado</option>
-                  <option value="Fértil">Fértil</option>
-                  <option value="Sem dados">Sem dados</option>
-                </select>
-              </label>
-              <label className="text-xs text-slate-400">
-                Idade
-                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.patient.ageText} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, ageText: e.target.value } }))} />
-              </label>
-              <label className="text-xs text-slate-400">
-                Nascimento
-                <input type="date" className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.patient.birthDate} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, birthDate: e.target.value } }))} />
-              </label>
-              <label className="text-xs text-slate-400">
-                Pelagem
-                <input
+                />
+              </RxvField>
+              <RxvField label="Idade">
+                <RxvInput
+                  value={prescription.patient.ageText ?? ''}
+                  onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, ageText: e.target.value } }))}
+                />
+              </RxvField>
+              <RxvField label="Pelagem">
+                <RxvInput
                   list="rx-coat-options"
-                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                  value={prescription.patient.coat}
+                  value={prescription.patient.coat ?? ''}
                   onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, coat: e.target.value } }))}
                   placeholder={prescription.patient.species === 'Canina' ? 'Ex.: Caramelo' : 'Ex.: Rajado clássico'}
                 />
-              </label>
+              </RxvField>
               <datalist id="rx-coat-options">
                 {coatOptions.map((coat) => (
                   <option key={coat} value={coat} />
                 ))}
               </datalist>
-              <label className="text-xs text-slate-400">
-                Peso (kg) *
-                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.patient.weightKg} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, weightKg: e.target.value } }))} />
-              </label>
-              <label className="text-xs text-slate-400">
-                Cor
-                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.patient.color} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, color: e.target.value } }))} />
-              </label>
-              <label className="text-xs text-slate-400">
-                Microchip
-                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.patient.microchip} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, microchip: e.target.value } }))} />
-              </label>
-              <label className="text-xs text-slate-400 md:col-span-2">
-                Anamnese / Histórico
-                <textarea className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" rows={2} value={prescription.patient.anamnesis} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, anamnesis: e.target.value } }))} />
-              </label>
-              <label className="text-xs text-slate-400 md:col-span-2">
-                Observações do paciente
-                <textarea className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" rows={2} value={prescription.patient.notes} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, notes: e.target.value } }))} />
-              </label>
-              <label className="flex items-center gap-2 text-sm text-slate-300 md:col-span-2">
-                <input type="checkbox" className="h-4 w-4 rounded border-[#3f6f31] bg-[#12230f]" checked={prescription.patient.showNotesInPrint} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, showNotesInPrint: e.target.checked } }))} />
-                Exibir observações do paciente na impressão
-              </label>
+              <RxvField label="Peso (kg) *">
+                <RxvInput
+                  value={prescription.patient.weightKg ?? ''}
+                  onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, weightKg: e.target.value } }))}
+                />
+              </RxvField>
+              <RxvField label="Microchip">
+                <RxvInput
+                  value={prescription.patient.microchip ?? ''}
+                  onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, microchip: e.target.value } }))}
+                />
+              </RxvField>
+              <RxvField label="Anamnese / Histórico" className="md:col-span-2">
+                <RxvTextarea
+                  rows={2}
+                  value={prescription.patient.anamnesis ?? ''}
+                  onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, anamnesis: e.target.value } }))}
+                />
+              </RxvField>
+              <RxvField label="Observações do paciente" className="md:col-span-2">
+                <RxvTextarea
+                  rows={2}
+                  value={prescription.patient.notes ?? ''}
+                  onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, notes: e.target.value } }))}
+                />
+              </RxvField>
+              <div className="md:col-span-2">
+                <RxvToggle
+                  checked={prescription.patient.showNotesInPrint ?? false}
+                  onChange={(val) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, showNotesInPrint: val } }))}
+                  label="Exibir observações do paciente na impressão"
+                />
+              </div>
             </div>
           </section>
 
@@ -2728,32 +2917,34 @@ export default function NovaReceitaPage() {
               </button>
             </div>
             <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
-              <label className="text-xs text-[color:var(--rxv-muted)]">
-                Meta de água (mL/dia)
-                <input className="mt-1 w-full rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-input-bg)] px-3 py-2 text-sm text-[color:var(--rxv-text)]" value={prescription.recommendations.waterMlPerDay} onChange={(e) => updatePrescription((prev) => ({ ...prev, recommendations: { ...prev.recommendations, waterMlPerDay: e.target.value } }))} />
+              <RxvField label="Meta de água (mL/dia)">
+                <RxvInput
+                  value={prescription.recommendations.waterMlPerDay ?? ''}
+                  onChange={(e) => updatePrescription((prev) => ({ ...prev, recommendations: { ...prev.recommendations, waterMlPerDay: e.target.value } }))}
+                />
                 <span className="mt-1 block text-[11px] text-[color:var(--rxv-muted)]">Padrão automático: 60 mL/kg/dia (editável).</span>
-              </label>
+              </RxvField>
             </div>
 
             <div className="mt-5">
-              <h3 className="mb-2 text-sm font-bold uppercase tracking-wide text-[color:var(--rxv-text)]">Exames sugeridos</h3>
-              <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
-                {COMMON_EXAMS.map((exam) => (
-                  <label key={exam} className="flex items-center gap-2 text-sm text-[color:var(--rxv-text)]">
-                    <input
-                      type="checkbox"
-                      className="h-4 w-4 rounded border-[color:var(--rxv-border)] bg-[color:var(--rxv-input-bg)]"
-                      checked={prescription.recommendations.exams.some((entry) => normalizeLooseText(entry) === normalizeLooseText(exam))}
-                      onChange={(e) => toggleExam(exam, e.target.checked)}
-                    />
-                    {exam}
-                  </label>
-                ))}
-              </div>
+              <h3 className="mb-3 text-sm font-black uppercase tracking-widest text-[color:var(--rxv-text)]">Exames sugeridos</h3>
+              <RxvChipsMultiSelect
+                options={COMMON_EXAMS}
+                selected={prescription.recommendations.exams}
+                onToggle={(exam) => {
+                  const isSelected = prescription.recommendations.exams.some((entry) => normalizeLooseText(entry) === normalizeLooseText(exam))
+                  toggleExam(exam, !isSelected)
+                }}
+              />
               <div className="mt-3 flex gap-2">
-                <input className="flex-1 rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-input-bg)] px-3 py-2 text-sm text-[color:var(--rxv-text)]" value={customExamDraft} onChange={(e) => setCustomExamDraft(e.target.value)} placeholder="Adicionar exame personalizado" />
-                <button type="button"
-                  className="rounded border border-[color:var(--rxv-border)] px-3 py-1.5 text-sm hover:bg-[color:var(--rxv-surface)]"
+                <RxvInput
+                  className="flex-1"
+                  value={customExamDraft ?? ''}
+                  onChange={(e) => setCustomExamDraft(e.target.value)}
+                  placeholder="Adicionar exame personalizado"
+                />
+                <RxvButton
+                  variant="secondary"
                   onClick={() => {
                     if (!customExamDraft.trim()) return
                     const canonical = canonicalExamName(customExamDraft.trim())
@@ -2772,13 +2963,13 @@ export default function NovaReceitaPage() {
                   }}
                 >
                   Adicionar
-                </button>
+                </RxvButton>
               </div>
               {prescription.recommendations.customExams.length > 0 ? (
                 <div className="mt-2 flex flex-wrap gap-2">
                   {prescription.recommendations.customExams.map((exam, idx) => (
-                    <button type="button" key={`${exam}-${idx}`} className="rounded-full border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface)] px-2 py-1 text-xs text-[color:var(--rxv-text)]" onClick={() => updatePrescription((prev) => ({ ...prev, recommendations: { ...prev.recommendations, customExams: prev.recommendations.customExams.filter((_, i) => i !== idx) } }))}>
-                      {exam} x
+                    <button type="button" key={`custom-exam-${exam}-${idx}`} className="rounded-full border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface)] px-2 py-1 text-xs text-[color:var(--rxv-text)]" onClick={() => updatePrescription((prev) => ({ ...prev, recommendations: { ...prev.recommendations, customExams: prev.recommendations.customExams.filter((_, i) => i !== idx) } }))}>
+                      {exam} ×
                     </button>
                   ))}
                 </div>
@@ -2865,7 +3056,7 @@ export default function NovaReceitaPage() {
                   Tipo de farmácia da receita controlada
                   <select
                     className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
-                    value={prescription.recommendations.specialControlPharmacy}
+                    value={prescription.recommendations.specialControlPharmacy ?? 'veterinária'}
                     onChange={(e) =>
                       updatePrescription((prev) => ({
                         ...prev,
@@ -3076,6 +3267,7 @@ export default function NovaReceitaPage() {
         catalogDrugs={db.catalog}
         catalogEntries={catalogEntries}
         patientState={prescription}
+        clinicId={clinicId}
         onClose={closeModal}
         onSave={saveModal}
         onToggleAutosave={(next) => setModalState((prev) => ({ ...prev, autosave: next }))}

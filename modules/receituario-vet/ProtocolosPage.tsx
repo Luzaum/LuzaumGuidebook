@@ -1,9 +1,10 @@
-﻿import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import ReceituarioChrome from './ReceituarioChrome'
 import HelpConceptButton from './HelpConceptButton'
 import { createDefaultItem, createDefaultPrescriptionState } from './rxDefaults'
 import { buildCalculationMemory, calculateMedicationQuantity } from './rxRenderer'
+import { resolveRxDataSource } from './adapters'
 import {
   CatalogDrug,
   RxDatabase,
@@ -19,6 +20,19 @@ import {
   upsertProtocolFolder,
 } from './rxDb'
 import { RouteGroup } from './rxTypes'
+import { useClinic } from '../../src/components/ClinicProvider'
+import { supabase } from '../../src/lib/supabaseClient'
+import { isUuid } from '@/src/lib/isUuid'
+import {
+  createFolder as sbCreateFolder,
+  deleteProtocol as sbDeleteProtocol,
+  listFolders as sbListFolders,
+  listProtocols as sbListProtocols,
+  loadProtocolBundle as sbLoadProtocolBundle,
+  saveProtocolBundle as sbSaveProtocolBundle,
+  type ProtocolBundle,
+  type ProtocolMedicationItem,
+} from '@/src/lib/protocols/protocolsRepo'
 
 const ROUTE_OPTIONS: RouteGroup[] = ['ORAL', 'OTOLOGICO', 'OFTALMICO', 'TOPICO', 'INTRANASAL', 'RETAL', 'SC', 'IM', 'IV', 'INALATORIO', 'TRANSDERMICO', 'OUTROS']
 const PRESENTATION_OPTIONS = ['Comprimido', 'Cápsula', 'Solução oral', 'Suspensão oral', 'Gotas', 'Injetável', 'Ampola', 'Pomada']
@@ -128,8 +142,160 @@ function createManualProtocolItemDraft(): RxProtocol['items'][number] {
   }
 }
 
+const RXV_PROTOCOL_SNAPSHOT_KEY = 'receituario-vet:protocol-snapshot-to-import'
+
+function safeRouteGroup(value: unknown): RouteGroup {
+  const raw = String(value || '').trim().toUpperCase()
+  if (
+    raw === 'ORAL' ||
+    raw === 'OTOLOGICO' ||
+    raw === 'OFTALMICO' ||
+    raw === 'TOPICO' ||
+    raw === 'INTRANASAL' ||
+    raw === 'RETAL' ||
+    raw === 'SC' ||
+    raw === 'IM' ||
+    raw === 'IV' ||
+    raw === 'INALATORIO' ||
+    raw === 'TRANSDERMICO' ||
+    raw === 'OUTROS'
+  ) {
+    return raw as RouteGroup
+  }
+  return 'ORAL'
+}
+
+function normalizeExamKey(label: string, idx: number) {
+  const base = String(label || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '')
+  return (base || `exam_${idx + 1}`).slice(0, 64)
+}
+
+function emptyProtocolDraft(folderId: string): RxProtocol {
+  const now = new Date().toISOString()
+  return {
+    id: '',
+    name: '',
+    summary: '',
+    folderId,
+    requiresSpecialControl: false,
+    species: 'Geral',
+    active: true,
+    tags: [],
+    durationLabel: '',
+    items: [],
+    recommendations: [],
+    exams: [],
+    examReasons: [],
+    createdAt: now,
+    updatedAt: now,
+  }
+}
+
+function mapBundleToRxProtocol(bundle: ProtocolBundle, fallbackFolderId: string): RxProtocol {
+  const protocol = bundle.protocol
+  const now = new Date().toISOString()
+
+  const items = (bundle.medications || []).map((m, idx) => {
+    const base = createDefaultItem('medication', safeRouteGroup(m.route))
+    const name = String(m.manual_medication_name || m.medication_name || '').trim()
+    const presentation = String(m.manual_presentation_label || m.presentation_text || '').trim()
+
+    const frequencyType: RxProtocol['items'][number]['frequencyType'] =
+      m.frequency_type === 'interval_hours' ? 'everyHours' : 'timesPerDay'
+    const timesPerDay =
+      m.frequency_type === 'once_daily'
+        ? '1'
+        : m.times_per_day !== null && m.times_per_day !== undefined
+          ? String(m.times_per_day)
+          : ''
+    const everyHours =
+      m.interval_hours !== null && m.interval_hours !== undefined ? String(m.interval_hours) : ''
+
+    const instruction = String(m.instructions || '').trim()
+
+    return {
+      ...base,
+      name,
+      presentation,
+      concentration: '',
+      doseValue: m.dose_value !== null && m.dose_value !== undefined ? String(m.dose_value) : '',
+      doseUnit: String(m.dose_unit || base.doseUnit || 'mg/kg'),
+      routeGroup: safeRouteGroup(m.route),
+      durationDays: m.duration_days !== null && m.duration_days !== undefined ? String(m.duration_days) : '',
+      frequencyType,
+      timesPerDay,
+      everyHours,
+      instruction,
+      observations: '',
+      controlled: false,
+      createdAt: now,
+      updatedAt: now,
+    }
+  })
+
+  const recommendations = (bundle.recommendations || [])
+    .map((r) => String(r.recommendation_text || '').trim())
+    .filter(Boolean)
+
+  const exams = (bundle.exam_items || []).map((e) => String(e.exam_label || '').trim()).filter(Boolean)
+  const examReasons = (bundle.exam_items || [])
+    .map((e) => String(e.justification || '').trim())
+    .filter(Boolean)
+
+  return {
+    id: protocol.id,
+    name: String(protocol.name || '').trim(),
+    summary: String(protocol.description || ''),
+    folderId: protocol.folder_id || fallbackFolderId,
+    requiresSpecialControl: false,
+    species: (String(protocol.target_species || '').trim() as RxProtocol['species']) || 'Geral',
+    active: protocol.is_active !== false,
+    tags: [],
+    durationLabel: '',
+    items,
+    recommendations,
+    exams,
+    examReasons,
+    createdAt: protocol.created_at || now,
+    updatedAt: protocol.updated_at || protocol.created_at || now,
+  }
+}
+
+function mapRxItemToProtocolMedication(item: RxProtocol['items'][number], idx: number): ProtocolMedicationItem {
+  const manualName = String(item.name || '').trim()
+  const manualPresentation = String(item.presentation || '').trim()
+
+  return {
+    medication_id: null,
+    medication_name: '',
+    presentation_id: null,
+    presentation_text: '',
+    manual_medication_name: manualName || null,
+    manual_presentation_label: manualPresentation || null,
+    dose_value: toNumber(item.doseValue),
+    dose_unit: String(item.doseUnit || '').trim() || null,
+    route: String(item.routeGroup || '').trim() || null,
+    frequency_type: item.frequencyType === 'everyHours' ? 'interval_hours' : 'times_per_day',
+    times_per_day: toNumber(item.timesPerDay),
+    interval_hours: toNumber(item.everyHours),
+    duration_days: toNumber(item.durationDays),
+    instructions: String(item.instruction || '').trim() || null,
+    sort_order: idx,
+  }
+}
+
 export default function ProtocolosPage() {
   const navigate = useNavigate()
+  const { clinicId } = useClinic()
+  const rxDataSource = useMemo(() => resolveRxDataSource(import.meta.env.VITE_RX_DATA_SOURCE), [])
+  const supabaseMode = rxDataSource === 'supabase'
+  const [sbUserId, setSbUserId] = useState<string | null>(null)
+  const [sbLoading, setSbLoading] = useState(false)
   const initialDb = useMemo(() => loadRxDb(), [])
   const [protocols, setProtocols] = useState<RxProtocol[]>(initialDb.protocols)
   const [folders, setFolders] = useState<RxProtocolFolder[]>(orderFolders(initialDb.protocolFolders))
@@ -183,7 +349,97 @@ export default function ProtocolosPage() {
     }
   }, [selectedDrug, selectedDrugPresentationId])
 
+  useEffect(() => {
+    if (!supabaseMode) return
+    const targetClinicId = String(clinicId || '').trim()
+    if (!targetClinicId) return
+
+    let cancelled = false
+    setSbLoading(true)
+
+    void (async () => {
+      const { data, error } = await supabase.auth.getUser()
+      if (cancelled) return
+      if (error || !data.user?.id) {
+        setSbUserId(null)
+        return
+      }
+      const userId = data.user.id
+      setSbUserId(userId)
+
+      let sbFolders = await sbListFolders(targetClinicId, userId)
+      if (sbFolders.length === 0) {
+        await sbCreateFolder(targetClinicId, userId, { name: 'Geral', icon_key: 'folder', sort_order: 0 })
+        sbFolders = await sbListFolders(targetClinicId, userId)
+      }
+
+      const mappedFolders: RxProtocolFolder[] = sbFolders.map((folder) => ({
+        id: folder.id,
+        name: folder.name,
+        color: '#39ff14',
+        icon: folder.icon_key || 'folder',
+        sortOrder: folder.sort_order || 0,
+      }))
+
+      const orderedFolders = orderFolders(mappedFolders)
+      const fallbackFolderId = orderedFolders[0]?.id || ''
+      setFolders(orderedFolders)
+
+      const sbProtocols = await sbListProtocols(targetClinicId, userId)
+      const mappedProtocols: RxProtocol[] = sbProtocols.map((p) => ({
+        id: p.id,
+        name: p.name,
+        summary: p.description || '',
+        folderId: p.folder_id || fallbackFolderId,
+        requiresSpecialControl: false,
+        species: (String(p.target_species || '').trim() as RxProtocol['species']) || 'Geral',
+        active: p.is_active !== false,
+        tags: [],
+        durationLabel: '',
+        items: [],
+        recommendations: [],
+        exams: [],
+        examReasons: [],
+        createdAt: p.created_at,
+        updatedAt: p.updated_at || p.created_at,
+      }))
+
+      setProtocols(mappedProtocols)
+
+      const initialId = mappedProtocols[0]?.id || ''
+      setSelectedProtocolId(initialId)
+      if (initialId && isUuid(initialId)) {
+        const bundle = await sbLoadProtocolBundle(targetClinicId, userId, initialId)
+        if (bundle) {
+          const full = mapBundleToRxProtocol(bundle, fallbackFolderId)
+          setDraft(full)
+          setProtocols((prev) => prev.map((entry) => (entry.id === full.id ? full : entry)))
+          return
+        }
+      }
+
+      if (fallbackFolderId) {
+        setDraft(emptyProtocolDraft(fallbackFolderId))
+        return
+      }
+    })()
+      .catch((err) => {
+        if (cancelled) return
+        const message = err instanceof Error ? err.message : 'Falha ao carregar protocolos do Supabase.'
+        alert(message)
+      })
+      .finally(() => {
+        if (cancelled) return
+        setSbLoading(false)
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [supabaseMode, clinicId])
+
   const writeDb = (nextDb: RxDatabase) => {
+    if (supabaseMode) return
     saveRxDb(nextDb)
     setProtocols(nextDb.protocols)
     setFolders(orderFolders(nextDb.protocolFolders))
@@ -194,43 +450,215 @@ export default function ProtocolosPage() {
     window.setTimeout(() => setSaved(false), 2200)
   }
 
-  const selectProtocol = (protocol: RxProtocol) => {
+  const selectProtocol = async (protocol: RxProtocol) => {
     setSelectedProtocolId(protocol.id)
-    setDraft(cloneProtocol(protocol))
+
+    if (!supabaseMode) {
+      setDraft(cloneProtocol(protocol))
+      return
+    }
+
+    const targetClinicId = String(clinicId || '').trim()
+    const userId = String(sbUserId || '').trim()
+    if (!targetClinicId || !userId || !isUuid(protocol.id)) {
+      setDraft(cloneProtocol(protocol))
+      return
+    }
+
+    setSbLoading(true)
+    try {
+      const bundle = await sbLoadProtocolBundle(targetClinicId, userId, protocol.id)
+      if (!bundle) {
+        setDraft(cloneProtocol(protocol))
+        return
+      }
+      const fallbackFolderId = folders[0]?.id || protocol.folderId
+      const full = mapBundleToRxProtocol(bundle, fallbackFolderId)
+      setDraft(full)
+      setProtocols((prev) => prev.map((entry) => (entry.id === full.id ? full : entry)))
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Falha ao carregar protocolo.'
+      alert(message)
+      setDraft(cloneProtocol(protocol))
+    } finally {
+      setSbLoading(false)
+    }
   }
 
-  const saveDraft = () => {
-    const base = loadRxDb()
-    const nextDb = upsertProtocol(base, {
-      ...draft,
-      folderId: folderMap.has(draft.folderId) ? draft.folderId : folders[0]?.id || draft.folderId,
-      tags: draft.tags.filter(Boolean),
-      recommendations: draft.recommendations.filter(Boolean),
-      exams: draft.exams.filter(Boolean),
-      examReasons: draft.examReasons.filter(Boolean),
-    })
-    writeDb(nextDb)
-    setSelectedProtocolId(draft.id)
-    pushSaved()
+  const saveDraft = async () => {
+    const normalizedFolderId = folderMap.has(draft.folderId)
+      ? draft.folderId
+      : folders[0]?.id || draft.folderId
+
+    if (!supabaseMode) {
+      const base = loadRxDb()
+      const nextDb = upsertProtocol(base, {
+        ...draft,
+        folderId: normalizedFolderId,
+        tags: draft.tags.filter(Boolean),
+        recommendations: draft.recommendations.filter(Boolean),
+        exams: draft.exams.filter(Boolean),
+        examReasons: draft.examReasons.filter(Boolean),
+      })
+      writeDb(nextDb)
+      setSelectedProtocolId(draft.id)
+      pushSaved()
+      return
+    }
+
+    const targetClinicId = String(clinicId || '').trim()
+    const userId = String(sbUserId || '').trim()
+    if (!targetClinicId || !userId) {
+      alert('Clínica ativa ou usuário não encontrado para salvar protocolo no Supabase.')
+      return
+    }
+
+    setSbLoading(true)
+    try {
+      const meds = draft.items.map((item, idx) => mapRxItemToProtocolMedication(item, idx))
+      const recs = draft.recommendations
+        .map((line, idx) => ({ recommendation_text: String(line || '').trim(), sort_order: idx }))
+        .filter((r) => !!r.recommendation_text)
+      const exams = draft.exams
+        .map((label, idx) => ({
+          exam_key: normalizeExamKey(String(label || '').trim(), idx),
+          exam_label: String(label || '').trim(),
+          is_custom: true,
+          justification: null,
+        }))
+        .filter((e) => !!e.exam_label)
+
+      const savedProtocol = await sbSaveProtocolBundle(targetClinicId, userId, {
+        protocol: {
+          ...(isUuid(draft.id) ? { id: draft.id } : {}),
+          folder_id: normalizedFolderId || null,
+          name: draft.name,
+          description: draft.summary || null,
+          target_species: draft.species || null,
+          is_active: draft.active !== false,
+        },
+        medications: meds,
+        recommendations: recs,
+        exam_items: exams,
+      })
+
+      pushSaved()
+
+      const refreshed = await sbListProtocols(targetClinicId, userId)
+      const fallbackFolderId = folders[0]?.id || normalizedFolderId
+      const mappedProtocols: RxProtocol[] = refreshed.map((p) => ({
+        id: p.id,
+        name: p.name,
+        summary: p.description || '',
+        folderId: p.folder_id || fallbackFolderId,
+        requiresSpecialControl: false,
+        species: (String(p.target_species || '').trim() as RxProtocol['species']) || 'Geral',
+        active: p.is_active !== false,
+        tags: [],
+        durationLabel: '',
+        items: [],
+        recommendations: [],
+        exams: [],
+        examReasons: [],
+        createdAt: p.created_at,
+        updatedAt: p.updated_at || p.created_at,
+      }))
+
+      setProtocols(mappedProtocols)
+      setSelectedProtocolId(savedProtocol.id)
+
+      const bundle = await sbLoadProtocolBundle(targetClinicId, userId, savedProtocol.id)
+      if (bundle) {
+        const full = mapBundleToRxProtocol(bundle, fallbackFolderId)
+        setDraft(full)
+        setProtocols((prev) => prev.map((entry) => (entry.id === full.id ? full : entry)))
+      } else {
+        setDraft((prev) => ({ ...prev, id: savedProtocol.id, folderId: normalizedFolderId }))
+      }
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Falha ao salvar protocolo no Supabase.'
+      alert(message)
+    } finally {
+      setSbLoading(false)
+    }
   }
 
   const createProtocol = () => {
-    const next = createEmptyProtocol(selectedFolderId === 'all' ? folders[0]?.id : selectedFolderId)
-    setSelectedProtocolId(next.id)
-    setDraft(next)
-  }
+    const folderId = selectedFolderId === 'all' ? folders[0]?.id : selectedFolderId
+    if (!folderId) return
 
-  const deleteProtocolDraft = () => {
-    const nextDb = removeProtocol(loadRxDb(), draft.id)
-    writeDb(nextDb)
-    if (nextDb.protocols[0]) {
-      setSelectedProtocolId(nextDb.protocols[0].id)
-      setDraft(cloneProtocol(nextDb.protocols[0]))
+    if (!supabaseMode) {
+      const next = createEmptyProtocol(folderId)
+      setSelectedProtocolId(next.id)
+      setDraft(next)
       return
     }
-    const empty = createEmptyProtocol(folders[0]?.id)
-    setSelectedProtocolId(empty.id)
-    setDraft(empty)
+
+    setSelectedProtocolId('')
+    setDraft(emptyProtocolDraft(folderId))
+  }
+
+  const deleteProtocolDraft = async () => {
+    if (!supabaseMode) {
+      const nextDb = removeProtocol(loadRxDb(), draft.id)
+      writeDb(nextDb)
+      if (nextDb.protocols[0]) {
+        setSelectedProtocolId(nextDb.protocols[0].id)
+        setDraft(cloneProtocol(nextDb.protocols[0]))
+        return
+      }
+      const empty = createEmptyProtocol(folders[0]?.id)
+      setSelectedProtocolId(empty.id)
+      setDraft(empty)
+      return
+    }
+
+    const targetClinicId = String(clinicId || '').trim()
+    const userId = String(sbUserId || '').trim()
+    if (!targetClinicId || !userId) {
+      alert('Clínica ativa ou usuário não encontrado.')
+      return
+    }
+
+    if (!isUuid(draft.id)) {
+      setSelectedProtocolId('')
+      setDraft(emptyProtocolDraft(folders[0]?.id || draft.folderId))
+      return
+    }
+
+    setSbLoading(true)
+    try {
+      await sbDeleteProtocol(targetClinicId, userId, draft.id)
+
+      const refreshed = await sbListProtocols(targetClinicId, userId)
+      const fallbackFolderId = folders[0]?.id || draft.folderId
+      const mappedProtocols: RxProtocol[] = refreshed.map((p) => ({
+        id: p.id,
+        name: p.name,
+        summary: p.description || '',
+        folderId: p.folder_id || fallbackFolderId,
+        requiresSpecialControl: false,
+        species: (String(p.target_species || '').trim() as RxProtocol['species']) || 'Geral',
+        active: p.is_active !== false,
+        tags: [],
+        durationLabel: '',
+        items: [],
+        recommendations: [],
+        exams: [],
+        examReasons: [],
+        createdAt: p.created_at,
+        updatedAt: p.updated_at || p.created_at,
+      }))
+      setProtocols(mappedProtocols)
+
+      setSelectedProtocolId('')
+      setDraft(emptyProtocolDraft(fallbackFolderId))
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Falha ao excluir protocolo.'
+      alert(message)
+    } finally {
+      setSbLoading(false)
+    }
   }
 
   const addItemFromCatalog = () => {
@@ -280,19 +708,58 @@ export default function ProtocolosPage() {
     setDraft((prev) => ({ ...prev, items: prev.items.map((item, i) => (i === index ? { ...item, ...patch } : item)) }))
   }
 
-  const addFolder = () => {
-    if (!newFolderName.trim()) return
-    const nextDb = upsertProtocolFolder(loadRxDb(), createProtocolFolder(newFolderName.trim(), newFolderColor))
-    writeDb(nextDb)
-    setNewFolderName('')
-    setNewFolderColor('#39ff14')
+  const addFolder = async () => {
+    const name = newFolderName.trim()
+    if (!name) return
+
+    if (!supabaseMode) {
+      const nextDb = upsertProtocolFolder(loadRxDb(), createProtocolFolder(name, newFolderColor))
+      writeDb(nextDb)
+      setNewFolderName('')
+      setNewFolderColor('#39ff14')
+      return
+    }
+
+    const targetClinicId = String(clinicId || '').trim()
+    const userId = String(sbUserId || '').trim()
+    if (!targetClinicId || !userId) {
+      alert('Clínica ativa ou usuário não encontrado.')
+      return
+    }
+
+    setSbLoading(true)
+    try {
+      await sbCreateFolder(targetClinicId, userId, { name, icon_key: 'folder', sort_order: 0 })
+      const sbFolders = await sbListFolders(targetClinicId, userId)
+      const mappedFolders: RxProtocolFolder[] = sbFolders.map((folder) => ({
+        id: folder.id,
+        name: folder.name,
+        color: '#39ff14',
+        icon: folder.icon_key || 'folder',
+        sortOrder: folder.sort_order || 0,
+      }))
+      setFolders(orderFolders(mappedFolders))
+      setNewFolderName('')
+      setNewFolderColor('#39ff14')
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Falha ao criar pasta.'
+      alert(message)
+    } finally {
+      setSbLoading(false)
+    }
   }
 
   const dropFolder = (folderId: string) => {
+    if (supabaseMode) {
+      alert('Exclusão de pasta ainda não está habilitada no modo Supabase.')
+      return
+    }
     const nextDb = removeProtocolFolder(loadRxDb(), folderId)
     writeDb(nextDb)
     if (selectedFolderId === folderId) setSelectedFolderId('all')
-    if (draft.folderId === folderId && nextDb.protocolFolders[0]) setDraft((prev) => ({ ...prev, folderId: nextDb.protocolFolders[0].id }))
+    if (draft.folderId === folderId && nextDb.protocolFolders[0]) {
+      setDraft((prev) => ({ ...prev, folderId: nextDb.protocolFolders[0].id }))
+    }
   }
 
   const onSimulationWeightSlider = (value: number) => {
@@ -332,7 +799,12 @@ export default function ProtocolosPage() {
   }, [simulationWeightInput, simulationWeightKg])
 
   const applyInNewRecipe = () => {
-    localStorage.setItem('receituario-vet:protocol-to-import', selectedProtocolId || draft.id)
+    // Snapshot (sem link vivo)
+    try {
+      sessionStorage.setItem(RXV_PROTOCOL_SNAPSHOT_KEY, JSON.stringify(draft))
+    } catch {
+      // noop
+    }
     navigate('/receituario-vet/nova-receita')
   }
 
@@ -724,8 +1196,14 @@ export default function ProtocolosPage() {
       </div>
 
       {addItemModalOpen ? (
-        <div className="fixed inset-0 z-[95] flex items-center justify-center bg-black/60 px-4 py-8" onClick={() => setAddItemModalOpen(false)}>
-          <div className="rxv-protocol-modal w-full max-w-3xl rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface)] p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div
+          className="fixed inset-0 z-[95] flex items-center justify-center overflow-y-auto bg-black/60 px-4 py-8"
+          onClick={() => setAddItemModalOpen(false)}
+        >
+          <div
+            className="rxv-protocol-modal w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface)] p-5 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="mb-4 flex items-center justify-between">
               <h3 className="text-lg font-bold">Adicionar medicamento ao protocolo</h3>
               <button type="button" className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-xs" onClick={() => setAddItemModalOpen(false)}>
@@ -965,8 +1443,14 @@ export default function ProtocolosPage() {
       ) : null}
 
       {folderModalOpen ? (
-        <div className="fixed inset-0 z-[90] flex items-center justify-center bg-black/60 px-4 py-8" onClick={() => setFolderModalOpen(false)}>
-          <div className="rxv-protocol-modal w-full max-w-2xl rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface)] p-5 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div
+          className="fixed inset-0 z-[1000] flex items-center justify-center overflow-y-auto bg-black/60 px-4 py-8"
+          onClick={() => setFolderModalOpen(false)}
+        >
+          <div
+            className="rxv-protocol-modal w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface)] p-5 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="mb-4 flex items-center justify-between">
               <h3 className="text-lg font-bold text-white">Gerenciar Pastas</h3>
               <button type="button" className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-xs" onClick={() => setFolderModalOpen(false)}>Fechar</button>
@@ -975,7 +1459,15 @@ export default function ProtocolosPage() {
               {folders.map((folder) => (
                 <div key={folder.id} className="flex items-center justify-between rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-3 py-2">
                   <span className="flex items-center gap-2 text-sm"><span className="material-symbols-outlined text-[15px]" style={{ color: folder.color }}>{folder.icon}</span>{folder.name}</span>
-                  <button type="button" className="rounded border border-red-800/70 px-2 py-1 text-xs text-red-300" onClick={() => dropFolder(folder.id)} disabled={folders.length <= 1}>Excluir</button>
+                  <button
+                    type="button"
+                    className="rounded border border-red-800/70 px-2 py-1 text-xs text-red-300"
+                    onClick={() => dropFolder(folder.id)}
+                    disabled={supabaseMode || folders.length <= 1}
+                    title={supabaseMode ? 'Exclusão de pasta indisponível no modo Supabase.' : ''}
+                  >
+                    Excluir
+                  </button>
                 </div>
               ))}
             </div>

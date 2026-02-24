@@ -10,6 +10,8 @@ type RxSection =
   | 'perfil'
   | 'clientes'
   | 'catalogo'
+  | 'catalogo2'
+  | 'catalogo3'
   | 'protocolos'
   | 'controle'
   | 'templates'
@@ -23,7 +25,9 @@ const THEME_KEY = 'receituario-vet:theme:v1'
 const NAV_ITEMS: Array<{ key: RxSection; label: string; to: string; icon: string }> = [
   { key: 'hub', label: 'HUB', to: '/receituario-vet', icon: 'hub' },
   { key: 'nova', label: 'Nova Receita', to: '/receituario-vet/nova-receita', icon: 'description' },
-  { key: 'catalogo', label: 'Catálogo', to: '/receituario-vet/catalogo', icon: 'content_paste' },
+  { key: 'catalogo3', label: 'Catálogo 3.0', to: '/receituario-vet/catalogo3', icon: 'inventory_2' },
+  { key: 'catalogo2', label: 'Catálogo 2.0', to: '/receituario-vet/catalogo2', icon: 'inventory_2' },
+  { key: 'catalogo', label: 'Catálogo', to: '/receituario-vet/catalogo', icon: 'inventory_2' },
   { key: 'drafts', label: 'Rascunhos', to: '/receituario-vet/rascunhos', icon: 'draft' },
   { key: 'clientes', label: 'Tutores e Pacientes', to: '/receituario-vet/clientes', icon: 'group' },
   { key: 'controle', label: 'Controle Especial', to: '/receituario-vet/controle-especial', icon: 'shield' },

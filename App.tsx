@@ -20,6 +20,8 @@ import RxPrintPage from './modules/receituario-vet/RxPrintPage'
 import ProfilePage from './modules/receituario-vet/ProfilePage'
 import ClientesPage from './modules/receituario-vet/ClientesPage'
 import CatalogoPage from './modules/receituario-vet/CatalogoPage'
+import Catalogo2Page from './modules/receituario-vet/Catalogo2Page'
+import Catalogo3Page from './modules/receituario-vet/Catalogo3Page'
 import ProtocolosPage from './modules/receituario-vet/ProtocolosPage'
 import TemplatesPage from './modules/receituario-vet/TemplatesPage'
 import SettingsPage from './modules/receituario-vet/SettingsPage'
@@ -72,6 +74,8 @@ const appRoutes = (
     <Route path="/receituario-vet/configuração" element={<ProtectedClinicRoute><ProfilePage /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/clientes" element={<ProtectedClinicRoute><ClientesPage /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/catalogo" element={<ProtectedClinicRoute><CatalogoPage /></ProtectedClinicRoute>} />
+    <Route path="/receituario-vet/catalogo2" element={<ProtectedClinicRoute><Catalogo2Page /></ProtectedClinicRoute>} />
+    <Route path="/receituario-vet/catalogo3" element={<ProtectedClinicRoute><Catalogo3Page /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/protocolos" element={<ProtectedClinicRoute><ProtocolosPage /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/controle-especial" element={<ProtectedClinicRoute><ControleEspecialPage /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/templates" element={<ProtectedClinicRoute><TemplatesPage /></ProtectedClinicRoute>} />

@@ -29,9 +29,7 @@ export interface PatientInfo {
   sex: Sex
   reproductiveStatus: ReproductiveStatus
   ageText: string
-  birthDate: string
   coat: string
-  color: string
   microchipped: boolean
   microchip: string
   weightKg: string

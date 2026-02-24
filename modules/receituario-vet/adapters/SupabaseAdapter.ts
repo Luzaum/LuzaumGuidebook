@@ -35,11 +35,9 @@ type SupabasePatientRow = {
   breed?: string
   sex?: string
   neutered?: string
-  dob?: string
   age_text?: string
   weight_kg?: string
   coat?: string
-  color?: string
   microchip?: string
   anamnesis?: string
   notes?: string
@@ -103,9 +101,7 @@ function mapPatientRow(row: SupabasePatientRow): PatientInfo {
     sex: normalizeSex(String(row.sex || '')),
     reproductiveStatus: normalizeReproductiveStatus(String(row.neutered || '')),
     ageText: String(row.age_text || ''),
-    birthDate: String(row.dob || ''),
     coat: String(row.coat || ''),
-    color: String(row.color || ''),
     microchip: String(row.microchip || ''),
     microchipped: !!row.microchip,
     weightKg: String(row.weight_kg || ''),
@@ -186,7 +182,7 @@ export class SupabaseAdapter implements DataAdapter {
     const { data: patients, error: patientsError } = await this.supabase
       .from('patients')
       .select(
-        'id,tutor_id,name,species,breed,sex,neutered,dob,age_text,weight_kg,coat,color,microchip,notes'
+        'id,tutor_id,name,species,breed,sex,neutered,age_text,weight_kg,coat,microchip,notes'
       )
       .eq('clinic_id', clinicId)
       .is('deleted_at', null)
@@ -200,7 +196,7 @@ export class SupabaseAdapter implements DataAdapter {
       const { data: fallbackPatients, error: fallbackError } = await this.supabase
         .from('patients')
         .select(
-          'id,tutor_id,name,species,breed,sex,neutered,dob,age_text,weight_kg,coat,color,microchip,notes'
+          'id,tutor_id,name,species,breed,sex,neutered,age_text,weight_kg,coat,microchip,notes'
         )
         .eq('clinic_id', clinicId)
         .is('deleted_at', null)
@@ -353,11 +349,9 @@ export class SupabaseAdapter implements DataAdapter {
       breed: input.breed || null,
       sex: input.sex || null,
       neutered: normalizeNeutered(input.reproductiveStatus),
-      dob: input.birthDate || null,
       age_text: input.ageText || null,
       weight_kg: input.weightKg || null,
       coat: input.coat || null,
-      color: input.color || null,
       microchip: input.microchip || null,
       anamnesis: input.anamnesis || null,
       notes: input.notes || null,
@@ -390,7 +384,7 @@ export class SupabaseAdapter implements DataAdapter {
     const { data, error } = await this.supabase
       .from('patients')
       .select(
-        'id,tutor_id,name,species,breed,sex,neutered,dob,age_text,weight_kg,coat,color,microchip,anamnesis,notes'
+        'id,tutor_id,name,species,breed,sex,neutered,age_text,weight_kg,coat,microchip,anamnesis,notes'
       )
       .eq('clinic_id', clinicId)
       .is('deleted_at', null)

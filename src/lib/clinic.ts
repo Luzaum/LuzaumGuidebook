@@ -73,14 +73,37 @@ export async function getMyMembership(): Promise<ActiveClinicMembership | null> 
     .from('memberships')
     .select('id,user_id,clinic_id,role,created_at,clinics:clinics(id,name,created_at)')
     .order('created_at', { ascending: true })
-    .limit(1)
-    .maybeSingle<Membership>()
 
   if (error) {
     throw error
   }
 
-  const membership = normalizeMembership(data)
+  const rows = (data || []) as Membership[]
+  if (rows.length === 0) {
+    storeClinicId(null)
+    return null
+  }
+
+  // Active clinic must be valid:
+  // - clinic_id exists
+  // - join with clinics returns a row (clinic exists / visible to user)
+  const validRows = rows.filter((row) => {
+    const clinicId = String(row.clinic_id || '').trim()
+    if (!clinicId) return false
+    const clinic = normalizeClinicFromJoin(row.clinics)
+    return !!clinic
+  })
+
+  if (validRows.length === 0) {
+    storeClinicId(null)
+    return null
+  }
+
+  const storedId = getStoredClinicId()
+  const matching = storedId ? validRows.find((r) => r.clinic_id === storedId) : null
+  const bestRow = matching || validRows[0]
+
+  const membership = normalizeMembership(bestRow)
   storeClinicId(membership?.clinicId || null)
   return membership
 }
