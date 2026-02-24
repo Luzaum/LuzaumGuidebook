@@ -47,8 +47,6 @@ const PRESENTATION_ALLOWED_FIELDS = [
   'pharmacy_veterinary',
   'pharmacy_human',
   'pharmacy_compounding',
-  'package_quantity', // ✅ TAREFA A: numeric - quantidade de unidades na embalagem
-  'package_unit', // ✅ TAREFA A: text - unidade da embalagem (comprimido, mL, etc)
   'metadata', // jsonb: { manufacturer, administration_routes, palatable, obs, etc }
   'created_at',
   'updated_at',
@@ -458,8 +456,6 @@ export async function saveMedication(params: {
       pharmacy_veterinary: !!p.pharmacy_veterinary,
       pharmacy_human: !!p.pharmacy_human,
       pharmacy_compounding: !!p.pharmacy_compounding,
-      package_quantity: typeof p.package_quantity === 'number' ? p.package_quantity : p.package_quantity ? Number(p.package_quantity) : null, // ✅ TAREFA A
-      package_unit: p.package_unit || null, // ✅ TAREFA A
       metadata: p.metadata || {},
     });
   });
@@ -517,20 +513,28 @@ export type MedicationSearchResult = {
 
 export async function searchMedications(
   clinicId: string,
-  query: string
+  query: string,
+  limit = 50 // ✅ OBJ 3: limit opcional (default 50)
 ): Promise<MedicationSearchResult[]> {
-  console.log('[MedicationSearch] START', { clinicId, query })
+  console.log('[MedicationSearch] START', { clinicId, query, limit })
 
   const q = query.trim()
-  if (!q) return []
 
-  const { data, error } = await supabase
+  let request = supabase
     .from('medications')
     .select('id,name,is_controlled,is_private,metadata')
     .eq('clinic_id', clinicId)
-    .ilike('name', `%${q}%`)
+
+  // ✅ OBJ 3: Se tem query, filtra por nome; senão, lista inicial
+  if (q) {
+    request = request.ilike('name', `%${q}%`)
+  }
+
+  request = request
     .order('name', { ascending: true })
-    .limit(20)
+    .limit(limit)
+
+  const { data, error } = await request
 
   console.log('[MedicationSearch] RESULT', { count: data?.length, error })
   logSbError('[MedicationSearch] ERROR', error)
@@ -589,9 +593,7 @@ export type MedicationPresentationRecord = {
   pharmacy_veterinary: boolean
   pharmacy_human: boolean
   pharmacy_compounding: boolean
-  package_quantity: number | null // ✅ TAREFA A
-  package_unit: string | null // ✅ TAREFA A
-  metadata: any
+  metadata: any,
   created_at: string
   updated_at?: string
 }

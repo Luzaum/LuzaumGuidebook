@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import type { DataAdapter, DataAdapterPatientMatch } from '../adapters'
 
 type PatientQuickSelectProps = {
@@ -25,9 +26,23 @@ export function PatientQuickSelect({ adapter, onPick, disabled = false, onError 
   const [open, setOpen] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
   const [results, setResults] = useState<DataAdapterPatientMatch[]>([])
+  const [dropdownPos, setDropdownPos] = useState({ top: 0, left: 0, width: 0 })
   const rootRef = useRef<HTMLDivElement | null>(null)
+  const inputRef = useRef<HTMLInputElement | null>(null)
   const debounceTimerRef = useRef<number | null>(null)
   const searchRequestIdRef = useRef(0)
+
+  // Atualizar posição do dropdown quando abrir
+  useEffect(() => {
+    if (open && inputRef.current) {
+      const rect = inputRef.current.getBoundingClientRect()
+      setDropdownPos({
+        top: rect.bottom + window.scrollY + 8,
+        left: rect.left + window.scrollX,
+        width: rect.width,
+      })
+    }
+  }, [open])
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -94,12 +109,62 @@ export function PatientQuickSelect({ adapter, onPick, disabled = false, onError 
 
   const canSearch = query.trim().length >= MIN_QUERY_LENGTH
 
+  // Renderizar dropdown
+  const dropdownContent = open ? (
+    <div
+      className="fixed z-[9999] overflow-hidden rounded-xl border border-[#2f5b25] bg-[#0f1e0d] shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+      style={{
+        top: `${dropdownPos.top}px`,
+        left: `${dropdownPos.left}px`,
+        width: `${dropdownPos.width}px`,
+      }}
+    >
+          {loading ? (
+            <p className="px-3 py-3 text-xs text-slate-300">Buscando pacientes...</p>
+          ) : null}
+
+          {!loading && errorMessage ? (
+            <p className="px-3 py-3 text-xs text-red-300">{errorMessage}</p>
+          ) : null}
+
+          {!loading && !errorMessage && results.length === 0 ? (
+            <p className="px-3 py-3 text-xs text-slate-400">Nenhum paciente encontrado.</p>
+          ) : null}
+
+      {!loading && results.length > 0 ? (
+        <ul className="max-h-72 overflow-y-auto">
+          {results.map((match) => (
+            <li key={`${match.patient.patientRecordId}:${match.tutor.tutorRecordId}`}>
+              <button
+                type="button"
+                className="w-full border-b border-[#21401b] px-3 py-2 text-left hover:bg-[#173015]"
+                onClick={() => {
+                  onPick(match)
+                  setQuery(match.patient.name || '')
+                  setErrorMessage('')
+                  setOpen(false)
+                }}
+              >
+                <p className="text-sm font-semibold text-white">{match.patient.name || 'Paciente sem nome'}</p>
+                <p className="text-xs text-[#9be78c]">Tutor: {match.tutor.name || 'Não informado'}</p>
+                {buildSubtitle(match) ? (
+                  <p className="text-[11px] text-slate-400">{buildSubtitle(match)}</p>
+                ) : null}
+              </button>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </div>
+  ) : null
+
   return (
     <div ref={rootRef} className="relative">
       <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-300">
         Buscar paciente...
       </label>
       <input
+        ref={inputRef}
         type="text"
         value={query}
         disabled={disabled}
@@ -113,47 +178,7 @@ export function PatientQuickSelect({ adapter, onPick, disabled = false, onError 
           setQuery(event.target.value)
         }}
       />
-
-      {open ? (
-        <div className="absolute left-0 right-0 z-[65] mt-2 overflow-hidden rounded-xl border border-[#2f5b25] bg-[#0f1e0d] shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
-          {loading ? (
-            <p className="px-3 py-3 text-xs text-slate-300">Buscando pacientes...</p>
-          ) : null}
-
-          {!loading && errorMessage ? (
-            <p className="px-3 py-3 text-xs text-red-300">{errorMessage}</p>
-          ) : null}
-
-          {!loading && !errorMessage && results.length === 0 ? (
-            <p className="px-3 py-3 text-xs text-slate-400">Nenhum paciente encontrado.</p>
-          ) : null}
-
-          {!loading && results.length > 0 ? (
-            <ul className="max-h-72 overflow-y-auto">
-              {results.map((match) => (
-                <li key={`${match.patient.patientRecordId}:${match.tutor.tutorRecordId}`}>
-                  <button
-                    type="button"
-                    className="w-full border-b border-[#21401b] px-3 py-2 text-left hover:bg-[#173015]"
-                    onClick={() => {
-                      onPick(match)
-                      setQuery(match.patient.name || '')
-                      setErrorMessage('')
-                      setOpen(false)
-                    }}
-                  >
-                    <p className="text-sm font-semibold text-white">{match.patient.name || 'Paciente sem nome'}</p>
-                    <p className="text-xs text-[#9be78c]">Tutor: {match.tutor.name || 'Não informado'}</p>
-                    {buildSubtitle(match) ? (
-                      <p className="text-[11px] text-slate-400">{buildSubtitle(match)}</p>
-                    ) : null}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          ) : null}
-        </div>
-      ) : null}
+      {dropdownContent && createPortal(dropdownContent, document.body)}
     </div>
   )
 }

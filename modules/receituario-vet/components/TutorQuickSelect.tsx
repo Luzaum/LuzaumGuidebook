@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import type { DataAdapter } from '../adapters'
 import type { TutorInfo } from '../rxTypes'
 
@@ -26,13 +27,27 @@ export function TutorQuickSelect({
   const [loading, setLoading] = useState(false)
   const [open, setOpen] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
+  const [dropdownPos, setDropdownPos] = useState({ top: 0, left: 0, width: 0 })
   const rootRef = useRef<HTMLDivElement | null>(null)
+  const inputRef = useRef<HTMLInputElement | null>(null)
   const debounceTimerRef = useRef<number | null>(null)
   const searchRequestIdRef = useRef(0)
 
   useEffect(() => {
     setQuery(value?.name || '')
   }, [value?.name])
+
+  // Atualizar posição do dropdown quando abrir
+  useEffect(() => {
+    if (open && inputRef.current) {
+      const rect = inputRef.current.getBoundingClientRect()
+      setDropdownPos({
+        top: rect.bottom + window.scrollY + 8,
+        left: rect.left + window.scrollX,
+        width: rect.width,
+      })
+    }
+  }, [open])
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -90,9 +105,56 @@ export function TutorQuickSelect({
     }
   }, [adapter, disabled, query])
 
+  // Renderizar dropdown
+  const dropdownContent = open ? (
+    <div
+      className="fixed z-[9999] overflow-hidden rounded-xl border border-[#2f5b25] bg-[#0f1e0d] shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+      style={{
+        top: `${dropdownPos.top}px`,
+        left: `${dropdownPos.left}px`,
+        width: `${dropdownPos.width}px`,
+      }}
+    >
+          {loading ? (
+            <p className="px-3 py-3 text-xs text-slate-300">Buscando tutores...</p>
+          ) : null}
+
+          {!loading && errorMessage ? (
+            <p className="px-3 py-3 text-xs text-red-300">{errorMessage}</p>
+          ) : null}
+
+          {!loading && !errorMessage && results.length === 0 ? (
+            <p className="px-3 py-3 text-xs text-slate-400">Nenhum tutor encontrado.</p>
+          ) : null}
+
+      {!loading && results.length > 0 ? (
+        <ul className="max-h-72 overflow-y-auto">
+          {results.map((tutor) => (
+            <li key={tutor.tutorRecordId}>
+              <button
+                type="button"
+                className="w-full border-b border-[#21401b] px-3 py-2 text-left hover:bg-[#173015]"
+                onClick={() => {
+                  onPick(tutor)
+                  setQuery(tutor.name || '')
+                  setErrorMessage('')
+                  setOpen(false)
+                }}
+              >
+                <p className="text-sm font-semibold text-white">{tutor.full_name || tutor.name || 'Tutor sem nome'}</p>
+                <p className="text-xs text-slate-400">{tutor.phone || tutor.email || 'Sem telefone/email'}</p>
+              </button>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </div>
+  ) : null
+
   return (
     <div ref={rootRef} className="relative">
       <input
+        ref={inputRef}
         type="text"
         value={query}
         disabled={disabled}
@@ -106,44 +168,7 @@ export function TutorQuickSelect({
           setQuery(event.target.value)
         }}
       />
-
-      {open ? (
-        <div className="absolute left-0 right-0 z-[67] mt-2 overflow-hidden rounded-xl border border-[#2f5b25] bg-[#0f1e0d] shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
-          {loading ? (
-            <p className="px-3 py-3 text-xs text-slate-300">Buscando tutores...</p>
-          ) : null}
-
-          {!loading && errorMessage ? (
-            <p className="px-3 py-3 text-xs text-red-300">{errorMessage}</p>
-          ) : null}
-
-          {!loading && !errorMessage && results.length === 0 ? (
-            <p className="px-3 py-3 text-xs text-slate-400">Nenhum tutor encontrado.</p>
-          ) : null}
-
-          {!loading && results.length > 0 ? (
-            <ul className="max-h-72 overflow-y-auto">
-              {results.map((tutor) => (
-                <li key={tutor.tutorRecordId}>
-                  <button
-                    type="button"
-                    className="w-full border-b border-[#21401b] px-3 py-2 text-left hover:bg-[#173015]"
-                    onClick={() => {
-                      onPick(tutor)
-                      setQuery(tutor.name || '')
-                      setErrorMessage('')
-                      setOpen(false)
-                    }}
-                  >
-                    <p className="text-sm font-semibold text-white">{tutor.full_name || tutor.name || 'Tutor sem nome'}</p>
-                    <p className="text-xs text-slate-400">{tutor.phone || tutor.email || 'Sem telefone/email'}</p>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          ) : null}
-        </div>
-      ) : null}
+      {dropdownContent && createPortal(dropdownContent, document.body)}
     </div>
   )
 }

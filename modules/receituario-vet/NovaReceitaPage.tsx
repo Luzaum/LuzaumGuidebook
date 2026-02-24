@@ -1,5 +1,6 @@
-﻿console.log("[DEBUG] NovaReceitaPage.tsx evaluation started")
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+﻿// ✅ OBJ 4: Debug log removido (DEV only)
+if (import.meta.env.DEV) console.log("[DEBUG] NovaReceitaPage.tsx evaluation started")
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import {
   RxvField,
@@ -63,6 +64,8 @@ import {
   searchMedications,
   getMedicationPresentations,
   getMedicationRecommendedDoses,
+  loadPatientWeights,
+  type RecommendedDose,
 } from '../../src/lib/clinicRecords'
 
 type SaveStatus = 'saved' | 'editing' | 'saving' | 'error'
@@ -410,30 +413,33 @@ function MedicationModal({
   const [isSearchingSupabase, setIsSearchingSupabase] = useState(false)
   const [usePresetPresentation, setUsePresetPresentation] = useState(true)
   const [selectedPresentationId, setSelectedPresentationId] = useState('')
+  const [recommendedDoses, setRecommendedDoses] = useState<RecommendedDose[]>([])
   const [structuredConcentration, setStructuredConcentration] = useState<StructuredConcentration>(defaultStructuredConcentration())
 
-  // Busca no Supabase (Catálogo 3.0)
+  // ✅ OBJ 3: Busca no Supabase (Catálogo 3.0) - carrega lista inicial ao abrir
   useEffect(() => {
-    const q = supabaseSearch.trim()
-    if (q.length < 2 || !clinicId) {
+    if (!clinicId || !state.open) {
       setSupabaseResults([])
       return
     }
 
+    const q = supabaseSearch.trim()
+
     const timer = setTimeout(async () => {
       try {
         setIsSearchingSupabase(true)
-        const results = await searchMedications(clinicId, q)
+        // ✅ OBJ 3: Se vazio, carrega primeiros 20 medicamentos
+        const results = await searchMedications(clinicId, q || '', q ? 50 : 20)
         setSupabaseResults(results)
       } catch (err) {
         console.error('[MedicationModal] Supabase search failed', err)
       } finally {
         setIsSearchingSupabase(false)
       }
-    }, 400)
+    }, q ? 400 : 0) // ✅ Sem delay se não tiver query (lista inicial)
 
     return () => clearTimeout(timer)
-  }, [supabaseSearch, clinicId])
+  }, [supabaseSearch, clinicId, state.open])
 
   useEffect(() => {
     onCloseRef.current = onClose
@@ -597,6 +603,7 @@ function MedicationModal({
       if (presentations.length > 0) {
         setSelectedPresentationId(presentations[0].id)
       }
+      setRecommendedDoses(recommendedDoses)
       setSupabaseSearch('')
       setSupabaseResults([])
       setUsePresetPresentation(true)
@@ -713,11 +720,18 @@ function MedicationModal({
                   className="flex-1 rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
                   value={supabaseSearch}
                   onChange={(e) => setSupabaseSearch(e.target.value)}
-                  placeholder="Buscar medicamentos no banco..."
+                  placeholder="Digite para buscar ou veja a lista abaixo..."
                 />
                 {isSearchingSupabase && <span className="material-symbols-outlined animate-spin text-[#39ff14]">sync</span>}
               </div>
 
+              {/* ✅ OBJ 3: Lista de medicamentos (inicial ou filtrada) */}
+              {!isSearchingSupabase && supabaseResults.length === 0 && !supabaseSearch && (
+                <p className="text-xs text-slate-400 italic">Carregando lista inicial...</p>
+              )}
+              {!isSearchingSupabase && supabaseResults.length === 0 && supabaseSearch && (
+                <p className="text-xs text-slate-400">Nenhum medicamento encontrado.</p>
+              )}
               {supabaseResults.length > 0 && (
                 <div className="max-h-48 space-y-2 overflow-y-auto pr-1">
                   {supabaseResults.map((med) => (
@@ -744,34 +758,7 @@ function MedicationModal({
               )}
             </div>
 
-            {state.useCatalog ? (
-              <section className="space-y-2 rounded-xl border border-[#2e5525] bg-[#152913] p-4">
-                <h3 className="text-sm font-bold text-slate-200">Catálogo rápido (Legado)</h3>
-                <input
-                  className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                  value={catalogSearch}
-                  onChange={(e) => setCatalogSearch(e.target.value)}
-                  placeholder="Buscar no catálogo..."
-                />
-                <div className="max-h-36 space-y-2 overflow-y-auto pr-1">
-                  {filteredCatalog.map((entry) => (
-                    <button type="button" key={entry.id} className="flex w-full items-start justify-between rounded-lg border border-[#335c29] bg-[#12230f] px-3 py-2 text-left hover:border-[#48a534]" onClick={() => handleCatalogSelect(entry)}>
-                      <div>
-                        <p className="text-sm font-semibold text-white">
-                          {entry.name}
-                          {entry.commercialName ? <span className="text-[#9ff394]"> ({entry.commercialName})</span> : null}
-                        </p>
-                        <p className="text-xs text-slate-400">{entry.concentration} - {entry.presentation}</p>
-                      </div>
-                      <div className="flex flex-col items-end gap-1">
-                        <span className="rounded bg-[#1f3a18] px-2 py-0.5 text-[10px] text-[#8cff78]">{entry.routeGroup}</span>
-                        {entry.controlled ? <span className="rounded bg-amber-500/20 px-2 py-0.5 text-[10px] font-bold text-amber-300">CONTROLADO</span> : null}
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </section>
-            ) : null}
+            {/* ✅ OBJ 3: Catálogo legado removido - agora usa apenas Catálogo 3.0 (Supabase) */}
 
             {selectedCatalogDrug && selectedCatalogDrug.presentations.length > 0 ? (
               <section className="rounded-xl border border-[#2e5525] bg-[#12250f] p-4">
@@ -879,6 +866,36 @@ function MedicationModal({
                 {selectedCatalogPresentation?.averagePrice ? (
                   <p className="mt-2 text-xs text-[#97ce8d]">Preço médio de referência: {selectedCatalogPresentation.averagePrice}</p>
                 ) : null}
+
+                {recommendedDoses.length > 0 && (
+                  <div className="mt-4 space-y-2 rounded-xl border border-amber-500/20 bg-amber-500/5 p-3">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-amber-500">Doses indicadas no catálogo</p>
+                    <div className="grid grid-cols-1 gap-2">
+                      {recommendedDoses.map((rd, ridx) => (
+                        <button
+                          key={`rd-${rd.id || ridx}`}
+                          type="button"
+                          className="flex w-full items-center justify-between rounded-lg bg-[#0c1a0c] px-3 py-2 text-left hover:border-amber-500/50 border border-transparent transition-all"
+                          onClick={() => {
+                            onDraftChange(prev => ({
+                              ...prev,
+                              doseValue: String(rd.dose_value),
+                              doseUnit: rd.dose_unit,
+                              routeGroup: (rd.route as any) || prev.routeGroup,
+                              manualEdited: false
+                            }))
+                          }}
+                        >
+                          <div>
+                            <p className="text-xs font-bold text-white uppercase italic">{rd.species} - {rd.route}</p>
+                            <p className="text-[14px] font-black text-[#39ff14]">{rd.dose_value} {rd.dose_unit}</p>
+                          </div>
+                          <span className="text-[10px] text-slate-500 uppercase font-black">{rd.frequency || 'N/A'}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </section>
             ) : null}
             <section className="grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -1030,15 +1047,13 @@ function MedicationModal({
                   onChange={(e) => onDraftChange((prev) => ({ ...prev, pharmacyName: e.target.value }))}
                 />
               </div>
-              <label className="flex items-center gap-2 text-sm text-slate-300 md:col-span-2">
-                <input
-                  type="checkbox"
-                  className="h-4 w-4 rounded border-[#3f6f31] bg-[#12230f]"
+              <div className="flex items-center gap-2 text-sm text-slate-300 md:col-span-2">
+                <RxvToggle
                   checked={!!state.draft.controlled}
-                  onChange={(e) => onDraftChange((prev) => ({ ...prev, controlled: e.target.checked }))}
+                  onChange={(val) => onDraftChange((prev) => ({ ...prev, controlled: val }))}
+                  label="Medicamento controlado (receituário de controle especial)"
                 />
-                Medicamento controlado (receituário de controle especial)
-              </label>
+              </div>
               {state.draft.controlled && (!patientState.tutor.name || (!patientState.tutor.cpf && !patientState.tutor.documentId) || !patientState.tutor.street) && (
                 <div className="flex items-start gap-2 rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 md:col-span-2">
                   <span className="material-symbols-outlined text-amber-300 text-[18px]">warning</span>
@@ -1090,31 +1105,48 @@ function MedicationModal({
               </div>
               <div>
                 <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Modelo de frequência</label>
-                <select
-                  className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
+                <RxvSelect
                   value={state.draft.frequencyType}
                   onChange={(e) => onDraftChange((prev) => ({ ...prev, frequencyType: e.target.value as FrequencyType }))}
-                >
-                  <option value="timesPerDay">x vezes ao dia</option>
-                  <option value="everyHours">a cada X horas</option>
-                </select>
+                  options={[
+                    { value: 'timesPerDay', label: 'x vezes ao dia' },
+                    { value: 'everyHours', label: 'a cada X horas' },
+                  ]}
+                />
               </div>
               {state.draft.frequencyType === 'timesPerDay' ? (
                 <div>
                   <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Vezes ao dia (1-24)</label>
-                  <input
-                    className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
+                  <RxvSelect
                     value={state.draft.timesPerDay ?? ''}
                     onChange={(e) => onDraftChange((prev) => ({ ...prev, timesPerDay: e.target.value, frequencyToken: '' }))}
+                    options={[
+                      { value: '1', label: '1 vez ao dia (24/24h)' },
+                      { value: '2', label: '2 vezes ao dia (12/12h)' },
+                      { value: '3', label: '3 vezes ao dia (8/8h)' },
+                      { value: '4', label: '4 vezes ao dia (6/6h)' },
+                      { value: '6', label: '6 vezes ao dia (4/4h)' },
+                      { value: '8', label: '8 vezes ao dia (3/3h)' },
+                      { value: '12', label: '12 vezes ao dia (2/2h)' },
+                    ]}
                   />
                 </div>
               ) : (
                 <div>
                   <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Intervalo em horas (1-24)</label>
-                  <input
-                    className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
+                  <RxvSelect
                     value={state.draft.everyHours ?? ''}
                     onChange={(e) => onDraftChange((prev) => ({ ...prev, everyHours: e.target.value, frequencyToken: '' }))}
+                    options={[
+                      { value: '1', label: 'Cada 1 hora' },
+                      { value: '2', label: 'Cada 2 horas' },
+                      { value: '3', label: 'Cada 3 horas' },
+                      { value: '4', label: 'Cada 4 horas' },
+                      { value: '6', label: 'Cada 6 horas' },
+                      { value: '8', label: 'Cada 8 horas' },
+                      { value: '12', label: 'Cada 12 horas' },
+                      { value: '24', label: 'Cada 24 horas' },
+                    ]}
                   />
                 </div>
               )}
@@ -1180,11 +1212,9 @@ function MedicationModal({
                   Nome sublinhado
                 </label>
               </div>
-              <div>
-                <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Instrução final</label>
-                <textarea
+              <RxvField label="Instrução final" className="md:col-span-2">
+                <RxvTextarea
                   rows={4}
-                  className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
                   value={state.draft.instruction ?? ''}
                   onChange={(e) =>
                     onDraftChange((prev) => ({
@@ -1194,7 +1224,7 @@ function MedicationModal({
                     }))
                   }
                 />
-              </div>
+              </RxvField>
             </section>
 
             <section className="space-y-2 rounded-xl border border-[#2e5525] bg-[#142812] p-4">
@@ -1358,6 +1388,8 @@ export default function NovaReceitaPage() {
   const [selectedSupabaseTutor, setSelectedSupabaseTutor] = useState<TutorInfo | null>(null)
   const [supabasePatientsForTutor, setSupabasePatientsForTutor] = useState<PatientInfo[]>([])
   const [supabasePatientsLoading, setSupabasePatientsLoading] = useState(false)
+  const [patientWeights, setPatientWeights] = useState<any[]>([])
+  const [loadingWeights, setLoadingWeights] = useState(false)
   const saveTimeoutRef = useRef<number | null>(null)
   const pendingProtocolImportRef = useRef(false)
   const lastAutoWaterValueRef = useRef('')
@@ -2118,10 +2150,89 @@ export default function NovaReceitaPage() {
         neighborhood: address.district || prev.tutor.neighborhood || '',
         city: address.city || prev.tutor.city || '',
         state: normalizeStateInput(address.state || prev.tutor.state || ''),
-        complement: prev.tutor.complement || address.complement || '',
+        complement: address.complement || prev.tutor.complement || '',
       },
     }))
     setCepLookupMessage('Endereço preenchido pelo CEP.')
+  }
+
+  const loadWeightsForPatient = useCallback(async (patientId: string) => {
+    if (!patientId || !clinicId) return
+    if (!isUuid(patientId)) return // Only for supabase
+    try {
+      setLoadingWeights(true)
+      const freshWeights = await loadPatientWeights(patientId, clinicId)
+      setPatientWeights(freshWeights)
+    } catch (err) {
+      console.error('[RX] Failed to load patient weights', err)
+    } finally {
+      setLoadingWeights(false)
+    }
+  }, [clinicId])
+
+  useEffect(() => {
+    const pId = prescription.patient.patientRecordId
+    if (pId && isUuid(pId)) {
+      void loadWeightsForPatient(pId)
+    } else {
+      setPatientWeights([])
+    }
+  }, [prescription.patient.patientRecordId, loadWeightsForPatient])
+
+  function sparklinePath(pointsArr: any[], width = 240, height = 40): string {
+    const points = [...pointsArr]
+      .filter((entry) => !!entry.weight_kg)
+      .sort((a, b) => new Date(a.measured_at || a.date).getTime() - new Date(b.measured_at || b.date).getTime())
+      .map((entry) => ({
+        xLabel: entry.measured_at || entry.date,
+        value: parseFloat(String(entry.weight_kg || entry.weightKg).replace(',', '.')) || 0,
+      }))
+    if (points.length < 2) return ''
+
+    const minY = Math.min(...points.map((entry) => entry.value))
+    const maxY = Math.max(...points.map((entry) => entry.value))
+    const spanY = Math.max(maxY - minY, 0.01)
+    const left = 5
+    const right = width - 5
+    const top = 5
+    const bottom = height - 5
+    const chartWidth = right - left
+    const chartHeight = bottom - top
+
+    return points
+      .map((entry, index) => {
+        const x = left + (index / (points.length - 1)) * chartWidth
+        const y = top + (1 - (entry.value - minY) / spanY) * chartHeight
+        return `${index === 0 ? 'M' : 'L'} ${x} ${y}`
+      })
+      .join(' ')
+  }
+
+  const startNewTutor = () => {
+    const base = createDefaultPrescriptionState()
+    setPrescription((prev) => ({
+      ...prev,
+      tutor: base.tutor,
+      patient: base.patient,
+    }))
+    setSelectedSupabaseTutor(null)
+    setSupabasePatientsForTutor([])
+    setPatientWeights([])
+    setCustomExamDraft('')
+    setExamReasonDraft('')
+    pushToast('info', 'Dados de tutor e paciente resetados.')
+  }
+
+  const startNewPatient = () => {
+    const base = createDefaultPrescriptionState()
+    setPrescription((prev) => ({
+      ...prev,
+      patient: base.patient,
+    }))
+    setPatientWeights([])
+    setCustomExamDraft('')
+    setExamReasonDraft('')
+    pushToast('info', 'Dados do paciente resetados.')
   }
 
   const applyPrescriberProfile = (profileId: string) => {
@@ -2214,10 +2325,12 @@ export default function NovaReceitaPage() {
         <div className={`space-y-6 lg:col-span-5 ${mobileTab === 'preview' ? 'hidden lg:block' : ''}`}>
           <section className="rxv-card p-5">
             <div className="mb-3 flex items-center justify-between gap-2">
-              <h2 className="text-lg font-bold text-[color:var(--rxv-text)]">Fluxo Plantao</h2>
-              <span className="rounded-full border border-[#3d6f31] bg-[#233c1d] px-2 py-0.5 text-xs text-[#8cff78]">
-                Fonte: {rxDataSource === 'supabase' ? 'Supabase' : 'Local'}
-              </span>
+              <h2 className="text-lg font-bold text-[color:var(--rxv-text)]">Fluxo Plantão</h2>
+              {import.meta.env.DEV && (
+                <span className="rounded-full border border-[#3d6f31] bg-[#233c1d] px-2 py-0.5 text-xs text-[#8cff78]">
+                  DEV: {rxDataSource === 'supabase' ? 'Supabase' : 'Local'}
+                </span>
+              )}
             </div>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_auto]">
               {rxDataSource === 'local' ? (
@@ -2232,91 +2345,99 @@ export default function NovaReceitaPage() {
                     onError={(error) => handleDataAdapterError('search', error)}
                   />
                   <div className="flex items-end">
-                    <button
-                      type="button"
-                      className="rxv-btn-primary h-[42px] px-3 py-2 text-sm"
+                    <RxvButton
+                      variant="primary"
+                      className="h-[42px] px-3 py-2 text-sm"
                       onClick={() => setPatientCreateModalOpen(true)}
                       disabled={supabaseModeWithoutClinic}
                     >
-                      + Novo paciente
-                    </button>
+                      <span className="material-symbols-outlined text-[18px]">person_add</span>
+                      Novo paciente
+                    </RxvButton>
                   </div>
                 </>
               ) : (
                 <div className="col-span-2 space-y-3">
-                  {/* IMPORTAÇÃO SUPABASE: Busca de tutor + pacientes */}
-                  <div>
-                    <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-300">
+                  <div className="flex items-center justify-between">
+                    <label className="text-xs font-semibold uppercase tracking-wide text-slate-300">
                       Importar Tutor do Banco
                     </label>
-                    <TutorQuickSelect
-                      adapter={rxAdapter}
-                      value={selectedSupabaseTutor}
-                      disabled={supabaseModeWithoutClinic}
-                      placeholder="Buscar tutor por nome..."
-                      onPick={(tutor) => {
-                        setSelectedSupabaseTutor(tutor)
-                        // Apply tutor to prescription
-                        updatePrescription((prev) => ({
-                          ...prev,
-                          tutor: {
-                            ...prev.tutor,
-                            tutorRecordId: tutor.tutorRecordId,
-                            name: tutor.name,
-                            phone: tutor.phone || prev.tutor.phone,
-                            cpf: tutor.cpf || prev.tutor.cpf,
-                            rg: tutor.rg || prev.tutor.rg,
-                            email: tutor.email || prev.tutor.email,
-                            street: tutor.street || prev.tutor.street,
-                            number: tutor.number || prev.tutor.number,
-                            complement: tutor.complement || prev.tutor.complement,
-                            neighborhood: tutor.neighborhood || prev.tutor.neighborhood,
-                            city: tutor.city || prev.tutor.city,
-                            state: tutor.state || prev.tutor.state,
-                            zipcode: tutor.zipcode || prev.tutor.zipcode,
-                            notes: tutor.notes || prev.tutor.notes,
-                          },
-                        }))
-                        // Load patients for this tutor
-                        if (rxAdapter.listPatientsByTutorId) {
-                          setSupabasePatientsLoading(true)
-                          setSupabasePatientsForTutor([])
-                          void rxAdapter.listPatientsByTutorId(tutor.tutorRecordId)
-                            .then((patients) => {
-                              setSupabasePatientsForTutor(patients)
-                              // Auto-select first patient if only one
-                              if (patients.length === 1) {
-                                const p = patients[0]
-                                updatePrescription((prev) => ({
-                                  ...prev,
-                                  patient: {
-                                    ...prev.patient,
-                                    patientRecordId: p.patientRecordId,
-                                    name: p.name,
-                                    species: p.species,
-                                    breed: p.breed || prev.patient.breed,
-                                    sex: p.sex || prev.patient.sex,
-                                    reproductiveStatus: p.reproductiveStatus || prev.patient.reproductiveStatus,
-                                    ageText: p.ageText || prev.patient.ageText,
-                                    coat: p.coat || prev.patient.coat,
-                                    weightKg: p.weightKg || prev.patient.weightKg,
-                                    weightDate: p.weightDate || prev.patient.weightDate,
-                                  },
-                                }))
-                                pushToast('success', `Tutor "${tutor.name}" e paciente "${p.name}" importados.`)
-                              } else {
-                                pushToast('success', `Tutor "${tutor.name}" importado. Selecione o paciente.`)
-                              }
-                            })
-                            .catch(() => pushToast('error', 'Erro ao buscar pacientes do tutor.'))
-                            .finally(() => setSupabasePatientsLoading(false))
-                        } else {
-                          pushToast('success', `Tutor "${tutor.name}" importado.`)
-                        }
-                      }}
-                      onError={(error) => handleDataAdapterError('search', error)}
-                    />
+                    <RxvButton
+                      variant="danger"
+                      className="h-auto px-2 py-1 text-[10px] font-black uppercase tracking-tight"
+                      onClick={startNewTutor}
+                    >
+                      <span className="material-symbols-outlined text-[14px]">close</span>
+                      Limpar / Novo
+                    </RxvButton>
                   </div>
+                  <TutorQuickSelect
+                    adapter={rxAdapter}
+                    value={selectedSupabaseTutor}
+                    disabled={supabaseModeWithoutClinic}
+                    placeholder="Buscar tutor por nome..."
+                    onPick={(tutor) => {
+                      setSelectedSupabaseTutor(tutor)
+                      // Apply tutor to prescription
+                      updatePrescription((prev) => ({
+                        ...prev,
+                        tutor: {
+                          ...prev.tutor,
+                          tutorRecordId: tutor.tutorRecordId,
+                          name: tutor.name,
+                          phone: tutor.phone || prev.tutor.phone,
+                          cpf: tutor.cpf || prev.tutor.cpf,
+                          rg: tutor.rg || prev.tutor.rg,
+                          email: tutor.email || prev.tutor.email,
+                          street: tutor.street || prev.tutor.street,
+                          number: tutor.number || prev.tutor.number,
+                          complement: tutor.complement || prev.tutor.complement,
+                          neighborhood: tutor.neighborhood || prev.tutor.neighborhood,
+                          city: tutor.city || prev.tutor.city,
+                          state: tutor.state || prev.tutor.state,
+                          zipcode: tutor.zipcode || prev.tutor.zipcode,
+                          notes: tutor.notes || prev.tutor.notes,
+                        },
+                      }))
+                      // Load patients for this tutor
+                      if (rxAdapter.listPatientsByTutorId) {
+                        setSupabasePatientsLoading(true)
+                        setSupabasePatientsForTutor([])
+                        void rxAdapter.listPatientsByTutorId(tutor.tutorRecordId)
+                          .then((patients) => {
+                            setSupabasePatientsForTutor(patients)
+                            // Auto-select first patient if only one
+                            if (patients.length === 1) {
+                              const p = patients[0]
+                              updatePrescription((prev) => ({
+                                ...prev,
+                                patient: {
+                                  ...prev.patient,
+                                  patientRecordId: p.patientRecordId,
+                                  name: p.name,
+                                  species: p.species,
+                                  breed: p.breed || prev.patient.breed,
+                                  sex: p.sex || prev.patient.sex,
+                                  reproductiveStatus: p.reproductiveStatus || prev.patient.reproductiveStatus,
+                                  ageText: p.ageText || prev.patient.ageText,
+                                  coat: p.coat || prev.patient.coat,
+                                  weightKg: p.weightKg || prev.patient.weightKg,
+                                  weightDate: p.weightDate || prev.patient.weightDate,
+                                },
+                              }))
+                              pushToast('success', `Tutor "${tutor.name}" e paciente "${p.name}" importados.`)
+                            } else {
+                              pushToast('success', `Tutor "${tutor.name}" importado. Selecione o paciente.`)
+                            }
+                          })
+                          .catch(() => pushToast('error', 'Erro ao buscar pacientes do tutor.'))
+                          .finally(() => setSupabasePatientsLoading(false))
+                      } else {
+                        pushToast('success', `Tutor "${tutor.name}" importado.`)
+                      }
+                    }}
+                    onError={(error) => handleDataAdapterError('search', error)}
+                  />
 
                   {/* Lista de pacientes do tutor selecionado */}
                   {selectedSupabaseTutor && (
@@ -2370,13 +2491,14 @@ export default function NovaReceitaPage() {
 
                   {/* Botão para cadastrar novo tutor/paciente */}
                   <div className="flex justify-end">
-                    <button
-                      type="button"
-                      className="rxv-btn-secondary px-3 py-2 text-xs"
+                    <RxvButton
+                      variant="secondary"
+                      className="px-3 py-2 text-xs"
                       onClick={() => navigate('/receituario-vet/clientes')}
                     >
-                      + Cadastrar novo tutor/paciente
-                    </button>
+                      <span className="material-symbols-outlined text-[16px]">group_add</span>
+                      Ir para gestão de clientes
+                    </RxvButton>
                   </div>
                 </div>
               )}
@@ -2490,6 +2612,29 @@ export default function NovaReceitaPage() {
                   onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, tutorRecordId: e.target.value } }))}
                 />
               </RxvField>
+
+              <RxvField label="CEP * (Preenche automático)" className="md:col-span-2">
+                <div className="flex gap-2">
+                  <RxvInput
+                    className="flex-1"
+                    value={prescription.tutor.zipcode ?? ''}
+                    onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, zipcode: maskCep(e.target.value) } }))}
+                    placeholder="00000-000"
+                  />
+                  <RxvButton
+                    variant="secondary"
+                    loading={cepLookupLoading}
+                    onClick={() => fetchCepForTutor(prescription.tutor.zipcode || '')}
+                  >
+                    Buscar
+                  </RxvButton>
+                </div>
+                {cepLookupMessage && (
+                  <p className="mt-1 text-[10px] font-bold text-[#38ff14] uppercase tracking-tighter">
+                    {cepLookupMessage}
+                  </p>
+                )}
+              </RxvField>
               <RxvField label="Nome *">
                 <RxvInput
                   value={prescription.tutor.name ?? ''}
@@ -2507,101 +2652,69 @@ export default function NovaReceitaPage() {
               </RxvField>
               {hasSpecialControlItems ? (
                 <>
-                  <RxvField label="CPF *">
+                  <RxvField label="CPF" className="md:col-span-1">
                     <RxvInput
-                      inputMode="numeric"
-                      maxLength={14}
-                      placeholder="000.000.000-00"
                       value={prescription.tutor.cpf ?? ''}
                       onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, cpf: maskCpf(e.target.value) } }))}
+                      placeholder="000.000.000-00"
                     />
                   </RxvField>
-                  <RxvField label="RG">
+                  <RxvField label="RG" className="md:col-span-1">
                     <RxvInput
-                      maxLength={12}
-                      placeholder="00.000.000-0"
                       value={prescription.tutor.rg ?? ''}
                       onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, rg: maskRg(e.target.value) } }))}
                     />
                   </RxvField>
+
+
                   <RxvField label="Rua *" className="md:col-span-2">
                     <RxvInput
                       value={prescription.tutor.street ?? ''}
                       onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, street: e.target.value } }))}
+                      required
                     />
                   </RxvField>
-                  <RxvField label="Número *">
+                  <RxvField label="Número *" className="md:col-span-1">
                     <RxvInput
                       value={prescription.tutor.number ?? ''}
                       onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, number: e.target.value } }))}
+                      required
                     />
                   </RxvField>
-                  <RxvField label="Complemento">
+                  <RxvField label="Complemento" className="md:col-span-1">
                     <RxvInput
                       value={prescription.tutor.complement ?? ''}
                       onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, complement: e.target.value } }))}
                     />
                   </RxvField>
-                  <RxvField label="Bairro *">
+                  <RxvField label="Bairro *" className="md:col-span-2">
                     <RxvInput
                       value={prescription.tutor.neighborhood ?? ''}
                       onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, neighborhood: e.target.value } }))}
+                      required
                     />
                   </RxvField>
-                  <RxvField label="Cidade *">
+                  <RxvField label="Cidade *" className="md:col-span-1">
                     <RxvInput
-                      list="rx-tutor-city-options"
-                      placeholder="Digite ou selecione a cidade"
                       value={prescription.tutor.city ?? ''}
                       onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, city: e.target.value } }))}
+                      list="tutor-cities"
+                      required
                     />
+                    <datalist id="tutor-cities">
+                      {tutorCitySuggestions.map((city) => (
+                        <option key={city} value={city} />
+                      ))}
+                    </datalist>
                   </RxvField>
-                  <RxvField label="Estado *">
-                    <RxvInput
-                      list="rx-tutor-state-options"
-                      placeholder="UF ou nome do estado"
+                  <RxvField label="Estado *" className="md:col-span-1">
+                    <RxvSelect
                       value={prescription.tutor.state ?? ''}
                       onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, state: e.target.value } }))}
-                      onBlur={(e) =>
-                        updatePrescription((prev) => ({
-                          ...prev,
-                          tutor: { ...prev.tutor, state: normalizeStateInput(e.target.value || prev.tutor.state || '') },
-                        }))
-                      }
+                      options={BRAZIL_STATE_SUGGESTIONS}
+                      required
                     />
                   </RxvField>
-                  <RxvField label="CEP *">
-                    <div className="flex gap-2">
-                      <RxvInput
-                        inputMode="numeric"
-                        maxLength={9}
-                        placeholder="00000-000"
-                        value={prescription.tutor.zipcode ?? ''}
-                        onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, zipcode: maskCep(e.target.value) } }))}
-                        onBlur={(e) => void fetchCepForTutor(e.target.value)}
-                        className="flex-1"
-                      />
-                      <RxvButton
-                        variant="secondary"
-                        disabled={cepLookupLoading}
-                        onClick={() => void fetchCepForTutor(prescription.tutor.zipcode ?? '')}
-                        loading={cepLookupLoading}
-                      >
-                        Buscar
-                      </RxvButton>
-                    </div>
-                  </RxvField>
-                  <datalist id="rx-tutor-state-options">
-                    {BRAZIL_STATE_SUGGESTIONS.map((entry) => (
-                      <option key={entry} value={entry} />
-                    ))}
-                  </datalist>
-                  <datalist id="rx-tutor-city-options">
-                    {tutorCitySuggestions.map((entry) => (
-                      <option key={entry} value={entry} />
-                    ))}
-                  </datalist>
-                  {cepLookupMessage ? <p className="text-[11px] font-semibold text-[#9be78c] md:col-span-2">{cepLookupMessage}</p> : null}
                 </>
               ) : null}
               <RxvField label="Observações do tutor" className="md:col-span-2">
@@ -2750,10 +2863,32 @@ export default function NovaReceitaPage() {
                 ))}
               </datalist>
               <RxvField label="Peso (kg) *">
-                <RxvInput
-                  value={prescription.patient.weightKg ?? ''}
-                  onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, weightKg: e.target.value } }))}
-                />
+                <div className="flex items-center gap-3">
+                  <RxvInput
+                    className="w-24"
+                    value={prescription.patient.weightKg ?? ''}
+                    onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, weightKg: e.target.value } }))}
+                  />
+                  {patientWeights.length > 1 && (
+                    <div className="relative h-12 flex-1 rounded-lg border border-[#315d28] bg-black/40 overflow-hidden">
+                      <svg className="absolute inset-0 h-full w-full">
+                        <path
+                          d={sparklinePath(patientWeights, 240, 48)}
+                          fill="none"
+                          stroke="#39ff14"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="opacity-70"
+                        />
+                      </svg>
+                      <div className="absolute bottom-1 right-2 text-[8px] font-bold uppercase text-slate-500">
+                        Evolução de peso
+                      </div>
+                    </div>
+                  )}
+                  {loadingWeights && <span className="material-symbols-outlined animate-spin text-[#39ff14] text-sm">sync</span>}
+                </div>
               </RxvField>
               <RxvField label="Microchip">
                 <RxvInput
@@ -3155,9 +3290,9 @@ export default function NovaReceitaPage() {
             </div>
           </div>
         </aside>
-      </div>
+      </div >
 
-      {protocolModalOpen ? (
+      {protocolModalOpen && (
         <div className="fixed inset-0 z-[82] flex items-center justify-center bg-black/70 px-4 py-8 backdrop-blur-sm" onClick={() => setProtocolModalOpen(false)}>
           <div className="max-h-[92vh] w-full max-w-5xl overflow-hidden rounded-2xl border border-[#2f5b25] bg-[#13220f] text-slate-100 shadow-[0_0_40px_rgba(56,255,20,0.18)]" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between border-b border-[#274b20] bg-[#11200e] px-5 py-4">
@@ -3246,7 +3381,7 @@ export default function NovaReceitaPage() {
             </div>
           </div>
         </div>
-      ) : null}
+      )}
 
       {rxDataSource === 'local' && (
         <PatientCreateModal
@@ -3283,7 +3418,8 @@ export default function NovaReceitaPage() {
     </ReceituarioChrome>
   )
 }
-console.log("[DEBUG] NovaReceitaPage.tsx evaluation finished")
+// ✅ OBJ 4: Debug log removido (DEV only)
+if (import.meta.env.DEV) console.log("[DEBUG] NovaReceitaPage.tsx evaluation finished")
 
 
 

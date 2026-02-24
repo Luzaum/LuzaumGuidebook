@@ -123,7 +123,10 @@ function getDoseBaseUnit(unit: string) {
   return (parts[0] || '').trim()
 }
 
-function routeToText(route: RouteGroup): string {
+function routeToText(route: RouteGroup | undefined): string {
+  // ✅ OBJ 3: Corrigir bug "via undefined"
+  if (!route) return 'oral' // fallback padrão
+
   const map: Record<RouteGroup, string> = {
     ORAL: 'oral',
     OTOLOGICO: 'otológica',
@@ -138,7 +141,7 @@ function routeToText(route: RouteGroup): string {
     TRANSDERMICO: 'transdérmica',
     OUTROS: 'definida pelo prescritor',
   }
-  return map[route]
+  return map[route] || 'oral' // ✅ fallback adicional
 }
 
 interface ParsedConcentration {

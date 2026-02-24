@@ -56,8 +56,6 @@ interface Presentation {
     pharmacy_veterinary: boolean
     pharmacy_human: boolean
     pharmacy_compounding: boolean
-    package_quantity: number | null // ✅ TAREFA A: agora é coluna real
-    package_unit: string | null // ✅ TAREFA A: agora é coluna real
     metadata?: {
         manufacturer?: string
         administration_routes?: string[]
@@ -148,8 +146,6 @@ function createEmptyPresentation(): Presentation {
         pharmacy_veterinary: true,
         pharmacy_human: false,
         pharmacy_compounding: false,
-        package_quantity: null, // ✅ TAREFA A: agora é propriedade de primeiro nível
-        package_unit: '', // ✅ TAREFA A: agora é propriedade de primeiro nível
         metadata: {
             manufacturer: '',
             administration_routes: [],
@@ -272,9 +268,6 @@ export default function Catalogo3Page() {
                         return {
                             ...p,
                             _tempId: p.id,
-                            // ✅ TAREFA A: carregar package_quantity e package_unit das COLUNAS (não mais de metadata)
-                            package_quantity: p.package_quantity ?? null,
-                            package_unit: p.package_unit ?? '',
                             metadata: {
                                 manufacturer: pMetadata.manufacturer || '',
                                 administration_routes: pMetadata.administration_routes || [],
@@ -516,8 +509,6 @@ export default function Catalogo3Page() {
                 pharmacy_veterinary: !!p.pharmacy_veterinary,
                 pharmacy_human: !!p.pharmacy_human,
                 pharmacy_compounding: !!p.pharmacy_compounding,
-                package_quantity: normalizeNumber(p.package_quantity, true), // ✅ TAREFA A: agora é coluna
-                package_unit: p.package_unit || null, // ✅ TAREFA A: agora é coluna
                 metadata: {
                     manufacturer: p.metadata?.manufacturer || '',
                     administration_routes: p.metadata?.administration_routes || [],
@@ -1015,22 +1006,7 @@ export default function Catalogo3Page() {
                                                 </div>
 
                                                 {/* EMBALAGEM E VIAS */}
-                                                <RxvField label="Embalagem" className="md:col-span-4">
-                                                    <div className="flex gap-2">
-                                                        <RxvInput
-                                                            type="number"
-                                                            placeholder="Qtd"
-                                                            value={pres.package_quantity ?? ''}
-                                                            onChange={e => updatePresentation(pres._tempId!, { package_quantity: e.target.value ? Number(e.target.value) : null })}
-                                                        />
-                                                        <RxvSelect
-                                                            options={PER_UNITS}
-                                                            value={pres.package_unit ?? ''}
-                                                            onChange={e => updatePresentation(pres._tempId!, { package_unit: e.target.value })}
-                                                        />
-                                                    </div>
-                                                </RxvField>
-
+                                                {/* Embalagem removida do Supabase por enquanto */}
                                                 <RxvField label="Vias de Administração Sugeridas" className="md:col-span-8">
                                                     <RxvChipsMultiSelect
                                                         options={ROUTES_OPTIONS}

@@ -83,31 +83,41 @@ function mapTutorRow(row: SupabaseTutorRow): TutorInfo {
     rg: String(row.rg || ''),
     street: String(row.street || ''),
     number: String(row.number || ''),
-    complement: String(row.complement || ''),
+    complement: String(row.complement || (row as any).address_complement || ''), // ✅ OBJ 2: fallback address_complement
     neighborhood: String(row.neighborhood || ''),
     city: String(row.city || ''),
-    state: String(row.state || ''),
+    state: String(row.state || ''), // ✅ OBJ 2: usar state do banco (não forçar padrão)
     zipcode: String(row.zipcode || ''),
     notes: String(row.notes || ''),
   }
 }
 
 function mapPatientRow(row: SupabasePatientRow): PatientInfo {
+  // ✅ OBJ 2: mapear reproductive_condition (prioridade) ou neutered (fallback)
+  const reproductiveCondition = (row as any).reproductive_condition
+  const reproductiveStatus = reproductiveCondition
+    ? String(reproductiveCondition)
+    : normalizeReproductiveStatus(String(row.neutered || ''))
+
+  // ✅ OBJ 2: mapear microchipped (boolean) e microchip_number
+  const microchipped = (row as any).microchipped === true || !!row.microchip
+  const microchipNumber = String((row as any).microchip_number || row.microchip || '')
+
   return {
     patientRecordId: String(row.id || ''),
     name: String(row.name || ''),
     species: normalizeSpecies(String(row.species || '')),
     breed: String(row.breed || ''),
     sex: normalizeSex(String(row.sex || '')),
-    reproductiveStatus: normalizeReproductiveStatus(String(row.neutered || '')),
+    reproductiveStatus, // ✅ OBJ 2: usa reproductive_condition se existir
     ageText: String(row.age_text || ''),
     coat: String(row.coat || ''),
-    microchip: String(row.microchip || ''),
-    microchipped: !!row.microchip,
+    microchip: microchipNumber, // ✅ OBJ 2: microchip_number ou microchip
+    microchipped, // ✅ OBJ 2: boolean correto
     weightKg: String(row.weight_kg || ''),
     weightDate: '',
-    anamnesis: String(row.anamnesis || ''),
-    notes: String(row.notes || ''),
+    anamnesis: String((row as any).anamnesis || row.anamnesis || ''), // ✅ OBJ 2: anamnesis
+    notes: String((row as any).notes || row.notes || ''), // ✅ OBJ 2: notes
     showNotesInPrint: false,
   }
 }
@@ -182,7 +192,7 @@ export class SupabaseAdapter implements DataAdapter {
     const { data: patients, error: patientsError } = await this.supabase
       .from('patients')
       .select(
-        'id,tutor_id,name,species,breed,sex,neutered,age_text,weight_kg,coat,microchip,notes'
+        'id,tutor_id,name,species,breed,sex,neutered,reproductive_condition,age_text,weight_kg,coat,microchip,microchipped,microchip_number,anamnesis,notes'
       )
       .eq('clinic_id', clinicId)
       .is('deleted_at', null)
@@ -193,10 +203,10 @@ export class SupabaseAdapter implements DataAdapter {
     let patientRows = (patients || []) as SupabasePatientRow[]
 
     if (patientsError) {
-      const { data: fallbackPatients, error: fallbackError } = await this.supabase
+      const { data: fallbackPatients, error: fallbackError} = await this.supabase
         .from('patients')
         .select(
-          'id,tutor_id,name,species,breed,sex,neutered,age_text,weight_kg,coat,microchip,notes'
+          'id,tutor_id,name,species,breed,sex,neutered,reproductive_condition,age_text,weight_kg,coat,microchip,microchipped,microchip_number,anamnesis,notes'
         )
         .eq('clinic_id', clinicId)
         .is('deleted_at', null)
@@ -216,7 +226,7 @@ export class SupabaseAdapter implements DataAdapter {
     const { data: tutors, error: tutorsError } = await this.supabase
       .from('tutors')
       .select(
-        'id,full_name,phone,email,document_id,cpf,rg,street,number,complement,neighborhood,city,state,zipcode,notes'
+        'id,full_name,phone,email,document_id,cpf,rg,street,number,complement,address_complement,neighborhood,city,state,zipcode,notes'
       )
       .eq('clinic_id', clinicId)
       .is('deleted_at', null)
@@ -247,7 +257,7 @@ export class SupabaseAdapter implements DataAdapter {
     const safeLimit = Math.max(1, limit)
 
     const selectFields =
-      'id,full_name,phone,email,document_id,cpf,rg,street,number,complement,neighborhood,city,state,zipcode,notes'
+      'id,full_name,phone,email,document_id,cpf,rg,street,number,complement,address_complement,neighborhood,city,state,zipcode,notes'
 
     let request = this.supabase
       .from('tutors')
@@ -279,7 +289,7 @@ export class SupabaseAdapter implements DataAdapter {
     const { data, error } = await this.supabase
       .from('tutors')
       .select(
-        'id,full_name,phone,email,document_id,cpf,rg,street,number,complement,neighborhood,city,state,zipcode,notes'
+        'id,full_name,phone,email,document_id,cpf,rg,street,number,complement,address_complement,neighborhood,city,state,zipcode,notes'
       )
       .eq('clinic_id', clinicId)
       .is('deleted_at', null)
@@ -384,7 +394,7 @@ export class SupabaseAdapter implements DataAdapter {
     const { data, error } = await this.supabase
       .from('patients')
       .select(
-        'id,tutor_id,name,species,breed,sex,neutered,age_text,weight_kg,coat,microchip,anamnesis,notes'
+        'id,tutor_id,name,species,breed,sex,neutered,reproductive_condition,age_text,weight_kg,coat,microchip,microchipped,microchip_number,anamnesis,notes'
       )
       .eq('clinic_id', clinicId)
       .is('deleted_at', null)
