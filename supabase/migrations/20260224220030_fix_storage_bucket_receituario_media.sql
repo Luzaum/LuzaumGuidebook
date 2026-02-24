@@ -4,9 +4,6 @@ values ('receituario-media', 'receituario-media', false)
 on conflict (id) do update
 set public = excluded.public;
 
--- 2) Garantir RLS (normalmente já vem, mas não custa)
-alter table if exists storage.objects enable row level security;
-
 -- 3) Recriar policies do bucket receituario-media
 drop policy if exists rxv_media_read on storage.objects;
 drop policy if exists rxv_media_insert on storage.objects;
