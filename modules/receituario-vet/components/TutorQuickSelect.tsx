@@ -41,8 +41,16 @@ export function TutorQuickSelect({
   useEffect(() => {
     if (open && inputRef.current) {
       const rect = inputRef.current.getBoundingClientRect()
+      const spaceBelow = window.innerHeight - rect.bottom
+      const dropdownHeight = 300 // Estimativa segura
+
+      let top = rect.bottom + window.scrollY + 8
+      if (spaceBelow < dropdownHeight && rect.top > dropdownHeight) {
+        top = rect.top + window.scrollY - dropdownHeight - 8
+      }
+
       setDropdownPos({
-        top: rect.bottom + window.scrollY + 8,
+        top,
         left: rect.left + window.scrollX,
         width: rect.width,
       })
@@ -115,17 +123,17 @@ export function TutorQuickSelect({
         width: `${dropdownPos.width}px`,
       }}
     >
-          {loading ? (
-            <p className="px-3 py-3 text-xs text-slate-300">Buscando tutores...</p>
-          ) : null}
+      {loading ? (
+        <p className="px-3 py-3 text-xs text-slate-300">Buscando tutores...</p>
+      ) : null}
 
-          {!loading && errorMessage ? (
-            <p className="px-3 py-3 text-xs text-red-300">{errorMessage}</p>
-          ) : null}
+      {!loading && errorMessage ? (
+        <p className="px-3 py-3 text-xs text-red-300">{errorMessage}</p>
+      ) : null}
 
-          {!loading && !errorMessage && results.length === 0 ? (
-            <p className="px-3 py-3 text-xs text-slate-400">Nenhum tutor encontrado.</p>
-          ) : null}
+      {!loading && !errorMessage && results.length === 0 ? (
+        <p className="px-3 py-3 text-xs text-slate-400">Nenhum tutor encontrado.</p>
+      ) : null}
 
       {!loading && results.length > 0 ? (
         <ul className="max-h-72 overflow-y-auto">

@@ -35,7 +35,7 @@ export type DataAdapterPatientCreateInput = {
   birthDate?: string
   coat?: string
   color?: string
-  microchip?: string
+
   weightKg?: string
   weightDate?: string
   anamnesis?: string

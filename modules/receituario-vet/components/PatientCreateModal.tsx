@@ -24,6 +24,8 @@ type PatientFormState = {
   coat: string
   weightKg: string
   weightDate: string
+
+  anamnesis: string
   notes: string
 }
 
@@ -54,6 +56,8 @@ const INITIAL_PATIENT_FORM: PatientFormState = {
   coat: '',
   weightKg: '',
   weightDate: '',
+
+  anamnesis: '',
   notes: '',
 }
 
@@ -139,13 +143,13 @@ export function PatientCreateModal({
           email: newTutorForm.email || undefined,
           cpf: newTutorForm.cpf || undefined,
           rg: newTutorForm.rg || undefined,
-          addressStreet: newTutorForm.addressStreet || undefined,
-          addressNumber: newTutorForm.addressNumber || undefined,
-          addressComplement: newTutorForm.addressComplement || undefined,
-          addressDistrict: newTutorForm.addressDistrict || undefined,
-          addressCity: newTutorForm.addressCity || undefined,
-          addressState: newTutorForm.addressState || undefined,
-          addressZip: newTutorForm.addressZip || undefined,
+          street: newTutorForm.addressStreet || undefined,
+          number: newTutorForm.addressNumber || undefined,
+          complement: newTutorForm.addressComplement || undefined,
+          neighborhood: newTutorForm.addressDistrict || undefined,
+          city: newTutorForm.addressCity || undefined,
+          state: newTutorForm.addressState || undefined,
+          zipcode: newTutorForm.addressZip || undefined,
           notes: newTutorForm.notes || undefined,
         })
       }
@@ -162,6 +166,8 @@ export function PatientCreateModal({
         coat: patientForm.coat || undefined,
         weightKg: patientForm.weightKg || undefined,
         weightDate: patientForm.weightDate || undefined,
+
+        anamnesis: patientForm.anamnesis || undefined,
         notes: patientForm.notes || undefined,
       })
 
@@ -310,8 +316,18 @@ export function PatientCreateModal({
                   onChange={(event) => setPatientForm((prev) => ({ ...prev, weightDate: event.target.value }))}
                 />
               </label>
+
               <label className="text-xs text-slate-300 md:col-span-2">
-                Observações
+                Anamnese / Histórico
+                <textarea
+                  rows={2}
+                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  value={patientForm.anamnesis}
+                  onChange={(event) => setPatientForm((prev) => ({ ...prev, anamnesis: event.target.value }))}
+                />
+              </label>
+              <label className="text-xs text-slate-300 md:col-span-2">
+                Observações do paciente
                 <textarea
                   rows={2}
                   className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
@@ -327,18 +343,16 @@ export function PatientCreateModal({
             <div className="mb-3 flex flex-wrap gap-2">
               <button
                 type="button"
-                className={`rounded-lg border px-3 py-1.5 text-xs font-semibold ${
-                  mode === 'existing' ? 'border-[#5ab24a] bg-[#1f3a19] text-[#a8f59b]' : 'border-[#335d2a] text-slate-300'
-                }`}
+                className={`rounded-lg border px-3 py-1.5 text-xs font-semibold ${mode === 'existing' ? 'border-[#5ab24a] bg-[#1f3a19] text-[#a8f59b]' : 'border-[#335d2a] text-slate-300'
+                  }`}
                 onClick={() => setMode('existing')}
               >
                 Selecionar tutor existente
               </button>
               <button
                 type="button"
-                className={`rounded-lg border px-3 py-1.5 text-xs font-semibold ${
-                  mode === 'new' ? 'border-[#5ab24a] bg-[#1f3a19] text-[#a8f59b]' : 'border-[#335d2a] text-slate-300'
-                }`}
+                className={`rounded-lg border px-3 py-1.5 text-xs font-semibold ${mode === 'new' ? 'border-[#5ab24a] bg-[#1f3a19] text-[#a8f59b]' : 'border-[#335d2a] text-slate-300'
+                  }`}
                 onClick={() => setMode('new')}
               >
                 Criar novo tutor

@@ -32,8 +32,6 @@ export interface PatientInfo {
   birthDate?: string
   color?: string
   coat: string
-  microchipped: boolean
-  microchip: string
   weightKg: string
   weightDate: string
   anamnesis: string

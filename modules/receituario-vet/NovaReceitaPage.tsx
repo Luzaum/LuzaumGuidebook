@@ -2,6 +2,7 @@
 if (import.meta.env.DEV) console.log("[DEBUG] NovaReceitaPage.tsx evaluation started")
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import {
   RxvField,
   RxvInput,
@@ -17,7 +18,7 @@ import { buildAutoInstruction, calculateMedicationQuantity, itemStatus, renderRx
 import { createDefaultItem, createDefaultPrescriptionState } from './rxDefaults'
 import { loadRxDraft, loadRxDraftById, saveRxDraft } from './rxStorage'
 import HelpConceptButton from './HelpConceptButton'
-import { BRAZIL_STATE_SUGGESTIONS, citySuggestionsForState, lookupAddressByCep, normalizeStateInput } from './rxBrazilData'
+import { BRAZIL_STATE_OPTIONS, citySuggestionsForState, lookupAddressByCep, normalizeStateInput } from './rxBrazilData'
 import { digitsOnly, maskCep, maskCpf, maskPhoneBr, maskRg } from './rxInputMasks'
 import {
   CatalogDrug,
@@ -56,7 +57,8 @@ import { createRxDataAdapter, resolveRxDataSource } from './adapters'
 import { PatientQuickSelect } from './components/PatientQuickSelect'
 import { PatientCreateModal } from './components/PatientCreateModal'
 import { TutorQuickSelect } from './components/TutorQuickSelect'
-import { createPrescriptionDraft, updatePrescriptionDraft, listPrescriptionsByPatient, getPrescriptionById } from '@/src/lib/prescriptionsRecords'
+import { MedicationModalV3 } from './components/MedicationModalV3'
+import { savePrescription, listPrescriptionsByPatient, getPrescriptionById } from '@/src/lib/prescriptionsRecords'
 import { isUuid } from '@/src/lib/isUuid'
 import { SupabaseImportBlock } from './components/SupabaseImportBlock'
 import type { PatientInfo, TutorInfo } from './rxTypes'
@@ -113,19 +115,20 @@ const PHARMACY_OPTIONS: Array<{ value: PharmacyType; label: string }> = [
   { value: 'manipulacao', label: 'Manipulação' },
 ]
 
-interface CatalogModalEntry {
-  id: string
-  drugId: string
-  presentationId: string
-  controlled: boolean
-  name: string
-  commercialName: string
-  concentration: string
-  presentation: string
-  routeGroup: RouteGroup
-  doseUnit: string
-  pharmacyTypes: PharmacyType[]
-}
+// ❌ REMOVIDO P0.1: CatalogModalEntry (catálogo legado)
+// interface CatalogModalEntry {
+//   id: string
+//   drugId: string
+//   presentationId: string
+//   controlled: boolean
+//   name: string
+//   commercialName: string
+//   concentration: string
+//   presentation: string
+//   routeGroup: RouteGroup
+//   doseUnit: string
+//   pharmacyTypes: PharmacyType[]
+// }
 
 interface ToastState {
   type: ToastType
@@ -381,960 +384,11 @@ function StatusChip({ status }: { status: SaveStatus }) {
   )
 }
 
-interface MedicationModalProps {
-  state: ModalState
-  catalogDrugs: CatalogDrug[]
-  catalogEntries: CatalogModalEntry[]
-  patientState: PrescriptionState
-  clinicId?: string
-  onClose: (discard: boolean) => void
-  onSave: () => void
-  onToggleAutosave: (next: boolean) => void
-  onToggleCatalogMode: (next: boolean) => void
-  onDraftChange: (updater: (prev: PrescriptionItem) => PrescriptionItem) => void
-}
+// ❌ REMOVIDO P0.1: MedicationModal antigo (usava catálogo legado)
+// Substituído por MedicationModalV3 (100% Catálogo 3.0 Supabase)
+// O código antigo foi DELETADO COMPLETAMENTE (linhas 386-1343)
+// Motivo: Continha JSX que não pode ser comentado + dependências do catálogo legado
 
-function MedicationModal({
-  state,
-  catalogDrugs,
-  catalogEntries,
-  patientState,
-  clinicId,
-  onClose,
-  onSave,
-  onToggleAutosave,
-  onToggleCatalogMode,
-  onDraftChange,
-}: MedicationModalProps) {
-  const onCloseRef = useRef(onClose)
-  const [catalogSearch, setCatalogSearch] = useState('')
-  const [supabaseSearch, setSupabaseSearch] = useState('')
-  const [supabaseResults, setSupabaseResults] = useState<any[]>([])
-  const [isSearchingSupabase, setIsSearchingSupabase] = useState(false)
-  const [usePresetPresentation, setUsePresetPresentation] = useState(true)
-  const [selectedPresentationId, setSelectedPresentationId] = useState('')
-  const [recommendedDoses, setRecommendedDoses] = useState<RecommendedDose[]>([])
-  const [structuredConcentration, setStructuredConcentration] = useState<StructuredConcentration>(defaultStructuredConcentration())
-
-  // ✅ OBJ 3: Busca no Supabase (Catálogo 3.0) - carrega lista inicial ao abrir
-  useEffect(() => {
-    if (!clinicId || !state.open) {
-      setSupabaseResults([])
-      return
-    }
-
-    const q = supabaseSearch.trim()
-
-    const timer = setTimeout(async () => {
-      try {
-        setIsSearchingSupabase(true)
-        // ✅ OBJ 3: Se vazio, carrega primeiros 20 medicamentos
-        const results = await searchMedications(clinicId, q || '', q ? 50 : 20)
-        setSupabaseResults(results)
-      } catch (err) {
-        console.error('[MedicationModal] Supabase search failed', err)
-      } finally {
-        setIsSearchingSupabase(false)
-      }
-    }, q ? 400 : 0) // ✅ Sem delay se não tiver query (lista inicial)
-
-    return () => clearTimeout(timer)
-  }, [supabaseSearch, clinicId, state.open])
-
-  useEffect(() => {
-    onCloseRef.current = onClose
-  }, [onClose])
-
-  useEffect(() => {
-    if (!state.open) return
-    const onEscape = (ev: KeyboardEvent) => {
-      if (ev.key === 'Escape') onCloseRef.current(true)
-    }
-    window.addEventListener('keydown', onEscape)
-    return () => {
-      window.removeEventListener('keydown', onEscape)
-    }
-  }, [state.open])
-
-  useEffect(() => {
-    if (!state.open || !state.draft) return
-    const drug = catalogDrugs.find((entry) => entry.id === state.draft?.catalogDrugId)
-    const firstPresentation = drug?.presentations[0]
-    if (!selectedPresentationId && firstPresentation) {
-      setSelectedPresentationId(firstPresentation.id)
-    }
-  }, [catalogDrugs, selectedPresentationId, state.draft, state.open])
-
-  useEffect(() => {
-    if (!state.open || !state.draft) return
-    const parsed = parseStructuredConcentration(state.draft.concentration || '')
-    if (parsed) {
-      setStructuredConcentration({
-        value: parsed.value || '',
-        unit: parsed.unit || 'mg',
-        perValue: parsed.perValue || '1',
-        perUnit: parsed.perUnit || 'comprimido',
-      })
-      return
-    }
-    setStructuredConcentration(defaultStructuredConcentration())
-  }, [state.draft?.concentration, state.open])
-
-  const selectedCatalogDrug = catalogDrugs.find((entry) => entry.id === state.draft?.catalogDrugId)
-  const selectedCatalogPresentation = selectedCatalogDrug?.presentations.find((entry) => entry.id === selectedPresentationId)
-  const concentrationValueUnitOptions = useMemo(() => {
-    const options = new Set(CONCENTRATION_VALUE_UNIT_OPTIONS)
-    catalogDrugs.forEach((drug) => {
-      drug.presentations.forEach((presentation) => {
-        const explicit = (presentation as unknown as { concentrationUnit?: string }).concentrationUnit
-        if (explicit?.trim()) options.add(explicit.trim())
-        const parsed = parseStructuredConcentration(presentation.concentration || '')
-        if (parsed?.unit) options.add(parsed.unit)
-      })
-    })
-    return Array.from(options)
-  }, [catalogDrugs])
-  const concentrationPerUnitOptions = useMemo(() => {
-    const options = new Set(CONCENTRATION_PER_UNIT_OPTIONS)
-    catalogDrugs.forEach((drug) => {
-      drug.presentations.forEach((presentation) => {
-        const explicit = (presentation as unknown as { concentrationPerUnit?: string }).concentrationPerUnit
-        if (explicit?.trim()) options.add(explicit.trim())
-        if (presentation.unitLabel?.trim()) options.add(presentation.unitLabel.trim())
-        const parsed = parseStructuredConcentration(presentation.concentration || '')
-        if (parsed?.perUnit) options.add(parsed.perUnit)
-      })
-    })
-    return Array.from(options)
-  }, [catalogDrugs])
-  const availablePharmacyTypes = (() => {
-    if (selectedCatalogPresentation?.pharmacyTags?.length) return selectedCatalogPresentation.pharmacyTags
-    if (selectedCatalogDrug?.presentations?.length) {
-      const unique = Array.from(
-        new Set(
-          selectedCatalogDrug.presentations.flatMap((entry) =>
-            entry.pharmacyTags?.length ? entry.pharmacyTags : [selectedCatalogDrug.pharmacyType || 'veterinária']
-          )
-        )
-      )
-      if (unique.length) return unique as PharmacyType[]
-    }
-    if (selectedCatalogDrug?.pharmacyType) return [selectedCatalogDrug.pharmacyType]
-    return PHARMACY_OPTIONS.map((option) => option.value)
-  })()
-
-  useEffect(() => {
-    if (!state.open || !state.draft || !selectedCatalogDrug) return
-    if (availablePharmacyTypes.includes(state.draft.pharmacyType)) return
-    onDraftChange((prev) => ({
-      ...prev,
-      pharmacyType: availablePharmacyTypes[0] || 'veterinária',
-    }))
-  }, [availablePharmacyTypes, onDraftChange, selectedCatalogDrug, state.draft?.pharmacyType, state.open])
-
-  if (!state.open || !state.draft) return null
-
-  const filteredCatalog = catalogEntries.filter((entry) =>
-    `${entry.name} ${entry.commercialName} ${entry.concentration} ${entry.presentation}`
-      .toLowerCase()
-      .includes(catalogSearch.toLowerCase())
-  )
-
-  const updateStructuredConcentration = (patch: Partial<StructuredConcentration>) => {
-    const next = { ...structuredConcentration, ...patch }
-    setStructuredConcentration(next)
-    const formatted = formatStructuredConcentration(next)
-    if (!formatted) return
-    onDraftChange((prev) => ({ ...prev, concentration: formatted }))
-  }
-
-  const handleSupabaseSelect = async (med: any) => {
-    if (!clinicId) return
-
-    try {
-      const presentations = await getMedicationPresentations(clinicId, med.id)
-      const recommendedDoses = await getMedicationRecommendedDoses(clinicId, med.id)
-
-      // Se tiver dose recomendada para a espécie do paciente, aplicar
-      const patientSpecies = patientState.patient.species === 'Felina' ? 'gato' : 'cão'
-      const bestDose = recommendedDoses.find(d => d.species === patientSpecies) || recommendedDoses[0]
-
-      onDraftChange((prev) => {
-        const firstPres = presentations[0]
-
-        let freqToken: any = ''
-        let timesPerDay = prev.timesPerDay
-        let everyHours = prev.everyHours
-        let fMode = prev.frequencyType
-
-        if (bestDose?.frequency) {
-          const f = bestDose.frequency.toUpperCase()
-          if (f.includes('SID') || f.includes('1 VEZ')) { freqToken = 'SID'; timesPerDay = '1'; fMode = 'timesPerDay' }
-          else if (f.includes('BID') || f.includes('2 VEZES')) { freqToken = 'BID'; timesPerDay = '2'; fMode = 'timesPerDay' }
-          else if (f.includes('TID') || f.includes('3 VEZES')) { freqToken = 'TID'; timesPerDay = '3'; fMode = 'timesPerDay' }
-          else if (f.includes('QID') || f.includes('4 VEZES')) { freqToken = 'QID'; timesPerDay = '4'; fMode = 'timesPerDay' }
-          else if (f.includes('12/12') || f.includes('12 HORAS')) { everyHours = '12'; fMode = 'everyHours' }
-          else if (f.includes('8/8') || f.includes('8 HORAS')) { everyHours = '8'; fMode = 'everyHours' }
-          else if (f.includes('24/24') || f.includes('24 HORAS')) { everyHours = '24'; fMode = 'everyHours' }
-        }
-
-        return {
-          ...prev,
-          catalogDrugId: med.id,
-          name: med.name,
-          controlled: !!med.is_controlled,
-          pharmacyType: (med.pharmacy_origin || 'veterinária') as PharmacyType,
-          routeGroup: (bestDose?.route || med.default_route || 'ORAL') as RouteGroup,
-          doseValue: bestDose ? String(bestDose.dose_value) : prev.doseValue,
-          doseUnit: bestDose ? bestDose.dose_unit : prev.doseUnit,
-          frequencyToken: freqToken,
-          timesPerDay,
-          everyHours,
-          frequencyType: fMode,
-          autoInstruction: true,
-          manualEdited: false,
-          // Se tiver apresentação, pega a primeira
-          presentation: firstPres ? firstPres.pharmaceutical_form || '' : prev.presentation,
-          concentration: firstPres ? firstPres.concentration_text || '' : prev.concentration,
-          commercialName: firstPres ? firstPres.commercial_name || '' : '',
-        }
-      })
-
-      if (presentations.length > 0) {
-        setSelectedPresentationId(presentations[0].id)
-      }
-      setRecommendedDoses(recommendedDoses)
-      setSupabaseSearch('')
-      setSupabaseResults([])
-      setUsePresetPresentation(true)
-    } catch (err) {
-      console.error('[MedicationModal] Error loading Supabase med details', err)
-    }
-  }
-
-  const handleCatalogSelect = (entry: CatalogModalEntry) => {
-    onDraftChange((prev) => {
-      const nextPharmacyType = entry.pharmacyTypes.includes(prev.pharmacyType)
-        ? prev.pharmacyType
-        : (entry.pharmacyTypes[0] || prev.pharmacyType)
-      return {
-        ...prev,
-        catalogDrugId: entry.drugId,
-        controlled: entry.controlled,
-        name: entry.name,
-        commercialName: entry.commercialName,
-        concentration: entry.concentration,
-        presentation: entry.presentation,
-        routeGroup: entry.routeGroup,
-        doseUnit: entry.doseUnit,
-        pharmacyType: nextPharmacyType,
-        manualEdited: false,
-      }
-    })
-    setSelectedPresentationId(entry.presentationId)
-    setUsePresetPresentation(true)
-  }
-
-  const applySelectedPresentation = (presentationId: string) => {
-    setSelectedPresentationId(presentationId)
-    if (!selectedCatalogDrug) return
-    const presentation = selectedCatalogDrug.presentations.find((entry) => entry.id === presentationId)
-    if (!presentation) return
-    const presentationPharmacyTypes = presentation.pharmacyTags?.length ? presentation.pharmacyTags : [selectedCatalogDrug.pharmacyType || 'veterinária']
-    onDraftChange((prev) => ({
-      ...prev,
-      catalogDrugId: selectedCatalogDrug.id,
-      name: selectedCatalogDrug.name,
-      presentation: presentation.name || prev.presentation,
-      concentration: presentation.concentration || prev.concentration,
-      commercialName: presentation.commercialName || prev.commercialName || '',
-      doseUnit: selectedCatalogDrug.doseUnit || prev.doseUnit,
-      routeGroup: selectedCatalogDrug.routeGroup || prev.routeGroup,
-      pharmacyType: presentationPharmacyTypes.includes(prev.pharmacyType) ? prev.pharmacyType : presentationPharmacyTypes[0] || prev.pharmacyType,
-      controlled: !!selectedCatalogDrug.controlled,
-      manualEdited: false,
-    }))
-  }
-
-  const quantity = calculateMedicationQuantity(state.draft, patientState)
-  const frequency = resolveFrequency(state.draft)
-  const weightKg = Number((patientState.patient.weightKg || '').replace(',', '.'))
-  const doseValue = Number((state.draft.doseValue || '').replace(',', '.'))
-  const doseUnit = state.draft.doseUnit || 'mg/kg'
-  const baseDoseUnit = doseUnit.includes('/kg') ? doseUnit.replace('/kg', '') : doseUnit
-  const targetPerDose = Number.isFinite(doseValue)
-    ? (doseUnit.includes('/kg') && Number.isFinite(weightKg) ? doseValue * weightKg : doseValue)
-    : null
-
-  const concentrationMatch = (state.draft.concentration || '').match(/(\d+(?:[.,]\d+)?)\s*([a-zA-Z%]+)\s*\/\s*(\d+(?:[.,]\d+)?)?\s*([a-zA-Z]+)/)
-  const concentrationAmount = concentrationMatch ? Number(concentrationMatch[1].replace(',', '.')) : null
-  const concentrationUnit = concentrationMatch ? concentrationMatch[2] : ''
-  const concentrationPerValue = concentrationMatch ? Number((concentrationMatch[3] || '1').replace(',', '.')) : null
-  const concentrationPerUnit = concentrationMatch ? concentrationMatch[4] : ''
-  const volumePerDose =
-    targetPerDose !== null &&
-      Number.isFinite(targetPerDose) &&
-      concentrationAmount &&
-      concentrationPerValue &&
-      concentrationAmount > 0 &&
-      concentrationUnit.toLowerCase() === baseDoseUnit.toLowerCase()
-      ? targetPerDose / (concentrationAmount / concentrationPerValue)
-      : null
-
-  return (
-    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-black/70 px-4 py-8 backdrop-blur-sm">
-      <div className="max-h-[92vh] w-full max-w-6xl overflow-hidden rounded-2xl border border-[#2f5b25] bg-[#13220f] text-slate-100 shadow-[0_0_40px_rgba(56,255,20,0.18)]">
-        <div className="flex items-center justify-between border-b border-[#274b20] bg-[#11200e] px-5 py-4">
-          <div>
-            <h2 className="text-lg font-bold">Adicionar Medicamento</h2>
-            <p className="text-xs text-slate-400">Preencha o item e veja a receita atualizar em tempo real.</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <label className="flex items-center gap-2 text-xs text-slate-300">
-              <input type="checkbox" className="h-4 w-4 rounded border-[#3f6f31] bg-[#12230f]" checked={state.autosave} onChange={(e) => onToggleAutosave(e.target.checked)} />
-              Salvar automaticamente
-            </label>
-            <button type="button" className="rounded-lg border border-[#3f6f31] px-3 py-1.5 text-sm hover:bg-[#1e3818]" onClick={() => onClose(true)}>
-              Cancelar
-            </button>
-            <button type="button" className="rounded-lg bg-[#38ff14] px-3 py-1.5 text-sm font-bold text-[#0c1908] hover:bg-[#2cd20f]" onClick={onSave}>
-              Salvar
-            </button>
-          </div>
-        </div>
-        <div className="grid max-h-[calc(92vh-72px)] grid-cols-1 overflow-y-auto lg:grid-cols-3">
-          <div className="space-y-4 border-r border-[#274b20] p-5 lg:col-span-2">
-            <div className="flex items-center gap-3 rounded-xl border border-[#315d28] bg-[#173116] p-3">
-              <label className="text-sm font-semibold">Modo:</label>
-              <button type="button" className={`rounded-md px-3 py-1.5 text-sm ${state.useCatalog ? 'bg-[#38ff14] text-[#0f1d0b]' : 'bg-[#1f3319] text-slate-300'}`} onClick={() => onToggleCatalogMode(true)}>
-                Usar pré-definições
-              </button>
-              <button type="button" className={`rounded-md px-3 py-1.5 text-sm ${!state.useCatalog ? 'bg-[#38ff14] text-[#0f1d0b]' : 'bg-[#1f3319] text-slate-300'}`} onClick={() => onToggleCatalogMode(false)}>
-                Escrever manualmente
-              </button>
-            </div>
-            <div className="space-y-4 rounded-xl border border-[#2e5525] bg-[#152913] p-4">
-              <h3 className="text-sm font-bold text-[#39ff14]">Catálogo 3.0 (Supabase)</h3>
-              <div className="flex gap-2">
-                <input
-                  className="flex-1 rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                  value={supabaseSearch}
-                  onChange={(e) => setSupabaseSearch(e.target.value)}
-                  placeholder="Digite para buscar ou veja a lista abaixo..."
-                />
-                {isSearchingSupabase && <span className="material-symbols-outlined animate-spin text-[#39ff14]">sync</span>}
-              </div>
-
-              {/* ✅ OBJ 3: Lista de medicamentos (inicial ou filtrada) */}
-              {!isSearchingSupabase && supabaseResults.length === 0 && !supabaseSearch && (
-                <p className="text-xs text-slate-400 italic">Carregando lista inicial...</p>
-              )}
-              {!isSearchingSupabase && supabaseResults.length === 0 && supabaseSearch && (
-                <p className="text-xs text-slate-400">Nenhum medicamento encontrado.</p>
-              )}
-              {supabaseResults.length > 0 && (
-                <div className="max-h-48 space-y-2 overflow-y-auto pr-1">
-                  {supabaseResults.map((med) => (
-                    <button
-                      type="button"
-                      key={med.id}
-                      className="flex w-full items-start justify-between rounded-lg border border-[#335c29] bg-[#0c1a0c] px-3 py-2 text-left hover:border-[#39ff14]"
-                      onClick={() => handleSupabaseSelect(med)}
-                    >
-                      <div>
-                        <p className="text-sm font-bold text-white uppercase tracking-tight italic">
-                          {med.name}
-                        </p>
-                        <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">
-                          {med.pharmacy_origin || 'Veterinária'}
-                        </p>
-                      </div>
-                      {med.is_controlled && (
-                        <span className="rounded bg-amber-500/20 px-2 py-0.5 text-[10px] font-bold text-amber-300">CONTROLADO</span>
-                      )}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* ✅ OBJ 3: Catálogo legado removido - agora usa apenas Catálogo 3.0 (Supabase) */}
-
-            {selectedCatalogDrug && selectedCatalogDrug.presentations.length > 0 ? (
-              <section className="rounded-xl border border-[#2e5525] bg-[#12250f] p-4">
-                <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-                  <h3 className="text-sm font-bold text-slate-200">Apresentação / Concentração</h3>
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      className={`rounded-md px-2 py-1 text-xs ${usePresetPresentation ? 'bg-[#38ff14] text-[#10200d]' : 'bg-[#1f3319] text-slate-300'}`}
-                      onClick={() => setUsePresetPresentation(true)}
-                    >
-                      Seleção pronta
-                    </button>
-                    <button
-                      type="button"
-                      className={`rounded-md px-2 py-1 text-xs ${!usePresetPresentation ? 'bg-[#38ff14] text-[#10200d]' : 'bg-[#1f3319] text-slate-300'}`}
-                      onClick={() => setUsePresetPresentation(false)}
-                    >
-                      Manual
-                    </button>
-                  </div>
-                </div>
-                {usePresetPresentation ? (
-                  <select
-                    className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                    value={selectedPresentationId}
-                    onChange={(e) => applySelectedPresentation(e.target.value)}
-                  >
-                    {selectedCatalogDrug.presentations.map((presentation) => (
-                      <option key={presentation.id} value={presentation.id}>
-                        {(presentation.commercialName || presentation.name)} - {presentation.concentration || 'Sem concentração'}
-                      </option>
-                    ))}
-                  </select>
-                ) : (
-                  <div className="space-y-2">
-                    <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
-                      <input
-                        className="rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                        value={state.draft.presentation ?? ''}
-                        onChange={(e) => onDraftChange((prev) => ({ ...prev, presentation: e.target.value }))}
-                        placeholder="Apresentação manual"
-                      />
-                      <input
-                        className="rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                        value={state.draft.concentration ?? ''}
-                        onChange={(e) => {
-                          const nextValue = e.target.value
-                          onDraftChange((prev) => ({ ...prev, concentration: nextValue }))
-                          const parsed = parseStructuredConcentration(nextValue)
-                          if (parsed) {
-                            setStructuredConcentration({
-                              value: parsed.value || '',
-                              unit: parsed.unit || 'mg',
-                              perValue: parsed.perValue || '1',
-                              perUnit: parsed.perUnit || 'comprimido',
-                            })
-                          }
-                        }}
-                        placeholder="Concentração manual"
-                      />
-                    </div>
-                    <div className="grid grid-cols-1 gap-2 md:grid-cols-4">
-                      <input
-                        type="number"
-                        step="0.01"
-                        className="rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                        value={structuredConcentration.value}
-                        onChange={(e) => updateStructuredConcentration({ value: e.target.value })}
-                        placeholder="Valor"
-                      />
-                      <select
-                        className="rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                        value={structuredConcentration.unit}
-                        onChange={(e) => updateStructuredConcentration({ unit: e.target.value })}
-                      >
-                        {concentrationValueUnitOptions.map((unit) => (
-                          <option key={unit} value={unit}>
-                            {unit}
-                          </option>
-                        ))}
-                      </select>
-                      <input
-                        type="number"
-                        step="0.01"
-                        className="rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                        value={structuredConcentration.perValue}
-                        onChange={(e) => updateStructuredConcentration({ perValue: e.target.value || '1' })}
-                        placeholder="Por valor"
-                      />
-                      <select
-                        className="rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                        value={structuredConcentration.perUnit}
-                        onChange={(e) => updateStructuredConcentration({ perUnit: e.target.value })}
-                      >
-                        {concentrationPerUnitOptions.map((unit) => (
-                          <option key={unit} value={unit}>
-                            {unit}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                )}
-                {selectedCatalogPresentation?.averagePrice ? (
-                  <p className="mt-2 text-xs text-[#97ce8d]">Preço médio de referência: {selectedCatalogPresentation.averagePrice}</p>
-                ) : null}
-
-                {recommendedDoses.length > 0 && (
-                  <div className="mt-4 space-y-2 rounded-xl border border-amber-500/20 bg-amber-500/5 p-3">
-                    <p className="text-[10px] font-black uppercase tracking-widest text-amber-500">Doses indicadas no catálogo</p>
-                    <div className="grid grid-cols-1 gap-2">
-                      {recommendedDoses.map((rd, ridx) => (
-                        <button
-                          key={`rd-${rd.id || ridx}`}
-                          type="button"
-                          className="flex w-full items-center justify-between rounded-lg bg-[#0c1a0c] px-3 py-2 text-left hover:border-amber-500/50 border border-transparent transition-all"
-                          onClick={() => {
-                            onDraftChange(prev => ({
-                              ...prev,
-                              doseValue: String(rd.dose_value),
-                              doseUnit: rd.dose_unit,
-                              routeGroup: (rd.route as any) || prev.routeGroup,
-                              manualEdited: false
-                            }))
-                          }}
-                        >
-                          <div>
-                            <p className="text-xs font-bold text-white uppercase italic">{rd.species} - {rd.route}</p>
-                            <p className="text-[14px] font-black text-[#39ff14]">{rd.dose_value} {rd.dose_unit}</p>
-                          </div>
-                          <span className="text-[10px] text-slate-500 uppercase font-black">{rd.frequency || 'N/A'}</span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </section>
-            ) : null}
-            <section className="grid grid-cols-1 gap-3 md:grid-cols-2">
-              <div className="md:col-span-2">
-                <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Nome do medicamento</label>
-                <input
-                  className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                  value={state.draft.name ?? ''}
-                  onChange={(e) => onDraftChange((prev) => ({ ...prev, name: e.target.value }))}
-                />
-              </div>
-              <div>
-                <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Apresentação</label>
-                <input
-                  list="rx-presentations"
-                  className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                  value={state.draft.presentation ?? ''}
-                  onChange={(e) => onDraftChange((prev) => ({ ...prev, presentation: e.target.value }))}
-                />
-                <datalist id="rx-presentations">
-                  {PRESENTATION_OPTIONS.map((option) => (
-                    <option key={option} value={option} />
-                  ))}
-                </datalist>
-              </div>
-              <div>
-                <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Concentração / força</label>
-                <input
-                  className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                  value={state.draft.concentration ?? ''}
-                  onChange={(e) => {
-                    const nextValue = e.target.value
-                    onDraftChange((prev) => ({ ...prev, concentration: nextValue }))
-                    const parsed = parseStructuredConcentration(nextValue)
-                    if (parsed) {
-                      setStructuredConcentration({
-                        value: parsed.value || '',
-                        unit: parsed.unit || 'mg',
-                        perValue: parsed.perValue || '1',
-                        perUnit: parsed.perUnit || 'comprimido',
-                      })
-                    }
-                  }}
-                  placeholder="500 mg/mL, 62.5 mg, 2%..."
-                />
-              </div>
-              <div>
-                <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Nome comercial (opcional)</label>
-                <input
-                  className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                  value={state.draft.commercialName || ''}
-                  onChange={(e) => onDraftChange((prev) => ({ ...prev, commercialName: e.target.value }))}
-                  placeholder="Ex.: Agemoxi®"
-                />
-              </div>
-              <div className="md:col-span-2">
-                <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Concentração estruturada (opcional)</label>
-                <div className="grid grid-cols-1 gap-2 md:grid-cols-4">
-                  <input
-                    type="number"
-                    step="0.01"
-                    className="rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                    value={structuredConcentration.value}
-                    onChange={(e) => updateStructuredConcentration({ value: e.target.value })}
-                    placeholder="Valor"
-                  />
-                  <select
-                    className="rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                    value={structuredConcentration.unit}
-                    onChange={(e) => updateStructuredConcentration({ unit: e.target.value })}
-                  >
-                    {concentrationValueUnitOptions.map((unit) => (
-                      <option key={unit} value={unit}>
-                        {unit}
-                      </option>
-                    ))}
-                  </select>
-                  <input
-                    type="number"
-                    step="0.01"
-                    className="rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                    value={structuredConcentration.perValue}
-                    onChange={(e) => updateStructuredConcentration({ perValue: e.target.value || '1' })}
-                    placeholder="Por valor"
-                  />
-                  <select
-                    className="rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                    value={structuredConcentration.perUnit}
-                    onChange={(e) => updateStructuredConcentration({ perUnit: e.target.value })}
-                  >
-                    {concentrationPerUnitOptions.map((unit) => (
-                      <option key={unit} value={unit}>
-                        {unit}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-              <div>
-                <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Tipo de farmácia</label>
-                <select
-                  className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                  value={state.draft.pharmacyType}
-                  onChange={(e) => onDraftChange((prev) => ({ ...prev, pharmacyType: e.target.value as PharmacyType }))}
-                >
-                  {(selectedCatalogDrug ? availablePharmacyTypes : PHARMACY_OPTIONS.map((option) => option.value)).map((option) => {
-                    const label = PHARMACY_OPTIONS.find((entry) => entry.value === option)?.label || option
-                    return (
-                      <option key={option} value={option}>
-                        {label}
-                      </option>
-                    )
-                  })}
-                </select>
-              </div>
-              <div>
-                <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Embalagem</label>
-                <select
-                  className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                  value={state.draft.packageType}
-                  onChange={(e) => onDraftChange((prev) => ({ ...prev, packageType: e.target.value as PackageType }))}
-                >
-                  <option value="frasco">Frasco</option>
-                  <option value="caixa">Caixa</option>
-                  <option value="bisnaga">Bisnaga</option>
-                  <option value="ampola">Ampola</option>
-                  <option value="outro">Outro</option>
-                </select>
-              </div>
-              <div>
-                <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Via de administração</label>
-                <select
-                  className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                  value={state.draft.routeGroup}
-                  onChange={(e) => onDraftChange((prev) => ({ ...prev, routeGroup: e.target.value as RouteGroup }))}
-                >
-                  {ROUTE_OPTIONS.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Nome da farmácia (opcional)</label>
-                <input
-                  className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                  value={state.draft.pharmacyName ?? ''}
-                  onChange={(e) => onDraftChange((prev) => ({ ...prev, pharmacyName: e.target.value }))}
-                />
-              </div>
-              <div className="flex items-center gap-2 text-sm text-slate-300 md:col-span-2">
-                <RxvToggle
-                  checked={!!state.draft.controlled}
-                  onChange={(val) => onDraftChange((prev) => ({ ...prev, controlled: val }))}
-                  label="Medicamento controlado (receituário de controle especial)"
-                />
-              </div>
-              {state.draft.controlled && (!patientState.tutor.name || (!patientState.tutor.cpf && !patientState.tutor.documentId) || !patientState.tutor.street) && (
-                <div className="flex items-start gap-2 rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 md:col-span-2">
-                  <span className="material-symbols-outlined text-amber-300 text-[18px]">warning</span>
-                  <p className="text-[11px] font-bold text-amber-200 uppercase tracking-tight">
-                    Para medicamentos controlados, os dados do tutor (Nome, CPF/Documento e Endereço) são obrigatórios para a impressão correta da receita.
-                  </p>
-                </div>
-              )}
-              <div className="md:col-span-2">
-                <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Observações</label>
-                <input
-                  className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                  value={state.draft.observations ?? ''}
-                  onChange={(e) => onDraftChange((prev) => ({ ...prev, observations: e.target.value }))}
-                />
-              </div>
-            </section>
-
-            <section className="grid grid-cols-1 gap-3 md:grid-cols-4">
-              <div>
-                <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Dose</label>
-                <input
-                  className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                  value={state.draft.doseValue ?? ''}
-                  onChange={(e) => onDraftChange((prev) => ({ ...prev, doseValue: e.target.value }))}
-                />
-              </div>
-              <div>
-                <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Unidade</label>
-                <select
-                  className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                  value={state.draft.doseUnit}
-                  onChange={(e) => onDraftChange((prev) => ({ ...prev, doseUnit: e.target.value }))}
-                >
-                  {DOSE_UNIT_OPTIONS.map((unit) => (
-                    <option key={unit} value={unit}>
-                      {unit}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Duração (dias)</label>
-                <input
-                  className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                  value={state.draft.durationDays ?? ''}
-                  onChange={(e) => onDraftChange((prev) => ({ ...prev, durationDays: e.target.value }))}
-                />
-              </div>
-              <div>
-                <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Modelo de frequência</label>
-                <RxvSelect
-                  value={state.draft.frequencyType}
-                  onChange={(e) => onDraftChange((prev) => ({ ...prev, frequencyType: e.target.value as FrequencyType }))}
-                  options={[
-                    { value: 'timesPerDay', label: 'x vezes ao dia' },
-                    { value: 'everyHours', label: 'a cada X horas' },
-                  ]}
-                />
-              </div>
-              {state.draft.frequencyType === 'timesPerDay' ? (
-                <div>
-                  <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Vezes ao dia (1-24)</label>
-                  <RxvSelect
-                    value={state.draft.timesPerDay ?? ''}
-                    onChange={(e) => onDraftChange((prev) => ({ ...prev, timesPerDay: e.target.value, frequencyToken: '' }))}
-                    options={[
-                      { value: '1', label: '1 vez ao dia (24/24h)' },
-                      { value: '2', label: '2 vezes ao dia (12/12h)' },
-                      { value: '3', label: '3 vezes ao dia (8/8h)' },
-                      { value: '4', label: '4 vezes ao dia (6/6h)' },
-                      { value: '6', label: '6 vezes ao dia (4/4h)' },
-                      { value: '8', label: '8 vezes ao dia (3/3h)' },
-                      { value: '12', label: '12 vezes ao dia (2/2h)' },
-                    ]}
-                  />
-                </div>
-              ) : (
-                <div>
-                  <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Intervalo em horas (1-24)</label>
-                  <RxvSelect
-                    value={state.draft.everyHours ?? ''}
-                    onChange={(e) => onDraftChange((prev) => ({ ...prev, everyHours: e.target.value, frequencyToken: '' }))}
-                    options={[
-                      { value: '1', label: 'Cada 1 hora' },
-                      { value: '2', label: 'Cada 2 horas' },
-                      { value: '3', label: 'Cada 3 horas' },
-                      { value: '4', label: 'Cada 4 horas' },
-                      { value: '6', label: 'Cada 6 horas' },
-                      { value: '8', label: 'Cada 8 horas' },
-                      { value: '12', label: 'Cada 12 horas' },
-                      { value: '24', label: 'Cada 24 horas' },
-                    ]}
-                  />
-                </div>
-              )}
-              <div className="md:col-span-2">
-                <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Quantidade estimada</label>
-                <div className="rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm text-[#9af58a]">
-                  {quantity.label}
-                </div>
-              </div>
-            </section>
-
-            <section className="space-y-3 rounded-xl border border-[#2e5525] bg-[#142812] p-4">
-              <div className="flex flex-wrap items-center gap-4">
-                <label className="flex items-center gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    className="h-4 w-4 rounded border-[#3f6f31] bg-[#12230f]"
-                    checked={state.draft.autoInstruction}
-                    onChange={(e) =>
-                      onDraftChange((prev) => ({
-                        ...prev,
-                        autoInstruction: e.target.checked,
-                        manualEdited: !e.target.checked ? prev.manualEdited : false,
-                      }))
-                    }
-                  />
-                  Gerar instrução automaticamente
-                </label>
-                <label className="flex items-center gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    className="h-4 w-4 rounded border-[#3f6f31] bg-[#12230f]"
-                    checked={state.draft.untilFinished}
-                    onChange={(e) => onDraftChange((prev) => ({ ...prev, untilFinished: e.target.checked, continuousUse: e.target.checked ? false : prev.continuousUse }))}
-                  />
-                  Até acabar
-                </label>
-                <label className="flex items-center gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    className="h-4 w-4 rounded border-[#3f6f31] bg-[#12230f]"
-                    checked={state.draft.continuousUse}
-                    onChange={(e) => onDraftChange((prev) => ({ ...prev, continuousUse: e.target.checked, untilFinished: e.target.checked ? false : prev.untilFinished }))}
-                  />
-                  Uso contínuo
-                </label>
-                <label className="flex items-center gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    className="h-4 w-4 rounded border-[#3f6f31] bg-[#12230f]"
-                    checked={!!state.draft.titleBold}
-                    onChange={(e) => onDraftChange((prev) => ({ ...prev, titleBold: e.target.checked }))}
-                  />
-                  Nome em negrito
-                </label>
-                <label className="flex items-center gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    className="h-4 w-4 rounded border-[#3f6f31] bg-[#12230f]"
-                    checked={!!state.draft.titleUnderline}
-                    onChange={(e) => onDraftChange((prev) => ({ ...prev, titleUnderline: e.target.checked }))}
-                  />
-                  Nome sublinhado
-                </label>
-              </div>
-              <RxvField label="Instrução final" className="md:col-span-2">
-                <RxvTextarea
-                  rows={4}
-                  value={state.draft.instruction ?? ''}
-                  onChange={(e) =>
-                    onDraftChange((prev) => ({
-                      ...prev,
-                      instruction: e.target.value,
-                      manualEdited: true,
-                    }))
-                  }
-                />
-              </RxvField>
-            </section>
-
-            <section className="space-y-2 rounded-xl border border-[#2e5525] bg-[#142812] p-4">
-              <div className="flex items-center justify-between">
-                <h3 className="text-sm font-bold">Cautelas</h3>
-                <button type="button" className="rounded border border-[#3d6f31] px-2 py-1 text-xs hover:bg-[#1e3818]" onClick={() => onDraftChange((prev) => ({ ...prev, cautions: [...prev.cautions, ''] }))}>
-                  + adicionar cautela
-                </button>
-              </div>
-              {(state.draft.cautions.length ? state.draft.cautions : ['']).map((line, idx) => (
-                <div key={`caution-${idx}`} className="flex gap-2">
-                  <input
-                    className="flex-1 rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
-                    value={line}
-                    onChange={(e) =>
-                      onDraftChange((prev) => {
-                        const cautions = [...prev.cautions]
-                        if (!cautions.length) cautions.push('')
-                        cautions[idx] = e.target.value
-                        return { ...prev, cautions }
-                      })
-                    }
-                    placeholder="Ex.: Não administrar com o paciente em jejum."
-                  />
-                  <button type="button"
-                    className="rounded-lg border border-red-800/70 px-2 text-xs text-red-300 hover:bg-red-950/40"
-                    onClick={() =>
-                      onDraftChange((prev) => ({
-                        ...prev,
-                        cautions: prev.cautions.filter((_, cautionIndex) => cautionIndex !== idx),
-                      }))
-                    }
-                  >
-                    Remover
-                  </button>
-                </div>
-              ))}
-            </section>
-          </div>
-          <aside className="border-t border-[#274b20] bg-[#10200d] p-5 lg:border-l lg:border-t-0">
-            <div className="mb-2 flex items-center justify-between gap-2">
-              <h3 className="text-sm font-bold uppercase tracking-wide text-slate-300">Preview do item</h3>
-              <HelpConceptButton
-                title="Memória de Cálculo"
-                subtitle={`Detalhamento lógico para ${state.draft.name || 'medicamento selecionado'}`}
-                buttonLabel="Como este cálculo foi feito?"
-              >
-                <div className="space-y-6 text-sm">
-                  <div className="rounded-xl border border-[#376b2e] bg-[#10200d] p-4">
-                    <p className="text-xs uppercase tracking-wide text-[#97ce8d]">Peso considerado</p>
-                    <p className="text-2xl font-black text-white">{Number.isFinite(weightKg) ? `${weightKg} kg` : 'Não informado'}</p>
-                  </div>
-
-                  <div className="space-y-3">
-                    <div className="rounded-xl border border-[#315d28] bg-[#132510] p-4">
-                      <p className="mb-1 text-xs font-bold uppercase tracking-wide text-[#97ce8d]">01 - Dose alvo por aplicação</p>
-                      <p className="font-mono text-sm text-slate-200">
-                        {doseUnit.includes('/kg')
-                          ? `${state.draft.doseValue || '?'} ${doseUnit} × ${Number.isFinite(weightKg) ? weightKg : '?'} kg = ${targetPerDose !== null && Number.isFinite(targetPerDose) ? targetPerDose.toFixed(2) : '?'} ${baseDoseUnit}`
-                          : `${state.draft.doseValue || '?'} ${doseUnit}`}
-                      </p>
-                    </div>
-
-                    <div className="rounded-xl border border-[#315d28] bg-[#132510] p-4">
-                      <p className="mb-1 text-xs font-bold uppercase tracking-wide text-[#97ce8d]">02 - Conversão por concentração</p>
-                      <p className="font-mono text-sm text-slate-200">
-                        {volumePerDose !== null
-                          ? `${targetPerDose?.toFixed(2)} ${baseDoseUnit} ÷ (${concentrationAmount}/${concentrationPerValue} ${concentrationUnit}/${concentrationPerUnit}) = ${volumePerDose.toFixed(2)} ${concentrationPerUnit}`
-                          : 'Sem concentração compatível para conversão automática.'}
-                      </p>
-                    </div>
-
-                    <div className="rounded-xl border border-[#315d28] bg-[#132510] p-4">
-                      <p className="mb-1 text-xs font-bold uppercase tracking-wide text-[#97ce8d]">03 - Posologia</p>
-                      <p className="font-mono text-sm text-slate-200">{frequency.label}</p>
-                    </div>
-
-                    <div className="rounded-xl border border-[#315d28] bg-[#132510] p-4">
-                      <p className="mb-1 text-xs font-bold uppercase tracking-wide text-[#97ce8d]">04 - Quantidade total estimada</p>
-                      <p className="font-mono text-sm text-slate-200">{quantity.label}</p>
-                    </div>
-                  </div>
-                </div>
-              </HelpConceptButton>
-            </div>
-            <div className="space-y-3 rounded-xl border border-[#315d28] bg-[#152913] p-4 text-sm">
-              <p className="font-semibold text-white">
-                {state.draft.name || 'Medicamento sem nome'}
-                {state.draft.commercialName ? <span className="text-[#9af58a]"> ({state.draft.commercialName})</span> : null}
-              </p>
-              <p className="text-slate-300">{state.draft.concentration || 'Concentração não informada'} - {state.draft.presentation || 'Apresentação'}</p>
-              <p className="text-slate-400">Via: {state.draft.routeGroup}</p>
-              <p className="font-semibold text-[#9af58a]">{quantity.label}</p>
-              <p className="whitespace-pre-line text-slate-200">{state.draft.instruction || 'Instrução será exibida aqui.'}</p>
-              {state.draft.cautions.filter(Boolean).length > 0 ? (
-                <div className="space-y-1">
-                  {state.draft.cautions.filter(Boolean).map((line, idx) => (
-                    <p key={`preview-caution-${idx}`} className="font-semibold text-amber-300">
-                      {line}
-                    </p>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-          </aside>
-        </div>
-      </div>
-    </div>
-  )
-}
 
 export default function NovaReceitaPage() {
   const navigate = useNavigate()
@@ -1396,6 +450,9 @@ export default function NovaReceitaPage() {
   const loadedRequestedDraftIdRef = useRef('')
   const headerSelectionHydratedRef = useRef(false)
 
+  // ❌ REMOVIDO P0.1: catalogEntries (catálogo legado)
+  // Não é mais necessário - MedicationModalV3 busca direto do Supabase
+  /*
   const catalogEntries = useMemo<CatalogModalEntry[]>(() => {
     return db.catalog.flatMap((drug: CatalogDrug) => {
       const defaultPresentation = drug.presentations[0]
@@ -1431,6 +488,7 @@ export default function NovaReceitaPage() {
       }))
     })
   }, [db.catalog])
+  */
 
   const protocolFolderMap = useMemo(() => {
     return new Map(db.protocolFolders.map((folder) => [folder.id, folder]))
@@ -1775,16 +833,23 @@ export default function NovaReceitaPage() {
     setSupabaseLoading(true)
     try {
       if (supabasePrescriptionId) {
-        // Update existing
-        const result = await updatePrescriptionDraft(supabasePrescriptionId, { content: prescription }, clinicId || undefined)
+        // Update existing (savePrescription faz upsert quando id é fornecido)
+        const result = await savePrescription({
+          id: supabasePrescriptionId,
+          patient_id: patientId!,
+          tutor_id: tutorId!,
+          content: prescription as any,
+          clinic_id: clinicId || undefined,
+        })
         pushToast('success', `Receita atualizada no Supabase (ID: ${result.id})`)
       } else {
         // Create new
-        const result = await createPrescriptionDraft({
+        const result = await savePrescription({
           patient_id: prescription.patient.patientRecordId,
           tutor_id: prescription.tutor.tutorRecordId,
-          content: prescription,
-        }, clinicId || undefined)
+          content: prescription as any,
+          clinic_id: clinicId || undefined,
+        })
         setSupabasePrescriptionId(result.id)
         pushToast('success', `Receita criada no Supabase (ID: ${result.id})`)
       }
@@ -2067,7 +1132,7 @@ export default function NovaReceitaPage() {
         sex: normalizePatientSex(found.sex),
         ageText: found.ageText,
         weightKg: found.weightKg,
-        microchip: (found as any).microchip || '',
+
         anamnesis: (found as any).anamnesis || '',
       },
       tutor: {
@@ -2111,7 +1176,7 @@ export default function NovaReceitaPage() {
           species: normalizeSpecies(animal.species),
           breed: animal.breed || prev.patient.breed,
           coat: animal.coat || prev.patient.coat,
-          microchip: (animal as any).microchip || '',
+
           sex: normalizePatientSex(animal.sex),
           reproductiveStatus: (animal.reproductiveStatus || prev.patient.reproductiveStatus) as PrescriptionState['patient']['reproductiveStatus'],
           ageText: animal.ageText || prev.patient.ageText,
@@ -2253,61 +1318,83 @@ export default function NovaReceitaPage() {
       actions={
         <>
           <StatusChip status={saveStatus} />
-          <label className="hidden items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/60 px-3 py-2 text-xs font-bold text-slate-300 sm:flex cursor-pointer">
-            <input type="checkbox" className="h-4 w-4 rounded" checked={autosaveEnabled} onChange={(e) => setAutosaveEnabled(e.target.checked)} />
+          <label className="hidden items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/60 px-3 py-2 text-xs font-bold text-slate-300 sm:flex cursor-pointer transition-colors hover:border-slate-500">
+            <input type="checkbox" className="h-4 w-4 rounded border-slate-600 bg-slate-800 text-[#39ff14] focus:ring-offset-slate-900" checked={autosaveEnabled} onChange={(e) => setAutosaveEnabled(e.target.checked)} />
             Autosave
           </label>
-          <Link className="rxv-btn-secondary rxv-top-action inline-flex items-center gap-2 px-3 py-2 text-sm" to="/receituario-vet/configuração">
-            <span className="material-symbols-outlined text-[18px]">badge</span>
-            Configurar médico
-          </Link>
-          <Link className="rxv-btn-secondary rxv-top-action inline-flex items-center gap-2 px-3 py-2 text-sm" to="/receituario-vet/clientes">
-            <span className="material-symbols-outlined text-[18px]">group</span>
-            Tutores e pacientes
-          </Link>
-          <Link className="rxv-btn-secondary rxv-top-action inline-flex items-center gap-2 px-3 py-2 text-sm" to="/receituario-vet/catalogo3">
-            <span className="material-symbols-outlined text-[18px]">medication</span>
-            Catálogo
-          </Link>
-          <RxvButton variant="secondary" className="rxv-top-action" onClick={() => setProtocolModalOpen(true)}>
-            <span className="material-symbols-outlined text-[18px]">inventory_2</span>
-            Protocolos
-          </RxvButton>
-          <Link className="rxv-btn-secondary rxv-top-action inline-flex items-center gap-2 px-3 py-2 text-sm" to="/receituario-vet/controle-especial">
-            <span className="material-symbols-outlined text-[18px]">gpp_maybe</span>
-            Controle especial
-          </Link>
-          {import.meta.env.DEV && rxDataSource === 'supabase' && (
-            <>
-              <RxvButton
-                variant="secondary"
-                className="border-amber-700/60 bg-amber-900/20 text-amber-300 hover:bg-amber-900/40"
-                onClick={saveToSupabase}
-                loading={supabaseLoading}
-              >
-                {supabasePrescriptionId ? 'Atualizar' : 'Salvar'} Supabase
-              </RxvButton>
-              <RxvButton
-                variant="secondary"
-                className="border-cyan-700/60 bg-cyan-900/20 text-cyan-300 hover:bg-cyan-900/40"
-                onClick={listSupabasePrescriptions}
-                loading={supabaseLoading}
-              >
-                Listar Supabase
-              </RxvButton>
-            </>
-          )}
-          <RxvButton variant="secondary" className="rxv-top-action" onClick={saveNow}>
+
+          <DropdownMenu.Root>
+            <DropdownMenu.Trigger asChild>
+              <button type="button" className="rxv-btn-secondary h-[38px] px-3 py-2 text-sm font-bold flex items-center gap-2">
+                <span className="material-symbols-outlined text-[18px]">apps</span>
+                Ferramentas
+              </button>
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Portal>
+              <DropdownMenu.Content className="z-[9999] min-w-[220px] overflow-hidden rounded-2xl border border-slate-700/50 bg-slate-900/95 p-1.5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl animate-in fade-in zoom-in-95 duration-100" align="end" sideOffset={8}>
+                <DropdownMenu.Item asChild>
+                  <Link to="/receituario-vet/configuração" className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-300 outline-none transition-colors hover:bg-slate-800 hover:text-white cursor-pointer">
+                    <span className="material-symbols-outlined text-[20px] text-slate-400">badge</span>
+                    Configurar médico
+                  </Link>
+                </DropdownMenu.Item>
+                <DropdownMenu.Item asChild>
+                  <Link to="/receituario-vet/clientes" className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-300 outline-none transition-colors hover:bg-slate-800 hover:text-white cursor-pointer">
+                    <span className="material-symbols-outlined text-[20px] text-slate-400">group</span>
+                    Tutores e pacientes
+                  </Link>
+                </DropdownMenu.Item>
+                <DropdownMenu.Item asChild>
+                  <Link to="/receituario-vet/catalogo3" className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-300 outline-none transition-colors hover:bg-slate-800 hover:text-white cursor-pointer">
+                    <span className="material-symbols-outlined text-[20px] text-slate-400">medication</span>
+                    Catálogo
+                  </Link>
+                </DropdownMenu.Item>
+                <DropdownMenu.Item asChild>
+                  <button type="button" onClick={() => setProtocolModalOpen(true)} className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-300 outline-none transition-colors hover:bg-slate-800 hover:text-white cursor-pointer">
+                    <span className="material-symbols-outlined text-[20px] text-slate-400">inventory_2</span>
+                    Protocolos
+                  </button>
+                </DropdownMenu.Item>
+                <DropdownMenu.Item asChild>
+                  <Link to="/receituario-vet/controle-especial" className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-300 outline-none transition-colors hover:bg-slate-800 hover:text-white cursor-pointer">
+                    <span className="material-symbols-outlined text-[20px] text-slate-400">gpp_maybe</span>
+                    Controle especial
+                  </Link>
+                </DropdownMenu.Item>
+
+                {import.meta.env.DEV && rxDataSource === 'supabase' && (
+                  <>
+                    <DropdownMenu.Separator className="my-1 h-px bg-slate-800" />
+                    <DropdownMenu.Item asChild>
+                      <button onClick={saveToSupabase} disabled={supabaseLoading} className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-amber-400 outline-none transition-colors hover:bg-amber-900/20 cursor-pointer disabled:opacity-50">
+                        <span className="material-symbols-outlined text-[20px]">{supabasePrescriptionId ? 'sync' : 'cloud_upload'}</span>
+                        {supabasePrescriptionId ? 'Atualizar' : 'Salvar'} Supabase
+                      </button>
+                    </DropdownMenu.Item>
+                    <DropdownMenu.Item asChild>
+                      <button onClick={listSupabasePrescriptions} disabled={supabaseLoading} className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-cyan-400 outline-none transition-colors hover:bg-cyan-900/20 cursor-pointer disabled:opacity-50">
+                        <span className="material-symbols-outlined text-[20px]">list_alt</span>
+                        Listar Supabase
+                      </button>
+                    </DropdownMenu.Item>
+                  </>
+                )}
+              </DropdownMenu.Content>
+            </DropdownMenu.Portal>
+          </DropdownMenu.Root>
+
+          <RxvButton variant="secondary" className="h-[38px] px-3 py-2 text-sm" onClick={saveNow}>
             <span className="material-symbols-outlined text-[18px]">save</span>
-            Salvar rascunho
+            Salvar
           </RxvButton>
-          <RxvButton variant="secondary" className="rxv-top-action" onClick={() => { saveNow(); navigate(`/receituario-vet/rx/${prescription.id}/print?mode=review`) }}>
+          <RxvButton variant="secondary" className="h-[38px] px-3 py-2 text-sm" onClick={() => { saveNow(); navigate(`/receituario-vet/rx/${prescription.id}/print?mode=review`) }}>
             <span className="material-symbols-outlined text-[18px]">preview</span>
             Revisar
           </RxvButton>
-          <RxvButton variant="primary" className="rxv-top-action" onClick={() => { saveNow(); navigate(`/receituario-vet/rx/${prescription.id}/print`) }}>
+          <RxvButton variant="primary" className="h-[38px] px-3 py-2 text-sm" onClick={() => { saveNow(); navigate(`/receituario-vet/rx/${prescription.id}/print`) }}>
             <span className="material-symbols-outlined text-[18px]">print</span>
-            Imprimir / Exportar
+            Imprimir
           </RxvButton>
         </>
       }
@@ -2325,12 +1412,7 @@ export default function NovaReceitaPage() {
         <div className={`space-y-6 lg:col-span-5 ${mobileTab === 'preview' ? 'hidden lg:block' : ''}`}>
           <section className="rxv-card p-5">
             <div className="mb-3 flex items-center justify-between gap-2">
-              <h2 className="text-lg font-bold text-[color:var(--rxv-text)]">Fluxo Plantão</h2>
-              {import.meta.env.DEV && (
-                <span className="rounded-full border border-[#3d6f31] bg-[#233c1d] px-2 py-0.5 text-xs text-[#8cff78]">
-                  DEV: {rxDataSource === 'supabase' ? 'Supabase' : 'Local'}
-                </span>
-              )}
+              <h2 className="text-lg font-bold text-[color:var(--rxv-text)]">Identificação de tutor + paciente</h2>
             </div>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_auto]">
               {rxDataSource === 'local' ? (
@@ -2505,7 +1587,7 @@ export default function NovaReceitaPage() {
             </div>
             {supabaseModeWithoutClinic ? (
               <p className="mt-2 text-xs text-amber-300">
-                Clínica ativa não encontrada. Selecione uma clínica para usar modo Supabase.
+                Clínica ativa não encontrada. Selecione uma clínica para habilitar o Catálogo.
               </p>
             ) : null}
           </section>
@@ -2711,7 +1793,7 @@ export default function NovaReceitaPage() {
                     <RxvSelect
                       value={prescription.tutor.state ?? ''}
                       onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, state: e.target.value } }))}
-                      options={BRAZIL_STATE_SUGGESTIONS}
+                      options={BRAZIL_STATE_OPTIONS}
                       required
                     />
                   </RxvField>
@@ -2890,12 +1972,7 @@ export default function NovaReceitaPage() {
                   {loadingWeights && <span className="material-symbols-outlined animate-spin text-[#39ff14] text-sm">sync</span>}
                 </div>
               </RxvField>
-              <RxvField label="Microchip">
-                <RxvInput
-                  value={prescription.patient.microchip ?? ''}
-                  onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, microchip: e.target.value } }))}
-                />
-              </RxvField>
+
               <RxvField label="Anamnese / Histórico" className="md:col-span-2">
                 <RxvTextarea
                   rows={2}
@@ -3397,18 +2474,19 @@ export default function NovaReceitaPage() {
         />
       )}
 
-      <MedicationModal
-        state={modalState}
-        catalogDrugs={db.catalog}
-        catalogEntries={catalogEntries}
-        patientState={prescription}
-        clinicId={clinicId}
-        onClose={closeModal}
-        onSave={saveModal}
-        onToggleAutosave={(next) => setModalState((prev) => ({ ...prev, autosave: next }))}
-        onToggleCatalogMode={(next) => setModalState((prev) => ({ ...prev, useCatalog: next }))}
-        onDraftChange={updateModalDraft}
-      />
+      {/* ✅ P0.1: MedicationModalV3 - 100% Catálogo 3.0 - ZERO legado */}
+      {modalState.open && modalState.draft && clinicId && (
+        <MedicationModalV3
+          open={modalState.open}
+          draft={modalState.draft}
+          patientState={prescription}
+          clinicId={clinicId}
+          mode={modalState.mode}
+          onClose={closeModal}
+          onSave={saveModal}
+          onDraftChange={updateModalDraft}
+        />
+      )}
 
       {toast ? (
         <div className="fixed bottom-6 right-6 z-[85] rounded-lg border border-[#3b6f31] bg-[#1a2e16] px-4 py-3 shadow-[0_10px_40px_rgba(0,0,0,0.35)]">

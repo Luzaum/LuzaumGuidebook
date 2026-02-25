@@ -15,14 +15,19 @@ import CrivetPage from './modules/crivet/pages/CrivetPage'
 import VeteletroliticoPage from './modules/veteletrolitico/App'
 import ReceituarioVetPage from './modules/receituario-vet/App'
 import NovaReceitaPage from './modules/receituario-vet/NovaReceitaPage'
+import NovaReceita2Page from './modules/receituario-vet/NovaReceita2Page'
+import NovaReceita2PrintPage from './modules/receituario-vet/NovaReceita2PrintPage'
 import DraftsPage from './modules/receituario-vet/DraftsPage'
 import RxPrintPage from './modules/receituario-vet/RxPrintPage'
+import HistoricoReceitasPage from './modules/receituario-vet/HistoricoReceitasPage'
 import ProfilePage from './modules/receituario-vet/ProfilePage'
 import ClientesPage from './modules/receituario-vet/ClientesPage'
-import CatalogoPage from './modules/receituario-vet/CatalogoPage'
-import Catalogo2Page from './modules/receituario-vet/Catalogo2Page'
+// ❌ REMOVIDO: Catálogo 1.0 e 2.0 (migração completa para Catálogo 3.0)
+// import CatalogoPage from './modules/receituario-vet/CatalogoPage'
+// import Catalogo2Page from './modules/receituario-vet/Catalogo2Page'
 import Catalogo3Page from './modules/receituario-vet/Catalogo3Page'
 import ProtocolosPage from './modules/receituario-vet/ProtocolosPage'
+import Protocolos3Page from './modules/receituario-vet/Protocolos3Page'
 import TemplatesPage from './modules/receituario-vet/TemplatesPage'
 import SettingsPage from './modules/receituario-vet/SettingsPage'
 import ControleEspecialPage from './modules/receituario-vet/ControleEspecialPage'
@@ -70,13 +75,18 @@ const appRoutes = (
     <Route path="/antibioticoterapia" element={<ModuleIframe />} />
     <Route path="/receituario-vet" element={<ProtectedClinicRoute><ReceituarioVetPage /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/nova-receita" element={<ProtectedClinicRoute><NovaReceitaPage /></ProtectedClinicRoute>} />
+    <Route path="/receituario-vet/nova-receita-2" element={<ProtectedClinicRoute><NovaReceita2Page /></ProtectedClinicRoute>} />
+    <Route path="/receituario-vet/nova-receita-2-print" element={<ProtectedClinicRoute><NovaReceita2PrintPage /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/rascunhos" element={<ProtectedClinicRoute><DraftsPage /></ProtectedClinicRoute>} />
+    <Route path="/receituario-vet/historico" element={<ProtectedClinicRoute><HistoricoReceitasPage /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/configuração" element={<ProtectedClinicRoute><ProfilePage /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/clientes" element={<ProtectedClinicRoute><ClientesPage /></ProtectedClinicRoute>} />
-    <Route path="/receituario-vet/catalogo" element={<ProtectedClinicRoute><CatalogoPage /></ProtectedClinicRoute>} />
-    <Route path="/receituario-vet/catalogo2" element={<ProtectedClinicRoute><Catalogo2Page /></ProtectedClinicRoute>} />
+    {/* ❌ REMOVIDO: Catálogo 1.0 e 2.0 */}
+    {/* <Route path="/receituario-vet/catalogo" element={<ProtectedClinicRoute><CatalogoPage /></ProtectedClinicRoute>} /> */}
+    {/* <Route path="/receituario-vet/catalogo2" element={<ProtectedClinicRoute><Catalogo2Page /></ProtectedClinicRoute>} /> */}
     <Route path="/receituario-vet/catalogo3" element={<ProtectedClinicRoute><Catalogo3Page /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/protocolos" element={<ProtectedClinicRoute><ProtocolosPage /></ProtectedClinicRoute>} />
+    <Route path="/receituario-vet/protocolos-3" element={<ProtectedClinicRoute><Protocolos3Page /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/controle-especial" element={<ProtectedClinicRoute><ControleEspecialPage /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/templates" element={<ProtectedClinicRoute><TemplatesPage /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/configurações" element={<ProtectedClinicRoute><SettingsPage /></ProtectedClinicRoute>} />

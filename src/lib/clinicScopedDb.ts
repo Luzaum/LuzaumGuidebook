@@ -1,14 +1,59 @@
 import { supabase } from './supabaseClient'
 import { getStoredClinicId } from './clinic'
 
+/**
+ * Safe stringify that handles circular references and Supabase error objects
+ */
+export function safeStringify(obj: any, indent = 2): string {
+  try {
+    if (obj === null || obj === undefined) return String(obj)
+    if (typeof obj === 'string') return obj
+    if (typeof obj === 'number' || typeof obj === 'boolean') return String(obj)
+
+    // Handle Error objects specially
+    if (obj instanceof Error) {
+      return JSON.stringify({
+        name: obj.name,
+        message: obj.message,
+        stack: obj.stack,
+        ...(obj as any).code && { code: (obj as any).code },
+        ...(obj as any).details && { details: (obj as any).details },
+        ...(obj as any).hint && { hint: (obj as any).hint },
+      }, null, indent)
+    }
+
+    // Handle Supabase PostgREST error format
+    if (obj && typeof obj === 'object' && 'code' in obj && 'message' in obj) {
+      return JSON.stringify({
+        code: obj.code,
+        message: obj.message,
+        details: obj.details || null,
+        hint: obj.hint || null,
+      }, null, indent)
+    }
+
+    // Generic object - use JSON.stringify with replacer to handle circular refs
+    const seen = new WeakSet()
+    return JSON.stringify(obj, (key, value) => {
+      if (typeof value === 'object' && value !== null) {
+        if (seen.has(value)) return '[Circular Reference]'
+        seen.add(value)
+      }
+      return value
+    }, indent)
+  } catch (err) {
+    return `[Stringify failed: ${err instanceof Error ? err.message : String(err)}]`
+  }
+}
+
 function logSbError(tag: string, error: any) {
   if (!error) return
-  console.error(tag, {
+  console.error(tag, safeStringify({
     code: error.code,
     message: error.message,
     details: error.details,
     hint: error.hint,
-  })
+  }))
 }
 export { logSbError }
 
@@ -85,4 +130,3 @@ export async function softDeleteWithClinicId(
   if (error) throw error
   return data
 }
-

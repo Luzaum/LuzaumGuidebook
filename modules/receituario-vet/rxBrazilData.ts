@@ -45,7 +45,12 @@ export const BRAZIL_STATES: BrazilStateOption[] = [
   { uf: 'TO', name: 'Tocantins', cities: ['Palmas', 'Araguaina', 'Gurupi'] },
 ]
 
-export const BRAZIL_STATE_SUGGESTIONS = BRAZIL_STATES.map((entry) => `${entry.uf} - ${entry.name}`)
+export const BRAZIL_STATE_OPTIONS = BRAZIL_STATES.map((entry) => ({
+  value: entry.uf,
+  label: `${entry.uf} - ${entry.name}`
+}))
+
+export const BRAZIL_STATE_SUGGESTIONS = BRAZIL_STATE_OPTIONS.map(opt => opt.label)
 
 export function normalizeStateInput(value: string): string {
   const raw = String(value || '').trim()

@@ -417,8 +417,6 @@ export function itemStatus(item: PrescriptionItem, state?: PrescriptionState): '
   if (!item.name.trim()) return 'incomplete'
   if (!item.routeGroup) return 'incomplete'
   if (!resolveInstruction(item, state).trim()) return 'incomplete'
-  const freq = resolveFrequency(item)
-  if (!freq.normalizedTimesPerDay) return 'incomplete'
   return 'ok'
 }
 
@@ -549,18 +547,23 @@ export function renderRxToPrintDoc(
       ? uniqueByNormalizedText((state.recommendations.examReasons || []).filter(Boolean)).map((line) => `Justificativa: ${line}`)
       : []
 
-  const patientParts: string[] = [state.patient.species]
+  const patientParts: string[] = []
   if (state.patient.breed.trim()) patientParts.push(state.patient.breed)
-  if (state.patient.weightKg.trim()) patientParts.push(`${state.patient.weightKg} kg`)
-  if (state.patient.microchip?.trim()) patientParts.push(`Microchip: ${state.patient.microchip}`)
+  if (state.patient.ageText.trim()) patientParts.push(state.patient.ageText)
+
+  const tutorName = state.tutor.name || state.tutor.fullName || (state.tutor as any).full_name || '-'
+  const tutorLineParts: string[] = [tutorName]
+  if (state.tutor.cpf?.trim()) tutorLineParts.push(`CPF: ${state.tutor.cpf.trim()}`)
+  if (state.tutor.rg?.trim()) tutorLineParts.push(`RG: ${state.tutor.rg.trim()}`)
+
   const tutorAddressLine = [
     state.tutor.street || '',
     state.tutor.number || '',
-    state.tutor.complement || '',
+    state.tutor.complement || (state.tutor as any).address_complement || '',
     state.tutor.neighborhood || '',
-    state.tutor.city || '',
-    state.tutor.state || '',
+    [state.tutor.city || '', state.tutor.state || ''].filter(Boolean).join('/'),
     state.tutor.zipcode || '',
+    state.tutor.phone || '',
   ]
     .filter(Boolean)
     .join(', ')
@@ -573,7 +576,7 @@ export function renderRxToPrintDoc(
     prescriberName: state.prescriber.name || 'Dr. Silva',
     prescriberCrmv: state.prescriber.crmv || 'CRMV-SP 00000',
     patientLine: `${state.patient.name || '-'} (${patientParts.join(', ')})`,
-    tutorLine: state.tutor.name || '-',
+    tutorLine: tutorLineParts.join(' — '),
     addressLine: tutorAddressLine,
     sections,
     recommendations,

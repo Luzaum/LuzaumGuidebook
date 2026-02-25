@@ -99,9 +99,7 @@ function mapPatientRow(row: SupabasePatientRow): PatientInfo {
     ? String(reproductiveCondition)
     : normalizeReproductiveStatus(String(row.neutered || ''))
 
-  // ✅ OBJ 2: mapear microchipped (boolean) e microchip_number
-  const microchipped = (row as any).microchipped === true || !!row.microchip
-  const microchipNumber = String((row as any).microchip_number || row.microchip || '')
+
 
   return {
     patientRecordId: String(row.id || ''),
@@ -109,11 +107,10 @@ function mapPatientRow(row: SupabasePatientRow): PatientInfo {
     species: normalizeSpecies(String(row.species || '')),
     breed: String(row.breed || ''),
     sex: normalizeSex(String(row.sex || '')),
-    reproductiveStatus, // ✅ OBJ 2: usa reproductive_condition se existir
+    reproductiveStatus: reproductiveStatus as any, // ✅ OBJ 2: usa reproductive_condition se existir
     ageText: String(row.age_text || ''),
     coat: String(row.coat || ''),
-    microchip: microchipNumber, // ✅ OBJ 2: microchip_number ou microchip
-    microchipped, // ✅ OBJ 2: boolean correto
+
     weightKg: String(row.weight_kg || ''),
     weightDate: '',
     anamnesis: String((row as any).anamnesis || row.anamnesis || ''), // ✅ OBJ 2: anamnesis
@@ -203,7 +200,7 @@ export class SupabaseAdapter implements DataAdapter {
     let patientRows = (patients || []) as SupabasePatientRow[]
 
     if (patientsError) {
-      const { data: fallbackPatients, error: fallbackError} = await this.supabase
+      const { data: fallbackPatients, error: fallbackError } = await this.supabase
         .from('patients')
         .select(
           'id,tutor_id,name,species,breed,sex,neutered,reproductive_condition,age_text,weight_kg,coat,microchip,microchipped,microchip_number,anamnesis,notes'
@@ -359,10 +356,11 @@ export class SupabaseAdapter implements DataAdapter {
       breed: input.breed || null,
       sex: input.sex || null,
       neutered: normalizeNeutered(input.reproductiveStatus),
+      reproductive_condition: input.reproductiveStatus || null,
       age_text: input.ageText || null,
       weight_kg: input.weightKg || null,
       coat: input.coat || null,
-      microchip: input.microchip || null,
+
       anamnesis: input.anamnesis || null,
       notes: input.notes || null,
     }

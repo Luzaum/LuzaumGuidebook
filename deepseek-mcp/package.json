@@ -1,0 +1,10 @@
+{
+    "name": "deepseek-mcp",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "Local MCP server for DeepSeek",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    }
+}

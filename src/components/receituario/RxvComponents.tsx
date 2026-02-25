@@ -55,19 +55,25 @@ export const RxvInput = ({ ...props }: React.InputHTMLAttributes<HTMLInputElemen
 
 /**
  * RxvSelect - Select padrão com estilo Neon
+ * ✅ Hotfix: options agora é opcional (undefined-safe)
  */
-export const RxvSelect = ({ options, ...props }: React.SelectHTMLAttributes<HTMLSelectElement> & { options: { value: string, label: string }[] | string[], error?: boolean }) => (
-    <select
-        {...props}
-        className={`w-full rounded-xl border border-slate-800 bg-black/60 px-4 py-3.5 text-sm font-bold text-white outline-none transition-all focus:border-[#39ff14]/50 focus:ring-1 focus:ring-[#39ff14]/20 ${props.error ? 'border-red-500/50 focus:border-red-500' : ''} ${props.className || ''}`}
-    >
-        {options.map(opt => typeof opt === 'string' ? (
-            <option key={opt} value={opt} className="bg-slate-900">{opt}</option>
-        ) : (
-            <option key={opt.value} value={opt.value} className="bg-slate-900">{opt.label}</option>
-        ))}
-    </select>
-)
+export const RxvSelect = ({ options, ...props }: React.SelectHTMLAttributes<HTMLSelectElement> & { options?: { value: string, label: string }[] | string[], error?: boolean }) => {
+    // ✅ Safe default: se options vier undefined, usar array vazio
+    const safeOptions = options ?? []
+
+    return (
+        <select
+            {...props}
+            className={`w-full rounded-xl border border-slate-800 bg-black/60 px-4 py-3.5 text-sm font-bold text-white outline-none transition-all focus:border-[#39ff14]/50 focus:ring-1 focus:ring-[#39ff14]/20 ${props.error ? 'border-red-500/50 focus:border-red-500' : ''} ${props.className || ''}`}
+        >
+            {safeOptions.map(opt => typeof opt === 'string' ? (
+                <option key={opt} value={opt} className="bg-slate-900">{opt}</option>
+            ) : (
+                <option key={opt.value} value={opt.value} className="bg-slate-900">{opt.label}</option>
+            ))}
+        </select>
+    )
+}
 
 /**
  * RxvTextarea - Textarea padrão com estilo Neon

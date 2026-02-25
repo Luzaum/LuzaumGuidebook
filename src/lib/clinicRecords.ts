@@ -907,8 +907,10 @@ export type ProtocolFolderRecord = {
   color?: string | null
   sort_order: number
   created_at: string
+  updated_at?: string
 }
 
+/** Matches real `protocols` table. No `is_active`, no `target_species`. */
 export type ProtocolRecord = {
   id: string
   clinic_id: string
@@ -916,23 +918,31 @@ export type ProtocolRecord = {
   folder_id: string | null
   name: string
   description: string | null
-  target_species: string | null
-  is_active: boolean
+  species: string | null
+  duration_summary: string | null
+  tags: string[] | null
+  is_control_special: boolean
+  exams_justification: string | null
   created_at: string
   updated_at: string
 }
 
+/**
+ * In-memory shape for medication items.
+ * NOTE: No `instructions` column in DB. Do NOT add it.
+ */
 export type ProtocolMedicationItem = {
   id?: string
-  // Modo Catálogo
   medication_id: string | null
-  medication_name: string
+  /** UI-only — NOT sent to DB */
+  medication_name?: string
   presentation_id: string | null
-  presentation_text: string
-  // Modo Manual
+  /** UI-only — NOT sent to DB */
+  presentation_text?: string
   manual_medication_name: string | null
   manual_presentation_label: string | null
-  // Dose e frequência
+  concentration_value?: number | null
+  concentration_unit?: string | null
   dose_value: number | null
   dose_unit: string | null
   route: string | null
@@ -940,29 +950,22 @@ export type ProtocolMedicationItem = {
   times_per_day: number | null
   interval_hours: number | null
   duration_days: number | null
-  instructions: string | null
+  is_controlled?: boolean
   sort_order: number
+  // NOTE: `instructions` column does NOT exist — removed
 }
 
+/** Uses `text` column (not `recommendation_text`). */
 export type ProtocolRecommendation = {
   id?: string
-  recommendation_text: string
+  text: string
   sort_order: number
-}
-
-export type ProtocolExamItem = {
-  id?: string
-  exam_key: string
-  exam_label: string
-  is_custom: boolean
-  justification: string | null
 }
 
 export type ProtocolFull = {
   protocol: ProtocolRecord
   medications: ProtocolMedicationItem[]
   recommendations: ProtocolRecommendation[]
-  exam_items: ProtocolExamItem[]
 }
 
 export async function listProtocolFolders(clinicId: string, userId: string): Promise<ProtocolFolderRecord[]> {
@@ -1122,55 +1125,41 @@ export async function loadProtocol(clinicId: string, userId: string, protocolId:
     .eq('protocol_id', protocolId)
     .order('sort_order', { ascending: true })
 
-  const { data: examItems, error: examError } = await supabase
-    .from('protocol_exam_items')
-    .select('*')
-    .eq('clinic_id', clinicId)
-    .eq('protocol_id', protocolId)
-
   console.log('[ProtocolLoad] RESULT', {
     protocol: !!protocol,
     medications: medications?.length,
     recommendations: recommendations?.length,
-    exam_items: examItems?.length
   })
 
   if (medError) logSbError('[ProtocolLoad] medications ERROR', medError)
   if (recError) logSbError('[ProtocolLoad] recommendations ERROR', recError)
-  if (examError) logSbError('[ProtocolLoad] exam_items ERROR', examError)
 
   return {
     protocol,
     medications: (medications || []).map(m => ({
       id: m.id,
-      medication_id: m.medication_id,
-      medication_name: m.medication_name || '',
-      presentation_id: m.presentation_id,
-      presentation_text: m.presentation_text || '',
-      manual_medication_name: m.manual_medication_name || null,
-      manual_presentation_label: m.manual_presentation_label || null,
-      dose_value: m.dose_value,
-      dose_unit: m.dose_unit,
-      route: m.route,
-      frequency_type: m.frequency_type,
-      times_per_day: m.times_per_day,
-      interval_hours: m.interval_hours,
-      duration_days: m.duration_days,
-      instructions: m.instructions,
-      sort_order: m.sort_order,
-    })),
+      medication_id: m.medication_id ?? null,
+      presentation_id: m.presentation_id ?? null,
+      manual_medication_name: m.manual_medication_name ?? null,
+      manual_presentation_label: m.manual_presentation_label ?? null,
+      concentration_value: m.concentration_value ?? null,
+      concentration_unit: m.concentration_unit ?? null,
+      dose_value: m.dose_value ?? null,
+      dose_unit: m.dose_unit ?? null,
+      route: m.route ?? null,
+      frequency_type: m.frequency_type ?? 'times_per_day',
+      times_per_day: m.times_per_day ?? null,
+      interval_hours: m.interval_hours ?? null,
+      duration_days: m.duration_days ?? null,
+      is_controlled: !!m.is_controlled,
+      sort_order: m.sort_order ?? 0,
+      // NOTE: `instructions` does NOT exist in DB - omitted
+    })) as ProtocolMedicationItem[],
     recommendations: (recommendations || []).map(r => ({
       id: r.id,
-      recommendation_text: r.recommendation_text,
-      sort_order: r.sort_order,
-    })),
-    exam_items: (examItems || []).map(e => ({
-      id: e.id,
-      exam_key: e.exam_key,
-      exam_label: e.exam_label,
-      is_custom: e.is_custom,
-      justification: e.justification,
-    })),
+      text: r.text ?? '',  // column is `text` in DB
+      sort_order: r.sort_order ?? 0,
+    })) as ProtocolRecommendation[],
   }
 }
 
@@ -1182,19 +1171,22 @@ export async function saveProtocol(
     folder_id?: string | null
     name: string
     description?: string | null
-    target_species?: string | null
-    is_active?: boolean
+    species?: string | null
+    duration_summary?: string | null
+    tags?: string[] | null
+    is_control_special?: boolean
+    exams_justification?: string | null
+    // NOTE: no is_active, no target_species
   },
   medications: ProtocolMedicationItem[],
-  recommendations: ProtocolRecommendation[],
-  exam_items: ProtocolExamItem[]
+  recommendations: ProtocolRecommendation[]
 ): Promise<ProtocolRecord> {
   console.log('[ProtocolSave] START', { clinicId, protocolId: protocol.id, name: protocol.name })
 
   let protocolId = protocol.id
   let savedProtocol: ProtocolRecord
 
-  // Upsert parent
+  // ── STEP 1: upsert protocols (whitelist — no is_active/target_species) ──
   if (protocolId) {
     const { data, error } = await supabase
       .from('protocols')
@@ -1202,8 +1194,11 @@ export async function saveProtocol(
         folder_id: protocol.folder_id ?? null,
         name: protocol.name.trim(),
         description: protocol.description ?? null,
-        target_species: protocol.target_species ?? null,
-        is_active: protocol.is_active ?? true,
+        species: protocol.species ?? null,
+        duration_summary: protocol.duration_summary ?? null,
+        tags: protocol.tags ?? null,
+        is_control_special: !!protocol.is_control_special,
+        exams_justification: protocol.exams_justification ?? null,
         updated_at: new Date().toISOString(),
       })
       .eq('clinic_id', clinicId)
@@ -1226,8 +1221,11 @@ export async function saveProtocol(
         folder_id: protocol.folder_id ?? null,
         name: protocol.name.trim(),
         description: protocol.description ?? null,
-        target_species: protocol.target_species ?? null,
-        is_active: protocol.is_active ?? true,
+        species: protocol.species ?? null,
+        duration_summary: protocol.duration_summary ?? null,
+        tags: protocol.tags ?? null,
+        is_control_special: !!protocol.is_control_special,
+        exams_justification: protocol.exams_justification ?? null,
       })
       .select('*')
       .single()
@@ -1242,7 +1240,7 @@ export async function saveProtocol(
 
   console.log('[ProtocolSave] protocol saved', { protocolId })
 
-  // Delete old children
+  // ── STEP 2: delete + re-insert protocol_medications ──────────────────
   {
     const { error: delMedError } = await supabase
       .from('protocol_medications')
@@ -1254,62 +1252,35 @@ export async function saveProtocol(
       throw delMedError
     }
   }
-  {
-    const { error: delRecError } = await supabase
-      .from('protocol_recommendations')
-      .delete()
-      .eq('clinic_id', clinicId)
-      .eq('protocol_id', protocolId)
-    if (delRecError) {
-      logSbError('[ProtocolSave] protocol_recommendations delete error', delRecError)
-      throw delRecError
-    }
-  }
-  {
-    const { error: delExamError } = await supabase
-      .from('protocol_exam_items')
-      .delete()
-      .eq('clinic_id', clinicId)
-      .eq('protocol_id', protocolId)
-    if (delExamError) {
-      logSbError('[ProtocolSave] protocol_exam_items delete error', delExamError)
-      throw delExamError
-    }
-  }
 
-  // Insert medications
   if (medications.length > 0) {
     const medPayload = medications.map((m, idx) => {
-      const manualName = String(m.manual_medication_name || '').trim()
-      const manualPresentation = String(m.manual_presentation_label || '').trim()
-      const isManual = !!manualName
+      const medicationId = String(m.medication_id || '').trim() || null
+      const presentationId = String(m.presentation_id || '').trim() || null
+      const manualName = String(m.manual_medication_name || '').trim() || null
+      const manualPresentation = String(m.manual_presentation_label || '').trim() || null
+      const isCatalog = !!medicationId && !!presentationId
 
-      const medication_id = isManual ? null : (m.medication_id || null)
-      const presentation_id = isManual ? null : (m.presentation_id || null)
-      const manual_medication_name = isManual ? manualName : null
-      const manual_presentation_label = isManual ? (manualPresentation || null) : null
-
-      const medication_name = isManual ? '' : String(m.medication_name || '')
-      const presentation_text = isManual ? '' : String(m.presentation_text || '')
-
+      // STRICT WHITELIST — only DB columns (no instructions, medication_name, presentation_text)
       return {
         clinic_id: clinicId,
         protocol_id: protocolId,
-        medication_id,
-        medication_name,
-        presentation_id,
-        presentation_text,
-        manual_medication_name,
-        manual_presentation_label,
-        dose_value: m.dose_value,
-        dose_unit: m.dose_unit,
-        route: m.route,
-        frequency_type: m.frequency_type,
-        times_per_day: m.times_per_day,
-        interval_hours: m.interval_hours,
-        duration_days: m.duration_days,
-        instructions: m.instructions,
         sort_order: idx,
+        medication_id: isCatalog ? medicationId : null,
+        presentation_id: isCatalog ? presentationId : null,
+        concentration_value: m.concentration_value ?? null,
+        concentration_unit: m.concentration_unit ?? null,
+        dose_value: m.dose_value ?? null,
+        dose_unit: m.dose_unit ?? null,
+        route: m.route ?? null,
+        duration_days: m.duration_days ?? null,
+        frequency_type: m.frequency_type ?? null,
+        times_per_day: m.times_per_day ?? null,
+        interval_hours: m.interval_hours ?? null,
+        is_controlled: !!m.is_controlled,
+        manual_medication_name: isCatalog ? null : manualName,
+        manual_presentation_label: isCatalog ? null : manualPresentation,
+        // NOTE: no `instructions` — column does not exist
       }
     })
 
@@ -1323,12 +1294,26 @@ export async function saveProtocol(
     }
   }
 
-  // Insert recommendations
-  if (recommendations.length > 0) {
-    const recPayload = recommendations.map((r, idx) => ({
+  // ── STEP 3: delete + re-insert protocol_recommendations ─────────────
+  {
+    const { error: delRecError } = await supabase
+      .from('protocol_recommendations')
+      .delete()
+      .eq('clinic_id', clinicId)
+      .eq('protocol_id', protocolId)
+    if (delRecError) {
+      logSbError('[ProtocolSave] protocol_recommendations delete error', delRecError)
+      throw delRecError
+    }
+  }
+
+  const validRecs = recommendations.filter(r => String(r.text || '').trim())
+  if (validRecs.length > 0) {
+    // Uses `text` column (not `recommendation_text`)
+    const recPayload = validRecs.map((r, idx) => ({
       clinic_id: clinicId,
       protocol_id: protocolId,
-      recommendation_text: r.recommendation_text,
+      text: String(r.text).trim(),
       sort_order: idx,
     }))
 
@@ -1339,27 +1324,6 @@ export async function saveProtocol(
     if (recInsertError) {
       logSbError('[ProtocolSave] recommendations insert error', recInsertError)
       throw recInsertError
-    }
-  }
-
-  // Insert exam items
-  if (exam_items.length > 0) {
-    const examPayload = exam_items.map(e => ({
-      clinic_id: clinicId,
-      protocol_id: protocolId,
-      exam_key: e.exam_key,
-      exam_label: e.exam_label,
-      is_custom: e.is_custom,
-      justification: e.justification,
-    }))
-
-    const { error: examInsertError } = await supabase
-      .from('protocol_exam_items')
-      .insert(examPayload)
-
-    if (examInsertError) {
-      logSbError('[ProtocolSave] exam_items insert error', examInsertError)
-      throw examInsertError
     }
   }
 

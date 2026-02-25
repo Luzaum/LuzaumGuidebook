@@ -1658,6 +1658,14 @@ export function removeHistoryRecord(db: RxDatabase, recordId: string): RxDatabas
   }
 }
 
+export function findProfileSettings(dbState: RxDatabase, profileId?: string): { id: string; profile: ProfileSettings } {
+  const selected = dbState.prescriberProfiles.find((entry) => entry.id === profileId)
+  if (selected) return { id: selected.id, profile: selected }
+  const first = dbState.prescriberProfiles[0]
+  if (first) return { id: first.id, profile: first }
+  return { id: 'default', profile: dbState.profile }
+}
+
 
 
 

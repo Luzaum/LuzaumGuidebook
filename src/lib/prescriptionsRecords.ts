@@ -1,32 +1,44 @@
 import { supabase } from './supabaseClient'
 import { getStoredClinicId } from './clinic'
-import type { PrescriptionState } from '../modules/receituario-vet/rxTypes'
+import type { PrintDoc } from '../../modules/receituario-vet/rxTypes'
 
+// Use any for snapshot to avoid circular dependency if needed, 
+// but we'll try to keep it flexible
 export type PrescriptionStatus = 'draft' | 'signed' | 'void'
+
+export interface PrescriptionContent {
+  kind: 'standard' | 'special-control'
+  templateId: string | null
+  printDoc: PrintDoc
+  stateSnapshot?: any // NovaReceita2State
+  createdAtLocal: string
+  appVersion: string
+}
 
 export interface PrescriptionRecord {
   id: string
   clinic_id: string
   patient_id: string
   tutor_id: string
-  content: PrescriptionState
+  content: PrescriptionContent
   status: PrescriptionStatus
   version: number
   created_by: string | null
   created_at: string
   updated_at: string
+  // Colunas adicionadas na migration 20260225150000_add_pdf_columns_to_prescriptions
+  pdf_path?: string | null
+  storage_bucket?: string | null
+  document_kind?: string | null
 }
 
-export interface CreatePrescriptionInput {
+export interface SavePrescriptionInput {
+  id?: string
   patient_id: string
   tutor_id: string
-  content: PrescriptionState
-  clinic_id?: string
-}
-
-export interface UpdatePrescriptionInput {
-  content?: PrescriptionState
+  content: PrescriptionContent
   status?: PrescriptionStatus
+  clinic_id?: string
 }
 
 function resolveClinicId(clinicId?: string) {
@@ -38,62 +50,79 @@ function resolveClinicId(clinicId?: string) {
 }
 
 /**
- * Criar um novo draft de receita no Supabase
+ * Salva uma receita (Insert ou Update com versionamento)
  */
-export async function createPrescriptionDraft(
-  input: CreatePrescriptionInput,
-  clinicId?: string
-): Promise<PrescriptionRecord> {
-  const targetClinicId = resolveClinicId(clinicId)
+export async function savePrescription(input: SavePrescriptionInput): Promise<PrescriptionRecord> {
+  const targetClinicId = resolveClinicId(input.clinic_id)
 
-  const { data, error } = await supabase
-    .from('prescriptions')
-    .insert([
-      {
-        clinic_id: targetClinicId,
-        patient_id: input.patient_id,
-        tutor_id: input.tutor_id,
+  console.log('[Prescriptions] save attempt', { id: input.id, patient: input.patient_id })
+
+  const { data: { user } } = await supabase.auth.getUser()
+
+  if (input.id) {
+    // UPDATE - Increment version
+    // First get current version
+    const { data: current, error: fetchError } = await supabase
+      .from('prescriptions')
+      .select('version')
+      .eq('id', input.id)
+      .eq('clinic_id', targetClinicId)
+      .single()
+
+    if (fetchError) {
+      console.error('[Prescriptions] fetch before update error', fetchError)
+      throw fetchError
+    }
+
+    const nextVersion = (current?.version || 1) + 1
+
+    const { data, error } = await supabase
+      .from('prescriptions')
+      .update({
         content: input.content,
-        status: 'draft',
-        version: 1,
-      },
-    ])
-    .select()
+        status: input.status || 'draft',
+        version: nextVersion,
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', input.id)
+      .eq('clinic_id', targetClinicId)
+      .select()
+      .single()
 
-  if (error) throw error
-  if (!data || !Array.isArray(data) || data.length === 0) {
-    throw new Error('Receita não foi criada no banco.')
+    if (error) {
+      console.error('[Prescriptions] update error', error)
+      throw error
+    }
+
+    console.log('[Prescriptions] update success', { id: data.id, version: data.version })
+    return data as PrescriptionRecord
+  } else {
+    // INSERT
+    const { data, error } = await supabase
+      .from('prescriptions')
+      .insert([
+        {
+          clinic_id: targetClinicId,
+          patient_id: input.patient_id,
+          tutor_id: input.tutor_id,
+          content: input.content,
+          status: input.status || 'draft',
+          version: 1,
+          created_by: user?.id || null,
+          updated_at: new Date().toISOString()
+        },
+      ])
+      .select()
+      .single()
+
+    if (error) {
+      console.error('[Prescriptions] insert error', error)
+      throw error
+    }
+
+    console.log('[Prescriptions] insert success', { id: data.id })
+    return data as PrescriptionRecord
   }
-
-  return data[0] as PrescriptionRecord
-}
-
-/**
- * Atualizar um draft existente (mantém version e status)
- */
-export async function updatePrescriptionDraft(
-  prescriptionId: string,
-  input: UpdatePrescriptionInput,
-  clinicId?: string
-): Promise<PrescriptionRecord> {
-  const targetClinicId = resolveClinicId(clinicId)
-
-  const { data, error } = await supabase
-    .from('prescriptions')
-    .update({
-      ...(input.content && { content: input.content }),
-      ...(input.status && { status: input.status }),
-    })
-    .eq('id', prescriptionId)
-    .eq('clinic_id', targetClinicId)
-    .select()
-
-  if (error) throw error
-  if (!data || !Array.isArray(data) || data.length === 0) {
-    throw new Error('Receita não encontrada ou não atualizada.')
-  }
-
-  return data[0] as PrescriptionRecord
 }
 
 /**
@@ -105,6 +134,8 @@ export async function getPrescriptionById(
 ): Promise<PrescriptionRecord | null> {
   const targetClinicId = resolveClinicId(clinicId)
 
+  console.log('[Prescriptions] getting by id', prescriptionId)
+
   const { data, error } = await supabase
     .from('prescriptions')
     .select('*')
@@ -112,26 +143,25 @@ export async function getPrescriptionById(
     .eq('clinic_id', targetClinicId)
     .single()
 
-  if (error?.code === 'PGRST116') {
-    // Not found
-    return null
+  if (error?.code === 'PGRST116') return null
+  if (error) {
+    console.error('[Prescriptions] get error', error)
+    throw error
   }
-  if (error) throw error
 
   return data as PrescriptionRecord
 }
 
 /**
- * Listar receitas de um paciente
+ * Listar receitas de um paciente ordenadas por data desc
  */
 export async function listPrescriptionsByPatient(
   patientId: string,
-  clinicId?: string,
-  options?: { limit?: number; offset?: number }
+  clinicId?: string
 ): Promise<PrescriptionRecord[]> {
   const targetClinicId = resolveClinicId(clinicId)
-  const limit = options?.limit ?? 50
-  const offset = options?.offset ?? 0
+
+  console.log('[Prescriptions] listing for patient', patientId)
 
   const { data, error } = await supabase
     .from('prescriptions')
@@ -139,32 +169,11 @@ export async function listPrescriptionsByPatient(
     .eq('clinic_id', targetClinicId)
     .eq('patient_id', patientId)
     .order('created_at', { ascending: false })
-    .range(offset, offset + limit - 1)
 
-  if (error) throw error
-
-  return (data || []) as PrescriptionRecord[]
-}
-
-/**
- * Listar receitas recentes da clínica (últimas X)
- */
-export async function listRecentPrescriptions(
-  clinicId?: string,
-  options?: { limit?: number; offset?: number }
-): Promise<PrescriptionRecord[]> {
-  const targetClinicId = resolveClinicId(clinicId)
-  const limit = options?.limit ?? 50
-  const offset = options?.offset ?? 0
-
-  const { data, error } = await supabase
-    .from('prescriptions')
-    .select('*')
-    .eq('clinic_id', targetClinicId)
-    .order('created_at', { ascending: false })
-    .range(offset, offset + limit - 1)
-
-  if (error) throw error
+  if (error) {
+    console.error('[Prescriptions] list error', error)
+    throw error
+  }
 
   return (data || []) as PrescriptionRecord[]
 }
@@ -185,43 +194,127 @@ export async function setPrescriptionStatus(
     .eq('id', prescriptionId)
     .eq('clinic_id', targetClinicId)
     .select()
+    .single()
 
   if (error) throw error
-  if (!data || !Array.isArray(data) || data.length === 0) {
-    throw new Error('Receita não encontrada.')
-  }
-
-  return data[0] as PrescriptionRecord
+  return data as PrescriptionRecord
 }
 
 /**
- * Deletar receita (soft delete via void status, ou hard delete)
+ * Deletar receita (soft delete via void status)
  */
 export async function voidPrescription(
   prescriptionId: string,
   clinicId?: string
 ): Promise<PrescriptionRecord> {
+  console.log('[Prescriptions] voiding', prescriptionId)
   return setPrescriptionStatus(prescriptionId, 'void', clinicId)
 }
 
+// ==================== PDF STORAGE ====================
+// Bucket: receituario-media (privado, authenticated only)
+// Path pattern: ${clinicId}/patients/${patientId}/prescriptions/${prescriptionId}.pdf
+
+const PDF_BUCKET = 'receituario-media'
+
 /**
- * Buscar drafts não salvos de um paciente (status = draft)
+ * Faz upload do blob PDF para o bucket receituario-media.
+ * Retorna o path armazenado (relativo ao bucket).
  */
-export async function listDraftPrescriptionsByPatient(
-  patientId: string,
-  clinicId?: string
-): Promise<PrescriptionRecord[]> {
-  const targetClinicId = resolveClinicId(clinicId)
+export async function uploadPrescriptionPdf(params: {
+  clinicId: string
+  patientId: string
+  prescriptionId: string
+  blob: Blob
+}): Promise<string> {
+  const path = `${params.clinicId}/patients/${params.patientId}/prescriptions/${params.prescriptionId}.pdf`
 
-  const { data, error } = await supabase
+  if (import.meta.env.DEV) {
+    console.log('[Storage] upload start', { bucket: PDF_BUCKET, path, size: params.blob.size })
+  }
+
+  const { error } = await supabase.storage
+    .from(PDF_BUCKET)
+    .upload(path, params.blob, {
+      upsert: true,
+      contentType: 'application/pdf',
+    })
+
+  if (error) {
+    console.error('[Storage] upload fail', {
+      message: error.message,
+      details: (error as any).details ?? null,
+      hint: (error as any).hint ?? null,
+      code: (error as any).statusCode ?? (error as any).error ?? null,
+    })
+    throw error
+  }
+
+  if (import.meta.env.DEV) {
+    console.log('[Storage] upload ok', { path })
+  }
+
+  return path
+}
+
+/**
+ * Grava pdf_path e storage_bucket como colunas diretas em prescriptions.
+ * (colunas adicionadas em 20260225150000_add_pdf_columns_to_prescriptions)
+ */
+export async function attachPdfToPresc(params: {
+  prescriptionId: string
+  pdfPath: string
+  clinicId: string
+}): Promise<void> {
+  const targetClinicId = resolveClinicId(params.clinicId)
+
+  const { error } = await supabase
     .from('prescriptions')
-    .select('*')
+    .update({
+      pdf_path: params.pdfPath,
+      storage_bucket: PDF_BUCKET,
+    })
+    .eq('id', params.prescriptionId)
     .eq('clinic_id', targetClinicId)
-    .eq('patient_id', patientId)
-    .eq('status', 'draft')
-    .order('created_at', { ascending: false })
 
-  if (error) throw error
+  if (error) {
+    console.error('[Storage] attachPdfToPresc error', {
+      message: error.message,
+      details: (error as any).details ?? null,
+      hint: (error as any).hint ?? null,
+      code: (error as any).code ?? null,
+    })
+    throw error
+  }
 
-  return (data || []) as PrescriptionRecord[]
+  if (import.meta.env.DEV) {
+    console.log('[Storage] pdf_path salvo', { id: params.prescriptionId, path: params.pdfPath })
+  }
+}
+
+/**
+ * Gera uma signed URL temporária (bucket privado) para baixar o PDF.
+ * @param pdfPath   Path relativo ao bucket (sem o nome do bucket)
+ * @param expiresIn Duração em segundos — padrão 60 (1 min)
+ */
+export async function getPdfSignedUrl(pdfPath: string, expiresIn = 60): Promise<string> {
+  if (import.meta.env.DEV) {
+    console.log('[Storage] createSignedUrl', { path: pdfPath, expiresIn })
+  }
+
+  const { data, error } = await supabase.storage
+    .from(PDF_BUCKET)
+    .createSignedUrl(pdfPath, expiresIn)
+
+  if (error) {
+    console.error('[Storage] signed url error', {
+      message: error.message,
+      details: (error as any).details ?? null,
+      hint: (error as any).hint ?? null,
+      code: (error as any).statusCode ?? (error as any).error ?? null,
+    })
+    throw error
+  }
+
+  return data.signedUrl
 }

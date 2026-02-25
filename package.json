@@ -12,6 +12,7 @@
     "validate:profiles:strict": "tsx scripts/validate-drug-profiles.ts --strict",
     "validate:refs": "tsx scripts/validate-references-catalog.ts",
     "validate:rulesets": "tsx scripts/validate-rulesets.ts",
+    "validate:dbpayloads": "tsx scripts/validate-supabase-payloads.ts",
     "normalize:refs": "tsx scripts/normalize-references.ts",
     "scaffold:profiles": "tsx scripts/scaffold-missing-sections.ts"
   },

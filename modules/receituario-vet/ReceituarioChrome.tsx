@@ -13,25 +13,26 @@ type RxSection =
   | 'catalogo2'
   | 'catalogo3'
   | 'protocolos'
+  | 'protocolos3'
   | 'controle'
   | 'templates'
   | 'settings'
+  | 'historico'
   | 'dev'
   | 'print'
 type RxTheme = 'dark' | 'light'
 
 const THEME_KEY = 'receituario-vet:theme:v1'
 
+// ✅ Menu atualizado: Nova Receita 2.0 + apenas Catálogo 3.0 + Protocolos 3.0
 const NAV_ITEMS: Array<{ key: RxSection; label: string; to: string; icon: string }> = [
   { key: 'hub', label: 'HUB', to: '/receituario-vet', icon: 'hub' },
-  { key: 'nova', label: 'Nova Receita', to: '/receituario-vet/nova-receita', icon: 'description' },
-  { key: 'catalogo3', label: 'Catálogo 3.0', to: '/receituario-vet/catalogo3', icon: 'inventory_2' },
-  { key: 'catalogo2', label: 'Catálogo 2.0', to: '/receituario-vet/catalogo2', icon: 'inventory_2' },
-  { key: 'catalogo', label: 'Catálogo', to: '/receituario-vet/catalogo', icon: 'inventory_2' },
+  { key: 'nova', label: 'Nova Receita', to: '/receituario-vet/nova-receita-2', icon: 'description' },
+  { key: 'catalogo3', label: 'Catálogo', to: '/receituario-vet/catalogo3', icon: 'inventory_2' },
   { key: 'drafts', label: 'Rascunhos', to: '/receituario-vet/rascunhos', icon: 'draft' },
   { key: 'clientes', label: 'Tutores e Pacientes', to: '/receituario-vet/clientes', icon: 'group' },
   { key: 'controle', label: 'Controle Especial', to: '/receituario-vet/controle-especial', icon: 'shield' },
-  { key: 'protocolos', label: 'Protocolos', to: '/receituario-vet/protocolos', icon: 'inventory_2' },
+  { key: 'protocolos3', label: 'Protocolos 3.0', to: '/receituario-vet/protocolos-3', icon: 'clinical_notes' },
   { key: 'perfil', label: 'Configurar Médico', to: '/receituario-vet/configuração', icon: 'assignment_ind' },
   { key: 'templates', label: 'Templates', to: '/receituario-vet/templates', icon: 'palette' },
   { key: 'settings', label: 'Configurações', to: '/receituario-vet/configurações', icon: 'settings' },
