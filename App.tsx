@@ -34,6 +34,7 @@ import ControleEspecialPage from './modules/receituario-vet/ControleEspecialPage
 import DevelopmentPage from './modules/receituario-vet/DevelopmentPage'
 import AAP2Module from './modules/aap2/index'
 import SupabaseTestPage from './pages/SupabaseTestPage'
+import DadosVeterinariosModule from './src/modules/dados-veterinarios/DadosVeterinariosModule'
 import Login from './src/routes/Login'
 import Signup from './src/routes/Signup'
 import AuthCallback from './src/routes/AuthCallback'
@@ -92,6 +93,7 @@ const appRoutes = (
     <Route path="/receituario-vet/configurações" element={<ProtectedClinicRoute><SettingsPage /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/desenvolvimento" element={<ProtectedClinicRoute><DevelopmentPage /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/rx/:id/print" element={<ProtectedClinicRoute><RxPrintPage /></ProtectedClinicRoute>} />
+    <Route path="/dados-veterinarios/*" element={<DadosVeterinariosModule />} />
     <Route path="/crivet" element={<CrivetPage />} />
     <Route path="/neurologia" element={<NeurologiaPage />} />
     <Route path="/veteletrolitico" element={<VeteletroliticoPage />} />

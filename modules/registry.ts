@@ -15,6 +15,7 @@ import {
   LucideIcon,
   Activity,
   Ticket,
+  Database,
 } from 'lucide-react'
 import calcEnergeticaLogo from '@/assets/logos/logo-calculadora-energetica.png'
 
@@ -57,7 +58,7 @@ export const modules: Module[] = [
     route: '/transfusão-sanguinea',
     status: 'internal',
     icon: Heart,
-    iconImage: '/apps/transfusão.png',
+    iconImage: '/apps/transfusao.png',
   },
   {
     id: 'hemogasometria',
@@ -86,7 +87,7 @@ export const modules: Module[] = [
     status: 'iframe',
     icon: Zap,
     iframeUrl: 'https://emergências-vet.netlify.app',
-    iconImage: '/apps/emergência.png',
+    iconImage: '/apps/emergencia.png',
   },
   {
     id: 'peconhentos',
@@ -115,6 +116,15 @@ export const modules: Module[] = [
     status: 'internal',
     icon: FileText,
     iconImage: '/images/receituario-vet/reeceita.png',
+  },
+  {
+    id: 'dados-veterinarios',
+    title: 'Dados Veterinários',
+    description: 'Gestão clínica com dashboard, pacientes, tutores, agenda, financeiro e relatórios.',
+    route: '/dados-veterinarios',
+    status: 'internal',
+    icon: Database,
+    iconImage: '/apps/BANCODEDADOS.png',
   },
   {
     id: 'crivet',
