@@ -31,25 +31,23 @@ export default function DadosVeterinariosModule() {
   return (
     <ThemeProvider>
       <DataProvider>
-        <div className="dados-veterinarios-root">
-          <Layout>
-            <Routes>
-              <Route path={dvPath("")} element={<Dashboard />} />
-              <Route path={dvPath("patients")} element={<Patients />} />
-              <Route path={dvPath("patients/:id")} element={<PatientDetails />} />
-              <Route path={dvPath("tutors")} element={<Tutors />} />
-              <Route path={dvPath("tutors/:id")} element={<TutorDetails />} />
-              <Route path={dvPath("calendar")} element={<Calendar />} />
-              <Route path={dvPath("financial")} element={<Financial />} />
-              <Route path={dvPath("services")} element={<ServiceCatalog />} />
-              <Route path={dvPath("analytics")} element={<Analytics />} />
-              <Route path={dvPath("reports")} element={<Reports />} />
-              <Route path={dvPath("settings")} element={<Settings />} />
-              <Route path={dvPath("profile")} element={<Profile />} />
-              <Route path={dvPath("*")} element={<Navigate to={dvPath("")} replace />} />
-            </Routes>
-          </Layout>
-        </div>
+        <Layout>
+          <Routes>
+            <Route index element={<Dashboard />} />
+            <Route path="patients" element={<Patients />} />
+            <Route path="patients/:id" element={<PatientDetails />} />
+            <Route path="tutors" element={<Tutors />} />
+            <Route path="tutors/:id" element={<TutorDetails />} />
+            <Route path="calendar" element={<Calendar />} />
+            <Route path="financial" element={<Financial />} />
+            <Route path="services" element={<ServiceCatalog />} />
+            <Route path="analytics" element={<Analytics />} />
+            <Route path="reports" element={<Reports />} />
+            <Route path="settings" element={<Settings />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="*" element={<Navigate to={dvPath("")} replace />} />
+          </Routes>
+        </Layout>
       </DataProvider>
     </ThemeProvider>
   );
