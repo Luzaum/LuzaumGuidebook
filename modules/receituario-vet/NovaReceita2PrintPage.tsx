@@ -24,7 +24,7 @@ import { buildPrintDocFromNovaReceita2 } from './novaReceita2Adapter'
 import { BUILTIN_TEMPLATES } from './builtinTemplates'
 import type { NovaReceita2State, PrescriptionItem, TutorInfo, PatientInfo } from './NovaReceita2Page'
 import type { TemplateZoneKey } from './rxDb'
-import { uploadPrescriptionPdf, attachPdfToPresc } from '../../src/lib/prescriptionsRecords'
+import { uploadPrescriptionPdf, attachPdfToPresc, savePrescription } from '../../src/lib/prescriptionsRecords'
 import { getStoredClinicId } from '../../src/lib/clinic'
 
 // ==================== SESSION ====================
@@ -311,85 +311,115 @@ function EditorItem({
         <div className="space-y-3">
             <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Editando item</p>
 
-            {/* Read-only info */}
-            <div className="rounded-xl border border-slate-800 bg-black/40 p-3 space-y-1">
-                <p className="text-sm font-bold text-white">
-                    {item.name}
-                    {item.concentration_text && (
-                        <span className="ml-1 font-normal text-slate-400">{item.concentration_text}</span>
-                    )}
-                    {item.commercial_name && (
-                        <span className="ml-1 font-normal text-amber-400">({item.commercial_name})</span>
-                    )}
-                </p>
-                {item.pharmaceutical_form && (
-                    <p className="text-xs text-slate-500">{item.pharmaceutical_form}</p>
+            {/* Identificação do medicamento — todos editáveis */}
+            <div className="rounded-xl border border-slate-800 bg-black/40 p-3 space-y-3">
+                <p className="text-[10px] font-black uppercase tracking-widest text-slate-600">Identificação</p>
+
+                <Field label="Nome do fármaco">
+                    <Input
+                        value={item.name}
+                        onChange={(e) => setField('name', e.target.value)}
+                        placeholder="Ex: Amoxicilina"
+                    />
+                </Field>
+
+                <div className="grid grid-cols-2 gap-3">
+                    <Field label="Concentração">
+                        <Input
+                            value={item.concentration_text || ''}
+                            onChange={(e) => setField('concentration_text', e.target.value)}
+                            placeholder="Ex: 500 mg/comp"
+                        />
+                    </Field>
+                    <Field label="Nome comercial">
+                        <Input
+                            value={item.commercial_name || ''}
+                            onChange={(e) => setField('commercial_name', e.target.value)}
+                            placeholder="Ex: Clavulin"
+                        />
+                    </Field>
+                </div>
+
+                {item.pharmaceutical_form !== undefined && (
+                    <Field label="Forma farmacêutica">
+                        <Input
+                            value={item.pharmaceutical_form || ''}
+                            onChange={(e) => setField('pharmaceutical_form', e.target.value)}
+                            placeholder="Ex: Comprimido"
+                        />
+                    </Field>
                 )}
+
                 {item.isManual && (
-                    <span className="rounded bg-slate-800 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-widest text-slate-500">
+                    <span className="inline-block rounded bg-slate-800 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-widest text-slate-500">
                         manual
                     </span>
                 )}
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
-                <Field label="Dose">
-                    <Input
-                        value={item.dose || ''}
-                        onChange={(e) => setField('dose', e.target.value)}
-                        placeholder="Ex: 10 mg/kg"
+            {/* Posologia */}
+            <div className="rounded-xl border border-slate-800 bg-black/40 p-3 space-y-3">
+                <p className="text-[10px] font-black uppercase tracking-widest text-slate-600">Posologia</p>
+
+                <div className="grid grid-cols-2 gap-3">
+                    <Field label="Dose">
+                        <Input
+                            value={item.dose || ''}
+                            onChange={(e) => setField('dose', e.target.value)}
+                            placeholder="Ex: 10 mg/kg"
+                        />
+                    </Field>
+                    <Field label="Via">
+                        <select
+                            className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white focus:border-[#39ff14]/40 focus:outline-none"
+                            value={item.route || 'VO'}
+                            onChange={(e) => setField('route', e.target.value)}
+                        >
+                            {ROUTE_OPTIONS.map((opt) => (
+                                <option key={opt.value} value={opt.value}>
+                                    {opt.label}
+                                </option>
+                            ))}
+                        </select>
+                    </Field>
+                    <Field label="Frequência">
+                        <Input
+                            value={item.frequency || ''}
+                            onChange={(e) => setField('frequency', e.target.value)}
+                            placeholder="Ex: BID, TID, 12/12h"
+                        />
+                    </Field>
+                    <Field label="Duração">
+                        <Input
+                            value={item.duration || ''}
+                            onChange={(e) => setField('duration', e.target.value)}
+                            placeholder="Ex: 7 dias"
+                        />
+                    </Field>
+                </div>
+
+                <Field label="Instruções de uso">
+                    <textarea
+                        className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:border-[#39ff14]/40 focus:outline-none"
+                        rows={3}
+                        placeholder="Instruções específicas para o tutor..."
+                        value={item.instructions || ''}
+                        onChange={(e) => setField('instructions', e.target.value)}
                     />
                 </Field>
-                <Field label="Via">
-                    <select
-                        className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white focus:border-[#39ff14]/40 focus:outline-none"
-                        value={item.route || 'VO'}
-                        onChange={(e) => setField('route', e.target.value)}
-                    >
-                        {ROUTE_OPTIONS.map((opt) => (
-                            <option key={opt.value} value={opt.value}>
-                                {opt.label}
-                            </option>
-                        ))}
-                    </select>
-                </Field>
-                <Field label="Frequência">
-                    <Input
-                        value={item.frequency || ''}
-                        onChange={(e) => setField('frequency', e.target.value)}
-                        placeholder="Ex: BID, TID, 12/12h"
-                    />
-                </Field>
-                <Field label="Duração">
-                    <Input
-                        value={item.duration || ''}
-                        onChange={(e) => setField('duration', e.target.value)}
-                        placeholder="Ex: 7 dias"
+
+                <Field label="Cautelas (uma por linha)">
+                    <textarea
+                        className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:border-[#39ff14]/40 focus:outline-none"
+                        rows={2}
+                        placeholder="Ex: Não usar em fêmeas prenhes&#10;Monitorar função renal"
+                        value={(item.cautions || []).join('\n')}
+                        onChange={(e) =>
+                            setField('cautions', e.target.value.split('\n').map((s) => s.trim()).filter(Boolean))
+                        }
                     />
                 </Field>
             </div>
-
-            <Field label="Instruções de uso">
-                <textarea
-                    className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:border-[#39ff14]/40 focus:outline-none"
-                    rows={3}
-                    placeholder="Instruções específicas para o tutor..."
-                    value={item.instructions || ''}
-                    onChange={(e) => setField('instructions', e.target.value)}
-                />
-            </Field>
-
-            <Field label="Cautelas (uma por linha)">
-                <textarea
-                    className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:border-[#39ff14]/40 focus:outline-none"
-                    rows={2}
-                    placeholder="Ex: Não usar em fêmeas prenhes&#10;Monitorar função renal"
-                    value={(item.cautions || []).join('\n')}
-                    onChange={(e) =>
-                        setField('cautions', e.target.value.split('\n').map((s) => s.trim()).filter(Boolean))
-                    }
-                />
-            </Field>
         </div>
     )
 }
@@ -548,20 +578,46 @@ export default function NovaReceita2PrintPage() {
             pdf.save(fileName)
             pushToast(`PDF gerado: ${fileName}`)
 
-            // Upload para Supabase Storage (best-effort, não bloqueia o usuário)
-            const prescriptionId = state?.supabaseId
+            // Ensure prescription record exists before uploading PDF
+            let effectivePrescriptionId = state?.supabaseId
             const patientId = state?.patient?.id
             const clinicId = getStoredClinicId()
-            if (prescriptionId && patientId && clinicId) {
+            if (!effectivePrescriptionId && patientId && clinicId && state?.tutor?.id) {
+                try {
+                    const payload = {
+                        patient_id: patientId,
+                        tutor_id: state.tutor.id,
+                        clinic_id: clinicId,
+                        content: {
+                            kind: selectedTemplate?.documentKindTarget as any,
+                            templateId: state.templateId,
+                            printDoc,
+                            stateSnapshot: state,
+                            createdAtLocal: new Date().toISOString(),
+                            appVersion: '2.0.0-parity'
+                        }
+                    }
+                    const saved = await savePrescription(payload)
+                    effectivePrescriptionId = saved.id
+                    // Update local state with new supabaseId
+                    updateState(prev => ({ ...prev, supabaseId: saved.id }))
+                } catch (saveErr) {
+                    console.error('[Rx2Print] Failed to save prescription', saveErr)
+                    // Continue without upload
+                }
+            }
+
+            // Upload para Supabase Storage (best-effort, não bloqueia o usuário)
+            if (effectivePrescriptionId && patientId && clinicId) {
                 try {
                     const blob = pdf.output('blob')
                     const pdfPath = await uploadPrescriptionPdf({
                         clinicId,
                         patientId,
-                        prescriptionId,
+                        prescriptionId: effectivePrescriptionId,
                         blob,
                     })
-                    await attachPdfToPresc({ prescriptionId, pdfPath, clinicId })
+                    await attachPdfToPresc({ prescriptionId: effectivePrescriptionId, pdfPath, clinicId })
                     if (import.meta.env.DEV) {
                         console.log('[Rx2Print] PDF salvo no storage', { pdfPath })
                     }
@@ -575,7 +631,7 @@ export default function NovaReceita2PrintPage() {
         } finally {
             setIsExporting(false)
         }
-    }, [state, selectedTemplate, pushToast])
+    }, [state, selectedTemplate, pushToast, updateState, printDoc])
 
     const handleWhatsApp = useCallback(async () => {
         const phone = state?.tutor?.phone || ''
@@ -681,10 +737,10 @@ export default function NovaReceita2PrintPage() {
                 {topbar}
 
                 <div className="mx-auto max-w-[1600px] px-4 py-6">
-                    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[420px_1fr]">
+                    <div className="rxv-review-grid grid grid-cols-1 gap-6 lg:grid-cols-[420px_1fr]">
 
                         {/* ============ COLUNA ESQUERDA: EDITOR CONTEXTUAL ============ */}
-                        <div className="space-y-4">
+                        <div className="rxv-review-editor-col space-y-4">
                             {/* Hint */}
                             <div className="rounded-xl border border-slate-800 bg-black/40 p-4">
                                 <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-3">
@@ -763,8 +819,8 @@ export default function NovaReceita2PrintPage() {
                         </div>
 
                         {/* ============ COLUNA DIREITA: PREVIEW INTERATIVO ============ */}
-                        <div className="lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:overflow-y-auto">
-                            <div className="rounded-xl border border-slate-700 bg-slate-900/50 overflow-hidden">
+                        <div className="rxv-review-preview-col lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:overflow-y-auto">
+                            <div className="rxv-review-preview-inner rounded-xl border border-slate-700 bg-slate-900/50 overflow-hidden">
                                 <div className="flex items-center justify-between border-b border-slate-800 px-4 py-2 bg-black/40">
                                     <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
                                         Preview clicável — {selectedTemplate.name}
@@ -795,11 +851,45 @@ export default function NovaReceita2PrintPage() {
                     </div>
                 </div>
 
-                {/* Print CSS */}
+                {/* C1: Print CSS para modo review — só imprime a coluna do preview */}
                 <style>{`
                     @media print {
-                        body { background: white !important; }
+                        body { background: white !important; color: black !important; margin: 0 !important; padding: 0 !important; }
                         .print\\:hidden { display: none !important; }
+
+                        /* Ocultar coluna do editor no modo review */
+                        .rxv-review-editor-col { display: none !important; }
+
+                        /* Mostrar preview em largura total */
+                        .rxv-review-preview-col {
+                            display: block !important;
+                            width: 100% !important;
+                            max-height: none !important;
+                            overflow: visible !important;
+                            position: static !important;
+                        }
+
+                        /* Remover grid / layout app */
+                        .rxv-review-grid {
+                            display: block !important;
+                            padding: 0 !important;
+                            margin: 0 !important;
+                        }
+
+                        /* Remove decorações do container */
+                        .rxv-review-preview-inner {
+                            border: none !important;
+                            background: white !important;
+                            overflow: visible !important;
+                        }
+
+                        /* Remove transforms */
+                        [style*="transform"] {
+                            transform: none !important;
+                            width: 100% !important;
+                        }
+
+                        @page { margin: 10mm; }
                     }
                 `}</style>
 
@@ -814,35 +904,51 @@ export default function NovaReceita2PrintPage() {
     }
 
     // ==================== PRINT / PDF LAYOUT ====================
+    // Estratégia de isolamento de impressão:
+    //   - Div de TELA (print:hidden): contém topbar + wrapper escuro + previewRef para PDF
+    //   - Div de IMPRESSÃO (hidden print:block): apenas RxPrintView limpo, sem qualquer decoração
+    // Isso garante que window.print() nunca vaza estilos do app dark-theme para a impressão.
 
     return (
-        <div className="min-h-screen bg-[#0c1a09] text-slate-100">
-            {topbar}
+        <>
+            {/* TELA: Interface dark (oculta durante window.print) */}
+            <div className="rxv-print-root min-h-screen bg-[#0c1a09] text-slate-100 print:hidden">
+                {topbar}
 
-            <div
-                className="mx-auto max-w-5xl px-4 py-8"
-                style={{ background: 'radial-gradient(#1e3a18 1px, transparent 1px)', backgroundSize: '18px 18px' }}
-            >
-                <div ref={previewRef}>
-                    <RxPrintView
-                        doc={printDoc}
-                        template={selectedTemplate}
-                    />
+                <div
+                    className="rxv-print-page-wrapper mx-auto max-w-5xl px-4 py-8"
+                    style={{ background: 'radial-gradient(#1e3a18 1px, transparent 1px)', backgroundSize: '18px 18px' }}
+                >
+                    {/* previewRef usado SOMENTE pelo html2canvas para export PDF */}
+                    <div ref={previewRef} className="rxv-print-canvas">
+                        <RxPrintView
+                            doc={printDoc}
+                            template={selectedTemplate}
+                        />
+                    </div>
                 </div>
+
+                {toast && (
+                    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 rounded-xl border border-[#3b6c2f] bg-[#12230f] px-6 py-3 text-sm font-semibold text-[#9eff8f] shadow-xl">
+                        {toast}
+                    </div>
+                )}
             </div>
 
-            {toast && (
-                <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 rounded-xl border border-[#3b6c2f] bg-[#12230f] px-6 py-3 text-sm font-semibold text-[#9eff8f] shadow-xl print:hidden">
-                    {toast}
-                </div>
-            )}
+            {/* IMPRESSÃO: Container limpo — só visível via window.print() */}
+            <div className="hidden print:block bg-white text-black">
+                <RxPrintView
+                    doc={printDoc}
+                    template={selectedTemplate}
+                />
+            </div>
 
             <style>{`
+                @page { margin: 10mm; }
                 @media print {
-                    body { background: white !important; }
-                    .print\\:hidden { display: none !important; }
+                    body { background: white !important; margin: 0 !important; padding: 0 !important; }
                 }
             `}</style>
-        </div>
+        </>
     )
 }

@@ -82,12 +82,23 @@ function normalizeUnit(unit: string): string {
   return UNIT_ALIASES[key] || key
 }
 
-function toNumber(raw: string): number | null {
-  const normalized = (raw || '').replace(',', '.').trim()
-  if (!normalized) return null
-  const n = Number(normalized)
-  if (Number.isNaN(n)) return null
-  return n
+function toNumber(raw: unknown): number | null {
+  if (raw == null) return null
+  if (typeof raw === 'number') {
+    if (!Number.isFinite(raw)) return null
+    return raw
+  }
+  if (typeof raw === 'string') {
+    const normalized = raw.replace(',', '.').trim()
+    if (!normalized) return null
+    const n = Number(normalized)
+    return Number.isNaN(n) ? null : n
+  }
+  if (import.meta.env.DEV) {
+    console.warn('[rxRenderer] toNumber unexpected type', typeof raw, raw)
+  }
+  const fallback = Number(String(raw))
+  return Number.isNaN(fallback) ? null : fallback
 }
 
 function formatNumber(n: number, maxFraction = 2): string {
@@ -324,7 +335,7 @@ export function calculateMedicationQuantity(item: PrescriptionItem, state: Presc
         `Concentração "${item.concentration}" não compatível com unidade da dose (${baseUnitRaw || '-'}) para conversão automática.`
       )
     }
-  } else if (item.concentration.trim()) {
+  } else if ((item.concentration || '').trim()) {
     steps.push('Concentração informada sem formato reconhecido para conversão automática.')
   }
 
@@ -482,7 +493,18 @@ export function renderRxToPrintDoc(
         const qty = calculateMedicationQuantity(item, state)
         const instruction = resolveInstruction(item, state)
         const subtitleParts = [item.presentation]
-        if (qty.label !== 'Quantidade não calculada') subtitleParts.push(qty.label)
+
+        // G3: Mostrar cálculo de dose/volume no subtitle
+        if (qty.label !== 'Quantidade não calculada') {
+          const doseStr = qty.perDose !== null ? `${formatNumber(qty.perDose)} ${qty.unit}` : ''
+          const totalStr = qty.total !== null ? ` · Total: ${formatNumber(qty.total)} ${qty.unit}` : ''
+          const calcLabel = doseStr ? `Dose calculada: ${doseStr}${totalStr}` : qty.label
+          subtitleParts.push(calcLabel)
+        } else if (toNumber(item.doseValue) !== null) {
+          // G4: Dose presente mas cálculo não pôde ser completado — mostrar hint sem crashar
+          const missingWeight = (item.doseUnit || '').includes('/kg') && !toNumber(state.patient.weightKg)
+          subtitleParts.push(missingWeight ? 'Peso não informado para cálculo' : 'Sem concentração para cálculo')
+        }
         return {
           id: item.id,
           index: idx + 1,

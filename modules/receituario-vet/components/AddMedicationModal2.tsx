@@ -68,6 +68,17 @@ interface PresentationRecord {
   avg_price_brl?: number | null
   package_quantity?: string | null
   package_unit?: string | null
+  /** metadata JSON — fallback para campos que o DB armazena como JSON em vez de coluna direta */
+  metadata?: Record<string, unknown> | null
+}
+
+/** Extrai um campo de PresentationRecord, com fallback no metadata JSON */
+function extractPresentationField(pres: PresentationRecord, field: string): string | undefined {
+  const direct = (pres as Record<string, unknown>)[field]
+  if (direct != null && direct !== '') return String(direct)
+  const fromMeta = pres.metadata?.[field]
+  if (fromMeta != null && fromMeta !== '') return String(fromMeta)
+  return undefined
 }
 
 // ===================== COMPONENT =====================
@@ -93,6 +104,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
   const [manualName, setManualName] = useState('')
   const [manualConcentration, setManualConcentration] = useState('')
   const [manualForm, setManualForm] = useState('')
+  const [manualCommercialName, setManualCommercialName] = useState('')
 
   // ==================== EFFECTS ====================
 
@@ -146,6 +158,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
       setManualName('')
       setManualConcentration('')
       setManualForm('')
+      setManualCommercialName('')
     }
   }, [open])
 
@@ -201,6 +214,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
         name: manualName.trim(),
         pharmaceutical_form: manualForm || undefined,
         concentration_text: manualConcentration || undefined,
+        commercial_name: manualCommercialName.trim() || undefined,
         dose,
         frequency,
         route,
@@ -247,8 +261,8 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
       per_value: selectedPresentation?.per_value || undefined,
       per_unit: selectedPresentation?.per_unit || undefined,
       avg_price_brl: selectedPresentation?.avg_price_brl ?? undefined,
-      package_quantity: selectedPresentation?.package_quantity || undefined,
-      package_unit: selectedPresentation?.package_unit || undefined,
+      package_quantity: selectedPresentation ? extractPresentationField(selectedPresentation, 'package_quantity') : undefined,
+      package_unit: selectedPresentation ? extractPresentationField(selectedPresentation, 'package_unit') : undefined,
 
       // Campos de dosagem
       dose,
@@ -266,6 +280,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
     manualName,
     manualForm,
     manualConcentration,
+    manualCommercialName,
     selectedMedication,
     presentations,
     selectedPresentationId,
@@ -477,6 +492,14 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
                     placeholder="Ex: 500 mg"
                     value={manualConcentration}
                     onChange={(e) => setManualConcentration(e.target.value)}
+                  />
+                </RxvField>
+
+                <RxvField label="Nome comercial">
+                  <RxvInput
+                    placeholder="Ex: Amoxivet, Claritin Vet"
+                    value={manualCommercialName}
+                    onChange={(e) => setManualCommercialName(e.target.value)}
                   />
                 </RxvField>
 

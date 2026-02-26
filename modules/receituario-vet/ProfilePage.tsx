@@ -1,5 +1,6 @@
 ﻿import React, { ChangeEvent, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useClinic } from '../../src/components/ClinicProvider'
 import ReceituarioChrome from './ReceituarioChrome'
 import {
   ProfileSettings,
@@ -114,6 +115,9 @@ async function toStorableImageDataUrl(file: File): Promise<string> {
 }
 
 export default function ProfilePage() {
+  // E1/E2: clinicId necessário para o path do upload de assinatura/logo
+  const { clinicId } = useClinic()
+
   const initialDb = useMemo(() => loadRxDb(), [])
   const initialProfiles = initialDb.prescriberProfiles.length > 0
     ? initialDb.prescriberProfiles
@@ -191,10 +195,12 @@ export default function ProfilePage() {
         const nextValue = profileToPersist[field]
         if (!isDataImageUrl(nextValue)) continue
 
+        // E2: Passar clinicId para que o path comece com UUID (evita erro 22P02)
         const uploaded = await uploadProfileImageDataUrl({
           dataUrl: nextValue,
           field,
           profileId: currentProfileExists ? selectedProfileId : normalizedName,
+          clinicId: clinicId || undefined,
         })
 
         const previousValue = String(activeStoredProfile?.[field] || '').trim()

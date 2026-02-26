@@ -60,10 +60,11 @@
 ### 5. Medicamento Manual
 
 - [ ] Botão "+ Manual" → abre modal sem busca de catálogo
-- [ ] Preencher Nome (obrigatório), Concentração, Forma farmacêutica, Via
+- [ ] Preencher Nome (obrigatório), Concentração, **Nome comercial**, Forma farmacêutica, Via
 - [ ] Preencher Dose, Frequência, Duração, Instruções, Cautelas
 - [ ] Clicar "Adicionar" → item aparece com badge "manual" na lista
 - [ ] Preview mostra o item na seção correta (pela via selecionada)
+- [ ] Nome comercial aparece no título/subtitle do preview (ex: `Amoxicilina 500 mg (Amoxivet)`)
 - [ ] Cautelas aparecem no item do preview
 
 ---
@@ -163,6 +164,16 @@ Payload enviado ao salvar:
 | Preview cortado | `marginBottom: calc(100% * -0.35)` usava largura do pai (errado) | Substituído por container `maxHeight: 520px` + `overflow-y: auto` |
 | Revisar não era interativo | PrintPage em modo review era estático sem edição | Reescrito com editor contextual por zona/item + RxPrintView com `interactive={true}` |
 | Botões misturados | "Imprimir / Exportar" era um único botão sem distinção | Separados em "Revisar", "Imprimir" e "Exportar PDF" |
+| `toNumber` crash | `(raw \|\| '').replace(...)` explodia quando Supabase retornava `number` ou `null` | `toNumber(raw: unknown)` com early-return por tipo |
+| Tutores não apareciam no mobile | `clinicId = null` durante bootstrap assíncrono do ClinicProvider gerava queries vazias | `TutorLookup` aguarda `clinicLoading === false` antes de qualquer query |
+| Impressão dark leaking | Fundo escuro do app vazava para `window.print()` | Container `print:hidden` na UI + `hidden print:block` no canvas limpo |
+| Draft perdido ao navegar | Receita em andamento sumia ao trocar de rota | LocalStorage autosave debounce 600ms + restauração no mount + "Limpar rascunho" |
+| Upload 22P02 | Path de storage começava com `receituario/` (não UUID), violando policy RLS | Path inicia com `clinicId` (UUID) — fallback para `userId` se clinicId ausente |
+| Templates fantasmas | BUILTIN_TEMPLATES não apareciam junto com os templates customizados do rxDb | `allTemplates = useMemo` que unifica e deduplica por `id` |
+| Cálculo dose/volume não exibido | Dose livre "10 mg/kg" não era parseada em campos estruturados | `parseDoseString` extrai `numericStr`+`unit`+`perKg`; subtitle mostra "Dose calculada: X mg · Total: Y mL" |
+| Campos EditorItem limitados | Review page só editava 4 campos por item | EditorItem expandido: nome, concentração, nome comercial, forma, dose, via, freq, dur, instruções, cautelas |
+| Sem commercial_name no modo manual | Modal manual não tinha campo de nome comercial | Adicionado campo + estado `manualCommercialName` |
+| package_quantity/unit do metadata | Campos podem estar no JSON `metadata` em vez de coluna direta | `extractPresentationField` busca coluna direta com fallback em `metadata` |
 
 ---
 
@@ -170,7 +181,12 @@ Payload enviado ao salvar:
 
 | Arquivo | O que mudou |
 |---------|-------------|
-| `modules/receituario-vet/novaReceita2Adapter.ts` | Fix name/title duplication; `autoInstruction=false`; logs DEV |
-| `modules/receituario-vet/NovaReceita2PrintPage.tsx` | Reescrito: review 2 colunas interativo; modos print/pdf com auto-ação; editor contextual |
-| `modules/receituario-vet/NovaReceita2Page.tsx` | Botões separados (Revisar/Imprimir/Exportar PDF); fix preview scale |
-| `docs/QA_NOVA_RECEITA_2.md` | Este arquivo (criado/atualizado) |
+| `modules/receituario-vet/rxRenderer.ts` | `toNumber(raw: unknown)` robusto; subtitle com cálculo dose/volume |
+| `modules/receituario-vet/novaReceita2Adapter.ts` | `toSafeString`; `parseDoseString`; `name` apenas fármaco; `autoInstruction=false` |
+| `modules/receituario-vet/NovaReceita2Page.tsx` | Draft localStorage autosave; allTemplates unificado; botões Revisar/Imprimir/PDF |
+| `modules/receituario-vet/NovaReceita2PrintPage.tsx` | EditorItem completo (10 campos); print isolation `print:hidden` + `hidden print:block` |
+| `modules/receituario-vet/components/TutorLookup.tsx` | Guard `clinicLoading` antes de queries; estados de espera no dropdown |
+| `modules/receituario-vet/components/AddMedicationModal2.tsx` | `metadata` em PresentationRecord; `extractPresentationField`; `commercial_name` no modo manual |
+| `modules/receituario-vet/rxSupabaseStorage.ts` | Path storage inicia com `clinicId` (UUID) — fix policy 22P02 |
+| `modules/receituario-vet/ProfilePage.tsx` | Passa `clinicId` para `uploadProfileImageDataUrl` |
+| `docs/QA_NOVA_RECEITA_2.md` | Este arquivo (atualizado com todos os fixes) |

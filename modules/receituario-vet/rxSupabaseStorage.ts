@@ -145,15 +145,28 @@ export async function uploadProfileImageDataUrl(params: {
   dataUrl: string
   field: ProfileImageField
   profileId?: string
+  /** clinicId UUID — deve ser o 1º segmento do path para satisfazer a policy do bucket */
+  clinicId?: string
 }) {
   validateSupabaseEnv()
 
   const bucket = resolveBucketName()
   const ownerKey = await resolveOwnerKey()
+
+  // E2/E4: Path deve começar com UUID (clinicId preferido, fallback userId)
+  // A policy do bucket usa split_part(name,'/',1)::uuid
+  // Se o 1º segmento não for UUID válido → Supabase retorna erro 22P02
+  const firstSegment = sanitizePathSegment(params.clinicId || ownerKey)
   const profileKey = sanitizePathSegment(params.profileId || 'default')
   const blob = dataUrlToBlob(params.dataUrl)
   const ext = extensionFromMime(blob.type)
-  const filePath = `receituario/${ownerKey}/profiles/${profileKey}/${params.field}/${Date.now()}-${randomId()}.${ext}`
+  const filePath = `${firstSegment}/profiles/${profileKey}/${params.field}/${Date.now()}-${randomId()}.${ext}`
+
+  if (import.meta.env.DEV) {
+    // E3: Log do path usado no upload
+    console.log('[StorageUpload] path', filePath, 'clinicId', params.clinicId, 'ownerKey', ownerKey)
+  }
+
   const storage = supabase.storage.from(bucket)
 
   const { error } = await storage.upload(filePath, blob, {

@@ -34,19 +34,35 @@ interface TutorSearchResult {
 }
 
 export function TutorLookup({ value, onChange, placeholder = 'Buscar tutor...', error }: TutorLookupProps) {
-  const { clinicId } = useClinic()
+  const { clinicId, loading: clinicLoading } = useClinic()
 
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<TutorSearchResult[]>([])
   const [isSearching, setIsSearching] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
 
+  // B1: DEV log para diagnóstico mobile
+  useEffect(() => {
+    if (!import.meta.env.DEV) return
+    console.log('[TutorLookup] clinicId', clinicId, 'clinicLoading', clinicLoading)
+  }, [clinicId, clinicLoading])
+
   const inputRef = useRef<HTMLInputElement>(null)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   // ✅ Carregar 5 mais recentes ao focar (sem query) e prefix search ao digitar
+  // B2: Aguardar clinicId antes de fazer qualquer query
   useEffect(() => {
-    if (!clinicId || !isOpen) {
+    if (!isOpen) {
+      setResults([])
+      return
+    }
+    // B2: clinicId ainda carregando — não fazer query vazia que retornaria resultados errados
+    if (clinicLoading) {
+      setResults([])
+      return
+    }
+    if (!clinicId) {
       setResults([])
       return
     }
@@ -57,8 +73,12 @@ export function TutorLookup({ value, onChange, placeholder = 'Buscar tutor...', 
       try {
         let data: TutorSearchResult[] = []
 
+        if (import.meta.env.DEV) {
+          console.log('[TutorLookup] querying tutors', { clinicId, query: query.trim() || '(recentes)' })
+        }
+
         if (query.trim().length === 0) {
-          // Carregar 5 mais recentes
+          // B3: Filtrar sempre por clinic_id (garante isolamento entre clínicas)
           const { data: recentData, error: recentError } = await supabase
             .from('tutors')
             .select('*')
@@ -68,12 +88,15 @@ export function TutorLookup({ value, onChange, placeholder = 'Buscar tutor...', 
             .limit(5)
 
           if (recentError) {
-            console.error('[TutorLookup] Load recent failed', recentError)
+            console.error('[TutorLookup] Load recent failed', recentError.message, { clinicId })
           } else {
             data = recentData || []
+            if (import.meta.env.DEV) {
+              console.log('[TutorLookup] recentes', data.length, 'tutor(s) para clinic', clinicId)
+            }
           }
         } else {
-          // Prefix search (ilike 'query%')
+          // B3: Prefix search (ilike 'query%') com clinic_id correto
           const { data: searchData, error: searchError } = await supabase
             .from('tutors')
             .select('*')
@@ -83,7 +106,7 @@ export function TutorLookup({ value, onChange, placeholder = 'Buscar tutor...', 
             .limit(10)
 
           if (searchError) {
-            console.error('[TutorLookup] Search failed', searchError)
+            console.error('[TutorLookup] Search failed', searchError.message, { clinicId })
           } else {
             data = searchData || []
           }
@@ -99,7 +122,7 @@ export function TutorLookup({ value, onChange, placeholder = 'Buscar tutor...', 
     }, query.trim().length === 0 ? 0 : 300) // Sem debounce para carregar recentes
 
     return () => clearTimeout(timer)
-  }, [query, clinicId, isOpen])
+  }, [query, clinicId, clinicLoading, isOpen])
 
   // ✅ Fechar dropdown ao clicar fora
   useEffect(() => {
@@ -243,25 +266,38 @@ export function TutorLookup({ value, onChange, placeholder = 'Buscar tutor...', 
       {isOpen && (
         <Portal.Root>
           <div ref={dropdownRef} style={dropdownStyle} className="rounded-xl border border-slate-800 bg-[#0a0f0a] shadow-[0_10px_40px_rgba(0,0,0,0.6)]">
-            {isSearching && (
+            {/* B4: Aguardar bootstrap da clínica antes de exibir resultados */}
+            {clinicLoading && (
+              <div className="px-4 py-3 text-center">
+                <p className="text-xs text-slate-500">Aguardando clínica...</p>
+              </div>
+            )}
+
+            {!clinicLoading && !clinicId && (
+              <div className="px-4 py-3 text-center">
+                <p className="text-xs text-red-400">Clínica não configurada. Verifique sua conta.</p>
+              </div>
+            )}
+
+            {!clinicLoading && clinicId && isSearching && (
               <div className="px-4 py-3 text-center">
                 <p className="text-xs text-slate-500">Buscando...</p>
               </div>
             )}
 
-            {!isSearching && query.trim().length === 0 && results.length === 0 && (
+            {!clinicLoading && clinicId && !isSearching && query.trim().length === 0 && results.length === 0 && (
               <div className="px-4 py-3 text-center">
                 <p className="text-xs text-slate-500">Carregando tutores recentes...</p>
               </div>
             )}
 
-            {!isSearching && query.trim().length > 0 && results.length === 0 && (
+            {!clinicLoading && clinicId && !isSearching && query.trim().length > 0 && results.length === 0 && (
               <div className="px-4 py-3 text-center">
                 <p className="text-xs text-slate-500">Nenhum tutor encontrado</p>
               </div>
             )}
 
-            {!isSearching && results.length > 0 && (
+            {!clinicLoading && clinicId && !isSearching && results.length > 0 && (
               <div className="py-1">
                 {query.trim().length === 0 && (
                   <div className="px-4 py-2 text-xs text-slate-500 border-b border-slate-900">

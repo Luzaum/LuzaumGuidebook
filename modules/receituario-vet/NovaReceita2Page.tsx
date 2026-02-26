@@ -1,7 +1,7 @@
 // ✅ Nova Receita 2.0 — Paridade Total com Nova Receita Antiga
 // 100% Catálogo 3.0 Supabase + todas as features da versão original
 
-import React, { useState, useEffect, useMemo, useCallback } from 'react'
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useClinic } from '../../src/components/ClinicProvider'
 import ReceituarioChrome from './ReceituarioChrome'
@@ -23,6 +23,44 @@ import { buildPrintDocFromNovaReceita2 } from './novaReceita2Adapter'
 import { BUILTIN_TEMPLATES } from './builtinTemplates'
 import { savePrescription, getPrescriptionById } from '../../src/lib/prescriptionsRecords'
 import { loadRxDb, findProfileSettings } from './rxDb'
+import type { RxTemplateStyle } from './rxDb'
+
+// ==================== DRAFT LOCAL (D) ====================
+// Chave: rx_draft_v2:<clinicId> — localStorage, por dispositivo
+
+function getDraftKey(clinicId: string | null): string | null {
+    if (!clinicId) return null
+    return `rx_draft_v2:${clinicId}`
+}
+
+function loadLocalDraft(key: string): NovaReceita2State | null {
+    try {
+        const raw = localStorage.getItem(key)
+        if (!raw) return null
+        const parsed = JSON.parse(raw) as NovaReceita2State
+        // Validação básica: precisa ter id e items
+        if (!parsed?.id || !Array.isArray(parsed?.items)) return null
+        return parsed
+    } catch {
+        return null
+    }
+}
+
+function saveLocalDraft(key: string, state: NovaReceita2State): void {
+    try {
+        localStorage.setItem(key, JSON.stringify(state))
+    } catch (e) {
+        if (import.meta.env.DEV) console.warn('[RxDraft] save failed', e)
+    }
+}
+
+function clearLocalDraft(key: string): void {
+    try {
+        localStorage.removeItem(key)
+    } catch {
+        // noop
+    }
+}
 
 // ==================== TYPES ====================
 
@@ -179,6 +217,11 @@ export default function NovaReceita2Page() {
     const [customExamDraft, setCustomExamDraft] = useState('')
     const [showPreview, setShowPreview] = useState(true)
     const [isSaving, setIsSaving] = useState(false)
+    const [hasDraft, setHasDraft] = useState(false)
+
+    // D: Controle de inicialização do draft (só carrega uma vez por clinicId)
+    const draftInitRef = useRef(false)
+    const draftKey = getDraftKey(clinicId)
 
     // ==================== HELPERS ====================
 
@@ -293,18 +336,71 @@ export default function NovaReceita2Page() {
         }
     }, [state.prescriber, updateState])
 
+    // D1: Carregar rascunho local quando clinicId ficar disponível
+    // Só carrega se não vier prescriptionId na URL e não vier items de protocolo
+    useEffect(() => {
+        if (!draftKey || draftInitRef.current) return
+        draftInitRef.current = true
+
+        const params = new URLSearchParams(location.search)
+        if (params.get('prescriptionId')) return // Carregará do Supabase
+
+        const draft = loadLocalDraft(draftKey)
+        if (!draft) {
+            setHasDraft(false)
+            return
+        }
+
+        setHasDraft(true)
+        setState(draft)
+        if (import.meta.env.DEV) console.log('[RxDraft] rascunho local carregado', draftKey)
+    }, [draftKey]) // Só re-roda quando draftKey muda (i.e., clinicId ficou disponível)
+
+    // D1: Autosave com debounce de 600ms quando autosave=true e clinicId disponível
+    useEffect(() => {
+        if (!autosave || !draftKey) return
+        const t = setTimeout(() => {
+            saveLocalDraft(draftKey, state)
+            setHasDraft(true)
+        }, 600)
+        return () => clearTimeout(t)
+    }, [state, autosave, draftKey])
+
     // ==================== MEMO ====================
 
     const printDoc = useMemo(() => {
         return buildPrintDocFromNovaReceita2(state)
     }, [state])
 
+    // F2: Unificar fonte de templates — BUILTIN_TEMPLATES + templates salvos no rxDb
+    // Evita "templates fantasmas": o dropdown e a aba Templates usam a mesma base
+    const allTemplates = useMemo((): RxTemplateStyle[] => {
+        try {
+            const db = loadRxDb()
+            const dbTemplates: RxTemplateStyle[] = (db.templates as RxTemplateStyle[] | undefined) || []
+            const builtinIds = new Set(BUILTIN_TEMPLATES.map((t) => t.id))
+            // Templates customizados que não conflitam com os embutidos
+            const custom = dbTemplates.filter((t) => !builtinIds.has(t.id))
+            return [...BUILTIN_TEMPLATES, ...custom]
+        } catch {
+            return BUILTIN_TEMPLATES
+        }
+    }, [])
+
     const selectedTemplateObj = useMemo(() => {
         const id = state.templateId || BUILTIN_TEMPLATES[0].id
-        return BUILTIN_TEMPLATES.find((t) => t.id === id) || BUILTIN_TEMPLATES[0]
-    }, [state.templateId])
+        return allTemplates.find((t) => t.id === id) || allTemplates[0]
+    }, [state.templateId, allTemplates])
 
     // ==================== ACTIONS ====================
+
+    // D1: Limpar rascunho local e reiniciar o estado
+    const handleClearDraft = useCallback(() => {
+        if (draftKey) clearLocalDraft(draftKey)
+        setHasDraft(false)
+        draftInitRef.current = false
+        setState(createDefaultState())
+    }, [draftKey])
 
     const handleReview = useCallback(() => {
         saveReviewSession(state)
@@ -386,6 +482,18 @@ export default function NovaReceita2Page() {
                                 onChange={setAutosave}
                                 label="Autosave"
                             />
+
+                            {/* D1: Limpar rascunho — visível quando há draft salvo */}
+                            {hasDraft && (
+                                <button
+                                    type="button"
+                                    className="rounded-lg border border-red-800/60 bg-red-900/20 px-3 py-2 text-xs font-bold text-red-400 hover:bg-red-900/40 transition-colors"
+                                    onClick={handleClearDraft}
+                                    title="Apaga o rascunho local e reinicia o editor"
+                                >
+                                    Limpar rascunho
+                                </button>
+                            )}
 
                             {/* Mobile: toggle preview */}
                             <button
@@ -476,7 +584,7 @@ export default function NovaReceita2Page() {
                                                 onChange={(e) =>
                                                     updateState((prev) => ({ ...prev, templateId: e.target.value }))
                                                 }
-                                                options={BUILTIN_TEMPLATES.map((t) => ({
+                                                options={allTemplates.map((t) => ({
                                                     value: t.id,
                                                     label: t.name,
                                                 }))}

@@ -8,6 +8,37 @@ import { renderRxToPrintDoc } from './rxRenderer'
 import type { RxTemplateStyle } from './rxDb'
 
 // =====================================================================
+// FIX A3: garante que valores numéricos do DB/sessionStorage
+// chegam ao renderer sempre como string (nunca como number/object).
+// FIX G: parseia dose livre "10 mg/kg" em value+unit estruturados.
+// =====================================================================
+
+/** Converte qualquer valor para string segura (nunca undefined/null/object) */
+function toSafeString(v: unknown): string {
+    if (v == null) return ''
+    if (typeof v === 'string') return v
+    if (typeof v === 'number') return String(v)
+    return ''
+}
+
+/**
+ * Tenta parsear dose livre ("10 mg/kg", "0,5 ml/kg", "25 mg") em campos estruturados.
+ * Retorna null se não reconhecer o padrão.
+ */
+function parseDoseString(dose: string): { numericStr: string; unit: string; perKg: boolean } | null {
+    if (!dose) return null
+    // Aceita: "10 mg/kg", "0,5 mg/kg BID", "25 mg", "0.5 ml/kg", "10 mcg/kg"
+    const match = dose.match(/(\d+(?:[.,]\d+)?)\s*(mg|mcg|g|ml|mL|UI|IU|u\.?i\.?)(?:\/kg)?/i)
+    if (!match) return null
+    const perKg = /\/kg/i.test(dose)
+    return {
+        numericStr: match[1].replace(',', '.'),
+        unit: match[2].toLowerCase().replace('ui', 'ui').replace('iu', 'ui'),
+        perKg,
+    }
+}
+
+// =====================================================================
 // FIX CRÍTICO: mapear route string livre -> RouteGroup enum
 // rxRenderer agrupa itens por routeGroup. Sem o enum correto,
 // os itens não aparecem em nenhuma section do PrintDoc.
@@ -111,13 +142,28 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
         // por buildAutoInstruction que não consegue parsear dose livre "10 mg/kg")
         const instruction = buildItemInstruction(item)
 
+        // FIX G: parsear dose livre para campos estruturados (doseValue numérico + doseUnit)
+        // Permite que calculateMedicationQuantity exiba "Dose calculada: X mg / Volume: Y mL"
+        const parsedDose = parseDoseString(toSafeString(item.dose))
+        const doseValue = parsedDose ? parsedDose.numericStr : toSafeString(item.dose)
+        const doseUnit = parsedDose
+            ? parsedDose.perKg ? `${parsedDose.unit}/kg` : parsedDose.unit
+            : ''
+
+        // FIX A3: garantir que concentration_text nunca seja objeto/número
+        const concentrationSafe = toSafeString(item.concentration_text)
+        // FIX A3: garantir que weight_kg do patient seja sempre string
+        // (Supabase pode retornar como number dependendo da versão do schema)
+
         if (import.meta.env.DEV) {
             console.log('[novaReceita2Adapter] item mapped', {
                 id: item.id,
                 name: item.name,
-                concentration: item.concentration_text,
+                concentration: concentrationSafe,
                 commercial: item.commercial_name,
                 routeGroup,
+                doseValue,
+                doseUnit,
                 instruction: instruction.slice(0, 60),
             })
         }
@@ -129,21 +175,19 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
             controlled: false,
             // FIX: colocar APENAS nome do fármaco em name;
             // o renderer (rxRenderer.buildItemTitle) concatena name + concentration + commercialName.
-            // Antes estava sendo colocado o título completo, gerando duplicação.
             name: item.name,
             presentation: subtitle,    // subtitle: forma + embalagem + preço
-            concentration: item.concentration_text || '',
-            commercialName: item.commercial_name || '',
+            concentration: concentrationSafe,
+            commercialName: toSafeString(item.commercial_name),
             pharmacyType: 'veterinária' as const,
             packageType: 'frasco' as const,
             pharmacyName: '',
             observations: '',
             routeGroup,
-            doseValue: item.dose || '',
-            doseUnit: '',
+            doseValue,
+            doseUnit,
             // FIX: autoInstruction = false + manualEdited = true para que o renderer
             // use SEMPRE a instrução pre-construída pelo adapter (buildItemInstruction)
-            // e nunca tente chamar buildAutoInstruction com dados livres não estruturados.
             autoInstruction: false,
             frequencyType: 'timesPerDay' as const,
             frequencyToken: '' as '' | 'SID' | 'BID' | 'TID' | 'QID',
@@ -203,7 +247,7 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
             birthDate: '',
             color: state.patient?.coat || '',
             coat: state.patient?.coat || '',
-            weightKg: state.patient?.weight_kg || '',
+            weightKg: toSafeString(state.patient?.weight_kg),
             weightDate: '',
             anamnesis: state.patient?.anamnesis || '',
             notes: state.patient?.notes || '',
