@@ -68,6 +68,28 @@ export function storeClinicId(clinicId: string | null) {
   }
 }
 
+export async function getMyMemberships(): Promise<ActiveClinicMembership[]> {
+  const { data, error } = await supabase
+    .from('memberships')
+    .select('id,user_id,clinic_id,role,created_at,clinics:clinics(id,name,created_at)')
+    .order('created_at', { ascending: true })
+
+  if (error) {
+    throw error
+  }
+
+  const rows = (data || []) as Membership[]
+  const validRows = rows.filter((row) => {
+    const clinicId = String(row.clinic_id || '').trim()
+    if (!clinicId) return false
+    const clinic = normalizeClinicFromJoin(row.clinics)
+    return !!clinic
+  })
+
+  const memberships = validRows.map((row) => normalizeMembership(row)).filter((m): m is ActiveClinicMembership => m !== null)
+  return memberships
+}
+
 export async function getMyMembership(): Promise<ActiveClinicMembership | null> {
   const { data, error } = await supabase
     .from('memberships')

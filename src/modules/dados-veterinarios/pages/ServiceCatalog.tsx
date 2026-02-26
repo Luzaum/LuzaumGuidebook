@@ -9,7 +9,7 @@ import { formatCurrency } from '../pages/Financial';
 const CATEGORY_COLORS: Record<string, string> = {
   Consultas: 'bg-blue-500',
   Vacinas: 'bg-emerald-500',
-  'Urgencia e Emergencia': 'bg-red-500',
+  'Urgência e Emergência': 'bg-red-500',
   Cirurgias: 'bg-violet-500',
   Imagem: 'bg-indigo-500',
   'Exames Laboratoriais': 'bg-orange-500',
@@ -45,6 +45,15 @@ const ServiceCard: React.FC<{ service: Service; canEdit: boolean; onEdit: (servi
   );
 };
 
+const parseCurrencyInput = (value: string) => {
+  const normalized = value.replace(/[^\d,.-]/g, '').replace(/\./g, '').replace(',', '.');
+  const parsed = Number(normalized);
+  return Number.isFinite(parsed) ? parsed : 0;
+};
+
+const formatCurrencyInput = (value: number) =>
+  `R$ ${value.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
 export const ServiceCatalog = () => {
   const { services, addService, updateService, deleteService } = useData();
   const { isAdmin } = useClinicAuth();
@@ -53,6 +62,7 @@ export const ServiceCatalog = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingService, setEditingService] = useState<Service | null>(null);
   const [formData, setFormData] = useState<Partial<Service>>({ name: '', description: '', price: 0, category: 'Consultas' });
+  const [priceInput, setPriceInput] = useState('');
 
   const categories = useMemo(
     () => ['Todos', ...Array.from(new Set([...Object.keys(CATEGORY_COLORS), ...services.map((s) => s.category)]))],
@@ -70,43 +80,53 @@ export const ServiceCatalog = () => {
     if (service) {
       setEditingService(service);
       setFormData(service);
+      setPriceInput(formatCurrencyInput(service.price));
     } else {
       setEditingService(null);
       setFormData({ name: '', description: '', price: 0, category: 'Consultas' });
+      setPriceInput('');
     }
     setIsModalOpen(true);
+  };
+
+  const commitCurrencyValue = () => {
+    const parsed = parseCurrencyInput(priceInput);
+    setFormData((prev) => ({ ...prev, price: parsed }));
+    setPriceInput(parsed > 0 ? formatCurrencyInput(parsed) : '');
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!isAdmin) return;
+    const parsed = parseCurrencyInput(priceInput);
+    const payload = { ...formData, price: parsed };
     if (editingService) {
-      updateService(editingService.id, formData);
+      updateService(editingService.id, payload);
     } else {
-      addService({ id: Math.random().toString(36).substr(2, 9), ...formData as Service });
+      addService({ id: Math.random().toString(36).substr(2, 9), ...payload as Service });
     }
     setIsModalOpen(false);
   };
 
   const handleDelete = (id: string) => {
     if (!isAdmin) return;
-    if (window.confirm('Tem certeza que deseja excluir este servico?')) deleteService(id);
+    if (window.confirm('Tem certeza que deseja excluir este serviço?')) deleteService(id);
   };
 
   return (
     <div className="space-y-8">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">Catalogo de Servicos</h1>
-          <p className="text-gray-500 dark:text-gray-400 mt-1">Cadastro central de servicos, medicamentos, insumos e procedimentos.</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">Catálogo de Serviços</h1>
+          <p className="text-gray-500 dark:text-gray-400 mt-1">Cadastro central de serviços, medicamentos, insumos e procedimentos.</p>
         </div>
         <div className="flex gap-3 w-full md:w-auto">
           <div className="relative flex-1 md:w-72">
             <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"><Search size={18} /></div>
-            <input type="text" placeholder="Buscar servico..." className="w-full pl-9 pr-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl text-sm" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+            <input type="text" placeholder="Buscar serviço..." className="w-full pl-9 pr-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl text-sm" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
           </div>
           <button onClick={() => handleOpenModal()} disabled={!isAdmin} className="px-4 py-2 bg-primary text-white rounded-xl disabled:opacity-50 font-medium transition-colors flex items-center gap-2 shadow-lg shadow-primary/30 whitespace-nowrap">
-            {isAdmin ? <Plus size={20} /> : <Lock size={18} />} {isAdmin ? 'Novo Servico' : 'Somente Admin'}
+            {isAdmin ? <Plus size={20} /> : <Lock size={18} />} {isAdmin ? 'Novo Serviço' : 'Somente Admin'}
           </button>
         </div>
       </div>
@@ -125,16 +145,30 @@ export const ServiceCatalog = () => {
         ))}
       </div>
 
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title={editingService ? 'Editar Servico' : 'Novo Servico'}>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title={editingService ? 'Editar Serviço' : 'Novo Serviço'}>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input type="text" required placeholder="Nome" className="w-full px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
           <div className="grid grid-cols-2 gap-4">
-            <input type="number" required min="0" step="0.01" placeholder="Preco" className="w-full px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl" value={formData.price} onChange={(e) => setFormData({ ...formData, price: Number(e.target.value) })} />
+            <input
+              type="text"
+              required
+              placeholder="Digite o valor e pressione Enter"
+              className="w-full px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl"
+              value={priceInput}
+              onChange={(e) => setPriceInput(e.target.value)}
+              onBlur={commitCurrencyValue}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  commitCurrencyValue();
+                }
+              }}
+            />
             <select className="w-full px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl" value={formData.category} onChange={(e) => setFormData({ ...formData, category: e.target.value })}>
               {categories.filter((c) => c !== 'Todos').map((cat) => <option key={cat} value={cat}>{cat}</option>)}
             </select>
           </div>
-          <textarea required placeholder="Descricao" className="w-full px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl min-h-[90px]" value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} />
+          <textarea required placeholder="Descrição" className="w-full px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl min-h-[90px]" value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} />
           <div className="flex justify-end gap-3 pt-4">
             <button type="button" onClick={() => setIsModalOpen(false)} className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-xl">Cancelar</button>
             <button type="submit" className="px-4 py-2 bg-primary text-white rounded-xl">Salvar</button>
@@ -144,3 +178,4 @@ export const ServiceCatalog = () => {
     </div>
   );
 };
+

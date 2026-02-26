@@ -1,1071 +1,1545 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { 
-  ArrowLeft, 
-  Edit2, 
-  PawPrint, 
-  Cake, 
-  Mars, 
-  User, 
-  PlusCircle, 
-  Syringe, 
-  Weight, 
-  ClipboardList, 
-  CheckCircle, 
-  Stethoscope, 
-  History, 
-  Microscope, 
-  Scissors, 
-  Image as ImageIcon, 
-  Printer, 
-  FilePlus, 
-  Filter, 
-  Search, 
-  Eye, 
-  ChevronDown, 
-  ArrowDown,
-  MoreVertical,
-  AlertCircle,
-  Calendar,
-  Trash2,
-  Save,
-  X
+import React, { useMemo, useRef, useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import {
+  ArrowLeft, CalendarDays, ClipboardList, DollarSign, PlusCircle,
+  Stethoscope, Camera, TrendingUp, TrendingDown, Minus, Syringe,
+  Scale, Activity, AlertTriangle, CheckCircle2, Clock, LayoutDashboard,
+  Scissors, Cpu, Palette, User, ChevronRight, MoreVertical, Trash2,
 } from 'lucide-react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
-import { useData, Patient, Vaccine, WeightRecord, Anamnesis, Exam, Procedure } from '../context/DataContext';
-import { Modal } from '../components/ui/Modal';
-import { format } from 'date-fns';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { format, isAfter } from 'date-fns';
+import {
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
+  ResponsiveContainer, ReferenceLine,
+} from 'recharts';
+import {
+  useData, Appointment, Anamnesis, Procedure, Vaccine, WeightRecord,
+} from '../context/DataContext';
+import { useClinicAuth } from '../context/ClinicAuthContext';
+import { APPOINTMENT_CATEGORIES } from '../constants';
 import { dvPath } from '../DadosVeterinariosModule';
 
-// ... existing constants ...
-const anamnesisHistory = [
-  {
-    date: "14 Outubro 2023",
-    title: "Consulta de Rotina",
-    description: "Paciente apresentou leve desconforto abdominal. Exame físico normal, exceto por leve sensibilidade à palpação. Prescrito probiótico.",
-    doctor: "Dr. Pedro Santos",
-    color: "bg-primary"
-  },
-  {
-    date: "20 Agosto 2023",
-    title: "Retorno Dermatológico",
-    description: "Melhora significativa da dermatite alérgica. Manter medicação tópica por mais 5 dias.",
-    doctor: "Dra. Clara Silva",
-    color: "bg-gray-300 dark:bg-gray-600"
-  },
-  {
-    date: "05 Maio 2023",
-    title: "Vacinação Anual",
-    description: "Aplicação de V10 e Antirrábica. Paciente calmo. Sem reações imediatas.",
-    doctor: "Dr. Pedro Santos",
-    color: "bg-gray-300 dark:bg-gray-600"
-  }
-];
+type PatientTab = 'Resumo' | 'Prontuário' | 'Agenda' | 'Financeiro';
+type DiscountMode = 'value' | 'percent';
 
-const vaccineProtocol = [
-  { name: "V10 (Polivalente)", date: "05/05/23", next: "05/05/24", status: "Em dia", icon: CheckCircle, color: "text-green-500" },
-  { name: "Antirrábica", date: "05/05/23", next: "05/05/24", status: "Em dia", icon: CheckCircle, color: "text-green-500" },
-  { name: "Giárdia", date: "10/02/23", next: "10/02/24", status: "Atrasada", icon: CheckCircle, color: "text-yellow-600" },
-  { name: "Gripe Canina", date: "-", next: "Agendar", status: "Pendente", icon: AlertCircle, color: "text-gray-300" },
-  { name: "Leishmaniose", date: "-", next: "Agendar", status: "Pendente", icon: AlertCircle, color: "text-gray-300" },
-];
+type LaunchLine = {
+  id: string;
+  serviceId: string;
+  quantity: number;
+  unitPrice: number;
+  discountMode: DiscountMode;
+  discountValue: number;
+};
 
-const recentProcedures = [
-  { name: "Hemograma Completo", date: "14 Out 2023", result: "Normal", description: "Plaquetas e leucócitos dentro da referência.", icon: Microscope, color: "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400", statusColor: "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400" },
-  { name: "Castração", date: "15 Jan 2020", result: "Realizado", description: "Procedimento eletivo sem intercorrências.", icon: Scissors, color: "bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400", statusColor: "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400" },
-  { name: "Raio-X Tórax", date: "10 Ago 2022", result: "Normal", description: "Avaliação cardiológica de rotina.", icon: ImageIcon, color: "bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400", statusColor: "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400" },
-];
+const currency = (v: number) =>
+  new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v);
+const randomId = () => Math.random().toString(36).slice(2, 10);
 
-const detailedHistory = [
-  {
-    day: "14", month: "OUT", year: "2023",
-    title: "Consulta de Rotina - Vacinação",
-    doctor: "Dr. Carlos Mendes • CRMV-SP 12345",
-    complaint: "Paciente assintomático, trazido para vacinação anual (V10 e Raiva).",
-    exam: "Mucosas normocoradas, TPC < 2s. Ausculta cardíaca e pulmonar sem alterações. Linfonodos submandibulares, poplíteos e pré-escapulares normais à palpação. Temperatura: 38.5°C.",
-    conduct: "Aplicadas vacinas Vanguard HTLP 5/CV-L (V10) e Defensor (Raiva). Recomendado retorno em 1 ano.",
-    tags: [
-      { label: "Vacinação", icon: Syringe, color: "bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-blue-100 dark:border-blue-800" },
-      { label: "Liberado", icon: CheckCircle, color: "bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 border-green-100 dark:border-green-800" }
-    ]
-  },
-  {
-    day: "22", month: "SET", year: "2023",
-    title: "Retorno Dermatologia",
-    doctor: "Dra. Amanda Silva • CRMV-SP 98765",
-    summary: "Evolução favorável das lesões pruriginosas na região lombar. Pêlo com repilação evidente...",
-    collapsed: true
-  },
-  {
-    day: "10", month: "SET", year: "2023",
-    title: "Consulta Dermatologia",
-    doctor: "Dra. Amanda Silva • CRMV-SP 98765",
-    summary: "Paciente apresenta prurido intenso na base da cauda. Suspeita de DAPP...",
-    collapsed: true
-  }
-];
+const parseWeightNumber = (weight: string | undefined) => {
+  if (!weight) return 0;
+  const numeric = Number(weight.replace(/[^0-9.,]/g, '').replace(',', '.'));
+  return Number.isFinite(numeric) ? numeric : 0;
+};
 
-const procedureHistoryTable = [
-  { date: "14/10/2023", name: "Vacina V10 (Importada)", responsible: "Dr. Carlos M.", status: "Realizado", statusColor: "bg-green-100 text-green-700 border-green-200" },
-  { date: "22/09/2023", name: "Raspado de Pele", responsible: "Dra. Amanda S.", status: "Resultados", statusColor: "bg-blue-100 text-blue-700 border-blue-200" },
-  { date: "15/05/2023", name: "Hemograma Completo", responsible: "Laboratório Ext.", status: "Arquivado", statusColor: "bg-gray-100 text-gray-700 border-gray-200" },
-];
-
-const weightHistory = [
-  { date: "14 Out 23", weight: "32.0 kg", percent: "80%" },
-  { date: "22 Set 23", weight: "31.5 kg", percent: "78%" },
-  { date: "15 Mai 23", weight: "30.2 kg", percent: "75%" },
-  { date: "10 Jan 23", weight: "29.0 kg", percent: "72%" },
-];
-
-const TabButton: React.FC<{ active: boolean; label: string; onClick: () => void }> = ({ active, label, onClick }) => (
+// ─── Tab Button ─────────────────────────────────────────────────────────────
+const TabButton = ({
+  active, label, icon, onClick,
+}: { active: boolean; label: PatientTab; icon: React.ReactNode; onClick: () => void }) => (
   <button
     onClick={onClick}
-    className={`px-4 py-2 text-sm font-bold border-b-2 transition-colors ${
-      active 
-        ? 'text-gray-900 dark:text-primary border-primary' 
-        : 'text-gray-500 dark:text-gray-400 border-transparent hover:text-primary dark:hover:text-primary'
+    className={`flex items-center gap-2 px-4 py-3 text-sm font-semibold border-b-2 transition-colors whitespace-nowrap ${
+      active
+        ? 'border-primary text-primary dark:text-primary'
+        : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-primary hover:border-primary/40'
     }`}
   >
+    {icon}
     {label}
   </button>
 );
 
+// ─── Status Badge ────────────────────────────────────────────────────────────
+const StatusBadge = ({ status, apt }: { status: Appointment['status']; apt?: boolean }) => {
+  const map: Record<string, { cls: string; label: string }> = {
+    Agendado: { cls: 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300', label: 'Agendado' },
+    Confirmado: { cls: 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300', label: 'Confirmado' },
+    Concluído: { cls: 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400', label: 'Concluído' },
+    Cancelado: { cls: 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300', label: 'Cancelado' },
+  };
+  const s = map[status] ?? map['Agendado'];
+  return (
+    <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${s.cls}`}>{s.label}</span>
+  );
+};
+
+// ─── Weight Chart Tooltip ─────────────────────────────────────────────────
+const WeightTooltip = ({ active, payload, label }: any) => {
+  if (!active || !payload?.length) return null;
+  return (
+    <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-lg p-3 text-sm">
+      <p className="font-semibold text-gray-700 dark:text-gray-200">{label}</p>
+      <p className="text-primary font-bold mt-1">{payload[0].value} kg</p>
+      {payload[0].payload.notes && (
+        <p className="text-gray-500 text-xs mt-0.5">{payload[0].payload.notes}</p>
+      )}
+    </div>
+  );
+};
+
+// ─── Section Card ─────────────────────────────────────────────────────────
+const Card = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
+  <article className={`rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-5 ${className}`}>
+    {children}
+  </article>
+);
+
+const SectionTitle = ({ icon, children }: { icon: React.ReactNode; children: React.ReactNode }) => (
+  <h3 className="text-base font-bold text-gray-900 dark:text-white inline-flex items-center gap-2 mb-4">
+    <span className="text-primary">{icon}</span>
+    {children}
+  </h3>
+);
+
+const inputCls = 'w-full px-3 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-sm';
+const labelCls = 'block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1 uppercase tracking-wide';
+
+// ─── Main Component ──────────────────────────────────────────────────────
 export const PatientDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { patients, getTutorName, appointments, updatePatient } = useData();
-  const [activeTab, setActiveTab] = useState('Resumo');
+  const {
+    patients, tutors, services, appointments, financialRecords,
+    getTutorName, updatePatient, addAppointment, addFinancialRecord,
+    updateFinancialRecord,
+  } = useData();
+  const { currentUser, selectedClinicId, getVeterinariansForSelection } = useClinicAuth();
 
-  // Modals State
-  const [isVaccineModalOpen, setIsVaccineModalOpen] = useState(false);
-  const [isWeightModalOpen, setIsWeightModalOpen] = useState(false);
-  
-  // Form Data State
+  const patient = useMemo(() => patients.find((p) => p.id === id), [patients, id]);
+  const tutor = useMemo(() => tutors.find((t) => t.id === patient?.tutorId), [tutors, patient]);
+  const veterinarianOptions = getVeterinariansForSelection();
+
+  const [activeTab, setActiveTab] = useState<PatientTab>('Resumo');
+  const imageInputRef = useRef<HTMLInputElement>(null);
+
+  // ── Vaccine form
   const [vaccineForm, setVaccineForm] = useState<Partial<Vaccine>>({
-    name: '',
-    date: new Date(),
-    nextDueDate: undefined,
-    batch: '',
-    veterinarian: ''
+    name: '', date: new Date(), batch: '', nextDueDate: undefined,
   });
-  
-  const [weightForm, setWeightForm] = useState<Partial<WeightRecord>>({
-    date: new Date(),
-    weight: 0,
-    notes: ''
-  });
+  const [vaccinePrice, setVaccinePrice] = useState(0);
 
-  // Anamnesis State
-  const [isAnamnesisModalOpen, setIsAnamnesisModalOpen] = useState(false);
+  // ── Weight form
+  const [weightInput, setWeightInput] = useState(() => parseWeightNumber(patient?.weight) || 0);
+  const [weightNotes, setWeightNotes] = useState('');
+
+  // ── Anamnesis form
   const [anamnesisForm, setAnamnesisForm] = useState<Partial<Anamnesis>>({
-    date: new Date(),
-    complaint: '',
-    history: '',
-    systemsReview: '',
-    diagnosis: '',
-    treatment: ''
+    date: new Date(), complaint: '', history: '', systemsReview: '', diagnosis: '', treatment: '',
   });
 
-  const patient = patients.find(p => p.id === id);
-  const tutorName = patient ? getTutorName(patient.tutorId) : '';
-
-  const handleAddVaccine = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!patient || !vaccineForm.name) return;
-    
-    const newVaccine: Vaccine = {
-      id: Math.random().toString(36).substr(2, 9),
-      name: vaccineForm.name!,
-      date: vaccineForm.date || new Date(),
-      nextDueDate: vaccineForm.nextDueDate,
-      batch: vaccineForm.batch,
-      veterinarian: vaccineForm.veterinarian
-    };
-    
-    const updatedVaccines = [...(patient.vaccines || []), newVaccine];
-    updatePatient(patient.id, { vaccines: updatedVaccines });
-    setIsVaccineModalOpen(false);
-    setVaccineForm({ name: '', date: new Date(), nextDueDate: undefined, batch: '', veterinarian: '' });
-  };
-
-  const handleAddWeight = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!patient || !weightForm.weight) return;
-    
-    const newWeight: WeightRecord = {
-      id: Math.random().toString(36).substr(2, 9),
-      date: weightForm.date || new Date(),
-      weight: Number(weightForm.weight),
-      notes: weightForm.notes
-    };
-    
-    const updatedWeightHistory = [...(patient.weightHistory || []), newWeight];
-    // Sort by date
-    updatedWeightHistory.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-    
-    updatePatient(patient.id, { 
-      weightHistory: updatedWeightHistory,
-      weight: `${newWeight.weight}kg` // Update current weight
-    });
-    setIsWeightModalOpen(false);
-    setWeightForm({ date: new Date(), weight: 0, notes: '' });
-  };
-
-  const handleAddAnamnesis = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!patient || !anamnesisForm.complaint) return;
-    
-    const newAnamnesis: Anamnesis = {
-      id: Math.random().toString(36).substr(2, 9),
-      date: anamnesisForm.date || new Date(),
-      complaint: anamnesisForm.complaint!,
-      history: anamnesisForm.history || '',
-      systemsReview: anamnesisForm.systemsReview,
-      diagnosis: anamnesisForm.diagnosis,
-      treatment: anamnesisForm.treatment
-    };
-    
-    const updatedAnamnesis = [newAnamnesis, ...(patient.anamnesis || [])];
-    updatePatient(patient.id, { anamnesis: updatedAnamnesis });
-    setIsAnamnesisModalOpen(false);
-    setAnamnesisForm({
-      date: new Date(),
-      complaint: '',
-      history: '',
-      systemsReview: '',
-      diagnosis: '',
-      treatment: ''
-    });
-  };
-
-  // Procedure State
-  const [isProcedureModalOpen, setIsProcedureModalOpen] = useState(false);
+  // ── Procedure form
   const [procedureForm, setProcedureForm] = useState<Partial<Procedure>>({
-    date: new Date(),
-    name: '',
-    type: 'Procedimento',
-    notes: '',
-    veterinarian: ''
+    date: new Date(), name: '', type: 'Procedimento', notes: '', price: 0,
   });
 
-  const handleAddProcedure = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!patient || !procedureForm.name) return;
-    
-    const newProcedure: Procedure = {
-      id: Math.random().toString(36).substr(2, 9),
-      date: procedureForm.date || new Date(),
-      name: procedureForm.name!,
-      type: procedureForm.type as 'Exame' | 'Procedimento' | 'Cirurgia',
-      notes: procedureForm.notes,
-      veterinarian: procedureForm.veterinarian
-    };
-    
-    const updatedProcedures = [newProcedure, ...(patient.procedures || [])];
-    updatePatient(patient.id, { procedures: updatedProcedures });
-    setIsProcedureModalOpen(false);
-    setProcedureForm({
-      date: new Date(),
-      name: '',
-      type: 'Procedimento',
-      notes: '',
-      veterinarian: ''
-    });
-  };
+  // ── Agenda form
+  const [agendaForm, setAgendaForm] = useState<Partial<Appointment>>({
+    title: patient ? `Consulta - ${patient.name}` : '',
+    date: new Date(),
+    type: 'Consulta Geral',
+    status: 'Agendado',
+    notes: '',
+    veterinarianName: currentUser.name,
+  });
+  const [agendaTime, setAgendaTime] = useState('09:00');
 
-  // Calculate stats from appointments
-  const patientAppointments = appointments.filter(a => a.patientId === id);
-  const proceduresCount = patientAppointments.length;
-  
-  // Mock data for things not in DataContext yet
-  const lastAnamnesisDate = "14 Out";
-  const lastAnamnesisTime = "Há 15 dias";
-  const lastAnamnesisComplaint = "Vômito e diarreia leve.";
-  const nextVaccine = "Raiva (Anual) - 15/02/2024";
+  // ── Financial form
+  const [launchLines, setLaunchLines] = useState<LaunchLine[]>([
+    { id: randomId(), serviceId: '', quantity: 1, unitPrice: 0, discountMode: 'value', discountValue: 0 },
+  ]);
+  const [globalDiscountMode, setGlobalDiscountMode] = useState<DiscountMode>('value');
+  const [globalDiscountValue, setGlobalDiscountValue] = useState(0);
+
+  // ── Derived data
+  const patientAppointments = useMemo(
+    () => appointments
+      .filter((a) => a.patientId === patient?.id)
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
+    [appointments, patient],
+  );
+
+  const patientFinancial = useMemo(
+    () => financialRecords
+      .filter((r) => r.patientId === patient?.id && r.type === 'Receita')
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()),
+    [financialRecords, patient],
+  );
+
+  const pendingDebt = useMemo(
+    () => patientFinancial.filter((r) => r.status === 'Pendente').reduce((s, r) => s + r.amount, 0),
+    [patientFinancial],
+  );
+
+  // ── Weight history sorted
+  const weightHistory = useMemo(
+    () => [...(patient?.weightHistory || [])].sort(
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
+    ),
+    [patient],
+  );
+
+  const weightChartData = useMemo(
+    () => weightHistory.map((r) => ({
+      date: format(new Date(r.date), 'dd/MM/yy'),
+      weight: r.weight,
+      notes: r.notes,
+    })),
+    [weightHistory],
+  );
+
+  const weightTrend = useMemo(() => {
+    if (weightHistory.length < 2) return null;
+    const first = weightHistory[0].weight;
+    const last = weightHistory[weightHistory.length - 1].weight;
+    const delta = last - first;
+    return { delta, direction: delta > 0 ? 'up' : delta < 0 ? 'down' : 'stable' };
+  }, [weightHistory]);
+
+  // ── Launch preview
+  const launchPreview = useMemo(() => {
+    const rows = launchLines
+      .map((line) => {
+        const service = services.find((s) => s.id === line.serviceId);
+        if (!service || line.quantity <= 0) return null;
+        const gross = line.quantity * line.unitPrice;
+        const itemDiscount =
+          line.discountMode === 'percent'
+            ? Math.min(gross, (gross * Math.max(0, line.discountValue)) / 100)
+            : Math.min(gross, Math.max(0, line.discountValue));
+        return { line, service, subtotal: Math.max(0, gross - itemDiscount) };
+      })
+      .filter(Boolean) as { line: LaunchLine; service: (typeof services)[number]; subtotal: number }[];
+
+    const subtotal = rows.reduce((s, r) => s + r.subtotal, 0);
+    const globalDiscount =
+      globalDiscountMode === 'percent'
+        ? Math.min(subtotal, (subtotal * Math.max(0, globalDiscountValue)) / 100)
+        : Math.min(subtotal, Math.max(0, globalDiscountValue));
+    return { rows, subtotal, globalDiscount, total: Math.max(0, subtotal - globalDiscount) };
+  }, [launchLines, services, globalDiscountMode, globalDiscountValue]);
 
   if (!patient) {
     return (
-      <div className="flex flex-col items-center justify-center h-96">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Paciente não encontrado</h2>
-        <button 
+      <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-8 text-center">
+        <AlertTriangle size={40} className="mx-auto text-amber-400 mb-3" />
+        <h2 className="text-xl font-bold text-gray-900 dark:text-white">Paciente não encontrado</h2>
+        <button
           onClick={() => navigate(dvPath('patients'))}
-          className="px-4 py-2 bg-primary text-white rounded-xl hover:bg-green-600 transition-colors"
+          className="mt-4 px-4 py-2 rounded-xl bg-primary text-white font-semibold"
         >
-          Voltar para Lista
+          Voltar para pacientes
         </button>
       </div>
     );
   }
 
-  const renderGeneralPanel = () => (
-    <div className="space-y-6 animate-in fade-in duration-500">
-      {/* Header Card */}
-      <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-100 dark:border-gray-800 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-6">
-        <div className="relative group">
-          <div 
-            className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-cover bg-center border-4 border-gray-50 dark:border-gray-900 shadow-md"
-            style={{ backgroundImage: `url('${patient.imageUrl || "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=300&h=300"}')` }}
-          ></div>
-          <button className="absolute bottom-1 right-1 bg-primary text-white p-1.5 rounded-full shadow-lg hover:bg-green-600 transition-colors">
-            <Edit2 size={14} className="font-bold" />
-          </button>
-        </div>
-        
-        <div className="flex-1 text-center md:text-left space-y-2">
-          <div className="flex flex-col md:flex-row items-center gap-3">
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">{patient.name}</h1>
-            <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold border ${
-              patient.status === 'Vivo' 
-                ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 border-green-200 dark:border-green-800'
-                : 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400 border-red-200 dark:border-red-800'
-            }`}>
-              {patient.status}
-            </span>
-          </div>
-          
-          <div className="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2 text-sm text-gray-500 dark:text-gray-400">
-            <span className="flex items-center gap-1.5">
-              <PawPrint size={18} />
-              {patient.breed}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Cake size={18} />
-              {patient.age}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Mars size={18} />
-              {patient.sex}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <User size={18} />
-              Tutor: {tutorName}
-            </span>
-          </div>
+  // ── Handlers
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      const url = ev.target?.result as string;
+      updatePatient(patient.id, { imageUrl: url });
+    };
+    reader.readAsDataURL(file);
+  };
 
-          <div className="pt-2 flex flex-wrap justify-center md:justify-start gap-3">
-            <button className="px-4 py-2 rounded-lg bg-primary hover:bg-green-600 text-white font-bold text-sm shadow-sm transition-all flex items-center gap-2">
-              <PlusCircle size={18} />
-              Nova Consulta
-            </button>
-            <button className="px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white text-sm font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center gap-2">
-              <Syringe size={18} />
-              Registrar Vacina
-            </button>
-          </div>
-        </div>
-      </div>
+  const saveVaccine = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!vaccineForm.name) return;
+    const vaccine: Vaccine = {
+      id: randomId(),
+      name: vaccineForm.name,
+      date: vaccineForm.date || new Date(),
+      nextDueDate: vaccineForm.nextDueDate,
+      batch: vaccineForm.batch,
+      veterinarian: currentUser.name,
+    };
+    updatePatient(patient.id, { vaccines: [...(patient.vaccines || []), vaccine] });
+    if (vaccinePrice > 0) {
+      addFinancialRecord({
+        id: randomId(),
+        clinicId: selectedClinicId === 'all' ? patient.clinicId : selectedClinicId,
+        description: `Vacina ${vaccine.name} — ${patient.name}`,
+        amount: vaccinePrice,
+        type: 'Receita',
+        category: 'Vacinas',
+        date: new Date(vaccine.date),
+        status: 'Pendente',
+        patientId: patient.id,
+      });
+    }
+    setVaccineForm({ name: '', date: new Date(), batch: '', nextDueDate: undefined });
+    setVaccinePrice(0);
+  };
 
-      {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {/* Weight Card */}
-        <div className="bg-white dark:bg-gray-900 p-5 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm flex flex-col justify-between">
-          <div className="flex justify-between items-start mb-2">
-            <div>
-              <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Peso Atual</p>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mt-1">{patient.weight}</h3>
-            </div>
-            <div className="bg-primary/10 p-2 rounded-lg text-primary">
-              <Weight size={24} />
-            </div>
-          </div>
-          <div className="mt-4 h-12 flex items-end gap-1">
-            <div className="w-1/6 bg-primary/20 h-[40%] rounded-sm"></div>
-            <div className="w-1/6 bg-primary/30 h-[50%] rounded-sm"></div>
-            <div className="w-1/6 bg-primary/40 h-[45%] rounded-sm"></div>
-            <div className="w-1/6 bg-primary/50 h-[60%] rounded-sm"></div>
-            <div className="w-1/6 bg-primary/60 h-[75%] rounded-sm"></div>
-            <div className="w-1/6 bg-primary h-[80%] rounded-sm"></div>
-          </div>
-          <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 flex items-center gap-1">
-            <span className="text-primary font-bold">+0.5kg</span> vs último mês
-          </p>
-        </div>
+  const saveWeight = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (weightInput <= 0) return;
+    const newRecord: WeightRecord = {
+      id: randomId(), date: new Date(), weight: weightInput, notes: weightNotes || undefined,
+    };
+    const history = [...(patient.weightHistory || []), newRecord].sort(
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
+    );
+    updatePatient(patient.id, { weightHistory: history, weight: `${weightInput.toFixed(1)}kg` });
+    setWeightNotes('');
+  };
 
-        {/* Anamnesis Card */}
-        <div className="bg-white dark:bg-gray-900 p-5 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm flex flex-col justify-between">
-          <div className="flex justify-between items-start">
-            <div>
-              <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Última Anamnese</p>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mt-1">{lastAnamnesisDate}</h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">{lastAnamnesisTime}</p>
-            </div>
-            <div className="bg-blue-100 dark:bg-blue-900/30 p-2 rounded-lg text-blue-500">
-              <ClipboardList size={24} />
-            </div>
-          </div>
-          <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-800">
-            <p className="text-xs font-medium text-gray-900 dark:text-white truncate">Queixa: {lastAnamnesisComplaint}</p>
-            <button className="text-xs text-primary hover:underline mt-1 inline-block">Ver detalhes</button>
-          </div>
-        </div>
+  const saveAnamnesis = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!anamnesisForm.complaint) return;
+    const entry: Anamnesis = {
+      id: randomId(),
+      date: anamnesisForm.date || new Date(),
+      complaint: anamnesisForm.complaint,
+      history: anamnesisForm.history || '',
+      systemsReview: anamnesisForm.systemsReview,
+      diagnosis: anamnesisForm.diagnosis,
+      treatment: anamnesisForm.treatment,
+    };
+    updatePatient(patient.id, { anamnesis: [entry, ...(patient.anamnesis || [])] });
+    setAnamnesisForm({ date: new Date(), complaint: '', history: '', systemsReview: '', diagnosis: '', treatment: '' });
+  };
 
-        {/* Vaccination Card */}
-        <div className="bg-white dark:bg-gray-900 p-5 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm flex flex-col justify-between">
-          <div className="flex justify-between items-start">
-            <div>
-              <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Vacinação</p>
-              <div className="mt-2 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-sm font-bold border border-green-200 dark:border-green-800">
-                <CheckCircle size={16} />
-                Em dia
-              </div>
-            </div>
-            <div className="bg-purple-100 dark:bg-purple-900/30 p-2 rounded-lg text-purple-500">
-              <Syringe size={24} />
-            </div>
-          </div>
-          <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-800">
-            <p className="text-xs text-gray-500 dark:text-gray-400">Próxima dose prevista:</p>
-            <p className="text-sm font-bold text-gray-900 dark:text-white">{nextVaccine}</p>
-          </div>
-        </div>
+  const saveProcedure = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!procedureForm.name) return;
+    const entry: Procedure = {
+      id: randomId(),
+      date: procedureForm.date || new Date(),
+      name: procedureForm.name,
+      type: (procedureForm.type || 'Procedimento') as Procedure['type'],
+      notes: procedureForm.notes,
+      veterinarian: currentUser.name,
+      price: Number(procedureForm.price || 0),
+    };
+    updatePatient(patient.id, { procedures: [entry, ...(patient.procedures || [])] });
+    if ((entry.price || 0) > 0) {
+      addFinancialRecord({
+        id: randomId(),
+        clinicId: selectedClinicId === 'all' ? patient.clinicId : selectedClinicId,
+        description: `${entry.type}: ${entry.name} — ${patient.name}`,
+        amount: Number(entry.price),
+        type: 'Receita',
+        category:
+          entry.type === 'Exame' ? 'Exames' : entry.type === 'Cirurgia' ? 'Cirurgias' : 'Procedimentos',
+        date: new Date(entry.date),
+        status: 'Pendente',
+        patientId: patient.id,
+      });
+    }
+    setProcedureForm({ date: new Date(), name: '', type: 'Procedimento', notes: '', price: 0 });
+  };
 
-        {/* Procedures Card */}
-        <div className="bg-white dark:bg-gray-900 p-5 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm flex flex-col justify-between">
-          <div className="flex justify-between items-start">
-            <div>
-              <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Procedimentos</p>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mt-1">{proceduresCount}</h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Total registrado</p>
-            </div>
-            <div className="bg-orange-100 dark:bg-orange-900/30 p-2 rounded-lg text-orange-500">
-              <Stethoscope size={24} />
-            </div>
-          </div>
-          <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-800">
-            <div className="flex items-center justify-between text-xs">
-              <span className="text-gray-500 dark:text-gray-400">Último: {patientAppointments[0]?.title || 'Nenhum'}</span>
-            </div>
-          </div>
-        </div>
-      </div>
+  const savePatientAppointment = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!agendaForm.title || !agendaForm.type || !agendaForm.veterinarianName || !agendaForm.date) return;
+    const [h, m] = agendaTime.split(':').map(Number);
+    const date = new Date(agendaForm.date);
+    date.setHours(h, m, 0, 0);
+    addAppointment({
+      id: randomId(),
+      clinicId: selectedClinicId === 'all' ? patient.clinicId : selectedClinicId,
+      title: agendaForm.title,
+      date,
+      patientId: patient.id,
+      tutorId: patient.tutorId,
+      veterinarianName: agendaForm.veterinarianName,
+      type: agendaForm.type,
+      status: 'Agendado',
+      notes: agendaForm.notes,
+    });
+  };
 
-      {/* Bottom Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Anamnesis History */}
-        <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col h-full">
-          <div className="p-5 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center">
-            <h3 className="font-bold text-gray-900 dark:text-white flex items-center gap-2">
-              <History className="text-primary" size={20} />
-              Anamneses Prévias
-            </h3>
-            <button className="text-xs font-bold text-primary hover:text-green-600">Ver Todas</button>
-          </div>
-          <div className="p-5 overflow-y-auto flex-1 max-h-[500px]">
-            <div className="relative pl-6 border-l border-gray-100 dark:border-gray-800 space-y-8">
-              {anamnesisHistory.map((item, index) => (
-                <div key={index} className="relative">
-                  <div className={`absolute -left-[29px] top-1 w-3.5 h-3.5 rounded-full ${item.color} border-2 border-white dark:border-gray-900`}></div>
-                  <div className="flex flex-col gap-1">
-                    <span className="text-xs font-bold text-gray-500 dark:text-gray-400">{item.date}</span>
-                    <h4 className="text-sm font-bold text-gray-900 dark:text-white">{item.title}</h4>
-                    <p className="text-sm text-gray-500 dark:text-gray-300 mt-1 leading-relaxed">
-                      {item.description}
-                    </p>
-                    <div className="mt-2 flex gap-2">
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300">
-                        {item.doctor}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+  const updateLine = (lineId: string, payload: Partial<LaunchLine>) => {
+    setLaunchLines((prev) =>
+      prev.map((line) => {
+        if (line.id !== lineId) return line;
+        const next = { ...line, ...payload };
+        if (payload.serviceId) {
+          const svc = services.find((s) => s.id === payload.serviceId);
+          if (svc) next.unitPrice = svc.price;
+        }
+        return next;
+      }),
+    );
+  };
 
-        {/* Vaccine Protocol */}
-        <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col h-full">
-          <div className="p-5 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center">
-            <h3 className="font-bold text-gray-900 dark:text-white flex items-center gap-2">
-              <Syringe className="text-primary" size={20} />
-              Protocolo Vacinal
-            </h3>
-            <button className="text-xs font-bold text-primary hover:text-green-600">Gerenciar</button>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="bg-gray-50 dark:bg-gray-800/50 text-xs text-gray-500 dark:text-gray-400 border-b border-gray-100 dark:border-gray-800">
-                  <th className="py-3 px-5 font-semibold">Vacina</th>
-                  <th className="py-3 px-5 font-semibold">Aplicação</th>
-                  <th className="py-3 px-5 font-semibold">Próx. Dose</th>
-                </tr>
-              </thead>
-              <tbody className="text-sm divide-y divide-gray-100 dark:divide-gray-800">
-                {vaccineProtocol.map((vac, i) => (
-                  <tr key={i} className="group hover:bg-gray-50 dark:hover:bg-gray-800/30 transition-colors">
-                    <td className="py-3 px-5">
-                      <div className="flex items-center gap-2">
-                        <vac.icon className={`${vac.color}`} size={16} />
-                        <span className="font-medium text-gray-900 dark:text-white">{vac.name}</span>
-                      </div>
-                    </td>
-                    <td className="py-3 px-5 text-gray-500 dark:text-gray-300">{vac.date}</td>
-                    <td className={`py-3 px-5 font-bold ${vac.next === 'Agendar' ? 'text-primary' : 'text-gray-900 dark:text-white'}`}>
-                      {vac.next}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+  const launchServices = () => {
+    if (!launchPreview.rows.length) return;
+    const subtotal = launchPreview.rows.reduce((s, r) => s + r.subtotal, 0) || 1;
+    launchPreview.rows.forEach((row) => {
+      const prop = (row.subtotal / subtotal) * launchPreview.globalDiscount;
+      const finalAmount = Math.max(0, row.subtotal - prop);
+      addFinancialRecord({
+        id: randomId(),
+        clinicId: selectedClinicId === 'all' ? patient.clinicId : selectedClinicId,
+        description: `${row.service.name} x${row.line.quantity} — ${patient.name}`,
+        amount: Number(finalAmount.toFixed(2)),
+        type: 'Receita',
+        category: row.service.category,
+        date: new Date(),
+        status: 'Pendente',
+        patientId: patient.id,
+      });
+    });
+    setLaunchLines([{ id: randomId(), serviceId: '', quantity: 1, unitPrice: 0, discountMode: 'value', discountValue: 0 }]);
+    setGlobalDiscountMode('value');
+    setGlobalDiscountValue(0);
+  };
 
-        {/* Recent Procedures */}
-        <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col h-full">
-          <div className="p-5 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center">
-            <h3 className="font-bold text-gray-900 dark:text-white flex items-center gap-2">
-              <Stethoscope className="text-primary" size={20} />
-              Procedimentos
-            </h3>
-            <button className="text-xs font-bold text-primary hover:text-green-600">Solicitar Novo</button>
-          </div>
-          <div className="p-4 space-y-3">
-            {recentProcedures.map((proc, i) => (
-              <div key={i} className="p-3 rounded-lg border border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/30 flex items-start gap-3">
-                <div className={`p-2 rounded-md ${proc.color}`}>
-                  <proc.icon size={20} />
-                </div>
-                <div className="flex-1">
-                  <div className="flex justify-between items-start">
-                    <h4 className="text-sm font-bold text-gray-900 dark:text-white">{proc.name}</h4>
-                    <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded ${proc.statusColor}`}>
-                      {proc.result}
-                    </span>
-                  </div>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{proc.date}</p>
-                  <p className="text-xs text-gray-900 dark:text-gray-300 mt-1.5">{proc.description}</p>
-                </div>
-              </div>
-            ))}
-            <div className="mt-auto p-3 border-t border-gray-100 dark:border-gray-800 text-center">
-              <button className="text-xs font-medium text-gray-500 hover:text-primary transition-colors">Ver histórico completo</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
-  const renderMedicalRecordPanel = () => (
-    <div className="space-y-6 animate-in fade-in duration-500">
-      {/* Header Actions */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div className="flex items-center gap-4">
-          <div className="relative">
-            <div 
-              className="w-16 h-16 rounded-full bg-cover bg-center border-2 border-white shadow-sm"
-              style={{ backgroundImage: `url('${patient.imageUrl || "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=150&h=150"}')` }}
-            ></div>
-            <div className="absolute -bottom-1 -right-1 bg-white dark:bg-gray-900 rounded-full p-0.5 border border-gray-200 dark:border-gray-700">
-              <div className="bg-orange-100 dark:bg-orange-900 rounded-full p-0.5">
-                <PawPrint size={14} className="text-orange-500" />
-              </div>
-            </div>
-          </div>
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-              {patient.name}
-              <span className={`px-2 py-0.5 rounded text-xs font-semibold border ${
-                patient.status === 'Vivo'
-                  ? 'bg-green-100 text-green-700 border-green-200'
-                  : 'bg-red-100 text-red-700 border-red-200'
-              }`}>
-                {patient.status}
-              </span>
-            </h1>
-            <p className="text-gray-500 dark:text-gray-400 text-sm">
-              {patient.breed} • {patient.age} • {patient.sex} • {patient.weight}
-            </p>
-          </div>
-        </div>
-        <div className="flex items-center gap-3">
-          <button className="px-5 py-2.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white text-sm font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center gap-2">
-            <Printer size={18} />
-            Imprimir Prontuário
-          </button>
-          <button 
-            onClick={() => setIsAnamnesisModalOpen(true)}
-            className="px-5 py-2.5 rounded-lg bg-primary hover:bg-green-600 text-white font-bold text-sm shadow-sm transition-all flex items-center gap-2"
-          >
-            <FilePlus size={18} />
-            Nova Evolução
-          </button>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Left Column (8/12) */}
-        <div className="lg:col-span-8 space-y-6">
-          {/* Detailed Anamnesis */}
-          <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden">
-            <div className="px-6 py-4 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between sticky top-0 bg-white dark:bg-gray-900 z-10">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                <ClipboardList className="text-primary" size={20} />
-                Anamneses Prévias e Evolução Clínica
-              </h3>
-              <div className="flex items-center gap-2">
-                <span className="text-xs text-gray-500 font-medium uppercase">Filtrar por:</span>
-                <select className="bg-transparent text-sm border-none focus:ring-0 text-gray-900 dark:text-white font-semibold cursor-pointer outline-none">
-                  <option>Todas as Especialidades</option>
-                  <option>Dermatologia</option>
-                  <option>Clínica Geral</option>
-                </select>
-              </div>
-            </div>
-            <div className="divide-y divide-gray-100 dark:divide-gray-800">
-              {patient.anamnesis && patient.anamnesis.length > 0 ? (
-                patient.anamnesis.map((item, index) => (
-                  <div key={index} className="group px-6 py-4 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer transition-colors flex items-start gap-4">
-                    <div className="flex flex-col items-center min-w-[60px] pt-1">
-                      <span className="text-sm font-bold text-gray-900 dark:text-white">{format(new Date(item.date), 'dd MMM')}</span>
-                      <span className="text-xs text-gray-500">{format(new Date(item.date), 'yyyy')}</span>
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex justify-between items-start mb-2">
-                        <div>
-                          <h4 className="text-base font-bold text-gray-900 dark:text-white">{item.complaint}</h4>
-                          <p className="text-xs text-gray-500">Dr. Veterinário</p>
-                        </div>
-                      </div>
-                      <div className="text-sm text-gray-900 dark:text-gray-300 space-y-3 mt-3 pl-3 border-l-2 border-primary/20">
-                        <div>
-                          <span className="font-bold block text-xs text-gray-500 uppercase mb-1">Histórico</span>
-                          <p>{item.history}</p>
-                        </div>
-                        {item.systemsReview && (
-                          <div>
-                            <span className="font-bold block text-xs text-gray-500 uppercase mb-1">Revisão de Sistemas</span>
-                            <p>{item.systemsReview}</p>
-                          </div>
-                        )}
-                        {item.diagnosis && (
-                          <div>
-                            <span className="font-bold block text-xs text-gray-500 uppercase mb-1">Diagnóstico</span>
-                            <p>{item.diagnosis}</p>
-                          </div>
-                        )}
-                        {item.treatment && (
-                          <div>
-                            <span className="font-bold block text-xs text-gray-500 uppercase mb-1">Tratamento</span>
-                            <p>{item.treatment}</p>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <p className="text-center py-8 text-gray-500">Nenhuma anamnese registrada.</p>
-              )}
-            </div>
-            <div className="p-3 bg-gray-50 dark:bg-gray-800/50 text-center border-t border-gray-100 dark:border-gray-800">
-              <button className="text-xs font-semibold text-gray-500 hover:text-primary transition-colors flex items-center justify-center gap-1 w-full py-2">
-                Ver histórico completo
-                <ArrowDown size={14} />
-              </button>
-            </div>
-          </div>
-
-          {/* Procedure History Table */}
-          <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden">
-            <div className="px-6 py-4 border-b border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                <Stethoscope className="text-primary" size={20} />
-                Histórico de Procedimentos e Exames
-              </h3>
-              <div className="flex gap-2">
-                <button 
-                  onClick={() => setIsProcedureModalOpen(true)}
-                  className="px-4 py-2 rounded-lg bg-primary hover:bg-green-600 text-white font-bold text-sm shadow-sm transition-all flex items-center gap-2"
-                >
-                  <PlusCircle size={16} />
-                  Novo Registro
-                </button>
-              </div>
-            </div>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm text-left">
-                <thead className="text-xs text-gray-500 uppercase bg-gray-50 dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
-                  <tr>
-                    <th className="px-6 py-3 font-semibold">Data</th>
-                    <th className="px-6 py-3 font-semibold">Procedimento</th>
-                    <th className="px-6 py-3 font-semibold">Tipo</th>
-                    <th className="px-6 py-3 font-semibold">Responsável</th>
-                    <th className="px-6 py-3 font-semibold text-right">Ações</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
-                  {patient.procedures && patient.procedures.length > 0 ? (
-                    patient.procedures.map((proc, i) => (
-                      <tr key={i} className="bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
-                        <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-900 dark:text-white">{format(new Date(proc.date), 'dd/MM/yyyy')}</td>
-                        <td className="px-6 py-4">{proc.name}</td>
-                        <td className="px-6 py-4">
-                          <span className={`px-2 py-1 rounded-full text-xs font-semibold border ${
-                            proc.type === 'Exame' ? 'bg-blue-100 text-blue-700 border-blue-200' :
-                            proc.type === 'Cirurgia' ? 'bg-red-100 text-red-700 border-red-200' :
-                            'bg-green-100 text-green-700 border-green-200'
-                          }`}>
-                            {proc.type}
-                          </span>
-                        </td>
-                        <td className="px-6 py-4 text-gray-500">{proc.veterinarian || '-'}</td>
-                        <td className="px-6 py-4 text-right">
-                          <button className="text-gray-500 hover:text-primary transition-colors">
-                            <Eye size={18} />
-                          </button>
-                        </td>
-                      </tr>
-                    ))
-                  ) : (
-                    <tr>
-                      <td colSpan={5} className="px-6 py-8 text-center text-gray-500">Nenhum procedimento registrado.</td>
-                    </tr>
-                  )}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Column (4/12) */}
-        <div className="lg:col-span-4 space-y-6">
-          {/* Vaccine Protocol Side */}
-          <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden">
-            <div className="px-5 py-4 border-b border-gray-100 dark:border-gray-800 bg-primary/5">
-              <h3 className="text-base font-bold text-gray-900 dark:text-white flex items-center justify-between">
-                Protocolo Vacinal
-                <Syringe className="text-primary" size={20} />
-              </h3>
-            </div>
-            <div className="p-5 space-y-4">
-              {patient.vaccines && patient.vaccines.length > 0 ? (
-                patient.vaccines.map((vac, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
-                    <div className="flex-1">
-                      <div className="flex justify-between">
-                        <p className="text-sm font-bold text-gray-900 dark:text-white">{vac.name}</p>
-                        <span className="text-xs font-medium text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 px-1.5 py-0.5 rounded">Aplicada</span>
-                      </div>
-                      <p className="text-xs text-gray-500">
-                        Data: {format(new Date(vac.date), 'dd/MM/yyyy')}
-                        {vac.nextDueDate && ` • Vence: ${format(new Date(vac.nextDueDate), 'dd/MM/yyyy')}`}
-                      </p>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <p className="text-sm text-gray-500 text-center py-4">Nenhuma vacina registrada.</p>
-              )}
-              
-              <button 
-                onClick={() => setIsVaccineModalOpen(true)}
-                className="w-full mt-2 py-2 text-xs font-bold text-primary hover:text-green-600 border border-dashed border-primary/30 rounded hover:bg-primary/5 transition-colors"
-              >
-                + Adicionar Vacina
-              </button>
-            </div>
-          </div>
-
-          {/* Weight History */}
-          <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden">
-            <div className="px-5 py-4 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center">
-              <h3 className="text-base font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                Histórico de Peso
-                <Weight className="text-gray-500" size={18} />
-              </h3>
-              <button 
-                onClick={() => setIsWeightModalOpen(true)}
-                className="text-primary hover:text-green-600 text-xs font-bold"
-              >
-                Novo Registro
-              </button>
-            </div>
-            <div className="p-0">
-              <ul className="divide-y divide-gray-100 dark:divide-gray-800">
-                {patient.weightHistory && patient.weightHistory.length > 0 ? (
-                  patient.weightHistory.map((w, i) => (
-                    <li key={i} className="px-5 py-3 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-                      <div className="flex items-center gap-3">
-                        <span className="text-xs font-medium text-gray-500 w-20">{format(new Date(w.date), 'dd MMM yy')}</span>
-                      </div>
-                      <span className="text-sm font-bold text-gray-900 dark:text-white">{w.weight} kg</span>
-                    </li>
-                  ))
-                ) : (
-                  <li className="px-5 py-4 text-center text-sm text-gray-500">Nenhum registro de peso.</li>
-                )}
-              </ul>
-            </div>
-          </div>
-
-          {/* Tutor Profile */}
-          <div className="bg-primary/5 rounded-xl border border-primary/20 p-5">
-            <h3 className="text-xs font-bold text-gray-500 uppercase mb-3 tracking-wide">Tutor Responsável</h3>
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 rounded-full bg-white dark:bg-gray-900 flex items-center justify-center text-primary font-bold shadow-sm">
-                {tutorName.charAt(0)}
-              </div>
-              <div>
-                <p className="text-sm font-bold text-gray-900 dark:text-white">{tutorName}</p>
-                <Link to={dvPath(`tutors/${patient.tutorId}`)} className="text-xs text-primary hover:underline">Ver Perfil</Link>
-              </div>
-            </div>
-            <button className="w-full text-center text-xs font-semibold text-primary hover:underline">Ver Perfil Completo do Tutor</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
-  const renderPlaceholder = (title: string) => (
-    <div className="flex flex-col items-center justify-center h-96 bg-white dark:bg-gray-900 rounded-xl border border-gray-100 dark:border-gray-800 animate-in fade-in duration-500">
-      <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-full mb-4">
-        <AlertCircle size={32} className="text-gray-400" />
-      </div>
-      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{title}</h3>
-      <p className="text-gray-500 dark:text-gray-400">Este módulo está em desenvolvimento.</p>
-    </div>
-  );
+  const speciesLabel = patient.species === 'Canino' || patient.species === 'Cão' ? 'Canino' : 'Felino';
+  const vaccinesOverdue = (patient.vaccines || []).filter(
+    (v) => v.nextDueDate && !isAfter(new Date(v.nextDueDate), new Date()),
+  ).length;
 
   return (
-    <div className="space-y-8 max-w-[1600px] mx-auto">
-      {/* Top Navigation Bar */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <Link to={dvPath('patients')} className="inline-flex items-center text-gray-500 hover:text-primary transition-colors text-sm font-medium group">
-          <ArrowLeft size={18} className="mr-1 group-hover:-translate-x-1 transition-transform" />
-          Voltar para Lista de Pacientes
+    <div className="space-y-5 max-w-[1700px] mx-auto pb-10">
+      {/* ── Breadcrumb & Tabs ── */}
+      <div className="flex flex-col gap-0">
+        <Link
+          to={dvPath('patients')}
+          className="inline-flex items-center gap-1.5 text-gray-500 dark:text-gray-400 hover:text-primary text-xs font-medium mb-3"
+        >
+          <ArrowLeft size={14} /> Voltar para pacientes
         </Link>
-        <div className="flex items-center gap-9">
-          <nav className="hidden md:flex items-center gap-2">
-            {['Resumo', 'Prontuário', 'Agenda', 'Financeiro'].map((tab) => (
-              <TabButton 
-                key={tab} 
-                label={tab} 
-                active={activeTab === tab} 
-                onClick={() => setActiveTab(tab)} 
-              />
-            ))}
-          </nav>
+
+        <div className="flex items-center gap-0 border-b border-gray-200 dark:border-gray-700 overflow-x-auto">
+          {(
+            [
+              { label: 'Resumo', icon: <LayoutDashboard size={15} /> },
+              { label: 'Prontuário', icon: <ClipboardList size={15} /> },
+              { label: 'Agenda', icon: <CalendarDays size={15} /> },
+              { label: 'Financeiro', icon: <DollarSign size={15} /> },
+            ] as { label: PatientTab; icon: React.ReactNode }[]
+          ).map(({ label, icon }) => (
+            <TabButton
+              key={label}
+              label={label}
+              icon={icon}
+              active={activeTab === label}
+              onClick={() => setActiveTab(label)}
+            />
+          ))}
         </div>
       </div>
 
-      {/* Content Area */}
-      <main>
-        {activeTab === 'Resumo' && renderGeneralPanel()}
-        {activeTab === 'Prontuário' && renderMedicalRecordPanel()}
-        {activeTab === 'Agenda' && renderPlaceholder('Agenda do Paciente')}
-        {activeTab === 'Financeiro' && renderPlaceholder('Histórico Financeiro')}
-      </main>
-
-      {/* Modals */}
-      <Modal
-        isOpen={isVaccineModalOpen}
-        onClose={() => setIsVaccineModalOpen(false)}
-        title="Registrar Vacina"
-      >
-        <form onSubmit={handleAddVaccine} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nome da Vacina</label>
-            <input
-              type="text"
-              required
-              className="w-full px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-              value={vaccineForm.name}
-              onChange={(e) => setVaccineForm({...vaccineForm, name: e.target.value})}
-            />
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Data da Aplicação</label>
-              <input
-                type="date"
-                required
-                className="w-full px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                value={vaccineForm.date ? format(vaccineForm.date, 'yyyy-MM-dd') : ''}
-                onChange={(e) => setVaccineForm({...vaccineForm, date: new Date(e.target.value)})}
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Próxima Dose</label>
-              <input
-                type="date"
-                className="w-full px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                value={vaccineForm.nextDueDate ? format(vaccineForm.nextDueDate, 'yyyy-MM-dd') : ''}
-                onChange={(e) => setVaccineForm({...vaccineForm, nextDueDate: new Date(e.target.value)})}
-              />
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Lote</label>
-              <input
-                type="text"
-                className="w-full px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                value={vaccineForm.batch}
-                onChange={(e) => setVaccineForm({...vaccineForm, batch: e.target.value})}
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Veterinário</label>
-              <input
-                type="text"
-                className="w-full px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                value={vaccineForm.veterinarian}
-                onChange={(e) => setVaccineForm({...vaccineForm, veterinarian: e.target.value})}
-              />
-            </div>
-          </div>
-          <div className="flex justify-end gap-3 pt-4">
-            <button
-              type="button"
-              onClick={() => setIsVaccineModalOpen(false)}
-              className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-xl font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-            >
-              Cancelar
-            </button>
-            <button
-              type="submit"
-              className="px-4 py-2 bg-primary text-white rounded-xl font-medium hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25"
-            >
-              Salvar
-            </button>
-          </div>
-        </form>
-      </Modal>
-
-      <Modal
-        isOpen={isWeightModalOpen}
-        onClose={() => setIsWeightModalOpen(false)}
-        title="Registrar Peso"
-      >
-        <form onSubmit={handleAddWeight} className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Data</label>
-              <input
-                type="date"
-                required
-                className="w-full px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                value={weightForm.date ? format(weightForm.date, 'yyyy-MM-dd') : ''}
-                onChange={(e) => setWeightForm({...weightForm, date: new Date(e.target.value)})}
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Peso (kg)</label>
-              <input
-                type="number"
-                step="0.1"
-                required
-                className="w-full px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                value={weightForm.weight}
-                onChange={(e) => setWeightForm({...weightForm, weight: parseFloat(e.target.value)})}
-              />
-            </div>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Observações</label>
-            <textarea
-              className="w-full px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all min-h-[100px]"
-              value={weightForm.notes}
-              onChange={(e) => setWeightForm({...weightForm, notes: e.target.value})}
-            />
-          </div>
-          <div className="flex justify-end gap-3 pt-4">
-            <button
-              type="button"
-              onClick={() => setIsWeightModalOpen(false)}
-              className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-xl font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-            >
-              Cancelar
-            </button>
-            <button
-              type="submit"
-              className="px-4 py-2 bg-primary text-white rounded-xl font-medium hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25"
-            >
-              Salvar
-            </button>
-          </div>
-        </form>
-      </Modal>
-      <Modal
-        isOpen={isProcedureModalOpen}
-        onClose={() => setIsProcedureModalOpen(false)}
-        title="Registrar Procedimento / Exame"
-      >
-        <form onSubmit={handleAddProcedure} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nome do Procedimento</label>
-            <input
-              type="text"
-              required
-              className="w-full px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-              value={procedureForm.name}
-              onChange={(e) => setProcedureForm({...procedureForm, name: e.target.value})}
-            />
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Data</label>
-              <input
-                type="date"
-                required
-                className="w-full px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                value={procedureForm.date ? format(procedureForm.date, 'yyyy-MM-dd') : ''}
-                onChange={(e) => setProcedureForm({...procedureForm, date: new Date(e.target.value)})}
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Tipo</label>
-              <select
-                className="w-full px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                value={procedureForm.type}
-                onChange={(e) => setProcedureForm({...procedureForm, type: e.target.value as any})}
+      {/* ════════════════════════════════════════
+          TAB: RESUMO
+      ════════════════════════════════════════ */}
+      {activeTab === 'Resumo' && (
+        <section className="space-y-5">
+          {/* Patient Header */}
+          <Card className="flex flex-col lg:flex-row gap-6">
+            {/* Photo */}
+            <div className="flex flex-col items-center gap-2 shrink-0">
+              <div className="relative group">
+                <img
+                  src={
+                    patient.imageUrl ||
+                    patient.image ||
+                    `https://images.unsplash.com/photo-${speciesLabel === 'Canino' ? '1552053831-71594a27632d' : '1514888286974-6c03e2ca1dba'}?auto=format&fit=crop&w=200&h=200`
+                  }
+                  alt={patient.name}
+                  className="w-28 h-28 rounded-2xl object-cover ring-4 ring-gray-100 dark:ring-gray-800"
+                />
+                <button
+                  onClick={() => imageInputRef.current?.click()}
+                  className="absolute inset-0 rounded-2xl bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white"
+                  title="Alterar foto"
+                >
+                  <Camera size={22} />
+                </button>
+              </div>
+              <button
+                onClick={() => imageInputRef.current?.click()}
+                className="text-xs text-primary font-medium hover:underline"
               >
-                <option value="Procedimento">Procedimento</option>
-                <option value="Exame">Exame</option>
-                <option value="Cirurgia">Cirurgia</option>
-              </select>
+                Alterar foto
+              </button>
+              <input
+                ref={imageInputRef}
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={handleImageChange}
+              />
             </div>
+
+            {/* Info */}
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <h1 className="text-3xl font-bold text-gray-900 dark:text-white">{patient.name}</h1>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                    {speciesLabel} · {patient.breed} · {patient.age}
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {patient.status === 'Vivo' ? (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 text-xs font-semibold">
+                      <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" /> Ativo
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-xs font-semibold">
+                      Óbito
+                    </span>
+                  )}
+                  {patient.castrated && (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-400 text-xs font-semibold">
+                      <Scissors size={12} /> Castrado(a)
+                    </span>
+                  )}
+                  {patient.microchipped && (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 text-xs font-semibold">
+                      <Cpu size={12} /> Microchipado(a)
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-xs uppercase tracking-wide text-gray-400 font-semibold">Sexo</span>
+                  <span className="text-sm font-medium text-gray-900 dark:text-white">
+                    {patient.sex || patient.gender || '—'}
+                  </span>
+                </div>
+                {patient.coatColor && (
+                  <div className="flex flex-col gap-0.5">
+                    <span className="text-xs uppercase tracking-wide text-gray-400 font-semibold flex items-center gap-1">
+                      <Palette size={11} /> Pelagem
+                    </span>
+                    <span className="text-sm font-medium text-gray-900 dark:text-white">{patient.coatColor}</span>
+                  </div>
+                )}
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-xs uppercase tracking-wide text-gray-400 font-semibold">Tutor</span>
+                  {tutor ? (
+                    <Link
+                      to={dvPath(`tutors/${tutor.id}`)}
+                      className="text-sm font-medium text-primary hover:underline inline-flex items-center gap-1"
+                    >
+                      <User size={12} /> {tutor.name}
+                    </Link>
+                  ) : (
+                    <span className="text-sm text-gray-500">—</span>
+                  )}
+                </div>
+                {tutor?.phone && (
+                  <div className="flex flex-col gap-0.5">
+                    <span className="text-xs uppercase tracking-wide text-gray-400 font-semibold">Telefone tutor</span>
+                    <span className="text-sm font-medium text-gray-900 dark:text-white">{tutor.phone}</span>
+                  </div>
+                )}
+              </div>
+
+              {pendingDebt > 0 && (
+                <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 text-sm font-semibold">
+                  <AlertTriangle size={16} />
+                  Saldo devedor: {currency(pendingDebt)}
+                </div>
+              )}
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col gap-2 shrink-0">
+              <button
+                onClick={() => navigate(dvPath(`patients/${patient.id}/consulta`))}
+                className="px-4 py-2.5 rounded-xl bg-primary text-white font-semibold inline-flex items-center gap-2 hover:bg-primary/90 transition-colors shadow-md shadow-primary/25"
+              >
+                <Stethoscope size={16} /> Nova Consulta
+              </button>
+              <button
+                onClick={() => setActiveTab('Prontuário')}
+                className="px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+              >
+                Registrar Vacina / Procedimento
+              </button>
+              <button
+                onClick={() => setActiveTab('Agenda')}
+                className="px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+              >
+                Agendar Consulta
+              </button>
+            </div>
+          </Card>
+
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {/* Weight */}
+            <Card className="flex flex-col gap-1">
+              <p className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400 font-semibold flex items-center gap-1">
+                <Scale size={13} /> Peso atual
+              </p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">{patient.weight || '—'}</p>
+              {weightTrend && (
+                <p
+                  className={`text-xs font-semibold flex items-center gap-1 mt-0.5 ${
+                    weightTrend.direction === 'up'
+                      ? 'text-amber-600'
+                      : weightTrend.direction === 'down'
+                      ? 'text-blue-600'
+                      : 'text-gray-500'
+                  }`}
+                >
+                  {weightTrend.direction === 'up' ? (
+                    <TrendingUp size={13} />
+                  ) : weightTrend.direction === 'down' ? (
+                    <TrendingDown size={13} />
+                  ) : (
+                    <Minus size={13} />
+                  )}
+                  {weightTrend.delta > 0 ? '+' : ''}{weightTrend.delta.toFixed(1)} kg total
+                </p>
+              )}
+            </Card>
+
+            {/* Vaccines */}
+            <Card className="flex flex-col gap-1">
+              <p className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400 font-semibold flex items-center gap-1">
+                <Syringe size={13} /> Vacinas
+              </p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">
+                {patient.vaccines?.length || 0}
+              </p>
+              {vaccinesOverdue > 0 && (
+                <p className="text-xs text-red-600 font-semibold flex items-center gap-1">
+                  <AlertTriangle size={12} /> {vaccinesOverdue} vencida(s)
+                </p>
+              )}
+            </Card>
+
+            {/* Procedures */}
+            <Card className="flex flex-col gap-1">
+              <p className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400 font-semibold flex items-center gap-1">
+                <Activity size={13} /> Procedimentos
+              </p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">
+                {patient.procedures?.length || 0}
+              </p>
+            </Card>
+
+            {/* Appointments */}
+            <Card className="flex flex-col gap-1">
+              <p className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400 font-semibold flex items-center gap-1">
+                <CalendarDays size={13} /> Consultas
+              </p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">
+                {patientAppointments.length}
+              </p>
+              {patientAppointments.length > 0 && (
+                <p className="text-xs text-gray-500 truncate">
+                  Última: {format(new Date(patientAppointments[0].date), 'dd/MM/yyyy')}
+                </p>
+              )}
+            </Card>
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Veterinário Responsável</label>
-            <input
-              type="text"
-              className="w-full px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-              value={procedureForm.veterinarian}
-              onChange={(e) => setProcedureForm({...procedureForm, veterinarian: e.target.value})}
-            />
+
+          {/* Recent anamnesis */}
+          {(patient.anamnesis || []).length > 0 && (
+            <Card>
+              <div className="flex items-center justify-between mb-3">
+                <SectionTitle icon={<ClipboardList size={16} />}>Últimas Consultas</SectionTitle>
+                <button
+                  onClick={() => setActiveTab('Prontuário')}
+                  className="text-xs text-primary font-semibold hover:underline flex items-center gap-1"
+                >
+                  Ver todas <ChevronRight size={14} />
+                </button>
+              </div>
+              <div className="space-y-2">
+                {(patient.anamnesis || []).slice(0, 3).map((entry) => (
+                  <div
+                    key={entry.id}
+                    className="flex flex-col md:flex-row md:items-center md:justify-between gap-1 rounded-xl border border-gray-100 dark:border-gray-800 p-3 bg-gray-50/50 dark:bg-gray-800/30"
+                  >
+                    <div>
+                      <p className="font-semibold text-sm text-gray-900 dark:text-white">{entry.complaint}</p>
+                      {entry.diagnosis && (
+                        <p className="text-xs text-gray-500">Diagnóstico: {entry.diagnosis}</p>
+                      )}
+                    </div>
+                    <span className="text-xs text-gray-400 shrink-0">
+                      {format(new Date(entry.date), 'dd/MM/yyyy HH:mm')}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          )}
+        </section>
+      )}
+
+      {/* ════════════════════════════════════════
+          TAB: PRONTUÁRIO
+      ════════════════════════════════════════ */}
+      {activeTab === 'Prontuário' && (
+        <section className="space-y-5">
+          {/* Weight Chart */}
+          <Card>
+            <div className="flex flex-col md:flex-row md:items-start gap-6">
+              <div className="flex-1 min-w-0">
+                <SectionTitle icon={<Scale size={16} />}>Histórico de Peso</SectionTitle>
+
+                {weightChartData.length >= 2 ? (
+                  <>
+                    {/* Trend summary */}
+                    {weightTrend && (
+                      <div
+                        className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-semibold mb-4 ${
+                          weightTrend.direction === 'up'
+                            ? 'bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300'
+                            : weightTrend.direction === 'down'
+                            ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300'
+                            : 'bg-gray-100 dark:bg-gray-800 text-gray-600'
+                        }`}
+                      >
+                        {weightTrend.direction === 'up' ? (
+                          <TrendingUp size={16} />
+                        ) : weightTrend.direction === 'down' ? (
+                          <TrendingDown size={16} />
+                        ) : (
+                          <Minus size={16} />
+                        )}
+                        {weightTrend.direction === 'up'
+                          ? `Ganho de ${weightTrend.delta.toFixed(1)} kg desde o início`
+                          : weightTrend.direction === 'down'
+                          ? `Perda de ${Math.abs(weightTrend.delta).toFixed(1)} kg desde o início`
+                          : 'Peso estável'}
+                        {' · '}
+                        Atual: <strong>{patient.weight}</strong>
+                      </div>
+                    )}
+
+                    <ResponsiveContainer width="100%" height={200}>
+                      <LineChart data={weightChartData} margin={{ top: 5, right: 16, left: -10, bottom: 0 }}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="currentColor" className="text-gray-100 dark:text-gray-800" />
+                        <XAxis
+                          dataKey="date"
+                          tick={{ fontSize: 11, fill: 'currentColor' }}
+                          className="text-gray-500"
+                        />
+                        <YAxis
+                          tick={{ fontSize: 11, fill: 'currentColor' }}
+                          className="text-gray-500"
+                          domain={['auto', 'auto']}
+                          unit=" kg"
+                        />
+                        <Tooltip content={<WeightTooltip />} />
+                        {weightChartData.length > 0 && (
+                          <ReferenceLine
+                            y={weightChartData[0].weight}
+                            stroke="#94a3b8"
+                            strokeDasharray="4 4"
+                            label={{ value: 'Inicial', fontSize: 10, fill: '#94a3b8' }}
+                          />
+                        )}
+                        <Line
+                          type="monotone"
+                          dataKey="weight"
+                          stroke="#22c55e"
+                          strokeWidth={2.5}
+                          dot={{ r: 5, fill: '#22c55e', strokeWidth: 2, stroke: '#fff' }}
+                          activeDot={{ r: 7 }}
+                        />
+                      </LineChart>
+                    </ResponsiveContainer>
+                  </>
+                ) : weightChartData.length === 1 ? (
+                  <div className="flex items-center gap-3 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl text-sm text-gray-500">
+                    <Scale size={20} className="text-gray-400" />
+                    Um registro encontrado ({weightChartData[0].weight} kg em {weightChartData[0].date}). Adicione mais registros para visualizar o gráfico.
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-3 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl text-sm text-gray-500">
+                    <Scale size={20} className="text-gray-400" />
+                    Nenhum registro de peso. Use o formulário ao lado para começar.
+                  </div>
+                )}
+
+                {/* Weight history list */}
+                {weightHistory.length > 0 && (
+                  <div className="mt-4 space-y-1.5 max-h-[160px] overflow-y-auto pr-1">
+                    {[...weightHistory].reverse().map((r, i) => {
+                      const prev = [...weightHistory].reverse()[i + 1];
+                      const diff = prev ? r.weight - prev.weight : null;
+                      return (
+                        <div
+                          key={r.id}
+                          className="flex items-center justify-between text-sm rounded-lg px-3 py-2 bg-gray-50 dark:bg-gray-800/40"
+                        >
+                          <span className="text-gray-500 text-xs">
+                            {format(new Date(r.date), 'dd/MM/yyyy')}
+                          </span>
+                          <span className="font-semibold text-gray-900 dark:text-white">{r.weight} kg</span>
+                          {diff !== null && (
+                            <span
+                              className={`text-xs font-semibold flex items-center gap-0.5 ${
+                                diff > 0 ? 'text-amber-600' : diff < 0 ? 'text-blue-600' : 'text-gray-400'
+                              }`}
+                            >
+                              {diff > 0 ? <TrendingUp size={12} /> : diff < 0 ? <TrendingDown size={12} /> : <Minus size={12} />}
+                              {diff > 0 ? '+' : ''}{diff.toFixed(1)} kg
+                            </span>
+                          )}
+                          {r.notes && <span className="text-xs text-gray-400 truncate max-w-[120px]">{r.notes}</span>}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+
+              {/* Add weight form */}
+              <div className="shrink-0 w-full md:w-64">
+                <h4 className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-3">Registrar pesagem</h4>
+                <form onSubmit={saveWeight} className="space-y-2">
+                  <div>
+                    <label className={labelCls}>Peso (kg)</label>
+                    <input
+                      type="number"
+                      min="0.1"
+                      step="0.1"
+                      required
+                      value={weightInput}
+                      onChange={(e) => setWeightInput(Number(e.target.value) || 0)}
+                      className={inputCls}
+                      placeholder="Ex: 32.5"
+                    />
+                  </div>
+                  <div>
+                    <label className={labelCls}>Observação (opcional)</label>
+                    <input
+                      type="text"
+                      value={weightNotes}
+                      onChange={(e) => setWeightNotes(e.target.value)}
+                      className={inputCls}
+                      placeholder="Ex: pós-cirúrgico"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full px-4 py-2.5 rounded-xl bg-primary text-white font-semibold text-sm hover:bg-primary/90 transition-colors"
+                  >
+                    Salvar pesagem
+                  </button>
+                </form>
+              </div>
+            </div>
+          </Card>
+
+          {/* Anamnesis */}
+          <Card>
+            <SectionTitle icon={<ClipboardList size={16} />}>Anamnese / Consulta</SectionTitle>
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
+              <form onSubmit={saveAnamnesis} className="space-y-3">
+                <div>
+                  <label className={labelCls}>Queixa principal *</label>
+                  <input
+                    required
+                    placeholder="Ex: vômito há 2 dias, prostração"
+                    value={anamnesisForm.complaint || ''}
+                    onChange={(e) => setAnamnesisForm((p) => ({ ...p, complaint: e.target.value }))}
+                    className={inputCls}
+                  />
+                </div>
+                <div>
+                  <label className={labelCls}>Histórico e exame físico</label>
+                  <textarea
+                    placeholder="Histórico clínico, exame físico, parâmetros vitais..."
+                    value={anamnesisForm.history || ''}
+                    onChange={(e) => setAnamnesisForm((p) => ({ ...p, history: e.target.value }))}
+                    className={`${inputCls} min-h-[80px]`}
+                  />
+                </div>
+                <div>
+                  <label className={labelCls}>Revisão de sistemas</label>
+                  <textarea
+                    placeholder="Cardiovascular, respiratório, gastrointestinal..."
+                    value={anamnesisForm.systemsReview || ''}
+                    onChange={(e) => setAnamnesisForm((p) => ({ ...p, systemsReview: e.target.value }))}
+                    className={`${inputCls} min-h-[60px]`}
+                  />
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className={labelCls}>Diagnóstico</label>
+                    <input
+                      placeholder="Diagnóstico"
+                      value={anamnesisForm.diagnosis || ''}
+                      onChange={(e) => setAnamnesisForm((p) => ({ ...p, diagnosis: e.target.value }))}
+                      className={inputCls}
+                    />
+                  </div>
+                  <div>
+                    <label className={labelCls}>Tratamento</label>
+                    <input
+                      placeholder="Tratamento prescrito"
+                      value={anamnesisForm.treatment || ''}
+                      onChange={(e) => setAnamnesisForm((p) => ({ ...p, treatment: e.target.value }))}
+                      className={inputCls}
+                    />
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    type="submit"
+                    className="flex-1 px-4 py-2.5 rounded-xl bg-primary text-white font-semibold text-sm hover:bg-primary/90 transition-colors"
+                  >
+                    Salvar anamnese
+                  </button>
+                  <Link
+                    to={dvPath(`patients/${patient.id}/consulta`)}
+                    className="px-4 py-2.5 rounded-xl border border-primary text-primary font-semibold text-sm hover:bg-primary/5 transition-colors"
+                  >
+                    Consulta guiada
+                  </Link>
+                </div>
+              </form>
+
+              {/* Anamnesis history */}
+              <div>
+                <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                  Histórico ({(patient.anamnesis || []).length})
+                </h4>
+                <div className="space-y-2 max-h-[380px] overflow-y-auto pr-1">
+                  {(patient.anamnesis || []).length === 0 ? (
+                    <p className="text-sm text-gray-400 py-4 text-center">Nenhuma anamnese registrada.</p>
+                  ) : (
+                    (patient.anamnesis || []).map((entry) => (
+                      <div
+                        key={entry.id}
+                        className="rounded-xl border border-gray-100 dark:border-gray-800 p-3 bg-gray-50/50 dark:bg-gray-800/30"
+                      >
+                        <div className="flex items-start justify-between gap-2">
+                          <p className="font-semibold text-sm text-gray-900 dark:text-white">{entry.complaint}</p>
+                          <span className="text-xs text-gray-400 shrink-0">
+                            {format(new Date(entry.date), 'dd/MM/yy')}
+                          </span>
+                        </div>
+                        {entry.diagnosis && (
+                          <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                            <strong>Diagnóstico:</strong> {entry.diagnosis}
+                          </p>
+                        )}
+                        {entry.treatment && (
+                          <p className="text-xs text-gray-600 dark:text-gray-400">
+                            <strong>Tratamento:</strong> {entry.treatment}
+                          </p>
+                        )}
+                      </div>
+                    ))
+                  )}
+                </div>
+              </div>
+            </div>
+          </Card>
+
+          {/* Vaccines & Procedures in 2 cols */}
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
+            {/* Vaccines */}
+            <Card>
+              <SectionTitle icon={<Syringe size={16} />}>Vacinas</SectionTitle>
+              <form onSubmit={saveVaccine} className="space-y-2 mb-4">
+                <div className="grid grid-cols-2 gap-2">
+                  <div>
+                    <label className={labelCls}>Nome da vacina *</label>
+                    <input
+                      required
+                      placeholder="Ex: V10, Antirrábica"
+                      value={vaccineForm.name || ''}
+                      onChange={(e) => setVaccineForm((p) => ({ ...p, name: e.target.value }))}
+                      className={inputCls}
+                    />
+                  </div>
+                  <div>
+                    <label className={labelCls}>Lote</label>
+                    <input
+                      placeholder="Número do lote"
+                      value={vaccineForm.batch || ''}
+                      onChange={(e) => setVaccineForm((p) => ({ ...p, batch: e.target.value }))}
+                      className={inputCls}
+                    />
+                  </div>
+                  <div>
+                    <label className={labelCls}>Data de aplicação</label>
+                    <input
+                      type="date"
+                      value={vaccineForm.date ? format(new Date(vaccineForm.date), 'yyyy-MM-dd') : ''}
+                      onChange={(e) => setVaccineForm((p) => ({ ...p, date: new Date(e.target.value) }))}
+                      className={inputCls}
+                    />
+                  </div>
+                  <div>
+                    <label className={labelCls}>Próxima dose</label>
+                    <input
+                      type="date"
+                      value={vaccineForm.nextDueDate ? format(new Date(vaccineForm.nextDueDate), 'yyyy-MM-dd') : ''}
+                      onChange={(e) =>
+                        setVaccineForm((p) => ({
+                          ...p,
+                          nextDueDate: e.target.value ? new Date(e.target.value) : undefined,
+                        }))
+                      }
+                      className={inputCls}
+                    />
+                  </div>
+                  <div>
+                    <label className={labelCls}>Valor (R$)</label>
+                    <input
+                      type="number"
+                      min="0"
+                      step="0.01"
+                      value={vaccinePrice}
+                      onChange={(e) => setVaccinePrice(Math.max(0, Number(e.target.value) || 0))}
+                      className={inputCls}
+                      placeholder="0,00"
+                    />
+                  </div>
+                  <div className="flex items-end">
+                    <button
+                      type="submit"
+                      className="w-full px-4 py-2.5 rounded-xl border border-primary text-primary font-semibold text-sm hover:bg-primary/5 transition-colors"
+                    >
+                      Registrar vacina
+                    </button>
+                  </div>
+                </div>
+                <p className="text-xs text-gray-400">Veterinário: {currentUser.name}</p>
+              </form>
+
+              <div className="space-y-2 max-h-[240px] overflow-y-auto pr-1">
+                {(patient.vaccines || []).length === 0 ? (
+                  <p className="text-sm text-gray-400 py-2 text-center">Nenhuma vacina registrada.</p>
+                ) : (
+                  [...(patient.vaccines || [])].reverse().map((v) => {
+                    const overdue = v.nextDueDate && !isAfter(new Date(v.nextDueDate), new Date());
+                    return (
+                      <div
+                        key={v.id}
+                        className="rounded-xl border border-gray-100 dark:border-gray-800 p-3 bg-gray-50/50 dark:bg-gray-800/30"
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <p className="font-semibold text-sm text-gray-900 dark:text-white flex items-center gap-2">
+                            {v.name}
+                            {overdue && (
+                              <span className="px-1.5 py-0.5 rounded bg-red-100 dark:bg-red-900/20 text-red-600 text-xs font-semibold">
+                                Vencida
+                              </span>
+                            )}
+                          </p>
+                          <span className="text-xs text-gray-400">
+                            {format(new Date(v.date), 'dd/MM/yyyy')}
+                          </span>
+                        </div>
+                        <div className="flex gap-3 mt-1 text-xs text-gray-500">
+                          {v.batch && <span>Lote: {v.batch}</span>}
+                          {v.nextDueDate && (
+                            <span className={overdue ? 'text-red-500 font-semibold' : ''}>
+                              Reforço: {format(new Date(v.nextDueDate), 'dd/MM/yyyy')}
+                            </span>
+                          )}
+                          {v.veterinarian && <span>Vet: {v.veterinarian}</span>}
+                        </div>
+                      </div>
+                    );
+                  })
+                )}
+              </div>
+            </Card>
+
+            {/* Procedures & Exams */}
+            <Card>
+              <SectionTitle icon={<Activity size={16} />}>Procedimentos e Exames</SectionTitle>
+              <form onSubmit={saveProcedure} className="space-y-2 mb-4">
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="col-span-2 md:col-span-1">
+                    <label className={labelCls}>Nome *</label>
+                    <input
+                      required
+                      placeholder="Ex: Hemograma, Raio-X, Castração"
+                      value={procedureForm.name || ''}
+                      onChange={(e) => setProcedureForm((p) => ({ ...p, name: e.target.value }))}
+                      className={inputCls}
+                    />
+                  </div>
+                  <div>
+                    <label className={labelCls}>Tipo</label>
+                    <select
+                      value={procedureForm.type || 'Procedimento'}
+                      onChange={(e) =>
+                        setProcedureForm((p) => ({ ...p, type: e.target.value as Procedure['type'] }))
+                      }
+                      className={inputCls}
+                    >
+                      <option value="Procedimento">Procedimento</option>
+                      <option value="Exame">Exame</option>
+                      <option value="Cirurgia">Cirurgia</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className={labelCls}>Data</label>
+                    <input
+                      type="date"
+                      value={procedureForm.date ? format(new Date(procedureForm.date), 'yyyy-MM-dd') : ''}
+                      onChange={(e) => setProcedureForm((p) => ({ ...p, date: new Date(e.target.value) }))}
+                      className={inputCls}
+                    />
+                  </div>
+                  <div>
+                    <label className={labelCls}>Valor (R$)</label>
+                    <input
+                      type="number"
+                      min="0"
+                      step="0.01"
+                      value={procedureForm.price || 0}
+                      onChange={(e) =>
+                        setProcedureForm((p) => ({ ...p, price: Math.max(0, Number(e.target.value) || 0) }))
+                      }
+                      className={inputCls}
+                      placeholder="0,00"
+                    />
+                  </div>
+                  <div className="col-span-2">
+                    <label className={labelCls}>Observações</label>
+                    <input
+                      placeholder="Resultado, notas clínicas..."
+                      value={procedureForm.notes || ''}
+                      onChange={(e) => setProcedureForm((p) => ({ ...p, notes: e.target.value }))}
+                      className={inputCls}
+                    />
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  className="w-full px-4 py-2.5 rounded-xl border border-primary text-primary font-semibold text-sm hover:bg-primary/5 transition-colors"
+                >
+                  Registrar procedimento/exame
+                </button>
+              </form>
+
+              <div className="space-y-2 max-h-[260px] overflow-y-auto pr-1">
+                {(patient.procedures || []).length === 0 ? (
+                  <p className="text-sm text-gray-400 py-2 text-center">Nenhum procedimento registrado.</p>
+                ) : (
+                  (patient.procedures || []).map((proc) => {
+                    const typeColors: Record<string, string> = {
+                      Exame: 'bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300',
+                      Procedimento: 'bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300',
+                      Cirurgia: 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300',
+                    };
+                    return (
+                      <div
+                        key={proc.id}
+                        className="rounded-xl border border-gray-100 dark:border-gray-800 p-3 bg-gray-50/50 dark:bg-gray-800/30 flex justify-between gap-3"
+                      >
+                        <div className="min-w-0">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <p className="font-semibold text-sm text-gray-900 dark:text-white">{proc.name}</p>
+                            <span
+                              className={`text-xs px-2 py-0.5 rounded-full font-medium ${
+                                typeColors[proc.type || 'Procedimento'] || typeColors['Procedimento']
+                              }`}
+                            >
+                              {proc.type || 'Procedimento'}
+                            </span>
+                          </div>
+                          <p className="text-xs text-gray-500 mt-0.5">
+                            {format(new Date(proc.date), 'dd/MM/yyyy')}
+                            {proc.veterinarian && ` · Vet: ${proc.veterinarian}`}
+                          </p>
+                          {proc.notes && (
+                            <p className="text-xs text-gray-400 mt-0.5 truncate">{proc.notes}</p>
+                          )}
+                        </div>
+                        <span className="font-semibold text-sm text-gray-900 dark:text-white shrink-0">
+                          {currency(proc.price || 0)}
+                        </span>
+                      </div>
+                    );
+                  })
+                )}
+              </div>
+            </Card>
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Observações / Resultados</label>
-            <textarea
-              className="w-full px-4 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all min-h-[100px]"
-              value={procedureForm.notes}
-              onChange={(e) => setProcedureForm({...procedureForm, notes: e.target.value})}
-            />
-          </div>
-          <div className="flex justify-end gap-3 pt-4">
-            <button
-              type="button"
-              onClick={() => setIsProcedureModalOpen(false)}
-              className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-xl font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-            >
-              Cancelar
-            </button>
-            <button
-              type="submit"
-              className="px-4 py-2 bg-primary text-white rounded-xl font-medium hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25"
-            >
-              Salvar
-            </button>
-          </div>
-        </form>
-      </Modal>
+        </section>
+      )}
+
+      {/* ════════════════════════════════════════
+          TAB: AGENDA
+      ════════════════════════════════════════ */}
+      {activeTab === 'Agenda' && (
+        <section className="space-y-5">
+          <Card>
+            <div className="flex items-center justify-between mb-4">
+              <SectionTitle icon={<CalendarDays size={16} />}>
+                Novo agendamento para {patient.name}
+              </SectionTitle>
+              <button
+                onClick={() => navigate(dvPath('calendar'))}
+                className="text-sm text-primary font-semibold hover:underline"
+              >
+                Agenda completa
+              </button>
+            </div>
+            <form onSubmit={savePatientAppointment} className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+              <div>
+                <label className={labelCls}>Tutor</label>
+                <input value={tutor?.name || '—'} readOnly className={`${inputCls} bg-gray-100 dark:bg-gray-800/60 cursor-default`} />
+              </div>
+              <div>
+                <label className={labelCls}>Paciente</label>
+                <input value={patient.name} readOnly className={`${inputCls} bg-gray-100 dark:bg-gray-800/60 cursor-default`} />
+              </div>
+              <div>
+                <label className={labelCls}>Tipo de consulta *</label>
+                <select
+                  value={agendaForm.type || 'Consulta Geral'}
+                  onChange={(e) => setAgendaForm((p) => ({ ...p, type: e.target.value as Appointment['type'] }))}
+                  className={inputCls}
+                >
+                  {APPOINTMENT_CATEGORIES.map((cat) => (
+                    <option key={cat.id} value={cat.id}>{cat.label}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="xl:col-span-2">
+                <label className={labelCls}>Título / Motivo *</label>
+                <input
+                  required
+                  value={agendaForm.title || ''}
+                  onChange={(e) => setAgendaForm((p) => ({ ...p, title: e.target.value }))}
+                  placeholder="Ex: Consulta clínica geral"
+                  className={inputCls}
+                />
+              </div>
+              <div>
+                <label className={labelCls}>Médico veterinário *</label>
+                <select
+                  required
+                  value={agendaForm.veterinarianName || ''}
+                  onChange={(e) => setAgendaForm((p) => ({ ...p, veterinarianName: e.target.value }))}
+                  className={inputCls}
+                >
+                  <option value="">Selecionar veterinário</option>
+                  {veterinarianOptions.map((vet) => (
+                    <option key={vet.id} value={vet.name}>
+                      {vet.name}{vet.crmv ? ` · ${vet.crmv}` : ''}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className={labelCls}>Data *</label>
+                <input
+                  type="date"
+                  required
+                  value={agendaForm.date ? format(new Date(agendaForm.date), 'yyyy-MM-dd') : ''}
+                  onChange={(e) => setAgendaForm((p) => ({ ...p, date: new Date(e.target.value) }))}
+                  className={inputCls}
+                />
+              </div>
+              <div>
+                <label className={labelCls}>Horário *</label>
+                <input
+                  type="time"
+                  required
+                  value={agendaTime}
+                  onChange={(e) => setAgendaTime(e.target.value)}
+                  className={inputCls}
+                />
+              </div>
+              <div className="xl:col-span-3">
+                <label className={labelCls}>Observações</label>
+                <textarea
+                  value={agendaForm.notes || ''}
+                  onChange={(e) => setAgendaForm((p) => ({ ...p, notes: e.target.value }))}
+                  placeholder="Informações adicionais para o agendamento..."
+                  className={`${inputCls} min-h-[72px]`}
+                />
+              </div>
+              <div className="xl:col-span-3 flex justify-end">
+                <button
+                  type="submit"
+                  className="px-6 py-2.5 rounded-xl bg-primary text-white font-semibold inline-flex items-center gap-2 hover:bg-primary/90 transition-colors shadow-md shadow-primary/20"
+                >
+                  <PlusCircle size={16} /> Confirmar agendamento
+                </button>
+              </div>
+            </form>
+          </Card>
+
+          <Card>
+            <SectionTitle icon={<Clock size={16} />}>
+              Histórico de agendamentos ({patientAppointments.length})
+            </SectionTitle>
+            {patientAppointments.length === 0 ? (
+              <div className="text-center py-8 text-gray-400">
+                <CalendarDays size={32} className="mx-auto mb-2 opacity-40" />
+                <p className="text-sm">Nenhum agendamento para este paciente.</p>
+              </div>
+            ) : (
+              <div className="space-y-2">
+                {patientAppointments.map((apt) => (
+                  <div
+                    key={apt.id}
+                    className="rounded-xl border border-gray-100 dark:border-gray-800 p-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3 bg-gray-50/40 dark:bg-gray-800/20"
+                  >
+                    <div className="min-w-0">
+                      <p className="font-semibold text-gray-900 dark:text-white">{apt.title}</p>
+                      <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-1 text-xs text-gray-500">
+                        <span>{format(new Date(apt.date), 'dd/MM/yyyy HH:mm')}</span>
+                        <span>·</span>
+                        <span>{apt.type}</span>
+                        {apt.veterinarianName && (
+                          <>
+                            <span>·</span>
+                            <span>Vet: {apt.veterinarianName}</span>
+                          </>
+                        )}
+                      </div>
+                      {apt.notes && (
+                        <p className="text-xs text-gray-400 mt-0.5 truncate">{apt.notes}</p>
+                      )}
+                    </div>
+                    <StatusBadge status={apt.status} />
+                  </div>
+                ))}
+              </div>
+            )}
+          </Card>
+        </section>
+      )}
+
+      {/* ════════════════════════════════════════
+          TAB: FINANCEIRO
+      ════════════════════════════════════════ */}
+      {activeTab === 'Financeiro' && (
+        <section className="space-y-5">
+          {/* Launch services */}
+          <Card>
+            <SectionTitle icon={<PlusCircle size={16} />}>
+              Lançar serviços — {patient.name}
+            </SectionTitle>
+            <div className="space-y-2">
+              {launchLines.map((line) => {
+                const selectedService = services.find((s) => s.id === line.serviceId);
+                const gross = line.quantity * line.unitPrice;
+                const lineDiscount =
+                  line.discountMode === 'percent'
+                    ? (gross * line.discountValue) / 100
+                    : line.discountValue;
+                const lineTotal = Math.max(0, gross - lineDiscount);
+                return (
+                  <div
+                    key={line.id}
+                    className="grid grid-cols-2 md:grid-cols-9 gap-2 rounded-xl border border-gray-200 dark:border-gray-700 p-3 items-end"
+                  >
+                    <div className="col-span-2 md:col-span-3">
+                      <label className={labelCls}>Serviço</label>
+                      <select
+                        value={line.serviceId}
+                        onChange={(e) => updateLine(line.id, { serviceId: e.target.value })}
+                        className={inputCls}
+                      >
+                        <option value="">Selecione um serviço</option>
+                        {services.map((s) => (
+                          <option key={s.id} value={s.id}>{s.name} ({currency(s.price)})</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label className={labelCls}>Qtd.</label>
+                      <input
+                        type="number"
+                        min="1"
+                        value={line.quantity}
+                        onChange={(e) => updateLine(line.id, { quantity: Math.max(1, Number(e.target.value) || 1) })}
+                        className={inputCls}
+                      />
+                    </div>
+                    <div>
+                      <label className={labelCls}>Preço unit.</label>
+                      <input
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        value={line.unitPrice}
+                        onChange={(e) => updateLine(line.id, { unitPrice: Math.max(0, Number(e.target.value) || 0) })}
+                        className={inputCls}
+                      />
+                    </div>
+                    <div>
+                      <label className={labelCls}>Desconto</label>
+                      <select
+                        value={line.discountMode}
+                        onChange={(e) => updateLine(line.id, { discountMode: e.target.value as DiscountMode })}
+                        className={inputCls}
+                      >
+                        <option value="value">R$</option>
+                        <option value="percent">%</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className={labelCls}>Valor desc.</label>
+                      <input
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        value={line.discountValue}
+                        onChange={(e) => updateLine(line.id, { discountValue: Math.max(0, Number(e.target.value) || 0) })}
+                        className={inputCls}
+                      />
+                    </div>
+                    <div className="flex items-center justify-between gap-2 col-span-2 md:col-span-2">
+                      <span className="text-sm font-bold text-gray-900 dark:text-white">
+                        {selectedService ? currency(lineTotal) : '—'}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setLaunchLines((prev) => (prev.length > 1 ? prev.filter((x) => x.id !== line.id) : prev))
+                        }
+                        className="text-red-500 hover:text-red-700 p-1 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+                        title="Remover linha"
+                      >
+                        <Trash2 size={15} />
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="mt-3 flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                onClick={() =>
+                  setLaunchLines((prev) => [
+                    ...prev,
+                    { id: randomId(), serviceId: '', quantity: 1, unitPrice: 0, discountMode: 'value', discountValue: 0 },
+                  ])
+                }
+                className="px-3 py-2 rounded-xl border border-dashed border-gray-300 dark:border-gray-600 text-sm text-gray-500 hover:border-primary hover:text-primary transition-colors"
+              >
+                + Adicionar serviço
+              </button>
+              <div className="ml-auto flex items-center gap-2 text-sm">
+                <span className="text-gray-600 dark:text-gray-400">Desconto global:</span>
+                <select
+                  value={globalDiscountMode}
+                  onChange={(e) => setGlobalDiscountMode(e.target.value as DiscountMode)}
+                  className="px-3 py-2 rounded-xl border border-gray-200 dark:border-gray-700 text-sm bg-gray-50 dark:bg-gray-800"
+                >
+                  <option value="value">R$</option>
+                  <option value="percent">%</option>
+                </select>
+                <input
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  value={globalDiscountValue}
+                  onChange={(e) => setGlobalDiscountValue(Math.max(0, Number(e.target.value) || 0))}
+                  className="w-24 px-3 py-2 rounded-xl border border-gray-200 dark:border-gray-700 text-sm bg-gray-50 dark:bg-gray-800"
+                />
+              </div>
+            </div>
+
+            <div className="mt-4 rounded-xl border border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/30 p-4 flex flex-wrap items-center justify-between gap-3">
+              <div className="flex flex-wrap gap-6 text-sm">
+                <span className="text-gray-600 dark:text-gray-400">
+                  Subtotal: <strong className="text-gray-900 dark:text-white">{currency(launchPreview.subtotal)}</strong>
+                </span>
+                {launchPreview.globalDiscount > 0 && (
+                  <span className="text-gray-600 dark:text-gray-400">
+                    Desconto: <strong className="text-red-600">− {currency(launchPreview.globalDiscount)}</strong>
+                  </span>
+                )}
+                <span className="text-gray-800 dark:text-white font-bold text-base">
+                  Total: <span className="text-primary">{currency(launchPreview.total)}</span>
+                </span>
+              </div>
+              <button
+                type="button"
+                disabled={launchPreview.rows.length === 0}
+                onClick={launchServices}
+                className="px-5 py-2.5 rounded-xl bg-primary text-white font-semibold text-sm hover:bg-primary/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed shadow-md shadow-primary/20"
+              >
+                Confirmar lançamento
+              </button>
+            </div>
+          </Card>
+
+          {/* Patient Charges */}
+          <Card>
+            <div className="flex items-center justify-between mb-4">
+              <SectionTitle icon={<DollarSign size={16} />}>Cobranças do paciente</SectionTitle>
+              {pendingDebt > 0 && (
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 text-sm font-semibold">
+                  <AlertTriangle size={14} />
+                  Pendente: {currency(pendingDebt)}
+                </div>
+              )}
+            </div>
+
+            {patientFinancial.length === 0 ? (
+              <div className="text-center py-8 text-gray-400">
+                <DollarSign size={32} className="mx-auto mb-2 opacity-40" />
+                <p className="text-sm">Nenhum lançamento financeiro para este paciente.</p>
+              </div>
+            ) : (
+              <div className="space-y-2">
+                {patientFinancial.map((record) => (
+                  <div
+                    key={record.id}
+                    className="rounded-xl border border-gray-100 dark:border-gray-800 p-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3 bg-gray-50/40 dark:bg-gray-800/20"
+                  >
+                    <div className="min-w-0">
+                      <p className="font-semibold text-sm text-gray-900 dark:text-white">{record.description}</p>
+                      <p className="text-xs text-gray-500 mt-0.5">
+                        {record.category} · {format(new Date(record.date), 'dd/MM/yyyy HH:mm')}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-3 shrink-0">
+                      <span className="font-bold text-gray-900 dark:text-white">{currency(record.amount)}</span>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          updateFinancialRecord(record.id, {
+                            status: record.status === 'Pago' ? 'Pendente' : 'Pago',
+                          })
+                        }
+                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+                          record.status === 'Pago'
+                            ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 hover:bg-green-200'
+                            : 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 hover:bg-amber-200'
+                        }`}
+                      >
+                        {record.status === 'Pago' ? (
+                          <><CheckCircle2 size={12} /> Pago</>
+                        ) : (
+                          <><Clock size={12} /> Pendente</>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </Card>
+        </section>
+      )}
     </div>
   );
 };

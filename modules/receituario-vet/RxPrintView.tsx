@@ -159,11 +159,11 @@ export function RxPrintView({
   const sheetStyle: React.CSSProperties = compact
     ? paperStyle
     : {
-        ...paperStyle,
-        width: paperWidth,
-        minHeight: paperHeight,
-        margin: '0 auto',
-      }
+      ...paperStyle,
+      width: paperWidth,
+      minHeight: paperHeight,
+      margin: '0 auto',
+    }
 
   const zoneStyle = (zone: TemplateZoneKey, base: React.CSSProperties = {}): React.CSSProperties => {
     const custom = cfg.zoneStyles?.[zone]
@@ -363,14 +363,15 @@ export function RxPrintView({
                         ) : null}
                       </div>
                       {item.subtitle ? <p className="mb-1" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 2, 9)}pt`, color: '#64748b' }}>{item.subtitle}</p> : null}
+                      {item.start_date ? <p className="mb-1 italic" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt`, color: '#4b5563' }}>Iniciar em {item.start_date}</p> : null}
                       <p className="whitespace-pre-line leading-relaxed" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt` }}>
                         {highlightInstructionSegments(item.instruction)}
                       </p>
                       {item.cautions.length ? (
                         <div className="mt-2 space-y-1">
                           {item.cautions.map((line, idx) => (
-                            <p key={`${item.id}-c-${idx}`} className="font-bold" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt` }}>
-                              {line}
+                            <p key={`${item.id}-c-${idx}`} className="font-bold flex items-start gap-1" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt`, color: '#dc2626' }}>
+                              <span>⚠️</span> {line}
                             </p>
                           ))}
                         </div>

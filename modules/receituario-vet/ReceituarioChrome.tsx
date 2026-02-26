@@ -28,6 +28,7 @@ const THEME_KEY = 'receituario-vet:theme:v1'
 const NAV_ITEMS: Array<{ key: RxSection; label: string; to: string; icon: string }> = [
   { key: 'hub', label: 'HUB', to: '/receituario-vet', icon: 'hub' },
   { key: 'nova', label: 'Nova Receita', to: '/receituario-vet/nova-receita-2', icon: 'description' },
+  { key: 'historico', label: 'Histórico de Receitas', to: '/receituario-vet/historico', icon: 'history' },
   { key: 'catalogo3', label: 'Catálogo', to: '/receituario-vet/catalogo3', icon: 'inventory_2' },
   { key: 'drafts', label: 'Rascunhos', to: '/receituario-vet/rascunhos', icon: 'draft' },
   { key: 'clientes', label: 'Tutores e Pacientes', to: '/receituario-vet/clientes', icon: 'group' },

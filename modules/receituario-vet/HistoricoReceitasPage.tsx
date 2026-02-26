@@ -149,7 +149,7 @@ export default function HistoricoReceitasPage() {
                                                         onClick={() => handleExport(px)}
                                                         className="rounded bg-emerald-900/40 px-2 py-1 text-[10px] font-black text-emerald-400 hover:bg-emerald-900/60"
                                                     >
-                                                        Exportar
+                                                        Reimprimir / PDF
                                                     </button>
                                                     {px.pdf_path && (
                                                         <button
@@ -205,7 +205,7 @@ export default function HistoricoReceitasPage() {
                                 Fechar
                             </RxvButton>
                             <RxvButton variant="primary" onClick={() => handleExport(previewDoc)}>
-                                Exportar PDF
+                                Reimprimir / PDF
                             </RxvButton>
                         </div>
                     </div>

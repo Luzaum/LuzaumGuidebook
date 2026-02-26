@@ -1,4 +1,4 @@
-import {
+﻿import {
   Calculator,
   Heart,
   Droplets,
@@ -49,7 +49,7 @@ export const modules: Module[] = [
     route: '/fluidoterapia',
     status: 'internal',
     icon: Droplets,
-    iconImage: '/apps/fluido.png',
+    iconImage: '/apps/fluidoterapia.png',
   },
   {
     id: 'transfusão-sanguinea',
@@ -171,3 +171,4 @@ export function getModuleById(id: string): Module | undefined {
 export function getModuleByRoute(route: string): Module | undefined {
   return modules.find((m) => m.route === route)
 }
+

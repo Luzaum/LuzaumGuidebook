@@ -26,79 +26,114 @@ export const EnergyTab: React.FC<EnergyTabProps> = ({
     isCritical
 }) => {
     return (
-        <div id="page-calc-energia">
-            <header className="mb-6">
-                <h1 className="text-2xl md:text-3xl font-bold text-foreground">Cálculo de Energia</h1>
-                <p className="mt-1 text-sm text-muted-foreground">
-                    Cálculo de necessidades energéticas para cães e gatos
-                </p>
-            </header>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div>
-                    <label htmlFor="species" className="block text-sm font-medium text-foreground mb-2">Espécie</label>
-                    <select id="species" value={species} onChange={(e) => setSpecies(e.target.value)} className="w-full p-3 bg-background border border-input rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition text-foreground placeholder:text-muted-foreground">
-                        <option value="dog">Cão 🐶</option>
-                        <option value="cat">Gato 🐱</option>
-                    </select>
+        <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
+            {/* Seção 1: Espécie & Peso */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div className="space-y-4">
+                    <label className="text-xs font-black text-slate-500 uppercase tracking-[0.2em] flex items-center gap-2">
+                        <span className="w-1 h-1 bg-purple-500 rounded-full" /> Selecione a Espécie
+                    </label>
+                    <div className="grid grid-cols-2 gap-4">
+                        {[
+                            { id: 'dog', label: 'Cão', icon: '🐩', color: 'from-orange-500/20 to-red-500/20' },
+                            { id: 'cat', label: 'Gato', icon: '🐈', color: 'from-blue-500/20 to-indigo-500/20' }
+                        ].map((s) => (
+                            <button
+                                key={s.id}
+                                onClick={() => setSpecies(s.id)}
+                                className={`relative h-24 rounded-[24px] border-2 transition-all duration-300 flex flex-col items-center justify-center gap-2 overflow-hidden group ${species === s.id ? 'border-purple-500 bg-purple-500/10 scale-[1.02]' : 'border-white/5 bg-white/5 hover:bg-white/10 hover:border-white/10'}`}
+                            >
+                                <span className="text-3xl group-hover:scale-110 transition-transform">{s.icon}</span>
+                                <span className={`text-xs font-bold uppercase tracking-widest ${species === s.id ? 'text-white' : 'text-slate-500'}`}>{s.label}</span>
+                                {species === s.id && <div className="absolute top-2 right-2 w-2 h-2 bg-purple-500 rounded-full animate-pulse" />}
+                            </button>
+                        ))}
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor="weight" className="block text-sm font-medium text-foreground mb-2">Peso Atual (kg)</label>
-                    <input type="number" id="weight" placeholder="Ex: 15.5" value={weight} onChange={e => setWeight(e.target.value)} className="input-field" step="0.1" min="0.1" />
-                </div>
-                <div>
-                    <label htmlFor="status" className="flex items-center text-sm font-medium text-foreground mb-2">Estado Fisiológico <HelpIcon term="status" onOpenModal={setModalContent} /></label>
-                    <select id="status" value={status} onChange={e => setStatus(e.target.value)} className="w-full p-3 bg-background border border-input rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition text-foreground placeholder:text-muted-foreground">
-                        {Object.keys(factors[species]).map(key => <option key={key} value={key}>{key}</option>)}
-                    </select>
+
+                <div className="space-y-4">
+                    <label className="text-xs font-black text-slate-500 uppercase tracking-[0.2em] flex items-center gap-2">
+                        <span className="w-1 h-1 bg-blue-500 rounded-full" /> Peso do Paciente
+                    </label>
+                    <div className="relative group">
+                        <input
+                            type="number"
+                            placeholder="0.0"
+                            value={weight}
+                            onChange={e => setWeight(e.target.value)}
+                            className="w-full h-24 bg-white/5 border-2 border-white/5 rounded-[24px] text-4xl font-black text-white px-8 transition-all focus:border-purple-500/50 focus:bg-white/10 outline-none placeholder:text-slate-800"
+                            step="0.1"
+                            min="0.1"
+                        />
+                        <span className="absolute right-8 top-1/2 -translate-y-1/2 text-xl font-black text-slate-600 uppercase tracking-widest group-focus-within:text-purple-500 transition-colors">KG</span>
+                    </div>
                 </div>
             </div>
 
-            <div id="results-container" className={`space-y-4 ${calculationResults ? 'opacity-100' : 'opacity-0'}`}>
-                <div className="result-card bg-blue-50 border-l-4 border-blue-500 p-4 rounded-lg">
-                    <div className="flex items-center justify-between">
-                        <div>
-                            <h3 className="font-bold text-blue-800">RER (Energia em Repouso)</h3>
-                            <p className="text-sm text-blue-600">{calculationResults?.rerFormula || 'Ponto de partida.'}</p>
-                        </div>
-                        <p className="text-2xl font-bold text-blue-800">{calculationResults?.rer.toFixed(1) || 0} <span className="text-lg font-medium">kcal/dia</span></p>
-                    </div>
+            {/* Seção 2: Fator de Atividade */}
+            <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                    <label className="text-xs font-black text-slate-500 uppercase tracking-[0.2em] flex items-center gap-2">
+                        <span className="w-1 h-1 bg-green-500 rounded-full" /> Estado Fisiológico & Atividade
+                        <HelpIcon term="status" onOpenModal={setModalContent} />
+                    </label>
+                    <button onClick={() => setModalContent(factors[species][status])} className="text-[10px] font-bold text-purple-400 hover:text-purple-300 transition-colors uppercase tracking-widest">
+                        Detalhes do Fator
+                    </button>
                 </div>
-                <div className="result-card bg-primary/10 border-l-4 border-indigo-500 p-4 rounded-lg flex items-center justify-between">
-                    <div>
-                        <h3 className="font-bold text-indigo-800">Fator (k)</h3>
-                        <p className="text-sm text-indigo-600">{calculationResults?.factorDesc || 'Multiplicador.'}</p>
-                    </div>
-                    <p className="text-2xl font-bold text-indigo-800">{calculationResults?.k || 0.0}</p>
-                </div>
-                <div className="result-card bg-emerald-50 border-l-4 border-emerald-500 p-4 rounded-lg flex items-center justify-between">
-                    <div>
-                        <h3 className="font-bold text-emerald-800">NED (Energia Diária)</h3>
-                        <p className="text-sm text-emerald-600">Meta calórica para manutenção de peso.</p>
-                    </div>
-                    <p className="text-2xl font-bold text-emerald-800">{calculationResults?.derRange || calculationResults?.der.toFixed(1) || 0} <span className="text-lg font-medium">kcal/dia</span></p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {Object.keys(factors[species]).map(key => (
+                        <button
+                            key={key}
+                            onClick={() => setStatus(key)}
+                            className={`p-4 rounded-2xl border text-left transition-all duration-200 group ${status === key ? 'border-purple-500/50 bg-purple-500/10 shadow-lg shadow-purple-900/20' : 'border-white/5 bg-white/5 hover:bg-white/10'}`}
+                        >
+                            <div className={`text-[10px] font-black uppercase tracking-widest mb-1 ${status === key ? 'text-purple-400' : 'text-slate-500'}`}>K = {factors[species][key].k}</div>
+                            <div className={`text-xs font-bold leading-tight ${status === key ? 'text-white' : 'text-slate-300'}`}>{key}</div>
+                        </button>
+                    ))}
                 </div>
             </div>
 
+            {/* Seção 3: Plano de Internação (Se Crítico) */}
             {isCritical && calculationResults && (
-                <div className="progression-section mt-8">
-                    <h2 className="text-xl font-bold text-foreground text-center mb-4">Plano de Progressão Alimentar</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="bg-muted p-4 rounded-lg border border-border">
-                            <h3 className="font-semibold text-foreground mb-3 text-center">Protocolo de 3 Dias</h3>
-                            <ul className="space-y-2 text-sm text-foreground">
-                                <li className="flex justify-between p-2 bg-card rounded"><span>Dia 1 (33%):</span> <strong className="text-foreground">{(calculationResults.rer * 0.33).toFixed(1)} kcal</strong></li>
-                                <li className="flex justify-between p-2 bg-card rounded"><span>Dia 2 (66%):</span> <strong className="text-foreground">{(calculationResults.rer * 0.66).toFixed(1)} kcal</strong></li>
-                                <li className="flex justify-between p-2 bg-card rounded"><span>Dia 3 (100%):</span> <strong className="text-foreground">{calculationResults.rer.toFixed(1)} kcal</strong></li>
-                            </ul>
+                <div className="pt-6 border-t border-white/5 animate-in slide-in-from-top-4 duration-500">
+                    <div className="bg-gradient-to-br from-red-500/10 to-transparent border border-red-500/20 rounded-[28px] p-8">
+                        <div className="flex items-center gap-4 mb-8">
+                            <span className="p-3 bg-red-500/20 rounded-2xl text-red-500">
+                                <span className="material-symbols-outlined">vital_signs</span>
+                            </span>
+                            <div>
+                                <h3 className="text-xl font-black text-white tracking-tight">Protocolo de Realimentação</h3>
+                                <p className="text-xs font-semibold text-red-400/60 uppercase tracking-widest">Paciente Hospitalizado / Crítico</p>
+                            </div>
                         </div>
-                        <div className="bg-muted p-4 rounded-lg border border-border">
-                            <h3 className="font-semibold text-foreground mb-3 text-center">Protocolo de 4 Dias</h3>
-                            <ul className="space-y-2 text-sm text-foreground">
-                                <li className="flex justify-between p-2 bg-card rounded"><span>Dia 1 (25%):</span> <strong className="text-foreground">{(calculationResults.rer * 0.25).toFixed(1)} kcal</strong></li>
-                                <li className="flex justify-between p-2 bg-card rounded"><span>Dia 2 (50%):</span> <strong className="text-foreground">{(calculationResults.rer * 0.50).toFixed(1)} kcal</strong></li>
-                                <li className="flex justify-between p-2 bg-card rounded"><span>Dia 3 (75%):</span> <strong className="text-foreground">{(calculationResults.rer * 0.75).toFixed(1)} kcal</strong></li>
-                                <li className="flex justify-between p-2 bg-card rounded"><span>Dia 4 (100%):</span> <strong className="text-foreground">{calculationResults.rer.toFixed(1)} kcal</strong></li>
-                            </ul>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div className="space-y-4">
+                                <h4 className="text-[10px] font-black text-slate-500 uppercase tracking-widest text-center">Transição em 3 Dias</h4>
+                                <div className="space-y-2">
+                                    {[0.33, 0.66, 1.00].map((perc, i) => (
+                                        <div key={i} className="flex items-center justify-between p-4 bg-black/20 rounded-2xl border border-white/5">
+                                            <span className="text-xs font-bold text-slate-400">Dia {i + 1} <span className="text-[10px] opacity-50 ml-1">({(perc * 100).toFixed(0)}%)</span></span>
+                                            <span className="text-sm font-black text-white">{(calculationResults.rer * perc).toFixed(0)} <span className="text-[10px] text-slate-500 uppercase">kcal</span></span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="space-y-4">
+                                <h4 className="text-[10px] font-black text-slate-500 uppercase tracking-widest text-center">Transição em 4 Dias</h4>
+                                <div className="space-y-2">
+                                    {[0.25, 0.50, 0.75, 1.00].map((perc, i) => (
+                                        <div key={i} className="flex items-center justify-between p-4 bg-black/20 rounded-2xl border border-white/5">
+                                            <span className="text-xs font-bold text-slate-400">Dia {i + 1} <span className="text-[10px] opacity-50 ml-1">({(perc * 100).toFixed(0)}%)</span></span>
+                                            <span className="text-sm font-black text-white">{(calculationResults.rer * perc).toFixed(0)} <span className="text-[10px] text-slate-500 uppercase">kcal</span></span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -153,10 +153,11 @@ export async function uploadProfileImageDataUrl(params: {
   const bucket = resolveBucketName()
   const ownerKey = await resolveOwnerKey()
 
-  // E2/E4: Path deve começar com UUID (clinicId preferido, fallback userId)
-  // A policy do bucket usa split_part(name,'/',1)::uuid
-  // Se o 1º segmento não for UUID válido → Supabase retorna erro 22P02
-  const firstSegment = sanitizePathSegment(params.clinicId || ownerKey)
+  // Path deve começar com UUID da clínica (obrigatório para a policy do bucket)
+  if (!params.clinicId) {
+    throw new Error('clinicId é obrigatório para upload no bucket receituario-media.');
+  }
+  const firstSegment = sanitizePathSegment(params.clinicId)
   const profileKey = sanitizePathSegment(params.profileId || 'default')
   const blob = dataUrlToBlob(params.dataUrl)
   const ext = extensionFromMime(blob.type)
@@ -205,4 +206,20 @@ export async function removeProfileImageByUrl(fileUrl: string) {
   } catch (error) {
     console.warn('Falha ao remover imagem antiga do Supabase Storage:', parseErrorMessage(error))
   }
+}
+
+export async function getSignedUrl(fileUrl: string, expiresIn = 3600): Promise<string> {
+  const ref = parseStorageReferenceFromUrl(fileUrl)
+  if (!ref) {
+    // If not a storage URL (e.g., data URL), return as is
+    return fileUrl
+  }
+  const { data, error } = await supabase.storage
+    .from(ref.bucket)
+    .createSignedUrl(ref.path, expiresIn)
+  if (error) {
+    console.warn('Failed to create signed URL, falling back to public URL', error)
+    return fileUrl
+  }
+  return data.signedUrl
 }

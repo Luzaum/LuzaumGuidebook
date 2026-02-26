@@ -9,7 +9,6 @@ import {
   Search, 
   Plus, 
   MoreVertical,
-  FileText,
   Activity,
   BarChart2,
   List,
@@ -133,7 +132,7 @@ const TutorRow: React.FC<{ tutor: any; patients: any[] }> = ({ tutor, patients }
 };
 
 export const Dashboard = () => {
-  const { patients, tutors, appointments, financialRecords, getPatientName, getTutorName } = useData();
+  const { patients, tutors, appointments, financialRecords, getPatientName, getTutorName, updateAppointment } = useData();
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -214,11 +213,11 @@ export const Dashboard = () => {
                   const Icon = category.icon;
                   
                   return (
-                    <div key={apt.id} className="flex items-start gap-4 p-4 rounded-xl border border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800 transition-colors">
+                    <div key={apt.id} className={`flex items-start gap-4 p-4 rounded-xl border transition-colors ${apt.status === 'Concluído' ? 'border-green-200 bg-green-50/70 dark:bg-green-900/10' : 'border-gray-100 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800'}`}>
                       <div className={`w-2 h-12 rounded-full ${category.color} shrink-0`}></div>
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-1">
-                          <h3 className="font-bold text-gray-900 dark:text-white">{apt.title}</h3>
+                          <h3 className={`font-bold ${apt.status === 'Concluído' ? 'line-through text-green-700 dark:text-green-400' : 'text-gray-900 dark:text-white'}`}>{apt.title}</h3>
                           <span className="flex items-center gap-1 text-sm font-medium text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-900 px-2 py-1 rounded-lg border border-gray-200 dark:border-gray-700">
                             <Clock size={14} />
                             {format(new Date(apt.date), 'HH:mm')}
@@ -233,13 +232,17 @@ export const Dashboard = () => {
                             <Users size={14} />
                             {getTutorName(apt.tutorId)}
                           </span>
-                          <span className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${category.color} bg-opacity-10 text-${category.color.replace('bg-', '')}`}>
+                          <span className={`flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${category.color} bg-opacity-10 text-white`}>
                             <Icon size={12} />
                             {category.label}
                           </span>
                         </div>
                       </div>
-                      <button className="p-2 text-gray-400 hover:text-primary transition-colors">
+                      <button
+                        onClick={() => updateAppointment(apt.id, { status: apt.status === 'Concluído' ? 'Agendado' : 'Concluído' })}
+                        className={`p-2 transition-colors ${apt.status === 'Concluído' ? 'text-green-600' : 'text-gray-400 hover:text-primary'}`}
+                        title={apt.status === 'Concluído' ? 'Desmarcar como feito' : 'Marcar como feito'}
+                      >
                         <CheckCircle2 size={20} />
                       </button>
                     </div>

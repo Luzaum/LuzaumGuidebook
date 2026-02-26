@@ -22,6 +22,8 @@ import { Profile } from "./pages/Profile";
 import { Internment } from "./pages/Internment";
 import { Units } from "./pages/Units";
 import { ComingSoon } from "./pages/ComingSoon";
+import { ConsultationTemplatesPage } from "./pages/ConsultationTemplatesPage";
+import { ExecutionMap } from "./pages/ExecutionMap";
 
 const BASE = "/dados-veterinarios";
 
@@ -41,6 +43,7 @@ export default function DadosVeterinariosModule() {
               <Route index element={<Dashboard />} />
               <Route path="patients" element={<Patients />} />
               <Route path="patients/:id" element={<PatientDetails />} />
+              <Route path="patients/:id/consulta" element={<ConsultationTemplatesPage />} />
               <Route path="tutors" element={<Tutors />} />
               <Route path="tutors/:id" element={<TutorDetails />} />
               <Route path="calendar" element={<Calendar />} />
@@ -51,6 +54,7 @@ export default function DadosVeterinariosModule() {
               <Route path="settings" element={<Settings />} />
               <Route path="profile" element={<Profile />} />
               <Route path="internment" element={<Internment />} />
+              <Route path="execution-map" element={<ExecutionMap />} />
               <Route path="units" element={<Units />} />
               <Route path="coming-soon" element={<ComingSoon />} />
               <Route path="*" element={<Navigate to={dvPath("")} replace />} />

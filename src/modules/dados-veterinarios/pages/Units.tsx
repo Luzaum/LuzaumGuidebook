@@ -9,7 +9,7 @@ export const Units = () => {
     phone: '(21) 3500-6664',
     schedule: '24h por dia, 7 dias por semana',
     address: '',
-    services: 'Pronto Socorro, Consulta Clinica, Especialidades',
+    services: 'Pronto Socorro, Consulta Clínica, Especialidades',
     imageUrl: '/apps/uapepet.png',
   });
 
@@ -54,11 +54,11 @@ export const Units = () => {
 
       <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-5 grid grid-cols-1 md:grid-cols-2 gap-4">
         <input value={form.name} onChange={(e) => setForm((p) => ({ ...p, name: e.target.value }))} placeholder="Nome da unidade" className="px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-transparent" />
-        <input value={form.address} onChange={(e) => setForm((p) => ({ ...p, address: e.target.value }))} placeholder="Endereco completo" className="px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-transparent" />
+        <input value={form.address} onChange={(e) => setForm((p) => ({ ...p, address: e.target.value }))} placeholder="Endereço completo" className="px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-transparent" />
         <input value={form.phone} onChange={(e) => setForm((p) => ({ ...p, phone: e.target.value }))} placeholder="Telefone" className="px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-transparent" />
-        <input value={form.schedule} onChange={(e) => setForm((p) => ({ ...p, schedule: e.target.value }))} placeholder="Horario" className="px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-transparent" />
+        <input value={form.schedule} onChange={(e) => setForm((p) => ({ ...p, schedule: e.target.value }))} placeholder="Horário" className="px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-transparent" />
         <input value={form.imageUrl} onChange={(e) => setForm((p) => ({ ...p, imageUrl: e.target.value }))} placeholder="URL da imagem" className="px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-transparent md:col-span-2" />
-        <input value={form.services} onChange={(e) => setForm((p) => ({ ...p, services: e.target.value }))} placeholder="Servicos separados por virgula" className="px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-transparent md:col-span-2" />
+        <input value={form.services} onChange={(e) => setForm((p) => ({ ...p, services: e.target.value }))} placeholder="Serviços separados por vírgula" className="px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-transparent md:col-span-2" />
         <button className="md:col-span-2 inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-primary text-white">
           <Plus size={16} /> Adicionar unidade
         </button>
@@ -93,4 +93,5 @@ export const Units = () => {
     </div>
   );
 };
+
 

@@ -45,13 +45,13 @@ export function ModuleCard({ module }: ModuleCardProps) {
           </span>
         </div>
 
-        {/* LOGO — altura fixa, centralizada, sem distorção */}
-        <div className="flex items-center justify-center h-[300px] overflow-hidden px-4 py-2">
+        {/* LOGO — altura MAXimizada para preenchimento total do card */}
+        <div className="flex items-center justify-center h-[340px] overflow-hidden p-0 relative">
           {module.iconImage ? (
             <img
               src={module.iconImage}
               alt={module.title}
-              className="h-full w-full object-contain"
+              className="h-full w-full object-contain transform transition-transform duration-500 hover:scale-110"
               draggable={false}
               loading="lazy"
               onError={(e) => {
@@ -63,27 +63,27 @@ export function ModuleCard({ module }: ModuleCardProps) {
             />
           ) : (
             <div className="flex flex-col items-center justify-center w-full h-full bg-slate-100 dark:bg-white/5 rounded-lg border border-dashed border-slate-300 dark:border-white/20">
-              <Icon className="h-10 w-10 text-slate-400 dark:text-white/40 mb-1" />
-              <span className="text-xs text-slate-500 dark:text-white/50 text-center px-2">
+              <Icon className="h-16 w-16 text-slate-400 dark:text-white/40 mb-3" />
+              <span className="text-base text-slate-500 dark:text-white/50 text-center px-6">
                 Sem logo ainda
               </span>
             </div>
           )}
           {/* Placeholder de fallback (imagem com erro) */}
           <div className="logo-placeholder hidden flex-col items-center justify-center w-full h-full bg-slate-100 dark:bg-white/5 rounded-lg border border-dashed border-slate-300 dark:border-white/20">
-            <Icon className="h-10 w-10 text-slate-400 dark:text-white/40 mb-1" />
-            <span className="text-xs text-slate-500 dark:text-white/50 text-center px-2">
+            <Icon className="h-16 w-16 text-slate-400 dark:text-white/40 mb-3" />
+            <span className="text-base text-slate-500 dark:text-white/50 text-center px-6">
               Sem logo ainda
             </span>
           </div>
         </div>
 
         {/* TEXTO */}
-        <div className="px-4 pt-1 pb-0">
-          <h3 className="text-center text-[15px] font-semibold leading-tight text-slate-900 dark:text-white">
+        <div className="px-5 pt-1 pb-1">
+          <h3 className="text-center text-[18px] font-bold leading-tight text-slate-900 dark:text-white">
             {module.title}
           </h3>
-          <p className="mt-0.5 text-center text-[12px] leading-snug text-slate-600 dark:text-white/70 line-clamp-2 min-h-[32px]">
+          <p className="mt-1 text-center text-[13px] leading-snug text-slate-600 dark:text-white/70 line-clamp-2 min-h-[40px]">
             {module.description}
           </p>
         </div>

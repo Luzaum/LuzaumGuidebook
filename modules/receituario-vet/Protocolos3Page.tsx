@@ -21,6 +21,8 @@ import {
   loadProtocolBundle,
   saveProtocolBundle,
   deleteProtocol,
+  createFolder,
+  deleteFolder,
   type ProtocolFolderRecord,
   type ProtocolRecord,
   type ProtocolBundle,
@@ -56,6 +58,15 @@ interface PresentationRecord {
   is_default?: boolean
 }
 
+// ==================== CONSTANTS ====================
+
+const DEFAULT_FOLDER_NAMES = [
+  'Ortopedia', 'Cirurgia Geral', 'Oncologia', 'Gastroenterologia',
+  'Pneumologia', 'Cardiologia', 'Neurologia', 'Oftalmologia',
+  'Endocrinologia', 'Nefrologia/Urologia', 'Dermatologia',
+  'Emergência/UTI', 'Infectologia', 'Reprodução',
+]
+
 // ==================== COMPONENT ====================
 
 export default function Protocolos3Page() {
@@ -77,6 +88,13 @@ export default function Protocolos3Page() {
   // ✅ Estado: modal criar/editar protocolo
   const [modalOpen, setModalOpen] = useState(false)
   const [editingProtocol, setEditingProtocol] = useState<ProtocolBundle | null>(null)
+
+  // ✅ Estado: criar pasta
+  const [createFolderOpen, setCreateFolderOpen] = useState(false)
+  const [createFolderName, setCreateFolderName] = useState('')
+  const [isCreatingFolder, setIsCreatingFolder] = useState(false)
+  // ✅ Estado: criar exemplos
+  const [isCreatingExamples, setIsCreatingExamples] = useState(false)
 
   // ✅ Estado: busca de medicamentos
   const [medicationSearchOpen, setMedicationSearchOpen] = useState(false)
@@ -107,9 +125,23 @@ export default function Protocolos3Page() {
     setIsLoadingFolders(true)
 
     listFolders(clinicId, userId)
-      .then((data) => {
-        console.log('[Protocolos3] Folders carregados', data)
-        setFolders(data)
+      .then(async (data) => {
+        if (data.length === 0) {
+          console.log('[Protocolos3] Sem pastas — criando pastas padrão')
+          for (let i = 0; i < DEFAULT_FOLDER_NAMES.length; i++) {
+            try {
+              await createFolder(clinicId, userId, { name: DEFAULT_FOLDER_NAMES[i], sort_order: i })
+            } catch (err) {
+              console.warn('[Protocolos3] Falha ao criar pasta padrão', DEFAULT_FOLDER_NAMES[i], err)
+            }
+          }
+          const refreshed = await listFolders(clinicId, userId)
+          console.log('[Protocolos3] Pastas padrão criadas', refreshed.length)
+          setFolders(refreshed)
+        } else {
+          console.log('[Protocolos3] Folders carregados', data)
+          setFolders(data)
+        }
       })
       .catch((err) => {
         console.error('[Protocolos3] Erro ao carregar folders', err)
@@ -330,6 +362,51 @@ export default function Protocolos3Page() {
     [clinicId, userId]
   )
 
+  const handleCreateFolder = useCallback(async () => {
+    if (!clinicId || !userId || !createFolderName.trim()) return
+    setIsCreatingFolder(true)
+    try {
+      await createFolder(clinicId, userId, { name: createFolderName.trim(), sort_order: folders.length })
+      const updated = await listFolders(clinicId, userId)
+      setFolders(updated)
+      setCreateFolderOpen(false)
+      setCreateFolderName('')
+    } catch (err) {
+      console.error('[Protocolos3] Erro ao criar pasta', err)
+      alert(`Falha ao criar pasta: ${err instanceof Error ? err.message : String(err)}`)
+    } finally {
+      setIsCreatingFolder(false)
+    }
+  }, [clinicId, userId, createFolderName, folders.length])
+
+  const handleDeleteFolder = useCallback(async (folderId: string, folderName: string) => {
+    if (!clinicId || !userId) return
+    if (!confirm(`Excluir a pasta "${folderName}"?\nOs protocolos desta pasta serão movidos para Raiz.`)) return
+
+    try {
+      // Move protocols in this folder to root (folder_id = null)
+      await supabase
+        .from('protocols')
+        .update({ folder_id: null })
+        .eq('clinic_id', clinicId)
+        .eq('folder_id', folderId)
+
+      await deleteFolder(clinicId, userId, folderId)
+
+      if (selectedFolderId === folderId) setSelectedFolderId(null)
+
+      const [updatedFolders, updatedProtocols] = await Promise.all([
+        listFolders(clinicId, userId),
+        listProtocols(clinicId, userId),
+      ])
+      setFolders(updatedFolders)
+      setProtocols(updatedProtocols)
+    } catch (err) {
+      console.error('[Protocolos3] Erro ao excluir pasta', err)
+      alert(`Falha ao excluir pasta: ${err instanceof Error ? err.message : String(err)}`)
+    }
+  }, [clinicId, userId, selectedFolderId])
+
   const handleAddMedication = useCallback(
     async (medication: MedicationSearchResult) => {
       if (!clinicId || !editingProtocol) return
@@ -409,14 +486,50 @@ export default function Protocolos3Page() {
       <div className="flex min-h-[calc(100vh-64px)] bg-[#0a0f0a]">
         {/* Sidebar: Pastas */}
         <aside className="w-64 border-r border-slate-800/50 bg-black/40 p-4 shrink-0 overflow-y-auto">
-          <div className="flex items-center justify-between mb-6 px-2">
+          <div className="flex items-center justify-between mb-4 px-2">
             <h2 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
               Pastas
             </h2>
-            <button className="p-1 hover:bg-slate-800 rounded text-[#39ff14]">
+            <button
+              onClick={() => { setCreateFolderName(''); setCreateFolderOpen(true) }}
+              className="p-1 hover:bg-slate-800 rounded text-[#39ff14]"
+              title="Nova pasta"
+            >
               <span className="material-symbols-outlined text-[18px]">add</span>
             </button>
           </div>
+
+          {/* Inline create folder form */}
+          {createFolderOpen && (
+            <div className="mb-4 px-1 space-y-2">
+              <input
+                autoFocus
+                placeholder="Nome da pasta..."
+                value={createFolderName}
+                onChange={(e) => setCreateFolderName(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') handleCreateFolder()
+                  if (e.key === 'Escape') { setCreateFolderOpen(false); setCreateFolderName('') }
+                }}
+                className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white outline-none focus:border-[#39ff14]/50"
+              />
+              <div className="flex gap-2">
+                <button
+                  onClick={handleCreateFolder}
+                  disabled={!createFolderName.trim() || isCreatingFolder}
+                  className="flex-1 py-1.5 rounded-lg bg-[#39ff14]/10 text-[#39ff14] text-xs font-bold hover:bg-[#39ff14]/20 disabled:opacity-40 transition-colors"
+                >
+                  {isCreatingFolder ? 'Criando...' : 'Criar'}
+                </button>
+                <button
+                  onClick={() => { setCreateFolderOpen(false); setCreateFolderName('') }}
+                  className="flex-1 py-1.5 rounded-lg bg-slate-800 text-slate-400 text-xs font-bold hover:bg-slate-700 transition-colors"
+                >
+                  Cancelar
+                </button>
+              </div>
+            </div>
+          )}
 
           <nav className="space-y-1">
             <button
@@ -427,17 +540,41 @@ export default function Protocolos3Page() {
               <span className="material-symbols-outlined text-[18px]">inventory_2</span>
               Todos
             </button>
-            {folders.map(folder => (
+            {isLoadingFolders ? (
+              <div className="flex items-center gap-2 px-3 py-2 text-slate-600">
+                <span className="material-symbols-outlined animate-spin text-[16px]">sync</span>
+                <span className="text-xs">Carregando...</span>
+              </div>
+            ) : (
+              folders.map(folder => (
+                <div key={folder.id} className="group relative">
+                  <button
+                    onClick={() => setSelectedFolderId(folder.id)}
+                    className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-bold transition-all pr-8 ${selectedFolderId === folder.id ? 'bg-[#39ff14]/10 text-[#39ff14] border border-[#39ff14]/20' : 'text-slate-400 hover:bg-slate-800/50'
+                      }`}
+                  >
+                    <span className="material-symbols-outlined text-[18px]">folder</span>
+                    <span className="truncate">{folder.name}</span>
+                  </button>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); handleDeleteFolder(folder.id, folder.name) }}
+                    className="absolute right-1 top-1/2 -translate-y-1/2 p-1 rounded opacity-0 group-hover:opacity-100 hover:bg-red-900/30 text-red-500/60 hover:text-red-400 transition-all"
+                    title="Excluir pasta"
+                  >
+                    <span className="material-symbols-outlined text-[14px]">delete</span>
+                  </button>
+                </div>
+              ))
+            )}
+            <div className="mt-4 pt-4 border-t border-slate-800/50">
               <button
-                key={folder.id}
-                onClick={() => setSelectedFolderId(folder.id)}
-                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-bold transition-all ${selectedFolderId === folder.id ? 'bg-[#39ff14]/10 text-[#39ff14] border border-[#39ff14]/20' : 'text-slate-400 hover:bg-slate-800/50'
-                  }`}
+                onClick={() => alert('Funcionalidade de exemplos será implementada em breve.')}
+                className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-bold text-slate-400 hover:bg-slate-800/50 transition-all"
               >
-                <span className="material-symbols-outlined text-[18px]">folder</span>
-                {folder.name}
+                <span className="material-symbols-outlined text-[18px]">library_add</span>
+                <span>Adicionar exemplos</span>
               </button>
-            ))}
+            </div>
           </nav>
         </aside>
 

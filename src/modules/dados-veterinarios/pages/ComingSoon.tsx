@@ -15,7 +15,7 @@ export const ComingSoon = () => {
         </div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Em desenvolvimento</h1>
         <p className="mt-2 text-gray-600 dark:text-gray-300">
-          Esta funcao ainda esta em construcao no modulo Dados Veterinarios.
+          Esta função ainda está em construção no módulo Dados Veterinários.
         </p>
         {fromLabel ? (
           <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
@@ -35,3 +35,4 @@ export const ComingSoon = () => {
     </div>
   );
 };
+

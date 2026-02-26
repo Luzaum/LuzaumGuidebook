@@ -2,15 +2,14 @@
 // Converte NovaReceita2State -> PrescriptionState -> PrintDoc
 // para uso com rxRenderer e RxPrintView
 
-import type { NovaReceita2State } from './NovaReceita2Page'
+import type { NovaReceita2State, PrescriptionItem } from './NovaReceita2Page'
 import type { PrescriptionState, RouteGroup, PrintDoc } from './rxTypes'
-import { renderRxToPrintDoc } from './rxRenderer'
+import { renderRxToPrintDoc, splitPrescriptionByControl } from './rxRenderer'
 import type { RxTemplateStyle } from './rxDb'
 
 // =====================================================================
-// FIX A3: garante que valores numéricos do DB/sessionStorage
+// Garante que valores numéricos do DB/sessionStorage
 // chegam ao renderer sempre como string (nunca como number/object).
-// FIX G: parseia dose livre "10 mg/kg" em value+unit estruturados.
 // =====================================================================
 
 /** Converte qualquer valor para string segura (nunca undefined/null/object) */
@@ -21,27 +20,88 @@ function toSafeString(v: unknown): string {
     return ''
 }
 
-/**
- * Tenta parsear dose livre ("10 mg/kg", "0,5 ml/kg", "25 mg") em campos estruturados.
- * Retorna null se não reconhecer o padrão.
- */
-function parseDoseString(dose: string): { numericStr: string; unit: string; perKg: boolean } | null {
-    if (!dose) return null
-    // Aceita: "10 mg/kg", "0,5 mg/kg BID", "25 mg", "0.5 ml/kg", "10 mcg/kg"
-    const match = dose.match(/(\d+(?:[.,]\d+)?)\s*(mg|mcg|g|ml|mL|UI|IU|u\.?i\.?)(?:\/kg)?/i)
-    if (!match) return null
-    const perKg = /\/kg/i.test(dose)
-    return {
-        numericStr: match[1].replace(',', '.'),
-        unit: match[2].toLowerCase().replace('ui', 'ui').replace('iu', 'ui'),
-        perKg,
-    }
+// =====================================================================
+// A2: Conversão de frequência para texto leigo em horas
+// =====================================================================
+function frequencyToText(freq: string): string {
+    if (!freq) return ''
+    const f = freq.toLowerCase().trim()
+    // Contínuo
+    if (f.includes('contínuo') || f.includes('continuo') || f === 'uso contínuo') return 'uso contínuo'
+    if (f.includes('dose única') || f.includes('dose unica')) return 'dose única'
+    // Tokens padrão
+    if (f === 'sid (1x ao dia)' || f === '1x ao dia' || f === 'q24h') return '1 vez ao dia'
+    if (f === 'bid (12/12h)' || f === '2x ao dia' || f === 'q12h') return 'a cada 12 horas'
+    if (f === 'tid (8/8h)' || f === '3x ao dia' || f === 'q8h') return 'a cada 8 horas'
+    if (f === 'qid (6/6h)' || f === '4x ao dia' || f === 'q6h') return 'a cada 6 horas'
+    if (f === '5x ao dia') return 'a cada ~5 horas'
+    if (f === '6x ao dia' || f === 'q4h') return 'a cada 4 horas'
+    if (f === '8x ao dia') return 'a cada 3 horas'
+    if (f === '12x ao dia' || f === 'q2h') return 'a cada 2 horas'
+    if (f === '24x ao dia' || f === 'q1h') return 'a cada 1 hora'
+    if (f === 'q1h') return 'a cada 1 hora'
+    if (f === 'q2h') return 'a cada 2 horas'
+    if (f === 'q4h') return 'a cada 4 horas'
+    if (f === 'q6h') return 'a cada 6 horas'
+    if (f === 'q8h') return 'a cada 8 horas'
+    if (f === 'q12h') return 'a cada 12 horas'
+    // Fallback — retorna o texto original limpo
+    return freq
+}
+
+// =====================================================================
+// A2: Conversão de via de administração para texto por extenso
+// =====================================================================
+function routeToFullText(route: string): string {
+    if (!route) return ''
+    const r = route.trim()
+    // Exact match (case-insensitive)
+    const rUp = r.toUpperCase()
+    if (rUp === 'VO' || rUp === 'ORAL') return 'oral'
+    if (rUp === 'SC') return 'subcutânea'
+    if (rUp === 'IM') return 'intramuscular'
+    if (rUp === 'IV') return 'intravenosa'
+    if (rUp === 'TÓPICO' || rUp === 'TOPICO') return 'tópica'
+    if (rUp === 'OFTÁLMICO' || rUp === 'OFTALMICO') return 'oftálmica'
+    if (rUp === 'OTOLÓGICO' || rUp === 'OTOLOGICO') return 'otológica'
+    if (rUp === 'INTRANASAL') return 'intranasal'
+    if (rUp === 'RETAL') return 'retal'
+    if (rUp === 'INALATÓRIO' || rUp === 'INALATORIO') return 'inalatória'
+    if (rUp === 'TRANSDÉRMICO' || rUp === 'TRANSDERMICO') return 'transdérmica'
+    // Prefix match
+    const rLow = r.toLowerCase()
+    if (rLow.startsWith('oral') || rLow.startsWith('vo ')) return 'oral'
+    if (rLow.startsWith('sc ') || rLow.startsWith('subcut')) return 'subcutânea'
+    if (rLow.startsWith('im ') || rLow.startsWith('intra musc') || rLow.startsWith('intramuscular')) return 'intramuscular'
+    if (rLow.startsWith('iv ') || rLow.startsWith('intravenosa') || rLow.startsWith('endoven')) return 'intravenosa'
+    // Fallback — retorna o texto original em minúscula
+    return r.toLowerCase()
+}
+
+// =====================================================================
+// A2: Derivar unidade da apresentação a partir da forma farmacêutica
+// =====================================================================
+function presentationUnit(item: PrescriptionItem): string {
+    const form = (item.pharmaceutical_form || item.presentation_label || '').toLowerCase()
+    if (form.includes('comprimido')) return 'comprimido(s)'
+    if (form.includes('cápsula') || form.includes('capsul')) return 'cápsula(s)'
+    if (form.includes('gotas') || form.includes('gota')) return 'gotas'
+    if (form.includes('injetável') || form.includes('injetavel')) return 'mL'
+    if (form.includes('suspensão') || form.includes('suspensao')) return 'mL'
+    if (form.includes('solução') || form.includes('solucao') || form.includes('xarope')) return 'mL'
+    if (form.includes('colírio') || form.includes('colirio')) return 'gotas'
+    if (form.includes('pomada') || form.includes('creme') || form.includes('gel')) return 'g'
+    if (form.includes('spray')) return 'aplicação(ões)'
+    if (form.includes('shampoo') || form.includes('loção') || form.includes('locao')) return 'mL'
+    if (form.includes('inalat') || form.includes('nebuliz')) return 'mL'
+    // Fallback: package_unit ou value_unit do item
+    if (item.package_unit) return item.package_unit
+    if (item.value_unit) return item.value_unit
+    return ''
 }
 
 // =====================================================================
 // FIX CRÍTICO: mapear route string livre -> RouteGroup enum
-// rxRenderer agrupa itens por routeGroup. Sem o enum correto,
-// os itens não aparecem em nenhuma section do PrintDoc.
 // =====================================================================
 function routeStringToGroup(route?: string): RouteGroup {
     if (!route) return 'ORAL'
@@ -62,73 +122,82 @@ function routeStringToGroup(route?: string): RouteGroup {
     return 'OUTROS'
 }
 
-// Formatar título do item incluindo concentração e nome comercial
-function buildItemTitle(item: {
-    name: string
-    concentration_text?: string
-    commercial_name?: string
-    pharmaceutical_form?: string
-}): string {
+// =====================================================================
+// A1: Construir Linha 1 completa do item
+// Formato: "Nome Concentração (Nome Comercial) – Forma Farmacêutica"
+// Tudo em `name`; deixar concentration/commercialName vazios para o
+// rxRenderer não acrescentar nada extra.
+// =====================================================================
+function buildLineOneTitle(item: PrescriptionItem, concentrationSafe: string): string {
     const parts: string[] = [item.name]
-
-    if (item.concentration_text) {
-        parts.push(item.concentration_text)
-    }
-
-    if (item.commercial_name) {
-        parts.push(`(${item.commercial_name})`)
-    }
-
+    if (concentrationSafe) parts.push(concentrationSafe)
+    if (item.commercial_name) parts.push(`(${item.commercial_name})`)
+    const form = item.pharmaceutical_form || item.presentation_label
+    if (form) parts.push(`– ${form}`)
     return parts.join(' ')
 }
 
-// Formatar subtitle com dados da apresentação
-function buildItemSubtitle(item: {
-    pharmaceutical_form?: string
-    presentation_label?: string
-    avg_price_brl?: number
-    package_quantity?: string
-    package_unit?: string
-}): string {
+// =====================================================================
+// A2: Construir Linha 2+ da instrução (leiga-friendly)
+// =====================================================================
+function buildItemInstruction(item: PrescriptionItem): string {
     const parts: string[] = []
 
-    const form = item.pharmaceutical_form || item.presentation_label
-    if (form) parts.push(form)
+    // Derivar unidade de administração da forma farmacêutica
+    const unit = presentationUnit(item)
+    const freqText = frequencyToText(item.frequency || '')
+    const routeText = routeToFullText(item.route || '')
+    const isContinuous = freqText === 'uso contínuo'
+        || (item.duration || '').toLowerCase().includes('contínuo')
+        || (item.duration || '').toLowerCase().includes('continuo')
 
-    if (item.package_quantity && item.package_unit) {
-        parts.push(`Emb: ${item.package_quantity} ${item.package_unit}`)
+    // Linha 2: "Administrar X comprimido(s) por via oral, a cada 12 horas, por 7 dias"
+    const adminPart: string[] = []
+
+    if (item.dose) {
+        // dose + unidade derivada (ex: "10 mg/kg" → "10 mg/kg comprimido(s)")
+        // Se a unidade já está implícita no dose, não duplicar
+        adminPart.push(`Administrar ${item.dose}${unit && !item.dose.toLowerCase().includes(unit.replace('(s)', '').replace('(ões)', '')) ? ` ${unit}` : ''}`)
+    } else if (unit) {
+        adminPart.push(`Administrar conforme orientação clínica (${unit})`)
+    } else {
+        adminPart.push('Administrar conforme orientação clínica')
     }
 
-    if (item.avg_price_brl && item.avg_price_brl > 0) {
-        parts.push(`R$ ${item.avg_price_brl.toFixed(2)}`)
+    if (routeText) adminPart.push(`por via ${routeText}`)
+
+    if (freqText === 'dose única') {
+        adminPart.push('em dose única')
+    } else if (freqText === 'uso contínuo') {
+        adminPart.push('em uso contínuo')
+    } else if (freqText) {
+        adminPart.push(freqText)
     }
 
-    return parts.join(' • ')
-}
+    if (!isContinuous && item.duration && !item.duration.toLowerCase().includes('dose única')) {
+        // Normalizar duração: "7 dias" → "por 7 dias"
+        const dur = item.duration.trim()
+        adminPart.push(dur.toLowerCase().startsWith('por ') ? dur : `por ${dur}`)
+    }
 
-// Formatar instruction combinando dose/route/frequency/duration ou usar manual
-function buildItemInstruction(item: {
-    instructions?: string
-    dose?: string
-    route?: string
-    frequency?: string
-    duration?: string
-}): string {
-    // Priorizar instruction manual se preenchida
+    parts.push(adminPart.join(', ') + '.')
+
+    // Linha 3: Iniciar em DD/MM às HH:MM
+    if (item.start_date && item.start_date.trim()) {
+        parts.push(`Iniciar em ${item.start_date.trim()}`)
+    } else {
+        const today = new Date()
+        const dd = String(today.getDate()).padStart(2, '0')
+        const mm = String(today.getMonth() + 1).padStart(2, '0')
+        parts.push(`Iniciar em ${dd}/${mm} às __:__`)
+    }
+
+    // Linha 4: Instrução extra livre
     if (item.instructions && item.instructions.trim()) {
-        return item.instructions.trim()
+        parts.push(item.instructions.trim())
     }
 
-    // Montar automático
-    const parts: string[] = []
-    if (item.dose) parts.push(`Dose: ${item.dose}`)
-    if (item.route) parts.push(`Via: ${item.route}`)
-    if (item.frequency) parts.push(item.frequency)
-    if (item.duration) parts.push(`por ${item.duration}`)
-
-    if (parts.length > 0) return parts.join(' • ')
-
-    return 'Preencher instruções'
+    return parts.join('\n')
 }
 
 export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State): PrescriptionState {
@@ -136,35 +205,35 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
 
     const mappedItems = state.items.map(item => {
         const routeGroup = routeStringToGroup(item.route)
-        // FIX: subtitle apenas para presentation (forma + embalagem + preço)
-        const subtitle = buildItemSubtitle(item)
-        // FIX: pre-build a instrução e sempre usar (nunca deixar o renderer substituir
-        // por buildAutoInstruction que não consegue parsear dose livre "10 mg/kg")
+
+        // A1: Garantir que concentration_text nunca seja objeto/número
+        const concentrationSafe = toSafeString(item.concentration_text)
+
+        // A1: Título completo na linha 1 — tudo em `name`, concentration/commercialName vazios
+        const displayName = buildLineOneTitle(item, concentrationSafe)
+
+        // Subtitle: embalagem + preço (não inclui a forma — já está no título)
+        const subtitleParts: string[] = []
+        if (item.package_quantity && item.package_unit) {
+            subtitleParts.push(`Emb: ${item.package_quantity} ${item.package_unit}`)
+        }
+        if (item.avg_price_brl && item.avg_price_brl > 0) {
+            subtitleParts.push(`R$ ${item.avg_price_brl.toFixed(2)}`)
+        }
+        const subtitle = subtitleParts.join(' • ')
+
+        // A2: Instrução leiga-friendly
         const instruction = buildItemInstruction(item)
 
-        // FIX G: parsear dose livre para campos estruturados (doseValue numérico + doseUnit)
-        // Permite que calculateMedicationQuantity exiba "Dose calculada: X mg / Volume: Y mL"
-        const parsedDose = parseDoseString(toSafeString(item.dose))
-        const doseValue = parsedDose ? parsedDose.numericStr : toSafeString(item.dose)
-        const doseUnit = parsedDose
-            ? parsedDose.perKg ? `${parsedDose.unit}/kg` : parsedDose.unit
-            : ''
-
-        // FIX A3: garantir que concentration_text nunca seja objeto/número
-        const concentrationSafe = toSafeString(item.concentration_text)
-        // FIX A3: garantir que weight_kg do patient seja sempre string
-        // (Supabase pode retornar como number dependendo da versão do schema)
+        // Dose estruturado para rxRenderer (não exibe "Dose calculada" na receita — apenas para cálculo)
+        const doseRaw = toSafeString(item.dose)
 
         if (import.meta.env.DEV) {
-            console.log('[novaReceita2Adapter] item mapped', {
+            console.log('[novaReceita2Adapter] item', {
                 id: item.id,
-                name: item.name,
-                concentration: concentrationSafe,
-                commercial: item.commercial_name,
+                displayName,
                 routeGroup,
-                doseValue,
-                doseUnit,
-                instruction: instruction.slice(0, 60),
+                instruction: instruction.slice(0, 80),
             })
         }
 
@@ -172,22 +241,20 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
             id: item.id,
             category: 'medication' as const,
             catalogDrugId: item.medication_id || '',
-            controlled: false,
-            // FIX: colocar APENAS nome do fármaco em name;
-            // o renderer (rxRenderer.buildItemTitle) concatena name + concentration + commercialName.
-            name: item.name,
-            presentation: subtitle,    // subtitle: forma + embalagem + preço
-            concentration: concentrationSafe,
-            commercialName: toSafeString(item.commercial_name),
+            controlled: item.is_controlled || false,
+            // A1: título completo em `name`; concentration/commercialName vazios para evitar duplicação
+            name: displayName,
+            presentation: subtitle,
+            concentration: '',
+            commercialName: '',
             pharmacyType: 'veterinária' as const,
             packageType: 'frasco' as const,
             pharmacyName: '',
             observations: '',
             routeGroup,
-            doseValue,
-            doseUnit,
-            // FIX: autoInstruction = false + manualEdited = true para que o renderer
-            // use SEMPRE a instrução pre-construída pelo adapter (buildItemInstruction)
+            doseValue: doseRaw,
+            doseUnit: '',
+            // Usar instrução pré-construída pelo adapter (não usar buildAutoInstruction do renderer)
             autoInstruction: false,
             frequencyType: 'timesPerDay' as const,
             frequencyToken: '' as '' | 'SID' | 'BID' | 'TID' | 'QID',
@@ -214,7 +281,7 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
             adminId: '',
             name: state.prescriber?.name || '',
             crmv: state.prescriber?.crmv || '',
-            clinicName: '',
+            clinicName: state.prescriber?.clinicName || '',
         },
         tutor: {
             tutorRecordId: state.tutor?.id || '',
@@ -264,19 +331,18 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
             waterMlPerDay: '',
             specialControlPharmacy: 'veterinária' as const,
             standardTemplateId: state.templateId || '',
-            specialControlTemplateId: '',
+            specialControlTemplateId: state.controlledTemplateId || '',
         }
     }
 }
 
-export function buildPrintDocFromNovaReceita2(
+export function buildPrintDocsFromNovaReceita2(
     state: NovaReceita2State,
     _template?: Partial<RxTemplateStyle>
-): PrintDoc {
+): { standard: PrintDoc | null; specialControl: PrintDoc | null } {
     const rxState = buildPrescriptionStateFromNovaReceita2(state)
-    const doc = renderRxToPrintDoc(rxState)
+    const split = splitPrescriptionByControl(rxState)
 
-    // Formatar endereço do tutor em uma linha (sem microchip)
     const tutorAddressLine = [
         state.tutor?.street,
         state.tutor?.number,
@@ -289,7 +355,23 @@ export function buildPrintDocFromNovaReceita2(
         state.tutor?.phone,
     ].filter(Boolean).join(', ')
 
-    doc.addressLine = tutorAddressLine || ''
+    let standardDoc: PrintDoc | null = null
+    if (split.standard) {
+        standardDoc = renderRxToPrintDoc(split.standard, { documentKind: 'standard' })
+        standardDoc.addressLine = tutorAddressLine || ''
+    }
 
-    return doc
+    let specialControlDoc: PrintDoc | null = null
+    if (split.specialControl) {
+        specialControlDoc = renderRxToPrintDoc(split.specialControl, { documentKind: 'special-control' })
+        specialControlDoc.addressLine = tutorAddressLine || ''
+    }
+
+    // Fallback if empty
+    if (!standardDoc && !specialControlDoc) {
+        standardDoc = renderRxToPrintDoc(rxState, { documentKind: 'standard' })
+        standardDoc.addressLine = tutorAddressLine || ''
+    }
+
+    return { standard: standardDoc, specialControl: specialControlDoc }
 }

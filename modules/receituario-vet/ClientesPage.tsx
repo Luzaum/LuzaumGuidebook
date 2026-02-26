@@ -1,6 +1,7 @@
 ﻿import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { supabase } from '@/src/lib/supabaseClient'
 import { useClinic } from '@/src/components/ClinicProvider'
+import { getMyMemberships, storeClinicId, ActiveClinicMembership } from '@/src/lib/clinic'
 import { resolveRxDataSource, createRxDataAdapter } from './adapters'
 import { DataAdapterPatientMatch } from './adapters/DataAdapter'
 import ReceituarioChrome from './ReceituarioChrome'
@@ -166,7 +167,7 @@ function historyForAnimal(records: HistoryRecord[], client: ClientRecord, animal
 }
 
 export default function ClientesPage() {
-  const { clinicId } = useClinic()
+  const { clinicId, loading, refreshMembership } = useClinic()
   const rxDataSource = useMemo(
     () => resolveRxDataSource(import.meta.env.VITE_RX_DATA_SOURCE),
     []
@@ -175,6 +176,28 @@ export default function ClientesPage() {
     () => createRxDataAdapter({ source: rxDataSource, clinicId }),
     [clinicId, rxDataSource]
   )
+
+  // ----- Clinic selection state (mobile) -----
+  const [memberships, setMemberships] = useState<ActiveClinicMembership[]>([])
+  const [membershipsLoading, setMembershipsLoading] = useState(false)
+
+  useEffect(() => {
+    if (!loading && !clinicId) {
+      const fetchMemberships = async () => {
+        setMembershipsLoading(true)
+        try {
+          const list = await getMyMemberships()
+          setMemberships(list)
+          console.log('[DEV] Clinic selection: memberships loaded', { clinicId, dataLen: list.length })
+        } catch (err) {
+          console.error('Failed to load memberships', err)
+        } finally {
+          setMembershipsLoading(false)
+        }
+      }
+      fetchMemberships()
+    }
+  }, [loading, clinicId])
 
   // ----- LOCAL mode state -----
   const [db, setDb] = useState(() => loadRxDb())
@@ -188,6 +211,10 @@ export default function ClientesPage() {
   // Load tutors from Supabase when in Supabase mode
   const loadSupabaseTutors = useCallback(async () => {
     if (rxDataSource !== 'supabase') return;
+    if (!clinicId) {
+      console.log('[ClientesPage] Skipping tutor load: clinicId missing')
+      return
+    }
     console.log('[ClientesPage] REFRESH list', { dataSource: rxDataSource, clinicId })
     setSupabaseLoading(true)
     try {
@@ -1022,6 +1049,45 @@ export default function ClientesPage() {
         syncToast('Tutor removido.')
       }
     })
+  }
+
+  const showClinicSelection = !loading && !clinicId && memberships.length > 0
+
+  if (showClinicSelection) {
+    return (
+      <ReceituarioChrome
+        section="clientes"
+        title="Selecionar clínica"
+        subtitle="Escolha uma clínica para acessar tutores e pacientes."
+      >
+        <div className="mx-auto max-w-md p-6">
+          <h2 className="mb-4 text-lg font-bold">Selecione uma clínica</h2>
+          {membershipsLoading ? (
+            <p>Carregando clínicas...</p>
+          ) : memberships.length === 0 ? (
+            <p>Nenhuma clínica encontrada.</p>
+          ) : (
+            <div className="space-y-2">
+              {memberships.map((m) => (
+                <button
+                  key={m.clinicId}
+                  className="w-full rounded-xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] p-4 text-left hover:border-[color:var(--rxv-primary)]"
+                  onClick={async () => {
+                    storeClinicId(m.clinicId)
+                    console.log('[DEV] Clinic selected', { clinicId: m.clinicId, dataLen: memberships.length })
+                    await refreshMembership()
+                  }}
+                >
+                  <div className="font-semibold">{m.clinicName}</div>
+                  <div className="text-sm text-[color:var(--rxv-muted)]">ID: {m.clinicId}</div>
+                  <div className="text-xs text-[color:var(--rxv-muted)]">Papel: {m.role}</div>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      </ReceituarioChrome>
+    )
   }
 
   return (

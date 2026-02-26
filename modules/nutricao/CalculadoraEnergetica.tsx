@@ -291,91 +291,252 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
     };
 
     return (
-        <div className="min-h-screen bg-background relative overflow-x-hidden font-sans">
+        <div className="relative min-h-screen w-full overflow-x-hidden">
+            {/* Background com Aurora exclusivo do Vetius */}
+            <div className="fixed inset-0 z-0">
+                <div className="absolute inset-0 bg-[#0a0510]" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/20 via-transparent to-blue-900/10" />
+                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-purple-600/10 blur-[120px]" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-blue-600/10 blur-[120px]" />
+            </div>
+
             <Modal content={modalContent} onClose={() => setModalContent(null)} />
 
             {/* Ideal Weight Modal */}
             {idealWeightModalOpenFor && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50" onClick={() => setIdealWeightModalOpenFor(null)}>
-                    <div className="bg-card text-card-foreground border border-border rounded-lg shadow-xl max-w-sm w-full p-6" onClick={(e) => e.stopPropagation()}>
-                        <h3 className="text-lg font-bold text-foreground mb-4 text-center">Calculadora de Peso Ideal</h3>
-                        <div className="space-y-4">
-                            <div>
-                                <label className="block text-sm font-medium text-foreground mb-1">Peso Atual (kg)</label>
-                                <input type="number" className="w-full p-2 bg-background border border-input rounded text-foreground" value={iwcInput.weight} onChange={e => setIwcInput({ ...iwcInput, weight: e.target.value })} step="0.1" />
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-300" onClick={() => setIdealWeightModalOpenFor(null)}>
+                    <div className="bg-slate-900 border border-white/10 rounded-[40px] shadow-2xl max-w-sm w-full p-10 backdrop-blur-xl transform transition-all scale-100 shadow-purple-900/20" onClick={(e) => e.stopPropagation()}>
+                        <div className="text-center mb-8">
+                            <div className="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                <span className="material-symbols-outlined text-purple-400 scale-125">scale</span>
                             </div>
-                            <div>
-                                <label className="block text-sm font-medium text-foreground mb-1">Escore de Condição Corporal (1 a 9)</label>
-                                <select className="w-full p-2 bg-background border border-input rounded text-foreground" value={iwcInput.ecc} onChange={e => setIwcInput({ ...iwcInput, ecc: e.target.value })}>
-                                    {[6, 7, 8, 9].map(val => <option key={val} value={val}>{val} - Acima do peso</option>)}
-                                    <option value="5" disabled>5 - Ideal (Não usar calculadora)</option>
-                                    {[1, 2, 3, 4].map(val => <option key={val} value={val} disabled>{val} - Abaixo do peso (Use % de ganho semanal)</option>)}
-                                </select>
-                                <p className="text-xs text-muted-foreground mt-1 text-center">Apenas para sobrepeso/obesidade.</p>
+                            <h3 className="text-xl font-black text-white tracking-tight">Peso Ideal Estimado</h3>
+                            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">Cálculo Baseado em ECC</p>
+                        </div>
+
+                        <div className="space-y-6">
+                            <div className="space-y-2">
+                                <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1 text-center block">Peso Atual (kg)</label>
+                                <input
+                                    type="number"
+                                    step="0.1"
+                                    className="w-full h-16 bg-white/5 border border-white/10 rounded-2xl text-center text-3xl font-black text-white focus:bg-white/10 focus:border-purple-500/50 transition-all outline-none placeholder:text-slate-800"
+                                    value={iwcInput.weight}
+                                    onChange={e => setIwcInput({ ...iwcInput, weight: e.target.value })}
+                                    placeholder="0.0"
+                                />
                             </div>
-                            <button onClick={handleCalculateIdealWeight} className="w-full py-2 bg-blue-600 text-white rounded font-semibold hover:bg-blue-700">Calcular e Usar</button>
+
+                            <div className="space-y-2">
+                                <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1 text-center block">ECC (Escala 1-9)</label>
+                                <div className="grid grid-cols-5 gap-1.5 h-12">
+                                    {[5, 6, 7, 8, 9].map(val => (
+                                        <button
+                                            key={val}
+                                            onClick={() => setIwcInput({ ...iwcInput, ecc: val.toString() })}
+                                            className={`rounded-xl font-black text-xs transition-all ${iwcInput.ecc === val.toString() ? 'bg-purple-600 text-white shadow-lg shadow-purple-900/40' : 'bg-white/5 text-slate-500 hover:bg-white/10'}`}
+                                        >
+                                            {val}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="pt-2">
+                                <button
+                                    onClick={handleCalculateIdealWeight}
+                                    className="w-full h-16 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-[24px] font-black uppercase tracking-[0.2em] text-xs shadow-xl shadow-purple-900/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                                >
+                                    Calcular e Aplicar
+                                </button>
+                            </div>
+
                             {iwcResult && (
-                                <div className="mt-3 p-3 bg-green-50 border border-green-200 text-green-800 rounded text-center font-bold">
-                                    {iwcResult}
+                                <div className="p-6 bg-purple-500/10 border border-purple-500/20 rounded-[28px] text-center animate-in zoom-in-95 duration-500">
+                                    <p className="text-[10px] font-black text-purple-400 uppercase tracking-widest mb-1">Resultado</p>
+                                    <p className="text-2xl font-black text-white">{iwcResult.replace('Peso Ideal Estimado: ', '').replace(' kg', '')}<span className="text-xs text-slate-500 ml-1">kg</span></p>
                                 </div>
                             )}
+
+                            <button onClick={() => setIdealWeightModalOpenFor(null)} className="w-full text-[10px] font-black text-slate-600 hover:text-slate-400 p-2 uppercase tracking-widest transition-colors">Voltar</button>
                         </div>
                     </div>
                 </div>
             )}
 
-            <div className="w-full max-w-3xl mx-auto bg-card text-card-foreground border border-border rounded-2xl shadow-lg p-4 md:p-8">
-                <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
-                    <button onClick={onBack} className="w-full md:w-auto px-6 py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg font-medium transition flex items-center justify-center gap-2">
-                        ← <span>Voltar</span>
-                    </button>
-                    <div className="flex p-1 bg-muted rounded-xl gap-1 w-full md:w-auto">
-                        {['energia', 'racao', 'indicacoes'].map(tab => (
+            {/* Layout Principal Expandido */}
+            <div className="relative z-10 w-full max-w-[1600px] mx-auto px-4 py-6 sm:px-6 lg:px-8">
+
+                {/* Header Integrado com Navegação */}
+                <div className="flex flex-col lg:flex-row items-center justify-between mb-8 gap-6">
+                    <div className="flex items-center gap-6 w-full lg:w-auto">
+                        <button
+                            onClick={onBack}
+                            className="flex h-12 px-5 items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl text-slate-300 font-bold transition-all group active:scale-95"
+                        >
+                            <span className="material-symbols-outlined text-xl group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                            <span>Sair</span>
+                        </button>
+                        <div>
+                            <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight flex items-center gap-3">
+                                <span className="p-2 bg-purple-500/20 rounded-xl">⚡</span>
+                                Calculadora Metabólica
+                            </h1>
+                            <p className="text-sm font-semibold text-slate-400 mt-1 uppercase tracking-widest px-1">NUTRIVET PRO SYSTEM</p>
+                        </div>
+                    </div>
+
+                    <div className="flex p-1.5 bg-slate-900/60 border border-white/10 rounded-2xl gap-2 w-full lg:w-auto backdrop-blur-md">
+                        {[
+                            { id: 'energia', label: 'Energia', icon: 'bolt' },
+                            { id: 'racao', label: 'Dieta', icon: 'restaurant' },
+                            { id: 'indicacoes', label: 'Guia', icon: 'menu_book' }
+                        ].map(tab => (
                             <button
-                                key={tab}
-                                onClick={() => setActiveTab(tab)}
-                                className={`flex-1 md:flex-none px-6 py-2.5 rounded-lg font-medium text-sm transition-all duration-200 ${activeTab === tab ? 'bg-background text-foreground shadow-sm ring-1 ring-border' : 'text-muted-foreground hover:text-foreground hover:bg-muted-foreground/10'}`}
+                                key={tab.id}
+                                onClick={() => setActiveTab(tab.id)}
+                                className={`flex-1 lg:flex-none flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 ${activeTab === tab.id ? 'bg-purple-600 text-white shadow-lg shadow-purple-900/40' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}
                             >
-                                {tab === 'energia' ? '⚡ Energia' : tab === 'racao' ? '🍚 Ração' : '📖 Tabela'}
+                                <span className="material-symbols-outlined text-[18px]">{tab.icon}</span>
+                                {tab.label}
                             </button>
                         ))}
                     </div>
                 </div>
 
-                {activeTab === 'energia' && (
-                    <EnergyTab
-                        species={species}
-                        setSpecies={setSpecies}
-                        weight={weight}
-                        setWeight={setWeight}
-                        status={status}
-                        setStatus={setStatus}
-                        setModalContent={setModalContent}
-                        calculationResults={calculationResults}
-                        isCritical={isCritical}
-                    />
-                )}
+                {/* Grid de Conteúdo: Lado Esquerdo (Tabs) + Lado Direito (Resumo fixo em telas grandes) */}
+                <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
 
-                {activeTab === 'racao' && (
-                    <FoodCalculatorTab
-                        species={species} isCritical={isCritical}
-                        nutritionalGoal={nutritionalGoal} setNutritionalGoal={setNutritionalGoal}
-                        targetWeight={targetWeight} setTargetWeight={setTargetWeight}
-                        setIwcInput={setIwcInput} setIwcResult={setIwcResult} setIdealWeightModalOpenFor={setIdealWeightModalOpenFor}
-                        foodSearchQuery={foodSearchQuery} setFoodSearchQuery={setFoodSearchQuery}
-                        unifiedFoods={unifiedFoods} selectedUnifiedFoodId={selectedUnifiedFoodId} setSelectedUnifiedFoodId={setSelectedUnifiedFoodId} selectedUnifiedFood={selectedUnifiedFood}
-                        commercialFoodFilters={commercialFoodFilters} setCommercialFoodFilters={setCommercialFoodFilters}
-                        selectedCommercialFoodId={selectedCommercialFoodId} setSelectedCommercialFoodId={setSelectedCommercialFoodId} selectedCommercialFood={selectedCommercialFood} commercialFoodWarnings={commercialFoodWarnings}
-                        setPredefinedFoodIndex={setPredefinedFoodIndex} customFoodName={customFoodName} setCustomFoodName={setCustomFoodName}
-                        customFoodCalories={customFoodCalories} setCustomFoodCalories={setCustomFoodCalories} customFoodUnit={customFoodUnit} setCustomFoodUnit={setCustomFoodUnit}
-                        handleAddUnifiedFood={handleAddUnifiedFood} handleAddCommercialFood={handleAddCommercialFood} handleAddFood={handleAddFood}
-                        foodPrescriptionList={foodPrescriptionList} calculationResults={calculationResults} targetKcal={targetKcal} setModalContent={setModalContent} sortedFoods={sortedFoods}
-                    />
-                )}
+                    {/* Conteúdo Principal (8 Colunas) */}
+                    <div className="xl:col-span-8 space-y-6">
+                        <div className="bg-slate-900/40 border border-white/10 rounded-[32px] p-6 sm:p-8 backdrop-blur-xl shadow-2xl relative overflow-hidden group">
+                            {/* Efeito de brilho sutil no card principal */}
+                            <div className="absolute -top-24 -right-24 w-64 h-64 bg-purple-600/10 rounded-full blur-[80px] pointer-events-none group-hover:bg-purple-600/20 transition-all duration-700" />
 
-                {activeTab === 'indicacoes' && (
-                    <IndicationsTab species={species} sortedFoods={sortedFoods} />
-                )}
+                            {activeTab === 'energia' && (
+                                <EnergyTab
+                                    species={species}
+                                    setSpecies={setSpecies}
+                                    weight={weight}
+                                    setWeight={setWeight}
+                                    status={status}
+                                    setStatus={setStatus}
+                                    setModalContent={setModalContent}
+                                    calculationResults={calculationResults}
+                                    isCritical={isCritical}
+                                />
+                            )}
+
+                            {activeTab === 'racao' && (
+                                <FoodCalculatorTab
+                                    species={species} isCritical={isCritical}
+                                    nutritionalGoal={nutritionalGoal} setNutritionalGoal={setNutritionalGoal}
+                                    targetWeight={targetWeight} setTargetWeight={setTargetWeight}
+                                    setIwcInput={setIwcInput} setIwcResult={setIwcResult} setIdealWeightModalOpenFor={setIdealWeightModalOpenFor}
+                                    foodSearchQuery={foodSearchQuery} setFoodSearchQuery={setFoodSearchQuery}
+                                    unifiedFoods={unifiedFoods} selectedUnifiedFoodId={selectedUnifiedFoodId} setSelectedUnifiedFoodId={setSelectedUnifiedFoodId} selectedUnifiedFood={selectedUnifiedFood}
+                                    commercialFoodFilters={commercialFoodFilters} setCommercialFoodFilters={setCommercialFoodFilters}
+                                    selectedCommercialFoodId={selectedCommercialFoodId} setSelectedCommercialFoodId={setSelectedCommercialFoodId} selectedCommercialFood={selectedCommercialFood} commercialFoodWarnings={commercialFoodWarnings}
+                                    setPredefinedFoodIndex={setPredefinedFoodIndex} customFoodName={customFoodName} setCustomFoodName={setCustomFoodName}
+                                    customFoodCalories={customFoodCalories} setCustomFoodCalories={setCustomFoodCalories} customFoodUnit={customFoodUnit} setCustomFoodUnit={setCustomFoodUnit}
+                                    handleAddUnifiedFood={handleAddUnifiedFood} handleAddCommercialFood={handleAddCommercialFood} handleAddFood={handleAddFood}
+                                    foodPrescriptionList={foodPrescriptionList} calculationResults={calculationResults} targetKcal={targetKcal} setModalContent={setModalContent} sortedFoods={sortedFoods}
+                                />
+                            )}
+
+                            {activeTab === 'indicacoes' && (
+                                <IndicationsTab species={species} sortedFoods={sortedFoods} />
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Sidebar de Resumo (4 Colunas) */}
+                    <aside className="xl:col-span-4 space-y-6">
+                        <div className="bg-slate-900/60 border border-white/10 rounded-[32px] p-8 backdrop-blur-xl shadow-2xl sticky top-6">
+                            <h2 className="text-xl font-bold text-white mb-8 border-b border-white/5 pb-4 flex items-center gap-3">
+                                <span className="material-symbols-outlined text-purple-400">monitoring</span>
+                                Resumo Nutricional
+                            </h2>
+
+                            {calculationResults ? (
+                                <div className="space-y-8">
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div className="bg-white/5 rounded-2xl p-4 border border-white/5">
+                                            <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">RER (Básico)</p>
+                                            <p className="text-2xl font-black text-white">{calculationResults.rer.toFixed(0)} <span className="text-xs text-slate-500">kcal</span></p>
+                                        </div>
+                                        <div className="bg-purple-500/10 rounded-2xl p-4 border border-purple-500/20">
+                                            <p className="text-[10px] font-black text-purple-400 uppercase tracking-widest mb-1">DER (Meta)</p>
+                                            <p className="text-2xl font-black text-white">
+                                                {nutritionalGoal === 'maintenance' ? calculationResults.der.toFixed(0) : targetKcal.toFixed(0)}
+                                                <span className="text-xs text-purple-400 ml-1 font-bold">kcal</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div className="space-y-4">
+                                        <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                                            <span className="w-1 h-1 bg-purple-500 rounded-full" /> Perfil do Paciente
+                                        </p>
+                                        <div className="space-y-3">
+                                            <div className="flex items-center justify-between text-sm py-2 border-b border-white/5">
+                                                <span className="text-slate-400">Espécie</span>
+                                                <span className="text-white font-bold uppercase tracking-tight">{species === 'dog' ? 'Cão' : 'Gato'}</span>
+                                            </div>
+                                            <div className="flex items-center justify-between text-sm py-2 border-b border-white/5">
+                                                <span className="text-slate-400">Peso Atual</span>
+                                                <span className="text-white font-bold">{weight} <span className="text-[10px] text-slate-500">kg</span></span>
+                                            </div>
+                                            <div className="flex items-center justify-between text-sm py-2 border-b border-white/5">
+                                                <span className="text-slate-400">Fator (K)</span>
+                                                <span className="text-purple-400 font-black">{calculationResults.k}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {foodPrescriptionList.length > 0 && (
+                                        <div className="space-y-4 pt-6 border-t border-white/5">
+                                            <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                                                <span className="w-1 h-1 bg-green-500 rounded-full" /> Dieta Prescrita
+                                            </p>
+                                            <div className="space-y-2 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+                                                {foodPrescriptionList.map((food, i) => (
+                                                    <div key={i} className="bg-white/5 rounded-2xl p-4 border border-white/5 group hover:bg-white/10 transition-all">
+                                                        <div className="flex justify-between items-start mb-2">
+                                                            <div className="font-black text-slate-200 text-[10px] uppercase truncate flex-1">{food.name}</div>
+                                                            <span className="text-[10px] font-black text-purple-400 ml-2">#{(i + 1).toString().padStart(2, '0')}</span>
+                                                        </div>
+                                                        <div className="flex justify-between items-end">
+                                                            <div className="text-[9px] font-bold text-slate-500">{(food.calories * (food.unit === 'g' || food.unit === 'ml' ? 1000 : 1)).toFixed(0)} kcal/{food.unit === 'g' ? 'kg' : food.unit === 'ml' ? 'L' : 'un'}</div>
+                                                            <div className="text-right">
+                                                                <div className="text-[8px] font-black text-slate-600 uppercase">PB / EE</div>
+                                                                <div className="text-[10px] font-black text-slate-300">{food.protein}% / {food.fat}%</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Action Box */}
+                                    <div className="pt-6 border-t border-white/5">
+                                        <button className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-black py-4 rounded-2xl shadow-xl shadow-purple-900/20 transition-all active:scale-[0.98] flex items-center justify-center gap-3 text-sm">
+                                            <span className="material-symbols-outlined">print</span>
+                                            GERAR RELATÓRIO
+                                        </button>
+                                        <p className="text-[9px] text-center text-slate-600 font-bold uppercase tracking-tighter mt-4">Vetius Nutrimetabolic v2.0</p>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="flex flex-col items-center justify-center py-12 text-center opacity-40">
+                                    <span className="material-symbols-outlined text-5xl mb-4">analytics</span>
+                                    <p className="text-sm font-bold uppercase tracking-widest">Aguardando dados...</p>
+                                </div>
+                            )}
+                        </div>
+                    </aside>
+                </div>
             </div>
         </div>
     );

@@ -43,6 +43,7 @@ export interface Tutor {
   referralSource?: string;
   street?: string;
   number?: string;
+  complement?: string;
   neighborhood?: string;
   city?: string;
   state?: string;
@@ -62,6 +63,7 @@ export interface Appointment {
   date: Date;
   patientId: string;
   tutorId: string;
+  veterinarianName?: string;
   type: 'Consulta Geral' | 'Especialidade' | 'Retorno' | 'Exame' | 'Imagem' | 'Procedimento' | 'Reunião' | 'Internamento';
   status: 'Agendado' | 'Confirmado' | 'Concluído' | 'Cancelado';
   notes?: string;
@@ -150,11 +152,31 @@ export interface Internment {
   patientId: string;
   tutorId: string;
   bed: string;
-  sector: string;
+  sector: 'UTI' | 'Semi-Intensivo' | 'Internamento';
+  chiefComplaint?: string;
+  presumptiveDiagnosis?: string;
+  prognosis?: string;
   status: 'Internado' | 'Alta' | 'Transferido';
   admittedAt: Date;
   updatedAt: Date;
   entries: InternmentEntry[];
+}
+
+export interface ExecutionTask {
+  id: string;
+  clinicId?: string;
+  internmentId: string;
+  patientId: string;
+  tutorId: string;
+  scheduledAt: Date;
+  medication: string;
+  dosage?: string;
+  route?: string;
+  notes?: string;
+  done: boolean;
+  doneAt?: Date;
+  doneBy?: string;
+  completionNotes?: string;
 }
 
 interface DataContextType {
@@ -164,6 +186,7 @@ interface DataContextType {
   financialRecords: FinancialRecord[];
   services: Service[];
   internments: Internment[];
+  executionTasks: ExecutionTask[];
   addPatient: (patient: Patient) => void;
   updatePatient: (id: string, patient: Partial<Patient>) => void;
   addTutor: (tutor: Tutor) => void;
@@ -171,12 +194,15 @@ interface DataContextType {
   addAppointment: (appointment: Appointment) => void;
   updateAppointment: (id: string, appointment: Partial<Appointment>) => void;
   addFinancialRecord: (record: FinancialRecord) => void;
+  updateFinancialRecord: (id: string, record: Partial<FinancialRecord>) => void;
   addService: (service: Service) => void;
   updateService: (id: string, service: Partial<Service>) => void;
   deleteService: (id: string) => void;
   addInternment: (internment: Omit<Internment, 'id' | 'updatedAt'>) => void;
   updateInternmentStatus: (internmentId: string, status: Internment['status']) => void;
   addInternmentEntry: (internmentId: string, entry: Omit<InternmentEntry, 'id' | 'date'>) => void;
+  addExecutionTask: (task: Omit<ExecutionTask, 'id' | 'done' | 'doneAt'>) => void;
+  updateExecutionTask: (taskId: string, task: Partial<ExecutionTask>) => void;
   getPatientName: (id: string) => string;
   getTutorName: (id: string) => string;
 }
@@ -305,6 +331,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
       date: new Date(),
       patientId: '1',
       tutorId: '1',
+      veterinarianName: 'Dra. Ana Ribeiro',
       type: 'Procedimento',
       status: 'Agendado',
     },
@@ -315,6 +342,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
       date: addDays(new Date(), 1),
       patientId: '2',
       tutorId: '2',
+      veterinarianName: 'Dr. Carlos Mendes',
       type: 'Especialidade',
       status: 'Agendado',
     },
@@ -325,6 +353,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
       date: subDays(new Date(), 2),
       patientId: '3',
       tutorId: '3',
+      veterinarianName: 'Dra. Julia Costa',
       type: 'Retorno',
       status: 'Concluído',
     },
@@ -358,7 +387,10 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
       patientId: '1',
       tutorId: '1',
       bed: 'A-03',
-      sector: 'Emergência',
+      sector: 'UTI',
+      chiefComplaint: 'Prostração e vômitos',
+      presumptiveDiagnosis: 'Gastroenterite aguda',
+      prognosis: 'Reservado',
       status: 'Internado',
       admittedAt: subDays(new Date(), 1),
       updatedAt: new Date(),
@@ -375,6 +407,22 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     },
   ]);
 
+  const [rawExecutionTasks, setRawExecutionTasks] = useState<ExecutionTask[]>([
+    {
+      id: 'task-1',
+      clinicId: 'copa',
+      internmentId: 'int-1',
+      patientId: '1',
+      tutorId: '1',
+      scheduledAt: new Date(),
+      medication: 'Maropitant',
+      dosage: '1 mg/kg',
+      route: 'SC',
+      notes: 'Controle de vômito',
+      done: false,
+    },
+  ]);
+
   const canSeeClinic = (clinicId?: string) => !clinicId || clinicId === 'all' || visibleClinicIds.includes(clinicId);
 
   const patients = useMemo(() => rawPatients.filter((x) => canSeeClinic(x.clinicId)), [rawPatients, visibleClinicIds]);
@@ -383,6 +431,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const financialRecords = useMemo(() => rawFinancialRecords.filter((x) => canSeeClinic(x.clinicId)), [rawFinancialRecords, visibleClinicIds]);
   const services = useMemo(() => rawServices.filter((x) => canSeeClinic(x.clinicId)), [rawServices, visibleClinicIds]);
   const internments = useMemo(() => rawInternments.filter((x) => canSeeClinic(x.clinicId)), [rawInternments, visibleClinicIds]);
+  const executionTasks = useMemo(() => rawExecutionTasks.filter((x) => canSeeClinic(x.clinicId)), [rawExecutionTasks, visibleClinicIds]);
 
   const createClinicScopedValue = (clinicId?: string) => {
     if (clinicId) return clinicId;
@@ -415,6 +464,10 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const addFinancialRecord = (record: FinancialRecord) => {
     setRawFinancialRecords((prev) => [...prev, { ...record, clinicId: createClinicScopedValue(record.clinicId) }]);
+  };
+
+  const updateFinancialRecord = (id: string, updatedData: Partial<FinancialRecord>) => {
+    setRawFinancialRecords((prev) => prev.map((r) => (r.id === id ? { ...r, ...updatedData } : r)));
   };
 
   const addService = (service: Service) => {
@@ -465,6 +518,22 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     );
   };
 
+  const addExecutionTask = (task: Omit<ExecutionTask, 'id' | 'done' | 'doneAt'>) => {
+    setRawExecutionTasks((prev) => [
+      {
+        ...task,
+        id: `task-${Math.random().toString(36).slice(2, 9)}`,
+        clinicId: createClinicScopedValue(task.clinicId),
+        done: false,
+      },
+      ...prev,
+    ]);
+  };
+
+  const updateExecutionTask = (taskId: string, updatedData: Partial<ExecutionTask>) => {
+    setRawExecutionTasks((prev) => prev.map((task) => (task.id === taskId ? { ...task, ...updatedData } : task)));
+  };
+
   const getPatientName = (id: string) => {
     const patient = rawPatients.find((p) => p.id === id);
     return patient ? patient.name : 'Desconhecido';
@@ -484,6 +553,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         financialRecords,
         services,
         internments,
+        executionTasks,
         addPatient,
         updatePatient,
         addTutor,
@@ -491,12 +561,15 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         addAppointment,
         updateAppointment,
         addFinancialRecord,
+        updateFinancialRecord,
         addService,
         updateService,
         deleteService,
         addInternment,
         updateInternmentStatus,
         addInternmentEntry,
+        addExecutionTask,
+        updateExecutionTask,
         getPatientName,
         getTutorName,
       }}

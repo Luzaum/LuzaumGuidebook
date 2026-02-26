@@ -97,6 +97,7 @@ export interface PrescriptionItem {
   titleBold?: boolean
   titleUnderline?: boolean
   cautions: string[]
+  start_date?: string
   createdAt: string
   updatedAt: string
 }
@@ -128,6 +129,7 @@ export interface PrintDocItem {
   title: string
   subtitle: string
   instruction: string
+  start_date?: string
   titleBold?: boolean
   titleUnderline?: boolean
   cautions: string[]

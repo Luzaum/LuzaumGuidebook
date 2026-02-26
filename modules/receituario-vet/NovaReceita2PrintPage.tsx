@@ -16,15 +16,14 @@ import React, {
     useRef,
     useState,
 } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { jsPDF } from 'jspdf'
-import html2canvas from 'html2canvas'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { RxPrintView } from './RxPrintView'
-import { buildPrintDocFromNovaReceita2 } from './novaReceita2Adapter'
+import { buildPrintDocsFromNovaReceita2 } from './novaReceita2Adapter'
+import { getSignedUrl } from './rxSupabaseStorage'
 import { BUILTIN_TEMPLATES } from './builtinTemplates'
 import type { NovaReceita2State, PrescriptionItem, TutorInfo, PatientInfo } from './NovaReceita2Page'
 import type { TemplateZoneKey } from './rxDb'
-import { uploadPrescriptionPdf, attachPdfToPresc, savePrescription } from '../../src/lib/prescriptionsRecords'
+import { savePrescription } from '../../src/lib/prescriptionsRecords'
 import { getStoredClinicId } from '../../src/lib/clinic'
 
 // ==================== SESSION ====================
@@ -47,22 +46,6 @@ function saveSessionState(state: NovaReceita2State) {
     } catch {
         // noop
     }
-}
-
-// ==================== PDF ====================
-
-function sanitizeFilePart(value: string): string {
-    return (value || 'SEM_DADO')
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .replace(/[^a-zA-Z0-9]+/g, '_')
-        .replace(/^_+|_+$/g, '')
-        .toUpperCase()
-}
-
-function buildPdfFileName(patientName: string, tutorName: string): string {
-    const date = new Date().toLocaleDateString('pt-BR').replace(/\//g, '-')
-    return `${sanitizeFilePart(patientName)}_${sanitizeFilePart(tutorName)}_${date}.pdf`
 }
 
 // ==================== ROUTE OPTIONS ====================
@@ -398,6 +381,14 @@ function EditorItem({
                     </Field>
                 </div>
 
+                <Field label='Iniciar em (ex: "26/02 às 08:00")'>
+                    <Input
+                        value={item.start_date || ''}
+                        onChange={(e) => setField('start_date', e.target.value)}
+                        placeholder={`${String(new Date().getDate()).padStart(2, '0')}/${String(new Date().getMonth() + 1).padStart(2, '0')} às __:__`}
+                    />
+                </Field>
+
                 <Field label="Instruções de uso">
                     <textarea
                         className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:border-[#39ff14]/40 focus:outline-none"
@@ -460,6 +451,7 @@ const ZONE_LABEL: Record<TemplateZoneKey, string> = {
 
 export default function NovaReceita2PrintPage() {
     const location = useLocation()
+    const navigate = useNavigate()
     const mode = new URLSearchParams(location.search).get('mode') || 'review'
     const isReviewMode = mode === 'review'
     const isPrintMode = mode === 'print'
@@ -467,11 +459,41 @@ export default function NovaReceita2PrintPage() {
 
     const [state, setState] = useState<NovaReceita2State | null>(() => loadSessionState())
     const [toast, setToast] = useState<string | null>(null)
-    const [isExporting, setIsExporting] = useState(false)
+    const [isSaving, setIsSaving] = useState(false)
+    const [signedSignatureUrl, setSignedSignatureUrl] = useState<string>('')
+    const [signedLogoUrl, setSignedLogoUrl] = useState<string>('')
     const [activeZone, setActiveZone] = useState<TemplateZoneKey | null>(null)
     const [selectedItemId, setSelectedItemId] = useState<string | null>(null)
+    // C4: tabs de review quando há receita padrão + controlada
+    const [activeReviewTab, setActiveReviewTab] = useState<'standard' | 'controlled'>('standard')
     const previewRef = useRef<HTMLDivElement | null>(null)
     const autoActionFiredRef = useRef(false)
+
+    // Generate signed URLs for prescriber images
+    useEffect(() => {
+        const updateSignedUrls = async () => {
+            const signatureUrl = state?.prescriber?.signatureDataUrl;
+            const logoUrl = state?.prescriber?.clinicLogoDataUrl;
+            if (signatureUrl) {
+                const signed = await getSignedUrl(signatureUrl);
+                setSignedSignatureUrl(signed);
+                // preload
+                const img = new Image();
+                img.src = signed;
+            } else {
+                setSignedSignatureUrl('');
+            }
+            if (logoUrl) {
+                const signed = await getSignedUrl(logoUrl);
+                setSignedLogoUrl(signed);
+                const img = new Image();
+                img.src = signed;
+            } else {
+                setSignedLogoUrl('');
+            }
+        };
+        updateSignedUrls();
+    }, [state?.prescriber?.signatureDataUrl, state?.prescriber?.clinicLogoDataUrl]);
 
     const pushToast = useCallback((msg: string) => {
         setToast(msg)
@@ -494,9 +516,10 @@ export default function NovaReceita2PrintPage() {
 
     // ==================== MEMO ====================
 
-    const printDoc = useMemo(() => {
-        if (!state) return null
-        return buildPrintDocFromNovaReceita2(state)
+    const { standardDoc, specialDoc } = useMemo(() => {
+        if (!state) return { standardDoc: null, specialDoc: null }
+        const docs = buildPrintDocsFromNovaReceita2(state)
+        return { standardDoc: docs.standard, specialDoc: docs.specialControl }
     }, [state])
 
     const selectedTemplate = useMemo(() => {
@@ -504,6 +527,12 @@ export default function NovaReceita2PrintPage() {
         const id = state.templateId || BUILTIN_TEMPLATES[0].id
         return BUILTIN_TEMPLATES.find((t) => t.id === id) || BUILTIN_TEMPLATES[0]
     }, [state])
+
+    // Template para receita de controle especial (fallback: mesmo que padrão)
+    const selectedControlledTemplate = useMemo(() => {
+        if (!state?.controlledTemplateId) return selectedTemplate
+        return BUILTIN_TEMPLATES.find((t) => t.id === state.controlledTemplateId) || selectedTemplate
+    }, [state, selectedTemplate])
 
     // ==================== EDITOR FOCUS ====================
 
@@ -538,100 +567,58 @@ export default function NovaReceita2PrintPage() {
     }, [])
 
     const handlePrint = useCallback(() => {
-        window.print()
-    }, [])
+        if (isReviewMode) {
+            navigate(`?mode=print`)
+        } else {
+            window.print()
+        }
+    }, [isReviewMode, navigate])
 
-    const handleDownloadPdf = useCallback(async () => {
-        const container = previewRef.current
-        if (!container) {
-            pushToast('Preview não disponível para exportação.')
+    // PDF com texto selecionável: abre diálogo de impressão do browser.
+    // O usuário escolhe "Salvar como PDF" — sem rasterização html2canvas.
+    const handleSavePdf = useCallback(() => {
+        if (isReviewMode) {
+            navigate(`?mode=pdf`)
+        } else {
+            pushToast('💡 No diálogo que abrir, escolha "Salvar como PDF"')
+            setTimeout(() => window.print(), 500)
+        }
+    }, [isReviewMode, navigate, pushToast])
+
+    // Salva a receita no Supabase (sem upload de PDF)
+    const handleSaveToSupabase = useCallback(async () => {
+        const patientId = state?.patient?.id
+        const clinicId = getStoredClinicId()
+        if (!patientId || !clinicId || !state?.tutor?.id) {
+            pushToast('Preencha tutor e paciente antes de salvar.')
             return
         }
-
-        const canvas = container.querySelector('[data-rx-print-canvas="sheet"]') as HTMLElement | null
-        const target = canvas || container
-
-        setIsExporting(true)
+        setIsSaving(true)
         try {
-            const renderedCanvas = await html2canvas(target, {
-                scale: 2,
-                backgroundColor: '#ffffff',
-                useCORS: true,
-                logging: false,
-            })
-
-            const pdf = new jsPDF({
-                orientation: 'portrait',
-                unit: 'mm',
-                format: (selectedTemplate?.paperSize || 'A4').toLowerCase() as 'a4' | 'a5',
-            })
-
-            const img = renderedCanvas.toDataURL('image/png')
-            const pageW = pdf.internal.pageSize.getWidth()
-            const pageH = pdf.internal.pageSize.getHeight()
-            pdf.addImage(img, 'PNG', 0, 0, pageW, pageH, undefined, 'FAST')
-
-            const fileName = buildPdfFileName(
-                state?.patient?.name || 'PACIENTE',
-                state?.tutor?.name || 'TUTOR'
-            )
-            pdf.save(fileName)
-            pushToast(`PDF gerado: ${fileName}`)
-
-            // Ensure prescription record exists before uploading PDF
-            let effectivePrescriptionId = state?.supabaseId
-            const patientId = state?.patient?.id
-            const clinicId = getStoredClinicId()
-            if (!effectivePrescriptionId && patientId && clinicId && state?.tutor?.id) {
-                try {
-                    const payload = {
-                        patient_id: patientId,
-                        tutor_id: state.tutor.id,
-                        clinic_id: clinicId,
-                        content: {
-                            kind: selectedTemplate?.documentKindTarget as any,
-                            templateId: state.templateId,
-                            printDoc,
-                            stateSnapshot: state,
-                            createdAtLocal: new Date().toISOString(),
-                            appVersion: '2.0.0-parity'
-                        }
-                    }
-                    const saved = await savePrescription(payload)
-                    effectivePrescriptionId = saved.id
-                    // Update local state with new supabaseId
-                    updateState(prev => ({ ...prev, supabaseId: saved.id }))
-                } catch (saveErr) {
-                    console.error('[Rx2Print] Failed to save prescription', saveErr)
-                    // Continue without upload
-                }
+            const payload = {
+                id: state.supabaseId || undefined,
+                patient_id: patientId,
+                tutor_id: state.tutor.id,
+                clinic_id: clinicId,
+                content: {
+                    kind: (selectedTemplate?.documentKindTarget || 'standard') as any,
+                    templateId: state.templateId,
+                    printDoc: standardDoc || specialDoc,
+                    stateSnapshot: state,
+                    createdAtLocal: new Date().toISOString(),
+                    appVersion: '2.0.0',
+                },
             }
-
-            // Upload para Supabase Storage (best-effort, não bloqueia o usuário)
-            if (effectivePrescriptionId && patientId && clinicId) {
-                try {
-                    const blob = pdf.output('blob')
-                    const pdfPath = await uploadPrescriptionPdf({
-                        clinicId,
-                        patientId,
-                        prescriptionId: effectivePrescriptionId,
-                        blob,
-                    })
-                    await attachPdfToPresc({ prescriptionId: effectivePrescriptionId, pdfPath, clinicId })
-                    if (import.meta.env.DEV) {
-                        console.log('[Rx2Print] PDF salvo no storage', { pdfPath })
-                    }
-                } catch (uploadErr) {
-                    console.error('[Rx2Print] Storage upload failed (non-fatal)', uploadErr)
-                }
-            }
+            const saved = await savePrescription(payload)
+            updateState((prev) => ({ ...prev, supabaseId: saved.id }))
+            pushToast('✅ Receita salva no sistema!')
         } catch (err) {
-            console.error('[Rx2Print] PDF export failed', err)
-            pushToast('Erro ao gerar PDF. Tente imprimir diretamente.')
+            console.error('[Rx2Print] Save failed', err)
+            pushToast('Erro ao salvar. Tente novamente.')
         } finally {
-            setIsExporting(false)
+            setIsSaving(false)
         }
-    }, [state, selectedTemplate, pushToast, updateState, printDoc])
+    }, [state, selectedTemplate, standardDoc, specialDoc, pushToast, updateState])
 
     const handleWhatsApp = useCallback(async () => {
         const phone = state?.tutor?.phone || ''
@@ -643,28 +630,28 @@ export default function NovaReceita2PrintPage() {
         const normalized = digits.startsWith('55') ? digits : `55${digits}`
         const msg = `Olá ${state?.tutor?.name || ''}, segue a receita do paciente ${state?.patient?.name || ''}.`
         window.open(`https://wa.me/${normalized}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer')
-        try { await handleDownloadPdf() } catch { /* ignore */ }
-    }, [state, pushToast, handleDownloadPdf])
+    }, [state, pushToast])
 
     // ==================== AUTO-ACTIONS ====================
 
     useEffect(() => {
-        if (!printDoc || autoActionFiredRef.current) return
+        if (!(standardDoc || specialDoc) || autoActionFiredRef.current) return
         if (isPrintMode) {
             autoActionFiredRef.current = true
             const t = window.setTimeout(() => window.print(), 600)
             return () => window.clearTimeout(t)
         }
         if (isPdfMode) {
+            // PDF selecionável: usar diálogo de impressão do browser
             autoActionFiredRef.current = true
-            const t = window.setTimeout(() => handleDownloadPdf(), 600)
+            const t = window.setTimeout(() => window.print(), 600)
             return () => window.clearTimeout(t)
         }
-    }, [isPrintMode, isPdfMode, printDoc, handleDownloadPdf])
+    }, [isPrintMode, isPdfMode, standardDoc, specialDoc])
 
     // ==================== EMPTY STATE ====================
 
-    if (!state || !printDoc) {
+    if (!state || !(standardDoc || specialDoc)) {
         return (
             <div className="flex min-h-screen items-center justify-center bg-[#0a0f0a] text-white">
                 <div className="text-center">
@@ -711,6 +698,14 @@ export default function NovaReceita2PrintPage() {
                     </button>
                     <button
                         type="button"
+                        disabled={isSaving}
+                        className="rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-sm font-semibold text-slate-200 hover:bg-slate-700 disabled:opacity-50"
+                        onClick={handleSaveToSupabase}
+                    >
+                        {isSaving ? 'Salvando...' : '💾 Salvar'}
+                    </button>
+                    <button
+                        type="button"
                         className="rounded-lg border border-[#345d2a] bg-[#1a2e16] px-3 py-2 text-sm font-semibold hover:bg-[#22381d]"
                         onClick={handlePrint}
                     >
@@ -718,11 +713,10 @@ export default function NovaReceita2PrintPage() {
                     </button>
                     <button
                         type="button"
-                        disabled={isExporting}
-                        className="rounded-lg bg-[#38ff14] px-3 py-2 text-sm font-bold text-[#10200d] hover:bg-[#2bd010] disabled:opacity-50"
-                        onClick={handleDownloadPdf}
+                        className="rounded-lg bg-[#38ff14] px-3 py-2 text-sm font-bold text-[#10200d] hover:bg-[#2bd010]"
+                        onClick={handleSavePdf}
                     >
-                        {isExporting ? 'Gerando...' : '⬇ Exportar PDF'}
+                        📄 Salvar como PDF
                     </button>
                 </div>
             </div>
@@ -822,9 +816,29 @@ export default function NovaReceita2PrintPage() {
                         <div className="rxv-review-preview-col lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:overflow-y-auto">
                             <div className="rxv-review-preview-inner rounded-xl border border-slate-700 bg-slate-900/50 overflow-hidden">
                                 <div className="flex items-center justify-between border-b border-slate-800 px-4 py-2 bg-black/40">
-                                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                                        Preview clicável — {selectedTemplate.name}
-                                    </span>
+                                    {/* C4: Tabs Padrão / Controlada quando ambas existem */}
+                                    {standardDoc && specialDoc ? (
+                                        <div className="flex gap-1">
+                                            <button
+                                                type="button"
+                                                onClick={() => setActiveReviewTab('standard')}
+                                                className={`rounded px-3 py-1 text-[10px] font-black uppercase tracking-widest transition-all ${activeReviewTab === 'standard' ? 'bg-slate-700 text-white' : 'text-slate-500 hover:text-slate-300'}`}
+                                            >
+                                                📄 Padrão
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={() => setActiveReviewTab('controlled')}
+                                                className={`rounded px-3 py-1 text-[10px] font-black uppercase tracking-widest transition-all ${activeReviewTab === 'controlled' ? 'bg-amber-900/50 text-amber-300' : 'text-slate-500 hover:text-amber-400'}`}
+                                            >
+                                                💊 Controlada
+                                            </button>
+                                        </div>
+                                    ) : (
+                                        <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                                            Preview clicável — {selectedTemplate.name}
+                                        </span>
+                                    )}
                                     <span className="text-[10px] text-slate-600">
                                         {activeZone ? `Zona ativa: ${ZONE_LABEL[activeZone] || activeZone}` : selectedItemId ? 'Item selecionado' : 'Nenhuma seleção'}
                                     </span>
@@ -835,15 +849,65 @@ export default function NovaReceita2PrintPage() {
                                     style={{ maxHeight: 'calc(100vh - 10rem)' }}
                                 >
                                     <div ref={previewRef} className="p-4">
-                                        <RxPrintView
-                                            doc={printDoc}
-                                            template={selectedTemplate}
-                                            interactive={true}
-                                            activeZone={activeZone || undefined}
-                                            onZoneSelect={handleZoneSelect}
-                                            selectedItemId={selectedItemId || undefined}
-                                            onItemSelect={handleItemSelect}
-                                        />
+                                        <div className="flex flex-col gap-6">
+                                            {/* C4: quando misto, mostrar só a aba ativa */}
+                                            {standardDoc && specialDoc ? (
+                                                activeReviewTab === 'standard' ? (
+                                                    <RxPrintView
+                                                        doc={standardDoc}
+                                                        template={selectedTemplate}
+                                                        signatureDataUrl={signedSignatureUrl || state?.prescriber?.signatureDataUrl}
+                                                        logoDataUrl={signedLogoUrl || state?.prescriber?.clinicLogoDataUrl}
+                                                        interactive={true}
+                                                        activeZone={activeZone || undefined}
+                                                        onZoneSelect={handleZoneSelect}
+                                                        selectedItemId={selectedItemId || undefined}
+                                                        onItemSelect={handleItemSelect}
+                                                    />
+                                                ) : (
+                                                    <RxPrintView
+                                                        doc={specialDoc}
+                                                        template={selectedControlledTemplate}
+                                                        signatureDataUrl={signedSignatureUrl || state?.prescriber?.signatureDataUrl}
+                                                        logoDataUrl={signedLogoUrl || state?.prescriber?.clinicLogoDataUrl}
+                                                        interactive={true}
+                                                        activeZone={activeZone || undefined}
+                                                        onZoneSelect={handleZoneSelect}
+                                                        selectedItemId={selectedItemId || undefined}
+                                                        onItemSelect={handleItemSelect}
+                                                    />
+                                                )
+                                            ) : (
+                                                <>
+                                                    {standardDoc && (
+                                                        <RxPrintView
+                                                            doc={standardDoc}
+                                                            template={selectedTemplate}
+                                                            signatureDataUrl={signedSignatureUrl || state?.prescriber?.signatureDataUrl}
+                                                            logoDataUrl={signedLogoUrl || state?.prescriber?.clinicLogoDataUrl}
+                                                            interactive={true}
+                                                            activeZone={activeZone || undefined}
+                                                            onZoneSelect={handleZoneSelect}
+                                                            selectedItemId={selectedItemId || undefined}
+                                                            onItemSelect={handleItemSelect}
+                                                        />
+                                                    )}
+                                                    {specialDoc && (
+                                                        <RxPrintView
+                                                            doc={specialDoc}
+                                                            template={selectedControlledTemplate}
+                                                            signatureDataUrl={signedSignatureUrl || state?.prescriber?.signatureDataUrl}
+                                                            logoDataUrl={signedLogoUrl || state?.prescriber?.clinicLogoDataUrl}
+                                                            interactive={true}
+                                                            activeZone={activeZone || undefined}
+                                                            onZoneSelect={handleZoneSelect}
+                                                            selectedItemId={selectedItemId || undefined}
+                                                            onItemSelect={handleItemSelect}
+                                                        />
+                                                    )}
+                                                </>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -883,13 +947,25 @@ export default function NovaReceita2PrintPage() {
                             overflow: visible !important;
                         }
 
+                        /* Ocultar header com tabs */
+                        .rxv-review-preview-inner > div:first-child {
+                            display: none !important;
+                        }
+
                         /* Remove transforms */
                         [style*="transform"] {
                             transform: none !important;
                             width: 100% !important;
                         }
 
-                        @page { margin: 10mm; }
+                        /* Evitar quebra dentro de cards de medicamento */
+                        article { break-inside: avoid; page-break-inside: avoid; }
+
+                        /* Ocultar header "Visualização rápida" do RxPrintView */
+                        .rxv-print-preview > div:first-child { display: none !important; }
+                        .rxv-print-preview { border: none !important; border-radius: 0 !important; box-shadow: none !important; }
+
+                        @page { size: A4; margin: 10mm; }
                     }
                 `}</style>
 
@@ -919,12 +995,17 @@ export default function NovaReceita2PrintPage() {
                     className="rxv-print-page-wrapper mx-auto max-w-5xl px-4 py-8"
                     style={{ background: 'radial-gradient(#1e3a18 1px, transparent 1px)', backgroundSize: '18px 18px' }}
                 >
-                    {/* previewRef usado SOMENTE pelo html2canvas para export PDF */}
-                    <div ref={previewRef} className="rxv-print-canvas">
-                        <RxPrintView
-                            doc={printDoc}
-                            template={selectedTemplate}
-                        />
+                    <div ref={previewRef} className="rxv-print-canvas flex flex-col gap-8">
+                        {standardDoc && (
+                            <div className="print-page-break-after">
+                                <RxPrintView doc={standardDoc} template={selectedTemplate} signatureDataUrl={signedSignatureUrl || state?.prescriber?.signatureDataUrl} logoDataUrl={signedLogoUrl || state?.prescriber?.clinicLogoDataUrl} />
+                            </div>
+                        )}
+                        {specialDoc && (
+                            <div className="print-page-break-after">
+                                <RxPrintView doc={specialDoc} template={selectedControlledTemplate} signatureDataUrl={signedSignatureUrl || state?.prescriber?.signatureDataUrl} logoDataUrl={signedLogoUrl || state?.prescriber?.clinicLogoDataUrl} />
+                            </div>
+                        )}
                     </div>
                 </div>
 
@@ -937,16 +1018,31 @@ export default function NovaReceita2PrintPage() {
 
             {/* IMPRESSÃO: Container limpo — só visível via window.print() */}
             <div className="hidden print:block bg-white text-black">
-                <RxPrintView
-                    doc={printDoc}
-                    template={selectedTemplate}
-                />
+                {standardDoc && (
+                    <div className="print-page-break-after">
+                        <RxPrintView doc={standardDoc} template={selectedTemplate} signatureDataUrl={signedSignatureUrl || state?.prescriber?.signatureDataUrl} logoDataUrl={signedLogoUrl || state?.prescriber?.clinicLogoDataUrl} />
+                    </div>
+                )}
+                {specialDoc && (
+                    <div className="print-page-break-after">
+                        <RxPrintView doc={specialDoc} template={selectedControlledTemplate} signatureDataUrl={signedSignatureUrl || state?.prescriber?.signatureDataUrl} logoDataUrl={signedLogoUrl || state?.prescriber?.clinicLogoDataUrl} />
+                    </div>
+                )}
             </div>
 
             <style>{`
-                @page { margin: 10mm; }
+                @page { size: A4; margin: 10mm; }
                 @media print {
                     body { background: white !important; margin: 0 !important; padding: 0 !important; }
+                    .print-page-break-after { page-break-after: always; break-after: page; }
+                    .print-page-break-after:last-child { page-break-after: auto; break-after: auto; }
+
+                    /* Evitar quebra dentro de cards de medicamento */
+                    article { break-inside: avoid; page-break-inside: avoid; }
+
+                    /* Ocultar header "Visualização rápida" do RxPrintView */
+                    .rxv-print-preview > div:first-child { display: none !important; }
+                    .rxv-print-preview { border: none !important; border-radius: 0 !important; box-shadow: none !important; }
                 }
             `}</style>
         </>

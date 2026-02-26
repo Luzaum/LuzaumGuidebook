@@ -16,6 +16,8 @@ import {
     type RecommendedDose
 } from '../../src/lib/clinicRecords'
 
+import { useLocalDraft } from '../../hooks/useLocalDraft'
+
 import {
     RxvCard,
     RxvSectionHeader,
@@ -195,7 +197,7 @@ export default function Catalogo3Page() {
     // Estados principais
     const [medications, setMedications] = useState<Medication[]>([])
     const [selectedId, setSelectedId] = useState<string | null>(null)
-    const [draft, setDraft] = useState<MedicationWithPresentations>(createEmptyMedication())
+    const [draft, setDraft, clearDraft] = useLocalDraft<MedicationWithPresentations>('catalogo3', clinicId, currentUser?.id || null, createEmptyMedication())
     const [loading, setLoading] = useState(true)
     const [isSaving, setIsSaving] = useState(false)
     const [searchTerm, setSearchTerm] = useState('')
@@ -747,7 +749,7 @@ export default function Catalogo3Page() {
                             </RxvSectionHeader>
 
                             <div className="grid grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2">
-                                <RxvField label="Nome comercial / Nome do item *" error={validationErrors.name}>
+                                <RxvField label="Nome do medicamento *" error={validationErrors.name}>
                                     <RxvInput
                                         placeholder="Ex: Carbamazepina"
                                         value={draft.name ?? ''}

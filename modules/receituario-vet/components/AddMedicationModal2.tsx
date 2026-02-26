@@ -1,7 +1,7 @@
 // ✅ AddMedicationModal2 — Modal para adicionar medicamentos (100% Catálogo 3.0)
 // Versão completa com todos os campos de apresentação do schema Supabase
 
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import {
   RxvField,
   RxvInput,
@@ -9,6 +9,7 @@ import {
   RxvTextarea,
   RxvButton,
 } from '../../../src/components/receituario/RxvComponents'
+import { createPortal } from 'react-dom'
 import {
   searchMedications,
   getMedicationPresentations,
@@ -16,6 +17,62 @@ import {
   type RecommendedDose,
 } from '../../../src/lib/clinicRecords'
 import type { PrescriptionItem, PatientInfo } from '../NovaReceita2Page'
+
+// ===================== OPTIONS =====================
+const FORM_OPTIONS = [
+  { value: 'Comprimido', label: 'Comprimido' },
+  { value: 'Cápsula', label: 'Cápsula' },
+  { value: 'Suspensão Oral', label: 'Suspensão Oral' },
+  { value: 'Solução Oral', label: 'Solução Oral' },
+  { value: 'Xarope', label: 'Xarope' },
+  { value: 'Gotas', label: 'Gotas' },
+  { value: 'Injetável', label: 'Injetável' },
+  { value: 'Pomada', label: 'Pomada' },
+  { value: 'Creme', label: 'Creme' },
+  { value: 'Gel', label: 'Gel' },
+  { value: 'Colírio', label: 'Colírio' },
+  { value: 'Otológico', label: 'Otológico' },
+  { value: 'Transdérmico', label: 'Transdérmico' },
+  { value: 'Shampoo', label: 'Shampoo' },
+  { value: 'Loção', label: 'Loção' },
+  { value: 'Spray', label: 'Spray' },
+  { value: 'Pó', label: 'Pó' },
+  { value: 'Outro', label: 'Outro' },
+]
+
+const CONC_UNIT_OPTIONS = [
+  'mg', 'g', 'mcg', 'mL', 'mg/mL', 'g/mL', 'mg/comprimido', 'mg/cápsula', 'mg/g', '%', 'UI/mL', 'UI', 'UI/comprimido', 'mEq/mL', 'mEq'
+].map(u => ({ value: u, label: u }))
+
+const DOSE_UNIT_OPTIONS = [
+  'mg/kg', 'mg', 'mL/kg', 'mL', 'gotas/kg', 'gotas', 'UI/kg', 'UI', 'UI/comprimido', 'mcg/kg', 'mcg', 'comprimido(s)', 'cápsula(s)'
+].map(u => ({ value: u, label: u }))
+
+const FREQ_OPTIONS = [
+  { value: 'q1h', label: 'q1h (a cada 1h)' },
+  { value: 'q2h', label: 'q2h (a cada 2h)' },
+  { value: 'q4h', label: 'q4h (a cada 4h)' },
+  { value: 'q6h', label: 'q6h (a cada 6h)' },
+  { value: 'q8h', label: 'q8h (a cada 8h)' },
+  { value: 'q12h', label: 'q12h (a cada 12h)' },
+  { value: 'q24h', label: 'q24h (a cada 24h)' },
+  { value: '1x ao dia', label: '1x ao dia' },
+  { value: '2x ao dia', label: '2x ao dia' },
+  { value: '3x ao dia', label: '3x ao dia' },
+  { value: '4x ao dia', label: '4x ao dia' },
+  { value: '6x ao dia', label: '6x ao dia' },
+  { value: '8x ao dia', label: '8x ao dia' },
+  { value: '12x ao dia', label: '12x ao dia' },
+  { value: '24x ao dia', label: '24x ao dia' },
+  { value: 'Uso contínuo', label: 'Uso contínuo' },
+  { value: 'Dose única', label: 'Dose única' },
+]
+
+const TIME_OPTIONS = Array.from({ length: 24 }, (_, i) => {
+  const t = `${String(i).padStart(2, '0')}:00`
+  return { value: t, label: t }
+})
+
 
 // ===================== ROUTE OPTIONS =====================
 const ROUTE_OPTIONS = [
@@ -61,9 +118,9 @@ interface PresentationRecord {
   presentation_unit: string | null
   commercial_name: string | null
   is_default?: boolean
-  value?: string | null
+  value?: number | null
   value_unit?: string | null
-  per_value?: string | null
+  per_value?: number | null
   per_unit?: string | null
   avg_price_brl?: number | null
   package_quantity?: string | null
@@ -74,7 +131,7 @@ interface PresentationRecord {
 
 /** Extrai um campo de PresentationRecord, com fallback no metadata JSON */
 function extractPresentationField(pres: PresentationRecord, field: string): string | undefined {
-  const direct = (pres as Record<string, unknown>)[field]
+  const direct = (pres as unknown as Record<string, unknown>)[field]
   if (direct != null && direct !== '') return String(direct)
   const fromMeta = pres.metadata?.[field]
   if (fromMeta != null && fromMeta !== '') return String(fromMeta)
@@ -93,18 +150,52 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
   const [recommendedDoses, setRecommendedDoses] = useState<RecommendedDose[]>([])
 
   // Form state
+  const [doseValueInput, setDoseValueInput] = useState('')
+  const [doseUnitInput, setDoseUnitInput] = useState('mg/kg')
   const [dose, setDose] = useState('')
   const [frequency, setFrequency] = useState('')
   const [route, setRoute] = useState('VO')
   const [duration, setDuration] = useState('')
   const [instructions, setInstructions] = useState('')
   const [cautions, setCautions] = useState('')
+  const [manualQuantity, setManualQuantity] = useState('')
 
   // Manual mode only: extra fields
   const [manualName, setManualName] = useState('')
   const [manualConcentration, setManualConcentration] = useState('')
-  const [manualForm, setManualForm] = useState('')
+  const [manualConcentrationUnit, setManualConcentrationUnit] = useState('mg')
+  const [manualForm, setManualForm] = useState('Comprimido')
   const [manualCommercialName, setManualCommercialName] = useState('')
+  const [manualDoseUnit, setManualDoseUnit] = useState('mg/kg')
+  const [manualIsControlled, setManualIsControlled] = useState(false)
+
+  // A3: Uso contínuo toggle (substitui duração)
+  const [isContinuous, setIsContinuous] = useState(false)
+  // A4: Iniciar em (data + hora) — vai para start_date do item
+  const [startDate, setStartDate] = useState(() => {
+    const d = new Date()
+    return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`
+  })
+  const [startTime, setStartTime] = useState('')
+
+  // Date picker conversion
+  const isoStartDate = useMemo(() => {
+    if (!startDate) return ''
+    const [day, month] = startDate.split('/')
+    if (!day || !month) return ''
+    const year = new Date().getFullYear()
+    return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
+  }, [startDate])
+
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const iso = e.target.value
+    if (!iso) {
+      setStartDate('')
+      return
+    }
+    const [year, month, day] = iso.split('-')
+    setStartDate(`${day.padStart(2, '0')}/${month.padStart(2, '0')}`)
+  }
 
   // ==================== EFFECTS ====================
 
@@ -150,15 +241,25 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
       setRecommendedDoses([])
       setSearchQuery('')
       setDose('')
+      setDoseValueInput('')
+      setDoseUnitInput('mg/kg')
       setFrequency('')
       setRoute('VO')
       setDuration('')
       setInstructions('')
       setCautions('')
+      setManualQuantity('')
       setManualName('')
       setManualConcentration('')
-      setManualForm('')
+      setManualConcentrationUnit('mg')
+      setManualForm('Comprimido')
       setManualCommercialName('')
+      setManualDoseUnit('mg/kg')
+      setManualIsControlled(false)
+      setIsContinuous(false)
+      const d = new Date()
+      setStartDate(`${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`)
+      setStartTime('')
     }
   }, [open])
 
@@ -189,6 +290,8 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
 
           if (bestDose) {
             setDose(`${bestDose.dose_value} ${bestDose.dose_unit}`)
+            setDoseValueInput(String(bestDose.dose_value || ''))
+            setDoseUnitInput(bestDose.dose_unit || 'mg/kg')
             setRoute(bestDose.route || 'VO')
             setFrequency(bestDose.frequency || '')
           }
@@ -203,6 +306,13 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
   )
 
   const handleAdd = useCallback(() => {
+    // A3: duração efetiva: "uso contínuo" se toggle ativo
+    const effectiveDuration = isContinuous ? 'uso contínuo' : duration
+    // A4: start_date formatado "DD/MM às HH:MM"
+    const startDateStr = startDate
+      ? `${startDate}${startTime ? ` às ${startTime}` : ' às __:__'}`
+      : undefined
+
     if (manualMode) {
       // Modo manual: nome é obrigatório
       if (!manualName.trim()) return
@@ -213,14 +323,19 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
         isManual: true,
         name: manualName.trim(),
         pharmaceutical_form: manualForm || undefined,
-        concentration_text: manualConcentration || undefined,
+        concentration_text: manualConcentration ? `${manualConcentration} ${manualConcentrationUnit}` : undefined,
         commercial_name: manualCommercialName.trim() || undefined,
-        dose,
+        dose: doseValueInput ? `${doseValueInput} ${doseUnitInput}` : undefined,
+        doseValue: doseValueInput || undefined,
+        doseUnit: doseUnitInput || undefined,
         frequency,
         route,
-        duration,
+        duration: effectiveDuration,
         instructions,
         cautions: cautions.split('\n').map(s => s.trim()).filter(Boolean),
+        is_controlled: manualIsControlled,
+        start_date: startDateStr,
+        manualQuantity: manualQuantity.trim() || undefined,
       }
 
       onAdd(newItem)
@@ -256,21 +371,26 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
       concentration_text: selectedPresentation?.concentration_text || undefined,
       commercial_name: selectedPresentation?.commercial_name || undefined,
       additional_component: selectedPresentation?.additional_component || undefined,
-      value: selectedPresentation?.value || undefined,
+      value: selectedPresentation?.value != null ? String(selectedPresentation.value) : undefined,
       value_unit: selectedPresentation?.value_unit || undefined,
-      per_value: selectedPresentation?.per_value || undefined,
+      per_value: selectedPresentation?.per_value != null ? String(selectedPresentation.per_value) : undefined,
       per_unit: selectedPresentation?.per_unit || undefined,
       avg_price_brl: selectedPresentation?.avg_price_brl ?? undefined,
       package_quantity: selectedPresentation ? extractPresentationField(selectedPresentation, 'package_quantity') : undefined,
       package_unit: selectedPresentation ? extractPresentationField(selectedPresentation, 'package_unit') : undefined,
 
       // Campos de dosagem
-      dose,
+      dose: doseValueInput ? `${doseValueInput} ${doseUnitInput}` : undefined,
+      doseValue: doseValueInput || undefined,
+      doseUnit: doseUnitInput || undefined,
       frequency,
       route,
-      duration,
+      duration: effectiveDuration,
       instructions,
       cautions: cautions.split('\n').map(s => s.trim()).filter(Boolean),
+      is_controlled: selectedMedication.is_controlled || false,
+      start_date: startDateStr,
+      manualQuantity: manualQuantity.trim() || undefined,
     }
 
     onAdd(newItem)
@@ -280,16 +400,25 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
     manualName,
     manualForm,
     manualConcentration,
+    manualConcentrationUnit,
+    manualDoseUnit,
     manualCommercialName,
+    manualIsControlled,
     selectedMedication,
     presentations,
     selectedPresentationId,
+    doseValueInput,
+    doseUnitInput,
     dose,
     frequency,
     route,
     duration,
     instructions,
     cautions,
+    isContinuous,
+    startDate,
+    startTime,
+    manualQuantity,
     onAdd,
     onClose,
   ])
@@ -299,7 +428,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
   const selectedPresentation = presentations.find((p) => p.id === selectedPresentationId)
   const canAdd = manualMode ? !!manualName.trim() : !!selectedMedication
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-[90] flex items-center justify-center bg-black/80 backdrop-blur-sm px-4 py-8">
       <div className="max-h-[92vh] w-full max-w-4xl overflow-hidden rounded-2xl border border-[#2f5b25] bg-[#0a0f0a] text-slate-100 shadow-[0_0_60px_rgba(57,255,20,0.2)]">
         {/* Header */}
@@ -451,6 +580,8 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
                             className="flex w-full items-center justify-between rounded-lg bg-black/40 px-3 py-2 text-left border border-transparent hover:border-amber-500/50 transition-all"
                             onClick={() => {
                               setDose(`${rd.dose_value} ${rd.dose_unit}`)
+                              setDoseValueInput(String(rd.dose_value || ''))
+                              setDoseUnitInput(rd.dose_unit || 'mg/kg')
                               setRoute(rd.route || 'VO')
                               setFrequency(rd.frequency || '')
                             }}
@@ -486,30 +617,204 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
                     onChange={(e) => setManualName(e.target.value)}
                   />
                 </RxvField>
-
-                <RxvField label="Concentração">
+                <RxvField label="Nome comercial (opcional)">
                   <RxvInput
-                    placeholder="Ex: 500 mg"
-                    value={manualConcentration}
-                    onChange={(e) => setManualConcentration(e.target.value)}
-                  />
-                </RxvField>
-
-                <RxvField label="Nome comercial">
-                  <RxvInput
-                    placeholder="Ex: Amoxivet, Claritin Vet"
+                    placeholder="Ex: Amoxivet"
                     value={manualCommercialName}
                     onChange={(e) => setManualCommercialName(e.target.value)}
                   />
                 </RxvField>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <RxvField label="Concentração">
+                  <div className="flex gap-2">
+                    <div className="flex-[2]">
+                      <RxvInput
+                        placeholder="Valor (ex: 500)"
+                        value={manualConcentration}
+                        onChange={(e) => setManualConcentration(e.target.value)}
+                      />
+                    </div>
+                    <div className="flex-[1]">
+                      <RxvSelect
+                        value={manualConcentrationUnit}
+                        onChange={(e) => setManualConcentrationUnit(e.target.value)}
+                        options={CONC_UNIT_OPTIONS}
+                      />
+                    </div>
+                  </div>
+                </RxvField>
 
                 <RxvField label="Forma farmacêutica">
-                  <RxvInput
-                    placeholder="Ex: Comprimido, Suspensão oral"
+                  <RxvSelect
                     value={manualForm}
                     onChange={(e) => setManualForm(e.target.value)}
+                    options={FORM_OPTIONS}
                   />
                 </RxvField>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <RxvField label="Dose">
+                  <div className="flex gap-2">
+                    <div className="flex-[2]">
+                      <RxvInput
+                        placeholder="Valor"
+                        value={doseValueInput}
+                        onChange={(e) => setDoseValueInput(e.target.value)}
+                      />
+                    </div>
+                    <div className="flex-[1]">
+                      <RxvSelect
+                        value={doseUnitInput}
+                        onChange={(e) => setDoseUnitInput(e.target.value)}
+                        options={DOSE_UNIT_OPTIONS}
+                      />
+                    </div>
+                  </div>
+                </RxvField>
+
+                {!doseValueInput || (doseUnitInput.includes('/kg') && (!patient || !patient.weight_kg)) ? (
+                  <RxvField label="Quantidade / Volume por dose *">
+                    <RxvInput
+                      placeholder="Ex: 1/2 comprimido, 2 mL"
+                      value={manualQuantity}
+                      onChange={(e) => setManualQuantity(e.target.value)}
+                    />
+                  </RxvField>
+                ) : null}
+
+                <RxvField label="Frequência">
+                  <RxvSelect
+                    value={frequency}
+                    onChange={(e) => setFrequency(e.target.value)}
+                    options={FREQ_OPTIONS}
+                  />
+                </RxvField>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <RxvField label="Via de administração">
+                  <RxvSelect
+                    value={route}
+                    onChange={(e) => setRoute(e.target.value)}
+                    options={ROUTE_OPTIONS}
+                  />
+                </RxvField>
+
+                {/* A3: Duração com toggle "Uso contínuo" */}
+                <div>
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Duração</label>
+                    <label className="flex items-center gap-1.5 cursor-pointer select-none">
+                      <input
+                        type="checkbox"
+                        checked={isContinuous}
+                        onChange={(e) => setIsContinuous(e.target.checked)}
+                        className="h-3.5 w-3.5 rounded border-slate-600 bg-black/40 accent-[#39ff14]"
+                      />
+                      <span className="text-[10px] font-bold text-[#39ff14]">Uso contínuo</span>
+                    </label>
+                  </div>
+                  {isContinuous ? (
+                    <div className="rounded-xl border border-[#39ff14]/30 bg-[#39ff14]/5 px-3 py-2.5 text-xs font-bold text-[#39ff14]">
+                      Uso contínuo (sem data de término)
+                    </div>
+                  ) : (
+                    <RxvInput
+                      placeholder="Ex: 7 dias"
+                      value={duration}
+                      onChange={(e) => setDuration(e.target.value)}
+                    />
+                  )}
+                </div>
+              </div>
+
+              {/* A4: Iniciar em */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <RxvField label="Iniciar em (data)">
+                  <RxvInput
+                    type="date"
+                    value={isoStartDate}
+                    onChange={handleDateChange}
+                  />
+                </RxvField>
+                <RxvField label="Horário de início">
+                  <RxvSelect
+                    value={startTime}
+                    onChange={(e) => setStartTime(e.target.value)}
+                    options={[{ value: '', label: 'Selecione' }, ...TIME_OPTIONS]}
+                  />
+                </RxvField>
+              </div>
+
+              <RxvField label="Instruções de uso adicionais">
+                <RxvTextarea
+                  placeholder="Ex: Dar com alimento, evitar sol..."
+                  value={instructions}
+                  onChange={(e) => setInstructions(e.target.value)}
+                  rows={2}
+                />
+              </RxvField>
+
+              <RxvField label="Cautelas (uma por linha)">
+                <RxvTextarea
+                  placeholder="Ex: Não usar em fêmeas prenhes&#10;Monitorar função renal"
+                  value={cautions}
+                  onChange={(e) => setCautions(e.target.value)}
+                  rows={2}
+                />
+              </RxvField>
+
+              <label className="flex items-center gap-3 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={manualIsControlled}
+                  onChange={(e) => setManualIsControlled(e.target.checked)}
+                  className="h-4 w-4 rounded border-slate-600 bg-black/40 accent-amber-400"
+                />
+                <span className="text-sm text-amber-300 font-semibold">
+                  Medicamento controlado (gera receita especial)
+                </span>
+              </label>
+            </div>
+          )}
+
+          {/* ==================== CAMPOS COMUNS (dose/freq/duração) (SÓ CATÁLOGO) ==================== */}
+          {(!manualMode && selectedMedication) && (
+            <div className="space-y-4">
+              <div className="h-px bg-slate-800/60" />
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <RxvField label="Dose">
+                  <div className="flex gap-2">
+                    <div className="flex-[2]">
+                      <RxvInput
+                        placeholder="Valor"
+                        value={doseValueInput}
+                        onChange={(e) => setDoseValueInput(e.target.value)}
+                      />
+                    </div>
+                    <div className="flex-[1]">
+                      <RxvSelect
+                        value={doseUnitInput}
+                        onChange={(e) => setDoseUnitInput(e.target.value)}
+                        options={DOSE_UNIT_OPTIONS}
+                      />
+                    </div>
+                  </div>
+                </RxvField>
+
+                {!doseValueInput || (doseUnitInput.includes('/kg') && (!patient || !patient.weight_kg)) || (selectedPresentation && !selectedPresentation.concentration_text) ? (
+                  <RxvField label="Quantidade / Volume por dose *">
+                    <RxvInput
+                      placeholder="Ex: 1/2 comprimido, 2 mL"
+                      value={manualQuantity}
+                      onChange={(e) => setManualQuantity(e.target.value)}
+                    />
+                  </RxvField>
+                ) : null}
 
                 <RxvField label="Via de administração">
                   <RxvSelect
@@ -518,47 +823,57 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
                     options={ROUTE_OPTIONS}
                   />
                 </RxvField>
-              </div>
-            </div>
-          )}
-
-          {/* ==================== CAMPOS COMUNS (dose/freq/duração) ==================== */}
-          {(selectedMedication || manualMode) && (
-            <div className="space-y-4">
-              <div className="h-px bg-slate-800/60" />
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <RxvField label="Dose">
-                  <RxvInput
-                    placeholder="Ex: 10 mg/kg"
-                    value={dose}
-                    onChange={(e) => setDose(e.target.value)}
-                  />
-                </RxvField>
-
-                {!manualMode && (
-                  <RxvField label="Via de administração">
-                    <RxvSelect
-                      value={route}
-                      onChange={(e) => setRoute(e.target.value)}
-                      options={ROUTE_OPTIONS}
-                    />
-                  </RxvField>
-                )}
 
                 <RxvField label="Frequência">
-                  <RxvInput
-                    placeholder="Ex: BID, TID, 12/12h"
+                  <RxvSelect
                     value={frequency}
                     onChange={(e) => setFrequency(e.target.value)}
+                    options={FREQ_OPTIONS}
                   />
                 </RxvField>
+              </div>
 
-                <RxvField label="Duração">
+              {/* A3: Duração com toggle "Uso contínuo" */}
+              <div>
+                <div className="flex items-center justify-between mb-1">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Duração</label>
+                  <label className="flex items-center gap-1.5 cursor-pointer select-none">
+                    <input
+                      type="checkbox"
+                      checked={isContinuous}
+                      onChange={(e) => setIsContinuous(e.target.checked)}
+                      className="h-3.5 w-3.5 rounded border-slate-600 bg-black/40 accent-[#39ff14]"
+                    />
+                    <span className="text-[10px] font-bold text-[#39ff14]">Uso contínuo</span>
+                  </label>
+                </div>
+                {isContinuous ? (
+                  <div className="rounded-xl border border-[#39ff14]/30 bg-[#39ff14]/5 px-3 py-2.5 text-xs font-bold text-[#39ff14]">
+                    Uso contínuo (sem data de término)
+                  </div>
+                ) : (
                   <RxvInput
                     placeholder="Ex: 7 dias"
                     value={duration}
                     onChange={(e) => setDuration(e.target.value)}
+                  />
+                )}
+              </div>
+
+              {/* A4: Iniciar em */}
+              <div className="grid grid-cols-2 gap-4">
+                <RxvField label="Iniciar em (data)">
+                  <RxvInput
+                    type="date"
+                    value={isoStartDate}
+                    onChange={handleDateChange}
+                  />
+                </RxvField>
+                <RxvField label="Horário de início">
+                  <RxvSelect
+                    value={startTime}
+                    onChange={(e) => setStartTime(e.target.value)}
+                    options={[{ value: '', label: 'Selecione' }, ...TIME_OPTIONS]}
                   />
                 </RxvField>
               </div>
@@ -584,6 +899,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }

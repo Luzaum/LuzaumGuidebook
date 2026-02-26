@@ -207,7 +207,7 @@ export function ToxSidebar({
                                 className={
                                     "relative flex h-11 w-11 items-center justify-center rounded-2xl " +
                                     (isDarkMode ? "bg-slate-800/60 ring-1 ring-white/10" : "bg-white/60 ring-1 ring-black/5") +
-                                    " backdrop-blur"
+                                    " backdrop-blur flex-shrink-0"
                                 }
                                 style={{
                                     boxShadow:
@@ -228,33 +228,19 @@ export function ToxSidebar({
                             </div>
 
                             {!collapsed ? (
-                                <div>
-                                    <div className={`text-sm font-semibold tracking-tight ${isDarkMode ? 'text-slate-100' : 'text-zinc-900'}`}>AAP2 Vetius</div>
+                                <div className="min-w-0">
+                                    <div className={`truncate text-sm font-semibold tracking-tight ${isDarkMode ? 'text-slate-100' : 'text-zinc-900'}`}>AAP2 Vetius</div>
                                     <div className="text-[11px] font-semibold tracking-wide text-violet-600">TOXICOLOGIA</div>
                                 </div>
                             ) : null}
                         </div>
-
-                        <button
-                            type="button"
-                            onClick={onToggleCollapsed}
-                            className={
-                                "inline-flex h-10 w-10 items-center justify-center rounded-2xl " +
-                                (isDarkMode ? "bg-slate-800/55 ring-1 ring-white/10 hover:bg-slate-700/70" : "bg-white/55 ring-1 ring-black/5 hover:bg-white/70") +
-                                " backdrop-blur transition-all duration-200 hover:shadow-[0_18px_44px_-30px_rgba(124,58,237,0.45)]"
-                            }
-                            aria-label={collapsed ? "Expandir sidebar" : "Recolher sidebar"}
-                            title={collapsed ? "Expandir" : "Recolher"}
-                        >
-                            <Icons.PanelLeft className={`h-5 w-5 ${isDarkMode ? 'text-slate-200' : 'text-zinc-700'}`} />
-                        </button>
                     </div>
 
                     <div className={`mt-5 h-px w-full bg-gradient-to-r from-transparent ${isDarkMode ? 'via-white/10' : 'via-zinc-900/10'} to-transparent`} />
                 </div>
 
                 {/* Nav */}
-                <nav className="relative flex h-[calc(100%-180px)] flex-col gap-5 px-4 pb-4 pt-4 z-10 overflow-y-auto custom-scrollbar">
+                <nav className="relative flex h-[calc(100%-180px)] flex-col gap-5 px-4 pb-4 pt-4 z-10 overflow-y-auto overflow-x-hidden custom-scrollbar">
                     {GROUPS.map((g) => (
                         <div key={g.title} className="space-y-2">
                             <div

@@ -1,22 +1,17 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { 
-  Search, 
-  Filter, 
-  Plus, 
-  MoreVertical, 
-  FileText, 
-  Dog, 
-  Cat, 
-  Activity, 
-  Heart, 
-  Skull,
-  SlidersHorizontal
+import React, { useMemo, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  Search, Plus, Dog, Cat, Heart, Skull, SlidersHorizontal,
+  TrendingUp, TrendingDown, Minus, Scissors, Cpu, User, ChevronRight,
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { format } from 'date-fns';
 import { useData, Patient } from '../context/DataContext';
 import { Modal } from '../components/ui/Modal';
 import { dvPath } from '../DadosVeterinariosModule';
+
+const inputCls = 'w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-gray-900 dark:text-white text-sm';
+const labelCls = 'block text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1 uppercase tracking-wide';
 
 export const Patients = () => {
   const navigate = useNavigate();
@@ -24,316 +19,517 @@ export const Patients = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showFilters, setShowFilters] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
-  // Filter states
+
   const [speciesFilter, setSpeciesFilter] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
   const [sexFilter, setSexFilter] = useState('');
-  
-  // New Patient Form State
+
   const [newPatient, setNewPatient] = useState<Partial<Patient>>({
     species: 'Canino',
     sex: 'Macho',
-    status: 'Vivo'
+    status: 'Vivo',
+    castrated: false,
+    microchipped: false,
   });
 
-  const filteredPatients = patients.filter(patient => {
+  // ── Stats
+  const stats = useMemo(() => ({
+    total: patients.length,
+    caninos: patients.filter((p) => p.species === 'Canino' || p.species === 'Cão').length,
+    felinos: patients.filter((p) => p.species === 'Felino' || p.species === 'Gato').length,
+    ativos: patients.filter((p) => p.status === 'Vivo').length,
+    obito: patients.filter((p) => p.status === 'Óbito').length,
+  }), [patients]);
+
+  const filteredPatients = useMemo(() => patients.filter((patient) => {
     const tutorName = getTutorName(patient.tutorId);
-    const matchesSearch = 
+    const matchesSearch =
       patient.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      tutorName.toLowerCase().includes(searchTerm.toLowerCase());
-    
-    const matchesSpecies = speciesFilter ? patient.species === speciesFilter : true;
+      tutorName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (patient.breed || '').toLowerCase().includes(searchTerm.toLowerCase());
+
+    const speciesNorm = patient.species === 'Cão' ? 'Canino' : patient.species === 'Gato' ? 'Felino' : patient.species;
+    const matchesSpecies = speciesFilter ? speciesNorm === speciesFilter : true;
     const matchesStatus = statusFilter ? patient.status === statusFilter : true;
-    const matchesSex = sexFilter ? patient.sex === sexFilter : true;
+    const matchesSex = sexFilter ? (patient.sex || patient.gender) === sexFilter : true;
 
     return matchesSearch && matchesSpecies && matchesStatus && matchesSex;
-  });
+  }), [patients, searchTerm, speciesFilter, statusFilter, sexFilter, getTutorName]);
 
   const handleSavePatient = (e: React.FormEvent) => {
     e.preventDefault();
-    if (newPatient.name && newPatient.tutorId && newPatient.species) {
-      addPatient({
-        id: Math.random().toString(36).substr(2, 9),
-        ...newPatient as Patient,
-        imageUrl: `https://images.unsplash.com/photo-${newPatient.species === 'Canino' ? '1552053831-71594a27632d' : '1514888286974-6c03e2ca1dba'}?auto=format&fit=crop&w=150&h=150` // Placeholder image logic
-      });
-      setIsModalOpen(false);
-      setNewPatient({
-        species: 'Canino',
-        sex: 'Macho',
-        status: 'Vivo'
-      });
-    }
+    if (!newPatient.name || !newPatient.tutorId || !newPatient.species) return;
+    const speciesNorm = newPatient.species as string;
+    const imageUrl =
+      speciesNorm === 'Canino' || speciesNorm === 'Cão'
+        ? 'https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=200&h=200'
+        : 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=200&h=200';
+    addPatient({
+      id: Math.random().toString(36).substr(2, 9),
+      ...(newPatient as Patient),
+      imageUrl,
+      vaccines: [],
+      weightHistory: [],
+      anamnesis: [],
+      exams: [],
+      procedures: [],
+    });
+    setIsModalOpen(false);
+    setNewPatient({ species: 'Canino', sex: 'Macho', status: 'Vivo', castrated: false, microchipped: false });
   };
 
+  const activeFiltersCount = [speciesFilter, statusFilter, sexFilter].filter(Boolean).length;
+
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
+      {/* ── Header ── */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">Gestão de Pacientes</h1>
-          <p className="text-gray-500 dark:text-gray-400 mt-1">Gerencie os prontuários e informações dos pets.</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
+            Gestão de Pacientes
+          </h1>
+          <p className="text-gray-500 dark:text-gray-400 mt-0.5 text-sm">
+            Prontuários, histórico clínico e informações dos pets.
+          </p>
         </div>
-        <button 
+        <button
           onClick={() => setIsModalOpen(true)}
-          className="px-4 py-2 bg-primary text-white rounded-xl hover:bg-green-600 font-medium transition-colors flex items-center gap-2 shadow-lg shadow-primary/30"
+          className="px-4 py-2.5 bg-primary text-white rounded-xl hover:bg-primary/90 font-semibold transition-colors flex items-center gap-2 shadow-lg shadow-primary/25 shrink-0"
         >
-          <Plus size={20} />
+          <Plus size={18} />
           Novo Paciente
         </button>
       </div>
 
+      {/* ── Stats ── */}
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+        {[
+          { label: 'Total', value: stats.total, cls: 'text-gray-900 dark:text-white' },
+          { label: 'Caninos', value: stats.caninos, cls: 'text-amber-600', icon: <Dog size={14} /> },
+          { label: 'Felinos', value: stats.felinos, cls: 'text-violet-600', icon: <Cat size={14} /> },
+          { label: 'Ativos', value: stats.ativos, cls: 'text-green-600', icon: <Heart size={14} className="fill-current" /> },
+          { label: 'Óbito', value: stats.obito, cls: 'text-gray-500', icon: <Skull size={14} /> },
+        ].map((s) => (
+          <div
+            key={s.label}
+            className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-4"
+          >
+            <p className="text-xs uppercase tracking-wide text-gray-400 font-semibold flex items-center gap-1.5">
+              {s.icon}{s.label}
+            </p>
+            <p className={`text-2xl font-bold mt-1 ${s.cls}`}>{s.value}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* ── Search & Filters ── */}
       <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 p-4">
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col md:flex-row gap-3">
           <div className="flex-1 relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
-            <input 
-              type="text" 
-              placeholder="Buscar por nome do paciente ou tutor..." 
-              className="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-gray-900 dark:text-white"
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+            <input
+              type="text"
+              placeholder="Buscar por nome, raça ou tutor..."
+              className="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-gray-900 dark:text-white text-sm"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-          <button 
+          <button
             onClick={() => setShowFilters(!showFilters)}
-            className={`px-4 py-2.5 border rounded-xl font-medium flex items-center gap-2 transition-colors ${showFilters ? 'bg-primary/10 border-primary text-primary' : 'border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300'}`}
+            className={`px-4 py-2.5 border rounded-xl font-medium flex items-center gap-2 transition-colors text-sm ${
+              showFilters || activeFiltersCount > 0
+                ? 'bg-primary/10 border-primary text-primary'
+                : 'border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300'
+            }`}
           >
-            <SlidersHorizontal size={20} />
+            <SlidersHorizontal size={16} />
             Filtros
+            {activeFiltersCount > 0 && (
+              <span className="bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+                {activeFiltersCount}
+              </span>
+            )}
           </button>
         </div>
 
-        {showFilters && (
-          <motion.div 
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-800 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
-          >
-            <div>
-              <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1.5">Espécie</label>
-              <select 
-                className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:ring-1 focus:ring-primary outline-none text-gray-900 dark:text-white"
-                value={speciesFilter}
-                onChange={(e) => setSpeciesFilter(e.target.value)}
-              >
-                <option value="">Todas</option>
-                <option value="Canino">Canino</option>
-                <option value="Felino">Felino</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1.5">Status</label>
-              <select 
-                className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:ring-1 focus:ring-primary outline-none text-gray-900 dark:text-white"
-                value={statusFilter}
-                onChange={(e) => setStatusFilter(e.target.value)}
-              >
-                <option value="">Todos</option>
-                <option value="Vivo">Vivo</option>
-                <option value="Óbito">Óbito</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1.5">Sexo</label>
-              <select 
-                className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm focus:ring-1 focus:ring-primary outline-none text-gray-900 dark:text-white"
-                value={sexFilter}
-                onChange={(e) => setSexFilter(e.target.value)}
-              >
-                <option value="">Todos</option>
-                <option value="Macho">Macho</option>
-                <option value="Fêmea">Fêmea</option>
-              </select>
-            </div>
-          </motion.div>
-        )}
+        <AnimatePresence>
+          {showFilters && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="overflow-hidden"
+            >
+              <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-800 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                  <label className={labelCls}>Espécie</label>
+                  <select
+                    className={inputCls}
+                    value={speciesFilter}
+                    onChange={(e) => setSpeciesFilter(e.target.value)}
+                  >
+                    <option value="">Todas as espécies</option>
+                    <option value="Canino">Canino</option>
+                    <option value="Felino">Felino</option>
+                  </select>
+                </div>
+                <div>
+                  <label className={labelCls}>Status</label>
+                  <select
+                    className={inputCls}
+                    value={statusFilter}
+                    onChange={(e) => setStatusFilter(e.target.value)}
+                  >
+                    <option value="">Todos</option>
+                    <option value="Vivo">Ativo</option>
+                    <option value="Óbito">Óbito</option>
+                  </select>
+                </div>
+                <div>
+                  <label className={labelCls}>Sexo</label>
+                  <select
+                    className={inputCls}
+                    value={sexFilter}
+                    onChange={(e) => setSexFilter(e.target.value)}
+                  >
+                    <option value="">Todos</option>
+                    <option value="Macho">Macho</option>
+                    <option value="Fêmea">Fêmea</option>
+                  </select>
+                </div>
+              </div>
+              {activeFiltersCount > 0 && (
+                <button
+                  onClick={() => { setSpeciesFilter(''); setStatusFilter(''); setSexFilter(''); }}
+                  className="mt-2 text-xs text-red-500 hover:text-red-700 font-semibold"
+                >
+                  Limpar filtros
+                </button>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
+      {/* ── Patient List ── */}
       <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr className="bg-gray-50/50 dark:bg-gray-800/50 text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold">
-                <th className="py-4 px-6">Paciente</th>
-                <th className="py-4 px-6">Tutor</th>
-                <th className="py-4 px-6">Detalhes</th>
-                <th className="py-4 px-6">Status</th>
-                <th className="py-4 px-6 text-right">Ações</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
-              {filteredPatients.length === 0 ? (
-                <tr>
-                  <td colSpan={5} className="py-8 text-center text-gray-500 dark:text-gray-400">
-                    Nenhum paciente encontrado.
-                  </td>
+        {filteredPatients.length === 0 ? (
+          <div className="py-16 text-center text-gray-400">
+            <Dog size={40} className="mx-auto mb-3 opacity-30" />
+            <p className="font-medium">Nenhum paciente encontrado.</p>
+            {searchTerm && (
+              <p className="text-sm mt-1">Tente buscar por um nome diferente.</p>
+            )}
+          </div>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full text-left">
+              <thead>
+                <tr className="bg-gray-50/80 dark:bg-gray-800/80 text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold border-b border-gray-100 dark:border-gray-800">
+                  <th className="py-3.5 px-5">Paciente</th>
+                  <th className="py-3.5 px-5">Tutor</th>
+                  <th className="py-3.5 px-5">Informações</th>
+                  <th className="py-3.5 px-5">Peso</th>
+                  <th className="py-3.5 px-5">Status</th>
+                  <th className="py-3.5 px-5 text-right">Ações</th>
                 </tr>
-              ) : (
-                filteredPatients.map((patient) => (
-                  <tr 
-                    key={patient.id} 
-                    onClick={() => navigate(dvPath(`patients/${patient.id}`))}
-                    className="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors cursor-pointer"
-                  >
-                    <td className="py-4 px-6">
-                      <div className="flex items-center gap-3">
-                        <img 
-                          src={patient.imageUrl || 'https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=150&h=150'} 
-                          alt={patient.name} 
-                          className="w-10 h-10 rounded-full object-cover ring-2 ring-gray-100 dark:ring-gray-800"
-                        />
-                        <div>
-                          <p className="font-bold text-gray-900 dark:text-white">{patient.name}</p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
-                            {patient.species === 'Canino' ? <Dog size={12} /> : <Cat size={12} />}
-                            {patient.breed}
-                          </p>
+              </thead>
+              <tbody className="divide-y divide-gray-50 dark:divide-gray-800">
+                {filteredPatients.map((patient) => {
+                  const sexLabel = patient.sex || patient.gender;
+                  const speciesNorm =
+                    patient.species === 'Cão' ? 'Canino' : patient.species === 'Gato' ? 'Felino' : patient.species;
+                  const tutor = tutors.find((t) => t.id === patient.tutorId);
+
+                  // Weight trend from history
+                  const wh = [...(patient.weightHistory || [])].sort(
+                    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
+                  );
+                  const weightDelta =
+                    wh.length >= 2 ? wh[wh.length - 1].weight - wh[0].weight : null;
+
+                  return (
+                    <tr
+                      key={patient.id}
+                      onClick={() => navigate(dvPath(`patients/${patient.id}`))}
+                      className="hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors cursor-pointer group"
+                    >
+                      {/* Patient */}
+                      <td className="py-3.5 px-5">
+                        <div className="flex items-center gap-3">
+                          <div className="relative shrink-0">
+                            <img
+                              src={
+                                patient.imageUrl ||
+                                patient.image ||
+                                `https://images.unsplash.com/photo-${speciesNorm === 'Canino' ? '1552053831-71594a27632d' : '1514888286974-6c03e2ca1dba'}?auto=format&fit=crop&w=100&h=100`
+                              }
+                              alt={patient.name}
+                              className="w-11 h-11 rounded-xl object-cover ring-2 ring-gray-100 dark:ring-gray-800"
+                            />
+                            {patient.status === 'Vivo' && (
+                              <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-500 border-2 border-white dark:border-gray-900" />
+                            )}
+                          </div>
+                          <div>
+                            <p className="font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                              {patient.name}
+                            </p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 mt-0.5">
+                              {speciesNorm === 'Canino' ? <Dog size={11} /> : <Cat size={11} />}
+                              {patient.breed || '—'}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                    <td className="py-4 px-6">
-                      <p className="text-sm font-medium text-gray-900 dark:text-white">{getTutorName(patient.tutorId)}</p>
-                    </td>
-                    <td className="py-4 px-6">
-                      <div className="flex flex-col gap-1 text-xs text-gray-500 dark:text-gray-400">
-                        <span>{patient.sex} • {patient.age}</span>
-                        <span>{patient.weight}</span>
-                      </div>
-                    </td>
-                    <td className="py-4 px-6">
-                      <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
-                        patient.status === 'Vivo' 
-                          ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400' 
-                          : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400'
-                      }`}>
-                        {patient.status === 'Vivo' ? <Heart size={12} className="fill-current" /> : <Skull size={12} />}
-                        {patient.status}
-                      </span>
-                    </td>
-                    <td className="py-4 px-6 text-right">
-                      <button 
-                        onClick={(e) => { e.stopPropagation(); }}
-                        className="text-gray-400 hover:text-primary transition-colors p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
-                      >
-                        <MoreVertical size={20} />
-                      </button>
-                    </td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
+                      </td>
+
+                      {/* Tutor */}
+                      <td className="py-3.5 px-5">
+                        <p className="text-sm font-medium text-gray-900 dark:text-white flex items-center gap-1">
+                          <User size={13} className="text-gray-400" />
+                          {getTutorName(patient.tutorId)}
+                        </p>
+                        {tutor?.phone && (
+                          <p className="text-xs text-gray-400 mt-0.5">{tutor.phone}</p>
+                        )}
+                      </td>
+
+                      {/* Info */}
+                      <td className="py-3.5 px-5">
+                        <div className="flex flex-col gap-1">
+                          <span className="text-xs text-gray-700 dark:text-gray-300">
+                            {sexLabel} · {patient.age}
+                          </span>
+                          <div className="flex gap-1.5 flex-wrap">
+                            {patient.castrated && (
+                              <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-400 text-xs font-medium">
+                                <Scissors size={10} /> Cast.
+                              </span>
+                            )}
+                            {patient.microchipped && (
+                              <span className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 text-xs font-medium">
+                                <Cpu size={10} /> Chip
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      </td>
+
+                      {/* Weight */}
+                      <td className="py-3.5 px-5">
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white">
+                          {patient.weight || '—'}
+                        </p>
+                        {weightDelta !== null && (
+                          <p
+                            className={`text-xs flex items-center gap-0.5 font-medium mt-0.5 ${
+                              weightDelta > 0
+                                ? 'text-amber-600'
+                                : weightDelta < 0
+                                ? 'text-blue-600'
+                                : 'text-gray-400'
+                            }`}
+                          >
+                            {weightDelta > 0 ? (
+                              <TrendingUp size={11} />
+                            ) : weightDelta < 0 ? (
+                              <TrendingDown size={11} />
+                            ) : (
+                              <Minus size={11} />
+                            )}
+                            {weightDelta > 0 ? '+' : ''}{weightDelta.toFixed(1)} kg
+                          </p>
+                        )}
+                      </td>
+
+                      {/* Status */}
+                      <td className="py-3.5 px-5">
+                        <span
+                          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
+                            patient.status === 'Vivo'
+                              ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400'
+                              : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400'
+                          }`}
+                        >
+                          {patient.status === 'Vivo' ? (
+                            <Heart size={11} className="fill-current" />
+                          ) : (
+                            <Skull size={11} />
+                          )}
+                          {patient.status === 'Vivo' ? 'Ativo' : 'Óbito'}
+                        </span>
+                      </td>
+
+                      {/* Actions */}
+                      <td className="py-3.5 px-5 text-right">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigate(dvPath(`patients/${patient.id}`));
+                          }}
+                          className="inline-flex items-center gap-1 text-xs text-primary font-semibold opacity-0 group-hover:opacity-100 transition-opacity hover:underline"
+                        >
+                          Ver prontuário <ChevronRight size={13} />
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
+        <div className="px-5 py-3 border-t border-gray-50 dark:border-gray-800 text-xs text-gray-400">
+          {filteredPatients.length} paciente(s) exibido(s)
+          {activeFiltersCount > 0 || searchTerm ? ` de ${patients.length} total` : ''}
         </div>
       </div>
 
-      {/* New Patient Modal */}
+      {/* ── New Patient Modal ── */}
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         title="Novo Paciente"
         className="max-w-2xl"
       >
-        <form onSubmit={handleSavePatient} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Nome do Paciente</label>
+        <form onSubmit={handleSavePatient} className="space-y-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className={labelCls}>Nome do paciente *</label>
               <input
                 type="text"
                 required
-                className="w-full px-4 py-2.5 bg-gray-50 dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                className={inputCls}
                 value={newPatient.name || ''}
-                onChange={e => setNewPatient({...newPatient, name: e.target.value})}
-                placeholder="Ex: Rex"
+                onChange={(e) => setNewPatient({ ...newPatient, name: e.target.value })}
+                placeholder="Ex: Rex, Mimi, Mel..."
               />
             </div>
-            
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Tutor</label>
+
+            <div>
+              <label className={labelCls}>Tutor *</label>
               <select
                 required
-                className="w-full px-4 py-2.5 bg-gray-50 dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                className={inputCls}
                 value={newPatient.tutorId || ''}
-                onChange={e => setNewPatient({...newPatient, tutorId: e.target.value})}
+                onChange={(e) => setNewPatient({ ...newPatient, tutorId: e.target.value })}
               >
                 <option value="">Selecione um tutor</option>
-                {tutors.map(t => (
+                {tutors.map((t) => (
                   <option key={t.id} value={t.id}>{t.name}</option>
                 ))}
               </select>
             </div>
 
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Espécie</label>
+            <div>
+              <label className={labelCls}>Espécie *</label>
               <select
-                className="w-full px-4 py-2.5 bg-gray-50 dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                className={inputCls}
                 value={newPatient.species}
-                onChange={e => setNewPatient({...newPatient, species: e.target.value})}
+                onChange={(e) => setNewPatient({ ...newPatient, species: e.target.value as Patient['species'] })}
               >
-                <option value="Canino">Canino</option>
-                <option value="Felino">Felino</option>
+                <option value="Canino">Canino (Cão)</option>
+                <option value="Felino">Felino (Gato)</option>
               </select>
             </div>
 
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Raça</label>
+            <div>
+              <label className={labelCls}>Raça</label>
               <input
                 type="text"
-                className="w-full px-4 py-2.5 bg-gray-50 dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                className={inputCls}
                 value={newPatient.breed || ''}
-                onChange={e => setNewPatient({...newPatient, breed: e.target.value})}
-                placeholder="Ex: Golden Retriever"
+                onChange={(e) => setNewPatient({ ...newPatient, breed: e.target.value })}
+                placeholder="Ex: Golden Retriever, SRD"
               />
             </div>
 
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Sexo</label>
+            <div>
+              <label className={labelCls}>Sexo *</label>
               <select
-                className="w-full px-4 py-2.5 bg-gray-50 dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                className={inputCls}
                 value={newPatient.sex}
-                onChange={e => setNewPatient({...newPatient, sex: e.target.value as any})}
+                onChange={(e) => setNewPatient({ ...newPatient, sex: e.target.value as 'Macho' | 'Fêmea' })}
               >
                 <option value="Macho">Macho</option>
                 <option value="Fêmea">Fêmea</option>
               </select>
             </div>
 
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Idade</label>
+            <div>
+              <label className={labelCls}>Idade</label>
               <input
                 type="text"
-                className="w-full px-4 py-2.5 bg-gray-50 dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                className={inputCls}
                 value={newPatient.age || ''}
-                onChange={e => setNewPatient({...newPatient, age: e.target.value})}
-                placeholder="Ex: 3 anos"
+                onChange={(e) => setNewPatient({ ...newPatient, age: e.target.value })}
+                placeholder="Ex: 3 anos, 6 meses"
               />
             </div>
 
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Peso</label>
+            <div>
+              <label className={labelCls}>Peso</label>
               <input
                 type="text"
-                className="w-full px-4 py-2.5 bg-gray-50 dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                className={inputCls}
                 value={newPatient.weight || ''}
-                onChange={e => setNewPatient({...newPatient, weight: e.target.value})}
-                placeholder="Ex: 10kg"
+                onChange={(e) => setNewPatient({ ...newPatient, weight: e.target.value })}
+                placeholder="Ex: 10kg, 4.5kg"
+              />
+            </div>
+
+            <div>
+              <label className={labelCls}>Cor/Pelagem</label>
+              <input
+                type="text"
+                className={inputCls}
+                value={newPatient.coatColor || ''}
+                onChange={(e) => setNewPatient({ ...newPatient, coatColor: e.target.value })}
+                placeholder="Ex: Dourado, Preto e branco"
               />
             </div>
           </div>
 
-          <div className="flex justify-end gap-3 pt-4 border-t border-gray-100 dark:border-neutral-800">
+          <div className="flex gap-6 pt-1">
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={!!newPatient.castrated}
+                onChange={(e) => setNewPatient({ ...newPatient, castrated: e.target.checked })}
+                className="w-4 h-4 rounded accent-primary"
+              />
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-1">
+                <Scissors size={14} className="text-purple-500" /> Castrado(a)
+              </span>
+            </label>
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={!!newPatient.microchipped}
+                onChange={(e) => setNewPatient({ ...newPatient, microchipped: e.target.checked })}
+                className="w-4 h-4 rounded accent-primary"
+              />
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-1">
+                <Cpu size={14} className="text-blue-500" /> Microchipado(a)
+              </span>
+            </label>
+          </div>
+
+          <div className="flex justify-end gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
             <button
               type="button"
               onClick={() => setIsModalOpen(false)}
-              className="px-6 py-2.5 bg-gray-100 dark:bg-neutral-800 text-gray-700 dark:text-gray-300 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-neutral-700 transition-colors"
+              className="px-5 py-2.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
             >
               Cancelar
             </button>
             <button
               type="submit"
-              className="px-6 py-2.5 bg-primary text-white rounded-xl font-bold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25"
+              className="px-5 py-2.5 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25"
             >
-              Salvar
+              Cadastrar paciente
             </button>
           </div>
         </form>

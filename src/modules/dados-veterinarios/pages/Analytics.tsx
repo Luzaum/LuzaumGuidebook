@@ -1,37 +1,65 @@
-﻿import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
-import { UserPlus, Repeat, CalendarX, ThumbsUp, Calendar as CalendarIcon, Download, Trophy } from 'lucide-react';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  AreaChart,
+  Area,
+} from 'recharts';
+import { UserPlus, Repeat, CalendarX, ThumbsUp, Download, Trophy } from 'lucide-react';
 import { useData } from '../context/DataContext';
 import { useClinicAuth } from '../context/ClinicAuthContext';
+import { exportSummaryPdf } from '../lib/pdfExport';
+import { formatCurrency } from './Financial';
 
 type Period = 'day' | 'week' | 'month' | 'year';
 
-const StatCard: React.FC<{ title: string; value: string; icon: React.ElementType; color: string }> = ({ title, value, icon: Icon, color }) => (
-  <motion.div whileHover={{ y: -2 }} className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 flex items-center justify-between group transition-colors">
+const StatCard: React.FC<{ title: string; value: string; icon: React.ElementType; color: string }> = ({
+  title,
+  value,
+  icon: Icon,
+  color,
+}) => (
+  <motion.div
+    whileHover={{ y: -2 }}
+    className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 flex items-center justify-between group transition-colors"
+  >
     <div>
       <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">{title}</p>
       <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{value}</h3>
     </div>
-    <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${color} text-white shadow-lg shadow-primary/20 transition-transform group-hover:scale-110`}>
+    <div
+      className={`w-12 h-12 rounded-xl flex items-center justify-center ${color} text-white shadow-lg shadow-primary/20 transition-transform group-hover:scale-110`}
+    >
       <Icon size={24} />
     </div>
   </motion.div>
 );
 
 export const Analytics = () => {
-  const { services, financialRecords } = useData();
+  const { services, financialRecords, appointments } = useData();
   const { clinics, selectedClinicId } = useClinicAuth();
   const [period, setPeriod] = useState<Period>('month');
 
-  const clinicLabel = selectedClinicId === 'all' ? 'Todas as unidades' : clinics.find((c) => c.id === selectedClinicId)?.name || 'Unidade';
+  const clinicLabel =
+    selectedClinicId === 'all'
+      ? 'Todas as unidades'
+      : clinics.find((c) => c.id === selectedClinicId)?.name || 'Unidade';
 
   const revenueByCategory = useMemo(() => {
     const bucket = new Map<string, number>();
-    financialRecords.filter((r) => r.type === 'Receita').forEach((r) => {
-      bucket.set(r.category, (bucket.get(r.category) || 0) + r.amount);
-    });
-    return Array.from(bucket.entries()).map(([name, value]) => ({ name, value })).sort((a, b) => b.value - a.value).slice(0, 8);
+    financialRecords
+      .filter((r) => r.type === 'Receita')
+      .forEach((r) => bucket.set(r.category, (bucket.get(r.category) || 0) + r.amount));
+    return Array.from(bucket.entries())
+      .map(([name, value]) => ({ name, value }))
+      .sort((a, b) => b.value - a.value)
+      .slice(0, 8);
   }, [financialRecords]);
 
   const rankingProducts = useMemo(() => {
@@ -44,7 +72,10 @@ export const Analytics = () => {
           id: service.id,
           name: service.name,
           category: service.category,
-          clinic: service.clinicId === 'all' ? 'Rede' : clinics.find((c) => c.id === service.clinicId)?.name || 'Unidade',
+          clinic:
+            service.clinicId === 'all'
+              ? 'Rede'
+              : clinics.find((c) => c.id === service.clinicId)?.name || 'Unidade',
           gross,
         };
       })
@@ -62,26 +93,69 @@ export const Analytics = () => {
     { name: 'Jul', consultas: 349, exames: 430, vendas: 210 },
   ];
 
+  const completedAppointments = appointments.filter((a) => a.status === 'Concluído').length;
+  const canceledAppointments = appointments.filter((a) => a.status === 'Cancelado').length;
+  const revenue = financialRecords.filter((r) => r.type === 'Receita').reduce((sum, r) => sum + r.amount, 0);
+  const expense = financialRecords.filter((r) => r.type === 'Despesa').reduce((sum, r) => sum + r.amount, 0);
+
+  const exportPdf = () => {
+    exportSummaryPdf({
+      title: 'Análise Detalhada UPA PET',
+      subtitle: `Período: ${period} | Escopo: ${clinicLabel}`,
+      filename: `analise-upapet-${period}-${new Date().getTime()}.pdf`,
+      highlights: [
+        { label: 'Receita', value: formatCurrency(revenue) },
+        { label: 'Despesa', value: formatCurrency(expense) },
+        { label: 'Atendimentos Concluídos', value: String(completedAppointments) },
+        { label: 'Cancelamentos', value: String(canceledAppointments) },
+      ],
+      sections: [
+        {
+          title: 'Indicadores',
+          lines: [
+            `Receita: ${formatCurrency(revenue)}`,
+            `Despesa: ${formatCurrency(expense)}`,
+            `Atendimentos concluídos: ${completedAppointments}`,
+            `Cancelamentos: ${canceledAppointments}`,
+          ],
+        },
+        {
+          title: 'Ranking de serviços/produtos',
+          lines: rankingProducts.slice(0, 12).map((item, idx) => `${idx + 1}. ${item.name} (${item.clinic}) - ${formatCurrency(item.gross)}`),
+        },
+      ],
+      footerNote:
+        'Análise consolidada para tomada de decisão da rede UPA PET.',
+    });
+  };
+
   return (
     <div className="space-y-8">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">Analise Detalhada</h1>
-          <p className="text-gray-500 dark:text-gray-400 mt-1">Periodo: {period.toUpperCase()} | Escopo: {clinicLabel}</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">Análise Detalhada</h1>
+          <p className="text-gray-500 dark:text-gray-400 mt-1">
+            Período: {period.toUpperCase()} | Escopo: {clinicLabel}
+          </p>
         </div>
         <div className="flex gap-2 flex-wrap">
           <div className="inline-flex rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-900">
             {(['day', 'week', 'month', 'year'] as Period[]).map((item) => (
-              <button key={item} onClick={() => setPeriod(item)} className={`px-3 py-2 text-sm ${period === item ? 'bg-primary text-white' : 'text-gray-600 dark:text-gray-300'}`}>
-                {item === 'day' ? 'Dia' : item === 'week' ? 'Semana' : item === 'month' ? 'Mes' : 'Ano'}
+              <button
+                key={item}
+                onClick={() => setPeriod(item)}
+                className={`px-3 py-2 text-sm ${
+                  period === item ? 'bg-primary text-white' : 'text-gray-600 dark:text-gray-300'
+                }`}
+              >
+                {item === 'day' ? 'Dia' : item === 'week' ? 'Semana' : item === 'month' ? 'Mês' : 'Ano'}
               </button>
             ))}
           </div>
-          <button className="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors flex items-center gap-2 shadow-sm">
-            <CalendarIcon size={20} />
-            Amostragem
-          </button>
-          <button onClick={() => window.print()} className="px-4 py-2 bg-primary text-white rounded-xl hover:bg-green-500 font-medium transition-colors flex items-center gap-2 shadow-lg shadow-primary/30">
+          <button
+            onClick={exportPdf}
+            className="px-4 py-2 bg-primary text-white rounded-xl hover:bg-green-500 font-medium transition-colors flex items-center gap-2 shadow-lg shadow-primary/30"
+          >
             <Download size={20} />
             Exportar PDF
           </button>
@@ -102,8 +176,14 @@ export const Analytics = () => {
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={trendData}>
                 <defs>
-                  <linearGradient id="colorConsultas" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#13ec80" stopOpacity={0.8}/><stop offset="95%" stopColor="#13ec80" stopOpacity={0}/></linearGradient>
-                  <linearGradient id="colorExames" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8}/><stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/></linearGradient>
+                  <linearGradient id="colorConsultas" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#13ec80" stopOpacity={0.8} />
+                    <stop offset="95%" stopColor="#13ec80" stopOpacity={0} />
+                  </linearGradient>
+                  <linearGradient id="colorExames" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8} />
+                    <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
+                  </linearGradient>
                 </defs>
                 <XAxis dataKey="name" axisLine={false} tickLine={false} />
                 <YAxis axisLine={false} tickLine={false} />
@@ -117,15 +197,19 @@ export const Analytics = () => {
         </div>
 
         <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 transition-colors">
-          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6">Ranking de produtos/servicos</h3>
+          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6">Ranking de produtos/serviços</h3>
           <div className="space-y-3 max-h-72 overflow-auto pr-1">
             {rankingProducts.map((item, idx) => (
               <div key={item.id} className="flex items-center justify-between rounded-xl border border-gray-200 dark:border-gray-700 p-3">
                 <div>
-                  <p className="font-semibold text-gray-900 dark:text-white">{idx + 1}. {item.name}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">{item.category} - {item.clinic}</p>
+                  <p className="font-semibold text-gray-900 dark:text-white">
+                    {idx + 1}. {item.name}
+                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                    {item.category} • {item.clinic}
+                  </p>
                 </div>
-                <span className="text-sm font-bold text-primary">R$ {item.gross.toFixed(2)}</span>
+                <span className="text-sm font-bold text-primary">{formatCurrency(item.gross)}</span>
               </div>
             ))}
           </div>
@@ -133,14 +217,16 @@ export const Analytics = () => {
       </div>
 
       <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 transition-colors">
-        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2"><Trophy size={18} className="text-primary" /> Receita por categoria</h3>
+        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+          <Trophy size={18} className="text-primary" /> Receita por categoria
+        </h3>
         <div className="h-72 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={revenueByCategory}>
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f3f4f6" strokeOpacity={0.2} />
               <XAxis dataKey="name" axisLine={false} tickLine={false} />
               <YAxis axisLine={false} tickLine={false} />
-              <Tooltip formatter={(v: number) => `R$ ${v.toFixed(2)}`} />
+              <Tooltip formatter={(v: number) => formatCurrency(v)} />
               <Bar dataKey="value" fill="#f59e0b" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>

@@ -1,5 +1,5 @@
 ﻿import React, { useMemo, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 import { useClinicAuth } from '../context/ClinicAuthContext';
@@ -18,27 +18,17 @@ import {
   Search,
   Sun,
   Moon,
-  Plus,
   BedDouble,
   Building2,
   Shield,
-  Stethoscope,
+  ClipboardList,
 } from 'lucide-react';
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
-  const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
-  const {
-    clinics,
-    users,
-    currentUser,
-    isAdmin,
-    selectedClinicId,
-    setSelectedClinicId,
-    setCurrentUserById,
-  } = useClinicAuth();
+  const { clinics, currentUser, isAdmin, selectedClinicId, setSelectedClinicId } = useClinicAuth();
 
   const selectedClinicName = useMemo(() => {
     if (selectedClinicId === 'all') return 'Todas as unidades';
@@ -46,17 +36,18 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   }, [clinics, selectedClinicId]);
 
   const menuItems = [
-    { icon: <LayoutGrid className="h-5 w-5 flex-shrink-0" />, label: 'Visao Geral', href: dvPath('') },
+    { icon: <LayoutGrid className="h-5 w-5 flex-shrink-0" />, label: 'Visão Geral', href: dvPath('') },
     { icon: <PawPrint className="h-5 w-5 flex-shrink-0" />, label: 'Pacientes', href: dvPath('patients') },
     { icon: <User className="h-5 w-5 flex-shrink-0" />, label: 'Tutores', href: dvPath('tutors') },
     { icon: <Calendar className="h-5 w-5 flex-shrink-0" />, label: 'Agenda', href: dvPath('calendar') },
-    { icon: <DollarSign className="h-5 w-5 flex-shrink-0" />, label: 'Financeiro', href: dvPath('financial') },
-    { icon: <PieChart className="h-5 w-5 flex-shrink-0" />, label: 'Analise', href: dvPath('analytics') },
-    { icon: <List className="h-5 w-5 flex-shrink-0" />, label: 'Servicos', href: dvPath('services') },
-    { icon: <BarChart2 className="h-5 w-5 flex-shrink-0" />, label: 'Relatorios', href: dvPath('reports') },
     { icon: <BedDouble className="h-5 w-5 flex-shrink-0" />, label: 'Internamento', href: dvPath('internment') },
+    { icon: <ClipboardList className="h-5 w-5 flex-shrink-0" />, label: 'Mapa de Execução', href: dvPath('execution-map') },
+    { icon: <List className="h-5 w-5 flex-shrink-0" />, label: 'Serviços', href: dvPath('services') },
+    { icon: <DollarSign className="h-5 w-5 flex-shrink-0" />, label: 'Financeiro', href: dvPath('financial') },
+    { icon: <PieChart className="h-5 w-5 flex-shrink-0" />, label: 'Análise', href: dvPath('analytics') },
+    { icon: <BarChart2 className="h-5 w-5 flex-shrink-0" />, label: 'Relatórios', href: dvPath('reports') },
     ...(isAdmin ? [{ icon: <Building2 className="h-5 w-5 flex-shrink-0" />, label: 'Unidades', href: dvPath('units') }] : []),
-    { icon: <Settings className="h-5 w-5 flex-shrink-0" />, label: 'Configuracoes', href: dvPath('settings') },
+    { icon: <Settings className="h-5 w-5 flex-shrink-0" />, label: 'Configurações', href: dvPath('settings') },
   ];
 
   return (
@@ -65,9 +56,9 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
         <SidebarBody className="justify-between gap-10 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl border-r border-gray-200 dark:border-neutral-800">
           <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
             <div className="flex items-center gap-2 px-2 py-1">
-              <img src="/apps/uapepet.png" alt="UPA PET" className="h-9 w-9 rounded-lg object-cover" />
+              <img src="/apps/uapepet.png" alt="UPA PET" className="h-10 w-auto object-contain" />
               <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="font-bold text-lg text-gray-900 dark:text-white whitespace-pre">
-                Dados Veterinarios
+                Dados Veterinários
               </motion.span>
             </div>
             <div className="mt-8 flex flex-col gap-2">
@@ -82,8 +73,8 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                 label: currentUser.name,
                 href: dvPath('profile'),
                 icon: (
-                  <div className="h-7 w-7 rounded-full bg-primary/20 text-primary flex items-center justify-center">
-                    {isAdmin ? <Shield size={15} /> : <Stethoscope size={15} />}
+                  <div className="h-7 w-7 rounded-md bg-primary/20 text-primary flex items-center justify-center">
+                    <Shield size={15} />
                   </div>
                 ),
               }}
@@ -99,60 +90,29 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
               <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-primary transition-colors">
                 <Search size={18} />
               </div>
-              <input
-                type="text"
-                placeholder="Buscar..."
-                className="w-full pl-10 pr-4 py-2 bg-gray-100/50 dark:bg-neutral-800/50 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary/20 focus:bg-white dark:focus:bg-neutral-800 transition-all outline-none placeholder-gray-400 font-medium text-gray-900 dark:text-white"
-              />
+              <input type="text" placeholder="Buscar..." className="w-full pl-10 pr-4 py-2 bg-gray-100/50 dark:bg-neutral-800/50 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary/20 focus:bg-white dark:focus:bg-neutral-800 transition-all outline-none placeholder-gray-400 font-medium text-gray-900 dark:text-white" />
             </div>
-            <select
-              value={currentUser.id}
-              onChange={(e) => setCurrentUserById(e.target.value)}
-              className="max-w-[230px] px-3 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-neutral-900 text-sm"
-            >
-              {users.map((user) => (
-                <option key={user.id} value={user.id}>{user.name}</option>
-              ))}
-            </select>
-            <select
-              value={selectedClinicId}
-              onChange={(e) => setSelectedClinicId(e.target.value)}
-              className="max-w-[220px] px-3 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-neutral-900 text-sm"
-              disabled={!isAdmin}
-            >
-              {isAdmin ? <option value="all">Todas as unidades</option> : null}
-              {clinics.map((clinic) => (
-                <option key={clinic.id} value={clinic.id}>{clinic.name}</option>
-              ))}
+            <select value={selectedClinicId} onChange={(e) => setSelectedClinicId(e.target.value)} className="max-w-[260px] px-3 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-neutral-900 text-sm">
+              <option value="all">Todas as unidades</option>
+              {clinics.map((clinic) => <option key={clinic.id} value={clinic.id}>{clinic.name}</option>)}
             </select>
           </div>
 
           <div className="hidden lg:flex items-center gap-3 text-sm text-gray-500 dark:text-gray-300">
-            <img src="/apps/uapepet.png" alt="UPA PET" className="h-8 w-8 rounded-full object-cover" />
+            <img src="/apps/uapepet.png" alt="UPA PET" className="h-10 w-auto object-contain" />
             <span>{selectedClinicName}</span>
           </div>
 
           <div className="flex-1 flex justify-end items-center gap-3">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 text-gray-500 dark:text-gray-400 hover:text-primary transition-colors"
-            >
+            <span className="hidden sm:inline text-sm text-gray-600 dark:text-gray-300">{currentUser.name}</span>
+            <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-            <button
-              onClick={() => navigate(dvPath('coming-soon'), { state: { from: 'Acao rapida: Novo' } })}
-              className="hidden sm:flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40 text-sm font-bold active:scale-95"
-            >
-              <Plus size={18} />
-              <span>Novo</span>
             </button>
           </div>
         </header>
 
         <main className="flex-1 overflow-y-auto p-3 md:p-6 scroll-smooth bg-gray-50/50 dark:bg-neutral-950">
-          <div className="w-full h-full">
-            {children}
-          </div>
+          <div className="w-full h-full">{children}</div>
         </main>
       </div>
     </div>

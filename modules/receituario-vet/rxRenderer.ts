@@ -230,23 +230,43 @@ export function resolveFrequency(item: PrescriptionItem): {
   }
 }
 
-function frequencyLabelForTutor(item: PrescriptionItem, fallback: string): string {
+function normalizeFrequencyForPrint(item: PrescriptionItem): { hours: number | null, label: string } {
+  // Mapping for token frequencies
+  if (item.frequencyToken) {
+    const times = FREQUENCY_TOKEN_TO_TIMES[item.frequencyToken];
+    const hours = 24 / times;
+    return { hours, label: `a cada ${formatNumber(hours, 0)} horas` };
+  }
+
   if (item.frequencyType === 'everyHours') {
-    const hours = toNumber(item.everyHours)
-    if (hours && hours > 0) return `a cada ${formatNumber(hours, 0)} horas`
-    return fallback
+    const hours = toNumber(item.everyHours);
+    if (hours && hours > 0) {
+      return { hours, label: `a cada ${formatNumber(hours, 0)} horas` };
+    }
+    return { hours: null, label: 'frequência não informada' };
   }
 
-  const tokenTimes = item.frequencyToken ? FREQUENCY_TOKEN_TO_TIMES[item.frequencyToken] : null
-  const numericTimes = tokenTimes || toNumber(item.timesPerDay)
-  if (!numericTimes || numericTimes <= 0) return fallback
-
-  if (numericTimes === 1) return 'uma vez por dia'
-  const interval = 24 / numericTimes
-  if (Number.isFinite(interval) && Math.abs(Math.round(interval) - interval) < 0.001) {
-    return `a cada ${formatNumber(interval, 0)} horas`
+  const tokenTimes = item.frequencyToken ? FREQUENCY_TOKEN_TO_TIMES[item.frequencyToken] : null;
+  const numericTimes = tokenTimes || toNumber(item.timesPerDay);
+  if (!numericTimes || numericTimes <= 0) {
+    return { hours: null, label: 'frequência não informada' };
   }
-  return `${formatNumber(numericTimes, 0)} vezes por dia`
+
+  const hours = 24 / numericTimes;
+  // For common frequencies, ensure integer mapping
+  const commonMap: Record<number, number> = { 1: 24, 2: 12, 3: 8, 4: 6, 6: 4, 8: 3, 12: 2, 24: 1 };
+  const mappedHours = commonMap[numericTimes] || hours;
+  // Format with one decimal if needed
+  const formattedHours = Math.abs(Math.round(mappedHours) - mappedHours) < 0.001 ? formatNumber(mappedHours, 0) : formatNumber(mappedHours, 1);
+  return { hours: mappedHours, label: `a cada ${formattedHours} horas` };
+}
+
+function frequencyLabelForTutor(item: PrescriptionItem, fallback: string): string {
+  const result = normalizeFrequencyForPrint(item);
+  if (result.hours !== null) {
+    return result.label;
+  }
+  return fallback;
 }
 
 function uniqueByNormalizedText(lines: string[]): string[] {
@@ -494,14 +514,14 @@ export function renderRxToPrintDoc(
         const instruction = resolveInstruction(item, state)
         const subtitleParts = [item.presentation]
 
-        // G3: Mostrar cálculo de dose/volume no subtitle
-        if (qty.label !== 'Quantidade não calculada') {
+        // G3: Mostrar cálculo de dose/volume no subtitle (somente em template, não no final)
+        if (renderMode !== 'final' && qty.label !== 'Quantidade não calculada') {
           const doseStr = qty.perDose !== null ? `${formatNumber(qty.perDose)} ${qty.unit}` : ''
           const totalStr = qty.total !== null ? ` · Total: ${formatNumber(qty.total)} ${qty.unit}` : ''
           const calcLabel = doseStr ? `Dose calculada: ${doseStr}${totalStr}` : qty.label
           subtitleParts.push(calcLabel)
-        } else if (toNumber(item.doseValue) !== null) {
-          // G4: Dose presente mas cálculo não pôde ser completado — mostrar hint sem crashar
+        } else if (renderMode !== 'final' && toNumber(item.doseValue) !== null) {
+          // G4: Dose presente mas cálculo não pôde ser completado — mostrar hint sem crashar (somente template)
           const missingWeight = (item.doseUnit || '').includes('/kg') && !toNumber(state.patient.weightKg)
           subtitleParts.push(missingWeight ? 'Peso não informado para cálculo' : 'Sem concentração para cálculo')
         }
@@ -511,6 +531,7 @@ export function renderRxToPrintDoc(
           title: buildItemTitle(item) || 'Medicamento',
           subtitle: subtitleParts.filter(Boolean).join(' - '),
           instruction: instruction || 'Instrução não informada.',
+          start_date: item.start_date || '',
           titleBold: !!item.titleBold,
           titleUnderline: !!item.titleUnderline,
           cautions: item.cautions.filter(Boolean),
@@ -550,15 +571,12 @@ export function renderRxToPrintDoc(
     })
     .filter(Boolean) as PrintDoc['sections']
 
-  const recommendations =
-    documentKind === 'special-control'
-      ? []
-      : [
-        ...state.recommendations.bullets.filter(Boolean),
-        ...(state.recommendations.waterMlPerDay.trim()
-          ? [`Meta hídrica diária: ${state.recommendations.waterMlPerDay} mL/dia.`]
-          : []),
-      ]
+  const recommendations = [
+    ...state.recommendations.bullets.filter(Boolean),
+    ...(state.recommendations.waterMlPerDay.trim()
+      ? [`Meta hídrica diária: ${state.recommendations.waterMlPerDay} mL/dia.`]
+      : []),
+  ]
 
   const selectedExams = uniqueByNormalizedText([
     ...state.recommendations.exams,
@@ -602,10 +620,7 @@ export function renderRxToPrintDoc(
     addressLine: tutorAddressLine,
     sections,
     recommendations,
-    exams:
-      documentKind === 'special-control'
-        ? []
-        : [...selectedExams, ...examReasons],
+    exams: [...selectedExams, ...examReasons],
   }
 }
 

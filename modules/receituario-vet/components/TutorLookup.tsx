@@ -92,7 +92,7 @@ export function TutorLookup({ value, onChange, placeholder = 'Buscar tutor...', 
           } else {
             data = recentData || []
             if (import.meta.env.DEV) {
-              console.log('[TutorLookup] recentes', data.length, 'tutor(s) para clinic', clinicId)
+              console.log('[TutorLookup] recentes', { clinicId, dataLen: data.length })
             }
           }
         } else {
@@ -109,6 +109,9 @@ export function TutorLookup({ value, onChange, placeholder = 'Buscar tutor...', 
             console.error('[TutorLookup] Search failed', searchError.message, { clinicId })
           } else {
             data = searchData || []
+            if (import.meta.env.DEV) {
+              console.log('[TutorLookup] busca', { clinicId, query: query.trim(), dataLen: data.length })
+            }
           }
         }
 
@@ -274,8 +277,15 @@ export function TutorLookup({ value, onChange, placeholder = 'Buscar tutor...', 
             )}
 
             {!clinicLoading && !clinicId && (
-              <div className="px-4 py-3 text-center">
-                <p className="text-xs text-red-400">Clínica não configurada. Verifique sua conta.</p>
+              <div className="px-4 py-4 text-center space-y-2">
+                <p className="text-xs text-amber-400 font-semibold">Nenhuma clínica ativa</p>
+                <p className="text-[10px] text-slate-500">Selecione uma clínica para buscar tutores.</p>
+                <a
+                  href="/hub"
+                  className="inline-block rounded-lg border border-amber-600/40 bg-amber-900/20 px-3 py-1.5 text-[10px] font-bold text-amber-400 hover:bg-amber-900/40 transition-colors"
+                >
+                  Selecionar clínica →
+                </a>
               </div>
             )}
 

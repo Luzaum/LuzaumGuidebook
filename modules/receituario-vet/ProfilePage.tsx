@@ -21,6 +21,23 @@ const MAX_UPLOAD_DIMENSION = 1200
 const MAX_DATA_URL_LENGTH = 1_400_000
 const IMAGE_QUALITY_STEPS = [0.92, 0.82, 0.72, 0.62, 0.52, 0.45]
 
+function formatCnpj(value: string): string {
+  const digits = value.replace(/\D/g, '').slice(0, 14)
+  if (digits.length <= 2) return digits
+  if (digits.length <= 5) return `${digits.slice(0, 2)}.${digits.slice(2)}`
+  if (digits.length <= 8) return `${digits.slice(0, 2)}.${digits.slice(2, 5)}.${digits.slice(5)}`
+  if (digits.length <= 12) return `${digits.slice(0, 2)}.${digits.slice(2, 5)}.${digits.slice(5, 8)}/${digits.slice(8)}`
+  return `${digits.slice(0, 2)}.${digits.slice(2, 5)}.${digits.slice(5, 8)}/${digits.slice(8, 12)}-${digits.slice(12, 14)}`
+}
+
+function formatPhone(value: string): string {
+  const digits = value.replace(/\D/g, '').slice(0, 11)
+  if (digits.length <= 2) return digits
+  if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`
+  if (digits.length <= 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`
+}
+
 function emptyProfile(): ProfileSettings {
   return {
     adminId: 'ADMIN',
@@ -319,7 +336,7 @@ export default function ProfilePage() {
             </label>
             <label className="text-sm">
               CRMV
-              <input className="mt-1 w-full px-3 py-2" value={profile.crmv} onChange={(e) => setProfile((prev) => ({ ...prev, crmv: e.target.value }))} />
+              <input className="mt-1 w-full px-3 py-2" value={profile.crmv} onChange={(e) => setProfile((prev) => ({ ...prev, crmv: e.target.value }))} maxLength={10} />
             </label>
             <label className="text-sm">
               UF
@@ -343,11 +360,17 @@ export default function ProfilePage() {
             </label>
             <label className="text-sm">
               CNPJ
-              <input className="mt-1 w-full px-3 py-2" value={profile.clinicCnpj} onChange={(e) => setProfile((prev) => ({ ...prev, clinicCnpj: e.target.value }))} />
+              <input className="mt-1 w-full px-3 py-2" value={profile.clinicCnpj} onChange={(e) => {
+                const formatted = formatCnpj(e.target.value);
+                setProfile((prev) => ({ ...prev, clinicCnpj: formatted }));
+              }} maxLength={18} />
             </label>
             <label className="text-sm">
               Telefone / WhatsApp
-              <input className="mt-1 w-full px-3 py-2" value={profile.clinicPhone} onChange={(e) => setProfile((prev) => ({ ...prev, clinicPhone: e.target.value }))} />
+              <input className="mt-1 w-full px-3 py-2" value={profile.clinicPhone} onChange={(e) => {
+                const formatted = formatPhone(e.target.value);
+                setProfile((prev) => ({ ...prev, clinicPhone: formatted }));
+              }} maxLength={15} />
             </label>
             <label className="text-sm md:col-span-2">
               Endereço completo da clínica
