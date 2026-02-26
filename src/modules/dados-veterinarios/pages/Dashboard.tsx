@@ -134,6 +134,7 @@ const TutorRow: React.FC<{ tutor: any; patients: any[] }> = ({ tutor, patients }
 
 export const Dashboard = () => {
   const { patients, tutors, appointments, financialRecords, getPatientName, getTutorName } = useData();
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
 
   const today = new Date();
@@ -175,7 +176,7 @@ export const Dashboard = () => {
             <p className="text-gray-500 dark:text-gray-400 mt-1">Bem-vindo ao VetFlow. Aqui está o resumo da sua clínica.</p>
           </div>
           <div className="flex gap-3">
-            <button className="px-4 py-2 bg-primary text-white rounded-xl hover:bg-green-500 font-medium transition-colors flex items-center gap-2 shadow-lg shadow-primary/30">
+            <button onClick={() => navigate(dvPath('calendar'))} className="px-4 py-2 bg-primary text-white rounded-xl hover:bg-green-500 font-medium transition-colors flex items-center gap-2 shadow-lg shadow-primary/30">
               <Plus size={20} />
               Novo Atendimento
             </button>
