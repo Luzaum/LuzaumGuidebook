@@ -21,12 +21,9 @@ import {
   loadProtocolBundle,
   saveProtocolBundle,
   deleteProtocol,
-<<<<<<< Updated upstream
-=======
   createFolder,
   deleteFolder,
   ensureDefaultSpecialtyProtocolSeed,
->>>>>>> Stashed changes
   type ProtocolFolderRecord,
   type ProtocolRecord,
   type ProtocolBundle,
@@ -95,15 +92,11 @@ export default function Protocolos3Page() {
     }
   )
 
-<<<<<<< Updated upstream
-=======
   // ✅ Estado: criar pasta
   const [createFolderOpen, setCreateFolderOpen] = useState(false)
   const [createFolderName, setCreateFolderName] = useState('')
   const [isCreatingFolder, setIsCreatingFolder] = useState(false)
 
-
->>>>>>> Stashed changes
   // ✅ Estado: busca de medicamentos
   const [medicationSearchOpen, setMedicationSearchOpen] = useState(false)
   const [medicationSearchQuery, setMedicationSearchQuery] = useState('')
@@ -133,11 +126,6 @@ export default function Protocolos3Page() {
     setIsLoadingFolders(true)
 
     listFolders(clinicId, userId)
-<<<<<<< Updated upstream
-      .then((data) => {
-        console.log('[Protocolos3] Folders carregados', data)
-        setFolders(data)
-=======
       .then(async (data) => {
         console.log('[Protocolos3] Folders carregados', data)
         await ensureDefaultSpecialtyProtocolSeed(clinicId, userId)
@@ -147,7 +135,6 @@ export default function Protocolos3Page() {
         ])
         setFolders(refreshedFolders)
         setProtocols(refreshedProtocols)
->>>>>>> Stashed changes
       })
       .catch((err) => {
         console.error('[Protocolos3] Erro ao carregar folders', err)
@@ -308,6 +295,27 @@ export default function Protocolos3Page() {
       }
     },
     [clinicId, userId]
+  )
+
+  const handleDeleteFolder = useCallback(
+    async (folderId: string, folderName: string) => {
+      if (!clinicId || !userId) return
+      if (!confirm(`Excluir pasta "${folderName}"? Os protocolos dentro serão movidos para Todos.`)) return
+      try {
+        await deleteFolder(clinicId, userId, folderId)
+        const [refreshedFolders, refreshedProtocols] = await Promise.all([
+          listFolders(clinicId, userId),
+          listProtocols(clinicId, userId),
+        ])
+        setFolders(refreshedFolders)
+        setProtocols(refreshedProtocols)
+        if (selectedFolderId === folderId) setSelectedFolderId(null)
+      } catch (err) {
+        console.error('[Protocolos3] Erro ao excluir pasta', err)
+        alert(`Falha ao excluir pasta\n\n${safeStringify(err)}`)
+      }
+    },
+    [clinicId, userId, selectedFolderId]
   )
 
   const handleApplyToNovaReceita = useCallback(
@@ -499,19 +507,6 @@ export default function Protocolos3Page() {
               <span className="material-symbols-outlined text-[18px]">inventory_2</span>
               Todos
             </button>
-<<<<<<< Updated upstream
-            {folders.map(folder => (
-              <button
-                key={folder.id}
-                onClick={() => setSelectedFolderId(folder.id)}
-                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-bold transition-all ${selectedFolderId === folder.id ? 'bg-[#39ff14]/10 text-[#39ff14] border border-[#39ff14]/20' : 'text-slate-400 hover:bg-slate-800/50'
-                  }`}
-              >
-                <span className="material-symbols-outlined text-[18px]">folder</span>
-                {folder.name}
-              </button>
-            ))}
-=======
             {isLoadingFolders ? (
               <div className="flex items-center gap-2 px-3 py-2 text-slate-600">
                 <span className="material-symbols-outlined animate-spin text-[16px]">sync</span>
@@ -538,8 +533,6 @@ export default function Protocolos3Page() {
                 </div>
               ))
             )}
-
->>>>>>> Stashed changes
           </nav>
         </aside>
 

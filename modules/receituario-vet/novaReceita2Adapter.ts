@@ -36,8 +36,6 @@ function parseDoseString(dose: string): { numericStr: string; unit: string; perK
         unit: match[2].toLowerCase().replace('ui', 'ui').replace('iu', 'ui'),
         perKg,
     }
-<<<<<<< Updated upstream
-=======
 }
 
 // =====================================================================
@@ -118,7 +116,6 @@ function presentationUnit(item: PrescriptionItem): string {
     if (item.package_unit) return item.package_unit
     if (item.value_unit) return item.value_unit
     return ''
->>>>>>> Stashed changes
 }
 
 // =====================================================================
@@ -145,7 +142,6 @@ function routeStringToGroup(route?: string): RouteGroup {
     return 'OUTROS'
 }
 
-<<<<<<< Updated upstream
 // Formatar título do item incluindo concentração e nome comercial
 function buildItemTitle(item: {
     name: string
@@ -153,7 +149,19 @@ function buildItemTitle(item: {
     commercial_name?: string
     pharmaceutical_form?: string
 }): string {
-=======
+    const parts: string[] = [item.name]
+
+    if (item.concentration_text) {
+        parts.push(item.concentration_text)
+    }
+
+    if (item.commercial_name) {
+        parts.push(`(${item.commercial_name})`)
+    }
+
+    return parts.join(' ')
+}
+
 function parseFrequency(freq: string) {
     if (!freq) return { frequencyType: 'timesPerDay' as const, frequencyToken: '' as any, timesPerDay: '', everyHours: '' }
 
@@ -212,11 +220,10 @@ function parseDuration(dur: string) {
 // rxRenderer não acrescentar nada extra.
 // =====================================================================
 function buildLineOneTitle(item: PrescriptionItem, concentrationSafe: string): string {
->>>>>>> Stashed changes
     const parts: string[] = [item.name]
 
-    if (item.concentration_text) {
-        parts.push(item.concentration_text)
+    if (concentrationSafe) {
+        parts.push(concentrationSafe)
     }
 
     if (item.commercial_name) {
@@ -236,7 +243,6 @@ function buildItemSubtitle(item: {
 }): string {
     const parts: string[] = []
 
-<<<<<<< Updated upstream
     const form = item.pharmaceutical_form || item.presentation_label
     if (form) parts.push(form)
 
@@ -260,9 +266,6 @@ function buildItemInstruction(item: {
     duration?: string
 }): string {
     // Priorizar instruction manual se preenchida
-=======
-    // Mantém apenas instrução extra livre; a linha "Iniciar em" usa start_date próprio.
->>>>>>> Stashed changes
     if (item.instructions && item.instructions.trim()) {
         return item.instructions.trim()
     }
@@ -290,7 +293,6 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
         // por buildAutoInstruction que não consegue parsear dose livre "10 mg/kg")
         const instruction = buildItemInstruction(item)
 
-<<<<<<< Updated upstream
         // FIX G: parsear dose livre para campos estruturados (doseValue numérico + doseUnit)
         // Permite que calculateMedicationQuantity exiba "Dose calculada: X mg / Volume: Y mL"
         const parsedDose = parseDoseString(toSafeString(item.dose))
@@ -315,14 +317,6 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
                 doseUnit,
                 instruction: instruction.slice(0, 60),
             })
-=======
-        let doseValue = item.doseValue || ''
-        let doseUnit = item.doseUnit || ''
-        if (!doseValue || !doseUnit) {
-            const parsedDose = parseDoseString(toSafeString(item.dose))
-            doseValue = parsedDose ? parsedDose.numericStr : toSafeString(item.dose)
-            doseUnit = parsedDose ? (parsedDose.perKg ? `${parsedDose.unit}/kg` : parsedDose.unit) : ''
->>>>>>> Stashed changes
         }
 
         const { frequencyType, frequencyToken, timesPerDay, everyHours } = parseFrequency(item.frequency || '')
@@ -332,22 +326,13 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
             id: item.id,
             category: 'medication' as const,
             catalogDrugId: item.medication_id || '',
-<<<<<<< Updated upstream
-            controlled: false,
+            controlled: item.is_controlled || false,
             // FIX: colocar APENAS nome do fármaco em name;
             // o renderer (rxRenderer.buildItemTitle) concatena name + concentration + commercialName.
             name: item.name,
             presentation: subtitle,    // subtitle: forma + embalagem + preço
             concentration: concentrationSafe,
             commercialName: toSafeString(item.commercial_name),
-=======
-            controlled: item.is_controlled || false,
-            // A1: título completo em `name`;
-            name: displayName,
-            presentation: subtitle,
-            concentration: concentrationSafe, // necessário para o rxRenderer calcular dose
-            commercialName: '',
->>>>>>> Stashed changes
             pharmacyType: 'veterinária' as const,
             packageType: 'frasco' as const,
             pharmacyName: '',
@@ -355,7 +340,6 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
             routeGroup,
             doseValue,
             doseUnit,
-<<<<<<< Updated upstream
             // FIX: autoInstruction = false + manualEdited = true para que o renderer
             // use SEMPRE a instrução pre-construída pelo adapter (buildItemInstruction)
             autoInstruction: false,
@@ -366,17 +350,6 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
             durationDays: '',
             untilFinished: false,
             continuousUse: false,
-=======
-            // Usa autoInstruction combinada com a instruction extra pre-construída
-            autoInstruction: true,
-            frequencyType,
-            frequencyToken,
-            timesPerDay,
-            everyHours,
-            durationDays,
-            untilFinished,
-            continuousUse,
->>>>>>> Stashed changes
             instruction,
             manualEdited: false,
             titleBold: false,
