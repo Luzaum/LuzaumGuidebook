@@ -3,6 +3,7 @@ import { getStoredClinicId } from './clinic'
 import type { PrescriptionRecord } from './prescriptionsRecords'
 
 const DEFAULT_BUCKET = 'receituario-media'
+const UUID_V4_LIKE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 
 function sanitizePathSegment(value: string): string {
     return String(value || '')
@@ -24,10 +25,7 @@ export async function uploadPrescriptionPDF(
     pdfFile: File,
     documentKind: 'standard' | 'special-control' = 'standard'
 ): Promise<{ path: string; publicUrl: string; bucket: string }> {
-    const clinicId = getStoredClinicId()
-    if (!clinicId) {
-        throw new Error('Clinic ID not found. Ensure clinic is selected.')
-    }
+    const fallbackClinicId = getStoredClinicId()
 
     // Fetch prescription to get patient_id and clinic_id (extra validation)
     const { data: prescription, error: fetchError } = await supabase
@@ -37,10 +35,15 @@ export async function uploadPrescriptionPDF(
         .single()
 
     if (fetchError) {
+        logSbDevError('[PrescriptionPDF] fetch prescription error', fetchError)
         throw new Error(`Prescription not found: ${fetchError.message}`)
     }
 
     const patientId = prescription.patient_id
+    const clinicId = String(prescription.clinic_id || fallbackClinicId || '').trim()
+    if (!UUID_V4_LIKE.test(clinicId)) {
+        throw new Error('clinicId inválido para upload de PDF. O path deve iniciar com UUID da clínica.')
+    }
     const safeClinicId = sanitizePathSegment(clinicId)
     const safePatientId = sanitizePathSegment(patientId)
     const safePrescriptionId = sanitizePathSegment(prescriptionId)
@@ -59,6 +62,7 @@ export async function uploadPrescriptionPDF(
         })
 
     if (uploadError) {
+        logSbDevError('[PrescriptionPDF] upload error', uploadError)
         throw new Error(`Failed to upload PDF: ${uploadError.message}`)
     }
 
@@ -78,6 +82,7 @@ export async function uploadPrescriptionPDF(
         .eq('id', prescriptionId)
 
     if (updateError) {
+        logSbDevError('[PrescriptionPDF] update prescription pdf metadata error', updateError)
         // Try to delete the uploaded file? For now just log.
         console.warn('Failed to update prescription with PDF metadata:', updateError.message)
         throw new Error(`PDF uploaded but failed to update record: ${updateError.message}`)
@@ -105,6 +110,18 @@ export async function deletePrescriptionPDF(prescriptionId: string): Promise<voi
         .remove([prescription.pdf_path])
 
     if (error) {
+        logSbDevError('[PrescriptionPDF] delete file error', error)
         console.warn('Failed to delete PDF from storage:', error.message)
     }
+}
+
+function logSbDevError(scope: string, error: unknown) {
+    if (!import.meta.env.DEV) return
+    const err = error as any
+    console.error(scope, {
+        code: err?.code ?? err?.statusCode ?? null,
+        message: err?.message ?? String(error || ''),
+        details: err?.details ?? null,
+        hint: err?.hint ?? null,
+    })
 }

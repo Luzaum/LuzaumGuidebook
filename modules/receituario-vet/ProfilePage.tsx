@@ -1,6 +1,8 @@
-﻿import React, { ChangeEvent, useMemo, useState } from 'react'
+﻿import React, { ChangeEvent, useMemo, useState, useEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { useClinic } from '../../src/components/ClinicProvider'
+import { supabase } from '../../src/lib/supabaseClient'
+import { useLocalDraft } from '../../hooks/useLocalDraft'
 import ReceituarioChrome from './ReceituarioChrome'
 import {
   ProfileSettings,
@@ -9,6 +11,7 @@ import {
   saveRxDb,
   upsertPrescriberProfile,
   updateProfile,
+  removePrescriberProfile,
 } from './rxDb'
 import {
   PROFILE_IMAGE_FIELDS,
@@ -117,6 +120,7 @@ async function toStorableImageDataUrl(file: File): Promise<string> {
 export default function ProfilePage() {
   // E1/E2: clinicId necessário para o path do upload de assinatura/logo
   const { clinicId } = useClinic()
+  const [currentUserId, setCurrentUserId] = useState<string | null>(null)
 
   const initialDb = useMemo(() => loadRxDb(), [])
   const initialProfiles = initialDb.prescriberProfiles.length > 0
@@ -132,6 +136,42 @@ export default function ProfilePage() {
   const [saveModalOpen, setSaveModalOpen] = useState(false)
   const [saveError, setSaveError] = useState('')
   const [saving, setSaving] = useState(false)
+  const [profileDraftState, setProfileDraftState, clearProfileDraft, hasProfileDraft] = useLocalDraft<{
+    selectedProfileId: string
+    profileName: string
+    profile: ProfileSettings
+  }>(
+    'config-medico',
+    clinicId || null,
+    currentUserId,
+    {
+      selectedProfileId: '',
+      profileName: '',
+      profile: emptyProfile(),
+    }
+  )
+
+  useEffect(() => {
+    supabase.auth.getUser()
+      .then(({ data }) => setCurrentUserId(data?.user?.id || null))
+      .catch(() => setCurrentUserId(null))
+  }, [])
+
+  // Não sobrescreve entidade existente: reidrata apenas quando draft aponta "novo" ou id inexistente.
+  useEffect(() => {
+    if (!hasProfileDraft) return
+    const draft = profileDraftState
+    if (!draft?.profile) return
+    const exists = profiles.some((p) => p.id === draft.selectedProfileId)
+    if (exists && draft.selectedProfileId !== 'new') return
+    setSelectedProfileId(draft.selectedProfileId || 'new')
+    setProfileName(draft.profileName || 'Perfil padrão')
+    setProfile({ ...draft.profile, adminId: 'ADMIN' })
+  }, [hasProfileDraft, profileDraftState, profiles])
+
+  useEffect(() => {
+    setProfileDraftState({ selectedProfileId, profileName, profile })
+  }, [profile, profileName, selectedProfileId, setProfileDraftState])
 
   const currentProfileExists = profiles.some((entry) => entry.id === selectedProfileId)
 
@@ -177,6 +217,53 @@ export default function ProfilePage() {
     setProfileName('')
     setProfile(emptyProfile())
     setSaveError('')
+  }
+
+  const deleteProfile = async () => {
+    if (profiles.length <= 1) {
+      alert('Não é possível excluir o único perfil existente.')
+      return
+    }
+    const confirmDelete = window.confirm('Tem certeza de que deseja excluir este perfil de prescritor permanente? (Rascunhos também perderão referência a ele)')
+    if (!confirmDelete) return
+
+    try {
+      setSaving(true)
+      const baseDb = loadRxDb()
+
+      let nextDb = removePrescriberProfile(baseDb, selectedProfileId)
+      saveRxDb(nextDb)
+
+      const hydratedProfiles = nextDb.prescriberProfiles.length > 0
+        ? nextDb.prescriberProfiles
+        : [createPrescriberProfileFromSettings(nextDb.profile, 'Perfil padrão', 'default')]
+
+      setDb(nextDb)
+      setProfiles(hydratedProfiles)
+
+      const newSelected = hydratedProfiles[0]
+      setSelectedProfileId(newSelected.id)
+      setProfileName(newSelected.profileName)
+      setProfile({
+        adminId: 'ADMIN',
+        fullName: newSelected.fullName,
+        crmv: newSelected.crmv,
+        uf: newSelected.uf,
+        specialty: newSelected.specialty,
+        clinicName: newSelected.clinicName,
+        clinicCnpj: newSelected.clinicCnpj,
+        clinicAddress: newSelected.clinicAddress,
+        clinicPhone: newSelected.clinicPhone,
+        clinicLogoDataUrl: newSelected.clinicLogoDataUrl,
+        signatureDataUrl: newSelected.signatureDataUrl,
+        mapaSignatureDataUrl: newSelected.mapaSignatureDataUrl,
+      })
+      clearProfileDraft()
+    } catch (e) {
+      console.error(e)
+    } finally {
+      setSaving(false)
+    }
   }
 
   const saveProfile = async () => {
@@ -245,6 +332,7 @@ export default function ProfilePage() {
 
       setSaveModalOpen(false)
       setSaved(true)
+      clearProfileDraft()
       window.setTimeout(() => setSaved(false), 2200)
     } catch (error) {
       if (isQuotaExceededError(error)) {
@@ -273,6 +361,31 @@ export default function ProfilePage() {
             <span className="material-symbols-outlined text-[18px]">add</span>
             Novo perfil
           </button>
+          <button
+            type="button"
+            className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-2 text-sm disabled:opacity-50"
+            onClick={() => {
+              clearProfileDraft()
+              newProfile()
+            }}
+            disabled={!hasProfileDraft}
+          >
+            <span className="material-symbols-outlined text-[18px]">ink_eraser</span>
+            Limpar rascunho
+          </button>
+
+          {currentProfileExists && profiles.length > 1 && (
+            <button
+              type="button"
+              className="group/btn inline-flex items-center gap-1 rounded-lg border border-red-700/60 bg-red-950/20 px-3 py-2 text-sm font-semibold text-red-300 transition-colors hover:bg-red-900/30 hover:text-red-100"
+              onClick={deleteProfile}
+              disabled={saving}
+            >
+              <span className="material-symbols-outlined text-[16px]">delete</span>
+              Excluir
+            </button>
+          )}
+
           <button
             type="button"
             className="rxv-btn-primary inline-flex items-center gap-2 px-3 py-2 text-sm"
@@ -467,3 +580,4 @@ export default function ProfilePage() {
     </ReceituarioChrome>
   )
 }
+

@@ -16,20 +16,80 @@ import {
   type RecommendedDose,
 } from '../../../src/lib/clinicRecords'
 import type { PrescriptionItem, PatientInfo } from '../NovaReceita2Page'
+import { calculateMedicationQuantity, formatPerDoseQuantity } from '../rxRenderer'
+import type { PrescriptionState } from '../rxTypes'
 
+<<<<<<< Updated upstream
 // ===================== ROUTE OPTIONS =====================
+=======
+// ===================== OPTIONS =====================
+const FORM_OPTIONS = [
+  { value: 'Comprimido', label: 'Comprimido' },
+  { value: 'Cápsula', label: 'Cápsula' },
+  { value: 'Suspensão Oral', label: 'Suspensão Oral' },
+  { value: 'Solução Oral', label: 'Solução Oral' },
+  { value: 'Xarope', label: 'Xarope' },
+  { value: 'Gotas', label: 'Gotas' },
+  { value: 'Injetável', label: 'Injetável' },
+  { value: 'Pomada', label: 'Pomada' },
+  { value: 'Creme', label: 'Creme' },
+  { value: 'Gel', label: 'Gel' },
+  { value: 'Colírio', label: 'Colírio' },
+  { value: 'Otológico', label: 'Otológico' },
+  { value: 'Transdérmico', label: 'Transdérmico' },
+  { value: 'Shampoo', label: 'Shampoo' },
+  { value: 'Loção', label: 'Loção' },
+  { value: 'Spray', label: 'Spray' },
+  { value: 'Pó', label: 'Pó' },
+  { value: 'Outro', label: 'Outro' },
+]
+
+const CONC_UNIT_OPTIONS = [
+  'mg', 'g', 'mcg', 'mL', 'mg/mL', 'g/mL', 'mg/comprimido', 'mg/cápsula', 'mg/g', '%', 'UI/mL', 'UI', 'UI/comprimido', 'mEq/mL', 'mEq'
+].map(u => ({ value: u, label: u }))
+
+const DOSE_UNIT_OPTIONS = [
+  'mg/kg', 'mg', 'mL/kg', 'mL', 'gotas/kg', 'gotas', 'UI/kg', 'UI', 'UI/comprimido', 'mcg/kg', 'mcg', 'comprimido(s)', 'cápsula(s)'
+].map(u => ({ value: u, label: u }))
+
+const FREQ_OPTIONS = [
+  { value: 'q1h', label: 'q1h (a cada 1h)' },
+  { value: 'q2h', label: 'q2h (a cada 2h)' },
+  { value: 'q4h', label: 'q4h (a cada 4h)' },
+  { value: 'q6h', label: 'q6h (a cada 6h)' },
+  { value: 'q8h', label: 'q8h (a cada 8h)' },
+  { value: 'q12h', label: 'q12h (a cada 12h)' },
+  { value: 'q24h', label: 'q24h (a cada 24h)' },
+  { value: '1x ao dia', label: '1x ao dia' },
+  { value: '2x ao dia', label: '2x ao dia' },
+  { value: '3x ao dia', label: '3x ao dia' },
+  { value: '4x ao dia', label: '4x ao dia' },
+  { value: '6x ao dia', label: '6x ao dia' },
+  { value: '8x ao dia', label: '8x ao dia' },
+  { value: '12x ao dia', label: '12x ao dia' },
+  { value: '24x ao dia', label: '24x ao dia' },
+  { value: 'Uso contínuo', label: 'Uso contínuo' },
+  { value: 'Dose única', label: 'Dose única' },
+]
+
+const TIME_OPTIONS = Array.from({ length: 24 }, (_, i) => {
+  const t = `${String(i).padStart(2, '0')}:00`
+  return { value: t, label: t }
+})
+
+>>>>>>> Stashed changes
 const ROUTE_OPTIONS = [
   { value: 'VO', label: 'Oral (VO)' },
   { value: 'SC', label: 'Subcutâneo (SC)' },
   { value: 'IM', label: 'Intramuscular (IM)' },
   { value: 'IV', label: 'Intravenoso (IV)' },
-  { value: 'Tópico', label: 'Tópico' },
-  { value: 'Oftálmico', label: 'Oftálmico' },
-  { value: 'Otológico', label: 'Otológico' },
+  { value: 'Tópico', label: 'Tópica' },
+  { value: 'Oftálmico', label: 'Oftálmica' },
+  { value: 'Otológico', label: 'Otológica' },
   { value: 'Intranasal', label: 'Intranasal' },
   { value: 'Retal', label: 'Retal' },
-  { value: 'Inalatório', label: 'Inalatório' },
-  { value: 'Transdérmico', label: 'Transdérmico' },
+  { value: 'Inalatório', label: 'Inalatória' },
+  { value: 'Transdérmico', label: 'Transdérmica' },
 ]
 
 // ===================== TYPES =====================
@@ -39,8 +99,8 @@ interface AddMedicationModal2Props {
   onAdd: (item: PrescriptionItem) => void
   clinicId: string
   patient: PatientInfo | null
-  /** Se true, ignora busca no catálogo e exibe apenas o formulário manual */
   manualMode?: boolean
+  editingItem?: PrescriptionItem | null
 }
 
 interface MedicationSearchResult {
@@ -51,7 +111,6 @@ interface MedicationSearchResult {
   default_route?: string
 }
 
-/** Schema completo da tabela medication_presentations */
 interface PresentationRecord {
   id: string
   medication_id: string
@@ -68,11 +127,9 @@ interface PresentationRecord {
   avg_price_brl?: number | null
   package_quantity?: string | null
   package_unit?: string | null
-  /** metadata JSON — fallback para campos que o DB armazena como JSON em vez de coluna direta */
   metadata?: Record<string, unknown> | null
 }
 
-/** Extrai um campo de PresentationRecord, com fallback no metadata JSON */
 function extractPresentationField(pres: PresentationRecord, field: string): string | undefined {
   const direct = (pres as Record<string, unknown>)[field]
   if (direct != null && direct !== '') return String(direct)
@@ -82,31 +139,67 @@ function extractPresentationField(pres: PresentationRecord, field: string): stri
 }
 
 // ===================== COMPONENT =====================
-export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, manualMode = false }: AddMedicationModal2Props) {
-  // Catalog state
+export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, manualMode = false, editingItem }: AddMedicationModal2Props) {
   const [searchQuery, setSearchQuery] = useState('')
   const [medications, setMedications] = useState<MedicationSearchResult[]>([])
   const [isSearching, setIsSearching] = useState(false)
   const [selectedMedication, setSelectedMedication] = useState<MedicationSearchResult | null>(null)
   const [presentations, setPresentations] = useState<PresentationRecord[]>([])
   const [selectedPresentationId, setSelectedPresentationId] = useState<string | null>(null)
+  const [rxTheme, setRxTheme] = useState<'dark' | 'light'>(() => {
+    try {
+      return localStorage.getItem('receituario-vet:theme:v1') === 'light' ? 'light' : 'dark'
+    } catch { return 'dark' }
+  })
+  const isDark = rxTheme === 'dark'
   const [recommendedDoses, setRecommendedDoses] = useState<RecommendedDose[]>([])
 
+<<<<<<< Updated upstream
   // Form state
   const [dose, setDose] = useState('')
+=======
+  const [doseValueInput, setDoseValueInput] = useState('')
+  const [doseUnitInput, setDoseUnitInput] = useState('mg/kg')
+>>>>>>> Stashed changes
   const [frequency, setFrequency] = useState('')
   const [route, setRoute] = useState('VO')
   const [duration, setDuration] = useState('')
   const [instructions, setInstructions] = useState('')
   const [cautions, setCautions] = useState('')
 
-  // Manual mode only: extra fields
   const [manualName, setManualName] = useState('')
   const [manualConcentration, setManualConcentration] = useState('')
   const [manualForm, setManualForm] = useState('')
   const [manualCommercialName, setManualCommercialName] = useState('')
+<<<<<<< Updated upstream
+=======
+  const [manualIsControlled, setManualIsControlled] = useState(false)
 
-  // ==================== EFFECTS ====================
+  const [isContinuous, setIsContinuous] = useState(false)
+  const [startDate, setStartDate] = useState(() => {
+    const d = new Date()
+    return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`
+  })
+  const [startTime, setStartTime] = useState('')
+
+  const isoStartDate = useMemo(() => {
+    if (!startDate) return ''
+    const [day, month] = startDate.split('/')
+    if (!day || !month) return ''
+    const year = new Date().getFullYear()
+    return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
+  }, [startDate])
+
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const iso = e.target.value
+    if (!iso) {
+      setStartDate('')
+      return
+    }
+    const [year, month, day] = iso.split('-')
+    setStartDate(`${day.padStart(2, '0')}/${month.padStart(2, '0')}`)
+  }
+>>>>>>> Stashed changes
 
   useEffect(() => {
     if (!open) return
@@ -114,16 +207,19 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
       if (ev.key === 'Escape') onClose()
     }
     window.addEventListener('keydown', onEscape)
+
+    // Sync theme
+    const theme = localStorage.getItem('receituario-vet:theme:v1') === 'light' ? 'light' : 'dark'
+    setRxTheme(theme)
+
     return () => window.removeEventListener('keydown', onEscape)
   }, [open, onClose])
 
-  // Auto-search on open
   useEffect(() => {
     if (!open || !clinicId || manualMode) {
       setMedications([])
       return
     }
-
     const q = searchQuery.trim()
     const timer = setTimeout(async () => {
       try {
@@ -137,12 +233,11 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
         setIsSearching(false)
       }
     }, q ? 400 : 0)
-
     return () => clearTimeout(timer)
   }, [searchQuery, clinicId, open, manualMode])
 
-  // Reset on close
   useEffect(() => {
+<<<<<<< Updated upstream
     if (!open) {
       setSelectedMedication(null)
       setPresentations([])
@@ -192,69 +287,188 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
             setRoute(bestDose.route || 'VO')
             setFrequency(bestDose.frequency || '')
           }
+=======
+    if (open) {
+      if (editingItem) {
+        setDoseValueInput(editingItem.doseValue || '')
+        setDoseUnitInput(editingItem.doseUnit || 'mg/kg')
+        setFrequency(editingItem.frequency || '')
+        setRoute(editingItem.route || 'VO')
+        const dur = editingItem.duration || ''
+        if (dur.toLowerCase() === 'uso contínuo') {
+          setIsContinuous(true)
+          setDuration('')
+        } else {
+          setIsContinuous(false)
+          setDuration(dur)
+        }
+        setInstructions(editingItem.instructions || '')
+        setCautions((editingItem.cautions || []).join('\n'))
+        setManualQuantity(editingItem.manualQuantity || '')
+
+        if (editingItem.start_date) {
+          const parts = editingItem.start_date.split(' às ')
+          setStartDate(parts[0] || '')
+          setStartTime(parts[1] || '')
+>>>>>>> Stashed changes
         }
 
+        if (manualMode) {
+          setManualName(editingItem.name || '')
+          const [conc, concUnit] = (editingItem.concentration_text || '').split(' ')
+          setManualConcentration(conc || '')
+          setManualConcentrationUnit(concUnit || 'mg')
+          setManualForm(editingItem.pharmaceutical_form || 'Comprimido')
+          setManualCommercialName(editingItem.commercial_name || '')
+          setManualIsControlled(editingItem.is_controlled || false)
+        } else if (editingItem.medication_id) {
+          setSelectedMedication({
+            id: editingItem.medication_id,
+            name: editingItem.name,
+            is_controlled: editingItem.is_controlled || false
+          })
+          getMedicationPresentations(clinicId, editingItem.medication_id).then((p: any) => {
+            setPresentations(p)
+            setSelectedPresentationId(editingItem.presentation_id || null)
+          }).catch(console.error)
+        }
+      } else {
+        setSelectedMedication(null)
+        setPresentations([])
+        setSelectedPresentationId(null)
+        setRecommendedDoses([])
+        setDoseValueInput('')
+        setDoseUnitInput('mg/kg')
+        setFrequency('')
+        setRoute('VO')
+        setDuration('')
+        setInstructions('')
+        setCautions('')
+        setManualQuantity('')
+        setManualName('')
+        setManualConcentration('')
+        setManualIsControlled(false)
+        setIsContinuous(false)
         setSearchQuery('')
-      } catch (err) {
-        console.error('[AddMedicationModal2] Error loading medication details', err)
       }
-    },
-    [clinicId, patient]
-  )
+    }
+  }, [open, editingItem, manualMode, clinicId])
+
+  const handleMedicationSelect = useCallback(async (med: MedicationSearchResult) => {
+    if (!clinicId) return
+    setSelectedMedication(med)
+    try {
+      const presentationsData = await getMedicationPresentations(clinicId, med.id) as PresentationRecord[]
+      setPresentations(presentationsData)
+      const defaultPresentation = presentationsData.find((p) => p.is_default) || presentationsData[0]
+      setSelectedPresentationId(defaultPresentation?.id || null)
+      const dosesData = await getMedicationRecommendedDoses(clinicId, med.id)
+      setRecommendedDoses(dosesData)
+      if (patient) {
+        const species = (patient.species || '').toLowerCase().includes('felin') ? 'gato' : 'cão'
+        const best = dosesData.find((d) => d.species === species) || dosesData.find((d) => d.species === 'ambos')
+        if (best) {
+          setDoseValueInput(String(best.dose_value || ''))
+          setDoseUnitInput(best.dose_unit || 'mg/kg')
+          setRoute(best.route || 'VO')
+          setFrequency(best.frequency || '')
+        }
+      }
+      setSearchQuery('')
+    } catch (err) {
+      console.error(err)
+    }
+  }, [clinicId, patient])
+
+  const calculatedQty = useMemo(() => {
+    if (!open || !doseValueInput) return null
+    const weight = patient?.weight_kg ? String(patient.weight_kg) : ''
+    const mockState = { patient: { weightKg: weight } } as any
+    let concText = ''
+    let form = ''
+    if (manualMode) {
+      concText = manualConcentration ? `${manualConcentration} ${manualConcentrationUnit}` : ''
+      form = manualForm
+    } else {
+      const pres = presentations.find((p) => p.id === selectedPresentationId)
+      concText = pres?.concentration_text || ''
+      form = pres?.pharmaceutical_form || ''
+    }
+    const mockItem = { doseValue: doseValueInput, doseUnit: doseUnitInput, concentration: concText, presentation: form } as any
+    try {
+      return calculateMedicationQuantity(mockItem, mockState)
+    } catch {
+      return null
+    }
+  }, [open, patient, doseValueInput, doseUnitInput, manualMode, manualConcentration, manualConcentrationUnit, manualForm, presentations, selectedPresentationId])
+
+  const calcFailed = useMemo(() => {
+    if (!doseValueInput.trim()) return true
+    if (!calculatedQty) return true
+    return calculatedQty.perDose === null || !calculatedQty.unit
+  }, [doseValueInput, calculatedQty])
 
   const handleAdd = useCallback(() => {
-    if (manualMode) {
-      // Modo manual: nome é obrigatório
-      if (!manualName.trim()) return
+<<<<<<< Updated upstream
+=======
+    const effectiveDuration = isContinuous ? 'uso contínuo' : duration
+    const startDateStr = startDate ? `${startDate}${startTime ? ` às ${startTime}` : ' às __:__'}` : undefined
 
+>>>>>>> Stashed changes
+    if (manualMode) {
+      if (!manualName.trim()) return
+      if (calcFailed && !manualQuantity.trim()) return // Block if no override
       const newItem: PrescriptionItem = {
-        id: `item-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
+        ...editingItem,
+        id: editingItem?.id || `item-${Date.now()}`,
         type: 'medication',
         isManual: true,
         name: manualName.trim(),
+<<<<<<< Updated upstream
         pharmaceutical_form: manualForm || undefined,
         concentration_text: manualConcentration || undefined,
         commercial_name: manualCommercialName.trim() || undefined,
         dose,
+=======
+        pharmaceutical_form: manualForm,
+        concentration_text: manualConcentration ? `${manualConcentration} ${manualConcentrationUnit}` : undefined,
+        commercial_name: manualCommercialName.trim() || undefined,
+        doseValue: doseValueInput,
+        doseUnit: doseUnitInput,
+>>>>>>> Stashed changes
         frequency,
         route,
         duration,
         instructions,
+<<<<<<< Updated upstream
         cautions: cautions.split('\n').map(s => s.trim()).filter(Boolean),
+=======
+        cautions: cautions.split('\n').filter(Boolean),
+        is_controlled: manualIsControlled,
+        start_date: startDateStr,
+        manualQuantity: manualQuantity.trim() || undefined,
+>>>>>>> Stashed changes
       }
-
       onAdd(newItem)
       onClose()
       return
     }
 
     if (!selectedMedication) return
+    if (calcFailed && !manualQuantity.trim()) return // Block if no override
 
     const selectedPresentation = presentations.find((p) => p.id === selectedPresentationId)
-
-    // label legível para exibição na lista do editor
-    const presentationLabel =
-      selectedPresentation
-        ? [selectedPresentation.pharmaceutical_form, selectedPresentation.concentration_text]
-          .filter(Boolean)
-          .join(' - ')
-        : undefined
-
     const newItem: PrescriptionItem = {
-      id: `item-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
+      ...editingItem,
+      id: editingItem?.id || `item-${Date.now()}`,
       type: 'medication',
-      isManual: false,
       medication_id: selectedMedication.id,
       presentation_id: selectedPresentationId || undefined,
-
-      // Nome base
       name: selectedMedication.name,
-      presentation_label: presentationLabel,
-
-      // ✅ Todos os campos da apresentação (para adapter construir title/subtitle completos)
       pharmaceutical_form: selectedPresentation?.pharmaceutical_form || undefined,
       concentration_text: selectedPresentation?.concentration_text || undefined,
       commercial_name: selectedPresentation?.commercial_name || undefined,
+<<<<<<< Updated upstream
       additional_component: selectedPresentation?.additional_component || undefined,
       value: selectedPresentation?.value || undefined,
       value_unit: selectedPresentation?.value_unit || undefined,
@@ -266,15 +480,26 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
 
       // Campos de dosagem
       dose,
+=======
+      doseValue: doseValueInput,
+      doseUnit: doseUnitInput,
+>>>>>>> Stashed changes
       frequency,
       route,
       duration,
       instructions,
+<<<<<<< Updated upstream
       cautions: cautions.split('\n').map(s => s.trim()).filter(Boolean),
+=======
+      cautions: cautions.split('\n').filter(Boolean),
+      is_controlled: selectedMedication.is_controlled,
+      start_date: startDateStr,
+      manualQuantity: manualQuantity.trim() || undefined,
+>>>>>>> Stashed changes
     }
-
     onAdd(newItem)
     onClose()
+<<<<<<< Updated upstream
   }, [
     manualMode,
     manualName,
@@ -293,95 +518,59 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
     onAdd,
     onClose,
   ])
+=======
+  }, [manualMode, manualName, calcFailed, manualQuantity, isContinuous, duration, startDate, startTime, editingItem, manualForm, manualConcentration, manualConcentrationUnit, manualCommercialName, doseValueInput, doseUnitInput, frequency, route, instructions, cautions, manualIsControlled, selectedMedication, presentations, selectedPresentationId, onAdd, onClose])
+>>>>>>> Stashed changes
 
   if (!open) return null
+  const canAdd = manualMode ? (!!manualName.trim() && (!calcFailed || !!manualQuantity.trim())) : (!!selectedMedication && (!calcFailed || !!manualQuantity.trim()))
 
-  const selectedPresentation = presentations.find((p) => p.id === selectedPresentationId)
-  const canAdd = manualMode ? !!manualName.trim() : !!selectedMedication
-
+<<<<<<< Updated upstream
   return (
     <div className="fixed inset-0 z-[90] flex items-center justify-center bg-black/80 backdrop-blur-sm px-4 py-8">
       <div className="max-h-[92vh] w-full max-w-4xl overflow-hidden rounded-2xl border border-[#2f5b25] bg-[#0a0f0a] text-slate-100 shadow-[0_0_60px_rgba(57,255,20,0.2)]">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-800 bg-black/60 px-6 py-4">
+=======
+  return createPortal(
+    <div className={`fixed inset-0 z-[90] flex items-center justify-center backdrop-blur-sm px-4 py-8 ${isDark ? 'bg-black/80' : 'bg-slate-500/30'}`}>
+      <div className={`max-h-[92vh] w-full max-w-4xl overflow-hidden rounded-2xl border shadow-2xl ${isDark
+        ? 'border-[#2f5b25] bg-[#0a0f0a] text-slate-100 shadow-[0_0_60px_rgba(57,255,20,0.2)]'
+        : 'border-slate-200 bg-white text-slate-800 shadow-xl'
+        }`}>
+        <div className={`flex items-center justify-between border-b px-6 py-4 ${isDark ? 'border-slate-800 bg-black/60' : 'border-slate-100 bg-slate-50/50'
+          }`}>
+>>>>>>> Stashed changes
           <div>
-            <h2 className="text-lg font-bold text-white">
-              {manualMode ? 'Adicionar Medicamento Manual' : 'Adicionar Medicamento do Catálogo'}
-            </h2>
-            <p className="text-xs text-slate-500">
-              {manualMode
-                ? 'Preencha os dados do medicamento manualmente'
-                : 'Busque no Catálogo 3.0 e adicione à receita'}
-            </p>
+            <h2 className={`text-lg font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>{manualMode ? 'Medicamento Manual' : 'Medicamento Catálogo'}</h2>
           </div>
           <div className="flex items-center gap-2">
-            <RxvButton variant="secondary" onClick={onClose}>
-              Cancelar
-            </RxvButton>
-            <RxvButton variant="primary" onClick={handleAdd} disabled={!canAdd}>
-              Adicionar à Receita
-            </RxvButton>
+            <RxvButton variant="secondary" onClick={onClose}>Cancelar</RxvButton>
+            <RxvButton variant="primary" onClick={handleAdd} disabled={!canAdd}>Adicionar</RxvButton>
           </div>
         </div>
 
-        {/* Body */}
         <div className="max-h-[calc(92vh-80px)] overflow-y-auto p-6 space-y-6">
-
-          {/* ==================== MODO CATÁLOGO ==================== */}
-          {!manualMode && (
-            <>
-              {/* Busca */}
-              {!selectedMedication && (
-                <div className="space-y-3">
-                  <RxvField label="Buscar medicamento">
-                    <div className="relative">
-                      <RxvInput
-                        placeholder="Digite para buscar ou veja a lista abaixo..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                      />
-                      {isSearching && (
-                        <span className="absolute right-3 top-1/2 -translate-y-1/2 material-symbols-outlined animate-spin text-[#39ff14] text-[18px]">
-                          sync
-                        </span>
-                      )}
-                    </div>
-                  </RxvField>
-
-                  {!isSearching && medications.length === 0 && !searchQuery && (
-                    <p className="text-xs text-slate-500 italic text-center py-4">
-                      Carregando medicamentos da clínica...
-                    </p>
-                  )}
-                  {!isSearching && medications.length === 0 && searchQuery && (
-                    <p className="text-xs text-slate-500 text-center py-4">
-                      Nenhum medicamento encontrado para "{searchQuery}"
-                    </p>
-                  )}
-                  {medications.length > 0 && (
-                    <div className="max-h-64 space-y-2 overflow-y-auto pr-1">
-                      {medications.map((med) => (
-                        <button
-                          key={med.id}
-                          type="button"
-                          className="w-full rounded-xl border border-slate-800 bg-black/40 px-4 py-3 text-left hover:border-[#39ff14]/50 hover:bg-[#39ff14]/5 transition-all"
-                          onClick={() => handleMedicationSelect(med)}
-                        >
-                          <p className="text-sm font-bold text-white">{med.name}</p>
-                          <p className="text-xs text-slate-500 mt-0.5">
-                            {med.pharmacy_origin || 'Veterinária'}
-                            {med.is_controlled && ' • Controlado'}
-                          </p>
-                        </button>
-                      ))}
-                    </div>
-                  )}
+          {!manualMode ? (
+            <div className="space-y-4">
+              <RxvField label="Buscar medicamento">
+                <RxvInput placeholder="Digite para buscar..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+              </RxvField>
+              {medications.length > 0 && (
+                <div className="max-h-48 overflow-y-auto space-y-2">
+                  {medications.map(m => (
+                    <button key={m.id} className={`w-full p-3 border rounded-xl text-left transition-all ${isDark
+                      ? 'bg-black/40 border-slate-800 hover:border-[#39ff14]'
+                      : 'bg-white border-slate-200 hover:border-[#39ff14] hover:bg-slate-50'
+                      }`} onClick={() => handleMedicationSelect(m)}>
+                      <p className="font-bold">{m.name}</p>
+                    </button>
+                  ))}
                 </div>
               )}
-
-              {/* Medicamento selecionado */}
               {selectedMedication && (
                 <div className="space-y-4">
+<<<<<<< Updated upstream
                   <div className="flex items-center justify-between rounded-xl border border-[#39ff14]/30 bg-[#39ff14]/5 px-4 py-3">
                     <div>
                       <p className="text-base font-bold text-white">{selectedMedication.name}</p>
@@ -570,18 +759,67 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
                   onChange={(e) => setInstructions(e.target.value)}
                   rows={3}
                 />
-              </RxvField>
-
-              <RxvField label="Cautelas (uma por linha)">
-                <RxvTextarea
-                  placeholder="Ex: Não usar em fêmeas prenhes&#10;Monitorar função renal"
-                  value={cautions}
-                  onChange={(e) => setCautions(e.target.value)}
-                  rows={2}
-                />
-              </RxvField>
+=======
+                  <RxvField label="Apresentação">
+                    <RxvSelect
+                      value={selectedPresentationId || ''}
+                      onChange={(e) => setSelectedPresentationId(e.target.value)}
+                      options={presentations.map(p => ({ value: p.id, label: `${p.commercial_name || p.pharmaceutical_form} - ${p.concentration_text}` }))}
+                    />
+                  </RxvField>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 gap-4">
+              <RxvField label="Nome"><RxvInput value={manualName} onChange={(e) => setManualName(e.target.value)} /></RxvField>
+              <RxvField label="Comercial"><RxvInput value={manualCommercialName} onChange={(e) => setManualCommercialName(e.target.value)} /></RxvField>
+              <RxvField label="Forma"><RxvSelect value={manualForm} onChange={(e) => setManualForm(e.target.value)} options={FORM_OPTIONS} /></RxvField>
+              <RxvField label="Concentração"><RxvInput value={manualConcentration} onChange={(e) => setManualConcentration(e.target.value)} /></RxvField>
             </div>
           )}
+
+          <div className="grid grid-cols-3 gap-4">
+            <RxvField label="Dose">
+              <div className="flex gap-1">
+                <RxvInput value={doseValueInput} onChange={(e) => setDoseValueInput(e.target.value)} />
+                <RxvSelect value={doseUnitInput} onChange={(e) => setDoseUnitInput(e.target.value)} options={DOSE_UNIT_OPTIONS} />
+              </div>
+            </RxvField>
+
+            {calcFailed ? (
+              <RxvField label="Quantidade por vez (Override Manual)">
+                <div className="space-y-2">
+                  <div className="text-[10px] text-red-500 font-bold">⚠️ Cálculo indisponível. Informe manualmente.</div>
+                  <RxvInput placeholder="Ex: 1/2 comp, 2 mL" value={manualQuantity} onChange={(e) => setManualQuantity(e.target.value)} />
+                </div>
+>>>>>>> Stashed changes
+              </RxvField>
+            ) : (
+              <RxvField label="Quantidade calculada">
+                <div className="h-10 flex items-center px-3 bg-[#39ff14]/10 border border-[#39ff14]/30 rounded-lg text-[#39ff14] font-bold">
+                  {formatPerDoseQuantity(calculatedQty?.perDose || 0, calculatedQty?.unit || '')}
+                </div>
+              </RxvField>
+            )}
+
+            <RxvField label="Via"><RxvSelect value={route} onChange={(e) => setRoute(e.target.value)} options={ROUTE_OPTIONS} /></RxvField>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <RxvField label="Frequência"><RxvSelect value={frequency} onChange={(e) => setFrequency(e.target.value)} options={FREQ_OPTIONS} /></RxvField>
+            <RxvField label="Duração">
+              <div className="flex flex-col gap-2">
+                {!isContinuous && <RxvInput value={duration} onChange={(e) => setDuration(e.target.value)} />}
+                <label className="flex items-center gap-2 text-xs text-[#39ff14] font-bold">
+                  <input type="checkbox" checked={isContinuous} onChange={(e) => setIsContinuous(e.target.checked)} /> Uso Contínuo
+                </label>
+              </div>
+            </RxvField>
+          </div>
+
+          <RxvField label="Instruções"><RxvTextarea value={instructions} onChange={(e) => setInstructions(e.target.value)} rows={3} /></RxvField>
+          <RxvField label="Cautelas"><RxvTextarea value={cautions} onChange={(e) => setCautions(e.target.value)} rows={2} /></RxvField>
         </div>
       </div>
     </div>

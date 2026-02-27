@@ -13,6 +13,7 @@ export const PROFILE_IMAGE_FIELDS: ProfileImageField[] = [
 
 const STORAGE_PUBLIC_PATH = /\/storage\/v1\/object\/(?:public|sign)\/([^/]+)\/(.+)$/
 const DEFAULT_RX_MEDIA_BUCKET = 'receituario-media'
+const UUID_V4_LIKE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 
 function randomId() {
   try {
@@ -38,6 +39,17 @@ function parseErrorMessage(error: unknown): string {
 function resolveBucketName(): string {
   const fromEnv = String(import.meta.env.VITE_SUPABASE_RX_MEDIA_BUCKET || '').trim()
   return fromEnv || DEFAULT_RX_MEDIA_BUCKET
+}
+
+function logStorageDevError(scope: string, error: unknown) {
+  if (!import.meta.env.DEV) return
+  const err = error as any
+  console.error(scope, {
+    code: err?.code ?? err?.statusCode ?? null,
+    message: err?.message ?? String(error || ''),
+    details: err?.details ?? null,
+    hint: err?.hint ?? null,
+  })
 }
 
 function validateSupabaseEnv() {
@@ -153,10 +165,21 @@ export async function uploadProfileImageDataUrl(params: {
   const bucket = resolveBucketName()
   const ownerKey = await resolveOwnerKey()
 
+<<<<<<< Updated upstream
   // E2/E4: Path deve começar com UUID (clinicId preferido, fallback userId)
   // A policy do bucket usa split_part(name,'/',1)::uuid
   // Se o 1º segmento não for UUID válido → Supabase retorna erro 22P02
   const firstSegment = sanitizePathSegment(params.clinicId || ownerKey)
+=======
+  // Path deve começar com UUID da clínica (obrigatório para a policy do bucket)
+  if (!params.clinicId) {
+    throw new Error('clinicId é obrigatório para upload no bucket receituario-media.');
+  }
+  if (!UUID_V4_LIKE.test(params.clinicId)) {
+    throw new Error('clinicId inválido para path de storage. Esperado UUID válido no primeiro segmento.');
+  }
+  const firstSegment = sanitizePathSegment(params.clinicId)
+>>>>>>> Stashed changes
   const profileKey = sanitizePathSegment(params.profileId || 'default')
   const blob = dataUrlToBlob(params.dataUrl)
   const ext = extensionFromMime(blob.type)
@@ -176,6 +199,7 @@ export async function uploadProfileImageDataUrl(params: {
   })
 
   if (error) {
+    logStorageDevError('[StorageUpload] upload error', error)
     throw normalizeUploadError(error, bucket)
   }
 
@@ -199,10 +223,32 @@ export async function removeProfileImageByUrl(fileUrl: string) {
   try {
     const { error } = await supabase.storage.from(ref.bucket).remove([ref.path])
     if (error) {
+      logStorageDevError('[StorageUpload] remove old image error', error)
       // Não bloqueia fluxo de salvar perfil por erro de limpeza.
       console.warn('Falha ao remover imagem antiga do Supabase Storage:', error.message)
     }
   } catch (error) {
+    logStorageDevError('[StorageUpload] remove old image exception', error)
     console.warn('Falha ao remover imagem antiga do Supabase Storage:', parseErrorMessage(error))
   }
 }
+<<<<<<< Updated upstream
+=======
+
+export async function getSignedUrl(fileUrl: string, expiresIn = 3600): Promise<string> {
+  const ref = parseStorageReferenceFromUrl(fileUrl)
+  if (!ref) {
+    // If not a storage URL (e.g., data URL), return as is
+    return fileUrl
+  }
+  const { data, error } = await supabase.storage
+    .from(ref.bucket)
+    .createSignedUrl(ref.path, expiresIn)
+  if (error) {
+    logStorageDevError('[StorageUpload] createSignedUrl error', error)
+    console.warn('Failed to create signed URL, falling back to public URL', error)
+    return fileUrl
+  }
+  return data.signedUrl
+}
+>>>>>>> Stashed changes

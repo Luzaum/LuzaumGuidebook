@@ -12,6 +12,7 @@ import { TutorInfo, PatientInfo } from './rxTypes'
 import { isUuid } from '@/src/lib/isUuid'
 import { normalizeNeutered } from './rxUtils'
 import { insertTutor, insertPatient, insertWeight, insertPatientWeight, loadPatientWeights } from '@/src/lib/clinicRecords'
+import { useLocalDraft } from '../../hooks/useLocalDraft'
 
 function normalizeLooseText(value: string): string {
   return String(value || '')
@@ -240,6 +241,12 @@ export default function ClientesPage() {
     }
   }, [rxDataSource, loadSupabaseTutors, clinicId])
 
+  useEffect(() => {
+    supabase.auth.getUser()
+      .then(({ data }) => setCurrentUserId(data?.user?.id || null))
+      .catch(() => setCurrentUserId(null))
+  }, [])
+
   // Load patients for a Supabase tutor
   const loadSupabasePatientsForTutor = useCallback(async (tutorId: string) => {
     if (rxDataSource !== 'supabase') return
@@ -309,8 +316,9 @@ export default function ClientesPage() {
   }, [rxAdapter, rxDataSource, clinicId])
 
   // ----- SHARED state -----
+  const [currentUserId, setCurrentUserId] = useState<string | null>(null)
   const [selectedId, setSelectedId] = useState<string>('')
-  const [draft, setDraft] = useState<ClientRecord>(() => {
+  const baseInitialDraft = useMemo<ClientRecord>(() => {
     const localDb = loadRxDb()
     if (localDb.clients[0]) return localDb.clients[0]
     const empty = createEmptyClient()
@@ -321,7 +329,17 @@ export default function ClientesPage() {
       id: nextClientId,
       animals: empty.animals.map((animal, idx) => ({ ...animal, id: idx === 0 ? nextAnimalId : animal.id })),
     }
-  })
+  }, [])
+  const [draft, setDraft, clearDraft, hasDraft] = useLocalDraft<ClientRecord>(
+    'clientes-pacientes',
+    clinicId || null,
+    currentUserId,
+    baseInitialDraft,
+    {
+      debounceMs: 800,
+      enabled: !selectedId,
+    }
+  )
   const [toast, setToast] = useState<string | null>(null)
   const [cepLookupLoading, setCepLookupLoading] = useState(false)
   const [cepLookupMessage, setCepLookupMessage] = useState<string | null>(null)
@@ -960,6 +978,7 @@ export default function ClientesPage() {
         // Refresh Supabase tutor list and patient cache
         await loadSupabaseTutors()
         await loadSupabasePatientsForTutor(tutorId)
+        clearDraft()
 
         const savedCount = animalsToSave.filter((a) => !isUuid(a.id)).length
         if (savedCount < animalsToSave.length && animalsToSave.some(a => !isUuid(a.id) && !newPatients.some(p => p.name === a.name))) {
@@ -992,6 +1011,7 @@ export default function ClientesPage() {
         setSelectedId(persistedClient.id)
         setDraft(JSON.parse(JSON.stringify(persistedClient)) as ClientRecord)
       }
+      clearDraft()
       syncToast('Tutor e pacientes salvos com sucesso.')
     }
   }
@@ -1034,6 +1054,19 @@ export default function ClientesPage() {
           <button type="button" className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-2 text-sm disabled:opacity-50" onClick={createNewClient} disabled={isDeleting}>
             <span className="material-symbols-outlined text-[18px]">add</span>
             Novo tutor
+          </button>
+          <button
+            type="button"
+            className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-2 text-sm disabled:opacity-50"
+            onClick={() => {
+              clearDraft()
+              createNewClient()
+              syncToast('Rascunho limpo.')
+            }}
+            disabled={!hasDraft || isDeleting}
+          >
+            <span className="material-symbols-outlined text-[18px]">ink_eraser</span>
+            Limpar rascunho
           </button>
           <button
             type="button"

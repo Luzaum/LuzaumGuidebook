@@ -195,7 +195,16 @@ export default function Catalogo3Page() {
     // Estados principais
     const [medications, setMedications] = useState<Medication[]>([])
     const [selectedId, setSelectedId] = useState<string | null>(null)
+<<<<<<< Updated upstream
     const [draft, setDraft] = useState<MedicationWithPresentations>(createEmptyMedication())
+=======
+    const [draft, setDraft, clearDraft, hasDraft] = useLocalDraft<MedicationWithPresentations>(
+        'catalogo3',
+        clinicId,
+        currentUser?.id || null,
+        createEmptyMedication()
+    )
+>>>>>>> Stashed changes
     const [loading, setLoading] = useState(true)
     const [isSaving, setIsSaving] = useState(false)
     const [searchTerm, setSearchTerm] = useState('')
@@ -668,6 +677,14 @@ export default function Catalogo3Page() {
                             <span className="material-symbols-outlined text-[20px]">{isSaving ? 'sync' : 'save'}</span>
                             {isSaving ? 'Gravando...' : 'Salvar Dados'}
                         </button>
+                        {hasDraft && (
+                            <button
+                                onClick={clearDraft}
+                                className="rounded-xl border border-amber-500/40 bg-amber-500/10 px-4 py-2 text-sm font-bold text-amber-300 hover:bg-amber-500/20"
+                            >
+                                Limpar rascunho
+                            </button>
+                        )}
                     </div>
                 }
             >

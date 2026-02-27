@@ -6,8 +6,8 @@ on:
     branches: [main, master]
 
 jobs:
-  validate-profiles:
-    name: Drug Profiles Quality Gate
+  quality-gate:
+    name: Build and Quality Gate
     runs-on: ubuntu-latest
 
     steps:
@@ -23,19 +23,22 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # ── Fase 1 + 2.5: presença de seções + richness ───────────────────────
-      - name: Validate Drug Profiles (PRs — normal mode)
+      - name: Build
+        run: npm run build
+
+      - name: Validate Supabase Payload Whitelists
+        run: npm run validate:dbpayloads
+
+      - name: Validate Drug Profiles (PRs - normal mode)
         if: github.event_name == 'pull_request'
         run: npm run validate:profiles
 
-      - name: Validate Drug Profiles (main — strict mode)
+      - name: Validate Drug Profiles (main - strict mode)
         if: github.event_name != 'pull_request'
         run: npm run validate:profiles:strict
 
-      # ── Fase 3: validar referências do catálogo ───────────────────────────
       - name: Validate References Catalog
         run: npm run validate:refs
 
-      # ── Fase 3: validar rulesets por classe clínica ───────────────────────
       - name: Validate Rulesets
         run: npm run validate:rulesets

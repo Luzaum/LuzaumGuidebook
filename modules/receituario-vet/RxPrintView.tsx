@@ -122,6 +122,13 @@ function highlightInstructionSegments(text: string): React.ReactNode[] {
   return nodes
 }
 
+function renderPlainRecommendation(line: string): string {
+  return String(line || '')
+    .replace(/\*\*(.*?)\*\*/g, '$1')
+    .replace(/^-\s*/, '')
+    .trim()
+}
+
 export function RxPrintView({
   doc,
   compact = false,
@@ -363,6 +370,16 @@ export function RxPrintView({
                         ) : null}
                       </div>
                       {item.subtitle ? <p className="mb-1" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 2, 9)}pt`, color: '#64748b' }}>{item.subtitle}</p> : null}
+<<<<<<< Updated upstream
+=======
+                      {item.start_date ? (
+                        <p className="mb-1 font-bold" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt`, color: '#374151' }}>
+                          {item.start_date.toLowerCase().startsWith('iniciar em ')
+                            ? item.start_date
+                            : `Iniciar em ${item.start_date}`}
+                        </p>
+                      ) : null}
+>>>>>>> Stashed changes
                       <p className="whitespace-pre-line leading-relaxed" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt` }}>
                         {highlightInstructionSegments(item.instruction)}
                       </p>
@@ -398,7 +415,7 @@ export function RxPrintView({
                 </h3>
                 {doc.recommendations.map((line, idx) => (
                   <p key={`rec-${idx}`} className="whitespace-pre-line" style={{ fontSize: `${Math.max(zoneFontPt('recommendations', cfg.fontSizePt) - 1, 10)}pt` }}>
-                    - {line}
+                    - {renderPlainRecommendation(line)}
                   </p>
                 ))}
                 {doc.exams.length > 0 ? (
@@ -445,20 +462,20 @@ export function RxPrintView({
               Farmácia de manipulação ({targetPharmacy === 'manipulacao' || targetPharmacy === 'mista' ? 'X' : ' '}) {'  '}
               Farmácia humana ({targetPharmacy === 'humana' || targetPharmacy === 'mista' ? 'X' : ' '})
             </p>
-            <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
-              <div className="rounded border border-slate-300 p-2">
-                <p className="mb-1 font-bold">Identificação do comprador</p>
-                <p>Nome: ________________________________</p>
-                <p>RG: _________________________________</p>
-                <p>Endereço: ___________________________</p>
-                <p>Cidade/UF: __________________________</p>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="rounded-lg border border-slate-300 p-3 space-y-2.5">
+                <p className="mb-2 font-bold uppercase tracking-wider text-slate-700 border-b border-slate-200 pb-1">Identificação do comprador</p>
+                <div className="flex items-end"><span className="shrink-0 mr-2 font-medium">Nome:</span><div className="flex-1 border-b border-slate-400"></div></div>
+                <div className="flex items-end"><span className="shrink-0 mr-2 font-medium">RG:</span><div className="flex-1 border-b border-slate-400"></div></div>
+                <div className="flex items-end"><span className="shrink-0 mr-2 font-medium">Endereço:</span><div className="flex-1 border-b border-slate-400"></div></div>
+                <div className="flex items-end"><span className="shrink-0 mr-2 font-medium">Cidade/UF:</span><div className="flex-1 border-b border-slate-400"></div></div>
               </div>
-              <div className="rounded border border-slate-300 p-2">
-                <p className="mb-1 font-bold">Identificação do fornecedor</p>
-                <p>Farmácia: ____________________________</p>
-                <p>Farmacêutico: ________________________</p>
-                <p>Assinatura: __________________________</p>
-                <p>Data: ____ / ____ / ______</p>
+              <div className="rounded-lg border border-slate-300 p-3 space-y-2.5">
+                <p className="mb-2 font-bold uppercase tracking-wider text-slate-700 border-b border-slate-200 pb-1">Identificação do fornecedor</p>
+                <div className="flex items-end"><span className="shrink-0 mr-2 font-medium">Farmácia:</span><div className="flex-1 border-b border-slate-400"></div></div>
+                <div className="flex items-end"><span className="shrink-0 mr-2 font-medium">Farmacêutico:</span><div className="flex-1 border-b border-slate-400"></div></div>
+                <div className="flex items-end"><span className="shrink-0 mr-2 font-medium">Assinatura:</span><div className="flex-1 border-b border-slate-400"></div></div>
+                <div className="flex items-end"><span className="shrink-0 mr-2 font-medium">Data:</span><div className="w-8 border-b border-slate-400 mx-1"></div>/<div className="w-8 border-b border-slate-400 mx-1"></div>/<div className="w-12 border-b border-slate-400 ml-1 flex-1"></div></div>
               </div>
             </div>
           </section>

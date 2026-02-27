@@ -216,7 +216,7 @@ function mapBundleToRxProtocol(bundle: ProtocolBundle, fallbackFolderId: string)
     const everyHours =
       m.interval_hours !== null && m.interval_hours !== undefined ? String(m.interval_hours) : ''
 
-    const instruction = String(m.instructions || '').trim()
+    const instruction = ''
 
     return {
       ...base,
@@ -239,12 +239,7 @@ function mapBundleToRxProtocol(bundle: ProtocolBundle, fallbackFolderId: string)
   })
 
   const recommendations = (bundle.recommendations || [])
-    .map((r) => String(r.recommendation_text || '').trim())
-    .filter(Boolean)
-
-  const exams = (bundle.exam_items || []).map((e) => String(e.exam_label || '').trim()).filter(Boolean)
-  const examReasons = (bundle.exam_items || [])
-    .map((e) => String(e.justification || '').trim())
+    .map((r) => String(r.text || '').trim())
     .filter(Boolean)
 
   return {
@@ -252,15 +247,15 @@ function mapBundleToRxProtocol(bundle: ProtocolBundle, fallbackFolderId: string)
     name: String(protocol.name || '').trim(),
     summary: String(protocol.description || ''),
     folderId: protocol.folder_id || fallbackFolderId,
-    requiresSpecialControl: false,
-    species: (String(protocol.target_species || '').trim() as RxProtocol['species']) || 'Geral',
-    active: protocol.is_active !== false,
-    tags: [],
-    durationLabel: '',
+    requiresSpecialControl: !!protocol.is_control_special,
+    species: (String(protocol.species || '').trim() as RxProtocol['species']) || 'Geral',
+    active: true,
+    tags: protocol.tags || [],
+    durationLabel: protocol.duration_summary || '',
     items,
     recommendations,
-    exams,
-    examReasons,
+    exams: [],
+    examReasons: [],
     createdAt: protocol.created_at || now,
     updatedAt: protocol.updated_at || protocol.created_at || now,
   }
@@ -284,7 +279,6 @@ function mapRxItemToProtocolMedication(item: RxProtocol['items'][number], idx: n
     times_per_day: toNumber(item.timesPerDay),
     interval_hours: toNumber(item.everyHours),
     duration_days: toNumber(item.durationDays),
-    instructions: String(item.instruction || '').trim() || null,
     sort_order: idx,
   }
 }
@@ -317,6 +311,12 @@ export default function ProtocolosPage() {
   const [manualConcentrationUnit, setManualConcentrationUnit] = useState(DEFAULT_CONCENTRATION_UNIT)
   const [simulationWeightKg, setSimulationWeightKg] = useState(10)
   const [simulationWeightInput, setSimulationWeightInput] = useState('10')
+  const [rxTheme, setRxTheme] = useState<'dark' | 'light'>(() => {
+    try {
+      return localStorage.getItem('receituario-vet:theme:v1') === 'light' ? 'light' : 'dark'
+    } catch { return 'dark' }
+  })
+  const isDark = rxTheme === 'dark'
   const [draft, setDraft] = useState<RxProtocol>(() => initialDb.protocols[0] ? cloneProtocol(initialDb.protocols[0]) : createEmptyProtocol(initialDb.protocolFolders[0]?.id))
 
   const folderMap = useMemo(() => {
@@ -391,11 +391,11 @@ export default function ProtocolosPage() {
         name: p.name,
         summary: p.description || '',
         folderId: p.folder_id || fallbackFolderId,
-        requiresSpecialControl: false,
-        species: (String(p.target_species || '').trim() as RxProtocol['species']) || 'Geral',
-        active: p.is_active !== false,
-        tags: [],
-        durationLabel: '',
+        requiresSpecialControl: !!p.is_control_special,
+        species: (String(p.species || '').trim() as RxProtocol['species']) || 'Geral',
+        active: true,
+        tags: p.tags || [],
+        durationLabel: p.duration_summary || '',
         items: [],
         recommendations: [],
         exams: [],
@@ -517,16 +517,8 @@ export default function ProtocolosPage() {
     try {
       const meds = draft.items.map((item, idx) => mapRxItemToProtocolMedication(item, idx))
       const recs = draft.recommendations
-        .map((line, idx) => ({ recommendation_text: String(line || '').trim(), sort_order: idx }))
-        .filter((r) => !!r.recommendation_text)
-      const exams = draft.exams
-        .map((label, idx) => ({
-          exam_key: normalizeExamKey(String(label || '').trim(), idx),
-          exam_label: String(label || '').trim(),
-          is_custom: true,
-          justification: null,
-        }))
-        .filter((e) => !!e.exam_label)
+        .map((line, idx) => ({ text: String(line || '').trim(), sort_order: idx }))
+        .filter((r) => !!r.text)
 
       const savedProtocol = await sbSaveProtocolBundle(targetClinicId, userId, {
         protocol: {
@@ -534,12 +526,13 @@ export default function ProtocolosPage() {
           folder_id: normalizedFolderId || null,
           name: draft.name,
           description: draft.summary || null,
-          target_species: draft.species || null,
-          is_active: draft.active !== false,
+          species: draft.species || null,
+          duration_summary: draft.durationLabel || null,
+          tags: draft.tags || [],
+          is_control_special: !!draft.requiresSpecialControl,
         },
         medications: meds,
         recommendations: recs,
-        exam_items: exams,
       })
 
       pushSaved()
@@ -551,11 +544,11 @@ export default function ProtocolosPage() {
         name: p.name,
         summary: p.description || '',
         folderId: p.folder_id || fallbackFolderId,
-        requiresSpecialControl: false,
-        species: (String(p.target_species || '').trim() as RxProtocol['species']) || 'Geral',
-        active: p.is_active !== false,
-        tags: [],
-        durationLabel: '',
+        requiresSpecialControl: !!p.is_control_special,
+        species: (String(p.species || '').trim() as RxProtocol['species']) || 'Geral',
+        active: true,
+        tags: p.tags || [],
+        durationLabel: p.duration_summary || '',
         items: [],
         recommendations: [],
         exams: [],
@@ -637,11 +630,11 @@ export default function ProtocolosPage() {
         name: p.name,
         summary: p.description || '',
         folderId: p.folder_id || fallbackFolderId,
-        requiresSpecialControl: false,
-        species: (String(p.target_species || '').trim() as RxProtocol['species']) || 'Geral',
-        active: p.is_active !== false,
-        tags: [],
-        durationLabel: '',
+        requiresSpecialControl: !!p.is_control_special,
+        species: (String(p.species || '').trim() as RxProtocol['species']) || 'Geral',
+        active: true,
+        tags: p.tags || [],
+        durationLabel: p.duration_summary || '',
         items: [],
         recommendations: [],
         exams: [],
@@ -813,6 +806,8 @@ export default function ProtocolosPage() {
       section="protocolos"
       title="Protocolos e Modelos"
       subtitle="Gerencie modelos prontos, vinculados ao catálogo de fármacos, e importe direto na receita."
+      forcedTheme={rxTheme}
+      onThemeChange={setRxTheme}
       actions={
         <>
           <Link className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-2 text-sm" to="/receituario-vet/nova-receita">
@@ -1065,7 +1060,7 @@ export default function ProtocolosPage() {
                   />
                   <button
                     type="button"
-                    className="rounded border border-red-800/70 px-2 text-xs text-red-300 hover:bg-red-950/40"
+                    className={`rounded border px-2 text-xs transition-colors ${isDark ? 'border-red-800/70 text-red-300 hover:bg-red-950/40' : 'border-red-200 text-red-600 hover:bg-red-50'}`}
                     onClick={() => setDraft((prev) => ({ ...prev, examReasons: prev.examReasons.filter((_, i) => i !== idx) }))}
                   >
                     Remover
@@ -1123,10 +1118,10 @@ export default function ProtocolosPage() {
                     <p className="text-sm text-slate-300">Adicione medicamentos para exibir a memória de cálculo.</p>
                   ) : (
                     draft.items.map((item, index) => (
-                      <article key={`memory-${item.id}`} className="rounded-xl border border-[#376b2e] bg-[#12230f] p-4">
-                        <h4 className="text-sm font-bold text-white">{index + 1}. {item.name || 'Item sem nome'}</h4>
-                        <p className="text-xs text-[#97ce8d]">{item.presentation || 'Sem apresentação'} · {item.concentration || 'Sem concentração'}</p>
-                        <ul className="mt-2 space-y-1 text-sm text-slate-200">
+                      <article key={`memory-${item.id}`} className={`rounded-xl border p-4 transition-colors ${isDark ? 'border-[#376b2e] bg-[#12230f]' : 'border-emerald-200 bg-emerald-50/50'}`}>
+                        <h4 className={`text-sm font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>{index + 1}. {item.name || 'Item sem nome'}</h4>
+                        <p className={`text-xs ${isDark ? 'text-[#97ce8d]' : 'text-emerald-700'}`}>{item.presentation || 'Sem apresentação'} · {item.concentration || 'Sem concentração'}</p>
+                        <ul className={`mt-2 space-y-1 text-sm ${isDark ? 'text-slate-200' : 'text-slate-600'}`}>
                           {buildCalculationMemory(item, simulationState).map((step, idx) => (
                             <li key={`${item.id}-step-${idx}`}>• {step}</li>
                           ))}
@@ -1197,7 +1192,7 @@ export default function ProtocolosPage() {
 
       {addItemModalOpen ? (
         <div
-          className="fixed inset-0 z-[95] flex items-center justify-center overflow-y-auto bg-black/60 px-4 py-8"
+          className={`fixed inset-0 z-[95] flex items-center justify-center overflow-y-auto px-4 py-8 ${isDark ? 'bg-black/60' : 'bg-slate-500/30'}`}
           onClick={() => setAddItemModalOpen(false)}
         >
           <div
@@ -1444,7 +1439,7 @@ export default function ProtocolosPage() {
 
       {folderModalOpen ? (
         <div
-          className="fixed inset-0 z-[1000] flex items-center justify-center overflow-y-auto bg-black/60 px-4 py-8"
+          className={`fixed inset-0 z-[1000] flex items-center justify-center overflow-y-auto px-4 py-8 ${isDark ? 'bg-black/60' : 'bg-slate-500/30'}`}
           onClick={() => setFolderModalOpen(false)}
         >
           <div
@@ -1452,8 +1447,8 @@ export default function ProtocolosPage() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="mb-4 flex items-center justify-between">
-              <h3 className="text-lg font-bold text-white">Gerenciar Pastas</h3>
-              <button type="button" className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-xs" onClick={() => setFolderModalOpen(false)}>Fechar</button>
+              <h3 className={`text-lg font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>Gerenciar Pastas</h3>
+              <button type="button" className={`rounded border px-2 py-1 text-xs ${isDark ? 'border-slate-700 text-slate-400' : 'border-slate-200 text-slate-600'}`} onClick={() => setFolderModalOpen(false)}>Fechar</button>
             </div>
             <div className="mb-4 space-y-2">
               {folders.map((folder) => (
@@ -1461,7 +1456,7 @@ export default function ProtocolosPage() {
                   <span className="flex items-center gap-2 text-sm"><span className="material-symbols-outlined text-[15px]" style={{ color: folder.color }}>{folder.icon}</span>{folder.name}</span>
                   <button
                     type="button"
-                    className="rounded border border-red-800/70 px-2 py-1 text-xs text-red-300"
+                    className={`rounded border px-2 py-1 text-xs transition-colors ${isDark ? 'border-red-800/70 text-red-300 hover:bg-red-950/40' : 'border-red-200 text-red-600 hover:bg-red-50'}`}
                     onClick={() => dropFolder(folder.id)}
                     disabled={supabaseMode || folders.length <= 1}
                     title={supabaseMode ? 'Exclusão de pasta indisponível no modo Supabase.' : ''}

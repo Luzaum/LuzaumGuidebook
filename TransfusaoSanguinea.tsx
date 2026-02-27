@@ -472,13 +472,15 @@ const TransfusaoSanguinea = ({ onBack }: { onBack: () => void }) => {
                 &larr; Voltar para a Lista
             </button>
             <header className="text-center mb-8">
-                <img
-                    src="https://res.cloudinary.com/dwta1roq1/image/upload/w_200,q_auto,f_auto/logo/transfusão-sanguinea"
-                    alt="Logo do aplicativo de banco de sangue veterinário, mostrando um cão e um gato dentro de uma gota de sangue com um eletrocardiograma"
-                    className="mx-auto mb-4"
-                />
-                <h1 className="text-4xl md:text-5xl font-bold text-foreground">HemoVet Companion</h1>
-                <p className="text-muted-foreground mt-2 text-lg">O seu guia clínico completo para a medicina transfusional.</p>
+                <h1 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
+                    Transfusão segura, é aquela{' '}
+                    <span className="text-red-500">revisada!</span>
+                </h1>
+                <p className="text-muted-foreground mt-3 text-base max-w-xl mx-auto">
+                    Erros em hemoterapia veterinária podem ser fatais. Incompatibilidade de tipo sanguíneo,
+                    volume incorreto ou taxa de infusão inadequada colocam o paciente em risco real.
+                    Revise cada etapa — sempre.
+                </p>
             </header>
 
             <div className="mb-6 border-b border-border sticky top-0 bg-background z-10">

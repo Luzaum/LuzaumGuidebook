@@ -142,16 +142,7 @@ export const modules: Module[] = [
     status: 'internal',
     icon: Activity,
   },
-  {
-    id: 'rifa-luis',
-    title: 'Rifa do Residente Luis',
-    description: 'Gestor de Rifa Profissional - Controle Financeiro',
-    route: '/rifa',
-    status: 'iframe',
-    icon: Ticket,
-    iframeUrl: '/apps/rifa/index.html',
-    iconImage: '/apps/CESTAS.png',
-  },
+
 ]
 
 export function getModuleById(id: string): Module | undefined {

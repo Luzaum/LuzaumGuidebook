@@ -90,6 +90,8 @@ interface ReceituarioChromeProps {
   subtitle?: string
   actions?: React.ReactNode
   children: React.ReactNode
+  forcedTheme?: RxTheme
+  onThemeChange?: (theme: RxTheme) => void
 }
 
 function SidebarContent({
@@ -166,7 +168,15 @@ function SidebarContent({
   )
 }
 
-export default function ReceituarioChrome({ section, title, subtitle, actions, children }: ReceituarioChromeProps) {
+export default function ReceituarioChrome({
+  section,
+  title,
+  subtitle,
+  actions,
+  children,
+  forcedTheme,
+  onThemeChange,
+}: ReceituarioChromeProps) {
   const navigate = useNavigate()
   const location = useLocation()
   const [theme, setTheme] = useState<RxTheme>(() => readTheme())
@@ -177,7 +187,14 @@ export default function ReceituarioChrome({ section, title, subtitle, actions, c
 
   useEffect(() => {
     saveTheme(theme)
-  }, [theme])
+    if (onThemeChange) onThemeChange(theme)
+  }, [theme, onThemeChange])
+
+  useEffect(() => {
+    if (forcedTheme && forcedTheme !== theme) {
+      setTheme(forcedTheme)
+    }
+  }, [forcedTheme])
 
   useEffect(() => {
     setMobileMenuOpen(false)

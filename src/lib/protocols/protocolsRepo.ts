@@ -87,6 +87,90 @@ export type ProtocolBundle = {
   recommendations: ProtocolRecommendation[]
 }
 
+type DefaultProtocolSeed = {
+  folderName: string
+  iconKey: string
+  color: string
+  protocolName: string
+  description: string
+  recommendations: string[]
+}
+
+const DEFAULT_SPECIALTY_PROTOCOLS: DefaultProtocolSeed[] = [
+  {
+    folderName: 'Gastro',
+    iconKey: 'gastroenterology',
+    color: '#f97316',
+    protocolName: 'Protocolo Exemplo - Gastro',
+    description: 'Esqueleto para gastroenterologia. Selecione os fármacos no Catálogo 3.0.',
+    recommendations: ['Dieta gastrointestinal fracionada por 5-7 dias.', 'Solicitar hemograma, bioquímica e ultrassonografia abdominal conforme evolução.'],
+  },
+  {
+    folderName: 'Nefro/Uro',
+    iconKey: 'water_drop',
+    color: '#0ea5e9',
+    protocolName: 'Protocolo Exemplo - Nefro/Uro',
+    description: 'Esqueleto para nefrologia/urologia. Ajustar condutas ao caso clínico.',
+    recommendations: ['Garantir hidratação e monitorar débito urinário.', 'Solicitar ureia, creatinina, SDMA, urinálise e relação proteína/creatinina urinária.'],
+  },
+  {
+    folderName: 'Pneumo',
+    iconKey: 'air',
+    color: '#06b6d4',
+    protocolName: 'Protocolo Exemplo - Pneumo',
+    description: 'Esqueleto para pneumologia com recomendações iniciais.',
+    recommendations: ['Manter ambiente arejado e reduzir estresse respiratório.', 'Solicitar radiografia torácica e hemograma; considerar gasometria em casos graves.'],
+  },
+  {
+    folderName: 'Cardio',
+    iconKey: 'cardiology',
+    color: '#ef4444',
+    protocolName: 'Protocolo Exemplo - Cardio',
+    description: 'Esqueleto para cardiologia com exames de triagem.',
+    recommendations: ['Restringir exercício até estabilização clínica.', 'Solicitar ecocardiograma, ECG, pressão arterial e radiografia torácica.'],
+  },
+  {
+    folderName: 'Ortopedia',
+    iconKey: 'orthopedics',
+    color: '#f59e0b',
+    protocolName: 'Protocolo Exemplo - Ortopedia',
+    description: 'Esqueleto para ortopedia com orientações iniciais.',
+    recommendations: ['Repouso controlado e analgesia conforme avaliação.', 'Solicitar radiografias ortogonais e exames pré-operatórios quando indicado.'],
+  },
+  {
+    folderName: 'Neuro',
+    iconKey: 'neurology',
+    color: '#8b5cf6',
+    protocolName: 'Protocolo Exemplo - Neuro',
+    description: 'Esqueleto para neurologia. Completar medicações no catálogo.',
+    recommendations: ['Monitorar nível de consciência e sinais neurológicos seriados.', 'Solicitar imagem avançada (TC/RM) e líquor quando pertinente.'],
+  },
+  {
+    folderName: 'Onco',
+    iconKey: 'biotech',
+    color: '#ec4899',
+    protocolName: 'Protocolo Exemplo - Onco',
+    description: 'Esqueleto para oncologia com foco em estadiamento.',
+    recommendations: ['Planejar estadiamento completo antes do protocolo definitivo.', 'Solicitar hemograma, bioquímica, imagem de tórax/abdômen e citologia/biópsia.'],
+  },
+  {
+    folderName: 'Nutrição',
+    iconKey: 'nutrition',
+    color: '#22c55e',
+    protocolName: 'Protocolo Exemplo - Nutrição',
+    description: 'Esqueleto para nutrição clínica e suporte dietético.',
+    recommendations: ['Definir meta calórica diária e plano alimentar individual.', 'Reavaliar escore corporal e exames metabólicos em retorno programado.'],
+  },
+  {
+    folderName: 'Cirurgia',
+    iconKey: 'surgical',
+    color: '#64748b',
+    protocolName: 'Protocolo Exemplo - Cirurgia',
+    description: 'Esqueleto perioperatório com exames e recomendações.',
+    recommendations: ['Jejum e protocolo anestésico conforme espécie e risco ASA.', 'Solicitar hemograma, bioquímica, coagulograma e imagem pré-operatória quando necessário.'],
+  },
+]
+
 // ============================================================
 // WHITELIST BUILDERS
 // ============================================================
@@ -476,4 +560,80 @@ export async function deleteProtocol(clinicId: string, userId: string, protocolI
 
   logSbError('[ProtocolsRepo] deleteProtocol error', error)
   if (error) throw error
+}
+
+function normalizeName(value: string): string {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .trim()
+    .toLowerCase()
+}
+
+export async function ensureDefaultSpecialtyProtocolSeed(clinicId: string, userId: string): Promise<void> {
+  const existingFolders = await listFolders(clinicId, userId)
+  const folderByName = new Map(existingFolders.map((f) => [normalizeName(f.name), f]))
+
+  for (let i = 0; i < DEFAULT_SPECIALTY_PROTOCOLS.length; i += 1) {
+    const seed = DEFAULT_SPECIALTY_PROTOCOLS[i]
+    const key = normalizeName(seed.folderName)
+    if (folderByName.has(key)) continue
+
+    const { data: created, error } = await supabase
+      .from('protocol_folders')
+      .upsert(
+        {
+          clinic_id: clinicId,
+          owner_user_id: userId,
+          name: seed.folderName,
+          icon_key: seed.iconKey,
+          color: seed.color,
+          sort_order: i,
+        },
+        { onConflict: 'clinic_id,owner_user_id,name' } // Hypothetical robust key
+      )
+      .select('*')
+      .single()
+
+    if (!error && created) {
+      folderByName.set(key, created as ProtocolFolderRecord)
+    } else {
+      // Fallback if upsert constraint doesn't exist – manual check already done
+      const fallback = await createFolder(clinicId, userId, {
+        name: seed.folderName,
+        icon_key: seed.iconKey,
+        color: seed.color,
+        sort_order: i,
+      })
+      folderByName.set(key, fallback)
+    }
+  }
+
+  const allProtocols = await listProtocols(clinicId, userId)
+  const protocolKeySet = new Set(
+    allProtocols.map((p) => `${p.folder_id || 'root'}::${normalizeName(p.name)}`)
+  )
+
+  for (const seed of DEFAULT_SPECIALTY_PROTOCOLS) {
+    const folder = folderByName.get(normalizeName(seed.folderName))
+    if (!folder) continue
+    const key = `${folder.id}::${normalizeName(seed.protocolName)}`
+    if (protocolKeySet.has(key)) continue
+
+    // Use saveProtocolBundle which already handles logic, but we ensure idempotency via name check above
+    await saveProtocolBundle(clinicId, userId, {
+      protocol: {
+        folder_id: folder.id,
+        name: seed.protocolName,
+        description: seed.description,
+        species: null,
+        duration_summary: null,
+        tags: ['exemplo', 'editável'],
+        is_control_special: false,
+        exams_justification: null,
+      },
+      medications: [],
+      recommendations: seed.recommendations.map((text, idx) => ({ text, sort_order: idx })),
+    })
+  }
 }

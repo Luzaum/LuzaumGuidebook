@@ -1158,6 +1158,12 @@ export function upsertPrescriberProfile(db: RxDatabase, profile: PrescriberProfi
   }
 }
 
+export function removePrescriberProfile(db: RxDatabase, profileId: string): RxDatabase {
+  const prescriberProfiles = db.prescriberProfiles.filter(p => p.id !== profileId)
+  if (prescriberProfiles.length === 0) return db // do not allow removing the last profile
+  return { ...db, prescriberProfiles }
+}
+
 export function isSpecialControlTemplate(template: Partial<RxTemplateStyle> | undefined): boolean {
   if (!template) return false
   if (template.documentKindTarget === 'special-control') return true

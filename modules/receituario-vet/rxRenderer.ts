@@ -38,7 +38,7 @@ const FREQUENCY_TOKEN_TO_TIMES: Record<'SID' | 'BID' | 'TID' | 'QID', number> = 
   QID: 4,
 }
 
-const DISCRETE_UNITS = new Set(['comprimido', 'capsula', 'gota', 'ampola', 'frasco', 'bisnaga', 'unidade', 'sachê', 'sache'])
+const DISCRETE_UNITS = new Set(['comprimido', 'capsula', 'gota', 'gotas', 'ampola', 'frasco', 'bisnaga', 'sachê', 'sachet'])
 
 function normalizeText(value: string): string {
   return (value || '')
@@ -58,23 +58,25 @@ const UNIT_ALIASES: Record<string, string> = {
   l: 'l',
   ui: 'ui',
   u: 'ui',
-  unidade: 'unidade',
-  unidades: 'unidade',
-  un: 'unidade',
   comprimido: 'comprimido',
   comprimidos: 'comprimido',
+  comp: 'comprimido',
+  comps: 'comprimido',
+  cp: 'comprimido',
   capsula: 'capsula',
   capsulas: 'capsula',
-  gota: 'gota',
-  gotas: 'gota',
+  cap: 'capsula',
+  caps: 'capsula',
+  gota: 'gotas',
+  gotas: 'gotas',
   ampola: 'ampola',
   ampolas: 'ampola',
   frasco: 'frasco',
   frascos: 'frasco',
   bisnaga: 'bisnaga',
   bisnagas: 'bisnaga',
-  sache: 'sache',
-  saches: 'sache',
+  sache: 'sachet',
+  sachet: 'sachet',
 }
 
 function normalizeUnit(unit: string): string {
@@ -94,9 +96,6 @@ function toNumber(raw: unknown): number | null {
     const n = Number(normalized)
     return Number.isNaN(n) ? null : n
   }
-  if (import.meta.env.DEV) {
-    console.warn('[rxRenderer] toNumber unexpected type', typeof raw, raw)
-  }
   const fallback = Number(String(raw))
   return Number.isNaN(fallback) ? null : fallback
 }
@@ -108,17 +107,53 @@ function formatNumber(n: number, maxFraction = 2): string {
   }).format(n)
 }
 
+function roundToQuarter(value: number): number {
+  return Math.round(value * 4) / 4
+}
+
+function formatQuarterFraction(value: number): string {
+  const rounded = roundToQuarter(value)
+  const whole = Math.floor(rounded)
+  const frac = rounded - whole
+
+  let fraction = ''
+  if (Math.abs(frac - 0.25) < 0.001) fraction = '1/4'
+  else if (Math.abs(frac - 0.5) < 0.001) fraction = '1/2'
+  else if (Math.abs(frac - 0.75) < 0.001) fraction = '3/4'
+
+  if (fraction && whole > 0) return `${whole} ${fraction}`
+  if (fraction) return fraction
+  return String(whole)
+}
+
+export function formatPerDoseQuantity(perDose: number, unitRaw: string): string {
+  const unit = normalizeUnit(unitRaw)
+  if (unit === 'comprimido' || unit === 'capsula') {
+    const rounded = roundToQuarter(perDose)
+    const decimal = formatNumber(rounded, 2)
+    const frac = formatQuarterFraction(rounded)
+    const label = unit === 'comprimido' ? 'comprimido' : 'cápsula'
+    return `${decimal} (${frac}) ${label}`
+  }
+  if (unit === 'ml' || unit === 'l') {
+    return `${formatNumber(perDose, 2)} ${unit === 'ml' ? 'mL' : 'L'}`
+  }
+  if (unit === 'gotas') {
+    return `${formatNumber(perDose, 0)} gota${perDose > 1 ? 's' : ''}`
+  }
+  return `${formatNumber(perDose, 2)} ${unitRaw || ''}`.trim()
+}
+
 function inferPresentationUnit(presentation: string): string {
   const text = normalizeText(presentation)
   if (text.includes('comprim')) return 'comprimido'
   if (text.includes('capsul')) return 'capsula'
-  if (text.includes('gota')) return 'gota'
-  if (text.includes('ampola')) return 'ampola'
-  if (text.includes('frasco')) return 'frasco'
-  if (text.includes('bisnaga')) return 'bisnaga'
-  if (text.includes('sache')) return 'sache'
+  if (text.includes('gota')) return 'gotas'
   if (text.includes('ml')) return 'ml'
-  return 'unidade'
+  if (text.includes('suspens')) return 'ml'
+  if (text.includes('soluc')) return 'ml'
+  if (text.includes('xarope')) return 'ml'
+  return 'ml' // Safety fallback, never "unidade"
 }
 
 function isDiscreteUnit(unit: string): boolean {
@@ -135,9 +170,7 @@ function getDoseBaseUnit(unit: string) {
 }
 
 function routeToText(route: RouteGroup | undefined): string {
-  // ✅ OBJ 3: Corrigir bug "via undefined"
-  if (!route) return 'oral' // fallback padrão
-
+  if (!route) return 'oral'
   const map: Record<RouteGroup, string> = {
     ORAL: 'oral',
     OTOLOGICO: 'otológica',
@@ -152,7 +185,7 @@ function routeToText(route: RouteGroup | undefined): string {
     TRANSDERMICO: 'transdérmica',
     OUTROS: 'definida pelo prescritor',
   }
-  return map[route] || 'oral' // ✅ fallback adicional
+  return map[route] || 'oral'
 }
 
 interface ParsedConcentration {
@@ -165,7 +198,7 @@ interface ParsedConcentration {
 function parseConcentration(concentration: string, presentation: string): ParsedConcentration | null {
   const text = (concentration || '').trim()
   if (!text) return null
-  const withDivider = text.match(/(\d+(?:[.,]\d+)?)\s*([a-zA-Z%µ]+)\s*\/\s*(\d+(?:[.,]\d+)?)?\s*([a-zA-Z%µ]+)/)
+  const withDivider = text.match(/(\d+(?:[.,]\d+)?)\s*([a-zA-ZÀ-ÿ%µ]+)\s*\/\s*(\d+(?:[.,]\d+)?)?\s*([a-zA-ZÀ-ÿ%µ]+)/)
   if (withDivider) {
     const amount = toNumber(withDivider[1]) || 0
     const amountUnit = withDivider[2]
@@ -175,7 +208,7 @@ function parseConcentration(concentration: string, presentation: string): Parsed
     return { amount, amountUnit, perValue, perUnit }
   }
 
-  const simple = text.match(/(\d+(?:[.,]\d+)?)\s*([a-zA-Z%µ]+)/)
+  const simple = text.match(/(\d+(?:[.,]\d+)?)\s*([a-zA-ZÀ-ÿ%µ]+)/)
   if (!simple) return null
   const amount = toNumber(simple[1]) || 0
   const amountUnit = simple[2]
@@ -230,6 +263,36 @@ export function resolveFrequency(item: PrescriptionItem): {
   }
 }
 
+<<<<<<< Updated upstream
+=======
+function normalizeFrequencyForPrint(item: PrescriptionItem): { hours: number | null, label: string } {
+  if (item.frequencyToken) {
+    const times = FREQUENCY_TOKEN_TO_TIMES[item.frequencyToken];
+    const hours = 24 / times;
+    return { hours, label: `a cada ${formatNumber(hours, 0)} horas` };
+  }
+
+  if (item.frequencyType === 'everyHours') {
+    const hours = toNumber(item.everyHours);
+    if (hours && hours > 0) {
+      return { hours, label: `a cada ${formatNumber(hours, 0)} horas` };
+    }
+    return { hours: null, label: 'frequência não informada' };
+  }
+
+  const numericTimes = item.frequencyToken ? FREQUENCY_TOKEN_TO_TIMES[item.frequencyToken] : toNumber(item.timesPerDay);
+  if (!numericTimes || numericTimes <= 0) {
+    return { hours: null, label: 'frequência não informada' };
+  }
+
+  const hours = 24 / numericTimes;
+  const commonMap: Record<number, number> = { 1: 24, 2: 12, 3: 8, 4: 6, 6: 4, 8: 3, 12: 2, 24: 1 };
+  const mappedHours = commonMap[numericTimes] || hours;
+  const formattedHours = Math.abs(Math.round(mappedHours) - mappedHours) < 0.001 ? formatNumber(mappedHours, 0) : formatNumber(mappedHours, 1);
+  return { hours: mappedHours, label: `a cada ${formattedHours} horas` };
+}
+
+>>>>>>> Stashed changes
 function frequencyLabelForTutor(item: PrescriptionItem, fallback: string): string {
   if (item.frequencyType === 'everyHours') {
     const hours = toNumber(item.everyHours)
@@ -268,20 +331,8 @@ export function calculateMedicationQuantity(item: PrescriptionItem, state: Presc
   const doseValue = toNumber(item.doseValue)
   if (!doseValue || doseValue <= 0) {
     return {
-      perDose: null,
-      total: null,
-      unit: '',
-      label: 'Quantidade não calculada',
-      memory: {
-        steps: ['Dose não informada.'],
-        baseDose: null,
-        baseDoseUnit: '',
-        perDoseOutput: null,
-        perDoseOutputUnit: '',
-        frequencyPerDay: null,
-        durationDays: null,
-        totalOutput: null,
-      },
+      perDose: null, total: null, unit: '', label: 'Quantidade não calculada',
+      memory: { steps: ['Dose não informada.'], baseDose: null, baseDoseUnit: '', perDoseOutput: null, perDoseOutputUnit: '', frequencyPerDay: null, durationDays: null, totalOutput: null },
     }
   }
 
@@ -295,26 +346,14 @@ export function calculateMedicationQuantity(item: PrescriptionItem, state: Presc
   if (dosePerKg) {
     if (!weightKg || weightKg <= 0) {
       return {
-        perDose: null,
-        total: null,
-        unit: '',
-        label: 'Peso não informado para cálculo',
-        memory: {
-          steps: ['Dose por kg exige peso válido do paciente.'],
-          baseDose: null,
-          baseDoseUnit: baseUnitRaw,
-          perDoseOutput: null,
-          perDoseOutputUnit: '',
-          frequencyPerDay: null,
-          durationDays: null,
-          totalOutput: null,
-        },
+        perDose: null, total: null, unit: '', label: 'Peso não informado para cálculo',
+        memory: { steps: ['Dose por kg exige peso válido do paciente.'], baseDose: null, baseDoseUnit: baseUnitRaw, perDoseOutput: null, perDoseOutputUnit: '', frequencyPerDay: null, durationDays: null, totalOutput: null },
       }
     }
     baseDosePerAdministration = doseValue * weightKg
     steps.push(`${formatNumber(doseValue)} ${doseUnitRaw} × ${formatNumber(weightKg)} kg = ${formatNumber(baseDosePerAdministration)} ${baseUnitRaw}`)
   } else {
-    steps.push(`Dose por administração: ${formatNumber(baseDosePerAdministration)} ${doseUnitRaw || 'unidade'}`)
+    steps.push(`Dose por administração: ${formatNumber(baseDosePerAdministration)} ${doseUnitRaw || 'mg'}`)
   }
 
   const concentration = parseConcentration(item.concentration, item.presentation)
@@ -327,16 +366,21 @@ export function calculateMedicationQuantity(item: PrescriptionItem, state: Presc
       const ratio = concentration.amount / concentration.perValue
       perDoseOutput = baseDosePerAdministration / ratio
       perDoseOutputUnit = concentration.perUnit || inferPresentationUnit(item.presentation)
-      steps.push(
-        `${formatNumber(baseDosePerAdministration)} ${baseUnitRaw} ÷ ${formatNumber(concentration.amount)}/${formatNumber(concentration.perValue)} ${concentration.perUnit} = ${formatNumber(perDoseOutput)} ${perDoseOutputUnit}`
-      )
+      steps.push(`${formatNumber(baseDosePerAdministration)} ${baseUnitRaw} ÷ ${formatNumber(concentration.amount)}/${formatNumber(concentration.perValue)} ${concentration.perUnit} = ${formatNumber(perDoseOutput)} ${perDoseOutputUnit}`)
     } else {
-      steps.push(
-        `Concentração "${item.concentration}" não compatível com unidade da dose (${baseUnitRaw || '-'}) para conversão automática.`
-      )
+      steps.push(`Concentração "${item.concentration}" não compatível com unidade da dose (${baseUnitRaw || '-'}) para conversão automática.`)
     }
   } else if ((item.concentration || '').trim()) {
     steps.push('Concentração informada sem formato reconhecido para conversão automática.')
+  }
+
+  const normUnit = normalizeUnit(perDoseOutputUnit)
+  if (normUnit === 'comprimido' || normUnit === 'capsula') {
+    const rounded = roundToQuarter(perDoseOutput)
+    if (Math.abs(rounded - perDoseOutput) > 0.0001) {
+      steps.push(`Arredondamento de sólido em 1/4: ${formatNumber(perDoseOutput)} -> ${formatNumber(rounded, 2)}`)
+    }
+    perDoseOutput = rounded
   }
 
   const frequency = resolveFrequency(item).normalizedTimesPerDay
@@ -346,34 +390,16 @@ export function calculateMedicationQuantity(item: PrescriptionItem, state: Presc
   if (!item.untilFinished && !item.continuousUse && frequency && durationDays && durationDays > 0) {
     total = perDoseOutput * frequency * durationDays
     steps.push(`${formatNumber(perDoseOutput)} × ${formatNumber(frequency)} vezes/dia × ${formatNumber(durationDays, 0)} dias = ${formatNumber(total)} ${perDoseOutputUnit}`)
-  } else if (item.continuousUse) {
-    steps.push('Uso contínuo: total estimado não calculado.')
-  } else if (item.untilFinished) {
-    steps.push('Até acabar: total estimado não calculado.')
-  } else {
-    steps.push('Frequência e/ou duração inválidas para cálculo de total.')
   }
 
   const roundedTotal = total === null ? null : isDiscreteUnit(perDoseOutputUnit) ? Math.ceil(total) : total
   const label = roundedTotal !== null
     ? `Total estimado: ${formatNumber(roundedTotal)} ${perDoseOutputUnit}`
-    : `Por dose: ${formatNumber(perDoseOutput)} ${perDoseOutputUnit}`
+    : `Por vez: ${formatPerDoseQuantity(perDoseOutput, perDoseOutputUnit)}`
 
   return {
-    perDose: perDoseOutput,
-    total: roundedTotal,
-    unit: perDoseOutputUnit,
-    label,
-    memory: {
-      steps,
-      baseDose: baseDosePerAdministration,
-      baseDoseUnit: baseUnitRaw,
-      perDoseOutput,
-      perDoseOutputUnit,
-      frequencyPerDay: frequency,
-      durationDays: durationDays && durationDays > 0 ? durationDays : null,
-      totalOutput: roundedTotal,
-    },
+    perDose: perDoseOutput, total: roundedTotal, unit: perDoseOutputUnit, label,
+    memory: { steps, baseDose: baseDosePerAdministration, baseDoseUnit: baseUnitRaw, perDoseOutput, perDoseOutputUnit, frequencyPerDay: frequency, durationDays: durationDays && durationDays > 0 ? durationDays : null, totalOutput: roundedTotal },
   }
 }
 
@@ -385,42 +411,37 @@ export function buildCalculationMemory(item: PrescriptionItem, state: Prescripti
 export function buildAutoInstruction(item: PrescriptionItem, state: PrescriptionState): string {
   const freq = resolveFrequency(item)
   const qty = calculateMedicationQuantity(item, state)
-  const doseValue = toNumber(item.doseValue)
-  const doseUnit = (item.doseUnit || '').trim()
-  const weightKg = toNumber(state.patient.weightKg)
-  const baseDoseUnit = doseUnit.includes('/kg') ? getDoseBaseUnit(doseUnit) : doseUnit
 
   let perDoseValueText = ''
-  if (qty.perDose !== null && qty.unit) {
-    perDoseValueText = `${formatNumber(qty.perDose)} ${qty.unit}`
-  } else if (doseValue && doseUnit) {
-    if (isDosePerKg(doseUnit) && weightKg) perDoseValueText = `${formatNumber(doseValue * weightKg)} ${baseDoseUnit}`
-    else perDoseValueText = `${formatNumber(doseValue)} ${doseUnit}`
+  if (item.manualQuantity) {
+    perDoseValueText = item.manualQuantity
+  } else if (qty.perDose !== null && qty.unit) {
+    perDoseValueText = formatPerDoseQuantity(qty.perDose, qty.unit)
   }
 
-  const adminSegment = perDoseValueText ? `Administrar ${perDoseValueText} por dose` : 'Administrar conforme orientação clínica'
+  const adminSegment = perDoseValueText ? `Administrar ${perDoseValueText} por vez` : 'Administrar conforme orientação clínica'
   const routeSegment = `por via ${routeToText(item.routeGroup)}`
-  const frequencySegment =
-    freq.label === 'frequência não informada' ? 'conforme frequência clínica' : frequencyLabelForTutor(item, freq.label)
+  const frequencySegment = freq.label === 'frequência não informada' ? 'conforme frequência clínica' : frequencyLabelForTutor(item, freq.label)
 
   let durationSegment = ''
-  if (item.continuousUse) durationSegment = 'com uso contínuo até reavaliação do paciente'
+  if (item.continuousUse) durationSegment = 'com uso contínuo até reavaliação'
   else if (item.untilFinished) durationSegment = 'até terminar o medicamento'
   else {
     const days = toNumber(item.durationDays)
     if (days && days > 0) durationSegment = `durante ${formatNumber(days, 0)} dias`
   }
 
-  return [adminSegment, routeSegment, frequencySegment, durationSegment]
-    .filter(Boolean)
-    .join(', ')
-    .replace(/\s+/g, ' ')
-    .trim()
-    .replace(/,+$/, '') + '.'
+  return [adminSegment, routeSegment, frequencySegment, durationSegment].filter(Boolean).join(', ').trim() + '.'
 }
 
 function resolveInstruction(item: PrescriptionItem, state?: PrescriptionState): string {
-  if (item.autoInstruction && !item.manualEdited && state) return buildAutoInstruction(item, state)
+  if (item.autoInstruction && !item.manualEdited && state) {
+    const auto = buildAutoInstruction(item, state)
+    if (item.instruction && item.instruction.trim()) {
+      return `${auto}\n${item.instruction.trim()}`
+    }
+    return auto
+  }
   return item.instruction
 }
 
@@ -438,44 +459,21 @@ function buildItemTitle(item: PrescriptionItem): string {
   return `${base} (${item.commercialName.trim()})`
 }
 
-export function splitPrescriptionByControl(state: PrescriptionState): {
-  standard: PrescriptionState | null
-  specialControl: PrescriptionState | null
-} {
-  const catalogControlledById = new Map<string, boolean>()
-  try {
-    const db = loadRxDb()
-    db.catalog.forEach((drug) => {
-      catalogControlledById.set(drug.id, !!drug.controlled)
-    })
-  } catch {
-    // No-op: fallback to item flag only.
-  }
-
-  const isControlledItem = (item: PrescriptionItem) =>
-    !!item.controlled || (!!item.catalogDrugId && catalogControlledById.get(item.catalogDrugId) === true)
-
+export function splitPrescriptionByControl(state: PrescriptionState): { standard: PrescriptionState | null, specialControl: PrescriptionState | null } {
+  const isControlledItem = (item: PrescriptionItem) => !!item.controlled
   const controlledItems = state.items.filter((item) => isControlledItem(item))
   const standardItems = state.items.filter((item) => !isControlledItem(item))
-
-  if (!controlledItems.length) {
-    return { standard: state, specialControl: null }
-  }
-
+  if (!controlledItems.length) return { standard: state, specialControl: null }
   const standard = standardItems.length ? { ...state, items: standardItems } : null
   const specialControl = { ...state, items: controlledItems }
   return { standard, specialControl }
 }
 
-export function renderRxToPrintDoc(
-  state: PrescriptionState,
-  opts?: { renderMode?: 'final' | 'template'; documentKind?: 'standard' | 'special-control' }
-): PrintDoc {
+export function renderRxToPrintDoc(state: PrescriptionState, opts?: { renderMode?: 'final' | 'template'; documentKind?: 'standard' | 'special-control' }): PrintDoc {
   const renderMode = opts?.renderMode || 'final'
   const documentKind = opts?.documentKind || 'standard'
   const grouped = new Map<RouteGroup, PrescriptionItem[]>()
   for (const key of SECTION_ORDER) grouped.set(key, [])
-
   for (const item of state.items) {
     const key = item.routeGroup || 'OUTROS'
     const current = grouped.get(key) || []
@@ -483,6 +481,7 @@ export function renderRxToPrintDoc(
     grouped.set(key, current)
   }
 
+<<<<<<< Updated upstream
   const sections = SECTION_ORDER
     .map((key) => {
       const source = grouped.get(key) || []
@@ -540,14 +539,26 @@ export function renderRxToPrintDoc(
             status: 'ok',
           })
         }
+=======
+  const sections = SECTION_ORDER.map((key) => {
+    const source = grouped.get(key) || []
+    if (renderMode === 'template' && key !== 'ORAL') return null
+    if (!source.length && renderMode === 'final') return null
+    const items: PrintDocItem[] = source.map((item, idx) => {
+      const qty = calculateMedicationQuantity(item, state)
+      const instruction = resolveInstruction(item, state)
+      const subtitleParts = [item.presentation]
+      if (renderMode !== 'final' && qty.label !== 'Quantidade não calculada') {
+        const doseStr = qty.perDose !== null ? `${formatNumber(qty.perDose)} ${qty.unit}` : ''
+        const totalStr = qty.total !== null ? ` · Total: ${formatNumber(qty.total)} ${qty.unit}` : ''
+        subtitleParts.push(quoteSafe(doseStr ? `Dose: ${doseStr}${totalStr}` : qty.label))
+>>>>>>> Stashed changes
       }
-
       return {
-        key,
-        title: SECTION_LABEL[key],
-        items,
+        id: item.id, index: idx + 1, title: buildItemTitle(item) || 'Medicamento', subtitle: subtitleParts.filter(Boolean).join(' - '), instruction, start_date: item.start_date || '', titleBold: !!item.titleBold, titleUnderline: !!item.titleUnderline, cautions: item.cautions.filter(Boolean), status: itemStatus(item, state),
       }
     })
+<<<<<<< Updated upstream
     .filter(Boolean) as PrintDoc['sections']
 
   const recommendations =
@@ -572,25 +583,16 @@ export function renderRxToPrintDoc(
   const patientParts: string[] = []
   if (state.patient.breed.trim()) patientParts.push(state.patient.breed)
   if (state.patient.ageText.trim()) patientParts.push(state.patient.ageText)
+=======
+    return { key, title: SECTION_LABEL[key], items }
+  }).filter((s) => s && s.items.length > 0) as PrintDoc['sections']
+>>>>>>> Stashed changes
 
   const tutorName = state.tutor.name || state.tutor.fullName || (state.tutor as any).full_name || '-'
-  const tutorLineParts: string[] = [tutorName]
-  if (state.tutor.cpf?.trim()) tutorLineParts.push(`CPF: ${state.tutor.cpf.trim()}`)
-  if (state.tutor.rg?.trim()) tutorLineParts.push(`RG: ${state.tutor.rg.trim()}`)
-
-  const tutorAddressLine = [
-    state.tutor.street || '',
-    state.tutor.number || '',
-    state.tutor.complement || (state.tutor as any).address_complement || '',
-    state.tutor.neighborhood || '',
-    [state.tutor.city || '', state.tutor.state || ''].filter(Boolean).join('/'),
-    state.tutor.zipcode || '',
-    state.tutor.phone || '',
-  ]
-    .filter(Boolean)
-    .join(', ')
+  const address = [state.tutor.street, state.tutor.number, state.tutor.neighborhood, state.tutor.city].filter(Boolean).join(', ')
 
   return {
+<<<<<<< Updated upstream
     documentKind,
     documentId: state.prescriber.adminId || 'ADMIN',
     dateLabel: new Date().toLocaleDateString('pt-BR'),
@@ -606,7 +608,12 @@ export function renderRxToPrintDoc(
       documentKind === 'special-control'
         ? []
         : [...selectedExams, ...examReasons],
+=======
+    documentKind, documentId: 'RX-' + Date.now(), dateLabel: new Date().toLocaleDateString('pt-BR'), clinicName: state.prescriber.clinicName || 'Vetius', prescriberName: state.prescriber.name || 'Médico Veterinário', prescriberCrmv: state.prescriber.crmv || '', patientLine: `${state.patient.name} (${state.patient.breed}, ${state.patient.ageText})`, tutorLine: tutorName, addressLine: address, sections, recommendations: state.recommendations.bullets, exams: state.recommendations.exams
+>>>>>>> Stashed changes
   }
 }
 
-
+function quoteSafe(text: string): string {
+  return text.replace(/"/g, "'")
+}

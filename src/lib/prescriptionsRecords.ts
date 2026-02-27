@@ -1,6 +1,7 @@
 import { supabase } from './supabaseClient'
 import { getStoredClinicId } from './clinic'
 import type { PrintDoc } from '../../modules/receituario-vet/rxTypes'
+const UUID_V4_LIKE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 
 // Use any for snapshot to avoid circular dependency if needed, 
 // but we'll try to keep it flexible
@@ -211,6 +212,52 @@ export async function voidPrescription(
   return setPrescriptionStatus(prescriptionId, 'void', clinicId)
 }
 
+function logSbDevError(scope: string, error: unknown) {
+  if (!import.meta.env.DEV) return
+  const err = error as any
+  console.error(scope, {
+    code: err?.code ?? err?.statusCode ?? null,
+    message: err?.message ?? String(error || ''),
+    details: err?.details ?? null,
+    hint: err?.hint ?? null,
+  })
+}
+
+/**
+ * Exclui receita definitivamente e remove PDF do Storage quando existir.
+ */
+export async function deletePrescriptionPermanent(params: {
+  prescriptionId: string
+  clinicId?: string
+  pdfPath?: string | null
+  storageBucket?: string | null
+}): Promise<void> {
+  const targetClinicId = resolveClinicId(params.clinicId)
+  const bucket = params.storageBucket || PDF_BUCKET
+
+  if (params.pdfPath) {
+    const { error: storageError } = await supabase.storage
+      .from(bucket)
+      .remove([params.pdfPath])
+
+    if (storageError) {
+      console.error('[Prescriptions] storage delete error', storageError)
+      throw storageError
+    }
+  }
+
+  const { error } = await supabase
+    .from('prescriptions')
+    .delete()
+    .eq('id', params.prescriptionId)
+    .eq('clinic_id', targetClinicId)
+
+  if (error) {
+    console.error('[Prescriptions] delete error', error)
+    throw error
+  }
+}
+
 // ==================== PDF STORAGE ====================
 // Bucket: receituario-media (privado, authenticated only)
 // Path pattern: ${clinicId}/patients/${patientId}/prescriptions/${prescriptionId}.pdf
@@ -227,6 +274,9 @@ export async function uploadPrescriptionPdf(params: {
   prescriptionId: string
   blob: Blob
 }): Promise<string> {
+  if (!UUID_V4_LIKE.test(String(params.clinicId || '').trim())) {
+    throw new Error('clinicId inválido para upload de PDF. O primeiro segmento do path deve ser UUID da clínica.')
+  }
   const path = `${params.clinicId}/patients/${params.patientId}/prescriptions/${params.prescriptionId}.pdf`
 
   if (import.meta.env.DEV) {
@@ -241,6 +291,7 @@ export async function uploadPrescriptionPdf(params: {
     })
 
   if (error) {
+    logSbDevError('[Storage] upload fail', error)
     console.error('[Storage] upload fail', {
       message: error.message,
       details: (error as any).details ?? null,
@@ -278,6 +329,7 @@ export async function attachPdfToPresc(params: {
     .eq('clinic_id', targetClinicId)
 
   if (error) {
+    logSbDevError('[Storage] attachPdfToPresc error', error)
     console.error('[Storage] attachPdfToPresc error', {
       message: error.message,
       details: (error as any).details ?? null,
@@ -307,6 +359,7 @@ export async function getPdfSignedUrl(pdfPath: string, expiresIn = 60): Promise<
     .createSignedUrl(pdfPath, expiresIn)
 
   if (error) {
+    logSbDevError('[Storage] signed url error', error)
     console.error('[Storage] signed url error', {
       message: error.message,
       details: (error as any).details ?? null,

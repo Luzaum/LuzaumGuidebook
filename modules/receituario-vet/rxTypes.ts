@@ -72,7 +72,9 @@ export interface PrescriptionItem {
   id: string
   category: ItemCategory
   catalogDrugId?: string
+  medication_id?: string // Alias for catalogDrugId
   controlled?: boolean
+  is_controlled?: boolean // Alias for controlled
   name: string
   presentation: string
   concentration: string
@@ -97,6 +99,11 @@ export interface PrescriptionItem {
   titleBold?: boolean
   titleUnderline?: boolean
   cautions: string[]
+<<<<<<< Updated upstream
+=======
+  manualQuantity?: string
+  start_date?: string
+>>>>>>> Stashed changes
   createdAt: string
   updatedAt: string
 }

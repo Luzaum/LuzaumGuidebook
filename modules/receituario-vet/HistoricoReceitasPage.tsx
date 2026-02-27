@@ -2,15 +2,16 @@ import React, { useEffect, useState, useCallback } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import ReceituarioChrome from './ReceituarioChrome'
 import { useClinic } from '../../src/components/ClinicProvider'
-import { listPrescriptionsByPatient, PrescriptionRecord, voidPrescription, getPdfSignedUrl } from '../../src/lib/prescriptionsRecords'
+import { listPrescriptionsByPatient, PrescriptionRecord, voidPrescription, getPdfSignedUrl, deletePrescriptionPermanent } from '../../src/lib/prescriptionsRecords'
 import { RxvCard, RxvButton, RxvSectionHeader } from '../../src/components/receituario/RxvComponents'
 import { RxPrintView } from './RxPrintView'
 import { BUILTIN_TEMPLATES } from './builtinTemplates'
+import { PatientLookup } from './components/PatientLookup'
 
 export default function HistoricoReceitasPage() {
-    const [searchParams] = useSearchParams()
+    const [searchParams, setSearchParams] = useSearchParams()
     const navigate = useNavigate()
-    const { clinicId } = useClinic()
+    const { clinicId, loading: clinicLoading } = useClinic()
     const patientId = searchParams.get('patientId')
     const patientName = searchParams.get('patientName') || 'Paciente'
 
@@ -19,17 +20,29 @@ export default function HistoricoReceitasPage() {
     const [previewDoc, setPreviewDoc] = useState<PrescriptionRecord | null>(null)
 
     const loadHistory = useCallback(async () => {
-        if (!patientId || !clinicId) return
+        if (import.meta.env.DEV) {
+            console.log('[Historico] DEV log:', { clinicId, clinicLoading, patientId })
+        }
+
+        if (clinicLoading) return
+
+        if (!patientId || !clinicId) {
+            setIsLoading(false)
+            return
+        }
+
         setIsLoading(true)
         try {
             const data = await listPrescriptionsByPatient(patientId, clinicId)
             setPrescriptions(data)
-        } catch (err) {
+        } catch (err: any) {
             console.error('[Historico] Error loading', err)
+            // toast error? using alert as fallback for now
+            alert(`Erro ao tentar buscar receitas: ${err.message || 'Desconhecido'}`)
         } finally {
             setIsLoading(false)
         }
-    }, [patientId, clinicId])
+    }, [patientId, clinicId, clinicLoading])
 
     useEffect(() => {
         loadHistory()
@@ -58,6 +71,22 @@ export default function HistoricoReceitasPage() {
         } catch (err) {
             console.error('[Historico] signed url error', err)
             alert('Erro ao obter link do PDF.')
+        }
+    }
+
+    const handleDelete = async (record: PrescriptionRecord) => {
+        if (!window.confirm('Deseja excluir esta receita permanentemente? Esta ação não pode ser desfeita.')) return
+        try {
+            await deletePrescriptionPermanent({
+                prescriptionId: record.id,
+                clinicId: clinicId || undefined,
+                pdfPath: record.pdf_path || null,
+                storageBucket: record.storage_bucket || null,
+            })
+            await loadHistory()
+        } catch (err) {
+            console.error('[Historico] delete error', err)
+            alert('Erro ao excluir receita.')
         }
     }
 
@@ -95,7 +124,19 @@ export default function HistoricoReceitasPage() {
                         </RxvButton>
                     </RxvSectionHeader>
 
-                    {isLoading ? (
+                    {clinicLoading ? (
+                        <div className="py-12 text-center text-slate-500">Aguardando clínica...</div>
+                    ) : !patientId ? (
+                        <div className="p-6">
+                            <p className="mb-4 text-sm text-slate-400">Selecione um paciente para ver o histórico:</p>
+                            <PatientLookup
+                                value={null}
+                                onChange={(p) => {
+                                    if (p?.id) setSearchParams({ patientId: p.id, patientName: p.name })
+                                }}
+                            />
+                        </div>
+                    ) : isLoading ? (
                         <div className="py-12 text-center text-slate-500">Carrregando histórico...</div>
                     ) : prescriptions.length === 0 ? (
                         <div className="py-12 text-center text-slate-500">Nenhuma receita encontrada para este paciente.</div>
@@ -167,6 +208,12 @@ export default function HistoricoReceitasPage() {
                                                             Anular
                                                         </button>
                                                     )}
+                                                    <button
+                                                        onClick={() => handleDelete(px)}
+                                                        className="rounded bg-red-900/30 px-2 py-1 text-[10px] font-black text-red-400 hover:bg-red-900/50"
+                                                    >
+                                                        Excluir
+                                                    </button>
                                                 </div>
                                             </td>
                                         </tr>

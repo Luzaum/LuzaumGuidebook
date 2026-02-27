@@ -12,6 +12,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { glob } from 'glob';
 
 // Whitelists from clinicRecords.ts
@@ -74,23 +75,31 @@ const TABLE_WHITELISTS: Record<string, string[]> = {
     ],
     'protocols': [
         'id', 'clinic_id', 'owner_user_id', 'folder_id', 'name', 'description',
-        'target_species', 'is_active', 'created_at', 'updated_at'
+        'species', 'duration_summary', 'tags', 'is_control_special', 'exams_justification',
+        'created_at', 'updated_at'
     ],
     'protocol_medications': [
-        'id', 'clinic_id', 'protocol_id', 'medication_id', 'medication_name',
-        'presentation_id', 'presentation_text', 'manual_medication_name',
-        'manual_presentation_text', 'concentration_text', 'value', 'value_unit',
-        'per_value', 'per_unit', 'route', 'frequency_type', 'times_per_day',
-        'interval_hours', 'duration_days', 'instructions', 'sort_order',
+        'id', 'clinic_id', 'protocol_id', 'sort_order',
+        'medication_id', 'presentation_id',
+        'manual_medication_name', 'manual_presentation_label',
+        'concentration_value', 'concentration_unit',
+        'dose_value', 'dose_unit',
+        'route', 'frequency_type', 'times_per_day', 'interval_hours', 'duration_days',
+        'is_controlled',
         'created_at', 'updated_at'
     ],
     'protocol_recommendations': [
-        'id', 'clinic_id', 'protocol_id', 'recommendation_text', 'sort_order',
+        'id', 'clinic_id', 'protocol_id', 'text', 'sort_order',
         'created_at', 'updated_at'
     ],
-    'protocol_exam_items': [
-        'id', 'clinic_id', 'protocol_id', 'exam_key', 'exam_label', 'is_custom',
-        'justification', 'created_at', 'updated_at'
+    'protocol_folders': [
+        'id', 'clinic_id', 'owner_user_id', 'name', 'icon_key', 'color', 'sort_order',
+        'created_at', 'updated_at'
+    ],
+    'prescriptions': [
+        'id', 'clinic_id', 'patient_id', 'tutor_id', 'content', 'status', 'version', 'created_by',
+        'pdf_path', 'storage_bucket', 'document_kind', 'pdf_url',
+        'created_at', 'updated_at'
     ],
 };
 
@@ -149,6 +158,23 @@ function extractKeysFromObjectLiteral(line: string): string[] {
     return keys;
 }
 
+function extractFirstObjectLiteral(text: string): string {
+    const start = text.indexOf('{');
+    if (start < 0) return '';
+    let depth = 0;
+    for (let i = start; i < text.length; i++) {
+        const ch = text[i];
+        if (ch === '{') depth++;
+        if (ch === '}') {
+            depth--;
+            if (depth === 0) {
+                return text.slice(start, i + 1);
+            }
+        }
+    }
+    return '';
+}
+
 /**
  * Validate a TypeScript/JavaScript file
  */
@@ -158,6 +184,7 @@ function validateFile(filePath: string): ValidationError[] {
     const lines = content.split('\n');
 
     let currentTable: string | null = null;
+    let currentTableLine = -1;
     let inInsertUpdateBlock = false;
     let blockStartLine = 0;
     let blockLines: string[] = [];
@@ -168,7 +195,7 @@ function validateFile(filePath: string): ValidationError[] {
 
         // Look for .insert({, .update({, .upsert({
         const insertUpdateMatch = trimmedLine.match(/\.(insert|update|upsert)\(\s*\{/);
-        if (insertUpdateMatch && currentTable) {
+        if (insertUpdateMatch && currentTable && currentTableLine >= 0 && i - currentTableLine <= 16) {
             inInsertUpdateBlock = true;
             blockStartLine = i + 1; // 1-based line numbers
             blockLines = [trimmedLine];
@@ -183,7 +210,8 @@ function validateFile(filePath: string): ValidationError[] {
             if (trimmedLine.includes('})') || trimmedLine.includes('};') || trimmedLine.includes('},')) {
                 // Process the collected block
                 const blockText = blockLines.join(' ');
-                const keys = extractKeysFromObjectLiteral(blockText);
+                const objectText = extractFirstObjectLiteral(blockText);
+                const keys = extractKeysFromObjectLiteral(objectText);
 
                 if (keys.length > 0 && currentTable && TABLE_WHITELISTS[currentTable]) {
                     const whitelist = TABLE_WHITELISTS[currentTable];
@@ -211,14 +239,17 @@ function validateFile(filePath: string): ValidationError[] {
         const tableName = extractTableName(trimmedLine);
         if (tableName && TABLE_WHITELISTS[tableName]) {
             currentTable = tableName;
+            currentTableLine = i;
         } else if (tableName && !TABLE_WHITELISTS[tableName]) {
             // Table not in whitelist - skip validation for this table
             currentTable = null;
+            currentTableLine = -1;
         }
 
         // Reset current table if we see a new query chain starting
         if (trimmedLine.startsWith('const') || trimmedLine.startsWith('let') || trimmedLine.startsWith('var')) {
             currentTable = null;
+            currentTableLine = -1;
         }
     }
 
@@ -231,8 +262,13 @@ function validateFile(filePath: string): ValidationError[] {
 async function validateSupabasePayloads(): Promise<ValidationResult> {
     console.log('🔍 Validating Supabase payloads...');
 
-    const srcDir = path.join(process.cwd(), 'src');
-    const files = await glob('**/*.{ts,tsx,js,jsx}', { cwd: srcDir, absolute: true });
+    const roots = ['src', 'modules']
+        .map((dir) => path.join(process.cwd(), dir))
+        .filter((dir) => fs.existsSync(dir));
+    const fileLists = await Promise.all(
+        roots.map((cwd) => glob('**/*.{ts,tsx,js,jsx}', { cwd, absolute: true }))
+    );
+    const files = fileLists.flat();
 
     const result: ValidationResult = {
         errors: [],
@@ -286,8 +322,11 @@ function displayResults(result: ValidationResult): void {
     process.exit(1);
 }
 
-// Run validation if this script is executed directly
-if (require.main === module) {
+// Run validation if this script is executed directly (ESM-safe)
+const __filename = fileURLToPath(import.meta.url);
+const isMain = process.argv[1] && path.resolve(process.argv[1]) === __filename;
+
+if (isMain) {
     validateSupabasePayloads()
         .then(displayResults)
         .catch(error => {

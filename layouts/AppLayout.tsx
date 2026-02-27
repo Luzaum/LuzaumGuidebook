@@ -18,7 +18,9 @@ export function AppLayout() {
   const isActive = (route: string) => location.pathname === route
   const isImmersiveModuleRoute =
     location.pathname.startsWith('/peconhentos') ||
-    location.pathname.startsWith('/receituario-vet')
+    location.pathname.startsWith('/receituario-vet') ||
+    location.pathname.startsWith('/dados-veterinarios') ||
+    location.pathname.startsWith('/hemogasometria')
   const isFullBleedRoute =
     isActive('/') ||
     isActive('/hub') ||

@@ -1,0 +1,91 @@
+:root {
+  --dv-aurora-1: rgba(17, 181, 255, 0.14);
+  --dv-aurora-2: rgba(16, 185, 129, 0.1);
+  --dv-aurora-3: rgba(245, 158, 11, 0.08);
+}
+
+body {
+  background-color: #f9fafb;
+  color: #111827;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+  background-color: #111827;
+  color: #f3f4f6;
+}
+
+.dv-app :where(input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='color']), select, textarea) {
+  color: #111827;
+  background-color: #ffffff;
+  border-color: #d1d5db;
+}
+
+.dv-app :where(input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='color']), select, textarea)::placeholder {
+  color: #6b7280;
+}
+
+.dark .dv-app :where(input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='color']), select, textarea) {
+  color: #f3f4f6;
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+.dark .dv-app :where(input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='color']), select, textarea)::placeholder {
+  color: #9ca3af;
+}
+
+.dv-aurora-bg {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.dv-aurora-bg::before,
+.dv-aurora-bg::after {
+  content: '';
+  position: absolute;
+  inset: -20% -15% auto;
+  height: 260px;
+  border-radius: 999px;
+  filter: blur(58px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.dv-aurora-bg::before {
+  background: radial-gradient(circle at 20% 35%, var(--dv-aurora-1), transparent 58%);
+}
+
+.dv-aurora-bg::after {
+  background:
+    radial-gradient(circle at 80% 25%, var(--dv-aurora-2), transparent 52%),
+    radial-gradient(circle at 60% 65%, var(--dv-aurora-3), transparent 48%);
+}
+
+.dv-glass-card {
+  box-shadow:
+    0 20px 40px -28px rgba(15, 23, 42, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.dark .dv-glass-card {
+  box-shadow:
+    0 24px 48px -30px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.dv-section-enter {
+  animation: dv-fade-slide 280ms ease-out both;
+}
+
+@keyframes dv-fade-slide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

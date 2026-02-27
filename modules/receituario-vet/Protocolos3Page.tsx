@@ -21,6 +21,12 @@ import {
   loadProtocolBundle,
   saveProtocolBundle,
   deleteProtocol,
+<<<<<<< Updated upstream
+=======
+  createFolder,
+  deleteFolder,
+  ensureDefaultSpecialtyProtocolSeed,
+>>>>>>> Stashed changes
   type ProtocolFolderRecord,
   type ProtocolRecord,
   type ProtocolBundle,
@@ -36,6 +42,7 @@ import {
   searchMedications,
   getMedicationPresentations,
 } from '../../src/lib/clinicRecords'
+import { useLocalDraft } from '../../hooks/useLocalDraft'
 
 // ==================== TYPES ====================
 
@@ -77,7 +84,26 @@ export default function Protocolos3Page() {
   // ✅ Estado: modal criar/editar protocolo
   const [modalOpen, setModalOpen] = useState(false)
   const [editingProtocol, setEditingProtocol] = useState<ProtocolBundle | null>(null)
+  const [protocolDraft, setProtocolDraft, clearProtocolDraft, hasProtocolDraft] = useLocalDraft<ProtocolBundle | null>(
+    'protocolos3-editor',
+    clinicId || null,
+    userId,
+    null,
+    {
+      debounceMs: 800,
+      enabled: !!clinicId && !!userId && modalOpen && !!editingProtocol && !editingProtocol.protocol.id,
+    }
+  )
 
+<<<<<<< Updated upstream
+=======
+  // ✅ Estado: criar pasta
+  const [createFolderOpen, setCreateFolderOpen] = useState(false)
+  const [createFolderName, setCreateFolderName] = useState('')
+  const [isCreatingFolder, setIsCreatingFolder] = useState(false)
+
+
+>>>>>>> Stashed changes
   // ✅ Estado: busca de medicamentos
   const [medicationSearchOpen, setMedicationSearchOpen] = useState(false)
   const [medicationSearchQuery, setMedicationSearchQuery] = useState('')
@@ -107,9 +133,21 @@ export default function Protocolos3Page() {
     setIsLoadingFolders(true)
 
     listFolders(clinicId, userId)
+<<<<<<< Updated upstream
       .then((data) => {
         console.log('[Protocolos3] Folders carregados', data)
         setFolders(data)
+=======
+      .then(async (data) => {
+        console.log('[Protocolos3] Folders carregados', data)
+        await ensureDefaultSpecialtyProtocolSeed(clinicId, userId)
+        const [refreshedFolders, refreshedProtocols] = await Promise.all([
+          listFolders(clinicId, userId),
+          listProtocols(clinicId, userId),
+        ])
+        setFolders(refreshedFolders)
+        setProtocols(refreshedProtocols)
+>>>>>>> Stashed changes
       })
       .catch((err) => {
         console.error('[Protocolos3] Erro ao carregar folders', err)
@@ -165,6 +203,20 @@ export default function Protocolos3Page() {
 
     return () => clearTimeout(timer)
   }, [medicationSearchQuery, clinicId, medicationSearchOpen])
+
+  useEffect(() => {
+    if (!modalOpen) return
+    if (!hasProtocolDraft || !protocolDraft) return
+    if (!editingProtocol) return
+    if (editingProtocol.protocol.id) return
+    setEditingProtocol(protocolDraft)
+  }, [modalOpen, hasProtocolDraft, protocolDraft, editingProtocol])
+
+  useEffect(() => {
+    if (!modalOpen || !editingProtocol) return
+    if (editingProtocol.protocol.id) return
+    setProtocolDraft(editingProtocol)
+  }, [modalOpen, editingProtocol, setProtocolDraft])
 
   // ==================== HANDLERS ====================
 
@@ -226,6 +278,7 @@ export default function Protocolos3Page() {
 
       setModalOpen(false)
       setEditingProtocol(null)
+      clearProtocolDraft()
     } catch (err) {
       console.error('[Protocolos3] Erro ao salvar protocolo', err)
       const errorDetails = safeStringify(err)
@@ -405,7 +458,26 @@ export default function Protocolos3Page() {
   }
 
   return (
-    <ReceituarioChrome section="protocolos" title="Meus Protocolos">
+    <ReceituarioChrome
+      section="protocolos"
+      title="Meus Protocolos"
+      actions={
+        <button
+          type="button"
+          className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-2 text-sm disabled:opacity-50"
+          onClick={() => {
+            clearProtocolDraft()
+            if (modalOpen && editingProtocol && !editingProtocol.protocol.id) {
+              handleCreateProtocol()
+            }
+          }}
+          disabled={!hasProtocolDraft}
+        >
+          <span className="material-symbols-outlined text-[18px]">ink_eraser</span>
+          Limpar rascunho
+        </button>
+      }
+    >
       <div className="flex min-h-[calc(100vh-64px)] bg-[#0a0f0a]">
         {/* Sidebar: Pastas */}
         <aside className="w-64 border-r border-slate-800/50 bg-black/40 p-4 shrink-0 overflow-y-auto">
@@ -427,6 +499,7 @@ export default function Protocolos3Page() {
               <span className="material-symbols-outlined text-[18px]">inventory_2</span>
               Todos
             </button>
+<<<<<<< Updated upstream
             {folders.map(folder => (
               <button
                 key={folder.id}
@@ -438,6 +511,35 @@ export default function Protocolos3Page() {
                 {folder.name}
               </button>
             ))}
+=======
+            {isLoadingFolders ? (
+              <div className="flex items-center gap-2 px-3 py-2 text-slate-600">
+                <span className="material-symbols-outlined animate-spin text-[16px]">sync</span>
+                <span className="text-xs">Carregando...</span>
+              </div>
+            ) : (
+              folders.map(folder => (
+                <div key={folder.id} className="group relative">
+                  <button
+                    onClick={() => setSelectedFolderId(folder.id)}
+                    className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-bold transition-all pr-8 ${selectedFolderId === folder.id ? 'bg-[#39ff14]/10 text-[#39ff14] border border-[#39ff14]/20' : 'text-slate-400 hover:bg-slate-800/50'
+                      }`}
+                  >
+                    <span className="material-symbols-outlined text-[18px]" style={{ color: folder.color || undefined }}>{folder.icon_key || 'folder'}</span>
+                    <span className="truncate">{folder.name}</span>
+                  </button>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); handleDeleteFolder(folder.id, folder.name) }}
+                    className="absolute right-1 top-1/2 -translate-y-1/2 p-1 rounded opacity-0 group-hover:opacity-100 hover:bg-red-900/30 text-red-500/60 hover:text-red-400 transition-all"
+                    title="Excluir pasta"
+                  >
+                    <span className="material-symbols-outlined text-[14px]">delete</span>
+                  </button>
+                </div>
+              ))
+            )}
+
+>>>>>>> Stashed changes
           </nav>
         </aside>
 
