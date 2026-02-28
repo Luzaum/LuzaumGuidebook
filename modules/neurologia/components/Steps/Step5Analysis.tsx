@@ -109,7 +109,7 @@ export function Step5Analysis() {
           onClick={runAnalysis}
           disabled={false}
           className={`
-            px-8 py-4 text-lg font-bold rounded-xl
+            px-4 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-bold rounded-xl
             bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600
             hover:from-yellow-500 hover:via-yellow-600 hover:to-yellow-700
             text-black shadow-lg shadow-yellow-500/50
@@ -211,7 +211,7 @@ export function Step5Analysis() {
           </h3>
 
           <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
                 <p className="text-sm text-muted-foreground mb-1">Localização Provável</p>
                 <p className="text-lg font-semibold text-foreground">{getAxisLabel(report.neuroLocalization.primary)}</p>
@@ -383,15 +383,15 @@ export function Step5Analysis() {
                   <p className="text-sm font-semibold text-purple-400 mb-2">Como Diagnosticar</p>
                   <div className="space-y-2">
                     {dx.diagnostics.map((diag, i) => (
-                      <div key={i} className="p-3 bg-neutral-800/50 rounded-lg border border-neutral-700">
-                        <div className="flex items-start justify-between mb-1">
-                          <p className="text-sm font-medium text-foreground">{diag.test}</p>
+                      <div key={i} className="p-3 bg-neutral-800/50 rounded-lg border border-neutral-700 break-words">
+                        <div className="flex items-start justify-between flex-wrap sm:flex-nowrap gap-2 mb-1">
+                          <p className="text-sm font-medium text-foreground flex-1 min-w-[150px]">{diag.test}</p>
                           <span
                             className={`text-xs px-2 py-1 rounded ${diag.priority === 'ALTA'
-                                ? 'bg-red-900/50 text-red-300'
-                                : diag.priority === 'MEDIA'
-                                  ? 'bg-yellow-900/50 text-yellow-300'
-                                  : 'bg-blue-900/50 text-blue-300'
+                              ? 'bg-red-900/50 text-red-300'
+                              : diag.priority === 'MEDIA'
+                                ? 'bg-yellow-900/50 text-yellow-300'
+                                : 'bg-blue-900/50 text-blue-300'
                               }`}
                           >
                             {diag.priority}

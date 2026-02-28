@@ -293,22 +293,19 @@ export function Step2ChiefComplaint({ complaint, setComplaint }: Step2Props) {
               className="relative"
             >
               <Card
-                className={`h-32 flex flex-col items-center justify-center gap-3 transition-all duration-300 ${
-                  isSelected
+                className={`p-2 sm:p-4 h-32 flex flex-col items-center justify-center gap-2 sm:gap-3 transition-all duration-300 ${isSelected
                     ? 'border-gold bg-gold/10 ring-1 ring-gold shadow-[0_0_15px_rgba(245,197,66,0.2)]'
                     : 'hover:border-gold/50 hover:bg-white/5'
-                }`}
+                  }`}
               >
                 <Icon
                   size={32}
-                  className={`transition-colors ${
-                    isSelected ? 'text-gold' : 'text-neutral-500'
-                  }`}
+                  className={`transition-colors ${isSelected ? 'text-gold' : 'text-neutral-500'
+                    }`}
                 />
                 <span
-                  className={`text-sm font-medium text-center ${
-                    isSelected ? 'text-gold' : 'text-neutral-300'
-                  }`}
+                  className={`text-xs sm:text-sm font-medium text-center leading-tight ${isSelected ? 'text-gold' : 'text-neutral-300'
+                    }`}
                 >
                   {item.label}
                 </span>
@@ -345,7 +342,7 @@ export function Step2ChiefComplaint({ complaint, setComplaint }: Step2Props) {
         <label className="text-sm font-medium text-neutral-300 mb-4 block">
           Contexto Clínico
         </label>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-4">
           <label className="flex items-center gap-2 p-3 rounded-lg border border-neutral-700 hover:border-gold/50 cursor-pointer transition-colors">
             <input
               type="checkbox"

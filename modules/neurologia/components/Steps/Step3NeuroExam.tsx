@@ -32,7 +32,7 @@ function SectionHeader({
   return (
     <button
       onClick={onToggle}
-      className="w-full flex items-center justify-between p-4 bg-gradient-to-r from-gold/5 to-transparent border-b border-gold/20 hover:from-gold/10 transition-all group"
+      className="w-full flex items-center justify-between p-4 sm:p-5 bg-gradient-to-r from-gold/5 to-transparent border-b border-gold/20 hover:from-gold/10 transition-all group min-h-[60px]"
     >
       <div className="flex items-center gap-3 flex-1">
         <div className="text-left flex-1">
@@ -143,7 +143,7 @@ function ExamItem({
                   onSelect(opt.value)
                 }}
                 className={`
-                  px-3 py-2 rounded-lg text-sm font-medium border-2 transition-all flex items-center gap-2
+                  px-2 sm:px-3 py-2 min-h-[44px] sm:min-h-0 rounded-lg text-xs sm:text-sm font-medium border-2 transition-all flex items-center gap-1 sm:gap-2
                   ${isSelected
                     ? isNormal
                       ? 'bg-green-900/30 border-green-500 text-green-400 shadow-[0_0_12px_rgba(34,197,94,0.3)]'

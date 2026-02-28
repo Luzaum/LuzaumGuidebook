@@ -158,7 +158,7 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
                   weightKg: e.target.value ? parseFloat(e.target.value) : null,
                 })
               }
-              className="w-full bg-neutral-900 border border-neutral-700 rounded-xl p-3 text-white focus:border-gold focus:ring-1 focus:ring-gold outline-none"
+              className="w-full bg-neutral-900 border border-neutral-700 rounded-xl p-3 text-base sm:text-sm text-white focus:border-gold focus:ring-1 focus:ring-gold outline-none"
               placeholder="0.0 kg"
             />
           </div>
@@ -295,8 +295,8 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
                 <div
                   key={key}
                   className={`p-3 rounded-lg border transition-all ${isSelected
-                      ? 'border-gold/50 bg-gold/10'
-                      : 'border-white/10 bg-white/5 hover:border-white/20'
+                    ? 'border-gold/50 bg-gold/10'
+                    : 'border-white/10 bg-white/5 hover:border-white/20'
                     }`}
                 >
                   <div className="flex items-start justify-between gap-3">
@@ -334,9 +334,9 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
                             onClick={() =>
                               updateComorbiditySeverity(key, severity === sev ? undefined : sev)
                             }
-                            className={`px-3 py-1 text-xs rounded transition-colors ${severity === sev
-                                ? 'bg-gold/20 text-gold border border-gold/40'
-                                : 'bg-white/5 text-neutral-400 border border-white/10 hover:border-white/20'
+                            className={`px-3 py-2 sm:py-1 text-sm sm:text-xs rounded transition-colors ${severity === sev
+                              ? 'bg-gold/20 text-gold border border-gold/40'
+                              : 'bg-white/5 text-neutral-400 border border-white/10 hover:border-white/20'
                               }`}
                           >
                             {sev.charAt(0).toUpperCase() + sev.slice(1)}

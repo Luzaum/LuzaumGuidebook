@@ -146,7 +146,7 @@ export function NeurologiaApp() {
           <Stepper currentStep={currentStep} totalSteps={5} />
         )}
 
-        <main className="container max-w-3xl mx-auto px-4 pt-32 pb-32 relative z-10 pointer-events-auto">
+        <main className="container max-w-3xl mx-auto px-2 sm:px-4 pt-28 pb-32 relative z-10 pointer-events-auto overflow-x-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentStep}
