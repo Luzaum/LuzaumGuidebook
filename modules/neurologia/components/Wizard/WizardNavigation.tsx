@@ -20,8 +20,8 @@ export function WizardNavigation({
   nextLabel = 'Continuar',
 }: WizardNavigationProps) {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-t border-white/10 pb-[env(safe-area-inset-bottom)]">
-      <div className="container max-w-3xl mx-auto px-2 sm:px-4 py-3 sm:py-4 flex items-center justify-between gap-2">
+    <div className="fixed bottom-[64px] md:bottom-0 left-0 md:left-64 right-0 z-40 bg-background/90 backdrop-blur-xl border-t border-white/10 pb-[env(safe-area-inset-bottom)]">
+      <div className="container max-w-4xl mx-auto px-2 sm:px-6 py-3 sm:py-4 flex items-center justify-between gap-2">
         <Button
           variant="ghost"
           onClick={onBack}

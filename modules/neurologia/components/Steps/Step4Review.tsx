@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { EvaluationStatus } from '../../types'
 import { Card } from '../UI/Card'
-import { CheckCircle, AlertTriangle, Edit2 } from 'lucide-react'
+import { CheckCircle, AlertTriangle, Edit2, Search } from 'lucide-react'
 import type { Patient } from '../../stores/caseStore'
 import type { ComplaintContext } from '../../stores/caseStore'
 
@@ -83,19 +83,21 @@ export function Step4Review({ patient, complaint, exam, onEditStep }: Step4Props
   return (
     <div className="space-y-6 pb-24">
       <motion.div
-        initial={{
-          opacity: 0,
-          y: 20,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="flex items-center gap-4 mb-8 bg-neutral-900/50 p-4 rounded-2xl border border-white/5"
       >
-        <h2 className="text-2xl font-bold text-white mb-2">
-          Revisão dos Achados
-        </h2>
-        <p className="text-neutral-400">Confirme os dados antes da análise.</p>
+        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 flex items-center justify-center shadow-lg shadow-blue-500/10">
+          <Search className="w-7 h-7 text-blue-400" />
+        </div>
+        <div>
+          <h2 className="text-2xl font-bold text-white mb-1">
+            Revisão dos Achados
+          </h2>
+          <p className="text-neutral-400 text-sm">
+            Confirme os dados antes de iniciar a simulação neural.
+          </p>
+        </div>
       </motion.div>
 
       {/* Patient Summary */}

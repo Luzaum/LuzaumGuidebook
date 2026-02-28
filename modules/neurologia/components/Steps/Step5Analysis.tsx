@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Brain, AlertTriangle, CheckCircle2, FileText } from 'lucide-react'
+import { Brain, AlertTriangle, CheckCircle2, FileText, Cpu, Network, Zap } from 'lucide-react'
 import { Button } from '../UI/Button'
 import { Card } from '../UI/Card'
 import { InlineBanner } from '../UI/InlineBanner'
@@ -9,23 +9,46 @@ import { buildCaseReport } from '../../lib/analysis/report'
 import { exportToPDF } from '../../lib/report/pdfExporter'
 import type { CaseReport } from '../../types/analysis'
 
-export function Step5Analysis() {
+const LOADING_MESSAGES = [
+  'Conectando à base de dados...',
+  'Analisando neurolocalização...',
+  'Buscando diferenciais clínicos...',
+  'Estruturando plano de ação...',
+]
+
+export function Step5Analysis({ onRetryAnalysis }: { onRetryAnalysis?: () => void }) {
   const analysis = useCaseStore((s) => s.analysis)
   const setAnalysis = useCaseStore((s) => s.setAnalysis)
   const patient = useCaseStore((s) => s.patient)
   const complaint = useCaseStore((s) => s.complaint)
   const neuroExam = useCaseStore((s) => s.neuroExam)
 
-  const runAnalysis = () => {
-    setAnalysis({ status: 'running' })
-    const caseState = { patient, complaint, neuroExam }
-    const report = buildCaseReport(caseState)
-    setAnalysis({
-      status: report.neuroLocalization.status === 'ok' ? 'done' : 'insufficient_data',
-      report,
-    })
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+  const [loadingStep, setLoadingStep] = React.useState(0)
+
+  const runAnalysisFallback = () => {
+    if (onRetryAnalysis) {
+      onRetryAnalysis()
+    } else {
+      // Fallback seguro caso não passe a prop
+      setAnalysis({ status: 'running' })
+      const caseState = { patient, complaint, neuroExam }
+      const report = buildCaseReport(caseState)
+      setAnalysis({
+        status: report.neuroLocalization.status === 'ok' ? 'done' : 'insufficient_data',
+        report,
+      })
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
   }
+
+  React.useEffect(() => {
+    if (analysis?.status === 'running') {
+      const interval = setInterval(() => {
+        setLoadingStep((s) => (s + 1) % LOADING_MESSAGES.length)
+      }, 500) // Muda a cada 500ms
+      return () => clearInterval(interval)
+    }
+  }, [analysis?.status])
 
   const handleExportPDF = () => {
     if (!report) return
@@ -106,7 +129,7 @@ export function Step5Analysis() {
         </motion.div>
 
         <motion.button
-          onClick={runAnalysis}
+          onClick={runAnalysisFallback}
           disabled={false}
           className={`
             px-4 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-bold rounded-xl
@@ -127,13 +150,50 @@ export function Step5Analysis() {
 
   if (status === 'running') {
     return (
-      <div className="min-h-[60vh] flex flex-col items-center justify-center space-y-6 pb-24">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-          className="w-16 h-16 border-4 border-yellow-500 border-t-transparent rounded-full"
-        />
-        <p className="text-muted-foreground">Analisando caso…</p>
+      <div className="min-h-[60vh] flex flex-col items-center justify-center space-y-8 pb-24">
+        <div className="relative">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+            className="w-24 h-24 border-2 border-dashed border-gold/40 rounded-full"
+          />
+          <motion.div
+            animate={{ rotate: -360 }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+            className="absolute inset-2 border-2 border-dashed border-gold/60 rounded-full"
+          />
+          <div className="absolute inset-0 flex items-center justify-center text-gold">
+            <motion.div
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              <Cpu className="w-8 h-8" />
+            </motion.div>
+          </div>
+        </div>
+
+        <div className="space-y-4 max-w-sm w-full mx-auto px-4">
+          <p className="text-center font-semibold text-gold text-lg">
+            Diagnóstico Neural Ativo
+          </p>
+          <div className="h-6 overflow-hidden rounded-md bg-white/5 border border-white/10 relative">
+            <motion.div
+              initial={{ width: '0%' }}
+              animate={{ width: '100%' }}
+              transition={{ duration: 2, ease: 'easeInOut' }}
+              className="absolute inset-y-0 left-0 bg-gradient-to-r from-gold/40 to-gold"
+            />
+            <motion.p
+              key={loadingStep}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="absolute inset-0 flex items-center justify-center text-xs text-white/90 z-10 font-medium"
+            >
+              {LOADING_MESSAGES[loadingStep]}
+            </motion.p>
+          </div>
+        </div>
       </div>
     )
   }
@@ -142,7 +202,7 @@ export function Step5Analysis() {
     return (
       <div className="space-y-6 pb-24">
         <motion.button
-          onClick={runAnalysis}
+          onClick={runAnalysisFallback}
           disabled={true}
           className={`
             w-full px-8 py-4 text-lg font-bold rounded-xl
@@ -160,8 +220,8 @@ export function Step5Analysis() {
           variant="error"
           title="Dados Insuficientes"
           message={[
-            'Não foi possível achar a neurolocalização com os dados fornecidos.',
-            ...(report.neuroLocalization.missing || []).map((m) => `• ${m}`),
+            'Não foi possível encontrar a neurolocalização completa na resposta da IA.',
+            ...(report?.neuroLocalization?.missing || []).map((m) => `• ${m}`),
           ]}
         />
       </div>
@@ -214,45 +274,45 @@ export function Step5Analysis() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
                 <p className="text-sm text-muted-foreground mb-1">Localização Provável</p>
-                <p className="text-lg font-semibold text-foreground">{getAxisLabel(report.neuroLocalization.primary)}</p>
+                <p className="text-lg font-semibold text-foreground">{getAxisLabel(report.neuroLocalization?.primary || '')}</p>
               </div>
               <div>
                 <p className="text-sm text-muted-foreground mb-1">Distribuição</p>
-                <p className="text-lg font-semibold text-foreground capitalize">{report.neuroLocalization.distribution.toLowerCase()}</p>
+                <p className="text-lg font-semibold text-foreground capitalize">{report.neuroLocalization?.distribution?.toLowerCase() || ''}</p>
               </div>
               <div>
                 <p className="text-sm text-muted-foreground mb-1">Padrão Motor</p>
-                <p className="text-lg font-semibold text-foreground">{getMotorPatternLabel(report.neuroLocalization.motorPattern)}</p>
+                <p className="text-lg font-semibold text-foreground">{getMotorPatternLabel(report.neuroLocalization?.motorPattern || '')}</p>
               </div>
               <div>
                 <p className="text-sm text-muted-foreground mb-1">Confiança</p>
-                <p className="text-lg font-semibold text-foreground">{report.neuroLocalization.confidence}%</p>
+                <p className="text-lg font-semibold text-foreground">{report.neuroLocalization?.confidence || 0}%</p>
               </div>
             </div>
 
             <div>
               <p className="text-sm font-semibold text-gold mb-2">Raciocínio de Neurolocalização (Síntese)</p>
               <p className="text-foreground/90 text-sm leading-relaxed whitespace-pre-line">
-                {report.neuroLocalization.narrative}
+                {report.neuroLocalization?.narrative || 'Análise indisponível.'}
               </p>
             </div>
 
-            {report.neuroLocalization.supportiveFindings.length > 0 && (
+            {(report.neuroLocalization?.supportiveFindings?.length || 0) > 0 && (
               <div>
                 <p className="text-sm font-semibold text-green-400 mb-2">Achados que Suportam</p>
                 <ul className="list-disc list-inside space-y-1 text-sm text-foreground/80">
-                  {report.neuroLocalization.supportiveFindings.map((finding, idx) => (
+                  {report.neuroLocalization?.supportiveFindings?.map((finding, idx) => (
                     <li key={idx}>{finding}</li>
                   ))}
                 </ul>
               </div>
             )}
 
-            {report.neuroLocalization.contradictoryFindings.length > 0 && (
+            {(report.neuroLocalization?.contradictoryFindings?.length || 0) > 0 && (
               <div>
                 <p className="text-sm font-semibold text-orange-400 mb-2">Achados Contraditórios</p>
                 <ul className="list-disc list-inside space-y-1 text-sm text-foreground/80">
-                  {report.neuroLocalization.contradictoryFindings.map((finding, idx) => (
+                  {report.neuroLocalization?.contradictoryFindings?.map((finding, idx) => (
                     <li key={idx}>{finding}</li>
                   ))}
                 </ul>
@@ -262,11 +322,11 @@ export function Step5Analysis() {
         </Card>
 
         {/* Impacto das Comorbidades */}
-        {report.comorbidityImpact &&
-          (report.comorbidityImpact.alerts.length > 0 ||
-            report.comorbidityImpact.cautions.length > 0 ||
-            report.comorbidityImpact.diagnosticAdds.length > 0 ||
-            report.comorbidityImpact.diagnosticAvoids.length > 0) && (
+        {report?.comorbidityImpact &&
+          ((report.comorbidityImpact.alerts?.length || 0) > 0 ||
+            (report.comorbidityImpact.cautions?.length || 0) > 0 ||
+            (report.comorbidityImpact.diagnosticAdds?.length || 0) > 0 ||
+            (report.comorbidityImpact.diagnosticAvoids?.length || 0) > 0) && (
             <Card className="p-6 border-indigo-500/30 bg-indigo-900/10">
               <h3 className="text-xl font-bold text-indigo-400 mb-4 flex items-center gap-2">
                 <AlertTriangle className="w-6 h-6" />
@@ -274,14 +334,14 @@ export function Step5Analysis() {
               </h3>
 
               {/* Alertas */}
-              {report.comorbidityImpact.alerts.length > 0 && (
+              {(report.comorbidityImpact.alerts?.length || 0) > 0 && (
                 <div className="mb-4">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-lg">⚠️</span>
                     <h4 className="text-base font-semibold text-orange-400">Alertas Clínicos</h4>
                   </div>
                   <ul className="space-y-1 ml-6">
-                    {report.comorbidityImpact.alerts.map((alert, idx) => (
+                    {report.comorbidityImpact.alerts?.map((alert, idx) => (
                       <li key={idx} className="text-sm text-neutral-200 flex items-start gap-2">
                         <span className="text-orange-400 mt-1">•</span>
                         <span>{alert}</span>
@@ -292,14 +352,14 @@ export function Step5Analysis() {
               )}
 
               {/* Cautelas Terapêuticas */}
-              {report.comorbidityImpact.cautions.length > 0 && (
+              {(report.comorbidityImpact.cautions?.length || 0) > 0 && (
                 <div className="mb-4">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-lg">💊</span>
                     <h4 className="text-base font-semibold text-yellow-400">Cautelas Terapêuticas</h4>
                   </div>
                   <ul className="space-y-1 ml-6">
-                    {report.comorbidityImpact.cautions.map((caution, idx) => (
+                    {report.comorbidityImpact.cautions?.map((caution, idx) => (
                       <li key={idx} className="text-sm text-neutral-200 flex items-start gap-2">
                         <span className="text-yellow-400 mt-1">•</span>
                         <span>{caution}</span>
@@ -310,14 +370,14 @@ export function Step5Analysis() {
               )}
 
               {/* Exames a Adicionar */}
-              {report.comorbidityImpact.diagnosticAdds.length > 0 && (
+              {(report.comorbidityImpact.diagnosticAdds?.length || 0) > 0 && (
                 <div className="mb-4">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-lg">🧪</span>
                     <h4 className="text-base font-semibold text-blue-400">Exames Recomendados</h4>
                   </div>
                   <ul className="space-y-1 ml-6">
-                    {report.comorbidityImpact.diagnosticAdds.map((add, idx) => (
+                    {report.comorbidityImpact.diagnosticAdds?.map((add, idx) => (
                       <li key={idx} className="text-sm text-neutral-200 flex items-start gap-2">
                         <span className="text-blue-400 mt-1">•</span>
                         <span>{add}</span>
@@ -328,14 +388,14 @@ export function Step5Analysis() {
               )}
 
               {/* O que Evitar/Ajustar */}
-              {report.comorbidityImpact.diagnosticAvoids.length > 0 && (
+              {(report.comorbidityImpact.diagnosticAvoids?.length || 0) > 0 && (
                 <div>
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-lg">🚫</span>
                     <h4 className="text-base font-semibold text-red-400">Evitar/Ajustar</h4>
                   </div>
                   <ul className="space-y-1 ml-6">
-                    {report.comorbidityImpact.diagnosticAvoids.map((avoid, idx) => (
+                    {report.comorbidityImpact.diagnosticAvoids?.map((avoid, idx) => (
                       <li key={idx} className="text-sm text-neutral-200 flex items-start gap-2">
                         <span className="text-red-400 mt-1">•</span>
                         <span>{avoid}</span>
@@ -354,88 +414,94 @@ export function Step5Analysis() {
             Top 5 Diagnósticos Diferenciais
           </h3>
 
-          {report.differentials.map((dx, idx) => (
+          {report?.differentials?.map((dx, idx) => (
             <Card key={idx} className="p-6">
               <div className="flex items-start justify-between mb-3">
                 <div>
                   <h4 className="text-lg font-semibold text-foreground">
                     {idx + 1}. {dx.name}
                   </h4>
-                  <p className="text-sm text-muted-foreground">Categoria: {getCategoryLabel(dx.category)}</p>
+                  <p className="text-sm text-muted-foreground">Categoria: {getCategoryLabel(dx.category || '')}</p>
                 </div>
                 <div className="text-right">
                   <p className="text-sm text-muted-foreground mb-1">Probabilidade</p>
-                  <p className="text-xl font-bold text-gold">{dx.likelihood}%</p>
+                  <p className="text-xl font-bold text-gold">{dx.likelihood || 0}%</p>
                 </div>
               </div>
 
               <div className="space-y-4 mt-4">
-                <div>
-                  <p className="text-sm font-semibold text-blue-400 mb-2">Justificativas</p>
-                  <ul className="list-disc list-inside space-y-1 text-sm text-foreground/80">
-                    {dx.why.map((reason, i) => (
-                      <li key={i}>{reason}</li>
-                    ))}
-                  </ul>
-                </div>
+                {(dx.why?.length || 0) > 0 && (
+                  <div>
+                    <p className="text-sm font-semibold text-blue-400 mb-2">Justificativas</p>
+                    <ul className="list-disc list-inside space-y-1 text-sm text-foreground/80">
+                      {dx.why?.map((reason, i) => (
+                        <li key={i}>{reason}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
-                <div>
-                  <p className="text-sm font-semibold text-purple-400 mb-2">Como Diagnosticar</p>
-                  <div className="space-y-2">
-                    {dx.diagnostics.map((diag, i) => (
-                      <div key={i} className="p-3 bg-neutral-800/50 rounded-lg border border-neutral-700 break-words">
-                        <div className="flex items-start justify-between flex-wrap sm:flex-nowrap gap-2 mb-1">
-                          <p className="text-sm font-medium text-foreground flex-1 min-w-[150px]">{diag.test}</p>
-                          <span
-                            className={`text-xs px-2 py-1 rounded ${diag.priority === 'ALTA'
-                              ? 'bg-red-900/50 text-red-300'
-                              : diag.priority === 'MEDIA'
-                                ? 'bg-yellow-900/50 text-yellow-300'
-                                : 'bg-blue-900/50 text-blue-300'
-                              }`}
-                          >
-                            {diag.priority}
-                          </span>
+                {(dx.diagnostics?.length || 0) > 0 && (
+                  <div>
+                    <p className="text-sm font-semibold text-purple-400 mb-2">Como Diagnosticar</p>
+                    <div className="space-y-2">
+                      {dx.diagnostics?.map((diag, i) => (
+                        <div key={i} className="p-3 bg-neutral-800/50 rounded-lg border border-neutral-700 break-words">
+                          <div className="flex items-start justify-between flex-wrap sm:flex-nowrap gap-2 mb-1">
+                            <p className="text-sm font-medium text-foreground flex-1 min-w-[150px]">{diag.test}</p>
+                            <span
+                              className={`text-xs px-2 py-1 rounded ${diag.priority === 'ALTA'
+                                ? 'bg-red-900/50 text-red-300'
+                                : diag.priority === 'MEDIA'
+                                  ? 'bg-yellow-900/50 text-yellow-300'
+                                  : 'bg-blue-900/50 text-blue-300'
+                                }`}
+                            >
+                              {diag.priority}
+                            </span>
+                          </div>
+                          <p className="text-xs text-muted-foreground mb-1">
+                            <span className="font-semibold">O que adiciona:</span> {diag.whatItAdds}
+                          </p>
+                          <p className="text-xs text-muted-foreground mb-1">
+                            <span className="font-semibold">Achados esperados:</span> {diag.expectedFindings}
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            <span className="font-semibold">Limitações:</span> {diag.limitations}
+                          </p>
                         </div>
-                        <p className="text-xs text-muted-foreground mb-1">
-                          <span className="font-semibold">O que adiciona:</span> {diag.whatItAdds}
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {(dx.treatment?.length || 0) > 0 && (
+                  <div>
+                    <p className="text-sm font-semibold text-green-400 mb-2">Como Tratar</p>
+                    {dx.treatment?.map((tx, i) => (
+                      <div key={i} className="mb-3 p-3 bg-neutral-800/50 rounded-lg border border-neutral-700">
+                        <p className="text-sm font-semibold text-foreground mb-2">
+                          {tx.phase === '0-6H' ? 'Fase Inicial (0-6h)' : 'Tratamento Definitivo'}
                         </p>
-                        <p className="text-xs text-muted-foreground mb-1">
-                          <span className="font-semibold">Achados esperados:</span> {diag.expectedFindings}
-                        </p>
-                        <p className="text-xs text-muted-foreground">
-                          <span className="font-semibold">Limitações:</span> {diag.limitations}
-                        </p>
+                        <ul className="list-disc list-inside space-y-1 text-sm text-foreground/80 mb-2">
+                          {tx.plan?.map((item, j) => (
+                            <li key={j}>{item}</li>
+                          ))}
+                        </ul>
+                        {(tx.cautions?.length || 0) > 0 && (
+                          <div className="mt-2 pt-2 border-t border-neutral-700">
+                            <p className="text-xs font-semibold text-orange-400 mb-1">Cautelas:</p>
+                            <ul className="list-disc list-inside space-y-1 text-xs text-orange-300/80">
+                              {tx.cautions?.map((caution, j) => (
+                                <li key={j}>{caution}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>
-                </div>
-
-                <div>
-                  <p className="text-sm font-semibold text-green-400 mb-2">Como Tratar</p>
-                  {dx.treatment.map((tx, i) => (
-                    <div key={i} className="mb-3 p-3 bg-neutral-800/50 rounded-lg border border-neutral-700">
-                      <p className="text-sm font-semibold text-foreground mb-2">
-                        {tx.phase === '0-6H' ? 'Fase Inicial (0-6h)' : 'Tratamento Definitivo'}
-                      </p>
-                      <ul className="list-disc list-inside space-y-1 text-sm text-foreground/80 mb-2">
-                        {tx.plan.map((item, j) => (
-                          <li key={j}>{item}</li>
-                        ))}
-                      </ul>
-                      {tx.cautions.length > 0 && (
-                        <div className="mt-2 pt-2 border-t border-neutral-700">
-                          <p className="text-xs font-semibold text-orange-400 mb-1">Cautelas:</p>
-                          <ul className="list-disc list-inside space-y-1 text-xs text-orange-300/80">
-                            {tx.cautions.map((caution, j) => (
-                              <li key={j}>{caution}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
+                )}
               </div>
             </Card>
           ))}
