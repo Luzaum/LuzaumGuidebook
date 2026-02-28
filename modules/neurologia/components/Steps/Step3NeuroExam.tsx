@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ChevronDown, ChevronUp, CheckCircle2, Circle } from 'lucide-react'
+import { ChevronDown, ChevronUp, CheckCircle2, Circle, Stethoscope } from 'lucide-react'
 import { HelpButton } from '../help/HelpButton'
 import { useUiStore } from '../../stores/uiStore'
 
@@ -32,7 +32,7 @@ function SectionHeader({
   return (
     <button
       onClick={onToggle}
-      className="w-full flex items-center justify-between p-4 bg-gradient-to-r from-gold/5 to-transparent border-b border-gold/20 hover:from-gold/10 transition-all group"
+      className="w-full flex items-center justify-between p-4 sm:p-5 bg-gradient-to-r from-gold/5 to-transparent border-b border-gold/20 hover:from-gold/10 transition-all group min-h-[60px]"
     >
       <div className="flex items-center gap-3 flex-1">
         <div className="text-left flex-1">
@@ -143,7 +143,7 @@ function ExamItem({
                   onSelect(opt.value)
                 }}
                 className={`
-                  px-3 py-2 rounded-lg text-sm font-medium border-2 transition-all flex items-center gap-2
+                  px-2 sm:px-3 py-2 min-h-[44px] sm:min-h-0 rounded-lg text-xs sm:text-sm font-medium border-2 transition-all flex items-center gap-1 sm:gap-2
                   ${isSelected
                     ? isNormal
                       ? 'bg-green-900/30 border-green-500 text-green-400 shadow-[0_0_12px_rgba(34,197,94,0.3)]'
@@ -209,22 +209,21 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
   return (
     <div className="space-y-4 pb-24">
       <motion.div
-        initial={{
-          opacity: 0,
-          y: 20,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="flex items-center gap-4 mb-8 bg-neutral-900/50 p-4 rounded-2xl border border-white/5"
       >
-        <h2 className="text-2xl font-bold text-foreground mb-2">
-          Exame Neurológico
-        </h2>
-        <p className="text-muted-foreground text-sm">
-          Avalie cada sistema sistematicamente. Todos os itens possuem
-          orientação clínica detalhada (botão "?").
-        </p>
+        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-teal-500/20 to-emerald-500/20 border border-teal-500/30 flex items-center justify-center shadow-lg shadow-teal-500/10">
+          <Stethoscope className="w-7 h-7 text-teal-400" />
+        </div>
+        <div>
+          <h2 className="text-2xl font-bold text-white mb-1">
+            Exame Neurológico
+          </h2>
+          <p className="text-neutral-400 text-sm">
+            Avalie cada sistema sistematicamente com orientação clínica.
+          </p>
+        </div>
       </motion.div>
 
       {/* SEÇÃO 1: MENTAÇÃO E COMPORTAMENTO */}

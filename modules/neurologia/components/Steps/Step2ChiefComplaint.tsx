@@ -13,6 +13,7 @@ import {
   TrendingUp,
   Droplet,
   FlaskConical,
+  ClipboardList,
 } from 'lucide-react'
 import type { ComplaintContext } from '../../stores/caseStore'
 import { ClockTimelinePicker } from '../Step2/ClockTimelinePicker'
@@ -257,19 +258,21 @@ export function Step2ChiefComplaint({ complaint, setComplaint }: Step2Props) {
   return (
     <div className="space-y-8 pb-24">
       <motion.div
-        initial={{
-          opacity: 0,
-          y: 20,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="flex items-center gap-4 mb-8 bg-neutral-900/50 p-4 rounded-2xl border border-white/5"
       >
-        <h2 className="text-2xl font-bold text-white mb-2">Queixa Principal</h2>
-        <p className="text-neutral-400">
-          Selecione um ou mais sinais observados.
-        </p>
+        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 border border-amber-500/30 flex items-center justify-center shadow-lg shadow-amber-500/10">
+          <ClipboardList className="w-7 h-7 text-amber-400" />
+        </div>
+        <div>
+          <h2 className="text-2xl font-bold text-white mb-1">
+            Queixa Principal
+          </h2>
+          <p className="text-neutral-400 text-sm">
+            Selecione um ou mais sinais observados e o contexto clínico.
+          </p>
+        </div>
       </motion.div>
 
       {/* Cards de Queixa */}
@@ -293,22 +296,19 @@ export function Step2ChiefComplaint({ complaint, setComplaint }: Step2Props) {
               className="relative"
             >
               <Card
-                className={`h-32 flex flex-col items-center justify-center gap-3 transition-all duration-300 ${
-                  isSelected
-                    ? 'border-gold bg-gold/10 ring-1 ring-gold shadow-[0_0_15px_rgba(245,197,66,0.2)]'
-                    : 'hover:border-gold/50 hover:bg-white/5'
-                }`}
+                className={`p-2 sm:p-4 h-32 flex flex-col items-center justify-center gap-2 sm:gap-3 transition-all duration-300 ${isSelected
+                  ? 'border-gold bg-gold/10 ring-1 ring-gold shadow-[0_0_15px_rgba(245,197,66,0.2)]'
+                  : 'hover:border-gold/50 hover:bg-white/5'
+                  }`}
               >
                 <Icon
                   size={32}
-                  className={`transition-colors ${
-                    isSelected ? 'text-gold' : 'text-neutral-500'
-                  }`}
+                  className={`transition-colors ${isSelected ? 'text-gold' : 'text-neutral-500'
+                    }`}
                 />
                 <span
-                  className={`text-sm font-medium text-center ${
-                    isSelected ? 'text-gold' : 'text-neutral-300'
-                  }`}
+                  className={`text-xs sm:text-sm font-medium text-center leading-tight ${isSelected ? 'text-gold' : 'text-neutral-300'
+                    }`}
                 >
                   {item.label}
                 </span>
@@ -345,7 +345,7 @@ export function Step2ChiefComplaint({ complaint, setComplaint }: Step2Props) {
         <label className="text-sm font-medium text-neutral-300 mb-4 block">
           Contexto Clínico
         </label>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-4">
           <label className="flex items-center gap-2 p-3 rounded-lg border border-neutral-700 hover:border-gold/50 cursor-pointer transition-colors">
             <input
               type="checkbox"
@@ -467,7 +467,6 @@ export function Step2ChiefComplaint({ complaint, setComplaint }: Step2Props) {
                       : 'bg-red-900/20 border-red-700/40 hover:bg-red-900/30 hover:border-red-600/50'
                     }
                   `}
-                  title={flag.tooltip}
                 >
                   <input
                     type="checkbox"

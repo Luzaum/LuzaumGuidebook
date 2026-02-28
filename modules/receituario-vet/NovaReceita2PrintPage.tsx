@@ -9,20 +9,13 @@ import React, {
     useState,
 } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { jsPDF } from 'jspdf'
-import html2canvas from 'html2canvas'
 import { RxPrintView } from './RxPrintView'
-<<<<<<< Updated upstream
 import { buildPrintDocFromNovaReceita2 } from './novaReceita2Adapter'
-=======
-import { buildPrintDocsFromNovaReceita2 } from './novaReceita2Adapter'
 import { AddMedicationModal2 } from './components/AddMedicationModal2'
-import { getSignedUrl } from './rxSupabaseStorage'
->>>>>>> Stashed changes
 import { BUILTIN_TEMPLATES } from './builtinTemplates'
 import type { NovaReceita2State, PrescriptionItem, TutorInfo, PatientInfo } from './NovaReceita2Page'
 import type { TemplateZoneKey } from './rxDb'
-import { uploadPrescriptionPdf, attachPdfToPresc, savePrescription } from '../../src/lib/prescriptionsRecords'
+import { savePrescription } from '../../src/lib/prescriptionsRecords'
 import { getStoredClinicId } from '../../src/lib/clinic'
 import { useClinic } from '../../src/components/ClinicProvider'
 import ReceituarioChrome from './ReceituarioChrome'
@@ -280,7 +273,6 @@ function EditorRecommendations({
     )
 }
 
-<<<<<<< Updated upstream
 // ==================== EDITOR: ITEM ====================
 
 function EditorItem({
@@ -425,8 +417,6 @@ function EditorItem({
     )
 }
 
-=======
->>>>>>> Stashed changes
 // ==================== MINI FIELD COMPONENTS ====================
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
@@ -463,11 +453,7 @@ const ZONE_LABEL: Record<TemplateZoneKey, string> = {
 
 export default function NovaReceita2PrintPage() {
     const location = useLocation()
-<<<<<<< Updated upstream
-=======
-    const navigate = useNavigate()
     const { clinicId } = useClinic()
->>>>>>> Stashed changes
     const mode = new URLSearchParams(location.search).get('mode') || 'review'
     const isReviewMode = mode === 'review'
     const isPrintMode = mode === 'print'
@@ -479,45 +465,10 @@ export default function NovaReceita2PrintPage() {
     const [isExporting, setIsExporting] = useState(false)
     const [activeZone, setActiveZone] = useState<TemplateZoneKey | null>(null)
     const [selectedItemId, setSelectedItemId] = useState<string | null>(null)
-<<<<<<< Updated upstream
-    const previewRef = useRef<HTMLDivElement | null>(null)
-    const autoActionFiredRef = useRef(false)
-
-=======
     const [editingItem, setEditingItem] = useState<PrescriptionItem | null>(null)
-    const [activeReviewTab, setActiveReviewTab] = useState<'standard' | 'controlled'>('standard')
     const previewRef = useRef<HTMLDivElement | null>(null)
     const autoActionFiredRef = useRef(false)
 
-    const [rxTheme, setRxTheme] = useState<'dark' | 'light'>(() => {
-        try {
-            return localStorage.getItem('receituario-vet:theme:v1') === 'light' ? 'light' : 'dark'
-        } catch { return 'dark' }
-    })
-    const isDark = rxTheme === 'dark'
-
-    // Generate signed URLs for prescriber images
-    useEffect(() => {
-        const updateSignedUrls = async () => {
-            const signatureUrl = state?.prescriber?.signatureDataUrl;
-            const logoUrl = state?.prescriber?.clinicLogoDataUrl;
-            if (signatureUrl) {
-                const signed = await getSignedUrl(signatureUrl);
-                setSignedSignatureUrl(signed);
-            } else {
-                setSignedSignatureUrl('');
-            }
-            if (logoUrl) {
-                const signed = await getSignedUrl(logoUrl);
-                setSignedLogoUrl(signed);
-            } else {
-                setSignedLogoUrl('');
-            }
-        };
-        updateSignedUrls();
-    }, [state?.prescriber?.signatureDataUrl, state?.prescriber?.clinicLogoDataUrl]);
-
->>>>>>> Stashed changes
     const pushToast = useCallback((msg: string) => {
         setToast(msg)
         window.setTimeout(() => setToast(null), 3500)
@@ -535,18 +486,11 @@ export default function NovaReceita2PrintPage() {
         []
     )
 
-<<<<<<< Updated upstream
     // ==================== MEMO ====================
 
     const printDoc = useMemo(() => {
         if (!state) return null
         return buildPrintDocFromNovaReceita2(state)
-=======
-    const { standardDoc, specialDoc } = useMemo(() => {
-        if (!state) return { standardDoc: null, specialDoc: null }
-        const docs = buildPrintDocsFromNovaReceita2(state)
-        return { standardDoc: docs.standard, specialDoc: docs.specialControl }
->>>>>>> Stashed changes
     }, [state])
 
     const selectedTemplate = useMemo(() => {
@@ -555,14 +499,7 @@ export default function NovaReceita2PrintPage() {
         return BUILTIN_TEMPLATES.find((t) => t.id === id) || BUILTIN_TEMPLATES[0]
     }, [state])
 
-<<<<<<< Updated upstream
     // ==================== EDITOR FOCUS ====================
-=======
-    const selectedControlledTemplate = useMemo(() => {
-        if (!state?.controlledTemplateId) return selectedTemplate
-        return BUILTIN_TEMPLATES.find((t) => t.id === state.controlledTemplateId) || selectedTemplate
-    }, [state, selectedTemplate])
->>>>>>> Stashed changes
 
     const editorFocus: EditorFocus = useMemo(() => {
         if (selectedItemId) return { type: 'item', itemId: selectedItemId }
@@ -595,108 +532,16 @@ export default function NovaReceita2PrintPage() {
         setEditingItem(item)
     }, [state])
 
-<<<<<<< Updated upstream
-    const handlePrint = useCallback(() => {
-        window.print()
-    }, [])
-
-    const handleDownloadPdf = useCallback(async () => {
-        const container = previewRef.current
-        if (!container) {
-            pushToast('Preview não disponível para exportação.')
-            return
-=======
     const saveToSupabase = useCallback(async (silent = false): Promise<string | null> => {
         const patientId = state?.patient?.id
         const targetClinicId = clinicId || getStoredClinicId()
         if (!patientId || !targetClinicId || !state?.tutor?.id) {
             if (!silent) pushToast('Preencha tutor e paciente antes de salvar.')
             return null
->>>>>>> Stashed changes
         }
-
-        const canvas = container.querySelector('[data-rx-print-canvas="sheet"]') as HTMLElement | null
-        const target = canvas || container
 
         setIsExporting(true)
         try {
-<<<<<<< Updated upstream
-            const renderedCanvas = await html2canvas(target, {
-                scale: 2,
-                backgroundColor: '#ffffff',
-                useCORS: true,
-                logging: false,
-            })
-
-            const pdf = new jsPDF({
-                orientation: 'portrait',
-                unit: 'mm',
-                format: (selectedTemplate?.paperSize || 'A4').toLowerCase() as 'a4' | 'a5',
-            })
-
-            const img = renderedCanvas.toDataURL('image/png')
-            const pageW = pdf.internal.pageSize.getWidth()
-            const pageH = pdf.internal.pageSize.getHeight()
-            pdf.addImage(img, 'PNG', 0, 0, pageW, pageH, undefined, 'FAST')
-
-            const fileName = buildPdfFileName(
-                state?.patient?.name || 'PACIENTE',
-                state?.tutor?.name || 'TUTOR'
-            )
-            pdf.save(fileName)
-            pushToast(`PDF gerado: ${fileName}`)
-
-            // Ensure prescription record exists before uploading PDF
-            let effectivePrescriptionId = state?.supabaseId
-            const patientId = state?.patient?.id
-            const clinicId = getStoredClinicId()
-            if (!effectivePrescriptionId && patientId && clinicId && state?.tutor?.id) {
-                try {
-                    const payload = {
-                        patient_id: patientId,
-                        tutor_id: state.tutor.id,
-                        clinic_id: clinicId,
-                        content: {
-                            kind: selectedTemplate?.documentKindTarget as any,
-                            templateId: state.templateId,
-                            printDoc,
-                            stateSnapshot: state,
-                            createdAtLocal: new Date().toISOString(),
-                            appVersion: '2.0.0-parity'
-                        }
-                    }
-                    const saved = await savePrescription(payload)
-                    effectivePrescriptionId = saved.id
-                    // Update local state with new supabaseId
-                    updateState(prev => ({ ...prev, supabaseId: saved.id }))
-                } catch (saveErr) {
-                    console.error('[Rx2Print] Failed to save prescription', saveErr)
-                    // Continue without upload
-                }
-            }
-
-            // Upload para Supabase Storage (best-effort, não bloqueia o usuário)
-            if (effectivePrescriptionId && patientId && clinicId) {
-                try {
-                    const blob = pdf.output('blob')
-                    const pdfPath = await uploadPrescriptionPdf({
-                        clinicId,
-                        patientId,
-                        prescriptionId: effectivePrescriptionId,
-                        blob,
-                    })
-                    await attachPdfToPresc({ prescriptionId: effectivePrescriptionId, pdfPath, clinicId })
-                    if (import.meta.env.DEV) {
-                        console.log('[Rx2Print] PDF salvo no storage', { pdfPath })
-                    }
-                } catch (uploadErr) {
-                    console.error('[Rx2Print] Storage upload failed (non-fatal)', uploadErr)
-                }
-            }
-        } catch (err) {
-            console.error('[Rx2Print] PDF export failed', err)
-            pushToast('Erro ao gerar PDF. Tente imprimir diretamente.')
-=======
             const payload = {
                 id: state.supabaseId || undefined,
                 patient_id: patientId,
@@ -705,7 +550,7 @@ export default function NovaReceita2PrintPage() {
                 content: {
                     kind: (selectedTemplate?.documentKindTarget || 'standard') as any,
                     templateId: state.templateId,
-                    printDoc: standardDoc || specialDoc,
+                    printDoc,
                     stateSnapshot: state,
                     createdAtLocal: new Date().toISOString(),
                     appVersion: '2.0.0',
@@ -719,38 +564,21 @@ export default function NovaReceita2PrintPage() {
             console.error('[Rx2Print] Save failed', err)
             if (!silent) pushToast('Erro ao salvar. Tente novamente.')
             return null
->>>>>>> Stashed changes
         } finally {
             setIsExporting(false)
         }
-<<<<<<< Updated upstream
-    }, [state, selectedTemplate, pushToast, updateState, printDoc])
-=======
-    }, [state, clinicId, selectedTemplate, standardDoc, specialDoc, pushToast, updateState])
+    }, [state, clinicId, selectedTemplate, printDoc, pushToast, updateState])
 
     const handlePrint = useCallback(async () => {
-        if (isReviewMode) {
-            const savedId = await saveToSupabase(true)
-            if (!savedId) return
-            navigate(`?mode=print`)
-        } else {
-            await saveToSupabase(true)
-            window.print()
-        }
-    }, [isReviewMode, navigate, saveToSupabase])
+        await saveToSupabase(true)
+        window.print()
+    }, [saveToSupabase])
 
-    const handleSavePdf = useCallback(async () => {
-        if (isReviewMode) {
-            const savedId = await saveToSupabase(true)
-            if (!savedId) return
-            navigate(`?mode=pdf`)
-        } else {
-            pushToast('💡 No diálogo que abrir, escolha "Salvar como PDF"')
-            await saveToSupabase(true)
-            setTimeout(() => window.print(), 500)
-        }
-    }, [isReviewMode, navigate, pushToast, saveToSupabase])
->>>>>>> Stashed changes
+    const handleDownloadPdf = useCallback(async () => {
+        pushToast('💡 No diálogo que abrir, escolha "Salvar como PDF"')
+        await saveToSupabase(true)
+        setTimeout(() => window.print(), 500)
+    }, [pushToast, saveToSupabase])
 
     const handleWhatsApp = useCallback(async () => {
         const phone = state?.tutor?.phone || ''
@@ -762,18 +590,12 @@ export default function NovaReceita2PrintPage() {
         const normalized = digits.startsWith('55') ? digits : `55${digits}`
         const msg = `Olá ${state?.tutor?.name || ''}, segue a receita do paciente ${state?.patient?.name || ''}.`
         window.open(`https://wa.me/${normalized}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer')
-        try { await handleDownloadPdf() } catch { /* ignore */ }
-    }, [state, pushToast, handleDownloadPdf])
+    }, [state, pushToast])
 
     useEffect(() => {
-<<<<<<< Updated upstream
         if (!printDoc || autoActionFiredRef.current) return
-        if (isPrintMode) {
-=======
-        if (!(standardDoc || specialDoc) || autoActionFiredRef.current) return
         const runAutoAction = async () => {
             if (!isPrintMode && !isPdfMode) return
->>>>>>> Stashed changes
             autoActionFiredRef.current = true
             const savedId = await saveToSupabase(true)
             if (!savedId) {
@@ -782,19 +604,10 @@ export default function NovaReceita2PrintPage() {
             }
             window.setTimeout(() => window.print(), 600)
         }
-<<<<<<< Updated upstream
-        if (isPdfMode) {
-            autoActionFiredRef.current = true
-            const t = window.setTimeout(() => handleDownloadPdf(), 600)
-            return () => window.clearTimeout(t)
-        }
-    }, [isPrintMode, isPdfMode, printDoc, handleDownloadPdf])
+        void runAutoAction()
+    }, [isPrintMode, isPdfMode, printDoc, saveToSupabase])
 
     // ==================== EMPTY STATE ====================
-=======
-        void runAutoAction()
-    }, [isPrintMode, isPdfMode, standardDoc, specialDoc, saveToSupabase])
->>>>>>> Stashed changes
 
     if (!state || !printDoc) {
         return (
@@ -841,19 +654,15 @@ export default function NovaReceita2PrintPage() {
                     </button>
                     <button
                         type="button"
-<<<<<<< Updated upstream
-                        className="rounded-lg border border-[#345d2a] bg-[#1a2e16] px-3 py-2 text-sm font-semibold hover:bg-[#22381d]"
-=======
-                        disabled={isSaving}
-                        className={`rounded-lg border px-3 py-2 text-sm font-semibold transition-colors disabled:opacity-50 ${isDark ? 'border-slate-700 bg-slate-800 text-slate-200 hover:bg-slate-700' : 'border-slate-200 bg-slate-100 text-slate-700 hover:bg-slate-200'}`}
+                        disabled={isExporting}
+                        className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm font-semibold text-slate-200 transition-colors hover:bg-slate-700 disabled:opacity-50"
                         onClick={() => saveToSupabase(false)}
                     >
-                        {isSaving ? 'Salvando...' : '💾 Salvar'}
+                        {isExporting ? 'Salvando...' : '💾 Salvar'}
                     </button>
                     <button
                         type="button"
-                        className={`rounded-lg border px-3 py-2 text-sm font-semibold transition-colors ${isDark ? 'border-[#345d2a] bg-[#1a2e16] text-slate-200 hover:bg-[#22381d]' : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50'}`}
->>>>>>> Stashed changes
+                        className="rounded-lg border border-[#345d2a] bg-[#1a2e16] px-3 py-2 text-sm font-semibold text-slate-200 transition-colors hover:bg-[#22381d]"
                         onClick={handlePrint}
                     >
                         🖨️ Imprimir
@@ -880,232 +689,120 @@ export default function NovaReceita2PrintPage() {
                     <div className="mx-auto max-w-[1600px] px-4 py-6">
                         <div className="rxv-review-grid grid grid-cols-1 gap-6 lg:grid-cols-[420px_1fr]">
 
-<<<<<<< Updated upstream
-                        {/* ============ COLUNA ESQUERDA: EDITOR CONTEXTUAL ============ */}
-                        <div className="rxv-review-editor-col space-y-4">
-                            {/* Hint */}
-                            <div className="rounded-xl border border-slate-800 bg-black/40 p-4">
-                                <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-3">
-                                    Editor
-                                </p>
-                                <p className="text-sm font-semibold text-white mb-1">{editorTitle}</p>
-                                {!editorFocus && (
-                                    <div className="space-y-2 text-xs text-slate-500 mt-3">
-                                        <p className="flex items-center gap-2">
-                                            <span className="inline-block w-3 h-3 rounded-full border border-[#39ff14]/50 bg-[#39ff14]/10" />
-                                            Clique em <strong className="text-slate-400">Identificação</strong> para editar tutor/paciente
-                                        </p>
-                                        <p className="flex items-center gap-2">
-                                            <span className="inline-block w-3 h-3 rounded-full border border-[#39ff14]/50 bg-[#39ff14]/10" />
-                                            Clique em <strong className="text-slate-400">Recomendações</strong> para editar orientações
-                                        </p>
-                                        <p className="flex items-center gap-2">
-                                            <span className="inline-block w-3 h-3 rounded-full border border-[#39ff14]/50 bg-[#39ff14]/10" />
-                                            Clique em qualquer <strong className="text-slate-400">medicamento</strong> para editar dose/instrução
-                                        </p>
-                                    </div>
-                                )}
-                            </div>
-
-                            {/* Zone buttons (atalho rápido) */}
-                            <div className="flex flex-wrap gap-2">
-                                {(['patient', 'recommendations'] as TemplateZoneKey[]).map((zone) => (
-                                    <button
-                                        key={zone}
-                                        type="button"
-                                        onClick={() => handleZoneSelect(zone)}
-                                        className={`rounded-lg border px-3 py-1.5 text-xs font-bold transition-all ${activeZone === zone && !selectedItemId
-                                            ? 'border-[#39ff14]/60 bg-[#39ff14]/10 text-[#39ff14]'
-                                            : 'border-slate-700 bg-slate-800/30 text-slate-400 hover:border-slate-600 hover:text-slate-200'
-                                            }`}
-                                    >
-                                        {ZONE_LABEL[zone]}
-                                    </button>
-                                ))}
-                                {state.items.map((item, idx) => (
-                                    <button
-                                        key={item.id}
-                                        type="button"
-                                        onClick={() => handleItemSelect(item.id)}
-                                        className={`rounded-lg border px-3 py-1.5 text-xs font-bold transition-all ${selectedItemId === item.id
-                                            ? 'border-[#39ff14]/60 bg-[#39ff14]/10 text-[#39ff14]'
-                                            : 'border-slate-700 bg-slate-800/30 text-slate-400 hover:border-slate-600 hover:text-slate-200'
-                                            }`}
-                                    >
-                                        #{idx + 1} {item.name.slice(0, 18)}
-                                    </button>
-                                ))}
-                            </div>
-
-                            {/* Editor content */}
-                            <div className="rounded-xl border border-slate-800 bg-black/30 p-4">
-                                {editorFocus?.type === 'identification' && (
-                                    <EditorIdentification state={state} onStateChange={updateState} />
-                                )}
-                                {editorFocus?.type === 'recommendations' && (
-                                    <EditorRecommendations state={state} onStateChange={updateState} />
-                                )}
-                                {editorFocus?.type === 'item' && (
-                                    <EditorItem
-                                        state={state}
-                                        itemId={editorFocus.itemId}
-                                        onStateChange={updateState}
-                                    />
-                                )}
-                                {!editorFocus && (
-                                    <p className="py-4 text-center text-xs text-slate-600">
-                                        Selecione uma seção ou item no preview →
-                                    </p>
-                                )}
-                            </div>
-                        </div>
-
-                        {/* ============ COLUNA DIREITA: PREVIEW INTERATIVO ============ */}
-                        <div className="rxv-review-preview-col lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:overflow-y-auto">
-                            <div className="rxv-review-preview-inner rounded-xl border border-slate-700 bg-slate-900/50 overflow-hidden">
-                                <div className="flex items-center justify-between border-b border-slate-800 px-4 py-2 bg-black/40">
-                                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                                        Preview clicável — {selectedTemplate.name}
-                                    </span>
-                                    <span className="text-[10px] text-slate-600">
-                                        {activeZone ? `Zona ativa: ${ZONE_LABEL[activeZone] || activeZone}` : selectedItemId ? 'Item selecionado' : 'Nenhuma seleção'}
-                                    </span>
-                                </div>
-
-                                <div
-                                    className="overflow-auto"
-                                    style={{ maxHeight: 'calc(100vh - 10rem)' }}
-                                >
-                                    <div ref={previewRef} className="p-4">
-                                        <RxPrintView
-                                            doc={printDoc}
-                                            template={selectedTemplate}
-                                            interactive={true}
-                                            activeZone={activeZone || undefined}
-                                            onZoneSelect={handleZoneSelect}
-                                            selectedItemId={selectedItemId || undefined}
-                                            onItemSelect={handleItemSelect}
-                                        />
-=======
-                            {/* ============ COLUNA ESQUERDA: EDITOR CONTEXTUAL ============ */}
-                            <div className="rxv-review-editor-col space-y-4">
-                                <div className={`rounded-xl border p-4 ${isDark ? 'border-slate-800 bg-black/40' : 'border-slate-200 bg-white'}`}>
-                                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-3">Editor</p>
-                                    <p className={`text-sm font-semibold mb-1 ${isDark ? 'text-white' : 'text-slate-900'}`}>{editorTitle}</p>
-                                    {!editorFocus && (
-                                        <div className="space-y-2 text-xs text-slate-500 mt-3">
-                                            <p className="flex items-center gap-2">
-                                                <span className="inline-block w-3 h-3 rounded-full border border-[#39ff14]/50 bg-[#39ff14]/10" />
-                                                Clique em <strong className={isDark ? "text-slate-400" : "text-slate-600"}>Identificação</strong> para editar
-                                            </p>
-                                            <p className="flex items-center gap-2">
-                                                <span className="inline-block w-3 h-3 rounded-full border border-[#39ff14]/50 bg-[#39ff14]/10" />
-                                                Clique em <strong className={isDark ? "text-slate-400" : "text-slate-600"}>Recomendações</strong> para editar
-                                            </p>
-                                        </div>
-                                    )}
-                                </div>
-
-                                <div className="flex flex-wrap gap-2">
-                                    {(['patient', 'recommendations'] as TemplateZoneKey[]).map((zone) => (
-                                        <button
-                                            key={zone}
-                                            type="button"
-                                            onClick={() => handleZoneSelect(zone)}
-                                            className={`rounded-lg border px-3 py-1.5 text-xs font-bold transition-all ${activeZone === zone && !selectedItemId
-                                                ? 'border-[#39ff14]/60 bg-[#39ff14]/10 text-[#39ff14]'
-                                                : isDark ? 'border-slate-700 bg-slate-800/30 text-slate-400 hover:border-slate-600' : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'
-                                                }`}
-                                        >
-                                            {ZONE_LABEL[zone]}
-                                        </button>
-                                    ))}
-                                </div>
-
-                                <div className={`rounded-xl border p-4 ${isDark ? 'border-slate-800 bg-black/30' : 'border-slate-200 bg-white'}`}>
-                                    {editorFocus?.type === 'identification' && (
-                                        <EditorIdentification state={state} onStateChange={updateState} />
-                                    )}
-                                    {editorFocus?.type === 'recommendations' && (
-                                        <EditorRecommendations state={state} onStateChange={updateState} />
-                                    )}
-                                    {editorFocus?.type === 'item' && (
-                                        <div className="rounded-xl border border-slate-700 bg-black/40 p-3 text-xs text-slate-400">
-                                            Edição completa do item aberta no modal.
-                                        </div>
-                                    )}
-                                    {!editorFocus && (
-                                        <p className="py-4 text-center text-xs text-slate-600">Selecione uma seção ou item no preview →</p>
-                                    )}
-                                </div>
-                            </div>
-
-                            {/* ============ COLUNA DIREITA: PREVIEW INTERATIVO ============ */}
-                            <div className="rxv-review-preview-col lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:overflow-y-auto">
-                                <div className={`rxv-review-preview-inner rounded-xl border overflow-hidden ${isDark ? 'border-slate-700 bg-slate-900/50' : 'border-slate-200 bg-white shadow-sm'}`}>
-                                    <div className={`flex items-center justify-between border-b px-4 py-2 ${isDark ? 'border-slate-800 bg-black/40' : 'border-slate-100 bg-slate-50'}`}>
-                                        {standardDoc && specialDoc ? (
-                                            <div className="flex gap-1">
-                                                <button
-                                                    type="button"
-                                                    onClick={() => setActiveReviewTab('standard')}
-                                                    className={`rounded px-3 py-1 text-[10px] font-black uppercase tracking-widest transition-all ${activeReviewTab === 'standard' ? 'bg-slate-700 text-white' : 'text-slate-500 hover:text-slate-300'}`}
-                                                >
-                                                    📄 Padrão
-                                                </button>
-                                                <button
-                                                    type="button"
-                                                    onClick={() => setActiveReviewTab('controlled')}
-                                                    className={`rounded px-3 py-1 text-[10px] font-black uppercase tracking-widest transition-all ${activeReviewTab === 'controlled' ? 'bg-amber-900/50 text-amber-300' : 'text-slate-500 hover:text-amber-400'}`}
-                                                >
-                                                    💊 Controlada
-                                                </button>
-                                            </div>
-                                        ) : (
-                                            <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Preview clicável</span>
-                                        )}
-                                    </div>
-
-                                    <div className="overflow-auto" style={{ maxHeight: 'calc(100vh - 10rem)' }}>
-                                        <div ref={previewRef} className="p-4">
-                                            <div className="flex flex-col gap-6">
-                                                {activeReviewTab === 'standard' && standardDoc && (
-                                                    <RxPrintView
-                                                        doc={standardDoc}
-                                                        template={selectedTemplate}
-                                                        signatureDataUrl={signedSignatureUrl}
-                                                        logoDataUrl={signedLogoUrl}
-                                                        interactive={true}
-                                                        activeZone={activeZone || undefined}
-                                                        onZoneSelect={handleZoneSelect}
-                                                        selectedItemId={selectedItemId || undefined}
-                                                        onItemSelect={handleItemSelect}
-                                                    />
-                                                )}
-                                                {activeReviewTab === 'controlled' && specialDoc && (
-                                                    <RxPrintView
-                                                        doc={specialDoc}
-                                                        template={selectedControlledTemplate}
-                                                        signatureDataUrl={signedSignatureUrl}
-                                                        logoDataUrl={signedLogoUrl}
-                                                        interactive={true}
-                                                        activeZone={activeZone || undefined}
-                                                        onZoneSelect={handleZoneSelect}
-                                                        selectedItemId={selectedItemId || undefined}
-                                                        onItemSelect={handleItemSelect}
-                                                    />
-                                                )}
-                                            </div>
-                                        </div>
->>>>>>> Stashed changes
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
+        {/* ============ COLUNA ESQUERDA: EDITOR CONTEXTUAL ============ */}
+        <div className="rxv-review-editor-col space-y-4">
+            {/* Hint */}
+            <div className="rounded-xl border border-slate-800 bg-black/40 p-4">
+                <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-3">
+                    Editor
+                </p>
+                <p className="text-sm font-semibold text-white mb-1">{editorTitle}</p>
+                {!editorFocus && (
+                    <div className="space-y-2 text-xs text-slate-500 mt-3">
+                        <p className="flex items-center gap-2">
+                            <span className="inline-block w-3 h-3 rounded-full border border-[#39ff14]/50 bg-[#39ff14]/10" />
+                            Clique em <strong className="text-slate-400">Identificação</strong> para editar tutor/paciente
+                        </p>
+                        <p className="flex items-center gap-2">
+                            <span className="inline-block w-3 h-3 rounded-full border border-[#39ff14]/50 bg-[#39ff14]/10" />
+                            Clique em <strong className="text-slate-400">Recomendações</strong> para editar orientações
+                        </p>
+                        <p className="flex items-center gap-2">
+                            <span className="inline-block w-3 h-3 rounded-full border border-[#39ff14]/50 bg-[#39ff14]/10" />
+                            Clique em qualquer <strong className="text-slate-400">medicamento</strong> para editar dose/instrução
+                        </p>
                     </div>
+                )}
+            </div>
 
-                    <style>{`
+            {/* Zone buttons (atalho rápido) */}
+            <div className="flex flex-wrap gap-2">
+                {(['patient', 'recommendations'] as TemplateZoneKey[]).map((zone) => (
+                    <button
+                        key={zone}
+                        type="button"
+                        onClick={() => handleZoneSelect(zone)}
+                        className={`rounded-lg border px-3 py-1.5 text-xs font-bold transition-all ${activeZone === zone && !selectedItemId
+                            ? 'border-[#39ff14]/60 bg-[#39ff14]/10 text-[#39ff14]'
+                            : 'border-slate-700 bg-slate-800/30 text-slate-400 hover:border-slate-600 hover:text-slate-200'
+                            }`}
+                    >
+                        {ZONE_LABEL[zone]}
+                    </button>
+                ))}
+                {state.items.map((item, idx) => (
+                    <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => handleItemSelect(item.id)}
+                        className={`rounded-lg border px-3 py-1.5 text-xs font-bold transition-all ${selectedItemId === item.id
+                            ? 'border-[#39ff14]/60 bg-[#39ff14]/10 text-[#39ff14]'
+                            : 'border-slate-700 bg-slate-800/30 text-slate-400 hover:border-slate-600 hover:text-slate-200'
+                            }`}
+                    >
+                        #{idx + 1} {item.name.slice(0, 18)}
+                    </button>
+                ))}
+            </div>
+
+            {/* Editor content */}
+            <div className="rounded-xl border border-slate-800 bg-black/30 p-4">
+                {editorFocus?.type === 'identification' && (
+                    <EditorIdentification state={state} onStateChange={updateState} />
+                )}
+                {editorFocus?.type === 'recommendations' && (
+                    <EditorRecommendations state={state} onStateChange={updateState} />
+                )}
+                {editorFocus?.type === 'item' && (
+                    <EditorItem
+                        state={state}
+                        itemId={editorFocus.itemId}
+                        onStateChange={updateState}
+                    />
+                )}
+                {!editorFocus && (
+                    <p className="py-4 text-center text-xs text-slate-600">
+                        Selecione uma seção ou item no preview →
+                    </p>
+                )}
+            </div>
+        </div>
+
+        {/* ============ COLUNA DIREITA: PREVIEW INTERATIVO ============ */}
+        <div className="rxv-review-preview-col lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:overflow-y-auto">
+            <div className="rxv-review-preview-inner rounded-xl border border-slate-700 bg-slate-900/50 overflow-hidden">
+                <div className="flex items-center justify-between border-b border-slate-800 px-4 py-2 bg-black/40">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                        Preview clicável — {selectedTemplate.name}
+                    </span>
+                    <span className="text-[10px] text-slate-600">
+                        {activeZone ? `Zona ativa: ${ZONE_LABEL[activeZone] || activeZone}` : selectedItemId ? 'Item selecionado' : 'Nenhuma seleção'}
+                    </span>
+                </div>
+
+                <div
+                    className="overflow-auto"
+                    style={{ maxHeight: 'calc(100vh - 10rem)' }}
+                >
+                    <div ref={previewRef} className="p-4">
+                        <RxPrintView
+                            doc={printDoc}
+                            template={selectedTemplate}
+                            interactive={true}
+                            activeZone={activeZone || undefined}
+                            onZoneSelect={handleZoneSelect}
+                            selectedItemId={selectedItemId || undefined}
+                            onItemSelect={handleItemSelect}
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                    </div>
+                </div>
+
+                <style>{`
                         @media print {
                             body { background: white !important; color: black !important; margin: 0 !important; padding: 0 !important; }
                             .print\\:hidden { display: none !important; }
@@ -1119,89 +816,35 @@ export default function NovaReceita2PrintPage() {
                         }
                     `}</style>
 
-                    {toast && (
-                        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 rounded-xl border border-[#3b6c2f] bg-[#12230f] px-6 py-3 text-sm font-semibold text-[#9eff8f] shadow-xl print:hidden">
-                            {toast}
-                        </div>
-                    )}
-
-                    {editingItem && activeClinicId && (
-                        <AddMedicationModal2
-                            open={!!editingItem}
-                            onClose={() => setEditingItem(null)}
-                            onAdd={(nextItem) => {
-                                updateState((prev) => ({
-                                    ...prev,
-                                    items: prev.items.map((it) => (it.id === nextItem.id ? nextItem : it)),
-                                }))
-                                setEditingItem(null)
-                            }}
-                            clinicId={activeClinicId}
-                            patient={state.patient}
-                            manualMode={!!editingItem.isManual}
-                            editingItem={editingItem}
-                        />
-                    )}
-                </div>
-<<<<<<< Updated upstream
-
-                {/* C1: Print CSS para modo review — só imprime a coluna do preview */}
-                <style>{`
-                    @media print {
-                        body { background: white !important; color: black !important; margin: 0 !important; padding: 0 !important; }
-                        .print\\:hidden { display: none !important; }
-
-                        /* Ocultar coluna do editor no modo review */
-                        .rxv-review-editor-col { display: none !important; }
-
-                        /* Mostrar preview em largura total */
-                        .rxv-review-preview-col {
-                            display: block !important;
-                            width: 100% !important;
-                            max-height: none !important;
-                            overflow: visible !important;
-                            position: static !important;
-                        }
-
-                        /* Remover grid / layout app */
-                        .rxv-review-grid {
-                            display: block !important;
-                            padding: 0 !important;
-                            margin: 0 !important;
-                        }
-
-                        /* Remove decorações do container */
-                        .rxv-review-preview-inner {
-                            border: none !important;
-                            background: white !important;
-                            overflow: visible !important;
-                        }
-
-                        /* Remove transforms */
-                        [style*="transform"] {
-                            transform: none !important;
-                            width: 100% !important;
-                        }
-
-                        @page { margin: 10mm; }
-                    }
-                `}</style>
-
-                {/* Toast */}
                 {toast && (
                     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 rounded-xl border border-[#3b6c2f] bg-[#12230f] px-6 py-3 text-sm font-semibold text-[#9eff8f] shadow-xl print:hidden">
                         {toast}
                     </div>
                 )}
+
+                {editingItem && activeClinicId && (
+                    <AddMedicationModal2
+                        open={!!editingItem}
+                        onClose={() => setEditingItem(null)}
+                        onAdd={(nextItem) => {
+                            updateState((prev) => ({
+                                ...prev,
+                                items: prev.items.map((it) => (it.id === nextItem.id ? nextItem : it)),
+                            }))
+                            setEditingItem(null)
+                        }}
+                        clinicId={activeClinicId}
+                        patient={state.patient}
+                        manualMode={!!editingItem.isManual}
+                        editingItem={editingItem}
+                    />
+                )}
             </div>
-=======
             </ReceituarioChrome>
->>>>>>> Stashed changes
         )
     }
 
     return (
-<<<<<<< Updated upstream
         <>
             {/* TELA: Interface dark (oculta durante window.print) */}
             <div className="rxv-print-root min-h-screen bg-[#0c1a09] text-slate-100 print:hidden">
@@ -1211,7 +854,6 @@ export default function NovaReceita2PrintPage() {
                     className="rxv-print-page-wrapper mx-auto max-w-5xl px-4 py-8"
                     style={{ background: 'radial-gradient(#1e3a18 1px, transparent 1px)', backgroundSize: '18px 18px' }}
                 >
-                    {/* previewRef usado SOMENTE pelo html2canvas para export PDF */}
                     <div ref={previewRef} className="rxv-print-canvas">
                         <RxPrintView
                             doc={printDoc}
@@ -1235,33 +877,13 @@ export default function NovaReceita2PrintPage() {
                 />
             </div>
 
-=======
-        <div className="hidden print:block bg-white text-black">
-            {standardDoc && (
-                <div className="print-page-break-after">
-                    <RxPrintView doc={standardDoc} template={selectedTemplate} signatureDataUrl={signedSignatureUrl} logoDataUrl={signedLogoUrl} />
-                </div>
-            )}
-            {specialDoc && (
-                <div className="print-page-break-after">
-                    <RxPrintView doc={specialDoc} template={selectedControlledTemplate} signatureDataUrl={signedSignatureUrl} logoDataUrl={signedLogoUrl} />
-                </div>
-            )}
->>>>>>> Stashed changes
             <style>{`
                 @page { margin: 10mm; }
                 @media print {
-<<<<<<< Updated upstream
                     body { background: white !important; margin: 0 !important; padding: 0 !important; }
-=======
-                    .print-page-break-after { page-break-after: always; break-after: page; }
-                    .print-page-break-after:last-child { page-break-after: auto; break-after: auto; }
                     article { break-inside: avoid; page-break-inside: avoid; }
-                    .rxv-print-preview > div:first-child { display: none !important; }
-                    .rxv-print-preview { border: none !important; box-shadow: none !important; }
->>>>>>> Stashed changes
                 }
             `}</style>
-        </div>
+        </>
     )
 }

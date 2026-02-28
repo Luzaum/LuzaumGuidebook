@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { Button } from '../UI/Button'
 import { Card } from '../UI/Card'
 import { Slider } from '../UI/Slider'
-import { Dog, Cat } from 'lucide-react'
+import { Dog, Cat, User } from 'lucide-react'
 import type { Patient } from '../../stores/caseStore'
 import type { ComorbidityKey, ComorbidityItem } from '../../stores/caseStore'
 import { normalizePatient } from '../../lib/validation/normalizePatient'
@@ -90,21 +90,21 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
   return (
     <div className="space-y-8 pb-24">
       <motion.div
-        initial={{
-          opacity: 0,
-          y: 20,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="flex items-center gap-4 mb-8 bg-neutral-900/50 p-4 rounded-2xl border border-white/5"
       >
-        <h2 className="text-2xl font-bold text-white mb-2">
-          Identificação do Paciente
-        </h2>
-        <p className="text-neutral-400">
-          Dados básicos para contextualizar o exame.
-        </p>
+        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 flex items-center justify-center shadow-lg shadow-indigo-500/10">
+          <User className="w-7 h-7 text-indigo-400" />
+        </div>
+        <div>
+          <h2 className="text-2xl font-bold text-white mb-1">
+            Identificação do Paciente
+          </h2>
+          <p className="text-neutral-400 text-sm">
+            Dados básicos para contextualizar o exame.
+          </p>
+        </div>
       </motion.div>
 
       {/* Species */}
@@ -130,22 +130,66 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
       {/* Age & Weight */}
       <Card>
         <div className="space-y-6">
-          <Slider
-            label="Idade (anos)"
-            value={patient.ageYears || 0}
-            min={0}
-            max={20}
-            onChange={(v) => handleSetPatient({ ageYears: v })}
-            unit="anos"
-          />
-          <Slider
-            label="Idade (meses)"
-            value={patient.ageMonths || 0}
-            min={0}
-            max={11}
-            onChange={(v) => handleSetPatient({ ageMonths: v })}
-            unit="meses"
-          />
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="text-sm font-medium text-neutral-300 mb-2 block">
+                Idade (anos)
+              </label>
+              <select
+                value={patient.ageYears || 0}
+                onChange={(e) => {
+                  const years = parseInt(e.target.value, 10)
+                  const months = patient.ageMonths || 0
+
+                  // Auto-calcular estágio de vida
+                  let lifeStage: Patient['lifeStage'] = undefined
+                  if (years === 0 && months <= 5) lifeStage = 'neonate'
+                  else if ((years === 0 && months > 5) || (years === 1 && months === 0)) lifeStage = 'pediatric'
+                  else if (years >= 1 && years < 7) lifeStage = 'adult'
+                  else if (years >= 7) lifeStage = 'geriatric'
+
+                  handleSetPatient({ ageYears: years, lifeStage })
+                }}
+                className="w-full bg-neutral-900 border border-neutral-700 rounded-xl p-3 text-base sm:text-sm text-white focus:border-gold focus:ring-1 focus:ring-gold outline-none"
+              >
+                {Array.from({ length: 26 }, (_, i) => (
+                  <option key={i} value={i}>
+                    {i} {i === 1 ? 'ano' : 'anos'}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="text-sm font-medium text-neutral-300 mb-2 block">
+                Idade (meses)
+              </label>
+              <select
+                value={patient.ageMonths || 0}
+                onChange={(e) => {
+                  const months = parseInt(e.target.value, 10)
+                  const years = patient.ageYears || 0
+
+                  // Auto-calcular estágio de vida
+                  let lifeStage: Patient['lifeStage'] = undefined
+                  if (years === 0 && months <= 5) lifeStage = 'neonate'
+                  else if ((years === 0 && months > 5) || (years === 1 && months === 0)) lifeStage = 'pediatric'
+                  else if (years >= 1 && years < 7) lifeStage = 'adult'
+                  else if (years >= 7) lifeStage = 'geriatric'
+
+                  handleSetPatient({ ageMonths: months, lifeStage })
+                }}
+                className="w-full bg-neutral-900 border border-neutral-700 rounded-xl p-3 text-base sm:text-sm text-white focus:border-gold focus:ring-1 focus:ring-gold outline-none"
+              >
+                {Array.from({ length: 12 }, (_, i) => (
+                  <option key={i} value={i}>
+                    {i} {i === 1 ? 'mês' : 'meses'}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
           <div className="pt-4 border-t border-white/5">
             <label className="text-sm font-medium text-neutral-300 mb-2 block">
               Peso (kg)
@@ -158,8 +202,9 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
                   weightKg: e.target.value ? parseFloat(e.target.value) : null,
                 })
               }
-              className="w-full bg-neutral-900 border border-neutral-700 rounded-xl p-3 text-white focus:border-gold focus:ring-1 focus:ring-gold outline-none"
+              className="w-full bg-neutral-900 border border-neutral-700 rounded-xl p-3 text-base sm:text-sm text-white focus:border-gold focus:ring-1 focus:ring-gold outline-none"
               placeholder="0.0 kg"
+              step="0.1"
             />
           </div>
         </div>
@@ -295,8 +340,8 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
                 <div
                   key={key}
                   className={`p-3 rounded-lg border transition-all ${isSelected
-                      ? 'border-gold/50 bg-gold/10'
-                      : 'border-white/10 bg-white/5 hover:border-white/20'
+                    ? 'border-gold/50 bg-gold/10'
+                    : 'border-white/10 bg-white/5 hover:border-white/20'
                     }`}
                 >
                   <div className="flex items-start justify-between gap-3">
@@ -334,9 +379,9 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
                             onClick={() =>
                               updateComorbiditySeverity(key, severity === sev ? undefined : sev)
                             }
-                            className={`px-3 py-1 text-xs rounded transition-colors ${severity === sev
-                                ? 'bg-gold/20 text-gold border border-gold/40'
-                                : 'bg-white/5 text-neutral-400 border border-white/10 hover:border-white/20'
+                            className={`px-3 py-2 sm:py-1 text-sm sm:text-xs rounded transition-colors ${severity === sev
+                              ? 'bg-gold/20 text-gold border border-gold/40'
+                              : 'bg-white/5 text-neutral-400 border border-white/10 hover:border-white/20'
                               }`}
                           >
                             {sev.charAt(0).toUpperCase() + sev.slice(1)}

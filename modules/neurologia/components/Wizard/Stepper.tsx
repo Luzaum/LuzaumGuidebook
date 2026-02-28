@@ -10,7 +10,7 @@ export function Stepper({ currentStep, totalSteps }: StepperProps) {
   return (
     <div className="fixed top-20 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-white/10">
       <div className="container max-w-3xl mx-auto px-4 py-4">
-        <div className="flex items-center justify-between sm:justify-between overflow-x-auto no-scrollbar gap-2 sm:gap-0 pb-1 sm:pb-0">
+        <div className="flex items-center justify-between sm:justify-between overflow-x-auto no-scrollbar gap-2 sm:gap-0 pb-1 sm:pb-0 snap-x snap-mandatory">
           {Array.from({ length: totalSteps }, (_, i) => {
             const step = i + 1
             const isActive = step === currentStep
