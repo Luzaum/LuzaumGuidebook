@@ -49,9 +49,10 @@ export function Modal({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
       <div
         className={cn(
-          'relative w-full bg-card border border-border/40 rounded-2xl shadow-2xl max-h-[90vh] overflow-hidden',
+          'relative w-full bg-card border border-border/40 rounded-2xl shadow-2xl max-h-[90vh] overflow-hidden text-left select-text',
           sizeStyles[size],
         )}
+        onClick={(e) => e.stopPropagation()}
       >
         {title && (
           <div className="flex items-center justify-between p-6 border-b border-border/40">

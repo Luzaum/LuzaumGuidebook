@@ -1,14 +1,14 @@
 import type { CaseReport } from '../../types/analysis'
 
-const GEMINI_API_KEY = 'AIzaSyCrdeE4tvCvR4kjrmatWjlm0QgtBsPNf6E'
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || ''
 
 export async function generateGeminiAnalysis(
-    patientSummary: string,
-    historySummary: string,
-    examSummary: string,
-    rawCaseState: any
+  patientSummary: string,
+  historySummary: string,
+  examSummary: string,
+  rawCaseState: any
 ): Promise<CaseReport> {
-    const prompt = `
+  const prompt = `
   Você é um Neurologista Veterinário Especialista (Diplomado).
   Seu objetivo é analisar os dados do paciente, o histórico clínico e o exame neurológico fornecido e retornar as conclusões estruturadas estritamente em JSON.
   
@@ -80,44 +80,44 @@ export async function generateGeminiAnalysis(
   MUITO IMPORTANTE: O JSON deve ser em Português-BR. Nao inclua nenhuma tag markdown \`\`\`json no inicio ou no fim, retorne apenas o JSON limpo!
   `
 
-    try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                contents: [{ parts: [{ text: prompt }] }],
-                generationConfig: {
-                    temperature: 0.2, // Baixa temperatura para preservar precisão médica
-                    responseMimeType: "application/json",
-                }
-            })
-        })
-
-        if (!response.ok) {
-            console.error(await response.text())
-            throw new Error('Erro na API Gemini (Verifique a chave ou limites)')
+  try {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: prompt }] }],
+        generationConfig: {
+          temperature: 0.2, // Baixa temperatura para preservar precisão médica
+          responseMimeType: "application/json",
         }
+      })
+    })
 
-        const data = await response.json()
-        const textResult = data.candidates?.[0]?.content?.parts?.[0]?.text
-        if (!textResult) throw new Error('Retorno vazio do LLM')
-
-        // As vezes a API ignora instructions e manda markdown anyway.
-        const cleanText = textResult.replace(/```(?:json)?/gi, '').trim()
-        const parsed = JSON.parse(cleanText)
-
-        return {
-            generatedAtISO: new Date().toISOString(),
-            patientSummary,
-            historySummary,
-            examSummary,
-            ...parsed
-        } as CaseReport
-
-    } catch (err) {
-        console.error("Erro ao gerar análise NeuroVet AI: ", err)
-        throw err
+    if (!response.ok) {
+      console.error(await response.text())
+      throw new Error('Erro na API Gemini (Verifique a chave ou limites)')
     }
+
+    const data = await response.json()
+    const textResult = data.candidates?.[0]?.content?.parts?.[0]?.text
+    if (!textResult) throw new Error('Retorno vazio do LLM')
+
+    // As vezes a API ignora instructions e manda markdown anyway.
+    const cleanText = textResult.replace(/```(?:json)?/gi, '').trim()
+    const parsed = JSON.parse(cleanText)
+
+    return {
+      generatedAtISO: new Date().toISOString(),
+      patientSummary,
+      historySummary,
+      examSummary,
+      ...parsed
+    } as CaseReport
+
+  } catch (err) {
+    console.error("Erro ao gerar análise NeuroVet AI: ", err)
+    throw err
+  }
 }

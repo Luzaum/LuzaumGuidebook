@@ -30,12 +30,20 @@ function SectionHeader({
   theme,
 }: SectionHeaderProps) {
   return (
-    <button
+    <div
       onClick={onToggle}
-      className="w-full flex items-center justify-between p-4 sm:p-5 bg-gradient-to-r from-gold/5 to-transparent border-b border-gold/20 hover:from-gold/10 transition-all group min-h-[60px]"
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          onToggle()
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      className="w-full flex items-center justify-between p-4 sm:p-5 bg-gradient-to-r from-gold/5 to-transparent border-b border-gold/20 hover:from-gold/10 transition-all group min-h-[60px] cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-gold/50"
     >
       <div className="flex items-center gap-3 flex-1">
-        <div className="text-left flex-1">
+        <div className="text-left flex-1" onClick={(e) => e.stopPropagation()}>
           <h3 className="text-lg font-bold text-foreground group-hover:text-gold transition-colors">
             {title}
           </h3>
@@ -48,14 +56,16 @@ function SectionHeader({
             )}
           </div>
         </div>
-        <HelpButton topicId={helpTopicId} theme={theme} size="md" />
+        <div onClick={(e) => e.stopPropagation()}>
+          <HelpButton topicId={helpTopicId} theme={theme} size="md" />
+        </div>
         {isOpen ? (
           <ChevronUp className="w-5 h-5 text-gold" />
         ) : (
           <ChevronDown className="w-5 h-5 text-muted-foreground" />
         )}
       </div>
-    </button>
+    </div>
   )
 }
 
