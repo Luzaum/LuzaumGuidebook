@@ -207,9 +207,36 @@ export const nitroprussiatoProfile: DrugProfile = {
     dedicated_line_rules: ['Via exclusiva obrigatória.'],
   },
 
+  administration_and_titration: {
+    bolus_guidance: ['Nitroprussiato é exclusivo para CRI; bolus é contraindicado.'],
+    titration_rules: [
+      'Titular em passos pequenos com alvo claro de PAM, perfusão periférica, lactato e diurese.',
+      'Reavaliar em intervalos curtos (3–5 min) para evitar queda abrupta de pressão.',
+      'Preferir acesso central; se periférico, monitorar local de punção para extravasamento.',
+    ],
+    monitoring_minimum: ['PAM contínua/invasiva', 'FC/ECG', 'lactato', 'perfusão periférica', 'diurese'],
+  },
+
+  clinical_flowcharts: {
+    format: 'mermaid',
+    flows: [
+      {
+        id: 'nitro_shock_hypertension_flow',
+        title: 'Choque hipertensivo/afterload alto: uso de nitroprussiato',
+        mermaid:
+          'flowchart TD\nA[Paciente crítico com alvo de redução de pós-carga/PAM] --> B[Confirmar monitorização contínua]\nB --> C[Iniciar CRI baixa]\nC --> D[Reavaliar PAM/perfusão/lactato/diurese em 3-5 min]\nD --> E{Meta atingida?}\nE -- Não --> F[Titular gradualmente]\nE -- Sim --> G[Manter menor dose eficaz]\nF --> D',
+      },
+    ],
+  },
+
   ui_copy: {
     critical_warning_banner: 'PROTEGER DA LUZ. Hipotensor potente - monitorar PA continuamente.',
-    common_errors: ['Deixar exposto à luz (inativa em horas).', 'Causar hipotensão profunda por titular muito rápido.'],
+    common_errors: [
+      'Deixar exposto à luz (inativa em horas).',
+      'Causar hipotensão profunda por titular muito rápido.',
+      'Ignorar risco de extravasamento em acesso periférico frágil.',
+      'Titular sem meta objetiva de PAM e perfusão.',
+    ],
   },
 
   presets: [

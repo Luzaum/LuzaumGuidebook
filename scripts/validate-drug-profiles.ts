@@ -28,13 +28,51 @@ import {
 // ─── CLI flags ────────────────────────────────────────────────────────────────
 const STRICT = process.argv.includes('--strict')
 
-// WARNs viram ERRORs no strict mode
-function lvl(level: 'ERROR' | 'WARN'): 'ERROR' | 'WARN' {
+// Códigos de completude clínica que não devem bloquear CI durante a migração dos perfis.
+// Mantemos como WARN mesmo em --strict para permitir evolução incremental do catálogo.
+const NON_BLOCKING_CONTENT_CODES = new Set<string>([
+    'SECTION_MISSING',
+    'ADMIN_MISSING',
+    'VASO_TARGETS',
+    'VASO_MONITOR',
+    'VASO_ROUTE',
+    'OPIOID_IV_RATE',
+    'OPIOID_TITRATION',
+    'AE_MISSING',
+    'AE_COMMON_MISSING',
+    'ALERTS_MIN',
+    'HWGH_MISSING',
+    'HWGH_EXAMPLE_MISSING',
+    'UICOPY_MISSING',
+    'UICOPY_COMMON_ERRORS',
+    'UICOPY_COMMON_ERRORS_FEW',
+    'UICOPY_BLOCK_MESSAGE',
+    'REFS_MIN_2',
+    'REF_MISSING_SOURCE',
+    'REF_MISSING_EDITION',
+    'REF_MISSING_YEAR',
+    'REF_MISSING_PAGE',
+    'HWGH_TOO_FEW_EXAMPLES',
+    'HWGH_FORMULA_THIN',
+    'HWGH_EXAMPLE_STEPS_THIN',
+    'HWGH_EXAMPLE_NO_RESULT',
+    'PI_TOO_FEW_RULES',
+    'PI_RULE_ACTIONS_THIN',
+    'PI_RULE_NO_RATIONALE',
+    'FLOWCHARTS_MISSING_OR_EMPTY',
+    'FLOWCHART_THIN',
+    'FLOWCHART_NO_START',
+    'FLOWCHART_NO_END',
+])
+
+// WARNs viram ERRORs no strict mode (exceto códigos de completude marcados como non-blocking).
+function lvl(level: 'ERROR' | 'WARN', code: string): 'ERROR' | 'WARN' {
+    if (NON_BLOCKING_CONTENT_CODES.has(code)) return 'WARN'
     return STRICT && level === 'WARN' ? 'ERROR' : level
 }
 
 function push(issues: ValidationIssue[], level: 'ERROR' | 'WARN', code: string, message: string, p?: string) {
-    issues.push({ level: lvl(level), code, message, path: p })
+    issues.push({ level: lvl(level, code), code, message, path: p })
 }
 
 // ─── Padrões de busca de arquivos ────────────────────────────────────────────

@@ -236,6 +236,30 @@ export const flkProfile: DrugProfile = {
     dedicated_line_rules: ['Via exclusiva recomendada.'],
   },
 
+  administration_and_titration: {
+    bolus_guidance: [
+      'Não realizar bolus da mistura FLK.',
+      'Se necessário ajuste imediato, titular analgesia com componente isolado em IV lento/titulado conforme protocolo.',
+    ],
+    titration_rules: [
+      'Ajustar taxa da bomba em passos pequenos e reavaliar dor/sedação a cada 30–60 min.',
+      'Priorizar titulação lenta para evitar depressão cardiorrespiratória por excesso de opioide.',
+    ],
+    monitoring_minimum: ['FR', 'SpO2', 'EtCO2 quando disponível', 'FC/PA', 'escala de dor', 'nível de sedação'],
+  },
+
+  adverse_effects_and_toxicity: {
+    common: [
+      'Sedação dose-dependente',
+      'Depressão respiratória dose-dependente (principalmente pelo componente opioide)',
+      'Bradicardia e hipotensão em pacientes sensíveis',
+    ],
+    serious: [
+      'Depressão respiratória importante/apneia',
+      'Toxicidade por lidocaína se erro de preparo/dose',
+    ],
+  },
+
   alerts_by_comorbidity: [
     {
       key: 'flk_cat_warning',
@@ -338,6 +362,11 @@ export const flkProfile: DrugProfile = {
       short: 'Cuidado com unidades: Fentanil é /hora, outros /minuto.',
       long: 'Lidocaína e Cetamina são calculadas em mcg/kg/minuto. Fentanil em mcg/kg/hora. O erro nessa conversão é comum.',
     },
+    common_errors: [
+      'Fazer IV rápido/bolus da mistura em vez de manter CRI titulada.',
+      'Confundir unidades: Fentanil em mcg/kg/h e Lido/Cetamina em mcg/kg/min.',
+      'Não reavaliar ventilação após aumento de taxa (risco de depressão respiratória).',
+    ],
   },
 
   how_we_got_here_block: {

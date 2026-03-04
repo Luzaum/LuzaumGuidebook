@@ -215,9 +215,36 @@ export const dobutaminaProfile: DrugProfile = {
     dedicated_line_rules: ['Não deve ser interrompida para wash/bolus de outras drogas.'],
   },
 
+  administration_and_titration: {
+    bolus_guidance: ['Dobutamina é uso exclusivo em CRI (não fazer bolus).'],
+    titration_rules: [
+      'Titular por targets clínicos: PAM, perfusão periférica, lactato e diurese.',
+      'Ajustar 1–2 mcg/kg/min a cada 10–15 min conforme resposta hemodinâmica.',
+      'Preferir acesso central; se via periférica, checar extravasamento a cada avaliação.',
+    ],
+    monitoring_minimum: ['ECG contínuo', 'PAM (ideal invasiva)', 'lactato seriado', 'diurese', 'perfusão periférica'],
+  },
+
+  clinical_flowcharts: {
+    format: 'mermaid',
+    flows: [
+      {
+        id: 'dobutamina_shock_titration',
+        title: 'Choque com baixo débito: titulação de dobutamina',
+        mermaid:
+          'flowchart TD\nA[Choque com baixo débito] --> B[Checar volemia e PAM]\nB --> C[Iniciar dobutamina em dose baixa]\nC --> D[Reavaliar PAM/perfusão/lactato/diurese em 10-15 min]\nD --> E{Meta atingida?}\nE -- Não --> F[Titular em passos pequenos]\nE -- Sim --> G[Manter menor dose eficaz]\nF --> D',
+      },
+    ],
+  },
+
   ui_copy: {
     critical_warning_banner: 'Inotrópico Potente. Monitorar ECG (Risco de taquiarritmia).',
-    common_errors: ['Misturar com Bicarbonato.', 'Achar que resolve hipotensão vasoplégica (precisa de nora).'],
+    common_errors: [
+      'Misturar com Bicarbonato.',
+      'Achar que resolve hipotensão vasoplégica (precisa de nora).',
+      'Manter acesso periférico frágil sem vigilância de extravasamento.',
+      'Não definir target de PAM/perfusão antes de titular.',
+    ],
   },
 
   presets: [

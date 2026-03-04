@@ -220,6 +220,30 @@ export const mlkProfile: DrugProfile = {
     dedicated_line_rules: ['Via exclusiva recomendada.'],
   },
 
+  administration_and_titration: {
+    bolus_guidance: [
+      'Não fazer bolus da mistura MLK.',
+      'Se precisar de resgate, usar componente isolado em IV lento/titulado conforme protocolo.',
+    ],
+    titration_rules: [
+      'Ajustar taxa da CRI em passos pequenos e reavaliar dor/sedação em 30–60 min.',
+      'Evitar escalada brusca para reduzir risco de depressão respiratória e hipotensão.',
+    ],
+    monitoring_minimum: ['FR', 'SpO2', 'EtCO2 quando disponível', 'PA', 'FC', 'escala de dor', 'sedação'],
+  },
+
+  adverse_effects_and_toxicity: {
+    common: [
+      'Sedação moderada (morfina)',
+      'Náusea/vômito (morfina)',
+      'Depressão respiratória dose-dependente',
+    ],
+    serious: [
+      'Depressão respiratória importante/apneia',
+      'Hipotensão clinicamente relevante por histamina e/ou excesso de dose',
+    ],
+  },
+
   alerts_by_comorbidity: [
     {
       key: 'mlk_cat_warning',
@@ -320,6 +344,11 @@ export const mlkProfile: DrugProfile = {
       short: 'Morfina libera histamina; cuidado com hipotensão.',
       long: 'Diferente do Fentanil, a Morfina pode causar liberação de histamina e vômitos. Monitore pressão e náusea.',
     },
+    common_errors: [
+      'Administrar IV rápido/bolus da mistura em vez de manter titulação lenta.',
+      'Confundir unidades da morfina (mg/kg/h) com lidocaína/cetamina (mcg/kg/min).',
+      'Escalar dose sem monitorar ventilação (depressão respiratória).',
+    ],
   },
 
   references: [

@@ -193,9 +193,36 @@ export const norepinefrinaProfile: DrugProfile = {
     dedicated_line_rules: ['Via exclusiva altamente recomendada.'],
   },
 
+  administration_and_titration: {
+    bolus_guidance: ['Norepinefrina é exclusiva para CRI; não administrar em bolus.'],
+    titration_rules: [
+      'Titular por targets de PAM, perfusão periférica, lactato e diurese.',
+      'Ajustar em passos pequenos a cada 3–5 min conforme resposta hemodinâmica.',
+      'Priorizar acesso central; se periférico, monitorar extravasamento e dor local continuamente.',
+    ],
+    monitoring_minimum: ['PAM contínua/invasiva', 'FC/ECG', 'lactato seriado', 'diurese', 'perfusão periférica'],
+  },
+
+  clinical_flowcharts: {
+    format: 'mermaid',
+    flows: [
+      {
+        id: 'norepi_shock_flow',
+        title: 'Choque séptico/vasoplégico: titulação de norepinefrina',
+        mermaid:
+          'flowchart TD\nA[Choque vasoplégico] --> B[Corrigir volemia e iniciar monitorização]\nB --> C[Iniciar norepinefrina em CRI]\nC --> D[Reavaliar PAM/perfusão/lactato/diurese em 3-5 min]\nD --> E{Meta atingida?}\nE -- Não --> F[Titular dose]\nE -- Sim --> G[Manter menor dose eficaz]\nF --> D',
+      },
+    ],
+  },
+
   ui_copy: {
     critical_warning_banner: 'VASOPRESSOR POTENTE. Extravasamento = NECROSE.',
-    common_errors: ['Tentar corrigir hipovolemia com amina sem dar volume antes.', 'Acesso venoso inadequado.'],
+    common_errors: [
+      'Tentar corrigir hipovolemia com amina sem dar volume antes.',
+      'Acesso venoso inadequado.',
+      'Infundir em via periférica sem vigilância ativa de extravasamento.',
+      'Titular sem alvo explícito de PAM/perfusão.',
+    ],
   },
 
   presets: [

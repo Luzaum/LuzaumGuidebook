@@ -233,6 +233,31 @@ export const morfinaProfile: DrugProfile = {
     ],
   },
 
+  administration_and_titration: {
+    bolus_guidance: [
+      'IV somente lento/titulado (idealmente 2–5 min) após diluição.',
+      'Em pacientes instáveis, preferir IM/SC ou CRI com titulação progressiva.',
+    ],
+    titration_rules: [
+      'Ajustar dose pela resposta clínica e sinais de ventilação/perfusão.',
+      'Evitar escalada abrupta para reduzir risco de hipotensão por histamina e depressão respiratória.',
+    ],
+    monitoring_minimum: ['FR', 'SpO2', 'EtCO2 quando disponível', 'PA', 'FC', 'sedação', 'escala de dor'],
+  },
+
+  adverse_effects_and_toxicity: {
+    common: ['Sedação', 'Náusea/vômito', 'Constipação', 'Prurido'],
+    serious: [
+      'Depressão respiratória dose-dependente',
+      'Hipotensão clinicamente relevante (especialmente após IV rápido)',
+      'Disforia/excitação paradoxal em felinos sensíveis',
+    ],
+    management: [
+      'Reduzir/pausar dose e fornecer suporte ventilatório quando houver hipoventilação.',
+      'Para efeitos graves por opioide, considerar reversão parcial com naloxona titulada.',
+    ],
+  },
+
   ui_copy: {
     critical_warning_banner: 'IV RÁPIDO LIBERA HISTAMINA (Hipotensão). Use lento ou IM.',
     common_errors: ['Fazer bolus IV rápido em trauma (vômito/hipotensão).', 'Superdosar em gatos.'],

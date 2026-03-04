@@ -569,6 +569,7 @@ export const remifentanilProfile: DrugProfile = {
     },
     block_message: 'Bloqueado: remifentanil não deve ser administrado como bolus/dose de ataque IV.',
     common_errors: [
+      'Fazer IV rápido/bolus rápido de remifentanil (aumenta risco de bradicardia severa).',
       'Dar dose de ataque/bolus IV (pode causar bradicardia severa até parada atrial).',
       'Parar CRI sem ponte analgésica (rebote de dor imediato).',
       'Escalar dose sem EtCO2/ECG (perde o principal limitador de segurança).',
