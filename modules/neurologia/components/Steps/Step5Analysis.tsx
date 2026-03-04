@@ -135,7 +135,7 @@ export function Step5Analysis({ onRetryAnalysis }: { onRetryAnalysis?: () => voi
             px-4 py-3 sm:px-8 sm:py-4 text-base sm:text-lg font-bold rounded-xl
             bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600
             hover:from-yellow-500 hover:via-yellow-600 hover:to-yellow-700
-            text-black shadow-lg shadow-yellow-500/50
+            text-foreground shadow-lg shadow-yellow-500/50
             transition-all duration-300
             animate-pulse
           `}
@@ -176,7 +176,7 @@ export function Step5Analysis({ onRetryAnalysis }: { onRetryAnalysis?: () => voi
           <p className="text-center font-semibold text-gold text-lg">
             Diagnóstico Neural Ativo
           </p>
-          <div className="h-6 overflow-hidden rounded-md bg-white/5 border border-white/10 relative">
+          <div className="h-6 overflow-hidden rounded-md bg-muted/30 border border-border/40 relative">
             <motion.div
               initial={{ width: '0%' }}
               animate={{ width: '100%' }}
@@ -188,7 +188,7 @@ export function Step5Analysis({ onRetryAnalysis }: { onRetryAnalysis?: () => voi
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="absolute inset-0 flex items-center justify-center text-xs text-white/90 z-10 font-medium"
+              className="absolute inset-0 flex items-center justify-center text-xs text-foreground z-10 font-medium"
             >
               {LOADING_MESSAGES[loadingStep]}
             </motion.p>
@@ -248,19 +248,19 @@ export function Step5Analysis({ onRetryAnalysis }: { onRetryAnalysis?: () => voi
             <FileText className="w-5 h-5" />
             Identificação
           </h3>
-          <p className="text-foreground/90 text-sm whitespace-pre-line">{report.patientSummary}</p>
+          <p className="text-foreground text-sm whitespace-pre-line">{report.patientSummary}</p>
         </Card>
 
         {/* História/Queixa */}
         <Card className="p-6">
           <h3 className="text-lg font-semibold text-gold mb-3">História/Queixa Principal</h3>
-          <p className="text-foreground/90 text-sm whitespace-pre-line">{report.historySummary}</p>
+          <p className="text-foreground text-sm whitespace-pre-line">{report.historySummary}</p>
         </Card>
 
         {/* Exame */}
         <Card className="p-6">
           <h3 className="text-lg font-semibold text-gold mb-3">Resumo do Exame Neurológico</h3>
-          <p className="text-foreground/90 text-sm whitespace-pre-line">{report.examSummary}</p>
+          <p className="text-foreground text-sm whitespace-pre-line">{report.examSummary}</p>
         </Card>
 
         {/* Neurolocalização */}
@@ -292,7 +292,7 @@ export function Step5Analysis({ onRetryAnalysis }: { onRetryAnalysis?: () => voi
 
             <div>
               <p className="text-sm font-semibold text-gold mb-2">Raciocínio de Neurolocalização (Síntese)</p>
-              <p className="text-foreground/90 text-sm leading-relaxed whitespace-pre-line">
+              <p className="text-foreground text-sm leading-relaxed whitespace-pre-line">
                 {report.neuroLocalization?.narrative || 'Análise indisponível.'}
               </p>
             </div>
@@ -300,7 +300,7 @@ export function Step5Analysis({ onRetryAnalysis }: { onRetryAnalysis?: () => voi
             {(report.neuroLocalization?.supportiveFindings?.length || 0) > 0 && (
               <div>
                 <p className="text-sm font-semibold text-green-400 mb-2">Achados que Suportam</p>
-                <ul className="list-disc list-inside space-y-1 text-sm text-foreground/80">
+                <ul className="list-disc list-inside space-y-1 text-sm text-foreground">
                   {report.neuroLocalization?.supportiveFindings?.map((finding, idx) => (
                     <li key={idx}>{finding}</li>
                   ))}
@@ -311,7 +311,7 @@ export function Step5Analysis({ onRetryAnalysis }: { onRetryAnalysis?: () => voi
             {(report.neuroLocalization?.contradictoryFindings?.length || 0) > 0 && (
               <div>
                 <p className="text-sm font-semibold text-orange-400 mb-2">Achados Contraditórios</p>
-                <ul className="list-disc list-inside space-y-1 text-sm text-foreground/80">
+                <ul className="list-disc list-inside space-y-1 text-sm text-foreground">
                   {report.neuroLocalization?.contradictoryFindings?.map((finding, idx) => (
                     <li key={idx}>{finding}</li>
                   ))}
@@ -342,7 +342,7 @@ export function Step5Analysis({ onRetryAnalysis }: { onRetryAnalysis?: () => voi
                   </div>
                   <ul className="space-y-1 ml-6">
                     {report.comorbidityImpact.alerts?.map((alert, idx) => (
-                      <li key={idx} className="text-sm text-neutral-200 flex items-start gap-2">
+                      <li key={idx} className="text-sm text-foreground flex items-start gap-2">
                         <span className="text-orange-400 mt-1">•</span>
                         <span>{alert}</span>
                       </li>
@@ -360,7 +360,7 @@ export function Step5Analysis({ onRetryAnalysis }: { onRetryAnalysis?: () => voi
                   </div>
                   <ul className="space-y-1 ml-6">
                     {report.comorbidityImpact.cautions?.map((caution, idx) => (
-                      <li key={idx} className="text-sm text-neutral-200 flex items-start gap-2">
+                      <li key={idx} className="text-sm text-foreground flex items-start gap-2">
                         <span className="text-yellow-400 mt-1">•</span>
                         <span>{caution}</span>
                       </li>
@@ -378,7 +378,7 @@ export function Step5Analysis({ onRetryAnalysis }: { onRetryAnalysis?: () => voi
                   </div>
                   <ul className="space-y-1 ml-6">
                     {report.comorbidityImpact.diagnosticAdds?.map((add, idx) => (
-                      <li key={idx} className="text-sm text-neutral-200 flex items-start gap-2">
+                      <li key={idx} className="text-sm text-foreground flex items-start gap-2">
                         <span className="text-blue-400 mt-1">•</span>
                         <span>{add}</span>
                       </li>
@@ -396,7 +396,7 @@ export function Step5Analysis({ onRetryAnalysis }: { onRetryAnalysis?: () => voi
                   </div>
                   <ul className="space-y-1 ml-6">
                     {report.comorbidityImpact.diagnosticAvoids?.map((avoid, idx) => (
-                      <li key={idx} className="text-sm text-neutral-200 flex items-start gap-2">
+                      <li key={idx} className="text-sm text-foreground flex items-start gap-2">
                         <span className="text-red-400 mt-1">•</span>
                         <span>{avoid}</span>
                       </li>
@@ -433,7 +433,7 @@ export function Step5Analysis({ onRetryAnalysis }: { onRetryAnalysis?: () => voi
                 {(dx.why?.length || 0) > 0 && (
                   <div>
                     <p className="text-sm font-semibold text-blue-400 mb-2">Justificativas</p>
-                    <ul className="list-disc list-inside space-y-1 text-sm text-foreground/80">
+                    <ul className="list-disc list-inside space-y-1 text-sm text-foreground">
                       {dx.why?.map((reason, i) => (
                         <li key={i}>{reason}</li>
                       ))}
@@ -446,7 +446,7 @@ export function Step5Analysis({ onRetryAnalysis }: { onRetryAnalysis?: () => voi
                     <p className="text-sm font-semibold text-purple-400 mb-2">Como Diagnosticar</p>
                     <div className="space-y-2">
                       {dx.diagnostics?.map((diag, i) => (
-                        <div key={i} className="p-3 bg-neutral-800/50 rounded-lg border border-neutral-700 break-words">
+                        <div key={i} className="p-3 bg-muted/30 rounded-lg border border-border/40 break-words">
                           <div className="flex items-start justify-between flex-wrap sm:flex-nowrap gap-2 mb-1">
                             <p className="text-sm font-medium text-foreground flex-1 min-w-[150px]">{diag.test}</p>
                             <span
@@ -479,7 +479,7 @@ export function Step5Analysis({ onRetryAnalysis }: { onRetryAnalysis?: () => voi
                   <div>
                     <p className="text-sm font-semibold text-green-400 mb-2">Como Tratar</p>
                     {dx.treatment?.map((tx, i) => (
-                      <div key={i} className="mb-3 p-3 bg-neutral-800/50 rounded-lg border border-neutral-700">
+                      <div key={i} className="mb-3 p-3 bg-muted/30 rounded-lg border border-border/40">
                         <p className="text-sm font-semibold text-foreground mb-2">
                           {tx.phase === '0-6H' ? 'Fase Inicial (0-6h)' : 'Tratamento Definitivo'}
                         </p>
@@ -489,7 +489,7 @@ export function Step5Analysis({ onRetryAnalysis }: { onRetryAnalysis?: () => voi
                           ))}
                         </ul>
                         {(tx.cautions?.length || 0) > 0 && (
-                          <div className="mt-2 pt-2 border-t border-neutral-700">
+                          <div className="mt-2 pt-2 border-t border-border/40">
                             <p className="text-xs font-semibold text-orange-400 mb-1">Cautelas:</p>
                             <ul className="list-disc list-inside space-y-1 text-xs text-orange-300/80">
                               {tx.cautions?.map((caution, j) => (

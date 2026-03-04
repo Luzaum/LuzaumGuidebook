@@ -21,7 +21,7 @@ export function Header({ onReset, onGoHome, onBack, showBack }: HeaderProps) {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-xl border-b border-border/40">
       <div className="container max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2 sm:gap-4">
           {/* Voltar (Mobile/Desktop se showBack true) */}
@@ -29,7 +29,7 @@ export function Header({ onReset, onGoHome, onBack, showBack }: HeaderProps) {
             <button
               type="button"
               onClick={onBack}
-              className="inline-flex items-center justify-center p-2 rounded-lg hover:bg-white/10 text-white mr-1 sm:mr-0"
+              className="inline-flex items-center justify-center p-2 rounded-lg hover:bg-foreground/10 text-foreground mr-1 sm:mr-0 transition-colors"
               aria-label="Voltar"
             >
               <ArrowLeft className="w-6 h-6" />
@@ -40,20 +40,20 @@ export function Header({ onReset, onGoHome, onBack, showBack }: HeaderProps) {
           <button
             type="button"
             onClick={handleGoToVetiusHome}
-            className={`inline-flex items-center gap-2 hover:opacity-90 focus:outline-none transition-opacity p-2 rounded-lg hover:bg-white/10 group ${showBack ? 'hidden sm:inline-flex' : ''}`}
+            className={`inline-flex items-center gap-2 hover:opacity-90 focus:outline-none transition-all p-2 rounded-lg hover:bg-foreground/10 group ${showBack ? 'hidden sm:inline-flex' : ''}`}
             aria-label="Voltar para a Home do Vetius"
             title="Voltar para a Home do Vetius"
           >
             <div className="h-10 w-10 flex items-center justify-center">
               <Logo size={40} className="drop-shadow-[0_0_12px_rgba(96,165,250,0.35)]" />
             </div>
-            <span className="text-sm font-semibold text-white hidden sm:inline group-hover:text-gold transition-colors">
+            <span className="text-sm font-semibold text-foreground hidden sm:inline group-hover:text-gold transition-colors">
               Vetius
             </span>
           </button>
 
           {/* Separador (Oculto no mobile se showBack) */}
-          <div className={`h-6 w-px bg-white/20 ${showBack ? 'hidden sm:block' : ''}`} />
+          <div className={`h-6 w-px bg-border/40 ${showBack ? 'hidden sm:block' : ''}`} />
 
           {/* Logo NeuroVet */}
           <button
@@ -70,8 +70,8 @@ export function Header({ onReset, onGoHome, onBack, showBack }: HeaderProps) {
               />
             </div>
             <div className="text-left hidden sm:block">
-              <h1 className="text-lg font-semibold text-white">NeuroVet</h1>
-              <p className="text-xs text-white/60">
+              <h1 className="text-lg font-semibold text-foreground">NeuroVet</h1>
+              <p className="text-xs text-muted-foreground">
                 Neurologia
               </p>
             </div>

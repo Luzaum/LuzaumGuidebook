@@ -16,8 +16,8 @@ export function Card({
       className={cn(
         'rounded-2xl p-6 backdrop-blur-sm border transition-all duration-300',
         variant === 'default'
-          ? 'bg-white/5 border-white/10 hover:border-gold/40'
-          : 'bg-gradient-to-br from-gold/20 to-white/5 border-gold/30 hover:border-gold/60',
+          ? 'bg-card border-border/40 hover:border-gold/40'
+          : 'bg-gradient-to-br from-gold/10 to-muted border-gold/30 hover:border-gold/60',
         className,
       )}
       {...props}

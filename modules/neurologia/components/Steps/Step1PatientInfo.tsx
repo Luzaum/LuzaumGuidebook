@@ -92,16 +92,16 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex items-center gap-4 mb-8 bg-neutral-900/50 p-4 rounded-2xl border border-white/5"
+        className="flex items-center gap-4 mb-8 bg-muted/30 p-4 rounded-2xl border border-border/40"
       >
         <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 flex items-center justify-center shadow-lg shadow-indigo-500/10">
           <User className="w-7 h-7 text-indigo-400" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-white mb-1">
+          <h2 className="text-2xl font-bold text-foreground mb-1">
             Identificação do Paciente
           </h2>
-          <p className="text-neutral-400 text-sm">
+          <p className="text-muted-foreground text-sm">
             Dados básicos para contextualizar o exame.
           </p>
         </div>
@@ -132,7 +132,7 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
         <div className="space-y-6">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="text-sm font-medium text-neutral-300 mb-2 block">
+              <label className="text-sm font-medium text-muted-foreground mb-2 block">
                 Idade (anos)
               </label>
               <select
@@ -150,7 +150,7 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
 
                   handleSetPatient({ ageYears: years, lifeStage })
                 }}
-                className="w-full bg-neutral-900 border border-neutral-700 rounded-xl p-3 text-base sm:text-sm text-white focus:border-gold focus:ring-1 focus:ring-gold outline-none"
+                className="w-full bg-background border border-border/40 rounded-xl p-3 text-base sm:text-sm text-foreground focus:border-gold focus:ring-1 focus:ring-gold outline-none"
               >
                 {Array.from({ length: 26 }, (_, i) => (
                   <option key={i} value={i}>
@@ -161,7 +161,7 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
             </div>
 
             <div>
-              <label className="text-sm font-medium text-neutral-300 mb-2 block">
+              <label className="text-sm font-medium text-muted-foreground mb-2 block">
                 Idade (meses)
               </label>
               <select
@@ -179,7 +179,7 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
 
                   handleSetPatient({ ageMonths: months, lifeStage })
                 }}
-                className="w-full bg-neutral-900 border border-neutral-700 rounded-xl p-3 text-base sm:text-sm text-white focus:border-gold focus:ring-1 focus:ring-gold outline-none"
+                className="w-full bg-background border border-border/40 rounded-xl p-3 text-base sm:text-sm text-foreground focus:border-gold focus:ring-1 focus:ring-gold outline-none"
               >
                 {Array.from({ length: 12 }, (_, i) => (
                   <option key={i} value={i}>
@@ -190,8 +190,8 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
             </div>
           </div>
 
-          <div className="pt-4 border-t border-white/5">
-            <label className="text-sm font-medium text-neutral-300 mb-2 block">
+          <div className="pt-4 border-t border-border/40">
+            <label className="text-sm font-medium text-muted-foreground mb-2 block">
               Peso (kg)
             </label>
             <input
@@ -202,7 +202,7 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
                   weightKg: e.target.value ? parseFloat(e.target.value) : null,
                 })
               }
-              className="w-full bg-neutral-900 border border-neutral-700 rounded-xl p-3 text-base sm:text-sm text-white focus:border-gold focus:ring-1 focus:ring-gold outline-none"
+              className="w-full bg-background border border-border/40 rounded-xl p-3 text-base sm:text-sm text-foreground focus:border-gold focus:ring-1 focus:ring-gold outline-none"
               placeholder="0.0 kg"
               step="0.1"
             />
@@ -214,7 +214,7 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
       <Card>
         <div className="space-y-4">
           <div>
-            <label className="text-sm font-medium text-neutral-300 mb-2 block">
+            <label className="text-sm font-medium text-muted-foreground mb-2 block">
               Sexo
             </label>
             <div className="flex gap-2">
@@ -238,7 +238,7 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
           </div>
 
           <div>
-            <label className="text-sm font-medium text-neutral-300 mb-2 block">
+            <label className="text-sm font-medium text-muted-foreground mb-2 block">
               Estado Reprodutivo
             </label>
             <div className="flex gap-2">
@@ -263,7 +263,7 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
 
           {/* Life Stage */}
           <div>
-            <label className="text-sm font-medium text-neutral-300 mb-2 block">
+            <label className="text-sm font-medium text-muted-foreground mb-2 block">
               Estágio de Vida
             </label>
             <div className="grid grid-cols-2 gap-2">
@@ -291,7 +291,7 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
           {/* Gestante/Lactante (apenas se fêmea) */}
           {patient.sex === 'female' && (
             <div>
-              <label className="text-sm font-medium text-neutral-300 mb-2 block">
+              <label className="text-sm font-medium text-muted-foreground mb-2 block">
                 Estado Fisiológico
               </label>
               <div className="flex gap-2">
@@ -324,8 +324,8 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
       {/* Comorbidades */}
       <section className="space-y-4">
         <div>
-          <h3 className="text-lg font-semibold text-white mb-2">Comorbidades</h3>
-          <p className="text-sm text-neutral-400">
+          <h3 className="text-lg font-semibold text-foreground mb-2">Comorbidades</h3>
+          <p className="text-sm text-muted-foreground">
             Selecione todas as comorbidades relevantes. Opcionalmente, defina a severidade.
           </p>
         </div>
@@ -341,7 +341,7 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
                   key={key}
                   className={`p-3 rounded-lg border transition-all ${isSelected
                     ? 'border-gold/50 bg-gold/10'
-                    : 'border-white/10 bg-white/5 hover:border-white/20'
+                    : 'border-border/40 bg-muted/30 hover:border-border/60'
                     }`}
                 >
                   <div className="flex items-start justify-between gap-3">
@@ -357,20 +357,20 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
                           onChange={() => { }}
                           className="w-4 h-4 rounded border-neutral-600 text-gold focus:ring-gold bg-transparent"
                         />
-                        <span className={`font-medium ${isSelected ? 'text-gold' : 'text-neutral-200'}`}>
+                        <span className={`font-medium ${isSelected ? 'text-gold' : 'text-foreground'}`}>
                           {config.label}
                         </span>
                       </div>
                       {config.description && (
-                        <p className="text-xs text-neutral-400 ml-6">{config.description}</p>
+                        <p className="text-xs text-muted-foreground ml-6">{config.description}</p>
                       )}
                     </button>
                   </div>
 
                   {/* Seletor de severidade (só aparece se selecionado) */}
                   {isSelected && (
-                    <div className="mt-3 ml-6 pt-3 border-t border-white/10">
-                      <label className="text-xs text-neutral-400 mb-2 block">Severidade (opcional):</label>
+                    <div className="mt-3 ml-6 pt-3 border-t border-border/40">
+                      <label className="text-xs text-muted-foreground mb-2 block">Severidade (opcional):</label>
                       <div className="flex gap-2">
                         {(['leve', 'moderada', 'grave'] as const).map((sev) => (
                           <button
@@ -381,7 +381,7 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
                             }
                             className={`px-3 py-2 sm:py-1 text-sm sm:text-xs rounded transition-colors ${severity === sev
                               ? 'bg-gold/20 text-gold border border-gold/40'
-                              : 'bg-white/5 text-neutral-400 border border-white/10 hover:border-white/20'
+                              : 'bg-muted/30 text-muted-foreground border border-border/40 hover:border-border/60'
                               }`}
                           >
                             {sev.charAt(0).toUpperCase() + sev.slice(1)}
