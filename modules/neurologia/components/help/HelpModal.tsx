@@ -39,12 +39,12 @@ export function HelpModal({ open, onClose, topic, theme }: Props) {
       role="dialog"
       aria-modal="true"
       aria-label={`Ajuda: ${topic.title}`}
-      onMouseDown={(e) => {
-        // fechar ao clicar fora
+      onClick={(e) => {
+        // fechar ao clicar/tocar fora
         if (e.target === e.currentTarget) onClose()
       }}
     >
-      <div className={`absolute inset-0 ${isDark ? 'bg-black/70' : 'bg-black/40'}`} />
+      <div className={`absolute inset-0 ${isDark ? 'bg-black/70' : 'bg-black/40'} cursor-pointer`} />
 
       <div
         className={[

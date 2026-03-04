@@ -1,4 +1,5 @@
 import type { CaseReport } from '../../types/analysis'
+import knowledgeBase from '../../../../../src/assets/knowledge_base.txt?raw'
 
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY || ''
 
@@ -29,7 +30,12 @@ export async function generateGeminiAnalysis(
   2. Forneça o Top 5 diagnósticos diferenciais (differentials) em ordem de probabilidade (likelihood de 0 a 100). As causas devem cruzar fisiologia, neuro-anatomia, prevalência na espécie/idade e no tempo de evolução.
   3. Descreva cuidadosamente as justificativas (why), métodos diagnósticos (diagnostics) e plano terapêutico inicial e definitivo (treatment).
   4. Analise o impacto das comorbidades do paciente se existirem (comorbidityImpact).
-  5. Você DEVE retornar um objeto JSON válido, aderindo EXATAMENTE à seguinte estrutura:
+  5. Você deve basear SUA ANÁLISE PRIMARIAMENTE no seguinte ACERVO TEÓRICO:
+  ===========================================
+  ${knowledgeBase}
+  ===========================================
+  
+  6. Você DEVE retornar um objeto JSON válido, aderindo EXATAMENTE à seguinte estrutura:
   
   {
     "neuroLocalization": {
