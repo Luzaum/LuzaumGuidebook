@@ -1,6 +1,6 @@
 import type { CaseReport } from '../../types/analysis'
 
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || ''
+const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY || ''
 
 export async function generateGeminiAnalysis(
   patientSummary: string,
