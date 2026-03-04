@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import Hemogasometria from '../Hemogasometria'
+import Hemogasometria from '../modules/hemogasometria/Hemogasometria'
 
 export function HemogasometriaPage() {
   const navigate = useNavigate()

@@ -291,31 +291,35 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
     };
 
     return (
-        <div className="min-h-screen bg-background relative overflow-x-hidden font-sans">
+        <div className="min-h-screen bg-slate-50 dark:bg-[#0B1120] relative overflow-x-hidden font-sans selection:bg-indigo-500/30">
+            {/* Aura Efects */}
+            <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20 blur-3xl -z-10 pointer-events-none opacity-60 dark:opacity-30"></div>
+            <div className="absolute top-1/4 right-[-10%] w-[600px] h-[600px] bg-gradient-to-bl from-blue-400/20 to-teal-400/20 rounded-full blur-3xl -z-10 pointer-events-none opacity-50 dark:opacity-20 mix-blend-multiply dark:mix-blend-lighten animate-pulse" style={{ animationDuration: '8s' }}></div>
+
             <Modal content={modalContent} onClose={() => setModalContent(null)} />
 
             {/* Ideal Weight Modal */}
             {idealWeightModalOpenFor && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50" onClick={() => setIdealWeightModalOpenFor(null)}>
-                    <div className="bg-card text-card-foreground border border-border rounded-lg shadow-xl max-w-sm w-full p-6" onClick={(e) => e.stopPropagation()}>
-                        <h3 className="text-lg font-bold text-foreground mb-4 text-center">Calculadora de Peso Ideal</h3>
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm" onClick={() => setIdealWeightModalOpenFor(null)}>
+                    <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl shadow-2xl max-w-sm w-full p-6 animate-in fade-in zoom-in-95 duration-200" onClick={(e) => e.stopPropagation()}>
+                        <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-4 text-center">Peso Ideal Calculado</h3>
                         <div className="space-y-4">
                             <div>
-                                <label className="block text-sm font-medium text-foreground mb-1">Peso Atual (kg)</label>
-                                <input type="number" className="w-full p-2 bg-background border border-input rounded text-foreground" value={iwcInput.weight} onChange={e => setIwcInput({ ...iwcInput, weight: e.target.value })} step="0.1" />
+                                <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Peso Atual (kg)</label>
+                                <input type="number" className="w-full p-3 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-indigo-500 transition-all shadow-sm" value={iwcInput.weight} onChange={e => setIwcInput({ ...iwcInput, weight: e.target.value })} step="0.1" />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-foreground mb-1">Escore de Condição Corporal (1 a 9)</label>
-                                <select className="w-full p-2 bg-background border border-input rounded text-foreground" value={iwcInput.ecc} onChange={e => setIwcInput({ ...iwcInput, ecc: e.target.value })}>
+                                <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Escore de Condição Corporal (1 a 9)</label>
+                                <select className="w-full p-3 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-indigo-500 transition-all shadow-sm" value={iwcInput.ecc} onChange={e => setIwcInput({ ...iwcInput, ecc: e.target.value })}>
                                     {[6, 7, 8, 9].map(val => <option key={val} value={val}>{val} - Acima do peso</option>)}
                                     <option value="5" disabled>5 - Ideal (Não usar calculadora)</option>
                                     {[1, 2, 3, 4].map(val => <option key={val} value={val} disabled>{val} - Abaixo do peso (Use % de ganho semanal)</option>)}
                                 </select>
-                                <p className="text-xs text-muted-foreground mt-1 text-center">Apenas para sobrepeso/obesidade.</p>
+                                <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 text-center font-medium">Apenas para sobrepeso/obesidade.</p>
                             </div>
-                            <button onClick={handleCalculateIdealWeight} className="w-full py-2 bg-blue-600 text-white rounded font-semibold hover:bg-blue-700">Calcular e Usar</button>
+                            <button onClick={handleCalculateIdealWeight} className="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">Calcular e Usar</button>
                             {iwcResult && (
-                                <div className="mt-3 p-3 bg-green-50 border border-green-200 text-green-800 rounded text-center font-bold">
+                                <div className="mt-4 p-4 bg-emerald-50 dark:bg-emerald-900/20 border-l-4 border-emerald-500 text-emerald-800 dark:text-emerald-300 rounded-r-xl text-center font-bold animate-in fade-in slide-in-from-bottom-2">
                                     {iwcResult}
                                 </div>
                             )}
@@ -324,19 +328,19 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                 </div>
             )}
 
-            <div className="w-full max-w-3xl mx-auto bg-card text-card-foreground border border-border rounded-2xl shadow-lg p-4 md:p-8">
-                <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
-                    <button onClick={onBack} className="w-full md:w-auto px-6 py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg font-medium transition flex items-center justify-center gap-2">
-                        ← <span>Voltar</span>
+            <div className="w-full max-w-4xl mx-auto backdrop-blur-xl bg-white/70 dark:bg-slate-900/70 border border-white/40 dark:border-white/10 rounded-[2rem] shadow-2xl p-5 md:p-8 my-6 md:my-10 relative z-10 transition-all duration-300">
+                <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-5 relative z-20">
+                    <button onClick={onBack} className="w-full md:w-auto px-6 py-3 bg-white/50 dark:bg-slate-800/50 hover:bg-white dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/50 dark:border-slate-700/50 rounded-2xl font-semibold shadow-sm hover:shadow border-b-2 hover:border-b-slate-300 dark:hover:border-b-slate-600 transition-all flex items-center justify-center gap-2 group backdrop-blur-md">
+                        <span className="group-hover:-translate-x-1.5 transition-transform duration-300">←</span> <span>Voltar</span>
                     </button>
-                    <div className="flex p-1 bg-muted rounded-xl gap-1 w-full md:w-auto">
+                    <div className="flex p-1.5 bg-slate-200/50 dark:bg-slate-950/50 backdrop-blur-md rounded-2xl gap-1 w-full md:w-auto border border-white/20 dark:border-white/5 shadow-inner">
                         {['energia', 'racao', 'indicacoes'].map(tab => (
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
-                                className={`flex-1 md:flex-none px-6 py-2.5 rounded-lg font-medium text-sm transition-all duration-200 ${activeTab === tab ? 'bg-background text-foreground shadow-sm ring-1 ring-border' : 'text-muted-foreground hover:text-foreground hover:bg-muted-foreground/10'}`}
+                                className={`flex-1 md:flex-none px-6 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 ${activeTab === tab ? 'bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm ring-1 ring-black/5 dark:ring-white/10 scale-105 z-10' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-white/40 dark:hover:bg-slate-800/40'}`}
                             >
-                                {tab === 'energia' ? '⚡ Energia' : tab === 'racao' ? '🍚 Ração' : '📖 Tabela'}
+                                {tab === 'energia' ? '⚡ Energia' : tab === 'racao' ? '🍚 Prescrição' : '📖 Catálogo'}
                             </button>
                         ))}
                     </div>

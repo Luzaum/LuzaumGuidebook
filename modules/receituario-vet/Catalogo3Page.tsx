@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import ReceituarioChrome from './ReceituarioChrome'
 import { useClinic } from '../../src/components/ClinicProvider'
+import { useLocalDraft } from '../../hooks/useLocalDraft'
 import {
     listMedications,
     getMedicationDetails,

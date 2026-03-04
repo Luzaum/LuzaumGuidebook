@@ -1,5 +1,5 @@
 import type { CaseReport } from '../../types/analysis'
-import knowledgeBase from '../../../../../src/assets/knowledge_base.txt?raw'
+import knowledgeBase from '/src/assets/knowledge_base.txt?raw'
 
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY || ''
 

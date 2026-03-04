@@ -11,7 +11,7 @@ const ResultCard = ({ title, content, emoji, dataKey, onOpenModal, delay }: any)
     <div className="text-3xl bg-white/50 dark:bg-slate-800/50 p-3 rounded-xl border border-slate-100 dark:border-slate-700 shadow-inner print:shadow-none print:bg-slate-50">{emoji}</div>
     <div className="flex-grow pt-1">
       <div className="flex justify-between items-start">
-        <h3 className="font-bold text-lg text-slate-800 dark:text-slate-700 leading-tight">{title}</h3>
+        <h3 className="font-bold text-lg text-slate-800 dark:text-slate-200 leading-tight">{title}</h3>
         {dataKey && <button type="button" onClick={() => onOpenModal(dataKey)} className="text-xl text-slate-400 hover:text-blue-500 transition-colors ml-2 print:hidden">❓</button>}
       </div>
       <div className="text-slate-600 dark:text-slate-300 print:text-slate-700 mt-2 text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: content }} />

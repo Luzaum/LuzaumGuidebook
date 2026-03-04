@@ -2,25 +2,32 @@ import React, { useState } from 'react'
 import { Outlet, useNavigate, useLocation, Link } from 'react-router-dom'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { modules } from '../modules/registry'
-import { Menu, X, Home } from 'lucide-react'
+import { X, Home } from 'lucide-react'
 import Logo from '../components/Logo'
-import { TopRightAuthMenu } from '@/src/components/TopRightAuthMenu'
+import { useTheme } from '../utils/theme'
+import { VetiusAppTopbar } from '../components/VetiusAppTopbar'
 
 export function AppLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const navigate = useNavigate()
   const location = useLocation()
+  const { theme, toggleTheme } = useTheme()
 
   const internalModules = modules.filter((m) => m.status === 'internal')
   const iframeModules = modules.filter((m) => m.status === 'iframe')
   const plannedModules = modules.filter((m) => m.status === 'planned')
 
   const isActive = (route: string) => location.pathname === route
+  const activeModuleHome = (() => {
+    const match = modules.find(
+      (entry) => location.pathname === entry.route || location.pathname.startsWith(`${entry.route}/`)
+    )
+    return match?.route || '/hub'
+  })()
   const isImmersiveModuleRoute =
     location.pathname.startsWith('/peconhentos') ||
     location.pathname.startsWith('/receituario-vet') ||
-    location.pathname.startsWith('/dados-veterinarios') ||
-    location.pathname.startsWith('/hemogasometria')
+    location.pathname.startsWith('/dados-veterinarios')
   const isFullBleedRoute =
     isActive('/') ||
     isActive('/hub') ||
@@ -193,31 +200,17 @@ export function AppLayout() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Header */}
-        <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm">
-          <div className="flex items-center justify-between p-4">
-            <button
-              onClick={() => setSidebarOpen(true)}
-              className="p-2 hover:bg-surface/50 rounded-lg"
-              aria-label="Abrir menu"
-            >
-              <Menu className="h-6 w-6" />
-            </button>
-            <Link
-              to="/"
-              className="flex flex-col items-center gap-0 cursor-pointer select-none"
-              aria-label="Voltar para a Home"
-            >
-              <div className="h-12 w-12">
-                <Logo size={48} />
-              </div>
-              <span className="neon-wave neon-wave-glow -mt-2 text-xs font-semibold tracking-wide">Vetius</span>
-            </Link>
-            <div className="flex items-center gap-2">
-              <ThemeToggle />
-              <TopRightAuthMenu />
-            </div>
-          </div>
-        </header>
+        <VetiusAppTopbar
+          isDark={theme === 'dark'}
+          onMenuClick={() => setSidebarOpen(true)}
+          onHubClick={() => navigate('/hub')}
+          onThemeToggle={toggleTheme}
+          onHomeClick={() => navigate(activeModuleHome)}
+          className="z-40 border-border bg-background/95"
+          buttonClassName="border-border bg-background/70 text-foreground hover:bg-surface/70"
+          logoClassName="hover:bg-surface/60"
+          logoTextClassName="text-foreground"
+        />
 
         {/* Page Content */}
         {/* Page Content */}

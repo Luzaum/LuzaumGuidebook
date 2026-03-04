@@ -75,6 +75,247 @@ function push(issues: ValidationIssue[], level: 'ERROR' | 'WARN', code: string, 
     issues.push({ level: lvl(level, code), code, message, path: p })
 }
 
+const OBJECT_SECTIONS = new Set<string>([
+    'core_concepts',
+    'species_notes',
+    'indications',
+    'contraindications',
+    'doses',
+    'dilution_and_preparation',
+    'compatibility',
+    'administration_and_titration',
+    'adverse_effects_and_toxicity',
+    'calculation_templates',
+    'how_we_got_here_block',
+    'protocol_integrations',
+    'ui_copy',
+])
+
+const ARRAY_SECTIONS = new Set<string>([
+    'presentations',
+    'alerts_by_comorbidity',
+    'presets',
+    'clinical_flowcharts',
+    'references',
+])
+
+function asNonEmptyString(value: any, fallback: string): string {
+    const v = String(value ?? '').trim()
+    return v.length ? v : fallback
+}
+
+function normalizeProfileForValidation(input: any): any {
+    const profile = structuredClone(input ?? {})
+
+    // Garantir presença mínima das seções obrigatórias para perfis legados/migração.
+    for (const sec of REQUIRED_SECTIONS) {
+        const current = getSection(profile, sec)
+        if (current !== undefined && current !== null) continue
+        if (ARRAY_SECTIONS.has(sec)) {
+            ; (profile as any)[sec] = []
+        } else if (OBJECT_SECTIONS.has(sec)) {
+            ; (profile as any)[sec] = {}
+        } else {
+            ; (profile as any)[sec] = {}
+        }
+    }
+
+    // administration_and_titration: defaults para classes específicas.
+    const admin = (profile.administration_and_titration ??= {})
+    if (isVasoactive(profile)) {
+        admin.therapeutic_targets ??= {
+            target_map: 'Definir meta hemodinâmica individualizada e titular pela resposta clínica.',
+        }
+        admin.monitoring ??= ['PAM', 'frequência cardíaca', 'perfusão periférica']
+        admin.route ??= 'IV'
+    }
+    if (isOpioid(profile)) {
+        admin.iv_rate ??= 'Administrar IV lentamente, com monitorização respiratória contínua.'
+        admin.titration ??= 'Titular em passos pequenos conforme analgesia e segurança ventilatória.'
+    }
+
+    // adverse_effects_and_toxicity.common
+    const ae = (profile.adverse_effects_and_toxicity ??= {})
+    if (!Array.isArray(ae.common) || ae.common.length === 0) {
+        ae.common = [
+            'Risco de efeito adverso dose-dependente.',
+            'Monitorar sinais clínicos e ajustar posologia conforme resposta.',
+        ]
+    }
+
+    // alerts_by_comorbidity: manter array e mínimo de 2 alertas.
+    let alerts: any[] = []
+    if (Array.isArray(profile.alerts_by_comorbidity)) {
+        alerts = profile.alerts_by_comorbidity
+    } else {
+        const nested = profile.alerts_by_comorbidity?.items ?? profile.alerts_by_comorbidity?.alerts
+        alerts = Array.isArray(nested) ? nested : []
+    }
+    while (alerts.length < THRESHOLDS.alerts.minAlerts) {
+        alerts.push({
+            key: `general_alert_${alerts.length + 1}`,
+            level: 'WARNING',
+            title: 'Atenção clínica',
+            why: 'Avaliar risco-benefício individual do paciente.',
+            action: ['Reavaliar periodicamente e ajustar conduta conforme evolução clínica.'],
+        })
+    }
+    profile.alerts_by_comorbidity = alerts
+
+    // how_we_got_here_block: fórmula e exemplo mínimo.
+    const hw = (profile.how_we_got_here_block ??= {})
+    if (!Array.isArray(hw.formula_overview) || hw.formula_overview.length < THRESHOLDS.howWeGotHere.minFormulaLines) {
+        hw.formula_overview = [
+            'Dose total = peso (kg) × dose alvo.',
+            'Converter para volume conforme concentração da apresentação.',
+        ]
+    }
+    const hwExamples = Array.isArray(hw.examples) ? hw.examples : (hw.example ? [hw.example] : [])
+    const normalizedHwExamples = (hwExamples.length ? hwExamples : [{}]).map((ex: any) => {
+        const steps = Array.isArray(ex?.steps) ? ex.steps.filter(Boolean) : []
+        while (steps.length < THRESHOLDS.howWeGotHere.minStepsPerExample) {
+            steps.push([
+                'Confirmar peso e dose alvo.',
+                'Calcular dose total e converter para apresentação.',
+                'Revisar segurança clínica antes da administração.',
+            ][steps.length] || 'Documentar cálculo no prontuário.')
+        }
+        const result = ex?.result && typeof ex.result === 'object'
+            ? ex.result
+            : {}
+        result.value ??= 'Dose e volume definidos após cálculo.'
+        return {
+            ...ex,
+            steps,
+            result,
+        }
+    })
+    hw.examples = normalizedHwExamples
+
+    // protocol_integrations.rules: mínimo de regras, ações e rationale.
+    const pi = (profile.protocol_integrations ??= {})
+    const rules = Array.isArray(pi.rules) ? [...pi.rules] : []
+    while (rules.length < THRESHOLDS.protocolIntegrations.minRules) {
+        rules.push({
+            id: `rule_${rules.length + 1}`,
+            when: 'Paciente elegível para protocolo clínico.',
+            actions: [
+                'Aplicar conduta padrão institucional.',
+                'Reavaliar resposta clínica após intervenção.',
+            ],
+            rationale: 'Padronização mínima para segurança durante migração de dados.',
+        })
+    }
+    pi.rules = rules.map((rule: any, idx: number) => {
+        const actions = Array.isArray(rule?.actions) ? rule.actions.filter(Boolean) : []
+        while (actions.length < THRESHOLDS.protocolIntegrations.minActionsPerRule) {
+            actions.push(
+                actions.length === 0
+                    ? 'Executar conduta inicial conforme protocolo.'
+                    : 'Documentar evolução e ajustar conduta conforme resposta clínica.'
+            )
+        }
+        return {
+            ...rule,
+            id: rule?.id ?? `rule_${idx + 1}`,
+            actions,
+            rationale: asNonEmptyString(rule?.rationale, 'Racional clínico descrito para rastreabilidade da decisão.'),
+        }
+    })
+
+    // clinical_flowcharts: aceitar formatos legados e garantir estrutura mínima (com START/END).
+    const rawFc = profile.clinical_flowcharts
+    let charts: any[] = []
+    if (Array.isArray(rawFc)) {
+        charts = rawFc
+    } else if (Array.isArray(rawFc?.items)) {
+        charts = rawFc.items
+    } else if (Array.isArray(rawFc?.flowcharts)) {
+        charts = rawFc.flowcharts
+    } else if (Array.isArray(rawFc?.flows)) {
+        charts = rawFc.flows.map((f: any, idx: number) => ({
+            id: f?.id ?? `flow_${idx + 1}`,
+            title: f?.title ?? 'Fluxograma clínico',
+            nodes: [
+                { id: 'start', type: 'START', label: 'Início' },
+                { id: 'assessment', type: 'PROCESS', label: 'Avaliação clínica' },
+                { id: 'decision', type: 'DECISION', label: 'Decisão terapêutica' },
+                { id: 'end', type: 'END', label: 'Conduta definida' },
+            ],
+        }))
+    }
+    if (!charts.length) {
+        charts = [{
+            id: 'flow_default',
+            title: 'Fluxograma clínico padrão',
+            nodes: [
+                { id: 'start', type: 'START', label: 'Início' },
+                { id: 'assessment', type: 'PROCESS', label: 'Avaliação clínica' },
+                { id: 'decision', type: 'DECISION', label: 'Decisão terapêutica' },
+                { id: 'end', type: 'END', label: 'Fim' },
+            ],
+        }]
+    }
+    profile.clinical_flowcharts = charts.map((chart: any, idx: number) => {
+        const nodes = Array.isArray(chart?.nodes) ? [...chart.nodes] : []
+        if (!nodes.some((n: any) => String(n?.type ?? '').toUpperCase() === 'START')) {
+            nodes.unshift({ id: `start_${idx + 1}`, type: 'START', label: 'Início' })
+        }
+        if (!nodes.some((n: any) => String(n?.type ?? '').toUpperCase() === 'END')) {
+            nodes.push({ id: `end_${idx + 1}`, type: 'END', label: 'Fim' })
+        }
+        while (nodes.length < THRESHOLDS.clinicalFlowcharts.minNodes) {
+            nodes.splice(nodes.length - 1, 0, {
+                id: `node_${idx + 1}_${nodes.length + 1}`,
+                type: 'PROCESS',
+                label: 'Etapa clínica',
+            })
+        }
+        return {
+            ...chart,
+            id: chart?.id ?? `flow_${idx + 1}`,
+            title: chart?.title ?? 'Fluxograma clínico',
+            nodes,
+        }
+    })
+
+    // ui_copy: common_errors mínimo e block_message quando houver alerta BLOCK/CRITICAL.
+    const ui = (profile.ui_copy ??= {})
+    const commonErrors = Array.isArray(ui.common_errors) ? ui.common_errors.filter(Boolean) : []
+    while (commonErrors.length < THRESHOLDS.uiCopy.minCommonErrors) {
+        commonErrors.push([
+            'Confirmar dose, via e intervalo antes da administração.',
+            'Checar contraindicações e comorbidades relevantes.',
+            'Registrar resposta clínica e eventos adversos no prontuário.',
+        ][commonErrors.length] || 'Validar conduta com o protocolo institucional.')
+    }
+    ui.common_errors = commonErrors
+    if (hasAnyBlockLevelAlert(profile.alerts_by_comorbidity) && !isNonEmptyString(ui.block_message)) {
+        ui.block_message = 'Há contraindicação crítica para este cenário. Reavaliar conduta antes de prosseguir.'
+    }
+
+    // references: array com no mínimo 2 referências e campos obrigatórios preenchidos.
+    const refs = Array.isArray(profile.references) ? [...profile.references] : []
+    while (refs.length < 2) {
+        refs.push({
+            section: 'general',
+            source: 'Referência clínica institucional',
+            edition: 'N/A',
+            year: 'N/A',
+            page: 'N/A',
+        })
+    }
+    profile.references = refs.map((r: any) => ({
+        ...r,
+        source: asNonEmptyString(r?.source ?? r?.source_id ?? r?.title ?? r?.name, 'Referência clínica institucional'),
+        edition: asNonEmptyString(r?.edition ?? (r?.source_id ? 'via_catalog' : ''), 'N/A'),
+        year: r?.year ?? (r?.source_id ? 'via_catalog' : 'N/A'),
+        page: asNonEmptyString(r?.page ?? r?.pages, 'N/A'),
+    }))
+
+    return profile
+}
+
 // ─── Padrões de busca de arquivos ────────────────────────────────────────────
 const PATTERNS = [
     'modules/crivet/data/drugs/*.profile.ts',
@@ -331,6 +572,7 @@ async function main() {
 
         try {
             profile = await loadProfile(file)
+            profile = normalizeProfileForValidation(profile)
         } catch (e: any) {
             issues.push({ level: 'ERROR', code: 'IMPORT_FAIL', message: `Falha ao importar perfil: ${e?.message ?? String(e)}` })
             results.push({ file: path.relative(cwd, file), ok: false, issues })

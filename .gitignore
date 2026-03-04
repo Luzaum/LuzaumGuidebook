@@ -33,3 +33,6 @@ build/
 .env.local
 .env.production
 .env.*.local
+
+# System/Temporary
+nul

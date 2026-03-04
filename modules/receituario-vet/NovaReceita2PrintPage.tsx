@@ -10,7 +10,7 @@ import React, {
 } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { RxPrintView } from './RxPrintView'
-import { buildPrintDocFromNovaReceita2 } from './novaReceita2Adapter'
+import { buildPrintDocsFromNovaReceita2 } from './novaReceita2Adapter'
 import { AddMedicationModal2 } from './components/AddMedicationModal2'
 import { BUILTIN_TEMPLATES } from './builtinTemplates'
 import type { NovaReceita2State, PrescriptionItem, TutorInfo, PatientInfo } from './NovaReceita2Page'
@@ -488,10 +488,15 @@ export default function NovaReceita2PrintPage() {
 
     // ==================== MEMO ====================
 
-    const printDoc = useMemo(() => {
-        if (!state) return null
-        return buildPrintDocFromNovaReceita2(state)
+    const printDocs = useMemo(() => {
+        if (!state) return []
+        return buildPrintDocsFromNovaReceita2(state)
     }, [state])
+
+    const primaryPrintDoc = useMemo(() => {
+        if (!printDocs.length) return null
+        return printDocs.find((doc) => doc.documentKind !== 'special-control') || printDocs[0]
+    }, [printDocs])
 
     const selectedTemplate = useMemo(() => {
         if (!state) return BUILTIN_TEMPLATES[0]
@@ -535,8 +540,21 @@ export default function NovaReceita2PrintPage() {
     const saveToSupabase = useCallback(async (silent = false): Promise<string | null> => {
         const patientId = state?.patient?.id
         const targetClinicId = clinicId || getStoredClinicId()
-        if (!patientId || !targetClinicId || !state?.tutor?.id) {
+        const isQuickDraft = !!state?.quickMode
+        const missingRequiredIds = !patientId || !targetClinicId || !state?.tutor?.id
+
+        if (isQuickDraft && missingRequiredIds) {
+            if (!silent) {
+                pushToast('Receita rapida exportada sem salvar no historico. Preencha tutor/paciente para salvar.')
+            }
+            return 'quick-mode-no-save'
+        }
+        if (missingRequiredIds) {
             if (!silent) pushToast('Preencha tutor e paciente antes de salvar.')
+            return null
+        }
+        if (!primaryPrintDoc) {
+            if (!silent) pushToast('Nao foi possivel gerar a receita para salvar.')
             return null
         }
 
@@ -550,7 +568,7 @@ export default function NovaReceita2PrintPage() {
                 content: {
                     kind: (selectedTemplate?.documentKindTarget || 'standard') as any,
                     templateId: state.templateId,
-                    printDoc,
+                    printDoc: primaryPrintDoc,
                     stateSnapshot: state,
                     createdAtLocal: new Date().toISOString(),
                     appVersion: '2.0.0',
@@ -567,7 +585,7 @@ export default function NovaReceita2PrintPage() {
         } finally {
             setIsExporting(false)
         }
-    }, [state, clinicId, selectedTemplate, printDoc, pushToast, updateState])
+    }, [state, clinicId, selectedTemplate, primaryPrintDoc, pushToast, updateState])
 
     const handlePrint = useCallback(async () => {
         await saveToSupabase(true)
@@ -593,7 +611,7 @@ export default function NovaReceita2PrintPage() {
     }, [state, pushToast])
 
     useEffect(() => {
-        if (!printDoc || autoActionFiredRef.current) return
+        if (!primaryPrintDoc || autoActionFiredRef.current) return
         const runAutoAction = async () => {
             if (!isPrintMode && !isPdfMode) return
             autoActionFiredRef.current = true
@@ -605,11 +623,11 @@ export default function NovaReceita2PrintPage() {
             window.setTimeout(() => window.print(), 600)
         }
         void runAutoAction()
-    }, [isPrintMode, isPdfMode, printDoc, saveToSupabase])
+    }, [isPrintMode, isPdfMode, primaryPrintDoc, saveToSupabase])
 
     // ==================== EMPTY STATE ====================
 
-    if (!state || !printDoc) {
+    if (!state || !printDocs.length) {
         return (
             <div className="flex min-h-screen items-center justify-center bg-[#0a0f0a] text-white">
                 <div className="text-center">
@@ -785,15 +803,24 @@ export default function NovaReceita2PrintPage() {
                     style={{ maxHeight: 'calc(100vh - 10rem)' }}
                 >
                     <div ref={previewRef} className="p-4">
-                        <RxPrintView
-                            doc={printDoc}
-                            template={selectedTemplate}
-                            interactive={true}
-                            activeZone={activeZone || undefined}
-                            onZoneSelect={handleZoneSelect}
-                            selectedItemId={selectedItemId || undefined}
-                            onItemSelect={handleItemSelect}
-                        />
+                        <div className="space-y-5">
+                            {printDocs.map((doc, idx) => (
+                                <div key={`${doc.documentKind || 'standard'}-${idx}`} className="space-y-2">
+                                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">
+                                        {doc.documentKind === 'special-control' ? 'Receita controlada' : 'Receita padrao'}
+                                    </p>
+                                    <RxPrintView
+                                        doc={doc}
+                                        template={selectedTemplate}
+                                        interactive={true}
+                                        activeZone={activeZone || undefined}
+                                        onZoneSelect={handleZoneSelect}
+                                        selectedItemId={selectedItemId || undefined}
+                                        onItemSelect={handleItemSelect}
+                                    />
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -855,10 +882,19 @@ export default function NovaReceita2PrintPage() {
                     style={{ background: 'radial-gradient(#1e3a18 1px, transparent 1px)', backgroundSize: '18px 18px' }}
                 >
                     <div ref={previewRef} className="rxv-print-canvas">
-                        <RxPrintView
-                            doc={printDoc}
-                            template={selectedTemplate}
-                        />
+                        <div className="space-y-6">
+                            {printDocs.map((doc, idx) => (
+                                <div key={`${doc.documentKind || 'standard'}-screen-${idx}`} className="space-y-2">
+                                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">
+                                        {doc.documentKind === 'special-control' ? 'Receita controlada' : 'Receita padrao'}
+                                    </p>
+                                    <RxPrintView
+                                        doc={doc}
+                                        template={selectedTemplate}
+                                    />
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
 
@@ -871,10 +907,14 @@ export default function NovaReceita2PrintPage() {
 
             {/* IMPRESSÃO: Container limpo — só visível via window.print() */}
             <div className="hidden print:block bg-white text-black">
-                <RxPrintView
-                    doc={printDoc}
-                    template={selectedTemplate}
-                />
+                {printDocs.map((doc, idx) => (
+                    <div key={`${doc.documentKind || 'standard'}-print-${idx}`} className={idx > 0 ? 'mt-10' : ''}>
+                        <RxPrintView
+                            doc={doc}
+                            template={selectedTemplate}
+                        />
+                    </div>
+                ))}
             </div>
 
             <style>{`

@@ -101,7 +101,7 @@ function highlightInstructionSegments(text: string): React.ReactNode[] {
   if (!source.trim()) return [source]
 
   const pattern =
-    /(\d+(?:[.,]\d+)?\s*[a-zA-ZÀ-ÿ%µ/]+(?:\s+por dose)?|por via [^,.;]*|a cada \d+\s*horas|uma vez por dia|\d+\s*vez(?:es)? por dia|durante \d+\s*dias|com uso contínuo até reavaliação do paciente|até terminar o medicamento)/gi
+    /(\d+(?:[.,]\d+)?\s*[a-zA-ZÀ-ÿ%µ/]+(?:\s+por dose)?|por via [^,.;]*|a cada \d+\s*horas|uma vez por dia|\d+\s*vez(?:es)? por dia|iniciando às \d{2}:\d{2} do dia \d{2}\/\d{2}\/\d{4}|iniciando no dia \d{2}\/\d{2}\/\d{4}|durante \d+\s*dias|com uso contínuo até reavaliação do paciente|até terminar o medicamento)/gi
 
   const nodes: React.ReactNode[] = []
   let lastIndex = 0
@@ -370,13 +370,6 @@ export function RxPrintView({
                         ) : null}
                       </div>
                       {item.subtitle ? <p className="mb-1" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 2, 9)}pt`, color: '#64748b' }}>{item.subtitle}</p> : null}
-                      {item.start_date ? (
-                        <p className="mb-1 font-bold" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt`, color: '#374151' }}>
-                          {item.start_date.toLowerCase().startsWith('iniciar em ')
-                            ? item.start_date
-                            : `Iniciar em ${item.start_date}`}
-                        </p>
-                      ) : null}
                       <p className="whitespace-pre-line leading-relaxed" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt` }}>
                         {highlightInstructionSegments(item.instruction)}
                       </p>
