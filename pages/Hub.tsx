@@ -75,26 +75,6 @@ export function Hub() {
                                     key={module.id}
                                     className="transform transition-all duration-500 hover:-translate-y-2 active:scale-[0.98] rounded-xl hover:shadow-[0_0_40px_rgba(251,191,36,0.6)] hover:ring-2 hover:ring-amber-500/50"
                                 >
-<<<<<<< Updated upstream
-=======
-                                    <ModuleCard module={module} />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* DEVELOPMENT MODULES SECTION */}
-                    <div className="mb-20">
-                        <div className="flex justify-center mb-10">
-                            <span className="inline-flex items-center gap-1.5 rounded-md border border-purple-500/40 bg-purple-500/10 px-4 py-1.5 text-base font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400">
-                                <span className="h-2.5 w-2.5 rounded-full bg-purple-500 animate-pulse"></span>
-                                Em Desenvolvimento
-                            </span>
-                        </div>
-                        <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-                            {developmentModules.map((module) => (
-                                <div key={module.id} className="transform transition-all duration-300 hover:-translate-y-2 active:scale-[0.98]">
->>>>>>> Stashed changes
                                     <ModuleCard module={module} />
                                 </div>
                             ))}

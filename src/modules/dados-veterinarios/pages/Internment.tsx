@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
 import React, { useMemo, useState } from 'react';
-=======
-﻿import React, { useMemo, useState } from 'react';
->>>>>>> Stashed changes
 import { motion } from 'framer-motion';
 import {
   BedDouble,
