@@ -38,20 +38,15 @@ export default defineConfig(({ mode }) => {
               if (id.includes('jspdf')) {
                 return 'vendor-pdf'
               }
-              if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
-                return 'vendor-react'
-              }
-              if (id.includes('framer-motion') || id.includes('@radix-ui')) {
-                return 'vendor-ui'
-              }
               if (id.includes('@supabase')) {
                 return 'vendor-supabase'
               }
-              return 'vendor'
+              return undefined
             }
             if (id.includes('modules/receituario-vet')) {
               return 'feature-receituario'
             }
+            return undefined
           }
         }
       }
