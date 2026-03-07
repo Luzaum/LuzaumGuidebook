@@ -1,4 +1,4 @@
-﻿// ✅ OBJ 4: Debug log removido (DEV only)
+// ✅ OBJ 4: Debug log removido (DEV only)
 if (import.meta.env.DEV) console.log("[DEBUG] NovaReceitaPage.tsx evaluation started")
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'

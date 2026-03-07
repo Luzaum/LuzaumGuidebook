@@ -6,9 +6,10 @@ import { HelpContentRenderer } from './HelpContent'
 
 type Props = {
   id: TooltipId
+  dynamicContent?: React.ReactNode
 }
 
-export function HelpButton({ id }: Props) {
+export function HelpButton({ id, dynamicContent }: Props) {
   const [open, setOpen] = useState(false)
   const item = HELP_REGISTRY[id]
 
@@ -30,6 +31,11 @@ export function HelpButton({ id }: Props) {
 
       <HelpModal open={open} title={item.title} onClose={() => setOpen(false)}>
         <HelpContentRenderer content={item} />
+        {dynamicContent && (
+          <div className="mt-6 pt-4 border-t border-white/10 animate-in fade-in slide-in-from-bottom-2 duration-300">
+            {dynamicContent}
+          </div>
+        )}
       </HelpModal>
     </>
   )

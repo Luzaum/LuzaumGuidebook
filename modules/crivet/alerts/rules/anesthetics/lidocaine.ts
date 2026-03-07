@@ -48,7 +48,7 @@ export const lidocaineRules: Rule[] = [
       score: severityScore.orange,
       title: "Hipoalbuminemia + Lidocaína = fração livre ↑ (toxicidade relativa)",
       why:
-        "Maior fração livre aumenta efeito clínico e risco de toxicidade mesmo com dose “padrão”.",
+        "Maior fração livre aumenta efeito clínico e risco de toxicidade mesmo com dose "padrão".",
       do:
         "Reduzir dose/taxa e titular ao efeito. Monitorar tremores, nistagmo, alteração de comportamento e ECG.",
       tags: ["protein_binding"],

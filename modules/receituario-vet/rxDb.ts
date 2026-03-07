@@ -119,6 +119,13 @@ export interface ClientRecord {
   city: string
   state: string
   zipcode: string
+  addressStreet?: string
+  addressNumber?: string
+  addressComplement?: string
+  addressDistrict?: string
+  addressCity?: string
+  addressState?: string
+  addressZip?: string
   notes: string
   animals: ClientAnimalRecord[]
   updatedAt: string
@@ -292,7 +299,7 @@ function repairMojibake(value: string): string {
   if (!hasReplacementChar && !hasCommonMojibakeMarkers) return value
 
   const replacements: Record<string, string> = {
-    'ï¿½': '-',
+    '\uFFFD': '-',
     '\\uFFFD': '-',
     'â€¢': '-',
     'â€“': '-',

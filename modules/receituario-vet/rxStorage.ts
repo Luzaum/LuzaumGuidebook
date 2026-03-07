@@ -1,4 +1,4 @@
-﻿import { createDefaultPrescriptionState } from './rxDefaults'
+import { createDefaultPrescriptionState } from './rxDefaults'
 import { PrescriptionState } from './rxTypes'
 
 const DRAFT_KEY = 'receituario-vet:draft:v1'

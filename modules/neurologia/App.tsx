@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+﻿import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { UserRound, Stethoscope, Brain, ClipboardCheck, Sparkles, MousePointerClick } from 'lucide-react'
 import { Header } from './components/Layout/Header'
 import { Stepper } from './components/Wizard/Stepper'
 import { WizardNavigation } from './components/Wizard/WizardNavigation'
@@ -12,11 +13,6 @@ import { ThemeSync } from './components/ThemeSync'
 import { Modal } from './components/UI/Modal'
 import { Button } from './components/UI/Button'
 import { useCaseStore } from './stores/caseStore'
-import { useUiStore } from './stores/uiStore'
-import { analyzeNeuroExam } from './lib/neuroEngine'
-import { getDiagnosticPlan } from './lib/diagnosticPlanner'
-import { ETIOLOGIES } from './lib/etiologyLibrary'
-import type { AnalysisResult, PatientProfile as LegacyPatientProfile } from './types'
 
 export function NeurologiaApp() {
   const [showResetModal, setShowResetModal] = useState(false)
@@ -24,12 +20,10 @@ export function NeurologiaApp() {
   const patient = useCaseStore((s) => s.patient)
   const complaint = useCaseStore((s) => s.complaint)
   const neuroExam = useCaseStore((s) => s.neuroExam)
-  const analysis = useCaseStore((s) => s.analysis)
   const setCurrentStep = useCaseStore((s) => s.setCurrentStep)
   const setPatient = useCaseStore((s) => s.setPatient)
   const setComplaint = useCaseStore((s) => s.setComplaint)
   const setNeuroExam = useCaseStore((s) => s.setNeuroExam)
-  const setAnalysis = useCaseStore((s) => s.setAnalysis)
   const resetCase = useCaseStore((s) => s.resetCase)
 
   const handleReset = () => {
@@ -47,9 +41,6 @@ export function NeurologiaApp() {
   }
 
   const nextStep = () => {
-    if (currentStep === 4) {
-      runAnalysis()
-    }
     setCurrentStep(Math.min(currentStep + 1, 5))
     window.scrollTo(0, 0)
   }
@@ -57,48 +48,6 @@ export function NeurologiaApp() {
   const prevStep = () => {
     setCurrentStep(Math.max(currentStep - 1, 1))
     window.scrollTo(0, 0)
-  }
-
-  const runAnalysis = () => {
-    // Converter patient do caseStore para formato legado temporariamente
-    const legacyPatient: LegacyPatientProfile = {
-      species: (patient.species === 'dog' ? 'Dog' : 'Cat') as any,
-      age: {
-        years: patient.ageYears || 0,
-        months: patient.ageMonths || 0,
-      },
-      sex: (patient.sex === 'male' ? 'M' : 'F') as any,
-      physiologicState: [
-        ...(patient.reproStatus === 'neutered' ? ['Castrado'] : []),
-        ...(patient.reproStatus === 'intact' ? ['Inteiro'] : []),
-        ...(patient.pregnant ? ['Gestante'] : []),
-        ...(patient.lactating ? ['Lactante'] : []),
-        ...(patient.lifeStage === 'pediatric' ? ['Pediátrico'] : []),
-        ...(patient.lifeStage === 'geriatric' ? ['Geriátrico'] : []),
-      ] as any[],
-      weight: patient.weightKg || 0,
-      comorbidities: patient.comorbidities.map(c => c.label),
-      medications: [],
-      temporalPattern: complaint.temporalPattern as any,
-      course: complaint.evolutionPattern as any,
-      redFlags: complaint.redFlags,
-    }
-
-    const legacyExam = {
-      findings: neuroExam,
-      timestamp: new Date().toISOString(),
-    }
-
-    const localization = analyzeNeuroExam(legacyExam, legacyPatient)
-    const diagnostics = getDiagnosticPlan(localization, legacyPatient)
-    const etiologies = ETIOLOGIES.slice(0, 5)
-    const result: AnalysisResult = {
-      localization,
-      etiologies,
-      diagnostics,
-      alerts: complaint.redFlags,
-    }
-    setAnalysis({ status: 'done', report: result })
   }
 
   const isNextDisabled = () => {
@@ -117,7 +66,7 @@ export function NeurologiaApp() {
       <Modal
         isOpen={showResetModal}
         onClose={() => setShowResetModal(false)}
-        title="Confirmar Reinício do Exame"
+        title="Confirmar reinício do exame"
         size="sm"
       >
         <div className="space-y-4">
@@ -134,6 +83,7 @@ export function NeurologiaApp() {
           </div>
         </div>
       </Modal>
+
       <div className="min-h-[100dvh] bg-background text-foreground font-sans selection:bg-gold/30">
         <Header
           onReset={handleReset}
@@ -142,59 +92,110 @@ export function NeurologiaApp() {
           showBack={currentStep > 1}
         />
 
-        {currentStep < 5 && (
-          <Stepper currentStep={currentStep} totalSteps={5} />
-        )}
+        {currentStep < 5 && <Stepper currentStep={currentStep} totalSteps={5} />}
 
-        <main className="container max-w-3xl mx-auto px-4 pt-32 pb-32 relative z-10 pointer-events-auto">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentStep}
-              initial={{
-                opacity: 0,
-                x: 20,
-              }}
-              animate={{
-                opacity: 1,
-                x: 0,
-              }}
-              exit={{
-                opacity: 0,
-                x: -20,
-              }}
-              transition={{
-                duration: 0.3,
-              }}
+        <aside className="hidden lg:block fixed top-44 left-0 bottom-0 w-80 border-r border-border/70 bg-card/70 backdrop-blur-xl z-30">
+          <div className="p-5 border-b border-border/70">
+            <button
+              type="button"
+              onClick={() => setCurrentStep(1)}
+              className="w-full flex flex-col items-center gap-2 rounded-2xl p-3 hover:bg-background/60 transition"
+              aria-label="Voltar para o início da Neurologia"
             >
-              {currentStep === 1 && (
-                <Step1PatientInfo
-                  patient={patient}
-                  setPatient={setPatient}
-                />
-              )}
-              {currentStep === 2 && (
-                <Step2ChiefComplaint
-                  complaint={complaint}
-                  setComplaint={setComplaint}
-                />
-              )}
-              {currentStep === 3 && (
-                <Step3NeuroExam exam={neuroExam} updateExam={setNeuroExam} />
-              )}
-              {currentStep === 4 && (
-                <Step4Review
-                  patient={patient}
-                  complaint={complaint}
-                  exam={neuroExam}
-                  onEditStep={(step) => setCurrentStep(step)}
-                />
-              )}
-              {currentStep === 5 && (
-                <Step5Analysis />
-              )}
-            </motion.div>
-          </AnimatePresence>
-        </main>
+              <img
+                src="/apps/NEURO.png"
+                alt="NeuroVet"
+                className="h-14 w-14 object-contain drop-shadow-[0_0_12px_rgba(245,197,66,0.35)]"
+              />
+              <div className="text-center">
+                <p className="text-sm font-semibold text-foreground">NeuroVet</p>
+                <p className="text-xs text-muted-foreground">Neurologia</p>
+              </div>
+            </button>
+          </div>
+
+          <nav className="p-5 space-y-2">
+            <div className="rounded-xl border border-border bg-background/50 px-3 py-2 mb-2">
+              <p className="text-xs font-semibold text-foreground">Barra de navegação</p>
+              <p className="text-[11px] text-muted-foreground flex items-center gap-1">
+                <MousePointerClick className="w-3 h-3" />
+                Todos os cards abaixo são clicáveis.
+              </p>
+            </div>
+            {[
+              { step: 1, label: 'Paciente', desc: 'Dados básicos', icon: UserRound },
+              { step: 2, label: 'Queixa', desc: 'História e contexto', icon: Stethoscope },
+              { step: 3, label: 'Exame', desc: 'Exame neurológico', icon: Brain },
+              { step: 4, label: 'Revisão', desc: 'Resumo dos achados', icon: ClipboardCheck },
+              { step: 5, label: 'Análise IA', desc: 'Relatório final', icon: Sparkles },
+            ].map((item) => {
+              const isActive = item.step === currentStep
+              const isDone = item.step < currentStep
+              const Icon = item.icon
+              return (
+                <button
+                  key={item.step}
+                  type="button"
+                  onClick={() => setCurrentStep(item.step)}
+                  aria-label={`Ir para etapa ${item.step}: ${item.label}`}
+                  className={`group w-full text-left rounded-2xl border px-3 py-3 transition-all duration-200 cursor-pointer ${
+                    isActive
+                      ? 'border-gold/60 bg-gold/15 shadow-[0_8px_30px_rgba(245,197,66,0.15)]'
+                      : isDone
+                        ? 'border-emerald-400/30 bg-emerald-400/10 hover:border-emerald-400/50'
+                        : 'border-border bg-background/60 hover:border-gold/40 hover:bg-card hover:translate-x-0.5'
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-3">
+                    <div className={`rounded-xl p-2 ${isActive ? 'bg-gold/25 text-gold' : isDone ? 'bg-emerald-500/20 text-emerald-300' : 'bg-muted text-muted-foreground'}`}>
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-sm font-semibold text-foreground">Etapa {item.step}: {item.label}</div>
+                      <div className="text-xs text-muted-foreground">{item.desc}</div>
+                    </div>
+                  </div>
+                    <span className={`text-[10px] px-2 py-1 rounded-full border ${
+                      isActive
+                        ? 'border-gold/50 text-gold'
+                        : 'border-border text-muted-foreground group-hover:border-gold/40 group-hover:text-foreground'
+                    }`}>
+                      Clicável
+                    </span>
+                  </div>
+                </button>
+              )
+            })}
+          </nav>
+        </aside>
+
+        <div className="w-full lg:ml-80">
+          <main className="w-full max-w-[1600px] mx-auto px-4 lg:px-8 pt-44 pb-32 relative z-10 pointer-events-auto">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentStep}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                {currentStep === 1 && <Step1PatientInfo patient={patient} setPatient={setPatient} />}
+                {currentStep === 2 && <Step2ChiefComplaint complaint={complaint} setComplaint={setComplaint} />}
+                {currentStep === 3 && <Step3NeuroExam exam={neuroExam} updateExam={setNeuroExam} />}
+                {currentStep === 4 && (
+                  <Step4Review
+                    patient={patient}
+                    complaint={complaint}
+                    exam={neuroExam}
+                    onEditStep={(step) => setCurrentStep(step)}
+                  />
+                )}
+                {currentStep === 5 && <Step5Analysis />}
+              </motion.div>
+            </AnimatePresence>
+          </main>
+        </div>
 
         {currentStep < 5 && (
           <WizardNavigation
@@ -203,10 +204,12 @@ export function NeurologiaApp() {
             onBack={prevStep}
             onNext={nextStep}
             isNextDisabled={isNextDisabled()}
-            nextLabel={currentStep === 4 ? 'Analisar com IA' : 'Continuar'}
+            nextLabel={currentStep === 4 ? 'Ir para Análise IA' : 'Continuar'}
           />
         )}
       </div>
     </>
   )
 }
+
+

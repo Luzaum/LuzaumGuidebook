@@ -49,7 +49,7 @@ export const ketamineRules: Rule[] = [
       why:
         "Em muitos pacientes, tende a manter tônus simpático relativo, ajudando a evitar quedas abruptas de PA (ainda depende do estado catecolamínico do paciente).",
       do:
-        "Não é “garantia”. Use dose baixa titulada, trate a causa do choque e monitore PA/perfusão.",
+        "Não é "garantia". Use dose baixa titulada, trate a causa do choque e monitore PA/perfusão.",
       tags: ["hemodynamics"],
     }),
   },

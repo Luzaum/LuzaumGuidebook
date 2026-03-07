@@ -48,7 +48,7 @@ export const norepinephrineRules: Rule[] = [
       score: severityScore.green,
       title: "Choque distributivo (sepse/anafilaxia) + Norepinefrina: escolha fisiologicamente coerente",
       why:
-        "Vasoplegia é o problema central; norepi reduz o “continente” vascular e melhora MAP/perfusão quando volume já foi otimizado.",
+        "Vasoplegia é o problema central; norepi reduz o "continente" vascular e melhora MAP/perfusão quando volume já foi otimizado.",
       do:
         "Titulagem por MAP e perfusão. Reavaliar volume responsivo e necessidade de adicionar vasopressina se doses sobem muito.",
       tags: ["vasoplegia"],

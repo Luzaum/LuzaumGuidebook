@@ -47,13 +47,13 @@ function normalizeReproductiveStatus(value: string): PatientInfo['reproductiveSt
 
 function buildTutorAddressLine(client: ClientRecord): string {
   return [
-    client.addressStreet,
-    client.addressNumber,
-    client.addressComplement,
-    client.addressDistrict,
-    client.addressCity,
-    client.addressState,
-    client.addressZip,
+    client.street || client.addressStreet,
+    client.number || client.addressNumber,
+    client.complement || client.addressComplement,
+    client.neighborhood || client.addressDistrict,
+    client.city || client.addressCity,
+    client.state || client.addressState,
+    client.zipcode || client.addressZip,
   ]
     .filter(Boolean)
     .join(', ')
@@ -67,13 +67,20 @@ function toTutorInfo(client: ClientRecord): TutorInfo {
     cpf: client.cpf || '',
     rg: client.rg || '',
     email: client.email || '',
-    addressStreet: client.addressStreet || '',
-    addressNumber: client.addressNumber || '',
-    addressComplement: client.addressComplement || '',
-    addressDistrict: client.addressDistrict || '',
-    addressCity: client.addressCity || '',
-    addressState: client.addressState || '',
-    addressZip: client.addressZip || '',
+    street: client.street || client.addressStreet || '',
+    number: client.number || client.addressNumber || '',
+    complement: client.complement || client.addressComplement || '',
+    neighborhood: client.neighborhood || client.addressDistrict || '',
+    city: client.city || client.addressCity || '',
+    state: client.state || client.addressState || '',
+    zipcode: client.zipcode || client.addressZip || '',
+    addressStreet: client.street || client.addressStreet || '',
+    addressNumber: client.number || client.addressNumber || '',
+    addressComplement: client.complement || client.addressComplement || '',
+    addressDistrict: client.neighborhood || client.addressDistrict || '',
+    addressCity: client.city || client.addressCity || '',
+    addressState: client.state || client.addressState || '',
+    addressZip: client.zipcode || client.addressZip || '',
     notes: client.notes || '',
   }
 }
@@ -91,6 +98,7 @@ function toPatientInfoFromAnimal(animal: ClientAnimalRecord): PatientInfo {
     coat: animal.coat || '',
     weightKg: animal.weightKg || '',
     weightDate: animal.weightDate || '',
+    anamnesis: animal.anamnesis || '',
     notes: animal.notes || '',
     showNotesInPrint: false,
   }
@@ -109,6 +117,7 @@ function toPatientInfoFromRecord(record: PatientRecord): PatientInfo {
     coat: '',
     weightKg: record.weightKg || '',
     weightDate: '',
+    anamnesis: '',
     notes: '',
     showNotesInPrint: false,
   }
@@ -125,13 +134,13 @@ function fallbackFindClientForPatient(dbClients: ClientRecord[], record: Patient
 
 function makePatientRecord(patient: PatientInfo, tutor: TutorInfo): PatientRecord {
   const tutorAddress = [
-    tutor.addressStreet,
-    tutor.addressNumber,
-    tutor.addressComplement,
-    tutor.addressDistrict,
-    tutor.addressCity,
-    tutor.addressState,
-    tutor.addressZip,
+    tutor.street || tutor.addressStreet,
+    tutor.number || tutor.addressNumber,
+    tutor.complement || tutor.addressComplement,
+    tutor.neighborhood || tutor.addressDistrict,
+    tutor.city || tutor.addressCity,
+    tutor.state || tutor.addressState,
+    tutor.zipcode || tutor.addressZip,
   ]
     .filter(Boolean)
     .join(', ')
@@ -229,13 +238,13 @@ export class LocalAdapter implements DataAdapter {
       email: input.email || '',
       cpf: input.cpf || '',
       rg: input.rg || '',
-      addressStreet: input.addressStreet || '',
-      addressNumber: input.addressNumber || '',
-      addressComplement: input.addressComplement || '',
-      addressDistrict: input.addressDistrict || '',
-      addressCity: input.addressCity || '',
-      addressState: input.addressState || '',
-      addressZip: input.addressZip || '',
+      street: input.street || input.addressStreet || '',
+      number: input.number || input.addressNumber || '',
+      complement: input.complement || input.addressComplement || '',
+      neighborhood: input.neighborhood || input.addressDistrict || '',
+      city: input.city || input.addressCity || '',
+      state: input.state || input.addressState || '',
+      zipcode: input.zipcode || input.addressZip || '',
       notes: input.notes || '',
       animals: [],
       updatedAt: nowIso(),
@@ -281,6 +290,7 @@ export class LocalAdapter implements DataAdapter {
       species: input.species || 'Canina',
       breed: input.breed || '',
       coat: input.coat || '',
+      microchip: '',
       sex: input.sex || 'Sem dados',
       reproductiveStatus: input.reproductiveStatus || 'Sem dados',
       ageText: input.ageText || '',

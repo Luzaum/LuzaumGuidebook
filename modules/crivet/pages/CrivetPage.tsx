@@ -1,85 +1,52 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+﻿import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import {
+  AlertTriangle,
+  CircleUserRound,
+  Pill,
+  Calculator,
+  FileText,
+  ChevronRight,
+  Stethoscope,
+} from 'lucide-react'
 import PatientBlock from '../components/PatientBlock'
 import DrugSelector from '../components/DrugSelector'
 import InfusionCalculator from '../components/InfusionCalculator'
 import { Comorbidity, PhysiologyState, Species } from '../types/patient'
 import { Drug, drugs } from '../data/drugs'
-import { useClinic } from '../../../src/components/ClinicProvider'
-import { createRxDataAdapter, resolveRxDataSource } from '../../receituario-vet/adapters'
-import { PatientQuickSelect } from '../../receituario-vet/components/PatientQuickSelect'
-import { PatientCreateModal } from '../../receituario-vet/components/PatientCreateModal'
-import type { DataAdapterPatientMatch } from '../../receituario-vet/adapters'
-import type { PatientInfo, TutorInfo } from '../../receituario-vet/rxTypes'
-import { TutorQuickSelect } from '../components/TutorQuickSelect'
 
-const CRIVET_HEADER_SELECTION_SESSION_KEY = 'vetius:crivet:header-selection'
+const CRIVET_STORAGE_KEY = 'crivet:calculator-state:v1'
+const SPECIES_VALUES: Species[] = ['dog', 'cat']
+const PHYSIOLOGY_VALUES: PhysiologyState[] = ['Neonato', 'Filhote', 'Adulto', 'Idoso']
+const COMORBIDITY_VALUES: Comorbidity[] = ['Cardiopata', 'Endocrinopata', 'Hepatopata', 'Renopata']
 
-type CrivetHeaderSelectionSession = {
-  source: 'local' | 'supabase'
-  clinicId: string | null
-  patientRecordId: string
-  patientName: string
-  tutorRecordId: string
-  tutorName: string
+type PersistedCrivetState = {
+  species: Species
+  weight: string
+  physiology: PhysiologyState
+  comorbidities: Comorbidity[]
+  selectedDrugId: string
 }
 
-function writeCrivetHeaderSelectionSession(snapshot: CrivetHeaderSelectionSession | null) {
-  try {
-    if (!snapshot) {
-      sessionStorage.removeItem(CRIVET_HEADER_SELECTION_SESSION_KEY)
-      return
-    }
-    sessionStorage.setItem(CRIVET_HEADER_SELECTION_SESSION_KEY, JSON.stringify(snapshot))
-  } catch {
-    // noop
-  }
+type NavSection = {
+  id: string
+  title: string
+  icon: React.ComponentType<{ className?: string }>
 }
 
-function readCrivetHeaderSelectionSession(): CrivetHeaderSelectionSession | null {
-  try {
-    const raw = sessionStorage.getItem(CRIVET_HEADER_SELECTION_SESSION_KEY)
-    if (!raw) return null
-    const parsed = JSON.parse(raw) as Partial<CrivetHeaderSelectionSession>
-    const source = parsed.source === 'supabase' ? 'supabase' : 'local'
-    return {
-      source,
-      clinicId: parsed.clinicId ? String(parsed.clinicId) : null,
-      patientRecordId: String(parsed.patientRecordId || '').trim(),
-      patientName: String(parsed.patientName || '').trim(),
-      tutorRecordId: String(parsed.tutorRecordId || '').trim(),
-      tutorName: String(parsed.tutorName || '').trim(),
-    }
-  } catch {
-    return null
-  }
-}
+const NAV_SECTIONS: NavSection[] = [
+  { id: 'crivet-step-1', title: 'Paciente', icon: CircleUserRound },
+  { id: 'crivet-step-2', title: 'Seleção de fármaco', icon: Pill },
+  { id: 'crivet-step-3', title: 'Cálculo de infusão', icon: Calculator },
+  { id: 'crivet-step-4', title: 'Explicação do cálculo', icon: FileText },
+]
 
 export default function CrivetPage() {
-  const { clinicId } = useClinic()
-  const crivetDataSource = useMemo(
-    () => resolveRxDataSource(import.meta.env.VITE_RX_DATA_SOURCE),
-    []
-  )
-  const crivetAdapter = useMemo(
-    () =>
-      createRxDataAdapter({
-        source: crivetDataSource,
-        clinicId,
-      }),
-    [clinicId, crivetDataSource]
-  )
-  const supabaseModeWithoutClinic = crivetDataSource === 'supabase' && !clinicId
-
-  const [patient, setPatient] = useState<PatientInfo | null>(null)
-  const [tutor, setTutor] = useState<TutorInfo | null>(null)
-  const [patientCreateModalOpen, setPatientCreateModalOpen] = useState(false)
-  const headerSelectionHydratedRef = useRef(false)
-
   const [species, setSpecies] = useState<Species>('dog')
   const [weight, setWeight] = useState('')
   const [physiology, setPhysiology] = useState<PhysiologyState>('Adulto')
   const [comorbidities, setComorbidities] = useState<Comorbidity[]>([])
   const [selectedDrugId, setSelectedDrugId] = useState<string>('lidocaina')
+  const [activeSection, setActiveSection] = useState<string>('crivet-step-1')
 
   const selectedDrug = useMemo<Drug | null>(() => drugs.find((drug) => drug.id === selectedDrugId) || null, [selectedDrugId])
 
@@ -91,235 +58,198 @@ export default function CrivetPage() {
   )
 
   const handleDrugSelect = useCallback((drug: Drug) => setSelectedDrugId(drug.id), [])
+  const hasValidWeight = Number(weight) > 0
 
-  const handlePatientPick = useCallback((match: DataAdapterPatientMatch) => {
-    setPatient(match.patient)
-    setTutor(match.tutor)
+  const scrollToSection = useCallback((id: string) => {
+    const section = document.getElementById(id)
+    if (!section) return
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    setActiveSection(id)
   }, [])
 
-  const handleTutorPick = useCallback((tutor: TutorInfo) => {
-    setTutor(tutor)
-  }, [])
+  const handleLogoClick = useCallback(() => {
+    scrollToSection('crivet-step-1')
+  }, [scrollToSection])
 
-  const handlePatientCreate = useCallback((match: DataAdapterPatientMatch) => {
-    setPatient(match.patient)
-    setTutor(match.tutor)
-    setPatientCreateModalOpen(false)
-  }, [])
-
-  // Session persistence
   useEffect(() => {
-    if (!headerSelectionHydratedRef.current) return
-    headerSelectionHydratedRef.current = true
+    try {
+      const raw = localStorage.getItem(CRIVET_STORAGE_KEY)
+      if (!raw) return
 
-    const sessionSelection = readCrivetHeaderSelectionSession()
-    if (!sessionSelection) return
-    if (sessionSelection.source !== crivetDataSource) return
+      const parsed = JSON.parse(raw) as Partial<PersistedCrivetState>
 
-    if (
-      sessionSelection.source === 'supabase' &&
-      sessionSelection.clinicId &&
-      clinicId &&
-      sessionSelection.clinicId !== clinicId
-    ) {
-      return
-    }
-
-    if (patient?.patientRecordId || tutor?.tutorRecordId) {
-      return
-    }
-
-    let cancelled = false
-    ;(async () => {
-      try {
-        const resolvedTutor = sessionSelection.tutorRecordId
-          ? await crivetAdapter.getTutorById(sessionSelection.tutorRecordId)
-          : null
-
-        let resolvedPatient = null
-        if (
-          sessionSelection.patientRecordId &&
-          sessionSelection.tutorRecordId &&
-          crivetAdapter.listPatientsByTutorId
-        ) {
-          const patients = await crivetAdapter.listPatientsByTutorId(sessionSelection.tutorRecordId)
-          resolvedPatient =
-            patients.find((entry) => entry.patientRecordId === sessionSelection.patientRecordId) || null
-        }
-
-        if (cancelled) return
-
-        if (resolvedTutor && resolvedPatient) {
-          setPatient(resolvedPatient)
-          setTutor(resolvedTutor)
-          return
-        }
-
-        setPatient({
-          patientRecordId: sessionSelection.patientRecordId,
-          name: sessionSelection.patientName,
-          species: 'Canina',
-          breed: '',
-          sex: 'Sem dados',
-          reproductiveStatus: 'Sem dados',
-          ageText: '',
-          birthDate: '',
-          coat: '',
-          weightKg: null,
-          weightDate: '',
-          notes: '',
-        })
-        setTutor({
-          tutorRecordId: sessionSelection.tutorRecordId,
-          name: sessionSelection.tutorName,
-          phone: '',
-          email: '',
-          cpf: '',
-          rg: '',
-          addressStreet: '',
-          addressNumber: '',
-          addressComplement: '',
-          addressDistrict: '',
-          addressCity: '',
-          addressState: '',
-          addressZip: '',
-          notes: '',
-        })
-      } catch (error) {
-        if (cancelled) return
-        if (import.meta.env.DEV) {
-          console.error('[CRIVET B1.1.1] Falha ao reidratar cabecalho do plantao', error)
-        }
+      if (parsed.species && SPECIES_VALUES.includes(parsed.species)) {
+        setSpecies(parsed.species)
       }
-    })()
 
-    return () => {
-      cancelled = true
+      if (typeof parsed.weight === 'string') {
+        setWeight(parsed.weight)
+      }
+
+      if (parsed.physiology && PHYSIOLOGY_VALUES.includes(parsed.physiology)) {
+        setPhysiology(parsed.physiology)
+      }
+
+      if (Array.isArray(parsed.comorbidities)) {
+        const validComorbidities = parsed.comorbidities.filter((item): item is Comorbidity =>
+          COMORBIDITY_VALUES.includes(item as Comorbidity),
+        )
+        setComorbidities(validComorbidities)
+      }
+
+      if (typeof parsed.selectedDrugId === 'string' && drugs.some((drug) => drug.id === parsed.selectedDrugId)) {
+        setSelectedDrugId(parsed.selectedDrugId)
+      }
+    } catch {
+      localStorage.removeItem(CRIVET_STORAGE_KEY)
     }
-  }, [clinicId, crivetAdapter, crivetDataSource, patient?.patientRecordId, tutor?.tutorRecordId])
+  }, [])
 
   useEffect(() => {
-    if (!headerSelectionHydratedRef.current) return
-
-    const patientRecordId = String(patient?.patientRecordId || '').trim()
-    const tutorRecordId = String(tutor?.tutorRecordId || '').trim()
-
-    if (!patientRecordId && !tutorRecordId) {
-      writeCrivetHeaderSelectionSession(null)
-      return
+    const stateToPersist: PersistedCrivetState = {
+      species,
+      weight,
+      physiology,
+      comorbidities,
+      selectedDrugId,
     }
 
-    writeCrivetHeaderSelectionSession({
-      source: crivetDataSource,
-      clinicId: clinicId || null,
-      patientRecordId,
-      patientName: String(patient?.name || '').trim(),
-      tutorRecordId,
-      tutorName: String(tutor?.name || '').trim(),
-    })
-  }, [
-    clinicId,
-    crivetDataSource,
-    patient?.name,
-    patient?.patientRecordId,
-    tutor?.name,
-    tutor?.tutorRecordId,
-  ])
+    localStorage.setItem(CRIVET_STORAGE_KEY, JSON.stringify(stateToPersist))
+  }, [species, weight, physiology, comorbidities, selectedDrugId])
 
-  // Sync patient data to form
   useEffect(() => {
-    if (patient) {
-      setSpecies(patient.species === 'Felina' ? 'cat' : 'dog')
-      if (patient.weightKg) setWeight(String(patient.weightKg))
+    const updateActiveSection = () => {
+      let candidate = NAV_SECTIONS[0].id
+      for (const section of NAV_SECTIONS) {
+        const node = document.getElementById(section.id)
+        if (!node) continue
+        const rect = node.getBoundingClientRect()
+        if (rect.top <= 140) candidate = section.id
+      }
+      setActiveSection(candidate)
     }
-  }, [patient])
+
+    updateActiveSection()
+    window.addEventListener('scroll', updateActiveSection, { passive: true })
+    return () => window.removeEventListener('scroll', updateActiveSection)
+  }, [])
 
   return (
     <div className="crivet-page-root min-h-screen">
-      {/* Ambient background */}
       <div className="crivet-ambient-bg" aria-hidden="true">
         <div className="crivet-ambient-orb crivet-ambient-orb-1" />
         <div className="crivet-ambient-orb crivet-ambient-orb-2" />
         <div className="crivet-ambient-orb crivet-ambient-orb-3" />
       </div>
 
-      <div className="relative mx-auto max-w-5xl px-4 py-6 space-y-5">
-        {/* Patient/Tutor Header */}
-        <div className="bg-[#0f1e0d] border border-[#2f5b25] rounded-xl p-4 space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-white">Paciente e Tutor</h2>
-            <button
-              type="button"
-              className="px-3 py-1.5 text-sm bg-[#2b5a21] text-[#b9ffae] rounded-lg hover:bg-[#336c27] disabled:opacity-50"
-              disabled={supabaseModeWithoutClinic}
-              onClick={() => setPatientCreateModalOpen(true)}
-            >
-              Novo Paciente
-            </button>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <TutorQuickSelect
-              adapter={crivetAdapter}
-              value={tutor}
-              onPick={handleTutorPick}
-              disabled={supabaseModeWithoutClinic}
-              placeholder="Selecionar tutor existente"
-            />
-            <PatientQuickSelect
-              adapter={crivetAdapter}
-              onPick={handlePatientPick}
-              disabled={supabaseModeWithoutClinic}
-            />
-          </div>
-          {tutor && patient && (
-            <div className="text-sm text-slate-300">
-              <p><strong>Tutor:</strong> {tutor.name}</p>
-              <p><strong>Paciente:</strong> {patient.name} ({patient.species})</p>
+      <div className="crivet-app-shell">
+        <aside className="crivet-sidebar-nav" aria-label="Navegação do CRIVET">
+          <button type="button" className="crivet-sidebar-logo" onClick={handleLogoClick} aria-label="Voltar ao início">
+            <img src="/apps/vetius-logo.png" alt="Vetius" className="crivet-sidebar-logo-img" />
+            <span className="crivet-sidebar-logo-text">CRI VET</span>
+          </button>
+
+          <nav className="crivet-sidebar-links">
+            {NAV_SECTIONS.map((section, index) => {
+              const Icon = section.icon
+              const isActive = activeSection === section.id
+
+              return (
+                <button
+                  key={section.id}
+                  type="button"
+                  onClick={() => scrollToSection(section.id)}
+                  className={`crivet-sidebar-link ${isActive ? 'crivet-sidebar-link--active' : ''}`}
+                  aria-current={isActive ? 'step' : undefined}
+                >
+                  <span className="crivet-sidebar-link-index">{index + 1}</span>
+                  <Icon className="h-4 w-4" aria-hidden="true" />
+                  <span className="crivet-sidebar-link-label">{section.title}</span>
+                  <ChevronRight className="h-4 w-4 opacity-60" aria-hidden="true" />
+                </button>
+              )
+            })}
+          </nav>
+        </aside>
+
+        <main className="crivet-main-content">
+          <header className="crivet-header">
+            <div className="crivet-header-badge">
+              <Stethoscope className="h-4 w-4" aria-hidden="true" />
+              CriVET
             </div>
-          )}
-        </div>
+            <h1 className="crivet-header-title">Calculadora de Infusão Veterinária</h1>
+            <p className="crivet-header-subtitle">Interface clínica otimizada para cálculo de CRI com navegação guiada</p>
+          </header>
 
-        {/* Header */}
-        <header className="crivet-header">
-          <div className="crivet-header-badge">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-            </svg>
-            CriVET
-          </div>
-          <h1 className="crivet-header-title">Calculadora de Infusão Veterinária</h1>
-          <p className="crivet-header-subtitle">Cálculo preciso de CRI para cães e gatos</p>
-        </header>
+          <section id="crivet-step-1" className="crivet-scroll-section">
+            <PatientBlock
+              species={species}
+              physiology={physiology}
+              comorbidities={comorbidities}
+              weight={weight}
+              onSpeciesChange={setSpecies}
+              onPhysiologyChange={setPhysiology}
+              onComorbidityToggle={handleComorbidityToggle}
+              onWeightChange={setWeight}
+            />
+          </section>
 
-        {/* Steps */}
-        <PatientBlock
-          species={species}
-          physiology={physiology}
-          comorbidities={comorbidities}
-          weight={weight}
-          onSpeciesChange={setSpecies}
-          onPhysiologyChange={setPhysiology}
-          onComorbidityToggle={handleComorbidityToggle}
-          onWeightChange={setWeight}
-        />
+          <section id="crivet-step-2" className="crivet-scroll-section">
+            <DrugSelector selectedDrug={selectedDrug} onSelectDrug={handleDrugSelect} />
+          </section>
 
-        <DrugSelector selectedDrug={selectedDrug} onSelectDrug={handleDrugSelect} />
+          <section id="crivet-step-3" className="crivet-scroll-section">
+            {!hasValidWeight && (
+              <div className="crivet-required-weight-alert" role="alert" aria-live="assertive">
+                <AlertTriangle className="h-5 w-5 flex-shrink-0" aria-hidden="true" />
+                <div>
+                  <p className="crivet-required-weight-alert-title">Peso obrigatório para calcular a infusão</p>
+                  <p className="crivet-required-weight-alert-text">
+                    Você pode selecionar o fármaco e configurar preparo, mas o cálculo final só é liberado após informar o peso do paciente.
+                  </p>
+                </div>
+              </div>
+            )}
 
-        <InfusionCalculator
-          patientWeight={weight}
-          selectedDrug={selectedDrug}
-          species={species}
-          physiology={physiology}
-          comorbidities={comorbidities}
-        />
+            <InfusionCalculator
+              patientWeight={weight}
+              selectedDrug={selectedDrug}
+              species={species}
+              physiology={physiology}
+              comorbidities={comorbidities}
+            />
+          </section>
+
+          <section id="crivet-step-4" className="crivet-scroll-section">
+            <article className="crivet-card crivet-explain-card">
+              <div className="crivet-card-header">
+                <div className="crivet-step-badge">4</div>
+                <h2 className="crivet-card-title">Explicação do cálculo</h2>
+              </div>
+
+              <div className="crivet-explain-grid">
+                <div className="crivet-explain-item">
+                  <h3>1. Defina a dose-alvo</h3>
+                  <p>Escolha unidade e dose conforme a indicação clínica do fármaco selecionado.</p>
+                </div>
+                <div className="crivet-explain-item">
+                  <h3>2. Configure concentração</h3>
+                  <p>Use concentração comercial ou personalizada para refletir o frasco disponível.</p>
+                </div>
+                <div className="crivet-explain-item">
+                  <h3>3. Escolha o modo</h3>
+                  <p>Infusão direta ou preparo em seringa/bolsa, conforme protocolo da sua rotina.</p>
+                </div>
+                <div className="crivet-explain-item">
+                  <h3>4. Valide o passo a passo</h3>
+                  <p>No resultado, abra “Cálculo explicado” para auditar cada etapa e copiar as instruções.</p>
+                </div>
+              </div>
+            </article>
+          </section>
+        </main>
       </div>
-
-      <PatientCreateModal
-        open={patientCreateModalOpen}
-        onOpenChange={setPatientCreateModalOpen}
-        adapter={crivetAdapter}
-        onCreatedAndPicked={handlePatientCreate}
-      />
     </div>
   )
 }

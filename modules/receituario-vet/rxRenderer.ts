@@ -1,4 +1,4 @@
-﻿import { PrescriptionItem, PrescriptionState, PrintDoc, PrintDocItem, RouteGroup } from './rxTypes'
+import { PrescriptionItem, PrescriptionState, PrintDoc, PrintDocItem, RouteGroup } from './rxTypes'
 import { loadRxDb } from './rxDb'
 
 const SECTION_ORDER: RouteGroup[] = [
@@ -448,7 +448,10 @@ export function buildAutoInstruction(item: PrescriptionItem, state: Prescription
   const adminSegment = perDoseValueText ? `Administrar ${perDoseValueText} por vez` : 'Administrar conforme orientação clínica'
   const routeSegment = `por via ${routeToText(item.routeGroup)}`
   const frequencySegment = freq.label === 'frequência não informada' ? 'conforme frequência clínica' : frequencyLabelForTutor(item, freq.label)
+<<<<<<< Updated upstream
   const startSegment = formatStartDateText(item.start_date)
+=======
+>>>>>>> Stashed changes
 
   let durationSegment = ''
   if (item.continuousUse) durationSegment = 'com uso contínuo até reavaliação'
@@ -458,7 +461,11 @@ export function buildAutoInstruction(item: PrescriptionItem, state: Prescription
     if (days && days > 0) durationSegment = `durante ${formatNumber(days, 0)} dias`
   }
 
+<<<<<<< Updated upstream
   return [adminSegment, routeSegment, frequencySegment, startSegment, durationSegment].filter(Boolean).join(', ').trim() + '.'
+=======
+  return [adminSegment, routeSegment, frequencySegment, durationSegment].filter(Boolean).join(', ').trim() + '.'
+>>>>>>> Stashed changes
 }
 
 function resolveInstruction(item: PrescriptionItem, state?: PrescriptionState): string {
@@ -508,6 +515,7 @@ export function renderRxToPrintDoc(state: PrescriptionState, opts?: { renderMode
     grouped.set(key, current)
   }
 
+<<<<<<< Updated upstream
   const sections = SECTION_ORDER
     .map((key) => {
       const source = grouped.get(key) || []
@@ -580,11 +588,33 @@ export function renderRxToPrintDoc(state: PrescriptionState, opts?: { renderMode
   const patientParts: string[] = []
   if (state.patient.breed.trim()) patientParts.push(state.patient.breed)
   if (state.patient.ageText.trim()) patientParts.push(state.patient.ageText)
+=======
+  const sections = SECTION_ORDER.map((key) => {
+    const source = grouped.get(key) || []
+    if (renderMode === 'template' && key !== 'ORAL') return null
+    if (!source.length && renderMode === 'final') return null
+    const items: PrintDocItem[] = source.map((item, idx) => {
+      const qty = calculateMedicationQuantity(item, state)
+      const instruction = resolveInstruction(item, state)
+      const subtitleParts = [item.presentation]
+      if (renderMode !== 'final' && qty.label !== 'Quantidade não calculada') {
+        const doseStr = qty.perDose !== null ? `${formatNumber(qty.perDose)} ${qty.unit}` : ''
+        const totalStr = qty.total !== null ? ` · Total: ${formatNumber(qty.total)} ${qty.unit}` : ''
+        subtitleParts.push(quoteSafe(doseStr ? `Dose: ${doseStr}${totalStr}` : qty.label))
+      }
+      return {
+        id: item.id, index: idx + 1, title: buildItemTitle(item) || 'Medicamento', subtitle: subtitleParts.filter(Boolean).join(' - '), instruction, start_date: item.start_date || '', titleBold: !!item.titleBold, titleUnderline: !!item.titleUnderline, cautions: item.cautions.filter(Boolean), status: itemStatus(item, state),
+      }
+    })
+    return { key, title: SECTION_LABEL[key], items }
+  }).filter((s) => s && s.items.length > 0) as PrintDoc['sections']
+>>>>>>> Stashed changes
 
   const tutorName = state.tutor.name || state.tutor.fullName || (state.tutor as any).full_name || '-'
   const address = [state.tutor.street, state.tutor.number, state.tutor.neighborhood, state.tutor.city].filter(Boolean).join(', ')
 
   return {
+<<<<<<< Updated upstream
     documentKind,
     documentId: state.prescriber.adminId || 'ADMIN',
     dateLabel: new Date().toLocaleDateString('pt-BR'),
@@ -600,6 +630,9 @@ export function renderRxToPrintDoc(state: PrescriptionState, opts?: { renderMode
       documentKind === 'special-control'
         ? []
         : [...selectedExams, ...examReasons],
+=======
+    documentKind, documentId: 'RX-' + Date.now(), dateLabel: new Date().toLocaleDateString('pt-BR'), clinicName: state.prescriber.clinicName || 'Vetius', prescriberName: state.prescriber.name || 'Médico Veterinário', prescriberCrmv: state.prescriber.crmv || '', patientLine: `${state.patient.name} (${state.patient.breed}, ${state.patient.ageText})`, tutorLine: tutorName, addressLine: address, sections, recommendations: state.recommendations.bullets, exams: state.recommendations.exams
+>>>>>>> Stashed changes
   }
 }
 

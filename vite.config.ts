@@ -17,6 +17,44 @@ export default defineConfig(({ mode }) => {
       alias: {
         '@': path.resolve(__dirname, '.'),
       }
+    },
+    build: {
+      chunkSizeWarningLimit: 900,
+      rollupOptions: {
+        onwarn(warning, warn) {
+          if (warning.code === 'MODULE_LEVEL_DIRECTIVE') return
+          warn(warning)
+        },
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              if (
+                id.includes('three') ||
+                id.includes('@react-three/fiber') ||
+                id.includes('@react-three/drei')
+              ) {
+                return 'vendor-three'
+              }
+              if (id.includes('jspdf')) {
+                return 'vendor-pdf'
+              }
+              if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+                return 'vendor-react'
+              }
+              if (id.includes('framer-motion') || id.includes('@radix-ui')) {
+                return 'vendor-ui'
+              }
+              if (id.includes('@supabase')) {
+                return 'vendor-supabase'
+              }
+              return 'vendor'
+            }
+            if (id.includes('modules/receituario-vet')) {
+              return 'feature-receituario'
+            }
+          }
+        }
+      }
     }
   };
 });

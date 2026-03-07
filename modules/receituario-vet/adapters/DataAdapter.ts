@@ -21,6 +21,13 @@ export type DataAdapterTutorCreateInput = {
   city?: string
   state?: string
   zipcode?: string
+  addressStreet?: string
+  addressNumber?: string
+  addressComplement?: string
+  addressDistrict?: string
+  addressCity?: string
+  addressState?: string
+  addressZip?: string
   notes?: string
 }
 

@@ -61,7 +61,6 @@ export function HelpModal({ open, title, onClose, children }: HelpModalProps) {
             <p id="help-modal-title" className="text-base font-semibold text-white leading-snug">
               {title}
             </p>
-            <p className="text-xs text-white/50 mt-0.5">Ajuda clínica • CriVET 2.0</p>
           </div>
 
           <button

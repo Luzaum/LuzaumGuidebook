@@ -34,7 +34,7 @@ export const propofolRules: Rule[] = [
       score: severityScore.orange,
       title: "Hipoalbuminemia + Propofol = fração livre ↑ (dose efetiva ↑)",
       why:
-        "Maior fração livre aumenta potência clínica → risco de apneia/hipotensão com dose “usual”.",
+        "Maior fração livre aumenta potência clínica → risco de apneia/hipotensão com dose "usual".",
       do:
         "Reduzir dose e titular lentamente. Monitorar ventilação e PA.",
       tags: ["protein_binding", "resp_depression"],

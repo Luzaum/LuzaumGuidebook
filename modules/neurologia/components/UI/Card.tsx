@@ -14,10 +14,10 @@ export function Card({
   return (
     <div
       className={cn(
-        'rounded-2xl p-6 backdrop-blur-sm border transition-all duration-300',
+        'rounded-2xl p-6 backdrop-blur-md border transition-all duration-300 shadow-[0_8px_24px_rgba(2,6,23,0.25)]',
         variant === 'default'
-          ? 'bg-white/5 border-white/10 hover:border-gold/40'
-          : 'bg-gradient-to-br from-gold/20 to-white/5 border-gold/30 hover:border-gold/60',
+          ? 'bg-card/90 border-border hover:border-gold/45'
+          : 'bg-gradient-to-br from-gold/20 via-gold/10 to-card border-gold/35 hover:border-gold/60',
         className,
       )}
       {...props}

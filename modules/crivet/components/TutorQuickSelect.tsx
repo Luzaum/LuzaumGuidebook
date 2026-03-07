@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
-import type { DataAdapter } from '../adapters'
-import type { TutorInfo } from '../rxTypes'
+import type { DataAdapter } from '../../receituario-vet/adapters'
+import type { TutorInfo } from '../../receituario-vet/rxTypes'
 
 type TutorQuickSelectProps = {
   adapter: DataAdapter

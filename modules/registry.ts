@@ -6,15 +6,12 @@ import {
   Cat,
   TestTube,
   Syringe,
-  Scissors,
   Pill,
   FileText,
   Brain,
-  AlertTriangle,
   Worm,
   LucideIcon,
   Activity,
-  Ticket,
 } from 'lucide-react'
 import calcEnergeticaLogo from '@/assets/logos/logo-calculadora-energetica.png'
 
@@ -51,13 +48,13 @@ export const modules: Module[] = [
     iconImage: '/apps/fluido.png',
   },
   {
-    id: 'transfusão-sanguinea',
+    id: 'transfusao-sanguinea',
     title: 'Transfusão Sanguínea',
     description: 'Cálculo de transfusão sanguínea e compatibilidade',
-    route: '/transfusão-sanguinea',
+    route: '/transfusao-sanguinea',
     status: 'internal',
     icon: Heart,
-    iconImage: '/apps/transfusão.png',
+    iconImage: '/apps/transfusao.png',
   },
   {
     id: 'hemogasometria',
@@ -73,20 +70,19 @@ export const modules: Module[] = [
     title: 'Escalas de Dor',
     description: 'Escalas de dor e protocolos de analgesia',
     route: '/dor',
-    status: 'iframe',
+    status: 'internal',
     icon: Cat,
-    iframeUrl: 'https://analgesiavet.netlify.app',
     iconImage: '/apps/dor.png',
   },
   {
-    id: 'emergências-veterinarias',
+    id: 'emergencias-veterinarias',
     title: 'Emergências Veterinárias',
     description: 'Protocolos de emergência e primeiros socorros',
-    route: '/emergências',
+    route: '/emergencias',
     status: 'iframe',
     icon: Zap,
-    iframeUrl: 'https://emergências-vet.netlify.app',
-    iconImage: '/apps/emergência.png',
+    iframeUrl: 'https://emergencias-vet.netlify.app',
+    iconImage: '/apps/emergencia.png',
   },
   {
     id: 'peconhentos',
@@ -141,8 +137,13 @@ export const modules: Module[] = [
     route: '/veteletrolitico',
     status: 'internal',
     icon: Activity,
+<<<<<<< Updated upstream
+    iconImage: '/apps/fluido.png',
+  },
+=======
   },
 
+>>>>>>> Stashed changes
 ]
 
 export function getModuleById(id: string): Module | undefined {
@@ -150,5 +151,12 @@ export function getModuleById(id: string): Module | undefined {
 }
 
 export function getModuleByRoute(route: string): Module | undefined {
-  return modules.find((m) => m.route === route)
+  const normalizeRoute = (value: string) =>
+    value
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+
+  const normalizedRoute = normalizeRoute(route)
+  return modules.find((m) => normalizeRoute(m.route) === normalizedRoute)
 }

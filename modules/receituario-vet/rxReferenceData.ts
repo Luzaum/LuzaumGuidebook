@@ -1,4 +1,4 @@
-﻿import { Species } from './rxTypes'
+import { Species } from './rxTypes'
 
 export const DOG_BREEDS_BR: string[] = [
   'Labrador Retriever',

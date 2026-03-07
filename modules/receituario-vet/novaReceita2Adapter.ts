@@ -10,12 +10,59 @@ function toSafeString(value: unknown): string {
   return ''
 }
 
+<<<<<<< Updated upstream
 function normalizeLooseText(value: string): string {
   return String(value || '')
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
     .trim()
+=======
+/**
+ * Tenta parsear dose livre ("10 mg/kg", "0,5 ml/kg", "25 mg") em campos estruturados.
+ * Retorna null se não reconhecer o padrão.
+ */
+function parseDoseString(dose: string): { numericStr: string; unit: string; perKg: boolean } | null {
+    if (!dose) return null
+    // Aceita: "10 mg/kg", "0,5 mg/kg BID", "25 mg", "0.5 ml/kg", "10 mcg/kg"
+    const match = dose.match(/(\d+(?:[.,]\d+)?)\s*(mg|mcg|g|ml|mL|UI|IU|u\.?i\.?)(?:\/kg)?/i)
+    if (!match) return null
+    const perKg = /\/kg/i.test(dose)
+    return {
+        numericStr: match[1].replace(',', '.'),
+        unit: match[2].toLowerCase().replace('ui', 'ui').replace('iu', 'ui'),
+        perKg,
+    }
+}
+
+// =====================================================================
+// A2: Conversão de frequência para texto leigo em horas
+// =====================================================================
+function frequencyToText(freq: string): string {
+    if (!freq) return ''
+    const f = freq.toLowerCase().trim()
+    // Contínuo
+    if (f.includes('contínuo') || f.includes('continuo') || f === 'uso contínuo') return 'uso contínuo'
+    if (f.includes('dose única') || f.includes('dose unica')) return 'dose única'
+    // Tokens padrão
+    if (f === 'sid (1x ao dia)' || f === '1x ao dia' || f === 'q24h') return '1 vez ao dia'
+    if (f === 'bid (12/12h)' || f === '2x ao dia' || f === 'q12h') return 'a cada 12 horas'
+    if (f === 'tid (8/8h)' || f === '3x ao dia' || f === 'q8h') return 'a cada 8 horas'
+    if (f === 'qid (6/6h)' || f === '4x ao dia' || f === 'q6h') return 'a cada 6 horas'
+    if (f === '5x ao dia') return 'a cada ~5 horas'
+    if (f === '6x ao dia' || f === 'q4h') return 'a cada 4 horas'
+    if (f === '8x ao dia') return 'a cada 3 horas'
+    if (f === '12x ao dia' || f === 'q2h') return 'a cada 2 horas'
+    if (f === '24x ao dia' || f === 'q1h') return 'a cada 1 hora'
+    if (f === 'q1h') return 'a cada 1 hora'
+    if (f === 'q2h') return 'a cada 2 horas'
+    if (f === 'q4h') return 'a cada 4 horas'
+    if (f === 'q6h') return 'a cada 6 horas'
+    if (f === 'q8h') return 'a cada 8 horas'
+    if (f === 'q12h') return 'a cada 12 horas'
+    // Fallback — retorna o texto original limpo
+    return freq
+>>>>>>> Stashed changes
 }
 
 function normalizeDoseUnit(rawUnit: string): string {
@@ -78,6 +125,7 @@ function routeStringToGroup(route?: string): RouteGroup {
   const normalized = normalizeLooseText(route || '')
   if (!normalized) return 'ORAL'
 
+<<<<<<< Updated upstream
   if (normalized === 'vo' || normalized.includes('oral')) return 'ORAL'
   if (normalized === 'sc' || normalized.includes('subcut')) return 'SC'
   if (normalized === 'im' || normalized.includes('intramuscular')) return 'IM'
@@ -89,11 +137,25 @@ function routeStringToGroup(route?: string): RouteGroup {
   if (normalized.includes('retal')) return 'RETAL'
   if (normalized.includes('inalat') || normalized.includes('nebuliz')) return 'INALATORIO'
   if (normalized.includes('transderm')) return 'TRANSDERMICO'
+=======
+    if (r === 'oral' || r === 'vo' || r.includes('oral') || r.includes('boca')) return 'ORAL'
+    if (r === 'sc' || r.includes('subcut') || r.includes('subcutâneo')) return 'SC'
+    if (r === 'im' || r.includes('intramuscular') || r.includes('muscular')) return 'IM'
+    if (r === 'iv' || r.includes('intravenoso') || r.includes('endovenoso')) return 'IV'
+    if (r.includes('tópic') || r.includes('topic') || r.includes('cutâneo')) return 'TOPICO'
+    if (r.includes('oftal') || r.includes('ocular') || r.includes('olho')) return 'OFTALMICO'
+    if (r.includes('otol') || r.includes('auric') || r.includes('ouvid')) return 'OTOLOGICO'
+    if (r.includes('nasal') || r.includes('intranasal')) return 'INTRANASAL'
+    if (r.includes('retal') || r.includes('reto')) return 'RETAL'
+    if (r.indexOf('inalat') >= 0 || r.indexOf('nebuliz') >= 0) return 'INALATORIO'
+    if (r.indexOf('transderm') >= 0) return 'TRANSDERMICO'
+>>>>>>> Stashed changes
 
   return 'OUTROS'
 }
 
 function parseFrequency(freq: string) {
+<<<<<<< Updated upstream
   const normalized = normalizeLooseText(freq)
   if (!normalized) {
     return { frequencyType: 'timesPerDay' as const, frequencyToken: '' as const, timesPerDay: '', everyHours: '' }
@@ -145,12 +207,78 @@ function parseFrequency(freq: string) {
   }
 
   return { frequencyType: 'timesPerDay' as const, frequencyToken: '' as const, timesPerDay: '1', everyHours: '' }
+=======
+    if (!freq) return { frequencyType: 'timesPerDay' as const, frequencyToken: '' as any, timesPerDay: '', everyHours: '' }
+
+    const normalized = freq.toLowerCase().trim()
+    if (normalized === 'sid' || normalized === '1x ao dia' || normalized === 'q24h') {
+        return { frequencyType: 'timesPerDay' as const, frequencyToken: 'SID' as const, timesPerDay: '1', everyHours: '' }
+    }
+    if (normalized === 'bid' || normalized === '2x ao dia' || normalized === 'q12h') {
+        return { frequencyType: 'timesPerDay' as const, frequencyToken: 'BID' as const, timesPerDay: '2', everyHours: '' }
+    }
+    if (normalized === 'tid' || normalized === '3x ao dia' || normalized === 'q8h') {
+        return { frequencyType: 'timesPerDay' as const, frequencyToken: 'TID' as const, timesPerDay: '3', everyHours: '' }
+    }
+    if (normalized === 'qid' || normalized === '4x ao dia' || normalized === 'q6h') {
+        return { frequencyType: 'timesPerDay' as const, frequencyToken: 'QID' as const, timesPerDay: '4', everyHours: '' }
+    }
+
+    if (freq.startsWith('q') && freq.endsWith('h')) {
+        const hours = freq.replace('q', '').replace('h', '')
+        return { frequencyType: 'everyHours' as const, frequencyToken: '' as any, timesPerDay: '', everyHours: hours }
+    }
+
+    const nxMatch = freq.match(/^(\d+)x/)
+    if (nxMatch) {
+        const times = Number(nxMatch[1])
+        if ([1, 2, 3, 4, 6, 8, 12, 24].includes(times)) {
+            return { frequencyType: 'everyHours' as const, frequencyToken: '' as any, timesPerDay: '', everyHours: String(24 / times) }
+        }
+        return { frequencyType: 'timesPerDay' as const, frequencyToken: '' as any, timesPerDay: nxMatch[1], everyHours: '' }
+    }
+
+    return { frequencyType: 'timesPerDay' as const, frequencyToken: '' as any, timesPerDay: '1', everyHours: '' }
+}
+
+function parseDuration(dur: string) {
+    if (!dur) return { durationDays: '', continuousUse: false, untilFinished: false }
+
+    const lower = dur.toLowerCase()
+    if (lower.indexOf('contínu') >= 0 || lower.indexOf('continu') >= 0) {
+        return { durationDays: '', continuousUse: true, untilFinished: false }
+    }
+    if (lower.indexOf('acabar') >= 0) {
+        return { durationDays: '', continuousUse: false, untilFinished: true }
+    }
+    const match = dur.match(/(\d+)/)
+    if (match) {
+        return { durationDays: match[1], continuousUse: false, untilFinished: false }
+    }
+    return { durationDays: '', continuousUse: false, untilFinished: false }
+}
+
+// =====================================================================
+// A1: Construir Linha 1 completa do item
+// Formato: "Nome Concentração (Nome Comercial) – Forma Farmacêutica"
+// Tudo em `name`; deixar concentration/commercialName vazios para o
+// rxRenderer não acrescentar nada extra.
+// =====================================================================
+function buildLineOneTitle(item: PrescriptionItem, concentrationSafe: string): string {
+    const parts: string[] = [item.name]
+    if (concentrationSafe) parts.push(concentrationSafe)
+    if (item.commercial_name) parts.push(`(${item.commercial_name})`)
+    const form = item.pharmaceutical_form || item.presentation_label
+    if (form) parts.push(`– ${form}`)
+    return parts.join(' ')
+>>>>>>> Stashed changes
 }
 
 function parseDuration(duration: string) {
   const normalized = normalizeLooseText(duration)
   if (!normalized) return { durationDays: '', continuousUse: false, untilFinished: false }
 
+<<<<<<< Updated upstream
   if (normalized.includes('continu')) {
     return { durationDays: '', continuousUse: true, untilFinished: false }
   }
@@ -188,6 +316,14 @@ function buildItemSubtitle(item: {
   }
 
   return parts.join(' • ')
+=======
+    // Mantém apenas instrução extra livre; a linha "Iniciar em" usa start_date próprio.
+    if (item.instructions && item.instructions.trim()) {
+        parts.push(item.instructions.trim())
+    }
+
+    return parts.join('\n')
+>>>>>>> Stashed changes
 }
 
 export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State): PrescriptionState {
@@ -204,8 +340,77 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
         : parsedDose.unit
       : ''
 
+<<<<<<< Updated upstream
     const { frequencyType, frequencyToken, timesPerDay, everyHours } = parseFrequency(item.frequency || '')
     const { durationDays, continuousUse, untilFinished } = parseDuration(item.duration || '')
+=======
+        // A1: Garantir que concentration_text nunca seja objeto/número
+        const concentrationSafe = toSafeString(item.concentration_text)
+
+        // A1: Título completo na linha 1 — tudo em `name`, concentration/commercialName vazios
+        const displayName = buildLineOneTitle(item, concentrationSafe)
+
+        // Subtitle: embalagem + preço (não inclui a forma — já está no título)
+        const subtitleParts: string[] = []
+        if (item.package_quantity && item.package_unit) {
+            subtitleParts.push(`Emb: ${item.package_quantity} ${item.package_unit}`)
+        }
+        if (item.avg_price_brl && item.avg_price_brl > 0) {
+            subtitleParts.push(`R$ ${item.avg_price_brl.toFixed(2)}`)
+        }
+        const subtitle = subtitleParts.join(' • ')
+
+        // A2: Instrução leiga-friendly
+        const instruction = buildItemInstruction(item)
+
+        let doseValue = item.doseValue || ''
+        let doseUnit = item.doseUnit || ''
+        if (!doseValue || !doseUnit) {
+            const parsedDose = parseDoseString(toSafeString(item.dose))
+            doseValue = parsedDose ? parsedDose.numericStr : toSafeString(item.dose)
+            doseUnit = parsedDose ? (parsedDose.perKg ? `${parsedDose.unit}/kg` : parsedDose.unit) : ''
+        }
+
+        const { frequencyType, frequencyToken, timesPerDay, everyHours } = parseFrequency(item.frequency || '')
+        const { durationDays, continuousUse, untilFinished } = parseDuration(item.duration || '')
+
+        return {
+            id: item.id,
+            category: 'medication' as const,
+            catalogDrugId: item.medication_id || '',
+            controlled: item.is_controlled || false,
+            // A1: título completo em `name`;
+            name: displayName,
+            presentation: subtitle,
+            concentration: concentrationSafe, // necessário para o rxRenderer calcular dose
+            commercialName: '',
+            pharmacyType: 'veterinária' as const,
+            packageType: 'frasco' as const,
+            pharmacyName: '',
+            observations: '',
+            routeGroup,
+            doseValue,
+            doseUnit,
+            // Usa autoInstruction combinada com a instruction extra pre-construída
+            autoInstruction: true,
+            frequencyType,
+            frequencyToken,
+            timesPerDay,
+            everyHours,
+            durationDays,
+            untilFinished,
+            continuousUse,
+            instruction,
+            manualEdited: false,
+            titleBold: false,
+            titleUnderline: false,
+            manualQuantity: item.manualQuantity || '',
+            cautions: item.cautions || [],
+            createdAt: now,
+            updatedAt: now,
+        }
+    })
+>>>>>>> Stashed changes
 
     return {
       id: item.id,

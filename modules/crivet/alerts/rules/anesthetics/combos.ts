@@ -15,7 +15,7 @@ export const comboRules: Rule[] = [
       why:
         "No combo, o componente mais limitante em gatos costuma ser a lidocaína sistêmica.",
       do:
-        "Evitar por padrão. Se for fazer “MLK-like”, construir multimodal sem lidocaína sistêmica ou com protocolo alternativo bem justificado.",
+        "Evitar por padrão. Se for fazer "MLK-like", construir multimodal sem lidocaína sistêmica ou com protocolo alternativo bem justificado.",
       tags: ["species_sensitivity"],
     }),
   },

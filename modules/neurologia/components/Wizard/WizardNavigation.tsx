@@ -21,7 +21,8 @@ export function WizardNavigation({
 }: WizardNavigationProps) {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-t border-white/10 pb-[env(safe-area-inset-bottom)]">
-      <div className="container max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div className="w-full lg:ml-80">
+      <div className="w-full max-w-[1600px] mx-auto px-4 lg:px-8 py-4 flex items-center justify-between">
         <Button
           variant="ghost"
           onClick={onBack}
@@ -46,6 +47,8 @@ export function WizardNavigation({
           {nextLabel}
         </Button>
       </div>
+      </div>
     </div>
   )
 }
+

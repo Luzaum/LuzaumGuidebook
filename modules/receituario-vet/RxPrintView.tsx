@@ -1,4 +1,4 @@
-﻿import React from 'react'
+import React from 'react'
 import { RxTemplateStyle, TemplateZoneKey } from './rxDb'
 import { PrintDoc } from './rxTypes'
 
@@ -370,6 +370,16 @@ export function RxPrintView({
                         ) : null}
                       </div>
                       {item.subtitle ? <p className="mb-1" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 2, 9)}pt`, color: '#64748b' }}>{item.subtitle}</p> : null}
+<<<<<<< Updated upstream
+=======
+                      {item.start_date ? (
+                        <p className="mb-1 font-bold" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt`, color: '#374151' }}>
+                          {item.start_date.toLowerCase().startsWith('iniciar em ')
+                            ? item.start_date
+                            : `Iniciar em ${item.start_date}`}
+                        </p>
+                      ) : null}
+>>>>>>> Stashed changes
                       <p className="whitespace-pre-line leading-relaxed" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt` }}>
                         {highlightInstructionSegments(item.instruction)}
                       </p>

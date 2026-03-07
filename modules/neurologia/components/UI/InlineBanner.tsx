@@ -1,7 +1,7 @@
 import React from 'react'
 import { AlertTriangle, Info, CheckCircle2, AlertCircle, X } from 'lucide-react'
 
-type BannerVariant = 'info' | 'warn' | 'error' | 'success'
+type BannerVariant = 'info' | 'warn' | 'warning' | 'error' | 'success'
 
 interface InlineBannerProps {
   variant: BannerVariant
@@ -32,6 +32,12 @@ const variantStyles: Record<
     title: 'text-yellow-400',
     text: 'text-foreground/90',
   },
+  warning: {
+    container: 'bg-yellow-950/20 border-yellow-500/30',
+    icon: <AlertTriangle className="w-5 h-5 text-yellow-400" />,
+    title: 'text-yellow-400',
+    text: 'text-foreground/90',
+  },
   error: {
     container: 'bg-red-950/20 border-red-500/30',
     icon: <AlertCircle className="w-5 h-5 text-red-400" />,
@@ -47,7 +53,7 @@ const variantStyles: Record<
 }
 
 export function InlineBanner({ variant, title, message, onClose, className = '' }: InlineBannerProps) {
-  const styles = variantStyles[variant]
+  const styles = variantStyles[variant] ?? variantStyles.info
   const messages = Array.isArray(message) ? message : [message]
 
   return (

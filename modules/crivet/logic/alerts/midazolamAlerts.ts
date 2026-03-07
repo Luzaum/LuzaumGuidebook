@@ -62,7 +62,7 @@ export function getMidazolamAlerts(i: Inputs): AppAlert[] {
       level: 'warning',
       title: '⚠️ Cesárea antes de retirar fetos',
       message:
-        'Atravessa placenta e pode causar filhotes hipotônicos (“floppy puppy”). Preferir após retirada dos fetos ou alternativa.',
+        'Atravessa placenta e pode causar filhotes hipotônicos ("floppy puppy"). Preferir após retirada dos fetos ou alternativa.',
     })
   }
 

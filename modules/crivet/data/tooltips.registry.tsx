@@ -20,13 +20,18 @@ export type TooltipId =
 // Registry central
 export const TOOLTIP_REGISTRY: Record<TooltipId, React.ReactNode> = {
   rate_help: (
-    <div className="space-y-2 leading-relaxed">
-      <p className="font-semibold">Taxa da bomba (mL/h)</p>
+    <div className="space-y-3 leading-relaxed">
+      <p className="font-semibold text-sky-300">Taxa da Bomba de Infusão (mL/h)</p>
       <p>
-        O app sugere automaticamente uma taxa segura e prática. Você pode ajustar depois. Mudar a taxa não muda a dose;
-        muda a concentração final na seringa/bolsa.
+        Refere-se à velocidade com que o fluido (com o fármaco diluído) será infundido no paciente. O CRIVET sugere uma taxa automática com base no tipo de veículo (seringa ou bolsa) para ser prática e não sobrecarregar o volume do paciente.
       </p>
-      <p className="text-xs opacity-80">Sugestões comuns (seringa): 1–5 mL/h (preferencial 2–5).</p>
+      <div className="bg-sky-900/40 p-3 rounded-lg border border-sky-500/30 text-xs space-y-2 mt-2">
+        <p><strong className="text-white">Se você mudar a taxa aqui:</strong> o aplicativo recalculará a quantidade de fármaco (mL) que você deve colocar dentro da seringa ou bolsa para manter a dose constante. <b>A dose recebida pelo paciente NÃO muda.</b></p>
+        <ul className="list-disc pl-4 opacity-80 mt-1">
+          <li><strong>Seringa:</strong> Taxas ideais entre 1,0 e 5,0 mL/h (para modelos de 50 mL durarem de 10 a 50 horas).</li>
+          <li><strong>Bolsa:</strong> Taxas maiores (ex: 10 a 30 mL/h) são mais fáceis de calibrar em equipos macrogotas/microgotas caso você não tenha bomba infusora contínua.</li>
+        </ul>
+      </div>
     </div>
   ),
 
@@ -127,9 +132,18 @@ export const TOOLTIP_REGISTRY: Record<TooltipId, React.ReactNode> = {
   ),
 
   dose_help: (
-    <div className="space-y-2 leading-relaxed">
-      <p className="font-semibold">Dose alvo</p>
-      <p>Escolha a dose clínica. O CRIVET calcula automaticamente preparo, concentração e taxa sugerida.</p>
+    <div className="space-y-3 leading-relaxed">
+      <p className="font-semibold text-emerald-300">Dose Alvo (Dose Clínica)</p>
+      <p>
+        Esta é a dose prescrita que o paciente deve receber. O cálculo de preparo será todo baseado nesta dose.
+      </p>
+      <div className="bg-emerald-900/30 p-3 rounded-md border border-emerald-500/20 text-xs">
+        <p className="font-semibold text-emerald-100 mb-1">💡 Dose Indicada:</p>
+        <p>Abaixo do campo da dose, você encontra as faixas indicadas para o fármaco selecionado. Essas são as faixas baseadas nos perfis farmacológicos atualizados para a espécie correspondente.</p>
+        <ul className="list-disc pl-4 mt-2 mb-1 space-y-1 opacity-90">
+          <li>Se você preencher uma subdose ou superdose, o sistema alertará abaixo do campo.</li>
+        </ul>
+      </div>
     </div>
   ),
 
@@ -171,9 +185,20 @@ export const TOOLTIP_REGISTRY: Record<TooltipId, React.ReactNode> = {
   ),
 
   vehicle_help: (
-    <div className="space-y-2 leading-relaxed">
-      <p className="font-semibold">Veículo (seringa/bolsa)</p>
-      <p>Define o volume final e influencia a concentração final e praticidade da infusão.</p>
+    <div className="space-y-3 leading-relaxed">
+      <p className="font-semibold text-violet-300">Veículo e Volume Final</p>
+      <p>Onde o fármaco será diluído. Esta decisão define a praticidade e a precisão do seu preparo.</p>
+      <div className="grid grid-cols-2 gap-2 text-xs mt-2">
+        <div className="bg-violet-900/20 p-2 rounded border border-violet-500/20">
+          <p className="font-bold mb-1">Seringa (Perfusora)</p>
+          <p className="opacity-80">Recomendada para infusões de precisão, pacientes pequenos, e fármacos vasoativos (nora, dobuta).</p>
+        </div>
+        <div className="bg-violet-900/20 p-2 rounded border border-violet-500/20">
+          <p className="font-bold mb-1">Bolsa (Fluido)</p>
+          <p className="opacity-80">Comum para CRI analgésicas em equipos de microgotas quando bombas de seringa não estão disponíveis.</p>
+        </div>
+      </div>
+      <p className="text-xs text-white/60 italic mt-2">O volume escolhido ditará o tempo de duração que este preparo irá render.</p>
     </div>
   ),
 }

@@ -24,7 +24,8 @@ export function AppLayout() {
   const isFullBleedRoute =
     isActive('/') ||
     isActive('/hub') ||
-    isImmersiveModuleRoute
+    isImmersiveModuleRoute ||
+    location.pathname.startsWith('/calculadora-energetica')
 
   if (isImmersiveModuleRoute) {
     return (

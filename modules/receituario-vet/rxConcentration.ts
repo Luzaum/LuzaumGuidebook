@@ -1,4 +1,4 @@
-﻿export interface StructuredConcentration {
+export interface StructuredConcentration {
   value: string
   unit: string
   perValue: string

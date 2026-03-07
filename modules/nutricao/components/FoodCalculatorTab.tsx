@@ -1,33 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Beef, Droplets, Flame, Info } from 'lucide-react';
 import { HelpIcon } from './UI/HelpIcon';
 import { generateAutomaticWarnings } from '../data/foodsCommercial';
 import { determineNutritionProfile, determineIsCompleteAndBalanced, getNutritionProfileBadge } from '../utils/nutritionUtils';
 
 interface FoodCalculatorTabProps {
     species: string;
+    weight: string;
     isCritical: boolean;
     nutritionalGoal: string;
     setNutritionalGoal: (goal: string) => void;
     targetWeight: string;
     setTargetWeight: (weight: string) => void;
-    setIwcInput: (input: any) => void;
-    setIwcResult: (result: string) => void;
-    setIdealWeightModalOpenFor: (forSpecies: string | null) => void;
-
+    iwcInput: { weight: string; ecc: string };
+    setIwcInput: (input: { weight: string; ecc: string }) => void;
+    iwcResult: string;
+    handleCalculateIdealWeight: () => void;
     foodSearchQuery: string;
     setFoodSearchQuery: (query: string) => void;
     unifiedFoods: any[];
     selectedUnifiedFoodId: string;
     setSelectedUnifiedFoodId: (id: string) => void;
     selectedUnifiedFood: any;
-
     commercialFoodFilters: any;
     setCommercialFoodFilters: (filters: any) => void;
     selectedCommercialFoodId: string;
     setSelectedCommercialFoodId: (id: string) => void;
-    selectedCommercialFood: any;
-    commercialFoodWarnings: any[];
-
     setPredefinedFoodIndex: (index: string) => void;
     customFoodName: string;
     setCustomFoodName: (name: string) => void;
@@ -35,11 +33,8 @@ interface FoodCalculatorTabProps {
     setCustomFoodCalories: (cals: string) => void;
     customFoodUnit: string;
     setCustomFoodUnit: (unit: string) => void;
-
     handleAddUnifiedFood: () => void;
-    handleAddCommercialFood: () => void;
     handleAddFood: () => void;
-
     foodPrescriptionList: any[];
     calculationResults: any;
     targetKcal: number;
@@ -48,46 +43,132 @@ interface FoodCalculatorTabProps {
 }
 
 export const FoodCalculatorTab: React.FC<FoodCalculatorTabProps> = ({
-    species, isCritical,
-    nutritionalGoal, setNutritionalGoal,
-    targetWeight, setTargetWeight,
-    setIwcInput, setIwcResult, setIdealWeightModalOpenFor,
-
-    foodSearchQuery, setFoodSearchQuery, unifiedFoods,
-    selectedUnifiedFoodId, setSelectedUnifiedFoodId, selectedUnifiedFood,
-
-    commercialFoodFilters, setCommercialFoodFilters,
-    selectedCommercialFoodId, setSelectedCommercialFoodId, selectedCommercialFood, commercialFoodWarnings,
-
+    species,
+    weight,
+    isCritical,
+    nutritionalGoal,
+    setNutritionalGoal,
+    targetWeight,
+    setTargetWeight,
+    iwcInput,
+    setIwcInput,
+    iwcResult,
+    handleCalculateIdealWeight,
+    foodSearchQuery,
+    setFoodSearchQuery,
+    unifiedFoods,
+    selectedUnifiedFoodId,
+    setSelectedUnifiedFoodId,
+    selectedUnifiedFood,
+    commercialFoodFilters,
+    setCommercialFoodFilters,
+    setSelectedCommercialFoodId,
     setPredefinedFoodIndex,
-    customFoodName, setCustomFoodName,
-    customFoodCalories, setCustomFoodCalories,
-    customFoodUnit, setCustomFoodUnit,
-
-    handleAddUnifiedFood, handleAddCommercialFood, handleAddFood,
-    foodPrescriptionList, calculationResults, targetKcal, setModalContent, sortedFoods
+    customFoodName,
+    setCustomFoodName,
+    customFoodCalories,
+    setCustomFoodCalories,
+    customFoodUnit,
+    setCustomFoodUnit,
+    handleAddUnifiedFood,
+    handleAddFood,
+    foodPrescriptionList,
+    calculationResults,
+    targetKcal,
+    setModalContent,
+    sortedFoods,
 }) => {
+    const [eccZoomOpen, setEccZoomOpen] = useState(false);
+    const formatPt = (value: number, decimals = 1) => value.toFixed(decimals).replace('.', ',');
+    const stripHtml = (text: string) => String(text || '').replace(/<[^>]*>/g, '').trim();
     const goalOptions = [
-        { id: 'maintenance', label: '⚖️ Manutenção' },
-        { id: 'deficit', label: '📉 Perda de Peso' },
-        { id: 'surplus', label: '📈 Ganho de Peso' },
+        { id: 'maintenance', label: 'Manutenção' },
+        { id: 'deficit', label: 'Perda de peso' },
+        { id: 'surplus', label: 'Ganho de peso' },
     ];
 
+    const currentWeight = Number(weight.replace(',', '.'));
+    const targetWeightNumber = Number(targetWeight.replace(',', '.'));
+    const hasCurrentWeight = Number.isFinite(currentWeight) && currentWeight > 0;
+    const isGoalMode = nutritionalGoal === 'deficit' || nutritionalGoal === 'surplus';
+    const eccOptions = nutritionalGoal === 'deficit'
+        ? [5, 6, 7, 8, 9]
+        : nutritionalGoal === 'surplus'
+            ? [1, 2, 3, 4, 5]
+            : [5];
+    const isTargetWeightValid = nutritionalGoal === 'maintenance'
+        ? true
+        : Number.isFinite(targetWeightNumber) && targetWeightNumber > 0 && (
+            nutritionalGoal === 'deficit' ? targetWeightNumber < currentWeight : targetWeightNumber > currentWeight
+        );
+    const eccImageSrc = species === 'cat' ? '/ecc-gato-2025.jpg' : '/ecc-cao-2025.jpg';
+    const kcalForPlan = nutritionalGoal === 'maintenance' ? (calculationResults?.der || 0) : targetKcal;
+    const hasEnergyBase = Number.isFinite(currentWeight) && currentWeight > 0;
+    const goalKFactor = nutritionalGoal === 'deficit'
+        ? (species === 'dog' ? 1.0 : 0.8)
+        : nutritionalGoal === 'surplus'
+            ? (species === 'dog' ? 1.4 : 1.2)
+            : (typeof calculationResults?.k === 'number' ? calculationResults.k : null);
+
+    const goalCalculationDescription = (() => {
+        if (!hasEnergyBase) return 'Informe o peso do paciente na Calculadora Energética para liberar a prescrição.';
+        if (nutritionalGoal === 'maintenance') {
+            const rer = calculationResults?.rer || 0;
+            if (!rer || !goalKFactor) return 'Meta de manutenção baseada no RER do peso atual e fator fisiológico.';
+            return `Manutenção: RER(${formatPt(currentWeight, 1)} kg) ${formatPt(rer, 1)} x K ${formatPt(goalKFactor, 2)} = ${formatPt(kcalForPlan, 1)} kcal/dia.`;
+        }
+
+        if (!isTargetWeightValid) {
+            return nutritionalGoal === 'deficit'
+                ? 'Perda de peso: informe peso ideal menor que o peso atual para calcular a prescrição.'
+                : 'Ganho de peso: informe peso ideal maior que o peso atual para calcular a prescrição.';
+        }
+
+        const tw = targetWeightNumber;
+        const rerIdeal = (species === 'dog' && (tw < 2 || tw > 45)) ? (30 * tw) + 70 : 70 * Math.pow(tw, 0.75);
+        const factor = nutritionalGoal === 'deficit' ? (species === 'dog' ? 1.0 : 0.8) : (species === 'dog' ? 1.4 : 1.2);
+        return `${nutritionalGoal === 'deficit' ? 'Perda' : 'Ganho'}: RER(${formatPt(tw, 1)} kg) ${formatPt(rerIdeal, 1)} x K ${formatPt(factor, 1)} = ${formatPt(kcalForPlan, 1)} kcal/dia.`;
+    })();
+    const isPrescriptionReady = hasEnergyBase && (nutritionalGoal === 'maintenance' || isTargetWeightValid) && kcalForPlan > 0;
+    const prescriptionPendingMessage = !hasEnergyBase
+        ? 'Informe o peso atual na Calculadora Energética'
+        : nutritionalGoal === 'maintenance'
+            ? 'Meta energética indisponível'
+            : 'Informe um peso ideal válido';
+
+    useEffect(() => {
+        setIwcInput({ ...iwcInput, weight: weight || '' });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [weight]);
+
+    useEffect(() => {
+        const currentEcc = Number(iwcInput.ecc);
+        if (!eccOptions.includes(currentEcc)) {
+            setIwcInput({ ...iwcInput, ecc: String(eccOptions[0]) });
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [nutritionalGoal]);
+
     return (
-        <div id="page-calc-racao">
+        <div id="page-calc-racao" className="metab-racao-page">
+            {eccZoomOpen && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-3" onClick={() => setEccZoomOpen(false)}>
+                    <div className="metab-modal-card max-w-5xl w-full p-3" onClick={(e) => e.stopPropagation()}>
+                        <div className="flex justify-end mb-2">
+                            <button className="metab-subtle-btn" type="button" onClick={() => setEccZoomOpen(false)}>Fechar</button>
+                        </div>
+                        <img src={eccImageSrc} alt={`Guia ECC ampliado ${species === 'cat' ? 'felino' : 'canino'}`} className="w-full max-h-[80vh] object-contain rounded-lg border border-[color:var(--metab-border)]" />
+                    </div>
+                </div>
+            )}
             <div className="text-center mb-8">
-                <h1 className="text-3xl md:text-4xl font-bold text-foreground bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-4">
-                    Plano e Prescrição Diária
-                </h1>
+                <h1 className="metab-racao-title">Plano e Prescrição Diária</h1>
                 <p className="mt-2 text-muted-foreground text-lg">Defina a meta, selecione o alimento e veja a quantidade diária.</p>
             </div>
 
             {!isCritical ? (
-                <div className="bg-gradient-to-br from-muted to-muted/50 p-6 rounded-xl mb-6 border-2 border-border shadow-md">
-                    <h3 className="font-semibold text-foreground text-xl mb-5 flex items-center gap-2">
-                        <span className="text-2xl">1️⃣</span>
-                        <span>Defina a Meta Nutricional</span>
-                    </h3>
+                <div className="metab-racao-block p-6 mb-6">
+                    <h3 className="font-semibold text-foreground text-xl mb-5 flex items-center gap-2"><span className="metab-step-badge">1</span><span>Defina a meta nutricional</span></h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
                         {goalOptions.map(goal => (
                             <div key={goal.id}>
@@ -99,448 +180,230 @@ export const FoodCalculatorTab: React.FC<FoodCalculatorTabProps> = ({
                             </div>
                         ))}
                     </div>
-                    {(nutritionalGoal === 'deficit' || nutritionalGoal === 'surplus') && (
-                        <div className="mt-4">
-                            <label htmlFor="targetWeight" className="block text-sm font-medium text-foreground mb-2 flex items-center">
-                                {nutritionalGoal === 'deficit' ? 'Peso Ideal para Perda (kg)' : 'Peso Ideal para Ganho (kg)'}
-                                <span
-                                    className="inline-flex items-center justify-center w-5 h-5 ml-2 text-sm font-bold text-white bg-blue-500 rounded-full cursor-pointer transition-colors hover:bg-blue-700 shrink-0"
-                                    role="button"
-                                    aria-label="Abrir guia para cálculo do peso ideal"
-                                    onClick={() => {
-                                        setIwcInput({ weight: '', ecc: '6' });
-                                        setIwcResult('');
-                                        setIdealWeightModalOpenFor(species);
-                                    }}
-                                >?</span>
-                            </label>
-                            <input type="number" id="targetWeight" placeholder="Ex: 5" value={targetWeight} onChange={e => setTargetWeight(e.target.value)} className="input-field" step="0.1" min="0.1" />
-                            {nutritionalGoal === 'deficit' && (
-                                <div className="mt-4 bg-amber-50 border-l-4 border-amber-400 text-amber-800 p-4 rounded-r-lg text-sm">
-                                    <h4 className="font-bold">💡 Curiosidade Clínica: O "Efeito Platô"</h4>
-                                    <p className="mt-1">É comum que o animal pare de perder peso mesmo com a dieta. Isso ocorre por uma adaptação do metabolismo. O acompanhamento veterinário é crucial para reajustar o plano e continuar a perda de peso de forma segura.</p>
-                                </div>
-                            )}
+
+                    {isGoalMode && (
+                        <div className="metab-goal-layout mt-4">
+                            <div className="metab-goal-image-card">
+                                <p className="metab-small font-semibold mb-2">Guia de escore corporal</p>
+                                <button type="button" className="w-full text-left" onClick={() => setEccZoomOpen(true)} title="Clique para ampliar">
+                                    <img src={eccImageSrc} alt={`Guia ECC ${species === 'cat' ? 'felino' : 'canino'}`} className="metab-goal-image" />
+                                    <p className="metab-small mt-2">Clique para ampliar</p>
+                                </button>
+                            </div>
+                            <div className="metab-goal-form-card">
+                                <label className="block text-sm font-medium mb-1">Peso atual para estimativa (kg)</label>
+                                <input type="number" value={iwcInput.weight} onChange={e => setIwcInput({ ...iwcInput, weight: e.target.value })} className="input-field" step="0.1" min="0.1" placeholder="Ex: 12.4" />
+                                <label className="block text-sm font-medium mt-3 mb-1">ECC ({nutritionalGoal === 'deficit' ? '5 a 9' : '1 a 5'})</label>
+                                <select value={iwcInput.ecc} onChange={e => setIwcInput({ ...iwcInput, ecc: e.target.value })} className="input-field">
+                                    {eccOptions.map(val => <option key={val} value={val}>{val}</option>)}
+                                </select>
+                                <button type="button" onClick={handleCalculateIdealWeight} className="metab-subtle-btn w-full mt-3">Calcular peso ideal estimado</button>
+                                {iwcResult && <p className="metab-small mt-2">{iwcResult}</p>}
+                                {hasCurrentWeight && (
+                                    <p className="metab-small mt-2">
+                                        Cálculo base: peso ideal estimado pelo ECC atual e peso informado ({currentWeight.toFixed(1)} kg).
+                                    </p>
+                                )}
+
+                                <label htmlFor="targetWeight" className="block text-sm font-medium mt-3 mb-1">{nutritionalGoal === 'deficit' ? 'Peso ideal para perda (kg)' : 'Peso ideal para ganho (kg)'}</label>
+                                <input type="number" id="targetWeight" value={targetWeight} onChange={e => setTargetWeight(e.target.value)} className="input-field" step="0.1" min="0.1" disabled={!hasCurrentWeight} placeholder={hasCurrentWeight ? 'Ex: 9.8' : 'Informe o peso atual na energia'} />
+                                {!hasCurrentWeight && <p className="metab-small mt-2">Para perda/ganho, informe antes o peso atual do paciente na Calculadora Energética.</p>}
+                                {hasCurrentWeight && targetWeight && !isTargetWeightValid && (
+                                    <p className="metab-small mt-2 text-red-500">{nutritionalGoal === 'deficit' ? 'Para perda de peso, o peso ideal deve ser menor que o peso atual.' : 'Para ganho de peso, o peso ideal deve ser maior que o peso atual.'}</p>
+                                )}
+                            </div>
                         </div>
                     )}
                 </div>
             ) : (
                 <div className="bg-yellow-50 border-l-4 border-yellow-500 text-yellow-800 p-4 rounded-lg mb-6">
-                    <p><strong>Paciente Crítico:</strong> O plano de alimentação é fixo na progressão do RER para evitar síndrome de realimentação. A meta de manutenção será usada.</p>
+                    <p><strong>Paciente crítico:</strong> plano fixo em progressão de RER para reduzir risco de realimentação.</p>
                 </div>
             )}
 
-            <div className="bg-gradient-to-br from-muted to-muted/50 p-6 rounded-xl mb-6 border-2 border-border shadow-md">
-                <h3 className="font-semibold text-foreground text-xl mb-5 flex items-center gap-2">
-                    <span className="text-2xl">2️⃣</span>
-                    <span>Selecione o Alimento</span>
-                </h3>
-
-                {/* Banco de Alimentos */}
+            <div className="metab-racao-block p-6 mb-6">
+                <h3 className="font-semibold text-foreground text-xl mb-5 flex items-center gap-2"><span className="metab-step-badge">2</span><span>Selecione o alimento</span></h3>
                 <div className="mb-6 pb-6 border-b border-border">
-                    <h4 className="font-medium text-foreground mb-4 text-xl">Banco de Alimentos</h4>
+                    <h4 className="font-medium text-foreground mb-4 text-xl">Banco de alimentos</h4>
+                    <span className="metab-field-meta">Texto livre • Ex: hill, renal, kitten</span>
+                    <input type="text" placeholder="Buscar alimento (ex: hill)..." value={foodSearchQuery} onChange={(e) => setFoodSearchQuery(e.target.value)} className="input-field" />
 
-                    {/* Campo de Busca */}
-                    <div className="mb-4">
-                        <div className="relative">
-                            <input
-                                type="text"
-                                placeholder="Buscar alimento (ex: digite 'hill' para Hill's)..."
-                                value={foodSearchQuery}
-                                onChange={(e) => setFoodSearchQuery(e.target.value)}
-                                className="w-full p-3 pl-10 bg-card border-2 border-input rounded-lg text-foreground focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:focus:ring-indigo-800 transition-all"
-                            />
-                            <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground">🔍</span>
-                            {foodSearchQuery && (
-                                <button
-                                    onClick={() => {
-                                        setFoodSearchQuery('');
-                                        setSelectedUnifiedFoodId('');
-                                    }}
-                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition"
-                                    aria-label="Limpar busca"
-                                >✕</button>
-                            )}
-                        </div>
-
-                        {/* Lista de resultados da busca */}
-                        {foodSearchQuery.trim() && unifiedFoods.length > 0 && (
-                            <div className="mt-3 max-h-64 overflow-y-auto border-2 border-border rounded-lg bg-card shadow-lg">
-                                <div className="p-2 text-xs text-muted-foreground border-b border-border sticky top-0 bg-muted/80 backdrop-blur-sm z-10">
-                                    {unifiedFoods.length} alimento{unifiedFoods.length !== 1 ? 's' : ''} encontrado{unifiedFoods.length !== 1 ? 's' : ''}
-                                </div>
-                                <div className="divide-y divide-border">
-                                    {unifiedFoods.slice(0, 20).map((food) => {
-                                        const displayName = food.isPredefined
-                                            ? food.name
-                                            : `${food.brand} ${food.line ? `- ${food.line}` : ''}: ${food.product}`;
-                                        return (
-                                            <button
-                                                key={food.id}
-                                                onClick={() => {
-                                                    setSelectedUnifiedFoodId(food.id);
-                                                    setFoodSearchQuery('');
-                                                }}
-                                                className="w-full text-left p-3 hover:bg-muted transition-colors focus:bg-muted focus:outline-none"
-                                            >
-                                                <div className="flex items-center justify-between">
-                                                    <span className="text-sm font-medium text-foreground">{displayName}</span>
-                                                    {food.isTherapeutic && (
-                                                        <span className="ml-2 px-2 py-0.5 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 text-xs rounded">Terapêutico</span>
-                                                    )}
-                                                </div>
-                                            </button>
-                                        );
-                                    })}
-                                    {unifiedFoods.length > 20 && (
-                                        <div className="p-2 text-xs text-muted-foreground text-center">... e mais {unifiedFoods.length - 20} alimento{unifiedFoods.length - 20 !== 1 ? 's' : ''}</div>
-                                    )}
-                                </div>
+                    {foodSearchQuery.trim() && unifiedFoods.length > 0 && (
+                        <div className="mt-3 max-h-64 overflow-y-auto border-2 border-border rounded-lg bg-card shadow-lg">
+                            <div className="p-2 text-xs text-muted-foreground border-b border-border sticky top-0 bg-muted/80 backdrop-blur-sm z-10">{unifiedFoods.length} alimento(s) encontrado(s)</div>
+                            <div className="divide-y divide-border">
+                                {unifiedFoods.slice(0, 20).map((food) => {
+                                    const displayName = food.isPredefined ? food.name : `${food.brand} ${food.line ? `- ${food.line}` : ''}: ${food.product}`;
+                                    return <button key={food.id} onClick={() => { setSelectedUnifiedFoodId(food.id); setFoodSearchQuery(''); }} className="w-full text-left p-3 hover:bg-muted transition-colors focus:bg-muted focus:outline-none"><span className="text-sm font-medium text-foreground">{displayName}</span></button>;
+                                })}
                             </div>
-                        )}
-                    </div>
-
-                    {/* Filtros */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
-                        <select
-                            value={commercialFoodFilters.lifeStage}
-                            onChange={(e) => setCommercialFoodFilters((prev: any) => ({ ...prev, lifeStage: e.target.value }))}
-                            className="p-2 bg-card border border-input rounded-lg text-sm text-foreground"
-                        >
-                            <option value="ALL">Todos os estágios</option>
-                            <option value="PUPPY">Filhotes</option>
-                            <option value="ADULT">Adulto</option>
-                            <option value="SENIOR">Sênior</option>
-                        </select>
-                        <select
-                            value={commercialFoodFilters.neuterStatus}
-                            onChange={(e) => setCommercialFoodFilters((prev: any) => ({ ...prev, neuterStatus: e.target.value }))}
-                            className="p-2 bg-card border border-input rounded-lg text-sm text-foreground"
-                        >
-                            <option value="ANY">Qualquer status</option>
-                            <option value="NEUTERED">Castrado</option>
-                            <option value="INTACT">Inteiro</option>
-                        </select>
-                        <select
-                            value={commercialFoodFilters.isTherapeutic === undefined ? 'all' : commercialFoodFilters.isTherapeutic ? 'therapeutic' : 'regular'}
-                            onChange={(e) => setCommercialFoodFilters((prev: any) => ({ ...prev, isTherapeutic: e.target.value === 'all' ? undefined : e.target.value === 'therapeutic' }))}
-                            className="p-2 bg-card border border-input rounded-lg text-sm text-foreground"
-                        >
-                            <option value="all">Todos</option>
-                            <option value="regular">Regular</option>
-                            <option value="therapeutic">Terapêutico</option>
-                        </select>
-                        <button
-                            onClick={() => {
-                                setCommercialFoodFilters({ species: species === 'dog' ? 'DOG' : 'CAT', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: undefined });
-                                setSelectedCommercialFoodId('');
-                            }}
-                            className="p-2 bg-slate-200 dark:bg-slate-700 text-foreground rounded-lg text-sm hover:bg-slate-300 dark:hover:bg-slate-600 transition"
-                        >Limpar filtros</button>
-                    </div>
-
-                    {/* Seleção de alimento - Banco Unificado */}
-                    <div className="mb-3">
-                        <select
-                            value={selectedUnifiedFoodId}
-                            onChange={(e) => {
-                                setSelectedUnifiedFoodId(e.target.value);
-                                setSelectedCommercialFoodId('');
-                                setPredefinedFoodIndex('');
-                                setCustomFoodName('');
-                                setCustomFoodCalories('');
-                            }}
-                            className="w-full p-3 bg-card border-2 border-input rounded-lg text-foreground focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:focus:ring-indigo-800 transition-all appearance-none cursor-pointer"
-                        >
-                            <option value="">Selecione um alimento...</option>
-                            {unifiedFoods.map((food) => {
-                                const displayName = food.isPredefined
-                                    ? food.name
-                                    : `${food.brand} ${food.line ? `- ${food.line}` : ''}: ${food.product}`;
-                                return (
-                                    <option key={food.id} value={food.id}>{displayName}</option>
-                                );
-                            })}
-                        </select>
-                        <span className="absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none">🍽️</span>
-                    </div>
-
-                    {/* Informações do alimento selecionado */}
-                    {selectedUnifiedFood && !selectedUnifiedFood.isPredefined && (
-                        <div className="bg-gradient-to-br from-card to-muted/50 p-5 rounded-xl border-2 border-border shadow-lg mb-3">
-                            <div className="flex items-start justify-between mb-4">
-                                <div className="flex-1">
-                                    <div className="flex items-center gap-2 mb-1">
-                                        <span className="text-2xl">🍖</span>
-                                        <h5 className="font-bold text-foreground text-lg">
-                                            {selectedUnifiedFood.brand}
-                                            {selectedUnifiedFood.line && ` - ${selectedUnifiedFood.line}`}
-                                        </h5>
-                                    </div>
-                                    <p className="text-sm text-muted-foreground ml-8">{selectedUnifiedFood.product}</p>
-                                </div>
-                                {(() => {
-                                    const profile = selectedUnifiedFood.nutritionProfile || determineNutritionProfile(selectedUnifiedFood);
-                                    const badge = getNutritionProfileBadge(profile);
-                                    return <span className={`px-2 py-1 ${badge.color} text-xs font-semibold rounded`}>{badge.text}</span>;
-                                })()}
-                                {selectedUnifiedFood.requiresVetSupervision && (
-                                    <span className="ml-2 px-2 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300 text-xs font-semibold rounded">⚕️ Uso sob supervisão</span>
-                                )}
-                            </div>
-
-                            {/* ME e valores principais */}
-                            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-4">
-                                <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-indigo-900/20 dark:to-indigo-800/20 p-3 rounded-lg text-center border border-indigo-200 dark:border-indigo-800">
-                                    <p className="text-xs text-muted-foreground mb-1 flex items-center justify-center gap-1"><span>⚡</span> ME</p>
-                                    <p className="font-bold text-indigo-700 dark:text-indigo-300 text-sm">{selectedUnifiedFood.me_kcal_per_kg.toLocaleString('pt-BR')} kcal/kg</p>
-                                </div>
-                                {(() => {
-                                    const protein = selectedUnifiedFood.guarantees.find((g: any) => g.key === 'protein_min_gkg');
-                                    const fat = selectedUnifiedFood.guarantees.find((g: any) => g.key === 'fat_min_gkg');
-                                    const fiber = selectedUnifiedFood.guarantees.find((g: any) => g.key === 'fiber_max_gkg');
-                                    const moisture = selectedUnifiedFood.guarantees.find((g: any) => g.key === 'moisture_max_gkg');
-                                    return (
-                                        <>
-                                            {protein && <div className="bg-muted p-2 rounded text-center"><p className="text-xs text-muted-foreground mb-1">PB mín</p><p className="font-bold text-foreground text-sm">{(protein.value / 10).toFixed(1)}%</p></div>}
-                                            {fat && <div className="bg-muted p-2 rounded text-center"><p className="text-xs text-muted-foreground mb-1">EE mín</p><p className="font-bold text-foreground text-sm">{(fat.value / 10).toFixed(1)}%</p></div>}
-                                            {fiber && <div className="bg-muted p-2 rounded text-center"><p className="text-xs text-muted-foreground mb-1">FB máx</p><p className="font-bold text-foreground text-sm">{(fiber.value / 10).toFixed(1)}%</p></div>}
-                                            {moisture && <div className="bg-muted p-2 rounded text-center"><p className="text-xs text-muted-foreground mb-1">Umidade máx</p><p className="font-bold text-foreground text-sm">{(moisture.value / 10).toFixed(1)}%</p></div>}
-                                        </>
-                                    )
-                                })()}
-                            </div>
-
-                            {/* Warnings automáticos */}
-                            {(() => {
-                                const warnings = generateAutomaticWarnings(selectedUnifiedFood)
-                                if (warnings.length === 0) return null
-                                return (
-                                    <div className="space-y-2 mb-3">
-                                        {warnings.map((warning, idx) => {
-                                            const colorClass = warning.type === 'high_fat' ? 'bg-red-100 dark:bg-red-900/20 border-red-500 text-red-800 dark:text-red-300'
-                                                : warning.type === 'ultra_low_fat' ? 'bg-blue-100 dark:bg-blue-900/20 border-blue-500 text-blue-800 dark:text-blue-300'
-                                                    : warning.type === 'renal_diet' ? 'bg-emerald-100 dark:bg-emerald-900/20 border-emerald-500 text-emerald-800 dark:text-emerald-300'
-                                                        : 'bg-purple-100 dark:bg-purple-900/20 border-purple-500 text-purple-800 dark:text-purple-300'
-                                            return <div key={idx} className={`p-2 rounded text-xs border-l-4 ${colorClass}`}>{warning.message}</div>
-                                        })}
-                                    </div>
-                                )
-                            })()}
-
-                            {selectedUnifiedFood.functionalNotes && selectedUnifiedFood.functionalNotes.length > 0 && (
-                                <div className="mb-3">
-                                    <p className="text-xs font-semibold text-muted-foreground mb-1">Características:</p>
-                                    <ul className="text-xs text-foreground space-y-1">
-                                        {selectedUnifiedFood.functionalNotes.map((note: string, idx: number) => (
-                                            <li key={idx} className="flex items-start gap-1"><span>•</span><span>{note}</span></li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            )}
-
-                            <button onClick={handleAddUnifiedFood} className="w-full py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition text-sm">Adicionar à Lista</button>
                         </div>
                     )}
 
-                    {/* Informações do alimento predefinido } */}
-                    {selectedUnifiedFood && selectedUnifiedFood.isPredefined && (
-                        <div className="bg-gradient-to-br from-card to-muted/50 p-5 rounded-xl border-2 border-border shadow-lg mb-3">
-                            <div className="flex items-start justify-between mb-4">
-                                <div className="flex-1">
-                                    <h5 className="font-bold text-foreground text-lg mb-1">{selectedUnifiedFood.name}</h5>
-                                    <p className="text-sm text-muted-foreground">{selectedUnifiedFood.indication}</p>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4 mt-3">
+                        <span className="metab-field-meta md:col-span-4">Seleção • use filtros para refinar a lista</span>
+                        <select value={commercialFoodFilters.lifeStage} onChange={(e) => setCommercialFoodFilters((prev: any) => ({ ...prev, lifeStage: e.target.value }))} className="input-field text-sm"><option value="ALL">Todos os estágios</option><option value="PUPPY">Filhotes</option><option value="ADULT">Adulto</option><option value="SENIOR">Sênior</option></select>
+                        <select value={commercialFoodFilters.neuterStatus} onChange={(e) => setCommercialFoodFilters((prev: any) => ({ ...prev, neuterStatus: e.target.value }))} className="input-field text-sm"><option value="ANY">Qualquer status</option><option value="NEUTERED">Castrado</option><option value="INTACT">Inteiro</option></select>
+                        <select value={commercialFoodFilters.isTherapeutic === undefined ? 'all' : commercialFoodFilters.isTherapeutic ? 'therapeutic' : 'regular'} onChange={(e) => setCommercialFoodFilters((prev: any) => ({ ...prev, isTherapeutic: e.target.value === 'all' ? undefined : e.target.value === 'therapeutic' }))} className="input-field text-sm"><option value="all">Todos</option><option value="regular">Regular</option><option value="therapeutic">Terapêutico</option></select>
+                        <button onClick={() => { setCommercialFoodFilters({ species: species === 'dog' ? 'DOG' : 'CAT', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: undefined }); setSelectedCommercialFoodId(''); }} className="p-2 bg-slate-200 dark:bg-slate-700 text-foreground rounded-lg text-sm hover:bg-slate-300 dark:hover:bg-slate-600 transition">Limpar filtros</button>
+                    </div>
+
+                    <div className="mb-3">
+                        <span className="metab-field-meta">Seleção • escolha um alimento</span>
+                        <select value={selectedUnifiedFoodId} onChange={(e) => { setSelectedUnifiedFoodId(e.target.value); setSelectedCommercialFoodId(''); setPredefinedFoodIndex(''); setCustomFoodName(''); setCustomFoodCalories(''); }} className="input-field appearance-none cursor-pointer">
+                            <option value="">Selecione um alimento...</option>
+                            {unifiedFoods.map((food) => {
+                                const displayName = food.isPredefined ? food.name : `${food.brand} ${food.line ? `- ${food.line}` : ''}: ${food.product}`;
+                                return <option key={food.id} value={food.id}>{displayName}</option>;
+                            })}
+                        </select>
+                    </div>
+
+                    {selectedUnifiedFood && (
+                        <div className="metab-food-card p-5 mb-3">
+                            <div className="flex items-start justify-between gap-3 mb-3">
+                                <div>
+                                    <h5 className="font-bold text-foreground text-lg">{selectedUnifiedFood.isPredefined ? selectedUnifiedFood.name : `${selectedUnifiedFood.brand}${selectedUnifiedFood.line ? ` - ${selectedUnifiedFood.line}` : ''}`}</h5>
+                                    {!selectedUnifiedFood.isPredefined && <p className="text-sm text-muted-foreground">{selectedUnifiedFood.product}</p>}
+                                    {selectedUnifiedFood.isPredefined && <p className="text-sm text-muted-foreground">{selectedUnifiedFood.indication}</p>}
                                 </div>
                                 {(() => {
                                     const profile = selectedUnifiedFood.nutritionProfile || determineNutritionProfile(selectedUnifiedFood);
                                     const badge = getNutritionProfileBadge(profile);
                                     return <span className={`px-2 py-1 ${badge.color} text-xs font-semibold rounded`}>{badge.text}</span>;
                                 })()}
-                                {selectedUnifiedFood.requiresVetSupervision && (
-                                    <span className="ml-2 px-2 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300 text-xs font-semibold rounded">⚕️ Uso sob supervisão</span>
-                                )}
                             </div>
-                            <div className="grid grid-cols-3 gap-3 mb-4">
-                                <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-indigo-900/20 dark:to-indigo-800/20 p-3 rounded-lg text-center border border-indigo-200 dark:border-indigo-800">
-                                    <p className="text-xs text-muted-foreground mb-1 flex items-center justify-center gap-1"><span>⚡</span> Calorias</p>
-                                    <p className="font-bold text-indigo-700 dark:text-indigo-300 text-sm">{selectedUnifiedFood.calories} {selectedUnifiedFood.unit === 'g' ? 'kcal/g' : selectedUnifiedFood.unit === 'ml' ? 'kcal/mL' : `kcal/${selectedUnifiedFood.unit}`}</p>
-                                </div>
-                                {selectedUnifiedFood.protein && selectedUnifiedFood.protein !== 'N/A' && (
-                                    <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-3 rounded-lg text-center border border-green-200 dark:border-green-800">
-                                        <p className="text-xs text-muted-foreground mb-1 flex items-center justify-center gap-1"><span>🥩</span> PB</p>
-                                        <p className="font-bold text-green-700 dark:text-green-300 text-sm">{selectedUnifiedFood.protein}</p>
-                                    </div>
-                                )}
-                                {selectedUnifiedFood.fat && selectedUnifiedFood.fat !== 'N/A' && (
-                                    <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 dark:from-yellow-900/20 dark:to-yellow-800/20 p-3 rounded-lg text-center border border-yellow-200 dark:border-yellow-800">
-                                        <p className="text-xs text-muted-foreground mb-1 flex items-center justify-center gap-1"><span>🧈</span> EE</p>
-                                        <p className="font-bold text-yellow-700 dark:text-yellow-300 text-sm">{selectedUnifiedFood.fat}</p>
-                                    </div>
-                                )}
-                            </div>
-                            {selectedUnifiedFood.alerts && selectedUnifiedFood.alerts.length > 0 && (
-                                <div className="space-y-2 mb-3">
-                                    {selectedUnifiedFood.alerts.map((alert: any, alertIndex: number) => {
-                                        const alertClasses: Record<string, string> = { red: 'bg-red-100 border-l-4 border-red-500 text-red-800', yellow: 'bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800', green: 'bg-green-100 border-l-4 border-green-500 text-green-800' };
-                                        const icon: Record<string, string> = { red: '🚨', yellow: '⚠️', green: '✅' };
-                                        return (
-                                            <div key={`${alert.type}-${alert.text?.substring(0, 20) ?? ""}-${alertIndex}`} className={`p-3 rounded-r-md text-sm flex items-start ${alertClasses[alert.type]}`}>
-                                                <span className="mr-2 text-base">{icon[alert.type]}</span>
-                                                <p dangerouslySetInnerHTML={{ __html: alert.text }} />
+                            {(() => {
+                                const kcalPerGram = selectedUnifiedFood.isPredefined
+                                    ? Number(selectedUnifiedFood.calories || 0)
+                                    : Number(selectedUnifiedFood.me_kcal_per_kg || 0) / 1000;
+                                const proteinPercent = selectedUnifiedFood.isPredefined
+                                    ? (selectedUnifiedFood.protein || 'N/A')
+                                    : (() => {
+                                        const g = selectedUnifiedFood.guarantees?.find((row: any) => row.key === 'protein_min_gkg');
+                                        return g ? `${(Number(g.value) / 10).toFixed(1)}%` : 'N/A';
+                                    })();
+                                const fatPercent = selectedUnifiedFood.isPredefined
+                                    ? (selectedUnifiedFood.fat || 'N/A')
+                                    : (() => {
+                                        const g = selectedUnifiedFood.guarantees?.find((row: any) => row.key === 'fat_min_gkg');
+                                        return g ? `${(Number(g.value) / 10).toFixed(1)}%` : 'N/A';
+                                    })();
+
+                                const advantages: string[] = [];
+                                const disadvantages: string[] = [];
+                                if (selectedUnifiedFood.isPredefined) {
+                                    (selectedUnifiedFood.alerts || []).forEach((a: any) => {
+                                        const text = stripHtml(a?.text || '');
+                                        if (!text) return;
+                                        if (a?.type === 'green') advantages.push(text);
+                                        else disadvantages.push(text);
+                                    });
+                                } else {
+                                    (selectedUnifiedFood.functionalNotes || []).forEach((note: string) => {
+                                        const text = stripHtml(note);
+                                        if (!text) return;
+                                        if (/(aten|risco|cautela|obesidade|contraindicado)/i.test(text)) disadvantages.push(text);
+                                        else advantages.push(text);
+                                    });
+                                    const autoWarnings = generateAutomaticWarnings(selectedUnifiedFood) || [];
+                                    autoWarnings.forEach((warning) => {
+                                        if (warning.type === 'high_fat') disadvantages.push(warning.message);
+                                        else advantages.push(warning.message);
+                                    });
+                                }
+
+                                return (
+                                    <>
+                                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-3">
+                                            <div className="metab-metric-chip">
+                                                <p className="metab-chip-label flex items-center gap-1"><Flame className="h-3.5 w-3.5" /> kcal/g</p>
+                                                <p className="metab-chip-value">{kcalPerGram > 0 ? formatPt(kcalPerGram, 3) : 'N/A'}</p>
                                             </div>
-                                        );
-                                    })}
-                                </div>
-                            )}
-                            <button onClick={handleAddUnifiedFood} className="w-full py-3 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white rounded-lg font-semibold hover:from-indigo-700 hover:to-indigo-800 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 text-sm">
-                                <span>➕</span><span>Adicionar à Lista</span>
-                            </button>
+                                            <div className="metab-metric-chip">
+                                                <p className="metab-chip-label flex items-center gap-1"><Beef className="h-3.5 w-3.5" /> %PB</p>
+                                                <p className="metab-chip-value">{proteinPercent}</p>
+                                            </div>
+                                            <div className="metab-metric-chip">
+                                                <p className="metab-chip-label flex items-center gap-1"><Droplets className="h-3.5 w-3.5" /> %EE</p>
+                                                <p className="metab-chip-value">{fatPercent}</p>
+                                            </div>
+                                        </div>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+                                            <div className="rounded-lg border border-emerald-500/35 bg-emerald-500/10 p-3">
+                                                <p className="text-xs font-semibold text-emerald-700 dark:text-emerald-300 mb-1">Vantagens</p>
+                                                {(advantages.length ? advantages : ['Sem vantagens específicas cadastradas.']).slice(0, 4).map((text, idx) => (
+                                                    <p key={`adv-${idx}`} className="metab-small">{text}</p>
+                                                ))}
+                                            </div>
+                                            <div className="rounded-lg border border-rose-500/35 bg-rose-500/10 p-3">
+                                                <p className="text-xs font-semibold text-rose-700 dark:text-rose-300 mb-1">Desvantagens / alertas</p>
+                                                {(disadvantages.length ? disadvantages : ['Sem alertas específicos cadastrados.']).slice(0, 4).map((text, idx) => (
+                                                    <p key={`dis-${idx}`} className="metab-small">{text}</p>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        {!selectedUnifiedFood.isPredefined && Array.isArray(selectedUnifiedFood.sources) && selectedUnifiedFood.sources.length > 0 && (
+                                            <div className="mb-3 rounded-lg border border-[color:var(--metab-border)] p-3">
+                                                <p className="metab-small font-semibold flex items-center gap-1"><Info className="h-3.5 w-3.5" /> Fontes do fabricante / revendedor</p>
+                                                {selectedUnifiedFood.sources.slice(0, 3).map((source: any, idx: number) => (
+                                                    <a key={`source-${idx}`} href={source.url} target="_blank" rel="noreferrer" className="metab-small block underline underline-offset-2">{source.label}</a>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </>
+                                );
+                            })()}
+                            <button onClick={handleAddUnifiedFood} className="metab-primary-btn w-full py-2 text-sm">Adicionar à lista</button>
                         </div>
                     )}
                 </div>
 
-                <h4 className="font-medium text-foreground mb-2">Adicionar Manualmente</h4>
+                <h4 className="font-medium text-foreground mb-2">Adicionar manualmente</h4>
+                <span className="metab-field-meta">Texto livre • use quando o alimento não estiver no banco</span>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <input type="text" value={customFoodName} onChange={e => { setCustomFoodName(e.target.value); setPredefinedFoodIndex(''); }} placeholder="Nome do alimento" className="input-field col-span-3 md:col-span-1" />
                     <input type="number" value={customFoodCalories} onChange={e => { setCustomFoodCalories(e.target.value); setPredefinedFoodIndex(''); }} placeholder="Calorias" className="input-field" />
-                    <select value={customFoodUnit} onChange={e => { setCustomFoodUnit(e.target.value); setPredefinedFoodIndex(''); }} className="p-3 bg-card border border-input rounded-lg text-foreground">
-                        <option value="g">kcal/g</option>
-                        <option value="lata">kcal/lata</option>
-                        <option value="sache">kcal/sachê</option>
-                        <option value="ml">kcal/mL</option>
-                    </select>
+                    <select value={customFoodUnit} onChange={e => { setCustomFoodUnit(e.target.value); setPredefinedFoodIndex(''); }} className="input-field"><option value="g">kcal/g</option><option value="lata">kcal/lata</option><option value="sache">kcal/sachê</option><option value="ml">kcal/mL</option></select>
                 </div>
-                <button onClick={handleAddFood} className="w-full mt-4 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition">Adicionar Alimento à Lista</button>
+                <button onClick={handleAddFood} className="metab-primary-btn w-full mt-4 py-3">Adicionar alimento à lista</button>
             </div>
 
             <div>
-                <h3 className="font-semibold text-foreground text-lg mb-4">3. Prescrição Diária</h3>
+                <h3 className="font-semibold text-foreground text-lg mb-2">3. Prescrição diária</h3>
+                <p className="metab-small mb-4">{goalCalculationDescription}</p>
                 <div id="food-list" className="space-y-4">
-                    {foodPrescriptionList.length === 0 ? (
-                        <p className="text-center text-muted-foreground">Nenhum alimento adicionado ainda.</p>
-                    ) : foodPrescriptionList.map((food, i) => {
+                    {foodPrescriptionList.length === 0 ? <p className="text-center text-muted-foreground">Nenhum alimento adicionado ainda.</p> : foodPrescriptionList.map((food, i) => {
                         const unitLabel = food.unit === 'g' ? 'g' : (food.unit === 'ml' ? 'mL' : food.unit);
-                        const foodKey = `${food.name}-${food.calories ?? ""}-${food.unit ?? ""}-${i}`;
-
-                        if (isCritical) {
-                            const rerKcal = calculationResults?.rer || 0;
-                            return (
-                                <div key={foodKey} className="bg-card p-4 rounded-lg border border-border">
-                                    <h4 className="font-bold text-foreground text-lg mb-3">{food.name}</h4>
-                                    <p className='text-sm text-center text-red-600 mb-2'>Paciente crítico: usando plano de progressão para meta de manutenção (RER).</p>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-foreground">
-                                        <div>
-                                            <h5 className="font-semibold text-foreground mb-2 text-center">Protocolo de 3 Dias</h5>
-                                            <ul className="space-y-1">
-                                                <li className="flex justify-between p-1.5 bg-muted rounded"><span>Dia 1 (33%):</span> <strong className="text-foreground">{((rerKcal * 0.33) / food.calories).toFixed(1)} {unitLabel}/dia</strong></li>
-                                                <li className="flex justify-between p-1.5 bg-muted rounded"><span>Dia 2 (66%):</span> <strong className="text-foreground">{((rerKcal * 0.66) / food.calories).toFixed(1)} {unitLabel}/dia</strong></li>
-                                                <li className="flex justify-between p-1.5 bg-muted rounded"><span>Dia 3 (100%):</span> <strong className="text-foreground">{(rerKcal / food.calories).toFixed(1)} {unitLabel}/dia</strong></li>
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            <h5 className="font-semibold text-foreground mb-2 text-center">Protocolo de 4 Dias</h5>
-                                            <ul className="space-y-1">
-                                                <li className="flex justify-between p-1.5 bg-muted rounded"><span>Dia 1 (25%):</span> <strong className="text-foreground">{((rerKcal * 0.25) / food.calories).toFixed(1)} {unitLabel}/dia</strong></li>
-                                                <li className="flex justify-between p-1.5 bg-muted rounded"><span>Dia 2 (50%):</span> <strong className="text-foreground">{((rerKcal * 0.50) / food.calories).toFixed(1)} {unitLabel}/dia</strong></li>
-                                                <li className="flex justify-between p-1.5 bg-muted rounded"><span>Dia 3 (75%):</span> <strong className="text-foreground">{((rerKcal * 0.75) / food.calories).toFixed(1)} {unitLabel}/dia</strong></li>
-                                                <li className="flex justify-between p-1.5 bg-muted rounded"><span>Dia 4 (100%):</span> <strong className="text-foreground">{(rerKcal / food.calories).toFixed(1)} {unitLabel}/dia</strong></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                        const foodKey = `${food.name}-${food.calories ?? ''}-${food.unit ?? ''}-${i}`;
+                        const amount = kcalForPlan > 0
+                            ? (food.isCommercial && food.commercialData ? ((kcalForPlan / food.commercialData.me_kcal_per_kg) * 1000).toFixed(1) : (food.calories > 0 ? (kcalForPlan / food.calories).toFixed(1) : '0.0'))
+                            : '0.0';
+                        return (
+                            <div key={foodKey} className="bg-card p-4 rounded-lg border border-border">
+                                <h4 className="font-bold text-foreground text-lg mb-3">{food.name}</h4>
+                                <div className="flex justify-between items-center p-3 bg-blue-50 rounded-md gap-3">
+                                    <span className="flex items-center text-md font-semibold text-blue-800">{goalOptions.find(g => g.id === nutritionalGoal)?.label || 'Meta:'}<HelpIcon term="foodAmount" onOpenModal={setModalContent} /></span>
+                                    <strong className="text-xl font-bold text-blue-800 text-right">{isPrescriptionReady ? (food.isCommercial ? `${amount} g/dia` : `${amount} ${unitLabel}/dia`) : prescriptionPendingMessage}</strong>
                                 </div>
-                            )
-                        } else {
-                            let amount = '0.0'
-                            if (targetKcal > 0) {
-                                if (food.isCommercial && food.commercialData) {
-                                    amount = ((targetKcal / food.commercialData.me_kcal_per_kg) * 1000).toFixed(1)
-                                } else if (food.calories > 0) {
-                                    amount = (targetKcal / food.calories).toFixed(1)
-                                }
-                            }
-                            return (
-                                <div key={foodKey} className="bg-card p-4 rounded-lg border border-border">
-                                    <h4 className="font-bold text-foreground text-lg mb-3">{food.name}</h4>
-
-                                    {food.isCommercial && food.commercialData && (
-                                        <div className="mb-3 space-y-2">
-                                            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
-                                                <div className="bg-muted p-2 rounded text-center"><p className="text-muted-foreground mb-1">ME</p><p className="font-semibold text-foreground">{food.commercialData.me_kcal_per_kg.toLocaleString('pt-BR')} kcal/kg</p></div>
-                                                {(() => {
-                                                    const protein = food.commercialData.guarantees.find((g: any) => g.key === 'protein_min_gkg');
-                                                    const fat = food.commercialData.guarantees.find((g: any) => g.key === 'fat_min_gkg');
-                                                    const fiber = food.commercialData.guarantees.find((g: any) => g.key === 'fiber_max_gkg');
-                                                    return (
-                                                        <>
-                                                            {protein && <div className="bg-muted p-2 rounded text-center"><p className="text-muted-foreground mb-1">PB</p><p className="font-semibold text-foreground">{(protein.value / 10).toFixed(1)}%</p></div>}
-                                                            {fat && <div className="bg-muted p-2 rounded text-center"><p className="text-muted-foreground mb-1">EE</p><p className="font-semibold text-foreground">{(fat.value / 10).toFixed(1)}%</p></div>}
-                                                            {fiber && <div className="bg-muted p-2 rounded text-center"><p className="text-muted-foreground mb-1">FB</p><p className="font-semibold text-foreground">{(fiber.value / 10).toFixed(1)}%</p></div>}
-                                                        </>
-                                                    )
-                                                })()}
-                                            </div>
-                                            {(() => {
-                                                const warnings = generateAutomaticWarnings(food.commercialData)
-                                                if (warnings.length === 0) return null
-                                                return (
-                                                    <div className="space-y-1">
-                                                        {warnings.map((warning, idx) => {
-                                                            const colorClass = warning.type === 'high_fat' ? 'bg-red-50 dark:bg-red-900/10 border-red-300 text-red-700 dark:text-red-300'
-                                                                : warning.type === 'ultra_low_fat' ? 'bg-blue-50 dark:bg-blue-900/10 border-blue-300 text-blue-700 dark:text-blue-300'
-                                                                    : warning.type === 'renal_diet' ? 'bg-emerald-50 dark:bg-emerald-900/10 border-emerald-300 text-emerald-700 dark:text-emerald-300'
-                                                                        : 'bg-purple-50 dark:bg-purple-900/10 border-purple-300 text-purple-700 dark:text-purple-300'
-                                                            return <div key={idx} className={`p-1.5 rounded text-xs border-l-2 ${colorClass}`}>{warning.message}</div>
-                                                        })}
-                                                    </div>
-                                                )
-                                            })()}
-                                        </div>
-                                    )}
-
-                                    <div className="flex justify-between items-center p-3 bg-blue-50 rounded-md">
-                                        <span className="flex items-center text-md font-semibold text-blue-800">
-                                            {goalOptions.find(g => g.id === nutritionalGoal)?.label || 'Meta:'}
-                                            <HelpIcon term="foodAmount" onOpenModal={setModalContent} />
-                                        </span>
-                                        <strong className="text-xl font-bold text-blue-800">
-                                            {targetKcal > 0 ? (food.isCommercial ? `${amount} g/dia` : `${amount} ${unitLabel}/dia`) : 'Insira o peso ideal'}
-                                        </strong>
-                                    </div>
-
-                                    {(() => {
-                                        const foodItem = food.isCommercial ? null : sortedFoods.find(f => f.name === food.name);
-                                        if (!foodItem) return null;
-                                        const profile = foodItem.nutritionProfile || determineNutritionProfile(foodItem);
-                                        const isComplete = foodItem.isCompleteAndBalanced ?? determineIsCompleteAndBalanced(profile);
-                                        if (isComplete) return null;
-                                        if (profile === 'SUPPLEMENT') return <div className="mt-3 p-3 bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 text-yellow-800 dark:text-yellow-300 rounded"><p className="text-sm font-semibold mb-1">⚠️ Suplemento</p><p className="text-xs">Isso não é dieta completa. Use como complemento, não como única fonte.</p></div>;
-                                        if (profile === 'HUMAN_ENTERAL') {
-                                            const hasCat = foodItem.species?.includes('cat');
-                                            return <div className="mt-3 p-3 bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 text-red-800 dark:text-red-300 rounded"><p className="text-sm font-semibold mb-1">🚨 Enteral Humana</p><p className="text-xs mb-1">Risco de desequilíbrio metabólico. Use com supervisão.</p>{hasCat && foodItem.speciesSafetyNotes?.cat && <p className="text-xs mt-1 font-semibold">{foodItem.speciesSafetyNotes.cat[0]}</p>}</div>;
-                                        }
-                                        if (profile === 'SUPPORT_ENTERAL' && !isComplete) return <div className="mt-3 p-3 bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 text-red-800 dark:text-red-300 rounded"><p className="text-sm font-semibold mb-1">⚠️ Suporte Enteral</p><p className="text-xs">Não é completo e balanceado. Use sob supervisão.</p></div>;
-                                        return null;
-                                    })()}
-
-                                    {(() => {
-                                        const foodItem = food.isCommercial ? null : sortedFoods.find(f => f.name === food.name);
-                                        if (!foodItem) return null;
-                                        const profile = foodItem.nutritionProfile || determineNutritionProfile(foodItem);
-                                        const badge = getNutritionProfileBadge(profile);
-                                        return (
-                                            <div className="mt-2 flex items-center gap-2 text-xs text-muted-foreground">
-                                                <span>Tipo:</span>
-                                                <span className={`px-2 py-1 ${badge.color} rounded text-xs font-semibold`}>{badge.text}</span>
-                                                {foodItem.requiresVetSupervision && <span className="text-orange-600 dark:text-orange-400">⚕️ Uso sob supervisão</span>}
-                                            </div>
-                                        );
-                                    })()}
-                                </div>
-                            )
-                        }
+                                {(() => {
+                                    const foodItem = food.isCommercial ? null : sortedFoods.find(f => f.name === food.name);
+                                    if (!foodItem) return null;
+                                    const profile = foodItem.nutritionProfile || determineNutritionProfile(foodItem);
+                                    const isComplete = foodItem.isCompleteAndBalanced ?? determineIsCompleteAndBalanced(profile);
+                                    if (isComplete) return null;
+                                    return <div className="mt-3 p-3 bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 text-yellow-800 dark:text-yellow-300 rounded"><p className="text-xs">Dieta incompleta para uso exclusivo. Avaliar conduta.</p></div>;
+                                })()}
+                            </div>
+                        );
                     })}
                 </div>
             </div>
         </div>
     );
 };
+
+
+
+
+

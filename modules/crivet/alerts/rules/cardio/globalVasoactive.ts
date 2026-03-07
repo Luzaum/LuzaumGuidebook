@@ -22,7 +22,7 @@ export const globalVasoactiveRules: Rule[] = [
       id: makeAlertId("vasoactive_no_perf_targets_orange", drug),
       severity: "yellow",
       score: severityScore.yellow,
-      title: "Vasoativo sem alvo de perfusão registrado: risco de “tratar número”",
+      title: "Vasoativo sem alvo de perfusão registrado: risco de "tratar número"",
       why:
         "Sem MAP/lactato/diurese, aumenta chance de sub ou supertitular e perder perfusão real.",
       do:

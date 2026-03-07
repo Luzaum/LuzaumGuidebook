@@ -498,7 +498,7 @@ export function normalizeDrug(raw: any): NormalizedDrug {
 
   // Normalizar todas as seções
   const taglines = normalizeTaglines(raw)
-  const helpDrawer = normalizeHelpDrawer(raw, `${namePt} - Ajuda Clínica`)
+  const helpDrawer = normalizeHelpDrawer(raw, `${namePt} - Informações Clínicas`)
   const compatibility = normalizeCompatibility(raw)
   const doses = normalizeDoses(raw)
   const indications = normalizeIndications(raw)

@@ -1,12 +1,19 @@
-import React, { useCallback, useMemo, useState } from 'react'
-import { Pill, Search, Sparkles, ChevronDown, ChevronRight } from 'lucide-react'
+﻿import React, { useCallback, useMemo, useState } from 'react'
+import {
+  Pill,
+  Search,
+  Sparkles,
+  ChevronDown,
+  ChevronRight,
+  Layers3,
+  FlaskConical,
+  FolderKanban,
+  ShieldCheck,
+} from 'lucide-react'
 import { Drug, categories, drugs } from '../data/drugs'
 import { HelpModal } from './HelpModal'
 import { HelpContentRenderer } from './HelpContent'
 import { CATEGORY_STYLES, mapCategoryToStyle } from '../ui/categoryStyles'
-import { DrugProfileStatusBadge } from './DrugProfileWarning'
-import { getDrugProfileValidation } from '../utils/drugProfileRegistry'
-import { getMissingFieldsBySection } from '../utils/drugProfileValidation'
 import { getDrug } from '../services/getDrug'
 
 type DrugSelectorProps = {
@@ -14,13 +21,14 @@ type DrugSelectorProps = {
   onSelectDrug: (drug: Drug) => void
 }
 
-function HelpButtonWithModal({
-  title,
-  drugId
-}: {
-  title: string
-  drugId: string
-}) {
+function getDrugClasses(drug: Drug): string[] {
+  const fromProfile = Array.isArray(drug.profile?.class) ? drug.profile.class : []
+  const cleaned = fromProfile.map((item) => String(item || '').trim()).filter((item) => item.length > 0)
+  if (cleaned.length > 0) return cleaned
+  return ['Classe em revisão']
+}
+
+function HelpButtonWithModal({ title, drugId }: { title: string; drugId: string }) {
   const [open, setOpen] = useState(false)
   const normalized = getDrug(drugId)
   const helpTitle = normalized.helpDrawer.title || title
@@ -53,7 +61,7 @@ export default function DrugSelector({ selectedDrug, onSelectDrug }: DrugSelecto
   }, [])
 
   const toggleCategory = useCallback((category: string) => {
-    setExpandedCategories(prev => {
+    setExpandedCategories((prev) => {
       const next = new Set(prev)
       if (next.has(category)) next.delete(category)
       else next.add(category)
@@ -84,89 +92,46 @@ export default function DrugSelector({ selectedDrug, onSelectDrug }: DrugSelecto
 
   return (
     <section className="crivet-card" aria-labelledby="drug-selector-title">
-      {/* Card header */}
       <div className="crivet-card-header">
         <div className="crivet-step-badge">2</div>
-        <h2 id="drug-selector-title" className="crivet-card-title">Seleção de fármaco</h2>
-        {selectedDrug && (
-          <span className="crivet-status-pill crivet-status-pill--active ml-auto">
-            {selectedDrug.name}
-          </span>
-        )}
+        <h2 id="drug-selector-title" className="crivet-card-title">
+          Seleção de fármaco
+        </h2>
+        {selectedDrug && <span className="crivet-status-pill crivet-status-pill--active ml-auto">{selectedDrug.name}</span>}
       </div>
 
-      {/* Selected drug banner */}
       {selectedDrug && (() => {
         const categoryStyle = CATEGORY_STYLES[mapCategoryToStyle(selectedDrug.category)]
-        const validation = getDrugProfileValidation(selectedDrug.id)
-        const missingBySection = getMissingFieldsBySection(validation)
+        const classes = getDrugClasses(selectedDrug)
+
         return (
-          <div className={`crivet-drug-selected-banner ${categoryStyle.className}`}>
-            <div className="flex items-center gap-3">
+          <div className={`crivet-drug-selected-banner ${categoryStyle.bannerClassName}`}>
+            <div className="flex items-start gap-3">
               <div className="crivet-drug-icon-wrap">
                 <Pill className="w-5 h-5" aria-hidden="true" />
               </div>
-              <div>
-                <p className="text-[11px] uppercase tracking-widest opacity-75 font-semibold">Selecionado</p>
+              <div className="space-y-1 min-w-0">
+                <p className="text-[11px] uppercase tracking-widest opacity-80 font-semibold">Selecionado</p>
                 <p className="text-base font-bold leading-tight">{selectedDrug.name}</p>
+                <p className="text-xs opacity-90 flex items-center gap-1.5 crivet-drug-meta-full" title={classes[0]}>
+                  <FlaskConical className="w-3.5 h-3.5 flex-shrink-0" aria-hidden="true" />
+                  Classe principal: <strong>{classes[0]}</strong>
+                </p>
+                <p className="text-xs opacity-90 flex items-center gap-1.5">
+                  <FolderKanban className="w-3.5 h-3.5" aria-hidden="true" />
+                  Categoria: <strong>{categoryStyle.label}</strong>
+                </p>
               </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-[11px] font-semibold opacity-80 hidden sm:block">{categoryStyle.label}</span>
-              <HelpButtonWithModal
-                title={`Sobre ${selectedDrug.name}`}
-                drugId={selectedDrug.id}
-              />
-              <Sparkles className="w-4 h-4 text-white/70 animate-pulse" aria-hidden="true" />
             </div>
 
-            {/* Completeness bar */}
-            <div className="col-span-2 mt-2 rounded-lg border border-white/15 bg-black/10 p-3">
-              <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wide opacity-80 mb-1.5">
-                <span>Completude do perfil</span>
-                <span className="text-sm font-bold normal-case">{validation.completeness}%</span>
-              </div>
-              <div className="h-1.5 rounded-full bg-white/20 overflow-hidden">
-                <div
-                  className="h-full rounded-full bg-white/80 transition-all duration-500"
-                  style={{ width: `${validation.completeness}%` }}
-                  role="progressbar"
-                  aria-valuenow={validation.completeness}
-                  aria-valuemin={0}
-                  aria-valuemax={100}
-                />
-              </div>
-              {validation.missing.length > 0 && (
-                <div className="mt-2 space-y-2">
-                  {Object.entries(missingBySection).map(([section, fields]) => (
-                    <div key={section} className="text-xs">
-                      <div className="font-semibold uppercase tracking-wide opacity-70">{section}</div>
-                      <ul className="mt-1 space-y-0.5">
-                        {fields.map((field) => (
-                          <li key={`${field.section}-${field.field}`} className="flex items-start gap-1.5">
-                            <span className={
-                              field.severity === 'critical' ? 'text-red-200' :
-                                field.severity === 'warning' ? 'text-yellow-200' : 'text-green-200'
-                            }>
-                              {field.severity === 'critical' ? '!' : field.severity === 'warning' ? '~' : 'i'}
-                            </span>
-                            <span className="opacity-80">
-                              <code className="text-[10px] bg-black/20 px-1 rounded">{field.field}</code>{' '}
-                              {field.description}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              )}
+            <div className="flex items-center gap-2">
+              <HelpButtonWithModal title={`Sobre ${selectedDrug.name}`} drugId={selectedDrug.id} />
+              <Sparkles className="w-4 h-4 text-white/75 animate-pulse" aria-hidden="true" />
             </div>
           </div>
         )
       })()}
 
-      {/* Search */}
       <div className="relative">
         <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" aria-hidden="true" />
         <input
@@ -184,65 +149,84 @@ export default function DrugSelector({ selectedDrug, onSelectDrug }: DrugSelecto
             className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-500 dark:text-slate-400 hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors flex items-center justify-center text-xs font-bold cursor-pointer"
             aria-label="Limpar busca"
           >
-            ×
+            x
           </button>
         )}
       </div>
 
-      {/* Drug list */}
       <div className="crivet-drug-list">
         {searchTerm && Object.keys(grouped).length === 0 ? (
           <div className="p-10 text-center">
             <Search className="w-8 h-8 text-slate-300 dark:text-slate-600 mx-auto mb-3" aria-hidden="true" />
-            <p className="text-slate-500 dark:text-slate-400 text-sm">Nenhum fármaco encontrado para "<strong>{searchTerm}</strong>"</p>
+            <p className="text-slate-500 dark:text-slate-400 text-sm">
+              Nenhum fármaco encontrado para "<strong>{searchTerm}</strong>"
+            </p>
           </div>
         ) : (
           <div className="divide-y divide-slate-100 dark:divide-slate-800">
             {Object.entries(grouped).map(([category, list]) => {
+              const categoryStyle = CATEGORY_STYLES[mapCategoryToStyle(list[0].category)]
               const isExpanded = expandedCategories.has(category) || !!searchTerm
+
               return (
                 <div key={category}>
                   <button
                     type="button"
                     onClick={() => toggleCategory(category)}
-                    className="crivet-category-header"
+                    className={`crivet-category-header ${categoryStyle.headerClassName}`}
                     aria-expanded={isExpanded}
                   >
-                    <span>{category}</span>
+                    <div className="flex items-center gap-2 min-w-0">
+                      <Layers3 className="w-3.5 h-3.5 flex-shrink-0" aria-hidden="true" />
+                      <span className="truncate">{category}</span>
+                    </div>
                     <div className="flex items-center gap-2">
-                      <span className="crivet-category-count">{list.length}</span>
-                      {isExpanded
-                        ? <ChevronDown className="w-3.5 h-3.5 text-slate-400" aria-hidden="true" />
-                        : <ChevronRight className="w-3.5 h-3.5 text-slate-400" aria-hidden="true" />
-                      }
+                      <span className={`crivet-category-count ${categoryStyle.countClassName}`}>{list.length}</span>
+                      {isExpanded ? (
+                        <ChevronDown className="w-3.5 h-3.5 text-current/70" aria-hidden="true" />
+                      ) : (
+                        <ChevronRight className="w-3.5 h-3.5 text-current/70" aria-hidden="true" />
+                      )}
                     </div>
                   </button>
+
                   {isExpanded && (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 p-3">
                       {list.map((drug) => {
-                        const validation = getDrugProfileValidation(drug.id)
-                        const hasCritical = validation.missing.some((m) => m.severity === 'critical')
                         const isSelected = selectedDrug?.id === drug.id
+                        const drugClasses = getDrugClasses(drug)
+                        const tone = CATEGORY_STYLES[mapCategoryToStyle(drug.category)]
+
                         return (
                           <button
                             key={drug.id}
                             type="button"
                             onClick={() => handleSelect(drug)}
                             aria-pressed={isSelected}
-                            className={`crivet-drug-btn ${isSelected ? 'crivet-drug-btn--selected' : ''}`}
+                            className={`crivet-drug-btn relative overflow-hidden transition-all duration-300 group ${isSelected ? `ring-2 ring-offset-2 ring-offset-slate-900 scale-[1.02] shadow-[0_4px_25px_rgba(0,0,0,0.5)] bg-slate-800 ${tone.selectedCardClassName} saturate-[1.5] brightness-125` : `bg-slate-900/50 hover:bg-slate-800 border-slate-700 hover:border-slate-500 ${tone.cardClassName}`}`}
                           >
-                            <span className={`font-semibold text-sm truncate ${isSelected
-                                ? 'text-cyan-900 dark:text-cyan-100'
-                                : 'text-slate-700 dark:text-slate-300'
-                              }`}>
-                              {drug.name}
-                            </span>
-                            <div className="flex items-center gap-1.5 flex-shrink-0">
-                              {isSelected && <Sparkles className="w-3.5 h-3.5 text-cyan-500 animate-pulse" aria-hidden="true" />}
-                              <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500">
-                                {validation.completeness}%
+                            {isSelected && <div className="absolute inset-0 bg-gradient-to-tr opacity-20 from-transparent to-white pointer-events-none" />}
+                            <div className="min-w-0 flex-1">
+                              <span
+                                className={`block font-semibold text-sm truncate transition-colors ${isSelected ? 'text-white drop-shadow-md' : 'text-slate-300 group-hover:text-white'
+                                  }`}
+                              >
+                                {drug.name}
                               </span>
-                              <DrugProfileStatusBadge completeness={validation.completeness} hasCritical={hasCritical} />
+                              <div className="mt-1.5 space-y-0.5">
+                                <p className="text-[11px] text-slate-400 truncate flex items-center gap-1.5">
+                                  <FlaskConical className="w-3 h-3 flex-shrink-0" aria-hidden="true" />
+                                  {drugClasses[0]}
+                                </p>
+                                <p className="text-[11px] text-slate-400 truncate flex items-center gap-1.5">
+                                  <FolderKanban className="w-3 h-3 flex-shrink-0" aria-hidden="true" />
+                                  {tone.label}
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="flex items-center gap-1.5 flex-shrink-0 pl-2">
+                              {isSelected && <ShieldCheck className="w-4 h-4 text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.8)]" aria-hidden="true" />}
                             </div>
                           </button>
                         )

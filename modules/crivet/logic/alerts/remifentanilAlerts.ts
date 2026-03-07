@@ -64,7 +64,7 @@ export function getRemifentanilAlerts(i: Inputs): AppAlert[] {
       level: 'warning',
       title: '⚠️ Espaço morto / equipo longo',
       message:
-        'Como as doses são micro, o volume no “rabicho” pode atrasar início e confundir titulação. Purgar/preencher o sistema com solução diluída.',
+        'Como as doses são micro, o volume no "rabicho" pode atrasar início e confundir titulação. Purgar/preencher o sistema com solução diluída.',
     })
   }
 

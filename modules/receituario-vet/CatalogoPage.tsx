@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import ReceituarioChrome from './ReceituarioChrome'
 import { CatalogDrug, CatalogPresentation, createEmptyDrug, loadRxDb, removeDrug, saveRxDb, upsertDrug } from './rxDb'

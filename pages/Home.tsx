@@ -1,8 +1,11 @@
-import React, { useRef } from 'react'
+import React, { Suspense, lazy, useRef } from 'react'
 import { modules } from '../modules/registry'
 import { ModuleCard } from '../components/ModuleCard'
-import { RevealWaveImage } from '../components/ui/reveal-wave-image'
 import { ArrowRight, BookOpen, CheckCircle2, ShieldCheck, Zap } from 'lucide-react'
+
+const RevealWaveImage = lazy(() =>
+  import('../components/ui/reveal-wave-image').then((m) => ({ default: m.RevealWaveImage }))
+)
 
 export function Home() {
   const modulesRef = useRef<HTMLDivElement>(null)
@@ -23,19 +26,21 @@ export function Home() {
 
         {/* Background Interativo - RevealWaveImage */}
         <div className="absolute inset-0 z-0">
-          <RevealWaveImage
-            src="/HERO.png"
-            waveSpeed={0.25}
-            waveFrequency={0.5}
-            waveAmplitude={0.3}
-            revealRadius={0.3}
-            revealSoftness={0.6}
-            pixelSize={1}
-            mouseRadius={0.2}
-            imageShiftX={0.2}
-            zoom={1.1}
-            className="w-full h-full object-cover"
-          />
+          <Suspense fallback={<img src="/HERO.png" alt="Hero Vetius" className="w-full h-full object-cover" loading="eager" />}>
+            <RevealWaveImage
+              src="/HERO.png"
+              waveSpeed={0.25}
+              waveFrequency={0.5}
+              waveAmplitude={0.3}
+              revealRadius={0.3}
+              revealSoftness={0.6}
+              pixelSize={1}
+              mouseRadius={0.2}
+              imageShiftX={0.2}
+              zoom={1.1}
+              className="w-full h-full object-cover"
+            />
+          </Suspense>
           {/* Overlay Gradiente Extra */}
           <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-transparent z-[1] pointer-events-none" />
         </div>
@@ -57,7 +62,7 @@ export function Home() {
 
               <p className="text-lg md:text-xl text-blue-50 dark:text-blue-100/90 leading-relaxed font-medium mb-8 drop-shadow-sm">
                 Ferramentas de decisão clínica baseadas nas últimas evidências de
-                <strong className="text-white"> Plumb’s, Nelson & Couto, Ettinger, BSAVA, ACVIM</strong> e muito mais!
+                <strong className="text-white"> Plumb's, Nelson & Couto, Ettinger, BSAVA, ACVIM</strong> e muito mais!
                 Torne seu dia a dia mais eficiente, aprendendo muito no processo!
               </p>
 

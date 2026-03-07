@@ -88,7 +88,7 @@ export const opioidRules: Rule[] = [
     }),
   },
 
-  // Remifentanil “ponto forte” em hepato/renal (alerta informativo)
+  // Remifentanil "ponto forte" em hepato/renal (alerta informativo)
   {
     id: "remi_prefer_in_hepatic_renal",
     drug: "remifentanil",
@@ -102,7 +102,7 @@ export const opioidRules: Rule[] = [
       id: makeAlertId("remi_prefer_in_hepatic_renal", drug),
       severity: "green",
       score: severityScore.green,
-      title: "Hepato/renal: Remifentanil costuma ser mais previsível (sem “cauda” longa)",
+      title: "Hepato/renal: Remifentanil costuma ser mais previsível (sem "cauda" longa)",
       why:
         "Tende a ter offset rápido e menor risco de sedação prolongada comparado a opioides com metabólitos/depuração dependente de órgão.",
       do:
@@ -111,7 +111,7 @@ export const opioidRules: Rule[] = [
     }),
   },
 
-  // Butorfanol — alerta “de eficácia”
+  // Butorfanol — alerta "de eficácia"
   {
     id: "butorphanol_ceiling_analgesia",
     drug: "butorphanol",
@@ -123,7 +123,7 @@ export const opioidRules: Rule[] = [
       score: severityScore.yellow,
       title: "Butorfanol: analgesia limitada para dor moderada–grave",
       why:
-        "Agonista-antagonista → efeito analgésico com “teto”; pode ser insuficiente para dor intensa e pode antagonizar parcialmente agonistas μ.",
+        "Agonista-antagonista → efeito analgésico com "teto"; pode ser insuficiente para dor intensa e pode antagonizar parcialmente agonistas μ.",
       do:
         "Se dor moderada–grave: preferir agonista μ pleno (metadona/morfina/fentanil) + multimodal. Use butorfanol mais para sedação/antitussígeno e dor leve.",
       tags: ["analgesia_ceiling"],

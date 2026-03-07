@@ -96,6 +96,10 @@ export default function Protocolos3Page() {
   const [createFolderOpen, setCreateFolderOpen] = useState(false)
   const [createFolderName, setCreateFolderName] = useState('')
   const [isCreatingFolder, setIsCreatingFolder] = useState(false)
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
   // ✅ Estado: busca de medicamentos
   const [medicationSearchOpen, setMedicationSearchOpen] = useState(false)
@@ -533,6 +537,10 @@ export default function Protocolos3Page() {
                 </div>
               ))
             )}
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
           </nav>
         </aside>
 

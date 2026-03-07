@@ -1,4 +1,4 @@
-﻿import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import ReceituarioChrome from './ReceituarioChrome'
 import { loadRxDb, removeHistoryRecord, saveRxDb } from './rxDb'

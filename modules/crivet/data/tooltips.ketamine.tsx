@@ -5,7 +5,7 @@ export const ketamineTooltips: Record<string, React.ReactNode> = {
     <div className="space-y-2 text-sm leading-relaxed">
       <p className="font-semibold">Como a cetamina funciona (modo simples)</p>
       <p>
-        Ela bloqueia o receptor <b>NMDA</b>, envolvido na “memória da dor” na medula. Isso reduz{' '}
+        Ela bloqueia o receptor <b>NMDA</b>, envolvido na "memória da dor" na medula. Isso reduz{' '}
         <b>wind-up</b> (sensibilização central) e ajuda em dor neuropática.
       </p>
       <p className="text-xs opacity-80">

@@ -320,7 +320,9 @@ export type MedicationRecord = {
   is_controlled: boolean
   is_private: boolean
   owner_user_id: string | null
-  species_targets: string[] | null
+  species: string[] | null
+  routes: string[] | null
+  species_targets?: string[] | null
   is_active: boolean
   metadata: any
   created_at: string
@@ -371,6 +373,8 @@ export async function saveMedication(params: {
     name: string;
     notes?: string | null;
     is_controlled?: boolean;
+    species?: string[] | null;
+    routes?: string[] | null;
     species_targets?: string[] | null;
     is_active?: boolean;
     metadata?: any;
@@ -399,7 +403,8 @@ export async function saveMedication(params: {
     name,
     notes: params.medication.notes ? String(params.medication.notes).trim() : null,
     is_controlled: !!params.medication.is_controlled,
-    species_targets: params.medication.species_targets || null,
+    species: params.medication.species || params.medication.species_targets || null,
+    routes: params.medication.routes || null,
     is_active: params.medication.is_active ?? true,
     metadata: params.medication.metadata || {},
   });

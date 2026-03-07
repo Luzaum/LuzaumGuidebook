@@ -1,8 +1,11 @@
-import React, { useRef, useState } from 'react'
+import React, { Suspense, lazy, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { RevealWaveImage } from '../components/ui/reveal-wave-image'
 import Logo from '../components/Logo'
 import { ArrowRight, ShieldCheck, BookOpen, Zap, Layers, Users, Brain, Mail, User, ChevronRight, ExternalLink, X } from 'lucide-react'
+
+const RevealWaveImage = lazy(() =>
+    import('../components/ui/reveal-wave-image').then((m) => ({ default: m.RevealWaveImage }))
+)
 
 /* ─── Footer Content Data ───────────────────────────────────────── */
 const footerContent: Record<string, { title: string; content: string }> = {
@@ -158,19 +161,21 @@ export function LandingPage() {
 
                 {/* Background RevealWaveImage */}
                 <div className="absolute inset-0 z-0">
-                    <RevealWaveImage
-                        src="/HERO.png"
-                        waveSpeed={0.25}
-                        waveFrequency={0.5}
-                        waveAmplitude={0.3}
-                        revealRadius={0.3}
-                        revealSoftness={0.6}
-                        pixelSize={1}
-                        mouseRadius={0.2}
-                        imageShiftX={0.2}
-                        zoom={1.1}
-                        className="w-full h-full object-cover object-center"
-                    />
+                    <Suspense fallback={<img src="/HERO.png" alt="Hero Vetius" className="w-full h-full object-cover object-center" loading="eager" />}>
+                        <RevealWaveImage
+                            src="/HERO.png"
+                            waveSpeed={0.25}
+                            waveFrequency={0.5}
+                            waveAmplitude={0.3}
+                            revealRadius={0.3}
+                            revealSoftness={0.6}
+                            pixelSize={1}
+                            mouseRadius={0.2}
+                            imageShiftX={0.2}
+                            zoom={1.1}
+                            className="w-full h-full object-cover object-center"
+                        />
+                    </Suspense>
                     {/* On mobile: stronger overlay at bottom where card sits */}
                     <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-background/20 sm:bg-gradient-to-r sm:from-background/85 sm:via-background/50 sm:to-transparent z-[1] pointer-events-none" />
                 </div>

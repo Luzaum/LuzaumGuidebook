@@ -977,6 +977,7 @@ export default function NovaReceita2Page() {
                                             />
                                         </RxvField>
                                     </div>
+<<<<<<< Updated upstream
                                     <p className={`mt-3 text-center text-[11px] ${isDark ? 'text-slate-500' : 'text-slate-500'}`}>
                                         As demais informações podem ser preenchidas depois, sem travar a prescrição.
                                     </p>
@@ -1004,6 +1005,45 @@ export default function NovaReceita2Page() {
                                         </RxvField>
                                         {state.patient?.weight_kg && (
                                             <div className="flex items-center justify-between px-1">
+=======
+                                    <button
+                                        type="button"
+                                        className={`shrink-0 rounded-lg border px-3 py-2 text-xs font-bold transition-colors ${isDark
+                                            ? 'border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-700 hover:text-white'
+                                            : 'border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100'
+                                            }`}
+                                        onClick={() => navigate('/receituario-vet/config')}
+                                    >
+                                        Configurar médico
+                                    </button>
+                                </div>
+                            </RxvCard>
+
+                            {/* Identificação */}
+                            <RxvCard>
+                                <RxvSectionHeader
+                                    icon="medical_information"
+                                    title="Identificação"
+                                    subtitle="Tutor e paciente"
+                                />
+                                <div className="space-y-4">
+                                    <RxvField label="Tutor / Responsável">
+                                        <TutorLookup
+                                            value={state.tutor}
+                                            onChange={(tutor) => updateState((prev) => ({ ...prev, tutor }))}
+                                        />
+                                    </RxvField>
+                                    <RxvField label="Paciente">
+                                        <PatientLookup
+                                            value={state.patient}
+                                            onChange={(patient) => updateState((prev) => ({ ...prev, patient }))}
+                                            tutorId={state.tutor?.id}
+                                        />
+                                    </RxvField>
+                                    {state.patient?.id && (
+                                        <div className="flex items-center justify-between px-1">
+                                            {state.patient.weight_kg ? (
+>>>>>>> Stashed changes
                                                 <p className="text-xs text-slate-500">
                                                     Peso: <span className="font-semibold text-slate-300">{state.patient.weight_kg} kg</span>
                                                 </p>
@@ -1395,14 +1435,15 @@ export default function NovaReceita2Page() {
                                 )}
 
                                 {state.items.length === 0 ? (
-                                    <div className="rounded-xl border-2 border-dashed border-slate-800/50 bg-black/20 px-6 py-10 text-center">
-                                        <span className="material-symbols-outlined text-slate-700 text-[40px]">
+                                    <div className={`rounded-xl border-2 border-dashed px-6 py-10 text-center transition-all ${isDark ? 'border-slate-800/50 bg-black/20' : 'border-slate-200 bg-slate-50/50'
+                                        }`}>
+                                        <span className={`material-symbols-outlined text-[40px] ${isDark ? 'text-slate-700' : 'text-slate-300'}`}>
                                             inventory_2
                                         </span>
-                                        <p className="mt-3 text-sm font-bold text-slate-600">
+                                        <p className={`mt-3 text-sm font-bold ${isDark ? 'text-slate-600' : 'text-slate-400'}`}>
                                             Nenhum item adicionado
                                         </p>
-                                        <p className="mt-1 text-xs text-slate-700">
+                                        <p className={`mt-1 text-xs ${isDark ? 'text-slate-700' : 'text-slate-400'}`}>
                                             Use "Catálogo" para buscar no banco ou "Manual" para inserir dados livres
                                         </p>
                                     </div>
@@ -1411,37 +1452,46 @@ export default function NovaReceita2Page() {
                                         {state.items.map((item, idx) => (
                                             <div
                                                 key={item.id}
-                                                className="rounded-xl border border-slate-800 bg-black/40 p-4"
+                                                className={`rounded-xl border transition-all ${isDark ? 'border-slate-800 bg-black/40' : 'border-slate-200 bg-white'
+                                                    } p-4`}
                                             >
                                                 <div className="flex items-start justify-between gap-3">
                                                     <div className="flex-1 min-w-0">
                                                         <div className="flex items-center gap-2 mb-1">
-                                                            <span className="text-[10px] font-black text-slate-600">#{idx + 1}</span>
+                                                            <span className={`text-[10px] font-black ${isDark ? 'text-slate-600' : 'text-slate-400'}`}>#{idx + 1}</span>
                                                             {item.isManual && (
-                                                                <span className="rounded bg-slate-800 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-widest text-slate-500">
+                                                                <span className={`rounded px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-widest ${isDark ? 'bg-slate-800 text-slate-500' : 'bg-slate-100 text-slate-600'}`}>
                                                                     manual
                                                                 </span>
                                                             )}
+<<<<<<< Updated upstream
+=======
+                                                            {item.is_controlled && (
+                                                                <span className={`rounded px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-widest border ${isDark ? 'bg-amber-900/40 border-amber-600/40 text-amber-400' : 'bg-amber-50 border-amber-200 text-amber-700'}`}>
+                                                                    controlado
+                                                                </span>
+                                                            )}
+>>>>>>> Stashed changes
                                                         </div>
-                                                        <h3 className="text-sm font-bold text-white truncate">
+                                                        <h3 className={`text-sm font-bold truncate ${isDark ? 'text-white' : 'text-slate-900'}`}>
                                                             {item.name}
                                                             {item.concentration_text && (
-                                                                <span className="ml-1 font-normal text-slate-400">{item.concentration_text}</span>
+                                                                <span className={`ml-1 font-normal ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>{item.concentration_text}</span>
                                                             )}
                                                             {item.commercial_name && (
-                                                                <span className="ml-1 font-normal text-amber-400">({item.commercial_name})</span>
+                                                                <span className={`ml-1 font-normal ${isDark ? 'text-amber-400' : 'text-amber-600'}`}>({item.commercial_name})</span>
                                                             )}
                                                         </h3>
                                                         {item.pharmaceutical_form && (
                                                             <p className="text-xs text-slate-500 mt-0.5">{item.pharmaceutical_form}</p>
                                                         )}
-                                                        <div className="mt-1.5 flex flex-wrap gap-1.5 text-[10px] text-slate-500">
-                                                            {item.dose && <span className="rounded bg-slate-800/80 px-1.5 py-0.5">Dose: {item.dose}</span>}
-                                                            {item.route && <span className="rounded bg-slate-800/80 px-1.5 py-0.5">{item.route}</span>}
-                                                            {item.frequency && <span className="rounded bg-slate-800/80 px-1.5 py-0.5">{item.frequency}</span>}
-                                                            {item.duration && <span className="rounded bg-slate-800/80 px-1.5 py-0.5">{item.duration}</span>}
+                                                        <div className={`mt-1.5 flex flex-wrap gap-1.5 text-[10px] ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>
+                                                            {item.dose && <span className={`rounded px-1.5 py-0.5 ${isDark ? 'bg-slate-800/80' : 'bg-slate-100'}`}>Dose: {item.dose}</span>}
+                                                            {item.route && <span className={`rounded px-1.5 py-0.5 ${isDark ? 'bg-slate-800/80' : 'bg-slate-100'}`}>{item.route}</span>}
+                                                            {item.frequency && <span className={`rounded px-1.5 py-0.5 ${isDark ? 'bg-slate-800/80' : 'bg-slate-100'}`}>{item.frequency}</span>}
+                                                            {item.duration && <span className={`rounded px-1.5 py-0.5 ${isDark ? 'bg-slate-800/80' : 'bg-slate-100'}`}>{item.duration}</span>}
                                                             {item.avg_price_brl && item.avg_price_brl > 0 && (
-                                                                <span className="rounded bg-emerald-900/30 px-1.5 py-0.5 text-emerald-500">
+                                                                <span className={`rounded px-1.5 py-0.5 ${isDark ? 'bg-emerald-900/30 text-emerald-500' : 'bg-emerald-50 text-emerald-700'}`}>
                                                                     R$ {item.avg_price_brl.toFixed(2)}
                                                                 </span>
                                                             )}
@@ -1457,10 +1507,17 @@ export default function NovaReceita2Page() {
                                                             type="button"
                                                             onClick={() => {
                                                                 setEditingItem(item)
+<<<<<<< Updated upstream
                                                                 if (item.isManual === true) setManualModalOpen(true)
                                                                 else setMedicationModalOpen(true)
                                                             }}
                                                             className="rounded-lg p-1.5 text-slate-600 hover:bg-slate-800 hover:text-white transition-colors"
+=======
+                                                                if (item.isManual) setManualModalOpen(true)
+                                                                else setMedicationModalOpen(true)
+                                                            }}
+                                                            className={`rounded-lg p-1.5 transition-colors ${isDark ? 'text-slate-600 hover:bg-slate-800 hover:text-white' : 'text-slate-400 hover:bg-slate-100 hover:text-slate-900'}`}
+>>>>>>> Stashed changes
                                                             title="Editar item"
                                                         >
                                                             <span className="material-symbols-outlined text-[18px]">edit</span>
@@ -1468,7 +1525,11 @@ export default function NovaReceita2Page() {
                                                         <button
                                                             type="button"
                                                             onClick={() => removeItem(item.id)}
+<<<<<<< Updated upstream
                                                             className="shrink-0 rounded-lg p-1.5 text-slate-600 hover:bg-red-900/20 hover:text-red-400 transition-colors"
+=======
+                                                            className={`rounded-lg p-1.5 transition-colors ${isDark ? 'text-slate-600 hover:bg-red-900/20 hover:text-red-400' : 'text-slate-400 hover:bg-red-50 hover:text-red-600'}`}
+>>>>>>> Stashed changes
                                                             title="Remover item"
                                                         >
                                                             <span className="material-symbols-outlined text-[18px]">delete</span>
@@ -1480,6 +1541,156 @@ export default function NovaReceita2Page() {
                                     </div>
                                 )}
                             </RxvCard>
+<<<<<<< Updated upstream
+=======
+
+                            {/* Recomendações */}
+                            <RxvCard>
+                                <RxvSectionHeader
+                                    icon="chat"
+                                    title="Recomendações"
+                                    subtitle="Orientações ao tutor"
+                                />
+                                <RxvField label="Recomendações gerais">
+                                    <RxvTextarea
+                                        placeholder="Digite orientações gerais ao tutor..."
+                                        value={state.recommendations}
+                                        onChange={(e) =>
+                                            updateState((prev) => ({ ...prev, recommendations: e.target.value }))
+                                        }
+                                        rows={4}
+                                    />
+                                </RxvField>
+                            </RxvCard>
+
+                            {/* Exames */}
+                            <RxvCard>
+                                <RxvSectionHeader
+                                    icon="lab_research"
+                                    title="Exames"
+                                    subtitle="Solicitações de exames"
+                                />
+
+                                <div className="space-y-3">
+                                    <div className="flex flex-wrap gap-2">
+                                        {COMMON_EXAMS.map((exam) => {
+                                            const selected = state.exams.includes(exam)
+                                            return (
+                                                <button
+                                                    key={exam}
+                                                    type="button"
+                                                    onClick={() => toggleExam(exam)}
+                                                    className={`rounded-full border px-3 py-1 text-xs font-semibold transition-all ${selected
+                                                        ? 'border-[#39ff14]/60 bg-[#39ff14]/10 text-[#39ff14]'
+                                                        : isDark ? 'border-slate-700 bg-slate-800/30 text-slate-400 hover:border-slate-600 hover:text-slate-300' : 'border-slate-200 bg-slate-50 text-slate-500 hover:border-slate-300 hover:bg-slate-100'
+                                                        }`}
+                                                >
+                                                    {selected && '✓ '}
+                                                    {exam}
+                                                </button>
+                                            )
+                                        })}
+                                    </div>
+
+                                    {/* Exame customizado */}
+                                    <div className="flex gap-2">
+                                        <input
+                                            type="text"
+                                            className={`flex-1 rounded-lg border px-3 py-2 text-sm transition-all focus:border-[#39ff14]/40 focus:outline-none ${isDark ? 'border-slate-700 bg-black/40 text-white placeholder:text-slate-600' : 'border-slate-200 bg-white text-slate-900 placeholder:text-slate-400'}`}
+                                            placeholder="Adicionar exame personalizado..."
+                                            value={customExamDraft}
+                                            onChange={(e) => setCustomExamDraft(e.target.value)}
+                                            onKeyDown={(e) => {
+                                                if (e.key === 'Enter') {
+                                                    e.preventDefault()
+                                                    addCustomExam()
+                                                }
+                                            }}
+                                        />
+                                        <button
+                                            type="button"
+                                            className={`rounded-lg border px-3 py-2 text-xs font-bold transition-colors ${isDark ? 'border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-700' : 'border-slate-200 bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
+                                            onClick={addCustomExam}
+                                        >
+                                            + Adicionar
+                                        </button>
+                                    </div>
+
+                                    {/* Exames selecionados (custom) */}
+                                    {state.exams.filter((e) => !COMMON_EXAMS.includes(e)).map((exam) => (
+                                        <div key={exam} className={`flex items-center justify-between rounded-lg px-3 py-2 ${isDark ? 'bg-black/40' : 'bg-slate-50'}`}>
+                                            <span className={`text-xs ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{exam}</span>
+                                            <button
+                                                type="button"
+                                                onClick={() => toggleExam(exam)}
+                                                className="text-slate-600 hover:text-red-400"
+                                            >
+                                                <span className="material-symbols-outlined text-[16px]">close</span>
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
+                            </RxvCard>
+
+                            {/* Template */}
+                            <RxvCard>
+                                <RxvSectionHeader
+                                    icon="palette"
+                                    title="Template"
+                                    subtitle="Aparência do receituário"
+                                />
+                                <div className="space-y-3">
+                                    <div className="flex gap-3 items-end">
+                                        <div className="flex-1">
+                                            <RxvField label="Template — Receita Padrão">
+                                                <RxvSelect
+                                                    value={state.templateId || BUILTIN_TEMPLATES[0].id}
+                                                    onChange={(e) =>
+                                                        updateState((prev) => ({ ...prev, templateId: e.target.value }))
+                                                    }
+                                                    options={allTemplates.map((t) => ({
+                                                        value: t.id,
+                                                        label: t.name,
+                                                    }))}
+                                                />
+                                            </RxvField>
+                                        </div>
+                                        <button
+                                            type="button"
+                                            className={`shrink-0 rounded-lg border px-3 py-2 text-xs font-bold transition-colors ${isDark ? 'border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-700 hover:text-white' : 'border-slate-200 bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900'}`}
+                                            onClick={() => navigate('/receituario-vet/templates')}
+                                        >
+                                            Editar
+                                        </button>
+                                    </div>
+                                    <div className="flex gap-3 items-end">
+                                        <div className="flex-1">
+                                            <RxvField label="Template — Receita de Controle Especial">
+                                                <RxvSelect
+                                                    value={state.controlledTemplateId || ''}
+                                                    onChange={(e) =>
+                                                        updateState((prev) => ({
+                                                            ...prev,
+                                                            controlledTemplateId: e.target.value || null,
+                                                        }))
+                                                    }
+                                                    options={[
+                                                        { value: '', label: '— Mesmo que o padrão —' },
+                                                        ...allTemplates.map((t) => ({
+                                                            value: t.id,
+                                                            label: t.name,
+                                                        })),
+                                                    ]}
+                                                />
+                                            </RxvField>
+                                        </div>
+                                        <span className={`shrink-0 rounded-full border px-2 py-1 text-[9px] font-black uppercase tracking-widest ${isDark ? 'bg-amber-900/40 border-amber-600/40 text-amber-400' : 'bg-amber-50 border-amber-200 text-amber-700'}`}>
+                                            controlado
+                                        </span>
+                                    </div>
+                                </div>
+                            </RxvCard>
+>>>>>>> Stashed changes
                         </div>
 
                         {/* ==================== COLUNA DIREITA: PREVIEW ==================== */}

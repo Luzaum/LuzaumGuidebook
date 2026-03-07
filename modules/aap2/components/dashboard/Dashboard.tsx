@@ -1,5 +1,6 @@
 import React from 'react';
 import { Zap, BrainCircuit, Stethoscope, BookOpen, BriefcaseMedical, ArrowRight } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import type { AnimalCategoryId, AppPage } from '../../types';
 import './dashboard.css';
 
@@ -57,7 +58,7 @@ const actionCards: Array<{
     id: AppPage;
     title: string;
     description: string;
-    icon: React.ElementType;
+    icon: LucideIcon;
     badge: string | null;
     theme: {
         text: string;

@@ -1,4 +1,4 @@
-﻿export type Species = 'Canina' | 'Felina'
+export type Species = 'Canina' | 'Felina'
 export type Sex = 'Macho' | 'Fêmea' | 'Sem dados' | 'M' | 'F' | 'MN' | 'FN' | 'Desconhecido'
 export type ReproductiveStatus = 'Castrado' | 'Fértil' | 'Sem dados'
 export type ItemCategory = 'medication' | 'hygiene' | 'other'
@@ -23,6 +23,7 @@ export type RouteGroup =
 
 export interface PatientInfo {
   patientRecordId: string
+  id?: string
   name: string
   species: Species
   breed: string
@@ -32,6 +33,8 @@ export interface PatientInfo {
   birthDate?: string
   color?: string
   coat: string
+  microchip?: string
+  microchipped?: boolean
   weightKg: string
   weightDate: string
   anamnesis: string
@@ -41,6 +44,7 @@ export interface PatientInfo {
 
 export interface TutorInfo {
   tutorRecordId: string
+  id?: string
   name: string
   fullName?: string
   full_name?: string
@@ -57,6 +61,13 @@ export interface TutorInfo {
   state?: string
   zipcode?: string
   complement?: string
+  addressStreet?: string
+  addressNumber?: string
+  addressComplement?: string
+  addressDistrict?: string
+  addressCity?: string
+  addressState?: string
+  addressZip?: string
   notes: string
 }
 

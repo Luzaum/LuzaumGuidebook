@@ -9,7 +9,7 @@ export const DISEASE_DETAILS: Record<string, ExtendedNeuroDiseaseDetails> = {
         "neuroanatomy_neurophysiology": {
             "primary_system": "Prosencéfalo (córtex/estrutura límbica) como gerador de descarga paroxística; expressão motora via redes tálamo-corticais e vias descendentes.",
             "why_it_makes_sense": [
-                "Crise epiléptica = hiperexcitabilidade neuronal sincronizada; sinais motores generalizados podem ser “saída final comum”, mas a origem mais comum é cortical.",
+                "Crise epiléptica = hiperexcitabilidade neuronal sincronizada; sinais motores generalizados podem ser "saída final comum", mas a origem mais comum é cortical.",
                 "Exame interictal normal favorece epilepsia primária (vs lesão estrutural persistente)."
             ]
         },
@@ -78,7 +78,7 @@ export const DISEASE_DETAILS: Record<string, ExtendedNeuroDiseaseDetails> = {
                 "Aumento de amônia e outras toxinas intestinais + inflamação sistêmica → alteração neuronal/astroglial e neurotransmissão.",
                 "Fatores que pioram EH: alcalose (favorece NH3), hipocalemia, hemorragia GI."
             ],
-            "mechanism_of_lactulose": "Lactulose é metabolizada por bactérias colônicas → ácidos orgânicos ↓ pH colônico, “aprisiona” amônia como NH4+ não absorvível; também acelera trânsito e altera flora. :contentReference[oaicite:2]{index=2}"
+            "mechanism_of_lactulose": "Lactulose é metabolizada por bactérias colônicas → ácidos orgânicos ↓ pH colônico, "aprisiona" amônia como NH4+ não absorvível; também acelera trânsito e altera flora. :contentReference[oaicite:2]{index=2}"
         },
         "diagnosis_in_app_logic": {
             "what_app_can_conclude": [
@@ -187,7 +187,7 @@ export const DISEASE_DETAILS: Record<string, ExtendedNeuroDiseaseDetails> = {
         "neuroanatomy_neurophysiology": {
             "primary_system": "Hiperexcitabilidade neuromuscular periférica e central por redução de Ca ionizado → limiar de disparo neuronal/muscular diminuído.",
             "why_it_makes_sense": [
-                "Ca estabiliza membrana; quando baixo, canais de Na ficam mais “prontos” → tremores, tetania, convulsões."
+                "Ca estabiliza membrana; quando baixo, canais de Na ficam mais "prontos" → tremores, tetania, convulsões."
             ]
         },
         "diagnosis_in_app_logic": {
@@ -202,7 +202,7 @@ export const DISEASE_DETAILS: Record<string, ExtendedNeuroDiseaseDetails> = {
         },
         "treatment": {
             "acute": {
-                "calcium_gluconate_bolus": "Gluconato de cálcio 10%: 0,5–1,5 mL/kg IV lentamente “até efeito” (com ECG; parar se bradicardia ou QT encurtar). :contentReference[oaicite:27]{index=27}",
+                "calcium_gluconate_bolus": "Gluconato de cálcio 10%: 0,5–1,5 mL/kg IV lentamente "até efeito" (com ECG; parar se bradicardia ou QT encurtar). :contentReference[oaicite:27]{index=27}",
                 "calcium_infusion": "Se necessário para manter normocalcemia: 5–15 mg/kg/h IV (infusão). :contentReference[oaicite:28]{index=28}",
                 "monitoring_notes": [
                     "Monitorar FC/ECG: bradicardia pode indicar cardiotoxicidade por infusão rápida. :contentReference[oaicite:29]{index=29}",
@@ -264,7 +264,7 @@ export const DISEASE_DETAILS: Record<string, ExtendedNeuroDiseaseDetails> = {
     "ddx_syn_vestibular": {
         "typical_age_profile": {
             "risk_groups": ["Cães idosos (idiopática)", "Qualquer idade (otite média/interna)"],
-            "notes": "Síndrome vestibular periférica é comum em cães idosos (geriátrica/idiopática) ou associada a otites."
+            "notes": "Síndrome vestibular periférica é comum em cães idosos (geriátrica/idiopática) ou associada a otites."
         },
         "neuroanatomy_neurophysiology": {
             "primary_system": "Sistema Vestibular Periférico (labirinto, nervo VIII).",

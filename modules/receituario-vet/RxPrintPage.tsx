@@ -1,7 +1,5 @@
-﻿import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom'
-import { jsPDF } from 'jspdf'
-import html2canvas from 'html2canvas'
 import { RxPrintView } from './RxPrintView'
 import { buildAutoInstruction, renderRxToPrintDoc, resolveFrequency, splitPrescriptionByControl } from './rxRenderer'
 import { createDefaultPrescriptionState } from './rxDefaults'
@@ -155,6 +153,12 @@ async function buildPdfFileFromPreview(args: {
   paperSize: 'A4' | 'A5'
 }): Promise<File> {
   const { patientName, tutorName, previewElements, paperSize } = args
+  const [{ jsPDF }, html2canvasModule] = await Promise.all([
+    import('jspdf'),
+    import('html2canvas'),
+  ])
+  const html2canvas = html2canvasModule.default
+
   const pdf = new jsPDF({
     orientation: 'portrait',
     unit: 'mm',

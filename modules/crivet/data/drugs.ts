@@ -51,7 +51,6 @@ import { enrofloxacinaProfile } from './drugs/enrofloxacina.profile'
 import { cefalexinaProfile } from './drugs/cefalexina.profile'
 import { clindamicinaProfile } from './drugs/clindamicina.profile'
 import { metronidazolProfile } from './drugs/metronidazol.profile'
-import { rocuronioProfile } from './drugs/rocuronio.profile'
 import { mlkProfile } from './drugs/mlk.profile'
 import { flkProfile } from './drugs/flk.profile'
 import { insulina_regularProfile } from './drugs/insulina_regular.profile'
@@ -62,7 +61,6 @@ export type DrugCategory =
   | 'Analgésicos e Anestésicos'
   | 'Agentes Cardiovasculares'
   | 'Antimicrobianos'
-  | 'Bloqueadores Neuromusculares'
   | 'Infusões Combinadas'
   | 'Endócrino'
   | 'Antieméticos / Pró-cinéticos'
@@ -329,17 +327,6 @@ export const drugs: Drug[] = [
     profile: metronidazolProfile,
   },
 
-  // Bloqueadores Neuromusculares
-  {
-    id: 'rocuronio',
-    name: 'Rocurônio',
-    category: 'Bloqueadores Neuromusculares',
-    hasCRI: true,
-    concentrations: [10],
-    compatibility: defaultCompatibility,
-    profile: rocuronioProfile,
-  },
-
   // Infusões Combinadas
   {
     id: 'mlk',
@@ -406,8 +393,8 @@ export const categories: DrugCategory[] = [
   'Analgésicos e Anestésicos',
   'Agentes Cardiovasculares',
   'Antimicrobianos',
-  'Bloqueadores Neuromusculares',
   'Infusões Combinadas',
   'Endócrino',
   'Antieméticos / Pró-cinéticos',
 ]
+

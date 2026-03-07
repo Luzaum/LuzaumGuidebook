@@ -7,14 +7,15 @@ type Props = {
   tooltipId?: TooltipId
   className?: string
   rightSlot?: React.ReactNode
+  dynamicTooltipContent?: React.ReactNode
 }
 
-export function FieldLabel({ text, tooltipId, className, rightSlot }: Props) {
+export function FieldLabel({ text, tooltipId, className, rightSlot, dynamicTooltipContent }: Props) {
   return (
     <div className={`flex items-center justify-between gap-3 ${className || ''}`}>
       <div className="flex items-center">
         <label className="text-sm font-medium text-white">{text}</label>
-        {tooltipId ? <HelpButton id={tooltipId} /> : null}
+        {tooltipId ? <HelpButton id={tooltipId} dynamicContent={dynamicTooltipContent} /> : null}
       </div>
       {rightSlot ? <div className="shrink-0">{rightSlot}</div> : null}
     </div>

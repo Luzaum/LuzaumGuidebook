@@ -151,7 +151,7 @@ export const RelatorioDetalhadoPage: React.FC<RelatorioDetalhadoPageProps> = ({
                             onClick={onNewConsulta}
                             className="flex items-center gap-2 h-10 px-4 rounded-lg bg-[#6a25f4] hover:bg-[#7c3aed] transition-colors text-white text-sm font-bold shadow-lg shadow-[#6a25f4]/20"
                         >
-                            <span>＋</span><span>Novo Caso</span>
+                            <span>+</span><span>Novo Caso</span>
                         </button>
                     </div>
                 </div>

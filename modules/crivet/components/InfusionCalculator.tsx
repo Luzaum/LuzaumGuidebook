@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useMemo, useEffect } from 'react'
-import { ClipboardList, AlertTriangle } from 'lucide-react'
+import { ClipboardList, AlertTriangle, Sparkles } from 'lucide-react'
 import { DoseUnit } from '../engine/conversions'
 import { calculateDirectInfusion, calculatePreparation } from '../engine/calculateCRI'
 import { getClinicalAlerts, doseRanges } from '../engine/alerts'
@@ -73,31 +73,58 @@ export default function InfusionCalculator({
   const [userOverrodeRate, setUserOverrodeRate] = useState(false)
   const [showCalculation, setShowCalculation] = useState(false)
 
+  // Save state on change
   useEffect(() => {
-    if (selectedDrug) {
-      if (selectedDrug.concentrations.length > 0) {
-        setConcentration(selectedDrug.concentrations[0].toString())
-        setIsCustomConcentration(false)
-      } else {
-        setConcentration('')
-        setIsCustomConcentration(true)
-      }
-      setDose('')
-      setUserOverrodeRate(false) // Reset quando trocar fármaco
-      setPumpRate(null)
+    if (!selectedDrug) return;
+    const stateToSave = {
+      savedForDrugId: selectedDrug.id,
+      dose, doseUnit, concentration, isCustomConcentration, dilutionType, dilutionVolume, pumpRate, userOverrodeRate, fluidType
+    };
+    localStorage.setItem('crivet:calc-params-state:v2', JSON.stringify(stateToSave));
+  }, [selectedDrug?.id, dose, doseUnit, concentration, isCustomConcentration, dilutionType, dilutionVolume, pumpRate, userOverrodeRate, fluidType]);
 
-      // Forçar unidade recomendada ao selecionar fármaco (Prioridade: Profile > Legacy > Fallback)
-      const profileUnit = selectedDrug.profile?.doses?.unit_standard_cri
-      if (profileUnit) {
-        setDoseUnit(profileUnit as DoseUnit)
-      } else if (selectedDrug.recommendedUnit) {
-        setDoseUnit(selectedDrug.recommendedUnit as DoseUnit)
-      } else if (selectedDrug.unitRules?.preferredDoseUnit) {
-        // Fallback para sistema antigo (compatibilidade)
-        setDoseUnit(selectedDrug.unitRules.preferredDoseUnit as DoseUnit)
+  useEffect(() => {
+    if (!selectedDrug) return;
+
+    try {
+      const raw = localStorage.getItem('crivet:calc-params-state:v2')
+      if (raw) {
+        const parsed = JSON.parse(raw)
+        if (parsed.savedForDrugId === selectedDrug.id) {
+          setDose(parsed.dose ?? '')
+          if (parsed.doseUnit) setDoseUnit(parsed.doseUnit)
+          setConcentration(parsed.concentration ?? '')
+          setIsCustomConcentration(parsed.isCustomConcentration ?? false)
+          if (parsed.dilutionType) setDilutionType(parsed.dilutionType)
+          setDilutionVolume(parsed.dilutionVolume ?? '20')
+          setPumpRate(parsed.pumpRate ?? null)
+          setUserOverrodeRate(parsed.userOverrodeRate ?? false)
+          if (parsed.fluidType) setFluidType(parsed.fluidType)
+          return; // SKIP reset
+        }
       }
+    } catch { }
+
+    if (selectedDrug.concentrations.length > 0) {
+      setConcentration(selectedDrug.concentrations[0].toString())
+      setIsCustomConcentration(false)
+    } else {
+      setConcentration('')
+      setIsCustomConcentration(true)
     }
-  }, [selectedDrug]) // Removido 'mode' das dependências para não zerar dose ao trocar modo
+    setDose('')
+    setUserOverrodeRate(false)
+    setPumpRate(null)
+
+    const profileUnit = selectedDrug.profile?.doses?.unit_standard_cri
+    if (profileUnit) {
+      setDoseUnit(profileUnit as DoseUnit)
+    } else if (selectedDrug.recommendedUnit) {
+      setDoseUnit(selectedDrug.recommendedUnit as DoseUnit)
+    } else if (selectedDrug.unitRules?.preferredDoseUnit) {
+      setDoseUnit(selectedDrug.unitRules.preferredDoseUnit as DoseUnit)
+    }
+  }, [selectedDrug?.id])
 
   // Taxa automática quando mudar veículo ou peso (se usuário não tiver sobrescrito)
   useEffect(() => {
@@ -515,7 +542,32 @@ export default function InfusionCalculator({
               </HelpModal>
             </>
           )}
-          <FieldLabel text="Dose alvo" tooltipId="dose_help" />
+          <FieldLabel
+            text="Dose alvo"
+            tooltipId="dose_help"
+            dynamicTooltipContent={
+              indicatedDose ? (
+                <div className="bg-emerald-900/30 p-4 rounded-xl border border-emerald-500/40 shadow-lg relative overflow-hidden">
+                  <div className="absolute top-0 right-0 p-3 opacity-10">
+                    <AlertTriangle className="w-16 h-16 text-emerald-400" />
+                  </div>
+                  <p className="font-bold text-emerald-400 mb-2 flex items-center gap-2">
+                    <Sparkles className="w-4 h-4" /> Dose Indicada para o Paciente
+                  </p>
+                  <p className="text-emerald-50 text-xl font-black tracking-tight drop-shadow-sm">
+                    {formatNumberPtBR(indicatedDose.min, 2)} <span className="text-emerald-400 font-medium">a</span> {formatNumberPtBR(indicatedDose.max, 2)} <span className="text-sm font-semibold opacity-75">{doseUnit}</span>
+                  </p>
+                  <p className="text-emerald-200/80 text-xs mt-2 font-medium bg-emerald-950/40 inline-block px-2 py-1 rounded-md">{indicatedDose.purpose}</p>
+
+                  {indicatedDose.note && (
+                    <p className="mt-3 text-[11px] leading-relaxed text-emerald-100/60 border-t border-emerald-500/20 pt-2">
+                      <strong className="text-emerald-300">Nota clínica:</strong> {indicatedDose.note}
+                    </p>
+                  )}
+                </div>
+              ) : null
+            }
+          />
           <div className="flex gap-2">
             <input
               type="number"

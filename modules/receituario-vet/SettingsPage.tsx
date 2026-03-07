@@ -1,4 +1,4 @@
-﻿import React, { useMemo, useRef, useState } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
 import ReceituarioChrome from './ReceituarioChrome'
 import { RxDatabase, loadRxDb, saveRxDb } from './rxDb'
 

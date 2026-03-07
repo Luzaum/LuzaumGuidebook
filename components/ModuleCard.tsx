@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Module } from '../modules/registry'
 
@@ -11,6 +11,11 @@ export function ModuleCard({ module }: ModuleCardProps) {
   const Icon = module.icon
   const isPlanned = module.status === 'planned'
   const isAvailable = module.status === 'internal' || module.status === 'iframe'
+  const [hasImageError, setHasImageError] = useState(false)
+
+  useEffect(() => {
+    setHasImageError(false)
+  }, [module.iconImage])
 
   const handleClick = (e: React.MouseEvent) => {
     if (isPlanned) return
@@ -47,19 +52,16 @@ export function ModuleCard({ module }: ModuleCardProps) {
 
         {/* LOGO — altura fixa, centralizada, sem distorção */}
         <div className="flex items-center justify-center h-[300px] overflow-hidden px-4 py-2">
-          {module.iconImage ? (
+          {module.iconImage && !hasImageError ? (
             <img
+              key={module.iconImage}
               src={module.iconImage}
               alt={module.title}
               className="h-full w-full object-contain"
               draggable={false}
               loading="lazy"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement
-                target.style.display = 'none'
-                const placeholder = target.parentElement?.querySelector('.logo-placeholder') as HTMLElement
-                if (placeholder) placeholder.style.display = 'flex'
-              }}
+              onLoad={() => setHasImageError(false)}
+              onError={() => setHasImageError(true)}
             />
           ) : (
             <div className="flex flex-col items-center justify-center w-full h-full bg-slate-100 dark:bg-white/5 rounded-lg border border-dashed border-slate-300 dark:border-white/20">
@@ -69,13 +71,6 @@ export function ModuleCard({ module }: ModuleCardProps) {
               </span>
             </div>
           )}
-          {/* Placeholder de fallback (imagem com erro) */}
-          <div className="logo-placeholder hidden flex-col items-center justify-center w-full h-full bg-slate-100 dark:bg-white/5 rounded-lg border border-dashed border-slate-300 dark:border-white/20">
-            <Icon className="h-10 w-10 text-slate-400 dark:text-white/40 mb-1" />
-            <span className="text-xs text-slate-500 dark:text-white/50 text-center px-2">
-              Sem logo ainda
-            </span>
-          </div>
         </div>
 
         {/* TEXTO */}

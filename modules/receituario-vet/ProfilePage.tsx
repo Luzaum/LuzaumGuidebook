@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
+import React, { ChangeEvent, useMemo, useState, useEffect, useCallback } from 'react'
+=======
 ﻿import React, { ChangeEvent, useMemo, useState, useEffect, useCallback } from 'react'
+>>>>>>> Stashed changes
 import { Link } from 'react-router-dom'
 import { useClinic } from '../../src/components/ClinicProvider'
 import { supabase } from '../../src/lib/supabaseClient'

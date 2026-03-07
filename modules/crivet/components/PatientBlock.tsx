@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react'
-import { Cat, Dog, Weight } from 'lucide-react'
+import { Cat, Dog, Droplets, HeartPulse, ShieldCheck, Sparkles, Stethoscope, Syringe, Weight } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { Comorbidity, PhysiologyState, Species } from '../types/patient'
 import { FieldLabel } from './FieldLabel'
 import type { TooltipId } from '../data/help.registry'
@@ -16,14 +17,12 @@ type PatientBlockProps = {
 }
 
 const physiologyOptions: PhysiologyState[] = ['Neonato', 'Filhote', 'Adulto', 'Idoso']
-const comorbidityOptions: Comorbidity[] = ['Cardiopata', 'Endocrinopata', 'Hepatopata', 'Renopata']
-
-const comorbidityIcons: Record<Comorbidity, string> = {
-  Cardiopata: '♥',
-  Endocrinopata: '⚡',
-  Hepatopata: '◈',
-  Renopata: '◉',
-}
+const comorbidityOptions: Array<{ value: Comorbidity; icon: LucideIcon }> = [
+  { value: 'Cardiopata', icon: HeartPulse },
+  { value: 'Endocrinopata', icon: Sparkles },
+  { value: 'Hepatopata', icon: Syringe },
+  { value: 'Renopata', icon: Droplets },
+]
 
 export default function PatientBlock({
   species,
@@ -35,27 +34,27 @@ export default function PatientBlock({
   onComorbidityToggle,
   onWeightChange,
 }: PatientBlockProps) {
-  const handleWeight = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    onWeightChange(event.target.value)
-  }, [onWeightChange])
+  const handleWeight = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      onWeightChange(event.target.value)
+    },
+    [onWeightChange],
+  )
 
-  const summary = `${species === 'dog' ? 'Cão' : 'Gato'} • ${weight || '—'} kg • ${physiology}${comorbidities.length > 0 ? ' • ' + comorbidities.join(', ') : ''
-    }`
+  const summary = `${species === 'dog' ? 'Cão' : 'Gato'} | ${weight || '--'} kg | ${physiology}${
+    comorbidities.length > 0 ? ' | ' + comorbidities.join(', ') : ''
+  }`
 
   return (
     <section className="crivet-card" aria-labelledby="patient-block-title">
-      {/* Card header */}
       <div className="crivet-card-header">
         <div className="crivet-step-badge">1</div>
-        <h2 id="patient-block-title" className="crivet-card-title">Paciente</h2>
-        {weight && (
-          <span className="crivet-status-pill crivet-status-pill--active ml-auto">
-            {summary}
-          </span>
-        )}
+        <h2 id="patient-block-title" className="crivet-card-title">
+          Paciente
+        </h2>
+        {weight && <span className="crivet-status-pill crivet-status-pill--active ml-auto">{summary}</span>}
       </div>
 
-      {/* Species + Weight */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         <SpeciesSelector species={species} onChange={onSpeciesChange} />
 
@@ -81,22 +80,28 @@ export default function PatientBlock({
         </div>
       </div>
 
-      {/* Physiology + Comorbidities */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         <div className="crivet-field-group">
           <FieldLabel text="Estado fisiológico" tooltipId={'physiology_age_help' as TooltipId} className="crivet-field-label" />
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-            {physiologyOptions.map((option) => (
-              <button
-                key={option}
-                type="button"
-                onClick={() => onPhysiologyChange(option)}
-                aria-pressed={physiology === option}
-                className={`crivet-toggle-btn ${physiology === option ? 'crivet-toggle-btn--active-teal' : ''}`}
-              >
-                {option}
-              </button>
-            ))}
+            {physiologyOptions.map((option) => {
+              const selected = physiology === option
+              return (
+                <button
+                  key={option}
+                  type="button"
+                  onClick={() => onPhysiologyChange(option)}
+                  aria-pressed={selected}
+                  className={`crivet-toggle-btn crivet-toggle-btn--physiology ${selected ? 'crivet-toggle-btn--active-teal' : ''}`}
+                >
+                  <span className="crivet-toggle-main">{option}</span>
+                  <ShieldCheck
+                    className={`crivet-toggle-check ${selected ? 'crivet-toggle-check--visible' : ''}`}
+                    aria-hidden="true"
+                  />
+                </button>
+              )
+            })}
           </div>
         </div>
 
@@ -104,17 +109,24 @@ export default function PatientBlock({
           <FieldLabel text="Comorbidades" tooltipId={'comorbidities_help' as TooltipId} className="crivet-field-label" />
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             {comorbidityOptions.map((option) => {
-              const selected = comorbidities.includes(option)
+              const selected = comorbidities.includes(option.value)
+              const Icon = option.icon
               return (
                 <button
-                  key={option}
+                  key={option.value}
                   type="button"
-                  onClick={() => onComorbidityToggle(option)}
+                  onClick={() => onComorbidityToggle(option.value)}
                   aria-pressed={selected}
-                  className={`crivet-toggle-btn ${selected ? 'crivet-toggle-btn--active-rose' : ''}`}
+                  className={`crivet-toggle-btn crivet-toggle-btn--comorbidity ${selected ? 'crivet-toggle-btn--active-rose' : ''}`}
                 >
-                  <span className="crivet-comorbidity-icon" aria-hidden="true">{comorbidityIcons[option]}</span>
-                  {option}
+                  <span className="crivet-comorbidity-icon" aria-hidden="true">
+                    <Icon className="h-3.5 w-3.5" />
+                  </span>
+                  <span className="crivet-toggle-main">{option.value}</span>
+                  <ShieldCheck
+                    className={`crivet-toggle-check ${selected ? 'crivet-toggle-check--visible' : ''}`}
+                    aria-hidden="true"
+                  />
                 </button>
               )
             })}
@@ -137,9 +149,7 @@ function SpeciesSelector({ species, onChange }: SpeciesSelectorProps) {
   return (
     <div className="crivet-field-group">
       <label className="crivet-field-label">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 3" />
-        </svg>
+        <Stethoscope className="h-3.5 w-3.5" aria-hidden="true" />
         Espécie
       </label>
       <div className="grid grid-cols-2 gap-3">
@@ -151,9 +161,10 @@ function SpeciesSelector({ species, onChange }: SpeciesSelectorProps) {
           id="species-dog"
         >
           <div className={`crivet-species-icon-wrap ${species === 'dog' ? 'crivet-species-icon-wrap--active' : ''}`}>
-            <Dog className="w-8 h-8" aria-hidden="true" />
+            <Dog className="w-9 h-9" aria-hidden="true" />
           </div>
           <span className="crivet-species-label">Cão</span>
+          <span className="crivet-species-subtitle">Canino</span>
           {species === 'dog' && <div className="crivet-species-ring" aria-hidden="true" />}
         </button>
 
@@ -165,9 +176,10 @@ function SpeciesSelector({ species, onChange }: SpeciesSelectorProps) {
           id="species-cat"
         >
           <div className={`crivet-species-icon-wrap ${species === 'cat' ? 'crivet-species-icon-wrap--active' : ''}`}>
-            <Cat className="w-8 h-8" aria-hidden="true" />
+            <Cat className="w-9 h-9" aria-hidden="true" />
           </div>
           <span className="crivet-species-label">Gato</span>
+          <span className="crivet-species-subtitle">Felino</span>
           {species === 'cat' && <div className="crivet-species-ring" aria-hidden="true" />}
         </button>
       </div>

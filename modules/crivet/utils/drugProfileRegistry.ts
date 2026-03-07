@@ -36,7 +36,6 @@ import { cefalexinaProfile } from '../data/drugs/cefalexina.profile'
 
 import { clindamicinaProfile } from '../data/drugs/clindamicina.profile'
 import { metronidazolProfile } from '../data/drugs/metronidazol.profile'
-import { rocuronioProfile } from '../data/drugs/rocuronio.profile'
 import { mlkProfile } from '../data/drugs/mlk.profile'
 import { flkProfile } from '../data/drugs/flk.profile'
 
@@ -69,7 +68,6 @@ const DRUG_PROFILE_REGISTRY: Record<string, Partial<DrugProfile>> = {
 
   clindamicina: clindamicinaProfile as Partial<DrugProfile>,
   metronidazol: metronidazolProfile as Partial<DrugProfile>,
-  rocuronio: rocuronioProfile as Partial<DrugProfile>,
   mlk: mlkProfile as Partial<DrugProfile>,
   flk: flkProfile as Partial<DrugProfile>,
 }
@@ -280,3 +278,4 @@ export function importDrug(raw: any, drugId?: string): {
     warnings,
   }
 }
+

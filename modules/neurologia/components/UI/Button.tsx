@@ -16,10 +16,13 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary: 'bg-gold text-neutral-deep hover:bg-gold-dark',
-  secondary: 'bg-neutral-800 text-white hover:bg-neutral-700',
-  ghost: 'bg-transparent text-white hover:bg-neutral-800/50',
-  outline: 'bg-transparent border border-gold text-gold hover:bg-gold/10',
+  primary:
+    'bg-gradient-to-r from-gold via-[#f3cb61] to-[#f0ba37] text-neutral-deep shadow-[0_8px_25px_rgba(245,197,66,0.35)] hover:brightness-105',
+  secondary:
+    'bg-card text-foreground border border-border hover:border-gold/45 hover:bg-muted/60',
+  ghost:
+    'bg-transparent text-foreground hover:bg-muted/60 border border-transparent hover:border-border/80',
+  outline: 'bg-transparent border border-gold/50 text-gold hover:bg-gold/12',
 }
 
 const sizeStyles: Record<ButtonSize, string> = {
@@ -44,8 +47,10 @@ export function Button({
   return (
     <button
       className={cn(
-        'rounded-lg font-medium transition-all duration-200',
+        'rounded-xl font-semibold transition-all duration-200',
         'flex items-center justify-center gap-2',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+        'active:scale-[0.985]',
         variantStyles[variant],
         sizeStyles[size],
         fullWidth && 'w-full',
