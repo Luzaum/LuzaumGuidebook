@@ -25,7 +25,8 @@ export function AppLayout() {
     isActive('/') ||
     isActive('/hub') ||
     isImmersiveModuleRoute ||
-    location.pathname.startsWith('/calculadora-energetica')
+    location.pathname.startsWith('/calculadora-energetica') ||
+    location.pathname.startsWith('/crivet')
 
   if (isImmersiveModuleRoute) {
     return (
@@ -195,21 +196,21 @@ export function AppLayout() {
       <div className="flex-1 flex flex-col min-w-0">
         {/* Header */}
         <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm">
-          <div className="flex items-center justify-between p-4">
+          <div className="flex items-center justify-between px-4 py-2">
             <button
               onClick={() => setSidebarOpen(true)}
               className="p-2 hover:bg-surface/50 rounded-lg"
               aria-label="Abrir menu"
             >
-              <Menu className="h-6 w-6" />
+              <Menu className="h-5 w-5" />
             </button>
             <Link
               to="/"
               className="flex flex-col items-center gap-0 cursor-pointer select-none"
               aria-label="Voltar para a Home"
             >
-              <div className="h-12 w-12">
-                <Logo size={48} />
+              <div className="h-10 w-10">
+                <Logo size={40} />
               </div>
               <span className="neon-wave neon-wave-glow -mt-2 text-xs font-semibold tracking-wide">Vetius</span>
             </Link>

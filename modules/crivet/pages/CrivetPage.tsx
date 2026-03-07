@@ -145,7 +145,7 @@ export default function CrivetPage() {
       <div className="crivet-app-shell">
         <aside className="crivet-sidebar-nav" aria-label="Navegação do CRIVET">
           <button type="button" className="crivet-sidebar-logo" onClick={handleLogoClick} aria-label="Voltar ao início">
-            <img src="/apps/vetius-logo.png" alt="Vetius" className="crivet-sidebar-logo-img" />
+            <img src="/apps/CRIVET.png" alt="CRI VET" className="crivet-sidebar-logo-img" />
             <span className="crivet-sidebar-logo-text">CRI VET</span>
           </button>
 
@@ -238,8 +238,8 @@ export default function CrivetPage() {
                   <p>Use concentração comercial ou personalizada para refletir o frasco disponível.</p>
                 </div>
                 <div className="crivet-explain-item">
-                  <h3>3. Escolha o modo</h3>
-                  <p>Infusão direta ou preparo em seringa/bolsa, conforme protocolo da sua rotina.</p>
+                  <h3>3. Configure o preparo</h3>
+                  <p>Defina seringa/bolsa, volume, taxa da bomba e tipo de fluido para o protocolo da sua rotina.</p>
                 </div>
                 <div className="crivet-explain-item">
                   <h3>4. Valide o passo a passo</h3>

@@ -8,9 +8,9 @@ interface StepperProps {
 
 export function Stepper({ currentStep, totalSteps }: StepperProps) {
   return (
-    <div className="fixed top-28 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-white/10">
-      <div className="w-full lg:ml-80">
-        <div className="w-full max-w-[1600px] mx-auto px-4 lg:px-8 py-4">
+    <div className="fixed top-16 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-white/10">
+      <div className="w-full lg:pl-80">
+        <div className="w-full px-4 lg:px-8 py-4">
         <div className="flex items-center justify-between sm:justify-between overflow-x-auto no-scrollbar gap-2 sm:gap-0 pb-1 sm:pb-0">
           {Array.from({ length: totalSteps }, (_, i) => {
             const step = i + 1

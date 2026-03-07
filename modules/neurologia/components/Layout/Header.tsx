@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Moon, Sun, RotateCcw, ArrowLeft } from 'lucide-react'
 import { Button } from '../UI/Button'
@@ -12,7 +12,7 @@ interface HeaderProps {
   showBack?: boolean
 }
 
-export function Header({ onReset, onGoHome, onBack, showBack }: HeaderProps) {
+export function Header({ onReset, onGoHome: _onGoHome, onBack, showBack }: HeaderProps) {
   const { theme, toggleTheme } = useUiStore()
   const navigate = useNavigate()
 
@@ -22,8 +22,8 @@ export function Header({ onReset, onGoHome, onBack, showBack }: HeaderProps) {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="w-full lg:ml-80 border-b border-white/10 bg-background/85 backdrop-blur-md">
-        <div className="w-full max-w-[1600px] mx-auto px-4 lg:px-8 h-14 flex items-center justify-between">
+      <div className="w-full lg:pl-80 border-b border-white/10 bg-background/85 backdrop-blur-md">
+        <div className="w-full px-4 lg:px-8 h-14 flex items-center justify-between">
           <div className="flex items-center gap-3">
             {showBack && onBack && (
               <button
@@ -73,30 +73,6 @@ export function Header({ onReset, onGoHome, onBack, showBack }: HeaderProps) {
           </div>
         </div>
       </div>
-
-      <div className="w-full lg:ml-80 border-b border-white/10 bg-background/70 backdrop-blur-md">
-        <div className="w-full max-w-[1600px] mx-auto px-4 lg:px-8 h-12 flex items-center">
-          <button
-            type="button"
-            onClick={onGoHome}
-            className="inline-flex items-center gap-3 hover:opacity-90 focus:outline-none transition-opacity"
-            aria-label="Voltar ao início do wizard"
-          >
-            <div className="h-8 w-8 flex items-center justify-center">
-              <img
-                src="/apps/NEURO.png"
-                alt="NeuroVet Logo"
-                className="w-8 h-8 object-contain drop-shadow-[0_0_10px_rgba(245,197,66,0.35)]"
-              />
-            </div>
-            <div className="text-left">
-              <h1 className="text-sm font-semibold text-white leading-none">NeuroVet</h1>
-              <p className="text-[11px] text-white/60">Neurologia</p>
-            </div>
-          </button>
-        </div>
-      </div>
     </header>
   )
 }
-

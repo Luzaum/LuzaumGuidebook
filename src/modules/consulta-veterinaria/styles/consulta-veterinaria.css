@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;600;700&display=swap');
+
+.consulta-vet-theme {
+  --cv-bg: linear-gradient(180deg, rgba(244, 248, 255, 1) 0%, rgba(232, 240, 255, 0.92) 100%);
+  --cv-surface: rgba(255, 255, 255, 0.82);
+  --cv-surface-strong: rgba(255, 255, 255, 0.94);
+  --cv-border: rgba(15, 23, 42, 0.08);
+  --cv-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
+  font-family: 'Manrope', sans-serif;
+  background: var(--cv-bg);
+}
+
+.dark .consulta-vet-theme {
+  --cv-bg: radial-gradient(circle at top left, rgba(16, 58, 140, 0.14), transparent 38%),
+    linear-gradient(180deg, rgba(3, 10, 25, 1) 0%, rgba(6, 13, 28, 1) 100%);
+  --cv-surface: rgba(7, 17, 38, 0.84);
+  --cv-surface-strong: rgba(8, 18, 39, 0.94);
+  --cv-border: rgba(148, 163, 184, 0.16);
+  --cv-shadow: 0 24px 60px rgba(2, 6, 23, 0.52);
+}
+
+.consulta-vet-theme h1,
+.consulta-vet-theme h2,
+.consulta-vet-theme h3,
+.consulta-vet-theme h4 {
+  font-family: 'Sora', sans-serif;
+}
+
+.consulta-vet-panel {
+  background: var(--cv-surface);
+  border: 1px solid var(--cv-border);
+  box-shadow: var(--cv-shadow);
+  backdrop-filter: blur(20px);
+}
+
+.consulta-vet-panel-strong {
+  background: var(--cv-surface-strong);
+  border: 1px solid var(--cv-border);
+  box-shadow: var(--cv-shadow);
+  backdrop-filter: blur(20px);
+}
+
+.consulta-vet-mark mark {
+  background: rgba(96, 165, 250, 0.22);
+  color: inherit;
+  border-radius: 0.4rem;
+  padding: 0 0.18rem;
+}
+
+.consulta-vet-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.consulta-vet-scroll::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.32);
+  border-radius: 9999px;
+}
+
+.consulta-vet-grid {
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.dark .consulta-vet-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
+}
+
+.consulta-vet-sticky-blur {
+  backdrop-filter: blur(18px);
+  background: color-mix(in srgb, var(--cv-surface-strong) 86%, transparent);
+}
+
+.consulta-vet-prose h4 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.consulta-vet-prose p {
+  margin: 0.5rem 0;
+  line-height: 1.65;
+}
+
+.consulta-vet-prose ul {
+  margin: 0.55rem 0;
+  padding-left: 1rem;
+}

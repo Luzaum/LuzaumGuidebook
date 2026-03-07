@@ -1,8 +1,6 @@
 ﻿import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { UserRound, Stethoscope, Brain, ClipboardCheck, Sparkles, MousePointerClick } from 'lucide-react'
-import { Header } from './components/Layout/Header'
-import { Stepper } from './components/Wizard/Stepper'
+import { UserRound, Stethoscope, Brain, ClipboardCheck, Sparkles } from 'lucide-react'
 import { WizardNavigation } from './components/Wizard/WizardNavigation'
 import { Step1PatientInfo } from './components/Steps/Step1PatientInfo'
 import { Step2ChiefComplaint } from './components/Steps/Step2ChiefComplaint'
@@ -33,11 +31,6 @@ export function NeurologiaApp() {
   const confirmReset = () => {
     resetCase()
     setShowResetModal(false)
-  }
-
-  const goHome = () => {
-    setCurrentStep(1)
-    window.scrollTo(0, 0)
   }
 
   const nextStep = () => {
@@ -85,16 +78,7 @@ export function NeurologiaApp() {
       </Modal>
 
       <div className="min-h-[100dvh] bg-background text-foreground font-sans selection:bg-gold/30">
-        <Header
-          onReset={handleReset}
-          onGoHome={goHome}
-          onBack={prevStep}
-          showBack={currentStep > 1}
-        />
-
-        {currentStep < 5 && <Stepper currentStep={currentStep} totalSteps={5} />}
-
-        <aside className="hidden lg:block fixed top-44 left-0 bottom-0 w-80 border-r border-border/70 bg-card/70 backdrop-blur-xl z-30">
+        <aside className="hidden lg:block fixed top-12 left-0 bottom-0 w-80 border-r border-border/70 bg-card/70 backdrop-blur-xl z-30">
           <div className="p-5 border-b border-border/70">
             <button
               type="button"
@@ -105,7 +89,7 @@ export function NeurologiaApp() {
               <img
                 src="/apps/NEURO.png"
                 alt="NeuroVet"
-                className="h-14 w-14 object-contain drop-shadow-[0_0_12px_rgba(245,197,66,0.35)]"
+                className="h-[84px] w-[84px] object-contain drop-shadow-[0_0_12px_rgba(245,197,66,0.35)]"
               />
               <div className="text-center">
                 <p className="text-sm font-semibold text-foreground">NeuroVet</p>
@@ -117,10 +101,6 @@ export function NeurologiaApp() {
           <nav className="p-5 space-y-2">
             <div className="rounded-xl border border-border bg-background/50 px-3 py-2 mb-2">
               <p className="text-xs font-semibold text-foreground">Barra de navegação</p>
-              <p className="text-[11px] text-muted-foreground flex items-center gap-1">
-                <MousePointerClick className="w-3 h-3" />
-                Todos os cards abaixo são clicáveis.
-              </p>
             </div>
             {[
               { step: 1, label: 'Paciente', desc: 'Dados básicos', icon: UserRound },
@@ -146,8 +126,7 @@ export function NeurologiaApp() {
                         : 'border-border bg-background/60 hover:border-gold/40 hover:bg-card hover:translate-x-0.5'
                   }`}
                 >
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3">
                     <div className={`rounded-xl p-2 ${isActive ? 'bg-gold/25 text-gold' : isDone ? 'bg-emerald-500/20 text-emerald-300' : 'bg-muted text-muted-foreground'}`}>
                       <Icon className="w-4 h-4" />
                     </div>
@@ -156,22 +135,14 @@ export function NeurologiaApp() {
                       <div className="text-xs text-muted-foreground">{item.desc}</div>
                     </div>
                   </div>
-                    <span className={`text-[10px] px-2 py-1 rounded-full border ${
-                      isActive
-                        ? 'border-gold/50 text-gold'
-                        : 'border-border text-muted-foreground group-hover:border-gold/40 group-hover:text-foreground'
-                    }`}>
-                      Clicável
-                    </span>
-                  </div>
                 </button>
               )
             })}
           </nav>
         </aside>
 
-        <div className="w-full lg:ml-80">
-          <main className="w-full max-w-[1600px] mx-auto px-4 lg:px-8 pt-44 pb-32 relative z-10 pointer-events-auto">
+        <div className="w-full lg:pl-80">
+          <main className="w-full px-4 lg:px-8 pt-12 pb-32 relative z-10 pointer-events-auto">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentStep}
@@ -211,5 +182,3 @@ export function NeurologiaApp() {
     </>
   )
 }
-
-
