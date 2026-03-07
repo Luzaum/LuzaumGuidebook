@@ -140,7 +140,7 @@ export default function ReceituarioVetPage() {
             <p className="mt-1 text-sm text-[color:var(--rxv-muted)]">Monte tratamentos prontos por especialidade e importe direto na receita.</p>
           </Link>
 
-          <Link to="/receituario-vet/catalogo-3" className="rxv-home-link-card rxv-card rxv-fade-up delay-200 rxv-anim-pulse rxv-shimmer lg:col-span-6">
+          <Link to="/receituario-vet/catalogo3" className="rxv-home-link-card rxv-card rxv-fade-up delay-200 rxv-anim-pulse rxv-shimmer lg:col-span-6">
             <div className="rxv-home-icon-badge">
               <span className="material-symbols-outlined text-[22px]">vaccines</span>
             </div>
@@ -156,7 +156,7 @@ export default function ReceituarioVetPage() {
             </div>
             <h4 className="text-base font-bold">Histórico</h4>
           </Link>
-          <Link to="/receituario-vet/configuração" className="rxv-home-link-card rxv-card rxv-fade-up delay-200 rxv-anim-pulse rxv-shimmer">
+          <Link to="/receituario-vet/configuracao" className="rxv-home-link-card rxv-card rxv-fade-up delay-200 rxv-anim-pulse rxv-shimmer">
             <div className="rxv-home-icon-badge">
               <span className="material-symbols-outlined text-[22px]">settings_account_box</span>
             </div>
@@ -177,7 +177,7 @@ export default function ReceituarioVetPage() {
             <h4 className="text-base font-bold">Templates</h4>
           </Link>
 
-          <Link to="/receituario-vet/configurações" className="rxv-home-link-card rxv-card rxv-fade-up delay-500 rxv-anim-pulse rxv-shimmer">
+          <Link to="/receituario-vet/configuracoes" className="rxv-home-link-card rxv-card rxv-fade-up delay-500 rxv-anim-pulse rxv-shimmer">
             <div className="rxv-home-icon-badge">
               <span className="material-symbols-outlined text-[22px]">cloud_upload</span>
             </div>

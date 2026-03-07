@@ -1,5 +1,5 @@
-// ÃƒÆ’Ã‚Â¢Ãƒâ€¦Ã¢â‚¬Å“ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ Nova Receita 2.0 ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â Paridade Total com Nova Receita Antiga
-// 100% CatÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡logo 3.0 Supabase + todas as features da versÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o original
+// ✓ Nova Receita 2.0 — Paridade Total com Nova Receita Antiga
+// 100% Catálogo 3.0 Supabase + todas as features da versão original
 
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
@@ -32,7 +32,7 @@ import {
 } from '../../src/lib/clinicRecords'
 
 // ==================== DRAFT LOCAL (D) ====================
-// Chave: rx_draft_v2:<clinicId> ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â localStorage, por dispositivo
+// Chave: rx_draft_v2:<clinicId> — localStorage, por dispositivo
 
 function getDraftKey(clinicId: string | null): string | null {
     if (!clinicId) return null
@@ -44,7 +44,7 @@ function loadLocalDraft(key: string): NovaReceita2State | null {
         const raw = localStorage.getItem(key)
         if (!raw) return null
         const parsed = JSON.parse(raw) as NovaReceita2State
-        // ValidaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o bÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡sica: precisa ter id e items
+        // Validação básica: precisa ter id e items
         if (!parsed?.id || !Array.isArray(parsed?.items)) return null
         return parsed
     } catch {
@@ -138,7 +138,7 @@ export interface PrescriptionItem {
     medication_id?: string
     presentation_id?: string
 
-    // Campos bÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡sicos
+    // Campos básicos
     name: string
     presentation_label?: string
     dose?: string
@@ -149,7 +149,7 @@ export interface PrescriptionItem {
     instructions?: string
     cautions?: string[]
 
-    // Campos completos da apresentaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o (medication_presentations)
+    // Campos completos da apresentação (medication_presentations)
     pharmaceutical_form?: string
     concentration_text?: string
     commercial_name?: string
@@ -167,15 +167,15 @@ export interface PrescriptionItem {
 
 const COMMON_EXAMS = [
     'Hemograma completo',
-    'BioquÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­mica sÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©rica',
-    'UrinÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡lise',
+    'Bioquímica sérica',
+    'Urinálise',
     'Urocultura',
     'Citologia',
     'Ultrassonografia abdominal',
-    'BiÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³psia lesional',
-    'BiÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³psia tumoral',
+    'Biópsia lesional',
+    'Biópsia tumoral',
     'Tomografia',
-    'RessonÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ncia magnÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©tica',
+    'Ressonância magnética',
     'Ecocardiograma',
     'Eletrocardiograma',
     'Rinoscopia',
@@ -334,7 +334,7 @@ export default function NovaReceita2Page() {
     const [quickPharmaceuticalForm, setQuickPharmaceuticalForm] = useState('Comprimido')
     const [quickManualControlled, setQuickManualControlled] = useState(false)
 
-    // D: Controle de inicializaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o do draft (sÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³ carrega uma vez por clinicId)
+    // D: Controle de inicialização do draft (só carrega uma vez por clinicId)
     const draftInitRef = useRef(false)
     const draftKey = getDraftKey(clinicId)
 
@@ -570,7 +570,7 @@ export default function NovaReceita2Page() {
                     const loaded = record.content.stateSnapshot as NovaReceita2State
                     setState({
                         ...loaded,
-                        supabaseId: record.id // Garante que o link estÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ ativo
+                        supabaseId: record.id // Garante que o link está ativo
                     })
                 }
             }).catch(err => {
@@ -604,14 +604,14 @@ export default function NovaReceita2Page() {
         }
     }, [state.prescriber, updateState])
 
-    // D1: Carregar rascunho local quando clinicId ficar disponÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­vel
-    // SÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³ carrega se nÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o vier prescriptionId na URL e nÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o vier items de protocolo
+    // D1: Carregar rascunho local quando clinicId ficar disponível
+    // Só carrega se não vier prescriptionId na URL e não vier items de protocolo
     useEffect(() => {
         if (!draftKey || draftInitRef.current) return
         draftInitRef.current = true
 
         const params = new URLSearchParams(location.search)
-        if (params.get('prescriptionId')) return // CarregarÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ do Supabase
+        if (params.get('prescriptionId')) return // Carregará do Supabase
 
         const draft = loadLocalDraft(draftKey)
         if (!draft) {
@@ -622,9 +622,9 @@ export default function NovaReceita2Page() {
         setHasDraft(true)
         setState(draft)
         if (import.meta.env.DEV) console.log('[RxDraft] rascunho local carregado', draftKey)
-    }, [draftKey]) // SÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³ re-roda quando draftKey muda (i.e., clinicId ficou disponÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­vel)
+    }, [draftKey]) // Só re-roda quando draftKey muda (i.e., clinicId ficou disponível)
 
-    // D1: Autosave com debounce de 600ms quando autosave=true e clinicId disponÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­vel
+    // D1: Autosave com debounce de 600ms quando autosave=true e clinicId disponível
     useEffect(() => {
         if (!autosave || !draftKey) return
         const t = setTimeout(() => {
@@ -701,14 +701,14 @@ export default function NovaReceita2Page() {
         return printDocs[0] || buildPrintDocFromNovaReceita2(state)
     }, [printDocs, state])
 
-    // F2: Unificar fonte de templates ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â BUILTIN_TEMPLATES + templates salvos no rxDb
+    // F2: Unificar fonte de templates — BUILTIN_TEMPLATES + templates salvos no rxDb
     // Evita "templates fantasmas": o dropdown e a aba Templates usam a mesma base
     const allTemplates = useMemo((): RxTemplateStyle[] => {
         try {
             const db = loadRxDb()
             const dbTemplates: RxTemplateStyle[] = (db.templates as RxTemplateStyle[] | undefined) || []
             const builtinIds = new Set(BUILTIN_TEMPLATES.map((t) => t.id))
-            // Templates customizados que nÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o conflitam com os embutidos
+            // Templates customizados que não conflitam com os embutidos
             const custom = dbTemplates.filter((t) => !builtinIds.has(t.id))
             return [...BUILTIN_TEMPLATES, ...custom]
         } catch {
@@ -814,7 +814,7 @@ export default function NovaReceita2Page() {
                                 Nova Receita 2.0
                             </h1>
                             <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
-                                100% CatÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡logo 3.0
+                                100% Catálogo 3.0
                             </p>
                         </div>
 
@@ -825,7 +825,7 @@ export default function NovaReceita2Page() {
                                 label="Autosave"
                             />
 
-                            {/* D1: Limpar rascunho ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â visÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â­vel quando hÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ draft salvo */}
+                            {/* D1: Limpar rascunho — visível quando há draft salvo */}
                             {hasDraft && (
                                 <button
                                     type="button"
@@ -873,7 +873,7 @@ export default function NovaReceita2Page() {
                         {/* ==================== COLUNA ESQUERDA: EDITOR ==================== */}
                         <div className="flex min-w-0 flex-col gap-5">
 
-                            {/* Receita RÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡pida */}
+                            {/* Receita Rápida */}
                             <RxvCard className="order-0">
                                 <button
                                     type="button"
@@ -901,69 +901,69 @@ export default function NovaReceita2Page() {
                                 </button>
                             </RxvCard>
 
-                            {/* Perfil MÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©dico */}
+                            {/* Perfil Médico */}
                             {!quickMode && (
-                            <RxvCard className="order-1">
-                                <RxvSectionHeader
-                                    icon="badge"
-                                    title="Perfil MÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©dico"
-                                    subtitle="Selecione o prescritor"
-                                />
-                                <div className="flex items-end gap-3">
-                                    <div className="flex-1">
-                                        <RxvField label="Perfil">
-                                            <RxvSelect
-                                                value={state.prescriber?.id || 'default'}
-                                                onChange={(e) => {
-                                                    const id = e.target.value;
-                                                    const db = loadRxDb();
-                                                    const { profile } = findProfileSettings(db, id);
-                                                    if (profile) {
-                                                        updateState(prev => ({
-                                                            ...prev,
-                                                            prescriber: {
-                                                                id,
-                                                                name: profile.fullName || '',
-                                                                crmv: profile.crmv || '',
-                                                                phone: profile.clinicPhone || '',
-                                                                address: profile.clinicAddress || '',
-                                                                signatureDataUrl: profile.signatureDataUrl || '',
-                                                                clinicName: profile.clinicName || '',
-                                                                clinicLogoDataUrl: profile.clinicLogoDataUrl || '',
-                                                            }
+                                <RxvCard className="order-1">
+                                    <RxvSectionHeader
+                                        icon="badge"
+                                        title="Perfil Médico"
+                                        subtitle="Selecione o prescritor"
+                                    />
+                                    <div className="flex items-end gap-3">
+                                        <div className="flex-1">
+                                            <RxvField label="Perfil">
+                                                <RxvSelect
+                                                    value={state.prescriber?.id || 'default'}
+                                                    onChange={(e) => {
+                                                        const id = e.target.value;
+                                                        const db = loadRxDb();
+                                                        const { profile } = findProfileSettings(db, id);
+                                                        if (profile) {
+                                                            updateState(prev => ({
+                                                                ...prev,
+                                                                prescriber: {
+                                                                    id,
+                                                                    name: profile.fullName || '',
+                                                                    crmv: profile.crmv || '',
+                                                                    phone: profile.clinicPhone || '',
+                                                                    address: profile.clinicAddress || '',
+                                                                    signatureDataUrl: profile.signatureDataUrl || '',
+                                                                    clinicName: profile.clinicName || '',
+                                                                    clinicLogoDataUrl: profile.clinicLogoDataUrl || '',
+                                                                }
+                                                            }));
+                                                        }
+                                                    }}
+                                                    options={(() => {
+                                                        const db = loadRxDb();
+                                                        return db.prescriberProfiles.map(p => ({
+                                                            value: p.id,
+                                                            label: p.profileName || p.fullName || 'Sem nome'
                                                         }));
-                                                    }
-                                                }}
-                                                options={(() => {
-                                                    const db = loadRxDb();
-                                                    return db.prescriberProfiles.map(p => ({
-                                                        value: p.id,
-                                                        label: p.profileName || p.fullName || 'Sem nome'
-                                                    }));
-                                                })()}
-                                            />
-                                        </RxvField>
+                                                    })()}
+                                                />
+                                            </RxvField>
+                                        </div>
+                                        <button
+                                            type="button"
+                                            className={`shrink-0 rounded-lg border px-3 py-2 text-xs font-bold transition-colors ${isDark
+                                                ? 'border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-700 hover:text-white'
+                                                : 'border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100'
+                                                }`}
+                                                    onClick={() => navigate('/receituario-vet/configuracao')}
+                                        >
+                                            Configurar médico
+                                        </button>
                                     </div>
-                                    <button
-                                        type="button"
-                                        className={`shrink-0 rounded-lg border px-3 py-2 text-xs font-bold transition-colors ${isDark
-                                            ? 'border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-700 hover:text-white'
-                                            : 'border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100'
-                                            }`}
-                                        onClick={() => navigate('/receituario-vet/config')}
-                                    >
-                                        Configurar mÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©dico
-                                    </button>
-                                </div>
-                            </RxvCard>
+                                </RxvCard>
                             )}
-                            {/* IdentificaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o / Peso rÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡pido */}
+                            {/* Identificação / Peso rápido */}
                             {quickMode ? (
                                 <RxvCard className="order-1">
                                     <RxvSectionHeader
                                         icon="monitor_weight"
                                         title="Peso do paciente"
-                                        subtitle="No modo rÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡pido, basta informar o peso"
+                                        subtitle="No modo rápido, basta informar o peso"
                                     />
                                     <div className="mx-auto max-w-xl">
                                         <RxvField label="Peso (kg)">
@@ -978,18 +978,18 @@ export default function NovaReceita2Page() {
                                         </RxvField>
                                     </div>
                                     <p className={`mt-3 text-center text-[11px] ${isDark ? 'text-slate-500' : 'text-slate-500'}`}>
-                                        As demais informaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âµes podem ser preenchidas depois, sem travar a prescriÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o.
+                                        As demais informações podem ser preenchidas depois, sem travar a prescrição.
                                     </p>
                                 </RxvCard>
                             ) : (
                                 <RxvCard className="order-2">
                                     <RxvSectionHeader
                                         icon="medical_information"
-                                        title="IdentificaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o tutor/paciente"
+                                        title="Identificação tutor/paciente"
                                         subtitle="Tutor e paciente"
                                     />
                                     <div className="space-y-4">
-                                        <RxvField label="Tutor / ResponsÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡vel">
+                                        <RxvField label="Tutor / Responsável">
                                             <TutorLookup
                                                 value={state.tutor}
                                                 onChange={(tutor) => updateState((prev) => ({ ...prev, tutor }))}
@@ -1012,7 +1012,7 @@ export default function NovaReceita2Page() {
                                                     onClick={() => navigate(`/receituario-vet/historico?patientId=${state.patient?.id}&patientName=${encodeURIComponent(state.patient?.name || '')}`)}
                                                     className="text-[10px] font-bold text-[#39ff14] hover:underline"
                                                 >
-                                                    Ver HistÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³rico ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢
+                                                    Ver Histórico →
                                                 </button>
                                             </div>
                                         )}
@@ -1022,571 +1022,571 @@ export default function NovaReceita2Page() {
 
                             {/* Template */}
                             {!quickMode && (
-                            <RxvCard className="order-6">
-                                <RxvSectionHeader
-                                    icon="palette"
-                                    title="Template"
-                                    subtitle="AparÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âªncia do receituÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡rio"
-                                />
-                                <div className="flex items-end gap-3">
-                                    <div className="flex-1">
-                                        <RxvField label="Selecione o template">
-                                            <RxvSelect
-                                                value={state.templateId || BUILTIN_TEMPLATES[0].id}
-                                                onChange={(e) =>
-                                                    updateState((prev) => ({ ...prev, templateId: e.target.value }))
-                                                }
-                                                options={allTemplates.map((t) => ({
-                                                    value: t.id,
-                                                    label: t.name,
-                                                }))}
-                                            />
-                                        </RxvField>
+                                <RxvCard className="order-6">
+                                    <RxvSectionHeader
+                                        icon="palette"
+                                        title="Template"
+                                        subtitle="Aparência do receituário"
+                                    />
+                                    <div className="flex items-end gap-3">
+                                        <div className="flex-1">
+                                            <RxvField label="Selecione o template">
+                                                <RxvSelect
+                                                    value={state.templateId || BUILTIN_TEMPLATES[0].id}
+                                                    onChange={(e) =>
+                                                        updateState((prev) => ({ ...prev, templateId: e.target.value }))
+                                                    }
+                                                    options={allTemplates.map((t) => ({
+                                                        value: t.id,
+                                                        label: t.name,
+                                                    }))}
+                                                />
+                                            </RxvField>
+                                        </div>
+                                        <button
+                                            type="button"
+                                            className="shrink-0 rounded-lg border border-slate-700 bg-slate-800/50 px-3 py-2 text-xs font-bold text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                                            onClick={() => navigate('/receituario-vet/templates')}
+                                        >
+                                            Editar templates
+                                        </button>
                                     </div>
-                                    <button
-                                        type="button"
-                                        className="shrink-0 rounded-lg border border-slate-700 bg-slate-800/50 px-3 py-2 text-xs font-bold text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
-                                        onClick={() => navigate('/receituario-vet/templates')}
-                                    >
-                                        Editar templates
-                                    </button>
-                                </div>
-                            </RxvCard>
+                                </RxvCard>
                             )}
 
-                            {/* RecomendaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âµes */}
+                            {/* Recomendações */}
                             {!quickMode && (
-                            <RxvCard className="order-4">
-                                <RxvSectionHeader
-                                    icon="chat"
-                                    title="RecomendaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âµes"
-                                    subtitle="OrientaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âµes ao tutor"
-                                />
-                                <RxvField label="RecomendaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âµes gerais">
-                                    <RxvTextarea
-                                        placeholder="Digite orientaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âµes gerais ao tutor..."
-                                        value={state.recommendations}
-                                        onChange={(e) =>
-                                            updateState((prev) => ({ ...prev, recommendations: e.target.value }))
-                                        }
-                                        rows={4}
+                                <RxvCard className="order-4">
+                                    <RxvSectionHeader
+                                        icon="chat"
+                                        title="Recomendações"
+                                        subtitle="Orientações ao tutor"
                                     />
-                                </RxvField>
-                            </RxvCard>
+                                    <RxvField label="Recomendações gerais">
+                                        <RxvTextarea
+                                            placeholder="Digite orientações gerais ao tutor..."
+                                            value={state.recommendations}
+                                            onChange={(e) =>
+                                                updateState((prev) => ({ ...prev, recommendations: e.target.value }))
+                                            }
+                                            rows={4}
+                                        />
+                                    </RxvField>
+                                </RxvCard>
                             )}
 
                             {/* Exames */}
                             {!quickMode && (
-                            <RxvCard className="order-5">
-                                <RxvSectionHeader
-                                    icon="lab_research"
-                                    title="Exames"
-                                    subtitle="SolicitaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âµes de exames"
-                                />
+                                <RxvCard className="order-5">
+                                    <RxvSectionHeader
+                                        icon="lab_research"
+                                        title="Exames"
+                                        subtitle="Solicitações de exames"
+                                    />
 
-                                <div className="space-y-3">
-                                    <div className="flex flex-wrap gap-2">
-                                        {COMMON_EXAMS.map((exam) => {
-                                            const selected = state.exams.includes(exam)
-                                            return (
-                                                <button
-                                                    key={exam}
-                                                    type="button"
-                                                    onClick={() => toggleExam(exam)}
-                                                    className={`rounded-full border px-3 py-1 text-xs font-semibold transition-all ${selected
-                                                        ? 'border-[#39ff14]/60 bg-[#39ff14]/10 text-[#39ff14]'
-                                                        : isDark ? 'border-slate-700 bg-slate-800/30 text-slate-400 hover:border-slate-600 hover:text-slate-300' : 'border-slate-200 bg-slate-50 text-slate-500 hover:border-slate-300 hover:bg-slate-100'
-                                                        }`}
-                                                >
-                                                    {selected && 'ÃƒÆ’Ã‚Â¢Ãƒâ€¦Ã¢â‚¬Å“ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ '}
-                                                    {exam}
-                                                </button>
-                                            )
-                                        })}
-                                    </div>
+                                    <div className="space-y-3">
+                                        <div className="flex flex-wrap gap-2">
+                                            {COMMON_EXAMS.map((exam) => {
+                                                const selected = state.exams.includes(exam)
+                                                return (
+                                                    <button
+                                                        key={exam}
+                                                        type="button"
+                                                        onClick={() => toggleExam(exam)}
+                                                        className={`rounded-full border px-3 py-1 text-xs font-semibold transition-all ${selected
+                                                            ? 'border-[#39ff14]/60 bg-[#39ff14]/10 text-[#39ff14]'
+                                                            : isDark ? 'border-slate-700 bg-slate-800/30 text-slate-400 hover:border-slate-600 hover:text-slate-300' : 'border-slate-200 bg-slate-50 text-slate-500 hover:border-slate-300 hover:bg-slate-100'
+                                                            }`}
+                                                    >
+                                                        {selected && '✓ '}
+                                                        {exam}
+                                                    </button>
+                                                )
+                                            })}
+                                        </div>
 
-                                    {/* Exame customizado */}
-                                    <div className="flex gap-2">
-                                        <input
-                                            type="text"
-                                            className={`flex-1 rounded-lg border px-3 py-2 text-sm transition-all focus:border-[#39ff14]/40 focus:outline-none ${isDark ? 'border-slate-700 bg-black/40 text-white placeholder:text-slate-600' : 'border-slate-200 bg-white text-slate-900 placeholder:text-slate-400'}`}
-                                            placeholder="Adicionar exame personalizado..."
-                                            value={customExamDraft}
-                                            onChange={(e) => setCustomExamDraft(e.target.value)}
-                                            onKeyDown={(e) => {
-                                                if (e.key === 'Enter') {
-                                                    e.preventDefault()
-                                                    addCustomExam()
-                                                }
-                                            }}
-                                        />
-                                        <button
-                                            type="button"
-                                            className={`rounded-lg border px-3 py-2 text-xs font-bold transition-colors ${isDark ? 'border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-700' : 'border-slate-200 bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
-                                            onClick={addCustomExam}
-                                        >
-                                            + Adicionar
-                                        </button>
-                                    </div>
-
-                                    {/* Exames selecionados (custom) */}
-                                    {state.exams.filter((e) => !COMMON_EXAMS.includes(e)).map((exam) => (
-                                        <div key={exam} className={`flex items-center justify-between rounded-lg px-3 py-2 ${isDark ? 'bg-black/40' : 'bg-slate-50'}`}>
-                                            <span className={`text-xs ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{exam}</span>
+                                        {/* Exame customizado */}
+                                        <div className="flex gap-2">
+                                            <input
+                                                type="text"
+                                                className={`flex-1 rounded-lg border px-3 py-2 text-sm transition-all focus:border-[#39ff14]/40 focus:outline-none ${isDark ? 'border-slate-700 bg-black/40 text-white placeholder:text-slate-600' : 'border-slate-200 bg-white text-slate-900 placeholder:text-slate-400'}`}
+                                                placeholder="Adicionar exame personalizado..."
+                                                value={customExamDraft}
+                                                onChange={(e) => setCustomExamDraft(e.target.value)}
+                                                onKeyDown={(e) => {
+                                                    if (e.key === 'Enter') {
+                                                        e.preventDefault()
+                                                        addCustomExam()
+                                                    }
+                                                }}
+                                            />
                                             <button
                                                 type="button"
-                                                onClick={() => toggleExam(exam)}
-                                                className="text-slate-600 hover:text-red-400"
+                                                className={`rounded-lg border px-3 py-2 text-xs font-bold transition-colors ${isDark ? 'border-slate-700 bg-slate-800/50 text-slate-300 hover:bg-slate-700' : 'border-slate-200 bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
+                                                onClick={addCustomExam}
                                             >
-                                                <span className="material-symbols-outlined text-[16px]">close</span>
+                                                + Adicionar
                                             </button>
                                         </div>
-                                    ))}
-                                </div>
-                            </RxvCard>
+
+                                        {/* Exames selecionados (custom) */}
+                                        {state.exams.filter((e) => !COMMON_EXAMS.includes(e)).map((exam) => (
+                                            <div key={exam} className={`flex items-center justify-between rounded-lg px-3 py-2 ${isDark ? 'bg-black/40' : 'bg-slate-50'}`}>
+                                                <span className={`text-xs ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{exam}</span>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => toggleExam(exam)}
+                                                    className="text-slate-600 hover:text-red-400"
+                                                >
+                                                    <span className="material-symbols-outlined text-[16px]">close</span>
+                                                </button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </RxvCard>
                             )}
 
                             {/* Itens da Receita */}
-        <RxvCard className="order-3">
-        <RxvSectionHeader
-            icon="medication"
-            title="Itens da PrescriÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o"
-            subtitle="Medicamentos e produtos"
-        >
-            <div className="flex flex-col items-end gap-2">
-                <div className="flex flex-wrap justify-end gap-2">
-                    <RxvButton
-                        variant="secondary"
-                        onClick={() => setManualModalOpen(true)}
-                    >
-                        Manual completo
-                    </RxvButton>
-                    <RxvButton
-                        variant="primary"
-                        onClick={() => setMedicationModalOpen(true)}
-                    >
-                        Adicionar mais medicamentos
-                    </RxvButton>
-                </div>
-                {quickMode && (
-                    <button
-                        type="button"
-                        onClick={() => setQuickAddExpanded((prev) => !prev)}
-                        className={`rounded-lg border px-3 py-2 text-[11px] font-black uppercase tracking-widest transition-colors ${quickAddExpanded
-                            ? 'border-[#39ff14]/60 bg-[#39ff14]/15 text-[#9eff8f]'
-                            : isDark
-                                ? 'border-slate-700 bg-slate-800/40 text-slate-400 hover:border-[#39ff14]/40 hover:text-[#9eff8f]'
-                                : 'border-slate-300 bg-slate-100 text-slate-600 hover:border-[#39ff14]/40 hover:text-slate-900'
-                            }`}
-                    >
-                        {quickAddExpanded ? 'Fechar adicao rapida' : 'Adicao rapida de farmacos'}
-                    </button>
-                )}
-            </div>
-        </RxvSectionHeader>
+                            <RxvCard className="order-3">
+                                <RxvSectionHeader
+                                    icon="medication"
+                                    title="Itens da Prescrição"
+                                    subtitle="Medicamentos e produtos"
+                                >
+                                    <div className="flex flex-col items-end gap-2">
+                                        <div className="flex flex-wrap justify-end gap-2">
+                                            <RxvButton
+                                                variant="secondary"
+                                                onClick={() => setManualModalOpen(true)}
+                                            >
+                                                Manual completo
+                                            </RxvButton>
+                                            <RxvButton
+                                                variant="primary"
+                                                onClick={() => setMedicationModalOpen(true)}
+                                            >
+                                                Adicionar mais medicamentos
+                                            </RxvButton>
+                                        </div>
+                                        {quickMode && (
+                                            <button
+                                                type="button"
+                                                onClick={() => setQuickAddExpanded((prev) => !prev)}
+                                                className={`rounded-lg border px-3 py-2 text-[11px] font-black uppercase tracking-widest transition-colors ${quickAddExpanded
+                                                    ? 'border-[#39ff14]/60 bg-[#39ff14]/15 text-[#9eff8f]'
+                                                    : isDark
+                                                        ? 'border-slate-700 bg-slate-800/40 text-slate-400 hover:border-[#39ff14]/40 hover:text-[#9eff8f]'
+                                                        : 'border-slate-300 bg-slate-100 text-slate-600 hover:border-[#39ff14]/40 hover:text-slate-900'
+                                                    }`}
+                                            >
+                                                {quickAddExpanded ? 'Fechar adicao rapida' : 'Adicao rapida de farmacos'}
+                                            </button>
+                                        )}
+                                    </div>
+                                </RxvSectionHeader>
 
-        {quickMode && quickAddExpanded && (
-            <div className={`mb-4 space-y-4 rounded-2xl border p-4 ${isDark ? 'border-[#39ff14]/30 bg-[#0f1a0e]' : 'border-[#39ff14]/30 bg-[#f2fff0]'}`}>
-                <div className="flex flex-wrap gap-2">
-                    <button
-                        type="button"
-                        onClick={() => setQuickEntryMode('catalog')}
-                        className={`rounded-lg border px-3 py-2 text-xs font-bold transition-colors ${quickEntryMode === 'catalog'
-                            ? 'border-[#39ff14]/60 bg-[#39ff14]/15 text-[#84ff6d]'
-                            : isDark
-                                ? 'border-slate-700 bg-black/30 text-slate-400 hover:text-white'
-                                : 'border-slate-300 bg-white text-slate-600 hover:text-slate-900'
-                            }`}
-                    >
-                        Catalogo rapido
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => {
-                            setQuickEntryMode('manual')
-                            setQuickSelectedMedication(null)
-                            setQuickPresentations([])
-                            setQuickPresentationId('')
-                        }}
-                        className={`rounded-lg border px-3 py-2 text-xs font-bold transition-colors ${quickEntryMode === 'manual'
-                            ? 'border-[#39ff14]/60 bg-[#39ff14]/15 text-[#84ff6d]'
-                            : isDark
-                                ? 'border-slate-700 bg-black/30 text-slate-400 hover:text-white'
-                                : 'border-slate-300 bg-white text-slate-600 hover:text-slate-900'
-                            }`}
-                    >
-                        Manual rapido
-                    </button>
-                </div>
+                                {quickMode && quickAddExpanded && (
+                                    <div className={`mb-4 space-y-4 rounded-2xl border p-4 ${isDark ? 'border-[#39ff14]/30 bg-[#0f1a0e]' : 'border-[#39ff14]/30 bg-[#f2fff0]'}`}>
+                                        <div className="flex flex-wrap gap-2">
+                                            <button
+                                                type="button"
+                                                onClick={() => setQuickEntryMode('catalog')}
+                                                className={`rounded-lg border px-3 py-2 text-xs font-bold transition-colors ${quickEntryMode === 'catalog'
+                                                    ? 'border-[#39ff14]/60 bg-[#39ff14]/15 text-[#84ff6d]'
+                                                    : isDark
+                                                        ? 'border-slate-700 bg-black/30 text-slate-400 hover:text-white'
+                                                        : 'border-slate-300 bg-white text-slate-600 hover:text-slate-900'
+                                                    }`}
+                                            >
+                                                Catalogo rapido
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    setQuickEntryMode('manual')
+                                                    setQuickSelectedMedication(null)
+                                                    setQuickPresentations([])
+                                                    setQuickPresentationId('')
+                                                }}
+                                                className={`rounded-lg border px-3 py-2 text-xs font-bold transition-colors ${quickEntryMode === 'manual'
+                                                    ? 'border-[#39ff14]/60 bg-[#39ff14]/15 text-[#84ff6d]'
+                                                    : isDark
+                                                        ? 'border-slate-700 bg-black/30 text-slate-400 hover:text-white'
+                                                        : 'border-slate-300 bg-white text-slate-600 hover:text-slate-900'
+                                                    }`}
+                                            >
+                                                Manual rapido
+                                            </button>
+                                        </div>
 
-                {quickEntryMode === 'catalog' && (
-                    <div className="space-y-3">
-                        <RxvField label="Buscar no catalogo">
-                            <RxvInput
-                                value={quickCatalogQuery}
-                                onChange={(e) => setQuickCatalogQuery(e.target.value)}
-                                placeholder="Digite o nome do medicamento..."
-                            />
-                        </RxvField>
+                                        {quickEntryMode === 'catalog' && (
+                                            <div className="space-y-3">
+                                                <RxvField label="Buscar no catalogo">
+                                                    <RxvInput
+                                                        value={quickCatalogQuery}
+                                                        onChange={(e) => setQuickCatalogQuery(e.target.value)}
+                                                        placeholder="Digite o nome do medicamento..."
+                                                    />
+                                                </RxvField>
 
-                        {quickCatalogLoading && (
-                            <p className="text-xs text-slate-500">Buscando medicamentos...</p>
-                        )}
+                                                {quickCatalogLoading && (
+                                                    <p className="text-xs text-slate-500">Buscando medicamentos...</p>
+                                                )}
 
-                        {!quickCatalogLoading && quickCatalogResults.length > 0 && (
-                            <div className={`max-h-44 overflow-y-auto rounded-xl border ${isDark ? 'border-slate-800 bg-black/40' : 'border-slate-200 bg-white'}`}>
-                                {quickCatalogResults.map((med) => {
-                                    const selected = quickSelectedMedication?.id === med.id
-                                    return (
-                                        <button
-                                            key={med.id}
-                                            type="button"
-                                            onClick={() => {
-                                                setQuickSelectedMedication(med)
-                                                setQuickMedicationName(med.name || '')
-                                            }}
-                                            className={`flex w-full items-center justify-between border-b px-3 py-2 text-left last:border-b-0 ${selected
-                                                ? 'border-[#39ff14]/30 bg-[#39ff14]/10'
-                                                : isDark
-                                                    ? 'border-slate-800 hover:bg-slate-800/40'
-                                                    : 'border-slate-200 hover:bg-slate-50'
-                                                }`}
-                                        >
-                                            <span className={`text-xs font-semibold ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                                                {med.name}
-                                            </span>
-                                            <span className={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase ${med.is_controlled ? 'bg-amber-900/30 text-amber-300' : isDark ? 'bg-slate-800 text-slate-400' : 'bg-slate-100 text-slate-500'}`}>
-                                                {med.is_controlled ? 'controlado' : 'nao controlado'}
-                                            </span>
-                                        </button>
-                                    )
-                                })}
-                            </div>
-                        )}
+                                                {!quickCatalogLoading && quickCatalogResults.length > 0 && (
+                                                    <div className={`max-h-44 overflow-y-auto rounded-xl border ${isDark ? 'border-slate-800 bg-black/40' : 'border-slate-200 bg-white'}`}>
+                                                        {quickCatalogResults.map((med) => {
+                                                            const selected = quickSelectedMedication?.id === med.id
+                                                            return (
+                                                                <button
+                                                                    key={med.id}
+                                                                    type="button"
+                                                                    onClick={() => {
+                                                                        setQuickSelectedMedication(med)
+                                                                        setQuickMedicationName(med.name || '')
+                                                                    }}
+                                                                    className={`flex w-full items-center justify-between border-b px-3 py-2 text-left last:border-b-0 ${selected
+                                                                        ? 'border-[#39ff14]/30 bg-[#39ff14]/10'
+                                                                        : isDark
+                                                                            ? 'border-slate-800 hover:bg-slate-800/40'
+                                                                            : 'border-slate-200 hover:bg-slate-50'
+                                                                        }`}
+                                                                >
+                                                                    <span className={`text-xs font-semibold ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                                                                        {med.name}
+                                                                    </span>
+                                                                    <span className={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase ${med.is_controlled ? 'bg-amber-900/30 text-amber-300' : isDark ? 'bg-slate-800 text-slate-400' : 'bg-slate-100 text-slate-500'}`}>
+                                                                        {med.is_controlled ? 'controlado' : 'nao controlado'}
+                                                                    </span>
+                                                                </button>
+                                                            )
+                                                        })}
+                                                    </div>
+                                                )}
 
-                        {quickSelectedMedication && (
-                            <RxvField label="Apresentacao">
-                                <RxvSelect
-                                    value={quickPresentationId}
-                                    onChange={(e) => setQuickPresentationId(e.target.value)}
-                                    options={
-                                        quickPresentations.length
-                                            ? quickPresentations.map((entry) => ({
-                                                value: entry.id,
-                                                label: `${entry.pharmaceutical_form || 'Forma nao informada'} - ${entry.concentration_text || 'Sem concentracao'}`,
-                                            }))
-                                            : [{ value: '', label: 'Sem apresentacoes cadastradas' }]
-                                    }
-                                />
-                            </RxvField>
-                        )}
-                    </div>
-                )}
+                                                {quickSelectedMedication && (
+                                                    <RxvField label="Apresentacao">
+                                                        <RxvSelect
+                                                            value={quickPresentationId}
+                                                            onChange={(e) => setQuickPresentationId(e.target.value)}
+                                                            options={
+                                                                quickPresentations.length
+                                                                    ? quickPresentations.map((entry) => ({
+                                                                        value: entry.id,
+                                                                        label: `${entry.pharmaceutical_form || 'Forma nao informada'} - ${entry.concentration_text || 'Sem concentracao'}`,
+                                                                    }))
+                                                                    : [{ value: '', label: 'Sem apresentacoes cadastradas' }]
+                                                            }
+                                                        />
+                                                    </RxvField>
+                                                )}
+                                            </div>
+                                        )}
 
-                <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-                    <RxvField label="1. Nome do medicamento">
-                        <RxvInput
-                            value={quickMedicationName}
-                            onChange={(e) => setQuickMedicationName(e.target.value)}
-                            placeholder="Ex: Mirtazapina"
-                        />
-                    </RxvField>
+                                        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                                            <RxvField label="1. Nome do medicamento">
+                                                <RxvInput
+                                                    value={quickMedicationName}
+                                                    onChange={(e) => setQuickMedicationName(e.target.value)}
+                                                    placeholder="Ex: Mirtazapina"
+                                                />
+                                            </RxvField>
 
-                    <RxvField label="Forma farmaceutica">
-                        <RxvSelect
-                            value={quickPharmaceuticalForm}
-                            onChange={(e) => setQuickPharmaceuticalForm(e.target.value)}
-                            options={QUICK_PHARMACEUTICAL_FORM_OPTIONS.map((value) => ({ value, label: value }))}
-                        />
-                    </RxvField>
+                                            <RxvField label="Forma farmaceutica">
+                                                <RxvSelect
+                                                    value={quickPharmaceuticalForm}
+                                                    onChange={(e) => setQuickPharmaceuticalForm(e.target.value)}
+                                                    options={QUICK_PHARMACEUTICAL_FORM_OPTIONS.map((value) => ({ value, label: value }))}
+                                                />
+                                            </RxvField>
 
-                    <RxvField label="2. Concentracao">
-                        <div className="flex gap-2">
-                            <RxvInput
-                                type="number"
-                                step="0.01"
-                                min="0"
-                                value={quickConcentrationValue}
-                                onChange={(e) => setQuickConcentrationValue(e.target.value)}
-                                placeholder="Ex: 20"
-                            />
-                            <RxvSelect
-                                value={quickConcentrationUnit}
-                                onChange={(e) => setQuickConcentrationUnit(e.target.value)}
-                                options={QUICK_CONCENTRATION_UNIT_OPTIONS.map((value) => ({ value, label: value }))}
-                            />
-                        </div>
-                    </RxvField>
+                                            <RxvField label="2. Concentracao">
+                                                <div className="flex gap-2">
+                                                    <RxvInput
+                                                        type="number"
+                                                        step="0.01"
+                                                        min="0"
+                                                        value={quickConcentrationValue}
+                                                        onChange={(e) => setQuickConcentrationValue(e.target.value)}
+                                                        placeholder="Ex: 20"
+                                                    />
+                                                    <RxvSelect
+                                                        value={quickConcentrationUnit}
+                                                        onChange={(e) => setQuickConcentrationUnit(e.target.value)}
+                                                        options={QUICK_CONCENTRATION_UNIT_OPTIONS.map((value) => ({ value, label: value }))}
+                                                    />
+                                                </div>
+                                            </RxvField>
 
-                    <RxvField label="3. Dose">
-                        <div className="flex gap-2">
-                            <RxvInput
-                                type="number"
-                                step="0.01"
-                                min="0"
-                                value={quickDoseValue}
-                                onChange={(e) => setQuickDoseValue(e.target.value)}
-                                placeholder="Ex: 2"
-                            />
-                            <RxvSelect
-                                value={quickDoseUnit}
-                                onChange={(e) => setQuickDoseUnit(e.target.value)}
-                                options={QUICK_DOSE_UNIT_OPTIONS.map((value) => ({ value, label: value }))}
-                            />
-                        </div>
-                    </RxvField>
+                                            <RxvField label="3. Dose">
+                                                <div className="flex gap-2">
+                                                    <RxvInput
+                                                        type="number"
+                                                        step="0.01"
+                                                        min="0"
+                                                        value={quickDoseValue}
+                                                        onChange={(e) => setQuickDoseValue(e.target.value)}
+                                                        placeholder="Ex: 2"
+                                                    />
+                                                    <RxvSelect
+                                                        value={quickDoseUnit}
+                                                        onChange={(e) => setQuickDoseUnit(e.target.value)}
+                                                        options={QUICK_DOSE_UNIT_OPTIONS.map((value) => ({ value, label: value }))}
+                                                    />
+                                                </div>
+                                            </RxvField>
 
-                    <RxvField label="4. Frequencia (vezes/dia)">
-                        <RxvSelect
-                            value={quickFrequencyPerDay}
-                            onChange={(e) => setQuickFrequencyPerDay(e.target.value)}
-                            options={QUICK_FREQUENCY_OPTIONS}
-                        />
-                    </RxvField>
+                                            <RxvField label="4. Frequencia (vezes/dia)">
+                                                <RxvSelect
+                                                    value={quickFrequencyPerDay}
+                                                    onChange={(e) => setQuickFrequencyPerDay(e.target.value)}
+                                                    options={QUICK_FREQUENCY_OPTIONS}
+                                                />
+                                            </RxvField>
 
-                    <RxvField label="Via de administracao">
-                        <RxvSelect
-                            value={quickRoute}
-                            onChange={(e) => setQuickRoute(e.target.value)}
-                            options={QUICK_ROUTE_OPTIONS}
-                        />
-                    </RxvField>
+                                            <RxvField label="Via de administracao">
+                                                <RxvSelect
+                                                    value={quickRoute}
+                                                    onChange={(e) => setQuickRoute(e.target.value)}
+                                                    options={QUICK_ROUTE_OPTIONS}
+                                                />
+                                            </RxvField>
 
-                    <RxvField label="5. Duracao do tratamento">
-                        <div className="space-y-2">
-                            <RxvToggle
-                                checked={quickContinuousUse}
-                                onChange={setQuickContinuousUse}
-                                label="Uso continuo"
-                            />
-                            {!quickContinuousUse && (
-                                <RxvInput
-                                    type="number"
-                                    min="1"
-                                    step="1"
-                                    value={quickDurationDays}
-                                    onChange={(e) => setQuickDurationDays(e.target.value)}
-                                    placeholder="Dias de tratamento"
-                                />
-                            )}
-                        </div>
-                    </RxvField>
+                                            <RxvField label="5. Duracao do tratamento">
+                                                <div className="space-y-2">
+                                                    <RxvToggle
+                                                        checked={quickContinuousUse}
+                                                        onChange={setQuickContinuousUse}
+                                                        label="Uso continuo"
+                                                    />
+                                                    {!quickContinuousUse && (
+                                                        <RxvInput
+                                                            type="number"
+                                                            min="1"
+                                                            step="1"
+                                                            value={quickDurationDays}
+                                                            onChange={(e) => setQuickDurationDays(e.target.value)}
+                                                            placeholder="Dias de tratamento"
+                                                        />
+                                                    )}
+                                                </div>
+                                            </RxvField>
 
-                    {quickEntryMode === 'manual' && (
-                        <RxvField label="Controle especial">
-                            <RxvToggle
-                                checked={quickManualControlled}
-                                onChange={setQuickManualControlled}
-                                label="Medicamento controlado"
-                            />
-                        </RxvField>
-                    )}
-                </div>
+                                            {quickEntryMode === 'manual' && (
+                                                <RxvField label="Controle especial">
+                                                    <RxvToggle
+                                                        checked={quickManualControlled}
+                                                        onChange={setQuickManualControlled}
+                                                        label="Medicamento controlado"
+                                                    />
+                                                </RxvField>
+                                            )}
+                                        </div>
 
-                <div className="flex flex-wrap justify-end gap-2">
-                    <RxvButton variant="secondary" onClick={resetQuickComposer}>
-                        Limpar
-                    </RxvButton>
-                    <RxvButton variant="primary" disabled={!canAddQuickMedication} onClick={handleAddQuickMedication}>
-                        Adicionar medicamento rapido
-                    </RxvButton>
-                </div>
-            </div>
-        )}
-
-        {state.items.length === 0 ? (
-            <div className="rounded-xl border-2 border-dashed border-slate-800/50 bg-black/20 px-6 py-10 text-center">
-                <span className="material-symbols-outlined text-slate-700 text-[40px]">
-                    inventory_2
-                </span>
-                <p className="mt-3 text-sm font-bold text-slate-600">
-                    Nenhum item adicionado
-                </p>
-                <p className="mt-1 text-xs text-slate-700">
-                    Use "CatÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡logo" para buscar no banco ou "Manual" para inserir dados livres
-                </p>
-            </div>
-        ) : (
-            <div className="space-y-3">
-                {state.items.map((item, idx) => (
-                    <div
-                        key={item.id}
-                        className="rounded-xl border border-slate-800 bg-black/40 p-4"
-                    >
-                        <div className="flex items-start justify-between gap-3">
-                            <div className="flex-1 min-w-0">
-                                <div className="flex items-center gap-2 mb-1">
-                                    <span className="text-[10px] font-black text-slate-600">#{idx + 1}</span>
-                                    {item.isManual && (
-                                        <span className="rounded bg-slate-800 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-widest text-slate-500">
-                                            manual
-                                        </span>
-                                    )}
-                                </div>
-                                <h3 className="text-sm font-bold text-white truncate">
-                                    {item.name}
-                                    {item.concentration_text && (
-                                        <span className="ml-1 font-normal text-slate-400">{item.concentration_text}</span>
-                                    )}
-                                    {item.commercial_name && (
-                                        <span className="ml-1 font-normal text-amber-400">({item.commercial_name})</span>
-                                    )}
-                                </h3>
-                                {item.pharmaceutical_form && (
-                                    <p className="text-xs text-slate-500 mt-0.5">{item.pharmaceutical_form}</p>
+                                        <div className="flex flex-wrap justify-end gap-2">
+                                            <RxvButton variant="secondary" onClick={resetQuickComposer}>
+                                                Limpar
+                                            </RxvButton>
+                                            <RxvButton variant="primary" disabled={!canAddQuickMedication} onClick={handleAddQuickMedication}>
+                                                Adicionar medicamento rapido
+                                            </RxvButton>
+                                        </div>
+                                    </div>
                                 )}
-                                <div className="mt-1.5 flex flex-wrap gap-1.5 text-[10px] text-slate-500">
-                                    {item.dose && <span className="rounded bg-slate-800/80 px-1.5 py-0.5">Dose: {item.dose}</span>}
-                                    {item.route && <span className="rounded bg-slate-800/80 px-1.5 py-0.5">{item.route}</span>}
-                                    {item.frequency && <span className="rounded bg-slate-800/80 px-1.5 py-0.5">{item.frequency}</span>}
-                                    {item.duration && <span className="rounded bg-slate-800/80 px-1.5 py-0.5">{item.duration}</span>}
-                                    {item.avg_price_brl && item.avg_price_brl > 0 && (
-                                        <span className="rounded bg-emerald-900/30 px-1.5 py-0.5 text-emerald-500">
-                                            R$ {item.avg_price_brl.toFixed(2)}
+
+                                {state.items.length === 0 ? (
+                                    <div className="rounded-xl border-2 border-dashed border-slate-800/50 bg-black/20 px-6 py-10 text-center">
+                                        <span className="material-symbols-outlined text-slate-700 text-[40px]">
+                                            inventory_2
                                         </span>
-                                    )}
-                                </div>
-                                {item.cautions && item.cautions.length > 0 && (
-                                    <p className="mt-1 text-[10px] text-red-400">
-                                        ÃƒÆ’Ã‚Â¢Ãƒâ€¦Ã‚Â¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã‚Â¯Ãƒâ€šÃ‚Â¸Ãƒâ€šÃ‚Â {item.cautions.join(' | ')}
-                                    </p>
+                                        <p className="mt-3 text-sm font-bold text-slate-600">
+                                            Nenhum item adicionado
+                                        </p>
+                                        <p className="mt-1 text-xs text-slate-700">
+                                            Use "Catálogo" para buscar no banco ou "Manual" para inserir dados livres
+                                        </p>
+                                    </div>
+                                ) : (
+                                    <div className="space-y-3">
+                                        {state.items.map((item, idx) => (
+                                            <div
+                                                key={item.id}
+                                                className="rounded-xl border border-slate-800 bg-black/40 p-4"
+                                            >
+                                                <div className="flex items-start justify-between gap-3">
+                                                    <div className="flex-1 min-w-0">
+                                                        <div className="flex items-center gap-2 mb-1">
+                                                            <span className="text-[10px] font-black text-slate-600">#{idx + 1}</span>
+                                                            {item.isManual && (
+                                                                <span className="rounded bg-slate-800 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-widest text-slate-500">
+                                                                    manual
+                                                                </span>
+                                                            )}
+                                                        </div>
+                                                        <h3 className="text-sm font-bold text-white truncate">
+                                                            {item.name}
+                                                            {item.concentration_text && (
+                                                                <span className="ml-1 font-normal text-slate-400">{item.concentration_text}</span>
+                                                            )}
+                                                            {item.commercial_name && (
+                                                                <span className="ml-1 font-normal text-amber-400">({item.commercial_name})</span>
+                                                            )}
+                                                        </h3>
+                                                        {item.pharmaceutical_form && (
+                                                            <p className="text-xs text-slate-500 mt-0.5">{item.pharmaceutical_form}</p>
+                                                        )}
+                                                        <div className="mt-1.5 flex flex-wrap gap-1.5 text-[10px] text-slate-500">
+                                                            {item.dose && <span className="rounded bg-slate-800/80 px-1.5 py-0.5">Dose: {item.dose}</span>}
+                                                            {item.route && <span className="rounded bg-slate-800/80 px-1.5 py-0.5">{item.route}</span>}
+                                                            {item.frequency && <span className="rounded bg-slate-800/80 px-1.5 py-0.5">{item.frequency}</span>}
+                                                            {item.duration && <span className="rounded bg-slate-800/80 px-1.5 py-0.5">{item.duration}</span>}
+                                                            {item.avg_price_brl && item.avg_price_brl > 0 && (
+                                                                <span className="rounded bg-emerald-900/30 px-1.5 py-0.5 text-emerald-500">
+                                                                    R$ {item.avg_price_brl.toFixed(2)}
+                                                                </span>
+                                                            )}
+                                                        </div>
+                                                        {item.cautions && item.cautions.length > 0 && (
+                                                            <p className="mt-1 text-[10px] text-red-400">
+                                                                ⚠  {item.cautions.join(' | ')}
+                                                            </p>
+                                                        )}
+                                                    </div>
+                                                    <div className="flex items-center gap-1 shrink-0">
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => {
+                                                                setEditingItem(item)
+                                                                if (item.isManual === true) setManualModalOpen(true)
+                                                                else setMedicationModalOpen(true)
+                                                            }}
+                                                            className="rounded-lg p-1.5 text-slate-600 hover:bg-slate-800 hover:text-white transition-colors"
+                                                            title="Editar item"
+                                                        >
+                                                            <span className="material-symbols-outlined text-[18px]">edit</span>
+                                                        </button>
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => removeItem(item.id)}
+                                                            className="shrink-0 rounded-lg p-1.5 text-slate-600 hover:bg-red-900/20 hover:text-red-400 transition-colors"
+                                                            title="Remover item"
+                                                        >
+                                                            <span className="material-symbols-outlined text-[18px]">delete</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
                                 )}
-                            </div>
-                            <div className="flex items-center gap-1 shrink-0">
-                                <button
-                                    type="button"
-                                    onClick={() => {
-                                        setEditingItem(item)
-                                        if (item.isManual === true) setManualModalOpen(true)
-                                        else setMedicationModalOpen(true)
-                                    }}
-                                    className="rounded-lg p-1.5 text-slate-600 hover:bg-slate-800 hover:text-white transition-colors"
-                                    title="Editar item"
-                                >
-                                    <span className="material-symbols-outlined text-[18px]">edit</span>
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={() => removeItem(item.id)}
-                                    className="shrink-0 rounded-lg p-1.5 text-slate-600 hover:bg-red-900/20 hover:text-red-400 transition-colors"
-                                    title="Remover item"
-                                >
-                                    <span className="material-symbols-outlined text-[18px]">delete</span>
-                                </button>
-                            </div>
+                            </RxvCard>
                         </div>
-                    </div>
-                ))}
-            </div>
-        )}
-        </RxvCard>
-            </div>
 
-                        {/* ==================== COLUNA DIREITA: PREVIEW ==================== */ }
-    <div className={`lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:overflow-y-auto ${showPreview ? '' : 'hidden lg:block'}`}>
-        <RxvCard>
-            <RxvSectionHeader
-                icon="visibility"
-                title="VisualizaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o PrÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©via"
-                subtitle="Preview em tempo real"
-            />
+                        {/* ==================== COLUNA DIREITA: PREVIEW ==================== */}
+                        <div className={`lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:overflow-y-auto ${showPreview ? '' : 'hidden lg:block'}`}>
+                            <RxvCard>
+                                <RxvSectionHeader
+                                    icon="visibility"
+                                    title="Visualização Prévia"
+                                    subtitle="Preview em tempo real"
+                                />
 
-            {/* Preview container com scroll prÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â³prio */}
-            <div className="rounded-xl overflow-hidden bg-white/5 border border-slate-800/50">
-                {/* Toolbar do preview */}
-                <div className="flex items-center justify-between border-b border-slate-800/50 px-3 py-2">
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-600">
-                        {selectedTemplateObj.name}
-                    </span>
-                    <div className="flex gap-1.5">
-                        <button
-                            type="button"
-                            className="rounded border border-slate-700 px-2 py-1 text-[10px] font-bold text-slate-400 hover:text-white"
-                            onClick={handleReview}
-                        >
-                            Revisar
-                        </button>
-                        <button
-                            type="button"
-                            className="rounded border border-slate-700 px-2 py-1 text-[10px] font-bold text-slate-400 hover:text-white"
-                            onClick={handlePrint}
-                        >
-                            Imprimir
-                        </button>
-                        <button
-                            type="button"
-                            className="rounded border border-[#39ff14]/40 bg-[#39ff14]/10 px-2 py-1 text-[10px] font-bold text-[#39ff14] hover:bg-[#39ff14]/20"
-                            onClick={handleExportPdf}
-                        >
-                            PDF
-                        </button>
-                    </div>
-                </div>
+                                {/* Preview container com scroll próprio */}
+                                <div className="rounded-xl overflow-hidden bg-white/5 border border-slate-800/50">
+                                    {/* Toolbar do preview */}
+                                    <div className="flex items-center justify-between border-b border-slate-800/50 px-3 py-2">
+                                        <span className="text-[10px] font-bold uppercase tracking-widest text-slate-600">
+                                            {selectedTemplateObj.name}
+                                        </span>
+                                        <div className="flex gap-1.5">
+                                            <button
+                                                type="button"
+                                                className="rounded border border-slate-700 px-2 py-1 text-[10px] font-bold text-slate-400 hover:text-white"
+                                                onClick={handleReview}
+                                            >
+                                                Revisar
+                                            </button>
+                                            <button
+                                                type="button"
+                                                className="rounded border border-slate-700 px-2 py-1 text-[10px] font-bold text-slate-400 hover:text-white"
+                                                onClick={handlePrint}
+                                            >
+                                                Imprimir
+                                            </button>
+                                            <button
+                                                type="button"
+                                                className="rounded border border-[#39ff14]/40 bg-[#39ff14]/10 px-2 py-1 text-[10px] font-bold text-[#39ff14] hover:bg-[#39ff14]/20"
+                                                onClick={handleExportPdf}
+                                            >
+                                                PDF
+                                            </button>
+                                        </div>
+                                    </div>
 
-                {/* Preview escalado ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â container com scroll vertical */}
-                <div
-                    className="overflow-y-auto overflow-x-hidden"
-                    style={{ maxHeight: '520px' }}
-                >
-                    <div className="space-y-6 px-2 py-2">
-                        {printDocs.map((doc, idx) => (
-                            <div key={`${doc.documentKind || 'standard'}-${idx}`} className="space-y-2">
-                                <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">
-                                    {doc.documentKind === 'special-control' ? 'Receita Controlada' : 'Receita Padrao'}
-                                </p>
-                                <div
-                                    style={{
-                                        transform: 'scale(0.6)',
-                                        transformOrigin: 'top left',
-                                        width: `${(100 / 0.6).toFixed(2)}%`,
-                                    }}
-                                >
-                                    <RxPrintView
-                                        doc={doc}
-                                        template={selectedTemplateObj}
-                                        compact={true}
-                                    />
+                                    {/* Preview escalado — container com scroll vertical */}
+                                    <div
+                                        className="overflow-y-auto overflow-x-hidden"
+                                        style={{ maxHeight: '520px' }}
+                                    >
+                                        <div className="space-y-6 px-2 py-2">
+                                            {printDocs.map((doc, idx) => (
+                                                <div key={`${doc.documentKind || 'standard'}-${idx}`} className="space-y-2">
+                                                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">
+                                                        {doc.documentKind === 'special-control' ? 'Receita Controlada' : 'Receita Padrao'}
+                                                    </p>
+                                                    <div
+                                                        style={{
+                                                            transform: 'scale(0.6)',
+                                                            transformOrigin: 'top left',
+                                                            width: `${(100 / 0.6).toFixed(2)}%`,
+                                                        }}
+                                                    >
+                                                        <RxPrintView
+                                                            doc={doc}
+                                                            template={selectedTemplateObj}
+                                                            compact={true}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </RxvCard>
-    </div>
+                            </RxvCard>
+                        </div>
                     </div >
                 </div >
             </div >
 
-        {/* ==================== MODALS ==================== */ }
+            {/* ==================== MODALS ==================== */}
 
-    {/* Modal catÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡logo */ }
-    <AddMedicationModal2
-        open={medicationModalOpen}
-        onClose={() => {
-            setMedicationModalOpen(false)
-            setEditingItem(null)
-        }}
-        onAdd={handleAddItem}
-        clinicId={clinicId || ''}
-        patient={state.patient}
-        manualMode={false}
-        editingItem={editingItem}
-    />
+            {/* Modal catálogo */}
+            <AddMedicationModal2
+                open={medicationModalOpen}
+                onClose={() => {
+                    setMedicationModalOpen(false)
+                    setEditingItem(null)
+                }}
+                onAdd={handleAddItem}
+                clinicId={clinicId || ''}
+                patient={state.patient}
+                manualMode={false}
+                editingItem={editingItem}
+            />
 
-    {/* Modal manual */ }
-    <AddMedicationModal2
-        open={manualModalOpen}
-        onClose={() => {
-            setManualModalOpen(false)
-            setEditingItem(null)
-        }}
-        onAdd={handleAddItem}
-        clinicId={clinicId || ''}
-        patient={state.patient}
-        manualMode={true}
-        editingItem={editingItem}
-    />
+            {/* Modal manual */}
+            <AddMedicationModal2
+                open={manualModalOpen}
+                onClose={() => {
+                    setManualModalOpen(false)
+                    setEditingItem(null)
+                }}
+                onAdd={handleAddItem}
+                clinicId={clinicId || ''}
+                patient={state.patient}
+                manualMode={true}
+                editingItem={editingItem}
+            />
         </ReceituarioChrome >
     )
 }

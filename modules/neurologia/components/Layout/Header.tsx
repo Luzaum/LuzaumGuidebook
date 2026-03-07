@@ -21,7 +21,7 @@ export function Header({ onReset, onGoHome, onBack, showBack }: HeaderProps) {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-xl border-b border-border/40">
+    <header className="sticky top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-xl border-b border-border/40">
       <div className="container max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2 sm:gap-4">
           {/* Voltar (Mobile/Desktop se showBack true) */}

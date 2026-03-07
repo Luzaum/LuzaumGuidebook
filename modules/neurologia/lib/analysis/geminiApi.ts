@@ -3,12 +3,33 @@ import knowledgeBase from '/src/assets/knowledge_base.txt?raw'
 
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY || ''
 
+export class GeminiApiError extends Error {
+  code?: string
+  status?: number
+  details?: string
+
+  constructor(message: string, options?: { code?: string; status?: number; details?: string }) {
+    super(message)
+    this.name = 'GeminiApiError'
+    this.code = options?.code
+    this.status = options?.status
+    this.details = options?.details
+  }
+}
+
 export async function generateGeminiAnalysis(
   patientSummary: string,
   historySummary: string,
   examSummary: string,
   rawCaseState: any
 ): Promise<CaseReport> {
+  if (!GEMINI_API_KEY) {
+    throw new GeminiApiError('Chave Gemini ausente no ambiente (VITE_GEMINI_API_KEY).', {
+      code: 'MISSING_API_KEY',
+      status: 400,
+    })
+  }
+
   const prompt = `
   Você é um Neurologista Veterinário Especialista (Diplomado).
   Seu objetivo é analisar os dados do paciente, o histórico clínico e o exame neurológico fornecido e retornar as conclusões estruturadas estritamente em JSON.
@@ -102,8 +123,26 @@ export async function generateGeminiAnalysis(
     })
 
     if (!response.ok) {
-      console.error(await response.text())
-      throw new Error('Erro na API Gemini (Verifique a chave ou limites)')
+      const rawErrorText = await response.text()
+      let apiError: any = null
+      try {
+        apiError = JSON.parse(rawErrorText)
+      } catch {
+        apiError = null
+      }
+      const apiCode = apiError?.error?.code ? String(apiError.error.code) : undefined
+      const apiMessage = apiError?.error?.message ? String(apiError.error.message) : undefined
+      const isLeakedKey = response.status === 403 && /reported as leaked/i.test(apiMessage || '')
+      const normalizedCode = isLeakedKey ? 'LEAKED_API_KEY' : (apiCode || `HTTP_${response.status}`)
+      const normalizedMessage = isLeakedKey
+        ? 'A chave Gemini em uso foi bloqueada por vazamento. Gere e configure uma nova chave.'
+        : (apiMessage || `Erro na API Gemini (HTTP ${response.status})`)
+      console.error(rawErrorText)
+      throw new GeminiApiError(normalizedMessage, {
+        code: normalizedCode,
+        status: response.status,
+        details: rawErrorText,
+      })
     }
 
     const data = await response.json()

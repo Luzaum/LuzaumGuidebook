@@ -17,8 +17,8 @@ import { useUiStore } from './stores/uiStore'
 import { analyzeNeuroExam } from './lib/neuroEngine'
 import { getDiagnosticPlan } from './lib/diagnosticPlanner'
 import { ETIOLOGIES } from './lib/etiologyLibrary'
-import { buildPatientSummary, buildHistorySummary, buildExamSummary } from './lib/analysis/report'
-import { generateGeminiAnalysis } from './lib/analysis/geminiApi'
+import { buildCaseReport, buildPatientSummary, buildHistorySummary, buildExamSummary } from './lib/analysis/report'
+import { generateGeminiAnalysis, GeminiApiError } from './lib/analysis/geminiApi'
 import type { AnalysisResult, PatientProfile as LegacyPatientProfile } from './types'
 
 export function NeurologiaApp() {
@@ -126,12 +126,23 @@ export function NeurologiaApp() {
       if (report && report.neuroLocalization && report.differentials) {
         setAnalysis({ status: 'done', report })
       } else {
-        setAnalysis({ status: 'insufficient_data', report })
+        setAnalysis({ status: 'insufficient_data', report, errorMessage: 'Resposta da IA incompleta.' })
       }
     } catch (error) {
       console.error("Failed AI generate", error)
-      setAnalysis({ status: 'insufficient_data' })
-      alert("Ocorreu um erro ao conectar com a IA. Tente novamente.")
+      const caseState = { patient, complaint, neuroExam }
+      const fallbackReport = buildCaseReport(caseState)
+      const isGeminiError = error instanceof GeminiApiError
+      const errorMessage = isGeminiError
+        ? error.message
+        : 'Falha ao conectar na IA. Revisão local automática aplicada.'
+      const errorCode = isGeminiError ? error.code : 'UNKNOWN_AI_ERROR'
+      setAnalysis({
+        status: fallbackReport.neuroLocalization.status === 'ok' ? 'done' : 'insufficient_data',
+        report: fallbackReport,
+        errorMessage,
+        errorCode,
+      })
     }
   }
 
@@ -168,7 +179,7 @@ export function NeurologiaApp() {
           </div>
         </div>
       </Modal>
-      <div className="min-h-[100dvh] bg-background text-foreground font-sans selection:bg-gold/30">
+      <div className="min-h-full bg-background text-foreground font-sans selection:bg-gold/30">
         <Header
           onReset={handleReset}
           onGoHome={goHome}
@@ -185,7 +196,7 @@ export function NeurologiaApp() {
         )}
 
         <div className={`flex ${currentStep < 5 ? 'md:pl-64' : ''}`}>
-          <main className="container max-w-4xl mx-auto px-2 sm:px-6 pt-24 pb-40 md:pb-32 relative z-10 pointer-events-auto overflow-x-hidden">
+          <main className="container max-w-4xl mx-auto px-2 sm:px-6 pt-8 pb-40 md:pb-32 relative z-10 pointer-events-auto overflow-x-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentStep}

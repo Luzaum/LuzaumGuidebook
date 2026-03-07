@@ -15,6 +15,7 @@ import {
 import { createDefaultItem, createDefaultPrescriptionState } from './rxDefaults'
 import { renderRxToPrintDoc } from './rxRenderer'
 import { RxPrintView } from './RxPrintView'
+import { navigateBackOrFallback } from '../../src/lib/navigation'
 
 const ZONE_LABELS: Array<{ key: TemplateZoneKey; label: string }> = [
   { key: 'header', label: 'Cabeçalho' },
@@ -249,7 +250,7 @@ export default function TemplatesPage() {
                 navigate(previousRoute)
                 return
               }
-              navigate(-1)
+              navigateBackOrFallback(navigate, '/receituario-vet')
             }}
           >
             <span className="material-symbols-outlined text-[18px]">arrow_back</span>

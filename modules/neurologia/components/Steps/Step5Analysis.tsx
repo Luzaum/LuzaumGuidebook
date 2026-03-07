@@ -63,6 +63,8 @@ export function Step5Analysis({ onRetryAnalysis }: { onRetryAnalysis?: () => voi
 
   const status = analysis?.status || 'idle'
   const report: CaseReport | undefined = analysis?.report
+  const aiErrorMessage = analysis?.errorMessage
+  const aiErrorCode = analysis?.errorCode
 
   const getAxisLabel = (axis: string): string => {
     const labels: Record<string, string> = {
@@ -203,17 +205,17 @@ export function Step5Analysis({ onRetryAnalysis }: { onRetryAnalysis?: () => voi
       <div className="space-y-6 pb-24">
         <motion.button
           onClick={runAnalysisFallback}
-          disabled={true}
+          disabled={false}
           className={`
             w-full px-8 py-4 text-lg font-bold rounded-xl
             bg-gradient-to-r from-red-500 to-red-600
             text-white shadow-lg
             transition-all duration-300
-            opacity-50 cursor-not-allowed
+            hover:from-red-600 hover:to-red-700
           `}
         >
           <AlertTriangle className="w-5 h-5 mr-2 inline-block" />
-          Analisar Caso (Dados Insuficientes)
+          Tentar Nova Análise
         </motion.button>
 
         <InlineBanner
@@ -221,6 +223,8 @@ export function Step5Analysis({ onRetryAnalysis }: { onRetryAnalysis?: () => voi
           title="Dados Insuficientes"
           message={[
             'Não foi possível encontrar a neurolocalização completa na resposta da IA.',
+            ...(aiErrorMessage ? [`Falha da IA: ${aiErrorMessage}`] : []),
+            ...(aiErrorCode ? [`Código: ${aiErrorCode}`] : []),
             ...(report?.neuroLocalization?.missing || []).map((m) => `• ${m}`),
           ]}
         />
@@ -231,6 +235,17 @@ export function Step5Analysis({ onRetryAnalysis }: { onRetryAnalysis?: () => voi
   if (status === 'done' && report) {
     return (
       <div className="space-y-6 pb-24">
+        {aiErrorMessage && (
+          <InlineBanner
+            variant="warn"
+            title="IA indisponível, revisão local aplicada"
+            message={[
+              aiErrorMessage,
+              ...(aiErrorCode ? [`Código: ${aiErrorCode}`] : []),
+            ]}
+          />
+        )}
+
         {/* Botão de Exportar PDF */}
         <motion.button
           onClick={handleExportPDF}

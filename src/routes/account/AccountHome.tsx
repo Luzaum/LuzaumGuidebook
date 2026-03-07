@@ -110,13 +110,13 @@ export default function AccountHome() {
             Alterar perfil
           </Link>
           <Link
-            to="/conta/configurações"
+            to="/conta/configuracoes"
             className="rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
           >
             Configurações da conta
           </Link>
           <Link
-            to="/conta/clínica"
+            to="/conta/clinica"
             className="rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
           >
             Minha clínica

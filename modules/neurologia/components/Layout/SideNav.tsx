@@ -21,7 +21,7 @@ export function SideNav({ currentStep, totalSteps, onChangeStep }: SideNavProps)
     return (
         <>
             {/* Desktop Sidebar (Left) */}
-            <nav className="hidden md:flex flex-col w-64 fixed left-0 top-20 bottom-0 bg-muted/30 backdrop-blur-xl border-r border-border/40 z-30 p-4">
+            <nav className="hidden md:flex flex-col w-64 fixed left-0 top-[144px] bottom-0 bg-muted/30 backdrop-blur-xl border-r border-border/40 z-30 p-4">
                 <div className="space-y-2 mt-4">
                     {steps.map((step) => {
                         const isActive = step.id === currentStep
