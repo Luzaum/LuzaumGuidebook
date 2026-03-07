@@ -7,6 +7,7 @@ import { RxvCard, RxvButton, RxvSectionHeader } from '../../src/components/recei
 import { RxPrintView } from './RxPrintView'
 import { BUILTIN_TEMPLATES } from './builtinTemplates'
 import { PatientLookup } from './components/PatientLookup'
+import { navigateBackOrFallback } from '../../src/lib/navigation'
 
 export default function HistoricoReceitasPage() {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -119,7 +120,7 @@ export default function HistoricoReceitasPage() {
                         title={`Histórico - ${patientName}`}
                         subtitle="Prescrições salvas no Supabase"
                     >
-                        <RxvButton variant="secondary" onClick={() => navigate(-1)}>
+                        <RxvButton variant="secondary" onClick={() => navigateBackOrFallback(navigate, '/receituario-vet')}>
                             Voltar
                         </RxvButton>
                     </RxvSectionHeader>

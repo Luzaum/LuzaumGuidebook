@@ -39,22 +39,23 @@ export function HelpModal({ open, onClose, topic, theme }: Props) {
       role="dialog"
       aria-modal="true"
       aria-label={`Ajuda: ${topic.title}`}
-      onMouseDown={(e) => {
-        // fechar ao clicar fora
+      onClick={(e) => {
+        // fechar ao clicar/tocar fora
         if (e.target === e.currentTarget) onClose()
       }}
     >
-      <div className={`absolute inset-0 ${isDark ? 'bg-black/70' : 'bg-black/40'}`} />
+      <div className={`absolute inset-0 ${isDark ? 'bg-black/70' : 'bg-black/40'} cursor-pointer`} />
 
       <div
         className={[
-          'relative w-full flex flex-col',
+          'relative w-full flex flex-col text-left select-text',
           'fixed inset-0 sm:relative sm:inset-auto sm:max-w-xl sm:rounded-2xl sm:shadow-xl sm:h-auto',
-          'h-[100dvh] sm:h-auto sm:max-h-[85vh]', // Mobile full height, desktop auto height constrained
+          'h-[100dvh] sm:h-auto sm:max-h-[85vh] pointer-events-auto',
           isDark
             ? 'bg-neutral-900 border-neutral-700 text-neutral-100'
             : 'bg-white border-neutral-200 text-neutral-900',
         ].join(' ')}
+        onClick={(e) => e.stopPropagation()}
       >
         {/* Header - Sticky on mobile naturally due to flex col */}
         <div className="shrink-0 flex items-start justify-between gap-3 p-4 border-b border-neutral-700/30">

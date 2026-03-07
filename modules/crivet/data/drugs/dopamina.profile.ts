@@ -266,6 +266,7 @@ export const dopaminaProfile: DrugProfile = {
       'Titular por resposta hemodinâmica (PA, perfusão, lactato).',
       'Se arritmia surgir: reduzir dose imediatamente; considerar trocar para norepinefrina/dobutamina.',
       'Não usar dose "renal" (1–3 mcg/kg/min) como estratégia nefroprotetora.',
+      'Preferir acesso central; se via periférica, vigiar extravasamento e sinais de necrose local continuamente.',
     ],
     monitoring_minimum: [
       'ECG contínuo',
@@ -442,6 +443,27 @@ export const dopaminaProfile: DrugProfile = {
       ],
       outputs: ['pump_rate_ml_h'],
     },
+  },
+
+  clinical_flowcharts: {
+    format: 'mermaid',
+    flows: [
+      {
+        id: 'dopamina_shock_flow',
+        title: 'Choque com dopamina: início e ajuste',
+        mermaid:
+          'flowchart TD\nA[Choque com indicação de catecolamina] --> B[Corrigir volemia e definir meta de PAM]\nB --> C[Iniciar dopamina em CRI]\nC --> D[Reavaliar PAM/perfusão/lactato/diurese em 5-10 min]\nD --> E{Meta atingida?}\nE -- Não --> F[Titular dose]\nE -- Sim --> G[Manter e monitorar ECG]\nF --> D',
+      },
+    ],
+  },
+
+  ui_copy: {
+    critical_warning_banner: 'Vasoativo com risco de arritmia e necrose por extravasamento: monitorar continuamente.',
+    common_errors: [
+      'Infundir em acesso periférico sem vigiar extravasamento/necrose.',
+      'Titular sem meta explícita de PAM e perfusão.',
+      'Insistir em “dose renal” sem benefício clínico comprovado.',
+    ],
   },
 
   references: [

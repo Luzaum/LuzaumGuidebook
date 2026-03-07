@@ -215,6 +215,28 @@ export const vasopressinaProfile: DrugProfile = {
     compatible_in_syringe_or_bag: ['Norepinefrina (Y-site geralmente ok)'],
   },
 
+  administration_and_titration: {
+    bolus_guidance: ['Em choque, usar vasopressina em CRI titulada; bolus repetido não é recomendado.'],
+    titration_rules: [
+      'Titular por targets de PAM, perfusão periférica, lactato e diurese.',
+      'Ajustar gradualmente para evitar vasoconstrição excessiva e isquemia.',
+      'Preferir acesso central; se periférico, monitorar extravasamento e perfusão distal.',
+    ],
+    monitoring_minimum: ['PAM', 'lactato seriado', 'diurese', 'perfusão periférica', 'sinais de isquemia'],
+  },
+
+  clinical_flowcharts: {
+    format: 'mermaid',
+    flows: [
+      {
+        id: 'vasopressina_shock_flow',
+        title: 'Choque refratário: adição e titulação de vasopressina',
+        mermaid:
+          'flowchart TD\nA[Choque refratário com norepinefrina] --> B[Confirmar volemia e metas de PAM]\nB --> C[Adicionar vasopressina em baixa dose]\nC --> D[Reavaliar PAM/perfusão/lactato/diurese]\nD --> E{Meta atingida?}\nE -- Não --> F[Titular cuidadosamente]\nE -- Sim --> G[Manter menor dose eficaz]\nF --> D',
+      },
+    ],
+  },
+
   ui_copy: {
     critical_warning_banner:
       '🆘 CRÍTICO — UNIDADES: A dose é em mU/kg/min (MILIUNIDADES). A ampola é 20 U/mL. 1 U = 1.000 mU. Confundir U com mU = dose 1.000× maior = necrose isquêmica generalizada/morte. PRÉ-DILUIÇÃO OBRIGATÓRIA antes de qualquer CRI (ver receitas de diluição).',
@@ -228,6 +250,7 @@ export const vasopressinaProfile: DrugProfile = {
       'Usar ampola (20 U/mL) diretamente na seringa de CRI sem pré-diluição.',
       'Achar que vasopressina substitui expansão volêmica (é vasopressor de resgate, não volume).',
       'Não considerar isquemia de extremidades/mesentérica em doses altas prolongadas.',
+      'Manter acesso periférico sem checar extravasamento e perfusão distal.',
     ],
   },
 

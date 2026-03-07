@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import ReceituarioChrome from './ReceituarioChrome'
 import { useClinic } from '../../src/components/ClinicProvider'
+import { useLocalDraft } from '../../hooks/useLocalDraft'
 import {
     listMedications,
     getMedicationDetails,
@@ -195,16 +196,12 @@ export default function Catalogo3Page() {
     // Estados principais
     const [medications, setMedications] = useState<Medication[]>([])
     const [selectedId, setSelectedId] = useState<string | null>(null)
-<<<<<<< Updated upstream
-    const [draft, setDraft] = useState<MedicationWithPresentations>(createEmptyMedication())
-=======
     const [draft, setDraft, clearDraft, hasDraft] = useLocalDraft<MedicationWithPresentations>(
         'catalogo3',
         clinicId,
         currentUser?.id || null,
         createEmptyMedication()
     )
->>>>>>> Stashed changes
     const [loading, setLoading] = useState(true)
     const [isSaving, setIsSaving] = useState(false)
     const [searchTerm, setSearchTerm] = useState('')

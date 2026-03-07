@@ -263,8 +263,6 @@ export function resolveFrequency(item: PrescriptionItem): {
   }
 }
 
-<<<<<<< Updated upstream
-=======
 function normalizeFrequencyForPrint(item: PrescriptionItem): { hours: number | null, label: string } {
   if (item.frequencyToken) {
     const times = FREQUENCY_TOKEN_TO_TIMES[item.frequencyToken];
@@ -292,7 +290,6 @@ function normalizeFrequencyForPrint(item: PrescriptionItem): { hours: number | n
   return { hours: mappedHours, label: `a cada ${formattedHours} horas` };
 }
 
->>>>>>> Stashed changes
 function frequencyLabelForTutor(item: PrescriptionItem, fallback: string): string {
   if (item.frequencyType === 'everyHours') {
     const hours = toNumber(item.everyHours)
@@ -310,6 +307,35 @@ function frequencyLabelForTutor(item: PrescriptionItem, fallback: string): strin
     return `a cada ${formatNumber(interval, 0)} horas`
   }
   return `${formatNumber(numericTimes, 0)} vezes por dia`
+}
+
+function formatStartDateText(startDateRaw?: string): string {
+  const raw = String(startDateRaw || '').trim()
+  if (!raw) return ''
+
+  const isoMatch = raw.match(/^(\d{4})-(\d{2})-(\d{2})(?:[T\s](\d{2}):(\d{2}))?/)
+  if (isoMatch) {
+    const day = isoMatch[3]
+    const month = isoMatch[2]
+    const year = isoMatch[1]
+    const hour = isoMatch[4]
+    const minute = isoMatch[5]
+    if (hour && minute) return `iniciando às ${hour}:${minute} do dia ${day}/${month}/${year}`
+    return `iniciando no dia ${day}/${month}/${year}`
+  }
+
+  const brMatch = raw.match(/(\d{2})\/(\d{2})\/(\d{4})(?:.*?(\d{2}):(\d{2}))?/)
+  if (brMatch) {
+    const day = brMatch[1]
+    const month = brMatch[2]
+    const year = brMatch[3]
+    const hour = brMatch[4]
+    const minute = brMatch[5]
+    if (hour && minute) return `iniciando às ${hour}:${minute} do dia ${day}/${month}/${year}`
+    return `iniciando no dia ${day}/${month}/${year}`
+  }
+
+  return `iniciando em ${raw}`
 }
 
 function uniqueByNormalizedText(lines: string[]): string[] {
@@ -422,6 +448,7 @@ export function buildAutoInstruction(item: PrescriptionItem, state: Prescription
   const adminSegment = perDoseValueText ? `Administrar ${perDoseValueText} por vez` : 'Administrar conforme orientação clínica'
   const routeSegment = `por via ${routeToText(item.routeGroup)}`
   const frequencySegment = freq.label === 'frequência não informada' ? 'conforme frequência clínica' : frequencyLabelForTutor(item, freq.label)
+  const startSegment = formatStartDateText(item.start_date)
 
   let durationSegment = ''
   if (item.continuousUse) durationSegment = 'com uso contínuo até reavaliação'
@@ -431,7 +458,7 @@ export function buildAutoInstruction(item: PrescriptionItem, state: Prescription
     if (days && days > 0) durationSegment = `durante ${formatNumber(days, 0)} dias`
   }
 
-  return [adminSegment, routeSegment, frequencySegment, durationSegment].filter(Boolean).join(', ').trim() + '.'
+  return [adminSegment, routeSegment, frequencySegment, startSegment, durationSegment].filter(Boolean).join(', ').trim() + '.'
 }
 
 function resolveInstruction(item: PrescriptionItem, state?: PrescriptionState): string {
@@ -481,7 +508,6 @@ export function renderRxToPrintDoc(state: PrescriptionState, opts?: { renderMode
     grouped.set(key, current)
   }
 
-<<<<<<< Updated upstream
   const sections = SECTION_ORDER
     .map((key) => {
       const source = grouped.get(key) || []
@@ -489,27 +515,14 @@ export function renderRxToPrintDoc(state: PrescriptionState, opts?: { renderMode
       if (!source.length && renderMode === 'final') return null
 
       const items: PrintDocItem[] = source.map((item, idx) => {
-        const qty = calculateMedicationQuantity(item, state)
         const instruction = resolveInstruction(item, state)
-        const subtitleParts = [item.presentation]
-
-        // G3: Mostrar cálculo de dose/volume no subtitle
-        if (qty.label !== 'Quantidade não calculada') {
-          const doseStr = qty.perDose !== null ? `${formatNumber(qty.perDose)} ${qty.unit}` : ''
-          const totalStr = qty.total !== null ? ` · Total: ${formatNumber(qty.total)} ${qty.unit}` : ''
-          const calcLabel = doseStr ? `Dose calculada: ${doseStr}${totalStr}` : qty.label
-          subtitleParts.push(calcLabel)
-        } else if (toNumber(item.doseValue) !== null) {
-          // G4: Dose presente mas cálculo não pôde ser completado — mostrar hint sem crashar
-          const missingWeight = (item.doseUnit || '').includes('/kg') && !toNumber(state.patient.weightKg)
-          subtitleParts.push(missingWeight ? 'Peso não informado para cálculo' : 'Sem concentração para cálculo')
-        }
         return {
           id: item.id,
           index: idx + 1,
           title: buildItemTitle(item) || 'Medicamento',
-          subtitle: subtitleParts.filter(Boolean).join(' - '),
+          subtitle: item.presentation || '',
           instruction: instruction || 'Instrução não informada.',
+          start_date: item.start_date || '',
           titleBold: !!item.titleBold,
           titleUnderline: !!item.titleUnderline,
           cautions: item.cautions.filter(Boolean),
@@ -539,26 +552,10 @@ export function renderRxToPrintDoc(state: PrescriptionState, opts?: { renderMode
             status: 'ok',
           })
         }
-=======
-  const sections = SECTION_ORDER.map((key) => {
-    const source = grouped.get(key) || []
-    if (renderMode === 'template' && key !== 'ORAL') return null
-    if (!source.length && renderMode === 'final') return null
-    const items: PrintDocItem[] = source.map((item, idx) => {
-      const qty = calculateMedicationQuantity(item, state)
-      const instruction = resolveInstruction(item, state)
-      const subtitleParts = [item.presentation]
-      if (renderMode !== 'final' && qty.label !== 'Quantidade não calculada') {
-        const doseStr = qty.perDose !== null ? `${formatNumber(qty.perDose)} ${qty.unit}` : ''
-        const totalStr = qty.total !== null ? ` · Total: ${formatNumber(qty.total)} ${qty.unit}` : ''
-        subtitleParts.push(quoteSafe(doseStr ? `Dose: ${doseStr}${totalStr}` : qty.label))
->>>>>>> Stashed changes
       }
-      return {
-        id: item.id, index: idx + 1, title: buildItemTitle(item) || 'Medicamento', subtitle: subtitleParts.filter(Boolean).join(' - '), instruction, start_date: item.start_date || '', titleBold: !!item.titleBold, titleUnderline: !!item.titleUnderline, cautions: item.cautions.filter(Boolean), status: itemStatus(item, state),
-      }
+
+      return { key, title: SECTION_LABEL[key], items }
     })
-<<<<<<< Updated upstream
     .filter(Boolean) as PrintDoc['sections']
 
   const recommendations =
@@ -583,16 +580,11 @@ export function renderRxToPrintDoc(state: PrescriptionState, opts?: { renderMode
   const patientParts: string[] = []
   if (state.patient.breed.trim()) patientParts.push(state.patient.breed)
   if (state.patient.ageText.trim()) patientParts.push(state.patient.ageText)
-=======
-    return { key, title: SECTION_LABEL[key], items }
-  }).filter((s) => s && s.items.length > 0) as PrintDoc['sections']
->>>>>>> Stashed changes
 
   const tutorName = state.tutor.name || state.tutor.fullName || (state.tutor as any).full_name || '-'
   const address = [state.tutor.street, state.tutor.number, state.tutor.neighborhood, state.tutor.city].filter(Boolean).join(', ')
 
   return {
-<<<<<<< Updated upstream
     documentKind,
     documentId: state.prescriber.adminId || 'ADMIN',
     dateLabel: new Date().toLocaleDateString('pt-BR'),
@@ -600,17 +592,14 @@ export function renderRxToPrintDoc(state: PrescriptionState, opts?: { renderMode
     prescriberName: state.prescriber.name || 'Dr. Silva',
     prescriberCrmv: state.prescriber.crmv || 'CRMV-SP 00000',
     patientLine: `${state.patient.name || '-'} (${patientParts.join(', ')})`,
-    tutorLine: tutorLineParts.join(' — '),
-    addressLine: tutorAddressLine,
+    tutorLine: tutorName,
+    addressLine: address,
     sections,
     recommendations,
     exams:
       documentKind === 'special-control'
         ? []
         : [...selectedExams, ...examReasons],
-=======
-    documentKind, documentId: 'RX-' + Date.now(), dateLabel: new Date().toLocaleDateString('pt-BR'), clinicName: state.prescriber.clinicName || 'Vetius', prescriberName: state.prescriber.name || 'Médico Veterinário', prescriberCrmv: state.prescriber.crmv || '', patientLine: `${state.patient.name} (${state.patient.breed}, ${state.patient.ageText})`, tutorLine: tutorName, addressLine: address, sections, recommendations: state.recommendations.bullets, exams: state.recommendations.exams
->>>>>>> Stashed changes
   }
 }
 

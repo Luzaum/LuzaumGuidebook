@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { EvaluationStatus } from '../../types'
 import { Card } from '../UI/Card'
-import { CheckCircle, AlertTriangle, Edit2 } from 'lucide-react'
+import { CheckCircle, AlertTriangle, Edit2, Search } from 'lucide-react'
 import type { Patient } from '../../stores/caseStore'
 import type { ComplaintContext } from '../../stores/caseStore'
 
@@ -83,19 +83,21 @@ export function Step4Review({ patient, complaint, exam, onEditStep }: Step4Props
   return (
     <div className="space-y-6 pb-24">
       <motion.div
-        initial={{
-          opacity: 0,
-          y: 20,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="flex items-center gap-4 mb-8 bg-muted/30 p-4 rounded-2xl border border-border/40"
       >
-        <h2 className="text-2xl font-bold text-white mb-2">
-          Revisão dos Achados
-        </h2>
-        <p className="text-neutral-400">Confirme os dados antes da análise.</p>
+        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 flex items-center justify-center shadow-lg shadow-blue-500/10">
+          <Search className="w-7 h-7 text-blue-400" />
+        </div>
+        <div>
+          <h2 className="text-2xl font-bold text-foreground mb-1">
+            Revisão dos Achados
+          </h2>
+          <p className="text-muted-foreground text-sm">
+            Confirme os dados antes de iniciar a simulação neural.
+          </p>
+        </div>
       </motion.div>
 
       {/* Patient Summary */}
@@ -107,34 +109,34 @@ export function Step4Review({ patient, complaint, exam, onEditStep }: Step4Props
         >
           <Edit2 size={18} />
         </button>
-        <h3 className="text-lg font-semibold text-white mb-3">Paciente</h3>
+        <h3 className="text-lg font-semibold text-foreground mb-3">Paciente</h3>
         <div className="grid grid-cols-2 gap-y-2 text-sm">
-          <span className="text-neutral-400">Espécie:</span>
-          <span className="text-white">{speciesLabel}</span>
-          <span className="text-neutral-400">Idade:</span>
-          <span className="text-white">
+          <span className="text-muted-foreground">Espécie:</span>
+          <span className="text-foreground">{speciesLabel}</span>
+          <span className="text-muted-foreground">Idade:</span>
+          <span className="text-foreground">
             {patient.ageYears || 0}a {patient.ageMonths || 0}m
           </span>
-          <span className="text-neutral-400">Sexo:</span>
-          <span className="text-white">{sexLabel}</span>
-          <span className="text-neutral-400">Estado Reprodutivo:</span>
-          <span className="text-white">{reproLabel}</span>
-          <span className="text-neutral-400">Estágio de Vida:</span>
-          <span className="text-white">{lifeStageLabel}</span>
+          <span className="text-muted-foreground">Sexo:</span>
+          <span className="text-foreground">{sexLabel}</span>
+          <span className="text-muted-foreground">Estado Reprodutivo:</span>
+          <span className="text-foreground">{reproLabel}</span>
+          <span className="text-muted-foreground">Estágio de Vida:</span>
+          <span className="text-foreground">{lifeStageLabel}</span>
           {patient.sex === 'female' && (
             <>
-              <span className="text-neutral-400">Gestante:</span>
-              <span className="text-white">{patient.pregnant ? 'Sim' : 'Não'}</span>
-              <span className="text-neutral-400">Lactante:</span>
-              <span className="text-white">{patient.lactating ? 'Sim' : 'Não'}</span>
+              <span className="text-muted-foreground">Gestante:</span>
+              <span className="text-foreground">{patient.pregnant ? 'Sim' : 'Não'}</span>
+              <span className="text-muted-foreground">Lactante:</span>
+              <span className="text-foreground">{patient.lactating ? 'Sim' : 'Não'}</span>
             </>
           )}
-          <span className="text-neutral-400">Peso:</span>
-          <span className="text-white">{patient.weightKg || 'Não informado'} kg</span>
+          <span className="text-muted-foreground">Peso:</span>
+          <span className="text-foreground">{patient.weightKg || 'Não informado'} kg</span>
           {patient.comorbidities.length > 0 && (
             <>
-              <span className="text-neutral-400">Comorbidades:</span>
-              <span className="text-white">
+              <span className="text-muted-foreground">Comorbidades:</span>
+              <span className="text-foreground">
                 {patient.comorbidities.map((c) => COMORBIDITY_LABELS[c.key] || c.label).join(', ')}
               </span>
             </>
@@ -151,7 +153,7 @@ export function Step4Review({ patient, complaint, exam, onEditStep }: Step4Props
         >
           <Edit2 size={18} />
         </button>
-        <h3 className="text-lg font-semibold text-white mb-3">Queixas e Contexto Clínico</h3>
+        <h3 className="text-lg font-semibold text-foreground mb-3">Queixas e Contexto Clínico</h3>
         <div className="space-y-3">
           {complaint.chiefComplaintIds.length > 0 && (
             <div>
@@ -160,7 +162,7 @@ export function Step4Review({ patient, complaint, exam, onEditStep }: Step4Props
                 {complaint.chiefComplaintIds.map((c) => (
                   <span
                     key={c}
-                    className="px-2 py-1 bg-neutral-800 rounded text-sm text-white border border-white/10"
+                    className="px-2 py-1 bg-muted rounded text-sm text-foreground border border-border/40"
                   >
                     {c}
                   </span>
@@ -170,20 +172,20 @@ export function Step4Review({ patient, complaint, exam, onEditStep }: Step4Props
           )}
           {complaint.temporalPattern && (
             <div>
-              <span className="text-neutral-400 text-sm block mb-1">Padrão Temporal:</span>
-              <span className="text-white">{TEMPORAL_LABELS[complaint.temporalPattern] || complaint.temporalPattern}</span>
+              <span className="text-muted-foreground text-sm block mb-1">Padrão Temporal:</span>
+              <span className="text-foreground">{TEMPORAL_LABELS[complaint.temporalPattern] || complaint.temporalPattern}</span>
             </div>
           )}
           {complaint.evolutionPattern && (
             <div>
-              <span className="text-neutral-400 text-sm block mb-1">Evolução:</span>
-              <span className="text-white">{EVOLUTION_LABELS[complaint.evolutionPattern] || complaint.evolutionPattern}</span>
+              <span className="text-muted-foreground text-sm block mb-1">Evolução:</span>
+              <span className="text-foreground">{EVOLUTION_LABELS[complaint.evolutionPattern] || complaint.evolutionPattern}</span>
             </div>
           )}
           {complaint.contextNotes && (
             <div>
-              <span className="text-neutral-400 text-sm block mb-1">Contexto Clínico:</span>
-              <p className="text-white text-sm">{complaint.contextNotes}</p>
+              <span className="text-muted-foreground text-sm block mb-1">Contexto Clínico:</span>
+              <p className="text-foreground text-sm">{complaint.contextNotes}</p>
             </div>
           )}
         </div>
@@ -212,7 +214,7 @@ export function Step4Review({ patient, complaint, exam, onEditStep }: Step4Props
         >
           <Edit2 size={18} />
         </button>
-        <h3 className="text-lg font-semibold text-white mb-3">
+        <h3 className="text-lg font-semibold text-foreground mb-3">
           Exame Neurológico
         </h3>
 
@@ -226,9 +228,9 @@ export function Step4Review({ patient, complaint, exam, onEditStep }: Step4Props
             {alteredFindings.map(([key, val]) => (
               <li
                 key={key}
-                className="flex justify-between items-center text-sm border-b border-white/5 pb-1"
+                className="flex justify-between items-center text-sm border-b border-border/40 pb-1"
               >
-                <span className="text-neutral-300 capitalize">
+                <span className="text-muted-foreground capitalize">
                   {key.replace(/_/g, ' ')}
                 </span>
                 <span className="text-gold font-medium">{String(val)}</span>

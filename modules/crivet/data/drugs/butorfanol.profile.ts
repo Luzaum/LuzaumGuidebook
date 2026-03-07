@@ -462,6 +462,15 @@ export const butorfanolProfile: DrugProfile = {
     },
   ],
 
+  ui_copy: {
+    critical_warning_banner: 'Butorfanol tem efeito teto para analgesia; titular lento e reavaliar frequentemente.',
+    common_errors: [
+      'Administrar IV rápido sem titulação e sem reavaliação de resposta clínica.',
+      'Usar como único analgésico para dor intensa (efeito teto).',
+      'Associar com opioide µ puro sem planejar antagonismo.',
+    ],
+  },
+
   references: [
     {
       section: 'doses/pharmacokinetics/interactions/ceiling_effect',

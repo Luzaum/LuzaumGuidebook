@@ -102,7 +102,7 @@ export function buildCaseReport(caseState: any): CaseReport {
   return report
 }
 
-function buildPatientSummary(s: any): string {
+export function buildPatientSummary(s: any): string {
   const sp = s?.patient?.species === 'dog' ? 'Cão' : s?.patient?.species === 'cat' ? 'Gato' : '—'
   const age =
     s?.patient?.ageYears !== null && s?.patient?.ageYears !== undefined
@@ -124,17 +124,17 @@ function buildPatientSummary(s: any): string {
   const com =
     Array.isArray(s?.patient?.comorbidities) && s.patient.comorbidities.length
       ? s.patient.comorbidities
-          .map((c: any) => {
-            const label = typeof c === 'string' ? c : c.label || c.key
-            const severity = typeof c === 'object' && c.severity ? ` (${c.severity})` : ''
-            return `${label}${severity}`
-          })
-          .join(', ')
+        .map((c: any) => {
+          const label = typeof c === 'string' ? c : c.label || c.key
+          const severity = typeof c === 'object' && c.severity ? ` (${c.severity})` : ''
+          return `${label}${severity}`
+        })
+        .join(', ')
       : 'Nenhuma informada'
   return `Espécie: ${sp} | Idade: ${age} | Sexo: ${sex} | Reprodutivo: ${repro} | Fase: ${phys} | Peso: ${w} | Comorbidades: ${com}`
 }
 
-function buildHistorySummary(s: any): string {
+export function buildHistorySummary(s: any): string {
   const chief = Array.isArray(s?.complaint?.chiefComplaintIds) && s.complaint.chiefComplaintIds.length
     ? s.complaint.chiefComplaintIds.join(', ')
     : '—'
@@ -170,7 +170,7 @@ function buildHistorySummary(s: any): string {
   return `Queixa: ${chief} | Curso: ${course} | Evolução: ${prog} | Contexto: ${ctx} | Red flags: ${flags}`
 }
 
-function buildExamSummary(s: any): string {
+export function buildExamSummary(s: any): string {
   const mentationLabels: Record<string, string> = {
     Alerta: 'Alerta',
     Deprimido: 'Deprimido',

@@ -9,10 +9,28 @@ interface Props {
   onReset: () => void;
 }
 
-const QuickAddButtons = ({ param, setInputs, steps }: { param: keyof BloodGasInputs, setInputs: any, steps: number[] }) => {
+const QuickAddButtons = ({ param, setInputs, steps, species }: { param: keyof BloodGasInputs, setInputs: any, steps: number[], species: Species }) => {
   const handleAdd = (amount: number) => {
     setInputs((prev: any) => {
-      const current = parseFloat(prev[param]) || 0;
+      let current = parseFloat(prev[param]);
+
+      // If empty or invalid, try to start from a reasonable reference value
+      if (isNaN(current) || current === 0) {
+        const ref = HEMO_REF[species];
+        const defaultValues: Partial<Record<keyof BloodGasInputs, number>> = {
+          ph: 7.40,
+          pco2: species === 'dog' ? 36.8 : 31.0,
+          po2: species === 'dog' ? 92 : 100,
+          hco3: ref.hco3.ideal,
+          na: (ref.na.min + ref.na.max) / 2,
+          k: (ref.k.min + ref.k.max) / 2,
+          cl: (ref.cl.min + ref.cl.max) / 2,
+          albumin: ref.albumin.ideal || 3.0,
+          be: 0
+        };
+        current = defaultValues[param] ?? 0;
+      }
+
       const next = current + amount;
       return { ...prev, [param]: parseFloat(next.toFixed(2)) };
     });
@@ -95,30 +113,37 @@ export const HemogasometryAnalyzer: React.FC<Props> = ({ inputs, setInputs, onSu
 
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-3">
-                <button type="button" onClick={() => handleSpeciesChange('dog')} className={`flex flex-col items-center p-3 rounded-xl border-2 transition-all ${inputs.species === 'dog' ? 'border-blue-500 bg-blue-500/10 text-blue-500' : 'border-slate-200 dark:border-slate-800 hover:border-blue-500/50'}`}>
+                <button type="button" onClick={() => handleSpeciesChange('dog')} className={`relative z-10 flex flex-col items-center p-3 rounded-xl border-2 transition-all cursor-pointer ${inputs.species === 'dog' ? 'border-blue-500 bg-blue-500/10 text-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.5)]' : 'border-slate-200 dark:border-slate-800 hover:border-blue-500/50'}`}>
                   <span className="material-symbols-outlined text-3xl mb-1">sound_detection_dog_barking</span>
                   <span className="text-xs font-bold uppercase">Cão</span>
                 </button>
-                <button type="button" onClick={() => handleSpeciesChange('cat')} className={`flex flex-col items-center p-3 rounded-xl border-2 transition-all ${inputs.species === 'cat' ? 'border-primary bg-primary/10 text-primary' : 'border-slate-200 dark:border-slate-800 hover:border-primary/50'}`}>
+                <button type="button" onClick={() => handleSpeciesChange('cat')} className={`relative z-10 flex flex-col items-center p-3 rounded-xl border-2 transition-all cursor-pointer ${inputs.species === 'cat' ? 'border-primary bg-primary/10 text-primary shadow-[0_0_15px_rgba(var(--primary),0.5)]' : 'border-slate-200 dark:border-slate-800 hover:border-primary/50'}`}>
                   <span className="material-symbols-outlined text-3xl mb-1">cruelty_free</span>
                   <span className="text-xs font-bold uppercase">Gato</span>
                 </button>
               </div>
 
               <div className="grid grid-cols-2 gap-4 mt-4">
-                <div className="space-y-1">
+                <div className="space-y-1 relative z-10">
                   <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 ml-1">Temp (°C)</label>
-                  <input id="temp" value={inputs.temp} onChange={handleInputChange} className="w-full px-4 py-2.5 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all font-mono font-medium" placeholder="38.5" step="0.1" type="number" required />
+                  <input id="temp" value={inputs.temp} onChange={handleInputChange} className="w-full px-4 py-2.5 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all font-mono font-medium text-slate-900 dark:text-white" placeholder="38.5" step="0.1" type="number" required />
+                  <div className="text-[8.5px] font-medium text-slate-500 dark:text-slate-400 mt-1 space-y-0.5 leading-tight px-1">
+                    <div>🐱 37.8-39.2</div>
+                    <div>🐶 37.5-39.2</div>
+                  </div>
                 </div>
-                <div className="space-y-1">
+                <div className="space-y-1 relative z-10">
                   <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 ml-1">FiO₂ (%)</label>
-                  <input id="fio2" value={inputs.fio2} onChange={handleInputChange} className="w-full px-4 py-2.5 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all font-mono font-medium" placeholder="21" step="1" type="number" required />
+                  <input id="fio2" value={inputs.fio2} onChange={handleInputChange} className="w-full px-4 py-2.5 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all font-mono font-medium text-slate-900 dark:text-white" placeholder="21" step="1" type="number" required />
+                  <div className="text-[8.5px] font-medium text-slate-500 dark:text-slate-400 mt-1 leading-tight px-1">
+                    Ambiente 21%
+                  </div>
                 </div>
               </div>
 
               <div className="space-y-1">
                 <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 ml-1">Amostra</label>
-                <select id="declaredSampleType" value={inputs.declaredSampleType} onChange={handleInputChange} className="w-full px-4 py-2.5 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all cursor-pointer">
+                <select id="declaredSampleType" value={inputs.declaredSampleType} onChange={handleInputChange} className="w-full px-4 py-2.5 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all cursor-pointer text-slate-900 dark:text-white font-medium">
                   <option value="arterial">Arterial</option>
                   <option value="venous">Venosa</option>
                 </select>
@@ -135,20 +160,32 @@ export const HemogasometryAnalyzer: React.FC<Props> = ({ inputs, setInputs, onSu
               <h3 className="font-bold text-lg text-slate-800 dark:text-white">Gases</h3>
             </div>
             <div className="space-y-4">
-              <div className="relative">
+              <div className="relative z-10">
                 <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 ml-1">pH</label>
-                <input id="ph" value={inputs.ph} onChange={handleInputChange} className="w-full px-4 py-2 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-teal-500 outline-none font-mono text-lg font-bold" placeholder="7.40" step="0.01" type="number" required />
-                <QuickAddButtons param="ph" setInputs={setInputs} steps={[-0.1, -0.01, 0.01, 0.1]} />
+                <input id="ph" value={inputs.ph} onChange={handleInputChange} className="w-full px-4 py-2 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-teal-500 outline-none font-mono text-lg font-bold text-slate-900 dark:text-white" placeholder="7.40" step="0.01" type="number" required />
+                <QuickAddButtons param="ph" setInputs={setInputs} steps={[-0.1, -0.01, 0.01, 0.1]} species={inputs.species as Species} />
+                <div className="text-[8.5px] font-medium text-slate-500 dark:text-slate-400 mt-2 space-y-0.5 leading-tight px-1">
+                  <div>🐱 7.35-7.45</div>
+                  <div>🐶 7.35-7.45</div>
+                </div>
               </div>
-              <div className="relative">
+              <div className="relative z-10">
                 <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 ml-1">pCO₂ (mmHg)</label>
-                <input id="pco2" value={inputs.pco2} onChange={handleInputChange} className="w-full px-4 py-2 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-teal-500 outline-none font-mono text-lg font-bold" placeholder="40.0" step="0.1" type="number" required />
-                <QuickAddButtons param="pco2" setInputs={setInputs} steps={[-5, -1, 1, 5]} />
+                <input id="pco2" value={inputs.pco2} onChange={handleInputChange} className="w-full px-4 py-2 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-teal-500 outline-none font-mono text-lg font-bold text-slate-900 dark:text-white" placeholder="40.0" step="0.1" type="number" required />
+                <QuickAddButtons param="pco2" setInputs={setInputs} steps={[-5, -1, 1, 5]} species={inputs.species as Species} />
+                <div className="text-[8.5px] font-medium text-slate-500 dark:text-slate-400 mt-2 space-y-0.5 leading-tight px-1">
+                  <div>🐱 28-34</div>
+                  <div>🐶 35-45</div>
+                </div>
               </div>
-              <div className="relative">
+              <div className="relative z-10">
                 <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 ml-1">pO₂ (mmHg)</label>
-                <input id="po2" value={inputs.po2} onChange={handleInputChange} className="w-full px-4 py-2 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-teal-500 outline-none font-mono text-lg font-bold" placeholder="95.0" step="0.1" type="number" required />
-                <QuickAddButtons param="po2" setInputs={setInputs} steps={[-10, -1, 1, 10]} />
+                <input id="po2" value={inputs.po2} onChange={handleInputChange} className="w-full px-4 py-2 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-teal-500 outline-none font-mono text-lg font-bold text-slate-900 dark:text-white" placeholder="95.0" step="0.1" type="number" required />
+                <QuickAddButtons param="po2" setInputs={setInputs} steps={[-10, -1, 1, 10]} species={inputs.species as Species} />
+                <div className="text-[8.5px] font-medium text-slate-500 dark:text-slate-400 mt-2 space-y-0.5 leading-tight px-1">
+                  <div>🐱 90-100</div>
+                  <div>🐶 90-100</div>
+                </div>
               </div>
             </div>
           </section>
@@ -162,20 +199,32 @@ export const HemogasometryAnalyzer: React.FC<Props> = ({ inputs, setInputs, onSu
               <h3 className="font-bold text-lg text-slate-800 dark:text-white">Eletrólitos</h3>
             </div>
             <div className="grid grid-cols-1 gap-4">
-              <div className="relative">
+              <div className="relative z-10">
                 <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 ml-1">Na⁺ (mEq/L)</label>
-                <input id="na" value={inputs.na} onChange={handleInputChange} className="w-full px-4 py-2 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none font-mono font-bold" placeholder="140" step="0.1" type="number" />
-                <QuickAddButtons param="na" setInputs={setInputs} steps={[-5, -1, 1, 5]} />
+                <input id="na" value={inputs.na} onChange={handleInputChange} className="w-full px-4 py-2 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none font-mono font-bold text-slate-900 dark:text-white text-lg" placeholder="140" step="0.1" type="number" />
+                <QuickAddButtons param="na" setInputs={setInputs} steps={[-5, -1, 1, 5]} species={inputs.species as Species} />
+                <div className="text-[8.5px] font-medium text-slate-500 dark:text-slate-400 mt-2 space-y-0.5 leading-tight px-1">
+                  <div>🐱 149-162</div>
+                  <div>🐶 141-152</div>
+                </div>
               </div>
-              <div className="relative">
+              <div className="relative z-10">
                 <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 ml-1">K⁺ (mEq/L)</label>
-                <input id="k" value={inputs.k} onChange={handleInputChange} className="w-full px-4 py-2 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none font-mono font-bold" placeholder="4.0" step="0.1" type="number" />
-                <QuickAddButtons param="k" setInputs={setInputs} steps={[-0.5, -0.1, 0.1, 0.5]} />
+                <input id="k" value={inputs.k} onChange={handleInputChange} className="w-full px-4 py-2 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none font-mono font-bold text-slate-900 dark:text-white text-lg" placeholder="4.0" step="0.1" type="number" />
+                <QuickAddButtons param="k" setInputs={setInputs} steps={[-0.5, -0.1, 0.1, 0.5]} species={inputs.species as Species} />
+                <div className="text-[8.5px] font-medium text-slate-500 dark:text-slate-400 mt-2 space-y-0.5 leading-tight px-1">
+                  <div>🐱 3.5-5.0</div>
+                  <div>🐶 3.5-5.0</div>
+                </div>
               </div>
-              <div className="relative">
+              <div className="relative z-10">
                 <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 ml-1">Cl⁻ (mEq/L)</label>
-                <input id="cl" value={inputs.cl} onChange={handleInputChange} className="w-full px-4 py-2 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none font-mono font-bold" placeholder="105" step="0.1" type="number" />
-                <QuickAddButtons param="cl" setInputs={setInputs} steps={[-5, -1, 1, 5]} />
+                <input id="cl" value={inputs.cl} onChange={handleInputChange} className="w-full px-4 py-2 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none font-mono font-bold text-slate-900 dark:text-white text-lg" placeholder="105" step="0.1" type="number" />
+                <QuickAddButtons param="cl" setInputs={setInputs} steps={[-5, -1, 1, 5]} species={inputs.species as Species} />
+                <div className="text-[8.5px] font-medium text-slate-500 dark:text-slate-400 mt-2 space-y-0.5 leading-tight px-1">
+                  <div>🐱 117-123</div>
+                  <div>🐶 105-117</div>
+                </div>
               </div>
             </div>
           </section>
@@ -189,20 +238,32 @@ export const HemogasometryAnalyzer: React.FC<Props> = ({ inputs, setInputs, onSu
               <h3 className="font-bold text-lg text-slate-800 dark:text-white">Metabólitos</h3>
             </div>
             <div className="space-y-4">
-              <div className="relative">
+              <div className="relative z-10">
                 <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 ml-1">HCO₃⁻ (mEq/L)</label>
-                <input id="hco3" value={inputs.hco3} onChange={handleInputChange} className="w-full px-4 py-2 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none font-mono text-lg font-bold" placeholder="24" step="0.1" type="number" required />
-                <QuickAddButtons param="hco3" setInputs={setInputs} steps={[-2, -1, 1, 2]} />
+                <input id="hco3" value={inputs.hco3} onChange={handleInputChange} className="w-full px-4 py-2 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none font-mono text-lg font-bold text-slate-900 dark:text-white" placeholder="24" step="0.1" type="number" required />
+                <QuickAddButtons param="hco3" setInputs={setInputs} steps={[-2, -1, 1, 2]} species={inputs.species as Species} />
+                <div className="text-[8.5px] font-medium text-slate-500 dark:text-slate-400 mt-2 space-y-0.5 leading-tight px-1">
+                  <div>🐱 17-21</div>
+                  <div>🐶 20-24</div>
+                </div>
               </div>
-              <div className="relative">
+              <div className="relative z-10">
                 <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 ml-1">Albumina (g/dL)</label>
-                <input id="albumin" value={inputs.albumin} onChange={handleInputChange} className="w-full px-4 py-2 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none font-mono font-bold" placeholder="3.0" step="0.1" type="number" />
-                <QuickAddButtons param="albumin" setInputs={setInputs} steps={[-0.5, -0.1, 0.1, 0.5]} />
+                <input id="albumin" value={inputs.albumin} onChange={handleInputChange} className="w-full px-4 py-2 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none font-mono font-bold text-slate-900 dark:text-white text-lg" placeholder="3.0" step="0.1" type="number" />
+                <QuickAddButtons param="albumin" setInputs={setInputs} steps={[-0.5, -0.1, 0.1, 0.5]} species={inputs.species as Species} />
+                <div className="text-[8.5px] font-medium text-slate-500 dark:text-slate-400 mt-2 space-y-0.5 leading-tight px-1">
+                  <div>🐱 2.6-4.0</div>
+                  <div>🐶 2.6-4.0</div>
+                </div>
               </div>
-              <div className="relative">
+              <div className="relative z-10">
                 <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 ml-1">BE (Base Excess)</label>
-                <input id="be" value={inputs.be} onChange={handleInputChange} className="w-full px-4 py-2 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none font-mono font-bold" placeholder="0" step="0.1" type="number" />
-                <QuickAddButtons param="be" setInputs={setInputs} steps={[-2, -1, 1, 2]} />
+                <input id="be" value={inputs.be} onChange={handleInputChange} className="w-full px-4 py-2 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-purple-500 outline-none font-mono font-bold text-slate-900 dark:text-white text-lg" placeholder="0" step="0.1" type="number" />
+                <QuickAddButtons param="be" setInputs={setInputs} steps={[-2, -1, 1, 2]} species={inputs.species as Species} />
+                <div className="text-[8.5px] font-medium text-slate-500 dark:text-slate-400 mt-2 space-y-0.5 leading-tight px-1">
+                  <div>🐱 -4 a +4</div>
+                  <div>🐶 -4 a +4</div>
+                </div>
               </div>
             </div>
           </section>

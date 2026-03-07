@@ -8,7 +8,7 @@ function resolveAppBaseUrl() {
     return window.location.origin
   }
 
-  return 'https://vetius.netlify.app'
+  return 'https://vetiusv0.netlify.app'
 }
 
 function resolveAppUrl(pathname: string) {

@@ -56,16 +56,20 @@ export function ClockTimelinePicker({
     [onChange, disabled],
   )
 
-  const handleMouseDown = (e: React.MouseEvent) => {
+  const handleMouseDown = (e: React.MouseEvent | React.TouchEvent) => {
     if (disabled) return
     setIsDragging(true)
-    handleMouseMove(e.clientX)
+
+    // Suporte a Mouse e Touch
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
+    handleMouseMove(clientX)
   }
 
   const handleMouseMoveGlobal = useCallback(
-    (e: MouseEvent) => {
+    (e: MouseEvent | TouchEvent) => {
       if (isDragging) {
-        handleMouseMove(e.clientX)
+        const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
+        handleMouseMove(clientX)
       }
     },
     [isDragging, handleMouseMove],
@@ -80,9 +84,13 @@ export function ClockTimelinePicker({
     if (isDragging) {
       document.addEventListener('mousemove', handleMouseMoveGlobal)
       document.addEventListener('mouseup', handleMouseUp)
+      document.addEventListener('touchmove', handleMouseMoveGlobal, { passive: false })
+      document.addEventListener('touchend', handleMouseUp)
       return () => {
         document.removeEventListener('mousemove', handleMouseMoveGlobal)
         document.removeEventListener('mouseup', handleMouseUp)
+        document.removeEventListener('touchmove', handleMouseMoveGlobal)
+        document.removeEventListener('touchend', handleMouseUp)
       }
     }
   }, [isDragging, handleMouseMoveGlobal, handleMouseUp])
@@ -118,9 +126,11 @@ export function ClockTimelinePicker({
         <div className="flex-1 pt-2">
           <div
             ref={sliderRef}
-            className="relative h-12 cursor-pointer"
+            className="relative h-12 cursor-pointer touch-none"
             onMouseDown={handleMouseDown}
+            onTouchStart={handleMouseDown}
             onMouseLeave={handleMouseLeave}
+            onTouchEnd={handleMouseLeave}
           >
             {/* Gradiente de Fundo */}
             <div
@@ -184,11 +194,10 @@ export function ClockTimelinePicker({
                   onMouseLeave={() => !isDragging && setHoverPosition(null)}
                 >
                   <div
-                    className={`px-2 py-1 rounded transition-all ${
-                      isActive
+                    className={`px-2 py-1 rounded transition-all ${isActive
                         ? 'bg-gold/20 text-gold scale-110'
                         : 'hover:bg-white/5 hover:text-white/80'
-                    }`}
+                      }`}
                   >
                     {pattern.label.split(' ')[0]}
                   </div>

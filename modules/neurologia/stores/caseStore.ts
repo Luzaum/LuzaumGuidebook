@@ -1,4 +1,4 @@
-import { create } from 'zustand'
+﻿import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { sanitizePatient, sanitizeHistory } from '../lib/state/sanitizers'
 
@@ -14,7 +14,7 @@ export type TemporalPattern =
   | 'episodico'
 export type EvolutionPattern =
   | 'melhorando'
-  | 'estático'
+  | 'estÃ¡tico'
   | 'flutuante'
   | 'progressivo'
 
@@ -31,14 +31,14 @@ export type RedFlagId =
 
 export type ComorbidityKey =
   | 'renal'
-  | 'hepática'
-  | 'cardíaca'
+  | 'hepÃ¡tica'
+  | 'cardÃ­aca'
   | 'endocrina'
-  | 'respiratória'
+  | 'respiratÃ³ria'
   | 'neuromuscular'
   | 'neoplasica'
   | 'imunomediada'
-  | 'hipertensão'
+  | 'hipertensÃ£o'
   | 'coagulopatia'
 
 export type ComorbidityItem = {
@@ -67,7 +67,7 @@ export type ComplaintContext = {
   evolutionPattern: EvolutionPattern | null
   contextNotes: string
   redFlags: RedFlagId[]
-  // Contexto clínico (toggles)
+  // Contexto clÃ­nico (toggles)
   trauma: boolean
   toxin: boolean
   fever: boolean
@@ -76,11 +76,13 @@ export type ComplaintContext = {
   recentSurgeryAnesthesia: boolean
 }
 
-type NeuroExam = Record<string, any> // mantém compatível com seu modelo atual
+type NeuroExam = Record<string, any> // mantÃ©m compatÃ­vel com seu modelo atual
 type Review = Record<string, any>
 type Analysis = {
   status: 'idle' | 'running' | 'done' | 'insufficient_data'
-  report?: any // CaseReport será tipado depois
+  report?: any // CaseReport serÃ¡ tipado depois
+  errorMessage?: string
+  errorCode?: string
 } | null
 
 type CaseState = {
@@ -169,3 +171,4 @@ export const useCaseStore = create<CaseState>()(
     { name: 'vetneuro.case.v1' },
   ),
 )
+

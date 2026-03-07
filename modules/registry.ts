@@ -57,7 +57,7 @@ export const modules: Module[] = [
     route: '/transfusão-sanguinea',
     status: 'internal',
     icon: Heart,
-    iconImage: '/apps/transfusão.png',
+    iconImage: '/apps/transfusao.png',
   },
   {
     id: 'hemogasometria',
@@ -86,7 +86,7 @@ export const modules: Module[] = [
     status: 'iframe',
     icon: Zap,
     iframeUrl: 'https://emergências-vet.netlify.app',
-    iconImage: '/apps/emergência.png',
+    iconImage: '/apps/emergencia.png',
   },
   {
     id: 'peconhentos',
@@ -141,6 +141,7 @@ export const modules: Module[] = [
     route: '/veteletrolitico',
     status: 'internal',
     icon: Activity,
+    iconImage: '/apps/hidroeletro.png',
   },
 
 ]

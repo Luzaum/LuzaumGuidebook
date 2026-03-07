@@ -9,11 +9,8 @@ export function Hub() {
     const navigate = useNavigate()
 
     const premiumIds = ['neurologia', 'peconhentos', 'antibioticoterapia', 'transfusão-sanguinea', 'crivet', 'receituario-vet']
-<<<<<<< Updated upstream
-=======
     const developmentIds = ['veteletrolitico']
 
->>>>>>> Stashed changes
     const premiumModules = modules.filter(m => premiumIds.includes(m.id))
     const freeModules = modules.filter(m => !premiumIds.includes(m.id))
 
@@ -57,9 +54,6 @@ export function Hub() {
                         </div>
                         <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                             {freeModules.map((module) => (
-<<<<<<< Updated upstream
-                                <div key={module.id} className="transform transition-all duration-300 hover:-translate-y-1 active:scale-[0.98]">
-=======
                                 <div key={module.id} className="transform transition-all duration-300 hover:-translate-y-2 active:scale-[0.98]">
                                     <ModuleCard module={module} />
                                 </div>
@@ -81,24 +75,6 @@ export function Hub() {
                                     key={module.id}
                                     className="transform transition-all duration-500 hover:-translate-y-2 active:scale-[0.98] rounded-xl hover:shadow-[0_0_40px_rgba(251,191,36,0.6)] hover:ring-2 hover:ring-amber-500/50"
                                 >
->>>>>>> Stashed changes
-                                    <ModuleCard module={module} />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* PREMIUM MODULES SECTION */}
-                    <div className="mb-14">
-                        <div className="flex justify-center mb-8">
-                            <span className="inline-flex items-center gap-1.5 rounded-md border border-amber-500/40 bg-amber-500/10 px-3 py-1 text-sm font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400">
-                                <span className="h-2 w-2 rounded-full bg-amber-500"></span>
-                                Premium
-                            </span>
-                        </div>
-                        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                            {premiumModules.map((module) => (
-                                <div key={module.id} className="transform transition-all duration-300 hover:-translate-y-1 active:scale-[0.98]">
                                     <ModuleCard module={module} />
                                 </div>
                             ))}

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { AuroraBackground } from '../../components/ui/aurora-background';
 import { HemogasometryAnalyzer } from './components/HemogasometryAnalyzer';
 import { HemogasometryResults } from './components/HemogasometryResults';
+import { HemogasometryLayout } from './components/HemogasometryLayout';
 import { HemogasometrySidebar } from './components/HemogasometrySidebar';
 import { HemogasometryQuiz } from './components/HemogasometryQuiz';
 import { BloodGasInputs, AnalysisResult, QuizCase } from './types/hemoTypes';
@@ -14,7 +15,7 @@ interface Props {
 }
 
 const Hemogasometria: React.FC<Props> = ({ onBack }) => {
-  const [activeTab, setActiveTab] = useState<'analyzer' | 'quiz'>('analyzer');
+  const [activeTab, setActiveTab] = useState<'analyzer' | 'quiz' | 'settings'>('analyzer');
   const [modalData, setModalData] = useState<{ title: string; content: string } | null>(null);
 
   // Analyzer State
@@ -92,125 +93,92 @@ const Hemogasometria: React.FC<Props> = ({ onBack }) => {
   };
 
   return (
-    <div className="min-h-screen w-full relative overflow-hidden bg-slate-950 isolate print:bg-white">
-      <AuroraBackground className="fixed inset-0 pointer-events-none opacity-40 print:hidden">{null}</AuroraBackground>
-
-      <div className="relative z-10 flex flex-col h-screen overflow-hidden print:h-auto print:overflow-visible">
-        {/* Superior Header */}
-        <header className="flex items-center justify-between px-8 py-4 bg-white/5 dark:bg-slate-900/50 backdrop-blur-xl border-b border-white/10 print:hidden">
-          <div className="flex items-center gap-6">
-            <button onClick={onBack} className="p-2 hover:bg-white/10 rounded-xl transition-all flex items-center justify-center group active:scale-95">
-              <span className="material-symbols-outlined text-3xl text-slate-300 group-hover:text-white">arrow_back</span>
-            </button>
-            <div className="flex items-center gap-3">
-              <div className="size-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-600/30">
-                <span className="material-symbols-outlined text-white text-2xl">science</span>
-              </div>
-              <div>
-                <h1 className="text-2xl font-black text-white uppercase tracking-tighter leading-none">Hemogasometria<span className="text-blue-500">Vet</span></h1>
-                <span className="text-[10px] text-blue-400 font-bold uppercase tracking-[0.3em]">Advanced Diagnostics</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex bg-slate-900/80 p-1.5 rounded-2xl border border-white/10 backdrop-blur-2xl">
-            <button
-              onClick={() => setActiveTab('analyzer')}
-              className={`px-6 py-2.5 rounded-xl font-black uppercase text-xs tracking-widest transition-all ${activeTab === 'analyzer' ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/30' : 'text-slate-500 hover:text-white'}`}
-            >
-              Analisador
-            </button>
-            <button
-              onClick={() => setActiveTab('quiz')}
-              className={`px-6 py-2.5 rounded-xl font-black uppercase text-xs tracking-widest transition-all ${activeTab === 'quiz' ? 'bg-primary text-white shadow-xl shadow-primary/30' : 'text-slate-500 hover:text-white'}`}
-            >
-              Modo Quiz
-            </button>
-          </div>
-        </header>
-
-        {/* Dynamic Content + Sidebar */}
-        <div className="flex-1 flex overflow-hidden print:block print:overflow-visible">
-          {/* Main Content Area */}
-          <main className="flex-1 overflow-y-auto p-4 md:p-8 xl:p-12 custom-scrollbar print:p-0 print:overflow-visible">
-            <div className="w-full">
-              {activeTab === 'analyzer' ? (
-                <div className="space-y-12">
-                  <div className="print:hidden">
-                    <HemogasometryAnalyzer
-                      inputs={inputs}
-                      setInputs={setInputs}
-                      onSubmit={handleAnalyzerSubmit}
-                      onReset={handleReset}
-                    />
-                  </div>
-
-                  {showResults && analysisResult && (
-                    <div className="animate-in slide-in-from-bottom-8 duration-700 print:animate-none">
-                      <div className="flex items-center gap-4 mb-8 print:mb-4">
-                        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-500/30 to-transparent print:hidden"></div>
-                        <h2 className="text-xl font-black uppercase tracking-[0.4em] text-blue-500/80 print:text-blue-600 print:tracking-normal print:text-2xl">Relatório de Hemogasometria</h2>
-                        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-500/30 to-transparent print:hidden"></div>
-                      </div>
-                      <HemogasometryResults result={analysisResult} onOpenModal={openModal} />
-                    </div>
-                  )}
-                </div>
-              ) : (
-                quizCase && (
-                  <HemogasometryQuiz
-                    quizCase={quizCase}
-                    userAnswers={userAnswers}
-                    setUserAnswers={setUserAnswers}
-                    quizSubmitted={quizSubmitted}
-                    onSubmit={(e) => { e.preventDefault(); setQuizSubmitted(true); }}
-                    onNewCase={handleNewQuizCase}
-                    onOpenModal={openModal}
+    <HemogasometryLayout activeTab={activeTab} setActiveTab={setActiveTab} onBack={onBack}>
+      <div className="flex-1 flex flex-col lg:flex-row h-full overflow-hidden">
+        {/* Main Content Area */}
+        <div className="flex-1 overflow-y-auto p-4 md:p-8 xl:p-12 custom-scrollbar print:p-0 print:overflow-visible bg-slate-50 dark:bg-slate-950">
+          <div className="w-full">
+            {activeTab === 'analyzer' && (
+              <div className="space-y-12">
+                <div className="print:hidden">
+                  <HemogasometryAnalyzer
+                    inputs={inputs}
+                    setInputs={setInputs}
+                    onSubmit={handleAnalyzerSubmit}
+                    onReset={handleReset}
                   />
-                )
-              )}
+                </div>
 
-              {/* Footer Guide - Hidden by default, showing only when needed */}
-              <div className="mt-20 opacity-50 hover:opacity-100 transition-opacity print:hidden">
-                <details className="group border border-white/10 rounded-3xl overflow-hidden bg-slate-900/40 divide-y divide-white/5">
-                  <summary className="p-6 cursor-pointer list-none flex justify-between items-center text-slate-400 font-bold uppercase text-xs tracking-widest">
-                    Guia de Referência Clínica
-                    <span className="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
-                  </summary>
-                  <div className="p-10 grid grid-cols-1 md:grid-cols-2 gap-12 text-slate-400 text-sm leading-relaxed">
-                    <div>
-                      <h4 className="flex items-center gap-2 text-white font-black mb-4"><span className="material-symbols-outlined text-blue-500">verified</span> BOAS PRÁTICAS DE COLETA</h4>
-                      <ul className="space-y-3 list-disc pl-5 marker:text-blue-500">
-                        <li>Sempre remover bolhas de ar imediatamente após a coleta.</li>
-                        <li>Processar a amostra em no máximo 5-10 minutos.</li>
-                        <li>Amostra arterial é mandatória para avaliação real de pO₂.</li>
-                        <li>Vedação hermética da seringa para evitar trocas gasosas.</li>
-                      </ul>
+                {showResults && analysisResult && (
+                  <div className="animate-in slide-in-from-bottom-8 duration-700 print:animate-none">
+                    <div className="flex items-center gap-4 mb-8 print:mb-4">
+                      <div className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-500/30 to-transparent print:hidden"></div>
+                      <h2 className="text-xl font-black uppercase tracking-[0.4em] text-blue-500/80 print:text-blue-600 print:tracking-normal print:text-2xl">Relatório de Hemogasometria</h2>
+                      <div className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-500/30 to-transparent print:hidden"></div>
                     </div>
-                    <div>
-                      <h4 className="flex items-center gap-2 text-white font-black mb-4"><span className="material-symbols-outlined text-red-500">warning</span> ARMADILHAS DIAGNÓSTICAS</h4>
-                      <ul className="space-y-3 list-disc pl-5 marker:text-red-500">
-                        <li>Excesso de heparina reduz artificialmente o HCO₃⁻ e pCO₂.</li>
-                        <li>Hemólise severa pode elevar níveis de K⁺ falsamente.</li>
-                        <li>Retardo no processamento consome O₂ e gera CO₂ (acidose artificial).</li>
-                      </ul>
-                    </div>
+                    <HemogasometryResults result={analysisResult} onOpenModal={openModal} />
                   </div>
-                </details>
+                )}
               </div>
-            </div>
-          </main>
+            )}
 
-          {/* Persistent Sidebar Area */}
-          <aside className="w-[400px] xl:w-[450px] flex-shrink-0 animate-in slide-in-from-right-12 duration-500 print:hidden">
-            <HemogasometrySidebar
-              result={analysisResult}
-              inputs={inputs}
-              onOpenModal={openModal}
-              onPrint={handlePrint}
-            />
-          </aside>
+            {activeTab === 'quiz' && quizCase && (
+              <HemogasometryQuiz
+                quizCase={quizCase}
+                userAnswers={userAnswers}
+                setUserAnswers={setUserAnswers}
+                quizSubmitted={quizSubmitted}
+                onSubmit={(e) => { e.preventDefault(); setQuizSubmitted(true); }}
+                onNewCase={handleNewQuizCase}
+                onOpenModal={openModal}
+              />
+            )}
+            {activeTab === 'settings' && (
+              <div className="p-8 text-center text-slate-500 dark:text-slate-400">
+                Configurações do aplicativo em breve.
+              </div>
+            )}
+
+            {/* Footer Guide - Hidden by default, showing only when needed */}
+            <div className="mt-20 opacity-50 hover:opacity-100 transition-opacity print:hidden">
+              <details className="group border border-white/10 rounded-3xl overflow-hidden bg-slate-900/40 divide-y divide-white/5">
+                <summary className="p-6 cursor-pointer list-none flex justify-between items-center text-slate-400 font-bold uppercase text-xs tracking-widest">
+                  Guia de Referência Clínica
+                  <span className="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                </summary>
+                <div className="p-10 grid grid-cols-1 md:grid-cols-2 gap-12 text-slate-400 text-sm leading-relaxed">
+                  <div>
+                    <h4 className="flex items-center gap-2 text-white font-black mb-4"><span className="material-symbols-outlined text-blue-500">verified</span> BOAS PRÁTICAS DE COLETA</h4>
+                    <ul className="space-y-3 list-disc pl-5 marker:text-blue-500">
+                      <li>Sempre remover bolhas de ar imediatamente após a coleta.</li>
+                      <li>Processar a amostra em no máximo 5-10 minutos.</li>
+                      <li>Amostra arterial é mandatória para avaliação real de pO₂.</li>
+                      <li>Vedação hermética da seringa para evitar trocas gasosas.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="flex items-center gap-2 text-white font-black mb-4"><span className="material-symbols-outlined text-red-500">warning</span> ARMADILHAS DIAGNÓSTICAS</h4>
+                    <ul className="space-y-3 list-disc pl-5 marker:text-red-500">
+                      <li>Excesso de heparina reduz artificialmente o HCO₃⁻ e pCO₂.</li>
+                      <li>Hemólise severa pode elevar níveis de K⁺ falsamente.</li>
+                      <li>Retardo no processamento consome O₂ e gera CO₂ (acidose artificial).</li>
+                    </ul>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
         </div>
+
+        {/* Persistent Sidebar Area */}
+        <aside className="w-full h-auto lg:h-full lg:w-[400px] xl:w-[450px] flex-shrink-0 animate-in slide-in-from-right-12 duration-500 lg:border-l border-slate-200 dark:border-white/10 print:hidden overflow-y-auto bg-slate-50 dark:bg-slate-950">
+          <HemogasometrySidebar
+            result={analysisResult}
+            inputs={inputs}
+            onOpenModal={openModal}
+            onPrint={handlePrint}
+          />
+        </aside>
       </div>
 
       {/* Modal System */}
@@ -245,8 +213,10 @@ const Hemogasometria: React.FC<Props> = ({ onBack }) => {
       <style>{`
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(148,163,184,0.3); border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(148,163,184,0.5); }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
         
         .hemo-content-box strong { color: #3b82f6; font-weight: 900; }
         .flowchart-box { 
@@ -260,7 +230,7 @@ const Hemogasometria: React.FC<Props> = ({ onBack }) => {
         }
         .flowchart-arrow { text-align: center; font-size: 1.5rem; color: #3b82f6; }
       `}</style>
-    </div>
+    </HemogasometryLayout>
   );
 };
 

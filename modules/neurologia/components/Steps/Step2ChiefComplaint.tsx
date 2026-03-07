@@ -13,6 +13,7 @@ import {
   TrendingUp,
   Droplet,
   FlaskConical,
+  ClipboardList,
 } from 'lucide-react'
 import type { ComplaintContext } from '../../stores/caseStore'
 import { ClockTimelinePicker } from '../Step2/ClockTimelinePicker'
@@ -257,19 +258,21 @@ export function Step2ChiefComplaint({ complaint, setComplaint }: Step2Props) {
   return (
     <div className="space-y-8 pb-24">
       <motion.div
-        initial={{
-          opacity: 0,
-          y: 20,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="flex items-center gap-4 mb-8 bg-muted/30 p-4 rounded-2xl border border-border/40"
       >
-        <h2 className="text-2xl font-bold text-white mb-2">Queixa Principal</h2>
-        <p className="text-neutral-400">
-          Selecione um ou mais sinais observados.
-        </p>
+        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 border border-amber-500/30 flex items-center justify-center shadow-lg shadow-amber-500/10">
+          <ClipboardList className="w-7 h-7 text-amber-400" />
+        </div>
+        <div>
+          <h2 className="text-2xl font-bold text-foreground mb-1">
+            Queixa Principal
+          </h2>
+          <p className="text-muted-foreground text-sm">
+            Selecione um ou mais sinais observados e o contexto clínico.
+          </p>
+        </div>
       </motion.div>
 
       {/* Cards de Queixa */}
@@ -293,22 +296,19 @@ export function Step2ChiefComplaint({ complaint, setComplaint }: Step2Props) {
               className="relative"
             >
               <Card
-                className={`h-32 flex flex-col items-center justify-center gap-3 transition-all duration-300 ${
-                  isSelected
-                    ? 'border-gold bg-gold/10 ring-1 ring-gold shadow-[0_0_15px_rgba(245,197,66,0.2)]'
-                    : 'hover:border-gold/50 hover:bg-white/5'
-                }`}
+                className={`p-2 sm:p-4 h-32 flex flex-col items-center justify-center gap-2 sm:gap-3 transition-all duration-300 ${isSelected
+                  ? 'border-gold bg-gold/10 ring-1 ring-gold shadow-[0_4px_12px_rgba(245,197,66,0.2)]'
+                  : 'border-border/40 hover:border-gold/50 hover:bg-muted/30'
+                  }`}
               >
                 <Icon
                   size={32}
-                  className={`transition-colors ${
-                    isSelected ? 'text-gold' : 'text-neutral-500'
-                  }`}
+                  className={`transition-colors ${isSelected ? 'text-gold' : 'text-neutral-500'
+                    }`}
                 />
                 <span
-                  className={`text-sm font-medium text-center ${
-                    isSelected ? 'text-gold' : 'text-neutral-300'
-                  }`}
+                  className={`text-xs sm:text-sm font-medium text-center leading-tight ${isSelected ? 'text-gold' : 'text-muted-foreground'
+                    }`}
                 >
                   {item.label}
                 </span>
@@ -320,7 +320,7 @@ export function Step2ChiefComplaint({ complaint, setComplaint }: Step2Props) {
 
       {/* Padrão Temporal com ClockTimelinePicker */}
       <Card>
-        <label className="text-sm font-medium text-neutral-300 mb-4 block">
+        <label className="text-sm font-medium text-muted-foreground mb-4 block">
           Padrão Temporal (Obrigatório)
         </label>
         <ClockTimelinePicker
@@ -331,7 +331,7 @@ export function Step2ChiefComplaint({ complaint, setComplaint }: Step2Props) {
 
       {/* Evolução com DiseaseProgressionChips */}
       <Card>
-        <label className="text-sm font-medium text-neutral-300 mb-4 block">
+        <label className="text-sm font-medium text-muted-foreground mb-4 block">
           Evolução do Quadro
         </label>
         <DiseaseProgressionChips
@@ -342,10 +342,10 @@ export function Step2ChiefComplaint({ complaint, setComplaint }: Step2Props) {
 
       {/* Contexto Clínico com Toggles */}
       <Card>
-        <label className="text-sm font-medium text-neutral-300 mb-4 block">
+        <label className="text-sm font-medium text-muted-foreground mb-4 block">
           Contexto Clínico
         </label>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-4">
           <label className="flex items-center gap-2 p-3 rounded-lg border border-neutral-700 hover:border-gold/50 cursor-pointer transition-colors">
             <input
               type="checkbox"
@@ -353,7 +353,7 @@ export function Step2ChiefComplaint({ complaint, setComplaint }: Step2Props) {
               onChange={(e) => setComplaint({ trauma: e.target.checked })}
               className="w-5 h-5 rounded border-neutral-600 text-gold focus:ring-gold bg-transparent"
             />
-            <span className="text-sm text-neutral-200">Trauma</span>
+            <span className="text-sm text-foreground">Trauma</span>
           </label>
 
           <label className="flex items-center gap-2 p-3 rounded-lg border border-neutral-700 hover:border-gold/50 cursor-pointer transition-colors">
@@ -363,7 +363,7 @@ export function Step2ChiefComplaint({ complaint, setComplaint }: Step2Props) {
               onChange={(e) => setComplaint({ toxin: e.target.checked })}
               className="w-5 h-5 rounded border-neutral-600 text-gold focus:ring-gold bg-transparent"
             />
-            <span className="text-sm text-neutral-200">Toxinas</span>
+            <span className="text-sm text-foreground">Toxinas</span>
           </label>
 
           <label className="flex items-center gap-2 p-3 rounded-lg border border-neutral-700 hover:border-gold/50 cursor-pointer transition-colors">
@@ -373,7 +373,7 @@ export function Step2ChiefComplaint({ complaint, setComplaint }: Step2Props) {
               onChange={(e) => setComplaint({ fever: e.target.checked })}
               className="w-5 h-5 rounded border-neutral-600 text-gold focus:ring-gold bg-transparent"
             />
-            <span className="text-sm text-neutral-200">Febre</span>
+            <span className="text-sm text-foreground">Febre</span>
           </label>
 
           <label className="flex items-center gap-2 p-3 rounded-lg border border-neutral-700 hover:border-gold/50 cursor-pointer transition-colors">
@@ -385,7 +385,7 @@ export function Step2ChiefComplaint({ complaint, setComplaint }: Step2Props) {
               }
               className="w-5 h-5 rounded border-neutral-600 text-gold focus:ring-gold bg-transparent"
             />
-            <span className="text-sm text-neutral-200">Exposição a Ectoparasiticidas</span>
+            <span className="text-sm text-foreground">Exposição a Ectoparasiticidas</span>
           </label>
 
           <label className="flex items-center gap-2 p-3 rounded-lg border border-neutral-700 hover:border-gold/50 cursor-pointer transition-colors">
@@ -395,7 +395,7 @@ export function Step2ChiefComplaint({ complaint, setComplaint }: Step2Props) {
               onChange={(e) => setComplaint({ systemicDisease: e.target.checked })}
               className="w-5 h-5 rounded border-neutral-600 text-gold focus:ring-gold bg-transparent"
             />
-            <span className="text-sm text-neutral-200">Doença Sistêmica Recente</span>
+            <span className="text-sm text-foreground">Doença Sistêmica Recente</span>
           </label>
 
           <label className="flex items-center gap-2 p-3 rounded-lg border border-neutral-700 hover:border-gold/50 cursor-pointer transition-colors">
@@ -407,14 +407,14 @@ export function Step2ChiefComplaint({ complaint, setComplaint }: Step2Props) {
               }
               className="w-5 h-5 rounded border-neutral-600 text-gold focus:ring-gold bg-transparent"
             />
-            <span className="text-sm text-neutral-200">Cirurgia/Anestesia Recente</span>
+            <span className="text-sm text-foreground">Cirurgia/Anestesia Recente</span>
           </label>
         </div>
 
         <textarea
           value={complaint.contextNotes}
           onChange={(e) => setComplaint({ contextNotes: e.target.value })}
-          className="w-full bg-neutral-900 border border-neutral-700 rounded-xl p-3 text-white focus:border-gold focus:ring-1 focus:ring-gold outline-none min-h-[100px] resize-y"
+          className="w-full bg-background border border-border/40 rounded-xl p-3 text-foreground focus:border-gold focus:ring-1 focus:ring-gold outline-none min-h-[100px] resize-y"
           placeholder="Adicione observações adicionais sobre o contexto clínico, histórico, ou detalhes importantes do caso..."
         />
       </Card>
@@ -467,7 +467,6 @@ export function Step2ChiefComplaint({ complaint, setComplaint }: Step2Props) {
                       : 'bg-red-900/20 border-red-700/40 hover:bg-red-900/30 hover:border-red-600/50'
                     }
                   `}
-                  title={flag.tooltip}
                 >
                   <input
                     type="checkbox"
@@ -476,10 +475,10 @@ export function Step2ChiefComplaint({ complaint, setComplaint }: Step2Props) {
                     className="mt-1 w-5 h-5 rounded border-red-500 text-red-500 focus:ring-2 focus:ring-red-500 bg-transparent pointer-events-auto cursor-pointer"
                   />
                   <div className="flex-1">
-                    <span className={`text-sm font-medium ${isSelected ? 'text-red-200' : 'text-neutral-200'}`}>
+                    <span className={`text-sm font-medium ${isSelected ? 'text-red-200' : 'text-foreground'}`}>
                       {flag.label}
                     </span>
-                    <p className="text-xs text-neutral-400 mt-1 leading-relaxed">{flag.tooltip}</p>
+                    <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{flag.tooltip}</p>
                   </div>
                 </motion.label>
               )
