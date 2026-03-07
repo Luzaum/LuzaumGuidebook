@@ -4,35 +4,14 @@ import path from 'node:path'
 const ROOT = process.cwd()
 const SKIP_DIRS = new Set(['.git', 'node_modules', 'dist'])
 const TEXT_EXTS = new Set([
-  '.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs',
-  '.css', '.scss', '.html', '.md', '.json', '.yml', '.yaml', '.toml'
+  '.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs', '.css', '.scss', '.html', '.md', '.json', '.yml', '.yaml', '.toml'
 ])
 
-const conflicts = []
-
 function shouldScan(filePath) {
-  const ext = path.extname(filePath).toLowerCase()
-  return TEXT_EXTS.has(ext)
+  return TEXT_EXTS.has(path.extname(filePath).toLowerCase())
 }
 
-function scanFile(filePath) {
-  let content
-  try {
-    content = fs.readFileSync(filePath, 'utf8')
-  } catch {
-    return
-  }
-
-  const lines = content.split(/\r?\n/)
-  for (let i = 0; i < lines.length; i += 1) {
-    const line = lines[i]
-    if (line.startsWith('<<<<<<<') || line.startsWith('>>>>>>>')) {
-      conflicts.push(`${filePath}:${i + 1}: ${line}`)
-    }
-  }
-}
-
-function walk(dir) {
+function walk(dir, out) {
   let entries = []
   try {
     entries = fs.readdirSync(dir, { withFileTypes: true })
@@ -44,21 +23,38 @@ function walk(dir) {
     const abs = path.join(dir, entry.name)
     if (entry.isDirectory()) {
       if (SKIP_DIRS.has(entry.name)) continue
-      walk(abs)
+      walk(abs, out)
       continue
     }
     if (!shouldScan(abs)) continue
-    scanFile(abs)
+    out.push(abs)
   }
 }
 
-walk(ROOT)
+const files = []
+walk(ROOT, files)
+
+const conflicts = []
+for (const filePath of files) {
+  let content = ''
+  try {
+    content = fs.readFileSync(filePath, 'utf8')
+  } catch {
+    continue
+  }
+
+  const lines = content.split(/\r?\n/)
+  for (let i = 0; i < lines.length; i += 1) {
+    const line = lines[i]
+    if (line.startsWith('<<<<<<<') || line.startsWith('>>>>>>>')) {
+      conflicts.push(`${filePath}:${i + 1}: ${line}`)
+    }
+  }
+}
 
 if (conflicts.length > 0) {
   console.error('[check:conflicts] Marcadores de conflito encontrados:')
-  for (const row of conflicts) {
-    console.error(row)
-  }
+  for (const row of conflicts) console.error(row)
   process.exit(1)
 }
 
