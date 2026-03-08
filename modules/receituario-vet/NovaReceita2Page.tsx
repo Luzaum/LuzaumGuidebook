@@ -1,5 +1,5 @@
-﻿// âœ… Nova Receita 2.0 â€” Paridade Total com Nova Receita Antiga
-// 100% CatÃ¡logo 3.0 Supabase + todas as features da versÃ£o original
+﻿// ✅ Nova Receita 2.0 — Paridade Total com Nova Receita Antiga
+// 100% Catálogo 3.0 Supabase + todas as features da versão original
 
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
@@ -19,7 +19,7 @@ import { TutorLookup } from './components/TutorLookup'
 import { PatientLookup } from './components/PatientLookup'
 import { AddMedicationModal2 } from './components/AddMedicationModal2'
 import { RxPrintView } from './RxPrintView'
-import { buildPrintDocFromNovaReceita2 } from './novaReceita2Adapter'
+import { buildPrintDocsFromNovaReceita2 } from './novaReceita2Adapter'
 import { BUILTIN_TEMPLATES } from './builtinTemplates'
 import { savePrescription, getPrescriptionById } from '../../src/lib/prescriptionsRecords'
 import { loadRxDb, findProfileSettings } from './rxDb'
@@ -32,7 +32,7 @@ import {
 } from '../../src/lib/clinicRecords'
 
 // ==================== DRAFT LOCAL (D) ====================
-// Chave: rx_draft_v2:<clinicId> â€” localStorage, por dispositivo
+// Chave: rx_draft_v2:<clinicId> — localStorage, por dispositivo
 
 function getDraftKey(clinicId: string | null): string | null {
     if (!clinicId) return null
@@ -44,7 +44,7 @@ function loadLocalDraft(key: string): NovaReceita2State | null {
         const raw = localStorage.getItem(key)
         if (!raw) return null
         const parsed = JSON.parse(raw) as NovaReceita2State
-        // ValidaÃ§Ã£o bÃ¡sica: precisa ter id e items
+        // Validação básica: precisa ter id e items
         if (!parsed?.id || !Array.isArray(parsed?.items)) return null
         return parsed
     } catch {
@@ -138,7 +138,7 @@ export interface PrescriptionItem {
     medication_id?: string
     presentation_id?: string
 
-    // Campos bÃ¡sicos
+    // Campos básicos
     name: string
     presentation_label?: string
     dose?: string
@@ -149,7 +149,7 @@ export interface PrescriptionItem {
     instructions?: string
     cautions?: string[]
 
-    // Campos completos da apresentaÃ§Ã£o (medication_presentations)
+    // Campos completos da apresentação (medication_presentations)
     pharmaceutical_form?: string
     concentration_text?: string
     commercial_name?: string
@@ -167,15 +167,15 @@ export interface PrescriptionItem {
 
 const COMMON_EXAMS = [
     'Hemograma completo',
-    'BioquÃ­mica sÃ©rica',
-    'UrinÃ¡lise',
+    'Bioquímica sérica',
+    'Urinálise',
     'Urocultura',
     'Citologia',
     'Ultrassonografia abdominal',
-    'BiÃ³psia lesional',
-    'BiÃ³psia tumoral',
+    'Biópsia lesional',
+    'Biópsia tumoral',
     'Tomografia',
-    'RessonÃ¢ncia magnÃ©tica',
+    'Ressonância magnética',
     'Ecocardiograma',
     'Eletrocardiograma',
     'Rinoscopia',
@@ -290,7 +290,7 @@ export default function NovaReceita2Page() {
     const [quickPharmaceuticalForm, setQuickPharmaceuticalForm] = useState('Comprimido')
     const [quickManualControlled, setQuickManualControlled] = useState(false)
 
-    // D: Controle de inicializaÃ§Ã£o do draft (sÃ³ carrega uma vez por clinicId)
+    // D: Controle de inicialização do draft (só carrega uma vez por clinicId)
     const draftInitRef = useRef(false)
     const draftKey = getDraftKey(clinicId)
 
@@ -469,7 +469,7 @@ export default function NovaReceita2Page() {
                     const loaded = record.content.stateSnapshot as NovaReceita2State
                     setState({
                         ...loaded,
-                        supabaseId: record.id // Garante que o link estÃ¡ ativo
+                        supabaseId: record.id // Garante que o link está ativo
                     })
                 }
             }).catch(err => {
@@ -503,14 +503,14 @@ export default function NovaReceita2Page() {
         }
     }, [state.prescriber, updateState])
 
-    // D1: Carregar rascunho local quando clinicId ficar disponÃ­vel
-    // SÃ³ carrega se nÃ£o vier prescriptionId na URL e nÃ£o vier items de protocolo
+    // D1: Carregar rascunho local quando clinicId ficar disponível
+    // Só carrega se não vier prescriptionId na URL e não vier items de protocolo
     useEffect(() => {
         if (!draftKey || draftInitRef.current) return
         draftInitRef.current = true
 
         const params = new URLSearchParams(location.search)
-        if (params.get('prescriptionId')) return // CarregarÃ¡ do Supabase
+        if (params.get('prescriptionId')) return // Carregará do Supabase
 
         const draft = loadLocalDraft(draftKey)
         if (!draft) {
@@ -521,9 +521,9 @@ export default function NovaReceita2Page() {
         setHasDraft(true)
         setState(draft)
         if (import.meta.env.DEV) console.log('[RxDraft] rascunho local carregado', draftKey)
-    }, [draftKey]) // SÃ³ re-roda quando draftKey muda (i.e., clinicId ficou disponÃ­vel)
+    }, [draftKey]) // Só re-roda quando draftKey muda (i.e., clinicId ficou disponível)
 
-    // D1: Autosave com debounce de 600ms quando autosave=true e clinicId disponÃ­vel
+    // D1: Autosave com debounce de 600ms quando autosave=true e clinicId disponível
     useEffect(() => {
         if (!autosave || !draftKey) return
         const t = setTimeout(() => {
@@ -583,18 +583,19 @@ export default function NovaReceita2Page() {
 
     // ==================== MEMO ====================
 
-    const printDoc = useMemo(() => {
-        return buildPrintDocFromNovaReceita2(state)
+    const printDocs = useMemo(() => {
+        return buildPrintDocsFromNovaReceita2(state)
     }, [state])
+    const primaryPrintDoc = printDocs[0]
 
-    // F2: Unificar fonte de templates â€” BUILTIN_TEMPLATES + templates salvos no rxDb
+    // F2: Unificar fonte de templates — BUILTIN_TEMPLATES + templates salvos no rxDb
     // Evita "templates fantasmas": o dropdown e a aba Templates usam a mesma base
     const allTemplates = useMemo((): RxTemplateStyle[] => {
         try {
             const db = loadRxDb()
             const dbTemplates: RxTemplateStyle[] = (db.templates as RxTemplateStyle[] | undefined) || []
             const builtinIds = new Set(BUILTIN_TEMPLATES.map((t) => t.id))
-            // Templates customizados que nÃ£o conflitam com os embutidos
+            // Templates customizados que não conflitam com os embutidos
             const custom = dbTemplates.filter((t) => !builtinIds.has(t.id))
             return [...BUILTIN_TEMPLATES, ...custom]
         } catch {
@@ -654,7 +655,8 @@ export default function NovaReceita2Page() {
                 content: {
                     kind: selectedTemplateObj.documentKindTarget as any,
                     templateId: state.templateId,
-                    printDoc,
+                    printDoc: primaryPrintDoc,
+                    printDocs,
                     stateSnapshot: state, // Para reabertura total
                     createdAtLocal: new Date().toISOString(),
                     appVersion: '2.0.0-parity'
@@ -675,7 +677,7 @@ export default function NovaReceita2Page() {
         } finally {
             setIsSaving(false)
         }
-    }, [state, clinicId, printDoc, selectedTemplateObj, updateState])
+    }, [state, clinicId, primaryPrintDoc, printDocs, selectedTemplateObj, updateState])
 
     // ==================== RENDER ====================
 
@@ -691,7 +693,7 @@ export default function NovaReceita2Page() {
                                 Nova Receita 2.0
                             </h1>
                             <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
-                                100% CatÃ¡logo 3.0
+                                100% Catálogo 3.0
                             </p>
                         </div>
 
@@ -702,7 +704,7 @@ export default function NovaReceita2Page() {
                                 label="Autosave"
                             />
 
-                            {/* D1: Limpar rascunho â€” visÃ­vel quando hÃ¡ draft salvo */}
+                            {/* D1: Limpar rascunho — visível quando há draft salvo */}
                             {hasDraft && (
                                 <button
                                     type="button"
@@ -748,7 +750,7 @@ export default function NovaReceita2Page() {
                     <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_480px] xl:grid-cols-[1fr_560px]">
 
                         {/* ==================== COLUNA ESQUERDA: EDITOR ==================== */}
-                        <div className="space-y-5 min-w-0">
+                        <div className="flex min-w-0 flex-col gap-5">
 
                             <RxvCard>
                                 <button
@@ -787,16 +789,16 @@ export default function NovaReceita2Page() {
                                 </RxvCard>
                             )}
 
-                            {/* IdentificaÃ§Ã£o */}
+                            {/* Identificação */}
                             {!quickMode && (
                             <RxvCard>
                                 <RxvSectionHeader
                                     icon="medical_information"
-                                    title="IdentificaÃ§Ã£o"
+                                    title="Identificação"
                                     subtitle="Tutor e paciente"
                                 />
                                 <div className="space-y-4">
-                                    <RxvField label="Tutor / ResponsÃ¡vel">
+                                    <RxvField label="Tutor / Responsável">
                                         <TutorLookup
                                             value={state.tutor}
                                             onChange={(tutor) => updateState((prev) => ({ ...prev, tutor }))}
@@ -819,7 +821,7 @@ export default function NovaReceita2Page() {
                                                 onClick={() => navigate(`/receituario-vet/historico?patientId=${state.patient?.id}&patientName=${encodeURIComponent(state.patient?.name || '')}`)}
                                                 className="text-[10px] font-bold text-[#39ff14] hover:underline"
                                             >
-                                                Ver HistÃ³rico â†’
+                                                Ver Histórico →
                                             </button>
                                         </div>
                                     )}
@@ -828,11 +830,11 @@ export default function NovaReceita2Page() {
                             )}
 
                             {/* Template */}
-                            <RxvCard>
+                            <RxvCard className="order-last">
                                 <RxvSectionHeader
                                     icon="palette"
                                     title="Template"
-                                    subtitle="AparÃªncia do receituÃ¡rio"
+                                    subtitle="Aparência do receituário"
                                 />
                                 <div className="flex gap-3 items-end">
                                     <div className="flex-1">
@@ -859,16 +861,16 @@ export default function NovaReceita2Page() {
                                 </div>
                             </RxvCard>
 
-                            {/* RecomendaÃ§Ãµes */}
+                            {/* Recomendações */}
                             <RxvCard>
                                 <RxvSectionHeader
                                     icon="chat"
-                                    title="RecomendaÃ§Ãµes"
-                                    subtitle="OrientaÃ§Ãµes ao tutor"
+                                    title="Recomendações"
+                                    subtitle="Orientações ao tutor"
                                 />
-                                <RxvField label="RecomendaÃ§Ãµes gerais">
+                                <RxvField label="Recomendações gerais">
                                     <RxvTextarea
-                                        placeholder="Digite orientaÃ§Ãµes gerais ao tutor..."
+                                        placeholder="Digite orientações gerais ao tutor..."
                                         value={state.recommendations}
                                         onChange={(e) =>
                                             updateState((prev) => ({ ...prev, recommendations: e.target.value }))
@@ -883,7 +885,7 @@ export default function NovaReceita2Page() {
                                 <RxvSectionHeader
                                     icon="lab_research"
                                     title="Exames"
-                                    subtitle="SolicitaÃ§Ãµes de exames"
+                                    subtitle="Solicitações de exames"
                                 />
 
                                 <div className="space-y-3">
@@ -900,7 +902,7 @@ export default function NovaReceita2Page() {
                                                         : 'border-slate-700 bg-slate-800/30 text-slate-400 hover:border-slate-600 hover:text-slate-300'
                                                         }`}
                                                 >
-                                                    {selected && 'âœ“ '}
+                                                    {selected && '✓ '}
                                                     {exam}
                                                 </button>
                                             )
@@ -951,7 +953,7 @@ export default function NovaReceita2Page() {
                             <RxvCard>
                                 <RxvSectionHeader
                                     icon="medication"
-                                    title="Itens da PrescriÃ§Ã£o"
+                                    title="Itens da Prescrição"
                                     subtitle="Medicamentos e produtos"
                                 >
                                     <div className="flex flex-col items-end gap-2">
@@ -966,7 +968,7 @@ export default function NovaReceita2Page() {
                                                 variant="primary"
                                                 onClick={() => setMedicationModalOpen(true)}
                                             >
-                                                + CatÃ¡logo
+                                                + Catálogo
                                             </RxvButton>
                                         </div>
                                         {quickMode && (
@@ -1127,7 +1129,7 @@ export default function NovaReceita2Page() {
                                             Nenhum item adicionado
                                         </p>
                                         <p className="mt-1 text-xs text-slate-700">
-                                            Use "CatÃ¡logo" para buscar no banco ou "Manual" para inserir dados livres
+                                            Use "Catálogo" para buscar no banco ou "Manual" para inserir dados livres
                                         </p>
                                     </div>
                                 ) : (
@@ -1172,7 +1174,7 @@ export default function NovaReceita2Page() {
                                                         </div>
                                                         {item.cautions && item.cautions.length > 0 && (
                                                             <p className="mt-1 text-[10px] text-red-400">
-                                                                âš ï¸ {item.cautions.join(' | ')}
+                                                                ⚠️ {item.cautions.join(' | ')}
                                                             </p>
                                                         )}
                                                     </div>
@@ -1197,11 +1199,11 @@ export default function NovaReceita2Page() {
                             <RxvCard>
                                 <RxvSectionHeader
                                     icon="visibility"
-                                    title="VisualizaÃ§Ã£o PrÃ©via"
+                                    title="Visualização Prévia"
                                     subtitle="Preview em tempo real"
                                 />
 
-                                {/* Preview container com scroll prÃ³prio */}
+                                {/* Preview container com scroll próprio */}
                                 <div className="rounded-xl overflow-hidden bg-white/5 border border-slate-800/50">
                                     {/* Toolbar do preview */}
                                     <div className="flex items-center justify-between border-b border-slate-800/50 px-3 py-2">
@@ -1233,26 +1235,27 @@ export default function NovaReceita2Page() {
                                         </div>
                                     </div>
 
-                                    {/* Preview escalado â€” container com scroll vertical */}
-                                    <div
-                                        className="overflow-y-auto overflow-x-hidden"
-                                        style={{ maxHeight: '520px' }}
-                                    >
-                                        {/* O scale reduz visualmente sem alterar o layout box.
-                                            Usamos transformOrigin top-left + width compensada
-                                            para preencher a largura do container. */}
-                                        <div
-                                            style={{
-                                                transform: 'scale(0.6)',
-                                                transformOrigin: 'top left',
-                                                width: `${(100 / 0.6).toFixed(2)}%`,
-                                            }}
-                                        >
-                                            <RxPrintView
-                                                doc={printDoc}
-                                                template={selectedTemplateObj}
-                                                compact={true}
-                                            />
+                                    {/* Preview escalado — container com scroll vertical */}
+                                    <div className="max-h-[68vh] overflow-auto p-3">
+                                        <div className="space-y-3">
+                                            {printDocs.map((doc, idx) => (
+                                                <div key={`${doc.documentKind || 'standard'}-${idx}`} className="rounded-lg border border-slate-800/60 bg-black/20 p-2">
+                                                    {printDocs.length > 1 && (
+                                                        <p className="mb-2 text-[10px] font-black uppercase tracking-widest text-slate-500">
+                                                            {doc.documentKind === 'special-control' ? 'Receita de controle especial' : 'Receita padrão'}
+                                                        </p>
+                                                    )}
+                                                    <div className="overflow-auto">
+                                                        <div className="min-w-[320px]">
+                                                            <RxPrintView
+                                                                doc={doc}
+                                                                template={selectedTemplateObj}
+                                                                compact={true}
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
@@ -1264,7 +1267,7 @@ export default function NovaReceita2Page() {
 
             {/* ==================== MODALS ==================== */}
 
-            {/* Modal catÃ¡logo */}
+            {/* Modal catálogo */}
             <AddMedicationModal2
                 open={medicationModalOpen}
                 onClose={() => setMedicationModalOpen(false)}

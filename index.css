@@ -2311,3 +2311,27 @@ input[type="range"]:focus::-moz-range-thumb {
     padding: 0.56rem 0.62rem;
   }
 }
+
+@keyframes heroImageMoving {
+  0% {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.09) translate3d(-1.2%, -1%, 0);
+  }
+  100% {
+    transform: scale(1.06) translate3d(1%, 0.8%, 0);
+  }
+}
+
+.hero-image-moving {
+  animation: heroImageMoving 18s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image-moving {
+    animation: none;
+    transform: none;
+  }
+}

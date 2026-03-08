@@ -8,6 +8,7 @@ import {
   RxvSelect,
   RxvTextarea,
   RxvButton,
+  RxvToggle,
 } from '../../../src/components/receituario/RxvComponents'
 import {
   searchMedications,
@@ -105,6 +106,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
   const [manualConcentration, setManualConcentration] = useState('')
   const [manualForm, setManualForm] = useState('')
   const [manualCommercialName, setManualCommercialName] = useState('')
+  const [manualControlled, setManualControlled] = useState(false)
 
   // ==================== EFFECTS ====================
 
@@ -159,6 +161,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
       setManualConcentration('')
       setManualForm('')
       setManualCommercialName('')
+      setManualControlled(false)
     }
   }, [open])
 
@@ -203,6 +206,8 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
   )
 
   const handleAdd = useCallback(() => {
+    const defaultStartDate = `${new Date().toISOString().slice(0, 10)}T08:00:00`
+
     if (manualMode) {
       // Modo manual: nome é obrigatório
       if (!manualName.trim()) return
@@ -211,6 +216,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
         id: `item-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
         type: 'medication',
         isManual: true,
+        is_controlled: manualControlled,
         name: manualName.trim(),
         pharmaceutical_form: manualForm || undefined,
         concentration_text: manualConcentration || undefined,
@@ -219,6 +225,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
         frequency,
         route,
         duration,
+        start_date: defaultStartDate,
         instructions,
         cautions: cautions.split('\n').map(s => s.trim()).filter(Boolean),
       }
@@ -244,6 +251,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
       id: `item-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
       type: 'medication',
       isManual: false,
+      is_controlled: !!selectedMedication.is_controlled,
       medication_id: selectedMedication.id,
       presentation_id: selectedPresentationId || undefined,
 
@@ -269,6 +277,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
       frequency,
       route,
       duration,
+      start_date: defaultStartDate,
       instructions,
       cautions: cautions.split('\n').map(s => s.trim()).filter(Boolean),
     }
@@ -281,6 +290,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
     manualForm,
     manualConcentration,
     manualCommercialName,
+    manualControlled,
     selectedMedication,
     presentations,
     selectedPresentationId,
@@ -516,6 +526,13 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
                     value={route}
                     onChange={(e) => setRoute(e.target.value)}
                     options={ROUTE_OPTIONS}
+                  />
+                </RxvField>
+                <RxvField label="Controlado">
+                  <RxvToggle
+                    checked={manualControlled}
+                    onChange={setManualControlled}
+                    label="Medicamento controlado"
                   />
                 </RxvField>
               </div>

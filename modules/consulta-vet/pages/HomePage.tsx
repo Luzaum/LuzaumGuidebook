@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Stethoscope, Pill, FileText, Grid, Bookmark, Clock, ChevronRight } from 'lucide-react';
 import { diseaseRepository } from '../services/adapters/local/localDiseaseRepository';
-import { consensoRepository } from '../services/adapters/local/localConsensoRepository';
 import { DiseaseRecord } from '../types/disease';
 import { ConsensusRecord } from '../types/consenso';
 import { EntityCard } from '../components/shared/EntityCard';
+import { getConsensoRepository } from '../services/consensoRepository';
 
 export function HomePage() {
+  const consensoRepository = useMemo(() => getConsensoRepository(), []);
   const [diseases, setDiseases] = useState<DiseaseRecord[]>([]);
   const [consensos, setConsensos] = useState<ConsensusRecord[]>([]);
 
@@ -20,8 +21,8 @@ export function HomePage() {
       setConsensos(loadedConsensos.slice(0, 3));
     };
 
-    loadData();
-  }, []);
+    void loadData();
+  }, [consensoRepository]);
 
   const shortcuts = [
     { to: '/consulta-vet', label: 'Início', icon: Grid, color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-50 dark:bg-blue-900/20' },
@@ -64,7 +65,7 @@ export function HomePage() {
               <Stethoscope className="h-5 w-5 text-primary" />
               Doenças em destaque
             </h2>
-            <Link to="/consulta-vet/doencas" className="inline-flex min-h-11 items-center gap-1 rounded-md px-2 text-sm font-medium text-primary hover:text-primary/80">
+            <Link to="/consulta-vet/doencas" className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/80">
               Ver todas
               <ChevronRight className="h-4 w-4" />
             </Link>
@@ -90,7 +91,7 @@ export function HomePage() {
               <FileText className="h-5 w-5 text-primary" />
               Consensos recentes
             </h2>
-            <Link to="/consulta-vet/consensos" className="inline-flex min-h-11 items-center gap-1 rounded-md px-2 text-sm font-medium text-primary hover:text-primary/80">
+            <Link to="/consulta-vet/consensos" className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/80">
               Ver todos
               <ChevronRight className="h-4 w-4" />
             </Link>
@@ -101,8 +102,8 @@ export function HomePage() {
                 key={consenso.id}
                 to={`/consulta-vet/consensos/${consenso.slug}`}
                 title={consenso.title}
-                subtitle={`${consenso.sourceOrganization} • ${consenso.year}`}
-                description={consenso.summary}
+                subtitle={`${consenso.organization || 'Sem organização'}${consenso.year ? ` • ${consenso.year}` : ''}`}
+                description={consenso.description || ''}
                 entityType="consensus"
                 entityId={consenso.id}
               />

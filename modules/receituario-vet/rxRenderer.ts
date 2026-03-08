@@ -249,6 +249,41 @@ function frequencyLabelForTutor(item: PrescriptionItem, fallback: string): strin
   return `${formatNumber(numericTimes, 0)} vezes por dia`
 }
 
+function frequencyEveryHoursLabel(item: PrescriptionItem): string {
+  if (item.frequencyType === 'everyHours') {
+    const hours = toNumber(item.everyHours)
+    if (hours && hours > 0) return `a cada ${formatNumber(hours, 0)} horas`
+    return 'a cada 24 horas'
+  }
+
+  const tokenTimes = item.frequencyToken ? FREQUENCY_TOKEN_TO_TIMES[item.frequencyToken] : null
+  const numericTimes = tokenTimes || toNumber(item.timesPerDay)
+  if (!numericTimes || numericTimes <= 0) return 'a cada 24 horas'
+
+  const interval = 24 / numericTimes
+  if (Number.isFinite(interval) && Math.abs(Math.round(interval) - interval) < 0.001) {
+    return `a cada ${formatNumber(interval, 0)} horas`
+  }
+  return frequencyLabelForTutor(item, 'a cada 24 horas')
+}
+
+function startTimeLabel(startDate?: string): string {
+  const raw = (startDate || '').trim()
+  if (!raw) return '08:00'
+
+  const isoMatch = raw.match(/T(\d{2}:\d{2})/)
+  if (isoMatch?.[1]) return isoMatch[1]
+
+  const genericMatch = raw.match(/(\d{2}:\d{2})/)
+  if (genericMatch?.[1]) return genericMatch[1]
+
+  const parsed = new Date(raw)
+  if (Number.isNaN(parsed.getTime())) return '08:00'
+  const hh = String(parsed.getHours()).padStart(2, '0')
+  const mm = String(parsed.getMinutes()).padStart(2, '0')
+  return `${hh}:${mm}`
+}
+
 function uniqueByNormalizedText(lines: string[]): string[] {
   const seen = new Set<string>()
   const result: string[] = []
@@ -398,20 +433,26 @@ export function buildAutoInstruction(item: PrescriptionItem, state: Prescription
     else perDoseValueText = `${formatNumber(doseValue)} ${doseUnit}`
   }
 
-  const adminSegment = perDoseValueText ? `Administrar ${perDoseValueText} por dose` : 'Administrar conforme orientação clínica'
+  const adminSegment = perDoseValueText ? `Administrar ${perDoseValueText}` : 'Administrar volume conforme orientação clínica'
   const routeSegment = `por via ${routeToText(item.routeGroup)}`
   const frequencySegment =
-    freq.label === 'frequência não informada' ? 'conforme frequência clínica' : frequencyLabelForTutor(item, freq.label)
+    freq.label === 'frequência não informada'
+      ? 'a cada 24 horas'
+      : frequencyEveryHoursLabel(item)
 
   let durationSegment = ''
-  if (item.continuousUse) durationSegment = 'com uso contínuo até reavaliação do paciente'
-  else if (item.untilFinished) durationSegment = 'até terminar o medicamento'
-  else {
+  if (item.untilFinished) {
+    durationSegment = 'até terminar o medicamento'
+  } else {
     const days = toNumber(item.durationDays)
-    if (days && days > 0) durationSegment = `durante ${formatNumber(days, 0)} dias`
+    if (days && days > 0) durationSegment = `com uso por ${formatNumber(days, 0)} dias, até reavaliação do paciente`
+    else if (item.continuousUse) durationSegment = 'com uso contínuo, até reavaliação do paciente'
+    else durationSegment = 'até reavaliação do paciente'
   }
 
-  return [adminSegment, routeSegment, frequencySegment, durationSegment]
+  const startSegment = `iniciando às ${startTimeLabel(item.start_date)} hora`
+
+  return [adminSegment, routeSegment, frequencySegment, durationSegment, startSegment]
     .filter(Boolean)
     .join(', ')
     .replace(/\s+/g, ' ')

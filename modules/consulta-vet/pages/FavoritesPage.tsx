@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useMemo, useState } from 'react';
 import { Bookmark, Stethoscope, Pill, FileText } from 'lucide-react';
 import { useFavorites } from '../hooks/useFavorites';
 import { diseaseRepository } from '../services/adapters/local/localDiseaseRepository';
 import { medicationRepository } from '../services/adapters/local/localMedicationRepository';
-import { consensoRepository } from '../services/adapters/local/localConsensoRepository';
 import { DiseaseRecord } from '../types/disease';
 import { MedicationRecord } from '../types/medication';
 import { ConsensusRecord } from '../types/consenso';
 import { EntityCard } from '../components/shared/EntityCard';
+import { getConsensoRepository } from '../services/consensoRepository';
 
 export function FavoritesPage() {
+  const consensoRepository = useMemo(() => getConsensoRepository(), []);
   const { favorites } = useFavorites();
   const [diseases, setDiseases] = useState<DiseaseRecord[]>([]);
   const [medications, setMedications] = useState<MedicationRecord[]>([]);
@@ -25,8 +26,8 @@ export function FavoritesPage() {
       setMedications(loadedMedications.filter((item) => favorites.some((f) => f.entityType === 'medication' && f.entityId === item.id)));
       setConsensos(loadedConsensos.filter((item) => favorites.some((f) => f.entityType === 'consensus' && f.entityId === item.id)));
     };
-    loadData();
-  }, [favorites]);
+    void loadData();
+  }, [favorites, consensoRepository]);
 
   return (
     <div className="mx-auto w-full max-w-[1500px] space-y-10 p-4 md:p-8">
@@ -102,8 +103,8 @@ export function FavoritesPage() {
                     key={consenso.id}
                     to={`/consulta-vet/consensos/${consenso.slug}`}
                     title={consenso.title}
-                    subtitle={`${consenso.sourceOrganization} • ${consenso.year}`}
-                    description={consenso.summary}
+                    subtitle={`${consenso.organization || 'Sem organização'}${consenso.year ? ` • ${consenso.year}` : ''}`}
+                    description={consenso.description || ''}
                     entityType="consensus"
                     entityId={consenso.id}
                   />

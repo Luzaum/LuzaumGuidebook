@@ -1,11 +1,9 @@
-export const consensoFeatureFlags = {
-  // Enquanto os dados forem de seed local, não exibimos blocos editoriais para evitar "falso pronto".
+﻿export const consensoFeatureFlags = {
+  // Recursos não integrados nesta sprint continuam ocultos para evitar aparência de "falso pronto".
   showDemoBadge: false,
   showEditorialBlocks: false,
   showUserNotes: false,
 
-  // Preparação da próxima sprint.
-  dataSource: 'local-seed' as 'local-seed' | 'supabase',
-  pdfViewerMode: 'external-link' as 'external-link' | 'react-pdf',
-}
-
+  dataSource: 'supabase' as 'local-seed' | 'supabase',
+  pdfViewerMode: 'react-pdf' as 'external-link' | 'react-pdf',
+};

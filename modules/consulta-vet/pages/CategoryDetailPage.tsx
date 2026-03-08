@@ -1,18 +1,20 @@
-﻿import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useMemo, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ChevronRight, Grid, Stethoscope, Pill, FileText } from 'lucide-react';
 import { categoryRepository } from '../services/adapters/local/localCategoryRepository';
 import { diseaseRepository } from '../services/adapters/local/localDiseaseRepository';
 import { medicationRepository } from '../services/adapters/local/localMedicationRepository';
-import { consensoRepository } from '../services/adapters/local/localConsensoRepository';
 import { Category } from '../types/category';
 import { DiseaseRecord } from '../types/disease';
 import { MedicationRecord } from '../types/medication';
 import { ConsensusRecord } from '../types/consenso';
 import { EntityCard } from '../components/shared/EntityCard';
+import { getConsensoRepository } from '../services/consensoRepository';
 
 export function CategoryDetailPage() {
   const { slug } = useParams<{ slug: string }>();
+  const consensoRepository = useMemo(() => getConsensoRepository(), []);
+
   const [category, setCategory] = useState<Category | null>(null);
   const [diseases, setDiseases] = useState<DiseaseRecord[]>([]);
   const [medications, setMedications] = useState<MedicationRecord[]>([]);
@@ -67,7 +69,7 @@ export function CategoryDetailPage() {
     return () => {
       isMounted = false;
     };
-  }, [slug]);
+  }, [slug, consensoRepository]);
 
   if (isLoading) {
     return (
@@ -171,8 +173,8 @@ export function CategoryDetailPage() {
                   key={consenso.id}
                   to={`/consulta-vet/consensos/${consenso.slug}`}
                   title={consenso.title}
-                  subtitle={`${consenso.sourceOrganization} • ${consenso.year}`}
-                  description={consenso.summary}
+                  subtitle={`${consenso.organization || 'Sem organização'}${consenso.year ? ` • ${consenso.year}` : ''}`}
+                  description={consenso.description || ''}
                   entityType="consensus"
                   entityId={consenso.id}
                 />

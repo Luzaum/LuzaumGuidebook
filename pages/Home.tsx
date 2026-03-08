@@ -3,8 +3,8 @@ import { modules } from '../modules/registry'
 import { ModuleCard } from '../components/ModuleCard'
 import { ArrowRight, BookOpen, CheckCircle2, ShieldCheck, Zap } from 'lucide-react'
 
-const RevealWaveImage = lazy(() =>
-  import('../components/ui/reveal-wave-image').then((m) => ({ default: m.RevealWaveImage }))
+const WaterRippleImage = lazy(() =>
+  import('../components/ui/water-ripple-image').then((m) => ({ default: m.WaterRippleImage }))
 )
 
 export function Home() {
@@ -24,20 +24,16 @@ export function Home() {
       {/* HERO SECTION - Full Width */}
       <section className="relative w-full h-[85vh] min-h-[600px] flex items-center overflow-hidden">
 
-        {/* Background Interativo - RevealWaveImage */}
+        {/* Background Interativo - WaterRippleImage */}
         <div className="absolute inset-0 z-0">
           <Suspense fallback={<img src="/HERO.png" alt="Hero Vetius" className="w-full h-full object-cover" loading="eager" />}>
-            <RevealWaveImage
+            <WaterRippleImage
               src="/HERO.png"
-              waveSpeed={0.25}
-              waveFrequency={0.5}
-              waveAmplitude={0.3}
-              revealRadius={0.3}
-              revealSoftness={0.6}
-              pixelSize={1}
-              mouseRadius={0.2}
-              imageShiftX={0.2}
-              zoom={1.1}
+              blueish={0.4}
+              scale={7}
+              illumination={0.15}
+              surfaceDistortion={0.03}
+              waterDistortion={0.02}
               className="w-full h-full object-cover"
             />
           </Suspense>

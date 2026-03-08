@@ -86,6 +86,29 @@ export const FoodCalculatorTab: React.FC<FoodCalculatorTabProps> = ({
         { id: 'deficit', label: 'Perda de peso' },
         { id: 'surplus', label: 'Ganho de peso' },
     ];
+    const extractMacroSummary = (food: any) => {
+        const kcalPerGram = food?.isCommercial && food?.commercialData
+            ? Number(food.commercialData.me_kcal_per_kg || 0) / 1000
+            : Number(food?.calories || 0);
+        const protein = food?.isCommercial && food?.commercialData
+            ? (() => {
+                const g = food.commercialData.guarantees?.find((row: any) => row.key === 'protein_min_gkg');
+                return g ? `${(Number(g.value) / 10).toFixed(1)}%` : 'N/A';
+            })()
+            : (food?.protein || 'N/A');
+        const fat = food?.isCommercial && food?.commercialData
+            ? (() => {
+                const g = food.commercialData.guarantees?.find((row: any) => row.key === 'fat_min_gkg');
+                return g ? `${(Number(g.value) / 10).toFixed(1)}%` : 'N/A';
+            })()
+            : (food?.fat || 'N/A');
+
+        return {
+            kcalPerGram: kcalPerGram > 0 ? formatPt(kcalPerGram, 3) : 'N/A',
+            protein,
+            fat,
+        };
+    };
 
     const currentWeight = Number(weight.replace(',', '.'));
     const targetWeightNumber = Number(targetWeight.replace(',', '.'));
@@ -225,7 +248,6 @@ export const FoodCalculatorTab: React.FC<FoodCalculatorTabProps> = ({
                 <h3 className="font-semibold text-foreground text-xl mb-5 flex items-center gap-2"><span className="metab-step-badge">2</span><span>Selecione o alimento</span></h3>
                 <div className="mb-6 pb-6 border-b border-border">
                     <h4 className="font-medium text-foreground mb-4 text-xl">Banco de alimentos</h4>
-                    <span className="metab-field-meta">Texto livre • Ex: hill, renal, kitten</span>
                     <input type="text" placeholder="Buscar alimento (ex: hill)..." value={foodSearchQuery} onChange={(e) => setFoodSearchQuery(e.target.value)} className="input-field" />
 
                     {foodSearchQuery.trim() && unifiedFoods.length > 0 && (
@@ -241,16 +263,14 @@ export const FoodCalculatorTab: React.FC<FoodCalculatorTabProps> = ({
                     )}
 
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4 mt-3">
-                        <span className="metab-field-meta md:col-span-4">Seleção • use filtros para refinar a lista</span>
-                        <select value={commercialFoodFilters.lifeStage} onChange={(e) => setCommercialFoodFilters((prev: any) => ({ ...prev, lifeStage: e.target.value }))} className="input-field text-sm"><option value="ALL">Todos os estágios</option><option value="PUPPY">Filhotes</option><option value="ADULT">Adulto</option><option value="SENIOR">Sênior</option></select>
-                        <select value={commercialFoodFilters.neuterStatus} onChange={(e) => setCommercialFoodFilters((prev: any) => ({ ...prev, neuterStatus: e.target.value }))} className="input-field text-sm"><option value="ANY">Qualquer status</option><option value="NEUTERED">Castrado</option><option value="INTACT">Inteiro</option></select>
-                        <select value={commercialFoodFilters.isTherapeutic === undefined ? 'all' : commercialFoodFilters.isTherapeutic ? 'therapeutic' : 'regular'} onChange={(e) => setCommercialFoodFilters((prev: any) => ({ ...prev, isTherapeutic: e.target.value === 'all' ? undefined : e.target.value === 'therapeutic' }))} className="input-field text-sm"><option value="all">Todos</option><option value="regular">Regular</option><option value="therapeutic">Terapêutico</option></select>
+                        <select value={commercialFoodFilters.lifeStage} onChange={(e) => setCommercialFoodFilters((prev: any) => ({ ...prev, lifeStage: e.target.value }))} className="input-field is-select text-sm"><option value="ALL">Todos os estágios</option><option value="PUPPY">Filhotes</option><option value="ADULT">Adulto</option><option value="SENIOR">Sênior</option></select>
+                        <select value={commercialFoodFilters.neuterStatus} onChange={(e) => setCommercialFoodFilters((prev: any) => ({ ...prev, neuterStatus: e.target.value }))} className="input-field is-select text-sm"><option value="ANY">Qualquer status</option><option value="NEUTERED">Castrado</option><option value="INTACT">Inteiro</option></select>
+                        <select value={commercialFoodFilters.isTherapeutic === undefined ? 'all' : commercialFoodFilters.isTherapeutic ? 'therapeutic' : 'regular'} onChange={(e) => setCommercialFoodFilters((prev: any) => ({ ...prev, isTherapeutic: e.target.value === 'all' ? undefined : e.target.value === 'therapeutic' }))} className="input-field is-select text-sm"><option value="all">Todos</option><option value="regular">Regular</option><option value="therapeutic">Terapêutico</option></select>
                         <button onClick={() => { setCommercialFoodFilters({ species: species === 'dog' ? 'DOG' : 'CAT', lifeStage: 'ALL', neuterStatus: 'ANY', isTherapeutic: undefined }); setSelectedCommercialFoodId(''); }} className="p-2 bg-slate-200 dark:bg-slate-700 text-foreground rounded-lg text-sm hover:bg-slate-300 dark:hover:bg-slate-600 transition">Limpar filtros</button>
                     </div>
 
                     <div className="mb-3">
-                        <span className="metab-field-meta">Seleção • escolha um alimento</span>
-                        <select value={selectedUnifiedFoodId} onChange={(e) => { setSelectedUnifiedFoodId(e.target.value); setSelectedCommercialFoodId(''); setPredefinedFoodIndex(''); setCustomFoodName(''); setCustomFoodCalories(''); }} className="input-field appearance-none cursor-pointer">
+                        <select value={selectedUnifiedFoodId} onChange={(e) => { setSelectedUnifiedFoodId(e.target.value); setSelectedCommercialFoodId(''); setPredefinedFoodIndex(''); setCustomFoodName(''); setCustomFoodCalories(''); }} className="input-field is-select appearance-none cursor-pointer">
                             <option value="">Selecione um alimento...</option>
                             {unifiedFoods.map((food) => {
                                 const displayName = food.isPredefined ? food.name : `${food.brand} ${food.line ? `- ${food.line}` : ''}: ${food.product}`;
@@ -261,7 +281,8 @@ export const FoodCalculatorTab: React.FC<FoodCalculatorTabProps> = ({
 
                     {selectedUnifiedFood && (
                         <div className="metab-food-card p-5 mb-3">
-                            <div className="flex items-start justify-between gap-3 mb-3">
+                            <div className="metab-food-hero mb-3">
+                                <div className="metab-food-avatar" aria-hidden>🥣</div>
                                 <div>
                                     <h5 className="font-bold text-foreground text-lg">{selectedUnifiedFood.isPredefined ? selectedUnifiedFood.name : `${selectedUnifiedFood.brand}${selectedUnifiedFood.line ? ` - ${selectedUnifiedFood.line}` : ''}`}</h5>
                                     {!selectedUnifiedFood.isPredefined && <p className="text-sm text-muted-foreground">{selectedUnifiedFood.product}</p>}
@@ -316,28 +337,28 @@ export const FoodCalculatorTab: React.FC<FoodCalculatorTabProps> = ({
                                 return (
                                     <>
                                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-3">
-                                            <div className="metab-metric-chip">
-                                                <p className="metab-chip-label flex items-center gap-1"><Flame className="h-3.5 w-3.5" /> kcal/g</p>
+                                            <div className="metab-food-highlight-card metab-food-highlight-card-kcal">
+                                                <p className="metab-chip-label flex items-center gap-1">🔥 <Flame className="h-3.5 w-3.5" /> kcal/g</p>
                                                 <p className="metab-chip-value">{kcalPerGram > 0 ? formatPt(kcalPerGram, 3) : 'N/A'}</p>
                                             </div>
-                                            <div className="metab-metric-chip">
-                                                <p className="metab-chip-label flex items-center gap-1"><Beef className="h-3.5 w-3.5" /> %PB</p>
+                                            <div className="metab-food-highlight-card metab-food-highlight-card-pb">
+                                                <p className="metab-chip-label flex items-center gap-1">💪 <Beef className="h-3.5 w-3.5" /> %PB</p>
                                                 <p className="metab-chip-value">{proteinPercent}</p>
                                             </div>
-                                            <div className="metab-metric-chip">
-                                                <p className="metab-chip-label flex items-center gap-1"><Droplets className="h-3.5 w-3.5" /> %EE</p>
+                                            <div className="metab-food-highlight-card metab-food-highlight-card-ee">
+                                                <p className="metab-chip-label flex items-center gap-1">💧 <Droplets className="h-3.5 w-3.5" /> %EE</p>
                                                 <p className="metab-chip-value">{fatPercent}</p>
                                             </div>
                                         </div>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
-                                            <div className="rounded-lg border border-emerald-500/35 bg-emerald-500/10 p-3">
-                                                <p className="text-xs font-semibold text-emerald-700 dark:text-emerald-300 mb-1">Vantagens</p>
+                                            <div className="metab-food-pros p-3">
+                                                <p className="text-xs font-semibold text-emerald-700 dark:text-emerald-300 mb-1">✅ Vantagens</p>
                                                 {(advantages.length ? advantages : ['Sem vantagens específicas cadastradas.']).slice(0, 4).map((text, idx) => (
                                                     <p key={`adv-${idx}`} className="metab-small">{text}</p>
                                                 ))}
                                             </div>
-                                            <div className="rounded-lg border border-rose-500/35 bg-rose-500/10 p-3">
-                                                <p className="text-xs font-semibold text-rose-700 dark:text-rose-300 mb-1">Desvantagens / alertas</p>
+                                            <div className="metab-food-cons p-3">
+                                                <p className="text-xs font-semibold text-rose-700 dark:text-rose-300 mb-1">⚠️ Desvantagens / alertas</p>
                                                 {(disadvantages.length ? disadvantages : ['Sem alertas específicos cadastrados.']).slice(0, 4).map((text, idx) => (
                                                     <p key={`dis-${idx}`} className="metab-small">{text}</p>
                                                 ))}
@@ -360,11 +381,10 @@ export const FoodCalculatorTab: React.FC<FoodCalculatorTabProps> = ({
                 </div>
 
                 <h4 className="font-medium text-foreground mb-2">Adicionar manualmente</h4>
-                <span className="metab-field-meta">Texto livre • use quando o alimento não estiver no banco</span>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <input type="text" value={customFoodName} onChange={e => { setCustomFoodName(e.target.value); setPredefinedFoodIndex(''); }} placeholder="Nome do alimento" className="input-field col-span-3 md:col-span-1" />
                     <input type="number" value={customFoodCalories} onChange={e => { setCustomFoodCalories(e.target.value); setPredefinedFoodIndex(''); }} placeholder="Calorias" className="input-field" />
-                    <select value={customFoodUnit} onChange={e => { setCustomFoodUnit(e.target.value); setPredefinedFoodIndex(''); }} className="input-field"><option value="g">kcal/g</option><option value="lata">kcal/lata</option><option value="sache">kcal/sachê</option><option value="ml">kcal/mL</option></select>
+                    <select value={customFoodUnit} onChange={e => { setCustomFoodUnit(e.target.value); setPredefinedFoodIndex(''); }} className="input-field is-select"><option value="g">kcal/g</option><option value="lata">kcal/lata</option><option value="sache">kcal/sachê</option><option value="ml">kcal/mL</option></select>
                 </div>
                 <button onClick={handleAddFood} className="metab-primary-btn w-full mt-4 py-3">Adicionar alimento à lista</button>
             </div>
@@ -376,12 +396,23 @@ export const FoodCalculatorTab: React.FC<FoodCalculatorTabProps> = ({
                     {foodPrescriptionList.length === 0 ? <p className="text-center text-muted-foreground">Nenhum alimento adicionado ainda.</p> : foodPrescriptionList.map((food, i) => {
                         const unitLabel = food.unit === 'g' ? 'g' : (food.unit === 'ml' ? 'mL' : food.unit);
                         const foodKey = `${food.name}-${food.calories ?? ''}-${food.unit ?? ''}-${i}`;
+                        const summary = extractMacroSummary(food);
                         const amount = kcalForPlan > 0
                             ? (food.isCommercial && food.commercialData ? ((kcalForPlan / food.commercialData.me_kcal_per_kg) * 1000).toFixed(1) : (food.calories > 0 ? (kcalForPlan / food.calories).toFixed(1) : '0.0'))
                             : '0.0';
                         return (
-                            <div key={foodKey} className="bg-card p-4 rounded-lg border border-border">
-                                <h4 className="font-bold text-foreground text-lg mb-3">{food.name}</h4>
+                            <div key={foodKey} className="metab-prescription-card bg-card p-4 rounded-lg border border-border">
+                                <div className="metab-prescription-head mb-3">
+                                    <div className="metab-prescription-avatar" aria-hidden>{food.isCommercial ? '🧴' : '🍲'}</div>
+                                    <div className="min-w-0">
+                                        <h4 className="font-bold text-foreground text-lg mb-1">{food.name}</h4>
+                                        <div className="metab-prescription-metrics">
+                                            <span>🔥 {summary.kcalPerGram} kcal/g</span>
+                                            <span>💪 {summary.protein} PB</span>
+                                            <span>💧 {summary.fat} EE</span>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div className="flex justify-between items-center p-3 bg-blue-50 rounded-md gap-3">
                                     <span className="flex items-center text-md font-semibold text-blue-800">{goalOptions.find(g => g.id === nutritionalGoal)?.label || 'Meta:'}<HelpIcon term="foodAmount" onOpenModal={setModalContent} /></span>
                                     <strong className="text-xl font-bold text-blue-800 text-right">{isPrescriptionReady ? (food.isCommercial ? `${amount} g/dia` : `${amount} ${unitLabel}/dia`) : prescriptionPendingMessage}</strong>

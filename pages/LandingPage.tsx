@@ -1,11 +1,7 @@
-import React, { Suspense, lazy, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Logo from '../components/Logo'
 import { ArrowRight, ShieldCheck, BookOpen, Zap, Layers, Users, Brain, Mail, User, ChevronRight, ExternalLink, X } from 'lucide-react'
-
-const RevealWaveImage = lazy(() =>
-    import('../components/ui/reveal-wave-image').then((m) => ({ default: m.RevealWaveImage }))
-)
 
 /* ─── Footer Content Data ───────────────────────────────────────── */
 const footerContent: Record<string, { title: string; content: string }> = {
@@ -157,25 +153,16 @@ export function LandingPage() {
 
             {/* ── SECTION 1: HERO ── */}
             {/* Mobile: auto height at least 100svh; tablet+: 88vh */}
-            <section className="relative w-full min-h-[100svh] sm:min-h-[92vh] md:h-[88vh] md:min-h-[600px] flex items-end sm:items-center overflow-hidden pb-10 sm:pb-0">
+            <section className="relative w-full min-h-screen flex items-end sm:items-center overflow-hidden pb-10 sm:pb-0">
 
-                {/* Background RevealWaveImage */}
+                {/* Background image */}
                 <div className="absolute inset-0 z-0">
-                    <Suspense fallback={<img src="/HERO.png" alt="Hero Vetius" className="w-full h-full object-cover object-center" loading="eager" />}>
-                        <RevealWaveImage
-                            src="/HERO.png"
-                            waveSpeed={0.25}
-                            waveFrequency={0.5}
-                            waveAmplitude={0.3}
-                            revealRadius={0.3}
-                            revealSoftness={0.6}
-                            pixelSize={1}
-                            mouseRadius={0.2}
-                            imageShiftX={0.2}
-                            zoom={1.1}
-                            className="w-full h-full object-cover object-center"
-                        />
-                    </Suspense>
+                    <img
+                        src="/HERO.png"
+                        alt="Hero Vetius"
+                        className="hero-image-moving w-full h-full object-cover object-center"
+                        loading="eager"
+                    />
                     {/* On mobile: stronger overlay at bottom where card sits */}
                     <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-background/20 sm:bg-gradient-to-r sm:from-background/85 sm:via-background/50 sm:to-transparent z-[1] pointer-events-none" />
                 </div>

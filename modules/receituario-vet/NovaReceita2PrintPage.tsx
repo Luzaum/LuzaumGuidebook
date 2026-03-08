@@ -20,7 +20,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { jsPDF } from 'jspdf'
 import html2canvas from 'html2canvas'
 import { RxPrintView } from './RxPrintView'
-import { buildPrintDocFromNovaReceita2 } from './novaReceita2Adapter'
+import { buildPrintDocsFromNovaReceita2 } from './novaReceita2Adapter'
 import { BUILTIN_TEMPLATES } from './builtinTemplates'
 import type { NovaReceita2State, PrescriptionItem, TutorInfo, PatientInfo } from './NovaReceita2Page'
 import type { TemplateZoneKey } from './rxDb'
@@ -494,10 +494,11 @@ export default function NovaReceita2PrintPage() {
 
     // ==================== MEMO ====================
 
-    const printDoc = useMemo(() => {
+    const printDocs = useMemo(() => {
         if (!state) return null
-        return buildPrintDocFromNovaReceita2(state)
+        return buildPrintDocsFromNovaReceita2(state)
     }, [state])
+    const primaryPrintDoc = printDocs?.[0] || null
 
     const selectedTemplate = useMemo(() => {
         if (!state) return BUILTIN_TEMPLATES[0]
@@ -548,28 +549,30 @@ export default function NovaReceita2PrintPage() {
             return
         }
 
-        const canvas = container.querySelector('[data-rx-print-canvas="sheet"]') as HTMLElement | null
-        const target = canvas || container
+        const sheets = Array.from(container.querySelectorAll('[data-rx-print-canvas="sheet"]')) as HTMLElement[]
+        const targets = sheets.length ? sheets : [container]
 
         setIsExporting(true)
         try {
-            const renderedCanvas = await html2canvas(target, {
-                scale: 2,
-                backgroundColor: '#ffffff',
-                useCORS: true,
-                logging: false,
-            })
-
             const pdf = new jsPDF({
                 orientation: 'portrait',
                 unit: 'mm',
                 format: (selectedTemplate?.paperSize || 'A4').toLowerCase() as 'a4' | 'a5',
             })
 
-            const img = renderedCanvas.toDataURL('image/png')
             const pageW = pdf.internal.pageSize.getWidth()
             const pageH = pdf.internal.pageSize.getHeight()
-            pdf.addImage(img, 'PNG', 0, 0, pageW, pageH, undefined, 'FAST')
+            for (let i = 0; i < targets.length; i += 1) {
+                const renderedCanvas = await html2canvas(targets[i], {
+                    scale: 2,
+                    backgroundColor: '#ffffff',
+                    useCORS: true,
+                    logging: false,
+                })
+                const img = renderedCanvas.toDataURL('image/png')
+                if (i > 0) pdf.addPage()
+                pdf.addImage(img, 'PNG', 0, 0, pageW, pageH, undefined, 'FAST')
+            }
 
             const fileName = buildPdfFileName(
                 state?.patient?.name || 'PACIENTE',
@@ -591,7 +594,8 @@ export default function NovaReceita2PrintPage() {
                         content: {
                             kind: selectedTemplate?.documentKindTarget as any,
                             templateId: state.templateId,
-                            printDoc,
+                            printDoc: primaryPrintDoc,
+                            printDocs,
                             stateSnapshot: state,
                             createdAtLocal: new Date().toISOString(),
                             appVersion: '2.0.0-parity'
@@ -631,7 +635,7 @@ export default function NovaReceita2PrintPage() {
         } finally {
             setIsExporting(false)
         }
-    }, [state, selectedTemplate, pushToast, updateState, printDoc])
+    }, [state, selectedTemplate, pushToast, updateState, primaryPrintDoc, printDocs])
 
     const handleWhatsApp = useCallback(async () => {
         const phone = state?.tutor?.phone || ''
@@ -649,7 +653,7 @@ export default function NovaReceita2PrintPage() {
     // ==================== AUTO-ACTIONS ====================
 
     useEffect(() => {
-        if (!printDoc || autoActionFiredRef.current) return
+        if (!printDocs?.length || autoActionFiredRef.current) return
         if (isPrintMode) {
             autoActionFiredRef.current = true
             const t = window.setTimeout(() => window.print(), 600)
@@ -660,11 +664,11 @@ export default function NovaReceita2PrintPage() {
             const t = window.setTimeout(() => handleDownloadPdf(), 600)
             return () => window.clearTimeout(t)
         }
-    }, [isPrintMode, isPdfMode, printDoc, handleDownloadPdf])
+    }, [isPrintMode, isPdfMode, printDocs, handleDownloadPdf])
 
     // ==================== EMPTY STATE ====================
 
-    if (!state || !printDoc) {
+    if (!state || !printDocs?.length) {
         return (
             <div className="flex min-h-screen items-center justify-center bg-[#0a0f0a] text-white">
                 <div className="text-center">
@@ -835,15 +839,26 @@ export default function NovaReceita2PrintPage() {
                                     style={{ maxHeight: 'calc(100vh - 10rem)' }}
                                 >
                                     <div ref={previewRef} className="p-4">
-                                        <RxPrintView
-                                            doc={printDoc}
-                                            template={selectedTemplate}
-                                            interactive={true}
-                                            activeZone={activeZone || undefined}
-                                            onZoneSelect={handleZoneSelect}
-                                            selectedItemId={selectedItemId || undefined}
-                                            onItemSelect={handleItemSelect}
-                                        />
+                                        <div className="space-y-4">
+                                            {printDocs.map((doc, idx) => (
+                                                <div key={`${doc.documentKind || 'standard'}-${idx}`} className="space-y-2">
+                                                    {printDocs.length > 1 && (
+                                                        <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">
+                                                            {doc.documentKind === 'special-control' ? 'Prévia: Receita de controle especial' : 'Prévia: Receita padrão'}
+                                                        </p>
+                                                    )}
+                                                    <RxPrintView
+                                                        doc={doc}
+                                                        template={selectedTemplate}
+                                                        interactive={true}
+                                                        activeZone={activeZone || undefined}
+                                                        onZoneSelect={handleZoneSelect}
+                                                        selectedItemId={selectedItemId || undefined}
+                                                        onItemSelect={handleItemSelect}
+                                                    />
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -921,10 +936,16 @@ export default function NovaReceita2PrintPage() {
                 >
                     {/* previewRef usado SOMENTE pelo html2canvas para export PDF */}
                     <div ref={previewRef} className="rxv-print-canvas">
-                        <RxPrintView
-                            doc={printDoc}
-                            template={selectedTemplate}
-                        />
+                        <div className="space-y-6">
+                            {printDocs.map((doc, idx) => (
+                                <div key={`${doc.documentKind || 'standard'}-${idx}`} className="rounded-lg border border-slate-700/40 bg-white p-2">
+                                    <RxPrintView
+                                        doc={doc}
+                                        template={selectedTemplate}
+                                    />
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
 
@@ -937,10 +958,14 @@ export default function NovaReceita2PrintPage() {
 
             {/* IMPRESSÃO: Container limpo — só visível via window.print() */}
             <div className="hidden print:block bg-white text-black">
-                <RxPrintView
-                    doc={printDoc}
-                    template={selectedTemplate}
-                />
+                {printDocs.map((doc, idx) => (
+                    <div key={`${doc.documentKind || 'standard'}-${idx}`} className={idx > 0 ? 'page-break-before-always' : ''}>
+                        <RxPrintView
+                            doc={doc}
+                            template={selectedTemplate}
+                        />
+                    </div>
+                ))}
             </div>
 
             <style>{`

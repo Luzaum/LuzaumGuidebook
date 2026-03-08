@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useMemo, useState } from 'react';
 import { Clock, Stethoscope, Pill, FileText } from 'lucide-react';
 import { useRecents } from '../hooks/useRecents';
 import { diseaseRepository } from '../services/adapters/local/localDiseaseRepository';
 import { medicationRepository } from '../services/adapters/local/localMedicationRepository';
-import { consensoRepository } from '../services/adapters/local/localConsensoRepository';
 import { EntityCard } from '../components/shared/EntityCard';
+import { getConsensoRepository } from '../services/consensoRepository';
 
 type RecentItem = {
   _recentData: { entityType: 'disease' | 'medication' | 'consensus'; entityId: string; visitedAt: string };
@@ -12,6 +12,7 @@ type RecentItem = {
 };
 
 export function RecentsPage() {
+  const consensoRepository = useMemo(() => getConsensoRepository(), []);
   const { recents } = useRecents();
   const [items, setItems] = useState<RecentItem[]>([]);
 
@@ -42,8 +43,8 @@ export function RecentsPage() {
       setItems(combined);
     };
 
-    loadData();
-  }, [recents]);
+    void loadData();
+  }, [recents, consensoRepository]);
 
   return (
     <div className="mx-auto w-full max-w-[1500px] space-y-8 p-4 md:p-8">
@@ -101,8 +102,8 @@ export function RecentsPage() {
                 key={`${item.id}-${index}`}
                 to={`/consulta-vet/consensos/${item.slug}`}
                 title={item.title}
-                subtitle={`${item.sourceOrganization} • ${item.year}`}
-                description={item.summary}
+                subtitle={`${item.organization || 'Sem organização'}${item.year ? ` • ${item.year}` : ''}`}
+                description={item.description || ''}
                 icon={<FileText className="h-5 w-5 text-violet-600 dark:text-violet-400" />}
                 entityType="consensus"
                 entityId={item.id}

@@ -602,16 +602,29 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
         if (activeSection === 'energia') {
             return (
                 <div className="space-y-4">
-                    <div className="metab-card p-4 grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <label className="text-sm">Nome do paciente
-                            <span className="metab-field-meta">Texto livre • Ex: Thor</span>
-                            <input className="input-field mt-1 w-full" value={patientName} onChange={(e) => setPatientName(e.target.value)} placeholder="Ex: Thor" />
-                        </label>
-                        <label className="text-sm">Tutor
-                            <span className="metab-field-meta">Texto livre • Ex: Ana Silva</span>
-                            <input className="input-field mt-1 w-full" value={tutorName} onChange={(e) => setTutorName(e.target.value)} placeholder="Ex: Ana Silva" />
-                        </label>
-                    </div>
+                    <section className="energy-v2-block metab-card p-4">
+                        <h2 className="energy-v2-block-title">Identificação clínica</h2>
+                        <div className="energy-v2-fields">
+                            <div>
+                                <label className="energy-v2-label">Nome do paciente</label>
+                                <input
+                                    className="input-field energy-v2-input mt-1 w-full"
+                                    value={patientName}
+                                    onChange={(e) => setPatientName(e.target.value)}
+                                    placeholder="Ex: Thor"
+                                />
+                            </div>
+                            <div>
+                                <label className="energy-v2-label">Tutor</label>
+                                <input
+                                    className="input-field energy-v2-input mt-1 w-full"
+                                    value={tutorName}
+                                    onChange={(e) => setTutorName(e.target.value)}
+                                    placeholder="Ex: Ana Silva"
+                                />
+                            </div>
+                        </div>
+                    </section>
                     <EnergyTab
                         species={species}
                         setSpecies={setSpecies}
@@ -649,30 +662,29 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
         if (activeSection === 'catalogo') {
             return (
                 <div className="space-y-4">
-                    <div className="metab-card p-4">
+                    <div className="metab-card metab-luxe-card p-4">
                         <label className="text-sm block">Buscar rações
-                            <span className="metab-field-meta">Texto livre • Ex: renal, obesidade</span>
                             <input className="input-field mt-1 w-full" value={catalogQuery} onChange={(e) => setCatalogQuery(e.target.value)} placeholder="Buscar por nome/indicação" />
                         </label>
                     </div>
                     <div className="metab-food-grid">
                         {catalogFoods.map(food => (
-                            <div key={food.id} className="metab-card p-4">
+                            <div key={food.id} className="metab-card metab-luxe-card metab-catalog-card p-4">
                                 <h3 className="font-semibold">{food.name}</h3>
                                 <p className="metab-small mt-1">{food.indication}</p>
-                                <div className="mt-3 grid grid-cols-3 gap-2 text-xs">
-                                    <div><strong>kcal/g:</strong> {food.kcalPerGram !== null ? formatNumber(food.kcalPerGram, 3) : 'N/A'}</div>
-                                    <div><strong>%PB:</strong> {food.protein}</div>
-                                    <div><strong>%EE:</strong> {food.fat}</div>
+                                <div className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                                    <div className="metab-catalog-chip"><strong>🔥 kcal/g:</strong> {food.kcalPerGram !== null ? formatNumber(food.kcalPerGram, 3) : 'N/A'}</div>
+                                    <div className="metab-catalog-chip"><strong>💪 %PB:</strong> {food.protein}</div>
+                                    <div className="metab-catalog-chip"><strong>💧 %EE:</strong> {food.fat}</div>
                                 </div>
-                                <div className="mt-3">
-                                    <p className="text-xs font-semibold text-emerald-700 dark:text-emerald-300">Vantagens</p>
+                                <div className="mt-3 metab-catalog-pros">
+                                    <p className="text-xs font-semibold text-emerald-700 dark:text-emerald-300">✅ Vantagens</p>
                                     {(food.advantages.length ? food.advantages : ['Sem vantagens listadas.']).slice(0, 3).map((line, idx) => (
                                         <p key={idx} className="metab-small">{line}</p>
                                     ))}
                                 </div>
-                                <div className="mt-2">
-                                    <p className="text-xs font-semibold text-rose-700 dark:text-rose-300">Desvantagens</p>
+                                <div className="mt-2 metab-catalog-cons">
+                                    <p className="text-xs font-semibold text-rose-700 dark:text-rose-300">⚠️ Desvantagens</p>
                                     {(food.disadvantages.length ? food.disadvantages : ['Sem desvantagens listadas.']).slice(0, 3).map((line, idx) => (
                                         <p key={idx} className="metab-small">{line}</p>
                                     ))}
@@ -687,7 +699,7 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
         if (activeSection === 'natural') {
             return (
                 <div className="space-y-4">
-                    <div className="metab-card p-4 grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <div className="metab-card metab-luxe-card p-4 grid grid-cols-1 md:grid-cols-3 gap-3">
                         <label className="text-sm md:col-span-3 flex items-center gap-2">
                             <input
                                 type="checkbox"
@@ -698,7 +710,6 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                             <span>Incluir alimentação natural para este paciente (salvamento e PDF)</span>
                         </label>
                         <label className="text-sm">Buscar protocolo
-                            <span className="metab-field-meta">Texto livre • Ex: car</span>
                             <input className="input-field mt-1 w-full" value={naturalSearch} onChange={(e) => setNaturalSearch(e.target.value)} placeholder="Ex: car" />
                             {naturalSuggestions.length > 0 && (
                                 <div className="mt-2 rounded-lg border border-[color:var(--metab-border)] p-2 space-y-1">
@@ -718,24 +729,23 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                             )}
                         </label>
                         <label className="text-sm">Protocolo
-                            <span className="metab-field-meta">Seleção</span>
-                            <select className="input-field mt-1 w-full" value={selectedNaturalPlan?.id || ''} onChange={(e) => setNaturalPlanId(e.target.value)}>
+                            <select className="input-field is-select mt-1 w-full" value={selectedNaturalPlan?.id || ''} onChange={(e) => setNaturalPlanId(e.target.value)}>
                                 <option value="">Selecione um protocolo</option>
                                 {visibleNaturalPlans.map(plan => <option key={plan.id} value={plan.id}>{plan.title}</option>)}
                             </select>
                         </label>
-                        <div className="text-sm rounded-lg border border-[color:var(--metab-border)] p-3">
+                        <div className="text-sm rounded-lg metab-luxe-inner border border-[color:var(--metab-border)] p-3">
                             <p><strong>Kcal alvo:</strong> {effectiveTargetKcal > 0 ? `${formatNumber(effectiveTargetKcal, 1)} kcal` : 'Sem meta'}</p>
                             <p className="metab-small mt-1"><strong>Escala:</strong> {formatNumber(naturalScale, 3)}x</p>
                         </div>
                     </div>
                     {!selectedNaturalPlan && (
-                        <div className="metab-card p-4">
+                        <div className="metab-card metab-luxe-card p-4">
                             <p className="metab-small">Nenhum protocolo selecionado. Use a busca ou selecione um protocolo para visualizar composição e quantidades.</p>
                         </div>
                     )}
                     {selectedNaturalPlan && (
-                        <div className="metab-card p-4">
+                        <div className="metab-card metab-luxe-card p-4">
                             <h3 className="font-semibold">{selectedNaturalPlan.title}</h3>
                             <p className="metab-small mt-1">
                                 NEM base: {formatNumber(Number(selectedNaturalPlan.info['NEM']?.value || 0), 1)} kcal |
@@ -759,7 +769,7 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                             </div>
                         </div>
                     )}
-                    <div className="metab-card p-4">
+                    <div className="metab-card metab-luxe-card p-4">
                         <h3 className="metab-section-title">Montagem do zero</h3>
                         <p className="metab-small mt-1">Os ingredientes já vieram ajustados pela energia do paciente. Edite os gramas conforme a conduta.</p>
                         <div className="mt-3 overflow-x-auto">
@@ -791,18 +801,18 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
         if (activeSection === 'historico') {
             return (
                 <div className="space-y-4">
-                    <div className="metab-card p-4 flex flex-wrap gap-2 items-center justify-between">
+                    <div className="metab-card metab-luxe-card p-4 flex flex-wrap gap-2 items-center justify-between">
                         <p className="metab-small">Consultas salvas localmente neste navegador.</p>
                         <button className="metab-primary-btn" onClick={saveHistory}><Save className="h-4 w-4" /> Salvar consulta atual</button>
                     </div>
                     <div className="metab-history-grid">
                         {historyEntries.length === 0 && (
-                            <div className="metab-card p-4">
+                            <div className="metab-card metab-luxe-card p-4">
                                 <p className="metab-small">Nenhuma consulta salva ainda.</p>
                             </div>
                         )}
                         {historyEntries.map(entry => (
-                            <div key={entry.id} className="metab-card p-4">
+                            <div key={entry.id} className="metab-card metab-luxe-card metab-history-card p-4">
                                 <h3 className="font-semibold">{entry.patientName}</h3>
                                 <p className="metab-small">{formatDateTime(entry.createdAt)}</p>
                                 <p className="metab-small">Peso: {entry.weight} kg | Meta: {formatNumber(entry.targetKcal, 1)} kcal</p>
@@ -821,14 +831,14 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
         return (
                         <div className="space-y-4">
                 <div className="metab-home-row">
-                    <button className="metab-home-card metab-home-card-lg metab-home-col-70" onClick={() => setActiveSection('energia')}>
+                    <button className="metab-home-card metab-home-card-lg metab-home-col-70 metab-luxe-card" onClick={() => setActiveSection('energia')}>
                         <div className="metab-home-card-head">
                             <div className="metab-home-icon"><Scale className="h-4 w-4" /></div>
                             <h3>Calculadora Energética</h3>
                         </div>
                         <p className="metab-small mt-2">Fluxo principal do atendimento: identificação do paciente, cálculo energético e decisão nutricional com base clínica.</p>
                     </button>
-                    <button className="metab-home-card metab-home-card-lg metab-home-col-30" onClick={() => setActiveSection('racao')}>
+                    <button className="metab-home-card metab-home-card-lg metab-home-col-30 metab-luxe-card" onClick={() => setActiveSection('racao')}>
                         <div className="metab-home-card-head">
                             <div className="metab-home-icon"><UtensilsCrossed className="h-4 w-4" /></div>
                             <h3>Calculadora de Ração</h3>
@@ -838,14 +848,14 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                 </div>
 
                 <div className="metab-home-row">
-                    <button className="metab-home-card metab-home-card-lg metab-home-col-70" onClick={() => setActiveSection('catalogo')}>
+                    <button className="metab-home-card metab-home-card-lg metab-home-col-70 metab-luxe-card" onClick={() => setActiveSection('catalogo')}>
                         <div className="metab-home-card-head">
                             <div className="metab-home-icon"><BookCopy className="h-4 w-4" /></div>
                             <h3>Rações Cadastradas</h3>
                         </div>
                         <p className="metab-small mt-2">Consulta indicação, vantagens, desvantagens, kcal/g, %PB e %EE.</p>
                     </button>
-                    <button className="metab-home-card metab-home-card-lg metab-home-col-30" onClick={() => setActiveSection('natural')}>
+                    <button className="metab-home-card metab-home-card-lg metab-home-col-30 metab-luxe-card" onClick={() => setActiveSection('natural')}>
                         <div className="metab-home-card-head">
                             <div className="metab-home-icon"><Leaf className="h-4 w-4" /></div>
                             <h3>Alimentação Natural</h3>
@@ -855,7 +865,7 @@ const CalculadoraEnergetica = ({ onBack }: { onBack: () => void }) => {
                 </div>
 
                 <div className="metab-home-row">
-                    <button className="metab-home-card metab-home-card-lg metab-home-col-70" onClick={() => setActiveSection('historico')}>
+                    <button className="metab-home-card metab-home-card-lg metab-home-col-70 metab-luxe-card" onClick={() => setActiveSection('historico')}>
                         <div className="metab-home-card-head">
                             <div className="metab-home-icon"><History className="h-4 w-4" /></div>
                             <h3>Histórico de Pacientes</h3>

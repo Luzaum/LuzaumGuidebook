@@ -28,6 +28,7 @@ const ConsultaVetDiseaseDetailPage = lazy(() => import('./modules/consulta-vet/p
 const ConsultaVetMedicationsPage = lazy(() => import('./modules/consulta-vet/pages/MedicationsPage').then((m) => ({ default: m.MedicationsPage })))
 const ConsultaVetMedicationDetailPage = lazy(() => import('./modules/consulta-vet/pages/MedicationDetailPage').then((m) => ({ default: m.MedicationDetailPage })))
 const ConsultaVetConsensosPage = lazy(() => import('./modules/consulta-vet/pages/ConsensosPage').then((m) => ({ default: m.ConsensosPage })))
+const ConsultaVetConsensoCreatePage = lazy(() => import('./modules/consulta-vet/pages/ConsensoCreatePage').then((m) => ({ default: m.ConsensoCreatePage })))
 const ConsultaVetConsensoDetailPage = lazy(() => import('./modules/consulta-vet/pages/ConsensoDetailPage').then((m) => ({ default: m.ConsensoDetailPage })))
 const ConsultaVetFavoritesPage = lazy(() => import('./modules/consulta-vet/pages/FavoritesPage').then((m) => ({ default: m.FavoritesPage })))
 const ConsultaVetRecentsPage = lazy(() => import('./modules/consulta-vet/pages/RecentsPage').then((m) => ({ default: m.RecentsPage })))
@@ -121,6 +122,7 @@ const appRoutes = (
       <Route path="medicamentos" element={<ConsultaVetMedicationsPage />} />
       <Route path="medicamentos/:slug" element={<ConsultaVetMedicationDetailPage />} />
       <Route path="consensos" element={<ConsultaVetConsensosPage />} />
+      <Route path="consensos/novo" element={<ConsultaVetConsensoCreatePage />} />
       <Route path="consensos/:slug" element={<ConsultaVetConsensoDetailPage />} />
       <Route path="favoritos" element={<ConsultaVetFavoritesPage />} />
       <Route path="recentes" element={<ConsultaVetRecentsPage />} />

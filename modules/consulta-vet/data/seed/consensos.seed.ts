@@ -1,11 +1,9 @@
-import { ConsensusRecord } from '../../types/consenso';
-
-export const consensosSeed: ConsensusRecord[] = [
+﻿export const consensosSeed: Array<Record<string, any>> = [
   {
     id: 'con-1',
     slug: 'leishmaniose-brasileiro-2020',
     title: 'Diretrizes Brasileiras para o Manejo da Leishmaniose Visceral Canina',
-    shortTitle: 'Leishmaniose (Brasileiro)',
+    shortTitle: 'Leishmaniose (Brasileish)',
     sourceOrganization: 'Brasileish',
     year: 2020,
     species: 'dog',
@@ -14,8 +12,10 @@ export const consensosSeed: ConsensusRecord[] = [
     pdfUrl: 'https://www.brasileish.com.br/wp-content/uploads/2020/12/Diretrizes-Brasileish-2020.pdf',
     pdfFileName: 'Diretrizes-Brasileish-2020.pdf',
     summary: 'Atualização das diretrizes para diagnóstico, estadiamento e tratamento da LVC no Brasil.',
-    articleSummaryRichText: '<p>O consenso da Brasileish (2020) atualiza o estadiamento clínico da Leishmaniose Visceral Canina (LVC), dividindo a doença em 4 estágios baseados em sinais clínicos, achados laboratoriais (especialmente função renal) e carga parasitária.</p><ul><li><strong>Estágio I (Doença Leve):</strong> Sorologia positiva, sem sinais clínicos evidentes ou alterações laboratoriais significativas.</li><li><strong>Estágio II (Doença Moderada):</strong> Sinais clínicos presentes (perda de peso, lesões cutâneas), mas função renal preservada (UPC normal, creatinina normal).</li><li><strong>Estágio III (Doença Grave):</strong> Sinais clínicos severos e/ou doença renal crônica (DRC) estágio I ou II (IRIS).</li><li><strong>Estágio IV (Doença Muito Grave):</strong> DRC estágio III ou IV (IRIS) ou outras complicações severas.</li></ul><p>O tratamento recomendado varia conforme o estágio, utilizando combinações de leishmanicidas (ex: Miltefosina) e leishmaniostáticos (ex: Alopurinol).</p>',
-    adminNotesRichText: '<p><strong>Atenção:</strong> A Miltefosina é o único fármaco leishmanicida aprovado para uso veterinário no Brasil. O uso de medicamentos humanos (como o antimoniato de meglumina) é proibido para cães no país.</p>',
+    articleSummaryRichText:
+      '<p>O consenso da Brasileish (2020) atualiza o estadiamento clínico da Leishmaniose Visceral Canina (LVC), dividindo a doença em 4 estágios baseados em sinais clínicos, achados laboratoriais e carga parasitária.</p>',
+    adminNotesRichText:
+      '<p><strong>Atenção:</strong> A Miltefosina é o único fármaco leishmanicida aprovado para uso veterinário no Brasil.</p>',
     relatedDiseaseSlugs: ['leishmaniose-visceral-canina'],
     isDemonstrative: true,
     warningLabel: 'Demonstração',
@@ -33,10 +33,12 @@ export const consensosSeed: ConsensusRecord[] = [
     pdfUrl: 'http://www.iris-kidney.com/pdf/IRIS_Staging_of_CKD_modified_2023.pdf',
     pdfFileName: 'IRIS_Staging_of_CKD_modified_2023.pdf',
     summary: 'Diretrizes internacionais para estadiamento e tratamento da Doença Renal Crônica em cães e gatos.',
-    articleSummaryRichText: '<p>As diretrizes da IRIS para Doença Renal Crônica (DRC) baseiam-se na avaliação da creatinina sérica ou SDMA em pacientes em jejum e hidratados, em pelo menos duas ocasiões.</p><p>Subestadiamento é feito com base na proteinúria (UPC) e pressão arterial sistólica.</p>',
-    adminNotesRichText: '<p>Sempre avaliar o paciente hidratado antes de classificar o estágio da DRC.</p>',
+    articleSummaryRichText:
+      '<p>As diretrizes da IRIS para Doença Renal Crônica (DRC) baseiam-se na avaliação de creatinina sérica ou SDMA.</p>',
+    adminNotesRichText:
+      '<p>Sempre avaliar o paciente hidratado antes de classificar o estágio da DRC.</p>',
     relatedDiseaseSlugs: ['doenca-renal-cronica'],
     isDemonstrative: true,
     warningLabel: 'Demonstração',
-  }
+  },
 ];

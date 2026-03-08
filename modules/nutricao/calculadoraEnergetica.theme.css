@@ -1,49 +1,49 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:wght@400;600;700&display=swap');
 
 .metab-app {
-  --metab-primary: #0a3f85;
-  --metab-primary-strong: #072f66;
-  --metab-secondary: #1f67d8;
-  --metab-accent: #8eb8ff;
-  --metab-bg: #f7fbff;
-  --metab-bg-glow: rgba(31, 103, 216, 0.24);
-  --metab-surface: rgba(255, 255, 255, 0.82);
-  --metab-surface-strong: rgba(255, 255, 255, 0.94);
-  --metab-border: rgba(10, 63, 133, 0.22);
-  --metab-text: #0b2448;
-  --metab-text-soft: #3a5f93;
-  --metab-shadow: 0 16px 48px rgba(9, 45, 99, 0.18);
-  --metab-ring: 0 0 0 3px rgba(66, 137, 255, 0.24);
-  font-family: 'Manrope', 'Segoe UI', sans-serif;
+  --metab-primary: #3b82f6;
+  --metab-primary-strong: #2563eb;
+  --metab-secondary: #1d4ed8;
+  --metab-accent: #e0f2fe;
+  --metab-bg: #ffffff;
+  --metab-bg-glow: rgba(59, 130, 246, 0.2);
+  --metab-surface: rgba(255, 255, 255, 0.9);
+  --metab-surface-strong: rgba(255, 255, 255, 0.98);
+  --metab-border: #e5e7eb;
+  --metab-text: #333333;
+  --metab-text-soft: #6b7280;
+  --metab-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --metab-ring: 0 0 0 3px rgba(59, 130, 246, 0.24);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
   color: var(--metab-text);
   min-height: 100dvh;
   width: 100%;
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at 12% 16%, rgba(30, 103, 216, 0.2), transparent 33%),
+    radial-gradient(circle at 12% 16%, rgba(59, 130, 246, 0.14), transparent 33%),
     radial-gradient(circle at 84% 8%, var(--metab-bg-glow), transparent 30%),
-    linear-gradient(160deg, #fbfdff 0%, #f1f7ff 52%, #ffffff 100%);
+    linear-gradient(160deg, #ffffff 0%, #f8fbff 52%, #ffffff 100%);
 }
 
 .dark .metab-app {
-  --metab-primary: #7cc0ff;
-  --metab-primary-strong: #4aa4ff;
-  --metab-secondary: #3f8fff;
-  --metab-accent: #bfe0ff;
-  --metab-bg: #000000;
-  --metab-bg-glow: rgba(106, 181, 255, 0.24);
-  --metab-surface: rgba(7, 10, 16, 0.78);
-  --metab-surface-strong: rgba(10, 14, 22, 0.92);
-  --metab-border: rgba(124, 192, 255, 0.26);
-  --metab-text: #e9f4ff;
-  --metab-text-soft: #9dc9f5;
-  --metab-shadow: 0 18px 52px rgba(0, 0, 0, 0.5);
-  --metab-ring: 0 0 0 3px rgba(124, 192, 255, 0.26);
+  --metab-primary: #3b82f6;
+  --metab-primary-strong: #2563eb;
+  --metab-secondary: #60a5fa;
+  --metab-accent: #1e3a8a;
+  --metab-bg: #171717;
+  --metab-bg-glow: rgba(59, 130, 246, 0.2);
+  --metab-surface: rgba(38, 38, 38, 0.86);
+  --metab-surface-strong: rgba(38, 38, 38, 0.96);
+  --metab-border: #404040;
+  --metab-text: #e5e5e5;
+  --metab-text-soft: #a3a3a3;
+  --metab-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --metab-ring: 0 0 0 3px rgba(59, 130, 246, 0.24);
   background:
-    radial-gradient(circle at 11% 14%, rgba(86, 164, 255, 0.26), transparent 30%),
-    radial-gradient(circle at 86% 10%, rgba(132, 199, 255, 0.18), transparent 30%),
-    linear-gradient(165deg, #000000 0%, #03070f 56%, #09162a 100%);
+    radial-gradient(circle at 11% 14%, rgba(59, 130, 246, 0.2), transparent 30%),
+    radial-gradient(circle at 86% 10%, rgba(96, 165, 250, 0.16), transparent 30%),
+    linear-gradient(165deg, #171717 0%, #1f1f1f 56%, #262626 100%);
 }
 
 .metab-app::before,
@@ -62,7 +62,7 @@
   height: 28rem;
   left: -6rem;
   top: 12vh;
-  background: linear-gradient(140deg, rgba(31, 103, 216, 0.38), rgba(117, 176, 255, 0.2));
+  background: linear-gradient(140deg, rgba(59, 130, 246, 0.25), rgba(96, 165, 250, 0.16));
   animation: metabDrift 12s ease-in-out infinite;
 }
 
@@ -71,7 +71,7 @@
   height: 22rem;
   right: -6rem;
   top: 45vh;
-  background: linear-gradient(130deg, rgba(133, 192, 255, 0.3), rgba(40, 112, 232, 0.16));
+  background: linear-gradient(130deg, rgba(96, 165, 250, 0.24), rgba(37, 99, 235, 0.12));
   animation: metabDrift 16s ease-in-out infinite reverse;
 }
 
@@ -134,7 +134,7 @@
 }
 
 .metab-brand-title {
-  font-family: 'Sora', 'Manrope', sans-serif;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
   font-size: 0.96rem;
   font-weight: 700;
   letter-spacing: 0.03em;
@@ -260,7 +260,7 @@
 }
 
 .metab-heading {
-  font-family: 'Sora', 'Manrope', sans-serif;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
   font-size: clamp(1.24rem, 1.5vw, 1.8rem);
   letter-spacing: 0.01em;
 }
@@ -415,7 +415,7 @@
 }
 
 .metab-section-title {
-  font-family: 'Sora', 'Manrope', sans-serif;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
   font-size: clamp(1.05rem, 1.2vw, 1.38rem);
 }
 
@@ -657,7 +657,7 @@
 }
 
 .metab-racao-title {
-  font-family: 'Sora', 'Manrope', sans-serif;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
   font-size: clamp(1.6rem, 2.3vw, 2.4rem);
   font-weight: 800;
   letter-spacing: 0.01em;
@@ -737,6 +737,63 @@
   border-color: color-mix(in hsl, var(--metab-primary) 70%, var(--metab-secondary));
 }
 
+.metab-luxe-card {
+  position: relative;
+  overflow: hidden;
+  border-color: color-mix(in hsl, var(--metab-primary) 26%, var(--metab-border)) !important;
+  background: linear-gradient(
+    155deg,
+    color-mix(in hsl, var(--metab-surface-strong) 90%, var(--metab-primary) 10%),
+    color-mix(in hsl, var(--metab-surface) 92%, var(--metab-secondary) 8%)
+  ) !important;
+  box-shadow: 0 12px 28px color-mix(in hsl, var(--metab-primary) 16%, transparent) !important;
+}
+
+.metab-luxe-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(120deg, color-mix(in hsl, white 20%, transparent), transparent 45%);
+  opacity: 0.35;
+}
+
+.metab-luxe-inner {
+  background: color-mix(in hsl, var(--metab-surface-strong) 84%, var(--metab-primary) 16%);
+}
+
+.metab-catalog-card {
+  display: grid;
+  gap: 0.52rem;
+}
+
+.metab-catalog-chip {
+  border: 1px solid color-mix(in hsl, var(--metab-primary) 28%, transparent);
+  border-radius: 0.72rem;
+  padding: 0.42rem 0.58rem;
+  background: color-mix(in hsl, var(--metab-surface-strong) 82%, transparent);
+}
+
+.metab-catalog-pros,
+.metab-catalog-cons {
+  border-radius: 0.86rem;
+  padding: 0.58rem 0.66rem;
+}
+
+.metab-catalog-pros {
+  border: 1px solid color-mix(in hsl, #10b981 42%, transparent);
+  background: linear-gradient(145deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.08));
+}
+
+.metab-catalog-cons {
+  border: 1px solid color-mix(in hsl, #f43f5e 42%, transparent);
+  background: linear-gradient(145deg, rgba(244, 63, 94, 0.15), rgba(244, 63, 94, 0.08));
+}
+
+.metab-history-card {
+  border-left: 3px solid color-mix(in hsl, var(--metab-primary) 72%, var(--metab-secondary));
+}
+
 .metab-home-card-head {
   display: flex;
   align-items: center;
@@ -804,6 +861,99 @@
   border-radius: 1rem !important;
   background: color-mix(in hsl, var(--metab-surface-strong) 88%, transparent) !important;
   box-shadow: 0 10px 26px rgba(120, 58, 14, 0.14) !important;
+}
+
+.metab-food-hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.metab-food-avatar {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  border: 1px solid color-mix(in hsl, var(--metab-primary) 45%, transparent);
+  background: linear-gradient(155deg, color-mix(in hsl, var(--metab-primary) 20%, var(--metab-surface-strong)), color-mix(in hsl, var(--metab-secondary) 18%, var(--metab-surface)));
+  box-shadow: inset 0 1px 0 color-mix(in hsl, white 30%, transparent), 0 10px 22px color-mix(in hsl, var(--metab-primary) 24%, transparent);
+}
+
+.metab-food-highlight-card {
+  border: 1px solid var(--metab-border);
+  border-radius: 0.88rem;
+  padding: 0.66rem 0.72rem;
+  background: linear-gradient(150deg, color-mix(in hsl, var(--metab-surface-strong) 88%, var(--metab-primary) 12%), color-mix(in hsl, var(--metab-surface) 90%, var(--metab-secondary) 10%));
+  box-shadow: inset 0 1px 0 color-mix(in hsl, var(--metab-primary) 14%, transparent);
+}
+
+.metab-food-highlight-card-kcal {
+  border-color: color-mix(in hsl, #f97316 35%, var(--metab-border));
+}
+
+.metab-food-highlight-card-pb {
+  border-color: color-mix(in hsl, #16a34a 35%, var(--metab-border));
+}
+
+.metab-food-highlight-card-ee {
+  border-color: color-mix(in hsl, #0ea5e9 35%, var(--metab-border));
+}
+
+.metab-food-pros {
+  border-radius: 0.9rem;
+  border: 1px solid color-mix(in hsl, #10b981 40%, transparent);
+  background: linear-gradient(145deg, rgba(16, 185, 129, 0.16), rgba(16, 185, 129, 0.08));
+}
+
+.metab-food-cons {
+  border-radius: 0.9rem;
+  border: 1px solid color-mix(in hsl, #f43f5e 40%, transparent);
+  background: linear-gradient(145deg, rgba(244, 63, 94, 0.16), rgba(244, 63, 94, 0.08));
+}
+
+.metab-prescription-card {
+  background: linear-gradient(155deg, color-mix(in hsl, var(--metab-surface-strong) 88%, var(--metab-primary) 12%), color-mix(in hsl, var(--metab-surface) 90%, var(--metab-secondary) 10%)) !important;
+  border-color: color-mix(in hsl, var(--metab-primary) 26%, var(--metab-border)) !important;
+}
+
+.metab-prescription-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.metab-prescription-avatar {
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  border: 1px solid color-mix(in hsl, var(--metab-primary) 42%, transparent);
+  background: color-mix(in hsl, var(--metab-surface-strong) 84%, var(--metab-primary) 16%);
+}
+
+.metab-prescription-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+}
+
+.metab-prescription-metrics span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  border: 1px solid color-mix(in hsl, var(--metab-primary) 32%, transparent);
+  border-radius: 999px;
+  padding: 0.18rem 0.52rem;
+  font-size: 0.7rem;
+  color: var(--metab-text-soft);
+  background: color-mix(in hsl, var(--metab-surface-strong) 80%, transparent);
 }
 
 .metab-step-badge {
@@ -1030,7 +1180,7 @@
 }
 
 .energy-v2-title {
-  font-family: 'Sora', 'Manrope', sans-serif;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
   font-size: clamp(1.2rem, 2.5vw, 2rem);
   font-weight: 800;
   line-height: 1.15;
@@ -1285,3 +1435,4 @@
     align-items: start;
   }
 }
+

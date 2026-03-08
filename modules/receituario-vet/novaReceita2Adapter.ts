@@ -4,7 +4,7 @@
 
 import type { NovaReceita2State } from './NovaReceita2Page'
 import type { PrescriptionState, RouteGroup, PrintDoc } from './rxTypes'
-import { renderRxToPrintDoc } from './rxRenderer'
+import { renderRxToPrintDoc, splitPrescriptionByControl } from './rxRenderer'
 import type { RxTemplateStyle } from './rxDb'
 
 // =====================================================================
@@ -349,8 +349,21 @@ export function buildPrintDocFromNovaReceita2(
     state: NovaReceita2State,
     _template?: Partial<RxTemplateStyle>
 ): PrintDoc {
+    const docs = buildPrintDocsFromNovaReceita2(state, _template)
+    return docs[0]
+}
+
+export function buildPrintDocsFromNovaReceita2(
+    state: NovaReceita2State,
+    _template?: Partial<RxTemplateStyle>
+): PrintDoc[] {
     const rxState = buildPrescriptionStateFromNovaReceita2(state)
-    const doc = renderRxToPrintDoc(rxState)
+    const split = splitPrescriptionByControl(rxState)
+    const docs: PrintDoc[] = []
+
+    if (split.standard) docs.push(renderRxToPrintDoc(split.standard, { documentKind: 'standard' }))
+    if (split.specialControl) docs.push(renderRxToPrintDoc(split.specialControl, { documentKind: 'special-control' }))
+    if (!docs.length) docs.push(renderRxToPrintDoc(rxState, { documentKind: 'standard' }))
 
     // Formatar endereço do tutor em uma linha (sem microchip)
     const tutorAddressLine = [
@@ -365,7 +378,9 @@ export function buildPrintDocFromNovaReceita2(
         state.tutor?.phone,
     ].filter(Boolean).join(', ')
 
-    doc.addressLine = tutorAddressLine || ''
+    for (const doc of docs) {
+        doc.addressLine = tutorAddressLine || ''
+    }
 
-    return doc
+    return docs
 }

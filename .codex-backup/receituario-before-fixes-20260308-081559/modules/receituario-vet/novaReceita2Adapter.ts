@@ -1,0 +1,371 @@
+// novaReceita2Adapter.ts
+// Converte NovaReceita2State -> PrescriptionState -> PrintDoc
+// para uso com rxRenderer e RxPrintView
+
+import type { NovaReceita2State } from './NovaReceita2Page'
+import type { PrescriptionState, RouteGroup, PrintDoc } from './rxTypes'
+import { renderRxToPrintDoc } from './rxRenderer'
+import type { RxTemplateStyle } from './rxDb'
+
+// =====================================================================
+// FIX A3: garante que valores numéricos do DB/sessionStorage
+// chegam ao renderer sempre como string (nunca como number/object).
+// FIX G: parseia dose livre "10 mg/kg" em value+unit estruturados.
+// =====================================================================
+
+/** Converte qualquer valor para string segura (nunca undefined/null/object) */
+function toSafeString(v: unknown): string {
+    if (v == null) return ''
+    if (typeof v === 'string') return v
+    if (typeof v === 'number') return String(v)
+    return ''
+}
+
+/**
+ * Tenta parsear dose livre ("10 mg/kg", "0,5 ml/kg", "25 mg") em campos estruturados.
+ * Retorna null se não reconhecer o padrão.
+ */
+function parseDoseString(dose: string): { numericStr: string; unit: string; perKg: boolean } | null {
+    if (!dose) return null
+    const match = dose.match(/(\d+(?:[.,]\d+)?)\s*([a-zA-ZÀ-ÿ%µ./()]+)?/i)
+    if (!match) return null
+    const rawUnit = String(match[2] || '').trim()
+    const perKg = /\/\s*kg/i.test(dose) || /\/\s*kg/i.test(rawUnit)
+    const unit = rawUnit
+        .replace(/\/\s*kg/ig, '')
+        .replace(/\(s\)/ig, '')
+        .replace(/\./g, '')
+        .trim()
+    return {
+        numericStr: match[1].replace(',', '.'),
+        unit: (unit || 'mg').toLowerCase().replace('ui', 'ui').replace('iu', 'ui'),
+        perKg,
+    }
+}
+
+function normalizeLooseText(value: string): string {
+    return String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .trim()
+}
+
+function parseFrequencyFromText(raw?: string): {
+    frequencyType: 'timesPerDay' | 'everyHours'
+    frequencyToken: '' | 'SID' | 'BID' | 'TID' | 'QID'
+    timesPerDay: string
+    everyHours: string
+} {
+    const value = normalizeLooseText(raw || '')
+    if (!value) return { frequencyType: 'timesPerDay', frequencyToken: '', timesPerDay: '1', everyHours: '' }
+
+    const everyHoursMatch = value.match(/a cada\s*(\d+(?:[.,]\d+)?)\s*h/)
+    if (everyHoursMatch) {
+        return { frequencyType: 'everyHours', frequencyToken: '', timesPerDay: '', everyHours: everyHoursMatch[1].replace(',', '.') }
+    }
+
+    const timesPerDayMatch = value.match(/(\d+)\s*x\s*ao\s*dia|(\d+)\s*vez(?:es)?\s*(?:por|ao)\s*dia/)
+    if (timesPerDayMatch) {
+        const times = timesPerDayMatch[1] || timesPerDayMatch[2] || '1'
+        return { frequencyType: 'timesPerDay', frequencyToken: '', timesPerDay: times, everyHours: '' }
+    }
+
+    if (value.includes('q24') || value.includes('sid') || value.includes('uma vez')) {
+        return { frequencyType: 'timesPerDay', frequencyToken: 'SID', timesPerDay: '1', everyHours: '' }
+    }
+    if (value.includes('q12') || value.includes('bid')) {
+        return { frequencyType: 'timesPerDay', frequencyToken: 'BID', timesPerDay: '2', everyHours: '' }
+    }
+    if (value.includes('q8') || value.includes('tid')) {
+        return { frequencyType: 'timesPerDay', frequencyToken: 'TID', timesPerDay: '3', everyHours: '' }
+    }
+    if (value.includes('q6') || value.includes('qid')) {
+        return { frequencyType: 'timesPerDay', frequencyToken: 'QID', timesPerDay: '4', everyHours: '' }
+    }
+
+    return { frequencyType: 'timesPerDay', frequencyToken: '', timesPerDay: '1', everyHours: '' }
+}
+
+function parseDurationFromText(raw?: string): {
+    durationDays: string
+    continuousUse: boolean
+    untilFinished: boolean
+} {
+    const value = normalizeLooseText(raw || '')
+    if (!value) return { durationDays: '', continuousUse: false, untilFinished: false }
+
+    if (value.includes('uso continuo')) {
+        return { durationDays: '', continuousUse: true, untilFinished: false }
+    }
+    if (value.includes('ate terminar') || value.includes('ate acabar')) {
+        return { durationDays: '', continuousUse: false, untilFinished: true }
+    }
+
+    const daysMatch = value.match(/(\d+)\s*dias?/)
+    if (daysMatch) return { durationDays: daysMatch[1], continuousUse: false, untilFinished: false }
+
+    const genericNumber = value.match(/(\d+)/)
+    if (genericNumber) return { durationDays: genericNumber[1], continuousUse: false, untilFinished: false }
+
+    return { durationDays: '', continuousUse: false, untilFinished: false }
+}
+
+// =====================================================================
+// FIX CRÍTICO: mapear route string livre -> RouteGroup enum
+// rxRenderer agrupa itens por routeGroup. Sem o enum correto,
+// os itens não aparecem em nenhuma section do PrintDoc.
+// =====================================================================
+function routeStringToGroup(route?: string): RouteGroup {
+    if (!route) return 'ORAL'
+    const r = route.toLowerCase().trim()
+
+    if (r === 'oral' || r === 'vo' || r.includes('oral') || r.includes('boca')) return 'ORAL'
+    if (r === 'sc' || r.includes('subcut') || r.includes('subcutâneo')) return 'SC'
+    if (r === 'im' || r.includes('intramuscular') || r.includes('muscular')) return 'IM'
+    if (r === 'iv' || r.includes('intravenoso') || r.includes('endovenoso')) return 'IV'
+    if (r.includes('tópic') || r.includes('topic') || r.includes('cutâneo')) return 'TOPICO'
+    if (r.includes('oftal') || r.includes('ocular') || r.includes('olho')) return 'OFTALMICO'
+    if (r.includes('otol') || r.includes('auric') || r.includes('ouvid')) return 'OTOLOGICO'
+    if (r.includes('nasal') || r.includes('intranasal')) return 'INTRANASAL'
+    if (r.includes('retal') || r.includes('reto')) return 'RETAL'
+    if (r.includes('inalat') || r.includes('nebuliz')) return 'INALATORIO'
+    if (r.includes('transderm')) return 'TRANSDERMICO'
+
+    return 'OUTROS'
+}
+
+// Formatar título do item incluindo concentração e nome comercial
+function buildItemTitle(item: {
+    name: string
+    concentration_text?: string
+    commercial_name?: string
+    pharmaceutical_form?: string
+}): string {
+    const parts: string[] = [item.name]
+
+    if (item.concentration_text) {
+        parts.push(item.concentration_text)
+    }
+
+    if (item.commercial_name) {
+        parts.push(`(${item.commercial_name})`)
+    }
+
+    return parts.join(' ')
+}
+
+// Formatar subtitle com dados da apresentação
+function buildItemSubtitle(item: {
+    pharmaceutical_form?: string
+    presentation_label?: string
+    avg_price_brl?: number
+    package_quantity?: string
+    package_unit?: string
+}): string {
+    const parts: string[] = []
+
+    const form = item.pharmaceutical_form || item.presentation_label
+    if (form) parts.push(form)
+
+    if (item.package_quantity && item.package_unit) {
+        parts.push(`Emb: ${item.package_quantity} ${item.package_unit}`)
+    }
+
+    if (item.avg_price_brl && item.avg_price_brl > 0) {
+        parts.push(`R$ ${item.avg_price_brl.toFixed(2)}`)
+    }
+
+    return parts.join(' • ')
+}
+
+// Formatar instruction combinando dose/route/frequency/duration ou usar manual
+function buildItemInstruction(item: {
+    instructions?: string
+    dose?: string
+    route?: string
+    frequency?: string
+    duration?: string
+}): string {
+    // Priorizar instruction manual se preenchida
+    if (item.instructions && item.instructions.trim()) {
+        return item.instructions.trim()
+    }
+
+    // Montar automático
+    const parts: string[] = []
+    if (item.dose) parts.push(`Dose: ${item.dose}`)
+    if (item.route) parts.push(`Via: ${item.route}`)
+    if (item.frequency) parts.push(item.frequency)
+    if (item.duration) parts.push(`por ${item.duration}`)
+
+    if (parts.length > 0) return parts.join(' • ')
+
+    return 'Preencher instruções'
+}
+
+export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State): PrescriptionState {
+    const now = new Date().toISOString()
+
+    const mappedItems = state.items.map(item => {
+        const routeGroup = routeStringToGroup(item.route)
+        // FIX: subtitle apenas para presentation (forma + embalagem + preço)
+        const subtitle = item.pharmaceutical_form || item.presentation_label || buildItemSubtitle(item)
+        // FIX: pre-build a instrução e sempre usar (nunca deixar o renderer substituir
+        // por buildAutoInstruction que não consegue parsear dose livre "10 mg/kg")
+        const manualInstruction = toSafeString(item.instructions).trim()
+        const hasManualInstruction = manualInstruction.length > 0
+
+        // FIX G: parsear dose livre para campos estruturados (doseValue numérico + doseUnit)
+        // Permite que calculateMedicationQuantity exiba "Dose calculada: X mg / Volume: Y mL"
+        const parsedDose = parseDoseString(toSafeString(item.dose))
+        const doseValue = parsedDose ? parsedDose.numericStr : toSafeString(item.dose)
+        const doseUnit = parsedDose
+            ? parsedDose.perKg ? `${parsedDose.unit}/kg` : parsedDose.unit
+            : ''
+        const frequency = parseFrequencyFromText(item.frequency)
+        const duration = parseDurationFromText(item.duration)
+
+        // FIX A3: garantir que concentration_text nunca seja objeto/número
+        const concentrationSafe = toSafeString(item.concentration_text)
+        // FIX A3: garantir que weight_kg do patient seja sempre string
+        // (Supabase pode retornar como number dependendo da versão do schema)
+
+        if (import.meta.env.DEV) {
+            console.log('[novaReceita2Adapter] item mapped', {
+                id: item.id,
+                name: item.name,
+                concentration: concentrationSafe,
+                commercial: item.commercial_name,
+                routeGroup,
+                doseValue,
+                doseUnit,
+                instruction: manualInstruction.slice(0, 60),
+            })
+        }
+
+        return {
+            id: item.id,
+            category: 'medication' as const,
+            catalogDrugId: item.medication_id || '',
+            controlled: !!item.is_controlled,
+            // FIX: colocar APENAS nome do fármaco em name;
+            // o renderer (rxRenderer.buildItemTitle) concatena name + concentration + commercialName.
+            name: item.name,
+            presentation: subtitle,    // subtitle: forma + embalagem + preço
+            concentration: concentrationSafe,
+            commercialName: toSafeString(item.commercial_name),
+            pharmacyType: 'veterinária' as const,
+            packageType: 'frasco' as const,
+            pharmacyName: '',
+            observations: '',
+            routeGroup,
+            doseValue,
+            doseUnit,
+            // FIX: autoInstruction = false + manualEdited = true para que o renderer
+            // use SEMPRE a instrução pre-construída pelo adapter (buildItemInstruction)
+            autoInstruction: !hasManualInstruction,
+            frequencyType: frequency.frequencyType,
+            frequencyToken: frequency.frequencyToken,
+            timesPerDay: frequency.timesPerDay,
+            everyHours: frequency.everyHours,
+            durationDays: duration.durationDays,
+            untilFinished: duration.untilFinished,
+            continuousUse: duration.continuousUse,
+            instruction: manualInstruction,
+            manualEdited: hasManualInstruction,
+            titleBold: false,
+            titleUnderline: false,
+            cautions: item.cautions || [],
+            createdAt: now,
+            updatedAt: now,
+        }
+    })
+
+    return {
+        id: state.id,
+        updatedAt: now,
+        prescriber: {
+            profileId: state.prescriber?.id || '',
+            adminId: '',
+            name: state.prescriber?.name || '',
+            crmv: state.prescriber?.crmv || '',
+            clinicName: '',
+        },
+        tutor: {
+            tutorRecordId: state.tutor?.id || '',
+            name: state.tutor?.name || '',
+            fullName: state.tutor?.name || '',
+            full_name: state.tutor?.name || '',
+            phone: state.tutor?.phone || '',
+            email: state.tutor?.email || '',
+            documentId: state.tutor?.cpf || '',
+            document_id: state.tutor?.cpf || '',
+            cpf: state.tutor?.cpf || '',
+            rg: state.tutor?.rg || '',
+            street: state.tutor?.street || '',
+            number: state.tutor?.number || '',
+            complement: state.tutor?.complement || '',
+            neighborhood: state.tutor?.neighborhood || '',
+            city: state.tutor?.city || '',
+            state: state.tutor?.state || '',
+            zipcode: state.tutor?.zipcode || '',
+            notes: state.tutor?.notes || '',
+        },
+        patient: {
+            patientRecordId: state.patient?.id || '',
+            name: state.patient?.name || '',
+            species: (state.patient?.species as any) || 'Canina',
+            breed: state.patient?.breed || '',
+            sex: (state.patient?.sex as any) || 'Sem dados',
+            reproductiveStatus: (state.patient?.reproductive_condition as any) || 'Sem dados',
+            ageText: state.patient?.age_text || '',
+            birthDate: '',
+            color: state.patient?.coat || '',
+            coat: state.patient?.coat || '',
+            weightKg: toSafeString(state.patient?.weight_kg),
+            weightDate: '',
+            anamnesis: state.patient?.anamnesis || '',
+            notes: state.patient?.notes || '',
+            showNotesInPrint: false,
+        },
+        items: mappedItems,
+        recommendations: {
+            bullets: state.recommendations
+                ? state.recommendations.split('\n').filter(Boolean)
+                : [],
+            exams: state.exams || [],
+            customExams: [],
+            examReasons: [],
+            waterMlPerDay: '',
+            specialControlPharmacy: 'veterinária' as const,
+            standardTemplateId: state.templateId || '',
+            specialControlTemplateId: '',
+        }
+    }
+}
+
+export function buildPrintDocFromNovaReceita2(
+    state: NovaReceita2State,
+    _template?: Partial<RxTemplateStyle>
+): PrintDoc {
+    const rxState = buildPrescriptionStateFromNovaReceita2(state)
+    const doc = renderRxToPrintDoc(rxState)
+
+    // Formatar endereço do tutor em uma linha (sem microchip)
+    const tutorAddressLine = [
+        state.tutor?.street,
+        state.tutor?.number,
+        state.tutor?.complement,
+        state.tutor?.neighborhood,
+        state.tutor?.city && state.tutor?.state
+            ? `${state.tutor.city}/${state.tutor.state}`
+            : state.tutor?.city || state.tutor?.state,
+        state.tutor?.zipcode,
+        state.tutor?.phone,
+    ].filter(Boolean).join(', ')
+
+    doc.addressLine = tutorAddressLine || ''
+
+    return doc
+}

@@ -101,7 +101,7 @@ function highlightInstructionSegments(text: string): React.ReactNode[] {
   if (!source.trim()) return [source]
 
   const pattern =
-    /(\d+(?:[.,]\d+)?\s*[a-zA-ZÀ-ÿ%µ/]+(?:\s+por dose)?|por via [^,.;]*|a cada \d+\s*horas|uma vez por dia|\d+\s*vez(?:es)? por dia|iniciando às \d{2}:\d{2} do dia \d{2}\/\d{2}\/\d{4}|iniciando no dia \d{2}\/\d{2}\/\d{4}|durante \d+\s*dias|com uso contínuo até reavaliação do paciente|até terminar o medicamento)/gi
+    /(Administrar [^,.;]*|\d+(?:[.,]\d+)?\s*[a-zA-ZÀ-ÿ%µ/]+(?:\s+por dose)?|por via [^,.;]*|a cada \d+\s*horas|uma vez por dia|\d+\s*vez(?:es)? por dia|com uso por \d+\s*dias|com uso cont[ií]nuo|at[eé] reavalia[cç][aã]o do paciente|at[eé] terminar o medicamento|iniciando [aà]s \d{2}:\d{2}\s*hora)/gi
 
   const nodes: React.ReactNode[] = []
   let lastIndex = 0
