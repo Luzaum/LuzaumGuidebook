@@ -241,7 +241,7 @@ async function requestDeepSeekCompletion(
   model: string,
   prompt: string,
 ): Promise<string> {
-  const response = await fetch('/api/deepseek/v1/chat/completions', {
+  const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
