@@ -16,12 +16,26 @@ type PatientBlockProps = {
   onWeightChange: (value: string) => void
 }
 
-const physiologyOptions: PhysiologyState[] = ['Neonato', 'Filhote', 'Adulto', 'Idoso']
-const comorbidityOptions: Array<{ value: Comorbidity; icon: LucideIcon }> = [
-  { value: 'Cardiopata', icon: HeartPulse },
-  { value: 'Endocrinopata', icon: Sparkles },
-  { value: 'Hepatopata', icon: Syringe },
-  { value: 'Renopata', icon: Droplets },
+const physiologyOptions: Array<{
+  value: PhysiologyState
+  icon: LucideIcon
+  subtitle: string
+}> = [
+  { value: 'Neonato', icon: Sparkles, subtitle: 'Recém-nascido / muito jovem' },
+  { value: 'Filhote', icon: HeartPulse, subtitle: 'Paciente jovem em crescimento' },
+  { value: 'Adulto', icon: ShieldCheck, subtitle: 'Faixa fisiológica padrão' },
+  { value: 'Idoso', icon: Syringe, subtitle: 'Sênior com maior vigilância' },
+]
+
+const comorbidityOptions: Array<{
+  value: Comorbidity
+  icon: LucideIcon
+  subtitle: string
+}> = [
+  { value: 'Cardiopata', icon: HeartPulse, subtitle: 'Doença cardíaca / hemodinâmica' },
+  { value: 'Endocrinopata', icon: Sparkles, subtitle: 'Alteração hormonal / metabólica' },
+  { value: 'Hepatopata', icon: Syringe, subtitle: 'Comprometimento hepático' },
+  { value: 'Renopata', icon: Droplets, subtitle: 'Comprometimento renal' },
 ]
 
 export default function PatientBlock({
@@ -36,7 +50,7 @@ export default function PatientBlock({
 }: PatientBlockProps) {
   const handleWeight = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      onWeightChange(event.target.value)
+      onWeightChange(event.target.value.replace(',', '.'))
     },
     [onWeightChange],
   )
@@ -83,20 +97,25 @@ export default function PatientBlock({
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         <div className="crivet-field-group">
           <FieldLabel text="Estado fisiológico" tooltipId={'physiology_age_help' as TooltipId} className="crivet-field-label" />
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          <div className="crivet-choice-grid">
             {physiologyOptions.map((option) => {
-              const selected = physiology === option
+              const selected = physiology === option.value
+              const Icon = option.icon
               return (
                 <button
-                  key={option}
+                  key={option.value}
                   type="button"
-                  onClick={() => onPhysiologyChange(option)}
+                  onClick={() => onPhysiologyChange(option.value)}
                   aria-pressed={selected}
-                  className={`crivet-toggle-btn crivet-toggle-btn--physiology ${selected ? 'crivet-toggle-btn--active-teal' : ''}`}
+                  className={`crivet-choice-btn ${selected ? 'crivet-choice-btn--physio-active' : ''}`}
                 >
-                  <span className="crivet-toggle-main">{option}</span>
+                  <div className="crivet-choice-head">
+                    <Icon className="crivet-choice-icon" aria-hidden="true" />
+                    <span className="crivet-choice-title">{option.value}</span>
+                  </div>
+                  <p className="crivet-choice-subtitle">{option.subtitle}</p>
                   <ShieldCheck
-                    className={`crivet-toggle-check ${selected ? 'crivet-toggle-check--visible' : ''}`}
+                    className={`crivet-choice-check ${selected ? 'crivet-choice-check--active' : ''}`}
                     aria-hidden="true"
                   />
                 </button>
@@ -107,7 +126,7 @@ export default function PatientBlock({
 
         <div className="crivet-field-group">
           <FieldLabel text="Comorbidades" tooltipId={'comorbidities_help' as TooltipId} className="crivet-field-label" />
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          <div className="crivet-choice-grid">
             {comorbidityOptions.map((option) => {
               const selected = comorbidities.includes(option.value)
               const Icon = option.icon
@@ -117,14 +136,15 @@ export default function PatientBlock({
                   type="button"
                   onClick={() => onComorbidityToggle(option.value)}
                   aria-pressed={selected}
-                  className={`crivet-toggle-btn crivet-toggle-btn--comorbidity ${selected ? 'crivet-toggle-btn--active-rose' : ''}`}
+                  className={`crivet-choice-btn ${selected ? 'crivet-choice-btn--comorb-active' : ''}`}
                 >
-                  <span className="crivet-comorbidity-icon" aria-hidden="true">
-                    <Icon className="h-3.5 w-3.5" />
-                  </span>
-                  <span className="crivet-toggle-main">{option.value}</span>
+                  <div className="crivet-choice-head">
+                    <Icon className="crivet-choice-icon" aria-hidden="true" />
+                    <span className="crivet-choice-title">{option.value}</span>
+                  </div>
+                  <p className="crivet-choice-subtitle">{option.subtitle}</p>
                   <ShieldCheck
-                    className={`crivet-toggle-check ${selected ? 'crivet-toggle-check--visible' : ''}`}
+                    className={`crivet-choice-check ${selected ? 'crivet-choice-check--active' : ''}`}
                     aria-hidden="true"
                   />
                 </button>

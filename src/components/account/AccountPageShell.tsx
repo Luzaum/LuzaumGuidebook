@@ -10,7 +10,7 @@ type AccountPageShellProps = {
 }
 
 const accountLinks = [
-  { to: '/app', label: 'Area logada', icon: ShieldCheck },
+  { to: '/app', label: 'Área logada', icon: ShieldCheck },
   { to: '/conta/perfil', label: 'Alterar perfil', icon: UserRound },
   { to: '/conta/configurações', label: 'Configurações', icon: Settings },
   { to: '/conta/clínica', label: 'Minha clínica', icon: Building2 },
@@ -33,7 +33,7 @@ export function AccountPageShell({ title, subtitle, children }: AccountPageShell
   const { profile } = useAuthSession()
   const { clinicName, role } = useClinic()
 
-  const displayName = profile?.name || 'Usuario'
+  const displayName = profile?.name || 'Usuário'
   const displayEmail = profile?.email || '-'
   const initials = buildInitials(displayName)
   const activeClinic = clinicName || 'Não definida'

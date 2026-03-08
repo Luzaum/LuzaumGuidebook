@@ -86,7 +86,7 @@ function normalizeUploadError(error: unknown, bucket: string): Error {
   }
 
   if (lower.includes('row-level security') || lower.includes('not authorized') || lower.includes('jwt')) {
-    return new Error('Sem permissao para upload no Supabase Storage. Verifique login/policies do bucket.')
+    return new Error('Sem permissão para upload no Supabase Storage. Verifique login/policies do bucket.')
   }
 
   if (!message) {

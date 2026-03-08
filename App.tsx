@@ -21,6 +21,18 @@ const EscalasDorPage = lazy(() => import('./modules/escalas-dor/App'))
 const CrivetPage = lazy(() => import('./modules/crivet/pages/CrivetPage'))
 const VeteletroliticoPage = lazy(() => import('./modules/veteletrolitico/App'))
 const ReceituarioVetPage = lazy(() => import('./modules/receituario-vet/App'))
+const ConsultaVetShell = lazy(() => import('./modules/consulta-vet/components/layout/ConsultaVetShell').then((m) => ({ default: m.ConsultaVetShell })))
+const ConsultaVetHomePage = lazy(() => import('./modules/consulta-vet/pages/HomePage').then((m) => ({ default: m.HomePage })))
+const ConsultaVetDiseasesPage = lazy(() => import('./modules/consulta-vet/pages/DiseasesPage').then((m) => ({ default: m.DiseasesPage })))
+const ConsultaVetDiseaseDetailPage = lazy(() => import('./modules/consulta-vet/pages/DiseaseDetailPage').then((m) => ({ default: m.DiseaseDetailPage })))
+const ConsultaVetMedicationsPage = lazy(() => import('./modules/consulta-vet/pages/MedicationsPage').then((m) => ({ default: m.MedicationsPage })))
+const ConsultaVetMedicationDetailPage = lazy(() => import('./modules/consulta-vet/pages/MedicationDetailPage').then((m) => ({ default: m.MedicationDetailPage })))
+const ConsultaVetConsensosPage = lazy(() => import('./modules/consulta-vet/pages/ConsensosPage').then((m) => ({ default: m.ConsensosPage })))
+const ConsultaVetConsensoDetailPage = lazy(() => import('./modules/consulta-vet/pages/ConsensoDetailPage').then((m) => ({ default: m.ConsensoDetailPage })))
+const ConsultaVetFavoritesPage = lazy(() => import('./modules/consulta-vet/pages/FavoritesPage').then((m) => ({ default: m.FavoritesPage })))
+const ConsultaVetRecentsPage = lazy(() => import('./modules/consulta-vet/pages/RecentsPage').then((m) => ({ default: m.RecentsPage })))
+const ConsultaVetCategoriesPage = lazy(() => import('./modules/consulta-vet/pages/CategoriesPage').then((m) => ({ default: m.CategoriesPage })))
+const ConsultaVetCategoryDetailPage = lazy(() => import('./modules/consulta-vet/pages/CategoryDetailPage').then((m) => ({ default: m.CategoryDetailPage })))
 const NovaReceitaPage = lazy(() => import('./modules/receituario-vet/NovaReceitaPage'))
 const NovaReceita2Page = lazy(() => import('./modules/receituario-vet/NovaReceita2Page'))
 const NovaReceita2PrintPage = lazy(() => import('./modules/receituario-vet/NovaReceita2PrintPage'))
@@ -102,6 +114,19 @@ const appRoutes = (
     <Route path="/crivet" element={<CrivetPage />} />
     <Route path="/neurologia" element={<NeurologiaPage />} />
     <Route path="/veteletrolitico" element={<VeteletroliticoPage />} />
+    <Route path="/consulta-vet" element={<ConsultaVetShell />}>
+      <Route index element={<ConsultaVetHomePage />} />
+      <Route path="doencas" element={<ConsultaVetDiseasesPage />} />
+      <Route path="doencas/:slug" element={<ConsultaVetDiseaseDetailPage />} />
+      <Route path="medicamentos" element={<ConsultaVetMedicationsPage />} />
+      <Route path="medicamentos/:slug" element={<ConsultaVetMedicationDetailPage />} />
+      <Route path="consensos" element={<ConsultaVetConsensosPage />} />
+      <Route path="consensos/:slug" element={<ConsultaVetConsensoDetailPage />} />
+      <Route path="favoritos" element={<ConsultaVetFavoritesPage />} />
+      <Route path="recentes" element={<ConsultaVetRecentsPage />} />
+      <Route path="categorias" element={<ConsultaVetCategoriesPage />} />
+      <Route path="categorias/:slug" element={<ConsultaVetCategoryDetailPage />} />
+    </Route>
     <Route path="/rifa" element={<ModuleIframe />} />
     <Route path="/supabase-test" element={<SupabaseTestPage />} />
     <Route path="*" element={<Navigate to="/" replace />} />

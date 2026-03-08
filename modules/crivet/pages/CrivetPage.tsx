@@ -1,10 +1,9 @@
-﻿import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import {
   AlertTriangle,
   CircleUserRound,
   Pill,
   Calculator,
-  FileText,
   ChevronRight,
   Stethoscope,
 } from 'lucide-react'
@@ -33,11 +32,17 @@ type NavSection = {
   icon: React.ComponentType<{ className?: string }>
 }
 
+function parseLocaleNumber(value: string): number {
+  const normalized = value.replace(',', '.').trim()
+  if (!normalized) return 0
+  const parsed = Number(normalized)
+  return Number.isFinite(parsed) ? parsed : 0
+}
+
 const NAV_SECTIONS: NavSection[] = [
   { id: 'crivet-step-1', title: 'Paciente', icon: CircleUserRound },
   { id: 'crivet-step-2', title: 'Seleção de fármaco', icon: Pill },
   { id: 'crivet-step-3', title: 'Cálculo de infusão', icon: Calculator },
-  { id: 'crivet-step-4', title: 'Explicação do cálculo', icon: FileText },
 ]
 
 export default function CrivetPage() {
@@ -58,7 +63,7 @@ export default function CrivetPage() {
   )
 
   const handleDrugSelect = useCallback((drug: Drug) => setSelectedDrugId(drug.id), [])
-  const hasValidWeight = Number(weight) > 0
+  const hasValidWeight = parseLocaleNumber(weight) > 0
 
   const scrollToSection = useCallback((id: string) => {
     const section = document.getElementById(id)
@@ -118,6 +123,8 @@ export default function CrivetPage() {
   }, [species, weight, physiology, comorbidities, selectedDrugId])
 
   useEffect(() => {
+    const scrollRoot = document.querySelector('main.flex-1.overflow-auto') as HTMLElement | null
+
     const updateActiveSection = () => {
       let candidate = NAV_SECTIONS[0].id
       for (const section of NAV_SECTIONS) {
@@ -130,6 +137,10 @@ export default function CrivetPage() {
     }
 
     updateActiveSection()
+    if (scrollRoot) {
+      scrollRoot.addEventListener('scroll', updateActiveSection, { passive: true })
+      return () => scrollRoot.removeEventListener('scroll', updateActiveSection)
+    }
     window.addEventListener('scroll', updateActiveSection, { passive: true })
     return () => window.removeEventListener('scroll', updateActiveSection)
   }, [])
@@ -144,9 +155,13 @@ export default function CrivetPage() {
 
       <div className="crivet-app-shell">
         <aside className="crivet-sidebar-nav" aria-label="Navegação do CRIVET">
-          <button type="button" className="crivet-sidebar-logo" onClick={handleLogoClick} aria-label="Voltar ao início">
+          <button
+            type="button"
+            className="crivet-sidebar-logo crivet-sidebar-logo--bare"
+            onClick={handleLogoClick}
+            aria-label="Voltar ao início"
+          >
             <img src="/apps/CRIVET.png" alt="CRI VET" className="crivet-sidebar-logo-img" />
-            <span className="crivet-sidebar-logo-text">CRI VET</span>
           </button>
 
           <nav className="crivet-sidebar-links">
@@ -221,33 +236,6 @@ export default function CrivetPage() {
             />
           </section>
 
-          <section id="crivet-step-4" className="crivet-scroll-section">
-            <article className="crivet-card crivet-explain-card">
-              <div className="crivet-card-header">
-                <div className="crivet-step-badge">4</div>
-                <h2 className="crivet-card-title">Explicação do cálculo</h2>
-              </div>
-
-              <div className="crivet-explain-grid">
-                <div className="crivet-explain-item">
-                  <h3>1. Defina a dose-alvo</h3>
-                  <p>Escolha unidade e dose conforme a indicação clínica do fármaco selecionado.</p>
-                </div>
-                <div className="crivet-explain-item">
-                  <h3>2. Configure concentração</h3>
-                  <p>Use concentração comercial ou personalizada para refletir o frasco disponível.</p>
-                </div>
-                <div className="crivet-explain-item">
-                  <h3>3. Configure o preparo</h3>
-                  <p>Defina seringa/bolsa, volume, taxa da bomba e tipo de fluido para o protocolo da sua rotina.</p>
-                </div>
-                <div className="crivet-explain-item">
-                  <h3>4. Valide o passo a passo</h3>
-                  <p>No resultado, abra “Cálculo explicado” para auditar cada etapa e copiar as instruções.</p>
-                </div>
-              </div>
-            </article>
-          </section>
         </main>
       </div>
     </div>

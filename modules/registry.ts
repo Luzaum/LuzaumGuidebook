@@ -15,6 +15,7 @@ import {
   LucideIcon,
   Activity,
   Ticket,
+  Stethoscope,
 } from 'lucide-react'
 import calcEnergeticaLogo from '@/assets/logos/logo-calculadora-energetica.png'
 
@@ -57,7 +58,7 @@ export const modules: Module[] = [
     route: '/transfusão-sanguinea',
     status: 'internal',
     icon: Heart,
-    iconImage: '/apps/transfusão.png',
+    iconImage: '/apps/transfusao.png',
   },
   {
     id: 'hemogasometria',
@@ -73,9 +74,8 @@ export const modules: Module[] = [
     title: 'Escalas de Dor',
     description: 'Escalas de dor e protocolos de analgesia',
     route: '/dor',
-    status: 'iframe',
+    status: 'internal',
     icon: Cat,
-    iframeUrl: 'https://analgesiavet.netlify.app',
     iconImage: '/apps/dor.png',
   },
   {
@@ -86,7 +86,7 @@ export const modules: Module[] = [
     status: 'iframe',
     icon: Zap,
     iframeUrl: 'https://emergências-vet.netlify.app',
-    iconImage: '/apps/emergência.png',
+    iconImage: '/apps/emergencia.png',
   },
   {
     id: 'peconhentos',
@@ -141,6 +141,16 @@ export const modules: Module[] = [
     route: '/veteletrolitico',
     status: 'internal',
     icon: Activity,
+    iconImage: '/apps/veteletrolitico.svg',
+  },
+  {
+    id: 'consulta-vet',
+    title: 'Consulta VET',
+    description: 'Consulta clínica veterinária com doenças, medicamentos, consensos e favoritos.',
+    route: '/consulta-vet',
+    status: 'internal',
+    icon: Stethoscope,
+    iconImage: '/apps/consulta-vet.svg',
   },
 
 ]

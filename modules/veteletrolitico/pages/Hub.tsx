@@ -23,9 +23,9 @@ interface HubProps {
 
 export const Hub: React.FC<HubProps> = ({ onNavigate }) => {
     return (
-        <div className="font-display bg-vet-bg-light dark:bg-vet-bg-dark text-slate-900 dark:text-white transition-colors duration-200 h-full flex flex-col overflow-hidden">
+        <div className="font-display bg-vet-bg-light dark:bg-vet-bg-dark text-slate-900 dark:text-white transition-colors duration-200 min-h-[100dvh] flex flex-col overflow-x-hidden">
             {/* Top Header */}
-            <header className="sticky top-0 z-10 flex w-full items-center justify-between border-b border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-vet-surface-dark/80 backdrop-blur-md px-6 py-4">
+            <header className="sticky top-0 z-10 flex w-full items-center justify-between border-b border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-vet-surface-dark/80 backdrop-blur-md px-3 sm:px-4 md:px-6 py-4">
                 <div className="flex items-center gap-4">
                     <button className="md:hidden text-slate-500 dark:text-slate-400">
                         <Menu className="w-6 h-6" />
@@ -60,7 +60,7 @@ export const Hub: React.FC<HubProps> = ({ onNavigate }) => {
             </header>
 
             {/* Dashboard Content */}
-            <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-8 px-6 py-8 flex-1 overflow-y-auto">
+            <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-6 sm:gap-8 px-3 sm:px-4 md:px-6 py-6 sm:py-8 flex-1 overflow-y-auto">
                 {/* Welcome/Headline */}
                 <div className="flex flex-col gap-1">
                     <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Acesso Rápido</h1>

@@ -79,7 +79,7 @@ const INITIAL_NEW_TUTOR_FORM: NewTutorFormState = {
 
 function parseErrorMessage(error: unknown): string {
   if (error instanceof Error && error.message) return error.message
-  return 'Não foi possível salvar. Verifique conexao/permissao.'
+  return 'Não foi possível salvar. Verifique conexão/permissão.'
 }
 
 export function PatientCreateModal({
@@ -195,7 +195,7 @@ export function PatientCreateModal({
         <div className="sticky top-0 z-10 flex items-center justify-between border-b border-[#274b20] bg-[#11200e] px-5 py-4">
           <div>
             <h2 className="text-lg font-bold">Novo paciente</h2>
-            <p className="text-xs text-slate-400">Cadastre paciente e vincule a um tutor em um unico fluxo.</p>
+            <p className="text-xs text-slate-400">Cadastre paciente e vincule a um tutor em um único fluxo.</p>
           </div>
           <button
             type="button"
@@ -223,7 +223,7 @@ export function PatientCreateModal({
                 />
               </label>
               <label className="text-xs text-slate-300">
-                Especie
+                Espécie
                 <select
                   className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
                   value={patientForm.species}
@@ -236,7 +236,7 @@ export function PatientCreateModal({
                 </select>
               </label>
               <label className="text-xs text-slate-300">
-                Raca
+                Raça
                 <input
                   className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
                   value={patientForm.breed}
@@ -251,7 +251,7 @@ export function PatientCreateModal({
                   onChange={(event) => setPatientForm((prev) => ({ ...prev, sex: event.target.value as PatientInfo['sex'] }))}
                 >
                   <option value="Macho">Macho</option>
-                  <option value="F\u00eamea">Femea</option>
+                  <option value="F\u00eamea">Fêmea</option>
                   <option value="Sem dados">Sem dados</option>
                 </select>
               </label>
@@ -268,7 +268,7 @@ export function PatientCreateModal({
                   }
                 >
                   <option value="Castrado">Castrado</option>
-                  <option value="F\u00e9rtil">Fertil</option>
+                  <option value="F\u00e9rtil">Fértil</option>
                   <option value="Sem dados">Sem dados</option>
                 </select>
               </label>

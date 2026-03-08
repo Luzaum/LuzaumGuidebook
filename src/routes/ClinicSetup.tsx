@@ -45,7 +45,7 @@ export default function ClinicSetup() {
     <div className="mx-auto max-w-md p-6">
       <h1 className="mb-2 text-2xl font-semibold">Criar Clínica</h1>
       <p className="mb-4 text-sm text-slate-600">
-        Este e o primeiro acesso desta conta. Crie sua clínica para ativar o ambiente.
+        Este é o primeiro acesso desta conta. Crie sua clínica para ativar o ambiente.
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-3">

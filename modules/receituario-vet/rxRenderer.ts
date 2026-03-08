@@ -494,12 +494,9 @@ export function renderRxToPrintDoc(
         const instruction = resolveInstruction(item, state)
         const subtitleParts = [item.presentation]
 
-        // G3: Mostrar cálculo de dose/volume no subtitle
+        // Mostrar resumo no padrão da receita: "Por dose" ou "Total estimado"
         if (qty.label !== 'Quantidade não calculada') {
-          const doseStr = qty.perDose !== null ? `${formatNumber(qty.perDose)} ${qty.unit}` : ''
-          const totalStr = qty.total !== null ? ` · Total: ${formatNumber(qty.total)} ${qty.unit}` : ''
-          const calcLabel = doseStr ? `Dose calculada: ${doseStr}${totalStr}` : qty.label
-          subtitleParts.push(calcLabel)
+          subtitleParts.push(qty.label)
         } else if (toNumber(item.doseValue) !== null) {
           // G4: Dose presente mas cálculo não pôde ser completado — mostrar hint sem crashar
           const missingWeight = (item.doseUnit || '').includes('/kg') && !toNumber(state.patient.weightKg)

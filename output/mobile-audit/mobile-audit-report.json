@@ -1,0 +1,830 @@
+[
+  {
+    "viewport": {
+      "name": "w375",
+      "width": 375,
+      "height": 812
+    },
+    "route": "/",
+    "url": "http://127.0.0.1:4173/",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\root_w375.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 375,
+      "maxWidth": 375,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 19,
+      "tinyTargets": 3,
+      "title": "Vetius",
+      "path": "/"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w375",
+      "width": 375,
+      "height": 812
+    },
+    "route": "/hub",
+    "url": "http://127.0.0.1:4173/hub",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\hub_w375.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 375,
+      "maxWidth": 375,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 18,
+      "tinyTargets": 2,
+      "title": "Vetius",
+      "path": "/hub"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w375",
+      "width": 375,
+      "height": 812
+    },
+    "route": "/calculadora-energetica",
+    "url": "http://127.0.0.1:4173/calculadora-energetica",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\calculadora-energetica_w375.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 375,
+      "maxWidth": 375,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 20,
+      "tinyTargets": 2,
+      "title": "Vetius",
+      "path": "/calculadora-energetica"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w375",
+      "width": 375,
+      "height": 812
+    },
+    "route": "/crivet",
+    "url": "http://127.0.0.1:4173/crivet",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\crivet_w375.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 375,
+      "maxWidth": 375,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 84,
+      "tinyTargets": 11,
+      "title": "Vetius",
+      "path": "/crivet"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w375",
+      "width": 375,
+      "height": 812
+    },
+    "route": "/veteletrolitico",
+    "url": "http://127.0.0.1:4173/veteletrolitico",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\veteletrolitico_w375.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 375,
+      "maxWidth": 375,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 12,
+      "tinyTargets": 5,
+      "title": "Vetius",
+      "path": "/veteletrolitico"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w375",
+      "width": 375,
+      "height": 812
+    },
+    "route": "/fluidoterapia",
+    "url": "http://127.0.0.1:4173/fluidoterapia",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\fluidoterapia_w375.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 375,
+      "maxWidth": 375,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 0,
+      "tinyTargets": 0,
+      "title": "",
+      "path": "/fluidoterapia"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w375",
+      "width": 375,
+      "height": 812
+    },
+    "route": "/transfusao-sanguinea",
+    "url": "http://127.0.0.1:4173/transfusao-sanguinea",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\transfusao-sanguinea_w375.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 375,
+      "maxWidth": 375,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 24,
+      "tinyTargets": 5,
+      "title": "Vetius",
+      "path": "/transfusao-sanguinea"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w375",
+      "width": 375,
+      "height": 812
+    },
+    "route": "/hemogasometria",
+    "url": "http://127.0.0.1:4173/hemogasometria",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\hemogasometria_w375.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 375,
+      "maxWidth": 375,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 0,
+      "tinyTargets": 0,
+      "title": "",
+      "path": "/hemogasometria"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w375",
+      "width": 375,
+      "height": 812
+    },
+    "route": "/dor",
+    "url": "http://127.0.0.1:4173/dor",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\dor_w375.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 375,
+      "maxWidth": 375,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 11,
+      "tinyTargets": 4,
+      "title": "Vetius",
+      "path": "/dor"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w375",
+      "width": 375,
+      "height": 812
+    },
+    "route": "/consulta-vet",
+    "url": "http://127.0.0.1:4173/consulta-vet",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\consulta-vet_w375.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 375,
+      "maxWidth": 375,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 29,
+      "tinyTargets": 20,
+      "title": "Vetius",
+      "path": "/consulta-vet"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w375",
+      "width": 375,
+      "height": 812
+    },
+    "route": "/neurologia",
+    "url": "http://127.0.0.1:4173/neurologia",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\neurologia_w375.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 375,
+      "maxWidth": 375,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 25,
+      "tinyTargets": 2,
+      "title": "Vetius",
+      "path": "/neurologia"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w375",
+      "width": 375,
+      "height": 812
+    },
+    "route": "/receituario-vet",
+    "url": "http://127.0.0.1:4173/receituario-vet",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\receituario-vet_w375.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 375,
+      "maxWidth": 375,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 8,
+      "tinyTargets": 0,
+      "title": "Vetius",
+      "path": "/login"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w390",
+      "width": 390,
+      "height": 844
+    },
+    "route": "/",
+    "url": "http://127.0.0.1:4173/",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\root_w390.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 390,
+      "maxWidth": 390,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 19,
+      "tinyTargets": 3,
+      "title": "Vetius",
+      "path": "/"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w390",
+      "width": 390,
+      "height": 844
+    },
+    "route": "/hub",
+    "url": "http://127.0.0.1:4173/hub",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\hub_w390.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 390,
+      "maxWidth": 390,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 18,
+      "tinyTargets": 2,
+      "title": "Vetius",
+      "path": "/hub"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w390",
+      "width": 390,
+      "height": 844
+    },
+    "route": "/calculadora-energetica",
+    "url": "http://127.0.0.1:4173/calculadora-energetica",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\calculadora-energetica_w390.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 390,
+      "maxWidth": 390,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 20,
+      "tinyTargets": 2,
+      "title": "Vetius",
+      "path": "/calculadora-energetica"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w390",
+      "width": 390,
+      "height": 844
+    },
+    "route": "/crivet",
+    "url": "http://127.0.0.1:4173/crivet",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\crivet_w390.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 390,
+      "maxWidth": 390,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 84,
+      "tinyTargets": 11,
+      "title": "Vetius",
+      "path": "/crivet"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w390",
+      "width": 390,
+      "height": 844
+    },
+    "route": "/veteletrolitico",
+    "url": "http://127.0.0.1:4173/veteletrolitico",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\veteletrolitico_w390.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 390,
+      "maxWidth": 390,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 12,
+      "tinyTargets": 5,
+      "title": "Vetius",
+      "path": "/veteletrolitico"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w390",
+      "width": 390,
+      "height": 844
+    },
+    "route": "/fluidoterapia",
+    "url": "http://127.0.0.1:4173/fluidoterapia",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\fluidoterapia_w390.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 390,
+      "maxWidth": 390,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 0,
+      "tinyTargets": 0,
+      "title": "",
+      "path": "/fluidoterapia"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w390",
+      "width": 390,
+      "height": 844
+    },
+    "route": "/transfusao-sanguinea",
+    "url": "http://127.0.0.1:4173/transfusao-sanguinea",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\transfusao-sanguinea_w390.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 390,
+      "maxWidth": 390,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 24,
+      "tinyTargets": 5,
+      "title": "Vetius",
+      "path": "/transfusao-sanguinea"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w390",
+      "width": 390,
+      "height": 844
+    },
+    "route": "/hemogasometria",
+    "url": "http://127.0.0.1:4173/hemogasometria",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\hemogasometria_w390.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 390,
+      "maxWidth": 390,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 0,
+      "tinyTargets": 0,
+      "title": "",
+      "path": "/hemogasometria"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w390",
+      "width": 390,
+      "height": 844
+    },
+    "route": "/dor",
+    "url": "http://127.0.0.1:4173/dor",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\dor_w390.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 390,
+      "maxWidth": 390,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 11,
+      "tinyTargets": 4,
+      "title": "Vetius",
+      "path": "/dor"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w390",
+      "width": 390,
+      "height": 844
+    },
+    "route": "/consulta-vet",
+    "url": "http://127.0.0.1:4173/consulta-vet",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\consulta-vet_w390.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 390,
+      "maxWidth": 390,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 29,
+      "tinyTargets": 20,
+      "title": "Vetius",
+      "path": "/consulta-vet"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w390",
+      "width": 390,
+      "height": 844
+    },
+    "route": "/neurologia",
+    "url": "http://127.0.0.1:4173/neurologia",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\neurologia_w390.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 390,
+      "maxWidth": 390,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 25,
+      "tinyTargets": 2,
+      "title": "Vetius",
+      "path": "/neurologia"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w390",
+      "width": 390,
+      "height": 844
+    },
+    "route": "/receituario-vet",
+    "url": "http://127.0.0.1:4173/receituario-vet",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\receituario-vet_w390.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 390,
+      "maxWidth": 390,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 8,
+      "tinyTargets": 0,
+      "title": "Vetius",
+      "path": "/login"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w430",
+      "width": 430,
+      "height": 932
+    },
+    "route": "/",
+    "url": "http://127.0.0.1:4173/",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\root_w430.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 430,
+      "maxWidth": 430,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 19,
+      "tinyTargets": 3,
+      "title": "Vetius",
+      "path": "/"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w430",
+      "width": 430,
+      "height": 932
+    },
+    "route": "/hub",
+    "url": "http://127.0.0.1:4173/hub",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\hub_w430.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 430,
+      "maxWidth": 430,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 18,
+      "tinyTargets": 2,
+      "title": "Vetius",
+      "path": "/hub"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w430",
+      "width": 430,
+      "height": 932
+    },
+    "route": "/calculadora-energetica",
+    "url": "http://127.0.0.1:4173/calculadora-energetica",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\calculadora-energetica_w430.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 430,
+      "maxWidth": 430,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 20,
+      "tinyTargets": 2,
+      "title": "Vetius",
+      "path": "/calculadora-energetica"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w430",
+      "width": 430,
+      "height": 932
+    },
+    "route": "/crivet",
+    "url": "http://127.0.0.1:4173/crivet",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\crivet_w430.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 430,
+      "maxWidth": 430,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 84,
+      "tinyTargets": 11,
+      "title": "Vetius",
+      "path": "/crivet"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w430",
+      "width": 430,
+      "height": 932
+    },
+    "route": "/veteletrolitico",
+    "url": "http://127.0.0.1:4173/veteletrolitico",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\veteletrolitico_w430.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 430,
+      "maxWidth": 430,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 12,
+      "tinyTargets": 5,
+      "title": "Vetius",
+      "path": "/veteletrolitico"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w430",
+      "width": 430,
+      "height": 932
+    },
+    "route": "/fluidoterapia",
+    "url": "http://127.0.0.1:4173/fluidoterapia",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\fluidoterapia_w430.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 430,
+      "maxWidth": 430,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 0,
+      "tinyTargets": 0,
+      "title": "",
+      "path": "/fluidoterapia"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w430",
+      "width": 430,
+      "height": 932
+    },
+    "route": "/transfusao-sanguinea",
+    "url": "http://127.0.0.1:4173/transfusao-sanguinea",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\transfusao-sanguinea_w430.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 430,
+      "maxWidth": 430,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 24,
+      "tinyTargets": 5,
+      "title": "Vetius",
+      "path": "/transfusao-sanguinea"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w430",
+      "width": 430,
+      "height": 932
+    },
+    "route": "/hemogasometria",
+    "url": "http://127.0.0.1:4173/hemogasometria",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\hemogasometria_w430.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 430,
+      "maxWidth": 430,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 0,
+      "tinyTargets": 0,
+      "title": "",
+      "path": "/hemogasometria"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w430",
+      "width": 430,
+      "height": 932
+    },
+    "route": "/dor",
+    "url": "http://127.0.0.1:4173/dor",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\dor_w430.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 430,
+      "maxWidth": 430,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 11,
+      "tinyTargets": 4,
+      "title": "Vetius",
+      "path": "/dor"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w430",
+      "width": 430,
+      "height": 932
+    },
+    "route": "/consulta-vet",
+    "url": "http://127.0.0.1:4173/consulta-vet",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\consulta-vet_w430.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 430,
+      "maxWidth": 430,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 29,
+      "tinyTargets": 20,
+      "title": "Vetius",
+      "path": "/consulta-vet"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w430",
+      "width": 430,
+      "height": 932
+    },
+    "route": "/neurologia",
+    "url": "http://127.0.0.1:4173/neurologia",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\neurologia_w430.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 430,
+      "maxWidth": 430,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 25,
+      "tinyTargets": 2,
+      "title": "Vetius",
+      "path": "/neurologia"
+    }
+  },
+  {
+    "viewport": {
+      "name": "w430",
+      "width": 430,
+      "height": 932
+    },
+    "route": "/receituario-vet",
+    "url": "http://127.0.0.1:4173/receituario-vet",
+    "navOk": true,
+    "navError": "",
+    "screenshotPath": "C:\\PROJETOS VET\\Vetius\\output\\mobile-audit\\receituario-vet_w430.png",
+    "screenshotOk": true,
+    "screenshotError": "",
+    "metrics": {
+      "viewportWidth": 430,
+      "maxWidth": 430,
+      "horizontalOverflowPx": 0,
+      "interactiveCount": 8,
+      "tinyTargets": 0,
+      "title": "Vetius",
+      "path": "/login"
+    }
+  }
+]

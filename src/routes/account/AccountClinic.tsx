@@ -48,7 +48,7 @@ export default function AccountClinic() {
           <article className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
             <div className="flex items-center gap-2 text-slate-700 dark:text-slate-200">
               <ShieldCheck className="h-4 w-4" />
-              <h2 className="text-sm font-semibold">Vinculo de segurança</h2>
+              <h2 className="text-sm font-semibold">Vínculo de segurança</h2>
             </div>
             <div className="mt-3 space-y-1 text-sm text-slate-600 dark:text-slate-300">
               <p>
@@ -80,13 +80,13 @@ export default function AccountClinic() {
       )}
 
       <section className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
-        <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Navegacao relacionada</h2>
+        <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Navegação relacionada</h2>
         <div className="mt-3 grid gap-2 sm:grid-cols-2">
           <Link
             to="/app"
             className="rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
           >
-            Voltar para area logada
+            Voltar para área logada
           </Link>
           <Link
             to="/conta/perfil"

@@ -28,7 +28,7 @@ export const Library: React.FC<LibraryProps> = ({ onNavigate }) => {
     const [selectedCondition, setSelectedCondition] = useState('hipercalemia')
 
     return (
-        <div className="font-display bg-vet-bg-light dark:bg-vet-bg-dark text-vet-text-main h-screen overflow-hidden flex">
+        <div className="font-display bg-vet-bg-light dark:bg-vet-bg-dark text-vet-text-main min-h-[100dvh] overflow-x-hidden flex">
             {/* Sidebar */}
             <aside className="w-64 flex-shrink-0 flex flex-col justify-between bg-vet-surface-dark border-r border-[#483623] h-full hidden md:flex">
                 <div className="flex flex-col p-4 gap-6">
@@ -77,7 +77,7 @@ export const Library: React.FC<LibraryProps> = ({ onNavigate }) => {
             {/* Main Content Area */}
             <main className="flex-1 flex flex-col h-full min-w-0 bg-vet-bg-dark relative">
                 {/* Top Bar (Mobile Menu + Breadcrumbs/Title) */}
-                <header className="flex items-center justify-between p-4 md:px-8 md:py-5 border-b border-[#483623] bg-vet-bg-dark/80 backdrop-blur-md z-10">
+                <header className="sticky top-0 flex items-center justify-between p-3 sm:p-4 md:px-8 md:py-5 border-b border-[#483623] bg-vet-bg-dark/80 backdrop-blur-md z-10">
                     <div className="flex flex-col gap-1">
                         <p className="text-vet-text-secondary text-sm font-medium">Biblioteca Clínica {'>'} Condições</p>
                         <h2 className="text-white text-2xl md:text-3xl font-extrabold tracking-tight">Guia Hidroeletrolítico</h2>

@@ -532,8 +532,8 @@ export default function NovaReceitaPage() {
       console.error(`[RX B1.1] ${action} failed`, error)
     }
     pushToast('error', action === 'search'
-      ? 'Não foi possível buscar. Verifique conexao/permissao.'
-      : 'Não foi possível salvar. Verifique conexao/permissao.')
+      ? 'Não foi possível buscar. Verifique conexão/permissão.'
+      : 'Não foi possível salvar. Verifique conexão/permissão.')
   }
 
   const applyPatientTutorToPrescription = (payload: DataAdapterPatientMatch) => {

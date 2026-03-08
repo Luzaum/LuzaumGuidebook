@@ -43,15 +43,7 @@ export function NeurologiaApp() {
     window.scrollTo(0, 0)
   }
 
-  const isNextDisabled = () => {
-    if (currentStep === 1) {
-      return !patient.species
-    }
-    if (currentStep === 2) {
-      return complaint.chiefComplaintIds.length === 0 || !complaint.temporalPattern
-    }
-    return false
-  }
+  const isNextDisabled = () => false
 
   return (
     <>

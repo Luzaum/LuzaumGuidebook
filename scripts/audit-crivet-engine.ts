@@ -154,7 +154,7 @@ function auditDrug(drug: any): DrugAudit {
   const recommendedUnit = drug.recommendedUnit || drug.profile?.doses?.unit_standard_cri || ''
   const recommendedUnitSupported = !!asDoseUnitOrNull(recommendedUnit)
   if (!recommendedUnit) notes.push('Unidade recomendada ausente.')
-  if (recommendedUnit && !recommendedUnitSupported) notes.push(`Unidade recomendada nao suportada pela engine: ${recommendedUnit}`)
+  if (recommendedUnit && !recommendedUnitSupported) notes.push(`Unidade recomendada não suportada pela engine: ${recommendedUnit}`)
 
   const doseSelection = chooseDose(drug)
   const indicatedDoseAvailable = doseSelection.source !== 'synthetic'
@@ -284,12 +284,12 @@ function buildReport(results: DrugAudit[]): string {
   lines.push(`- Total de farmacos auditados: ${total}`)
   lines.push(`- Funcionais: ${funcional}`)
   lines.push(`- Funcionais com ressalvas: ${ressalvas}`)
-  lines.push(`- Nao funcionais: ${naoFuncional}`)
+  lines.push(`- Não funcionais: ${naoFuncional}`)
   lines.push('')
   lines.push('## Lacunas de Dados')
   lines.push(`- Sem dose indicada CRI estruturada: ${missingDose}`)
   lines.push(`- Sem unidade recomendada: ${missingUnit}`)
-  lines.push(`- Unidade recomendada nao suportada pela engine: ${unsupportedUnit}`)
+  lines.push(`- Unidade recomendada não suportada pela engine: ${unsupportedUnit}`)
   lines.push(`- Sem concentracao comercial no cadastro principal: ${missingConcentration}`)
   lines.push(`- Sem objeto de compatibilidade no cadastro: ${missingCompatibilityOption}`)
   lines.push(`- Compatibilidade sem detalhe especifico: ${missingCompatibilityDetail}`)
@@ -314,8 +314,8 @@ function buildReport(results: DrugAudit[]): string {
 
     lines.push(
       `| ${item.name} | ${item.category} | ${item.auditStatus} | ${item.directOk ? 'OK' : 'Falha'} | ${prep} | ${
-        item.indicatedDoseAvailable ? 'OK' : 'Nao'
-      } | ${unitCell} | ${item.concentrationAvailable ? 'OK' : 'Nao'} | ${item.compatibilityDetailsAvailable ? 'OK' : 'Nao'} | ${item.profileCompleteness}% |`,
+        item.indicatedDoseAvailable ? 'OK' : 'Não'
+      } | ${unitCell} | ${item.concentrationAvailable ? 'OK' : 'Não'} | ${item.compatibilityDetailsAvailable ? 'OK' : 'Não'} | ${item.profileCompleteness}% |`,
     )
   }
 

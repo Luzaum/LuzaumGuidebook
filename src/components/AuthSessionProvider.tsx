@@ -35,7 +35,7 @@ function safeDisplayNameFromUser(user: User): string {
   if (fullName) return fullName
 
   const email = safeEmailFromUser(user)
-  if (!email.includes('@')) return 'Usuario'
+  if (!email.includes('@')) return 'Usuário'
   return email.split('@')[0]
 }
 
@@ -91,7 +91,7 @@ function readProfileFromStorage(): AuthProfile | null {
     const id = String(parsed.id || '').trim()
     const email = String(parsed.email || '').trim()
     if (!id || !email) return null
-    const name = String(parsed.name || '').trim() || 'Usuario'
+    const name = String(parsed.name || '').trim() || 'Usuário'
     const avatarUrl = String(parsed.avatarUrl || '').trim() || fallbackAvatarFromName(name)
     return { id, email, name, avatarUrl }
   } catch {

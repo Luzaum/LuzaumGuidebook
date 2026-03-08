@@ -1,4 +1,4 @@
-export type NaturalDietSheet = 'dog' | 'cat_normal' | 'cat_obese';
+﻿export type NaturalDietSheet = 'dog' | 'cat_normal' | 'cat_obese';
 
 export interface NaturalDietInfoField {
   value: number | string;
@@ -55,7 +55,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 25.3
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 50.45
       },
       {
@@ -148,7 +148,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 21.23
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 55.02
       },
       {
@@ -249,7 +249,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 26.47
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 47.52
       }
     ],
@@ -344,7 +344,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 24.57
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 48.96
       },
       {
@@ -419,7 +419,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 15.0
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 63.52
       },
       {
@@ -512,7 +512,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 16.0
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 59.54
       },
       {
@@ -593,7 +593,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 14.0
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 59.5
       },
       {
@@ -690,7 +690,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 30.75
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 53.95
       },
       {
@@ -789,7 +789,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 17.0
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 64.68
       },
       {
@@ -882,7 +882,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 24.57
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 58.13
       },
       {
@@ -987,7 +987,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 41.72
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 27.81
       },
       {
@@ -1080,7 +1080,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 45.0
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 27.82
       },
       {
@@ -1173,7 +1173,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 24.57
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 58.13
       },
       {
@@ -1278,7 +1278,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 27.55
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 42.42
       },
       {
@@ -1329,7 +1329,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 20.0
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 41.44
       },
       {
@@ -1421,7 +1421,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 35.65
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 52.24
       },
       {
@@ -1502,7 +1502,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 31.87
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 44.51
       },
       {
@@ -1595,7 +1595,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 31.84
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 42.14
       },
       {
@@ -1688,7 +1688,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 25.58
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 49.87
       },
       {
@@ -1781,7 +1781,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 41.72
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 27.81
       },
       {
@@ -1874,7 +1874,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 45.0
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 27.82
       },
       {
@@ -1967,7 +1967,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 31.87
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 44.51
       },
       {
@@ -2060,7 +2060,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 31.84
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 42.14
       },
       {
@@ -2153,7 +2153,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 25.58
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 49.87
       },
       {
@@ -2246,7 +2246,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 41.72
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 27.81
       },
       {
@@ -2339,7 +2339,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 45.0
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 27.82
       },
       {
@@ -2432,7 +2432,7 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
         "value": 46.14
       },
       {
-        "label": "Extrativo Nao Nitrogenado",
+        "label": "Extrativo Não Nitrogenado",
         "value": 39.11
       },
       {
@@ -2498,3 +2498,4 @@ export const NATURAL_DIET_PLANS: NaturalDietPlan[] = [
     ]
   }
 ] as const;
+

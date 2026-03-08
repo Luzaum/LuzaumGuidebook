@@ -26,7 +26,7 @@ export default function VeteletroliticoPage() {
     }
 
     return (
-        <div className="w-full h-screen overflow-hidden bg-vet-bg-light dark:bg-vet-bg-dark">
+        <div className="w-full min-h-[100dvh] overflow-x-hidden bg-vet-bg-light dark:bg-vet-bg-dark">
             {renderScreen()}
         </div>
     )

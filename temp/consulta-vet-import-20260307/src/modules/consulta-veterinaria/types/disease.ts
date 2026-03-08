@@ -1,0 +1,30 @@
+export interface DiseaseRecord {
+  id: string;
+  slug: string;
+  title: string;
+  synonyms: string[];
+  species: ('Cão' | 'Gato')[];
+  category: string;
+  tags: string[];
+  quickSummary: string;
+  redFlags: string[];
+  clinicalPearls: string[];
+  introduction: any;
+  etiology: any;
+  transmission: any;
+  pathophysiology: any;
+  epidemiology: any;
+  clinicalPresentation: any;
+  physicalExam: any;
+  differentialDiagnoses: any;
+  diagnostics: any;
+  diagnosticApproach: any;
+  treatment: any;
+  prognosis: any;
+  complications: any;
+  prevention: any;
+  relatedConsensusIds: string[];
+  relatedMedicationSlugs: string[];
+  isDemonstrative?: boolean;
+  warningLabel?: string;
+}

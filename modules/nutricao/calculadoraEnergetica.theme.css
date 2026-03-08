@@ -999,3 +999,289 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Energy section redesign (inspired by diagnostic reference) */
+#page-calc-energia.energy-v2 {
+  --energy-bg: linear-gradient(
+    148deg,
+    color-mix(in hsl, var(--metab-surface-strong) 86%, var(--metab-primary) 14%),
+    color-mix(in hsl, var(--metab-surface) 90%, var(--metab-secondary) 10%)
+  );
+  --energy-card: color-mix(in hsl, var(--metab-surface-strong) 92%, var(--metab-primary) 8%);
+  --energy-card-strong: color-mix(in hsl, var(--metab-surface-strong) 86%, var(--metab-secondary) 14%);
+  --energy-border: color-mix(in hsl, var(--metab-primary) 34%, transparent);
+  --energy-border-strong: color-mix(in hsl, var(--metab-primary) 58%, transparent);
+  --energy-text: var(--metab-text);
+  --energy-muted: var(--metab-text-soft);
+  --energy-accent: var(--metab-primary);
+  --energy-accent-soft: color-mix(in hsl, var(--metab-primary) 18%, transparent);
+  border: 1px solid color-mix(in hsl, var(--metab-primary) 24%, transparent);
+  border-radius: 1.2rem;
+  padding: clamp(1rem, 2vw, 1.3rem);
+  background: var(--energy-bg);
+  box-shadow: inset 0 1px 0 color-mix(in hsl, var(--metab-primary) 16%, transparent), var(--metab-shadow);
+  color: var(--energy-text);
+}
+
+.energy-v2-header {
+  border-bottom: 1px solid color-mix(in hsl, var(--metab-primary) 20%, transparent);
+  padding-bottom: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.energy-v2-title {
+  font-family: 'Sora', 'Manrope', sans-serif;
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+}
+
+.energy-v2-subtitle {
+  margin-top: 0.32rem;
+  color: var(--energy-muted);
+  font-size: 0.86rem;
+}
+
+.energy-v2-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.energy-v2-left-panel {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.energy-v2-block {
+  border: 1px solid var(--energy-border);
+  border-radius: 1rem;
+  background: linear-gradient(
+    145deg,
+    color-mix(in hsl, var(--metab-surface-strong) 86%, var(--metab-primary) 14%),
+    color-mix(in hsl, var(--metab-surface) 92%, var(--metab-secondary) 8%)
+  );
+  padding: 0.95rem;
+}
+
+.energy-v2-block-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  color: var(--energy-accent);
+  font-size: 0.88rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.energy-v2-fields {
+  margin-top: 0.8rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.energy-v2-label {
+  display: block;
+  margin-bottom: 0.42rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--energy-muted);
+}
+
+.energy-v2-label-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+#page-calc-energia.energy-v2 .energy-v2-input {
+  border-color: color-mix(in hsl, var(--metab-primary) 30%, transparent) !important;
+  background: color-mix(in hsl, var(--metab-surface-strong) 88%, var(--metab-primary) 12%) !important;
+  color: var(--energy-text) !important;
+}
+
+.energy-v2-species-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem;
+}
+
+.energy-v2-species-btn {
+  min-height: 2.65rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in hsl, var(--metab-primary) 28%, transparent);
+  background: color-mix(in hsl, var(--metab-surface-strong) 88%, var(--metab-primary) 12%);
+  color: var(--energy-muted);
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.energy-v2-species-btn:hover {
+  border-color: var(--energy-border-strong);
+  color: var(--energy-text);
+}
+
+.energy-v2-species-btn.active {
+  border-color: color-mix(in hsl, var(--metab-primary) 72%, var(--metab-secondary));
+  background: linear-gradient(135deg, var(--metab-primary), var(--metab-secondary));
+  color: #ffffff;
+  box-shadow: 0 0 0 2px color-mix(in hsl, var(--metab-primary) 22%, transparent), 0 10px 24px color-mix(in hsl, var(--metab-primary) 36%, transparent);
+}
+
+.energy-v2-right-panel {
+  border: 1px solid var(--energy-border-strong);
+  border-radius: 1rem;
+  background: linear-gradient(
+    160deg,
+    color-mix(in hsl, var(--metab-surface-strong) 84%, var(--metab-primary) 16%),
+    color-mix(in hsl, var(--metab-surface) 88%, var(--metab-secondary) 12%)
+  );
+  box-shadow: inset 0 0 0 1px color-mix(in hsl, var(--metab-primary) 12%, transparent), 0 18px 40px color-mix(in hsl, var(--metab-primary) 22%, transparent);
+  padding: 1rem;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.energy-v2-right-panel.is-hidden {
+  opacity: 0.45;
+}
+
+.energy-v2-right-panel.is-visible {
+  opacity: 1;
+}
+
+.energy-v2-right-title {
+  color: var(--energy-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.78rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+
+.energy-v2-result-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.8rem;
+  border-bottom: 1px solid color-mix(in hsl, var(--metab-primary) 18%, transparent);
+  padding: 0.75rem 0;
+}
+
+.energy-v2-kpi-label {
+  color: var(--energy-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.energy-v2-kpi-note {
+  margin-top: 0.24rem;
+  font-size: 0.74rem;
+  color: color-mix(in hsl, var(--metab-text-soft) 78%, transparent);
+}
+
+.energy-v2-kpi-value {
+  font-size: clamp(1.4rem, 2.1vw, 2rem);
+  line-height: 1;
+  font-weight: 800;
+  color: var(--metab-text);
+  text-align: right;
+}
+
+.energy-v2-kpi-value span {
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: var(--energy-accent);
+}
+
+.energy-v2-total-box {
+  margin-top: 0.9rem;
+  border: 1px solid color-mix(in hsl, var(--metab-primary) 36%, transparent);
+  border-radius: 0.85rem;
+  background: linear-gradient(
+    145deg,
+    color-mix(in hsl, var(--metab-primary) 28%, var(--metab-surface-strong)),
+    color-mix(in hsl, var(--metab-secondary) 18%, var(--metab-surface))
+  );
+  padding: 0.9rem;
+}
+
+.energy-v2-total-value {
+  margin-top: 0.22rem;
+  font-size: clamp(1.9rem, 2.8vw, 2.9rem);
+  font-weight: 900;
+  line-height: 0.95;
+  color: var(--energy-accent);
+}
+
+.energy-v2-total-value span {
+  font-size: 1rem;
+  margin-left: 0.32rem;
+  color: var(--metab-text);
+}
+
+.energy-v2-mini-chip {
+  margin-top: 0.86rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid color-mix(in hsl, var(--metab-primary) 34%, transparent);
+  background: var(--energy-accent-soft);
+  color: var(--metab-text);
+  border-radius: 999px;
+  padding: 0.42rem 0.72rem;
+  font-size: 0.73rem;
+  font-weight: 600;
+}
+
+.energy-v2-progress-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--metab-text);
+  font-size: clamp(1.02rem, 1.5vw, 1.24rem);
+  margin-bottom: 0.9rem;
+  font-weight: 700;
+}
+
+.energy-v2-progress-card {
+  border: 1px solid var(--energy-border);
+  border-radius: 0.9rem;
+  background: color-mix(in hsl, var(--metab-surface-strong) 88%, var(--metab-primary) 12%);
+  padding: 0.82rem;
+}
+
+.energy-v2-progress-subtitle {
+  color: var(--metab-text);
+  font-size: 0.86rem;
+  font-weight: 700;
+  margin-bottom: 0.55rem;
+}
+
+.energy-v2-progress-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem;
+  border: 1px solid color-mix(in hsl, var(--metab-primary) 20%, transparent);
+  border-radius: 0.6rem;
+  background: color-mix(in hsl, var(--metab-surface-strong) 86%, var(--metab-primary) 14%);
+  color: var(--metab-text);
+  padding: 0.48rem 0.58rem;
+}
+
+.energy-v2-progress-row strong {
+  color: var(--energy-accent);
+}
+
+@media (min-width: 900px) {
+  .energy-v2-layout {
+    grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.95fr);
+    align-items: start;
+  }
+}

@@ -34,17 +34,17 @@ export const Identification: React.FC<IdentificationProps> = ({ onNavigate }) =>
     }
 
     return (
-        <div className="font-display bg-vet-bg-dark text-white antialiased h-full flex flex-col overflow-y-auto">
+        <div className="font-display bg-vet-bg-dark text-white antialiased min-h-[100dvh] flex flex-col overflow-y-auto">
             <div className="relative flex h-auto min-h-full w-full flex-col">
                 {/* Top Navigation */}
-                <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-vet-surface-hover bg-[#221a11] px-10 py-3 sticky top-0 z-50">
+                <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-vet-surface-hover bg-[#221a11] px-4 md:px-10 py-3 sticky top-0 z-50">
                     <div className="flex items-center gap-4 text-white">
                         <div className="w-8 h-8 text-vet-primary">
                             <Stethoscope className="w-8 h-8" />
                         </div>
                         <h2 className="text-white text-lg font-bold leading-tight tracking-[-0.015em]">VetFluid Calc</h2>
                     </div>
-                    <div className="flex flex-1 justify-end gap-8">
+                    <div className="flex flex-1 justify-end gap-3 md:gap-8">
                         <div className="hidden md:flex items-center gap-9">
                             <button onClick={() => onNavigate('hub')} className="text-white hover:text-vet-primary transition-colors text-sm font-medium leading-normal">Dashboard</button>
                             <button className="text-vet-primary text-sm font-bold leading-normal border-b-2 border-vet-primary pb-0.5">Calculadora</button>

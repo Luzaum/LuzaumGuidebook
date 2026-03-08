@@ -40,7 +40,7 @@ export const AccountSettings = () => {
       setEmail(parsed.email || defaultEmailFromName(currentUser.name));
       setStoredPassword(parsed.password);
     } catch {
-      setError('Nao foi possivel carregar os dados da conta local.');
+      setError('Não foi possível carregar os dados da conta local.');
     }
   }, [storageKey, currentUser.name]);
 
@@ -61,15 +61,15 @@ export const AccountSettings = () => {
     setMessage('');
 
     if (!newPassword || newPassword.length < 6) {
-      setError('A nova senha deve ter no minimo 6 caracteres.');
+      setError('A nova senha deve ter no mínimo 6 caracteres.');
       return;
     }
     if (newPassword !== confirmNewPassword) {
-      setError('A confirmacao da nova senha nao confere.');
+      setError('A confirmação da nova senha não confere.');
       return;
     }
     if (storedPassword && currentPassword !== storedPassword) {
-      setError('A senha atual informada esta incorreta.');
+      setError('A senha atual informada está incorreta.');
       return;
     }
 
@@ -80,7 +80,7 @@ export const AccountSettings = () => {
       setCurrentPassword('');
       setNewPassword('');
       setConfirmNewPassword('');
-      setMessage('Senha alterada com sucesso. Integracao por e-mail sera adicionada depois.');
+      setMessage('Senha alterada com sucesso. Integração por e-mail será adicionada depois.');
     } catch {
       setError('Falha ao atualizar senha.');
     }

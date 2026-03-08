@@ -29,7 +29,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate, isDarkM
             </button>
 
             <div className="flex items-center gap-4">
-                <nav className="header-nav flex gap-2" aria-label="Navegacao principal">
+                <nav className="header-nav flex gap-2" aria-label="Navegação principal">
                     {NAV_ITEMS.map(({ page, label }) => {
                         const isActive = currentPage === page;
                         return (

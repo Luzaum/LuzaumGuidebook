@@ -1,8 +1,8 @@
 import React, { useState, useCallback, useMemo, useEffect } from 'react'
 import { ClipboardList, AlertTriangle, Sparkles } from 'lucide-react'
 import { DoseUnit } from '../engine/conversions'
-import { calculateDirectInfusion, calculatePreparation } from '../engine/calculateCRI'
-import { getClinicalAlerts, doseRanges } from '../engine/alerts'
+import { calculatePreparation } from '../engine/calculateCRI'
+import { getClinicalAlerts } from '../engine/alerts'
 import { suggestPumpRate } from '../utils/pumpRate'
 import { suggestRates, preferredRateHint } from '../data/tooltips.pumpRate'
 import { formatNumberPtBR } from '../../../utils/format'
@@ -25,6 +25,9 @@ import type { DiluentId, IndicatedDose } from '../types/drug'
 
 const SYRINGE_VOLUMES = [10, 20, 60] as const
 const BAG_VOLUMES = [100, 250, 500, 1000] as const
+const CRIVET_CALC_PARAMS_STORAGE_KEY = 'crivet:calc-params-state:v3'
+const CUSTOM_CONCENTRATION_UNITS = ['mg/mL', 'mcg/mL', 'mg/L', 'g/L'] as const
+type CustomConcentrationUnit = (typeof CUSTOM_CONCENTRATION_UNITS)[number]
 
 type InfusionCalculatorProps = {
   patientWeight: string
@@ -35,6 +38,24 @@ type InfusionCalculatorProps = {
 }
 
 type AppError = { type?: string; level?: string; title?: string; message: string } | string | null | undefined
+
+function parseLocaleNumber(value: string | number | null | undefined): number {
+  if (value === null || value === undefined) return 0
+  if (typeof value === 'number') return Number.isFinite(value) ? value : 0
+  const normalized = value.replace(',', '.').trim()
+  if (!normalized) return 0
+  const parsed = Number(normalized)
+  return Number.isFinite(parsed) ? parsed : 0
+}
+
+function convertMassConcentrationToMgMl(value: number, unit: CustomConcentrationUnit): number {
+  if (!Number.isFinite(value) || value <= 0) return 0
+  if (unit === 'mg/mL') return value
+  if (unit === 'mcg/mL') return value / 1000
+  if (unit === 'mg/L') return value / 1000
+  if (unit === 'g/L') return value
+  return value
+}
 
 function renderError(err: AppError): string {
   if (!err) return ''
@@ -58,58 +79,112 @@ export default function InfusionCalculator({
   physiology,
   comorbidities,
 }: InfusionCalculatorProps) {
-  const weightKg = Number(patientWeight) || 0
+  const weightKg = parseLocaleNumber(patientWeight)
+
+  useEffect(() => {
+    localStorage.removeItem('crivet:calc-params-state:v2')
+  }, [])
 
   const [dose, setDose] = useState('')
   const [doseUnit, setDoseUnit] = useState<DoseUnit>('mcg/kg/min')
   const [physiologyModalOpen, setPhysiologyModalOpen] = useState(false)
   const [concentration, setConcentration] = useState('')
+  const [concentrationUnit, setConcentrationUnit] = useState<CustomConcentrationUnit>('mg/mL')
   const [isCustomConcentration, setIsCustomConcentration] = useState(false)
   const [dilutionType, setDilutionType] = useState<'syringe' | 'bag'>('syringe')
   const [dilutionVolume, setDilutionVolume] = useState('20')
   const [fluidType, setFluidType] = useState<FluidType>('NaCl 0.9%')
-  const [mode, setMode] = useState<'direct' | 'preparation'>('direct')
   const [pumpRate, setPumpRate] = useState<number | null>(null)
   const [userOverrodeRate, setUserOverrodeRate] = useState(false)
-  const [showCalculation, setShowCalculation] = useState(false)
+  const [showCalculation, setShowCalculation] = useState(true)
 
   // Save state on change
   useEffect(() => {
     if (!selectedDrug) return;
     const stateToSave = {
       savedForDrugId: selectedDrug.id,
-      dose, doseUnit, concentration, isCustomConcentration, dilutionType, dilutionVolume, pumpRate, userOverrodeRate, fluidType
+      dose,
+      doseUnit,
+      concentration,
+      concentrationUnit,
+      isCustomConcentration,
+      dilutionType,
+      dilutionVolume,
+      pumpRate,
+      userOverrodeRate,
+      fluidType,
     };
-    localStorage.setItem('crivet:calc-params-state:v2', JSON.stringify(stateToSave));
-  }, [selectedDrug?.id, dose, doseUnit, concentration, isCustomConcentration, dilutionType, dilutionVolume, pumpRate, userOverrodeRate, fluidType]);
+    localStorage.setItem(CRIVET_CALC_PARAMS_STORAGE_KEY, JSON.stringify(stateToSave));
+  }, [selectedDrug?.id, dose, doseUnit, concentration, concentrationUnit, isCustomConcentration, dilutionType, dilutionVolume, pumpRate, userOverrodeRate, fluidType]);
 
   useEffect(() => {
-    if (!selectedDrug) return;
+    if (!selectedDrug) return
 
     try {
-      const raw = localStorage.getItem('crivet:calc-params-state:v2')
+      const raw = localStorage.getItem(CRIVET_CALC_PARAMS_STORAGE_KEY)
       if (raw) {
         const parsed = JSON.parse(raw)
+        const profileUnit = selectedDrug.profile?.doses?.unit_standard_cri
+        const defaultUnit =
+          (profileUnit as DoseUnit) ||
+          (selectedDrug.recommendedUnit as DoseUnit) ||
+          (selectedDrug.unitRules?.preferredDoseUnit as DoseUnit) ||
+          'mcg/kg/min'
+
         if (parsed.savedForDrugId === selectedDrug.id) {
           setDose(parsed.dose ?? '')
-          if (parsed.doseUnit) setDoseUnit(parsed.doseUnit)
-          setConcentration(parsed.concentration ?? '')
-          setIsCustomConcentration(parsed.isCustomConcentration ?? false)
+          setDoseUnit(
+            parsed.doseUnit && ALL_UNITS.includes(parsed.doseUnit as DoseUnit)
+              ? (parsed.doseUnit as DoseUnit)
+              : defaultUnit,
+          )
+
+          const restoredConcentration = String(parsed.concentration ?? '')
+          const restoredIsCustom = Boolean(parsed.isCustomConcentration)
+          const restoredConcentrationUnit = CUSTOM_CONCENTRATION_UNITS.includes(parsed.concentrationUnit)
+            ? parsed.concentrationUnit
+            : 'mg/mL'
+          setConcentration(restoredConcentration)
+          setConcentrationUnit(restoredConcentrationUnit)
+          setIsCustomConcentration(restoredIsCustom)
           if (parsed.dilutionType) setDilutionType(parsed.dilutionType)
-          setDilutionVolume(parsed.dilutionVolume ?? '20')
-          setPumpRate(parsed.pumpRate ?? null)
-          setUserOverrodeRate(parsed.userOverrodeRate ?? false)
+          const restoredVolume = String(parsed.dilutionVolume ?? '20')
+          setDilutionVolume(restoredVolume)
+
+          const restoredPumpRate =
+            typeof parsed.pumpRate === 'number' ? parsed.pumpRate : parseLocaleNumber(parsed.pumpRate)
+          const hasValidPump = Number.isFinite(restoredPumpRate) && restoredPumpRate > 0
+          setPumpRate(hasValidPump ? restoredPumpRate : null)
+          setUserOverrodeRate(Boolean(parsed.userOverrodeRate) && hasValidPump)
           if (parsed.fluidType) setFluidType(parsed.fluidType)
-          return; // SKIP reset
+
+          // Corrigir estados inválidos restaurados para evitar travar o cálculo.
+          if (!restoredIsCustom && parseLocaleNumber(restoredConcentration) <= 0 && selectedDrug.concentrations.length > 0) {
+            setConcentration(selectedDrug.concentrations[0].toString())
+          }
+
+          if (parseLocaleNumber(restoredVolume) <= 0) {
+            setDilutionVolume(parsed.dilutionType === 'bag' ? '250' : '20')
+          }
+
+          if (!hasValidPump) {
+            setUserOverrodeRate(false)
+            if (weightKg > 0) {
+              setPumpRate(suggestPumpRate({ vehicle: parsed.dilutionType === 'bag' ? 'bag' : 'syringe', weightKg }))
+            }
+          }
+          return
         }
       }
     } catch { }
 
     if (selectedDrug.concentrations.length > 0) {
       setConcentration(selectedDrug.concentrations[0].toString())
+      setConcentrationUnit('mg/mL')
       setIsCustomConcentration(false)
     } else {
       setConcentration('')
+      setConcentrationUnit('mg/mL')
       setIsCustomConcentration(true)
     }
     setDose('')
@@ -124,17 +199,25 @@ export default function InfusionCalculator({
     } else if (selectedDrug.unitRules?.preferredDoseUnit) {
       setDoseUnit(selectedDrug.unitRules.preferredDoseUnit as DoseUnit)
     }
-  }, [selectedDrug?.id])
+  }, [selectedDrug?.id, weightKg])
+
+  // Se a concentração ficou inválida, força fallback para valor comercial.
+  useEffect(() => {
+    if (!selectedDrug) return
+    if (isCustomConcentration) return
+    if (parseLocaleNumber(concentration) > 0) return
+    if (selectedDrug.concentrations.length > 0) {
+      setConcentration(selectedDrug.concentrations[0].toString())
+    }
+  }, [selectedDrug?.id, concentration, isCustomConcentration])
 
   // Taxa automática quando mudar veículo ou peso (se usuário não tiver sobrescrito)
   useEffect(() => {
     if (userOverrodeRate) return
     if (!weightKg || weightKg <= 0) return
-    if (mode !== 'preparation') return
-
     const suggested = suggestPumpRate({ vehicle: dilutionType, weightKg })
     setPumpRate(suggested)
-  }, [mode, dilutionType, weightKg, userOverrodeRate])
+  }, [dilutionType, weightKg, userOverrodeRate])
 
   // Ajustar volume quando trocar tipo de veículo
   const volumes = dilutionType === 'bag' ? BAG_VOLUMES : SYRINGE_VOLUMES
@@ -147,15 +230,13 @@ export default function InfusionCalculator({
   }, [dilutionType])
 
   const weight = weightKg // Mantido para compatibilidade com código existente
-  const doseValue = useMemo(() => parseFloat(dose) || 0, [dose])
-  const concentrationValue = useMemo(() => parseFloat(concentration) || 0, [concentration])
-  const pumpRateValue = pumpRate ?? 0
-  const vehicleVolume = useMemo(() => parseFloat(dilutionVolume) || 0, [dilutionVolume])
-
-  const isValidDirect = useMemo(
-    () => weight > 0 && doseValue > 0 && concentrationValue > 0 && selectedDrug?.hasCRI,
-    [weight, doseValue, concentrationValue, selectedDrug],
+  const doseValue = useMemo(() => parseLocaleNumber(dose), [dose])
+  const concentrationValue = useMemo(
+    () => convertMassConcentrationToMgMl(parseLocaleNumber(concentration), concentrationUnit),
+    [concentration, concentrationUnit],
   )
+  const pumpRateValue = pumpRate ?? 0
+  const vehicleVolume = useMemo(() => parseLocaleNumber(dilutionVolume), [dilutionVolume])
 
   const isValidPreparation = useMemo(
     () =>
@@ -164,7 +245,7 @@ export default function InfusionCalculator({
       concentrationValue > 0 &&
       pumpRateValue > 0 &&
       vehicleVolume > 0 &&
-      selectedDrug?.hasCRI,
+      !!selectedDrug,
     [weight, doseValue, concentrationValue, pumpRateValue, vehicleVolume, selectedDrug],
   )
 
@@ -184,25 +265,30 @@ export default function InfusionCalculator({
     return evaluateDrugAlerts({ drugId: selectedDrug.id, flags: patientFlags })
   }, [selectedDrug, patientFlags])
 
-  const directResult = useMemo(() => {
-    if (!isValidDirect) return null
-    return calculateDirectInfusion(doseValue, doseUnit, weight, concentrationValue)
-  }, [isValidDirect, doseValue, doseUnit, weight, concentrationValue])
-
   const preparationResult = useMemo(() => {
     if (!isValidPreparation) return null
-    return calculatePreparation(doseValue, doseUnit, weight, pumpRateValue, vehicleVolume, concentrationValue)
-  }, [isValidPreparation, doseValue, doseUnit, weight, pumpRateValue, vehicleVolume, concentrationValue])
+    return calculatePreparation(doseValue, doseUnit, weight, pumpRateValue, vehicleVolume, concentrationValue, {
+      drugId: selectedDrug?.id,
+    })
+  }, [isValidPreparation, doseValue, doseUnit, weight, pumpRateValue, vehicleVolume, concentrationValue, selectedDrug?.id])
 
   const handleDoseChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    setDose(event.target.value)
+    setDose(event.target.value.replace(',', '.'))
   }, [])
 
   const handleDoseUnit = useCallback((unit: DoseUnit) => setDoseUnit(unit), [])
 
   const handleConcentrationChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    setConcentration(event.target.value)
+    setConcentration(event.target.value.replace(',', '.'))
     setIsCustomConcentration(true)
+  }, [])
+
+  const handleConcentrationUnitChange = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
+    const nextUnit = event.target.value as CustomConcentrationUnit
+    if (CUSTOM_CONCENTRATION_UNITS.includes(nextUnit)) {
+      setConcentrationUnit(nextUnit)
+      setIsCustomConcentration(true)
+    }
   }, [])
 
   const handleConcentrationSelect = useCallback((value: string) => {
@@ -211,13 +297,14 @@ export default function InfusionCalculator({
       setConcentration('')
     } else {
       setConcentration(value)
+      setConcentrationUnit('mg/mL')
       setIsCustomConcentration(false)
     }
   }, [])
 
   const handlePumpRateChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      const value = parseFloat(event.target.value) || 0
+      const value = parseLocaleNumber(event.target.value)
       setPumpRate(value)
       setUserOverrodeRate(true)
     },
@@ -317,11 +404,16 @@ export default function InfusionCalculator({
       purpose: dose.purpose,
       note: dose.note,
     }
-  }, [selectedDrug, mode, species, doseUnit])
+  }, [selectedDrug, species, doseUnit])
 
-  const indicatedText = indicatedDose
-    ? `${formatNumberPtBR(indicatedDose.min, 2)}–${formatNumberPtBR(indicatedDose.max, 2)} para ${indicatedDose.purpose}`
-    : null
+  useEffect(() => {
+    if (!selectedDrug || !indicatedDose) return
+    if (parseLocaleNumber(dose) > 0) return
+    const suggestedDose = indicatedDose.min > 0 ? indicatedDose.min : indicatedDose.max
+    if (suggestedDose > 0) {
+      setDose(String(Number(suggestedDose.toFixed(4))))
+    }
+  }, [selectedDrug?.id, indicatedDose?.min, indicatedDose?.max, dose])
 
   // Alerta de sobredose/subdose baseado no indicatedDose
   const doseRangeAlert = useMemo(() => {
@@ -356,12 +448,22 @@ export default function InfusionCalculator({
     return 'NaCl_09' // default
   }
 
+  const missingRequiredLabels = useMemo(() => {
+    const missing: string[] = []
+    if (weight <= 0) missing.push('peso')
+    if (doseValue <= 0) missing.push('dose')
+    if (concentrationValue <= 0) missing.push('concentração')
+    if (pumpRateValue <= 0) missing.push('taxa da bomba')
+    if (vehicleVolume <= 0) missing.push('volume do veículo')
+    return missing
+  }, [weight, doseValue, concentrationValue, pumpRateValue, vehicleVolume])
+
   return (
     <section className="crivet-card" aria-labelledby="infusion-calc-title">
       <div className="crivet-card-header">
         <div className="crivet-step-badge">3</div>
         <h2 id="infusion-calc-title" className="crivet-card-title">Cálculo de infusão</h2>
-        {(isValidDirect || isValidPreparation) && (
+        {isValidPreparation && (
           <span className="crivet-status-pill crivet-status-pill--ready ml-auto">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
             Pronto
@@ -477,6 +579,12 @@ export default function InfusionCalculator({
               }}
             />
           ))}
+        </div>
+      )}
+
+      {!isValidPreparation && (
+        <div className="rounded-lg border border-amber-300/40 bg-amber-500/10 p-3 text-xs text-amber-100">
+          Preencha os campos obrigatórios para liberar o cálculo: {missingRequiredLabels.join(', ')}.
         </div>
       )}
 
@@ -761,11 +869,23 @@ export default function InfusionCalculator({
                   type="number"
                   value={concentration}
                   onChange={handleConcentrationChange}
-                  placeholder="Conc. (mg/mL)"
+                  placeholder="Concentração"
                   step="0.01"
                   className="crivet-input flex-1"
                   aria-label="Concentração do fármaco"
                 />
+                <select
+                  value={concentrationUnit}
+                  onChange={handleConcentrationUnitChange}
+                  className="crivet-select w-[132px]"
+                  aria-label="Unidade da concentração"
+                >
+                  {CUSTOM_CONCENTRATION_UNITS.map((unit) => (
+                    <option key={unit} value={unit}>
+                      {unit}
+                    </option>
+                  ))}
+                </select>
                 {selectedDrug?.concentrations.length ? (
                   <button
                     type="button"
@@ -780,8 +900,7 @@ export default function InfusionCalculator({
           )}
         </div>
 
-        {mode === 'preparation' && (
-          <div className="space-y-4">
+        <div className="space-y-4">
             <div className="space-y-2">
               <FieldLabel text="Taxa da bomba (mL/h)" tooltipId="rate_help" />
               <div className="flex gap-2">
@@ -855,7 +974,7 @@ export default function InfusionCalculator({
                 <input
                   type="number"
                   value={dilutionVolume}
-                  onChange={(e) => setDilutionVolume(e.target.value)}
+                  onChange={(e) => setDilutionVolume(e.target.value.replace(',', '.'))}
                   placeholder="Custom"
                   step="1"
                   min="1"
@@ -971,57 +1090,10 @@ export default function InfusionCalculator({
                 </div>
               </div>
             )}
-          </div>
-        )}
-
-        <div className="crivet-mode-tabs" role="tablist" aria-label="Modo de cálculo">
-          <button
-            type="button"
-            role="tab"
-            aria-selected={mode === 'direct'}
-            onClick={() => setMode('direct')}
-            className={`crivet-mode-tab ${mode === 'direct' ? 'crivet-mode-tab--active' : ''}`}
-          >
-            Infusão direta
-          </button>
-          <button
-            type="button"
-            role="tab"
-            aria-selected={mode === 'preparation'}
-            onClick={() => setMode('preparation')}
-            className={`crivet-mode-tab ${mode === 'preparation' ? 'crivet-mode-tab--active' : ''}`}
-          >
-            Preparo (seringa/bolsa)
-          </button>
         </div>
       </div>
 
-      {isValidDirect && mode === 'direct' && directResult && (
-        <div className="crivet-result-section">
-          <h3 className="text-xs font-bold uppercase tracking-widest text-emerald-700 dark:text-emerald-400 mb-3 flex items-center gap-2">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
-            Resultado
-          </h3>
-          <div className="crivet-result-grid">
-            <div className="crivet-result-item">
-              <span className="crivet-result-label">Taxa de infusão</span>
-              <span className="crivet-result-value">
-                {formatNumberPtBR(directResult.rateMlHr, 2)}
-                <span className="crivet-result-unit">mL/h</span>
-              </span>
-            </div>
-            <div className="crivet-result-item">
-              <span className="crivet-result-label">Taxa por minuto</span>
-              <span className="crivet-result-value">
-                {formatNumberPtBR(directResult.rateMlMin, 4)}
-                <span className="crivet-result-unit">mL/min</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {isValidPreparation && mode === 'preparation' && preparationResult && (
+      {isValidPreparation && preparationResult && (
         <div className="space-y-4 pt-4 border-t border-slate-200 dark:border-slate-800">
           {preparationResult.error ? (
             <div className="rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 p-4">
@@ -1090,7 +1162,7 @@ export default function InfusionCalculator({
         </div>
       )}
 
-      {((isValidDirect && directResult) || (isValidPreparation && preparationResult)) && (
+      {isValidPreparation && preparationResult && (
         <div className="crivet-calc-toggle">
           <div className="flex items-center justify-between">
             <button
@@ -1115,7 +1187,7 @@ export default function InfusionCalculator({
                 type="button"
                 className="text-xs text-cyan-600 dark:text-cyan-400 hover:underline cursor-pointer"
                 onClick={() => {
-                  const steps = mode === 'direct' ? directResult?.steps || [] : preparationResult?.steps || []
+                  const steps = preparationResult?.steps || []
                   navigator.clipboard.writeText(steps.join('\n'))
                 }}
               >
@@ -1126,7 +1198,7 @@ export default function InfusionCalculator({
 
           {showCalculation && (
             <div className="mt-3 space-y-1.5">
-              {(mode === 'direct' ? directResult?.steps : preparationResult?.steps)?.map((line, idx) => (
+              {(preparationResult?.steps || [])?.map((line, idx) => (
                 <div
                   key={`${idx}-${line.slice(0, 20)}`}
                   className="crivet-calc-step"
@@ -1142,3 +1214,5 @@ export default function InfusionCalculator({
     </section>
   )
 }
+
+

@@ -290,7 +290,7 @@ export function getMissingFieldsBySection(validation: ValidationResult): Record<
 export function formatValidationReport(validation: ValidationResult): string {
   const lines: string[] = []
   lines.push(`Completude: ${validation.completeness}%`)
-  lines.push(`Valido: ${validation.isValid ? 'SIM' : 'NÃO'}`)
+  lines.push(`Válido: ${validation.isValid ? 'SIM' : 'NÃO'}`)
   lines.push('')
 
   if (validation.missing.length > 0) {

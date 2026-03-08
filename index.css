@@ -2189,3 +2189,125 @@ input[type="range"]:focus::-moz-range-thumb {
   outline: 2px solid rgba(245, 197, 66, 0.5);
   outline-offset: 2px;
 }
+
+/* ============================================================
+   Global Mobile Adapter (sem alterar lógica/engine)
+   ============================================================ */
+@media (max-width: 960px) {
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  main,
+  section,
+  article,
+  aside {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .layout-container,
+  .layout-content-container,
+  .consulta-vet-content-panel,
+  .dorvet-content-wrap,
+  .dorvet-screen-frame,
+  .crivet-main-content {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .consulta-vet-sidebar-panel {
+    width: min(88vw, 320px);
+  }
+
+  .prose table,
+  .hemo-content-box table,
+  .crivet-card table,
+  .modal-content table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .crivet-card-header {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .crivet-status-pill {
+    margin-left: 0 !important;
+  }
+
+  .crivet-result-grid,
+  .crivet-result-grid-4 {
+    grid-template-columns: 1fr !important;
+  }
+
+  .crivet-instruction-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  [class*="max-h-[calc(100vh"],
+  [class*="max-h-[calc(92vh"],
+  [class*="max-h-[calc(90vh"] {
+    max-height: min(72dvh, 560px) !important;
+  }
+
+  [class*="sticky"][class*="top-24"],
+  [class*="sticky"][class*="top-20"] {
+    position: static !important;
+    top: auto !important;
+    max-height: none !important;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    min-height: 42px;
+  }
+}
+
+@media (max-width: 640px) {
+  .crivet-page-root :where(button, [role="button"], a) {
+    min-height: 44px;
+  }
+
+  .crivet-page-root .crivet-help-btn,
+  .crivet-page-root .crivet-preset-btn,
+  .crivet-page-root .crivet-vol-btn,
+  .crivet-page-root .crivet-vehicle-btn,
+  .crivet-page-root .crivet-sidebar-link {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .consulta-vet-theme :where(button, [role="button"]) {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .consulta-vet-theme .consulta-vet-sidebar-panel a,
+  .consulta-vet-theme .inline-flex {
+    min-height: 44px;
+  }
+
+  .crivet-choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .crivet-sidebar-link {
+    grid-template-columns: 18px 16px minmax(0, 1fr) 14px;
+    font-size: 0.8rem;
+    padding: 0.56rem 0.62rem;
+  }
+}

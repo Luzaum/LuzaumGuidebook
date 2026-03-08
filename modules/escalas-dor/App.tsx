@@ -1,11 +1,34 @@
-import React, { useState, useCallback, useMemo, useEffect } from 'react';
-import { Species, PainType, Scale, Question, Option, QuestionType, Drug, Presentation, AgeGroup, Comorbidity, GeminiAnalysis } from './types';
+﻿import React, { useState, useCallback, useMemo, useEffect } from 'react';
+import { Species, PainType, Scale, Question, Option, QuestionType, Drug, Presentation, AgeGroup, Comorbidity } from './types';
 import { PAIN_DATA, DRUG_DATA } from './constants';
-import { AppLogo, PawIcon, GuideIcon, SpinnerIcon, CalculatorIcon } from './components/Icons';
-import { getPainAnalysis } from './gemini';
+import { PawIcon, GuideIcon, CalculatorIcon } from './components/Icons';
+import { Menu, X, Home, Stethoscope, ListChecks, ClipboardCheck, BarChart3, BookOpenCheck, ShieldCheck, Calculator, Moon, Sun, Dog, Cat } from 'lucide-react';
+import './theme.css';
 
 
 type Screen = 'home' | 'painType' | 'scaleSelect' | 'assessment' | 'results' | 'guide' | 'clinicalGuidelines' | 'calculator';
+
+const SCREEN_TITLES: Record<Screen, string> = {
+    home: 'Início',
+    painType: 'Cenário',
+    scaleSelect: 'Escalas',
+    assessment: 'Avaliação',
+    results: 'Resultados',
+    guide: 'Guias',
+    clinicalGuidelines: 'Diretrizes',
+    calculator: 'Calculadora',
+};
+
+const SCREEN_ICONS: Record<Screen, React.ComponentType<{ className?: string }>> = {
+    home: Home,
+    painType: Stethoscope,
+    scaleSelect: ListChecks,
+    assessment: ClipboardCheck,
+    results: BarChart3,
+    guide: BookOpenCheck,
+    clinicalGuidelines: ShieldCheck,
+    calculator: Calculator,
+};
 
 // Helper Components defined outside the main App component
 const Header = ({ title, onBack, onHome }: { title: string; onBack?: () => void; onHome?: () => void; }) => (
@@ -73,21 +96,20 @@ interface HomeScreenProps {
     onShowCalculator: () => void;
 }
 const HomeScreen: React.FC<HomeScreenProps> = ({ onSelectSpecies, onShowGuide, onShowClinicalGuidelines, onShowCalculator }) => (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-slate-100 p-4">
-        <div className="text-center mb-12">
-            <AppLogo className="h-auto w-52 mx-auto mb-4" />
-            <h1 className="text-4xl md:text-5xl font-extrabold text-slate-800">Analgesia e controle de dor veterinária</h1>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-slate-100 p-4 md:p-8">
+        <div className="text-center mb-10">
+                        <h1 className="text-4xl md:text-5xl font-extrabold text-slate-800">Analgesia e controle de dor veterinária</h1>
             <p className="text-slate-600 mt-2 text-lg">Avaliação e Manejo da Dor em Cães e Gatos</p>
         </div>
-        <div className="w-full max-w-md">
+        <div className="w-full max-w-5xl">
             <h2 className="text-2xl font-bold text-center text-slate-700 mb-6">Comece por aqui</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <button onClick={() => onSelectSpecies(Species.Dog)} className="group flex flex-col items-center justify-center p-8 bg-white rounded-xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 h-48">
-                    <span className="text-6xl mb-2 transition-transform duration-300 group-hover:scale-110">🐶</span>
+                    <Dog className="h-14 w-14 mb-2 transition-transform duration-300 group-hover:scale-110" />
                     <span className="text-2xl font-semibold text-slate-800">Cão</span>
                 </button>
                 <button onClick={() => onSelectSpecies(Species.Cat)} className="group flex flex-col items-center justify-center p-8 bg-white rounded-xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 h-48">
-                    <span className="text-6xl mb-2 transition-transform duration-300 group-hover:scale-110">🐱</span>
+                    <Cat className="h-14 w-14 mb-2 transition-transform duration-300 group-hover:scale-110" />
                     <span className="text-2xl font-semibold text-slate-800">Gato</span>
                 </button>
             </div>
@@ -119,7 +141,7 @@ const PainTypeScreen: React.FC<PainTypeScreenProps> = ({ species, onSelectPainTy
         <Header title={`Espécie: ${species === Species.Dog ? 'Cão' : 'Gato'}`} onBack={onBack} onHome={onBack} />
         <main className="p-4 md:p-8 text-center">
             <h2 className="text-3xl font-bold text-slate-800 mb-8">Selecione o Cenário</h2>
-            <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
                 <Card className="hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
                     <button onClick={() => onSelectPainType(PainType.Acute)} className="p-8 w-full h-full text-left flex flex-col">
                         <h3 className="text-2xl font-bold text-teal-700">Dor Aguda (Uso Clínico)</h3>
@@ -151,7 +173,7 @@ const ScaleSelectionScreen: React.FC<ScaleSelectionScreenProps> = ({ species, pa
             <Header title={`Tipo de Dor: ${painType === PainType.Acute ? 'Aguda' : 'Crônica'}`} onBack={onBack} onHome={onBack}/>
             <main className="p-4 md:p-8">
                 <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center">Selecione a Escala de Avaliação</h2>
-                <div className="max-w-3xl mx-auto space-y-4">
+                <div className="max-w-5xl mx-auto space-y-4">
                     {scales.map(scale => (
                         <Card key={scale.id} className={`transition-all duration-300 border-2 ${scale.questions.length > 0 ? 'border-transparent hover:shadow-xl hover:border-teal-500' : 'border-dashed border-slate-300 bg-slate-50'}`}>
                             <button onClick={() => onSelectScale(scale)} className="p-6 text-left w-full" disabled={scale.questions.length === 0}>
@@ -265,7 +287,7 @@ const CMPSFAssessment = ({ scale, answers, onAnswerChange, onSubmit, isComplete 
 
     return (
         <main className="p-4 md:p-8">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-6xl mx-auto">
                 <Card className="p-6 md:p-8">
                     <h2 className="text-2xl font-bold text-center mb-6 text-slate-800">Avaliação de Dor Aguda em Cães (Escala de Glasgow)</h2>
                     <img 
@@ -339,7 +361,7 @@ const UCAPSAssessment = ({ scale, answers, onAnswerChange, onSubmit, isComplete 
 
     return (
         <main className="p-4 md:p-8">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-6xl mx-auto">
                 <Card className="p-6 md:p-8">
                     <h2 className="text-2xl font-bold text-center mb-6 text-slate-800">Avaliação de Dor Aguda em Gatos (Escala UNESP-Botucatu)</h2>
                     
@@ -559,7 +581,7 @@ const AssessmentScreen: React.FC<AssessmentScreenProps> = ({ scale, onSubmit, on
         <>
             <Header title={scale.name} onBack={onBack} onHome={onBack}/>
             <main className="p-4 md:p-8">
-                <div className="max-w-4xl mx-auto space-y-8">
+                <div className="max-w-6xl mx-auto space-y-8">
                     {Object.entries(questionsByCat).map(([category, questions]) => (
                         <Card key={category} className="p-6 md:p-8">
                             {category !== 'default' && <h3 className="text-xl font-bold text-slate-800 mb-6 border-b pb-2">{category}</h3>}
@@ -587,16 +609,47 @@ interface ResultScreenProps {
     result: { score: string; analysis: string; needsIntervention: boolean; };
     scaleName: string;
     painType: PainType;
+    species: Species | null;
     onRestart: () => void;
     onShowGuide: (painType: PainType) => void;
-    onGetGeminiOpinion: () => void;
-    geminiLoading: boolean;
 }
-const ResultScreen: React.FC<ResultScreenProps> = ({ result, scaleName, painType, onRestart, onShowGuide, onGetGeminiOpinion, geminiLoading }) => (
+const ResultScreen: React.FC<ResultScreenProps> = ({ result, scaleName, painType, species, onRestart, onShowGuide }) => {
+    const actionSteps = useMemo(() => {
+        if (!result.needsIntervention) {
+            return [
+                'Manter plano atual e reavaliar de forma seriada.',
+                'Registrar escore e comportamento para comparação em 12-24h.',
+                'Orientar tutor/equipe sobre sinais de piora.',
+            ];
+        }
+
+        if (painType === PainType.Acute) {
+            if (species === Species.Cat) {
+                return [
+                    'Iniciar resgate com opioide apropriado para felinos e monitorar temperatura.',
+                    'Evitar escalonamento sem reavaliação clínica e hemodinâmica.',
+                    'Reavaliar escore em 30-60 minutos após intervenção.',
+                ];
+            }
+            return [
+                'Aplicar resgate analgésico multimodal de acordo com o protocolo institucional.',
+                'Associar anti-inflamatório apenas se não houver contraindicação.',
+                'Reavaliar escore em 30-60 minutos após intervenção.',
+            ];
+        }
+
+        return [
+            'Revisar adesão, dose e intervalo do protocolo crônico.',
+            'Ajustar estratégia multimodal com foco em funcionalidade e conforto.',
+            'Definir reavaliação estruturada (escore + impacto funcional).',
+        ];
+    }, [painType, result.needsIntervention, species]);
+
+    return (
     <>
         <Header title="Resultado da Avaliação" onHome={onRestart} />
-        <main className="p-4 md:p-8 flex items-center justify-center" style={{minHeight: 'calc(100vh - 80px)'}}>
-            <Card className="max-w-2xl w-full text-center p-8">
+        <main className="p-4 md:p-8 flex items-center justify-center" style={{ minHeight: 'calc(100dvh - 9rem)' }}>
+            <Card className="max-w-6xl w-full text-center p-8">
                 <h2 className="text-lg font-semibold text-slate-700">{scaleName}</h2>
                 <p className="text-6xl font-extrabold text-slate-800 my-4">{result.score}</p>
                 <div className={`p-4 rounded-lg my-6 ${result.needsIntervention ? 'bg-red-100' : 'bg-green-100'}`}>
@@ -605,6 +658,16 @@ const ResultScreen: React.FC<ResultScreenProps> = ({ result, scaleName, painType
                     </h3>
                     <p className={result.needsIntervention ? 'text-red-800' : 'text-green-800'}>{result.analysis}</p>
                 </div>
+
+                <div className="text-left bg-white/70 border border-slate-200 rounded-xl p-4 md:p-5 mb-6">
+                    <h4 className="text-base font-bold text-slate-800 mb-3">Conduta sugerida</h4>
+                    <ul className="list-disc ml-5 space-y-1 text-slate-700">
+                        {actionSteps.map((step) => (
+                            <li key={step}>{step}</li>
+                        ))}
+                    </ul>
+                </div>
+
                 <div className="mt-8 flex flex-col gap-4">
                     <div className="flex flex-col sm:flex-row justify-center gap-4">
                         <button onClick={onRestart} className="bg-slate-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-slate-700 transition-colors flex-1">
@@ -617,32 +680,24 @@ const ResultScreen: React.FC<ResultScreenProps> = ({ result, scaleName, painType
 
                     <div className="relative flex py-3 items-center">
                         <div className="flex-grow border-t border-slate-300"></div>
-                        <span className="flex-shrink mx-4 text-slate-500 text-sm">OU</span>
+                        <span className="flex-shrink mx-4 text-slate-500 text-sm">EM BREVE</span>
                         <div className="flex-grow border-t border-slate-300"></div>
                     </div>
-                    
+
                     <button
-                        onClick={onGetGeminiOpinion}
-                        disabled={geminiLoading}
-                        className="w-full bg-slate-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-slate-900 transition-colors disabled:bg-slate-400 disabled:cursor-wait flex items-center justify-center gap-3"
+                        type="button"
+                        disabled
+                        className="w-full bg-slate-500/70 text-white font-bold py-3 px-6 rounded-lg cursor-not-allowed opacity-80"
+                        aria-label="Segunda opinião com IA em breve"
                     >
-                        {geminiLoading ? (
-                            <>
-                                <SpinnerIcon className="h-5 w-5" />
-                                <span>Analisando...</span>
-                            </>
-                        ) : (
-                            <>
-                               <span>🤖</span>
-                               <span>Obter Segunda Opinião com IA</span>
-                            </>
-                        )}
+                        Segunda opinião com IA será implementada em breve
                     </button>
                 </div>
             </Card>
         </main>
     </>
-);
+    );
+};
 
 // --- START: GuideScreen and its helper components ---
 
@@ -944,7 +999,7 @@ const CRICalculator = ({ species, onInfoClick }: { species: Species, onInfoClick
 
 
 const DogAcuteGuideContent = ({ onInfoClick }: { onInfoClick: (title: string, content: React.ReactNode) => void }) => (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-6xl mx-auto">
         <GuideSection title="Princípios de Analgesia de Resgate em Cães">
             <p>Cães geralmente toleram bem uma variedade de analgésicos. A abordagem multimodal é o padrão-ouro, combinando fármacos que atuam em diferentes pontos da via da dor para maximizar a eficácia e minimizar efeitos adversos. A avaliação da função renal e hepática antes de iniciar a terapia, especialmente com AINEs, é crucial.</p>
         </GuideSection>
@@ -978,21 +1033,16 @@ const DogAcuteGuideContent = ({ onInfoClick }: { onInfoClick: (title: string, co
             <p>Úteis para dor crônica, neuropática ou para potencializar outros analgésicos.</p>
             <ul className="list-disc ml-6 space-y-1">
                 <li><span className="font-semibold">Gabapentina:</span> 10-20 mg/kg BID ou TID, PO. Essencial para dor neuropática.</li>
-                <li><span className="font-semibold">Cetamina:</span> Usada em CRI para prevenir sensibilização central.
+                <li><span className="font-semibold">Cetamina:</span> Pode ser usada em protocolos multimodais para prevenir sensibilização central.
                     <InfoButton title="Cetamina e Sensibilização Central" content={<p>A dor intensa e persistente pode levar a uma hipersensibilidade do sistema nervoso (sensibilização central), mediada por receptores NMDA. A cetamina, como antagonista NMDA, bloqueia esse processo, "resetando" o sistema e tornando os opioides mais eficazes.</p>} onInfoClick={onInfoClick} />
                 </li>
             </ul>
-        </GuideSection>
-        
-        <GuideSection title="Infusão Contínua (CRI) em Cães">
-             <p>A CRI fornece um nível de analgesia constante e estável, ideal para dor severa e trans-operatória. Permite reduzir a dose de anestésicos inalatórios (efeito poupador de MAC).</p>
-            <CRICalculator species={Species.Dog} onInfoClick={onInfoClick} />
         </GuideSection>
     </div>
 );
 
 const DogChronicGuideContent = ({ onInfoClick }: { onInfoClick: (title: string, content: React.ReactNode) => void }) => (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-6xl mx-auto">
         <GuideSection title="Princípios do Manejo da Dor Crônica em Casa">
             <p>O manejo da dor crônica, como na osteoartrite, é um compromisso de longo prazo que visa melhorar a qualidade de vida. A abordagem deve ser multimodal, combinando fármacos, suplementos, modificações ambientais e controle de peso.</p>
             <p className="font-semibold text-teal-800">O objetivo não é a ausência total de dor, mas sim a funcionalidade e o conforto do animal. O monitoramento contínuo pelo tutor, com ferramentas como o CBPI, é fundamental.</p>
@@ -1049,9 +1099,9 @@ const DogChronicGuideContent = ({ onInfoClick }: { onInfoClick: (title: string, 
 );
 
 const CatAcuteGuideContent = ({ onInfoClick }: { onInfoClick: (title: string, content: React.ReactNode) => void }) => (
-     <div className="max-w-4xl mx-auto">
+     <div className="max-w-6xl mx-auto">
         <GuideSection title="Princípios de Analgesia de Resgate em Gatos">
-            <p>O manejo da dor em gatos requer atenção especial due às suas particularidades metabólicas.
+            <p>O manejo da dor em gatos requer atenção especial devido às suas particularidades metabólicas.
             <InfoButton title="Metabolismo Felino" content={<div><p>Gatos possuem uma deficiência na via de conjugação hepática por glicuronidação. Esta é uma via metabólica crucial para a eliminação de muitos fármacos, incluindo AINEs e paracetamol (que é altamente tóxico).</p><p>Essa deficiência resulta em uma meia-vida prolongada para muitos medicamentos, aumentando o risco de toxicidade se as doses e intervalos não forem estritamente ajustados para a espécie.</p></div>} onInfoClick={onInfoClick} />
             A analgesia multimodal é vital, mas a seleção de fármacos e doses deve ser extremamente cuidadosa. A avaliação da função renal é mandatória antes do uso de AINEs.</p>
         </GuideSection>
@@ -1074,7 +1124,7 @@ const CatAcuteGuideContent = ({ onInfoClick }: { onInfoClick: (title: string, co
                 <li><span className="font-semibold">Robenacoxib:</span> 1-2 mg/kg SID PO ou SC, por no máximo 3-6 dias.</li>
             </ul>
              <p className="mt-4 font-semibold text-red-700">Riscos em Gatos:
-                <InfoButton title="Riscos de AINEs em Gatos" content={<div><p>Due ao seu metabolismo e alta prevalência de doença renal crônica subclínica, os gatos são mais suscetíveis à toxicidade renal e gastrointestinal dos AINEs. O uso deve ser de curto prazo, com a menor dose eficaz, e apenas em pacientes hígidos, normotensos e bem hidratados. A triagem com exames de sangue é fortemente recomendada.</p></div>} onInfoClick={onInfoClick} />
+                <InfoButton title="Riscos de AINEs em Gatos" content={<div><p>Devido ao seu metabolismo e à alta prevalência de doença renal crônica subclínica, os gatos são mais suscetíveis à toxicidade renal e gastrointestinal dos AINEs. O uso deve ser de curto prazo, com a menor dose eficaz, e apenas em pacientes hígidos, normotensos e bem hidratados. A triagem com exames de sangue é fortemente recomendada.</p></div>} onInfoClick={onInfoClick} />
             </p>
 
             <h4 className="text-xl font-semibold text-teal-800 mt-6 mb-2">Analgésicos Adjuvantes</h4>
@@ -1085,15 +1135,11 @@ const CatAcuteGuideContent = ({ onInfoClick }: { onInfoClick: (title: string, co
             </ul>
         </GuideSection>
         
-        <GuideSection title="Infusão Contínua (CRI) em Gatos">
-            <p>Uma ferramenta poderosa, mas que exige precisão. A lidocaína sistêmica deve ser evitada ou usada com extrema cautela e monitoramento intensivo, pois os gatos são muito sensíveis à sua toxicidade cardiovascular.</p>
-            <CRICalculator species={Species.Cat} onInfoClick={onInfoClick} />
-        </GuideSection>
     </div>
 );
 
 const CatChronicGuideContent = ({ onInfoClick }: { onInfoClick: (title: string, content: React.ReactNode) => void }) => (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-6xl mx-auto">
         <GuideSection title="Particularidades do Manejo da Dor Crônica Felina">
             <p>Gatos são mestres em esconder a dor crônica. Mudanças sutis de comportamento, como relutância em pular, menor interação e higiene diminuída, são sinais importantes. A abordagem deve ser gentil e focada no bem-estar e enriquecimento ambiental.</p>
         </GuideSection>
@@ -1148,10 +1194,16 @@ interface GuideScreenProps {
     onHome: () => void;
     setModal: (title: string, content: React.ReactNode) => void;
     initialPainType: PainType | null;
+    initialSpecies: Species | null;
 }
-const GuideScreen: React.FC<GuideScreenProps> = ({ onBack, onHome, setModal, initialPainType }) => {
+const GuideScreen: React.FC<GuideScreenProps> = ({ onBack, onHome, setModal, initialPainType, initialSpecies }) => {
     const [context, setContext] = useState<PainType | null>(initialPainType);
-    const [selectedSpecies, setSelectedSpecies] = useState<Species | null>(null);
+    const [selectedSpecies, setSelectedSpecies] = useState<Species | null>(initialSpecies);
+
+    useEffect(() => {
+        setContext(initialPainType);
+        setSelectedSpecies(initialSpecies);
+    }, [initialPainType, initialSpecies]);
 
     const handleBackToContext = () => {
         setSelectedSpecies(null);
@@ -1164,14 +1216,14 @@ const GuideScreen: React.FC<GuideScreenProps> = ({ onBack, onHome, setModal, ini
         return (
             <>
                 <Header title="Guias de Manejo da Dor" onBack={onBack} onHome={onHome}/>
-                <div className="flex flex-col items-center justify-center p-4" style={{minHeight: 'calc(100vh - 80px)'}}>
-                    <div className="w-full max-w-lg text-center">
+                <div className="flex flex-col items-center justify-center p-4" style={{ minHeight: 'calc(100dvh - 9rem)' }}>
+                    <div className="w-full max-w-3xl text-center">
                         <h2 className="text-3xl font-bold text-slate-700 mb-8">Qual o Contexto Clínico?</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <Card className="hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
                                 <button onClick={() => setContext(PainType.Acute)} className="p-8 w-full h-full text-left flex flex-col">
                                     <h3 className="text-2xl font-bold text-teal-700">Resgate Analgésico</h3>
-                                    <p className="text-slate-600 mt-2 flex-grow">Protocolos para dor aguda, pós-operatório e uso hospitalar, incluindo calculadoras de CRI.</p>
+                                    <p className="text-slate-600 mt-2 flex-grow">Protocolos para dor aguda, pós-operatório e uso hospitalar.</p>
                                 </button>
                             </Card>
                             <Card className="hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
@@ -1191,16 +1243,16 @@ const GuideScreen: React.FC<GuideScreenProps> = ({ onBack, onHome, setModal, ini
         return (
             <>
                 <Header title={`Guia: ${context === PainType.Acute ? 'Resgate Analgésico' : 'Dor Crônica'}`} onBack={handleBackToContext} onHome={onHome}/>
-                <div className="flex flex-col items-center justify-center p-4" style={{minHeight: 'calc(100vh - 80px)'}}>
-                    <div className="w-full max-w-md text-center">
+                <div className="flex flex-col items-center justify-center p-4" style={{ minHeight: 'calc(100dvh - 9rem)' }}>
+                    <div className="w-full max-w-5xl text-center">
                         <h2 className="text-3xl font-bold text-slate-700 mb-8">Para Qual Espécie?</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <button onClick={() => setSelectedSpecies(Species.Dog)} className="group flex flex-col items-center justify-center p-8 bg-white rounded-xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 h-48">
-                                <span className="text-6xl mb-2 transition-transform duration-300 group-hover:scale-110">🐶</span>
+                                <Dog className="h-14 w-14 mb-2 transition-transform duration-300 group-hover:scale-110" />
                                 <span className="text-2xl font-semibold text-slate-800">Cão</span>
                             </button>
                             <button onClick={() => setSelectedSpecies(Species.Cat)} className="group flex flex-col items-center justify-center p-8 bg-white rounded-xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 h-48">
-                                <span className="text-6xl mb-2 transition-transform duration-300 group-hover:scale-110">🐱</span>
+                                <Cat className="h-14 w-14 mb-2 transition-transform duration-300 group-hover:scale-110" />
                                 <span className="text-2xl font-semibold text-slate-800">Gato</span>
                             </button>
                         </div>
@@ -1259,7 +1311,7 @@ const ClinicalGuidelinesScreen: React.FC<{ onBack: () => void }> = ({ onBack }) 
     <>
         <Header title="Diretrizes Clínicas" onBack={onBack} onHome={onBack} />
         <main className="p-4 md:p-8">
-            <div className="max-w-4xl mx-auto bg-white p-6 md:p-10 rounded-lg shadow-lg">
+            <div className="max-w-6xl mx-auto bg-white p-6 md:p-10 rounded-lg shadow-lg">
                 <h1 className="text-4xl font-extrabold text-teal-700 text-center mb-6">Diretrizes Clínicas para o Manejo da Dor em Cães e Gatos</h1>
                 <p className="text-center text-slate-600 mb-10 italic">Uma Base Farmacológica e Estratégica para Aplicações de Suporte à Decisão Clínica</p>
 
@@ -1520,15 +1572,15 @@ const CalculatorScreen: React.FC<CalculatorScreenProps> = ({ onBack, onHome, onI
         <>
         <Header title="Calculadora de Doses" onBack={onBack} onHome={onHome}/>
         <main className="p-4 md:p-8">
-            <div className="max-w-4xl mx-auto space-y-6">
+            <div className="max-w-6xl mx-auto space-y-6">
                 <Card className="p-6 md:p-8">
                     <h2 className="text-2xl font-bold text-slate-800 mb-4 border-b pb-2">1. Dados do Paciente</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label className="block text-sm font-medium text-slate-700 mb-1">Espécie</label>
                             <div className="flex rounded-md shadow-sm">
-                                <button onClick={() => setSpecies(Species.Dog)} className={`px-4 py-2 text-sm font-medium border border-slate-300 rounded-l-md flex-1 ${species === 'dog' ? 'bg-teal-600 text-white border-teal-600 z-10' : 'bg-white text-slate-700 hover:bg-slate-50'}`}>🐶 Cão</button>
-                                <button onClick={() => setSpecies(Species.Cat)} className={`px-4 py-2 text-sm font-medium border-r border-t border-b border-slate-300 rounded-r-md flex-1 ${species === 'cat' ? 'bg-teal-600 text-white border-teal-600 z-10' : 'bg-white text-slate-700 hover:bg-slate-50'}`}>🐱 Gato</button>
+                                <button onClick={() => setSpecies(Species.Dog)} className={`px-4 py-2 text-sm font-medium border border-slate-300 rounded-l-md flex-1 inline-flex items-center justify-center gap-2 ${species === 'dog' ? 'bg-teal-600 text-white border-teal-600 z-10' : 'bg-white text-slate-700 hover:bg-slate-50'}`}><Dog className="h-4 w-4" /> Cão</button>
+                                <button onClick={() => setSpecies(Species.Cat)} className={`px-4 py-2 text-sm font-medium border-r border-t border-b border-slate-300 rounded-r-md flex-1 inline-flex items-center justify-center gap-2 ${species === 'cat' ? 'bg-teal-600 text-white border-teal-600 z-10' : 'bg-white text-slate-700 hover:bg-slate-50'}`}><Cat className="h-4 w-4" /> Gato</button>
                             </div>
                         </div>
                         <div>
@@ -1656,10 +1708,23 @@ const App = () => {
     const [modalScale, setModalScale] = useState<Scale | null>(null);
     const [infoModalContent, setInfoModalContent] = useState<{title: string, content: React.ReactNode} | null>(null);
 
-    // State for Gemini AI Feature
-    const [geminiLoading, setGeminiLoading] = useState(false);
-    const [geminiResponse, setGeminiResponse] = useState<GeminiAnalysis | null>(null);
-    const [geminiError, setGeminiError] = useState<string | null>(null);
+    const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [themeMode, setThemeMode] = useState<'dark' | 'light'>(() => {
+        if (typeof window === 'undefined') return 'dark';
+        const saved = window.localStorage.getItem('dorvet-theme-mode');
+        if (saved === 'dark' || saved === 'light') return saved;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    });
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            window.localStorage.setItem('dorvet-theme-mode', themeMode);
+        }
+    }, [themeMode]);
+
+    useEffect(() => {
+        setSidebarOpen(false);
+    }, [screen]);
 
 
     const handleSelectSpecies = useCallback((s: Species) => {
@@ -1704,8 +1769,6 @@ const App = () => {
         setPainType(null);
         setSelectedScale(null);
         setAnswers({});
-        setGeminiResponse(null);
-        setGeminiError(null);
     }, []);
     
     const handleShowGuide = useCallback((pt: PainType | null) => {
@@ -1744,30 +1807,24 @@ const App = () => {
         return null;
     }, [screen, selectedScale, answers]);
 
-    const handleGetGeminiOpinion = useCallback(async () => {
-        if (!species || !painType || !selectedScale || !result) return;
-        
-        setGeminiLoading(true);
-        setGeminiResponse(null);
-        setGeminiError(null);
-        
-        try {
-            const response = await getPainAnalysis({
-                species: species,
-                painType: painType,
-                scaleName: selectedScale.name,
-                score: result.score,
-                analysis: result.analysis,
-            });
-            setGeminiResponse(response);
-        } catch (e: any) {
-            setGeminiError(e.message || 'An unknown error occurred.');
-            setGeminiResponse(null); // Ensure no old response is shown
-        } finally {
-            setGeminiLoading(false);
-        }
-    }, [species, painType, selectedScale, result]);
+    const navItems = useMemo(() => [
+        { screen: 'home' as Screen, disabled: false },
+        { screen: 'painType' as Screen, disabled: !species },
+        { screen: 'scaleSelect' as Screen, disabled: !species || !painType },
+        { screen: 'assessment' as Screen, disabled: !selectedScale },
+        { screen: 'results' as Screen, disabled: !result },
+        { screen: 'guide' as Screen, disabled: false },
+        { screen: 'clinicalGuidelines' as Screen, disabled: false },
+        { screen: 'calculator' as Screen, disabled: false },
+    ], [species, painType, selectedScale, result]);
 
+    const handleNavigateScreen = useCallback((target: Screen) => {
+        const selected = navItems.find((item) => item.screen === target);
+        if (selected?.disabled) {
+            return;
+        }
+        setScreen(target);
+    }, [navItems]);
 
     const renderScreen = () => {
         switch (screen) {
@@ -1778,9 +1835,9 @@ const App = () => {
             case 'assessment':
                 return <AssessmentScreen scale={selectedScale!} onSubmit={handleSubmitAssessment} onBack={handleBack} />;
             case 'results':
-                return <ResultScreen result={result!} scaleName={selectedScale!.name} painType={painType!} onRestart={handleRestart} onShowGuide={handleShowGuide} onGetGeminiOpinion={handleGetGeminiOpinion} geminiLoading={geminiLoading}/>;
+                return <ResultScreen result={result!} scaleName={selectedScale!.name} painType={painType!} species={species} onRestart={handleRestart} onShowGuide={handleShowGuide} />;
             case 'guide':
-                return <GuideScreen onBack={handleRestart} onHome={handleRestart} setModal={handleSetInfoModal} initialPainType={painType} />;
+                return <GuideScreen onBack={handleRestart} onHome={handleRestart} setModal={handleSetInfoModal} initialPainType={painType} initialSpecies={species} />;
             case 'clinicalGuidelines':
                 return <ClinicalGuidelinesScreen onBack={handleRestart} />;
             case 'calculator':
@@ -1791,8 +1848,110 @@ const App = () => {
     };
 
     return (
-        <div className="min-h-screen bg-slate-100">
-            {renderScreen()}
+        <div className={`dorvet-shell ${themeMode === 'dark' ? 'dorvet-dark' : 'dorvet-light'}`}>
+            <div className="dorvet-aurora" aria-hidden />
+
+            <button
+                type="button"
+                onClick={() => setSidebarOpen(true)}
+                className="dorvet-mobile-menu lg:hidden"
+                aria-label="Abrir navegação"
+            >
+                <Menu className="h-5 w-5" />
+            </button>
+
+            <button
+                type="button"
+                onClick={() => setThemeMode(themeMode === 'dark' ? 'light' : 'dark')}
+                className="dorvet-theme-toggle"
+                aria-label={themeMode === 'dark' ? 'Ativar modo claro' : 'Ativar modo escuro'}
+            >
+                {themeMode === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
+
+            <aside className="dorvet-sidebar hidden lg:flex">
+                <div className="dorvet-sidebar-header">
+                    <div className="dorvet-sidebar-logo">
+                        <PawIcon className="h-5 w-5" />
+                    </div>
+                    <div>
+                        <p className="dorvet-sidebar-title">Painel Analgesia</p>
+                        <p className="dorvet-sidebar-subtitle">Controle de Dor Vet</p>
+                    </div>
+                </div>
+
+                <nav className="dorvet-sidebar-nav">
+                    {navItems.map((item) => {
+                        const Icon = SCREEN_ICONS[item.screen];
+                        return (
+                            <button
+                                key={item.screen}
+                                type="button"
+                                onClick={() => handleNavigateScreen(item.screen)}
+                                disabled={item.disabled}
+                                className={`dorvet-nav-item ${screen === item.screen ? 'dorvet-nav-item-active' : ''}`}
+                            >
+                                <Icon className="h-4 w-4" />
+                                <span>{SCREEN_TITLES[item.screen]}</span>
+                            </button>
+                        );
+                    })}
+                </nav>
+            </aside>
+
+            {sidebarOpen && (
+                <div className="dorvet-drawer lg:hidden">
+                    <button
+                        type="button"
+                        onClick={() => setSidebarOpen(false)}
+                        className="dorvet-drawer-overlay"
+                        aria-label="Fechar navegação"
+                    />
+                    <aside className="dorvet-drawer-panel">
+                        <div className="dorvet-sidebar-header">
+                            <div className="dorvet-sidebar-logo">
+                                <PawIcon className="h-5 w-5" />
+                            </div>
+                            <div className="flex-1">
+                                <p className="dorvet-sidebar-title">Navegação</p>
+                                <p className="dorvet-sidebar-subtitle">Módulo Dor</p>
+                            </div>
+                            <button
+                                type="button"
+                                onClick={() => setSidebarOpen(false)}
+                                className="dorvet-drawer-close"
+                                aria-label="Fechar menu"
+                            >
+                                <X className="h-4 w-4" />
+                            </button>
+                        </div>
+
+                        <nav className="dorvet-sidebar-nav">
+                            {navItems.map((item) => {
+                                const Icon = SCREEN_ICONS[item.screen];
+                                return (
+                                    <button
+                                        key={item.screen}
+                                        type="button"
+                                        onClick={() => handleNavigateScreen(item.screen)}
+                                        disabled={item.disabled}
+                                        className={`dorvet-nav-item ${screen === item.screen ? 'dorvet-nav-item-active' : ''}`}
+                                    >
+                                        <Icon className="h-4 w-4" />
+                                        <span>{SCREEN_TITLES[item.screen]}</span>
+                                    </button>
+                                );
+                            })}
+                        </nav>
+                    </aside>
+                </div>
+            )}
+
+            <div className="dorvet-content-wrap">
+                <div key={screen} className="dorvet-screen-frame">
+                    {renderScreen()}
+                </div>
+            </div>
             <Modal isOpen={!!modalScale} onClose={handleCloseDetailsModal} title={modalScale?.name}>
                 {modalScale?.details && (
                     <div className="space-y-4">
@@ -1830,36 +1989,11 @@ const App = () => {
              <Modal isOpen={!!infoModalContent} onClose={handleCloseInfoModal} title={infoModalContent?.title}>
                 {infoModalContent?.content}
             </Modal>
-            <Modal
-                isOpen={!!geminiResponse || !!geminiError}
-                onClose={() => { setGeminiResponse(null); setGeminiError(null); }}
-                title="Análise com IA"
-            >
-                {geminiResponse && (
-                    <div className="space-y-4 text-slate-700 leading-relaxed">
-                        <div>
-                            <h4 className="font-bold text-lg text-slate-800">Análise Clínica</h4>
-                            <p>{geminiResponse.clinicalAnalysis}</p>
-                        </div>
-                        <div>
-                            <h4 className="font-bold text-lg text-slate-800">Sugestões de Ação</h4>
-                            <p>{geminiResponse.actionSuggestions}</p>
-                        </div>
-                        {geminiResponse.importantReminders && (
-                             <div>
-                                <h4 className="font-bold text-lg text-slate-800">Lembretes Importantes</h4>
-                                <p>{geminiResponse.importantReminders}</p>
-                            </div>
-                        )}
-                    </div>
-                )}
-                {geminiError && <p className="text-red-600 font-semibold">{geminiError}</p>}
-                <p className="text-xs text-slate-500 mt-6 italic">
-                    Aviso: Esta análise é gerada por inteligência artificial e serve como uma ferramenta de apoio. Não substitui o julgamento clínico profissional do médico veterinário responsável.
-                </p>
-            </Modal>
         </div>
     );
 };
 
 export default App;
+
+
+

@@ -225,7 +225,7 @@ export const mlkProfile: DrugProfile = {
       key: 'mlk_cat_warning',
       level: 'BLOCK',
       title: 'GATOS: Risco de morte (Lidocaína)',
-      why: 'A mistura contém Lidocaína em dose tóxica para gatos e Morfina em dose alta. NÃO adminsitrar a mistura de cão em gatos.',
+      why: 'A mistura contém Lidocaína em dose tóxica para gatos e Morfina em dose alta. NÃO administrar a mistura de cão em gatos.',
       action: [
         'Não usar MLK padrão em gatos.',
         'Usar infusão de Fentanil ou Metadona isolados, ou Ketamina + Opioide em doses felinas.',

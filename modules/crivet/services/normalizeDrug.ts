@@ -142,11 +142,11 @@ function normalizeHelpDrawer(raw: any, fallbackTitle: string): NormalizedHelpDra
   if (raw.core_concepts?.pharmacodynamics) {
     const pd = raw.core_concepts.pharmacodynamics
     if (pd.onset_iv) pharmacodynamicsContent.push(`**Inicio IV:** ${pd.onset_iv}`)
-    if (pd.onset_im) pharmacodynamicsContent.push(`**Inicio IM:** ${pd.onset_im}`)
+    if (pd.onset_im) pharmacodynamicsContent.push(`**Início IM:** ${pd.onset_im}`)
     if (pd.peak) pharmacodynamicsContent.push(`**Pico:** ${pd.peak}`)
     if (pd.duration) pharmacodynamicsContent.push(`**Duração:** ${pd.duration}`)
     if (pd.dependencies && Array.isArray(pd.dependencies)) {
-      pharmacodynamicsContent.push(`**Dependencias:** ${pd.dependencies.join('; ')}`)
+      pharmacodynamicsContent.push(`**Dependências:** ${pd.dependencies.join('; ')}`)
     }
   } else if (raw.pharmacodynamics) {
     const pd = raw.pharmacodynamics
@@ -157,16 +157,16 @@ function normalizeHelpDrawer(raw: any, fallbackTitle: string): NormalizedHelpDra
       })
     }
   }
-  addItems(pharmacodynamicsContent, 'Farmacodinamica')
+  addItems(pharmacodynamicsContent, 'Farmacodinâmica')
 
   const pharmacokineticsContent: string[] = []
   if (raw.core_concepts?.pharmacokinetics) {
     const pk = raw.core_concepts.pharmacokinetics
     if (pk.metabolism) pharmacokineticsContent.push(`**Metabolismo:** ${pk.metabolism}`)
-    if (pk.excretion) pharmacokineticsContent.push(`**Excrecao:** ${pk.excretion}`)
-    if (pk.dog_vs_cat) pharmacokineticsContent.push(`**Diferencas cao/gato:** ${pk.dog_vs_cat}`)
+    if (pk.excretion) pharmacokineticsContent.push(`**Excreção:** ${pk.excretion}`)
+    if (pk.dog_vs_cat) pharmacokineticsContent.push(`**Diferenças cão/gato:** ${pk.dog_vs_cat}`)
     if (pk.active_metabolites) pharmacokineticsContent.push(`**Metabolitos ativos:** ${pk.active_metabolites}`)
-    if (pk.accumulation) pharmacokineticsContent.push(`**Acumulo:** ${pk.accumulation}`)
+    if (pk.accumulation) pharmacokineticsContent.push(`**Acúmulo:** ${pk.accumulation}`)
   } else if (raw.pharmacokinetics) {
     const pk = raw.pharmacokinetics
     if (typeof pk === 'string') pharmacokineticsContent.push(pk)
@@ -176,7 +176,7 @@ function normalizeHelpDrawer(raw: any, fallbackTitle: string): NormalizedHelpDra
       })
     }
   }
-  addItems(pharmacokineticsContent, 'Farmacocinetica')
+  addItems(pharmacokineticsContent, 'Farmacocinética')
 
   const contraindicationsContent: string[] = []
   if (raw.contraindications) {
@@ -232,7 +232,7 @@ function normalizeHelpDrawer(raw: any, fallbackTitle: string): NormalizedHelpDra
       else if (Array.isArray(when)) indicationsContent.push(...when.filter((s: any) => typeof s === 'string'))
     }
   }
-  addItems(indicationsContent, 'Indicacoes')
+  addItems(indicationsContent, 'Indicações')
 
   const dosesContent: string[] = []
   if (raw.doses) {
@@ -248,7 +248,7 @@ function normalizeHelpDrawer(raw: any, fallbackTitle: string): NormalizedHelpDra
         if (bolus.mgkg) dogDoses.push(`Bolus: ${bolus.mgkg.min}-${bolus.mgkg.max} mg/kg${bolus.mgkg.note ? ` (${bolus.mgkg.note})` : ''}`)
         if (bolus.mcgkg) dogDoses.push(`Bolus: ${bolus.mcgkg.min}-${bolus.mcgkg.max} mcg/kg${bolus.mcgkg.note ? ` (${bolus.mcgkg.note})` : ''}`)
       }
-      if (dogDoses.length > 0) dosesContent.push(`Cao: ${dogDoses.join('; ')}`)
+      if (dogDoses.length > 0) dosesContent.push(`Cão: ${dogDoses.join('; ')}`)
     }
     if (raw.doses.cat) {
       const catDoses: string[] = []
@@ -736,7 +736,7 @@ function calculateCompleteness(data: {
 
   // Indicações (10%)
   const hasRealIndications = data.indications.length > 0 &&
-    !data.indications.some(i => i === '' || i.includes('Indicacoes'));
+    !data.indications.some(i => i === '' || i.includes('Indicações') || i.includes('Indicacoes'));
   if (hasRealIndications) {
     score += 10;
   }
@@ -764,7 +764,11 @@ function calculateCompleteness(data: {
   if (hasMechanism) score += 10;
 
   // PK/PD (10%)
-  const hasPD_PK = helpText.includes('farmacodinamica') || helpText.includes('farmacocinetica');
+  const hasPD_PK =
+    helpText.includes('farmacodinâmica') ||
+    helpText.includes('farmacocinética') ||
+    helpText.includes('farmacodinamica') ||
+    helpText.includes('farmacocinetica');
   if (hasPD_PK) score += 10;
 
   // Outras seções úteis (além das padrão e INFO) (10%)

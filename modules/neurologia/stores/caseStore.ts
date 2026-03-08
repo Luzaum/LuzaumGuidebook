@@ -78,9 +78,26 @@ export type ComplaintContext = {
 
 type NeuroExam = Record<string, any> // mantém compatível com seu modelo atual
 type Review = Record<string, any>
+type AICoverageSection = {
+  expected: string[]
+  matched: string[]
+  missing: string[]
+  covered: boolean
+}
+type AICoverage = {
+  score: number
+  identification: AICoverageSection
+  historyContext: AICoverageSection
+  neuroExam: AICoverageSection
+}
 type Analysis = {
   status: 'idle' | 'running' | 'done' | 'insufficient_data'
   report?: any // CaseReport será tipado depois
+  aiOpinion?: string | null
+  aiModelUsed?: string | null
+  aiUsedFallback?: boolean
+  aiCoverage?: AICoverage | null
+  aiError?: string | null
 } | null
 
 type CaseState = {
@@ -169,4 +186,3 @@ export const useCaseStore = create<CaseState>()(
     { name: 'vetneuro.case.v1' },
   ),
 )
-

@@ -26,7 +26,8 @@ export function AppLayout() {
     isActive('/hub') ||
     isImmersiveModuleRoute ||
     location.pathname.startsWith('/calculadora-energetica') ||
-    location.pathname.startsWith('/crivet')
+    location.pathname.startsWith('/crivet') ||
+    location.pathname.startsWith('/consulta-vet')
 
   if (isImmersiveModuleRoute) {
     return (
@@ -37,7 +38,7 @@ export function AppLayout() {
   }
 
   return (
-    <div className="min-h-dvh flex bg-background">
+    <div className="flex h-dvh min-h-dvh bg-background">
       {/* Mobile & Desktop Drawer Sidebar */}
       {sidebarOpen && (
         <div className="fixed inset-0 z-50">
@@ -144,7 +145,15 @@ export function AppLayout() {
                               : 'text-slate-200/90 dark:text-foreground hover:bg-slate-800/40 dark:hover:bg-surface/50'
                               }`}
                           >
-                            <Icon className="h-4 w-4" />
+                            {module.iconImage ? (
+                              <img
+                                src={module.iconImage}
+                                alt={`${module.title} logo`}
+                                className="h-4 w-4 object-contain dark:invert dark:brightness-0 dark:contrast-200"
+                              />
+                            ) : (
+                              <Icon className="h-4 w-4" />
+                            )}
                             <span className="truncate">{module.title}</span>
                           </button>
                         </li>
@@ -193,7 +202,7 @@ export function AppLayout() {
       )}
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col min-w-0">
+      <div className="flex min-h-0 min-w-0 flex-1 flex-col">
         {/* Header */}
         <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm">
           <div className="flex items-center justify-between px-4 py-2">
@@ -223,11 +232,15 @@ export function AppLayout() {
 
         {/* Page Content */}
         {/* Page Content */}
-        <main className="flex-1 overflow-auto flex flex-col relative w-full h-full">
+        <main
+          className={`relative flex w-full flex-1 flex-col min-h-0 ${isFullBleedRoute ? 'overflow-hidden' : 'overflow-auto'}`}
+        >
           {isFullBleedRoute ? (
-            <Outlet />
+            <div className="h-full min-h-0 w-full">
+              <Outlet />
+            </div>
           ) : (
-            <div className="mx-auto w-full max-w-7xl px-6 pb-6">
+            <div className="mx-auto w-full max-w-7xl px-3 sm:px-4 md:px-6 pb-4 sm:pb-6">
               <Outlet />
             </div>
           )}

@@ -79,7 +79,7 @@ export default function AccountProfile() {
         </div>
 
         <div className="space-y-1">
-          <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Usuario exibido</label>
+          <label className="text-sm font-medium text-slate-700 dark:text-slate-200">Usuário exibido</label>
           <input
             className="w-full rounded-lg border border-slate-300 bg-white p-2.5 text-sm text-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
             value={username}

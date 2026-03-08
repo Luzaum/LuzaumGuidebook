@@ -1,11 +1,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Brain, AlertTriangle, CheckCircle2, FileText } from 'lucide-react'
-import { Button } from '../UI/Button'
 import { Card } from '../UI/Card'
 import { InlineBanner } from '../UI/InlineBanner'
 import { useCaseStore } from '../../stores/caseStore'
 import { buildCaseReport } from '../../lib/analysis/report'
+import { generateDeepSeekClinicalOpinion } from '../../lib/analysis/deepseek'
 import { exportToPDF } from '../../lib/report/pdfExporter'
 import type { CaseReport } from '../../types/analysis'
 
@@ -16,13 +16,53 @@ export function Step5Analysis() {
   const complaint = useCaseStore((s) => s.complaint)
   const neuroExam = useCaseStore((s) => s.neuroExam)
 
-  const runAnalysis = () => {
+  const runAnalysis = async () => {
     setAnalysis({ status: 'running' })
     const caseState = { patient, complaint, neuroExam }
     const report = buildCaseReport(caseState)
+
+    if (report.neuroLocalization.status !== 'ok') {
+      setAnalysis({
+        status: 'insufficient_data',
+        report,
+      })
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      return
+    }
+
+    let aiOpinion: string | null = null
+    let aiModelUsed: string | null = null
+    let aiCoverage: any = null
+    let aiUsedFallback = false
+    let aiError: string | null = null
+
+    try {
+      const deepSeekResult = await generateDeepSeekClinicalOpinion(caseState, report)
+      if (!deepSeekResult) {
+        aiError = 'DeepSeek não inicializou. Verifique a configuração da API key no frontend.'
+      } else {
+        aiOpinion = deepSeekResult.content ?? null
+        aiModelUsed = deepSeekResult.modelUsed ?? null
+        aiCoverage = deepSeekResult.coverage ?? null
+        aiUsedFallback = deepSeekResult.fallbackUsed ?? false
+        if (!aiOpinion) {
+          aiError = 'DeepSeek respondeu sem conteúdo para este caso. Tente novamente.'
+        }
+      }
+    } catch (error) {
+      console.error('Erro ao gerar parecer DeepSeek:', error)
+      const message = error instanceof Error ? error.message : 'Erro desconhecido ao consultar DeepSeek.'
+      aiError = `Falha ao gerar parecer DeepSeek: ${message}`
+    }
+
     setAnalysis({
-      status: report.neuroLocalization.status === 'ok' ? 'done' : 'insufficient_data',
+      status: 'done',
       report,
+      aiOpinion,
+      aiModelUsed,
+      aiCoverage,
+      aiUsedFallback,
+      aiError,
     })
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -40,6 +80,11 @@ export function Step5Analysis() {
 
   const status = analysis?.status || 'idle'
   const report: CaseReport | undefined = analysis?.report
+  const aiOpinion = analysis?.aiOpinion || null
+  const aiModelUsed = analysis?.aiModelUsed || null
+  const aiCoverage = analysis?.aiCoverage || null
+  const aiUsedFallback = analysis?.aiUsedFallback || false
+  const aiError = analysis?.aiError || null
 
   const getAxisLabel = (axis: string): string => {
     const labels: Record<string, string> = {
@@ -86,6 +131,11 @@ export function Step5Analysis() {
     }
     return labels[cat] || cat
   }
+
+  const getCoverageBadgeClass = (covered: boolean): string =>
+    covered
+      ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300'
+      : 'border-red-500/40 bg-red-500/10 text-red-300'
 
   if (status === 'idle') {
     return (
@@ -143,17 +193,17 @@ export function Step5Analysis() {
       <div className="space-y-6 pb-24">
         <motion.button
           onClick={runAnalysis}
-          disabled={true}
+          disabled={false}
           className={`
             w-full px-8 py-4 text-lg font-bold rounded-xl
-            bg-gradient-to-r from-red-500 to-red-600
+            bg-gradient-to-r from-yellow-500 to-yellow-600
+            hover:from-yellow-600 hover:to-yellow-700
             text-white shadow-lg
             transition-all duration-300
-            opacity-50 cursor-not-allowed
           `}
         >
-          <AlertTriangle className="w-5 h-5 mr-2 inline-block" />
-          Analisar Caso (Dados Insuficientes)
+          <Brain className="w-5 h-5 mr-2 inline-block" />
+          Tentar Reanalisar Caso
         </motion.button>
 
         <InlineBanner
@@ -171,16 +221,30 @@ export function Step5Analysis() {
   if (status === 'done' && report) {
     return (
       <div className="space-y-6 pb-24">
-        {/* Botão de Exportar PDF */}
-        <motion.button
-          onClick={handleExportPDF}
-          className="w-full px-6 py-3 text-base font-semibold rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          <FileText className="w-5 h-5" />
-          Exportar Relatório em PDF
-        </motion.button>
+        {/* Botoes Superiores */}
+        <div className="flex flex-col sm:flex-row gap-4">
+          <motion.button
+            onClick={handleExportPDF}
+            className="flex-1 px-6 py-3 text-base font-semibold rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <FileText className="w-5 h-5" />
+            Exportar em PDF
+          </motion.button>
+
+          {(aiError || !aiOpinion) && (
+            <motion.button
+              onClick={runAnalysis}
+              className="flex-1 px-6 py-3 text-base font-semibold rounded-xl bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Brain className="w-5 h-5" />
+              Tentar Analisar Novamente
+            </motion.button>
+          )}
+        </div>
 
         {/* Identificação */}
         <Card className="p-6">
@@ -202,6 +266,86 @@ export function Step5Analysis() {
           <h3 className="text-lg font-semibold text-gold mb-3">Resumo do Exame Neurológico</h3>
           <p className="text-foreground/90 text-sm whitespace-pre-line">{report.examSummary}</p>
         </Card>
+
+        {aiOpinion && (
+          <Card className="p-6 border-cyan-500/30 bg-cyan-950/10">
+            <h3 className="text-xl font-bold text-cyan-300 mb-3 flex items-center gap-2">
+              <Brain className="w-6 h-6" />
+              Parecer IA DeepSeek
+            </h3>
+
+            <p className="text-xs text-cyan-100/80 mb-3">
+              Modelo utilizado: <span className="font-semibold">{aiModelUsed || 'DeepSeek'}</span>
+              {aiUsedFallback ? ' (fallback automatico por custo/disponibilidade)' : ''}
+            </p>
+
+            {aiCoverage && (
+              <div className="mb-4 space-y-3">
+                <div className="flex flex-wrap gap-2">
+                  <span className="text-xs px-2 py-1 rounded border border-cyan-500/30 bg-cyan-500/10 text-cyan-300">
+                    Cobertura global: {aiCoverage.score}%
+                  </span>
+                  <span
+                    className={`text-xs px-2 py-1 rounded border ${getCoverageBadgeClass(aiCoverage.identification.covered)}`}
+                  >
+                    Identificacao: {aiCoverage.identification.covered ? 'ok' : 'incompleta'}
+                  </span>
+                  <span
+                    className={`text-xs px-2 py-1 rounded border ${getCoverageBadgeClass(aiCoverage.historyContext.covered)}`}
+                  >
+                    Historico/contexto: {aiCoverage.historyContext.covered ? 'ok' : 'incompleto'}
+                  </span>
+                  <span
+                    className={`text-xs px-2 py-1 rounded border ${getCoverageBadgeClass(aiCoverage.neuroExam.covered)}`}
+                  >
+                    Exame neurologico: {aiCoverage.neuroExam.covered ? 'ok' : 'incompleto'}
+                  </span>
+                </div>
+
+                {((aiCoverage.identification.missing && aiCoverage.identification.missing.length > 0) ||
+                  (aiCoverage.historyContext.missing && aiCoverage.historyContext.missing.length > 0) ||
+                  (aiCoverage.neuroExam.missing && aiCoverage.neuroExam.missing.length > 0)) && (
+                    <div className="rounded-lg border border-amber-500/35 bg-amber-950/20 p-3">
+                      <p className="text-xs font-semibold text-amber-300 mb-2">
+                        Pontos possivelmente nao cobertos integralmente na resposta da IA:
+                      </p>
+                      <ul className="list-disc list-inside space-y-1 text-xs text-amber-200/90">
+                        {aiCoverage.identification.missing?.slice(0, 4).map((item: string, idx: number) => (
+                          <li key={`id-miss-${idx}`}>Identificacao: {item}</li>
+                        ))}
+                        {aiCoverage.historyContext.missing?.slice(0, 4).map((item: string, idx: number) => (
+                          <li key={`hx-miss-${idx}`}>Historico/contexto: {item}</li>
+                        ))}
+                        {aiCoverage.neuroExam.missing?.slice(0, 4).map((item: string, idx: number) => (
+                          <li key={`exam-miss-${idx}`}>Exame neurologico: {item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+              </div>
+            )}
+
+            <div className="rounded-xl border border-cyan-500/30 bg-black/30 p-4">
+              <p className="text-sm text-cyan-50 whitespace-pre-wrap leading-relaxed">{aiOpinion}</p>
+            </div>
+          </Card>
+        )}
+
+        {aiError && (
+          <InlineBanner
+            variant="warning"
+            title="Parecer IA indisponivel"
+            message={aiError}
+          />
+        )}
+
+        {!aiOpinion && !aiError && (
+          <InlineBanner
+            variant="warning"
+            title="Sem resposta da IA"
+            message="A chamada ao DeepSeek não retornou conteúdo útil. Abra o console (F12) para ver o diagnóstico detalhado da integração."
+          />
+        )}
 
         {/* Neurolocalização */}
         <Card className="p-6 border-gold/30">
@@ -388,10 +532,10 @@ export function Step5Analysis() {
                           <p className="text-sm font-medium text-foreground">{diag.test}</p>
                           <span
                             className={`text-xs px-2 py-1 rounded ${diag.priority === 'ALTA'
-                                ? 'bg-red-900/50 text-red-300'
-                                : diag.priority === 'MEDIA'
-                                  ? 'bg-yellow-900/50 text-yellow-300'
-                                  : 'bg-blue-900/50 text-blue-300'
+                              ? 'bg-red-900/50 text-red-300'
+                              : diag.priority === 'MEDIA'
+                                ? 'bg-yellow-900/50 text-yellow-300'
+                                : 'bg-blue-900/50 text-blue-300'
                               }`}
                           >
                             {diag.priority}

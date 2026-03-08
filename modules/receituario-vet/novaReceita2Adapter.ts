@@ -27,15 +27,88 @@ function toSafeString(v: unknown): string {
  */
 function parseDoseString(dose: string): { numericStr: string; unit: string; perKg: boolean } | null {
     if (!dose) return null
-    // Aceita: "10 mg/kg", "0,5 mg/kg BID", "25 mg", "0.5 ml/kg", "10 mcg/kg"
-    const match = dose.match(/(\d+(?:[.,]\d+)?)\s*(mg|mcg|g|ml|mL|UI|IU|u\.?i\.?)(?:\/kg)?/i)
+    const match = dose.match(/(\d+(?:[.,]\d+)?)\s*([a-zA-ZÀ-ÿ%µ./()]+)?/i)
     if (!match) return null
-    const perKg = /\/kg/i.test(dose)
+    const rawUnit = String(match[2] || '').trim()
+    const perKg = /\/\s*kg/i.test(dose) || /\/\s*kg/i.test(rawUnit)
+    const unit = rawUnit
+        .replace(/\/\s*kg/ig, '')
+        .replace(/\(s\)/ig, '')
+        .replace(/\./g, '')
+        .trim()
     return {
         numericStr: match[1].replace(',', '.'),
-        unit: match[2].toLowerCase().replace('ui', 'ui').replace('iu', 'ui'),
+        unit: (unit || 'mg').toLowerCase().replace('ui', 'ui').replace('iu', 'ui'),
         perKg,
     }
+}
+
+function normalizeLooseText(value: string): string {
+    return String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .trim()
+}
+
+function parseFrequencyFromText(raw?: string): {
+    frequencyType: 'timesPerDay' | 'everyHours'
+    frequencyToken: '' | 'SID' | 'BID' | 'TID' | 'QID'
+    timesPerDay: string
+    everyHours: string
+} {
+    const value = normalizeLooseText(raw || '')
+    if (!value) return { frequencyType: 'timesPerDay', frequencyToken: '', timesPerDay: '1', everyHours: '' }
+
+    const everyHoursMatch = value.match(/a cada\s*(\d+(?:[.,]\d+)?)\s*h/)
+    if (everyHoursMatch) {
+        return { frequencyType: 'everyHours', frequencyToken: '', timesPerDay: '', everyHours: everyHoursMatch[1].replace(',', '.') }
+    }
+
+    const timesPerDayMatch = value.match(/(\d+)\s*x\s*ao\s*dia|(\d+)\s*vez(?:es)?\s*(?:por|ao)\s*dia/)
+    if (timesPerDayMatch) {
+        const times = timesPerDayMatch[1] || timesPerDayMatch[2] || '1'
+        return { frequencyType: 'timesPerDay', frequencyToken: '', timesPerDay: times, everyHours: '' }
+    }
+
+    if (value.includes('q24') || value.includes('sid') || value.includes('uma vez')) {
+        return { frequencyType: 'timesPerDay', frequencyToken: 'SID', timesPerDay: '1', everyHours: '' }
+    }
+    if (value.includes('q12') || value.includes('bid')) {
+        return { frequencyType: 'timesPerDay', frequencyToken: 'BID', timesPerDay: '2', everyHours: '' }
+    }
+    if (value.includes('q8') || value.includes('tid')) {
+        return { frequencyType: 'timesPerDay', frequencyToken: 'TID', timesPerDay: '3', everyHours: '' }
+    }
+    if (value.includes('q6') || value.includes('qid')) {
+        return { frequencyType: 'timesPerDay', frequencyToken: 'QID', timesPerDay: '4', everyHours: '' }
+    }
+
+    return { frequencyType: 'timesPerDay', frequencyToken: '', timesPerDay: '1', everyHours: '' }
+}
+
+function parseDurationFromText(raw?: string): {
+    durationDays: string
+    continuousUse: boolean
+    untilFinished: boolean
+} {
+    const value = normalizeLooseText(raw || '')
+    if (!value) return { durationDays: '', continuousUse: false, untilFinished: false }
+
+    if (value.includes('uso continuo')) {
+        return { durationDays: '', continuousUse: true, untilFinished: false }
+    }
+    if (value.includes('ate terminar') || value.includes('ate acabar')) {
+        return { durationDays: '', continuousUse: false, untilFinished: true }
+    }
+
+    const daysMatch = value.match(/(\d+)\s*dias?/)
+    if (daysMatch) return { durationDays: daysMatch[1], continuousUse: false, untilFinished: false }
+
+    const genericNumber = value.match(/(\d+)/)
+    if (genericNumber) return { durationDays: genericNumber[1], continuousUse: false, untilFinished: false }
+
+    return { durationDays: '', continuousUse: false, untilFinished: false }
 }
 
 // =====================================================================
@@ -137,10 +210,11 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
     const mappedItems = state.items.map(item => {
         const routeGroup = routeStringToGroup(item.route)
         // FIX: subtitle apenas para presentation (forma + embalagem + preço)
-        const subtitle = buildItemSubtitle(item)
+        const subtitle = item.pharmaceutical_form || item.presentation_label || buildItemSubtitle(item)
         // FIX: pre-build a instrução e sempre usar (nunca deixar o renderer substituir
         // por buildAutoInstruction que não consegue parsear dose livre "10 mg/kg")
-        const instruction = buildItemInstruction(item)
+        const manualInstruction = toSafeString(item.instructions).trim()
+        const hasManualInstruction = manualInstruction.length > 0
 
         // FIX G: parsear dose livre para campos estruturados (doseValue numérico + doseUnit)
         // Permite que calculateMedicationQuantity exiba "Dose calculada: X mg / Volume: Y mL"
@@ -149,6 +223,8 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
         const doseUnit = parsedDose
             ? parsedDose.perKg ? `${parsedDose.unit}/kg` : parsedDose.unit
             : ''
+        const frequency = parseFrequencyFromText(item.frequency)
+        const duration = parseDurationFromText(item.duration)
 
         // FIX A3: garantir que concentration_text nunca seja objeto/número
         const concentrationSafe = toSafeString(item.concentration_text)
@@ -164,7 +240,7 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
                 routeGroup,
                 doseValue,
                 doseUnit,
-                instruction: instruction.slice(0, 60),
+                instruction: manualInstruction.slice(0, 60),
             })
         }
 
@@ -172,7 +248,7 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
             id: item.id,
             category: 'medication' as const,
             catalogDrugId: item.medication_id || '',
-            controlled: false,
+            controlled: !!item.is_controlled,
             // FIX: colocar APENAS nome do fármaco em name;
             // o renderer (rxRenderer.buildItemTitle) concatena name + concentration + commercialName.
             name: item.name,
@@ -188,16 +264,16 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
             doseUnit,
             // FIX: autoInstruction = false + manualEdited = true para que o renderer
             // use SEMPRE a instrução pre-construída pelo adapter (buildItemInstruction)
-            autoInstruction: false,
-            frequencyType: 'timesPerDay' as const,
-            frequencyToken: '' as '' | 'SID' | 'BID' | 'TID' | 'QID',
-            timesPerDay: '1',
-            everyHours: '',
-            durationDays: '',
-            untilFinished: false,
-            continuousUse: false,
-            instruction,
-            manualEdited: true,
+            autoInstruction: !hasManualInstruction,
+            frequencyType: frequency.frequencyType,
+            frequencyToken: frequency.frequencyToken,
+            timesPerDay: frequency.timesPerDay,
+            everyHours: frequency.everyHours,
+            durationDays: duration.durationDays,
+            untilFinished: duration.untilFinished,
+            continuousUse: duration.continuousUse,
+            instruction: manualInstruction,
+            manualEdited: hasManualInstruction,
             titleBold: false,
             titleUnderline: false,
             cautions: item.cautions || [],
