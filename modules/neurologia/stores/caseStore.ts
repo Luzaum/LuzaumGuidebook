@@ -170,6 +170,7 @@ export const useCaseStore = create<CaseState>()(
           const sanitized = sanitizePatient({ ...s.patient, ...patch })
           return {
             patient: { ...s.patient, ...sanitized },
+            analysis: null,
           }
         }),
       setComplaint: (patch) =>
@@ -177,9 +178,10 @@ export const useCaseStore = create<CaseState>()(
           const sanitized = sanitizeHistory({ ...s.complaint, ...patch })
           return {
             complaint: { ...s.complaint, ...sanitized },
+            analysis: null,
           }
         }),
-      setNeuroExam: (patch) => set({ neuroExam: patch }),
+      setNeuroExam: (patch) => set({ neuroExam: patch, analysis: null }),
       setAnalysis: (analysis) => set({ analysis }),
       resetCase: () => set({ ...emptyCase }),
     }),
