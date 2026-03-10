@@ -443,7 +443,7 @@ export default function CatalogoPage() {
         subtitle="Banco persistente, editável e reutilizável no modal de nova receita."
         actions={
         <>
-          <Link to="/receituario-vet/nova-receita" className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-2 text-sm">
+          <Link to="/receituario-vet/nova-receita-2" className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-2 text-sm">
             <span className="material-symbols-outlined text-[18px]">description</span>
             Nova Receita
           </Link>

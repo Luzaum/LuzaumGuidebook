@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "catalog_scope": "global",
+  "source": "Vetius Global Catalog Example",
+  "generated_at": "2026-03-10T00:00:00.000Z",
+  "medications": [
+    {
+      "slug": "amoxicilina-clavulanato",
+      "name": "Amoxicilina + Clavulanato",
+      "active_ingredient": "Amoxicilina tri-hidratada + clavulanato de potássio",
+      "is_controlled": false,
+      "is_active": true,
+      "species": ["cão", "gato"],
+      "routes": ["VO"],
+      "notes": "Exemplo canônico para importação global.",
+      "tags": ["antibiotico", "oral"],
+      "metadata": {
+        "origin": "example"
+      },
+      "presentations": [
+        {
+          "slug": "agemoxi-cl-250-mg-comprimido",
+          "pharmaceutical_form": "Comprimido",
+          "commercial_name": "Agemoxi CL",
+          "concentration_text": "250 mg/comprimido",
+          "value": 250,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "comprimido",
+          "package_quantity": 10,
+          "package_unit": "comprimidos",
+          "avg_price_brl": 89.9,
+          "pharmacy_veterinary": true,
+          "pharmacy_human": false,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "manufacturer": "Vetnil",
+            "dose_engine": {
+              "administration_mode": "tablet",
+              "allow_split": true,
+              "split_increment": 0.25,
+              "scored": true,
+              "modified_release": false,
+              "enteric_coated": false,
+              "whole_unit_only": false
+            }
+          }
+        },
+        {
+          "slug": "suspensao-oral-50-mg-ml",
+          "pharmaceutical_form": "Suspensão oral",
+          "commercial_name": "Amoxi Suspensão",
+          "concentration_text": "50 mg/mL",
+          "value": 50,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "mL",
+          "package_quantity": 60,
+          "package_unit": "mL",
+          "avg_price_brl": 55,
+          "pharmacy_veterinary": true,
+          "pharmacy_human": true,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "dose_engine": {
+              "administration_mode": "liquid_oral",
+              "round_ml_to": 0.1
+            }
+          }
+        }
+      ],
+      "recommended_doses": [
+        {
+          "slug": "cao-vo-25-mg-kg-q12h",
+          "species": "cão",
+          "route": "VO",
+          "dose_value": 25,
+          "dose_unit": "mg/kg",
+          "frequency": "a cada 12 horas",
+          "notes": "Exemplo global",
+          "metadata": {}
+        }
+      ]
+    }
+  ]
+}

@@ -1,18 +1,46 @@
 import { RxTemplateStyle } from './rxDb'
 
 export const BUILTIN_TEMPLATES: RxTemplateStyle[] = [
-    // ====================================================================
-    // 1. PADRÃO CLÍNICO (azul profissional, limpo)
-    // ====================================================================
+    {
+        id: 'rx_classic_vertical_v1',
+        name: 'Receita clássica vertical',
+        documentKindTarget: 'standard',
+        layoutVariant: 'classic-vertical',
+        fontFamily: 'Georgia, "Times New Roman", serif',
+        fontSizePt: 12,
+        headingSizePt: 16,
+        lineHeight: 1.55,
+        accentColor: '#111827',
+        textColor: '#111827',
+        paperBg: '#ffffff',
+        paperSize: 'A4',
+        showLetterhead: true,
+        showSignature: true,
+        showMapaSignature: false,
+        showTimestamp: true,
+        extraNotes: '',
+        zoneStyles: {
+            header: {
+                fontSizePt: 13,
+                fontWeight: 'bold',
+                textColor: '#111827',
+            },
+            body: {
+                textColor: '#111827',
+            },
+        },
+        updatedAt: new Date().toISOString(),
+    },
     {
         id: 'rx_br_v1_clean',
-        name: '🏥 Padrão Clínico',
+        name: 'Padrão Clínico',
         documentKindTarget: 'standard',
+        layoutVariant: 'default',
         fontFamily: 'Manrope, Arial, sans-serif',
         fontSizePt: 12,
         headingSizePt: 18,
         lineHeight: 1.5,
-        accentColor: '#1d4ed8',    // azul profissional
+        accentColor: '#1d4ed8',
         textColor: '#1f2937',
         paperBg: '#ffffff',
         paperSize: 'A4',
@@ -30,19 +58,16 @@ export const BUILTIN_TEMPLATES: RxTemplateStyle[] = [
         },
         updatedAt: new Date().toISOString(),
     },
-
-    // ====================================================================
-    // 2. MODERNO DARK (fundo header preto, accent verde neon)
-    // ====================================================================
     {
         id: 'rx_br_v1_modern_dark',
-        name: '🌑 Moderno Dark',
+        name: 'Moderno Dark',
         documentKindTarget: 'standard',
+        layoutVariant: 'default',
         fontFamily: 'Inter, Arial, sans-serif',
         fontSizePt: 11,
         headingSizePt: 22,
         lineHeight: 1.6,
-        accentColor: '#16a34a',    // verde escuro
+        accentColor: '#16a34a',
         textColor: '#111827',
         paperBg: '#f9fafb',
         paperSize: 'A4',
@@ -60,21 +85,18 @@ export const BUILTIN_TEMPLATES: RxTemplateStyle[] = [
         },
         updatedAt: new Date().toISOString(),
     },
-
-    // ====================================================================
-    // 3. VERDE CLÍNICO (emerald, elegante)
-    // ====================================================================
     {
         id: 'rx_br_v1_minimal_green',
-        name: '🌿 Verde Clínico',
+        name: 'Verde Clínico',
         documentKindTarget: 'standard',
+        layoutVariant: 'default',
         fontFamily: 'Roboto, Arial, sans-serif',
         fontSizePt: 12,
         headingSizePt: 18,
         lineHeight: 1.45,
-        accentColor: '#059669',    // emerald 600
+        accentColor: '#059669',
         textColor: '#064e3b',
-        paperBg: '#f0fdf4',        // leve fundo verde
+        paperBg: '#f0fdf4',
         paperSize: 'A4',
         showLetterhead: true,
         showSignature: true,
@@ -92,21 +114,18 @@ export const BUILTIN_TEMPLATES: RxTemplateStyle[] = [
         },
         updatedAt: new Date().toISOString(),
     },
-
-    // ====================================================================
-    // 4. CLÁSSICO FORMAL (serif, marrom, estilo cartório)
-    // ====================================================================
     {
         id: 'rx_br_v1_classico',
-        name: '📜 Clássico Formal',
+        name: 'Clássico Formal',
         documentKindTarget: 'standard',
+        layoutVariant: 'default',
         fontFamily: 'Georgia, "Times New Roman", serif',
         fontSizePt: 12,
         headingSizePt: 16,
         lineHeight: 1.6,
-        accentColor: '#78350f',    // marrom âmbar
+        accentColor: '#78350f',
         textColor: '#1c1917',
-        paperBg: '#fffbeb',        // creme
+        paperBg: '#fffbeb',
         paperSize: 'A4',
         showLetterhead: true,
         showSignature: true,
@@ -123,19 +142,16 @@ export const BUILTIN_TEMPLATES: RxTemplateStyle[] = [
         },
         updatedAt: new Date().toISOString(),
     },
-
-    // ====================================================================
-    // 5. COMPACTO A5 (menor, ideal para impressora térmica ou folha A5)
-    // ====================================================================
     {
         id: 'rx_br_v1_compact_a5',
-        name: '📋 Compacto A5',
+        name: 'Compacto A5',
         documentKindTarget: 'standard',
+        layoutVariant: 'default',
         fontFamily: 'Inter, Arial, sans-serif',
         fontSizePt: 10,
         headingSizePt: 14,
         lineHeight: 1.35,
-        accentColor: '#7c3aed',    // roxo
+        accentColor: '#7c3aed',
         textColor: '#1e1b4b',
         paperBg: '#ffffff',
         paperSize: 'A5',

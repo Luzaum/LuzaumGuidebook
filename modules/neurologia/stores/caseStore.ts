@@ -90,6 +90,11 @@ type AICoverage = {
   historyContext: AICoverageSection
   neuroExam: AICoverageSection
 }
+type AIProgress = {
+  value: number
+  stage: string
+  detail?: string
+}
 type Analysis = {
   status: 'idle' | 'running' | 'done' | 'insufficient_data'
   report?: any // CaseReport será tipado depois
@@ -97,6 +102,7 @@ type Analysis = {
   aiModelUsed?: string | null
   aiUsedFallback?: boolean
   aiCoverage?: AICoverage | null
+  aiProgress?: AIProgress | null
   aiError?: string | null
 } | null
 

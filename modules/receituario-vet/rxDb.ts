@@ -173,6 +173,7 @@ export interface RxTemplateStyle {
   id: string
   name: string
   documentKindTarget: 'standard' | 'special-control'
+  layoutVariant?: 'default' | 'classic-vertical'
   fontFamily: string
   fontSizePt: number
   headingSizePt: number

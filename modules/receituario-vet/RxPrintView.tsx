@@ -5,6 +5,7 @@ import { PrintDoc } from './rxTypes'
 interface RxPrintViewProps {
   doc: PrintDoc
   compact?: boolean
+  fitToWidth?: boolean
   zoom?: number
   template?: Partial<RxTemplateStyle>
   signatureDataUrl?: string
@@ -24,15 +25,16 @@ interface RxPrintViewProps {
 }
 
 const BASE_TEMPLATE: RxTemplateStyle = {
-  id: 'rx_br_v1_clean',
-  name: 'rx_br_v1_clean',
+  id: 'rx_classic_vertical_v1',
+  name: 'Receita clássica vertical',
   documentKindTarget: 'standard',
-  fontFamily: 'Manrope, Arial, sans-serif',
+  layoutVariant: 'classic-vertical',
+  fontFamily: 'Georgia, "Times New Roman", serif',
   fontSizePt: 12,
-  headingSizePt: 18,
-  lineHeight: 1.45,
-  accentColor: '#1d4ed8',
-  textColor: '#1f2937',
+  headingSizePt: 16,
+  lineHeight: 1.55,
+  accentColor: '#111827',
+  textColor: '#111827',
   paperBg: '#ffffff',
   paperSize: 'A4',
   showLetterhead: true,
@@ -101,7 +103,7 @@ function highlightInstructionSegments(text: string): React.ReactNode[] {
   if (!source.trim()) return [source]
 
   const pattern =
-    /(Administrar [^,.;]*|\d+(?:[.,]\d+)?\s*[a-zA-ZÀ-ÿ%µ/]+(?:\s+por dose)?|por via [^,.;]*|a cada \d+\s*horas|uma vez por dia|\d+\s*vez(?:es)? por dia|com uso por \d+\s*dias|com uso cont[ií]nuo|at[eé] reavalia[cç][aã]o do paciente|at[eé] terminar o medicamento|iniciando [aà]s \d{2}:\d{2}\s*hora)/gi
+    /(Administrar [^,.;]*|\d+(?:[.,]\d+)?\s*[a-zA-ZÀ-ÿ%µ/]+(?:\s+por dose)?|por via [^,.;]*|a cada \d+\s*horas|uma vez por dia|\d+\s*vez(?:es)? por dia|durante \d+\s*dias|em uso cont[ií]nuo|at[eé] reavalia[cç][aã]o cl[ií]nica|at[eé] terminar o medicamento|iniciando em \d{2}\/\d{2}\/\d{4} às \d{2}:\d{2}|iniciando às \d{2}:\d{2})/gi
 
   const nodes: React.ReactNode[] = []
   let lastIndex = 0
@@ -132,6 +134,7 @@ function renderPlainRecommendation(line: string): string {
 export function RxPrintView({
   doc,
   compact = false,
+  fitToWidth = false,
   zoom,
   template,
   signatureDataUrl,
@@ -150,6 +153,7 @@ export function RxPrintView({
   zoneTextOverrides,
 }: RxPrintViewProps) {
   const cfg = { ...BASE_TEMPLATE, ...(template || {}) }
+  const isClassic = cfg.layoutVariant === 'classic-vertical'
   const safeTextColor = ensureReadableColor(cfg.textColor, cfg.paperBg, '#1f2937')
   const zoneFontPt = (zone: TemplateZoneKey, fallback: number) => cfg.zoneStyles?.[zone]?.fontSizePt || fallback
   const zoneWeight = (zone: TemplateZoneKey, fallback: number) => weightFromPreset(cfg.zoneStyles?.[zone]?.fontWeight) || fallback
@@ -163,8 +167,13 @@ export function RxPrintView({
   }
   const paperWidth = cfg.paperSize === 'A5' ? '148mm' : '210mm'
   const paperHeight = cfg.paperSize === 'A5' ? '210mm' : '297mm'
-  const sheetStyle: React.CSSProperties = compact
-    ? paperStyle
+  const sheetStyle: React.CSSProperties = (compact || fitToWidth)
+    ? {
+        ...paperStyle,
+        width: '100%',
+        maxWidth: '100%',
+        minHeight: fitToWidth ? paperHeight : undefined,
+      }
     : {
         ...paperStyle,
         width: paperWidth,
@@ -238,11 +247,13 @@ export function RxPrintView({
   const signatureOverride = zoneOverride('signature')
 
   return (
-    <div className="rxv-print-preview rounded-xl border border-slate-300 bg-white text-slate-900 shadow-2xl" style={rootStyle}>
-      <div className="border-b border-slate-200 bg-slate-100 px-4 py-2 text-xs font-bold uppercase tracking-widest text-slate-500">
-        Visualização rápida
-      </div>
-      <div className={compact ? 'p-4' : 'p-6'} style={sheetStyle} data-rx-print-canvas="sheet">
+    <div className={`rxv-print-preview bg-white text-slate-900 ${(compact || fitToWidth) ? 'w-full overflow-hidden rounded-none border-0 shadow-none' : 'rounded-xl border border-slate-300 shadow-2xl'}`} style={rootStyle}>
+      {!compact && !fitToWidth ? (
+        <div className="border-b border-slate-200 bg-slate-100 px-4 py-2 text-xs font-bold uppercase tracking-widest text-slate-500">
+          Visualização rápida
+        </div>
+      ) : null}
+      <div className={(compact || fitToWidth) ? 'w-full p-5 xl:p-6' : 'p-6'} style={sheetStyle} data-rx-print-canvas="sheet">
         {cfg.showLetterhead ? (
           <>
             <p
@@ -252,7 +263,7 @@ export function RxPrintView({
               {doc.documentKind === 'special-control' ? 'RECEITUÁRIO DE CONTROLE ESPECIAL' : 'RECEITUÁRIO'}
             </p>
             <div
-              className={`mb-6 rounded-lg border-2 border-slate-300 p-4 transition ${zoneRing(interactive, activeZone, 'header')}`}
+              className={`mb-6 ${isClassic ? 'border-b border-slate-400 pb-4' : 'rounded-lg border-2 border-slate-300 p-4'} transition ${zoneRing(interactive, activeZone, 'header')}`}
               style={zoneStyle('header')}
               {...makeZoneProps('header')}
             >
@@ -294,7 +305,7 @@ export function RxPrintView({
         ) : null}
 
         <div
-          className={`mb-6 rounded-lg border border-slate-200 bg-slate-50 p-3 transition ${zoneRing(interactive, activeZone, 'patient')}`}
+          className={`mb-6 ${isClassic ? 'border-b border-slate-300 pb-3' : 'rounded-lg border border-slate-200 bg-slate-50 p-3'} transition ${zoneRing(interactive, activeZone, 'patient')}`}
           style={zoneStyle('patient', { fontSize: `${zoneFontPt('patient', Math.max(cfg.fontSizePt - 1, 10))}pt` })}
           {...makeZoneProps('patient')}
         >
@@ -330,28 +341,36 @@ export function RxPrintView({
             const sectionAccent = accentColorFor('body')
             return (
               <div key={section.key}>
-                <div className="mb-3 flex items-center gap-3">
-                  <div className="h-px flex-1 bg-slate-300"></div>
-                  <h3
-                    className="rounded-full border px-3 py-1 text-xs font-black uppercase tracking-[0.2em]"
-                    style={{
-                      color: sectionAccent,
-                      borderColor: `${sectionAccent}66`,
-                      background: `${sectionAccent}12`,
-                    }}
-                  >
-                    {section.title}
-                  </h3>
-                  <div className="h-px flex-1 bg-slate-300"></div>
-                </div>
+                {isClassic ? (
+                  <div className="mb-3 border-b border-slate-300 pb-1">
+                    <h3 className="text-[11px] font-black uppercase tracking-[0.18em]" style={{ color: safeTextColor }}>
+                      {section.title}
+                    </h3>
+                  </div>
+                ) : (
+                  <div className="mb-3 flex items-center gap-3">
+                    <div className="h-px flex-1 bg-slate-300"></div>
+                    <h3
+                      className="rounded-full border px-3 py-1 text-xs font-black uppercase tracking-[0.2em]"
+                      style={{
+                        color: sectionAccent,
+                        borderColor: `${sectionAccent}66`,
+                        background: `${sectionAccent}12`,
+                      }}
+                    >
+                      {section.title}
+                    </h3>
+                    <div className="h-px flex-1 bg-slate-300"></div>
+                  </div>
+                )}
                 <div className="space-y-3">
                   {section.items.map((item) => (
                     <article
                       key={item.id}
-                      className={`rounded border border-slate-200 p-3 transition ${itemRing(item.id)}`}
+                      className={`${isClassic ? 'border-b border-slate-200 pb-3 last:border-b-0' : 'rounded border border-slate-200 p-3'} transition ${itemRing(item.id)}`}
                       {...makeItemProps(item.id)}
                     >
-                      <div className="mb-1 flex items-center justify-between gap-2">
+                      <div className={`mb-1 flex items-center justify-between gap-2 ${isClassic ? '' : ''}`}>
                         <h4
                           style={{
                             textDecoration: item.titleUnderline ? 'underline' : 'none',
@@ -369,14 +388,14 @@ export function RxPrintView({
                           </span>
                         ) : null}
                       </div>
-                      {item.subtitle ? <p className="mb-1" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 2, 9)}pt`, color: '#64748b' }}>{item.subtitle}</p> : null}
+                      {!isClassic && item.subtitle ? <p className="mb-1" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 2, 9)}pt`, color: '#64748b' }}>{item.subtitle}</p> : null}
                       <p className="whitespace-pre-line leading-relaxed" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt` }}>
                         {highlightInstructionSegments(item.instruction)}
                       </p>
                       {item.cautions.length ? (
                         <div className="mt-2 space-y-1">
                           {item.cautions.map((line, idx) => (
-                            <p key={`${item.id}-c-${idx}`} className="font-bold" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt` }}>
+                            <p key={`${item.id}-c-${idx}`} className={isClassic ? '' : 'font-bold'} style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt` }}>
                               {line}
                             </p>
                           ))}
@@ -392,7 +411,7 @@ export function RxPrintView({
 
         {doc.documentKind !== 'special-control' && (doc.recommendations.length > 0 || doc.exams.length > 0 || inlineEditNote) && (
           <section
-            className={`mt-6 rounded border border-slate-200 p-3 transition ${zoneRing(interactive, activeZone, 'recommendations')}`}
+            className={`mt-6 ${isClassic ? 'border-t border-slate-300 pt-4' : 'rounded border border-slate-200 p-3'} transition ${zoneRing(interactive, activeZone, 'recommendations')}`}
             style={zoneStyle('recommendations', { fontSize: `${zoneFontPt('recommendations', cfg.fontSizePt)}pt` })}
             {...makeZoneProps('recommendations')}
           >
@@ -405,7 +424,7 @@ export function RxPrintView({
                 </h3>
                 {doc.recommendations.map((line, idx) => (
                   <p key={`rec-${idx}`} className="whitespace-pre-line" style={{ fontSize: `${Math.max(zoneFontPt('recommendations', cfg.fontSizePt) - 1, 10)}pt` }}>
-                    - {renderPlainRecommendation(line)}
+                    {idx + 1}. {renderPlainRecommendation(line)}
                   </p>
                 ))}
                 {doc.exams.length > 0 ? (
@@ -413,7 +432,7 @@ export function RxPrintView({
                     <h4 className="uppercase" style={{ fontSize: `${Math.max(zoneFontPt('recommendations', cfg.fontSizePt) - 1, 9)}pt`, fontWeight: zoneWeight('recommendations', 800) }}>Exames sugeridos</h4>
                     {doc.exams.map((exam, idx) => (
                       <p key={`exam-${idx}`} style={{ fontSize: `${Math.max(zoneFontPt('recommendations', cfg.fontSizePt) - 1, 10)}pt`, fontWeight: zoneWeight('recommendations', 600) }}>
-                        - {exam}
+                        {idx + 1}. {exam}
                       </p>
                     ))}
                   </div>

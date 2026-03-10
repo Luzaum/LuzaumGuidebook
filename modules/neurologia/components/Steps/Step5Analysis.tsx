@@ -1,13 +1,69 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Brain, AlertTriangle, CheckCircle2, FileText } from 'lucide-react'
+import { AlertTriangle, Brain, CheckCircle2, FileText } from 'lucide-react'
 import { Card } from '../UI/Card'
 import { InlineBanner } from '../UI/InlineBanner'
 import { useCaseStore } from '../../stores/caseStore'
 import { buildCaseReport } from '../../lib/analysis/report'
-import { generateDeepSeekClinicalOpinion } from '../../lib/analysis/deepseek'
+import { buildLocalClinicalCompanionReport } from '../../lib/report/localClinicalCompanion'
 import { exportToPDF } from '../../lib/report/pdfExporter'
+import { parseAiClinicalReport } from '../../lib/report/aiClinicalReportParser'
 import type { CaseReport } from '../../types/analysis'
+
+function sleep(ms: number) {
+  return new Promise((resolve) => window.setTimeout(resolve, ms))
+}
+
+function MetricCard({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-xl border border-cyan-500/20 bg-black/20 p-4">
+      <p className="text-xs uppercase tracking-[0.18em] text-cyan-200/60">{label}</p>
+      <p className="mt-2 text-base font-semibold text-cyan-50">{value || 'Nao informado'}</p>
+    </div>
+  )
+}
+
+function BulletList({
+  items,
+  dotClassName,
+  textClassName = 'text-slate-100/90',
+}: {
+  items: string[]
+  dotClassName: string
+  textClassName?: string
+}) {
+  return (
+    <ul className={`space-y-2 text-sm ${textClassName}`}>
+      {items.map((item, index) => (
+        <li key={`${item}-${index}`} className="flex items-start gap-2">
+          <span className={`mt-1 h-2 w-2 rounded-full ${dotClassName}`} />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+function DifferentialSection({
+  title,
+  items,
+  dotClassName,
+  textClassName,
+}: {
+  title: string
+  items: string[]
+  dotClassName: string
+  textClassName?: string
+}) {
+  if (items.length === 0) return null
+
+  return (
+    <div className="rounded-2xl border border-white/10 bg-black/15 p-4">
+      <p className="mb-3 text-sm font-semibold text-slate-100">{title}</p>
+      <BulletList items={items} dotClassName={dotClassName} textClassName={textClassName} />
+    </div>
+  )
+}
 
 export function Step5Analysis() {
   const analysis = useCaseStore((s) => s.analysis)
@@ -16,159 +72,161 @@ export function Step5Analysis() {
   const complaint = useCaseStore((s) => s.complaint)
   const neuroExam = useCaseStore((s) => s.neuroExam)
 
+  const report: CaseReport | undefined = analysis?.report
+  const clinicalReportText = analysis?.aiOpinion || null
+  const reportError = analysis?.aiError || null
+  const progress = analysis?.aiProgress || null
+  const parsedClinicalReport = clinicalReportText ? parseAiClinicalReport(clinicalReportText) : null
+  const status = analysis?.status || 'idle'
+
+  const updateRunningState = async (
+    value: number,
+    stage: string,
+    detail: string,
+    currentReport?: CaseReport,
+  ) => {
+    setAnalysis({
+      status: 'running',
+      report: currentReport,
+      aiOpinion: null,
+      aiModelUsed: null,
+      aiUsedFallback: false,
+      aiCoverage: null,
+      aiError: null,
+      aiProgress: {
+        value,
+        stage,
+        detail,
+      },
+    })
+    await sleep(45)
+  }
+
   const runAnalysis = async () => {
-    setAnalysis({ status: 'running' })
     const caseState = { patient, complaint, neuroExam }
-    const report = buildCaseReport(caseState)
-
-    if (report.neuroLocalization.status !== 'ok') {
-      setAnalysis({
-        status: 'insufficient_data',
-        report,
-      })
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      return
-    }
-
-    let aiOpinion: string | null = null
-    let aiModelUsed: string | null = null
-    let aiCoverage: any = null
-    let aiUsedFallback = false
-    let aiError: string | null = null
 
     try {
-      const deepSeekResult = await generateDeepSeekClinicalOpinion(caseState, report)
-      if (!deepSeekResult) {
-        aiError = 'DeepSeek não inicializou. Verifique a configuração da API key no frontend.'
-      } else {
-        aiOpinion = deepSeekResult.content ?? null
-        aiModelUsed = deepSeekResult.modelUsed ?? null
-        aiCoverage = deepSeekResult.coverage ?? null
-        aiUsedFallback = deepSeekResult.fallbackUsed ?? false
-        if (!aiOpinion) {
-          aiError = 'DeepSeek respondeu sem conteúdo para este caso. Tente novamente.'
-        }
-      }
-    } catch (error) {
-      console.error('Erro ao gerar parecer DeepSeek:', error)
-      const message = error instanceof Error ? error.message : 'Erro desconhecido ao consultar DeepSeek.'
-      aiError = `Falha ao gerar parecer DeepSeek: ${message}`
-    }
+      await updateRunningState(
+        8,
+        'Organizando caso',
+        'Consolidando identificacao, historico e exame neurologico em uma unica leitura clinica.',
+      )
 
-    setAnalysis({
-      status: 'done',
-      report,
-      aiOpinion,
-      aiModelUsed,
-      aiCoverage,
-      aiUsedFallback,
-      aiError,
-    })
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+      const nextReport = buildCaseReport(caseState)
+
+      await updateRunningState(
+        28,
+        'Consolidando neurolocalizacao',
+        'Revisando topografia, distribuicao e coerencia entre queixa, exame e comorbidades.',
+        nextReport,
+      )
+
+      if (nextReport.neuroLocalization.status !== 'ok') {
+        setAnalysis({
+          status: 'insufficient_data',
+          report: nextReport,
+          aiOpinion: null,
+          aiModelUsed: null,
+          aiUsedFallback: false,
+          aiCoverage: null,
+          aiProgress: null,
+          aiError: null,
+        })
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        return
+      }
+
+      await updateRunningState(
+        52,
+        'Hierarquizando diagnosticos',
+        'Ordenando os diferenciais mais provaveis e cruzando exames, monitorizacao e cautelas terapeuticas.',
+        nextReport,
+      )
+
+      const nextClinicalReport = buildLocalClinicalCompanionReport(caseState, nextReport)
+
+      await updateRunningState(
+        78,
+        'Montando relatorio clinico',
+        'Transformando o caso em um relatorio estruturado para plantao e exportacao em PDF.',
+        nextReport,
+      )
+
+      const parsed = parseAiClinicalReport(nextClinicalReport)
+
+      await updateRunningState(
+        96,
+        'Finalizando',
+        'Validando a estrutura final do relatorio e preparando a exibicao.',
+        nextReport,
+      )
+
+      setAnalysis({
+        status: 'done',
+        report: nextReport,
+        aiOpinion: nextClinicalReport,
+        aiModelUsed: null,
+        aiUsedFallback: false,
+        aiCoverage: null,
+        aiProgress: null,
+        aiError: parsed ? null : 'Nao foi possivel estruturar o relatorio clinico final. Gere novamente o caso.',
+      })
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } catch (error) {
+      console.error('Erro ao montar relatorio clinico local:', error)
+      setAnalysis({
+        status: 'done',
+        report,
+        aiOpinion: null,
+        aiModelUsed: null,
+        aiUsedFallback: false,
+        aiCoverage: null,
+        aiProgress: null,
+        aiError:
+          error instanceof Error
+            ? `Falha ao montar o relatorio clinico local: ${error.message}`
+            : 'Falha ao montar o relatorio clinico local.',
+      })
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
   }
 
   const handleExportPDF = () => {
     if (!report) return
     const caseState = { patient, complaint, neuroExam }
+
     try {
-      exportToPDF(report, caseState)
+      exportToPDF(report, caseState, clinicalReportText)
     } catch (error) {
       console.error('Erro ao gerar PDF:', error)
       alert('Erro ao gerar PDF. Verifique o console para mais detalhes.')
     }
   }
 
-  const status = analysis?.status || 'idle'
-  const report: CaseReport | undefined = analysis?.report
-  const aiOpinion = analysis?.aiOpinion || null
-  const aiModelUsed = analysis?.aiModelUsed || null
-  const aiCoverage = analysis?.aiCoverage || null
-  const aiUsedFallback = analysis?.aiUsedFallback || false
-  const aiError = analysis?.aiError || null
-
-  const getAxisLabel = (axis: string): string => {
-    const labels: Record<string, string> = {
-      PROSENCEFALO: 'Prosencéfalo',
-      TRONCO_ENCEFALICO: 'Tronco Encefálico',
-      CEREBELO: 'Cerebelo',
-      VESTIBULAR_PERIFERICO: 'Vestibular Periférico',
-      VESTIBULAR_CENTRAL: 'Vestibular Central',
-      MEDULA_C1_C5: 'Medula Espinhal Cervical (C1-C5)',
-      MEDULA_C6_T2: 'Medula Espinhal Cervicotorácica (C6-T2)',
-      MEDULA_T3_L3: 'Medula Espinhal Toracolombar (T3-L3)',
-      MEDULA_L4_S3: 'Medula Espinhal Lombossacra (L4-S3)',
-      CAUDA_EQUINA: 'Cauda Equina',
-      NEUROMUSCULAR: 'Neuromuscular',
-      MULTIFOCAL_OU_DIFUSA: 'Multifocal ou Difusa',
-      INDETERMINADO: 'Indeterminado',
-    }
-    return labels[axis] || axis
-  }
-
-  const getMotorPatternLabel = (pattern: string): string => {
-    const labels: Record<string, string> = {
-      UMN: 'Neurônio Motor Superior (UMN)',
-      LMN: 'Neurônio Motor Inferior (LMN)',
-      VESTIBULAR: 'Vestibular',
-      CEREBELAR: 'Cerebelar',
-      NEUROMUSCULAR: 'Neuromuscular',
-      INDEFINIDO: 'Indefinido',
-    }
-    return labels[pattern] || pattern
-  }
-
-  const getCategoryLabel = (cat: string): string => {
-    const labels: Record<string, string> = {
-      INFLAMATORIA: 'Inflamatória',
-      INFECCIOSA: 'Infecciosa',
-      NEOPLASICA: 'Neoplásica',
-      VASCULAR: 'Vascular',
-      DEGENERATIVA: 'Degenerativa',
-      TRAUMATICA: 'Traumática',
-      TOXICO_METABOLICA: 'Tóxico-Metabólica',
-      COMPRESSIVA: 'Compressiva',
-      IDIOPATICA: 'Idiopática',
-    }
-    return labels[cat] || cat
-  }
-
-  const getCoverageBadgeClass = (covered: boolean): string =>
-    covered
-      ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300'
-      : 'border-red-500/40 bg-red-500/10 text-red-300'
-
   if (status === 'idle') {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center space-y-6 pb-24">
         <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
+          initial={{ scale: 0.94, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="text-center space-y-4"
+          className="space-y-4 text-center"
         >
-          <div className="w-20 h-20 mx-auto bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg shadow-yellow-500/50">
-            <Brain className="w-10 h-10 text-white" />
+          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 shadow-lg shadow-yellow-500/50">
+            <Brain className="h-10 w-10 text-white" />
           </div>
-          <h2 className="text-2xl font-bold text-foreground">Análise do Caso</h2>
-          <p className="text-muted-foreground max-w-md">
-            Clique no botão abaixo para analisar os achados neurológicos e gerar o relatório completo com
-            neurolocalização e diagnósticos diferenciais.
+          <h2 className="text-2xl font-bold text-foreground">Analise do Caso</h2>
+          <p className="mx-auto max-w-md text-muted-foreground">
+            Clique abaixo para gerar uma leitura clinica estruturada do caso com neurolocalizacao,
+            prioridades do plantao e diagnosticos diferenciais organizados por probabilidade.
           </p>
         </motion.div>
 
         <motion.button
           onClick={runAnalysis}
-          disabled={false}
-          className={`
-            px-8 py-4 text-lg font-bold rounded-xl
-            bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600
-            hover:from-yellow-500 hover:via-yellow-600 hover:to-yellow-700
-            text-black shadow-lg shadow-yellow-500/50
-            transition-all duration-300
-            animate-pulse
-          `}
+          className="animate-pulse rounded-xl bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 px-8 py-4 text-lg font-bold text-black shadow-lg shadow-yellow-500/50 transition-all duration-300 hover:from-yellow-500 hover:via-yellow-600 hover:to-yellow-700"
           whileTap={{ scale: 0.95 }}
         >
-          <Brain className="w-5 h-5 mr-2 inline-block" />
+          <Brain className="mr-2 inline-block h-5 w-5" />
           Analisar Caso
         </motion.button>
       </div>
@@ -176,14 +234,67 @@ export function Step5Analysis() {
   }
 
   if (status === 'running') {
+    const progressValue = Math.min(100, Math.max(8, progress?.value || 10))
+    const progressStages = [
+      { label: 'Organizar caso', threshold: 10 },
+      { label: 'Neurolocalizar', threshold: 30 },
+      { label: 'Hierarquizar DDx', threshold: 55 },
+      { label: 'Montar relatorio', threshold: 80 },
+      { label: 'Finalizar', threshold: 96 },
+    ]
+
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center space-y-6 pb-24">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-          className="w-16 h-16 border-4 border-yellow-500 border-t-transparent rounded-full"
+          className="h-16 w-16 rounded-full border-4 border-yellow-500 border-t-transparent"
         />
-        <p className="text-muted-foreground">Analisando caso…</p>
+
+        <Card className="w-full max-w-2xl border-yellow-500/20 bg-slate-950/60 p-6">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <h3 className="text-xl font-semibold text-foreground">Montando relatorio clinico</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                {progress?.stage || 'Processando os achados do caso.'}
+              </p>
+              {progress?.detail && (
+                <p className="mt-2 text-sm leading-relaxed text-foreground/80">{progress.detail}</p>
+              )}
+            </div>
+            <div className="rounded-2xl border border-yellow-500/30 bg-yellow-500/10 px-4 py-3 text-center">
+              <p className="text-xs uppercase tracking-[0.18em] text-yellow-200/70">Progresso</p>
+              <p className="mt-1 text-2xl font-bold text-yellow-300">{progressValue}%</p>
+            </div>
+          </div>
+
+          <div className="mt-5 h-3 overflow-hidden rounded-full bg-white/8">
+            <motion.div
+              className="h-full rounded-full bg-[linear-gradient(90deg,#facc15,#f59e0b)]"
+              initial={{ width: 0 }}
+              animate={{ width: `${progressValue}%` }}
+              transition={{ duration: 0.35, ease: 'easeOut' }}
+            />
+          </div>
+
+          <div className="mt-5 grid gap-3 md:grid-cols-5">
+            {progressStages.map((item, index) => {
+              const reached = progressValue >= item.threshold
+              return (
+                <div
+                  key={`progress-stage-${index}`}
+                  className={`rounded-xl border px-3 py-3 text-center text-xs ${
+                    reached
+                      ? 'border-yellow-400/40 bg-yellow-400/10 text-yellow-100'
+                      : 'border-white/10 bg-white/5 text-slate-400'
+                  }`}
+                >
+                  {item.label}
+                </div>
+              )
+            })}
+          </div>
+        </Card>
       </div>
     )
   }
@@ -193,25 +304,18 @@ export function Step5Analysis() {
       <div className="space-y-6 pb-24">
         <motion.button
           onClick={runAnalysis}
-          disabled={false}
-          className={`
-            w-full px-8 py-4 text-lg font-bold rounded-xl
-            bg-gradient-to-r from-yellow-500 to-yellow-600
-            hover:from-yellow-600 hover:to-yellow-700
-            text-white shadow-lg
-            transition-all duration-300
-          `}
+          className="w-full rounded-xl bg-gradient-to-r from-yellow-500 to-yellow-600 px-8 py-4 text-lg font-bold text-white shadow-lg transition-all duration-300 hover:from-yellow-600 hover:to-yellow-700"
         >
-          <Brain className="w-5 h-5 mr-2 inline-block" />
+          <Brain className="mr-2 inline-block h-5 w-5" />
           Tentar Reanalisar Caso
         </motion.button>
 
         <InlineBanner
           variant="error"
-          title="Dados Insuficientes"
+          title="Dados insuficientes"
           message={[
-            'Não foi possível achar a neurolocalização com os dados fornecidos.',
-            ...(report.neuroLocalization.missing || []).map((m) => `• ${m}`),
+            'Nao foi possivel firmar uma neurolocalizacao segura com os dados registrados.',
+            ...(report.neuroLocalization.missing || []).map((item) => `- ${item}`),
           ]}
         />
       </div>
@@ -221,369 +325,277 @@ export function Step5Analysis() {
   if (status === 'done' && report) {
     return (
       <div className="space-y-6 pb-24">
-        {/* Botoes Superiores */}
-        <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex flex-col gap-4 sm:flex-row">
           <motion.button
             onClick={handleExportPDF}
-            className="flex-1 px-6 py-3 text-base font-semibold rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
+            className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:from-blue-700 hover:to-blue-800"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <FileText className="w-5 h-5" />
+            <FileText className="h-5 w-5" />
             Exportar em PDF
           </motion.button>
 
-          {(aiError || !aiOpinion) && (
-            <motion.button
-              onClick={runAnalysis}
-              className="flex-1 px-6 py-3 text-base font-semibold rounded-xl bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Brain className="w-5 h-5" />
-              Tentar Analisar Novamente
-            </motion.button>
-          )}
+          <motion.button
+            onClick={runAnalysis}
+            className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-yellow-500 to-yellow-600 px-6 py-3 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:from-yellow-600 hover:to-yellow-700"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <Brain className="h-5 w-5" />
+            Atualizar relatorio
+          </motion.button>
         </div>
 
-        {/* Identificação */}
         <Card className="p-6">
-          <h3 className="text-lg font-semibold text-gold mb-3 flex items-center gap-2">
-            <FileText className="w-5 h-5" />
-            Identificação
+          <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold text-gold">
+            <FileText className="h-5 w-5" />
+            Identificacao
           </h3>
-          <p className="text-foreground/90 text-sm whitespace-pre-line">{report.patientSummary}</p>
+          <p className="whitespace-pre-line text-sm text-foreground/90">{report.patientSummary}</p>
         </Card>
 
-        {/* História/Queixa */}
         <Card className="p-6">
-          <h3 className="text-lg font-semibold text-gold mb-3">História/Queixa Principal</h3>
-          <p className="text-foreground/90 text-sm whitespace-pre-line">{report.historySummary}</p>
+          <h3 className="mb-3 text-lg font-semibold text-gold">Historia e sinais</h3>
+          <p className="whitespace-pre-line text-sm text-foreground/90">{report.historySummary}</p>
         </Card>
 
-        {/* Exame */}
         <Card className="p-6">
-          <h3 className="text-lg font-semibold text-gold mb-3">Resumo do Exame Neurológico</h3>
-          <p className="text-foreground/90 text-sm whitespace-pre-line">{report.examSummary}</p>
+          <h3 className="mb-3 text-lg font-semibold text-gold">Resumo do exame neurologico</h3>
+          <p className="whitespace-pre-line text-sm text-foreground/90">{report.examSummary}</p>
         </Card>
 
-        {aiOpinion && (
-          <Card className="p-6 border-cyan-500/30 bg-cyan-950/10">
-            <h3 className="text-xl font-bold text-cyan-300 mb-3 flex items-center gap-2">
-              <Brain className="w-6 h-6" />
-              Parecer IA DeepSeek
-            </h3>
+        {reportError && (
+          <InlineBanner variant="warning" title="Relatorio clinico indisponivel" message={reportError} />
+        )}
 
-            <p className="text-xs text-cyan-100/80 mb-3">
-              Modelo utilizado: <span className="font-semibold">{aiModelUsed || 'DeepSeek'}</span>
-              {aiUsedFallback ? ' (fallback automatico por custo/disponibilidade)' : ''}
-            </p>
+        {parsedClinicalReport ? (
+          <div className="space-y-5">
+            <Card className="border-cyan-500/30 bg-[linear-gradient(135deg,rgba(8,47,73,0.42),rgba(17,24,39,0.9))] p-6 shadow-[0_24px_60px_rgba(6,182,212,0.12)]">
+              <div>
+                <h3 className="text-xl font-bold text-cyan-100">Relatorio Clinico</h3>
+                <p className="mt-2 max-w-4xl text-sm leading-relaxed text-cyan-50/80">
+                  Leitura integrada do caso para plantao: neurolocalizacao, prioridades imediatas e
+                  diferenciais do mais provavel ao menos provavel, sempre cruzando exame, comorbidades,
+                  exames prioritarios e conduta inicial.
+                </p>
+              </div>
+            </Card>
 
-            {aiCoverage && (
-              <div className="mb-4 space-y-3">
-                <div className="flex flex-wrap gap-2">
-                  <span className="text-xs px-2 py-1 rounded border border-cyan-500/30 bg-cyan-500/10 text-cyan-300">
-                    Cobertura global: {aiCoverage.score}%
-                  </span>
-                  <span
-                    className={`text-xs px-2 py-1 rounded border ${getCoverageBadgeClass(aiCoverage.identification.covered)}`}
-                  >
-                    Identificacao: {aiCoverage.identification.covered ? 'ok' : 'incompleta'}
-                  </span>
-                  <span
-                    className={`text-xs px-2 py-1 rounded border ${getCoverageBadgeClass(aiCoverage.historyContext.covered)}`}
-                  >
-                    Historico/contexto: {aiCoverage.historyContext.covered ? 'ok' : 'incompleto'}
-                  </span>
-                  <span
-                    className={`text-xs px-2 py-1 rounded border ${getCoverageBadgeClass(aiCoverage.neuroExam.covered)}`}
-                  >
-                    Exame neurologico: {aiCoverage.neuroExam.covered ? 'ok' : 'incompleto'}
-                  </span>
-                </div>
+            <Card className="border-cyan-500/30 bg-cyan-950/10 p-6">
+              <h3 className="mb-4 flex items-center gap-2 text-xl font-bold text-cyan-200">
+                <Brain className="h-6 w-6" />
+                Neurolocalizacao
+              </h3>
 
-                {((aiCoverage.identification.missing && aiCoverage.identification.missing.length > 0) ||
-                  (aiCoverage.historyContext.missing && aiCoverage.historyContext.missing.length > 0) ||
-                  (aiCoverage.neuroExam.missing && aiCoverage.neuroExam.missing.length > 0)) && (
-                    <div className="rounded-lg border border-amber-500/35 bg-amber-950/20 p-3">
-                      <p className="text-xs font-semibold text-amber-300 mb-2">
-                        Pontos possivelmente nao cobertos integralmente na resposta da IA:
-                      </p>
-                      <ul className="list-disc list-inside space-y-1 text-xs text-amber-200/90">
-                        {aiCoverage.identification.missing?.slice(0, 4).map((item: string, idx: number) => (
-                          <li key={`id-miss-${idx}`}>Identificacao: {item}</li>
-                        ))}
-                        {aiCoverage.historyContext.missing?.slice(0, 4).map((item: string, idx: number) => (
-                          <li key={`hx-miss-${idx}`}>Historico/contexto: {item}</li>
-                        ))}
-                        {aiCoverage.neuroExam.missing?.slice(0, 4).map((item: string, idx: number) => (
-                          <li key={`exam-miss-${idx}`}>Exame neurologico: {item}</li>
-                        ))}
-                      </ul>
+              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                <MetricCard
+                  label="Localizacao provavel"
+                  value={parsedClinicalReport.neurolocalization.probableLocation}
+                />
+                <MetricCard label="Distribuicao" value={parsedClinicalReport.neurolocalization.distribution} />
+                <MetricCard label="Padrao motor" value={parsedClinicalReport.neurolocalization.motorPattern} />
+                <MetricCard label="Confianca" value={parsedClinicalReport.neurolocalization.confidence} />
+              </div>
+
+              <div className="mt-5 rounded-2xl border border-cyan-500/20 bg-black/20 p-5">
+                <p className="mb-2 text-sm font-semibold text-cyan-200">Raciocinio de neurolocalizacao</p>
+                <p className="text-sm leading-relaxed text-cyan-50/90">
+                  {parsedClinicalReport.neurolocalization.reasoning || 'Nao informado'}
+                </p>
+              </div>
+
+              <div className="mt-5 grid gap-4 lg:grid-cols-2">
+                <DifferentialSection
+                  title="Achados que sustentam"
+                  items={parsedClinicalReport.neurolocalization.supportiveFindings}
+                  dotClassName="bg-emerald-400"
+                  textClassName="text-emerald-50/90"
+                />
+                <DifferentialSection
+                  title="Achados contraditorios"
+                  items={parsedClinicalReport.neurolocalization.contradictoryFindings}
+                  dotClassName="bg-orange-400"
+                  textClassName="text-orange-50/90"
+                />
+              </div>
+            </Card>
+
+            {(parsedClinicalReport.priorities.length > 0 || parsedClinicalReport.criticalAlerts.length > 0) && (
+              <div className="grid gap-4 xl:grid-cols-2">
+                {parsedClinicalReport.priorities.length > 0 && (
+                  <Card className="border-blue-500/20 bg-blue-950/10 p-6">
+                    <h3 className="mb-4 text-lg font-semibold text-blue-300">Condutas imediatas do plantao</h3>
+                    <BulletList items={parsedClinicalReport.priorities} dotClassName="bg-blue-400" />
+                  </Card>
+                )}
+
+                {parsedClinicalReport.criticalAlerts.length > 0 && (
+                  <Card className="border-orange-500/20 bg-orange-950/10 p-6">
+                    <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-orange-300">
+                      <AlertTriangle className="h-5 w-5" />
+                      Alertas clinicos criticos
+                    </h3>
+                    <BulletList items={parsedClinicalReport.criticalAlerts} dotClassName="bg-orange-400" />
+                  </Card>
+                )}
+              </div>
+            )}
+
+            {parsedClinicalReport.differentials.length > 0 && (
+              <div className="space-y-4">
+                <h3 className="flex items-center gap-2 text-xl font-bold text-gold">
+                  <CheckCircle2 className="h-6 w-6" />
+                  Top 5 diagnosticos diferenciais
+                </h3>
+
+                {parsedClinicalReport.differentials.map((dx, index) => (
+                  <Card key={`${dx.title}-${index}`} className="border-white/10 bg-slate-950/60 p-6">
+                    <div className="flex flex-col gap-4 border-b border-white/10 pb-4 lg:flex-row lg:items-start lg:justify-between">
+                      <div>
+                        <h4 className="text-lg font-semibold text-foreground">
+                          {index + 1}. {dx.title}
+                        </h4>
+                        <p className="mt-1 text-sm text-muted-foreground">Categoria: {dx.category || 'Nao informada'}</p>
+                      </div>
+                      <div className="rounded-2xl border border-gold/20 bg-gold/5 px-4 py-3 text-right">
+                        <p className="text-xs uppercase tracking-[0.18em] text-gold/60">Probabilidade</p>
+                        <p className="mt-1 text-2xl font-bold text-gold">{dx.probability ?? 0}%</p>
+                      </div>
                     </div>
-                  )}
+
+                    <div className="mt-5 rounded-2xl border border-cyan-500/10 bg-cyan-950/10 p-4">
+                      <p className="mb-2 text-sm font-semibold text-cyan-200">Sintese clinica</p>
+                      <p className="text-sm leading-relaxed text-slate-100/90">{dx.clinicalFit || 'Nao informado'}</p>
+                    </div>
+
+                    <div className="mt-5 grid gap-4 xl:grid-cols-2">
+                      <DifferentialSection
+                        title="Achados a favor"
+                        items={dx.supportingFindings}
+                        dotClassName="bg-emerald-400"
+                        textClassName="text-emerald-50/90"
+                      />
+                      <DifferentialSection
+                        title="Achados contra"
+                        items={dx.opposingFindings}
+                        dotClassName="bg-orange-400"
+                        textClassName="text-orange-50/90"
+                      />
+                      <DifferentialSection
+                        title="Exames priorizados"
+                        items={dx.prioritizedDiagnostics}
+                        dotClassName="bg-blue-400"
+                      />
+                      <DifferentialSection
+                        title="Como avaliar este paciente no plantao"
+                        items={dx.patientAssessment}
+                        dotClassName="bg-sky-400"
+                      />
+                      <DifferentialSection
+                        title="Monitorizacao e reavaliacao"
+                        items={dx.monitoringPlan}
+                        dotClassName="bg-violet-400"
+                      />
+                      <DifferentialSection
+                        title="Tratamento e conduta"
+                        items={dx.treatmentPlan}
+                        dotClassName="bg-green-400"
+                      />
+                      <DifferentialSection
+                        title="Farmacos que posso considerar"
+                        items={dx.allowedDrugs}
+                        dotClassName="bg-emerald-300"
+                      />
+                      <DifferentialSection
+                        title="Farmacos a evitar ou ajustar"
+                        items={dx.avoidDrugs}
+                        dotClassName="bg-rose-400"
+                      />
+                    </div>
+
+                    {dx.comorbidityIntegration.length > 0 && (
+                      <div className="mt-5 rounded-2xl border border-indigo-500/20 bg-indigo-950/10 p-4">
+                        <p className="mb-3 text-sm font-semibold text-indigo-200">
+                          Como as comorbidades mudam a conduta
+                        </p>
+                        <BulletList items={dx.comorbidityIntegration} dotClassName="bg-indigo-400" />
+                      </div>
+                    )}
+                  </Card>
+                ))}
               </div>
             )}
 
-            <div className="rounded-xl border border-cyan-500/30 bg-black/30 p-4">
-              <p className="text-sm text-cyan-50 whitespace-pre-wrap leading-relaxed">{aiOpinion}</p>
-            </div>
-          </Card>
-        )}
+            {(parsedClinicalReport.comorbidityImpact.alerts.length > 0 ||
+              parsedClinicalReport.comorbidityImpact.cautions.length > 0 ||
+              parsedClinicalReport.comorbidityImpact.recommendedTests.length > 0 ||
+              parsedClinicalReport.comorbidityImpact.avoidOrAdjust.length > 0) && (
+              <Card className="border-indigo-500/30 bg-indigo-900/10 p-6">
+                <h3 className="mb-4 flex items-center gap-2 text-xl font-bold text-indigo-300">
+                  <AlertTriangle className="h-6 w-6" />
+                  Pontos transversais de seguranca
+                </h3>
 
-        {aiError && (
-          <InlineBanner
-            variant="warning"
-            title="Parecer IA indisponivel"
-            message={aiError}
-          />
-        )}
-
-        {!aiOpinion && !aiError && (
-          <InlineBanner
-            variant="warning"
-            title="Sem resposta da IA"
-            message="A chamada ao DeepSeek não retornou conteúdo útil. Abra o console (F12) para ver o diagnóstico detalhado da integração."
-          />
-        )}
-
-        {/* Neurolocalização */}
-        <Card className="p-6 border-gold/30">
-          <h3 className="text-xl font-bold text-gold mb-4 flex items-center gap-2">
-            <Brain className="w-6 h-6" />
-            Neurolocalização
-          </h3>
-
-          <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <p className="text-sm text-muted-foreground mb-1">Localização Provável</p>
-                <p className="text-lg font-semibold text-foreground">{getAxisLabel(report.neuroLocalization.primary)}</p>
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground mb-1">Distribuição</p>
-                <p className="text-lg font-semibold text-foreground capitalize">{report.neuroLocalization.distribution.toLowerCase()}</p>
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground mb-1">Padrão Motor</p>
-                <p className="text-lg font-semibold text-foreground">{getMotorPatternLabel(report.neuroLocalization.motorPattern)}</p>
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground mb-1">Confiança</p>
-                <p className="text-lg font-semibold text-foreground">{report.neuroLocalization.confidence}%</p>
-              </div>
-            </div>
-
-            <div>
-              <p className="text-sm font-semibold text-gold mb-2">Raciocínio de Neurolocalização (Síntese)</p>
-              <p className="text-foreground/90 text-sm leading-relaxed whitespace-pre-line">
-                {report.neuroLocalization.narrative}
-              </p>
-            </div>
-
-            {report.neuroLocalization.supportiveFindings.length > 0 && (
-              <div>
-                <p className="text-sm font-semibold text-green-400 mb-2">Achados que Suportam</p>
-                <ul className="list-disc list-inside space-y-1 text-sm text-foreground/80">
-                  {report.neuroLocalization.supportiveFindings.map((finding, idx) => (
-                    <li key={idx}>{finding}</li>
-                  ))}
-                </ul>
-              </div>
+                <div className="grid gap-4 xl:grid-cols-2">
+                  <DifferentialSection
+                    title="Alertas clinicos"
+                    items={parsedClinicalReport.comorbidityImpact.alerts}
+                    dotClassName="bg-orange-400"
+                  />
+                  <DifferentialSection
+                    title="Cautelas terapeuticas"
+                    items={parsedClinicalReport.comorbidityImpact.cautions}
+                    dotClassName="bg-yellow-400"
+                  />
+                  <DifferentialSection
+                    title="Exames recomendados"
+                    items={parsedClinicalReport.comorbidityImpact.recommendedTests}
+                    dotClassName="bg-blue-400"
+                  />
+                  <DifferentialSection
+                    title="Evitar ou ajustar"
+                    items={parsedClinicalReport.comorbidityImpact.avoidOrAdjust}
+                    dotClassName="bg-rose-400"
+                  />
+                </div>
+              </Card>
             )}
 
-            {report.neuroLocalization.contradictoryFindings.length > 0 && (
-              <div>
-                <p className="text-sm font-semibold text-orange-400 mb-2">Achados Contraditórios</p>
-                <ul className="list-disc list-inside space-y-1 text-sm text-foreground/80">
-                  {report.neuroLocalization.contradictoryFindings.map((finding, idx) => (
-                    <li key={idx}>{finding}</li>
-                  ))}
-                </ul>
+            {(parsedClinicalReport.limitations.length > 0 || parsedClinicalReport.references.length > 0) && (
+              <div className="grid gap-4 xl:grid-cols-2">
+                {parsedClinicalReport.limitations.length > 0 && (
+                  <Card className="border-slate-500/20 bg-slate-900/40 p-6">
+                    <h3 className="mb-4 text-lg font-semibold text-slate-200">Limitacoes e dados faltantes</h3>
+                    <BulletList
+                      items={parsedClinicalReport.limitations}
+                      dotClassName="bg-slate-400"
+                      textClassName="text-slate-100/85"
+                    />
+                  </Card>
+                )}
+
+                {parsedClinicalReport.references.length > 0 && (
+                  <Card className="border-fuchsia-500/20 bg-fuchsia-950/10 p-6">
+                    <h3 className="mb-4 text-lg font-semibold text-fuchsia-200">Base bibliografica considerada</h3>
+                    <BulletList
+                      items={parsedClinicalReport.references}
+                      dotClassName="bg-fuchsia-400"
+                      textClassName="text-slate-100/85"
+                    />
+                  </Card>
+                )}
               </div>
             )}
           </div>
-        </Card>
-
-        {/* Impacto das Comorbidades */}
-        {report.comorbidityImpact &&
-          (report.comorbidityImpact.alerts.length > 0 ||
-            report.comorbidityImpact.cautions.length > 0 ||
-            report.comorbidityImpact.diagnosticAdds.length > 0 ||
-            report.comorbidityImpact.diagnosticAvoids.length > 0) && (
-            <Card className="p-6 border-indigo-500/30 bg-indigo-900/10">
-              <h3 className="text-xl font-bold text-indigo-400 mb-4 flex items-center gap-2">
-                <AlertTriangle className="w-6 h-6" />
-                Impacto das Comorbidades
-              </h3>
-
-              {/* Alertas */}
-              {report.comorbidityImpact.alerts.length > 0 && (
-                <div className="mb-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-lg">⚠️</span>
-                    <h4 className="text-base font-semibold text-orange-400">Alertas Clínicos</h4>
-                  </div>
-                  <ul className="space-y-1 ml-6">
-                    {report.comorbidityImpact.alerts.map((alert, idx) => (
-                      <li key={idx} className="text-sm text-neutral-200 flex items-start gap-2">
-                        <span className="text-orange-400 mt-1">•</span>
-                        <span>{alert}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Cautelas Terapêuticas */}
-              {report.comorbidityImpact.cautions.length > 0 && (
-                <div className="mb-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-lg">💊</span>
-                    <h4 className="text-base font-semibold text-yellow-400">Cautelas Terapêuticas</h4>
-                  </div>
-                  <ul className="space-y-1 ml-6">
-                    {report.comorbidityImpact.cautions.map((caution, idx) => (
-                      <li key={idx} className="text-sm text-neutral-200 flex items-start gap-2">
-                        <span className="text-yellow-400 mt-1">•</span>
-                        <span>{caution}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Exames a Adicionar */}
-              {report.comorbidityImpact.diagnosticAdds.length > 0 && (
-                <div className="mb-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-lg">🧪</span>
-                    <h4 className="text-base font-semibold text-blue-400">Exames Recomendados</h4>
-                  </div>
-                  <ul className="space-y-1 ml-6">
-                    {report.comorbidityImpact.diagnosticAdds.map((add, idx) => (
-                      <li key={idx} className="text-sm text-neutral-200 flex items-start gap-2">
-                        <span className="text-blue-400 mt-1">•</span>
-                        <span>{add}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* O que Evitar/Ajustar */}
-              {report.comorbidityImpact.diagnosticAvoids.length > 0 && (
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-lg">🚫</span>
-                    <h4 className="text-base font-semibold text-red-400">Evitar/Ajustar</h4>
-                  </div>
-                  <ul className="space-y-1 ml-6">
-                    {report.comorbidityImpact.diagnosticAvoids.map((avoid, idx) => (
-                      <li key={idx} className="text-sm text-neutral-200 flex items-start gap-2">
-                        <span className="text-red-400 mt-1">•</span>
-                        <span>{avoid}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </Card>
-          )}
-
-        {/* TOP 5 DDx */}
-        <div className="space-y-4">
-          <h3 className="text-xl font-bold text-gold flex items-center gap-2">
-            <CheckCircle2 className="w-6 h-6" />
-            Top 5 Diagnósticos Diferenciais
-          </h3>
-
-          {report.differentials.map((dx, idx) => (
-            <Card key={idx} className="p-6">
-              <div className="flex items-start justify-between mb-3">
-                <div>
-                  <h4 className="text-lg font-semibold text-foreground">
-                    {idx + 1}. {dx.name}
-                  </h4>
-                  <p className="text-sm text-muted-foreground">Categoria: {getCategoryLabel(dx.category)}</p>
-                </div>
-                <div className="text-right">
-                  <p className="text-sm text-muted-foreground mb-1">Probabilidade</p>
-                  <p className="text-xl font-bold text-gold">{dx.likelihood}%</p>
-                </div>
-              </div>
-
-              <div className="space-y-4 mt-4">
-                <div>
-                  <p className="text-sm font-semibold text-blue-400 mb-2">Justificativas</p>
-                  <ul className="list-disc list-inside space-y-1 text-sm text-foreground/80">
-                    {dx.why.map((reason, i) => (
-                      <li key={i}>{reason}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div>
-                  <p className="text-sm font-semibold text-purple-400 mb-2">Como Diagnosticar</p>
-                  <div className="space-y-2">
-                    {dx.diagnostics.map((diag, i) => (
-                      <div key={i} className="p-3 bg-neutral-800/50 rounded-lg border border-neutral-700">
-                        <div className="flex items-start justify-between mb-1">
-                          <p className="text-sm font-medium text-foreground">{diag.test}</p>
-                          <span
-                            className={`text-xs px-2 py-1 rounded ${diag.priority === 'ALTA'
-                              ? 'bg-red-900/50 text-red-300'
-                              : diag.priority === 'MEDIA'
-                                ? 'bg-yellow-900/50 text-yellow-300'
-                                : 'bg-blue-900/50 text-blue-300'
-                              }`}
-                          >
-                            {diag.priority}
-                          </span>
-                        </div>
-                        <p className="text-xs text-muted-foreground mb-1">
-                          <span className="font-semibold">O que adiciona:</span> {diag.whatItAdds}
-                        </p>
-                        <p className="text-xs text-muted-foreground mb-1">
-                          <span className="font-semibold">Achados esperados:</span> {diag.expectedFindings}
-                        </p>
-                        <p className="text-xs text-muted-foreground">
-                          <span className="font-semibold">Limitações:</span> {diag.limitations}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <p className="text-sm font-semibold text-green-400 mb-2">Como Tratar</p>
-                  {dx.treatment.map((tx, i) => (
-                    <div key={i} className="mb-3 p-3 bg-neutral-800/50 rounded-lg border border-neutral-700">
-                      <p className="text-sm font-semibold text-foreground mb-2">
-                        {tx.phase === '0-6H' ? 'Fase Inicial (0-6h)' : 'Tratamento Definitivo'}
-                      </p>
-                      <ul className="list-disc list-inside space-y-1 text-sm text-foreground/80 mb-2">
-                        {tx.plan.map((item, j) => (
-                          <li key={j}>{item}</li>
-                        ))}
-                      </ul>
-                      {tx.cautions.length > 0 && (
-                        <div className="mt-2 pt-2 border-t border-neutral-700">
-                          <p className="text-xs font-semibold text-orange-400 mb-1">Cautelas:</p>
-                          <ul className="list-disc list-inside space-y-1 text-xs text-orange-300/80">
-                            {tx.cautions.map((caution, j) => (
-                              <li key={j}>{caution}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </Card>
-          ))}
-        </div>
+        ) : (
+          <Card className="border-amber-500/20 bg-amber-950/10 p-6">
+            <h3 className="mb-3 text-lg font-semibold text-amber-200">Relatorio bruto</h3>
+            <p className="whitespace-pre-line text-sm leading-relaxed text-amber-50/90">
+              {clinicalReportText || 'Nao foi possivel gerar o relatorio clinico.'}
+            </p>
+          </Card>
+        )}
       </div>
     )
   }

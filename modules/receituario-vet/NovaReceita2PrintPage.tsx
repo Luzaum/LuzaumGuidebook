@@ -22,6 +22,7 @@ import html2canvas from 'html2canvas'
 import { RxPrintView } from './RxPrintView'
 import { buildPrintDocsFromNovaReceita2 } from './novaReceita2Adapter'
 import { BUILTIN_TEMPLATES } from './builtinTemplates'
+import { normalizeNovaReceita2State } from './NovaReceita2Page'
 import type { NovaReceita2State, PrescriptionItem, TutorInfo, PatientInfo } from './NovaReceita2Page'
 import type { TemplateZoneKey } from './rxDb'
 import { uploadPrescriptionPdf, attachPdfToPresc, savePrescription } from '../../src/lib/prescriptionsRecords'
@@ -35,7 +36,7 @@ function loadSessionState(): NovaReceita2State | null {
     try {
         const raw = sessionStorage.getItem(RX2_SESSION_KEY)
         if (!raw) return null
-        return JSON.parse(raw) as NovaReceita2State
+        return normalizeNovaReceita2State(JSON.parse(raw) as NovaReceita2State)
     } catch {
         return null
     }
@@ -502,7 +503,7 @@ export default function NovaReceita2PrintPage() {
 
     const selectedTemplate = useMemo(() => {
         if (!state) return BUILTIN_TEMPLATES[0]
-        const id = state.templateId || BUILTIN_TEMPLATES[0].id
+        const id = state.printTemplateId || state.templateId || BUILTIN_TEMPLATES[0].id
         return BUILTIN_TEMPLATES.find((t) => t.id === id) || BUILTIN_TEMPLATES[0]
     }, [state])
 
@@ -593,7 +594,7 @@ export default function NovaReceita2PrintPage() {
                         clinic_id: clinicId,
                         content: {
                             kind: selectedTemplate?.documentKindTarget as any,
-                            templateId: state.templateId,
+                            templateId: state.printTemplateId || state.templateId,
                             printDoc: primaryPrintDoc,
                             printDocs,
                             stateSnapshot: state,

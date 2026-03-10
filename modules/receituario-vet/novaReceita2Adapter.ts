@@ -6,6 +6,7 @@ import type { NovaReceita2State } from './NovaReceita2Page'
 import type { PrescriptionState, RouteGroup, PrintDoc } from './rxTypes'
 import { renderRxToPrintDoc, splitPrescriptionByControl } from './rxRenderer'
 import type { RxTemplateStyle } from './rxDb'
+import { buildPresentationConcentrationText } from '../../src/lib/medicationCatalog'
 
 // =====================================================================
 // FIX A3: garante que valores numéricos do DB/sessionStorage
@@ -111,6 +112,23 @@ function parseDurationFromText(raw?: string): {
     return { durationDays: '', continuousUse: false, untilFinished: false }
 }
 
+function resolveStructuredDuration(item: NovaReceita2State['items'][number]) {
+    if (item.durationMode === 'continuous_use') {
+        return { durationDays: '', continuousUse: true, untilFinished: false, durationMode: item.durationMode }
+    }
+    if (item.durationMode === 'until_finished') {
+        return { durationDays: '', continuousUse: false, untilFinished: true, durationMode: item.durationMode }
+    }
+    if (item.durationMode === 'until_recheck') {
+        return { durationDays: '', continuousUse: false, untilFinished: false, durationMode: item.durationMode }
+    }
+    const parsed = parseDurationFromText(item.duration)
+    return {
+        ...parsed,
+        durationMode: item.durationMode || (parsed.continuousUse ? 'continuous_use' : parsed.untilFinished ? 'until_finished' : parsed.durationDays ? 'fixed_days' : 'until_recheck'),
+    }
+}
+
 // =====================================================================
 // FIX CRÍTICO: mapear route string livre -> RouteGroup enum
 // rxRenderer agrupa itens por routeGroup. Sem o enum correto,
@@ -204,13 +222,27 @@ function buildItemInstruction(item: {
     return 'Preencher instruções'
 }
 
+function resolvePresentationConcentration(item: NovaReceita2State['items'][number]): string {
+    return buildPresentationConcentrationText({
+        concentration_text: item.concentration_text,
+        value: item.value,
+        value_unit: item.value_unit,
+        per_value: item.per_value,
+        per_unit: item.per_unit,
+        metadata: item.presentation_metadata || undefined,
+    })
+}
+
 export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State): PrescriptionState {
     const now = new Date().toISOString()
 
     const mappedItems = state.items.map(item => {
         const routeGroup = routeStringToGroup(item.route)
+        const inheritStart = item.inheritStartFromPrescription !== false
+        const effectiveStartDate = inheritStart ? state.defaultStartDate : (item.startDate || '')
+        const effectiveStartHour = inheritStart ? state.defaultStartHour : (item.startHour || '')
         // FIX: subtitle apenas para presentation (forma + embalagem + preço)
-        const subtitle = item.pharmaceutical_form || item.presentation_label || buildItemSubtitle(item)
+        const subtitle = buildItemSubtitle(item) || item.pharmaceutical_form || item.presentation_label
         // FIX: pre-build a instrução e sempre usar (nunca deixar o renderer substituir
         // por buildAutoInstruction que não consegue parsear dose livre "10 mg/kg")
         const manualInstruction = toSafeString(item.instructions).trim()
@@ -224,10 +256,14 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
             ? parsedDose.perKg ? `${parsedDose.unit}/kg` : parsedDose.unit
             : ''
         const frequency = parseFrequencyFromText(item.frequency)
-        const duration = parseDurationFromText(item.duration)
+        const duration = resolveStructuredDuration(item)
+        const legacyStart =
+            effectiveStartDate && effectiveStartHour
+                ? `${effectiveStartDate}T${effectiveStartHour}:00`
+                : effectiveStartDate || effectiveStartHour || item.start_date
 
         // FIX A3: garantir que concentration_text nunca seja objeto/número
-        const concentrationSafe = toSafeString(item.concentration_text)
+        const concentrationSafe = toSafeString(resolvePresentationConcentration(item) || item.concentration_text)
         // FIX A3: garantir que weight_kg do patient seja sempre string
         // (Supabase pode retornar como number dependendo da versão do schema)
 
@@ -255,6 +291,12 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
             presentation: subtitle,    // subtitle: forma + embalagem + preço
             concentration: concentrationSafe,
             commercialName: toSafeString(item.commercial_name),
+            pharmaceuticalForm: toSafeString(item.pharmaceutical_form),
+            presentationValue: toSafeString(item.value),
+            presentationValueUnit: toSafeString(item.value_unit),
+            presentationPerValue: toSafeString(item.per_value),
+            presentationPerUnit: toSafeString(item.per_unit),
+            presentationMetadata: item.presentation_metadata || null,
             pharmacyType: 'veterinária' as const,
             packageType: 'frasco' as const,
             pharmacyName: '',
@@ -270,6 +312,7 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
             timesPerDay: frequency.timesPerDay,
             everyHours: frequency.everyHours,
             durationDays: duration.durationDays,
+            durationMode: duration.durationMode,
             untilFinished: duration.untilFinished,
             continuousUse: duration.continuousUse,
             instruction: manualInstruction,
@@ -277,6 +320,10 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
             titleBold: false,
             titleUnderline: false,
             cautions: item.cautions || [],
+            startDate: effectiveStartDate,
+            startHour: effectiveStartHour,
+            inheritStartFromPrescription: inheritStart,
+            start_date: legacyStart,
             createdAt: now,
             updatedAt: now,
         }
@@ -339,7 +386,7 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
             examReasons: [],
             waterMlPerDay: '',
             specialControlPharmacy: 'veterinária' as const,
-            standardTemplateId: state.templateId || '',
+            standardTemplateId: state.printTemplateId || state.templateId || '',
             specialControlTemplateId: '',
         }
     }

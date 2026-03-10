@@ -1,5 +1,18 @@
 import { supabase } from './supabaseClient'
 import { insertWithClinicId, selectByClinicId, softDeleteWithClinicId, logSbError } from './clinicScopedDb'
+import {
+  buildConcentrationLabel,
+  type CanonicalMedication,
+  findGlobalMedicationById,
+  getGlobalCatalogMedications,
+  mergeCatalogSearchResults,
+  getPresentationMetadata,
+  isGlobalMedicationId,
+  makeGlobalMedicationId,
+  parseGlobalMedicationId,
+  normalizeCatalogKey,
+  type CatalogSource,
+} from './medicationCatalog'
 
 // ==================== WHITELIST MAPPERS (CATÁLOGO 3.0) ====================
 // Purpose: Prevent PGRST204 errors by only sending fields that exist in Supabase schema
@@ -48,6 +61,8 @@ const PRESENTATION_ALLOWED_FIELDS = [
   'pharmacy_human',
   'pharmacy_compounding',
   'metadata', // jsonb: { manufacturer, administration_routes, palatable, obs, etc }
+  'package_quantity',
+  'package_unit',
   'created_at',
   'updated_at',
 ] as const
@@ -327,6 +342,7 @@ export type MedicationRecord = {
   metadata: any
   created_at: string
   updated_at?: string
+  source?: CatalogSource
 }
 
 export async function insertMedication(
@@ -462,6 +478,8 @@ export async function saveMedication(params: {
       pharmacy_human: !!p.pharmacy_human,
       pharmacy_compounding: !!p.pharmacy_compounding,
       metadata: p.metadata || {},
+      package_quantity: typeof p.package_quantity === 'number' ? p.package_quantity : p.package_quantity ? Number(p.package_quantity) : null,
+      package_unit: p.package_unit || null,
     });
   });
 
@@ -514,6 +532,165 @@ export type MedicationSearchResult = {
   is_controlled: boolean
   is_private: boolean
   metadata: any
+  source?: CatalogSource
+  scope?: CatalogSource
+}
+
+type GlobalMedicationRow = {
+  id: string
+  slug: string
+  name: string
+  active_ingredient: string | null
+  is_controlled: boolean
+  is_active: boolean
+  notes: string | null
+  tags: string[] | null
+  species: string[] | null
+  routes: string[] | null
+  metadata: Record<string, unknown> | null
+}
+
+type GlobalMedicationPresentationRow = {
+  id: string
+  global_medication_id: string
+  slug: string
+  pharmaceutical_form: string | null
+  concentration_text: string | null
+  additional_component: string | null
+  presentation_unit: string | null
+  commercial_name: string | null
+  value: number | null
+  value_unit: string | null
+  per_value: number | null
+  per_unit: string | null
+  package_quantity: number | null
+  package_unit: string | null
+  avg_price_brl: number | null
+  pharmacy_veterinary: boolean
+  pharmacy_human: boolean
+  pharmacy_compounding: boolean
+  metadata: Record<string, unknown> | null
+  created_at: string
+  updated_at: string
+}
+
+type GlobalMedicationRecommendedDoseRow = {
+  id: string
+  global_medication_id: string
+  slug: string
+  species: string
+  route: string
+  dose_value: number
+  dose_unit: string
+  frequency: string | null
+  notes: string | null
+  metadata: Record<string, unknown> | null
+  is_active: boolean
+  sort_order: number | null
+  created_at: string
+  updated_at: string
+}
+
+function mapGlobalMedicationToSearchResult(input: Pick<CanonicalMedication, 'slug' | 'name' | 'active_ingredient' | 'is_controlled' | 'metadata'>): MedicationSearchResult {
+  const slug = normalizeCatalogKey(input.slug || input.name)
+  return {
+    id: makeGlobalMedicationId(slug),
+    name: input.name,
+    is_controlled: !!input.is_controlled,
+    is_private: false,
+    metadata: {
+      ...(input.metadata || {}),
+      active_ingredient: input.active_ingredient || null,
+      source: 'global',
+      global_slug: slug,
+    },
+    source: 'global',
+    scope: 'global',
+  }
+}
+
+function mapGlobalMedicationRowToSearchResult(input: GlobalMedicationRow): MedicationSearchResult {
+  return mapGlobalMedicationToSearchResult({
+    slug: input.slug,
+    name: input.name,
+    active_ingredient: input.active_ingredient,
+    is_controlled: input.is_controlled,
+    metadata: input.metadata,
+  })
+}
+
+async function fetchGlobalMedicationRows(query: string, limit: number): Promise<GlobalMedicationRow[]> {
+  const q = query.trim()
+  let request = supabase
+    .from('global_medications')
+    .select('id,slug,name,active_ingredient,is_controlled,is_active,notes,tags,species,routes,metadata')
+    .eq('is_active', true)
+    .order('name', { ascending: true })
+    .limit(limit)
+
+  if (q) {
+    request = request.or(`name.ilike.%${q}%,active_ingredient.ilike.%${q}%`)
+  }
+
+  const { data, error } = await request
+  if (!error) return (data ?? []) as GlobalMedicationRow[]
+
+  console.warn('[GlobalMedicationSearch] fallback to bundled JSON', error)
+  const loweredQuery = q.toLowerCase()
+  return getGlobalCatalogMedications()
+    .filter((entry) => {
+      if (!q) return true
+      const haystack = [
+        entry.name,
+        entry.active_ingredient || '',
+        ...(entry.routes || []),
+        ...(entry.species || []),
+      ]
+        .join(' ')
+        .toLowerCase()
+      return haystack.includes(loweredQuery)
+    })
+    .slice(0, limit)
+    .map((entry, index) => ({
+      id: entry.id || `json-global-${index + 1}`,
+      slug: entry.slug,
+      name: entry.name,
+      active_ingredient: entry.active_ingredient || null,
+      is_controlled: !!entry.is_controlled,
+      is_active: entry.is_active !== false,
+      notes: entry.notes || null,
+      tags: entry.tags || null,
+      species: entry.species || null,
+      routes: entry.routes || null,
+      metadata: entry.metadata || {},
+    }))
+}
+
+async function resolveGlobalMedicationBySlug(slug: string): Promise<GlobalMedicationRow | null> {
+  const normalizedSlug = normalizeCatalogKey(slug)
+  const { data, error } = await supabase
+    .from('global_medications')
+    .select('id,slug,name,active_ingredient,is_controlled,is_active,notes,tags,species,routes,metadata')
+    .eq('slug', normalizedSlug)
+    .single()
+
+  if (!error && data) return data as GlobalMedicationRow
+
+  const fallback = findGlobalMedicationById(makeGlobalMedicationId(normalizedSlug))
+  if (!fallback) return null
+  return {
+    id: fallback.id || normalizedSlug,
+    slug: fallback.slug,
+    name: fallback.name,
+    active_ingredient: fallback.active_ingredient || null,
+    is_controlled: !!fallback.is_controlled,
+    is_active: fallback.is_active !== false,
+    notes: fallback.notes || null,
+    tags: fallback.tags || null,
+    species: fallback.species || null,
+    routes: fallback.routes || null,
+    metadata: fallback.metadata || {},
+  }
 }
 
 export async function searchMedications(
@@ -545,7 +722,16 @@ export async function searchMedications(
   logSbError('[MedicationSearch] ERROR', error)
 
   if (error) throw error
-  return data ?? []
+  const clinicResults = (data ?? []).map((entry) => ({
+    ...entry,
+    source: 'clinic' as const,
+    scope: 'clinic' as const,
+  }))
+
+  const globalRows = await fetchGlobalMedicationRows(q, limit)
+  const globalResults = globalRows.map(mapGlobalMedicationRowToSearchResult)
+
+  return mergeCatalogSearchResults([...clinicResults, ...globalResults], limit)
 }
 
 export async function loadMedicationsList(clinicId: string): Promise<{ id: string; name: string }[]> {
@@ -599,14 +785,83 @@ export type MedicationPresentationRecord = {
   pharmacy_human: boolean
   pharmacy_compounding: boolean
   metadata: any,
+  package_quantity?: number | null
+  package_unit?: string | null
   created_at: string
   updated_at?: string
+  source?: CatalogSource
 }
 
 export async function getMedicationPresentations(
   clinicId: string,
   medicationId: string
 ): Promise<MedicationPresentationRecord[]> {
+  if (isGlobalMedicationId(medicationId)) {
+    const medication = await resolveGlobalMedicationBySlug(parseGlobalMedicationId(medicationId))
+    if (!medication) return []
+
+    const { data, error } = await supabase
+      .from('global_medication_presentations')
+      .select('*')
+      .eq('global_medication_id', medication.id)
+      .order('slug', { ascending: true })
+
+    if (!error) {
+      return ((data ?? []) as GlobalMedicationPresentationRow[]).map((presentation) => ({
+        id: presentation.id,
+        clinic_id: '',
+        medication_id: medicationId,
+        pharmaceutical_form: presentation.pharmaceutical_form || null,
+        concentration_text: buildConcentrationLabel(presentation) || presentation.concentration_text || null,
+        additional_component: presentation.additional_component || null,
+        presentation_unit: presentation.presentation_unit || null,
+        commercial_name: presentation.commercial_name || null,
+        value: presentation.value ?? null,
+        value_unit: presentation.value_unit || null,
+        per_value: presentation.per_value ?? null,
+        per_unit: presentation.per_unit || null,
+        avg_price_brl: presentation.avg_price_brl ?? null,
+        pharmacy_veterinary: presentation.pharmacy_veterinary !== false,
+        pharmacy_human: !!presentation.pharmacy_human,
+        pharmacy_compounding: !!presentation.pharmacy_compounding,
+        metadata: getPresentationMetadata(presentation),
+        package_quantity: presentation.package_quantity ?? null,
+        package_unit: presentation.package_unit || null,
+        created_at: presentation.created_at,
+        updated_at: presentation.updated_at,
+        source: 'global',
+      }))
+    }
+
+    console.warn('[GlobalMedicationPresentations] fallback to bundled JSON', error)
+    const fallback = findGlobalMedicationById(medicationId)
+    if (!fallback) return []
+    return (fallback.presentations || []).map((presentation, index) => ({
+      id: presentation.id || `${medicationId}-presentation-${index + 1}`,
+      clinic_id: '',
+      medication_id: medicationId,
+      pharmaceutical_form: presentation.pharmaceutical_form || null,
+      concentration_text: buildConcentrationLabel(presentation) || presentation.concentration_text || null,
+      additional_component: presentation.additional_component || null,
+      presentation_unit: presentation.presentation_unit || null,
+      commercial_name: presentation.commercial_name || null,
+      value: presentation.value ?? null,
+      value_unit: presentation.value_unit || null,
+      per_value: presentation.per_value ?? null,
+      per_unit: presentation.per_unit || null,
+      avg_price_brl: presentation.avg_price_brl ?? null,
+      pharmacy_veterinary: presentation.pharmacy_veterinary !== false,
+      pharmacy_human: !!presentation.pharmacy_human,
+      pharmacy_compounding: !!presentation.pharmacy_compounding,
+      metadata: getPresentationMetadata(presentation),
+      package_quantity: presentation.package_quantity ?? null,
+      package_unit: presentation.package_unit || null,
+      created_at: '',
+      updated_at: '',
+      source: 'global',
+    }))
+  }
+
   console.log('[MedicationPresentations] START', { clinicId, medicationId })
 
   const { data, error } = await supabase
@@ -635,8 +890,10 @@ export interface RecommendedDose {
   dose_unit: string // 'mg/kg', 'mL/kg', 'UI/kg', etc
   frequency: string | null
   notes: string | null
+  metadata?: Record<string, unknown> | null
   created_at?: string
   updated_at?: string
+  source?: CatalogSource
 }
 
 /**
@@ -646,6 +903,56 @@ export async function getMedicationRecommendedDoses(
   clinicId: string,
   medicationId: string
 ): Promise<RecommendedDose[]> {
+  if (isGlobalMedicationId(medicationId)) {
+    const medication = await resolveGlobalMedicationBySlug(parseGlobalMedicationId(medicationId))
+    if (!medication) return []
+
+    const { data, error } = await supabase
+      .from('global_medication_recommended_doses')
+      .select('*')
+      .eq('global_medication_id', medication.id)
+      .eq('is_active', true)
+      .order('sort_order', { ascending: true })
+      .order('created_at', { ascending: true })
+
+    if (!error) {
+      return ((data ?? []) as GlobalMedicationRecommendedDoseRow[]).map((dose) => ({
+        id: dose.id,
+        clinic_id: undefined,
+        medication_id: medicationId,
+        species: dose.species,
+        route: dose.route,
+        dose_value: dose.dose_value,
+        dose_unit: dose.dose_unit,
+        frequency: dose.frequency || null,
+        notes: dose.notes || null,
+        metadata: dose.metadata || {},
+        created_at: dose.created_at,
+        updated_at: dose.updated_at,
+        source: 'global',
+      }))
+    }
+
+    console.warn('[GlobalRecommendedDoses] fallback to bundled JSON', error)
+    const fallback = findGlobalMedicationById(medicationId)
+    if (!fallback) return []
+    return (fallback.recommended_doses || []).map((dose, index) => ({
+      id: dose.id || `${medicationId}-dose-${index + 1}`,
+      clinic_id: undefined,
+      medication_id: medicationId,
+      species: dose.species,
+      route: dose.route,
+      dose_value: dose.dose_value,
+      dose_unit: dose.dose_unit,
+      frequency: dose.frequency || null,
+      notes: dose.notes || null,
+      metadata: dose.metadata || {},
+      created_at: '',
+      updated_at: '',
+      source: 'global',
+    }))
+  }
+
   console.log('[RecommendedDoses] GET', { clinicId, medicationId })
 
   const { data, error } = await supabase
@@ -713,6 +1020,7 @@ export async function saveMedicationRecommendedDoses(
       dose_unit: dose.dose_unit!,
       frequency: dose.frequency || null,
       notes: dose.notes || null,
+      metadata: dose.metadata || {},
       updated_at: new Date().toISOString()
     }
 
@@ -742,7 +1050,8 @@ export async function saveMedicationRecommendedDoses(
       dose_value: d.dose_value!,
       dose_unit: d.dose_unit!,
       frequency: d.frequency || null,
-      notes: d.notes || null
+      notes: d.notes || null,
+      metadata: d.metadata || {}
     }))
 
     const { error: insertError } = await supabase
@@ -803,6 +1112,8 @@ export type PresentationInsertInput = {
   pharmacy_veterinary: boolean;
   pharmacy_human: boolean;
   pharmacy_compounding: boolean;
+  package_quantity?: number | null;
+  package_unit?: string | null;
 }
 
 export async function insertMedicationPresentation(
@@ -827,6 +1138,8 @@ export async function insertMedicationPresentation(
     pharmacy_veterinary: input.pharmacy_veterinary ?? false,
     pharmacy_human: input.pharmacy_human ?? false,
     pharmacy_compounding: input.pharmacy_compounding ?? false,
+    package_quantity: input.package_quantity ?? null,
+    package_unit: input.package_unit || null,
   }
 
   const { data, error } = await supabase

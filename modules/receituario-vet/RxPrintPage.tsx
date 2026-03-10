@@ -529,7 +529,7 @@ export default function RxPrintPage() {
                 {isReviewMode ? <p className="mt-1 text-xs text-[#9bdc8f]">Passe o mouse na receita e clique em um bloco para editar.</p> : null}
               </div>
               <div className="flex flex-wrap gap-2">
-                <Link to="/receituario-vet/nova-receita" className="rounded-lg border border-[#345d2a] bg-[#1a2e16] px-3 py-2 text-sm font-semibold hover:bg-[#22381d]">Voltar ao editor</Link>
+                <Link to="/receituario-vet/nova-receita-2" className="rounded-lg border border-[#345d2a] bg-[#1a2e16] px-3 py-2 text-sm font-semibold hover:bg-[#22381d]">Voltar ao editor</Link>
                 <button type="button" className="rounded-lg border border-[#345d2a] bg-[#1a2e16] px-3 py-2 text-sm font-semibold hover:bg-[#22381d]" onClick={() => setShare((prev) => ({ ...prev, open: true }))}>Compartilhar receita</button>
                 <button type="button" className="rounded-lg border border-[#345d2a] bg-[#1a2e16] px-3 py-2 text-sm font-semibold hover:bg-[#22381d]" onClick={() => window.print()}>Imprimir direto</button>
                 <button type="button" className="rounded-lg bg-[#38ff14] px-3 py-2 text-sm font-bold text-[#10200d] hover:bg-[#2bd010]" onClick={downloadPdf}>Gerar PDF</button>

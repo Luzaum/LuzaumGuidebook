@@ -798,7 +798,7 @@ export default function ProtocolosPage() {
     } catch {
       // noop
     }
-    navigate('/receituario-vet/nova-receita')
+    navigate('/receituario-vet/nova-receita-2')
   }
 
   return (
@@ -810,7 +810,7 @@ export default function ProtocolosPage() {
       onThemeChange={setRxTheme}
       actions={
         <>
-          <Link className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-2 text-sm" to="/receituario-vet/nova-receita">
+          <Link className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-2 text-sm" to="/receituario-vet/nova-receita-2">
             <span className="material-symbols-outlined text-[18px]">description</span>
             Nova Receita
           </Link>

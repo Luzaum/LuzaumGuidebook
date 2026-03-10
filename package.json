@@ -15,6 +15,7 @@
     "validate:refs": "tsx scripts/validate-references-catalog.ts",
     "validate:rulesets": "tsx scripts/validate-rulesets.ts",
     "validate:dbpayloads": "tsx scripts/validate-supabase-payloads.ts",
+    "import:global-catalog": "tsx scripts/import-global-catalog.ts",
     "normalize:refs": "tsx scripts/normalize-references.ts",
     "scaffold:profiles": "tsx scripts/scaffold-missing-sections.ts"
   },

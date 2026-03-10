@@ -29,6 +29,10 @@ import {
     RxvPillToggle,
     RxvButton
 } from '../../src/components/receituario/RxvComponents'
+import {
+    assertValidMedicationCatalogBundle,
+    type CanonicalMedication
+} from '../../src/lib/medicationCatalog'
 
 // ==================== TIPOS ====================
 
@@ -48,6 +52,9 @@ interface Presentation {
     id?: string
     medication_id?: string
     pharmaceutical_form: string
+    concentration_text?: string | null
+    additional_component?: string | null
+    presentation_unit?: string | null
     commercial_name: string | null
     value: number | null
     value_unit: string
@@ -57,7 +64,7 @@ interface Presentation {
     pharmacy_veterinary: boolean
     pharmacy_human: boolean
     pharmacy_compounding: boolean
-    metadata?: {
+    metadata?: Record<string, unknown> & {
         manufacturer?: string
         administration_routes?: string[]
         obs?: string
@@ -74,6 +81,7 @@ interface RecommendedDoseUI {
     dose_unit: string
     frequency: string | null
     notes: string | null
+    metadata?: Record<string, unknown> | null
 }
 
 interface MedicationWithPresentations extends Medication {
@@ -138,6 +146,9 @@ function createEmptyPresentation(): Presentation {
     return {
         _tempId: crypto.randomUUID(),
         pharmaceutical_form: 'Comprimido',
+        concentration_text: null,
+        additional_component: null,
+        presentation_unit: null,
         commercial_name: '',
         value: null,
         value_unit: 'mg',
@@ -186,6 +197,129 @@ function createEmptyMedication(): MedicationWithPresentations {
     }
 }
 
+function isRecord(value: unknown): value is Record<string, any> {
+    return !!value && typeof value === 'object' && !Array.isArray(value)
+}
+
+function composeImportedDoseNotes(dose: any): string | null {
+    const indication = typeof dose?.metadata?.indication === 'string' ? dose.metadata.indication.trim() : ''
+    const notes = typeof dose?.notes === 'string' ? dose.notes.trim() : ''
+    if (indication && notes) return `Indicação: ${indication}. Observações: ${notes}`
+    if (indication) return `Indicação: ${indication}`
+    return notes || null
+}
+
+function mapImportedPresentationToDraft(presentation: any): Presentation {
+    const metadata = isRecord(presentation?.metadata) ? presentation.metadata : {}
+    return {
+        _tempId: crypto.randomUUID(),
+        pharmaceutical_form: typeof presentation?.pharmaceutical_form === 'string' && presentation.pharmaceutical_form.trim()
+            ? presentation.pharmaceutical_form.trim()
+            : 'Comprimido',
+        concentration_text: typeof presentation?.concentration_text === 'string' ? presentation.concentration_text : null,
+        additional_component: typeof presentation?.additional_component === 'string' ? presentation.additional_component : null,
+        presentation_unit: typeof presentation?.presentation_unit === 'string' ? presentation.presentation_unit : null,
+        commercial_name: typeof presentation?.commercial_name === 'string' ? presentation.commercial_name : '',
+        value: normalizeNumber(presentation?.value, true),
+        value_unit: typeof presentation?.value_unit === 'string' && presentation.value_unit.trim() ? presentation.value_unit : 'mg',
+        per_value: normalizeNumber(presentation?.per_value, false) || 1,
+        per_unit: typeof presentation?.per_unit === 'string' && presentation.per_unit.trim() ? presentation.per_unit : 'comprimido',
+        avg_price_brl: normalizeNumber(presentation?.avg_price_brl, true),
+        pharmacy_veterinary: presentation?.pharmacy_veterinary !== false,
+        pharmacy_human: !!presentation?.pharmacy_human,
+        pharmacy_compounding: !!presentation?.pharmacy_compounding,
+        metadata: {
+            ...metadata,
+            manufacturer: typeof metadata.manufacturer === 'string' ? metadata.manufacturer : '',
+            administration_routes: Array.isArray(metadata.administration_routes) ? metadata.administration_routes.filter(Boolean) : [],
+            obs: typeof metadata.obs === 'string' ? metadata.obs : ''
+        }
+    }
+}
+
+function mapImportedMedicationToDraft(medication: CanonicalMedication): MedicationWithPresentations {
+    const metadata = isRecord(medication.metadata) ? medication.metadata : {}
+    const clinicalTags = Array.isArray(metadata.clinical_tags) && metadata.clinical_tags.length
+        ? metadata.clinical_tags.filter(Boolean)
+        : (medication.tags || [])
+
+    const presentations = Array.isArray(medication.presentations) && medication.presentations.length
+        ? medication.presentations.map(mapImportedPresentationToDraft)
+        : [createEmptyPresentation()]
+
+    const recommendedDoses = Array.isArray(medication.recommended_doses)
+        ? medication.recommended_doses.map((dose) => ({
+            id: dose.id,
+            client_id: dose.id || crypto.randomUUID(),
+            species: typeof dose.species === 'string' && dose.species.trim() ? dose.species : 'cão',
+            route: typeof dose.route === 'string' && dose.route.trim() ? dose.route : 'VO',
+            dose_value: normalizeNumber(dose.dose_value, true),
+            dose_unit: typeof dose.dose_unit === 'string' && dose.dose_unit.trim() ? dose.dose_unit : 'mg/kg',
+            frequency: typeof dose.frequency === 'string' ? dose.frequency : null,
+            notes: composeImportedDoseNotes(dose),
+            metadata: isRecord(dose.metadata) ? dose.metadata : {}
+        }))
+        : []
+
+    return {
+        id: '',
+        name: medication.name || '',
+        notes: medication.notes || '',
+        species: Array.isArray(medication.species) && medication.species.length ? medication.species : ['cão', 'gato'],
+        routes: Array.isArray(medication.routes) ? medication.routes : [],
+        is_active: medication.is_active !== false,
+        is_controlled: !!medication.is_controlled,
+        metadata: {
+            ...metadata,
+            active_ingredient: medication.active_ingredient || metadata.active_ingredient || '',
+            therapeutic_class: metadata.therapeutic_class || '',
+            clinical_tags: clinicalTags
+        },
+        presentations,
+        recommended_doses: recommendedDoses
+    }
+}
+
+function extractImportableMedications(raw: unknown): CanonicalMedication[] {
+    if (!isRecord(raw)) {
+        throw new Error('JSON inválido: o conteúdo precisa ser um objeto.')
+    }
+
+    if (Object.prototype.hasOwnProperty.call(raw, 'medications')) {
+        if (!Array.isArray(raw.medications)) {
+            throw new Error('JSON inválido: "medications" precisa ser um array.')
+        }
+        raw.medications.forEach((entry, index) => {
+            if (!isRecord(entry)) {
+                throw new Error(`JSON invÃ¡lido: medications[${index}] precisa ser um objeto.`)
+            }
+            if (Object.prototype.hasOwnProperty.call(entry, 'presentations') && !Array.isArray(entry.presentations)) {
+                throw new Error(`JSON invÃ¡lido: medications[${index}].presentations precisa ser um array.`)
+            }
+            if (Object.prototype.hasOwnProperty.call(entry, 'recommended_doses') && !Array.isArray(entry.recommended_doses)) {
+                throw new Error(`JSON invÃ¡lido: medications[${index}].recommended_doses precisa ser um array.`)
+            }
+            if (typeof entry.name !== 'string' || !entry.name.trim()) {
+                throw new Error(`JSON invÃ¡lido: medications[${index}].name Ã© obrigatÃ³rio.`)
+            }
+        })
+        const bundle = assertValidMedicationCatalogBundle(raw)
+        return bundle.medications
+    }
+
+    if (Object.prototype.hasOwnProperty.call(raw, 'presentations') && !Array.isArray(raw.presentations)) {
+        throw new Error('JSON inválido: "presentations" precisa ser um array.')
+    }
+    if (Object.prototype.hasOwnProperty.call(raw, 'recommended_doses') && !Array.isArray(raw.recommended_doses)) {
+        throw new Error('JSON inválido: "recommended_doses" precisa ser um array.')
+    }
+    if (typeof raw.name !== 'string' || !raw.name.trim()) {
+        throw new Error('JSON inválido: o campo "name" é obrigatório.')
+    }
+
+    return [raw as unknown as CanonicalMedication]
+}
+
 // ==================== COMPONENTE PRINCIPAL ====================
 
 export default function Catalogo3Page() {
@@ -208,9 +342,11 @@ export default function Catalogo3Page() {
     const [isDirty, setIsDirty] = useState(false)
     const [showUnsavedModal, setShowUnsavedModal] = useState<{ nextId: string | null } | null>(null)
     const [showDeleteModal, setShowDeleteModal] = useState(false)
+    const [importCandidates, setImportCandidates] = useState<CanonicalMedication[] | null>(null)
     const [validationErrors, setValidationErrors] = useState<Record<string, string>>({})
-    const [successToast, setSuccessToast] = useState(false)
+    const [successToast, setSuccessToast] = useState<{ title: string, msg: string } | null>(null)
     const [errorToast, setErrorToast] = useState<{ title: string, msg: string } | null>(null)
+    const importFileInputRef = useRef<HTMLInputElement | null>(null)
 
     useEffect(() => {
         const rawUser = localStorage.getItem('luzaum-user')
@@ -265,6 +401,7 @@ export default function Catalogo3Page() {
                     species: details.species || ['cão', 'gato'], // ✅ text[] do Supabase
                     routes: details.routes || [], // ✅ text[] do Supabase
                     metadata: {
+                        ...medMetadata,
                         active_ingredient: medMetadata.active_ingredient || (details as any).active_ingredient || '',
                         therapeutic_class: medMetadata.therapeutic_class || '',
                         clinical_tags: medMetadata.clinical_tags || []
@@ -275,6 +412,7 @@ export default function Catalogo3Page() {
                             ...p,
                             _tempId: p.id,
                             metadata: {
+                                ...pMetadata,
                                 manufacturer: pMetadata.manufacturer || '',
                                 administration_routes: pMetadata.administration_routes || [],
                                 obs: pMetadata.obs || ''
@@ -289,7 +427,8 @@ export default function Catalogo3Page() {
                         dose_value: d.dose_value,
                         dose_unit: d.dose_unit,
                         frequency: d.frequency,
-                        notes: d.notes
+                        notes: d.notes,
+                        metadata: (d as any).metadata || {}
                     }))
                 }
                 setDraft(fullMed)
@@ -434,6 +573,62 @@ export default function Catalogo3Page() {
         setTimeout(() => setErrorToast(null), 5000)
     }
 
+    const showSuccessMessage = (title: string, msg: string) => {
+        setSuccessToast({ title, msg })
+        setTimeout(() => setSuccessToast(null), 3500)
+    }
+
+    const applyImportedMedication = useCallback((medication: CanonicalMedication) => {
+        const importedDraft = mapImportedMedicationToDraft(medication)
+        setDraft(importedDraft)
+        setSelectedId(null)
+        setImportCandidates(null)
+        setValidationErrors({})
+        setIsDirty(true)
+        showSuccessMessage('Importação concluída', 'Medicamento importado para revisão. Revise e clique em Salvar dados.')
+    }, [setDraft])
+
+    const handleImportJsonClick = () => {
+        if (isSaving) return
+        if (isDirty && !window.confirm('Importar JSON vai substituir o rascunho atual não salvo. Deseja continuar?')) {
+            return
+        }
+        importFileInputRef.current?.click()
+    }
+
+    const handleImportJsonFile = async (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0]
+        if (!file) return
+
+        try {
+            const rawText = await file.text()
+            let parsed: unknown
+
+            try {
+                parsed = JSON.parse(rawText)
+            } catch {
+                throw new Error('JSON inválido: não foi possível interpretar o arquivo selecionado.')
+            }
+
+            const medicationsToImport = extractImportableMedications(parsed)
+            if (!medicationsToImport.length) {
+                throw new Error('Nenhum medicamento encontrado no JSON informado.')
+            }
+
+            if (medicationsToImport.length === 1) {
+                applyImportedMedication(medicationsToImport[0])
+            } else {
+                setImportCandidates(medicationsToImport)
+            }
+        } catch (error: any) {
+            showValidationWarning('Erro ao importar JSON', error?.message || 'Não foi possível importar o arquivo JSON.')
+        } finally {
+            if (importFileInputRef.current) {
+                importFileInputRef.current.value = ''
+            }
+        }
+    }
+
     const validate = (): boolean => {
         const errors: Record<string, string> = {}
         let firstErrorField: string | null = null
@@ -498,6 +693,7 @@ export default function Catalogo3Page() {
                 routes: draft.routes,
                 is_active: !!draft.is_active,
                 metadata: {
+                    ...(draft.metadata || {}),
                     active_ingredient: draft.metadata?.active_ingredient || '',
                     therapeutic_class: draft.metadata?.therapeutic_class || '',
                     clinical_tags: draft.metadata?.clinical_tags || []
@@ -506,6 +702,9 @@ export default function Catalogo3Page() {
 
             const presentationsPayload = draft.presentations.map(p => ({
                 pharmaceutical_form: p.pharmaceutical_form,
+                concentration_text: p.concentration_text || null,
+                additional_component: p.additional_component || null,
+                presentation_unit: p.presentation_unit || null,
                 commercial_name: p.commercial_name?.trim() || null,
                 value: normalizeNumber(p.value, false) || 1,
                 value_unit: p.value_unit,
@@ -516,6 +715,7 @@ export default function Catalogo3Page() {
                 pharmacy_human: !!p.pharmacy_human,
                 pharmacy_compounding: !!p.pharmacy_compounding,
                 metadata: {
+                    ...(p.metadata || {}),
                     manufacturer: p.metadata?.manufacturer || '',
                     administration_routes: p.metadata?.administration_routes || [],
                     obs: p.metadata?.obs
@@ -548,7 +748,8 @@ export default function Catalogo3Page() {
                     dose_value: normalizeNumber(d.dose_value, false) || 0,
                     dose_unit: d.dose_unit,
                     frequency: d.frequency,
-                    notes: d.notes
+                    notes: d.notes,
+                    metadata: d.metadata || {}
                 }))
 
                 console.log('[Catalogo3] Saving doses...', dosesPayload)
@@ -561,8 +762,7 @@ export default function Catalogo3Page() {
                 await saveMedicationRecommendedDoses(clinicId, result.medication.id, [])
             }
 
-            setSuccessToast(true)
-            setTimeout(() => setSuccessToast(false), 3000)
+            showSuccessMessage('Sucesso', 'Medicamento salvo e atualizado.')
             setIsDirty(false)
             loadMedicationsList()
             setSelectedId(result.medication.id)
@@ -624,8 +824,7 @@ export default function Catalogo3Page() {
             console.log('[Catalogo3] ✅ DELETE SUCCESS')
 
             // Toast + reload
-            setSuccessToast(true)
-            setTimeout(() => setSuccessToast(false), 3000)
+            showSuccessMessage('Sucesso', 'Medicamento excluído com sucesso.')
 
             loadMedicationsList()
             setDraft(createEmptyMedication())
@@ -642,12 +841,27 @@ export default function Catalogo3Page() {
 
     return (
         <div className="min-h-screen bg-black">
+            <input
+                ref={importFileInputRef}
+                type="file"
+                accept=".json,application/json"
+                className="hidden"
+                onChange={handleImportJsonFile}
+            />
             <ReceituarioChrome
                 section="catalogo3"
                 title="Catálogo"
                 subtitle="Gerenciamento avançado de fármacos e apresentações comerciais."
                 actions={
                     <div className="flex items-center gap-3">
+                        <button
+                            onClick={handleImportJsonClick}
+                            disabled={isSaving}
+                            className="rxv-btn-secondary flex items-center gap-2 px-4 py-2 text-sm font-bold disabled:pointer-events-none disabled:opacity-40"
+                        >
+                            <span className="material-symbols-outlined text-[20px]">upload_file</span>
+                            Importar JSON
+                        </button>
                         <button
                             onClick={handleCreateNew}
                             className="rxv-btn-secondary flex items-center gap-2 px-4 py-2 text-sm font-bold"
@@ -1109,8 +1323,8 @@ export default function Catalogo3Page() {
                             <span className="material-symbols-outlined font-black">verified</span>
                         </div>
                         <div>
-                            <p className="text-sm font-black text-white italic">SUCESSO!</p>
-                            <p className="text-[10px] font-bold text-[#39ff14] uppercase tracking-widest">Medicamento salvo e atualizado.</p>
+                            <p className="text-sm font-black text-white italic uppercase">{successToast.title}</p>
+                            <p className="text-[10px] font-bold text-[#39ff14] uppercase tracking-widest">{successToast.msg}</p>
                         </div>
                     </motion.div>
                 )}
@@ -1207,6 +1421,58 @@ export default function Catalogo3Page() {
                                         Cancelar
                                     </button>
                                 </div>
+                            </div>
+                        </motion.div>
+                    </div>
+                )}
+
+                {importCandidates && (
+                    <div className="fixed inset-0 z-[600] flex items-center justify-center bg-black/95 p-4 backdrop-blur-xl">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="w-full max-w-3xl rounded-3xl border border-slate-800 bg-[#0a140a] p-8 shadow-2xl"
+                        >
+                            <div className="mb-6 flex items-start justify-between gap-4">
+                                <div>
+                                    <h3 className="text-2xl font-black text-white italic tracking-tight">Selecionar medicamento do JSON</h3>
+                                    <p className="mt-2 text-sm text-slate-400">
+                                        O arquivo contém {importCandidates.length} medicamentos. Escolha 1 para preencher o editor atual.
+                                    </p>
+                                </div>
+                                <button
+                                    onClick={() => setImportCandidates(null)}
+                                    className="rounded-xl border border-slate-700 px-3 py-2 text-xs font-black uppercase tracking-widest text-slate-300 transition hover:border-slate-500 hover:text-white"
+                                >
+                                    Fechar
+                                </button>
+                            </div>
+
+                            <div className="max-h-[60vh] space-y-3 overflow-y-auto pr-2 custom-scrollbar">
+                                {importCandidates.map((candidate, index) => (
+                                    <button
+                                        key={candidate.slug || `${candidate.name}-${index}`}
+                                        onClick={() => applyImportedMedication(candidate)}
+                                        className="w-full rounded-2xl border border-slate-800 bg-black/40 p-4 text-left transition hover:border-[#39ff14]/40 hover:bg-[#091509]"
+                                    >
+                                        <div className="flex items-start justify-between gap-4">
+                                            <div>
+                                                <p className="text-base font-black text-white">{candidate.name}</p>
+                                                <p className="mt-1 text-xs font-bold uppercase tracking-widest text-slate-500">
+                                                    {candidate.active_ingredient || 'Sem princípio ativo informado'}
+                                                </p>
+                                            </div>
+                                            <span className="rounded-full border border-[#39ff14]/30 bg-[#39ff14]/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-[#39ff14]">
+                                                Selecionar
+                                            </span>
+                                        </div>
+                                        <div className="mt-3 flex flex-wrap gap-2 text-[11px] font-bold uppercase tracking-wide text-slate-400">
+                                            <span>{Array.isArray(candidate.presentations) ? candidate.presentations.length : 0} apresentações</span>
+                                            <span>{Array.isArray(candidate.recommended_doses) ? candidate.recommended_doses.length : 0} doses</span>
+                                            <span>{Array.isArray(candidate.species) && candidate.species.length ? candidate.species.join(' • ') : 'Espécies não informadas'}</span>
+                                        </div>
+                                    </button>
+                                ))}
                             </div>
                         </motion.div>
                     </div>

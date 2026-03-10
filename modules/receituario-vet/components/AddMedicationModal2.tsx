@@ -15,7 +15,9 @@ import {
   getMedicationPresentations,
   getMedicationRecommendedDoses,
   type RecommendedDose,
+  type MedicationPresentationRecord,
 } from '../../../src/lib/clinicRecords'
+import { buildPresentationConcentrationText } from '../../../src/lib/medicationCatalog'
 import type { PrescriptionItem, PatientInfo } from '../NovaReceita2Page'
 
 // ===================== ROUTE OPTIONS =====================
@@ -33,6 +35,11 @@ const ROUTE_OPTIONS = [
   { value: 'Transdérmico', label: 'Transdérmico' },
 ]
 
+const START_HOUR_OPTIONS = Array.from({ length: 24 }, (_, hour) => {
+  const label = `${String(hour).padStart(2, '0')}:00`
+  return { value: label, label }
+})
+
 // ===================== TYPES =====================
 interface AddMedicationModal2Props {
   open: boolean
@@ -40,6 +47,8 @@ interface AddMedicationModal2Props {
   onAdd: (item: PrescriptionItem) => void
   clinicId: string
   patient: PatientInfo | null
+  defaultStartDate?: string
+  defaultStartHour?: string
   /** Se true, ignora busca no catálogo e exibe apenas o formulário manual */
   manualMode?: boolean
 }
@@ -50,27 +59,12 @@ interface MedicationSearchResult {
   is_controlled: boolean
   pharmacy_origin?: string
   default_route?: string
+  source?: 'clinic' | 'global'
+  scope?: 'clinic' | 'global'
 }
 
-/** Schema completo da tabela medication_presentations */
-interface PresentationRecord {
-  id: string
-  medication_id: string
-  pharmaceutical_form: string | null
-  concentration_text: string | null
-  additional_component: string | null
-  presentation_unit: string | null
-  commercial_name: string | null
+type PresentationRecord = MedicationPresentationRecord & {
   is_default?: boolean
-  value?: string | null
-  value_unit?: string | null
-  per_value?: string | null
-  per_unit?: string | null
-  avg_price_brl?: number | null
-  package_quantity?: string | null
-  package_unit?: string | null
-  /** metadata JSON — fallback para campos que o DB armazena como JSON em vez de coluna direta */
-  metadata?: Record<string, unknown> | null
 }
 
 /** Extrai um campo de PresentationRecord, com fallback no metadata JSON */
@@ -83,7 +77,16 @@ function extractPresentationField(pres: PresentationRecord, field: string): stri
 }
 
 // ===================== COMPONENT =====================
-export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, manualMode = false }: AddMedicationModal2Props) {
+export function AddMedicationModal2({
+  open,
+  onClose,
+  onAdd,
+  clinicId,
+  patient,
+  defaultStartDate = '',
+  defaultStartHour = '',
+  manualMode = false,
+}: AddMedicationModal2Props) {
   // Catalog state
   const [searchQuery, setSearchQuery] = useState('')
   const [medications, setMedications] = useState<MedicationSearchResult[]>([])
@@ -98,6 +101,10 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
   const [frequency, setFrequency] = useState('')
   const [route, setRoute] = useState('VO')
   const [duration, setDuration] = useState('')
+  const [durationMode, setDurationMode] = useState<'fixed_days' | 'until_recheck' | 'continuous_use' | 'until_finished'>('fixed_days')
+  const [inheritStartFromPrescription, setInheritStartFromPrescription] = useState(true)
+  const [itemStartDate, setItemStartDate] = useState('')
+  const [itemStartHour, setItemStartHour] = useState('')
   const [instructions, setInstructions] = useState('')
   const [cautions, setCautions] = useState('')
 
@@ -155,6 +162,10 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
       setFrequency('')
       setRoute('VO')
       setDuration('')
+      setDurationMode('fixed_days')
+      setInheritStartFromPrescription(true)
+      setItemStartDate(String(defaultStartDate || '').trim())
+      setItemStartHour(String(defaultStartHour || '').trim())
       setInstructions('')
       setCautions('')
       setManualName('')
@@ -163,7 +174,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
       setManualCommercialName('')
       setManualControlled(false)
     }
-  }, [open])
+  }, [open, defaultStartDate, defaultStartHour])
 
   // ==================== HANDLERS ====================
 
@@ -206,7 +217,26 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
   )
 
   const handleAdd = useCallback(() => {
-    const defaultStartDate = `${new Date().toISOString().slice(0, 10)}T08:00:00`
+    const safeDefaultStartDate = String(defaultStartDate || '').trim()
+    const safeDefaultStartHour = String(defaultStartHour || '').trim()
+    const safeStartDate = inheritStartFromPrescription
+      ? safeDefaultStartDate
+      : String(itemStartDate || '').trim()
+    const safeStartHour = inheritStartFromPrescription
+      ? safeDefaultStartHour
+      : String(itemStartHour || '').trim()
+    const legacyStart =
+      safeStartDate && safeStartHour
+        ? `${safeStartDate}T${safeStartHour}:00`
+        : safeStartDate || safeStartHour || undefined
+    const resolvedDuration =
+      durationMode === 'continuous_use'
+        ? 'uso contínuo'
+        : durationMode === 'until_finished'
+          ? 'até terminar o medicamento'
+          : durationMode === 'until_recheck'
+            ? 'até reavaliação clínica'
+            : duration
 
     if (manualMode) {
       // Modo manual: nome é obrigatório
@@ -217,6 +247,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
         type: 'medication',
         isManual: true,
         is_controlled: manualControlled,
+        catalog_source: 'clinic',
         name: manualName.trim(),
         pharmaceutical_form: manualForm || undefined,
         concentration_text: manualConcentration || undefined,
@@ -224,10 +255,15 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
         dose,
         frequency,
         route,
-        duration,
-        start_date: defaultStartDate,
+        duration: resolvedDuration,
+        durationMode,
+        inheritStartFromPrescription,
+        startDate: safeStartDate,
+        startHour: safeStartHour,
+        start_date: legacyStart,
         instructions,
         cautions: cautions.split('\n').map(s => s.trim()).filter(Boolean),
+        presentation_metadata: null,
       }
 
       onAdd(newItem)
@@ -242,7 +278,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
     // label legível para exibição na lista do editor
     const presentationLabel =
       selectedPresentation
-        ? [selectedPresentation.pharmaceutical_form, selectedPresentation.concentration_text]
+        ? [selectedPresentation.pharmaceutical_form, buildPresentationConcentrationText(selectedPresentation) || selectedPresentation.concentration_text]
           .filter(Boolean)
           .join(' - ')
         : undefined
@@ -252,6 +288,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
       type: 'medication',
       isManual: false,
       is_controlled: !!selectedMedication.is_controlled,
+      catalog_source: selectedMedication.source || 'clinic',
       medication_id: selectedMedication.id,
       presentation_id: selectedPresentationId || undefined,
 
@@ -261,7 +298,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
 
       // ✅ Todos os campos da apresentação (para adapter construir title/subtitle completos)
       pharmaceutical_form: selectedPresentation?.pharmaceutical_form || undefined,
-      concentration_text: selectedPresentation?.concentration_text || undefined,
+      concentration_text: buildPresentationConcentrationText(selectedPresentation) || selectedPresentation?.concentration_text || undefined,
       commercial_name: selectedPresentation?.commercial_name || undefined,
       additional_component: selectedPresentation?.additional_component || undefined,
       value: selectedPresentation?.value || undefined,
@@ -271,13 +308,18 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
       avg_price_brl: selectedPresentation?.avg_price_brl ?? undefined,
       package_quantity: selectedPresentation ? extractPresentationField(selectedPresentation, 'package_quantity') : undefined,
       package_unit: selectedPresentation ? extractPresentationField(selectedPresentation, 'package_unit') : undefined,
+      presentation_metadata: selectedPresentation?.metadata || null,
 
       // Campos de dosagem
       dose,
       frequency,
       route,
-      duration,
-      start_date: defaultStartDate,
+      duration: resolvedDuration,
+      durationMode,
+      inheritStartFromPrescription,
+      startDate: safeStartDate,
+      startHour: safeStartHour,
+      start_date: legacyStart,
       instructions,
       cautions: cautions.split('\n').map(s => s.trim()).filter(Boolean),
     }
@@ -298,10 +340,16 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
     frequency,
     route,
     duration,
+    durationMode,
+    inheritStartFromPrescription,
+    itemStartDate,
+    itemStartHour,
     instructions,
     cautions,
     onAdd,
     onClose,
+    defaultStartDate,
+    defaultStartHour,
   ])
 
   if (!open) return null
@@ -379,7 +427,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
                         >
                           <p className="text-sm font-bold text-white">{med.name}</p>
                           <p className="text-xs text-slate-500 mt-0.5">
-                            {med.pharmacy_origin || 'Veterinária'}
+                            {med.source === 'global' ? 'Catálogo global' : (med.pharmacy_origin || 'Catálogo da clínica')}
                             {med.is_controlled && ' • Controlado'}
                           </p>
                         </button>
@@ -395,7 +443,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
                   <div className="flex items-center justify-between rounded-xl border border-[#39ff14]/30 bg-[#39ff14]/5 px-4 py-3">
                     <div>
                       <p className="text-base font-bold text-white">{selectedMedication.name}</p>
-                      <p className="text-xs text-slate-500">{selectedMedication.pharmacy_origin || 'Veterinária'}</p>
+                      <p className="text-xs text-slate-500">{selectedMedication.source === 'global' ? 'Catálogo global' : (selectedMedication.pharmacy_origin || 'Catálogo da clínica')}</p>
                     </div>
                     <button
                       type="button"
@@ -417,7 +465,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
                             value: p.id,
                             label: [
                               p.commercial_name || p.pharmaceutical_form || 'Sem nome',
-                              p.concentration_text,
+                              buildPresentationConcentrationText(p) || p.concentration_text,
                               p.is_default ? '(Padrão)' : undefined,
                             ].filter(Boolean).join(' - '),
                           }))}
@@ -427,8 +475,8 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
                       {/* Preview da apresentação selecionada */}
                       {selectedPresentation && (
                         <div className="rounded-xl border border-slate-800 bg-black/30 px-4 py-3 space-y-1 text-xs text-slate-400">
-                          {selectedPresentation.concentration_text && (
-                            <p>Concentração: <span className="text-white">{selectedPresentation.concentration_text}</span></p>
+                          {(buildPresentationConcentrationText(selectedPresentation) || selectedPresentation.concentration_text) && (
+                            <p>Concentração: <span className="text-white">{buildPresentationConcentrationText(selectedPresentation) || selectedPresentation.concentration_text}</span></p>
                           )}
                           {selectedPresentation.pharmaceutical_form && (
                             <p>Forma: <span className="text-white">{selectedPresentation.pharmaceutical_form}</span></p>
@@ -536,6 +584,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
                   />
                 </RxvField>
               </div>
+
             </div>
           )}
 
@@ -544,7 +593,7 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
             <div className="space-y-4">
               <div className="h-px bg-slate-800/60" />
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <RxvField label="Dose">
                   <RxvInput
                     placeholder="Ex: 10 mg/kg"
@@ -572,26 +621,78 @@ export function AddMedicationModal2({ open, onClose, onAdd, clinicId, patient, m
                 </RxvField>
 
                 <RxvField label="Duração">
-                  <RxvInput
-                    placeholder="Ex: 7 dias"
-                    value={duration}
-                    onChange={(e) => setDuration(e.target.value)}
-                  />
+                  <div className="space-y-2">
+                    <RxvSelect
+                      value={durationMode}
+                      onChange={(e) => setDurationMode(e.target.value as typeof durationMode)}
+                      options={[
+                        { value: 'fixed_days', label: 'Duração fechada' },
+                        { value: 'until_recheck', label: 'Até reavaliação clínica' },
+                        { value: 'continuous_use', label: 'Uso contínuo' },
+                        { value: 'until_finished', label: 'Até terminar o medicamento' },
+                      ]}
+                    />
+                    {durationMode === 'fixed_days' ? (
+                      <RxvInput
+                        placeholder="Ex: 7 dias"
+                        value={duration}
+                        onChange={(e) => setDuration(e.target.value)}
+                      />
+                    ) : null}
+                  </div>
                 </RxvField>
               </div>
 
-              <RxvField label="Instruções de uso">
+              <div className="rounded-2xl border border-slate-800/80 bg-black/20 p-4 space-y-3">
+                <div>
+                  <p className="text-sm font-bold text-white">Inicio do tratamento</p>
+                  <p className="text-xs text-slate-400">Cada item pode herdar o inicio padrao da receita ou usar data e hora proprias.</p>
+                </div>
+
+                <RxvToggle
+                  checked={inheritStartFromPrescription}
+                  onChange={setInheritStartFromPrescription}
+                  label="Usar inicio padrao da receita"
+                />
+
+                {!inheritStartFromPrescription ? (
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                    <RxvField label="Data de inicio do item">
+                      <RxvInput
+                        type="date"
+                        value={itemStartDate}
+                        onChange={(e) => setItemStartDate(e.target.value)}
+                      />
+                    </RxvField>
+                    <RxvField label="Hora de inicio do item">
+                      <RxvSelect
+                        value={itemStartHour}
+                        onChange={(e) => setItemStartHour(e.target.value)}
+                        options={[{ value: '', label: 'Sem hora' }, ...START_HOUR_OPTIONS]}
+                      />
+                    </RxvField>
+                  </div>
+                ) : (
+                  <div className="rounded-xl border border-slate-800 bg-black/30 px-3 py-2 text-xs text-slate-400">
+                    {defaultStartDate || defaultStartHour
+                      ? `Este item herdara ${defaultStartDate || 'sem data'}${defaultStartHour ? ` as ${defaultStartHour}` : ''}.`
+                      : 'Nenhum inicio padrao definido. O item sera impresso sem trecho de inicio.'}
+                  </div>
+                )}
+              </div>
+
+              <RxvField label="Instrução livre (opcional)">
                 <RxvTextarea
-                  placeholder="Ex: Dar com alimento, evitar sol..."
+                  placeholder="Se preencher, substitui a instrução automática na impressão."
                   value={instructions}
                   onChange={(e) => setInstructions(e.target.value)}
                   rows={3}
                 />
               </RxvField>
 
-              <RxvField label="Cautelas (uma por linha)">
+              <RxvField label="Observações adicionais (uma por linha)">
                 <RxvTextarea
-                  placeholder="Ex: Não usar em fêmeas prenhes&#10;Monitorar função renal"
+                  placeholder="Ex: Dar com alimento&#10;Monitorar função renal"
                   value={cautions}
                   onChange={(e) => setCautions(e.target.value)}
                   rows={2}

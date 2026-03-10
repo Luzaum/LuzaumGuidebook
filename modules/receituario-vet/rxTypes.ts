@@ -6,6 +6,7 @@ export type PharmacyType = 'humana' | 'veterinária' | 'manipulacao'
 export type PackageType = 'frasco' | 'caixa' | 'bisnaga' | 'ampola' | 'outro'
 export type FrequencyType = 'timesPerDay' | 'everyHours'
 export type SpecialControlPharmacy = 'veterinária' | 'humana' | 'manipulacao'
+export type DurationMode = 'fixed_days' | 'until_recheck' | 'continuous_use' | 'until_finished'
 
 export type RouteGroup =
   | 'ORAL'
@@ -90,6 +91,12 @@ export interface PrescriptionItem {
   presentation: string
   concentration: string
   commercialName?: string
+  pharmaceuticalForm?: string
+  presentationValue?: string
+  presentationValueUnit?: string
+  presentationPerValue?: string
+  presentationPerUnit?: string
+  presentationMetadata?: Record<string, unknown> | null
   pharmacyType: PharmacyType
   packageType: PackageType
   pharmacyName: string
@@ -103,6 +110,7 @@ export interface PrescriptionItem {
   timesPerDay: string
   everyHours: string
   durationDays: string
+  durationMode?: DurationMode
   untilFinished: boolean
   continuousUse: boolean
   instruction: string
@@ -112,6 +120,9 @@ export interface PrescriptionItem {
   cautions: string[]
   manualQuantity?: string
   start_date?: string
+  startDate?: string
+  startHour?: string
+  inheritStartFromPrescription?: boolean
   createdAt: string
   updatedAt: string
 }

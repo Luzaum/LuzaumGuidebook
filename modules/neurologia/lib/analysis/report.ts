@@ -5,6 +5,98 @@ import { replaceForbiddenEnglish, auditCaseReport } from '../quality/noEnglish'
 import { applyComorbidityRules } from '../engine/comorbidityRules'
 import type { CaseReport } from '../../types/analysis'
 
+const CHIEF_COMPLAINT_LABELS: Record<string, string> = {
+  ConvulsaoFocal: 'Convulsao focal',
+  ConvulsaoGeneralizada: 'Convulsao generalizada',
+  ClusterConvulsoes: 'Cluster de convulsoes',
+  Sincope: 'Sincope/colapso',
+  AlteracaoConsciencia: 'Alteracao do nivel de consciencia',
+  Comportamento: 'Alteracao comportamental',
+  AndarCirculos: 'Andar em circulos/head pressing',
+  Cegueira: 'Cegueira aguda',
+  Anisocoria: 'Anisocoria/alteracao pupilar',
+  HeadTilt: 'Head tilt',
+  Vertigem: 'Vertigem/vomito vestibular',
+  Nistagmo: 'Nistagmo',
+  Ataxia: 'Ataxia/descoordenacao',
+  Paresia: 'Paresia/paralisia',
+  Tetraparesia: 'Tetraparesia',
+  Paraparesia: 'Paraparesia',
+  Hipermetria: 'Hipermetria/tremor de intencao',
+  DorCervical: 'Dor cervical',
+  DorToracolombar: 'Dor toracolombar',
+  DorLombossacra: 'Dor lombossacra',
+  DisfuncaoFacial: 'Disfuncao facial',
+  Disfagia: 'Disfagia/regurgitacao',
+  Disfonia: 'Disfonia/alteracao de voz',
+  DisfuncaoUrinaria: 'Disfuncao urinaria/fecal',
+  IncontinenciaUrinaria: 'Incontinencia urinaria',
+  RetencaoUrinaria: 'Retencao urinaria',
+  Tremores: 'Tremores/mioclonias',
+  FraquezaFlacida: 'Fraqueza flacida/intolerancia ao exercicio',
+  Colapso: 'Colapso recorrente',
+}
+
+const RED_FLAG_LABELS: Record<string, string> = {
+  coma_estupor: 'Coma/estupor',
+  status_epilepticus: 'Status epilepticus/cluster grave',
+  severe_progression_24h: 'Piora neurologica rapida (<24h)',
+  acute_nonambulatory: 'Nao ambulatorio agudo',
+  respiratory_compromise: 'Comprometimento respiratorio/aspiracao',
+  deep_pain_loss: 'Dor profunda ausente',
+  severe_cervical_pain: 'Dor cervical intensa',
+  anisocoria_acute: 'Anisocoria aguda',
+  dysphagia_aspiration_risk: 'Disfagia com risco de aspiracao',
+}
+
+const EXAM_VALUE_LABELS: Record<string, string> = {
+  Alerta: 'Alerta',
+  Deprimido: 'Deprimido',
+  Estupor: 'Estupor',
+  Coma: 'Coma',
+  Normal: 'Normal',
+  Ausente: 'Ausente',
+  Presente: 'Presente',
+  Diminuido: 'Diminuido',
+  Aumentado: 'Aumentado',
+  Lento: 'Lento',
+  Ambulatorio: 'Ambulatorio',
+  'Com Apoio': 'Com apoio',
+  'Nao Ambulatorio': 'Nao ambulatorio',
+  Plegia: 'Plegia',
+  Ataxia: 'Ataxia',
+  Proprioceptiva: 'Proprioceptiva',
+  Vestibular: 'Vestibular',
+  Cerebelar: 'Cerebelar',
+  Leve: 'Leve',
+  Moderada: 'Moderada',
+  Grave: 'Grave',
+  'Cabeca Baixa': 'Cabeca baixa',
+}
+
+function humanizeComplaint(id: string): string {
+  return CHIEF_COMPLAINT_LABELS[id] || id
+}
+
+function humanizeRedFlag(id: string): string {
+  return RED_FLAG_LABELS[id] || id
+}
+
+function humanizeExamValue(value: unknown): string {
+  const text = String(value || '').trim()
+  if (!text) return 'Nao informado'
+  return EXAM_VALUE_LABELS[text] || text
+}
+
+function collectExamSection(
+  exam: Record<string, any>,
+  fields: Array<{ key: string; label: string }>,
+): string[] {
+  return fields
+    .filter(({ key }) => exam[key] !== null && exam[key] !== undefined && String(exam[key]).trim() !== '')
+    .map(({ key, label }) => `${label}: ${humanizeExamValue(exam[key])}`)
+}
+
 export function buildCaseReport(caseState: any): CaseReport {
   const now = new Date().toISOString()
   const v = validateMinimumData(caseState)
@@ -27,7 +119,7 @@ export function buildCaseReport(caseState: any): CaseReport {
         confidence: 0,
         supportiveFindings: [],
         contradictoryFindings: [],
-        narrative: 'Dados insuficientes para neurolocalização com segurança clínica.',
+        narrative: 'Dados insuficientes para neurolocalizacao com seguranca clinica.',
         missing: v.missing,
       },
       differentials: [],
@@ -37,7 +129,6 @@ export function buildCaseReport(caseState: any): CaseReport {
   const neuroLocalization = determineNeuroLocalization(caseState)
   const differentials = generateDifferentials(caseState, neuroLocalization)
 
-  // Construir report inicial
   let report: CaseReport = {
     generatedAtISO: now,
     patientSummary,
@@ -47,55 +138,49 @@ export function buildCaseReport(caseState: any): CaseReport {
     differentials,
   }
 
-  // Aplicar regras de comorbidades (boosts em DDx + summary de impacto)
   const comorbidities = caseState?.patient?.comorbidities || []
   if (comorbidities.length > 0) {
     const { updatedReport } = applyComorbidityRules({
       report,
-      comorbidities: Array.isArray(comorbidities) && typeof comorbidities[0] === 'string'
-        ? comorbidities.map(c => ({ key: c as any, label: c }))
-        : comorbidities,
+      comorbidities:
+        Array.isArray(comorbidities) && typeof comorbidities[0] === 'string'
+          ? comorbidities.map((c) => ({ key: c as any, label: c }))
+          : comorbidities,
     })
     report = updatedReport
   }
 
-  // Aplicar sanitização de inglês
   report.patientSummary = replaceForbiddenEnglish(report.patientSummary)
   report.historySummary = replaceForbiddenEnglish(report.historySummary)
   report.examSummary = replaceForbiddenEnglish(report.examSummary)
   report.neuroLocalization.narrative = replaceForbiddenEnglish(report.neuroLocalization.narrative)
-
-  // Sanitizar supportiveFindings e contradictoryFindings
-  report.neuroLocalization.supportiveFindings = report.neuroLocalization.supportiveFindings.map((f) =>
-    replaceForbiddenEnglish(f),
+  report.neuroLocalization.supportiveFindings = report.neuroLocalization.supportiveFindings.map((finding) =>
+    replaceForbiddenEnglish(finding),
   )
-  report.neuroLocalization.contradictoryFindings = report.neuroLocalization.contradictoryFindings.map((f) =>
-    replaceForbiddenEnglish(f),
+  report.neuroLocalization.contradictoryFindings = report.neuroLocalization.contradictoryFindings.map((finding) =>
+    replaceForbiddenEnglish(finding),
   )
-
-  // Sanitizar diferenciais
   report.differentials = report.differentials.map((dx) => ({
     ...dx,
-    why: dx.why.map((w) => replaceForbiddenEnglish(w)),
-    diagnostics: dx.diagnostics.map((d) => ({
-      ...d,
-      test: replaceForbiddenEnglish(d.test),
-      whatItAdds: replaceForbiddenEnglish(d.whatItAdds),
-      expectedFindings: replaceForbiddenEnglish(d.expectedFindings),
-      limitations: replaceForbiddenEnglish(d.limitations),
+    why: dx.why.map((reason) => replaceForbiddenEnglish(reason)),
+    diagnostics: dx.diagnostics.map((diag) => ({
+      ...diag,
+      test: replaceForbiddenEnglish(diag.test),
+      whatItAdds: replaceForbiddenEnglish(diag.whatItAdds),
+      expectedFindings: replaceForbiddenEnglish(diag.expectedFindings),
+      limitations: replaceForbiddenEnglish(diag.limitations),
     })),
-    treatment: dx.treatment.map((t) => ({
-      ...t,
-      plan: t.plan.map((p) => replaceForbiddenEnglish(p)),
-      cautions: t.cautions.map((c) => replaceForbiddenEnglish(c)),
+    treatment: dx.treatment.map((tx) => ({
+      ...tx,
+      plan: tx.plan.map((item) => replaceForbiddenEnglish(item)),
+      cautions: tx.cautions.map((item) => replaceForbiddenEnglish(item)),
     })),
   }))
 
-  // Auditoria em dev (warn se ainda houver termos proibidos)
   if (import.meta.env.DEV) {
     const audit = auditCaseReport(report)
     if (audit.length > 0) {
-      console.warn('[NeuroVet] Termos em inglês detectados após sanitização:', audit)
+      console.warn('[NeuroVet] Termos em ingles detectados apos sanitizacao:', audit)
     }
   }
 
@@ -103,87 +188,169 @@ export function buildCaseReport(caseState: any): CaseReport {
 }
 
 function buildPatientSummary(s: any): string {
-  const sp = s?.patient?.species === 'dog' ? 'Cão' : s?.patient?.species === 'cat' ? 'Gato' : '—'
+  const species = s?.patient?.species === 'dog' ? 'Cao' : s?.patient?.species === 'cat' ? 'Gato' : 'Nao informado'
   const age =
     s?.patient?.ageYears !== null && s?.patient?.ageYears !== undefined
       ? `${s.patient.ageYears} anos`
       : s?.patient?.ageMonths !== null && s?.patient?.ageMonths !== undefined
         ? `${s.patient.ageMonths} meses`
-        : '—'
-  const sex = s?.patient?.sex === 'male' ? 'Macho' : s?.patient?.sex === 'female' ? 'Fêmea' : '—'
-  const repro =
-    s?.patient?.reproStatus === 'intact' ? 'Inteiro' : s?.patient?.reproStatus === 'neutered' ? 'Castrado' : '—'
+        : 'Nao informado'
+  const sex = s?.patient?.sex === 'male' ? 'Macho' : s?.patient?.sex === 'female' ? 'Femea' : 'Nao informado'
+  const reproStatus =
+    s?.patient?.reproStatus === 'intact'
+      ? 'Inteiro'
+      : s?.patient?.reproStatus === 'neutered'
+        ? 'Castrado'
+        : 'Nao informado'
   const lifeStageLabels: Record<string, string> = {
     neonate: 'Neonato',
-    pediatric: 'Pediátrico',
+    pediatric: 'Pediatrico',
     adult: 'Adulto',
-    geriatric: 'Geriátrico',
+    geriatric: 'Geriatrico',
   }
-  const phys = s?.patient?.lifeStage ? lifeStageLabels[s.patient.lifeStage] || '—' : '—'
-  const w = s?.patient?.weightKg ? `${s.patient.weightKg} kg` : '—'
-  const com =
+  const lifeStage = s?.patient?.lifeStage ? lifeStageLabels[s.patient.lifeStage] || 'Nao informado' : 'Nao informado'
+  const weight = s?.patient?.weightKg ? `${s.patient.weightKg} kg` : 'Nao informado'
+  const comorbidities =
     Array.isArray(s?.patient?.comorbidities) && s.patient.comorbidities.length
       ? s.patient.comorbidities
-          .map((c: any) => {
-            const label = typeof c === 'string' ? c : c.label || c.key
-            const severity = typeof c === 'object' && c.severity ? ` (${c.severity})` : ''
+          .map((item: any) => {
+            const label = typeof item === 'string' ? item : item?.label || item?.key || 'Comorbidade nao informada'
+            const severity = typeof item === 'object' && item?.severity ? ` (${item.severity})` : ''
             return `${label}${severity}`
           })
           .join(', ')
       : 'Nenhuma informada'
-  return `Espécie: ${sp} | Idade: ${age} | Sexo: ${sex} | Reprodutivo: ${repro} | Fase: ${phys} | Peso: ${w} | Comorbidades: ${com}`
+  const physiologicConditions = [
+    s?.patient?.pregnant ? 'Gestante' : null,
+    s?.patient?.lactating ? 'Lactante' : null,
+  ].filter(Boolean)
+
+  return [
+    `Especie: ${species}`,
+    `Idade: ${age}`,
+    `Sexo: ${sex}`,
+    `Estado reprodutivo: ${reproStatus}`,
+    `Faixa etaria: ${lifeStage}`,
+    `Peso: ${weight}`,
+    `Condicoes fisiologicas: ${physiologicConditions.length > 0 ? physiologicConditions.join(', ') : 'Nenhuma informada'}`,
+    `Comorbidades: ${comorbidities}`,
+  ].join('\n')
 }
 
 function buildHistorySummary(s: any): string {
-  const chief = Array.isArray(s?.complaint?.chiefComplaintIds) && s.complaint.chiefComplaintIds.length
-    ? s.complaint.chiefComplaintIds.join(', ')
-    : '—'
+  const chiefComplaints =
+    Array.isArray(s?.complaint?.chiefComplaintIds) && s.complaint.chiefComplaintIds.length
+      ? s.complaint.chiefComplaintIds.map(humanizeComplaint)
+      : []
   const temporalLabels: Record<string, string> = {
     peragudo: 'Peragudo',
     agudo: 'Agudo',
     subagudo: 'Subagudo',
-    cronico: 'Crônico',
-    episodico: 'Episódico',
+    cronico: 'Cronico',
+    episodico: 'Episodico',
   }
-  const course = s?.complaint?.temporalPattern ? temporalLabels[s.complaint.temporalPattern] || '—' : '—'
   const evolutionLabels: Record<string, string> = {
     melhorando: 'Melhorando',
-    estático: 'Estático',
+    estatico: 'Estatico',
     flutuante: 'Flutuante',
     progressivo: 'Progressivo',
   }
-  const prog = s?.complaint?.evolutionPattern
-    ? evolutionLabels[s.complaint.evolutionPattern] || '—'
-    : '—'
-  const ctxParts: string[] = []
-  if (s?.complaint?.trauma) ctxParts.push('Trauma')
-  if (s?.complaint?.toxin) ctxParts.push('Toxina')
-  if (s?.complaint?.fever) ctxParts.push('Febre')
-  if (s?.complaint?.ectoparasiticideExposure) ctxParts.push('Exposição a ectoparasiticidas')
-  if (s?.complaint?.systemicDisease) ctxParts.push('Doença sistêmica')
-  if (s?.complaint?.recentSurgeryAnesthesia) ctxParts.push('Cirurgia/Anestesia recente')
-  const ctx = ctxParts.length > 0 ? ctxParts.join(', ') : 'Sem contexto adicional'
-  const flags =
+  const temporalPattern = s?.complaint?.temporalPattern
+    ? temporalLabels[s.complaint.temporalPattern] || 'Nao informado'
+    : 'Nao informado'
+  const evolutionPattern = s?.complaint?.evolutionPattern
+    ? evolutionLabels[s.complaint.evolutionPattern] || 'Nao informado'
+    : 'Nao informado'
+
+  const contextFlags: string[] = []
+  if (s?.complaint?.trauma) contextFlags.push('Trauma')
+  if (s?.complaint?.toxin) contextFlags.push('Toxina')
+  if (s?.complaint?.fever) contextFlags.push('Febre')
+  if (s?.complaint?.ectoparasiticideExposure) contextFlags.push('Exposicao a ectoparasiticidas')
+  if (s?.complaint?.systemicDisease) contextFlags.push('Doenca sistemica')
+  if (s?.complaint?.recentSurgeryAnesthesia) contextFlags.push('Cirurgia/anestesia recente')
+
+  const redFlags =
     Array.isArray(s?.complaint?.redFlags) && s.complaint.redFlags.length
-      ? s.complaint.redFlags.join(', ')
-      : 'Nenhuma red flag selecionada'
-  return `Queixa: ${chief} | Curso: ${course} | Evolução: ${prog} | Contexto: ${ctx} | Red flags: ${flags}`
+      ? s.complaint.redFlags.map(humanizeRedFlag)
+      : []
+
+  return [
+    `Sinais principais: ${chiefComplaints.length > 0 ? chiefComplaints.join(', ') : 'Nenhum informado'}`,
+    `Padrao temporal: ${temporalPattern}`,
+    `Evolucao: ${evolutionPattern}`,
+    `Contexto clinico: ${contextFlags.length > 0 ? contextFlags.join(', ') : 'Sem contexto adicional marcado'}`,
+    `Red flags: ${redFlags.length > 0 ? redFlags.join(', ') : 'Nenhuma red flag marcada'}`,
+    `Observacoes adicionais: ${s?.complaint?.contextNotes?.trim() || 'Nenhuma observacao livre informada'}`,
+  ].join('\n')
 }
 
 function buildExamSummary(s: any): string {
-  const mentationLabels: Record<string, string> = {
-    Alerta: 'Alerta',
-    Deprimido: 'Deprimido',
-    Estupor: 'Estupor',
-    Coma: 'Coma',
-  }
-  const ment = s?.neuroExam?.mentation ? mentationLabels[s.neuroExam.mentation] || s.neuroExam.mentation : '—'
-  const gaitLabels: Record<string, string> = {
-    Ambulatório: 'Ambulatório',
-    'Com Apoio': 'Com apoio',
-    'Não Ambulatório': 'Não ambulatorial',
-    Plegia: 'Plegia',
-  }
-  const gait = s?.neuroExam?.ambulation ? gaitLabels[s.neuroExam.ambulation] || s.neuroExam.ambulation : '—'
-  return `Mentação/Consciência: ${ment} | Marcha/Deambulação: ${gait}`
+  const exam = s?.neuroExam || {}
+  const sections = [
+    {
+      title: 'Mentacao e comportamento',
+      items: collectExamSection(exam, [
+        { key: 'mentation', label: 'Mentacao' },
+        { key: 'behavior', label: 'Comportamento' },
+        { key: 'head_posture', label: 'Postura da cabeca' },
+      ]),
+    },
+    {
+      title: 'Marcha e postura',
+      items: collectExamSection(exam, [
+        { key: 'ambulation', label: 'Deambulacao' },
+        { key: 'gait_thoracic', label: 'Marcha dos membros toracicos' },
+        { key: 'gait_pelvic', label: 'Marcha dos membros pelvicos' },
+        { key: 'ataxia_type', label: 'Tipo de ataxia' },
+      ]),
+    },
+    {
+      title: 'Reacoes posturais',
+      items: collectExamSection(exam, [
+        { key: 'proprioception_thoracic_left', label: 'Propriocepcao toracico esquerdo' },
+        { key: 'proprioception_thoracic_right', label: 'Propriocepcao toracico direito' },
+        { key: 'proprioception_pelvic_left', label: 'Propriocepcao pelvico esquerdo' },
+        { key: 'proprioception_pelvic_right', label: 'Propriocepcao pelvico direito' },
+      ]),
+    },
+    {
+      title: 'Nervos cranianos',
+      items: collectExamSection(exam, [
+        { key: 'menace_left', label: 'Resposta a ameaca esquerda' },
+        { key: 'menace_right', label: 'Resposta a ameaca direita' },
+        { key: 'plr_left', label: 'PLR esquerdo' },
+        { key: 'plr_right', label: 'PLR direito' },
+        { key: 'nystagmus', label: 'Nistagmo' },
+        { key: 'strabismus', label: 'Estrabismo' },
+        { key: 'cn_facial_sensation', label: 'Sensibilidade facial' },
+        { key: 'cn_swallowing', label: 'Reflexo de degluticao' },
+      ]),
+    },
+    {
+      title: 'Reflexos espinhais',
+      items: collectExamSection(exam, [
+        { key: 'reflex_patellar_left', label: 'Patelar esquerdo' },
+        { key: 'reflex_patellar_right', label: 'Patelar direito' },
+        { key: 'reflex_withdrawal_left_thoracic', label: 'Retirada toracico esquerdo' },
+        { key: 'reflex_withdrawal_right_thoracic', label: 'Retirada toracico direito' },
+        { key: 'reflex_panniculus', label: 'Panniculus' },
+      ]),
+    },
+    {
+      title: 'Dor e nocicepcao',
+      items: collectExamSection(exam, [
+        { key: 'deep_pain', label: 'Dor profunda' },
+        { key: 'pain_cervical', label: 'Dor cervical' },
+        { key: 'pain_thoracolumbar', label: 'Dor toracolombar' },
+        { key: 'pain_lumbosacral', label: 'Dor lombossacra' },
+      ]),
+    },
+  ]
+
+  const lines = sections
+    .filter((section) => section.items.length > 0)
+    .map((section) => `${section.title}: ${section.items.join('; ')}`)
+
+  return lines.length > 0 ? lines.join('\n') : 'Exame neurologico nao preenchido.'
 }

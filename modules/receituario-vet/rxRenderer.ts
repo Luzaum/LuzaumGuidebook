@@ -1,5 +1,12 @@
 ﻿import { PrescriptionItem, PrescriptionState, PrintDoc, PrintDocItem, RouteGroup } from './rxTypes'
 import { loadRxDb } from './rxDb'
+import {
+  buildMedicationDisplayName,
+  getDoseEngineMetadata,
+  getPresentationFlag,
+  getPresentationNumber,
+  getPresentationString,
+} from '../../src/lib/medicationCatalog'
 
 const SECTION_ORDER: RouteGroup[] = [
   'ORAL',
@@ -38,7 +45,50 @@ const FREQUENCY_TOKEN_TO_TIMES: Record<'SID' | 'BID' | 'TID' | 'QID', number> = 
   QID: 4,
 }
 
-const DISCRETE_UNITS = new Set(['comprimido', 'capsula', 'gota', 'ampola', 'frasco', 'bisnaga', 'unidade', 'sachê', 'sache'])
+const DISCRETE_UNITS = new Set([
+  'comprimido',
+  'capsula',
+  'gota',
+  'ampola',
+  'frasco',
+  'bisnaga',
+  'unidade',
+  'sachê',
+  'sache',
+  'spray',
+  'puff',
+  'jato',
+  'ato',
+  'flaconete',
+  'pipeta',
+  'supositorio',
+])
+
+const ADMINISTRATION_UNITS = new Set([
+  ...Array.from(DISCRETE_UNITS),
+  'ml',
+  'l',
+])
+
+const UNIT_LABELS: Record<string, { singular: string; plural: string }> = {
+  comprimido: { singular: 'comprimido', plural: 'comprimidos' },
+  capsula: { singular: 'cápsula', plural: 'cápsulas' },
+  gota: { singular: 'gota', plural: 'gotas' },
+  ml: { singular: 'mL', plural: 'mL' },
+  l: { singular: 'L', plural: 'L' },
+  puff: { singular: 'puff', plural: 'puffs' },
+  jato: { singular: 'jato', plural: 'jatos' },
+  ato: { singular: 'ato', plural: 'atos' },
+  spray: { singular: 'spray', plural: 'sprays' },
+  sache: { singular: 'sachê', plural: 'sachês' },
+  flaconete: { singular: 'flaconete', plural: 'flaconetes' },
+  pipeta: { singular: 'pipeta', plural: 'pipetas' },
+  supositorio: { singular: 'supositório', plural: 'supositórios' },
+  ampola: { singular: 'ampola', plural: 'ampolas' },
+  frasco: { singular: 'frasco', plural: 'frascos' },
+  bisnaga: { singular: 'bisnaga', plural: 'bisnagas' },
+  unidade: { singular: 'unidade', plural: 'unidades' },
+}
 
 function normalizeText(value: string): string {
   return (value || '')
@@ -75,6 +125,20 @@ const UNIT_ALIASES: Record<string, string> = {
   bisnagas: 'bisnaga',
   sache: 'sache',
   saches: 'sache',
+  flaconete: 'flaconete',
+  flaconetes: 'flaconete',
+  pipeta: 'pipeta',
+  pipetas: 'pipeta',
+  supositorio: 'supositorio',
+  supositorios: 'supositorio',
+  puff: 'puff',
+  puffs: 'puff',
+  jato: 'jato',
+  jatos: 'jato',
+  ato: 'ato',
+  atos: 'ato',
+  spray: 'spray',
+  sprays: 'spray',
 }
 
 function normalizeUnit(unit: string): string {
@@ -127,6 +191,110 @@ function isDiscreteUnit(unit: string): boolean {
 
 function isDosePerKg(unit: string) {
   return normalizeText(unit).includes('/kg')
+}
+
+function isAdministrationUnit(unit: string) {
+  return ADMINISTRATION_UNITS.has(normalizeUnit(unit))
+}
+
+function getUnitLabel(unit: string, value: number): string {
+  const normalized = normalizeUnit(unit)
+  const labels = UNIT_LABELS[normalized]
+  if (!labels) return value > 1 ? unit : unit
+  return value > 1 ? labels.plural : labels.singular
+}
+
+function isIntegerLike(value: number, tolerance = 0.001) {
+  return Math.abs(Math.round(value) - value) <= tolerance
+}
+
+function quantizeFraction(value: number, step: number): number {
+  return Math.round(value / step) * step
+}
+
+function formatTabletFraction(value: number): string {
+  const quantized = quantizeFraction(value, 0.25)
+  const whole = Math.floor(quantized + 0.0001)
+  const fraction = Math.round((quantized - whole) * 4)
+  const mixedUnit = quantized > 1 && whole > 1 ? 'comprimidos' : 'comprimido'
+
+  if (fraction === 0) return `${formatNumber(quantized, 0)} ${getUnitLabel('comprimido', quantized)}`
+  const fractionText =
+    fraction === 1 ? '1/4'
+      : fraction === 2 ? '1/2 (meio)'
+        : '3/4'
+
+  if (whole <= 0) return `${fractionText} comprimido`
+  return `${whole} e ${fractionText} ${mixedUnit}`
+}
+
+function formatAdministrationAmount(value: number, unit: string): string {
+  const normalized = normalizeUnit(unit)
+  if (normalized === 'comprimido') return formatTabletFraction(value)
+  if (normalized === 'capsula' || normalized === 'ampola' || normalized === 'frasco' || normalized === 'bisnaga' || normalized === 'sache' || normalized === 'flaconete' || normalized === 'pipeta' || normalized === 'supositorio' || normalized === 'unidade') {
+    return `${formatNumber(value, 0)} ${getUnitLabel(normalized, value)}`
+  }
+  if (normalized === 'gota' || normalized === 'puff' || normalized === 'jato' || normalized === 'ato' || normalized === 'spray') {
+    return `${formatNumber(value, 0)} ${getUnitLabel(normalized, value)}`
+  }
+  if (normalized === 'ml' || normalized === 'l') {
+    return `${formatNumber(value)} ${getUnitLabel(normalized, value)}`
+  }
+  return `${formatNumber(value)} ${unit}`.trim()
+}
+
+function formatFractionalAmount(value: number, unit: string): string {
+  const normalized = normalizeUnit(unit)
+  const whole = Math.floor(value + 0.0001)
+  const fraction = value - whole
+  if (normalized === 'comprimido') return formatTabletFraction(value)
+  if (Math.abs(fraction) < 0.001) return formatAdministrationAmount(value, normalized)
+  return `${formatNumber(value)} ${getUnitLabel(normalized, value)}`.trim()
+}
+
+function formatSupportDose(value: number | null, unit: string): string {
+  if (value === null || !unit) return ''
+  return `${formatNumber(value)} ${unit}`.trim()
+}
+
+function resolvePresentationKind(item: PrescriptionItem, convertedUnit: string): 'tablet' | 'capsule' | 'oral-liquid' | 'drops' | 'actuation' | 'unitary' | 'topical' | 'generic' {
+  const mode = getPresentationString({ metadata: item.presentationMetadata || null }, 'administration_mode')
+  if (mode === 'tablet') return 'tablet'
+  if (mode === 'capsule') return 'capsule'
+  if (mode === 'liquid_oral') return 'oral-liquid'
+  if (mode === 'drops') return 'drops'
+  if (mode === 'actuation') return 'actuation'
+  if (mode === 'unit') return 'unitary'
+  if (mode === 'topical_manual') return 'topical'
+
+  const form = normalizeText(item.pharmaceuticalForm || item.presentation)
+  const unit = normalizeUnit(convertedUnit)
+  if (form.includes('comprim') || unit === 'comprimido') return 'tablet'
+  if (form.includes('capsul') || unit === 'capsula') return 'capsule'
+  if (form.includes('gota') || unit === 'gota') return 'drops'
+  if (getPresentationNumber({ metadata: item.presentationMetadata || null }, 'dose_per_actuation') || form.includes('spray') || form.includes('inal') || unit === 'puff' || unit === 'jato' || unit === 'ato' || unit === 'spray') {
+    return 'actuation'
+  }
+  if (form.includes('solucao oral') || form.includes('suspens') || form.includes('xarope') || form.includes('elixir') || unit === 'ml') return 'oral-liquid'
+  if (form.includes('pomada') || form.includes('creme') || form.includes('gel') || form.includes('shampoo')) return 'topical'
+  if (unit === 'sache' || unit === 'flaconete' || unit === 'pipeta' || unit === 'supositorio' || unit === 'ampola' || unit === 'unidade') return 'unitary'
+  return 'generic'
+}
+
+function resolveStructuredConcentration(item: PrescriptionItem): ParsedConcentration | null {
+  const amount = toNumber(item.presentationValue)
+  const amountUnit = (item.presentationValueUnit || '').trim()
+  const perValue = toNumber(item.presentationPerValue) || 1
+  const perUnit = (item.presentationPerUnit || '').trim() || inferPresentationUnit(item.presentation)
+  if (amount !== null && amount > 0 && amountUnit) {
+    return {
+      amount,
+      amountUnit,
+      perValue: perValue > 0 ? perValue : 1,
+      perUnit,
+    }
+  }
+  return parseConcentration(item.concentration, item.presentation)
 }
 
 function getDoseBaseUnit(unit: string) {
@@ -201,6 +369,9 @@ export interface QuantityResult {
   total: number | null
   unit: string
   label: string
+  instructionLabel: string
+  supportingLabel: string
+  warnings: string[]
   memory: QuantityMemory
 }
 
@@ -284,6 +455,27 @@ function startTimeLabel(startDate?: string): string {
   return `${hh}:${mm}`
 }
 
+function formatDateLabel(dateRaw?: string): string {
+  const raw = (dateRaw || '').trim()
+  if (!raw) return ''
+  if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) {
+    const [year, month, day] = raw.split('-')
+    return `${day}/${month}/${year}`
+  }
+  const parsed = new Date(raw)
+  if (Number.isNaN(parsed.getTime())) return ''
+  return parsed.toLocaleDateString('pt-BR')
+}
+
+function formatStartSegment(item: PrescriptionItem): string {
+  const startHour = (item.startHour || startTimeLabel(item.start_date)).trim()
+  const startDate = (item.startDate || '').trim()
+  if (startDate && startHour) return `iniciando em ${formatDateLabel(startDate)} às ${startHour}`
+  if (startHour) return `iniciando às ${startHour}`
+  if (startDate) return `iniciando em ${formatDateLabel(startDate)}`
+  return ''
+}
+
 function uniqueByNormalizedText(lines: string[]): string[] {
   const seen = new Set<string>()
   const result: string[] = []
@@ -300,6 +492,7 @@ function uniqueByNormalizedText(lines: string[]): string[] {
 
 export function calculateMedicationQuantity(item: PrescriptionItem, state: PrescriptionState): QuantityResult {
   const steps: string[] = []
+  const warnings: string[] = []
   const doseValue = toNumber(item.doseValue)
   if (!doseValue || doseValue <= 0) {
     return {
@@ -307,6 +500,9 @@ export function calculateMedicationQuantity(item: PrescriptionItem, state: Presc
       total: null,
       unit: '',
       label: 'Quantidade não calculada',
+      instructionLabel: '',
+      supportingLabel: '',
+      warnings: [],
       memory: {
         steps: ['Dose não informada.'],
         baseDose: null,
@@ -325,6 +521,7 @@ export function calculateMedicationQuantity(item: PrescriptionItem, state: Presc
   const dosePerKg = isDosePerKg(doseUnitRaw)
   const baseUnitRaw = dosePerKg ? getDoseBaseUnit(doseUnitRaw) : doseUnitRaw
   const baseUnitNorm = normalizeUnit(baseUnitRaw)
+  const presentationMeta = { metadata: item.presentationMetadata || null }
 
   let baseDosePerAdministration = doseValue
   if (dosePerKg) {
@@ -334,6 +531,9 @@ export function calculateMedicationQuantity(item: PrescriptionItem, state: Presc
         total: null,
         unit: '',
         label: 'Peso não informado para cálculo',
+        instructionLabel: '',
+        supportingLabel: '',
+        warnings: [],
         memory: {
           steps: ['Dose por kg exige peso válido do paciente.'],
           baseDose: null,
@@ -352,33 +552,156 @@ export function calculateMedicationQuantity(item: PrescriptionItem, state: Presc
     steps.push(`Dose por administração: ${formatNumber(baseDosePerAdministration)} ${doseUnitRaw || 'unidade'}`)
   }
 
-  const concentration = parseConcentration(item.concentration, item.presentation)
-  let perDoseOutput = baseDosePerAdministration
-  let perDoseOutputUnit = baseUnitRaw || inferPresentationUnit(item.presentation)
+  const supportingLabel = formatSupportDose(baseDosePerAdministration, baseUnitRaw)
+  let perDoseOutput: number | null = null
+  let perDoseOutputUnit = ''
+  let instructionLabel = supportingLabel
+  let detailLabel = supportingLabel ? `Dose calculada: ${supportingLabel}` : 'Quantidade não calculada'
 
-  if (concentration) {
-    const concentrationAmountUnitNorm = normalizeUnit(concentration.amountUnit)
-    if (concentrationAmountUnitNorm === baseUnitNorm && concentration.amount > 0 && concentration.perValue > 0) {
-      const ratio = concentration.amount / concentration.perValue
-      perDoseOutput = baseDosePerAdministration / ratio
-      perDoseOutputUnit = concentration.perUnit || inferPresentationUnit(item.presentation)
-      steps.push(
-        `${formatNumber(baseDosePerAdministration)} ${baseUnitRaw} ÷ ${formatNumber(concentration.amount)}/${formatNumber(concentration.perValue)} ${concentration.perUnit} = ${formatNumber(perDoseOutput)} ${perDoseOutputUnit}`
-      )
-    } else {
-      steps.push(
-        `Concentração "${item.concentration}" não compatível com unidade da dose (${baseUnitRaw || '-'}) para conversão automática.`
-      )
+  if (!dosePerKg && isAdministrationUnit(baseUnitRaw)) {
+    perDoseOutput = baseDosePerAdministration
+    perDoseOutputUnit = baseUnitNorm
+    instructionLabel = formatAdministrationAmount(perDoseOutput, perDoseOutputUnit)
+    detailLabel = `Dose por administração: ${instructionLabel}`
+  } else {
+    const concentration = resolveStructuredConcentration(item)
+    if (concentration) {
+      const concentrationAmountUnitNorm = normalizeUnit(concentration.amountUnit)
+      if (concentrationAmountUnitNorm === baseUnitNorm && concentration.amount > 0 && concentration.perValue > 0) {
+        const ratio = concentration.amount / concentration.perValue
+        const rawAdministrationUnits = baseDosePerAdministration / ratio
+        const rawAdministrationUnit = concentration.perUnit || inferPresentationUnit(item.presentation)
+        const rawAdministrationUnitNorm = normalizeUnit(rawAdministrationUnit)
+        const presentationKind = resolvePresentationKind(item, rawAdministrationUnit)
+        const doseEngine = getDoseEngineMetadata(presentationMeta)
+        const hasAllowSplitFlag = typeof doseEngine.allow_split === 'boolean'
+        const allowSplit = hasAllowSplitFlag ? getPresentationFlag(presentationMeta, 'allow_split') : true
+        const splitIncrement = getPresentationNumber(presentationMeta, 'split_increment') || 0.25
+        const modifiedRelease = getPresentationFlag(presentationMeta, 'modified_release')
+        const entericCoated = getPresentationFlag(presentationMeta, 'enteric_coated')
+        const wholeUnitOnly = getPresentationFlag(presentationMeta, 'whole_unit_only')
+        const canOpenAndDisperse = getPresentationFlag(presentationMeta, 'can_open_and_disperse')
+        const dropsPerMl = getPresentationNumber(presentationMeta, 'drops_per_ml')
+        const actuationDose = getPresentationNumber(presentationMeta, 'dose_per_actuation')
+        const actuationUnit = getPresentationString(presentationMeta, 'dose_per_actuation_unit') || baseUnitRaw
+        const actuationLabel = getPresentationString(presentationMeta, 'actuation_label') || 'puff'
+        const roundMlTo = getPresentationNumber(presentationMeta, 'round_ml_to')
+
+        steps.push(
+          `${formatNumber(baseDosePerAdministration)} ${baseUnitRaw} ÷ ${formatNumber(concentration.amount)}/${formatNumber(concentration.perValue)} ${concentration.perUnit} = ${formatNumber(rawAdministrationUnits)} ${rawAdministrationUnit}`
+        )
+
+        if (presentationKind === 'tablet') {
+          if (modifiedRelease || entericCoated || !allowSplit) {
+            if (isIntegerLike(rawAdministrationUnits)) {
+              perDoseOutput = Math.round(rawAdministrationUnits)
+              perDoseOutputUnit = 'comprimido'
+              instructionLabel = formatAdministrationAmount(perDoseOutput, perDoseOutputUnit)
+            } else {
+              warnings.push('Dose exata não atingível com este comprimido não fracionável. Escolha outra apresentação, manipulado ou ajuste manual.')
+            }
+          } else {
+            const quantized = quantizeFraction(rawAdministrationUnits, splitIncrement)
+            if (quantized > 0) {
+              perDoseOutput = quantized
+              perDoseOutputUnit = 'comprimido'
+              instructionLabel = formatAdministrationAmount(perDoseOutput, perDoseOutputUnit)
+            }
+          }
+        } else if (presentationKind === 'capsule') {
+          if (isIntegerLike(rawAdministrationUnits)) {
+            perDoseOutput = Math.round(rawAdministrationUnits)
+            perDoseOutputUnit = 'capsula'
+            instructionLabel = formatAdministrationAmount(perDoseOutput, perDoseOutputUnit)
+          } else {
+            if (canOpenAndDisperse) {
+              steps.push('Apresentação marcada como can_open_and_disperse, mas sem conversão clínica automática nesta versão.')
+            }
+            warnings.push('Dose exata não atingível com esta apresentação em cápsulas inteiras. Escolha outra apresentação, manipulado ou ajuste manual.')
+          }
+        } else if (presentationKind === 'drops') {
+          if (rawAdministrationUnitNorm === 'gota') {
+            perDoseOutput = Math.max(1, Math.round(rawAdministrationUnits))
+            perDoseOutputUnit = 'gota'
+            instructionLabel = formatAdministrationAmount(perDoseOutput, perDoseOutputUnit)
+          } else if (rawAdministrationUnitNorm === 'ml' && dropsPerMl && dropsPerMl > 0) {
+            const rawDrops = rawAdministrationUnits * dropsPerMl
+            perDoseOutput = Math.max(1, Math.round(rawDrops))
+            perDoseOutputUnit = 'gota'
+            instructionLabel = formatAdministrationAmount(perDoseOutput, perDoseOutputUnit)
+            detailLabel = `Dose calculada: ${supportingLabel} = ${formatAdministrationAmount(rawAdministrationUnits, 'ml')} = ${instructionLabel}`
+          } else {
+            perDoseOutput = rawAdministrationUnits
+            perDoseOutputUnit = rawAdministrationUnitNorm || 'ml'
+            instructionLabel = formatAdministrationAmount(perDoseOutput, perDoseOutputUnit)
+          }
+        } else if (presentationKind === 'actuation') {
+          if (actuationDose && normalizeUnit(actuationUnit) === baseUnitNorm) {
+            const rawActuations = baseDosePerAdministration / actuationDose
+            if (!isIntegerLike(rawActuations)) {
+              warnings.push('Dose exata não atingível em atuações inteiras desta apresentação. Ajuste manual ou escolha outra opção.')
+            } else {
+              perDoseOutput = Math.max(1, Math.round(rawActuations))
+              perDoseOutputUnit = normalizeUnit(actuationLabel || rawAdministrationUnit || 'puff')
+              instructionLabel = formatAdministrationAmount(perDoseOutput, perDoseOutputUnit)
+            }
+          } else if (rawAdministrationUnitNorm === 'puff' || rawAdministrationUnitNorm === 'jato' || rawAdministrationUnitNorm === 'ato' || rawAdministrationUnitNorm === 'spray') {
+            if (!isIntegerLike(rawAdministrationUnits)) {
+              warnings.push('Dose exata não atingível em atuações inteiras desta apresentação. Ajuste manual ou escolha outra opção.')
+            } else {
+              perDoseOutput = Math.max(1, Math.round(rawAdministrationUnits))
+              perDoseOutputUnit = rawAdministrationUnitNorm
+              instructionLabel = formatAdministrationAmount(perDoseOutput, perDoseOutputUnit)
+            }
+          }
+        } else if (presentationKind === 'oral-liquid') {
+          perDoseOutput = roundMlTo && roundMlTo > 0
+            ? Math.round(rawAdministrationUnits / roundMlTo) * roundMlTo
+            : rawAdministrationUnits
+          perDoseOutputUnit = rawAdministrationUnitNorm || 'ml'
+          instructionLabel = formatAdministrationAmount(perDoseOutput, perDoseOutputUnit)
+        } else if (presentationKind === 'unitary') {
+          if (isIntegerLike(rawAdministrationUnits)) {
+            perDoseOutput = Math.round(rawAdministrationUnits)
+            perDoseOutputUnit = rawAdministrationUnitNorm
+            instructionLabel = formatAdministrationAmount(perDoseOutput, perDoseOutputUnit)
+          } else if (!wholeUnitOnly && allowSplit) {
+            const quantized = quantizeFraction(rawAdministrationUnits, splitIncrement >= 0.5 ? splitIncrement : 0.5)
+            perDoseOutput = quantized
+            perDoseOutputUnit = rawAdministrationUnitNorm
+            instructionLabel = formatFractionalAmount(quantized, perDoseOutputUnit)
+          } else {
+            warnings.push('Dose exata não atingível em unidades inteiras desta apresentação. Escolha outra apresentação ou ajuste manual.')
+          }
+        } else if (presentationKind === 'topical') {
+          instructionLabel = supportingLabel
+        } else {
+          perDoseOutput = rawAdministrationUnits
+          perDoseOutputUnit = rawAdministrationUnitNorm
+          instructionLabel = formatAdministrationAmount(perDoseOutput, perDoseOutputUnit)
+        }
+
+        if (!detailLabel.startsWith('Dose calculada:') && supportingLabel) {
+          detailLabel = `Dose calculada: ${supportingLabel}`
+        }
+        if (supportingLabel && instructionLabel && instructionLabel !== supportingLabel && !detailLabel.includes(`= ${instructionLabel}`)) {
+          detailLabel = `Dose calculada: ${supportingLabel} = ${instructionLabel}`
+        }
+      } else {
+        steps.push(
+          `Concentração "${item.concentration}" não compatível com unidade da dose (${baseUnitRaw || '-'}) para conversão automática.`
+        )
+      }
+    } else if ((item.concentration || '').trim()) {
+      steps.push('Concentração informada sem formato reconhecido para conversão automática.')
     }
-  } else if ((item.concentration || '').trim()) {
-    steps.push('Concentração informada sem formato reconhecido para conversão automática.')
   }
 
   const frequency = resolveFrequency(item).normalizedTimesPerDay
   const durationDays = toNumber(item.durationDays)
   let total: number | null = null
 
-  if (!item.untilFinished && !item.continuousUse && frequency && durationDays && durationDays > 0) {
+  if (perDoseOutput !== null && perDoseOutputUnit && !item.untilFinished && !item.continuousUse && item.durationMode !== 'until_recheck' && frequency && durationDays && durationDays > 0) {
     total = perDoseOutput * frequency * durationDays
     steps.push(`${formatNumber(perDoseOutput)} × ${formatNumber(frequency)} vezes/dia × ${formatNumber(durationDays, 0)} dias = ${formatNumber(total)} ${perDoseOutputUnit}`)
   } else if (item.continuousUse) {
@@ -389,16 +712,23 @@ export function calculateMedicationQuantity(item: PrescriptionItem, state: Presc
     steps.push('Frequência e/ou duração inválidas para cálculo de total.')
   }
 
-  const roundedTotal = total === null ? null : isDiscreteUnit(perDoseOutputUnit) ? Math.ceil(total) : total
-  const label = roundedTotal !== null
-    ? `Total estimado: ${formatNumber(roundedTotal)} ${perDoseOutputUnit}`
-    : `Por dose: ${formatNumber(perDoseOutput)} ${perDoseOutputUnit}`
+  const roundedTotal = total === null || !perDoseOutputUnit
+    ? null
+    : isDiscreteUnit(perDoseOutputUnit)
+      ? Math.ceil(total)
+      : Number(total.toFixed(2))
+  const label = roundedTotal !== null && perDoseOutputUnit
+    ? `${detailLabel} • Total estimado: ${formatAdministrationAmount(roundedTotal, perDoseOutputUnit)}`
+    : detailLabel
 
   return {
     perDose: perDoseOutput,
     total: roundedTotal,
     unit: perDoseOutputUnit,
     label,
+    instructionLabel,
+    supportingLabel,
+    warnings,
     memory: {
       steps,
       baseDose: baseDosePerAdministration,
@@ -420,20 +750,8 @@ export function buildCalculationMemory(item: PrescriptionItem, state: Prescripti
 export function buildAutoInstruction(item: PrescriptionItem, state: PrescriptionState): string {
   const freq = resolveFrequency(item)
   const qty = calculateMedicationQuantity(item, state)
-  const doseValue = toNumber(item.doseValue)
-  const doseUnit = (item.doseUnit || '').trim()
-  const weightKg = toNumber(state.patient.weightKg)
-  const baseDoseUnit = doseUnit.includes('/kg') ? getDoseBaseUnit(doseUnit) : doseUnit
-
-  let perDoseValueText = ''
-  if (qty.perDose !== null && qty.unit) {
-    perDoseValueText = `${formatNumber(qty.perDose)} ${qty.unit}`
-  } else if (doseValue && doseUnit) {
-    if (isDosePerKg(doseUnit) && weightKg) perDoseValueText = `${formatNumber(doseValue * weightKg)} ${baseDoseUnit}`
-    else perDoseValueText = `${formatNumber(doseValue)} ${doseUnit}`
-  }
-
-  const adminSegment = perDoseValueText ? `Administrar ${perDoseValueText}` : 'Administrar volume conforme orientação clínica'
+  const administrationText = qty.instructionLabel || qty.supportingLabel
+  const adminSegment = administrationText ? `Administrar ${administrationText}` : 'Administrar volume conforme orientação clínica'
   const routeSegment = `por via ${routeToText(item.routeGroup)}`
   const frequencySegment =
     freq.label === 'frequência não informada'
@@ -441,18 +759,20 @@ export function buildAutoInstruction(item: PrescriptionItem, state: Prescription
       : frequencyEveryHoursLabel(item)
 
   let durationSegment = ''
-  if (item.untilFinished) {
+  if (item.durationMode === 'until_recheck') {
+    durationSegment = 'até reavaliação clínica'
+  } else if (item.untilFinished || item.durationMode === 'until_finished') {
     durationSegment = 'até terminar o medicamento'
   } else {
     const days = toNumber(item.durationDays)
-    if (days && days > 0) durationSegment = `com uso por ${formatNumber(days, 0)} dias, até reavaliação do paciente`
-    else if (item.continuousUse) durationSegment = 'com uso contínuo, até reavaliação do paciente'
-    else durationSegment = 'até reavaliação do paciente'
+    if (days && days > 0) durationSegment = `durante ${formatNumber(days, 0)} dias`
+    else if (item.continuousUse || item.durationMode === 'continuous_use') durationSegment = 'em uso contínuo'
+    else durationSegment = 'até reavaliação clínica'
   }
 
-  const startSegment = `iniciando às ${startTimeLabel(item.start_date)} hora`
+  const startSegment = formatStartSegment(item)
 
-  return [adminSegment, routeSegment, frequencySegment, durationSegment, startSegment]
+  return [adminSegment, routeSegment, frequencySegment, startSegment, durationSegment]
     .filter(Boolean)
     .join(', ')
     .replace(/\s+/g, ' ')
@@ -469,14 +789,16 @@ export function itemStatus(item: PrescriptionItem, state?: PrescriptionState): '
   if (!item.name.trim()) return 'incomplete'
   if (!item.routeGroup) return 'incomplete'
   if (!resolveInstruction(item, state).trim()) return 'incomplete'
+  if (state && calculateMedicationQuantity(item, state).warnings.length > 0) return 'incomplete'
   return 'ok'
 }
 
 function buildItemTitle(item: PrescriptionItem): string {
-  const base = [item.name, item.concentration].filter(Boolean).join(' ').trim()
-  if (!base) return ''
-  if (!item.commercialName?.trim()) return base
-  return `${base} (${item.commercialName.trim()})`
+  return buildMedicationDisplayName({
+    name: item.name,
+    commercialName: item.commercialName,
+    concentrationText: item.concentration,
+  })
 }
 
 export function splitPrescriptionByControl(state: PrescriptionState): {
@@ -547,7 +869,7 @@ export function renderRxToPrintDoc(
           id: item.id,
           index: idx + 1,
           title: buildItemTitle(item) || 'Medicamento',
-          subtitle: subtitleParts.filter(Boolean).join(' - '),
+          subtitle: subtitleParts.filter(Boolean).join(' — '),
           instruction: instruction || 'Instrução não informada.',
           titleBold: !!item.titleBold,
           titleUnderline: !!item.titleUnderline,
@@ -635,7 +957,7 @@ export function renderRxToPrintDoc(
     clinicName: state.prescriber.clinicName || 'CLÍNICA VETERINÁRIA VETIUS',
     prescriberName: state.prescriber.name || 'Dr. Silva',
     prescriberCrmv: state.prescriber.crmv || 'CRMV-SP 00000',
-    patientLine: `${state.patient.name || '-'} (${patientParts.join(', ')})`,
+    patientLine: patientParts.length ? `${state.patient.name || '-'} (${patientParts.join(', ')})` : (state.patient.name || '-'),
     tutorLine: tutorLineParts.join(' — '),
     addressLine: tutorAddressLine,
     sections,

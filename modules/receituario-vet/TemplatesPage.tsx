@@ -256,7 +256,7 @@ export default function TemplatesPage() {
             <span className="material-symbols-outlined text-[18px]">arrow_back</span>
             Voltar
           </button>
-          <Link to="/receituario-vet/nova-receita" className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-2 text-sm">
+          <Link to="/receituario-vet/nova-receita-2" className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-2 text-sm">
             <span className="material-symbols-outlined text-[18px]">description</span>
             Nova Receita
           </Link>

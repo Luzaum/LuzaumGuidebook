@@ -22,7 +22,7 @@ export default function DraftsPage() {
   const refresh = () => setDrafts(listSavedRxDrafts())
 
   const openDraft = (draftId: string) => {
-    navigate(`/receituario-vet/nova-receita?draft=${encodeURIComponent(draftId)}`)
+    navigate(`/receituario-vet/nova-receita-2?draft=${encodeURIComponent(draftId)}`)
   }
 
   const deleteDraft = (draftId: string) => {
@@ -50,7 +50,7 @@ export default function DraftsPage() {
           <button
             type="button"
             className="rxv-btn-primary inline-flex items-center gap-2 px-4 py-2 text-sm"
-            onClick={() => navigate('/receituario-vet/nova-receita')}
+            onClick={() => navigate('/receituario-vet/nova-receita-2')}
           >
             <span className="material-symbols-outlined text-[18px]">add</span>
             Nova Receita
