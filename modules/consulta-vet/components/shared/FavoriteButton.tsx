@@ -16,6 +16,7 @@ export function FavoriteButton({ entityType, entityId, className }: FavoriteButt
 
   return (
     <button
+      type="button"
       onClick={() => toggleFavorite(entityType, entityId)}
       className={cn(
         'p-2 rounded-full transition-colors flex items-center justify-center',

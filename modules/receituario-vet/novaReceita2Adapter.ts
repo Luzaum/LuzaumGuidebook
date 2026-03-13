@@ -88,6 +88,36 @@ function parseFrequencyFromText(raw?: string): {
     return { frequencyType: 'timesPerDay', frequencyToken: '', timesPerDay: '1', everyHours: '' }
 }
 
+function parseStructuredFrequency(item: {
+    frequency?: string
+    frequencyMode?: 'times_per_day'
+    timesPerDay?: number
+}): {
+    frequencyType: 'timesPerDay' | 'everyHours'
+    frequencyToken: '' | 'SID' | 'BID' | 'TID' | 'QID'
+    timesPerDay: string
+    everyHours: string
+} {
+    const structuredTimes = Number(item.timesPerDay)
+    if (item.frequencyMode === 'times_per_day' && Number.isFinite(structuredTimes) && structuredTimes > 0) {
+        const frequencyToken =
+            structuredTimes === 1 ? 'SID'
+                : structuredTimes === 2 ? 'BID'
+                    : structuredTimes === 3 ? 'TID'
+                        : structuredTimes === 4 ? 'QID'
+                            : ''
+
+        return {
+            frequencyType: 'timesPerDay',
+            frequencyToken,
+            timesPerDay: String(structuredTimes),
+            everyHours: '',
+        }
+    }
+
+    return parseFrequencyFromText(item.frequency)
+}
+
 function parseDurationFromText(raw?: string): {
     durationDays: string
     continuousUse: boolean
@@ -177,7 +207,6 @@ function buildItemTitle(item: {
 function buildItemSubtitle(item: {
     pharmaceutical_form?: string
     presentation_label?: string
-    avg_price_brl?: number
     package_quantity?: string
     package_unit?: string
 }): string {
@@ -188,10 +217,6 @@ function buildItemSubtitle(item: {
 
     if (item.package_quantity && item.package_unit) {
         parts.push(`Emb: ${item.package_quantity} ${item.package_unit}`)
-    }
-
-    if (item.avg_price_brl && item.avg_price_brl > 0) {
-        parts.push(`R$ ${item.avg_price_brl.toFixed(2)}`)
     }
 
     return parts.join(' • ')
@@ -255,7 +280,7 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
         const doseUnit = parsedDose
             ? parsedDose.perKg ? `${parsedDose.unit}/kg` : parsedDose.unit
             : ''
-        const frequency = parseFrequencyFromText(item.frequency)
+        const frequency = parseStructuredFrequency(item)
         const duration = resolveStructuredDuration(item)
         const legacyStart =
             effectiveStartDate && effectiveStartHour

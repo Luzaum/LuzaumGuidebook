@@ -1,8 +1,10 @@
 import { MedicationRecord } from '../../types/medication';
+import { MedicationUpsertInput } from '../../types/editorial';
 
 export interface MedicationRepository {
-  list(): Promise<MedicationRecord[]>;
+  list(options?: { includeDrafts?: boolean }): Promise<MedicationRecord[]>;
   getBySlug(slug: string): Promise<MedicationRecord | null>;
   search(query: string): Promise<MedicationRecord[]>;
   listByCategory(categorySlug: string): Promise<MedicationRecord[]>;
+  upsert(input: MedicationUpsertInput): Promise<MedicationRecord>;
 }

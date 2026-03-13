@@ -1,0 +1,254 @@
+[
+  {
+    "name": "Neoplasia intracraniana prosencefalica (meningioma, glioma ou massa frontal/parietal)",
+    "category": "NEOPLASICA",
+    "rules": {
+      "course": ["SUBAGUDO", "CRONICO", "PROGRESSIVO", "EPISODICO"],
+      "ageStages": ["GERIATRICO", "ADULTO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["convulsoes", "cegueira", "progressivo"],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "Em pacientes idosos com convulsoes de inicio tardio, alteracao visual central, andar em circulos ou mudanca comportamental, neoplasia prosencefalica e uma das hipoteses mais fortes.",
+      "Meningioma e glioma sao causas classicas de sindrome prosencefalica progressiva em caes e gatos."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM de encefalo com contraste",
+        "priority": "ALTA",
+        "whatItAssesses": "Localiza massa, edema perilesional, efeito de massa e herniacao.",
+        "expectedFindings": "Lesao expansiva, realce por contraste e edema vasogenico em prosencefalo.",
+        "limitations": "Histologia pode ser necessaria para definicao definitiva."
+      },
+      {
+        "test": "Estadiamento toracico e abdominal",
+        "priority": "MEDIA",
+        "whatItAssesses": "Procura neoplasia sistemica, metastase ou doenca concomitante que mude a conduta.",
+        "expectedFindings": "Pode ser normal em tumores primarios ou alterado em metastases/linfoma.",
+        "limitations": "Nao substitui a imagem do SNC."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Controle de convulsoes", "Oxigenacao e suporte", "Manejo de edema/hipertensao intracraniana se necessario"],
+        "cautions": ["Cautela com contraste, manitol e anestesia em renopatas e pneumopatas"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Cirurgia, radioterapia, oncologia ou paliacao conforme localizacao e objetivo terapeutico"],
+        "cautions": ["Prognostico depende da histologia, ressecabilidade e efeito de massa"]
+      }
+    }
+  },
+  {
+    "name": "Meningoencefalite de origem desconhecida (MUO) com predominio prosencefalico",
+    "category": "INFLAMATORIA",
+    "rules": {
+      "course": ["AGUDO", "SUBAGUDO", "PROGRESSIVO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO"],
+      "redFlagsBoost": ["convulsoes", "progressivo", "dor_cervical"],
+      "comorbidityCautions": ["IMUNOSSUPRIMIDO"]
+    },
+    "whyTemplates": [
+      "MUO pode cursar com convulsoes, deficits posturais, cegueira cortical e alteracoes comportamentais mesmo quando a mentacao ainda esta preservada.",
+      "Dor cervical ou sinais multifocais discretos aumentam a suspeita de processo inflamatorio."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM de encefalo",
+        "priority": "ALTA",
+        "whatItAssesses": "Procura lesoes prosencefalicas assimetricas, edema e realce meningeo ou parenquimatoso.",
+        "expectedFindings": "Lesoes multifocais ou focais com padrao inflamatorio.",
+        "limitations": "Pode se confundir com neoplasia ou AVC."
+      },
+      {
+        "test": "Liquor apos imagem segura",
+        "priority": "ALTA",
+        "whatItAssesses": "Confirma inflamacao e ajuda a excluir infecciosa.",
+        "expectedFindings": "Pleocitose mononuclear ou mista e proteina aumentada.",
+        "limitations": "Contraindicado em hipertensao intracraniana nao controlada."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte, anticonvulsivante e planejamento de RM/liquor"],
+        "cautions": ["Evitar iniciar imunossupressao cega se infecciosa ainda e uma possibilidade forte"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Imunossupressao direcionada e monitorizacao por resposta clinica e imagem"],
+        "cautions": ["Monitorar infeccao secundaria, glicemia e efeitos adversos"]
+      }
+    }
+  },
+  {
+    "name": "Encefalite infecciosa prosencefalica",
+    "category": "INFECCIOSA",
+    "rules": {
+      "course": ["AGUDO", "SUBAGUDO", "PROGRESSIVO"],
+      "ageStages": ["ADULTO", "GERIATRICO", "PEDIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["convulsoes", "febre", "progressivo"],
+      "comorbidityCautions": ["IMUNOSSUPRIMIDO"]
+    },
+    "whyTemplates": [
+      "Convulsoes e deficits corticais podem ser a face clinica de encefalites infecciosas por protozoarios, bacterias, fungos ou virus.",
+      "Historia sistemica, febre e imunossupressao tornam essa hipotese ainda mais relevante."
+    ],
+    "diagnostics": [
+      {
+        "test": "Liquor, sorologias/PCR direcionados e RM de encefalo",
+        "priority": "ALTA",
+        "whatItAssesses": "Pesquisa agente e distribuicao de lesoes infecciosas.",
+        "expectedFindings": "Liquor inflamatorio e imagem com lesoes focais ou multifocais de encefalite.",
+        "limitations": "Necessita direcionamento por regiao, especie e historia."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte intensivo", "Controle de convulsoes", "Coleta de exames antes de terapia dirigida quando possivel"],
+        "cautions": ["Ajustar antimicrobianos em renopatas/hepatopatas e evitar imunossupressao precipitada"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Terapia especifica conforme agente", "Monitorizacao neurologica e sistemica"],
+        "cautions": ["Reavaliar resposta em 24 a 72 horas"]
+      }
+    }
+  },
+  {
+    "name": "Evento vascular encefalico prosencefalico",
+    "category": "VASCULAR",
+    "rules": {
+      "course": ["PERAGUDO", "AGUDO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["inicio_agudo", "cegueira", "assimetria"],
+      "comorbidityCautions": ["RENOPATA", "CARDIOPATA", "ENDOCRINOPATA", "COAGULOPATA"]
+    },
+    "whyTemplates": [
+      "Deficits focais assimetricos e inicio abrupto ou em surtos podem representar isquemia ou hemorragia prosencefalica.",
+      "Doenca renal, hipertensao e endocrinopatias aumentam a plausibilidade vascular."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM de encefalo, pressao arterial e investigacao de comorbidades",
+        "priority": "ALTA",
+        "whatItAssesses": "Confirma lesao vascular e pesquisa fator predisponente tratavel.",
+        "expectedFindings": "Lesao vascular focal e/ou hipertensao sistemica.",
+        "limitations": "Sem RM, o diagnostico fica apenas presuntivo."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte intensivo", "Oxigenacao e perfusao adequadas", "Controle de hipertensao se presente"],
+        "cautions": ["Evitar hipotensao e sedacao excessiva"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Tratar fator predisponente e reabilitacao"],
+        "cautions": ["Reavaliar risco de recorrencia e proteinuria/pressao arterial"]
+      }
+    }
+  },
+  {
+    "name": "Encefalopatia metabolica com sindrome prosencefalica",
+    "category": "TOXICO_METABOLICA",
+    "rules": {
+      "course": ["AGUDO", "SUBAGUDO", "EPISODICO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["convulsoes", "alteracao_mentacao"],
+      "comorbidityCautions": ["RENOPATA", "HEPATOPATA", "ENDOCRINOPATA", "PNEUMOPATA"]
+    },
+    "whyTemplates": [
+      "Crises, colapso, cegueira aparente e sinais prosencefalicos podem ser estruturais, mas em pacientes com comorbidades metabolicas e obrigatorio excluir encefalopatia sistemica primeiro.",
+      "Hepatica, uremica, hipoglicemica e hipoxica sao causas classicas de disfuncao encefalica difusa com fenotipo prosencefalico."
+    ],
+    "diagnostics": [
+      {
+        "test": "Bioquimica, glicemia, eletrolitos, gasometria e amonia quando indicado",
+        "priority": "ALTA",
+        "whatItAssesses": "Procura causa metabolica tratavel que explique o fenotipo neurologico.",
+        "expectedFindings": "Alteracoes sistemicas compativeis com encefalopatia metabolica.",
+        "limitations": "Resultado alterado nao exclui lesao estrutural coexistente."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte intensivo", "Correcao metabolica e controle de convulsoes"],
+        "cautions": ["Ajustar fluidos e farmacos conforme rim, figado e ventilacao"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Tratar doenca de base e reavaliar SNC apos estabilizacao"],
+        "cautions": ["Persistencia de deficits mantem imagem intracraniana como prioridade"]
+      }
+    }
+  },
+  {
+    "name": "Intoxicacao neurotoxica com fenotipo prosencefalico",
+    "category": "TOXICO_METABOLICA",
+    "rules": {
+      "course": ["PERAGUDO", "AGUDO"],
+      "ageStages": ["ADULTO", "GERIATRICO", "PEDIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["convulsoes", "tremores", "alteracao_mentacao"],
+      "comorbidityCautions": ["HEPATOPATA"]
+    },
+    "whyTemplates": [
+      "Agentes toxicos podem produzir convulsoes, cegueira, andar em circulos, tremores e rebaixamento agudo.",
+      "Sem historia de exposicao clara, essa hipotese nunca deve ser descartada cedo demais em quadros agudos."
+    ],
+    "diagnostics": [
+      {
+        "test": "Anamnese de exposicao, exames basicos e monitorizacao intensiva",
+        "priority": "ALTA",
+        "whatItAssesses": "Procura exposicao plausivel e repercussoes metabolicas da intoxicacao.",
+        "expectedFindings": "Achados inespecificos, por vezes associados a hipertermia, acidose ou alteracoes pupilares.",
+        "limitations": "Confirmacao laboratorial raramente e disponivel."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Descontaminacao quando apropriada", "Suporte intensivo", "Controle de convulsoes e temperatura"],
+        "cautions": ["Evitar farmacos hepatotoxicos e depressao respiratoria desnecessaria"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Tratamento especifico quando o agente for conhecido", "Monitorizacao ate remissao neurologica"],
+        "cautions": ["Reavaliar funcao hepatica e renal"]
+      }
+    }
+  },
+  {
+    "name": "Hidrocefalia, malformacao prosencefalica ou distensao ventricular",
+    "category": "DEGENERATIVA",
+    "rules": {
+      "course": ["CRONICO", "SUBAGUDO"],
+      "ageStages": ["PEDIATRICO", "ADULTO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["convulsoes", "cegueira"],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "Hidrocefalia e anomalias forebrain podem cursar com cegueira, comportamento anormal e convulsoes.",
+      "Essa hipotese e mais forte em jovens e racas predispostas, mas pode ser lembrada quando a imagem mostrar ventriculomegalia significativa."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM ou TC de encefalo",
+        "priority": "ALTA",
+        "whatItAssesses": "Avalia ventriculos, malformacoes e efeitos estruturais sobre o prosencefalo.",
+        "expectedFindings": "Ventriculomegalia, disgenesias ou anomalias congenitas.",
+        "limitations": "Menos provavel em geriatrico sem historia antiga."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Controle de convulsoes e suporte"],
+        "cautions": ["Avaliar hipertensao intracraniana clinicamente"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Tratamento medico ou neurocirurgico conforme anomalia"],
+        "cautions": ["Prognostico depende da causa e da duracao do quadro"]
+      }
+    }
+  }
+]

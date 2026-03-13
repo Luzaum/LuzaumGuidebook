@@ -1,0 +1,16 @@
+{
+  "projectUrl": "https://hdnwcyymxgjxdkhovvhw.supabase.co",
+  "clinicId": "4cfb2185-d99d-4c40-8ee1-51ce2de7bc9b",
+  "protocolId": "e5e22cb4-a269-4a52-bc05-f655316cd10e",
+  "protocolName": "PROTOCOLO GLOBAL UI TESTE 20260312215232",
+  "owner": {
+    "id": "55911c5b-d776-4f98-bfa3-83c3f2f44b14",
+    "email": "codex-owner-20260312214459@vetius.local",
+    "password": "Codex123!Global"
+  },
+  "member": {
+    "id": "bf0f971c-67dd-4827-b07f-2806dc892348",
+    "email": "codex-member-20260312214459@vetius.local",
+    "password": "Codex123!Global"
+  }
+}

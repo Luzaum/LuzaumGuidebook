@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --color-vetius-dark-bg: #0a0c10;
+  --color-vetius-dark-surface: #13171f;
+  --color-vetius-dark-surface-hover: #1c212b;
+  --color-vetius-dark-border: #262c36;
+  --color-vetius-dark-primary: #3b82f6;
+  --color-vetius-dark-primary-hover: #60a5fa;
+  --color-vetius-dark-text: #f8fafc;
+  --color-vetius-dark-text-muted: #94a3b8;
+
+  --color-vetius-light-bg: #f8fafc;
+  --color-vetius-light-surface: #ffffff;
+  --color-vetius-light-surface-hover: #f1f5f9;
+  --color-vetius-light-border: #e2e8f0;
+  --color-vetius-light-primary: #1e3a8a;
+  --color-vetius-light-primary-hover: #1e40af;
+  --color-vetius-light-text: #0f172a;
+  --color-vetius-light-text-muted: #64748b;
+
+  --color-vetius-accent-red: #ef4444;
+  --color-vetius-accent-green: #10b981;
+  --color-vetius-accent-yellow: #f59e0b;
+  --color-vetius-accent-purple: #8b5cf6;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    --bg: var(--color-vetius-light-bg);
+    --surface: var(--color-vetius-light-surface);
+    --surface-hover: var(--color-vetius-light-surface-hover);
+    --border: var(--color-vetius-light-border);
+    --primary: var(--color-vetius-light-primary);
+    --primary-hover: var(--color-vetius-light-primary-hover);
+    --text-main: var(--color-vetius-light-text);
+    --text-muted: var(--color-vetius-light-text-muted);
+    
+    --accent-red: var(--color-vetius-accent-red);
+    --accent-green: var(--color-vetius-accent-green);
+    --accent-yellow: var(--color-vetius-accent-yellow);
+    --accent-purple: var(--color-vetius-accent-purple);
+  }
+
+  .dark {
+    --bg: var(--color-vetius-dark-bg);
+    --surface: var(--color-vetius-dark-surface);
+    --surface-hover: var(--color-vetius-dark-surface-hover);
+    --border: var(--color-vetius-dark-border);
+    --primary: var(--color-vetius-dark-primary);
+    --primary-hover: var(--color-vetius-dark-primary-hover);
+    --text-main: var(--color-vetius-dark-text);
+    --text-muted: var(--color-vetius-dark-text-muted);
+  }
+
+  body {
+    @apply bg-[var(--bg)] text-[var(--text-main)] font-sans antialiased transition-colors duration-300;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-[var(--surface)]/80 backdrop-blur-md border border-[var(--border)];
+  }
+  
+  .card-shadow {
+    @apply shadow-sm hover:shadow-md transition-shadow duration-300;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--primary)] to-[var(--accent-purple)];
+  }
+}

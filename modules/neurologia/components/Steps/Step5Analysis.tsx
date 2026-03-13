@@ -65,6 +65,143 @@ function DifferentialSection({
   )
 }
 
+function parseSummaryLines(summary: string | undefined) {
+  return String(summary || '')
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const separator = line.indexOf(':')
+      if (separator < 0) {
+        return { label: '', value: line }
+      }
+
+      return {
+        label: line.slice(0, separator).trim(),
+        value: line.slice(separator + 1).trim(),
+      }
+    })
+}
+
+function SummaryGrid({ items }: { items: Array<{ label: string; value: string }> }) {
+  return (
+    <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+      {items.map((item, index) => (
+        <div key={`${item.label}-${index}`} className="rounded-2xl border border-white/10 bg-slate-950/35 p-4">
+          {item.label ? (
+            <>
+              <p className="text-xs uppercase tracking-[0.14em] text-slate-400">{item.label}</p>
+              <p className="mt-2 text-sm leading-relaxed text-slate-100/90">{item.value || 'Nao informado'}</p>
+            </>
+          ) : (
+            <p className="text-sm leading-relaxed text-slate-100/90">{item.value}</p>
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+const EXAM_FIELD_LABELS: Record<string, string> = {
+  mentation: 'Mentacao',
+  behavior: 'Comportamento',
+  head_posture: 'Postura da cabeca',
+  ambulation: 'Deambulacao',
+  gait_thoracic: 'Marcha dos membros toracicos',
+  gait_pelvic: 'Marcha dos membros pelvicos',
+  ataxia_type: 'Tipo de ataxia',
+  proprioception_thoracic_left: 'Propriocepcao toracico esquerdo',
+  proprioception_thoracic_right: 'Propriocepcao toracico direito',
+  proprioception_pelvic_left: 'Propriocepcao pelvico esquerdo',
+  proprioception_pelvic_right: 'Propriocepcao pelvico direito',
+  menace_left: 'Resposta a ameaca esquerda',
+  menace_right: 'Resposta a ameaca direita',
+  plr_left: 'PLR esquerdo',
+  plr_right: 'PLR direito',
+  nystagmus: 'Nistagmo',
+  strabismus: 'Estrabismo',
+  cn_facial_sensation: 'Sensibilidade facial',
+  cn_swallowing: 'Reflexo de degluticao',
+  reflex_patellar_left: 'Patelar esquerdo',
+  reflex_patellar_right: 'Patelar direito',
+  reflex_withdrawal_left_thoracic: 'Retirada toracico esquerdo',
+  reflex_withdrawal_right_thoracic: 'Retirada toracico direito',
+  reflex_panniculus: 'Panniculus',
+  deep_pain: 'Dor profunda',
+  pain_cervical: 'Dor cervical',
+  pain_thoracolumbar: 'Dor toracolombar',
+  pain_lumbosacral: 'Dor lombossacra',
+}
+
+const EXAM_SECTIONS: Array<{ title: string; keys: string[] }> = [
+  { title: 'Mentacao e comportamento', keys: ['mentation', 'behavior', 'head_posture'] },
+  { title: 'Marcha e postura', keys: ['ambulation', 'gait_thoracic', 'gait_pelvic', 'ataxia_type'] },
+  {
+    title: 'Reacoes posturais',
+    keys: [
+      'proprioception_thoracic_left',
+      'proprioception_thoracic_right',
+      'proprioception_pelvic_left',
+      'proprioception_pelvic_right',
+    ],
+  },
+  {
+    title: 'Nervos cranianos',
+    keys: [
+      'menace_left',
+      'menace_right',
+      'plr_left',
+      'plr_right',
+      'nystagmus',
+      'strabismus',
+      'cn_facial_sensation',
+      'cn_swallowing',
+    ],
+  },
+  {
+    title: 'Reflexos espinhais',
+    keys: [
+      'reflex_patellar_left',
+      'reflex_patellar_right',
+      'reflex_withdrawal_left_thoracic',
+      'reflex_withdrawal_right_thoracic',
+      'reflex_panniculus',
+    ],
+  },
+  {
+    title: 'Dor e nocicepcao',
+    keys: ['deep_pain', 'pain_cervical', 'pain_thoracolumbar', 'pain_lumbosacral'],
+  },
+]
+
+const CATEGORY_LABELS: Record<string, string> = {
+  INFLAMATORIA: 'Inflamatoria',
+  INFECCIOSA: 'Infecciosa',
+  NEOPLASICA: 'Neoplasica',
+  VASCULAR: 'Vascular',
+  DEGENERATIVA: 'Degenerativa',
+  TRAUMATICA: 'Traumatica',
+  TOXICO_METABOLICA: 'Toxico-metabolica',
+  COMPRESSIVA: 'Compressiva',
+  IDIOPATICA: 'Idiopatica',
+  ENDOCRINA: 'Endocrina',
+}
+
+function buildExamSections(exam: Record<string, any> | undefined) {
+  const source = exam || {}
+
+  return EXAM_SECTIONS.map((section) => ({
+    title: section.title,
+    items: section.keys
+      .filter((key) => source[key] !== null && source[key] !== undefined && String(source[key]).trim() !== '')
+      .map((key) => `${EXAM_FIELD_LABELS[key] || key}: ${String(source[key]).trim()}`),
+  })).filter((section) => section.items.length > 0)
+}
+
+function formatCategoryLabel(category: string) {
+  return CATEGORY_LABELS[category] || category
+}
+
 export function Step5Analysis() {
   const analysis = useCaseStore((s) => s.analysis)
   const setAnalysis = useCaseStore((s) => s.setAnalysis)
@@ -78,6 +215,9 @@ export function Step5Analysis() {
   const progress = analysis?.aiProgress || null
   const parsedClinicalReport = clinicalReportText ? parseAiClinicalReport(clinicalReportText) : null
   const status = analysis?.status || 'idle'
+  const examSections = buildExamSections(neuroExam as Record<string, any>)
+  const patientSummaryItems = parseSummaryLines(report?.patientSummary)
+  const historySummaryItems = parseSummaryLines(report?.historySummary)
 
   const updateRunningState = async (
     value: number,
@@ -352,17 +492,28 @@ export function Step5Analysis() {
             <FileText className="h-5 w-5" />
             Identificacao
           </h3>
-          <p className="whitespace-pre-line text-sm text-foreground/90">{report.patientSummary}</p>
+          <SummaryGrid items={patientSummaryItems} />
         </Card>
 
         <Card className="p-6">
           <h3 className="mb-3 text-lg font-semibold text-gold">Historia e sinais</h3>
-          <p className="whitespace-pre-line text-sm text-foreground/90">{report.historySummary}</p>
+          <SummaryGrid items={historySummaryItems} />
         </Card>
 
         <Card className="p-6">
           <h3 className="mb-3 text-lg font-semibold text-gold">Resumo do exame neurologico</h3>
-          <p className="whitespace-pre-line text-sm text-foreground/90">{report.examSummary}</p>
+          {examSections.length > 0 ? (
+            <div className="grid gap-4 xl:grid-cols-2">
+              {examSections.map((section) => (
+                <div key={section.title} className="rounded-2xl border border-white/10 bg-slate-950/40 p-4">
+                  <p className="mb-3 text-sm font-semibold text-slate-100">{section.title}</p>
+                  <BulletList items={section.items} dotClassName="bg-cyan-400" />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-sm text-foreground/90">{report.examSummary}</p>
+          )}
         </Card>
 
         {reportError && (
@@ -525,6 +676,54 @@ export function Step5Analysis() {
                   </Card>
                 ))}
               </div>
+            )}
+
+            {report.differentials.length > 5 && (
+              <Card className="border-slate-500/20 bg-slate-950/40 p-6">
+                <h3 className="mb-4 text-lg font-semibold text-slate-100">Outras hipoteses que ainda merecem radar</h3>
+                <div className="grid gap-4 xl:grid-cols-2">
+                  {report.differentials.slice(5, 12).map((dx, index) => (
+                    <div key={`${dx.id}-${index}`} className="rounded-2xl border border-white/10 bg-black/15 p-4">
+                      <div className="flex items-start justify-between gap-3">
+                        <div>
+                          <p className="text-sm font-semibold text-slate-100">{dx.name}</p>
+                          <p className="mt-1 text-xs uppercase tracking-[0.14em] text-slate-400">
+                            {formatCategoryLabel(dx.category)}
+                          </p>
+                        </div>
+                        <span className="rounded-full border border-slate-400/20 bg-slate-400/10 px-3 py-1 text-xs font-semibold text-slate-200">
+                          {dx.likelihood}%
+                        </span>
+                      </div>
+                      {dx.why.length > 0 && (
+                        <div className="mt-3">
+                          <BulletList
+                            items={dx.why.slice(0, 3)}
+                            dotClassName="bg-slate-400"
+                            textClassName="text-slate-200/85"
+                          />
+                        </div>
+                      )}
+                      {dx.diagnostics[0] && (
+                        <div className="mt-4 rounded-xl border border-blue-500/15 bg-blue-950/10 p-3">
+                          <p className="text-xs uppercase tracking-[0.14em] text-blue-300/80">Primeiro exame a priorizar</p>
+                          <p className="mt-2 text-sm text-slate-100/90">
+                            {dx.diagnostics[0].test}
+                          </p>
+                        </div>
+                      )}
+                      {dx.treatment[0]?.plan?.[0] && (
+                        <div className="mt-3 rounded-xl border border-emerald-500/15 bg-emerald-950/10 p-3">
+                          <p className="text-xs uppercase tracking-[0.14em] text-emerald-300/80">Primeira conduta</p>
+                          <p className="mt-2 text-sm text-slate-100/90">
+                            {dx.treatment[0].plan[0]}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </Card>
             )}
 
             {(parsedClinicalReport.comorbidityImpact.alerts.length > 0 ||

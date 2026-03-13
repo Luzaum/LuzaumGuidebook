@@ -1,5 +1,7 @@
 import { RxTemplateStyle } from './rxDb'
 
+export const DEFAULT_NOVA_RECEITA_TEMPLATE_ID = 'rx_br_v1_modern_dark'
+
 export const BUILTIN_TEMPLATES: RxTemplateStyle[] = [
     {
         id: 'rx_classic_vertical_v1',

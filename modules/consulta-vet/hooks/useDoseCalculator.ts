@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { MedicationDose, MedicationPresentation } from '../types/medication';
 
 interface DoseCalculatorResult {
@@ -14,44 +14,56 @@ interface DoseCalculatorResult {
   warning?: string;
 }
 
+const UI_TEXT = {
+  calculatorDisabled: 'Calculadora n\u00e3o habilitada para esta dose.',
+  missingScoreInfo: 'Aten\u00e7\u00e3o: apresenta\u00e7\u00e3o sem informa\u00e7\u00e3o de sulco. O arredondamento pode ser impreciso.',
+} as const;
+
 export function useDoseCalculator(dose: MedicationDose, presentation?: MedicationPresentation) {
   const [weight, setWeight] = useState<number | ''>('');
 
   const result = useMemo<DoseCalculatorResult | null>(() => {
     if (!weight || typeof weight !== 'number' || weight <= 0) return null;
-    if (!dose.calculatorEnabled) return { warning: 'Calculadora não habilitada para esta dose.' };
+    if (!dose?.calculatorEnabled) {
+      return { warning: UI_TEXT.calculatorDisabled };
+    }
 
-    const res: DoseCalculatorResult = {};
+    const nextResult: DoseCalculatorResult = {};
 
-    // Calculate mg
-    if (dose.doseMin) res.doseMinMg = dose.doseMin * weight;
-    if (dose.doseMax) res.doseMaxMg = dose.doseMax * weight;
-    if (dose.doseMin && !dose.doseMax) res.doseCalculatedMg = dose.doseMin * weight;
+    if (dose.doseMin) nextResult.doseMinMg = dose.doseMin * weight;
+    if (dose.doseMax) nextResult.doseMaxMg = dose.doseMax * weight;
+    if (dose.doseMin && !dose.doseMax) nextResult.doseCalculatedMg = dose.doseMin * weight;
 
-    // If presentation is provided, calculate volume or tablets
-    if (presentation) {
-      if (presentation.concentrationValue && presentation.concentrationUnit === 'mg/mL') {
-        if (res.doseMinMg) res.volumeMinMl = res.doseMinMg / presentation.concentrationValue;
-        if (res.doseMaxMg) res.volumeMaxMl = res.doseMaxMg / presentation.concentrationValue;
-        if (res.doseCalculatedMg) res.volumeCalculatedMl = res.doseCalculatedMg / presentation.concentrationValue;
-      } else if (presentation.form.toLowerCase().includes('comprimido')) {
-        // Extract mg from label if possible (e.g., "Comprimido 5 mg")
-        const match = presentation.label.match(/(\d+)\s*mg/i);
-        if (match) {
-          const mgPerTablet = parseFloat(match[1]);
-          if (res.doseMinMg) res.tabletsMin = res.doseMinMg / mgPerTablet;
-          if (res.doseMaxMg) res.tabletsMax = res.doseMaxMg / mgPerTablet;
-          if (res.doseCalculatedMg) res.tabletsCalculated = res.doseCalculatedMg / mgPerTablet;
-          
-          if (!presentation.scoringInfo) {
-            res.warning = 'Atenção: Comprimido não sulcado. Arredondamento pode ser impreciso.';
-          }
-        }
+    if (!presentation) return nextResult;
+
+    if (presentation.concentrationValue && presentation.concentrationUnit === 'mg/mL') {
+      if (nextResult.doseMinMg) nextResult.volumeMinMl = nextResult.doseMinMg / presentation.concentrationValue;
+      if (nextResult.doseMaxMg) nextResult.volumeMaxMl = nextResult.doseMaxMg / presentation.concentrationValue;
+      if (nextResult.doseCalculatedMg) {
+        nextResult.volumeCalculatedMl = nextResult.doseCalculatedMg / presentation.concentrationValue;
+      }
+
+      return nextResult;
+    }
+
+    if (presentation.form.toLowerCase().includes('comprimido')) {
+      const match = presentation.label.match(/(\d+(?:[.,]\d+)?)\s*mg/i);
+      if (!match) return nextResult;
+
+      const mgPerTablet = Number(match[1].replace(',', '.'));
+      if (!Number.isFinite(mgPerTablet) || mgPerTablet <= 0) return nextResult;
+
+      if (nextResult.doseMinMg) nextResult.tabletsMin = nextResult.doseMinMg / mgPerTablet;
+      if (nextResult.doseMaxMg) nextResult.tabletsMax = nextResult.doseMaxMg / mgPerTablet;
+      if (nextResult.doseCalculatedMg) nextResult.tabletsCalculated = nextResult.doseCalculatedMg / mgPerTablet;
+
+      if (!presentation.scoringInfo) {
+        nextResult.warning = UI_TEXT.missingScoreInfo;
       }
     }
 
-    return res;
-  }, [weight, dose, presentation]);
+    return nextResult;
+  }, [dose, presentation, weight]);
 
   return { weight, setWeight, result };
 }

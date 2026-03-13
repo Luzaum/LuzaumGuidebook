@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, ChevronRight } from 'lucide-react';
-import { categoryRepository } from '../services/adapters/local/localCategoryRepository';
+import { ChevronRight, Grid } from 'lucide-react';
+import { getCategoryRepository } from '../services/categoryRepository';
 import { Category } from '../types/category';
 
 export function CategoriesPage() {
+  const categoryRepository = useMemo(() => getCategoryRepository(), []);
   const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
     const loadData = async () => {
       setCategories(await categoryRepository.list());
     };
-    loadData();
-  }, []);
+    void loadData();
+  }, [categoryRepository]);
 
   return (
     <div className="mx-auto w-full max-w-[1500px] space-y-8 p-4 md:p-8">

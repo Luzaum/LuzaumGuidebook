@@ -6,6 +6,8 @@
 import type { Differential, NeuroAxis } from '../../types/analysis'
 import vestibularPerifericoData from './vestibular_periferico.json'
 import vestibularCentralData from './vestibular_central.json'
+import prosencefaloData from './prosencefalo.json'
+import troncoEncefalicoData from './tronco_encefalico.json'
 import cerebeloData from './cerebelo.json'
 import medulaT3L3Data from './medula_t3_l3.json'
 import medulaL4S3Data from './medula_l4_s3.json'
@@ -59,6 +61,40 @@ export type LoadedDifferential = {
 
 // Mapeamento de arquivos JSON para eixos neurológicos
 const DIFFERENTIAL_LIBRARY: Record<string, LoadedDifferential[]> = {
+  PROSENCEFALO: (prosencefaloData as DifferentialJSON[]).map((dx) => ({
+    name: dx.name,
+    category: dx.category,
+    rules: dx.rules,
+    whyTemplates: dx.whyTemplates,
+    diagnostics: dx.diagnostics,
+    treatment: [
+      { phase: '0-6H' as const, plan: dx.treatment['0-6H'].plan, cautions: dx.treatment['0-6H'].cautions },
+      {
+        phase: 'DEFINITIVO' as const,
+        plan: dx.treatment.DEFINITIVO.plan,
+        cautions: dx.treatment.DEFINITIVO.cautions,
+      },
+    ],
+    compatibleAxes: ['PROSENCEFALO'] as NeuroAxis[],
+  })),
+
+  TRONCO_ENCEFALICO: (troncoEncefalicoData as DifferentialJSON[]).map((dx) => ({
+    name: dx.name,
+    category: dx.category,
+    rules: dx.rules,
+    whyTemplates: dx.whyTemplates,
+    diagnostics: dx.diagnostics,
+    treatment: [
+      { phase: '0-6H' as const, plan: dx.treatment['0-6H'].plan, cautions: dx.treatment['0-6H'].cautions },
+      {
+        phase: 'DEFINITIVO' as const,
+        plan: dx.treatment.DEFINITIVO.plan,
+        cautions: dx.treatment.DEFINITIVO.cautions,
+      },
+    ],
+    compatibleAxes: ['TRONCO_ENCEFALICO'] as NeuroAxis[],
+  })),
+
   VESTIBULAR_PERIFERICO: (vestibularPerifericoData as DifferentialJSON[]).map((dx) => ({
     name: dx.name,
     category: dx.category,

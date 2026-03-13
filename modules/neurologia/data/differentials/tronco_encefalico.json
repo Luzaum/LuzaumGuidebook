@@ -1,0 +1,220 @@
+[
+  {
+    "name": "Meningoencefalite/encefalite de tronco encefalico",
+    "category": "INFLAMATORIA",
+    "rules": {
+      "course": ["AGUDO", "SUBAGUDO", "PROGRESSIVO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["deficit_nc", "alteracao_mentacao", "progressivo"],
+      "comorbidityCautions": ["IMUNOSSUPRIMIDO"]
+    },
+    "whyTemplates": [
+      "Multiplos deficits de pares cranianos, tetraparesia/propriocepcao alterada e variacao de mentacao combinam fortemente com processo inflamatorio de tronco.",
+      "MUO, encefalites infecciosas e meningoencefalites rostrais entram cedo nessa sindrome."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM de encefalo com foco em tronco encefalico",
+        "priority": "ALTA",
+        "whatItAssesses": "Procura lesoes em mesencefalo, ponte e medula oblonga rostral.",
+        "expectedFindings": "Lesoes inflamatorias, edema ou realce em tronco e regioes adjacentes.",
+        "limitations": "Pode sobrepor neoplasia ou vascular."
+      },
+      {
+        "test": "Liquor apos imagem segura",
+        "priority": "ALTA",
+        "whatItAssesses": "Confirma inflamacao e ajuda a separar infecciosa de imunomediada.",
+        "expectedFindings": "Pleocitose e aumento de proteina.",
+        "limitations": "Contraindicado se houver risco elevado de herniacao."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte intensivo", "Controle de convulsoes se presentes", "Protecao de via aerea e avaliacao de degluticao"],
+        "cautions": ["Nao iniciar imunossupressao cega se infecciosa ainda e plausivel"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Terapia dirigida conforme etiologia", "Monitorizacao neurologica seriada"],
+        "cautions": ["Alto risco de deterioracao respiratoria ou deglutitoria"]
+      }
+    }
+  },
+  {
+    "name": "Neoplasia de tronco encefalico ou fossa caudal",
+    "category": "NEOPLASICA",
+    "rules": {
+      "course": ["SUBAGUDO", "CRONICO", "PROGRESSIVO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["progressivo", "deficit_nc"],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "Deficits de pares cranianos progressivos com propriocepcao alterada e mudanca lenta de marcha exigem descartar massa em tronco/fossa caudal.",
+      "Glioma, meningioma caudal, tumores do quarto ventriculo e massas infiltrativas podem gerar esse fenotipo."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM de encefalo com contraste",
+        "priority": "ALTA",
+        "whatItAssesses": "Localiza massa, edema e efeito de massa em tronco ou fossa caudal.",
+        "expectedFindings": "Lesao expansiva, infiltrativa ou obstrutiva.",
+        "limitations": "Histologia nem sempre e possivel."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte", "Controle de edema/hipertensao intracraniana se necessario"],
+        "cautions": ["Planejar anestesia e contraste com cautela em pacientes com comorbidades"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Radioterapia, cirurgia ou paliacao conforme topografia e prognostico"],
+        "cautions": ["Prognostico geralmente mais reservado que em massas corticais acessiveis"]
+      }
+    }
+  },
+  {
+    "name": "Evento vascular de tronco encefalico",
+    "category": "VASCULAR",
+    "rules": {
+      "course": ["PERAGUDO", "AGUDO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["inicio_agudo", "deficit_nc", "assimetria"],
+      "comorbidityCautions": ["RENOPATA", "CARDIOPATA", "ENDOCRINOPATA", "COAGULOPATA"]
+    },
+    "whyTemplates": [
+      "Inicio abrupto, deficits assimetricos de pares cranianos e propriocepcao sugerem fortemente evento vascular de tronco.",
+      "Doenca renal, hipertensao, hiperadrenocorticismo e cardiopatias aumentam a plausibilidade."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM de encefalo, pressao arterial e coagulograma",
+        "priority": "ALTA",
+        "whatItAssesses": "Confirma lesao vascular e pesquisa predisponentes trataveis.",
+        "expectedFindings": "Lesao isquemica/hemorragica focal e possivel hipertensao ou coagulopatia.",
+        "limitations": "Sem RM, o diagnostico permanece presuntivo."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte intensivo", "Perfusao e oxigenacao adequadas", "Controle de PA quando indicado"],
+        "cautions": ["Evitar hipotensao iatrogenica e hipoxemia"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Tratar predisponentes e iniciar reabilitacao conforme estabilidade"],
+        "cautions": ["Reavaliar progressao: piora sustentada afasta AVC isolado"]
+      }
+    }
+  },
+  {
+    "name": "Extensao intracraniana de otite media/interna",
+    "category": "INFECCIOSA",
+    "rules": {
+      "course": ["SUBAGUDO", "AGUDO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["vestibular", "deficit_nc"],
+      "comorbidityCautions": ["RENOPATA"]
+    },
+    "whyTemplates": [
+      "Otite media/interna com extensao central pode combinar sinais vestibulares, pares cranianos e propriocepcao alterada.",
+      "Mesmo sem head tilt exuberante, o envolvimento central deve ser lembrado quando ha pares cranianos adicionais."
+    ],
+    "diagnostics": [
+      {
+        "test": "TC/RM de bula timpanica e encefalo",
+        "priority": "ALTA",
+        "whatItAssesses": "Define doenca otologica e extensao para tronco/fossa caudal.",
+        "expectedFindings": "Opacificacao de bula, osteite, realce meningeo ou lesao central adjacente.",
+        "limitations": "Muitas vezes requer anestesia."
+      },
+      {
+        "test": "Citologia/cultura otologica quando possivel",
+        "priority": "MEDIA",
+        "whatItAssesses": "Ajuda a direcionar o antimicrobiano.",
+        "expectedFindings": "Agente bacteriano ou otite inflamatoria.",
+        "limitations": "Amostragem profunda pode ser dificil."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Analgesia, suporte vestibular e antibioticoterapia empirica se clinicamente indicada"],
+        "cautions": ["Ajustar antibioticos em renopatas e evitar ototoxicos"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Tratamento otologico dirigido e cirurgia quando refratario"],
+        "cautions": ["Monitorar recidiva e deficits residuais"]
+      }
+    }
+  },
+  {
+    "name": "Encefalopatia metabolica ou carencial com envolvimento de tronco",
+    "category": "TOXICO_METABOLICA",
+    "rules": {
+      "course": ["AGUDO", "SUBAGUDO", "EPISODICO"],
+      "ageStages": ["ADULTO", "GERIATRICO", "PEDIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["alteracao_mentacao", "deficit_nc"],
+      "comorbidityCautions": ["RENOPATA", "HEPATOPATA", "PNEUMOPATA"]
+    },
+    "whyTemplates": [
+      "Disturbios metabolicos, hipoxemia, hipercapnia e deficiencias nutricionais podem simular lesoes de tronco encefalico.",
+      "A hipoventilacao, uremia, hepatopatia e disturbios eletroliticos precisam ser excluidos cedo."
+    ],
+    "diagnostics": [
+      {
+        "test": "Bioquimica, eletrolitos, gasometria, oximetria e historia nutricional",
+        "priority": "ALTA",
+        "whatItAssesses": "Procura causa sistemica tratavel para um fenotipo de tronco.",
+        "expectedFindings": "Alteracoes metabolicas, acidobasicas, respiratorias ou carenciais.",
+        "limitations": "Nao exclui lesao estrutural coexistente."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte intensivo", "Correcao metabolica e respiratoria", "Protecao de via aerea"],
+        "cautions": ["Ajustar sedacao e farmacos a funcao respiratoria, renal e hepatica"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Tratar doenca de base e reavaliar neuro apos estabilizacao"],
+        "cautions": ["Persistencia do deficit exige imagem de SNC"]
+      }
+    }
+  },
+  {
+    "name": "Malformacao craniocervical ou lesao na juncao bulbo-cervical",
+    "category": "COMPRESSIVA",
+    "rules": {
+      "course": ["CRONICO", "SUBAGUDO", "PROGRESSIVO"],
+      "ageStages": ["ADULTO", "PEDIATRICO"],
+      "species": ["CAO"],
+      "redFlagsBoost": ["dor_cervical", "deficit_nc"],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "Dor cervical, pares cranianos discretos e tetraparesia podem representar lesao na juncao bulbo-cervical ou malformacao occipito-cervical.",
+      "Pequenos caes e braquicefalicos podem expressar esse eixo sindromico de forma progressiva."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM de juncao craniocervical e medula cervical cranial",
+        "priority": "ALTA",
+        "whatItAssesses": "Procura compressao, malformacao, syrinx ou lesao estrutural adjacente ao tronco.",
+        "expectedFindings": "Compressao, herniacao cerebelar ou alteracao de fluxo em juncao craniocervical.",
+        "limitations": "Interpretacao depende de tecnica e experiencia."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Analgesia, suporte e restricao de movimento"],
+        "cautions": ["Evitar manipulacao cervical brusca"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Tratamento medico ou cirurgico conforme a lesao"], 
+        "cautions": ["Individualizar conforme severidade e imagem"]
+      }
+    }
+  }
+]

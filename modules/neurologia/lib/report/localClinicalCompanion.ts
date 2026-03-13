@@ -1,5 +1,6 @@
 import type { CaseReport, Differential } from '../../types/analysis'
 import type { ParsedAiClinicalReport, ParsedDifferential } from './aiClinicalReportParser'
+import { CLINICAL_COMPANION_DETAILS, type ClinicalCompanionDetail } from '../../data/clinicalCompanionDetails'
 
 type CaseStateInput = {
   patient?: Record<string, any>
@@ -144,8 +145,193 @@ function formatCategory(category: string): string {
   return CATEGORY_LABELS[category] || category
 }
 
-function normalizeProbabilities(differentials: Differential[]): Array<{ dx: Differential; probability: number }> {
-  const top = differentials.slice(0, 5)
+function normalizeText(value: unknown): string {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim()
+}
+
+function hasComorbidityLabel(caseState: CaseStateInput, pattern: RegExp): boolean {
+  return getComorbidityLabels(caseState).some((item) => pattern.test(normalizeText(item)))
+}
+
+function isBroadSyndromeName(name: string): boolean {
+  const normalized = normalizeText(name)
+  return (
+    normalized.includes('sindrome ') ||
+    normalized.includes('suspeita') ||
+    normalized.includes('provavel') ||
+    normalized.includes('fenotipo') ||
+    normalized.includes('diferencial amplo') ||
+    normalized.startsWith('encefalopatia metabolica sistemica')
+  )
+}
+
+function getClinicalCompanionDetail(dx: Differential): ClinicalCompanionDetail | null {
+  if (CLINICAL_COMPANION_DETAILS[dx.id]) {
+    return CLINICAL_COMPANION_DETAILS[dx.id]
+  }
+
+  const name = normalizeText(dx.name)
+
+  if (name.includes('encefalopatia hepat')) return CLINICAL_COMPANION_DETAILS.ddx_003
+  if (name.includes('hipoglic')) return CLINICAL_COMPANION_DETAILS.ddx_004
+  if (name.includes('eletrol')) return CLINICAL_COMPANION_DETAILS.ddx_005
+  if (name.includes('ivermect') || name.includes('moxidect')) return CLINICAL_COMPANION_DETAILS.ddx_006
+  if (name.includes('metaldeid')) return CLINICAL_COMPANION_DETAILS.ddx_007
+  if (name.includes('muo')) return CLINICAL_COMPANION_DETAILS.ddx_008
+  if (name.includes('toxoplas') || name.includes('neospor') || name.includes('encefalite infecciosa')) {
+    return CLINICAL_COMPANION_DETAILS.ddx_009
+  }
+  if (name.includes('meningite') || name.includes('bacterian')) return CLINICAL_COMPANION_DETAILS.ddx_010
+  if (name.includes('meningioma')) return CLINICAL_COMPANION_DETAILS.ddx_011
+  if (name.includes('glioma')) return CLINICAL_COMPANION_DETAILS.ddx_012
+  if (name.includes('avc') || name.includes('evento vascular')) return CLINICAL_COMPANION_DETAILS.ddx_013
+  if (name.includes('hipertensao intracraniana') || name.includes('herniacao')) return CLINICAL_COMPANION_DETAILS.ddx_040
+  if (name.includes('encefalopatia hipertensiva')) return CLINICAL_COMPANION_DETAILS.ddx_041
+  if (name.includes('epilepsia idiopatica')) return CLINICAL_COMPANION_DETAILS.ddx_001
+  if (name.includes('epilepsia estrutural')) return CLINICAL_COMPANION_DETAILS.ddx_002
+  if (name.includes('pif')) return CLINICAL_COMPANION_DETAILS.ddx_045
+  if (name.includes('criptococ')) return CLINICAL_COMPANION_DETAILS.ddx_046
+  if (name.includes('raiva')) return CLINICAL_COMPANION_DETAILS.ddx_047
+
+  return null
+}
+
+function diagnosisFamilyKey(dx: Differential): string {
+  const name = normalizeText(dx.name)
+
+  if (
+    name.includes('muo') ||
+    name.includes('meningoencefalite de origem desconhecida') ||
+    name.includes('meningoencefalite de tronco')
+  ) {
+    return 'inflamatoria-snc'
+  }
+  if (name.includes('meningite') || name.includes('bacteriana') || name.includes('encefalite infecciosa')) {
+    return 'infecciosa-snc'
+  }
+  if (
+    name.includes('encefalopatia hepatica') ||
+    name.includes('encefalopatia metabolica') ||
+    name.includes('hipoglic') ||
+    name.includes('eletrol') ||
+    name.includes('hipox') ||
+    name.includes('urem')
+  ) {
+    return 'metabolica-sistemica'
+  }
+  if (name.includes('neoplasia intracraniana') || name.includes('meningioma') || name.includes('glioma')) {
+    return 'neoplasia-snc'
+  }
+  if (name.includes('neoplasia medular') || name.includes('tronco encefalico') || name.includes('fossa caudal')) {
+    return 'neoplasia-snc'
+  }
+  if (name.includes('avc') || name.includes('vascular')) return 'vascular-snc'
+  if (name.includes('epilepsia estrutural')) return 'estrutural-encefalica'
+
+  return `${dx.category}-${name}`
+}
+
+function headlinePriority(dx: Differential, caseState: CaseStateInput, report: CaseReport): number {
+  const name = normalizeText(dx.name)
+  const complaints = getChiefComplaints(caseState).map((item) => normalizeText(item))
+  const hasWeaknessComplaint = complaints.some((item) => /pares|fraqueza|tetraparesia|paraparesia/.test(item))
+  const hasTremorComplaint = complaints.some((item) => /tremor|mioclon/.test(item))
+  const hasHepatic = hasComorbidityLabel(caseState, /hep|figad/)
+  const hasRenal = hasComorbidityLabel(caseState, /reno|renal/)
+  const hasPulmonary = hasComorbidityLabel(caseState, /pneumo|respirat/)
+  const isGeriatric = normalizeText(caseState.patient?.lifeStage) === 'geriatric'
+  const hasCervicalPain = /leve|moder|grave|sever/.test(normalizeText(caseState.neuroExam?.pain_cervical))
+
+  let score = dx.likelihood || 0
+
+  if (isBroadSyndromeName(dx.name)) score -= 10
+
+  if (name.includes('encefalopatia hepatica') && hasHepatic) score += 10
+  if (name.includes('eletrol') && !hasWeaknessComplaint && !hasTremorComplaint) score -= 10
+  if (name.includes('hipoglic') && !normalizeText(caseState.complaint?.temporalPattern).includes('episod')) score -= 4
+  if ((name.includes('muo') || name.includes('meningoencefalite')) && hasCervicalPain) score += 6
+  if ((name.includes('neoplasia intracraniana') || name.includes('meningioma') || name.includes('glioma')) && isGeriatric) {
+    score += 8
+  }
+  if ((name.includes('vascular') || name.includes('avc')) && normalizeText(caseState.complaint?.temporalPattern) === 'episodico') {
+    score -= 6
+  }
+  if (name.includes('encefalopatia metabolica') && (hasRenal || hasHepatic || hasPulmonary)) score += 4
+  if (report.neuroLocalization.primary === 'MULTIFOCAL_OU_DIFUSA' && dx.category === 'INFECCIOSA' && !caseState.complaint?.fever) {
+    score -= 3
+  }
+
+  return score
+}
+
+function selectHeadlineDifferentials(
+  differentials: Differential[],
+  caseState: CaseStateInput,
+  report: CaseReport,
+): Differential[] {
+  const sorted = [...differentials].sort(
+    (left, right) => headlinePriority(right, caseState, report) - headlinePriority(left, caseState, report),
+  )
+  const selected: Differential[] = []
+  const usedFamilies = new Set<string>()
+  const preferredCategories: Differential['category'][] = [
+    'TOXICO_METABOLICA',
+    'INFLAMATORIA',
+    'INFECCIOSA',
+    'NEOPLASICA',
+    'VASCULAR',
+    'COMPRESSIVA',
+    'IDIOPATICA',
+    'DEGENERATIVA',
+    'ENDOCRINA',
+    'TRAUMATICA',
+  ]
+
+  preferredCategories.forEach((category) => {
+    if (selected.length >= 5) return
+    const match = sorted.find((dx) => {
+      if (dx.category !== category) return false
+      if (selected.some((item) => item.id === dx.id)) return false
+      return !usedFamilies.has(diagnosisFamilyKey(dx))
+    })
+
+    if (match) {
+      selected.push(match)
+      usedFamilies.add(diagnosisFamilyKey(match))
+    }
+  })
+
+  for (const dx of sorted) {
+    if (selected.length >= 5) break
+    const family = diagnosisFamilyKey(dx)
+    if (!usedFamilies.has(family) && !selected.some((item) => item.id === dx.id)) {
+      selected.push(dx)
+      usedFamilies.add(family)
+    }
+  }
+
+  if (selected.length < 5) {
+    for (const dx of sorted) {
+      if (selected.length >= 5) break
+      if (!selected.some((item) => item.id === dx.id)) {
+        selected.push(dx)
+      }
+    }
+  }
+
+  return selected.slice(0, 5)
+}
+
+function normalizeProbabilities(
+  differentials: Differential[],
+  caseState: CaseStateInput,
+  report: CaseReport,
+): Array<{ dx: Differential; probability: number }> {
+  const top = selectHeadlineDifferentials(differentials, caseState, report)
   if (top.length === 0) {
     return []
   }
@@ -245,7 +431,9 @@ function buildClinicalFit(
   examHighlights: string[],
   comorbidities: string[],
 ): string {
+  const detail = getClinicalCompanionDetail(dx)
   const anchors = unique([
+    ...(detail?.clinicalLinks || []),
     ...dx.why.slice(0, 2),
     ...report.neuroLocalization.supportiveFindings.slice(0, 2),
     ...complaints.slice(0, 2),
@@ -293,23 +481,28 @@ function buildOpposingFindings(dx: Differential, caseState: CaseStateInput, repo
 }
 
 function formatDiagnostics(dx: Differential): string[] {
+  const detail = getClinicalCompanionDetail(dx)
   const yieldLabel: Record<string, string> = {
     ALTA: 'rendimento alto',
     MEDIA: 'rendimento moderado',
     BAIXA: 'rendimento baixo',
   }
 
-  return dx.diagnostics.slice(0, 4).map((item) => {
+  const generated = dx.diagnostics.slice(0, 4).map((item) => {
     const whatItAdds = item.whatItAdds || 'ajuda a confirmar ou refutar a hipótese'
     const expected = item.expectedFindings || 'achados dependem do estágio e da etiologia'
     return `${item.priority} | ${item.test} | ${yieldLabel[item.priority]} | Estimativa qualitativa | ${whatItAdds}. Espera-se ${expected}.`
   })
+
+  return unique([...(detail?.diagnosticPriorities || []), ...generated]).slice(0, 4)
 }
 
-function buildPatientAssessment(caseState: CaseStateInput, report: CaseReport): string[] {
+function buildPatientAssessment(dx: Differential, caseState: CaseStateInput, report: CaseReport): string[] {
   const items: string[] = []
   const primary = report.neuroLocalization.primary
   const exam = caseState.neuroExam || {}
+  const name = normalizeText(dx.name)
+  const detail = getClinicalCompanionDetail(dx)
 
   if (['PROSENCEFALO', 'TRONCO_ENCEFALICO', 'MULTIFOCAL_OU_DIFUSA', 'VESTIBULAR_CENTRAL'].includes(primary)) {
     items.push('Reavaliar mentação, assimetria de pares cranianos, resposta à ameaça e ocorrência de crises em série.')
@@ -328,13 +521,27 @@ function buildPatientAssessment(caseState: CaseStateInput, report: CaseReport): 
   if (String(exam.ambulation || '').includes('Não')) {
     items.push('Checar necessidade de mudança de decúbito, suporte para micção e proteção de proeminências ósseas.')
   }
+  if (name.includes('encefalopatia hepatica') || name.includes('encefalopatia metabolica')) {
+    items.push('Correlacionar o exame neurológico com glicemia, eletrólitos, pressão arterial, SpO2 e perfil hepatorrenal antes de assumir lesão estrutural primária.')
+  }
+  if (name.includes('muo') || name.includes('meningoencefalite')) {
+    items.push('Procurar febre, rigidez cervical, progressão entre reavaliações e sinais de hipertensão intracraniana antes de programar LCR.')
+  }
+  if (name.includes('neoplasia intracraniana') || name.includes('meningioma') || name.includes('glioma')) {
+    items.push('Vigiar anisocoria, piora súbita do sensório, padrão respiratório e dor de cabeça presumida como sinais de efeito de massa.')
+  }
+  if (name.includes('vascular') || name.includes('avc')) {
+    items.push('Determinar se o déficit é realmente súbito e não progressivo, e medir pressão arterial em múltiplos momentos.')
+  }
 
-  return unique(items).slice(0, 4)
+  return unique([...items, ...(detail?.assessment || [])]).slice(0, 4)
 }
 
-function buildMonitoringPlan(caseState: CaseStateInput, report: CaseReport): string[] {
+function buildMonitoringPlan(dx: Differential, caseState: CaseStateInput, report: CaseReport): string[] {
   const items: string[] = []
   const comorbidities = getComorbidityLabels(caseState)
+  const name = normalizeText(dx.name)
+  const detail = getClinicalCompanionDetail(dx)
 
   items.push('Monitorização neurológica seriada com foco na progressão ou reversão dos déficits dominantes do exame.')
 
@@ -353,14 +560,28 @@ function buildMonitoringPlan(caseState: CaseStateInput, report: CaseReport): str
   if (comorbidities.some((item) => /pneumo|respirat/i.test(item))) {
     items.push('Acompanhar frequência respiratória, esforço ventilatório, SpO2 e risco de aspiração após sedação ou crises.')
   }
+  if (name.includes('encefalopatia hepatica') || name.includes('encefalopatia metabolica')) {
+    items.push('Repetir glicemia, eletrólitos, acidobase, amônia e diurese conforme instabilidade clínica nas primeiras horas.')
+  }
+  if (name.includes('muo') || name.includes('meningoencefalite')) {
+    items.push('Registrar deterioração de pares cranianos, resposta à ameaça, dor cervical e necessidade de suporte intensivo antes e depois da imagem.')
+  }
+  if (name.includes('neoplasia intracraniana') || name.includes('meningioma') || name.includes('glioma')) {
+    items.push('Monitorar sinais de hipertensão intracraniana, crises e resposta a medidas antiedema enquanto a imagem é organizada.')
+  }
+  if (name.includes('vascular') || name.includes('avc')) {
+    items.push('Acompanhar pressão arterial, proteinúria/coagulograma quando indicados e confirmar se não há piora progressiva incompatível com AVC isolado.')
+  }
 
-  return unique(items).slice(0, 4)
+  return unique([...items, ...(detail?.monitoring || [])]).slice(0, 4)
 }
 
 function buildTreatmentPlan(dx: Differential, caseState: CaseStateInput, report: CaseReport): string[] {
   const initial = dx.treatment.find((item) => item.phase === '0-6H')
   const definitive = dx.treatment.find((item) => item.phase === 'DEFINITIVO')
   const items: string[] = []
+  const name = normalizeText(dx.name)
+  const detail = getClinicalCompanionDetail(dx)
 
   if (initial?.plan?.length) {
     items.push(`Fase inicial: ${initial.plan.join('; ')}.`)
@@ -381,13 +602,27 @@ function buildTreatmentPlan(dx: Differential, caseState: CaseStateInput, report:
   ) {
     items.push('Se houver piora intracraniana aguda, priorizar oxigenação, cabeça elevada e controle rigoroso de crises e perfusão.')
   }
+  if (name.includes('encefalopatia hepatica')) {
+    items.push('Detalhar metas nas primeiras horas: corrigir precipitantes, titular lactulose conforme resposta clínica e rever se há hipocalemia, sangramento gastrointestinal ou infecção agravando o quadro.')
+  }
+  if (name.includes('eletrol')) {
+    items.push('Reposições de sódio, potássio e cálcio devem ser graduais e guiadas por monitorização laboratorial/ECG, porque a correção rápida também pode piorar o paciente.')
+  }
+  if (name.includes('muo') || name.includes('meningoencefalite')) {
+    items.push('Antes de imunossuprimir, definir se o caso tolera imagem/LCR e se a probabilidade infecciosa já foi reduzida o suficiente para não mascarar a causa.')
+  }
+  if (name.includes('neoplasia intracraniana') || name.includes('meningioma') || name.includes('glioma')) {
+    items.push('Se o efeito de massa for provável, discutir cedo meta paliativa versus estabilização para RM e possível encaminhamento oncológico/neurocirúrgico.')
+  }
 
-  return unique(items).slice(0, 4)
+  return unique([...items, ...(detail?.treatment || [])]).slice(0, 5)
 }
 
 function buildAllowedDrugs(dx: Differential, caseState: CaseStateInput, report: CaseReport): string[] {
   const items: string[] = []
   const comorbidities = getComorbidityLabels(caseState)
+  const name = normalizeText(dx.name)
+  const detail = getClinicalCompanionDetail(dx)
 
   if (dx.category === 'COMPRESSIVA') {
     items.push('Opioides e analgesia multimodal costumam ser mais seguros que AINEs em pacientes com comorbidades sistêmicas.')
@@ -407,13 +642,24 @@ function buildAllowedDrugs(dx: Differential, caseState: CaseStateInput, report: 
   if (comorbidities.some((item) => /hep|f[ií]gad/i.test(item))) {
     items.push('Levetiracetam tende a ser uma opção mais confortável do que anticonvulsivantes mais hepatometabolizados.')
   }
+  if (name.includes('encefalopatia hepatica')) {
+    items.push('Lactulose, controle de precipitantes e antibiótico intestinal quando indicado costumam entrar cedo no plano, desde que a volemia e a via aérea estejam protegidas.')
+  }
+  if (name.includes('neoplasia intracraniana') || name.includes('meningioma') || name.includes('glioma')) {
+    items.push('Levetiracetam, analgesia opioide e medidas antiedema protocoladas costumam ser mais úteis que sedação indiscriminada até a imagem.')
+  }
+  if (name.includes('muo') || name.includes('meningoencefalite')) {
+    items.push('Anticonvulsivante, analgesia e proteção gastrointestinal são suportes razoáveis enquanto a etiologia inflamatória versus infecciosa é organizada.')
+  }
 
-  return unique(items).slice(0, 4)
+  return unique([...items, ...(detail?.allowedDrugs || [])]).slice(0, 4)
 }
 
 function buildAvoidDrugs(dx: Differential, caseState: CaseStateInput): string[] {
   const items: string[] = []
   const comorbidities = getComorbidityLabels(caseState)
+  const name = normalizeText(dx.name)
+  const detail = getClinicalCompanionDetail(dx)
 
   if (comorbidities.some((item) => /reno|renal/i.test(item))) {
     items.push('Evitar AINEs e rever dose de fármacos eliminados por via renal.')
@@ -430,8 +676,14 @@ function buildAvoidDrugs(dx: Differential, caseState: CaseStateInput): string[] 
   if (dx.category === 'COMPRESSIVA') {
     items.push('Evitar manipulações intensas de coluna antes de estabilizar dor, transporte e planejamento de imagem.')
   }
+  if (name.includes('encefalopatia hepatica')) {
+    items.push('Evitar benzodiazepínicos repetidos, fenobarbital e sedação excessiva sem monitorização quando a depuração hepática está comprometida.')
+  }
+  if (name.includes('eletrol')) {
+    items.push('Evitar correções rápidas de sódio e potássio ou infusão de cálcio sem ECG, porque a iatrogenia pode agravar o quadro neurológico e cardíaco.')
+  }
 
-  return unique(items).slice(0, 4)
+  return unique([...items, ...(detail?.avoidDrugs || [])]).slice(0, 4)
 }
 
 function buildComorbidityIntegration(report: CaseReport): string[] {
@@ -500,15 +752,16 @@ function buildLimitations(caseState: CaseStateInput, report: CaseReport): string
   return unique(items).slice(0, 4)
 }
 
-function buildReferences(caseState: CaseStateInput, report: CaseReport, differentials: ParsedDifferential[]): string[] {
+function buildReferences(caseState: CaseStateInput, report: CaseReport, differentials: Differential[]): string[] {
   const items = [
     'Merck Veterinary Manual - The Neurologic Examination of Animals',
     'Dewey & da Costa - Practical Guide to Canine and Feline Neurology',
     'BSAVA Manual of Canine and Feline Neurology',
+    'Platt & Garosi - Small Animal Neurological Emergencies',
   ]
 
   const complaints = getChiefComplaints(caseState).join(' ')
-  const differentialNames = differentials.map((item) => item.title.toLowerCase()).join(' ')
+  const differentialNames = differentials.map((item) => item.name.toLowerCase()).join(' ')
 
   if (/convuls|prosenc|encefal|metab[oó]lic/i.test(`${complaints} ${differentialNames} ${report.neuroLocalization.primary}`)) {
     items.push('ACVIM Consensus - Seizure Management in Dogs')
@@ -525,14 +778,21 @@ function buildReferences(caseState: CaseStateInput, report: CaseReport, differen
     items.push('MRI differentiation of neoplastic, inflammatory and cerebrovascular brain disease in dogs')
   }
 
-  return unique(items).slice(0, 5)
+  differentials.forEach((dx) => {
+    const detail = getClinicalCompanionDetail(dx)
+    if (detail?.references?.length) {
+      items.push(...detail.references)
+    }
+  })
+
+  return unique(items).slice(0, 6)
 }
 
 function buildParsedClinicalCompanion(caseState: CaseStateInput, report: CaseReport): ParsedAiClinicalReport {
   const complaints = getChiefComplaints(caseState)
   const examHighlights = getExamHighlights(caseState)
   const comorbidities = getComorbidityLabels(caseState)
-  const normalizedDifferentials = normalizeProbabilities(report.differentials)
+  const normalizedDifferentials = normalizeProbabilities(report.differentials, caseState, report)
 
   const differentials: ParsedDifferential[] = normalizedDifferentials.map(({ dx, probability }) => ({
     title: dx.name,
@@ -547,8 +807,8 @@ function buildParsedClinicalCompanion(caseState: CaseStateInput, report: CaseRep
     ]).slice(0, 4),
     opposingFindings: buildOpposingFindings(dx, caseState, report),
     prioritizedDiagnostics: formatDiagnostics(dx),
-    patientAssessment: buildPatientAssessment(caseState, report),
-    monitoringPlan: buildMonitoringPlan(caseState, report),
+    patientAssessment: buildPatientAssessment(dx, caseState, report),
+    monitoringPlan: buildMonitoringPlan(dx, caseState, report),
     treatmentPlan: buildTreatmentPlan(dx, caseState, report),
     allowedDrugs: buildAllowedDrugs(dx, caseState, report),
     avoidDrugs: buildAvoidDrugs(dx, caseState),
@@ -579,7 +839,11 @@ function buildParsedClinicalCompanion(caseState: CaseStateInput, report: CaseRep
       avoidOrAdjust: report.comorbidityImpact?.diagnosticAvoids || [],
     },
     limitations: buildLimitations(caseState, report),
-    references: buildReferences(caseState, report, differentials),
+    references: buildReferences(
+      caseState,
+      report,
+      normalizedDifferentials.map((item) => item.dx),
+    ),
   }
 }
 

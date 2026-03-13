@@ -1,4 +1,5 @@
 import { MedicationRecord } from '../../../types/medication';
+import { MedicationUpsertInput } from '../../../types/editorial';
 import { MedicationRepository } from '../../repositories/medication.repository';
 import { medicationsSeed } from '../../../data/seed/medications.seed';
 
@@ -25,6 +26,11 @@ export class LocalMedicationRepository implements MedicationRepository {
   async listByCategory(categorySlug: string): Promise<MedicationRecord[]> {
     return medicationsSeed.filter((m) => m.category === categorySlug);
   }
+
+  async upsert(_input: MedicationUpsertInput): Promise<MedicationRecord> {
+    throw new Error('Edicao editorial disponivel apenas com Supabase configurado.');
+  }
 }
 
-export const medicationRepository = new LocalMedicationRepository();
+export const localMedicationRepository = new LocalMedicationRepository();
+export const medicationRepository = localMedicationRepository;

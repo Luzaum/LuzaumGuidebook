@@ -1,3 +1,5 @@
+import { EditorialReference } from './common';
+
 export type ConsensusSpecies = 'dog' | 'cat' | 'both';
 
 export interface ConsensusRecord {
@@ -55,6 +57,7 @@ export interface ConsensusDocumentDetails {
   keyPointsText: string | null;
   practicalApplicationText: string | null;
   appNotesText: string | null;
+  references?: EditorialReference[];
   createdBy: string | null;
   updatedBy: string | null;
   createdAt: string;
@@ -66,4 +69,5 @@ export interface UpsertConsensusDocumentDetailsInput {
   keyPointsText?: string | null;
   practicalApplicationText?: string | null;
   appNotesText?: string | null;
+  references?: EditorialReference[];
 }

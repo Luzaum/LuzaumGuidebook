@@ -1,5 +1,5 @@
-﻿import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { FileText, Download, ExternalLink, ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from 'lucide-react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { ChevronLeft, ChevronRight, Download, ExternalLink, FileText, ZoomIn, ZoomOut } from 'lucide-react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
@@ -11,20 +11,37 @@ interface PdfViewerShellProps {
   url: string;
   title: string;
   className?: string;
+  initialPage?: number;
+  onPageChange?: (pageNumber: number) => void;
 }
 
 const MIN_ZOOM = 0.8;
 const MAX_ZOOM = 2.2;
 const ZOOM_STEP = 0.2;
 
-export function PdfViewerShell({ url, title, className }: PdfViewerShellProps) {
+export function PdfViewerShell({
+  url,
+  title,
+  className,
+  initialPage = 1,
+  onPageChange,
+}: PdfViewerShellProps) {
   const [numPages, setNumPages] = useState<number>(0);
-  const [pageNumber, setPageNumber] = useState(1);
+  const [pageNumber, setPageNumber] = useState(Math.max(1, initialPage));
   const [zoom, setZoom] = useState(1);
   const [loadingError, setLoadingError] = useState<string | null>(null);
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [containerWidth, setContainerWidth] = useState(920);
+
+  useEffect(() => {
+    setPageNumber(Math.max(1, initialPage));
+  }, [initialPage]);
+
+  useEffect(() => {
+    if (!onPageChange) return;
+    onPageChange(pageNumber);
+  }, [onPageChange, pageNumber]);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -39,28 +56,12 @@ export function PdfViewerShell({ url, title, className }: PdfViewerShellProps) {
     return () => observer.disconnect();
   }, []);
 
-  const pageWidth = useMemo(() => {
-    // Mantém margem lateral confortável em desktop e mobile.
-    return Math.max(260, Math.min(1200, containerWidth - 24));
-  }, [containerWidth]);
-
+  const pageWidth = useMemo(() => Math.max(260, Math.min(1200, containerWidth - 24)), [containerWidth]);
   const canGoPrev = pageNumber > 1;
   const canGoNext = numPages > 0 && pageNumber < numPages;
 
-  const handlePrevious = () => {
-    setPageNumber((current) => Math.max(1, current - 1));
-  };
-
-  const handleNext = () => {
-    setPageNumber((current) => Math.min(numPages || 1, current + 1));
-  };
-
-  const handleZoomOut = () => {
-    setZoom((current) => Math.max(MIN_ZOOM, Number((current - ZOOM_STEP).toFixed(1))));
-  };
-
-  const handleZoomIn = () => {
-    setZoom((current) => Math.min(MAX_ZOOM, Number((current + ZOOM_STEP).toFixed(1))));
+  const updatePageNumber = (nextPage: number) => {
+    setPageNumber(Math.max(1, Math.min(nextPage, numPages || nextPage)));
   };
 
   return (
@@ -77,7 +78,7 @@ export function PdfViewerShell({ url, title, className }: PdfViewerShellProps) {
         <div className="flex items-center gap-2">
           <button
             type="button"
-            onClick={handlePrevious}
+            onClick={() => updatePageNumber(pageNumber - 1)}
             disabled={!canGoPrev}
             className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-foreground transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-40"
             title="Página anterior"
@@ -91,7 +92,7 @@ export function PdfViewerShell({ url, title, className }: PdfViewerShellProps) {
 
           <button
             type="button"
-            onClick={handleNext}
+            onClick={() => updatePageNumber(pageNumber + 1)}
             disabled={!canGoNext}
             className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-foreground transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-40"
             title="Próxima página"
@@ -103,18 +104,20 @@ export function PdfViewerShell({ url, title, className }: PdfViewerShellProps) {
 
           <button
             type="button"
-            onClick={handleZoomOut}
+            onClick={() => setZoom((current) => Math.max(MIN_ZOOM, Number((current - ZOOM_STEP).toFixed(1))))}
             className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-foreground transition-colors hover:bg-muted"
             title="Diminuir zoom"
           >
             <ZoomOut className="h-4 w-4" />
           </button>
 
-          <span className="min-w-[52px] text-center text-xs font-medium text-muted-foreground">{Math.round(zoom * 100)}%</span>
+          <span className="min-w-[52px] text-center text-xs font-medium text-muted-foreground">
+            {Math.round(zoom * 100)}%
+          </span>
 
           <button
             type="button"
-            onClick={handleZoomIn}
+            onClick={() => setZoom((current) => Math.min(MAX_ZOOM, Number((current + ZOOM_STEP).toFixed(1))))}
             className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-foreground transition-colors hover:bg-muted"
             title="Aumentar zoom"
           >

@@ -5,8 +5,8 @@ import {
   ListConsensusFilters,
   UpsertConsensusDocumentDetailsInput,
 } from '../../../types/consenso';
-import { ConsensoRepository } from '../../repositories/consenso.repository';
 import { consensosSeed } from '../../../data/seed/consensos.seed';
+import { ConsensoRepository } from '../../repositories/consenso.repository';
 
 function mapSeedRecord(record: any): ConsensusRecord {
   return {
@@ -54,6 +54,7 @@ for (const item of mappedSeed) {
     keyPointsText: null,
     practicalApplicationText: null,
     appNotesText,
+    references: [],
     createdBy: null,
     updatedBy: null,
     createdAt: item.createdAt,
@@ -85,7 +86,7 @@ export class LocalConsensoRepository implements ConsensoRepository {
   }
 
   async getBySlug(slug: string): Promise<ConsensusRecord | null> {
-    const found = mappedSeed.find((c) => c.slug === slug);
+    const found = mappedSeed.find((item) => item.slug === slug);
     return found || null;
   }
 
@@ -109,7 +110,7 @@ export class LocalConsensoRepository implements ConsensoRepository {
     _consensusDocumentId: string,
     _input: UpsertConsensusDocumentDetailsInput
   ): Promise<ConsensusDocumentDetails> {
-    throw new Error('Edição de detalhes compartilhados requer fonte Supabase ativa.');
+    throw new Error('Edi\u00e7\u00e3o de detalhes compartilhados requer fonte Supabase ativa.');
   }
 }
 

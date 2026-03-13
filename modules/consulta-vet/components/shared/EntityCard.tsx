@@ -14,6 +14,7 @@ interface EntityCardProps {
   icon?: React.ReactNode;
   entityType: FavoriteEntityType;
   entityId: string;
+  linkState?: unknown;
   className?: string;
   key?: React.Key;
 }
@@ -26,6 +27,7 @@ export function EntityCard({
   icon,
   entityType,
   entityId,
+  linkState,
   className,
 }: EntityCardProps) {
   return (
@@ -44,7 +46,7 @@ export function EntityCard({
               </span>
             )}
             <h3 className="line-clamp-2 text-base font-semibold leading-tight text-foreground group-hover:text-primary">
-              <Link to={to} className="focus:outline-none">
+              <Link to={to} state={linkState} className="focus:outline-none">
                 <span className="absolute inset-0" aria-hidden="true" />
                 {title}
               </Link>

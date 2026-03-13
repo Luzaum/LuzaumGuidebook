@@ -25,6 +25,7 @@ export function AppLayout() {
     isActive('/') ||
     isActive('/hub') ||
     isImmersiveModuleRoute ||
+    location.pathname.startsWith('/plantao-vet') ||
     location.pathname.startsWith('/calculadora-energetica') ||
     location.pathname.startsWith('/crivet') ||
     location.pathname.startsWith('/consulta-vet')
@@ -232,11 +233,9 @@ export function AppLayout() {
 
         {/* Page Content */}
         {/* Page Content */}
-        <main
-          className={`relative flex w-full flex-1 flex-col min-h-0 ${isFullBleedRoute ? 'overflow-hidden' : 'overflow-auto'}`}
-        >
+        <main className="relative flex w-full flex-1 flex-col min-h-0 overflow-auto">
           {isFullBleedRoute ? (
-            <div className="h-full min-h-0 w-full">
+            <div className="min-h-0 w-full">
               <Outlet />
             </div>
           ) : (

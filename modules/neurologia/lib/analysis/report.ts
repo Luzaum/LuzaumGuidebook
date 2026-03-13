@@ -177,7 +177,7 @@ export function buildCaseReport(caseState: any): CaseReport {
     })),
   }))
 
-  if (import.meta.env.DEV) {
+  if (typeof import.meta !== 'undefined' && import.meta.env?.DEV) {
     const audit = auditCaseReport(report)
     if (audit.length > 0) {
       console.warn('[NeuroVet] Termos em ingles detectados apos sanitizacao:', audit)

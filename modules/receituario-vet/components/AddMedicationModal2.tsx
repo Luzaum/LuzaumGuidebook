@@ -40,6 +40,28 @@ const START_HOUR_OPTIONS = Array.from({ length: 24 }, (_, hour) => {
   return { value: label, label }
 })
 
+const TIMES_PER_DAY_INTERVALS: Record<string, string> = {
+  '1': '24',
+  '2': '12',
+  '3': '8',
+  '4': '6',
+  '6': '4',
+  '8': '3',
+  '12': '2',
+  '24': '1',
+}
+
+const FREQUENCY_OPTIONS = [
+  { value: '1', label: '1x ao dia (a cada 24 horas)' },
+  { value: '2', label: '2x ao dia (a cada 12 horas)' },
+  { value: '3', label: '3x ao dia (a cada 8 horas)' },
+  { value: '4', label: '4x ao dia (a cada 6 horas)' },
+  { value: '6', label: '6x ao dia (a cada 4 horas)' },
+  { value: '8', label: '8x ao dia (a cada 3 horas)' },
+  { value: '12', label: '12x ao dia (a cada 2 horas)' },
+  { value: '24', label: '24x ao dia (a cada 1 hora)' },
+]
+
 // ===================== TYPES =====================
 interface AddMedicationModal2Props {
   open: boolean
@@ -76,6 +98,49 @@ function extractPresentationField(pres: PresentationRecord, field: string): stri
   return undefined
 }
 
+function parseTimesPerDayValue(raw?: string | number | null): string {
+  const value = String(raw ?? '').trim().toLowerCase()
+  if (!value) return ''
+
+  const supportedValues = new Set(Object.keys(TIMES_PER_DAY_INTERVALS))
+  if (supportedValues.has(value)) return value
+
+  const timesMatch = value.match(/(\d+)\s*x\s*ao\s*dia|(\d+)\s*vez(?:es)?\s*(?:ao|por)\s*dia/)
+  if (timesMatch) {
+    const direct = timesMatch[1] || timesMatch[2] || ''
+    return supportedValues.has(direct) ? direct : ''
+  }
+
+  const hoursMatch = value.match(/a cada\s*(\d+(?:[.,]\d+)?)\s*h/)
+  if (hoursMatch) {
+    const hours = Number(hoursMatch[1].replace(',', '.'))
+    if (!hours || hours <= 0) return ''
+    const times = 24 / hours
+    if (!Number.isFinite(times) || Math.round(times) !== times) return ''
+    const normalized = String(times)
+    return supportedValues.has(normalized) ? normalized : ''
+  }
+
+  if (value.includes('uma vez') || value.includes('sid') || value.includes('q24')) return '1'
+  if (value.includes('bid') || value.includes('q12')) return '2'
+  if (value.includes('tid') || value.includes('q8')) return '3'
+  if (value.includes('qid') || value.includes('q6')) return '4'
+
+  return ''
+}
+
+function formatFrequencyValue(timesPerDay?: string | number | null): string {
+  const normalized = parseTimesPerDayValue(timesPerDay)
+  return normalized ? `${normalized}x ao dia` : ''
+}
+
+function normalizeCautionsText(raw: string): string[] {
+  return raw
+    .split(/\r?\n/)
+    .map((line) => line.replace(/\r/g, ''))
+    .filter((line) => line.trim().length > 0)
+}
+
 // ===================== COMPONENT =====================
 export function AddMedicationModal2({
   open,
@@ -98,14 +163,13 @@ export function AddMedicationModal2({
 
   // Form state
   const [dose, setDose] = useState('')
-  const [frequency, setFrequency] = useState('')
+  const [timesPerDay, setTimesPerDay] = useState('2')
   const [route, setRoute] = useState('VO')
   const [duration, setDuration] = useState('')
   const [durationMode, setDurationMode] = useState<'fixed_days' | 'until_recheck' | 'continuous_use' | 'until_finished'>('fixed_days')
   const [inheritStartFromPrescription, setInheritStartFromPrescription] = useState(true)
   const [itemStartDate, setItemStartDate] = useState('')
   const [itemStartHour, setItemStartHour] = useState('')
-  const [instructions, setInstructions] = useState('')
   const [cautions, setCautions] = useState('')
 
   // Manual mode only: extra fields
@@ -159,14 +223,13 @@ export function AddMedicationModal2({
       setRecommendedDoses([])
       setSearchQuery('')
       setDose('')
-      setFrequency('')
+      setTimesPerDay('2')
       setRoute('VO')
       setDuration('')
       setDurationMode('fixed_days')
       setInheritStartFromPrescription(true)
       setItemStartDate(String(defaultStartDate || '').trim())
       setItemStartHour(String(defaultStartHour || '').trim())
-      setInstructions('')
       setCautions('')
       setManualName('')
       setManualConcentration('')
@@ -204,7 +267,7 @@ export function AddMedicationModal2({
           if (bestDose) {
             setDose(`${bestDose.dose_value} ${bestDose.dose_unit}`)
             setRoute(bestDose.route || 'VO')
-            setFrequency(bestDose.frequency || '')
+            setTimesPerDay(parseTimesPerDayValue(bestDose.frequency) || '2')
           }
         }
 
@@ -253,7 +316,9 @@ export function AddMedicationModal2({
         concentration_text: manualConcentration || undefined,
         commercial_name: manualCommercialName.trim() || undefined,
         dose,
-        frequency,
+        frequency: formatFrequencyValue(timesPerDay),
+        frequencyMode: 'times_per_day',
+        timesPerDay: Number(timesPerDay),
         route,
         duration: resolvedDuration,
         durationMode,
@@ -261,8 +326,9 @@ export function AddMedicationModal2({
         startDate: safeStartDate,
         startHour: safeStartHour,
         start_date: legacyStart,
-        instructions,
-        cautions: cautions.split('\n').map(s => s.trim()).filter(Boolean),
+        instructions: '',
+        cautions: normalizeCautionsText(cautions),
+        cautionsText: cautions,
         presentation_metadata: null,
       }
 
@@ -312,7 +378,9 @@ export function AddMedicationModal2({
 
       // Campos de dosagem
       dose,
-      frequency,
+      frequency: formatFrequencyValue(timesPerDay),
+      frequencyMode: 'times_per_day',
+      timesPerDay: Number(timesPerDay),
       route,
       duration: resolvedDuration,
       durationMode,
@@ -320,8 +388,9 @@ export function AddMedicationModal2({
       startDate: safeStartDate,
       startHour: safeStartHour,
       start_date: legacyStart,
-      instructions,
-      cautions: cautions.split('\n').map(s => s.trim()).filter(Boolean),
+      instructions: '',
+      cautions: normalizeCautionsText(cautions),
+      cautionsText: cautions,
     }
 
     onAdd(newItem)
@@ -337,14 +406,13 @@ export function AddMedicationModal2({
     presentations,
     selectedPresentationId,
     dose,
-    frequency,
+    timesPerDay,
     route,
     duration,
     durationMode,
     inheritStartFromPrescription,
     itemStartDate,
     itemStartHour,
-    instructions,
     cautions,
     onAdd,
     onClose,
@@ -487,9 +555,6 @@ export function AddMedicationModal2({
                           {selectedPresentation.package_quantity && selectedPresentation.package_unit && (
                             <p>Embalagem: <span className="text-white">{selectedPresentation.package_quantity} {selectedPresentation.package_unit}</span></p>
                           )}
-                          {selectedPresentation.avg_price_brl && selectedPresentation.avg_price_brl > 0 && (
-                            <p>Preço médio: <span className="text-emerald-400">R$ {selectedPresentation.avg_price_brl.toFixed(2)}</span></p>
-                          )}
                         </div>
                       )}
                     </div>
@@ -510,7 +575,7 @@ export function AddMedicationModal2({
                             onClick={() => {
                               setDose(`${rd.dose_value} ${rd.dose_unit}`)
                               setRoute(rd.route || 'VO')
-                              setFrequency(rd.frequency || '')
+                              setTimesPerDay(parseTimesPerDayValue(rd.frequency) || '2')
                             }}
                           >
                             <div>
@@ -613,10 +678,10 @@ export function AddMedicationModal2({
                 )}
 
                 <RxvField label="Frequência">
-                  <RxvInput
-                    placeholder="Ex: BID, TID, 12/12h"
-                    value={frequency}
-                    onChange={(e) => setFrequency(e.target.value)}
+                  <RxvSelect
+                    value={timesPerDay}
+                    onChange={(e) => setTimesPerDay(e.target.value)}
+                    options={FREQUENCY_OPTIONS}
                   />
                 </RxvField>
 
@@ -681,21 +746,12 @@ export function AddMedicationModal2({
                 )}
               </div>
 
-              <RxvField label="Instrução livre (opcional)">
-                <RxvTextarea
-                  placeholder="Se preencher, substitui a instrução automática na impressão."
-                  value={instructions}
-                  onChange={(e) => setInstructions(e.target.value)}
-                  rows={3}
-                />
-              </RxvField>
-
               <RxvField label="Observações adicionais (uma por linha)">
                 <RxvTextarea
                   placeholder="Ex: Dar com alimento&#10;Monitorar função renal"
                   value={cautions}
                   onChange={(e) => setCautions(e.target.value)}
-                  rows={2}
+                  rows={4}
                 />
               </RxvField>
             </div>

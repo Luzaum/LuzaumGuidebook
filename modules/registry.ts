@@ -16,6 +16,7 @@ import {
   Activity,
   Ticket,
   Stethoscope,
+  Clock3,
 } from 'lucide-react'
 import calcEnergeticaLogo from '@/assets/logos/logo-calculadora-energetica.png'
 
@@ -115,6 +116,15 @@ export const modules: Module[] = [
     status: 'internal',
     icon: FileText,
     iconImage: '/images/receituario-vet/reeceita.png',
+  },
+  {
+    id: 'plantao-vet',
+    title: 'PlantaoVET',
+    description: 'Internacao por plantao, pacientes, pendencias e passagem do turno.',
+    route: '/plantao-vet',
+    status: 'internal',
+    icon: Clock3,
+    iconImage: '/apps/plantao-vet.png',
   },
   {
     id: 'crivet',

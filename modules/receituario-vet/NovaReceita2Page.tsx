@@ -20,7 +20,7 @@ import { PatientLookup } from './components/PatientLookup'
 import { AddMedicationModal2 } from './components/AddMedicationModal2'
 import { RxPrintView } from './RxPrintView'
 import { buildPrescriptionStateFromNovaReceita2, buildPrintDocsFromNovaReceita2 } from './novaReceita2Adapter'
-import { BUILTIN_TEMPLATES } from './builtinTemplates'
+import { BUILTIN_TEMPLATES, DEFAULT_NOVA_RECEITA_TEMPLATE_ID } from './builtinTemplates'
 import { savePrescription, getPrescriptionById } from '../../src/lib/prescriptionsRecords'
 import { loadRxDb, findProfileSettings } from './rxDb'
 import { loadRxDraftById } from './rxStorage'
@@ -150,6 +150,8 @@ export interface PrescriptionItem {
     presentation_label?: string
     dose?: string
     frequency?: string
+    frequencyMode?: 'times_per_day'
+    timesPerDay?: number
     route?: string
     duration?: string
     start_date?: string
@@ -159,6 +161,7 @@ export interface PrescriptionItem {
     durationMode?: 'fixed_days' | 'until_recheck' | 'continuous_use' | 'until_finished'
     instructions?: string
     cautions?: string[]
+    cautionsText?: string
 
     // Campos completos da apresentação (medication_presentations)
     pharmaceutical_form?: string
@@ -195,15 +198,29 @@ const COMMON_EXAMS = [
     'Otoscopia',
 ]
 
+const TIMES_PER_DAY_INTERVALS: Record<string, string> = {
+    '1': '24',
+    '2': '12',
+    '3': '8',
+    '4': '6',
+    '6': '4',
+    '8': '3',
+    '12': '2',
+    '24': '1',
+}
+
 const QUICK_FREQUENCY_OPTIONS = [
-    { value: '1', label: '1 vez ao dia (a cada 24 horas)' },
-    { value: '2', label: '2 vezes ao dia (a cada 12 horas)' },
-    { value: '4', label: '4 vezes ao dia (a cada 6 horas)' },
-    { value: '6', label: '6 vezes ao dia (a cada 4 horas)' },
-    { value: '8', label: '8 vezes ao dia (a cada 3 horas)' },
-    { value: '12', label: '12 vezes ao dia (a cada 2 horas)' },
-    { value: '24', label: '24 vezes ao dia (a cada 1 hora)' },
+    { value: '1', label: '1x ao dia (a cada 24 horas)' },
+    { value: '2', label: '2x ao dia (a cada 12 horas)' },
+    { value: '3', label: '3x ao dia (a cada 8 horas)' },
+    { value: '4', label: '4x ao dia (a cada 6 horas)' },
+    { value: '6', label: '6x ao dia (a cada 4 horas)' },
+    { value: '8', label: '8x ao dia (a cada 3 horas)' },
+    { value: '12', label: '12x ao dia (a cada 2 horas)' },
+    { value: '24', label: '24x ao dia (a cada 1 hora)' },
 ]
+
+const ITEM_FREQUENCY_OPTIONS = [{ value: '', label: 'Selecionar frequência' }, ...QUICK_FREQUENCY_OPTIONS]
 
 const QUICK_DOSE_UNIT_OPTIONS = [
     'mg/kg', 'mcg/kg', 'g/kg', 'UI/kg', 'mL/kg', 'mg', 'mcg', 'g', 'UI', 'mL', 'mg/mL', 'mcg/mL', '%',
@@ -274,6 +291,50 @@ function buildConcentrationText(value: string, unit: string): string {
     return `${normalized} ${unit}`.trim()
 }
 
+function parseTimesPerDayValue(raw?: string | number | null): string {
+    const value = String(raw ?? '').trim().toLowerCase()
+    if (!value) return ''
+
+    const supportedValues = new Set(Object.keys(TIMES_PER_DAY_INTERVALS))
+    if (supportedValues.has(value)) return value
+
+    const timesMatch = value.match(/(\d+)\s*x\s*ao\s*dia|(\d+)\s*vez(?:es)?\s*(?:ao|por)\s*dia/)
+    if (timesMatch) {
+        const direct = timesMatch[1] || timesMatch[2] || ''
+        return supportedValues.has(direct) ? direct : ''
+    }
+
+    const hoursMatch = value.match(/a cada\s*(\d+(?:[.,]\d+)?)\s*h/)
+    if (hoursMatch) {
+        const hours = Number(hoursMatch[1].replace(',', '.'))
+        if (!hours || hours <= 0) return ''
+        const times = 24 / hours
+        if (!Number.isFinite(times) || Math.round(times) !== times) return ''
+        const normalized = String(times)
+        return supportedValues.has(normalized) ? normalized : ''
+    }
+
+    if (value.includes('uma vez') || value.includes('sid') || value.includes('q24')) return '1'
+    if (value.includes('bid') || value.includes('q12')) return '2'
+    if (value.includes('tid') || value.includes('q8')) return '3'
+    if (value.includes('qid') || value.includes('q6')) return '4'
+
+    return ''
+}
+
+function formatFrequencyValue(timesPerDay?: string | number | null): string {
+    const normalized = parseTimesPerDayValue(timesPerDay)
+    return normalized ? `${normalized}x ao dia` : ''
+}
+
+function normalizeCautionsText(rawText?: string | null, fallback?: string[] | null): string[] {
+    const source = typeof rawText === 'string' ? rawText : Array.isArray(fallback) ? fallback.join('\n') : ''
+    return source
+        .split(/\r?\n/)
+        .map((line) => line.replace(/\r/g, ''))
+        .filter((line) => line.trim().length > 0)
+}
+
 function normalizePrescriptionItem(item: PrescriptionItem, defaultStartDate: string, defaultStartHour: string): PrescriptionItem {
     const parsedStart = parseLegacyStart(item.start_date)
     const startDate = item.startDate ?? parsedStart.startDate
@@ -288,6 +349,13 @@ function normalizePrescriptionItem(item: PrescriptionItem, defaultStartDate: str
         else durationMode = 'fixed_days'
     }
 
+    const normalizedTimesPerDay = parseTimesPerDayValue(item.timesPerDay ?? item.frequency)
+    const cautionsText = typeof item.cautionsText === 'string'
+        ? item.cautionsText
+        : Array.isArray(item.cautions)
+            ? item.cautions.join('\n')
+            : ''
+
     return {
         ...item,
         inheritStartFromPrescription: item.inheritStartFromPrescription ?? true,
@@ -295,7 +363,11 @@ function normalizePrescriptionItem(item: PrescriptionItem, defaultStartDate: str
         startHour,
         start_date: buildLegacyStartDate(startDate, startHour) || item.start_date,
         durationMode,
-        cautions: Array.isArray(item.cautions) ? item.cautions : [],
+        frequencyMode: normalizedTimesPerDay ? 'times_per_day' : item.frequencyMode,
+        timesPerDay: normalizedTimesPerDay ? Number(normalizedTimesPerDay) : item.timesPerDay,
+        frequency: normalizedTimesPerDay ? formatFrequencyValue(normalizedTimesPerDay) : (item.frequency || ''),
+        cautionsText,
+        cautions: normalizeCautionsText(cautionsText, item.cautions),
     }
 }
 
@@ -342,16 +414,21 @@ function formatDurationSummary(item: PrescriptionItem): string {
     return item.duration || 'Sem duração definida'
 }
 
+function getDefaultNovaReceitaTemplateId(): string {
+    return BUILTIN_TEMPLATES.find((template) => template.id === DEFAULT_NOVA_RECEITA_TEMPLATE_ID)?.id || BUILTIN_TEMPLATES[0].id
+}
+
 // ==================== DEFAULT STATE ====================
 
 function createDefaultState(): NovaReceita2State {
+    const defaultTemplateId = getDefaultNovaReceitaTemplateId()
     return {
         prescriber: null,
         tutor: null,
         patient: null,
         quickMode: false,
-        templateId: BUILTIN_TEMPLATES[0].id,
-        printTemplateId: BUILTIN_TEMPLATES[0].id,
+        templateId: defaultTemplateId,
+        printTemplateId: defaultTemplateId,
         defaultStartDate: '',
         defaultStartHour: '',
         recommendations: '',
@@ -563,7 +640,9 @@ export default function NovaReceita2Page() {
             package_unit: selectedQuickPresentation?.package_unit || undefined,
             presentation_metadata: selectedQuickPresentation?.metadata || null,
             dose: `${quickDoseValue.trim()} ${quickDoseUnit}`.trim(),
-            frequency: `${quickFrequencyPerDay}x ao dia`,
+            frequency: formatFrequencyValue(quickFrequencyPerDay),
+            frequencyMode: 'times_per_day',
+            timesPerDay: Number(quickFrequencyPerDay),
             route: quickRoute || 'VO',
             duration,
             durationMode,
@@ -573,6 +652,7 @@ export default function NovaReceita2Page() {
             start_date: buildLegacyStartDate(state.defaultStartDate, state.defaultStartHour),
             instructions: '',
             cautions: [],
+            cautionsText: '',
         }
         handleAddItem(newItem)
         resetQuickComposer()
@@ -592,7 +672,10 @@ export default function NovaReceita2Page() {
         if (payload.items?.length) {
             updateState((prev) => ({
                 ...prev,
-                items: [...prev.items, ...payload.items!],
+                items: [
+                    ...prev.items,
+                    ...payload.items!.map((item) => normalizePrescriptionItem(item, prev.defaultStartDate, prev.defaultStartHour)),
+                ],
             }))
         }
 
@@ -703,8 +786,8 @@ export default function NovaReceita2Page() {
                         anamnesis: legacyDraft.patient.anamnesis,
                         notes: legacyDraft.patient.notes,
                     },
-                    printTemplateId: legacyDraft.recommendations.standardTemplateId || BUILTIN_TEMPLATES[0].id,
-                    templateId: legacyDraft.recommendations.standardTemplateId || BUILTIN_TEMPLATES[0].id,
+                    printTemplateId: legacyDraft.recommendations.standardTemplateId || getDefaultNovaReceitaTemplateId(),
+                    templateId: legacyDraft.recommendations.standardTemplateId || getDefaultNovaReceitaTemplateId(),
                     recommendations: legacyDraft.recommendations.bullets.join('\n'),
                     exams: [
                         ...legacyDraft.recommendations.exams,
@@ -729,6 +812,8 @@ export default function NovaReceita2Page() {
                         frequency: item.frequencyType === 'everyHours'
                             ? `a cada ${item.everyHours} horas`
                             : (item.timesPerDay ? `${item.timesPerDay}x ao dia` : ''),
+                        frequencyMode: item.timesPerDay ? 'times_per_day' : undefined,
+                        timesPerDay: item.timesPerDay ? Number(item.timesPerDay) : undefined,
                         route: item.routeGroup,
                         duration: item.untilFinished
                             ? 'até terminar o medicamento'
@@ -748,6 +833,7 @@ export default function NovaReceita2Page() {
                         start_date: item.start_date,
                         instructions: item.manualEdited ? item.instruction : '',
                         cautions: item.cautions,
+                        cautionsText: Array.isArray(item.cautions) ? item.cautions.join('\n') : '',
                         pharmaceutical_form: item.pharmaceuticalForm || item.presentation,
                     })),
                     createdAt: legacyDraft.updatedAt,
@@ -860,8 +946,9 @@ export default function NovaReceita2Page() {
     }, [])
 
     const selectedTemplateObj = useMemo(() => {
-        const id = state.printTemplateId || state.templateId || BUILTIN_TEMPLATES[0].id
-        return allTemplates.find((t) => t.id === id) || allTemplates[0]
+        const fallbackTemplateId = getDefaultNovaReceitaTemplateId()
+        const id = state.printTemplateId || state.templateId || fallbackTemplateId
+        return allTemplates.find((t) => t.id === id) || allTemplates.find((t) => t.id === fallbackTemplateId) || allTemplates[0]
     }, [state.printTemplateId, state.templateId, allTemplates])
 
     // ==================== ACTIONS ====================
@@ -1355,7 +1442,16 @@ export default function NovaReceita2Page() {
                                                             <RxvSelect value={item.route || 'VO'} onChange={(e) => updateItem(item.id, (current) => ({ ...current, route: e.target.value }))} options={QUICK_ROUTE_OPTIONS} />
                                                         </RxvField>
                                                         <RxvField label="Frequência">
-                                                            <RxvInput value={item.frequency || ''} onChange={(e) => updateItem(item.id, (current) => ({ ...current, frequency: e.target.value }))} placeholder="Ex: a cada 12 horas" />
+                                                            <RxvSelect
+                                                                value={item.timesPerDay ? String(item.timesPerDay) : ''}
+                                                                onChange={(e) => updateItem(item.id, (current) => ({
+                                                                    ...current,
+                                                                    frequencyMode: e.target.value ? 'times_per_day' : undefined,
+                                                                    timesPerDay: e.target.value ? Number(e.target.value) : undefined,
+                                                                    frequency: formatFrequencyValue(e.target.value),
+                                                                }))}
+                                                                options={ITEM_FREQUENCY_OPTIONS}
+                                                            />
                                                         </RxvField>
                                                     </div>
 
@@ -1404,23 +1500,15 @@ export default function NovaReceita2Page() {
                                                         </div>
                                                     ) : null}
 
-                                                    <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2">
-                                                        <RxvField label="Instrução livre (opcional)">
-                                                            <RxvTextarea
-                                                                value={item.instructions || ''}
-                                                                onChange={(e) => updateItem(item.id, (current) => ({ ...current, instructions: e.target.value }))}
-                                                                rows={3}
-                                                                placeholder="Se preencher, substitui a instrução automática."
-                                                            />
-                                                        </RxvField>
+                                                    <div className="mt-3 grid grid-cols-1 gap-3">
                                                         <RxvField label="Observações adicionais">
                                                             <RxvTextarea
-                                                                value={(item.cautions || []).join('\n')}
+                                                                value={item.cautionsText ?? ''}
                                                                 onChange={(e) => updateItem(item.id, (current) => ({
                                                                     ...current,
-                                                                    cautions: e.target.value.split('\n').map((line) => line.trim()).filter(Boolean),
+                                                                    cautionsText: e.target.value,
                                                                 }))}
-                                                                rows={3}
+                                                                rows={4}
                                                                 placeholder="Uma observação por linha."
                                                             />
                                                         </RxvField>
@@ -1499,7 +1587,7 @@ export default function NovaReceita2Page() {
                                 <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_280px]">
                                     <RxvField label="Template de impressão">
                                         <RxvSelect
-                                            value={state.printTemplateId || state.templateId || BUILTIN_TEMPLATES[0].id}
+                                            value={state.printTemplateId || state.templateId || getDefaultNovaReceitaTemplateId()}
                                             onChange={(e) => updateState((prev) => ({
                                                 ...prev,
                                                 printTemplateId: e.target.value,

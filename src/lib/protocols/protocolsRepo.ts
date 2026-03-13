@@ -30,6 +30,7 @@ export type ProtocolRecord = {
   tags: string[] | null
   is_control_special: boolean
   exams_justification: string | null
+  metadata?: Record<string, unknown> | null
   created_at: string
   updated_at: string
 }
@@ -51,9 +52,11 @@ export type ProtocolMedicationItem = {
   id?: string
   // Catalog mode
   medication_id: string | null
+  global_medication_id?: string | null
   /** UI-only display name — NOT sent to DB */
   medication_name?: string
   presentation_id: string | null
+  presentation_slug?: string | null
   /** UI-only display text — NOT sent to DB */
   presentation_text?: string
   // Manual mode (when catalog IDs missing)
@@ -71,6 +74,7 @@ export type ProtocolMedicationItem = {
   duration_days: number | null
   is_controlled?: boolean
   sort_order: number
+  metadata?: Record<string, unknown> | null
 }
 
 /** `protocol_recommendations` uses column `text` (not `recommendation_text`). */
@@ -78,13 +82,87 @@ export type ProtocolRecommendation = {
   id?: string
   text: string
   sort_order: number
+  metadata?: Record<string, unknown> | null
 }
 
-/** Bundle without exam_items (table does not exist in this schema). */
+export type ProtocolExamItem = {
+  id?: string
+  exam_key: string
+  label: string
+  is_custom: boolean
+  sort_order: number
+  metadata?: Record<string, unknown> | null
+}
+
+export type GlobalProtocolRecord = {
+  id: string
+  slug: string
+  name: string
+  description: string | null
+  species: string | null
+  tags: string[] | null
+  is_control_special: boolean
+  exams_justification: string | null
+  metadata: Record<string, unknown> | null
+  sort_order: number
+  is_active: boolean
+  source_protocol_id: string | null
+  source_clinic_id: string | null
+  published_by_user_id: string | null
+  version: number
+  status: string
+  created_at: string
+  updated_at: string
+  scope?: 'global'
+}
+
+export type ProtocolListEntry =
+  | (ProtocolRecord & { scope: 'clinic' })
+  | (GlobalProtocolRecord & { scope: 'global' })
+
+export type PublishGlobalProtocolInput = {
+  protocolId: string
+  mode: 'new' | 'update'
+  globalProtocolId?: string | null
+  name: string
+  description?: string | null
+  species?: string | null
+  tags?: string[] | null
+  slug: string
+}
+
+export type DuplicateGlobalProtocolResult = {
+  ok: true
+  protocolId: string
+  name: string
+  medicationsCount: number
+  recommendationsCount: number
+  examItemsCount: number
+}
+
+export type PublishGlobalProtocolResult = {
+  ok: true
+  globalProtocolId: string
+  slug: string
+  version: number
+  mode: 'new' | 'update'
+}
+
+/** Current editor bundle: protocol + medications + recommendations. Exam items remain outside the editor state for now. */
 export type ProtocolBundle = {
+  scope?: 'clinic'
   protocol: ProtocolRecord
   medications: ProtocolMedicationItem[]
   recommendations: ProtocolRecommendation[]
+  examItems?: ProtocolExamItem[]
+}
+
+export type GlobalProtocolBundle = {
+  scope: 'global'
+  protocol: GlobalProtocolRecord
+  medications: ProtocolMedicationItem[]
+  recommendations: ProtocolRecommendation[]
+  examItems: ProtocolExamItem[]
 }
 
 type DefaultProtocolSeed = {
@@ -188,6 +266,7 @@ export function buildProtocolInsert(draft: Partial<ProtocolRecord>, clinicId: st
     tags: draft.tags || null,
     is_control_special: !!draft.is_control_special,
     exams_justification: draft.exams_justification || null,
+    metadata: draft.metadata || {},
     // NOTE: no is_active - column does not exist
   }
 }
@@ -203,6 +282,7 @@ export function buildProtocolUpdate(draft: Partial<ProtocolRecord>) {
     tags: draft.tags || null,
     is_control_special: !!draft.is_control_special,
     exams_justification: draft.exams_justification || null,
+    metadata: draft.metadata || {},
     updated_at: new Date().toISOString(),
     // NOTE: no is_active - column does not exist
   }
@@ -365,6 +445,208 @@ export async function listProtocols(
   return (data ?? []) as ProtocolRecord[]
 }
 
+function buildPresentationText(presentation: {
+  pharmaceutical_form?: string | null
+  commercial_name?: string | null
+  concentration_text?: string | null
+}): string {
+  const bits = [
+    String(presentation.pharmaceutical_form || '').trim(),
+    String(presentation.commercial_name || '').trim(),
+    String(presentation.concentration_text || '').trim(),
+  ].filter(Boolean)
+  return bits.join(' — ')
+}
+
+async function hydrateClinicProtocolMedications(
+  items: ProtocolMedicationItem[]
+): Promise<ProtocolMedicationItem[]> {
+  const medicationIds = Array.from(
+    new Set(
+      items
+        .map((item) => String(item.medication_id || '').trim())
+        .filter(Boolean)
+    )
+  )
+  const presentationIds = Array.from(
+    new Set(
+      items
+        .map((item) => String(item.presentation_id || '').trim())
+        .filter(Boolean)
+    )
+  )
+
+  const [medicationsResult, presentationsResult] = await Promise.all([
+    medicationIds.length
+      ? supabase.from('medications').select('id,name').in('id', medicationIds)
+      : Promise.resolve({ data: [], error: null }),
+    presentationIds.length
+      ? supabase
+          .from('medication_presentations')
+          .select('id,pharmaceutical_form,commercial_name,concentration_text')
+          .in('id', presentationIds)
+      : Promise.resolve({ data: [], error: null }),
+  ])
+
+  logSbError('[ProtocolsRepo] hydrateClinicProtocolMedications medications error', medicationsResult.error)
+  logSbError('[ProtocolsRepo] hydrateClinicProtocolMedications presentations error', presentationsResult.error)
+
+  const medicationMap = new Map<string, string>(
+    ((medicationsResult.data ?? []) as Array<{ id: string; name: string }>).map((row) => [row.id, row.name])
+  )
+  const presentationMap = new Map<string, string>(
+    ((presentationsResult.data ?? []) as Array<{
+      id: string
+      pharmaceutical_form: string | null
+      commercial_name: string | null
+      concentration_text: string | null
+    }>).map((row) => [row.id, buildPresentationText(row)])
+  )
+
+  return items.map((item) => ({
+    ...item,
+    medication_name: item.medication_name || (item.medication_id ? medicationMap.get(item.medication_id) || undefined : undefined),
+    presentation_text:
+      item.presentation_text || (item.presentation_id ? presentationMap.get(item.presentation_id) || undefined : undefined),
+  }))
+}
+
+async function hydrateGlobalProtocolMedications(
+  items: ProtocolMedicationItem[]
+): Promise<ProtocolMedicationItem[]> {
+  const globalMedicationIds = Array.from(
+    new Set(
+      items
+        .map((item) => String(item.global_medication_id || '').trim())
+        .filter(Boolean)
+    )
+  )
+
+  const [medicationsResult, presentationsResult] = await Promise.all([
+    globalMedicationIds.length
+      ? supabase.from('global_medications').select('id,name').in('id', globalMedicationIds)
+      : Promise.resolve({ data: [], error: null }),
+    globalMedicationIds.length
+      ? supabase
+          .from('global_medication_presentations')
+          .select('global_medication_id,slug,pharmaceutical_form,commercial_name,concentration_text')
+          .in('global_medication_id', globalMedicationIds)
+      : Promise.resolve({ data: [], error: null }),
+  ])
+
+  logSbError('[ProtocolsRepo] hydrateGlobalProtocolMedications medications error', medicationsResult.error)
+  logSbError('[ProtocolsRepo] hydrateGlobalProtocolMedications presentations error', presentationsResult.error)
+
+  const medicationMap = new Map<string, string>(
+    ((medicationsResult.data ?? []) as Array<{ id: string; name: string }>).map((row) => [row.id, row.name])
+  )
+  const presentationMap = new Map<string, string>(
+    ((presentationsResult.data ?? []) as Array<{
+      global_medication_id: string
+      slug: string
+      pharmaceutical_form: string | null
+      commercial_name: string | null
+      concentration_text: string | null
+    }>).map((row) => [`${row.global_medication_id}:${row.slug}`, buildPresentationText(row)])
+  )
+
+  return items.map((item) => ({
+    ...item,
+    medication_name:
+      item.medication_name ||
+      item.manual_medication_name ||
+      (item.global_medication_id ? medicationMap.get(item.global_medication_id) || undefined : undefined),
+    presentation_text:
+      item.presentation_text ||
+      item.manual_presentation_label ||
+      (item.global_medication_id && item.presentation_slug
+        ? presentationMap.get(`${item.global_medication_id}:${item.presentation_slug}`) || undefined
+        : undefined),
+  }))
+}
+
+export async function listCombinedProtocols(
+  clinicId: string,
+  userId: string,
+  folderId?: string | null,
+  search?: string
+): Promise<ProtocolListEntry[]> {
+  const clinicProtocols = await listProtocols(clinicId, userId, folderId, search)
+  const scopedClinicProtocols = clinicProtocols.map((protocol) => ({
+    ...protocol,
+    scope: 'clinic' as const,
+  }))
+
+  if (folderId) return scopedClinicProtocols
+
+  let query = supabase
+    .from('global_protocols')
+    .select('*')
+    .eq('is_active', true)
+
+  const needle = String(search || '').trim()
+  if (needle) {
+    query = query.ilike('name', `%${needle}%`)
+  }
+
+  const { data, error } = await query
+    .order('sort_order', { ascending: true })
+    .order('name', { ascending: true })
+
+  if (error) {
+    logSbError('[ProtocolsRepo] listCombinedProtocols global error', error)
+    return scopedClinicProtocols
+  }
+
+  const scopedGlobalProtocols = ((data ?? []) as GlobalProtocolRecord[]).map((protocol) => ({
+    ...protocol,
+    scope: 'global' as const,
+  }))
+
+  return [...scopedClinicProtocols, ...scopedGlobalProtocols]
+}
+
+export async function findLinkedGlobalProtocols(
+  protocolId: string,
+  clinicId: string
+): Promise<GlobalProtocolRecord[]> {
+  const { data, error } = await supabase
+    .from('global_protocols')
+    .select('*')
+    .eq('source_protocol_id', protocolId)
+    .eq('source_clinic_id', clinicId)
+    .order('updated_at', { ascending: false })
+
+  if (error) {
+    logSbError('[ProtocolsRepo] findLinkedGlobalProtocols error', error)
+    return []
+  }
+
+  return ((data ?? []) as GlobalProtocolRecord[]).map((protocol) => ({
+    ...protocol,
+    scope: 'global' as const,
+  }))
+}
+
+export async function publishProtocolAsGlobal(
+  input: PublishGlobalProtocolInput
+): Promise<PublishGlobalProtocolResult> {
+  const { data, error } = await supabase.functions.invoke('publish-global-protocol', {
+    body: input,
+  })
+
+  if (error) {
+    logSbError('[ProtocolsRepo] publishProtocolAsGlobal error', error)
+    throw error
+  }
+
+  if (!data || data.ok !== true || !data.globalProtocolId) {
+    throw new Error('Resposta inválida da publicação global.')
+  }
+
+  return data as PublishGlobalProtocolResult
+}
+
 export async function loadProtocolBundle(
   clinicId: string,
   userId: string,
@@ -397,12 +679,18 @@ export async function loadProtocolBundle(
     .eq('protocol_id', protocolId)
     .order('sort_order', { ascending: true })
 
+  const { data: examItems, error: examError } = await supabase
+    .from('protocol_exam_items')
+    .select('*')
+    .eq('clinic_id', clinicId)
+    .eq('protocol_id', protocolId)
+
   if (medError) logSbError('[ProtocolsRepo] loadProtocolBundle medications error', medError)
   if (recError) logSbError('[ProtocolsRepo] loadProtocolBundle recommendations error', recError)
+  if (examError) logSbError('[ProtocolsRepo] loadProtocolBundle exam items error', examError)
 
-  return {
-    protocol: protocol as ProtocolRecord,
-    medications: (medications ?? []).map((m) => ({
+  const hydratedMedications = await hydrateClinicProtocolMedications(
+    ((medications ?? []).map((m) => ({
       id: m.id,
       medication_id: m.medication_id ?? null,
       presentation_id: m.presentation_id ?? null,
@@ -419,12 +707,111 @@ export async function loadProtocolBundle(
       duration_days: m.duration_days ?? null,
       is_controlled: !!m.is_controlled,
       sort_order: m.sort_order ?? 0,
-    })) as ProtocolMedicationItem[],
+    })) as ProtocolMedicationItem[])
+  )
+
+  return {
+    scope: 'clinic',
+    protocol: protocol as ProtocolRecord,
+    medications: hydratedMedications,
     recommendations: (recommendations ?? []).map((r) => ({
       id: r.id,
       text: r.text ?? '',    // column is `text` in DB
       sort_order: r.sort_order ?? 0,
+      metadata: (r as any).metadata ?? null,
     })) as ProtocolRecommendation[],
+    examItems: (examItems ?? []).map((exam, idx) => ({
+      id: exam.id,
+      exam_key: exam.exam_key ?? '',
+      label: exam.label ?? '',
+      is_custom: !!exam.is_custom,
+      sort_order: idx,
+      metadata: (exam as any).metadata ?? null,
+    })) as ProtocolExamItem[],
+  }
+}
+
+export async function loadGlobalProtocolBundle(
+  globalProtocolId: string
+): Promise<GlobalProtocolBundle | null> {
+  const { data: protocol, error: protocolError } = await supabase
+    .from('global_protocols')
+    .select('*')
+    .eq('id', globalProtocolId)
+    .single()
+
+  if (protocolError || !protocol) {
+    logSbError('[ProtocolsRepo] loadGlobalProtocolBundle protocol error', protocolError)
+    return null
+  }
+
+  const { data: medications, error: medError } = await supabase
+    .from('global_protocol_medications')
+    .select('*')
+    .eq('global_protocol_id', globalProtocolId)
+    .order('sort_order', { ascending: true })
+
+  const { data: recommendations, error: recError } = await supabase
+    .from('global_protocol_recommendations')
+    .select('*')
+    .eq('global_protocol_id', globalProtocolId)
+    .order('sort_order', { ascending: true })
+
+  const { data: examItems, error: examError } = await supabase
+    .from('global_protocol_exam_items')
+    .select('*')
+    .eq('global_protocol_id', globalProtocolId)
+    .order('sort_order', { ascending: true })
+
+  if (medError) logSbError('[ProtocolsRepo] loadGlobalProtocolBundle medications error', medError)
+  if (recError) logSbError('[ProtocolsRepo] loadGlobalProtocolBundle recommendations error', recError)
+  if (examError) logSbError('[ProtocolsRepo] loadGlobalProtocolBundle exam items error', examError)
+
+  const hydratedMedications = await hydrateGlobalProtocolMedications(
+    ((medications ?? []).map((m) => ({
+      id: m.id,
+      medication_id: m.medication_id ?? null,
+      global_medication_id: (m as any).global_medication_id ?? null,
+      presentation_id: null,
+      presentation_slug: (m as any).presentation_slug ?? null,
+      manual_medication_name: m.manual_medication_name ?? null,
+      manual_presentation_label: m.manual_presentation_label ?? null,
+      concentration_value: m.concentration_value ?? null,
+      concentration_unit: m.concentration_unit ?? null,
+      dose_value: m.dose_value ?? null,
+      dose_unit: m.dose_unit ?? null,
+      route: m.route ?? null,
+      frequency_type: m.frequency_type ?? 'times_per_day',
+      times_per_day: m.times_per_day ?? null,
+      interval_hours: m.interval_hours ?? null,
+      duration_days: m.duration_days ?? null,
+      is_controlled: !!m.is_controlled,
+      sort_order: m.sort_order ?? 0,
+      metadata: (m as any).metadata ?? null,
+    })) as ProtocolMedicationItem[])
+  )
+
+  return {
+    scope: 'global',
+    protocol: {
+      ...(protocol as GlobalProtocolRecord),
+      scope: 'global',
+    },
+    medications: hydratedMedications,
+    recommendations: (recommendations ?? []).map((rec) => ({
+      id: rec.id,
+      text: rec.text ?? '',
+      sort_order: rec.sort_order ?? 0,
+      metadata: (rec as any).metadata ?? null,
+    })) as ProtocolRecommendation[],
+    examItems: (examItems ?? []).map((exam) => ({
+      id: exam.id,
+      exam_key: exam.exam_key ?? '',
+      label: exam.label ?? '',
+      is_custom: !!exam.is_custom,
+      sort_order: exam.sort_order ?? 0,
+      metadata: (exam as any).metadata ?? null,
+    })) as ProtocolExamItem[],
   }
 }
 
@@ -446,6 +833,7 @@ export async function saveProtocolBundle(
       tags?: string[] | null
       is_control_special?: boolean
       exams_justification?: string | null
+      metadata?: Record<string, unknown> | null
     }
     medications: ProtocolMedicationItem[]
     recommendations: ProtocolRecommendation[]
@@ -531,6 +919,126 @@ export async function saveProtocolBundle(
   }
 
   return savedProtocol
+}
+
+export async function duplicateGlobalProtocolToClinic(
+  clinicId: string,
+  userId: string,
+  globalProtocolId: string
+): Promise<ProtocolRecord> {
+  const { data, error } = await supabase.functions.invoke('duplicate-global-protocol', {
+    body: { clinicId, userId, globalProtocolId },
+  })
+
+  if (error) {
+    logSbError('[ProtocolsRepo] duplicateGlobalProtocolToClinic invoke error', error)
+    let message = 'NÃ£o foi possÃ­vel duplicar o protocolo completo. Nenhuma cÃ³pia vÃ¡lida foi mantida.'
+    const response = (error as any)?.context
+    if (response && typeof response.json === 'function') {
+      try {
+        const payload = await response.json()
+        if (payload?.error) {
+          message = String(payload.error)
+        }
+      } catch {}
+    }
+    throw new Error(message)
+  }
+
+  if (!data || data.ok !== true || !data.protocolId) {
+    throw new Error('Resposta invÃ¡lida da duplicaÃ§Ã£o de protocolo global.')
+  }
+
+  const result = data as DuplicateGlobalProtocolResult
+
+  const { data: duplicatedProtocol, error: protocolError } = await supabase
+    .from('protocols')
+    .select('*')
+    .eq('clinic_id', clinicId)
+    .eq('owner_user_id', userId)
+    .eq('id', result.protocolId)
+    .single()
+
+  logSbError('[ProtocolsRepo] duplicateGlobalProtocolToClinic load protocol error', protocolError)
+  if (protocolError || !duplicatedProtocol) {
+    throw new Error('A cÃ³pia foi criada, mas a recarga do protocolo local falhou.')
+  }
+
+  return duplicatedProtocol as ProtocolRecord
+}
+
+async function duplicateGlobalProtocolToClinicLegacy(
+  clinicId: string,
+  userId: string,
+  globalProtocolId: string
+): Promise<ProtocolRecord> {
+  const bundle = await loadGlobalProtocolBundle(globalProtocolId)
+  if (!bundle) {
+    throw new Error('Protocolo global não encontrado.')
+  }
+
+  const duplicatedProtocol = await saveProtocolBundle(clinicId, userId, {
+    protocol: {
+      name: `${bundle.protocol.name} (cópia)`,
+      description: bundle.protocol.description,
+      species: bundle.protocol.species,
+      duration_summary: null,
+      tags: bundle.protocol.tags,
+      is_control_special: bundle.protocol.is_control_special,
+      exams_justification: bundle.protocol.exams_justification,
+      metadata: {
+        ...(bundle.protocol.metadata || {}),
+        source_global_protocol_id: bundle.protocol.id,
+        source_global_protocol_slug: bundle.protocol.slug,
+        source_type: 'global_protocol',
+      },
+    },
+    medications: bundle.medications.map((medication, index) => ({
+      medication_id: null,
+      presentation_id: null,
+      manual_medication_name:
+        medication.manual_medication_name ||
+        medication.medication_name ||
+        'Medicamento',
+      manual_presentation_label:
+        medication.manual_presentation_label ||
+        medication.presentation_text ||
+        null,
+      concentration_value: medication.concentration_value ?? null,
+      concentration_unit: medication.concentration_unit ?? null,
+      dose_value: medication.dose_value ?? null,
+      dose_unit: medication.dose_unit ?? null,
+      route: medication.route ?? null,
+      frequency_type: medication.frequency_type,
+      times_per_day: medication.times_per_day ?? null,
+      interval_hours: medication.interval_hours ?? null,
+      duration_days: medication.duration_days ?? null,
+      is_controlled: !!medication.is_controlled,
+      sort_order: index,
+    })),
+    recommendations: bundle.recommendations.map((recommendation, index) => ({
+      text: recommendation.text,
+      sort_order: index,
+    })),
+  })
+
+  const examPayload = (bundle.examItems || [])
+    .filter((exam) => String(exam.label || '').trim())
+    .map((exam) => ({
+      clinic_id: clinicId,
+      protocol_id: duplicatedProtocol.id,
+      exam_key: exam.exam_key || 'custom',
+      label: String(exam.label || '').trim(),
+      is_custom: !!exam.is_custom,
+    }))
+
+  if (examPayload.length) {
+    const { error } = await supabase.from('protocol_exam_items').insert(examPayload)
+    logSbError('[ProtocolsRepo] duplicateGlobalProtocolToClinic exam items insert error', error)
+    if (error) throw error
+  }
+
+  return duplicatedProtocol
 }
 
 // ============================================================

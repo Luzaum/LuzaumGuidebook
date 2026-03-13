@@ -1,7 +1,7 @@
 // ✅ Protocolos 3.0 — Refatoração Completa (100% Supabase)
 // 🚫 ZERO localStorage, ZERO rxDb, ZERO mistura de fontes
 
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useClinic } from '../../src/components/ClinicProvider'
 import { supabase } from '../../src/lib/supabaseClient'
@@ -17,18 +17,25 @@ import {
 } from '../../src/components/receituario/RxvComponents'
 import {
   listFolders,
-  listProtocols,
+  listCombinedProtocols,
   loadProtocolBundle,
+  loadGlobalProtocolBundle,
   saveProtocolBundle,
   deleteProtocol,
   createFolder,
   deleteFolder,
   ensureDefaultSpecialtyProtocolSeed,
+  findLinkedGlobalProtocols,
+  publishProtocolAsGlobal,
+  duplicateGlobalProtocolToClinic,
   type ProtocolFolderRecord,
   type ProtocolRecord,
   type ProtocolBundle,
   type ProtocolMedicationItem,
   type ProtocolRecommendation,
+  type ProtocolListEntry,
+  type GlobalProtocolRecord,
+  type GlobalProtocolBundle,
 } from '../../src/lib/protocols/protocolsRepo'
 import { safeStringify } from '../../src/lib/clinicScopedDb'
 import {
@@ -60,23 +67,108 @@ interface PresentationRecord {
   is_default?: boolean
 }
 
+type PublishGlobalMode = 'new' | 'update'
+type ProtocolScopeFilter = 'all' | 'clinic' | 'global'
+
+type PublishGlobalDraft = {
+  name: string
+  description: string
+  species: string
+  tagsText: string
+  slug: string
+  mode: PublishGlobalMode
+  globalProtocolId: string
+}
+
+function readText(value: unknown): string {
+  return typeof value === 'string' ? value.trim() : ''
+}
+
+function hasTruthyFlag(value: unknown): boolean {
+  if (value === true) return true
+  if (typeof value === 'string') {
+    const normalized = value.trim().toLowerCase()
+    return normalized === 'true' || normalized === '1' || normalized === 'yes'
+  }
+  return false
+}
+
+function slugifyProtocolName(value: string): string {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+}
+
+function parseTagsText(value: string): string[] {
+  return value
+    .split(',')
+    .map((entry) => entry.trim())
+    .filter(Boolean)
+}
+
+function normalizeSearchText(value: unknown): string {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim()
+}
+
+function matchesProtocolSearch(protocol: ProtocolListEntry, query: string): boolean {
+  const needle = normalizeSearchText(query)
+  if (!needle) return true
+
+  const haystacks = [
+    protocol.name,
+    protocol.description,
+    protocol.species,
+    ...(protocol.tags || []),
+  ]
+
+  return haystacks.some((value) => normalizeSearchText(value).includes(needle))
+}
+
+function canUserPublishGlobal(role: 'owner' | 'member' | null, user: any): boolean {
+  if (role === 'owner') return true
+  const userMetadata = (user?.user_metadata || {}) as Record<string, unknown>
+  const appMetadata = (user?.app_metadata || {}) as Record<string, unknown>
+  return (
+    hasTruthyFlag(userMetadata.is_admin) ||
+    hasTruthyFlag(userMetadata.global_protocol_publisher) ||
+    hasTruthyFlag(userMetadata.global_content_admin) ||
+    hasTruthyFlag(appMetadata.is_admin) ||
+    hasTruthyFlag(appMetadata.global_protocol_publisher) ||
+    hasTruthyFlag(appMetadata.global_content_admin) ||
+    readText(appMetadata.role) === 'admin'
+  )
+}
+
 // ==================== COMPONENT ====================
 
 export default function Protocolos3Page() {
   const navigate = useNavigate()
-  const { clinicId } = useClinic()
+  const { clinicId, role } = useClinic()
   const [userId, setUserId] = useState<string | null>(null)
+  const [canPublishGlobalProtocols, setCanPublishGlobalProtocols] = useState(false)
 
   // ✅ Estado: lista de pastas e protocolos
   const [folders, setFolders] = useState<ProtocolFolderRecord[]>([])
-  const [protocols, setProtocols] = useState<ProtocolRecord[]>([])
+  const [protocols, setProtocols] = useState<ProtocolListEntry[]>([])
   const [isLoadingFolders, setIsLoadingFolders] = useState(false)
   const [isLoadingProtocols, setIsLoadingProtocols] = useState(false)
+  const [scopeFilter, setScopeFilter] = useState<ProtocolScopeFilter>('all')
+  const [searchQuery, setSearchQuery] = useState('')
 
   // ✅ Estado: seleção STITCH layout
   const [selectedFolderId, setSelectedFolderId] = useState<string | null>(null)
-  const [selectedProtocolId, setSelectedProtocolId] = useState<string | null>(null)
+  const [selectedProtocolKey, setSelectedProtocolKey] = useState<string | null>(null)
   const [selectedProtocolBundle, setSelectedProtocolBundle] = useState<ProtocolBundle | null>(null)
+  const [globalProtocolViewer, setGlobalProtocolViewer] = useState<GlobalProtocolBundle | null>(null)
+  const [isLoadingGlobalViewer, setIsLoadingGlobalViewer] = useState(false)
+  const [isDuplicatingGlobal, setIsDuplicatingGlobal] = useState(false)
 
   // ✅ Estado: modal criar/editar protocolo
   const [modalOpen, setModalOpen] = useState(false)
@@ -102,6 +194,11 @@ export default function Protocolos3Page() {
   const [medicationSearchQuery, setMedicationSearchQuery] = useState('')
   const [medications, setMedications] = useState<MedicationSearchResult[]>([])
   const [isSearchingMedications, setIsSearchingMedications] = useState(false)
+  const [publishGlobalOpen, setPublishGlobalOpen] = useState(false)
+  const [publishGlobalDraft, setPublishGlobalDraft] = useState<PublishGlobalDraft | null>(null)
+  const [linkedGlobalProtocols, setLinkedGlobalProtocols] = useState<GlobalProtocolRecord[]>([])
+  const [isLoadingGlobalProtocols, setIsLoadingGlobalProtocols] = useState(false)
+  const [isPublishingGlobal, setIsPublishingGlobal] = useState(false)
 
   // ==================== EFFECTS ====================
 
@@ -110,10 +207,13 @@ export default function Protocolos3Page() {
     supabase.auth.getUser().then(({ data }) => {
       if (data?.user) {
         setUserId(data.user.id)
+        setCanPublishGlobalProtocols(canUserPublishGlobal(role, data.user))
         console.log('[Protocolos3] userId', data.user.id)
+      } else {
+        setCanPublishGlobalProtocols(false)
       }
     })
-  }, [])
+  }, [role])
 
   // ✅ Carregar pastas (apenas após clinicId e userId estarem definidos)
   useEffect(() => {
@@ -131,7 +231,7 @@ export default function Protocolos3Page() {
         await ensureDefaultSpecialtyProtocolSeed(clinicId, userId)
         const [refreshedFolders, refreshedProtocols] = await Promise.all([
           listFolders(clinicId, userId),
-          listProtocols(clinicId, userId),
+          listCombinedProtocols(clinicId, userId),
         ])
         setFolders(refreshedFolders)
         setProtocols(refreshedProtocols)
@@ -153,7 +253,7 @@ export default function Protocolos3Page() {
     console.log('[Protocolos3] Carregando protocols', { clinicId, userId })
     setIsLoadingProtocols(true)
 
-    listProtocols(clinicId, userId)
+    listCombinedProtocols(clinicId, userId)
       .then((data) => {
         console.log('[Protocolos3] Protocols carregados', data)
         setProtocols(data)
@@ -205,6 +305,31 @@ export default function Protocolos3Page() {
     setProtocolDraft(editingProtocol)
   }, [modalOpen, editingProtocol, setProtocolDraft])
 
+  const reloadProtocols = useCallback(async () => {
+    if (!clinicId || !userId) return
+    const data = await listCombinedProtocols(clinicId, userId)
+    setProtocols(data)
+  }, [clinicId, userId])
+
+  const visibleProtocols = useMemo(() => {
+    return protocols.filter((protocol) => {
+      if (scopeFilter !== 'all' && protocol.scope !== scopeFilter) return false
+      if (protocol.scope === 'clinic' && selectedFolderId && protocol.folder_id !== selectedFolderId) return false
+      if (!matchesProtocolSearch(protocol, searchQuery)) return false
+      return true
+    })
+  }, [protocols, scopeFilter, searchQuery, selectedFolderId])
+
+  const clinicProtocolsVisible = useMemo(
+    () => visibleProtocols.filter((protocol) => protocol.scope === 'clinic'),
+    [visibleProtocols]
+  )
+
+  const globalProtocolsVisible = useMemo(
+    () => visibleProtocols.filter((protocol) => protocol.scope === 'global'),
+    [visibleProtocols]
+  )
+
   // ==================== HANDLERS ====================
 
   const handleCreateProtocol = useCallback(() => {
@@ -228,7 +353,7 @@ export default function Protocolos3Page() {
       },
       medications: [],
       recommendations: [],
-      // NOTE: no exam_items — table does not exist in this schema
+      // NOTE: exam items exist in Supabase, but the current editor still handles only medications + recommendations
     })
     setModalOpen(true)
   }, [clinicId, userId, selectedFolderId])
@@ -257,11 +382,7 @@ export default function Protocolos3Page() {
     try {
       console.log('[Protocolos3] Salvando protocolo', editingProtocol.protocol.name)
       await saveProtocolBundle(clinicId, userId, editingProtocol)
-
-      // Recarregar lista
-      const updatedProtocols = await listProtocols(clinicId, userId)
-      console.log('[Protocolos3] Protocols recarregados após salvar', updatedProtocols)
-      setProtocols(updatedProtocols)
+      await reloadProtocols()
 
       setModalOpen(false)
       setEditingProtocol(null)
@@ -272,7 +393,89 @@ export default function Protocolos3Page() {
       console.error('[Protocolos3] Detalhes do erro:', errorDetails)
       alert(`Falha ao salvar protocolo\n\nDetalhes:\n${errorDetails}`)
     }
-  }, [clinicId, userId, editingProtocol])
+  }, [clinicId, userId, editingProtocol, clearProtocolDraft, reloadProtocols])
+
+  const handleOpenPublishGlobalModal = useCallback(async () => {
+    if (!clinicId || !editingProtocol) return
+    if (!editingProtocol.protocol.id) {
+      alert('Salve o protocolo local antes de publicar como global.')
+      return
+    }
+
+    try {
+      setIsLoadingGlobalProtocols(true)
+      const linked = await findLinkedGlobalProtocols(editingProtocol.protocol.id, clinicId)
+      setLinkedGlobalProtocols(linked)
+      setPublishGlobalDraft({
+        name: editingProtocol.protocol.name,
+        description: editingProtocol.protocol.description || '',
+        species: editingProtocol.protocol.species || '',
+        tagsText: (editingProtocol.protocol.tags || []).join(', '),
+        slug: slugifyProtocolName(editingProtocol.protocol.name),
+        mode: linked.length ? 'update' : 'new',
+        globalProtocolId: linked[0]?.id || '',
+      })
+      setPublishGlobalOpen(true)
+    } catch (err) {
+      console.error('[Protocolos3] Erro ao abrir publicação global', err)
+      alert(`Falha ao preparar publicação global\n\n${safeStringify(err)}`)
+    } finally {
+      setIsLoadingGlobalProtocols(false)
+    }
+  }, [clinicId, editingProtocol])
+
+  const handleClosePublishGlobalModal = useCallback(() => {
+    setPublishGlobalOpen(false)
+    setPublishGlobalDraft(null)
+    setLinkedGlobalProtocols([])
+  }, [])
+
+  const handlePublishGlobalProtocol = useCallback(async () => {
+    if (!clinicId || !editingProtocol?.protocol.id || !publishGlobalDraft) return
+
+    const name = publishGlobalDraft.name.trim()
+    const slug = slugifyProtocolName(publishGlobalDraft.slug || publishGlobalDraft.name)
+    if (!name) {
+      alert('Informe um nome global para publicar o protocolo.')
+      return
+    }
+    if (!slug) {
+      alert('Slug global inválido.')
+      return
+    }
+    if (publishGlobalDraft.mode === 'update' && !publishGlobalDraft.globalProtocolId) {
+      alert('Selecione qual protocolo global vinculado deve ser atualizado.')
+      return
+    }
+
+    try {
+      setIsPublishingGlobal(true)
+      const result = await publishProtocolAsGlobal({
+        protocolId: editingProtocol.protocol.id,
+        mode: publishGlobalDraft.mode,
+        globalProtocolId: publishGlobalDraft.mode === 'update' ? publishGlobalDraft.globalProtocolId : null,
+        name,
+        description: publishGlobalDraft.description.trim() || null,
+        species: publishGlobalDraft.species.trim() || null,
+        tags: parseTagsText(publishGlobalDraft.tagsText),
+        slug,
+      })
+
+      const refreshedLinked = await findLinkedGlobalProtocols(editingProtocol.protocol.id, clinicId)
+      setLinkedGlobalProtocols(refreshedLinked)
+      alert(
+        result.mode === 'update'
+          ? `Protocolo global atualizado com sucesso.\n\nSlug: ${result.slug}\nVersão: ${result.version}`
+          : `Protocolo global publicado com sucesso.\n\nSlug: ${result.slug}\nVersão: ${result.version}`
+      )
+      handleClosePublishGlobalModal()
+    } catch (err) {
+      console.error('[Protocolos3] Erro ao publicar protocolo global', err)
+      alert(`Falha ao publicar protocolo global\n\n${safeStringify(err)}`)
+    } finally {
+      setIsPublishingGlobal(false)
+    }
+  }, [clinicId, editingProtocol?.protocol.id, handleClosePublishGlobalModal, publishGlobalDraft])
 
   const handleDeleteProtocol = useCallback(
     async (protocolId: string) => {
@@ -282,11 +485,7 @@ export default function Protocolos3Page() {
       try {
         console.log('[Protocolos3] Excluindo protocolo', protocolId)
         await deleteProtocol(clinicId, userId, protocolId)
-
-        // Recarregar lista
-        const updatedProtocols = await listProtocols(clinicId, userId)
-        console.log('[Protocolos3] Protocols recarregados após exclusão', updatedProtocols)
-        setProtocols(updatedProtocols)
+        await reloadProtocols()
       } catch (err) {
         console.error('[Protocolos3] Erro ao excluir protocolo', err)
         const errorDetails = safeStringify(err)
@@ -294,7 +493,7 @@ export default function Protocolos3Page() {
         alert(`Falha ao excluir protocolo\n\nDetalhes:\n${errorDetails}`)
       }
     },
-    [clinicId, userId]
+    [clinicId, userId, reloadProtocols]
   )
 
   const handleDeleteFolder = useCallback(
@@ -305,7 +504,7 @@ export default function Protocolos3Page() {
         await deleteFolder(clinicId, userId, folderId)
         const [refreshedFolders, refreshedProtocols] = await Promise.all([
           listFolders(clinicId, userId),
-          listProtocols(clinicId, userId),
+          listCombinedProtocols(clinicId, userId),
         ])
         setFolders(refreshedFolders)
         setProtocols(refreshedProtocols)
@@ -319,17 +518,19 @@ export default function Protocolos3Page() {
   )
 
   const handleApplyToNovaReceita = useCallback(
-    async (protocolId: string) => {
+    async (protocol: ProtocolListEntry) => {
       if (!clinicId || !userId) {
         alert('Clínica ou usuário não identificado.')
         return
       }
 
       try {
-        console.log('[Protocolos3] Carregando protocolo para aplicar em Nova Receita', protocolId)
+        console.log('[Protocolos3] Carregando protocolo para aplicar em Nova Receita', protocol.id)
 
-        // Carregar bundle completo do protocolo
-        const bundle = await loadProtocolBundle(clinicId, userId, protocolId)
+        const bundle =
+          protocol.scope === 'global'
+            ? await loadGlobalProtocolBundle(protocol.id)
+            : await loadProtocolBundle(clinicId, userId, protocol.id)
         if (!bundle) {
           alert('Protocolo não encontrado.')
           return
@@ -348,6 +549,7 @@ export default function Protocolos3Page() {
           sourceProtocol: {
             id: bundle.protocol.id,
             name: bundle.protocol.name,
+            scope: protocol.scope,
           },
         }
 
@@ -368,7 +570,7 @@ export default function Protocolos3Page() {
     async (protocolId: string) => {
       if (!clinicId || !userId) return
 
-      setSelectedProtocolId(protocolId)
+      setSelectedProtocolKey(`clinic:${protocolId}`)
       setSelectedProtocolBundle(null) // Clear previous bundle while loading
 
       try {
@@ -391,6 +593,52 @@ export default function Protocolos3Page() {
     [clinicId, userId]
   )
 
+  const handleOpenGlobalProtocol = useCallback(async (protocolId: string) => {
+    try {
+      setSelectedProtocolKey(`global:${protocolId}`)
+      setIsLoadingGlobalViewer(true)
+      const bundle = await loadGlobalProtocolBundle(protocolId)
+      if (!bundle) {
+        alert('Protocolo global não encontrado.')
+        return
+      }
+      setGlobalProtocolViewer(bundle)
+    } catch (err) {
+      console.error('[Protocolos3] Erro ao abrir protocolo global', err)
+      alert(`Falha ao carregar protocolo global\n\n${safeStringify(err)}`)
+    } finally {
+      setIsLoadingGlobalViewer(false)
+    }
+  }, [])
+
+  const handleCloseGlobalProtocol = useCallback(() => {
+    setGlobalProtocolViewer(null)
+    setSelectedProtocolKey(null)
+  }, [])
+
+  const handleDuplicateGlobalProtocol = useCallback(async () => {
+    if (!clinicId || !userId || !globalProtocolViewer) return
+
+    try {
+      setIsDuplicatingGlobal(true)
+      const duplicated = await duplicateGlobalProtocolToClinic(clinicId, userId, globalProtocolViewer.protocol.id)
+      await reloadProtocols()
+      const bundle = await loadProtocolBundle(clinicId, userId, duplicated.id)
+      if (bundle) {
+        setEditingProtocol(bundle)
+        setModalOpen(true)
+      }
+      setGlobalProtocolViewer(null)
+      alert('Protocolo global duplicado para a sua clínica com sucesso.')
+    } catch (err) {
+      console.error('[Protocolos3] Erro ao duplicar protocolo global', err)
+      const message = err instanceof Error ? err.message : safeStringify(err)
+      alert(`Falha ao duplicar protocolo global\n\n${message}`)
+    } finally {
+      setIsDuplicatingGlobal(false)
+    }
+  }, [clinicId, userId, globalProtocolViewer, reloadProtocols])
+
   const handleAddMedication = useCallback(
     async (medication: MedicationSearchResult) => {
       if (!clinicId || !editingProtocol) return
@@ -410,7 +658,13 @@ export default function Protocolos3Page() {
         // Create item — only fields that exist in the DB schema
         const newItem: ProtocolMedicationItem = {
           medication_id: medication.id,
+          medication_name: medication.name,
           presentation_id: defaultPresentation.id,
+          presentation_text: [
+            defaultPresentation.pharmaceutical_form,
+            defaultPresentation.commercial_name,
+            defaultPresentation.concentration_text,
+          ].filter(Boolean).join(' — '),
           manual_medication_name: null,
           manual_presentation_label: null,
           concentration_value: (defaultPresentation as any).concentration_value || null,
@@ -454,6 +708,190 @@ export default function Protocolos3Page() {
   )
 
   // ==================== RENDER ====================
+
+  const renderProtocolCard = (protocol: ProtocolListEntry) => (
+    <div
+      key={`${protocol.scope}:${protocol.id}`}
+      onClick={() =>
+        protocol.scope === 'global'
+          ? handleOpenGlobalProtocol(protocol.id)
+          : handleSelectProtocol(protocol.id)
+      }
+      className="group"
+    >
+      <RxvCard
+        className={`p-6 h-full transition-all border-l-4 ${
+          selectedProtocolKey === `${protocol.scope}:${protocol.id}`
+            ? 'border-l-[#39ff14] bg-[#39ff14]/10 shadow-[0_0_30px_rgba(57,255,20,0.1)]'
+            : 'border-l-transparent hover:border-l-slate-700'
+        }`}
+      >
+        <div className="flex items-start justify-between mb-4">
+          <div className="flex-1 min-w-0 pr-4">
+            <div className="mb-2 flex flex-wrap items-center gap-2">
+              <span
+                className={`text-[9px] font-black uppercase px-2.5 py-1 rounded-full tracking-[0.18em] ${
+                  protocol.scope === 'global'
+                    ? 'bg-cyan-500/12 text-cyan-200 border border-cyan-400/25'
+                    : 'bg-[#39ff14]/12 text-[#9CFF87] border border-[#39ff14]/20'
+                }`}
+              >
+                {protocol.scope === 'global' ? 'GLOBAL' : 'DA CLÍNICA'}
+              </span>
+            </div>
+            <h3 className="text-lg font-black text-white leading-tight truncate uppercase italic">
+              {protocol.name}
+            </h3>
+            {protocol.description && (
+              <p className="text-xs text-slate-500 mt-2 line-clamp-2 leading-relaxed">
+                {protocol.description}
+              </p>
+            )}
+          </div>
+          <div className="flex items-center gap-1 shrink-0">
+            {protocol.scope === 'clinic' ? (
+              <>
+                <button
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); handleEditProtocol(protocol.id); }}
+                  className="p-2 rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800 text-slate-400 transition-colors"
+                  title="Editar"
+                >
+                  <span className="material-symbols-outlined text-[20px]">edit</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); handleDeleteProtocol(protocol.id); }}
+                  className="p-2 rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800 text-red-500/70 hover:text-red-400 transition-colors"
+                  title="Excluir"
+                >
+                  <span className="material-symbols-outlined text-[20px]">delete</span>
+                </button>
+              </>
+            ) : scopeFilter === 'all' ? (
+              <div className="space-y-10">
+                {clinicProtocolsVisible.length > 0 && (
+                  <section className="space-y-5">
+                    <div className="flex items-center gap-3 border-b border-slate-800/80 pb-3">
+                      <span className="text-[10px] font-black uppercase tracking-[0.24em] text-[#7CFF64]">
+                        Protocolos da clÃ­nica
+                      </span>
+                      <span className="h-px flex-1 bg-slate-800" />
+                      <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">
+                        {clinicProtocolsVisible.length} item(ns)
+                      </span>
+                    </div>
+                    {renderProtocolGrid(clinicProtocolsVisible)}
+                  </section>
+                )}
+
+                {globalProtocolsVisible.length > 0 && (
+                  <section className="space-y-5">
+                    <div className="flex items-center gap-3 border-b border-slate-800/80 pb-3">
+                      <span className="text-[10px] font-black uppercase tracking-[0.24em] text-cyan-300">
+                        Protocolos globais
+                      </span>
+                      <span className="h-px flex-1 bg-slate-800" />
+                      <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">
+                        {globalProtocolsVisible.length} item(ns)
+                      </span>
+                    </div>
+                    {renderProtocolGrid(globalProtocolsVisible)}
+                  </section>
+                )}
+              </div>
+            ) : scopeFilter === 'all' ? (
+              <div className="space-y-10">
+                {clinicProtocolsVisible.length > 0 && (
+                  <section className="space-y-5">
+                    <div className="flex items-center gap-3 border-b border-slate-800/80 pb-3">
+                      <span className="text-[10px] font-black uppercase tracking-[0.24em] text-[#7CFF64]">
+                        Protocolos da clÃ­nica
+                      </span>
+                      <span className="h-px flex-1 bg-slate-800" />
+                      <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">
+                        {clinicProtocolsVisible.length} item(ns)
+                      </span>
+                    </div>
+                    {renderProtocolGrid(clinicProtocolsVisible)}
+                  </section>
+                )}
+
+                {globalProtocolsVisible.length > 0 && (
+                  <section className="space-y-5">
+                    <div className="flex items-center gap-3 border-b border-slate-800/80 pb-3">
+                      <span className="text-[10px] font-black uppercase tracking-[0.24em] text-cyan-300">
+                        Protocolos globais
+                      </span>
+                      <span className="h-px flex-1 bg-slate-800" />
+                      <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">
+                        {globalProtocolsVisible.length} item(ns)
+                      </span>
+                    </div>
+                    {renderProtocolGrid(globalProtocolsVisible)}
+                  </section>
+                )}
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={(e) => { e.stopPropagation(); handleOpenGlobalProtocol(protocol.id); }}
+                disabled={isLoadingGlobalViewer}
+                className="p-2 rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800 text-cyan-300 transition-colors"
+                title="Visualizar"
+              >
+                <span className="material-symbols-outlined text-[20px]">visibility</span>
+              </button>
+            )}
+          </div>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-2 mb-6">
+          {protocol.species && (
+            <span className="text-[9px] font-black uppercase px-2.5 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20 tracking-wider">
+              {protocol.species}
+            </span>
+          )}
+          {protocol.is_control_special && (
+            <span className="text-[9px] font-black uppercase px-2.5 py-1 rounded bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 tracking-wider">
+              Controlado
+            </span>
+          )}
+          {protocol.tags?.map(tag => (
+            <span key={tag} className="text-[9px] font-black uppercase px-2.5 py-1 rounded bg-slate-800 text-slate-400 tracking-wider">
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <div className="mt-auto flex flex-col gap-2">
+          {protocol.scope === 'global' && (
+            <RxvButton
+              variant="secondary"
+              onClick={(e) => { e.stopPropagation(); handleOpenGlobalProtocol(protocol.id); }}
+              loading={isLoadingGlobalViewer && selectedProtocolKey === `global:${protocol.id}`}
+              className="w-full text-[10px] h-10 font-black tracking-widest uppercase"
+            >
+              Visualizar Protocolo
+            </RxvButton>
+          )}
+          <RxvButton
+            variant="secondary"
+            onClick={(e) => { e.stopPropagation(); handleApplyToNovaReceita(protocol); }}
+            className="w-full text-[10px] h-10 font-black tracking-widest uppercase"
+          >
+            Utilizar Protocolo
+          </RxvButton>
+        </div>
+      </RxvCard>
+    </div>
+  )
+
+  const renderProtocolGrid = (items: ProtocolListEntry[]) => (
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      {items.map((protocol) => renderProtocolCard(protocol))}
+    </div>
+  )
 
   if (!clinicId) {
     return (
@@ -539,18 +977,57 @@ export default function Protocolos3Page() {
         {/* Main Content */}
         <main className="flex-1 overflow-y-auto">
           {/* Topbar Intermediária */}
-          <div className="sticky top-0 z-30 border-b border-slate-800/50 bg-black/60 backdrop-blur-md px-8 py-6 flex items-center justify-between">
-            <div>
+          <div className="sticky top-0 z-30 border-b border-slate-800/50 bg-black/60 backdrop-blur-md px-8 py-6">
+            <div className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
+              <div>
               <h1 className="text-2xl font-black text-white italic tracking-tight uppercase leading-none">
                 {selectedFolderId ? folders.find(f => f.id === selectedFolderId)?.name : 'Todos os Protocolos'}
               </h1>
               <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 opacity-80">
-                {protocols.length} protocolos encontrados
+                {visibleProtocols.length} protocolos encontrados
               </p>
+              <div className="mt-4 inline-flex rounded-2xl border border-slate-800 bg-black/40 p-1">
+                {[
+                  { value: 'all', label: 'Todos' },
+                  { value: 'clinic', label: 'Da clínica' },
+                  { value: 'global', label: 'Globais' },
+                ].map((option) => (
+                  <button
+                    key={option.value}
+                    type="button"
+                    onClick={() => setScopeFilter(option.value as ProtocolScopeFilter)}
+                    className={`rounded-xl px-3 py-2 text-[10px] font-black uppercase tracking-[0.18em] transition-colors ${
+                      scopeFilter === option.value
+                        ? 'bg-[#39ff14]/15 text-[#7CFF64] border border-[#39ff14]/25'
+                        : 'text-slate-500 hover:text-slate-200'
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+              </div>
+              <div className="flex flex-col gap-3 xl:w-[28rem]">
+                <label className="block">
+                  <span className="sr-only">Buscar protocolo</span>
+                  <div className="relative">
+                    <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">search</span>
+                    <input
+                      type="search"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      placeholder="Buscar protocolo por nome, descriÃ§Ã£o ou tag"
+                      className="w-full rounded-2xl border border-slate-800 bg-black/40 py-3 pl-12 pr-4 text-sm text-white outline-none transition-colors placeholder:text-slate-600 focus:border-[#39ff14]/35"
+                    />
+                  </div>
+                </label>
+                <div className="flex justify-end">
+                  <RxvButton variant="primary" onClick={handleCreateProtocol}>
+                    + Novo Protocolo
+                  </RxvButton>
+                </div>
+              </div>
             </div>
-            <RxvButton variant="primary" onClick={handleCreateProtocol}>
-              + Novo Protocolo
-            </RxvButton>
           </div>
 
           <div className="p-8">
@@ -559,28 +1036,55 @@ export default function Protocolos3Page() {
                 <span className="material-symbols-outlined animate-spin text-[#39ff14] text-[48px]">sync</span>
                 <p className="mt-4 text-slate-500 text-sm font-bold uppercase tracking-widest">Carregando catálogo...</p>
               </div>
-            ) : protocols.filter(p => !selectedFolderId || p.folder_id === selectedFolderId).length === 0 ? (
+            ) : visibleProtocols.length === 0 ? (
               <div className="text-center py-20">
                 <span className="material-symbols-outlined text-slate-800 text-[80px]">inventory_2</span>
                 <p className="mt-4 text-xl font-bold text-slate-600">Nada por aqui</p>
-                <p className="mt-2 text-sm text-slate-500">Crie seu primeiro protocolo para agilizar seus atendimentos.</p>
+                {searchQuery.trim() ? (
+                  <p className="mt-2 text-sm text-slate-500">
+                    Nenhum protocolo encontrado para esta busca.
+                  </p>
+                ) : (
+                  <p className="mt-2 text-sm text-slate-500">
+                    {scopeFilter === 'global'
+                    ? 'Nenhum protocolo global disponível neste momento.'
+                    : 'Crie seu primeiro protocolo para agilizar seus atendimentos.'}
+                  </p>
+                )}
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                {protocols
-                  .filter(p => !selectedFolderId || p.folder_id === selectedFolderId)
+                {visibleProtocols
                   .map((protocol) => (
                     <div
-                      key={protocol.id}
-                      onClick={() => handleSelectProtocol(protocol.id)}
+                      key={`${protocol.scope}:${protocol.id}`}
+                      onClick={() =>
+                        protocol.scope === 'global'
+                          ? handleOpenGlobalProtocol(protocol.id)
+                          : handleSelectProtocol(protocol.id)
+                      }
                       className="group"
                     >
                       <RxvCard
-                        className={`p-6 h-full transition-all border-l-4 ${selectedProtocolId === protocol.id ? 'border-l-[#39ff14] bg-[#39ff14]/10 shadow-[0_0_30px_rgba(57,255,20,0.1)]' : 'border-l-transparent hover:border-l-slate-700'
+                        className={`p-6 h-full transition-all border-l-4 ${
+                          selectedProtocolKey === `${protocol.scope}:${protocol.id}`
+                            ? 'border-l-[#39ff14] bg-[#39ff14]/10 shadow-[0_0_30px_rgba(57,255,20,0.1)]'
+                            : 'border-l-transparent hover:border-l-slate-700'
                           }`}
                       >
                         <div className="flex items-start justify-between mb-4">
                           <div className="flex-1 min-w-0 pr-4">
+                            <div className="mb-2 flex flex-wrap items-center gap-2">
+                              <span
+                                className={`text-[9px] font-black uppercase px-2.5 py-1 rounded tracking-wider ${
+                                  protocol.scope === 'global'
+                                    ? 'bg-cyan-500/10 text-cyan-300 border border-cyan-500/20'
+                                    : 'bg-[#39ff14]/10 text-[#7CFF64] border border-[#39ff14]/20'
+                                }`}
+                              >
+                                {protocol.scope === 'global' ? 'GLOBAL' : 'DA CLÍNICA'}
+                              </span>
+                            </div>
                             <h3 className="text-lg font-black text-white leading-tight truncate uppercase italic">
                               {protocol.name}
                             </h3>
@@ -591,22 +1095,36 @@ export default function Protocolos3Page() {
                             )}
                           </div>
                           <div className="flex items-center gap-1 shrink-0">
-                            <button
-                              type="button"
-                              onClick={(e) => { e.stopPropagation(); handleEditProtocol(protocol.id); }}
-                              className="p-2 rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800 text-slate-400 transition-colors"
-                              title="Editar"
-                            >
-                              <span className="material-symbols-outlined text-[20px]">edit</span>
-                            </button>
-                            <button
-                              type="button"
-                              onClick={(e) => { e.stopPropagation(); handleDeleteProtocol(protocol.id); }}
-                              className="p-2 rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800 text-red-500/70 hover:text-red-400 transition-colors"
-                              title="Excluir"
-                            >
-                              <span className="material-symbols-outlined text-[20px]">delete</span>
-                            </button>
+                            {protocol.scope === 'clinic' ? (
+                              <>
+                                <button
+                                  type="button"
+                                  onClick={(e) => { e.stopPropagation(); handleEditProtocol(protocol.id); }}
+                                  className="p-2 rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800 text-slate-400 transition-colors"
+                                  title="Editar"
+                                >
+                                  <span className="material-symbols-outlined text-[20px]">edit</span>
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={(e) => { e.stopPropagation(); handleDeleteProtocol(protocol.id); }}
+                                  className="p-2 rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800 text-red-500/70 hover:text-red-400 transition-colors"
+                                  title="Excluir"
+                                >
+                                  <span className="material-symbols-outlined text-[20px]">delete</span>
+                                </button>
+                              </>
+                            ) : (
+                              <button
+                                type="button"
+                                onClick={(e) => { e.stopPropagation(); handleOpenGlobalProtocol(protocol.id); }}
+                                disabled={isLoadingGlobalViewer}
+                                className="p-2 rounded-xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800 text-cyan-300 transition-colors"
+                                title="Visualizar"
+                              >
+                                <span className="material-symbols-outlined text-[20px]">visibility</span>
+                              </button>
+                            )}
                           </div>
                         </div>
 
@@ -628,13 +1146,25 @@ export default function Protocolos3Page() {
                           ))}
                         </div>
 
-                        <RxvButton
-                          variant="secondary"
-                          onClick={(e) => { e.stopPropagation(); handleApplyToNovaReceita(protocol.id); }}
-                          className="w-full text-[10px] h-10 font-black tracking-widest uppercase mt-auto"
-                        >
-                          Utilizar Protocolo
-                        </RxvButton>
+                        <div className="mt-auto flex flex-col gap-2">
+                          {protocol.scope === 'global' && (
+                            <RxvButton
+                              variant="secondary"
+                              onClick={(e) => { e.stopPropagation(); handleOpenGlobalProtocol(protocol.id); }}
+                              loading={isLoadingGlobalViewer && selectedProtocolKey === `global:${protocol.id}`}
+                              className="w-full text-[10px] h-10 font-black tracking-widest uppercase"
+                            >
+                              Visualizar Protocolo
+                            </RxvButton>
+                          )}
+                          <RxvButton
+                            variant="secondary"
+                            onClick={(e) => { e.stopPropagation(); handleApplyToNovaReceita(protocol); }}
+                            className="w-full text-[10px] h-10 font-black tracking-widest uppercase"
+                          >
+                            Utilizar Protocolo
+                          </RxvButton>
+                        </div>
                       </RxvCard>
                     </div>
                   ))}
@@ -651,6 +1181,11 @@ export default function Protocolos3Page() {
             {/* Header */}
             <div className="flex items-center justify-between border-b border-slate-800 bg-black/60 px-8 py-6">
               <div>
+                <div className="mb-2 flex items-center gap-2">
+                  <span className="text-[9px] font-black uppercase px-2.5 py-1 rounded bg-[#39ff14]/10 text-[#7CFF64] border border-[#39ff14]/20 tracking-wider">
+                    DA CLÍNICA
+                  </span>
+                </div>
                 <h2 className="text-xl font-black text-white italic uppercase tracking-tight">
                   {editingProtocol.protocol.id ? 'Editar Protocolo' : 'Novo Protocolo'}
                 </h2>
@@ -659,7 +1194,17 @@ export default function Protocolos3Page() {
                 </p>
               </div>
               <div className="flex items-center gap-3">
-                <RxvButton variant="secondary" onClick={() => { setModalOpen(false); setEditingProtocol(null); }}>
+                {canPublishGlobalProtocols && (
+                  <RxvButton
+                    variant="secondary"
+                    onClick={handleOpenPublishGlobalModal}
+                    disabled={!editingProtocol.protocol.id || isLoadingGlobalProtocols}
+                    title={editingProtocol.protocol.id ? 'Publicar protocolo para todos os usuários' : 'Salve o protocolo local antes de publicar globalmente'}
+                  >
+                    {isLoadingGlobalProtocols ? 'Carregando vínculo...' : 'Salvar como global'}
+                  </RxvButton>
+                )}
+                <RxvButton variant="secondary" onClick={() => { setModalOpen(false); setEditingProtocol(null); handleClosePublishGlobalModal(); }}>
                   Cancelar
                 </RxvButton>
                 <RxvButton variant="primary" onClick={handleSaveProtocol}>
@@ -834,7 +1379,7 @@ export default function Protocolos3Page() {
                               {med.medication_name || med.manual_medication_name}
                             </p>
                             <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-0.5 truncate">
-                              {med.manual_presentation_label || 'Apresentação não definida'}
+                              {med.manual_presentation_label || med.presentation_text || 'Apresentação não definida'}
                             </p>
                           </div>
                           <button
@@ -941,6 +1486,339 @@ export default function Protocolos3Page() {
                   </button>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {globalProtocolViewer && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm px-4 py-8">
+          <div className="max-h-[92vh] w-full max-w-4xl overflow-hidden rounded-2xl border border-cyan-500/30 bg-[#071014] text-slate-100 shadow-[0_0_60px_rgba(34,211,238,0.15)] flex flex-col">
+            <div className="flex items-center justify-between border-b border-slate-800 bg-black/60 px-8 py-6">
+              <div>
+                <div className="mb-2 flex items-center gap-2">
+                  <span className="text-[9px] font-black uppercase px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 tracking-wider">
+                    GLOBAL
+                  </span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                    leitura
+                  </span>
+                </div>
+                <h2 className="text-xl font-black text-white italic uppercase tracking-tight">
+                  {globalProtocolViewer.protocol.name}
+                </h2>
+                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">
+                  Disponível para todos os usuários
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={handleCloseGlobalProtocol}
+                className="h-10 w-10 flex items-center justify-center rounded-xl bg-slate-900/60 text-slate-400 hover:bg-slate-800 hover:text-white transition-colors"
+              >
+                <span className="material-symbols-outlined text-[20px]">close</span>
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto p-8 space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="rounded-2xl border border-slate-800 bg-black/30 p-5">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Descrição</p>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-200">
+                    {globalProtocolViewer.protocol.description || 'Sem descrição.'}
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-slate-800 bg-black/30 p-5">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Metadados</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {globalProtocolViewer.protocol.species && (
+                      <span className="text-[9px] font-black uppercase px-2.5 py-1 rounded bg-blue-500/10 text-blue-300 border border-blue-500/20 tracking-wider">
+                        {globalProtocolViewer.protocol.species}
+                      </span>
+                    )}
+                    {globalProtocolViewer.protocol.is_control_special && (
+                      <span className="text-[9px] font-black uppercase px-2.5 py-1 rounded bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 tracking-wider">
+                        Controlado
+                      </span>
+                    )}
+                    {(globalProtocolViewer.protocol.tags || []).map((tag) => (
+                      <span key={tag} className="text-[9px] font-black uppercase px-2.5 py-1 rounded bg-slate-800 text-slate-300 tracking-wider">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+                  <h3 className="text-sm font-black text-cyan-300 uppercase tracking-widest italic">
+                    Medicamentos do Protocolo
+                  </h3>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                    {globalProtocolViewer.medications.length} item(ns)
+                  </span>
+                </div>
+                {globalProtocolViewer.medications.length === 0 ? (
+                  <div className="rounded-2xl border border-dashed border-slate-800 bg-black/20 px-4 py-8 text-center text-xs font-bold uppercase tracking-widest text-slate-500">
+                    Nenhum medicamento configurado
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 gap-3">
+                    {globalProtocolViewer.medications.map((med, idx) => (
+                      <div key={`${med.id || idx}`} className="rounded-2xl border border-slate-800 bg-black/30 p-4">
+                        <p className="text-sm font-black text-white uppercase italic truncate">
+                          {med.medication_name || med.manual_medication_name}
+                        </p>
+                        <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-500 truncate">
+                          {med.manual_presentation_label || med.presentation_text || 'Apresentação não definida'}
+                        </p>
+                        <div className="mt-3 grid grid-cols-2 md:grid-cols-5 gap-3 text-xs text-slate-300">
+                          <div><span className="block text-[10px] uppercase tracking-widest text-slate-500">Dose</span>{med.dose_value || '-'} {med.dose_unit || ''}</div>
+                          <div><span className="block text-[10px] uppercase tracking-widest text-slate-500">Via</span>{med.route || '-'}</div>
+                          <div>
+                            <span className="block text-[10px] uppercase tracking-widest text-slate-500">Freq.</span>
+                            {med.frequency_type === 'times_per_day'
+                              ? `${med.times_per_day || '-'}x/dia`
+                              : med.frequency_type === 'interval_hours'
+                                ? (med.interval_hours ? `${med.interval_hours}h` : '-')
+                                : med.frequency_type === 'once_daily'
+                                  ? '1x/dia'
+                                  : med.frequency_type === 'as_needed'
+                                    ? 'Se necessário'
+                                    : '-'}
+                          </div>
+                          <div><span className="block text-[10px] uppercase tracking-widest text-slate-500">Dias</span>{med.duration_days || '-'}</div>
+                          <div><span className="block text-[10px] uppercase tracking-widest text-slate-500">Origem</span>{med.global_medication_id ? 'Catálogo global' : 'Manual'}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+                  <h3 className="text-sm font-black text-cyan-300 uppercase tracking-widest italic">
+                    Recomendações
+                  </h3>
+                </div>
+                {(globalProtocolViewer.recommendations || []).length === 0 ? (
+                  <div className="rounded-2xl border border-dashed border-slate-800 bg-black/20 px-4 py-8 text-center text-xs font-bold uppercase tracking-widest text-slate-500">
+                    Nenhuma recomendação configurada
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    {globalProtocolViewer.recommendations.map((recommendation, idx) => (
+                      <div key={`${recommendation.id || idx}`} className="rounded-2xl border border-slate-800 bg-black/30 px-4 py-4 text-sm leading-relaxed text-slate-200">
+                        {recommendation.text}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+                  <h3 className="text-sm font-black text-cyan-300 uppercase tracking-widest italic">
+                    Exames
+                  </h3>
+                </div>
+                {(globalProtocolViewer.examItems || []).length === 0 ? (
+                  <div className="rounded-2xl border border-dashed border-slate-800 bg-black/20 px-4 py-8 text-center text-xs font-bold uppercase tracking-widest text-slate-500">
+                    Nenhum exame configurado
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    {globalProtocolViewer.examItems.map((exam, idx) => (
+                      <div key={`${exam.id || idx}`} className="rounded-2xl border border-slate-800 bg-black/30 px-4 py-4">
+                        <p className="text-sm font-bold text-white">{exam.label}</p>
+                        <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                          {exam.is_custom ? 'Personalizado' : exam.exam_key || 'Exame'}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="flex items-center justify-end gap-3 border-t border-slate-800 bg-black/50 px-8 py-5">
+              <RxvButton
+                variant="secondary"
+                onClick={() => handleApplyToNovaReceita({ ...globalProtocolViewer.protocol, scope: 'global' })}
+              >
+                Utilizar Protocolo
+              </RxvButton>
+              <RxvButton variant="primary" onClick={handleDuplicateGlobalProtocol} loading={isDuplicatingGlobal}>
+                Duplicar para minha clínica
+              </RxvButton>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {publishGlobalOpen && publishGlobalDraft && editingProtocol && (
+        <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/95 backdrop-blur-sm px-4 py-8">
+          <div className="w-full max-w-2xl rounded-2xl border border-[#2f5b25] bg-[#0a0f0a] text-slate-100 shadow-[0_0_60px_rgba(57,255,20,0.15)]">
+            <div className="flex items-center justify-between border-b border-slate-800 bg-black/60 px-8 py-6">
+              <div>
+                <h2 className="text-xl font-black text-white italic uppercase tracking-tight">
+                  Salvar como global
+                </h2>
+                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">
+                  Publica este protocolo para todos os usuários via fluxo server-side
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={handleClosePublishGlobalModal}
+                className="h-10 w-10 flex items-center justify-center rounded-xl bg-slate-900/60 text-slate-400 hover:bg-slate-800 hover:text-white transition-colors"
+              >
+                <span className="material-symbols-outlined text-[20px]">close</span>
+              </button>
+            </div>
+
+            <div className="space-y-6 px-8 py-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <RxvField label="Nome global do protocolo">
+                  <RxvInput
+                    value={publishGlobalDraft.name}
+                    onChange={(e) =>
+                      setPublishGlobalDraft({
+                        ...publishGlobalDraft,
+                        name: e.target.value,
+                        slug: publishGlobalDraft.slug === slugifyProtocolName(editingProtocol.protocol.name)
+                          ? slugifyProtocolName(e.target.value)
+                          : publishGlobalDraft.slug,
+                      })
+                    }
+                    placeholder="Ex: Gastroenterite aguda - base"
+                  />
+                </RxvField>
+
+                <RxvField label="Slug sugerido">
+                  <RxvInput
+                    value={publishGlobalDraft.slug}
+                    onChange={(e) =>
+                      setPublishGlobalDraft({
+                        ...publishGlobalDraft,
+                        slug: slugifyProtocolName(e.target.value),
+                      })
+                    }
+                    placeholder="gastroenterite-aguda-base"
+                  />
+                </RxvField>
+              </div>
+
+              <RxvField label="Descrição">
+                <RxvTextarea
+                  rows={3}
+                  value={publishGlobalDraft.description}
+                  onChange={(e) =>
+                    setPublishGlobalDraft({
+                      ...publishGlobalDraft,
+                      description: e.target.value,
+                    })
+                  }
+                  placeholder="Resumo curto do protocolo global"
+                />
+              </RxvField>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <RxvField label="Espécie">
+                  <RxvSelect
+                    value={publishGlobalDraft.species}
+                    onChange={(e) =>
+                      setPublishGlobalDraft({
+                        ...publishGlobalDraft,
+                        species: e.target.value,
+                      })
+                    }
+                    options={[
+                      { value: '', label: 'Todas as espécies' },
+                      { value: 'Canina', label: 'Canina' },
+                      { value: 'Felina', label: 'Felina' },
+                      { value: 'Equina', label: 'Equina' },
+                      { value: 'Outros', label: 'Outras' },
+                    ]}
+                  />
+                </RxvField>
+
+                <RxvField label="Modo de publicação">
+                  <RxvSelect
+                    value={publishGlobalDraft.mode}
+                    onChange={(e) =>
+                      setPublishGlobalDraft({
+                        ...publishGlobalDraft,
+                        mode: (e.target.value === 'update' && linkedGlobalProtocols.length ? 'update' : 'new') as PublishGlobalMode,
+                        globalProtocolId:
+                          e.target.value === 'update'
+                            ? (publishGlobalDraft.globalProtocolId || linkedGlobalProtocols[0]?.id || '')
+                            : '',
+                      })
+                    }
+                    options={[
+                      ...(linkedGlobalProtocols.length
+                        ? [{ value: 'update', label: 'Atualizar global existente' }]
+                        : []),
+                      { value: 'new', label: 'Salvar como novo global' },
+                    ]}
+                  />
+                </RxvField>
+              </div>
+
+              {linkedGlobalProtocols.length > 0 && publishGlobalDraft.mode === 'update' && (
+                <RxvField label="Global vinculado">
+                  <RxvSelect
+                    value={publishGlobalDraft.globalProtocolId}
+                    onChange={(e) =>
+                      setPublishGlobalDraft({
+                        ...publishGlobalDraft,
+                        globalProtocolId: e.target.value,
+                      })
+                    }
+                    options={linkedGlobalProtocols.map((protocol) => ({
+                      value: protocol.id,
+                      label: `${protocol.name} • slug ${protocol.slug} • v${protocol.version}`,
+                    }))}
+                  />
+                </RxvField>
+              )}
+
+              <RxvField label="Tags">
+                <RxvInput
+                  value={publishGlobalDraft.tagsText}
+                  onChange={(e) =>
+                    setPublishGlobalDraft({
+                      ...publishGlobalDraft,
+                      tagsText: e.target.value,
+                    })
+                  }
+                  placeholder="Ex: gastro, base, editable"
+                />
+              </RxvField>
+
+              {linkedGlobalProtocols.length > 0 ? (
+                <div className="rounded-2xl border border-slate-800 bg-black/30 px-4 py-4 text-xs text-slate-400 leading-relaxed">
+                  {publishGlobalDraft.mode === 'update'
+                    ? 'O protocolo global selecionado terá versão incrementada e os itens filhos serão substituídos pelo conteúdo atual do protocolo local.'
+                    : 'Este protocolo local já possui vínculo global. Se escolher salvar como novo, um novo registro global será criado mantendo a rastreabilidade da origem.'}
+                </div>
+              ) : (
+                <div className="rounded-2xl border border-slate-800 bg-black/30 px-4 py-4 text-xs text-slate-400 leading-relaxed">
+                  Será criado um protocolo global novo, com rastreabilidade para o protocolo local e a clínica de origem.
+                </div>
+              )}
+            </div>
+
+            <div className="flex items-center justify-end gap-3 border-t border-slate-800 bg-black/50 px-8 py-5">
+              <RxvButton variant="secondary" onClick={handleClosePublishGlobalModal}>
+                Cancelar
+              </RxvButton>
+              <RxvButton variant="primary" onClick={handlePublishGlobalProtocol} loading={isPublishingGlobal}>
+                {publishGlobalDraft.mode === 'update' ? 'Atualizar global' : 'Publicar global'}
+              </RxvButton>
             </div>
           </div>
         </div>

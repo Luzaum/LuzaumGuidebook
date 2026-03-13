@@ -21,7 +21,7 @@ import { jsPDF } from 'jspdf'
 import html2canvas from 'html2canvas'
 import { RxPrintView } from './RxPrintView'
 import { buildPrintDocsFromNovaReceita2 } from './novaReceita2Adapter'
-import { BUILTIN_TEMPLATES } from './builtinTemplates'
+import { BUILTIN_TEMPLATES, DEFAULT_NOVA_RECEITA_TEMPLATE_ID } from './builtinTemplates'
 import { normalizeNovaReceita2State } from './NovaReceita2Page'
 import type { NovaReceita2State, PrescriptionItem, TutorInfo, PatientInfo } from './NovaReceita2Page'
 import type { TemplateZoneKey } from './rxDb'
@@ -85,10 +85,14 @@ const ROUTE_OPTIONS = [
 // ==================== EDITOR PANEL TYPES ====================
 
 type EditorFocus =
-    | { type: 'identification' }
-    | { type: 'recommendations' }
-    | { type: 'item'; itemId: string }
-    | null
+  | { type: 'identification' }
+  | { type: 'recommendations' }
+  | { type: 'item'; itemId: string }
+  | null
+
+function getDefaultNovaReceitaTemplateId(): string {
+  return BUILTIN_TEMPLATES.find((template) => template.id === DEFAULT_NOVA_RECEITA_TEMPLATE_ID)?.id || BUILTIN_TEMPLATES[0].id
+}
 
 // ==================== EDITOR: IDENTIFICATION ====================
 
@@ -502,9 +506,10 @@ export default function NovaReceita2PrintPage() {
     const primaryPrintDoc = printDocs?.[0] || null
 
     const selectedTemplate = useMemo(() => {
-        if (!state) return BUILTIN_TEMPLATES[0]
-        const id = state.printTemplateId || state.templateId || BUILTIN_TEMPLATES[0].id
-        return BUILTIN_TEMPLATES.find((t) => t.id === id) || BUILTIN_TEMPLATES[0]
+        const fallbackTemplateId = getDefaultNovaReceitaTemplateId()
+        if (!state) return BUILTIN_TEMPLATES.find((t) => t.id === fallbackTemplateId) || BUILTIN_TEMPLATES[0]
+        const id = state.printTemplateId || state.templateId || fallbackTemplateId
+        return BUILTIN_TEMPLATES.find((t) => t.id === id) || BUILTIN_TEMPLATES.find((t) => t.id === fallbackTemplateId) || BUILTIN_TEMPLATES[0]
     }, [state])
 
     // ==================== EDITOR FOCUS ====================

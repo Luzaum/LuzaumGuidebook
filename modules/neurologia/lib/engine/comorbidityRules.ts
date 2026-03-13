@@ -157,7 +157,7 @@ export function applyComorbidityRules(args: {
       return { ...dx, id, likelihood }
     })
     .sort((a, b) => b.likelihood - a.likelihood)
-    .slice(0, 5)
+    .slice(0, 12)
 
   return {
     updatedReport: {

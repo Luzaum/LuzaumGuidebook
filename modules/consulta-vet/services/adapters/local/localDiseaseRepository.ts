@@ -1,4 +1,5 @@
 import { DiseaseRecord } from '../../../types/disease';
+import { DiseaseUpsertInput } from '../../../types/editorial';
 import { DiseaseRepository } from '../../repositories/disease.repository';
 import { diseasesSeed } from '../../../data/seed/diseases.seed';
 
@@ -24,6 +25,11 @@ export class LocalDiseaseRepository implements DiseaseRepository {
   async listByCategory(categorySlug: string): Promise<DiseaseRecord[]> {
     return diseasesSeed.filter((d) => d.category === categorySlug);
   }
+
+  async upsert(_input: DiseaseUpsertInput): Promise<DiseaseRecord> {
+    throw new Error('Edicao editorial disponivel apenas com Supabase configurado.');
+  }
 }
 
-export const diseaseRepository = new LocalDiseaseRepository();
+export const localDiseaseRepository = new LocalDiseaseRepository();
+export const diseaseRepository = localDiseaseRepository;

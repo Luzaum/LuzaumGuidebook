@@ -21,6 +21,7 @@ const EscalasDorPage = lazy(() => import('./modules/escalas-dor/App'))
 const CrivetPage = lazy(() => import('./modules/crivet/pages/CrivetPage'))
 const VeteletroliticoPage = lazy(() => import('./modules/veteletrolitico/App'))
 const ReceituarioVetPage = lazy(() => import('./modules/receituario-vet/App'))
+const PlantaoVetApp = lazy(() => import('./modules/plantao-vet/App'))
 const ConsultaVetShell = lazy(() => import('./modules/consulta-vet/components/layout/ConsultaVetShell').then((m) => ({ default: m.ConsultaVetShell })))
 const ConsultaVetHomePage = lazy(() => import('./modules/consulta-vet/pages/HomePage').then((m) => ({ default: m.HomePage })))
 const ConsultaVetDiseasesPage = lazy(() => import('./modules/consulta-vet/pages/DiseasesPage').then((m) => ({ default: m.DiseasesPage })))
@@ -34,6 +35,10 @@ const ConsultaVetFavoritesPage = lazy(() => import('./modules/consulta-vet/pages
 const ConsultaVetRecentsPage = lazy(() => import('./modules/consulta-vet/pages/RecentsPage').then((m) => ({ default: m.RecentsPage })))
 const ConsultaVetCategoriesPage = lazy(() => import('./modules/consulta-vet/pages/CategoriesPage').then((m) => ({ default: m.CategoriesPage })))
 const ConsultaVetCategoryDetailPage = lazy(() => import('./modules/consulta-vet/pages/CategoryDetailPage').then((m) => ({ default: m.CategoryDetailPage })))
+const ConsultaVetEditorialDashboardPage = lazy(() => import('./modules/consulta-vet/pages/EditorialDashboardPage').then((m) => ({ default: m.EditorialDashboardPage })))
+const ConsultaVetEditorialCategoriesPage = lazy(() => import('./modules/consulta-vet/pages/EditorialCategoriesPage').then((m) => ({ default: m.EditorialCategoriesPage })))
+const ConsultaVetEditorialDiseasesPage = lazy(() => import('./modules/consulta-vet/pages/EditorialDiseasesPage').then((m) => ({ default: m.EditorialDiseasesPage })))
+const ConsultaVetEditorialMedicationsPage = lazy(() => import('./modules/consulta-vet/pages/EditorialMedicationsPage').then((m) => ({ default: m.EditorialMedicationsPage })))
 const NovaReceitaPage = lazy(() => import('./modules/receituario-vet/NovaReceitaPage'))
 const NovaReceita2Page = lazy(() => import('./modules/receituario-vet/NovaReceita2Page'))
 const NovaReceita2PrintPage = lazy(() => import('./modules/receituario-vet/NovaReceita2PrintPage'))
@@ -95,6 +100,7 @@ const appRoutes = (
     <Route path="/peconhentos" element={<AAP2Module />} />
     <Route path="/antibioticoterapia" element={<ModuleIframe />} />
     <Route path="/receituario-vet" element={<ProtectedClinicRoute><ReceituarioVetPage /></ProtectedClinicRoute>} />
+    <Route path="/plantao-vet/*" element={<ProtectedClinicRoute><PlantaoVetApp /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/nova-receita" element={<ProtectedClinicRoute><NovaReceitaPage /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/nova-receita-2" element={<ProtectedClinicRoute><NovaReceita2Page /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/nova-receita-2-print" element={<ProtectedClinicRoute><NovaReceita2PrintPage /></ProtectedClinicRoute>} />
@@ -128,6 +134,10 @@ const appRoutes = (
       <Route path="recentes" element={<ConsultaVetRecentsPage />} />
       <Route path="categorias" element={<ConsultaVetCategoriesPage />} />
       <Route path="categorias/:slug" element={<ConsultaVetCategoryDetailPage />} />
+      <Route path="editorial" element={<ConsultaVetEditorialDashboardPage />} />
+      <Route path="editorial/categorias" element={<ConsultaVetEditorialCategoriesPage />} />
+      <Route path="editorial/doencas" element={<ConsultaVetEditorialDiseasesPage />} />
+      <Route path="editorial/medicamentos" element={<ConsultaVetEditorialMedicationsPage />} />
     </Route>
     <Route path="/rifa" element={<ModuleIframe />} />
     <Route path="/supabase-test" element={<SupabaseTestPage />} />

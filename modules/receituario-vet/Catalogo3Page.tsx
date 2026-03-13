@@ -1271,15 +1271,6 @@ export default function Catalogo3Page() {
                                                     </div>
                                                 </RxvField>
 
-                                                <RxvField label="Preço Médio (R$)" className="md:col-span-4">
-                                                    <RxvInput
-                                                        type="number" step="0.01"
-                                                        value={pres.avg_price_brl ?? ''}
-                                                        onChange={e => updatePresentation(pres._tempId!, { avg_price_brl: e.target.value ? Number(e.target.value) : null })}
-                                                        placeholder="0,00"
-                                                    />
-                                                </RxvField>
-
                                                 <div className="md:col-span-2 flex items-end justify-end">
                                                     <button
                                                         onClick={() => removePresentation(pres._tempId!)}

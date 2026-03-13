@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Menu, Moon, Sun } from 'lucide-react';
+import { BookOpen, Menu, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../../../../utils/theme';
 
 interface ConsultaVetHeaderProps {
@@ -13,17 +13,23 @@ export function ConsultaVetHeader({ onMenuClick }: ConsultaVetHeaderProps) {
   return (
     <header className="sticky top-0 z-10 flex h-16 shrink-0 items-center justify-between border-b border-border bg-background/80 px-4 backdrop-blur-md transition-colors md:px-8">
       <div className="flex flex-1 items-center gap-4">
-        <button onClick={onMenuClick} className="flex h-11 w-11 items-center justify-center rounded-md p-2 text-muted-foreground hover:bg-muted md:hidden">
+        <button
+          onClick={onMenuClick}
+          className="flex h-11 w-11 items-center justify-center rounded-md p-2 text-muted-foreground hover:bg-muted md:hidden"
+        >
           <Menu className="h-5 w-5" />
         </button>
 
-        <div className="relative hidden max-w-md flex-1 md:block">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <input
-            type="text"
-            placeholder="Buscar doenças, medicamentos e consensos..."
-            className="w-full rounded-full border border-transparent bg-muted py-2 pl-10 pr-4 text-sm text-foreground outline-none transition-all placeholder:text-muted-foreground focus:border-primary focus:bg-background focus:ring-2 focus:ring-primary/20"
-          />
+        <div className="hidden items-center gap-3 md:flex">
+          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+            <BookOpen className="h-5 w-5" />
+          </span>
+          <div>
+            <p className="text-sm font-semibold text-foreground">Consulta VET</p>
+            <p className="text-xs text-muted-foreground">
+              Base editorial veterinária para consulta rápida
+            </p>
+          </div>
         </div>
       </div>
 

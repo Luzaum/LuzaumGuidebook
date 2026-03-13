@@ -38,7 +38,7 @@ export function mapProtocolMedicationToRxPrescriptionItem(
 
     // Set basic information
     item.name = protocolMed.medication_name || protocolMed.manual_medication_name || 'Medicamento'
-    item.presentation = protocolMed.manual_presentation_label || ''
+    item.presentation = protocolMed.manual_presentation_label || protocolMed.presentation_text || ''
     item.concentration = protocolMed.concentration_value
         ? `${protocolMed.concentration_value} ${protocolMed.concentration_unit || ''}`.trim()
         : protocolMed.concentration_unit || ''
@@ -151,7 +151,7 @@ export function mapProtocolMedicationToPrescriptionItem(
         medication_id: protocolMed.medication_id || undefined,
         presentation_id: protocolMed.presentation_id || undefined,
         name: protocolMed.medication_name || protocolMed.manual_medication_name || 'Medicamento',
-        presentation_label: protocolMed.manual_presentation_label || '',
+        presentation_label: protocolMed.manual_presentation_label || protocolMed.presentation_text || '',
         dose: dose || undefined,
         frequency: frequency || undefined,
         route: protocolMed.route || undefined,

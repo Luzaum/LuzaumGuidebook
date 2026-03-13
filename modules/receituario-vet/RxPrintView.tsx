@@ -395,7 +395,7 @@ export function RxPrintView({
                       {item.cautions.length ? (
                         <div className="mt-2 space-y-1">
                           {item.cautions.map((line, idx) => (
-                            <p key={`${item.id}-c-${idx}`} className={isClassic ? '' : 'font-bold'} style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt` }}>
+                            <p key={`${item.id}-c-${idx}`} className={isClassic ? 'whitespace-pre-wrap' : 'font-bold whitespace-pre-wrap'} style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt` }}>
                               {line}
                             </p>
                           ))}

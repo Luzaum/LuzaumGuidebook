@@ -8,6 +8,8 @@ import {
   UpsertConsensusDocumentDetailsInput,
 } from '../../../types/consenso';
 import { ConsensoRepository } from '../../repositories/consenso.repository';
+import { canManageConsensusSharedDetails } from '../../consensusSharedDetailsPermissions';
+import { normalizeReferences } from './editorialSupabaseUtils';
 
 const TABLE = 'consensus_documents';
 const DETAILS_TABLE = 'consensus_document_details';
@@ -36,6 +38,7 @@ type ConsensusDetailsRow = {
   key_points_text: string | null;
   practical_application_text: string | null;
   app_notes_text: string | null;
+  references: unknown;
   created_by: string | null;
   updated_by: string | null;
   created_at: string;
@@ -73,7 +76,7 @@ function ensurePdfFile(file: File) {
   const hasPdfMime = mime === 'application/pdf';
 
   if (!hasPdfExtension || !hasPdfMime) {
-    throw new Error('Selecione um arquivo PDF válido.');
+    throw new Error('Selecione um arquivo PDF v\u00e1lido.');
   }
 }
 
@@ -99,8 +102,6 @@ function mapRow(row: ConsensusRow): ConsensusRecord {
     isPublished: row.is_published,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
-
-    // Compatibilidade com tela atual
     shortTitle: row.title,
     sourceOrganization: row.organization || '',
     summary: row.description || '',
@@ -121,6 +122,7 @@ function mapDetailsRow(row: ConsensusDetailsRow): ConsensusDocumentDetails {
     keyPointsText: row.key_points_text,
     practicalApplicationText: row.practical_application_text,
     appNotesText: row.app_notes_text,
+    references: normalizeReferences(row.references),
     createdBy: row.created_by,
     updatedBy: row.updated_by,
     createdAt: row.created_at,
@@ -149,7 +151,7 @@ async function buildUniqueSlug(baseSlug: string): Promise<string> {
     counter += 1;
   }
 
-  throw new Error('Não foi possível gerar slug único para este consenso.');
+  throw new Error('N\u00e3o foi poss\u00edvel gerar slug \u00fanico para este consenso.');
 }
 
 export class SupabaseConsensoRepository implements ConsensoRepository {
@@ -214,10 +216,10 @@ export class SupabaseConsensoRepository implements ConsensoRepository {
 
     const { data: authData, error: authError } = await supabase.auth.getUser();
     if (authError) {
-      throw new Error(`Falha ao validar autenticação: ${parseError(authError)}`);
+      throw new Error(`Falha ao validar autentica\u00e7\u00e3o: ${parseError(authError)}`);
     }
     if (!authData.user) {
-      throw new Error('Faça login para cadastrar um consenso.');
+      throw new Error('Fa\u00e7a login para cadastrar um consenso.');
     }
 
     const initialSlug = slugify(input.title);
@@ -290,10 +292,13 @@ export class SupabaseConsensoRepository implements ConsensoRepository {
   ): Promise<ConsensusDocumentDetails> {
     const { data: authData, error: authError } = await supabase.auth.getUser();
     if (authError) {
-      throw new Error(`Falha ao validar autenticação: ${parseError(authError)}`);
+      throw new Error(`Falha ao validar autentica\u00e7\u00e3o: ${parseError(authError)}`);
     }
     if (!authData.user) {
-      throw new Error('Faça login para editar os detalhes compartilhados.');
+      throw new Error('Fa\u00e7a login para editar os detalhes compartilhados.');
+    }
+    if (!(await canManageConsensusSharedDetails())) {
+      throw new Error('Somente perfis owner podem editar os detalhes compartilhados deste consenso.');
     }
 
     const currentUserId = authData.user.id;
@@ -305,6 +310,7 @@ export class SupabaseConsensoRepository implements ConsensoRepository {
       key_points_text: cleanNullableText(input.keyPointsText),
       practical_application_text: cleanNullableText(input.practicalApplicationText),
       app_notes_text: cleanNullableText(input.appNotesText),
+      references: input.references || [],
       created_by: existing?.createdBy || currentUserId,
       updated_by: currentUserId,
     };
