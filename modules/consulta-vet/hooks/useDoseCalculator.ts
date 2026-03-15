@@ -1,17 +1,21 @@
 import { useMemo, useState } from 'react';
 import { MedicationDose, MedicationPresentation } from '../types/medication';
+import { resolvePresentationConversion } from '../utils/medicationRules';
 
 interface DoseCalculatorResult {
   doseMinMg?: number;
   doseMaxMg?: number;
   doseCalculatedMg?: number;
-  volumeMinMl?: number;
-  volumeMaxMl?: number;
-  volumeCalculatedMl?: number;
-  tabletsMin?: number;
-  tabletsMax?: number;
-  tabletsCalculated?: number;
+  conversionKind?: 'mg-only' | 'ml' | 'capsules' | 'tablets';
+  conversionUnitLabel?: string;
+  conversionExactMin?: number;
+  conversionExactMax?: number;
+  conversionExactSingle?: number;
+  conversionSafeMin?: number;
+  conversionSafeMax?: number;
+  conversionSafeSingle?: number;
   warning?: string;
+  conversionNote?: string;
 }
 
 const UI_TEXT = {
@@ -29,37 +33,40 @@ export function useDoseCalculator(dose: MedicationDose, presentation?: Medicatio
     }
 
     const nextResult: DoseCalculatorResult = {};
+    const hasRange = Number.isFinite(dose.doseMax) && dose.doseMax !== dose.doseMin;
 
     if (dose.doseMin) nextResult.doseMinMg = dose.doseMin * weight;
     if (dose.doseMax) nextResult.doseMaxMg = dose.doseMax * weight;
-    if (dose.doseMin && !dose.doseMax) nextResult.doseCalculatedMg = dose.doseMin * weight;
+    if (dose.doseMin && !hasRange) nextResult.doseCalculatedMg = dose.doseMin * weight;
 
     if (!presentation) return nextResult;
 
-    if (presentation.concentrationValue && presentation.concentrationUnit === 'mg/mL') {
-      if (nextResult.doseMinMg) nextResult.volumeMinMl = nextResult.doseMinMg / presentation.concentrationValue;
-      if (nextResult.doseMaxMg) nextResult.volumeMaxMl = nextResult.doseMaxMg / presentation.concentrationValue;
-      if (nextResult.doseCalculatedMg) {
-        nextResult.volumeCalculatedMl = nextResult.doseCalculatedMg / presentation.concentrationValue;
-      }
+    const conversion = resolvePresentationConversion(
+      presentation,
+      nextResult.doseMinMg,
+      nextResult.doseMaxMg,
+      nextResult.doseCalculatedMg
+    );
 
-      return nextResult;
+    if (conversion) {
+      nextResult.conversionKind = conversion.kind;
+      nextResult.conversionUnitLabel = conversion.unitLabel;
+      nextResult.conversionExactMin = conversion.exactMin;
+      nextResult.conversionExactMax = conversion.exactMax;
+      nextResult.conversionExactSingle = conversion.exactSingle;
+      nextResult.conversionSafeMin = conversion.safeMin;
+      nextResult.conversionSafeMax = conversion.safeMax;
+      nextResult.conversionSafeSingle = conversion.safeSingle;
+      nextResult.conversionNote = conversion.note;
+      nextResult.warning = conversion.warning;
     }
 
-    if (presentation.form.toLowerCase().includes('comprimido')) {
-      const match = presentation.label.match(/(\d+(?:[.,]\d+)?)\s*mg/i);
-      if (!match) return nextResult;
-
-      const mgPerTablet = Number(match[1].replace(',', '.'));
-      if (!Number.isFinite(mgPerTablet) || mgPerTablet <= 0) return nextResult;
-
-      if (nextResult.doseMinMg) nextResult.tabletsMin = nextResult.doseMinMg / mgPerTablet;
-      if (nextResult.doseMaxMg) nextResult.tabletsMax = nextResult.doseMaxMg / mgPerTablet;
-      if (nextResult.doseCalculatedMg) nextResult.tabletsCalculated = nextResult.doseCalculatedMg / mgPerTablet;
-
-      if (!presentation.scoringInfo) {
-        nextResult.warning = UI_TEXT.missingScoreInfo;
-      }
+    if (
+      presentation.form.toLowerCase().includes('comprimido') &&
+      !presentation.scoringInfo &&
+      !nextResult.warning
+    ) {
+      nextResult.warning = UI_TEXT.missingScoreInfo;
     }
 
     return nextResult;

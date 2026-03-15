@@ -18,6 +18,28 @@ export function parseError(error: unknown): string {
   return String(error || 'Erro desconhecido');
 }
 
+export async function withTimeout<T>(
+  operation: Promise<T>,
+  label: string,
+  timeoutMs = 7000
+): Promise<T> {
+  let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
+  const timeoutPromise = new Promise<T>((_, reject) => {
+    timeoutId = setTimeout(() => {
+      reject(new Error(`Tempo limite ao ${label}.`));
+    }, timeoutMs);
+  });
+
+  try {
+    return await Promise.race([operation, timeoutPromise]);
+  } finally {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+  }
+}
+
 export function slugify(raw: string, fallback = 'item'): string {
   const normalized = String(raw || '')
     .normalize('NFD')

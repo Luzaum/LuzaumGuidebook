@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { FavoriteEntityType, FavoriteRecord } from '../types/favorites';
 
 const FAVORITES_KEY = 'vetius:consulta-vet:favorites:v1';
@@ -40,7 +40,7 @@ export function useFavorites() {
     };
   }, []);
 
-  const toggleFavorite = (entityType: FavoriteEntityType, entityId: string) => {
+  const toggleFavorite = useCallback((entityType: FavoriteEntityType, entityId: string) => {
     const current = readFavorites();
     const exists = current.find((item) => item.entityType === entityType && item.entityId === entityId);
 
@@ -50,11 +50,11 @@ export function useFavorites() {
 
     setFavorites(nextFavorites);
     writeFavorites(nextFavorites);
-  };
+  }, []);
 
-  const isFavorite = (entityType: FavoriteEntityType, entityId: string) => {
+  const isFavorite = useCallback((entityType: FavoriteEntityType, entityId: string) => {
     return favorites.some((item) => item.entityType === entityType && item.entityId === entityId);
-  };
+  }, [favorites]);
 
   return { favorites, toggleFavorite, isFavorite };
 }

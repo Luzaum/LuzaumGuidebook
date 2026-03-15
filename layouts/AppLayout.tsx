@@ -235,7 +235,7 @@ export function AppLayout() {
         {/* Page Content */}
         <main className="relative flex w-full flex-1 flex-col min-h-0 overflow-auto">
           {isFullBleedRoute ? (
-            <div className="min-h-0 w-full">
+            <div className="flex min-h-0 flex-1 w-full">
               <Outlet />
             </div>
           ) : (

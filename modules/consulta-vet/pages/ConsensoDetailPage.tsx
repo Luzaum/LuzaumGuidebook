@@ -156,14 +156,26 @@ export function ConsensoDetailPage() {
 
           if (!isMounted) return;
 
-          const nextRelatedDiseases = loadedDiseases.filter((item) => item.relatedConsensusSlugs.includes(found.slug));
-          const relatedDiseaseSlugSet = new Set(nextRelatedDiseases.map((item) => item.slug));
+          const nextRelatedDiseases = loadedDiseases.filter(
+            (item) =>
+              item.relatedConsensusSlugs.includes(found.slug) ||
+              (found.relatedDiseaseSlugs || []).includes(item.slug)
+          );
+          const relatedDiseaseSlugSet = new Set([
+            ...nextRelatedDiseases.map((item) => item.slug),
+            ...(found.relatedDiseaseSlugs || []),
+          ]);
+          const relatedMedicationSlugSet = new Set(found.relatedMedicationSlugs || []);
 
           setSharedDetails(details);
           setSharedDetailsForm(toSharedForm(details));
           setRelatedDiseases(nextRelatedDiseases);
           setRelatedMedications(
-            loadedMedications.filter((item) => item.relatedDiseaseSlugs.some((relatedSlug) => relatedDiseaseSlugSet.has(relatedSlug)))
+            loadedMedications.filter(
+              (item) =>
+                relatedMedicationSlugSet.has(item.slug) ||
+                item.relatedDiseaseSlugs.some((relatedSlug) => relatedDiseaseSlugSet.has(relatedSlug))
+            )
           );
         } catch (detailsLoadError) {
           if (!isMounted) return;

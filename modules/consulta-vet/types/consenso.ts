@@ -27,6 +27,7 @@ export interface ConsensusRecord {
   articleSummaryRichText?: string;
   adminNotesRichText?: string;
   relatedDiseaseSlugs?: string[];
+  relatedMedicationSlugs?: string[];
   isDemonstrative?: boolean;
   warningLabel?: string;
   source?: 'seed' | 'supabase';

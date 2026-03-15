@@ -1,0 +1,254 @@
+import { MedicationDose, MedicationPresentation } from '../types/medication';
+
+const DOSE_SPECIES_LABELS = {
+  dog: 'Cão',
+  cat: 'Gato',
+  both: 'Cão e gato',
+} as const;
+
+export type MedicationDoseSpecies = keyof typeof DOSE_SPECIES_LABELS;
+
+export function formatDoseSpeciesLabel(species: MedicationDoseSpecies): string {
+  return DOSE_SPECIES_LABELS[species] || 'Espécie não informada';
+}
+
+export function buildDoseSummaryLabel(dose: MedicationDose): string {
+  const range = dose.doseMax && dose.doseMax !== dose.doseMin
+    ? `${dose.doseMin} a ${dose.doseMax}`
+    : `${dose.doseMin}`;
+
+  const segments = [
+    formatDoseSpeciesLabel(dose.species),
+    dose.indication,
+    `${range} ${dose.doseUnit}/${dose.perWeightUnit}`,
+    dose.route,
+    dose.frequency,
+  ].map((value) => String(value || '').trim()).filter(Boolean);
+
+  return segments.join(' • ');
+}
+
+export function isValidDoseSpecies(value: unknown): value is MedicationDoseSpecies {
+  return value === 'dog' || value === 'cat' || value === 'both';
+}
+
+function includesMaintenancePattern(value: string): boolean {
+  return /(q\d+h|sid|bid|tid|qid|manutenc|maintenance|cont[ií]nu)/i.test(value);
+}
+
+function includesSingleDosePattern(value: string): boolean {
+  return /(dose\s*[úu]nica|dose\s*unica|pr[eé]-?operat|pr[eé]\s*transporte|90\s*min|1\s*h(?:ora)?\s*antes)/i.test(value);
+}
+
+function hasAggregatedPresentationPattern(label: string): boolean {
+  const matches = label.match(/\d+(?:[.,]\d+)?\s*mg/gi) || [];
+  return matches.length >= 3;
+}
+
+export function validateMedicationDoses(
+  doses: MedicationDose[],
+  medicationSpecies: Array<'dog' | 'cat'>
+): string[] {
+  const errors: string[] = [];
+
+  doses.forEach((dose, index) => {
+    const prefix = `Dose ${index + 1}`;
+    if (!isValidDoseSpecies(dose.species)) {
+      errors.push(`${prefix}: species deve ser dog, cat ou both.`);
+    }
+    if (!String(dose.indication || '').trim()) {
+      errors.push(`${prefix}: indication é obrigatória.`);
+    }
+    if (!Number.isFinite(dose.doseMin) || dose.doseMin <= 0) {
+      errors.push(`${prefix}: doseMin deve ser maior que zero.`);
+    }
+    if (dose.doseMax !== undefined && dose.doseMax < dose.doseMin) {
+      errors.push(`${prefix}: doseMax não pode ser menor que doseMin.`);
+    }
+    if (!String(dose.route || '').trim()) {
+      errors.push(`${prefix}: route é obrigatória.`);
+    }
+    if (!String(dose.frequency || '').trim()) {
+      errors.push(`${prefix}: frequency é obrigatória.`);
+    }
+
+    const speciesConflicts =
+      dose.species !== 'both' && !medicationSpecies.includes(dose.species);
+    if (speciesConflicts) {
+      errors.push(`${prefix}: a espécie da dose não está habilitada no medicamento.`);
+    }
+
+    const notes = String(dose.notes || '').trim();
+    const frequency = String(dose.frequency || '').trim();
+    const mergedRegime =
+      includesSingleDosePattern(notes) && includesMaintenancePattern(frequency);
+
+    if (mergedRegime || /;|\bdepois\b/i.test(frequency)) {
+      errors.push(`${prefix}: separe dose única/pré-operatória e regime de manutenção em entradas distintas.`);
+    }
+  });
+
+  return errors;
+}
+
+export function validateMedicationPresentations(presentations: MedicationPresentation[]): string[] {
+  const errors: string[] = [];
+  const seenIds = new Set<string>();
+
+  presentations.forEach((presentation, index) => {
+    const prefix = `Apresentação ${index + 1}`;
+    const label = String(presentation.label || '').trim();
+    const form = String(presentation.form || '').trim();
+
+    if (!label) {
+      errors.push(`${prefix}: label é obrigatório.`);
+    }
+    if (!form) {
+      errors.push(`${prefix}: form é obrigatório.`);
+    }
+    if (!String(presentation.id || '').trim()) {
+      errors.push(`${prefix}: id é obrigatório.`);
+    } else if (seenIds.has(presentation.id)) {
+      errors.push(`${prefix}: id duplicado (${presentation.id}).`);
+    } else {
+      seenIds.add(presentation.id);
+    }
+
+    if (label && hasAggregatedPresentationPattern(label)) {
+      errors.push(`${prefix}: registre apresentações calculáveis em entradas individuais, não em lista agregada.`);
+    }
+  });
+
+  return errors;
+}
+
+function normalizePresentationForm(form: string): string {
+  return String(form || '').trim().toLowerCase();
+}
+
+function parseMgValueFromLabel(label: string): number | null {
+  const match = String(label || '').match(/(\d+(?:[.,]\d+)?)\s*mg/i);
+  if (!match) return null;
+  const value = Number(match[1].replace(',', '.'));
+  return Number.isFinite(value) && value > 0 ? value : null;
+}
+
+function resolveMgPerUnit(presentation: MedicationPresentation): number | null {
+  if (
+    Number.isFinite(presentation.concentrationValue) &&
+    String(presentation.concentrationUnit || '').trim() &&
+    !/mg\s*\/\s*m[lL]/i.test(String(presentation.concentrationUnit))
+  ) {
+    const value = Number(presentation.concentrationValue);
+    return Number.isFinite(value) && value > 0 ? value : null;
+  }
+
+  return parseMgValueFromLabel(presentation.label);
+}
+
+function resolveTabletFractionStep(scoringInfo: string | undefined): number | null {
+  const normalized = String(scoringInfo || '').toLowerCase();
+  if (!normalized || /sem sulco/.test(normalized)) return 1;
+  if (/1\/8|oitav/.test(normalized)) return 0.125;
+  if (/1\/4|quart/.test(normalized)) return 0.25;
+  if (/1\/2|meio|bissul|sulcad/.test(normalized)) return 0.5;
+  return 1;
+}
+
+export type DoseConversionKind = 'mg-only' | 'ml' | 'capsules' | 'tablets';
+
+export type DoseConversionResult = {
+  kind: DoseConversionKind;
+  unitLabel: string;
+  exactMin?: number;
+  exactMax?: number;
+  exactSingle?: number;
+  safeMin?: number;
+  safeMax?: number;
+  safeSingle?: number;
+  warning?: string;
+  note?: string;
+};
+
+export function resolvePresentationConversion(
+  presentation: MedicationPresentation | undefined,
+  doseMinMg: number | undefined,
+  doseMaxMg: number | undefined,
+  doseSingleMg: number | undefined
+): DoseConversionResult | null {
+  if (!presentation) return null;
+
+  const unit = String(presentation.concentrationUnit || '').trim();
+  const form = normalizePresentationForm(presentation.form);
+
+  if (Number.isFinite(presentation.concentrationValue) && /mg\s*\/\s*m[lL]/i.test(unit)) {
+    const mgPerMl = Number(presentation.concentrationValue);
+    if (!Number.isFinite(mgPerMl) || mgPerMl <= 0) {
+      return null;
+    }
+
+    return {
+      kind: 'ml',
+      unitLabel: 'mL',
+      exactMin: doseMinMg ? doseMinMg / mgPerMl : undefined,
+      exactMax: doseMaxMg ? doseMaxMg / mgPerMl : undefined,
+      exactSingle: doseSingleMg ? doseSingleMg / mgPerMl : undefined,
+      note: 'Conversão baseada na concentração declarada da apresentação.',
+    };
+  }
+
+  const mgPerUnit = resolveMgPerUnit(presentation);
+  if (!mgPerUnit) {
+    return {
+      kind: 'mg-only',
+      unitLabel: 'mg',
+      warning: 'Não foi possível converter com segurança para esta apresentação.',
+    };
+  }
+
+  if (form.includes('caps')) {
+    return {
+      kind: 'capsules',
+      unitLabel: 'cáps.',
+      exactMin: doseMinMg ? doseMinMg / mgPerUnit : undefined,
+      exactMax: doseMaxMg ? doseMaxMg / mgPerUnit : undefined,
+      exactSingle: doseSingleMg ? doseSingleMg / mgPerUnit : undefined,
+      warning: 'Cápsulas não devem ser fracionadas com segurança. Use apenas como referência aproximada.',
+    };
+  }
+
+  if (form.includes('comp')) {
+    const step = resolveTabletFractionStep(presentation.scoringInfo);
+    const normalizeSafe = (value: number | undefined) => {
+      if (!value || !step) return undefined;
+      const multiplier = value / step;
+      if (Math.abs(multiplier - Math.round(multiplier)) > 0.001) return undefined;
+      return Number((Math.round(multiplier) * step).toFixed(3));
+    };
+
+    const safeMin = normalizeSafe(doseMinMg ? doseMinMg / mgPerUnit : undefined);
+    const safeMax = normalizeSafe(doseMaxMg ? doseMaxMg / mgPerUnit : undefined);
+    const safeSingle = normalizeSafe(doseSingleMg ? doseSingleMg / mgPerUnit : undefined);
+    const hasSafeValue = safeMin !== undefined || safeMax !== undefined || safeSingle !== undefined;
+
+    return {
+      kind: hasSafeValue ? 'tablets' : 'mg-only',
+      unitLabel: hasSafeValue ? 'comp.' : 'mg',
+      exactMin: doseMinMg ? doseMinMg / mgPerUnit : undefined,
+      exactMax: doseMaxMg ? doseMaxMg / mgPerUnit : undefined,
+      exactSingle: doseSingleMg ? doseSingleMg / mgPerUnit : undefined,
+      safeMin,
+      safeMax,
+      safeSingle,
+      warning: hasSafeValue
+        ? undefined
+        : 'Não foi possível converter com segurança para esta apresentação. Revise o sulco/fracionamento.',
+    };
+  }
+
+  return {
+    kind: 'mg-only',
+    unitLabel: 'mg',
+    warning: 'Não foi possível converter com segurança para esta apresentação.',
+  };
+}

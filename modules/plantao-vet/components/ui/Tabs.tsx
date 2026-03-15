@@ -29,7 +29,7 @@ interface TabsProps {
 export function Tabs({ value, onValueChange, className, children }: TabsProps) {
   return (
     <TabsContext.Provider value={{ value, onValueChange }}>
-      <div className={className}>{children}</div>
+      <div className={cn('min-w-0 w-full', className)}>{children}</div>
     </TabsContext.Provider>
   );
 }
@@ -42,7 +42,7 @@ export function TabsList({
   return (
     <div
       className={cn(
-        'inline-flex h-auto min-h-11 items-center gap-1 rounded-xl border border-[var(--pv-border)] bg-[var(--pv-surface-hover)]/70 p-1',
+        'inline-flex h-auto min-h-11 max-w-full items-center gap-1 rounded-xl border border-[var(--pv-border)] bg-[var(--pv-surface-hover)]/70 p-1',
         className
       )}
       {...props}
@@ -89,7 +89,7 @@ export function TabsContent({ value, className, children, ...props }: TabsConten
   }
 
   return (
-    <div className={className} {...props}>
+    <div className={cn('min-w-0 w-full', className)} {...props}>
       {children}
     </div>
   );

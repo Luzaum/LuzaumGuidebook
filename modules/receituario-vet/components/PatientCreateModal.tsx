@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import type { DataAdapter, DataAdapterPatientMatch } from '../adapters'
 import type { PatientInfo, TutorInfo } from '../rxTypes'
 import { TutorQuickSelect } from './TutorQuickSelect'
+import { RxvModalShell } from '../../../src/components/receituario/RxvComponents'
 
 type PatientCreateModalProps = {
   open: boolean
@@ -182,14 +183,15 @@ export function PatientCreateModal({
   }
 
   return (
-    <div
-      className="fixed inset-0 z-[90] flex items-center justify-center bg-black/70 px-4 py-8 backdrop-blur-sm"
-      onClick={() => {
+    <RxvModalShell
+      zIndexClass="z-[90]"
+      overlayClassName="bg-black/70 backdrop-blur-sm"
+      onBackdropClick={() => {
         if (!saving) onOpenChange(false)
       }}
     >
       <div
-        className="max-h-[92vh] w-full max-w-4xl overflow-y-auto rounded-2xl border border-[#2f5b25] bg-[#13220f] text-slate-100 shadow-[0_0_40px_rgba(56,255,20,0.18)]"
+        className="mx-auto max-h-[92vh] w-full max-w-4xl overflow-y-auto rounded-2xl border border-[#2f5b25] bg-[#13220f] text-slate-100 shadow-[0_0_40px_rgba(56,255,20,0.18)]"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="sticky top-0 z-10 flex items-center justify-between border-b border-[#274b20] bg-[#11200e] px-5 py-4">
@@ -518,6 +520,6 @@ export function PatientCreateModal({
           </div>
         </form>
       </div>
-    </div>
+    </RxvModalShell>
   )
 }

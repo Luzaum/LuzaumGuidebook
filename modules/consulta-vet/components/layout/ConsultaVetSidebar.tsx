@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+﻿import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Bookmark, Clock, FileText, Grid, Pill, ShieldCheck, Stethoscope, X } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
@@ -107,3 +107,5 @@ export function ConsultaVetSidebar({ isOpen, onClose }: ConsultaVetSidebarProps)
     </>
   );
 }
+
+

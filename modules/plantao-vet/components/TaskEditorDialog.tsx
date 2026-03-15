@@ -19,6 +19,10 @@ const TASK_CATEGORIES: TaskCategory[] = [
   'tutor',
   'discharge',
   'documents',
+  'communication',
+  'hydration',
+  'nutrition',
+  'hygiene',
   'other',
 ];
 
@@ -30,6 +34,7 @@ interface TaskEditorDialogProps {
   shiftId: string | null;
   shiftPatientId: string | null;
   patientLabel?: string;
+  availablePatients?: Array<{ id: string; displayName: string }>;
   initialTask?: Task | null;
 }
 
@@ -39,11 +44,13 @@ export function TaskEditorDialog({
   shiftId,
   shiftPatientId,
   patientLabel,
+  availablePatients = [],
   initialTask,
 }: TaskEditorDialogProps) {
   const upsertTask = usePlantaoVetStore((state) => state.upsertTask);
   const [form, setForm] = useState({
     title: '',
+    shiftPatientId: shiftPatientId || '',
     category: 'monitoring' as TaskCategory,
     priority: 'medium' as TaskPriority,
     scheduledTime: '',
@@ -57,12 +64,13 @@ export function TaskEditorDialog({
 
     setForm({
       title: initialTask?.title || '',
+      shiftPatientId: initialTask?.shiftPatientId || shiftPatientId || '',
       category: initialTask?.category || 'monitoring',
       priority: initialTask?.priority || 'medium',
       scheduledTime: initialTask?.scheduledTime || '',
       description: initialTask?.description || '',
     });
-  }, [initialTask, open]);
+  }, [initialTask, open, shiftPatientId]);
 
   const dialogTitle = useMemo(
     () => (initialTask ? 'Editar tarefa do paciente' : 'Nova tarefa do paciente'),
@@ -76,6 +84,7 @@ export function TaskEditorDialog({
   function resetAndClose() {
     setForm({
       title: '',
+      shiftPatientId: shiftPatientId || '',
       category: 'monitoring',
       priority: 'medium',
       scheduledTime: '',
@@ -85,14 +94,14 @@ export function TaskEditorDialog({
   }
 
   function handleSubmit() {
-    if (!shiftId || !shiftPatientId || !form.title.trim()) {
+    if (!shiftId || !form.title.trim()) {
       return;
     }
 
     upsertTask({
       id: initialTask?.id || createEntityId('task'),
       shiftId,
-      shiftPatientId,
+      shiftPatientId: form.shiftPatientId || null,
       title: form.title.trim(),
       description: form.description.trim(),
       scheduledTime: form.scheduledTime.trim() || null,
@@ -100,6 +109,8 @@ export function TaskEditorDialog({
       priority: form.priority,
       completed: initialTask?.completed || false,
       completedAt: initialTask?.completedAt || null,
+      reviewRequired: initialTask?.reviewRequired || false,
+      origin: initialTask?.origin || 'manual',
     });
 
     resetAndClose();
@@ -108,13 +119,13 @@ export function TaskEditorDialog({
   return (
     <AnimatePresence>
       {open ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
           <button className="plantao-vet-backdrop" onClick={resetAndClose} aria-label="Fechar editor de tarefa" />
           <motion.div
             initial={{ opacity: 0, scale: 0.98, y: 16 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.98, y: 12 }}
-            className="plantao-vet-modal relative z-10 w-full max-w-2xl overflow-hidden rounded-3xl"
+            className="plantao-vet-modal relative z-10 w-full max-w-2xl overflow-hidden rounded-3xl shadow-2xl"
           >
             <div className="border-b border-[var(--pv-border)] px-6 py-5">
               <div className="flex items-start justify-between gap-3">
@@ -140,6 +151,24 @@ export function TaskEditorDialog({
                   onChange={(event) => updateField('title', event.target.value)}
                 />
               </div>
+
+              {availablePatients.length > 0 ? (
+                <label className="space-y-2 text-sm md:col-span-2">
+                  <span className="font-medium text-[var(--pv-text-main)]">Vincular ao paciente</span>
+                  <select
+                    className="h-10 w-full rounded-lg border border-[var(--pv-border)] bg-[var(--pv-surface)] px-3 text-sm text-[var(--pv-text-main)]"
+                    value={form.shiftPatientId}
+                    onChange={(event) => updateField('shiftPatientId', event.target.value)}
+                  >
+                    <option value="">Pendência geral do plantão</option>
+                    {availablePatients.map((patient) => (
+                      <option key={patient.id} value={patient.id}>
+                        {patient.displayName}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              ) : null}
 
               <label className="space-y-2 text-sm">
                 <span className="font-medium text-[var(--pv-text-main)]">Categoria</span>
@@ -195,11 +224,11 @@ export function TaskEditorDialog({
               </label>
             </div>
 
-            <div className="flex flex-col-reverse gap-3 border-t border-[var(--pv-border)] px-6 py-5 sm:flex-row sm:justify-end">
+            <div className="flex flex-col-reverse gap-3 border-t border-[var(--pv-border)] px-6 py-5 sm:flex-row sm:items-center sm:justify-end">
               <Button variant="outline" onClick={resetAndClose}>
                 Cancelar
               </Button>
-              <Button onClick={handleSubmit} disabled={!shiftId || !shiftPatientId || !form.title.trim()}>
+              <Button className="min-w-[180px]" onClick={handleSubmit} disabled={!shiftId || !form.title.trim()}>
                 {initialTask ? <PencilLine className="mr-2 h-4 w-4" /> : <Plus className="mr-2 h-4 w-4" />}
                 {initialTask ? 'Salvar tarefa' : 'Adicionar tarefa'}
               </Button>

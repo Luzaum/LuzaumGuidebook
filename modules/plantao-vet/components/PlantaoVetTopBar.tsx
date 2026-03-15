@@ -54,7 +54,7 @@ export function PlantaoVetTopBar({ clinicName, onMenuClick }: PlantaoVetTopBarPr
                       {formatDateLong(activeShift.dateISO)} • {SHIFT_TYPE_LABELS[activeShift.shiftType]}
                     </>
                   ) : (
-                    'Nenhum plantao ativo'
+                    'Nenhum plantão ativo'
                   )}
                 </span>
               </span>
@@ -71,10 +71,10 @@ export function PlantaoVetTopBar({ clinicName, onMenuClick }: PlantaoVetTopBarPr
           <div className="flex items-center gap-2">
             <div className="hidden text-right md:block">
               <p className="text-xs font-medium uppercase tracking-[0.14em] text-[var(--pv-text-muted)]">
-                Clinica ativa
+                Clínica ativa
               </p>
               <p className="max-w-[220px] truncate text-sm font-medium text-[var(--pv-text-main)]">
-                {clinicName || 'Nao identificada'}
+                {clinicName || 'Não identificada'}
               </p>
             </div>
             <Button variant="ghost" size="icon" onClick={toggleTheme} aria-label="Alternar tema">

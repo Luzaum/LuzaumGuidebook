@@ -1,4 +1,4 @@
-import {
+﻿import {
   Calculator,
   Heart,
   Droplets,
@@ -172,3 +172,5 @@ export function getModuleById(id: string): Module | undefined {
 export function getModuleByRoute(route: string): Module | undefined {
   return modules.find((m) => m.route === route)
 }
+
+

@@ -1,4 +1,4 @@
-import { PatientStatus, ProblemPriority, Species, TaskCategory, TaskPriority } from '../types';
+import { PatientStatus, ProblemPriority, ProblemStatus, Species, TaskCategory, TaskPriority } from '../types';
 
 export function getSpeciesLabel(species: Species) {
   switch (species) {
@@ -14,15 +14,15 @@ export function getSpeciesLabel(species: Species) {
 export function getPatientStatusLabel(status: PatientStatus) {
   switch (status) {
     case 'critical':
-      return 'Critico';
+      return 'Crítico';
     case 'watch':
-      return 'Observacao';
+      return 'Observação';
     case 'stable':
-      return 'Estavel';
+      return 'Estável';
     case 'discharge_today':
       return 'Alta hoje';
     default:
-      return 'Observacao';
+      return 'Observação';
   }
 }
 
@@ -48,11 +48,11 @@ export function getTaskCategoryLabel(category: TaskCategory) {
     case 'procedure':
       return 'Procedimento';
     case 'feeding':
-      return 'Alimentacao';
+      return 'Alimentação';
     case 'medication':
-      return 'Medicacao';
+      return 'Medicação';
     case 'monitoring':
-      return 'Monitoramento';
+      return 'Monitorização';
     case 'tutor':
       return 'Tutor';
     case 'discharge':
@@ -60,11 +60,15 @@ export function getTaskCategoryLabel(category: TaskCategory) {
     case 'documents':
       return 'Documentos';
     case 'communication':
-      return 'Comunicacao';
+      return 'Comunicação';
+    case 'hydration':
+      return 'Hidratação';
     case 'nutrition':
-      return 'Nutricao';
+      return 'Nutrição';
+    case 'hygiene':
+      return 'Higiene / dispositivo';
     default:
-      return 'Outro';
+      return 'Outros';
   }
 }
 
@@ -73,11 +77,11 @@ export function getTaskPriorityLabel(priority: TaskPriority) {
     case 'high':
       return 'Alta prioridade';
     case 'medium':
-      return 'Media prioridade';
+      return 'Média prioridade';
     case 'low':
       return 'Baixa prioridade';
     default:
-      return 'Media prioridade';
+      return 'Média prioridade';
   }
 }
 
@@ -86,11 +90,26 @@ export function getProblemPriorityLabel(priority: ProblemPriority) {
     case 'high':
       return 'Alta prioridade';
     case 'medium':
-      return 'Media prioridade';
+      return 'Média prioridade';
     case 'low':
       return 'Baixa prioridade';
     default:
-      return 'Media prioridade';
+      return 'Média prioridade';
+  }
+}
+
+export function getProblemStatusLabel(status: ProblemStatus) {
+  switch (status) {
+    case 'active':
+      return 'Ativo';
+    case 'resolved':
+      return 'Resolvido';
+    case 'historical':
+      return 'Histórico';
+    case 'suspected':
+      return 'Suspeito';
+    default:
+      return 'Ativo';
   }
 }
 

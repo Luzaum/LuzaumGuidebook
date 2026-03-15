@@ -9,6 +9,7 @@ import {
   RxvTextarea,
   RxvToggle,
   RxvButton,
+  RxvModalShell,
 } from '../../../src/components/receituario/RxvComponents'
 import {
   searchMedications,
@@ -313,8 +314,8 @@ export function MedicationModalV3({
   // ==================== RENDER ====================
 
   return (
-    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-black/70 px-4 py-8 backdrop-blur-sm">
-      <div className="max-h-[92vh] w-full max-w-6xl overflow-hidden rounded-2xl border border-[#2f5b25] bg-[#13220f] text-slate-100 shadow-[0_0_40px_rgba(56,255,20,0.18)]">
+    <RxvModalShell zIndexClass="z-[80]" overlayClassName="bg-black/70 backdrop-blur-sm">
+      <div className="mx-auto max-h-[92vh] w-full max-w-6xl overflow-hidden rounded-2xl border border-[#2f5b25] bg-[#13220f] text-slate-100 shadow-[0_0_40px_rgba(56,255,20,0.18)]">
         {/* ==================== HEADER ==================== */}
         <div className="flex items-center justify-between border-b border-[#274b20] bg-[#11200e] px-5 py-4">
           <div>
@@ -647,6 +648,6 @@ export function MedicationModalV3({
           </div>
         </div>
       </div>
-    </div>
+    </RxvModalShell>
   )
 }

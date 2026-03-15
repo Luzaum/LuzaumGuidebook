@@ -5,6 +5,7 @@ import {
   ListConsensusFilters,
   UpsertConsensusDocumentDetailsInput,
 } from '../../../types/consenso';
+import { ConsensusUpsertInput } from '../../../types/editorial';
 import { consensosSeed } from '../../../data/seed/consensos.seed';
 import { ConsensoRepository } from '../../repositories/consenso.repository';
 
@@ -32,6 +33,7 @@ function mapSeedRecord(record: any): ConsensusRecord {
     articleSummaryRichText: record.articleSummaryRichText,
     adminNotesRichText: record.adminNotesRichText,
     relatedDiseaseSlugs: Array.isArray(record.relatedDiseaseSlugs) ? record.relatedDiseaseSlugs : [],
+    relatedMedicationSlugs: Array.isArray(record.relatedMedicationSlugs) ? record.relatedMedicationSlugs : [],
     isDemonstrative: record.isDemonstrative,
     warningLabel: record.warningLabel,
     source: 'seed',
@@ -63,7 +65,7 @@ for (const item of mappedSeed) {
 }
 
 export class LocalConsensoRepository implements ConsensoRepository {
-  async list(filters?: ListConsensusFilters): Promise<ConsensusRecord[]> {
+  async list(filters?: ListConsensusFilters, _options?: { includeDrafts?: boolean }): Promise<ConsensusRecord[]> {
     const base = [...mappedSeed];
 
     if (!filters) return base;
@@ -85,7 +87,7 @@ export class LocalConsensoRepository implements ConsensoRepository {
     });
   }
 
-  async getBySlug(slug: string): Promise<ConsensusRecord | null> {
+  async getBySlug(slug: string, _options?: { includeDrafts?: boolean }): Promise<ConsensusRecord | null> {
     const found = mappedSeed.find((item) => item.slug === slug);
     return found || null;
   }
@@ -100,6 +102,14 @@ export class LocalConsensoRepository implements ConsensoRepository {
 
   async create(_input: CreateConsensusInput): Promise<ConsensusRecord> {
     throw new Error('Cadastro de consenso requer fonte Supabase ativa.');
+  }
+
+  async upsert(_input: ConsensusUpsertInput): Promise<ConsensusRecord> {
+    throw new Error('Edição editorial de consenso requer fonte Supabase ativa.');
+  }
+
+  async replacePdf(_consensusId: string, _file: File): Promise<ConsensusRecord> {
+    throw new Error('Upload de PDF requer fonte Supabase ativa.');
   }
 
   async getSharedDetailsByConsensusId(consensusDocumentId: string): Promise<ConsensusDocumentDetails | null> {

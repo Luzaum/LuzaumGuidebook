@@ -15,10 +15,30 @@ export interface EditorialReference {
   notes?: string | null;
 }
 
+export interface EditorialDrugProtocol {
+  drug: string;
+  indication?: string;
+  dose?: string;
+  frequency?: string;
+  duration?: string;
+  route?: string;
+  cautions?: string;
+  contraindications?: string;
+  notes?: string;
+}
+
+export interface EditorialDiagnosticStep {
+  stepNumber?: number;
+  title: string;
+  description: string;
+}
+
 export type EditorialSectionValue =
   | string
   | string[]
-  | Record<string, string | string[] | EditorialSystemGroup[]>;
+  | EditorialDrugProtocol[]
+  | EditorialDiagnosticStep[]
+  | Record<string, string | string[] | EditorialSystemGroup[] | EditorialDrugProtocol[] | EditorialDiagnosticStep[] | any>;
 
 export type ContentFlag = {
   isDemonstrative?: boolean;

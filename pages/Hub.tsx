@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { modules } from '../modules/registry'
 import { ModuleCard } from '../components/ModuleCard'
@@ -85,3 +85,5 @@ export function Hub() {
         </AuroraBackground>
     )
 }
+
+

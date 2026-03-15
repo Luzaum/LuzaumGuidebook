@@ -1,0 +1,13 @@
+import { chromium } from 'playwright';
+const browser = await chromium.launch({ headless: true });
+const page = await browser.newPage();
+await page.goto('http://127.0.0.1:5173/consulta-vet/medicamentos/pregabalina', { waitUntil: 'networkidle', timeout: 60000 });
+const selects = page.locator('select');
+const weightInput = page.locator('input[type="number"]').first();
+await selects.nth(0).selectOption('dog');
+await weightInput.fill('10');
+await selects.nth(2).selectOption('pres-pregabalina-caps-25');
+await page.waitForTimeout(800);
+const text = await page.locator('body').innerText();
+console.log(text.slice(0, 2600));
+await browser.close();

@@ -10,6 +10,7 @@ import {
   mergeBySlug,
   parseError,
   slugify,
+  withTimeout,
 } from './editorialSupabaseUtils';
 import { supabase } from '@/src/lib/supabaseClient';
 import { CategoryRow, mapCategoryRow } from './editorialRecordMappers';
@@ -31,7 +32,7 @@ export class SupabaseCategoryRepository implements CategoryRepository {
         query = query.eq('is_published', true);
       }
 
-      const { data, error } = await query;
+      const { data, error } = await withTimeout(query, 'carregar categorias editoriais');
 
       if (error) {
         console.warn('[ConsultaVet] category fallback', error);

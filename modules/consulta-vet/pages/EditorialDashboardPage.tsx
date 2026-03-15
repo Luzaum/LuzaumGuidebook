@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpenCheck, FolderTree, Pill, Stethoscope } from 'lucide-react';
+import { BookOpenCheck, DatabaseZap, FolderTree, Pill, ScrollText, Stethoscope } from 'lucide-react';
 import { EditorialPermissionGate } from '../components/editorial/EditorialPermissionGate';
 import { useConsultaVetEditorialAccess } from '../hooks/useConsultaVetEditorialAccess';
 
@@ -22,6 +22,18 @@ const cards = [
     title: 'Medicamentos',
     body: 'Mantenha farmacologia, apresentações, doses e vínculos clínicos.',
     icon: Pill,
+  },
+  {
+    to: '/consulta-vet/editorial/consensos',
+    title: 'Consensos',
+    body: 'CRUD editorial completo: metadados, detalhes, PDF, referências e relacionamentos.',
+    icon: ScrollText,
+  },
+  {
+    to: '/consulta-vet/editorial/importacao',
+    title: 'Importar JSON',
+    body: 'Importação em massa estruturada via AI ou Lotes de doenças e medicamentos.',
+    icon: DatabaseZap,
   },
 ];
 

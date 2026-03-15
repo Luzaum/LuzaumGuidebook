@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { ChevronRight, FileText, Pill, Share2, Stethoscope } from 'lucide-react';
 import { DoseCalculatorCard } from '../components/medication/DoseCalculatorCard';
@@ -12,8 +12,9 @@ import { getDiseaseRepository } from '../services/diseaseRepository';
 import { getMedicationRepository } from '../services/medicationRepository';
 import { ConsensusRecord } from '../types/consenso';
 import { DiseaseRecord } from '../types/disease';
-import { MedicationRecord } from '../types/medication';
+import { MedicationPresentation, MedicationRecord } from '../types/medication';
 import { formatSpeciesList } from '../utils/navigation';
+import { buildDoseSummaryLabel, formatDoseSpeciesLabel } from '../utils/medicationRules';
 
 type ResumeLocationState = {
   sectionId?: string;
@@ -29,46 +30,315 @@ const UI_TEXT = {
   notFoundTitle: 'Medicamento não encontrado',
   notFoundBody: 'Não foi possível localizar o conteúdo solicitado.',
   doseCalculator: 'Calculadora de dose',
+  regimens: 'Doses por espécie e regime',
   pharmacology: 'Informações farmacológicas',
   clinicalNotes: 'Observações clínicas',
-  adminNotes: 'Notas editoriais',
   references: 'Referências',
   related: 'Relacionados',
   activeIngredient: 'Princípio ativo',
   pharmacologicClass: 'Classe farmacológica',
   tradeNames: 'Nomes comerciais',
   presentations: 'Apresentações',
-  mechanismOfAction: 'Mecanismo de ação',
-  indications: 'Indicações',
-  contraindications: 'Contraindicações',
-  cautions: 'Precauções',
-  adverseEffects: 'Efeitos adversos',
-  interactions: 'Interações',
+  mechanismOfAction: 'Como esse fármaco funciona',
+  indications: 'Quando usar',
+  contraindications: 'Quando evitar',
+  cautions: 'Cautelas importantes',
+  adverseEffects: 'Efeitos adversos relevantes',
+  interactions: 'Interações que mudam conduta',
   routes: 'Vias',
   relatedContent: 'Conteúdo relacionado',
   relatedDiseases: 'Doenças relacionadas',
   relatedConsensos: 'Consensos relacionados',
   organizationFallback: 'Organização não informada',
   noTradeName: 'Sem nome comercial de referência',
+  presentationInfo: 'Cada apresentação continua disponível para cálculo e comparação, mas em um layout mais limpo.',
 } as const;
 
-function BulletList({ items, tone }: { items: string[]; tone: 'emerald' | 'destructive' | 'amber' | 'muted' }) {
-  const dotClassMap = {
-    emerald: 'bg-emerald-500',
-    destructive: 'bg-destructive',
-    amber: 'bg-amber-500',
-    muted: 'bg-muted-foreground/50',
+function MetaStat({ label, value }: { label: string; value: React.ReactNode }) {
+  return (
+    <div className="border-l border-border/70 pl-4 first:border-l-0 first:pl-0">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">{label}</p>
+      <div className="mt-2 text-sm leading-6 text-foreground">{value}</div>
+    </div>
+  );
+}
+
+function EditorialPanel({
+  title,
+  lead,
+  children,
+  tone = 'default',
+  className = '',
+}: {
+  title: string;
+  lead?: string;
+  children: React.ReactNode;
+  tone?: 'default' | 'emerald';
+  className?: string;
+}) {
+  const toneClasses = {
+    default: 'border-border bg-card/92',
+    emerald: 'border-emerald-500/15 bg-emerald-500/[0.045]',
   } as const;
 
   return (
-    <ul className="space-y-2.5">
+    <section className={`rounded-[30px] border p-7 shadow-sm md:p-8 ${toneClasses[tone]} ${className}`.trim()}>
+      <div className="mb-6">
+        <h2 className="text-[28px] font-bold tracking-tight text-foreground">{title}</h2>
+        {lead ? <p className="mt-2 max-w-[96ch] text-sm leading-7 text-muted-foreground">{lead}</p> : null}
+      </div>
+      {children}
+    </section>
+  );
+}
+
+function BulletList({
+  items,
+  className = '',
+}: {
+  items: string[];
+  className?: string;
+}) {
+  if (!items.length) return null;
+
+  return (
+    <ul className={`space-y-3.5 ${className}`.trim()}>
       {items.map((item) => (
-        <li key={item} className="flex items-start gap-2 text-sm leading-relaxed text-foreground/85">
-          <span className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full ${dotClassMap[tone]}`} />
+        <li key={item} className="flex items-start gap-3 text-[15px] leading-7 text-foreground/86">
+          <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" />
           <span>{item}</span>
         </li>
       ))}
     </ul>
+  );
+}
+
+function PharmacologyBlock({
+  title,
+  items,
+  className = '',
+}: {
+  title: string;
+  items: string[];
+  className?: string;
+}) {
+  if (!items.length) return null;
+
+  return (
+    <article className={`rounded-[24px] border border-border/80 bg-background/68 px-6 py-5 ${className}`.trim()}>
+      <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground">{title}</h3>
+      <div className="mt-4">
+        <BulletList items={items} />
+      </div>
+    </article>
+  );
+}
+
+function DoseRegimenSection({ medication }: { medication: MedicationRecord }) {
+  const grouped = useMemo(() => {
+    const groups = new Map<string, MedicationRecord['doses']>();
+    medication.doses.forEach((dose) => {
+      const label = formatDoseSpeciesLabel(dose.species);
+      const current = groups.get(label) || [];
+      current.push(dose);
+      groups.set(label, current);
+    });
+    return Array.from(groups.entries());
+  }, [medication.doses]);
+
+  const [activeSpecies, setActiveSpecies] = useState(grouped[0]?.[0] || '');
+
+  useEffect(() => {
+    if (!grouped.length) return;
+    if (grouped.some(([label]) => label === activeSpecies)) return;
+    setActiveSpecies(grouped[0][0]);
+  }, [activeSpecies, grouped]);
+
+  const activeDoses = grouped.find(([label]) => label === activeSpecies)?.[1] || grouped[0]?.[1] || [];
+
+  if (!medication.doses.length) return null;
+
+  return (
+    <EditorialPanel
+      title={UI_TEXT.regimens}
+      lead="A leitura foi reorganizada por espécie, em linhas clínicas expansíveis. O foco agora é comparar regimes com menos ruído visual e sem uma pilha de cards pesados."
+      className="overflow-hidden"
+    >
+      <div className="space-y-6">
+        <div className="flex flex-wrap gap-2.5">
+          {grouped.map(([speciesLabel]) => (
+            <button
+              key={speciesLabel}
+              type="button"
+              onClick={() => setActiveSpecies(speciesLabel)}
+              className={
+                activeSpecies === speciesLabel
+                  ? 'rounded-full border border-primary/25 bg-primary/[0.08] px-4 py-2 text-sm font-semibold text-primary'
+                  : 'rounded-full border border-border bg-background/70 px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground'
+              }
+            >
+              {speciesLabel}
+            </button>
+          ))}
+        </div>
+
+        <div className="overflow-hidden rounded-[26px] border border-border/80 bg-background/72">
+          <div className="hidden grid-cols-[2.1fr_1fr_0.9fr_0.95fr_1.2fr] gap-4 border-b border-border/70 bg-muted/[0.16] px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground lg:grid">
+            <span>Indicação e dose</span>
+            <span>Via</span>
+            <span>Frequência</span>
+            <span>Duração</span>
+            <span>Leitura rápida</span>
+          </div>
+
+          <div className="divide-y divide-border/70">
+            {activeDoses.map((dose) => (
+              <details key={dose.id} className="group open:bg-muted/[0.08]">
+                <summary className="cursor-pointer list-none px-5 py-5 marker:hidden transition-colors hover:bg-muted/[0.08] md:px-6">
+                  <div className="flex flex-col gap-4 lg:grid lg:grid-cols-[2.1fr_1fr_0.9fr_0.95fr_1.2fr] lg:items-start lg:gap-4">
+                    <div className="min-w-0">
+                      <p className="text-base font-semibold leading-7 text-foreground">{dose.indication}</p>
+                      <p className="mt-1 text-sm leading-7 text-muted-foreground">{buildDoseSummaryLabel(dose)}</p>
+                    </div>
+
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground lg:hidden">Via</p>
+                      <p className="mt-1 text-sm leading-7 text-foreground">{dose.route}</p>
+                    </div>
+
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground lg:hidden">Frequência</p>
+                      <p className="mt-1 text-sm leading-7 text-foreground">{dose.frequency}</p>
+                    </div>
+
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground lg:hidden">Duração</p>
+                      <p className="mt-1 text-sm leading-7 text-foreground">{dose.duration || 'Individualizar'}</p>
+                    </div>
+
+                    <div className="flex items-start justify-between gap-4 lg:block">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground lg:hidden">Resumo</p>
+                      <p className="mt-1 text-sm leading-7 text-muted-foreground">
+                        {dose.notes ? 'Ver observações e cautelas' : 'Sem observações extras'}
+                      </p>
+                    </div>
+                  </div>
+                </summary>
+
+                {(dose.notes || dose.duration) && (
+                  <div className="border-t border-border/70 px-5 pb-5 pt-4 md:px-6">
+                    <div className="grid gap-5 lg:grid-cols-[1fr_1.2fr]">
+                      <div>
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">Espécie</p>
+                        <p className="mt-2 text-sm leading-7 text-foreground">{activeSpecies}</p>
+                        {dose.duration ? (
+                          <>
+                            <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">Duração</p>
+                            <p className="mt-2 text-sm leading-7 text-foreground/85">{dose.duration}</p>
+                          </>
+                        ) : null}
+                      </div>
+
+                      {dose.notes ? (
+                        <div>
+                          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">Observações</p>
+                          <p className="mt-2 text-sm leading-7 text-muted-foreground">{dose.notes}</p>
+                        </div>
+                      ) : null}
+                    </div>
+                  </div>
+                )}
+              </details>
+            ))}
+          </div>
+        </div>
+      </div>
+    </EditorialPanel>
+  );
+}
+
+function MobilePresentationCard({ presentation }: { presentation: MedicationPresentation }) {
+  return (
+    <article className="rounded-[24px] border border-border/80 bg-background/75 p-5">
+      <p className="text-base font-semibold text-foreground">{presentation.label}</p>
+      <dl className="mt-4 grid gap-3 text-sm leading-6 text-muted-foreground">
+        <div className="flex items-start justify-between gap-4">
+          <dt className="font-medium text-foreground">Forma</dt>
+          <dd className="text-right">{presentation.form}</dd>
+        </div>
+        {presentation.route ? (
+          <div className="flex items-start justify-between gap-4">
+            <dt className="font-medium text-foreground">Via</dt>
+            <dd className="text-right">{presentation.route}</dd>
+          </div>
+        ) : null}
+        {presentation.concentrationValue ? (
+          <div className="flex items-start justify-between gap-4">
+            <dt className="font-medium text-foreground">Concentração</dt>
+            <dd className="text-right">
+              {presentation.concentrationValue} {presentation.concentrationUnit}
+            </dd>
+          </div>
+        ) : null}
+        {presentation.packInfo ? (
+          <div className="flex items-start justify-between gap-4">
+            <dt className="font-medium text-foreground">Apresentação</dt>
+            <dd className="text-right">{presentation.packInfo}</dd>
+          </div>
+        ) : null}
+        {presentation.scoringInfo ? (
+          <div className="flex items-start justify-between gap-4">
+            <dt className="font-medium text-foreground">Fracionamento</dt>
+            <dd className="text-right">{presentation.scoringInfo}</dd>
+          </div>
+        ) : null}
+      </dl>
+    </article>
+  );
+}
+
+function PresentationsSection({ medication }: { medication: MedicationRecord }) {
+  if (!medication.presentations.length) return null;
+
+  return (
+    <EditorialPanel title={UI_TEXT.presentations} lead={UI_TEXT.presentationInfo} className="overflow-hidden">
+      <div className="hidden overflow-hidden rounded-[24px] border border-border/80 xl:block">
+        <div className="grid grid-cols-[2fr_1.05fr_0.8fr_1.2fr_1.2fr_1.2fr] gap-4 border-b border-border/80 bg-muted/18 px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+          <span>Nome</span>
+          <span>Forma</span>
+          <span>Via</span>
+          <span>Concentração</span>
+          <span>Apresentação</span>
+          <span>Fracionamento</span>
+        </div>
+
+        <div className="divide-y divide-border/70">
+          {medication.presentations.map((presentation) => (
+            <div
+              key={presentation.id}
+              className="grid grid-cols-[2fr_1.05fr_0.8fr_1.2fr_1.2fr_1.2fr] gap-4 px-6 py-5 text-sm leading-6 text-foreground/85"
+            >
+              <div className="font-semibold text-foreground">{presentation.label}</div>
+              <div>{presentation.form}</div>
+              <div>{presentation.route || '—'}</div>
+              <div>
+                {presentation.concentrationValue
+                  ? `${presentation.concentrationValue} ${presentation.concentrationUnit}`
+                  : '—'}
+              </div>
+              <div>{presentation.packInfo || '—'}</div>
+              <div>{presentation.scoringInfo || '—'}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="grid gap-4 xl:hidden">
+        {medication.presentations.map((presentation) => (
+          <MobilePresentationCard key={presentation.id} presentation={presentation} />
+        ))}
+      </div>
+    </EditorialPanel>
   );
 }
 
@@ -91,9 +361,10 @@ export function MedicationDetailPage() {
 
   const sections = [
     { id: 'dose-calculator', label: UI_TEXT.doseCalculator },
+    { id: 'dose-regimens', label: UI_TEXT.regimens },
+    { id: 'presentations', label: UI_TEXT.presentations },
     { id: 'pharmacology', label: UI_TEXT.pharmacology },
     { id: 'clinical-notes', label: UI_TEXT.clinicalNotes },
-    medication?.adminNotesText ? { id: 'admin-notes', label: UI_TEXT.adminNotes } : null,
     medication?.references?.length ? { id: 'references', label: UI_TEXT.references } : null,
     { id: 'related', label: UI_TEXT.related },
   ].filter(Boolean) as Array<{ id: string; label: string }>;
@@ -167,11 +438,11 @@ export function MedicationDetailPage() {
     return () => window.clearTimeout(timeoutId);
   }, [medication, resumeState?.sectionId]);
 
-  const handleActiveSectionChange = (sectionId: string) => {
+  const handleActiveSectionChange = useCallback((sectionId: string) => {
     if (!medication || !sectionId || lastSavedSectionRef.current === sectionId) return;
     lastSavedSectionRef.current = sectionId;
     addRecent('medication', medication.id, undefined, sectionId);
-  };
+  }, [addRecent, medication]);
 
   const handleCopyLink = async () => {
     try {
@@ -224,156 +495,125 @@ export function MedicationDetailPage() {
   }
 
   return (
-    <div className="mx-auto flex h-full w-full max-w-[1560px] flex-col lg:flex-row">
-      <div className="w-full flex-1 overflow-y-auto p-4 md:p-8 lg:pr-10 xl:pr-12">
-        <nav className="mb-8 flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-          <Link to="/consulta-vet" className="transition-colors hover:text-emerald-600">
+    <div className="mx-auto flex h-full w-full max-w-[1840px] flex-col xl:flex-row">
+      <div className="w-full flex-1 overflow-y-auto px-4 py-4 md:px-8 md:py-8 xl:px-10 xl:pr-8 2xl:px-12">
+        <nav className="mb-7 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.24em] text-muted-foreground">
+          <Link to="/consulta-vet" className="transition-colors hover:text-primary">
             {UI_TEXT.home}
           </Link>
           <ChevronRight className="h-3 w-3" />
-          <Link to="/consulta-vet/medicamentos" className="transition-colors hover:text-emerald-600">
+          <Link to="/consulta-vet/medicamentos" className="transition-colors hover:text-primary">
             {UI_TEXT.medications}
           </Link>
           <ChevronRight className="h-3 w-3" />
           <span className="truncate text-foreground">{medication.title}</span>
         </nav>
 
-        <header className="mb-10 rounded-[28px] border border-border bg-card p-6 shadow-sm md:p-8">
+        <header className="rounded-[34px] border border-border bg-card/95 p-6 shadow-sm md:p-8 xl:p-10">
           <div className="flex flex-col gap-6 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
-              <h1 className="text-4xl font-bold leading-tight tracking-tight text-foreground md:text-5xl">
-                {medication.title}
-              </h1>
-              <p className="mt-3 text-base font-medium text-muted-foreground md:text-lg">
-                {medication.activeIngredient} • {medication.pharmacologicClass}
-              </p>
-
-              <div className="mt-5 flex flex-wrap items-center gap-3">
-                <span className="rounded-lg border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-sm font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="rounded-full border border-primary/20 bg-primary/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-primary">
                   {formatSpeciesList(medication.species)}
                 </span>
-                <span className="rounded-lg border border-border bg-muted px-3 py-1 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                <span className="rounded-full border border-border bg-muted/40 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                   {medication.category}
                 </span>
               </div>
 
+              <h1 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground md:text-5xl xl:max-w-[16ch]">
+                {medication.title}
+              </h1>
+
+              <p className="mt-4 max-w-[96ch] text-lg leading-8 text-muted-foreground">
+                {medication.activeIngredient} • {medication.pharmacologicClass}
+              </p>
+
               <div className="mt-5">
-                <TagPills tags={medication.tags} />
+                <TagPills tags={medication.tags} className="gap-2" />
               </div>
             </div>
 
             <div className="flex shrink-0 items-center gap-2 self-start">
               <button
-                className="rounded-full bg-muted p-3 text-muted-foreground transition-colors hover:bg-muted/80 hover:text-foreground"
+                className="rounded-full border border-border bg-background/80 p-3 text-muted-foreground transition-colors hover:border-primary/30 hover:text-foreground"
                 title={UI_TEXT.copyLink}
                 type="button"
                 onClick={handleCopyLink}
               >
                 <Share2 className="h-5 w-5" />
               </button>
-              <FavoriteButton entityType="medication" entityId={medication.id} className="h-12 w-12 p-3" />
+              <FavoriteButton entityType="medication" entityId={medication.id} className="h-12 w-12 border border-border bg-background/80 p-3" />
             </div>
           </div>
 
-          <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            <div className="rounded-2xl border border-border bg-muted/30 p-4">
-              <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{UI_TEXT.activeIngredient}</p>
-              <p className="text-sm font-medium text-foreground">{medication.activeIngredient}</p>
-            </div>
-            <div className="rounded-2xl border border-border bg-muted/30 p-4">
-              <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{UI_TEXT.pharmacologicClass}</p>
-              <p className="text-sm font-medium text-foreground">{medication.pharmacologicClass}</p>
-            </div>
-            <div className="rounded-2xl border border-border bg-muted/30 p-4">
-              <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{UI_TEXT.tradeNames}</p>
-              <p className="text-sm font-medium text-foreground">
-                {medication.tradeNames.length > 0 ? medication.tradeNames.join(', ') : UI_TEXT.noTradeName}
-              </p>
-            </div>
-            <div className="rounded-2xl border border-border bg-muted/30 p-4">
-              <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{UI_TEXT.presentations}</p>
-              <p className="text-sm font-medium text-foreground">{medication.presentations.map((item) => item.label).join(' | ')}</p>
-            </div>
+          <div className="mt-8 grid gap-5 border-t border-border/70 pt-6 md:grid-cols-2 xl:grid-cols-4">
+            <MetaStat label={UI_TEXT.activeIngredient} value={medication.activeIngredient} />
+            <MetaStat label={UI_TEXT.pharmacologicClass} value={medication.pharmacologicClass} />
+            <MetaStat
+              label={UI_TEXT.tradeNames}
+              value={medication.tradeNames.length > 0 ? medication.tradeNames.join(', ') : UI_TEXT.noTradeName}
+            />
+            <MetaStat label={UI_TEXT.presentations} value={medication.presentations.length} />
           </div>
         </header>
 
-        <div className="space-y-12">
+        <div className="space-y-8 pb-10 pt-8 md:space-y-10">
           <section id="dose-calculator" className="scroll-mt-24">
             <DoseCalculatorCard doses={medication.doses} presentations={medication.presentations} />
           </section>
 
-          <section id="pharmacology" className="scroll-mt-24 rounded-[28px] border border-border bg-card p-6 shadow-sm md:p-8">
-            <h2 className="mb-6 flex items-center gap-2 text-xl font-bold tracking-tight text-foreground">
-              <Pill className="h-5 w-5 text-emerald-600" />
-              {UI_TEXT.pharmacology}
-            </h2>
-
-            <div className="space-y-6">
-              <div className="rounded-2xl border border-border bg-muted/20 p-5">
-                <h3 className="mb-2 text-sm font-bold uppercase tracking-wider text-muted-foreground">{UI_TEXT.mechanismOfAction}</h3>
-                <p className="leading-relaxed text-foreground/85">{medication.mechanismOfAction}</p>
-              </div>
-
-              <div className="grid gap-5 xl:grid-cols-2">
-                <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5">
-                  <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">{UI_TEXT.indications}</h3>
-                  <BulletList items={medication.indications} tone="emerald" />
-                </div>
-
-                <div className="rounded-2xl border border-destructive/20 bg-destructive/5 p-5">
-                  <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-destructive">{UI_TEXT.contraindications}</h3>
-                  <BulletList items={medication.contraindications} tone="destructive" />
-                </div>
-              </div>
-
-              <div className="grid gap-5 xl:grid-cols-2">
-                <div className="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-5">
-                  <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">{UI_TEXT.cautions}</h3>
-                  <BulletList items={medication.cautions} tone="amber" />
-                </div>
-
-                <div className="rounded-2xl border border-border bg-muted/20 p-5">
-                  <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-muted-foreground">{UI_TEXT.adverseEffects}</h3>
-                  <BulletList items={medication.adverseEffects} tone="muted" />
-                </div>
-              </div>
-
-              {(medication.interactions?.length || medication.routes?.length) ? (
-                <div className="grid gap-5 xl:grid-cols-2">
-                  {medication.interactions && medication.interactions.length > 0 ? (
-                    <div className="rounded-2xl border border-border bg-muted/20 p-5">
-                      <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-muted-foreground">{UI_TEXT.interactions}</h3>
-                      <BulletList items={medication.interactions} tone="muted" />
-                    </div>
-                  ) : null}
-                  {medication.routes && medication.routes.length > 0 ? (
-                    <div className="rounded-2xl border border-border bg-muted/20 p-5">
-                      <h3 className="mb-3 text-sm font-bold uppercase tracking-wider text-muted-foreground">{UI_TEXT.routes}</h3>
-                      <BulletList items={medication.routes} tone="muted" />
-                    </div>
-                  ) : null}
-                </div>
-              ) : null}
-            </div>
+          <section id="dose-regimens" className="scroll-mt-24">
+            <DoseRegimenSection medication={medication} />
           </section>
 
-          <section id="clinical-notes" className="scroll-mt-24 rounded-[28px] border border-emerald-500/20 bg-emerald-500/5 p-6 md:p-8">
-            <h2 className="mb-6 flex items-center gap-2 text-xl font-bold tracking-tight text-emerald-900 dark:text-emerald-400">
-              <Pill className="h-5 w-5 text-emerald-600 dark:text-emerald-500" />
-              {UI_TEXT.clinicalNotes}
-            </h2>
+          <section id="presentations" className="scroll-mt-24">
+            <PresentationsSection medication={medication} />
+          </section>
+
+          <EditorialPanel
+            title={UI_TEXT.pharmacology}
+            lead="A leitura farmacológica foi reorganizada pelo peso clínico. O mecanismo abre a explicação e os blocos seguintes ficam como apoio direto à tomada de decisão."
+            className="scroll-mt-24"
+          >
+            <div id="pharmacology" className="space-y-6">
+              <div className="rounded-[28px] border border-border/80 bg-muted/[0.12] px-7 py-7">
+                <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground">
+                  <Pill className="h-4 w-4 text-primary" />
+                  {UI_TEXT.mechanismOfAction}
+                </h3>
+                <div className="mt-5 max-w-none">
+                  <p className="max-w-[108ch] text-[15px] leading-8 text-foreground/88">{medication.mechanismOfAction}</p>
+                </div>
+              </div>
+
+              <div className="grid gap-5 xl:grid-cols-12">
+                <PharmacologyBlock title={UI_TEXT.indications} items={medication.indications} className="xl:col-span-7" />
+                <PharmacologyBlock title={UI_TEXT.contraindications} items={medication.contraindications} className="xl:col-span-5" />
+                <PharmacologyBlock title={UI_TEXT.cautions} items={medication.cautions} className="xl:col-span-6" />
+                <PharmacologyBlock title={UI_TEXT.adverseEffects} items={medication.adverseEffects} className="xl:col-span-6" />
+                {medication.interactions && medication.interactions.length > 0 ? (
+                  <PharmacologyBlock title={UI_TEXT.interactions} items={medication.interactions} className="xl:col-span-8" />
+                ) : null}
+                {medication.routes && medication.routes.length > 0 ? (
+                  <PharmacologyBlock title={UI_TEXT.routes} items={medication.routes} className="xl:col-span-4" />
+                ) : null}
+              </div>
+            </div>
+          </EditorialPanel>
+
+          <EditorialPanel
+            title={UI_TEXT.clinicalNotes}
+            lead="Texto corrido para leitura prática e confortável, usando melhor a largura disponível do bloco."
+            tone="emerald"
+            className="scroll-mt-24"
+          >
             <div
-              className="prose prose-emerald max-w-none dark:prose-invert"
+              id="clinical-notes"
+              className="prose prose-slate max-w-[108ch] text-[15px] leading-8 dark:prose-invert prose-p:my-0 prose-p:leading-8 prose-p:mb-5 prose-strong:text-foreground"
               dangerouslySetInnerHTML={{ __html: medication.clinicalNotesRichText }}
             />
-          </section>
-
-          {medication.adminNotesText ? (
-            <section id="admin-notes" className="scroll-mt-24 rounded-[28px] border border-border bg-card p-6 shadow-sm md:p-8">
-              <h2 className="mb-4 text-xl font-bold tracking-tight text-foreground">{UI_TEXT.adminNotes}</h2>
-              <p className="whitespace-pre-line text-sm leading-relaxed text-muted-foreground">{medication.adminNotesText}</p>
-            </section>
-          ) : null}
+          </EditorialPanel>
 
           {medication.references && medication.references.length > 0 ? (
             <div id="references" className="scroll-mt-24">
@@ -382,13 +622,15 @@ export function MedicationDetailPage() {
           ) : null}
 
           {(relatedDiseases.length > 0 || relatedConsensos.length > 0) && (
-            <section id="related" className="scroll-mt-24 border-t border-border pt-12">
-              <h2 className="mb-8 text-2xl font-bold tracking-tight text-foreground">{UI_TEXT.relatedContent}</h2>
-
-              <div className="grid gap-8 xl:grid-cols-2">
+            <EditorialPanel
+              title={UI_TEXT.relatedContent}
+              lead="Materiais associados aparecem como apoio à consulta, sem competir com o conteúdo principal."
+              className="scroll-mt-24"
+            >
+              <div id="related" className="grid gap-8 xl:grid-cols-2">
                 {relatedDiseases.length > 0 && (
                   <div>
-                    <h3 className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-muted-foreground">
+                    <h3 className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground">
                       <Stethoscope className="h-4 w-4" />
                       {UI_TEXT.relatedDiseases}
                     </h3>
@@ -397,12 +639,10 @@ export function MedicationDetailPage() {
                         <Link
                           key={disease.id}
                           to={`/consulta-vet/doencas/${disease.slug}`}
-                          className="group block rounded-xl border border-border bg-card p-4 transition-all hover:border-primary/50 hover:shadow-sm"
+                          className="group block rounded-[22px] border border-border/80 bg-background/75 px-5 py-4 transition-all hover:border-primary/35 hover:bg-background"
                         >
-                          <p className="font-semibold text-foreground transition-colors group-hover:text-primary">
-                            {disease.title}
-                          </p>
-                          <p className="mt-1 text-xs text-muted-foreground">{disease.category}</p>
+                          <p className="font-semibold text-foreground transition-colors group-hover:text-primary">{disease.title}</p>
+                          <p className="mt-1 text-sm text-muted-foreground">{disease.category}</p>
                         </Link>
                       ))}
                     </div>
@@ -411,7 +651,7 @@ export function MedicationDetailPage() {
 
                 {relatedConsensos.length > 0 && (
                   <div>
-                    <h3 className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-muted-foreground">
+                    <h3 className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground">
                       <FileText className="h-4 w-4" />
                       {UI_TEXT.relatedConsensos}
                     </h3>
@@ -420,12 +660,10 @@ export function MedicationDetailPage() {
                         <Link
                           key={consenso.id}
                           to={`/consulta-vet/consensos/${consenso.slug}`}
-                          className="group block rounded-xl border border-border bg-card p-4 transition-all hover:border-primary/50 hover:shadow-sm"
+                          className="group block rounded-[22px] border border-border/80 bg-background/75 px-5 py-4 transition-all hover:border-primary/35 hover:bg-background"
                         >
-                          <p className="font-semibold text-foreground transition-colors group-hover:text-primary">
-                            {consenso.title}
-                          </p>
-                          <p className="mt-1 text-xs text-muted-foreground">
+                          <p className="font-semibold text-foreground transition-colors group-hover:text-primary">{consenso.title}</p>
+                          <p className="mt-1 text-sm text-muted-foreground">
                             {consenso.organization || UI_TEXT.organizationFallback}
                             {consenso.year ? ` • ${consenso.year}` : ''}
                           </p>
@@ -435,14 +673,15 @@ export function MedicationDetailPage() {
                   </div>
                 )}
               </div>
-            </section>
+            </EditorialPanel>
           )}
         </div>
       </div>
 
-      <div className="hidden w-72 shrink-0 py-8 pr-8 xl:block">
-        <SectionAnchorNav sections={sections} onActiveChange={handleActiveSectionChange} />
+      <div className="hidden w-60 shrink-0 py-8 pr-6 2xl:w-64 2xl:pr-8 xl:block">
+        <SectionAnchorNav sections={sections} onActiveChange={handleActiveSectionChange} className="w-60 2xl:w-64" />
       </div>
     </div>
   );
 }
+

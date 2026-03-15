@@ -7,9 +7,12 @@ import {
   ListConsensusFilters,
   UpsertConsensusDocumentDetailsInput,
 } from '../../../types/consenso';
+import { ConsensusUpsertInput } from '../../../types/editorial';
 import { ConsensoRepository } from '../../repositories/consenso.repository';
 import { canManageConsensusSharedDetails } from '../../consensusSharedDetailsPermissions';
-import { normalizeReferences } from './editorialSupabaseUtils';
+import { localConsensoRepository } from '../local/localConsensoRepository';
+import { normalizeReferences, withTimeout } from './editorialSupabaseUtils';
+import { ensureOwnerUserId, parseError } from './editorialSupabaseUtils';
 
 const TABLE = 'consensus_documents';
 const DETAILS_TABLE = 'consensus_document_details';
@@ -29,6 +32,10 @@ type ConsensusRow = {
   is_published: boolean;
   created_at: string;
   updated_at: string;
+  related_disease_slugs?: unknown;
+  related_medication_slugs?: unknown;
+  created_by?: string | null;
+  updated_by?: string | null;
 };
 
 type ConsensusDetailsRow = {
@@ -64,11 +71,6 @@ function slugify(raw: string): string {
   return normalized || 'consenso';
 }
 
-function parseError(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  return String(error || 'Erro desconhecido');
-}
-
 function ensurePdfFile(file: File) {
   const name = String(file?.name || '').toLowerCase();
   const mime = String(file?.type || '').toLowerCase();
@@ -76,13 +78,18 @@ function ensurePdfFile(file: File) {
   const hasPdfMime = mime === 'application/pdf';
 
   if (!hasPdfExtension || !hasPdfMime) {
-    throw new Error('Selecione um arquivo PDF v\u00e1lido.');
+    throw new Error('Selecione um arquivo PDF válido.');
   }
 }
 
 function cleanNullableText(value: string | null | undefined): string | null {
   const parsed = String(value || '').trim();
   return parsed || null;
+}
+
+function normalizeStringArray(value: unknown): string[] {
+  if (!Array.isArray(value)) return [];
+  return value.map((item) => String(item || '').trim()).filter(Boolean);
 }
 
 function mapRow(row: ConsensusRow): ConsensusRecord {
@@ -107,7 +114,8 @@ function mapRow(row: ConsensusRow): ConsensusRecord {
     summary: row.description || '',
     pdfUrl: fileUrl,
     pdfFileName: row.file_path.split('/').pop() || row.slug,
-    relatedDiseaseSlugs: [],
+    relatedDiseaseSlugs: normalizeStringArray(row.related_disease_slugs),
+    relatedMedicationSlugs: normalizeStringArray(row.related_medication_slugs),
     tags: [],
     source: 'supabase',
     storagePath: row.file_path,
@@ -130,7 +138,7 @@ function mapDetailsRow(row: ConsensusDetailsRow): ConsensusDocumentDetails {
   };
 }
 
-async function buildUniqueSlug(baseSlug: string): Promise<string> {
+async function buildUniqueSlug(baseSlug: string, excludeId?: string): Promise<string> {
   const { data, error } = await supabase
     .from(TABLE)
     .select('slug')
@@ -142,7 +150,7 @@ async function buildUniqueSlug(baseSlug: string): Promise<string> {
 
   const used = new Set((data || []).map((item) => String((item as { slug: string }).slug)));
 
-  if (!used.has(baseSlug)) return baseSlug;
+  if (!used.has(baseSlug) || excludeId) return baseSlug;
 
   let counter = 2;
   while (counter < 5000) {
@@ -151,56 +159,78 @@ async function buildUniqueSlug(baseSlug: string): Promise<string> {
     counter += 1;
   }
 
-  throw new Error('N\u00e3o foi poss\u00edvel gerar slug \u00fanico para este consenso.');
+  throw new Error('Não foi possível gerar slug único para este consenso.');
 }
 
 export class SupabaseConsensoRepository implements ConsensoRepository {
-  async list(filters?: ListConsensusFilters): Promise<ConsensusRecord[]> {
-    let query = supabase
-      .from(TABLE)
-      .select('*')
-      .eq('is_published', true)
-      .order('year', { ascending: false, nullsFirst: false })
-      .order('created_at', { ascending: false });
+  async list(
+    filters?: ListConsensusFilters,
+    options?: { includeDrafts?: boolean }
+  ): Promise<ConsensusRecord[]> {
+    try {
+      let query = supabase
+        .from(TABLE)
+        .select('*')
+        .order('year', { ascending: false, nullsFirst: false })
+        .order('created_at', { ascending: false });
 
-    const searchText = String(filters?.query || '').trim();
-    if (searchText) {
-      const escaped = searchText.replace(/,/g, ' ');
-      query = query.or(`title.ilike.%${escaped}%,organization.ilike.%${escaped}%`);
+      if (!options?.includeDrafts) {
+        query = query.eq('is_published', true);
+      }
+
+      const searchText = String(filters?.query || '').trim();
+      if (searchText) {
+        const escaped = searchText.replace(/,/g, ' ');
+        query = query.or(`title.ilike.%${escaped}%,organization.ilike.%${escaped}%`);
+      }
+
+      const category = String(filters?.category || '').trim();
+      if (category) {
+        query = query.eq('category', category);
+      }
+
+      const species = String(filters?.species || '').trim();
+      if (species) {
+        query = query.eq('species', species);
+      }
+
+      const queryResult = await query as { data: ConsensusRow[] | null; error: { message: string } | null };
+      const { data, error } = queryResult;
+      if (error) {
+        throw new Error(`Falha ao carregar consensos: ${parseError(error)}`);
+      }
+
+      return ((data ?? []) as ConsensusRow[]).map(mapRow);
+    } catch (error) {
+      console.warn('[ConsultaVet] consensus fallback', error);
+      return localConsensoRepository.list(filters);
     }
-
-    const category = String(filters?.category || '').trim();
-    if (category) {
-      query = query.eq('category', category);
-    }
-
-    const species = String(filters?.species || '').trim();
-    if (species) {
-      query = query.eq('species', species);
-    }
-
-    const { data, error } = await query;
-    if (error) {
-      throw new Error(`Falha ao carregar consensos: ${parseError(error)}`);
-    }
-
-    return (data as ConsensusRow[]).map(mapRow);
   }
 
-  async getBySlug(slug: string): Promise<ConsensusRecord | null> {
-    const { data, error } = await supabase
-      .from(TABLE)
-      .select('*')
-      .eq('slug', slug)
-      .eq('is_published', true)
-      .maybeSingle();
+  async getBySlug(slug: string, options?: { includeDrafts?: boolean }): Promise<ConsensusRecord | null> {
+    try {
+      let query = supabase
+        .from(TABLE)
+        .select('*')
+        .eq('slug', slug);
 
-    if (error) {
-      throw new Error(`Falha ao carregar consenso: ${parseError(error)}`);
+      if (!options?.includeDrafts) {
+        query = query.eq('is_published', true);
+      }
+
+      const singleResult = await query.maybeSingle() as { data: ConsensusRow | null; error: { message: string } | null };
+      const { data, error } = singleResult;
+
+      if (error) {
+        throw new Error(`Falha ao carregar consenso: ${parseError(error)}`);
+      }
+
+      if (!data) return null;
+      return mapRow(data as ConsensusRow);
+    } catch (error) {
+      console.warn('[ConsultaVet] consensus fallback', error);
+      return localConsensoRepository.getBySlug(slug);
     }
-
-    if (!data) return null;
-    return mapRow(data as ConsensusRow);
   }
 
   async search(query: string): Promise<ConsensusRecord[]> {
@@ -216,10 +246,10 @@ export class SupabaseConsensoRepository implements ConsensoRepository {
 
     const { data: authData, error: authError } = await supabase.auth.getUser();
     if (authError) {
-      throw new Error(`Falha ao validar autentica\u00e7\u00e3o: ${parseError(authError)}`);
+      throw new Error(`Falha ao validar autenticação: ${parseError(authError)}`);
     }
     if (!authData.user) {
-      throw new Error('Fa\u00e7a login para cadastrar um consenso.');
+      throw new Error('Faça login para cadastrar um consenso.');
     }
 
     const initialSlug = slugify(input.title);
@@ -271,19 +301,263 @@ export class SupabaseConsensoRepository implements ConsensoRepository {
     return mapRow(data as ConsensusRow);
   }
 
-  async getSharedDetailsByConsensusId(consensusDocumentId: string): Promise<ConsensusDocumentDetails | null> {
-    const { data, error } = await supabase
-      .from(DETAILS_TABLE)
-      .select('*')
-      .eq('consensus_document_id', consensusDocumentId)
-      .maybeSingle();
+  async upsert(input: ConsensusUpsertInput): Promise<ConsensusRecord> {
+    const userId = await ensureOwnerUserId();
+    const isNew = !input.id;
+    const normalizedSlug = slugify(input.slug || input.title);
 
-    if (error) {
-      throw new Error(`Falha ao carregar detalhes do consenso: ${parseError(error)}`);
+    // Se for novo e tiver arquivo, faz upload primeiro
+    let filePath: string | undefined;
+    let fileUrl: string | undefined;
+
+    if (input.file) {
+      ensurePdfFile(input.file);
+
+      const yearSegment =
+        input.year && Number.isFinite(input.year)
+          ? String(input.year)
+          : 'sem-ano';
+      const slugForPath = isNew
+        ? await buildUniqueSlug(normalizedSlug, undefined)
+        : normalizedSlug;
+      filePath = `consensos/${yearSegment}/${slugForPath}-${Date.now()}.pdf`;
+      const bucket = resolveBucketName();
+
+      const { error: uploadError } = await supabase.storage
+        .from(bucket)
+        .upload(filePath, input.file, {
+          cacheControl: '3600',
+          upsert: false,
+          contentType: 'application/pdf',
+        });
+
+      if (uploadError) {
+        throw new Error(`Falha no upload do PDF: ${parseError(uploadError)}`);
+      }
+
+      const { data: publicUrlData } = supabase.storage.from(bucket).getPublicUrl(filePath);
+      fileUrl = String(publicUrlData.publicUrl || '').trim();
     }
 
-    if (!data) return null;
-    return mapDetailsRow(data as ConsensusDetailsRow);
+    // Buscar registro existente para manter dados de criação
+    let existingId: string | undefined = input.id;
+    let existingFilePath: string | undefined;
+    let existingCreatedBy: string | null = null;
+
+    if (input.id) {
+      const { data: existingRow } = await supabase
+        .from(TABLE)
+        .select('id, file_path, created_by')
+        .eq('id', input.id)
+        .maybeSingle();
+
+      if (existingRow) {
+        const row = existingRow as { id: string; file_path: string; created_by: string | null };
+        existingId = row.id;
+        existingFilePath = row.file_path;
+        existingCreatedBy = row.created_by;
+      }
+    } else {
+      // Check by slug for upsert
+      const { data: existingBySlug } = await supabase
+        .from(TABLE)
+        .select('id, file_path, created_by')
+        .eq('slug', normalizedSlug)
+        .maybeSingle();
+
+      if (existingBySlug) {
+        const row = existingBySlug as { id: string; file_path: string; created_by: string | null };
+        existingId = row.id;
+        existingFilePath = row.file_path;
+        existingCreatedBy = row.created_by;
+      }
+    }
+
+    const payload: Record<string, unknown> = {
+      slug: normalizedSlug,
+      title: input.title,
+      description: cleanNullableText(input.description),
+      organization: cleanNullableText(input.organization),
+      year: input.year ?? null,
+      category: cleanNullableText(input.category),
+      species: input.species,
+      is_published: input.isPublished ?? true,
+      related_disease_slugs: input.relatedDiseaseSlugs || [],
+      related_medication_slugs: input.relatedMedicationSlugs || [],
+      created_by: existingCreatedBy || userId,
+      updated_by: userId,
+    };
+
+    // Only update file fields if a new file was uploaded
+    if (filePath && fileUrl) {
+      payload.file_path = filePath;
+      payload.file_url = fileUrl;
+    } else if (!existingId) {
+      // New record without a file — set empty placeholders
+      payload.file_path = '';
+      payload.file_url = null;
+    }
+
+    let savedId: string;
+
+    if (existingId) {
+      // Update by id
+      const { data, error: updateError } = await supabase
+        .from(TABLE)
+        .update(payload)
+        .eq('id', existingId)
+        .select('*')
+        .single();
+
+      if (updateError) {
+        throw new Error(`Falha ao salvar consenso: ${parseError(updateError)}`);
+      }
+
+      savedId = existingId;
+
+      // Delete old PDF from storage if we replaced it
+      if (filePath && existingFilePath && existingFilePath !== filePath) {
+        await supabase.storage.from(resolveBucketName()).remove([existingFilePath]).catch(() => {
+          console.warn('[ConsultaVet] Não foi possível remover PDF antigo do storage.');
+        });
+      }
+
+      void data;
+    } else {
+      const { data, error: insertError } = await supabase
+        .from(TABLE)
+        .insert(payload)
+        .select('*')
+        .single();
+
+      if (insertError) {
+        if (filePath) {
+          await supabase.storage.from(resolveBucketName()).remove([filePath]).catch(() => { });
+        }
+        throw new Error(`Falha ao criar consenso: ${parseError(insertError)}`);
+      }
+
+      savedId = (data as ConsensusRow).id;
+    }
+
+    // Upsert shared details if any editorial details were provided
+    const hasDetails =
+      input.summaryText !== undefined ||
+      input.keyPointsText !== undefined ||
+      input.practicalApplicationText !== undefined ||
+      input.appNotesText !== undefined ||
+      input.references !== undefined;
+
+    if (hasDetails) {
+      const detailsPayload = {
+        consensus_document_id: savedId,
+        summary_text: cleanNullableText(input.summaryText),
+        key_points_text: cleanNullableText(input.keyPointsText),
+        practical_application_text: cleanNullableText(input.practicalApplicationText),
+        app_notes_text: cleanNullableText(input.appNotesText),
+        references: input.references || [],
+        created_by: existingCreatedBy || userId,
+        updated_by: userId,
+      };
+
+      await supabase
+        .from(DETAILS_TABLE)
+        .upsert(detailsPayload, { onConflict: 'consensus_document_id' });
+    }
+
+    const result = await this.getBySlug(normalizedSlug, { includeDrafts: true });
+    if (!result) {
+      throw new Error('Consenso salvo, mas não foi possível reler o registro.');
+    }
+
+    return result;
+  }
+
+  async replacePdf(consensusId: string, file: File): Promise<ConsensusRecord> {
+    ensurePdfFile(file);
+    const userId = await ensureOwnerUserId();
+
+    // Load existing record
+    const { data: existingRow, error: existingError } = await supabase
+      .from(TABLE)
+      .select('*')
+      .eq('id', consensusId)
+      .single();
+
+    if (existingError || !existingRow) {
+      throw new Error('Consenso não encontrado.');
+    }
+
+    const row = existingRow as ConsensusRow;
+    const oldFilePath = row.file_path;
+    const bucket = resolveBucketName();
+
+    const yearSegment = row.year ? String(row.year) : 'sem-ano';
+    const newFilePath = `consensos/${yearSegment}/${row.slug}-${Date.now()}.pdf`;
+
+    const { error: uploadError } = await supabase.storage
+      .from(bucket)
+      .upload(newFilePath, file, {
+        cacheControl: '3600',
+        upsert: false,
+        contentType: 'application/pdf',
+      });
+
+    if (uploadError) {
+      throw new Error(`Falha no upload do novo PDF: ${parseError(uploadError)}`);
+    }
+
+    const { data: publicUrlData } = supabase.storage.from(bucket).getPublicUrl(newFilePath);
+    const newPublicUrl = String(publicUrlData.publicUrl || '').trim();
+
+    const { data: updatedData, error: updateError } = await supabase
+      .from(TABLE)
+      .update({
+        file_path: newFilePath,
+        file_url: newPublicUrl || null,
+        updated_by: userId,
+      })
+      .eq('id', consensusId)
+      .select('*')
+      .single();
+
+    if (updateError) {
+      // Try to clean up uploaded file
+      await supabase.storage.from(bucket).remove([newFilePath]).catch(() => { });
+      throw new Error(`Falha ao atualizar PDF no banco: ${parseError(updateError)}`);
+    }
+
+    // Delete old file from bucket (best-effort)
+    if (oldFilePath && oldFilePath !== newFilePath) {
+      await supabase.storage.from(bucket).remove([oldFilePath]).catch(() => {
+        console.warn('[ConsultaVet] Não foi possível remover PDF anterior do storage.');
+      });
+    }
+
+    return mapRow(updatedData as ConsensusRow);
+  }
+
+  async getSharedDetailsByConsensusId(consensusDocumentId: string): Promise<ConsensusDocumentDetails | null> {
+    try {
+      const { data, error } = await withTimeout(
+        supabase
+          .from(DETAILS_TABLE)
+          .select('*')
+          .eq('consensus_document_id', consensusDocumentId)
+          .maybeSingle(),
+        'carregar detalhes do consenso'
+      );
+
+      if (error) {
+        throw new Error(`Falha ao carregar detalhes do consenso: ${parseError(error)}`);
+      }
+
+      if (!data) return null;
+      return mapDetailsRow(data as ConsensusDetailsRow);
+    } catch (error) {
+      console.warn('[ConsultaVet] consensus details fallback', error);
+      return localConsensoRepository.getSharedDetailsByConsensusId(consensusDocumentId);
+    }
   }
 
   async upsertSharedDetails(
@@ -292,10 +566,10 @@ export class SupabaseConsensoRepository implements ConsensoRepository {
   ): Promise<ConsensusDocumentDetails> {
     const { data: authData, error: authError } = await supabase.auth.getUser();
     if (authError) {
-      throw new Error(`Falha ao validar autentica\u00e7\u00e3o: ${parseError(authError)}`);
+      throw new Error(`Falha ao validar autenticação: ${parseError(authError)}`);
     }
     if (!authData.user) {
-      throw new Error('Fa\u00e7a login para editar os detalhes compartilhados.');
+      throw new Error('Faça login para editar os detalhes compartilhados.');
     }
     if (!(await canManageConsensusSharedDetails())) {
       throw new Error('Somente perfis owner podem editar os detalhes compartilhados deste consenso.');

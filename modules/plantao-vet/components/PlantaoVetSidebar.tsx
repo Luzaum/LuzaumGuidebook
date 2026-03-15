@@ -19,7 +19,7 @@ const navItems = [
   },
   {
     to: '/plantao-vet/pendencias',
-    label: 'Pendencias',
+    label: 'Pendências',
     icon: CheckSquare2,
   },
   {
@@ -29,7 +29,7 @@ const navItems = [
   },
   {
     to: '/plantao-vet/importar',
-    label: 'Importar prontuario',
+    label: 'Importar prontuário',
     icon: FileText,
   },
 ];
@@ -44,7 +44,7 @@ export function PlantaoVetSidebar({ clinicName, open, onClose }: PlantaoVetSideb
   return (
     <aside className="plantao-vet-sidebar flex h-dvh flex-col" data-open={open}>
       <div className="flex items-center justify-between border-b border-[var(--pv-border)] px-6 py-5 lg:hidden">
-        <span className="text-sm font-semibold text-[var(--pv-text-main)]">PlantaoVET</span>
+        <span className="text-sm font-semibold text-[var(--pv-text-main)]">PlantãoVET</span>
         <Button variant="ghost" size="icon" onClick={onClose} aria-label="Fechar menu">
           <X className="h-4 w-4" />
         </Button>
@@ -53,13 +53,13 @@ export function PlantaoVetSidebar({ clinicName, open, onClose }: PlantaoVetSideb
       <div className="px-6 py-6">
         <div className="flex items-center gap-3">
           <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--pv-border)] bg-white p-1.5">
-            <img src="/apps/plantao-vet.png" alt="PlantaoVET" className="h-8 w-8 object-contain" />
+            <img src="/apps/plantao-vet.png" alt="PlantãoVET" className="h-8 w-8 object-contain" />
           </div>
           <div className="min-w-0">
             <h1 className="text-lg font-bold tracking-tight text-[var(--pv-text-main)]">
-              Plantao<span className="text-[var(--pv-primary)]">VET</span>
+              Plantão<span className="text-[var(--pv-primary)]">VET</span>
             </h1>
-            <p className="text-sm text-[var(--pv-text-muted)]">Internacao, pendencias e passagem</p>
+            <p className="text-sm text-[var(--pv-text-muted)]">Internação, pendências e passagem</p>
           </div>
         </div>
       </div>
@@ -89,10 +89,10 @@ export function PlantaoVetSidebar({ clinicName, open, onClose }: PlantaoVetSideb
       <div className="border-t border-[var(--pv-border)] px-4 py-4">
         <div className="mb-3 rounded-2xl border border-[var(--pv-border)] bg-[var(--pv-bg)] px-4 py-3">
           <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--pv-text-muted)]">
-            Clinica ativa
+            Clínica ativa
           </p>
           <p className="mt-1 truncate text-sm font-medium text-[var(--pv-text-main)]">
-            {clinicName || 'Nao identificada'}
+            {clinicName || 'Não identificada'}
           </p>
         </div>
         <Link to="/hub" className="block" onClick={onClose}>

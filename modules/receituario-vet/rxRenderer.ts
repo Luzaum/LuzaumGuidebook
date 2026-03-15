@@ -221,7 +221,7 @@ function formatTabletFraction(value: number): string {
   if (fraction === 0) return `${formatNumber(quantized, 0)} ${getUnitLabel('comprimido', quantized)}`
   const fractionText =
     fraction === 1 ? '1/4'
-      : fraction === 2 ? '1/2 (meio)'
+      : fraction === 2 ? 'meio (0,5)'
         : '3/4'
 
   if (whole <= 0) return `${fractionText} comprimido`
@@ -558,11 +558,11 @@ export function calculateMedicationQuantity(item: PrescriptionItem, state: Presc
   let instructionLabel = supportingLabel
   let detailLabel = supportingLabel ? `Dose calculada: ${supportingLabel}` : 'Quantidade não calculada'
 
-  if (!dosePerKg && isAdministrationUnit(baseUnitRaw)) {
+  if (isAdministrationUnit(baseUnitRaw)) {
     perDoseOutput = baseDosePerAdministration
     perDoseOutputUnit = baseUnitNorm
     instructionLabel = formatAdministrationAmount(perDoseOutput, perDoseOutputUnit)
-    detailLabel = `Dose por administração: ${instructionLabel}`
+    detailLabel = `Dose calculada: ${instructionLabel}`
   } else {
     const concentration = resolveStructuredConcentration(item)
     if (concentration) {
@@ -759,7 +759,9 @@ export function buildAutoInstruction(item: PrescriptionItem, state: Prescription
       : frequencyEveryHoursLabel(item)
 
   let durationSegment = ''
-  if (item.durationMode === 'until_recheck') {
+  if (item.durationMode === 'continuous_until_recheck') {
+    durationSegment = 'em uso contínuo até reavaliação clínica'
+  } else if (item.durationMode === 'until_recheck') {
     durationSegment = 'até reavaliação clínica'
   } else if (item.untilFinished || item.durationMode === 'until_finished') {
     durationSegment = 'até terminar o medicamento'
@@ -926,7 +928,7 @@ export function renderRxToPrintDoc(
   ])
   const examReasons =
     selectedExams.length > 0
-      ? uniqueByNormalizedText((state.recommendations.examReasons || []).filter(Boolean)).map((line) => `Justificativa: ${line}`)
+      ? uniqueByNormalizedText((state.recommendations.examReasons || []).filter(Boolean))
       : []
 
   const patientParts: string[] = []
@@ -965,7 +967,7 @@ export function renderRxToPrintDoc(
     exams:
       documentKind === 'special-control'
         ? []
-        : [...selectedExams, ...examReasons],
+        : [...examReasons, ...selectedExams],
   }
 }
 

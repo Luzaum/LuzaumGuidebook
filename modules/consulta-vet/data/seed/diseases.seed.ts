@@ -150,6 +150,14 @@ export const diseasesSeed: DiseaseRecord[] = [
       'Higieniza\u00e7\u00e3o ambiental e controle de circula\u00e7\u00e3o em abrigos e cl\u00ednicas.',
       'Orienta\u00e7\u00e3o intensiva a tutores de filhotes e pacientes de risco.',
     ],
+    references: [
+      {
+        citationText: 'MSD Veterinary Manual. Canine Distemper.',
+        sourceType: 'Manual',
+        url: 'https://www.msdvetmanual.com',
+        notes: 'Vis\u00e3o geral cl\u00ednica, transmiss\u00e3o e diagn\u00f3stico de cinomose canina.',
+      },
+    ],
     relatedConsensusSlugs: [],
     relatedMedicationSlugs: ['maropitant', 'fenobarbital', 'amoxicilina-clavulanato'],
   },
@@ -236,6 +244,20 @@ export const diseasesSeed: DiseaseRecord[] = [
       'Repelentes t\u00f3picos e coleiras com efic\u00e1cia vetorial.',
       'Vacina\u00e7\u00e3o conforme indica\u00e7\u00e3o e protocolo vigente.',
       'Manejo ambiental e prote\u00e7\u00e3o nos hor\u00e1rios de maior atividade do vetor.',
+    ],
+    references: [
+      {
+        citationText: 'Brasileish. Diretrizes Brasileiras para o Manejo da Leishmaniose Visceral Canina (2020).',
+        sourceType: 'Consenso',
+        url: 'https://www.brasileish.com.br/wp-content/uploads/2020/12/Diretrizes-Brasileish-2020.pdf',
+        notes: 'Base para diagn\u00f3stico, estadiamento e tratamento da LVC no Brasil.',
+      },
+      {
+        citationText: 'LeishVet Group. Practical management of canine leishmaniosis.',
+        sourceType: 'Guideline',
+        url: 'https://www.leishvet.org',
+        notes: 'Diretrizes internacionais para manejo cl\u00ednico e seguimento.',
+      },
     ],
     relatedConsensusSlugs: ['leishmaniose-brasileiro-2020'],
     relatedMedicationSlugs: ['miltefosina', 'alopurinol'],
@@ -326,6 +348,20 @@ export const diseasesSeed: DiseaseRecord[] = [
       'Check-ups regulares em pacientes maduros e geri\u00e1tricos.',
       'Acesso amplo \u00e0 \u00e1gua e monitoramento precoce de altera\u00e7\u00f5es urin\u00e1rias.',
       'Uso criterioso de f\u00e1rmacos potencialmente nefrot\u00f3xicos.',
+    ],
+    references: [
+      {
+        citationText: 'International Renal Interest Society (IRIS). IRIS Staging of CKD modified 2023.',
+        sourceType: 'Guideline',
+        url: 'http://www.iris-kidney.com/pdf/IRIS_Staging_of_CKD_modified_2023.pdf',
+        notes: 'Estadiamento de DRC em c\u00e3es e gatos com subestadiamento por protein\u00faria e press\u00e3o arterial.',
+      },
+      {
+        citationText: 'International Renal Interest Society (IRIS). Treatment Recommendations for CKD.',
+        sourceType: 'Guideline',
+        url: 'http://www.iris-kidney.com',
+        notes: 'Recomenda\u00e7\u00f5es terap\u00eauticas e de monitoriza\u00e7\u00e3o longitudinal.',
+      },
     ],
     relatedConsensusSlugs: ['iris-drc-2023'],
     relatedMedicationSlugs: ['amlodipina', 'maropitant'],

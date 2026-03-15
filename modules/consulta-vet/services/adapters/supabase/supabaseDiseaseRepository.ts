@@ -15,6 +15,7 @@ import {
   mergeBySlug,
   parseError,
   slugify,
+  withTimeout,
 } from './editorialSupabaseUtils';
 import {
   CategoryRow,
@@ -140,7 +141,10 @@ export class SupabaseDiseaseRepository implements DiseaseRepository {
     }
 
     try {
-      const remote = await fetchSupabaseDiseases(Boolean(options?.includeDrafts));
+      const remote = await withTimeout(
+        fetchSupabaseDiseases(Boolean(options?.includeDrafts)),
+        'carregar doenças editoriais'
+      );
       return mergeBySlug(diseasesSeed, remote).sort((left, right) =>
         left.title.localeCompare(right.title, 'pt-BR')
       );

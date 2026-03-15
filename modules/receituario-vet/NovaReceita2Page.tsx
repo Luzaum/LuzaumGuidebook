@@ -14,6 +14,7 @@ import {
     RxvTextarea,
     RxvButton,
     RxvToggle,
+    RxvModalShell,
 } from '../../src/components/receituario/RxvComponents'
 import { TutorLookup } from './components/TutorLookup'
 import { PatientLookup } from './components/PatientLookup'
@@ -83,6 +84,7 @@ export interface NovaReceita2State {
     defaultStartDate: string
     defaultStartHour: string
     recommendations: string
+    examJustification: string
     exams: string[]
     items: PrescriptionItem[]
     id: string
@@ -158,7 +160,7 @@ export interface PrescriptionItem {
     startDate?: string
     startHour?: string
     inheritStartFromPrescription?: boolean
-    durationMode?: 'fixed_days' | 'until_recheck' | 'continuous_use' | 'until_finished'
+    durationMode?: 'fixed_days' | 'until_recheck' | 'continuous_use' | 'until_finished' | 'continuous_until_recheck'
     instructions?: string
     cautions?: string[]
     cautionsText?: string
@@ -246,8 +248,13 @@ const START_HOUR_OPTIONS = Array.from({ length: 24 }, (_, hour) => {
     const label = `${String(hour).padStart(2, '0')}:00`
     return { value: label, label }
 })
+const QUICK_SPECIES_OPTIONS = [
+    { value: 'cão', label: 'Cão' },
+    { value: 'gato', label: 'Gato' },
+]
 const DURATION_MODE_OPTIONS = [
     { value: 'fixed_days', label: 'Duração fechada' },
+    { value: 'continuous_until_recheck', label: 'Uso contínuo até reavaliação' },
     { value: 'until_recheck', label: 'Até reavaliação clínica' },
     { value: 'continuous_use', label: 'Uso contínuo' },
     { value: 'until_finished', label: 'Até terminar o medicamento' },
@@ -343,7 +350,8 @@ function normalizePrescriptionItem(item: PrescriptionItem, defaultStartDate: str
     let durationMode = item.durationMode
     if (!durationMode) {
         const normalized = String(item.duration || '').trim().toLowerCase()
-        if (normalized.includes('uso continuo')) durationMode = 'continuous_use'
+        if (normalized.includes('uso continuo') && normalized.includes('reavali')) durationMode = 'continuous_until_recheck'
+        else if (normalized.includes('uso continuo')) durationMode = 'continuous_use'
         else if (normalized.includes('ate terminar') || normalized.includes('até terminar')) durationMode = 'until_finished'
         else if (normalized.includes('reavali')) durationMode = 'until_recheck'
         else durationMode = 'fixed_days'
@@ -387,6 +395,7 @@ export function normalizeNovaReceita2State(raw?: Partial<NovaReceita2State> | nu
         defaultStartDate,
         defaultStartHour,
         recommendations: String(raw?.recommendations || ''),
+        examJustification: String(raw?.examJustification || ''),
         exams: Array.isArray(raw?.exams) ? raw!.exams.filter(Boolean) : [],
         items: Array.isArray(raw?.items)
             ? raw!.items.map((item) => normalizePrescriptionItem(item, defaultStartDate, defaultStartHour))
@@ -408,6 +417,7 @@ function resolveItemStart(item: PrescriptionItem, state: NovaReceita2State): { s
 }
 
 function formatDurationSummary(item: PrescriptionItem): string {
+    if (item.durationMode === 'continuous_until_recheck') return 'Uso contínuo até reavaliação clínica'
     if (item.durationMode === 'until_recheck') return 'Até reavaliação clínica'
     if (item.durationMode === 'continuous_use') return 'Uso contínuo'
     if (item.durationMode === 'until_finished') return 'Até terminar o medicamento'
@@ -432,6 +442,7 @@ function createDefaultState(): NovaReceita2State {
         defaultStartDate: '',
         defaultStartHour: '',
         recommendations: '',
+        examJustification: '',
         exams: [],
         items: [],
         id: `rx2-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
@@ -463,6 +474,11 @@ export default function NovaReceita2Page() {
     const [autosave, setAutosave] = useState(true)
     const [medicationModalOpen, setMedicationModalOpen] = useState(false)
     const [manualModalOpen, setManualModalOpen] = useState(false)
+    const [presentationPickerOpen, setPresentationPickerOpen] = useState(false)
+    const [presentationPickerItemId, setPresentationPickerItemId] = useState<string | null>(null)
+    const [presentationPickerItemName, setPresentationPickerItemName] = useState('')
+    const [presentationPickerOptions, setPresentationPickerOptions] = useState<MedicationPresentationRecord[]>([])
+    const [isLoadingPresentationPicker, setIsLoadingPresentationPicker] = useState(false)
     const [customExamDraft, setCustomExamDraft] = useState('')
     const [showPreview, setShowPreview] = useState(true)
     const [isSaving, setIsSaving] = useState(false)
@@ -486,10 +502,43 @@ export default function NovaReceita2Page() {
     const [quickRoute, setQuickRoute] = useState('VO')
     const [quickPharmaceuticalForm, setQuickPharmaceuticalForm] = useState('Comprimido')
     const [quickManualControlled, setQuickManualControlled] = useState(false)
+    const modalStateStorageKey = useMemo(
+        () => (clinicId ? `rxv:nova-receita-2:modal-state:${clinicId}` : null),
+        [clinicId]
+    )
 
     // D: Controle de inicialização do draft (só carrega uma vez por clinicId)
     const draftInitRef = useRef(false)
     const draftKey = getDraftKey(clinicId)
+
+    useEffect(() => {
+        if (!modalStateStorageKey) return
+        try {
+            const raw = sessionStorage.getItem(modalStateStorageKey)
+            if (!raw) return
+            const parsed = JSON.parse(raw) as { medicationModalOpen?: boolean; manualModalOpen?: boolean }
+            setMedicationModalOpen(!!parsed.medicationModalOpen)
+            setManualModalOpen(!!parsed.manualModalOpen)
+        } catch (error) {
+            console.warn('[NovaReceita2] Failed to restore modal state', error)
+        }
+    }, [modalStateStorageKey])
+
+    useEffect(() => {
+        if (!modalStateStorageKey) return
+        try {
+            if (!medicationModalOpen && !manualModalOpen) {
+                sessionStorage.removeItem(modalStateStorageKey)
+                return
+            }
+            sessionStorage.setItem(
+                modalStateStorageKey,
+                JSON.stringify({ medicationModalOpen, manualModalOpen })
+            )
+        } catch (error) {
+            console.warn('[NovaReceita2] Failed to persist modal state', error)
+        }
+    }, [modalStateStorageKey, medicationModalOpen, manualModalOpen])
 
     // ==================== HELPERS ====================
 
@@ -546,6 +595,58 @@ export default function NovaReceita2Page() {
         }))
     }, [updateState])
 
+    const closePresentationPicker = useCallback(() => {
+        setPresentationPickerOpen(false)
+        setPresentationPickerItemId(null)
+        setPresentationPickerItemName('')
+        setPresentationPickerOptions([])
+    }, [])
+
+    const openPresentationPicker = useCallback(async (item: PrescriptionItem) => {
+        if (!clinicId || !item.medication_id) {
+            alert('Este item não possui vínculo com um medicamento do catálogo.')
+            return
+        }
+
+        try {
+            setIsLoadingPresentationPicker(true)
+            setPresentationPickerItemId(item.id)
+            setPresentationPickerItemName(item.name || 'Medicamento')
+            setPresentationPickerOpen(true)
+            const rows = await getMedicationPresentations(clinicId, item.medication_id)
+            setPresentationPickerOptions(rows)
+        } catch (error) {
+            console.error('[NovaReceita2] Failed to load presentation options', error)
+            alert(`Não foi possível carregar as apresentações do catálogo.\n\n${error instanceof Error ? error.message : String(error)}`)
+            closePresentationPicker()
+        } finally {
+            setIsLoadingPresentationPicker(false)
+        }
+    }, [clinicId, closePresentationPicker])
+
+    const applyPresentationToItem = useCallback((presentation: MedicationPresentationRecord) => {
+        if (!presentationPickerItemId) return
+
+        updateItem(presentationPickerItemId, (current) => ({
+            ...current,
+            presentation_id: presentation.id,
+            presentation_label: [presentation.pharmaceutical_form, presentation.commercial_name].filter(Boolean).join(' • ') || current.presentation_label,
+            pharmaceutical_form: presentation.pharmaceutical_form || undefined,
+            concentration_text: buildPresentationConcentrationText(presentation) || presentation.concentration_text || undefined,
+            commercial_name: presentation.commercial_name || undefined,
+            additional_component: presentation.additional_component || undefined,
+            value: presentation.value ?? undefined,
+            value_unit: presentation.value_unit || undefined,
+            per_value: presentation.per_value ?? undefined,
+            per_unit: presentation.per_unit || undefined,
+            package_quantity: presentation.package_quantity != null ? String(presentation.package_quantity) : undefined,
+            package_unit: presentation.package_unit || undefined,
+            presentation_metadata: presentation.metadata || null,
+        }))
+
+        closePresentationPicker()
+    }, [closePresentationPicker, presentationPickerItemId, updateItem])
+
     const recommendationLines = useMemo(
         () => state.recommendations.split('\n').map((line) => line.trim()).filter(Boolean),
         [state.recommendations]
@@ -578,7 +679,7 @@ export default function NovaReceita2Page() {
             const nextQuickMode = !prev.quickMode
             const shouldCreateQuickPatient = nextQuickMode && !prev.patient
             const nextPatient = shouldCreateQuickPatient
-                ? { id: `quick-patient-${prev.id}`, name: 'Paciente sem identificacao', species: 'Canina', weight_kg: '' }
+                ? { id: `quick-patient-${prev.id}`, name: 'Paciente sem identificacao', species: 'cão', weight_kg: '' }
                 : prev.patient
             return { ...prev, quickMode: nextQuickMode, patient: nextPatient }
         })
@@ -595,7 +696,7 @@ export default function NovaReceita2Page() {
             ...prev,
             patient: prev.patient
                 ? { ...prev.patient, weight_kg: weight }
-                : { id: `quick-patient-${prev.id}`, name: 'Paciente sem identificacao', species: 'Canina', weight_kg: weight },
+                : { id: `quick-patient-${prev.id}`, name: 'Paciente sem identificacao', species: 'cão', weight_kg: weight },
         }))
     }, [updateState])
 
@@ -666,27 +767,30 @@ export default function NovaReceita2Page() {
         const payload = location.state as {
             items?: PrescriptionItem[]
             recommendations?: string
+            exams?: string[]
+            examJustification?: string
             sourceProtocol?: { id: string; name: string }
         }
 
-        if (payload.items?.length) {
-            updateState((prev) => ({
-                ...prev,
-                items: [
-                    ...prev.items,
-                    ...payload.items!.map((item) => normalizePrescriptionItem(item, prev.defaultStartDate, prev.defaultStartHour)),
-                ],
-            }))
-        }
+        updateState((prev) => {
+            const freshState = createDefaultState()
+            const baseState: NovaReceita2State = {
+                ...freshState,
+                prescriber: prev.prescriber,
+                printTemplateId: prev.printTemplateId || freshState.printTemplateId,
+                templateId: prev.templateId || freshState.templateId,
+            }
 
-        if (payload.recommendations?.trim()) {
-            updateState((prev) => {
-                const combined = prev.recommendations.trim()
-                    ? `${prev.recommendations.trim()}\n\n${payload.recommendations!.trim()}`
-                    : payload.recommendations!.trim()
-                return { ...prev, recommendations: combined }
-            })
-        }
+            return {
+                ...baseState,
+                items: (payload.items || []).map((item) =>
+                    normalizePrescriptionItem(item, baseState.defaultStartDate, baseState.defaultStartHour)
+                ),
+                recommendations: payload.recommendations?.trim() || '',
+                examJustification: payload.examJustification || '',
+                exams: (payload.exams || []).filter(Boolean),
+            }
+        })
 
         window.history.replaceState({}, '')
     }, [location.state, updateState])
@@ -1135,7 +1239,7 @@ export default function NovaReceita2Page() {
                                             />
                                         </RxvField>
                                         <RxvField label="Espécie">
-                                            <RxvInput
+                                            <RxvSelect
                                                 value={state.patient?.species || ''}
                                                 onChange={(e) => updateState((prev) => ({
                                                     ...prev,
@@ -1145,7 +1249,7 @@ export default function NovaReceita2Page() {
                                                         species: e.target.value,
                                                     },
                                                 }))}
-                                                placeholder="Ex: Canina, Felina"
+                                                options={QUICK_SPECIES_OPTIONS}
                                             />
                                         </RxvField>
                                         <RxvField label="Peso (kg)">
@@ -1195,11 +1299,45 @@ export default function NovaReceita2Page() {
                                 </div>
                             </RxvCard>
 
+                            <RxvCard>
+                                <RxvSectionHeader
+                                    icon="playlist_add_check"
+                                    title="B. Protocolos"
+                                    subtitle="Importe protocolos prontos antes de definir os itens da prescrição"
+                                />
+                                <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_280px]">
+                                    <div className="rounded-2xl border border-slate-700 bg-black/20 px-4 py-4 text-sm text-slate-300">
+                                        <p className="font-semibold text-slate-100">Fluxo recomendado</p>
+                                        <p className="mt-2">
+                                            Abra Protocolos 3.0, escolha um protocolo da clinica ou global e use a acao
+                                            para enviar itens, recomendacoes, justificativa de exames e exames para esta receita.
+                                        </p>
+                                        {location.state && (location.state as any)?.sourceProtocol?.name ? (
+                                            <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-[#39ff14]">
+                                                Protocolo atual: {(location.state as any).sourceProtocol.name}
+                                            </p>
+                                        ) : null}
+                                    </div>
+                                    <div className="flex flex-col gap-3">
+                                        <RxvButton
+                                            variant="secondary"
+                                            onClick={() => navigate('/receituario-vet/protocolos-3')}
+                                            className="justify-center"
+                                        >
+                                            Abrir Protocolos 3.0
+                                        </RxvButton>
+                                        <div className="rounded-2xl border border-dashed border-slate-700 bg-black/20 px-4 py-4 text-sm text-slate-400">
+                                            A importacao reinicia a receita atual e aplica o protocolo por cima de um estado limpo.
+                                        </div>
+                                    </div>
+                                </div>
+                            </RxvCard>
+
                             {/* Itens da Receita */}
                             <RxvCard>
                                 <RxvSectionHeader
                                     icon="medication"
-                                    title="B. Itens da Prescrição"
+                                    title="C. Itens da Prescrição"
                                     subtitle="Medicamentos e produtos com início e duração estruturados"
                                 >
                                     <div className="flex flex-col items-end gap-2">
@@ -1408,6 +1546,15 @@ export default function NovaReceita2Page() {
                                                             <p className="text-xs text-slate-500">
                                                                 {[item.pharmaceutical_form, item.commercial_name].filter(Boolean).join(' • ') || 'Sem apresentação detalhada'}
                                                             </p>
+                                                            {item.medication_id ? (
+                                                                <button
+                                                                    type="button"
+                                                                    onClick={() => void openPresentationPicker(item)}
+                                                                    className="mt-2 rounded-lg border border-slate-700 px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-cyan-300 hover:border-cyan-400/60 hover:bg-cyan-400/10"
+                                                                >
+                                                                    Escolher apresentação
+                                                                </button>
+                                                            ) : null}
                                                             {analysis?.label ? (
                                                                 <p className="mt-2 text-xs text-slate-400">{analysis.label}</p>
                                                             ) : null}
@@ -1523,7 +1670,7 @@ export default function NovaReceita2Page() {
                             <RxvCard>
                                 <RxvSectionHeader
                                     icon="format_list_numbered"
-                                    title="C. Recomendações"
+                                    title="D. Recomendações"
                                     subtitle="Uma orientação por linha. A impressão numera automaticamente."
                                 />
                                 <RxvField label="Recomendações ao tutor">
@@ -1542,10 +1689,18 @@ export default function NovaReceita2Page() {
                             <RxvCard>
                                 <RxvSectionHeader
                                     icon="lab_research"
-                                    title="D. Exames"
+                                    title="E. Exames"
                                     subtitle="Lista simples editável, com inserção rápida por atalho"
                                 />
                                 <div className="space-y-4">
+                                    <RxvField label="Justificativa dos exames">
+                                        <RxvTextarea
+                                            placeholder="Ex: Ficam sugeridos os seguintes exames para avaliar a função dos rins e do fígado do paciente..."
+                                            value={state.examJustification}
+                                            onChange={(e) => updateState((prev) => ({ ...prev, examJustification: e.target.value }))}
+                                            rows={4}
+                                        />
+                                    </RxvField>
                                     <div className="flex flex-wrap gap-2">
                                         {COMMON_EXAMS.map((exam) => {
                                             const selected = state.exams.includes(exam)
@@ -1578,10 +1733,44 @@ export default function NovaReceita2Page() {
                                 </div>
                             </RxvCard>
 
+                            {false && <RxvCard>
+                                <RxvSectionHeader
+                                    icon="playlist_add_check"
+                                    title="E. Protocolos"
+                                    subtitle="Importe protocolos prontos antes de definir o template final"
+                                />
+                                <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_280px]">
+                                    <div className="rounded-2xl border border-slate-700 bg-black/20 px-4 py-4 text-sm text-slate-300">
+                                        <p className="font-semibold text-slate-100">Fluxo recomendado</p>
+                                        <p className="mt-2">
+                                            Abra Protocolos 3.0, escolha um protocolo da clinica ou global e use a acao
+                                            para enviar itens, recomendacoes e exames para esta receita.
+                                        </p>
+                                        {location.state && (location.state as any)?.sourceProtocol?.name ? (
+                                            <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-[#39ff14]">
+                                                Protocolo atual: {(location.state as any).sourceProtocol.name}
+                                            </p>
+                                        ) : null}
+                                    </div>
+                                    <div className="flex flex-col gap-3">
+                                        <RxvButton
+                                            variant="secondary"
+                                            onClick={() => navigate('/receituario-vet/protocolos-3')}
+                                            className="justify-center"
+                                        >
+                                            Abrir Protocolos 3.0
+                                        </RxvButton>
+                                        <div className="rounded-2xl border border-dashed border-slate-700 bg-black/20 px-4 py-4 text-sm text-slate-400">
+                                            A importacao mantem os medicamentos no fluxo atual da Nova Receita.
+                                        </div>
+                                    </div>
+                                </div>
+                            </RxvCard>}
+
                             <RxvCard>
                                 <RxvSectionHeader
                                     icon="palette"
-                                    title="E. Templates"
+                                    title="F. Templates"
                                     subtitle="Template de impressão separado da futura camada de templates clínicos de conteúdo"
                                 />
                                 <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_280px]">
@@ -1675,6 +1864,56 @@ export default function NovaReceita2Page() {
             </div>
 
             {/* ==================== MODALS ==================== */}
+
+            {/* Modal catálogo */}
+            {presentationPickerOpen && (
+                <RxvModalShell zIndexClass="z-[100]" overlayClassName="bg-black/95 backdrop-blur-md">
+                    <div className="mx-auto flex max-h-[80vh] w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-cyan-400/30 bg-black shadow-[0_0_80px_rgba(34,211,238,0.2)]">
+                        <div className="flex items-center justify-between border-b border-slate-800 bg-slate-900/50 px-8 py-5">
+                            <div>
+                                <h2 className="text-lg font-black uppercase italic tracking-tight text-white">Escolher apresentação</h2>
+                                <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-500">{presentationPickerItemName}</p>
+                            </div>
+                            <button
+                                type="button"
+                                onClick={closePresentationPicker}
+                                className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800/50 text-slate-400 transition-colors hover:bg-slate-800 hover:text-white"
+                            >
+                                <span className="material-symbols-outlined text-[20px]">close</span>
+                            </button>
+                        </div>
+                        <div className="flex-1 overflow-y-auto px-6 py-6 space-y-2">
+                            {isLoadingPresentationPicker ? (
+                                <div className="flex flex-col items-center justify-center py-10 opacity-50">
+                                    <span className="material-symbols-outlined animate-spin text-cyan-300">sync</span>
+                                    <p className="mt-2 text-[10px] font-black uppercase tracking-widest text-slate-500">Carregando apresentações...</p>
+                                </div>
+                            ) : presentationPickerOptions.length === 0 ? (
+                                <div className="py-10 text-center">
+                                    <p className="text-xs font-bold uppercase tracking-widest text-slate-600">Nenhuma apresentação encontrada</p>
+                                </div>
+                            ) : (
+                                presentationPickerOptions.map((presentation) => {
+                                    const concentration = buildPresentationConcentrationText(presentation) || presentation.concentration_text || 'Sem concentração'
+                                    return (
+                                        <button
+                                            key={presentation.id}
+                                            type="button"
+                                            onClick={() => applyPresentationToItem(presentation)}
+                                            className="w-full rounded-2xl border border-slate-800 bg-slate-900/50 p-4 text-left transition-all hover:border-cyan-400/40 hover:bg-slate-900"
+                                        >
+                                            <p className="text-sm font-black uppercase italic text-white">
+                                                {[presentation.pharmaceutical_form || 'Apresentação', presentation.commercial_name || 'Sem nome comercial'].join(' • ')}
+                                            </p>
+                                            <p className="mt-2 text-xs text-slate-400">{concentration}</p>
+                                        </button>
+                                    )
+                                })
+                            )}
+                        </div>
+                    </div>
+                </RxvModalShell>
+            )}
 
             {/* Modal catálogo */}
             <AddMedicationModal2

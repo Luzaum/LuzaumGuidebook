@@ -1,8 +1,13 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { AlertTriangle, Calculator, CheckCircle2 } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
 import { useDoseCalculator } from '../../hooks/useDoseCalculator';
 import { MedicationDose, MedicationPresentation } from '../../types/medication';
+import {
+  buildDoseSummaryLabel,
+  formatDoseSpeciesLabel,
+  MedicationDoseSpecies,
+} from '../../utils/medicationRules';
 
 interface DoseCalculatorCardProps {
   doses: MedicationDose[];
@@ -12,26 +17,78 @@ interface DoseCalculatorCardProps {
 
 const UI_TEXT = {
   title: 'Calculadora de dose',
-  subtitle: 'C\u00e1lculo r\u00e1pido com base em peso e apresenta\u00e7\u00e3o',
+  subtitle: 'Peso, espécie, regime e apresentação em um cálculo só',
+  species: 'Espécie',
   weight: 'Peso (kg)',
-  doseBase: 'Dose base',
-  presentation: 'Apresenta\u00e7\u00e3o',
+  doseBase: 'Regime clínico',
+  presentation: 'Apresentação',
   mgOnly: 'Apenas em mg',
-  referenceDose: 'Dose de refer\u00eancia',
-  results: 'Resultado do c\u00e1lculo',
+  referenceDose: 'Regime selecionado',
+  safeConversion: 'Conversão pela apresentação',
+  results: 'Resultado do cálculo',
   totalDose: 'Dose total',
-  volume: 'Volume',
-  tablets: 'Comprimidos',
-  tabletUnit: 'comp.',
+  explicitSpecies: 'Cada dose precisa ter espécie explícita e representar um único regime clínico.',
+  mgFallback: 'Dose calculada em mg',
 } as const;
 
-export function DoseCalculatorCard({ doses, presentations, className }: DoseCalculatorCardProps) {
-  const [selectedDoseId, setSelectedDoseId] = useState<string>(doses[0]?.id || '');
+function Label({ children }: { children: React.ReactNode }) {
+  return <label className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">{children}</label>;
+}
+
+function ResultMetric({
+  label,
+  value,
+  tone = 'default',
+  description,
+}: {
+  label: string;
+  value: React.ReactNode;
+  tone?: 'default' | 'primary';
+  description?: string;
+}) {
+  const toneClasses = {
+    default: 'border-border/80 bg-background/70 text-foreground',
+    primary: 'border-primary/20 bg-primary/[0.08] text-primary',
+  } as const;
+
+  return (
+    <div className={`rounded-[24px] border p-5 ${toneClasses[tone]}`}>
+      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">{label}</p>
+      <div className="mt-3 text-3xl font-bold tracking-tight">{value}</div>
+      {description ? <p className="mt-3 text-sm leading-6 text-muted-foreground">{description}</p> : null}
+    </div>
+  );
+}
+
+export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
+  doses,
+  presentations,
+  className,
+}: DoseCalculatorCardProps) {
+  const availableSpecies = useMemo(() => {
+    const set = new Set<MedicationDoseSpecies>();
+    doses.forEach((dose) => {
+      if (dose.species === 'both') {
+        set.add('dog');
+        set.add('cat');
+      } else {
+        set.add(dose.species);
+      }
+    });
+    return Array.from(set);
+  }, [doses]);
+
+  const [selectedSpecies, setSelectedSpecies] = useState<MedicationDoseSpecies>(availableSpecies[0] || 'dog');
+  const filteredDoses = useMemo(
+    () => doses.filter((dose) => dose.species === 'both' || dose.species === selectedSpecies),
+    [doses, selectedSpecies]
+  );
+  const [selectedDoseId, setSelectedDoseId] = useState<string>(filteredDoses[0]?.id || doses[0]?.id || '');
   const [selectedPresentationId, setSelectedPresentationId] = useState<string>('');
 
   const selectedDose = useMemo(
-    () => doses.find((item) => item.id === selectedDoseId) || doses[0],
-    [doses, selectedDoseId]
+    () => filteredDoses.find((item) => item.id === selectedDoseId) || filteredDoses[0],
+    [filteredDoses, selectedDoseId]
   );
   const selectedPresentation = useMemo(
     () => presentations.find((item) => item.id === selectedPresentationId),
@@ -40,26 +97,64 @@ export function DoseCalculatorCard({ doses, presentations, className }: DoseCalc
 
   const { weight, setWeight, result } = useDoseCalculator(selectedDose, selectedPresentation);
 
+  useEffect(() => {
+    if (!filteredDoses.length) return;
+    if (filteredDoses.some((dose) => dose.id === selectedDoseId)) return;
+    setSelectedDoseId(filteredDoses[0].id);
+  }, [filteredDoses, selectedDoseId]);
+
   if (!doses.length || !selectedDose) return null;
 
-  return (
-    <section className={cn('overflow-hidden rounded-[28px] border border-border bg-card shadow-sm', className)}>
-      <header className="flex items-center gap-3 border-b border-border bg-muted/30 p-4 md:p-5">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-          <Calculator className="h-5 w-5" />
-        </div>
-        <div>
-          <h3 className="font-bold tracking-tight text-foreground">{UI_TEXT.title}</h3>
-          <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-            {UI_TEXT.subtitle}
-          </p>
-        </div>
-      </header>
+  const conversionLabel =
+    result?.conversionSafeMin !== undefined || result?.conversionSafeSingle !== undefined
+      ? {
+          min: result.conversionSafeMin,
+          max: result.conversionSafeMax,
+          single: result.conversionSafeSingle,
+        }
+      : {
+          min: result?.conversionExactMin,
+          max: result?.conversionExactMax,
+          single: result?.conversionExactSingle,
+        };
 
-      <div className="space-y-6 p-6">
-        <div className="grid gap-6 md:grid-cols-3">
-          <div className="space-y-2">
-            <label className="text-sm font-semibold text-foreground/80">{UI_TEXT.weight}</label>
+  return (
+    <section className={cn('overflow-hidden rounded-[32px] border border-border bg-card/95 shadow-sm', className)}>
+      <div className="border-b border-border/70 px-6 py-5 md:px-8">
+        <div className="flex items-start gap-4">
+          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/[0.08] text-primary">
+            <Calculator className="h-5 w-5" />
+          </div>
+          <div className="min-w-0">
+            <h2 className="text-[28px] font-bold tracking-tight text-foreground">{UI_TEXT.title}</h2>
+            <p className="mt-1 text-sm leading-7 text-muted-foreground">{UI_TEXT.subtitle}</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-8 px-6 py-6 md:px-8 md:py-8">
+        <div className="rounded-[24px] border border-primary/15 bg-primary/[0.05] px-5 py-4 text-sm leading-7 text-foreground/85">
+          {UI_TEXT.explicitSpecies}
+        </div>
+
+        <div className="grid gap-5 xl:grid-cols-12">
+          <div className="space-y-2 xl:col-span-2">
+            <Label>{UI_TEXT.species}</Label>
+            <select
+              value={selectedSpecies}
+              onChange={(event) => setSelectedSpecies(event.target.value as MedicationDoseSpecies)}
+              className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
+            >
+              {availableSpecies.map((species) => (
+                <option key={species} value={species}>
+                  {formatDoseSpeciesLabel(species)}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="space-y-2 xl:col-span-2">
+            <Label>{UI_TEXT.weight}</Label>
             <input
               type="number"
               min="0"
@@ -67,31 +162,31 @@ export function DoseCalculatorCard({ doses, presentations, className }: DoseCalc
               value={weight}
               onChange={(event) => setWeight(Number(event.target.value) || '')}
               placeholder="Ex.: 12,4"
-              className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
+              className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
             />
           </div>
 
-          <div className="space-y-2">
-            <label className="text-sm font-semibold text-foreground/80">{UI_TEXT.doseBase}</label>
+          <div className="space-y-2 xl:col-span-5">
+            <Label>{UI_TEXT.doseBase}</Label>
             <select
               value={selectedDoseId}
               onChange={(event) => setSelectedDoseId(event.target.value)}
-              className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
+              className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
             >
-              {doses.map((dose) => (
+              {filteredDoses.map((dose) => (
                 <option key={dose.id} value={dose.id}>
-                  {dose.indication}
+                  {buildDoseSummaryLabel(dose)}
                 </option>
               ))}
             </select>
           </div>
 
-          <div className="space-y-2">
-            <label className="text-sm font-semibold text-foreground/80">{UI_TEXT.presentation}</label>
+          <div className="space-y-2 xl:col-span-3">
+            <Label>{UI_TEXT.presentation}</Label>
             <select
               value={selectedPresentationId}
               onChange={(event) => setSelectedPresentationId(event.target.value)}
-              className="w-full rounded-xl border border-border bg-background px-4 py-2.5 text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
+              className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
             >
               <option value="">{UI_TEXT.mgOnly}</option>
               {presentations.map((presentation) => (
@@ -103,70 +198,73 @@ export function DoseCalculatorCard({ doses, presentations, className }: DoseCalc
           </div>
         </div>
 
-        <div className="rounded-xl border border-primary/10 bg-primary/5 p-4">
-          <div className="flex items-start gap-3">
-            <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
-            <div className="text-sm text-foreground/90">
-              <p className="mb-1 font-medium">{UI_TEXT.referenceDose}</p>
-              <p>
-                {selectedDose.doseMin}
-                {selectedDose.doseMax ? ` a ${selectedDose.doseMax}` : ''} {selectedDose.doseUnit}/{selectedDose.perWeightUnit}
-                {selectedDose.route ? ` \u2022 ${selectedDose.route}` : ''}
-                {selectedDose.frequency ? ` \u2022 ${selectedDose.frequency}` : ''}
-              </p>
+        <div className="grid gap-5 xl:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]">
+          <div className="rounded-[28px] border border-border/80 bg-muted/[0.12] p-6">
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-primary" />
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">{UI_TEXT.referenceDose}</p>
+                <p className="mt-3 text-[15px] leading-7 text-foreground">{buildDoseSummaryLabel(selectedDose)}</p>
+                {selectedDose.duration ? (
+                  <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                    <span className="font-medium text-foreground">Duração:</span> {selectedDose.duration}
+                  </p>
+                ) : null}
+                {selectedDose.notes ? (
+                  <p className="mt-4 border-t border-border/70 pt-4 text-sm leading-7 text-muted-foreground">{selectedDose.notes}</p>
+                ) : null}
+              </div>
             </div>
           </div>
+
+          {result ? (
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-1">
+              {result.warning ? (
+                <div className="flex items-start gap-3 rounded-[24px] border border-amber-500/20 bg-amber-500/[0.06] px-5 py-4 text-sm leading-7 text-amber-700 dark:text-amber-300">
+                  <AlertTriangle className="mt-1 h-4 w-4 shrink-0" />
+                  <p>{result.warning}</p>
+                </div>
+              ) : null}
+
+              <ResultMetric
+                label={UI_TEXT.totalDose}
+                value={
+                  <>
+                    {result.doseMinMg && result.doseMaxMg && result.doseMaxMg !== result.doseMinMg
+                      ? `${result.doseMinMg.toFixed(1)} - ${result.doseMaxMg.toFixed(1)}`
+                      : result.doseCalculatedMg?.toFixed(1) || result.doseMinMg?.toFixed(1) || '-'}
+                    <span className="ml-1 text-base font-medium text-muted-foreground">mg</span>
+                  </>
+                }
+              />
+
+              {result.conversionKind && result.conversionKind !== 'mg-only' ? (
+                <ResultMetric
+                  label={UI_TEXT.safeConversion}
+                  tone="primary"
+                  value={
+                    <>
+                      {conversionLabel.min !== undefined && conversionLabel.max !== undefined && conversionLabel.max !== conversionLabel.min
+                        ? `${conversionLabel.min.toFixed(2)} - ${conversionLabel.max.toFixed(2)}`
+                        : conversionLabel.single !== undefined
+                          ? conversionLabel.single.toFixed(2)
+                          : conversionLabel.min?.toFixed(2) || '-'}
+                      <span className="ml-1 text-base font-medium text-primary/70">{result.conversionUnitLabel}</span>
+                    </>
+                  }
+                  description={result.conversionNote}
+                />
+              ) : selectedPresentation ? (
+                <ResultMetric
+                  label={UI_TEXT.mgFallback}
+                  value={<span className="text-xl font-semibold">Sem conversão segura</span>}
+                  description="Não foi possível converter com segurança para a apresentação selecionada."
+                />
+              ) : null}
+            </div>
+          ) : null}
         </div>
-
-        {result && (
-          <div className="space-y-4 border-t border-border pt-6">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-foreground">{UI_TEXT.results}</h4>
-
-            {result.warning && (
-              <div className="flex items-start gap-2 rounded-lg border border-amber-500/20 bg-amber-500/10 p-3 text-sm text-amber-700 dark:text-amber-400">
-                <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
-                <p>{result.warning}</p>
-              </div>
-            )}
-
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-              <div className="rounded-xl border border-border bg-muted/30 p-4">
-                <p className="mb-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">{UI_TEXT.totalDose}</p>
-                <p className="text-2xl font-bold text-foreground">
-                  {result.doseMinMg && result.doseMaxMg
-                    ? `${result.doseMinMg.toFixed(1)} - ${result.doseMaxMg.toFixed(1)}`
-                    : result.doseCalculatedMg?.toFixed(1) || '-'}
-                  <span className="ml-1 text-base font-medium text-muted-foreground">mg</span>
-                </p>
-              </div>
-
-              {(result.volumeMinMl || result.volumeCalculatedMl) && (
-                <div className="rounded-xl border border-primary/20 bg-primary/10 p-4">
-                  <p className="mb-1 text-xs font-medium uppercase tracking-wider text-primary">{UI_TEXT.volume}</p>
-                  <p className="text-2xl font-bold text-primary">
-                    {result.volumeMinMl && result.volumeMaxMl
-                      ? `${result.volumeMinMl.toFixed(2)} - ${result.volumeMaxMl.toFixed(2)}`
-                      : result.volumeCalculatedMl?.toFixed(2)}
-                    <span className="ml-1 text-base font-medium text-primary/70">mL</span>
-                  </p>
-                </div>
-              )}
-
-              {(result.tabletsMin || result.tabletsCalculated) && (
-                <div className="rounded-xl border border-primary/20 bg-primary/10 p-4">
-                  <p className="mb-1 text-xs font-medium uppercase tracking-wider text-primary">{UI_TEXT.tablets}</p>
-                  <p className="text-2xl font-bold text-primary">
-                    {result.tabletsMin && result.tabletsMax
-                      ? `${result.tabletsMin.toFixed(1)} - ${result.tabletsMax.toFixed(1)}`
-                      : result.tabletsCalculated?.toFixed(1)}
-                    <span className="ml-1 text-base font-medium text-primary/70">{UI_TEXT.tabletUnit}</span>
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );
-}
+});

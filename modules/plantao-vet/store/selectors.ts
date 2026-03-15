@@ -154,7 +154,7 @@ export function getShiftTasks(snapshot: PlantaoVetSnapshot, shiftId: string | nu
     return [];
   }
 
-  return getOrderedTasks(snapshot).filter((task) => task.shiftId === shiftId);
+  return getOrderedTasks(snapshot).filter((task) => task.shiftId === shiftId && !task.deletedAt);
 }
 
 export function getActiveShiftTasks(snapshot: PlantaoVetSnapshot) {
@@ -166,7 +166,7 @@ export function getShiftPatientTasks(snapshot: PlantaoVetSnapshot, shiftPatientI
     return [];
   }
 
-  return getOrderedTasks(snapshot).filter((task) => task.shiftPatientId === shiftPatientId);
+  return getOrderedTasks(snapshot).filter((task) => task.shiftPatientId === shiftPatientId && !task.deletedAt);
 }
 
 export function getShiftPatientBulletins(snapshot: PlantaoVetSnapshot, shiftPatientId: string | null) {
@@ -175,7 +175,7 @@ export function getShiftPatientBulletins(snapshot: PlantaoVetSnapshot, shiftPati
   }
 
   return orderedValues(snapshot.bulletinOrder, snapshot.bulletinsById).filter(
-    (bulletin) => bulletin.shiftPatientId === shiftPatientId
+    (bulletin) => bulletin.shiftPatientId === shiftPatientId && !bulletin.deletedAt
   );
 }
 
@@ -188,7 +188,7 @@ export function getShiftBulletins(snapshot: PlantaoVetSnapshot, shiftId: string 
     return [];
   }
 
-  return getOrderedBulletins(snapshot).filter((bulletin) => bulletin.shiftId === shiftId);
+  return getOrderedBulletins(snapshot).filter((bulletin) => bulletin.shiftId === shiftId && !bulletin.deletedAt);
 }
 
 export function getActiveShiftBulletins(snapshot: PlantaoVetSnapshot) {

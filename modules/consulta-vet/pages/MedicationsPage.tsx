@@ -17,18 +17,38 @@ export function MedicationsPage() {
   const medicationRepository = useMemo(() => getMedicationRepository(), []);
   const [medications, setMedications] = useState<MedicationRecord[]>([]);
   const [query, setQuery] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const loadData = async () => {
-      const normalizedQuery = query.trim();
-      const nextMedications = normalizedQuery
-        ? await medicationRepository.search(normalizedQuery)
-        : await medicationRepository.list();
+    let isMounted = true;
 
-      setMedications(nextMedications);
+    const loadData = async () => {
+      setIsLoading(true);
+      setError(null);
+
+      try {
+        const normalizedQuery = query.trim();
+        const nextMedications = normalizedQuery
+          ? await medicationRepository.search(normalizedQuery)
+          : await medicationRepository.list();
+
+        if (!isMounted) return;
+        setMedications(nextMedications);
+      } catch (loadError) {
+        if (!isMounted) return;
+        setMedications([]);
+        setError(loadError instanceof Error ? loadError.message : 'Falha ao carregar medicamentos.');
+      } finally {
+        if (isMounted) setIsLoading(false);
+      }
     };
 
     void loadData();
+
+    return () => {
+      isMounted = false;
+    };
   }, [medicationRepository, query]);
 
   return (
@@ -58,11 +78,23 @@ export function MedicationsPage() {
       <section className="space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">{UI_TEXT.resultsLabel}</h2>
-          <span className="text-sm text-muted-foreground">{medications.length}</span>
+          <span className="text-sm text-muted-foreground">{isLoading ? '...' : medications.length}</span>
         </div>
 
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {medications.map((medication) => (
+          {isLoading && (
+            <div className="col-span-full rounded-2xl border border-border bg-card py-16 text-center">
+              <p className="text-muted-foreground">Carregando medicamentos...</p>
+            </div>
+          )}
+
+          {!isLoading && error && (
+            <div className="col-span-full rounded-2xl border border-destructive/30 bg-destructive/10 px-6 py-5">
+              <p className="text-sm text-destructive">{error}</p>
+            </div>
+          )}
+
+          {!isLoading && !error && medications.map((medication) => (
             <EntityCard
               key={medication.id}
               to={`/consulta-vet/medicamentos/${medication.slug}`}
@@ -75,7 +107,7 @@ export function MedicationsPage() {
             />
           ))}
 
-          {medications.length === 0 && (
+          {!isLoading && !error && medications.length === 0 && (
             <div className="col-span-full rounded-2xl border border-border bg-card py-16 text-center">
               <p className="text-muted-foreground">{UI_TEXT.empty}</p>
             </div>

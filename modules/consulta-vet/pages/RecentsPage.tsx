@@ -33,60 +33,81 @@ export function RecentsPage() {
   const consensoRepository = useMemo(() => getConsensoRepository(), []);
   const { recents } = useRecents();
   const [items, setItems] = useState<RecentItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    let isMounted = true;
+
     const loadData = async () => {
-      const [loadedDiseases, loadedMedications, loadedConsensos] = await Promise.all([
-        diseaseRepository.list(),
-        medicationRepository.list(),
-        consensoRepository.list(),
-      ]);
+      setIsLoading(true);
+      setError(null);
 
-      const nextItems = recents
-        .map((recent) => {
-          if (recent.entityType === 'disease') {
-            const found = loadedDiseases.find((item) => item.id === recent.entityId);
+      try {
+        const [loadedDiseases, loadedMedications, loadedConsensos] = await Promise.all([
+          diseaseRepository.list(),
+          medicationRepository.list(),
+          consensoRepository.list(),
+        ]);
+
+        if (!isMounted) return;
+
+        const nextItems = recents
+          .map((recent) => {
+            if (recent.entityType === 'disease') {
+              const found = loadedDiseases.find((item) => item.id === recent.entityId);
+              if (!found) return null;
+
+              return {
+                ...recent,
+                slug: found.slug,
+                title: found.title,
+                subtitle: `${found.category} \u2022 ${formatSpeciesList(found.species)}`,
+                description: found.quickSummary,
+              } satisfies RecentItem;
+            }
+
+            if (recent.entityType === 'medication') {
+              const found = loadedMedications.find((item) => item.id === recent.entityId);
+              if (!found) return null;
+
+              return {
+                ...recent,
+                slug: found.slug,
+                title: found.title,
+                subtitle: found.pharmacologicClass,
+                description: found.indications.join(', '),
+              } satisfies RecentItem;
+            }
+
+            const found = loadedConsensos.find((item) => item.id === recent.entityId);
             if (!found) return null;
 
             return {
               ...recent,
               slug: found.slug,
               title: found.title,
-              subtitle: `${found.category} \u2022 ${formatSpeciesList(found.species)}`,
-              description: found.quickSummary,
+              subtitle: `${found.organization || UI_TEXT.noOrganization}${found.year ? ` \u2022 ${found.year}` : ''}`,
+              description: found.description || '',
             } satisfies RecentItem;
-          }
+          })
+          .filter(Boolean) as RecentItem[];
 
-          if (recent.entityType === 'medication') {
-            const found = loadedMedications.find((item) => item.id === recent.entityId);
-            if (!found) return null;
-
-            return {
-              ...recent,
-              slug: found.slug,
-              title: found.title,
-              subtitle: found.pharmacologicClass,
-              description: found.indications.join(', '),
-            } satisfies RecentItem;
-          }
-
-          const found = loadedConsensos.find((item) => item.id === recent.entityId);
-          if (!found) return null;
-
-          return {
-            ...recent,
-            slug: found.slug,
-            title: found.title,
-            subtitle: `${found.organization || UI_TEXT.noOrganization}${found.year ? ` \u2022 ${found.year}` : ''}`,
-            description: found.description || '',
-          } satisfies RecentItem;
-        })
-        .filter(Boolean) as RecentItem[];
-
-      setItems(nextItems);
+        setItems(nextItems);
+      } catch (loadError) {
+        if (!isMounted) return;
+        setItems([]);
+        setError(loadError instanceof Error ? loadError.message : 'Falha ao carregar recentes.');
+      } finally {
+        if (isMounted) setIsLoading(false);
+      }
     };
 
     void loadData();
+
+    return () => {
+      isMounted = false;
+    };
   }, [consensoRepository, diseaseRepository, medicationRepository, recents]);
 
   return (
@@ -103,7 +124,15 @@ export function RecentsPage() {
         </div>
       </section>
 
-      {items.length === 0 ? (
+      {isLoading ? (
+        <div className="rounded-2xl border border-border bg-card py-16 text-center">
+          <p className="text-muted-foreground">Carregando recentes...</p>
+        </div>
+      ) : error ? (
+        <div className="rounded-2xl border border-destructive/30 bg-destructive/10 px-6 py-5">
+          <p className="text-sm text-destructive">{error}</p>
+        </div>
+      ) : items.length === 0 ? (
         <div className="rounded-2xl border border-border bg-card py-16 text-center">
           <Clock className="mx-auto mb-4 h-12 w-12 text-muted-foreground/50" />
           <h2 className="mb-2 text-lg font-medium text-foreground">{UI_TEXT.emptyTitle}</h2>

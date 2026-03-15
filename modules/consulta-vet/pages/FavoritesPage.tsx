@@ -30,33 +30,56 @@ export function FavoritesPage() {
   const [diseases, setDiseases] = useState<DiseaseRecord[]>([]);
   const [medications, setMedications] = useState<MedicationRecord[]>([]);
   const [consensos, setConsensos] = useState<ConsensusRecord[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const loadData = async () => {
-      const [loadedDiseases, loadedMedications, loadedConsensos] = await Promise.all([
-        diseaseRepository.list(),
-        medicationRepository.list(),
-        consensoRepository.list(),
-      ]);
+    let isMounted = true;
 
-      setDiseases(
-        loadedDiseases.filter((item) =>
-          favorites.some((favorite) => favorite.entityType === 'disease' && favorite.entityId === item.id)
-        )
-      );
-      setMedications(
-        loadedMedications.filter((item) =>
-          favorites.some((favorite) => favorite.entityType === 'medication' && favorite.entityId === item.id)
-        )
-      );
-      setConsensos(
-        loadedConsensos.filter((item) =>
-          favorites.some((favorite) => favorite.entityType === 'consensus' && favorite.entityId === item.id)
-        )
-      );
+    const loadData = async () => {
+      setIsLoading(true);
+      setError(null);
+
+      try {
+        const [loadedDiseases, loadedMedications, loadedConsensos] = await Promise.all([
+          diseaseRepository.list(),
+          medicationRepository.list(),
+          consensoRepository.list(),
+        ]);
+
+        if (!isMounted) return;
+
+        setDiseases(
+          loadedDiseases.filter((item) =>
+            favorites.some((favorite) => favorite.entityType === 'disease' && favorite.entityId === item.id)
+          )
+        );
+        setMedications(
+          loadedMedications.filter((item) =>
+            favorites.some((favorite) => favorite.entityType === 'medication' && favorite.entityId === item.id)
+          )
+        );
+        setConsensos(
+          loadedConsensos.filter((item) =>
+            favorites.some((favorite) => favorite.entityType === 'consensus' && favorite.entityId === item.id)
+          )
+        );
+      } catch (loadError) {
+        if (!isMounted) return;
+        setDiseases([]);
+        setMedications([]);
+        setConsensos([]);
+        setError(loadError instanceof Error ? loadError.message : 'Falha ao carregar favoritos.');
+      } finally {
+        if (isMounted) setIsLoading(false);
+      }
     };
 
     void loadData();
+
+    return () => {
+      isMounted = false;
+    };
   }, [consensoRepository, diseaseRepository, favorites, medicationRepository]);
 
   return (
@@ -73,7 +96,15 @@ export function FavoritesPage() {
         </div>
       </section>
 
-      {favorites.length === 0 ? (
+      {isLoading ? (
+        <div className="rounded-2xl border border-border bg-card py-16 text-center">
+          <p className="text-muted-foreground">Carregando favoritos...</p>
+        </div>
+      ) : error ? (
+        <div className="rounded-2xl border border-destructive/30 bg-destructive/10 px-6 py-5">
+          <p className="text-sm text-destructive">{error}</p>
+        </div>
+      ) : favorites.length === 0 ? (
         <div className="rounded-2xl border border-border bg-card py-16 text-center">
           <Bookmark className="mx-auto mb-4 h-12 w-12 text-muted-foreground/50" />
           <h2 className="mb-2 text-lg font-medium text-foreground">{UI_TEXT.emptyTitle}</h2>

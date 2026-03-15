@@ -1,0 +1,227 @@
+{
+    "type": "diseases",
+    "version": 1,
+    "items": [
+        {
+            "slug": "colapso-traqueal",
+            "title": "Colapso Traqueal / Traqueobroncomalácia",
+            "synonyms": [
+                "Traqueomalácia",
+                "Síndrome do Colapso de Vias Aéreas"
+            ],
+            "species": [
+                "dog"
+            ],
+            "category": "respiratorio",
+            "tags": [
+                "tosse gasparzinha",
+                "respiratório",
+                "emergência",
+                "yorkshire"
+            ],
+            "isPublished": true,
+            "quickSummary": "Degeneração progressiva da cartilagem traqueal que leva ao achatamento dorsoventral da via aérea, causando obstrução dinâmica e tosse característica (\"granejo de ganso\").",
+            "thirtySecondView": [
+                "Tosse em 'granejo de ganso' ou engasgo, tipicamente desencadeada por excitação, exercício ou pressão na coleira.",
+                "Etiologia primária envolve degeneração progressiva dos anéis cartilaginosos (diminuição de glicosaminoglicanos).",
+                "É uma doença crônica e incurável; o tratamento é paliativo e focado em melhorar a qualidade de vida."
+            ],
+            "doNotForget": [
+                "Sempre excluir doenças cardíacas (especialmente insuficiência mitral) como causa primária da tosse em cães de pequeno porte.",
+                "Redução de peso é NÃO NEGOCIÁVEL para o sucesso do manejo a longo prazo.",
+                "O uso de peiteira em vez de coleira cervical é obrigatório."
+            ],
+            "whenToSuspect": [
+                "Cão toy/miniatura (Yorkshire, Poodle, Spitz, Pug) de meia idade a idoso.",
+                "Histórico de tosse seca, alta, tipo engasgo crônica."
+            ],
+            "initialConduct": [
+                "Minimizar estresse e manipulação (fornecer oxigênio se em crise sem estressar).",
+                "Trocar imediatamente coleira por peiteira.",
+                "Sedação leve (como butorfanol) é a pedra angular da terapia da crise de tosse aguda."
+            ],
+            "highYieldTests": [
+                "Radiografias cervicais e torácicas isolam a maioria dos casos básicos (inspiratória E expiratória).",
+                "Fluoroscopia e/ou Broncoscopia (padrão ouro para classificação e avaliação de malácia brônquica/stent)."
+            ],
+            "dogVsCatDifferences": [
+                "Quase exclusivamente canina. Extremamente rara em gatos."
+            ],
+            "commonMistakes": [
+                "Prescrição indiscriminada de antibióticos e corticosteróides em altas doses para todo paciente tossindo.",
+                "Ignorar a síndrome braquicefálica associada ou edema laríngeo.",
+                "Focar unicamente na tosse e não enfatizar para o tutor o controle absoluto do peso e do ambiente."
+            ],
+            "redFlags": [
+                "Cianose crônica e angústia respiratória.",
+                "Piora progressiva num paciente que antes respondia aos antitussígenos.",
+                "Síncopes frequentes associadas a acessos de tosse."
+            ],
+            "clinicalPearls": [
+                "A tosse é um ciclo vicioso: tosse gera inflamação, e a inflamação gera mais tosse. Quebrar esse ciclo com antitussígenos/sedativos e anti-inflamatórios locais é o pulo do gato.",
+                "Colapsos cervicais colabam na INSPIRAÇÃO; Traqueais intratorácicos e brônquicos colabam na EXPIRAÇÃO."
+            ],
+            "introduction": {
+                "teachingOverview": "Pense no Colapso Traqueal como um canudo de papel molhado que tenta sugar ar grosso. O defeito principal está nos blocos de construção da cartilagem (condroitina / glicosaminoglicanos diminuídos) fazendo com que o anel traqueal deixe de ser em forma de C rígido e assuma uma forma em O achatado.",
+                "description": "Alteração estrutural crônica caracterizada pela fraqueza da cartilagem traqueal com alargamento e flacidez do músculo dorsal, obstruindo parcialmente do lúmen traqueal e predispondo a inflamatório crônico, edema e aprisionamento de muco.",
+                "cause": "Degeneração secundária idiopática, altamente influenciada por causas genéticas e agravada por inflamações respiratórias, alergias, obesidade e cardiopatias."
+            },
+            "pathophysiology": {
+                "pathophysiologyExplanation": "Anéis perdem sua firmeza intrínseca -> Membrana traqueal dorsal fica distendida e flácida -> Com as alterações de pressão no tórax na inspiração (cervical) ou expiração (intratorácica), o lúmen desaba. As paredes esfregando causam inflamação violenta e metaplasia escamosa (perde cílios). Menos cílios significa mais muco aprisionado -> Isso irrita neuroreceptores tusígenos -> Mais tosse -> Ciclo Vicioso.",
+                "tissueDamage": [
+                    "Flacidez da membrana dorsal",
+                    "Redução de GAGs da matriz cartilaginosa",
+                    "Inflamação crônica (traqueíte) por atrito",
+                    "Redução/paralisia da escada mucociliar"
+                ]
+            },
+            "epidemiology": {
+                "breedPredisposition": [
+                    "Yorkshire Terrier",
+                    "Poodle Toy",
+                    "Lulu da Pomerânia (Spitz Alemão)",
+                    "Maltês",
+                    "Pug"
+                ],
+                "agePredisposition": [
+                    "Sinais sutis muitas vezes desde jovens, porém exuberância clínica clássica entre 6 a 8 anos."
+                ],
+                "riskFactors": [
+                    "Obesidade (ponto cardeal).",
+                    "Cardiomegalia (compressão do brônquio principal esquerdo).",
+                    "Inalações irritantes crônicas (fumaça de cigarro na casa, poeira).",
+                    "Latidores compulsivos."
+                ]
+            },
+            "clinicalPresentation": {
+                "historyComplaints": [
+                    "Tosse crônica em apito, asfixiante, popularmente comparada ao \"granejo do ganso\".",
+                    "Pior sob estresse, excitação, engolir água ou tração na coleira."
+                ],
+                "respiratorySigns": [
+                    "Tosse produtiva seguida de espasmo.",
+                    "Dispneia."
+                ],
+                "generalSigns": [
+                    "Intolerância ao exercício.",
+                    "Síncope em acessos muito intensos de tosse (por estimulação vagal ou hipóxia pura)."
+                ]
+            },
+            "physicalExam": {
+                "general": [
+                    "Pode ser absolutamente normal na ausência de acessos."
+                ],
+                "respiratory": [
+                    "Reflexo tussígeno extremamente sensível à palpação superficial da traqueia (positivação imediata e espasmódica).",
+                    "Crepitações pulmonares podem indicar broncomalácia avançada ou pneumonia paralela."
+                ],
+                "cardiovascular": [
+                    "Sopro sistólico mitral concomitante comum (mesma faixa etária/raça)."
+                ]
+            },
+            "differentialDiagnoses": {
+                "respiratoryForm": [
+                    "Complexo Doença Respiratória Infecciosa (Tosse dos Canis) - *mais aguda e geralmente em cães mais jovens com exposição epidemiológica.*",
+                    "Corpo Estranho em Via Aérea.",
+                    "Hipoplasia Traqueal - *geralmente congênito, percebido mais em filhotes (ex: Bulldog).*."
+                ],
+                "cardiovascular": [
+                    "Endocardiose de Mitral com compressão do brônquio principal esquerdo ou edema pulmonar."
+                ]
+            },
+            "diagnosticApproach": {
+                "diagnosticReasoning": "Muitas vezes, a anamnese de um cão toy tosindo após estresse + reflexo de tosse no exame clínico já sugerem fortemente o colapso traqueal. Entretanto, é obrigatório fotografarmos a dinâmica ventilatória e EXCLUIR doencas primárias, especialmente cardíacas.",
+                "diagnosticPlanStepByStep": [
+                    {
+                        "stepNumber": 1,
+                        "title": "Abordagem e Triagem Simples",
+                        "description": "Coletar o histórico rigoroso do tutor focando nos momentos que a tosse ocorre. Auscultar detidamente sistema cadiorespiratório em busca de sopros e induzir suavemente o reflexo de tosse em traqueia cervical."
+                    },
+                    {
+                        "stepNumber": 2,
+                        "title": "Imagens Dinâmicas Mínimas",
+                        "description": "Rx Cervical e Tórax nos momentos Expiatórios e Inspiratórios. Tentar documentar um fecho mecânico na árvore traqueal. Nem sempre visível em 1 disparo simples."
+                    },
+                    {
+                        "stepNumber": 3,
+                        "title": "Aprofundamentos & Exclusões",
+                        "description": "Se houver hipertrofia cardíaca ou sopro, Ecocardiograma se torna obrigatório. Se houver desconfiança de bronquite idiopática agressiva, o hemograma pode sugerir gatilhos secundários."
+                    },
+                    {
+                        "stepNumber": 4,
+                        "title": "O Padrão Ouro (Intervencionista)",
+                        "description": "Fluoroscopia (vídeo dinâmico) ou Traqueobroncoscopia para avaliar o lumen inflamado e o grau 1 ao 4 de colapso, bem como colher lavado broncoalveolar."
+                    }
+                ],
+                "diagnosticPlanIfLimitedResources": "A clínica de pequenos costuma ser engessada caso exames de imagem sejam rejeitados. Caso clínico altamente forte (Raça predispota + tosse estressada + palpação de traqueologia), inicie protocolo empírico de Quebra do Ciclo da Tosse (Corticoide Inalatório em baixas doses + Antitussígeno/Sedativo + Emagrecimento) e reavalie. Se falhar em poucos dias, exames são inegociáveis."
+            },
+            "treatment": {
+                "treatmentReasoning": "Tratamento 100% médico e paliativo para estabilização de qualdiade de vida. Apenas em falhas progressivas no manejo refratário indicamos procedimento invasivos (Próteses/Stents). O manejo consiste em apagar a inflação aguda da traqueia (usando esteróides), diminuir a sensibilidade nervosa da via ao arroubo de tossir (antitússigenos centrais e broncodilatadores secundários) e educar o tutor.",
+                "ownerGuidance": [
+                    "Emagrecimento é inegociável: gordura cervical colaba ativamente a luz.",
+                    "Diga adeus a coleiras cervicais, Use somente peiteira.",
+                    "Fugir de sprays/perfumes/fumo passivo na residência."
+                ],
+                "drugProtocolExamples": [
+                    {
+                        "drug": "Butorfanol",
+                        "indication": "Controle Agudo de Crise (Sedação do Centro da Tosse)",
+                        "dose": "0.05 a 0.2 mg/kg",
+                        "frequency": "A cada 6 - 8 horas",
+                        "duration": "Máximo de alguns dias na fase crítica",
+                        "route": "SC/IM ou Oral",
+                        "cautions": "Sedação grave pode deprimir o drive respiratório em cardiopatas limites.",
+                        "notes": "Um dos melhores quebra disjuntores da tosse incessante desesperadora."
+                    },
+                    {
+                        "drug": "Prednisona",
+                        "indication": "Quebra da inflamação epitelial reativa",
+                        "dose": "0.5 a 1.0 mg/kg",
+                        "frequency": "A cada 12 horas ou 24 horas",
+                        "duration": "Curso regressivo curto (3 a 5 dias)",
+                        "route": "Oral",
+                        "contraindications": "Descartar úlceras agudas, cardiopatias severas (retencão hídrica)",
+                        "notes": "Ideal migrar pós alívio para corticóide inalatório (Fluticasona) para evitar a síndrome sistêmica e engorda do iatrogênico."
+                    },
+                    {
+                        "drug": "Fluticasona",
+                        "indication": "Sustentação a longo prazo da inflamação traqueal",
+                        "dose": "Cães PEQ: 110-220 mcg",
+                        "frequency": "A cada 12 horas",
+                        "duration": "Uso Crônico",
+                        "route": "Inalação via Aerocâmera",
+                        "notes": "Minimiza incrivelmente a necessidade de corticosteroides via oral em pacientes refratários"
+                    },
+                    {
+                        "drug": "Aminofilina / Teofilina",
+                        "indication": "Terapia Adjuvante a critério",
+                        "dose": "10 mg/kg",
+                        "frequency": "A cada 12 horas",
+                        "route": "Oral",
+                        "cautions": "NÃO age nativamente no cartílago ou lumen da via maior",
+                        "notes": "Sua principal força está na dilatação das vias BARRANDO o gradiente de pressões das vias baixas. Melhora a sensação clínica."
+                    }
+                ],
+                "commonClinicalMistakesExpanded": {
+                    "overview": null,
+                    "avoidMistakes": [
+                        "Usar antibióticos cegamente. A menos que a broncoscopia ou os quadros de pneumonia adjacentes atestem infecção, a tosse do colapso tem 0 envolvimento bacteriano e usar Azitromicina vai apenas causar disbiose.",
+                        "Stent antes do emagrecimento ou tratamento clinico agressivo: muitos Stents falham fatalmente e ativam malácia paralela. Jamais prescrever Stent se o tutor não desesgotou a terapia medicamentosa e perda de peso."
+                    ]
+                }
+            },
+            "complications": {
+                "respiratory": [
+                    "Pneumonia Aspirativa / Secundária.",
+                    "Hipoxemia Refratária a ponto de cianose progressiva.",
+                    "Hipertensão Pulmonar Adquirida, cor_pulmonale em cenários assustadoramente tardios."
+                ]
+            },
+            "monitoringPlan": [
+                "Verificar de peso ativamente, pesar e registrar semanalmente (Meta corpórea deve ser 4/9 BCC).",
+                "Manter diário de Tosse pelo tutor: pontuar Frequencia 0/5 nos meses."
+            ],
+            "adminNotesRichText": "<p>JSON gerado para suprir rica rendering da V2</p>"
+        }
+    ]
+}

@@ -39,6 +39,8 @@ const ConsultaVetEditorialDashboardPage = lazy(() => import('./modules/consulta-
 const ConsultaVetEditorialCategoriesPage = lazy(() => import('./modules/consulta-vet/pages/EditorialCategoriesPage').then((m) => ({ default: m.EditorialCategoriesPage })))
 const ConsultaVetEditorialDiseasesPage = lazy(() => import('./modules/consulta-vet/pages/EditorialDiseasesPage').then((m) => ({ default: m.EditorialDiseasesPage })))
 const ConsultaVetEditorialMedicationsPage = lazy(() => import('./modules/consulta-vet/pages/EditorialMedicationsPage').then((m) => ({ default: m.EditorialMedicationsPage })))
+const ConsultaVetEditorialConsensosPage = lazy(() => import('./modules/consulta-vet/pages/EditorialConsensosPage').then((m) => ({ default: m.EditorialConsensosPage })))
+const ConsultaVetEditorialImportPage = lazy(() => import('./modules/consulta-vet/pages/EditorialImportPage').then((m) => ({ default: m.EditorialImportPage })))
 const NovaReceitaPage = lazy(() => import('./modules/receituario-vet/NovaReceitaPage'))
 const NovaReceita2Page = lazy(() => import('./modules/receituario-vet/NovaReceita2Page'))
 const NovaReceita2PrintPage = lazy(() => import('./modules/receituario-vet/NovaReceita2PrintPage'))
@@ -138,6 +140,8 @@ const appRoutes = (
       <Route path="editorial/categorias" element={<ConsultaVetEditorialCategoriesPage />} />
       <Route path="editorial/doencas" element={<ConsultaVetEditorialDiseasesPage />} />
       <Route path="editorial/medicamentos" element={<ConsultaVetEditorialMedicationsPage />} />
+      <Route path="editorial/consensos" element={<ConsultaVetEditorialConsensosPage />} />
+      <Route path="editorial/importacao" element={<ConsultaVetEditorialImportPage />} />
     </Route>
     <Route path="/rifa" element={<ModuleIframe />} />
     <Route path="/supabase-test" element={<SupabaseTestPage />} />

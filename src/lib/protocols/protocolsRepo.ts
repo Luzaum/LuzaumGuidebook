@@ -148,6 +148,11 @@ export type PublishGlobalProtocolResult = {
   mode: 'new' | 'update'
 }
 
+export type DeleteGlobalProtocolResult = {
+  ok: true
+  globalProtocolId: string
+}
+
 /** Current editor bundle: protocol + medications + recommendations. Exam items remain outside the editor state for now. */
 export type ProtocolBundle = {
   scope?: 'clinic'
@@ -304,7 +309,7 @@ function buildProtocolMedicationInsert(
   const manualName = String(input.manual_medication_name || '').trim() || null
   const manualPresentation = String(input.manual_presentation_label || '').trim() || null
 
-  const isCatalog = !!medicationId && !!presentationId
+  const isCatalog = !!medicationId
 
   if (!isCatalog && !manualName) {
     throw new Error(
@@ -330,7 +335,7 @@ function buildProtocolMedicationInsert(
     interval_hours: input.interval_hours ?? null,
     is_controlled: !!input.is_controlled,
     manual_medication_name: isCatalog ? null : manualName,
-    manual_presentation_label: isCatalog ? null : manualPresentation,
+    manual_presentation_label: manualPresentation,
     // NOTE: no `instructions` — column does not exist in protocol_medications
   }
 }
@@ -647,6 +652,48 @@ export async function publishProtocolAsGlobal(
   return data as PublishGlobalProtocolResult
 }
 
+export async function deleteGlobalProtocol(
+  globalProtocolId: string,
+  clinicId?: string | null
+): Promise<DeleteGlobalProtocolResult> {
+  const { data, error } = await supabase.functions.invoke('delete-global-protocol', {
+    body: { globalProtocolId, clinicId: clinicId || null },
+  })
+
+  if (error) {
+    logSbError('[ProtocolsRepo] deleteGlobalProtocol error', error)
+    const response = (error as any)?.context
+    if (response && typeof response.json === 'function') {
+      try {
+        const payload = await response.json()
+        const message = readText(payload?.error) || readText(payload?.message)
+        if (message) {
+          throw new Error(message)
+        }
+      } catch {
+        if (response && typeof response.text === 'function') {
+          try {
+            const text = await response.text()
+            const message = readText(text)
+            if (message) {
+              throw new Error(message)
+            }
+          } catch {
+            // fall through to the original error below
+          }
+        }
+      }
+    }
+    throw error
+  }
+
+  if (!data || data.ok !== true || !data.globalProtocolId) {
+    throw new Error('Resposta invalida da exclusao global.')
+  }
+
+  return data as DeleteGlobalProtocolResult
+}
+
 export async function loadProtocolBundle(
   clinicId: string,
   userId: string,
@@ -837,6 +884,7 @@ export async function saveProtocolBundle(
     }
     medications: ProtocolMedicationItem[]
     recommendations: ProtocolRecommendation[]
+    examItems?: ProtocolExamItem[]
   }
 ): Promise<ProtocolRecord> {
   const name = String(draft.protocol.name || '').trim()
@@ -915,6 +963,31 @@ export async function saveProtocolBundle(
     }))
     const { error } = await supabase.from('protocol_recommendations').insert(payload)
     logSbError('[ProtocolsRepo] saveProtocolBundle insert recommendations error', error)
+    if (error) throw error
+  }
+
+  // ── STEP 4: delete + re-insert protocol_exam_items ───────────────────
+  {
+    const { error } = await supabase
+      .from('protocol_exam_items')
+      .delete()
+      .eq('clinic_id', clinicId)
+      .eq('protocol_id', protocolId)
+    logSbError('[ProtocolsRepo] saveProtocolBundle delete exam items error', error)
+    if (error) throw error
+  }
+
+  const validExamItems = (draft.examItems || []).filter((exam) => String(exam.label || '').trim())
+  if (validExamItems.length > 0) {
+    const payload = validExamItems.map((exam, idx) => ({
+      clinic_id: clinicId,
+      protocol_id: protocolId,
+      exam_key: String(exam.exam_key || '').trim() || `custom-${idx + 1}`,
+      label: String(exam.label || '').trim(),
+      is_custom: !!exam.is_custom,
+    }))
+    const { error } = await supabase.from('protocol_exam_items').insert(payload)
+    logSbError('[ProtocolsRepo] saveProtocolBundle insert exam items error', error)
     if (error) throw error
   }
 
@@ -1049,6 +1122,12 @@ export async function deleteProtocol(clinicId: string, userId: string, protocolI
   // Delete children first (in case no DB cascade is configured)
   await supabase
     .from('protocol_medications')
+    .delete()
+    .eq('clinic_id', clinicId)
+    .eq('protocol_id', protocolId)
+
+  await supabase
+    .from('protocol_exam_items')
     .delete()
     .eq('clinic_id', clinicId)
     .eq('protocol_id', protocolId)

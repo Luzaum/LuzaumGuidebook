@@ -27,7 +27,8 @@ import {
     RxvToggle,
     RxvChipsMultiSelect,
     RxvPillToggle,
-    RxvButton
+    RxvButton,
+    RxvModalShell
 } from '../../src/components/receituario/RxvComponents'
 import {
     assertValidMedicationCatalogBundle,
@@ -1338,11 +1339,11 @@ export default function Catalogo3Page() {
                 )}
 
                 {showUnsavedModal && (
-                    <div className="fixed inset-0 z-[600] flex items-center justify-center bg-black/95 p-4 backdrop-blur-xl">
+                    <RxvModalShell zIndexClass="z-[600]" overlayClassName="bg-black/95 backdrop-blur-xl">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="w-full max-w-md rounded-3xl bg-[#0a140a] border border-slate-800 p-8 shadow-2xl relative"
+                            className="mx-auto w-full max-w-md rounded-3xl bg-[#0a140a] border border-slate-800 p-8 shadow-2xl relative"
                         >
                             <div className="absolute top-0 left-0 w-full h-1 bg-amber-500" />
                             <div className="flex flex-col items-center text-center">
@@ -1374,16 +1375,16 @@ export default function Catalogo3Page() {
                                 </div>
                             </div>
                         </motion.div>
-                    </div>
+                    </RxvModalShell>
                 )}
 
                 {/* DELETE MODAL */}
                 {showDeleteModal && (
-                    <div className="fixed inset-0 z-[600] flex items-center justify-center bg-black/95 p-4 backdrop-blur-xl">
+                    <RxvModalShell zIndexClass="z-[600]" overlayClassName="bg-black/95 backdrop-blur-xl">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="w-full max-w-md rounded-3xl bg-[#0a140a] border border-red-500/40 p-8 shadow-2xl relative"
+                            className="mx-auto w-full max-w-md rounded-3xl bg-[#0a140a] border border-red-500/40 p-8 shadow-2xl relative"
                         >
                             <div className="absolute top-0 left-0 w-full h-1 bg-red-500" />
                             <div className="flex flex-col items-center text-center">
@@ -1414,15 +1415,15 @@ export default function Catalogo3Page() {
                                 </div>
                             </div>
                         </motion.div>
-                    </div>
+                    </RxvModalShell>
                 )}
 
                 {importCandidates && (
-                    <div className="fixed inset-0 z-[600] flex items-center justify-center bg-black/95 p-4 backdrop-blur-xl">
+                    <RxvModalShell zIndexClass="z-[600]" overlayClassName="bg-black/95 backdrop-blur-xl">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="w-full max-w-3xl rounded-3xl border border-slate-800 bg-[#0a140a] p-8 shadow-2xl"
+                            className="mx-auto w-full max-w-3xl rounded-3xl border border-slate-800 bg-[#0a140a] p-8 shadow-2xl"
                         >
                             <div className="mb-6 flex items-start justify-between gap-4">
                                 <div>
@@ -1466,7 +1467,7 @@ export default function Catalogo3Page() {
                                 ))}
                             </div>
                         </motion.div>
-                    </div>
+                    </RxvModalShell>
                 )}
             </AnimatePresence>
         </div>

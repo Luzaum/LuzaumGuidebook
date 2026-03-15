@@ -1,0 +1,14 @@
+import { chromium } from 'playwright';
+const browser = await chromium.launch({ headless: true });
+const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+await page.goto('http://127.0.0.1:5173/consulta-vet/doencas', { waitUntil: 'domcontentloaded', timeout: 30000 });
+await page.waitForTimeout(5000);
+console.log('LIST_HAS_CINOMOSE', (await page.locator('body').innerText()).includes('Cinomose Canina'));
+await page.goto('http://127.0.0.1:5173/consulta-vet/doencas/cinomose-canina', { waitUntil: 'domcontentloaded', timeout: 30000 });
+await page.waitForTimeout(5000);
+console.log('DETAIL_HAS_SUMMARY', (await page.locator('body').innerText()).includes('Resumo rápido'));
+await page.goBack({ waitUntil: 'domcontentloaded', timeout: 20000 });
+await page.waitForTimeout(3000);
+console.log('BACK_URL', page.url());
+console.log('BACK_HAS_CINOMOSE', (await page.locator('body').innerText()).includes('Cinomose Canina'));
+await browser.close();

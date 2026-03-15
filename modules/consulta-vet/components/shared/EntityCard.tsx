@@ -19,7 +19,7 @@ interface EntityCardProps {
   key?: React.Key;
 }
 
-export function EntityCard({
+export const EntityCard = React.memo(function EntityCard({
   to,
   title,
   subtitle,
@@ -73,4 +73,4 @@ export function EntityCard({
       </div>
     </article>
   );
-}
+});

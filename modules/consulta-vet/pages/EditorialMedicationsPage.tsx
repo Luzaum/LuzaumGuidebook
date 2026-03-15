@@ -16,6 +16,7 @@ import { Category } from '../types/category';
 import { EditorialReference } from '../types/common';
 import { DiseaseRecord } from '../types/disease';
 import { MedicationDose, MedicationPresentation, MedicationRecord } from '../types/medication';
+import { validateMedicationDoses, validateMedicationPresentations } from '../utils/medicationRules';
 import { editorTextToHtml, formatMultiline, htmlToEditorText, splitMultiline } from '../utils/editorialForm';
 
 type StatusFilter = 'all' | 'published' | 'draft';
@@ -200,6 +201,17 @@ export function EditorialMedicationsPage() {
     setSuccess(null);
 
     try {
+      const medicationSpecies = form.species.length ? form.species : ['dog'];
+      const doseErrors = validateMedicationDoses(form.doses, medicationSpecies);
+      const presentationErrors = validateMedicationPresentations(form.presentations);
+
+      if (!form.species.length) {
+        throw new Error('Selecione ao menos uma espécie para o medicamento.');
+      }
+      if (doseErrors.length > 0 || presentationErrors.length > 0) {
+        throw new Error([...doseErrors, ...presentationErrors].join('\n'));
+      }
+
       const saved = await medicationRepository.upsert({
         id: form.id,
         title: form.title,
@@ -207,7 +219,7 @@ export function EditorialMedicationsPage() {
         activeIngredient: form.activeIngredient,
         pharmacologicClass: form.pharmacologicClass,
         category: form.category,
-        species: form.species,
+        species: medicationSpecies,
         tradeNames: splitMultiline(form.tradeNames),
         tags: splitMultiline(form.tags),
         mechanismOfAction: form.mechanismOfAction.trim(),
@@ -507,6 +519,9 @@ export function EditorialMedicationsPage() {
 
             <section className="space-y-4">
               <h3 className="text-base font-semibold text-foreground">Doses</h3>
+              <p className="text-sm text-muted-foreground">
+                Cada dose deve representar um único protocolo/regime. Separe por espécie quando necessário e não misture dose única com manutenção.
+              </p>
               <MedicationDoseEditor
                 value={form.doses}
                 onChange={(nextValue) => setForm((current) => ({ ...current, doses: nextValue }))}
@@ -515,6 +530,9 @@ export function EditorialMedicationsPage() {
 
             <section className="space-y-4">
               <h3 className="text-base font-semibold text-foreground">Apresentações</h3>
+              <p className="text-sm text-muted-foreground">
+                Cadastre apresentações calculáveis em entradas individuais para melhorar cálculo, seleção e leitura pública.
+              </p>
               <MedicationPresentationEditor
                 value={form.presentations}
                 onChange={(nextValue) => setForm((current) => ({ ...current, presentations: nextValue }))}

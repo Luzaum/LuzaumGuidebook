@@ -3,7 +3,7 @@ import { createJSONStorage, StateStorage } from 'zustand/middleware';
 import { getStoredClinicId } from '@/src/lib/clinic';
 
 export const PLANTAO_VET_STORAGE_NAME = 'vetius:plantao-vet';
-export const PLANTAO_VET_STORAGE_VERSION = 4;
+export const PLANTAO_VET_STORAGE_VERSION = 5;
 
 const NO_CLINIC_SCOPE = 'no-clinic';
 

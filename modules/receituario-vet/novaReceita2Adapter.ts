@@ -28,6 +28,18 @@ function toSafeString(v: unknown): string {
  */
 function parseDoseString(dose: string): { numericStr: string; unit: string; perKg: boolean } | null {
     if (!dose) return null
+    const ratioMatch = dose.match(/(\d+(?:[.,]\d+)?)\s*([a-zA-ZÀ-ÿ%Âµ]+)\s*\/\s*(\d+(?:[.,]\d+)?)\s*kg/i)
+    if (ratioMatch) {
+        const numerator = Number(ratioMatch[1].replace(',', '.'))
+        const denominatorKg = Number(ratioMatch[3].replace(',', '.'))
+        if (Number.isFinite(numerator) && Number.isFinite(denominatorKg) && denominatorKg > 0) {
+            return {
+                numericStr: String(numerator / denominatorKg),
+                unit: ratioMatch[2].trim().toLowerCase(),
+                perKg: true,
+            }
+        }
+    }
     const match = dose.match(/(\d+(?:[.,]\d+)?)\s*([a-zA-ZÀ-ÿ%µ./()]+)?/i)
     if (!match) return null
     const rawUnit = String(match[2] || '').trim()
@@ -143,6 +155,9 @@ function parseDurationFromText(raw?: string): {
 }
 
 function resolveStructuredDuration(item: NovaReceita2State['items'][number]) {
+    if (item.durationMode === 'continuous_until_recheck') {
+        return { durationDays: '', continuousUse: false, untilFinished: false, durationMode: item.durationMode }
+    }
     if (item.durationMode === 'continuous_use') {
         return { durationDays: '', continuousUse: true, untilFinished: false, durationMode: item.durationMode }
     }
@@ -408,7 +423,7 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
                 : [],
             exams: state.exams || [],
             customExams: [],
-            examReasons: [],
+            examReasons: state.examJustification ? state.examJustification.split('\n').filter(Boolean) : [],
             waterMlPerDay: '',
             specialControlPharmacy: 'veterinária' as const,
             standardTemplateId: state.printTemplateId || state.templateId || '',

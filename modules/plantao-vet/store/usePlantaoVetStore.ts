@@ -4,6 +4,13 @@ import { persist } from 'zustand/middleware';
 import { normalizePatientName } from '../lib/patientMatching';
 import { buildShiftLabel } from '../lib/shifts';
 import {
+  createDailySummaryEntry,
+  createEmptyNutritionSupport,
+  createEmptyShiftPatientFields,
+  createMedicationEntryFromName,
+  createWeightRecord,
+} from '../lib/shiftPatientDefaults';
+import {
   createPlantaoVetStorage,
   PLANTAO_VET_STORAGE_NAME,
   PLANTAO_VET_STORAGE_VERSION,
@@ -11,9 +18,9 @@ import {
 import { normalizeShiftImportCopyOptions } from '../lib/shiftImport';
 import {
   Bulletin,
+  DailySummaryEntry,
   ImportPatientsFromShiftResult,
   MedicationEntry,
-  NutritionSupport,
   PatientMaster,
   PlantaoVetPersistedState,
   PlantaoVetState,
@@ -52,46 +59,6 @@ function createEmptyPersistedState(scopeClinicId: string | null): PlantaoVetPers
   };
 }
 
-function createEmptyNutritionSupport(): NutritionSupport {
-  return {
-    appetiteSpontaneous: 'unknown',
-    foodAcceptance: '',
-    dietType: '',
-    feedingRoute: '',
-    tubeInUse: false,
-    tubeType: 'none',
-    offeredAmount: '',
-    ingestedPercentage: '',
-    currentWeight: '',
-    bodyConditionScore: '',
-    muscleMassScore: '',
-    nutritionNotes: '',
-    fluidTherapy: '',
-    devices: '',
-    supportNotes: '',
-    eliminations: '',
-    updatedAt: null,
-  };
-}
-
-function createLegacyMedicationEntry(name: string): MedicationEntry {
-  const timestamp = nowISO();
-
-  return {
-    id: createId('medication'),
-    name,
-    dose: '',
-    frequency: '',
-    route: '',
-    observations: '',
-    status: 'active',
-    startedAt: timestamp,
-    suspendedAt: null,
-    createdAt: timestamp,
-    updatedAt: timestamp,
-  };
-}
-
 function withTimestamps<T extends object>(
   entity: T & Partial<TimestampedEntity>,
   current?: TimestampedEntity | null
@@ -124,19 +91,95 @@ function uniqueStrings(values: string[]) {
   });
 }
 
-function mergeProblemLists(sourceProblems: ShiftPatient['problems'], targetProblems: ShiftPatient['problems']) {
-  const mergedByTitle = new Map<string, ShiftPatient['problems'][number]>();
+function normalizeMedicationEntry(entry: Partial<MedicationEntry>, fallbackName = ''): MedicationEntry {
+  const timestamp = nowISO();
+  return {
+    id: entry.id || createId('medication'),
+    name: entry.name || fallbackName,
+    concentration: entry.concentration || '',
+    dose: entry.dose || '',
+    frequency: entry.frequency || '',
+    route: entry.route || '',
+    observations: entry.observations || '',
+    status: entry.status || 'active',
+    startedAt: entry.startedAt || null,
+    suspendedAt: entry.suspendedAt || null,
+    inPrescription: entry.inPrescription ?? true,
+    newBadgeDate: entry.newBadgeDate || null,
+    createdAt: entry.createdAt || timestamp,
+    updatedAt: entry.updatedAt || timestamp,
+  };
+}
 
-  [...targetProblems, ...sourceProblems].forEach((problem) => {
-    mergedByTitle.set(normalizePatientName(problem.title), problem);
-  });
+function normalizeShiftPatient(patient: Partial<ShiftPatient>, current?: ShiftPatient | null): ShiftPatient {
+  const baseFields = createEmptyShiftPatientFields();
+  const baseWeight = patient.baseWeightLabel || patient.weightLabel || current?.baseWeightLabel || current?.weightLabel || '';
+  const weightHistory = patient.weightHistory || current?.weightHistory || [];
+  const normalizedMedicationEntries =
+    patient.medicationEntries && patient.medicationEntries.length > 0
+      ? patient.medicationEntries.map((entry) => normalizeMedicationEntry(entry))
+      : (patient.medicationsInUse || current?.medicationsInUse || []).map((name) => createMedicationEntryFromName(name));
 
-  return Array.from(mergedByTitle.values());
+  return {
+    id: patient.id || current?.id || createId('shift-patient'),
+    shiftId: patient.shiftId || current?.shiftId || '',
+    patientMasterId: patient.patientMasterId || current?.patientMasterId || '',
+    displayName: patient.displayName || current?.displayName || '',
+    species: patient.species || current?.species || 'outra',
+    breed: patient.breed || current?.breed || '',
+    ageLabel: patient.ageLabel || current?.ageLabel || '',
+    tutorName: patient.tutorName || current?.tutorName || '',
+    status: patient.status || current?.status || 'watch',
+    ...baseFields,
+    ...current,
+    ...patient,
+    weightLabel: patient.weightLabel || current?.weightLabel || baseWeight,
+    baseWeightLabel: baseWeight,
+    weightHistory:
+      weightHistory.length > 0
+        ? weightHistory
+        : baseWeight
+          ? [createWeightRecord(baseWeight, 'ficha', current?.createdAt || nowISO(), true)]
+          : [],
+    tags: uniqueStrings(patient.tags || current?.tags || []),
+    alertBadges: uniqueStrings(patient.alertBadges || current?.alertBadges || []),
+    medicationsInUse: uniqueStrings(
+      (patient.medicationsInUse || current?.medicationsInUse || []).concat(
+        normalizedMedicationEntries.filter((entry) => entry.status === 'active').map((entry) => entry.name)
+      )
+    ),
+    medicationEntries: normalizedMedicationEntries,
+    vitalsRecords: patient.vitalsRecords || current?.vitalsRecords || [],
+    examRecords: patient.examRecords || current?.examRecords || [],
+    nutritionSupport: {
+      ...createEmptyNutritionSupport(),
+      ...(current?.nutritionSupport || {}),
+      ...(patient.nutritionSupport || {}),
+    },
+    problems: patient.problems || current?.problems || [],
+    dailySummaryEntries: (patient.dailySummaryEntries || current?.dailySummaryEntries || []).map((entry) =>
+      createDailySummaryEntry({
+        ...entry,
+        shiftId: entry.shiftId || patient.shiftId || current?.shiftId || '',
+        shiftPatientId: entry.shiftPatientId || patient.id || current?.id || '',
+        type: entry.type || 'manual',
+        title: entry.title || 'Registro',
+        content: entry.content || '',
+        occurredAt: entry.occurredAt || entry.updatedAt || nowISO(),
+      })
+    ),
+    importWarnings: patient.importWarnings || current?.importWarnings || [],
+    importedFromShiftId: patient.importedFromShiftId ?? current?.importedFromShiftId ?? null,
+    importedFromDate: patient.importedFromDate ?? current?.importedFromDate ?? null,
+    importedFromShiftType: patient.importedFromShiftType ?? current?.importedFromShiftType ?? null,
+    sourceRecordText: patient.sourceRecordText ?? current?.sourceRecordText ?? null,
+    lastBulletinAt: patient.lastBulletinAt ?? current?.lastBulletinAt ?? null,
+    ...withTimestamps({ ...current, ...patient, id: patient.id || current?.id || createId('shift-patient') }, current),
+  };
 }
 
 function migratePersistedState(
-  persistedState: unknown,
-  currentVersion: number
+  persistedState: unknown
 ): PlantaoVetPersistedState {
   if (!persistedState || typeof persistedState !== 'object') {
     return createEmptyPersistedState(null);
@@ -145,46 +188,49 @@ function migratePersistedState(
   const legacy = persistedState as Partial<PlantaoVetPersistedState>;
   const normalized = createEmptyPersistedState(legacy.scopeClinicId || null);
   const normalizedShiftPatientsById = Object.fromEntries(
-    Object.entries(legacy.shiftPatientsById || {}).map(([id, patient]) => {
-      const nextPatient = {
-        importedFromShiftId: null,
-        importedFromDate: null,
-        importedFromShiftType: null,
-        medicationsInUse: [],
-        medicationEntries: [],
-        importantNotes: '',
-        nextShiftPlan: '',
-        vitalsRecords: [],
-        examRecords: [],
-        nutritionSupport: createEmptyNutritionSupport(),
-        ...patient,
-      };
-
-      const medicationsInUse = nextPatient.medicationsInUse || [];
-      const medicationEntries =
-        nextPatient.medicationEntries && nextPatient.medicationEntries.length > 0
-          ? nextPatient.medicationEntries
-          : medicationsInUse.map((name) => createLegacyMedicationEntry(name));
-
+    Object.entries(legacy.shiftPatientsById || {}).map(([id, patient]) => [id, normalizeShiftPatient({ id, ...(patient as Partial<ShiftPatient>) })])
+  );
+  const normalizedTasksById = Object.fromEntries(
+    Object.entries(legacy.tasksById || {}).map(([id, task]) => {
+      const currentTask = task as Partial<Task>;
       return [
         id,
         {
-          ...nextPatient,
-          alertBadges: nextPatient.alertBadges || [],
-          importantNotes: nextPatient.importantNotes || '',
-          medicationsInUse,
-          medicationEntries,
-          nextShiftPlan: nextPatient.nextShiftPlan || '',
-          vitalsRecords: nextPatient.vitalsRecords || [],
-          examRecords: nextPatient.examRecords || [],
-          nutritionSupport: {
-            ...createEmptyNutritionSupport(),
-            ...(nextPatient.nutritionSupport || {}),
-          },
-          problems: nextPatient.problems || [],
-        },
+          shiftId: '',
+          shiftPatientId: null,
+          title: '',
+          description: '',
+          scheduledTime: null,
+          category: 'other',
+          priority: 'medium',
+          completed: false,
+          completedAt: null,
+          reviewRequired: false,
+          origin: 'manual',
+          deletedAt: null,
+          ...currentTask,
+          id,
+        } satisfies Task,
       ];
     })
+  );
+  const normalizedBulletinsById = Object.fromEntries(
+    Object.entries(legacy.bulletinsById || {}).map(([id, bulletin]) => [
+      id,
+      {
+        shiftId: '',
+        shiftPatientId: null,
+        type: 'clinical',
+        title: '',
+        content: '',
+        authorLabel: '',
+        generated: false,
+        manualEdited: false,
+        deletedAt: null,
+        ...(bulletin as Partial<Bulletin>),
+        id,
+      } satisfies Bulletin,
+    ])
   );
 
   return {
@@ -196,12 +242,11 @@ function migratePersistedState(
     patientMasterOrder: legacy.patientMasterOrder || [],
     shiftPatientsById: normalizedShiftPatientsById,
     shiftPatientOrder: legacy.shiftPatientOrder || [],
-    tasksById: legacy.tasksById || {},
+    tasksById: normalizedTasksById,
     taskOrder: legacy.taskOrder || [],
-    bulletinsById: legacy.bulletinsById || {},
+    bulletinsById: normalizedBulletinsById,
     bulletinOrder: legacy.bulletinOrder || [],
-    scopeClinicId:
-      currentVersion === PLANTAO_VET_STORAGE_VERSION ? legacy.scopeClinicId || null : legacy.scopeClinicId || null,
+    scopeClinicId: legacy.scopeClinicId || null,
   };
 }
 
@@ -234,31 +279,191 @@ export const usePlantaoVetStore = create<PlantaoVetState>()(
           return { activeShiftId: shiftId };
         }),
 
+      appendDailySummaryEntry: (shiftPatientId, entry) =>
+        set((state) => {
+          const patient = state.shiftPatientsById[shiftPatientId];
+          if (!patient) {
+            return state;
+          }
+
+          const nextEntry = createDailySummaryEntry({
+            ...entry,
+            shiftId: patient.shiftId,
+            shiftPatientId: patient.id,
+          });
+
+          return {
+            shiftPatientsById: {
+              ...state.shiftPatientsById,
+              [patient.id]: {
+                ...patient,
+                dailySummaryEntries: [nextEntry, ...patient.dailySummaryEntries],
+                updatedAt: nowISO(),
+              },
+            },
+          };
+        }),
+
+      updateDailySummaryEntry: (shiftPatientId, entryId, patch) =>
+        set((state) => {
+          const patient = state.shiftPatientsById[shiftPatientId];
+          if (!patient) {
+            return state;
+          }
+
+          let changed = false;
+          const nextEntries = patient.dailySummaryEntries.map((entry) => {
+            if (entry.id !== entryId) {
+              return entry;
+            }
+
+            changed = true;
+            return createDailySummaryEntry({
+              ...entry,
+              ...patch,
+              id: entry.id,
+              shiftId: entry.shiftId,
+              shiftPatientId: entry.shiftPatientId,
+              type: (patch.type || entry.type) as DailySummaryEntry['type'],
+              title: patch.title ?? entry.title,
+              content: patch.content ?? entry.content,
+              occurredAt: patch.occurredAt ?? entry.occurredAt,
+              createdAt: entry.createdAt,
+            });
+          });
+
+          if (!changed) {
+            return state;
+          }
+
+          return {
+            shiftPatientsById: {
+              ...state.shiftPatientsById,
+              [patient.id]: {
+                ...patient,
+                dailySummaryEntries: nextEntries,
+                updatedAt: nowISO(),
+              },
+            },
+          };
+        }),
+
+      deleteDailySummaryEntry: (shiftPatientId, entryId) =>
+        set((state) => {
+          const patient = state.shiftPatientsById[shiftPatientId];
+          if (!patient) {
+            return state;
+          }
+
+          return {
+            shiftPatientsById: {
+              ...state.shiftPatientsById,
+              [patient.id]: {
+                ...patient,
+                dailySummaryEntries: patient.dailySummaryEntries.map((entry) =>
+                  entry.id === entryId
+                    ? {
+                        ...entry,
+                        deletedAt: nowISO(),
+                        updatedAt: nowISO(),
+                      }
+                    : entry
+                ),
+                updatedAt: nowISO(),
+              },
+            },
+          };
+        }),
+
       toggleTaskCompleted: (taskId) =>
         set((state) => {
           const current = state.tasksById[taskId];
 
-          if (!current) {
+          if (!current || current.deletedAt) {
             return state;
           }
 
           const timestamp = nowISO();
           const completed = !current.completed;
+          const nextTask = {
+            ...current,
+            completed,
+            completedAt: completed ? timestamp : null,
+            updatedAt: timestamp,
+          };
+          const patient = current.shiftPatientId ? state.shiftPatientsById[current.shiftPatientId] : null;
+          const nextShiftPatientsById = { ...state.shiftPatientsById };
+
+          if (patient) {
+            const entry = createDailySummaryEntry({
+              shiftId: current.shiftId,
+              shiftPatientId: patient.id,
+              type: completed ? 'task_completed' : 'task_reopened',
+              title: completed ? 'Tarefa concluída' : 'Tarefa reaberta',
+              content: current.title,
+              details: current.description || '',
+              occurredAt: timestamp,
+              sourceId: current.id,
+              sourceType: current.origin,
+              relatedEntityType: 'task',
+            });
+
+            nextShiftPatientsById[patient.id] = {
+              ...patient,
+              dailySummaryEntries: [entry, ...patient.dailySummaryEntries],
+              updatedAt: timestamp,
+            };
+          }
+
+          return {
+            tasksById: {
+              ...state.tasksById,
+              [taskId]: nextTask,
+            },
+            shiftPatientsById: nextShiftPatientsById,
+          };
+        }),
+
+      deleteTask: (taskId) =>
+        set((state) => {
+          const current = state.tasksById[taskId];
+          if (!current) {
+            return state;
+          }
 
           return {
             tasksById: {
               ...state.tasksById,
               [taskId]: {
                 ...current,
-                completed,
-                completedAt: completed ? timestamp : null,
-                updatedAt: timestamp,
+                deletedAt: nowISO(),
+                updatedAt: nowISO(),
+              },
+            },
+          };
+        }),
+
+      deleteBulletin: (bulletinId) =>
+        set((state) => {
+          const current = state.bulletinsById[bulletinId];
+          if (!current) {
+            return state;
+          }
+
+          return {
+            bulletinsById: {
+              ...state.bulletinsById,
+              [bulletinId]: {
+                ...current,
+                deletedAt: nowISO(),
+                updatedAt: nowISO(),
               },
             },
           };
         }),
 
       createShift: ({ dateISO, shiftType, label, startedAt = null, endsAt = null }) => {
+        const timestamp = nowISO();
         const newShift: Shift = {
           id: createId('shift'),
           clinicId: get().scopeClinicId,
@@ -269,8 +474,8 @@ export const usePlantaoVetStore = create<PlantaoVetState>()(
           startedAt,
           endsAt,
           archivedAt: null,
-          createdAt: nowISO(),
-          updatedAt: nowISO(),
+          createdAt: timestamp,
+          updatedAt: timestamp,
         };
 
         set((state) => ({
@@ -314,50 +519,7 @@ export const usePlantaoVetStore = create<PlantaoVetState>()(
         set((state) => {
           const id = shiftPatient.id || createId('shift-patient');
           const current = state.shiftPatientsById[id];
-          const nextMedicationEntries =
-            shiftPatient.medicationEntries && shiftPatient.medicationEntries.length > 0
-              ? shiftPatient.medicationEntries
-              : (shiftPatient.medicationsInUse || []).map((name) => createLegacyMedicationEntry(name));
-          const nextShiftPatient: ShiftPatient = {
-            mainDiagnosis: '',
-            summary: '',
-            definingPhrase: '',
-            importantNotes: '',
-            nextShiftPlan: '',
-            alertBadges: [],
-            medicationsInUse: [],
-            medicationEntries: [],
-            vitalsRecords: [],
-            examRecords: [],
-            nutritionSupport: createEmptyNutritionSupport(),
-            problems: [],
-            importedFromShiftId: null,
-            importedFromDate: null,
-            importedFromShiftType: null,
-            sourceRecordText: null,
-            lastBulletinAt: null,
-            displayName: '',
-            species: 'outra',
-            breed: '',
-            ageLabel: '',
-            weightLabel: '',
-            tutorName: '',
-            status: 'watch',
-            patientMasterId: '',
-            shiftId: '',
-            ...withTimestamps(
-              {
-                ...shiftPatient,
-                id,
-                medicationEntries: nextMedicationEntries,
-                nutritionSupport: {
-                  ...createEmptyNutritionSupport(),
-                  ...(shiftPatient.nutritionSupport || {}),
-                },
-              },
-              current
-            ),
-          };
+          const nextShiftPatient = normalizeShiftPatient({ ...shiftPatient, id }, current);
 
           return {
             shiftPatientsById: {
@@ -381,6 +543,9 @@ export const usePlantaoVetStore = create<PlantaoVetState>()(
           priority: 'medium',
           completed: false,
           completedAt: null,
+          reviewRequired: false,
+          origin: 'manual',
+          deletedAt: null,
           ...withTimestamps({ ...task, id }, current),
         };
 
@@ -406,6 +571,8 @@ export const usePlantaoVetStore = create<PlantaoVetState>()(
           content: '',
           authorLabel: '',
           generated: false,
+          manualEdited: false,
+          deletedAt: null,
           ...withTimestamps({ ...bulletin, id }, current),
         };
 
@@ -459,168 +626,112 @@ export const usePlantaoVetStore = create<PlantaoVetState>()(
                 );
               });
 
-            const targetPatientId = existingTargetPatient?.id || createId('shift-patient');
-            const currentTargetPatient = existingTargetPatient || null;
-            const useImportedValues = !currentTargetPatient;
-            const nextShiftPatientDraft: ShiftPatient = {
-              id: targetPatientId,
-              createdAt: currentTargetPatient?.createdAt || nowISO(),
-              updatedAt: currentTargetPatient?.updatedAt || nowISO(),
-              mainDiagnosis: '',
-              summary: '',
-              definingPhrase: '',
-              importantNotes: '',
-              nextShiftPlan: '',
-              alertBadges: [],
-              medicationsInUse: [],
-              problems: [],
-              importedFromShiftId: null,
-              importedFromDate: null,
-              importedFromShiftType: null,
-              sourceRecordText: null,
-              lastBulletinAt: null,
-              displayName: '',
-              species: 'outra',
-              breed: '',
-              ageLabel: '',
-              weightLabel: '',
-              tutorName: '',
-              status: 'watch',
-              patientMasterId: sourcePatient.patientMasterId,
+            const baseTarget = existingTargetPatient || normalizeShiftPatient({
+              id: createId('shift-patient'),
               shiftId: resolvedTargetShiftId,
-              ...(currentTargetPatient || {}),
-            };
+              patientMasterId: sourcePatient.patientMasterId,
+              displayName: sourcePatient.displayName,
+              species: sourcePatient.species,
+              breed: sourcePatient.breed,
+              ageLabel: sourcePatient.ageLabel,
+              weightLabel: sourcePatient.weightLabel,
+              baseWeightLabel: sourcePatient.baseWeightLabel || sourcePatient.weightLabel,
+              tutorName: sourcePatient.tutorName,
+              status: sourcePatient.status,
+            });
 
-            nextShiftPatientDraft.displayName =
-              normalizedOptions.copyIdentification && (useImportedValues || !currentTargetPatient?.displayName)
-                ? sourcePatient.displayName
-                : currentTargetPatient?.displayName || sourcePatient.displayName;
-            nextShiftPatientDraft.species =
-              normalizedOptions.copyIdentification && (useImportedValues || currentTargetPatient?.species === 'outra')
-                ? sourcePatient.species
-                : currentTargetPatient?.species || sourcePatient.species;
-            nextShiftPatientDraft.breed =
-              normalizedOptions.copyIdentification && (useImportedValues || !currentTargetPatient?.breed)
-                ? sourcePatient.breed
-                : currentTargetPatient?.breed || sourcePatient.breed;
-            nextShiftPatientDraft.ageLabel =
-              normalizedOptions.copyIdentification && (useImportedValues || !currentTargetPatient?.ageLabel)
-                ? sourcePatient.ageLabel
-                : currentTargetPatient?.ageLabel || sourcePatient.ageLabel;
-            nextShiftPatientDraft.weightLabel =
-              normalizedOptions.copyIdentification && (useImportedValues || !currentTargetPatient?.weightLabel)
-                ? sourcePatient.weightLabel
-                : currentTargetPatient?.weightLabel || sourcePatient.weightLabel;
-            nextShiftPatientDraft.tutorName =
-              normalizedOptions.copyIdentification && (useImportedValues || !currentTargetPatient?.tutorName)
-                ? sourcePatient.tutorName
-                : currentTargetPatient?.tutorName || sourcePatient.tutorName;
-            nextShiftPatientDraft.mainDiagnosis =
-              normalizedOptions.copySummary && (useImportedValues || !currentTargetPatient?.mainDiagnosis)
-                ? sourcePatient.mainDiagnosis
-                : currentTargetPatient?.mainDiagnosis || sourcePatient.mainDiagnosis;
-            nextShiftPatientDraft.summary =
-              normalizedOptions.copySummary && (useImportedValues || !currentTargetPatient?.summary)
-                ? sourcePatient.summary
-                : currentTargetPatient?.summary || sourcePatient.summary;
-            nextShiftPatientDraft.definingPhrase =
-              normalizedOptions.copyDefiningPhrase && (useImportedValues || !currentTargetPatient?.definingPhrase)
-                ? sourcePatient.definingPhrase
-                : currentTargetPatient?.definingPhrase || sourcePatient.definingPhrase;
-            nextShiftPatientDraft.importantNotes = currentTargetPatient?.importantNotes || '';
-            nextShiftPatientDraft.nextShiftPlan = currentTargetPatient?.nextShiftPlan || '';
-            nextShiftPatientDraft.alertBadges = normalizedOptions.copyAlerts
-              ? uniqueStrings([...(currentTargetPatient?.alertBadges || []), ...sourcePatient.alertBadges])
-              : currentTargetPatient?.alertBadges || [];
-            nextShiftPatientDraft.medicationsInUse = normalizedOptions.copyMedications
-              ? uniqueStrings([...(currentTargetPatient?.medicationsInUse || []), ...sourcePatient.medicationsInUse])
-              : currentTargetPatient?.medicationsInUse || [];
-            nextShiftPatientDraft.medicationEntries = normalizedOptions.copyMedications
-              ? [
-                  ...(currentTargetPatient?.medicationEntries || []),
-                  ...(sourcePatient.medicationEntries || []).filter(
-                    (sourceMedication) =>
-                      !(currentTargetPatient?.medicationEntries || []).some(
-                        (targetMedication) =>
-                          normalizePatientName(targetMedication.name) === normalizePatientName(sourceMedication.name) &&
-                          targetMedication.status === sourceMedication.status
-                      )
-                  ),
-                ]
-              : currentTargetPatient?.medicationEntries || [];
-            nextShiftPatientDraft.problems = normalizedOptions.copyProblems
-              ? mergeProblemLists(
-                  sourcePatient.problems.filter((problem) => problem.status === 'active'),
-                  currentTargetPatient?.problems || []
-                )
-              : currentTargetPatient?.problems || [];
-            nextShiftPatientDraft.vitalsRecords = currentTargetPatient?.vitalsRecords || [];
-            nextShiftPatientDraft.examRecords = currentTargetPatient?.examRecords || [];
-            nextShiftPatientDraft.nutritionSupport = {
-              ...createEmptyNutritionSupport(),
-              ...(currentTargetPatient?.nutritionSupport || {}),
-            };
-            nextShiftPatientDraft.importedFromShiftId = sourceShift.id;
-            nextShiftPatientDraft.importedFromDate = sourceShift.dateISO;
-            nextShiftPatientDraft.importedFromShiftType = sourceShift.shiftType;
-            nextShiftPatientDraft.sourceRecordText =
-              currentTargetPatient?.sourceRecordText || sourcePatient.sourceRecordText;
-            nextShiftPatientDraft.lastBulletinAt =
-              currentTargetPatient?.lastBulletinAt || sourcePatient.lastBulletinAt;
-            nextShiftPatientDraft.status = currentTargetPatient?.status || sourcePatient.status;
+            const mergedMedicationEntries = normalizedOptions.copyMedications
+              ? [...baseTarget.medicationEntries, ...sourcePatient.medicationEntries]
+              : baseTarget.medicationEntries;
 
-            const nextShiftPatient = withTimestamps(nextShiftPatientDraft, currentTargetPatient) as ShiftPatient;
+            const nextTarget = normalizeShiftPatient(
+              {
+                ...baseTarget,
+                shiftId: resolvedTargetShiftId,
+                medicalRecordNumber: normalizedOptions.copyIdentification
+                  ? sourcePatient.medicalRecordNumber || baseTarget.medicalRecordNumber
+                  : baseTarget.medicalRecordNumber,
+                admissionDateLabel: normalizedOptions.copyIdentification
+                  ? sourcePatient.admissionDateLabel || baseTarget.admissionDateLabel
+                  : baseTarget.admissionDateLabel,
+                responsibleVet: normalizedOptions.copyIdentification
+                  ? sourcePatient.responsibleVet || baseTarget.responsibleVet
+                  : baseTarget.responsibleVet,
+                belongings: normalizedOptions.copyIdentification
+                  ? sourcePatient.belongings || baseTarget.belongings
+                  : baseTarget.belongings,
+                patientObservations: normalizedOptions.copyIdentification
+                  ? sourcePatient.patientObservations || baseTarget.patientObservations
+                  : baseTarget.patientObservations,
+                summary: normalizedOptions.copySummary ? sourcePatient.summary || baseTarget.summary : baseTarget.summary,
+                clinicalHistory: normalizedOptions.copySummary
+                  ? sourcePatient.clinicalHistory || baseTarget.clinicalHistory
+                  : baseTarget.clinicalHistory,
+                currentComplaint: normalizedOptions.copySummary
+                  ? sourcePatient.currentComplaint || baseTarget.currentComplaint
+                  : baseTarget.currentComplaint,
+                currentAdmissionReason: normalizedOptions.copySummary
+                  ? sourcePatient.currentAdmissionReason || baseTarget.currentAdmissionReason
+                  : baseTarget.currentAdmissionReason,
+                definingPhrase: normalizedOptions.copyDefiningPhrase
+                  ? sourcePatient.definingPhrase || baseTarget.definingPhrase
+                  : baseTarget.definingPhrase,
+                problems: normalizedOptions.copyProblems
+                  ? [...baseTarget.problems, ...sourcePatient.problems].filter(
+                      (problem, index, collection) =>
+                        collection.findIndex(
+                          (item) => normalizePatientName(item.title) === normalizePatientName(problem.title)
+                        ) === index
+                    )
+                  : baseTarget.problems,
+                alertBadges: normalizedOptions.copyAlerts
+                  ? uniqueStrings([...baseTarget.alertBadges, ...sourcePatient.alertBadges])
+                  : baseTarget.alertBadges,
+                medicationsInUse: normalizedOptions.copyMedications
+                  ? uniqueStrings([...baseTarget.medicationsInUse, ...sourcePatient.medicationsInUse])
+                  : baseTarget.medicationsInUse,
+                medicationEntries: normalizedOptions.copyMedications ? mergedMedicationEntries : baseTarget.medicationEntries,
+                importedFromShiftId: sourceShift.id,
+                importedFromDate: sourceShift.dateISO,
+                importedFromShiftType: sourceShift.shiftType,
+              },
+              existingTargetPatient
+            );
 
-            nextShiftPatientsById[targetPatientId] = nextShiftPatient;
-            nextShiftPatientOrder = insertUniqueId(nextShiftPatientOrder, targetPatientId);
+            nextShiftPatientsById[nextTarget.id] = nextTarget;
+            nextShiftPatientOrder = insertUniqueId(nextShiftPatientOrder, nextTarget.id);
 
-            if (currentTargetPatient) {
-              result.updatedShiftPatientIds.push(targetPatientId);
+            if (existingTargetPatient) {
+              result.updatedShiftPatientIds.push(nextTarget.id);
             } else {
-              result.importedShiftPatientIds.push(targetPatientId);
+              result.importedShiftPatientIds.push(nextTarget.id);
             }
 
             if (normalizedOptions.copyOpenTasks) {
-              const sourceTasks = currentState.taskOrder
+              currentState.taskOrder
                 .map((id) => currentState.tasksById[id])
                 .filter(
                   (task): task is Task =>
                     Boolean(task) &&
-                    task.shiftId === sourceShiftId &&
                     task.shiftPatientId === sourcePatient.id &&
-                    !task.completed
-                );
-
-              sourceTasks.forEach((sourceTask) => {
-                const duplicateTask = Object.values(nextTasksById).find(
-                  (task) =>
-                    task.shiftId === resolvedTargetShiftId &&
-                    task.shiftPatientId === targetPatientId &&
-                    task.title === sourceTask.title &&
-                    task.scheduledTime === sourceTask.scheduledTime &&
-                    task.category === sourceTask.category
-                );
-
-                if (duplicateTask) {
-                  return;
-                }
-
-                const taskId = createId('task');
-                nextTasksById[taskId] = {
-                  ...withTimestamps(
-                    {
-                      ...sourceTask,
-                      id: taskId,
-                    },
-                    undefined
-                  ),
-                  shiftId: resolvedTargetShiftId,
-                  shiftPatientId: targetPatientId,
-                  completed: false,
-                  completedAt: null,
-                };
-                nextTaskOrder = insertUniqueId(nextTaskOrder, taskId);
-              });
+                    task.shiftId === sourceShiftId &&
+                    !task.completed &&
+                    !task.deletedAt
+                )
+                .forEach((task) => {
+                  const taskId = createId('task');
+                  nextTasksById[taskId] = {
+                    ...task,
+                    id: taskId,
+                    shiftId: resolvedTargetShiftId,
+                    shiftPatientId: nextTarget.id,
+                    completed: false,
+                    completedAt: null,
+                    createdAt: nowISO(),
+                    updatedAt: nowISO(),
+                  };
+                  nextTaskOrder = insertUniqueId(nextTaskOrder, taskId);
+                });
             }
           });
 
@@ -644,7 +755,7 @@ export const usePlantaoVetStore = create<PlantaoVetState>()(
     {
       name: PLANTAO_VET_STORAGE_NAME,
       version: PLANTAO_VET_STORAGE_VERSION,
-      storage: createPlantaoVetStorage<PlantaoVetPersistedState>(),
+      storage: createPlantaoVetStorage<PlantaoVetState>(),
       partialize: (state) => ({
         scopeClinicId: state.scopeClinicId,
         activeShiftId: state.activeShiftId,
@@ -659,11 +770,8 @@ export const usePlantaoVetStore = create<PlantaoVetState>()(
         bulletinsById: state.bulletinsById,
         bulletinOrder: state.bulletinOrder,
       }),
-      migrate: (persistedState, version) => migratePersistedState(persistedState, version),
-      onRehydrateStorage: () => (state, error) => {
-        if (error) {
-          console.error('[PlantaoVET] hydration failed', error);
-        }
+      migrate: (persistedState) => migratePersistedState(persistedState),
+      onRehydrateStorage: () => (state) => {
         state?.setHydrated(true);
       },
     }

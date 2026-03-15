@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { BookOpen, Menu, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../../../../utils/theme';
 
@@ -49,3 +49,4 @@ export function ConsultaVetHeader({ onMenuClick }: ConsultaVetHeaderProps) {
     </header>
   );
 }
+

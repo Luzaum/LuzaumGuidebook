@@ -54,6 +54,8 @@ export function HomePage() {
   const [consensos, setConsensos] = useState<ConsensusRecord[]>([]);
   const [query, setQuery] = useState('');
   const [searchResults, setSearchResults] = useState<SearchResults>({ diseases: [], medications: [], consensos: [] });
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [continueItem, setContinueItem] = useState<
     | { kind: 'disease'; item: DiseaseRecord; state?: { pageNumber?: number; sectionId?: string } }
     | { kind: 'medication'; item: MedicationRecord; state?: { pageNumber?: number; sectionId?: string } }
@@ -62,41 +64,59 @@ export function HomePage() {
   >(null);
 
   useEffect(() => {
+    let isMounted = true;
+
     const loadData = async () => {
-      const [loadedDiseases, loadedMedications, loadedConsensos] = await Promise.all([
-        diseaseRepository.list(),
-        medicationRepository.list(),
-        consensoRepository.list(),
-      ]);
+      setIsLoading(true);
+      setError(null);
 
-      setDiseases(loadedDiseases.slice(0, 3));
-      setMedications(loadedMedications.slice(0, 3));
-      setConsensos(loadedConsensos.slice(0, 3));
+      try {
+        const [loadedDiseases, loadedMedications, loadedConsensos] = await Promise.all([
+          diseaseRepository.list(),
+          medicationRepository.list(),
+          consensoRepository.list(),
+        ]);
 
-      const latestRecent = recents[0];
-      if (!latestRecent) {
-        setContinueItem(null);
-        return;
+        if (!isMounted) return;
+
+        setDiseases(loadedDiseases.slice(0, 3));
+        setMedications(loadedMedications.slice(0, 3));
+        setConsensos(loadedConsensos.slice(0, 3));
+
+        const latestRecent = recents[0];
+        if (!latestRecent) {
+          setContinueItem(null);
+          return;
+        }
+
+        const resumeState = buildResumeState(latestRecent);
+        if (latestRecent.entityType === 'disease') {
+          const found = loadedDiseases.find((item) => item.id === latestRecent.entityId);
+          setContinueItem(found ? { kind: 'disease', item: found, state: resumeState } : null);
+          return;
+        }
+
+        if (latestRecent.entityType === 'medication') {
+          const found = loadedMedications.find((item) => item.id === latestRecent.entityId);
+          setContinueItem(found ? { kind: 'medication', item: found, state: resumeState } : null);
+          return;
+        }
+
+        const found = loadedConsensos.find((item) => item.id === latestRecent.entityId);
+        setContinueItem(found ? { kind: 'consensus', item: found, state: resumeState } : null);
+      } catch (loadError) {
+        if (!isMounted) return;
+        setError(loadError instanceof Error ? loadError.message : 'Falha ao carregar o módulo.');
+      } finally {
+        if (isMounted) setIsLoading(false);
       }
-
-      const resumeState = buildResumeState(latestRecent);
-      if (latestRecent.entityType === 'disease') {
-        const found = loadedDiseases.find((item) => item.id === latestRecent.entityId);
-        setContinueItem(found ? { kind: 'disease', item: found, state: resumeState } : null);
-        return;
-      }
-
-      if (latestRecent.entityType === 'medication') {
-        const found = loadedMedications.find((item) => item.id === latestRecent.entityId);
-        setContinueItem(found ? { kind: 'medication', item: found, state: resumeState } : null);
-        return;
-      }
-
-      const found = loadedConsensos.find((item) => item.id === latestRecent.entityId);
-      setContinueItem(found ? { kind: 'consensus', item: found, state: resumeState } : null);
     };
 
     void loadData();
+
+    return () => {
+      isMounted = false;
+    };
   }, [consensoRepository, diseaseRepository, medicationRepository, recents]);
 
   useEffect(() => {
@@ -106,21 +126,34 @@ export function HomePage() {
       return;
     }
 
-    const loadSearch = async () => {
-      const [loadedDiseases, loadedMedications, loadedConsensos] = await Promise.all([
-        diseaseRepository.search(normalizedQuery),
-        medicationRepository.search(normalizedQuery),
-        consensoRepository.search(normalizedQuery),
-      ]);
+    let isMounted = true;
 
-      setSearchResults({
-        diseases: loadedDiseases.slice(0, 3),
-        medications: loadedMedications.slice(0, 3),
-        consensos: loadedConsensos.slice(0, 3),
-      });
+    const loadSearch = async () => {
+      try {
+        const [loadedDiseases, loadedMedications, loadedConsensos] = await Promise.all([
+          diseaseRepository.search(normalizedQuery),
+          medicationRepository.search(normalizedQuery),
+          consensoRepository.search(normalizedQuery),
+        ]);
+
+        if (!isMounted) return;
+
+        setSearchResults({
+          diseases: loadedDiseases.slice(0, 3),
+          medications: loadedMedications.slice(0, 3),
+          consensos: loadedConsensos.slice(0, 3),
+        });
+      } catch {
+        if (!isMounted) return;
+        setSearchResults({ diseases: [], medications: [], consensos: [] });
+      }
     };
 
     void loadSearch();
+
+    return () => {
+      isMounted = false;
+    };
   }, [consensoRepository, diseaseRepository, medicationRepository, query]);
 
   const shortcuts = [
@@ -190,7 +223,19 @@ export function HomePage() {
         </div>
       </section>
 
-      {continueItem && !query.trim() && (
+      {isLoading && (
+        <section className="rounded-2xl border border-border bg-card py-16 text-center">
+          <p className="text-sm text-muted-foreground">Carregando conteúdo do módulo...</p>
+        </section>
+      )}
+
+      {!isLoading && error && (
+        <section className="rounded-2xl border border-destructive/30 bg-destructive/10 px-6 py-5">
+          <p className="text-sm text-destructive">{error}</p>
+        </section>
+      )}
+
+      {!isLoading && !error && continueItem && !query.trim() && (
         <section className="rounded-[28px] border border-primary/20 bg-primary/5 p-5 md:p-6">
           <div className="mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-primary">
             <Clock className="h-4 w-4" />
@@ -235,7 +280,7 @@ export function HomePage() {
         </section>
       )}
 
-      {query.trim() ? (
+      {!isLoading && !error && (query.trim() ? (
         <section className="space-y-8">
           <div className="grid gap-8 xl:grid-cols-3">
             <div>
@@ -397,7 +442,7 @@ export function HomePage() {
             </div>
           </div>
         </section>
-      )}
+      ))}
     </div>
   );
 }

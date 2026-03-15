@@ -1,0 +1,141 @@
+{
+  "type": "medications",
+  "version": 1,
+  "items": [
+    {
+      "slug": "pregabalina",
+      "title": "Pregabalina",
+      "activeIngredient": "Pregabalina",
+      "tradeNames": [
+        "Lyrica",
+        "Genéricos"
+      ],
+      "species": [
+        "dog",
+        "cat"
+      ],
+      "category": "neurologia",
+      "pharmacologicClass": "Anticonvulsivante / modulador de dor neuropática",
+      "tags": [
+        "Neuropática",
+        "Ansiólise",
+        "Anticonvulsivante",
+        "VO"
+      ],
+      "isPublished": true,
+      "mechanismOfAction": "Liga-se à subunidade alfa-2-delta de canais de cálcio voltagem-dependentes, reduzindo a liberação de neurotransmissores excitatórios e modulando dor neuropática e excitabilidade neuronal.",
+      "indications": [
+        "Dor neuropática em cães",
+        "Adjuvante anticonvulsivante em cães",
+        "Ansiólise pré-transporte em gatos"
+      ],
+      "contraindications": [
+        "Hipersensibilidade conhecida ao fármaco"
+      ],
+      "cautions": [
+        "Titulação e desmame devem ser graduais em uso contínuo",
+        "Separar dose única e manutenção em entradas diferentes"
+      ],
+      "adverseEffects": [
+        "Sedação",
+        "Ataxia"
+      ],
+      "interactions": [
+        "Pode potencializar sedação com depressores do SNC"
+      ],
+      "routes": [
+        "VO"
+      ],
+      "presentations": [
+        {
+          "id": "pres-pregabalina-solucao-20",
+          "label": "Solução oral 20 mg/mL",
+          "concentrationValue": 20,
+          "concentrationUnit": "mg/mL",
+          "form": "Solução oral",
+          "packInfo": "Frasco",
+          "route": "VO",
+          "scoringInfo": ""
+        },
+        {
+          "id": "pres-pregabalina-caps-25",
+          "label": "Cápsula 25 mg",
+          "concentrationValue": 25,
+          "concentrationUnit": "mg/cápsula",
+          "form": "Cápsula",
+          "packInfo": "Blister",
+          "route": "VO",
+          "scoringInfo": ""
+        },
+        {
+          "id": "pres-pregabalina-caps-50",
+          "label": "Cápsula 50 mg",
+          "concentrationValue": 50,
+          "concentrationUnit": "mg/cápsula",
+          "form": "Cápsula",
+          "packInfo": "Blister",
+          "route": "VO",
+          "scoringInfo": ""
+        }
+      ],
+      "doses": [
+        {
+          "id": "pregabalina-dog-neuropatica",
+          "species": "dog",
+          "indication": "Dor neuropática em cães",
+          "doseMin": 2,
+          "doseMax": 4,
+          "doseUnit": "mg",
+          "perWeightUnit": "kg",
+          "route": "VO",
+          "frequency": "q8-12h",
+          "duration": "Conforme resposta clínica",
+          "notes": "Regime de manutenção",
+          "calculatorEnabled": true
+        },
+        {
+          "id": "pregabalina-dog-anticonvulsivante",
+          "species": "dog",
+          "indication": "Adjuvante anticonvulsivante em cães",
+          "doseMin": 3,
+          "doseMax": 4,
+          "doseUnit": "mg",
+          "perWeightUnit": "kg",
+          "route": "VO",
+          "frequency": "q8-12h",
+          "duration": "Uso contínuo com reavaliação",
+          "notes": "Separado do protocolo de dose única",
+          "calculatorEnabled": true
+        },
+        {
+          "id": "pregabalina-cat-transporte",
+          "species": "cat",
+          "indication": "Ansiólise pré-transporte em gatos",
+          "doseMin": 4,
+          "doseMax": 4,
+          "doseUnit": "mg",
+          "perWeightUnit": "kg",
+          "route": "VO",
+          "frequency": "dose única",
+          "duration": "Administrar 90 min antes do transporte",
+          "notes": "Não misturar com regime de manutenção",
+          "calculatorEnabled": true
+        }
+      ],
+      "clinicalNotes": [
+        "A pregabalina deve ser organizada por regime clínico separado.",
+        "Quando a apresentação não permitir conversão segura, mantenha a decisão em mg."
+      ],
+      "adminNotesRichText": "Caso de teste da sprint de medicamentos",
+      "references": [
+        {
+          "citationText": "Plumb’s Veterinary Drugs. Pregabalin.",
+          "sourceType": "book",
+          "url": "",
+          "notes": "Base prática de dose e cautelas."
+        }
+      ],
+      "relatedDiseaseSlugs": []
+    }
+  ]
+}

@@ -1,5 +1,6 @@
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { motion } from 'framer-motion'
+import { createPortal } from 'react-dom'
 
 /**
  * Detect current theme from localStorage or CSS class
@@ -239,5 +240,43 @@ export const RxvButton = ({
             ) : null}
             {children}
         </button>
+    )
+}
+
+export const RxvModalShell = ({
+    children,
+    zIndexClass = 'z-[90]',
+    overlayClassName = 'bg-black/80 backdrop-blur-sm',
+    containerClassName = 'flex min-h-full items-start justify-center px-4 py-4 sm:items-center sm:px-6 sm:py-8',
+    onBackdropClick,
+}: {
+    children: React.ReactNode
+    zIndexClass?: string
+    overlayClassName?: string
+    containerClassName?: string
+    onBackdropClick?: () => void
+}) => {
+    useEffect(() => {
+        const previousOverflow = document.body.style.overflow
+        document.body.style.overflow = 'hidden'
+        return () => {
+            document.body.style.overflow = previousOverflow
+        }
+    }, [])
+
+    return createPortal(
+        <div className={`fixed inset-0 ${zIndexClass} overflow-y-auto overscroll-contain`}>
+            <div className={containerClassName}>
+                <div
+                    className={`fixed inset-0 ${overlayClassName}`}
+                    onClick={onBackdropClick}
+                    aria-hidden="true"
+                />
+                <div className="relative my-auto w-full">
+                    {children}
+                </div>
+            </div>
+        </div>,
+        document.body
     )
 }

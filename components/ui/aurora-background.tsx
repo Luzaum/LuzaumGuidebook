@@ -4,19 +4,27 @@ import React, { ReactNode } from "react";
 interface AuroraBackgroundProps extends React.HTMLProps<HTMLDivElement> {
   children: ReactNode;
   showRadialGradient?: boolean;
+  as?: "main" | "div";
+  fullScreen?: boolean;
 }
 
 export const AuroraBackground = ({
   className,
   children,
   showRadialGradient = true,
+  as = "main",
+  fullScreen = true,
   ...props
 }: AuroraBackgroundProps) => {
+  const Wrapper = as;
+
   return (
-    <main className="h-full w-full">
+    <Wrapper className="h-full w-full">
       <div
         className={cn(
-          "relative flex h-full min-h-screen w-full flex-col items-center justify-start bg-sky-50 text-slate-950 transition-colors dark:bg-[#0a1020] dark:text-slate-100",
+          fullScreen
+            ? "relative flex h-full min-h-screen w-full flex-col items-center justify-start bg-sky-50 text-slate-950 transition-colors dark:bg-[#0a1020] dark:text-slate-100"
+            : "relative flex h-full min-h-0 w-full flex-col items-center justify-start bg-sky-50 text-slate-950 transition-colors dark:bg-[#0a1020] dark:text-slate-100",
           className
         )}
         {...props}
@@ -41,6 +49,6 @@ export const AuroraBackground = ({
         </div>
         {children}
       </div>
-    </main>
+    </Wrapper>
   );
 };

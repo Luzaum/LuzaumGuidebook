@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { RecentEntityType, RecentRecord } from '../types/recents';
 
 const RECENTS_KEY = 'vetius:consulta-vet:recents:v1';
@@ -41,7 +41,7 @@ export function useRecents() {
     };
   }, []);
 
-  const addRecent = (
+  const addRecent = useCallback((
     entityType: RecentEntityType,
     entityId: string,
     pageNumber?: number,
@@ -60,7 +60,7 @@ export function useRecents() {
 
     setRecents(nextRecents);
     writeRecents(nextRecents);
-  };
+  }, []);
 
   return { recents, addRecent };
 }

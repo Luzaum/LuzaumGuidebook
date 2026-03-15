@@ -7,6 +7,13 @@ import { Button } from '../components/ui/Button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
 import { Textarea } from '../components/ui/Textarea';
 import { buildPatientHandoverText, buildShiftHandoverText } from '../lib/clinicalText';
+import {
+  getActiveMedicationEntries,
+  getLatestVitalsRecord,
+  getNutritionSummary,
+  getRecentExamRecords,
+  getTubeTypeLabel,
+} from '../lib/patientClinical';
 import { getPatientStatusLabel, getPatientStatusVariant } from '../lib/presentation';
 import {
   getActiveShift,
@@ -136,6 +143,10 @@ export function ShiftHandoverPage() {
               const openTasks = tasks.filter((task) => task.shiftPatientId === patient.id && !task.completed);
               const activeProblems = patient.problems.filter((problem) => problem.status === 'active');
               const currentDraft = patientDrafts[patient.id] || generatedDrafts[patient.id] || '';
+              const latestVitals = getLatestVitalsRecord(patient);
+              const recentExams = getRecentExamRecords(patient, 2);
+              const activeMedications = getActiveMedicationEntries(patient);
+              const nutritionSummary = getNutritionSummary(patient);
 
               return (
                 <Card key={patient.id}>
@@ -213,6 +224,49 @@ export function ShiftHandoverPage() {
                         ) : (
                           <p className="text-sm text-[var(--pv-text-muted)]">Nenhuma pendencia aberta.</p>
                         )}
+                        </div>
+                      </div>
+
+                    <div className="grid gap-3 md:grid-cols-2">
+                      <div className="rounded-xl border border-[var(--pv-border)] bg-[var(--pv-surface)] p-3">
+                        <p className="mb-2 text-sm font-medium text-[var(--pv-text-main)]">Parametros recentes</p>
+                        {latestVitals ? (
+                          <div className="space-y-1 text-sm text-[var(--pv-text-muted)]">
+                            <p>{`FC ${latestVitals.heartRate || '--'} • FR ${latestVitals.respiratoryRate || '--'} • TR ${latestVitals.temperature || '--'}`}</p>
+                            <p>{`PAS ${latestVitals.systolicPressure || '--'} • Glicemia ${latestVitals.glucose || '--'}`}</p>
+                            <p>{`Mucosas ${latestVitals.mucousMembranes || '--'} • TPC ${latestVitals.capillaryRefillTime || '--'}`}</p>
+                          </div>
+                        ) : (
+                          <p className="text-sm text-[var(--pv-text-muted)]">Sem parametros recentes.</p>
+                        )}
+                      </div>
+                      <div className="rounded-xl border border-[var(--pv-border)] bg-[var(--pv-surface)] p-3">
+                        <p className="mb-2 text-sm font-medium text-[var(--pv-text-main)]">Exames recentes</p>
+                        {recentExams.length > 0 ? (
+                          <ul className="space-y-2 text-sm text-[var(--pv-text-muted)]">
+                            {recentExams.map((exam) => (
+                              <li key={exam.id}>{`${exam.title || 'Exame'} • ${exam.summary || 'Sem resumo'}`}</li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <p className="text-sm text-[var(--pv-text-muted)]">Sem exames recentes.</p>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="grid gap-3 md:grid-cols-2">
+                      <div className="rounded-xl border border-[var(--pv-border)] bg-[var(--pv-surface-hover)]/35 p-3">
+                        <p className="mb-1 text-sm font-medium text-[var(--pv-text-main)]">Nutricao / suporte</p>
+                        <p className="text-sm text-[var(--pv-text-muted)]">
+                          {nutritionSummary || 'Sem resumo nutricional estruturado.'}
+                          {patient.nutritionSupport.tubeInUse ? ` • ${getTubeTypeLabel(patient.nutritionSupport.tubeType)}` : ''}
+                        </p>
+                      </div>
+                      <div className="rounded-xl border border-[var(--pv-border)] bg-[var(--pv-surface-hover)]/35 p-3">
+                        <p className="mb-1 text-sm font-medium text-[var(--pv-text-main)]">Medicacoes em uso</p>
+                        <p className="text-sm text-[var(--pv-text-muted)]">
+                          {activeMedications.length > 0 ? activeMedications.map((medication) => medication.name).join(', ') : 'Nenhuma medicação ativa.'}
+                        </p>
                       </div>
                     </div>
 

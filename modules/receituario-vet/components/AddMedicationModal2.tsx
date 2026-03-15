@@ -1,7 +1,7 @@
 // ✅ AddMedicationModal2 — Modal para adicionar medicamentos (100% Catálogo 3.0)
 // Versão completa com todos os campos de apresentação do schema Supabase
 
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import {
   RxvField,
   RxvInput,
@@ -9,6 +9,7 @@ import {
   RxvTextarea,
   RxvButton,
   RxvToggle,
+  RxvModalShell,
 } from '../../../src/components/receituario/RxvComponents'
 import {
   searchMedications,
@@ -152,6 +153,11 @@ export function AddMedicationModal2({
   defaultStartHour = '',
   manualMode = false,
 }: AddMedicationModal2Props) {
+  const storageKey = useMemo(
+    () => (clinicId ? `rxv:add-medication-modal:${clinicId}:${manualMode ? 'manual' : 'catalog'}` : null),
+    [clinicId, manualMode]
+  )
+
   // Catalog state
   const [searchQuery, setSearchQuery] = useState('')
   const [medications, setMedications] = useState<MedicationSearchResult[]>([])
@@ -179,16 +185,114 @@ export function AddMedicationModal2({
   const [manualCommercialName, setManualCommercialName] = useState('')
   const [manualControlled, setManualControlled] = useState(false)
 
+  const clearPersistedDraft = useCallback(() => {
+    if (!storageKey) return
+    sessionStorage.removeItem(storageKey)
+  }, [storageKey])
+
+  const handleClose = useCallback(() => {
+    clearPersistedDraft()
+    onClose()
+  }, [clearPersistedDraft, onClose])
+
   // ==================== EFFECTS ====================
 
   useEffect(() => {
     if (!open) return
     const onEscape = (ev: KeyboardEvent) => {
-      if (ev.key === 'Escape') onClose()
+      if (ev.key === 'Escape') handleClose()
     }
     window.addEventListener('keydown', onEscape)
     return () => window.removeEventListener('keydown', onEscape)
-  }, [open, onClose])
+  }, [open, handleClose])
+
+  useEffect(() => {
+    if (!open || !storageKey) return
+    try {
+      const raw = sessionStorage.getItem(storageKey)
+      if (!raw) return
+      const parsed = JSON.parse(raw) as Record<string, any>
+      setSearchQuery(String(parsed.searchQuery || ''))
+      setMedications(Array.isArray(parsed.medications) ? parsed.medications : [])
+      setIsSearching(false)
+      setSelectedMedication(parsed.selectedMedication || null)
+      setPresentations(Array.isArray(parsed.presentations) ? parsed.presentations : [])
+      setSelectedPresentationId(parsed.selectedPresentationId || null)
+      setRecommendedDoses(Array.isArray(parsed.recommendedDoses) ? parsed.recommendedDoses : [])
+      setDose(String(parsed.dose || ''))
+      setTimesPerDay(parseTimesPerDayValue(parsed.timesPerDay) || '2')
+      setRoute(String(parsed.route || 'VO'))
+      setDuration(String(parsed.duration || ''))
+      setDurationMode(parsed.durationMode || 'fixed_days')
+      setInheritStartFromPrescription(parsed.inheritStartFromPrescription !== false)
+      setItemStartDate(String(parsed.itemStartDate ?? defaultStartDate ?? '').trim())
+      setItemStartHour(String(parsed.itemStartHour ?? defaultStartHour ?? '').trim())
+      setCautions(String(parsed.cautions || ''))
+      setManualName(String(parsed.manualName || ''))
+      setManualConcentration(String(parsed.manualConcentration || ''))
+      setManualForm(String(parsed.manualForm || ''))
+      setManualCommercialName(String(parsed.manualCommercialName || ''))
+      setManualControlled(!!parsed.manualControlled)
+    } catch (error) {
+      console.warn('[AddMedicationModal2] Failed to restore modal draft', error)
+    }
+  }, [open, storageKey, defaultStartDate, defaultStartHour])
+
+  useEffect(() => {
+    if (!open || !storageKey) return
+    try {
+      sessionStorage.setItem(
+        storageKey,
+        JSON.stringify({
+          searchQuery,
+          medications,
+          selectedMedication,
+          presentations,
+          selectedPresentationId,
+          recommendedDoses,
+          dose,
+          timesPerDay,
+          route,
+          duration,
+          durationMode,
+          inheritStartFromPrescription,
+          itemStartDate,
+          itemStartHour,
+          cautions,
+          manualName,
+          manualConcentration,
+          manualForm,
+          manualCommercialName,
+          manualControlled,
+        })
+      )
+    } catch (error) {
+      console.warn('[AddMedicationModal2] Failed to persist modal draft', error)
+    }
+  }, [
+    open,
+    storageKey,
+    searchQuery,
+    medications,
+    selectedMedication,
+    presentations,
+    selectedPresentationId,
+    recommendedDoses,
+    dose,
+    timesPerDay,
+    route,
+    duration,
+    durationMode,
+    inheritStartFromPrescription,
+    itemStartDate,
+    itemStartHour,
+    cautions,
+    manualName,
+    manualConcentration,
+    manualForm,
+    manualCommercialName,
+    manualControlled,
+  ])
 
   // Auto-search on open
   useEffect(() => {
@@ -333,6 +437,7 @@ export function AddMedicationModal2({
       }
 
       onAdd(newItem)
+      clearPersistedDraft()
       onClose()
       return
     }
@@ -394,6 +499,7 @@ export function AddMedicationModal2({
     }
 
     onAdd(newItem)
+    clearPersistedDraft()
     onClose()
   }, [
     manualMode,
@@ -416,6 +522,7 @@ export function AddMedicationModal2({
     cautions,
     onAdd,
     onClose,
+    clearPersistedDraft,
     defaultStartDate,
     defaultStartHour,
   ])
@@ -426,8 +533,8 @@ export function AddMedicationModal2({
   const canAdd = manualMode ? !!manualName.trim() : !!selectedMedication
 
   return (
-    <div className="fixed inset-0 z-[90] flex items-center justify-center bg-black/80 backdrop-blur-sm px-4 py-8">
-      <div className="max-h-[92vh] w-full max-w-4xl overflow-hidden rounded-2xl border border-[#2f5b25] bg-[#0a0f0a] text-slate-100 shadow-[0_0_60px_rgba(57,255,20,0.2)]">
+    <RxvModalShell zIndexClass="z-[90]" overlayClassName="bg-black/80 backdrop-blur-sm">
+      <div className="mx-auto max-h-[92vh] w-full max-w-4xl overflow-hidden rounded-2xl border border-[#2f5b25] bg-[#0a0f0a] text-slate-100 shadow-[0_0_60px_rgba(57,255,20,0.2)]">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-800 bg-black/60 px-6 py-4">
           <div>
@@ -441,7 +548,7 @@ export function AddMedicationModal2({
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <RxvButton variant="secondary" onClick={onClose}>
+            <RxvButton variant="secondary" onClick={handleClose}>
               Cancelar
             </RxvButton>
             <RxvButton variant="primary" onClick={handleAdd} disabled={!canAdd}>
@@ -758,6 +865,6 @@ export function AddMedicationModal2({
           )}
         </div>
       </div>
-    </div>
+    </RxvModalShell>
   )
 }

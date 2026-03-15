@@ -6,7 +6,7 @@ export type PharmacyType = 'humana' | 'veterinária' | 'manipulacao'
 export type PackageType = 'frasco' | 'caixa' | 'bisnaga' | 'ampola' | 'outro'
 export type FrequencyType = 'timesPerDay' | 'everyHours'
 export type SpecialControlPharmacy = 'veterinária' | 'humana' | 'manipulacao'
-export type DurationMode = 'fixed_days' | 'until_recheck' | 'continuous_use' | 'until_finished'
+export type DurationMode = 'fixed_days' | 'until_recheck' | 'continuous_use' | 'until_finished' | 'continuous_until_recheck'
 
 export type RouteGroup =
   | 'ORAL'

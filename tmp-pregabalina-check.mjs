@@ -1,0 +1,14 @@
+import { chromium } from 'playwright';
+const browser = await chromium.launch({ headless: true });
+const page = await browser.newPage();
+await page.goto('http://127.0.0.1:5173/consulta-vet/medicamentos/pregabalina', { waitUntil: 'networkidle', timeout: 60000 });
+await page.waitForTimeout(2500);
+const text = await page.locator('body').innerText();
+console.log('HAS_TITLE', text.includes('Pregabalina'));
+console.log('HAS_DOG', text.includes('Cão'));
+console.log('HAS_CAT', text.includes('Gato'));
+console.log('HAS_REGIMENS', text.includes('Doses por espécie e regime'));
+console.log('HAS_PRESENTATIONS', text.includes('Apresentações'));
+console.log('HAS_CALCULATOR', text.includes('Calculadora de dose'));
+console.log(text.slice(0, 3500));
+await browser.close();

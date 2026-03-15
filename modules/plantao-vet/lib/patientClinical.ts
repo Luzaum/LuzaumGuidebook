@@ -1,5 +1,6 @@
 import {
   AppetiteLevel,
+  DailySummaryEntry,
   ExamCategory,
   MedicationEntry,
   NutritionSupport,
@@ -7,6 +8,10 @@ import {
   PatientVitalsRecord,
   ShiftPatient,
 } from '../types';
+
+function safeNumber(value: string) {
+  return Number(String(value || '').replace(',', '.').replace(/[^\d.-]/g, ''));
+}
 
 export function getActiveMedicationEntries(patient: ShiftPatient) {
   if (patient.medicationEntries.length > 0) {
@@ -16,6 +21,7 @@ export function getActiveMedicationEntries(patient: ShiftPatient) {
   return patient.medicationsInUse.map<MedicationEntry>((name, index) => ({
     id: `legacy-${patient.id}-${index}`,
     name,
+    concentration: '',
     dose: '',
     frequency: '',
     route: '',
@@ -23,6 +29,8 @@ export function getActiveMedicationEntries(patient: ShiftPatient) {
     status: 'active',
     startedAt: null,
     suspendedAt: null,
+    inPrescription: true,
+    newBadgeDate: null,
     createdAt: patient.createdAt,
     updatedAt: patient.updatedAt,
   }));
@@ -33,11 +41,14 @@ export function getLatestVitalsRecord(patient: ShiftPatient): PatientVitalsRecor
 }
 
 export function getRecentExamRecords(patient: ShiftPatient, limit = 2): PatientExamRecord[] {
-  return [...patient.examRecords].sort((left, right) => right.recordedAt.localeCompare(left.recordedAt)).slice(0, limit);
+  return [...patient.examRecords]
+    .filter((exam) => Boolean((exam.mainFinding || '').trim()))
+    .sort((left, right) => right.recordedAt.localeCompare(left.recordedAt))
+    .slice(0, limit);
 }
 
 export function getLatestWeightLabel(patient: ShiftPatient) {
-  return patient.nutritionSupport.currentWeight || patient.weightLabel || '';
+  return patient.baseWeightLabel || patient.weightLabel || patient.nutritionSupport.currentWeight || '';
 }
 
 export function getNutritionSummary(patient: ShiftPatient) {
@@ -45,8 +56,9 @@ export function getNutritionSummary(patient: ShiftPatient) {
   const segments = [
     nutrition.dietType ? `Dieta: ${nutrition.dietType}` : '',
     nutrition.feedingRoute ? `Via: ${nutrition.feedingRoute}` : '',
-    nutrition.ingestedPercentage ? `Ingestao: ${nutrition.ingestedPercentage}` : '',
+    nutrition.ingestedPercentage ? `Ingestão: ${nutrition.ingestedPercentage}` : '',
     nutrition.fluidTherapy ? `Fluido: ${nutrition.fluidTherapy}` : '',
+    nutrition.devices ? `Dispositivos: ${nutrition.devices}` : '',
   ].filter(Boolean);
 
   return segments.join(' • ');
@@ -57,17 +69,17 @@ export function getExamCategoryLabel(category: ExamCategory) {
     case 'hemogram':
       return 'Hemograma';
     case 'biochemical':
-      return 'Bioquimico';
+      return 'Bioquímico';
     case 'electrolytes':
-      return 'Eletrolitos';
+      return 'Eletrólitos';
     case 'urinalysis':
-      return 'Urinalise';
+      return 'Urinálise';
     case 'blood_gas':
       return 'Gasometria';
     case 'imaging':
       return 'Imagem';
     case 'rapid':
-      return 'Rapidos';
+      return 'Rápidos';
     case 'other':
     default:
       return 'Outros';
@@ -86,16 +98,16 @@ export function getAppetiteLabel(value: AppetiteLevel) {
       return 'Ausente';
     case 'unknown':
     default:
-      return 'Nao informado';
+      return 'Não informado';
   }
 }
 
 export function getTubeTypeLabel(type: NutritionSupport['tubeType']) {
   switch (type) {
     case 'nasoesophageal':
-      return 'Nasoesofagica';
+      return 'Nasoesofágica';
     case 'nasogastric':
-      return 'Nasogastrica';
+      return 'Nasogástrica';
     case 'esophagostomy':
       return 'Esofagostomia';
     case 'gastrostomy':
@@ -109,12 +121,25 @@ export function getTubeTypeLabel(type: NutritionSupport['tubeType']) {
 }
 
 export function getVitalTrend(currentValue: string, previousValue: string) {
-  const current = Number(currentValue.replace(',', '.'));
-  const previous = Number(previousValue.replace(',', '.'));
+  const current = safeNumber(currentValue);
+  const previous = safeNumber(previousValue);
 
   if (Number.isNaN(current) || Number.isNaN(previous) || current === previous) {
     return 'stable';
   }
 
   return current > previous ? 'up' : 'down';
+}
+
+export function formatClinicalBoolean(value: boolean | null, positive = 'Sim', negative = 'Não', unknown = 'Não informado') {
+  if (value === true) return positive;
+  if (value === false) return negative;
+  return unknown;
+}
+
+export function getLatestDailySummaryEntries(patient: ShiftPatient, limit = 6): DailySummaryEntry[] {
+  return [...patient.dailySummaryEntries]
+    .filter((entry) => !entry.deletedAt)
+    .sort((left, right) => right.occurredAt.localeCompare(left.occurredAt))
+    .slice(0, limit);
 }

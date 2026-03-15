@@ -1,0 +1,13 @@
+import { chromium } from 'playwright';
+const browser = await chromium.launch({ headless: true });
+const page = await browser.newPage();
+const consoleLogs = [];
+const failedRequests = [];
+page.on('console', (msg) => consoleLogs.push({ type: msg.type(), text: msg.text() }));
+page.on('requestfailed', (req) => failedRequests.push({ url: req.url(), failure: req.failure()?.errorText }));
+page.on('pageerror', (err) => consoleLogs.push({ type: 'pageerror', text: String(err) }));
+await page.goto('http://127.0.0.1:5173/consulta-vet/doencas/cinomose-canina', { waitUntil: 'domcontentloaded', timeout: 30000 });
+await page.waitForTimeout(12000);
+const html = await page.locator('main').first().innerHTML();
+console.log(JSON.stringify({ consoleLogs, failedRequests, html: html.slice(0, 3000) }, null, 2));
+await browser.close();

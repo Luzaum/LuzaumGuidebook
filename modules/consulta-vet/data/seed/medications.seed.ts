@@ -52,6 +52,20 @@ export const medicationsSeed: MedicationRecord[] = [
     ],
     clinicalNotesRichText:
       '<p>Usar sempre com alimento e integrar o tratamento ao estadiamento cl\u00ednico e renal do paciente. Na rotina, costuma ser combinada ao alopurinol e ao controle vetorial.</p>',
+    references: [
+      {
+        citationText: 'Brasileish. Diretrizes Brasileiras para o Manejo da Leishmaniose Visceral Canina (2020).',
+        sourceType: 'Consenso',
+        url: 'https://www.brasileish.com.br/wp-content/uploads/2020/12/Diretrizes-Brasileish-2020.pdf',
+        notes: 'Refer\u00eancia pr\u00e1tica para protocolos com miltefosina na LVC.',
+      },
+      {
+        citationText: 'Virbac. Milteforan (miltefosina) para leishmaniose canina.',
+        sourceType: 'Produto',
+        url: 'https://www.virbac.com',
+        notes: 'Base comercial e regulat\u00f3ria do produto veterin\u00e1rio.',
+      },
+    ],
     relatedDiseaseSlugs: ['leishmaniose-visceral-canina'],
   },
   {
@@ -113,6 +127,20 @@ export const medicationsSeed: MedicationRecord[] = [
     ],
     clinicalNotesRichText:
       '<p>Em terapia prolongada para leishmaniose, considerar dieta com menor teor de purinas e reavalia\u00e7\u00e3o urin\u00e1ria seriada para detectar xantin\u00faria precocemente.</p>',
+    references: [
+      {
+        citationText: 'Brasileish. Diretrizes Brasileiras para o Manejo da Leishmaniose Visceral Canina (2020).',
+        sourceType: 'Consenso',
+        url: 'https://www.brasileish.com.br/wp-content/uploads/2020/12/Diretrizes-Brasileish-2020.pdf',
+        notes: 'Uso de alopurinol como terapia de suporte e manuten\u00e7\u00e3o na LVC.',
+      },
+      {
+        citationText: 'LeishVet Group. Practical management of canine leishmaniosis.',
+        sourceType: 'Guideline',
+        url: 'https://www.leishvet.org',
+        notes: 'Contexto internacional para indica\u00e7\u00e3o, seguimento e cautelas.',
+      },
+    ],
     relatedDiseaseSlugs: ['leishmaniose-visceral-canina'],
   },
   {
@@ -177,6 +205,14 @@ export const medicationsSeed: MedicationRecord[] = [
     ],
     clinicalNotesRichText:
       '<p>\u00datil para estabiliza\u00e7\u00e3o de pacientes com cinomose, DRC ou gastroenteropatia. O controle do v\u00f4mito melhora conforto, hidrata\u00e7\u00e3o e ades\u00e3o ao suporte nutricional.</p>',
+    references: [
+      {
+        citationText: 'US FDA. Cerenia (maropitant citrate) prescribing information.',
+        sourceType: 'Drug label',
+        url: 'https://www.fda.gov',
+        notes: 'Base regulat\u00f3ria para indica\u00e7\u00f5es e vias de administra\u00e7\u00e3o.',
+      },
+    ],
     relatedDiseaseSlugs: ['cinomose-canina', 'doenca-renal-cronica'],
   },
   {
@@ -256,6 +292,14 @@ export const medicationsSeed: MedicationRecord[] = [
     ],
     clinicalNotesRichText:
       '<p>Em pacientes com cinomose neurol\u00f3gica, o objetivo \u00e9 controle sintom\u00e1tico das crises e melhor qualidade de vida. Ajustes devem considerar resposta cl\u00ednica e toler\u00e2ncia.</p>',
+    references: [
+      {
+        citationText: 'MSD Veterinary Manual. Seizure Disorders in Dogs and Cats.',
+        sourceType: 'Manual',
+        url: 'https://www.msdvetmanual.com',
+        notes: 'Refer\u00eancia de uso anticonvulsivante e monitoriza\u00e7\u00e3o cl\u00ednica.',
+      },
+    ],
     relatedDiseaseSlugs: ['cinomose-canina'],
   },
   {
@@ -328,6 +372,14 @@ export const medicationsSeed: MedicationRecord[] = [
     ],
     clinicalNotesRichText:
       '<p>Na demonstra\u00e7\u00e3o da cinomose, entra como exemplo de antibi\u00f3tico de suporte apenas quando o exame cl\u00ednico sugere complica\u00e7\u00e3o bacteriana secund\u00e1ria. N\u00e3o substitui suporte intensivo, isolamento e monitoriza\u00e7\u00e3o neurol\u00f3gica.</p>',
+    references: [
+      {
+        citationText: 'NOAH Compendium. Synulox tablets for dogs and cats.',
+        sourceType: 'SPC',
+        url: 'https://www.noahcompendium.co.uk',
+        notes: 'Resumo de caracter\u00edsticas do produto com amoxicilina + clavulanato.',
+      },
+    ],
     relatedDiseaseSlugs: ['cinomose-canina'],
   },
   {
@@ -399,6 +451,166 @@ export const medicationsSeed: MedicationRecord[] = [
     ],
     clinicalNotesRichText:
       '<p>\u00c9 uma das op\u00e7\u00f5es mais utilizadas para controle press\u00f3rico em DRC, especialmente em gatos. O acompanhamento seriado da PAS \u00e9 obrigat\u00f3rio ap\u00f3s introdu\u00e7\u00e3o e titula\u00e7\u00e3o.</p>',
+    references: [
+      {
+        citationText: 'International Renal Interest Society (IRIS). IRIS Staging of CKD modified 2023.',
+        sourceType: 'Guideline',
+        url: 'http://www.iris-kidney.com/pdf/IRIS_Staging_of_CKD_modified_2023.pdf',
+        notes: 'Contexto de controle press\u00f3rico em pacientes com DRC.',
+      },
+      {
+        citationText: 'US FDA. Norvasc (amlodipine besylate) prescribing information.',
+        sourceType: 'Drug label',
+        url: 'https://www.fda.gov',
+        notes: 'Base farmacol\u00f3gica do ativo usado na pr\u00e1tica cl\u00ednica.',
+      },
+    ],
     relatedDiseaseSlugs: ['doenca-renal-cronica'],
+  },
+  {
+    id: 'med-pregabalina',
+    slug: 'pregabalina',
+    title: 'Pregabalina',
+    activeIngredient: 'Pregabalina',
+    tradeNames: ['Lyrica', 'Genéricos'],
+    pharmacologicClass: 'Anticonvulsivante / modulador de dor neuropática',
+    species: ['dog', 'cat'],
+    category: 'neurologia',
+    tags: ['Neuropática', 'Ansiólise', 'Anticonvulsivante', 'VO'],
+    mechanismOfAction:
+      'Liga-se à subunidade alfa-2-delta de canais de cálcio voltagem-dependentes, reduzindo liberação de neurotransmissores excitatórios e modulando dor neuropática e excitabilidade neuronal.',
+    indications: [
+      'Dor neuropática em cães.',
+      'Adjuvante anticonvulsivante em cães selecionados.',
+      'Ansiólise pré-transporte em gatos.',
+    ],
+    contraindications: [
+      'Hipersensibilidade conhecida ao fármaco.',
+      'Uso sem ajuste clínico em paciente com sedação excessiva relevante.',
+    ],
+    cautions: [
+      'Titulação e desmame devem ser graduais em uso contínuo.',
+      'Monitorar sedação, ataxia e resposta funcional nos primeiros dias.',
+      'Separar claramente regimes de dose única e manutenção.',
+    ],
+    adverseEffects: [
+      'Sedação.',
+      'Ataxia.',
+      'Hiporexia ou desconforto gastrointestinal leve em alguns pacientes.',
+    ],
+    interactions: [
+      'Pode potencializar sedação com opioides, gabapentinoides ou outros depressores do SNC.',
+    ],
+    routes: ['VO'],
+    doses: [
+      {
+        id: 'dose-pregabalina-dog-neuropatica',
+        species: 'dog',
+        indication: 'Dor neuropática em cães',
+        doseMin: 2,
+        doseMax: 4,
+        doseUnit: 'mg',
+        perWeightUnit: 'kg',
+        route: 'VO',
+        frequency: 'q8-12h',
+        duration: 'Conforme resposta clínica',
+        notes: 'Regime de manutenção. Reavaliar sedação e conforto nas primeiras 72 horas.',
+        calculatorEnabled: true,
+      },
+      {
+        id: 'dose-pregabalina-dog-anticonvulsivante',
+        species: 'dog',
+        indication: 'Adjuvante anticonvulsivante em cães',
+        doseMin: 3,
+        doseMax: 4,
+        doseUnit: 'mg',
+        perWeightUnit: 'kg',
+        route: 'VO',
+        frequency: 'q8-12h',
+        duration: 'Uso contínuo com reavaliação periódica',
+        notes: 'Não misturar com protocolo de dose única.',
+        calculatorEnabled: true,
+      },
+      {
+        id: 'dose-pregabalina-cat-transporte',
+        species: 'cat',
+        indication: 'Ansiólise pré-transporte em gatos',
+        doseMin: 4,
+        doseMax: 4,
+        doseUnit: 'mg',
+        perWeightUnit: 'kg',
+        route: 'VO',
+        frequency: 'dose única',
+        duration: 'Administrar 90 min antes do transporte',
+        notes: 'Entrada separada para evitar fusão com regimes de manutenção.',
+        calculatorEnabled: true,
+      },
+    ],
+    presentations: [
+      {
+        id: 'pres-pregabalina-solucao-20',
+        label: 'Solução oral 20 mg/mL',
+        form: 'Solução oral',
+        concentrationValue: 20,
+        concentrationUnit: 'mg/mL',
+        route: 'VO',
+        packInfo: 'Frasco',
+      },
+      {
+        id: 'pres-pregabalina-caps-25',
+        label: 'Cápsula 25 mg',
+        form: 'Cápsula',
+        concentrationValue: 25,
+        concentrationUnit: 'mg/cápsula',
+        route: 'VO',
+        packInfo: 'Blister',
+      },
+      {
+        id: 'pres-pregabalina-caps-50',
+        label: 'Cápsula 50 mg',
+        form: 'Cápsula',
+        concentrationValue: 50,
+        concentrationUnit: 'mg/cápsula',
+        route: 'VO',
+        packInfo: 'Blister',
+      },
+      {
+        id: 'pres-pregabalina-caps-75',
+        label: 'Cápsula 75 mg',
+        form: 'Cápsula',
+        concentrationValue: 75,
+        concentrationUnit: 'mg/cápsula',
+        route: 'VO',
+        packInfo: 'Blister',
+      },
+      {
+        id: 'pres-pregabalina-caps-100',
+        label: 'Cápsula 100 mg',
+        form: 'Cápsula',
+        concentrationValue: 100,
+        concentrationUnit: 'mg/cápsula',
+        route: 'VO',
+        packInfo: 'Blister',
+      },
+    ],
+    clinicalNotesRichText:
+      '<p>Na prática, a pregabalina exige regime clínico bem delimitado. Ansiólise pré-transporte em gatos não deve ser fundida com protocolos de manutenção para dor neuropática ou uso anticonvulsivante em cães.</p><p>Quando a apresentação escolhida não permite conversão segura para comprimidos ou cápsulas, mantenha a decisão em mg e ajuste a apresentação no editorial.</p>',
+    adminNotesText:
+      'Caso de teste da sprint: doses separadas por espécie, regimes separados por indicação e apresentações individuais para cálculo.',
+    references: [
+      {
+        citationText: 'Plumb’s Veterinary Drugs. Pregabalin.',
+        sourceType: 'Livro',
+        url: '',
+        notes: 'Base para posologia clínica e cautelas de uso veterinário.',
+      },
+      {
+        citationText: 'Gruen ME et al. Use of pregabalin in veterinary patients.',
+        sourceType: 'Artigo',
+        url: '',
+        notes: 'Contexto de dor neuropática e sedação em pequenos animais.',
+      },
+    ],
+    relatedDiseaseSlugs: [],
   },
 ];
