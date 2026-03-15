@@ -146,12 +146,12 @@ export const modules: Module[] = [
   },
   {
     id: 'veteletrolitico',
-    title: 'VetEletrolítico',
+    title: 'Hidroeletrovet',
     description: 'Cálculo e reposição de eletrólitos (K+, Na+, Mg2+, etc.)',
     route: '/veteletrolitico',
     status: 'internal',
     icon: Activity,
-    iconImage: '/apps/veteletrolitico.svg',
+    iconImage: '/apps/hidroeletro.png',
   },
   {
     id: 'consulta-vet',
@@ -160,7 +160,7 @@ export const modules: Module[] = [
     route: '/consulta-vet',
     status: 'internal',
     icon: Stethoscope,
-    iconImage: '/apps/consulta-vet.svg',
+    iconImage: '/apps/vet.png',
   },
 
 ]

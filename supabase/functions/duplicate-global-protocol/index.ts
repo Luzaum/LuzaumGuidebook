@@ -96,17 +96,21 @@ Deno.serve(async (request) => {
   let createdProtocolId: string | null = null
 
   try {
-    const supabaseUrl = Deno.env.get('SUPABASE_URL') || Deno.env.get('VITE_SUPABASE_URL')
+    console.log('[duplicate-global-protocol] INICIANDO DUPLICACAO')
+
+    const supabaseUrl = Deno.env.get('SUPABASE_URL')
     const supabaseServiceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')
 
     if (!supabaseUrl || !supabaseServiceRoleKey) {
-      throw new Error('ConfiguraÃ§Ã£o Supabase incompleta para duplicate-global-protocol.')
+      console.error('[duplicate-global-protocol] Faltam secrets: SUPABASE_URL ou SUPABASE_SERVICE_ROLE_KEY')
+      throw new Error('Configuração Supabase incompleta para duplicate-global-protocol. Verifique secrets de produção.')
     }
 
     const authHeader = request.headers.get('Authorization') || ''
     const accessToken = authHeader.replace(/^Bearer\s+/i, '').trim()
     if (!accessToken) {
-      return json(401, { error: 'Token de autenticaÃ§Ã£o ausente.' })
+      console.warn('[duplicate-global-protocol] Token ausente')
+      return json(401, { error: 'Token de autenticação ausente.' })
     }
 
     const adminClient = createClient(supabaseUrl, supabaseServiceRoleKey, {
@@ -119,18 +123,21 @@ Deno.serve(async (request) => {
     } = await adminClient.auth.getUser(accessToken)
 
     if (userError || !user) {
-      return json(401, { error: 'UsuÃ¡rio nÃ£o autenticado.' })
+      console.error('[duplicate-global-protocol] Falha Auth User:', userError)
+      return json(401, { error: 'Usuário não autenticado.' })
     }
 
     const body = await request.json() as DuplicateRequestBody
     const clinicId = readText(body.clinicId)
     const globalProtocolId = readText(body.globalProtocolId)
 
+    console.log(`[duplicate-global-protocol] Recebido - clinicId: ${clinicId}, globalProtocolId: ${globalProtocolId}, userId: ${user.id}`)
+
     if (!clinicId) {
-      return json(400, { error: 'clinicId Ã© obrigatÃ³rio.' })
+      return json(400, { error: 'clinicId é obrigatório.' })
     }
     if (!globalProtocolId) {
-      return json(400, { error: 'globalProtocolId Ã© obrigatÃ³rio.' })
+      return json(400, { error: 'globalProtocolId é obrigatório.' })
     }
 
     const { data: membership, error: membershipError } = await adminClient
@@ -272,10 +279,13 @@ Deno.serve(async (request) => {
       const { error: examInsertError } = await adminClient
         .from('protocol_exam_items')
         .insert(examPayload)
-      if (examInsertError) throw examInsertError
+      if (examInsertError) {
+        console.error('[duplicate-global-protocol] Erro Inserindo Extras/Exames:', examInsertError)
+        throw examInsertError
+      }
     }
 
-    return json(200, {
+    const finalResult = {
       ok: true,
       protocolId: createdProtocolId,
       name: (createdProtocol as LocalProtocolRow).name,
@@ -284,7 +294,11 @@ Deno.serve(async (request) => {
       examItemsCount: examPayload.length,
       duplicatedByUserId: user.id,
       membershipRole: (membership as MembershipRow).role,
-    })
+    }
+
+    console.log('[duplicate-global-protocol] SUCESSO:', finalResult)
+
+    return json(200, finalResult)
   } catch (error) {
     if (createdProtocolId) {
       try {

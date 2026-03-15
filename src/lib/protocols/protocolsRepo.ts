@@ -487,9 +487,9 @@ async function hydrateClinicProtocolMedications(
       : Promise.resolve({ data: [], error: null }),
     presentationIds.length
       ? supabase
-          .from('medication_presentations')
-          .select('id,pharmaceutical_form,commercial_name,concentration_text')
-          .in('id', presentationIds)
+        .from('medication_presentations')
+        .select('id,pharmaceutical_form,commercial_name,concentration_text')
+        .in('id', presentationIds)
       : Promise.resolve({ data: [], error: null }),
   ])
 
@@ -533,9 +533,9 @@ async function hydrateGlobalProtocolMedications(
       : Promise.resolve({ data: [], error: null }),
     globalMedicationIds.length
       ? supabase
-          .from('global_medication_presentations')
-          .select('global_medication_id,slug,pharmaceutical_form,commercial_name,concentration_text')
-          .in('global_medication_id', globalMedicationIds)
+        .from('global_medication_presentations')
+        .select('global_medication_id,slug,pharmaceutical_form,commercial_name,concentration_text')
+        .in('global_medication_id', globalMedicationIds)
       : Promise.resolve({ data: [], error: null }),
   ])
 
@@ -666,7 +666,7 @@ export async function deleteGlobalProtocol(
     if (response && typeof response.json === 'function') {
       try {
         const payload = await response.json()
-        const message = readText(payload?.error) || readText(payload?.message)
+        const message = (typeof payload?.error === 'string' ? payload.error.trim() : '') || (typeof payload?.message === 'string' ? payload.message.trim() : '')
         if (message) {
           throw new Error(message)
         }
@@ -674,7 +674,7 @@ export async function deleteGlobalProtocol(
         if (response && typeof response.text === 'function') {
           try {
             const text = await response.text()
-            const message = readText(text)
+            const message = typeof text === 'string' ? text.trim() : ''
             if (message) {
               throw new Error(message)
             }
@@ -999,13 +999,17 @@ export async function duplicateGlobalProtocolToClinic(
   userId: string,
   globalProtocolId: string
 ): Promise<ProtocolRecord> {
+  console.log('[ProtocolsRepo] duplicateGlobalProtocolToClinic INICIANDO:', { clinicId, userId, globalProtocolId })
+
   const { data, error } = await supabase.functions.invoke('duplicate-global-protocol', {
     body: { clinicId, userId, globalProtocolId },
   })
 
+  console.log('[ProtocolsRepo] duplicateGlobalProtocolToClinic RETORNO DA EDGE FUNCTION:', { data, error })
+
   if (error) {
     logSbError('[ProtocolsRepo] duplicateGlobalProtocolToClinic invoke error', error)
-    let message = 'NÃ£o foi possÃ­vel duplicar o protocolo completo. Nenhuma cÃ³pia vÃ¡lida foi mantida.'
+    let message = 'Não foi possível duplicar o protocolo completo. Nenhuma cópia válida foi mantida.'
     const response = (error as any)?.context
     if (response && typeof response.json === 'function') {
       try {
@@ -1013,13 +1017,15 @@ export async function duplicateGlobalProtocolToClinic(
         if (payload?.error) {
           message = String(payload.error)
         }
-      } catch {}
+      } catch { }
     }
     throw new Error(message)
   }
 
   if (!data || data.ok !== true || !data.protocolId) {
-    throw new Error('Resposta invÃ¡lida da duplicaÃ§Ã£o de protocolo global.')
+    const errorDetails = JSON.stringify(data || {})
+    console.error('[ProtocolsRepo] Retorno inesperado da Edge Function:', errorDetails)
+    throw new Error(`Resposta inválida da duplicação de protocolo global. Detalhes: ${errorDetails}`)
   }
 
   const result = data as DuplicateGlobalProtocolResult
