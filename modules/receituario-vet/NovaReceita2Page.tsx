@@ -763,17 +763,23 @@ export default function NovaReceita2Page() {
 
     // Carregar payload de protocolo vindos via navigate state
     useEffect(() => {
-        if (!location.state) return
-        const payload = location.state as {
-            items?: PrescriptionItem[]
-            recommendations?: string
-            exams?: string[]
-            examJustification?: string
-            sourceProtocol?: { id: string; name: string }
-        }
+        const payload = location.state as
+            | {
+                items?: PrescriptionItem[]
+                recommendations?: string
+                exams?: string[]
+                examJustification?: string
+                sourceProtocol?: { id: string; name: string }
+            }
+            | null
+
+        console.log('[NovaReceita2] location.state recebido', payload)
+
+        if (!payload) return
 
         updateState((prev) => {
             const freshState = createDefaultState()
+
             const baseState: NovaReceita2State = {
                 ...freshState,
                 prescriber: prev.prescriber,
@@ -781,19 +787,34 @@ export default function NovaReceita2Page() {
                 templateId: prev.templateId || freshState.templateId,
             }
 
-            return {
+            const normalizedItems = (payload.items || []).map((item, index) => {
+                const normalized = normalizePrescriptionItem(
+                    item,
+                    baseState.defaultStartDate,
+                    baseState.defaultStartHour
+                )
+
+                console.log('[NovaReceita2] item bruto', index, item)
+                console.log('[NovaReceita2] item normalizado', index, normalized)
+
+                return normalized
+            })
+
+            const nextState = {
                 ...baseState,
-                items: (payload.items || []).map((item) =>
-                    normalizePrescriptionItem(item, baseState.defaultStartDate, baseState.defaultStartHour)
-                ),
+                items: normalizedItems,
                 recommendations: payload.recommendations?.trim() || '',
                 examJustification: payload.examJustification || '',
                 exams: (payload.exams || []).filter(Boolean),
             }
+
+            console.log('[NovaReceita2] estado final aplicado', nextState)
+            return nextState
         })
 
-        window.history.replaceState({}, '')
-    }, [location.state, updateState])
+        // Limpar o state da history de forma segura para evitar re-hidratação acidental no F5
+        navigate(location.pathname, { replace: true, state: null })
+    }, [location.state, location.pathname, navigate, updateState])
 
     // Carregar do Supabase se vier ID na URL
     useEffect(() => {
@@ -841,13 +862,13 @@ export default function NovaReceita2Page() {
     }, [state.prescriber, updateState])
 
     // D1: Carregar rascunho local quando clinicId ficar disponível
-    // Só carrega se não vier prescriptionId na URL e não vier items de protocolo
+    // Só carrega se não vier prescriptionId na URL e não vier items de protocolo (location.state)
     useEffect(() => {
         if (!draftKey || draftInitRef.current) return
         draftInitRef.current = true
 
         const params = new URLSearchParams(location.search)
-        if (params.get('prescriptionId')) return // Carregará do Supabase
+        if (params.get('prescriptionId') || location.state) return // Não sobrepor se está editando ou importando
         const draftId = params.get('draft')
         if (draftId) {
             const legacyDraft = loadRxDraftById(draftId)
@@ -1124,7 +1145,7 @@ export default function NovaReceita2Page() {
         } finally {
             setIsSaving(false)
         }
-        }, [state, clinicId, primaryPrintDoc, printDocs, selectedTemplateObj, updateState])
+    }, [state, clinicId, primaryPrintDoc, printDocs, selectedTemplateObj, updateState])
 
     // ==================== RENDER ====================
 
@@ -1420,7 +1441,7 @@ export default function NovaReceita2Page() {
                                                                         onClick={() => {
                                                                             setQuickSelectedMedication(med)
                                                                             setQuickMedicationName(med.name)
-                                                                            setQuickRoute(med.default_route || 'VO')
+                                                                            setQuickRoute(med.metadata?.default_route || 'VO')
                                                                         }}
                                                                         className="w-full rounded-lg border border-slate-700 bg-black/30 px-3 py-2 text-left hover:border-[#39ff14]/50"
                                                                     >

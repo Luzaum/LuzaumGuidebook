@@ -18,6 +18,18 @@ export class ConsultaVetErrorBoundary extends React.Component<Props, State> {
 
   componentDidCatch(error: unknown) {
     console.error('Consulta VET crashed', error);
+
+    const isDynamicImportError =
+      error instanceof Error &&
+      (error.message.includes('Failed to fetch dynamically imported module') ||
+        error.message.includes('dynamically imported module'));
+
+    if (isDynamicImportError) {
+      if (!sessionStorage.getItem('dynamicImportReloader_ConsultaVet')) {
+        sessionStorage.setItem('dynamicImportReloader_ConsultaVet', 'true');
+        window.location.reload();
+      }
+    }
   }
 
   private handleReset = () => {

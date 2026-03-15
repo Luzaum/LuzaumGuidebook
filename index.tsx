@@ -14,6 +14,14 @@ if (!rootElement) {
   throw new Error("Could not find root element to mount to");
 }
 
+window.addEventListener('vite:preloadError', (event) => {
+  console.warn('Vite preload error (missing chunk), reloading page...', event);
+  if (!sessionStorage.getItem('dynamicImportReloader_VitePreload')) {
+    sessionStorage.setItem('dynamicImportReloader_VitePreload', 'true');
+    window.location.reload();
+  }
+});
+
 const root = createRoot(rootElement);
 console.log("[BOOT] React root criado");
 root.render(

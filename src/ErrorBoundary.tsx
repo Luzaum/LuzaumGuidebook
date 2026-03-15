@@ -12,6 +12,18 @@ export class ErrorBoundary extends React.Component<
 
   componentDidCatch(error: any, info: any) {
     console.error("[ErrorBoundary] erro:", error, info)
+
+    const isDynamicImportError =
+      error?.message?.includes("Failed to fetch dynamically imported module") ||
+      error?.message?.includes("dynamically imported module") ||
+      error?.message?.includes("Importing a module script failed");
+
+    if (isDynamicImportError) {
+      if (!sessionStorage.getItem('dynamicImportReloader_Main')) {
+        sessionStorage.setItem('dynamicImportReloader_Main', 'true');
+        window.location.reload();
+      }
+    }
   }
 
   render() {
