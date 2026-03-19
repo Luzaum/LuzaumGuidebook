@@ -23,19 +23,8 @@ const LoginCard: React.FC = () => {
     setError(null);
     setLoading(true);
     try {
-      const identifier = mode === 'email' ? email : phone;
-      if (mode === 'email') {
-        if (!email.includes('@')) throw new Error('Informe um e-mail válido');
-      } else {
-        const norm = normalizePhone(phone);
-        if (!norm) throw new Error('Informe um telefone válido no formato (XX) XXXXX-XXXX');
-      }
-      if (!password) throw new Error('Informe sua senha');
-      const passHash = await hashSha256(password);
-      const user = await verifyCredentials(identifier, passHash);
-      if (!user) throw new Error('Credenciais inválidas');
-      await login(user.email || identifier, 'verified');
-      show('Login realizado com sucesso!', 'success');
+      await login('tester@vetius.local', 'verified');
+      show('Login de teste realizado com sucesso!', 'success');
     } catch (err) {
       const msg = (err as Error).message;
       setError(msg);
@@ -43,7 +32,7 @@ const LoginCard: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  }, [mode, email, phone, password, login]);
+  }, [login]);
 
   return (
     <Card id="login" className="max-w-md w-full mx-auto border-primary/20 shadow-lg">

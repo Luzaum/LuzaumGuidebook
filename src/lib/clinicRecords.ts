@@ -886,11 +886,23 @@ export interface RecommendedDose {
   medication_id?: string
   species: string // 'cão', 'gato', 'ambos', etc
   route: string // 'VO', 'IV', 'IM', 'SC', etc
-  dose_value: number
+  dose_value: number // dose mínima (ou fixa se dose_max é null)
+  dose_max?: number | null // dose máxima da faixa
   dose_unit: string // 'mg/kg', 'mL/kg', 'UI/kg', etc
-  frequency: string | null
+  per_weight_unit?: string | null // 'kg', null se não é por peso
+  indication?: string | null // indicação clínica
+  frequency: string | null // texto legível
+  frequency_min?: number | null // freq mínima (vezes/dia)
+  frequency_max?: number | null // freq máxima (vezes/dia)
+  frequency_mode?: string | null // 'times_per_day' | 'every_x_hours' | 'custom'
+  frequency_text?: string | null // texto livre
+  duration?: string | null // duração recomendada
+  calculator_default_dose?: number | null
+  calculator_default_frequency?: number | null
   notes: string | null
   metadata?: Record<string, unknown> | null
+  is_active?: boolean
+  sort_order?: number | null
   created_at?: string
   updated_at?: string
   source?: CatalogSource
@@ -1017,8 +1029,18 @@ export async function saveMedicationRecommendedDoses(
       species: dose.species!,
       route: dose.route!,
       dose_value: dose.dose_value!,
+      dose_max: dose.dose_max ?? null,
       dose_unit: dose.dose_unit!,
+      per_weight_unit: dose.per_weight_unit ?? null,
+      indication: dose.indication ?? null,
       frequency: dose.frequency || null,
+      frequency_min: dose.frequency_min ?? null,
+      frequency_max: dose.frequency_max ?? null,
+      frequency_mode: dose.frequency_mode ?? null,
+      frequency_text: dose.frequency_text ?? null,
+      duration: dose.duration ?? null,
+      calculator_default_dose: dose.calculator_default_dose ?? null,
+      calculator_default_frequency: dose.calculator_default_frequency ?? null,
       notes: dose.notes || null,
       metadata: dose.metadata || {},
       updated_at: new Date().toISOString()
@@ -1048,8 +1070,18 @@ export async function saveMedicationRecommendedDoses(
       species: d.species!,
       route: d.route!,
       dose_value: d.dose_value!,
+      dose_max: d.dose_max ?? null,
       dose_unit: d.dose_unit!,
+      per_weight_unit: d.per_weight_unit ?? null,
+      indication: d.indication ?? null,
       frequency: d.frequency || null,
+      frequency_min: d.frequency_min ?? null,
+      frequency_max: d.frequency_max ?? null,
+      frequency_mode: d.frequency_mode ?? null,
+      frequency_text: d.frequency_text ?? null,
+      duration: d.duration ?? null,
+      calculator_default_dose: d.calculator_default_dose ?? null,
+      calculator_default_frequency: d.calculator_default_frequency ?? null,
       notes: d.notes || null,
       metadata: d.metadata || {}
     }))

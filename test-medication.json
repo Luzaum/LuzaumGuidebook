@@ -1,0 +1,43 @@
+{
+  "name": "Antibiótico Vetius Plus",
+  "active_principles": "Amoxicilina + Clavulanato",
+  "therapeutic_class": "Antimicrobiano",
+  "is_controlled": false,
+  "medication_type": "industrialized",
+  "species": ["cão", "gato"],
+  "recommended_doses": [
+    {
+      "species": "Ambos",
+      "route": "VO",
+      "dose_value": 12.5,
+      "dose_max": 25,
+      "dose_unit": "mg",
+      "per_weight_unit": "kg",
+      "indication": "Infecções gerais",
+      "frequency_min": 2,
+      "frequency_max": 3,
+      "frequency_mode": "times_per_day",
+      "duration": "7 a 10 dias",
+      "calculator_default_dose": 15,
+      "calculator_default_frequency": 2,
+      "notes": "Administrar junto ao alimento."
+    }
+  ],
+  "commercial_presentations": [
+    {
+      "name": "Agemoxi 250mg",
+      "brand": "Agener União",
+      "form": "Comprimido",
+      "base_concentration": 200,
+      "base_concentration_unit": "mg",
+      "active_components": [
+        {"name": "Amoxicilina", "concentration": 200, "unit": "mg"},
+        {"name": "Ácido Clavulânico", "concentration": 50, "unit": "mg"}
+      ],
+      "package_quantity": 10,
+      "package_type": "Blister",
+      "is_scored": "yes",
+      "concentration_text": "250mg"
+    }
+  ]
+}

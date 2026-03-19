@@ -74,8 +74,18 @@ export interface CanonicalRecommendedDose {
   species: string
   route: string
   dose_value: number
+  dose_max?: number | null
   dose_unit: string
+  per_weight_unit?: string | null
+  indication?: string | null
   frequency?: string | null
+  frequency_min?: number | null
+  frequency_max?: number | null
+  frequency_mode?: string | null
+  frequency_text?: string | null
+  duration?: string | null
+  calculator_default_dose?: number | null
+  calculator_default_frequency?: number | null
   notes?: string | null
   metadata?: Record<string, unknown> | null
 }
@@ -127,6 +137,14 @@ type ValidationResult<T> = {
 
 function isObject(value: unknown): value is Record<string, unknown> {
   return !!value && typeof value === 'object' && !Array.isArray(value)
+}
+
+/** Resolve first non-undefined value from multiple possible JSON key aliases (camelCase + snake_case) */
+function resolveAlias(input: Record<string, unknown>, ...keys: string[]): unknown {
+  for (const k of keys) {
+    if (input[k] !== undefined) return input[k]
+  }
+  return undefined
 }
 
 function toNumberOrNull(value: unknown): number | null {
@@ -311,51 +329,118 @@ export function mergeCatalogSearchResults<T extends MergeableCatalogSearchEntry>
   return deduped
 }
 
-function normalizePresentation(raw: unknown, medicationSlug: string, fallbackIndex: number): CanonicalMedicationPresentation {
-  const input = isObject(raw) ? raw : {}
-  const slug = normalizeCatalogKey(safeString(input.slug) || safeString(input.id) || `${medicationSlug}-presentation-${fallbackIndex + 1}`)
+function resolvePharmacyFlags(input: Record<string, unknown>): { pharmacy_veterinary: boolean; pharmacy_human: boolean; pharmacy_compounding: boolean } {
+  // Handle pharmacy_type enum from JSON: 'veterinary'|'human'|'compounding'
+  const pharmacyType = safeString(resolveAlias(input, 'pharmacy_type', 'pharmacyType')).toLowerCase()
+  if (pharmacyType) {
+    return {
+      pharmacy_veterinary: pharmacyType === 'veterinary' || pharmacyType === 'vet',
+      pharmacy_human: pharmacyType === 'human' || pharmacyType === 'humana',
+      pharmacy_compounding: pharmacyType === 'compounding' || pharmacyType === 'manipulacao',
+    }
+  }
   return {
-    id: safeString(input.id) || undefined,
-    slug,
-    pharmaceutical_form: safeString(input.pharmaceutical_form) || null,
-    concentration_text: safeString(input.concentration_text) || null,
-    additional_component: safeString(input.additional_component) || null,
-    presentation_unit: safeString(input.presentation_unit) || null,
-    commercial_name: safeString(input.commercial_name) || null,
-    value: toNumberOrNull(input.value),
-    value_unit: safeString(input.value_unit) || null,
-    per_value: toNumberOrNull(input.per_value),
-    per_unit: safeString(input.per_unit) || null,
-    package_quantity: toNumberOrNull(input.package_quantity),
-    package_unit: safeString(input.package_unit) || null,
-    avg_price_brl: toNumberOrNull(input.avg_price_brl),
     pharmacy_veterinary: input.pharmacy_veterinary !== false,
     pharmacy_human: !!input.pharmacy_human,
     pharmacy_compounding: !!input.pharmacy_compounding,
+  }
+}
+
+function normalizePresentation(raw: unknown, medicationSlug: string, fallbackIndex: number): CanonicalMedicationPresentation {
+  const input = isObject(raw) ? raw : {}
+  const slug = normalizeCatalogKey(safeString(input.slug) || safeString(input.id) || `${medicationSlug}-presentation-${fallbackIndex + 1}`)
+  const pharmaceuticalForm = safeString(resolveAlias(input, 'pharmaceutical_form', 'pharmaceuticalForm')) || null
+  const commercialName = safeString(resolveAlias(input, 'commercial_name', 'commercialName')) || null
+  const additionalComponent = safeString(resolveAlias(input, 'additional_component', 'additionalComponent')) || null
+  const presentationUnit = safeString(resolveAlias(input, 'presentation_unit', 'presentationUnit')) || null
+  const concentrationText = safeString(resolveAlias(input, 'concentration_text', 'concentrationText')) || null
+  const rawValue = toNumberOrNull(resolveAlias(input, 'value', 'concentration_value', 'concentrationValue'))
+  const rawValueUnit = safeString(resolveAlias(input, 'value_unit', 'concentration_unit', 'concentrationUnit')) || null
+  const rawPerValue = toNumberOrNull(resolveAlias(input, 'per_value', 'quantity_per_unit', 'quantityPerUnit'))
+  const rawPerUnit = safeString(resolveAlias(input, 'per_unit', 'perUnit')) || null
+  const packageQuantity = toNumberOrNull(resolveAlias(input, 'package_quantity', 'packageQuantity'))
+  const packageUnit = safeString(resolveAlias(input, 'package_unit', 'packageUnit')) || null
+  const avgPrice = toNumberOrNull(resolveAlias(input, 'avg_price_brl', 'avgPriceBrl'))
+  const pharmacyFlags = resolvePharmacyFlags(input)
+  const rawMetadata = isObject(input.metadata) ? input.metadata : {}
+  // Also accept top-level manufacturer/summary
+  const manufacturer = safeString(resolveAlias(input, 'manufacturer') ?? rawMetadata.manufacturer)
+  const summary = safeString(resolveAlias(input, 'summary'))
+
+  // Auto-build concentration_text from structured fields if missing
+  let finalConcentrationText = concentrationText
+  if (!finalConcentrationText && rawValue !== null && rawValue > 0 && rawValueUnit) {
+    const perPart = rawPerUnit ? `/${rawPerValue && rawPerValue > 1 ? `${rawPerValue} ` : ''}${rawPerUnit}` : ''
+    finalConcentrationText = `${rawValue} ${rawValueUnit}${perPart}`
+  }
+
+  return {
+    id: safeString(input.id) || undefined,
+    slug,
+    pharmaceutical_form: pharmaceuticalForm,
+    concentration_text: finalConcentrationText,
+    additional_component: additionalComponent,
+    presentation_unit: presentationUnit,
+    commercial_name: commercialName,
+    value: rawValue,
+    value_unit: rawValueUnit,
+    per_value: rawPerValue,
+    per_unit: rawPerUnit,
+    package_quantity: packageQuantity,
+    package_unit: packageUnit,
+    avg_price_brl: avgPrice,
+    ...pharmacyFlags,
     metadata: {
-      ...getPresentationMetadata({ metadata: isObject(input.metadata) ? input.metadata : {} }),
-      dose_engine: getDoseEngineMetadata({ metadata: isObject(input.metadata) ? input.metadata : {} }),
+      ...getPresentationMetadata({ metadata: rawMetadata }),
+      dose_engine: getDoseEngineMetadata({ metadata: rawMetadata }),
+      manufacturer: manufacturer || undefined,
+      summary: summary || undefined,
     },
   }
 }
 
 function normalizeRecommendedDose(raw: unknown, medicationSlug: string, fallbackIndex: number): CanonicalRecommendedDose | null {
   const input = isObject(raw) ? raw : {}
-  const species = safeString(input.species)
-  const route = safeString(input.route)
-  const doseValue = toNumberOrNull(input.dose_value)
-  const doseUnit = safeString(input.dose_unit)
+  const species = safeString(resolveAlias(input, 'species'))
+  const route = safeString(resolveAlias(input, 'route'))
+  // Dose: support dose_value, doseMin/dose_min (as min), doseMax/dose_max
+  const doseValue = toNumberOrNull(resolveAlias(input, 'dose_value', 'doseValue', 'dose_min', 'doseMin'))
+  const doseMax = toNumberOrNull(resolveAlias(input, 'dose_max', 'doseMax'))
+  const doseUnit = safeString(resolveAlias(input, 'dose_unit', 'doseUnit'))
+  const perWeightUnit = safeString(resolveAlias(input, 'per_weight_unit', 'perWeightUnit')) || null
   if (!species || !route || doseValue === null || !doseUnit) return null
   const slugBase = safeString(input.slug) || `${medicationSlug}-${species}-${route}-${fallbackIndex + 1}`
+  // Frequency: support ranges and structured modes
+  const frequencyMin = toNumberOrNull(resolveAlias(input, 'frequency_min', 'frequencyMin'))
+  const frequencyMax = toNumberOrNull(resolveAlias(input, 'frequency_max', 'frequencyMax'))
+  const frequencyMode = safeString(resolveAlias(input, 'frequency_mode', 'frequencyMode')) || null
+  const frequencyText = safeString(resolveAlias(input, 'frequency_text', 'frequencyText')) || null
+  const frequency = safeString(resolveAlias(input, 'frequency')) || frequencyText || null
+  // Clinical fields
+  const indication = safeString(resolveAlias(input, 'indication')) || null
+  const duration = safeString(resolveAlias(input, 'duration')) || null
+  const calculatorDefaultDose = toNumberOrNull(resolveAlias(input, 'calculator_default_dose', 'calculatorDefaultDose'))
+  const calculatorDefaultFrequency = toNumberOrNull(resolveAlias(input, 'calculator_default_frequency', 'calculatorDefaultFrequency'))
+  const notes = safeString(resolveAlias(input, 'notes')) || null
   return {
     id: safeString(input.id) || undefined,
     slug: normalizeRecommendedDoseSlug(slugBase),
     species,
     route,
     dose_value: doseValue,
+    dose_max: doseMax,
     dose_unit: doseUnit,
-    frequency: safeString(input.frequency) || null,
-    notes: safeString(input.notes) || null,
+    per_weight_unit: perWeightUnit,
+    indication,
+    frequency,
+    frequency_min: frequencyMin,
+    frequency_max: frequencyMax,
+    frequency_mode: frequencyMode,
+    frequency_text: frequencyText,
+    duration,
+    calculator_default_dose: calculatorDefaultDose,
+    calculator_default_frequency: calculatorDefaultFrequency,
+    notes,
     metadata: isObject(input.metadata) ? input.metadata : {},
   }
 }

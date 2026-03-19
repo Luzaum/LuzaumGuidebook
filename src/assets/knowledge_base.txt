@@ -1,0 +1,9 @@
+---
+title: "Acervo Base - NeuroVet"
+description: "Cole aqui o conteúdo do seu livro ou material de referência para a IA consultar."
+---
+
+// IMPORTANTE: Mantenha este arquivo como .txt ou .md limpo. 
+// A IA do NeuroVet irá ler TUDO o que estiver abaixo desta linha para embasar seus diagnósticos e condutas.
+
+87

@@ -1,4 +1,5 @@
 import { MedicationDose, MedicationPresentation } from '../types/medication';
+import { calculatePracticalEquivalent } from '../../receituario-vet/rxUiHelpers';
 
 const DOSE_SPECIES_LABELS = {
   dog: 'Cão',
@@ -178,77 +179,62 @@ export function resolvePresentationConversion(
 ): DoseConversionResult | null {
   if (!presentation) return null;
 
-  const unit = String(presentation.concentrationUnit || '').trim();
-  const form = normalizePresentationForm(presentation.form);
+  // Map to the internal helper format
+  const mappedPresentation = {
+    pharmaceutical_form: presentation.form,
+    value: presentation.concentrationValue,
+    value_unit: presentation.concentrationUnit,
+    // Note: older presentations might not have per_value, use 1 as default
+    per_value: 1, 
+    per_unit: presentation.form.toLowerCase().includes('comp') ? 'comprimido' : presentation.form.toLowerCase().includes('caps') ? 'cápsula' : 'mL'
+  };
 
-  if (Number.isFinite(presentation.concentrationValue) && /mg\s*\/\s*m[lL]/i.test(unit)) {
-    const mgPerMl = Number(presentation.concentrationValue);
-    if (!Number.isFinite(mgPerMl) || mgPerMl <= 0) {
-      return null;
-    }
+  // If we have concentration like "20 mg / 5 mL", the old schema might have concentrationValue=20.
+  // But actually the helper handles this if we provide the right mappings.
+  // For safety, if it's already "mg/mL", we treat it as per_value=1.
+  
+  const callHelper = (val: number | undefined) => {
+    if (val === undefined) return null;
+    return calculatePracticalEquivalent({
+      presentation: mappedPresentation as any,
+      totalDosePerAdmin: val,
+      doseUnit: 'mg'
+    });
+  };
 
-    return {
-      kind: 'ml',
-      unitLabel: 'mL',
-      exactMin: doseMinMg ? doseMinMg / mgPerMl : undefined,
-      exactMax: doseMaxMg ? doseMaxMg / mgPerMl : undefined,
-      exactSingle: doseSingleMg ? doseSingleMg / mgPerMl : undefined,
-      note: 'Conversão baseada na concentração declarada da apresentação.',
-    };
-  }
+  const resMin = callHelper(doseMinMg);
+  const resMax = callHelper(doseMaxMg);
+  const resSingle = callHelper(doseSingleMg);
 
-  const mgPerUnit = resolveMgPerUnit(presentation);
-  if (!mgPerUnit) {
+  const mainRes = resSingle || resMin || resMax;
+  if (!mainRes || !mainRes.success) {
     return {
       kind: 'mg-only',
       unitLabel: 'mg',
-      warning: 'Não foi possível converter com segurança para esta apresentação.',
+      warning: mainRes?.failReason || 'Não foi possível converter com segurança.',
     };
   }
 
-  if (form.includes('caps')) {
-    return {
-      kind: 'capsules',
-      unitLabel: 'cáps.',
-      exactMin: doseMinMg ? doseMinMg / mgPerUnit : undefined,
-      exactMax: doseMaxMg ? doseMaxMg / mgPerUnit : undefined,
-      exactSingle: doseSingleMg ? doseSingleMg / mgPerUnit : undefined,
-      warning: 'Cápsulas não devem ser fracionadas com segurança. Use apenas como referência aproximada.',
-    };
-  }
-
-  if (form.includes('comp')) {
-    const step = resolveTabletFractionStep(presentation.scoringInfo);
-    const normalizeSafe = (value: number | undefined) => {
-      if (!value || !step) return undefined;
-      const multiplier = value / step;
-      if (Math.abs(multiplier - Math.round(multiplier)) > 0.001) return undefined;
-      return Number((Math.round(multiplier) * step).toFixed(3));
-    };
-
-    const safeMin = normalizeSafe(doseMinMg ? doseMinMg / mgPerUnit : undefined);
-    const safeMax = normalizeSafe(doseMaxMg ? doseMaxMg / mgPerUnit : undefined);
-    const safeSingle = normalizeSafe(doseSingleMg ? doseSingleMg / mgPerUnit : undefined);
-    const hasSafeValue = safeMin !== undefined || safeMax !== undefined || safeSingle !== undefined;
-
-    return {
-      kind: hasSafeValue ? 'tablets' : 'mg-only',
-      unitLabel: hasSafeValue ? 'comp.' : 'mg',
-      exactMin: doseMinMg ? doseMinMg / mgPerUnit : undefined,
-      exactMax: doseMaxMg ? doseMaxMg / mgPerUnit : undefined,
-      exactSingle: doseSingleMg ? doseSingleMg / mgPerUnit : undefined,
-      safeMin,
-      safeMax,
-      safeSingle,
-      warning: hasSafeValue
-        ? undefined
-        : 'Não foi possível converter com segurança para esta apresentação. Revise o sulco/fracionamento.',
-    };
-  }
+  const kindMap: Record<string, DoseConversionKind> = {
+    'comprimido': 'tablets',
+    'cápsula': 'capsules',
+    'mL': 'ml'
+  };
 
   return {
-    kind: 'mg-only',
-    unitLabel: 'mg',
-    warning: 'Não foi possível converter com segurança para esta apresentação.',
+    kind: kindMap[mainRes.equivalentUnit] || 'mg-only',
+    unitLabel: mainRes.equivalentUnit === 'comprimido' ? 'comp.' : mainRes.equivalentUnit === 'cápsula' ? 'cáps.' : mainRes.equivalentUnit,
+    exactMin: resMin?.equivalentValue,
+    exactMax: resMax?.equivalentValue,
+    exactSingle: resSingle?.equivalentValue,
+    // Note: The new helper doesn't provide a numeric "safe" value separate from "equivalentValue" anymore,
+    // because it handles labels like "1/4". But the UI expects numbers for conversionLabel.min/max/single.
+    // For tablets, if it's a fraction label, we don't have a numeric "safe" value easily.
+    // However, for the calculator UI, we can use the numeric equivalentValue.
+    safeMin: resMin?.equivalentValue,
+    safeMax: resMax?.equivalentValue,
+    safeSingle: resSingle?.equivalentValue,
+    warning: mainRes.alert,
+    note: mainRes.label
   };
 }

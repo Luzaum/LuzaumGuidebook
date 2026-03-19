@@ -78,9 +78,19 @@ interface RecommendedDoseUI {
     client_id: string // UUID estável para React keys
     species: string
     route: string
-    dose_value: number | null
+    dose_value: number | null // dose mínima (ou fixa)
+    dose_max: number | null // dose máxima (null = valor fixo)
     dose_unit: string
+    per_weight_unit: string | null // 'kg' ou null
+    indication: string | null // indicação clínica
     frequency: string | null
+    frequency_min: number | null
+    frequency_max: number | null
+    frequency_mode: string | null
+    frequency_text: string | null
+    duration: string | null
+    calculator_default_dose: number | null
+    calculator_default_frequency: number | null
     notes: string | null
     metadata?: Record<string, unknown> | null
 }
@@ -173,8 +183,18 @@ function createEmptyRecommendedDose(): RecommendedDoseUI {
         species: 'cão',
         route: 'VO',
         dose_value: null,
+        dose_max: null,
         dose_unit: 'mg/kg',
+        per_weight_unit: 'kg',
+        indication: null,
         frequency: null,
+        frequency_min: null,
+        frequency_max: null,
+        frequency_mode: 'times_per_day',
+        frequency_text: null,
+        duration: null,
+        calculator_default_dose: null,
+        calculator_default_frequency: null,
         notes: null
     }
 }
@@ -212,28 +232,57 @@ function composeImportedDoseNotes(dose: any): string | null {
 
 function mapImportedPresentationToDraft(presentation: any): Presentation {
     const metadata = isRecord(presentation?.metadata) ? presentation.metadata : {}
+    // Resolve camelCase aliases from JSON
+    const pharmaForm = presentation?.pharmaceutical_form || presentation?.pharmaceuticalForm || ''
+    const concText = presentation?.concentration_text || presentation?.concentrationText || null
+    const addComp = presentation?.additional_component || presentation?.additionalComponent || null
+    const presUnit = presentation?.presentation_unit || presentation?.presentationUnit || null
+    const commName = presentation?.commercial_name || presentation?.commercialName || ''
+    const rawValue = normalizeNumber(presentation?.value ?? presentation?.concentration_value ?? presentation?.concentrationValue, true)
+    const rawValueUnit = (presentation?.value_unit || presentation?.concentration_unit || presentation?.concentrationUnit || '').toString().trim()
+    const rawPerValue = normalizeNumber(presentation?.per_value ?? presentation?.quantity_per_unit ?? presentation?.quantityPerUnit, false) || 1
+    const rawPerUnit = (presentation?.per_unit || presentation?.perUnit || '').toString().trim()
+    const pkgQty = (presentation?.package_quantity || presentation?.packageQuantity || '').toString().trim()
+    const pkgUnit = (presentation?.package_unit || presentation?.packageUnit || '').toString().trim()
+    const manufacturer = (presentation?.manufacturer || metadata.manufacturer || '').toString().trim()
+    const summary = (presentation?.summary || '').toString().trim()
+    // Pharmacy type resolution
+    const pharmacyType = (presentation?.pharmacy_type || presentation?.pharmacyType || '').toString().toLowerCase()
+    let pharmVet = presentation?.pharmacy_veterinary !== false
+    let pharmHuman = !!presentation?.pharmacy_human
+    let pharmComp = !!presentation?.pharmacy_compounding
+    if (pharmacyType) {
+        pharmVet = pharmacyType === 'veterinary' || pharmacyType === 'vet'
+        pharmHuman = pharmacyType === 'human' || pharmacyType === 'humana'
+        pharmComp = pharmacyType === 'compounding' || pharmacyType === 'manipulacao'
+    }
+    // Auto-build concentration_text
+    let finalConcText = typeof concText === 'string' ? concText : null
+    if (!finalConcText && rawValue !== null && rawValue > 0 && rawValueUnit) {
+        const perPart = rawPerUnit ? `/${rawPerValue > 1 ? `${rawPerValue} ` : ''}${rawPerUnit}` : ''
+        finalConcText = `${rawValue} ${rawValueUnit}${perPart}`
+    }
     return {
         _tempId: crypto.randomUUID(),
-        pharmaceutical_form: typeof presentation?.pharmaceutical_form === 'string' && presentation.pharmaceutical_form.trim()
-            ? presentation.pharmaceutical_form.trim()
-            : 'Comprimido',
-        concentration_text: typeof presentation?.concentration_text === 'string' ? presentation.concentration_text : null,
-        additional_component: typeof presentation?.additional_component === 'string' ? presentation.additional_component : null,
-        presentation_unit: typeof presentation?.presentation_unit === 'string' ? presentation.presentation_unit : null,
-        commercial_name: typeof presentation?.commercial_name === 'string' ? presentation.commercial_name : '',
-        value: normalizeNumber(presentation?.value, true),
-        value_unit: typeof presentation?.value_unit === 'string' && presentation.value_unit.trim() ? presentation.value_unit : 'mg',
-        per_value: normalizeNumber(presentation?.per_value, false) || 1,
-        per_unit: typeof presentation?.per_unit === 'string' && presentation.per_unit.trim() ? presentation.per_unit : 'comprimido',
-        avg_price_brl: normalizeNumber(presentation?.avg_price_brl, true),
-        pharmacy_veterinary: presentation?.pharmacy_veterinary !== false,
-        pharmacy_human: !!presentation?.pharmacy_human,
-        pharmacy_compounding: !!presentation?.pharmacy_compounding,
+        pharmaceutical_form: typeof pharmaForm === 'string' && pharmaForm.trim() ? pharmaForm.trim() : 'Comprimido',
+        concentration_text: finalConcText,
+        additional_component: typeof addComp === 'string' ? addComp : null,
+        presentation_unit: typeof presUnit === 'string' ? presUnit : null,
+        commercial_name: typeof commName === 'string' ? commName : '',
+        value: rawValue,
+        value_unit: rawValueUnit || 'mg',
+        per_value: rawPerValue,
+        per_unit: rawPerUnit || 'comprimido',
+        avg_price_brl: normalizeNumber(presentation?.avg_price_brl ?? presentation?.avgPriceBrl, true),
+        pharmacy_veterinary: pharmVet,
+        pharmacy_human: pharmHuman,
+        pharmacy_compounding: pharmComp,
         metadata: {
             ...metadata,
-            manufacturer: typeof metadata.manufacturer === 'string' ? metadata.manufacturer : '',
+            manufacturer: manufacturer,
             administration_routes: Array.isArray(metadata.administration_routes) ? metadata.administration_routes.filter(Boolean) : [],
-            obs: typeof metadata.obs === 'string' ? metadata.obs : ''
+            obs: typeof metadata.obs === 'string' ? metadata.obs : '',
+            summary: summary || undefined
         }
     }
 }
@@ -255,8 +304,18 @@ function mapImportedMedicationToDraft(medication: CanonicalMedication): Medicati
             species: typeof dose.species === 'string' && dose.species.trim() ? dose.species : 'cão',
             route: typeof dose.route === 'string' && dose.route.trim() ? dose.route : 'VO',
             dose_value: normalizeNumber(dose.dose_value, true),
+            dose_max: normalizeNumber((dose as any).dose_max, true),
             dose_unit: typeof dose.dose_unit === 'string' && dose.dose_unit.trim() ? dose.dose_unit : 'mg/kg',
+            per_weight_unit: typeof (dose as any).per_weight_unit === 'string' ? (dose as any).per_weight_unit : null,
+            indication: typeof (dose as any).indication === 'string' ? (dose as any).indication : null,
             frequency: typeof dose.frequency === 'string' ? dose.frequency : null,
+            frequency_min: normalizeNumber((dose as any).frequency_min, true),
+            frequency_max: normalizeNumber((dose as any).frequency_max, true),
+            frequency_mode: typeof (dose as any).frequency_mode === 'string' ? (dose as any).frequency_mode : null,
+            frequency_text: typeof (dose as any).frequency_text === 'string' ? (dose as any).frequency_text : null,
+            duration: typeof (dose as any).duration === 'string' ? (dose as any).duration : null,
+            calculator_default_dose: normalizeNumber((dose as any).calculator_default_dose, true),
+            calculator_default_frequency: normalizeNumber((dose as any).calculator_default_frequency, true),
             notes: composeImportedDoseNotes(dose),
             metadata: isRecord(dose.metadata) ? dose.metadata : {}
         }))
@@ -420,14 +479,24 @@ export default function Catalogo3Page() {
                             }
                         }
                     }),
-                    recommended_doses: doses.map(d => ({ // ✨ Mapear doses
+                    recommended_doses: doses.map(d => ({
                         id: d.id,
                         client_id: d.id || crypto.randomUUID(),
                         species: d.species,
                         route: d.route,
                         dose_value: d.dose_value,
+                        dose_max: (d as any).dose_max ?? null,
                         dose_unit: d.dose_unit,
+                        per_weight_unit: (d as any).per_weight_unit ?? null,
+                        indication: (d as any).indication ?? null,
                         frequency: d.frequency,
+                        frequency_min: (d as any).frequency_min ?? null,
+                        frequency_max: (d as any).frequency_max ?? null,
+                        frequency_mode: (d as any).frequency_mode ?? null,
+                        frequency_text: (d as any).frequency_text ?? null,
+                        duration: (d as any).duration ?? null,
+                        calculator_default_dose: (d as any).calculator_default_dose ?? null,
+                        calculator_default_frequency: (d as any).calculator_default_frequency ?? null,
                         notes: d.notes,
                         metadata: (d as any).metadata || {}
                     }))
@@ -747,8 +816,18 @@ export default function Catalogo3Page() {
                     species: d.species,
                     route: d.route,
                     dose_value: normalizeNumber(d.dose_value, false) || 0,
+                    dose_max: normalizeNumber(d.dose_max, true),
                     dose_unit: d.dose_unit,
+                    per_weight_unit: d.per_weight_unit || null,
+                    indication: d.indication || null,
                     frequency: d.frequency,
+                    frequency_min: normalizeNumber(d.frequency_min, true),
+                    frequency_max: normalizeNumber(d.frequency_max, true),
+                    frequency_mode: d.frequency_mode || null,
+                    frequency_text: d.frequency_text || null,
+                    duration: d.duration || null,
+                    calculator_default_dose: normalizeNumber(d.calculator_default_dose, true),
+                    calculator_default_frequency: normalizeNumber(d.calculator_default_frequency, true),
                     notes: d.notes,
                     metadata: d.metadata || {}
                 }))
@@ -1067,15 +1146,24 @@ export default function Catalogo3Page() {
                                             </button>
 
                                             <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-                                                <RxvField label="Espécie" className="md:col-span-2">
+                                                {/* Row 1: Indicação clínica */}
+                                                <RxvField label="Indicação Clínica" className="md:col-span-12">
+                                                    <RxvInput
+                                                        value={dose.indication ?? ''}
+                                                        onChange={(e) => updateRecommendedDose(dose.client_id, { indication: e.target.value || null })}
+                                                        placeholder="Ex: Analgesia crônica, Controle de epilepsia..."
+                                                    />
+                                                </RxvField>
+
+                                                {/* Row 2: Espécie + Via */}
+                                                <RxvField label="Espécie" className="md:col-span-3">
                                                     <RxvSelect
                                                         options={SPECIES_OPTIONS}
                                                         value={dose.species}
                                                         onChange={(e) => updateRecommendedDose(dose.client_id, { species: e.target.value })}
                                                     />
                                                 </RxvField>
-
-                                                <RxvField label="Via" className="md:col-span-2">
+                                                <RxvField label="Via" className="md:col-span-3">
                                                     <RxvSelect
                                                         options={ROUTES_OPTIONS}
                                                         value={dose.route}
@@ -1083,7 +1171,8 @@ export default function Catalogo3Page() {
                                                     />
                                                 </RxvField>
 
-                                                <RxvField label="Dose" className="md:col-span-2">
+                                                {/* Row 3: Dose range */}
+                                                <RxvField label="Dose mín" className="md:col-span-2">
                                                     <RxvInput
                                                         type="number"
                                                         value={dose.dose_value ?? ''}
@@ -1091,30 +1180,131 @@ export default function Catalogo3Page() {
                                                         placeholder="10"
                                                     />
                                                 </RxvField>
-
-                                                <RxvField label="Unidade" className="md:col-span-2">
-                                                    <RxvSelect
-                                                        options={DOSE_UNITS}
-                                                        value={dose.dose_unit}
-                                                        onChange={(e) => updateRecommendedDose(dose.client_id, { dose_unit: e.target.value })}
-                                                    />
-                                                </RxvField>
-
-                                                <RxvField label="Frequência" className="md:col-span-4">
-                                                    <RxvSelect
-                                                        options={FREQUENCY_OPTIONS}
-                                                        value={dose.frequency ?? ''}
-                                                        onChange={(e) => updateRecommendedDose(dose.client_id, { frequency: e.target.value })}
-                                                    />
-                                                </RxvField>
-
-                                                <RxvField label="Observações de Uso" className="md:col-span-12">
+                                                <div className="flex items-end justify-center pb-3 md:col-span-1">
+                                                    <span className="text-slate-600 font-black text-base select-none">—</span>
+                                                </div>
+                                                <RxvField label="Dose máx" className="md:col-span-2">
                                                     <RxvInput
-                                                        value={dose.notes ?? ''}
-                                                        onChange={(e) => updateRecommendedDose(dose.client_id, { notes: e.target.value })}
-                                                        placeholder="Ex: Ajustar dose conforme peso/idade..."
+                                                        type="number"
+                                                        value={dose.dose_max ?? ''}
+                                                        onChange={(e) => updateRecommendedDose(dose.client_id, { dose_max: e.target.value === '' ? null : Number(e.target.value) })}
+                                                        placeholder="(opcional)"
                                                     />
                                                 </RxvField>
+                                                <RxvField label="Unidade" className="md:col-span-3">
+                                                    <RxvSelect
+                                                        options={[
+                                                            ...DOSE_UNITS.map(u => typeof u === 'string' ? u : u.value).flatMap(u => [
+                                                                u,
+                                                                `${u}/kg`,
+                                                            ])
+                                                        ]}
+                                                        value={dose.per_weight_unit ? `${dose.dose_unit}/${dose.per_weight_unit}` : dose.dose_unit}
+                                                        onChange={(e) => {
+                                                            const val = e.target.value as string
+                                                            if (val.includes('/')) {
+                                                                const [unit, weight] = val.split('/')
+                                                                updateRecommendedDose(dose.client_id, { dose_unit: unit, per_weight_unit: weight })
+                                                            } else {
+                                                                updateRecommendedDose(dose.client_id, { dose_unit: val, per_weight_unit: null })
+                                                            }
+                                                        }}
+                                                    />
+                                                </RxvField>
+
+
+                                                {/* Row 4: Frequência range + duração */}
+                                                <RxvField label="Freq mín" className="md:col-span-2">
+                                                    <RxvInput
+                                                        type="number"
+                                                        value={dose.frequency_min ?? ''}
+                                                        onChange={(e) => {
+                                                            const val = e.target.value === '' ? null : Number(e.target.value)
+                                                            const freqText = val !== null
+                                                                ? (dose.frequency_max ? `${val} a ${dose.frequency_max}x ao dia` : `${val}x ao dia`)
+                                                                : null
+                                                            updateRecommendedDose(dose.client_id, {
+                                                                frequency_min: val,
+                                                                frequency: freqText,
+                                                                frequency_text: freqText
+                                                            })
+                                                        }}
+                                                        placeholder="2"
+                                                    />
+                                                </RxvField>
+                                                <div className="flex items-end justify-center pb-3 md:col-span-1">
+                                                    <span className="text-slate-600 font-black text-base select-none">—</span>
+                                                </div>
+                                                <RxvField label="Freq máx" className="md:col-span-2">
+                                                    <RxvInput
+                                                        type="number"
+                                                        value={dose.frequency_max ?? ''}
+                                                        onChange={(e) => {
+                                                            const val = e.target.value === '' ? null : Number(e.target.value)
+                                                            const freqText = dose.frequency_min !== null
+                                                                ? (val ? `${dose.frequency_min} a ${val}x ao dia` : `${dose.frequency_min}x ao dia`)
+                                                                : null
+                                                            updateRecommendedDose(dose.client_id, {
+                                                                frequency_max: val,
+                                                                frequency: freqText,
+                                                                frequency_text: freqText
+                                                            })
+                                                        }}
+                                                        placeholder="(opc.)"
+                                                    />
+                                                </RxvField>
+                                                <RxvField label="Modo" className="md:col-span-2">
+                                                    <RxvSelect
+                                                        options={[
+                                                            { value: 'times_per_day', label: 'x ao dia' },
+                                                            { value: 'every_x_hours', label: 'a cada Xh' },
+                                                            { value: 'custom', label: 'personalizado' },
+                                                        ]}
+                                                        value={dose.frequency_mode || 'times_per_day'}
+                                                        onChange={(e) => updateRecommendedDose(dose.client_id, { frequency_mode: e.target.value })}
+                                                    />
+                                                </RxvField>
+                                                <RxvField label="Duração" className="md:col-span-5">
+                                                    <RxvInput
+                                                        value={dose.duration ?? ''}
+                                                        onChange={(e) => updateRecommendedDose(dose.client_id, { duration: e.target.value || null })}
+                                                        placeholder="7 dias, conforme resposta..."
+                                                    />
+                                                </RxvField>
+
+                                                {/* Row 5: Observações (multiline textarea) */}
+                                                <RxvField label="Observações de Uso" className="md:col-span-12">
+                                                    <RxvTextarea
+                                                        value={dose.notes ?? ''}
+                                                        onChange={(e) => updateRecommendedDose(dose.client_id, { notes: e.target.value || null })}
+                                                        placeholder="Ex: Iniciar na extremidade inferior da faixa em pacientes sensíveis. Monitorar função hepática após 14 dias..."
+                                                        style={{ minHeight: '80px' }}
+                                                    />
+                                                </RxvField>
+                                            </div>
+
+                                            {/* Summary badges */}
+                                            <div className="mt-3 flex flex-wrap items-center gap-2 text-[10px]">
+                                                <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 font-bold border border-emerald-500/20">
+                                                    {dose.species}
+                                                </span>
+                                                <span className="px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 font-bold border border-blue-500/20">
+                                                    {dose.route}
+                                                </span>
+                                                <span className="px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 font-bold border border-amber-500/20">
+                                                    {dose.dose_value ?? '–'}{dose.dose_max ? `–${dose.dose_max}` : ''} {dose.dose_unit}
+                                                    {dose.per_weight_unit ? `/${dose.per_weight_unit}` : ''}
+                                                </span>
+                                                {(dose.frequency_min || dose.frequency) && (
+                                                    <span className="px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-400 font-bold border border-purple-500/20">
+                                                        {dose.frequency_min ? (
+                                                            dose.frequency_max ? `${dose.frequency_min}–${dose.frequency_max}x/dia` : `${dose.frequency_min}x/dia`
+                                                        ) : dose.frequency}
+                                                    </span>
+                                                )}
+                                                {dose.indication && (
+                                                    <span className="text-slate-500 italic">{dose.indication}</span>
+                                                )}
                                             </div>
                                         </div>
                                     ))}
