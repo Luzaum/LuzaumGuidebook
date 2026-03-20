@@ -732,27 +732,6 @@ export function splitPrescriptionByControl(state: PrescriptionState): {
   const controlledItems = state.items.filter((item) => isControlledItem(item))
   const standardItems = state.items.filter((item) => !isControlledItem(item))
 
-
-export function splitPrescriptionByControl(state: PrescriptionState): {
-  standard: PrescriptionState | null
-  specialControl: PrescriptionState | null
-} {
-  const catalogControlledById = new Map<string, boolean>()
-  try {
-    const db = loadRxDb()
-    db.catalog.forEach((drug) => {
-      catalogControlledById.set(drug.id, !!drug.controlled)
-    })
-  } catch {
-    // No-op: fallback to item flag only.
-  }
-
-  const isControlledItem = (item: PrescriptionItem) =>
-    !!item.controlled || (!!item.catalogDrugId && catalogControlledById.get(item.catalogDrugId) === true)
-
-  const controlledItems = state.items.filter((item) => isControlledItem(item))
-  const standardItems = state.items.filter((item) => !isControlledItem(item))
-
   if (!controlledItems.length) {
     return { standard: state, specialControl: null }
   }
