@@ -16,6 +16,7 @@ import { createDefaultItem, createDefaultPrescriptionState } from './rxDefaults'
 import { renderRxToPrintDoc } from './rxRenderer'
 import { RxPrintView } from './RxPrintView'
 import { goBackSafely } from '../../src/lib/navigation'
+import { BUILTIN_TEMPLATES, DEFAULT_NOVA_RECEITA_TEMPLATE_ID } from './builtinTemplates'
 
 const ZONE_LABELS: Array<{ key: TemplateZoneKey; label: string }> = [
   { key: 'header', label: 'Cabeçalho' },
@@ -37,6 +38,14 @@ function cloneWithDefaults(template?: RxTemplateStyle): RxTemplateStyle {
   }
 }
 
+function buildTemplatesSource(dbTemplates: RxTemplateStyle[]): RxTemplateStyle[] {
+  const builtins = BUILTIN_TEMPLATES.map((template) => cloneWithDefaults(template))
+  const extras = dbTemplates
+    .filter((template) => !builtins.some((builtin) => builtin.id === template.id))
+    .map((template) => cloneWithDefaults(template))
+  return [...builtins, ...extras]
+}
+
 function resolveRequestedTemplateId(search: string, templates: RxTemplateStyle[]): string | undefined {
   const params = new URLSearchParams(search)
   const byId = params.get('template')
@@ -53,19 +62,25 @@ function formatTemplateName(name: string): string {
   return `${normalized.slice(0, 25)}…`
 }
 
+function isBuiltinTemplate(templateId: string): boolean {
+  return BUILTIN_TEMPLATES.some((template) => template.id === templateId)
+}
+
 export default function TemplatesPage() {
   const location = useLocation()
   const navigate = useNavigate()
   const previousRoute = ((location.state as { from?: string } | null)?.from || '').trim()
   const initialDb = useMemo(() => loadRxDb(), [])
+  const initialTemplates = useMemo(() => buildTemplatesSource(initialDb.templates), [initialDb])
   const initialRequestedTemplateId = useMemo(
-    () => resolveRequestedTemplateId(location.search, initialDb.templates),
-    [initialDb.templates, location.search]
+    () => resolveRequestedTemplateId(location.search, initialTemplates),
+    [initialTemplates, location.search]
   )
-  const initialSelectedId = initialRequestedTemplateId || initialDb.activeTemplateId || initialDb.templates[0]?.id
+  const initialSelectedId = initialRequestedTemplateId || initialDb.activeTemplateId || DEFAULT_NOVA_RECEITA_TEMPLATE_ID || initialTemplates[0]?.id
   const [db, setDb] = useState(initialDb)
+  const templates = useMemo(() => buildTemplatesSource(db.templates), [db.templates])
   const [selectedId, setSelectedId] = useState(initialSelectedId)
-  const [draft, setDraft] = useState<RxTemplateStyle>(() => cloneWithDefaults(initialDb.templates.find((entry) => entry.id === selectedId) || createDefaultTemplateStyle()))
+  const [draft, setDraft] = useState<RxTemplateStyle>(() => cloneWithDefaults(initialTemplates.find((entry) => entry.id === initialSelectedId) || BUILTIN_TEMPLATES.find((entry) => entry.id === DEFAULT_NOVA_RECEITA_TEMPLATE_ID) || createDefaultTemplateStyle()))
   const [jsonDraft, setJsonDraft] = useState(JSON.stringify(draft, null, 2))
   const [activeZone, setActiveZone] = useState<TemplateZoneKey>('body')
   const [error, setError] = useState('')
@@ -125,25 +140,26 @@ export default function TemplatesPage() {
   }, [draft.documentKindTarget, draft.id])
   const activeZoneStyle = draft.zoneStyles?.[activeZone] || {}
   const previewZoom = draft.documentKindTarget === 'special-control' ? 0.62 : 0.78
+  const draftIsBuiltin = isBuiltinTemplate(draft.id)
 
   const selectTemplate = useCallback((templateId: string) => {
-    const next = db.templates.find((entry) => entry.id === templateId)
+    const next = templates.find((entry) => entry.id === templateId)
     if (!next) return
     setSelectedId(templateId)
     const cloned = cloneWithDefaults(next)
     setDraft(cloned)
     setJsonDraft(JSON.stringify(cloned, null, 2))
     setError('')
-  }, [db.templates])
+  }, [templates])
 
   useEffect(() => {
-    const requestedTemplateId = resolveRequestedTemplateId(location.search, db.templates)
+    const requestedTemplateId = resolveRequestedTemplateId(location.search, templates)
     if (!requestedTemplateId) return
     if (requestedTemplateId !== selectedId) {
       selectTemplate(requestedTemplateId)
     }
     navigate({ pathname: location.pathname, search: '' }, { replace: true })
-  }, [db.templates, location.pathname, location.search, navigate, selectTemplate, selectedId])
+  }, [templates, location.pathname, location.search, navigate, selectTemplate, selectedId])
 
   const pushToast = (message: string) => {
     setToast(message)
@@ -200,6 +216,10 @@ export default function TemplatesPage() {
   }
 
   const deleteTemplate = () => {
+    if (draftIsBuiltin) {
+      pushToast('Templates nativos do app n?o podem ser removidos.')
+      return
+    }
     const nextDb = removeTemplate(loadRxDb(), draft.id)
     saveRxDb(nextDb)
     setDb(nextDb)
@@ -275,7 +295,7 @@ export default function TemplatesPage() {
         <aside className="rxv-card p-4 xl:col-span-3">
           <h3 className="mb-3 text-sm font-bold uppercase tracking-wide text-[color:var(--rxv-muted)]">Templates</h3>
           <div className="space-y-2">
-            {db.templates.map((template) => (
+            {templates.map((template) => (
               <button
                 type="button"
                 key={template.id}
@@ -287,8 +307,8 @@ export default function TemplatesPage() {
               </button>
             ))}
           </div>
-          <button type="button" className="mt-4 w-full rounded-lg border border-red-700/60 px-3 py-2 text-sm text-red-300 hover:bg-red-900/20" onClick={deleteTemplate}>
-            Remover template atual
+          <button type="button" className="mt-4 w-full rounded-lg border border-red-700/60 px-3 py-2 text-sm text-red-300 hover:bg-red-900/20 disabled:cursor-not-allowed disabled:opacity-50" onClick={deleteTemplate} disabled={draftIsBuiltin}>
+            {draftIsBuiltin ? 'Template nativo do app' : 'Remover template atual'}
           </button>
         </aside>
 

@@ -129,21 +129,26 @@ export const RxvTextarea = ({ ...props }: React.TextareaHTMLAttributes<HTMLTextA
 /**
  * RxvToggle - Switch booleano simplificado
  */
-export const RxvToggle = ({ checked, onChange, label }: { checked: boolean, onChange: (val: boolean) => void, label?: string }) => (
-    <div className="flex items-center gap-3">
-        {label && <span className={`text-[10px] font-black uppercase tracking-wider ${checked ? 'text-[#39ff14]' : 'text-slate-500'}`}>{label}</span>}
-        <button
-            type="button"
-            onClick={() => onChange(!checked)}
-            className={`relative h-6 w-11 rounded-full border transition-all ${checked ? 'bg-[#39ff14]/20 border-[#39ff14]/40' : 'bg-slate-900 border-slate-700'}`}
-        >
-            <motion.div
-                animate={{ x: checked ? 20 : 2 }}
-                className={`absolute top-1 h-3 w-3 rounded-full transition-colors ${checked ? 'bg-[#39ff14]' : 'bg-slate-600'}`}
-            />
-        </button>
-    </div>
-)
+export const RxvToggle = ({ checked, onChange, label }: { checked: boolean, onChange: (val: boolean) => void, label?: string }) => {
+    const isDark = getIsDark();
+    return (
+        <div className="flex items-center gap-3">
+            {label && <span className={`text-[10px] font-black uppercase tracking-wider ${checked ? 'text-[#39ff14]' : (isDark ? 'text-slate-500' : 'text-slate-600')}`}>{label}</span>}
+            <button
+                type="button"
+                onClick={() => onChange(!checked)}
+                className={`relative h-6 w-11 rounded-full border transition-all ${checked
+                    ? 'bg-[#39ff14]/20 border-[#39ff14]/40'
+                    : (isDark ? 'bg-slate-900 border-slate-700' : 'bg-slate-100 border-slate-300')}`}
+            >
+                <motion.div
+                    animate={{ x: checked ? 20 : 2 }}
+                    className={`absolute top-1 h-3 w-3 rounded-full transition-colors ${checked ? 'bg-[#39ff14]' : (isDark ? 'bg-slate-600' : 'bg-slate-400')}`}
+                />
+            </button>
+        </div>
+    )
+}
 
 /**
  * RxvChipsMultiSelect - Seleção múltipla estilo chips/checkboxes

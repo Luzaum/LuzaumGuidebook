@@ -1,0 +1,2195 @@
+pages=33
+
+--- PAGE 1 ---
+2024 AAHA Fluid Therapy Guidelines for Dogs
+and Cats
+Mariana Pardo, BVSc, MV, DACVECC✝, Erin Spencer, MEd, CVT, VTS (ECC)✝,
+Adesola Odunayo, DVM, MS, DACVECC, Mary L. Ramirez, DVM, DABVP (Canine and Feline),Elke Rudloff, DVM, DACVECC, cVMA, Heidi Shafford, DVM, PhD, DACVAA, Ann Weil, DVM, MS, DACVAA,Ewan Wolff, DVM, PhD, DACVIM (Small Animal Internal Medicine)
+ABSTRACT
+Fluids are drugs used in veterinary patients capable of producing bene ﬁcial therapeutic or inadvertent harmful effects within
+the body ’s intravascular, interstitial, and intracellular ﬂuid spaces. The individualized design of a ﬂuid therapy plan requires
+careful patient assessment and targeted selection of proper ﬂuid types, administration routes, and rates, along with adjust-
+ments during therapy tailored speci ﬁcally as per the individual patient ’sﬂuid requirement and therapeutic response. Personal-
+ized ﬂuid prescriptions and vigilant patient monitoring help avoid patient morbidity from body ﬂuid de ﬁciencies, ﬂuid excess,
+and electrolyte derangements and support better patient outcomes. These guidelines provide an overview of ﬂuid dynamics
+within the ﬂuid spaces of the body, describe various types of ﬂuids and their uses, and outline recommendations for ﬂuid
+administration for resuscitation, rehydration, and maintenance purposes. The guidelines also outline approaches to ﬂuid ther-
+apy for anesthetized patients and reiterate the recommendations of reduced ﬂuid rates in this population of patients. Addi-
+tionally, the guidelines include practical ﬂuid therapy strategies for patients with various common disorders. The goal of
+these guidelines is to help veterinary professionals safely and effectively prescribe and administer ﬂuid therapy for canine
+and feline patients. (JA mA n i mH o s pA s s o c 2024; 60:131 –163. DOI 10.5326/JAAHA-MS-7444)
+AFFILIATIONS
+Critical Care Veterinarian Consulting, Pleasantville, New York (M.P.);
+Veterinary Emergency Group, Derry, New Hampshire (E.S.); University ofFlorida, Gainesville, Florida (A.O.); North Dallas Veterinary Emergency andSpecialty Hospital, Frisco, Texas (M.L.R.); Blue Pearl Pet Hospice,Milwaukee, Wisconsin (E.R.); Veterinary Anesthesia Specialists, Gladstone,Oregon (H.S.); Purdue University, West Lafayette, Indiana (A.W.); Blue
+Pearl NE Portland, Portland, Oregon (E.W.)
+CONTRIBUTING REVIEWERS
+Elisa Mazzaferro, MS, DVM, PhD, DACVECC, Cornell University
+Veterinary Specialists, Department of Emergency and Critical Care
+Vaidehi Paranjape, BVSc, MVSc, MS, DACVAA, Virginia Polytechnic
+Institute and State University, Virginia-Maryland College of VeterinaryMedicine, Department of Small Animal Clinical Sciences
+Correspondence: guidelines@aaha.org
+✝M. Pardo and E. Spencer are the cochairs of the AAHA Fluid
+Therapy Guidelines Task Force.
+These guidelines were prepared by a task force of experts convened by
+the American Animal Hospital Association. This document is intended asa guideline only, not an AAHA standard of care. These guidelines andrecommendations should not be construed as dictating an exclusiveprotocol, course of treatment, or procedure. Variations in practice maybe warranted based on the needs of the individual patient, resources,
+and limitations unique to each individual practice setting. Evidence-guided support for speci ﬁc recommendations has been cited whenever
+possible and appropriate. Other recommendations are based on
+practical clinical experience and a consensus of expert opinion. Furtherresearch is needed to document some of these recommendations. Drugapprovals and labeling are current at the time of writing but may changeover time. Because each case is different, veterinarians must base theirdecisions on the best available scienti ﬁc evidence in conjunction with
+their own knowledge and experience.
+AAHA gratefully acknowledges the task force facilitator, Mia Cary,
+DVM (she/her), of Cary Consulting, and Theresa Entriken, DVM, fordevelopmental editing assistance.
+AAHA welcomes endorsement of these Guidelines by the American
+Association of Feline Practitioners (AAFP).
+AKI (acute kidney injury); CPP (cryoprecipitate-poor plasma); CPR
+(cardiopulmonary resuscitation); CRI (continuous rate infusion); CRT(capillary re ﬁll time); CSA (canine-speci ﬁc albumin); FWD (free water
+deﬁcit); GFR (glomerular ﬁltration rate); IO (intraosseous); KCl
+(potassium chloride); SC (subcutaneous); TBI (traumatic brain injury);TVI (total volume infused); VTBI (volume to be infused)
+Copyright © American Animal Hospital Association
+Guidelines published open access in the Journal of the American Animal Hospital Association (JAAHA VR)using the CC BY-NC-ND license
+https://creativecommons.org/licenses/by-nc-nd/4.0/ may be shared according to the license with appropriate credit.JAAHA.ORG 131VETERINARY PRACTICE GUIDELINESDownloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 2 ---
+Guidelines Table of Contents
+Section
+3 Section 1: Introduction
+3 Section 2: General Fluid Therapy Principles8 Section 3: Fluids for Replacement and Maintenance13 Section 4: Fluid Therapy and Anesthesia15 Section 5: Fluid Therapy in Ill Patients22 Section 6: Fluid Overload
+25 Section 7: Questions and Controversies in Fluid Therapy
+27 Section 8: Fluid Administration and Monitoring30 Section 9: Conclusion
+Figures
+4 Figure 1: Normal Distribution of Body Water5 Figure 2: Modified Starling Hypothesis9 Figure 3: Hypovolemia9 Figure 4: Treatment of Hypovolemia
+9 Figure 5: Dehydration and Euvolemia
+9 Figure 6: Treatment of Dehydration9 Figure 7: Severe Dehydration and Hypovolemia9 Figure 8: Treatment of Severe Dehydration and Hypovolemia14 Figure 9: Fluid Therapy During Anesthesia18 Figure 10: Approach to Fluid Therapy for Dogs and Cats with
+Traumatic Brain Injury
+23 Figure 11: Impact of Fluid Overload on Organ Function
+25 Figure 12: Fluid Overload Therapy AlgorithmTables
+6 Table 1: Intravascular Volume Assessment
+6 Table 2: Stages and Clinical Signs of Hypovolemic Shock7 Table 3: Estimated Interstitial Dehydration (%) Based on
+Physical Examination Findings
+7 Table 4: Extracellular Hydration Status Assessment
+Parameters and Expected Changes from Baseline in PatientsReceiving Hypo-or Over-Hydration
+7 Table 5: Additional Clinical and Diagnostic Findings That
+Indicate Overhydration/Fluid Overload
+7 Table 6: Conditions that Pose Challenges When Addressing
+Individual Fluid Compartment Needs
+10 Table 7: Endpoints to Monitor for Hypovolemia and
+Dehydration
+11 Table 8: Composition of Commonly Used Crystalloids12 Table 9: Fluid Therapy Dosing According to Stage of Fluid
+Requirements
+12 Table 10: Empirical Subcutaneous Fluid Therapy
+Recommendations
+19 Table 11: Guidelines for Potassium Supplementation in Fluids19 Table 12A: Approach to Fluid Therapy in
+Hyponatremic Patients
+20 Table 12B: Common Causes of Acute and Chronic
+Hyponatremia in Dogs and Cats
+20 Table 12C: Sodium Concentration of Isotonic Crystalloids
+20 Table 12D: Calculating Expected Changes in Sodium
+Concentration
+21 Table 13A: Approach to Fluid Therapy in
+Hypernatremic Patients
+21 Table 13B: Common Causes of Acute and Chronic
+Hypernatremia in Dogs and Cats
+22 Table 14: How to Formulate Dextrose-Containing Fluids24 Table 15: Clinical, Radiographic, and Ultrasonographic
+Findings Associated with Fluid Overload
+28 Table 16: Intravenous Fluid Delivery Modes28 Table 17: Peripheral Intravenous Catheter Placement and
+Care Checklist
+29 Table 18: Monitoring Fluid Delivery29 Table 19: Evaluation and Monitoring Parameters That May Be
+Used for Patients Receiving Fluid Therapy
+29 Table 20: Methods to Monitor Fluid Outputs and Inputs
+132 JAAHA | 60:4 Jul/Aug 2024Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 3 ---
+Section 1: Introduction
+Fluid therapy is a common aspect of veterinary patient care, required
+for a wide range of clinical conditions spanning from relatively mild
+cases (e.g., short-term inadequate voluntary intake from acute gastri-
+tis) to more moderate conditions (e.g., chronic kidney disease) tolife-threatening emergencies (e.g., substantial volume loss andshock). When prescribed and administered correctly, ﬂuid therapy
+can be one of the most bene ﬁcial treatments available in veterinary
+medicine. However, achieving desired therapeutic outcomes, rather
+than administering ﬂuids with no effect or that worsen the problem,
+requires an understanding of the physiologic factors that in ﬂuence
+body ﬂuid movement and electrolyte balance. Re ﬁning this knowl-
+edge to create tailored therapeutic plans for each patient can be chal-lenging, yet it proves to be a satisfying endeavor in enhancing patientrecovery.
+These guidelines offer an overview of the body ’sﬂuid dynamics
+and provide practical recommendations for selecting ﬂuids, calculat-
+ing administration rates, and choosing administration routes in dogsand cats for the purposes of resuscitation, rehydration, and mainte-nance. The guidelines also cover ﬂuid therapy recommendations for
+anesthetized patients, patients with common conditions, and thosewith disorders presenting special ﬂuid therapy challenges. Addition-
+ally, these guidelines detail patient monitoring parameters, highlight
+methods to prevent ﬂuid overload, describe ﬂuid delivery options,and address controversies and misconceptions in ﬂuid therapy.
+Online resources include case examples and answers to frequently
+asked questions.
+Section 2: General Fluid Therapy Principles
+Top Three Takeaways
+1. Fluids are drugs and must be prescribed accordingly to achieve the
+desired therapeutic goals promptly and minimize complications.
+2. Each body ﬂuid compartment —intracellular, interstitial, and
+intravascular —may require a different ﬂuid prescription tailored to
+a patient ’s individual needs.
+3. Arbitrarily assigning a ﬂuid rate or dose can contribute to patient
+morbidity and mortality and lead to missed ﬂuid therapy goals.
+Overview
+Fluid therapy involves administering prescribed ﬂuids to restore a
+patient ’sb o d y ﬂuid homeostasis. As with any medication, the
+pharmacokinetics and pharmacodynamics of each ﬂuid must be con-
+sidered to attain therapeutic goals and minimize complications.
+However, ﬂuid therapy alone cannot ﬁx every abnormality, and using
+a standardized ﬂuid rate for all patients can result in patient morbid-
+ity (see Box 1). To prescribe effective ﬂuid therapy, veterinarians
+must have a basic understanding of the body ’sﬂuid compartments
+and how water is distributed among them.Definitions
+Dehydration —A condition in which the body loses more fluids than it takes in, resulting in an imbalance of water and
+electrolytes.
+Euvolemia/euvolemic —Normal balance and distribution of total body water.
+Fluid overload/fluid intolerance —A clinical spectrum that spans from hypervolemia to life-threatening edema and cavitary effu-
+sions. The guidelines task force has proposed that fluid intolerance may be the more appropriate term for this condition, as thisterm more accurately describes how the amount of fluid needed to overload a patient is dependent on their tolerance for a givenamount of fluids. “Fluid intolerance ”thus encompasses both iatrogenic overload and overload due to underlying comorbidities.
+However, given that “fluid overload ”is still widely used and recognized within the veterinary medical profession, it will be the pri-
+mary term used in these guidelines to refer to this condition.
+Hypervolemia/hypervolemic —Increased fluid volume within the vascular space. Hypertension is not usually an indication of
+hypervolemia (except when renal disease is present).
+Hypovolemia/hypovolemic —Decreased fluid volume within the vascular space.
+Maintenance fluids —Crystalloid solutions formulated with electrolyte concentrations to meet a patient ’s daily requirements.
+Replacement fluids —Crystalloid fluids intended to replace lost body fluids and electrolytes.
+Total body water —The total amount of water contained in three mammalian body compartments: intracellular (67%) and extra-
+cellular (33%), which is further divided into interstitial (25%) and vascular (or intravascular) (8%) spaces.Veterinary Practice Guidelines
+JAAHA.ORG 133Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 4 ---
+Fluid Distribution and Flow Among the Three Primary
+Fluid Compartments
+The three main body compartments in mammals contain water. The
+intracellular and extracellular ﬂuid compartments contain 67% and
+33% total body water, respectively (Figure 1), and these sections areseparated by cell membranes. The extracellular ﬂuid compartment is
+further divided into interstitial (25% of the total body water, or 75%of the extracellular body water) and vascular (8% of the total bodywater, or 25% of the extracellular body water) compartments, andcapillary walls separate these spaces (Figure 1).
+Fluid intake by any route can affect the body ﬂuid compart-
+ments. Administered ﬂuids move between compartments based on:
+/C15Tonicity of the ﬂuid
+/C15Tonicity of the patient ’s extracellular compartment
+/C15Size of any macromolecules in the administered ﬂuid
+Sodium is the most abundant cation in the extracellular ﬂuid
+compartment and is the most important molecule that supportsextracellular tonicity. A ﬂuid given IV that contains a sodiumconcentration similar to that of the extracellular ﬂuid compartment
+will redistribute within 45 min based on a compartment ’s percent
+total body water; i.e., in a normal animal, 25% of the administeredﬂuid will remain in the intravascular space and 75% will move into
+the interstitial space. Fluid movement across the endothelial mem-brane depends on the contents of the administered ﬂuid and the
+condition of the patient ’s capillary membrane. The modi ﬁed Star-
+ling hypothesis describes how ﬂuid moves across the capillary
+membrane (Figure 2). Hydrostatic pressure, colloid osmotic pres-sure, and vascular permeability in ﬂuence ﬂuid movement.
+1,2
+When increased capillary membrane permeability, elevated intra-
+vascular hydrostatic pressure, or decreased plasma colloid osmoticpressure occurs, more isotonic ﬂuid can pass into the interstitium or
+body cavity and cause tissue edema, effusion, or both.
+Administering a hypertonic ﬂuid IV will cause water to move
+from the interstitial and intracellular spaces into the intravascularspace. This can be desirable for rapid intravascular volume resuscita-tion. However, for this strategy to succeed, the interstitial andintracellular spaces must already be adequately hydrated. Whenadministered IV, a hypotonic ﬂuid will cause water to move from
+the extracellular space into the intracellular space, which is a suitableapproach when treating a solute-free water de ﬁcit.
+Goal-Directed Fluid Therapy
+Goal-directed ﬂuid therapy requires creating a ﬂu i dp r e s c r i p t i o nt h a t
+replaces ﬂuid de ﬁcits that may exist in each ﬂuid compartment, using
+the following steps:
+1. Recognize which ﬂuid compartment de ﬁcit(s) exists.
+2. Understand which ﬂuid type and administration route will best
+replace each de ﬁcit.
+3. Calculate the ﬂuid dose and administration rate.
+4. Monitor patients for response to therapy and signs of complications.3–5Box 1: One Fluid Rate Does Not Fit All
+A common misconception is that administering fluids at
+twice the maintenance rate will adequately treat most veteri-nary patients in need of fluid therapy. However, this
+approach may be inappropriate or inadequate in several sce-
+narios, as shown in the following examples:
+Interstitial dehydration. Using a twice maintenance fluid
+administration rate would take approximately 33 hr torehydrate a patient who has 5% interstitial dehydration,far longer than the recommended 12 –24 hr.
+Uremia due to acute kidney injury (AKI). The primary goal in
+treating AKI is to ensure adequate renal perfusion and matchthe kidney ’s ability to handle fluid volumes. The fluid input rate
+for normovolemic patients should be determined based on fluido u t p u t( s e eS e c t i o n5 ,F l u i dT h e r a p yi nI l lP a t i e n t s ) .
+Intoxications. Administering an increased hourly fluid
+volume to force diuresis and urine output may not
+increase toxin excretion and can result in fluid overload.
+For example, although some animals with nonsteroidalanti-inflammatory drug (NSAID) toxicity may benefitfrom fluid therapy to treat dehydration or hypovolemia,high fluid rates (also known as forced diuresis) do notaccelerate elimination of NSAIDs because most NSAIDsare highly protein-bound.
+67% 25% 8%Intracellular
+Interstitial
+VascularIntracellular FluidExtracellular Fluid
+Total Body Water
+FIGURE 1
+Normal distribution of body water
+134 JAAHA | 60:4 Jul/Aug 2024Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 5 ---
+Assessing Patients: General Principles Before and
+During Fluid Therapy
+The extracellular ﬂuid compartment (i.e., the vascular and interstitial
+s p a c e s )m u s th a v ea d e q u a t ev o l u m eb e f o r ei n t r a c e l l u l a r ﬂuid com-
+partment de ﬁcits can be addressed. Therefore, assess and address
+alterations in volume homeostasis in the following order:
+1. Assess the intravascular ﬂuid space by evaluating:
+/C15Patient history
+/C15Perfusion parameters (mentation, heart rate, capillary re ﬁll time,
+mucous membrane color, extremity temperature, skin turgor,
+and pulse quality)
+/C15Monitored parameters (blood pressure, electrocardiogram
+ﬁndings)
+/C15Laboratory test results (Table 1)
+/C15Diagnostic imaging ﬁndings (Tables 1, 2)
+2. Assess the interstitial space by evaluating:
+/C15Patient hydration parameters (Tables 3 –5)
+3. Assess the intracellular space by evaluating:/C15Patient sodium concentration
+/C15Solute-free water de ﬁcit (FWD) (Box 2)
+Replace deficits and monitor response
+To replace extracellular ﬂuid space de ﬁcits (i.e., vascular and intersti-
+tialﬂuid space de ﬁcits):
+/C15Administer a buffered isotonic crystalloid ﬂuid that contains a
+sodium concentration similar to the patient ’s.
+/C15For rapid intravascular volume replacement, a hypertonic crystal-
+loid, a colloid solution, or both can also be used.4
+/C15Closely monitor patient parameters until ﬂuid homeostasis is
+achieved and maintained (Tables 1, 3 –5).
+/C15Monitoring may also be achieved by assessing the relative variation
+in the caudal vena cava during one respiratory cycle using ultraso-
+nography and calculating the Caudal Vena Cava CollapsibilityIndex.
+6,7See Table 6 for some conditions that pose additional chal-
+lenges in addressing individual ﬂuid compartment needs. For more
+information on addressing ﬂuid therapy challenges, see Section 5,
+Fluid Therapy in Ill Patients.Plasma
+EndothellumIntercellular  cleft
+InterstitiumPi
+ic Pc
+gSubglycocalyx  spaceGlycocalyx
+FIGURE 2
+Modi ﬁed Starling hypothesisa
+Modi ﬁed Starting hypothesis of ﬂuidﬂux across the capillary membrane. Filtration force 5([Pc-Pi]-s[pp-pg]). Pc, Capillary hydrostatic pressure;
+Pi, Interstitial hydrostatic pressure; pp, plasma oncotic pressure; pi, interstitial oncotic pressure; pg, glycocalyx oncotic pressure
+aReprinted from Silverstein DC and Hopper K, eds., Small Animal Critical Care Medicine , 3rd ed., Waddell L., Colloid osmotic pressure
+and osmolality, p. 1055, Elsevier (2022), with permission from Elsevier.
+Box 2: Calculating Free Water Deficit
+Free Water Deficit (FWD) in Liters (L) 5[Patient Na/Desired Na) -1] 3(0.63Weight [kg])
+Na, SodiumVeterinary Practice Guidelines
+JAAHA.ORG 135Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 6 ---
+TABLE 1
+Intravascular Volume Assessment
+/C3Usually occurs in conjunction with signs of overhydration of the interstitial space (see Tables 4 and 5).
+TABLE 2
+Stages and Clinical Signs of Hypovolemic Shock
+CRT, capillary re ﬁll time; MM, mucous membrane
+136 JAAHA | 60:4 Jul/Aug 2024Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 7 ---
+TABLE 3
+Estimated Interstitial Dehydration (%) Based on Physical
+Examination Findingsa
+Note: There is substantial clinical variation in the correlation between clinical signs
+and degree of dehydration, so this is an estimate only.
+aReprinted from Silverstein DC and Hopper K, eds., Small Animal Critical Care
+Medicine , 3rd ed., Rudloff, E, Assessment of hydration, p. 1054-58, Elsevier (2022),
+with permission from Elsevier.
+/C3Xerostomia can be present in AKI and CKD patients without dehydration.
+/C3/C3Retracted globes may also be present.TABLE 4
+Extracellular Hydration Status Assessment Parameters and
+Expected Changes from Baseline in Patients Receiving Hypo- orOver-hydration
+a
+aReprinted from Silverstein DC and Hopper K, eds., Small Animal Critical Care
+Medicine , 3rd ed., Rudloff, E, Assessment of hydration, p. 1054-58, Elsevier (2022),
+with permission from Elsevier.
+TABLE 5
+Additional Clinical and Diagnostic Findings That May Indicate
+Overhydration/Fluid OverloadTABLE 6
+Conditions That Pose Challenges When Addressing IndividualFluid Compartment NeedsVeterinary Practice Guidelines
+JAAHA.ORG 137Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 8 ---
+Section 3: Fluids for Replacement and
+Maintenance
+Top Three Takeaways
+1. Calculate ﬂuid requirements based on three main phases of ﬂuid
+therapy: resuscitation, rehydration, and maintenance. The adminis-tration route depends on the severity of the patient ’sﬂuid de ﬁcit
+and their ability to take in ﬂuids orally. When possible, enteral
+routes should be used.
+2. Use replacement ﬂuids, also called isotonic crystalloids, to treat
+hypovolemia and dehydration, keeping in mind that each condition
+requires different strategies. Hypovolemic patients require immedi-
+ate intravascular volume replacement delivered as one or moresmall IV or intraosseous (IO) ﬂuid boluses over 15 –30 min. Dehy-
+drated patients require sustained ﬂuid delivery over 12 –24 hr.
+3. Use maintenance ﬂuids, also referred to as hypotonic crystalloids, to
+provide daily ﬂuid requirements in patients with inadequate ﬂuid
+intake. Using isotonic crystalloids to meet maintenance ﬂuid needs
+can lead to electrolyte derangements in patients.
+Overview
+When developing a replacement or maintenance ﬂuid therapy plan,
+tailor the ﬂuid type, volume, administration route, and administra-
+tion rate to each patient. Keep in mind that evaluating a patient ’s
+ﬂuid balance is not a one-time event. As the patient ’s clinical status
+progresses, adjust the ﬂuid prescription to meet ongoing needs,
+response to therapy, and the course of the disease.8
+Hypovolemia anddehydration are two related medical condi-
+tions that involve a de ﬁciency of ﬂuids in the body and require
+replacement ﬂuid therapy. Although these conditions share similari-
+ties, there are distinct differences between them, and ﬂuid adminis-
+tration strategies differ.
+Patients with an intravascular volume de ﬁcit, or hypovolemia,
+require rapid IV ﬂuid replacement. On the other hand, patients with
+ﬂuid de ﬁcits from inadequate ﬂuid intake and ongoing losses, or
+dehydration, need slow, sustained ﬂuid de ﬁcit replacement, allowing
+the interstitial and intracellular compartments to reabsorb these
+ﬂuids. Once patients are adequately hydrated and euvolemic, they
+may only require maintenance ﬂu i dt h e r a p yi ft h e ya r eu n a b l et o
+maintain ﬂuid homeostasis through oral ingestion.
+Managing Hypovolemia
+Hypovolemia refers to a decreased volume of circulating blood,
+which results in reduced tissue perfusion. It occurs when both ﬂuid
+and electrolytes are lost, leading to a decrease in total blood volume
+in the circulatory system (Figure 3). Hypovolemia can be caused by
+various factors, such as excessive bleeding, severe burns, severe diar-
+rhea or vomiting, kidney disease, or inadequate ﬂuid intake. Para-
+meters to detect hypovolemia are listed in Table 2.Immediate medical attention is crucial for hypovolemic patients
+because untreated hypovolemia can lead to serious complications.Treatment entails administering IV ﬂuids to restore the blood vol-
+ume and addressing the underlying cause.
+Correct hypovolemia by administering a buffered isotonic ﬂuid
+bolus of 5 –10 mL/kg (cats) and 15 –20 mL/kg (dogs) over 15 –30 min.
+T h eb o l u s e sc a nb er e p e a t e di ft h ed e s i r e dh e m o d y n a m i ca n dp e r f u -
+sion goals have not been achieved and the patient remains hypovole-mic (Figure 4).
+Managing Dehydration
+Dehydration is a condition in which the body loses more ﬂuids than
+it takes in, resulting in an imbalance of water and electrolytes
+(Figure 5). Inadequate ﬂuid intake, excessive panting in dogs, vomit-
+ing, diarrhea, or medical conditions such as diabetes can cause dehy-
+dration. Parameters to detect dehydration are listed in Table 3.
+Depending on the degree of dehydration, it can usually be man-
+aged by replenishing lost ﬂuids through oral rehydration or subcuta-
+neous (SC) ﬂuid administration. IV ﬂuid administration is preferred
+in severe cases of dehydration or in patients who cannot tolerate oral
+ﬂuid administration.
+Dehydration can be corrected by calculating the ﬂuid de ﬁcit
+( B o x3 )b a s e do nt h ed e g r e eo fd e h y d r a t i o n( T a b l e3 )a n da d m i n i s -
+tering ﬂuid therapy over 12 –24 hr (Figure 6).
+Managing Hypovolemia and Dehydration
+In cases in which both hypovolemia and dehydration are present
+(Figure 7), address hypovolemia ﬁrst, then rehydration (Figure 8).
+Both ﬂuid prescriptions should include concrete endpoints to moni-
+tor to identify when hypovolemia and dehydration have resolved(Table 7). Additionally, ultrasonographic evaluation of cardiac cham-bers and the caudal vena cava (Caudal Vena Cava CollapsibilityIndex) may be used as valid assessments of ﬂuid responsiveness.
+9
+Selecting Fluids for IV Administration
+To prescribe appropriate IV ﬂuid therapy, many factors must be con-
+sidered, including a patient ’s age, current and underlying medical
+conditions (e.g., renal or cardiac impairment, hypoproteinemia),
+ﬂuid and electrolyte balance, and other speci ﬁc needs (see Section 5,
+Fluid Therapy in Ill Patients). These factors in ﬂuence the choice of
+IVﬂuid type and whether adjustments are needed in the ﬂuid’s com-
+position or administration rate.Box 3: Calculating the Fluid Deficit
+Fluid Deficit (L) 5Body Weight (kg) 3% Dehydration
+(as a decimal)
+138 JAAHA | 60:4 Jul/Aug 2024Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 9 ---
+67% 25% <8%Intracellular
+Interstitial
+VascularHypovolemia
+Total Body Water
+FIGURE 3
+Hypovolemia results in a decreased volume within the vascular
+space. Acute hypovolemia primarily affects this compartment. Asthe severity and duration of hypovolemia persist, it can affect othercompartments as well.67% 25% 8%Intracellular
+Interstitial
+VascularCats: 5-10 mL/kg,
+Dogs: 15-20 mL/kgover 15-30 min 
+isotonic ﬂuidof a buffered
+Volume is 
+quickly replaced
+and delivered 
+into the vascular
+space
+Total Body WaterTreatment of Hypovolemia
+FIGURE 4
+Treatment of hypovolemia requires rapidly delivering ﬂuid into the
+vascular space to restore the effective circulating volume.
+Total Body Water67% <25% 8%Intracellular
+Interstitial
+VascularDehydration and Euvolemia
+FIGURE 5
+Dehydration results in a decreased volume within the interstitial space.67% 25% 8%Intracellular
+Interstitial
+VascularReplacement 
+volume over 12–24 hours of a bufferedisotonic ﬂuid
+Volume is 
+slowly replaced and delivered into the vascular space where it 
+interstitial spacediffuses to the
+Total Body WaterTreatment of Dehydration
+FIGURE 6
+Treating dehydration requires slow, sustained delivery of intravas-
+cular ﬂuids, which will be slowly absorbed into the interstitial space
+over 12-24 hours. Subcutaneous and oral routes are not depicted;however, these routes also correct dehydration.
+Total Body Water<67% <25% <8%Intracellular
+Interstitial
+VascularSevere Dehydration and Hypovolemia
+FIGURE 7
+Dehydration results in a decreased volume within the interstitial
+space. As dehydration worsens, it can affect the vascular and intra-cellular compartments as well, leading to dehydration with concur-rent hypovolemia.67% 25% 8%Intracellular
+Interstitial
+VascularCats: 5-10 mL/kg,
+Dogs: 15-20 mL/kgover 15-30 min
+of a buffered
+of a bufferedisotonic ﬂuid
+Replacement
+volume over
+12–24 hours
+isotonic ﬂuid
+Total Body WaterTreatment of Severe
+Dehydration and Hypovolemia
+FIGURE 8
+Treatment of severe dehydration and hypovolemia requires a two-fold
+strategy. First, correct hypovolemia by rapidly delivering intravascularﬂuids and restoring the effective circulating volume. Once the hypovole-
+mia has resolved, address dehydration with the slow and sustaineddelivery of intravascular ﬂuids administered over 12-24 hours.Veterinary Practice Guidelines
+JAAHA.ORG 139Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 10 ---
+Crystalloids
+Crystalloid solutions are the most common type of ﬂuid used, and
+these can be classi ﬁed as replacement or maintenance solutions. The
+composition of replacement solutions resembles that of the extracel-
+lular ﬂuid (Table 8). Maintenance solutions contain less sodium and
+more potassium than replacement ﬂuids (Table 8).10
+Maintenance versus replacement fluids
+Using the term “maintenance ﬂuids”to refer to a ﬂuid adminis-
+tration rate is a common misnomer. Instead, the term refers to a classi-ﬁcation of crystalloid solutions formulated with different electrolyte
+concentrations to meet a patient ’s daily requirements. Replacement
+ﬂuids (e.g., lactated Ringer ’s solution) are intended to replace lost body
+ﬂuids and electrolytes (Table 8). Replacement ﬂuids are frequently
+used interchangeably to meet replacement and maintenance needs —
+where clinicians supplement replacement ﬂuids with potassium or dex-
+trose to approximate maintenance requirements. Using replacement
+ﬂuids long term instead of maintenance ﬂuids may predispose patients
+to sodium derangements and hypokalemia.
+11Although there is no evi-
+dence that using replacement ﬂuids as maintenance ﬂuids has short-
+term detrimental effects, it is important to refer to these ﬂuids correctly
+and ensure that patient maintenance needs (electrolyte composition
+and volume administered) are properly met.
+Sodium concentration
+Always consider a patient ’s sodium concentration. Dogs have a
+lower average sodium concentration ( /C24145 mEq/L) compared withthat of cats ( /C24155 mEq/L),12and pediatric patients may have slightly
+lower sodium concentrations than adults. Although point-of-care blood
+analysis facilitates obtaining quick results, it may not always be available
+in cases in which immediate ﬂuid resuscitation is required. In situations
+in which sodium concentration is unknown, the best ﬂuid choice is a
+buffered isotonic ﬂuid. Once the sodium concentration is obtained,
+adjust the ﬂuid choice to better re ﬂect the patient ’sn e e d s( T a b l e8 ) .
+Calculating Fluid Requirements
+Divide the ﬂuid therapy plan into resuscitation, rehydration, and
+maintenance rates (Table 9) as follows:
+Total Fluid Requirement 5resuscitation rate
+1rehydration rate ðinclude ongoing losses Þ
+1maintenance rate :
+Several formulas are available to calculate ﬂuid requirements,13and
+there is no evidence that one is superior to another.14Regardless of
+the formula used, customize the ﬂuid plan to each patient, and adjust
+it based on patient monitoring ﬁndings and ongoing losses.
+Selecting Fluid Administration Routes
+T h ec h o i c eo f ﬂuid administration route depends on the severity of
+theﬂuid de ﬁcit and the patient ’s ability to take ﬂuids orally or via a
+feeding tube. Hypovolemia always requires IV or IO ﬂuid delivery.
+However, dehydration can be corrected through IV, SC, or enteral
+ﬂuid administration, or a combination of these routes.TABLE 7
+Endpoints to Monitor for Hypovolemia and Dehydration
+Fluid Status Hypovolemia Dehydration
+Initial parameters (See Table 2) (See Table 3)
+Initial treatment 
+strategy• 5-10 mL/kg (cat), 15-20 mL/kg (dog) of a 
+• Assess perfusion parameters at the end of 
+each bolus.• Calculate replacement volume and deliver over 
+12–24 hours.
+• Assess patient parameters throughout the ﬂuid 
+delivery period with the goal of correcting the full dehydration deﬁcit within 12–24 hours.
+End points • Improvement in heart rate, CRT, blood 
+pressure, and mentation• Improved skin turgor, mucous membranes, and 
+urine speciﬁc gravity and increased body weight and urine output
+End point 
+treatment strategy • If vitals have returned to normal, then assess 
+if dehydration needs to be addressed and continue with a rehydration ﬂuid plan. 
+• If vitals have improved but not normalized, repeat 
+the same or lower-volume bolus and reassess. • If end points have returned to normal, then 
+assess if oral ingestion is possible. If not, continue 
+with maintenance ﬂuid plan. 
+• If dehydration has not completely resolved, 
+recalculate ﬂuid requirements and deliver over an additional 12–24 hours. 
+CRT, capillary re ﬁll time
+140 JAAHA | 60:4 Jul/Aug 2024Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 11 ---
+TABLE 8
+Composition of Commonly Used Crystalloids1,2–4
+1. Rudloff E, Hopper K. 2021. Crystalloid and colloid compositions and their impact. Frontiers in Veterinary Science . 8:639848.
+2. Strandvik GF. 2009. Hypertonic saline in critical care: a review of the literature and guidelines for use in hypotensive states and raised intracra nial pressure. Anaesthesia .
+64(9):990-10033. Holden D, et al. 2023. Hypertonic saline use in neurocritical care for treating cerebral edema: A review of optimal formulation, dosing, safety, ad ministration and storage.
+American Journal of Health-System Pharmacy . 80(6):331-342.
+4. Carr CJ, et al. 2021. An audit and comparison of pH, measured concentration, and particulate matter in mannitol and hypertonic saline solutions. Frontiers in Neurology .
+12:667842.Veterinary Practice Guidelines
+JAAHA.ORG 141Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 12 ---
+Selecting IV and IO Routes
+The IV and IO administration routes are preferred in patients with
+severe ﬂuid de ﬁcits, acute ﬂuid losses, and perfusion de ﬁcits, as well
+as in patients with minimal or no oral or enteral ﬂuid intake. These
+routes allow for rapid dispersion of ﬂuid and electrolytes, ensuring
+precise dosage and safe delivery of large ﬂuid volumes and hyper-
+tonic ﬂuids.
+The IO route is typically used in patients for whom IV access is
+not possible and serves as a bridge for resuscitation until an IV cath-
+eter can be placed. However, IO infusion rates are more limited than
+IV infusion rates; for example, the humerus and femur sites allow IOcatheter infusion rates of up to 1 mL/kg/min.
+15Selecting the SC Route
+The SC route is preferred for outpatient ﬂuid therapy or for patients
+receiving ﬂuids via multiple routes (e.g., IV ﬂuids during day hospi-
+talization and SC ﬂuids during the night). However, evidence-based
+information is lacking regarding ideal patient selection for SC ﬂuid
+therapy, the optimal SC infusion volume and treatment frequency,and the possible adverse effects of SC ﬂuids.
+13Table 10 provides
+empirical recommendations for SC ﬂuid therapy.
+To estimate the patient ’s percent dehydration and calculate main-
+tenance ﬂuid requirements, follow the recommendations outlined
+above. It is important to avoid prescribing SC ﬂuids for euhydrated
+patients because there is no evidence that such therapy is bene ﬁcial,
+TABLE 9
+Fluid Therapy Dosing According to Stage of Fluid Requirements
+BW, body weight
+TABLE 10
+Empirical Subcutaneous Fluid Therapy Recommendations
+Subcutaneous Fluid Dose Frequency Type of Fluid Comments
+20–30 mL/kg Once or 
+twice a day• Lactated Ringer’s, Plasma-Lyte, or 
+Normosol R
+• 0.9% NaCl has a low pH and may 
+be painful. Avoid SC use. • Deliver to multiple sites 
+depending on volume and skin elasticity. Maximum amount is 
+10–20 mL/kg per site. 
+SC, subcutaneous
+142 JAAHA | 60:4 Jul/Aug 2024Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 13 ---
+and it may be detrimental in patients that have challenges in body ﬂuid
+homeostasis (e.g., underlying cardiac disease and hypoproteinemia).
+Use a new ﬂuid administration set and ﬂuid bag for each individual
+patient.
+Selecting Enteral Administration
+Whenever possible, use the enteral administration route. Enteral
+ﬂuids are often underused and should be an integral part of the ﬂuid
+therapy plan if patients can tolerate oral liquids. Placement of feeding
+tubes can aid in providing enteral ﬂuids in anorexic patients and
+should be considered as part of an overall ﬂuid therapy plan.
+Enteral ﬂuids can be used exclusively to correct mild dehydration
+in patients with inadequate ﬂuid intake or to supplement parenteral
+administration routes. First, estimate the patient ’s percent dehydration
+and then calculate maintenance ﬂuid requirements as usual. Liquid
+diets and oral water can be delivered through voluntary intake orfeeding tubes (e.g., nasogastric and esophagostomy). Enteral adminis-
+tration may be particularly useful in dehydrated patients who cannot
+tolerate IV ﬂuids (i.e., patients with cardiac disease or hypoproteine-
+mia). If a feeding tube is present, deliver enteral ﬂuids as intermittent
+b o l u s e so ra sac o n t i n u o u si n f u s i o nw i t ha ﬂuid pump. Take care to
+label oral ﬂuids appropriately to avoid connection errors that may
+lead to accidental administration of water or a liquid diet into a
+patient ’s vascular space.
+Section 4: Fluid Therapy and Anesthesia
+Top Three Takeaways
+1. Most healthy animals undergoing elective surgery do not require
+ﬂuids in the postoperative period. Instead, early return to eating
+and drinking is recommended.
+2. Patients who have not been eating before anesthesia may need post-
+operative ﬂuid therapy until they can voluntarily consume enough
+to meet their needs. For patients who are not expected to eat wellafter surgery, such as geriatric cats, SC ﬂuids can be considered for
+use at home.
+3. In patients with renal disease (speci ﬁcally, those in International
+Renal Interest Society stage 3 or 4), do not attempt to rectify hypo-
+tension by using excessive ﬂuid infusion rates.
+Overview
+Fluid therapy is recommended in patients undergoing general anes-
+thesia primarily to counteract the vasodilation and decreased cardiac
+output induced by inhaled anesthetics, as well as to uphold catheter
+patency. Before the publication of the 2013 AAHA/AAFP Fluid Ther-
+apy Guidelines for Dogs and Cats , the recommended ﬂuid adminis-
+tration rate during anesthesia was 10 mL/kg/hr, lacking a foundationof evidence.
+16However, excessively high-volume ﬂuid rates predis-
+pose anesthetized patients to an increased risk of volume overload
+and its associated consequences. The 2013 guidelines recommendedreducing ﬂuid rates in anesthetized patients to 5 mL/kg/hr in dogsand 3 mL/kg/hr in cats.
+17Although these reduced administration
+rates have not undergone formal study, they have been widely
+accepted and implemented in clinical practice.
+Goals for Fluid Therapy in Anesthetized Patients
+The following section covers important facets of ﬂuid administration
+before, during, and after anesthesia, including mechanisms to
+address hypotension and avoid ﬂuid overload. (For more informa-
+tion on the anesthetized patient, see the 2020 AAHA Anesthesia and
+Monitoring Guidelines for Dogs and Cats , available at aaha.org .)
+1. Consider potential ﬂuid de ﬁcits (e.g., losses from dehydration, fast-
+ing, insensible losses, or anticipated ﬂuid losses during surgery).18
+Whenever feasible, aim to correct 80% of a patient ’s dehydration
+deﬁcit within the 24 hr before anesthesia.
+2. For most patients, it is unnecessary to withhold water before anesthesia.
+3. Place IV catheters in all patients undergoing anesthesia.
+4. Administer balanced isotonic crystalloid ﬂuids using the following
+guidelines:
+a. Initial ﬂuid rate of 5 mL/kg/hr in dogs with normal cardiac and
+renal function.
+b. Initial ﬂuid rate of 3 –5 mL/kg/hr in cats with normal cardiac
+and renal function.
+5. IV ﬂuids can be bene ﬁcial for maintaining catheter patency and
+supporting cardiovascular function. However, euhydrated, euvole-mic patients receiving injectable anesthetics for short periods gener-ally do not require IV ﬂuids. Food and water should be offered as
+soon as possible after recovery, but SC ﬂuids can be given to
+patients who do not return to eating and drinking immediately. Pri-
+oritize the correction of hypovolemia and dehydration before gen-
+eral anesthesia whenever possible.
+6. To ensure proper tissue perfusion, maintain a minimum mean arte-
+rial blood pressure of 60 mm Hg.
+Managing Hypotension
+Hypotension is a common complication of general anesthesia involv-
+ing inhaled anesthetics (Figure 9).19–21Both absolute hypovolemia
+(e.g., due to hemorrhage) and relative hypovolemia (e.g., stemming
+from trauma, sepsis, or the use of anesthetics and vasodilatory drugs)
+can also contribute to hypotension. In cases of hypotension during
+anesthesia, begin by adjusting excessive vaporizer settings and judi-
+ciously administering crystalloid ﬂuids.
+1. Assess every patient ’s anesthetic depth carefully. Small reductions in
+inhalant anesthetic administration (i.e., vaporizer settings) can sub-
+stantially affect blood pressure and make the difference between
+normotension and hypotension.
+2. Monitor the patient ’s heart rate. Bradycardia can contribute to hypo-
+tension in anesthetized patients. If the heart rate is lower than normal
+and the patient is hypotensive, consider anticholinergic therapy.
+3. Evaluate body temperature. Decreased body temperature or hypo-
+thermia can cause hypotension. Open body cavities and breathingin cold gases from the anesthesia machine can both lead to adecrease in body temperature. Increasing body temperature willhelp improve hypotension.Veterinary Practice Guidelines
+JAAHA.ORG 143Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 14 ---
+4. Consider the concurrent administration of additional analgesics,
+sedatives, or a combination of both to help reduce the requirements
+for inhalant anesthetics requirements, as well as the use of regional
+or local anesthetics.
+5. Administer balanced isotonic crystalloid ﬂuids when using inhalant
+anesthetics:
+i. 5 mL/kg/hr for dogs
+ii. 3 –5 mL/kg/hr for cats
+6. If hypotension persists despite adjusting vaporizer settings and pro-
+viding crystalloid ﬂuids, then consider sympathomimetic drug ther-
+apy with inotropes or vasopressors or colloid ﬂuid therapy.
+7. If hypotension is due to severe or ongoing hemorrhage, then trans-
+fusion of whole blood or packed red blood cells is necessary to
+maintain both blood volume and appropriate red blood cell mass todeliver oxygen to tissues.
+8. Keep in mind that not all cases of hypotension can be corrected
+with ﬂuid administration, particularly in pediatric patients and
+those with cardiac disease, sepsis, etc. (see Section 5, CardiorenalDisorders, Fluid Therapy in Ill Patients).
+9. Remember that both hypovolemia and hypervolemia are detrimen-
+tal to anesthetized patients.
+Monitoring
+1. Monitor the duration of anesthesia and total volume of adminis-
+tered ﬂuids closely. If ﬂuid rates surpass 20 mL/kg within a single
+anesthetic episode, reevaluate both ﬂuid administration rates and
+the intravascular volume status of the patient. Typically, mosthealthy animals would not require a maintenance rate of 5 mL/
+kg/hr for extended periods, unless signi ﬁcant blood loss occurs.
+To determine the total ﬂuid administration during a single
+anesthetic event, calculate the daily maintenance rate volume
+(Table 9).
+2. Monitor anesthetized patients carefully to detect any indications of
+excessive ﬂuid administration. Signs of ﬂuid overload include (see
+Table 5 for additional clinical and diagnostic signs):
+a. Gallop sound or new murmur (especially in cats)
+b. Edematous tissues and chemosis
+c. Swelling of paws
+d. Clear nasal discharge (nasal edema)
+e. Pulmonary crackles
+f. Low oxygen saturation (SpO
+2)
+g. No alteration in blood pressure along with other clinical signs
+(i.e., patients remain nonhypertensive)
+h. Pleural effusion, ascites
+3. Stop ﬂuid administration (or use a minimal volume to maintain
+catheter patency) if patients have signs of excessive ﬂuid adminis-
+tration. Furosemide (1 –2 mg/kg IV) may be needed if patients have
+signs of pulmonary edema (i.e., audible pulmonary crackles, imag-ing evidence of pulmonary edema, or low SpO
+2) or pleural
+effusion.
+4. For anesthetized patients subjected to positive-pressure mechanical
+ventilation, consider the use of a pulse pressure variability moni-tor
+22,23or plethysmographic variability index from advanced pulse
+oximetry to assess ﬂuid responsiveness.24,25The monitor is used in
+a similar fashion to a pulse oximeter and helps evaluate whethercardiac output increases with volume expansion.
+5. Return routine surgical patients to normal eating and drinking as
+soon as possible after anesthesia.Start crystalloid 
+ﬂuid therapy at  
+3–5 mL/kg/hryes
+Estimate percent dehydration 
+and correct volume deﬁcit  
+before anesthesianoIs the patient adequately hydrated despite fasting?
+If hypotension persists:
+Administer a crystalloid ﬂuid bolus: 
+5 mL/kg over 10 minutes
+If hypotension is re fractory to crys talloid ﬂu id admin istration:
+If hypotension resolves:
+Return to the initial 3–5 mL/kg/hr of crystalloid ﬂuid 
+therapy, unless there is suspicion of ﬂuid overload.If the patient becomes hypotensive (mean arterial 
+pressure <60 mm Hg) during the procedure:
+Assess depth of anesthesia and reduce 
+vaporizer setting if possible.
+1. Administer sympathomimetic therapy if needed:
+• Ephedrine 0.05–0.2 mg/kg IV bolus
+• Norepinephrine CRI 0.05–1 µg/kg/min
+• Dobutamine CRI 1–10 µg/kg/min
+• Epinephrine CRI 0.05–1 µg/kg/min
+2. Administer a colloid bolus: 2–5 mL/kg over 10 minutes.
+3. In patients with severe or ongoing hemorrhage,
+address with appropriate blood products such as wholeblood or packed red blood cells.Assess body temperature and provide 
+active warming as needed.  
+Administer additional analgesics, sedatives, and local 
+anesthetics if possible to help reduce vaporizer setting.
+FIGURE 9
+Fluid Therapy During Anesthesia
+CRI, continuous rate infusion
+144 JAAHA | 60:4 Jul/Aug 2024Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 15 ---
+Patients with Renal Disease
+To effectively care for patients with renal disease (speci ﬁcally, those in
+International Renal Interest Society stage 3 or 4), it is crucial to correctdehydration before anesthesia, optimize cardiac output by using anappropriate anesthetic protocol that supports cardiovascular function(avoid dexmedetomidine if other alternatives are available), and closelymonitor and manage blood pressure. Attempting to rectify hypoten-
+sion by using excessive ﬂuid infusion rates should be avoided.
+Section 5: Fluid Therapy in Ill Patients
+Top Three Takeaways
+1. Do not forget about enteral routes of ﬂuid delivery, including naso-
+gastric, nasoesophageal, or esophageal, when treating sick patients.If tolerated by the patient, water can be mixed with food or admin-istered separately.
+2. Do not withhold ﬂuids in patients who are dehydrated or hypovole-
+mic because of concurrent anemia. Monitor them closely to deter-mine whether a transfusion is also indicated.
+3. Mitigate electrolyte derangements carefully. Never administer a bolus
+ofﬂuids supplemented with potassium chloride (KCl). Thoroughly
+mix the ﬂuids to ensure even dispersion of the KCl before administra-
+tion. Intentionally manage sodium derangements to avoid potential
+life-threatening ﬂuid shifts in the brain that can occur with rapid reso-
+lution of chronic ( .24–48 hr) sodium alterations.
+Overview
+Fluid therapy in sick patients requires a cautious, balanced approach
+and the ability to predict problems before they occur. The veterinary
+team faces complex challenges in ﬂuid therapy when treating patients
+who present with conditions such as gastrointestinal, renal, or car-
+diac disease, anemia, electrolyte imbalances, traumatic brain injury
+(TBI), hypovolemic or vasodilatory shock, edema, thermoregulation
+disorders, and hypoglycemia.
+Nutritional Therapy as a Prompt for Enteral
+Fluid Therapy
+Nutrition is one of the most neglected patient requirements during hos-
+pitalization.26A f t e r7 2h ro fa n o r e x i a ,ap a t i e n t ’sm e t a b o l i s ms h i f t st o
+alternate energy sources, such as ketones and fatty acids, instead of gly-
+cogen and glucose.27Nasoesophageal, nasogastric, or esophageal feeding
+tubes facilitate caloric intake,28and water can be mixed with food or
+administered separately.29Use a canned diet to increase water intake.
+The stomach ’sc a p a c i t yi s5 –10 mL/kg30at the time of starting
+enteral nutrition, and no consensus on canine and feline gastric emp-
+tying times exists (although prolonged emptying times have been
+reported).31Use conservative calculations of ﬂuid and food require-
+ments for enteral nutrition and adjust based on a patient ’s clinical
+signs of nausea, regurgitation, and vomiting.
+Determine enteral water requirements based on daily maintenance
+rates and divide this amount between IV and enteral supplementation.32
+It is important to continue to provide free access to water. Given thatenteral nutrition rates typically start at one-third the resting energy
+requirement
+33to avoid refeeding syndrome, enteral water administra-
+tion may also aid in allowing the stomach capacity to accommodate
+increased volumes of subsequent enteral nutrition feedings.Box 4: Special Fluid Therapy Needs During
+Anesthesia
+1.Hypoglycemia
+/H17034Add dextrose for pediatric toy dog breeds OR in
+response to hypoglycemia in dogs or cats.
+Add 50 mL 50% dextrose to 1 L fluid bag to create a2.5% dextrose solution.
+2.Acute surgical blood loss
+/H17034Increase fluid rate (up to 10 mL/kg/hr) while surgically
+correcting the issue (e.g., dropped pedicle).
+/H17034Consider that it takes three times as much crystalloidfluid volume to replace one volume of blood lost.
+/H17034If blood products are unavailable, and the patient ’sp e r f u -
+sion is compromised, consider a colloid to aid perfusion.
+3.Hypoproteinemia
+/H17034Use canine albumin when total protein is ,2.0 g/dL (a
+dose of 450 mg/kg canine albumin will increase theserum albumin by 0.5 g/dL). Start at a rate of 0.5 to 1mL/kg for 30 min and increase the rate if no adverseeffects are noted. Deliver over 3 –4 hr. For more infor-
+mation, see Mazzaferro EM, Edwards T. Update onalbumin therapy in critical illness. Vet Clin North Am
+Small Anim Pract 2020;50(6):1289 –305.
+/H17034Use a colloid with a crystalloid when total protein is ,4.0
+g/dL (hetastarch 1 –5 mL/kg/hr in the anesthetized patient).
+/H17034Use fresh frozen or frozen plasma when available.
+Consider that it takes /C2420–25 mL/kg to raise the
+albumin by 0.5 g/dL, and for large-breed dogs, thiscould be cost prohibitive. For specific doses, see BeerKS, Silverstein DC. Controversies in the use of freshfrozen plasma in critically ill small animal patients. J
+Vet Emerg Crit Care (San Antonio) 2015;25(1):101 –6.Use of synthetic colloids in patients is currently
+controversial because of safety and efficacy considerations
+and lack of evidence-based consensus.
+For more information on colloids, see Section 7,
+Questions and Controversies in Fluid Therapy.Veterinary Practice Guidelines
+JAAHA.ORG 145Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 16 ---
+Anemia
+Do not withhold ﬂuids in anemic patients. If an anemic patient is
+also dehydrated or hypovolemic, provide ﬂuid therapy while recog-
+nizing that patients with a low hematocrit may require blood pro-
+ducts. In healthy patients, ﬂuid resuscitation has not been shown to
+decrease hemoglobin concentrations.34Fluid therapy may result in a
+beneﬁcial increase in microvascular ﬂow and perfusion with an overall
+increase in oxygen delivery in patients with hypovolemic or distribu-tive shock. However, ﬂu i da d m i n i s t r a t i o ni nn o n –ﬂuid responders or
+ﬂuid-overloaded patients can lead to a relative, but not absolute,
+r e d u c t i o ni nh e m o g l o b i nc o n c e n t r a t i o n( “dilutional anemia ”), which
+can cause a paradoxical decrease in oxygen delivery.
+Carefully monitor anemic patients and thoroughly assess them
+for shock, hypovolemia, dehydration, and need for maintenance ﬂuids.
+These needs should be addressed through an appropriate ﬂuid pre-
+scription. These patients may become transfusion dependent when
+appropriately resuscitated or rehydrated. Transfusion triggers (e.g.,
+heart rate, mucus membrane color, capillary re ﬁll time, respiratory rate
+and effort, pulse quality, blood pressure, mentation, and attitude)
+should be considered in conjunction with laboratory test results (e.g.,
+packed red blood cell count and trends, hematocrit, hemoglobin levels,and blood lactate) to determine the need for a blood transfusion.
+35,36
+Azotemia
+Azotemic patients have varying ﬂuid requirements that depend on fac-
+tors such as their hydration status (including both dehydration and
+ﬂuid overload), urine production levels, acute versus chronic onset,
+acid-base and electrolyte status, the underlying cause of the azotemia,
+and the extent of its severity.37These patients present special monitor-
+ing challenges as they might experience xerostomia (dry mouth) sec-ondary to uremia,
+38prolonged skin tenting due to reduced skin elastic-
+ity associated with aging, concentrated retained urine, and inaccurate
+relative creatinine levels due to decreased muscle mass.39Additionally,
+there may be a lack of a baseline creatinine concentration or previous
+body weight for comparison. Anecdotal techniques to assess dehydra-
+tion include evaluating skin turgor over the rib cage, analyzing weighttrends and sodium concentrations, ﬂuid and food intake history, and
+identifying signs of ﬂuid overload (see Section 6, Fluid Overload).
+In cases in which patients are not hypotensive, the ﬂuid prescription
+should provide a gradual correction of dehydration, whereas patientswith signi ﬁcant renal compromise should receive ﬂuids at slower rates.
+Fluid therapy is not the mainstay of treating azotemic patients. Rather, it
+is to support the kidneys by correcting treatable abnormalities associatedwith renal compromise so that the kidneys can heal themselves. Key
+aspects entail reducing sodium and chloride load,
+40managing blood
+pressure, treating anemia41,42and infections, ensuring adequate short-
+term nutrition (without protein restriction), and addressing primaryconditions that may trigger secondary AKI (e.g., acute pancreatitis)43or
+acute-on-chronic kidney disease presentations. Fluid requirements for
+patients with chronic kidney disease vary depending on the severity of
+polyuria and polydipsia along with other clinical signs.44
+Heart Disease
+The most important consideration for ﬂuid therapy in patients with
+cardiac disease is to prevent the onset of heart failure.45For cardiac
+patients, therapeutic goals include increasing myocardial contractil-
+ity, decreasing preload and afterload, counteracting the pathological
+effects of the renin-angiotensin-aldosterone system, improving vaso-dilation, and optimizing diastolic ﬁlling.
+46,47
+Cardiac patients may experience dehydration, relative hypovolemia,
+electrolyte disturbances, moderate to severe azotemia, and metabolic
+imbalances caused by heart failure and medications. Fluid therapy is fre-
+quently avoided in cardiac patients owing to its potential to increase
+preload in left-sided heart failure, increase afterload, and decrease
+venous return in right-sided heart failure (especially in the presence
+of increased intra-abdominal pressure from ascites).48–50Whenever
+possible, ﬂu i di n t a k es h o u l db ep r o v i d e de n t e r a l l y ,s u c ha st h r o u g h
+water and a canned diet. When ﬂuid therapy is necessary, administer
+0.45% NaCl with 2.5% dextrose IV at half to daily maintenance rates
+(See Table 9 for maintenance rates), depending on the patient ’s needs
+and tolerance of supplemental ﬂuids.51Hypotension in patients with
+congestive heart failure should be addressed by considering positiveinotropes.
+Cardiorenal Disorders
+The cardiorenal axis is an important consideration51because a path-
+ological state in either the cardiovascular or renal system has the
+potential to affect the other.52Renal disease treatment focuses on
+maintaining hydration with enteral water, so less con ﬂict exists with
+heart disease treatment; however, the administration of additional
+ﬂuid therapy presents challenges. Cardiac medications may poten-
+tially lead to mild azotemia through diuresis (e.g., furosemide)53and
+decreased glomerular ﬁltration rate (GFR) (e.g., enalapril and telmi-
+sartan).54It is crucial to consistently monitor for ﬂuid overload,
+severe progressive azotemia, worsening of heart failure, changes in
+blood pressure, and other relevant indicators to ensure that these
+patients do not decline as a result of ﬂuid therapy. Even with the best
+possible therapy, this can be a signi ﬁcant challenge.
+Patients with Hypovolemia and Edema
+Alterations in Starling ’sf o r c e s( h y d r o s t a t i ca n do n c o t i cp r e s s u r e )
+(Figure 2) may contribute to the development of edema in veterinary
+patients. Common causes of edema include vasculitis, hypoalbumi-
+nemia, heart failure, kidney failure, lymphatic obstruction, and
+146 JAAHA | 60:4 Jul/Aug 2024Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 17 ---
+thrombosis.55Fluid therapy in hypovolemic, edematous patients pre-
+sents a therapeutic challenge, and the underlying cause of the edema
+must be taken into consideration in order to safely provide ﬂuids.
+When edema results from hypoalbuminemia, intravascular vol-
+ume resuscitation and restoration are paramount, and colloids can
+be used to raise the colloid oncotic pressure. This can be accom-
+plished with rapid administration of synthetic colloids (e.g., hetas-tarch and tetrastarch [although their use is controversial; see Sec-
+tion 7, Questions and Controversies in Fluid Therapy]), canine-
+speciﬁc albumin (CSA) in dogs, human serum albumin in dogs or
+cats (which may predispose patients to allergic reactions or anaphy-
+laxis), and veterinary plasma products (e.g., fresh frozen plasma, fro-
+zen plasma, and cryoprecipitate-poor plasma [CPP]).
+Although plasma products are less prone to induce allergic reactions,
+large plasma volumes are needed to signi ﬁcantly change albumin concen-
+trations ( /C2422 mL/kg plasma to increase serum albumin by 0.5 g/dL),
+which results in higher costs of care and risk of volume overload. In onestudy, there was no difference in mean serum albumin concentrations
+before and after transfusion with fresh frozen plasma (median dose of
+15–18 mL/kg).
+56Thus, although a plasma bolus may be used to treat hypo-
+volemia in edematous patients, its use for this purpose is controversial.57
+A continuous rate infusion (CRI) of canine CPP, administered
+at a rate of 1.1 –2.2 mL/kg/hr, has been described in a case report for
+treating hypoalbuminemia.58This may be a more reasonable
+approach to treating hypoalbuminemia because CPP has a higher
+albumin concentration than other plasma products,59although CPP
+is less widely available.58
+CSA appears to be a relatively safe alternative to synthetic col-
+loids and increases albumin concentrations more ef ﬁciently than
+plasma products.60,61In one study, CSA administration improved
+the shock index in hypovolemic canine patients.61In another study,
+CSA increased arterial blood pressure within 2 hr of administration
+in dogs with septic peritonitis.60
+Giving colloids to patients with edema due to vasculitis may be
+controversial, as colloids may leak into the interstitial space and worsen
+interstitial edema. In these patients, judicious colloid use combined with
+lower volumes of crystalloids is recommended. Overall, regardless of thecause of edema, use crystalloids judiciously in all affected patients.
+Low-dose diuretics may be considered in patients with edema,
+but only in normotensive, normovolemic patients.
+Traumatic Brain Injury
+The primary ﬂuid therapy goal in treating veterinary patients who have
+TBI is optimizing cerebral perfusion pressure and mean arterial blood
+pressure. The Brain Trauma Foundation guidelines for human patients
+recommend maintaining systolic arterial blood pressure between 100and 110 mm Hg to reduce mortality and improve outcomes.
+62Studies that evaluate the ideal ﬂuid choice for veterinary patients
+with TBI are limited. However, information based on human clinical
+studies and swine and rodent research studies supports the use of
+packed red blood cells, plasma, and platelets over crystalloid ﬂuids
+because of better outcomes in patients with ongoing hemorrhage.63,64
+Osmotherapy —using osmotic agents (e.g., hypertonic saline or
+mannitol) to reduce intracranial content volume —is common in
+treating patients who have TBI (Figure 10). Various studies and a
+meta-analysis in human medicine suggest that both mannitol and
+hypertonic saline effectively lower intracranial pressure, but there is
+no evidence to recommend one over the other.65–67Hypertonic
+saline may have the advantage of avoiding diuresis, increasing car-diac preload, and positively impacting cerebral perfusion.
+65In dogs
+and cats, mannitol is usually dosed at 0.5 –1 g/kg IV given over 15
+min with a micro ﬁlter, whereas hypertonic saline (NaCl 7.2%) is
+dosed at 1 –6 mL/kg IV given over 15 min. Continuous infusion of
+hypertonic saline has been described in human patients, but it is not
+thought to signi ﬁcantly affect outcome.68
+Electrolyte Disturbances
+Electrolyte imbalances are common in ill patients. Proper ﬂuid selec-
+tion and, if necessary, supplementation of electrolytes aid in restoring
+balance.
+Hypokalemia
+Dogs and cats in poor health often experience hypokalemia. This
+may be due to increased urinary or gastrointestinal loss, prolonged
+anorexia, alkalemia, an aldosterone-secreting tumor, or treatment
+with potassium-poor replacement ﬂuids.69Clinical signs of hypokale-
+mia may include weakness, cardiac arrhythmias, and respiratory
+muscle impairment.70
+Treat hypokalemia with KCl supplementation in IV ﬂuids
+(Table 11). Determine the KCl dosage based on the patient ’ss e r u m
+potassium concentration. For IV KCl administration, calculate the
+total mEq/kg/hr to be administered, ensuring that the supplementa-
+tion rate does not exceed 0.5 mEq/kg/hr, as rapid administration can
+be fatal.70Never bolus ﬂuids supplemented with KCl. Before admin-
+istration, invert the bag and thoroughly mix the ﬂuids to ensure uni-
+form dispersion of the KCl.71Exercise caution with highly supple-
+mented ﬂuids or KCl CRIs to prevent inadvertent bolus or over
+administration to the patient. Use appropriate ﬂuid pump settings or
+syringe pumps as safeguards and educate staff on the risks of over
+administration. In cases of persistent hypokalemia even after KCl
+supplementation, check magnesium levels to determine whether
+magnesium supplementation is needed.72Veterinary Practice Guidelines
+JAAHA.ORG 147Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 18 ---
+Sodium imbalances
+Sodium concentration disturbances are common. These cases should be
+managed with deliberate care to prevent potentially life-threatening ﬂuid
+shifts in the brain that may occur after rapid correction, faster than0.5 mEq/kg/hr, of chronic (greater than 24 –48 hr) sodium alterations.
+Hyponatremia. Patients with acute euvolemic hyponatremia (e.g.,
+primary polydipsia) may present with neurologic signs and should be
+treated with 2 –6m L / k go f3 –7.5% hypertonic saline over 10 –15
+min.
+73–75In symptomatic chronic hyponatremia, a similar approach
+using hypertonic saline should be taken. Once neurological clinical signs
+resolve, treatment should continue similarly to that in asymptomaticchronic hyponatremia patients. In asymptomatic chronic hyponatremiapatients, isotonic crystalloids (Table 12C) that have a sodium content
+/C2410 mEq/L higher than the patient ’s sodium should be selected. A rate
+of correction should be calculated that does not exceed 0.5 mEq/L/hr ora maximum sodium increase of 10 –12 mEq/L/day to prevent osmotic
+demyelination syndrome (Tables 12A, 12D).
+76
+Patients with hypovolemic hyponatremia should be resuscitated
+with a crystalloid that contains a similar sodium content to the patient ’s
+current sodium concentration.74,75Depending on the severity of the
+hyponatremia, commercial isotonic crystalloids may not be availablewith similar sodium contents. In these cases, custom ﬂuids can be tai-
+lored by adding sterile water to an isotonic crystalloid to achieve the
+desired sodium content. These ﬂuids should be used exclusively for
+bolus administration until hypovolemia is resolved. Hypotonic ﬂuids
+should not be used in patients with hyponatremia.
+75
+Hypernatremia. The strategies to treat hypernatremia are similar
+to those taken with hyponatremia regarding the considerations of chro-nicity and rate of correction of 0.5 mEq/L/hr. Sodium concentrationdrops that are faster than this rate in patients with chronic hypernatre-
+mia may cause abrupt ﬂuid shifts that lead to cerebral edema.
+77How-
+ever, patients with acute hypernatremia can undergo rapid sodium con-centration correction without the risk of cerebral edema, by usinghypotonic IV ﬂuids. Calculate the free water de ﬁcit and administer
+ﬂuids at an appropriate rate while monitoring sodium concentrations
+frequently to allow for a safe resolution of hypernatremia (Table 13A).
+Hypochloremia. Relative shifts in chloride usually occur with shifts
+in sodium. To assess true chloride disturbances in the face of sodiumderangements, chloride should be corrected using the following equation:
+Corrected Cl 5ðnormal Na =measured Na Þ3measured Cl
+In patients with true hypochloremia that have developed metabolic
+alkalosis, 0.9% NaCl has historically been the ﬂuid of choice because
+of its high chloride concentration (154 mEq/L). Recently, concerns
+have been raised about the effect of 0.9% NaCl on kidney function
+owing to the potential risk of causing hyperchloremia, which hasbeen shown to cause renal vasoconstriction and reduced renal bloodno yesClinical signs of TBI
+Analgesia
+SAP < 90 mm Hg?
+SAP < 90 mm Hg?
+Vasopressors Osmotherapy***Deteriorating 
+• Close neurologic
+monitoring
+• Maintain normovolemia
+and hydrationsigns?**Fluid resuscitation*
+Immediate 
+hemorrhage control
+yesno
+yesno
+FIGURE 10
+Approach to Fluid Therapy for Dogs and Cats with Traumatic Brain Injury
+/C3Fluid resuscitation techniques can be any one of the following
+or a combination thereof: (1) 10 –20 mL/kg crystalloids (Plasma
+Lyte or Normosol-R) IV rapid infusion up to 60 –90 mL/kg. (2)
+5–10 mL/kg 6% HES (tetrastarch) IV rapid infusion up to
+40–50 mL/kg. (3) 5 –10 mL/kg plasma rapid infusion IV up to
+20–30 mL/kg. (4) 3 –4 mL/kg 7% HTS IV over 10 –15 min. (5)
+Whole blood or pRBC, if indicated.
+/C3/C3Altered level of consciousness with or without bilateral or uni-
+lateral miotic pupils; unresponsive mid range pupil(s) or mydri-asis; loss of the oculocephalic re ﬂex; bradycardia with hyperten-
+sion (Cushing re ﬂex); posturing (opisthotonus, decerebellate,
+decerebrate); alteration of the respiratory pattern.
+/C3/C3/C31 g/kg mannitol IV up to 3 doses q60–90 min OR 3 –4 mL/kg
+7% HTS IV.
+dReprinted with permission from Pigott A, Rudloff E. Traumatic
+brain injury –a review of intravenous ﬂuid therapy. Front Vet Sci .
+2021;8:643800.
+148 JAAHA | 60:4 Jul/Aug 2024Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 19 ---
+TABLE 11
+Guidelines for Potassium Supplementation in Fluids
+TABLE 12A
+Approach to Fluid Therapy in Hyponatremic Patients
+1. Is hyponatremia acute or chronic?
+ACUTE CHRONIC
+A. Raise the serum sodium concentration as quickly as possible. 
+B. Administer isotonic crystalloids with a sodium 
+concentration greater than the patient’s serum sodium 
+concentration.
+C. Recheck serum sodium concentrations 2–4 hr after 
+starting therapy to assess therapeutic response, then 
+recheck them every 6–8 hr afterward.A. It takes 24–48 hr for the brain to compensate for 
+hyponatremia.
+B. Correct chronic hyponatremia slowly to prevent osmotic 
+demyelination syndrome.
+C. Increase the serum sodium concentration by no more 
+than 0.5 mEq/L/hr for a maximum total correction of 10–12 mEq/L/day.
+2. Does the patient have clinical signs of hyponatremia?
+A. Clinical signs include vomiting, disorientation, and seizures secondary to cerebral edema. B. If symptomatic, treat with 3, 5, or 7.5% hypertonic saline at a recommended dose of 2–6 mL/kg given over 10–15 min.
+1
+C. In human patients, serum sodium concentration increases of 4–6 mEq/L are often enough to alleviate clinical signs.1
+3. Is the patient hypovolemic?
+A. 
+solution capable of expanding the intravascular space (Table 12c).1
+B. Repeat as needed until perfusion parameters are restored. 
+Maintenance or hypotonic ﬂuids (0.45% NaCl, 5% dextrose in water) have low sodium concentrations and are not indicated 
+to treat hypovolemia.1
+4. Does the patient have chronic hyponatremia without neurologic signs?
+A. Slowly correct the sodium concentration at a maximum rate of 0.5 mEq/L/hr or 10-12 mEq/L/day.
+B. Treat asymptomatic patients with mild water restriction and monitor their serum sodium concentrations.
+C. Use the Adrogue-Madias formula below to calculate the expected change in sodium concentration when 1 L of a speciﬁc 
+ﬂuid type is administered (see Table 12c).2
+Expected change in serum sodium concentration with 1 L of ﬂuid =
+Fluid sodium concentration − serum sodium concentration / (total body water + 1)
+Where total body water = body weight in kg × 0.6
+1. Adrogue HJ, Tucker BM, Madias NE. Diagnosis and management of hyponatremia: a review. JAMA. 2022;328(3):280-91.
+2. Heinz J, Cook A. Evaluation and management of the hyponatremia patient. Today ’sV e t e r i n a r yP r a c t i c e . 2022;12(2). February 10, 2022. Available at https://
+todaysveterinarypractice.com/internal-medicine/evaluation-and-management-of-the-hyponatremic-patient/ . Accessed January 4, 2024.Veterinary Practice Guidelines
+JAAHA.ORG 149Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 20 ---
+TABLE 12D
+Calculating Expected Changes in Sodium Concentration
+1. Heinz J, Cook A. Evaluation and management of the hyponatremia patient. Today ’sV e t e r i n a r yP r a c t i c e . 2022;12(2). February 10, 2022 Available at https://
+todaysveterinarypractice.com/internal-medicine/evaluation-and-management-of-the-hyponatremic-patient/ . Accessed January 4, 2024.TABLE 12B
+Common Causes of Acute and Chronic Hyponatremia in Dogs and
+CatsTABLE 12C
+Sodium Concentration of Isotonic Crystalloids
+/C3Evidence in human patients suggests that 0.9% NaCl may be detrimental to kidney
+health.1,2
+1. Ostermann M, Randolph AG. Resuscitation ﬂuid composition and acute kidney
+injury in critical illness. New England Journal of Medicine. 2022;386(9):888-889.
+2. Sigmon J, May CC, Bryant A, Humanez J, Singh V. Assessment of acute kidneyinjury in neurologically injured patients receiving hypertonic sodium chloride: doeschloride load matter? Annals of Pharmacotherapy . 2020;54(6):541-546.
+150 JAAHA | 60:4 Jul/Aug 2024Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 21 ---
+TABLE 13A
+Approach to Fluid Therapy in Hypernatremic Patients
+1. Is hypernatremia acute or chronic?
+ACUTE CHRONIC
+• Use hypotonic intravenous ﬂuids to correct. 
+• Can undergo rapid sodium concentration correction 
+without the risk of cerebral edema.
+• Calculate the free water deﬁcit and administer at an 
+appropriate rate (see #3 below). 
+• Monitor sodium concentrations every 4-6 hours. • It takes 24–48 hours for the brain to compensate for 
+hypernatremia. 
+• Correct chronic hypernatremia slowly to prevent 
+cerebral edema. 
+• Decrease serum sodium concentration by no more than 
+0.5 mEq/L/hr for a maximum total correction of 10–12 mEq/L/day (see #3 below). 
+2. Is the patient hypovolemic?
+• 
+• Maintenance or hypotonic ﬂuids (0.45% NaCl, 5% dextrose in water) have low sodium concentrations and are not indicated 
+to treat hypovolemia. 
+• Fluids listed in Table 12c are suitable options to treat hypovolemia (5-10 mL/kg [cat] and 15-20 mL/kg [dog] given over 
+15–30 minutes and repeated as needed) until perfusion parameters are restored.
+3. Calculations for chronic and acute hypernatremia
+Estimate the amount of water lost (free water deﬁcit).Administer ﬂuids that are relatively dilute compared with plasma. 
+Free Water Deﬁcit (FWD) in Liters (L) = [(Patient Na/Desired 
+Na) -1]  (0.6  Weight [kg])Modify the calculation of the free water deﬁcit according 
+to whether hypernatremia is acute or chronic, using the 
+subsequent formulas:
+FWD replacement time (hr) for acute hypernatremia = 
+Patient Na − Target Na
+1 
+FWD replacement time (hr) for chronic hypernatremia = 
+(Patient Na − Target Na) × 21  
+In general, replace the free water deﬁcit by administering 
+5% dextrose in water.
+4. Is the patient dehydrated?
+• 
+• Correct dehydration over 12–24 hours to minimize shifts in sodium.1 
+• Recheck sodium concentrations every 4–6 hours to prevent dramatic changes. 
+• Limit drinking water until the patient’s sodium is close to the target concentration.
+1. Heinz J, Cook A. Evaluation and management of the hyponatremia patient. Today ’sV e t e r i n a r yP r a c t i c e. 2022;12(2). February 10, 2022. https://todaysveterinarypractice.
+com/internal-medicine/evaluation-and-management-of-the-hyponatremic-patient/ . Accessed January 4, 2024.
+TABLE 13B
+Common Causes of Acute and Chronic Hypernatremia in Dogs and CatsVeterinary Practice Guidelines
+JAAHA.ORG 151Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 22 ---
+ﬂow.78,79To safely use 0.9% NaCl in hypochloremic renal patients,
+recheck chloride concentrations frequently, and once chloride levelshave been corrected, use a buffered isotonic crystalloid (e.g., lactatedRinger ’s solution or Plasma-Lyte) instead.
+Hypocalcemia. Use calcium gluconate to treat patients with clin-
+ical signs of hypocalcemia (e.g., weakness, tachycardia, and tremors).
+Lactated Ringer ’s solution contains a very small amount of calcium,
+and it will not resolve hypocalcemia.
+Hypercalcemia. Historically, 0.9% NaCl has been recommended
+for calciuresis in hypercalcemic patients, but its effects are generallymild. Because of concerns regarding kidney injury with 0.9% NaCl,consider using a balanced isotonic crystalloid instead in patients atrisk of or with current kidney disease.
+Vasodilatory States
+Patients may exhibit signs of poor perfusion or shock (such as tachy-
+cardia, hypotension, weak peripheral pulses, or elevated lactate
+concentrations) due to generalized vasodilation, also referred to as
+vasodilatory or maldistributive shock. In vasodilatory shock, there isexcessive dilation of blood vessels, leading to a signi ﬁcant decrease in
+blood pressure and inadequate perfusion of vital organs.
+80,81Com-
+mon clinical conditions that can lead to vasodilation include acute
+pancreatitis, anaphylaxis, sepsis, trauma, and parvoviral enteritis.
+Historically, vasodilatory shock treatment has revolved around rapid
+administration of ﬂuids, the administration of broad-spectrum anti-
+biotics, establishing source control, and using pharmacologic inter-
+ventions to maintain adequate mean arterial blood pressure.80,82
+Because distinguishing between hypovolemic and vasodilatory
+shock based solely on physical examination ﬁndings is challenging,
+and because patients with vasodilatory shock may have some degree
+of hypovolemia, a ﬂuid challenge is a reasonable treatment approach
+in these situations. Poor or limited response to ﬂuid boluses may
+suggest vasodilation. In cases in which there is a poor response toﬂuid therapy, vasopressor therapy should be considered.
+82In patients
+with suspected anaphylaxis, it is crucial to administer epinephrine, a
+vasopressor, as soon as possible.83
+Thermoregulation Disturbances
+Hypothermia . Whenever possible, use warm ﬂuids for resuscitation
+or rehydration in hypothermic patients for active core rewarming.
+The task force believes warm ﬂuids will at least mitigate worsening
+hypothermia compared with the administration of room temperature
+ﬂuids. It has been recommended to warm IV ﬂuids to 40 –42/C14C
+(104 –107.6/C14F).84Fluids can be warmed using numerous methods,
+including immersion of IV tubing in warm water, microwaving of
+theﬂuid bag, in-line ﬂuid warmers, and prewarming of ﬂuids in a
+convection oven.85However, the effect of warm ﬂuids in producing
+an increase in body temperature is controversial.86–88H y p o t h e r m i ai sc o m m o n l yo b s e r v e di nc a t si ns h o c k .A g g r e s s i v e
+ﬂuid resuscitation with the aim of restoring normal blood pressure in
+hypotensive, hypothermic cats will often lead to interstitial ﬂuid overload,
+pulmonary edema, and pleural effusion. Administering conservative ﬂuid
+volumes (e.g., 5 mL/kg IV boluses at a time) concurrent with activerewarming is an essential part of shock resuscitation therapy in cats.
+89
+Hyperthermia . Fluid therapy is important in treating hyperther-
+mia in dogs and cats. Administering room temperature ﬂuids may
+assist with cooling and maximize volume expansion.90
+Hypoglycemia
+Administer dextrose to patients exhibiting clinical signs related to
+hypoglycemia, such as lethargy, weakness, ataxia, or seizures. For abolus, use 0.5 –1m L / k g( 0 . 2 5 –0.5 g/kg) of 50% dextrose, which
+should be diluted at a ratio of 1:2 –1:4 and administered over 2 –5
+min.
+91In most cases, the bolus should be followed by a CRI of
+1.25–5% dextrose (Table 14) until the patient can maintain normo-
+glycemia. The concentration of dextrose instilled in ﬂuids depends
+on the severity of the patient ’s hypoglycemia and ﬂuid administra-
+tion rate. It is advisable to administer dextrose concentrationsexceeding 5% through a central line to avoid phlebitis.
+Note that in patients with insulinoma, dextrose administration
+may perpetuate hypoglycemia. Therefore, dextrose should only be
+given when patients present with clinical indications of hypoglyce-
+mia, and the lowest effective concentration should be used to preventthe manifestation of clinical signs.
+92
+Section 6: Fluid Overload
+Top Three Takeaways
+1. First, do no harm. Fluid overload is a potentially life-threatening
+complication for which no universally effective therapy exists.
+2. Excessive iatrogenic ﬂuid administration is the most common cause
+ofﬂuid overload. Prevention and vigilant monitoring are crucial to
+mitigate the potential risks associated with ﬂuid therapy.
+3. Patients with impaired renal function are at an increased risk of
+ﬂuid overload because of their kidneys ’inability to increase urine
+output and effectively excrete excess ﬂuid.TABLE 14
+How to Formulate Dextrose-Containing Fluids
+/C3Remove an equivalent amount of the isotonic crystalloid ﬂuid from the bag before
+adding dextrose.
+152 JAAHA | 60:4 Jul/Aug 2024Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 23 ---
+Overview
+Fluid overload, or ﬂuid intolerance, is a clinical spectrum that spans
+from hypervolemia to life-threatening edema and cavitary effusions.
+The guidelines task force has proposed that ﬂuid intolerance may be
+the more appropriate term for this condition, as this term more
+accurately describes how the amount of ﬂuid needed to overload a
+patient is dependent on their tolerance for a given amount of ﬂuids.
+“Fluid intolerance ”also encompasses both iatrogenic overload and
+overload due to underlying comorbidities. However, given that “ﬂuid
+overload ”is still widely used and recognized within the veterinary
+medical profession, it will be the primary term used in these guide-
+lines to refer to this condition.
+All patients receiving ﬂuid therapy are susceptible to ﬂuid
+intolerance/ ﬂuid overload; however, excessive administration is the
+most common cause of ﬂuid overload . Hypervolemia might be more
+common than perceived, as early signs of increased body weight and
+positive ﬂuid balance are dif ﬁcult to assess. Typically, hypervolemia
+is recognized when advanced signs such as edema and effusionsoccur.
+93It is important to understand the harms of ﬂuid overload
+and the need to prevent this complication, given the limited effec-
+tiveness of treatments.
+Recognizing and Managing Fluid Overload
+As discussed earlier, ﬂuid movement is in ﬂuenced by hydrostatic pres-
+s u r e ,o n c o t i cp r e s s u r e ,a n dv a s c u l a rp e r m e a b i l i t y .P a t i e n t sw h or e c e i v e
+excess ﬂuids during resuscitation, maintenance, or anesthesia ﬁrst
+develop hypervolemia, which causes an increase in hydrostatic pres-
+sure. A decrease in oncotic pressure can occur with dilution of plasma
+proteins associated with excessive ﬂuid administration or protein-
+losing disease. Hypervolemia, as well as in ﬂammation and injury, can
+damage the glycocalyx and increase vascular permeability. Together,
+these changes in ﬂuid dynamics promote movement of ﬂuid out of
+vessels into the interstitial space. As the interstitial space expands, it
+becomes more compliant, accommodating larger quantities of intersti-
+tialﬂuid, further exacerbating the problem of ﬂuid overload.
+Changes in ﬂuid dynamics favoring accumulation of interstitial
+ﬂu i da r eo f t e ns e e ni nc o m b i n a t i o nw i t ht h eb o d y ’s physiological
+response to stress. Hypovolemia, illness, and injury lead to water andsodium retention and increased thirst. This response exacerbates the
+risk of ﬂu i do v e r l o a da sr e s u s c i t a t i o n ﬂuids are administered to criti-
+cally ill patients when their bodies are primed to retain ﬂuid.
+94
+By the time clinical edema or effusions are noted, internal edema
+will also be present that can negatively impact organ function (Fig-
+ure 11).94Once edema has occurred, it is very dif ﬁcult to reverse even
+with ultra ﬁltration. Thus, prevention and early recognition are keys to
+minimizing the morbidity and mortality associated with ﬂuid overload.Although all patients receiving IV ﬂuids are at risk of ﬂuid overload,
+those with impaired renal function, heart disease, or liver disease or thosereceiving large ﬂuid volumes are at highest risk (Box 5). Pets with oligo-
+anuric renal failure are particularly susceptible to ﬂuid overload because
+they are unable to excrete excess ﬂuid. Yet these patients often receive
+aggressive ﬂuid therapy necessitating close monitoring for weight gain,
+hypertension (in presence of AKI/CKD), or early signs of edema.
+93,94,95
+Box 5: Common Fluid Overload Case Scenarios
+1.Continued IV fluid therapy in a feline patient with
+renal disease . A cat is dehydrated, uremic, and anuric on
+presentation. Although IV fluid administration improveshydration status, uremia persists. IV fluids are continuedwith the misguided goal of improving GFR. However, noeffective increase in GFR will occur no matter how muchfluid this patient receives.
+2.IV fluid therapy in a patient anesthetized for a lengthy
+procedure . A dog receives 10 mL/kg of fluids throughout
+a 6 hr procedure and develops respiratory distress duringanesthetic recovery.
+3.SC fluid therapy in a cat with occult or fulminant heart
+disease . A cat presents for evaluation of vomiting associ-
+ated with malaise of congestive heart failure and is givenSC fluids despite no evidence of dehydration.Brain edema
+• Altered mental status
+Lung edema
+Myocardial 
+edema• Pulmonary
+edema
+• Hypoxemia• Pleural effusion
+• HypoventilationKidney edema
+• Decreased
+cardiac output
+• ArrhythmiasHypervolemia
+• Decreased renal
+blood ﬂow
+• Decreased GFR
+Intestinal edema• Increased body weight
+• Dilution of coagulation
+factors, risk of bleeding
+• Dilution of oncotic factors
+Liver edema
+• Ileus
+• Decreased
+absorption
+• Increased gut
+permeability
+• Vomiting, diarrhea• Ascites• Decreased liver
+blood ﬂow
+• Altered glucose
+metabolism
+• Decreased drug
+metabolism
+Peripheral (tissue) edema
+• Increased risk of infection• Impaired wound healing• Weakness
+FIGURE 11
+Impact of Fluid Overload on Organ FunctionVeterinary Practice Guidelines
+JAAHA.ORG 153Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 24 ---
+TABLE 15
+Clinical, Radiographic, and Ultrasonographic Findings Associated with Fluid Overload
+Clinical Findings Radiographic Findings Ultrasonographic Findings
+• Increased body weight (>10%)
+• Tissue edema (intermandibular 
+area, limbs, paws, dependent regions, chemosis)
+• Serous nasal discharge• Serous discharge from 
+endotracheal tube in 
+anesthetized patients
+• Increased respiratory rate or 
+• Reduced SPO2
+• Novel murmur, novel gallop 
+sound
+• Gastrointestinal signs (abdominal 
+distention, vomiting, diarrhea, 
+inappetence, anorexia)
+• No change in blood pressure; 
+hypertension rarely associated with ﬂuid overload except in AKI/CKD.
+1,2• Body wall edema• 
+• Pulmonary edema• Cardiomegaly• Enlarged pulmonary artery• Enlarged caudal vena cava
+• Enlarged pulmonary vein
+• Loss of serosal detail• Distended intestines• Subcutaneous edema
+• 
+• B-lines• Enlarged La:Ao• Enlarged caudal vena cava• Decreased caudal vena cava 
+collapsibility index
+• Ascites• Intestinal wall thickening• Ileus• Hyperechoic mesentery and 
+pancreas
+• Hepatic congestion• Gallbladder wall edema• Perirenal edema
+AKI, acute kidney injury; Ao, aorta; CKD, chronic kidney disease; La, Left atrium; SpO2, oxygen saturation
+1. Cole LP, Jepson R, Dawson C, Humm K. Hypertension, retinopathy, and acute kidney injury in dogs: A prospective study [published correction appears inJ Vet Intern Med .
+2020 Nov;34(6):3168]. J Vet Intern Med . 2020;34(5):1940-1947.
+2. Park S, Lee CJ, Lee M, et al. Differential effects of arterial stiffness and ﬂuid overload on blood pressure according to renal function in patients at risk for cardiovascular
+disease. Hypertens Res . 2019;42:341 –353.
+Box 6: Common Misconceptions That May Lead to Fluid Overload
+Misconception: IV fluids increase GFR in normally hydrated patients.
+Correction: IV fluid administration will not increase GFR in a patient that is hydrated and euvolemic.
+Misconception: Hypertension can be used to diagnose hypervolemia.
+Correction: Hypertension is rarely associated with hypervolemia or edema. Some patients with renal disease may develop hyper-
+tension concomitant with hypervolemia.
+Misconception: If a patient is hypotensive, keep giving fluid boluses until their blood pressure improves.
+Correction: Some hypotensive patients will not respond to IV fluid therapy. If a patient is not responding to fluid therapy, discon-
+tinue fluid boluses and correct any electrolyte or glucose disturbances and consider vasopressor treatment.
+Misconception: Hemodialysis is always a backup option for treatment of fluid overload if diuretics do not work.
+Correction: Hemodialysis has a very limited therapeutic role in treating edema because the movement of edema fluid into the vas-
+cular space is limited.
+154 JAAHA | 60:4 Jul/Aug 2024Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 25 ---
+To reduce the risk of ﬂuid overload:
+/C15Use a low-volume strategy for ﬂuid resuscitation.
+/C15Tailor ongoing ﬂuid therapy to meet each patient ’s needs.
+/C15Include all ﬂuids delivered as medications, infusions, ﬂushes, and
+enteral feedings to improve the accuracy of ﬂuid balance calcula-
+tions. Cats and small dogs with smaller blood volumes can quicklybecome ﬂuid overloaded if clinicians are not mindful of the volumes
+administered.
+/C15Limit the total ﬂuid volume delivered in anesthetized patients during
+lengthy procedures. As a general rule, patients receiving anestheticﬂuids should receive no more than the daily recommended total of
+20 mL/kg/24 hr.
+94
+/C15Consider enteral water supplementation.
+To recognize hypervolemia sooner, weigh patients frequently
+(every 6 –12 hr) to identify a 10% increase in body weight compared
+with the initial baseline.93,94Regularly document all ﬂuid inputs and
+outputs to help identify positive ﬂuid balance. Additional signs of
+ﬂuid overload are summarized in Table 15.
+Once edema has started, it can become life-threatening and be
+very dif ﬁcult to resolve. See Box 6 for common misconceptions that
+can lead to ﬂuid overload. There is no de ﬁnitive therapy. General
+therapeutic approaches include sodium and water restriction, discon-
+tinuing IV ﬂuids, administering diuretics, and increasing patient
+mobility (Figure 12). The interventions and success of those inter-ventions are limited. Thus, the best approach is to avoid ﬂuid
+overload.
+93,94Section 7: Questions and Controversies in
+Fluid Therapy
+Top Three Takeaways
+1. Fluids are drugs with complex interactions in the body and require
+an understanding of how and when to prescribe them. Clinicians
+must carefully consider hydration and volume status, electrolyte
+and acid-base derangements, and underlying comorbidities whenprescribing ﬂuid therapy.
+2. Questions concerning the safety of synthetic colloids, the ef ﬁcacy of
+plasma to treat hypoalbuminemia, whether potassium-containingﬂuids are safe in treating hyperkalemic patients, and whether IV
+ﬂuids are indicated during cardiopulmonary resuscitation (CPR) are
+answered here.
+3. The RECOVER Advanced Life Support guidelines for veterinary
+CPR advocate a careful approach to the ﬂuid prescription in
+patients with cardiopulmonary arrest, owing to the possibility of
+reducing oxygen delivery to myocardial and cerebral tissues in
+patients without hypovolemia or distributive shock.
+Overview
+The scarcity of large-scale, blinded, prospective studies on ﬂuid
+therapy in veterinary medicine gives rise to questions and contro-
+versies regarding its application in practice. Clinical decisions often
+must be extrapolated from the existing limited data, further contrib-
+uting to the ongoing discussions and uncertainties surrounding
+ﬂuid therapy.If patient is exhibiting: 
+• Increased body weight
+• Mild or localized peripheral edema
+Active treatment requiredDiscontinuing IV ﬂuids and increasing  
+patient mobility may be adequate Patient is overhydrated Patient has ﬂuid overload
+• Discontinue ﬂuids
+• Provide oxygen support
+• Administer a diuretic• Increase patient mobility• Remove pleural ﬂuid via thoracentesis or ascites via abdominocentesis• Refer patient for hemodialysis• Consider discontinuing ACE inhibitors and ARBs to improve GFR• Respiratory distress
+• Moderate to severe, multifocal peripheral edema• Renal, hepatic, or gastrointestinal dysfunction
+FIGURE 12
+Fluid Overload Therapy Algorithm
+ACE, angiotensin-converting enzyme; ARBs, angiotensin receptor blockers; GFR, glomerular ﬁltration rateVeterinary Practice Guidelines
+JAAHA.ORG 155Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 26 ---
+Are Synthetic Colloids Safe?
+Colloids rapidly expand the intravascular space and have a longer
+duration of action than crystalloids. Their use has long been consid-
+ered “volume-sparing ”as compared with the volume of crystalloids
+required to match their effect. Synthetic colloids (e.g., hydroxyethylstarches [most common], gelatins, and dextrans) are more readily
+available and less costly than natural colloid alternatives such as
+blood products or species-speci ﬁc albumin. Despite their initial
+attractiveness as resuscitation ﬂuids, the use of synthetic colloids in
+critically ill small animal patients is currently controversial because
+of safety and ef ﬁcacy concerns.
+96–100Complications associated with
+their use in human patients include the development of AKI and
+coagulopathy. Colloids are dissolved in NaCl, which delivers a highchloride load to the distal tubule and accounts for some of the renal
+effects seen in humans. There is limited evidence that these same
+complications may occur in critically ill dogs and cats, although moststudies are retrospective evaluations or small experimental
+studies.
+101–120A newer understanding of the function of the endo-
+thelial surface layer121and revision of the Starling hypothesis122,123
+have raised concerns that extravasation of these synthetic macromo-
+lecules increases tissue edema and ultimately reduces oxygen delivery
+in states of increased vascular permeability, such as occurs with sys-
+temic in ﬂammatory response syndrome, sepsis, trauma, and other
+damage to the endothelial surface layer.124
+There is no evidence-based consensus on the optimal use of syn-
+thetic colloids in small animals. Very little evidence exists on whether
+one synthetic colloid is safer or more effective than another. Clinicians
+must carefully weigh risk versus bene ﬁt for individual patients.
+Consider the following before administering synthetic colloids:100
+- Avoid synthetic colloids if the patient is responsive to crystalloid or
+alternative therapies.
+- Synthetic colloids should not be used as a substitute for albumin. In
+cases of severe hypoalbuminemia, natural colloids like plasma pro-
+ducts or albumin should be considered.
+- In complex disease processes, such as sepsis or septic shock, treat-
+ment is multimodal and may involve natural colloids and/orvasopressors.
+- Current evidence suggests a minimal risk of synthetic colloid-
+associated AKI in dogs and cats when administered in small doses
+(,20 mL/kg) for short durations.
+- Administering synthetic colloids to hemodynamically stable patients
+and those with pre-existing azotemia is not advised.
+- Synthetic colloids may be considered for short-term need for colloid
+osmotic pressure support (e.g., during anesthesia for a portosystemicshunt ligation in a patient with hypoalbuminemia).
+Current recommendations for synthetic colloid administration
+include minimizing dose and duration while closely monitoring kid-
+ney function (up to 90 days after exposure), coagulation parameters,hematocrit, and platelet count.
+100Synthetic colloids should be
+avoided or used with caution in patients with pre-existing azotemia,coagulopathy, anemia, and thrombocytopenia.100Some veterinary
+clinicians also consider systemic hypertension and sepsis to be con-traindications for synthetic colloid use.
+99
+Can Plasma Be Used to Address Hypoalbuminemia?
+A serum albumin concentration of ,2.0 g/dL is a negative prognostic
+indicator associated with increased patient morbidity and mortality insmall animals due to development of peripheral edema, impaired tissueperfusion and oxygenation, hypercoagulability, altered protein-bounddrug metabolism, and poor wound healing. In general, natural colloids(e.g., albumin and plasma) are preferred over synthetic colloids toaddress hypoalbuminemia, but they remain controversial because of alack of evidence linking correction of the albumin concentration withimproved outcomes in critically ill veterinary patients
+56,125,126Species-
+speciﬁc albumin products are the recommended transfusion products
+in veterinary patients with severe or worsening hypoalbuminemia.61,125
+Because of the limited availability and cost of species-speci ﬁca l b u m i n ,
+plasma products (e.g., fresh frozen plasma, frozen plasma, and CPP)are sometimes used to treat hypoalbuminemia in dogs and cats.
+127
+Although plasma products contain varying amounts of albumin,59
+complications of plasma transfusions appear to be less risky than xeno-transfusion with human albumin products.
+125,128 –131The volume
+requirement and cost of plasma to raise serum albumin concentrationis a serious limitation in its use for treating hypoalbuminemia. Formany patients, nutritional support is more effective, less challenging,less risky, and less costly than attempting to increase serum albumindirectly with natural colloids.
+132,133
+Are Potassium-Containing “Balanced ”Isotonic Crystal-
+loids Harmful in Hyperkalemic Patients?
+Hyperkalemia is a common electrolyte disturbance in small animal
+patients with conditions such as urethral or bilateral ureteral obstruc-tion, ruptured bladder, hypoadrenocorticism (dogs), anuric or oliguricrenal failure, and others.
+134Many of these patients require ﬂuid resus-
+citation, and clinicians must choose between administering potassium-freeﬂuid (e.g., 0.9% NaCl) or balanced isotonic electrolyte solution
+(e.g., lactated Ringer ’s solution, Normosol-R, and Plasma-Lyte A).
+Balanced isotonic electrolyte solutions for resuscitation contain
+only a small amount of potassium (4 –5 mEq/L) (Table 8). Several
+studies have concluded that potassium-containing isotonic ﬂuids are
+not detrimental for ﬂuid resuscitation and rehydration in hyperkale-
+mic cats with urethral obstruction.
+135,136Balanced isotonic ﬂuids cor-
+rect acid-base imbalances faster than an acidifying ﬂuid such as 0.9%
+NaCl. Balanced isotonic crystalloids also help prevent excessively
+rapid sodium correction in hyponatremic patients who have hyper-
+kalemia (e.g., Addisonian crisis).137It is key to identify and treat the
+underlying cause of hyperkalemia. Further management of severe
+156 JAAHA | 60:4 Jul/Aug 2024Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 27 ---
+hyperkalemia is indicated to prevent cardiac conduction disturbances
+and other life-threatening complications when serum potassium is
+.7 mmol/L.138
+Are IV Fluids Indicated During CPR?
+Fluid therapy is indicated during CPR if it will help mitigate hypovo-
+lemia that led to the cardiopulmonary arrest. IV ﬂuid therapy in the
+form of crystalloid boluses increases preload and cardiac input in
+small animal patients with hypovolemia or inappropriate vasodila-
+tion (e.g., anaphylaxis, sepsis, and systemic in ﬂammatory response
+syndrome). Increasing the intravascular volume in euvolemic
+patients, however, may ultimately decrease perfusion pressures andreduce oxygen delivery to myocardial and cerebral tissues.
+139–142For
+this reason, the RECOVER Advanced Life Support guidelines for vet-
+erinary CPR advocate a careful approach to the ﬂu i dp r e s c r i p t i o ni n
+patients with cardiopulmonary arrest. These guidelines recommend
+ﬂuids for speci ﬁc indications only, such as patients with or likely to
+have hypovolemia or distributive shock.143,144Experimental studies
+in rats and pigs suggest there may be a neuroprotective effect associ-
+ated with hypertonic saline administered during CPR,145–147but clin-
+ical evidence in dogs and cats with cardiopulmonary arrest is lacking.
+Synthetic colloids should be avoided in these patients because of
+potential risks and the absence of a survival bene ﬁt to justify the
+risks.144Patients with signi ﬁcant hemorrhage may require blood pro-
+ducts. Patients with derangements in potassium, calcium, magne-
+sium, glucose, or acid-base status may bene ﬁt from directed therapy
+to help correct life-threatening abnormalities. Patients with acutelipid-soluble toxicoses may bene ﬁtf r o mI Vl i p i de m u l s i o nt h e r a p y .
+Section 8: Fluid Administration
+and Monitoring
+Top Three Takeaways
+1. Using skilled veterinary technicians to administer and monitor ﬂuid
+therapy allows the veterinarian to focus on the tasks they alonemust perform (i.e., diagnosing, prescribing —including the ﬂuid
+therapy prescription —prognosing, and surgery), leading to increased
+efﬁciency and oversight of patients.
+2. Monitoring during IV ﬂuid therapy is critical to prevent ﬂuid overload.
+When patient monitoring or referral to a hospital that provides moni-toring is not available, consider an alternate route of delivery.
+3. Infusion pumps are frequently used; however, they may not always
+be the optimal method for ﬂuid administration.
+Overview
+IVﬂuids can be administered in a variety of ways. The veterinary
+nursing care team must be trained in how to use each method to
+avoid ﬂuid overload in patients and related potential hazards. These
+factors help determine the best mode for IV ﬂuid delivery:/C15Volume to be infused
+/C15Total duration of infusion
+/C15Level of monitoring available during administration
+/C15Type of ﬂuid administered
+Fluid Administration
+IV infusion pumps are most commonly used but are not always the
+ideal mode of administration. For example, a large dog who needs a
+rapid crystalloid infusion may need an infusion rate that exceeds the
+1–2 L/hr that standard pumps provide. In this case, a pressure bag
+would be the preferred method to deliver the large ﬂuid volume in a
+short time. For animals receiving a small volume of ﬂuids, a syringe
+pump may be more accurate than a standard infusion pump that
+does not have micro settings (Table 16).
+The IV administration set is another consideration in choosing
+equipment. Smaller animals may bene ﬁtf r o mam i c r od r i ps e t
+(60 drops/mL), which provides more precise ﬂuid delivery. This can
+be especially helpful when using the gravity method to deliver ﬂuids
+in small patients. Macro drip sets come in a variety of drip factors;
+those most used in veterinary medicine are 10 drops/mL and
+15 drops/mL. Fluid pumps are also usually designed for use with a
+speciﬁc type or size of tubing, so it is important to match these to
+ensure adequate ﬂuid delivery (Table 16).
+Use a new IV line and bag for each patient148(see Table 17 for
+IV catheter care and placement). Prime IV lines with the ﬂuid to be
+infused before use to avoid air embolism. A T-port can ease medica-
+tion administration, and a Y-port can be used when administering
+more than one compatible infusion.
+IVﬂuid bags should not be used for saline ﬂushes because of
+the risk of contamination. Commercially pre ﬁlled syringes are pre-
+ferred to decrease the chances of introducing bacterial contamination
+that could lead to infection.149–151
+If IV access is not achievable, consider IO catheters early in
+treatment to avoid ﬂuid resuscitation delays. IO devices are able to
+quickly drill through the bone but require training. When no device
+is available, needles or peripheral IV catheters can be used (see
+https://www.youtube.com/watch?v=10twNYP1pB0 for instructions
+on placing an IO catheter).
+Fluid Monitoring
+Trained nursing staff should continually monitor IV ﬂuid adminis-
+tration (Table 18). Without adequate monitoring, severe conse-
+quences can occur and compromise patient care. Use multiparameter
+monitoring to gain a broad picture of the patient ’s volume and
+hydration status and avoid ﬂuid-related complications (Table 19).
+Monitor patients at high risk for ﬂu i do v e r l o a da tl e a s te v e r y
+2 hr (see Tables 19 and 20 for methods). Weigh these patients 2 –3
+times a day, check their respiratory rate every 1 –2 hr, measure ﬂuidVeterinary Practice Guidelines
+JAAHA.ORG 157Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 28 ---
+TABLE 16
+Intravenous Fluid Delivery Modes
+Method of 
+DeliveryConsiderations
+Fluid pump • Limits of very high and, possibly, very low rates of administration 
+• Maximum administration rate can limit ability to rapidly deliver a bolus with large ﬂuid volumes
+Syringe  
+pump• Limited to small volumes 
+• Attach the extension set close to the IV catheter to ensure patient receives the infusion in a timely manner
+Gravity 
+drip set• Need to calculate drip rate: Fluid rate (mL/h) × Drip factor (gtt/mL)/3600 = gtt/s
+• 
+• Close monitoring is essential because there are no alarms
+Buretrol • Used in conjunction with a ﬂuid pump
+• Prevents delivery of large ﬂuid volume to small patients• Allows for smaller volumes of additives, leading to less waste in smaller patients or in cases of frequent 
+changes to ﬂuid plans
+Syringe • Hand administration of small volumes
+• Do not leave attached to a patient while unattended
+Pressure bag • Ideal when volume to be infused over given time exceeds the capabilities of a ﬂuid pump and gravity set
+gtt, drop; s, second
+TABLE 17
+Peripheral Intravenous Catheter Placement and Care Checklist
+Large bore/
+gauge, short cannula• Larger gauge, short catheters provide less resistance to blood ﬂow than longer, smaller gauge catheters.
+1 
+Ideal to have in place should a need for rapid infusion arise. 
+Aseptic 
+preparation and care• See the AAHA Infection Control, Prevention and Biosecurity Guidelines  protocol for IV catheters at 
+www.aaha.org/resources/2018-aaha-infection-control-prevention-and-biosecurity-guidelines 
+Secure 
+catheter• Secure the ﬁrst piece of tape to the catheter as an anchor. Use the smallest amount of tape possible 
+and tab the tape ends for easy removal. 
+• Use additional bandage material as needed. Be careful not to secure too tight or too loose to avoid 
+swelling or premature dislodgement.  
+Daily 
+maintenance• Check catheters at least two times per day. Fully unwrap bandage material covering the tape to 
+examine the catheter site for signs of swelling or thrombophlebitis. Remove the catheter and place another one if indicated.
+• Evidence in human patients shows that routine catheter replacement does not provide any beneﬁt over 
+replacing peripheral catheters when clinically indicated.
+2 
+Clean ports 
+when disconnecting• Wipe ports with isopropyl alcohol.
+• Needleless injection and connection ports are preferred.
+1. Reddick AD, et al. Intravenous ﬂuid resuscitation: was Poiseuille right? Emerg Med J . 2011;28(3):201-2.
+2. Webster J, Osborne S, Rickard CM, Marsh N. Clinically-indicated replacement versus routine replacement of peripheral venous catheters. Cochrane Database Syst Rev .
+2019;1(1):CD007798.
+158 JAAHA | 60:4 Jul/Aug 2024Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 29 ---
+inputs and urine output, and watch for signs of edema. If available,
+perform focused ultrasonography for ﬂuid responsiveness, which
+includes scanning for cavity effusion and B-lines in the lungs andevaluating the vena cava. For patients at risk of recurrence of hypo-volemic shock, evaluating the inferior vena cava may be a betterindicator of recurrence than other more commonly monitored para-meters such as heart rate and blood pressure.
+152
+In smaller patients, especially pediatrics, keep in mind that serial
+blood draws can decrease blood volume.
+Fully utilizing veterinary technicians, who can not only set up
+and run ﬂuid therapy but also identify the signs of ﬂuid-related com-
+plications, allows the veterinarian to delegate this nursing task afterprescribing ﬂuid therapy orders. The stronger a veterinary techni-
+cian’s understanding of the “why”ofﬂuid therapy, something that is
+addressed in veterinary technology and nursing programs, the morethey can be optimized to their fullest potential, allowing for higherefﬁciency of the veterinary team.
+Many veterinary practices are either unable to provide 24 hr
+care or geographically unable to refer patients to a 24 hr facility.When continual patient monitoring is not possible, the task forcerecommends giving IV ﬂuids during the clinic ’s open hours and SC
+ﬂuids before leaving for the night. A slightly higher IV ﬂuid rate can
+be used during the day unless contraindicated because of thepatient ’s disease state. Patient monitoring must be provided when-
+ever administering IV ﬂuids.
+TABLE 19
+Evaluation and Monitoring Parameters That May Be Used for
+Patients Receiving Fluid Therapya
+aReprinted from Davis H, Jensen T, Johnson A, et al. 2013 AAHA/AAFP ﬂuid therapy
+guidelines for dogs and cats. JA mA n i mH o s pA s s o c . 2013;49(3):149-59.
+/C3Including cardiac auscultation to identify new murmursTABLE 20
+Methods to Monitor Fluid Outputs and InputsTABLE 18
+Monitoring Fluid Delivery
+Method of 
+Delivery Monitoring
+Fluid pump
+Buretrol• Set TVI to 0 at start. Document 
+every 2–4 hours.
+• Set VTBI for time frame between 
+checks.
+Syringe pump • Set TVI to 0 at start. Document 
+every 2–4 hours.
+• Set VTBI for time frame between 
+checks.
+Gravity drip set 
+Pressure bag• Mark top of ﬂuids on bag at start 
+and document every 1–2 hours.
+• Monitor more frequently due 
+to a higher risk of changes in volume delivered (e.g., every ﬁve 
+minutes for volumes delivered 
+over 15-20 minutes). 
+Syringe • Use only for bolus administration. 
+Do not leave attached to patient.
+TVI, total volume infused; VTBI, volume to be infusedVeterinary Practice Guidelines
+JAAHA.ORG 159Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 30 ---
+Section 9: Conclusion
+Fluid administration is a cornerstone of therapy for many canine
+and feline patients. Patients who need ﬂuid supplementation require
+ap e r s o n a l i z e d ﬂuid therapy plan that ensures administration of the
+proper ﬂuid at the appropriate rate and volume. Relying on a “one-
+rate-ﬁts-most-patients ”strategy in ﬂuid therapy calculations is not
+only impractical but also potentially harmful. Understanding the dif-ferences between ﬂuid types and their effects within the body ’sﬂuid
+compartments is crucial, along with thoughtful, comprehensive
+patient assessment. Targeted ﬂuid therapy prescriptions address each
+patient ’s resuscitation, rehydration, and maintenance requirements.
+Fluid therapy also involves anticipating the changes in electrolytesand other biologic parameters that will occur as a result of ﬂuid ther-
+apy and supplementing ﬂuids or otherwise altering the treatment
+plan to prevent adverse effects. Diligent patient monitoring is essen-tial to gauge therapeutic response, indicating when changes to ﬂuid
+therapy plans are needed to optimize patient outcomes.
+REFERENCES
+1. Waddell L. Colloid osmotic pressure and osmolality. In: Silverstein DC,
+Hopper K, eds. S m a l lA n i m a lC r i t i c a lC a r eM e d i c i n e . 3rd ed. St. Louis:
+Elsevier; 2022:1054 –58.
+2. Woodcock TE, Michel CC. Advances in the Starling principle and
+microvascular ﬂuid exchange; consequences and implications for ﬂuid
+therapy. Front Vet Sci 2021;8:623671.
+3. Boysen SR, Gommeren K. Assessment of volume status and ﬂuid
+responsiveness in small animals. Front Vet Sci 2021;8:630643.
+4. Rudloff E, Hopper K. Crystalloid and colloid compositions and their
+impact. Front Vet Sci 2021;8:639848.
+5. Rudloff E. Assessment of hydration. In: Silverstein DC, Hopper K, eds.
+Small Animal Critical Care Medicine. 3rd ed. St. Louis: Elsevier; 2022:
+373–77.
+6. Marshall KA, Thomovsky EJ, Brooks AC, et al. Ultrasound measure-
+ments of the caudal vena cava before and after blood donation in 9greyhound dogs. Can Vet J 2018;59(9):973-980.
+7. Donati PA, Guevara JM, Ardiles V, et al. Caudal vena cava collapsibility
+index as a tool to predict ﬂuid responsiveness in dogs. JV e tE m e r gC r i t
+Care (San Antonio) 2020;30(6):677 –86.
+8. Tello LH, Pardo MA. Fluid and electrolyte therapy during vomiting
+and diarrhea. Vet Clin North Am Small Anim Pract 2022;52(3):673 –88.
+9. Harris BA, Hofmeister EH, Gicking JC. A survey of emergency and
+critical care veterinarians regarding IV ﬂuid bolus therapy and moni-
+toring practices in small animals. J Vet Emerg Crit Care (San Antonio)
+2021;31(5):564 –73.
+10. DiBartola SP, Bateman S. Introduction to ﬂuid therapy. In: DiBartola
+SP, ed. Fluid, Electrolyte, and Acid-Base Disorders in Small Animal
+Practice. 4th ed. St. Louis: Elsevier Saunders; 2012:331 –50.
+11. Hansen B, Vigani A. Maintenance ﬂuid therapy: isotonic versus hypotonic
+solutions. Vet Clin North Am Small Anim Pract 2017;47(2):383 –95.
+12. Wellman ML, DiBartola SP, Kohn CW. Applied physiology of body
+ﬂuids in dogs and cats. In: DiBartola SP, ed. Fluid, Electrolyte, and
+Acid-Base Disorders in Small Animal Practice. 4th ed. St. Louis: Elsevier
+Saunders; 2012:15.13. Hopper K, Garcia Rojas A, Barter L. An online survey of small animal
+veterinarians regarding current ﬂuid therapy practices in dogs and cats.
+JA mV e tM e dA s s o c 2018;252(5):553 –9.
+14. Mazzaferro E, Powell LL. Fluid therapy for the emergent small animal
+patient: crystalloids, colloids, and albumin products. Vet Clin North Am
+Small Anim Pract 2022;52(3):781 –96.
+15. Lange J, Boysen SR, Bentley A, et al. Intraosseous catheter ﬂ
+ow rates
+and ease of placement at various sites in canine cadavers. Front Vet Sci
+2019;(19):6:312.
+16. Bednarski, RM. Dogs and cats. In: Tranquilli WJ, Thurmon JC, Grimm
+KA, eds. Lumb & Jones Veterinary Anesthesia and Analgesia. 4th ed.
+Hoboken (NJ): Blackwell Publishing; 2007:705 –15.
+17. Davis H, Jensen T, Johnson A, et al; American Association of Feline
+Practicioners; American Animal Hospital Association. 2013AAHA/AAFP ﬂuid therapy guidelines for dogs and cats. J Am Anim
+Hosp Assoc 2013;49(3):149 –59.
+18. Muir WW. A new way to monitor & individualize your ﬂuid therapy
+plan. Vet Med 2013;108(2). Available at https://www.dvm360.com/view/
+new-way-monitor-and-individualize-your- ﬂuid-therapy-plan .A c c e s s e d
+July 13, 2023.
+19. Kudnig ST, Mama K. Perioperative ﬂuid therapy. JA mV e tM e dA s s o c
+2002;221:1112 –21.
+20. Gaynor JS, Dunlop CI, Wagner AE, et al. Complications and mortality
+associated with anesthesia in dogs and cats. J Am Anim Hosp Assoc
+1999;35:13 –7.
+21. Redondo JI, Rubio M, Soler G, et al. Normal values and incidence of
+cardiorespiratory complications in dogs during general anaesthesia. Areview of 1281 cases. JV e tM e dAP h y s i o lP a t h o lC l i nM e d 2007;54:
+470–77.
+22. Fantoni DT, Ida KK, Gimenes AM, et al. Pulse pressure variation as a
+guide for volume expansion in dogs undergoing orthopedic surgery.Vet Anaesth Analg 2017;44:710 –8.
+23. Celeita-Rodriguez N, Teixeira-Neto FJ, Garofalo NA, et al. Comparison
+of the diagnostic accuracy of dynamic and static preload indexes to pre-
+dictﬂuid responsiveness in mechanically ventilated iso ﬂurane anesthe-
+tized dogs. Vet Anaesth Analg 2019;46:276 –88.
+24. Klein AV, Teixeira-Neto FJ, Garofalo NA, et al. Changes in pulse pres-
+sure variation and plethysmographic variability index caused byhypotension-inducing hemorrhage followed by volume replacement in
+isoﬂurane-anesthetized dogs. Am J Vet Res 2016;77(3):280 –7.
+25. Skouropoulou D, Lacitignola L, Di Bella C, et al. Intraoperative assess-
+ment of ﬂuid responsiveness in normotensive dogs under iso ﬂurane
+anaesthesia. Vet Sci 2021;8(2):26.
+26. Brunetto MA, Gomes MO, Andre MR, et al. Effects of nutritional sup-
+port on hospital outcome in dogs and cats. J Vet Emerg Crit Care (San
+Antonio) 2010;20(2):224 –31.
+27. Kraft MD, Btaiche IF, Sacks GS. Review of the refeeding syndrome.
+Nutr Clin Pract 2005;20(6):625 –33.
+28. Brunet A, Bouzouraa T, Cadore JL, et al. Use of feeding tubes in 112
+cats in an internal medicine referral service (2015
+–2020). J Feline Med
+Surg 2022;24(10):e338 –46.
+2 9 .C o o p e rE .R o u t e so f ﬂuid administration. In: Cooper E, Guillaumin J,
+Yaxley P, et al. Small Animal Fluid Therapy. CABI; 2023:33 –40.
+30. Kathrani A. Enteral feeding tubes. In: Aronson LR, ed. Small Animal
+Surgical Emergencies. 2nd ed. Hoboken (NJ): Wiley Blackwell; 2022:
+251–61.
+31. Tolbert MK, Telles NJ, Simon BT, et al. Gastrointestinal transit time is
+faster in Beagle dogs compared to cats. JA mV e tM e dA s s o c . 2022;260(
+S3):S8 –14.
+160 JAAHA | 60:4 Jul/Aug 2024Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 31 ---
+32. Becvarova I. Tube feeding in small animals: diet selection and prepara-
+tion. In: Chan DL, ed. Nutritional Management of Hospitalized Small
+Animals. Hoboken (NJ): John Wiley & Sons; 2015:80 –91.
+33. Chan DL. Nutritional support of the critically ill small animal patient.
+Vet Clin North Am Small Anim Pract 2020;50(6):1411 –22.
+34. Grathwohl KW, Bruns BJ, LeBrun CJ, et al. Does hemodilution exist?
+Effects of saline infusion on hematologic parameters in euvolemic sub-jects. South Med J 1996;89(1):51 –5.
+35. Prittie JE. Triggers for use, optimal dosing, and problems associated
+with red cell transfusions. Vet Clin North Am Small Anim Pract 2003;
+33(6):1261 –75.
+36. Kisielewicz C, Self I, Bell R. Assessment of clinical and laboratory vari-
+ables as a guide to packed red blood cell transfusion of euvolemic ane-mic dogs. JV e tI n t e r nM e d 2014;28(2):576 –82.
+37. Langston C, Gordon D. Effects of IV ﬂuids in dogs and cats with kid-
+ney failure. Front Vet Sci 2021;8:659960.
+38. Langston C. Managing ﬂuid and electrolyte disorders in renal failure.
+Vet Clin North Am Small Anim Pract 2008;38(3):677 –97, xiii.
+39. Harison E, Langston C, Palma D, Lamb K. Acute azotemia as a predic-
+tor of mortality in dogs and cats. J Vet Intern Med 2012;26(5):1093 –8.
+40. Von Hendy-Willson VE, Pressler BM. An overview of glomerular ﬁltra-
+tion rate testing in dogs and cats. Vet J 2011;188(2):156 –65.
+41. Fiocchi EH, Cowgill LD, Brown DC, et al. The use of darbepoetin to
+stimulate erythropoiesis in the treatment of anemia of chronic kidney
+disease in dogs. JV e tI n t e r nM e d 2017;31(2):476 –85.
+42. Chalhoub S, Langston CE, Farrelly J. The use of darbepoetin to stimu-
+late erythropoiesis in anemia of chronic kidney disease in cats: 25 cases.J Vet Intern Med 2012;26(2):363 –9.
+43. Gori E, Lippi I, Guidi G, et al. Acute pancreatitis and acute kidney
+injury in dogs. Vet J 2019;245:77 –81.
+44. Quimby J. Management of chronic kidney disease. In: Bruyette DS,
+Bexﬁeld N, Chretin JD, et al., eds. Clinical Small Animal Internal Medi-
+cine. Hoboken (NJ): Wiley Blackwell; 2020:1165 –73.
+45. Perkowski SZ, Oyama MA. Pathophysiology and anesthetic manage-
+ment of patients with cardiovascular disease. In: Grimm KA, Lamont
+LA, Tranquilli WJ, et al., eds. Veterinary Anesthesia and Analgesia: The
+Fifth Edition of Lumb and Jones. Hoboken (NJ): Wiley Blackwell; 2015:
+496–510.
+46. Keene BW, Atkins CE, Bonagura JD, et al. ACVIM consensus guide-
+lines for the diagnosis and treatment of myxomatous mitral valve dis-ease in dogs. JV e tI n t e r nM e d 2019;33(3):1127 –40.
+47. Ferasin L, DeFrancesco T. Management of acute heart failure in cats.
+J
+Vet Cardiol 2015;17 (suppl 1):S173 –89.
+48. Boysen SR, Gommeren K. Assessment of volume status and ﬂuid
+responsiveness in small animals. Front Vet Sci 2021;8:630643.
+49. Luis Fuentes V, Abbott J, Chetboul V, et al. ACVIM consensus state-
+ment guidelines for the classi ﬁcation, diagnosis, and management of
+cardiomyopathies in cats. J Vet Intern Med 2020;34(3):1062 –77.
+50. Nguyen VQ, Gadiraju TV, Patel H, et al. Intra-abdominal hypertension:
+an important consideration for diuretic resistance in acute decompen-sated heart failure. Clin Cardiol 2016;39(1):37 –40.
+51. Pouchelon JL, Atkins CE, Bussadori C, et al. Cardiovascular-renal axis
+disorders in the domestic dog and cat: a veterinary consensus state-ment. J Small Anim Pract 2015;56(9):537 –52.
+52. Ronco C, Haapio M, House AA, et al. Cardiorenal syndrome. JA m
+Coll Cardiol 2008;52(19):1527 –39.
+53. Giorgi ME, Mochel JP, Yuan L, et al. Retrospective evaluation of risk
+factors for development of kidney injury after parenteral furosemidetreatment of left-sided congestive heart failure in dogs. JV e tI n t e r n
+Med 2022;36(6):2042 –52.
+54. Lefebvre HP, Brown SA, Chetboul V, et al. Angiotensin-converting
+enzyme inhibitors in veterinary medicine. Curr Pharm Des 2007;13(13):
+1347 –61.
+55. Hoorn EJ. Intravenous ﬂuids: balancing solutions [published correction
+appears in JN e p h r o l 2020;33(2):387]. JN e p h r o l 2017;30(4):485 –92.
+56. Snow SJ, Ari Jutkowitz L, Brown AJ. Trends in plasma transfusion at a
+veterinary teaching hospital: 308 patients (1996-1998 and 2006-2008). J
+Vet Emerg Crit Care (San Antonio) 2010;20(4):441 –5.
+57. Beer KS, Silverstein DC. Controversies in the use of fresh frozen plasma
+in critically ill small animal patients. J Vet Emerg Crit Care (San Anto-
+nio)2015;25(1):101 –6.
+58. Ropski MK, Guillaumin J, Monnig AA, et al. Use of cryopoor plasma
+for albumin replacement and continuous antimicrobial infusion for
+treatment of septic peritonitis in a dog. J Vet Emerg Crit Care (San
+Antonio) 2017;27(3):348 –56.
+59. Culler CA, Iazbik C, Guillaumin J. Comparison of albumin, colloid
+osmotic pressure, von Willebrand factor, and coagulation factors in
+canine cryopoor plasma, cryoprecipitate, and fresh frozen plasma. JV e t
+Emerg Crit Care (San Antonio) 2017;27(6):638 –44.
+60. Craft EM, Powell LL. The use of canine-speci ﬁc albumin in dogs with
+septic peritonitis. J Vet Emerg Crit Care (San Antonio) 2012;22(6):631 –9.
+61. Sahagian MJ, Mastrocco A, Weltman JG, et al. Retrospective analysis of
+the use of canine-speci ﬁc albumin in 125 critically ill dogs. J Vet Emerg
+Crit Care (San Antonio) 2023;33(2):192 –200.
+62. Carney N, Totten AM, O ’Reilly C, et al. Guidelines for the management
+of severe traumatic brain injury, fourth edition. Neurosurgery 2017;80(
+1):6–15.
+63. Leibner E, Andreae M, Galvagno SM, et al. Damage control resuscita-
+tion. Clin Exp Emerg Med 2020;7(1):5 –13.
+64. Pigott A, Rudloff E. Traumatic brain injury –a review of intravenous
+ﬂuid therapy. Front Vet Sci 2021;8:643800.
+65. Shi J, Tan L, Ye J, et al. Hypertonic saline and mannitol in patients
+with traumatic brain injury: A systematic and meta-analysis. Medicine
+(Baltimore) 2020;99(35):e21655.
+66. Li M, Chen T, Cai J, et al. Comparison of equimolar doses of mannitol
+and hypertonic saline for the treatment of elevated intracranial pressure
+after traumatic brain injury: a systematic review and meta-analysis.
+Medicine (Baltimore) 2015;94(17):e668.
+67. Gu J, Huang H, Huang Y, et al. Hypertonic saline or mannitol for
+treating elevated intracranial pressure in traumatic brain injury: a
+meta-analysis of randomized controlled trials. Neurosurg Rev 2019;42:
+499–509.
+68. Roquilly A, Moyer JD, Huet O, et al; Atlanrea Study Group and the
+Soci/C19et/C19eF r a n c ¸aise d ’Anesth /C19esie R /C19eanimation (SFAR) Research Network.
+Effect of continuous infusion of hypertonic saline vs standard care on
+6-month neurological outcomes in patients with traumatic brain injury:
+the COBI randomized clinical trial. JAMA 2021;325(20):2056 –66.
+69. Kogika MM, de Morais HA. A quick reference on hypokalemia. Vet
+Clin North Am Small Anim Pract 2017;47(2):229 –34.
+70. Schaer M. Disorders of serum potassium, sodium, magnesium and
+chloride. J Vet Emerg Crit Care (San Antonio) 1999;9(4):209 –17.
+71. Hoehne SN, Hopper K, Epstein SE. Accuracy of potassium supplementation
+ofﬂuids administered intravenously. JV e tI n t e r nM e d 2015;29(3):834-9.
+72. Humphrey S, Kirby R, Rudloff E. Magnesium physiology and clinical
+therapy in veterinary critical care. J Vet Emerg Crit Care (San Antonio)
+2015;25(2):210 –25.Veterinary Practice Guidelines
+JAAHA.ORG 161Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 32 ---
+73. Sterns RH, Silver SM, Hix JK. Treatment of hyponatremia. In: Simon
+EE, ed. Hyponatremia: Evaluation and Treatment. New York: Springer;
+2013:221 –50.
+74. Sahay M, Sahay R. Hyponatremia: A practical approach. Indian J Endo-
+crinol Metab 2014;18(6):760 –71.
+75. Adrogu /C19e HJ, Tucker BM, Madias NE. Diagnosis and management of
+hyponatremia: a review. JAMA 2022;328(3):280 –91.
+76. O ’Brien DP, Kroll RA, Johnson GC, et al. Myelinolysis after correction
+of hyponatremia in two dogs. JV e tI n t e r nM e d 1994;8(1):40 –8.
+77. Muhsin SA, Mount DB. Diagnosis and treatment of hypernatremia.
+Best Pract Res Clin Endocrinol Metab 2016;30(2):189 –203.
+78. Ostermann M, Randolph AG. Resuscitation ﬂuid composition and
+acute kidney injury in critical illness. NE n g lJM e d 2022;386(9):888 –9.
+79. Sigmon J, May CC, Bryant A, et al. Assessment of acute kidney injury
+in neurologically injured patients receiving hypertonic sodium chloride:
+does chloride load matter? Ann Pharmacother 2020;54(6):541 –6.
+80. Chow JH, Abuelkasem E, Sankova S, et al. Reversal of vasodilatory shock:
+current perspectives on conventional, rescue, and emerging vasoactive
+agents for the treatment of shock. Anesth Analg 2020;130(1):15 –30.
+81. Landry DW, Oliver JA. The pathogenesis of vasodilatory shock. NE n g l
+JM e d 2001;345(8):588 –95.
+82. Wieruszewski PM, Khanna AK. Vasopressor choice and timing in vaso-
+dilatory shock. Crit Care 2022;26(1):76.
+83. Brown JC, Simons E, Rudders SA. Epinephrine in the management of
+anaphylaxis. J Allergy Clin Immunol Pract 2020;8(4):1186 –95.
+84. Campbell G, Alderson P, Smith AF, et al. Warming of intravenous and
+irrigation ﬂuids for preventing inadvertent perioperative hypothermia.
+Cochrane Database Syst Rev 2015;2015(4):CD009891.
+85. Brodeur A, Wright A, Cortes Y. Hypothermia and targeted temperature
+management in cats and dogs. J Vet Emerg Crit Care (San Antonio)
+2017;27(2):151 –63.
+86. Jourdan G, Didier C, Chotard E, et al. Heated intravenous ﬂuids alone
+fail to prevent hypothermia in cats under general anaesthesia. JF e l i n e
+Med Surg 2017;19(12):1249 –53.
+87. Chiang V, Hopper K, Mellema MS. In vitro evaluation of the ef ﬁcacy
+of a veterinary dry heat ﬂuid warmer. JV e tE m e r gC r i tC a r e( S a nA n t o -
+nio)2011;21(6):639 –47.
+88. Lee RA, Towle Millard HA, Weil AB, et al. In vitro evaluation of three
+intravenous ﬂuid line warmers. JA mV e tM e dA s s o c 2014;244(12):
+1423 –8.
+89. Oncken AK, Kirby R, Rudloff E. Hypothermia in critically ill dogs and
+cats. Compendium 2001;23(6):506 –21.
+90. Johnson SI, McMichael M, White G. Heatstroke in small animal medi-
+cine: a clinical practice review. J Vet Emerg Crit Care (San Antonio)
+2006;16(2):112 –9.
+91. Klein SC, Peterson ME. Canine hypoadrenocorticism: part II. Can Vet J
+2010;51(2):179.
+92. Goutal CM, Brugmann BL, Ryan KA. Insulinoma in dogs: a review. J
+Am Anim Hosp Assoc 2012;48(3):151 –63.
+93. Thomovsky E, Brooks A, Johnson P. Fluid overload in small animal
+patients. Top Companion Anim Med 2016;31(3):94 –9.
+94. Hansen B. Fluid overload. Front Vet Sci 2021;8:668688.
+95. Londono L. Fluid therapy in critical care. Todays Vet Pract 2019;9(3).
+Available at: https://todaysveterinarypractice.com/internal-medicine/
+ﬂuid-therapy-in-critical-care/ . Accessed August 31, 2023.
+96. Adamik KN, Yozova ID, Regenscheit N. Controversies in the use of
+hydroxyethyl starch solutions in small animal emergency and critical
+care. J Vet Emerg Crit Care (San Antonio) 2015;25(1):20 –47.97. Cazzolli D, Prittie J. The crystalloid-colloid debate: Consequences of
+resuscitation ﬂuid selection in veterinary critical care. J Vet Emerg Crit
+Care (San Antonio) 2015;25(1):6 –19.
+98. Wong C, Koenig A. The colloid controversy: are colloids bad and what
+are the options? Vet Clin North Am Small Anim Pract 2017;47(2):411 –21.
+99. Yozova ID, Howard J, Sigrist NE, et al. Current trends in volume
+replacement therapy and the use of synthetic colloids in smallanimals –an internet-based survey (2016). Front Vet Sci 2017;4:140.
+100. Adamik KN, Yozova ID. Colloids yes or no? - a “Gretchen question ”
+answered. Front Vet Sci 2021;8:624049.
+101. Hayes G, Benedicenti L, Mathews K. Retrospective cohort study on the
+incidence of acute kidney injury and death following hydroxyethyl
+starch (HES 10% 250/0.5/5:1) administration in dogs (2007-2010). JV e t
+Emerg Crit Care (San Antonio) 2016;26(1):35 –40.
+102. Yozova ID, Howard J, Adamik KN. Retrospective evaluation of the
+effects of administration of tetrastarch (hydroxyethyl starch 130/0.4) on
+plasma creatinine concentration in dogs (2010-2013): 201 dogs. JV e t
+Emerg Crit Care (San Antonio) 2016;26(4):568 –77.
+103. Yozova ID, Howard J, Adamik KN. Effect of tetrastarch (hydroxyethyl
+starch 130/0.4) on plasma creatinine concentration in cats: a retrospec-tive analysis (2010-2015). J Feline Med Surg 2017;19(10):1073 –9.
+104. Sigrist NE, K €alin N, Dreyfus A. Changes in serum creatinine concentra-
+tion and acute kidney injury (AKI) grade in dogs treated with hydro-xyethyl starch 130/0.4 from 2013 to 2015. J Vet Intern Med 2017;31(2):
+434–41.
+105. Sigrist NE, K €alin N, Dreyfus A. Effects of hydroxyethyl starch 130/0.4
+on serum Creatinine concentration and development of acute kidneyinjury in nonazotemic cats. JV e tI n t e r nM e d 2017;31(6):1749 –56.
+106. Schmid SM, Cianciolo RE, Drobatz KJ, et al. Postmortem evaluation of
+renal tubular vacuolization in critically ill dogs. J Vet Emerg Crit Care
+(San Antonio) 2019;29(3):279 –87.
+107. Boyd CJ, Claus MA, Raisis AL, et al. Evaluation of biomarkers of kid-
+ney injury following 4% succinylated gelatin and 6% hydroxyethylstarch 130/0.4 administration in a canine hemorrhagic shock model. J
+Vet Emerg Crit Care (San Antonio) 2019;29(2):132 –42.
+108. Boyd CJ, Sharp CR, Claus MA, et al. Prospective randomized con-
+trolled blinded clinical trial evaluating biomarkers of acute kidneyinjury following 6% hydroxyethyl starch 130/0.4 or Hartmann ’s solu-
+tion in dogs. J Vet Emerg Crit Care (San Antonio) 2021;31(3):306 –14.
+109. Adamik KN, Stoffel MH, Tangermann S, et al. Assessment of hydro-
+xyethyl starch (6% HES 130/0.4) kidney storage in critically ill dogs: a
+post-mortem prospective study. Front Vet Sci 2022;8:802507.
+1 1 0 . C l a s s e nJ ,A d a m i kK N ,W e b e rK ,e ta l .I nv i t r oe f f e c to fh y d r o x y e t h y ls t a r c h
+130/0.42 on canine platelet function. Am J Vet Res 2012;73(12):1908 –12.
+111. Falco S, Bruno B, Maurella C, et al. In vitro evaluation of canine hemo-
+stasis following dilution with hydroxyethyl starch (130/0.4) via throm-boelastometry. J Vet Emerg Crit Care (San Antonio) 2012;22(6):640 –5.
+112. Reuteler A, Axiak-Flammer S, Howard J, et al. Comparison of the
+effects of a balanced crystalloid-based and a saline-based tetrastarchsolution on canine whole blood coagulation and platelet function. JV e t
+Emerg Crit Care (San Antonio) 2017;27(1):23 –34.
+1 1 3 .W u r l o dV A ,H o w a r dJ ,F r a n c e yT ,e ta l .C o m p a r i s o no ft h ei nv i t r o
+effects of saline, hypertonic hydroxyethyl starch, hypertonic saline, andtwo forms of hydroxyethyl starch on whole blood coagulation and platelet
+function in dogs. J Vet Emerg Crit Care (San Antonio) 2015;25(4):474 –87.
+114. Gauthier V, Holowaychuk MK, Kerr CL, et al. Effect of synthetic col-
+loid administration on coagulation in healthy dogs and dogs with sys-
+temic in ﬂammation. J Vet Intern Med 2015;29(1):276 –85.
+162 JAAHA | 60:4 Jul/Aug 2024Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 
+
+--- PAGE 33 ---
+115. Albrecht NA, Howard J, Kovacevic A, et al. In vitro effects of 6%
+hydroxyethyl starch 130/0.42 solution on feline whole blood coagula-
+tion measured by rotational thromboelastometry. BMC Vet Res 2016;
+12(1):155.
+116. Diniz MS, Teixeira-Neto FJ, Gonc ¸alves DS, et al. Effects of 6% tetra-
+starch or lactated Ringer ’s solution on blood coagulation in hemor-
+rhaged dogs [published correction appears in J Vet Intern Med
+2019;33(2):1110]. J Vet Intern Med 2018;32(6):1927 –33.
+117. McBride D, Hosgood G, Raisis A, et al. Platelet closure time in anesthe-
+tized greyhounds with hemorrhagic shock treated with hydroxyethylstarch 130/0.4 or 0.9% sodium chloride infusions. J Vet Emerg Crit
+Care (San Antonio) 2016;26(4):509 –15.
+118. Boyd CJ, Claus MA, Raisis AL, et al. Hypocoagulability and platelet
+dysfunction are exacerbated by synthetic colloids in a canine hemor-rhagic shock model [published correction appears in Front Vet Sci
+2020;7:641]. Front Vet Sci 2018;5:279.
+119. Iannucci C, Dirkmann D, Howard J, et al. A prospective randomized
+open-label trial on the comparative effects of 6% hydroxyethyl starch
+130/0.4 versus polyionic isotonic crystalloids on coagulation parameters
+in dogs with spontaneous hemoperitoneum. J Vet Emerg Crit Care (San
+Antonio) 2021;31(1):32 –42.
+120. Smart L, Jandrey KE, Kass PH, et al. The effect of Hetastarch (670/
+0.75) in vivo on platelet closure time in the dog. J Vet Emerg Crit Care
+(San Antonio) 2009;19(5):444 –9.
+121. Gaudette S, Hughes D, Boller M. The endothelial glycocalyx: Structure
+and function in health and critical illness. J Vet Emerg Crit Care (San
+Antonio) 2020;30(2):117 –34.
+122. Michel CC. Starling: the formulation of his hypothesis of microvascular
+ﬂuid exchange and its signi ﬁcance after 100 years. Exp Physiol 1997;82(
+1):1–30.
+123. Levick JR. Revision of the Starling principle: new views of tissue ﬂuid
+balance. JP h y s i o l 2004;557(Pt 3):704.
+124. Becker BF, Chappell D, Bruegger D, et al. Therapeutic strategies target-
+ing the endothelial glycocalyx: acute de ﬁcits, but great potential. Cardio-
+vasc Res 2010;87(2):300 –10.
+125. Mazzaferro EM, Edwards T. Update on albumin therapy in critical ill-
+ness. Vet Clin North Am Small Anim Pract 2020;50(6):1289 –305.
+126. Montealegre F, Lyons BM. Fluid therapy in dogs and cats with sepsis.
+Front Vet Sci 2021;8:622127.
+127. Culler CA, Balakrishnan A, Yaxley PE, et al. Clinical use of cryopoor
+plasma continuous rate infusion in critically ill, hypoalbuminemic dogs.
+J Vet Emerg Crit Care (San Antonio) 2019;29(3):314 –20.
+128. Francis AH, Martin LG, Haldorson GJ, et al. Adverse reactions sugges-
+tive of type III hypersensitivity in six healthy dogs given human albu-
+min. JA mV e tM e dA s s o c 2007;230(6):873 –9.
+129. Cohn LA, Kerl ME, Lenox CE, et al. Response of healthy dogs to infu-
+sions of human serum albumin. Am J Vet Res 2007;68(6):657 –63.
+130. Trow AV, Rozanski EA, Delaforcade AM, et al. Evaluation of use of
+human albumin in critically ill dogs: 73 cases (2003-2006). JA mV e t
+Med Assoc 2008;233(4):607 –12.
+131. Horowitz FB, Read RL, Powell LL. A retrospective analysis of 25%
+human serum albumin supplementation in hypoalbuminemic dogs
+with septic peritonitis. Can Vet J 2015;56(6):591 –7.
+132. Liu DT, Brown DC, Silverstein DC. Early nutritional support is associ-
+ated with decreased length of hospitalization in dogs with septic perito-
+nitis: A retrospective study of 45 cases (2000-2009). J Vet Emerg Crit
+Care (San Antonio) 2012;22(4):453 –9.133. Conner BJ. Treating hypoalbuminemia. Vet Clin North Am Small Anim
+Pract 2017;47(2):451 –9.
+134. Kogika MM, de Morais HA. A quick reference on hyperkalemia. Vet
+Clin North Am Small Anim Pract 2017;47(2):223 –8.
+135. Drobatz K, Cole S. The in ﬂuence of crystalloid type on acid-base and
+electrolyte status of cats with urethral obstruction. JV e tE m e r gC r i t
+Care (San Antonio) 2008;18(4):355 –61.
+136. Cunha MG, Freitas GC, Carregaro AB, et al. Renal and cardiorespira-
+tory effects of treatment with lactated Ringer ’s solution or physiologic
+saline (0.9% NaCl) solution in cats with experimentally induced ure-thral obstruction. Am J Vet Res 2010;71(7):840 –6.
+137. Lathan P, Thompson AL. Management of hypoadrenocorticism (Addi-
+son’s disease) in dogs. Vet Med (Auckl) 2018;9:1 –10.
+138. Jones JM, Burkitt-Creedon JM, Epstein SE. Treatment strategies for
+hyperkalemia secondary to urethral obstruction in 50 male cats: 2002-
+2017. J Feline Med Surg 2022;24(12):e580-e587.
+139. Voorhees WD III, Ralston SH, Kougias C, et al. Fluid loading with
+whole blood or Ringer ’s lactate solution during CPR in dogs. Resuscita-
+tion1987;15(2):113 –23.
+140. Ditchey RV, Lindenfeld J. Potential adverse effects of volume loading
+on perfusion of vital organs during closed-chest resuscitation. Circula-
+tion1984;69(1):181 –9.
+141. Gentile NT, Martin GB, Appleton TJ, et al. Effects of arterial and
+venous volume infusion on coronary perfusion pressures during canine
+CPR. Resuscitation 1991;22(1):55 –63.
+142. Yannopoulos D, Zviman M, Castro V, et al. Intra-cardiopulmonary
+resuscitation hypothermia with and without volume loading in anischemic model of cardiac arrest. Circulation 2009;120(14):1426 –35.
+143. Fletcher DJ, Boller M, Brainard BM, et al; American College of Veteri-
+nary Medicine; Veterinary Emergency and Critical Care Society.
+RECOVER evidence and knowledge gap analysis on veterinary CPR.
+Part 7: Clinical guidelines. J Vet Emerg Crit Care (San Antonio) 2012;
+22(suppl 1):S102 –31.
+144. Fletcher DJ, Boller M. Fluid therapy during cardiopulmonary resuscita-
+tion. Front Vet Sci 2021;7:625361.
+1 4 5 .F i s c h e rM ,H o s s m a n nK A .V o l u m ee x p a n s i o nd u r i n gc a r d i o p u l m o n a r y
+resuscitation reduces cerebral no-re ﬂow.Resuscitation 1996;32(3):227 –40.
+146. Zhou X, Liu Y, Huang Y, et al. Hypertonic saline infusion suppresses
+apoptosis of hippocampal cells in a rat model of cardiopulmonary
+resuscitation. Sci Rep 2017;7(1):5783.
+147. Breil M, Krep H, Sinn D, et al. Hypertonic saline improves myocardial
+blood ﬂow during CPR, but is not enhanced further by the addition of
+hydroxy ethyl starch. Resuscitation 2003;56(3):307 –17.
+148. O ’Grady NP, Alexander M, Burns LA, et al; Healthcare Infection Control
+Practices Advisory Committee (HICPAC). Guidelines for the prevention of
+intravascular catheter-related infections. Clin Infect Dis 2011;52(9):e162 –93.
+149. Sabino CV, Weese JS. Contamination of multiple-dose vials in a veteri-
+nary hospital. Can Vet J 2006;47(8):779 –82.
+150. Gorski LA, Hadaway L, Hagle ME, et al. Infusion therapy standards of
+practice, eighth edition. J Infus Nurs 2021;44(1S suppl 1):S1 –224.
+151. Guillaumin J, Olp NM, Magnusson KD, et al. In ﬂuence of hang time
+and location on bacterial contamination of intravenous bags in a veteri-
+nary emergency and critical care setting. J Vet Emerg Crit Care (San
+Antonio) 2017;27(5):548 –54.
+152. Yanagawa Y, Sakamoto T, Okada Y. Hypovolemic shock evaluated by
+sonographic measurement of the inferior vena cava during resuscitationin trauma patients. JT r a u m a 2007;63(6):1245 –8.Veterinary Practice Guidelines
+JAAHA.ORG 163Downloaded from https://jaaha.kglmeridian.com at 2026-03-20 via Open Access. Guidelines published open access in the Journal of the American Animal Hospital Association 
+(JAAHA®) using the CC BY-NC-ND license https://creativecommons.org/licenses... https://creativecommons.org/licenses/by-nc-nd/4.0/ 

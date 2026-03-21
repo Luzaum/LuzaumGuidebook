@@ -18,7 +18,6 @@ type RxSection =
   | 'templates'
   | 'settings'
   | 'historico'
-  | 'dev'
   | 'print'
 type RxTheme = 'dark' | 'light'
 
@@ -36,7 +35,6 @@ const NAV_ITEMS: Array<{ key: RxSection; label: string; to: string; icon: string
   { key: 'perfil', label: 'Configurar Médico', to: '/receituario-vet/configuração', icon: 'assignment_ind' },
   { key: 'templates', label: 'Templates', to: '/receituario-vet/templates', icon: 'palette' },
   { key: 'settings', label: 'Configurações', to: '/receituario-vet/configurações', icon: 'settings' },
-  { key: 'dev', label: 'Desenvolvimento', to: '/receituario-vet/desenvolvimento', icon: 'science' },
 ]
 
 function readTheme(): RxTheme {

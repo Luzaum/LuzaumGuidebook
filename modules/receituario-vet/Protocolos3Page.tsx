@@ -1,5 +1,5 @@
-// âœ… Protocolos 3.0 â€” RefatoraÃ§Ã£o Completa (100% Supabase)
-// ðŸš« ZERO localStorage, ZERO rxDb, ZERO mistura de fontes
+﻿// Ã¢Å“â€¦ Protocolos 3.0 Ã¢â‚¬â€ RefatoraÃƒÂ§ÃƒÂ£o Completa (100% Supabase)
+// Ã°Å¸Å¡Â« ZERO localStorage, ZERO rxDb, ZERO mistura de fontes
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -42,6 +42,7 @@ import {
 import { safeStringify } from '../../src/lib/clinicScopedDb'
 import {
   mapProtocolMedicationToPrescriptionItem,
+  mapPrescriptionItemToProtocolMedicationItem,
   mapProtocolRecommendationsToString,
 } from './protocolMapper'
 import {
@@ -50,6 +51,7 @@ import {
   type MedicationPresentationRecord,
 } from '../../src/lib/clinicRecords'
 import { useLocalDraft } from '../../hooks/useLocalDraft'
+import { AddMedicationModal2 } from './components/AddMedicationModal2'
 
 // ==================== TYPES ====================
 
@@ -260,7 +262,7 @@ export default function Protocolos3Page() {
   const [userId, setUserId] = useState<string | null>(null)
   const [canPublishGlobalProtocols, setCanPublishGlobalProtocols] = useState(false)
 
-  // âœ… Estado: lista de pastas e protocolos
+  // Ã¢Å“â€¦ Estado: lista de pastas e protocolos
   const [folders, setFolders] = useState<ProtocolFolderRecord[]>([])
   const [protocols, setProtocols] = useState<ProtocolListEntry[]>([])
   const [isLoadingFolders, setIsLoadingFolders] = useState(false)
@@ -268,7 +270,7 @@ export default function Protocolos3Page() {
   const [scopeFilter, setScopeFilter] = useState<ProtocolScopeFilter>('all')
   const [searchQuery, setSearchQuery] = useState('')
 
-  // âœ… Estado: seleÃ§Ã£o STITCH layout
+  // Ã¢Å“â€¦ Estado: seleÃƒÂ§ÃƒÂ£o STITCH layout
   const [selectedFolderId, setSelectedFolderId] = useState<string | null>(null)
   const [selectedProtocolKey, setSelectedProtocolKey] = useState<string | null>(null)
   const [selectedProtocolBundle, setSelectedProtocolBundle] = useState<ProtocolBundle | null>(null)
@@ -277,7 +279,7 @@ export default function Protocolos3Page() {
   const [isDuplicatingGlobal, setIsDuplicatingGlobal] = useState(false)
   const [isSavingProtocol, setIsSavingProtocol] = useState(false)
 
-  // âœ… Estado: modal criar/editar protocolo
+  // Ã¢Å“â€¦ Estado: modal criar/editar protocolo
   const [modalOpen, setModalOpen] = useState(false)
   const [editingProtocol, setEditingProtocol] = useState<ProtocolBundle | null>(null)
   const [protocolDraft, setProtocolDraft, clearProtocolDraft, hasProtocolDraft] = useLocalDraft<ProtocolBundle | null>(
@@ -291,12 +293,13 @@ export default function Protocolos3Page() {
     }
   )
 
-  // âœ… Estado: criar pasta
+  // Ã¢Å“â€¦ Estado: criar pasta
   const [createFolderOpen, setCreateFolderOpen] = useState(false)
   const [createFolderName, setCreateFolderName] = useState('')
   const [isCreatingFolder, setIsCreatingFolder] = useState(false)
+  const [protocolMedicationModalOpen, setProtocolMedicationModalOpen] = useState(false)
 
-  // âœ… Estado: busca de medicamentos
+  // Ã¢Å“â€¦ Estado: busca de medicamentos
   const [medicationSearchOpen, setMedicationSearchOpen] = useState(false)
   const [medicationSearchQuery, setMedicationSearchQuery] = useState('')
   const [medications, setMedications] = useState<MedicationSearchResult[]>([])
@@ -315,7 +318,7 @@ export default function Protocolos3Page() {
 
   // ==================== EFFECTS ====================
 
-  // âœ… Obter userId do Supabase
+  // Ã¢Å“â€¦ Obter userId do Supabase
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
       if (data?.user) {
@@ -328,7 +331,7 @@ export default function Protocolos3Page() {
     })
   }, [role])
 
-  // âœ… Carregar pastas (apenas apÃ³s clinicId e userId estarem definidos)
+  // Ã¢Å“â€¦ Carregar pastas (apenas apÃƒÂ³s clinicId e userId estarem definidos)
   useEffect(() => {
     if (!clinicId || !userId) {
       console.log('[Protocolos3] Aguardando clinicId e userId', { clinicId, userId })
@@ -355,7 +358,7 @@ export default function Protocolos3Page() {
       .finally(() => setIsLoadingFolders(false))
   }, [clinicId, userId])
 
-  // âœ… Carregar protocolos (apenas apÃ³s clinicId e userId estarem definidos)
+  // Ã¢Å“â€¦ Carregar protocolos (apenas apÃƒÂ³s clinicId e userId estarem definidos)
   useEffect(() => {
     if (!clinicId || !userId) {
       console.log('[Protocolos3] Aguardando clinicId e userId para protocolos', { clinicId, userId })
@@ -377,7 +380,7 @@ export default function Protocolos3Page() {
       .finally(() => setIsLoadingProtocols(false))
   }, [clinicId, userId])
 
-  // âœ… Busca de medicamentos (CatÃ¡logo 3.0) com debounce
+  // Ã¢Å“â€¦ Busca de medicamentos (CatÃƒÂ¡logo 3.0) com debounce
   useEffect(() => {
     if (!clinicId || !medicationSearchOpen) {
       setMedications([])
@@ -612,7 +615,7 @@ export default function Protocolos3Page() {
       if (!clinicId || !userId) return
 
       try {
-        console.log('[Protocolos3] Carregando protocolo para ediÃ§Ã£o', protocolId)
+        console.log('[Protocolos3] Carregando protocolo para ediÃƒÂ§ÃƒÂ£o', protocolId)
         const bundle = await loadProtocolBundle(clinicId, userId, protocolId)
         if (bundle) {
           setEditingProtocol({ ...bundle, examItems: bundle.examItems || [] })
@@ -675,8 +678,8 @@ export default function Protocolos3Page() {
       })
       setPublishGlobalOpen(true)
     } catch (err) {
-      console.error('[Protocolos3] Erro ao abrir publicaÃ§Ã£o global', err)
-      alert(`Falha ao preparar publicaÃ§Ã£o global\n\n${safeStringify(err)}`)
+      console.error('[Protocolos3] Erro ao abrir publicaÃƒÂ§ÃƒÂ£o global', err)
+      alert(`Falha ao preparar publicaÃƒÂ§ÃƒÂ£o global\n\n${safeStringify(err)}`)
     } finally {
       setIsLoadingGlobalProtocols(false)
     }
@@ -698,7 +701,7 @@ export default function Protocolos3Page() {
       return
     }
     if (!slug) {
-      alert('Slug global invÃ¡lido.')
+      alert('Slug global invÃƒÂ¡lido.')
       return
     }
     if (publishGlobalDraft.mode === 'update' && !publishGlobalDraft.globalProtocolId) {
@@ -723,8 +726,8 @@ export default function Protocolos3Page() {
       setLinkedGlobalProtocols(refreshedLinked)
       alert(
         result.mode === 'update'
-          ? `Protocolo global atualizado com sucesso.\n\nSlug: ${result.slug}\nVersÃ£o: ${result.version}`
-          : `Protocolo global publicado com sucesso.\n\nSlug: ${result.slug}\nVersÃ£o: ${result.version}`
+          ? `Protocolo global atualizado com sucesso.\n\nSlug: ${result.slug}\nVersÃƒÂ£o: ${result.version}`
+          : `Protocolo global publicado com sucesso.\n\nSlug: ${result.slug}\nVersÃƒÂ£o: ${result.version}`
       )
       handleClosePublishGlobalModal()
     } catch (err) {
@@ -747,7 +750,7 @@ export default function Protocolos3Page() {
       } catch (err) {
         console.error('[Protocolos3] Erro ao excluir protocolo', err)
         const errorDetails = safeStringify(err)
-        console.error('[Protocolos3] Detalhes do erro de exclusÃ£o:', errorDetails)
+        console.error('[Protocolos3] Detalhes do erro de exclusÃƒÂ£o:', errorDetails)
         alert(`Falha ao excluir protocolo\n\nDetalhes:\n${errorDetails}`)
       }
     },
@@ -757,7 +760,7 @@ export default function Protocolos3Page() {
   const handleDeleteFolder = useCallback(
     async (folderId: string, folderName: string) => {
       if (!clinicId || !userId) return
-      if (!confirm(`Excluir pasta "${folderName}"? Os protocolos dentro serÃ£o movidos para Todos.`)) return
+      if (!confirm(`Excluir pasta "${folderName}"? Os protocolos dentro serÃƒÂ£o movidos para Todos.`)) return
       try {
         await deleteFolder(clinicId, userId, folderId)
         const [refreshedFolders, refreshedProtocols] = await Promise.all([
@@ -778,7 +781,7 @@ export default function Protocolos3Page() {
   const handleApplyToNovaReceita = useCallback(
     async (protocol: ProtocolListEntry) => {
       if (!clinicId || !userId) {
-        alert('ClÃ­nica ou usuÃ¡rio nÃ£o identificado.')
+        alert('Cl?nica ou usu?rio n?o identificado.')
         return
       }
 
@@ -790,17 +793,17 @@ export default function Protocolos3Page() {
             ? await loadGlobalProtocolBundle(protocol.id)
             : await loadProtocolBundle(clinicId, userId, protocol.id)
         if (!bundle) {
-          alert('Protocolo nÃ£o encontrado.')
+          alert('Protocolo nÃƒÂ£o encontrado.')
           return
         }
 
         // Converter medicamentos do protocolo para itens da receita
         const prescriptionItems = bundle.medications.map(mapProtocolMedicationToPrescriptionItem)
 
-        // Converter recomendaÃ§Ãµes para string
+        // Converter recomendaÃƒÂ§ÃƒÂµes para string
         const recommendationsText = mapProtocolRecommendationsToString(bundle.recommendations)
 
-        // Construir payload para navegaÃ§Ã£o
+        // Construir payload para navegaÃƒÂ§ÃƒÂ£o
         const payload = {
           items: prescriptionItems,
           recommendations: recommendationsText,
@@ -840,7 +843,7 @@ export default function Protocolos3Page() {
           setSelectedProtocolBundle(bundle)
           console.log('[Protocolos3] Protocolo carregado com sucesso', bundle.protocol.name)
         } else {
-          console.error('[Protocolos3] Protocolo nÃ£o encontrado', protocolId)
+          console.error('[Protocolos3] Protocolo nÃƒÂ£o encontrado', protocolId)
           setSelectedProtocolId(null)
         }
       } catch (err) {
@@ -859,7 +862,7 @@ export default function Protocolos3Page() {
       setIsLoadingGlobalViewer(true)
       const bundle = await loadGlobalProtocolBundle(protocolId)
       if (!bundle) {
-        alert('Protocolo global nÃ£o encontrado.')
+        alert('Protocolo global nÃƒÂ£o encontrado.')
         return
       }
       setGlobalProtocolViewer(bundle)
@@ -890,7 +893,7 @@ export default function Protocolos3Page() {
         setModalOpen(true)
       }
       setGlobalProtocolViewer(null)
-      alert('Protocolo global duplicado para a sua clÃ­nica com sucesso.')
+      alert('Protocolo global duplicado para a sua cl?nica com sucesso.')
     } catch (err) {
       console.error('[Protocolos3] Erro ao duplicar protocolo global', err)
       const message = err instanceof Error ? err.message : safeStringify(err)
@@ -930,16 +933,16 @@ export default function Protocolos3Page() {
       try {
         console.log('[Protocolos3] Adicionando medicamento', medication.name)
 
-        // Buscar apresentaÃ§Ãµes do medicamento
+        // Buscar apresentaÃƒÂ§ÃƒÂµes do medicamento
         const presentations = await getMedicationPresentations(clinicId, medication.id)
         const defaultPresentation = presentations[0] // Use first available presentation
 
         if (!defaultPresentation) {
-          alert('Medicamento nÃ£o possui apresentaÃ§Ãµes cadastradas.')
+          alert('Medicamento nÃƒÂ£o possui apresentaÃƒÂ§ÃƒÂµes cadastradas.')
           return
         }
 
-        // Create item â€” only fields that exist in the DB schema
+        // Create item Ã¢â‚¬â€ only fields that exist in the DB schema
         const newItem: ProtocolMedicationItem = {
           medication_id: medication.id,
           medication_name: medication.name,
@@ -948,7 +951,7 @@ export default function Protocolos3Page() {
             defaultPresentation.pharmaceutical_form,
             defaultPresentation.commercial_name,
             defaultPresentation.concentration_text,
-          ].filter(Boolean).join(' â€” '),
+          ].filter(Boolean).join(' Ã¢â‚¬â€ '),
           manual_medication_name: null,
           manual_presentation_label: null,
           concentration_value: (defaultPresentation as any).concentration_value || null,
@@ -960,7 +963,7 @@ export default function Protocolos3Page() {
           duration_days: 7,
           is_controlled: medication.is_controlled,
           sort_order: editingProtocol.medications.length,
-          // NOTE: no `instructions` â€” column does not exist in DB
+          // NOTE: no `instructions` Ã¢â‚¬â€ column does not exist in DB
         }
 
         setEditingProtocol({
@@ -990,6 +993,17 @@ export default function Protocolos3Page() {
     },
     [editingProtocol]
   )
+
+  const handleAddMedicationFromProtocolModal = useCallback((item: any) => {
+    updateEditingProtocol((prev) => ({
+      ...prev,
+      medications: [
+        ...prev.medications,
+        mapPrescriptionItemToProtocolMedicationItem(item, prev.medications.length),
+      ],
+    }))
+    setProtocolMedicationModalOpen(false)
+  }, [updateEditingProtocol])
 
   const handleAddMedicationToDraft = useCallback(async (medication: MedicationSearchResult) => {
     if (!clinicId) return
@@ -1148,7 +1162,7 @@ export default function Protocolos3Page() {
                     : 'border border-[#39ff14]/20 bg-[#39ff14]/12 text-[#9CFF87]'
                 }`}
               >
-                {protocol.scope === 'global' ? 'GLOBAL' : 'DA CLINICA'}
+                {protocol.scope === 'global' ? 'GLOBAL' : 'DA CL?NICA'}
               </span>
             </div>
             <h3 className="truncate text-lg font-black uppercase italic leading-tight text-white">
@@ -1281,7 +1295,7 @@ export default function Protocolos3Page() {
             <div>
               <div className="mb-2 flex items-center gap-2">
                 <span className="rounded bg-[#39ff14]/10 px-2.5 py-1 text-[9px] font-black uppercase tracking-wider text-[#7CFF64] border border-[#39ff14]/20">
-                  DA CLINICA
+                  DA CL?NICA
                 </span>
               </div>
               <h2 className="text-xl font-black uppercase italic tracking-tight text-white">
@@ -1405,7 +1419,7 @@ export default function Protocolos3Page() {
                 <h3 className="text-sm font-black uppercase tracking-widest italic text-[#39ff14]">
                   Medicamentos do protocolo
                 </h3>
-                <RxvButton variant="secondary" onClick={() => setMedicationSearchOpen(true)} className="h-8 text-[10px]">
+                <RxvButton variant="secondary" onClick={() => setProtocolMedicationModalOpen(true)} className="h-8 text-[10px]">
                   + Adicionar
                 </RxvButton>
               </div>
@@ -1427,7 +1441,7 @@ export default function Protocolos3Page() {
                             {med.medication_name || med.manual_medication_name || 'Medicamento'}
                           </p>
                           <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                            {med.manual_presentation_label || med.presentation_text || 'Apresentacao nao definida'}
+                            {med.manual_presentation_label || med.presentation_text || 'Apresentação não definida'}
                           </p>
                         </div>
                         <button
@@ -1466,7 +1480,7 @@ export default function Protocolos3Page() {
                             options={PROTOCOL_ROUTE_OPTIONS}
                           />
                         </RxvField>
-                        <RxvField label="Frequencia">
+                        <RxvField label="Frequência">
                           <RxvSelect
                             value={med.times_per_day ? String(med.times_per_day) : ''}
                             onChange={(e) => updateMedicationAt(idx, (current) => ({
@@ -1478,7 +1492,7 @@ export default function Protocolos3Page() {
                             options={PROTOCOL_FREQUENCY_OPTIONS}
                           />
                         </RxvField>
-                        <RxvField label="Modo de duracao">
+                        <RxvField label="Modo de duração">
                           <RxvSelect
                             value={med.duration_days === -1 ? 'continuous_until_recheck' : 'fixed_days'}
                             onChange={(e) => updateMedicationAt(idx, (current) => ({
@@ -1490,7 +1504,7 @@ export default function Protocolos3Page() {
                             options={PROTOCOL_DURATION_MODE_OPTIONS}
                           />
                         </RxvField>
-                        <RxvField label="Duracao (dias)">
+                        <RxvField label="Duração (dias)">
                           <RxvInput
                             type="number"
                             value={med.duration_days && med.duration_days > 0 ? med.duration_days : ''}
@@ -1512,10 +1526,10 @@ export default function Protocolos3Page() {
                       </div>
 
                       <div className="mt-3">
-                        <RxvField label="Observacoes do medicamento">
+                        <RxvField label="Observações do medicamento">
                           <RxvTextarea
                             rows={3}
-                            placeholder="Observacoes que devem acompanhar este item no protocolo."
+                            placeholder="Observações que devem acompanhar este item no protocolo."
                             value={getMedicationObservation(med)}
                             onChange={(e) => updateMedicationAt(idx, (current) => ({
                               ...current,
@@ -1530,7 +1544,7 @@ export default function Protocolos3Page() {
 
                       <div className="mt-3 rounded-xl border border-slate-800 bg-black/20 px-3 py-3 text-xs text-slate-400">
                         <p className="font-semibold text-slate-200">Resumo</p>
-                        <p>{med.route || 'Via nao definida'} • {getMedicationFrequencyLabel(med)} • {med.duration_days === -1 ? 'Uso continuo ate reavaliacao do paciente' : med.duration_days ? `${med.duration_days} dia(s)` : 'Duracao nao definida'}</p>
+                        <p>{med.route || 'Via não definida'} • {getMedicationFrequencyLabel(med)} • {med.duration_days === -1 ? 'Uso contínuo até reavaliação do paciente' : med.duration_days ? `${med.duration_days} dia(s)` : 'Duração não definida'}</p>
                       </div>
                     </div>
                   ))}
@@ -1598,7 +1612,7 @@ export default function Protocolos3Page() {
                             : 'border-slate-700 bg-slate-800/30 text-slate-400 hover:border-slate-600 hover:text-slate-300'
                         }`}
                       >
-                        {selected ? 'âœ“ ' : ''}{exam}
+                        {selected ? 'Ã¢Å“â€œ ' : ''}{exam}
                       </button>
                     )
                   })}
@@ -1711,7 +1725,7 @@ export default function Protocolos3Page() {
                     : 'bg-[#39ff14]/12 text-[#9CFF87] border border-[#39ff14]/20'
                 }`}
               >
-                {protocol.scope === 'global' ? 'GLOBAL' : 'DA CLÃNICA'}
+                {protocol.scope === 'global' ? 'GLOBAL' : 'DA CL?NICA'}
               </span>
             </div>
             <h3 className="text-lg font-black text-white leading-tight truncate uppercase italic">
@@ -1749,7 +1763,7 @@ export default function Protocolos3Page() {
                   <section className="space-y-5">
                     <div className="flex items-center gap-3 border-b border-slate-800/80 pb-3">
                       <span className="text-[10px] font-black uppercase tracking-[0.24em] text-[#7CFF64]">
-                        Protocolos da clÃƒÂ­nica
+                        Protocolos da cl?nica
                       </span>
                       <span className="h-px flex-1 bg-slate-800" />
                       <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">
@@ -1781,7 +1795,7 @@ export default function Protocolos3Page() {
                   <section className="space-y-5">
                     <div className="flex items-center gap-3 border-b border-slate-800/80 pb-3">
                       <span className="text-[10px] font-black uppercase tracking-[0.24em] text-[#7CFF64]">
-                        Protocolos da clÃƒÂ­nica
+                        Protocolos da cl?nica
                       </span>
                       <span className="h-px flex-1 bg-slate-800" />
                       <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">
@@ -1872,7 +1886,7 @@ export default function Protocolos3Page() {
     return (
       <ReceituarioChrome section="protocolos" title="Carregando...">
         <div className="flex items-center justify-center min-h-screen">
-          <p className="text-slate-500">Carregando clÃ­nica...</p>
+          <p className="text-slate-500">Carregando cl?nica...</p>
         </div>
       </ReceituarioChrome>
     )
@@ -1951,7 +1965,7 @@ export default function Protocolos3Page() {
 
         {/* Main Content */}
         <main className="flex-1 overflow-y-auto">
-          {/* Topbar IntermediÃ¡ria */}
+          {/* Topbar IntermediÃƒÂ¡ria */}
           <div className="sticky top-0 z-30 border-b border-slate-800/50 bg-black/60 backdrop-blur-md px-8 py-6">
             <div className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
               <div>
@@ -1964,7 +1978,7 @@ export default function Protocolos3Page() {
               <div className="mt-4 inline-flex rounded-2xl border border-slate-800 bg-black/40 p-1">
                 {[
                   { value: 'all', label: 'Todos' },
-                  { value: 'clinic', label: 'Da clÃ­nica' },
+                  { value: 'clinic', label: 'Da cl?nica' },
                   { value: 'global', label: 'Globais' },
                 ].map((option) => (
                   <button
@@ -2034,7 +2048,7 @@ export default function Protocolos3Page() {
                     <section className="space-y-5">
                       <div className="flex items-center gap-3 border-b border-slate-800/80 pb-3">
                         <span className="text-[10px] font-black uppercase tracking-[0.24em] text-[#7CFF64]">
-                          Protocolos da clinica
+                          Protocolos da cl?nica
                         </span>
                         <span className="h-px flex-1 bg-slate-800" />
                         <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">
@@ -2069,6 +2083,20 @@ export default function Protocolos3Page() {
 
       {/* Modal Criar/Editar Protocolo */}
       {modalOpen && editingProtocol && renderProtocolEditorModal()}
+      {protocolMedicationModalOpen && editingProtocol && clinicId && (
+        <AddMedicationModal2
+          open={protocolMedicationModalOpen}
+          onClose={() => setProtocolMedicationModalOpen(false)}
+          onAdd={handleAddMedicationFromProtocolModal}
+          clinicId={clinicId}
+          patient={null}
+          storageScope="protocol"
+          title="Adicionar medicamento ao protocolo"
+          subtitle="Busque no Catálogo 3.0 e configure apresentação, dose, frequência, duração e observações que devem entrar quando o protocolo for aplicado."
+          confirmLabel="Adicionar ao protocolo"
+          hideStartControls={true}
+        />
+      )}
 
       {false && modalOpen && editingProtocol && (
         <RxvModalShell zIndexClass="z-[90]" overlayClassName="bg-black/90 backdrop-blur-sm">
@@ -2078,14 +2106,14 @@ export default function Protocolos3Page() {
               <div>
                 <div className="mb-2 flex items-center gap-2">
                   <span className="text-[9px] font-black uppercase px-2.5 py-1 rounded bg-[#39ff14]/10 text-[#7CFF64] border border-[#39ff14]/20 tracking-wider">
-                    DA CLÃNICA
+                    DA CL?NICA
                   </span>
                 </div>
                 <h2 className="text-xl font-black text-white italic uppercase tracking-tight">
                   {editingProtocol.protocol.id ? 'Editar Protocolo' : 'Novo Protocolo'}
                 </h2>
                 <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">
-                  Configure medicamentos e recomendaÃ§Ãµes prÃ©-definidas
+                  Configure medicamentos e recomendaÃƒÂ§ÃƒÂµes prÃƒÂ©-definidas
                 </p>
               </div>
               <div className="flex items-center gap-3">
@@ -2094,9 +2122,9 @@ export default function Protocolos3Page() {
                     variant="secondary"
                     onClick={handleOpenPublishGlobalModal}
                     disabled={!editingProtocol.protocol.id || isLoadingGlobalProtocols}
-                    title={editingProtocol.protocol.id ? 'Publicar protocolo para todos os usuÃ¡rios' : 'Salve o protocolo local antes de publicar globalmente'}
+                    title={editingProtocol.protocol.id ? 'Publicar protocolo para todos os usuÃƒÂ¡rios' : 'Salve o protocolo local antes de publicar globalmente'}
                   >
-                    {isLoadingGlobalProtocols ? 'Carregando vÃ­nculo...' : 'Salvar como global'}
+                    {isLoadingGlobalProtocols ? 'Carregando vÃƒÂ­nculo...' : 'Salvar como global'}
                   </RxvButton>
                 )}
                 <RxvButton variant="secondary" onClick={() => { setModalOpen(false); setEditingProtocol(null); handleClosePublishGlobalModal(); }}>
@@ -2110,11 +2138,11 @@ export default function Protocolos3Page() {
 
             {/* Body */}
             <div className="flex-1 overflow-y-auto p-8 space-y-10">
-              {/* InformaÃ§Ãµes bÃ¡sicas */}
+              {/* InformaÃƒÂ§ÃƒÂµes bÃƒÂ¡sicas */}
               <div className="space-y-6">
                 <RxvField label="Nome do protocolo">
                   <RxvInput
-                    placeholder="Ex: Dermatite AtÃ³pica"
+                    placeholder="Ex: Dermatite AtÃƒÂ³pica"
                     value={editingProtocol.protocol.name}
                     onChange={(e) =>
                       setEditingProtocol({
@@ -2125,9 +2153,9 @@ export default function Protocolos3Page() {
                   />
                 </RxvField>
 
-                <RxvField label="DescriÃ§Ã£o">
+                <RxvField label="DescriÃƒÂ§ÃƒÂ£o">
                   <RxvTextarea
-                    placeholder="DescriÃ§Ã£o breve para ajudÃ¡-lo a encontrar no futuro..."
+                    placeholder="DescriÃƒÂ§ÃƒÂ£o breve para ajudÃƒÂ¡-lo a encontrar no futuro..."
                     value={editingProtocol.protocol.description || ''}
                     onChange={(e) =>
                       setEditingProtocol({
@@ -2156,7 +2184,7 @@ export default function Protocolos3Page() {
                     />
                   </RxvField>
 
-                  <RxvField label="Tags (separadas por vÃ­rgula)">
+                  <RxvField label="Tags (separadas por vÃƒÂ­rgula)">
                     <RxvInput
                       placeholder="Ex: dermatologia, pug, __inactive"
                       value={(editingProtocol.protocol.tags || []).join(', ')}
@@ -2171,7 +2199,7 @@ export default function Protocolos3Page() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <RxvField label="EspÃ©cie alvo">
+                  <RxvField label="EspÃƒÂ©cie alvo">
                     <RxvSelect
                       value={editingProtocol.protocol.species || ''}
                       onChange={(e) =>
@@ -2198,15 +2226,15 @@ export default function Protocolos3Page() {
                         })
                       }
                       options={[
-                        { value: 'false', label: 'NÃ£o (ReceituÃ¡rio Comum)' },
-                        { value: 'true', label: 'Sim (NotificaÃ§Ã£o/Portaria 344)' },
+                        { value: 'false', label: 'NÃƒÂ£o (ReceituÃƒÂ¡rio Comum)' },
+                        { value: 'true', label: 'Sim (NotificaÃƒÂ§ÃƒÂ£o/Portaria 344)' },
                       ]}
                     />
                   </RxvField>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <RxvField label="DuraÃ§Ã£o Resumida">
+                  <RxvField label="DuraÃƒÂ§ÃƒÂ£o Resumida">
                     <RxvInput
                       placeholder="Ex: 15 a 30 dias"
                       value={editingProtocol.protocol.duration_summary || ''}
@@ -2221,7 +2249,7 @@ export default function Protocolos3Page() {
 
                   <RxvField label="Justificativa Exames (Opcional)">
                     <RxvInput
-                      placeholder="Justificativa padrÃ£o para exames"
+                      placeholder="Justificativa padrÃƒÂ£o para exames"
                       value={editingProtocol.protocol.exams_justification || ''}
                       onChange={(e) =>
                         setEditingProtocol({
@@ -2272,7 +2300,7 @@ export default function Protocolos3Page() {
                               {med.medication_name || med.manual_medication_name}
                             </p>
                             <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-0.5 truncate">
-                              {med.manual_presentation_label || med.presentation_text || 'ApresentaÃ§Ã£o nÃ£o definida'}
+                              {med.manual_presentation_label || med.presentation_text || 'ApresentaÃƒÂ§ÃƒÂ£o nÃƒÂ£o definida'}
                             </p>
                           </div>
                           <button
@@ -2327,11 +2355,11 @@ export default function Protocolos3Page() {
                 )}
               </div>
 
-              {/* RecomendaÃ§Ãµes */}
+              {/* RecomendaÃƒÂ§ÃƒÂµes */}
               <div className="space-y-4">
                 <div className="flex items-center justify-between border-b border-slate-800 pb-2">
                   <h3 className="text-sm font-black text-[#39ff14] uppercase tracking-widest italic">
-                    RecomendaÃ§Ãµes e OrientaÃ§Ãµes
+                    RecomendaÃƒÂ§ÃƒÂµes e OrientaÃƒÂ§ÃƒÂµes
                   </h3>
                 </div>
 
@@ -2339,7 +2367,7 @@ export default function Protocolos3Page() {
                   {editingProtocol.recommendations.map((rec, idx) => (
                     <div key={idx} className="relative group">
                       <RxvTextarea
-                        placeholder="Ex: Oferecer Ã¡gua fresca, evitar banhos frios..."
+                        placeholder="Ex: Oferecer ÃƒÂ¡gua fresca, evitar banhos frios..."
                         value={rec.text}
                         onChange={(e) => {
                           const updated = [...editingProtocol.recommendations]
@@ -2374,7 +2402,7 @@ export default function Protocolos3Page() {
                     className="w-full py-4 border border-dashed border-slate-800 rounded-2xl hover:border-[#39ff14]/30 hover:bg-[#39ff14]/5 transition-all group"
                   >
                     <span className="text-[10px] font-black text-slate-500 group-hover:text-[#39ff14] uppercase tracking-widest">
-                      + Adicionar campo de recomendaÃ§Ã£o
+                      + Adicionar campo de recomendaÃƒÂ§ÃƒÂ£o
                     </span>
                   </button>
                 </div>
@@ -2401,7 +2429,7 @@ export default function Protocolos3Page() {
                   {globalProtocolViewer.protocol.name}
                 </h2>
                 <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">
-                  DisponÃ­vel para todos os usuÃ¡rios
+                  DisponÃƒÂ­vel para todos os usuÃƒÂ¡rios
                 </p>
               </div>
               <button
@@ -2416,9 +2444,9 @@ export default function Protocolos3Page() {
             <div className="flex-1 overflow-y-auto p-8 space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="rounded-2xl border border-slate-800 bg-black/30 p-5">
-                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">DescriÃ§Ã£o</p>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">DescriÃƒÂ§ÃƒÂ£o</p>
                   <p className="mt-2 text-sm leading-relaxed text-slate-200">
-                    {globalProtocolViewer.protocol.description || 'Sem descriÃ§Ã£o.'}
+                    {globalProtocolViewer.protocol.description || 'Sem descriÃƒÂ§ÃƒÂ£o.'}
                   </p>
                 </div>
                 <div className="rounded-2xl border border-slate-800 bg-black/30 p-5">
@@ -2464,7 +2492,7 @@ export default function Protocolos3Page() {
                           {med.medication_name || med.manual_medication_name}
                         </p>
                         <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-500 truncate">
-                          {med.manual_presentation_label || med.presentation_text || 'ApresentaÃ§Ã£o nÃ£o definida'}
+                          {med.manual_presentation_label || med.presentation_text || 'ApresentaÃƒÂ§ÃƒÂ£o nÃƒÂ£o definida'}
                         </p>
                         <div className="mt-3 grid grid-cols-2 md:grid-cols-5 gap-3 text-xs text-slate-300">
                           <div><span className="block text-[10px] uppercase tracking-widest text-slate-500">Dose</span>{med.dose_value || '-'} {med.dose_unit || ''}</div>
@@ -2478,11 +2506,11 @@ export default function Protocolos3Page() {
                                 : med.frequency_type === 'once_daily'
                                   ? '1x/dia'
                                   : med.frequency_type === 'as_needed'
-                                    ? 'Se necessÃ¡rio'
+                                    ? 'Se necessÃƒÂ¡rio'
                                     : '-'}
                           </div>
                           <div><span className="block text-[10px] uppercase tracking-widest text-slate-500">Dias</span>{med.duration_days || '-'}</div>
-                          <div><span className="block text-[10px] uppercase tracking-widest text-slate-500">Origem</span>{med.global_medication_id ? 'CatÃ¡logo global' : 'Manual'}</div>
+                          <div><span className="block text-[10px] uppercase tracking-widest text-slate-500">Origem</span>{med.global_medication_id ? 'CatÃƒÂ¡logo global' : 'Manual'}</div>
                         </div>
                       </div>
                     ))}
@@ -2493,12 +2521,12 @@ export default function Protocolos3Page() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between border-b border-slate-800 pb-2">
                   <h3 className="text-sm font-black text-cyan-300 uppercase tracking-widest italic">
-                    RecomendaÃ§Ãµes
+                    RecomendaÃƒÂ§ÃƒÂµes
                   </h3>
                 </div>
                 {(globalProtocolViewer.recommendations || []).length === 0 ? (
                   <div className="rounded-2xl border border-dashed border-slate-800 bg-black/20 px-4 py-8 text-center text-xs font-bold uppercase tracking-widest text-slate-500">
-                    Nenhuma recomendaÃ§Ã£o configurada
+                    Nenhuma recomendaÃƒÂ§ÃƒÂ£o configurada
                   </div>
                 ) : (
                   <div className="space-y-3">
@@ -2549,7 +2577,7 @@ export default function Protocolos3Page() {
                 Utilizar Protocolo
               </RxvButton>
               <RxvButton variant="primary" onClick={handleDuplicateGlobalProtocol} loading={isDuplicatingGlobal}>
-                Duplicar para minha clÃ­nica
+                Duplicar para minha cl?nica
               </RxvButton>
             </div>
           </div>
@@ -2565,7 +2593,7 @@ export default function Protocolos3Page() {
                   Salvar como global
                 </h2>
                 <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">
-                  Publica este protocolo para todos os usuÃ¡rios via fluxo server-side
+                  Publica este protocolo para todos os usuÃƒÂ¡rios via fluxo server-side
                 </p>
               </div>
               <button
@@ -2609,7 +2637,7 @@ export default function Protocolos3Page() {
                 </RxvField>
               </div>
 
-              <RxvField label="DescriÃ§Ã£o">
+              <RxvField label="DescriÃƒÂ§ÃƒÂ£o">
                 <RxvTextarea
                   rows={3}
                   value={publishGlobalDraft.description}
@@ -2624,7 +2652,7 @@ export default function Protocolos3Page() {
               </RxvField>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <RxvField label="EspÃ©cie">
+                <RxvField label="EspÃƒÂ©cie">
                   <RxvSelect
                     value={publishGlobalDraft.species}
                     onChange={(e) =>
@@ -2641,7 +2669,7 @@ export default function Protocolos3Page() {
                   />
                 </RxvField>
 
-                <RxvField label="Modo de publicaÃ§Ã£o">
+                <RxvField label="Modo de publicaÃƒÂ§ÃƒÂ£o">
                   <RxvSelect
                     value={publishGlobalDraft.mode}
                     onChange={(e) =>
@@ -2676,7 +2704,7 @@ export default function Protocolos3Page() {
                     }
                     options={linkedGlobalProtocols.map((protocol) => ({
                       value: protocol.id,
-                      label: `${protocol.name} â€¢ slug ${protocol.slug} â€¢ v${protocol.version}`,
+                      label: `${protocol.name} Ã¢â‚¬Â¢ slug ${protocol.slug} Ã¢â‚¬Â¢ v${protocol.version}`,
                     }))}
                   />
                 </RxvField>
@@ -2698,12 +2726,12 @@ export default function Protocolos3Page() {
               {linkedGlobalProtocols.length > 0 ? (
                 <div className="rounded-2xl border border-slate-800 bg-black/30 px-4 py-4 text-xs text-slate-400 leading-relaxed">
                   {publishGlobalDraft.mode === 'update'
-                    ? 'O protocolo global selecionado terÃ¡ versÃ£o incrementada e os itens filhos serÃ£o substituÃ­dos pelo conteÃºdo atual do protocolo local.'
-                    : 'Este protocolo local jÃ¡ possui vÃ­nculo global. Se escolher salvar como novo, um novo registro global serÃ¡ criado mantendo a rastreabilidade da origem.'}
+                    ? 'O protocolo global selecionado terÃƒÂ¡ versÃƒÂ£o incrementada e os itens filhos serÃƒÂ£o substituÃƒÂ­dos pelo conteÃƒÂºdo atual do protocolo local.'
+                    : 'Este protocolo local jÃƒÂ¡ possui vÃƒÂ­nculo global. Se escolher salvar como novo, um novo registro global serÃƒÂ¡ criado mantendo a rastreabilidade da origem.'}
                 </div>
               ) : (
                 <div className="rounded-2xl border border-slate-800 bg-black/30 px-4 py-4 text-xs text-slate-400 leading-relaxed">
-                  SerÃ¡ criado um protocolo global novo, com rastreabilidade para o protocolo local e a clÃ­nica de origem.
+                  Ser? criado um protocolo global novo, com rastreabilidade para o protocolo local e a cl?nica de origem.
                 </div>
               )}
             </div>
@@ -2820,7 +2848,7 @@ export default function Protocolos3Page() {
                         <div className="mt-2 flex flex-wrap items-center gap-2">
                           {presentation.source && (
                             <span className="rounded border border-cyan-500/20 bg-cyan-500/10 px-2 py-0.5 text-[8px] font-black uppercase text-cyan-300">
-                              {presentation.source === 'global' ? 'GLOBAL' : 'CLINICA'}
+                              {presentation.source === 'global' ? 'GLOBAL' : 'CL?NICA'}
                             </span>
                           )}
                           {presentation.presentation_unit && (

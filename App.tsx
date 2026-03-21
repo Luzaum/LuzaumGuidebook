@@ -12,6 +12,9 @@ const Hub = lazy(() => import('./pages/Hub').then((m) => ({ default: m.Hub })))
 const ModuleIframe = lazy(() => import('./pages/ModuleIframe').then((m) => ({ default: m.ModuleIframe })))
 const CalculadoraEnergeticaPage = lazy(() => import('./pages/CalculadoraEnergeticaPage').then((m) => ({ default: m.CalculadoraEnergeticaPage })))
 const FluidoterapiaPage = lazy(() => import('./pages/FluidoterapiaPage').then((m) => ({ default: m.FluidoterapiaPage })))
+const FluidoterapiaCalculatorPage = lazy(() => import('./pages/FluidoterapiaCalculatorPage').then((m) => ({ default: m.FluidoterapiaCalculatorPage })))
+const FluidoterapiaDoencasPage = lazy(() => import('./pages/FluidoterapiaDoencasPage').then((m) => ({ default: m.FluidoterapiaDoencasPage })))
+const FluidoterapiaGuidePage = lazy(() => import('./pages/FluidoterapiaGuidePage').then((m) => ({ default: m.FluidoterapiaGuidePage })))
 const TransfusaoSanguineaPage = lazy(() => import('./pages/TransfusaoSanguineaPage').then((m) => ({ default: m.TransfusaoSanguineaPage })))
 const HemogasometriaPage = lazy(() => import('./pages/HemogasometriaPage').then((m) => ({ default: m.HemogasometriaPage })))
 const NeurologiaPage = lazy(() => import('./pages/NeurologiaPage').then((m) => ({ default: m.NeurologiaPage })))
@@ -55,7 +58,6 @@ const Protocolos3Page = lazy(() => import('./modules/receituario-vet/Protocolos3
 const TemplatesPage = lazy(() => import('./modules/receituario-vet/TemplatesPage'))
 const SettingsPage = lazy(() => import('./modules/receituario-vet/SettingsPage'))
 const ControleEspecialPage = lazy(() => import('./modules/receituario-vet/ControleEspecialPage'))
-const DevelopmentPage = lazy(() => import('./modules/receituario-vet/DevelopmentPage'))
 const AAP2Module = lazy(() => import('./modules/aap2/index'))
 
 const Login = lazy(() => import('./src/routes/Login'))
@@ -92,7 +94,12 @@ const appRoutes = (
     <Route path="/conta/clinica" element={<ProtectedRoute><AccountClinic /></ProtectedRoute>} />
     <Route path="/conta/clínica" element={<ProtectedRoute><AccountClinic /></ProtectedRoute>} />
     <Route path="/calculadora-energetica" element={<CalculadoraEnergeticaPage />} />
-    <Route path="/fluidoterapia" element={<FluidoterapiaPage />} />
+    <Route path="/fluidoterapia" element={<FluidoterapiaPage />}>
+      <Route index element={<FluidoterapiaCalculatorPage />} />
+      <Route path="doencas" element={<FluidoterapiaDoencasPage />} />
+      <Route path="guia" element={<FluidoterapiaGuidePage />} />
+      <Route path="*" element={<Navigate to="/fluidoterapia" replace />} />
+    </Route>
     <Route path="/transfusao-sanguinea" element={<TransfusaoSanguineaPage />} />
     <Route path="/transfusão-sanguinea" element={<TransfusaoSanguineaPage />} />
     <Route path="/hemogasometria" element={<HemogasometriaPage />} />
@@ -118,7 +125,6 @@ const appRoutes = (
     <Route path="/receituario-vet/templates" element={<ProtectedClinicRoute><TemplatesPage /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/configuracoes" element={<ProtectedClinicRoute><SettingsPage /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/configurações" element={<ProtectedClinicRoute><SettingsPage /></ProtectedClinicRoute>} />
-    <Route path="/receituario-vet/desenvolvimento" element={<ProtectedClinicRoute><DevelopmentPage /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/rx/:id/print" element={<ProtectedClinicRoute><RxPrintPage /></ProtectedClinicRoute>} />
     <Route path="/crivet" element={<CrivetPage />} />
     <Route path="/neurologia" element={<NeurologiaPage />} />

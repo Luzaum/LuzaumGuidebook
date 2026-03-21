@@ -170,6 +170,13 @@ export type GlobalProtocolBundle = {
   examItems: ProtocolExamItem[]
 }
 
+type StoredProtocolMedicationMetadataEntry = {
+  sort_order: number
+  medication_id?: string | null
+  presentation_id?: string | null
+  metadata: Record<string, unknown> | null
+}
+
 type DefaultProtocolSeed = {
   folderName: string
   iconKey: string
@@ -570,6 +577,57 @@ async function hydrateGlobalProtocolMedications(
   }))
 }
 
+function mergeProtocolMedicationMetadataIntoHeader(
+  protocolMetadata: Record<string, unknown> | null | undefined,
+  medications: ProtocolMedicationItem[]
+): Record<string, unknown> {
+  const currentMetadata =
+    protocolMetadata && typeof protocolMetadata === 'object' && !Array.isArray(protocolMetadata)
+      ? { ...protocolMetadata }
+      : {}
+
+  currentMetadata.protocol_medication_snapshots = medications.map((item, index) => ({
+    sort_order: index,
+    medication_id: item.medication_id ?? null,
+    presentation_id: item.presentation_id ?? null,
+    metadata:
+      item.metadata && typeof item.metadata === 'object' && !Array.isArray(item.metadata)
+        ? item.metadata
+        : {},
+  })) as StoredProtocolMedicationMetadataEntry[]
+
+  return currentMetadata
+}
+
+function restoreProtocolMedicationMetadataFromHeader(
+  protocolMetadata: Record<string, unknown> | null | undefined,
+  medications: ProtocolMedicationItem[]
+): ProtocolMedicationItem[] {
+  const rawEntries = Array.isArray((protocolMetadata as any)?.protocol_medication_snapshots)
+    ? ((protocolMetadata as any).protocol_medication_snapshots as StoredProtocolMedicationMetadataEntry[])
+    : []
+
+  if (rawEntries.length === 0) return medications
+
+  const metadataByOrder = new Map<number, StoredProtocolMedicationMetadataEntry>()
+  rawEntries.forEach((entry) => {
+    if (entry && typeof entry.sort_order === 'number') {
+      metadataByOrder.set(entry.sort_order, entry)
+    }
+  })
+
+  return medications.map((item, index) => {
+    const entry = metadataByOrder.get(item.sort_order ?? index) || metadataByOrder.get(index)
+    if (!entry || !entry.metadata || typeof entry.metadata !== 'object' || Array.isArray(entry.metadata)) {
+      return item
+    }
+    return {
+      ...item,
+      metadata: entry.metadata,
+    }
+  })
+}
+
 export async function listCombinedProtocols(
   clinicId: string,
   userId: string,
@@ -756,11 +814,15 @@ export async function loadProtocolBundle(
       sort_order: m.sort_order ?? 0,
     })) as ProtocolMedicationItem[])
   )
+  const hydratedMedicationsWithMetadata = restoreProtocolMedicationMetadataFromHeader(
+    (protocol as any).metadata ?? null,
+    hydratedMedications
+  )
 
   return {
     scope: 'clinic',
     protocol: protocol as ProtocolRecord,
-    medications: hydratedMedications,
+    medications: hydratedMedicationsWithMetadata,
     recommendations: (recommendations ?? []).map((r) => ({
       id: r.id,
       text: r.text ?? '',    // column is `text` in DB
@@ -837,6 +899,10 @@ export async function loadGlobalProtocolBundle(
       metadata: (m as any).metadata ?? null,
     })) as ProtocolMedicationItem[])
   )
+  const hydratedMedicationsWithMetadata = restoreProtocolMedicationMetadataFromHeader(
+    (protocol as any).metadata ?? null,
+    hydratedMedications
+  )
 
   return {
     scope: 'global',
@@ -844,7 +910,7 @@ export async function loadGlobalProtocolBundle(
       ...(protocol as GlobalProtocolRecord),
       scope: 'global',
     },
-    medications: hydratedMedications,
+    medications: hydratedMedicationsWithMetadata,
     recommendations: (recommendations ?? []).map((rec) => ({
       id: rec.id,
       text: rec.text ?? '',
@@ -890,6 +956,11 @@ export async function saveProtocolBundle(
   const name = String(draft.protocol.name || '').trim()
   if (!name) throw new Error('Nome do protocolo é obrigatório.')
 
+  const protocolDraftWithSnapshots = {
+    ...draft.protocol,
+    metadata: mergeProtocolMedicationMetadataIntoHeader(draft.protocol.metadata || {}, draft.medications),
+  }
+
   let protocolId = String(draft.protocol.id || '').trim() || null
   let savedProtocol: ProtocolRecord
 
@@ -897,7 +968,7 @@ export async function saveProtocolBundle(
   if (protocolId) {
     const { data, error } = await supabase
       .from('protocols')
-      .update(buildProtocolUpdate(draft.protocol))
+      .update(buildProtocolUpdate(protocolDraftWithSnapshots))
       .eq('clinic_id', clinicId)
       .eq('owner_user_id', userId)
       .eq('id', protocolId)
@@ -910,7 +981,7 @@ export async function saveProtocolBundle(
   } else {
     const { data, error } = await supabase
       .from('protocols')
-      .insert(buildProtocolInsert(draft.protocol, clinicId, userId))
+      .insert(buildProtocolInsert(protocolDraftWithSnapshots, clinicId, userId))
       .select('*')
       .single()
 

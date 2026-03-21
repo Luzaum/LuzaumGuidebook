@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo, useCallback, useRef } from 'react'
+﻿import React, { useEffect, useState, useMemo, useCallback, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import ReceituarioChrome from './ReceituarioChrome'
@@ -42,8 +42,8 @@ interface Medication {
     name: string
     is_controlled: boolean
     notes: string | null
-    species: string[] | null // ✅ CORRETO: 'species' é o nome da coluna no Supabase (não species_targets!)
-    routes: string[] | null // ✅ CORRETO: 'routes' é o nome da coluna no Supabase (não route_group!)
+    species: string[] | null
+    routes: string[] | null
     is_active: boolean
     metadata?: any
     created_at?: string
@@ -74,15 +74,15 @@ interface Presentation {
 }
 
 interface RecommendedDoseUI {
-    id?: string // se existir no DB
-    client_id: string // UUID estável para React keys
+    id?: string
+    client_id: string
     species: string
     route: string
-    dose_value: number | null // dose mínima (ou fixa)
-    dose_max: number | null // dose máxima (null = valor fixo)
+    dose_value: number | null
+    dose_max: number | null
     dose_unit: string
-    per_weight_unit: string | null // 'kg' ou null
-    indication: string | null // indicação clínica
+    per_weight_unit: string | null
+    indication: string | null
     frequency: string | null
     frequency_min: number | null
     frequency_max: number | null
@@ -119,7 +119,7 @@ const CLINICAL_TAGS_OPTIONS = [
 
 const ROUTES_OPTIONS = ['VO', 'IV', 'IM', 'SC', 'Tópica', 'Ocular', 'Otológica', 'Inalatória', 'Outras']
 
-const SPECIES_OPTIONS = ['cão', 'gato', 'ambos'] // ✅ TAREFA B: adicionar "ambos"
+const SPECIES_OPTIONS = ['cão', 'gato', 'ambos']
 
 const DOSE_UNITS = ['mg/kg', 'mg', 'mL/kg', 'mL', 'UI/kg', 'UI', 'mcg/kg', 'mcg', 'g/kg']
 
@@ -132,12 +132,20 @@ const FREQUENCY_OPTIONS = [
     '8x ao dia',
     '12x ao dia',
     '24x ao dia'
-] // ✅ TAREFA B: frequências padronizadas
+]
+
+const DURATION_MODE_OPTIONS = [
+    { value: 'until_recheck', label: 'Até reavaliação clínica' },
+    { value: 'fixed_days', label: 'Duração fechada' },
+    { value: 'continuous_use', label: 'Uso contínuo' },
+    { value: 'continuous_until_recheck', label: 'Uso contínuo até reavaliação' },
+    { value: 'until_finished', label: 'Até terminar o medicamento' }
+]
 
 // ==================== HELPERS ====================
 
 /**
- * Normaliza valor numérico: converte string → number, NaN → null
+ * Normaliza valor numérico: converte string para number e NaN para null
  * @param value - Valor a normalizar
  * @param allowNull - Se true, permite null; se false, retorna 0 para null/NaN
  * @returns Number ou null
@@ -204,17 +212,19 @@ function createEmptyMedication(): MedicationWithPresentations {
         id: '',
         name: '',
         notes: '',
-        species: ['cão', 'gato'], // ✅ text[] no Supabase
-        routes: [], // ✅ text[] no Supabase
+        species: ['cão', 'gato'],
+        routes: [],
         is_active: true,
         is_controlled: false,
         metadata: {
             active_ingredient: '',
             therapeutic_class: '',
-            clinical_tags: []
+            clinical_tags: [],
+            formulary_notes: '',
+            default_duration_mode: 'until_recheck'
         },
         presentations: [createEmptyPresentation()],
-        recommended_doses: [] // ✅ Doses recomendadas
+        recommended_doses: []
     }
 }
 
@@ -351,16 +361,16 @@ function extractImportableMedications(raw: unknown): CanonicalMedication[] {
         }
         raw.medications.forEach((entry, index) => {
             if (!isRecord(entry)) {
-                throw new Error(`JSON invÃ¡lido: medications[${index}] precisa ser um objeto.`)
+                throw new Error(`JSON inválido: medications[${index}] precisa ser um objeto.`)
             }
             if (Object.prototype.hasOwnProperty.call(entry, 'presentations') && !Array.isArray(entry.presentations)) {
-                throw new Error(`JSON invÃ¡lido: medications[${index}].presentations precisa ser um array.`)
+                throw new Error(`JSON inválido: medications[${index}].presentations precisa ser um array.`)
             }
             if (Object.prototype.hasOwnProperty.call(entry, 'recommended_doses') && !Array.isArray(entry.recommended_doses)) {
-                throw new Error(`JSON invÃ¡lido: medications[${index}].recommended_doses precisa ser um array.`)
+                throw new Error(`JSON inválido: medications[${index}].recommended_doses precisa ser um array.`)
             }
             if (typeof entry.name !== 'string' || !entry.name.trim()) {
-                throw new Error(`JSON invÃ¡lido: medications[${index}].name Ã© obrigatÃ³rio.`)
+                throw new Error(`JSON inválido: medications[${index}].name é obrigatório.`)
             }
         })
         const bundle = assertValidMedicationCatalogBundle(raw)
@@ -449,7 +459,7 @@ export default function Catalogo3Page() {
             setLoading(true)
             const details = await getMedicationDetails(clinicId, id)
             const presentations = await getMedicationPresentations(clinicId, id)
-            const doses = await getMedicationRecommendedDoses(clinicId, id) // ✨ Carregar doses
+            const doses = await getMedicationRecommendedDoses(clinicId, id) // Carregar doses
 
             if (details) {
                 // Normalizar metadados
@@ -458,8 +468,8 @@ export default function Catalogo3Page() {
                 const fullMed: MedicationWithPresentations = {
                     ...details,
                     is_active: details.is_active ?? true,
-                    species: details.species || ['cão', 'gato'], // ✅ text[] do Supabase
-                    routes: details.routes || [], // ✅ text[] do Supabase
+                    species: details.species || ['cão', 'gato'],
+                    routes: details.routes || [],
                     metadata: {
                         ...medMetadata,
                         active_ingredient: medMetadata.active_ingredient || (details as any).active_ingredient || '',
@@ -766,7 +776,9 @@ export default function Catalogo3Page() {
                     ...(draft.metadata || {}),
                     active_ingredient: draft.metadata?.active_ingredient || '',
                     therapeutic_class: draft.metadata?.therapeutic_class || '',
-                    clinical_tags: draft.metadata?.clinical_tags || []
+                    clinical_tags: draft.metadata?.clinical_tags || [],
+                    formulary_notes: draft.metadata?.formulary_notes || '',
+                    default_duration_mode: draft.metadata?.default_duration_mode || 'until_recheck'
                 }
             }
 
@@ -807,9 +819,9 @@ export default function Catalogo3Page() {
                 presentations: cleanPresentationsPayload as any
             })
 
-            console.log('[Catalogo3] ✅ Saved med id:', result.medication.id)
+            console.log('[Catalogo3] Saved med id:', result.medication.id)
 
-            // ✨ SALVAR DOSES RECOMENDADAS
+            // Salvar doses recomendadas
             if (draft.recommended_doses && draft.recommended_doses.length > 0) {
                 const dosesPayload = draft.recommended_doses.map(d => ({
                     id: d.id,
@@ -901,7 +913,7 @@ export default function Catalogo3Page() {
 
             await deleteMedication(clinicId, selectedId)
 
-            console.log('[Catalogo3] ✅ DELETE SUCCESS')
+            console.log('[Catalogo3] DELETE SUCCESS')
 
             // Toast + reload
             showSuccessMessage('Sucesso', 'Medicamento excluído com sucesso.')
@@ -1072,6 +1084,14 @@ export default function Catalogo3Page() {
                                     />
                                 </RxvField>
 
+                                <RxvField label="Classe terapêutica">
+                                    <RxvInput
+                                        placeholder="Ex: Analgésico, Antiemético, Antibiótico..."
+                                        value={draft.metadata?.therapeutic_class ?? ''}
+                                        onChange={e => updateMetadata({ therapeutic_class: e.target.value })}
+                                    />
+                                </RxvField>
+
                                 <RxvField label="Tags de Classificação Clínica" className="md:col-span-2">
                                     <RxvChipsMultiSelect
                                         options={CLINICAL_TAGS_OPTIONS}
@@ -1101,11 +1121,27 @@ export default function Catalogo3Page() {
                                     />
                                 </RxvField>
 
+                                <RxvField label="Modo de duração padrão">
+                                    <RxvSelect
+                                        options={DURATION_MODE_OPTIONS}
+                                        value={draft.metadata?.default_duration_mode || 'until_recheck'}
+                                        onChange={e => updateMetadata({ default_duration_mode: e.target.value })}
+                                    />
+                                </RxvField>
+
                                 <RxvField label="Anotações Gerais / Bula Simplificada" className="md:col-span-2">
                                     <RxvTextarea
                                         placeholder="Informações relevantes para o clínico..."
                                         value={draft.notes ?? ''}
                                         onChange={e => updateDraft({ notes: e.target.value })}
+                                    />
+                                </RxvField>
+
+                                <RxvField label="Notas de formulário / uso interno" className="md:col-span-2">
+                                    <RxvTextarea
+                                        placeholder="Observações estruturadas para acervo, uso interno e importação."
+                                        value={draft.metadata?.formulary_notes ?? ''}
+                                        onChange={e => updateMetadata({ formulary_notes: e.target.value })}
                                     />
                                 </RxvField>
                             </div>
@@ -1292,13 +1328,13 @@ export default function Catalogo3Page() {
                                                     {dose.route}
                                                 </span>
                                                 <span className="px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 font-bold border border-amber-500/20">
-                                                    {dose.dose_value ?? '–'}{dose.dose_max ? `–${dose.dose_max}` : ''} {dose.dose_unit}
+                                                    {dose.dose_value ?? '—'}{dose.dose_max ? `—${dose.dose_max}` : ''} {dose.dose_unit}
                                                     {dose.per_weight_unit ? `/${dose.per_weight_unit}` : ''}
                                                 </span>
                                                 {(dose.frequency_min || dose.frequency) && (
                                                     <span className="px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-400 font-bold border border-purple-500/20">
                                                         {dose.frequency_min ? (
-                                                            dose.frequency_max ? `${dose.frequency_min}–${dose.frequency_max}x/dia` : `${dose.frequency_min}x/dia`
+                                                            dose.frequency_max ? `${dose.frequency_min}—${dose.frequency_max}x/dia` : `${dose.frequency_min}x/dia`
                                                         ) : dose.frequency}
                                                     </span>
                                                 )}
@@ -1368,6 +1404,22 @@ export default function Catalogo3Page() {
                                                     />
                                                 </RxvField>
 
+                                                <RxvField label="Unidade de apresentação" className="md:col-span-3">
+                                                    <RxvInput
+                                                        placeholder="Ex: comprimido, frasco, bisnaga..."
+                                                        value={pres.presentation_unit ?? ''}
+                                                        onChange={e => updatePresentation(pres._tempId!, { presentation_unit: e.target.value || null })}
+                                                    />
+                                                </RxvField>
+
+                                                <RxvField label="Componente adicional" className="md:col-span-6">
+                                                    <RxvInput
+                                                        placeholder="Ex: clavulanato, veículo, associação..."
+                                                        value={pres.additional_component ?? ''}
+                                                        onChange={e => updatePresentation(pres._tempId!, { additional_component: e.target.value || null })}
+                                                    />
+                                                </RxvField>
+
                                                 {/* CONCENTRAÇÃO / COMPOSIÇÃO */}
                                                 <div className="md:col-span-12">
                                                     <div className="flex items-center gap-3 mb-3">
@@ -1423,6 +1475,22 @@ export default function Catalogo3Page() {
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <RxvField label="Texto de concentração exibido" className="md:col-span-6">
+                                                    <RxvInput
+                                                        placeholder="Ex: 250 mg/comprimido"
+                                                        value={pres.concentration_text ?? ''}
+                                                        onChange={e => updatePresentation(pres._tempId!, { concentration_text: e.target.value || null })}
+                                                    />
+                                                </RxvField>
+
+                                                <RxvField label="Observações da apresentação" className="md:col-span-6">
+                                                    <RxvTextarea
+                                                        placeholder="Ex: comprimido sulcado, suspensão saborizada, uso preferencial..."
+                                                        value={pres.metadata?.obs ?? ''}
+                                                        onChange={e => updatePresentationMetadata(pres._tempId!, { obs: e.target.value })}
+                                                    />
+                                                </RxvField>
 
                                                 {/* EMBALAGEM E VIAS */}
                                                 {/* Embalagem removida do Supabase por enquanto */}

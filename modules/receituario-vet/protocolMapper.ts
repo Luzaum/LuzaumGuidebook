@@ -37,6 +37,11 @@ export interface PrescriptionItem {
     presentation_metadata?: Record<string, unknown> | null
 }
 
+type StoredProtocolPrescriptionSnapshot = Omit<
+    PrescriptionItem,
+    'id' | 'start_date' | 'startDate' | 'startHour' | 'inheritStartFromPrescription'
+>
+
 function parsePresentationText(presentationText?: string | null): {
     pharmaceutical_form?: string
     commercial_name?: string
@@ -90,6 +95,198 @@ function parseConcentrationText(concentrationText?: string | null): {
         per_value: Number.isFinite(perValue) ? perValue : 1,
         per_unit: match[4] || undefined,
     }
+}
+
+function parseDoseString(dose?: string | null): { dose_value: number | null; dose_unit: string | null } {
+    const raw = String(dose || '').trim()
+    if (!raw) return { dose_value: null, dose_unit: null }
+    const match = raw.match(/^(\d+(?:[.,]\d+)?)\s*(.*)$/)
+    if (!match) return { dose_value: null, dose_unit: raw || null }
+    const value = Number(match[1].replace(',', '.'))
+    return {
+        dose_value: Number.isFinite(value) ? value : null,
+        dose_unit: match[2]?.trim() || null,
+    }
+}
+
+function parseFrequencyFields(item: PrescriptionItem): {
+    frequency_type: ProtocolMedicationItem['frequency_type']
+    times_per_day: number | null
+    interval_hours: number | null
+} {
+    if (item.frequencyMode === 'times_per_day' && item.timesPerDay) {
+        return {
+            frequency_type: 'times_per_day',
+            times_per_day: item.timesPerDay,
+            interval_hours: null,
+        }
+    }
+
+    const raw = String(item.frequency || '').trim().toLowerCase()
+    if (!raw) {
+        return {
+            frequency_type: 'times_per_day',
+            times_per_day: null,
+            interval_hours: null,
+        }
+    }
+
+    const timesMatch = raw.match(/(\d+)\s*x\s*ao\s*dia/)
+    if (timesMatch) {
+        const times = Number(timesMatch[1])
+        return {
+            frequency_type: 'times_per_day',
+            times_per_day: Number.isFinite(times) ? times : null,
+            interval_hours: null,
+        }
+    }
+
+    const intervalMatch = raw.match(/a cada\s*(\d+(?:[.,]\d+)?)\s*hora/)
+    if (intervalMatch) {
+        const hours = Number(intervalMatch[1].replace(',', '.'))
+        return {
+            frequency_type: 'interval_hours',
+            times_per_day: null,
+            interval_hours: Number.isFinite(hours) ? hours : null,
+        }
+    }
+
+    if (raw.includes('necessidade')) {
+        return {
+            frequency_type: 'as_needed',
+            times_per_day: null,
+            interval_hours: null,
+        }
+    }
+
+    return {
+        frequency_type: 'times_per_day',
+        times_per_day: item.timesPerDay ?? null,
+        interval_hours: null,
+    }
+}
+
+function parseDurationFields(item: PrescriptionItem): {
+    duration_days: number | null
+} {
+    if (item.durationMode === 'continuous_until_recheck') {
+        return { duration_days: -1 }
+    }
+
+    const raw = String(item.duration || '').trim()
+    if (!raw) return { duration_days: null }
+    const match = raw.match(/(\d+)/)
+    if (!match) return { duration_days: null }
+    const days = Number(match[1])
+    return {
+        duration_days: Number.isFinite(days) ? days : null,
+    }
+}
+
+function buildProtocolPresentationText(item: PrescriptionItem): string {
+    const rich = [item.pharmaceutical_form, item.commercial_name, item.concentration_text]
+        .map((value) => String(value || '').trim())
+        .filter(Boolean)
+    if (rich.length > 0) return rich.join(' — ')
+    return String(item.presentation_label || '').trim()
+}
+
+function buildSnapshotFromPrescriptionItem(item: PrescriptionItem): StoredProtocolPrescriptionSnapshot {
+    return {
+        type: item.type,
+        isManual: item.isManual,
+        is_controlled: item.is_controlled,
+        catalog_source: item.catalog_source,
+        medication_id: item.medication_id,
+        presentation_id: item.presentation_id,
+        name: item.name,
+        presentation_label: item.presentation_label,
+        dose: item.dose,
+        frequency: item.frequency,
+        frequencyMode: item.frequencyMode,
+        timesPerDay: item.timesPerDay,
+        route: item.route,
+        duration: item.duration,
+        durationMode: item.durationMode,
+        instructions: item.instructions,
+        cautions: item.cautions,
+        cautionsText: item.cautionsText,
+        pharmaceutical_form: item.pharmaceutical_form,
+        concentration_text: item.concentration_text,
+        commercial_name: item.commercial_name,
+        additional_component: item.additional_component,
+        value: item.value,
+        value_unit: item.value_unit,
+        per_value: item.per_value,
+        per_unit: item.per_unit,
+        avg_price_brl: item.avg_price_brl,
+        package_quantity: item.package_quantity,
+        package_unit: item.package_unit,
+        presentation_metadata: item.presentation_metadata,
+    }
+}
+
+function buildDurationFromProtocol(protocolMed: ProtocolMedicationItem): {
+    duration?: string
+    durationMode?: PrescriptionItem['durationMode']
+} {
+    if (protocolMed.duration_days === -1) {
+        return {
+            duration: undefined,
+            durationMode: 'continuous_until_recheck',
+        }
+    }
+
+    if (protocolMed.duration_days && protocolMed.duration_days > 0) {
+        return {
+            duration: `${protocolMed.duration_days} dias`,
+            durationMode: 'fixed_days',
+        }
+    }
+
+    return {}
+}
+
+export function mapPrescriptionItemToProtocolMedicationItem(
+    item: PrescriptionItem,
+    sortOrder: number
+): ProtocolMedicationItem {
+    const doseParsed = parseDoseString(item.dose)
+    const frequencyParsed = parseFrequencyFields(item)
+    const durationParsed = parseDurationFields(item)
+    const notes = String(item.cautionsText || '').trim()
+
+    return {
+        medication_id: item.medication_id || null,
+        medication_name: item.name,
+        presentation_id: item.presentation_id || null,
+        presentation_text: buildProtocolPresentationText(item),
+        manual_medication_name: item.medication_id ? null : item.name,
+        manual_presentation_label: item.presentation_label || null,
+        concentration_value: item.value != null && item.value !== '' ? Number(item.value) : null,
+        concentration_unit: item.value_unit || null,
+        dose_value: doseParsed.dose_value,
+        dose_unit: doseParsed.dose_unit,
+        route: item.route || null,
+        frequency_type: frequencyParsed.frequency_type,
+        times_per_day: frequencyParsed.times_per_day,
+        interval_hours: frequencyParsed.interval_hours,
+        duration_days: durationParsed.duration_days,
+        is_controlled: !!item.is_controlled,
+        sort_order: sortOrder,
+        metadata: {
+            notes,
+            presentation_metadata: item.presentation_metadata || null,
+            rx_item_snapshot: buildSnapshotFromPrescriptionItem(item),
+        },
+    }
+}
+
+function getStoredSnapshot(protocolMed: ProtocolMedicationItem): StoredProtocolPrescriptionSnapshot | null {
+    const metadata = (protocolMed.metadata || {}) as Record<string, unknown>
+    const candidate = metadata.rx_item_snapshot
+    if (!candidate || typeof candidate !== 'object' || Array.isArray(candidate)) return null
+    return candidate as StoredProtocolPrescriptionSnapshot
 }
 
 /**
@@ -167,6 +364,7 @@ export function mapProtocolMedicationToPrescriptionItem(
 ): PrescriptionItem {
     const metadata = (protocolMed.metadata || {}) as Record<string, unknown>
     const notes = typeof metadata.notes === 'string' ? metadata.notes.trim() : ''
+    const storedSnapshot = getStoredSnapshot(protocolMed)
     const presentationParsed = parsePresentationText(protocolMed.presentation_text || protocolMed.manual_presentation_label)
     const fallbackConcentrationText =
         presentationParsed.concentration_text ||
@@ -202,39 +400,47 @@ export function mapProtocolMedicationToPrescriptionItem(
         frequency = 'conforme necessidade'
     }
 
-    const durationMode =
-        protocolMed.duration_days === -1
-            ? 'continuous_until_recheck'
-            : protocolMed.duration_days
-                ? 'fixed_days'
-                : undefined
+    const durationState = buildDurationFromProtocol(protocolMed)
+
+    const baseItem: PrescriptionItem = storedSnapshot
+        ? {
+            ...storedSnapshot,
+            id: `protocol-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
+            type: storedSnapshot.type || 'medication',
+        }
+        : {
+            id: `protocol-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
+            type: 'medication',
+        }
 
     return {
+        ...baseItem,
         id: `protocol-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
         type: 'medication',
-        medication_id: protocolMed.medication_id || undefined,
-        presentation_id: protocolMed.presentation_id || undefined,
+        medication_id: protocolMed.medication_id || baseItem.medication_id || undefined,
+        presentation_id: protocolMed.presentation_id || baseItem.presentation_id || undefined,
         is_controlled: !!protocolMed.is_controlled,
-        name: protocolMed.medication_name || protocolMed.manual_medication_name || 'Medicamento',
-        presentation_label: protocolMed.manual_presentation_label || protocolMed.presentation_text || '',
-        pharmaceutical_form: presentationParsed.pharmaceutical_form,
-        commercial_name: presentationParsed.commercial_name,
-        concentration_text: fallbackConcentrationText || undefined,
-        value: concentrationStructured.value,
-        value_unit: concentrationStructured.value_unit,
-        per_value: concentrationStructured.per_value,
-        per_unit: concentrationStructured.per_unit,
-        dose: dose || undefined,
-        frequency: frequency || undefined,
-        frequencyMode,
-        timesPerDay,
-        route: protocolMed.route || undefined,
-        duration: protocolMed.duration_days && protocolMed.duration_days > 0 ? `${protocolMed.duration_days} dias` : undefined,
-        durationMode,
-        cautionsText: notes || undefined,
+        name: protocolMed.medication_name || protocolMed.manual_medication_name || baseItem.name || 'Medicamento',
+        presentation_label: protocolMed.manual_presentation_label || protocolMed.presentation_text || baseItem.presentation_label || '',
+        pharmaceutical_form: baseItem.pharmaceutical_form || presentationParsed.pharmaceutical_form,
+        commercial_name: baseItem.commercial_name || presentationParsed.commercial_name,
+        concentration_text: baseItem.concentration_text || fallbackConcentrationText || undefined,
+        value: baseItem.value ?? concentrationStructured.value,
+        value_unit: baseItem.value_unit || concentrationStructured.value_unit,
+        per_value: baseItem.per_value ?? concentrationStructured.per_value,
+        per_unit: baseItem.per_unit || concentrationStructured.per_unit,
+        dose: dose || baseItem.dose || undefined,
+        frequency: frequency || baseItem.frequency || undefined,
+        frequencyMode: frequencyMode || baseItem.frequencyMode,
+        timesPerDay: timesPerDay ?? baseItem.timesPerDay,
+        route: protocolMed.route || baseItem.route || undefined,
+        duration: durationState.duration || baseItem.duration,
+        durationMode: durationState.durationMode || baseItem.durationMode,
+        cautionsText: notes || baseItem.cautionsText || undefined,
+        cautions: baseItem.cautions || (notes ? notes.split(/\r?\n/).filter(Boolean) : undefined),
         presentation_metadata: metadata.presentation_metadata && typeof metadata.presentation_metadata === 'object'
             ? (metadata.presentation_metadata as Record<string, unknown>)
-            : null,
+            : (baseItem.presentation_metadata || null),
     }
 }
 

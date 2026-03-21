@@ -4,46 +4,52 @@ import ReceituarioChrome from './ReceituarioChrome'
 import { RxPrintView } from './RxPrintView'
 import { createDefaultItem, createDefaultPrescriptionState } from './rxDefaults'
 import { renderRxToPrintDoc } from './rxRenderer'
-import { CatalogDrug, findSpecialControlTemplate, loadRxDb } from './rxDb'
-import { PharmacyType } from './rxTypes'
+import { findSpecialControlTemplate, loadRxDb } from './rxDb'
+import type { PharmacyType } from './rxTypes'
+import { useClinic } from '../../src/components/ClinicProvider'
+import {
+  searchMedications,
+  getMedicationPresentations,
+  type MedicationPresentationRecord,
+  type MedicationSearchResult,
+} from '../../src/lib/clinicRecords'
 
-function buildCatalogControlledTargetPharmacy(
-  controlledCatalog: CatalogDrug[]
-): 'veterinária' | 'humana' | 'manipulacao' | 'mista' {
-  const tags = new Set<PharmacyType>()
-  controlledCatalog.forEach((drug) => {
-    if (drug.presentations.length > 0) {
-      drug.presentations.forEach((presentation) => {
-        const values = presentation.pharmacyTags?.length ? presentation.pharmacyTags : [drug.pharmacyType]
-        values.forEach((value) => tags.add(value))
-      })
-    } else {
-      tags.add(drug.pharmacyType)
-    }
-  })
+type ControlledMedicationEntry = MedicationSearchResult & {
+  presentations: MedicationPresentationRecord[]
+}
 
-  const hasVeterinaria = tags.has('veterinária')
-  const hasHumana = tags.has('humana')
-  const hasManipulacao = tags.has('manipulacao')
-  const selectedCount = Number(hasVeterinaria) + Number(hasHumana) + Number(hasManipulacao)
-  if (selectedCount > 1) return 'mista'
-  if (hasManipulacao) return 'manipulacao'
-  if (hasHumana) return 'humana'
+function inferPharmacyType(presentation?: MedicationPresentationRecord): PharmacyType {
+  if (!presentation) return 'veterinária'
+  if (presentation.pharmacy_compounding) return 'manipulacao'
+  if (presentation.pharmacy_human) return 'humana'
   return 'veterinária'
 }
 
-function controlledItemFromDrug(drug: CatalogDrug, index: number) {
+function buildPresentationSummary(presentation?: MedicationPresentationRecord): string {
+  if (!presentation) return 'Sem apresentação cadastrada'
+  return [
+    presentation.pharmaceutical_form,
+    presentation.commercial_name,
+    presentation.concentration_text,
+  ]
+    .filter(Boolean)
+    .join(' • ')
+}
+
+function controlledItemFromMedication(entry: ControlledMedicationEntry, index: number) {
   const item = createDefaultItem('medication')
-  const presentation = drug.presentations[0]
-  item.name = drug.name
-  item.catalogDrugId = drug.id
+  const presentation = entry.presentations[0]
+  item.name = entry.name
   item.controlled = true
-  item.presentation = presentation?.name || 'Comprimido'
-  item.concentration = presentation?.concentration || ''
-  item.commercialName = presentation?.commercialName || ''
-  item.routeGroup = drug.routeGroup || 'ORAL'
-  item.doseUnit = drug.doseUnit || 'mg/kg'
-  item.pharmacyType = (presentation?.pharmacyTags?.[0] || drug.pharmacyType || 'veterinária') as PharmacyType
+  item.is_controlled = true
+  item.medication_id = entry.id
+  item.presentation_id = presentation?.id
+  item.presentation = presentation?.pharmaceutical_form || 'Apresentação'
+  item.concentration = presentation?.concentration_text || ''
+  item.commercialName = presentation?.commercial_name || ''
+  item.routeGroup = 'ORAL'
+  item.doseUnit = presentation?.per_unit?.toLowerCase() === 'ml' ? 'mL' : 'mg/kg'
+  item.pharmacyType = inferPharmacyType(presentation)
   item.doseValue = item.doseUnit.includes('/kg') ? '2' : '1'
   item.frequencyType = 'everyHours'
   item.everyHours = index % 2 === 0 ? '12' : '8'
@@ -55,37 +61,45 @@ function controlledItemFromDrug(drug: CatalogDrug, index: number) {
 
 export default function ControleEspecialPage() {
   const navigate = useNavigate()
-  const [db, setDb] = useState(() => loadRxDb())
+  const { clinicId } = useClinic()
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [controlledCatalog, setControlledCatalog] = useState<ControlledMedicationEntry[]>([])
 
-  const refreshDb = useCallback(() => {
-    setDb(loadRxDb())
-  }, [])
+  const refreshControlledCatalog = useCallback(async () => {
+    if (!clinicId) {
+      setControlledCatalog([])
+      return
+    }
+
+    setIsLoading(true)
+    setError(null)
+    try {
+      const medications = await searchMedications(clinicId, '', 200)
+      const controlled = medications.filter((entry) => entry.is_controlled)
+      const withPresentations = await Promise.all(
+        controlled.map(async (entry) => ({
+          ...entry,
+          presentations: await getMedicationPresentations(clinicId, entry.id),
+        }))
+      )
+      setControlledCatalog(
+        withPresentations.sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'))
+      )
+    } catch (err) {
+      console.error('[ControleEspecial] Erro ao carregar catálogo controlado', err)
+      setError(err instanceof Error ? err.message : String(err))
+      setControlledCatalog([])
+    } finally {
+      setIsLoading(false)
+    }
+  }, [clinicId])
 
   useEffect(() => {
-    refreshDb()
-    const intervalId = window.setInterval(refreshDb, 1400)
-    const onStorage = () => refreshDb()
-    const onFocus = () => refreshDb()
-    const onVisibility = () => {
-      if (document.visibilityState === 'visible') refreshDb()
-    }
+    void refreshControlledCatalog()
+  }, [refreshControlledCatalog])
 
-    window.addEventListener('storage', onStorage)
-    window.addEventListener('focus', onFocus)
-    document.addEventListener('visibilitychange', onVisibility)
-
-    return () => {
-      window.clearInterval(intervalId)
-      window.removeEventListener('storage', onStorage)
-      window.removeEventListener('focus', onFocus)
-      document.removeEventListener('visibilitychange', onVisibility)
-    }
-  }, [refreshDb])
-
-  const controlledCatalog = useMemo(
-    () => db.catalog.filter((drug) => drug.controlled).sort((a, b) => a.name.localeCompare(b.name, 'pt-BR')),
-    [db.catalog]
-  )
+  const db = useMemo(() => loadRxDb(), [])
 
   const specialTemplate = useMemo(
     () => findSpecialControlTemplate(db.templates) || db.templates.find((entry) => entry.id === 'rx_br_control_special') || db.templates[0],
@@ -94,14 +108,28 @@ export default function ControleEspecialPage() {
 
   const previewProfile = useMemo(() => db.prescriberProfiles[0] || db.profile, [db.prescriberProfiles, db.profile])
 
-  const controlledTargetPharmacy = useMemo(
-    () => buildCatalogControlledTargetPharmacy(controlledCatalog),
-    [controlledCatalog]
-  )
+  const controlledTargetPharmacy = useMemo(() => {
+    const tags = new Set<PharmacyType>()
+    controlledCatalog.forEach((entry) => {
+      if (entry.presentations.length === 0) {
+        tags.add('veterinária')
+        return
+      }
+      entry.presentations.forEach((presentation) => tags.add(inferPharmacyType(presentation)))
+    })
+    const hasVet = tags.has('veterinária')
+    const hasHum = tags.has('humana')
+    const hasComp = tags.has('manipulacao')
+    const selectedCount = Number(hasVet) + Number(hasHum) + Number(hasComp)
+    if (selectedCount > 1) return 'mista'
+    if (hasComp) return 'manipulacao'
+    if (hasHum) return 'humana'
+    return 'veterinária'
+  }, [controlledCatalog])
 
   const previewDoc = useMemo(() => {
     const base = createDefaultPrescriptionState()
-    const items = controlledCatalog.slice(0, 3).map((drug, idx) => controlledItemFromDrug(drug, idx))
+    const items = controlledCatalog.slice(0, 3).map((entry, idx) => controlledItemFromMedication(entry, idx))
 
     const previewItems = items.length
       ? items
@@ -109,6 +137,7 @@ export default function ControleEspecialPage() {
           {
             ...createDefaultItem('medication'),
             controlled: true,
+            is_controlled: true,
             name: 'Tramadol',
             presentation: 'Comprimido',
             concentration: '50 mg/comprimido',
@@ -155,12 +184,12 @@ export default function ControleEspecialPage() {
   return (
     <ReceituarioChrome
       section="controle"
-      title="Receituário de Controle Especial"
-      subtitle="Lista viva de controlados no catálogo e prévia do modelo especial em tempo real."
+      title="Controle Especial"
+      subtitle="Medicamentos controlados do catálogo atual, com prévia do modelo especial e atalhos diretos para ajuste."
       actions={
         <>
-          <Link to="/receituario-vet/catalogo" className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-2 text-sm">
-            <span className="material-symbols-outlined text-[18px]">medication</span>
+          <Link to="/receituario-vet/catalogo3" className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-2 text-sm">
+            <span className="material-symbols-outlined text-[18px]">inventory_2</span>
             Abrir Catálogo
           </Link>
           <button
@@ -169,7 +198,7 @@ export default function ControleEspecialPage() {
             onClick={openTemplateEditor}
           >
             <span className="material-symbols-outlined text-[18px]">edit</span>
-            Editar receita especial
+            Editar modelo especial
           </button>
         </>
       }
@@ -178,64 +207,67 @@ export default function ControleEspecialPage() {
         <section className="rxv-card p-5 xl:col-span-6">
           <div className="mb-4 flex items-center justify-between gap-2">
             <div>
-              <h2 className="text-lg font-bold">Catálogo controlado</h2>
-              <p className="text-xs text-[color:var(--rxv-muted)]">Atualização automática a cada alteração no banco local.</p>
+              <h2 className="text-lg font-bold">Medicamentos controlados</h2>
+              <p className="text-xs text-[color:var(--rxv-muted)]">Leitura direta do catálogo atual da clínica e do catálogo global.</p>
             </div>
             <span className="rounded-full border border-amber-500/40 bg-amber-500/10 px-2.5 py-1 text-xs font-semibold text-amber-300">
               {controlledCatalog.length} controlado(s)
             </span>
           </div>
 
+          <div className="mb-4 flex flex-wrap items-center gap-2 text-xs text-[color:var(--rxv-muted)]">
+            <span className="rounded-full border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-2.5 py-1">
+              Origem alvo: {controlledTargetPharmacy}
+            </span>
+            <button
+              type="button"
+              className="rounded-full border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-2.5 py-1 font-semibold hover:border-[#61eb48]/45 hover:bg-[#61eb48]/10"
+              onClick={() => void refreshControlledCatalog()}
+            >
+              Atualizar lista
+            </button>
+          </div>
+
           <div className="max-h-[70vh] space-y-3 overflow-y-auto pr-1">
-            {controlledCatalog.length === 0 ? (
+            {isLoading ? (
               <div className="rounded-xl border border-dashed border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-4 py-6 text-sm text-[color:var(--rxv-muted)]">
-                Nenhum fármaco controlado encontrado no catálogo.
+                Carregando medicamentos controlados...
+              </div>
+            ) : error ? (
+              <div className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-6 text-sm text-red-200">
+                Falha ao carregar o catálogo controlado: {error}
+              </div>
+            ) : controlledCatalog.length === 0 ? (
+              <div className="rounded-xl border border-dashed border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-4 py-6 text-sm text-[color:var(--rxv-muted)]">
+                Nenhum medicamento controlado encontrado no catálogo atual.
               </div>
             ) : (
-              controlledCatalog.map((drug) => {
-                const pharmacyTags = Array.from(
-                  new Set(
-                    drug.presentations.flatMap((presentation) =>
-                      presentation.pharmacyTags?.length ? presentation.pharmacyTags : [drug.pharmacyType]
-                    )
-                  )
-                )
+              controlledCatalog.map((entry) => {
+                const presentation = entry.presentations[0]
                 return (
-                  <article key={drug.id} className="rounded-xl border border-amber-500/25 bg-amber-500/5 p-4">
+                  <article key={entry.id} className="rounded-xl border border-amber-500/25 bg-amber-500/5 p-4">
                     <div className="flex flex-wrap items-start justify-between gap-3">
                       <div>
-                        <h3 className="text-base font-bold text-[color:var(--rxv-text)]">{drug.name}</h3>
+                        <h3 className="text-base font-bold text-[color:var(--rxv-text)]">{entry.name}</h3>
                         <p className="text-xs text-[color:var(--rxv-muted)]">
-                          {drug.presentations.length} apresentação(ões) • via {drug.routeGroup}
+                          {entry.scope === 'global' ? 'Catálogo global' : 'Catálogo da clínica'} • {entry.presentations.length} apresentação(ões)
                         </p>
                       </div>
                       <button
                         type="button"
                         className="rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-3 py-1.5 text-xs font-semibold hover:border-[#61eb48]/45 hover:bg-[#61eb48]/10"
-                        onClick={() => navigate(`/receituario-vet/catalogo?drug=${encodeURIComponent(drug.id)}`)}
+                        onClick={() => navigate('/receituario-vet/catalogo3')}
                       >
-                        Editar no catálogo
+                        Ver no catálogo
                       </button>
                     </div>
 
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {pharmacyTags.map((tag) => (
-                        <span key={`${drug.id}-${tag}`} className="rounded-full border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-2 py-0.5 text-[11px] text-[color:var(--rxv-muted)]">
-                          {tag === 'humana' ? 'Farmácia humana' : tag === 'manipulacao' ? 'Manipulação' : 'Farmácia veterinária'}
-                        </span>
-                      ))}
+                    <div className="mt-3 rounded-xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/50 px-3 py-3 text-sm">
+                      <p className="font-semibold text-[color:var(--rxv-text)]">{buildPresentationSummary(presentation)}</p>
+                      <p className="mt-1 text-xs text-[color:var(--rxv-muted)]">
+                        Origem de farmácia: {inferPharmacyType(presentation)}
+                      </p>
                     </div>
-
-                    {drug.presentations.length > 0 ? (
-                      <ul className="mt-3 space-y-1 text-xs text-[color:var(--rxv-text)]">
-                        {drug.presentations.slice(0, 4).map((presentation) => (
-                          <li key={presentation.id}>
-                            - {presentation.commercialName || presentation.name}{' '}
-                            {presentation.concentration ? `(${presentation.concentration})` : ''}
-                          </li>
-                        ))}
-                      </ul>
-                    ) : null}
                   </article>
                 )
               })
@@ -244,36 +276,37 @@ export default function ControleEspecialPage() {
         </section>
 
         <section className="rxv-card p-5 xl:col-span-6">
-          <div className="mb-4 flex items-start justify-between gap-2">
+          <div className="mb-4 flex items-center justify-between gap-2">
             <div>
-              <h2 className="text-lg font-bold">Visualização rápida da receita especial</h2>
-              <p className="text-xs text-[color:var(--rxv-muted)]">Template ativo: {specialTemplate?.name || 'rx_br_control_special'}</p>
+              <h2 className="text-lg font-bold">Prévia do modelo especial</h2>
+              <p className="text-xs text-[color:var(--rxv-muted)]">Renderização do documento especial usando os medicamentos controlados do catálogo atual.</p>
             </div>
+            <span className="rounded-full border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-2.5 py-1 text-xs font-semibold text-[color:var(--rxv-muted)]">
+              {specialTemplate?.name || 'Modelo especial'}
+            </span>
           </div>
 
-          <div className="group relative">
-            <div className="overflow-hidden rounded-xl transition-all duration-200 group-hover:shadow-[0_0_0_2px_rgba(57,255,20,0.45),0_0_28px_rgba(57,255,20,0.18)]">
-              <RxPrintView
-                doc={previewDoc}
-                template={specialTemplate}
-                signatureDataUrl={previewProfile.signatureDataUrl}
-                mapaSignatureDataUrl={previewProfile.mapaSignatureDataUrl}
-                logoDataUrl={previewProfile.clinicLogoDataUrl}
-                prescriberPhone={previewProfile.clinicPhone}
-                prescriberAddressLine={previewProfile.clinicAddress}
-                targetPharmacy={controlledTargetPharmacy}
-              />
-            </div>
+          <div className="rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/50 p-3">
+            <RxPrintView doc={previewDoc} template={specialTemplate} compact />
+          </div>
 
-            <div className="pointer-events-none absolute inset-0 flex items-center justify-center rounded-xl bg-[#091108]/70 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-              <button
-                type="button"
-                className="pointer-events-auto rounded-lg border border-[#61eb48]/55 bg-[#61eb48]/15 px-4 py-2 text-sm font-bold text-[#c8ffc0] hover:bg-[#61eb48]/25"
-                onClick={openTemplateEditor}
-              >
-                Editar essa receita
-              </button>
-            </div>
+          <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
+            <button
+              type="button"
+              className="rxv-btn-secondary inline-flex items-center justify-center gap-2 px-4 py-2 text-sm"
+              onClick={() => navigate('/receituario-vet/nova-receita-2')}
+            >
+              <span className="material-symbols-outlined text-[18px]">description</span>
+              Abrir Nova Receita
+            </button>
+            <button
+              type="button"
+              className="rxv-btn-primary inline-flex items-center justify-center gap-2 px-4 py-2 text-sm"
+              onClick={openTemplateEditor}
+            >
+              <span className="material-symbols-outlined text-[18px]">palette</span>
+              Ajustar template especial
+            </button>
           </div>
         </section>
       </div>

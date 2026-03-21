@@ -48,6 +48,11 @@ function readMetadataFlag(record: Record<string, unknown> | null | undefined, ke
   return false
 }
 
+function isPrivilegedRole(role: string): boolean {
+  const normalized = readText(role).toLowerCase()
+  return normalized === 'owner' || normalized === 'admin'
+}
+
 Deno.serve(async (request) => {
   if (request.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
@@ -126,13 +131,6 @@ Deno.serve(async (request) => {
       currentClinicMembershipRole = readText(currentMembership?.role)
     }
 
-    const { data: anyMembership } = await adminClient
-      .from('memberships')
-      .select('clinic_id,role')
-      .eq('user_id', user.id)
-      .limit(1)
-      .maybeSingle()
-
     const userMetadata = (user.user_metadata || {}) as Record<string, unknown>
     const appMetadata = (user.app_metadata || {}) as Record<string, unknown>
     const allowlistedIds = parseCsvEnv(Deno.env.get('GLOBAL_PROTOCOL_PUBLISHER_IDS'))
@@ -145,11 +143,10 @@ Deno.serve(async (request) => {
       readText(appMetadata.role) === 'admin' ||
       allowlistedIds.includes(user.id) ||
       (!!userEmail && allowlistedEmails.includes(userEmail)) ||
-      !!membershipRole ||
-      !!currentClinicMembershipRole ||
-      !!readText(anyMembership?.role) ||
+      isPrivilegedRole(membershipRole) ||
+      isPrivilegedRole(currentClinicMembershipRole) ||
       readText(globalProtocol.published_by_user_id) === user.id ||
-      !!user.id
+      false
 
     if (!canDelete) {
       return json(403, {
@@ -159,7 +156,6 @@ Deno.serve(async (request) => {
           currentClinicId,
           membershipRole,
           currentClinicMembershipRole,
-          anyMembershipRole: readText(anyMembership?.role),
           publishedByUserId: readText(globalProtocol.published_by_user_id),
           userId: user.id,
         },

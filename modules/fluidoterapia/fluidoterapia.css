@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;600;700&family=Fira+Sans:wght@400;500;600;700&display=swap');
+
+.fluid-webapp {
+  --fluid-bg: #f4f9fe;
+  --fluid-bg-soft: rgba(255, 255, 255, 0.82);
+  --fluid-panel: rgba(255, 255, 255, 0.9);
+  --fluid-panel-strong: rgba(255, 255, 255, 0.96);
+  --fluid-border: rgba(15, 39, 68, 0.12);
+  --fluid-text: #10253f;
+  --fluid-muted: #4e647d;
+  --fluid-primary: #123b67;
+  --fluid-accent: #2d74c4;
+  --fluid-accent-soft: rgba(45, 116, 196, 0.1);
+  --fluid-success: #0f766e;
+  --fluid-danger: #b91c1c;
+  --fluid-warning: #b45309;
+  font-family: 'Fira Sans', sans-serif;
+  color: var(--fluid-text);
+  background:
+    radial-gradient(circle at top left, rgba(96, 165, 250, 0.22), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.14), transparent 24%),
+    var(--fluid-bg);
+}
+
+.dark .fluid-webapp {
+  --fluid-bg: #020617;
+  --fluid-bg-soft: rgba(7, 17, 31, 0.82);
+  --fluid-panel: rgba(8, 20, 40, 0.88);
+  --fluid-panel-strong: rgba(9, 23, 45, 0.94);
+  --fluid-border: rgba(125, 211, 252, 0.12);
+  --fluid-text: #e0f2fe;
+  --fluid-muted: #97b8d6;
+  --fluid-primary: #7dd3fc;
+  --fluid-accent: #38bdf8;
+  --fluid-accent-soft: rgba(56, 189, 248, 0.14);
+  --fluid-success: #2dd4bf;
+  --fluid-danger: #fda4af;
+  --fluid-warning: #fbbf24;
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.2), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.08), transparent 24%),
+    var(--fluid-bg);
+}
+
+.fluid-heading {
+  font-family: 'Fira Code', monospace;
+  letter-spacing: -0.04em;
+}
+
+.fluid-panel {
+  background: var(--fluid-panel);
+  border: 1px solid var(--fluid-border);
+  box-shadow: 0 24px 72px rgba(15, 23, 42, 0.08);
+}
+
+.dark .fluid-panel {
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.38);
+}
+
+.fluid-panel-strong {
+  background: var(--fluid-panel-strong);
+  border: 1px solid var(--fluid-border);
+}
+
+.fluid-kicker {
+  color: var(--fluid-primary);
+}
+
+.fluid-muted {
+  color: var(--fluid-muted);
+}
+
+.fluid-chip {
+  background: var(--fluid-accent-soft);
+  color: var(--fluid-primary);
+  border: 1px solid var(--fluid-border);
+}
+
+.fluid-card-hover {
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.fluid-card-hover:hover {
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fluid-card-hover {
+    transition: none;
+  }
+
+  .fluid-card-hover:hover {
+    transform: none;
+  }
+}

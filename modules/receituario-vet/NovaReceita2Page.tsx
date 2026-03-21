@@ -1151,16 +1151,16 @@ export default function NovaReceita2Page() {
 
     return (
         <ReceituarioChrome section="nova" title="Nova Receita 2.0">
-            <div className="min-h-screen bg-gradient-to-br from-[#0a0f0a] via-[#0d130c] to-[#0a100a] pb-16">
+            <div className="min-h-screen bg-[color:var(--rxv-bg)] pb-16">
 
                 {/* ==================== TOPBAR ==================== */}
-                <div className="sticky top-0 z-50 border-b border-slate-800/50 bg-black/80 backdrop-blur-md px-4 py-3 sm:px-6 sm:py-4">
+                <div className="sticky top-0 z-50 border-b border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface)]/90 backdrop-blur-md px-4 py-3 sm:px-6 sm:py-4">
                     <div className="flex items-center justify-between gap-4 flex-wrap">
                         <div>
-                            <h1 className="text-xl font-black text-white uppercase italic tracking-tight sm:text-2xl">
+                            <h1 className="text-xl font-black text-[color:var(--rxv-text)] uppercase italic tracking-tight sm:text-2xl">
                                 Nova Receita 2.0
                             </h1>
-                            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+                            <p className="text-[10px] font-bold text-[color:var(--rxv-muted)] uppercase tracking-widest">
                                 100% Catálogo 3.0
                             </p>
                         </div>
@@ -1187,7 +1187,7 @@ export default function NovaReceita2Page() {
                             {/* Mobile: toggle preview */}
                             <button
                                 type="button"
-                                className="lg:hidden rounded-lg border border-slate-700 px-3 py-2 text-xs font-bold text-slate-300 hover:bg-slate-800"
+                                className="lg:hidden rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/70 px-3 py-2 text-xs font-bold text-[color:var(--rxv-text)] hover:bg-[color:var(--rxv-surface-2)]"
                                 onClick={() => setShowPreview((v) => !v)}
                             >
                                 {showPreview ? 'Ocultar preview' : 'Ver preview'}
@@ -1231,7 +1231,7 @@ export default function NovaReceita2Page() {
                                         onClick={handleToggleQuickMode}
                                         className={`rounded-xl border px-4 py-2 text-xs font-black uppercase tracking-widest transition-all ${quickMode
                                             ? 'border-[#39ff14]/70 bg-[#132611] text-[#9eff8f]'
-                                            : 'border-slate-700 bg-slate-900/40 text-slate-300 hover:border-[#39ff14]/40 hover:text-[#9eff8f]'
+                                            : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/80 text-[color:var(--rxv-text)] hover:border-[#39ff14]/40 hover:text-[#2fb011]'
                                             }`}
                                     >
                                         {quickMode ? 'Modo rápido ativo' : 'Ativar modo rápido'}
@@ -1240,7 +1240,7 @@ export default function NovaReceita2Page() {
 
                                 <div className="space-y-5">
                                     {quickMode ? (
-                                        <div className="rounded-2xl border border-[#39ff14]/30 bg-[#0f1a0e] px-4 py-3 text-sm text-[#c9ffbf]">
+                                        <div className="rounded-2xl border border-[#39ff14]/30 bg-[color:var(--rxv-primary)]/10 px-4 py-3 text-sm text-[color:var(--rxv-text)]">
                                             No modo rápido, este bloco concentra o mínimo obrigatório para manter a prescrição consistente.
                                         </div>
                                     ) : null}
@@ -1303,10 +1303,10 @@ export default function NovaReceita2Page() {
                                     </div>
 
                                     {state.patient?.id ? (
-                                        <div className="flex items-center justify-between rounded-xl border border-slate-800 bg-black/20 px-4 py-3">
-                                            <div className="text-xs text-slate-400">
-                                                {state.patient.name ? <p>Paciente atual: <span className="font-semibold text-slate-200">{state.patient.name}</span></p> : null}
-                                                {state.patient.weight_kg ? <p>Peso informado: <span className="font-semibold text-slate-200">{state.patient.weight_kg} kg</span></p> : null}
+                                        <div className="flex items-center justify-between rounded-xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/75 px-4 py-3">
+                                            <div className="text-xs text-[color:var(--rxv-muted)]">
+                                                {state.patient.name ? <p>Paciente atual: <span className="font-semibold text-[color:var(--rxv-text)]">{state.patient.name}</span></p> : null}
+                                                {state.patient.weight_kg ? <p>Peso informado: <span className="font-semibold text-[color:var(--rxv-text)]">{state.patient.weight_kg} kg</span></p> : null}
                                             </div>
                                             <button
                                                 type="button"
@@ -1327,8 +1327,8 @@ export default function NovaReceita2Page() {
                                     subtitle="Importe protocolos prontos antes de definir os itens da prescrição"
                                 />
                                 <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_280px]">
-                                    <div className="rounded-2xl border border-slate-700 bg-black/20 px-4 py-4 text-sm text-slate-300">
-                                        <p className="font-semibold text-slate-100">Fluxo recomendado</p>
+                                    <div className="rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/75 px-4 py-4 text-sm text-[color:var(--rxv-text)]">
+                                        <p className="font-semibold text-[color:var(--rxv-text)]">Fluxo recomendado</p>
                                         <p className="mt-2">
                                             Abra Protocolos 3.0, escolha um protocolo da clinica ou global e use a acao
                                             para enviar itens, recomendacoes, justificativa de exames e exames para esta receita.
@@ -1347,7 +1347,7 @@ export default function NovaReceita2Page() {
                                         >
                                             Abrir Protocolos 3.0
                                         </RxvButton>
-                                        <div className="rounded-2xl border border-dashed border-slate-700 bg-black/20 px-4 py-4 text-sm text-slate-400">
+                                        <div className="rounded-2xl border border-dashed border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/65 px-4 py-4 text-sm text-[color:var(--rxv-muted)]">
                                             A importacao reinicia a receita atual e aplica o protocolo por cima de um estado limpo.
                                         </div>
                                     </div>
@@ -1399,7 +1399,7 @@ export default function NovaReceita2Page() {
                                                 onClick={() => setQuickEntryMode('catalog')}
                                                 className={`rounded-lg border px-3 py-2 text-xs font-bold transition-colors ${quickEntryMode === 'catalog'
                                                     ? 'border-[#39ff14]/60 bg-[#39ff14]/15 text-[#84ff6d]'
-                                                    : 'border-slate-700 bg-black/30 text-slate-400 hover:text-white'
+                                                    : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/75 text-[color:var(--rxv-muted)] hover:text-[color:var(--rxv-text)]'
                                                     }`}
                                             >
                                                 Catalogo rapido
@@ -1414,7 +1414,7 @@ export default function NovaReceita2Page() {
                                                 }}
                                                 className={`rounded-lg border px-3 py-2 text-xs font-bold transition-colors ${quickEntryMode === 'manual'
                                                     ? 'border-[#39ff14]/60 bg-[#39ff14]/15 text-[#84ff6d]'
-                                                    : 'border-slate-700 bg-black/30 text-slate-400 hover:text-white'
+                                                    : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/75 text-[color:var(--rxv-muted)] hover:text-[color:var(--rxv-text)]'
                                                     }`}
                                             >
                                                 Manual rapido
@@ -1432,7 +1432,7 @@ export default function NovaReceita2Page() {
                                                         />
                                                         <div className="max-h-48 space-y-2 overflow-y-auto pr-1">
                                                             {quickCatalogLoading ? (
-                                                                <p className="text-xs text-slate-400">Buscando no catalogo...</p>
+                                                                <p className="text-xs text-[color:var(--rxv-muted)]">Buscando no catalogo...</p>
                                                             ) : quickCatalogResults.length ? (
                                                                 quickCatalogResults.map((med) => (
                                                                     <button
@@ -1443,13 +1443,13 @@ export default function NovaReceita2Page() {
                                                                             setQuickMedicationName(med.name)
                                                                             setQuickRoute(med.metadata?.default_route || 'VO')
                                                                         }}
-                                                                        className="w-full rounded-lg border border-slate-700 bg-black/30 px-3 py-2 text-left hover:border-[#39ff14]/50"
+                                                                        className="w-full rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/75 px-3 py-2 text-left hover:border-[#39ff14]/50"
                                                                     >
-                                                                        <p className="text-sm font-semibold text-white">{med.name}</p>
+                                                                        <p className="text-sm font-semibold text-[color:var(--rxv-text)]">{med.name}</p>
                                                                     </button>
                                                                 ))
                                                             ) : (
-                                                                <p className="text-xs text-slate-500">Sem resultados.</p>
+                                                                <p className="text-xs text-[color:var(--rxv-muted)]">Sem resultados.</p>
                                                             )}
                                                         </div>
                                                     </>
@@ -1457,7 +1457,7 @@ export default function NovaReceita2Page() {
                                                     <div className="space-y-3">
                                                         <div className="flex items-center justify-between rounded-lg border border-[#39ff14]/40 bg-[#39ff14]/10 px-3 py-2">
                                                             <p className="text-sm font-semibold text-[#bfffaf]">{quickSelectedMedication.name}</p>
-                                                            <button type="button" className="text-xs text-slate-300 hover:text-white" onClick={() => setQuickSelectedMedication(null)}>Trocar</button>
+                                                            <button type="button" className="text-xs text-[color:var(--rxv-muted)] hover:text-[color:var(--rxv-text)]" onClick={() => setQuickSelectedMedication(null)}>Trocar</button>
                                                         </div>
                                                         <RxvField label="Apresentacao">
                                                             <RxvSelect
@@ -1526,14 +1526,14 @@ export default function NovaReceita2Page() {
                                 )}
 
                                 {state.items.length === 0 ? (
-                                    <div className="rounded-xl border-2 border-dashed border-slate-800/50 bg-black/20 px-6 py-10 text-center">
-                                        <span className="material-symbols-outlined text-slate-700 text-[40px]">
+                                    <div className="rounded-xl border-2 border-dashed border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/65 px-6 py-10 text-center">
+                                        <span className="material-symbols-outlined text-[color:var(--rxv-muted)] text-[40px]">
                                             inventory_2
                                         </span>
-                                        <p className="mt-3 text-sm font-bold text-slate-600">
+                                        <p className="mt-3 text-sm font-bold text-[color:var(--rxv-muted)]">
                                             Nenhum item adicionado
                                         </p>
-                                        <p className="mt-1 text-xs text-slate-700">
+                                        <p className="mt-1 text-xs text-[color:var(--rxv-muted)]">
                                             Use "Catálogo" para buscar no banco ou "Manual" para inserir dados livres.
                                         </p>
                                     </div>
@@ -1551,20 +1551,20 @@ export default function NovaReceita2Page() {
                                                 metadata: item.presentation_metadata || undefined,
                                             })
                                             return (
-                                                <div key={item.id} className="rounded-2xl border border-slate-800 bg-black/35 p-4">
+                                                <div key={item.id} className="rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/80 p-4">
                                                     <div className="mb-4 flex items-start justify-between gap-3">
                                                         <div>
                                                             <div className="flex items-center gap-2">
-                                                                <span className="rounded-full border border-slate-700 px-2 py-0.5 text-[10px] font-black text-slate-400">{idx + 1}</span>
-                                                                {item.isManual ? <span className="text-[10px] font-black uppercase tracking-widest text-slate-500">Manual</span> : null}
+                                                                <span className="rounded-full border border-[color:var(--rxv-border)] px-2 py-0.5 text-[10px] font-black text-[color:var(--rxv-muted)]">{idx + 1}</span>
+                                                                {item.isManual ? <span className="text-[10px] font-black uppercase tracking-widest text-[color:var(--rxv-muted)]">Manual</span> : null}
                                                                 {item.is_controlled ? <span className="text-[10px] font-black uppercase tracking-widest text-amber-400">Controlado</span> : null}
                                                                 {item.catalog_source === 'global' ? <span className="text-[10px] font-black uppercase tracking-widest text-cyan-400">Global</span> : null}
                                                             </div>
                                                             <p className="mt-2 text-base font-bold text-white">
                                                                 {item.name || `Item ${idx + 1}`}
-                                                                {concentrationLabel ? <span className="ml-1 font-normal text-slate-400">({concentrationLabel})</span> : null}
+                                                                {concentrationLabel ? <span className="ml-1 font-normal text-[color:var(--rxv-muted)]">({concentrationLabel})</span> : null}
                                                             </p>
-                                                            <p className="text-xs text-slate-500">
+                                                            <p className="text-xs text-[color:var(--rxv-muted)]">
                                                                 {[item.pharmaceutical_form, item.commercial_name].filter(Boolean).join(' • ') || 'Sem apresentação detalhada'}
                                                             </p>
                                                             {item.medication_id ? (
@@ -1577,7 +1577,7 @@ export default function NovaReceita2Page() {
                                                                 </button>
                                                             ) : null}
                                                             {analysis?.label ? (
-                                                                <p className="mt-2 text-xs text-slate-400">{analysis.label}</p>
+                                                                <p className="mt-2 text-xs text-[color:var(--rxv-muted)]">{analysis.label}</p>
                                                             ) : null}
                                                             {analysis?.warnings?.length ? (
                                                                 <div className="mt-2 space-y-1 rounded-xl border border-amber-500/30 bg-amber-500/10 px-3 py-2">
@@ -1646,8 +1646,8 @@ export default function NovaReceita2Page() {
                                                                 label="Herdar início padrão"
                                                             />
                                                         </RxvField>
-                                                        <div className="rounded-xl border border-slate-800 bg-black/20 px-3 py-3 text-xs text-slate-400">
-                                                            <p className="font-semibold text-slate-200">Resumo</p>
+                                                        <div className="rounded-xl border border-slate-800 bg-black/20 px-3 py-3 text-xs text-[color:var(--rxv-muted)]">
+                                                            <p className="font-semibold text-[color:var(--rxv-text)]">Resumo</p>
                                                             <p>{formatDurationSummary(item)}</p>
                                                             <p>{!effectiveStart.startDate && !effectiveStart.startHour ? 'Sem início configurado' : `${effectiveStart.startDate || 'Sem data'} ${effectiveStart.startHour || 'Sem hora'}`.trim()}</p>
                                                         </div>
@@ -1703,7 +1703,7 @@ export default function NovaReceita2Page() {
                                     />
                                 </RxvField>
                                 {recommendationLines.length > 0 ? (
-                                    <p className="text-xs text-slate-500">{recommendationLines.length} recomendação(ões) prontas para impressão.</p>
+                                    <p className="text-xs text-[color:var(--rxv-muted)]">{recommendationLines.length} recomendação(ões) prontas para impressão.</p>
                                 ) : null}
                             </RxvCard>
 
@@ -1761,8 +1761,8 @@ export default function NovaReceita2Page() {
                                     subtitle="Importe protocolos prontos antes de definir o template final"
                                 />
                                 <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_280px]">
-                                    <div className="rounded-2xl border border-slate-700 bg-black/20 px-4 py-4 text-sm text-slate-300">
-                                        <p className="font-semibold text-slate-100">Fluxo recomendado</p>
+                                    <div className="rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/75 px-4 py-4 text-sm text-[color:var(--rxv-text)]">
+                                        <p className="font-semibold text-[color:var(--rxv-text)]">Fluxo recomendado</p>
                                         <p className="mt-2">
                                             Abra Protocolos 3.0, escolha um protocolo da clinica ou global e use a acao
                                             para enviar itens, recomendacoes e exames para esta receita.
@@ -1781,7 +1781,7 @@ export default function NovaReceita2Page() {
                                         >
                                             Abrir Protocolos 3.0
                                         </RxvButton>
-                                        <div className="rounded-2xl border border-dashed border-slate-700 bg-black/20 px-4 py-4 text-sm text-slate-400">
+                                        <div className="rounded-2xl border border-dashed border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/65 px-4 py-4 text-sm text-[color:var(--rxv-muted)]">
                                             A importacao mantem os medicamentos no fluxo atual da Nova Receita.
                                         </div>
                                     </div>
@@ -1809,8 +1809,8 @@ export default function NovaReceita2Page() {
                                             }))}
                                         />
                                     </RxvField>
-                                    <div className="rounded-2xl border border-dashed border-slate-700 bg-black/20 px-4 py-4 text-sm text-slate-400">
-                                        <p className="font-semibold text-slate-200">Próxima etapa</p>
+                                    <div className="rounded-2xl border border-dashed border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/65 px-4 py-4 text-sm text-[color:var(--rxv-muted)]">
+                                        <p className="font-semibold text-[color:var(--rxv-text)]">Próxima etapa</p>
                                         <p className="mt-2">A tela já separa template de impressão de futuros templates clínicos, evitando misturar apresentação visual com conteúdo terapêutico.</p>
                                     </div>
                                 </div>
@@ -1827,23 +1827,23 @@ export default function NovaReceita2Page() {
                                 />
 
                                 {/* Preview container com scroll próprio */}
-                                <div className="rounded-xl overflow-hidden bg-white/5 border border-slate-800/50">
+                                <div className="rounded-xl overflow-hidden bg-[color:var(--rxv-surface-2)]/55 border border-[color:var(--rxv-border)]">
                                     {/* Toolbar do preview */}
-                                    <div className="flex items-center justify-between border-b border-slate-800/50 px-3 py-2">
+                                    <div className="flex items-center justify-between border-b border-[color:var(--rxv-border)] px-3 py-2">
                                         <span className="text-[10px] font-bold uppercase tracking-widest text-slate-600">
                                             {selectedTemplateObj.name}
                                         </span>
                                         <div className="flex gap-1.5">
                                             <button
                                                 type="button"
-                                                className="rounded border border-slate-700 px-2 py-1 text-[10px] font-bold text-slate-400 hover:text-white"
+                                                className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-[10px] font-bold text-[color:var(--rxv-muted)] hover:text-[color:var(--rxv-text)]"
                                                 onClick={handleReview}
                                             >
                                                 Revisar
                                             </button>
                                             <button
                                                 type="button"
-                                                className="rounded border border-slate-700 px-2 py-1 text-[10px] font-bold text-slate-400 hover:text-white"
+                                                className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-[10px] font-bold text-[color:var(--rxv-muted)] hover:text-[color:var(--rxv-text)]"
                                                 onClick={handlePrint}
                                             >
                                                 Imprimir
@@ -1859,12 +1859,12 @@ export default function NovaReceita2Page() {
                                     </div>
 
                                     {/* Preview principal full-width com scroll vertical */}
-                                    <div className="max-h-[78vh] overflow-y-auto overflow-x-hidden bg-slate-950/30">
+                                    <div className="max-h-[78vh] overflow-y-auto overflow-x-hidden bg-[color:var(--rxv-surface-2)]/40">
                                         <div className="space-y-5 p-4 xl:p-6">
                                             {printDocs.map((doc, idx) => (
-                                                <div key={`${doc.documentKind || 'standard'}-${idx}`} className="overflow-hidden rounded-lg border border-slate-800/60 bg-black/20">
+                                                <div key={`${doc.documentKind || 'standard'}-${idx}`} className="overflow-hidden rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/70">
                                                     {printDocs.length > 1 && (
-                                                        <p className="px-4 pt-4 text-[10px] font-black uppercase tracking-widest text-slate-500">
+                                                        <p className="px-4 pt-4 text-[10px] font-black uppercase tracking-widest text-[color:var(--rxv-muted)]">
                                                             {doc.documentKind === 'special-control' ? 'Receita de controle especial' : 'Receita padrão'}
                                                         </p>
                                                     )}
@@ -1889,16 +1889,16 @@ export default function NovaReceita2Page() {
             {/* Modal catálogo */}
             {presentationPickerOpen && (
                 <RxvModalShell zIndexClass="z-[100]" overlayClassName="bg-black/95 backdrop-blur-md">
-                    <div className="mx-auto flex max-h-[80vh] w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-cyan-400/30 bg-black shadow-[0_0_80px_rgba(34,211,238,0.2)]">
-                        <div className="flex items-center justify-between border-b border-slate-800 bg-slate-900/50 px-8 py-5">
+                    <div className="mx-auto flex max-h-[80vh] w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-cyan-400/30 bg-[color:var(--rxv-surface)] shadow-[0_0_80px_rgba(34,211,238,0.12)]">
+                        <div className="flex items-center justify-between border-b border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/90 px-8 py-5">
                             <div>
-                                <h2 className="text-lg font-black uppercase italic tracking-tight text-white">Escolher apresentação</h2>
+                                <h2 className="text-lg font-black uppercase italic tracking-tight text-[color:var(--rxv-text)]">Escolher apresentação</h2>
                                 <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-500">{presentationPickerItemName}</p>
                             </div>
                             <button
                                 type="button"
                                 onClick={closePresentationPicker}
-                                className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800/50 text-slate-400 transition-colors hover:bg-slate-800 hover:text-white"
+                                className="flex h-10 w-10 items-center justify-center rounded-xl bg-[color:var(--rxv-surface-2)] text-[color:var(--rxv-muted)] transition-colors hover:bg-[color:var(--rxv-surface-2)] hover:text-[color:var(--rxv-text)]"
                             >
                                 <span className="material-symbols-outlined text-[20px]">close</span>
                             </button>
@@ -1907,11 +1907,11 @@ export default function NovaReceita2Page() {
                             {isLoadingPresentationPicker ? (
                                 <div className="flex flex-col items-center justify-center py-10 opacity-50">
                                     <span className="material-symbols-outlined animate-spin text-cyan-300">sync</span>
-                                    <p className="mt-2 text-[10px] font-black uppercase tracking-widest text-slate-500">Carregando apresentações...</p>
+                                    <p className="mt-2 text-[10px] font-black uppercase tracking-widest text-[color:var(--rxv-muted)]">Carregando apresentações...</p>
                                 </div>
                             ) : presentationPickerOptions.length === 0 ? (
                                 <div className="py-10 text-center">
-                                    <p className="text-xs font-bold uppercase tracking-widest text-slate-600">Nenhuma apresentação encontrada</p>
+                                    <p className="text-xs font-bold uppercase tracking-widest text-[color:var(--rxv-muted)]">Nenhuma apresentação encontrada</p>
                                 </div>
                             ) : (
                                 presentationPickerOptions.map((presentation) => {
@@ -1921,12 +1921,12 @@ export default function NovaReceita2Page() {
                                             key={presentation.id}
                                             type="button"
                                             onClick={() => applyPresentationToItem(presentation)}
-                                            className="w-full rounded-2xl border border-slate-800 bg-slate-900/50 p-4 text-left transition-all hover:border-cyan-400/40 hover:bg-slate-900"
+                                            className="w-full rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/85 p-4 text-left transition-all hover:border-cyan-400/40 hover:bg-[color:var(--rxv-surface-2)]"
                                         >
                                             <p className="text-sm font-black uppercase italic text-white">
                                                 {[presentation.pharmaceutical_form || 'Apresentação', presentation.commercial_name || 'Sem nome comercial'].join(' • ')}
                                             </p>
-                                            <p className="mt-2 text-xs text-slate-400">{concentration}</p>
+                                            <p className="mt-2 text-xs text-[color:var(--rxv-muted)]">{concentration}</p>
                                         </button>
                                     )
                                 })

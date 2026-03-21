@@ -9,16 +9,79 @@ const ref = {
         venous: { pco2: { min: 33.6, max: 41.2 }, po2: { min: 49, max: 67 } },
         na: { min: 140, max: 150 }, k: { min: 3.9, max: 5.1 }, cl: { min: 110, max: 124 },
         albumin: { min: 2.3, max: 3.1, ideal: 2.7 }, anionGap: { min: 12, max: 25 },
-        hco3: { min: 18.8, max: 25.6, ideal: 22.2 }, pco2_comp: 36.8, temp: { min: 38.0, max: 39.2 }
+        hco3: { min: 18.8, max: 25.6, ideal: 22.2 }, pco2_comp: 36.8, temp: { min: 38.0, max: 39.2 },
+        glucose: { min: 86, max: 118 }, lactate: { min: 0.3, max: 2.5 }, ionizedCalcium: { min: 1.12, max: 1.40 },
+        magnesium: { min: 1.9, max: 2.5 }, tco2: { min: 20, max: 29 }, hematocrit: { min: 40, max: 55 },
+        hemoglobin: { min: 14, max: 19 }, so2: { min: 90, max: 100 }, be: { min: -4, max: 4 }
     },
     cat: {
         arterial: { pco2: { min: 25.2, max: 36.8 }, po2: { min: 95.4, max: 118.2 } },
         venous: { pco2: { min: 32.7, max: 44.7 }, po2: { min: 49, max: 67 } },
         na: { min: 145, max: 155 }, k: { min: 3.5, max: 5.1 }, cl: { min: 110, max: 124 },
         albumin: { min: 2.9, max: 4.2, ideal: 3.5 }, anionGap: { min: 13, max: 31 },
-        hco3: { min: 14.4, max: 21.6, ideal: 18.0 }, pco2_comp: 31.0, temp: { min: 38.0, max: 39.2 }
+        hco3: { min: 14.4, max: 21.6, ideal: 18.0 }, pco2_comp: 31.0, temp: { min: 38.0, max: 39.2 },
+        glucose: { min: 63, max: 118 }, lactate: { min: 0.4, max: 2.4 }, ionizedCalcium: { min: 1.20, max: 1.32 },
+        magnesium: { min: 1.5, max: 2.5 }, tco2: { min: 15, max: 21 }, hematocrit: { min: 30, max: 50 },
+        hemoglobin: { min: 10, max: 16 }, so2: { min: 90, max: 100 }, be: { min: -5, max: 3 }
     }
 };
+
+const normalInputPresets = {
+    dog: {
+        species: 'dog',
+        declaredSampleType: 'arterial',
+        fio2: '21',
+        ph: '7.40',
+        pco2: '36.8',
+        hco3: '22.2',
+        po2: '95.0',
+        temp: '38.5',
+        na: '145',
+        k: '4.5',
+        cl: '117',
+        albumin: '2.7',
+        glucose: '100',
+        lactate: '1.2',
+        be: '0',
+        so2: '98',
+        tco2: '24',
+        ionizedCalcium: '1.25',
+        magnesium: '2.2',
+        hematocrit: '45',
+        hemoglobin: '15'
+    },
+    cat: {
+        species: 'cat',
+        declaredSampleType: 'arterial',
+        fio2: '21',
+        ph: '7.39',
+        pco2: '31.0',
+        hco3: '18.0',
+        po2: '108.0',
+        temp: '38.4',
+        na: '152',
+        k: '4.2',
+        cl: '120',
+        albumin: '3.5',
+        glucose: '92',
+        lactate: '1.1',
+        be: '0',
+        so2: '98',
+        tco2: '18',
+        ionizedCalcium: '1.24',
+        magnesium: '2.0',
+        hematocrit: '37',
+        hemoglobin: '13'
+    }
+} as const;
+
+const analyzerSections = [
+    { id: 'overview', label: 'Visao geral', icon: 'space_dashboard' },
+    { id: 'patient-card', label: 'Parametros iniciais', icon: 'monitor_heart' },
+    { id: 'results-panel', label: 'Resultados', icon: 'analytics' },
+    { id: 'quiz-panel', label: 'Modo quiz', icon: 'school' },
+    { id: 'collection-guide', label: 'Boas praticas', icon: 'menu_book' }
+];
 
 const quizTherapyOptions = {
     hipernatremia: { correct: 'Fluidoterapia com solução hipotônica (ex: Dextrose 5%)', incorrect: ['Fluidoterapia com NaCl 0.9%', 'Administrar Furosemida', 'Administrar solução salina hipertônica', 'Restrição hídrica'] },
@@ -57,9 +120,36 @@ interface AnalysisResult {
     ventilationStatus: { state: string; emoji: string; };
     oxygenation: { content: string; emoji: string; };
     electrolyteStatus: Array<{ name: string; value: number; unit: string; status: string; alert: string; ref: string; }>;
+    extraParameterStatus: Array<{ name: string; value: number; unit: string; status: string; alert: string; ref: string; key: string; }>;
     anionGap: { value: string; correctedValue: string; interpretation: string; };
     differentials: string[];
 }
+
+type Species = 'dog' | 'cat';
+
+type AnalyzerInputs = {
+    species: Species;
+    declaredSampleType: 'arterial' | 'venous';
+    fio2: string;
+    ph: string;
+    pco2: string;
+    hco3: string;
+    po2: string;
+    temp: string;
+    na: string;
+    k: string;
+    cl: string;
+    albumin: string;
+    glucose: string;
+    lactate: string;
+    be: string;
+    so2: string;
+    tco2: string;
+    ionizedCalcium: string;
+    magnesium: string;
+    hematocrit: string;
+    hemoglobin: string;
+};
 
 interface QuizInputs {
     species: 'dog' | 'cat';
@@ -97,7 +187,7 @@ interface QuizCase {
 // --- ANALYSIS FUNCTIONS ---
 
 function analyzeBloodGas(inputs: any): AnalysisResult {
-    const { species, ph, pco2, hco3, po2, temp, fio2, na, k, cl, albumin } = inputs;
+    const { species, ph, pco2, hco3, po2, temp, fio2, na, k, cl, albumin, glucose, lactate, be, so2, tco2, ionizedCalcium, magnesium, hematocrit, hemoglobin } = inputs;
     const results: Partial<AnalysisResult> = {};
     const currentRef = ref[species];
 
@@ -118,6 +208,7 @@ function analyzeBloodGas(inputs: any): AnalysisResult {
     results.ventilationStatus = analyzeVentilation(pco2, species, currentRef, probableSampleType);
     results.oxygenation = analyzeOxygenation(po2, pco2, fio2, probableSampleType);
     results.electrolyteStatus = analyzeElectrolytes(na, k, cl, albumin, species, currentRef);
+    results.extraParameterStatus = analyzeAdditionalParameters({ glucose, lactate, be, so2, tco2, ionizedCalcium, magnesium, hematocrit, hemoglobin }, currentRef);
 
     results.anionGap = { value: 'Não calculado', correctedValue: 'Não calculado', interpretation: 'Eletrólitos não fornecidos.' };
     if (na && k && cl && hco3) {
@@ -261,6 +352,51 @@ function analyzeElectrolytes(na, k, cl, albumin, species, currentRef) {
         results.push({ name: 'Albumina', value: albumin, unit: 'g/dL', status, alert, ref: `${ref_species.albumin.min}-${ref_species.albumin.max}` });
     }
     return results;
+}
+
+function analyzeAdditionalParameters(values: any, currentRef: any) {
+    const parameterConfig = [
+        { key: 'glucose', label: 'Glicose', unit: 'mg/dL', refKey: 'glucose', low: 'Hipoglicemia', high: 'Hiperglicemia', lowAlert: 'Glicose abaixo da faixa de referÃªncia.', highAlert: 'Glicose acima da faixa de referÃªncia.' },
+        { key: 'lactate', label: 'Lactato', unit: 'mmol/L', refKey: 'lactate', low: 'Baixo', high: 'Hiperlactatemia', lowAlert: 'Lactato abaixo do esperado para o equipamento.', highAlert: 'Lactato elevado. Correlacionar com hipoperfusÃ£o e gravidade clÃ­nica.' },
+        { key: 'be', label: 'BE', unit: 'mEq/L', refKey: 'be', low: 'Base deficit', high: 'Base excess', lowAlert: 'Base excess negativo sugere componente metabÃ³lico Ã¡cido.', highAlert: 'Base excess positivo sugere componente metabÃ³lico alcalino.' },
+        { key: 'so2', label: 'sO2', unit: '%', refKey: 'so2', low: 'DessaturaÃ§Ã£o', high: 'Alta', lowAlert: 'SaturaÃ§Ã£o de oxigÃªnio abaixo do intervalo esperado.', highAlert: 'SaturaÃ§Ã£o acima da faixa configurada.' },
+        { key: 'tco2', label: 'cTCO2', unit: 'mmol/L', refKey: 'tco2', low: 'Baixo', high: 'Alto', lowAlert: 'cTCO2 reduzido, compatÃ­vel com perda de base ou acidose metabÃ³lica.', highAlert: 'cTCO2 aumentado, compatÃ­vel com retenÃ§Ã£o de base.' },
+        { key: 'ionizedCalcium', label: 'Ca2+ ionizado', unit: 'mmol/L', refKey: 'ionizedCalcium', low: 'Hipocalcemia ionizada', high: 'Hipercalcemia ionizada', lowAlert: 'CÃ¡lcio ionizado abaixo da faixa de referÃªncia.', highAlert: 'CÃ¡lcio ionizado acima da faixa de referÃªncia.' },
+        { key: 'magnesium', label: 'MagnÃ©sio', unit: 'mg/dL', refKey: 'magnesium', low: 'Hipomagnesemia', high: 'Hipermagnesemia', lowAlert: 'MagnÃ©sio abaixo da faixa de referÃªncia.', highAlert: 'MagnÃ©sio acima da faixa de referÃªncia.' },
+        { key: 'hematocrit', label: 'HematÃ³crito', unit: '%', refKey: 'hematocrit', low: 'HematÃ³crito baixo', high: 'HematÃ³crito alto', lowAlert: 'HematÃ³crito abaixo da faixa de referÃªncia.', highAlert: 'HematÃ³crito acima da faixa de referÃªncia.' },
+        { key: 'hemoglobin', label: 'Hemoglobina', unit: 'g/dL', refKey: 'hemoglobin', low: 'Hemoglobina baixa', high: 'Hemoglobina alta', lowAlert: 'Hemoglobina abaixo da faixa de referÃªncia.', highAlert: 'Hemoglobina acima da faixa de referÃªncia.' }
+    ];
+
+    return parameterConfig.reduce((acc: any[], parameter) => {
+        const value = values[parameter.key];
+        if (value === null || value === undefined || Number.isNaN(value)) {
+            return acc;
+        }
+
+        const reference = currentRef[parameter.refKey];
+        let status = 'Normal';
+        let alert = '';
+
+        if (value < reference.min) {
+            status = parameter.low;
+            alert = parameter.lowAlert;
+        } else if (value > reference.max) {
+            status = parameter.high;
+            alert = parameter.highAlert;
+        }
+
+        acc.push({
+            key: parameter.key,
+            name: parameter.label,
+            value,
+            unit: parameter.unit,
+            status,
+            alert,
+            ref: `${reference.min}-${reference.max}`
+        });
+
+        return acc;
+    }, []);
 }
 
 function calculateAnionGap(na, k, cl, hco3, albumin, species, currentRef) {
@@ -416,19 +552,31 @@ const QuickAddButtons = ({ param, setInputs, steps }: { param: string, setInputs
     );
 };
 
+const buildDefaultInputs = (species: Species = 'dog'): AnalyzerInputs => ({
+    ...normalInputPresets[species]
+});
+
+const parseAnalyzerInputs = (values: AnalyzerInputs) => {
+    const numericInputs: any = {};
+    for (const key in values) {
+        const rawValue = values[key as keyof AnalyzerInputs];
+        const parsed = parseFloat(rawValue);
+        numericInputs[key] = Number.isNaN(parsed) ? ((key === 'species' || key === 'declaredSampleType') ? rawValue : null) : parsed;
+    }
+    return numericInputs;
+};
+
 // --- MAIN COMPONENT ---
 const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
     const [activeTab, setActiveTab] = useState('analyzer');
     const [modalData, setModalData] = useState<{ title: string, content: string } | null>(null);
+    const [sidebarOpen, setSidebarOpen] = useState(false);
+    const initialInputs = useMemo(() => buildDefaultInputs('dog'), []);
 
     // --- Analyzer State ---
-    const [inputs, setInputs] = useState({
-        species: 'dog', declaredSampleType: 'arterial', fio2: '21',
-        ph: '', pco2: '', hco3: '', po2: '', temp: '', na: '', k: '', cl: '', albumin: '',
-        glucose: '', lactate: '', be: ''
-    });
-    const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(null);
-    const [showResults, setShowResults] = useState(false);
+    const [inputs, setInputs] = useState<AnalyzerInputs>(initialInputs);
+    const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(() => analyzeBloodGas(parseAnalyzerInputs(initialInputs)));
+    const [showResults, setShowResults] = useState(true);
 
     // --- Quiz State ---
     const [quizCase, setQuizCase] = useState<QuizCase | null>(null);
@@ -449,27 +597,34 @@ const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
         setShowResults(false);
     }, []);
 
-    const handleSpeciesChange = (species: string) => {
-        setInputs(prev => ({ ...prev, species }));
+    const updateInputs = useCallback((updater: any) => {
+        setInputs(updater);
         setShowResults(false);
+    }, []);
+
+    const handleSpeciesChange = (species: Species) => {
+        const nextInputs = buildDefaultInputs(species);
+        setInputs(nextInputs);
+        setAnalysisResult(analyzeBloodGas(parseAnalyzerInputs(nextInputs)));
+        setShowResults(true);
     };
 
     const handleAnalyzerSubmit = useCallback((e: React.FormEvent) => {
         e.preventDefault();
-        const numericInputs: any = {};
-        for (const key in inputs) {
-            const parsed = parseFloat(inputs[key as keyof typeof inputs]);
-            numericInputs[key] = isNaN(parsed) ? ((key === 'species' || key === 'declaredSampleType') ? inputs[key] : null) : parsed;
-        }
+        const numericInputs = parseAnalyzerInputs(inputs);
         const analysis = analyzeBloodGas(numericInputs);
         setAnalysisResult(analysis);
         setShowResults(true);
+        setTimeout(() => {
+            document.getElementById('results-panel')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 80);
     }, [inputs]);
 
     const handleReset = () => {
-        setInputs({ species: 'dog', declaredSampleType: 'arterial', fio2: '21', ph: '', pco2: '', hco3: '', po2: '', temp: '', na: '', k: '', cl: '', albumin: '', glucose: '', lactate: '', be: '' });
-        setShowResults(false);
-        setAnalysisResult(null);
+        const resetInputs = buildDefaultInputs(inputs.species);
+        setInputs(resetInputs);
+        setAnalysisResult(analyzeBloodGas(parseAnalyzerInputs(resetInputs)));
+        setShowResults(true);
     };
 
     const handleQuizSubmit = useCallback((e: React.FormEvent) => {
@@ -481,16 +636,31 @@ const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
         if (explanationData[key as keyof typeof explanationData]) setModalData((explanationData as any)[key]);
     }, []);
 
+    const scrollToSection = useCallback((sectionId: string) => {
+        setSidebarOpen(false);
+        if (sectionId === 'quiz-panel') {
+            setActiveTab('quiz');
+        } else if (activeTab !== 'analyzer') {
+            setActiveTab('analyzer');
+        }
+        setTimeout(() => {
+            document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+    }, [activeTab]);
+
     const alerts = useMemo(() => {
         if (!showResults || !analysisResult) return [];
         const alertsList = [];
-        const { anionGap, compensation, electrolyteStatus, sampleCheck } = analysisResult;
+        const { anionGap, compensation, electrolyteStatus, extraParameterStatus, sampleCheck } = analysisResult;
 
         if (anionGap.interpretation === 'Alto Anion Gap (Normoclorêmico)') alertsList.push({ type: 'warning', msg: `O Ânion Gap corrigido está elevado (<strong>${anionGap.correctedValue}</strong>), indicando acúmulo de ânions não mensurados.`, key: 'anionGap' });
         if (compensation.mixedDisorder) alertsList.push({ type: 'warning', msg: `A compensação parece inadequada, sugerindo um <strong>distúrbio misto</strong>: ${compensation.mixedDisorder}.`, key: 'compensation' });
 
         electrolyteStatus.forEach(e => {
             if (e.alert && !e.status.toLowerCase().includes('hipercalemia')) alertsList.push({ type: 'warning', msg: e.alert, key: e.status.toLowerCase() });
+        });
+        extraParameterStatus.forEach(param => {
+            if (param.alert) alertsList.push({ type: param.key === 'lactate' && param.status === 'Hiperlactatemia' ? 'critical' : 'warning', msg: param.alert, key: param.key });
         });
 
         if (sampleCheck.probableType !== inputs.declaredSampleType && sampleCheck.probableType !== 'mista/indeterminada') alertsList.push({ type: 'critical', msg: `A amostra foi declarada como <strong>${inputs.declaredSampleType === 'arterial' ? 'Arterial' : 'Venosa'}</strong>, mas a pO₂ sugere que a origem é <strong>${sampleCheck.probableType === 'arterial' ? 'Arterial' : 'Venosa'}</strong>. A interpretação deve ser ajustada.`, key: 'sampleType' });
@@ -505,43 +675,112 @@ const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
     const numericQuizKeys: (keyof QuizInputs)[] = ['ph', 'pco2', 'hco3', 'po2', 'temp', 'na', 'k', 'cl', 'albumin', 'fio2'];
 
     return (
-        <div className="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col w-full">
-            <header className="sticky top-0 z-50 flex items-center justify-between border-b border-solid border-slate-200 dark:border-slate-700 bg-white/90 dark:bg-[#101623]/90 backdrop-blur-md px-6 py-3 lg:px-10">
-                <div className="flex items-center gap-4">
-                    <button onClick={onBack} className="flex items-center justify-center size-10 rounded-lg hover:bg-slate-100 dark:hover:bg-card-dark text-slate-600 dark:text-slate-300 transition-colors">
-                        <span className="material-symbols-outlined">arrow_back</span>
-                    </button>
-                    <div className="size-8 text-primary dark:text-blue-500 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <span className="material-symbols-outlined text-2xl">science</span>
-                    </div>
-                    <h1 className="text-xl font-bold leading-tight tracking-tight text-slate-900 dark:text-white">Hemogasometria<span className="text-primary dark:text-blue-500">VET</span></h1>
+        <div className="flex min-h-full w-full bg-[radial-gradient(circle_at_top_left,_rgba(14,165,233,0.12),_transparent_28%),linear-gradient(180deg,_#f8fbff_0%,_#eef4fb_100%)] font-display text-slate-900 dark:bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.16),_transparent_24%),linear-gradient(180deg,_#07101d_0%,_#091122_100%)] dark:text-slate-100">
+            {sidebarOpen && (
+                <div className="fixed inset-0 z-50 xl:hidden">
+                    <button type="button" className="absolute inset-0 bg-slate-950/50 backdrop-blur-sm" onClick={() => setSidebarOpen(false)} aria-label="Fechar menu lateral" />
+                    <aside className="absolute inset-y-0 left-0 w-[min(88vw,360px)] overflow-y-auto border-r border-white/50 bg-white/90 p-4 shadow-2xl backdrop-blur-xl dark:border-slate-800 dark:bg-[#08101d]/95">
+                        <HemogasometryNav activeTab={activeTab} inputs={inputs} onReset={handleReset} onScrollToSection={scrollToSection} onBack={onBack} />
+                    </aside>
                 </div>
-            </header>
+            )}
 
-            <main className="flex-1 p-6 lg:p-10 w-full max-w-[1600px] mx-auto">
+            <aside className="hidden w-[300px] shrink-0 border-r border-white/50 bg-white/80 p-5 backdrop-blur-xl xl:block dark:border-slate-800 dark:bg-[#08101d]/88">
+                <div className="sticky top-6">
+                    <HemogasometryNav activeTab={activeTab} inputs={inputs} onReset={handleReset} onScrollToSection={scrollToSection} onBack={onBack} />
+                </div>
+            </aside>
+
+            <main className="min-w-0 flex-1 p-4 sm:p-6 lg:p-8 xl:p-10">
                 {activeTab === 'analyzer' && (
                     <div className="flex flex-col gap-6 lg:gap-8">
                         {/* Intro Section */}
-                        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-                            <div>
-                                <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Nova Análise</h2>
-                                <p className="text-slate-500 dark:text-slate-400 mt-1">Insira os dados do paciente e os parâmetros da hemogasometria para interpretação inteligente.</p>
-                            </div>
-                            <div className="flex gap-3">
-                                <button className="px-4 py-2 bg-slate-200 dark:bg-[#151b28] hover:bg-slate-300 dark:hover:bg-border-dark text-slate-700 dark:text-slate-200 rounded-lg font-medium transition-colors flex items-center gap-2" onClick={() => setActiveTab('quiz')}>
-                                    <span className="material-symbols-outlined text-sm">school</span> Modo Quiz
-                                </button>
-                                <button onClick={handleReset} className="px-4 py-2 bg-slate-200 dark:bg-[#151b28] hover:bg-slate-300 dark:hover:bg-border-dark text-red-600 dark:text-red-400 rounded-lg font-medium transition-colors flex items-center gap-2">
-                                    <span className="material-symbols-outlined text-sm">restart_alt</span> Resetar
-                                </button>
+                        <div id="overview" className="overflow-hidden rounded-[30px] border border-white/70 bg-white/88 p-5 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.35)] backdrop-blur-xl dark:border-slate-800/90 dark:bg-[#0d1526]/92">
+                            <div className="flex flex-col gap-6 xl:flex-row xl:items-start xl:justify-between">
+                                <div className="flex flex-1 flex-col gap-5">
+                                    <div className="flex items-center gap-3">
+                                        <button type="button" onClick={() => setSidebarOpen(true)} className="flex size-11 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-700 transition hover:bg-slate-100 xl:hidden dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800" aria-label="Abrir menu lateral do modulo">
+                                            <span className="material-symbols-outlined">menu</span>
+                                        </button>
+                                        <div className="flex size-12 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-400 to-cyan-300 text-slate-950 shadow-lg shadow-sky-500/20">
+                                            <span className="material-symbols-outlined">science</span>
+                                        </div>
+                                        <div>
+                                            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-600 dark:text-sky-300">Analise guiada</p>
+                                            <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Hemogasometria Veterinaria</h2>
+                                        </div>
+                                    </div>
+                                    <p className="max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-300">
+                                        Painel clinico responsivo com presets fisiologicos, interpretacao acidobasica, eletrolitos, perfusao e oxigenacao em uma unica leitura.
+                                    </p>
+                                    <div className="grid gap-3 sm:grid-cols-3">
+                                        <div className="rounded-2xl border border-sky-100 bg-sky-50/90 p-4 dark:border-sky-900/40 dark:bg-sky-500/10">
+                                            <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-sky-700 dark:text-sky-300">Perfil</div>
+                                            <div className="mt-2 text-lg font-bold text-slate-900 dark:text-white">{inputs.species === 'dog' ? 'Canino' : 'Felino'}</div>
+                                            <div className="mt-1 text-sm text-slate-600 dark:text-slate-400">Preset normal carregado</div>
+                                        </div>
+                                        <div className="rounded-2xl border border-emerald-100 bg-emerald-50/90 p-4 dark:border-emerald-900/40 dark:bg-emerald-500/10">
+                                            <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">Amostra</div>
+                                            <div className="mt-2 text-lg font-bold text-slate-900 dark:text-white">{inputs.declaredSampleType === 'arterial' ? 'Arterial' : 'Venosa'}</div>
+                                            <div className="mt-1 text-sm text-slate-600 dark:text-slate-400">Comparacao automatica com pO2</div>
+                                        </div>
+                                        <div className="rounded-2xl border border-violet-100 bg-violet-50/90 p-4 dark:border-violet-900/40 dark:bg-violet-500/10">
+                                            <div className="text-[11px] font-semibold uppercase tracking-[0.22em] text-violet-700 dark:text-violet-300">Status</div>
+                                            <div className="mt-2 text-lg font-bold text-slate-900 dark:text-white">{showResults ? 'Resultado ativo' : 'Aguardando nova analise'}</div>
+                                            <div className="mt-1 text-sm text-slate-600 dark:text-slate-400">O painel acompanha os parametros inseridos</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="grid gap-3 sm:grid-cols-2 xl:w-[360px] xl:grid-cols-1">
+                                    <button type="button" className="flex min-h-[56px] items-center justify-center gap-2 rounded-2xl bg-slate-900 px-5 py-4 text-sm font-semibold text-white transition hover:bg-slate-800 dark:bg-sky-500 dark:text-slate-950 dark:hover:bg-sky-400" onClick={() => setActiveTab('quiz')}>
+                                        <span className="material-symbols-outlined text-[18px]">school</span>
+                                        Modo Quiz
+                                    </button>
+                                    <button type="button" onClick={handleReset} className="flex min-h-[56px] items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800">
+                                        <span className="material-symbols-outlined text-[18px]">restart_alt</span>
+                                        Recarregar valores normais
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
-                        <form onSubmit={handleAnalyzerSubmit}>
+                        <form onSubmit={handleAnalyzerSubmit} className="space-y-6">
+                            <div className="grid gap-4 xl:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)]">
+                                <div className="rounded-[26px] border border-white/60 bg-white/80 p-4 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.45)] backdrop-blur-xl dark:border-slate-800/80 dark:bg-[#0d1526]/88">
+                                    <div className="flex flex-wrap items-center justify-between gap-3">
+                                        <div>
+                                            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500 dark:text-slate-400">Entrada clinica</p>
+                                            <h3 className="mt-1 text-xl font-bold text-slate-900 dark:text-white">Parametros da amostra</h3>
+                                        </div>
+                                        <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-300">
+                                            Ajuste rapido por especie, coleta e metabólitos complementares
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="rounded-[26px] border border-sky-200/70 bg-gradient-to-br from-sky-500 via-cyan-400 to-teal-300 p-[1px] shadow-[0_28px_70px_-34px_rgba(14,165,233,0.55)] dark:border-sky-500/30">
+                                    <div className="rounded-[25px] bg-slate-950/95 p-5 text-white">
+                                        <div className="flex items-start justify-between gap-4">
+                                            <div>
+                                                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-200/80">Leitura imediata</p>
+                                                <h3 className="mt-2 text-xl font-bold">Analisar resultados</h3>
+                                                <p className="mt-2 text-sm leading-6 text-sky-100/80">Executa a interpretacao atual e atualiza os cards clinicos abaixo sem sair da tela.</p>
+                                            </div>
+                                            <div className="flex size-12 items-center justify-center rounded-2xl bg-white/10">
+                                                <span className="material-symbols-outlined text-sky-100">monitor_heart</span>
+                                            </div>
+                                        </div>
+                                        <button type="submit" className="mt-5 flex min-h-[56px] w-full items-center justify-center gap-3 rounded-2xl bg-white px-5 py-4 text-base font-bold text-slate-950 transition hover:scale-[1.01] hover:bg-sky-50">
+                                            <span className="material-symbols-outlined text-[18px]">analytics</span>
+                                            Analisar Resultados
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
                             {/* Dashboard Grid */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-start">
+                            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 2xl:grid-cols-5 items-start">
                                 {/* 1. Patient Info Card */}
-                                <section className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 transition-all hover:shadow-lg dark:hover:shadow-black/50 hover:border-blue-400/30 dark:hover:border-blue-500/30 dark:border-slate-700 shadow-sm overflow-hidden h-full">
+                                <section id="patient-card" className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 transition-all hover:shadow-lg dark:hover:shadow-black/50 hover:border-blue-400/30 dark:hover:border-blue-500/30 dark:border-slate-700 shadow-sm overflow-hidden h-full">
                                     <div className="p-5 border-b border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-[#151b28] flex items-center gap-3">
                                         <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
                                             <span className="material-symbols-outlined">pets</span>
@@ -601,21 +840,35 @@ const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
                                                 <span className="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 px-1.5 py-0.5 rounded">Ref: 7.35-7.45</span>
                                             </div>
                                             <input id="ph" value={inputs.ph} onChange={handleInputChange} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all font-mono text-lg font-medium" placeholder="7.40" step="0.01" type="number" required />
-                                            <QuickAddButtons param="ph" setInputs={setInputs} steps={[-0.1, -0.01, 0.01, 0.1]} />
+                                            <QuickAddButtons param="ph" setInputs={updateInputs} steps={[-0.1, -0.01, 0.01, 0.1]} />
                                         </div>
                                         <div className="space-y-1 relative group">
                                             <div className="flex justify-between items-center px-1">
                                                 <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">pCO₂ (mmHg)</label>
                                             </div>
                                             <input id="pco2" value={inputs.pco2} onChange={handleInputChange} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all font-mono text-lg font-medium" placeholder="40.0" step="0.1" type="number" required />
-                                            <QuickAddButtons param="pco2" setInputs={setInputs} steps={[-5, -1, 1, 5]} />
+                                            <QuickAddButtons param="pco2" setInputs={updateInputs} steps={[-5, -1, 1, 5]} />
                                         </div>
                                         <div className="space-y-1 relative group">
                                             <div className="flex justify-between items-center px-1">
                                                 <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">pO₂ (mmHg)</label>
                                             </div>
                                             <input id="po2" value={inputs.po2} onChange={handleInputChange} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all font-mono text-lg font-medium" placeholder="95.0" step="0.1" type="number" required />
-                                            <QuickAddButtons param="po2" setInputs={setInputs} steps={[-10, -1, 1, 10]} />
+                                            <QuickAddButtons param="po2" setInputs={updateInputs} steps={[-10, -1, 1, 10]} />
+                                        </div>
+                                        <div className="space-y-1 relative group">
+                                            <div className="flex justify-between items-center px-1">
+                                                <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">sO2 (%)</label>
+                                            </div>
+                                            <input id="so2" value={inputs.so2} onChange={handleInputChange} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all font-mono text-lg font-medium" placeholder="98" step="0.1" type="number" />
+                                            <QuickAddButtons param="so2" setInputs={updateInputs} steps={[-5, -1, 1, 5]} />
+                                        </div>
+                                        <div className="space-y-1 relative group">
+                                            <div className="flex justify-between items-center px-1">
+                                                <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">cTCO2 (mmol/L)</label>
+                                            </div>
+                                            <input id="tco2" value={inputs.tco2} onChange={handleInputChange} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all font-mono text-lg font-medium" placeholder="24" step="0.1" type="number" />
+                                            <QuickAddButtons param="tco2" setInputs={updateInputs} steps={[-2, -1, 1, 2]} />
                                         </div>
                                     </div>
                                 </section>
@@ -635,7 +888,7 @@ const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
                                                 <input id="na" value={inputs.na} onChange={handleInputChange} className="w-full pl-3 pr-8 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all font-mono font-medium" placeholder="140" step="0.1" type="number" />
                                                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">mEq/L</span>
                                             </div>
-                                            <QuickAddButtons param="na" setInputs={setInputs} steps={[-5, -1, 1, 5]} />
+                                            <QuickAddButtons param="na" setInputs={updateInputs} steps={[-5, -1, 1, 5]} />
                                         </div>
                                         <div className="space-y-1">
                                             <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">K⁺</label>
@@ -643,17 +896,33 @@ const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
                                                 <input id="k" value={inputs.k} onChange={handleInputChange} className="w-full pl-3 pr-8 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all font-mono font-medium" placeholder="4.0" step="0.1" type="number" />
                                                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">mEq/L</span>
                                             </div>
-                                            <QuickAddButtons param="k" setInputs={setInputs} steps={[-1, -0.1, 0.1, 1]} />
+                                            <QuickAddButtons param="k" setInputs={updateInputs} steps={[-1, -0.1, 0.1, 1]} />
                                         </div>
                                         <div className="space-y-1">
                                             <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Cl⁻</label>
                                             <div className="relative">
-                                                <input id="cl" value={inputs.cl} onChange={handleInputChange} className="w-full pl-3 pr-8 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all font-mono font-medium" placeholder="105" step="0.1" type="number" />
-                                                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">mEq/L</span>
-                                            </div>
-                                            <QuickAddButtons param="cl" setInputs={setInputs} steps={[-5, -1, 1, 5]} />
+                                            <input id="cl" value={inputs.cl} onChange={handleInputChange} className="w-full pl-3 pr-8 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all font-mono font-medium" placeholder="105" step="0.1" type="number" />
+                                            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">mEq/L</span>
                                         </div>
+                                        <QuickAddButtons param="cl" setInputs={updateInputs} steps={[-5, -1, 1, 5]} />
                                     </div>
+                                    <div className="space-y-1">
+                                        <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Ca2+ ionizado</label>
+                                        <div className="relative">
+                                            <input id="ionizedCalcium" value={inputs.ionizedCalcium} onChange={handleInputChange} className="w-full pl-3 pr-10 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all font-mono font-medium" placeholder="1.25" step="0.01" type="number" />
+                                            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-slate-400">mmol/L</span>
+                                        </div>
+                                        <QuickAddButtons param="ionizedCalcium" setInputs={updateInputs} steps={[-0.2, -0.05, 0.05, 0.2]} />
+                                    </div>
+                                    <div className="space-y-1">
+                                        <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Magnesio</label>
+                                        <div className="relative">
+                                            <input id="magnesium" value={inputs.magnesium} onChange={handleInputChange} className="w-full pl-3 pr-10 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all font-mono font-medium" placeholder="2.2" step="0.1" type="number" />
+                                            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-slate-400">mg/dL</span>
+                                        </div>
+                                        <QuickAddButtons param="magnesium" setInputs={updateInputs} steps={[-0.5, -0.1, 0.1, 0.5]} />
+                                    </div>
+                                </div>
                                 </section>
 
                                 {/* 4. Metabolites Card */}
@@ -668,47 +937,75 @@ const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
                                         <div className="space-y-1">
                                             <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">HCO₃⁻</label>
                                             <input id="hco3" value={inputs.hco3} onChange={handleInputChange} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all font-mono text-lg font-medium" placeholder="24" step="0.1" type="number" required />
-                                            <QuickAddButtons param="hco3" setInputs={setInputs} steps={[-2, -1, 1, 2]} />
+                                            <QuickAddButtons param="hco3" setInputs={updateInputs} steps={[-2, -1, 1, 2]} />
                                         </div>
                                         <div className="space-y-1">
                                             <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Albumina (g/dL)</label>
                                             <input id="albumin" value={inputs.albumin} onChange={handleInputChange} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all font-mono font-medium" placeholder="3.0" step="0.1" type="number" />
-                                            <QuickAddButtons param="albumin" setInputs={setInputs} steps={[-1, -0.1, 0.1, 1]} />
+                                            <QuickAddButtons param="albumin" setInputs={updateInputs} steps={[-1, -0.1, 0.1, 1]} />
                                         </div>
                                         <div className="space-y-1">
                                             <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">BE (Base Excess)</label>
                                             <input id="be" value={inputs.be || ''} onChange={handleInputChange} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all font-mono font-medium" placeholder="0" step="0.1" type="number" />
                                         </div>
+                                        <div className="space-y-1">
+                                            <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Glicose (mg/dL)</label>
+                                            <input id="glucose" value={inputs.glucose} onChange={handleInputChange} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all font-mono font-medium" placeholder="100" step="1" type="number" />
+                                            <QuickAddButtons param="glucose" setInputs={updateInputs} steps={[-20, -5, 5, 20]} />
+                                        </div>
+                                        <div className="space-y-1">
+                                            <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Lactato (mmol/L)</label>
+                                            <input id="lactate" value={inputs.lactate} onChange={handleInputChange} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all font-mono font-medium" placeholder="1.2" step="0.1" type="number" />
+                                            <QuickAddButtons param="lactate" setInputs={updateInputs} steps={[-1, -0.2, 0.2, 1]} />
+                                        </div>
+                                        <div className="space-y-1">
+                                            <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Hematocrito (%)</label>
+                                            <input id="hematocrit" value={inputs.hematocrit} onChange={handleInputChange} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all font-mono font-medium" placeholder="45" step="1" type="number" />
+                                            <QuickAddButtons param="hematocrit" setInputs={updateInputs} steps={[-10, -2, 2, 10]} />
+                                        </div>
+                                        <div className="space-y-1">
+                                            <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Hemoglobina (g/dL)</label>
+                                            <input id="hemoglobin" value={inputs.hemoglobin} onChange={handleInputChange} className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all font-mono font-medium" placeholder="15" step="0.1" type="number" />
+                                            <QuickAddButtons param="hemoglobin" setInputs={updateInputs} steps={[-2, -0.5, 0.5, 2]} />
+                                        </div>
                                     </div>
                                 </section>
                             </div>
 
-                            {/* Action Section */}
-                            <div className="flex justify-center my-8">
-                                <button type="submit" className="group relative px-8 py-4 bg-primary hover:bg-blue-600 text-white rounded-xl shadow-lg shadow-blue-500/20 transition-all hover:scale-[1.02] active:scale-95 w-full md:w-auto md:min-w-[300px] flex items-center justify-center gap-3">
-                                    <span className="material-symbols-outlined text-2xl group-hover:animate-pulse">analytics</span>
-                                    <span className="text-lg font-bold">Analisar Resultados</span>
-                                </button>
-                            </div>
                         </form>
 
                         {showResults && analysisResult && (
-                            <div className="mt-8 space-y-4">
+                            <div id="results-panel" className="mt-8 space-y-5">
                                 {alerts.length > 0 && (
-                                    <div className="mt-8 space-y-3">
-                                        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Alertas Clínicos</h2>
+                                    <div className="mt-8 rounded-[28px] border border-white/70 bg-white/80 p-5 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.45)] backdrop-blur-xl dark:border-slate-800/90 dark:bg-[#0d1526]/88">
+                                        <div className="mb-4 flex items-center justify-between gap-4">
+                                            <div>
+                                                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Triagem imediata</p>
+                                                <h2 className="mt-1 text-2xl font-bold text-slate-900 dark:text-white">Alertas clínicos</h2>
+                                            </div>
+                                            <div className="rounded-2xl border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-amber-700 dark:border-amber-900/40 dark:bg-amber-500/10 dark:text-amber-300">
+                                                {alerts.length} sinal{alerts.length > 1 ? 's' : ''}
+                                            </div>
+                                        </div>
+                                        <div className="space-y-3">
                                         {alerts.map((alert, index) => {
-                                            const colors = { critical: 'bg-red-50 dark:bg-red-900/20 border-red-500 dark:border-red-600 text-red-900 dark:text-red-300', warning: 'bg-amber-50 dark:bg-amber-900/20 border-amber-500 dark:border-amber-600 text-amber-900 dark:text-amber-300' };
+                                            const colors = { critical: 'border-red-200 bg-red-50/95 text-red-900 dark:border-red-900/40 dark:bg-red-900/20 dark:text-red-300', warning: 'border-amber-200 bg-amber-50/95 text-amber-900 dark:border-amber-900/40 dark:bg-amber-900/20 dark:text-amber-300' };
                                             return (
-                                                <div key={index} className={`p-4 border-l-4 rounded-r-lg ${colors[alert.type as keyof typeof colors]} flex items-center justify-between result-card ${showResults ? 'visible' : ''}`} style={{ transitionDelay: `${index * 100}ms` }} role="alert">
-                                                    <div>
-                                                        <p className="font-bold">{alert.type === 'critical' ? '🔴 Alerta Crítico' : '🟡 Atenção'}</p>
-                                                        <p dangerouslySetInnerHTML={{ __html: alert.msg }} />
+                                                <div key={index} className={`result-card flex items-center justify-between rounded-2xl border p-4 ${colors[alert.type as keyof typeof colors]} ${showResults ? 'visible' : ''}`} style={{ transitionDelay: `${index * 100}ms` }} role="alert">
+                                                    <div className="flex items-start gap-3">
+                                                        <div className={`mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-2xl ${alert.type === 'critical' ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300' : 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300'}`}>
+                                                            <span className="material-symbols-outlined text-[20px]">{alert.type === 'critical' ? 'emergency_home' : 'warning'}</span>
+                                                        </div>
+                                                        <div>
+                                                            <p className="font-bold">{alert.type === 'critical' ? 'Alerta critico' : 'Atencao'}</p>
+                                                            <p className="mt-1 text-sm leading-6" dangerouslySetInnerHTML={{ __html: alert.msg }} />
+                                                        </div>
                                                     </div>
-                                                    {alert.key && <button type="button" onClick={() => openModal(alert.key)} className="ml-2 text-xl hover:scale-110 transition-transform">❓</button>}
+                                                    {alert.key && <button type="button" onClick={() => openModal(alert.key)} className="ml-2 flex size-10 items-center justify-center rounded-2xl border border-white/70 bg-white/70 text-slate-500 transition hover:scale-105 hover:text-sky-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:text-sky-300"><span className="material-symbols-outlined text-[18px]">help</span></button>}
                                                 </div>
                                             );
                                         })}
+                                        </div>
                                     </div>
                                 )}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -720,24 +1017,30 @@ const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
                                 <ResultCard title="5. Avaliação da Compensação" content={`Status: ${analysisResult.compensation.status}<br><small class="text-slate-500 dark:text-slate-400">Esperado: ${JSON.stringify(analysisResult.compensation.expected)}</small>${analysisResult.compensation.mixedDisorder ? `<br><strong class="text-slate-900 dark:text-white mt-1 block">Distúrbio Misto Sugerido: ${analysisResult.compensation.mixedDisorder}</strong>` : ''}`} emoji='⚖️' dataKey="compensation" openModal={openModal} delay={400} />
                                 <ResultCard title="6. Avaliação da Oxigenação" content={analysisResult.oxygenation.content} emoji={analysisResult.oxygenation.emoji} dataKey="oxygenation" openModal={openModal} delay={500} />
                                 <ElectrolyteCard electrolyteStatus={analysisResult.electrolyteStatus} openModal={openModal} delay={600} />
+                                <ExtendedParameterCard items={analysisResult.extraParameterStatus} delay={700} />
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <ResultCard title="8. Anion Gap (AG)" content={`AG: ${analysisResult.anionGap.value} mEq/L<br>AG Corrigido: ${analysisResult.anionGap.correctedValue} mEq/L<br><strong class="text-slate-900 dark:text-white mt-1 block">Interpretação: ${analysisResult.anionGap.interpretation}</strong>`} emoji=' Gap ' dataKey="anionGap" openModal={openModal} delay={700} />
+                                <ResultCard title="8. Anion Gap (AG)" content={`AG: ${analysisResult.anionGap.value} mEq/L<br>AG Corrigido: ${analysisResult.anionGap.correctedValue} mEq/L<br><strong class="text-slate-900 dark:text-white mt-1 block">Interpretação: ${analysisResult.anionGap.interpretation}</strong>`} emoji='Σ' dataKey="anionGap" openModal={openModal} delay={700} />
                                     <ResultCard title="9. Diferenciais" content={`<ul class="space-y-1 mt-1">${analysisResult.differentials.map(d => `<li class="ml-4 list-disc text-slate-700 dark:text-slate-300 leading-tight">${d}</li>`).join('')}</ul>`} emoji='🩺' dataKey="differentials" openModal={openModal} delay={800} />
                                 </div>
                             </div>
                         )}
 
                         {/* Accordion Footer: Best Practices */}
-                        <section className="max-w-4xl mx-auto w-full mt-8">
-                            <details className="group bg-slate-100 dark:bg-[#151b28] border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden transition-all duration-300 open:shadow-lg open:ring-1 open:ring-primary/20">
-                                <summary className="flex items-center justify-between p-4 cursor-pointer select-none hover:bg-slate-200 dark:hover:bg-[#212e4a] transition-colors">
+                        <section id="collection-guide" className="w-full mt-8">
+                            <details className="group overflow-hidden rounded-[28px] border border-white/70 bg-white/80 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.4)] backdrop-blur-xl transition-all duration-300 open:ring-1 open:ring-sky-400/20 dark:border-slate-800/90 dark:bg-[#0d1526]/88">
+                                <summary className="flex items-center justify-between p-5 cursor-pointer select-none hover:bg-slate-50 dark:hover:bg-[#111b31] transition-colors">
                                     <div className="flex items-center gap-3">
-                                        <span className="material-symbols-outlined text-primary dark:text-blue-400">menu_book</span>
-                                        <span className="font-bold text-slate-700 dark:text-slate-200">Guia de Boas Práticas de Coleta</span>
+                                        <div className="flex size-11 items-center justify-center rounded-2xl bg-sky-50 text-sky-700 dark:bg-sky-500/10 dark:text-sky-300">
+                                            <span className="material-symbols-outlined">menu_book</span>
+                                        </div>
+                                        <div>
+                                            <div className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Qualidade pre-analitica</div>
+                                            <span className="font-bold text-slate-700 dark:text-slate-200">Guia de Boas Práticas de Coleta</span>
+                                        </div>
                                     </div>
                                     <span className="material-symbols-outlined expand-icon text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
                                 </summary>
-                                <div className="p-6 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
+                                <div className="border-t border-slate-200/80 bg-white/80 p-6 dark:border-slate-700 dark:bg-slate-900/70">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                                         <div>
                                             <h4 className="font-bold text-slate-800 dark:text-white mb-2 flex items-center gap-2">
@@ -770,16 +1073,20 @@ const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
                 )}
 
                 {activeTab === 'quiz' && quizCase && (
-                    <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 mt-6">
-                        <div className="flex justify-between items-center mb-6 text-slate-900 dark:text-white">
-                            <h2 className="text-2xl font-bold">Caso Clínico Interativo</h2>
-                            <button type="button" onClick={handleNewQuizCase} className="bg-primary/10 text-primary font-semibold py-2 px-4 rounded-lg hover:bg-primary/20 transition">Gerar Novo Caso</button>
+                    <div id="quiz-panel" className="mt-6 rounded-[30px] border border-white/70 bg-white/82 p-6 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.45)] backdrop-blur-xl dark:border-slate-800/90 dark:bg-[#0d1526]/90">
+                        <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between text-slate-900 dark:text-white">
+                            <div>
+                                <p className="text-xs font-semibold uppercase tracking-[0.26em] text-slate-500 dark:text-slate-400">Treinamento</p>
+                                <h2 className="mt-1 text-3xl font-bold">Caso Clínico Interativo</h2>
+                                <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-300">Treine interpretação ácido-básica, eletrolítica e conduta inicial com um caso gerado automaticamente.</p>
+                            </div>
+                            <button type="button" onClick={handleNewQuizCase} className="inline-flex min-h-[52px] items-center justify-center rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 dark:bg-sky-500 dark:text-slate-950 dark:hover:bg-sky-400">Gerar Novo Caso</button>
                         </div>
-                        <div className="bg-slate-50 dark:bg-slate-800/80 p-4 rounded-lg mb-6 border border-slate-200 dark:border-slate-700">
+                        <div className="mb-6 rounded-[24px] border border-slate-200/80 bg-slate-50/85 p-4 dark:border-slate-700 dark:bg-slate-900/75">
                             <p className="font-bold text-slate-900 dark:text-white"><strong>Espécie:</strong> {quizCase.inputs.species === 'dog' ? 'Cão 🐕' : 'Gato 🐈'}</p>
                             <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mt-4 text-center">
                                 {numericQuizKeys.map(key => (
-                                    <div key={key} className="bg-white dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm text-slate-900 dark:text-white font-medium">
+                                    <div key={key} className="rounded-2xl border border-white/80 bg-white p-3 shadow-sm text-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-white font-medium">
                                         <div className="text-xs text-slate-500 dark:text-slate-400 font-bold mb-1 uppercase tracking-wide">{key}</div>
                                         <div className="text-lg">{(quizCase.inputs[key as keyof QuizInputs] as number).toFixed(key === 'ph' ? 2 : 1)}</div>
                                     </div>
@@ -804,7 +1111,7 @@ const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
                                 return null;
                             })}
                             <div className="flex justify-center pt-6">
-                                <button type="submit" className="bg-primary text-white font-bold py-3 px-8 rounded-lg hover:bg-primary/90 shadow-lg shadow-primary/20 transform hover:scale-105 transition-transform">Corrigir Exercício</button>
+                                <button type="submit" className="inline-flex min-h-[56px] items-center justify-center rounded-2xl bg-slate-900 px-8 py-3 text-sm font-bold text-white shadow-lg shadow-slate-900/15 transition hover:scale-[1.02] hover:bg-slate-800 dark:bg-sky-500 dark:text-slate-950 dark:hover:bg-sky-400">Corrigir Exercício</button>
                             </div>
                         </form>
                     </div>
@@ -834,12 +1141,12 @@ const Hemogasometria = ({ onBack }: { onBack: () => void }) => {
 
 // --- SUB-COMPONENTS ---
 const ResultCard = ({ title, content, emoji, dataKey, openModal, delay }: any) => (
-    <div className={`bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 flex items-start space-x-4`} style={{ animation: `sweep 0.3s ease-in-out ${delay}ms forwards`, opacity: 0 }}>
-        <div className="text-3xl bg-slate-50 dark:bg-slate-800/80 p-3 rounded-xl border border-slate-100 dark:border-slate-700">{emoji}</div>
+    <div className={`flex items-start space-x-4 rounded-[24px] border border-white/70 bg-white/82 p-5 shadow-[0_24px_60px_-42px_rgba(15,23,42,0.45)] backdrop-blur-xl dark:border-slate-800/90 dark:bg-slate-900/86`} style={{ animation: `sweep 0.3s ease-in-out ${delay}ms forwards`, opacity: 0 }}>
+        <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl border border-slate-100 bg-gradient-to-br from-slate-50 to-sky-50 p-3 text-3xl dark:border-slate-700 dark:from-slate-800 dark:to-slate-900">{emoji}</div>
         <div className="flex-grow pt-1">
             <div className="flex justify-between items-start">
                 <h3 className="font-bold text-lg text-slate-800 dark:text-white leading-tight">{title}</h3>
-                {dataKey && <button type="button" onClick={() => openModal(dataKey)} className="text-xl text-slate-400 hover:text-primary transition-colors ml-2">❓</button>}
+                {dataKey && <button type="button" onClick={() => openModal(dataKey)} className="ml-2 flex size-10 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-400 transition hover:border-sky-200 hover:text-sky-600 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300 dark:hover:border-sky-700 dark:hover:text-sky-300"><span className="material-symbols-outlined text-[18px]">help</span></button>}
             </div>
             <div className="text-slate-600 dark:text-slate-300 mt-2 text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: content }} />
         </div>
@@ -849,7 +1156,7 @@ const ResultCard = ({ title, content, emoji, dataKey, openModal, delay }: any) =
 const ElectrolyteCard = ({ electrolyteStatus, openModal, delay }: any) => {
     if (electrolyteStatus.length === 0) return null;
     return (
-        <div className={`bg-white dark:bg-slate-900 p-5 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 flex items-start space-x-4`} style={{ animation: `sweep 0.3s ease-in-out ${delay}ms forwards`, opacity: 0 }}>
+        <div className={`flex items-start space-x-4 rounded-[24px] border border-white/70 bg-white/82 p-5 shadow-[0_24px_60px_-42px_rgba(15,23,42,0.45)] backdrop-blur-xl dark:border-slate-800/90 dark:bg-slate-900/86`} style={{ animation: `sweep 0.3s ease-in-out ${delay}ms forwards`, opacity: 0 }}>
             <div className="text-3xl bg-amber-50 dark:bg-amber-900/10 text-amber-500 p-3 rounded-xl border border-amber-100 dark:border-amber-900/30">⚡</div>
             <div className="flex-grow pt-1 w-full">
                 <h3 className="font-bold text-lg text-slate-800 dark:text-white leading-tight mb-3">7. Eletrólitos e Proteínas</h3>
@@ -869,7 +1176,7 @@ const ElectrolyteCard = ({ electrolyteStatus, openModal, delay }: any) => {
                                 </div>
                                 <div className="flex flex-col items-end">
                                     <span className={`font-bold text-xs uppercase tracking-wide px-2 py-1 rounded-md bg-white/50 dark:bg-black/20 ${isNormal ? 'text-green-700 dark:text-green-400' : 'text-amber-700 dark:text-amber-400'}`}>{e.status}</span>
-                                    <button type="button" onClick={() => openModal(e.status.toLowerCase())} className="mt-2 text-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">❓</button>
+                                    <button type="button" onClick={() => openModal(e.status.toLowerCase())} className="mt-2 flex size-8 items-center justify-center rounded-xl border border-white/70 bg-white/70 text-slate-400 transition hover:text-sky-600 dark:border-white/10 dark:bg-black/10 dark:text-slate-300 dark:hover:text-sky-300"><span className="material-symbols-outlined text-[16px]">help</span></button>
                                 </div>
                             </div>
                         );
@@ -879,6 +1186,93 @@ const ElectrolyteCard = ({ electrolyteStatus, openModal, delay }: any) => {
         </div>
     );
 };
+
+const ExtendedParameterCard = ({ items, delay }: any) => {
+    if (!items?.length) return null;
+    return (
+        <div className="rounded-[24px] border border-white/70 bg-white/82 p-5 shadow-[0_24px_60px_-42px_rgba(15,23,42,0.45)] backdrop-blur-xl dark:border-slate-800/90 dark:bg-slate-900/86" style={{ animation: `sweep 0.3s ease-in-out ${delay}ms forwards`, opacity: 0 }}>
+            <div className="flex items-center gap-3 mb-4">
+                <div className="flex size-14 items-center justify-center rounded-2xl border border-fuchsia-100 bg-fuchsia-50 p-3 text-2xl text-fuchsia-500 dark:border-fuchsia-900/30 dark:bg-fuchsia-900/10">+</div>
+                <div>
+                    <h3 className="font-bold text-lg text-slate-800 dark:text-white leading-tight">8. Parametros complementares</h3>
+                    <p className="text-sm text-slate-500 dark:text-slate-400">Perfusao, oxigenacao, calcio ionizado, glicose e concentracao sanguinea.</p>
+                </div>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
+                {items.map((item: any) => {
+                    const isNormal = item.status === 'Normal';
+                    return (
+                        <div key={item.key} className={`rounded-lg border p-3 ${isNormal ? 'border-emerald-200 bg-emerald-50 dark:border-emerald-900/30 dark:bg-emerald-900/10' : 'border-amber-200 bg-amber-50 dark:border-amber-900/30 dark:bg-amber-900/10'}`}>
+                            <div className="flex items-center justify-between gap-3">
+                                <div>
+                                    <div className="font-semibold text-slate-800 dark:text-white">{item.name}</div>
+                                    <div className="mt-1 flex items-baseline gap-2">
+                                        <span className="text-lg font-bold text-slate-900 dark:text-white">{item.value}</span>
+                                        <span className="text-xs text-slate-500 dark:text-slate-400">{item.unit}</span>
+                                    </div>
+                                    <div className="mt-1 text-[10px] uppercase tracking-wider text-slate-400 dark:text-slate-500">Ref: {item.ref}</div>
+                                </div>
+                                <span className={`rounded-md px-2 py-1 text-[10px] font-bold uppercase tracking-wide ${isNormal ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-300' : 'bg-amber-100 text-amber-700 dark:bg-amber-900/20 dark:text-amber-300'}`}>
+                                    {item.status}
+                                </span>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+    );
+};
+
+const HemogasometryNav = ({ activeTab, inputs, onReset, onScrollToSection, onBack }: any) => (
+    <div className="flex h-full flex-col gap-5">
+        <div className="rounded-[28px] border border-white/70 bg-white/75 p-4 shadow-[0_25px_60px_-45px_rgba(15,23,42,0.7)] backdrop-blur-xl dark:border-slate-800/90 dark:bg-slate-900/65">
+            <div className="flex items-center gap-3">
+                <div className="flex size-11 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-400 to-cyan-300 text-slate-950 shadow-lg shadow-sky-500/20">
+                    <span className="material-symbols-outlined">science</span>
+                </div>
+                <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Vetius</p>
+                    <h2 className="text-lg font-bold text-slate-900 dark:text-white">HemogasometriaVET</h2>
+                </div>
+            </div>
+            <div className="mt-4 rounded-2xl border border-sky-100 bg-sky-50/80 px-3 py-2 text-xs font-medium text-sky-700 dark:border-sky-900/40 dark:bg-sky-500/10 dark:text-sky-200">
+                {activeTab === 'quiz' ? 'Modo quiz aberto para treinamento de casos.' : 'Modo analise pronto para interpretacao imediata.'}
+            </div>
+            <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
+                <div className="rounded-2xl bg-white p-3 dark:bg-slate-950/60">
+                    <div className="text-[10px] uppercase tracking-wider text-slate-400">Especie</div>
+                    <div className="mt-1 font-semibold text-slate-900 dark:text-white">{inputs.species === 'dog' ? 'Cão' : 'Gato'}</div>
+                </div>
+                <div className="rounded-2xl bg-white p-3 dark:bg-slate-950/60">
+                    <div className="text-[10px] uppercase tracking-wider text-slate-400">Amostra</div>
+                    <div className="mt-1 font-semibold text-slate-900 dark:text-white">{inputs.declaredSampleType === 'arterial' ? 'Arterial' : 'Venosa'}</div>
+                </div>
+            </div>
+            <button type="button" onClick={onReset} className="mt-4 w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 dark:border-slate-700 dark:text-slate-100 dark:hover:bg-slate-800">
+                Recarregar valores normais
+            </button>
+        </div>
+
+        <div className="space-y-2">
+            <p className="px-2 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Navegacao do app</p>
+            {analyzerSections.map((section) => (
+                <button key={section.id} type="button" onClick={() => onScrollToSection(section.id)} className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-left transition ${activeTab === 'quiz' && section.id === 'quiz-panel' ? 'border-sky-300 bg-sky-50 text-sky-700 dark:border-sky-700 dark:bg-sky-500/10 dark:text-sky-300' : 'border-slate-200 bg-white text-slate-800 hover:border-slate-300 hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-950/60 dark:text-slate-100 dark:hover:border-slate-700 dark:hover:bg-slate-900'}`}>
+                    <span className="flex items-center gap-3">
+                        <span className="material-symbols-outlined text-[20px] text-slate-500 dark:text-slate-300">{section.icon}</span>
+                        <span className="font-medium">{section.label}</span>
+                    </span>
+                    <span className="material-symbols-outlined text-[18px] text-slate-400">chevron_right</span>
+                </button>
+            ))}
+        </div>
+
+        <button type="button" onClick={onBack} className="mt-auto flex w-full items-center justify-center gap-2 rounded-2xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 dark:bg-sky-500 dark:hover:bg-sky-400">
+            <span className="material-symbols-outlined text-[18px]">arrow_back</span>
+            Voltar ao hub
+        </button>
+    </div>
+);
 
 const QuizQuestion = ({ qKey, text, options, quizCase, userAnswers, setUserAnswers, quizSubmitted, openModal }: any) => {
     const handleSelect = (option: string) => {

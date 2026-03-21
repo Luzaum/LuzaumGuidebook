@@ -136,11 +136,11 @@ export default function ReceituarioVetPage() {
             <div className="rxv-home-icon-badge">
               <span className="material-symbols-outlined text-[22px]">inventory_2</span>
             </div>
-            <h4 className="text-xl font-bold">Protocolos e Modelos</h4>
+            <h4 className="text-xl font-bold">Protocolos 3.0</h4>
             <p className="mt-1 text-sm text-[color:var(--rxv-muted)]">Monte tratamentos prontos por especialidade e importe direto na receita.</p>
           </Link>
 
-          <Link to="/receituario-vet/catalogo-3" className="rxv-home-link-card rxv-card rxv-fade-up delay-200 rxv-anim-pulse rxv-shimmer lg:col-span-6">
+          <Link to="/receituario-vet/catalogo3" className="rxv-home-link-card rxv-card rxv-fade-up delay-200 rxv-anim-pulse rxv-shimmer lg:col-span-6">
             <div className="rxv-home-icon-badge">
               <span className="material-symbols-outlined text-[22px]">vaccines</span>
             </div>

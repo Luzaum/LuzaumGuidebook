@@ -78,6 +78,11 @@ interface AddMedicationModal2Props {
   defaultStartHour?: string
   /** Se true, ignora busca no catálogo e exibe apenas o formulário manual */
   manualMode?: boolean
+  storageScope?: string
+  title?: string
+  subtitle?: string
+  confirmLabel?: string
+  hideStartControls?: boolean
 }
 
 interface MedicationSearchResult {
@@ -156,10 +161,15 @@ export function AddMedicationModal2({
   defaultStartDate = '',
   defaultStartHour = '',
   manualMode = false,
+  storageScope = 'recipe',
+  title,
+  subtitle,
+  confirmLabel,
+  hideStartControls = false,
 }: AddMedicationModal2Props) {
   const storageKey = useMemo(
-    () => (clinicId ? `rxv:add-medication-modal:${clinicId}:${manualMode ? 'manual' : 'catalog'}` : null),
-    [clinicId, manualMode]
+    () => (clinicId ? `rxv:add-medication-modal:${storageScope}:${clinicId}:${manualMode ? 'manual' : 'catalog'}` : null),
+    [clinicId, manualMode, storageScope]
   )
 
   // Catalog state
@@ -176,7 +186,7 @@ export function AddMedicationModal2({
   const [timesPerDay, setTimesPerDay] = useState('2')
   const [route, setRoute] = useState('VO')
   const [duration, setDuration] = useState('')
-  const [durationMode, setDurationMode] = useState<'fixed_days' | 'until_recheck' | 'continuous_use' | 'until_finished'>('fixed_days')
+  const [durationMode, setDurationMode] = useState<'fixed_days' | 'until_recheck' | 'continuous_use' | 'until_finished' | 'continuous_until_recheck'>('fixed_days')
   const [inheritStartFromPrescription, setInheritStartFromPrescription] = useState(true)
   const [itemStartDate, setItemStartDate] = useState('')
   const [itemStartHour, setItemStartHour] = useState('')
@@ -461,13 +471,15 @@ export function AddMedicationModal2({
         ? `${safeStartDate}T${safeStartHour}:00`
         : safeStartDate || safeStartHour || undefined
     const resolvedDuration =
-      durationMode === 'continuous_use'
-        ? 'uso contínuo'
-        : durationMode === 'until_finished'
-          ? 'até terminar o medicamento'
-          : durationMode === 'until_recheck'
-            ? 'até reavaliação clínica'
-            : duration
+      durationMode === 'continuous_until_recheck'
+        ? 'uso contínuo até reavaliação clínica'
+        : durationMode === 'continuous_use'
+          ? 'uso contínuo'
+          : durationMode === 'until_finished'
+            ? 'até terminar o medicamento'
+            : durationMode === 'until_recheck'
+              ? 'até reavaliação clínica'
+              : duration
 
     if (manualMode) {
       // Modo manual: nome é obrigatório
@@ -595,6 +607,13 @@ export function AddMedicationModal2({
 
   const selectedPresentation = presentations.find((p) => p.id === selectedPresentationId)
   const canAdd = manualMode ? !!manualName.trim() : !!selectedMedication
+  const resolvedTitle =
+    title || (manualMode ? 'Adicionar Medicamento Manual' : 'Adicionar Medicamento do Cat?logo')
+  const resolvedSubtitle =
+    subtitle || (manualMode
+      ? 'Preencha os dados do medicamento manualmente'
+      : 'Busque no Cat?logo 3.0 e adicione ? receita')
+  const resolvedConfirmLabel = confirmLabel || 'Adicionar ? Receita'
 
   return (
     <RxvModalShell zIndexClass="z-[90]" overlayClassName="bg-black/80 backdrop-blur-sm">
@@ -603,12 +622,10 @@ export function AddMedicationModal2({
         <div className="flex items-center justify-between border-b border-slate-800 bg-black/60 px-6 py-4">
           <div>
             <h2 className="text-lg font-bold text-white">
-              {manualMode ? 'Adicionar Medicamento Manual' : 'Adicionar Medicamento do Catálogo'}
+              {resolvedTitle}
             </h2>
             <p className="text-xs text-slate-500">
-              {manualMode
-                ? 'Preencha os dados do medicamento manualmente'
-                : 'Busque no Catálogo 3.0 e adicione à receita'}
+              {resolvedSubtitle}
             </p>
           </div>
           <div className="flex items-center gap-2">
@@ -616,13 +633,14 @@ export function AddMedicationModal2({
               Cancelar
             </RxvButton>
             <RxvButton variant="primary" onClick={handleAdd} disabled={!canAdd}>
-              Adicionar à Receita
+              {resolvedConfirmLabel}
             </RxvButton>
           </div>
         </div>
 
         {/* Body */}
         <div className="max-h-[calc(92vh-80px)] overflow-y-auto p-6 space-y-6">
+
 
           {/* ==================== MODO CATÁLOGO ==================== */}
           {!manualMode && (
@@ -1048,6 +1066,7 @@ export function AddMedicationModal2({
                         { value: 'fixed_days', label: 'Duração fechada' },
                         { value: 'until_recheck', label: 'Até reavaliação clínica' },
                         { value: 'continuous_use', label: 'Uso contínuo' },
+                        { value: 'continuous_until_recheck', label: 'Uso contínuo até reavaliação clínica' },
                         { value: 'until_finished', label: 'Até terminar o medicamento' },
                       ]}
                     />
@@ -1107,43 +1126,45 @@ export function AddMedicationModal2({
                 </div>
               )}
 
-              <div className="rounded-2xl border border-slate-800/80 bg-black/20 p-4 space-y-3">
-                <div>
-                  <p className="text-sm font-bold text-white">Inicio do tratamento</p>
-                  <p className="text-xs text-slate-400">Cada item pode herdar o inicio padrao da receita ou usar data e hora proprias.</p>
+              {!hideStartControls && (
+                <div className="rounded-2xl border border-slate-800/80 bg-black/20 p-4 space-y-3">
+                  <div>
+                    <p className="text-sm font-bold text-white">Início do tratamento</p>
+                    <p className="text-xs text-slate-400">Cada item pode herdar o início padrão da receita ou usar data e hora próprias.</p>
+                  </div>
+
+                  <RxvToggle
+                    checked={inheritStartFromPrescription}
+                    onChange={setInheritStartFromPrescription}
+                    label="Usar início padrão da receita"
+                  />
+
+                  {!inheritStartFromPrescription ? (
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                      <RxvField label="Data de início do item">
+                        <RxvInput
+                          type="date"
+                          value={itemStartDate}
+                          onChange={(e) => setItemStartDate(e.target.value)}
+                        />
+                      </RxvField>
+                      <RxvField label="Hora de início do item">
+                        <RxvSelect
+                          value={itemStartHour}
+                          onChange={(e) => setItemStartHour(e.target.value)}
+                          options={[{ value: '', label: 'Sem hora' }, ...START_HOUR_OPTIONS]}
+                        />
+                      </RxvField>
+                    </div>
+                  ) : (
+                    <div className="rounded-xl border border-slate-800 bg-black/30 px-3 py-2 text-xs text-slate-400">
+                      {defaultStartDate || defaultStartHour
+                        ? `Este item herdará ${defaultStartDate || 'sem data'}${defaultStartHour ? ` às ${defaultStartHour}` : ''}.`
+                        : 'Nenhum início padrão definido. O item será impresso sem trecho de início.'}
+                    </div>
+                  )}
                 </div>
-
-                <RxvToggle
-                  checked={inheritStartFromPrescription}
-                  onChange={setInheritStartFromPrescription}
-                  label="Usar inicio padrao da receita"
-                />
-
-                {!inheritStartFromPrescription ? (
-                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                    <RxvField label="Data de inicio do item">
-                      <RxvInput
-                        type="date"
-                        value={itemStartDate}
-                        onChange={(e) => setItemStartDate(e.target.value)}
-                      />
-                    </RxvField>
-                    <RxvField label="Hora de inicio do item">
-                      <RxvSelect
-                        value={itemStartHour}
-                        onChange={(e) => setItemStartHour(e.target.value)}
-                        options={[{ value: '', label: 'Sem hora' }, ...START_HOUR_OPTIONS]}
-                      />
-                    </RxvField>
-                  </div>
-                ) : (
-                  <div className="rounded-xl border border-slate-800 bg-black/30 px-3 py-2 text-xs text-slate-400">
-                    {defaultStartDate || defaultStartHour
-                      ? `Este item herdara ${defaultStartDate || 'sem data'}${defaultStartHour ? ` as ${defaultStartHour}` : ''}.`
-                      : 'Nenhum inicio padrao definido. O item sera impresso sem trecho de inicio.'}
-                  </div>
-                )}
-              </div>
+              )}
 
               <RxvField label="Observações adicionais (uma por linha)">
                 <RxvTextarea

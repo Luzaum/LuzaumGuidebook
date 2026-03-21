@@ -908,6 +908,47 @@ export interface RecommendedDose {
   source?: CatalogSource
 }
 
+function normalizeRecommendedDoseMetadata(input: any): Record<string, unknown> {
+  return (input && typeof input === 'object' && !Array.isArray(input)) ? { ...input } : {}
+}
+
+function mapDoseRowToRecommendedDose(row: any, source: CatalogSource = 'clinic'): RecommendedDose {
+  const metadata = normalizeRecommendedDoseMetadata(row?.metadata)
+  const pick = (field: string, fallback: any = null) => {
+    if (row?.[field] !== undefined && row?.[field] !== null) return row[field]
+    if (metadata[field] !== undefined && metadata[field] !== null) return metadata[field]
+    return fallback
+  }
+
+  return {
+    id: row?.id,
+    clinic_id: row?.clinic_id,
+    medication_id: row?.medication_id,
+    species: String(pick('species', 'ambos')),
+    route: String(pick('route', 'VO')),
+    dose_value: Number(pick('dose_value', 0)),
+    dose_max: pick('dose_max', null) as number | null,
+    dose_unit: String(pick('dose_unit', 'mg/kg')),
+    per_weight_unit: pick('per_weight_unit', null) as string | null,
+    indication: pick('indication', null) as string | null,
+    frequency: pick('frequency', null) as string | null,
+    frequency_min: pick('frequency_min', null) as number | null,
+    frequency_max: pick('frequency_max', null) as number | null,
+    frequency_mode: pick('frequency_mode', null) as string | null,
+    frequency_text: pick('frequency_text', null) as string | null,
+    duration: pick('duration', null) as string | null,
+    calculator_default_dose: pick('calculator_default_dose', null) as number | null,
+    calculator_default_frequency: pick('calculator_default_frequency', null) as number | null,
+    notes: pick('notes', null) as string | null,
+    metadata,
+    is_active: row?.is_active ?? true,
+    sort_order: row?.sort_order ?? null,
+    created_at: row?.created_at,
+    updated_at: row?.updated_at,
+    source,
+  }
+}
+
 /**
  * Lista doses recomendadas de um medicamento
  */
@@ -978,7 +1019,7 @@ export async function getMedicationRecommendedDoses(
   logSbError('[RecommendedDoses] ERROR', error)
 
   if (error) throw error
-  return data ?? []
+  return (data ?? []).map((row: any) => mapDoseRowToRecommendedDose(row, 'clinic'))
 }
 
 /**
@@ -1025,24 +1066,28 @@ export async function saveMedicationRecommendedDoses(
 
   // STEP 5: UPDATE existentes
   for (const dose of toUpdate) {
+    const metadata = normalizeRecommendedDoseMetadata(dose.metadata)
+    metadata.dose_max = dose.dose_max ?? null
+    metadata.per_weight_unit = dose.per_weight_unit ?? null
+    metadata.indication = dose.indication ?? null
+    metadata.frequency_min = dose.frequency_min ?? null
+    metadata.frequency_max = dose.frequency_max ?? null
+    metadata.frequency_mode = dose.frequency_mode ?? null
+    metadata.frequency_text = dose.frequency_text ?? null
+    metadata.duration = dose.duration ?? null
+    metadata.calculator_default_dose = dose.calculator_default_dose ?? null
+    metadata.calculator_default_frequency = dose.calculator_default_frequency ?? null
+
     const payload = {
       species: dose.species!,
       route: dose.route!,
       dose_value: dose.dose_value!,
-      dose_max: dose.dose_max ?? null,
       dose_unit: dose.dose_unit!,
-      per_weight_unit: dose.per_weight_unit ?? null,
-      indication: dose.indication ?? null,
       frequency: dose.frequency || null,
-      frequency_min: dose.frequency_min ?? null,
-      frequency_max: dose.frequency_max ?? null,
-      frequency_mode: dose.frequency_mode ?? null,
-      frequency_text: dose.frequency_text ?? null,
-      duration: dose.duration ?? null,
-      calculator_default_dose: dose.calculator_default_dose ?? null,
-      calculator_default_frequency: dose.calculator_default_frequency ?? null,
       notes: dose.notes || null,
-      metadata: dose.metadata || {},
+      metadata,
+      is_active: dose.is_active ?? true,
+      sort_order: dose.sort_order ?? null,
       updated_at: new Date().toISOString()
     }
 
@@ -1065,25 +1110,30 @@ export async function saveMedicationRecommendedDoses(
   // STEP 6: INSERT novas
   if (toInsert.length > 0) {
     const insertPayload = toInsert.map(d => ({
+      ...(() => {
+        const metadata = normalizeRecommendedDoseMetadata(d.metadata)
+        metadata.dose_max = d.dose_max ?? null
+        metadata.per_weight_unit = d.per_weight_unit ?? null
+        metadata.indication = d.indication ?? null
+        metadata.frequency_min = d.frequency_min ?? null
+        metadata.frequency_max = d.frequency_max ?? null
+        metadata.frequency_mode = d.frequency_mode ?? null
+        metadata.frequency_text = d.frequency_text ?? null
+        metadata.duration = d.duration ?? null
+        metadata.calculator_default_dose = d.calculator_default_dose ?? null
+        metadata.calculator_default_frequency = d.calculator_default_frequency ?? null
+        return { metadata }
+      })(),
       clinic_id: clinicId,
       medication_id: medicationId,
       species: d.species!,
       route: d.route!,
       dose_value: d.dose_value!,
-      dose_max: d.dose_max ?? null,
       dose_unit: d.dose_unit!,
-      per_weight_unit: d.per_weight_unit ?? null,
-      indication: d.indication ?? null,
       frequency: d.frequency || null,
-      frequency_min: d.frequency_min ?? null,
-      frequency_max: d.frequency_max ?? null,
-      frequency_mode: d.frequency_mode ?? null,
-      frequency_text: d.frequency_text ?? null,
-      duration: d.duration ?? null,
-      calculator_default_dose: d.calculator_default_dose ?? null,
-      calculator_default_frequency: d.calculator_default_frequency ?? null,
       notes: d.notes || null,
-      metadata: d.metadata || {}
+      is_active: d.is_active ?? true,
+      sort_order: d.sort_order ?? null,
     }))
 
     const { error: insertError } = await supabase
