@@ -38,6 +38,7 @@ import {
     getCompoundedCalculationSummary,
     getCompoundedCalculationWarnings,
     getCompoundedDurationSummary,
+    getCompoundedFinalizationIssues,
     getCompoundedFrequencySummary,
     getCompoundedInternalNote,
 } from './compoundedUi'
@@ -1288,6 +1289,12 @@ export default function NovaReceita2Page() {
         return buildPrintDocsFromNovaReceita2(state)
     }, [state])
     const primaryPrintDoc = printDocs[0]
+    const compoundedFinalizationIssues = useMemo(() => {
+        return state.items
+            .filter((item): item is CompoundedPrescriptionItem => item.kind === 'compounded')
+            .flatMap((item) => getCompoundedFinalizationIssues(item, state.patient))
+    }, [state.items, state.patient])
+    const canFinalizeCompoundedDocs = compoundedFinalizationIssues.length === 0
 
     // F2: Unificar fonte de templates — BUILTIN_TEMPLATES + templates salvos no rxDb
     // Evita "templates fantasmas": o dropdown e a aba Templates usam a mesma base
@@ -1321,19 +1328,31 @@ export default function NovaReceita2Page() {
     }, [draftKey])
 
     const handleReview = useCallback(() => {
+        if (!canFinalizeCompoundedDocs) {
+            alert(`Rascunho incompleto — faltam parâmetros farmacotécnicos para emissão da receita final.\n\n${compoundedFinalizationIssues[0]}`)
+            return
+        }
         saveReviewSession(state)
         navigate('/receituario-vet/nova-receita-2-print?mode=review')
-    }, [state, navigate])
+    }, [canFinalizeCompoundedDocs, compoundedFinalizationIssues, state, navigate])
 
     const handlePrint = useCallback(() => {
+        if (!canFinalizeCompoundedDocs) {
+            alert(`Rascunho incompleto — faltam parâmetros farmacotécnicos para emissão da receita final.\n\n${compoundedFinalizationIssues[0]}`)
+            return
+        }
         saveReviewSession(state)
         navigate('/receituario-vet/nova-receita-2-print?mode=print')
-    }, [state, navigate])
+    }, [canFinalizeCompoundedDocs, compoundedFinalizationIssues, state, navigate])
 
     const handleExportPdf = useCallback(() => {
+        if (!canFinalizeCompoundedDocs) {
+            alert(`Rascunho incompleto — faltam parâmetros farmacotécnicos para emissão da receita final.\n\n${compoundedFinalizationIssues[0]}`)
+            return
+        }
         saveReviewSession(state)
         navigate('/receituario-vet/nova-receita-2-print?mode=pdf')
-    }, [state, navigate])
+    }, [canFinalizeCompoundedDocs, compoundedFinalizationIssues, state, navigate])
 
     const handleSave = useCallback(async () => {
         if (!state.patient || !state.tutor) {
@@ -1444,13 +1463,13 @@ export default function NovaReceita2Page() {
                             >
                                 {isSaving ? 'Salvando...' : (state.supabaseId ? 'Atualizar' : 'Salvar')}
                             </RxvButton>
-                            <RxvButton variant="secondary" onClick={handleReview}>
+                            <RxvButton variant="secondary" onClick={handleReview} disabled={!canFinalizeCompoundedDocs}>
                                 Revisar
                             </RxvButton>
-                            <RxvButton variant="secondary" onClick={handlePrint}>
+                            <RxvButton variant="secondary" onClick={handlePrint} disabled={!canFinalizeCompoundedDocs}>
                                 Imprimir
                             </RxvButton>
-                            <RxvButton variant="primary" onClick={handleExportPdf}>
+                            <RxvButton variant="primary" onClick={handleExportPdf} disabled={!canFinalizeCompoundedDocs}>
                                 Exportar PDF
                             </RxvButton>
                         </div>
@@ -2366,9 +2385,15 @@ export default function NovaReceita2Page() {
                             <RxvCard>
                                 <RxvSectionHeader
                                     icon="visibility"
-                                    title="Visualização Prévia"
-                                    subtitle="Preview em tempo real"
+                                    title={canFinalizeCompoundedDocs ? 'Visualização Prévia Final' : 'Preview Interno'}
+                                    subtitle={canFinalizeCompoundedDocs ? 'Preview em tempo real pronto para emissão' : 'Rascunho interno enquanto faltam parâmetros farmacotécnicos'}
                                 />
+                                {!canFinalizeCompoundedDocs ? (
+                                    <div className="mb-3 rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
+                                        <p className="font-semibold">Rascunho incompleto — faltam parâmetros farmacotécnicos para emissão da receita final.</p>
+                                        <p className="mt-1 text-xs">{compoundedFinalizationIssues[0]}</p>
+                                    </div>
+                                ) : null}
 
                                 {/* Preview container com scroll próprio */}
                                 <div className="rounded-xl overflow-hidden bg-[color:var(--rxv-surface-2)]/55 border border-[color:var(--rxv-border)]">
@@ -2380,22 +2405,25 @@ export default function NovaReceita2Page() {
                                         <div className="flex gap-1.5">
                                             <button
                                                 type="button"
-                                                className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-[10px] font-bold text-[color:var(--rxv-muted)] hover:text-[color:var(--rxv-text)]"
+                                                className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-[10px] font-bold text-[color:var(--rxv-muted)] hover:text-[color:var(--rxv-text)] disabled:cursor-not-allowed disabled:opacity-40"
                                                 onClick={handleReview}
+                                                disabled={!canFinalizeCompoundedDocs}
                                             >
                                                 Revisar
                                             </button>
                                             <button
                                                 type="button"
-                                                className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-[10px] font-bold text-[color:var(--rxv-muted)] hover:text-[color:var(--rxv-text)]"
+                                                className="rounded border border-[color:var(--rxv-border)] px-2 py-1 text-[10px] font-bold text-[color:var(--rxv-muted)] hover:text-[color:var(--rxv-text)] disabled:cursor-not-allowed disabled:opacity-40"
                                                 onClick={handlePrint}
+                                                disabled={!canFinalizeCompoundedDocs}
                                             >
                                                 Imprimir
                                             </button>
                                             <button
                                                 type="button"
-                                                className="rounded border border-[#39ff14]/40 bg-[#39ff14]/10 px-2 py-1 text-[10px] font-bold text-[#39ff14] hover:bg-[#39ff14]/20"
+                                                className="rounded border border-[#39ff14]/40 bg-[#39ff14]/10 px-2 py-1 text-[10px] font-bold text-[#39ff14] hover:bg-[#39ff14]/20 disabled:cursor-not-allowed disabled:border-slate-700 disabled:bg-slate-800/20 disabled:text-slate-500"
                                                 onClick={handleExportPdf}
+                                                disabled={!canFinalizeCompoundedDocs}
                                             >
                                                 PDF
                                             </button>

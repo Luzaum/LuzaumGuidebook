@@ -7,6 +7,7 @@ import type {
 } from './NovaReceita2Page'
 import {
   getClinicalFormulaMetadata,
+  normalizeClinicalPharmacyStrategy,
   type ClinicalDoseSelectionStrategy,
   type ClinicalIngredientDoseRule,
   type ClinicalRegimenSemantics,
@@ -778,6 +779,50 @@ function getPharmacyExtraGuidance(item: CompoundedPrescriptionItem): string {
 export function getCompoundedInternalNote(item: PrescriptionItem): string {
   if (!isCompounded(item)) return ''
   return String(item.compounded_internal_note || item.compounded_regimen_snapshot?.notes || '').trim()
+}
+
+export function getCompoundedFinalizationIssues(item: PrescriptionItem, patient?: PatientInfo | null): string[] {
+  if (!isCompounded(item)) return []
+  const issues: string[] = []
+  const metadata = getClinicalFormula(item)
+  const formulaType = metadata?.formula_type || (metadata?.formula_model === 'clinical_dose_oriented' ? 'clinical_dose_oriented' : 'fixed_unit_formula')
+  const administrationUnit = String(metadata?.administration_unit || item.compounded_regimen_snapshot?.concentration_per_unit || item.compounded_regimen_snapshot?.fixed_administration_unit || '').trim()
+  const quantityText = String(
+    item.manualQuantity ||
+    item.compounded_regimen_snapshot?.applied_quantity_text ||
+    item.compounded_regimen_snapshot?.default_prepared_quantity_text ||
+    item.compounded_snapshot?.qsp_text ||
+    item.compounded_snapshot?.quantity_text ||
+    ''
+  ).trim()
+  const calc = getCompoundedCalculationSummary(item, patient)
+
+  if (!item.compounded_snapshot?.pharmaceutical_form && !item.pharmaceutical_form) issues.push('Forma farmacêutica não definida.')
+  if (!administrationUnit) issues.push('Unidade real de administração não definida.')
+  if (!quantityText) issues.push('Quantidade total a manipular ou q.s.p. não definida.')
+
+  if (formulaType === 'clinical_dose_oriented') {
+    const regimen = getClinicalRegimen(item)
+    const strategy = normalizeClinicalPharmacyStrategy(String(regimen?.pharmacyStrategy || ''))
+    if (!strategy) issues.push('Estratégia farmacotécnica não definida.')
+    if (!(regimen?.ingredientRules || []).length) issues.push('Regras de dose dos ingredientes não estruturadas.')
+  }
+
+  if (formulaType === 'procedural_topical') {
+    const route = resolveCompoundedRoute(item)
+    if (!route) issues.push('Via ou local de uso não definido.')
+  }
+
+  if (calc) {
+    if (['missing_weight', 'missing_concentration', 'missing_dose', 'incompatible_units', 'impractical'].includes(calc.status)) {
+      issues.push(...calc.warnings)
+    }
+    if ((calc.mode === 'weight_based' || formulaType === 'clinical_dose_oriented') && !calc.finalQuantityText) {
+      issues.push('Quantidade final para manipular ainda não definida.')
+    }
+  }
+
+  return Array.from(new Set(issues.filter(Boolean)))
 }
 
 export function buildCompoundedCardSubtitle(item: PrescriptionItem, patient?: PatientInfo | null): string {

@@ -112,6 +112,14 @@ const PHARMACY_STRATEGY_OPTIONS: Array<{ value: ClinicalPharmacyStrategy; label:
   { value: 'qsp_x_doses', label: 'Preparar q.s.p. X doses' },
   { value: 'adjustable_concentration', label: 'Concentração final ajustável na revisão' },
 ]
+const ADMINISTRATION_UNIT_OPTIONS: Record<DosageFormFamily, string[]> = {
+  oral_liquid: ['mL', 'gota', 'dose', 'g'],
+  oral_unit: ['cápsula', 'comprimido', 'biscoito', 'sachê', 'filme', 'unidade'],
+  transdermal_measured: ['mL', 'click', 'pump', 'aplicação'],
+  topical_free_application: ['aplicação', 'jato', 'g', 'mL', 'lenço'],
+  otic_ophthalmic_local: ['gota', 'jato', 'aplicação', 'filme', 'mL'],
+  procedural_injectable: ['mL', 'dose', 'unidade'],
+}
 const ROUTE_OPTIONS = [
   { value: '', label: 'Selecionar via principal' },
   { value: 'VO', label: 'Via oral (VO)' },
@@ -204,10 +212,10 @@ function createEmptyEditor(): EditorState {
       id: '',
       name: '',
       description: '',
-      pharmaceutical_form: 'Suspensão oral',
-      default_route: 'VO',
+      pharmaceutical_form: '',
+      default_route: '',
       species: ['Canina'],
-      routes: ['VO'],
+      routes: [],
       is_controlled: false,
       control_type: 'venda_livre',
       is_active: true,
@@ -225,10 +233,10 @@ function createEmptyEditor(): EditorState {
         complement_text: '',
         source_type: 'structured',
         formula_model: 'fixed_concentration',
-        formula_type: 'fixed_unit_formula',
-        dosage_form_family: 'oral_liquid',
-        dosage_form: 'Suspensão oral',
-        administration_unit: 'mL',
+        formula_type: '',
+        dosage_form_family: '',
+        dosage_form: '',
+        administration_unit: '',
       },
     },
     ingredients: [createEmptyIngredient()],
@@ -377,6 +385,52 @@ function buildClinicalImportSummary(metadata: ClinicalFormulaMetadata | null, co
     controlled ? 'Fluxo documental: controle especial' : 'Fluxo documental: receita padrão',
   ]
   return rows.filter(Boolean)
+}
+
+function getEditorDraftIssues(state: EditorState): string[] {
+  const issues: string[] = []
+  const metadata = getMedicationMetadata(state)
+  const formulaType = (String(metadata.formula_type || '').trim() as UniversalFormulaType | '') || (state.medication.pharmaceutical_form ? getUniversalType(state) : '')
+  const family = (String(metadata.dosage_form_family || '').trim() as DosageFormFamily | '') || (state.medication.pharmaceutical_form ? inferDosageFormFamily(state.medication.pharmaceutical_form) : '')
+  const administrationUnit = String(metadata.administration_unit || '').trim() || (state.medication.pharmaceutical_form ? inferAdministrationUnit(state.medication.pharmaceutical_form) : '')
+  const activeRegimen = state.regimens[0]
+  const clinicalMetadata = getClinicalFormulaMetadata(state.medication.metadata || null)
+
+  if (!formulaType) issues.push('Escolha o tipo da fórmula.')
+  if (!family) issues.push('Escolha a família funcional.')
+  if (!state.medication.pharmaceutical_form?.trim()) issues.push('Escolha a forma farmacêutica.')
+  if (!administrationUnit) issues.push('Defina a unidade real de administração.')
+  if (!state.medication.default_quantity_text?.trim() && !state.medication.default_qsp_text?.trim()) {
+    issues.push('Informe a quantidade total a manipular ou o q.s.p.')
+  }
+
+  if (formulaType === 'fixed_unit_formula') {
+    const hasStructuredComposition = state.ingredients.some((entry) => String(entry.ingredient_name || '').trim() && String(entry.free_text || '').trim())
+    if (!hasStructuredComposition) issues.push('Preencha a composição estruturada da unidade fixa.')
+  }
+
+  if (formulaType === 'clinical_dose_oriented') {
+    const regimenId = String(activeRegimen?.id || '')
+    const semantics = regimenId ? getClinicalRegimenSemantics(state.medication.metadata || null, regimenId) : null
+    if (!semantics?.pharmacyStrategy) issues.push('Escolha a estratégia farmacotécnica do regime.')
+    if (!(semantics?.ingredientRules || []).length) issues.push('Estruture as regras de dose dos ingredientes para a fórmula clínica.')
+  }
+
+  if (formulaType === 'procedural_topical') {
+    if (!state.medication.manipulation_instructions?.trim()) issues.push('Descreva a instrução farmacotécnica principal para a farmácia.')
+  }
+
+  if (activeRegimen) {
+    if (!String(activeRegimen.route || state.medication.default_route || '').trim()) issues.push('Defina a via principal do regime.')
+    if (!String(activeRegimen.frequency_label || '').trim() && !Number(activeRegimen.frequency_value_min || 0)) issues.push('Defina a frequência do regime.')
+    if (String(activeRegimen.duration_mode || 'fixed_days') === 'fixed_days' && !Number(activeRegimen.duration_value || 0)) issues.push('Defina a duração do regime.')
+  }
+
+  if (clinicalMetadata?.parse_warnings?.length) {
+    issues.push('Revise os avisos do parser clínico antes de emitir a receita final.')
+  }
+
+  return Array.from(new Set(issues))
 }
 
 function parseImportedEditor(raw: unknown): EditorState {
@@ -541,11 +595,43 @@ export default function ManipuladosPage() {
     () => editor.ingredients.filter((item) => normalizeText(String(item.ingredient_role || '')) === 'active' && String(item.ingredient_name || '').trim()),
     [editor.ingredients]
   )
+  const medicationMetadata = useMemo(() => getMedicationMetadata(editor), [editor])
+  const selectedFormulaType = useMemo(
+    () => {
+      const explicit = String(medicationMetadata.formula_type || '').trim()
+      if (explicit) return explicit as UniversalFormulaType
+      return editor.medication.id || editor.medication.pharmaceutical_form ? getUniversalType(editor) : ''
+    },
+    [editor, medicationMetadata]
+  )
+  const selectedDosageFamily = useMemo(
+    () => {
+      const explicit = String(medicationMetadata.dosage_form_family || '').trim()
+      if (explicit) return explicit as DosageFormFamily
+      return editor.medication.pharmaceutical_form ? inferDosageFormFamily(editor.medication.pharmaceutical_form) : ''
+    },
+    [editor.medication.pharmaceutical_form, medicationMetadata]
+  )
+  const selectedAdministrationUnit = useMemo(
+    () => String(medicationMetadata.administration_unit || '').trim() || (editor.medication.pharmaceutical_form ? inferAdministrationUnit(editor.medication.pharmaceutical_form) : ''),
+    [editor.medication.pharmaceutical_form, medicationMetadata]
+  )
   const formulaModel = useMemo(() => getFormulaModel(editor), [editor])
   const universalFormulaType = useMemo(() => getUniversalType(editor), [editor])
   const dosageFamily = useMemo(() => getDosageFamily(editor), [editor])
   const administrationUnit = useMemo(() => getAdministrationUnitLabel(editor), [editor])
   const familyFormOptions = useMemo(() => getFormsForFamily(dosageFamily), [dosageFamily])
+  const availableAdministrationUnits = useMemo(
+    () => (selectedDosageFamily ? ADMINISTRATION_UNIT_OPTIONS[selectedDosageFamily] || [] : []),
+    [selectedDosageFamily]
+  )
+  const wizardComplete = useMemo(
+    () => Boolean(selectedFormulaType && selectedDosageFamily && editor.medication.pharmaceutical_form && selectedAdministrationUnit),
+    [editor.medication.pharmaceutical_form, selectedAdministrationUnit, selectedDosageFamily, selectedFormulaType]
+  )
+  const isFixedUnitFormula = selectedFormulaType === 'fixed_unit_formula'
+  const isClinicalDoseFormula = selectedFormulaType === 'clinical_dose_oriented'
+  const isProceduralFormula = selectedFormulaType === 'procedural_topical'
   const activeClinicalRegimen = useMemo(
     () => getClinicalRegimenMeta(editor, String(activeRegimen?.id || '')),
     [activeRegimen, editor]
@@ -554,6 +640,7 @@ export default function ManipuladosPage() {
     () => buildClinicalImportSummary(getClinicalMetadata(editor), !!editor.medication.is_controlled),
     [editor]
   )
+  const editorDraftIssues = useMemo(() => getEditorDraftIssues(editor), [editor])
 
   const handleNew = useCallback(() => {
     setIsCreatingNew(true)
@@ -688,6 +775,11 @@ export default function ManipuladosPage() {
     }
     if (!editor.medication.pharmaceutical_form.trim()) {
       setStatus('Informe a forma farmacêutica.')
+      return
+    }
+    const draftIssues = getEditorDraftIssues(editor)
+    if (draftIssues.length) {
+      setStatus(`Rascunho incompleto: ${draftIssues[0]}`)
       return
     }
 
@@ -960,6 +1052,70 @@ export default function ManipuladosPage() {
 
             <div className="space-y-5 p-5">
               <RxvCard className="p-5">
+                <RxvSectionHeader icon="conversion_path" title="Fluxo Guiado da Fórmula" subtitle="Escolha o tipo, a família funcional e a unidade real antes de preencher os blocos clínicos" />
+                <div className="grid grid-cols-1 gap-4 xl:grid-cols-3">
+                  <div className="rounded-2xl border border-slate-800/90 bg-black/25 p-4">
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Passo 1 • Tipo da fórmula</p>
+                    <div className="mt-3 grid gap-2">
+                      {UNIVERSAL_FORMULA_OPTIONS.map((option) => (
+                        <button
+                          key={option.value}
+                          type="button"
+                          onClick={() => updateMedicationMetadata({
+                            formula_type: option.value,
+                            formula_model: option.value === 'clinical_dose_oriented' ? 'clinical_dose_oriented' : 'fixed_concentration',
+                            source_type: option.value === 'fixed_unit_formula' ? 'structured' : 'clinical_text',
+                          })}
+                          className={`rounded-2xl border px-4 py-3 text-left text-sm transition ${selectedFormulaType === option.value ? 'border-[#39ff14]/40 bg-[#133018] text-white' : 'border-slate-800/90 bg-black/25 text-slate-300'}`}
+                        >
+                          <span className="block font-black">{option.label}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="rounded-2xl border border-slate-800/90 bg-black/25 p-4">
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Passo 2 • Família funcional</p>
+                    <div className="mt-3 grid gap-2">
+                      {DOSAGE_FAMILY_OPTIONS.map((option) => (
+                        <button
+                          key={option.value}
+                          type="button"
+                          onClick={() => {
+                            const nextForm = getFormsForFamily(option.value)[0] || ''
+                            updateMedicationMetadata({ dosage_form_family: option.value })
+                            if (nextForm) applyFamilyAndForm(option.value, nextForm, selectedFormulaType || undefined)
+                          }}
+                          className={`rounded-2xl border px-4 py-3 text-left text-sm transition ${selectedDosageFamily === option.value ? 'border-[#39ff14]/40 bg-[#133018] text-white' : 'border-slate-800/90 bg-black/25 text-slate-300'}`}
+                        >
+                          <span className="block font-black">{option.label}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="rounded-2xl border border-slate-800/90 bg-black/25 p-4">
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Passo 3 • Unidade real de administração</p>
+                    <div className="mt-3 grid gap-2">
+                      {(availableAdministrationUnits.length ? availableAdministrationUnits : ['mL', 'cápsula', 'comprimido', 'biscoito', 'sachê', 'filme', 'gota', 'click', 'pump', 'aplicação', 'jato', 'g', 'unidade']).map((unit) => (
+                        <button
+                          key={unit}
+                          type="button"
+                          onClick={() => updateMedicationMetadata({ administration_unit: unit })}
+                          className={`rounded-2xl border px-4 py-3 text-left text-sm transition ${selectedAdministrationUnit === unit ? 'border-[#39ff14]/40 bg-[#133018] text-white' : 'border-slate-800/90 bg-black/25 text-slate-300'}`}
+                        >
+                          <span className="block font-black">{unit}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                {!wizardComplete ? (
+                  <div className="mt-4 rounded-2xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
+                    Complete os 3 passos acima para liberar os blocos clínicos completos do editor.
+                  </div>
+                ) : null}
+              </RxvCard>
+
+              <RxvCard className="p-5">
                 <RxvSectionHeader icon="badge" title="Identidade da Fórmula" subtitle="Nome, família funcional, forma farmacêutica e flags clínicas" />
                 <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                   <RxvField label="Nome da fórmula">
@@ -967,25 +1123,25 @@ export default function ManipuladosPage() {
                   </RxvField>
                   <RxvField label="Família funcional">
                     <RxvSelect
-                      value={dosageFamily}
+                      value={selectedDosageFamily}
                       onChange={(event) => {
                         const nextFamily = event.target.value as DosageFormFamily
                         const nextForm = getFormsForFamily(nextFamily)[0] || editor.medication.pharmaceutical_form || 'Suspensão oral'
                         applyFamilyAndForm(nextFamily, nextForm)
                       }}
-                      options={DOSAGE_FAMILY_OPTIONS}
+                      options={[{ value: '', label: 'Selecionar família funcional' }, ...DOSAGE_FAMILY_OPTIONS]}
                     />
                   </RxvField>
                   <RxvField label="Forma farmacêutica">
                     <RxvSelect
                       value={editor.medication.pharmaceutical_form}
                       onChange={(event) => applyFamilyAndForm(inferDosageFormFamily(event.target.value), event.target.value)}
-                      options={familyFormOptions}
+                      options={[{ value: '', label: 'Selecionar forma farmacêutica' }, ...familyFormOptions.map((value) => ({ value, label: value }))]}
                     />
                   </RxvField>
                   <RxvField label="Tipo da fórmula">
                     <RxvSelect
-                      value={universalFormulaType}
+                      value={selectedFormulaType}
                       onChange={(event) => {
                         const nextType = event.target.value as UniversalFormulaType
                         updateMedicationMetadata({
@@ -993,14 +1149,14 @@ export default function ManipuladosPage() {
                           formula_model: nextType === 'clinical_dose_oriented' ? 'clinical_dose_oriented' : 'fixed_concentration',
                         })
                       }}
-                      options={UNIVERSAL_FORMULA_OPTIONS}
+                      options={[{ value: '', label: 'Selecionar tipo da fórmula' }, ...UNIVERSAL_FORMULA_OPTIONS]}
                     />
                   </RxvField>
                   <RxvField label="Unidade principal de administração">
-                    <RxvInput
-                      value={administrationUnit}
+                    <RxvSelect
+                      value={selectedAdministrationUnit}
                       onChange={(event) => updateMedicationMetadata({ administration_unit: event.target.value })}
-                      placeholder="mL, cápsula, biscoito, click, gota..."
+                      options={[{ value: '', label: 'Selecionar unidade real' }, ...availableAdministrationUnits.map((value) => ({ value, label: value }))]}
                     />
                   </RxvField>
                   <RxvField label="Descrição breve" className="lg:col-span-2">
@@ -1018,20 +1174,20 @@ export default function ManipuladosPage() {
                   </RxvField>
                   <div className="rounded-2xl border border-slate-800/90 bg-[#071007] px-4 py-3 text-sm text-slate-300">
                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Leitura universal</p>
-                    <p className="mt-2 font-semibold text-white">{getDosageFamilyLabel(dosageFamily)}</p>
-                    <p className="mt-1">{getFormulaTypeLabel(universalFormulaType)}</p>
-                    <p className="mt-1 text-slate-400">Administração principal: {administrationUnit || 'não definida'}</p>
+                    <p className="mt-2 font-semibold text-white">{selectedDosageFamily ? getDosageFamilyLabel(selectedDosageFamily) : 'Família ainda não escolhida'}</p>
+                    <p className="mt-1">{selectedFormulaType ? getFormulaTypeLabel(selectedFormulaType) : 'Tipo ainda não escolhido'}</p>
+                    <p className="mt-1 text-slate-400">Administração principal: {selectedAdministrationUnit || 'não definida'}</p>
                   </div>
                   <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
                     <div className="rounded-2xl border border-slate-800/90 bg-black/25 px-4 py-3">
                       <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Modo de cálculo</p>
                       <div className="mt-3">
                         <RxvPillToggle
-                          value={universalFormulaType !== 'fixed_unit_formula'}
+                          value={selectedFormulaType ? selectedFormulaType !== 'fixed_unit_formula' : false}
                           labels={['Dose clínica / procedural', 'Concentração fixa']}
                           onToggle={() => {
-                            const nextType = universalFormulaType === 'fixed_unit_formula'
-                              ? (dosageFamily === 'topical_free_application' || dosageFamily === 'otic_ophthalmic_local' ? 'procedural_topical' : 'clinical_dose_oriented')
+                            const nextType = (selectedFormulaType || 'fixed_unit_formula') === 'fixed_unit_formula'
+                              ? (selectedDosageFamily === 'topical_free_application' || selectedDosageFamily === 'otic_ophthalmic_local' ? 'procedural_topical' : 'clinical_dose_oriented')
                               : 'fixed_unit_formula'
                             updateMedicationMetadata({
                               source_type: nextType === 'fixed_unit_formula' ? 'structured' : 'clinical_text',
@@ -1069,9 +1225,36 @@ export default function ManipuladosPage() {
               </RxvCard>
 
               <RxvCard className="p-5">
-                <RxvSectionHeader icon="medication" title="Composição" subtitle="Ingredientes, q.s.p., veículo e sabor" />
+                <RxvSectionHeader
+                  icon="medication"
+                  title="Composição"
+                  subtitle={
+                    isFixedUnitFormula
+                      ? 'Cada 1 unidade contém, com q.s.p., veículo e quantidade total separados.'
+                      : isClinicalDoseFormula
+                        ? 'Ingredientes ativos com regra de dose clínica, sem fingir concentração fixa quando ela não existe.'
+                        : 'Composição fixa quando houver, com local de uso, quantidade total e instrução farmacotécnica separados.'
+                  }
+                />
+                {!wizardComplete ? (
+                  <div className="rounded-2xl border border-dashed border-slate-700 px-4 py-8 text-sm text-slate-500">
+                    Escolha tipo, família, forma e unidade de administração para liberar os campos certos da composição.
+                  </div>
+                ) : (
                 <div className="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1fr)_280px]">
                   <div className="space-y-3">
+                    <div className="rounded-2xl border border-slate-800/90 bg-[#081208] px-4 py-3 text-sm text-slate-300">
+                      <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-500">
+                        {isFixedUnitFormula ? 'Estrutura esperada' : isClinicalDoseFormula ? 'Leitura clínica dos ingredientes' : 'Composição e aplicação'}
+                      </p>
+                      <p className="mt-2">
+                        {isFixedUnitFormula
+                          ? 'Preencha a tabela como “cada 1 unidade contém”. Texto narrativo deve ir para observação do ingrediente ou instrução da farmácia.'
+                          : isClinicalDoseFormula
+                            ? 'Cada ingrediente deve trazer a regra de dose do texto clínico, como mg/kg/dose, mg/animal ou regra por faixa de peso.'
+                            : 'Descreva a composição fixa quando existir. O modo de aplicação e a área-alvo ficam no regime e no documento.'}
+                      </p>
+                    </div>
                     {editor.ingredients.map((ingredient, index) => (
                       <div key={String(ingredient.id)} className="rounded-2xl border border-slate-800/90 bg-black/25 p-4">
                         <div className="grid grid-cols-1 gap-3 md:grid-cols-[minmax(0,1.4fr)_170px_minmax(0,1fr)_auto]">
@@ -1081,8 +1264,18 @@ export default function ManipuladosPage() {
                           <RxvField label="Tipo">
                             <RxvSelect value={String(ingredient.ingredient_role || 'active')} onChange={(event) => updateIngredient(String(ingredient.id), { ingredient_role: event.target.value as CompoundedIngredientRole })} options={INGREDIENT_ROLE_OPTIONS} />
                           </RxvField>
-                          <RxvField label="Concentração ou quantidade">
-                            <RxvInput value={String(ingredient.free_text || '')} onChange={(event) => updateIngredient(String(ingredient.id), { free_text: event.target.value })} placeholder="Ex: 50 mg/mL ou 120 mg" />
+                          <RxvField label={isFixedUnitFormula ? 'Cada 1 unidade contém' : isClinicalDoseFormula ? 'Regra de dose do ingrediente' : 'Composição fixa / base'}>
+                            <RxvInput
+                              value={String(ingredient.free_text || '')}
+                              onChange={(event) => updateIngredient(String(ingredient.id), { free_text: event.target.value })}
+                              placeholder={
+                                isFixedUnitFormula
+                                  ? 'Ex: 50 mg por cápsula'
+                                  : isClinicalDoseFormula
+                                    ? 'Ex: 10 a 20 mg/kg/dose/VO'
+                                    : 'Ex: 2% m/v ou base dermatológica q.s.p.'
+                              }
+                            />
                           </RxvField>
                           <div className="flex items-end">
                             <button type="button" className="inline-flex h-[52px] w-[52px] items-center justify-center rounded-2xl border border-slate-700 bg-black/30 text-slate-400 transition hover:border-red-500/40 hover:text-red-300" onClick={() => setEditor((prev) => ({ ...prev, ingredients: prev.ingredients.length === 1 ? [createEmptyIngredient()] : prev.ingredients.filter((item) => String(item.id) !== String(ingredient.id)) }))} title="Remover ingrediente">
@@ -1092,7 +1285,7 @@ export default function ManipuladosPage() {
                         </div>
                         <div className="mt-3">
                           <RxvField label="Observação opcional">
-                            <RxvInput value={String(ingredient.notes || '')} onChange={(event) => updateIngredient(String(ingredient.id), { notes: event.target.value })} placeholder="Ex: evitar sacarose, sabor palatável, protegido de luz." />
+                            <RxvInput value={String(ingredient.notes || '')} onChange={(event) => updateIngredient(String(ingredient.id), { notes: event.target.value })} placeholder="Ex: evitar sacarose, protegido de luz, regra por faixa de peso ou observação técnica do ingrediente." />
                           </RxvField>
                         </div>
                       </div>
@@ -1114,12 +1307,16 @@ export default function ManipuladosPage() {
                         <RxvField label="Q.S.P.">
                           <RxvInput value={String(editor.medication.default_qsp_text || '')} onChange={(event) => updateMedication({ default_qsp_text: event.target.value })} placeholder="Ex: q.s.p. 30 mL" />
                         </RxvField>
+                        {(isFixedUnitFormula || isClinicalDoseFormula || selectedDosageFamily === 'topical_free_application' || selectedDosageFamily === 'transdermal_measured') ? (
                         <RxvField label="Veículo base">
                           <RxvInput value={String(editor.medication.default_vehicle || '')} onChange={(event) => updateMedication({ default_vehicle: event.target.value })} placeholder="Ex: suspensão oral palatável" />
                         </RxvField>
+                        ) : null}
+                        {(isFixedUnitFormula || isClinicalDoseFormula || selectedDosageFamily === 'oral_liquid' || selectedDosageFamily === 'oral_unit') ? (
                         <RxvField label="Sabor">
                           <RxvInput value={String(editor.medication.default_flavor || '')} onChange={(event) => updateMedication({ default_flavor: event.target.value })} placeholder="Ex: carne, frango, bacon" />
                         </RxvField>
+                        ) : null}
                         <RxvField label="Excipiente base">
                           <RxvInput value={String(editor.medication.default_excipient || '')} onChange={(event) => updateMedication({ default_excipient: event.target.value })} placeholder="Opcional" />
                         </RxvField>
@@ -1135,10 +1332,16 @@ export default function ManipuladosPage() {
                     </div>
                   </div>
                 </div>
+                )}
               </RxvCard>
 
               <RxvCard className="p-5">
-                <RxvSectionHeader icon="clinical_notes" title="Regimes de Uso" subtitle="Escolha claramente entre dose fixa do regime ou cálculo automático pelo peso" />
+                <RxvSectionHeader icon="clinical_notes" title="Regimes de Uso" subtitle="Cenário clínico, frequência, duração e forma correta de calcular ou aplicar a fórmula" />
+                {!wizardComplete ? (
+                  <div className="rounded-2xl border border-dashed border-slate-700 px-4 py-8 text-sm text-slate-500">
+                    Defina antes o tipo da fórmula, a família funcional e a unidade real de administração.
+                  </div>
+                ) : (
                 <div className="grid grid-cols-1 gap-4 lg:grid-cols-[260px_minmax(0,1fr)]">
                   <div className="space-y-2">
                     {editor.regimens.map((regimen, index) => {
@@ -1192,7 +1395,7 @@ export default function ManipuladosPage() {
                         </div>
                       </div>
 
-                      {formulaModel === 'clinical_dose_oriented' ? (
+                      {isClinicalDoseFormula ? (
                         <div className="space-y-4 rounded-2xl border border-slate-800/90 bg-black/25 p-4">
                           <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
                             <RxvField label="Forma farmacotécnica do regime">
@@ -1216,10 +1419,10 @@ export default function ManipuladosPage() {
                               />
                             </RxvField>
                             <RxvField label="Unidade de administração">
-                              <RxvInput
+                              <RxvSelect
                                 value={String(activeClinicalRegimen?.administrationUnitLabel || 'dose')}
                                 onChange={(event) => updateMedicationMetadata(updateClinicalRegimenMeta(editor.medication.metadata as Record<string, unknown>, String(activeRegimen.id), { administrationUnitLabel: event.target.value }))}
-                                placeholder="dose, biscoito, cápsula"
+                                options={[{ value: '', label: 'Selecionar unidade do regime' }, ...availableAdministrationUnits.map((value) => ({ value, label: value }))]}
                               />
                             </RxvField>
                             <RxvField label="Estratégia farmacotécnica">
@@ -1278,7 +1481,7 @@ export default function ManipuladosPage() {
                             </div>
                           </div>
                         </div>
-                      ) : activeRegimen.dosing_mode === 'calculated' ? (
+                      ) : isFixedUnitFormula && activeRegimen.dosing_mode === 'calculated' ? (
                         <div className="grid grid-cols-1 gap-4 rounded-2xl border border-slate-800/90 bg-black/25 p-4 lg:grid-cols-4">
                           <RxvField label="Dose por kg">
                             <RxvInput type="number" step="0.01" value={String(activeRegimen.dose_min ?? '')} onChange={(event) => updateRegimen(String(activeRegimen.id), { dose_min: event.target.value ? Number(event.target.value) : null })} />
@@ -1290,7 +1493,7 @@ export default function ManipuladosPage() {
                             <RxvInput value={String(activeRegimen.per_weight_unit || '')} onChange={(event) => updateRegimen(String(activeRegimen.id), { per_weight_unit: event.target.value })} placeholder="kg" />
                           </RxvField>
                           <RxvField label="Concentração final da fórmula">
-                            <RxvInput type="number" step="0.01" value={String(activeRegimen.concentration_value ?? '')} onChange={(event) => updateRegimen(String(activeRegimen.id), { concentration_value: event.target.value ? Number(event.target.value) : null })} placeholder="Ex: 100" />
+                            <RxvInput type="number" step="0.01" value={String(activeRegimen.concentration_value ?? '')} onChange={(event) => updateRegimen(String(activeRegimen.id), { concentration_value: event.target.value ? Number(event.target.value) : null })} placeholder={`Ex: 100 ${String(activeRegimen.concentration_unit || 'mg')}`} />
                           </RxvField>
                           <RxvField label="Unidade da concentração">
                             <RxvInput value={String(activeRegimen.concentration_unit || '')} onChange={(event) => updateRegimen(String(activeRegimen.id), { concentration_unit: event.target.value })} placeholder="mg" />
@@ -1299,7 +1502,23 @@ export default function ManipuladosPage() {
                             <RxvInput type="number" step="0.01" value={String(activeRegimen.concentration_per_value ?? '')} onChange={(event) => updateRegimen(String(activeRegimen.id), { concentration_per_value: event.target.value ? Number(event.target.value) : null })} placeholder="1" />
                           </RxvField>
                           <RxvField label="Unidade de administração">
-                            <RxvInput value={String(activeRegimen.concentration_per_unit || '')} onChange={(event) => updateRegimen(String(activeRegimen.id), { concentration_per_unit: event.target.value })} placeholder="mL, cápsula, gota" />
+                            <RxvSelect
+                              value={String(activeRegimen.concentration_per_unit || '')}
+                              onChange={(event) => updateRegimen(String(activeRegimen.id), { concentration_per_unit: event.target.value })}
+                              options={[{ value: '', label: 'Selecionar unidade coerente' }, ...availableAdministrationUnits.map((value) => ({ value, label: value }))]}
+                            />
+                          </RxvField>
+                        </div>
+                      ) : isProceduralFormula ? (
+                        <div className="grid grid-cols-1 gap-4 rounded-2xl border border-slate-800/90 bg-black/25 p-4 lg:grid-cols-3">
+                          <RxvField label="Local de uso / aplicação">
+                            <RxvInput value={String(activeRegimen.indication || '')} onChange={(event) => updateRegimen(String(activeRegimen.id), { indication: event.target.value })} placeholder="Ex: pinna, conduto externo, pele íntegra, mucosa oral." />
+                          </RxvField>
+                          <RxvField label="Unidade de aplicação">
+                            <RxvSelect value={String(activeRegimen.fixed_administration_unit || '')} onChange={(event) => updateRegimen(String(activeRegimen.id), { fixed_administration_unit: event.target.value })} options={[{ value: '', label: 'Selecionar unidade de aplicação' }, ...availableAdministrationUnits.map((value) => ({ value, label: value }))]} />
+                          </RxvField>
+                          <RxvField label="Quantidade por aplicação, se medida">
+                            <RxvInput type="number" step="0.01" value={String(activeRegimen.fixed_administration_value ?? '')} onChange={(event) => updateRegimen(String(activeRegimen.id), { fixed_administration_value: event.target.value ? Number(event.target.value) : null })} placeholder="Ex: 0,2" />
                           </RxvField>
                         </div>
                       ) : (
@@ -1336,8 +1555,8 @@ export default function ManipuladosPage() {
                         <RxvField label="Orientações ao tutor">
                           <RxvTextarea value={String(activeRegimen.default_administration_sig || '')} onChange={(event) => updateRegimen(String(activeRegimen.id), { default_administration_sig: event.target.value })} className="min-h-[84px]" placeholder="Ex: usar luvas, alternar pinna, administrar após alimento." />
                         </RxvField>
-                        <RxvField label="Texto complementar para a farmácia">
-                          <RxvTextarea value={String(activeRegimen.default_prepared_quantity_text || '')} onChange={(event) => updateRegimen(String(activeRegimen.id), { default_prepared_quantity_text: event.target.value })} className="min-h-[84px]" placeholder="Ex: usar base transdérmica Lipoderm®, q.s.p. 10 mL." />
+                        <RxvField label="Complemento para a farmácia">
+                          <RxvTextarea value={String(activeRegimen.default_prepared_quantity_text || '')} onChange={(event) => updateRegimen(String(activeRegimen.id), { default_prepared_quantity_text: event.target.value })} className="min-h-[84px]" placeholder="Detalhes adicionais além da instrução farmacotécnica automática." />
                         </RxvField>
                       </div>
 
@@ -1374,10 +1593,21 @@ export default function ManipuladosPage() {
                     </div>
                   )}
                 </div>
+                )}
               </RxvCard>
 
               <RxvCard className="p-5">
                 <RxvSectionHeader icon="description" title="Documento e Controle" subtitle="Destino do item e orientação final para farmácia e controle especial" />
+                {editorDraftIssues.length ? (
+                  <div className="mb-4 rounded-2xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
+                    <p className="font-semibold">Rascunho incompleto — faltam parâmetros farmacotécnicos para emissão da receita final.</p>
+                    <p className="mt-1 text-xs">{editorDraftIssues[0]}</p>
+                  </div>
+                ) : (
+                  <div className="mb-4 rounded-2xl border border-[#39ff14]/25 bg-[#39ff14]/8 px-4 py-3 text-sm text-[#c9ffbe]">
+                    Receita final liberada para esta fórmula: estrutura farmacotécnica mínima preenchida.
+                  </div>
+                )}
                 <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                   <div className="rounded-2xl border border-slate-800/90 bg-black/25 p-4">
                     <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-500">Fluxo do documento</p>
@@ -1395,21 +1625,21 @@ export default function ManipuladosPage() {
                   </div>
 
                   <div className="rounded-2xl border border-slate-800/90 bg-black/25 p-4">
-                    <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-500">Prévia clínica</p>
+                    <p className="text-[10px] font-black uppercase tracking-[0.24em] text-slate-500">Preview clínico resumido</p>
                     <div className="mt-3 space-y-2 text-sm text-slate-300">
                       <p className="font-semibold text-white">{editor.medication.name || 'Nome da fórmula'}</p>
                       <p>{buildFormulaSubtitle(editor) || 'Forma farmacêutica, quantidade, q.s.p., veículo e sabor aparecerão aqui.'}</p>
-                      <p>{activeRegimen ? `${activeRegimen.dosing_mode === 'calculated' ? 'Dose calculada pelo peso' : 'Dose pronta'} • ${activeRegimen.frequency_label || 'frequência livre'} • ${activeRegimen.duration_mode === 'continuous_until_recheck' ? 'até reavaliação clínica' : `${activeRegimen.duration_value || ''} dias`.trim()}` : 'Sem regime ativo'}</p>
+                      <p>{activeRegimen ? `${isClinicalDoseFormula ? 'Regime orientado por dose clínica' : isProceduralFormula ? 'Regime procedural / tópico' : activeRegimen.dosing_mode === 'calculated' ? 'Dose calculada pelo peso' : 'Dose pronta'} • ${activeRegimen.frequency_label || 'frequência livre'} • ${activeRegimen.duration_mode === 'continuous_until_recheck' ? 'até reavaliação clínica' : `${activeRegimen.duration_value || ''} dias`.trim()}` : 'Sem regime ativo'}</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
-                  <RxvField label="Observações para farmácia">
+                  <RxvField label="Instrução farmacotécnica complementar">
                     <RxvTextarea value={String(editor.medication.manipulation_instructions || '')} onChange={(event) => updateMedication({ manipulation_instructions: event.target.value })} className="min-h-[92px]" placeholder="Ex: homogeneizar antes do uso, manter sob refrigeração, preparar sem açúcar." />
                   </RxvField>
-                  <RxvField label="Texto complementar / observações clínicas">
-                    <RxvTextarea value={String(editor.medication.notes || '')} onChange={(event) => updateMedication({ notes: event.target.value })} className="min-h-[92px]" placeholder="O que deve aparecer como orientação clínica complementar na receita." />
+                  <RxvField label="Complemento opcional da receita">
+                    <RxvTextarea value={String(editor.medication.notes || '')} onChange={(event) => updateMedication({ notes: event.target.value })} className="min-h-[92px]" placeholder="Orientação complementar que pode acompanhar a receita, sem virar nota interna." />
                   </RxvField>
                 </div>
 
