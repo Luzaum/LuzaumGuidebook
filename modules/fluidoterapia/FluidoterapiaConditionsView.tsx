@@ -1,11 +1,18 @@
 import React from 'react'
 import { AlertTriangle, Brain, HeartPulse, ShieldAlert } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { DISEASE_GUIDES } from './content'
 
 export function FluidoterapiaConditionsView() {
   return (
     <div className="space-y-6">
-      <section id="triage" className="fluid-panel rounded-[32px] p-6 md:p-8">
+      <motion.section 
+        id="triage" 
+        className="fluid-panel rounded-[32px] p-6 md:p-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      >
         <div className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
           <div>
             <div className="fluid-kicker text-xs font-semibold uppercase tracking-[0.24em]">
@@ -44,9 +51,15 @@ export function FluidoterapiaConditionsView() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section id="cards" className="fluid-panel rounded-[32px] p-6 md:p-8">
+      <motion.section 
+        id="cards" 
+        className="fluid-panel rounded-[32px] p-6 md:p-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+      >
         <div className="grid gap-4 xl:grid-cols-2">
           {DISEASE_GUIDES.map((guide) => (
             <article key={guide.title} className="fluid-panel-strong rounded-[28px] p-5">
@@ -80,9 +93,15 @@ export function FluidoterapiaConditionsView() {
             </article>
           ))}
         </div>
-      </section>
+      </motion.section>
 
-      <section id="cautions" className="fluid-panel rounded-[32px] p-6 md:p-8">
+      <motion.section 
+        id="cautions" 
+        className="fluid-panel rounded-[32px] p-6 md:p-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+      >
         <div className="grid gap-4 xl:grid-cols-3">
           {[
             {
@@ -113,7 +132,7 @@ export function FluidoterapiaConditionsView() {
             )
           })}
         </div>
-      </section>
+      </motion.section>
     </div>
   )
 }

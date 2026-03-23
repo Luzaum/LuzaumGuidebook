@@ -140,12 +140,20 @@ export default function ReceituarioVetPage() {
             <p className="mt-1 text-sm text-[color:var(--rxv-muted)]">Monte tratamentos prontos por especialidade e importe direto na receita.</p>
           </Link>
 
-          <Link to="/receituario-vet/catalogo3" className="rxv-home-link-card rxv-card rxv-fade-up delay-200 rxv-anim-pulse rxv-shimmer lg:col-span-6">
+          <Link to="/receituario-vet/catalogo3" className="rxv-home-link-card rxv-card rxv-fade-up delay-200 rxv-anim-pulse rxv-shimmer lg:col-span-9">
             <div className="rxv-home-icon-badge">
               <span className="material-symbols-outlined text-[22px]">vaccines</span>
             </div>
             <h4 className="text-xl font-bold">Cadastrar Medicamento</h4>
             <p className="mt-1 text-sm text-[color:var(--rxv-muted)]">Banco de fármacos persistente, editável e reutilizável.</p>
+          </Link>
+
+          <Link to="/receituario-vet/manipulados" className="rxv-home-link-card rxv-card rxv-premium rxv-fade-up delay-250 rxv-anim-pulse rxv-shimmer lg:col-span-3">
+            <div className="rxv-home-icon-badge border-[#39ff14]/45 bg-[#39ff14]/12 text-[#8af77a]">
+              <span className="material-symbols-outlined text-[22px]">science</span>
+            </div>
+            <h4 className="text-xl font-bold">Manipulados</h4>
+            <p className="mt-1 text-sm text-[color:var(--rxv-muted)]">Cadastre fórmulas magistrais com ingredientes, q.s.p. e regimes próprios.</p>
           </Link>
         </section>
 

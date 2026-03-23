@@ -85,7 +85,7 @@ export function FluidoterapiaShell() {
   }
 
   const sidebar = (
-    <aside className="fluid-panel sticky top-0 flex h-dvh flex-col rounded-none border-y-0 border-l-0 border-r px-4 py-5 xl:rounded-[32px] xl:border xl:px-5 xl:py-6">
+    <aside className="fluid-panel sticky top-16 flex h-[calc(100vh-4rem)] flex-col rounded-none border-y-0 border-l-0 border-r px-4 py-5 xl:rounded-[32px] xl:border xl:px-5 xl:py-6">
       <div className="fluid-panel-strong rounded-[28px] p-5">
         <button
           type="button"
@@ -140,46 +140,22 @@ export function FluidoterapiaShell() {
         </nav>
       </div>
 
-      <div className="mt-6 flex-1 overflow-y-auto">
-        <div className="fluid-muted text-xs font-semibold uppercase tracking-[0.22em]">
-          Seções da página
+      <div className="absolute bottom-6 left-5 right-5">
+        <div className="rounded-xl bg-[var(--fluid-accent-soft)] p-4 text-xs leading-5">
+          <span className="mb-2 block font-semibold text-[var(--fluid-primary)]">Dica</span>
+          <span className="text-[var(--fluid-muted)]">O Vetius Fluidoterapia foi desenvolvido especificamente para cenários de resgate intensivo e internação.</span>
         </div>
-        <div className="mt-3 space-y-2">
-          {currentSections.map((section) => (
-            <button
-              key={section.id}
-              type="button"
-              onClick={() => scrollToSection(section.id)}
-              className={[
-                'fluid-card-hover flex min-h-11 w-full items-center rounded-2xl border px-4 py-3 text-left text-sm font-medium',
-                activeSection === section.id
-                  ? 'border-[var(--fluid-primary)] bg-[var(--fluid-accent-soft)] text-[var(--fluid-primary)]'
-                  : 'border-transparent text-[var(--fluid-muted)] hover:border-[var(--fluid-border)] hover:bg-[var(--fluid-accent-soft)]/60',
-              ].join(' ')}
-            >
-              {section.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="fluid-panel-strong rounded-[24px] p-4 text-sm leading-6">
-        <div className="fluid-heading text-base font-semibold">Tema e responsividade</div>
-        <p className="fluid-muted mt-2">
-          Dark: azul claro sobre preto. Light: azul escuro sobre fundo claro. O layout abre em
-          toda a largura da rota e colapsa sem scroll horizontal no mobile.
-        </p>
       </div>
     </aside>
   )
 
   return (
     <div className="fluid-webapp min-h-full w-full">
-      <div className="mx-auto flex w-full max-w-[1900px] gap-0 xl:gap-6">
+      <div className="flex w-full gap-0 xl:gap-6">
         <div className="hidden w-[320px] shrink-0 xl:block">{sidebar}</div>
 
         <div className="min-w-0 flex-1">
-          <div className="sticky top-0 z-40 border-b border-[var(--fluid-border)] bg-[var(--fluid-bg-soft)]/95 px-4 py-3 backdrop-blur xl:hidden">
+          <div className="fluid-panel sticky top-16 z-40 rounded-none border-x-0 border-t-0 px-4 py-3 xl:hidden">
             <div className="flex items-center justify-between gap-3">
               <button
                 type="button"
@@ -198,7 +174,17 @@ export function FluidoterapiaShell() {
           </div>
 
           <main className="min-w-0 px-3 pb-6 pt-3 sm:px-4 md:px-6 xl:px-0 xl:pr-6 xl:pt-6">
-            <Outlet />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={location.pathname}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <Outlet />
+              </motion.div>
+            </AnimatePresence>
           </main>
         </div>
       </div>
@@ -222,7 +208,7 @@ export function FluidoterapiaShell() {
               initial={{ x: -24, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -24, opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="relative h-full">
                 <button

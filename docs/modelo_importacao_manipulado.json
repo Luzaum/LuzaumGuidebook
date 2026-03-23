@@ -1,0 +1,84 @@
+{
+  "medication": {
+    "name": "Gabapentina 50 mg/mL",
+    "slug": "gabapentina-50-mg-ml",
+    "description": "Opção magistral para analgesia neuropática e adjuvância em dor crônica.",
+    "pharmaceutical_form": "Suspensão oral",
+    "default_route": "VO",
+    "species": ["Canina", "Felina"],
+    "routes": ["VO"],
+    "is_controlled": false,
+    "control_type": "otc",
+    "is_active": true,
+    "notes": "Agitar antes de usar. Revisar tolerância gastrointestinal.",
+    "manipulation_instructions": "Homogeneizar e manter protegido da luz.",
+    "default_quantity_text": "30 mL",
+    "default_qsp_text": "q.s.p. 30 mL",
+    "default_flavor": "Carne",
+    "default_vehicle": "Suspensão oral veterinária",
+    "default_excipient": "Veículo flavorizado",
+    "metadata": {
+      "source": "ia_externa",
+      "schema_version": "1.0.0"
+    }
+  },
+  "ingredients": [
+    {
+      "ingredient_name": "Gabapentina",
+      "ingredient_role": "active",
+      "quantity_value": 1500,
+      "quantity_unit": "mg",
+      "concentration_value": 50,
+      "concentration_unit": "mg",
+      "per_value": 1,
+      "per_unit": "mL",
+      "free_text": "",
+      "is_controlled_ingredient": false,
+      "notes": "Princípio ativo principal."
+    },
+    {
+      "ingredient_name": "Veículo flavorizado carne",
+      "ingredient_role": "vehicle",
+      "quantity_value": null,
+      "quantity_unit": "",
+      "concentration_value": null,
+      "concentration_unit": "",
+      "per_value": null,
+      "per_unit": "",
+      "free_text": "Completar q.s.p. 30 mL",
+      "is_controlled_ingredient": false,
+      "notes": ""
+    }
+  ],
+  "regimens": [
+    {
+      "regimen_name": "Dor crônica",
+      "indication": "Analgesia e modulação de dor neuropática",
+      "dosing_mode": "fixed_per_patient",
+      "species": "Canina",
+      "route": "VO",
+      "dose_min": null,
+      "dose_max": null,
+      "dose_unit": "mL",
+      "per_weight_unit": "kg",
+      "fixed_administration_value": 0.5,
+      "fixed_administration_unit": "mL",
+      "concentration_value": 50,
+      "concentration_unit": "mg",
+      "concentration_per_value": 1,
+      "concentration_per_unit": "mL",
+      "frequency_value_min": 12,
+      "frequency_value_max": null,
+      "frequency_unit": "hours",
+      "frequency_label": "a cada 12 horas",
+      "duration_mode": "fixed_days",
+      "duration_value": 10,
+      "duration_unit": "dias",
+      "inherit_default_start": true,
+      "notes": "Ajustar conforme resposta clínica.",
+      "allow_edit": true,
+      "default_prepared_quantity_text": "q.s.p. 30 mL",
+      "default_administration_sig": "Administrar 0,5 mL por via oral, a cada 12 horas, por 10 dias."
+    }
+  ]
+}

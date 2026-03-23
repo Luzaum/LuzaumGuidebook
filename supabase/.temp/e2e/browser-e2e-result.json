@@ -1,0 +1,73 @@
+{
+  "ok": false,
+  "seed": {
+    "email": "codexmanipulados1774215809011@gmail.com",
+    "password": "Codex123456!",
+    "userId": "ef11915e-685d-4d36-98be-a5849009340f",
+    "clinicId": "84b02794-c6fc-4303-aaa0-17880d42b32f",
+    "tutorId": "55900e50-5a3c-472c-b22b-a8dfe5ec13be",
+    "patientId": "88f4d5dc-a196-4533-ae52-a96b8c007be3"
+  },
+  "savedPrescriptionId": "",
+  "log": [
+    {
+      "step": "login_ok",
+      "time": "2026-03-23T02:28:55.209Z",
+      "email": "codexmanipulados1774215809011@gmail.com"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-23T02:28:55.298Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\01-manipulados-login.png"
+    },
+    {
+      "step": "manipulado_criado",
+      "time": "2026-03-23T02:28:58.687Z",
+      "name": "Codex Formula Magistral 1774232930733"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-23T02:28:59.883Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\02-manipulado-criado.png"
+    },
+    {
+      "step": "manipulado_persistiu_reload",
+      "time": "2026-03-23T02:29:01.367Z",
+      "name": "Codex Formula Magistral 1774232930733"
+    },
+    {
+      "step": "manipulado_editado",
+      "time": "2026-03-23T02:29:04.262Z",
+      "name": "Codex Formula Magistral 1774232930733 Atualizada"
+    },
+    {
+      "step": "manipulado_controlado_criado",
+      "time": "2026-03-23T02:29:08.397Z",
+      "name": "Codex Formula Controlada 1774232930733"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-23T02:29:09.373Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\03-manipulado-controlado.png"
+    },
+    {
+      "step": "tutor_paciente_ok",
+      "time": "2026-03-23T02:29:11.256Z"
+    },
+    {
+      "step": "receita_primeiro_manipulado_ok",
+      "time": "2026-03-23T02:29:13.027Z",
+      "name": "Codex Formula Magistral 1774232930733 Atualizada"
+    },
+    {
+      "step": "fatal",
+      "time": "2026-03-23T02:29:43.134Z",
+      "message": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('Administrar 0,75 mL').first() to be visible\u001b[22m\n"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-23T02:29:43.962Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\fatal-state.png"
+    }
+  ]
+}

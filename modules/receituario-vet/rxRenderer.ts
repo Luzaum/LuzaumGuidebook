@@ -708,7 +708,7 @@ function buildItemTitle(item: PrescriptionItem): string {
   return buildMedicationDisplayName({
     name: item.name,
     commercialName: item.commercialName,
-    concentrationText: item.concentration,
+    concentrationText: item.presentationMetadata?.compounded ? '' : item.concentration,
   })
 }
 
@@ -766,6 +766,7 @@ export function renderRxToPrintDoc(
       const items: PrintDocItem[] = source.map((item, idx) => {
         const qty = calculateMedicationQuantity(item, state)
         const instruction = resolveInstruction(item, state)
+        const isCompounded = !!item.presentationMetadata?.compounded
         const subtitleParts = [item.presentation]
 
         // Mostrar resumo no padrão da receita: "Por dose" ou "Total estimado"

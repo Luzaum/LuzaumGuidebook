@@ -1,0 +1,40 @@
+{
+  "ok": true,
+  "importedName": "Formula clinica importada 1774238613922",
+  "log": [
+    {
+      "step": "login_ok",
+      "time": "2026-03-23T04:03:35.574Z",
+      "email": "codexmanipulados1774215809011@gmail.com"
+    },
+    {
+      "step": "parse_ok",
+      "time": "2026-03-23T04:03:37.085Z"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-23T04:03:39.055Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\19-clinical-import-parse.png"
+    },
+    {
+      "step": "catalog_save_ok",
+      "time": "2026-03-23T04:03:42.545Z",
+      "importedName": "Formula clinica importada 1774238613922"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-23T04:03:43.886Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\20-clinical-import-saved.png"
+    },
+    {
+      "step": "nova_receita_ok",
+      "time": "2026-03-23T04:03:47.766Z",
+      "importedName": "Formula clinica importada 1774238613922"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-23T04:03:49.007Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\21-clinical-import-nova-receita.png"
+    }
+  ]
+}

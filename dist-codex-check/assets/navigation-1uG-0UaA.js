@@ -1,0 +1,1 @@
+function n(o){if(!(!(o!=null&&o.pageNumber)&&!(o!=null&&o.sectionId)))return{pageNumber:o.pageNumber,sectionId:o.sectionId}}function u(o){return o.map(i=>i==="dog"?"Canino":"Felino").join(", ")}function s(o){return o==="dog"?"Canino":o==="cat"?"Felino":"Canino e felino"}export{s as a,n as b,u as f};

@@ -1,0 +1,1 @@
+import{a6 as a}from"./feature-receituario-BUi7FyLH.js";async function n(){const{data:e,error:t}=await a.auth.getUser();if(t||!e.user)return!1;const{data:r,error:o}=await a.from("memberships").select("role").eq("user_id",e.user.id).eq("role","owner").limit(1);return o?!1:!!(r!=null&&r.length)}export{n as c};

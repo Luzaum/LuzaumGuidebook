@@ -217,7 +217,7 @@ export default function TemplatesPage() {
 
   const deleteTemplate = () => {
     if (draftIsBuiltin) {
-      pushToast('Templates nativos do app n?o podem ser removidos.')
+      pushToast('Templates nativos do app não podem ser removidos.')
       return
     }
     const nextDb = removeTemplate(loadRxDb(), draft.id)

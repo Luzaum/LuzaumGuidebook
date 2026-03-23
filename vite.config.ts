@@ -48,7 +48,7 @@ export default defineConfig(({ mode }) => {
               ) {
                 return 'vendor-three'
               }
-              if (id.includes('jspdf')) {
+              if (id.includes('jspdf') || id.includes('html2canvas')) {
                 return 'vendor-pdf'
               }
               if (id.includes('@supabase')) {
@@ -57,6 +57,23 @@ export default defineConfig(({ mode }) => {
               return undefined
             }
             if (id.includes('modules/receituario-vet')) {
+              if (
+                id.includes('RxPrintPage') ||
+                id.includes('NovaReceita2PrintPage') ||
+                id.includes('RxPrintView') ||
+                id.includes('rxRenderer') ||
+                id.includes('novaReceita2Adapter')
+              ) {
+                return 'feature-receituario-print'
+              }
+              if (
+                id.includes('NovaReceita2Page') ||
+                id.includes('Catalogo3Page') ||
+                id.includes('Protocolos3Page') ||
+                id.includes('ControleEspecialPage')
+              ) {
+                return 'feature-receituario-workflow'
+              }
               return 'feature-receituario'
             }
             return undefined

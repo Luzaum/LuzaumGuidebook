@@ -1,7 +1,8 @@
 export type Species = 'cao' | 'gato'
 export type PhysState = 'adulto' | 'filhote' | 'idoso' | 'gestante' | 'obeso'
 export type MaintenanceMethodId =
-  | 'aaha-weight'
+  | 'aaha-caes'
+  | 'aaha-gatos'
   | 'aaha-allometric'
   | 'aaha-linear'
   | 'custom'
@@ -51,7 +52,8 @@ export function resolveAdultMaintenanceBases(
   }
 
   return {
-    'aaha-weight': weight * (species === 'cao' ? 60 : 40),
+    'aaha-caes': weight * 60,
+    'aaha-gatos': weight * 40,
     'aaha-allometric': (species === 'cao' ? 132 : 80) * weight ** 0.75,
     'aaha-linear': 30 * weight + 70,
     custom: weight * customRate,
@@ -74,10 +76,6 @@ export function resolveMaintenanceMethods({
   const range = RANGE_BY_STATE[state]
   const bases = resolveAdultMaintenanceBases(species, weight, customRate)
 
-  if (!species || !Number.isFinite(weight) || weight <= 0) {
-    return []
-  }
-
   const methods: Array<{
     id: MaintenanceMethodId
     title: string
@@ -87,17 +85,25 @@ export function resolveMaintenanceMethods({
     note: string
   }> = [
     {
-      id: 'aaha-weight',
-      title: 'AAHA por kg',
-      source: 'Tabela 9',
-      formula: species === 'cao' ? '60 mL/kg/dia' : '40 mL/kg/dia',
-      daily: bases['aaha-weight'],
-      note: 'Método direto de manutenção diária descrito no artigo.',
+      id: 'aaha-caes',
+      title: 'AAHA Cães',
+      source: 'Diretriz AAHA',
+      formula: '60 mL/kg/dia',
+      daily: bases['aaha-caes'],
+      note: 'Taxa empírica clássica para caninos.',
+    },
+    {
+      id: 'aaha-gatos',
+      title: 'AAHA Gatos',
+      source: 'Diretriz AAHA',
+      formula: '40 mL/kg/dia',
+      daily: bases['aaha-gatos'],
+      note: 'Taxa empírica ajustada para felinos (prevenção de sobrecarga).',
     },
     {
       id: 'aaha-allometric',
       title: 'Alométrico',
-      source: 'Tabela 9',
+      source: 'Diretriz AAHA',
       formula: species === 'cao' ? '132 x kg^0,75' : '80 x kg^0,75',
       daily: bases['aaha-allometric'],
       note: 'Serve bem como comparação metabólica com o método direto por kg.',
@@ -105,7 +111,7 @@ export function resolveMaintenanceMethods({
     {
       id: 'aaha-linear',
       title: 'Linear',
-      source: 'Tabela 9',
+      source: 'Diretriz AAHA',
       formula: '30 x kg + 70',
       daily: bases['aaha-linear'],
       note: 'Método linear clássico e fácil de auditar.',
@@ -124,7 +130,7 @@ export function resolveMaintenanceMethods({
     methods.splice(3, 0, {
       id: 'aaha-pediatric',
       title: 'Pediátrico AAHA',
-      source: 'Tabela 9',
+      source: 'Diretriz AAHA',
       formula: `${species === 'cao' ? '3' : '2,5'} x dose adulta`,
       daily: bases[pediatricBase] * (species === 'cao' ? 3 : 2.5),
       note: 'O app deixa explícita a base adulta usada antes do multiplicador pediátrico.',

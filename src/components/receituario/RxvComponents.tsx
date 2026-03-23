@@ -37,9 +37,11 @@ const RxvSectionHeaderContent = ({ icon, title, subtitle, colorClass = 'text-[#3
     const isDark = getIsDark();
     return (
         <div className="flex items-center gap-4 mb-8">
-            <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${bgClass} ${colorClass} ${shadowClass}`}>
-                <span className="material-symbols-outlined text-[28px]">{icon}</span>
-            </div>
+            {icon ? (
+                <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${bgClass} ${colorClass} ${shadowClass}`}>
+                    <span className="material-symbols-outlined text-[28px]">{icon}</span>
+                </div>
+            ) : null}
             <div>
                 <h2 className={`text-xl font-black italic tracking-tight uppercase ${isDark ? 'text-white' : 'text-slate-900'}`}>{title}</h2>
                 {subtitle && <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">{subtitle}</p>}

@@ -19,14 +19,29 @@ import {
 import { TutorLookup } from './components/TutorLookup'
 import { PatientLookup } from './components/PatientLookup'
 import { AddMedicationModal2 } from './components/AddMedicationModal2'
+import { AddCompoundedMedicationModal } from './components/AddCompoundedMedicationModal'
 import { RxPrintView } from './RxPrintView'
 import { buildPrescriptionStateFromNovaReceita2, buildPrintDocsFromNovaReceita2 } from './novaReceita2Adapter'
 import { BUILTIN_TEMPLATES, DEFAULT_NOVA_RECEITA_TEMPLATE_ID } from './builtinTemplates'
 import { savePrescription, getPrescriptionById } from '../../src/lib/prescriptionsRecords'
-import { loadRxDb, findProfileSettings } from './rxDb'
+import { loadRxDb, findProfileSettings, createPrescriberProfileFromSettings, type PrescriberProfile as StoredPrescriberProfile } from './rxDb'
 import { loadRxDraftById } from './rxStorage'
 import type { RxTemplateStyle } from './rxDb'
 import { calculateMedicationQuantity } from './rxRenderer'
+import {
+    buildCompoundedCardSubtitle,
+    buildCompoundedInstruction,
+    buildCompoundedPharmacyInstruction,
+    buildCompoundedRegimenSummary,
+    getCompoundedActiveIngredients,
+    getCompoundedAllowedRouteValues,
+    getCompoundedCalculationSummary,
+    getCompoundedCalculationWarnings,
+    getCompoundedDurationSummary,
+    getCompoundedFrequencySummary,
+    getCompoundedInternalNote,
+} from './compoundedUi'
+import { getClinicalFormulaMetadata, getDosageFamilyLabel, getFormulaTypeLabel, getUniversalFormulaType } from './compoundedClinicalText'
 import {
     searchMedications,
     getMedicationPresentations,
@@ -34,6 +49,10 @@ import {
     type MedicationPresentationRecord,
 } from '../../src/lib/clinicRecords'
 import { buildPresentationConcentrationText } from '../../src/lib/medicationCatalog'
+import type {
+    CompoundedMedicationIngredientRecord,
+    CompoundedMedicationRegimenRecord,
+} from '../../src/lib/compoundedRecords'
 
 // ==================== DRAFT LOCAL (D) ====================
 // Chave: rx_draft_v2:<clinicId> — localStorage, por dispositivo
@@ -41,6 +60,29 @@ import { buildPresentationConcentrationText } from '../../src/lib/medicationCata
 function getDraftKey(clinicId: string | null): string | null {
     if (!clinicId) return null
     return `rx_draft_v2:${clinicId}`
+}
+
+function getSelectedPrescriberProfileKey(clinicId: string | null): string | null {
+    if (!clinicId) return null
+    return `rxv:nova-receita-2:selected-prescriber-profile:${clinicId}`
+}
+
+function loadSelectedPrescriberProfileId(key: string): string | null {
+    try {
+        const raw = localStorage.getItem(key)
+        const value = String(raw || '').trim()
+        return value || null
+    } catch {
+        return null
+    }
+}
+
+function saveSelectedPrescriberProfileId(key: string, profileId: string): void {
+    try {
+        localStorage.setItem(key, profileId)
+    } catch (error) {
+        if (import.meta.env.DEV) console.warn('[NovaReceita2] Failed to persist selected prescriber profile', error)
+    }
 }
 
 function loadLocalDraft(key: string): NovaReceita2State | null {
@@ -136,8 +178,43 @@ export interface PatientInfo {
     notes?: string
 }
 
-export interface PrescriptionItem {
+export interface CompoundedIngredientSnapshot extends Pick<
+    CompoundedMedicationIngredientRecord,
+    'id' | 'ingredient_name' | 'ingredient_role' | 'quantity_value' | 'quantity_unit' | 'concentration_value' | 'concentration_unit' | 'per_value' | 'per_unit' | 'free_text' | 'is_controlled_ingredient' | 'notes'
+> {}
+
+export interface CompoundedRegimenSnapshot extends Pick<
+    CompoundedMedicationRegimenRecord,
+    'id' | 'regimen_name' | 'indication' | 'dosing_mode' | 'species' | 'route' | 'dose_min' | 'dose_max' | 'dose_unit' | 'per_weight_unit' | 'fixed_administration_value' | 'fixed_administration_unit' | 'concentration_value' | 'concentration_unit' | 'concentration_per_value' | 'concentration_per_unit' | 'frequency_value_min' | 'frequency_value_max' | 'frequency_unit' | 'frequency_label' | 'duration_mode' | 'duration_value' | 'duration_unit' | 'inherit_default_start' | 'notes' | 'allow_edit' | 'default_prepared_quantity_text' | 'default_administration_sig'
+> {
+    calculation_mode?: 'fixed_per_animal' | 'weight_based'
+    applied_dose_text?: string
+    applied_quantity_text?: string
+    metadata?: Record<string, unknown> | null
+}
+
+export interface CompoundedMedicationSnapshot {
+    medication_id?: string
+    medication_name: string
+    description?: string
+    pharmaceutical_form: string
+    default_route?: string
+    is_controlled: boolean
+    control_type?: string
+    quantity_text?: string
+    qsp_text?: string
+    flavor?: string
+    vehicle?: string
+    excipient?: string
+    notes?: string
+    manipulation_instructions?: string
+    ingredients: CompoundedIngredientSnapshot[]
+    metadata?: Record<string, unknown> | null
+}
+
+export interface PrescriptionItemBase {
     id: string
+    kind: 'standard' | 'compounded'
     type: 'medication' | 'hygiene' | 'other'
     isManual?: boolean
     is_controlled?: boolean
@@ -152,8 +229,9 @@ export interface PrescriptionItem {
     presentation_label?: string
     dose?: string
     frequency?: string
-    frequencyMode?: 'times_per_day'
+    frequencyMode?: 'times_per_day' | 'interval_hours'
     timesPerDay?: number
+    intervalHours?: number
     route?: string
     duration?: string
     start_date?: string
@@ -161,6 +239,8 @@ export interface PrescriptionItem {
     startHour?: string
     inheritStartFromPrescription?: boolean
     durationMode?: 'fixed_days' | 'until_recheck' | 'continuous_use' | 'until_finished' | 'continuous_until_recheck'
+    durationValue?: number
+    durationUnit?: string
     instructions?: string
     cautions?: string[]
     cautionsText?: string
@@ -178,6 +258,48 @@ export interface PrescriptionItem {
     package_quantity?: string
     package_unit?: string
     presentation_metadata?: Record<string, unknown> | null
+    manualQuantity?: string
+}
+
+export interface StandardPrescriptionItem extends PrescriptionItemBase {
+    kind: 'standard'
+}
+
+export interface CompoundedPrescriptionItem extends PrescriptionItemBase {
+    kind: 'compounded'
+    compounded_medication_id?: string
+    compounded_regimen_id?: string
+    compounded_snapshot: CompoundedMedicationSnapshot
+    compounded_regimen_snapshot?: CompoundedRegimenSnapshot | null
+    compounded_pharmacy_guidance?: string
+    compounded_internal_note?: string
+}
+
+export type PrescriptionItem = StandardPrescriptionItem | CompoundedPrescriptionItem
+
+function loadAvailablePrescriberProfiles(): StoredPrescriberProfile[] {
+    const db = loadRxDb()
+    if (Array.isArray(db.prescriberProfiles) && db.prescriberProfiles.length > 0) {
+        return db.prescriberProfiles
+    }
+    return [createPrescriberProfileFromSettings(db.profile, 'Perfil padrão', 'default')]
+}
+
+function mapStoredPrescriberProfile(profileId: string, profile: {
+    fullName?: string
+    crmv?: string
+    clinicPhone?: string
+    clinicAddress?: string
+    signatureDataUrl?: string
+}): PrescriberProfile {
+    return {
+        id: profileId || 'default',
+        name: profile.fullName || '',
+        crmv: profile.crmv || '',
+        phone: profile.clinicPhone || '',
+        address: profile.clinicAddress || '',
+        signatureDataUrl: profile.signatureDataUrl || '',
+    }
 }
 
 // ==================== COMMON EXAMS (como na receita antiga) ====================
@@ -259,6 +381,11 @@ const DURATION_MODE_OPTIONS = [
     { value: 'continuous_use', label: 'Uso contínuo' },
     { value: 'until_finished', label: 'Até terminar o medicamento' },
 ]
+const DURATION_UNIT_OPTIONS = [
+    { value: 'dias', label: 'dias' },
+    { value: 'semanas', label: 'semanas' },
+    { value: 'meses', label: 'meses' },
+]
 
 function buildLegacyStartDate(startDate?: string, startHour?: string): string | undefined {
     const safeDate = String(startDate || '').trim()
@@ -334,6 +461,37 @@ function formatFrequencyValue(timesPerDay?: string | number | null): string {
     return normalized ? `${normalized}x ao dia` : ''
 }
 
+function parseIntervalHoursValue(raw?: string | number | null): number | undefined {
+    if (raw == null || raw === '') return undefined
+    const numeric = Number(String(raw).replace(',', '.'))
+    return Number.isFinite(numeric) && numeric > 0 ? numeric : undefined
+}
+
+function formatIntervalHoursValue(hours?: string | number | null): string {
+    const parsed = parseIntervalHoursValue(hours)
+    return parsed ? `a cada ${parsed} horas` : ''
+}
+
+function parseDurationValueAndUnit(raw?: string | null): { value?: number; unit?: string } {
+    const value = String(raw || '').trim().toLowerCase()
+    if (!value) return {}
+    const match = value.match(/(\d+(?:[.,]\d+)?)\s*(dia|dias|semana|semanas|mes|meses)/)
+    if (!match) return {}
+    const amount = Number(match[1].replace(',', '.'))
+    if (!Number.isFinite(amount) || amount <= 0) return {}
+    const unitToken = match[2]
+    const unit =
+        unitToken.startsWith('semana') ? 'semanas'
+            : unitToken.startsWith('mes') ? 'meses'
+                : 'dias'
+    return { value: amount, unit }
+}
+
+function formatStructuredDuration(value?: number, unit = 'dias'): string {
+    if (!value || value <= 0) return ''
+    return `${String(value).replace('.', ',')} ${unit}`.trim()
+}
+
 function normalizeCautionsText(rawText?: string | null, fallback?: string[] | null): string[] {
     const source = typeof rawText === 'string' ? rawText : Array.isArray(fallback) ? fallback.join('\n') : ''
     return source
@@ -357,23 +515,44 @@ function normalizePrescriptionItem(item: PrescriptionItem, defaultStartDate: str
         else durationMode = 'fixed_days'
     }
 
-    const normalizedTimesPerDay = parseTimesPerDayValue(item.timesPerDay ?? item.frequency)
-    const cautionsText = typeof item.cautionsText === 'string'
+    const parsedIntervalHours = item.frequencyMode === 'interval_hours'
+        ? parseIntervalHoursValue(item.intervalHours ?? item.frequency)
+        : parseIntervalHoursValue(item.intervalHours)
+    const normalizedTimesPerDay = item.frequencyMode === 'times_per_day'
+        ? parseTimesPerDayValue(item.timesPerDay ?? item.frequency)
+        : parseTimesPerDayValue(item.timesPerDay)
+    const durationParts = item.durationValue && item.durationUnit
+        ? { value: item.durationValue, unit: item.durationUnit }
+        : parseDurationValueAndUnit(item.duration)
+    const cautionsText = typeof item.cautionsText === 'string' && item.cautionsText.trim().length > 0
         ? item.cautionsText
+        : item.kind === 'compounded' && item.compounded_regimen_snapshot?.default_administration_sig
+            ? item.compounded_regimen_snapshot.default_administration_sig
         : Array.isArray(item.cautions)
             ? item.cautions.join('\n')
             : ''
 
     return {
         ...item,
+        kind: item.kind === 'compounded' ? 'compounded' : 'standard',
         inheritStartFromPrescription: item.inheritStartFromPrescription ?? true,
         startDate,
         startHour,
         start_date: buildLegacyStartDate(startDate, startHour) || item.start_date,
         durationMode,
-        frequencyMode: normalizedTimesPerDay ? 'times_per_day' : item.frequencyMode,
+        frequencyMode: parsedIntervalHours ? 'interval_hours' : normalizedTimesPerDay ? 'times_per_day' : item.frequencyMode,
         timesPerDay: normalizedTimesPerDay ? Number(normalizedTimesPerDay) : item.timesPerDay,
-        frequency: normalizedTimesPerDay ? formatFrequencyValue(normalizedTimesPerDay) : (item.frequency || ''),
+        intervalHours: parsedIntervalHours ?? item.intervalHours,
+        frequency: parsedIntervalHours
+            ? formatIntervalHoursValue(parsedIntervalHours)
+            : normalizedTimesPerDay
+                ? formatFrequencyValue(normalizedTimesPerDay)
+                : (item.frequency || ''),
+        durationValue: durationParts.value ?? item.durationValue,
+        durationUnit: durationParts.unit ?? item.durationUnit ?? 'dias',
+        duration: durationMode === 'fixed_days'
+            ? formatStructuredDuration(durationParts.value ?? item.durationValue, durationParts.unit ?? item.durationUnit ?? 'dias') || item.duration || ''
+            : item.duration || '',
         cautionsText,
         cautions: normalizeCautionsText(cautionsText, item.cautions),
     }
@@ -421,6 +600,7 @@ function formatDurationSummary(item: PrescriptionItem): string {
     if (item.durationMode === 'until_recheck') return 'Até reavaliação clínica'
     if (item.durationMode === 'continuous_use') return 'Uso contínuo'
     if (item.durationMode === 'until_finished') return 'Até terminar o medicamento'
+    if (item.durationValue) return formatStructuredDuration(item.durationValue, item.durationUnit || 'dias')
     return item.duration || 'Sem duração definida'
 }
 
@@ -469,11 +649,22 @@ export default function NovaReceita2Page() {
     const navigate = useNavigate()
     const location = useLocation()
     const { clinicId } = useClinic()
+    const availablePrescriberProfiles = useMemo(() => loadAvailablePrescriberProfiles(), [])
+    const selectedPrescriberProfileKey = useMemo(
+        () => getSelectedPrescriberProfileKey(clinicId),
+        [clinicId]
+    )
+    const preferredPrescriberProfileId = useMemo(
+        () => (selectedPrescriberProfileKey ? loadSelectedPrescriberProfileId(selectedPrescriberProfileKey) : null),
+        [selectedPrescriberProfileKey]
+    )
 
     const [state, setState] = useState<NovaReceita2State>(createDefaultState)
     const [autosave, setAutosave] = useState(true)
     const [medicationModalOpen, setMedicationModalOpen] = useState(false)
     const [manualModalOpen, setManualModalOpen] = useState(false)
+    const [compoundedModalOpen, setCompoundedModalOpen] = useState(false)
+    const [compoundedModalSession, setCompoundedModalSession] = useState(0)
     const [presentationPickerOpen, setPresentationPickerOpen] = useState(false)
     const [presentationPickerItemId, setPresentationPickerItemId] = useState<string | null>(null)
     const [presentationPickerItemName, setPresentationPickerItemName] = useState('')
@@ -506,6 +697,33 @@ export default function NovaReceita2Page() {
         () => (clinicId ? `rxv:nova-receita-2:modal-state:${clinicId}` : null),
         [clinicId]
     )
+    const selectedPrescriberOptionValue = useMemo(() => {
+        if (state.prescriber?.id) {
+            return state.prescriber.id
+        }
+        if (preferredPrescriberProfileId && availablePrescriberProfiles.some((entry) => entry.id === preferredPrescriberProfileId)) {
+            return preferredPrescriberProfileId
+        }
+        return availablePrescriberProfiles[0]?.id || 'default'
+    }, [availablePrescriberProfiles, preferredPrescriberProfileId, state.prescriber])
+    const prescriberProfileOptions = useMemo(() => {
+        const baseOptions = availablePrescriberProfiles.map((entry) => ({
+            value: entry.id,
+            label: `${entry.profileName} - ${entry.fullName || 'Sem nome'}`,
+        }))
+
+        if (state.prescriber?.id && !baseOptions.some((entry) => entry.value === state.prescriber?.id)) {
+            return [
+                {
+                    value: state.prescriber.id,
+                    label: `${state.prescriber.name || 'Perfil da receita'} - ${state.prescriber.crmv || 'Sem CRMV'}`,
+                },
+                ...baseOptions,
+            ]
+        }
+
+        return baseOptions
+    }, [availablePrescriberProfiles, state.prescriber])
 
     // D: Controle de inicialização do draft (só carrega uma vez por clinicId)
     const draftInitRef = useRef(false)
@@ -548,6 +766,25 @@ export default function NovaReceita2Page() {
             updatedAt: new Date().toISOString(),
         }))
     }, [])
+
+    const applyPrescriberProfile = useCallback((requestedProfileId: string) => {
+        try {
+            const db = loadRxDb()
+            const { profile, id } = findProfileSettings(db, requestedProfileId || undefined)
+            const nextPrescriber = mapStoredPrescriberProfile(id || requestedProfileId || 'default', profile)
+
+            updateState((prev) => ({
+                ...prev,
+                prescriber: nextPrescriber,
+            }))
+
+            if (selectedPrescriberProfileKey) {
+                saveSelectedPrescriberProfileId(selectedPrescriberProfileKey, nextPrescriber.id)
+            }
+        } catch (error) {
+            console.warn('[NovaReceita2] Failed to apply prescriber profile', error)
+        }
+    }, [selectedPrescriberProfileKey, updateState])
 
     const removeItem = useCallback((itemId: string) => {
         updateState((prev) => ({
@@ -723,6 +960,7 @@ export default function NovaReceita2Page() {
             : buildConcentrationText(quickConcentrationValue, quickConcentrationUnit)
         const newItem: PrescriptionItem = {
             id: `item-${Date.now()}`,
+            kind: 'standard',
             type: 'medication',
             isManual: quickEntryMode !== 'catalog',
             is_controlled: quickEntryMode === 'catalog' ? !!quickSelectedMedication?.is_controlled : quickManualControlled,
@@ -744,9 +982,12 @@ export default function NovaReceita2Page() {
             frequency: formatFrequencyValue(quickFrequencyPerDay),
             frequencyMode: 'times_per_day',
             timesPerDay: Number(quickFrequencyPerDay),
+            intervalHours: undefined,
             route: quickRoute || 'VO',
             duration,
             durationMode,
+            durationValue: quickContinuousUse ? undefined : Number(quickDurationDays),
+            durationUnit: 'dias',
             inheritStartFromPrescription: true,
             startDate: state.defaultStartDate,
             startHour: state.defaultStartHour,
@@ -841,25 +1082,18 @@ export default function NovaReceita2Page() {
         if (!state.prescriber) {
             try {
                 const db = loadRxDb()
-                const { profile, id } = findProfileSettings(db)
+                const { profile, id } = findProfileSettings(db, preferredPrescriberProfileId || undefined)
                 if (profile) {
                     updateState(prev => ({
                         ...prev,
-                        prescriber: {
-                            id: id || 'default',
-                            name: profile.fullName || '',
-                            crmv: profile.crmv || '',
-                            phone: profile.clinicPhone || '',
-                            address: profile.clinicAddress || '',
-                            signatureDataUrl: profile.signatureDataUrl || ''
-                        }
+                        prescriber: mapStoredPrescriberProfile(id || preferredPrescriberProfileId || 'default', profile)
                     }))
                 }
             } catch (err) {
                 console.warn('[Prescriptions] Could not load profile defaults', err)
             }
         }
-    }, [state.prescriber, updateState])
+    }, [preferredPrescriberProfileId, state.prescriber, updateState])
 
     // D1: Carregar rascunho local quando clinicId ficar disponível
     // Só carrega se não vier prescriptionId na URL e não vier items de protocolo (location.state)
@@ -1147,6 +1381,16 @@ export default function NovaReceita2Page() {
         }
     }, [state, clinicId, primaryPrintDoc, printDocs, selectedTemplateObj, updateState])
 
+    const openCompoundedModal = useCallback(() => {
+        setCompoundedModalSession((prev) => prev + 1)
+        setCompoundedModalOpen(true)
+    }, [])
+
+    const closeCompoundedModal = useCallback(() => {
+        setCompoundedModalOpen(false)
+        setCompoundedModalSession((prev) => prev + 1)
+    }, [])
+
     // ==================== RENDER ====================
 
     return (
@@ -1244,6 +1488,27 @@ export default function NovaReceita2Page() {
                                             No modo rápido, este bloco concentra o mínimo obrigatório para manter a prescrição consistente.
                                         </div>
                                     ) : null}
+
+                                    <div className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1fr)_320px]">
+                                        <RxvField label="Perfil do médico-veterinário">
+                                            <RxvSelect
+                                                value={selectedPrescriberOptionValue}
+                                                onChange={(e) => applyPrescriberProfile(e.target.value)}
+                                                options={prescriberProfileOptions}
+                                            />
+                                        </RxvField>
+                                        <div className="rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/75 px-4 py-3">
+                                            <p className="text-[11px] font-black uppercase tracking-widest text-[color:var(--rxv-muted)]">
+                                                Perfil aplicado nesta receita
+                                            </p>
+                                            <p className="mt-2 text-sm font-semibold text-[color:var(--rxv-text)]">
+                                                {state.prescriber?.name || 'Sem perfil selecionado'}
+                                            </p>
+                                            <p className="mt-1 text-xs text-[color:var(--rxv-muted)]">
+                                                {state.prescriber?.crmv ? `CRMV: ${state.prescriber.crmv}` : 'CRMV não informado'}
+                                            </p>
+                                        </div>
+                                    </div>
 
                                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                                         <RxvField label="Tutor / Responsável">
@@ -1368,6 +1633,13 @@ export default function NovaReceita2Page() {
                                                 onClick={() => setManualModalOpen(true)}
                                             >
                                                 + Manual
+                                            </RxvButton>
+                                            <RxvButton
+                                                variant="secondary"
+                                                onClick={openCompoundedModal}
+                                                data-testid="nova-receita-add-compounded"
+                                            >
+                                                + Manipulado
                                             </RxvButton>
                                             <RxvButton
                                                 variant="primary"
@@ -1550,23 +1822,100 @@ export default function NovaReceita2Page() {
                                                 per_unit: item.per_unit,
                                                 metadata: item.presentation_metadata || undefined,
                                             })
+                                            const compoundedCalculation = item.kind === 'compounded'
+                                                ? getCompoundedCalculationSummary(item, state.patient)
+                                                : null
+                                            const compoundedFormula = item.kind === 'compounded'
+                                                ? getClinicalFormulaMetadata(item.compounded_snapshot?.metadata || null)
+                                                : null
+                                            const isClinicalDoseOriented = item.kind === 'compounded'
+                                                ? compoundedFormula?.formula_model === 'clinical_dose_oriented'
+                                                : false
+                                            const compoundedWarnings = item.kind === 'compounded'
+                                                ? getCompoundedCalculationWarnings(item, state.patient)
+                                                : []
+                                            const compoundedRouteValues = item.kind === 'compounded'
+                                                ? getCompoundedAllowedRouteValues(item)
+                                                : []
+                                            const compoundedRouteOptions = item.kind === 'compounded' && compoundedRouteValues.length
+                                                ? QUICK_ROUTE_OPTIONS.filter((option) => compoundedRouteValues.includes(option.value))
+                                                : QUICK_ROUTE_OPTIONS
                                             return (
-                                                <div key={item.id} className="rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/80 p-4">
+                                                <div key={item.id} className="rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/80 p-4" data-testid={`rx-item-${item.id}`}>
                                                     <div className="mb-4 flex items-start justify-between gap-3">
                                                         <div>
-                                                            <div className="flex items-center gap-2">
+                                                            <div className="flex flex-wrap items-center gap-2">
                                                                 <span className="rounded-full border border-[color:var(--rxv-border)] px-2 py-0.5 text-[10px] font-black text-[color:var(--rxv-muted)]">{idx + 1}</span>
-                                                                {item.isManual ? <span className="text-[10px] font-black uppercase tracking-widest text-[color:var(--rxv-muted)]">Manual</span> : null}
-                                                                {item.is_controlled ? <span className="text-[10px] font-black uppercase tracking-widest text-amber-400">Controlado</span> : null}
-                                                                {item.catalog_source === 'global' ? <span className="text-[10px] font-black uppercase tracking-widest text-cyan-400">Global</span> : null}
+                                                                {item.kind === 'compounded' ? <span className="rounded-full border border-[#39ff14]/25 bg-[#39ff14]/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-widest text-[#78ff67]">Manipulado</span> : null}
+                                                                {item.isManual ? <span className="rounded-full border border-[color:var(--rxv-border)] bg-black/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-widest text-[color:var(--rxv-muted)]">Manual</span> : null}
+                                                                {item.is_controlled ? <span className="rounded-full border border-amber-500/30 bg-amber-500/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-widest text-amber-300">Controlado</span> : null}
+                                                                {item.kind === 'compounded' && compoundedFormula?.dosage_form_family ? (
+                                                                    <span className="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-widest text-cyan-300">
+                                                                        {getDosageFamilyLabel(compoundedFormula.dosage_form_family)}
+                                                                    </span>
+                                                                ) : null}
+                                                                {item.catalog_source === 'global' ? <span className="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-widest text-cyan-300">Global</span> : null}
                                                             </div>
                                                             <p className="mt-2 text-base font-bold text-white">
                                                                 {item.name || `Item ${idx + 1}`}
-                                                                {concentrationLabel ? <span className="ml-1 font-normal text-[color:var(--rxv-muted)]">({concentrationLabel})</span> : null}
+                                                                {item.kind !== 'compounded' && concentrationLabel ? <span className="ml-1 font-normal text-[color:var(--rxv-muted)]">({concentrationLabel})</span> : null}
                                                             </p>
                                                             <p className="text-xs text-[color:var(--rxv-muted)]">
-                                                                {[item.pharmaceutical_form, item.commercial_name].filter(Boolean).join(' • ') || 'Sem apresentação detalhada'}
+                                                                {item.kind === 'compounded'
+                                                                    ? buildCompoundedCardSubtitle(item, state.patient) || 'Manipulado sem resumo detalhado'
+                                                                    : [item.pharmaceutical_form, item.commercial_name].filter(Boolean).join(' • ') || 'Sem apresentação detalhada'}
                                                             </p>
+                                                            {item.kind === 'compounded' ? (
+                                                                <p className="mt-1 text-[11px] font-semibold text-[#b8c3d9]">
+                                                                    {getFormulaTypeLabel(getUniversalFormulaType(item.compounded_snapshot?.metadata || null))}
+                                                                </p>
+                                                            ) : null}
+                                                            {item.kind === 'compounded' && item.compounded_snapshot?.ingredients?.length ? (
+                                                                <div className="mt-2 flex flex-wrap gap-1">
+                                                                    {getCompoundedActiveIngredients(item.compounded_snapshot).slice(0, 4).map((ingredient) => (
+                                                                        <span key={ingredient} className="rounded-full border border-[#39ff14]/25 bg-[#39ff14]/8 px-2 py-0.5 text-[10px] font-semibold text-[#98f98e]">
+                                                                            {ingredient}
+                                                                        </span>
+                                                                    ))}
+                                                                </div>
+                                                            ) : null}
+                                                            {item.kind === 'compounded' && item.compounded_regimen_snapshot?.regimen_name ? (
+                                                                <div className="mt-3 rounded-xl border border-[#39ff14]/15 bg-[#112313]/70 px-3 py-2">
+                                                                    <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#6dde66]">Regime selecionado</p>
+                                                                    <p className="mt-1 text-[11px] font-semibold text-[#b5ffaf]">
+                                                                        {item.compounded_regimen_snapshot.regimen_name} • {buildCompoundedRegimenSummary(item, state.patient) || `${getCompoundedFrequencySummary(item)} • ${getCompoundedDurationSummary(item)}`}
+                                                                    </p>
+                                                                </div>
+                                                            ) : null}
+                                                            {item.kind === 'compounded' && isClinicalDoseOriented && compoundedCalculation?.ingredientBreakdown?.length ? (
+                                                                <div className="mt-3 rounded-xl border border-slate-800 bg-black/20 px-3 py-3">
+                                                                    <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[color:var(--rxv-muted)]">Dose final por ingrediente</p>
+                                                                    <div className="mt-2 space-y-1">
+                                                                        {compoundedCalculation.ingredientBreakdown.map((entry) => (
+                                                                            <p key={`${item.id}-${entry.ingredientName}-${entry.rawRuleText}`} className="text-xs text-slate-200">
+                                                                                <span className="font-semibold text-white">{entry.ingredientName}:</span> {entry.selectedDoseText}
+                                                                                {entry.rangeText ? <span className="text-slate-400"> • faixa {entry.rangeText}</span> : null}
+                                                                            </p>
+                                                                        ))}
+                                                                    </div>
+                                                                </div>
+                                                            ) : null}
+                                                            {item.kind === 'compounded' && compoundedCalculation ? (
+                                                                <div className="mt-3 grid grid-cols-1 gap-2 md:grid-cols-3">
+                                                                    <div className="rounded-xl border border-slate-800 bg-black/20 px-3 py-2">
+                                                                        <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[color:var(--rxv-muted)]">Total calculado</p>
+                                                                        <p className="mt-1 text-xs font-semibold text-white">{compoundedCalculation.calculatedTotalText || 'Indisponível'}</p>
+                                                                    </div>
+                                                                    <div className="rounded-xl border border-slate-800 bg-black/20 px-3 py-2">
+                                                                        <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[color:var(--rxv-muted)]">Quantidade sugerida</p>
+                                                                        <p className="mt-1 text-xs font-semibold text-white">{compoundedCalculation.estimatedTotalText || 'Indisponível'}</p>
+                                                                    </div>
+                                                                    <div className="rounded-xl border border-slate-800 bg-black/20 px-3 py-2">
+                                                                        <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[color:var(--rxv-muted)]">Quantidade final</p>
+                                                                        <p className="mt-1 text-xs font-semibold text-white">{compoundedCalculation.finalQuantityText || 'Indisponível'}</p>
+                                                                    </div>
+                                                                </div>
+                                                            ) : null}
                                                             {item.medication_id ? (
                                                                 <button
                                                                     type="button"
@@ -1588,6 +1937,15 @@ export default function NovaReceita2Page() {
                                                                     ))}
                                                                 </div>
                                                             ) : null}
+                                                            {item.kind === 'compounded' && compoundedWarnings.length ? (
+                                                                <div className="mt-2 space-y-1 rounded-xl border border-amber-500/30 bg-amber-500/10 px-3 py-2">
+                                                                    {compoundedWarnings.map((warning, warningIdx) => (
+                                                                        <p key={`${item.id}-comp-warning-${warningIdx}`} className="text-xs font-semibold text-amber-200">
+                                                                            {warning}
+                                                                        </p>
+                                                                    ))}
+                                                                </div>
+                                                            ) : null}
                                                         </div>
                                                         <button
                                                             type="button"
@@ -1599,43 +1957,106 @@ export default function NovaReceita2Page() {
                                                         </button>
                                                     </div>
 
-                                                    <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
+                                                    <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-5">
                                                         <RxvField label="Nome do fármaco">
                                                             <RxvInput value={item.name} onChange={(e) => updateItem(item.id, (current) => ({ ...current, name: e.target.value }))} />
                                                         </RxvField>
-                                                        <RxvField label="Dose">
-                                                            <RxvInput value={item.dose || ''} onChange={(e) => updateItem(item.id, (current) => ({ ...current, dose: e.target.value }))} placeholder="Ex: 7 gotas" />
+                                                        <RxvField label={item.kind === 'compounded' ? 'Dose final por administração' : 'Dose'}>
+                                                            <RxvInput value={item.dose || ''} onChange={(e) => updateItem(item.id, (current) => ({ ...current, dose: e.target.value }))} placeholder={item.kind === 'compounded' ? 'Ex: 0,4 mL' : 'Ex: 7 gotas'} />
                                                         </RxvField>
                                                         <RxvField label="Via">
-                                                            <RxvSelect value={item.route || 'VO'} onChange={(e) => updateItem(item.id, (current) => ({ ...current, route: e.target.value }))} options={QUICK_ROUTE_OPTIONS} />
+                                                            <RxvSelect value={item.route || 'VO'} onChange={(e) => updateItem(item.id, (current) => ({ ...current, route: e.target.value }))} options={compoundedRouteOptions} disabled={item.kind === 'compounded' && compoundedRouteOptions.length <= 1} />
                                                         </RxvField>
-                                                        <RxvField label="Frequência">
+                                                        <RxvField label="Modo de frequência">
+                                                            <RxvSelect
+                                                                value={item.frequencyMode || 'times_per_day'}
+                                                                onChange={(e) => updateItem(item.id, (current) => ({
+                                                                    ...current,
+                                                                    frequencyMode: e.target.value as PrescriptionItem['frequencyMode'],
+                                                                    timesPerDay: e.target.value === 'times_per_day' ? (current.timesPerDay || 2) : undefined,
+                                                                    intervalHours: e.target.value === 'interval_hours' ? (current.intervalHours || 12) : undefined,
+                                                                    frequency: e.target.value === 'interval_hours'
+                                                                        ? formatIntervalHoursValue(current.intervalHours || 12)
+                                                                        : formatFrequencyValue(current.timesPerDay || 2),
+                                                                }))}
+                                                                options={[
+                                                                    { value: 'times_per_day', label: 'Vezes por dia' },
+                                                                    { value: 'interval_hours', label: 'Intervalo em horas' },
+                                                                ]}
+                                                            />
+                                                        </RxvField>
+                                                        <RxvField label={item.frequencyMode === 'interval_hours' ? 'Intervalo (horas)' : 'Frequência'}>
+                                                            {item.frequencyMode === 'interval_hours' ? (
+                                                                <RxvInput
+                                                                    type="number"
+                                                                    min="1"
+                                                                    step="1"
+                                                                    value={item.intervalHours ?? ''}
+                                                                    onChange={(e) => updateItem(item.id, (current) => ({
+                                                                        ...current,
+                                                                        frequencyMode: 'interval_hours',
+                                                                        intervalHours: e.target.value ? Number(e.target.value) : undefined,
+                                                                        frequency: formatIntervalHoursValue(e.target.value),
+                                                                    }))}
+                                                                    placeholder="Ex: 12"
+                                                                />
+                                                            ) : (
                                                             <RxvSelect
                                                                 value={item.timesPerDay ? String(item.timesPerDay) : ''}
                                                                 onChange={(e) => updateItem(item.id, (current) => ({
                                                                     ...current,
                                                                     frequencyMode: e.target.value ? 'times_per_day' : undefined,
                                                                     timesPerDay: e.target.value ? Number(e.target.value) : undefined,
+                                                                    intervalHours: undefined,
                                                                     frequency: formatFrequencyValue(e.target.value),
                                                                 }))}
                                                                 options={ITEM_FREQUENCY_OPTIONS}
                                                             />
+                                                            )}
                                                         </RxvField>
                                                     </div>
 
-                                                    <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
+                                                    <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-5">
                                                         <RxvField label="Modo de duração">
                                                             <RxvSelect
                                                                 value={item.durationMode || 'fixed_days'}
-                                                                onChange={(e) => updateItem(item.id, (current) => ({ ...current, durationMode: e.target.value as PrescriptionItem['durationMode'] }))}
+                                                                onChange={(e) => updateItem(item.id, (current) => ({
+                                                                    ...current,
+                                                                    durationMode: e.target.value as PrescriptionItem['durationMode'],
+                                                                    duration: e.target.value === 'fixed_days'
+                                                                        ? formatStructuredDuration(current.durationValue, current.durationUnit || 'dias')
+                                                                        : '',
+                                                                }))}
                                                                 options={DURATION_MODE_OPTIONS}
                                                             />
                                                         </RxvField>
-                                                        <RxvField label="Duração">
+                                                        <RxvField label="Valor da duração">
                                                             <RxvInput
-                                                                value={item.durationMode === 'fixed_days' ? (item.duration || '') : ''}
-                                                                onChange={(e) => updateItem(item.id, (current) => ({ ...current, duration: e.target.value }))}
-                                                                placeholder="Ex: 7 dias"
+                                                                type="number"
+                                                                min="1"
+                                                                step="1"
+                                                                value={item.durationMode === 'fixed_days' ? (item.durationValue ?? '') : ''}
+                                                                onChange={(e) => updateItem(item.id, (current) => ({
+                                                                    ...current,
+                                                                    durationValue: e.target.value ? Number(e.target.value) : undefined,
+                                                                    duration: formatStructuredDuration(
+                                                                        e.target.value ? Number(e.target.value) : undefined,
+                                                                        current.durationUnit || 'dias',
+                                                                    ),
+                                                                }))}
+                                                                placeholder="Ex: 7"
+                                                                disabled={item.durationMode !== 'fixed_days'}
+                                                            />
+                                                        </RxvField>
+                                                        <RxvField label="Unidade da duração">
+                                                            <RxvSelect
+                                                                value={item.durationUnit || 'dias'}
+                                                                onChange={(e) => updateItem(item.id, (current) => ({
+                                                                    ...current,
+                                                                    durationUnit: e.target.value,
+                                                                    duration: formatStructuredDuration(current.durationValue, e.target.value),
+                                                                }))}
+                                                                options={DURATION_UNIT_OPTIONS}
                                                                 disabled={item.durationMode !== 'fixed_days'}
                                                             />
                                                         </RxvField>
@@ -1648,7 +2069,20 @@ export default function NovaReceita2Page() {
                                                         </RxvField>
                                                         <div className="rounded-xl border border-slate-800 bg-black/20 px-3 py-3 text-xs text-[color:var(--rxv-muted)]">
                                                             <p className="font-semibold text-[color:var(--rxv-text)]">Resumo</p>
-                                                            <p>{formatDurationSummary(item)}</p>
+                                                            {item.kind === 'compounded' ? (
+                                                        <>
+                                                            <p>{buildCompoundedRegimenSummary(item, state.patient) || formatDurationSummary(item)}</p>
+                                                            <p>{buildCompoundedInstruction(item, state.patient)}</p>
+                                                                    {compoundedCalculation?.calculatedTotalText ? <p>Calculado: {compoundedCalculation.calculatedTotalText}</p> : null}
+                                                                    {compoundedCalculation?.estimatedTotalText ? <p>Sugerido: {compoundedCalculation.estimatedTotalText}</p> : null}
+                                                                    {compoundedCalculation?.finalQuantityText ? <p>Final: {compoundedCalculation.finalQuantityText}</p> : null}
+                                                                </>
+                                                            ) : (
+                                                                <>
+                                                                    <p>{formatDurationSummary(item)}</p>
+                                                                    <p>{item.frequency || 'Frequência livre'}</p>
+                                                                </>
+                                                            )}
                                                             <p>{!effectiveStart.startDate && !effectiveStart.startHour ? 'Sem início configurado' : `${effectiveStart.startDate || 'Sem data'} ${effectiveStart.startHour || 'Sem hora'}`.trim()}</p>
                                                         </div>
                                                     </div>
@@ -1668,19 +2102,129 @@ export default function NovaReceita2Page() {
                                                         </div>
                                                     ) : null}
 
-                                                    <div className="mt-3 grid grid-cols-1 gap-3">
-                                                        <RxvField label="Observações adicionais">
-                                                            <RxvTextarea
-                                                                value={item.cautionsText ?? ''}
-                                                                onChange={(e) => updateItem(item.id, (current) => ({
-                                                                    ...current,
-                                                                    cautionsText: e.target.value,
-                                                                }))}
-                                                                rows={4}
-                                                                placeholder="Uma observação por linha."
-                                                            />
-                                                        </RxvField>
-                                                    </div>
+                                                    {item.kind === 'compounded' ? (
+                                                        <div className="mt-3 space-y-3">
+                                                            {isClinicalDoseOriented ? (
+                                                                <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                                                                    <RxvField label="Estratégia para faixas de dose">
+                                                                        <RxvSelect
+                                                                            value={String(((item.compounded_regimen_snapshot?.metadata as Record<string, unknown> | null)?.doseSelectionStrategy as string) || 'min')}
+                                                                            onChange={(e) => updateItem(item.id, (current) => ({
+                                                                                ...current,
+                                                                                compounded_snapshot: {
+                                                                                    ...current.compounded_snapshot,
+                                                                                    metadata: {
+                                                                                        ...(current.compounded_snapshot.metadata || {}),
+                                                                                        regimen_semantics: {
+                                                                                            ...((((current.compounded_snapshot.metadata || {}) as Record<string, unknown>).regimen_semantics as Record<string, unknown>) || {}),
+                                                                                            [String(current.compounded_regimen_snapshot?.id || current.compounded_regimen_id || '')]: {
+                                                                                                ...((((((current.compounded_snapshot.metadata || {}) as Record<string, unknown>).regimen_semantics as Record<string, unknown>) || {})[String(current.compounded_regimen_snapshot?.id || current.compounded_regimen_id || '')] as Record<string, unknown>) || {}),
+                                                                                                doseSelectionStrategy: e.target.value,
+                                                                                            },
+                                                                                        },
+                                                                                    },
+                                                                                },
+                                                                                compounded_regimen_snapshot: current.compounded_regimen_snapshot
+                                                                                    ? {
+                                                                                        ...current.compounded_regimen_snapshot,
+                                                                                        metadata: {
+                                                                                            ...(current.compounded_regimen_snapshot.metadata || {}),
+                                                                                            doseSelectionStrategy: e.target.value,
+                                                                                        },
+                                                                                    }
+                                                                                    : current.compounded_regimen_snapshot,
+                                                                            }))}
+                                                                            options={[
+                                                                                { value: 'min', label: 'Dose mínima da faixa' },
+                                                                                { value: 'mid', label: 'Ponto médio da faixa' },
+                                                                                { value: 'max', label: 'Dose máxima da faixa' },
+                                                                            ]}
+                                                                        />
+                                                                    </RxvField>
+                                                                    <div className="rounded-xl border border-slate-800 bg-black/20 px-3 py-3 text-xs text-[color:var(--rxv-muted)]">
+                                                                        <p className="font-semibold text-[color:var(--rxv-text)]">Cálculo clínico do paciente</p>
+                                                                        <p className="mt-1">{state.patient?.weight_kg ? `Peso usado: ${state.patient.weight_kg} kg` : 'Peso não informado. O cálculo por ingrediente ficará pendente.'}</p>
+                                                                        <p className="mt-1">{compoundedCalculation?.perAdministrationText ? `Administração base: ${compoundedCalculation.perAdministrationText}` : 'Administração base não definida.'}</p>
+                                                                    </div>
+                                                                </div>
+                                                            ) : null}
+                                                            <RxvField label="Quantidade final para manipular">
+                                                                <RxvInput
+                                                                    value={item.manualQuantity ?? ''}
+                                                                    onChange={(e) => updateItem(item.id, (current) => ({
+                                                                        ...current,
+                                                                        manualQuantity: e.target.value,
+                                                                        compounded_regimen_snapshot: current.compounded_regimen_snapshot
+                                                                            ? {
+                                                                                ...current.compounded_regimen_snapshot,
+                                                                                applied_quantity_text: e.target.value,
+                                                                            }
+                                                                            : current.compounded_regimen_snapshot,
+                                                                    }))}
+                                                                    placeholder={compoundedCalculation?.estimatedTotalText || 'Ex: q.s.p. 10 mL'}
+                                                                />
+                                                            </RxvField>
+                                                            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                                                                <RxvField label="Orientações ao tutor">
+                                                                    <RxvTextarea
+                                                                        value={item.cautionsText ?? ''}
+                                                                        onChange={(e) => updateItem(item.id, (current) => ({
+                                                                            ...current,
+                                                                            cautionsText: e.target.value,
+                                                                        }))}
+                                                                        rows={4}
+                                                                        placeholder="Ex: usar luvas, alternar pinna, administrar com alimento."
+                                                                    />
+                                                                </RxvField>
+                                                                <RxvField label="Instrução para a farmácia">
+                                                                    <RxvTextarea
+                                                                        value={item.compounded_pharmacy_guidance ?? ''}
+                                                                        onChange={(e) => updateItem(item.id, (current) => ({
+                                                                            ...current,
+                                                                            compounded_pharmacy_guidance: e.target.value,
+                                                                        }))}
+                                                                        rows={4}
+                                                                        placeholder="Detalhes adicionais da manipulação além do texto automático."
+                                                                    />
+                                                                </RxvField>
+                                                            </div>
+                                                            <details className="rounded-xl border border-slate-800 bg-black/20 px-3 py-3">
+                                                                <summary className="cursor-pointer text-xs font-black uppercase tracking-[0.18em] text-[color:var(--rxv-muted)]">Nota clínica interna (não imprime)</summary>
+                                                                <div className="mt-3 space-y-3">
+                                                                    <p className="text-xs text-[color:var(--rxv-muted)]">{getCompoundedInternalNote(item) || 'Sem nota clínica interna neste item.'}</p>
+                                                                    <RxvTextarea
+                                                                        value={item.compounded_internal_note ?? ''}
+                                                                        onChange={(e) => updateItem(item.id, (current) => ({
+                                                                            ...current,
+                                                                            compounded_internal_note: e.target.value,
+                                                                        }))}
+                                                                        rows={4}
+                                                                        placeholder="Racional clínico, referência técnica ou alerta interno. Não imprime."
+                                                                    />
+                                                                </div>
+                                                            </details>
+                                                            <div className="rounded-xl border border-slate-800 bg-black/20 px-3 py-3 text-xs text-[color:var(--rxv-muted)]">
+                                                                <p className="font-semibold text-[color:var(--rxv-text)]">Texto final da receita</p>
+                                                                <p className="mt-2">{buildCompoundedInstruction(item, state.patient)}</p>
+                                                                {item.cautionsText?.trim() ? <p className="mt-1">Orientações ao tutor: {item.cautionsText.trim()}</p> : null}
+                                                                <p className="mt-1">{buildCompoundedPharmacyInstruction(item, state.patient)}</p>
+                                                            </div>
+                                                        </div>
+                                                    ) : (
+                                                        <div className="mt-3 grid grid-cols-1 gap-3">
+                                                            <RxvField label="Observações adicionais">
+                                                                <RxvTextarea
+                                                                    value={item.cautionsText ?? ''}
+                                                                    onChange={(e) => updateItem(item.id, (current) => ({
+                                                                        ...current,
+                                                                        cautionsText: e.target.value,
+                                                                    }))}
+                                                                    rows={4}
+                                                                    placeholder="Uma observação por linha."
+                                                                />
+                                                            </RxvField>
+                                                        </div>
+                                                    )}
                                                 </div>
                                             )
                                         })}
@@ -1964,6 +2508,20 @@ export default function NovaReceita2Page() {
                 defaultStartDate={state.defaultStartDate}
                 defaultStartHour={state.defaultStartHour}
                 manualMode={true}
+            />
+
+            <AddCompoundedMedicationModal
+                key={compoundedModalSession}
+                open={compoundedModalOpen}
+                onClose={closeCompoundedModal}
+                onAdd={(item) => {
+                    handleAddItem(item)
+                    closeCompoundedModal()
+                }}
+                clinicId={clinicId || ''}
+                patient={state.patient}
+                defaultStartDate={state.defaultStartDate}
+                defaultStartHour={state.defaultStartHour}
             />
         </ReceituarioChrome>
     )

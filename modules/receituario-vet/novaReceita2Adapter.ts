@@ -7,6 +7,12 @@ import type { PrescriptionState, RouteGroup, PrintDoc } from './rxTypes'
 import { renderRxToPrintDoc, splitPrescriptionByControl } from './rxRenderer'
 import type { RxTemplateStyle } from './rxDb'
 import { buildPresentationConcentrationText } from '../../src/lib/medicationCatalog'
+import {
+    buildCompoundedCardSubtitle,
+    buildCompoundedInstruction,
+    getCompoundedCalculationSummary,
+    buildCompoundedPreviewCautions,
+} from './compoundedUi'
 
 // =====================================================================
 // FIX A3: garante que valores numéricos do DB/sessionStorage
@@ -102,14 +108,24 @@ function parseFrequencyFromText(raw?: string): {
 
 function parseStructuredFrequency(item: {
     frequency?: string
-    frequencyMode?: 'times_per_day'
+    frequencyMode?: 'times_per_day' | 'interval_hours'
     timesPerDay?: number
+    intervalHours?: number
 }): {
     frequencyType: 'timesPerDay' | 'everyHours'
     frequencyToken: '' | 'SID' | 'BID' | 'TID' | 'QID'
     timesPerDay: string
     everyHours: string
 } {
+    if (item.frequencyMode === 'interval_hours' && item.intervalHours && item.intervalHours > 0) {
+        return {
+            frequencyType: 'everyHours',
+            frequencyToken: '',
+            timesPerDay: '',
+            everyHours: String(item.intervalHours),
+        }
+    }
+
     const structuredTimes = Number(item.timesPerDay)
     if (item.frequencyMode === 'times_per_day' && Number.isFinite(structuredTimes) && structuredTimes > 0) {
         const frequencyToken =
@@ -166,6 +182,16 @@ function resolveStructuredDuration(item: NovaReceita2State['items'][number]) {
     }
     if (item.durationMode === 'until_recheck') {
         return { durationDays: '', continuousUse: false, untilFinished: false, durationMode: item.durationMode }
+    }
+    if (item.durationValue && item.durationValue > 0) {
+        const normalizedUnit = String(item.durationUnit || 'dias').trim().toLowerCase()
+        const multiplier = normalizedUnit.startsWith('semana') ? 7 : normalizedUnit.startsWith('mes') ? 30 : 1
+        return {
+            durationDays: String(item.durationValue * multiplier),
+            continuousUse: false,
+            untilFinished: false,
+            durationMode: item.durationMode || 'fixed_days',
+        }
     }
     const parsed = parseDurationFromText(item.duration)
     return {
@@ -273,6 +299,24 @@ function resolvePresentationConcentration(item: NovaReceita2State['items'][numbe
     })
 }
 
+function buildCompoundedPresentationLabel(item: Extract<NovaReceita2State['items'][number], { kind: 'compounded' }>): string {
+    return [
+        item.compounded_snapshot?.pharmaceutical_form || item.pharmaceutical_form || '',
+        item.compounded_snapshot?.qsp_text || item.compounded_snapshot?.quantity_text || item.presentation_label || '',
+        item.compounded_snapshot?.flavor ? `Sabor ${item.compounded_snapshot.flavor}` : '',
+    ].filter(Boolean).join(' • ')
+}
+
+function buildCompoundedConcentration(item: Extract<NovaReceita2State['items'][number], { kind: 'compounded' }>): string {
+    const regimen = item.compounded_regimen_snapshot
+    if (regimen?.concentration_value && regimen?.concentration_unit) {
+        const perValue = regimen.concentration_per_value || 1
+        const perUnit = regimen.concentration_per_unit || 'mL'
+        return `${regimen.concentration_value} ${regimen.concentration_unit}/${perValue} ${perUnit}`.replace('/1 ', '/')
+    }
+    return toSafeString(item.concentration_text)
+}
+
 export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State): PrescriptionState {
     const now = new Date().toISOString()
 
@@ -282,15 +326,29 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
         const effectiveStartDate = inheritStart ? state.defaultStartDate : (item.startDate || '')
         const effectiveStartHour = inheritStart ? state.defaultStartHour : (item.startHour || '')
         // FIX: subtitle apenas para presentation (forma + embalagem + preço)
-        const subtitle = buildItemSubtitle(item) || item.pharmaceutical_form || item.presentation_label
+        const compoundedCalculation = item.kind === 'compounded'
+            ? getCompoundedCalculationSummary(item, state.patient)
+            : null
+        const subtitle =
+            item.kind === 'compounded'
+                ? (buildCompoundedCardSubtitle(item, state.patient) || buildCompoundedPresentationLabel(item))
+                : buildItemSubtitle(item) || item.pharmaceutical_form || item.presentation_label
         // FIX: pre-build a instrução e sempre usar (nunca deixar o renderer substituir
         // por buildAutoInstruction que não consegue parsear dose livre "10 mg/kg")
-        const manualInstruction = toSafeString(item.instructions).trim()
+        const manualInstruction = item.kind === 'compounded'
+            ? buildCompoundedInstruction(item, state.patient)
+            : toSafeString(item.instructions).trim()
         const hasManualInstruction = manualInstruction.length > 0
 
         // FIX G: parsear dose livre para campos estruturados (doseValue numérico + doseUnit)
         // Permite que calculateMedicationQuantity exiba "Dose calculada: X mg / Volume: Y mL"
-        const parsedDose = parseDoseString(toSafeString(item.dose))
+        const parsedDose = item.kind === 'compounded'
+            ? (
+                compoundedCalculation?.mode === 'weight_based'
+                    ? parseDoseString(toSafeString(compoundedCalculation?.doseDescriptorText))
+                    : parseDoseString(toSafeString(compoundedCalculation?.perAdministrationText || item.dose))
+            )
+            : parseDoseString(toSafeString(item.dose))
         const doseValue = parsedDose ? parsedDose.numericStr : toSafeString(item.dose)
         const doseUnit = parsedDose
             ? parsedDose.perKg ? `${parsedDose.unit}/kg` : parsedDose.unit
@@ -303,7 +361,9 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
                 : effectiveStartDate || effectiveStartHour || item.start_date
 
         // FIX A3: garantir que concentration_text nunca seja objeto/número
-        const concentrationSafe = toSafeString(resolvePresentationConcentration(item) || item.concentration_text)
+        const concentrationSafe = item.kind === 'compounded'
+            ? buildCompoundedConcentration(item)
+            : toSafeString(resolvePresentationConcentration(item) || item.concentration_text)
         // FIX A3: garantir que weight_kg do patient seja sempre string
         // (Supabase pode retornar como number dependendo da versão do schema)
 
@@ -323,7 +383,7 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
         return {
             id: item.id,
             category: 'medication' as const,
-            catalogDrugId: item.medication_id || '',
+            catalogDrugId: item.kind === 'standard' ? item.medication_id || '' : '',
             controlled: !!item.is_controlled,
             // FIX: colocar APENAS nome do fármaco em name;
             // o renderer (rxRenderer.buildItemTitle) concatena name + concentration + commercialName.
@@ -331,7 +391,11 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
             presentation: subtitle,    // subtitle: forma + embalagem + preço
             concentration: concentrationSafe,
             commercialName: toSafeString(item.commercial_name),
-            pharmaceuticalForm: toSafeString(item.pharmaceutical_form),
+            pharmaceuticalForm: toSafeString(
+                item.kind === 'compounded'
+                    ? item.compounded_snapshot?.pharmaceutical_form || item.pharmaceutical_form
+                    : item.pharmaceutical_form
+            ),
             presentationValue: toSafeString(item.value),
             presentationValueUnit: toSafeString(item.value_unit),
             presentationPerValue: toSafeString(item.per_value),
@@ -359,7 +423,11 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
             manualEdited: hasManualInstruction,
             titleBold: false,
             titleUnderline: false,
-            cautions: item.cautions || [],
+            cautions: item.kind === 'compounded'
+                ? buildCompoundedPreviewCautions(item, state.patient)
+                : [
+                    ...(item.cautions || []),
+                ],
             startDate: effectiveStartDate,
             startHour: effectiveStartHour,
             inheritStartFromPrescription: inheritStart,

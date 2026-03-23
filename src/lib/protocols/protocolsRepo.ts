@@ -50,8 +50,11 @@ export type ProtocolRecord = {
  */
 export type ProtocolMedicationItem = {
   id?: string
+  item_type?: 'standard' | 'compounded'
   // Catalog mode
   medication_id: string | null
+  compounded_medication_id?: string | null
+  compounded_regimen_id?: string | null
   global_medication_id?: string | null
   /** UI-only display name — NOT sent to DB */
   medication_name?: string
@@ -312,13 +315,16 @@ function buildProtocolMedicationInsert(
   protocolId: string
 ) {
   const medicationId = String(input.medication_id || '').trim() || null
+  const compoundedMedicationId = String(input.compounded_medication_id || '').trim() || null
+  const compoundedRegimenId = String(input.compounded_regimen_id || '').trim() || null
   const presentationId = String(input.presentation_id || '').trim() || null
   const manualName = String(input.manual_medication_name || '').trim() || null
   const manualPresentation = String(input.manual_presentation_label || '').trim() || null
 
-  const isCatalog = !!medicationId
+  const itemType = input.item_type === 'compounded' ? 'compounded' : 'standard'
+  const isCatalog = itemType === 'standard' && !!medicationId
 
-  if (!isCatalog && !manualName) {
+  if (!isCatalog && !compoundedMedicationId && !manualName) {
     throw new Error(
       `Item de protocolo na posição ${index + 1}: é necessário medication_id+presentation_id (catálogo) ou manual_medication_name (manual).`
     )
@@ -329,7 +335,10 @@ function buildProtocolMedicationInsert(
     clinic_id: clinicId,
     protocol_id: protocolId,
     sort_order: index,
+    item_type: itemType,
     medication_id: isCatalog ? medicationId : null,
+    compounded_medication_id: itemType === 'compounded' ? compoundedMedicationId : null,
+    compounded_regimen_id: itemType === 'compounded' ? compoundedRegimenId : null,
     presentation_id: isCatalog ? presentationId : null,
     concentration_value: input.concentration_value ?? null,
     concentration_unit: input.concentration_unit || null,
@@ -797,7 +806,10 @@ export async function loadProtocolBundle(
   const hydratedMedications = await hydrateClinicProtocolMedications(
     ((medications ?? []).map((m) => ({
       id: m.id,
+      item_type: (m as any).item_type ?? 'standard',
       medication_id: m.medication_id ?? null,
+      compounded_medication_id: (m as any).compounded_medication_id ?? null,
+      compounded_regimen_id: (m as any).compounded_regimen_id ?? null,
       presentation_id: m.presentation_id ?? null,
       manual_medication_name: m.manual_medication_name ?? null,
       manual_presentation_label: m.manual_presentation_label ?? null,
@@ -879,7 +891,10 @@ export async function loadGlobalProtocolBundle(
   const hydratedMedications = await hydrateGlobalProtocolMedications(
     ((medications ?? []).map((m) => ({
       id: m.id,
+      item_type: (m as any).item_type ?? 'standard',
       medication_id: m.medication_id ?? null,
+      compounded_medication_id: (m as any).compounded_medication_id ?? null,
+      compounded_regimen_id: (m as any).compounded_regimen_id ?? null,
       global_medication_id: (m as any).global_medication_id ?? null,
       presentation_id: null,
       presentation_slug: (m as any).presentation_slug ?? null,

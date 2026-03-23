@@ -17,15 +17,13 @@ import React, {
     useState,
 } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { jsPDF } from 'jspdf'
-import html2canvas from 'html2canvas'
 import { RxPrintView } from './RxPrintView'
 import { buildPrintDocsFromNovaReceita2 } from './novaReceita2Adapter'
 import { BUILTIN_TEMPLATES, DEFAULT_NOVA_RECEITA_TEMPLATE_ID } from './builtinTemplates'
 import { normalizeNovaReceita2State } from './NovaReceita2Page'
 import type { NovaReceita2State, PrescriptionItem, TutorInfo, PatientInfo } from './NovaReceita2Page'
 import type { TemplateZoneKey } from './rxDb'
-import { uploadPrescriptionPdf, attachPdfToPresc, savePrescription } from '../../src/lib/prescriptionsRecords'
+import { uploadPrescriptionPdf, attachPdfToPresc, savePrescription, savePrescriptionDocuments } from '../../src/lib/prescriptionsRecords'
 import { getStoredClinicId } from '../../src/lib/clinic'
 
 // ==================== SESSION ====================
@@ -554,12 +552,30 @@ export default function NovaReceita2PrintPage() {
             pushToast('Preview não disponível para exportação.')
             return
         }
+        const hasControlledDoc = !!printDocs?.some((doc) => doc.documentKind === 'special-control')
+        const hasTutorAddress = !![
+            state?.tutor?.street,
+            state?.tutor?.number,
+            state?.tutor?.neighborhood,
+            state?.tutor?.city,
+            state?.tutor?.state,
+            state?.tutor?.zipcode,
+        ].filter(Boolean).length
+        if (hasControlledDoc && (!state?.tutor?.cpf || !hasTutorAddress)) {
+            pushToast('Receita de controle especial exige CPF e endereço completo do tutor.')
+            return
+        }
 
         const sheets = Array.from(container.querySelectorAll('[data-rx-print-canvas="sheet"]')) as HTMLElement[]
         const targets = sheets.length ? sheets : [container]
 
         setIsExporting(true)
         try {
+            const [{ jsPDF }, html2canvasModule] = await Promise.all([
+                import('jspdf'),
+                import('html2canvas'),
+            ])
+            const html2canvas = html2canvasModule.default
             const pdf = new jsPDF({
                 orientation: 'portrait',
                 unit: 'mm',
@@ -628,6 +644,16 @@ export default function NovaReceita2PrintPage() {
                         blob,
                     })
                     await attachPdfToPresc({ prescriptionId: effectivePrescriptionId, pdfPath, clinicId })
+                    await savePrescriptionDocuments({
+                        prescriptionId: effectivePrescriptionId,
+                        clinicId,
+                        documents: (printDocs || []).map((doc) => ({
+                            document_type: doc.documentKind === 'special-control' ? 'controlled' : 'standard',
+                            pdf_path: pdfPath,
+                            pdf_bucket: 'receituario-media',
+                            snapshot_json: doc as any,
+                        })),
+                    })
                     if (import.meta.env.DEV) {
                         console.log('[Rx2Print] PDF salvo no storage', { pdfPath })
                     }

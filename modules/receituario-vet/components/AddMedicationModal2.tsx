@@ -487,6 +487,7 @@ export function AddMedicationModal2({
 
       const newItem: PrescriptionItem = {
         id: `item-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
+        kind: 'standard',
         type: 'medication',
         isManual: true,
         is_controlled: manualControlled,
@@ -532,6 +533,7 @@ export function AddMedicationModal2({
 
     const newItem: PrescriptionItem = {
       id: `item-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
+      kind: 'standard',
       type: 'medication',
       isManual: false,
       is_controlled: !!selectedMedication.is_controlled,

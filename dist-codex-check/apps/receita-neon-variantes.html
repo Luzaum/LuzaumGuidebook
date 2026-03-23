@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Variações Receita Neon</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      body {
+        margin: 0;
+        padding: 28px;
+        font-family: Manrope, Arial, sans-serif;
+        background:
+          radial-gradient(900px 460px at 20% 2%, rgba(57, 255, 20, 0.12), transparent 48%),
+          linear-gradient(180deg, #020605 0%, #030806 55%, #020504 100%);
+        color: #e8f5e8;
+      }
+      h1 {
+        margin: 0 0 18px;
+        font-size: 22px;
+      }
+      p {
+        margin: 0 0 18px;
+        color: #9ac59c;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }
+      .card {
+        border: 1px solid rgba(57, 255, 20, 0.2);
+        border-radius: 14px;
+        background: rgba(11, 18, 13, 0.85);
+        padding: 14px;
+      }
+      .title {
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: contain;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>5 versões - Ícone de Receita Neon</h1>
+    <p>Escolha a versão que você prefere para substituir o pote + colher.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="title">V1 - Receita + cruz</div>
+        <img src="./receita-neon-v1.svg" alt="V1" />
+      </div>
+      <div class="card">
+        <div class="title">V2 - Duas vias + selo</div>
+        <img src="./receita-neon-v2.svg" alt="V2" />
+      </div>
+      <div class="card">
+        <div class="title">V3 - Prancheta clínica</div>
+        <img src="./receita-neon-v3.svg" alt="V3" />
+      </div>
+      <div class="card">
+        <div class="title">V4 - Controle especial</div>
+        <img src="./receita-neon-v4.svg" alt="V4" />
+      </div>
+      <div class="card">
+        <div class="title">V5 - Receita minimal Rx</div>
+        <img src="./receita-neon-v5.svg" alt="V5" />
+      </div>
+    </div>
+  </body>
+</html>

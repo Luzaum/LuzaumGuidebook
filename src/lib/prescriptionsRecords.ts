@@ -11,9 +11,29 @@ export interface PrescriptionContent {
   kind: 'standard' | 'special-control'
   templateId: string | null
   printDoc: PrintDoc
+  printDocs?: PrintDoc[]
   stateSnapshot?: any // NovaReceita2State
   createdAtLocal: string
   appVersion: string
+}
+
+export interface PrescriptionDocumentInput {
+  document_type: 'standard' | 'controlled'
+  pdf_path?: string | null
+  pdf_bucket?: string | null
+  snapshot_json?: Record<string, unknown> | null
+}
+
+export interface PrescriptionDocumentRecord {
+  id: string
+  clinic_id: string
+  prescription_id: string
+  document_type: 'standard' | 'controlled'
+  pdf_path: string | null
+  pdf_bucket: string | null
+  snapshot_json: Record<string, unknown> | null
+  created_at: string
+  updated_at: string
 }
 
 export interface PrescriptionRecord {
@@ -342,6 +362,69 @@ export async function attachPdfToPresc(params: {
   if (import.meta.env.DEV) {
     console.log('[Storage] pdf_path salvo', { id: params.prescriptionId, path: params.pdfPath })
   }
+}
+
+export async function savePrescriptionDocuments(params: {
+  prescriptionId: string
+  clinicId: string
+  documents: PrescriptionDocumentInput[]
+}): Promise<PrescriptionDocumentRecord[]> {
+  const targetClinicId = resolveClinicId(params.clinicId)
+
+  const { error: deleteError } = await supabase
+    .from('prescription_documents')
+    .delete()
+    .eq('clinic_id', targetClinicId)
+    .eq('prescription_id', params.prescriptionId)
+
+  if (deleteError) {
+    logSbDevError('[Prescriptions] delete documents error', deleteError)
+    throw deleteError
+  }
+
+  if (!params.documents.length) return []
+
+  const payload = params.documents.map((entry) => ({
+    clinic_id: targetClinicId,
+    prescription_id: params.prescriptionId,
+    document_type: entry.document_type,
+    pdf_path: entry.pdf_path || null,
+    pdf_bucket: entry.pdf_bucket || null,
+    snapshot_json: entry.snapshot_json || null,
+  }))
+
+  const { data, error } = await supabase
+    .from('prescription_documents')
+    .insert(payload)
+    .select('*')
+
+  if (error) {
+    logSbDevError('[Prescriptions] insert documents error', error)
+    throw error
+  }
+
+  return (data || []) as PrescriptionDocumentRecord[]
+}
+
+export async function listPrescriptionDocuments(params: {
+  prescriptionId: string
+  clinicId?: string
+}): Promise<PrescriptionDocumentRecord[]> {
+  const targetClinicId = resolveClinicId(params.clinicId)
+
+  const { data, error } = await supabase
+    .from('prescription_documents')
+    .select('*')
+    .eq('clinic_id', targetClinicId)
+    .eq('prescription_id', params.prescriptionId)
+    .order('created_at', { ascending: true })
+
+  if (error) {
+    logSbDevError('[Prescriptions] list documents error', error)
+    throw error
+  }
+
+  return (data || []) as PrescriptionDocumentRecord[]
 }
 
 /**

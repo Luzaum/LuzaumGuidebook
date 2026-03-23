@@ -11,7 +11,7 @@ import { loadRxDb, createEmptyClient, createEmptyClientAnimal, ClientRecord, Cli
 import { TutorInfo, PatientInfo } from './rxTypes'
 import { isUuid } from '@/src/lib/isUuid'
 import { normalizeNeutered } from './rxUtils'
-import { insertTutor, insertPatient, insertWeight, insertPatientWeight, loadPatientWeights } from '@/src/lib/clinicRecords'
+import { insertTutor, insertPatient, insertWeight, insertPatientWeight, loadPatientWeights, deleteTutorSoft } from '@/src/lib/clinicRecords'
 import { useLocalDraft } from '../../hooks/useLocalDraft'
 
 function normalizeLooseText(value: string): string {
@@ -409,7 +409,6 @@ export default function ClientesPage() {
 
     setIsDeleting(true)
     try {
-      const { deleteTutorSoft } = await import('@/src/lib/clinicRecords')
       await deleteTutorSoft(pendingDeleteTutorId, clinicId)
       console.log('[TutorDelete] success', { pendingDeleteTutorId })
       syncToast(tutorHasPrescriptions ? `Tutor ${pendingDeleteTutorName} arquivado.` : `Tutor ${pendingDeleteTutorName} removido.`)

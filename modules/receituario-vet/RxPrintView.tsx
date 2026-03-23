@@ -373,6 +373,7 @@ export function RxPrintView({
                       <div className={`mb-1 flex items-center justify-between gap-2 ${isClassic ? '' : ''}`}>
                         <h4
                           style={{
+                            color: '#111827',
                             textDecoration: item.titleUnderline ? 'underline' : 'none',
                             textDecorationColor: sectionAccent,
                             textDecorationThickness: item.titleUnderline ? '2px' : undefined,
@@ -389,13 +390,13 @@ export function RxPrintView({
                         ) : null}
                       </div>
                       {!isClassic && item.subtitle ? <p className="mb-1" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 2, 9)}pt`, color: '#64748b' }}>{item.subtitle}</p> : null}
-                      <p className="whitespace-pre-line leading-relaxed" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt` }}>
+                      <p className="whitespace-pre-line leading-relaxed" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt`, color: '#111827' }}>
                         {highlightInstructionSegments(item.instruction)}
                       </p>
                       {item.cautions.length ? (
                         <div className="mt-2 space-y-1">
                           {item.cautions.map((line, idx) => (
-                            <p key={`${item.id}-c-${idx}`} className={isClassic ? 'whitespace-pre-wrap' : 'font-bold whitespace-pre-wrap'} style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt` }}>
+                            <p key={`${item.id}-c-${idx}`} className={isClassic ? 'whitespace-pre-wrap' : 'font-bold whitespace-pre-wrap'} style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt`, color: '#111827' }}>
                               {line}
                             </p>
                           ))}

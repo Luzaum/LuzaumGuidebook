@@ -21,7 +21,7 @@ const NeurologiaPage = lazy(() => import('./pages/NeurologiaPage').then((m) => (
 const SupabaseTestPage = lazy(() => import('./pages/SupabaseTestPage').then((m) => ({ default: m.SupabaseTestPage })))
 const EscalasDorPage = lazy(() => import('./modules/escalas-dor/App'))
 
-const CrivetPage = lazy(() => import('./modules/crivet/pages/CrivetPage'))
+const CrivetPage = lazy(() => import('./pages/Crivet').then((m) => ({ default: m.Crivet })))
 const VeteletroliticoPage = lazy(() => import('./modules/veteletrolitico/App'))
 const ReceituarioVetPage = lazy(() => import('./modules/receituario-vet/App'))
 const PlantaoVetApp = lazy(() => import('./modules/plantao-vet/App'))
@@ -53,6 +53,7 @@ const HistoricoReceitasPage = lazy(() => import('./modules/receituario-vet/Histo
 const ProfilePage = lazy(() => import('./modules/receituario-vet/ProfilePage'))
 const ClientesPage = lazy(() => import('./modules/receituario-vet/ClientesPage'))
 const Catalogo3Page = lazy(() => import('./modules/receituario-vet/Catalogo3Page'))
+const ManipuladosPage = lazy(() => import('./modules/receituario-vet/ManipuladosPage'))
 const ProtocolosPage = lazy(() => import('./modules/receituario-vet/ProtocolosPage'))
 const Protocolos3Page = lazy(() => import('./modules/receituario-vet/Protocolos3Page'))
 const TemplatesPage = lazy(() => import('./modules/receituario-vet/TemplatesPage'))
@@ -119,6 +120,7 @@ const appRoutes = (
     <Route path="/receituario-vet/configuração" element={<ProtectedClinicRoute><ProfilePage /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/clientes" element={<ProtectedClinicRoute><ClientesPage /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/catalogo3" element={<ProtectedClinicRoute><Catalogo3Page /></ProtectedClinicRoute>} />
+    <Route path="/receituario-vet/manipulados" element={<ProtectedClinicRoute><ManipuladosPage /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/protocolos" element={<ProtectedClinicRoute><ProtocolosPage /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/protocolos-3" element={<ProtectedClinicRoute><Protocolos3Page /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/controle-especial" element={<ProtectedClinicRoute><ControleEspecialPage /></ProtectedClinicRoute>} />

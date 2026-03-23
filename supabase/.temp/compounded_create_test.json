@@ -1,0 +1,15 @@
+﻿{
+  "clinic_id": "079c8735-4e3a-4121-a2ac-75fd2bb4ec21",
+  "name": "MANIP TESTE CODEX 2026-03-22",
+  "slug": "manip-teste-codex-2026-03-22",
+  "description": "Registro temporario para validacao remota",
+  "pharmaceutical_form": "Suspensao oral",
+  "default_route": "VO",
+  "species": ["canina"],
+  "routes": ["VO"],
+  "is_controlled": false,
+  "is_active": true,
+  "default_quantity_text": "30 mL",
+  "default_qsp_text": "q.s.p. 30 mL",
+  "metadata": { "source": "codex_remote_validation" }
+}

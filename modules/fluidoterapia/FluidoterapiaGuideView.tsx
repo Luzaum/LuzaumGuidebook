@@ -1,11 +1,18 @@
 import React from 'react'
 import { BookOpenText, CheckCircle2, Route, Scale } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { GUIDE_BLOCKS } from './content'
 
 export function FluidoterapiaGuideView() {
   return (
     <div className="space-y-6">
-      <section id="principles" className="fluid-panel rounded-[32px] p-6 md:p-8">
+      <motion.section 
+        id="principles" 
+        className="fluid-panel rounded-[32px] p-6 md:p-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      >
         <div className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
           <div>
             <div className="fluid-kicker text-xs font-semibold uppercase tracking-[0.24em]">
@@ -33,9 +40,15 @@ export function FluidoterapiaGuideView() {
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section id="formulas" className="fluid-panel rounded-[32px] p-6 md:p-8">
+      <motion.section 
+        id="formulas" 
+        className="fluid-panel rounded-[32px] p-6 md:p-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+      >
         <div className="grid gap-4 xl:grid-cols-3">
           <div className="fluid-panel-strong rounded-[28px] p-5">
             <div className="flex items-center gap-2 text-sm font-semibold">
@@ -72,9 +85,15 @@ export function FluidoterapiaGuideView() {
             </p>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section id="when" className="fluid-panel rounded-[32px] p-6 md:p-8">
+      <motion.section 
+        id="when" 
+        className="fluid-panel rounded-[32px] p-6 md:p-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+      >
         <div className="grid gap-4 xl:grid-cols-3">
           {GUIDE_BLOCKS.map((block) => (
             <article key={block.title} className="fluid-panel-strong rounded-[28px] p-5">
@@ -88,9 +107,15 @@ export function FluidoterapiaGuideView() {
             </article>
           ))}
         </div>
-      </section>
+      </motion.section>
 
-      <section id="routes" className="fluid-panel rounded-[32px] p-6 md:p-8">
+      <motion.section 
+        id="routes" 
+        className="fluid-panel rounded-[32px] p-6 md:p-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+      >
         <div className="grid gap-4 xl:grid-cols-4">
           {[
             { title: 'IV / IO', body: 'Via prioritária para hipovolemia, choque e pacientes com perfusão ruim.' },
@@ -104,9 +129,15 @@ export function FluidoterapiaGuideView() {
             </div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
-      <section id="trust" className="fluid-panel rounded-[32px] p-6 md:p-8">
+      <motion.section 
+        id="trust" 
+        className="fluid-panel rounded-[32px] p-6 md:p-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+      >
         <div className="grid gap-4 xl:grid-cols-2">
           <div className="fluid-panel-strong rounded-[28px] p-5">
             <div className="flex items-center gap-2 text-sm font-semibold">
@@ -133,7 +164,7 @@ export function FluidoterapiaGuideView() {
             </ul>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   )
 }

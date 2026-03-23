@@ -50,8 +50,14 @@ import {
   getMedicationPresentations,
   type MedicationPresentationRecord,
 } from '../../src/lib/clinicRecords'
+import {
+  getCompoundedMedicationBundle,
+  listCompoundedMedications,
+  type CompoundedMedicationBundle,
+} from '../../src/lib/compoundedRecords'
 import { useLocalDraft } from '../../hooks/useLocalDraft'
 import { AddMedicationModal2 } from './components/AddMedicationModal2'
+import { buildCompoundedPrescriptionItem } from './compoundedItemBuilder'
 
 // ==================== TYPES ====================
 
@@ -67,33 +73,33 @@ type PublishGlobalMode = 'new' | 'update'
 type ProtocolScopeFilter = 'all' | 'clinic' | 'global'
 
 const PROTOCOL_SPECIES_OPTIONS = [
-  { value: '', label: 'Ambas as especies' },
+  { value: '', label: 'Ambas as espécies' },
   { value: 'Canina', label: 'Canina' },
   { value: 'Felina', label: 'Felina' },
 ]
 
 const PROTOCOL_CONTROL_OPTIONS = [
-  { value: 'false', label: 'Nao (receituario comum)' },
+  { value: 'false', label: 'Não (receituário comum)' },
   { value: 'true', label: 'Sim (controle especial)' },
 ]
 
 const PROTOCOL_ROUTE_OPTIONS = [
   { value: '', label: 'Selecionar via' },
   { value: 'VO', label: 'Oral (VO)' },
-  { value: 'SC', label: 'Subcutaneo (SC)' },
+  { value: 'SC', label: 'Subcutâneo (SC)' },
   { value: 'IM', label: 'Intramuscular (IM)' },
   { value: 'IV', label: 'Intravenoso (IV)' },
-  { value: 'Topico', label: 'Topico' },
-  { value: 'Oftalmico', label: 'Oftalmico' },
-  { value: 'Otologico', label: 'Otologico' },
+  { value: 'Topico', label: 'Tópico' },
+  { value: 'Oftalmico', label: 'Oftálmico' },
+  { value: 'Otologico', label: 'Otológico' },
   { value: 'Intranasal', label: 'Intranasal' },
   { value: 'Retal', label: 'Retal' },
-  { value: 'Inalatorio', label: 'Inalatorio' },
-  { value: 'Transdermico', label: 'Transdermico' },
+  { value: 'Inalatorio', label: 'Inalatório' },
+  { value: 'Transdermico', label: 'Transdérmico' },
 ]
 
 const PROTOCOL_FREQUENCY_OPTIONS = [
-  { value: '', label: 'Selecionar frequencia' },
+  { value: '', label: 'Selecionar frequência' },
   { value: '1', label: '1x ao dia' },
   { value: '2', label: '2x ao dia' },
   { value: '3', label: '3x ao dia' },
@@ -106,21 +112,21 @@ const PROTOCOL_FREQUENCY_OPTIONS = [
 
 const PROTOCOL_DOSE_UNIT_OPTIONS = ['mg/kg', 'mg', 'mcg/kg', 'mcg', 'g', 'mL/kg', 'mL', 'UI/kg', 'UI', 'comprimido', 'capsula', 'gota', 'puff']
 const PROTOCOL_DURATION_MODE_OPTIONS = [
-  { value: 'fixed_days', label: 'Duracao fechada' },
-  { value: 'continuous_until_recheck', label: 'Uso continuo ate reavaliacao' },
+  { value: 'fixed_days', label: 'Duração fechada' },
+  { value: 'continuous_until_recheck', label: 'Uso contínuo até reavaliação' },
 ]
 
 const COMMON_EXAMS = [
   'Hemograma completo',
-  'Bioquimica serica',
-  'Urinalise',
+  'Bioquímica sérica',
+  'Urinálise',
   'Urocultura',
   'Citologia',
   'Ultrassonografia abdominal',
-  'Biopsia lesional',
-  'Biopsia tumoral',
+  'Biópsia lesional',
+  'Biópsia tumoral',
   'Tomografia',
-  'Ressonancia magnetica',
+  'Ressonância magnética',
   'Ecocardiograma',
   'Eletrocardiograma',
   'Rinoscopia',
@@ -140,6 +146,54 @@ type PublishGlobalDraft = {
 
 function readText(value: unknown): string {
   return typeof value === 'string' ? value.trim() : ''
+}
+
+function repairMojibakeText(value: string): string {
+  const input = String(value || '')
+  if (!input) return ''
+
+  const replacements: Record<string, string> = {
+    'Ã¢Å“â€œ ': '',
+    'cl?nica': 'clínica',
+    'CL?NICA': 'CLÍNICA',
+    'Ser?': 'Será',
+    'usuÃƒÂ¡rios': 'usuários',
+    'DescriÃƒÂ§ÃƒÂ£o': 'Descrição',
+    'EspÃƒÂ©cie': 'Espécie',
+    'publicaÃƒÂ§ÃƒÂ£o': 'publicação',
+    'Ã¢â‚¬Â¢': '•',
+    'Apresentacao': 'Apresentação',
+    'apresentacoes': 'apresentações',
+  }
+
+  let next = input
+  for (const [from, to] of Object.entries(replacements)) {
+    next = next.replaceAll(from, to)
+  }
+
+  if (/[ÃÂâ]/.test(next)) {
+    try {
+      next = decodeURIComponent(escape(next))
+    } catch {
+      // noop
+    }
+  }
+
+  return next.replace(/\s+/g, ' ').trim()
+}
+
+function normalizeExamLabel(value: string): string {
+  return normalizeSearchText(repairMojibakeText(value))
+}
+
+function cleanExamLabel(value: string): string {
+  const repaired = repairMojibakeText(value)
+  const canonical = COMMON_EXAMS.find((exam) => normalizeExamLabel(exam) === normalizeExamLabel(repaired))
+  return canonical || repaired
+}
+
+function scopeLabel(scope: 'clinic' | 'global'): string {
+  return scope === 'global' ? 'GLOBAL' : 'DA CLÍNICA'
 }
 
 function hasTruthyFlag(value: unknown): boolean {
@@ -168,17 +222,22 @@ function buildPresentationLabel(presentation: MedicationPresentationRecord): str
   ].filter(Boolean).join(' - ')
 }
 
+function isCompoundedProtocolMedication(item: ProtocolMedicationItem): boolean {
+  return item.item_type === 'compounded' || !!item.compounded_medication_id
+}
+
 function buildExamKeyFromLabel(label: string): string {
   return slugifyProtocolName(label).replace(/-/g, '_')
 }
 
 function buildProtocolExamItemsFromDraft(commonItems: ProtocolBundle['examItems'], customExamText: string): ProtocolBundle['examItems'] {
   const selectedCommonExams = (commonItems || []).filter(
-    (item) => !item.is_custom && COMMON_EXAMS.includes(item.label)
+    (item) => !item.is_custom && COMMON_EXAMS.some((exam) => normalizeExamLabel(exam) === normalizeExamLabel(item.label))
   )
   const customItems = customExamText
     .split('\n')
     .map((line) => line.replace(/\r/g, ''))
+    .map((line) => cleanExamLabel(line))
     .filter((line) => line.trim().length > 0)
     .map((label) => ({
       label,
@@ -235,8 +294,8 @@ function getMedicationFrequencyLabel(item: ProtocolMedicationItem): string {
     return `A cada ${item.interval_hours} horas`
   }
   if (item.frequency_type === 'once_daily') return '1x ao dia'
-  if (item.frequency_type === 'as_needed') return 'Se necessario'
-  return 'Frequencia nao definida'
+  if (item.frequency_type === 'as_needed') return 'Se necessário'
+  return 'Frequência não definida'
 }
 
 function canUserPublishGlobal(role: 'owner' | 'member' | null, user: any): boolean {
@@ -298,15 +357,19 @@ export default function Protocolos3Page() {
   const [createFolderName, setCreateFolderName] = useState('')
   const [isCreatingFolder, setIsCreatingFolder] = useState(false)
   const [protocolMedicationModalOpen, setProtocolMedicationModalOpen] = useState(false)
+  const [protocolMedicationManualMode, setProtocolMedicationManualMode] = useState(false)
 
   // Ã¢Å“â€¦ Estado: busca de medicamentos
   const [medicationSearchOpen, setMedicationSearchOpen] = useState(false)
   const [medicationSearchQuery, setMedicationSearchQuery] = useState('')
   const [medications, setMedications] = useState<MedicationSearchResult[]>([])
+  const [compoundedMedications, setCompoundedMedications] = useState<CompoundedMedicationBundle[]>([])
   const [isSearchingMedications, setIsSearchingMedications] = useState(false)
   const [presentationPickerMedication, setPresentationPickerMedication] = useState<MedicationSearchResult | null>(null)
   const [presentationOptions, setPresentationOptions] = useState<MedicationPresentationRecord[]>([])
   const [isLoadingPresentationOptions, setIsLoadingPresentationOptions] = useState(false)
+  const [compoundedPickerBundle, setCompoundedPickerBundle] = useState<CompoundedMedicationBundle | null>(null)
+  const [compoundedPickerRegimenId, setCompoundedPickerRegimenId] = useState('')
   const [protocolExamDraft, setProtocolExamDraft] = useState('')
   const [protocolCustomExamText, setProtocolCustomExamText] = useState('')
   const [publishGlobalOpen, setPublishGlobalOpen] = useState(false)
@@ -384,6 +447,7 @@ export default function Protocolos3Page() {
   useEffect(() => {
     if (!clinicId || !medicationSearchOpen) {
       setMedications([])
+      setCompoundedMedications([])
       return
     }
 
@@ -392,12 +456,21 @@ export default function Protocolos3Page() {
     const timer = setTimeout(async () => {
       try {
         setIsSearchingMedications(true)
-        const results = await searchMedications(clinicId, q || '', q ? 50 : 20)
-        console.log('[Protocolos3] Medicamentos encontrados', results.length)
-        setMedications(results)
+        const [standardResults, compoundedResults] = await Promise.all([
+          searchMedications(clinicId, q || '', q ? 50 : 20),
+          (async () => {
+            const rows = await listCompoundedMedications(clinicId, { search: q || '' })
+            const bundles = await Promise.all(rows.map(async (row) => await getCompoundedMedicationBundle(clinicId, row.id)))
+            return bundles.filter(Boolean) as CompoundedMedicationBundle[]
+          })(),
+        ])
+        console.log('[Protocolos3] Medicamentos encontrados', standardResults.length)
+        setMedications(standardResults)
+        setCompoundedMedications(compoundedResults)
       } catch (err) {
         console.error('[Protocolos3] Erro ao buscar medicamentos', err)
         setMedications([])
+        setCompoundedMedications([])
       } finally {
         setIsSearchingMedications(false)
       }
@@ -420,7 +493,7 @@ export default function Protocolos3Page() {
 
     const customExamLines = (editingProtocol.examItems || [])
       .filter((item) => item.is_custom)
-      .map((item) => item.label || '')
+      .map((item) => cleanExamLabel(item.label || ''))
       .filter(Boolean)
       .join('\n')
 
@@ -455,8 +528,23 @@ export default function Protocolos3Page() {
     [visibleProtocols]
   )
 
+  const hasCompoundedProtocolItems = useMemo(
+    () => !!editingProtocol?.medications.some((item) => isCompoundedProtocolMedication(item)),
+    [editingProtocol]
+  )
+
   const updateEditingProtocol = useCallback((updater: (prev: ProtocolBundle) => ProtocolBundle) => {
     setEditingProtocol((prev) => (prev ? updater(prev) : prev))
+  }, [])
+
+  const closeMedicationSearchModal = useCallback(() => {
+    setPresentationPickerMedication(null)
+    setPresentationOptions([])
+    setCompoundedPickerBundle(null)
+    setCompoundedPickerRegimenId('')
+    setMedicationSearchOpen(false)
+    setMedicationSearchQuery('')
+    setCompoundedMedications([])
   }, [])
 
   const updateProtocolHeader = useCallback((patch: Partial<ProtocolRecord>) => {
@@ -538,15 +626,16 @@ export default function Protocolos3Page() {
 
   const toggleCommonExam = useCallback((label: string) => {
     updateEditingProtocol((prev) => {
+      const cleanLabel = cleanExamLabel(label)
       const currentItems = prev.examItems || []
-      const existingIndex = currentItems.findIndex((item) => item.label === label)
+      const existingIndex = currentItems.findIndex((item) => normalizeExamLabel(item.label) === normalizeExamLabel(cleanLabel))
       const nextItems = existingIndex >= 0
         ? currentItems.filter((_, itemIndex) => itemIndex !== existingIndex)
         : [
             ...currentItems,
             {
-              label,
-              exam_key: buildExamKeyFromLabel(label),
+              label: cleanLabel,
+              exam_key: buildExamKeyFromLabel(cleanLabel),
               is_custom: false,
               sort_order: currentItems.length,
             },
@@ -560,11 +649,11 @@ export default function Protocolos3Page() {
   }, [updateEditingProtocol])
 
   const addCustomProtocolExam = useCallback(() => {
-    const label = protocolExamDraft.trim()
+    const label = cleanExamLabel(protocolExamDraft.trim())
     if (!label) return
     setProtocolCustomExamText((prev) => {
-      const currentLines = prev.split('\n').map((line) => line.trim()).filter(Boolean)
-      if (currentLines.includes(label)) return prev
+      const currentLines = prev.split('\n').map((line) => cleanExamLabel(line.trim())).filter(Boolean)
+      if (currentLines.some((line) => normalizeExamLabel(line) === normalizeExamLabel(label))) return prev
       return prev.trim() ? `${prev}\n${label}` : label
     })
     setProtocolExamDraft('')
@@ -662,6 +751,10 @@ export default function Protocolos3Page() {
       alert('Salve o protocolo local antes de publicar como global.')
       return
     }
+    if (editingProtocol.medications.some((item) => isCompoundedProtocolMedication(item))) {
+      alert('Protocolos com itens manipulados ainda não podem ser publicados globalmente. Remova os manipulados ou mantenha este protocolo somente na clínica.')
+      return
+    }
 
     try {
       setIsLoadingGlobalProtocols(true)
@@ -678,8 +771,8 @@ export default function Protocolos3Page() {
       })
       setPublishGlobalOpen(true)
     } catch (err) {
-      console.error('[Protocolos3] Erro ao abrir publicaÃƒÂ§ÃƒÂ£o global', err)
-      alert(`Falha ao preparar publicaÃƒÂ§ÃƒÂ£o global\n\n${safeStringify(err)}`)
+      console.error('[Protocolos3] Erro ao abrir publicação global', err)
+      alert(`Falha ao preparar publicação global\n\n${safeStringify(err)}`)
     } finally {
       setIsLoadingGlobalProtocols(false)
     }
@@ -693,6 +786,10 @@ export default function Protocolos3Page() {
 
   const handlePublishGlobalProtocol = useCallback(async () => {
     if (!clinicId || !editingProtocol?.protocol.id || !publishGlobalDraft) return
+    if (editingProtocol.medications.some((item) => isCompoundedProtocolMedication(item))) {
+      alert('Este protocolo contém item manipulado clinic-only. A publicação global está bloqueada nesta versão.')
+      return
+    }
 
     const name = publishGlobalDraft.name.trim()
     const slug = slugifyProtocolName(publishGlobalDraft.slug || publishGlobalDraft.name)
@@ -701,7 +798,7 @@ export default function Protocolos3Page() {
       return
     }
     if (!slug) {
-      alert('Slug global invÃƒÂ¡lido.')
+      alert('Slug global inválido.')
       return
     }
     if (publishGlobalDraft.mode === 'update' && !publishGlobalDraft.globalProtocolId) {
@@ -726,8 +823,8 @@ export default function Protocolos3Page() {
       setLinkedGlobalProtocols(refreshedLinked)
       alert(
         result.mode === 'update'
-          ? `Protocolo global atualizado com sucesso.\n\nSlug: ${result.slug}\nVersÃƒÂ£o: ${result.version}`
-          : `Protocolo global publicado com sucesso.\n\nSlug: ${result.slug}\nVersÃƒÂ£o: ${result.version}`
+        ? `Protocolo global atualizado com sucesso.\n\nSlug: ${result.slug}\nVersão: ${result.version}`
+        : `Protocolo global publicado com sucesso.\n\nSlug: ${result.slug}\nVersão: ${result.version}`
       )
       handleClosePublishGlobalModal()
     } catch (err) {
@@ -736,7 +833,7 @@ export default function Protocolos3Page() {
     } finally {
       setIsPublishingGlobal(false)
     }
-  }, [clinicId, editingProtocol?.protocol.id, handleClosePublishGlobalModal, publishGlobalDraft])
+  }, [clinicId, editingProtocol, handleClosePublishGlobalModal, publishGlobalDraft])
 
   const handleDeleteProtocol = useCallback(
     async (protocolId: string) => {
@@ -760,7 +857,7 @@ export default function Protocolos3Page() {
   const handleDeleteFolder = useCallback(
     async (folderId: string, folderName: string) => {
       if (!clinicId || !userId) return
-      if (!confirm(`Excluir pasta "${folderName}"? Os protocolos dentro serÃƒÂ£o movidos para Todos.`)) return
+      if (!confirm(`Excluir pasta "${folderName}"? Os protocolos dentro serão movidos para Todos.`)) return
       try {
         await deleteFolder(clinicId, userId, folderId)
         const [refreshedFolders, refreshedProtocols] = await Promise.all([
@@ -781,7 +878,7 @@ export default function Protocolos3Page() {
   const handleApplyToNovaReceita = useCallback(
     async (protocol: ProtocolListEntry) => {
       if (!clinicId || !userId) {
-        alert('Cl?nica ou usu?rio n?o identificado.')
+        alert('Clínica ou usuário não identificado.')
         return
       }
 
@@ -793,7 +890,7 @@ export default function Protocolos3Page() {
             ? await loadGlobalProtocolBundle(protocol.id)
             : await loadProtocolBundle(clinicId, userId, protocol.id)
         if (!bundle) {
-          alert('Protocolo nÃƒÂ£o encontrado.')
+          alert('Protocolo não encontrado.')
           return
         }
 
@@ -807,7 +904,7 @@ export default function Protocolos3Page() {
         const payload = {
           items: prescriptionItems,
           recommendations: recommendationsText,
-          exams: (bundle.examItems || []).map((exam) => exam.label).filter(Boolean),
+          exams: (bundle.examItems || []).map((exam) => cleanExamLabel(exam.label)).filter(Boolean),
           examJustification: bundle.protocol.exams_justification || '',
           sourceProtocol: {
             id: bundle.protocol.id,
@@ -843,7 +940,7 @@ export default function Protocolos3Page() {
           setSelectedProtocolBundle(bundle)
           console.log('[Protocolos3] Protocolo carregado com sucesso', bundle.protocol.name)
         } else {
-          console.error('[Protocolos3] Protocolo nÃƒÂ£o encontrado', protocolId)
+          console.error('[Protocolos3] Protocolo não encontrado', protocolId)
           setSelectedProtocolId(null)
         }
       } catch (err) {
@@ -862,7 +959,7 @@ export default function Protocolos3Page() {
       setIsLoadingGlobalViewer(true)
       const bundle = await loadGlobalProtocolBundle(protocolId)
       if (!bundle) {
-        alert('Protocolo global nÃƒÂ£o encontrado.')
+        alert('Protocolo global não encontrado.')
         return
       }
       setGlobalProtocolViewer(bundle)
@@ -893,7 +990,7 @@ export default function Protocolos3Page() {
         setModalOpen(true)
       }
       setGlobalProtocolViewer(null)
-      alert('Protocolo global duplicado para a sua cl?nica com sucesso.')
+      alert('Protocolo global duplicado para a sua clínica com sucesso.')
     } catch (err) {
       console.error('[Protocolos3] Erro ao duplicar protocolo global', err)
       const message = err instanceof Error ? err.message : safeStringify(err)
@@ -938,7 +1035,7 @@ export default function Protocolos3Page() {
         const defaultPresentation = presentations[0] // Use first available presentation
 
         if (!defaultPresentation) {
-          alert('Medicamento nÃƒÂ£o possui apresentaÃƒÂ§ÃƒÂµes cadastradas.')
+          alert('Medicamento não possui apresentações cadastradas.')
           return
         }
 
@@ -1002,6 +1099,7 @@ export default function Protocolos3Page() {
         mapPrescriptionItemToProtocolMedicationItem(item, prev.medications.length),
       ],
     }))
+    setProtocolMedicationManualMode(false)
     setProtocolMedicationModalOpen(false)
   }, [updateEditingProtocol])
 
@@ -1055,9 +1153,8 @@ export default function Protocolos3Page() {
 
     setPresentationPickerMedication(null)
     setPresentationOptions([])
-    setMedicationSearchOpen(false)
-    setMedicationSearchQuery('')
-  }, [presentationPickerMedication, updateEditingProtocol])
+    closeMedicationSearchModal()
+  }, [closeMedicationSearchModal, presentationPickerMedication, updateEditingProtocol])
 
   const handleRemoveMedicationFromDraft = useCallback((index: number) => {
     updateEditingProtocol((prev) => ({
@@ -1104,9 +1201,40 @@ export default function Protocolos3Page() {
 
     setPresentationPickerMedication(null)
     setPresentationOptions([])
-    setMedicationSearchOpen(false)
-    setMedicationSearchQuery('')
-  }, [presentationPickerMedication, updateEditingProtocol])
+    closeMedicationSearchModal()
+  }, [closeMedicationSearchModal, presentationPickerMedication, updateEditingProtocol])
+
+  const handleSelectCompoundedMedication = useCallback((bundle: CompoundedMedicationBundle) => {
+    setCompoundedPickerBundle(bundle)
+    setCompoundedPickerRegimenId(bundle.regimens[0]?.id || '')
+  }, [])
+
+  const handleConfirmCompoundedMedication = useCallback(() => {
+    if (!compoundedPickerBundle) return
+    const regimen =
+      compoundedPickerBundle.regimens.find((entry) => entry.id === compoundedPickerRegimenId) ||
+      compoundedPickerBundle.regimens[0]
+    if (!regimen) {
+      alert('Este manipulado não possui regime recomendado cadastrado.')
+      return
+    }
+
+    const item = buildCompoundedPrescriptionItem({
+      bundle: compoundedPickerBundle,
+      regimen,
+      patient: null,
+    })
+
+    updateEditingProtocol((prev) => ({
+      ...prev,
+      medications: [
+        ...prev.medications,
+        mapPrescriptionItemToProtocolMedicationItem(item, prev.medications.length),
+      ],
+    }))
+
+    closeMedicationSearchModal()
+  }, [closeMedicationSearchModal, compoundedPickerBundle, compoundedPickerRegimenId, updateEditingProtocol])
 
   const handleAddProtocolTag = useCallback(() => {
     const normalizedTag = protocolTagDraft.trim()
@@ -1162,7 +1290,7 @@ export default function Protocolos3Page() {
                     : 'border border-[#39ff14]/20 bg-[#39ff14]/12 text-[#9CFF87]'
                 }`}
               >
-                {protocol.scope === 'global' ? 'GLOBAL' : 'DA CL?NICA'}
+                {scopeLabel(protocol.scope)}
               </span>
             </div>
             <h3 className="truncate text-lg font-black uppercase italic leading-tight text-white">
@@ -1286,7 +1414,7 @@ export default function Protocolos3Page() {
 
     const tags = editingProtocol.protocol.tags || []
     const examItems = editingProtocol.examItems || []
-    const commonExamLabels = examItems.filter((item) => !item.is_custom).map((item) => item.label)
+    const commonExamLabels = examItems.filter((item) => !item.is_custom).map((item) => cleanExamLabel(item.label))
 
     return (
       <RxvModalShell zIndexClass="z-[90]" overlayClassName="bg-black/90 backdrop-blur-sm">
@@ -1295,26 +1423,32 @@ export default function Protocolos3Page() {
             <div>
               <div className="mb-2 flex items-center gap-2">
                 <span className="rounded bg-[#39ff14]/10 px-2.5 py-1 text-[9px] font-black uppercase tracking-wider text-[#7CFF64] border border-[#39ff14]/20">
-                  DA CL?NICA
+                  CLÍNICA
                 </span>
               </div>
               <h2 className="text-xl font-black uppercase italic tracking-tight text-white">
                 {editingProtocol.protocol.id ? 'Editar protocolo' : 'Novo protocolo'}
               </h2>
-              <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                Configure medicamentos, recomendacoes e exames pre-definidos
-              </p>
+                <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                  Configure medicamentos, recomendações e exames predefinidos
+                </p>
             </div>
             <div className="flex items-center gap-3">
               {canPublishGlobalProtocols && (
                 <RxvButton
                   variant="secondary"
                   onClick={handleOpenPublishGlobalModal}
-                  disabled={!editingProtocol.protocol.id || isLoadingGlobalProtocols}
-                  title={editingProtocol.protocol.id ? 'Publicar protocolo para todos os usuarios' : 'Salve o protocolo local antes de publicar'}
-                >
-                  {isLoadingGlobalProtocols ? 'Carregando vinculo...' : 'Salvar como global'}
-                </RxvButton>
+                  disabled={!editingProtocol.protocol.id || isLoadingGlobalProtocols || hasCompoundedProtocolItems}
+                  title={
+                    hasCompoundedProtocolItems
+                      ? 'Protocolos com manipulados ainda não podem ser publicados globalmente'
+                      : editingProtocol.protocol.id
+                        ? 'Publicar protocolo para todos os usuários'
+                        : 'Salve o protocolo local antes de publicar'
+                  }
+                  >
+                    {isLoadingGlobalProtocols ? 'Carregando vínculo...' : 'Salvar como global'}
+                  </RxvButton>
               )}
               <RxvButton variant="secondary" onClick={() => { setModalOpen(false); setEditingProtocol(null); handleClosePublishGlobalModal() }}>
                 Cancelar
@@ -1330,7 +1464,7 @@ export default function Protocolos3Page() {
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <RxvField label="Nome do protocolo">
                   <RxvInput
-                    placeholder="Ex: Dermatite atopica"
+                    placeholder="Ex: Dermatite atópica"
                     value={editingProtocol.protocol.name}
                     onChange={(e) => updateProtocolHeader({ name: e.target.value })}
                   />
@@ -1347,9 +1481,9 @@ export default function Protocolos3Page() {
                 </RxvField>
               </div>
 
-              <RxvField label="Descricao">
+              <RxvField label="Descrição">
                 <RxvTextarea
-                  placeholder="Descricao breve para facilitar a busca do protocolo."
+                  placeholder="Descrição breve para facilitar a busca do protocolo."
                   rows={3}
                   value={editingProtocol.protocol.description || ''}
                   onChange={(e) => updateProtocolHeader({ description: e.target.value || null })}
@@ -1357,7 +1491,7 @@ export default function Protocolos3Page() {
               </RxvField>
 
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <RxvField label="Especie alvo">
+                <RxvField label="Espécie alvo">
                   <RxvSelect
                     value={editingProtocol.protocol.species || ''}
                     onChange={(e) => updateProtocolHeader({ species: e.target.value || null })}
@@ -1419,9 +1553,21 @@ export default function Protocolos3Page() {
                 <h3 className="text-sm font-black uppercase tracking-widest italic text-[#39ff14]">
                   Medicamentos do protocolo
                 </h3>
-                <RxvButton variant="secondary" onClick={() => setProtocolMedicationModalOpen(true)} className="h-8 text-[10px]">
-                  + Adicionar
-                </RxvButton>
+                <div className="flex items-center gap-2">
+                  <RxvButton variant="secondary" onClick={() => setMedicationSearchOpen(true)} className="h-8 text-[10px]">
+                    + Adicionar
+                  </RxvButton>
+                  <RxvButton
+                    variant="ghost"
+                    onClick={() => {
+                      setProtocolMedicationManualMode(true)
+                      setProtocolMedicationModalOpen(true)
+                    }}
+                    className="h-8 text-[10px]"
+                  >
+                    + Manual
+                  </RxvButton>
+                </div>
               </div>
 
               {editingProtocol.medications.length === 0 ? (
@@ -1437,11 +1583,27 @@ export default function Protocolos3Page() {
                     <div key={`${med.medication_id || med.manual_medication_name || 'med'}-${idx}`} className="rounded-2xl border border-slate-800 bg-black/30 p-4">
                       <div className="flex items-start justify-between gap-4">
                         <div className="min-w-0">
-                          <p className="truncate text-sm font-black uppercase italic text-white">
-                            {med.medication_name || med.manual_medication_name || 'Medicamento'}
-                          </p>
+                          <div className="flex flex-wrap items-center gap-2">
+                            <p className="truncate text-sm font-black uppercase italic text-white">
+                              {med.medication_name || med.manual_medication_name || 'Medicamento'}
+                            </p>
+                            {isCompoundedProtocolMedication(med) ? (
+                              <span className="rounded border border-[#39ff14]/35 bg-[#39ff14]/12 px-2 py-0.5 text-[9px] font-black uppercase tracking-widest text-[#9ef98b]">
+                                Manipulado
+                              </span>
+                            ) : (
+                              <span className="rounded border border-cyan-500/25 bg-cyan-500/10 px-2 py-0.5 text-[9px] font-black uppercase tracking-widest text-cyan-300">
+                                Padrão
+                              </span>
+                            )}
+                            {med.is_controlled ? (
+                              <span className="rounded border border-red-500/35 bg-red-500/12 px-2 py-0.5 text-[9px] font-black uppercase tracking-widest text-red-300">
+                                Controlado
+                              </span>
+                            ) : null}
+                          </div>
                           <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                            {med.manual_presentation_label || med.presentation_text || 'Apresentação não definida'}
+                            {repairMojibakeText(med.manual_presentation_label || med.presentation_text || 'Apresentação não definida')}
                           </p>
                         </div>
                         <button
@@ -1555,7 +1717,7 @@ export default function Protocolos3Page() {
             <div className="space-y-4">
               <div className="flex items-center justify-between border-b border-slate-800 pb-2">
                 <h3 className="text-sm font-black uppercase tracking-widest italic text-[#39ff14]">
-                  Recomendacoes e orientacoes
+                  Recomendações e orientações
                 </h3>
                 <RxvButton variant="secondary" onClick={addRecommendationField} className="h-8 text-[10px]">
                   + Adicionar
@@ -1563,7 +1725,7 @@ export default function Protocolos3Page() {
               </div>
               {editingProtocol.recommendations.length === 0 ? (
                 <div className="rounded-2xl border border-dashed border-slate-800 bg-black/20 px-4 py-8 text-center text-xs font-bold uppercase tracking-widest text-slate-500">
-                  Nenhuma recomendacao configurada
+                  Nenhuma recomendação configurada
                 </div>
               ) : (
                 <div className="space-y-3">
@@ -1574,14 +1736,14 @@ export default function Protocolos3Page() {
                           type="button"
                           onClick={() => removeRecommendationAt(idx)}
                           className="rounded-lg p-1.5 text-red-500/80 transition-colors hover:bg-red-900/20 hover:text-red-400"
-                          title="Remover recomendacao"
+                          title="Remover recomendação"
                         >
                           <span className="material-symbols-outlined text-[18px]">delete</span>
                         </button>
                       </div>
                       <RxvTextarea
                         rows={3}
-                        placeholder="Ex: Retornar em 7 dias para reavaliacao."
+                        placeholder="Ex: Retornar em 7 dias para reavaliação."
                         value={recommendation.text}
                         onChange={(e) => updateRecommendationAt(idx, e.target.value)}
                       />
@@ -1600,7 +1762,7 @@ export default function Protocolos3Page() {
               <div className="space-y-4">
                 <div className="flex flex-wrap gap-2">
                   {COMMON_EXAMS.map((exam) => {
-                    const selected = commonExamLabels.includes(exam)
+                    const selected = commonExamLabels.some((label) => normalizeExamLabel(label) === normalizeExamLabel(exam))
                     return (
                       <button
                         key={exam}
@@ -1612,7 +1774,7 @@ export default function Protocolos3Page() {
                             : 'border-slate-700 bg-slate-800/30 text-slate-400 hover:border-slate-600 hover:text-slate-300'
                         }`}
                       >
-                        {selected ? 'Ã¢Å“â€œ ' : ''}{exam}
+                        {exam}
                       </button>
                     )
                   })}
@@ -1620,7 +1782,7 @@ export default function Protocolos3Page() {
 
                 <RxvField label="Justificativa">
                   <RxvTextarea
-                    placeholder="Ex: Ficam sugeridos os seguintes exames para avaliar a funcao dos rins e do figado do paciente..."
+                    placeholder="Ex: Ficam sugeridos os seguintes exames para avaliar a função dos rins e do fígado do paciente..."
                     rows={4}
                     value={editingProtocol.protocol.exams_justification || ''}
                     onChange={(e) => updateProtocolHeader({ exams_justification: e.target.value })}
@@ -1629,7 +1791,7 @@ export default function Protocolos3Page() {
 
                 <RxvField label="Exames adicionais por linha">
                   <RxvTextarea
-                    placeholder="Ex: Cultura fungica&#10;PCR para cinomose&#10;Bioquimico completo"
+                    placeholder="Ex: Cultura fúngica&#10;PCR para cinomose&#10;Bioquímico completo"
                     rows={6}
                     value={protocolCustomExamText}
                     onChange={(e) => updateProtocolExamsFromText(e.target.value)}
@@ -1725,7 +1887,7 @@ export default function Protocolos3Page() {
                     : 'bg-[#39ff14]/12 text-[#9CFF87] border border-[#39ff14]/20'
                 }`}
               >
-                {protocol.scope === 'global' ? 'GLOBAL' : 'DA CL?NICA'}
+                {scopeLabel(protocol.scope)}
               </span>
             </div>
             <h3 className="text-lg font-black text-white leading-tight truncate uppercase italic">
@@ -1763,7 +1925,7 @@ export default function Protocolos3Page() {
                   <section className="space-y-5">
                     <div className="flex items-center gap-3 border-b border-slate-800/80 pb-3">
                       <span className="text-[10px] font-black uppercase tracking-[0.24em] text-[#7CFF64]">
-                        Protocolos da cl?nica
+                        Protocolos da clínica
                       </span>
                       <span className="h-px flex-1 bg-slate-800" />
                       <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">
@@ -1795,7 +1957,7 @@ export default function Protocolos3Page() {
                   <section className="space-y-5">
                     <div className="flex items-center gap-3 border-b border-slate-800/80 pb-3">
                       <span className="text-[10px] font-black uppercase tracking-[0.24em] text-[#7CFF64]">
-                        Protocolos da cl?nica
+                        Protocolos da clínica
                       </span>
                       <span className="h-px flex-1 bg-slate-800" />
                       <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">
@@ -1886,7 +2048,7 @@ export default function Protocolos3Page() {
     return (
       <ReceituarioChrome section="protocolos" title="Carregando...">
         <div className="flex items-center justify-center min-h-screen">
-          <p className="text-slate-500">Carregando cl?nica...</p>
+          <p className="text-slate-500">Carregando clínica...</p>
         </div>
       </ReceituarioChrome>
     )
@@ -1965,7 +2127,7 @@ export default function Protocolos3Page() {
 
         {/* Main Content */}
         <main className="flex-1 overflow-y-auto">
-          {/* Topbar IntermediÃƒÂ¡ria */}
+          {/* Topbar intermediária */}
           <div className="sticky top-0 z-30 border-b border-slate-800/50 bg-black/60 backdrop-blur-md px-8 py-6">
             <div className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
               <div>
@@ -1978,7 +2140,7 @@ export default function Protocolos3Page() {
               <div className="mt-4 inline-flex rounded-2xl border border-slate-800 bg-black/40 p-1">
                 {[
                   { value: 'all', label: 'Todos' },
-                  { value: 'clinic', label: 'Da cl?nica' },
+                  { value: 'clinic', label: 'Da clínica' },
                   { value: 'global', label: 'Globais' },
                 ].map((option) => (
                   <button
@@ -2005,7 +2167,7 @@ export default function Protocolos3Page() {
                       type="search"
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      placeholder="Buscar protocolo por nome, descricao ou tag"
+                      placeholder="Buscar protocolo por nome, descrição ou tag"
                       className="w-full rounded-2xl border border-slate-800 bg-black/40 py-3 pl-12 pr-4 text-sm text-white outline-none transition-colors placeholder:text-slate-600 focus:border-[#39ff14]/35"
                     />
                   </div>
@@ -2036,7 +2198,7 @@ export default function Protocolos3Page() {
                 ) : (
                   <p className="mt-2 text-sm text-slate-500">
                     {scopeFilter === 'global'
-                      ? 'Nenhum protocolo global disponivel neste momento.'
+                      ? 'Nenhum protocolo global disponível neste momento.'
                       : 'Crie seu primeiro protocolo para agilizar seus atendimentos.'}
                   </p>
                 )}
@@ -2048,7 +2210,7 @@ export default function Protocolos3Page() {
                     <section className="space-y-5">
                       <div className="flex items-center gap-3 border-b border-slate-800/80 pb-3">
                         <span className="text-[10px] font-black uppercase tracking-[0.24em] text-[#7CFF64]">
-                          Protocolos da cl?nica
+                          Protocolos da clínica
                         </span>
                         <span className="h-px flex-1 bg-slate-800" />
                         <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500">
@@ -2086,13 +2248,19 @@ export default function Protocolos3Page() {
       {protocolMedicationModalOpen && editingProtocol && clinicId && (
         <AddMedicationModal2
           open={protocolMedicationModalOpen}
-          onClose={() => setProtocolMedicationModalOpen(false)}
+          onClose={() => {
+            setProtocolMedicationManualMode(false)
+            setProtocolMedicationModalOpen(false)
+          }}
           onAdd={handleAddMedicationFromProtocolModal}
           clinicId={clinicId}
           patient={null}
           storageScope="protocol"
-          title="Adicionar medicamento ao protocolo"
-          subtitle="Busque no Catálogo 3.0 e configure apresentação, dose, frequência, duração e observações que devem entrar quando o protocolo for aplicado."
+          manualMode={protocolMedicationManualMode}
+          title={protocolMedicationManualMode ? 'Adicionar item manual ao protocolo' : 'Adicionar medicamento ao protocolo'}
+          subtitle={protocolMedicationManualMode
+            ? 'Cadastre um item livre para o protocolo quando ele não existir no catálogo.'
+            : 'Busque no Catálogo 3.0 e configure apresentação, dose, frequência, duração e observações que devem entrar quando o protocolo for aplicado.'}
           confirmLabel="Adicionar ao protocolo"
           hideStartControls={true}
         />
@@ -2106,14 +2274,14 @@ export default function Protocolos3Page() {
               <div>
                 <div className="mb-2 flex items-center gap-2">
                   <span className="text-[9px] font-black uppercase px-2.5 py-1 rounded bg-[#39ff14]/10 text-[#7CFF64] border border-[#39ff14]/20 tracking-wider">
-                    DA CL?NICA
+                    CLÍNICA
                   </span>
                 </div>
                 <h2 className="text-xl font-black text-white italic uppercase tracking-tight">
                   {editingProtocol.protocol.id ? 'Editar Protocolo' : 'Novo Protocolo'}
                 </h2>
                 <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">
-                  Configure medicamentos e recomendaÃƒÂ§ÃƒÂµes prÃƒÂ©-definidas
+                  Configure medicamentos e recomendações predefinidas
                 </p>
               </div>
               <div className="flex items-center gap-3">
@@ -2122,9 +2290,9 @@ export default function Protocolos3Page() {
                     variant="secondary"
                     onClick={handleOpenPublishGlobalModal}
                     disabled={!editingProtocol.protocol.id || isLoadingGlobalProtocols}
-                    title={editingProtocol.protocol.id ? 'Publicar protocolo para todos os usuÃƒÂ¡rios' : 'Salve o protocolo local antes de publicar globalmente'}
+                    title={editingProtocol.protocol.id ? 'Publicar protocolo para todos os usuários' : 'Salve o protocolo local antes de publicar globalmente'}
                   >
-                    {isLoadingGlobalProtocols ? 'Carregando vÃƒÂ­nculo...' : 'Salvar como global'}
+                    {isLoadingGlobalProtocols ? 'Carregando vínculo...' : 'Salvar como global'}
                   </RxvButton>
                 )}
                 <RxvButton variant="secondary" onClick={() => { setModalOpen(false); setEditingProtocol(null); handleClosePublishGlobalModal(); }}>
@@ -2138,11 +2306,11 @@ export default function Protocolos3Page() {
 
             {/* Body */}
             <div className="flex-1 overflow-y-auto p-8 space-y-10">
-              {/* InformaÃƒÂ§ÃƒÂµes bÃƒÂ¡sicas */}
+              {/* Informações básicas */}
               <div className="space-y-6">
                 <RxvField label="Nome do protocolo">
                   <RxvInput
-                    placeholder="Ex: Dermatite AtÃƒÂ³pica"
+                    placeholder="Ex: Dermatite atópica"
                     value={editingProtocol.protocol.name}
                     onChange={(e) =>
                       setEditingProtocol({
@@ -2153,9 +2321,9 @@ export default function Protocolos3Page() {
                   />
                 </RxvField>
 
-                <RxvField label="DescriÃƒÂ§ÃƒÂ£o">
+                <RxvField label="Descrição">
                   <RxvTextarea
-                    placeholder="DescriÃƒÂ§ÃƒÂ£o breve para ajudÃƒÂ¡-lo a encontrar no futuro..."
+                    placeholder="Descrição breve para ajudá-lo a encontrar no futuro..."
                     value={editingProtocol.protocol.description || ''}
                     onChange={(e) =>
                       setEditingProtocol({
@@ -2184,7 +2352,7 @@ export default function Protocolos3Page() {
                     />
                   </RxvField>
 
-                  <RxvField label="Tags (separadas por vÃƒÂ­rgula)">
+                  <RxvField label="Tags (separadas por vírgula)">
                     <RxvInput
                       placeholder="Ex: dermatologia, pug, __inactive"
                       value={(editingProtocol.protocol.tags || []).join(', ')}
@@ -2199,7 +2367,7 @@ export default function Protocolos3Page() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <RxvField label="EspÃƒÂ©cie alvo">
+                  <RxvField label="Espécie alvo">
                     <RxvSelect
                       value={editingProtocol.protocol.species || ''}
                       onChange={(e) =>
@@ -2209,7 +2377,7 @@ export default function Protocolos3Page() {
                         })
                       }
                       options={[
-                      { value: '', label: 'Ambas as especies' },
+                      { value: '', label: 'Ambas as espécies' },
                       { value: 'Canina', label: 'Canina' },
                       { value: 'Felina', label: 'Felina' },
                     ]}
@@ -2226,15 +2394,15 @@ export default function Protocolos3Page() {
                         })
                       }
                       options={[
-                        { value: 'false', label: 'NÃƒÂ£o (ReceituÃƒÂ¡rio Comum)' },
-                        { value: 'true', label: 'Sim (NotificaÃƒÂ§ÃƒÂ£o/Portaria 344)' },
+                        { value: 'false', label: 'Não (receituário comum)' },
+                        { value: 'true', label: 'Sim (Notificação/Portaria 344)' },
                       ]}
                     />
                   </RxvField>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <RxvField label="DuraÃƒÂ§ÃƒÂ£o Resumida">
+                  <RxvField label="Duração resumida">
                     <RxvInput
                       placeholder="Ex: 15 a 30 dias"
                       value={editingProtocol.protocol.duration_summary || ''}
@@ -2249,7 +2417,7 @@ export default function Protocolos3Page() {
 
                   <RxvField label="Justificativa Exames (Opcional)">
                     <RxvInput
-                      placeholder="Justificativa padrÃƒÂ£o para exames"
+                      placeholder="Justificativa padrão para exames"
                       value={editingProtocol.protocol.exams_justification || ''}
                       onChange={(e) =>
                         setEditingProtocol({
@@ -2300,7 +2468,7 @@ export default function Protocolos3Page() {
                               {med.medication_name || med.manual_medication_name}
                             </p>
                             <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-0.5 truncate">
-                              {med.manual_presentation_label || med.presentation_text || 'ApresentaÃƒÂ§ÃƒÂ£o nÃƒÂ£o definida'}
+                              {repairMojibakeText(med.manual_presentation_label || med.presentation_text || 'Apresentação não definida')}
                             </p>
                           </div>
                           <button
@@ -2355,11 +2523,11 @@ export default function Protocolos3Page() {
                 )}
               </div>
 
-              {/* RecomendaÃƒÂ§ÃƒÂµes */}
+              {/* Recomendações */}
               <div className="space-y-4">
                 <div className="flex items-center justify-between border-b border-slate-800 pb-2">
                   <h3 className="text-sm font-black text-[#39ff14] uppercase tracking-widest italic">
-                    RecomendaÃƒÂ§ÃƒÂµes e OrientaÃƒÂ§ÃƒÂµes
+                    Recomendações e orientações
                   </h3>
                 </div>
 
@@ -2367,7 +2535,7 @@ export default function Protocolos3Page() {
                   {editingProtocol.recommendations.map((rec, idx) => (
                     <div key={idx} className="relative group">
                       <RxvTextarea
-                        placeholder="Ex: Oferecer ÃƒÂ¡gua fresca, evitar banhos frios..."
+                        placeholder="Ex: Oferecer água fresca, evitar banhos frios..."
                         value={rec.text}
                         onChange={(e) => {
                           const updated = [...editingProtocol.recommendations]
@@ -2402,7 +2570,7 @@ export default function Protocolos3Page() {
                     className="w-full py-4 border border-dashed border-slate-800 rounded-2xl hover:border-[#39ff14]/30 hover:bg-[#39ff14]/5 transition-all group"
                   >
                     <span className="text-[10px] font-black text-slate-500 group-hover:text-[#39ff14] uppercase tracking-widest">
-                      + Adicionar campo de recomendaÃƒÂ§ÃƒÂ£o
+                      + Adicionar campo de recomendação
                     </span>
                   </button>
                 </div>
@@ -2429,7 +2597,7 @@ export default function Protocolos3Page() {
                   {globalProtocolViewer.protocol.name}
                 </h2>
                 <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">
-                  DisponÃƒÂ­vel para todos os usuÃƒÂ¡rios
+                  Disponível para todos os usuários
                 </p>
               </div>
               <button
@@ -2444,9 +2612,9 @@ export default function Protocolos3Page() {
             <div className="flex-1 overflow-y-auto p-8 space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="rounded-2xl border border-slate-800 bg-black/30 p-5">
-                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">DescriÃƒÂ§ÃƒÂ£o</p>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Descrição</p>
                   <p className="mt-2 text-sm leading-relaxed text-slate-200">
-                    {globalProtocolViewer.protocol.description || 'Sem descriÃƒÂ§ÃƒÂ£o.'}
+                    {repairMojibakeText(globalProtocolViewer.protocol.description || 'Sem descrição.')}
                   </p>
                 </div>
                 <div className="rounded-2xl border border-slate-800 bg-black/30 p-5">
@@ -2492,7 +2660,7 @@ export default function Protocolos3Page() {
                           {med.medication_name || med.manual_medication_name}
                         </p>
                         <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-500 truncate">
-                          {med.manual_presentation_label || med.presentation_text || 'ApresentaÃƒÂ§ÃƒÂ£o nÃƒÂ£o definida'}
+                          {repairMojibakeText(med.manual_presentation_label || med.presentation_text || 'Apresentação não definida')}
                         </p>
                         <div className="mt-3 grid grid-cols-2 md:grid-cols-5 gap-3 text-xs text-slate-300">
                           <div><span className="block text-[10px] uppercase tracking-widest text-slate-500">Dose</span>{med.dose_value || '-'} {med.dose_unit || ''}</div>
@@ -2506,11 +2674,11 @@ export default function Protocolos3Page() {
                                 : med.frequency_type === 'once_daily'
                                   ? '1x/dia'
                                   : med.frequency_type === 'as_needed'
-                                    ? 'Se necessÃƒÂ¡rio'
+                            ? 'Se necessário'
                                     : '-'}
                           </div>
                           <div><span className="block text-[10px] uppercase tracking-widest text-slate-500">Dias</span>{med.duration_days || '-'}</div>
-                          <div><span className="block text-[10px] uppercase tracking-widest text-slate-500">Origem</span>{med.global_medication_id ? 'CatÃƒÂ¡logo global' : 'Manual'}</div>
+                        <div><span className="block text-[10px] uppercase tracking-widest text-slate-500">Origem</span>{med.global_medication_id ? 'Catálogo global' : 'Manual'}</div>
                         </div>
                       </div>
                     ))}
@@ -2521,12 +2689,12 @@ export default function Protocolos3Page() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between border-b border-slate-800 pb-2">
                   <h3 className="text-sm font-black text-cyan-300 uppercase tracking-widest italic">
-                    RecomendaÃƒÂ§ÃƒÂµes
+                    Recomendações
                   </h3>
                 </div>
                 {(globalProtocolViewer.recommendations || []).length === 0 ? (
                   <div className="rounded-2xl border border-dashed border-slate-800 bg-black/20 px-4 py-8 text-center text-xs font-bold uppercase tracking-widest text-slate-500">
-                    Nenhuma recomendaÃƒÂ§ÃƒÂ£o configurada
+                    Nenhuma recomendação configurada
                   </div>
                 ) : (
                   <div className="space-y-3">
@@ -2577,7 +2745,7 @@ export default function Protocolos3Page() {
                 Utilizar Protocolo
               </RxvButton>
               <RxvButton variant="primary" onClick={handleDuplicateGlobalProtocol} loading={isDuplicatingGlobal}>
-                Duplicar para minha cl?nica
+                Duplicar para minha clínica
               </RxvButton>
             </div>
           </div>
@@ -2593,7 +2761,7 @@ export default function Protocolos3Page() {
                   Salvar como global
                 </h2>
                 <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">
-                  Publica este protocolo para todos os usuÃƒÂ¡rios via fluxo server-side
+                  Publica este protocolo para todos os usuários via fluxo server-side
                 </p>
               </div>
               <button
@@ -2637,7 +2805,7 @@ export default function Protocolos3Page() {
                 </RxvField>
               </div>
 
-              <RxvField label="DescriÃƒÂ§ÃƒÂ£o">
+              <RxvField label="Descrição">
                 <RxvTextarea
                   rows={3}
                   value={publishGlobalDraft.description}
@@ -2652,7 +2820,7 @@ export default function Protocolos3Page() {
               </RxvField>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <RxvField label="EspÃƒÂ©cie">
+                <RxvField label="Espécie">
                   <RxvSelect
                     value={publishGlobalDraft.species}
                     onChange={(e) =>
@@ -2662,14 +2830,14 @@ export default function Protocolos3Page() {
                       })
                     }
                     options={[
-                      { value: '', label: 'Ambas as especies' },
+                      { value: '', label: 'Ambas as espécies' },
                       { value: 'Canina', label: 'Canina' },
                       { value: 'Felina', label: 'Felina' },
                     ]}
                   />
                 </RxvField>
 
-                <RxvField label="Modo de publicaÃƒÂ§ÃƒÂ£o">
+                <RxvField label="Modo de publicação">
                   <RxvSelect
                     value={publishGlobalDraft.mode}
                     onChange={(e) =>
@@ -2704,7 +2872,7 @@ export default function Protocolos3Page() {
                     }
                     options={linkedGlobalProtocols.map((protocol) => ({
                       value: protocol.id,
-                      label: `${protocol.name} Ã¢â‚¬Â¢ slug ${protocol.slug} Ã¢â‚¬Â¢ v${protocol.version}`,
+                      label: `${protocol.name} • slug ${protocol.slug} • v${protocol.version}`,
                     }))}
                   />
                 </RxvField>
@@ -2726,12 +2894,12 @@ export default function Protocolos3Page() {
               {linkedGlobalProtocols.length > 0 ? (
                 <div className="rounded-2xl border border-slate-800 bg-black/30 px-4 py-4 text-xs text-slate-400 leading-relaxed">
                   {publishGlobalDraft.mode === 'update'
-                    ? 'O protocolo global selecionado terÃƒÂ¡ versÃƒÂ£o incrementada e os itens filhos serÃƒÂ£o substituÃƒÂ­dos pelo conteÃƒÂºdo atual do protocolo local.'
-                    : 'Este protocolo local jÃƒÂ¡ possui vÃƒÂ­nculo global. Se escolher salvar como novo, um novo registro global serÃƒÂ¡ criado mantendo a rastreabilidade da origem.'}
+                    ? 'O protocolo global selecionado terá versão incrementada e os itens filhos serão substituídos pelo conteúdo atual do protocolo local.'
+                    : 'Este protocolo local já possui vínculo global. Se escolher salvar como novo, um novo registro global será criado mantendo a rastreabilidade da origem.'}
                 </div>
               ) : (
                 <div className="rounded-2xl border border-slate-800 bg-black/30 px-4 py-4 text-xs text-slate-400 leading-relaxed">
-                  Ser? criado um protocolo global novo, com rastreabilidade para o protocolo local e a cl?nica de origem.
+                  Será criado um protocolo global novo, com rastreabilidade para o protocolo local e a clínica de origem.
                 </div>
               )}
             </div>
@@ -2751,44 +2919,64 @@ export default function Protocolos3Page() {
       {/* Modal Buscar Medicamentos */}
       {medicationSearchOpen && (
         <RxvModalShell zIndexClass="z-[100]" overlayClassName="bg-black/95 backdrop-blur-md">
-          <div className="mx-auto flex max-h-[80vh] w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-[#39ff14]/30 bg-black shadow-[0_0_80px_rgba(57,255,20,0.2)]">
+          <div className="mx-auto flex max-h-[86vh] w-full max-w-4xl flex-col overflow-hidden rounded-3xl border border-[#39ff14]/30 bg-black shadow-[0_0_80px_rgba(57,255,20,0.2)]">
             <div className="flex items-center justify-between border-b border-slate-800 bg-slate-900/50 px-8 py-5">
               <div>
                 <h2 className="text-lg font-black uppercase italic tracking-tight text-white">
-                  {presentationPickerMedication ? 'Escolher apresentacao' : 'Buscar no Catalogo'}
+                  {presentationPickerMedication
+                    ? 'Escolher apresentação'
+                    : compoundedPickerBundle
+                      ? 'Escolher regime do manipulado'
+                      : 'Adicionar medicamento ao protocolo'}
                 </h2>
                 {presentationPickerMedication ? (
                   <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-500">
                     {presentationPickerMedication.name}
                   </p>
+                ) : compoundedPickerBundle ? (
+                  <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                    {compoundedPickerBundle.medication.name}
+                  </p>
                 ) : null}
               </div>
-              <button
-                type="button"
-                onClick={() => {
-                  setPresentationPickerMedication(null)
-                  setPresentationOptions([])
-                  setMedicationSearchOpen(false)
-                  setMedicationSearchQuery('')
-                }}
-                className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800/50 text-slate-400 transition-colors hover:bg-slate-800 hover:text-white"
-              >
-                <span className="material-symbols-outlined text-[20px]">close</span>
-              </button>
+              <div className="flex items-center gap-3">
+                {!presentationPickerMedication && !compoundedPickerBundle ? (
+                  <RxvButton
+                    variant="secondary"
+                    onClick={() => {
+                      closeMedicationSearchModal()
+                      setProtocolMedicationManualMode(true)
+                      setProtocolMedicationModalOpen(true)
+                    }}
+                  >
+                    + Manual
+                  </RxvButton>
+                ) : null}
+                <button
+                  type="button"
+                  onClick={closeMedicationSearchModal}
+                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800/50 text-slate-400 transition-colors hover:bg-slate-800 hover:text-white"
+                >
+                  <span className="material-symbols-outlined text-[20px]">close</span>
+                </button>
+              </div>
             </div>
 
-            {!presentationPickerMedication && (
+            {!presentationPickerMedication && !compoundedPickerBundle && (
               <div className="bg-black p-6">
                 <div className="relative">
                   <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">search</span>
                   <input
-                    placeholder="Nome do farmaco ou principio ativo..."
+                    placeholder="Nome do fármaco ou princípio ativo..."
                     value={medicationSearchQuery}
                     onChange={(e) => setMedicationSearchQuery(e.target.value)}
                     autoFocus
                     className="w-full rounded-2xl border border-slate-800 bg-slate-900 py-4 pl-12 pr-4 font-bold text-white outline-none transition-all placeholder:text-slate-700 focus:border-[#39ff14]/50"
                   />
                 </div>
+                <p className="mt-3 text-[11px] font-semibold uppercase tracking-widest text-slate-500">
+                  Resultado unificado: catálogo padrão e catálogo de manipulados da clínica
+                </p>
               </div>
             )}
 
@@ -2797,13 +2985,14 @@ export default function Protocolos3Page() {
                 <>
                   <div className="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/40 px-4 py-3">
                     <p className="text-xs font-semibold text-slate-300">
-                      Escolha uma apresentacao comercial ou adicione o medicamento sem travar a apresentacao.
+                      Escolha uma apresentação comercial ou adicione o medicamento sem travar a apresentação.
                     </p>
                     <RxvButton
                       variant="secondary"
                       onClick={() => {
                         setPresentationPickerMedication(null)
                         setPresentationOptions([])
+                        setCompoundedPickerBundle(null)
                       }}
                     >
                       Voltar
@@ -2816,22 +3005,22 @@ export default function Protocolos3Page() {
                     className="w-full rounded-2xl border border-dashed border-[#39ff14]/30 bg-[#39ff14]/6 p-4 text-left transition-all hover:border-[#39ff14]/60 hover:bg-[#39ff14]/10"
                   >
                     <p className="text-sm font-black uppercase italic text-[#9eff8f]">
-                      Adicionar sem apresentacao definida
+                      Adicionar sem apresentação definida
                     </p>
                     <p className="mt-1 text-xs text-slate-400">
-                      A apresentacao podera ser escolhida depois, na Nova Receita 2.0, conforme o paciente.
+                      A apresentação poderá ser escolhida depois, na Nova Receita 2.0, conforme o paciente.
                     </p>
                   </button>
 
                   {isLoadingPresentationOptions ? (
                     <div className="flex flex-col items-center justify-center py-10 opacity-50">
                       <span className="material-symbols-outlined animate-spin text-[#39ff14]">sync</span>
-                      <p className="mt-2 text-[10px] font-black uppercase tracking-widest text-slate-500">Carregando apresentacoes...</p>
+                      <p className="mt-2 text-[10px] font-black uppercase tracking-widest text-slate-500">Carregando apresentações...</p>
                     </div>
                   ) : presentationOptions.length === 0 ? (
                     <div className="py-10 text-center">
                       <p className="text-xs font-bold uppercase tracking-widest text-slate-600">
-                        Nenhuma apresentacao encontrada
+                        Nenhuma apresentação encontrada
                       </p>
                     </div>
                   ) : (
@@ -2843,12 +3032,12 @@ export default function Protocolos3Page() {
                         className="w-full rounded-2xl border border-slate-800 bg-slate-900/50 p-4 text-left transition-all group hover:border-[#39ff14]/40 hover:bg-slate-900"
                       >
                         <p className="text-sm font-black uppercase italic text-white transition-colors group-hover:text-[#39ff14]">
-                          {buildPresentationLabel(presentation) || 'Apresentacao'}
+                          {buildPresentationLabel(presentation) || 'Apresentação'}
                         </p>
                         <div className="mt-2 flex flex-wrap items-center gap-2">
                           {presentation.source && (
                             <span className="rounded border border-cyan-500/20 bg-cyan-500/10 px-2 py-0.5 text-[8px] font-black uppercase text-cyan-300">
-                              {presentation.source === 'global' ? 'GLOBAL' : 'CL?NICA'}
+                              {presentation.source === 'global' ? 'GLOBAL' : 'CLÍNICA'}
                             </span>
                           )}
                           {presentation.presentation_unit && (
@@ -2861,45 +3050,207 @@ export default function Protocolos3Page() {
                     ))
                   )}
                 </>
+              ) : compoundedPickerBundle ? (
+                <>
+                  <div className="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/40 px-4 py-3">
+                    <div>
+                      <p className="text-xs font-semibold text-slate-300">
+                        Escolha o regime recomendado que deve entrar no protocolo.
+                      </p>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        <span className="rounded border border-[#39ff14]/30 bg-[#39ff14]/10 px-2 py-0.5 text-[8px] font-black uppercase tracking-widest text-[#98f98e]">
+                          Manipulado
+                        </span>
+                        {compoundedPickerBundle.medication.is_controlled ? (
+                          <span className="rounded border border-red-500/30 bg-red-500/10 px-2 py-0.5 text-[8px] font-black uppercase tracking-widest text-red-300">
+                            Controlado
+                          </span>
+                        ) : null}
+                      </div>
+                    </div>
+                    <RxvButton
+                      variant="secondary"
+                      onClick={() => {
+                        setCompoundedPickerBundle(null)
+                        setCompoundedPickerRegimenId('')
+                      }}
+                    >
+                      Voltar
+                    </RxvButton>
+                  </div>
+
+                  <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
+                    <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-4">
+                      <p className="text-sm font-black uppercase italic text-white">
+                        {compoundedPickerBundle.medication.name}
+                      </p>
+                      <p className="mt-1 text-xs text-slate-400">
+                        {[compoundedPickerBundle.medication.pharmaceutical_form, compoundedPickerBundle.medication.default_qsp_text || compoundedPickerBundle.medication.default_quantity_text].filter(Boolean).join(' • ')}
+                      </p>
+
+                      <div className="mt-4">
+                        <RxvField label="Regime recomendado">
+                          <RxvSelect
+                            value={compoundedPickerRegimenId}
+                            onChange={(e) => setCompoundedPickerRegimenId(e.target.value)}
+                            options={compoundedPickerBundle.regimens.map((entry) => ({
+                              value: entry.id,
+                              label: entry.regimen_name || `${entry.species} • ${entry.route || 'sem via'}`,
+                            }))}
+                          />
+                        </RxvField>
+                      </div>
+
+                      <div className="mt-4 grid gap-3 md:grid-cols-2">
+                        {compoundedPickerBundle.regimens
+                          .filter((entry) => entry.id === compoundedPickerRegimenId)
+                          .map((entry) => (
+                            <React.Fragment key={entry.id}>
+                              <div className="rounded-2xl border border-slate-800 bg-black/30 p-4 text-sm text-slate-300">
+                                <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Posologia</p>
+                                <div className="mt-3 space-y-2">
+                                  <p>Modo: {entry.dosing_mode === 'calculated' ? 'Calculado por peso' : 'Fixo por paciente'}</p>
+                                  <p>Via: {entry.route || compoundedPickerBundle.medication.default_route || 'Não definida'}</p>
+                                  <p>Frequência: {entry.frequency_label || 'Não informada'}</p>
+                                  <p>Duração: {entry.duration_value ? `${entry.duration_value} ${entry.duration_unit || 'dias'}` : entry.duration_mode || 'Livre'}</p>
+                                </div>
+                              </div>
+                              <div className="rounded-2xl border border-slate-800 bg-black/30 p-4 text-sm text-slate-300">
+                                <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Formulação</p>
+                                <div className="mt-3 space-y-2">
+                                  <p>Concentração: {entry.concentration_value ? `${entry.concentration_value} ${entry.concentration_unit || ''}/${entry.concentration_per_value || 1} ${entry.concentration_per_unit || 'mL'}`.replace('/1 ', '/') : 'Não informada'}</p>
+                                  <p>Q.S.P.: {entry.default_prepared_quantity_text || compoundedPickerBundle.medication.default_qsp_text || compoundedPickerBundle.medication.default_quantity_text || 'Livre'}</p>
+                                  <p>Observações: {entry.notes || compoundedPickerBundle.medication.notes || 'Sem observações'}</p>
+                                </div>
+                              </div>
+                            </React.Fragment>
+                          ))}
+                      </div>
+                    </div>
+
+                    <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-4">
+                      <p className="text-xs font-black uppercase tracking-widest text-slate-500">Ingredientes</p>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {compoundedPickerBundle.ingredients.map((entry) => (
+                          <span
+                            key={entry.id}
+                            className="rounded-full border border-[#39ff14]/25 bg-[#39ff14]/8 px-3 py-1 text-xs text-[#98f98e]"
+                          >
+                            {entry.ingredient_name}
+                          </span>
+                        ))}
+                      </div>
+                      <RxvButton
+                        variant="primary"
+                        onClick={handleConfirmCompoundedMedication}
+                        className="mt-5 w-full justify-center"
+                      >
+                        Adicionar manipulado
+                      </RxvButton>
+                    </div>
+                  </div>
+                </>
               ) : isSearchingMedications ? (
                 <div className="flex flex-col items-center justify-center py-10 opacity-50">
                   <span className="material-symbols-outlined animate-spin text-[#39ff14]">sync</span>
-                  <p className="mt-2 text-[10px] font-black uppercase tracking-widest text-slate-500">Pesquisando catalogo...</p>
+                  <p className="mt-2 text-[10px] font-black uppercase tracking-widest text-slate-500">Pesquisando catálogo...</p>
                 </div>
-              ) : medications.length === 0 ? (
+              ) : medications.length === 0 && compoundedMedications.length === 0 ? (
                 <div className="py-10 text-center">
                   <p className="text-xs font-bold uppercase tracking-widest text-slate-600">
                     {medicationSearchQuery.trim() ? 'Nenhum resultado encontrado' : 'Inicie a busca digitando acima'}
                   </p>
                 </div>
               ) : (
-                medications.map((med) => (
-                  <button
-                    key={med.id}
-                    type="button"
-                    onClick={() => handleAddMedicationToDraft(med)}
-                    className="group flex w-full items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/50 p-4 text-left transition-all hover:border-[#39ff14]/40 hover:bg-slate-900"
-                  >
-                    <div>
-                      <p className="text-sm font-black uppercase italic text-white transition-colors group-hover:text-[#39ff14]">
-                        {med.name}
-                      </p>
-                      <div className="mt-1 flex items-center gap-2">
-                        {med.default_route && (
-                          <span className="mr-2 text-[9px] font-black uppercase tracking-widest text-slate-500">
-                            Via: {med.default_route}
-                          </span>
-                        )}
-                        {med.is_controlled && (
-                          <span className="rounded border border-red-500/20 bg-red-500/10 px-2 py-0.5 text-[8px] font-black uppercase text-red-500">
-                            CONTROLADO
-                          </span>
-                        )}
-                      </div>
+                <div className="grid gap-6 lg:grid-cols-2">
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <span className="rounded border border-cyan-500/25 bg-cyan-500/10 px-2 py-0.5 text-[9px] font-black uppercase tracking-widest text-cyan-300">
+                        Padrão
+                      </span>
+                      <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Catálogo 3.0</p>
                     </div>
-                    <span className="material-symbols-outlined text-slate-700 transition-colors group-hover:text-[#39ff14]">add_circle</span>
-                  </button>
-                ))
+                    {medications.length === 0 ? (
+                      <div className="rounded-2xl border border-dashed border-slate-800 bg-slate-900/30 px-4 py-6 text-sm text-slate-500">
+                        Nenhum item padrão encontrado.
+                      </div>
+                    ) : (
+                      medications.map((med) => (
+                        <button
+                          key={med.id}
+                          type="button"
+                          onClick={() => handleAddMedicationToDraft(med)}
+                          className="group flex w-full items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/50 p-4 text-left transition-all hover:border-[#39ff14]/40 hover:bg-slate-900"
+                        >
+                          <div>
+                            <p className="text-sm font-black uppercase italic text-white transition-colors group-hover:text-[#39ff14]">
+                              {med.name}
+                            </p>
+                            <div className="mt-1 flex flex-wrap items-center gap-2">
+                              <span className="rounded border border-cyan-500/25 bg-cyan-500/10 px-2 py-0.5 text-[8px] font-black uppercase tracking-widest text-cyan-300">
+                                Padrão
+                              </span>
+                              {med.default_route ? (
+                                <span className="text-[9px] font-black uppercase tracking-widest text-slate-500">
+                                  Via: {med.default_route}
+                                </span>
+                              ) : null}
+                              {med.is_controlled ? (
+                                <span className="rounded border border-red-500/20 bg-red-500/10 px-2 py-0.5 text-[8px] font-black uppercase text-red-500">
+                                  Controlado
+                                </span>
+                              ) : null}
+                            </div>
+                          </div>
+                          <span className="material-symbols-outlined text-slate-700 transition-colors group-hover:text-[#39ff14]">add_circle</span>
+                        </button>
+                      ))
+                    )}
+                  </div>
+
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <span className="rounded border border-[#39ff14]/30 bg-[#39ff14]/10 px-2 py-0.5 text-[9px] font-black uppercase tracking-widest text-[#98f98e]">
+                        Manipulado
+                      </span>
+                      <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Catálogo magistral</p>
+                    </div>
+                    {compoundedMedications.length === 0 ? (
+                      <div className="rounded-2xl border border-dashed border-slate-800 bg-slate-900/30 px-4 py-6 text-sm text-slate-500">
+                        Nenhum manipulado encontrado.
+                      </div>
+                    ) : (
+                      compoundedMedications.map((bundle) => (
+                        <button
+                          key={bundle.medication.id}
+                          type="button"
+                          onClick={() => handleSelectCompoundedMedication(bundle)}
+                          className="group flex w-full items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/50 p-4 text-left transition-all hover:border-[#39ff14]/40 hover:bg-slate-900"
+                        >
+                          <div>
+                            <p className="text-sm font-black uppercase italic text-white transition-colors group-hover:text-[#39ff14]">
+                              {bundle.medication.name}
+                            </p>
+                            <div className="mt-1 flex flex-wrap items-center gap-2">
+                              <span className="rounded border border-[#39ff14]/30 bg-[#39ff14]/10 px-2 py-0.5 text-[8px] font-black uppercase tracking-widest text-[#98f98e]">
+                                Manipulado
+                              </span>
+                              {bundle.medication.is_controlled ? (
+                                <span className="rounded border border-red-500/20 bg-red-500/10 px-2 py-0.5 text-[8px] font-black uppercase text-red-500">
+                                  Controlado
+                                </span>
+                              ) : null}
+                              <span className="text-[9px] font-black uppercase tracking-widest text-slate-500">
+                                {bundle.medication.pharmaceutical_form}
+                              </span>
+                            </div>
+                          </div>
+                          <span className="material-symbols-outlined text-slate-700 transition-colors group-hover:text-[#39ff14]">add_circle</span>
+                        </button>
+                      ))
+                    )}
+                  </div>
+                </div>
               )}
             </div>
           </div>

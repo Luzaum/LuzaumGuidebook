@@ -1,0 +1,49 @@
+{
+  "ok": true,
+  "freeName": "Codex Formula Magistral 1774232930733 Atualizada",
+  "controlledName": "Codex Formula Controlada 1774232930733",
+  "pdfTarget": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\downloads\\PACIENTE_E2E_TUTOR_E2E_MANIPULADOS_22-03-2026.pdf",
+  "log": [
+    {
+      "step": "login_ok",
+      "time": "2026-03-23T02:35:20.467Z",
+      "email": "codexmanipulados1774215809011@gmail.com",
+      "freeName": "Codex Formula Magistral 1774232930733 Atualizada",
+      "controlledName": "Codex Formula Controlada 1774232930733"
+    },
+    {
+      "step": "tutor_paciente_ok",
+      "time": "2026-03-23T02:35:23.141Z"
+    },
+    {
+      "step": "manipulados_adicionados",
+      "time": "2026-03-23T02:35:27.393Z",
+      "freeName": "Codex Formula Magistral 1774232930733 Atualizada",
+      "controlledName": "Codex Formula Controlada 1774232930733"
+    },
+    {
+      "step": "preview_ao_vivo_ok",
+      "time": "2026-03-23T02:35:29.399Z"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-23T02:35:30.582Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\13-manipulados-final-receita.png"
+    },
+    {
+      "step": "preview_revisao_ok",
+      "time": "2026-03-23T02:35:33.196Z"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-23T02:35:33.344Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\14-manipulados-final-preview.png"
+    },
+    {
+      "step": "pdf_exportado",
+      "time": "2026-03-23T02:35:35.134Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\downloads\\PACIENTE_E2E_TUTOR_E2E_MANIPULADOS_22-03-2026.pdf",
+      "size": 387944
+    }
+  ]
+}
