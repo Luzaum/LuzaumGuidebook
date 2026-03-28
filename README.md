@@ -79,7 +79,7 @@ O aplicativo suporta três modos de tema:
 ## 📱 Apps Integrados
 
 - ✅ **Calculadora Energética**
-- ✅ **Fluidoterapia**
+- ✅ **Espaço reservado para novo módulo**
 - ✅ **Transfusão Sanguínea**
 - ✅ **Emergências Veterinárias**
 - ✅ **Analgesia e Controle de Dor**

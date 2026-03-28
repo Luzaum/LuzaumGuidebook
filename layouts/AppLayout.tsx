@@ -19,7 +19,8 @@ export function AppLayout() {
   const isImmersiveModuleRoute =
     location.pathname.startsWith('/peconhentos') ||
     location.pathname.startsWith('/receituario-vet') ||
-    location.pathname.startsWith('/dados-veterinarios')
+    location.pathname.startsWith('/dados-veterinarios') ||
+    location.pathname.startsWith('/calculadora-energetica')
   const isFullBleedRoute =
     isActive('/') ||
     isActive('/hub') ||

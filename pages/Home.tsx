@@ -38,14 +38,14 @@ export function Home() {
             />
           </Suspense>
           {/* Overlay Gradiente Extra */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-transparent z-[1] pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-transparent z-[1] pointer-events-none hidden dark:block" />
         </div>
 
         {/* Conteúdo em Card Flutuante na Esquerda - Pointer Events Controlado */}
         <div className="relative z-10 w-full px-4 sm:px-8 lg:px-12 pointer-events-none h-full flex items-center">
 
           <div className="max-w-xl mr-auto p-8 md:p-10 rounded-3xl animate-in fade-in slide-in-from-left duration-700
-                            bg-[#0a1532] backdrop-blur-md border border-blue-500/20 shadow-[0_8px_32px_rgba(0,0,0,0.12)]">
+                            bg-[#0a1532] backdrop-blur-md border border-blue-500/20 shadow-none dark:shadow-[0_8px_32px_rgba(0,0,0,0.12)]">
 
             {/* Título - Interativo */}
             <div className="pointer-events-auto">

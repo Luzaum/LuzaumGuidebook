@@ -148,12 +148,20 @@ function toNumberOrNull(value: unknown): number | null {
   return Number.isFinite(parsed) ? parsed : null
 }
 
+function isUuid(value: unknown): boolean {
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(String(value || '').trim())
+}
+
 function ensureUuid(value: unknown): string {
   const text = String(value || '').trim()
-  if (/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(text)) {
+  if (isUuid(text)) {
     return text
   }
   return crypto.randomUUID()
+}
+
+function buildSlugCandidate(base: string, index: number): string {
+  return index <= 1 ? base : `${base}-${index}`
 }
 
 function escapeOrSearchTerm(value: string): string {
@@ -422,6 +430,70 @@ export async function getCompoundedMedicationBundle(
   }
 }
 
+async function getExistingCompoundedMedicationSlug(clinicId: string, compoundedMedicationId: string): Promise<string | null> {
+  const localMatch = readLocalBundles(clinicId).find((entry) => entry.medication.id === compoundedMedicationId)?.medication.slug || null
+  try {
+    const { data, error } = await supabase
+      .from('compounded_medications')
+      .select('id, slug')
+      .eq('clinic_id', clinicId)
+      .eq('id', compoundedMedicationId)
+      .maybeSingle()
+    logSbError('[CompoundedRecords] get existing slug error', error)
+    if (error) throw error
+    return toNullableString((data as { slug?: string | null } | null)?.slug) || localMatch
+  } catch {
+    return localMatch
+  }
+}
+
+async function buildUniqueCompoundedSlug(params: {
+  clinicId: string
+  name: string
+  requestedSlug?: string | null
+  currentMedicationId?: string | null
+}): Promise<string> {
+  const currentMedicationId = String(params.currentMedicationId || '').trim()
+  if (isUuid(currentMedicationId)) {
+    const existingSlug = await getExistingCompoundedMedicationSlug(params.clinicId, currentMedicationId)
+    if (existingSlug) return existingSlug
+  }
+
+  const baseSlug = slugify(params.requestedSlug || params.name) || 'formula-magistral'
+  const used = new Set<string>()
+
+  readLocalBundles(params.clinicId).forEach((entry) => {
+    if (entry.medication.id === currentMedicationId) return
+    const slug = String(entry.medication.slug || '').trim()
+    if (slug) used.add(slug)
+  })
+
+  try {
+    const { data, error } = await supabase
+      .from('compounded_medications')
+      .select('id, slug')
+      .eq('clinic_id', params.clinicId)
+      .ilike('slug', `${baseSlug}%`)
+    logSbError('[CompoundedRecords] list slug conflicts error', error)
+    if (error) throw error
+    safeArray<{ id?: string; slug?: string | null }>(data).forEach((entry) => {
+      if (String(entry.id || '').trim() === currentMedicationId) return
+      const slug = String(entry.slug || '').trim()
+      if (slug) used.add(slug)
+    })
+  } catch {
+    // local set above is enough as contingency
+  }
+
+  let attempt = 1
+  let candidate = buildSlugCandidate(baseSlug, attempt)
+  while (used.has(candidate)) {
+    attempt += 1
+    candidate = buildSlugCandidate(baseSlug, attempt)
+  }
+  return candidate
+}
+
 export async function saveCompoundedMedicationBundle(params: {
   clinicId: string
   userId: string
@@ -432,13 +504,20 @@ export async function saveCompoundedMedicationBundle(params: {
 }): Promise<CompoundedMedicationBundle> {
   const now = new Date().toISOString()
   const originalMedicationId = String(params.medication.id || '').trim()
-  const medicationId = ensureUuid(params.medication.id)
+  const medicationId = isUuid(params.medication.id) ? String(params.medication.id).trim() : ensureUuid(params.medication.id)
+  const slugSeed = toNullableString(params.medication.slug) || String(params.medication.name || '').trim()
+  let resolvedSlug = await buildUniqueCompoundedSlug({
+    clinicId: params.clinicId,
+    name: params.medication.name,
+    requestedSlug: slugSeed,
+    currentMedicationId: originalMedicationId,
+  })
 
   const medicationPayload = {
     id: medicationId,
     clinic_id: params.clinicId,
     name: String(params.medication.name || '').trim(),
-    slug: toNullableString(params.medication.slug) || slugify(params.medication.name),
+    slug: resolvedSlug,
     description: toNullableString(params.medication.description),
     pharmaceutical_form: String(params.medication.pharmaceutical_form || '').trim(),
     default_route: toNullableString(params.medication.default_route),
@@ -474,13 +553,28 @@ export async function saveCompoundedMedicationBundle(params: {
     }))
 
   try {
-    const { data: medicationData, error: medicationError } = await supabase
-      .from('compounded_medications')
-      .upsert(medicationPayload)
-      .select('*')
-      .single()
+    let medicationData: Partial<CompoundedMedicationRecord> | null = null
+    let medicationError: { code?: string; message?: string } | null = null
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+      const response = await supabase
+        .from('compounded_medications')
+        .upsert({ ...medicationPayload, slug: resolvedSlug }, { onConflict: 'id' })
+        .select('*')
+        .single()
+      medicationData = response.data as Partial<CompoundedMedicationRecord> | null
+      medicationError = response.error
+      logSbError('[CompoundedRecords] save medication error', medicationError)
+      if (!medicationError) break
+      const isSlugConflict = String(medicationError.code || '') === '23505' && String(medicationError.message || '').includes('compounded_medications_clinic_slug_key')
+      if (!isSlugConflict) break
+      resolvedSlug = await buildUniqueCompoundedSlug({
+        clinicId: params.clinicId,
+        name: params.medication.name,
+        requestedSlug: slugSeed,
+        currentMedicationId: originalMedicationId,
+      })
+    }
 
-    logSbError('[CompoundedRecords] save medication error', medicationError)
     if (medicationError) throw medicationError
 
     const { error: deleteIngredientsError } = await supabase

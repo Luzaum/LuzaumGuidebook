@@ -10,11 +10,8 @@ import { AuthSessionProvider } from './src/components/AuthSessionProvider'
 const LandingPage = lazy(() => import('./pages/LandingPage').then((m) => ({ default: m.LandingPage })))
 const Hub = lazy(() => import('./pages/Hub').then((m) => ({ default: m.Hub })))
 const ModuleIframe = lazy(() => import('./pages/ModuleIframe').then((m) => ({ default: m.ModuleIframe })))
-const CalculadoraEnergeticaPage = lazy(() => import('./pages/CalculadoraEnergeticaPage').then((m) => ({ default: m.CalculadoraEnergeticaPage })))
-const FluidoterapiaPage = lazy(() => import('./pages/FluidoterapiaPage').then((m) => ({ default: m.FluidoterapiaPage })))
-const FluidoterapiaCalculatorPage = lazy(() => import('./pages/FluidoterapiaCalculatorPage').then((m) => ({ default: m.FluidoterapiaCalculatorPage })))
-const FluidoterapiaDoencasPage = lazy(() => import('./pages/FluidoterapiaDoencasPage').then((m) => ({ default: m.FluidoterapiaDoencasPage })))
-const FluidoterapiaGuidePage = lazy(() => import('./pages/FluidoterapiaGuidePage').then((m) => ({ default: m.FluidoterapiaGuidePage })))
+const EnergiaVetPage = lazy(() => import('./modules/energia-vet/App'))
+const FluidoterapiaVetPage = lazy(() => import('./modules/fluidoterapia-vet'))
 const TransfusaoSanguineaPage = lazy(() => import('./pages/TransfusaoSanguineaPage').then((m) => ({ default: m.TransfusaoSanguineaPage })))
 const HemogasometriaPage = lazy(() => import('./pages/HemogasometriaPage').then((m) => ({ default: m.HemogasometriaPage })))
 const NeurologiaPage = lazy(() => import('./pages/NeurologiaPage').then((m) => ({ default: m.NeurologiaPage })))
@@ -94,13 +91,9 @@ const appRoutes = (
     <Route path="/conta/configurações" element={<ProtectedRoute><AccountSettings /></ProtectedRoute>} />
     <Route path="/conta/clinica" element={<ProtectedRoute><AccountClinic /></ProtectedRoute>} />
     <Route path="/conta/clínica" element={<ProtectedRoute><AccountClinic /></ProtectedRoute>} />
-    <Route path="/calculadora-energetica" element={<CalculadoraEnergeticaPage />} />
-    <Route path="/fluidoterapia" element={<FluidoterapiaPage />}>
-      <Route index element={<FluidoterapiaCalculatorPage />} />
-      <Route path="doencas" element={<FluidoterapiaDoencasPage />} />
-      <Route path="guia" element={<FluidoterapiaGuidePage />} />
-      <Route path="*" element={<Navigate to="/fluidoterapia" replace />} />
-    </Route>
+    <Route path="/calculadora-energetica/*" element={<EnergiaVetPage />} />
+    <Route path="/fluidoterapia" element={<Navigate to="/fluidoterapia-vet" replace />} />
+    <Route path="/fluidoterapia-vet" element={<FluidoterapiaVetPage />} />
     <Route path="/transfusao-sanguinea" element={<TransfusaoSanguineaPage />} />
     <Route path="/transfusão-sanguinea" element={<TransfusaoSanguineaPage />} />
     <Route path="/hemogasometria" element={<HemogasometriaPage />} />
@@ -163,7 +156,7 @@ function AppContent() {
       void import('./pages/Hub')
       void import('./src/routes/Login')
       void import('./src/routes/Signup')
-      void import('./pages/CalculadoraEnergeticaPage')
+      void import('./modules/energia-vet/App')
     }
 
     const win = window as Window & {

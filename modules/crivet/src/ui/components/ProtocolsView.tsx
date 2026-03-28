@@ -273,7 +273,7 @@ export const ProtocolsView: React.FC<ProtocolsViewProps> = ({ patient, onPatient
 
   return (
     <>
-      <div className="space-y-8">
+      <div className="space-y-8" style={{ zoom: 0.5 }}>
         <div className="flex items-center gap-4">
           <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-indigo-100 bg-indigo-50 text-indigo-600 shadow-sm dark:border-indigo-500/20 dark:bg-indigo-500/10 dark:text-indigo-400">
             <FileText className="h-7 w-7" />

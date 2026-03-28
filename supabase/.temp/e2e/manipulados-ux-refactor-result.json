@@ -1,0 +1,67 @@
+{
+  "ok": true,
+  "name": "UX Magistral 1774610405656 Editado",
+  "save_without_manual_refresh": true,
+  "log": [
+    {
+      "step": "login_ok",
+      "time": "2026-03-27T11:20:10.213Z",
+      "email": "codexmanipulados1774215809011@gmail.com"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-27T11:20:10.318Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\30-manipulados-ux-home.png"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-27T11:20:14.498Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\31-manipulados-ux-wizard.png"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-27T11:20:16.754Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\32-manipulados-ux-editor-pre-save.png"
+    },
+    {
+      "step": "save_ok",
+      "time": "2026-03-27T11:20:18.776Z",
+      "name": "UX Magistral 1774610405656"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-27T11:20:20.209Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\33-manipulados-ux-save-ok.png"
+    },
+    {
+      "step": "duplicate_name_save_ok",
+      "time": "2026-03-27T11:20:23.122Z",
+      "name": "UX Magistral 1774610405656"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-27T11:20:24.593Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\34-manipulados-ux-duplicate-name-ok.png"
+    },
+    {
+      "step": "edit_ok",
+      "time": "2026-03-27T11:20:26.592Z",
+      "name": "UX Magistral 1774610405656 Editado"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-27T11:20:28.132Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\35-manipulados-ux-edit-ok.png"
+    },
+    {
+      "step": "reload_ok",
+      "time": "2026-03-27T11:20:29.555Z",
+      "name": "UX Magistral 1774610405656 Editado"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-27T11:20:30.921Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\36-manipulados-ux-reload-ok.png"
+    }
+  ]
+}

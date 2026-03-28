@@ -11,7 +11,6 @@ import {
   Microscope,
   Brain,
   Apple,
-  Droplets,
   TestTube,
   Zap,
   Cat,
@@ -25,17 +24,17 @@ const miniApps: Array<{
   implemented: boolean
 }> = [
   {
-    id: 'calculadora-energetica',
-    title: 'Calculadora Energética',
-    description: 'Cálculo de necessidades energéticas para cães e gatos',
-    icon: <Calculator className="h-6 w-6" />,
+    id: 'energia-vet',
+    title: 'NutriçãoVET',
+    description: 'Fluxo nutricional veterinario com calculo, pacientes, dietas e relatorios',
+    icon: <img src="/apps/nutricaovet.png" alt="NutriçãoVET" className="h-12 w-12 rounded-lg object-contain" />,
     implemented: true,
   },
   {
-    id: 'fluidoterapia',
-    title: 'Fluidoterapia',
-    description: 'Cálculo de fluidoterapia com protocolos específicos',
-    icon: <Droplets className="h-6 w-6" />,
+    id: 'fluidoterapia-vet',
+    title: 'Fluidoterapia Vet',
+    description: 'Modulo clinico integrado para calculos e protocolos de fluidoterapia',
+    icon: <img src="/apps/fluidoterapia.png" alt="Fluidoterapia Vet" className="h-12 w-12 rounded-lg object-cover" />,
     implemented: true,
   },
   {
@@ -157,3 +156,4 @@ export function MiniAppGrid({ onAppClick }: MiniAppGridProps) {
     </section>
   )
 }
+

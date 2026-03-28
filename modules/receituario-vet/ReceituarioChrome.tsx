@@ -298,7 +298,7 @@ export default function ReceituarioChrome({
           </header>
 
           <section className="rxv-main">
-            <div className="mx-auto max-w-[1900px]">
+            <div className="w-full min-w-0">
               <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
                 <div>
                   <h1 className="text-2xl font-black tracking-tight sm:text-3xl">{title}</h1>

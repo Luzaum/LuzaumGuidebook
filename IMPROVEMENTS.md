@@ -42,7 +42,7 @@ import { sanitizeHTML } from './utils/sanitize';
 
 2. **Dividir Componentes Grandes**
 - `CalculadoraEnergetica.tsx` (787 linhas) → Dividir em 4-5 componentes
-- `Fluidoterapia.tsx` (464 linhas) → Dividir em 3-4 componentes
+- `Modulo clinico legado removido` → manter apenas placeholder para futura reconstrução
 - `Hemogasometria.tsx` (744 linhas) → Dividir em 4-5 componentes
 
 3. **Implementar Validação de Entrada**
@@ -93,7 +93,7 @@ const useInputValidation = (rules: ValidationRule[]) => {
 ```html
 <!-- Adicionar meta tags -->
 <meta name="description" content="App veterinário com calculadoras clínicas">
-<meta name="keywords" content="veterinária, calculadora, fluidoterapia">
+<meta name="keywords" content="veterinária, calculadora, medicina veterinária">
 ```
 
 ## 🛠️ **Como Aplicar as Melhorias**

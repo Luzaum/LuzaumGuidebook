@@ -1,0 +1,28 @@
+{
+  "ok": true,
+  "chosenItem": "CODEX FORMULA CONTROLADA 1774232930733 MANIPULADO CONTROLADO Suspensão oral",
+  "blocked": {
+    "banner": "Rascunho incompleto — faltam parâmetros farmacotécnicos para emissão da receita final.\n\nQuantidade total a manipular ou q.s.p. não definida.\n\nMODERNO DARK\nRevisar\nImprimir\nPDF\n\nRECEITUÁRIO DE CONTROLE ESPECIAL\n\nlocal_hos",
+    "reviewDisabled": true,
+    "printDisabled": true,
+    "pdfDisabled": true,
+    "hasPreviewArea": true
+  },
+  "unlocked": {
+    "bannerStillVisible": false,
+    "reviewDisabled": false,
+    "printDisabled": false,
+    "pdfDisabled": false,
+    "finalButtonsEnabled": true,
+    "qtyValue": "30 mL",
+    "hasPreviewArea": true
+  },
+  "screenshots": {
+    "wizardStep1": "C:/PROJETOS VET/Vetius/supabase/.temp/e2e/shots/24-wizard-passo-1-tipo.png",
+    "wizardStep2": "C:/PROJETOS VET/Vetius/supabase/.temp/e2e/shots/25-wizard-passo-2-familia.png",
+    "wizardStep3": "C:/PROJETOS VET/Vetius/supabase/.temp/e2e/shots/26-wizard-passo-3-unidade.png",
+    "editorAdapted": "C:/PROJETOS VET/Vetius/supabase/.temp/e2e/shots/27-editor-adaptado-ao-tipo.png",
+    "blockedPreview": "C:/PROJETOS VET/Vetius/supabase/.temp/e2e/shots/28-preview-interno-bloqueado.png",
+    "finalPreview": "C:/PROJETOS VET/Vetius/supabase/.temp/e2e/shots/29-preview-final-liberado.png"
+  }
+}

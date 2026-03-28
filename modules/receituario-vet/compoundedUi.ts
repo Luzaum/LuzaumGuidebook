@@ -948,9 +948,11 @@ export function buildCompoundedPharmacyInstruction(item: PrescriptionItem, patie
 export function buildCompoundedPreviewCautions(item: PrescriptionItem, patient?: PatientInfo | null): string[] {
   if (!isCompounded(item)) return []
   const ownerGuidance = getOwnerGuidance(item)
+  const quantityText = getCompoundedCalculationSummary(item, patient)?.finalQuantityText
   const lines = [
-    ownerGuidance ? `Orientações ao tutor: ${ownerGuidance}` : '',
     buildCompoundedPharmacyInstruction(item, patient),
+    quantityText ? `Quantidade final para manipular: ${quantityText}` : '',
+    ownerGuidance ? `Orientações ao tutor: ${ownerGuidance}` : '',
   ].filter(Boolean)
 
   const unique = new Set<string>()

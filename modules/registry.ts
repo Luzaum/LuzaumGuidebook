@@ -1,7 +1,5 @@
 ﻿import {
-  Calculator,
   Heart,
-  Droplets,
   Zap,
   Cat,
   TestTube,
@@ -18,7 +16,6 @@
   Stethoscope,
   Clock3,
 } from 'lucide-react'
-import calcEnergeticaLogo from '@/assets/logos/logo-calculadora-energetica.png'
 
 export type ModuleStatus = 'internal' | 'iframe' | 'planned'
 
@@ -35,22 +32,22 @@ export interface Module {
 
 export const modules: Module[] = [
   {
-    id: 'calculadora-energetica',
-    title: 'Calculadora Energética',
-    description: 'Cálculo de necessidades energéticas para cães e gatos',
+    id: 'energia-vet',
+    title: 'NutriçãoVET',
+    description: 'Fluxo nutricional veterinário com cálculo, pacientes, dietas e relatórios.',
     route: '/calculadora-energetica',
     status: 'internal',
-    icon: Calculator,
-    iconImage: calcEnergeticaLogo,
+    icon: Activity,
+    iconImage: '/apps/nutricaovet.png',
   },
   {
-    id: 'fluidoterapia',
-    title: 'Fluidoterapia',
-    description: 'Cálculo de fluidoterapia com protocolos específicos',
-    route: '/fluidoterapia',
+    id: 'fluidoterapia-vet',
+    title: 'Fluidoterapia Vet',
+    description: 'Modulo clinico de fluidoterapia veterinaria integrado ao Vetius.',
+    route: '/fluidoterapia-vet',
     status: 'internal',
-    icon: Droplets,
-    iconImage: '/apps/fluido.png',
+    icon: Activity,
+    iconImage: '/apps/fluidoterapia.png',
   },
   {
     id: 'transfusão-sanguinea',

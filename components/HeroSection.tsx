@@ -10,7 +10,7 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ onGetStarted }) => {
   const features = [
-    { icon: Calculator, title: "Calculadoras", description: "Fluidoterapia, transfusão e mais" },
+    { icon: Calculator, title: "Calculadoras", description: "Ferramentas clínicas e cálculos rápidos" },
     { icon: Heart, title: "Emergências", description: "Protocolos de emergência" },
     { icon: BookOpen, title: "Guias", description: "Referências e formulários" },
     { icon: Activity, title: "Avaliações", description: "Escalas e avaliações clínicas" },

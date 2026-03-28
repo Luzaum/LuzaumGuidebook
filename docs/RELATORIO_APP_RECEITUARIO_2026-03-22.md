@@ -77,7 +77,7 @@ Conclusão prática: quase toda operação moderna do receituário depende de `c
 Pelo registro atual em `modules/registry.ts`, o app possui:
 
 - Calculadora Energética
-- Fluidoterapia
+- Espaço reservado
 - Transfusão Sanguínea
 - Hemogasometria
 - Escalas de Dor

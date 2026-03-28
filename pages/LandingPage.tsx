@@ -51,7 +51,7 @@ const testimonials = [
         specialty: 'Clínica Geral',
         initials: 'CR',
         color: 'from-blue-500 to-cyan-400',
-        text: 'O Vetius virou meu companheiro de plantão. Os cálculos de fluidoterapia que antes me tomavam minutos, agora faço em segundos com total segurança.',
+        text: 'O Vetius virou meu companheiro de plantão. O acesso rápido às ferramentas clínicas reduziu meu tempo de decisão e deixou a rotina muito mais segura.',
     },
     {
         name: 'Dr. Felipe Araújo',
@@ -116,8 +116,8 @@ const valueProps = [
         glowColor: 'hover:shadow-violet-500/10',
         title: 'Todas as Áreas Integradas',
         description:
-            'Do cálculo de fluido à neurologia, de hemogasometria à anestesiologia — tudo junto, em um ecossistema clínico completo para cães e gatos.',
-        tags: ['Neurologia', 'Emergências', 'CRI/Infusão', 'Fluidoterapia'],
+            'De emergências à neurologia, de hemogasometria à anestesiologia, tudo junto em um ecossistema clínico completo para cães e gatos.',
+        tags: ['Neurologia', 'Emergências', 'CRI/Infusão', 'Hemogasometria'],
     },
     {
         icon: Zap,
@@ -164,14 +164,14 @@ export function LandingPage() {
                         loading="eager"
                     />
                     {/* On mobile: stronger overlay at bottom where card sits */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-background/20 sm:bg-gradient-to-r sm:from-background/85 sm:via-background/50 sm:to-transparent z-[1] pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-background/20 sm:bg-gradient-to-r sm:from-background/85 sm:via-background/50 sm:to-transparent z-[1] pointer-events-none hidden dark:block" />
                 </div>
 
                 {/* Content */}
                 <div className="relative z-10 w-full px-4 sm:px-8 lg:px-16 pointer-events-none h-full flex items-end sm:items-center">
                     {/* Card: full-width on mobile, max-xl on larger */}
                     <div className="w-full sm:max-w-lg md:max-w-xl mr-auto p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl animate-in fade-in slide-in-from-bottom sm:slide-in-from-left duration-700
-                          bg-[#0a1532] backdrop-blur-md border border-white/10 sm:border-blue-500/20 shadow-[0_8px_32px_rgba(0,0,0,0.24)]">
+                          bg-[#0a1532] backdrop-blur-md border border-white/10 sm:border-blue-500/20 shadow-none dark:shadow-[0_8px_32px_rgba(0,0,0,0.24)]">
 
                         {/* Badge */}
                         <div className="pointer-events-auto mb-4 sm:mb-6">
