@@ -7,7 +7,7 @@ import { Label } from '../ui/label';
 export function SettingsPage() {
   return (
     <ScrollArea className="h-full w-full bg-slate-50 dark:bg-slate-950 p-6 lg:p-10">
-      <div className="max-w-4xl mx-auto space-y-10 pb-20">
+      <div className="w-full mx-auto space-y-10 pb-20">
         <header>
           <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 tracking-tight flex items-center gap-3">
             <Settings className="w-8 h-8 text-teal-500" />

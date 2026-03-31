@@ -1,0 +1,40 @@
+{
+  "ok": true,
+  "baseUrl": "http://127.0.0.1:4177",
+  "shots": {
+    "block2": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\68-v2-c2a-bloco2-layout-dev.png",
+    "sticky": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\69-v2-c2a-sidebar-sticky-dev.png"
+  },
+  "log": [
+    {
+      "step": "login_ok",
+      "time": "2026-03-29T05:00:34.299Z"
+    },
+    {
+      "step": "block2_shot",
+      "time": "2026-03-29T05:00:36.740Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\68-v2-c2a-bloco2-layout-dev.png"
+    },
+    {
+      "step": "sticky_shot",
+      "time": "2026-03-29T05:00:37.591Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\69-v2-c2a-sidebar-sticky-dev.png"
+    },
+    {
+      "step": "sticky_metrics",
+      "time": "2026-03-29T05:00:37.596Z",
+      "navTop": 14,
+      "navBottom": 1186,
+      "catalogTop": null,
+      "catalogBottom": null,
+      "viewportHeight": 1200
+    }
+  ],
+  "stickyCheck": {
+    "navTop": 14,
+    "navBottom": 1186,
+    "catalogTop": null,
+    "catalogBottom": null,
+    "viewportHeight": 1200
+  }
+}

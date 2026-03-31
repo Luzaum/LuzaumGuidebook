@@ -1,4 +1,4 @@
-﻿import { formatStructuredConcentration } from './rxConcentration'
+import { formatStructuredConcentration } from './rxConcentration'
 import { PharmacyType, PrescriptionItem, PrescriptionState, RouteGroup } from './rxTypes'
 
 export interface ProfileSettings {
@@ -1679,7 +1679,6 @@ export function findProfileSettings(dbState: RxDatabase, profileId?: string): { 
   if (first) return { id: first.id, profile: first }
   return { id: 'default', profile: dbState.profile }
 }
-
 
 
 

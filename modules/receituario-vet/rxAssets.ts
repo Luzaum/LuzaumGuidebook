@@ -60,4 +60,3 @@ export function saveHomeIconSelection(iconId: string): HomeIconOption {
   }
   return match
 }
-

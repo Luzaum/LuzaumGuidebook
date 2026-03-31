@@ -4,23 +4,48 @@ import { Badge } from '../ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { ScrollArea } from '../ui/scroll-area';
 
+const getProtocolIcon = (id: string) => {
+  switch (id) {
+    case 'hypovolemia': return '🏥';
+    case 'dehydration': return '💧';
+    case 'cardiac': return '❤️';
+    case 'renal': return '🧪';
+    case 'tce': return '🧠';
+    case 'sepsis': return '🌡️';
+    case 'hypoalbuminemia': return '🌊';
+    case 'anemia': return '🩸';
+    case 'vomit-alkalosis': return '🤮';
+    case 'diarrhea-acidosis': return '🚽';
+    case 'dka': return '💉';
+    case 'hyponatremia': return '🧂';
+    case 'hypernatremia': return '🔥';
+    case 'anesthesia': return '💤';
+    case 'neonate-puppy': return '👶';
+    case 'pancreatitis': return '🌋';
+    default: return '📋';
+  }
+};
+
 export function ProtocolsPage() {
   return (
     <ScrollArea className="h-full w-full bg-slate-50 p-6 dark:bg-slate-950 lg:p-10">
-      <div className="mx-auto max-w-6xl space-y-10 pb-20">
+      <div className="mx-auto w-full space-y-10 pb-20">
         <header>
           <h2 className="flex items-center gap-3 text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
             <Stethoscope className="h-8 w-8 text-teal-500" />
-            Doencas e protocolos
+            Doenças e protocolos
           </h2>
-          <p className="mt-2 text-slate-500 dark:text-slate-400">Protocolos clinicos completos para cenarios onde fluidoterapia nao pode ser pensada como taxa unica e cega.</p>
+          <p className="mt-2 text-slate-500 dark:text-slate-400">Protocolos clínicos completos para cenários onde fluidoterapia não pode ser pensada como taxa única e cega.</p>
         </header>
 
         <div className="grid gap-6 lg:grid-cols-2">
           {protocols.map((protocol) => (
             <Card key={protocol.id} className="flex flex-col overflow-hidden border-slate-200 shadow-sm dark:border-slate-800">
               <CardHeader className="border-b border-slate-100 bg-slate-50/50 dark:border-slate-800 dark:bg-slate-900/50">
-                <CardTitle className="text-xl text-slate-800 dark:text-slate-100">{protocol.title}</CardTitle>
+                <div className="flex items-center justify-between gap-4">
+                  <CardTitle className="text-xl text-slate-800 dark:text-slate-100">{protocol.title}</CardTitle>
+                  <span className="text-3xl">{getProtocolIcon(protocol.id)}</span>
+                </div>
                 <CardDescription>{protocol.summary}</CardDescription>
               </CardHeader>
               <CardContent className="flex-1 space-y-6 p-6">
@@ -64,7 +89,7 @@ export function ProtocolsPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Monitorizacao chave</h4>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Monitorização chave</h4>
                   <div className="flex flex-wrap gap-2">
                     {protocol.monitor.map((item) => (
                       <Badge key={item} variant="secondary" className="bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300">

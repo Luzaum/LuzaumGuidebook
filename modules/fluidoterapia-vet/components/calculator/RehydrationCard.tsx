@@ -16,27 +16,27 @@ interface Props {
 }
 
 const dehydrationModal = {
-  title: 'Grau de desidratacao',
-  summary: 'Desidratacao nao e a mesma coisa que hipovolemia. O deficit intersticial costuma ser corrigido de forma sustentada, geralmente em 12 a 24 h em pacientes estaveis.',
+  title: 'Grau de desidratação',
+  summary: 'Desidratação não é a mesma coisa que hipovolemia. O déficit intersticial costuma ser corrigido de forma sustentada, geralmente em 12 a 24 h em pacientes estáveis.',
   sections: [
     {
-      heading: 'Tabela clinica',
+      heading: 'Tabela clínica',
       bullets: dehydrationScale.map((item) => `${item.range}: ${item.signs}`),
     },
     {
       heading: 'Cautelas',
       bullets: [
-        'Xerostomia pode ocorrer em AKI ou CKD sem verdadeira desidratacao.',
+        'Xerostomia pode ocorrer em AKI ou CKD sem verdadeira desidratação.',
         'Peso seriado ajuda muito.',
-        'Cerca de 1 kg de variacao rapida equivale a aproximadamente 1 L de agua corporal.',
+        'Cerca de 1 kg de variação rápida equivale a aproximadamente 1 L de água corporal.',
       ],
     },
     {
-      heading: 'Janelas praticas',
+      heading: 'Janelas práticas',
       bullets: [
-        'Estavel: geralmente corrigir em 12 a 24 h.',
-        'Cronico, debilitado ou cardiopata: pode ir para 24 a 48 h.',
-        'Reposicao em 2 a 4 h existe em cenarios renais especificos, mas nao e default universal.',
+        'Estável: geralmente corrigir em 12 a 24 h.',
+        'Crônico, debilitado ou cardiopata: pode ir para 24 a 48 h.',
+        'Reposição em 2 a 4 h existe em cenários renais específicos, mas não é default universal.',
       ],
     },
   ],
@@ -55,8 +55,8 @@ export function RehydrationCard({ config, onChange }: Props) {
                 <Droplet className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
               </div>
               <div>
-                <CardTitle className="text-lg">Reidratacao</CardTitle>
-                <CardDescription>Correcao do deficit do intersticio, separada da ressuscitacao.</CardDescription>
+                <CardTitle className="text-lg">Reidratação</CardTitle>
+                <CardDescription>Correção do déficit do interstício, separada da ressuscitação.</CardDescription>
               </div>
             </div>
             <Switch checked={config.enabled} onCheckedChange={(checked) => onChange({ enabled: checked })} />
@@ -68,7 +68,7 @@ export function RehydrationCard({ config, onChange }: Props) {
             <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-6 dark:border-slate-800 dark:bg-slate-900/50">
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-2">
-                  <Label className="text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Grau de desidratacao (%)</Label>
+                  <Label className="text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Grau de desidratação (%)</Label>
                   <button type="button" onClick={() => setOpenInfo(true)} className="text-slate-400 transition-colors hover:text-indigo-500">
                     <Info className="h-4 w-4" />
                   </button>
@@ -95,20 +95,20 @@ export function RehydrationCard({ config, onChange }: Props) {
                 className="mt-4"
               />
               <div className="mt-4 flex flex-wrap gap-2">
-                <Badge variant="outline" className="border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">Deficit (mL) = peso x % x 10</Badge>
-                <Badge variant="outline" className="border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">Hipovolemia nao entra nessa conta</Badge>
+                <Badge variant="outline" className="border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">Déficit (mL) = peso x % x 10</Badge>
+                <Badge variant="outline" className="border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">Hipovolemia não entra nessa conta</Badge>
               </div>
             </div>
 
             <div className="space-y-4">
               <div className="flex items-center gap-2">
                 <Clock className="h-5 w-5 text-slate-500" />
-                <Label className="text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Tempo para correcao</Label>
+                <Label className="text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Tempo para correção</Label>
               </div>
 
               <div className="grid gap-3 md:grid-cols-3">
                 {[
-                  { label: 'Estavel', desc: '12 a 24 h', value: 24 },
+                  { label: 'Estável', desc: '12 a 24 h', value: 24 },
                   { label: 'Conservador', desc: '24 a 48 h', value: 48 },
                   { label: 'Personalizar', desc: 'ajuste manual', value: config.customCorrectionHours || config.correctionHours || 24 },
                 ].map((preset, index) => (
@@ -139,7 +139,7 @@ export function RehydrationCard({ config, onChange }: Props) {
                 <span className="text-sm text-slate-500">horas</span>
               </div>
               <p className="text-sm text-slate-500">
-                Se o paciente estiver cronico, debilitado ou cardiopata, considere 24 a 48 h. Cenarios renais que exigem reposicao mais rapida devem sair para protocolo especifico.
+                Se o paciente estiver crônico, debilitado ou cardiopata, considere 24 a 48 h. Cenários renais que exigem reposição mais rápida devem sair para protocolo específico.
               </p>
             </div>
           </CardContent>

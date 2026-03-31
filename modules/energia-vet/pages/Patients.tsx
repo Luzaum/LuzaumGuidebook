@@ -1,92 +1,111 @@
-import { useNavigate } from 'react-router-dom';
-import { Search, Plus, Users, Calculator, Eye } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
-import { Badge } from '../components/ui/badge';
-import { Button } from '../components/ui/button';
-import { Input } from '../components/ui/input';
+import { useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Calculator, Plus, Search, Users } from 'lucide-react'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table'
+import { Badge } from '../components/ui/badge'
+import { Button } from '../components/ui/button'
+import { Input } from '../components/ui/input'
+import { getSavedPatients } from '../lib/persistence'
 
-const NEW_ROUTE = '/calculadora-energetica/new';
+const NEW_ROUTE = '/calculadora-energetica/new'
 
 export default function Patients() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const [query, setQuery] = useState('')
+  const patients = useMemo(() => getSavedPatients(), [])
 
-  const mockPatients = [
-    { id: 1, name: 'Rex', owner: 'João Silva', species: 'Cão', weight: 12.5, bcs: 5, date: '2026-03-20' },
-    { id: 2, name: 'Mia', owner: 'Maria Souza', species: 'Gato', weight: 4.2, bcs: 6, date: '2026-03-22' },
-    { id: 3, name: 'Thor', owner: 'Pedro Santos', species: 'Cão', weight: 28.0, bcs: 8, date: '2026-03-25' },
-  ];
+  const filteredPatients = useMemo(() => {
+    const normalizedQuery = query.trim().toLowerCase()
+    if (!normalizedQuery) return patients
+    return patients.filter((patient) =>
+      [patient.name, patient.ownerName, patient.breed]
+        .filter(Boolean)
+        .join(' ')
+        .toLowerCase()
+        .includes(normalizedQuery),
+    )
+  }, [patients, query])
 
   return (
-    <div className="space-y-8 max-w-6xl mx-auto pb-20">
+    <div className="space-y-8 w-full pb-20">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="flex items-center gap-2 text-3xl font-bold tracking-tight">
             <Users className="h-8 w-8 text-primary" />
             Pacientes
           </h1>
-          <p className="mt-2 text-muted-foreground">Gerencie seus pacientes e históricos de consultas.</p>
+          <p className="mt-2 text-muted-foreground">
+            Lista derivada do histórico salvo do Energia Vet. Cada novo resumo persistido atualiza este painel.
+          </p>
         </div>
         <Button className="gap-2" onClick={() => navigate(NEW_ROUTE)}>
-          <Plus className="h-4 w-4" /> Novo Paciente
+          <Plus className="h-4 w-4" /> Novo cálculo
         </Button>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Lista de Pacientes</CardTitle>
-          <CardDescription>Busque ou filtre por tutor e espécie.</CardDescription>
+          <CardTitle>Pacientes com histórico</CardTitle>
+          <CardDescription>Busque por nome, tutor ou raça.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="flex flex-col gap-4 sm:flex-row">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-              <Input placeholder="Buscar por nome ou tutor..." className="pl-9" />
-            </div>
-            <Button variant="outline">Filtrar</Button>
+          <div className="relative">
+            <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Buscar por nome, tutor ou raça..."
+              className="pl-9"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+            />
           </div>
 
-          <div className="overflow-hidden rounded-md border">
-            <Table>
-              <TableHeader className="bg-muted/50">
-                <TableRow>
-                  <TableHead>Nome</TableHead>
-                  <TableHead>Tutor</TableHead>
-                  <TableHead>Espécie</TableHead>
-                  <TableHead>Peso</TableHead>
-                  <TableHead>ECC (BCS)</TableHead>
-                  <TableHead>Última Consulta</TableHead>
-                  <TableHead className="text-right">Ações</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {mockPatients.map((p) => (
-                  <TableRow key={p.id} className="hover:bg-muted/30">
-                    <TableCell className="font-semibold">{p.name}</TableCell>
-                    <TableCell>{p.owner}</TableCell>
-                    <TableCell>
-                      <Badge variant={p.species === 'Cão' ? 'default' : 'secondary'}>{p.species}</Badge>
-                    </TableCell>
-                    <TableCell className="font-mono">{p.weight} kg</TableCell>
-                    <TableCell>
-                      <Badge variant={p.bcs > 5 ? 'destructive' : p.bcs < 4 ? 'destructive' : 'outline'}>{p.bcs}/9</Badge>
-                    </TableCell>
-                    <TableCell className="text-muted-foreground">{p.date}</TableCell>
-                    <TableCell className="space-x-2 text-right">
-                      <Button variant="ghost" size="icon" title="Ver Perfil">
-                        <Eye className="h-4 w-4 text-muted-foreground" />
-                      </Button>
-                      <Button variant="ghost" size="icon" title="Novo Cálculo" onClick={() => navigate(NEW_ROUTE)}>
-                        <Calculator className="h-4 w-4 text-primary" />
-                      </Button>
-                    </TableCell>
+          {filteredPatients.length === 0 ? (
+            <div className="rounded-2xl border border-dashed border-border/70 p-5 text-sm text-muted-foreground">
+              Nenhum paciente encontrado. Gere e salve um cálculo para começar a popular esta área.
+            </div>
+          ) : (
+            <div className="overflow-hidden rounded-md border">
+              <Table>
+                <TableHeader className="bg-muted/50">
+                  <TableRow>
+                    <TableHead>Nome</TableHead>
+                    <TableHead>Tutor</TableHead>
+                    <TableHead>Espécie</TableHead>
+                    <TableHead>Peso</TableHead>
+                    <TableHead>ECC</TableHead>
+                    <TableHead>Histórico</TableHead>
+                    <TableHead>Último cálculo</TableHead>
+                    <TableHead className="text-right">Ações</TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
+                </TableHeader>
+                <TableBody>
+                  {filteredPatients.map((patient) => (
+                    <TableRow key={`${patient.name}-${patient.lastReportAt}`} className="hover:bg-muted/30">
+                      <TableCell className="font-semibold">{patient.name ?? 'Paciente sem nome'}</TableCell>
+                      <TableCell>{patient.ownerName ?? 'Sem tutor'}</TableCell>
+                      <TableCell>
+                        <Badge variant={patient.species === 'dog' ? 'default' : patient.species === 'cat' ? 'secondary' : 'outline'}>
+                          {patient.species === 'dog' ? 'Cão' : patient.species === 'cat' ? 'Gato' : 'Indefinido'}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="font-mono">{patient.currentWeight ? `${patient.currentWeight} kg` : '—'}</TableCell>
+                      <TableCell>{patient.bcs ? `${patient.bcs}/9` : '—'}</TableCell>
+                      <TableCell>{patient.reportCount} cálculo(s)</TableCell>
+                      <TableCell>{new Date(patient.lastReportAt).toLocaleDateString('pt-BR')}</TableCell>
+                      <TableCell className="text-right">
+                        <Button variant="ghost" size="icon" title="Novo cálculo" onClick={() => navigate(NEW_ROUTE)}>
+                          <Calculator className="h-4 w-4 text-primary" />
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }

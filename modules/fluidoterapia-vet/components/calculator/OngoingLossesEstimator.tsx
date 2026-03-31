@@ -27,11 +27,11 @@ function createEvent(): OngoingLossEvent {
 }
 
 const TYPE_LABELS: Record<OngoingLossEventType, string> = {
-  vomit: 'Vomito',
+  vomit: 'Vômito',
   diarrhea: 'Diarreia',
-  polyuria: 'Poliuria',
+  polyuria: 'Poliúria',
   drain: 'Dreno',
-  third_space: '3o espaco',
+  third_space: '3º espaço',
   other: 'Outro',
 };
 
@@ -49,7 +49,7 @@ export function OngoingLossesEstimator({ patient, config, onChange }: Props) {
               <ArrowDownToLine className="h-5 w-5 text-amber-600 dark:text-amber-400" />
             </div>
             <div>
-              <CardTitle className="text-lg">Perdas continuas</CardTitle>
+              <CardTitle className="text-lg">Perdas contínuas</CardTitle>
               <CardDescription>Somar perdas medidas ou estimadas e converter para mL/24 h.</CardDescription>
             </div>
           </div>
@@ -88,7 +88,7 @@ export function OngoingLossesEstimator({ patient, config, onChange }: Props) {
                 placeholder="Ex: 250"
               />
               <p className="mt-3 text-sm text-slate-500">
-                Drenos, sonda urinaria, sonda nasogastrica, dreno toracico e dreno abdominal devem aceitar volume medido em mL sempre que houver dado real.
+                Drenos, sonda urinária, sonda nasogástrica, dreno torácico e dreno abdominal devem aceitar volume medido em mL sempre que houver dado real.
               </p>
             </div>
           ) : (
@@ -132,7 +132,7 @@ export function OngoingLossesEstimator({ patient, config, onChange }: Props) {
                       </div>
 
                       <div className="space-y-2">
-                        <Label className="text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Volume do episodio (mL)</Label>
+                        <Label className="text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Volume do episódio (mL)</Label>
                         <Input
                           type="number"
                           min="0"
@@ -143,7 +143,7 @@ export function OngoingLossesEstimator({ patient, config, onChange }: Props) {
                       </div>
 
                       <div className="space-y-2">
-                        <Label className="text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Numero de episodios</Label>
+                        <Label className="text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Número de episódios</Label>
                         <Input
                           type="number"
                           min="0"
@@ -167,17 +167,17 @@ export function OngoingLossesEstimator({ patient, config, onChange }: Props) {
                       <div className="space-y-2">
                         <Label className="text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Total mL/dia</Label>
                         <div className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-900 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100">
-                          {totalMl.toFixed(1)} mL/dia {isEstimated ? `(estimado: ${lossSizePresets[event.animalSize].mlPerKg} mL/kg/episodio)` : ''}
+                          {totalMl.toFixed(1)} mL/dia {isEstimated ? `(estimado: ${lossSizePresets[event.animalSize].mlPerKg} mL/kg/episódio)` : ''}
                         </div>
                       </div>
                     </div>
 
                     <div className="mt-4 space-y-2">
-                      <Label className="text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Observacao</Label>
+                      <Label className="text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Observação</Label>
                       <Input
                         value={event.observation || ''}
                         onChange={(eventInput) => updateEvent(event.id, { observation: eventInput.target.value })}
-                        placeholder="Ex: dreno abdominal, urina mensurada, vomito em jato"
+                        placeholder="Ex: dreno abdominal, urina mensurada, vômito em jato"
                       />
                     </div>
                   </div>
@@ -196,7 +196,7 @@ export function OngoingLossesEstimator({ patient, config, onChange }: Props) {
           )}
 
           <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800 dark:border-amber-900/50 dark:bg-amber-950/30 dark:text-amber-300">
-            Se o usuario nao medir, a estimativa por episodio de vomito ou diarreia fica na faixa grosseira de 2 a 4 mL/kg por episodio. Sempre que houver dado real em mL, ele vale mais do que o porte estimado.
+            Se o usuário não medir, a estimativa por episódio de vômito ou diarreia fica na faixa grosseira de 2 a 4 mL/kg por episódio. Sempre que houver dado real em mL, ele vale mais do que o porte estimado.
           </div>
         </CardContent>
       ) : null}

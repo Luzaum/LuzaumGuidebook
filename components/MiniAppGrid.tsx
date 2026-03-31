@@ -1,17 +1,11 @@
 import React from 'react'
 import { Card } from './ui/card'
 import {
-  Calculator,
   Heart,
-  BookOpen,
-  Activity,
   Syringe,
   Scissors,
   Pill,
-  Microscope,
   Brain,
-  Apple,
-  TestTube,
   Zap,
   Cat,
 } from 'lucide-react'
@@ -56,13 +50,6 @@ const miniApps: Array<{
     title: 'Escalas de Dor',
     description: 'Escalas de dor e protocolos de analgesia',
     icon: <Cat className="h-6 w-6" />,
-    implemented: true,
-  },
-  {
-    id: 'hemogasometria',
-    title: 'Hemogasometria',
-    description: 'Interpretação de hemogasometria arterial e venosa',
-    icon: <TestTube className="h-6 w-6" />,
     implemented: true,
   },
   {
@@ -122,7 +109,7 @@ export function MiniAppGrid({ onAppClick }: MiniAppGridProps) {
             Aplicativos Veterinários
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Acesse 10 mini-aplicativos especializados para auxiliar na sua
+            Acesse mini-aplicativos especializados para auxiliar na sua
             prática clínica diária
           </p>
         </div>
@@ -156,4 +143,3 @@ export function MiniAppGrid({ onAppClick }: MiniAppGridProps) {
     </section>
   )
 }
-

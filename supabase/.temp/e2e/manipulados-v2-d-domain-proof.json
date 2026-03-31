@@ -1,0 +1,33 @@
+{
+  "benazepril": {
+    "warnings": [],
+    "ingredientBreakdown": [
+      {
+        "ingredientName": "Benazepril",
+        "rawRuleText": "Benazepril 0,5 mg/kg/biscoito/VO",
+        "selectedDoseText": "2,5 mg",
+        "rangeText": "",
+        "controlled": false
+      }
+    ],
+    "tutorInstruction": "Administrar 1 biscoito a cada 24h.",
+    "pharmacyInstruction": "Manipulação: Favor manipular Biscoitos, contendo Benazepril 2,5 mg por 1 biscoito, q.s.p. 30 unidades.",
+    "finalQuantity": "30 unidades"
+  },
+  "click": {
+    "tutorInstruction": "Administrar 1 click, por via Transdérmica, a cada 8 horas, por 7 dias.",
+    "pharmacyInstruction": "Manipulação: Favor manipular Gel transdérmico, contendo Gabapentina 100 mg, q.s.p. 10 mL, base transdérmica tipo Lipoderm®. Ajustar para fornecer 100 mg por click."
+  },
+  "drop": {
+    "tutorInstruction": "Administrar 1 gota, por via Otológica, a cada 12 horas, por 7 dias.",
+    "pharmacyInstruction": "Manipulação: Favor manipular Solução otológica, contendo Gabapentina 100 mg, q.s.p. 10 mL. Ajustar para fornecer 100 mg por click."
+  },
+  "pump": {
+    "tutorInstruction": "Administrar 1 pump, por via Transdérmica, a cada 8 horas, por 7 dias.",
+    "pharmacyInstruction": "Manipulação: Favor manipular Gel transdérmico, contendo Gabapentina 100 mg, q.s.p. 10 mL, base transdérmica tipo Lipoderm®. Ajustar para fornecer 100 mg por click."
+  },
+  "ointment": {
+    "tutorInstruction": "Aplicar fina camada no local afetado a cada 12 horas por 7 dias.",
+    "pharmacyInstruction": "Manipulação: Favor manipular Pomada, contendo Gabapentina 100 mg, q.s.p. 30 g. Ajustar para fornecer 100 mg por click."
+  }
+}

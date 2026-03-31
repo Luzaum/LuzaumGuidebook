@@ -90,40 +90,21 @@ export function CalculatorPage() {
   return (
     <div className="flex h-full w-full flex-col bg-slate-50/50 dark:bg-slate-950/50 lg:flex-row">
       <div className="flex-1 overflow-y-auto p-4 lg:p-8">
-        <div className="mx-auto max-w-4xl space-y-8">
+        <div className="mx-auto w-full space-y-8">
           <header className="space-y-4">
             <div>
-              <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Calculadora clinica</h2>
-              <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">O modulo calcula, explica, justifica e alerta. Fluido e tratado como prescricao individualizada.</p>
+              <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Calculadora clínica</h2>
+              <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">O módulo calcula, explica, justifica e alerta. Fluido é tratado como prescrição individualizada.</p>
             </div>
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="rounded-2xl border border-teal-200 bg-teal-50 p-5 dark:border-teal-900/50 dark:bg-teal-950/20">
-                <div className="flex items-center gap-2 text-teal-700 dark:text-teal-300">
-                  <Beaker className="h-4 w-4" />
-                  <p className="text-sm font-bold uppercase tracking-wider">Base clinica</p>
-                </div>
-                <p className="mt-3 text-sm text-teal-800 dark:text-teal-200">
-                  Hipovolemia nao e desidratacao. Manutencao nao substitui ressuscitacao. A conta total deve permanecer separada em manutencao + reidratacao + perdas continuas.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950">
-                <div className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                  <Sparkles className="h-4 w-4 text-amber-500" />
-                  <p className="text-sm font-bold uppercase tracking-wider">Foco do modulo</p>
-                </div>
-                <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">
-                  Peso seriado, FR, ausculta, diurese, PA, eletrólitos e sinais de sobrecarga aparecem como centro da decisao, nao como detalhe.
-                </p>
-              </div>
-            </div>
+
           </header>
 
           <PatientProfileForm patient={state.patient} onChange={updatePatient} />
           <MaintenanceMethodSelector patient={state.patient} config={state.maintenance} onChange={updateMaintenance} results={maintenanceResults} />
-          <FluidSelectionCard config={state.fluidSelection} onChange={updateFluidSelection} />
+
 
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-200">3. Condicoes clinicas</h3>
+            <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-200">3. Condições clínicas</h3>
             <RehydrationCard config={state.rehydration} onChange={updateRehydration} />
             <OngoingLossesEstimator patient={state.patient} config={state.ongoingLosses} onChange={updateOngoingLosses} />
           </div>

@@ -1,0 +1,120 @@
+{
+  "ok": true,
+  "seed": {
+    "email": "codexmanipulados1774215809011@gmail.com",
+    "password": "Codex123456!",
+    "userId": "ef11915e-685d-4d36-98be-a5849009340f",
+    "clinicId": "84b02794-c6fc-4303-aaa0-17880d42b32f",
+    "tutorId": "55900e50-5a3c-472c-b22b-a8dfe5ec13be",
+    "patientId": "88f4d5dc-a196-4533-ae52-a96b8c007be3"
+  },
+  "freeName": "Gabapentina gel transdérmico V2 1774749434658",
+  "controlledName": "Trazodona cápsulas V2 1774749434658",
+  "protocolName": "Protocolo Manipulado V2 1774749434658",
+  "legacyName": "UX Magistral 1774610405656 Editado",
+  "log": [
+    {
+      "step": "login_ok",
+      "time": "2026-03-29T01:57:17.071Z",
+      "email": "codexmanipulados1774215809011@gmail.com"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-29T01:57:17.190Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\39-v2-login.png"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-29T01:57:21.692Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\40-v2-free-editor-before-save.png"
+    },
+    {
+      "step": "free_saved",
+      "time": "2026-03-29T01:57:23.753Z",
+      "name": "Gabapentina gel transdérmico V2 1774749434658"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-29T01:57:24.659Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\41-v2-free-saved.png"
+    },
+    {
+      "step": "controlled_saved",
+      "time": "2026-03-29T01:57:27.632Z",
+      "name": "Trazodona cápsulas V2 1774749434658"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-29T01:57:28.469Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\42-v2-controlled-saved.png"
+    },
+    {
+      "step": "legacy_resaved_v2",
+      "time": "2026-03-29T01:57:30.624Z",
+      "name": "UX Magistral 1774610405656 Editado",
+      "id": "59caf387-c0b6-42dc-ab51-078186800e61"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-29T01:57:31.586Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\43-v2-legacy-normalized.png"
+    },
+    {
+      "step": "patient_selected",
+      "time": "2026-03-29T01:57:33.959Z"
+    },
+    {
+      "step": "added_to_recipe",
+      "time": "2026-03-29T01:57:35.924Z",
+      "name": "Gabapentina gel transdérmico V2 1774749434658"
+    },
+    {
+      "step": "added_to_recipe",
+      "time": "2026-03-29T01:57:38.004Z",
+      "name": "Trazodona cápsulas V2 1774749434658"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-29T01:57:39.725Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\44-v2-recipe-two-items.png"
+    },
+    {
+      "step": "recipe_saved",
+      "time": "2026-03-29T01:57:42.979Z",
+      "prescriptionId": "2acc9b8c-521b-435b-9e3a-a4cdf9943e0f"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-29T01:57:45.689Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\45-v2-review.png"
+    },
+    {
+      "step": "pdf_exported",
+      "time": "2026-03-29T01:57:48.132Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\downloads\\PACIENTE_E2E_TUTOR_E2E_MANIPULADOS_28-03-2026.pdf",
+      "size": 473307
+    },
+    {
+      "step": "protocol_saved",
+      "time": "2026-03-29T01:57:56.073Z",
+      "protocolName": "Protocolo Manipulado V2 1774749434658"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-29T01:57:56.472Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\46-v2-protocol-saved.png"
+    },
+    {
+      "step": "protocol_applied",
+      "time": "2026-03-29T01:57:57.608Z",
+      "protocolName": "Protocolo Manipulado V2 1774749434658",
+      "itemName": "Gabapentina gel transdérmico V2 1774749434658"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-29T01:57:59.747Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\47-v2-protocol-applied.png"
+    }
+  ],
+  "savedPrescriptionId": "2acc9b8c-521b-435b-9e3a-a4cdf9943e0f"
+}

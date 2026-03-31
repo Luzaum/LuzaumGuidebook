@@ -19,14 +19,13 @@ export function AppLayout() {
   const isImmersiveModuleRoute =
     location.pathname.startsWith('/peconhentos') ||
     location.pathname.startsWith('/receituario-vet') ||
-    location.pathname.startsWith('/dados-veterinarios') ||
-    location.pathname.startsWith('/calculadora-energetica')
+    location.pathname.startsWith('/dados-veterinarios')
   const isFullBleedRoute =
     isActive('/') ||
     isActive('/hub') ||
     isImmersiveModuleRoute ||
     location.pathname.startsWith('/fluidoterapia') ||
-    location.pathname.startsWith('/hemogasometria') ||
+    location.pathname.startsWith('/hemogasovet') ||
     location.pathname.startsWith('/plantao-vet') ||
     location.pathname.startsWith('/calculadora-energetica') ||
     location.pathname.startsWith('/crivet') ||
@@ -250,3 +249,4 @@ export function AppLayout() {
     </div>
   )
 }
+

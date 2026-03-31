@@ -2505,4 +2505,3 @@ if (import.meta.env.DEV) console.log("[DEBUG] NovaReceitaPage.tsx evaluation fin
 
 
 
-

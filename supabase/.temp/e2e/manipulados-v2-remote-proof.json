@@ -1,0 +1,74 @@
+{
+  "medications": [
+    {
+      "id": "1d7ffb09-e37a-42bc-b078-9c88b5bad9a6",
+      "name": "Gabapentina gel transdérmico V2 1774749434658",
+      "slug": "gabapentina-gel-transdermico-v2-1774749434658",
+      "description": "Formulação magistral felina para uso transdérmico com UX V2.",
+      "updated_at": "2026-03-29T01:57:22.088+00:00",
+      "is_controlled": false,
+      "control_type": "venda_livre",
+      "has_payload_v2": true,
+      "ui_version": 2,
+      "sale_classification": "free"
+    },
+    {
+      "id": "fc58116f-4d35-490f-9804-ad3a375e5dd3",
+      "name": "Trazodona cápsulas V2 1774749434658",
+      "slug": "trazodona-capsulas-v2-1774749434658",
+      "description": "Item legado regravado pelo editor V2 para normalização canônica.",
+      "updated_at": "2026-03-29T01:57:24.68251+00:00",
+      "is_controlled": true,
+      "control_type": "controlado",
+      "has_payload_v2": true,
+      "ui_version": 2,
+      "sale_classification": "controlled"
+    },
+    {
+      "id": "59caf387-c0b6-42dc-ab51-078186800e61",
+      "name": "UX Magistral 1774610405656 Editado",
+      "slug": "ux-magistral-1774607443356",
+      "description": "Legado migrado V2 1774750025717",
+      "updated_at": "2026-03-29T02:07:05.63447+00:00",
+      "is_controlled": false,
+      "control_type": "venda_livre",
+      "has_payload_v2": true,
+      "ui_version": 2,
+      "sale_classification": "free"
+    }
+  ],
+  "protocol": {
+    "id": "cddfe77e-768f-4bba-9e15-5cf3b3afa6e4",
+    "name": "Protocolo Manipulado V2 1774749434658"
+  },
+  "protocolMedications": [
+    {
+      "id": "12481d13-f5ef-4ddf-852c-633f922d66b5",
+      "item_type": "compounded",
+      "compounded_medication_id": "1d7ffb09-e37a-42bc-b078-9c88b5bad9a6",
+      "compounded_regimen_id": "07d1132c-7136-49af-baa2-7cf917f10d68",
+      "manual_presentation_label": "Gel transdérmico • Gabapentina • 10 mL",
+      "dose_value": 1,
+      "dose_unit": "click",
+      "interval_hours": 8
+    }
+  ],
+  "prescription": {
+    "id": "2acc9b8c-521b-435b-9e3a-a4cdf9943e0f",
+    "hasStateSnapshot": true,
+    "compoundedItems": [
+      {
+        "name": "Gabapentina gel transdérmico V2 1774749434658",
+        "compounded_medication_id": "1d7ffb09-e37a-42bc-b078-9c88b5bad9a6",
+        "sale_classification": "free",
+        "has_payload_v2": true
+      },
+      {
+        "name": "Trazodona cápsulas V2 1774749434658",
+        "compounded_medication_id": "fc58116f-4d35-490f-9804-ad3a375e5dd3",
+        "sale_classification": "controlled",
+        "has_payload_v2": true
+      }
+    ]
+  }
+}

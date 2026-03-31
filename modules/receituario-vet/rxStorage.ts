@@ -235,4 +235,3 @@ export function clearRxDraft() {
   localStorage.removeItem(DRAFT_KEY)
 }
 
-

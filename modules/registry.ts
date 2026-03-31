@@ -1,4 +1,4 @@
-﻿import {
+import {
   Heart,
   Zap,
   Cat,
@@ -59,13 +59,13 @@ export const modules: Module[] = [
     iconImage: '/apps/transfusao.png',
   },
   {
-    id: 'hemogasometria',
-    title: 'Hemogasometria',
-    description: 'Interpretação de hemogasometria arterial e venosa',
-    route: '/hemogasometria',
+    id: 'hemogasovet',
+    title: 'HemoGasoVet',
+    description: 'Interpretacao de hemogasometria arterial e venosa',
+    route: '/hemogasovet',
     status: 'internal',
     icon: TestTube,
-    iconImage: '/apps/HEMOGASO.png',
+    iconImage: '/apps/hemogasovetzx.png',
   },
   {
     id: 'escalas-dor',
@@ -152,7 +152,7 @@ export const modules: Module[] = [
   },
   {
     id: 'consulta-vet',
-    title: 'Consulta VET',
+    title: 'Vetius ALFA',
     description: 'Consulta clínica veterinária com doenças, medicamentos, consensos e favoritos.',
     route: '/consulta-vet',
     status: 'internal',
@@ -169,5 +169,4 @@ export function getModuleById(id: string): Module | undefined {
 export function getModuleByRoute(route: string): Module | undefined {
   return modules.find((m) => m.route === route)
 }
-
 

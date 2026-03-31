@@ -13,6 +13,25 @@ import {
   type ClinicalRegimenSemantics,
   type ClinicalWeightTierRule,
 } from './compoundedClinicalText'
+import type { CompoundedMedicationV2 } from './compoundedV2'
+import { resolveCompoundedInstance } from './compoundedV2Engine'
+import {
+  getCompoundedCatalogSubtitle as renderV2CatalogSubtitle,
+  renderCompoundedInternalNote as renderV2InternalNote,
+  renderCompoundedPharmacyInstructions as renderV2PharmacyInstructions,
+  renderCompoundedPrescriptionLine as renderV2PrescriptionLine,
+  renderCompoundedRecommendations as renderV2Recommendations,
+  renderCompoundedProtocolSummary as renderV2ProtocolSummary,
+} from './compoundedV2Render'
+import { normalizeManipuladoV1, type ManipuladoV1Formula } from './manipuladosV1'
+import {
+  getManipuladoV1CatalogSubtitle,
+  getManipuladoV1PrintLineRight,
+  renderManipuladoV1PharmacyInstruction,
+  renderManipuladoV1Recommendations,
+  renderManipuladoV1TutorInstruction,
+} from './manipuladosV1Render'
+import { sanitizeDeepText, sanitizeVisibleText } from './textSanitizer'
 
 type ClinicalRouteOption = { value: string; label: string }
 
@@ -57,7 +76,7 @@ export type CompoundedCalculationSummary = {
 }
 
 function normalizeText(value: string): string {
-  return String(value || '')
+  return sanitizeVisibleText(value || '')
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
@@ -85,19 +104,153 @@ function getClinicalFormula(item: CompoundedPrescriptionItem): ReturnType<typeof
   return getClinicalFormulaMetadata(item.compounded_snapshot?.metadata || null)
 }
 
+function getRuntimeCompoundedV2(item: CompoundedPrescriptionItem): CompoundedMedicationV2 | null {
+  const payload = (item.compounded_snapshot?.metadata as Record<string, unknown> | null)?.payload_v2
+  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return null
+
+  const safe = sanitizeDeepText(payload as CompoundedMedicationV2)
+  const regimenId = item.compounded_regimen_id || item.compounded_regimen_snapshot?.id || null
+  const targetRegimen =
+    safe.regimens.find((entry) => entry.id === regimenId) ||
+    safe.regimens.find((entry) => entry.is_default) ||
+    safe.regimens[0]
+
+  return {
+    ...safe,
+    formula: {
+      ...safe.formula,
+      name: sanitizeVisibleText(item.name || safe.formula.name),
+      primary_route: sanitizeVisibleText(item.route || safe.formula.primary_route),
+      total_quantity_text: sanitizeVisibleText(item.manualQuantity || safe.formula.total_quantity_text),
+      qsp_text: sanitizeVisibleText(item.manualQuantity || safe.formula.qsp_text),
+      sale_classification: item.is_controlled ? 'controlled' : safe.formula.sale_classification,
+    },
+    regimens: safe.regimens.map((regimen) =>
+      regimen.id !== targetRegimen?.id
+        ? regimen
+        : {
+            ...regimen,
+            administration_unit: sanitizeVisibleText(item.compounded_regimen_snapshot?.fixed_administration_unit || regimen.administration_unit),
+            usage_instruction: sanitizeVisibleText(regimen.usage_instruction),
+            tutor_observation: sanitizeVisibleText(item.cautionsText || regimen.tutor_observation),
+            pharmacy_note: sanitizeVisibleText(item.compounded_pharmacy_guidance || regimen.pharmacy_note),
+            internal_note: sanitizeVisibleText(item.compounded_internal_note || regimen.internal_note),
+            frequency_text: sanitizeVisibleText(item.frequency || regimen.frequency_text),
+            duration_text: sanitizeVisibleText(item.duration || regimen.duration_text),
+            frequency_mode:
+              item.frequencyMode === 'times_per_day'
+                ? 'times_per_day'
+                : item.frequencyMode === 'interval_hours'
+                  ? 'interval_hours'
+                  : regimen.frequency_mode,
+            frequency_min: item.timesPerDay ?? item.intervalHours ?? regimen.frequency_min,
+            duration_mode: item.durationMode === 'continuous_until_recheck' ? 'continuous_until_recheck' : regimen.duration_mode,
+            duration_value: item.durationValue ?? regimen.duration_value,
+            duration_unit: sanitizeVisibleText(item.durationUnit || regimen.duration_unit),
+          },
+    ),
+  }
+}
+
+function getRuntimeManipuladoV1(item: CompoundedPrescriptionItem): ManipuladoV1Formula | null {
+  const payload = (item.compounded_snapshot?.metadata as Record<string, unknown> | null)?.payload_v1
+  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return null
+
+  const safe = normalizeManipuladoV1(sanitizeDeepText(payload as ManipuladoV1Formula))
+  return normalizeManipuladoV1({
+    ...safe,
+    identity: {
+      ...safe.identity,
+      name: sanitizeVisibleText(item.name || safe.identity.name),
+      primary_route: sanitizeVisibleText(item.route || safe.identity.primary_route),
+      sale_classification: item.is_controlled ? 'controlled' : safe.identity.sale_classification,
+    },
+    pharmacy: {
+      ...safe.pharmacy,
+      qsp_text: sanitizeVisibleText(item.manualQuantity || safe.pharmacy.qsp_text),
+      total_quantity: sanitizeVisibleText(item.manualQuantity || safe.pharmacy.total_quantity),
+    },
+    prescribing: {
+      ...safe.prescribing,
+      clinical_note: sanitizeVisibleText(item.compounded_internal_note || safe.prescribing.clinical_note),
+    },
+    display: {
+      ...safe.display,
+      auto_print_line: !item.presentation_metadata || (item.presentation_metadata as Record<string, unknown>).print_line_mode !== 'manual',
+      print_line_left: sanitizeVisibleText(String(((item.presentation_metadata || {}) as Record<string, unknown>).print_line_left || safe.display.print_line_left)),
+      print_line_right: sanitizeVisibleText(String(((item.presentation_metadata || {}) as Record<string, unknown>).print_line_right || safe.display.print_line_right)),
+    },
+  })
+}
+
+function getManipuladoV1DoseText(formula: ManipuladoV1Formula, patient?: PatientInfo | null): string {
+  const dose = toNumber(formula.prescribing.dose_min)
+  if (!dose) return ''
+  if (formula.prescribing.posology_mode === 'mg_per_kg_dose') {
+    const weight = toNumber(patient?.weight_kg)
+    if (!weight || weight <= 0) return `${formatDecimal(dose)} ${formula.prescribing.dose_unit}/kg`
+    return `${formatDecimal(dose * weight)} ${formula.prescribing.dose_unit}`.trim()
+  }
+  if (formula.prescribing.posology_mode === 'mg_per_m2_dose') return `${formatDecimal(dose)} ${formula.prescribing.dose_unit}/m²`
+  return `${formatDecimal(dose)} ${formula.prescribing.dose_unit}`.trim()
+}
+
+function buildManipuladoV1Instruction(formula: ManipuladoV1Formula, patient?: PatientInfo | null): string {
+  const doseText = getManipuladoV1DoseText(formula, patient) || renderManipuladoV1TutorInstruction(formula)
+  const route = routeToClinicalLabel(formula.identity.primary_route)
+  const frequency = sanitizeVisibleText(formula.prescribing.frequency_label || '')
+  const duration =
+    sanitizeVisibleText(formula.prescribing.duration_label || '') ||
+    (formula.prescribing.duration_value ? `${formula.prescribing.duration_value} ${formula.prescribing.duration_unit}` : '')
+  return [
+    `Posologia: ${routeVerb(formula.identity.primary_route)} ${doseText}`,
+    route,
+    frequency,
+    duration ? `por ${duration}` : '',
+  ].filter(Boolean).join(', ').replace(/\s+/g, ' ').trim() + '.'
+}
+
+function getManipuladoV1RegimenSummary(formula: ManipuladoV1Formula, patient?: PatientInfo | null): string {
+  const modeMap: Record<string, string> = {
+    fixed_per_animal: 'Dose fixa por animal',
+    mg_per_kg_dose: 'Calculado pelo peso do paciente',
+    mg_per_m2_dose: 'Calculado pela superfície corporal',
+    fixed_per_application: 'Dose fixa por aplicação',
+    concentration_fixed: 'Concentração fixa',
+    clinical_variant_table: 'Tabela ou variante clínica',
+  }
+  const pieces = [modeMap[formula.prescribing.posology_mode] || 'Posologia clínica']
+  const doseText = getManipuladoV1DoseText(formula, patient)
+  if (doseText) pieces.push(`Dose ${doseText}`)
+  if (formula.prescribing.frequency_label) pieces.push(sanitizeVisibleText(formula.prescribing.frequency_label))
+  if (formula.prescribing.duration_label) pieces.push(sanitizeVisibleText(formula.prescribing.duration_label))
+  if (formula.pharmacy.total_quantity || formula.pharmacy.qsp_text) {
+    pieces.push(`Quantidade ${sanitizeVisibleText(formula.pharmacy.total_quantity || formula.pharmacy.qsp_text)}`)
+  }
+  return pieces.filter(Boolean).join(' • ')
+}
+
 function getClinicalRegimen(item: CompoundedPrescriptionItem): ClinicalRegimenSemantics | null {
   const direct = item.compounded_regimen_snapshot?.metadata
-  if (direct && typeof direct === 'object' && !Array.isArray(direct)) {
-    return direct as ClinicalRegimenSemantics
+  if (
+    direct &&
+    typeof direct === 'object' &&
+    !Array.isArray(direct) &&
+    ('ingredientRules' in direct || 'scenarioTitle' in direct || 'pharmaceuticalForm' in direct)
+  ) {
+    return sanitizeDeepText(direct as ClinicalRegimenSemantics)
   }
   const formula = getClinicalFormula(item)
   const regimenId = item.compounded_regimen_id || item.compounded_regimen_snapshot?.id
   if (!formula?.regimen_semantics || !regimenId) return null
-  return formula.regimen_semantics[String(regimenId)] || null
+  return sanitizeDeepText(formula.regimen_semantics[String(regimenId)] || null)
 }
 
 function isClinicalDoseOrientedItem(item: PrescriptionItem): item is CompoundedPrescriptionItem {
-  return isCompounded(item) && getClinicalFormula(item)?.formula_model === 'clinical_dose_oriented'
+  if (!isCompounded(item)) return false
+  const runtimeV2 = getRuntimeCompoundedV2(item)
+  if (runtimeV2) return runtimeV2.formula.formula_type === 'clinical_dose_oriented'
+  return getClinicalFormula(item)?.formula_model === 'clinical_dose_oriented'
 }
 
 function normalizeUnit(unit?: string | null): string {
@@ -461,6 +614,107 @@ export function getCompoundedCalculationSummary(
   patient?: PatientInfo | null
 ): CompoundedCalculationSummary | null {
   if (!isCompounded(item)) return null
+  const runtimeV1 = getRuntimeManipuladoV1(item)
+  if (runtimeV1) {
+    const weightKg = toNumber(patient?.weight_kg)
+    const doseValue = toNumber(runtimeV1.prescribing.dose_min)
+    const doseUnit = sanitizeVisibleText(runtimeV1.prescribing.dose_unit || '')
+    const weightBased = runtimeV1.prescribing.posology_mode === 'mg_per_kg_dose'
+    const doseDescriptorText =
+      weightBased && doseValue != null
+        ? `${formatDecimal(doseValue)} ${doseUnit}/kg`.trim()
+        : runtimeV1.prescribing.posology_mode === 'mg_per_m2_dose' && doseValue != null
+          ? `${formatDecimal(doseValue)} ${doseUnit}/m²`.trim()
+          : doseValue != null
+            ? `${formatDecimal(doseValue)} ${doseUnit}`.trim()
+            : ''
+    const perAdministrationValue = weightBased && doseValue != null && weightKg ? doseValue * weightKg : doseValue
+    const perAdministrationUnit = doseUnit
+    const perAdministrationText = getManipuladoV1DoseText(runtimeV1, patient)
+    const warnings: string[] = []
+    let status: CalculationStatus = 'ok'
+    if (weightBased && (!weightKg || weightKg <= 0)) {
+      status = 'missing_weight'
+      warnings.push('Peso necessário para cálculo da dose final.')
+    } else if (doseValue == null && runtimeV1.prescribing.posology_mode !== 'clinical_variant_table') {
+      status = 'missing_dose'
+      warnings.push('Dose clínica não definida.')
+    } else if (!weightBased) {
+      status = 'fixed'
+    }
+
+    return {
+      mode: weightBased ? 'weight_based' : 'fixed_per_animal',
+      status,
+      weightKg,
+      route: runtimeV1.identity.primary_route,
+      routeLabel: routeToClinicalLabel(runtimeV1.identity.primary_route),
+      concentrationText: '',
+      regimenLabel: sanitizeVisibleText(runtimeV1.identity.indication_summary || 'Posologia padrão'),
+      doseDescriptorText,
+      perAdministrationValue,
+      perAdministrationUnit,
+      perAdministrationText,
+      calculatedTotalValue: null,
+      calculatedTotalUnit: '',
+      calculatedTotalText: '',
+      estimatedTotalValue: null,
+      estimatedTotalUnit: '',
+      estimatedTotalText: '',
+      finalQuantityText: sanitizeVisibleText(runtimeV1.pharmacy.total_quantity || runtimeV1.pharmacy.qsp_text),
+      ingredientBreakdown: runtimeV1.ingredients
+        .filter((entry) => entry.role === 'active')
+        .map((entry) => ({
+          ingredientName: sanitizeVisibleText(entry.name),
+          rawRuleText: sanitizeVisibleText(entry.note),
+          selectedDoseText: entry.quantity != null ? `${formatDecimal(entry.quantity)} ${sanitizeVisibleText(entry.unit)}`.trim() : '',
+          rangeText: '',
+          controlled: false,
+        })),
+      administrationLabelText: sanitizeVisibleText(runtimeV1.pharmacy.final_unit),
+      selectionStrategy: 'min',
+      warnings,
+    }
+  }
+  const runtimeV2 = getRuntimeCompoundedV2(item)
+  if (runtimeV2) {
+    const resolved = resolveCompoundedInstance(runtimeV2, patient)
+    const regimen = resolved.regimen
+    return {
+      mode: regimen?.dose_mode === 'by_weight' ? 'weight_based' : 'fixed_per_animal',
+      status: resolved.warnings.length ? 'missing_weight' : 'ok',
+      weightKg: toNumber(patient?.weight_kg),
+      route: runtimeV2.formula.primary_route,
+      routeLabel: routeToClinicalLabel(runtimeV2.formula.primary_route),
+      concentrationText: regimen?.concentration_value && regimen?.concentration_unit
+        ? `${formatDecimal(regimen.concentration_value)} ${regimen.concentration_unit}`
+        : '',
+      regimenLabel: regimen?.name || 'Regime clínico',
+      doseDescriptorText: resolved.doseValue != null ? `${formatDecimal(resolved.doseValue)} ${resolved.doseUnit}`.trim() : '',
+      perAdministrationValue: resolved.doseValue,
+      perAdministrationUnit: resolved.doseUnit,
+      perAdministrationText: resolved.administrationText,
+      calculatedTotalValue: null,
+      calculatedTotalUnit: '',
+      calculatedTotalText: '',
+      estimatedTotalValue: null,
+      estimatedTotalUnit: '',
+      estimatedTotalText: '',
+      finalQuantityText: sanitizeVisibleText(resolved.finalQuantityText),
+      ingredientBreakdown: resolved.ingredients
+        .filter((entry) => entry.role === 'active')
+        .map((entry) => ({
+          ingredientName: sanitizeVisibleText(entry.name),
+          rawRuleText: sanitizeVisibleText(entry.note),
+          selectedDoseText: entry.amount != null ? `${formatDecimal(entry.amount)} ${entry.unit}`.trim() : sanitizeVisibleText(entry.displayText),
+          rangeText: '',
+          controlled: false,
+        })),
+      administrationLabelText: regimen?.administration_unit || runtimeV2.formula.administration_unit,
+      selectionStrategy: 'min',
+      warnings: resolved.warnings.map((entry) => sanitizeVisibleText(entry)),
+    }
+  }
 
   if (isClinicalDoseOrientedItem(item)) {
     const regimen = getClinicalRegimen(item)
@@ -778,11 +1032,47 @@ function getPharmacyExtraGuidance(item: CompoundedPrescriptionItem): string {
 
 export function getCompoundedInternalNote(item: PrescriptionItem): string {
   if (!isCompounded(item)) return ''
+  const runtimeV1 = getRuntimeManipuladoV1(item)
+  if (runtimeV1) {
+    return sanitizeVisibleText(runtimeV1.prescribing.clinical_note || runtimeV1.identity.description || '')
+  }
+  const runtimeV2 = getRuntimeCompoundedV2(item)
+  if (runtimeV2) return sanitizeVisibleText(renderV2InternalNote(runtimeV2, item.compounded_regimen_id))
   return String(item.compounded_internal_note || item.compounded_regimen_snapshot?.notes || '').trim()
 }
 
 export function getCompoundedFinalizationIssues(item: PrescriptionItem, patient?: PatientInfo | null): string[] {
   if (!isCompounded(item)) return []
+  const runtimeV1 = getRuntimeManipuladoV1(item)
+  if (runtimeV1) {
+    const issues: string[] = []
+    if (!sanitizeVisibleText(runtimeV1.identity.name)) issues.push('Nome da fórmula não definido.')
+    if (!sanitizeVisibleText(runtimeV1.identity.pharmaceutical_form)) issues.push('Forma farmacêutica não definida.')
+    if (!sanitizeVisibleText(runtimeV1.identity.primary_route)) issues.push('Via principal não definida.')
+    if (!sanitizeVisibleText(runtimeV1.pharmacy.total_quantity || runtimeV1.pharmacy.qsp_text)) issues.push('Quantidade total ou q.s.p. não definido.')
+    if (!runtimeV1.ingredients.filter((entry) => entry.role === 'active').length) issues.push('Ingrediente ativo não definido.')
+    const calc = getCompoundedCalculationSummary(item, patient)
+    if (calc && ['missing_weight', 'missing_dose'].includes(calc.status)) issues.push(...calc.warnings)
+    return Array.from(new Set(issues.filter(Boolean)))
+  }
+  const runtimeV2 = getRuntimeCompoundedV2(item)
+  if (runtimeV2) {
+    const issues: string[] = []
+    const resolved = resolveCompoundedInstance(runtimeV2, patient, item.compounded_regimen_id)
+    const regimen = resolved.regimen
+    const quantityText = sanitizeVisibleText(item.manualQuantity || runtimeV2.formula.qsp_text || runtimeV2.formula.total_quantity_text)
+    if (!sanitizeVisibleText(runtimeV2.formula.pharmaceutical_form)) issues.push('Forma farmacêutica não definida.')
+    if (!sanitizeVisibleText(runtimeV2.formula.administration_unit)) issues.push('Unidade real de administração não definida.')
+    if (!quantityText) issues.push('Quantidade total a manipular ou q.s.p. não definida.')
+    if (!regimen) issues.push('Regime clínico não definido.')
+    if (runtimeV2.formula.formula_type === 'clinical_dose_oriented') {
+      const activeIngredients = runtimeV2.ingredients.filter((entry) => entry.role === 'active')
+      if (!activeIngredients.length) issues.push('Ingrediente ativo não definido.')
+    }
+    issues.push(...resolved.warnings)
+    return Array.from(new Set(issues.filter(Boolean)))
+  }
+
   const issues: string[] = []
   const metadata = getClinicalFormula(item)
   const formulaType = metadata?.formula_type || (metadata?.formula_model === 'clinical_dose_oriented' ? 'clinical_dose_oriented' : 'fixed_unit_formula')
@@ -827,6 +1117,10 @@ export function getCompoundedFinalizationIssues(item: PrescriptionItem, patient?
 
 export function buildCompoundedCardSubtitle(item: PrescriptionItem, patient?: PatientInfo | null): string {
   if (!isCompounded(item)) return ''
+  const runtimeV1 = getRuntimeManipuladoV1(item)
+  if (runtimeV1) return sanitizeVisibleText(getManipuladoV1CatalogSubtitle(runtimeV1))
+  const runtimeV2 = getRuntimeCompoundedV2(item)
+  if (runtimeV2) return sanitizeVisibleText(renderV2CatalogSubtitle(runtimeV2))
   const clinicalRegimen = isClinicalDoseOrientedItem(item) ? getClinicalRegimen(item) : null
   const regimen = item.compounded_regimen_snapshot
   const concentration = buildCompoundedConcentrationLine(regimen, item)
@@ -848,6 +1142,10 @@ export function buildCompoundedCardSubtitle(item: PrescriptionItem, patient?: Pa
 
 export function buildCompoundedInstruction(item: PrescriptionItem, patient?: PatientInfo | null): string {
   if (!isCompounded(item)) return String(item.instructions || '').trim()
+  const runtimeV1 = getRuntimeManipuladoV1(item)
+  if (runtimeV1) return sanitizeVisibleText(buildManipuladoV1Instruction(runtimeV1, patient))
+  const runtimeV2 = getRuntimeCompoundedV2(item)
+  if (runtimeV2) return sanitizeVisibleText(renderV2PrescriptionLine(runtimeV2, patient, item.compounded_regimen_id))
   if (isClinicalDoseOrientedItem(item)) {
     const calculation = getCompoundedCalculationSummary(item, patient)
     const route = routeToClinicalLabel(resolveCompoundedRoute(item))
@@ -899,6 +1197,10 @@ export function buildCompoundedInstruction(item: PrescriptionItem, patient?: Pat
 
 export function buildCompoundedPharmacyInstruction(item: PrescriptionItem, patient?: PatientInfo | null): string {
   if (!isCompounded(item)) return ''
+  const runtimeV1 = getRuntimeManipuladoV1(item)
+  if (runtimeV1) return sanitizeVisibleText(renderManipuladoV1PharmacyInstruction(runtimeV1))
+  const runtimeV2 = getRuntimeCompoundedV2(item)
+  if (runtimeV2) return sanitizeVisibleText(renderV2PharmacyInstructions(runtimeV2, patient, item.compounded_regimen_id))
   if (isClinicalDoseOrientedItem(item)) {
     const regimen = getClinicalRegimen(item)
     const calculation = getCompoundedCalculationSummary(item, patient)
@@ -947,6 +1249,25 @@ export function buildCompoundedPharmacyInstruction(item: PrescriptionItem, patie
 
 export function buildCompoundedPreviewCautions(item: PrescriptionItem, patient?: PatientInfo | null): string[] {
   if (!isCompounded(item)) return []
+  const runtimeV1 = getRuntimeManipuladoV1(item)
+  if (runtimeV1) {
+    const lines = [
+      renderManipuladoV1PharmacyInstruction(runtimeV1),
+      ...renderManipuladoV1Recommendations(runtimeV1).map((entry) => `Orientações ao tutor: ${sanitizeVisibleText(entry)}`),
+    ].filter(Boolean)
+    return Array.from(new Set(lines.map((entry) => sanitizeVisibleText(entry)).filter(Boolean)))
+  }
+  const runtimeV2 = getRuntimeCompoundedV2(item)
+  if (runtimeV2) {
+    const recommendations = renderV2Recommendations(runtimeV2, item.compounded_regimen_id).map((entry) => sanitizeVisibleText(entry))
+    const pharmacy = sanitizeVisibleText(renderV2PharmacyInstructions(runtimeV2, patient, item.compounded_regimen_id))
+    const quantity = sanitizeVisibleText(resolveCompoundedInstance(runtimeV2, patient, item.compounded_regimen_id).finalQuantityText)
+    const lines = [
+      pharmacy,
+      ...recommendations.map((entry) => `Orientações ao tutor: ${entry}`),
+    ].filter(Boolean)
+    return Array.from(new Set(lines))
+  }
   const ownerGuidance = getOwnerGuidance(item)
   const quantityText = getCompoundedCalculationSummary(item, patient)?.finalQuantityText
   const lines = [
@@ -966,6 +1287,10 @@ export function buildCompoundedPreviewCautions(item: PrescriptionItem, patient?:
 
 export function buildCompoundedRegimenSummary(item: PrescriptionItem, patient?: PatientInfo | null): string {
   if (!isCompounded(item)) return ''
+  const runtimeV1 = getRuntimeManipuladoV1(item)
+  if (runtimeV1) return sanitizeVisibleText(getManipuladoV1RegimenSummary(runtimeV1, patient))
+  const runtimeV2 = getRuntimeCompoundedV2(item)
+  if (runtimeV2) return sanitizeVisibleText(renderV2ProtocolSummary(runtimeV2, item.compounded_regimen_id))
   const calculation = getCompoundedCalculationSummary(item, patient)
   if (!calculation) return ''
   if (isClinicalDoseOrientedItem(item)) {

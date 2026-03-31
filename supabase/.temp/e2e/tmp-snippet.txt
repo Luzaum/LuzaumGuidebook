@@ -1,0 +1,16 @@
+    // Só carrega se não vier prescriptionId na URL e não vier items de protocolo (location.state)
+    useEffect(() => {
+        if (!draftKey || draftInitRef.current) return
+        draftInitRef.current = true
+
+        const params = new URLSearchParams(location.search)
+        if (params.get('prescriptionId') || location.state) return // Não sobrepor se está editando ou importando
+        const draftId = params.get('draft')
+        if (draftId) {
+            const legacyDraft = loadRxDraftById(draftId)
+            if (legacyDraft) {
+                const migrated = normalizeNovaReceita2State({
+                    id: legacyDraft.id,
+                    prescriber: {
+                        id: legacyDraft.prescriber.profileId || 'legacy',
+                        name: legacyDraft.prescriber.name,

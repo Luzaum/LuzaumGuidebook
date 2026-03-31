@@ -15,9 +15,9 @@ export function FluidSelectionCard({ config, onChange }: Props) {
       <CardHeader className="border-b border-slate-100 bg-slate-50/50 pb-4 dark:border-slate-800 dark:bg-slate-900/50">
         <CardTitle className="flex items-center gap-2 text-lg">
           <Settings2 className="h-5 w-5 text-slate-500" />
-          Prescricao do fluido
+          Prescrição do fluido
         </CardTitle>
-        <CardDescription>Fluido e droga: tipo, via e modo de entrega devem ficar explicitos.</CardDescription>
+        <CardDescription>Fluido e droga: tipo, via e modo de entrega devem ficar explícitos.</CardDescription>
       </CardHeader>
 
       <CardContent className="grid gap-6 p-6 md:grid-cols-2">
@@ -61,7 +61,7 @@ export function FluidSelectionCard({ config, onChange }: Props) {
           <Select value={config.deliveryMode} onValueChange={(value) => onChange({ deliveryMode: value as FluidSelection['deliveryMode'] })}>
             <SelectTrigger><SelectValue /></SelectTrigger>
             <SelectContent>
-              <SelectItem value="auto">Bomba de infusao</SelectItem>
+              <SelectItem value="auto">Bomba de infusão</SelectItem>
               <SelectItem value="macro">Equipo macrogotas</SelectItem>
               <SelectItem value="micro">Equipo microgotas</SelectItem>
             </SelectContent>
@@ -69,7 +69,7 @@ export function FluidSelectionCard({ config, onChange }: Props) {
         </div>
 
         <div className="space-y-3">
-          <Label className="text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Apresentacao</Label>
+          <Label className="text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Apresentação</Label>
           <Select value={String(config.presentationSize)} onValueChange={(value) => onChange({ presentationSize: Number(value) })}>
             <SelectTrigger><SelectValue /></SelectTrigger>
             <SelectContent>

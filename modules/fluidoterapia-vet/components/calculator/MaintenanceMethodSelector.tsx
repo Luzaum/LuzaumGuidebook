@@ -16,14 +16,18 @@ interface Props {
   results: { mlPerDay: number; mlPerHour: number; x1: number; x1_5: number; x2: number };
 }
 
-const METHODS: { id: MaintenanceMethod; label: string; desc: string; icon: ElementType }[] = [
-  { id: 'allometric', label: 'Alometrico por especie', desc: 'Padrao recomendado', icon: Calculator },
-  { id: 'preset_dog', label: 'Padrao cao', desc: '60 mL/kg/dia', icon: Droplets },
-  { id: 'preset_cat', label: 'Padrao gato', desc: '40 mL/kg/dia', icon: Droplets },
-  { id: 'linear', label: 'Linear', desc: '30 x peso + 70', icon: Calculator },
-  { id: 'anesthesia', label: 'Anestesia', desc: 'Taxa inicial conservadora', icon: Stethoscope },
-  { id: 'manual', label: 'Manual', desc: '20 a 120 mL/kg/dia', icon: Settings2 },
-];
+const getMethods = (species: 'canine' | 'feline') => {
+  const allometricFormula = species === 'canine' ? '132 x peso^0.75' : '80 x peso^0.75';
+  
+  return [
+    { id: 'allometric' as MaintenanceMethod, label: 'Alométrico por espécie', desc: allometricFormula, icon: Calculator },
+    { id: 'preset_dog' as MaintenanceMethod, label: 'Padrão cão', desc: '60 mL/kg/dia', icon: Droplets },
+    { id: 'preset_cat' as MaintenanceMethod, label: 'Padrão gato', desc: '40 mL/kg/dia', icon: Droplets },
+    { id: 'linear' as MaintenanceMethod, label: 'Linear', desc: '30 x peso + 70', icon: Calculator },
+    { id: 'anesthesia' as MaintenanceMethod, label: 'Anestesia', desc: 'Taxa inicial conservadora', icon: Stethoscope },
+    { id: 'manual' as MaintenanceMethod, label: 'Manual', desc: '20 a 120 mL/kg/dia', icon: Settings2 },
+  ];
+};
 
 function clampManual(value: number) {
   if (!Number.isFinite(value)) {
@@ -31,8 +35,9 @@ function clampManual(value: number) {
   }
   return Math.min(Math.max(value, 20), 120);
 }
-
 export function MaintenanceMethodSelector({ patient, config, onChange, results }: Props) {
+  const methods = getMethods(patient.species as 'canine' | 'feline');
+
   const isSpeciesMismatch =
     (config.method === 'preset_dog' && patient.species !== 'canine') ||
     (config.method === 'preset_cat' && patient.species !== 'feline');
@@ -48,15 +53,15 @@ export function MaintenanceMethodSelector({ patient, config, onChange, results }
             <Droplets className="h-5 w-5 text-blue-600 dark:text-blue-400" />
           </div>
           <div>
-            <CardTitle className="text-lg">2. Manutencao</CardTitle>
-            <CardDescription>Escolha a logica basal e ajuste a taxa sem misturar ressuscitacao.</CardDescription>
+            <CardTitle className="text-lg">2. Manutenção</CardTitle>
+            <CardDescription>Escolha a lógica basal e ajuste a taxa sem misturar ressuscitação.</CardDescription>
           </div>
         </div>
       </CardHeader>
 
       <CardContent className="space-y-8 p-6">
         <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-          {METHODS.map((method) => {
+          {methods.map((method) => {
             const Icon = method.icon;
             const active = config.method === method.id;
 
@@ -84,7 +89,7 @@ export function MaintenanceMethodSelector({ patient, config, onChange, results }
           <div className="flex items-start gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800 dark:border-amber-900/50 dark:bg-amber-950/30 dark:text-amber-300">
             <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0" />
             <div>
-              O preset de especie nao combina com o paciente atual. O allometrico por especie deve ser o padrao preferencial quando nao houver motivo forte para usar outra abordagem.
+              O preset de espécie não combina com o paciente atual. O alométrico por espécie deve ser o padrão preferencial quando não houver motivo forte para usar outra abordagem.
             </div>
           </div>
         ) : null}
@@ -112,7 +117,7 @@ export function MaintenanceMethodSelector({ patient, config, onChange, results }
               step={1}
               onValueChange={(value) => onChange({ manualMlPerKgDay: clampManual(value[0]) })}
             />
-            <p className="text-xs text-slate-500">O slider e o campo numerico ficam sincronizados, com clamp automatico e sem gerar NaN.</p>
+            <p className="text-xs text-slate-500">O slider e o campo numérico ficam sincronizados, com clamp automático e sem gerar NaN.</p>
           </div>
         ) : null}
 
@@ -122,7 +127,7 @@ export function MaintenanceMethodSelector({ patient, config, onChange, results }
               <div className="space-y-2">
                 <Label className="text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Taxa inicial em anestesia (mL/kg/h)</Label>
                 <p className="text-sm text-slate-600 dark:text-slate-300">
-                  Antes se usava 10 mL/kg/h sem boa base. Hoje a logica e mais conservadora. Nem toda hipotensao anestesica e por falta de volume.
+                  Antes se usava 10 mL/kg/h sem boa base. Hoje a lógica é mais conservadora. Nem toda hipotensão anestésica é por falta de volume.
                 </p>
               </div>
               <Badge variant="outline" className="border-blue-200 bg-white text-blue-700 dark:border-blue-800 dark:bg-slate-950 dark:text-blue-300">
@@ -149,7 +154,7 @@ export function MaintenanceMethodSelector({ patient, config, onChange, results }
               onValueChange={(value) => onChange({ anesthesiaMlPerKgHour: value[0] })}
             />
             <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800 dark:border-amber-900/50 dark:bg-amber-950/30 dark:text-amber-300">
-              Avaliar profundidade anestesica, temperatura, FC, hemorragia, vasodilatacao, analgesia e necessidade de vasopressor ou inotropico antes de "subir soro" automaticamente.
+              Avaliar profundidade anestésica, temperatura, FC, hemorragia, vasodilatação, analgesia e necessidade de vasopressor ou inotrópico antes de "subir soro" automaticamente.
             </div>
           </div>
         ) : null}
@@ -158,7 +163,7 @@ export function MaintenanceMethodSelector({ patient, config, onChange, results }
           <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950">
             <div className="mb-4 flex items-center gap-2">
               <Info className="h-4 w-4 text-slate-400" />
-              <h4 className="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Guia visual de manutencao</h4>
+              <h4 className="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Guia visual de manutenção</h4>
             </div>
             <div className="space-y-3">
               {maintenanceGuide.map((item) => (
@@ -173,12 +178,12 @@ export function MaintenanceMethodSelector({ patient, config, onChange, results }
           <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-blue-500 to-cyan-600 p-5 text-white shadow-lg shadow-blue-500/10 dark:border-slate-800">
             <div className="flex items-center gap-2 text-blue-100">
               <Clock3 className="h-4 w-4" />
-              <span className="text-xs font-bold uppercase tracking-wider">Preview da manutencao</span>
+              <span className="text-xs font-bold uppercase tracking-wider">Preview da manutenção</span>
             </div>
             <p className="mt-4 text-5xl font-black tracking-tight">{results.mlPerHour.toFixed(1)} <span className="text-2xl font-semibold opacity-80">mL/h</span></p>
             <p className="mt-2 text-sm text-blue-100">{results.mlPerDay.toFixed(0)} mL/dia</p>
             <div className="mt-5 border-t border-white/20 pt-4 text-sm text-blue-50">
-              Fluido e droga: a taxa basal precisa ser revista quando o paciente deixa de ser apenas "manutencao".
+              Fluido e droga: a taxa basal precisa ser revista quando o paciente deixa de ser apenas "manutenção".
             </div>
           </div>
         </div>

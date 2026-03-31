@@ -70,6 +70,16 @@ function normalizeLooseText(value: string): string {
         .trim()
 }
 
+function normalizeRouteText(route?: string): string {
+    return String(route || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/[()]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim()
+}
+
 function parseFrequencyFromText(raw?: string): {
     frequencyType: 'timesPerDay' | 'everyHours'
     frequencyToken: '' | 'SID' | 'BID' | 'TID' | 'QID'
@@ -207,21 +217,38 @@ function resolveStructuredDuration(item: NovaReceita2State['items'][number]) {
 // =====================================================================
 function routeStringToGroup(route?: string): RouteGroup {
     if (!route) return 'ORAL'
-    const r = route.toLowerCase().trim()
+    const r = normalizeRouteText(route)
 
-    if (r === 'oral' || r === 'vo' || r.includes('oral') || r.includes('boca')) return 'ORAL'
-    if (r === 'sc' || r.includes('subcut') || r.includes('subcutâneo')) return 'SC'
+    if (r === 'oral' || r === 'vo' || r.includes('oral') || r.includes('boca') || r.includes('uso oral')) return 'ORAL'
+    if (r === 'sc' || r.includes('subcut')) return 'SC'
     if (r === 'im' || r.includes('intramuscular') || r.includes('muscular')) return 'IM'
     if (r === 'iv' || r.includes('intravenoso') || r.includes('endovenoso')) return 'IV'
-    if (r.includes('tópic') || r.includes('topic') || r.includes('cutâneo')) return 'TOPICO'
+    if (r.includes('topic') || r.includes('cutaneo')) return 'TOPICO'
     if (r.includes('oftal') || r.includes('ocular') || r.includes('olho')) return 'OFTALMICO'
-    if (r.includes('otol') || r.includes('auric') || r.includes('ouvid')) return 'OTOLOGICO'
+    if (r.includes('otolog') || r.includes('auric') || r.includes('ouvid')) return 'OTOLOGICO'
     if (r.includes('nasal') || r.includes('intranasal')) return 'INTRANASAL'
     if (r.includes('retal') || r.includes('reto')) return 'RETAL'
     if (r.includes('inalat') || r.includes('nebuliz')) return 'INALATORIO'
     if (r.includes('transderm')) return 'TRANSDERMICO'
 
     return 'OUTROS'
+}
+
+function routeDisplayLabel(route?: string): string {
+    const r = normalizeRouteText(route)
+    if (!r) return ''
+    if (r === 'oral' || r === 'vo' || r.includes('oral') || r.includes('uso oral') || r.includes('boca')) return 'USO ORAL'
+    if (r === 'sc' || r.includes('subcut')) return 'USO SUBCUTANEO'
+    if (r === 'im' || r.includes('intramuscular') || r.includes('muscular')) return 'USO INTRAMUSCULAR'
+    if (r === 'iv' || r.includes('intravenoso') || r.includes('endovenoso')) return 'USO INTRAVENOSO'
+    if (r.includes('topic') || r.includes('cutaneo')) return 'USO TOPICO'
+    if (r.includes('oftal') || r.includes('ocular') || r.includes('olho')) return 'USO OFTALMICO'
+    if (r.includes('otolog') || r.includes('auric') || r.includes('ouvid')) return 'USO OTOLOGICO'
+    if (r.includes('nasal') || r.includes('intranasal')) return 'USO INTRANASAL'
+    if (r.includes('retal') || r.includes('reto')) return 'USO RETAL'
+    if (r.includes('inalat') || r.includes('nebuliz')) return 'USO INALATORIO'
+    if (r.includes('transderm')) return 'USO TRANSDERMICO'
+    return String(route || '').trim().toUpperCase()
 }
 
 // Formatar título do item incluindo concentração e nome comercial
@@ -279,7 +306,7 @@ function buildItemInstruction(item: {
     // Montar automático
     const parts: string[] = []
     if (item.dose) parts.push(`Dose: ${item.dose}`)
-    if (item.route) parts.push(`Via: ${item.route}`)
+    if (item.route) parts.push(`Via: ${routeDisplayLabel(item.route)}`)
     if (item.frequency) parts.push(item.frequency)
     if (item.duration) parts.push(`por ${item.duration}`)
 
@@ -307,12 +334,23 @@ function buildCompoundedPresentationLabel(item: Extract<NovaReceita2State['items
     ].filter(Boolean).join(' • ')
 }
 
-function buildCompoundedConcentration(item: Extract<NovaReceita2State['items'][number], { kind: 'compounded' }>): string {
+function buildCompoundedConcentration(
+    item: Extract<NovaReceita2State['items'][number], { kind: 'compounded' }>,
+    calculation?: ReturnType<typeof getCompoundedCalculationSummary> | null,
+): string {
     const regimen = item.compounded_regimen_snapshot
     if (regimen?.concentration_value && regimen?.concentration_unit) {
         const perValue = regimen.concentration_per_value || 1
         const perUnit = regimen.concentration_per_unit || 'mL'
         return `${regimen.concentration_value} ${regimen.concentration_unit}/${perValue} ${perUnit}`.replace('/1 ', '/')
+    }
+    const mainIngredient = calculation?.ingredientBreakdown?.[0]
+    const administrationUnit = String(calculation?.administrationLabelText || '').trim()
+    if (mainIngredient?.selectedDoseText && administrationUnit) {
+        return `${mainIngredient.selectedDoseText}/${administrationUnit}`.replace('/1 ', '/')
+    }
+    if (calculation?.perAdministrationText && administrationUnit && /mg|mcg|ui|g/i.test(calculation.perAdministrationText)) {
+        return `${calculation.perAdministrationText}/${administrationUnit}`.replace('/1 ', '/')
     }
     return toSafeString(item.concentration_text)
 }
@@ -362,7 +400,7 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
 
         // FIX A3: garantir que concentration_text nunca seja objeto/número
         const concentrationSafe = item.kind === 'compounded'
-            ? buildCompoundedConcentration(item)
+            ? buildCompoundedConcentration(item, compoundedCalculation)
             : toSafeString(resolvePresentationConcentration(item) || item.concentration_text)
         // FIX A3: garantir que weight_kg do patient seja sempre string
         // (Supabase pode retornar como number dependendo da versão do schema)

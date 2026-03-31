@@ -1,0 +1,14 @@
+{
+  "ok": false,
+  "targetName": "Manipulado V2 Page 1774837469290",
+  "routeLoaded": false,
+  "manipuladoPageOk": false,
+  "recipeCardOk": false,
+  "reviewOk": false,
+  "noMojibakeVisible": false,
+  "pdfPath": "",
+  "shots": [
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase5b-fatal.png"
+  ],
+  "error": "page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/login?next=%2Freceituario-vet%2Fmanipulados\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:4173/login?next=%2Freceituario-vet%2Fmanipulados\", waiting until \"networkidle\"\u001b[22m\n"
+}

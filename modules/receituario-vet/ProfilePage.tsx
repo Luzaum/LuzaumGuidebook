@@ -1,4 +1,4 @@
-﻿import React, { ChangeEvent, useMemo, useState } from 'react'
+import React, { ChangeEvent, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useClinic } from '../../src/components/ClinicProvider'
 import ReceituarioChrome from './ReceituarioChrome'

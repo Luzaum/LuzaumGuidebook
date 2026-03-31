@@ -55,4 +55,3 @@ export function parseStructuredConcentration(text: string): StructuredConcentrat
   }
 }
 
-

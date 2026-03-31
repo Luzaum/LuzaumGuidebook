@@ -20,7 +20,7 @@ export function FluidoterapiaVetModule() {
       <main className="flex-1 min-h-0 overflow-hidden bg-slate-50 dark:bg-slate-950">
         {activeTab === 'calculator' && <CalculatorPage />}
         {activeTab === 'resuscitation' && <ResuscitationPage />}
-        {activeTab === 'osmotherapy' && <OsmotherapyPage />}
+        {activeTab === 'osmotherapy' && <OsmotherapyPage onNavigate={setActiveTab} />}
         {activeTab === 'guide' && <GuidePage />}
         {activeTab === 'protocols' && <ProtocolsPage />}
         {activeTab === 'dilutions' && <DilutionsPage />}

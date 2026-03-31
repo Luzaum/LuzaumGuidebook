@@ -1,0 +1,33 @@
+{
+  "ok": false,
+  "names": {
+    "suspension": "Suspensão antitussígena C1 1774757101778",
+    "capsule": "Trazodona cápsulas C1 1774757101778",
+    "gel": "Gabapentina gel transdérmico C1 1774757101778",
+    "benazepril": "Benazepril Biscoito D 1774830018115",
+    "protocol": "Protocolo Manipulado D 1774830018115"
+  },
+  "log": [
+    {
+      "step": "login_ok",
+      "time": "2026-03-30T00:20:20.054Z",
+      "email": "codexmanipulados1774215809011@gmail.com"
+    },
+    {
+      "step": "fatal",
+      "time": "2026-03-30T00:20:52.502Z",
+      "message": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /Importar texto cl[ií]nico/i })\u001b[22m\n"
+    },
+    {
+      "step": "shot",
+      "time": "2026-03-30T00:20:53.138Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\88-v2-d-fatal.png"
+    }
+  ],
+  "savedPrescriptionId": "",
+  "pdfPath": "",
+  "draftRestored": false,
+  "reviewUpdated": false,
+  "benazeprilCalculated": false,
+  "protocolApplied": false
+}

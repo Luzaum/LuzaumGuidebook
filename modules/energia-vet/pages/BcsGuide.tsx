@@ -1,10 +1,11 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
-import { Info } from 'lucide-react';
+import { Dialog, DialogContent, DialogTrigger } from '../components/ui/dialog';
+import { Info, ZoomIn } from 'lucide-react';
 
 export default function BcsGuide() {
   return (
-    <div className="space-y-8 max-w-4xl mx-auto">
+    <div className="space-y-8 w-full pb-20">
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Guia de Escore Corporal (BCS)</h1>
         <p className="text-muted-foreground mt-2">Referência visual para avaliação nutricional baseada no FEDIAF 2025.</p>
@@ -48,55 +49,91 @@ export default function BcsGuide() {
               <TabsTrigger value="cat">Gatos</TabsTrigger>
             </TabsList>
             
-            <TabsContent value="dog" className="space-y-6">
-              <div className="bg-muted p-8 rounded-lg flex items-center justify-center border-2 border-dashed border-muted-foreground/30 min-h-[200px]">
-                <div className="text-center text-muted-foreground">
-                  <p className="font-medium">Espaço para Imagem do Guia BCS (Cães)</p>
-                  <p className="text-sm mt-2">Faça upload da imagem oficial do FEDIAF ou WSAVA aqui.</p>
-                </div>
+            <TabsContent value="dog" className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start animate-in fade-in duration-500">
+              <div className="lg:col-span-7 space-y-4">
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <div className="bg-muted rounded-2xl overflow-hidden border border-border shadow-sm cursor-zoom-in group relative hover:ring-2 ring-orange-500/50 transition-all">
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors z-10 flex items-center justify-center">
+                        <ZoomIn className="origin-center scale-0 group-hover:scale-150 text-white/80 transition-transform duration-300 drop-shadow-md" />
+                      </div>
+                      <img src="/apps/bcs/dog_bcs.jpg" alt="Guia BCS Canino" className="w-full h-auto object-contain" />
+                    </div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-[95vw] lg:max-w-[1400px] h-[90vh] p-0 overflow-hidden bg-[#141010] border-white/10 flex flex-col">
+                    <div className="w-full flex-1 overflow-auto p-4 cursor-move">
+                      <img src="/apps/bcs/dog_bcs.jpg" alt="Guia BCS Canino Ampliado" className="w-full min-w-[1000px] h-auto object-contain" />
+                    </div>
+                  </DialogContent>
+                </Dialog>
               </div>
 
-              <div className="space-y-4">
-                <h3 className="font-bold text-lg">Critérios de Avaliação (Cães)</h3>
-                <div className="grid gap-4">
-                  <div className="p-4 border rounded-lg border-l-4 border-l-red-500">
-                    <span className="font-bold text-red-600">1-3 (Abaixo do Peso):</span> Costelas, vértebras lombares e ossos pélvicos facilmente visíveis. Nenhuma gordura palpável. Perda evidente de massa muscular.
+              <div className="lg:col-span-5 space-y-4">
+                <h3 className="font-bold text-xl flex items-center gap-2">
+                  <span className="w-1 h-6 bg-primary rounded-full" />
+                  Critérios de Avaliação
+                </h3>
+                <div className="grid gap-3">
+                  <div className="p-4 border rounded-xl border-l-4 border-l-red-500 bg-red-50/30 dark:bg-red-950/10">
+                    <p className="font-bold text-red-600 mb-1">1-3: Muito Magro</p>
+                    <p className="text-sm leading-relaxed text-foreground/80">Costelas, vértebras lombares e ossos pélvicos visíveis à distância. Nenhuma gordura palpável. Perda evidente de massa muscular.</p>
                   </div>
-                  <div className="p-4 border rounded-lg border-l-4 border-l-green-500 bg-green-50 dark:bg-green-950/20">
-                    <span className="font-bold text-green-600">4-5 (Ideal):</span> Costelas palpáveis sem excesso de cobertura de gordura. Cintura observada atrás das costelas quando visto de cima. Abdômen esgalgado quando visto de lado.
+                  <div className="p-4 border rounded-xl border-l-4 border-l-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/20">
+                    <p className="font-bold text-emerald-600 mb-1">4-5: Peso Ideal</p>
+                    <p className="text-sm leading-relaxed text-foreground/80">Costelas palpáveis sem excesso de gordura. Cintura visível quando visto de cima. Abdômen retraído ("esgalgado") lateralmente.</p>
                   </div>
-                  <div className="p-4 border rounded-lg border-l-4 border-l-yellow-500">
-                    <span className="font-bold text-yellow-600">6-7 (Sobrepeso):</span> Costelas palpáveis com leve a moderado excesso de gordura. Cintura não discernível ou pouco visível.
+                  <div className="p-4 border rounded-xl border-l-4 border-l-amber-500 bg-amber-50/30 dark:bg-amber-950/10">
+                    <p className="font-bold text-amber-600 mb-1">6-7: Sobrepeso</p>
+                    <p className="text-sm leading-relaxed text-foreground/80">Costelas palpáveis com dificuldade sob moderada camada de gordura. Cintura visível mas não proeminente.</p>
                   </div>
-                  <div className="p-4 border rounded-lg border-l-4 border-l-red-500">
-                    <span className="font-bold text-red-600">8-9 (Obeso):</span> Costelas não palpáveis sob espessa camada de gordura. Depósitos de gordura sobre a área lombar e base da cauda. Abdômen distendido.
+                  <div className="p-4 border rounded-xl border-l-4 border-l-red-600 bg-red-50/30 dark:bg-red-950/10">
+                    <p className="font-bold text-red-700 mb-1">8-9: Obeso</p>
+                    <p className="text-sm leading-relaxed text-foreground/80">Costelas não palpáveis sob espessa camada de gordura. Depósitos de gordura sobre a lombar e base da cauda. Cintura ausente.</p>
                   </div>
                 </div>
               </div>
             </TabsContent>
 
-            <TabsContent value="cat" className="space-y-6">
-              <div className="bg-muted p-8 rounded-lg flex items-center justify-center border-2 border-dashed border-muted-foreground/30 min-h-[200px]">
-                <div className="text-center text-muted-foreground">
-                  <p className="font-medium">Espaço para Imagem do Guia BCS (Gatos)</p>
-                  <p className="text-sm mt-2">Faça upload da imagem oficial do FEDIAF ou WSAVA aqui.</p>
-                </div>
+            <TabsContent value="cat" className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start animate-in fade-in duration-500">
+              <div className="lg:col-span-7 space-y-4">
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <div className="bg-muted rounded-2xl overflow-hidden border border-border shadow-sm cursor-zoom-in group relative hover:ring-2 ring-orange-500/50 transition-all">
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors z-10 flex items-center justify-center">
+                        <ZoomIn className="origin-center scale-0 group-hover:scale-150 text-white/80 transition-transform duration-300 drop-shadow-md" />
+                      </div>
+                      <img src="/apps/bcs/cat_bcs.jpg" alt="Guia BCS Felino" className="w-full h-auto object-contain" />
+                    </div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-[95vw] lg:max-w-[1400px] h-[90vh] p-0 overflow-hidden bg-[#141010] border-white/10 flex flex-col">
+                    <div className="w-full flex-1 overflow-auto p-4 cursor-move">
+                      <img src="/apps/bcs/cat_bcs.jpg" alt="Guia BCS Felino Ampliado" className="w-full min-w-[1000px] h-auto object-contain" />
+                    </div>
+                  </DialogContent>
+                </Dialog>
               </div>
 
-              <div className="space-y-4">
-                <h3 className="font-bold text-lg">Critérios de Avaliação (Gatos)</h3>
-                <div className="grid gap-4">
-                  <div className="p-4 border rounded-lg border-l-4 border-l-red-500">
-                    <span className="font-bold text-red-600">1-3 (Abaixo do Peso):</span> Costelas visíveis em gatos de pelo curto. Nenhuma gordura palpável. Acentuado esgalgamento abdominal.
+              <div className="lg:col-span-5 space-y-4">
+                <h3 className="font-bold text-xl flex items-center gap-2">
+                  <span className="w-1 h-6 bg-primary rounded-full" />
+                  Critérios de Avaliação
+                </h3>
+                <div className="grid gap-3">
+                  <div className="p-4 border rounded-xl border-l-4 border-l-red-500 bg-red-50/30 dark:bg-red-950/10">
+                    <p className="font-bold text-red-600 mb-1">1-3: Muito Magro</p>
+                    <p className="text-sm leading-relaxed text-foreground/80">Costelas visíveis em gatos de pelo curto. Nenhuma gordura abdominal palpável. Acentuado esgalgamento abdominal.</p>
                   </div>
-                  <div className="p-4 border rounded-lg border-l-4 border-l-green-500 bg-green-50 dark:bg-green-950/20">
-                    <span className="font-bold text-green-600">4-5 (Ideal):</span> Costelas palpáveis com leve cobertura de gordura. Cintura observada atrás das costelas. Leve camada de gordura abdominal. (Nota: gatos castrados inativos podem ter ideal 4/9).
+                  <div className="p-4 border rounded-xl border-l-4 border-l-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/20">
+                    <p className="font-bold text-emerald-600 mb-1">4-5: Peso Ideal</p>
+                    <p className="text-sm leading-relaxed text-foreground/80">Costelas palpáveis com leve cobertura de gordura. Cintura visível atrás das costelas. Leve camada de gordura abdominal.</p>
                   </div>
-                  <div className="p-4 border rounded-lg border-l-4 border-l-yellow-500">
-                    <span className="font-bold text-yellow-600">6-7 (Sobrepeso):</span> Costelas palpáveis com dificuldade. Cintura ausente. Leve a moderado coxim de gordura abdominal.
+                  <div className="p-4 border rounded-xl border-l-4 border-l-amber-500 bg-amber-50/30 dark:bg-amber-950/10">
+                    <p className="font-bold text-amber-600 mb-1">6-7: Sobrepeso</p>
+                    <p className="text-sm leading-relaxed text-foreground/80">Costelas palpáveis com dificuldade. Cintura ausente ou pouco visível. Moderado coxim de gordura abdominal.</p>
                   </div>
-                  <div className="p-4 border rounded-lg border-l-4 border-l-red-500">
-                    <span className="font-bold text-red-600">8-9 (Obeso):</span> Costelas não palpáveis. Grande distensão abdominal com coxim de gordura proeminente. Depósitos de gordura na face e membros.
+                  <div className="p-4 border rounded-xl border-l-4 border-l-red-600 bg-red-50/30 dark:bg-red-950/10">
+                    <p className="font-bold text-red-700 mb-1">8-9: Obeso</p>
+                    <p className="text-sm leading-relaxed text-foreground/80">Costelas não palpáveis sob espessa camada de gordura. Grande distensão abdominal com coxim de gordura proeminente.</p>
                   </div>
                 </div>
               </div>

@@ -1,0 +1,19 @@
+{
+  "generatedAt": "2026-03-29T13:37:48.609Z",
+  "screenshots": {
+    "energy": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\energy-step.png",
+    "target": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\target-step.png",
+    "eccModal": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\ecc-modal.png",
+    "food": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\food-step.png",
+    "foodModal": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\food-modal.png",
+    "summary": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\summary-step.png"
+  },
+  "checks": {
+    "summaryReached": true,
+    "macroChartPresent": true,
+    "adequacySectionPresent": true,
+    "eccModalPresent": true,
+    "foodModalPresent": true,
+    "profileText": "Perfil de exigencia principalAdulto em manutencao Atividade moderada"
+  }
+}

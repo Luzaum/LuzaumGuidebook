@@ -1,0 +1,50 @@
+{
+  "ok": true,
+  "v2Name": "Manipulado V2 Page 1774907011531",
+  "legacyName": "Manipulado Legado Page 1774907011531",
+  "editedLegacyName": "Manipulado Legado Page 1774907011531 Editado",
+  "routeLoaded": true,
+  "v2Opened": true,
+  "legacyOpened": true,
+  "legacyNoticeVisible": true,
+  "saveWorked": true,
+  "reopenedWorked": true,
+  "importWorked": true,
+  "log": [
+    {
+      "step": "route_loaded",
+      "time": "2026-03-30T21:43:33.660Z"
+    },
+    {
+      "step": "items_created",
+      "time": "2026-03-30T21:43:36.851Z",
+      "v2Id": "c90d7cb9-c441-42e3-b074-358a479bb98f",
+      "legacyId": "0959f748-0456-4051-94da-2864c7aa7073"
+    },
+    {
+      "step": "shot",
+      "time": "2026-03-30T21:43:41.334Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase3-v2-list.png"
+    },
+    {
+      "step": "shot",
+      "time": "2026-03-30T21:43:43.335Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase3-v2-editor-open.png"
+    },
+    {
+      "step": "shot",
+      "time": "2026-03-30T21:43:45.603Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase3-v2-legacy-converted.png"
+    },
+    {
+      "step": "shot",
+      "time": "2026-03-30T21:43:48.499Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase3-v2-save-reopen.png"
+    },
+    {
+      "step": "shot",
+      "time": "2026-03-30T21:44:02.158Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase3-v2-import-nova-receita.png"
+    }
+  ]
+}

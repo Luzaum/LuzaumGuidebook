@@ -25,13 +25,13 @@ export function DilutionsPage() {
 
   return (
     <ScrollArea className="h-full w-full bg-slate-50 p-6 dark:bg-slate-950 lg:p-10">
-      <div className="mx-auto max-w-5xl space-y-10 pb-20">
+      <div className="mx-auto w-full space-y-10 pb-20">
         <header>
           <h2 className="flex items-center gap-3 text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
             <Syringe className="h-8 w-8 text-teal-500" />
-            Diluicoes e solucoes
+            Diluições e soluções
           </h2>
-          <p className="mt-2 text-slate-500 dark:text-slate-400">Preparo de hipertônica em seringa ou bolsa, calculadora livre, explicacao matematica e alertas de seguranca.</p>
+          <p className="mt-2 text-slate-500 dark:text-slate-400">Preparo de hipertônica em seringa ou bolsa, calculadora livre, explicação matemática e alertas de segurança.</p>
         </header>
 
         <div className="grid gap-8 lg:grid-cols-[1fr_0.95fr]">
@@ -43,11 +43,11 @@ export function DilutionsPage() {
             <CardContent className="space-y-6 p-6">
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label>Concentracao estoque (C1 %)</Label>
+                  <Label>Concentração estoque (C1 %)</Label>
                   <Input type="number" value={c1} onChange={(event) => setC1(Number(event.target.value) || 0)} />
                 </div>
                 <div className="space-y-2">
-                  <Label>Concentracao final desejada (C2 %)</Label>
+                  <Label>Concentração final desejada (C2 %)</Label>
                   <Input type="number" value={c2} onChange={(event) => setC2(Number(event.target.value) || 0)} />
                 </div>
                 <div className="space-y-2">
@@ -55,7 +55,7 @@ export function DilutionsPage() {
                   <Input type="number" value={v2} onChange={(event) => setV2(Number(event.target.value) || 0)} />
                 </div>
                 <div className="space-y-2">
-                  <Label>Concentracao do diluente (%)</Label>
+                  <Label>Concentração do diluente (%)</Label>
                   <Input type="number" value={diluent} onChange={(event) => setDiluent(Number(event.target.value) || 0)} />
                 </div>
               </div>
@@ -64,15 +64,15 @@ export function DilutionsPage() {
                 <p className="text-sm font-semibold text-indigo-900 dark:text-indigo-100">Passo a passo</p>
                 <p className="mt-2 text-sm text-indigo-800 dark:text-indigo-200">{explanation}</p>
                 <div className="mt-4 space-y-2 text-sm text-indigo-900 dark:text-indigo-100">
-                  <p>Aspire {result.v1.toFixed(1)} mL da solucao estoque.</p>
+                  <p>Aspire {result.v1.toFixed(1)} mL da solução estoque.</p>
                   <p>Complete com {result.diluentVolume.toFixed(1)} mL do diluente informado.</p>
                   <p>Volume final = {v2.toFixed(1)} mL.</p>
-                  <p>Concentracao final = {c2}%.</p>
+                  <p>Concentração final = {c2}%.</p>
                 </div>
               </div>
 
               <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-800 dark:border-amber-900/50 dark:bg-amber-950/30 dark:text-amber-300">
-                Misturar completamente a bolsa ou seringa antes de administrar. Em TCE, a interface deve ensinar preparo pratico da hipertônica, nao apenas a dose.
+                Misturar completamente a bolsa ou seringa antes de administrar. Em TCE, a interface deve ensinar preparo prático da hipertônica, não apenas a dose.
               </div>
             </CardContent>
           </Card>
@@ -80,8 +80,8 @@ export function DilutionsPage() {
           <div className="space-y-6">
             <Card className="border-slate-200 shadow-sm dark:border-slate-800">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-lg"><Droplets className="h-5 w-5 text-teal-500" /> Exemplos obrigatorios</CardTitle>
-                <CardDescription>Preparos prontos para consulta rapida.</CardDescription>
+                <CardTitle className="flex items-center gap-2 text-lg"><Droplets className="h-5 w-5 text-teal-500" /> Exemplos obrigatórios</CardTitle>
+                <CardDescription>Preparos prontos para consulta rápida.</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 {dilutionExamples.map((example) => (
@@ -102,7 +102,7 @@ export function DilutionsPage() {
               <CardContent className="space-y-4 text-sm text-slate-600 dark:text-slate-300">
                 <div className="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-950">
                   <p className="font-semibold text-slate-900 dark:text-slate-100">Seringa</p>
-                  <p className="mt-2">Ideal para volumes pequenos, bolus de hipertônica e preparos pontuais. Aspirar o volume calculado da solucao estoque e completar na propria seringa.</p>
+                  <p className="mt-2">Ideal para volumes pequenos, bolus de hipertônica e preparos pontuais. Aspirar o volume calculado da solução estoque e completar na própria seringa.</p>
                 </div>
                 <div className="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-950">
                   <p className="font-semibold text-slate-900 dark:text-slate-100">Bolsa</p>

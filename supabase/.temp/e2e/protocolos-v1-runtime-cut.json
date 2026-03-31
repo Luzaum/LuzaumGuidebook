@@ -1,0 +1,37 @@
+{
+  "ok": true,
+  "protocolName": "Protocolo V1 Runtime 1774916883946-p4-1774918545843",
+  "formulaName": "Petisco de Benazepril V1 1774916883946",
+  "routeLoaded": true,
+  "protocolVisible": true,
+  "v1EditorOpened": true,
+  "protocolApplied": true,
+  "reviewCoherent": true,
+  "log": [
+    {
+      "step": "shot",
+      "time": "2026-03-31T00:55:54.965Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\v1-runtime-cut-08-protocol-visible.png"
+    },
+    {
+      "step": "shot",
+      "time": "2026-03-31T00:55:56.968Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\v1-runtime-cut-09-protocol-v1-editor.png"
+    },
+    {
+      "step": "shot",
+      "time": "2026-03-31T00:55:59.942Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\v1-runtime-cut-10-protocol-saved.png"
+    },
+    {
+      "step": "shot",
+      "time": "2026-03-31T00:56:03.784Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\v1-runtime-cut-11-protocol-applied.png"
+    },
+    {
+      "step": "shot",
+      "time": "2026-03-31T00:56:04.686Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\v1-runtime-cut-12-protocol-review.png"
+    }
+  ]
+}

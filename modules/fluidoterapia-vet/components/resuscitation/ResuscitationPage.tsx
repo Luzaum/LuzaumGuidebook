@@ -44,14 +44,14 @@ export function ResuscitationPage() {
   return (
     <>
       <div className="flex h-full w-full flex-col overflow-y-auto bg-slate-50/50 p-4 dark:bg-slate-950/50 lg:p-8">
-        <div className="mx-auto w-full max-w-5xl space-y-8">
+        <div className="mx-auto w-full space-y-8">
           <header>
             <h2 className="flex items-center gap-2 text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
               <Zap className="h-6 w-6 text-rose-500" />
-              Ressuscitacao voleemica
+              Ressuscitação volêmica
             </h2>
             <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-              Tela independente da calculadora principal. Fluido padrao fixo: Ringer com lactato. Bolus fracionados com reavaliacao.
+              Tela independente da calculadora principal. Fluido padrão fixo: Ringer com lactato. Bolus fracionados com reavaliação.
             </p>
           </header>
 
@@ -59,8 +59,8 @@ export function ResuscitationPage() {
             <div className="space-y-6">
               <Card className="border-slate-200 shadow-sm dark:border-slate-800">
                 <CardHeader className="border-b border-slate-100 bg-slate-50/50 dark:border-slate-800 dark:bg-slate-900/50">
-                  <CardTitle className="text-lg">Parametros do bolus</CardTitle>
-                  <CardDescription>Hipovolemia e choque pedem aliquotas, nao volume de choque inteiro de uma vez.</CardDescription>
+                  <CardTitle className="text-lg">Parâmetros do bolus</CardTitle>
+                  <CardDescription>Hipovolemia e choque pedem alíquotas, não volume de choque inteiro de uma vez.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6 p-6">
                   <div className="flex rounded-xl bg-slate-100 p-1 dark:bg-slate-900">
@@ -73,7 +73,7 @@ export function ResuscitationPage() {
                       }}
                       className={`flex-1 rounded-lg py-2.5 text-sm font-semibold transition-all ${species === 'canine' ? 'bg-white text-rose-600 shadow-sm dark:bg-slate-800 dark:text-rose-400' : 'text-slate-500'}`}
                     >
-                      <span className="inline-flex items-center gap-2"><Dog className="h-4 w-4" /> Cao</span>
+                      <span className="inline-flex items-center gap-2"><Dog className="h-4 w-4" /> Cão</span>
                     </button>
                     <button
                       type="button"
@@ -99,7 +99,7 @@ export function ResuscitationPage() {
 
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <Label className="text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Preset clinico</Label>
+                      <Label className="text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Preset clínico</Label>
                       <Badge variant="outline" className="border-rose-200 bg-white text-rose-700 dark:border-rose-800 dark:bg-slate-950 dark:text-rose-300">
                         RL fixo
                       </Badge>
@@ -129,7 +129,7 @@ export function ResuscitationPage() {
 
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <Label className="text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Aliquota de prova de carga (mL/kg)</Label>
+                      <Label className="text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Alíquota de prova de carga (mL/kg)</Label>
                       <span className="text-sm font-bold text-rose-700 dark:text-rose-300">{config.aliquotMlKg.toFixed(1)} mL/kg</span>
                     </div>
                     <Slider
@@ -140,14 +140,14 @@ export function ResuscitationPage() {
                       onValueChange={(value) => setConfig((current) => ({ ...current, aliquotMlKg: value[0] }))}
                     />
                     <p className="text-sm text-slate-500">
-                      Referencia didatica atual: caes 10 a 20 mL/kg; gatos 5 a 15 mL/kg. A pratica moderna usa aliquotas com reavaliacao, nao choque inteiro de uma vez.
+                      Referência didática atual: cães 10 a 20 mL/kg; gatos 5 a 15 mL/kg. A prática moderna usa alíquotas com reavaliação, não choque inteiro de uma vez.
                     </p>
                   </div>
 
                   <div className="space-y-3">
                     <div className="flex items-center gap-2">
                       <Clock className="h-4 w-4 text-slate-400" />
-                      <Label className="text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Tempo de administracao</Label>
+                      <Label className="text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Tempo de administração</Label>
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {TIME_OPTIONS.map((time) => (
@@ -165,22 +165,14 @@ export function ResuscitationPage() {
                 </CardContent>
               </Card>
 
-              <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-800 dark:border-amber-900/50 dark:bg-amber-950/30 dark:text-amber-300">
-                <p className="font-semibold">Pontos fixos desta tela</p>
-                <ul className="mt-2 space-y-2">
-                  <li>Hipotonicidade e fluidos de manutencao nao sao para ressuscitacao.</li>
-                  <li>Cardiopata e renal exigem abordagem mais conservadora.</li>
-                  <li>Sepse pode precisar vasoativo; manutencao nao resolve vasodilatacao.</li>
-                  <li>TCE pede perfusao sem excesso; se houver osmoterapia, ela entra no modulo especifico.</li>
-                </ul>
-              </div>
+
             </div>
 
             <Card className="sticky top-6 overflow-hidden border-rose-200 shadow-lg dark:border-rose-900/50">
               <div className="h-2 w-full bg-gradient-to-r from-rose-500 to-red-600" />
               <CardHeader>
-                <CardTitle className="text-xl text-rose-900 dark:text-rose-100">Prescricao do bolus</CardTitle>
-                <CardDescription>Reavaliar ao fim de cada aliquota antes de repetir.</CardDescription>
+                <CardTitle className="text-xl text-rose-900 dark:text-rose-100">Prescrição do bolus</CardTitle>
+                <CardDescription>Reavaliar ao fim de cada alíquota antes de repetir.</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="rounded-3xl border border-rose-100 bg-white p-6 text-center shadow-sm dark:border-rose-900/50 dark:bg-slate-900">
@@ -203,13 +195,13 @@ export function ResuscitationPage() {
                 </div>
 
                 <div className="space-y-3 rounded-2xl border border-slate-200 bg-slate-50/80 p-5 dark:border-slate-800 dark:bg-slate-900/50">
-                  <h4 className="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Checklist pos-bolus</h4>
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Checklist pós-bolus</h4>
                   {[
                     'FC, qualidade de pulso e mucosas/TPC',
-                    'PA e mentacao',
-                    'FR, esforco respiratorio e ausculta',
-                    'Diurese, temperatura e tendencia do lactato',
-                    'Parar e repensar quando a resposta nao vier ou a sobrecarga aparecer',
+                    'PA e mentação',
+                    'FR, esforço respiratório e ausculta',
+                    'Diurese, temperatura e tendência do lactato',
+                    'Parar e repensar quando a resposta não vier ou a sobrecarga aparecer',
                   ].map((item) => (
                     <div key={item} className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
                       <Activity className="mt-0.5 h-4 w-4 shrink-0 text-rose-500" />
@@ -219,7 +211,7 @@ export function ResuscitationPage() {
                 </div>
 
                 <div className="rounded-2xl border border-blue-200 bg-blue-50 p-5 text-sm text-blue-800 dark:border-blue-900/50 dark:bg-blue-950/30 dark:text-blue-300">
-                  Volumes classicos de choque permanecem como referencia didatica aproximada: cao 80 a 90 mL/kg, gato 50 a 60 mL/kg. A pratica moderna nao entrega isso de uma vez.
+                  Volumes clássicos de choque permanecem como referência didática aproximada: cão 80 a 90 mL/kg, gato 50 a 60 mL/kg. A prática moderna não entrega isso de uma vez.
                 </div>
               </CardContent>
             </Card>

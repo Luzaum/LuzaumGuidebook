@@ -1,4 +1,4 @@
-﻿// ✅ Nova Receita 2.0 — Paridade Total com Nova Receita Antiga
+// ✅ Nova Receita 2.0 — Paridade Total com Nova Receita Antiga
 // 100% Catálogo 3.0 Supabase + todas as features da versão original
 
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react'
@@ -501,6 +501,30 @@ function normalizeCautionsText(rawText?: string | null, fallback?: string[] | nu
         .filter((line) => line.trim().length > 0)
 }
 
+function normalizeRouteLabel(rawRoute?: string | null): string {
+    const normalized = String(rawRoute || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/[()]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim()
+
+    if (!normalized) return ''
+    if (normalized === 'vo' || normalized.includes('oral') || normalized.includes('boca')) return 'ORAL'
+    if (normalized === 'sc' || normalized.includes('subcut')) return 'SUBCUTANEA'
+    if (normalized === 'im' || normalized.includes('intramuscular') || normalized.includes('muscular')) return 'INTRAMUSCULAR'
+    if (normalized === 'iv' || normalized.includes('intraven') || normalized.includes('endoven')) return 'INTRAVENOSA'
+    if (normalized.includes('topic') || normalized.includes('cutane')) return 'TOPICO'
+    if (normalized.includes('otolog') || normalized.includes('auric') || normalized.includes('ouvido')) return 'OTOLOGICO'
+    if (normalized.includes('oftalm') || normalized.includes('ocular') || normalized.includes('olho')) return 'OFTALMICO'
+    if (normalized.includes('transderm')) return 'TRANSDERMICO'
+    if (normalized.includes('nasal')) return 'INTRANASAL'
+    if (normalized.includes('retal')) return 'RETAL'
+    if (normalized.includes('inalat') || normalized.includes('nebul')) return 'INALATORIO'
+    return String(rawRoute || '').trim()
+}
+
 function normalizePrescriptionItem(item: PrescriptionItem, defaultStartDate: string, defaultStartHour: string): PrescriptionItem {
     const parsedStart = parseLegacyStart(item.start_date)
     const startDate = item.startDate ?? parsedStart.startDate
@@ -525,7 +549,8 @@ function normalizePrescriptionItem(item: PrescriptionItem, defaultStartDate: str
     const durationParts = item.durationValue && item.durationUnit
         ? { value: item.durationValue, unit: item.durationUnit }
         : parseDurationValueAndUnit(item.duration)
-    const cautionsText = typeof item.cautionsText === 'string' && item.cautionsText.trim().length > 0
+    const hasExplicitCautionsText = Object.prototype.hasOwnProperty.call(item, 'cautionsText')
+    const cautionsText = hasExplicitCautionsText && typeof item.cautionsText === 'string'
         ? item.cautionsText
         : item.kind === 'compounded' && item.compounded_regimen_snapshot?.default_administration_sig
             ? item.compounded_regimen_snapshot.default_administration_sig
@@ -549,6 +574,7 @@ function normalizePrescriptionItem(item: PrescriptionItem, defaultStartDate: str
             : normalizedTimesPerDay
                 ? formatFrequencyValue(normalizedTimesPerDay)
                 : (item.frequency || ''),
+        route: normalizeRouteLabel(item.route),
         durationValue: durationParts.value ?? item.durationValue,
         durationUnit: durationParts.unit ?? item.durationUnit ?? 'dias',
         duration: durationMode === 'fixed_days'
@@ -603,6 +629,80 @@ function formatDurationSummary(item: PrescriptionItem): string {
     if (item.durationMode === 'until_finished') return 'Até terminar o medicamento'
     if (item.durationValue) return formatStructuredDuration(item.durationValue, item.durationUnit || 'dias')
     return item.duration || 'Sem duração definida'
+}
+
+function titleCaseLabel(value?: string | null): string {
+    return String(value || '')
+        .trim()
+        .toLowerCase()
+        .replace(/\b\w/g, (letter) => letter.toUpperCase())
+}
+
+function singularizeAdministrationLabel(value?: string | null): string {
+    const raw = String(value || '').trim()
+    if (!raw) return ''
+    const normalized = raw.toLowerCase()
+    if (normalized.endsWith('s') && !normalized.endsWith('us')) return raw.slice(0, -1)
+    return raw
+}
+
+function getPresentationMetadata(item: PrescriptionItem): Record<string, unknown> {
+    return (item.presentation_metadata && typeof item.presentation_metadata === 'object')
+        ? item.presentation_metadata
+        : {}
+}
+
+function isManualPrintLine(item: PrescriptionItem): boolean {
+    return String(getPresentationMetadata(item).print_line_mode || 'auto') === 'manual'
+}
+
+function getAutoPrintLineLeft(item: PrescriptionItem, patient?: PatientInfo | null): string {
+    if (item.kind === 'compounded') {
+        const calculation = getCompoundedCalculationSummary(item, patient)
+        const mainIngredient = calculation?.ingredientBreakdown?.[0]
+        const administrationUnit = singularizeAdministrationLabel(calculation?.administrationLabelText)
+        if (mainIngredient?.ingredientName && mainIngredient?.selectedDoseText && administrationUnit) {
+            return `${mainIngredient.ingredientName} ${mainIngredient.selectedDoseText}/${administrationUnit}`.trim()
+        }
+        if (item.concentration_text) return `${item.name} ${item.concentration_text}`.trim()
+        if (calculation?.perAdministrationText && administrationUnit) {
+            return `${item.name} ${calculation.perAdministrationText}/${administrationUnit}`.trim()
+        }
+        return item.name
+    }
+
+    return [item.name, item.concentration_text].filter(Boolean).join(' ').trim() || item.name
+}
+
+function getAutoPrintLineRight(item: PrescriptionItem): string {
+    if (item.kind === 'compounded') {
+        return titleCaseLabel(item.compounded_snapshot?.pharmaceutical_form || item.pharmaceutical_form || item.presentation_label || 'Manipulado')
+    }
+
+    const metadata = getPresentationMetadata(item)
+    const packageLabel = String(metadata.package_label || '').trim()
+    if (packageLabel) return titleCaseLabel(packageLabel)
+
+    const packageUnit = String(item.package_unit || '').trim()
+    if (packageUnit) return titleCaseLabel(packageUnit)
+
+    return titleCaseLabel(item.pharmaceutical_form || item.presentation_label || 'Medicamento')
+}
+
+function getConfiguredPrintLineLeft(item: PrescriptionItem, patient?: PatientInfo | null): string {
+    if (isManualPrintLine(item)) {
+        const manual = String(getPresentationMetadata(item).print_line_left || '').trim()
+        if (manual) return manual
+    }
+    return getAutoPrintLineLeft(item, patient)
+}
+
+function getConfiguredPrintLineRight(item: PrescriptionItem): string {
+    if (isManualPrintLine(item)) {
+        const manual = String(getPresentationMetadata(item).print_line_right || '').trim()
+        if (manual) return manual
+    }
+    return getAutoPrintLineRight(item)
 }
 
 function getDefaultNovaReceitaTemplateId(): string {
@@ -728,6 +828,7 @@ export default function NovaReceita2Page() {
 
     // D: Controle de inicialização do draft (só carrega uma vez por clinicId)
     const draftInitRef = useRef(false)
+    const hydratedFromNavigationRef = useRef(false)
     const draftKey = getDraftKey(clinicId)
 
     useEffect(() => {
@@ -832,6 +933,16 @@ export default function NovaReceita2Page() {
             }),
         }))
     }, [updateState])
+
+    const updateItemPresentationMetadata = useCallback((itemId: string, patch: Record<string, unknown>) => {
+        updateItem(itemId, (current) => ({
+            ...current,
+            presentation_metadata: {
+                ...(getPresentationMetadata(current) || {}),
+                ...patch,
+            },
+        }))
+    }, [updateItem])
 
     const closePresentationPicker = useCallback(() => {
         setPresentationPickerOpen(false)
@@ -1018,6 +1129,7 @@ export default function NovaReceita2Page() {
         console.log('[NovaReceita2] location.state recebido', payload)
 
         if (!payload) return
+        hydratedFromNavigationRef.current = true
 
         updateState((prev) => {
             const freshState = createDefaultState()
@@ -1103,6 +1215,7 @@ export default function NovaReceita2Page() {
         draftInitRef.current = true
 
         const params = new URLSearchParams(location.search)
+        if (hydratedFromNavigationRef.current) return
         if (params.get('prescriptionId') || location.state) return // Não sobrepor se está editando ou importando
         const draftId = params.get('draft')
         if (draftId) {
@@ -1225,6 +1338,26 @@ export default function NovaReceita2Page() {
         }, 600)
         return () => clearTimeout(t)
     }, [state, autosave, draftKey])
+
+    useEffect(() => {
+        const t = setTimeout(() => {
+            saveReviewSession(state)
+        }, 180)
+        return () => clearTimeout(t)
+    }, [state])
+
+    useEffect(() => {
+        const flushReviewDraft = () => saveReviewSession(state)
+        const handleVisibilityChange = () => {
+            if (document.visibilityState === 'hidden') flushReviewDraft()
+        }
+        window.addEventListener('beforeunload', flushReviewDraft)
+        document.addEventListener('visibilitychange', handleVisibilityChange)
+        return () => {
+            window.removeEventListener('beforeunload', flushReviewDraft)
+            document.removeEventListener('visibilitychange', handleVisibilityChange)
+        }
+    }, [state])
 
     useEffect(() => {
         if (!quickMode || !quickAddExpanded || quickEntryMode !== 'catalog' || !clinicId) return
@@ -1477,8 +1610,8 @@ export default function NovaReceita2Page() {
                 </div>
 
                 {/* ==================== LAYOUT 2 COLUNAS ==================== */}
-                <div className="mx-auto max-w-[1880px] px-4 pt-6 sm:px-6">
-                    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(640px,0.95fr)] xl:grid-cols-[minmax(0,1fr)_minmax(760px,1.05fr)]">
+                <div className="w-full px-4 pt-6 sm:px-6">
+                    <div className="grid grid-cols-1 gap-6 2xl:grid-cols-[minmax(0,1fr)_minmax(760px,0.96fr)]">
 
                         {/* ==================== COLUNA ESQUERDA: EDITOR ==================== */}
                         <div className="flex min-w-0 flex-col gap-5">
@@ -1859,9 +1992,12 @@ export default function NovaReceita2Page() {
                                             const compoundedRouteOptions = item.kind === 'compounded' && compoundedRouteValues.length
                                                 ? QUICK_ROUTE_OPTIONS.filter((option) => compoundedRouteValues.includes(option.value))
                                                 : QUICK_ROUTE_OPTIONS
+                                            const printLineManual = isManualPrintLine(item)
+                                            const printLineLeft = getConfiguredPrintLineLeft(item, state.patient)
+                                            const printLineRight = getConfiguredPrintLineRight(item)
                                             return (
-                                                <div key={item.id} className="rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/80 p-4" data-testid={`rx-item-${item.id}`}>
-                                                    <div className="mb-4 flex items-start justify-between gap-3">
+                                                <div key={item.id} className="rounded-[24px] border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/80 p-5 xl:p-6" data-testid={`rx-item-${item.id}`}>
+                                                    <div className="mb-5 flex items-start justify-between gap-4">
                                                         <div>
                                                             <div className="flex flex-wrap items-center gap-2">
                                                                 <span className="rounded-full border border-[color:var(--rxv-border)] px-2 py-0.5 text-[10px] font-black text-[color:var(--rxv-muted)]">{idx + 1}</span>
@@ -1875,15 +2011,33 @@ export default function NovaReceita2Page() {
                                                                 ) : null}
                                                                 {item.catalog_source === 'global' ? <span className="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-widest text-cyan-300">Global</span> : null}
                                                             </div>
-                                                            <p className="mt-2 text-base font-bold text-white">
+                                                            <p className="mt-2 text-lg font-black leading-7 text-white">
                                                                 {item.name || `Item ${idx + 1}`}
                                                                 {item.kind !== 'compounded' && concentrationLabel ? <span className="ml-1 font-normal text-[color:var(--rxv-muted)]">({concentrationLabel})</span> : null}
                                                             </p>
-                                                            <p className="text-xs text-[color:var(--rxv-muted)]">
+                                                            <p className="mt-1 text-sm leading-6 text-[color:var(--rxv-muted)]">
                                                                 {item.kind === 'compounded'
                                                                     ? buildCompoundedCardSubtitle(item, state.patient) || 'Manipulado sem resumo detalhado'
                                                                     : [item.pharmaceutical_form, item.commercial_name].filter(Boolean).join(' • ') || 'Sem apresentação detalhada'}
                                                             </p>
+                                                            <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-12">
+                                                                <div className="rounded-2xl border border-[color:var(--rxv-border)] bg-black/20 px-4 py-3 xl:col-span-7">
+                                                                    <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[color:var(--rxv-muted)]">Apresentação resumida</p>
+                                                                    <p className="mt-2 text-sm leading-6 text-white">
+                                                                        {item.kind === 'compounded'
+                                                                            ? buildCompoundedCardSubtitle(item, state.patient) || 'Manipulado sem resumo detalhado'
+                                                                            : [item.pharmaceutical_form, item.commercial_name].filter(Boolean).join(' • ') || 'Sem apresentação detalhada'}
+                                                                    </p>
+                                                                </div>
+                                                                <div className="rounded-2xl border border-[#39ff14]/15 bg-[#112313]/70 px-4 py-3 xl:col-span-5">
+                                                                    <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#6dde66]">Regime selecionado</p>
+                                                                    <p className="mt-2 text-sm leading-6 text-[#d6ffd1]">
+                                                                        {item.kind === 'compounded' && item.compounded_regimen_snapshot?.regimen_name
+                                                                            ? `${item.compounded_regimen_snapshot.regimen_name} • ${buildCompoundedRegimenSummary(item, state.patient) || `${getCompoundedFrequencySummary(item)} • ${getCompoundedDurationSummary(item)}`}`
+                                                                            : `${item.frequency || 'Frequência livre'} • ${formatDurationSummary(item)}`}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
                                                             {item.kind === 'compounded' ? (
                                                                 <p className="mt-1 text-[11px] font-semibold text-[#b8c3d9]">
                                                                     {getFormulaTypeLabel(getUniversalFormulaType(item.compounded_snapshot?.metadata || null))}
@@ -1898,14 +2052,14 @@ export default function NovaReceita2Page() {
                                                                     ))}
                                                                 </div>
                                                             ) : null}
-                                                            {item.kind === 'compounded' && item.compounded_regimen_snapshot?.regimen_name ? (
+                                                            {item.kind === 'compounded' && item.compounded_regimen_snapshot?.regimen_name ? false ? (
                                                                 <div className="mt-3 rounded-xl border border-[#39ff14]/15 bg-[#112313]/70 px-3 py-2">
                                                                     <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#6dde66]">Regime selecionado</p>
                                                                     <p className="mt-1 text-[11px] font-semibold text-[#b5ffaf]">
                                                                         {item.compounded_regimen_snapshot.regimen_name} • {buildCompoundedRegimenSummary(item, state.patient) || `${getCompoundedFrequencySummary(item)} • ${getCompoundedDurationSummary(item)}`}
                                                                     </p>
                                                                 </div>
-                                                            ) : null}
+                                                            ) : null : null}
                                                             {item.kind === 'compounded' && isClinicalDoseOriented && compoundedCalculation?.ingredientBreakdown?.length ? (
                                                                 <div className="mt-3 rounded-xl border border-slate-800 bg-black/20 px-3 py-3">
                                                                     <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[color:var(--rxv-muted)]">Dose final por ingrediente</p>
@@ -1920,18 +2074,22 @@ export default function NovaReceita2Page() {
                                                                 </div>
                                                             ) : null}
                                                             {item.kind === 'compounded' && compoundedCalculation ? (
-                                                                <div className="mt-3 grid grid-cols-1 gap-2 md:grid-cols-3">
+                                                                <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2 2xl:grid-cols-4">
                                                                     <div className="rounded-xl border border-slate-800 bg-black/20 px-3 py-2">
-                                                                        <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[color:var(--rxv-muted)]">Total calculado</p>
-                                                                        <p className="mt-1 text-xs font-semibold text-white">{compoundedCalculation.calculatedTotalText || 'Indisponível'}</p>
+                                                                    <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[color:var(--rxv-muted)]">Dose final</p>
+                                                                    <p className="mt-2 text-sm font-semibold text-white">{compoundedCalculation.perAdministrationText || item.dose || 'Indisponível'}</p>
                                                                     </div>
                                                                     <div className="rounded-xl border border-slate-800 bg-black/20 px-3 py-2">
-                                                                        <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[color:var(--rxv-muted)]">Quantidade sugerida</p>
-                                                                        <p className="mt-1 text-xs font-semibold text-white">{compoundedCalculation.estimatedTotalText || 'Indisponível'}</p>
+                                                                    <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[color:var(--rxv-muted)]">Quantidade final</p>
+                                                                    <p className="mt-2 text-sm font-semibold text-white">{compoundedCalculation.finalQuantityText || 'Indisponível'}</p>
                                                                     </div>
                                                                     <div className="rounded-xl border border-slate-800 bg-black/20 px-3 py-2">
-                                                                        <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[color:var(--rxv-muted)]">Quantidade final</p>
-                                                                        <p className="mt-1 text-xs font-semibold text-white">{compoundedCalculation.finalQuantityText || 'Indisponível'}</p>
+                                                                        <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[color:var(--rxv-muted)]">Via</p>
+                                                                    <p className="mt-2 text-sm font-semibold text-white">{normalizeRouteLabel(item.route) || 'Sem via'}</p>
+                                                                    </div>
+                                                                    <div className="rounded-xl border border-slate-800 bg-black/20 px-3 py-2">
+                                                                        <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[color:var(--rxv-muted)]">Frequência</p>
+                                                                        <p className="mt-2 text-sm font-semibold text-white">{item.frequency || 'Sem frequência'}</p>
                                                                     </div>
                                                                 </div>
                                                             ) : null}
@@ -1976,17 +2134,17 @@ export default function NovaReceita2Page() {
                                                         </button>
                                                     </div>
 
-                                                    <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-5">
-                                                        <RxvField label="Nome do fármaco">
+                                                    <div className="grid grid-cols-1 gap-x-6 gap-y-5 xl:grid-cols-12">
+                                                        <RxvField label="Nome do fármaco" className="xl:col-span-8">
                                                             <RxvInput value={item.name} onChange={(e) => updateItem(item.id, (current) => ({ ...current, name: e.target.value }))} />
                                                         </RxvField>
-                                                        <RxvField label={item.kind === 'compounded' ? 'Dose final por administração' : 'Dose'}>
+                                                        <RxvField label={item.kind === 'compounded' ? 'Dose final por administração' : 'Dose'} className="xl:col-span-4">
                                                             <RxvInput value={item.dose || ''} onChange={(e) => updateItem(item.id, (current) => ({ ...current, dose: e.target.value }))} placeholder={item.kind === 'compounded' ? 'Ex: 0,4 mL' : 'Ex: 7 gotas'} />
                                                         </RxvField>
-                                                        <RxvField label="Via">
+                                                        <RxvField label="Via" className="xl:col-span-4">
                                                             <RxvSelect value={item.route || 'VO'} onChange={(e) => updateItem(item.id, (current) => ({ ...current, route: e.target.value }))} options={compoundedRouteOptions} disabled={item.kind === 'compounded' && compoundedRouteOptions.length <= 1} />
                                                         </RxvField>
-                                                        <RxvField label="Modo de frequência">
+                                                        <RxvField label="Modo de frequência" className="xl:col-span-4">
                                                             <RxvSelect
                                                                 value={item.frequencyMode || 'times_per_day'}
                                                                 onChange={(e) => updateItem(item.id, (current) => ({
@@ -2004,7 +2162,7 @@ export default function NovaReceita2Page() {
                                                                 ]}
                                                             />
                                                         </RxvField>
-                                                        <RxvField label={item.frequencyMode === 'interval_hours' ? 'Intervalo (horas)' : 'Frequência'}>
+                                                        <RxvField label={item.frequencyMode === 'interval_hours' ? 'Intervalo (horas)' : 'Frequência'} className="xl:col-span-4">
                                                             {item.frequencyMode === 'interval_hours' ? (
                                                                 <RxvInput
                                                                     type="number"
@@ -2035,8 +2193,8 @@ export default function NovaReceita2Page() {
                                                         </RxvField>
                                                     </div>
 
-                                                    <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-5">
-                                                        <RxvField label="Modo de duração">
+                                                    <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-5 xl:grid-cols-12">
+                                                        <RxvField label="Modo de duração" className="xl:col-span-4">
                                                             <RxvSelect
                                                                 value={item.durationMode || 'fixed_days'}
                                                                 onChange={(e) => updateItem(item.id, (current) => ({
@@ -2049,7 +2207,7 @@ export default function NovaReceita2Page() {
                                                                 options={DURATION_MODE_OPTIONS}
                                                             />
                                                         </RxvField>
-                                                        <RxvField label="Valor da duração">
+                                                        <RxvField label="Valor da duração" className="xl:col-span-4">
                                                             <RxvInput
                                                                 type="number"
                                                                 min="1"
@@ -2067,7 +2225,7 @@ export default function NovaReceita2Page() {
                                                                 disabled={item.durationMode !== 'fixed_days'}
                                                             />
                                                         </RxvField>
-                                                        <RxvField label="Unidade da duração">
+                                                        <RxvField label="Unidade da duração" className="xl:col-span-4">
                                                             <RxvSelect
                                                                 value={item.durationUnit || 'dias'}
                                                                 onChange={(e) => updateItem(item.id, (current) => ({
@@ -2079,14 +2237,14 @@ export default function NovaReceita2Page() {
                                                                 disabled={item.durationMode !== 'fixed_days'}
                                                             />
                                                         </RxvField>
-                                                        <RxvField label="Início do item">
+                                                        <RxvField label="Início do item" className="xl:col-span-12">
                                                             <RxvToggle
                                                                 checked={item.inheritStartFromPrescription !== false}
                                                                 onChange={(checked) => updateItem(item.id, (current) => ({ ...current, inheritStartFromPrescription: checked }))}
                                                                 label="Herdar início padrão"
                                                             />
                                                         </RxvField>
-                                                        <div className="rounded-xl border border-slate-800 bg-black/20 px-3 py-3 text-xs text-[color:var(--rxv-muted)]">
+                                                        <div className="rounded-2xl border border-slate-800 bg-black/20 px-4 py-4 text-xs text-[color:var(--rxv-muted)] xl:col-span-12">
                                                             <p className="font-semibold text-[color:var(--rxv-text)]">Resumo</p>
                                                             {item.kind === 'compounded' ? (
                                                         <>
@@ -2107,7 +2265,7 @@ export default function NovaReceita2Page() {
                                                     </div>
 
                                                     {item.inheritStartFromPrescription === false ? (
-                                                        <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2">
+                                                        <div className="mt-3 grid grid-cols-1 gap-x-6 gap-y-5 md:grid-cols-2">
                                                             <RxvField label="Data de início do item">
                                                                 <RxvInput type="date" value={item.startDate || ''} onChange={(e) => updateItem(item.id, (current) => ({ ...current, startDate: e.target.value }))} />
                                                             </RxvField>
@@ -2122,7 +2280,7 @@ export default function NovaReceita2Page() {
                                                     ) : null}
 
                                                     {item.kind === 'compounded' ? (
-                                                        <div className="mt-3 space-y-3">
+                                                        <div className="mt-4 space-y-4">
                                                             {isClinicalDoseOriented ? (
                                                                 <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                                                                     <RxvField label="Estratégia para faixas de dose">
@@ -2183,8 +2341,44 @@ export default function NovaReceita2Page() {
                                                                     placeholder={compoundedCalculation?.estimatedTotalText || 'Ex: q.s.p. 10 mL'}
                                                                 />
                                                             </RxvField>
-                                                            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-                                                                <RxvField label="Orientações ao tutor">
+                                                            <RxvField label="Como este item aparece na receita">
+                                                                <div className="space-y-4 rounded-2xl border border-slate-800 bg-black/20 p-4">
+                                                                    <div className="flex flex-wrap items-center justify-between gap-3">
+                                                                        <div>
+                                                                            <p className="text-sm font-semibold text-white">Linha profissional da receita</p>
+                                                                            <p className="mt-1 text-xs text-[color:var(--rxv-muted)]">O lado esquerdo mostra o título profissional; o lado direito mostra a apresentação/dispensação.</p>
+                                                                        </div>
+                                                                        <RxvToggle
+                                                                            checked={!printLineManual}
+                                                                            onChange={(checked) => updateItemPresentationMetadata(item.id, {
+                                                                                print_line_mode: checked ? 'auto' : 'manual',
+                                                                                print_line_left: checked ? '' : String(getPresentationMetadata(item).print_line_left || printLineLeft),
+                                                                                print_line_right: checked ? '' : String(getPresentationMetadata(item).print_line_right || printLineRight),
+                                                                            })}
+                                                                            label="Gerar automaticamente"
+                                                                        />
+                                                                    </div>
+                                                                    <div className="rounded-xl border border-slate-700 bg-slate-950/60 px-4 py-3">
+                                                                        <div className="grid grid-cols-[minmax(0,1fr)_minmax(24px,1fr)_auto] items-end gap-3">
+                                                                            <p className="min-w-0 truncate whitespace-nowrap text-sm font-semibold leading-6 text-white">{printLineLeft || 'Linha principal da esquerda'}</p>
+                                                                            <div aria-hidden="true" className="h-[8px] min-w-[24px] bg-[radial-gradient(circle,rgba(148,163,184,0.72)_1.1px,transparent_1.2px)] bg-[length:10px_8px] bg-repeat-x bg-left-center" />
+                                                                            <p className="shrink-0 whitespace-nowrap text-right text-xs font-black uppercase tracking-[0.18em] text-slate-300">{printLineRight || 'Apresentacao'}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    {printLineManual ? (
+                                                                        <div className="grid grid-cols-1 gap-4 xl:grid-cols-12">
+                                                                            <RxvField label="Linha principal da esquerda" className="xl:col-span-8">
+                                                                                <RxvInput value={String(getPresentationMetadata(item).print_line_left || '')} onChange={(e) => updateItemPresentationMetadata(item.id, { print_line_left: e.target.value })} placeholder={getAutoPrintLineLeft(item, state.patient)} />
+                                                                            </RxvField>
+                                                                            <RxvField label="Linha principal da direita" className="xl:col-span-4">
+                                                                                <RxvInput value={String(getPresentationMetadata(item).print_line_right || '')} onChange={(e) => updateItemPresentationMetadata(item.id, { print_line_right: e.target.value })} placeholder={getAutoPrintLineRight(item)} />
+                                                                            </RxvField>
+                                                                        </div>
+                                                                    ) : null}
+                                                                </div>
+                                                            </RxvField>
+                                                            <div className="grid grid-cols-1 gap-4 xl:grid-cols-12">
+                                                                <RxvField label="Orientações ao tutor" className="xl:col-span-6">
                                                                     <RxvTextarea
                                                                         value={item.cautionsText ?? ''}
                                                                         onChange={(e) => updateItem(item.id, (current) => ({
@@ -2194,8 +2388,19 @@ export default function NovaReceita2Page() {
                                                                         rows={4}
                                                                         placeholder="Ex: usar luvas, alternar pinna, administrar com alimento."
                                                                     />
+                                                                    <div className="mt-2 flex justify-end">
+                                                                        <RxvButton
+                                                                            variant="ghost"
+                                                                            onClick={() => updateItem(item.id, (current) => ({
+                                                                                ...current,
+                                                                                cautionsText: '',
+                                                                            }))}
+                                                                        >
+                                                                            Limpar observacoes
+                                                                        </RxvButton>
+                                                                    </div>
                                                                 </RxvField>
-                                                                <RxvField label="Instrução para a farmácia">
+                                                                <RxvField label="Instrução para a farmácia" className="xl:col-span-6">
                                                                     <RxvTextarea
                                                                         value={item.compounded_pharmacy_guidance ?? ''}
                                                                         onChange={(e) => updateItem(item.id, (current) => ({
@@ -2222,15 +2427,56 @@ export default function NovaReceita2Page() {
                                                                     />
                                                                 </div>
                                                             </details>
-                                                            <div className="rounded-xl border border-slate-800 bg-black/20 px-3 py-3 text-xs text-[color:var(--rxv-muted)]">
+                                                            <div className="rounded-2xl border border-slate-800 bg-black/20 px-4 py-4 text-xs text-[color:var(--rxv-muted)]">
                                                                 <p className="font-semibold text-[color:var(--rxv-text)]">Texto final da receita</p>
-                                                                <p className="mt-2">{buildCompoundedInstruction(item, state.patient)}</p>
+                                                                <div className="mt-3 grid grid-cols-[minmax(0,1fr)_minmax(24px,1fr)_auto] items-end gap-3">
+                                                                    <p className="min-w-0 truncate whitespace-nowrap text-sm font-semibold leading-6 text-white">{printLineLeft}</p>
+                                                                    <div aria-hidden="true" className="h-[8px] min-w-[24px] bg-[radial-gradient(circle,rgba(148,163,184,0.72)_1.1px,transparent_1.2px)] bg-[length:10px_8px] bg-repeat-x bg-left-center" />
+                                                                    <p className="shrink-0 whitespace-nowrap text-right text-[11px] font-black uppercase tracking-[0.18em] text-slate-300">{printLineRight}</p>
+                                                                </div>
+                                                                <p className="mt-3 text-sm leading-7 text-white">{buildCompoundedInstruction(item, state.patient)}</p>
                                                                 {item.cautionsText?.trim() ? <p className="mt-1">Orientações ao tutor: {item.cautionsText.trim()}</p> : null}
                                                                 <p className="mt-1">{buildCompoundedPharmacyInstruction(item, state.patient)}</p>
                                                             </div>
                                                         </div>
                                                     ) : (
                                                         <div className="mt-3 grid grid-cols-1 gap-3">
+                                                            <RxvField label="Como este item aparece na receita">
+                                                                <div className="space-y-4 rounded-2xl border border-slate-800 bg-black/20 p-4">
+                                                                    <div className="flex flex-wrap items-center justify-between gap-3">
+                                                                        <div>
+                                                                            <p className="text-sm font-semibold text-white">Linha profissional da receita</p>
+                                                                            <p className="mt-1 text-xs text-[color:var(--rxv-muted)]">Configure a linha principal e a apresentação/dispensação mostradas no preview e no PDF.</p>
+                                                                        </div>
+                                                                        <RxvToggle
+                                                                            checked={!printLineManual}
+                                                                            onChange={(checked) => updateItemPresentationMetadata(item.id, {
+                                                                                print_line_mode: checked ? 'auto' : 'manual',
+                                                                                print_line_left: checked ? '' : String(getPresentationMetadata(item).print_line_left || printLineLeft),
+                                                                                print_line_right: checked ? '' : String(getPresentationMetadata(item).print_line_right || printLineRight),
+                                                                            })}
+                                                                            label="Gerar automaticamente"
+                                                                        />
+                                                                    </div>
+                                                                    <div className="rounded-xl border border-slate-700 bg-slate-950/60 px-4 py-3">
+                                                                        <div className="grid grid-cols-[minmax(0,1fr)_minmax(24px,1fr)_auto] items-end gap-3">
+                                                                            <p className="min-w-0 truncate whitespace-nowrap text-sm font-semibold leading-6 text-white">{printLineLeft || 'Linha principal da esquerda'}</p>
+                                                                            <div aria-hidden="true" className="h-[8px] min-w-[24px] bg-[radial-gradient(circle,rgba(148,163,184,0.72)_1.1px,transparent_1.2px)] bg-[length:10px_8px] bg-repeat-x bg-left-center" />
+                                                                            <p className="shrink-0 whitespace-nowrap text-right text-xs font-black uppercase tracking-[0.18em] text-slate-300">{printLineRight || 'Apresentacao'}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    {printLineManual ? (
+                                                                        <div className="grid grid-cols-1 gap-4 xl:grid-cols-12">
+                                                                            <RxvField label="Linha principal da esquerda" className="xl:col-span-8">
+                                                                                <RxvInput value={String(getPresentationMetadata(item).print_line_left || '')} onChange={(e) => updateItemPresentationMetadata(item.id, { print_line_left: e.target.value })} placeholder={getAutoPrintLineLeft(item, state.patient)} />
+                                                                            </RxvField>
+                                                                            <RxvField label="Linha principal da direita" className="xl:col-span-4">
+                                                                                <RxvInput value={String(getPresentationMetadata(item).print_line_right || '')} onChange={(e) => updateItemPresentationMetadata(item.id, { print_line_right: e.target.value })} placeholder={getAutoPrintLineRight(item)} />
+                                                                            </RxvField>
+                                                                        </div>
+                                                                    ) : null}
+                                                                </div>
+                                                            </RxvField>
                                                             <RxvField label="Observações adicionais">
                                                                 <RxvTextarea
                                                                     value={item.cautionsText ?? ''}
@@ -2241,6 +2487,17 @@ export default function NovaReceita2Page() {
                                                                     rows={4}
                                                                     placeholder="Uma observação por linha."
                                                                 />
+                                                                <div className="mt-2 flex justify-end">
+                                                                    <RxvButton
+                                                                        variant="ghost"
+                                                                        onClick={() => updateItem(item.id, (current) => ({
+                                                                            ...current,
+                                                                            cautionsText: '',
+                                                                        }))}
+                                                                    >
+                                                                        Limpar observacoes
+                                                                    </RxvButton>
+                                                                </div>
                                                             </RxvField>
                                                         </div>
                                                     )}
@@ -2381,7 +2638,7 @@ export default function NovaReceita2Page() {
                         </div>
 
                         {/* ==================== COLUNA DIREITA: PREVIEW ==================== */}
-                        <div className={`min-w-0 lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:overflow-y-auto ${showPreview ? '' : 'hidden lg:block'}`}>
+                        <div className={`min-w-0 2xl:sticky 2xl:top-20 2xl:h-[calc(100vh-5rem)] 2xl:overflow-y-auto ${showPreview ? '' : 'hidden 2xl:block'}`}>
                             <RxvCard>
                                 <RxvSectionHeader
                                     icon="visibility"
@@ -2432,7 +2689,7 @@ export default function NovaReceita2Page() {
 
                                     {/* Preview principal full-width com scroll vertical */}
                                     <div className="max-h-[78vh] overflow-y-auto overflow-x-hidden bg-[color:var(--rxv-surface-2)]/40">
-                                        <div className="space-y-5 p-4 xl:p-6">
+                                        <div className="space-y-5 p-4 xl:p-5 2xl:p-6">
                                             {printDocs.map((doc, idx) => (
                                                 <div key={`${doc.documentKind || 'standard'}-${idx}`} className="overflow-hidden rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/70">
                                                     {printDocs.length > 1 && (
@@ -2554,3 +2811,4 @@ export default function NovaReceita2Page() {
         </ReceituarioChrome>
     )
 }
+

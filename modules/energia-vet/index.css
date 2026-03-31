@@ -1,4 +1,6 @@
 .energia-vet-shell {
+  width: 100%;
+  min-height: 100dvh;
   --background: 32 43% 98%;
   --foreground: 24 22% 12%;
   --card: 0 0% 100%;

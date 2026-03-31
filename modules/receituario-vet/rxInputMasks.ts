@@ -31,4 +31,3 @@ export function maskRg(value: string): string {
   if (clean.length <= 8) return clean.replace(/^(\d{2})(\d{3})(\d+)/, '$1.$2.$3')
   return clean.replace(/^(\d{2})(\d{3})(\d{3})([\dX])/, '$1.$2.$3-$4')
 }
-

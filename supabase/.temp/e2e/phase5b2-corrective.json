@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "targetName": "Manipulado V2 Page 1774837469290",
+  "routeLoaded": true,
+  "manipuladoPageOk": true,
+  "recipeCardOk": true,
+  "observationsCleared": true,
+  "routeNormalizedToOral": true,
+  "rightSideIsDispensing": true,
+  "titleStayedSingleLine": true,
+  "reviewOk": true,
+  "pdfPath": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\downloads\\phase5b2-1774863585513-PACIENTE_E2E_TUTOR_E2E_MANIPULADOS_30-03-2026.pdf",
+  "shots": [
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase5b2-manipulados-page-after.png",
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase5b2-nova-receita-card-after.png",
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase5b2-review-preview-after.png"
+  ]
+}

@@ -18,7 +18,7 @@ type SearchResults = {
 };
 
 const UI_TEXT = {
-  title: 'Consulta VET',
+  title: 'Vetius ALFA',
   heroBody:
     'Base cl\u00ednica para consulta r\u00e1pida de doen\u00e7as, medicamentos e consensos com navega\u00e7\u00e3o conectada, favoritos e retomada de leitura.',
   searchPlaceholder: 'Buscar doen\u00e7a, medicamento ou consenso...',

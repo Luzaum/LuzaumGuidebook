@@ -1,0 +1,62 @@
+{
+  "ok": true,
+  "protocolName": "Protocolo Manipulado V2 1774907060090",
+  "benazeprilName": "Benazepril Biscoito Protocolo 1774907060090",
+  "legacyName": "Trazodona Cápsulas Legado 1774907060090",
+  "routeLoaded": true,
+  "protocolEditorOpened": true,
+  "v2ItemOpened": true,
+  "legacyItemOpened": true,
+  "legacyNoticeVisible": true,
+  "protocolSaved": true,
+  "appliedToNovaReceita": true,
+  "reviewCoherent": true,
+  "log": [
+    {
+      "step": "route_loaded",
+      "time": "2026-03-30T21:44:22.048Z"
+    },
+    {
+      "step": "protocol_seeded",
+      "time": "2026-03-30T21:44:27.000Z",
+      "protocolId": "75a89a1b-fc1d-44d1-959a-43699f32eda6",
+      "v2MedicationId": "022e7100-693b-4f9f-9dc5-1b7b25702a82",
+      "legacyMedicationId": "8e206d0a-fb44-4a70-acc6-139ce8d88fb0"
+    },
+    {
+      "step": "shot",
+      "time": "2026-03-30T21:44:32.503Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase4-protocol-list.png"
+    },
+    {
+      "step": "shot",
+      "time": "2026-03-30T21:44:35.149Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase4-protocol-editor-open.png"
+    },
+    {
+      "step": "shot",
+      "time": "2026-03-30T21:44:37.215Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase4-protocol-v2-item-open.png"
+    },
+    {
+      "step": "shot",
+      "time": "2026-03-30T21:44:41.147Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase4-protocol-legacy-converted.png"
+    },
+    {
+      "step": "shot",
+      "time": "2026-03-30T21:44:44.809Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase4-protocol-saved.png"
+    },
+    {
+      "step": "shot",
+      "time": "2026-03-30T21:44:50.951Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase4-protocol-applied-nova-receita.png"
+    },
+    {
+      "step": "shot",
+      "time": "2026-03-30T21:44:53.242Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase4-protocol-review-final.png"
+    }
+  ]
+}

@@ -119,16 +119,11 @@ function Layout({ children }: { children: React.ReactNode }) {
     <div className="energia-vet-shell flex min-h-dvh bg-background">
       <Sidebar />
       <div className="flex min-h-dvh min-w-0 flex-1 flex-col">
-        <header className="sticky top-0 z-20 border-b border-border/60 bg-background/92 px-4 py-4 backdrop-blur lg:px-8">
-          <div className="flex items-center gap-3">
-            <img src={MODULE_LOGO} alt={MODULE_NAME} className="h-10 w-10 rounded-2xl bg-white/70 p-1 object-contain shadow-sm lg:hidden" />
-            <div>
-              <h1 className="text-lg font-semibold tracking-tight text-foreground">{MODULE_NAME}</h1>
-              <p className="text-sm text-muted-foreground">Módulo oficial de nutrição veterinária</p>
-            </div>
+        <main className="flex-1 overflow-y-auto px-4 py-8 lg:px-10 lg:py-10">
+          <div className="w-full max-w-none">
+            {children}
           </div>
-        </header>
-        <main className="flex-1 overflow-y-auto px-4 py-6 lg:px-8 lg:py-8">{children}</main>
+        </main>
       </div>
       <MobileNav />
     </div>

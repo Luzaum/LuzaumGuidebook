@@ -1,0 +1,28 @@
+{
+  "ok": false,
+  "names": {
+    "suspension": "Suspensão antitussígena C1 1774833021072",
+    "capsule": "Trazodona cápsulas C1 1774833021072",
+    "gel": "Gabapentina gel transdérmico C1 1774833021072",
+    "protocol": "Protocolo Manipulados C1 1774833021072"
+  },
+  "log": [
+    {
+      "step": "login_ok",
+      "time": "2026-03-30T01:10:23.058Z",
+      "email": "codexmanipulados1774215809011@gmail.com"
+    },
+    {
+      "step": "fatal",
+      "time": "2026-03-30T01:10:55.346Z",
+      "message": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('body').locator('label').filter({ hasText: /^Resumo curto$/i }).first().locator('..').locator('textarea').first() to be visible\u001b[22m\n"
+    },
+    {
+      "step": "screenshot",
+      "time": "2026-03-30T01:10:56.156Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\57-v2-c1-fatal.png"
+    }
+  ],
+  "pdfPath": "",
+  "previewChecks": {}
+}

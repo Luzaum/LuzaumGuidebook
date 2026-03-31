@@ -7,13 +7,13 @@ import { ScrollArea } from '../ui/scroll-area';
 export function MonitoringPage() {
   return (
     <ScrollArea className="h-full w-full bg-slate-50 p-6 dark:bg-slate-950 lg:p-10">
-      <div className="mx-auto max-w-5xl space-y-10 pb-20">
+      <div className="mx-auto w-full space-y-10 pb-20">
         <header>
           <h2 className="flex items-center gap-3 text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
             <Activity className="h-8 w-8 text-teal-500" />
-            Monitorizacao e alertas
+            Monitorização e alertas
           </h2>
-          <p className="mt-2 text-slate-500 dark:text-slate-400">Checklist operacional para manter reavaliacao continua como eixo do modulo.</p>
+          <p className="mt-2 text-slate-500 dark:text-slate-400">Checklist operacional para manter reavaliação contínua como eixo do módulo.</p>
         </header>
 
         <Card className="border-teal-200 shadow-sm dark:border-teal-900/50">
@@ -22,7 +22,7 @@ export function MonitoringPage() {
               <CheckCircle2 className="h-5 w-5" />
               O que precisa aparecer no centro da tela
             </CardTitle>
-            <CardDescription>Nao como detalhe, mas como criterio para seguir, reduzir ou parar fluidos.</CardDescription>
+            <CardDescription>Não como detalhe, mas como critério para seguir, reduzir ou parar fluidos.</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-3 p-6 md:grid-cols-2 xl:grid-cols-3">
             {monitoringGeneralChecklist.map((item) => (
@@ -50,12 +50,12 @@ export function MonitoringPage() {
 
           <Card className="border-slate-200 shadow-sm dark:border-slate-800">
             <CardHeader>
-              <CardTitle className="text-lg">Endpoints praticos de ressuscitacao</CardTitle>
+              <CardTitle className="text-lg">Endpoints práticos de ressuscitação</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3 text-sm text-slate-600 dark:text-slate-300">
-              <p>Melhora de pulso, mucosas, TPC, pressao arterial e mentacao.</p>
+              <p>Melhora de pulso, mucosas, TPC, pressão arterial e mentação.</p>
               <p>Lactato em queda e diurese adequada ajudam a confirmar resposta perfusional.</p>
-              <p>Se a resposta nao vier apesar de aliquotas razoaveis, o problema pode nao ser volume isolado.</p>
+              <p>Se a resposta não vier apesar de alíquotas razoáveis, o problema pode não ser volume isolado.</p>
             </CardContent>
           </Card>
         </div>
@@ -66,7 +66,7 @@ export function MonitoringPage() {
               <AlertTriangle className="h-5 w-5" />
               Sinais de sobrecarga
             </CardTitle>
-            <CardDescription>Se ocorrerem, suspender ou reduzir fluidos e reavaliar o contexto clinico.</CardDescription>
+            <CardDescription>Se ocorrerem, suspender ou reduzir fluidos e reavaliar o contexto clínico.</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-3 p-6 md:grid-cols-2">
             {overloadSigns.map((item) => (
@@ -80,11 +80,11 @@ export function MonitoringPage() {
         <div className="grid gap-6 lg:grid-cols-2">
           <Card className="border-slate-200 shadow-sm dark:border-slate-800">
             <CardHeader>
-              <CardTitle className="text-lg">TCE: reavaliacao neurologica</CardTitle>
-              <CardDescription>No inicio e apos intervencoes, geralmente q30-60 min.</CardDescription>
+              <CardTitle className="text-lg">TCE: reavaliação neurológica</CardTitle>
+              <CardDescription>No início e após intervenções, geralmente q30-60 min.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
-              {['Consciencia', 'Pupilas / PLR', 'Reflexo oculocefalico', 'Padrao respiratorio', 'Reflexo de Cushing', 'PA', 'Glicemia', 'Eletrólitos', 'Gasometria/capnografia se disponiveis'].map((item) => (
+              {['Consciência', 'Pupilas / PLR', 'Reflexo oculocefálico', 'Padrão respiratório', 'Reflexo de Cushing', 'PA', 'Glicemia', 'Eletrólitos', 'Gasometria/capnografia se disponíveis'].map((item) => (
                 <div key={item} className="rounded-xl border border-slate-200 bg-white px-4 py-3 dark:border-slate-800 dark:bg-slate-950">{item}</div>
               ))}
             </CardContent>
@@ -95,9 +95,9 @@ export function MonitoringPage() {
               <CardTitle className="text-lg">Quando reduzir, parar ou escalar</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3 text-sm text-slate-600 dark:text-slate-300">
-              <p>Suspender ou reduzir fluidos se surgirem sinais respiratorios, ganho agudo de peso, quemoses ou queda de saturacao em contexto compativel.</p>
-              <p>Considerar diuretico conforme o contexto clinico, nunca como reflexo automatico.</p>
-              <p>Se o paciente continuar mal perfundido sem resposta clara a volume, revisar o diagnostico fisiologico e considerar vasoativo, hemocomponente ou outro protocolo especifico.</p>
+              <p>Suspender ou reduzir fluidos se surgirem sinais respiratórios, ganho agudo de peso, quemoses ou queda de saturação em contexto compatível.</p>
+              <p>Considerar diurético conforme o contexto clínico, nunca como reflexo automático.</p>
+              <p>Se o paciente continuar mal perfundido sem resposta clara a volume, revisar o diagnóstico fisiológico e considerar vasoativo, hemocomponente ou outro protocolo específico.</p>
               <div className="flex flex-wrap gap-2 pt-2">
                 <Badge variant="secondary" className="bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300">Peso</Badge>
                 <Badge variant="secondary" className="bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300">FR</Badge>

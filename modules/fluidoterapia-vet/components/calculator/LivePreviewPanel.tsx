@@ -19,6 +19,7 @@ export function LivePreviewPanel({
   maintenanceResults,
   rehydrationResults,
   lossesResults,
+  resuscitationResults,
   onApplyAction,
 }: Props) {
   const totalHourly = maintenanceResults.mlPerHour + rehydrationResults.hourlyMl + lossesResults.hourlyMl;
@@ -42,7 +43,7 @@ export function LivePreviewPanel({
       <div className="sticky top-0 z-20 border-b border-slate-200/60 bg-white/80 p-6 backdrop-blur dark:border-slate-800/60 dark:bg-slate-900/80">
         <h3 className="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-slate-100">
           <Activity className="h-5 w-5 text-teal-500" />
-          Preview clinico
+          Preview clínico
         </h3>
         <p className="mt-1 text-sm text-slate-500">Calcula, justifica e lembra o que precisa ser monitorado.</p>
       </div>
@@ -50,9 +51,9 @@ export function LivePreviewPanel({
       <ScrollArea className="flex-1 p-6">
         <div className="space-y-8">
           <section className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Prescricao atual</h4>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Prescrição atual</h4>
             <div className="rounded-3xl bg-gradient-to-br from-teal-500 to-emerald-600 p-6 text-white shadow-lg shadow-teal-500/15">
-              <p className="text-sm font-medium text-teal-100">Taxa total continua</p>
+              <p className="text-sm font-medium text-teal-100">Taxa total contínua</p>
               <p className="mt-2 text-5xl font-black tracking-tight">{Number.isFinite(totalHourly) ? totalHourly.toFixed(1) : '0.0'} <span className="text-2xl font-semibold opacity-80">mL/h</span></p>
               <div className="mt-4 rounded-2xl bg-white/10 p-4 text-sm">
                 <p>Volume 24 h: {Number.isFinite(total24h) ? total24h.toFixed(0) : '0'} mL</p>
@@ -62,24 +63,37 @@ export function LivePreviewPanel({
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div className="rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 p-4 text-white">
-                <p className="text-xs font-bold uppercase tracking-wider text-amber-100">1,5x manutencao</p>
+                <p className="text-xs font-bold uppercase tracking-wider text-amber-100">1,5x manutenção</p>
                 <p className="mt-2 text-2xl font-black">{maintenanceResults.x1_5.toFixed(1)} <span className="text-sm font-medium opacity-90">mL/h</span></p>
               </div>
               <div className="rounded-2xl bg-gradient-to-br from-rose-500 to-red-600 p-4 text-white">
-                <p className="text-xs font-bold uppercase tracking-wider text-rose-100">2x manutencao</p>
+                <p className="text-xs font-bold uppercase tracking-wider text-rose-100">2x manutenção</p>
                 <p className="mt-2 text-2xl font-black">{maintenanceResults.x2.toFixed(1)} <span className="text-sm font-medium opacity-90">mL/h</span></p>
               </div>
             </div>
           </section>
 
           <section className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Composicao da taxa</h4>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Composição da taxa</h4>
             <div className="space-y-3">
+              {state.resuscitation.enabled && (
+                <div className="flex items-center justify-between rounded-2xl border border-rose-100 bg-rose-50/50 p-4 dark:border-rose-900/30 dark:bg-rose-950/20">
+                  <div className="flex items-center gap-3">
+                    <Activity className="h-4 w-4 text-rose-500" />
+                    <div>
+                      <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">Ressuscitação (Bolus)</p>
+                      <p className="text-xs text-slate-500">{resuscitationResults.totalMl.toFixed(0)} mL em {resuscitationResults.timeMinutes} min</p>
+                    </div>
+                  </div>
+                  <span className="text-sm font-bold text-rose-600 dark:text-rose-400">Separado do total</span>
+                </div>
+              )}
+
               <div className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-950">
                 <div className="flex items-center gap-3">
                   <Droplet className="h-4 w-4 text-blue-500" />
                   <div>
-                    <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">Manutencao</p>
+                    <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">Manutenção</p>
                     <p className="text-xs text-slate-500">{maintenanceResults.mlPerDay.toFixed(0)} mL/dia</p>
                   </div>
                 </div>
@@ -91,8 +105,8 @@ export function LivePreviewPanel({
                   <div className="flex items-center gap-3">
                     <Clock className="h-4 w-4 text-indigo-500" />
                     <div>
-                      <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">Reidratacao</p>
-                      <p className="text-xs text-slate-500">Deficit {rehydrationResults.deficitMl.toFixed(0)} mL em {rehydrationResults.hours} h</p>
+                      <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">Reidratação</p>
+                      <p className="text-xs text-slate-500">Déficit {rehydrationResults.deficitMl.toFixed(0)} mL em {rehydrationResults.hours} h</p>
                     </div>
                   </div>
                   <span className="text-sm font-bold text-slate-900 dark:text-slate-100">{rehydrationResults.hourlyMl.toFixed(1)} mL/h</span>
@@ -104,7 +118,7 @@ export function LivePreviewPanel({
                   <div className="flex items-center gap-3">
                     <ArrowDownToLine className="h-4 w-4 text-amber-500" />
                     <div>
-                      <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">Perdas continuas</p>
+                      <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">Perdas contínuas</p>
                       <p className="text-xs text-slate-500">{lossesResults.mlPerDay.toFixed(0)} mL/dia</p>
                     </div>
                   </div>
@@ -114,37 +128,13 @@ export function LivePreviewPanel({
             </div>
           </section>
 
-          <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-5 text-sm text-slate-700 dark:border-slate-800 dark:bg-slate-900/50 dark:text-slate-300">
-            <p className="font-semibold text-slate-800 dark:text-slate-100">Fluido e droga.</p>
-            <p className="mt-2">A conta total sempre deve ficar separada em ressuscitacao + reidratacao + perdas continuas + manutencao. O bolus de ressuscitacao nao entra misturado aqui.</p>
-          </div>
 
-          <Separator className="dark:bg-slate-800/60" />
-
-          <section className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Monitorizacao central</h4>
-            <div className="grid gap-3">
-              {[
-                'Peso corporal seriado',
-                'FR e esforco respiratorio',
-                'Ausculta',
-                'Diurese e balanço hidrico',
-                'PA e perfusao',
-                'Eletrólitos e sinais de sobrecarga',
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-950">
-                  <HeartPulse className="h-4 w-4 text-teal-500" />
-                  <span className="text-sm text-slate-700 dark:text-slate-300">{item}</span>
-                </div>
-              ))}
-            </div>
-          </section>
 
           {alerts.length > 0 ? (
             <>
               <Separator className="dark:bg-slate-800/60" />
               <section className="space-y-3">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Alertas clinicos</h4>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Alertas clínicos</h4>
                 {alerts.map((alert, index) => (
                   <div key={`${alert.title}-${index}`} className={`rounded-2xl border p-4 ${alertClasses[alert.level]}`}>
                     <div className="flex items-start gap-3">

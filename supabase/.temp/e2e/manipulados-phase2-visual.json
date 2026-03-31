@@ -1,0 +1,32 @@
+{
+  "ok": false,
+  "name": "Benazepril Biscoito V2 F2 1774830149142",
+  "itemCreated": true,
+  "noMojibakeVisible": false,
+  "reviewCoherent": false,
+  "cardCoherent": false,
+  "log": [
+    {
+      "step": "login_ok",
+      "time": "2026-03-30T00:22:31.907Z",
+      "email": "codexmanipulados1774215809011@gmail.com"
+    },
+    {
+      "step": "item_created",
+      "time": "2026-03-30T00:22:33.723Z",
+      "id": "ce8b9692-e403-440a-99f4-bc03b870ac67",
+      "name": "Benazepril Biscoito V2 F2 1774830149142",
+      "metadataHasV2": true
+    },
+    {
+      "step": "fatal",
+      "time": "2026-03-30T00:23:08.221Z",
+      "message": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('div').filter({ has: getByRole('heading', { name: /Adicionar manipulado/i }) }).first().locator('button[data-testid^=\"compounded-modal-item-\"]').filter({ hasText: 'Benazepril Biscoito V2 F2 1774830149142' }).first() to be visible\u001b[22m\n"
+    },
+    {
+      "step": "shot",
+      "time": "2026-03-30T00:23:09.015Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase2-visual-fatal.png"
+    }
+  ]
+}

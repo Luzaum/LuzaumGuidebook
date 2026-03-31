@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "free": {
+    "is_controlled": false,
+    "control_type": ""
+  },
+  "controlled": {
+    "is_controlled": true,
+    "control_type": ""
+  }
+}

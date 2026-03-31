@@ -1,0 +1,91 @@
+{
+  "ok": true,
+  "generatedAt": "2026-03-30T21:43:30.961Z",
+  "cases": [
+    {
+      "id": "novo_manipulado_ui",
+      "exitCode": 0,
+      "passed": true,
+      "readError": "",
+      "stdoutTail": [
+        ""
+      ],
+      "stderrTail": [
+        ""
+      ]
+    },
+    {
+      "id": "novo_manipulado_blank_editor",
+      "exitCode": 0,
+      "passed": true,
+      "readError": "",
+      "stdoutTail": [
+        "skip-inline-proof"
+      ],
+      "stderrTail": [
+        ""
+      ]
+    },
+    {
+      "id": "benazepril_5kg",
+      "exitCode": 0,
+      "passed": true,
+      "readError": "",
+      "stdoutTail": [
+        "C:/PROJETOS VET/Vetius/supabase/.temp/e2e/manipulados-v2-d-domain-proof.json"
+      ],
+      "stderrTail": [
+        ""
+      ]
+    },
+    {
+      "id": "nova_receita_review_reativo",
+      "exitCode": 0,
+      "passed": true,
+      "readError": "",
+      "stdoutTail": [
+        "{",
+        "  \"ok\": true,",
+        "  \"before\": \"Administrar 1 biscoito a cada 24 horas.\",",
+        "  \"after\": \"Administrar 1 biscoito a cada 24 horas, por 10 dias.\"",
+        "}"
+      ],
+      "stderrTail": [
+        ""
+      ]
+    },
+    {
+      "id": "controlado_e_nao_controlado",
+      "exitCode": 0,
+      "passed": true,
+      "readError": "",
+      "stdoutTail": [
+        "  \"ok\": true,",
+        "  \"free\": {",
+        "    \"is_controlled\": false,",
+        "    \"control_type\": \"\"",
+        "  },",
+        "  \"controlled\": {",
+        "    \"is_controlled\": true,",
+        "    \"control_type\": \"\"",
+        "  }",
+        "}"
+      ],
+      "stderrTail": [
+        ""
+      ]
+    },
+    {
+      "id": "protocolos_v2",
+      "exitCode": 0,
+      "passed": true,
+      "readError": "",
+      "stdoutTail": [
+        ""
+      ],
+      "stderrTail": [
+        ""
+      ]
+    }
+  ]
+}

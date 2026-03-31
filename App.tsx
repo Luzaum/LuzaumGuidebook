@@ -13,9 +13,9 @@ const ModuleIframe = lazy(() => import('./pages/ModuleIframe').then((m) => ({ de
 const EnergiaVetPage = lazy(() => import('./modules/energia-vet/App'))
 const FluidoterapiaVetPage = lazy(() => import('./modules/fluidoterapia-vet'))
 const TransfusaoSanguineaPage = lazy(() => import('./pages/TransfusaoSanguineaPage').then((m) => ({ default: m.TransfusaoSanguineaPage })))
-const HemogasometriaPage = lazy(() => import('./pages/HemogasometriaPage').then((m) => ({ default: m.HemogasometriaPage })))
+const HemogasoVetPage = lazy(() => import('./modules/hemogasovet'))
 const NeurologiaPage = lazy(() => import('./pages/NeurologiaPage').then((m) => ({ default: m.NeurologiaPage })))
-const SupabaseTestPage = lazy(() => import('./pages/SupabaseTestPage').then((m) => ({ default: m.SupabaseTestPage })))
+const SupabaseTestPage = lazy(() => import('./pages/SupabaseTestPage'))
 const EscalasDorPage = lazy(() => import('./modules/escalas-dor/App'))
 
 const CrivetPage = lazy(() => import('./pages/Crivet').then((m) => ({ default: m.Crivet })))
@@ -96,7 +96,7 @@ const appRoutes = (
     <Route path="/fluidoterapia-vet" element={<FluidoterapiaVetPage />} />
     <Route path="/transfusao-sanguinea" element={<TransfusaoSanguineaPage />} />
     <Route path="/transfusão-sanguinea" element={<TransfusaoSanguineaPage />} />
-    <Route path="/hemogasometria" element={<HemogasometriaPage />} />
+    <Route path="/hemogasovet/*" element={<HemogasoVetPage />} />
     <Route path="/dor" element={<EscalasDorPage />} />
     <Route path="/emergencias" element={<ModuleIframe />} />
     <Route path="/emergências" element={<ModuleIframe />} />
@@ -202,3 +202,4 @@ function AppContent() {
 export function App() {
   return <AppContent />
 }
+

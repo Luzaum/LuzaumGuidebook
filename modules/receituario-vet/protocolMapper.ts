@@ -5,6 +5,11 @@ import { ProtocolMedicationItem, ProtocolRecommendation } from '../../src/lib/pr
 import { PrescriptionItem as RxPrescriptionItem, RouteGroup } from './rxTypes'
 import { createDefaultItem } from './rxDefaults'
 import type { PrescriptionItem } from './NovaReceita2Page'
+import type { CompoundedMedicationV2 } from './compoundedV2'
+import { mapCompoundedV2ToPrescriptionItem } from './compoundedV2Mapper'
+import { createEmptyManipuladoV1, normalizeManipuladoV1, type ManipuladoV1Formula } from './manipuladosV1'
+import { mapManipuladoV1ToPrescriptionItem, mapManipuladoV1ToProtocolMedication } from './manipuladosV1Mapper'
+import { sanitizeDeepText, sanitizeVisibleText } from './textSanitizer'
 
 type StoredProtocolPrescriptionSnapshot = Omit<
   PrescriptionItem,
@@ -215,6 +220,163 @@ function buildDurationFromProtocol(protocolMed: ProtocolMedicationItem): {
   return {}
 }
 
+function getProtocolPayloadV2(protocolMed: ProtocolMedicationItem, storedSnapshot: StoredProtocolPrescriptionSnapshot | null): CompoundedMedicationV2 | null {
+  const metadata = (protocolMed.metadata || {}) as Record<string, unknown>
+  const directPayload = metadata.payload_v2
+  if (directPayload && typeof directPayload === 'object' && !Array.isArray(directPayload)) {
+    return sanitizeDeepText(directPayload as CompoundedMedicationV2)
+  }
+
+  const snapshotCandidate = storedSnapshot as Record<string, unknown> | null
+  const compoundedSnapshot = snapshotCandidate?.compounded_snapshot as Record<string, unknown> | undefined
+  const snapshotMetadata = compoundedSnapshot?.metadata
+  if (snapshotMetadata && typeof snapshotMetadata === 'object' && !Array.isArray(snapshotMetadata)) {
+    const nestedPayload = (snapshotMetadata as Record<string, unknown>).payload_v2
+    if (nestedPayload && typeof nestedPayload === 'object' && !Array.isArray(nestedPayload)) {
+      return sanitizeDeepText(nestedPayload as CompoundedMedicationV2)
+    }
+  }
+
+  return null
+}
+
+function getProtocolPayloadV1(protocolMed: ProtocolMedicationItem, storedSnapshot: StoredProtocolPrescriptionSnapshot | null): ManipuladoV1Formula | null {
+  const metadata = (protocolMed.metadata || {}) as Record<string, unknown>
+  const directPayload = metadata.payload_v1
+  if (directPayload && typeof directPayload === 'object' && !Array.isArray(directPayload)) {
+    return normalizeManipuladoV1(sanitizeDeepText(directPayload as ManipuladoV1Formula))
+  }
+
+  const snapshotCandidate = storedSnapshot as Record<string, unknown> | null
+  const compoundedSnapshot = snapshotCandidate?.compounded_snapshot as Record<string, unknown> | undefined
+  const snapshotMetadata = compoundedSnapshot?.metadata
+  if (snapshotMetadata && typeof snapshotMetadata === 'object' && !Array.isArray(snapshotMetadata)) {
+    const nestedPayload = (snapshotMetadata as Record<string, unknown>).payload_v1
+    if (nestedPayload && typeof nestedPayload === 'object' && !Array.isArray(nestedPayload)) {
+      return normalizeManipuladoV1(sanitizeDeepText(nestedPayload as ManipuladoV1Formula))
+    }
+  }
+
+  return null
+}
+
+function applyProtocolMedicationOverridesToV2(
+  v2: CompoundedMedicationV2,
+  protocolMed: ProtocolMedicationItem,
+  notes: string,
+): CompoundedMedicationV2 {
+  const regimen = v2.regimens.find((entry) => entry.id === protocolMed.compounded_regimen_id) || v2.regimens.find((entry) => entry.is_default) || v2.regimens[0]
+  if (!regimen) return v2
+
+  const nextFrequencyMode =
+    protocolMed.frequency_type === 'interval_hours'
+      ? 'interval_hours'
+      : protocolMed.frequency_type === 'times_per_day' || protocolMed.frequency_type === 'once_daily'
+        ? 'times_per_day'
+        : regimen.frequency_mode
+
+  return sanitizeDeepText({
+    ...v2,
+    formula: {
+      ...v2.formula,
+      primary_route: sanitizeVisibleText(protocolMed.route).trim() || v2.formula.primary_route,
+      sale_classification: protocolMed.is_controlled ? 'controlled' : v2.formula.sale_classification,
+    },
+    regimens: v2.regimens.map((entry) => entry.id !== regimen.id ? entry : {
+      ...entry,
+      dose_min: protocolMed.dose_value ?? entry.dose_min,
+      dose_unit: sanitizeVisibleText(protocolMed.dose_unit).trim() || entry.dose_unit,
+      frequency_mode: nextFrequencyMode,
+      frequency_min:
+        protocolMed.frequency_type === 'interval_hours'
+          ? protocolMed.interval_hours ?? entry.frequency_min
+          : protocolMed.frequency_type === 'once_daily'
+            ? 1
+            : protocolMed.times_per_day ?? entry.frequency_min,
+      frequency_text:
+        protocolMed.frequency_type === 'interval_hours' && protocolMed.interval_hours
+          ? `a cada ${protocolMed.interval_hours} horas`
+          : protocolMed.frequency_type === 'once_daily'
+            ? '1 vez ao dia'
+            : protocolMed.times_per_day
+              ? `${protocolMed.times_per_day}x ao dia`
+              : entry.frequency_text,
+      duration_mode: protocolMed.duration_days === -1 ? 'continuous_until_recheck' : 'fixed',
+      duration_value: protocolMed.duration_days && protocolMed.duration_days > 0 ? protocolMed.duration_days : entry.duration_value,
+      duration_unit: protocolMed.duration_days === -1 ? 'até reavaliação' : 'dias',
+      duration_text:
+        protocolMed.duration_days === -1
+          ? 'até reavaliação'
+          : protocolMed.duration_days && protocolMed.duration_days > 0
+            ? `${protocolMed.duration_days} dias`
+            : entry.duration_text,
+      tutor_observation: notes || entry.tutor_observation,
+    }),
+  })
+}
+
+function frequencyFromProtocolItem(protocolMed: ProtocolMedicationItem): Pick<ManipuladoV1Formula['prescribing'], 'frequency_mode' | 'frequency_label'> {
+  if (protocolMed.frequency_type === 'interval_hours' && protocolMed.interval_hours) {
+    const hours = protocolMed.interval_hours
+    return {
+      frequency_mode: hours === 6 ? 'q6h' : hours === 8 ? 'q8h' : hours === 12 ? 'q12h' : hours === 24 ? 'q24h' : 'custom',
+      frequency_label: `a cada ${hours} horas`,
+    }
+  }
+
+  if (protocolMed.frequency_type === 'once_daily') {
+    return { frequency_mode: 'q24h', frequency_label: 'a cada 24 horas' }
+  }
+
+  if (protocolMed.frequency_type === 'times_per_day' && protocolMed.times_per_day) {
+    return protocolMed.times_per_day === 1
+      ? { frequency_mode: 'q24h', frequency_label: '1x ao dia' }
+      : protocolMed.times_per_day === 2
+        ? { frequency_mode: 'q12h', frequency_label: '2x ao dia' }
+        : { frequency_mode: 'custom', frequency_label: `${protocolMed.times_per_day}x ao dia` }
+  }
+
+  if (protocolMed.frequency_type === 'as_needed') {
+    return { frequency_mode: 'custom', frequency_label: 'conforme necessidade' }
+  }
+
+  return { frequency_mode: 'q12h', frequency_label: 'a cada 12 horas' }
+}
+
+function applyProtocolMedicationOverridesToV1(
+  v1: ManipuladoV1Formula,
+  protocolMed: ProtocolMedicationItem,
+  notes: string,
+): ManipuladoV1Formula {
+  const next = normalizeManipuladoV1({
+    ...v1,
+    identity: {
+      ...v1.identity,
+      name: sanitizeVisibleText(protocolMed.medication_name || protocolMed.manual_medication_name || v1.identity.name),
+      primary_route: sanitizeVisibleText(protocolMed.route || v1.identity.primary_route),
+      sale_classification: protocolMed.is_controlled ? 'controlled' : v1.identity.sale_classification,
+      description: notes || v1.identity.description,
+    },
+    prescribing: {
+      ...v1.prescribing,
+      dose_min: protocolMed.dose_value ?? v1.prescribing.dose_min,
+      dose_max: protocolMed.dose_value ?? v1.prescribing.dose_max,
+      dose_unit: sanitizeVisibleText(protocolMed.dose_unit || v1.prescribing.dose_unit),
+      ...frequencyFromProtocolItem(protocolMed),
+      duration_value: protocolMed.duration_days && protocolMed.duration_days > 0 ? protocolMed.duration_days : v1.prescribing.duration_value,
+      duration_unit: protocolMed.duration_days && protocolMed.duration_days > 0 ? 'dias' : v1.prescribing.duration_unit,
+      duration_label: protocolMed.duration_days === -1 ? 'até reavaliação' : v1.prescribing.duration_label,
+      clinical_note: notes || v1.prescribing.clinical_note,
+    },
+    display: {
+      ...v1.display,
+      auto_print_line: true,
+    },
+  })
+
+  return next
+}
+
 export function mapPrescriptionItemToProtocolMedicationItem(
   item: PrescriptionItem,
   sortOrder: number
@@ -223,6 +385,28 @@ export function mapPrescriptionItemToProtocolMedicationItem(
   const frequencyParsed = parseFrequencyFields(item)
   const durationParsed = parseDurationFields(item)
   const notes = String(item.cautionsText || '').trim()
+
+  if (item.kind === 'compounded') {
+    const compoundedMetadata = ((item.compounded_snapshot?.metadata || {}) as Record<string, unknown>)
+    const regimenMetadata = ((item.compounded_regimen_snapshot?.metadata || {}) as Record<string, unknown>)
+    const payloadV1 = compoundedMetadata.payload_v1 || regimenMetadata.payload_v1
+    if (payloadV1 && typeof payloadV1 === 'object' && !Array.isArray(payloadV1)) {
+      const mapped = mapManipuladoV1ToProtocolMedication({
+        formula: normalizeManipuladoV1(sanitizeDeepText(payloadV1 as ManipuladoV1Formula)),
+        sortOrder,
+      })
+      return {
+        ...mapped,
+        metadata: {
+          ...(mapped.metadata || {}),
+          notes,
+          item_kind: item.kind,
+          presentation_metadata: item.presentation_metadata || null,
+          rx_item_snapshot: buildSnapshotFromPrescriptionItem(item),
+        },
+      }
+    }
+  }
 
   return {
     item_type: item.kind === 'compounded' ? 'compounded' : 'standard',
@@ -325,6 +509,8 @@ export function mapProtocolMedicationToPrescriptionItem(
   const metadata = (protocolMed.metadata || {}) as Record<string, unknown>
   const notes = typeof metadata.notes === 'string' ? metadata.notes.trim() : ''
   const storedSnapshot = getStoredSnapshot(protocolMed)
+  const payloadV1 = getProtocolPayloadV1(protocolMed, storedSnapshot)
+  const payloadV2 = getProtocolPayloadV2(protocolMed, storedSnapshot)
   const presentationParsed = parsePresentationText(protocolMed.presentation_text || protocolMed.manual_presentation_label)
   const fallbackConcentrationText =
     presentationParsed.concentration_text ||
@@ -374,6 +560,27 @@ export function mapProtocolMedicationToPrescriptionItem(
       kind: protocolMed.item_type === 'compounded' ? 'compounded' : 'standard',
       type: 'medication',
     }
+
+  if ((protocolMed.item_type === 'compounded' || baseItem.kind === 'compounded') && payloadV1) {
+    const mapped = mapManipuladoV1ToPrescriptionItem({
+      formula: applyProtocolMedicationOverridesToV1(payloadV1, protocolMed, notes),
+      patient: null,
+    })
+    return {
+      ...mapped,
+      id: `protocol-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
+      cautionsText: notes || mapped.cautionsText,
+      cautions: notes ? notes.split(/\r?\n/).filter(Boolean) : mapped.cautions,
+    }
+  }
+
+  if ((protocolMed.item_type === 'compounded' || baseItem.kind === 'compounded') && payloadV2) {
+    return mapCompoundedV2ToPrescriptionItem({
+      v2: applyProtocolMedicationOverridesToV2(payloadV2, protocolMed, notes),
+      patient: null,
+      regimenId: protocolMed.compounded_regimen_id || undefined,
+    })
+  }
 
   if (protocolMed.item_type === 'compounded' || baseItem.kind === 'compounded') {
     const compoundedBase = baseItem.kind === 'compounded'

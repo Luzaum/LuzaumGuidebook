@@ -34,10 +34,11 @@
     "node_modules",
     "dist",
     "temp",
-    "modules/hemogasometria",
+
     "src/modules/dados-veterinarios",
     "rx_print_page_tail.tsx",
     "scripts/**/*.py",
     "**/*.log"
   ]
 }
+

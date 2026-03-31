@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "routeLoaded": true,
+  "previewReactive": true,
+  "reviewReactive": true,
+  "paperTitleDark": true,
+  "pdfPath": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\downloads\\phase5b3-1774907005740-PACIENTE_E2E_TUTOR_E2E_MANIPULADOS_30-03-2026.pdf",
+  "beforeTitle": "Benazepril teste reativo (2,5 mg/biscoito)",
+  "afterTitle": "Benazepril teste reativo (2,5 mg/biscoito)",
+  "beforeRight": "Biscoito medicamentoso",
+  "afterRight": "Biscoito medicamentoso",
+  "shots": [
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase5b3-preview-before.png",
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase5b3-preview-after.png",
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase5b3-review-after.png"
+  ]
+}

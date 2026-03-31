@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { BookOpen, Menu, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../../../../utils/theme';
 
@@ -25,7 +25,7 @@ export function ConsultaVetHeader({ onMenuClick }: ConsultaVetHeaderProps) {
             <BookOpen className="h-5 w-5" />
           </span>
           <div>
-            <p className="text-sm font-semibold text-foreground">Consulta VET</p>
+            <p className="text-sm font-semibold text-foreground">Vetius ALFA</p>
             <p className="text-xs text-muted-foreground">
               Base editorial veterinária para consulta rápida
             </p>

@@ -28,12 +28,12 @@ const PHYSIOLOGIC_STATES: { id: PhysiologicState; label: string }[] = [
 
 const COMORBIDITIES: { id: Comorbidity; label: string }[] = [
   { id: 'cardiopatia', label: 'Cardiopatia' },
-  { id: 'doenca_renal', label: 'Doenca renal' },
+  { id: 'doenca_renal', label: 'Doença renal' },
   { id: 'tce', label: 'TCE' },
   { id: 'hipoalbuminemia', label: 'Hipoalbuminemia' },
   { id: 'anemia', label: 'Anemia / hemorragia' },
-  { id: 'sepse', label: 'Sepse / vasodilatacao' },
-  { id: 'anestesia', label: 'Anestesia / perioperatorio' },
+  { id: 'sepse', label: 'Sepse / vasodilatação' },
+  { id: 'anestesia', label: 'Anestesia / perioperatório' },
 ];
 
 export function PatientProfileForm({ patient, onChange }: Props) {
@@ -66,13 +66,13 @@ export function PatientProfileForm({ patient, onChange }: Props) {
             </div>
             <div>
               <CardTitle className="text-lg">1. Perfil do Paciente</CardTitle>
-              <CardDescription>Defina especie, peso, estado fisiologico e fatores que mudam a prescricao.</CardDescription>
+              <CardDescription>Defina espécie, peso, estado fisiológico e fatores que mudam a prescrição.</CardDescription>
             </div>
           </div>
         </CardHeader>
         <CardContent className="space-y-8 p-6">
           <div className="space-y-3">
-            <Label className="text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Especie</Label>
+            <Label className="text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Espécie</Label>
             <div className="grid grid-cols-2 gap-4">
               <button
                 type="button"
@@ -85,7 +85,7 @@ export function PatientProfileForm({ patient, onChange }: Props) {
                 )}
               >
                 <Dog className="h-6 w-6" />
-                <span className="text-lg font-medium">Cao</span>
+                <span className="text-lg font-medium">Cão</span>
               </button>
               <button
                 type="button"
@@ -131,7 +131,7 @@ export function PatientProfileForm({ patient, onChange }: Props) {
               <div className="flex items-center justify-between">
                 <div>
                   <Label className="text-base font-medium">Paciente obeso?</Label>
-                  <p className="text-sm text-slate-500">Permite usar peso ideal para os calculos de manutencao e reposicao.</p>
+                  <p className="text-sm text-slate-500">Permite usar peso ideal para os cálculos de manutenção e reposição.</p>
                 </div>
                 <Switch checked={patient.isObese} onCheckedChange={(checked) => onChange({ isObese: checked })} />
               </div>
@@ -145,7 +145,7 @@ export function PatientProfileForm({ patient, onChange }: Props) {
                     step="0.1"
                     value={patient.idealWeightKg || ''}
                     onChange={(event) => onChange({ idealWeightKg: parseFloat(event.target.value) || undefined })}
-                    placeholder="Peso usado para o calculo"
+                    placeholder="Peso usado para o cálculo"
                   />
                 </div>
               ) : null}
@@ -153,7 +153,7 @@ export function PatientProfileForm({ patient, onChange }: Props) {
           </div>
 
           <div className="space-y-4">
-            <Label className="text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Estado fisiologico</Label>
+            <Label className="text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Estado fisiológico</Label>
             <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
               {PHYSIOLOGIC_STATES.map((state) => {
                 const active = patient.ageGroup === state.id;
@@ -188,7 +188,7 @@ export function PatientProfileForm({ patient, onChange }: Props) {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <HeartPulse className="h-5 w-5 text-rose-500" />
-              <Label className="text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Comorbidades e condicoes clinicas</Label>
+              <Label className="text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Comorbidades e condições clínicas</Label>
             </div>
             <div className="grid gap-3 md:grid-cols-2">
               {COMORBIDITIES.map((comorbidity) => {

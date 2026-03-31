@@ -705,11 +705,36 @@ export function itemStatus(item: PrescriptionItem, state?: PrescriptionState): '
 }
 
 function buildItemTitle(item: PrescriptionItem): string {
+  const manualMode = getPresentationString({ metadata: item.presentationMetadata || null }, 'print_line_mode')
+  const manualLeft = getPresentationString({ metadata: item.presentationMetadata || null }, 'print_line_left')
+  if (manualMode === 'manual' && manualLeft) return manualLeft
+
   return buildMedicationDisplayName({
     name: item.name,
     commercialName: item.commercialName,
-    concentrationText: item.presentationMetadata?.compounded ? '' : item.concentration,
+    concentrationText: item.concentration,
   })
+}
+
+function buildItemDispensingLabel(item: PrescriptionItem): string {
+  const meta = { metadata: item.presentationMetadata || null }
+  const manualMode = getPresentationString(meta, 'print_line_mode')
+  const manualRight = getPresentationString(meta, 'print_line_right')
+  if (manualMode === 'manual' && manualRight) return manualRight
+
+  const configured = getPresentationString(meta, 'dispensing_label') || getPresentationString(meta, 'package_label')
+  if (configured) return configured
+
+  if (item.presentationMetadata?.compounded) {
+    return item.pharmaceuticalForm || item.presentation || 'Manipulado'
+  }
+
+  if (item.presentation) {
+    const leftMost = item.presentation.split(/[—•]/).map((part) => part.trim()).find(Boolean)
+    if (leftMost) return leftMost
+  }
+
+  return item.pharmaceuticalForm || 'Medicamento'
 }
 
 export function splitPrescriptionByControl(state: PrescriptionState): {
@@ -767,21 +792,13 @@ export function renderRxToPrintDoc(
         const qty = calculateMedicationQuantity(item, state)
         const instruction = resolveInstruction(item, state)
         const isCompounded = !!item.presentationMetadata?.compounded
-        const subtitleParts = [item.presentation]
-
-        // Mostrar resumo no padrão da receita: "Por dose" ou "Total estimado"
-        if (qty.label && qty.label !== 'Quantidade não calculada') {
-          subtitleParts.push(qty.label)
-        } else if (toNumber(item.doseValue) !== null) {
-          const missingWeight = (item.doseUnit || '').includes('/kg') && !toNumber(state.patient.weightKg)
-          subtitleParts.push(missingWeight ? 'Peso não informado para cálculo' : 'Sem concentração para cálculo')
-        }
+        const dispensingLabel = buildItemDispensingLabel(item)
 
         return {
           id: item.id,
           index: idx + 1,
           title: buildItemTitle(item) || 'Medicamento',
-          subtitle: subtitleParts.filter(Boolean).join(' — '),
+          subtitle: dispensingLabel,
           instruction: instruction || 'Instrução não informada.',
           titleBold: !!item.titleBold,
           titleUnderline: !!item.titleUnderline,

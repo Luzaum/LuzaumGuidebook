@@ -1,4 +1,4 @@
-﻿// Ã¢Å“â€¦ Protocolos 3.0 Ã¢â‚¬â€ RefatoraÃƒÂ§ÃƒÂ£o Completa (100% Supabase)
+// Ã¢Å“â€¦ Protocolos 3.0 Ã¢â‚¬â€ RefatoraÃƒÂ§ÃƒÂ£o Completa (100% Supabase)
 // Ã°Å¸Å¡Â« ZERO localStorage, ZERO rxDb, ZERO mistura de fontes
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react'
@@ -46,18 +46,22 @@ import {
   mapProtocolRecommendationsToString,
 } from './protocolMapper'
 import {
+  createEmptyManipuladoV1,
+  normalizeManipuladoV1,
+  type ManipuladoV1Formula,
+} from './manipuladosV1'
+import { mapManipuladoV1ToProtocolMedication } from './manipuladosV1Mapper'
+import { getManipuladoV1CatalogSubtitle } from './manipuladosV1Render'
+import {
   searchMedications,
   getMedicationPresentations,
   type MedicationPresentationRecord,
 } from '../../src/lib/clinicRecords'
-import {
-  getCompoundedMedicationBundle,
-  listCompoundedMedications,
-  type CompoundedMedicationBundle,
-} from '../../src/lib/compoundedRecords'
+import { listManipuladosV1 } from '../../src/lib/manipuladosV1Records'
 import { useLocalDraft } from '../../hooks/useLocalDraft'
 import { AddMedicationModal2 } from './components/AddMedicationModal2'
-import { buildCompoundedPrescriptionItem } from './compoundedItemBuilder'
+import { ManipuladosV1Editor } from './components/ManipuladosV1Editor'
+import { sanitizeDeepText, sanitizeVisibleText } from './textSanitizer'
 
 // ==================== TYPES ====================
 
@@ -226,6 +230,85 @@ function isCompoundedProtocolMedication(item: ProtocolMedicationItem): boolean {
   return item.item_type === 'compounded' || !!item.compounded_medication_id
 }
 
+function getProtocolCompoundedPayloadV1(item: ProtocolMedicationItem): ManipuladoV1Formula | null {
+  const metadata = (item.metadata || {}) as Record<string, unknown>
+  const directPayload = metadata.payload_v1
+  if (directPayload && typeof directPayload === 'object' && !Array.isArray(directPayload)) {
+    return normalizeManipuladoV1(sanitizeDeepText(directPayload as ManipuladoV1Formula))
+  }
+
+  const storedSnapshot = metadata.rx_item_snapshot
+  if (storedSnapshot && typeof storedSnapshot === 'object' && !Array.isArray(storedSnapshot)) {
+    const compoundedSnapshot = (storedSnapshot as Record<string, unknown>).compounded_snapshot
+    if (compoundedSnapshot && typeof compoundedSnapshot === 'object' && !Array.isArray(compoundedSnapshot)) {
+      const snapshotMetadata = (compoundedSnapshot as Record<string, unknown>).metadata
+      if (snapshotMetadata && typeof snapshotMetadata === 'object' && !Array.isArray(snapshotMetadata)) {
+        const nestedPayload = (snapshotMetadata as Record<string, unknown>).payload_v1
+        if (nestedPayload && typeof nestedPayload === 'object' && !Array.isArray(nestedPayload)) {
+          return normalizeManipuladoV1(sanitizeDeepText(nestedPayload as ManipuladoV1Formula))
+        }
+      }
+    }
+  }
+
+  return null
+}
+
+function protocolMedicationToManipuladoV1Draft(item: ProtocolMedicationItem, clinicId: string): ManipuladoV1Formula {
+  const base = createEmptyManipuladoV1(clinicId)
+  const doseValue = item.dose_value ?? null
+  const route = sanitizeVisibleText(item.route || '') || 'ORAL'
+  const frequencyLabel =
+    item.frequency_type === 'interval_hours' && item.interval_hours
+      ? `a cada ${item.interval_hours} horas`
+      : item.frequency_type === 'once_daily'
+        ? '1x ao dia'
+        : item.frequency_type === 'times_per_day' && item.times_per_day
+          ? `${item.times_per_day}x ao dia`
+          : 'a cada 12 horas'
+
+  return normalizeManipuladoV1({
+    ...base,
+    identity: {
+      ...base.identity,
+      id: String(item.compounded_medication_id || item.id || base.identity.id),
+      clinic_id: clinicId,
+      slug: sanitizeVisibleText(item.medication_name || item.manual_medication_name || ''),
+      name: sanitizeVisibleText(item.medication_name || item.manual_medication_name || 'Manipulado'),
+      pharmaceutical_form: sanitizeVisibleText(item.manual_presentation_label || item.presentation_text || 'Manipulado'),
+      primary_route: route,
+      sale_classification: item.is_controlled ? 'controlled' : 'free',
+    },
+    prescribing: {
+      ...base.prescribing,
+      posology_mode: typeof item.dose_unit === 'string' && item.dose_unit.includes('/kg') ? 'mg_per_kg_dose' : 'fixed_per_animal',
+      dose_min: doseValue,
+      dose_max: doseValue,
+      dose_unit: sanitizeVisibleText(item.dose_unit || 'mg').replace('/kg', ''),
+      frequency_mode:
+        item.frequency_type === 'interval_hours' && item.interval_hours === 24
+          ? 'q24h'
+          : item.frequency_type === 'interval_hours' && item.interval_hours === 12
+            ? 'q12h'
+            : item.frequency_type === 'interval_hours' && item.interval_hours === 8
+              ? 'q8h'
+              : item.frequency_type === 'interval_hours' && item.interval_hours === 6
+                ? 'q6h'
+                : 'custom',
+      frequency_label: frequencyLabel,
+      duration_value: item.duration_days && item.duration_days > 0 ? item.duration_days : null,
+      duration_unit: 'dias',
+      duration_label: item.duration_days === -1 ? 'até reavaliação' : '',
+      clinical_note: sanitizeVisibleText(((item.metadata || {}) as Record<string, unknown>).notes || ''),
+    },
+    pharmacy: {
+      ...base.pharmacy,
+      qsp_text: sanitizeVisibleText(item.presentation_text || item.manual_presentation_label || ''),
+      total_quantity: sanitizeVisibleText(item.presentation_text || item.manual_presentation_label || ''),
+    },
+  })
+}
+
 function buildExamKeyFromLabel(label: string): string {
   return slugifyProtocolName(label).replace(/-/g, '_')
 }
@@ -363,13 +446,17 @@ export default function Protocolos3Page() {
   const [medicationSearchOpen, setMedicationSearchOpen] = useState(false)
   const [medicationSearchQuery, setMedicationSearchQuery] = useState('')
   const [medications, setMedications] = useState<MedicationSearchResult[]>([])
-  const [compoundedMedications, setCompoundedMedications] = useState<CompoundedMedicationBundle[]>([])
+  const [compoundedMedications, setCompoundedMedications] = useState<ManipuladoV1Formula[]>([])
   const [isSearchingMedications, setIsSearchingMedications] = useState(false)
   const [presentationPickerMedication, setPresentationPickerMedication] = useState<MedicationSearchResult | null>(null)
   const [presentationOptions, setPresentationOptions] = useState<MedicationPresentationRecord[]>([])
   const [isLoadingPresentationOptions, setIsLoadingPresentationOptions] = useState(false)
-  const [compoundedPickerBundle, setCompoundedPickerBundle] = useState<CompoundedMedicationBundle | null>(null)
-  const [compoundedPickerRegimenId, setCompoundedPickerRegimenId] = useState('')
+  const [compoundedPickerFormula, setCompoundedPickerFormula] = useState<ManipuladoV1Formula | null>(null)
+  const [protocolCompoundedEditorOpen, setProtocolCompoundedEditorOpen] = useState(false)
+  const [protocolCompoundedEditorIndex, setProtocolCompoundedEditorIndex] = useState<number | null>(null)
+  const [protocolCompoundedEditorValue, setProtocolCompoundedEditorValue] = useState<ManipuladoV1Formula | null>(null)
+  const [protocolCompoundedEditorLegacyNotice, setProtocolCompoundedEditorLegacyNotice] = useState('')
+  const [isLoadingProtocolCompoundedEditor, setIsLoadingProtocolCompoundedEditor] = useState(false)
   const [protocolExamDraft, setProtocolExamDraft] = useState('')
   const [protocolCustomExamText, setProtocolCustomExamText] = useState('')
   const [publishGlobalOpen, setPublishGlobalOpen] = useState(false)
@@ -458,11 +545,22 @@ export default function Protocolos3Page() {
         setIsSearchingMedications(true)
         const [standardResults, compoundedResults] = await Promise.all([
           searchMedications(clinicId, q || '', q ? 50 : 20),
-          (async () => {
-            const rows = await listCompoundedMedications(clinicId, { search: q || '' })
-            const bundles = await Promise.all(rows.map(async (row) => await getCompoundedMedicationBundle(clinicId, row.id)))
-            return bundles.filter(Boolean) as CompoundedMedicationBundle[]
-          })(),
+          listManipuladosV1(clinicId).then((rows) =>
+            rows
+              .map((row) => normalizeManipuladoV1(row.payload as Partial<ManipuladoV1Formula>))
+              .filter((formula) => {
+              const haystack = [
+                formula.identity.name,
+                formula.identity.indication_summary,
+                formula.identity.pharmaceutical_form,
+                ...formula.ingredients.map((ingredient) => ingredient.name),
+              ]
+                .filter(Boolean)
+                .join(' ')
+                .toLowerCase()
+              return !q || haystack.includes(q.toLowerCase())
+              })
+          ),
         ])
         console.log('[Protocolos3] Medicamentos encontrados', standardResults.length)
         setMedications(standardResults)
@@ -540,8 +638,7 @@ export default function Protocolos3Page() {
   const closeMedicationSearchModal = useCallback(() => {
     setPresentationPickerMedication(null)
     setPresentationOptions([])
-    setCompoundedPickerBundle(null)
-    setCompoundedPickerRegimenId('')
+    setCompoundedPickerFormula(null)
     setMedicationSearchOpen(false)
     setMedicationSearchQuery('')
     setCompoundedMedications([])
@@ -563,6 +660,73 @@ export default function Protocolos3Page() {
       medications: prev.medications.map((item, itemIndex) => (itemIndex === index ? updater(item) : item)),
     }))
   }, [updateEditingProtocol])
+
+  const getProtocolCompoundedPayloadV1Memo = useCallback((item: ProtocolMedicationItem): ManipuladoV1Formula | null => {
+    return getProtocolCompoundedPayloadV1(item)
+  }, [])
+
+  const closeProtocolCompoundedEditor = useCallback(() => {
+    setProtocolCompoundedEditorOpen(false)
+    setProtocolCompoundedEditorIndex(null)
+    setProtocolCompoundedEditorValue(null)
+    setProtocolCompoundedEditorLegacyNotice('')
+    setIsLoadingProtocolCompoundedEditor(false)
+  }, [])
+
+  const handleOpenProtocolCompoundedEditor = useCallback(async (index: number) => {
+    if (!editingProtocol?.medications[index]) return
+    const item = editingProtocol.medications[index]
+    if (!isCompoundedProtocolMedication(item)) return
+
+    setIsLoadingProtocolCompoundedEditor(true)
+    try {
+      const directV1 = getProtocolCompoundedPayloadV1Memo(item)
+      if (directV1) {
+        setProtocolCompoundedEditorValue(directV1)
+        setProtocolCompoundedEditorLegacyNotice('')
+        setProtocolCompoundedEditorIndex(index)
+        setProtocolCompoundedEditorOpen(true)
+        return
+      }
+      if (!clinicId) {
+        throw new Error('Este item manipulado não possui contexto suficiente para conversão.')
+      }
+
+      const converted = protocolMedicationToManipuladoV1Draft(item, clinicId)
+      setProtocolCompoundedEditorValue(converted)
+      setProtocolCompoundedEditorLegacyNotice('Item legado do protocolo convertido para edição em Manipulados V1.0. Ao salvar, payload_v1 será persistido.')
+      setProtocolCompoundedEditorIndex(index)
+      setProtocolCompoundedEditorOpen(true)
+    } catch (err) {
+      console.error('[Protocolos3] Erro ao abrir editor V1 do manipulado', err)
+      alert(err instanceof Error ? err.message : 'Falha ao abrir o editor V1 do manipulado.')
+    } finally {
+      setIsLoadingProtocolCompoundedEditor(false)
+    }
+  }, [clinicId, editingProtocol?.medications, getProtocolCompoundedPayloadV1Memo])
+
+  const handleSaveProtocolCompoundedEditor = useCallback(() => {
+    if (protocolCompoundedEditorIndex == null || !protocolCompoundedEditorValue) return
+
+    updateEditingProtocol((prev) => {
+      const current = prev.medications[protocolCompoundedEditorIndex]
+      if (!current) return prev
+      const mapped = mapManipuladoV1ToProtocolMedication({
+        formula: protocolCompoundedEditorValue,
+        sortOrder: protocolCompoundedEditorIndex,
+      })
+      return {
+        ...prev,
+        medications: prev.medications.map((item, idx) => idx !== protocolCompoundedEditorIndex ? item : {
+          ...mapped,
+          id: current.id,
+          sort_order: idx,
+        }).map((item, idx) => ({ ...item, sort_order: idx })),
+      }
+    })
+
+    closeProtocolCompoundedEditor()
+  }, [closeProtocolCompoundedEditor, protocolCompoundedEditorIndex, protocolCompoundedEditorValue, updateEditingProtocol])
 
   const updateRecommendationAt = useCallback((index: number, text: string) => {
     updateEditingProtocol((prev) => ({
@@ -1092,11 +1256,16 @@ export default function Protocolos3Page() {
   )
 
   const handleAddMedicationFromProtocolModal = useCallback((item: any) => {
+    const payloadV1 = item?.kind === 'compounded'
+      ? ((item?.compounded_snapshot?.metadata || {}) as Record<string, unknown>).payload_v1
+      : null
     updateEditingProtocol((prev) => ({
       ...prev,
       medications: [
         ...prev.medications,
-        mapPrescriptionItemToProtocolMedicationItem(item, prev.medications.length),
+        item?.kind === 'compounded' && payloadV1 && typeof payloadV1 === 'object' && !Array.isArray(payloadV1)
+          ? mapManipuladoV1ToProtocolMedication({ formula: normalizeManipuladoV1(payloadV1 as ManipuladoV1Formula), sortOrder: prev.medications.length })
+          : mapPrescriptionItemToProtocolMedicationItem(item, prev.medications.length),
       ],
     }))
     setProtocolMedicationManualMode(false)
@@ -1204,37 +1373,26 @@ export default function Protocolos3Page() {
     closeMedicationSearchModal()
   }, [closeMedicationSearchModal, presentationPickerMedication, updateEditingProtocol])
 
-  const handleSelectCompoundedMedication = useCallback((bundle: CompoundedMedicationBundle) => {
-    setCompoundedPickerBundle(bundle)
-    setCompoundedPickerRegimenId(bundle.regimens[0]?.id || '')
+  const handleSelectCompoundedMedication = useCallback((formula: ManipuladoV1Formula) => {
+    setCompoundedPickerFormula(formula)
   }, [])
 
   const handleConfirmCompoundedMedication = useCallback(() => {
-    if (!compoundedPickerBundle) return
-    const regimen =
-      compoundedPickerBundle.regimens.find((entry) => entry.id === compoundedPickerRegimenId) ||
-      compoundedPickerBundle.regimens[0]
-    if (!regimen) {
-      alert('Este manipulado não possui regime recomendado cadastrado.')
-      return
-    }
-
-    const item = buildCompoundedPrescriptionItem({
-      bundle: compoundedPickerBundle,
-      regimen,
-      patient: null,
-    })
+    if (!compoundedPickerFormula) return
 
     updateEditingProtocol((prev) => ({
       ...prev,
       medications: [
         ...prev.medications,
-        mapPrescriptionItemToProtocolMedicationItem(item, prev.medications.length),
+        mapManipuladoV1ToProtocolMedication({
+          formula: compoundedPickerFormula,
+          sortOrder: prev.medications.length,
+        }),
       ],
     }))
 
     closeMedicationSearchModal()
-  }, [closeMedicationSearchModal, compoundedPickerBundle, compoundedPickerRegimenId, updateEditingProtocol])
+  }, [closeMedicationSearchModal, compoundedPickerFormula, updateEditingProtocol])
 
   const handleAddProtocolTag = useCallback(() => {
     const normalizedTag = protocolTagDraft.trim()
@@ -1616,6 +1774,48 @@ export default function Protocolos3Page() {
                         </button>
                       </div>
 
+                      {isCompoundedProtocolMedication(med) ? (
+                        <div className="mt-4 space-y-3">
+                          <div className="grid grid-cols-1 gap-3 xl:grid-cols-[minmax(0,1fr)_auto]">
+                            <div className="rounded-2xl border border-[#39ff14]/15 bg-[#112114] px-4 py-4 text-sm text-slate-200">
+                              <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#98f98e]">
+                                Fluxo V1.0 do manipulado no protocolo
+                              </p>
+                              <div className="mt-2 flex flex-wrap gap-2 text-[10px] font-black uppercase tracking-widest">
+                                <span className="rounded-full border border-slate-700 px-2 py-1 text-slate-300">
+                                  {getProtocolCompoundedPayloadV1(med) ? 'Payload V1 ativo' : 'Legado a converter ao editar'}
+                                </span>
+                                {med.is_controlled ? (
+                                  <span className="rounded-full border border-red-500/35 bg-red-500/10 px-2 py-1 text-red-300">Controlado</span>
+                                ) : (
+                                  <span className="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-2 py-1 text-cyan-200">Livre</span>
+                                )}
+                              </div>
+                              <p className="mt-3 leading-relaxed text-slate-300">
+                                {sanitizeVisibleText(med.presentation_text || med.manual_presentation_label || 'Apresentação do manipulado não definida.')}
+                              </p>
+                              <p className="mt-2 text-xs text-slate-400">
+                                {sanitizeVisibleText(med.route || 'Via não definida')} • {sanitizeVisibleText(getMedicationFrequencyLabel(med))} • {med.duration_days === -1 ? 'Uso contínuo até reavaliação do paciente' : med.duration_days ? `${med.duration_days} dia(s)` : 'Duração não definida'}
+                              </p>
+                              {getMedicationObservation(med) ? (
+                                <p className="mt-2 text-xs leading-relaxed text-slate-500">
+                                  {sanitizeVisibleText(getMedicationObservation(med))}
+                                </p>
+                              ) : null}
+                            </div>
+                            <div className="flex items-start xl:justify-end">
+                              <RxvButton
+                                variant="primary"
+                                onClick={() => void handleOpenProtocolCompoundedEditor(idx)}
+                                loading={isLoadingProtocolCompoundedEditor && protocolCompoundedEditorIndex === idx}
+                              >
+                                Editar no V1.0
+                              </RxvButton>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <>
                       <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-6">
                         <RxvField label="Dose">
                           <RxvInput
@@ -1708,6 +1908,8 @@ export default function Protocolos3Page() {
                         <p className="font-semibold text-slate-200">Resumo</p>
                         <p>{med.route || 'Via não definida'} • {getMedicationFrequencyLabel(med)} • {med.duration_days === -1 ? 'Uso contínuo até reavaliação do paciente' : med.duration_days ? `${med.duration_days} dia(s)` : 'Duração não definida'}</p>
                       </div>
+                        </>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -2264,6 +2466,41 @@ export default function Protocolos3Page() {
           confirmLabel="Adicionar ao protocolo"
           hideStartControls={true}
         />
+      )}
+      {protocolCompoundedEditorOpen && editingProtocol && (
+        <RxvModalShell zIndexClass="z-[115]" overlayClassName="bg-black/95 backdrop-blur-sm">
+          <div className="mx-auto flex max-h-[92vh] w-full max-w-[1400px] flex-col overflow-hidden rounded-3xl border border-[#39ff14]/20 bg-[#071007] shadow-[0_0_60px_rgba(57,255,20,0.15)]">
+            <div className="border-b border-slate-800 bg-black/50 px-6 py-4">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <h2 className="text-lg font-black uppercase italic tracking-tight text-white">
+                    Editar manipulado no protocolo
+                  </h2>
+                  <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                    Fluxo V1.0 rico, sem cair no editor limitado do protocolo.
+                  </p>
+                </div>
+                <RxvButton variant="secondary" onClick={closeProtocolCompoundedEditor}>
+                  Fechar
+                </RxvButton>
+              </div>
+            </div>
+            <div className="flex-1 overflow-y-auto p-6">
+              {protocolCompoundedEditorValue ? (
+                <ManipuladosV1Editor
+                  value={protocolCompoundedEditorValue}
+                  onChange={setProtocolCompoundedEditorValue}
+                  onSave={handleSaveProtocolCompoundedEditor}
+                  saving={false}
+                />
+              ) : (
+                <RxvCard className="p-6 text-sm text-slate-400">
+                  Carregando manipulado no fluxo V1.0...
+                </RxvCard>
+              )}
+            </div>
+          </div>
+        </RxvModalShell>
       )}
 
       {false && modalOpen && editingProtocol && (
@@ -2925,22 +3162,22 @@ export default function Protocolos3Page() {
                 <h2 className="text-lg font-black uppercase italic tracking-tight text-white">
                   {presentationPickerMedication
                     ? 'Escolher apresentação'
-                    : compoundedPickerBundle
-                      ? 'Escolher regime do manipulado'
+                    : compoundedPickerFormula
+                      ? 'Adicionar manipulado ao protocolo'
                       : 'Adicionar medicamento ao protocolo'}
                 </h2>
                 {presentationPickerMedication ? (
                   <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-500">
                     {presentationPickerMedication.name}
                   </p>
-                ) : compoundedPickerBundle ? (
+                ) : compoundedPickerFormula ? (
                   <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                    {compoundedPickerBundle.medication.name}
+                    {compoundedPickerFormula.identity.name}
                   </p>
                 ) : null}
               </div>
               <div className="flex items-center gap-3">
-                {!presentationPickerMedication && !compoundedPickerBundle ? (
+                {!presentationPickerMedication && !compoundedPickerFormula ? (
                   <RxvButton
                     variant="secondary"
                     onClick={() => {
@@ -2962,7 +3199,7 @@ export default function Protocolos3Page() {
               </div>
             </div>
 
-            {!presentationPickerMedication && !compoundedPickerBundle && (
+            {!presentationPickerMedication && !compoundedPickerFormula && (
               <div className="bg-black p-6">
                 <div className="relative">
                   <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">search</span>
@@ -2975,7 +3212,7 @@ export default function Protocolos3Page() {
                   />
                 </div>
                 <p className="mt-3 text-[11px] font-semibold uppercase tracking-widest text-slate-500">
-                  Resultado unificado: catálogo padrão e catálogo de manipulados da clínica
+                  Resultado unificado: catálogo padrão e catálogo de manipulados V1.0 da clínica
                 </p>
               </div>
             )}
@@ -2992,7 +3229,7 @@ export default function Protocolos3Page() {
                       onClick={() => {
                         setPresentationPickerMedication(null)
                         setPresentationOptions([])
-                        setCompoundedPickerBundle(null)
+                        setCompoundedPickerFormula(null)
                       }}
                     >
                       Voltar
@@ -3032,119 +3269,58 @@ export default function Protocolos3Page() {
                         className="w-full rounded-2xl border border-slate-800 bg-slate-900/50 p-4 text-left transition-all group hover:border-[#39ff14]/40 hover:bg-slate-900"
                       >
                         <p className="text-sm font-black uppercase italic text-white transition-colors group-hover:text-[#39ff14]">
-                          {buildPresentationLabel(presentation) || 'Apresentação'}
+                          {buildPresentationLabel(presentation) || "Apresentação"}
                         </p>
-                        <div className="mt-2 flex flex-wrap items-center gap-2">
-                          {presentation.source && (
-                            <span className="rounded border border-cyan-500/20 bg-cyan-500/10 px-2 py-0.5 text-[8px] font-black uppercase text-cyan-300">
-                              {presentation.source === 'global' ? 'GLOBAL' : 'CLÍNICA'}
-                            </span>
-                          )}
-                          {presentation.presentation_unit && (
-                            <span className="text-[9px] font-black uppercase tracking-widest text-slate-500">
-                              Unidade: {presentation.presentation_unit}
-                            </span>
-                          )}
-                        </div>
                       </button>
                     ))
                   )}
                 </>
-              ) : compoundedPickerBundle ? (
+              ) : compoundedPickerFormula ? (
                 <>
                   <div className="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/40 px-4 py-3">
                     <div>
                       <p className="text-xs font-semibold text-slate-300">
-                        Escolha o regime recomendado que deve entrar no protocolo.
+                        Revise a fórmula V1.0 que deve entrar no protocolo.
                       </p>
-                      <div className="mt-2 flex flex-wrap gap-2">
-                        <span className="rounded border border-[#39ff14]/30 bg-[#39ff14]/10 px-2 py-0.5 text-[8px] font-black uppercase tracking-widest text-[#98f98e]">
-                          Manipulado
-                        </span>
-                        {compoundedPickerBundle.medication.is_controlled ? (
-                          <span className="rounded border border-red-500/30 bg-red-500/10 px-2 py-0.5 text-[8px] font-black uppercase tracking-widest text-red-300">
-                            Controlado
-                          </span>
-                        ) : null}
-                      </div>
                     </div>
-                    <RxvButton
-                      variant="secondary"
-                      onClick={() => {
-                        setCompoundedPickerBundle(null)
-                        setCompoundedPickerRegimenId('')
-                      }}
-                    >
+                    <RxvButton variant="secondary" onClick={() => setCompoundedPickerFormula(null)}>
                       Voltar
                     </RxvButton>
                   </div>
-
                   <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
                     <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-4">
-                      <p className="text-sm font-black uppercase italic text-white">
-                        {compoundedPickerBundle.medication.name}
-                      </p>
-                      <p className="mt-1 text-xs text-slate-400">
-                        {[compoundedPickerBundle.medication.pharmaceutical_form, compoundedPickerBundle.medication.default_qsp_text || compoundedPickerBundle.medication.default_quantity_text].filter(Boolean).join(' • ')}
-                      </p>
-
-                      <div className="mt-4">
-                        <RxvField label="Regime recomendado">
-                          <RxvSelect
-                            value={compoundedPickerRegimenId}
-                            onChange={(e) => setCompoundedPickerRegimenId(e.target.value)}
-                            options={compoundedPickerBundle.regimens.map((entry) => ({
-                              value: entry.id,
-                              label: entry.regimen_name || `${entry.species} • ${entry.route || 'sem via'}`,
-                            }))}
-                          />
-                        </RxvField>
-                      </div>
-
+                      <p className="text-sm font-black uppercase italic text-white">{compoundedPickerFormula.identity.name}</p>
+                      <p className="mt-1 text-xs text-slate-400">{getManipuladoV1CatalogSubtitle(compoundedPickerFormula)}</p>
                       <div className="mt-4 grid gap-3 md:grid-cols-2">
-                        {compoundedPickerBundle.regimens
-                          .filter((entry) => entry.id === compoundedPickerRegimenId)
-                          .map((entry) => (
-                            <React.Fragment key={entry.id}>
-                              <div className="rounded-2xl border border-slate-800 bg-black/30 p-4 text-sm text-slate-300">
-                                <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Posologia</p>
-                                <div className="mt-3 space-y-2">
-                                  <p>Modo: {entry.dosing_mode === 'calculated' ? 'Calculado por peso' : 'Fixo por paciente'}</p>
-                                  <p>Via: {entry.route || compoundedPickerBundle.medication.default_route || 'Não definida'}</p>
-                                  <p>Frequência: {entry.frequency_label || 'Não informada'}</p>
-                                  <p>Duração: {entry.duration_value ? `${entry.duration_value} ${entry.duration_unit || 'dias'}` : entry.duration_mode || 'Livre'}</p>
-                                </div>
-                              </div>
-                              <div className="rounded-2xl border border-slate-800 bg-black/30 p-4 text-sm text-slate-300">
-                                <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Formulação</p>
-                                <div className="mt-3 space-y-2">
-                                  <p>Concentração: {entry.concentration_value ? `${entry.concentration_value} ${entry.concentration_unit || ''}/${entry.concentration_per_value || 1} ${entry.concentration_per_unit || 'mL'}`.replace('/1 ', '/') : 'Não informada'}</p>
-                                  <p>Q.S.P.: {entry.default_prepared_quantity_text || compoundedPickerBundle.medication.default_qsp_text || compoundedPickerBundle.medication.default_quantity_text || 'Livre'}</p>
-                                  <p>Observações: {entry.notes || compoundedPickerBundle.medication.notes || 'Sem observações'}</p>
-                                </div>
-                              </div>
-                            </React.Fragment>
-                          ))}
+                        <div className="rounded-2xl border border-slate-800 bg-black/30 p-4 text-sm text-slate-300">
+                          <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Posologia</p>
+                          <div className="mt-3 space-y-2">
+                            <p>Modo: {sanitizeVisibleText(compoundedPickerFormula.prescribing.posology_mode)}</p>
+                            <p>Via: {compoundedPickerFormula.identity.primary_route || "Não definida"}</p>
+                            <p>Frequência: {compoundedPickerFormula.prescribing.frequency_label || "Não informada"}</p>
+                            <p>Duração: {compoundedPickerFormula.prescribing.duration_label || (compoundedPickerFormula.prescribing.duration_value ? `${compoundedPickerFormula.prescribing.duration_value} ${compoundedPickerFormula.prescribing.duration_unit}` : "Livre")}</p>
+                          </div>
+                        </div>
+                        <div className="rounded-2xl border border-slate-800 bg-black/30 p-4 text-sm text-slate-300">
+                          <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Formulação</p>
+                          <div className="mt-3 space-y-2">
+                            <p>Forma: {compoundedPickerFormula.identity.pharmaceutical_form}</p>
+                            <p>Q.S.P.: {compoundedPickerFormula.pharmacy.qsp_text || compoundedPickerFormula.pharmacy.total_quantity || "Livre"}</p>
+                            <p>Observações: {compoundedPickerFormula.identity.description || "Sem observações"}</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
-
                     <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-4">
                       <p className="text-xs font-black uppercase tracking-widest text-slate-500">Ingredientes</p>
                       <div className="mt-3 flex flex-wrap gap-2">
-                        {compoundedPickerBundle.ingredients.map((entry) => (
-                          <span
-                            key={entry.id}
-                            className="rounded-full border border-[#39ff14]/25 bg-[#39ff14]/8 px-3 py-1 text-xs text-[#98f98e]"
-                          >
-                            {entry.ingredient_name}
+                        {compoundedPickerFormula.ingredients.map((entry) => (
+                          <span key={entry.id} className="rounded-full border border-[#39ff14]/25 bg-[#39ff14]/8 px-3 py-1 text-xs text-[#98f98e]">
+                            {entry.name}
                           </span>
                         ))}
                       </div>
-                      <RxvButton
-                        variant="primary"
-                        onClick={handleConfirmCompoundedMedication}
-                        className="mt-5 w-full justify-center"
-                      >
+                      <RxvButton variant="primary" onClick={handleConfirmCompoundedMedication} className="mt-5 w-full justify-center">
                         Adicionar manipulado
                       </RxvButton>
                     </div>
@@ -3158,7 +3334,7 @@ export default function Protocolos3Page() {
               ) : medications.length === 0 && compoundedMedications.length === 0 ? (
                 <div className="py-10 text-center">
                   <p className="text-xs font-bold uppercase tracking-widest text-slate-600">
-                    {medicationSearchQuery.trim() ? 'Nenhum resultado encontrado' : 'Inicie a busca digitando acima'}
+                    {medicationSearchQuery.trim() ? "Nenhum resultado encontrado" : "Inicie a busca digitando acima"}
                   </p>
                 </div>
               ) : (
@@ -3176,73 +3352,37 @@ export default function Protocolos3Page() {
                       </div>
                     ) : (
                       medications.map((med) => (
-                        <button
-                          key={med.id}
-                          type="button"
-                          onClick={() => handleAddMedicationToDraft(med)}
-                          className="group flex w-full items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/50 p-4 text-left transition-all hover:border-[#39ff14]/40 hover:bg-slate-900"
-                        >
+                        <button key={med.id} type="button" onClick={() => handleAddMedicationToDraft(med)} className="group flex w-full items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/50 p-4 text-left transition-all hover:border-[#39ff14]/40 hover:bg-slate-900">
                           <div>
-                            <p className="text-sm font-black uppercase italic text-white transition-colors group-hover:text-[#39ff14]">
-                              {med.name}
-                            </p>
-                            <div className="mt-1 flex flex-wrap items-center gap-2">
-                              <span className="rounded border border-cyan-500/25 bg-cyan-500/10 px-2 py-0.5 text-[8px] font-black uppercase tracking-widest text-cyan-300">
-                                Padrão
-                              </span>
-                              {med.default_route ? (
-                                <span className="text-[9px] font-black uppercase tracking-widest text-slate-500">
-                                  Via: {med.default_route}
-                                </span>
-                              ) : null}
-                              {med.is_controlled ? (
-                                <span className="rounded border border-red-500/20 bg-red-500/10 px-2 py-0.5 text-[8px] font-black uppercase text-red-500">
-                                  Controlado
-                                </span>
-                              ) : null}
-                            </div>
+                            <p className="text-sm font-black uppercase italic text-white transition-colors group-hover:text-[#39ff14]">{med.name}</p>
                           </div>
                           <span className="material-symbols-outlined text-slate-700 transition-colors group-hover:text-[#39ff14]">add_circle</span>
                         </button>
                       ))
                     )}
                   </div>
-
                   <div className="space-y-3">
                     <div className="flex items-center gap-2">
                       <span className="rounded border border-[#39ff14]/30 bg-[#39ff14]/10 px-2 py-0.5 text-[9px] font-black uppercase tracking-widest text-[#98f98e]">
                         Manipulado
                       </span>
-                      <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Catálogo magistral</p>
+                      <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Cat?logo V1.0</p>
                     </div>
                     {compoundedMedications.length === 0 ? (
                       <div className="rounded-2xl border border-dashed border-slate-800 bg-slate-900/30 px-4 py-6 text-sm text-slate-500">
                         Nenhum manipulado encontrado.
                       </div>
                     ) : (
-                      compoundedMedications.map((bundle) => (
-                        <button
-                          key={bundle.medication.id}
-                          type="button"
-                          onClick={() => handleSelectCompoundedMedication(bundle)}
-                          className="group flex w-full items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/50 p-4 text-left transition-all hover:border-[#39ff14]/40 hover:bg-slate-900"
-                        >
+                      compoundedMedications.map((formula) => (
+                        <button key={formula.identity.id} type="button" onClick={() => handleSelectCompoundedMedication(formula)} className="group flex w-full items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/50 p-4 text-left transition-all hover:border-[#39ff14]/40 hover:bg-slate-900">
                           <div>
-                            <p className="text-sm font-black uppercase italic text-white transition-colors group-hover:text-[#39ff14]">
-                              {bundle.medication.name}
-                            </p>
+                            <p className="text-sm font-black uppercase italic text-white transition-colors group-hover:text-[#39ff14]">{formula.identity.name}</p>
                             <div className="mt-1 flex flex-wrap items-center gap-2">
-                              <span className="rounded border border-[#39ff14]/30 bg-[#39ff14]/10 px-2 py-0.5 text-[8px] font-black uppercase tracking-widest text-[#98f98e]">
-                                Manipulado
-                              </span>
-                              {bundle.medication.is_controlled ? (
-                                <span className="rounded border border-red-500/20 bg-red-500/10 px-2 py-0.5 text-[8px] font-black uppercase text-red-500">
-                                  Controlado
-                                </span>
+                              <span className="rounded border border-[#39ff14]/30 bg-[#39ff14]/10 px-2 py-0.5 text-[8px] font-black uppercase tracking-widest text-[#98f98e]">Manipulado</span>
+                              {formula.identity.sale_classification === "controlled" ? (
+                                <span className="rounded border border-red-500/20 bg-red-500/10 px-2 py-0.5 text-[8px] font-black uppercase text-red-500">Controlado</span>
                               ) : null}
-                              <span className="text-[9px] font-black uppercase tracking-widest text-slate-500">
-                                {bundle.medication.pharmaceutical_form}
-                              </span>
+                              <span className="text-[9px] font-black uppercase tracking-widest text-slate-500">{formula.identity.pharmaceutical_form}</span>
                             </div>
                           </div>
                           <span className="material-symbols-outlined text-slate-700 transition-colors group-hover:text-[#39ff14]">add_circle</span>
@@ -3259,5 +3399,3 @@ export default function Protocolos3Page() {
     </ReceituarioChrome>
   )
 }
-
-

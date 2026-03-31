@@ -24,6 +24,16 @@ interface RxPrintViewProps {
   zoneTextOverrides?: Partial<Record<TemplateZoneKey, string>>
 }
 
+function sanitizePrintText(value: string): string {
+  return String(value || '')
+    .replace(/Ã/g, 'á')
+    .replace(/Â/g, '')
+    .replace(/â€¢/g, '•')
+    .replace(/â€”/g, '—')
+    .replace(/â†’/g, '→')
+    .replace(/�/g, '')
+}
+
 const BASE_TEMPLATE: RxTemplateStyle = {
   id: 'rx_classic_vertical_v1',
   name: 'Receita clássica vertical',
@@ -125,10 +135,21 @@ function highlightInstructionSegments(text: string): React.ReactNode[] {
 }
 
 function renderPlainRecommendation(line: string): string {
-  return String(line || '')
+  return sanitizePrintText(String(line || '')
     .replace(/\*\*(.*?)\*\*/g, '$1')
     .replace(/^-\s*/, '')
-    .trim()
+    .trim())
+}
+
+function splitItemMeta(subtitle: string): { presentation: string; meta: string } {
+  const raw = sanitizePrintText(subtitle || '').trim()
+  if (!raw) return { presentation: '', meta: '' }
+  const parts = raw.split(/\s+—\s+/).map((entry) => entry.trim()).filter(Boolean)
+  if (parts.length === 1) return { presentation: parts[0], meta: '' }
+  return {
+    presentation: parts[0],
+    meta: parts.slice(1).join(' — '),
+  }
 }
 
 export function RxPrintView({
@@ -288,15 +309,15 @@ export function RxPrintView({
                           fontWeight: zoneWeight('header', 800),
                         }}
                       >
-                        {doc.clinicName}
+                        {sanitizePrintText(doc.clinicName)}
                       </h2>
                       <p className="text-xs text-slate-600">
-                        {doc.prescriberName} - {doc.prescriberCrmv}
+                        {sanitizePrintText(doc.prescriberName)} - {sanitizePrintText(doc.prescriberCrmv)}
                       </p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-xs text-slate-500">Data: {doc.dateLabel}</p>
+                    <p className="text-xs text-slate-500">Data: {sanitizePrintText(doc.dateLabel)}</p>
                   </div>
                 </div>
               )}
@@ -314,14 +335,14 @@ export function RxPrintView({
           ) : (
             <>
               <p>
-                <span className="font-bold">Paciente:</span> {doc.patientLine}
+                <span className="font-bold">Paciente:</span> {sanitizePrintText(doc.patientLine)}
               </p>
               <p>
-                <span className="font-bold">Responsável:</span> {doc.tutorLine}
+                <span className="font-bold">Responsável:</span> {sanitizePrintText(doc.tutorLine)}
               </p>
               {doc.addressLine ? (
                 <p>
-                  <span className="font-bold">Endereço:</span> {doc.addressLine}
+                  <span className="font-bold">Endereço:</span> {sanitizePrintText(doc.addressLine)}
                 </p>
               ) : null}
             </>
@@ -344,7 +365,7 @@ export function RxPrintView({
                 {isClassic ? (
                   <div className="mb-3 border-b border-slate-300 pb-1">
                     <h3 className="text-[11px] font-black uppercase tracking-[0.18em]" style={{ color: safeTextColor }}>
-                      {section.title}
+                      {sanitizePrintText(section.title)}
                     </h3>
                   </div>
                 ) : (
@@ -358,7 +379,7 @@ export function RxPrintView({
                         background: `${sectionAccent}12`,
                       }}
                     >
-                      {section.title}
+                      {sanitizePrintText(section.title)}
                     </h3>
                     <div className="h-px flex-1 bg-slate-300"></div>
                   </div>
@@ -370,36 +391,65 @@ export function RxPrintView({
                       className={`${isClassic ? 'border-b border-slate-200 pb-3 last:border-b-0' : 'rounded border border-slate-200 p-3'} transition ${itemRing(item.id)}`}
                       {...makeItemProps(item.id)}
                     >
-                      <div className={`mb-1 flex items-center justify-between gap-2 ${isClassic ? '' : ''}`}>
-                        <h4
-                          style={{
-                            color: '#111827',
-                            textDecoration: item.titleUnderline ? 'underline' : 'none',
-                            textDecorationColor: sectionAccent,
-                            textDecorationThickness: item.titleUnderline ? '2px' : undefined,
-                            textUnderlineOffset: item.titleUnderline ? '2px' : undefined,
-                            fontWeight: item.titleBold ? 700 : 400,
-                          }}
-                        >
-                          {item.index}. {item.title}
-                        </h4>
+                      <div className="mb-1 flex items-center justify-end gap-2">
                         {item.status !== 'ok' ? (
                           <span className="rounded bg-amber-100 px-2 py-0.5 text-[10px] font-bold uppercase text-amber-700">
                             incompleto
                           </span>
                         ) : null}
                       </div>
-                      {!isClassic && item.subtitle ? <p className="mb-1" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 2, 9)}pt`, color: '#64748b' }}>{item.subtitle}</p> : null}
+                      <div className="mb-2 space-y-2">
+                        <div className="flex w-full items-end gap-3 overflow-hidden">
+                          <h4
+                            className="shrink-0 text-[11pt]"
+                            style={{
+                              color: '#111827',
+                              textDecoration: item.titleUnderline ? 'underline' : 'none',
+                              textDecorationColor: sectionAccent,
+                              textDecorationThickness: item.titleUnderline ? '2px' : undefined,
+                              textUnderlineOffset: item.titleUnderline ? '2px' : undefined,
+                              fontWeight: item.titleBold ? 700 : 400,
+                            }}
+                          >
+                            {item.index}.
+                          </h4>
+                          <p
+                            className="shrink-0 whitespace-nowrap text-[10pt] font-semibold tracking-[0.02em]"
+                            style={{ color: '#0f172a' }}
+                          >
+                            {sanitizePrintText(item.title)}
+                          </p>
+                          <span
+                            className="min-w-[16px] flex-1 overflow-hidden whitespace-nowrap self-end leading-none"
+                            style={{ color: 'rgba(51,65,85,0.7)', letterSpacing: '0.12em', fontSize: '10pt' }}
+                          >{'................................................................................................................................................................................................................................................................................'}</span>
+                          <p
+                            className="shrink-0 whitespace-nowrap text-right text-[9.6pt] font-semibold"
+                            style={{ color: '#1e293b' }}
+                          >
+                            {sanitizePrintText(item.subtitle || 'Dispensação')}
+                          </p>
+                        </div>
+                      </div>
                       <p className="whitespace-pre-line leading-relaxed" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt`, color: '#111827' }}>
-                        {highlightInstructionSegments(item.instruction)}
+                        {highlightInstructionSegments(sanitizePrintText(item.instruction))}
                       </p>
                       {item.cautions.length ? (
                         <div className="mt-2 space-y-1">
-                          {item.cautions.map((line, idx) => (
-                            <p key={`${item.id}-c-${idx}`} className={isClassic ? 'whitespace-pre-wrap' : 'font-bold whitespace-pre-wrap'} style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt`, color: '#111827' }}>
-                              {line}
-                            </p>
-                          ))}
+                          {item.cautions
+                            .filter((line) => /^manipula/i.test(sanitizePrintText(line)))
+                            .map((line, idx) => (
+                              <p key={`${item.id}-m-${idx}`} className="whitespace-pre-wrap" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt`, color: '#111827' }}>
+                                {sanitizePrintText(line)}
+                              </p>
+                            ))}
+                          {item.cautions
+                            .filter((line) => !/^manipula/i.test(sanitizePrintText(line)))
+                            .map((line, idx) => (
+                              <p key={`${item.id}-c-${idx}`} className={isClassic ? 'whitespace-pre-wrap' : 'font-bold whitespace-pre-wrap'} style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt`, color: '#111827' }}>
+                                • {sanitizePrintText(line).replace(/^Orientações ao tutor:\s*/i, '')}
+                              </p>
+                            ))}
                         </div>
                       ) : null}
                     </article>
@@ -425,7 +475,7 @@ export function RxPrintView({
                 </h3>
                 {doc.recommendations.map((line, idx) => (
                   <p key={`rec-${idx}`} className="whitespace-pre-line" style={{ fontSize: `${Math.max(zoneFontPt('recommendations', cfg.fontSizePt) - 1, 10)}pt` }}>
-                    {idx + 1}. {renderPlainRecommendation(line)}
+                        {idx + 1}. {renderPlainRecommendation(line)}
                   </p>
                 ))}
                 {doc.exams.length > 0 ? (
@@ -433,7 +483,7 @@ export function RxPrintView({
                     <h4 className="uppercase" style={{ fontSize: `${Math.max(zoneFontPt('recommendations', cfg.fontSizePt) - 1, 9)}pt`, fontWeight: zoneWeight('recommendations', 800) }}>Exames sugeridos</h4>
                     {doc.exams.map((exam, idx) => (
                       <p key={`exam-${idx}`} style={{ fontSize: `${Math.max(zoneFontPt('recommendations', cfg.fontSizePt) - 1, 10)}pt`, fontWeight: zoneWeight('recommendations', 600) }}>
-                        {idx + 1}. {exam}
+                        {idx + 1}. {sanitizePrintText(exam)}
                       </p>
                     ))}
                   </div>
@@ -441,7 +491,7 @@ export function RxPrintView({
                 {inlineEditNote ? (
                   <div className="mt-3 rounded border border-slate-300 bg-slate-50 p-2 text-sm">
                     <p className="font-bold">Observação adicional</p>
-                    <p className="whitespace-pre-line">{inlineEditNote}</p>
+                    <p className="whitespace-pre-line">{sanitizePrintText(inlineEditNote)}</p>
                   </div>
                 ) : null}
               </>
