@@ -272,8 +272,17 @@ export function normalizeManipuladoV1(raw?: Partial<ManipuladoV1Formula> | null)
   return next
 }
 
+export function formatDurationPhrase(text: string): string {
+  const t = text.trim().toLowerCase()
+  if (t === 'dose única' || t === 'dose unica') return 'em dose única'
+  if (t === 'uso contínuo' || t === 'uso continuo') return 'em uso contínuo'
+  if (t.startsWith('até ') || t.startsWith('ate ')) return t.replace(/^ate\s/, 'até ')
+  return `por ${text.trim()}`
+}
+
 export function buildGeneratedUsageText(formula: ManipuladoV1Formula): string {
   const unit = formula.pharmacy.final_unit === 'mL' ? 'mL' : formula.identity.pharmaceutical_form.toLowerCase()
+  void unit
   const doseText =
     formula.prescribing.dose_min != null
       ? formula.prescribing.dose_max != null && formula.prescribing.dose_max !== formula.prescribing.dose_min
@@ -286,7 +295,7 @@ export function buildGeneratedUsageText(formula: ManipuladoV1Formula): string {
       ? `${formula.prescribing.duration_value} ${formula.prescribing.duration_unit}`
       : '')
   return sanitizeVisibleText(
-    `Administrar ${doseText} por via ${formula.identity.primary_route.toLowerCase()}, ${formula.prescribing.frequency_label}${durationText ? `, durante ${durationText}` : ''}.`
+    `Administrar ${doseText} por via ${formula.identity.primary_route.toLowerCase()}, ${formula.prescribing.frequency_label}${durationText ? `, ${formatDurationPhrase(durationText)}` : ''}.`
   )
 }
 

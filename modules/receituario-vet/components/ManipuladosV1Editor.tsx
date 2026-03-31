@@ -21,33 +21,36 @@ const POSOLOGY_MODE_OPTIONS = [
   { value: 'variant_table', label: 'Tabela por variante clínica' },
 ]
 
-const FREQUENCY_MODE_OPTIONS = [
+const FREQUENCY_SELECT_OPTIONS = [
   { value: 'q6h', label: 'A cada 6 horas' },
   { value: 'q8h', label: 'A cada 8 horas' },
   { value: 'q12h', label: 'A cada 12 horas' },
-  { value: 'q24h', label: 'A cada 24 horas (1x ao dia)' },
-  { value: 'one_to_two_daily', label: '1–2 vezes ao dia' },
-  { value: 'single_dose', label: 'Dose única' },
-  { value: 'continuous_use', label: 'Uso contínuo' },
-  { value: 'until_recheck', label: 'Até reavaliação médica' },
-  { value: 'until_finished', label: 'Até terminar o medicamento' },
+  { value: 'q24h', label: 'A cada 24 horas' },
+  { value: '_1x_dia', label: '1x ao dia' },
+  { value: '_2x_dia', label: '2x ao dia' },
+  { value: '_3x_dia', label: '3x ao dia' },
   { value: 'custom', label: 'Personalizada (texto livre)' },
 ]
 
-/** Label automática para o texto de frequência */
-function autoFrequencyLabel(mode: string): string {
-  const map: Record<string, string> = {
-    q6h: 'a cada 6 horas',
-    q8h: 'a cada 8 horas',
-    q12h: 'a cada 12 horas',
-    q24h: 'a cada 24 horas',
-    one_to_two_daily: '1–2 vezes ao dia',
-    single_dose: 'dose única',
-    continuous_use: 'uso contínuo',
-    until_recheck: 'até reavaliação',
-    until_finished: 'até terminar o medicamento',
-  }
-  return map[mode] || ''
+const FREQ_OPTION_TO_MODE: Record<string, { mode: string; label: string }> = {
+  q6h: { mode: 'q6h', label: 'a cada 6 horas' },
+  q8h: { mode: 'q8h', label: 'a cada 8 horas' },
+  q12h: { mode: 'q12h', label: 'a cada 12 horas' },
+  q24h: { mode: 'q24h', label: 'a cada 24 horas' },
+  _1x_dia: { mode: 'q24h', label: '1x ao dia' },
+  _2x_dia: { mode: 'custom', label: '2x ao dia' },
+  _3x_dia: { mode: 'custom', label: '3x ao dia' },
+}
+
+function resolveFrequencySelectValue(formula: ManipuladoV1Formula): string {
+  const label = formula.prescribing.frequency_label
+  if (label === '1x ao dia') return '_1x_dia'
+  if (label === '2x ao dia') return '_2x_dia'
+  if (label === '3x ao dia') return '_3x_dia'
+  const mode = formula.prescribing.frequency_mode
+  if (mode === 'single_dose' || mode === 'continuous_use' || mode === 'until_recheck' || mode === 'until_finished') return 'custom'
+  if (['q6h', 'q8h', 'q12h', 'q24h'].includes(mode)) return mode
+  return 'custom'
 }
 
 const PRIMARY_ROUTE_OPTIONS = [
@@ -58,23 +61,58 @@ const PRIMARY_ROUTE_OPTIONS = [
   { value: 'USO EXTERNO', label: 'Uso externo (geral)' },
 ]
 
-const DOSE_UNIT_OPTIONS = [
-  { value: 'mg', label: 'mg' },
-  { value: 'mcg', label: 'mcg' },
-  { value: 'g', label: 'g' },
-  { value: 'mL', label: 'mL' },
-  { value: 'dose', label: 'dose' },
-  { value: 'UI', label: 'UI' },
+function getDoseUnitOptions(posologyMode: string): { value: string; label: string }[] {
+  if (posologyMode === 'mg_per_kg_dose') {
+    return [
+      { value: 'mg/kg', label: 'mg/kg' },
+      { value: 'mcg/kg', label: 'mcg/kg' },
+      { value: 'g/kg', label: 'g/kg' },
+      { value: 'mL/kg', label: 'mL/kg' },
+      { value: 'UI/kg', label: 'UI/kg' },
+    ]
+  }
+  if (posologyMode === 'mg_per_m2_dose') {
+    return [
+      { value: 'mg/m²', label: 'mg/m²' },
+      { value: 'mcg/m²', label: 'mcg/m²' },
+      { value: 'g/m²', label: 'g/m²' },
+      { value: 'UI/m²', label: 'UI/m²' },
+    ]
+  }
+  return [
+    { value: 'mg', label: 'mg' },
+    { value: 'mcg', label: 'mcg' },
+    { value: 'g', label: 'g' },
+    { value: 'mL', label: 'mL' },
+    { value: 'UI', label: 'UI' },
+    { value: 'mg/dose', label: 'mg/dose' },
+    { value: 'mcg/dose', label: 'mcg/dose' },
+    { value: 'g/dose', label: 'g/dose' },
+    { value: 'mL/dose', label: 'mL/dose' },
+    { value: 'UI/dose', label: 'UI/dose' },
+    { value: 'mg/mL', label: 'mg/mL' },
+    { value: 'mg/biscoito', label: 'mg/biscoito' },
+    { value: 'mg/cápsula', label: 'mg/cápsula' },
+    { value: 'mg/petisco', label: 'mg/petisco' },
+    { value: 'mg/sachê', label: 'mg/sachê' },
+    { value: 'mg/aplicação', label: 'mg/aplicação' },
+    { value: 'mg/unidade', label: 'mg/unidade' },
+  ]
+}
+
+const PERIOD_MODE_OPTIONS = [
+  { value: '__closed', label: 'Duração fechada' },
+  { value: '__single', label: 'Dose única' },
+  { value: '__continuous', label: 'Uso contínuo' },
+  { value: '__recheck', label: 'Até reavaliação' },
+  { value: '__finished', label: 'Até terminar o medicamento' },
+  { value: 'custom', label: 'Personalizada (texto livre)' },
 ]
 
-const DURATION_UNIT_OPTIONS = [
+const DURATION_FIXED_UNIT_OPTIONS = [
   { value: 'dias', label: 'dias' },
   { value: 'semanas', label: 'semanas' },
   { value: 'meses', label: 'meses' },
-  { value: '__single', label: 'dose única (sem duração fixa)' },
-  { value: '__continuous', label: 'uso contínuo' },
-  { value: '__recheck', label: 'até reavaliação' },
-  { value: '__finished', label: 'até terminar o medicamento' },
 ]
 
 const FINAL_UNIT_OPTIONS = [
@@ -103,6 +141,71 @@ const INGREDIENT_RULE_OPTIONS = [
   { value: 'concentration', label: 'Por concentração final' },
 ]
 
+const BASE_VEHICLE_SUGGESTIONS = [
+  'Pasta oral palatável',
+  'Gel transdérmico adequado',
+  'Veículo neutro q.s.p.',
+  'Suspensão oral estabilizada',
+  'Óleo de coco fracionado',
+  'Propilenoglicol q.s.p.',
+  'Metilcelulose 1%',
+  'Creme base não iônico',
+  'Solução fisiológica 0,9%',
+  'Vaselina sólida',
+  'Shampoo base neutro',
+  'Carbopol 0,5%',
+  'Álcool etílico 70%',
+]
+
+const INGREDIENT_UNIT_SUGGESTIONS = [
+  'mg', 'mcg', 'g', 'mL', 'UI',
+  'mg/kg', 'mcg/kg', 'g/kg', 'mL/kg',
+  'mg/m²', 'mcg/m²', 'g/m²',
+  'mg/dose', 'mcg/dose', 'g/dose', 'mL/dose',
+  'mg/mL', 'mg/biscoito', 'mg/cápsula', 'mg/petisco', 'mg/sachê', 'mg/unidade',
+  '%', 'gotas',
+]
+
+// ─── resolvers de período ─────────────────────────────────────────────────────
+
+function resolvePeriodMode(formula: ManipuladoV1Formula): string {
+  const label = formula.prescribing.duration_label?.trim().toLowerCase()
+  if (label === 'dose única' || label === 'dose unica') return '__single'
+  if (label === 'uso contínuo' || label === 'uso continuo') return '__continuous'
+  if (label === 'até reavaliação' || label === 'ate reavaliacao') return '__recheck'
+  if (label === 'até terminar o medicamento' || label === 'ate terminar o medicamento') return '__finished'
+  const unit = formula.prescribing.duration_unit
+  if (unit === 'custom') return 'custom'
+  return '__closed'
+}
+
+function handlePeriodModeChange(
+  current: ManipuladoV1Formula,
+  selected: string,
+): Partial<ManipuladoV1Formula['prescribing']> {
+  if (selected === '__single') return { duration_unit: 'dose', duration_value: 1, duration_label: 'dose única' }
+  if (selected === '__continuous') return { duration_unit: 'dias', duration_value: null, duration_label: 'uso contínuo' }
+  if (selected === '__recheck') return { duration_unit: 'dias', duration_value: null, duration_label: 'até reavaliação' }
+  if (selected === '__finished') return { duration_unit: 'dias', duration_value: null, duration_label: 'até terminar o medicamento' }
+  if (selected === 'custom') return { duration_unit: 'custom', duration_value: null, duration_label: '' }
+  // __closed: keep existing value/unit or default to dias
+  return {
+    duration_unit: current.prescribing.duration_unit === 'dose' || current.prescribing.duration_unit === 'custom'
+      ? 'dias'
+      : current.prescribing.duration_unit,
+    duration_label: '',
+  }
+}
+
+// ─── helper ingrediente ───────────────────────────────────────────────────────
+
+function updateIngredient(value: ManipuladoV1Formula, id: string, patch: Partial<ManipuladoV1Formula['ingredients'][number]>): ManipuladoV1Formula {
+  return normalizeManipuladoV1({
+    ...value,
+    ingredients: value.ingredients.map((ingredient) => ingredient.id === id ? { ...ingredient, ...patch } : ingredient),
+  })
+}
+
 // ─── helpers visuais ──────────────────────────────────────────────────────────
 
 function FieldHint({ children }: { children: React.ReactNode }) {
@@ -117,41 +220,34 @@ function ContextNote({ children }: { children: React.ReactNode }) {
   )
 }
 
-// ─── resolvers de duração ─────────────────────────────────────────────────────
-
-/** Lê duration_unit e converte para o value do select (inclui modos especiais) */
-function resolveDurationSelectValue(formula: ManipuladoV1Formula): string {
-  const label = formula.prescribing.duration_label?.trim().toLowerCase()
-  if (label === 'dose única' || label === 'dose unica') return '__single'
-  if (label === 'uso contínuo' || label === 'uso continuo') return '__continuous'
-  if (label === 'até reavaliação' || label === 'ate reavaliacao') return '__recheck'
-  if (label === 'até terminar o medicamento') return '__finished'
-  return formula.prescribing.duration_unit || 'dias'
+function SubsectionDivider({ label }: { label: string }) {
+  return (
+    <p className="xl:col-span-12 mt-2 text-xs font-black uppercase tracking-widest text-slate-500 border-t border-slate-800 pt-3">
+      {label}
+    </p>
+  )
 }
 
-function handleDurationUnitChange(
-  current: ManipuladoV1Formula,
-  selected: string,
-): Partial<ManipuladoV1Formula['prescribing']> {
-  if (selected === '__single') return { duration_unit: 'dose', duration_value: 1, duration_label: 'dose única' }
-  if (selected === '__continuous') return { duration_unit: 'dias', duration_value: null, duration_label: 'uso contínuo' }
-  if (selected === '__recheck') return { duration_unit: 'dias', duration_value: null, duration_label: 'até reavaliação' }
-  if (selected === '__finished') return { duration_unit: 'dias', duration_value: null, duration_label: 'até terminar o medicamento' }
-  return { duration_unit: selected, duration_label: current.prescribing.duration_label }
-}
-
-function isSpecialDurationMode(formula: ManipuladoV1Formula): boolean {
-  const v = resolveDurationSelectValue(formula)
-  return v.startsWith('__')
-}
-
-// ─── helper ingrediente ───────────────────────────────────────────────────────
-
-function updateIngredient(value: ManipuladoV1Formula, id: string, patch: Partial<ManipuladoV1Formula['ingredients'][number]>): ManipuladoV1Formula {
-  return normalizeManipuladoV1({
-    ...value,
-    ingredients: value.ingredients.map((ingredient) => ingredient.id === id ? { ...ingredient, ...patch } : ingredient),
-  })
+function HelpTooltip({ children }: { children: React.ReactNode }) {
+  const [open, setOpen] = React.useState(false)
+  return (
+    <span className="relative ml-1 inline-flex align-middle">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="flex h-[18px] w-[18px] items-center justify-center rounded-full border border-slate-600 text-[10px] font-bold text-slate-400 hover:border-[#39ff14]/60 hover:text-[#98f98e]"
+      >?</button>
+      {open && (
+        <>
+          <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
+          <div className="absolute left-6 top-0 z-50 w-72 rounded-2xl border border-[#39ff14]/20 bg-[#0d140d] p-4 shadow-2xl text-xs text-slate-300 leading-5">
+            {children}
+            <button type="button" onClick={() => setOpen(false)} className="mt-3 block text-[10px] text-slate-500 hover:text-slate-300">Fechar ✕</button>
+          </div>
+        </>
+      )}
+    </span>
+  )
 }
 
 // ─── componente ──────────────────────────────────────────────────────────────
@@ -174,8 +270,11 @@ export function ManipuladosV1Editor({
   const current = normalizeManipuladoV1(value)
   const previewUsage = current.prescribing.manual_usage_override || buildGeneratedUsageText(current)
   const recommendations = useMemo(() => renderManipuladoV1Recommendations(current), [current])
-  const durationSelectValue = resolveDurationSelectValue(current)
+  const periodMode = resolvePeriodMode(current)
+  const isClosedDuration = periodMode === '__closed'
+  const isCustomDuration = periodMode === 'custom'
   const isDoseByWeight = current.prescribing.posology_mode === 'mg_per_kg_dose' || current.prescribing.posology_mode === 'mg_per_m2_dose'
+  const freqSelectValue = resolveFrequencySelectValue(current)
 
   const setFormula = (patch: Partial<ManipuladoV1Formula>) => onChange(normalizeManipuladoV1({ ...current, ...patch }))
 
@@ -230,7 +329,20 @@ export function ManipuladosV1Editor({
         <div className="grid grid-cols-1 gap-5 xl:grid-cols-12">
 
           {/* Posologia */}
-          <RxvField label="Modo posológico" className="xl:col-span-4">
+          <div className="xl:col-span-4">
+            <div className="flex items-center mb-1">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Modo posológico</span>
+              <HelpTooltip>
+                <p className="font-bold text-white mb-1">Modo posológico</p>
+                <p>Define como a dose é calculada:</p>
+                <ul className="list-disc pl-4 mt-1 space-y-1">
+                  <li><strong>Dose fixa</strong>: mesma dose para todos os animais</li>
+                  <li><strong>mg/kg</strong>: calculado pelo peso do paciente</li>
+                  <li><strong>mg/m²</strong>: oncologia, calculado pela superfície corporal</li>
+                  <li><strong>Por aplicação</strong>: dose por unidade (ex.: 1 cápsula, 1 biscoito)</li>
+                </ul>
+              </HelpTooltip>
+            </div>
             <RxvSelect
               value={current.prescribing.posology_mode}
               onChange={(e) => setFormula({ prescribing: { ...current.prescribing, posology_mode: e.target.value as any } })}
@@ -242,7 +354,7 @@ export function ManipuladosV1Editor({
               {current.prescribing.posology_mode === 'mg_per_m2_dose' && 'Usada em oncologia. O cálculo usa a superfície corporal do paciente.'}
               {current.prescribing.posology_mode === 'fixed_per_application' && 'Dose fixa por aplicação ou unidade (ex.: 1 cápsula, 1 biscoito).'}
             </FieldHint>
-          </RxvField>
+          </div>
 
           {isDoseByWeight ? (
             <>
@@ -260,49 +372,98 @@ export function ManipuladosV1Editor({
           )}
 
           <RxvField label="Unidade da dose" className="xl:col-span-2">
-            <RxvSelect value={current.prescribing.dose_unit} onChange={(e) => setFormula({ prescribing: { ...current.prescribing, dose_unit: e.target.value } })} options={DOSE_UNIT_OPTIONS} />
+            <RxvSelect value={current.prescribing.dose_unit} onChange={(e) => setFormula({ prescribing: { ...current.prescribing, dose_unit: e.target.value } })} options={getDoseUnitOptions(current.prescribing.posology_mode)} />
           </RxvField>
 
           {/* Frequência */}
-          <RxvField label="Frequência" className="xl:col-span-4">
+          <SubsectionDivider label="Frequência" />
+
+          <div className="xl:col-span-4">
+            <div className="flex items-center mb-1">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Frequência</span>
+              <HelpTooltip>
+                <p className="font-bold text-white mb-1">Frequência de administração</p>
+                <p>Selecione o intervalo padrão. Para frequências personalizadas (ex.: "2x ao dia às 8h e 20h"), use <strong>Personalizada</strong> e edite o texto abaixo.</p>
+              </HelpTooltip>
+            </div>
             <RxvSelect
-              value={current.prescribing.frequency_mode}
+              value={freqSelectValue}
               onChange={(e) => {
-                const mode = e.target.value
-                const label = autoFrequencyLabel(mode)
-                setFormula({ prescribing: { ...current.prescribing, frequency_mode: mode as any, frequency_label: label || current.prescribing.frequency_label } })
+                const selected = e.target.value
+                if (selected === 'custom') {
+                  setFormula({ prescribing: { ...current.prescribing, frequency_mode: 'custom' as any } })
+                } else {
+                  const mapped = FREQ_OPTION_TO_MODE[selected]
+                  if (mapped) {
+                    setFormula({ prescribing: { ...current.prescribing, frequency_mode: mapped.mode as any, frequency_label: mapped.label } })
+                  }
+                }
               }}
-              options={FREQUENCY_MODE_OPTIONS}
+              options={FREQUENCY_SELECT_OPTIONS}
             />
-          </RxvField>
+          </div>
           <RxvField label="Texto da frequência" className="xl:col-span-4">
             <RxvInput value={current.prescribing.frequency_label} onChange={(e) => setFormula({ prescribing: { ...current.prescribing, frequency_label: e.target.value } })} placeholder="Ex.: a cada 12 horas" />
             <FieldHint>Preenchido automaticamente ao trocar a frequência. Edite se precisar de texto personalizado.</FieldHint>
           </RxvField>
 
-          {/* Duração */}
-          <RxvField label="Duração (valor)" className="xl:col-span-2">
-            <RxvInput
-              value={isSpecialDurationMode(current) ? '' : (current.prescribing.duration_value ?? '')}
-              onChange={(e) => setFormula({ prescribing: { ...current.prescribing, duration_value: e.target.value ? Number(String(e.target.value).replace(',', '.')) : null } })}
-              disabled={isSpecialDurationMode(current)}
-              placeholder="Ex.: 14"
-            />
-          </RxvField>
-          <RxvField label="Período de uso" className="xl:col-span-3">
+          {/* Duração do tratamento */}
+          <SubsectionDivider label="Duração do tratamento" />
+
+          <div className="xl:col-span-3">
+            <div className="flex items-center mb-1">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Período de uso</span>
+              <HelpTooltip>
+                <p className="font-bold text-white mb-1">Período de uso</p>
+                <ul className="list-disc pl-4 mt-1 space-y-1">
+                  <li><strong>Duração fechada</strong>: número de dias/semanas/meses</li>
+                  <li><strong>Dose única</strong>: administrar uma única vez</li>
+                  <li><strong>Uso contínuo</strong>: sem data de término definida</li>
+                  <li><strong>Até reavaliação</strong>: usar até retorno ao veterinário</li>
+                  <li><strong>Até terminar</strong>: usar todo o medicamento manipulado</li>
+                </ul>
+              </HelpTooltip>
+            </div>
             <RxvSelect
-              value={durationSelectValue}
+              value={periodMode}
               onChange={(e) => {
-                const patch = handleDurationUnitChange(current, e.target.value)
+                const patch = handlePeriodModeChange(current, e.target.value)
                 setFormula({ prescribing: { ...current.prescribing, ...patch } })
               }}
-              options={DURATION_UNIT_OPTIONS}
+              options={PERIOD_MODE_OPTIONS}
             />
-            <FieldHint>Ao selecionar "dose única", "uso contínuo" etc., o campo de valor é ocultado automaticamente.</FieldHint>
-          </RxvField>
-          <RxvField label="Texto do período" className="xl:col-span-3">
-            <RxvInput value={current.prescribing.duration_label} onChange={(e) => setFormula({ prescribing: { ...current.prescribing, duration_label: e.target.value } })} placeholder="Ex.: 14 dias / até reavaliação" />
-          </RxvField>
+          </div>
+
+          {isClosedDuration ? (
+            <>
+              <RxvField label="Valor" className="xl:col-span-2">
+                <RxvInput
+                  value={current.prescribing.duration_value ?? ''}
+                  onChange={(e) => {
+                    const v = e.target.value ? Number(String(e.target.value).replace(',', '.')) : null
+                    const unit = current.prescribing.duration_unit || 'dias'
+                    setFormula({ prescribing: { ...current.prescribing, duration_value: v, duration_label: v ? `${v} ${unit}` : '' } })
+                  }}
+                  placeholder="Ex.: 14"
+                />
+              </RxvField>
+              <RxvField label="Unidade" className="xl:col-span-2">
+                <RxvSelect
+                  value={current.prescribing.duration_unit || 'dias'}
+                  onChange={(e) => {
+                    const unit = e.target.value
+                    const v = current.prescribing.duration_value
+                    setFormula({ prescribing: { ...current.prescribing, duration_unit: unit, duration_label: v ? `${v} ${unit}` : '' } })
+                  }}
+                  options={DURATION_FIXED_UNIT_OPTIONS}
+                />
+              </RxvField>
+            </>
+          ) : isCustomDuration ? (
+            <RxvField label="Texto do período" className="xl:col-span-4">
+              <RxvInput value={current.prescribing.duration_label} onChange={(e) => setFormula({ prescribing: { ...current.prescribing, duration_label: e.target.value } })} placeholder="Ex.: 14 dias / até reavaliação" />
+            </RxvField>
+          ) : null}
 
           {/* Observação clínica */}
           <RxvField label="Recomendações ao tutor" className="xl:col-span-12">
@@ -347,15 +508,23 @@ export function ManipuladosV1Editor({
       <RxvCard className="p-6">
         <RxvSectionHeader icon="science" title="Bloco 3 • Como a farmácia manipula" subtitle="Q.S.P., base, sabor e ingredientes. Nada aqui imprime na instrução ao tutor." />
         <div className="grid grid-cols-1 gap-5 xl:grid-cols-12">
-          <RxvField label="Q.S.P." className="xl:col-span-4">
+          <div className="xl:col-span-4">
+            <div className="flex items-center mb-1">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Q.S.P. (quantidade total a manipular)</span>
+              <HelpTooltip>
+                <p className="font-bold text-white mb-1">Q.S.P.</p>
+                <p>Quantidade suficiente para — é o alvo final da formulação. Exemplos: <strong>60 g</strong>, <strong>30 cápsulas</strong>, <strong>10 mL</strong>.</p>
+                <p className="mt-1">Aparece no texto "Favor manipular..." enviado à farmácia.</p>
+              </HelpTooltip>
+            </div>
             <RxvInput value={current.pharmacy.qsp_text} onChange={(e) => setFormula({ pharmacy: { ...current.pharmacy, qsp_text: e.target.value } })} placeholder="Ex.: 60 g, 30 unidades, 10 mL" />
-            <FieldHint>Quantidade suficiente para (q.s.p.) — alvo final da formulação. Aparece no texto "Favor manipular...".</FieldHint>
-          </RxvField>
+            <FieldHint>Quantidade suficiente para (q.s.p.) — alvo final da formulação.</FieldHint>
+          </div>
           <RxvField label="Apresentação final" className="xl:col-span-4">
             <RxvInput value={current.pharmacy.total_quantity} onChange={(e) => setFormula({ pharmacy: { ...current.pharmacy, total_quantity: e.target.value } })} placeholder="Ex.: 60 g (pasta), 30 cápsulas" />
             <FieldHint>Resumo para o card do catálogo e cabeçalho da receita.</FieldHint>
           </RxvField>
-          <RxvField label="Unidade final" className="xl:col-span-4">
+          <RxvField label="Unidade final" className="xl:col-span-2">
             <RxvSelect value={current.pharmacy.final_unit} onChange={(e) => setFormula({ pharmacy: { ...current.pharmacy, final_unit: e.target.value as any } })} options={FINAL_UNIT_OPTIONS} />
           </RxvField>
           <RxvField label="Sabor" className="xl:col-span-4">
@@ -366,10 +535,33 @@ export function ManipuladosV1Editor({
               <RxvInput value={current.pharmacy.flavor_text} onChange={(e) => setFormula({ pharmacy: { ...current.pharmacy, flavor_text: e.target.value } })} placeholder="Descreva o sabor" />
             </RxvField>
           ) : null}
-          <RxvField label="Base / veículo / excipiente" className="xl:col-span-4">
-            <RxvInput value={current.pharmacy.base_text} onChange={(e) => setFormula({ pharmacy: { ...current.pharmacy, base_text: e.target.value } })} placeholder="Ex.: pasta oral palatável, gel transdérmico adequado" />
+          <div className="xl:col-span-4">
+            <div className="flex items-center mb-1">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Base / veículo / excipiente</span>
+              <HelpTooltip>
+                <p className="font-bold text-white mb-1">Base / veículo</p>
+                <p>Material que compõe o volume ou a forma final da fórmula. Exemplos:</p>
+                <ul className="list-disc pl-4 mt-1 space-y-1">
+                  <li>Pasta oral palatável</li>
+                  <li>Gel transdérmico adequado</li>
+                  <li>Suspensão oral estabilizada</li>
+                </ul>
+              </HelpTooltip>
+            </div>
+            <>
+              <input
+                list="manipulado-base-suggestions"
+                value={current.pharmacy.base_text}
+                onChange={(e) => setFormula({ pharmacy: { ...current.pharmacy, base_text: e.target.value } })}
+                placeholder="Ex.: pasta oral palatável, gel transdérmico"
+                className="w-full rounded-xl border border-slate-700 bg-black/30 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-600 focus:border-[#39ff14]/50 focus:outline-none"
+              />
+              <datalist id="manipulado-base-suggestions">
+                {BASE_VEHICLE_SUGGESTIONS.map((s) => <option key={s} value={s} />)}
+              </datalist>
+            </>
             <FieldHint>Material de base ou veículo que complementa o ativo. Aparece no texto de manipulação.</FieldHint>
-          </RxvField>
+          </div>
           <RxvField label="Instrução para a farmácia" className="xl:col-span-8">
             <RxvTextarea value={current.pharmacy.compounding_instructions} onChange={(e) => setFormula({ pharmacy: { ...current.pharmacy, compounding_instructions: e.target.value } })} rows={3} placeholder="Observações técnicas para o farmacêutico. Ex.: misturar em câmara de fluxo laminar." />
           </RxvField>
@@ -406,18 +598,32 @@ export function ManipuladosV1Editor({
                     <RxvField label="Qtd. máx." className="xl:col-span-1">
                       <RxvInput value={ingredient.max_quantity ?? ''} onChange={(e) => onChange(updateIngredient(current, ingredient.id, { max_quantity: e.target.value ? Number(String(e.target.value).replace(',', '.')) : null }))} placeholder="25" />
                     </RxvField>
-                    <RxvField label="Unidade" className="xl:col-span-1">
-                      <RxvInput value={ingredient.unit} onChange={(e) => onChange(updateIngredient(current, ingredient.id, { unit: e.target.value }))} />
-                    </RxvField>
+                    <div className="xl:col-span-1">
+                      <RxvField label="Unidade">
+                        <input
+                          list="manipulado-ingredient-units"
+                          value={ingredient.unit}
+                          onChange={(e) => onChange(updateIngredient(current, ingredient.id, { unit: e.target.value }))}
+                          className="w-full rounded-xl border border-slate-700 bg-black/30 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-600 focus:border-[#39ff14]/50 focus:outline-none"
+                        />
+                      </RxvField>
+                    </div>
                   </>
                 ) : (
                   <>
                     <RxvField label="Quantidade" className="xl:col-span-2">
                       <RxvInput value={ingredient.quantity ?? ''} onChange={(e) => onChange(updateIngredient(current, ingredient.id, { quantity: e.target.value ? Number(String(e.target.value).replace(',', '.')) : null }))} />
                     </RxvField>
-                    <RxvField label="Unidade" className="xl:col-span-1">
-                      <RxvInput value={ingredient.unit} onChange={(e) => onChange(updateIngredient(current, ingredient.id, { unit: e.target.value }))} />
-                    </RxvField>
+                    <div className="xl:col-span-1">
+                      <RxvField label="Unidade">
+                        <input
+                          list="manipulado-ingredient-units"
+                          value={ingredient.unit}
+                          onChange={(e) => onChange(updateIngredient(current, ingredient.id, { unit: e.target.value }))}
+                          className="w-full rounded-xl border border-slate-700 bg-black/30 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-600 focus:border-[#39ff14]/50 focus:outline-none"
+                        />
+                      </RxvField>
+                    </div>
                   </>
                 )}
                 <RxvField label="Observação do ingrediente" className="xl:col-span-10">
@@ -429,6 +635,10 @@ export function ManipuladosV1Editor({
               </div>
             )
           })}
+          {/* Shared datalist for ingredient units */}
+          <datalist id="manipulado-ingredient-units">
+            {INGREDIENT_UNIT_SUGGESTIONS.map((s) => <option key={s} value={s} />)}
+          </datalist>
         </div>
       </RxvCard>
 

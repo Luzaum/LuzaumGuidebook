@@ -33,6 +33,7 @@ export function AddCompoundedMedicationModal({
   const [search, setSearch] = useState('')
   const [rows, setRows] = useState<ManipuladoV1Row[]>([])
   const [selectedId, setSelectedId] = useState('')
+  const [targetDoseValue, setTargetDoseValue] = useState<string>('')
 
   useEffect(() => {
     if (!open || !clinicId) return
@@ -43,6 +44,7 @@ export function AddCompoundedMedicationModal({
     if (!open) {
       setSearch('')
       setSelectedId('')
+      setTargetDoseValue('')
     }
   }, [open])
 
@@ -63,12 +65,27 @@ export function AddCompoundedMedicationModal({
     return row ? rowToFormula(row) : null
   }, [filteredRows, rows, selectedId])
 
+  useEffect(() => {
+    if (selectedFormula) {
+      setTargetDoseValue(String(selectedFormula.prescribing.dose_min ?? ''))
+    }
+  }, [selectedId, selectedFormula])
+
+  const hasDoseRange = selectedFormula != null
+    && selectedFormula.prescribing.posology_mode === 'mg_per_kg_dose'
+    && selectedFormula.prescribing.dose_min != null
+    && selectedFormula.prescribing.dose_max != null
+    && selectedFormula.prescribing.dose_max !== selectedFormula.prescribing.dose_min
+
+  const targetDoseNum = hasDoseRange && targetDoseValue ? Number(targetDoseValue) : undefined
+
   const previewItem = useMemo(() => selectedFormula ? mapManipuladoV1ToPrescriptionItem({
     formula: selectedFormula,
     patient,
     defaultStartDate,
     defaultStartHour,
-  }) : null, [defaultStartDate, defaultStartHour, patient, selectedFormula])
+    targetDose: targetDoseNum,
+  }) : null, [defaultStartDate, defaultStartHour, patient, selectedFormula, targetDoseNum])
 
   if (!open) return null
 
@@ -128,6 +145,37 @@ export function AddCompoundedMedicationModal({
                     </div>
                   </div>
                 </div>
+
+                {hasDoseRange && selectedFormula ? (
+                  <div className="rounded-2xl border border-[#39ff14]/20 bg-[#39ff14]/5 p-5">
+                    <p className="text-xs font-black uppercase tracking-widest text-[#98f98e] mb-3">
+                      Escolher dose dentro da faixa
+                    </p>
+                    <p className="text-xs text-slate-400 mb-3">
+                      Faixa: {selectedFormula.prescribing.dose_min}–{selectedFormula.prescribing.dose_max} {selectedFormula.prescribing.dose_unit}
+                    </p>
+                    <div className="flex items-center gap-3">
+                      <input
+                        type="number"
+                        min={selectedFormula.prescribing.dose_min ?? 0}
+                        max={selectedFormula.prescribing.dose_max ?? 100}
+                        step="0.5"
+                        value={targetDoseValue}
+                        onChange={(e) => setTargetDoseValue(e.target.value)}
+                        className="w-28 rounded-xl border border-[#39ff14]/30 bg-black/30 px-3 py-2 text-sm text-white focus:border-[#39ff14]/60 focus:outline-none"
+                      />
+                      <span className="text-sm text-slate-400">{selectedFormula.prescribing.dose_unit}</span>
+                    </div>
+                    {patient?.weight_kg ? (
+                      <p className="mt-3 text-sm text-slate-300">
+                        Dose calculada para {patient.weight_kg} kg:{' '}
+                        <strong className="text-white">
+                          {targetDoseValue ? Number((Number(targetDoseValue) * Number(patient.weight_kg)).toFixed(2)) : '—'} {selectedFormula.prescribing.dose_unit.replace('/kg', '')}
+                        </strong>
+                      </p>
+                    ) : null}
+                  </div>
+                ) : null}
               </div>
             )}
           </div>

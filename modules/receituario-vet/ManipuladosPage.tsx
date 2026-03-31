@@ -67,7 +67,7 @@ export default function ManipuladosPage() {
       return
     }
     const selectedExists = filteredRows.some((row) => row.id === selectedId)
-    if (!selectedExists) {
+    if (!selectedExists && selectedId !== '__new__') {
       void openItem(filteredRows[0].id)
     }
   }, [filteredRows, selectedId, openItem])
@@ -75,7 +75,7 @@ export default function ManipuladosPage() {
   const handleNew = () => {
     if (!clinicId) return
     const next = createEmptyManipuladoV1(clinicId)
-    setSelectedId('')
+    setSelectedId('__new__')
     setEditorValue(next)
     setMessage('')
   }
@@ -130,7 +130,8 @@ export default function ManipuladosPage() {
         <>
           <RxvButton variant="secondary" onClick={() => void loadList()}>Atualizar</RxvButton>
           <RxvButton variant="secondary" onClick={handleLoadFixture}>Carregar exemplo</RxvButton>
-          <RxvButton variant="primary" onClick={handleNew}>Nova fórmula</RxvButton>
+          <RxvButton variant="secondary" onClick={handleNew}>Nova fórmula</RxvButton>
+          <RxvButton variant="primary" onClick={() => void handleSave()} loading={!!saving} disabled={!editorValue}>Salvar manipulado</RxvButton>
         </>
       }
     >

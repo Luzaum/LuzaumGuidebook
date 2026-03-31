@@ -1,7 +1,7 @@
 import type { ProtocolMedicationItem } from '../../src/lib/protocols/protocolsRepo'
 import type { PatientInfo, PrescriptionItem } from './NovaReceita2Page'
 import { sanitizeVisibleText } from './textSanitizer'
-import { normalizeManipuladoV1, type ManipuladoV1Formula } from './manipuladosV1'
+import { formatDurationPhrase, normalizeManipuladoV1, type ManipuladoV1Formula } from './manipuladosV1'
 import {
   getManipuladoV1CatalogSubtitle,
   getManipuladoV1PrintLineLeft,
@@ -11,8 +11,8 @@ import {
   renderManipuladoV1TutorInstruction,
 } from './manipuladosV1Render'
 
-function resolveDoseText(formula: ManipuladoV1Formula, patient: PatientInfo | null): string {
-  const dose = formula.prescribing.dose_min
+function resolveDoseText(formula: ManipuladoV1Formula, patient: PatientInfo | null, targetDose?: number | null): string {
+  const dose = targetDose ?? formula.prescribing.dose_min
   if (dose == null) return ''
   if (formula.prescribing.posology_mode === 'mg_per_kg_dose') {
     const weight = Number(patient?.weight_kg || 0)
@@ -25,8 +25,8 @@ function resolveDoseText(formula: ManipuladoV1Formula, patient: PatientInfo | nu
   return `${dose} ${formula.prescribing.dose_unit}`.trim()
 }
 
-function resolveTutorInstruction(formula: ManipuladoV1Formula, patient: PatientInfo | null): string {
-  const doseText = resolveDoseText(formula, patient) || '1 dose'
+function resolveTutorInstruction(formula: ManipuladoV1Formula, patient: PatientInfo | null, targetDose?: number | null): string {
+  const doseText = resolveDoseText(formula, patient, targetDose) || '1 dose'
   const route = sanitizeVisibleText(formula.identity.primary_route || 'ORAL').toLowerCase()
   const frequency = sanitizeVisibleText(formula.prescribing.frequency_label || '')
   const duration =
@@ -37,7 +37,7 @@ function resolveTutorInstruction(formula: ManipuladoV1Formula, patient: PatientI
       `Administrar ${doseText}`,
       route ? `por via ${route}` : '',
       frequency,
-      duration ? `durante ${duration}` : '',
+      duration ? formatDurationPhrase(duration) : '',
     ].filter(Boolean).join(', ') + '.'
   )
 }
@@ -47,10 +47,11 @@ export function mapManipuladoV1ToPrescriptionItem(params: {
   patient: PatientInfo | null
   defaultStartDate?: string
   defaultStartHour?: string
+  targetDose?: number | null
 }): PrescriptionItem {
   const formula = normalizeManipuladoV1(params.formula)
-  const doseText = resolveDoseText(formula, params.patient)
-  const instructions = resolveTutorInstruction(formula, params.patient) || renderManipuladoV1TutorInstruction(formula)
+  const doseText = resolveDoseText(formula, params.patient, params.targetDose)
+  const instructions = resolveTutorInstruction(formula, params.patient, params.targetDose) || renderManipuladoV1TutorInstruction(formula)
   const cautions = renderManipuladoV1Recommendations(formula)
 
   return {
