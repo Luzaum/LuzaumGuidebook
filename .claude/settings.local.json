@@ -5,7 +5,13 @@
       "Bash(timeout 120 npm run build)",
       "Bash(npm run dev)",
       "Bash(npm run:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(node -e \"const d = require\\(''./modules/energia-vet/data/genutri-dataset.json''\\); d.meta.nutrientCatalog.forEach\\(n => console.log\\(n.key, ''|'', n.label, ''|'', n.unit\\)\\)\")",
+      "Bash(sed -i \"s/Resumo salvo no historico do Energia Vet\\\\./Resumo salvo no histórico do Energia Vet./g\" \"modules/energia-vet/pages/steps/SummaryStep.tsx\")",
+      "Bash(sed -i \"s/A formulacao ainda nao foi concluida\\\\. Volte a etapa anterior para selecionar os alimentos\\\\./A formulação ainda não foi concluída. Volte à etapa anterior para selecionar os alimentos./g\" \"modules/energia-vet/pages/steps/SummaryStep.tsx\")",
+      "Bash(sed -i \"s/<CardTitle className=\"\"text-lg\"\">Formulacao final<\\\\/CardTitle>/<CardTitle className=\"\"text-lg\"\">Formulação final<\\\\/CardTitle>/g\" \"modules/energia-vet/pages/steps/SummaryStep.tsx\")",
+      "Bash(sed -i \"s/<p className=\"\"text-xs text-muted-foreground\"\">Relacao Ca:P<\\\\/p>/<p className=\"\"text-xs text-muted-foreground\"\">Relação Ca:P<\\\\/p>/g\" \"modules/energia-vet/pages/steps/SummaryStep.tsx\")",
+      "Bash(sed -i \"s/<CardTitle className=\"\"text-lg\"\">Contribuicao por alimento<\\\\/CardTitle>/<CardTitle className=\"\"text-lg\"\">Contribuição por alimento<\\\\/CardTitle>/g\" \"modules/energia-vet/pages/steps/SummaryStep.tsx\")"
     ],
     "deny": [],
     "ask": []

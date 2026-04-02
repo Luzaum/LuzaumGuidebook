@@ -1,18 +1,18 @@
 {
   "ok": false,
-  "formulaName": "Petisco de Benazepril V1 1774916883946",
-  "protocolName": "Protocolo V1 Runtime 1774916883946",
+  "formulaName": "Petisco de Benazepril V1 1775095297081",
+  "protocolName": "Protocolo V1 Runtime 1775095297081",
   "routeLoaded": true,
   "manipuladoCreated": true,
   "catalogV1Visible": true,
-  "importedIntoNovaReceita": true,
-  "weightBasedVisible": true,
-  "reviewVisible": true,
-  "pdfExported": true,
+  "importedIntoNovaReceita": false,
+  "weightBasedVisible": false,
+  "reviewVisible": false,
+  "pdfExported": false,
   "importedIntoProtocolos": false,
   "protocolReopened": false,
   "protocolApplied": false,
-  "previewReviewPdfOk": true,
+  "previewReviewPdfOk": false,
   "legacySource": {
     "remoteTable": true,
     "localFallback": true,
@@ -23,65 +23,37 @@
   "log": [
     {
       "step": "route_loaded",
-      "time": "2026-03-31T00:28:05.797Z"
+      "time": "2026-04-02T02:01:41.137Z"
     },
     {
       "step": "manipulado_v1_created",
-      "time": "2026-03-31T00:28:09.523Z",
-      "formulaName": "Petisco de Benazepril V1 1774916883946"
+      "time": "2026-04-02T02:01:45.129Z",
+      "formulaName": "Petisco de Benazepril V1 1775095297081"
     },
     {
       "step": "shot",
-      "time": "2026-03-31T00:28:10.236Z",
+      "time": "2026-04-02T02:01:46.002Z",
       "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\v1-runtime-cut-01-manipulados-page.png"
     },
     {
       "step": "manipulado_reopened",
-      "time": "2026-03-31T00:28:12.588Z"
+      "time": "2026-04-02T02:01:48.072Z"
     },
     {
       "step": "shot",
-      "time": "2026-03-31T00:28:13.332Z",
+      "time": "2026-04-02T02:01:49.237Z",
       "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\v1-runtime-cut-02-manipulados-reopen.png"
     },
     {
-      "step": "nova_receita_import_ok",
-      "time": "2026-03-31T00:28:17.599Z"
-    },
-    {
-      "step": "weight_based_visible",
-      "time": "2026-03-31T00:28:17.606Z",
-      "expected": "25 mg"
-    },
-    {
-      "step": "shot",
-      "time": "2026-03-31T00:28:18.846Z",
-      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\v1-runtime-cut-03-nova-receita.png"
-    },
-    {
-      "step": "review_visible",
-      "time": "2026-03-31T00:28:18.951Z"
-    },
-    {
-      "step": "shot",
-      "time": "2026-03-31T00:28:19.411Z",
-      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\v1-runtime-cut-04-review.png"
-    },
-    {
-      "step": "pdf_exported",
-      "time": "2026-03-31T00:28:20.368Z",
-      "pdfTarget": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\downloads\\PACIENTE_E2E_TUTOR_E2E_MANIPULADOS_30-03-2026.pdf"
-    },
-    {
       "step": "fatal",
-      "time": "2026-03-31T00:28:21.364Z",
-      "message": "page.evaluate: Object"
+      "time": "2026-04-02T02:02:23.401Z",
+      "message": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('input[value=\"Petisco de Benazepril V1 1775095297081\"]').first() to be visible\u001b[22m\n"
     },
     {
       "step": "shot",
-      "time": "2026-03-31T00:28:21.509Z",
+      "time": "2026-04-02T02:02:23.490Z",
       "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\v1-runtime-cut-fatal.png"
     }
   ],
-  "pdfTarget": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\downloads\\PACIENTE_E2E_TUTOR_E2E_MANIPULADOS_30-03-2026.pdf"
+  "pdfTarget": ""
 }

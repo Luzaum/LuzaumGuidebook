@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import ReceituarioChrome from './ReceituarioChrome'
 import { RxvButton, RxvCard, RxvField, RxvInput, RxvSectionHeader, RxvToggle } from '../../src/components/receituario/RxvComponents'
 import { useClinic } from '../../src/components/ClinicProvider'
@@ -13,6 +13,45 @@ function rowToFormula(row: ManipuladoV1Row): ManipuladoV1Formula {
   return normalizeManipuladoV1(row.payload as Partial<ManipuladoV1Formula>)
 }
 
+function getManipuladoDraftKey(clinicId: string | null, selectedId: string) {
+  if (!clinicId || !selectedId) return null
+  return `manipulados-v1:draft:${clinicId}:${selectedId}`
+}
+
+function getManipuladoActiveKey(clinicId: string | null) {
+  if (!clinicId) return null
+  return `manipulados-v1:active:${clinicId}`
+}
+
+function loadManipuladoDraft(key: string | null): ManipuladoV1Formula | null {
+  if (!key) return null
+  try {
+    const raw = localStorage.getItem(key)
+    if (!raw) return null
+    return normalizeManipuladoV1(JSON.parse(raw) as Partial<ManipuladoV1Formula>)
+  } catch {
+    return null
+  }
+}
+
+function saveManipuladoDraft(key: string | null, value: ManipuladoV1Formula | null) {
+  if (!key || !value) return
+  try {
+    localStorage.setItem(key, JSON.stringify(value))
+  } catch {
+    // noop
+  }
+}
+
+function clearManipuladoDraft(key: string | null) {
+  if (!key) return
+  try {
+    localStorage.removeItem(key)
+  } catch {
+    // noop
+  }
+}
+
 export default function ManipuladosPage() {
   const { clinicId } = useClinic()
   const [rows, setRows] = useState<ManipuladoV1Row[]>([])
@@ -24,6 +63,8 @@ export default function ManipuladosPage() {
   const [saving, setSaving] = useState(false)
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
+  const [dirty, setDirty] = useState(false)
+  const autosaveTimerRef = useRef<number | null>(null)
 
   const loadList = useCallback(async () => {
     if (!clinicId) return
@@ -34,6 +75,16 @@ export default function ManipuladosPage() {
   useEffect(() => {
     void loadList()
   }, [loadList])
+
+  useEffect(() => {
+    const activeKey = getManipuladoActiveKey(clinicId)
+    if (!activeKey || !selectedId) return
+    try {
+      localStorage.setItem(activeKey, selectedId)
+    } catch {
+      // noop
+    }
+  }, [clinicId, selectedId])
 
   const filteredRows = useMemo(() => {
     const needle = search.trim().toLowerCase()
@@ -53,40 +104,111 @@ export default function ManipuladosPage() {
     setLoading(true)
     try {
       const formula = await getManipuladoV1(clinicId, id)
-      setEditorValue(formula)
+      const restoredDraft = loadManipuladoDraft(getManipuladoDraftKey(clinicId, id))
+      setEditorValue(restoredDraft || formula)
       setSelectedId(id)
+      setDirty(!!restoredDraft)
+      if (restoredDraft) {
+        setMessage('Rascunho local restaurado para este manipulado. Revise e salve quando terminar.')
+      }
     } finally {
       setLoading(false)
     }
   }, [clinicId])
 
   useEffect(() => {
+    if (!clinicId || selectedId || editorValue) return
+    const activeKey = getManipuladoActiveKey(clinicId)
+    if (!activeKey) return
+    try {
+      const activeId = String(localStorage.getItem(activeKey) || '').trim()
+      if (!activeId) return
+      if (activeId === '__new__') {
+        const restoredDraft = loadManipuladoDraft(getManipuladoDraftKey(clinicId, '__new__'))
+        if (restoredDraft) {
+          setSelectedId('__new__')
+          setEditorValue(restoredDraft)
+          setDirty(true)
+          setMessage('Rascunho local restaurado para a nova fórmula.')
+          return
+        }
+      } else if (rows.some((row) => row.id === activeId)) {
+        void openItem(activeId)
+      }
+    } catch {
+      // noop
+    }
+  }, [clinicId, editorValue, openItem, rows, selectedId])
+
+  useEffect(() => {
     if (!filteredRows.length) {
+      if (selectedId === '__new__' && editorValue) return
       setSelectedId('')
       setEditorValue(null)
+      setDirty(false)
       return
     }
     const selectedExists = filteredRows.some((row) => row.id === selectedId)
     if (!selectedExists && selectedId !== '__new__') {
       void openItem(filteredRows[0].id)
     }
-  }, [filteredRows, selectedId, openItem])
+  }, [editorValue, filteredRows, openItem, selectedId])
 
   const handleNew = () => {
     if (!clinicId) return
-    const next = createEmptyManipuladoV1(clinicId)
+    const restoredDraft = loadManipuladoDraft(getManipuladoDraftKey(clinicId, '__new__'))
+    const next = restoredDraft || createEmptyManipuladoV1(clinicId)
     setSelectedId('__new__')
     setEditorValue(next)
-    setMessage('')
+    setDirty(!!restoredDraft)
+    setMessage(restoredDraft ? 'Rascunho local restaurado para a nova fórmula.' : '')
   }
 
   const handleLoadFixture = () => {
     if (!clinicId) return
     const next = createAciclovirPastaOralFixture(clinicId)
-    setSelectedId('')
+    setSelectedId('__new__')
     setEditorValue(next)
+    setDirty(true)
     setMessage('Exemplo carregado: Aciclovir pasta oral sabor frango. Revise e salve para adicionar ao catálogo.')
   }
+
+  const handleEditorChange = useCallback((next: ManipuladoV1Formula) => {
+    setEditorValue(next)
+    setDirty(true)
+  }, [])
+
+  useEffect(() => {
+    const draftKey = getManipuladoDraftKey(clinicId, selectedId || '')
+    if (!draftKey || !editorValue) return
+    if (autosaveTimerRef.current) window.clearTimeout(autosaveTimerRef.current)
+    autosaveTimerRef.current = window.setTimeout(() => {
+      saveManipuladoDraft(draftKey, editorValue)
+    }, 500)
+    return () => {
+      if (autosaveTimerRef.current) window.clearTimeout(autosaveTimerRef.current)
+    }
+  }, [clinicId, editorValue, selectedId])
+
+  useEffect(() => {
+    const draftKey = getManipuladoDraftKey(clinicId, selectedId || '')
+    const flush = () => saveManipuladoDraft(draftKey, editorValue)
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      flush()
+      if (!dirty) return
+      event.preventDefault()
+      event.returnValue = ''
+    }
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') flush()
+    }
+    window.addEventListener('beforeunload', handleBeforeUnload)
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload)
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+    }
+  }, [clinicId, dirty, editorValue, selectedId])
 
   const handleSave = async () => {
     if (!editorValue || !clinicId) return
@@ -102,8 +224,11 @@ export default function ManipuladosPage() {
         },
       }), data.user?.id || null)
       await loadList()
+      clearManipuladoDraft(getManipuladoDraftKey(clinicId, '__new__'))
+      clearManipuladoDraft(getManipuladoDraftKey(clinicId, saved.identity.id))
       setSelectedId(saved.identity.id)
       setEditorValue(saved)
+      setDirty(false)
       setMessage('Manipulado V1 salvo no catálogo.')
     } catch (error) {
       setMessage(error instanceof Error ? error.message : 'Falha ao salvar o manipulado V1.')
@@ -116,8 +241,10 @@ export default function ManipuladosPage() {
     if (!clinicId || !selectedId) return
     if (!window.confirm('Deseja excluir este manipulado V1 do catálogo?')) return
     await deleteManipuladoV1(clinicId, selectedId)
+    clearManipuladoDraft(getManipuladoDraftKey(clinicId, selectedId))
     setSelectedId('')
     setEditorValue(null)
+    setDirty(false)
     await loadList()
   }
 
@@ -162,10 +289,15 @@ export default function ManipuladosPage() {
 
         <div className="min-w-0 space-y-5">
           {message ? <div className="rounded-2xl border border-[#39ff14]/20 bg-[#143118] px-4 py-3 text-sm text-[#b7f6ad]">{message}</div> : null}
+          {dirty ? (
+            <div className="rounded-2xl border border-amber-400/25 bg-amber-400/10 px-4 py-3 text-sm text-amber-200">
+              Rascunho local ativo. As alterações serão restauradas se você sair da tela ou recarregar a página.
+            </div>
+          ) : null}
           {loading ? (
             <RxvCard className="p-6 text-sm text-slate-400">Carregando fórmula V1...</RxvCard>
           ) : editorValue ? (
-            <ManipuladosV1Editor value={editorValue} onChange={setEditorValue} onSave={handleSave} onDelete={selectedId ? handleDelete : undefined} saving={saving} />
+            <ManipuladosV1Editor value={editorValue} onChange={handleEditorChange} onSave={handleSave} onDelete={selectedId ? handleDelete : undefined} saving={saving} />
           ) : (
             <RxvCard className="p-6 text-sm text-slate-400">Selecione uma fórmula ou crie uma nova para começar.</RxvCard>
           )}

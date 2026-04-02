@@ -6,6 +6,9 @@ import {
   getDefaultFediafStateId,
   getFediafPhysiologicStateById,
   getFediafPhysiologicStates,
+  resolveCatAdultState,
+  resolveDogAdultStateFromActivity,
+  resolveDogGrowthStateFromAge,
 } from './fediaf'
 
 export function calculateRER(weightKg: number, species: Species): number {
@@ -43,12 +46,19 @@ export function computePhysiologicEnergy(options: {
   species: Species
   stateId: string
   weightKg: number
+  ageWeeks?: number
   expectedAdultWeightKg?: number
+  activityHoursPerDay?: number
+  activityImpact?: 'low' | 'high'
+  obesityProne?: boolean
   litterSize?: number
   lactationWeek?: number
+  specialBreedObservation?: 'none' | 'great_dane' | 'newfoundland'
 }) {
   return computeFediafEnergy(options)
 }
+
+export { resolveDogAdultStateFromActivity, resolveDogGrowthStateFromAge, resolveCatAdultState }
 
 export function calculateIdealWeightCustom(currentWeight: number, bcs: BCS, goal: 'weight_loss' | 'weight_gain'): number {
   if (goal === 'weight_loss') {

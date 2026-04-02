@@ -7,6 +7,7 @@ import {
   Dog,
   HeartPulse,
   Info,
+  Home,
   Mars,
   Search,
   ShieldAlert,
@@ -35,14 +36,14 @@ const NEW_ROUTE = '/calculadora-energetica/new'
 const SPECIES_OPTIONS = [
   {
     value: 'dog' as const,
-    title: 'CAO',
-    subtitle: 'Perfis caninos, ECC de cao e alimentos compativeis.',
+    title: 'CÃO',
+    subtitle: 'Perfis caninos, ECC de cão e alimentos compatíveis.',
     icon: Dog,
   },
   {
     value: 'cat' as const,
     title: 'GATO',
-    subtitle: 'Perfis felinos, ECC de gato e catalogo filtrado.',
+    subtitle: 'Perfis felinos, ECC de gato e catálogo filtrado.',
     icon: Cat,
   },
 ]
@@ -131,6 +132,7 @@ export default function PatientStep() {
     setPatient({
       species: nextSpecies,
       breed: '',
+      isIndoor: nextSpecies === 'cat' ? patient.isIndoor ?? true : false,
       comorbidityIds: [],
     })
     setEnergy({
@@ -285,8 +287,23 @@ export default function PatientStep() {
                   step="1"
                   min="0"
                   value={patient.ageMonths ?? ''}
-                  onChange={(event) => setPatient({ ageMonths: Number(event.target.value) || 0 })}
+                  onChange={(event) => {
+                    const ageMonths = Number(event.target.value) || 0
+                    setPatient({ ageMonths, ageWeeks: ageMonths > 0 ? Math.round(ageMonths * 4.345) : 0 })
+                  }}
                   placeholder="Ex: 24"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="pat-age-weeks">Idade (semanas)</Label>
+                <Input
+                  id="pat-age-weeks"
+                  type="number"
+                  step="1"
+                  min="0"
+                  value={patient.ageWeeks ?? ''}
+                  onChange={(event) => setPatient({ ageWeeks: Number(event.target.value) || 0 })}
+                  placeholder="Ex: 16"
                 />
               </div>
               <div className="space-y-2 md:col-span-2">
@@ -336,7 +353,7 @@ export default function PatientStep() {
             </div>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className={cn('grid gap-4', species === 'cat' ? 'md:grid-cols-3' : 'md:grid-cols-2')}>
             <button
               type="button"
               onClick={() => handleNeuterChange(!patient.isNeutered)}
@@ -374,6 +391,27 @@ export default function PatientStep() {
                 <p className="mt-1 text-xs text-muted-foreground">Ativa risco de realimentacao e progressao</p>
               </div>
             </button>
+
+            {species === 'cat' && (
+              <button
+                type="button"
+                onClick={() => setPatient({ isIndoor: !patient.isIndoor })}
+                className={cn(
+                  'flex items-start gap-4 rounded-3xl border px-5 py-5 text-left transition-all duration-200 hover:-translate-y-1 active:scale-[0.99]',
+                  patient.isIndoor
+                    ? 'border-orange-400/60 bg-orange-500/12 shadow-[0_12px_28px_rgba(249,115,22,0.12)]'
+                    : 'border-white/10 bg-white/[0.03] hover:border-orange-500/30 hover:bg-orange-500/[0.05]'
+                )}
+              >
+                <div className={cn('rounded-2xl border p-3', patient.isIndoor ? 'border-orange-400/40 bg-orange-500/20 text-orange-300' : 'border-white/10 bg-black/20 text-muted-foreground')}>
+                  <Home className="h-6 w-6" />
+                </div>
+                <div>
+                  <p className={cn('font-bold', patient.isIndoor ? 'text-white' : 'text-muted-foreground')}>Gato indoor</p>
+                  <p className="mt-1 text-xs text-muted-foreground">Usado para sugerir o perfil energetico felino</p>
+                </div>
+              </button>
+            )}
           </div>
         </section>
 

@@ -33,7 +33,7 @@ const NAV_ITEMS: Array<{ key: RxSection; label: string; to: string; icon: string
   { key: 'drafts', label: 'Rascunhos', to: '/receituario-vet/rascunhos', icon: 'draft' },
   { key: 'clientes', label: 'Tutores e Pacientes', to: '/receituario-vet/clientes', icon: 'group' },
   { key: 'controle', label: 'Controle Especial', to: '/receituario-vet/controle-especial', icon: 'shield' },
-  { key: 'protocolos3', label: 'Protocolos 3.0', to: '/receituario-vet/protocolos-3', icon: 'clinical_notes' },
+  { key: 'protocolos3', label: 'Protocolos', to: '/receituario-vet/protocolos-3', icon: 'clinical_notes' },
   { key: 'perfil', label: 'Configurar Médico', to: '/receituario-vet/configuração', icon: 'assignment_ind' },
   { key: 'templates', label: 'Templates', to: '/receituario-vet/templates', icon: 'palette' },
   { key: 'settings', label: 'Configurações', to: '/receituario-vet/configurações', icon: 'settings' },

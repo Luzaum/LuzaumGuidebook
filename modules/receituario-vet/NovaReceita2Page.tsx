@@ -525,6 +525,24 @@ function normalizeRouteLabel(rawRoute?: string | null): string {
     return String(rawRoute || '').trim()
 }
 
+function routeStringToGroup(rawRoute?: string | null): RouteGroup {
+    const normalized = normalizeRouteLabel(rawRoute)
+    if (!normalized) return 'ORAL'
+    const route = String(normalized).trim().toUpperCase()
+    if (route === 'VO' || route === 'ORAL' || route.includes('ORAL')) return 'ORAL'
+    if (route.includes('OTOL')) return 'OTOLOGICO'
+    if (route.includes('OFT')) return 'OFTALMICO'
+    if (route.includes('TOP')) return 'TOPICO'
+    if (route.includes('SC') || route.includes('SUBCUT')) return 'SC'
+    if (route === 'IM' || route.includes('INTRAMUSC')) return 'IM'
+    if (route === 'IV' || route.includes('INTRAVEN')) return 'IV'
+    if (route.includes('TRANSD')) return 'TRANSDERMICO'
+    if (route.includes('NASAL')) return 'INTRANASAL'
+    if (route.includes('RETAL')) return 'RETAL'
+    if (route.includes('INALAT') || route.includes('NEBUL')) return 'INALATORIO'
+    return 'OUTROS'
+}
+
 function normalizePrescriptionItem(item: PrescriptionItem, defaultStartDate: string, defaultStartHour: string): PrescriptionItem {
     const parsedStart = parseLegacyStart(item.start_date)
     const startDate = item.startDate ?? parsedStart.startDate
@@ -575,6 +593,7 @@ function normalizePrescriptionItem(item: PrescriptionItem, defaultStartDate: str
                 ? formatFrequencyValue(normalizedTimesPerDay)
                 : (item.frequency || ''),
         route: normalizeRouteLabel(item.route),
+        routeGroup: routeStringToGroup(item.route),
         durationValue: durationParts.value ?? item.durationValue,
         durationUnit: durationParts.unit ?? item.durationUnit ?? 'dias',
         duration: durationMode === 'fixed_days'
@@ -1348,16 +1367,31 @@ export default function NovaReceita2Page() {
 
     useEffect(() => {
         const flushReviewDraft = () => saveReviewSession(state)
-        const handleVisibilityChange = () => {
-            if (document.visibilityState === 'hidden') flushReviewDraft()
+        const flushLocalDraft = () => {
+            if (!autosave || !draftKey) return
+            saveLocalDraft(draftKey, state)
+            setHasDraft(true)
         }
-        window.addEventListener('beforeunload', flushReviewDraft)
+        const handleVisibilityChange = () => {
+            if (document.visibilityState === 'hidden') {
+                flushReviewDraft()
+                flushLocalDraft()
+            }
+        }
+        const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+            flushReviewDraft()
+            flushLocalDraft()
+            if (!autosave) return
+            event.preventDefault()
+            event.returnValue = ''
+        }
+        window.addEventListener('beforeunload', handleBeforeUnload)
         document.addEventListener('visibilitychange', handleVisibilityChange)
         return () => {
-            window.removeEventListener('beforeunload', flushReviewDraft)
+            window.removeEventListener('beforeunload', handleBeforeUnload)
             document.removeEventListener('visibilitychange', handleVisibilityChange)
         }
-    }, [state])
+    }, [autosave, draftKey, state])
 
     useEffect(() => {
         if (!quickMode || !quickAddExpanded || quickEntryMode !== 'catalog' || !clinicId) return
@@ -1422,6 +1456,20 @@ export default function NovaReceita2Page() {
         return buildPrintDocsFromNovaReceita2(state)
     }, [state])
     const primaryPrintDoc = printDocs[0]
+    const printDocItemsById = useMemo(() => {
+        const map = new Map<string, { title: string; subtitle: string; instruction: string; cautions: string[] }>()
+        primaryPrintDoc?.sections?.forEach((section) => {
+            section.items.forEach((item) => {
+                map.set(item.id, {
+                    title: item.title,
+                    subtitle: item.subtitle || '',
+                    instruction: item.instruction,
+                    cautions: item.cautions || [],
+                })
+            })
+        })
+        return map
+    }, [primaryPrintDoc])
     const compoundedFinalizationIssues = useMemo(() => {
         return state.items
             .filter((item): item is CompoundedPrescriptionItem => item.kind === 'compounded')
@@ -1546,7 +1594,7 @@ export default function NovaReceita2Page() {
     // ==================== RENDER ====================
 
     return (
-        <ReceituarioChrome section="nova" title="Nova Receita 2.0">
+        <ReceituarioChrome section="nova" title="Nova Receita">
             <div className="min-h-screen bg-[color:var(--rxv-bg)] pb-16">
 
                 {/* ==================== TOPBAR ==================== */}
@@ -1554,7 +1602,7 @@ export default function NovaReceita2Page() {
                     <div className="flex items-center justify-between gap-4 flex-wrap">
                         <div>
                             <h1 className="text-xl font-black text-[color:var(--rxv-text)] uppercase italic tracking-tight sm:text-2xl">
-                                Nova Receita 2.0
+                                Nova Receita
                             </h1>
                             <p className="text-[10px] font-bold text-[color:var(--rxv-muted)] uppercase tracking-widest">
                                 100% Catálogo 3.0
@@ -1747,7 +1795,7 @@ export default function NovaReceita2Page() {
                                     <div className="rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/75 px-4 py-4 text-sm text-[color:var(--rxv-text)]">
                                         <p className="font-semibold text-[color:var(--rxv-text)]">Fluxo recomendado</p>
                                         <p className="mt-2">
-                                            Abra Protocolos 3.0, escolha um protocolo da clinica ou global e use a acao
+                                            Abra Protocolos, escolha um protocolo da clínica ou global e use a ação
                                             para enviar itens, recomendacoes, justificativa de exames e exames para esta receita.
                                         </p>
                                         {location.state && (location.state as any)?.sourceProtocol?.name ? (
@@ -1762,7 +1810,7 @@ export default function NovaReceita2Page() {
                                             onClick={() => navigate('/receituario-vet/protocolos-3')}
                                             className="justify-center"
                                         >
-                                            Abrir Protocolos 3.0
+                                            Abrir Protocolos
                                         </RxvButton>
                                         <div className="rounded-2xl border border-dashed border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/65 px-4 py-4 text-sm text-[color:var(--rxv-muted)]">
                                             A importacao reinicia a receita atual e aplica o protocolo por cima de um estado limpo.
@@ -1965,6 +2013,7 @@ export default function NovaReceita2Page() {
                                     <div className="space-y-4">
                                         {state.items.map((item, idx) => {
                                             const effectiveStart = resolveItemStart(item, state)
+                                            const livePrintItem = printDocItemsById.get(item.id)
                                             const analysis = itemDoseAnalysis.get(item.id)
                                             const concentrationLabel = buildPresentationConcentrationText({
                                                 concentration_text: item.concentration_text,
@@ -2434,7 +2483,7 @@ export default function NovaReceita2Page() {
                                                                     <div aria-hidden="true" className="h-[8px] min-w-[24px] bg-[radial-gradient(circle,rgba(148,163,184,0.72)_1.1px,transparent_1.2px)] bg-[length:10px_8px] bg-repeat-x bg-left-center" />
                                                                     <p className="shrink-0 whitespace-nowrap text-right text-[11px] font-black uppercase tracking-[0.18em] text-slate-300">{printLineRight}</p>
                                                                 </div>
-                                                                <p className="mt-3 text-sm leading-7 text-white">{buildCompoundedInstruction(item, state.patient)}</p>
+                                                                <p className="mt-3 text-sm leading-7 text-white">{livePrintItem?.instruction || buildCompoundedInstruction(item, state.patient)}</p>
                                                                 {item.cautionsText?.trim() ? <p className="mt-1">Orientações ao tutor: {item.cautionsText.trim()}</p> : null}
                                                                 <p className="mt-1">{buildCompoundedPharmacyInstruction(item, state.patient)}</p>
                                                             </div>
@@ -2584,7 +2633,7 @@ export default function NovaReceita2Page() {
                                     <div className="rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/75 px-4 py-4 text-sm text-[color:var(--rxv-text)]">
                                         <p className="font-semibold text-[color:var(--rxv-text)]">Fluxo recomendado</p>
                                         <p className="mt-2">
-                                            Abra Protocolos 3.0, escolha um protocolo da clinica ou global e use a acao
+                                            Abra Protocolos, escolha um protocolo da clínica ou global e use a ação
                                             para enviar itens, recomendacoes e exames para esta receita.
                                         </p>
                                         {location.state && (location.state as any)?.sourceProtocol?.name ? (
@@ -2599,7 +2648,7 @@ export default function NovaReceita2Page() {
                                             onClick={() => navigate('/receituario-vet/protocolos-3')}
                                             className="justify-center"
                                         >
-                                            Abrir Protocolos 3.0
+                                            Abrir Protocolos
                                         </RxvButton>
                                         <div className="rounded-2xl border border-dashed border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/65 px-4 py-4 text-sm text-[color:var(--rxv-muted)]">
                                             A importacao mantem os medicamentos no fluxo atual da Nova Receita.

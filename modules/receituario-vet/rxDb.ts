@@ -57,7 +57,7 @@ export interface CatalogDrug {
   name: string
   speciesTargets: string[]
   controlled: boolean
-  pharmacyType: 'humana' | 'veterinária' | 'manipulacao'
+  pharmacyType: 'humana' | 'veterin�ria' | 'manipulacao'
   routeGroup: RouteGroup
   doseUnit: string
   notes: string
@@ -280,11 +280,11 @@ function allocateAnimalId(db: RxDatabase, currentId?: string, reserved: Set<stri
   return next
 }
 
-const PHARMACY_TYPE_VALUES: PharmacyType[] = ['humana', 'veterinária', 'manipulacao']
+const PHARMACY_TYPE_VALUES: PharmacyType[] = ['humana', 'veterin�ria', 'manipulacao']
 
 function normalizePharmacyTags(
   tags: unknown,
-  fallback: PharmacyType = 'veterinária'
+  fallback: PharmacyType = 'veterin�ria'
 ): PharmacyType[] {
   if (!Array.isArray(tags)) return [fallback]
   const normalized = tags
@@ -296,20 +296,20 @@ function normalizePharmacyTags(
 function repairMojibake(value: string): string {
   if (!value) return ''
   const hasReplacementChar = value.includes('\uFFFD')
-  const hasCommonMojibakeMarkers = /[ÃÂâ]/.test(value)
+  const hasCommonMojibakeMarkers = /[���]/.test(value)
   if (!hasReplacementChar && !hasCommonMojibakeMarkers) return value
 
   const replacements: Record<string, string> = {
     '\uFFFD': '-',
     '\\uFFFD': '-',
-    'â€¢': '-',
-    'â€“': '-',
-    'â€”': '-',
-    'â€œ': '"',
-    'â€': '"',
-    'â€˜': "'",
-    'â€™': "'",
-    'Â ': ' ',
+    '•': '-',
+    '–': '-',
+    '—': '-',
+    '“': '"',
+    '”': '"',
+    '‘': "'",
+    '’': "'",
+    '� ': ' ',
   }
 
   try {
@@ -332,10 +332,10 @@ const defaultProfile: ProfileSettings = {
   fullName: 'Dr. Silva',
   crmv: '12345',
   uf: 'SP',
-  specialty: 'Clínica Médica de Pequenos Animais',
-  clinicName: 'CLÍNICA VETERINÁRIA VETIUS',
+  specialty: 'Cl�nica M�dica de Pequenos Animais',
+  clinicName: 'CL�NICA VETERIN�RIA VETIUS',
   clinicCnpj: '',
-  clinicAddress: 'Rua das Flores, 123 - Jardins, São Paulo - SP',
+  clinicAddress: 'Rua das Flores, 123 - Jardins, S�o Paulo - SP',
   clinicPhone: '(11) 99999-8888',
   clinicLogoDataUrl: '',
   signatureDataUrl: '',
@@ -350,25 +350,25 @@ function seedCatalog(): CatalogDrug[] {
       name: 'Apoquel',
       speciesTargets: ['Caes'],
       controlled: false,
-      pharmacyType: 'veterinária',
+      pharmacyType: 'veterin�ria',
       routeGroup: 'ORAL',
       doseUnit: 'mg/kg',
       notes: 'Antipruriginoso.',
       updatedAt: now,
       presentations: [
-        { id: uid('pres'), name: 'Comprimido', concentration: '16 mg/comprimido', unitLabel: 'comprimido', pharmacyTags: ['veterinária'] },
-        { id: uid('pres'), name: 'Comprimido', concentration: '5.4 mg/comprimido', unitLabel: 'comprimido', pharmacyTags: ['veterinária'] },
+        { id: uid('pres'), name: 'Comprimido', concentration: '16 mg/comprimido', unitLabel: 'comprimido', pharmacyTags: ['veterin�ria'] },
+        { id: uid('pres'), name: 'Comprimido', concentration: '5.4 mg/comprimido', unitLabel: 'comprimido', pharmacyTags: ['veterin�ria'] },
       ],
     },
     {
       id: uid('drug'),
-      name: 'Dipirona Sódica',
+      name: 'Dipirona S�dica',
       speciesTargets: ['Caes', 'Gatos'],
       controlled: false,
       pharmacyType: 'humana',
       routeGroup: 'ORAL',
       doseUnit: 'mg/kg',
-      notes: 'Analgésico e antipirético.',
+      notes: 'Analg�sico e antipir�tico.',
       updatedAt: now,
       presentations: [{ id: uid('pres'), name: 'Gotas', concentration: '500 mg/mL', unitLabel: 'mL', pharmacyTags: ['humana'] }],
     },
@@ -377,24 +377,24 @@ function seedCatalog(): CatalogDrug[] {
       name: 'Amoxicilina + Clavulanato',
       speciesTargets: ['Caes', 'Gatos'],
       controlled: false,
-      pharmacyType: 'veterinária',
+      pharmacyType: 'veterin�ria',
       routeGroup: 'ORAL',
       doseUnit: 'mg/kg',
-      notes: 'Antibiótico de amplo espectro.',
+      notes: 'Antibi�tico de amplo espectro.',
       updatedAt: now,
-      presentations: [{ id: uid('pres'), name: 'Comprimido', concentration: '250 mg/comprimido', unitLabel: 'comprimido', pharmacyTags: ['veterinária', 'humana'] }],
+      presentations: [{ id: uid('pres'), name: 'Comprimido', concentration: '250 mg/comprimido', unitLabel: 'comprimido', pharmacyTags: ['veterin�ria', 'humana'] }],
     },
     {
       id: uid('drug'),
       name: 'Meloxicam',
       speciesTargets: ['Caes', 'Gatos'],
       controlled: false,
-      pharmacyType: 'veterinária',
+      pharmacyType: 'veterin�ria',
       routeGroup: 'ORAL',
       doseUnit: 'mg/kg',
       notes: 'AINE.',
       updatedAt: now,
-      presentations: [{ id: uid('pres'), name: 'Suspensão Oral', concentration: '0.2 mg/mL', unitLabel: 'mL', pharmacyTags: ['veterinária'] }],
+      presentations: [{ id: uid('pres'), name: 'Suspens�o Oral', concentration: '0.2 mg/mL', unitLabel: 'mL', pharmacyTags: ['veterin�ria'] }],
     },
     {
       id: uid('drug'),
@@ -406,19 +406,19 @@ function seedCatalog(): CatalogDrug[] {
       doseUnit: 'mg/kg',
       notes: 'Uso controlado.',
       updatedAt: now,
-      presentations: [{ id: uid('pres'), name: 'Cápsula', concentration: '50 mg/cápsula', unitLabel: 'cápsula', pharmacyTags: ['veterinária', 'humana', 'manipulacao'] }],
+      presentations: [{ id: uid('pres'), name: 'C�psula', concentration: '50 mg/c�psula', unitLabel: 'c�psula', pharmacyTags: ['veterin�ria', 'humana', 'manipulacao'] }],
     },
     {
       id: uid('drug'),
       name: 'Cefalexina',
       speciesTargets: ['Caes', 'Gatos'],
       controlled: false,
-      pharmacyType: 'veterinária',
+      pharmacyType: 'veterin�ria',
       routeGroup: 'ORAL',
       doseUnit: 'mg/kg',
-      notes: 'Antibiótico oral.',
+      notes: 'Antibi�tico oral.',
       updatedAt: now,
-      presentations: [{ id: uid('pres'), name: 'Comprimido', concentration: '500 mg/comprimido', unitLabel: 'comprimido', pharmacyTags: ['veterinária', 'humana'] }],
+      presentations: [{ id: uid('pres'), name: 'Comprimido', concentration: '500 mg/comprimido', unitLabel: 'comprimido', pharmacyTags: ['veterin�ria', 'humana'] }],
     },
     {
       id: uid('drug'),
@@ -428,15 +428,15 @@ function seedCatalog(): CatalogDrug[] {
       pharmacyType: 'humana',
       routeGroup: 'ORAL',
       doseUnit: 'mg/kg',
-      notes: 'Protetor gástrico.',
+      notes: 'Protetor g�strico.',
       updatedAt: now,
-      presentations: [{ id: uid('pres'), name: 'Cápsula', concentration: '20 mg/cápsula', unitLabel: 'cápsula', pharmacyTags: ['humana'] }],
+      presentations: [{ id: uid('pres'), name: 'C�psula', concentration: '20 mg/c�psula', unitLabel: 'c�psula', pharmacyTags: ['humana'] }],
     },
   ]
 }
 
 const PRESET_PROTOCOL_FOLDERS: Array<Omit<RxProtocolFolder, 'sortOrder'>> = [
-  { id: 'folder-pos-operatorio', name: 'PÓS-OPERATÓRIO', color: '#22c55e', icon: 'healing' },
+  { id: 'folder-pos-operatorio', name: 'P�S-OPERAT�RIO', color: '#22c55e', icon: 'healing' },
   { id: 'folder-dermatologia', name: 'DERMATOLOGIA', color: '#f59e0b', icon: 'dermatology' },
   { id: 'folder-cardiologia', name: 'CARDIOLOGIA', color: '#ef4444', icon: 'cardiology' },
   { id: 'folder-pneumologia', name: 'PNEUMOLOGIA', color: '#38bdf8', icon: 'respiratory_rate' },
@@ -464,7 +464,7 @@ function createProtocolTemplateItem(partial: Partial<PrescriptionItem>): Prescri
     presentation: partial.presentation || '',
     concentration: partial.concentration || '',
     commercialName: partial.commercialName || '',
-    pharmacyType: partial.pharmacyType || 'veterinária',
+    pharmacyType: partial.pharmacyType || 'veterin�ria',
     packageType: partial.packageType || 'caixa',
     pharmacyName: partial.pharmacyName || '',
     observations: partial.observations || '',
@@ -502,7 +502,7 @@ function createProtocolItemFromCatalog(
 ): PrescriptionItem {
   const drug = firstCatalogHit(catalog, query)
   const presentation = drug?.presentations?.[0]
-  const defaultPharmacyType = presentation?.pharmacyTags?.[0] || drug?.pharmacyType || 'veterinária'
+  const defaultPharmacyType = presentation?.pharmacyTags?.[0] || drug?.pharmacyType || 'veterin�ria'
   return createProtocolTemplateItem({
     name: drug?.name || fallbackName,
     catalogDrugId: drug?.id || '',
@@ -522,8 +522,8 @@ function seedProtocols(catalog: CatalogDrug[]): RxProtocol[] {
   return [
     {
       id: uid('protocol'),
-      name: 'Pós-Castração Cães',
-      summary: 'Controle de dor, anti-inflamatório e antimicrobiano para pós-operatório de tecidos moles.',
+      name: 'P�s-Castra��o C�es',
+      summary: 'Controle de dor, anti-inflamat�rio e antimicrobiano para p�s-operat�rio de tecidos moles.',
       folderId: 'folder-pos-operatorio',
       requiresSpecialControl: false,
       species: 'Caes',
@@ -537,9 +537,9 @@ function seedProtocols(catalog: CatalogDrug[]): RxProtocol[] {
           frequencyType: 'timesPerDay',
           timesPerDay: '1',
           durationDays: '5',
-          cautions: ['Administrar após alimentação.'],
+          cautions: ['Administrar ap�s alimenta��o.'],
         }),
-        createProtocolItemFromCatalog(catalog, 'dipirona', 'Dipirona Sódica', {
+        createProtocolItemFromCatalog(catalog, 'dipirona', 'Dipirona S�dica', {
           doseValue: '25',
           doseUnit: 'mg/kg',
           frequencyType: 'everyHours',
@@ -556,7 +556,7 @@ function seedProtocols(catalog: CatalogDrug[]): RxProtocol[] {
       ],
       recommendations: [
         'Manter repouso relativo por 7 dias.',
-        'Retornar em 48 horas para avaliação da ferida cirúrgica.',
+        'Retornar em 48 horas para avalia��o da ferida cir�rgica.',
       ],
       exams: ['Hemograma completo'],
       examReasons: [],
@@ -566,15 +566,15 @@ function seedProtocols(catalog: CatalogDrug[]): RxProtocol[] {
     {
       id: uid('protocol'),
       name: 'Otite Externa Canina',
-      summary: 'Tratamento padrão para otite externa aguda com anti-inflamatório e analgesia.',
+      summary: 'Tratamento padr�o para otite externa aguda com anti-inflamat�rio e analgesia.',
       folderId: 'folder-dermatologia',
       requiresSpecialControl: false,
       species: 'Caes',
       active: true,
-      tags: ['Otológico', 'Dermatologia'],
+      tags: ['Otol�gico', 'Dermatologia'],
       durationLabel: '10-14 dias',
       items: [
-        createProtocolItemFromCatalog(catalog, 'dipirona', 'Dipirona Sódica', {
+        createProtocolItemFromCatalog(catalog, 'dipirona', 'Dipirona S�dica', {
           doseValue: '20',
           doseUnit: 'mg/kg',
           frequencyType: 'everyHours',
@@ -590,8 +590,8 @@ function seedProtocols(catalog: CatalogDrug[]): RxProtocol[] {
         }),
       ],
       recommendations: [
-        'Realizar limpeza auricular diária antes da medicação tópica.',
-        'Retornar em 7 dias para reavaliação otoscópica.',
+        'Realizar limpeza auricular di�ria antes da medica��o t�pica.',
+        'Retornar em 7 dias para reavalia��o otosc�pica.',
       ],
       exams: ['Citologia'],
       examReasons: [],
@@ -600,8 +600,8 @@ function seedProtocols(catalog: CatalogDrug[]): RxProtocol[] {
     },
     {
       id: uid('protocol'),
-      name: 'Dermatite Atópica',
-      summary: 'Controle de prurido e inflamação com monitoramento de resposta clínica.',
+      name: 'Dermatite At�pica',
+      summary: 'Controle de prurido e inflama��o com monitoramento de resposta cl�nica.',
       folderId: 'folder-dermatologia',
       requiresSpecialControl: false,
       species: 'Caes',
@@ -618,8 +618,8 @@ function seedProtocols(catalog: CatalogDrug[]): RxProtocol[] {
         }),
       ],
       recommendations: [
-        'Reforçar controle ambiental e higiene da cama.',
-        'Reavaliar dose após 14 dias conforme resposta ao prurido.',
+        'Refor�ar controle ambiental e higiene da cama.',
+        'Reavaliar dose ap�s 14 dias conforme resposta ao prurido.',
       ],
       exams: ['Citologia'],
       examReasons: [],
@@ -629,7 +629,7 @@ function seedProtocols(catalog: CatalogDrug[]): RxProtocol[] {
     {
       id: uid('protocol'),
       name: 'Gastroenterite Aguda',
-      summary: 'Suporte inicial com analgesia, protetor gástrico e dieta leve.',
+      summary: 'Suporte inicial com analgesia, protetor g�strico e dieta leve.',
       folderId: 'folder-gastro',
       requiresSpecialControl: false,
       species: 'Geral',
@@ -644,7 +644,7 @@ function seedProtocols(catalog: CatalogDrug[]): RxProtocol[] {
           timesPerDay: '1',
           durationDays: '5',
         }),
-        createProtocolItemFromCatalog(catalog, 'dipirona', 'Dipirona Sódica', {
+        createProtocolItemFromCatalog(catalog, 'dipirona', 'Dipirona S�dica', {
           doseValue: '25',
           doseUnit: 'mg/kg',
           frequencyType: 'everyHours',
@@ -654,23 +654,23 @@ function seedProtocols(catalog: CatalogDrug[]): RxProtocol[] {
       ],
       recommendations: [
         'Ofertar dieta gastrointestinal fracionada a cada 8 horas.',
-        'Manter hidratação oral monitorada.',
+        'Manter hidrata��o oral monitorada.',
       ],
-      exams: ['Bioquímica sérica', 'Hemograma completo'],
+      exams: ['Bioqu�mica s�rica', 'Hemograma completo'],
       examReasons: [],
       createdAt: now,
       updatedAt: now,
     },
     {
       id: uid('protocol'),
-      name: 'Suporte Cardiológico Básico',
-      summary: 'Exemplo de protocolo base para pacientes crônicos com ajuste individual.',
+      name: 'Suporte Cardiol�gico B�sico',
+      summary: 'Exemplo de protocolo base para pacientes cr�nicos com ajuste individual.',
       folderId: 'folder-cardiologia',
       requiresSpecialControl: true,
       species: 'Geral',
       active: true,
       tags: ['Cardio', 'Cronico'],
-      durationLabel: 'Uso contínuo',
+      durationLabel: 'Uso cont�nuo',
       items: [
         createProtocolItemFromCatalog(catalog, 'tramadol', 'Tramadol', {
           doseValue: '2',
@@ -679,14 +679,14 @@ function seedProtocols(catalog: CatalogDrug[]): RxProtocol[] {
           everyHours: '12',
           continuousUse: true,
           durationDays: '',
-          cautions: ['Monitorar sedação e ajustar conforme necessidade.'],
+          cautions: ['Monitorar seda��o e ajustar conforme necessidade.'],
         }),
       ],
       recommendations: [
-        'Monitorar frequência respiratória em repouso diariamente.',
-        'Reavaliação cardiológica em 30 dias.',
+        'Monitorar frequ�ncia respirat�ria em repouso diariamente.',
+        'Reavalia��o cardiol�gica em 30 dias.',
       ],
-      exams: ['Bioquímica sérica', 'Urinálise', 'Ultrassonografia abdominal'],
+      exams: ['Bioqu�mica s�rica', 'Urin�lise', 'Ultrassonografia abdominal'],
       examReasons: [],
       createdAt: now,
       updatedAt: now,
@@ -723,7 +723,7 @@ function defaultDb(): RxDatabase {
   const defaultPrescriberProfile: PrescriberProfile = {
     ...defaultProfile,
     id: 'default',
-    profileName: 'Perfil Padrão',
+    profileName: 'Perfil Padr�o',
     createdAt: now,
     updatedAt: now,
   }
@@ -753,7 +753,7 @@ export function createSpecialControlTemplateStyle(): RxTemplateStyle {
 
 function normalizeCatalogPresentation(
   raw: Partial<CatalogPresentation>,
-  fallbackPharmacyType: PharmacyType = 'veterinária'
+  fallbackPharmacyType: PharmacyType = 'veterin�ria'
 ): CatalogPresentation {
   const concentrationValue = repairMojibake(raw.concentrationValue || '')
   const concentrationUnit = repairMojibake(raw.concentrationUnit || '')
@@ -784,7 +784,7 @@ function normalizeCatalogPresentation(
 }
 
 function normalizeCatalogDrug(raw: Partial<CatalogDrug>): CatalogDrug {
-  const normalizedPharmacyType = raw.pharmacyType || 'veterinária'
+  const normalizedPharmacyType = raw.pharmacyType || 'veterin�ria'
   return {
     id: raw.id || uid('drug'),
     name: repairMojibake(raw.name || ''),
@@ -1104,7 +1104,7 @@ export function loadRxDb(): RxDatabase {
     }
 
     // Persist one-way cleanup for legacy corrupted strings.
-    if (/[ÃÂâ]/.test(raw) || raw.includes('\uFFFD')) {
+    if (/[���]/.test(raw) || raw.includes('\uFFFD')) {
       localStorage.setItem(scopedKey, JSON.stringify(normalized))
     } else if (!rawScoped && rawLegacy) {
       // Migrate legacy shared database to user-scoped key.
@@ -1188,7 +1188,7 @@ export function createEmptyDrug(): CatalogDrug {
     name: '',
     speciesTargets: [],
     controlled: false,
-    pharmacyType: 'veterinária',
+    pharmacyType: 'veterin�ria',
     routeGroup: 'ORAL',
     doseUnit: 'mg/kg',
     notes: '',
@@ -1205,7 +1205,7 @@ export function createEmptyDrug(): CatalogDrug {
       unitLabel: 'comprimido',
       commercialName: '',
       averagePrice: '',
-      pharmacyTags: ['veterinária'],
+      pharmacyTags: ['veterin�ria'],
     }],
   }
 }

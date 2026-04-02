@@ -11,6 +11,8 @@ import Hospitalized from './pages/Hospitalized';
 import Reports from './pages/Reports';
 import BcsGuide from './pages/BcsGuide';
 import NaturalFoods from './pages/NaturalFoods';
+import PatientHistoryDetail from './pages/PatientHistoryDetail';
+import ReportDetail from './pages/ReportDetail';
 import { cn } from './lib/utils';
 import './index.css';
 
@@ -144,11 +146,13 @@ export default function App() {
           <Route index element={<Dashboard />} />
           <Route path="new/*" element={<NewCalculation />} />
           <Route path="patients" element={<Patients />} />
+          <Route path="patients/:patientKey" element={<PatientHistoryDetail />} />
           <Route path="bcs" element={<BcsGuide />} />
           <Route path="foods" element={<Foods />} />
           <Route path="foods/natural" element={<NaturalFoods />} />
           <Route path="hospitalized" element={<Hospitalized />} />
           <Route path="reports" element={<Reports />} />
+          <Route path="reports/:reportId" element={<ReportDetail />} />
           <Route path="*" element={<Navigate to={BASE_ROUTE} replace />} />
         </Routes>
       </Layout>

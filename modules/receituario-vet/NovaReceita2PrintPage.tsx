@@ -1,13 +1,13 @@
 // NovaReceita2PrintPage.tsx
-// Página de revisão interativa + impressão/PDF para Nova Receita 2.0
+// P�gina de revis�o interativa + impress�o/PDF para Nova Receita 2.0
 //
 // MODOS (via query param ?mode=):
-//   review  → layout 2 colunas: editor esquerda + preview clicável direita (DEFAULT)
+//   review  → layout 2 colunas: editor esquerda + preview clic�vel direita (DEFAULT)
 //   print   → apenas preview + auto window.print()
 //   pdf     → apenas preview + auto download PDF
 //
-// A edição aqui é apenas do RASCUNHO em memória (sessionStorage).
-// Não salva no Supabase.
+// A edi��o aqui � apenas do RASCUNHO em mem�ria (sessionStorage).
+// N�o salva no Supabase.
 
 import React, {
     useCallback,
@@ -68,16 +68,16 @@ function buildPdfFileName(patientName: string, tutorName: string): string {
 
 const ROUTE_OPTIONS = [
     { value: 'VO', label: 'Oral (VO)' },
-    { value: 'SC', label: 'Subcutâneo (SC)' },
+    { value: 'SC', label: 'Subcut�neo (SC)' },
     { value: 'IM', label: 'Intramuscular (IM)' },
     { value: 'IV', label: 'Intravenoso (IV)' },
-    { value: 'Tópico', label: 'Tópico' },
-    { value: 'Oftálmico', label: 'Oftálmico' },
-    { value: 'Otológico', label: 'Otológico' },
+    { value: 'T�pico', label: 'T�pico' },
+    { value: 'Oft�lmico', label: 'Oft�lmico' },
+    { value: 'Otol�gico', label: 'Otol�gico' },
     { value: 'Intranasal', label: 'Intranasal' },
     { value: 'Retal', label: 'Retal' },
-    { value: 'Inalatório', label: 'Inalatório' },
-    { value: 'Transdérmico', label: 'Transdérmico' },
+    { value: 'Inalat�rio', label: 'Inalat�rio' },
+    { value: 'Transd�rmico', label: 'Transd�rmico' },
 ]
 
 // ==================== EDITOR PANEL TYPES ====================
@@ -171,7 +171,7 @@ function EditorIdentification({
                             />
                         </Field>
                     </div>
-                    <Field label="Endereço">
+                    <Field label="Endere�o">
                         <Input
                             value={tutor.street || ''}
                             onChange={(e) => setTutor('street', e.target.value)}
@@ -179,7 +179,7 @@ function EditorIdentification({
                         />
                     </Field>
                     <div className="grid grid-cols-3 gap-3">
-                        <Field label="Número">
+                        <Field label="N�mero">
                             <Input
                                 value={tutor.number || ''}
                                 onChange={(e) => setTutor('number', e.target.value)}
@@ -226,7 +226,7 @@ function EditorIdentification({
                         />
                     </Field>
                     <div className="grid grid-cols-2 gap-3">
-                        <Field label="Raça">
+                        <Field label="Ra�a">
                             <Input
                                 value={patient.breed || ''}
                                 onChange={(e) => setPatient('breed', e.target.value)}
@@ -257,11 +257,11 @@ function EditorRecommendations({
 }) {
     return (
         <div className="space-y-3">
-            <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Recomendações gerais</p>
+            <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Recomenda��es gerais</p>
             <textarea
                 className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2.5 text-sm text-white placeholder:text-slate-600 focus:border-[#39ff14]/40 focus:outline-none"
                 rows={8}
-                placeholder="Digite orientações ao tutor..."
+                placeholder="Digite orienta��es ao tutor..."
                 value={state.recommendations}
                 onChange={(e) =>
                     onStateChange((prev) => ({ ...prev, recommendations: e.target.value }))
@@ -298,7 +298,7 @@ function EditorItem({
     if (!item) {
         return (
             <div className="rounded-xl border border-dashed border-slate-700 p-6 text-center">
-                <p className="text-sm text-slate-500">Item não encontrado.</p>
+                <p className="text-sm text-slate-500">Item n�o encontrado.</p>
             </div>
         )
     }
@@ -314,11 +314,11 @@ function EditorItem({
         <div className="space-y-3">
             <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Editando item</p>
 
-            {/* Identificação do medicamento — todos editáveis */}
+            {/* Identifica��o do medicamento � todos edit�veis */}
             <div className="rounded-xl border border-slate-800 bg-black/40 p-3 space-y-3">
-                <p className="text-[10px] font-black uppercase tracking-widest text-slate-600">Identificação</p>
+                <p className="text-[10px] font-black uppercase tracking-widest text-slate-600">Identifica��o</p>
 
-                <Field label="Nome do fármaco">
+                <Field label="Nome do f�rmaco">
                     <Input
                         value={item.name}
                         onChange={(e) => setField('name', e.target.value)}
@@ -327,7 +327,7 @@ function EditorItem({
                 </Field>
 
                 <div className="grid grid-cols-2 gap-3">
-                    <Field label="Concentração">
+                    <Field label="Concentra��o">
                         <Input
                             value={item.concentration_text || ''}
                             onChange={(e) => setField('concentration_text', e.target.value)}
@@ -344,7 +344,7 @@ function EditorItem({
                 </div>
 
                 {item.pharmaceutical_form !== undefined && (
-                    <Field label="Forma farmacêutica">
+                    <Field label="Forma farmac�utica">
                         <Input
                             value={item.pharmaceutical_form || ''}
                             onChange={(e) => setField('pharmaceutical_form', e.target.value)}
@@ -385,14 +385,14 @@ function EditorItem({
                             ))}
                         </select>
                     </Field>
-                    <Field label="Frequência">
+                    <Field label="Frequ�ncia">
                         <Input
                             value={item.frequency || ''}
                             onChange={(e) => setField('frequency', e.target.value)}
                             placeholder="Ex: BID, TID, 12/12h"
                         />
                     </Field>
-                    <Field label="Duração">
+                    <Field label="Dura��o">
                         <Input
                             value={item.duration || ''}
                             onChange={(e) => setField('duration', e.target.value)}
@@ -401,11 +401,11 @@ function EditorItem({
                     </Field>
                 </div>
 
-                <Field label="Instruções de uso">
+                <Field label="Instru��es de uso">
                     <textarea
                         className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:border-[#39ff14]/40 focus:outline-none"
                         rows={3}
-                        placeholder="Instruções específicas para o tutor..."
+                        placeholder="Instru��es espec�ficas para o tutor..."
                         value={item.instructions || ''}
                         onChange={(e) => setField('instructions', e.target.value)}
                     />
@@ -415,7 +415,7 @@ function EditorItem({
                     <textarea
                         className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:border-[#39ff14]/40 focus:outline-none"
                         rows={2}
-                        placeholder="Ex: Não usar em fêmeas prenhes&#10;Monitorar função renal"
+                        placeholder="Ex: N�o usar em f�meas prenhes&#10;Monitorar fun��o renal"
                         value={(item.cautions || []).join('\n')}
                         onChange={(e) =>
                             setField('cautions', e.target.value.split('\n').map((s) => s.trim()).filter(Boolean))
@@ -452,10 +452,10 @@ function Input(props: React.InputHTMLAttributes<HTMLInputElement>) {
 // ==================== ZONE LABEL ====================
 
 const ZONE_LABEL: Record<TemplateZoneKey, string> = {
-    header: 'Cabeçalho (clínica/médico)',
-    patient: 'Identificação (tutor/paciente)',
+    header: 'Cabe�alho (cl�nica/m�dico)',
+    patient: 'Identifica��o (tutor/paciente)',
     body: 'Corpo da receita',
-    recommendations: 'Recomendações',
+    recommendations: 'Recomenda��es',
     signature: 'Assinatura',
 }
 
@@ -525,8 +525,8 @@ export default function NovaReceita2PrintPage() {
             const item = state?.items.find((i) => i.id === editorFocus.itemId)
             return `Editando: ${item?.name || 'Item'}`
         }
-        if (editorFocus.type === 'identification') return 'Identificação (Tutor/Paciente)'
-        if (editorFocus.type === 'recommendations') return 'Recomendações'
+        if (editorFocus.type === 'identification') return 'Identifica��o (Tutor/Paciente)'
+        if (editorFocus.type === 'recommendations') return 'Recomenda��es'
         return 'Editor'
     }, [editorFocus, state])
 
@@ -549,7 +549,7 @@ export default function NovaReceita2PrintPage() {
     const handleDownloadPdf = useCallback(async () => {
         const container = previewRef.current
         if (!container) {
-            pushToast('Preview não disponível para exportação.')
+            pushToast('Preview n�o dispon�vel para exporta��o.')
             return
         }
         const hasControlledDoc = !!printDocs?.some((doc) => doc.documentKind === 'special-control')
@@ -562,7 +562,7 @@ export default function NovaReceita2PrintPage() {
             state?.tutor?.zipcode,
         ].filter(Boolean).length
         if (hasControlledDoc && (!state?.tutor?.cpf || !hasTutorAddress)) {
-            pushToast('Receita de controle especial exige CPF e endereço completo do tutor.')
+            pushToast('Receita de controle especial exige CPF e endere�o completo do tutor.')
             return
         }
 
@@ -633,7 +633,7 @@ export default function NovaReceita2PrintPage() {
                 }
             }
 
-            // Upload para Supabase Storage (best-effort, não bloqueia o usuário)
+            // Upload para Supabase Storage (best-effort, n�o bloqueia o usu�rio)
             if (effectivePrescriptionId && patientId && clinicId) {
                 try {
                     const blob = pdf.output('blob')
@@ -677,7 +677,7 @@ export default function NovaReceita2PrintPage() {
         }
         const digits = phone.replace(/\D/g, '')
         const normalized = digits.startsWith('55') ? digits : `55${digits}`
-        const msg = `Olá ${state?.tutor?.name || ''}, segue a receita do paciente ${state?.patient?.name || ''}.`
+        const msg = `Ol� ${state?.tutor?.name || ''}, segue a receita do paciente ${state?.patient?.name || ''}.`
         window.open(`https://wa.me/${normalized}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer')
         try { await handleDownloadPdf() } catch { /* ignore */ }
     }, [state, pushToast, handleDownloadPdf])
@@ -704,7 +704,7 @@ export default function NovaReceita2PrintPage() {
         return (
             <div className="flex min-h-screen items-center justify-center bg-[#0a0f0a] text-white">
                 <div className="text-center">
-                    <p className="text-slate-400 mb-4">Nenhuma receita carregada para revisão.</p>
+                    <p className="text-slate-400 mb-4">Nenhuma receita carregada para revis�o.</p>
                     <Link
                         to="/receituario-vet/nova-receita-2"
                         className="rounded-lg border border-[#39ff14]/40 px-4 py-2 text-sm font-bold text-[#39ff14] hover:bg-[#39ff14]/10"
@@ -723,11 +723,11 @@ export default function NovaReceita2PrintPage() {
             <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-3 flex-wrap">
                 <div>
                     <h1 className="text-lg font-black text-white">
-                        {isReviewMode ? '✏️ Revisão Interativa' : isPrintMode ? '🖨️ Impressão' : '📄 Exportar PDF'}
+                        {isReviewMode ? '✏️ Revis�o Interativa' : isPrintMode ? '🖨️ Impress�o' : '📄 Exportar PDF'}
                     </h1>
                     <p className="text-xs text-slate-400">
                         {isReviewMode
-                            ? 'Clique nas seções do preview para editar'
+                            ? 'Clique nas se��es do preview para editar'
                             : `Template: ${selectedTemplate.name}`}
                     </p>
                 </div>
@@ -787,21 +787,21 @@ export default function NovaReceita2PrintPage() {
                                     <div className="space-y-2 text-xs text-slate-500 mt-3">
                                         <p className="flex items-center gap-2">
                                             <span className="inline-block w-3 h-3 rounded-full border border-[#39ff14]/50 bg-[#39ff14]/10" />
-                                            Clique em <strong className="text-slate-400">Identificação</strong> para editar tutor/paciente
+                                            Clique em <strong className="text-slate-400">Identifica��o</strong> para editar tutor/paciente
                                         </p>
                                         <p className="flex items-center gap-2">
                                             <span className="inline-block w-3 h-3 rounded-full border border-[#39ff14]/50 bg-[#39ff14]/10" />
-                                            Clique em <strong className="text-slate-400">Recomendações</strong> para editar orientações
+                                            Clique em <strong className="text-slate-400">Recomenda��es</strong> para editar orienta��es
                                         </p>
                                         <p className="flex items-center gap-2">
                                             <span className="inline-block w-3 h-3 rounded-full border border-[#39ff14]/50 bg-[#39ff14]/10" />
-                                            Clique em qualquer <strong className="text-slate-400">medicamento</strong> para editar dose/instrução
+                                            Clique em qualquer <strong className="text-slate-400">medicamento</strong> para editar dose/instru��o
                                         </p>
                                     </div>
                                 )}
                             </div>
 
-                            {/* Zone buttons (atalho rápido) */}
+                            {/* Zone buttons (atalho r�pido) */}
                             <div className="flex flex-wrap gap-2">
                                 {(['patient', 'recommendations'] as TemplateZoneKey[]).map((zone) => (
                                     <button
@@ -848,7 +848,7 @@ export default function NovaReceita2PrintPage() {
                                 )}
                                 {!editorFocus && (
                                     <p className="py-4 text-center text-xs text-slate-600">
-                                        Selecione uma seção ou item no preview →
+                                        Selecione uma se��o ou item no preview →
                                     </p>
                                 )}
                             </div>
@@ -859,10 +859,10 @@ export default function NovaReceita2PrintPage() {
                             <div className="rxv-review-preview-inner rounded-xl border border-slate-700 bg-slate-900/50 overflow-hidden">
                                 <div className="flex items-center justify-between border-b border-slate-800 px-4 py-2 bg-black/40">
                                     <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                                        Preview clicável — {selectedTemplate.name}
+                                        Preview clic�vel � {selectedTemplate.name}
                                     </span>
                                     <span className="text-[10px] text-slate-600">
-                                        {activeZone ? `Zona ativa: ${ZONE_LABEL[activeZone] || activeZone}` : selectedItemId ? 'Item selecionado' : 'Nenhuma seleção'}
+                                        {activeZone ? `Zona ativa: ${ZONE_LABEL[activeZone] || activeZone}` : selectedItemId ? 'Item selecionado' : 'Nenhuma sele��o'}
                                     </span>
                                 </div>
 
@@ -876,7 +876,7 @@ export default function NovaReceita2PrintPage() {
                                                 <div key={`${doc.documentKind || 'standard'}-${idx}`} className="space-y-2">
                                                     {printDocs.length > 1 && (
                                                         <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">
-                                                            {doc.documentKind === 'special-control' ? 'Prévia: Receita de controle especial' : 'Prévia: Receita padrão'}
+                                                            {doc.documentKind === 'special-control' ? 'Pr�via: Receita de controle especial' : 'Pr�via: Receita padr�o'}
                                                         </p>
                                                     )}
                                                     <RxPrintView
@@ -898,7 +898,7 @@ export default function NovaReceita2PrintPage() {
                     </div>
                 </div>
 
-                {/* C1: Print CSS para modo review — só imprime a coluna do preview */}
+                {/* C1: Print CSS para modo review � s� imprime a coluna do preview */}
                 <style>{`
                     @media print {
                         body { background: white !important; color: black !important; margin: 0 !important; padding: 0 !important; }
@@ -923,7 +923,7 @@ export default function NovaReceita2PrintPage() {
                             margin: 0 !important;
                         }
 
-                        /* Remove decorações do container */
+                        /* Remove decora��es do container */
                         .rxv-review-preview-inner {
                             border: none !important;
                             background: white !important;
@@ -951,10 +951,10 @@ export default function NovaReceita2PrintPage() {
     }
 
     // ==================== PRINT / PDF LAYOUT ====================
-    // Estratégia de isolamento de impressão:
-    //   - Div de TELA (print:hidden): contém topbar + wrapper escuro + previewRef para PDF
-    //   - Div de IMPRESSÃO (hidden print:block): apenas RxPrintView limpo, sem qualquer decoração
-    // Isso garante que window.print() nunca vaza estilos do app dark-theme para a impressão.
+    // Estrat�gia de isolamento de impress�o:
+    //   - Div de TELA (print:hidden): cont�m topbar + wrapper escuro + previewRef para PDF
+    //   - Div de IMPRESS�O (hidden print:block): apenas RxPrintView limpo, sem qualquer decora��o
+    // Isso garante que window.print() nunca vaza estilos do app dark-theme para a impress�o.
 
     return (
         <>
@@ -988,7 +988,7 @@ export default function NovaReceita2PrintPage() {
                 )}
             </div>
 
-            {/* IMPRESSÃO: Container limpo — só visível via window.print() */}
+            {/* IMPRESS�O: Container limpo � s� vis�vel via window.print() */}
             <div className="hidden print:block bg-white text-black">
                 {printDocs.map((doc, idx) => (
                     <div key={`${doc.documentKind || 'standard'}-${idx}`} className={idx > 0 ? 'page-break-before-always' : ''}>

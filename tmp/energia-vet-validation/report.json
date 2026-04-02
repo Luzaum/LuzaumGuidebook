@@ -1,19 +1,25 @@
 {
-  "generatedAt": "2026-03-29T13:37:48.609Z",
+  "generatedAt": "2026-04-02T11:33:11.728Z",
   "screenshots": {
     "energy": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\energy-step.png",
     "target": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\target-step.png",
     "eccModal": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\ecc-modal.png",
     "food": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\food-step.png",
     "foodModal": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\food-modal.png",
-    "summary": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\summary-step.png"
+    "summary": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\summary-step.png",
+    "history": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\history-step.png",
+    "patientDetail": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\patient-detail.png",
+    "bcsGuide": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\bcs-guide.png"
   },
   "checks": {
     "summaryReached": true,
     "macroChartPresent": true,
     "adequacySectionPresent": true,
     "eccModalPresent": true,
-    "foodModalPresent": true,
-    "profileText": "Perfil de exigencia principalAdulto em manutencao Atividade moderada"
+    "foodModalPresent": false,
+    "historyPresent": true,
+    "patientDetailPresent": true,
+    "catGuidePresent": true,
+    "profileText": "Perfil clinicoAdulto Padrao"
   }
 }

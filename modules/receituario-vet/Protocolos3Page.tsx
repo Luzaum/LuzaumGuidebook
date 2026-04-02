@@ -1,5 +1,5 @@
-// Ã¢Å“â€¦ Protocolos 3.0 Ã¢â‚¬â€ RefatoraÃƒÂ§ÃƒÂ£o Completa (100% Supabase)
-// Ã°Å¸Å¡Â« ZERO localStorage, ZERO rxDb, ZERO mistura de fontes
+// ✅ Protocolos 3.0 — Refatoração Completa (100% Supabase)
+// 🚫 ZERO localStorage, ZERO rxDb, ZERO mistura de fontes
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -157,15 +157,15 @@ function repairMojibakeText(value: string): string {
   if (!input) return ''
 
   const replacements: Record<string, string> = {
-    'Ã¢Å“â€œ ': '',
+    '✓ ': '',
     'cl?nica': 'clínica',
     'CL?NICA': 'CLÍNICA',
     'Ser?': 'Será',
-    'usuÃƒÂ¡rios': 'usuários',
-    'DescriÃƒÂ§ÃƒÂ£o': 'Descrição',
-    'EspÃƒÂ©cie': 'Espécie',
-    'publicaÃƒÂ§ÃƒÂ£o': 'publicação',
-    'Ã¢â‚¬Â¢': '•',
+    'usuários': 'usuários',
+    'Descrição': 'Descrição',
+    'Espécie': 'Espécie',
+    'publicação': 'publicação',
+    '•': '•',
     'Apresentacao': 'Apresentação',
     'apresentacoes': 'apresentações',
   }
@@ -175,7 +175,7 @@ function repairMojibakeText(value: string): string {
     next = next.replaceAll(from, to)
   }
 
-  if (/[ÃÂâ]/.test(next)) {
+  if (/�/.test(next)) {
     try {
       next = decodeURIComponent(escape(next))
     } catch {
@@ -404,7 +404,7 @@ export default function Protocolos3Page() {
   const [userId, setUserId] = useState<string | null>(null)
   const [canPublishGlobalProtocols, setCanPublishGlobalProtocols] = useState(false)
 
-  // Ã¢Å“â€¦ Estado: lista de pastas e protocolos
+  // ✅ Estado: lista de pastas e protocolos
   const [folders, setFolders] = useState<ProtocolFolderRecord[]>([])
   const [protocols, setProtocols] = useState<ProtocolListEntry[]>([])
   const [isLoadingFolders, setIsLoadingFolders] = useState(false)
@@ -412,7 +412,7 @@ export default function Protocolos3Page() {
   const [scopeFilter, setScopeFilter] = useState<ProtocolScopeFilter>('all')
   const [searchQuery, setSearchQuery] = useState('')
 
-  // Ã¢Å“â€¦ Estado: seleÃƒÂ§ÃƒÂ£o STITCH layout
+  // ✅ Estado: seleção STITCH layout
   const [selectedFolderId, setSelectedFolderId] = useState<string | null>(null)
   const [selectedProtocolKey, setSelectedProtocolKey] = useState<string | null>(null)
   const [selectedProtocolBundle, setSelectedProtocolBundle] = useState<ProtocolBundle | null>(null)
@@ -421,28 +421,40 @@ export default function Protocolos3Page() {
   const [isDuplicatingGlobal, setIsDuplicatingGlobal] = useState(false)
   const [isSavingProtocol, setIsSavingProtocol] = useState(false)
 
-  // Ã¢Å“â€¦ Estado: modal criar/editar protocolo
+  // ✅ Estado: modal criar/editar protocolo
   const [modalOpen, setModalOpen] = useState(false)
   const [editingProtocol, setEditingProtocol] = useState<ProtocolBundle | null>(null)
+  const protocolDraftScope = editingProtocol?.protocol?.id || 'new'
+  const protocolEditorActiveKey = useMemo(() => {
+    if (!clinicId || !userId) return null
+    return `protocolos-editor:active:${clinicId}:${userId}`
+  }, [clinicId, userId])
+  const protocolDraftStorageKey = useMemo(() => {
+    if (!clinicId || !userId || !editingProtocol) return null
+    return `draft:protocolos-editor:${protocolDraftScope}:${clinicId}:${userId}`
+  }, [clinicId, editingProtocol, protocolDraftScope, userId])
   const [protocolDraft, setProtocolDraft, clearProtocolDraft, hasProtocolDraft] = useLocalDraft<ProtocolBundle | null>(
-    'protocolos3-editor',
+    `protocolos-editor:${protocolDraftScope}`,
     clinicId || null,
     userId,
     null,
     {
       debounceMs: 800,
-      enabled: !!clinicId && !!userId && modalOpen && !!editingProtocol && !editingProtocol.protocol.id,
+      enabled: !!clinicId && !!userId && modalOpen && !!editingProtocol,
+      onHydrated: (value) => {
+        if (value) setEditingProtocol(value)
+      },
     }
   )
 
-  // Ã¢Å“â€¦ Estado: criar pasta
+  // ✅ Estado: criar pasta
   const [createFolderOpen, setCreateFolderOpen] = useState(false)
   const [createFolderName, setCreateFolderName] = useState('')
   const [isCreatingFolder, setIsCreatingFolder] = useState(false)
   const [protocolMedicationModalOpen, setProtocolMedicationModalOpen] = useState(false)
   const [protocolMedicationManualMode, setProtocolMedicationManualMode] = useState(false)
 
-  // Ã¢Å“â€¦ Estado: busca de medicamentos
+  // ✅ Estado: busca de medicamentos
   const [medicationSearchOpen, setMedicationSearchOpen] = useState(false)
   const [medicationSearchQuery, setMedicationSearchQuery] = useState('')
   const [medications, setMedications] = useState<MedicationSearchResult[]>([])
@@ -468,7 +480,7 @@ export default function Protocolos3Page() {
 
   // ==================== EFFECTS ====================
 
-  // Ã¢Å“â€¦ Obter userId do Supabase
+  // ✅ Obter userId do Supabase
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
       if (data?.user) {
@@ -481,7 +493,7 @@ export default function Protocolos3Page() {
     })
   }, [role])
 
-  // Ã¢Å“â€¦ Carregar pastas (apenas apÃƒÂ³s clinicId e userId estarem definidos)
+  // ✅ Carregar pastas (apenas após clinicId e userId estarem definidos)
   useEffect(() => {
     if (!clinicId || !userId) {
       console.log('[Protocolos3] Aguardando clinicId e userId', { clinicId, userId })
@@ -508,7 +520,7 @@ export default function Protocolos3Page() {
       .finally(() => setIsLoadingFolders(false))
   }, [clinicId, userId])
 
-  // Ã¢Å“â€¦ Carregar protocolos (apenas apÃƒÂ³s clinicId e userId estarem definidos)
+  // ✅ Carregar protocolos (apenas após clinicId e userId estarem definidos)
   useEffect(() => {
     if (!clinicId || !userId) {
       console.log('[Protocolos3] Aguardando clinicId e userId para protocolos', { clinicId, userId })
@@ -530,7 +542,7 @@ export default function Protocolos3Page() {
       .finally(() => setIsLoadingProtocols(false))
   }, [clinicId, userId])
 
-  // Ã¢Å“â€¦ Busca de medicamentos (CatÃƒÂ¡logo 3.0) com debounce
+  // ✅ Busca de medicamentos (Catálogo 3.0) com debounce
   useEffect(() => {
     if (!clinicId || !medicationSearchOpen) {
       setMedications([])
@@ -634,6 +646,58 @@ export default function Protocolos3Page() {
   const updateEditingProtocol = useCallback((updater: (prev: ProtocolBundle) => ProtocolBundle) => {
     setEditingProtocol((prev) => (prev ? updater(prev) : prev))
   }, [])
+
+  useEffect(() => {
+    if (!modalOpen || !editingProtocol) return
+    setProtocolDraft(editingProtocol)
+  }, [editingProtocol, modalOpen, setProtocolDraft])
+
+  useEffect(() => {
+    if (!protocolEditorActiveKey) return
+    try {
+      if (modalOpen && editingProtocol) {
+        localStorage.setItem(protocolEditorActiveKey, JSON.stringify(editingProtocol))
+      } else {
+        localStorage.removeItem(protocolEditorActiveKey)
+      }
+    } catch {
+      // noop
+    }
+  }, [editingProtocol, modalOpen, protocolEditorActiveKey])
+
+  useEffect(() => {
+    if (!modalOpen || !editingProtocol || !protocolDraftStorageKey) return
+    const flush = () => {
+      try {
+        localStorage.setItem(protocolDraftStorageKey, JSON.stringify(editingProtocol))
+      } catch {
+        // noop
+      }
+    }
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') flush()
+    }
+    window.addEventListener('beforeunload', flush)
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    return () => {
+      window.removeEventListener('beforeunload', flush)
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+    }
+  }, [editingProtocol, modalOpen, protocolDraftStorageKey])
+
+  useEffect(() => {
+    if (!protocolEditorActiveKey || modalOpen || editingProtocol || !clinicId || !userId) return
+    try {
+      const raw = localStorage.getItem(protocolEditorActiveKey)
+      if (!raw) return
+      const restored = JSON.parse(raw) as ProtocolBundle
+      if (!restored?.protocol) return
+      setEditingProtocol(restored)
+      setModalOpen(true)
+    } catch {
+      // noop
+    }
+  }, [clinicId, editingProtocol, modalOpen, protocolEditorActiveKey, userId])
 
   const closeMedicationSearchModal = useCallback(() => {
     setPresentationPickerMedication(null)
@@ -868,7 +932,7 @@ export default function Protocolos3Page() {
       if (!clinicId || !userId) return
 
       try {
-        console.log('[Protocolos3] Carregando protocolo para ediÃƒÂ§ÃƒÂ£o', protocolId)
+        console.log('[Protocolos3] Carregando protocolo para edição', protocolId)
         const bundle = await loadProtocolBundle(clinicId, userId, protocolId)
         if (bundle) {
           setEditingProtocol({ ...bundle, examItems: bundle.examItems || [] })
@@ -1011,7 +1075,7 @@ export default function Protocolos3Page() {
       } catch (err) {
         console.error('[Protocolos3] Erro ao excluir protocolo', err)
         const errorDetails = safeStringify(err)
-        console.error('[Protocolos3] Detalhes do erro de exclusÃƒÂ£o:', errorDetails)
+        console.error('[Protocolos3] Detalhes do erro de exclusão:', errorDetails)
         alert(`Falha ao excluir protocolo\n\nDetalhes:\n${errorDetails}`)
       }
     },
@@ -1061,10 +1125,10 @@ export default function Protocolos3Page() {
         // Converter medicamentos do protocolo para itens da receita
         const prescriptionItems = bundle.medications.map(mapProtocolMedicationToPrescriptionItem)
 
-        // Converter recomendaÃƒÂ§ÃƒÂµes para string
+        // Converter recomendações para string
         const recommendationsText = mapProtocolRecommendationsToString(bundle.recommendations)
 
-        // Construir payload para navegaÃƒÂ§ÃƒÂ£o
+        // Construir payload para navegação
         const payload = {
           items: prescriptionItems,
           recommendations: recommendationsText,
@@ -1194,7 +1258,7 @@ export default function Protocolos3Page() {
       try {
         console.log('[Protocolos3] Adicionando medicamento', medication.name)
 
-        // Buscar apresentaÃƒÂ§ÃƒÂµes do medicamento
+        // Buscar apresentações do medicamento
         const presentations = await getMedicationPresentations(clinicId, medication.id)
         const defaultPresentation = presentations[0] // Use first available presentation
 
@@ -1203,7 +1267,7 @@ export default function Protocolos3Page() {
           return
         }
 
-        // Create item Ã¢â‚¬â€ only fields that exist in the DB schema
+        // Create item — only fields that exist in the DB schema
         const newItem: ProtocolMedicationItem = {
           medication_id: medication.id,
           medication_name: medication.name,
@@ -1212,7 +1276,7 @@ export default function Protocolos3Page() {
             defaultPresentation.pharmaceutical_form,
             defaultPresentation.commercial_name,
             defaultPresentation.concentration_text,
-          ].filter(Boolean).join(' Ã¢â‚¬â€ '),
+          ].filter(Boolean).join(' — '),
           manual_medication_name: null,
           manual_presentation_label: null,
           concentration_value: (defaultPresentation as any).concentration_value || null,
@@ -1224,7 +1288,7 @@ export default function Protocolos3Page() {
           duration_days: 7,
           is_controlled: medication.is_controlled,
           sort_order: editingProtocol.medications.length,
-          // NOTE: no `instructions` Ã¢â‚¬â€ column does not exist in DB
+          // NOTE: no `instructions` — column does not exist in DB
         }
 
         setEditingProtocol({
@@ -1622,7 +1686,7 @@ export default function Protocolos3Page() {
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <RxvField label="Nome do protocolo">
                   <RxvInput
-                    placeholder="Ex: Dermatite atópica"
+                    placeholder="Ex: Dermatite atípica"
                     value={editingProtocol.protocol.name}
                     onChange={(e) => updateProtocolHeader({ name: e.target.value })}
                   />
@@ -2259,7 +2323,7 @@ export default function Protocolos3Page() {
   return (
     <ReceituarioChrome
       section="protocolos"
-      title="Meus Protocolos"
+      title="Protocolos"
       actions={
         <button
           type="button"
@@ -2492,6 +2556,7 @@ export default function Protocolos3Page() {
                   onChange={setProtocolCompoundedEditorValue}
                   onSave={handleSaveProtocolCompoundedEditor}
                   saving={false}
+                  saveLabel="Salvar no protocolo"
                 />
               ) : (
                 <RxvCard className="p-6 text-sm text-slate-400">
@@ -2547,7 +2612,7 @@ export default function Protocolos3Page() {
               <div className="space-y-6">
                 <RxvField label="Nome do protocolo">
                   <RxvInput
-                    placeholder="Ex: Dermatite atópica"
+                    placeholder="Ex: Dermatite atípica"
                     value={editingProtocol.protocol.name}
                     onChange={(e) =>
                       setEditingProtocol({
@@ -3109,7 +3174,7 @@ export default function Protocolos3Page() {
                     }
                     options={linkedGlobalProtocols.map((protocol) => ({
                       value: protocol.id,
-                      label: `${protocol.name} • slug ${protocol.slug} • v${protocol.version}`,
+                      label: `${protocol.name} → slug ${protocol.slug} → v${protocol.version}`,
                     }))}
                   />
                 </RxvField>

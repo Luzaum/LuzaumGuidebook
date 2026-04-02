@@ -368,6 +368,10 @@ function applyProtocolMedicationOverridesToV1(
       duration_label: protocolMed.duration_days === -1 ? 'até reavaliação' : v1.prescribing.duration_label,
       clinical_note: notes || v1.prescribing.clinical_note,
     },
+    pharmacy: {
+      ...v1.pharmacy,
+      qsp_text: (protocolMed.metadata as Record<string, unknown>)?.qsp_override as string || v1.pharmacy.qsp_text,
+    },
     display: {
       ...v1.display,
       auto_print_line: true,

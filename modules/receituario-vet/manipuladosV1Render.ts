@@ -32,13 +32,11 @@ export function renderManipuladoV1PharmacyInstruction(formula: ManipuladoV1Formu
     .filter((ingredient) => ingredient.role === 'active' && ingredient.name)
     .map((ingredient) => {
       const quantityText =
-        ingredient.quantity != null
-          ? `${ingredient.quantity} ${ingredient.unit}`.trim()
-          : ingredient.rule === 'per_kg'
-            ? `${ingredient.min_quantity ?? ''}${ingredient.max_quantity ? `-${ingredient.max_quantity}` : ''} ${ingredient.unit}/kg`.trim()
-            : ingredient.rule === 'per_m2'
-              ? `${ingredient.min_quantity ?? ''}${ingredient.max_quantity ? `-${ingredient.max_quantity}` : ''} ${ingredient.unit}/m²`.trim()
-              : ingredient.weight_range_text
+        ingredient.rule === 'per_kg' || ingredient.rule === 'per_m2' || ingredient.rule === 'weight_range'
+          ? 'de acordo com a dose prescrita'
+          : ingredient.quantity != null
+            ? `${ingredient.quantity} ${ingredient.unit}`.trim()
+            : ingredient.weight_range_text
       return [ingredient.name, quantityText].filter(Boolean).join(' ')
     })
     .filter(Boolean)
@@ -80,3 +78,4 @@ export function getManipuladoV1PrintLineRight(formula: ManipuladoV1Formula): str
   const normalized = normalizeManipuladoV1(formula)
   return normalized.display.auto_print_line ? buildPrintLineRight(normalized) : sanitizeVisibleText(normalized.display.print_line_right)
 }
+

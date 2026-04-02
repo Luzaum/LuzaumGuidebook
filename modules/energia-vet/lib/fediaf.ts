@@ -517,15 +517,22 @@ export const FEDIAF_REQUIREMENT_PROFILES: RequirementProfile[] = [
 
 export const FEDIAF_PHYSIOLOGIC_STATES: PhysiologicState[] = [
   { id: 'dog_young_adult_1_2', label: 'Jovem adulto 1-2 anos', species: 'dog', category: 'Adulto', minFactor: 130 / 90, maxFactor: 130 / 90, defaultFactor: 130 / 90, calculationMode: 'kcal_per_metabolic_bw', minKcalPerMetabolicBw: 125, maxKcalPerMetabolicBw: 140, defaultKcalPerMetabolicBw: 130, defaultRequirementProfileId: 'fediaf-dog-adult-110-1000kcal', explanation: 'Tabela VII-6: MER medio para caes de 1 a 2 anos.', source: 'FEDIAF 2025', clinicalObservation: 'Usar como ponto de partida e reajustar por condicao corporal.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [54], tables: ['VII-6'] } },
-  { id: 'dog_adult_moderate', label: 'Adulto moderadamente ativo', species: 'dog', category: 'Adulto', minFactor: 110 / 90, maxFactor: 110 / 90, defaultFactor: 110 / 90, calculationMode: 'kcal_per_metabolic_bw', minKcalPerMetabolicBw: 110, maxKcalPerMetabolicBw: 110, defaultKcalPerMetabolicBw: 110, defaultRequirementProfileId: 'fediaf-dog-adult-110-1000kcal', explanation: 'Tabela VII-7: 110 kcal/kg^0.75 para atividade moderada de baixo impacto.', source: 'FEDIAF 2025', clinicalObservation: 'Referencia-base para adultos de manutencao com rotina comum.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [55], tables: ['VII-7'] } },
-  { id: 'dog_adult_low_activity', label: 'Adulto baixa atividade / obeso-prone', species: 'dog', category: 'Adulto', minFactor: 90 / 90, maxFactor: 95 / 90, defaultFactor: 95 / 90, calculationMode: 'kcal_per_metabolic_bw', minKcalPerMetabolicBw: 90, maxKcalPerMetabolicBw: 95, defaultKcalPerMetabolicBw: 95, defaultRequirementProfileId: 'fediaf-dog-adult-95-1000kcal', explanation: 'Tabela VII-7: 95 kcal/kg^0.75 para baixa atividade; <=90 para obesidade.', source: 'FEDIAF 2025', clinicalObservation: 'Preferir esta base em pacientes sedentarios ou propensos a ganho de peso.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [55], tables: ['VII-7'] } },
+  { id: 'dog_adult_sedentary', label: 'Cão adulto sedentário', species: 'dog', category: 'Adulto', minFactor: 90 / 90, maxFactor: 90 / 90, defaultFactor: 90 / 90, calculationMode: 'kcal_per_metabolic_bw', minKcalPerMetabolicBw: 90, maxKcalPerMetabolicBw: 90, defaultKcalPerMetabolicBw: 90, defaultRequirementProfileId: 'fediaf-dog-adult-95-1000kcal', explanation: 'Perfil prático para cães sem exercício regular ou com mobilidade muito reduzida.', source: 'FEDIAF 2025', clinicalObservation: 'Usar para pacientes sedentários de rotina ou com gasto muito baixo.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [55], tables: ['VII-7'] } },
+  { id: 'dog_adult_low_activity', label: 'Adulto baixa atividade (< 1 h/dia)', species: 'dog', category: 'Adulto', minFactor: 95 / 90, maxFactor: 95 / 90, defaultFactor: 95 / 90, calculationMode: 'kcal_per_metabolic_bw', minKcalPerMetabolicBw: 95, maxKcalPerMetabolicBw: 95, defaultKcalPerMetabolicBw: 95, defaultRequirementProfileId: 'fediaf-dog-adult-95-1000kcal', explanation: 'Tabela VII-7: 95 kcal/kg^0.75 para rotina de baixa atividade, tipicamente abaixo de 1 hora ao dia.', source: 'FEDIAF 2025', clinicalObservation: 'Perfil pratico para passeio curto na guia e rotina sedentaria.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [55], tables: ['VII-7'] } },
+  { id: 'dog_adult_obese_prone', label: 'Adulto predisposto a obesidade', species: 'dog', category: 'Condicao corporal / manejo', minFactor: 90 / 90, maxFactor: 90 / 90, defaultFactor: 90 / 90, calculationMode: 'kcal_per_metabolic_bw', minKcalPerMetabolicBw: 90, maxKcalPerMetabolicBw: 90, defaultKcalPerMetabolicBw: 90, defaultRequirementProfileId: 'fediaf-dog-adult-95-1000kcal', explanation: 'Tabela VII-7: usar ate 90 kcal/kg^0.75 em adultos predispostos a obesidade.', source: 'FEDIAF 2025', clinicalObservation: 'Preferir em pacientes castrados, com sobrepeso ou alta eficiencia energetica.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [55], tables: ['VII-7'] } },
+  { id: 'dog_adult_moderate_low_impact', label: 'Adulto atividade moderada, baixo impacto (1-3 h/dia)', species: 'dog', category: 'Atividade', minFactor: 110 / 90, maxFactor: 110 / 90, defaultFactor: 110 / 90, calculationMode: 'kcal_per_metabolic_bw', minKcalPerMetabolicBw: 110, maxKcalPerMetabolicBw: 110, defaultKcalPerMetabolicBw: 110, defaultRequirementProfileId: 'fediaf-dog-adult-110-1000kcal', explanation: 'Tabela VII-7: 110 kcal/kg^0.75 para atividade moderada de baixo impacto entre 1 e 3 horas ao dia.', source: 'FEDIAF 2025', clinicalObservation: 'Referencia-base para manutencao em rotina comum de exercicio leve.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [55], tables: ['VII-7'] } },
+  { id: 'dog_adult_moderate_high_impact', label: 'Adulto atividade moderada, alto impacto (1-3 h/dia)', species: 'dog', category: 'Atividade', minFactor: 125 / 90, maxFactor: 125 / 90, defaultFactor: 125 / 90, calculationMode: 'kcal_per_metabolic_bw', minKcalPerMetabolicBw: 125, maxKcalPerMetabolicBw: 125, defaultKcalPerMetabolicBw: 125, defaultRequirementProfileId: 'fediaf-dog-adult-110-1000kcal', explanation: 'Tabela VII-7: 125 kcal/kg^0.75 para atividade moderada de alto impacto entre 1 e 3 horas ao dia.', source: 'FEDIAF 2025', clinicalObservation: 'Usar em rotinas com corrida, treino intenso ou carga mecanica maior.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [55], tables: ['VII-7'] } },
+  { id: 'dog_adult_high_activity', label: 'Adulto alta atividade (3-6 h/dia)', species: 'dog', category: 'Atividade', minFactor: 150 / 90, maxFactor: 175 / 90, defaultFactor: 160 / 90, calculationMode: 'kcal_per_metabolic_bw', minKcalPerMetabolicBw: 150, maxKcalPerMetabolicBw: 175, defaultKcalPerMetabolicBw: 160, defaultRequirementProfileId: 'fediaf-dog-adult-110-1000kcal', explanation: 'Tabela VII-7: 150 a 175 kcal/kg^0.75 para alta atividade ou trabalho regular.', source: 'FEDIAF 2025', clinicalObservation: 'Partida adequada para caes de trabalho; o consumo real deve ser reavaliado cedo.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [55], tables: ['VII-7'] } },
+  { id: 'dog_adult_extreme_activity', label: 'Adulto condicoes extremas', species: 'dog', category: 'Atividade', minFactor: 860 / 90, maxFactor: 1240 / 90, defaultFactor: 1050 / 90, calculationMode: 'kcal_per_metabolic_bw', minKcalPerMetabolicBw: 860, maxKcalPerMetabolicBw: 1240, defaultKcalPerMetabolicBw: 1050, defaultRequirementProfileId: 'fediaf-dog-adult-110-1000kcal', explanation: 'Tabela VII-7: 860 a 1240 kcal/kg^0.75 em condicoes extremas, como caes de trenó.', source: 'FEDIAF 2025', clinicalObservation: 'Nao usar em rotina comum. Este perfil exige acompanhamento clinico e de desempenho muito proximo.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [55], tables: ['VII-7'] } },
   { id: 'dog_senior_gt_7', label: 'Senior > 7 anos', species: 'dog', category: 'Senior', minFactor: 80 / 90, maxFactor: 120 / 90, defaultFactor: 95 / 90, calculationMode: 'kcal_per_metabolic_bw', minKcalPerMetabolicBw: 80, maxKcalPerMetabolicBw: 120, defaultKcalPerMetabolicBw: 95, defaultRequirementProfileId: 'fediaf-dog-adult-95-1000kcal', explanation: 'Tabela VII-6: media de 95 kcal/kg^0.75 com faixa 80-120 em seniors.', source: 'FEDIAF 2025', clinicalObservation: 'Nao assumir reducao fixa; validar massa muscular e atividade real.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [54], tables: ['VII-6'] } },
-  { id: 'dog_growth_0_12m', label: 'Crescimento 8 semanas a 12 meses', species: 'dog', category: 'Crescimento', minFactor: 0, maxFactor: 0, defaultFactor: 0, calculationMode: 'dog_growth', requiresExpectedAdultWeightKg: true, defaultRequirementProfileId: 'fediaf-dog-early-growth-1000kcal', explanation: 'Tabela VII-8b: usar a equacao de crescimento baseada em peso atual e peso adulto esperado.', source: 'FEDIAF 2025', clinicalObservation: 'Filhotes nao devem ser alimentados ad libitum; pesar com frequencia.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [56], tables: ['VII-8b'] } },
+  { id: 'dog_growth_curve_8w_4m', label: 'Filhote 8 semanas a 4 meses (curva FEDIAF)', species: 'dog', category: 'Crescimento', minFactor: 0, maxFactor: 0, defaultFactor: 0, calculationMode: 'dog_growth', requiresExpectedAdultWeightKg: true, requiresAgeWeeks: true, defaultRequirementProfileId: 'fediaf-dog-early-growth-1000kcal', explanation: 'Tabela VII-8b: usar a curva FEDIAF com peso atual, idade e peso adulto esperado no crescimento inicial.', source: 'FEDIAF 2025', clinicalObservation: 'Evitar alimentacao ad libitum, especialmente em filhotes de racas grandes e gigantes.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [56], tables: ['VII-8b'] } },
+  { id: 'dog_growth_curve_4_12m', label: 'Filhote 4 a 12 meses (curva FEDIAF)', species: 'dog', category: 'Crescimento', minFactor: 0, maxFactor: 0, defaultFactor: 0, calculationMode: 'dog_growth', requiresExpectedAdultWeightKg: true, requiresAgeWeeks: true, defaultRequirementProfileId: 'fediaf-dog-late-growth-1000kcal', explanation: 'Tabela VII-8b: crescimento guiado por curva FEDIAF na fase de desenvolvimento tardio.', source: 'FEDIAF 2025', clinicalObservation: 'Monitorar crescimento, score corporal e evitar excesso energetico em racas grandes.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [56], tables: ['VII-8b'] } },
   { id: 'dog_gestation_first_4w', label: 'Gestacao primeiras 4 semanas', species: 'dog', category: 'Reproducao', minFactor: 132 / 90, maxFactor: 132 / 90, defaultFactor: 132 / 90, calculationMode: 'kcal_per_metabolic_bw', minKcalPerMetabolicBw: 132, maxKcalPerMetabolicBw: 132, defaultKcalPerMetabolicBw: 132, defaultRequirementProfileId: 'fediaf-dog-early-growth-1000kcal', explanation: 'Tabela VII-8b: 132 kcal x kg^0.75 nas 4 primeiras semanas.', source: 'FEDIAF 2025', clinicalObservation: 'A exigencia nutricional segue o perfil de reproducao/early growth.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [56], tables: ['VII-8b'] } },
   { id: 'dog_gestation_last_5w', label: 'Gestacao ultimas 5 semanas', species: 'dog', category: 'Reproducao', minFactor: 0, maxFactor: 0, defaultFactor: 0, calculationMode: 'factor', defaultRequirementProfileId: 'fediaf-dog-early-growth-1000kcal', explanation: 'Tabela VII-8b: 132 x kg^0.75 + 26 x kg nas ultimas 5 semanas.', source: 'FEDIAF 2025', clinicalObservation: 'Reavaliar oferta com ganho gestacional e apetite.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [56], tables: ['VII-8b'] } },
   { id: 'dog_lactation', label: 'Lactacao', species: 'dog', category: 'Reproducao', minFactor: 0, maxFactor: 0, defaultFactor: 0, calculationMode: 'dog_lactation', requiresLitterSize: true, requiresLactationWeek: true, defaultRequirementProfileId: 'fediaf-dog-early-growth-1000kcal', explanation: 'Tabela VII-8b: equacao varia por tamanho da ninhada e semana de lactacao.', source: 'FEDIAF 2025', clinicalObservation: 'Para algumas cadelas a necessidade real exige alimentacao ad libitum.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [56], tables: ['VII-8b'] } },
   { id: 'cat_adult_active', label: 'Adulto ativo', species: 'cat', category: 'Adulto', minFactor: 100 / 70, maxFactor: 100 / 70, defaultFactor: 100 / 70, calculationMode: 'kcal_per_metabolic_bw', minKcalPerMetabolicBw: 100, maxKcalPerMetabolicBw: 100, defaultKcalPerMetabolicBw: 100, defaultRequirementProfileId: 'fediaf-cat-adult-100-1000kcal', explanation: 'Tabela VII-9: 100 kcal/kg^0.67 para gatos ativos.', source: 'FEDIAF 2025', clinicalObservation: 'Base para gatos magros e ativos; indoor costuma pedir menos.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [57], tables: ['VII-9'] } },
   { id: 'cat_adult_neutered_indoor', label: 'Adulto castrado e/ou indoor', species: 'cat', category: 'Adulto', minFactor: 75 / 70, maxFactor: 75 / 70, defaultFactor: 75 / 70, calculationMode: 'kcal_per_metabolic_bw', minKcalPerMetabolicBw: 75, maxKcalPerMetabolicBw: 75, defaultKcalPerMetabolicBw: 75, defaultRequirementProfileId: 'fediaf-cat-adult-75-1000kcal', explanation: 'Tabela VII-9: 75 kcal/kg^0.67 para gatos castrados e/ou indoor.', source: 'FEDIAF 2025', clinicalObservation: 'Esta e a referencia padrao para risco de obesidade em gatos domiciliados.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [57], tables: ['VII-9'] } },
+  { id: 'cat_adult_indoor_weight_prone', label: 'Adulto indoor com baixa demanda energetica', species: 'cat', category: 'Condicao corporal / manejo', minFactor: 52 / 70, maxFactor: 75 / 70, defaultFactor: 60 / 70, calculationMode: 'kcal_per_metabolic_bw', minKcalPerMetabolicBw: 52, maxKcalPerMetabolicBw: 75, defaultKcalPerMetabolicBw: 60, defaultRequirementProfileId: 'fediaf-cat-adult-75-1000kcal', explanation: 'Tabela VII-9: faixa de 52 a 75 kcal/kg^0.67 para gatos indoor/neutered, com valor tipico de 75.', source: 'FEDIAF 2025', clinicalObservation: 'Boa escolha para felinos indoor de baixa atividade e tendencia a ganho de peso.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [57], tables: ['VII-9'] } },
   { id: 'cat_growth_0_4m', label: 'Crescimento ate 4 meses', species: 'cat', category: 'Crescimento', minFactor: 2, maxFactor: 2.5, defaultFactor: 2.25, calculationMode: 'factor', defaultRequirementProfileId: 'fediaf-cat-growth-1000kcal', explanation: 'Tabela VII-10: 2.0 a 2.5 vezes o MER de manutencao.', source: 'FEDIAF 2025', clinicalObservation: 'Usar crescimento/reproducao como base de comparacao nutricional.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [57], tables: ['VII-10'] } },
   { id: 'cat_growth_4_9m', label: 'Crescimento 4 a 9 meses', species: 'cat', category: 'Crescimento', minFactor: 1.75, maxFactor: 2, defaultFactor: 1.875, calculationMode: 'factor', defaultRequirementProfileId: 'fediaf-cat-growth-1000kcal', explanation: 'Tabela VII-10: 1.75 a 2.0 vezes o MER de manutencao.', source: 'FEDIAF 2025', clinicalObservation: 'Ajustar conforme curva de crescimento e condicao corporal.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [57], tables: ['VII-10'] } },
   { id: 'cat_growth_9_12m', label: 'Crescimento 9 a 12 meses', species: 'cat', category: 'Crescimento', minFactor: 1.5, maxFactor: 1.5, defaultFactor: 1.5, calculationMode: 'factor', defaultRequirementProfileId: 'fediaf-cat-growth-1000kcal', explanation: 'Tabela VII-10: 1.5 vezes o MER de manutencao.', source: 'FEDIAF 2025', clinicalObservation: 'Ao final do crescimento, a demanda se aproxima da manutencao adulta.', sourceReference: { document: 'FEDIAF Nutritional Guidelines 2025', pages: [57], tables: ['VII-10'] } },
@@ -543,7 +550,7 @@ export function getFediafPhysiologicStateById(id: string): PhysiologicState | un
 
 export function getDefaultFediafStateId(species: Species, isNeutered: boolean): string {
   if (species === 'dog') {
-    return isNeutered ? 'dog_adult_low_activity' : 'dog_adult_moderate'
+    return isNeutered ? 'dog_adult_obese_prone' : 'dog_adult_moderate_low_impact'
   }
   return isNeutered ? 'cat_adult_neutered_indoor' : 'cat_adult_active'
 }
@@ -560,6 +567,35 @@ export function getDefaultRequirementProfileIdForState(species: Species, stateId
     : isNeutered
     ? 'fediaf-cat-adult-75-1000kcal'
     : 'fediaf-cat-adult-100-1000kcal'
+}
+
+export function resolveDogAdultStateFromActivity(options: {
+  hoursPerDay?: number
+  impact?: 'low' | 'high'
+  obesityProne?: boolean
+}): string {
+  if (options.obesityProne) return 'dog_adult_obese_prone'
+  const hours = Math.max(0, options.hoursPerDay ?? 0)
+  if (hours === 0) return 'dog_adult_sedentary'
+  if (hours < 1) return 'dog_adult_low_activity'
+  if (hours <= 3) return options.impact === 'high' ? 'dog_adult_moderate_high_impact' : 'dog_adult_moderate_low_impact'
+  if (hours <= 6) return 'dog_adult_high_activity'
+  return 'dog_adult_extreme_activity'
+}
+
+export function resolveDogGrowthStateFromAge(ageWeeks?: number): string {
+  const weeks = Math.max(0, ageWeeks ?? 0)
+  return weeks > 0 && weeks < 17 ? 'dog_growth_curve_8w_4m' : 'dog_growth_curve_4_12m'
+}
+
+export function resolveCatAdultState(options: {
+  isIndoor?: boolean
+  isNeutered?: boolean
+  obesityProne?: boolean
+}): string {
+  if (options.obesityProne || (options.isIndoor && options.isNeutered)) return 'cat_adult_indoor_weight_prone'
+  if (options.isIndoor || options.isNeutered) return 'cat_adult_neutered_indoor'
+  return 'cat_adult_active'
 }
 
 export function getBasisLabel(basisType: RequirementProfile['basisType']): string {
@@ -604,9 +640,11 @@ export function computeFediafEnergy(options: {
   species: Species
   stateId: string
   weightKg: number
+  ageWeeks?: number
   expectedAdultWeightKg?: number
   litterSize?: number
   lactationWeek?: number
+  specialBreedObservation?: 'none' | 'great_dane' | 'newfoundland'
 }): {
   rer: number
   mer: number
@@ -635,7 +673,14 @@ export function computeFediafEnergy(options: {
     const ratio = expectedAdultWeightKg > 0 ? safeWeight / expectedAdultWeightKg : 0
     const coeff = 254.1 - 135 * ratio
     const mer = coeff * metabolicWeight
-    return { rer: rerBase, mer, factor: rerBase > 0 ? mer / rerBase : null, state, formulaLines: ['MER = [254.1 - 135 x (peso atual / peso adulto esperado)] x peso^0.75', `MER = [254.1 - 135 x (${safeWeight.toFixed(2)} / ${expectedAdultWeightKg.toFixed(2)})] x ${metabolicWeight.toFixed(3)}`] }
+    const formulaLines = ['MER = [254.1 - 135 x (peso atual / peso adulto esperado)] x peso^0.75', `MER = [254.1 - 135 x (${safeWeight.toFixed(2)} / ${expectedAdultWeightKg.toFixed(2)})] x ${metabolicWeight.toFixed(3)}`]
+    if (options.ageWeeks) {
+      formulaLines.push(`Idade informada: ${Math.round(options.ageWeeks)} semanas`)
+    }
+    if (options.specialBreedObservation && options.specialBreedObservation !== 'none') {
+      formulaLines.push(`Observacao avancada de raca: ${options.specialBreedObservation === 'great_dane' ? 'Great Dane' : 'Newfoundland'} requer monitoracao energetica mais cautelosa.`)
+    }
+    return { rer: rerBase, mer, factor: rerBase > 0 ? mer / rerBase : null, state, formulaLines }
   }
 
   if (state.id === 'dog_gestation_last_5w') {

@@ -1,0 +1,24 @@
+{
+  "ok": false,
+  "routeLoaded": true,
+  "inputTypingOk": true,
+  "inputDeleteOk": true,
+  "inputPasteOk": true,
+  "reopenOk": true,
+  "manipuladoImported": true,
+  "targetDosePersisted": true,
+  "previewReactive": true,
+  "reviewReactive": true,
+  "protocolInstanceIsolated": false,
+  "protocolCheck": null,
+  "mojibakeVisible": false,
+  "shots": [
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\apr1-manipulados-editor-saved.png",
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\apr1-manipulados-reopen.png",
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\apr1-manipulados-modal-dose-range.png",
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\apr1-manipulados-nova-receita-live.png",
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\apr1-manipulados-review.png",
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\apr1-manipulados-fatal.png"
+  ],
+  "error": "Protocolo salvo não apareceu na lista: Protocolo Instancia V1 1775098242092"
+}

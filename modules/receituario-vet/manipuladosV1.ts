@@ -280,15 +280,28 @@ export function formatDurationPhrase(text: string): string {
   return `por ${text.trim()}`
 }
 
+export function buildAdministrableUnit(formula: ManipuladoV1Formula): string {
+  const finalUnit = formula.pharmacy.final_unit
+  if (finalUnit === 'mL') return 'mL'
+  if (finalUnit === 'capsulas') return 'cápsula'
+  if (finalUnit === 'doses') return 'dose'
+  if (finalUnit === 'aplicacoes') return 'aplicação'
+  if (finalUnit === 'biscoitos') return 'biscoito'
+  if (finalUnit === 'saches') return 'sachê'
+  if (finalUnit === 'petiscos') return 'petisco'
+  return formula.identity.pharmaceutical_form.toLowerCase() || 'dose'
+}
+
 export function buildGeneratedUsageText(formula: ManipuladoV1Formula): string {
-  const unit = formula.pharmacy.final_unit === 'mL' ? 'mL' : formula.identity.pharmaceutical_form.toLowerCase()
-  void unit
-  const doseText =
-    formula.prescribing.dose_min != null
+  const isWeightBased = formula.prescribing.posology_mode === 'mg_per_kg_dose' || formula.prescribing.posology_mode === 'mg_per_m2_dose'
+  // Para modo mg/kg ou mg/m², mostrar apenas "1 unidade" ao tutor — dose interna não vai na receita
+  const doseText = isWeightBased
+    ? `1 ${buildAdministrableUnit(formula)}`
+    : formula.prescribing.dose_min != null
       ? formula.prescribing.dose_max != null && formula.prescribing.dose_max !== formula.prescribing.dose_min
-        ? `${formula.prescribing.dose_min}-${formula.prescribing.dose_max} ${formula.prescribing.dose_unit}`
-        : `${formula.prescribing.dose_min} ${formula.prescribing.dose_unit}`
-      : '1 dose'
+        ? `${formula.prescribing.dose_min}-${formula.prescribing.dose_max} ${buildAdministrableUnit(formula)}`
+        : `${formula.prescribing.dose_min} ${buildAdministrableUnit(formula)}`
+      : `1 ${buildAdministrableUnit(formula)}`
   const durationText =
     formula.prescribing.duration_label ||
     (formula.prescribing.duration_value

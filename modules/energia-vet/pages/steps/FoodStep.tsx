@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ChevronLeft, ChevronRight, Info, Layers3, Leaf, Package, Plus, Search, Trash2 } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Info, Plus, Search, Trash2 } from 'lucide-react'
 import { Button } from '../../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
 import { Input } from '../../components/ui/input'
@@ -26,6 +26,14 @@ import { cn } from '../../lib/utils'
 
 const NEW_ROUTE = '/calculadora-energetica/new'
 
+const DETAIL_NUTRIENTS = GENUTRI_NUTRIENT_CATALOG
+
+const DIET_TYPE_OPTIONS: Array<{ value: DietType; label: string; description: string; emoji: string }> = [
+  { value: 'commercial', label: 'Comercial', description: 'Rações secas, úmidas e fórmulas prontas.', emoji: '🥣' },
+  { value: 'natural', label: '100% Natural', description: 'Ingredientes naturais, suplementos e bases.', emoji: '🍃' },
+  { value: 'hybrid', label: 'Híbrida', description: 'Combina comercial e natural no mesmo plano.', emoji: '📋' },
+]
+
 function resolveFoodTypeFilter(dietType: DietType): string[] | undefined {
   if (dietType === 'commercial') return ['commercial']
   if (dietType === 'natural') return ['natural', 'suplemento', 'enteral']
@@ -33,26 +41,15 @@ function resolveFoodTypeFilter(dietType: DietType): string[] | undefined {
 }
 
 function formatNutrient(value: number | null | undefined, unit?: string | null, decimals = 2) {
-  if (value == null) return 'Dado nao cadastrado'
+  if (value == null) return 'Dado não cadastrado'
   return `${value.toFixed(decimals)} ${unit ?? ''}`.trim()
 }
 
-function formatFoodKcalPerGram(food: FoodItem) {
+function formatKcal(food: FoodItem) {
   const kcal = food.nutrientsAsFed.energyKcalPer100g
-  if (kcal == null) return 'Dado nao cadastrado'
-  return `${(kcal / 100).toFixed(2)} kcal/g`
+  if (kcal == null) return '—'
+  return `${kcal.toFixed(0)} kcal/100g`
 }
-
-const DIET_TYPE_OPTIONS: Array<{
-  value: DietType
-  label: string
-  description: string
-  icon: typeof Package
-}> = [
-  { value: 'commercial', label: 'Dieta comercial', description: 'Racoes secas, umidas e formulas prontas.', icon: Package },
-  { value: 'natural', label: 'Dieta 100% natural', description: 'Ingredientes naturais, suplementos e bases preparadas.', icon: Leaf },
-  { value: 'hybrid', label: 'Dieta hibrida', description: 'Combina itens comerciais e naturais no mesmo plano.', icon: Layers3 },
-]
 
 export default function FoodStep() {
   const navigate = useNavigate()
@@ -76,10 +73,7 @@ export default function FoodStep() {
 
   const categories = useMemo(() => getFoodCategories(), [])
   const requirementOptions = useMemo(() => getRequirementOptions(species), [species])
-  const comorbidityLabels = useMemo(
-    () => getClinicalProfileBadges(species, patient.comorbidityIds ?? []),
-    [patient.comorbidityIds, species],
-  )
+  const comorbidityLabels = useMemo(() => getClinicalProfileBadges(species, patient.comorbidityIds ?? []), [patient.comorbidityIds, species])
   const additionalRequirementProfileIds = useMemo(
     () => getClinicalProfileIdsFromSelections(species, patient.comorbidityIds ?? []),
     [patient.comorbidityIds, species],
@@ -87,64 +81,161 @@ export default function FoodStep() {
 
   const visibleFoods = useMemo(() => {
     const typeFilter = resolveFoodTypeFilter(dietType)
-    const base = filterFoods({
-      species,
-      query: searchQuery,
-      category: categoryFilter === 'all' ? undefined : categoryFilter,
-    })
-
+    const base = filterFoods({ species, query: searchQuery, category: categoryFilter === 'all' ? undefined : categoryFilter })
     return typeFilter ? base.filter((food) => typeFilter.includes(food.foodType)) : base
   }, [categoryFilter, dietType, searchQuery, species])
 
-  const selectedFoods = useMemo(() => {
-    return entries
-      .map((entry) => {
-        const food = getFoodById(entry.foodId)
-        return food ? { entry, food } : null
-      })
-      .filter((item): item is NonNullable<typeof item> => Boolean(item))
-  }, [entries])
+  const selectedFoods = useMemo(
+    () =>
+      entries
+        .map((entry) => {
+          const food = getFoodById(entry.foodId)
+          return food ? { entry, food } : null
+        })
+        .filter((item): item is NonNullable<typeof item> => Boolean(item)),
+    [entries],
+  )
 
   const preview = useMemo(() => {
-    if (!entries.length || targetEnergy <= 0 || currentWeight <= 0) {
-      return null
-    }
+    if (!entries.length || targetEnergy <= 0 || currentWeight <= 0) return null
     return computeDietPlan({
-      entries,
-      targetEnergy,
-      species,
-      weightKg: currentWeight,
-      mealsPerDay,
+      entries, targetEnergy, species, weightKg: currentWeight, mealsPerDay,
       patientName: patient.name ?? 'Paciente',
       requirementProfileId: requirementProfileId || undefined,
       additionalRequirementProfileIds,
     })
   }, [additionalRequirementProfileIds, currentWeight, entries, mealsPerDay, patient.name, requirementProfileId, species, targetEnergy])
 
-  const inclusionSum = useMemo(() => entries.reduce((sum, entry) => sum + entry.inclusionPct, 0), [entries])
+  const macroChartStyle = useMemo(() => {
+    if (!preview) return {}
+    const [protein, fat, carb] = preview.evaluation.macroSplit
+    const proteinEnd = protein.percent
+    const fatEnd = protein.percent + fat.percent
+    return { background: `conic-gradient(${protein.color} 0% ${proteinEnd}%, ${fat.color} ${proteinEnd}% ${fatEnd}%, ${carb.color} ${fatEnd}% 100%)` }
+  }, [preview])
+
+  const inclusionSum = useMemo(() => entries.reduce((sum, e) => sum + e.inclusionPct, 0), [entries])
   const detailsFood = detailsFoodId ? getFoodById(detailsFoodId) : undefined
+
+  // Modo de formulação: auto = redistribui para somar 100% | locked = edita só o item
+  const [formulationMode, setFormulationMode] = useState<'manual' | 'complement'>(diet.formulationMode ?? 'manual')
+
+  // Estado local para inputs em edição (evita o input "pular" enquanto o usuário digita)
+  const [editingPct, setEditingPct] = useState<Record<string, string>>({})
+  const [editingGrams, setEditingGrams] = useState<Record<string, string>>({})
+
+  // Feedback visual: qual item foi editado e quais foram redistribuídos
+  const [flashedFood, setFlashedFood] = useState<string | null>(null)
+  const [flashedImpacted, setFlashedImpacted] = useState<string[]>([])
+
+  const flashItem = (foodId: string, impactedIds: string[] = []) => {
+    setFlashedFood(foodId)
+    setFlashedImpacted(impactedIds)
+    setTimeout(() => { setFlashedFood(null); setFlashedImpacted([]) }, 1200)
+  }
 
   const addFood = (foodId: string) => {
     setEntries((current) => {
-      if (current.some((entry) => entry.foodId === foodId)) return current
+      if (current.some((e) => e.foodId === foodId)) return current
       if (!current.length) return [{ foodId, inclusionPct: 100 }]
-      const redistributed = current.map((entry) => ({ ...entry, inclusionPct: (entry.inclusionPct * 100) / (100 + 10) }))
-      return [...redistributed, { foodId, inclusionPct: 10 }]
+      return [...current, { foodId, inclusionPct: 0 }]
     })
   }
 
   const removeFood = (foodId: string) => {
-    setEntries((current) => current.filter((entry) => entry.foodId !== foodId))
+    setEntries((current) => current.filter((e) => e.foodId !== foodId))
+    setEditingPct((p) => { const n = { ...p }; delete n[foodId]; return n })
+    setEditingGrams((p) => { const n = { ...p }; delete n[foodId]; return n })
   }
 
-  const updateInclusion = (foodId: string, value: number) => {
+  // Modo automático: seta o item editado e reescala os outros para a soma fechar 100%
+  const updateInclusionAuto = (foodId: string, value: number) => {
+    setEntries((current) => {
+      const others = current.filter((e) => e.foodId !== foodId)
+      const othersSum = others.reduce((s, e) => s + e.inclusionPct, 0)
+      const remainder = Math.max(0, 100 - value)
+      return current.map((e) => {
+        if (e.foodId === foodId) return { ...e, inclusionPct: value }
+        return { ...e, inclusionPct: othersSum > 0 ? (e.inclusionPct / othersSum) * remainder : remainder / Math.max(1, others.length) }
+      })
+    })
+  }
+
+  // Modo travado: altera só o item; outros ficam intocados (soma pode ≠ 100%)
+  const updateInclusion = (foodId: string, value: number) =>
+    setEntries((current) =>
+      current.map((e) => e.foodId === foodId ? { ...e, inclusionPct: Number.isFinite(value) && value >= 0 ? value : e.inclusionPct } : e),
+    )
+
+  // Escala o inclusionPct do item pela proporção gramas pedidas / gramas atuais
+  const updateGrams = (foodId: string, newGrams: number) => {
+    if (!preview || !Number.isFinite(newGrams) || newGrams <= 0) return
+    const contribution = preview.contributions.find((c) => c.foodId === foodId)
+    if (!contribution || contribution.gramsAsFed <= 0) return
+    const scaleFactor = newGrams / contribution.gramsAsFed
+    const newPct = Math.max(0.001, (entries.find((e) => e.foodId === foodId)?.inclusionPct ?? 0) * scaleFactor)
+    if (formulationMode === 'complement') {
+      updateInclusionAuto(foodId, newPct)
+    } else {
+      setEntries((current) =>
+        current.map((e) => e.foodId === foodId ? { ...e, inclusionPct: newPct } : e),
+      )
+    }
+  }
+
+  // Helpers para exibir valores nos inputs
+  const getPctValue = (foodId: string, rawPct: number) =>
+    editingPct[foodId] !== undefined ? editingPct[foodId] : rawPct.toFixed(2)
+
+  const getGramsValue = (foodId: string) => {
+    if (editingGrams[foodId] !== undefined) return editingGrams[foodId]
+    const contribution = preview?.contributions.find((c) => c.foodId === foodId)
+    return contribution ? contribution.gramsAsFed.toFixed(1) : ''
+  }
+
+  const commitPct = (foodId: string, rawPct: number) => {
+    const raw = editingPct[foodId]
+    if (raw !== undefined) {
+      const num = parseFloat(raw)
+      if (Number.isFinite(num) && num >= 0 && num <= 100) {
+        const wouldAllBeZero = entries.every((e) => e.foodId === foodId ? num === 0 : e.inclusionPct === 0)
+        if (!wouldAllBeZero) {
+          if (formulationMode === 'complement') {
+            const otherIds = entries.filter((e) => e.foodId !== foodId).map((e) => e.foodId)
+            updateInclusionAuto(foodId, num)
+            flashItem(foodId, otherIds)
+          } else {
+            updateInclusion(foodId, num)
+            flashItem(foodId)
+          }
+        }
+      }
+    }
+    setEditingPct((p) => { const n = { ...p }; delete n[foodId]; return n })
+  }
+
+  const commitGrams = (foodId: string) => {
+    const raw = editingGrams[foodId]
+    if (raw !== undefined) {
+      const num = parseFloat(raw)
+      if (Number.isFinite(num) && num > 0) {
+        const otherIds = formulationMode === 'complement' ? entries.filter((e) => e.foodId !== foodId).map((e) => e.foodId) : []
+        updateGrams(foodId, num)
+        flashItem(foodId, otherIds)
+      }
+    }
+    setEditingGrams((p) => { const n = { ...p }; delete n[foodId]; return n })
+  }
+
+  const complementOtherPercentages = () => {
+    const positiveEntries = entries.filter((entry) => entry.inclusionPct > 0)
+    if (!positiveEntries.length) return
+    const total = positiveEntries.reduce((sum, entry) => sum + entry.inclusionPct, 0)
+    if (!total) return
     setEntries((current) =>
       current.map((entry) =>
-        entry.foodId === foodId
-          ? {
-              ...entry,
-              inclusionPct: Number.isFinite(value) && value >= 0 ? value : entry.inclusionPct,
-            }
+        entry.inclusionPct > 0
+          ? { ...entry, inclusionPct: (entry.inclusionPct / total) * 100 }
           : entry,
       ),
     )
@@ -153,16 +244,15 @@ export default function FoodStep() {
   const handleNext = () => {
     if (!preview) return
     setDiet({
-      dietType,
-      mealsPerDay,
-      targetEnergy,
-      entries: preview.normalizedEntries,
+      dietType, mealsPerDay, targetEnergy,
+        entries,
       totalDryMatterGrams: preview.totalDryMatterGrams,
       totalAsFedGrams: preview.totalAsFedGrams,
       gramsPerDay: preview.totalAsFedGrams,
       gramsPerMeal: preview.feedingPlan.meals[0]?.gramsAsFed ?? 0,
       requirementProfileId: requirementProfileId || undefined,
       additionalRequirementProfileIds,
+      formulationMode,
     })
     navigate(`${NEW_ROUTE}/summary`)
   }
@@ -170,200 +260,395 @@ export default function FoodStep() {
   return (
     <>
       <Card className="w-full border-border dark:border-orange-500/10 bg-white dark:bg-[#141010] shadow-[0_18px_50px_rgba(0,0,0,0.08)] dark:shadow-[0_18px_50px_rgba(0,0,0,0.28)]">
-        <CardHeader className="border-b border-border dark:border-white/5 pb-6">
-          <CardTitle className="text-2xl text-foreground dark:text-white">Alimentos e formulacao</CardTitle>
-          <CardDescription>Selecione o tipo de dieta, monte a mistura e acompanhe a conversao entre materia seca e materia natural.</CardDescription>
+        <CardHeader className="border-b border-border dark:border-white/5 pb-5">
+          <CardTitle className="text-2xl text-foreground dark:text-white">Alimentos e formulação</CardTitle>
+          <CardDescription>Monte a dieta e acompanhe a prévia nutricional ao vivo.</CardDescription>
         </CardHeader>
 
-        <CardContent className="space-y-6 pt-6">
-            {DIET_TYPE_OPTIONS.map((option) => {
-              const Icon = option.icon
-              const active = dietType === option.value
+        <CardContent className="pt-6">
+          {/* Layout 2 colunas — esquerda: controles | direita: preview */}
+          <div className="grid gap-6 xl:grid-cols-2">
 
-              let containerClass = 'border-border dark:border-white/10 bg-white dark:bg-[#1b1514] hover:border-orange-500/30 hover:bg-orange-500/[0.05] text-muted-foreground'
-              let iconClass = 'border-border dark:border-white/10 bg-slate-100 dark:bg-black/20 text-muted-foreground'
-              let textClass = 'text-foreground dark:text-white'
+            {/* ─── COLUNA ESQUERDA ─── */}
+            <div className="space-y-5 min-w-0">
 
-              if (active) {
-                if (option.value === 'commercial') {
-                  containerClass = 'border-cyan-200 dark:border-cyan-400/60 bg-cyan-50 dark:bg-cyan-500/12 shadow-[0_16px_32px_rgba(6,182,212,0.12)] ring-1 ring-cyan-200 dark:ring-cyan-400/30'
-                  iconClass = 'border-cyan-200 dark:border-cyan-400/40 bg-cyan-100 dark:bg-cyan-500/20 text-cyan-600 dark:text-cyan-300'
-                  textClass = 'text-cyan-900 dark:text-cyan-50'
-                } else if (option.value === 'natural') {
-                  containerClass = 'border-emerald-200 dark:border-emerald-400/60 bg-emerald-50 dark:bg-emerald-500/12 shadow-[0_16px_32px_rgba(16,185,129,0.12)] ring-1 ring-emerald-200 dark:ring-emerald-400/30'
-                  iconClass = 'border-emerald-200 dark:border-emerald-400/40 bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-300'
-                  textClass = 'text-emerald-900 dark:text-emerald-50'
-                } else {
-                  containerClass = 'border-fuchsia-200 dark:border-fuchsia-400/60 bg-fuchsia-50 dark:bg-fuchsia-500/12 shadow-[0_16px_32px_rgba(217,70,239,0.12)] ring-1 ring-fuchsia-200 dark:ring-fuchsia-400/30'
-                  iconClass = 'border-fuchsia-200 dark:border-fuchsia-400/40 bg-fuchsia-100 dark:bg-fuchsia-500/20 text-fuchsia-600 dark:text-fuchsia-300'
-                  textClass = 'text-fuchsia-900 dark:text-fuchsia-50'
-                }
-              }
+              {/* Tipo de dieta */}
+              <div>
+                <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-muted-foreground">Tipo de dieta</p>
+                <div className="grid grid-cols-3 gap-3">
+                  {DIET_TYPE_OPTIONS.map((option) => {
+                    const active = dietType === option.value
+                    return (
+                      <button
+                        key={option.value}
+                        type="button"
+                        onClick={() => setDietType(option.value)}
+                        className={cn(
+                          'flex flex-col items-center gap-2 rounded-2xl border px-3 py-4 text-center transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98]',
+                          active
+                            ? 'border-orange-400/60 bg-orange-500/12 ring-1 ring-orange-400/30 shadow-[0_8px_20px_rgba(249,115,22,0.10)]'
+                            : 'border-border dark:border-white/10 bg-white dark:bg-[#1b1514] hover:border-orange-400/30',
+                        )}
+                      >
+                        <span className="text-2xl">{option.emoji}</span>
+                        <span className={cn('text-xs font-semibold', active ? 'text-orange-200' : 'text-foreground dark:text-white')}>{option.label}</span>
+                        {active && <span className="h-1 w-4 rounded-full bg-orange-400" />}
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
 
-              return (
-                <button
-                  key={option.value}
-                  type="button"
-                  onClick={() => setDietType(option.value)}
-                  className={cn(
-                    'rounded-3xl border px-5 py-5 text-left transition-all duration-300 hover:-translate-y-1 active:scale-[0.99]',
-                    containerClass,
-                  )}
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <p className={cn('font-semibold', textClass)}>{option.label}</p>
-                      <p className="mt-1 text-sm text-muted-foreground/80">{option.description}</p>
+              {/* Filtros de busca */}
+              <div className="rounded-2xl border border-white/10 bg-[#171212] p-4 space-y-3">
+                <div className="relative">
+                  <Search className="pointer-events-none absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                  <Input placeholder="Buscar alimento..." className="pl-9 bg-[#221a19] border-white/10" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <Select value={categoryFilter} onValueChange={setCategoryFilter}>
+                    <SelectTrigger className="rounded-xl border-white/10 bg-[#221a19] text-sm">
+                      <SelectValue placeholder="Categoria" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">Todas</SelectItem>
+                      {categories.map((c) => <SelectItem key={c} value={c}>{c}</SelectItem>)}
+                    </SelectContent>
+                  </Select>
+                  <Select value={requirementProfileId} onValueChange={setRequirementProfileId}>
+                    <SelectTrigger className="rounded-xl border-white/10 bg-[#221a19] text-sm">
+                      <SelectValue placeholder="Perfil" />
+                    </SelectTrigger>
+                    <SelectContent className="max-h-80">
+                      {requirementOptions.map((p) => <SelectItem key={p.id} value={p.id}>{getHumanRequirementLabel(p)}</SelectItem>)}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  <Badge variant="outline" className="text-xs">Perfil: {getHumanRequirementLabel(requirementOptions.find((p) => p.id === requirementProfileId))}</Badge>
+                  {comorbidityLabels.map((label) => <Badge key={label} variant="outline" className="text-xs">{label}</Badge>)}
+                </div>
+              </div>
+
+              {/* Catálogo de alimentos */}
+              <div className="rounded-2xl border border-white/10 bg-[#171212] p-4">
+                <div className="flex items-center justify-between mb-3">
+                  <p className="text-sm font-semibold text-white">Catálogo — {visibleFoods.length} opções</p>
+                  <Badge variant="outline" className="text-xs">{species === 'dog' ? 'Cão' : 'Gato'}</Badge>
+                </div>
+                <div className="max-h-72 space-y-2 overflow-y-auto pr-1">
+                  {visibleFoods.map((food) => {
+                    const alreadyAdded = entries.some((e) => e.foodId === food.id)
+                    return (
+                      <div key={food.id} className="rounded-xl border border-white/10 bg-[#221a19] p-3 hover:border-orange-400/30 transition-colors">
+                        <div className="flex items-start justify-between gap-2">
+                          <div className="min-w-0 flex-1">
+                            <p className="text-sm font-medium text-white truncate">{food.name}</p>
+                            <p className="text-xs text-muted-foreground mt-0.5">{food.categoryNormalized ?? 'Sem categoria'}</p>
+                          </div>
+                          <div className="flex items-center gap-1.5 shrink-0">
+                            <Button variant="ghost" size="sm" className="h-7 px-2 text-xs text-muted-foreground" onClick={() => setDetailsFoodId(food.id)}>
+                              Info
+                            </Button>
+                            <Button size="sm" className="h-7 px-2 text-xs gap-1" onClick={() => addFood(food.id)} disabled={alreadyAdded}>
+                              <Plus className="h-3 w-3" />{alreadyAdded ? 'Adicionado' : 'Add'}
+                            </Button>
+                          </div>
+                        </div>
+                        <div className="mt-2 grid grid-cols-3 gap-1.5">
+                          {[
+                            { label: 'Energia', value: formatKcal(food) },
+                            { label: 'Proteína', value: formatNutrient(food.nutrientsAsFed.crudeProteinPct, '%', 1) },
+                            { label: 'Gordura', value: formatNutrient(food.nutrientsAsFed.etherExtractPct, '%', 1) },
+                          ].map((item) => (
+                            <div key={item.label} className="rounded-lg bg-black/20 px-2 py-1.5">
+                              <p className="text-[10px] text-muted-foreground">{item.label}</p>
+                              <p className="text-xs font-semibold text-white mt-0.5">{item.value}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+
+              {/* Mistura selecionada */}
+              <div className="rounded-2xl border border-white/10 bg-[#171212] p-4">
+                <div className="flex items-center justify-between mb-2">
+                  <p className="text-sm font-semibold text-white">Formulação</p>
+                  <div className="flex items-center gap-2">
+                    {/* Seletor de modo */}
+                    <div className="flex rounded-xl border border-white/10 overflow-hidden text-[10px] font-semibold">
+                      <button
+                        type="button"
+                        onClick={() => setFormulationMode('manual')}
+                        className={cn(
+                          'px-2.5 py-1.5 transition-colors',
+                          formulationMode === 'manual'
+                            ? 'bg-orange-500/20 text-orange-200'
+                            : 'text-muted-foreground hover:text-white',
+                        )}
+                      >
+                        Modo manual
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setFormulationMode('complement')}
+                        className={cn(
+                          'px-2.5 py-1.5 border-l border-white/10 transition-colors',
+                          formulationMode === 'complement'
+                            ? 'bg-sky-500/20 text-sky-200'
+                            : 'text-muted-foreground hover:text-white',
+                        )}
+                      >
+                        Complementar %
+                      </button>
                     </div>
-                    <span className={cn('rounded-2xl border p-3 transition-colors', iconClass)}>
-                      <Icon className="h-5 w-5" />
+                    <Badge
+                      variant={formulationMode === 'manual'
+                        ? (Math.abs(inclusionSum - 100) <= 0.5 ? 'outline' : 'secondary')
+                        : 'outline'}
+                      className={cn('text-xs', formulationMode === 'manual' && Math.abs(inclusionSum - 100) > 0.5 && 'border-sky-400/40 text-sky-300')}
+                    >
+                      {inclusionSum.toFixed(1)}%
+                    </Badge>
+                  </div>
+                </div>
+
+                {/* Descrição do modo ativo */}
+                {selectedFoods.length > 0 && (
+                  <p className="text-[10px] text-muted-foreground/70 mb-3 leading-relaxed">
+                    {formulationMode === 'complement'
+                      ? <>Modo <span className="text-orange-300/80">complementar</span>: a redistribuição automática só acontece quando este modo está ativo.</>
+                      : <>Modo <span className="text-sky-300/80">manual</span>: o app não altera automaticamente as outras porcentagens. Você controla toda a fórmula.</>
+                    }
+                  </p>
+                )}
+
+                {selectedFoods.length > 0 && (
+                  <div className={cn(
+                    'flex items-center gap-2 rounded-xl border px-3 py-2 mb-3 text-[10px] font-medium',
+                    Math.abs(inclusionSum - 100) <= 0.5
+                      ? 'border-emerald-400/30 bg-emerald-500/10 text-emerald-300'
+                      : inclusionSum < 99
+                      ? 'border-amber-400/30 bg-amber-500/10 text-amber-300'
+                      : 'border-rose-400/30 bg-rose-500/10 text-rose-300',
+                  )}>
+                    <span>{Math.abs(inclusionSum - 100) <= 0.5 ? '✓' : inclusionSum < 99 ? '⚠' : '↑'}</span>
+                    <span>
+                      {Math.abs(inclusionSum - 100) <= 0.5
+                        ? 'Fórmula fechada corretamente (100%)'
+                        : inclusionSum < 99
+                        ? `Fórmula incompleta — faltam ${(100 - inclusionSum).toFixed(1)}% para fechar`
+                        : `Fórmula excedente — sobram ${(inclusionSum - 100).toFixed(1)}% acima de 100%`
+                      }
                     </span>
                   </div>
-                </button>
-              )
-            })}
+                )}
 
-          <section className="rounded-3xl border border-white/10 bg-[#171212] p-5">
-            <div className="grid gap-4 lg:grid-cols-[1fr_0.9fr_0.95fr]">
-              <div className="relative">
-                <Search className="pointer-events-none absolute left-3 top-3.5 h-4 w-4 text-muted-foreground" />
-                <Input placeholder="Buscar alimento" className="pl-9" value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} />
-              </div>
+                {selectedFoods.length > 0 && (
+                  <div className="mb-3 flex flex-wrap items-center gap-2">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      className="border-orange-400/30 bg-orange-500/[0.06] text-orange-200"
+                      onClick={complementOtherPercentages}
+                    >
+                      Complementar outras %
+                    </Button>
+                    <p className="text-[10px] text-muted-foreground">Só redistribui quando você mandar.</p>
+                  </div>
+                )}
 
-              <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                <SelectTrigger className="rounded-2xl border-white/10 bg-[#221a19]">
-                  <SelectValue placeholder="Categoria" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">Todas as categorias</SelectItem>
-                  {categories.map((category) => (
-                    <SelectItem key={category} value={category}>
-                      {category}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-
-              <Select value={requirementProfileId} onValueChange={setRequirementProfileId}>
-                <SelectTrigger className="rounded-2xl border-white/10 bg-[#221a19]">
-                  <SelectValue placeholder="Perfil de exigencia" />
-                </SelectTrigger>
-                <SelectContent className="max-h-96">
-                  {requirementOptions.map((profile) => (
-                    <SelectItem key={profile.id} value={profile.id}>
-                      {getHumanRequirementLabel(profile)}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="mt-4 flex flex-wrap gap-2">
-              <Badge variant="outline">Perfil principal: {getHumanRequirementLabel(requirementOptions.find((item) => item.id === requirementProfileId))}</Badge>
-              {comorbidityLabels.map((label) => (
-                <Badge key={label} variant="outline">
-                  {label}
-                </Badge>
-              ))}
-            </div>
-          </section>
-
-          <section className="grid gap-4 xl:grid-cols-[1.05fr_0.95fr]">
-            <div className="space-y-4 rounded-3xl border border-white/10 bg-[#171212] p-5">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <p className="text-lg font-semibold text-white">Catalogo de alimentos</p>
-                  <p className="text-sm text-muted-foreground">{visibleFoods.length} opcoes compativeis com a especie selecionada.</p>
-                </div>
-                <Badge variant="outline">{species === 'dog' ? 'Cao' : 'Gato'}</Badge>
-              </div>
-
-              <div className="max-h-[34rem] space-y-3 overflow-y-auto pr-1">
-                {visibleFoods.map((food) => (
-                  <div key={food.id} className="rounded-2xl border border-white/10 bg-[#221a19] p-4 transition-colors hover:border-orange-500/30 hover:bg-[#2a1f1c]">
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <p className="font-semibold text-white">{food.name}</p>
-                        <p className="mt-1 text-xs text-muted-foreground">{food.categoryNormalized ?? 'Sem categoria'} · {food.presentation || 'Apresentacao nao informada'}</p>
-                      </div>
-                      <Button size="sm" className="gap-2" onClick={() => addFood(food.id)} disabled={entries.some((entry) => entry.foodId === food.id)}>
-                        <Plus className="h-4 w-4" />
-                        Adicionar
-                      </Button>
+                {/* Totais da formulação */}
+                {preview && selectedFoods.length > 0 && (
+                  <div className="grid grid-cols-3 gap-2 mb-3">
+                    <div className="rounded-lg border border-white/5 bg-black/20 px-2.5 py-2 text-center">
+                      <p className="text-[10px] text-muted-foreground">Total incluído</p>
+                        <p className="text-xs font-bold text-white mt-0.5">{inclusionSum.toFixed(1)}%</p>
                     </div>
-
-                    <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                      <div className="rounded-2xl border border-white/10 bg-[#171212] p-3">
-                        <p className="text-[11px] text-muted-foreground">Energia</p>
-                        <p className="mt-1 font-semibold text-white">{formatFoodKcalPerGram(food)}</p>
-                      </div>
-                      <div className="rounded-2xl border border-white/10 bg-[#171212] p-3">
-                        <p className="text-[11px] text-muted-foreground">Proteina bruta</p>
-                        <p className="mt-1 font-semibold text-white">{formatNutrient(food.nutrientsAsFed.crudeProteinPct, '%')}</p>
-                      </div>
-                      <div className="rounded-2xl border border-white/10 bg-[#171212] p-3">
-                        <p className="text-[11px] text-muted-foreground">Extrato etereo</p>
-                        <p className="mt-1 font-semibold text-white">{formatNutrient(food.nutrientsAsFed.etherExtractPct, '%')}</p>
-                      </div>
+                    <div className="rounded-lg border border-white/5 bg-black/20 px-2.5 py-2 text-center">
+                      <p className="text-[10px] text-muted-foreground">Total diário</p>
+                      <p className="text-xs font-bold text-orange-300 mt-0.5">{preview.totalAsFedGrams.toFixed(1)} g</p>
                     </div>
-
-                    <div className="mt-4 flex justify-end">
-                      <Button id={`food-details-${food.id}`} variant="ghost" size="sm" onClick={() => setDetailsFoodId(food.id)}>
-                        Saber mais informacoes nutricionais
-                      </Button>
+                    <div className="rounded-lg border border-white/5 bg-black/20 px-2.5 py-2 text-center">
+                      <p className="text-[10px] text-muted-foreground">Total kcal</p>
+                      <p className="text-xs font-bold text-orange-300 mt-0.5">{preview.totalKcal.toFixed(0)} kcal</p>
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <div className="rounded-3xl border border-white/10 bg-[#171212] p-5">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-lg font-semibold text-white">Mistura selecionada</p>
-                    <p className="text-sm text-muted-foreground">Inclusao em base de materia seca.</p>
-                  </div>
-                  <Badge variant={Math.abs(inclusionSum - 100) <= 0.5 ? 'outline' : 'secondary'}>{inclusionSum.toFixed(1)}%</Badge>
-                </div>
-
+                )}
                 {selectedFoods.length === 0 ? (
-                  <div className="mt-4 rounded-2xl border border-dashed border-white/10 p-4 text-sm text-muted-foreground">Nenhum alimento adicionado ainda.</div>
+                  <p className="text-sm text-muted-foreground rounded-xl border border-dashed border-white/10 p-3">Nenhum alimento adicionado ainda.</p>
                 ) : (
-                  <div className="mt-4 space-y-3">
-                    {selectedFoods.map(({ food, entry }) => (
-                      <div key={food.id} className="rounded-2xl border border-white/10 bg-[#221a19] p-4">
-                        <div className="flex items-start justify-between gap-3">
-                          <div>
-                            <p className="font-semibold text-white">{food.name}</p>
-                            <p className="mt-1 text-xs text-muted-foreground">
-                              {formatNutrient(food.nutrientsDryMatter.energyKcalPer100g, 'kcal/100g MS', 1)} · {formatNutrient(food.nutrientsAsFed.dryMatterPct, '% MS', 1)}
-                            </p>
-                          </div>
-                          <Button variant="ghost" size="icon" onClick={() => removeFood(food.id)}>
-                            <Trash2 className="h-4 w-4 text-muted-foreground" />
-                          </Button>
-                        </div>
+                  <div className="space-y-3">
+                    {selectedFoods.map(({ food, entry }) => {
+                      const contribution = preview?.contributions.find((c) => c.foodId === food.id)
+                      const gramsPerMeal = contribution && mealsPerDay > 0 ? contribution.gramsAsFed / mealsPerDay : null
+                      const isFlashedEdited = flashedFood === food.id
+                      const isFlashedImpacted = flashedImpacted.includes(food.id)
 
-                        <div className="mt-3 grid gap-3 md:grid-cols-[1fr_0.5fr]">
-                          <div className="space-y-2">
-                            <Label>Inclusao (%)</Label>
-                            <Input type="number" min="0" step="0.1" value={entry.inclusionPct} onChange={(event) => updateInclusion(food.id, Number(event.target.value))} />
+                      return (
+                        <div
+                          key={food.id}
+                          className={cn(
+                            'rounded-xl border p-3 space-y-3 transition-all duration-300',
+                            isFlashedEdited
+                              ? 'border-orange-400/60 bg-orange-500/[0.10] shadow-[0_0_12px_rgba(249,115,22,0.15)]'
+                              : isFlashedImpacted
+                              ? 'border-sky-400/30 bg-sky-500/[0.06]'
+                              : 'border-white/10 bg-[#221a19]',
+                          )}
+                        >
+                          {/* Cabeçalho do alimento */}
+                          <div className="flex items-start justify-between gap-2">
+                            <div className="min-w-0 flex-1">
+                              <p className="text-sm font-semibold text-white truncate">{food.name}</p>
+                              <p className="text-xs text-muted-foreground">{food.categoryNormalized ?? 'Sem categoria'} · MS: {formatNutrient(food.nutrientsAsFed.dryMatterPct, '%', 1)}</p>
+                            </div>
+                            <Button variant="ghost" size="icon" className="h-7 w-7 shrink-0" onClick={() => removeFood(food.id)}>
+                              <Trash2 className="h-3.5 w-3.5 text-muted-foreground" />
+                            </Button>
                           </div>
-                          <div className="rounded-2xl border border-white/10 bg-[#171212] p-3">
-                            <p className="text-xs text-muted-foreground">Dados faltantes</p>
-                            <p className="mt-1 text-lg font-bold text-white">{food.missingNutrients.length}</p>
+
+                          {/* Campos editáveis — bidirecionais */}
+                          <div className="grid grid-cols-2 gap-2">
+                            {/* % de inclusão */}
+                            <div>
+                              <div className="flex items-center gap-1 mb-1">
+                                <Label className="text-[10px] text-orange-300/70 uppercase tracking-wider">Inclusão na fórmula (%)</Label>
+                                <TooltipProvider>
+                                  <Tooltip>
+                                    <TooltipTrigger asChild>
+                                      <span className="text-muted-foreground cursor-default"><Info className="h-3 w-3" /></span>
+                                    </TooltipTrigger>
+                                    <TooltipContent className="max-w-[220px] text-xs">
+                                      Percentual em base seca (MS). Alterar aqui recalcula a quantidade em gramas automaticamente.
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </TooltipProvider>
+                              </div>
+                              <Input
+                                type="number"
+                                min="0"
+                                max="100"
+                                step="0.1"
+                                value={getPctValue(food.id, entry.inclusionPct)}
+                                onChange={(e) => setEditingPct((p) => ({ ...p, [food.id]: e.target.value }))}
+                                onBlur={() => commitPct(food.id, entry.inclusionPct)}
+                                onKeyDown={(e) => e.key === 'Enter' && commitPct(food.id, entry.inclusionPct)}
+                                className="h-8 text-sm bg-black/20 border-white/10 focus:border-orange-400/60 transition-colors"
+                              />
+                            </div>
+
+                            {/* Gramagem diária */}
+                            <div>
+                              <div className="flex items-center gap-1 mb-1">
+                                <Label className="text-[10px] text-sky-300/70 uppercase tracking-wider">Quantidade diária (g MN)</Label>
+                              </div>
+                              <Input
+                                type="number"
+                                min="0"
+                                step="0.5"
+                                value={getGramsValue(food.id)}
+                                placeholder={preview ? '—' : 'sem prévia'}
+                                disabled={!preview}
+                                onChange={(e) => setEditingGrams((p) => ({ ...p, [food.id]: e.target.value }))}
+                                onBlur={() => commitGrams(food.id)}
+                                onKeyDown={(e) => e.key === 'Enter' && commitGrams(food.id)}
+                                className="h-8 text-sm bg-black/20 border-white/10 focus:border-orange-400/60 transition-colors disabled:opacity-40"
+                              />
+                            </div>
                           </div>
+
+                          {/* Stats derivados — somente leitura */}
+                          {contribution && (
+                            <div className="grid grid-cols-2 gap-2">
+                              <div className="rounded-lg bg-black/20 px-2.5 py-2">
+                                <p className="text-[10px] text-muted-foreground">Quantidade por refeição</p>
+                                <p className="text-xs font-semibold text-white mt-0.5">
+                                  {gramsPerMeal != null ? `${gramsPerMeal.toFixed(1)} g` : '—'}
+                                </p>
+                              </div>
+                              <div className="rounded-lg bg-black/20 px-2.5 py-2">
+                                <p className="text-[10px] text-muted-foreground">Energia entregue</p>
+                                <p className="text-xs font-semibold text-orange-300 mt-0.5">
+                                  {contribution.deliveredKcal.toFixed(1)} kcal/dia
+                                </p>
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Normalização — aviso quando a soma não fecha 100% */}
+                          {isFlashedImpacted && !isFlashedEdited && (
+                            <p className="text-[10px] text-sky-400/80 animate-pulse">
+                              ↺ redistribuído pela edição de outro alimento
+                            </p>
+                          )}
+
+                          {/* Aviso de normalização quando a soma dos pesos brutos ≠ 100 */}
+                          {preview && !isFlashedImpacted && (() => {
+                            const norm = preview.normalizedEntries.find((e) => e.foodId === food.id)
+                            const normPct = norm?.inclusionPct ?? entry.inclusionPct
+                            if (Math.abs(normPct - entry.inclusionPct) < 0.5) return null
+                            return (
+                              <p className="text-[10px] text-amber-400/70">
+                                % final normalizado: {normPct.toFixed(1)}
+                              </p>
+                            )
+                          })()}
                         </div>
-                      </div>
-                    ))}
+                      )
+                    })}
                   </div>
                 )}
               </div>
 
-              <div className="rounded-3xl border border-orange-400/20 bg-gradient-to-br from-orange-500/[0.10] to-transparent p-5">
-                <div className="flex items-center gap-2">
-                  <p className="text-lg font-semibold text-white">Materia seca e materia natural</p>
+              {/* Refeições + stats */}
+              <div className="rounded-2xl border border-white/10 bg-[#171212] p-4 space-y-4">
+                <div>
+                  <Label className="text-sm font-semibold text-white">Refeições por dia</Label>
+                  <div className="mt-2 grid grid-cols-5 gap-2">
+                    {MEALS_OPTIONS.map((n) => (
+                      <button
+                        key={n}
+                        type="button"
+                        onClick={() => setMealsPerDay(n)}
+                        className={cn(
+                          'rounded-xl border px-2 py-3 text-center transition-all hover:-translate-y-0.5 active:scale-[0.98]',
+                          mealsPerDay === n ? 'border-orange-400/60 bg-orange-500/12 text-orange-200' : 'border-white/10 bg-[#221a19] text-muted-foreground',
+                        )}
+                      >
+                        <p className="text-xl font-black">{n}</p>
+                        <p className="text-[10px]">ref.</p>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className="grid grid-cols-3 gap-2">
+                  <div className="rounded-xl border border-orange-400/20 bg-orange-500/[0.08] p-3 text-center">
+                    <p className="text-[10px] text-muted-foreground">Energia-alvo</p>
+                    <p className="text-lg font-black text-orange-300 mt-0.5">{targetEnergy.toFixed(0)}</p>
+                    <p className="text-[10px] text-muted-foreground">kcal/dia</p>
+                  </div>
+                  <div className="rounded-xl border border-white/10 bg-black/10 p-3 text-center">
+                    <p className="text-[10px] text-muted-foreground">Peso usado</p>
+                    <p className="text-lg font-black text-white mt-0.5">{currentWeight.toFixed(1)}</p>
+                    <p className="text-[10px] text-muted-foreground">kg</p>
+                  </div>
+                  <div className="rounded-xl border border-white/10 bg-black/10 p-3 text-center">
+                    <p className="text-[10px] text-muted-foreground">Espécie</p>
+                    <p className="text-base font-black text-white mt-0.5">{species === 'dog' ? '🐕' : '🐈'}</p>
+                    <p className="text-[10px] text-muted-foreground">{species === 'dog' ? 'Cão' : 'Gato'}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Explicação MS vs MN */}
+              <div className="rounded-2xl border border-orange-400/15 bg-orange-500/[0.05] p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <p className="text-sm font-semibold text-white">Matéria seca vs. natural</p>
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild>
@@ -372,180 +657,200 @@ export default function FoodStep() {
                         </button>
                       </TooltipTrigger>
                       <TooltipContent className="max-w-xs">
-                        <p>Materia seca remove a agua do alimento para comparar ingredientes diferentes. Materia natural mostra quanto sera realmente servido.</p>
+                        Matéria seca remove a água para comparar ingredientes diferentes. Matéria natural mostra quanto será servido.
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
                 </div>
-                <div className="mt-4 grid gap-3 md:grid-cols-2">
-                  <div className="rounded-2xl border border-white/10 bg-[#171212] p-4">
-                    <p className="text-sm font-semibold text-white">Materia seca</p>
-                    <p className="mt-1 text-sm text-muted-foreground">Usada para balancear a mistura e distribuir as inclusoes.</p>
+                <p className="text-xs text-muted-foreground">A inclusão é ajustada em base seca. O peso final ofertado é convertido para matéria natural (como fornecido).</p>
+              </div>
+            </div>
+
+            {/* ─── COLUNA DIREITA — Preview ao vivo ─── */}
+            <div className="min-w-0">
+              <div className="xl:sticky xl:top-5 xl:max-h-[calc(100vh-2.5rem)] xl:overflow-auto xl:pr-1 space-y-4">
+                {/* Header do painel */}
+                <div className="flex items-center justify-between">
+                  <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Prévia nutricional</p>
+                  {preview && (
+                    <Badge className="bg-orange-500/20 text-orange-200 border-orange-400/30 text-xs">Ao vivo</Badge>
+                  )}
+                </div>
+
+                {!preview ? (
+                  <div className="rounded-2xl border border-dashed border-white/10 bg-[#171212] p-8 text-center">
+                    <p className="text-2xl mb-2">🍽️</p>
+                    <p className="text-sm text-muted-foreground">Adicione alimentos para ver a prévia nutricional em tempo real.</p>
                   </div>
-                  <div className="rounded-2xl border border-white/10 bg-[#171212] p-4">
-                    <p className="text-sm font-semibold text-white">Materia natural</p>
-                    <p className="mt-1 text-sm text-muted-foreground">Mostra a quantidade final que sera ofertada ao paciente.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+                ) : (
+                  <div className="space-y-4">
 
-          <section className="grid gap-4 xl:grid-cols-[0.8fr_1.2fr]">
-            <div className="rounded-3xl border border-white/10 bg-[#171212] p-5">
-              <div>
-                <Label className="text-base font-semibold text-white">Quantidade de refeicoes por dia</Label>
-                <p className="mt-1 text-sm text-muted-foreground">O fracionamento final por refeicao e recalculado automaticamente.</p>
-              </div>
-              <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3">
-                {MEALS_OPTIONS.map((option) => (
-                  <button
-                    key={option}
-                    type="button"
-                    onClick={() => setMealsPerDay(option)}
-                    className={cn(
-                      'rounded-2xl border px-3 py-4 text-center transition-all hover:-translate-y-0.5 active:scale-[0.99]',
-                      mealsPerDay === option ? 'border-orange-400/60 bg-orange-500/12 text-white' : 'border-white/10 bg-[#221a19] text-muted-foreground',
-                    )}
-                  >
-                    <p className="text-2xl font-black">{option}</p>
-                    <p className="text-xs">refeicoes</p>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="grid gap-4 md:grid-cols-3">
-              <div className="rounded-3xl border border-white/10 bg-[#171212] p-5">
-                <p className="text-sm text-muted-foreground">Energia-alvo</p>
-                <p className="mt-1 text-3xl font-black text-orange-300">{targetEnergy.toFixed(0)} kcal/dia</p>
-              </div>
-              <div className="rounded-3xl border border-white/10 bg-[#171212] p-5">
-                <p className="text-sm text-muted-foreground">Peso usado</p>
-                <p className="mt-1 text-3xl font-black text-white">{currentWeight.toFixed(2)} kg</p>
-              </div>
-              <div className="rounded-3xl border border-white/10 bg-[#171212] p-5">
-                <p className="text-sm text-muted-foreground">Perfil clinico</p>
-                <p className="mt-1 text-base font-semibold text-white">{getHumanRequirementLabel(requirementOptions.find((item) => item.id === requirementProfileId))}</p>
-              </div>
-            </div>
-          </section>
-
-          {preview && (
-            <section className="rounded-3xl border border-orange-400/25 bg-gradient-to-r from-orange-500/12 via-black/10 to-transparent p-5">
-              <div className="grid gap-4 md:grid-cols-3">
-                <div>
-                  <p className="text-sm text-muted-foreground">Total materia seca</p>
-                  <p className="mt-1 text-3xl font-black text-orange-300">{preview.totalDryMatterGrams.toFixed(1)} g</p>
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Total materia natural</p>
-                  <p className="mt-1 text-3xl font-black text-orange-300">{preview.totalAsFedGrams.toFixed(1)} g</p>
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Por refeicao</p>
-                  <p className="mt-1 text-3xl font-black text-orange-300">{preview.feedingPlan.meals[0]?.gramsAsFed.toFixed(1) ?? '0.0'} g</p>
-                </div>
-              </div>
-
-              <div className="mt-4 space-y-2">
-                {preview.contributions.map((item) => (
-                  <div key={item.foodId} className="flex items-center justify-between rounded-2xl border border-white/10 bg-[#171212] px-4 py-3 text-sm">
-                    <div>
-                      <p className="font-medium text-white">{item.foodName}</p>
-                      <p className="text-xs text-muted-foreground">{item.inclusionPct.toFixed(1)}% da mistura em MS</p>
+                    {/* Quantidades principais */}
+                    <div className="rounded-2xl border border-orange-400/25 bg-gradient-to-br from-orange-500/12 to-transparent p-4">
+                      <p className="text-xs font-semibold uppercase tracking-widest text-orange-300/70 mb-3">Formulação</p>
+                      <div className="grid grid-cols-3 gap-3">
+                        {[
+                          { label: 'Matéria seca', value: `${preview.totalDryMatterGrams.toFixed(1)} g` },
+                          { label: 'Matéria natural', value: `${preview.totalAsFedGrams.toFixed(1)} g` },
+                          { label: 'Por refeição', value: `${preview.feedingPlan.meals[0]?.gramsAsFed.toFixed(1) ?? '0.0'} g` },
+                        ].map((item) => (
+                          <div key={item.label} className="rounded-xl bg-black/20 p-3 text-center">
+                            <p className="text-[10px] text-muted-foreground">{item.label}</p>
+                            <p className="text-base font-black text-orange-300 mt-1">{item.value}</p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                    <div className="text-right">
-                      <p className="font-semibold text-white">{item.gramsAsFed.toFixed(1)} g/dia</p>
-                      <p className="text-xs text-muted-foreground">{item.deliveredKcal.toFixed(1)} kcal</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
 
-          <div className="flex justify-between border-t border-white/5 pt-4">
+                    {/* Donut + macros */}
+                    <div className="rounded-2xl border border-white/10 bg-[#171212] p-4">
+                      <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">Partição energética</p>
+                      <div className="flex items-center gap-6">
+                        {/* Donut */}
+                        <div className="relative shrink-0 h-28 w-28 rounded-full" style={macroChartStyle}>
+                          <div className="absolute inset-[22%] rounded-full bg-[#171212]" />
+                          <div className="absolute inset-0 flex flex-col items-center justify-center">
+                            <p className="text-xs font-black text-white leading-none">{preview.totalKcal.toFixed(0)}</p>
+                            <p className="text-[9px] text-muted-foreground">kcal</p>
+                          </div>
+                        </div>
+                        {/* Legenda */}
+                        <div className="flex-1 space-y-2">
+                          {preview.evaluation.macroSplit.map((slice) => (
+                            <div key={slice.key} className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <span className="h-2 w-2 rounded-full shrink-0" style={{ backgroundColor: slice.color }} />
+                                <span className="text-xs text-muted-foreground">{slice.label}</span>
+                              </div>
+                              <div className="text-right">
+                                <span className="text-xs font-bold text-white">{slice.percent.toFixed(1)}%</span>
+                                <span className="text-[10px] text-muted-foreground ml-1">{slice.grams.toFixed(1)}g</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Resumo nutricional */}
+                    <div className="rounded-2xl border border-white/10 bg-[#171212] p-4">
+                      <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">Resumo nutricional</p>
+                      <div className="grid grid-cols-2 gap-2">
+                        {[
+                          { label: 'Energia', value: `${preview.totalKcal.toFixed(1)} kcal/dia` },
+                          { label: 'Proteína', value: preview.evaluation.totalDelivered.crudeProteinPct != null ? `${preview.evaluation.totalDelivered.crudeProteinPct.toFixed(1)} g/dia` : '—' },
+                          { label: 'Gordura', value: preview.evaluation.totalDelivered.etherExtractPct != null ? `${preview.evaluation.totalDelivered.etherExtractPct.toFixed(1)} g/dia` : '—' },
+                          { label: 'Carboidrato', value: preview.evaluation.totalDelivered.nitrogenFreeExtractPct != null ? `${preview.evaluation.totalDelivered.nitrogenFreeExtractPct.toFixed(1)} g/dia` : '—' },
+                          { label: 'Fibra', value: preview.evaluation.totalDelivered.crudeFiberPct != null ? `${preview.evaluation.totalDelivered.crudeFiberPct.toFixed(1)} g/dia` : '—' },
+                          { label: 'Cálcio', value: preview.evaluation.totalDelivered.calciumPct != null ? `${preview.evaluation.totalDelivered.calciumPct.toFixed(2)} g/dia` : '—' },
+                          { label: 'Fósforo', value: preview.evaluation.totalDelivered.phosphorusPct != null ? `${preview.evaluation.totalDelivered.phosphorusPct.toFixed(2)} g/dia` : '—' },
+                          {
+                            label: 'Rel. Ca:P',
+                            value: preview.evaluation.totalDelivered.calciumPct && preview.evaluation.totalDelivered.phosphorusPct
+                              ? (preview.evaluation.totalDelivered.calciumPct / preview.evaluation.totalDelivered.phosphorusPct).toFixed(2)
+                              : '—',
+                          },
+                        ].map((item) => (
+                          <div key={item.label} className="rounded-xl border border-white/5 bg-black/15 px-3 py-2.5">
+                            <p className="text-[10px] text-muted-foreground">{item.label}</p>
+                            <p className="text-sm font-semibold text-white mt-0.5">{item.value}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Contribuição por alimento */}
+                    <div className="rounded-2xl border border-white/10 bg-[#171212] p-4">
+                      <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">Contribuição por alimento</p>
+                      <div className="space-y-2">
+                        {preview.contributions.map((item) => (
+                          <div key={item.foodId} className="rounded-xl border border-white/10 bg-[#221a19] px-3 py-2.5">
+                            <div className="flex items-center justify-between">
+                              <p className="text-xs font-medium text-white truncate flex-1 pr-2">{item.foodName}</p>
+                              <p className="text-xs font-bold text-white shrink-0">{item.gramsAsFed.toFixed(1)} g/dia</p>
+                            </div>
+                            <div className="flex items-center justify-between mt-1">
+                              <div className="flex items-center gap-1">
+                                {/* Barra de proporção */}
+                                <div className="w-16 h-1 rounded-full bg-white/10 overflow-hidden">
+                                  <div className="h-full rounded-full bg-orange-400" style={{ width: `${Math.min(item.inclusionPct, 100)}%` }} />
+                                </div>
+                                <p className="text-[10px] text-muted-foreground">{item.inclusionPct.toFixed(1)}% MS</p>
+                              </div>
+                              <p className="text-[10px] text-muted-foreground">{item.deliveredKcal.toFixed(1)} kcal</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                  </div>
+                )}
+
+                {/* Botões de navegação dentro do painel direito (visíveis em xl) */}
+                <div className="hidden xl:flex justify-between pt-1">
+                  <Button variant="outline" size="sm" onClick={() => navigate(`${NEW_ROUTE}/target`)} className="gap-2">
+                    <ChevronLeft className="h-3.5 w-3.5" /> Anterior
+                  </Button>
+                  <Button size="sm" onClick={handleNext} className="gap-2" disabled={!preview || !entries.length}>
+                    Ver resumo <ChevronRight className="h-3.5 w-3.5" />
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Botões de navegação (mobile/tablet) */}
+          <div className="xl:hidden flex justify-between border-t border-white/5 mt-6 pt-4">
             <Button variant="outline" onClick={() => navigate(`${NEW_ROUTE}/target`)} className="gap-2">
               <ChevronLeft className="h-4 w-4" /> Anterior
             </Button>
-            <Button onClick={handleNext} className="gap-2" id="btn-next-summary" disabled={!preview || !entries.length}>
+            <Button onClick={handleNext} className="gap-2" disabled={!preview || !entries.length}>
               Ver resumo <ChevronRight className="h-4 w-4" />
             </Button>
           </div>
         </CardContent>
       </Card>
 
+      {/* Modal informações nutricionais */}
       <Dialog open={!!detailsFood} onOpenChange={(open) => !open && setDetailsFoodId(null)}>
-        <DialogContent className="w-[min(96vw,1120px)] max-w-[1120px] sm:max-w-[1120px] border border-orange-400/20 bg-[#141010]">
+        <DialogContent className="w-[min(96vw,860px)] max-w-[860px] sm:max-w-[860px] border border-orange-400/20 bg-[#141010]">
           <DialogHeader>
-            <DialogTitle className="text-white">{detailsFood?.name ?? 'Informacoes nutricionais'}</DialogTitle>
+            <DialogTitle className="text-white">{detailsFood?.name ?? 'Informações nutricionais'}</DialogTitle>
           </DialogHeader>
 
           {detailsFood && (
-            <div className="space-y-5">
-              <div className="grid gap-3 md:grid-cols-4">
-                <div className="rounded-2xl border border-white/10 bg-[#1c1514] p-4">
-                  <p className="text-xs text-muted-foreground">Energia</p>
-                  <p className="mt-1 font-semibold text-white">{formatNutrient(detailsFood.nutrientsAsFed.energyKcalPer100g, 'kcal/100g')}</p>
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-[#1c1514] p-4">
-                  <p className="text-xs text-muted-foreground">Proteina</p>
-                  <p className="mt-1 font-semibold text-white">{formatNutrient(detailsFood.nutrientsAsFed.crudeProteinPct, '%')}</p>
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-[#1c1514] p-4">
-                  <p className="text-xs text-muted-foreground">Gordura</p>
-                  <p className="mt-1 font-semibold text-white">{formatNutrient(detailsFood.nutrientsAsFed.etherExtractPct, '%')}</p>
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-[#1c1514] p-4">
-                  <p className="text-xs text-muted-foreground">Umidade</p>
-                  <p className="mt-1 font-semibold text-white">{formatNutrient(detailsFood.nutrientsAsFed.moisturePct, '%')}</p>
-                </div>
+            <div className="space-y-4">
+              <div className="rounded-xl border border-white/10 bg-[#1c1514] px-4 py-3">
+                <p className="text-xs text-muted-foreground">Categoria</p>
+                <p className="mt-1 font-semibold text-white">{detailsFood.categoryNormalized ?? 'Dado não cadastrado'}</p>
               </div>
 
-              <div className="grid gap-5 xl:grid-cols-2">
-                <div className="rounded-3xl border border-white/10 bg-[#1c1514] p-4">
-                  <p className="text-base font-semibold text-white">Materia natural</p>
-                  <div className="mt-4 max-h-[26rem] space-y-2 overflow-y-auto pr-1">
-                    {GENUTRI_NUTRIENT_CATALOG.map((nutrient) => (
-                      <div key={`asfed-${nutrient.key}`} className="flex items-center justify-between gap-3 rounded-2xl border border-white/5 px-3 py-2">
-                        <p className="text-sm text-muted-foreground">{nutrient.label}</p>
-                        <p className="text-sm font-medium text-white">{formatNutrient(detailsFood.nutrientsAsFed[nutrient.key], nutrient.unit)}</p>
-                      </div>
-                    ))}
+              <div className="grid gap-4 xl:grid-cols-2">
+                {[
+                  { title: 'Matéria natural (como fornecido)', basis: detailsFood.nutrientsAsFed },
+                  { title: 'Matéria seca', basis: detailsFood.nutrientsDryMatter },
+                ].map(({ title, basis }) => (
+                  <div key={title} className="rounded-2xl border border-white/10 bg-[#1c1514] p-4">
+                    <p className="text-sm font-semibold text-white mb-3">{title}</p>
+                    <div className="space-y-1.5">
+                      {DETAIL_NUTRIENTS.map((nutrient) => (
+                        <div key={nutrient.key} className="flex items-center justify-between rounded-lg border border-white/5 px-3 py-2">
+                          <p className="text-xs text-muted-foreground">{nutrient.label}</p>
+                          <p className="text-xs font-medium text-white">{formatNutrient(basis[nutrient.key], nutrient.unit)}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-
-                <div className="rounded-3xl border border-white/10 bg-[#1c1514] p-4">
-                  <p className="text-base font-semibold text-white">Materia seca</p>
-                  <div className="mt-4 max-h-[26rem] space-y-2 overflow-y-auto pr-1">
-                    {GENUTRI_NUTRIENT_CATALOG.map((nutrient) => (
-                      <div key={`dm-${nutrient.key}`} className="flex items-center justify-between gap-3 rounded-2xl border border-white/5 px-3 py-2">
-                        <p className="text-sm text-muted-foreground">{nutrient.label}</p>
-                        <p className="text-sm font-medium text-white">{formatNutrient(detailsFood.nutrientsDryMatter[nutrient.key], nutrient.unit)}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                ))}
               </div>
 
-              <div className="rounded-3xl border border-white/10 bg-[#1c1514] p-4">
-                <p className="text-base font-semibold text-white">Observacoes e rastreabilidade</p>
-                <div className="mt-3 grid gap-3 md:grid-cols-2">
-                  <div className="rounded-2xl border border-white/5 p-3">
-                    <p className="text-xs text-muted-foreground">Categoria</p>
-                    <p className="mt-1 text-sm text-white">{detailsFood.categoryNormalized ?? 'Dado nao cadastrado'}</p>
-                  </div>
-                  <div className="rounded-2xl border border-white/5 p-3">
-                    <p className="text-xs text-muted-foreground">Tipo</p>
-                    <p className="mt-1 text-sm text-white">{detailsFood.foodType}</p>
-                  </div>
-                  <div className="rounded-2xl border border-white/5 p-3 md:col-span-2">
-                    <p className="text-xs text-muted-foreground">Observacoes</p>
-                    <p className="mt-1 text-sm text-white">{detailsFood.notes.join(' · ') || 'Dado nao cadastrado'}</p>
-                  </div>
+              {detailsFood.notes.length > 0 && (
+                <div className="rounded-xl border border-white/10 bg-[#1c1514] px-4 py-3">
+                  <p className="text-xs text-muted-foreground">Observações</p>
+                  <p className="mt-1 text-sm text-white">{detailsFood.notes.join(' · ')}</p>
                 </div>
-              </div>
+              )}
             </div>
           )}
         </DialogContent>

@@ -47,7 +47,12 @@ export default function TargetStep() {
   const { patient, energy, target, setPatient, setTarget } = useCalculationStore()
 
   const [goal, setGoal] = useState<TargetGoal>(target.goal ?? 'maintenance')
-  const [useManualWeight, setUseManualWeight] = useState<boolean>(target.isManualTarget ?? false)
+  const [ruleMode, setRuleMode] = useState<'fediaf' | 'clinical'>(
+    target.isCustomClinicalRule === false ? 'fediaf' : 'clinical',
+  )
+  const [useManualWeight, setUseManualWeight] = useState<boolean>(
+    target.isManualTarget ?? (target.isCustomClinicalRule === false && (target.goal === 'weight_loss' || target.goal === 'weight_gain')),
+  )
   const [manualWeight, setManualWeight] = useState<number>(target.targetWeight ?? 0)
   const [weightForCalc, setWeightForCalc] = useState<'current' | 'target'>(target.weightToUseForEnergy ?? 'current')
   const [eccModalOpen, setEccModalOpen] = useState(false)
@@ -73,10 +78,21 @@ export default function TargetStep() {
     setWeightForCalc(target.weightToUseForEnergy ?? 'current')
   }, [goal, target.weightToUseForEnergy])
 
+  useEffect(() => {
+    if (goal === 'maintenance') {
+      setUseManualWeight(false)
+      return
+    }
+    if (ruleMode === 'fediaf') {
+      setUseManualWeight(true)
+    }
+  }, [goal, ruleMode])
+
   const autoTargetWeight = useMemo(() => {
     if (goal === 'maintenance') return currentWeight
+    if (ruleMode === 'fediaf') return currentWeight
     return calculateIdealWeightCustom(currentWeight, bcs, goal)
-  }, [bcs, currentWeight, goal])
+  }, [bcs, currentWeight, goal, ruleMode])
 
   const targetWeight = useManualWeight && manualWeight > 0 ? manualWeight : autoTargetWeight
   const diffKg = targetWeight - currentWeight
@@ -84,6 +100,7 @@ export default function TargetStep() {
   const customRulePercent =
     goal === 'weight_loss' ? getWeightLossPercent(bcs) : goal === 'weight_gain' ? getWeightGainPercent(bcs) : null
   const calcWeight = weightForCalc === 'target' ? targetWeight : currentWeight
+  const requiresManualOfficialWeight = ruleMode === 'fediaf' && goal !== 'maintenance'
 
   const baseEnergy = useMemo(
     () =>
@@ -91,11 +108,16 @@ export default function TargetStep() {
         species,
         stateId: energy.stateId ?? '',
         weightKg: calcWeight,
+        ageWeeks: energy.ageWeeks,
         expectedAdultWeightKg: energy.expectedAdultWeightKg,
+        activityHoursPerDay: energy.activityHoursPerDay,
+        activityImpact: energy.activityImpact,
+        obesityProne: energy.obesityProne,
         litterSize: energy.litterSize,
         lactationWeek: energy.lactationWeek,
+        specialBreedObservation: energy.specialBreedObservation,
       }),
-    [calcWeight, energy.expectedAdultWeightKg, energy.lactationWeek, energy.litterSize, energy.stateId, species],
+    [calcWeight, energy.activityHoursPerDay, energy.activityImpact, energy.ageWeeks, energy.expectedAdultWeightKg, energy.lactationWeek, energy.litterSize, energy.obesityProne, energy.specialBreedObservation, energy.stateId, species],
   )
 
   const goalMultiplier = getGoalMultiplier(goal)
@@ -120,6 +142,7 @@ export default function TargetStep() {
     const nextGoal = modalWeightPreview.goal as TargetGoal
     setPatient({ bcs: modalBcs })
     setGoal(nextGoal)
+    setRuleMode('clinical')
     setUseManualWeight(false)
     setTarget({
       goal: nextGoal,
@@ -133,7 +156,7 @@ export default function TargetStep() {
   const handleNext = () => {
     setTarget({
       goal,
-      isCustomClinicalRule: !useManualWeight,
+      isCustomClinicalRule: ruleMode === 'clinical',
       isManualTarget: useManualWeight,
       currentWeight,
       targetWeight,
@@ -235,6 +258,78 @@ export default function TargetStep() {
             </div>
           </section>
 
+          <section className="space-y-4 rounded-3xl border border-white/10 bg-white/[0.03] p-5">
+            <div>
+              <p className="text-lg font-semibold text-white">Origem da meta ponderal</p>
+              <p className="text-sm text-muted-foreground">O app agora separa claramente regra oficial de referencia e regra percentual customizada da clinica.</p>
+            </div>
+
+            <div className="grid gap-3 md:grid-cols-2">
+              {[
+                {
+                  value: 'fediaf' as const,
+                  title: 'Modo FEDIAF / oficial',
+                  description: 'Usa peso corporal otimo definido clinicamente. Para perda ou ganho, o peso-alvo deve ser informado manualmente.',
+                },
+                {
+                  value: 'clinical' as const,
+                  title: 'Modo clinica customizada',
+                  description: 'Usa a regra percentual operacional por ECC configurada no modulo.',
+                },
+              ].map((option) => (
+                <button
+                  key={option.value}
+                  type="button"
+                  onClick={() => setRuleMode(option.value)}
+                  className={cn(
+                    'rounded-2xl border px-4 py-4 text-left transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.99]',
+                    ruleMode === option.value
+                      ? 'border-orange-400/60 bg-orange-500/12 text-white'
+                      : 'border-white/10 bg-black/10 text-muted-foreground hover:border-orange-500/30 hover:text-white',
+                  )}
+                >
+                  <p className="font-semibold">{option.title}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{option.description}</p>
+                </button>
+              ))}
+            </div>
+
+            {(goal === 'weight_loss' || goal === 'weight_gain') && (
+              <div className="grid gap-4 md:grid-cols-[1fr_0.9fr]">
+                <div className="space-y-2">
+                  <Label htmlFor="manual-target-weight">
+                    {ruleMode === 'fediaf' ? 'Peso corporal otimo definido clinicamente (kg)' : 'Peso-alvo manual (kg)'}
+                  </Label>
+                  <Input
+                    id="manual-target-weight"
+                    type="number"
+                    min="0.1"
+                    step="0.1"
+                    value={useManualWeight ? manualWeight || '' : ''}
+                    onChange={(event) => {
+                      setUseManualWeight(true)
+                      setManualWeight(Number(event.target.value) || 0)
+                    }}
+                    placeholder={ruleMode === 'fediaf' ? 'Informe o peso corporal otimo' : 'Opcional: sobrescrever calculo automatico'}
+                  />
+                </div>
+
+                <div className="rounded-2xl border border-orange-400/20 bg-orange-500/[0.08] p-4">
+                  <p className="font-semibold text-white">
+                    {ruleMode === 'fediaf' ? 'Referencia oficial' : 'Regra percentual da clinica'}
+                  </p>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    {ruleMode === 'fediaf'
+                      ? 'A referencia oficial usa peso corporal otimo. O percentual automatico por ECC nao e apresentado como regra oficial.'
+                      : customRulePercent != null
+                      ? `ECC ${bcs}/9 aplica ${goal === 'weight_loss' ? `-${customRulePercent}%` : `+${customRulePercent}%`} no modulo da clinica.`
+                      : 'O paciente esta em manutencao.'}
+                  </p>
+                </div>
+              </div>
+            )}
+          </section>
+
           <section className="space-y-4 rounded-3xl border border-orange-400/20 bg-gradient-to-r from-orange-500/12 via-black/10 to-transparent p-5">
             <div className="flex items-center gap-2">
               <Scale className="h-5 w-5 text-orange-300" />
@@ -291,7 +386,7 @@ export default function TargetStep() {
             <Button variant="outline" onClick={() => navigate(`${NEW_ROUTE}/energy`)} className="gap-2">
               <ChevronLeft className="h-4 w-4" /> Anterior
             </Button>
-            <Button onClick={handleNext} className="gap-2" id="btn-next-food">
+            <Button onClick={handleNext} className="gap-2" id="btn-next-food" disabled={requiresManualOfficialWeight && manualWeight <= 0}>
               Proximo: Alimentos <ChevronRight className="h-4 w-4" />
             </Button>
           </div>
@@ -316,7 +411,7 @@ export default function TargetStep() {
                       src={eccImageSrc}
                       alt={`Guia de ECC ${species === 'dog' ? 'canino' : 'felino'}`}
                       className="h-full max-h-[70vh] w-full object-contain"
-                      onError={() => setEccImageSrc('/ecc-cao-2025.jpg')}
+                      onError={() => setEccImageSrc(ECC_IMAGE_BY_SPECIES[species])}
                     />
                   </div>
                 </DialogTrigger>

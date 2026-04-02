@@ -200,10 +200,10 @@ function handlePeriodModeChange(
 // ─── helper ingrediente ───────────────────────────────────────────────────────
 
 function updateIngredient(value: ManipuladoV1Formula, id: string, patch: Partial<ManipuladoV1Formula['ingredients'][number]>): ManipuladoV1Formula {
-  return normalizeManipuladoV1({
+  return {
     ...value,
     ingredients: value.ingredients.map((ingredient) => ingredient.id === id ? { ...ingredient, ...patch } : ingredient),
-  })
+  }
 }
 
 // ─── helpers visuais ──────────────────────────────────────────────────────────
@@ -258,25 +258,28 @@ export function ManipuladosV1Editor({
   onSave,
   onDelete,
   saving,
+  saveLabel,
 }: {
   value: ManipuladoV1Formula
   onChange: (next: ManipuladoV1Formula) => void
   onSave: () => void
   onDelete?: () => void
   saving?: boolean
+  saveLabel?: string
 }) {
   const [quickText, setQuickText] = useState('')
   const [showAdvanced, setShowAdvanced] = useState(false)
-  const current = normalizeManipuladoV1(value)
-  const previewUsage = current.prescribing.manual_usage_override || buildGeneratedUsageText(current)
-  const recommendations = useMemo(() => renderManipuladoV1Recommendations(current), [current])
-  const periodMode = resolvePeriodMode(current)
+  const current = value
+  const previewFormula = useMemo(() => normalizeManipuladoV1(value), [value])
+  const previewUsage = previewFormula.prescribing.manual_usage_override || buildGeneratedUsageText(previewFormula)
+  const recommendations = useMemo(() => renderManipuladoV1Recommendations(previewFormula), [previewFormula])
+  const periodMode = resolvePeriodMode(previewFormula)
   const isClosedDuration = periodMode === '__closed'
   const isCustomDuration = periodMode === 'custom'
-  const isDoseByWeight = current.prescribing.posology_mode === 'mg_per_kg_dose' || current.prescribing.posology_mode === 'mg_per_m2_dose'
-  const freqSelectValue = resolveFrequencySelectValue(current)
+  const isDoseByWeight = previewFormula.prescribing.posology_mode === 'mg_per_kg_dose' || previewFormula.prescribing.posology_mode === 'mg_per_m2_dose'
+  const freqSelectValue = resolveFrequencySelectValue(previewFormula)
 
-  const setFormula = (patch: Partial<ManipuladoV1Formula>) => onChange(normalizeManipuladoV1({ ...current, ...patch }))
+  const setFormula = (patch: Partial<ManipuladoV1Formula>) => onChange({ ...current, ...patch })
 
   return (
     <div className="space-y-5">
@@ -288,7 +291,7 @@ export function ManipuladosV1Editor({
             <RxvTextarea value={quickText} onChange={(e) => setQuickText(e.target.value)} rows={6} placeholder="Cole aqui o texto da fórmula. Exemplo:&#10;Aciclovir 10–25 mg/kg/dose&#10;Pasta oral sabor Frango q.s.p. 60 g&#10;Gatos. 2x ao dia por 14 dias." />
           </RxvField>
           <div className="xl:col-span-3 flex items-end">
-            <RxvButton variant="secondary" onClick={() => onChange(parseManipuladoV1FromText(quickText, current.identity.clinic_id))}>Importar texto</RxvButton>
+            <RxvButton variant="secondary" onClick={() => onChange(parseManipuladoV1FromText(quickText, previewFormula.identity.clinic_id))}>Importar texto</RxvButton>
           </div>
         </div>
       </RxvCard>
@@ -520,10 +523,6 @@ export function ManipuladosV1Editor({
             <RxvInput value={current.pharmacy.qsp_text} onChange={(e) => setFormula({ pharmacy: { ...current.pharmacy, qsp_text: e.target.value } })} placeholder="Ex.: 60 g, 30 unidades, 10 mL" />
             <FieldHint>Quantidade suficiente para (q.s.p.) — alvo final da formulação.</FieldHint>
           </div>
-          <RxvField label="Apresentação final" className="xl:col-span-4">
-            <RxvInput value={current.pharmacy.total_quantity} onChange={(e) => setFormula({ pharmacy: { ...current.pharmacy, total_quantity: e.target.value } })} placeholder="Ex.: 60 g (pasta), 30 cápsulas" />
-            <FieldHint>Resumo para o card do catálogo e cabeçalho da receita.</FieldHint>
-          </RxvField>
           <RxvField label="Unidade final" className="xl:col-span-2">
             <RxvSelect value={current.pharmacy.final_unit} onChange={(e) => setFormula({ pharmacy: { ...current.pharmacy, final_unit: e.target.value as any } })} options={FINAL_UNIT_OPTIONS} />
           </RxvField>
@@ -565,8 +564,8 @@ export function ManipuladosV1Editor({
           <RxvField label="Instrução para a farmácia" className="xl:col-span-8">
             <RxvTextarea value={current.pharmacy.compounding_instructions} onChange={(e) => setFormula({ pharmacy: { ...current.pharmacy, compounding_instructions: e.target.value } })} rows={3} placeholder="Observações técnicas para o farmacêutico. Ex.: misturar em câmara de fluxo laminar." />
           </RxvField>
-          <RxvField label="Nota técnica da farmácia" className="xl:col-span-4">
-            <RxvTextarea value={current.pharmacy.pharmaceutic_note} onChange={(e) => setFormula({ pharmacy: { ...current.pharmacy, pharmaceutic_note: e.target.value } })} rows={3} placeholder="Nota farmacotécnica interna (opcional)." />
+          <RxvField label="Recomendações ao tutor" className="xl:col-span-4">
+            <RxvTextarea value={current.pharmacy.pharmaceutic_note} onChange={(e) => setFormula({ pharmacy: { ...current.pharmacy, pharmaceutic_note: e.target.value } })} rows={3} placeholder="Recomendações extras ao tutor (opcional)." />
             <FieldHint>Aparecerá como recomendação adicional no PDF se preenchido.</FieldHint>
           </RxvField>
         </div>
@@ -647,12 +646,12 @@ export function ManipuladosV1Editor({
         <RxvSectionHeader icon="preview" title="Bloco 4 • Preview final" subtitle="Exatamente o que vai para a receita impressa." />
         <div className="space-y-4 rounded-2xl border border-[#39ff14]/18 bg-black/20 p-5 text-sm text-slate-200">
           <p className="font-semibold text-white">
-            <span>{getManipuladoV1PrintLineLeft(current)}</span>
+            <span>{getManipuladoV1PrintLineLeft(previewFormula)}</span>
             <span className="mx-2 text-slate-600">{'......................................................................................'}</span>
-            <span>{getManipuladoV1PrintLineRight(current)}</span>
+            <span>{getManipuladoV1PrintLineRight(previewFormula)}</span>
           </p>
-          <p className="leading-7">{renderManipuladoV1TutorInstruction(current)}</p>
-          <p className="text-[11px] leading-6 text-slate-400">{renderManipuladoV1PharmacyInstruction(current)}</p>
+          <p className="leading-7">{renderManipuladoV1TutorInstruction(previewFormula)}</p>
+          <p className="text-[11px] leading-6 text-slate-400">{renderManipuladoV1PharmacyInstruction(previewFormula)}</p>
           {recommendations.length ? (
             <div>
               <p className="mb-2 text-[11px] font-black uppercase tracking-widest text-slate-500">Recomendações ao tutor</p>
@@ -666,7 +665,7 @@ export function ManipuladosV1Editor({
 
       <div className="flex items-center justify-end gap-3">
         {onDelete ? <RxvButton variant="ghost" onClick={onDelete}>Excluir fórmula</RxvButton> : null}
-        <RxvButton variant="primary" onClick={onSave} loading={!!saving}>Salvar fórmula</RxvButton>
+        <RxvButton variant="primary" onClick={onSave} loading={!!saving}>{saveLabel ?? 'Salvar fórmula'}</RxvButton>
       </div>
     </div>
   )

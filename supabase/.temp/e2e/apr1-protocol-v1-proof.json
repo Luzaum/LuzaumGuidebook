@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "protocolSaved": true,
+  "protocolReopenedInV1": true,
+  "catalogUnchanged": true,
+  "shots": [
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\apr1-protocol-v1-saved.png",
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\apr1-protocol-v1-reopened.png",
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\apr1-protocol-v1-catalog-check.png"
+  ],
+  "error": ""
+}

@@ -610,12 +610,12 @@ export function AddMedicationModal2({
   const selectedPresentation = presentations.find((p) => p.id === selectedPresentationId)
   const canAdd = manualMode ? !!manualName.trim() : !!selectedMedication
   const resolvedTitle =
-    title || (manualMode ? 'Adicionar Medicamento Manual' : 'Adicionar Medicamento do Cat?logo')
+    title || (manualMode ? 'Adicionar Medicamento Manual' : 'Adicionar Medicamento do Catálogo')
   const resolvedSubtitle =
     subtitle || (manualMode
       ? 'Preencha os dados do medicamento manualmente'
-      : 'Busque no Cat?logo 3.0 e adicione ? receita')
-  const resolvedConfirmLabel = confirmLabel || 'Adicionar ? Receita'
+      : 'Busque no Catálogo 3.0 e adicione à receita')
+  const resolvedConfirmLabel = confirmLabel || 'Adicionar à Receita'
 
   return (
     <RxvModalShell zIndexClass="z-[90]" overlayClassName="bg-black/80 backdrop-blur-sm">
@@ -889,7 +889,7 @@ export function AddMedicationModal2({
                                           type="range"
                                           min={rd.dose_value}
                                           max={rdAny.dose_max}
-                                          step={rd.dose_value < 1 ? 0.1 : rd.dose_value < 10 ? 0.5 : 1}
+                                          step={0.5}
                                           value={rangeDoseValue ?? rd.dose_value}
                                           onChange={(e) => setRangeDoseValue(Number(e.target.value))}
                                           className="flex-1 h-2 appearance-none bg-slate-700 rounded-full cursor-pointer"
@@ -900,7 +900,7 @@ export function AddMedicationModal2({
                                             type="number"
                                             min={rd.dose_value}
                                             max={rdAny.dose_max}
-                                            step={rd.dose_value < 1 ? 0.1 : rd.dose_value < 10 ? 0.5 : 1}
+                                            step={0.5}
                                             value={rangeDoseValue ?? rd.dose_value}
                                             onChange={(e) => setRangeDoseValue(Number(e.target.value))}
                                             className="w-16 bg-transparent text-amber-200 text-sm font-bold text-center outline-none"

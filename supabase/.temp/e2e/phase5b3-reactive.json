@@ -1,17 +1,16 @@
 {
-  "ok": true,
+  "ok": false,
   "routeLoaded": true,
-  "previewReactive": true,
-  "reviewReactive": true,
-  "paperTitleDark": true,
-  "pdfPath": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\downloads\\phase5b3-1774907005740-PACIENTE_E2E_TUTOR_E2E_MANIPULADOS_30-03-2026.pdf",
-  "beforeTitle": "Benazepril teste reativo (2,5 mg/biscoito)",
-  "afterTitle": "Benazepril teste reativo (2,5 mg/biscoito)",
-  "beforeRight": "Biscoito medicamentoso",
-  "afterRight": "Biscoito medicamentoso",
+  "previewReactive": false,
+  "reviewReactive": false,
+  "paperTitleDark": false,
+  "pdfPath": "",
+  "beforeTitle": "",
+  "afterTitle": "",
+  "beforeRight": "",
+  "afterRight": "",
   "shots": [
-    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase5b3-preview-before.png",
-    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase5b3-preview-after.png",
-    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase5b3-review-after.png"
-  ]
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\phase5b3-fatal.png"
+  ],
+  "error": "locator.textContent: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-rx-print-canvas=\"sheet\"]').first().locator('p.min-w-0.truncate.whitespace-nowrap').first()\u001b[22m\n"
 }

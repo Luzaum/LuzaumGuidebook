@@ -310,9 +310,10 @@ export function buildMedicationDisplayName(params: {
   const commercialName = safeString(params.commercialName)
   const concentrationText = safeString(params.concentrationText)
   if (!name) return ''
-  if (commercialName && concentrationText) return `${name} (${commercialName} ${concentrationText})`
-  if (commercialName) return `${name} (${commercialName})`
-  if (concentrationText) return `${name} (${concentrationText})`
+  // Quando há nome comercial, ele vai primeiro na receita (o que o tutor lê no balcão da farmácia)
+  if (commercialName && concentrationText) return `${commercialName} ${concentrationText}`
+  if (commercialName) return `${commercialName} (${name})`
+  if (concentrationText) return `${name} ${concentrationText}`
   return name
 }
 

@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "rangeStepHalf": true,
+  "amoxiTitleOk": true,
+  "amoxiDispensingOk": true,
+  "noFalseIncompatibility": true,
+  "pdfExported": true,
+  "shots": [
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\apr1-normal-med-nova-receita.png",
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\apr1-normal-med-review.png"
+  ],
+  "pdfPath": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\downloads\\apr1-normal-med-1775097440801-PACIENTE_E2E_TUTOR_E2E_MANIPULADOS_01-04-2026.pdf",
+  "error": ""
+}

@@ -21,11 +21,11 @@ const ROUTE_OPTIONS: RouteGroup[] = [
 ]
 
 const SPECIES_TARGET_OPTIONS: Array<{ value: string; label: string }> = [
-  { value: 'Caes', label: 'Cão' },
+  { value: 'Caes', label: 'C�o' },
   { value: 'Gatos', label: 'Gato' },
 ]
 
-const PRESENTATION_TYPE_OPTIONS = ['Comprimido', 'Cápsula', 'Solução oral', 'Suspensão oral', 'Gotas', 'Injetável', 'Ampola', 'Pomada', 'Spray']
+const PRESENTATION_TYPE_OPTIONS = ['Comprimido', 'C�psula', 'Solu��o oral', 'Suspens�o oral', 'Gotas', 'Injet�vel', 'Ampola', 'Pomada', 'Spray']
 
 
 function cloneDrug(drug: CatalogDrug): CatalogDrug {
@@ -34,12 +34,12 @@ function cloneDrug(drug: CatalogDrug): CatalogDrug {
     // Garantir client_id
     const client_id = presentation.client_id || (typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`);
 
-    // Se já tem os campos do novo schema, retornar direto
+    // Se j� tem os campos do novo schema, retornar direto
     if (presentation.pharmaceutical_form !== undefined) {
       return { ...presentation, client_id };
     }
 
-    // Migração do schema antigo (localStorage) para novo schema (Supabase)
+    // Migra��o do schema antigo (localStorage) para novo schema (Supabase)
     const migrated: CatalogPresentation = {
       ...presentation,
       client_id,
@@ -50,7 +50,7 @@ function cloneDrug(drug: CatalogDrug): CatalogDrug {
       per_value: presentation.concentrationPerValue ? Number(presentation.concentrationPerValue) : 1,
       per_unit: presentation.concentrationPerUnit || presentation.unitLabel || 'comprimido',
       avg_price_brl: presentation.averagePrice ? Number(String(presentation.averagePrice).replace(/[^\d.-]/g, '')) : null,
-      pharmacy_veterinary: presentation.pharmacyTags?.includes('veterinária') || false,
+      pharmacy_veterinary: presentation.pharmacyTags?.includes('veterin�ria') || false,
       pharmacy_human: presentation.pharmacyTags?.includes('humana') || false,
       pharmacy_compounding: presentation.pharmacyTags?.includes('manipulacao') || false,
     };
@@ -143,7 +143,7 @@ export default function CatalogoPage() {
             name: med.name,
             speciesTargets: Array.isArray(med.species) ? med.species : [],
             controlled: med.is_controlled || false,
-            pharmacyType: 'veterinária',
+            pharmacyType: 'veterin�ria',
             routeGroup: 'ORAL',
             doseUnit: 'mg/kg',
             notes: med.notes || '',
@@ -214,29 +214,29 @@ export default function CatalogoPage() {
     console.log('[Catalog] ========== SAVE CLICKED ==========');
     console.log('[Catalog] draft:', JSON.stringify(draft, null, 2));
 
-    // Validação: nome do fármaco obrigatório
+    // Valida��o: nome do f�rmaco obrigat�rio
     if (!draft.name?.trim()) {
-      console.error('[Catalog] SAVE BLOCKED: nome do fármaco vazio');
-      alert('Por favor, preencha o nome do fármaco.');
+      console.error('[Catalog] SAVE BLOCKED: nome do f�rmaco vazio');
+      alert('Por favor, preencha o nome do f�rmaco.');
       return;
     }
 
-    // Validação: pelo menos uma apresentação
+    // Valida��o: pelo menos uma apresenta��o
     const presentations = draft.presentations.length ? draft.presentations : [createPresentation()];
 
-    // Validação: cada apresentação deve ter pelo menos uma farmácia selecionada
+    // Valida��o: cada apresenta��o deve ter pelo menos uma farm�cia selecionada
     const invalidPresentations = presentations.filter(p =>
       !p.pharmacy_veterinary && !p.pharmacy_human && !p.pharmacy_compounding
     );
     if (invalidPresentations.length > 0) {
-      console.error('[Catalog] SAVE BLOCKED: apresentações sem farmácia selecionada', invalidPresentations);
-      alert('Cada apresentação deve ter pelo menos um tipo de farmácia selecionado.');
+      console.error('[Catalog] SAVE BLOCKED: apresenta��es sem farm�cia selecionada', invalidPresentations);
+      alert('Cada apresenta��o deve ter pelo menos um tipo de farm�cia selecionado.');
       return;
     }
 
-    // Normalizar apresentações para o schema do Supabase
+    // Normalizar apresenta��es para o schema do Supabase
     const normalizedPresentations = presentations.map((p) => {
-      // Converter avg_price_brl de string para número se necessário
+      // Converter avg_price_brl de string para n�mero se necess�rio
       let avg_price_brl = p.avg_price_brl;
       if (typeof avg_price_brl === 'string') {
         const raw = String(avg_price_brl).replace(/R\$|\s|\./g, '').replace(',', '.');
@@ -285,7 +285,7 @@ export default function CatalogoPage() {
 
       if (!clinicId || !userId) {
         console.error('[Catalog] SAVE BLOCKED: clinicId ou userId ausente', { clinicId, userId });
-        alert('Erro: clínica ou usuário não identificado. Faça login novamente.');
+        alert('Erro: cl�nica ou usu�rio n�o identificado. Fa�a login novamente.');
         return;
       }
 
@@ -297,7 +297,7 @@ export default function CatalogoPage() {
       console.log(normalizedPresentations);
 
       console.log('[Catalog] ========== STEP 3: CALLING SUPABASE ==========');
-      // Importar dinamicamente as funções
+      // Importar dinamicamente as fun��es
       const { saveMedication, getMedicationDetails, getMedicationPresentations } = await import('../../src/lib/clinicRecords');
 
       console.log('[Catalog] Calling saveMedication with:', {
@@ -322,7 +322,7 @@ export default function CatalogoPage() {
       console.log(result.presentations);
       console.log('[Catalog] Saved medication ID:', result.medication.id);
 
-      // PASSO 4 - VERIFICAÇÃO POST-SAVE (SELECT)
+      // PASSO 4 - VERIFICA��O POST-SAVE (SELECT)
       console.log('[Catalog] ========== STEP 5: POST-SAVE VERIFY (SELECT) ==========');
       console.log('[Catalog] Fetching medication by ID:', result.medication.id);
       const verifyMed = await getMedicationDetails(clinicId, result.medication.id);
@@ -341,7 +341,7 @@ export default function CatalogoPage() {
 
       if (!verifyMed) {
         console.error('[Catalog] POST-SAVE VERIFY FAILED: medication not found in database!');
-        alert('AVISO: Medicamento não foi encontrado no banco após save. Verifique RLS policies.');
+        alert('AVISO: Medicamento n�o foi encontrado no banco ap�s save. Verifique RLS policies.');
       }
 
       // Recarregar lista do Supabase
@@ -364,7 +364,7 @@ export default function CatalogoPage() {
       console.error('[Catalog] Error type:', typeof error);
       console.error('[Catalog] Error constructor:', error?.constructor?.name);
 
-      // Logar todos os campos possíveis do erro
+      // Logar todos os campos poss�veis do erro
       const errorDetails = {
         message: error?.message,
         details: error?.details,
@@ -384,7 +384,7 @@ export default function CatalogoPage() {
         }
       });
 
-      // Verificar se é erro de RLS
+      // Verificar se � erro de RLS
       const isRLSError =
         error?.code === '42501' ||
         error?.code === 'PGRST301' ||
@@ -394,7 +394,7 @@ export default function CatalogoPage() {
 
       if (isRLSError) {
         console.error('[Catalog] ⚠️ DETECTED: RLS/Permission Error');
-        alert('❌ ERRO DE PERMISSÃO (RLS)\n\nO medicamento não pode ser salvo porque as políticas de segurança do banco bloquearam a operação.\n\nVerifique:\n1. Você está logado?\n2. Você é membro da clínica ativa?\n3. As RLS policies da tabela medications permitem INSERT?');
+        alert('❌ ERRO DE PERMISS�O (RLS)\n\nO medicamento n�o pode ser salvo porque as pol�ticas de seguran�a do banco bloquearam a opera��o.\n\nVerifique:\n1. Voc� est� logado?\n2. Voc� � membro da cl�nica ativa?\n3. As RLS policies da tabela medications permitem INSERT?');
       } else {
         alert(`Erro ao salvar: ${error instanceof Error ? error.message : String(error)}`);
       }
@@ -439,8 +439,8 @@ export default function CatalogoPage() {
 
       <ReceituarioChrome
         section="catalogo"
-        title="Catálogo de Fármacos"
-        subtitle="Banco persistente, editável e reutilizável no modal de nova receita."
+        title="Cat�logo de F�rmacos"
+        subtitle="Banco persistente, edit�vel e reutiliz�vel no modal de nova receita."
         actions={
         <>
           <Link to="/receituario-vet/nova-receita-2" className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-2 text-sm">
@@ -449,18 +449,18 @@ export default function CatalogoPage() {
           </Link>
           <button type="button" className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-2 text-sm" onClick={onNew}>
             <span className="material-symbols-outlined text-[18px]">add</span>
-            Novo Fármaco
+            Novo F�rmaco
           </button>
           <button type="button" className="rxv-btn-primary inline-flex items-center gap-2 px-3 py-2 text-sm" onClick={onSave}>
             <span className="material-symbols-outlined text-[18px]">save</span>
-            Salvar Alterações
+            Salvar Altera��es
           </button>
         </>
       }
     >
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-12">
         <aside className="rxv-card p-4 xl:col-span-3">
-          <h3 className="mb-3 text-sm font-bold uppercase tracking-wide text-[color:var(--rxv-muted)]">Fármacos cadastrados</h3>
+          <h3 className="mb-3 text-sm font-bold uppercase tracking-wide text-[color:var(--rxv-muted)]">F�rmacos cadastrados</h3>
           <div className="max-h-[72vh] space-y-2 overflow-y-auto pr-1">
             {loading ? (
               <div className="flex items-center justify-center py-8 text-sm text-[color:var(--rxv-muted)]">
@@ -468,7 +468,7 @@ export default function CatalogoPage() {
               </div>
             ) : catalog.length === 0 ? (
               <div className="rounded-xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/60 px-3 py-4 text-center text-xs text-[color:var(--rxv-muted)]">
-                Nenhum medicamento cadastrado. Clique em "Novo Fármaco" para começar.
+                Nenhum medicamento cadastrado. Clique em "Novo F�rmaco" para come�ar.
               </div>
             ) : (
               catalog.map((drug) => (
@@ -482,8 +482,8 @@ export default function CatalogoPage() {
                   }`}
                   onClick={() => selectDrug(drug)}
                 >
-                  <p className="text-sm font-semibold">{drug.name || 'Novo fármaco'}</p>
-                  <p className="text-xs text-[color:var(--rxv-muted)]">{drug.presentations.length} apresentações</p>
+                  <p className="text-sm font-semibold">{drug.name || 'Novo f�rmaco'}</p>
+                  <p className="text-xs text-[color:var(--rxv-muted)]">{drug.presentations.length} apresenta��es</p>
                 </button>
               ))
             )}
@@ -493,7 +493,7 @@ export default function CatalogoPage() {
         <main className="space-y-6 xl:col-span-9">
           <section className="rxv-card p-5">
             <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-lg font-bold">Informações Gerais</h2>
+            <h2 className="text-lg font-bold">Informa��es Gerais</h2>
               <button type="button" className="rxv-btn-secondary inline-flex items-center gap-1 px-3 py-1.5 text-xs text-red-300 hover:text-red-200" onClick={onDelete}>
                 <span className="material-symbols-outlined text-[16px]">delete</span>
                 Excluir
@@ -501,11 +501,11 @@ export default function CatalogoPage() {
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <label className="text-sm md:col-span-2">
-                Nome do fármaco
+                Nome do f�rmaco
                 <input className="mt-1 w-full px-3 py-2" value={draft.name} onChange={(e) => setDraft((prev) => ({ ...prev, name: e.target.value }))} />
               </label>
               <div className="rounded-lg border border-[color:var(--rxv-border)]/70 bg-[color:var(--rxv-surface-2)]/60 p-3 text-xs text-[color:var(--rxv-muted)] md:col-span-2">
-                O tipo de farmácia agora é definido por apresentação comercial (abaixo). Isso permite múltiplas opções no mesmo fármaco.
+                O tipo de farm�cia agora � definido por apresenta��o comercial (abaixo). Isso permite m�ltiplas op��es no mesmo f�rmaco.
               </div>
               <label className="text-sm">
                 Via principal
@@ -518,7 +518,7 @@ export default function CatalogoPage() {
                 </select>
               </label>
               <label className="text-sm">
-                Unidade de dose padrão
+                Unidade de dose padr�o
                 <input
                   list="rx-dose-unit-options"
                   className="mt-1 w-full px-3 py-2"
@@ -526,13 +526,13 @@ export default function CatalogoPage() {
                   onChange={(e) => setDraft((prev) => ({ ...prev, doseUnit: e.target.value }))}
                 />
                 <datalist id="rx-dose-unit-options">
-                  {['mg/kg', 'mcg/kg', 'g/kg', 'mL/kg', 'UI/kg', 'comprimido/kg', 'gota/kg', 'mg', 'mL', 'comprimido', 'gota', 'cápsula'].map((unit) => (
+                  {['mg/kg', 'mcg/kg', 'g/kg', 'mL/kg', 'UI/kg', 'comprimido/kg', 'gota/kg', 'mg', 'mL', 'comprimido', 'gota', 'c�psula'].map((unit) => (
                     <option key={unit} value={unit} />
                   ))}
                 </datalist>
               </label>
               <div className="text-sm md:col-span-2">
-                <p className="mb-1">Espécies alvo</p>
+                <p className="mb-1">Esp�cies alvo</p>
                 <div className="flex flex-wrap gap-2">
                   {SPECIES_TARGET_OPTIONS.map((option) => {
                     const checked = draft.speciesTargets.includes(option.value)
@@ -577,14 +577,14 @@ export default function CatalogoPage() {
 
           <section className="rxv-card p-5">
             <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-lg font-bold">Apresentações</h2>
+            <h2 className="text-lg font-bold">Apresenta��es</h2>
               <button
                 type="button"
                 className="rxv-btn-secondary inline-flex items-center gap-1 px-3 py-1.5 text-xs"
                 onClick={() => setDraft((prev) => ({ ...prev, presentations: [...prev.presentations, createPresentation()] }))}
               >
                 <span className="material-symbols-outlined text-[16px]">add</span>
-                Nova apresentação
+                Nova apresenta��o
               </button>
             </div>
             <div className="space-y-3">
@@ -592,7 +592,7 @@ export default function CatalogoPage() {
                 <div key={presentation.client_id} className="rounded-xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/60 p-3">
                   <div className="grid grid-cols-1 gap-3 md:grid-cols-12">
                     <label className="text-xs md:col-span-3">
-                      Forma farmacêutica
+                      Forma farmac�utica
                       <select
                         className="mt-1 w-full px-3 py-2"
                         value={presentation.pharmaceutical_form || 'Comprimido'}
@@ -671,7 +671,7 @@ export default function CatalogoPage() {
                       </select>
                     </label>
                     <label className="text-xs md:col-span-3">
-                      Preço médio (opcional)
+                      Pre�o m�dio (opcional)
                       <input
                         type="number"
                         step="0.01"
@@ -685,7 +685,7 @@ export default function CatalogoPage() {
                       />
                     </label>
                     <div className="text-xs md:col-span-8">
-                      <p className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-[color:var(--rxv-muted)]">Tipos de farmácia desta apresentação</p>
+                      <p className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-[color:var(--rxv-muted)]">Tipos de farm�cia desta apresenta��o</p>
                       <div className="flex flex-wrap gap-2">
                         <label
                           className={`inline-flex items-center gap-2 rounded-full border px-2.5 py-1 text-xs ${
@@ -700,7 +700,7 @@ export default function CatalogoPage() {
                             checked={!!presentation.pharmacy_veterinary}
                             onChange={(e) => updatePresentationById(presentation.client_id!, { pharmacy_veterinary: e.target.checked })}
                           />
-                          Veterinária
+                          Veterin�ria
                         </label>
                         <label
                           className={`inline-flex items-center gap-2 rounded-full border px-2.5 py-1 text-xs ${
@@ -730,11 +730,11 @@ export default function CatalogoPage() {
                             checked={!!presentation.pharmacy_compounding}
                             onChange={(e) => updatePresentationById(presentation.client_id!, { pharmacy_compounding: e.target.checked })}
                           />
-                          Manipulação
+                          Manipula��o
                         </label>
                       </div>
                       <p className="mt-1 text-[11px] text-[color:var(--rxv-muted)]">
-                        Na Nova Receita, o usuário poderá escolher apenas entre as farmácias marcadas aqui.
+                        Na Nova Receita, o usu�rio poder� escolher apenas entre as farm�cias marcadas aqui.
                       </p>
                     </div>
                     <div className="md:col-span-1 md:flex md:items-end md:justify-end">
@@ -757,7 +757,7 @@ export default function CatalogoPage() {
 
       {saved ? (
         <div className="fixed bottom-6 right-6 z-[120] rounded-xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface)] px-4 py-3 text-sm font-semibold text-[#67e952]">
-          Catálogo salvo com sucesso.
+          Cat�logo salvo com sucesso.
         </div>
       ) : null}
     </ReceituarioChrome>

@@ -57,7 +57,7 @@ export function repairMojibakeText(value: unknown): string {
     break
   }
 
-  return text.replace(/\s+\u0000/g, ' ').trim()
+  return text.replace(/\s+\u0000/g, ' ')
 }
 
 export function sanitizeVisibleText(value: unknown): string {

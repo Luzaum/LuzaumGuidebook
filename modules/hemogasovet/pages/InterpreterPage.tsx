@@ -11,19 +11,61 @@ import { formatFiO2Percent } from '../utils/fio2';
 import { formatCompensationStatus, formatDomainStatus, formatOxygenationStatus, formatPrimaryDisorder, formatQualityStatus } from '../utils/presentation';
 import * as Tooltip from '@radix-ui/react-tooltip';
 
+function getDefaultFormData(species: Species, sampleType: SampleType): Partial<BloodGasInput> {
+  const canineDefaults: Partial<BloodGasInput> = {
+    species: 'canine',
+    sampleType,
+    pH: 7.4,
+    pCO2: 40,
+    pO2: sampleType === 'arterial' ? 95 : 42,
+    HCO3: 24,
+    BE: 0,
+    lactate: 1.5,
+    fio2: 0.21,
+    temperature: 38.5,
+    Na: 145,
+    K: 4.2,
+    Cl: 112,
+    iCa: 1.25,
+    glucose: 95,
+    albumin: 3.2,
+    sO2: sampleType === 'arterial' ? 97 : 75,
+    AG: 18,
+    clinicalContext: {},
+  };
+
+  const felineDefaults: Partial<BloodGasInput> = {
+    species: 'feline',
+    sampleType,
+    pH: 7.32,
+    pCO2: 31,
+    pO2: sampleType === 'arterial' ? 102 : 40,
+    HCO3: 18,
+    BE: -2,
+    lactate: 1.4,
+    fio2: 0.21,
+    temperature: 38.3,
+    Na: 151,
+    K: 4.1,
+    Cl: 120,
+    iCa: 1.22,
+    glucose: 105,
+    albumin: 3.1,
+    sO2: sampleType === 'arterial' ? 97 : 73,
+    AG: 19,
+    clinicalContext: {},
+  };
+
+  return species === 'feline' ? felineDefaults : canineDefaults;
+}
+
 export default function InterpreterPage() {
   const [inputMode, setInputMode] = useState<'manual' | 'text'>('manual');
   const [species, setSpecies] = useState<Species>('canine');
   const [sampleType, setSampleType] = useState<SampleType>('arterial');
   const [rawText, setRawText] = useState('');
   
-  const [formData, setFormData] = useState<Partial<BloodGasInput>>({
-    species: 'canine',
-    sampleType: 'arterial',
-    fio2: 0.21,
-    temperature: 38.5,
-    clinicalContext: {}
-  });
+  const [formData, setFormData] = useState<Partial<BloodGasInput>>(getDefaultFormData('canine', 'arterial'));
 
   const [parsedFields, setParsedFields] = useState<ParsedField[]>([]);
   const [unrecognizedText, setUnrecognizedText] = useState('');
@@ -36,6 +78,15 @@ export default function InterpreterPage() {
 
   const handleInputChange = (field: keyof BloodGasInput, value: any) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const applyDefaultsForProfile = (nextSpecies: Species, nextSampleType: SampleType) => {
+    setSpecies(nextSpecies);
+    setSampleType(nextSampleType);
+    setFormData(getDefaultFormData(nextSpecies, nextSampleType));
+    setParsedFields([]);
+    setUnrecognizedText('');
+    setResult(null);
   };
 
   const handleClinicalChange = (field: keyof NonNullable<BloodGasInput['clinicalContext']>, value: boolean) => {
@@ -118,7 +169,7 @@ export default function InterpreterPage() {
                   <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Espécie</label>
                   <div className="flex rounded-md shadow-sm">
                     <button
-                      onClick={() => setSpecies('canine')}
+                      onClick={() => applyDefaultsForProfile('canine', sampleType)}
                       className={cn(
                         "flex-1 py-1.5 text-xs font-medium rounded-l-md border transition-colors",
                         species === 'canine' 
@@ -129,7 +180,7 @@ export default function InterpreterPage() {
                       Canino
                     </button>
                     <button
-                      onClick={() => setSpecies('feline')}
+                      onClick={() => applyDefaultsForProfile('feline', sampleType)}
                       className={cn(
                         "flex-1 py-1.5 text-xs font-medium rounded-r-md border-y border-r transition-colors",
                         species === 'feline' 
@@ -149,7 +200,7 @@ export default function InterpreterPage() {
                   </label>
                   <div className="flex rounded-md shadow-sm">
                     <button
-                      onClick={() => setSampleType('arterial')}
+                      onClick={() => applyDefaultsForProfile(species, 'arterial')}
                       className={cn(
                         "flex-1 py-1.5 text-xs font-medium rounded-l-md border transition-colors",
                         sampleType === 'arterial' 
@@ -160,7 +211,7 @@ export default function InterpreterPage() {
                       Arterial
                     </button>
                     <button
-                      onClick={() => setSampleType('venous')}
+                      onClick={() => applyDefaultsForProfile(species, 'venous')}
                       className={cn(
                         "flex-1 py-1.5 text-xs font-medium rounded-r-md border-y border-r transition-colors",
                         sampleType === 'venous' 

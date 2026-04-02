@@ -100,6 +100,15 @@ function isCompounded(item: PrescriptionItem): item is CompoundedPrescriptionIte
   return item.kind === 'compounded'
 }
 
+function hasOwn(target: Record<string, unknown>, key: string): boolean {
+  return Object.prototype.hasOwnProperty.call(target, key)
+}
+
+function pickEditedText(source: Record<string, unknown>, key: string, fallback: string): string {
+  if (hasOwn(source, key)) return sanitizeVisibleText(String(source[key] ?? ''))
+  return sanitizeVisibleText(fallback)
+}
+
 function getClinicalFormula(item: CompoundedPrescriptionItem): ReturnType<typeof getClinicalFormulaMetadata> {
   return getClinicalFormulaMetadata(item.compounded_snapshot?.metadata || null)
 }
@@ -109,6 +118,8 @@ function getRuntimeCompoundedV2(item: CompoundedPrescriptionItem): CompoundedMed
   if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return null
 
   const safe = sanitizeDeepText(payload as CompoundedMedicationV2)
+  const itemRecord = item as unknown as Record<string, unknown>
+  const presentationMetadata = ((item.presentation_metadata || {}) as Record<string, unknown>)
   const regimenId = item.compounded_regimen_id || item.compounded_regimen_snapshot?.id || null
   const targetRegimen =
     safe.regimens.find((entry) => entry.id === regimenId) ||
@@ -119,10 +130,10 @@ function getRuntimeCompoundedV2(item: CompoundedPrescriptionItem): CompoundedMed
     ...safe,
     formula: {
       ...safe.formula,
-      name: sanitizeVisibleText(item.name || safe.formula.name),
-      primary_route: sanitizeVisibleText(item.route || safe.formula.primary_route),
-      total_quantity_text: sanitizeVisibleText(item.manualQuantity || safe.formula.total_quantity_text),
-      qsp_text: sanitizeVisibleText(item.manualQuantity || safe.formula.qsp_text),
+      name: pickEditedText(itemRecord, 'name', safe.formula.name),
+      primary_route: pickEditedText(itemRecord, 'route', safe.formula.primary_route),
+      total_quantity_text: pickEditedText(itemRecord, 'manualQuantity', safe.formula.total_quantity_text),
+      qsp_text: pickEditedText(itemRecord, 'manualQuantity', safe.formula.qsp_text),
       sale_classification: item.is_controlled ? 'controlled' : safe.formula.sale_classification,
     },
     regimens: safe.regimens.map((regimen) =>
@@ -132,11 +143,11 @@ function getRuntimeCompoundedV2(item: CompoundedPrescriptionItem): CompoundedMed
             ...regimen,
             administration_unit: sanitizeVisibleText(item.compounded_regimen_snapshot?.fixed_administration_unit || regimen.administration_unit),
             usage_instruction: sanitizeVisibleText(regimen.usage_instruction),
-            tutor_observation: sanitizeVisibleText(item.cautionsText || regimen.tutor_observation),
-            pharmacy_note: sanitizeVisibleText(item.compounded_pharmacy_guidance || regimen.pharmacy_note),
-            internal_note: sanitizeVisibleText(item.compounded_internal_note || regimen.internal_note),
-            frequency_text: sanitizeVisibleText(item.frequency || regimen.frequency_text),
-            duration_text: sanitizeVisibleText(item.duration || regimen.duration_text),
+            tutor_observation: pickEditedText(itemRecord, 'cautionsText', regimen.tutor_observation),
+            pharmacy_note: pickEditedText(itemRecord, 'compounded_pharmacy_guidance', regimen.pharmacy_note),
+            internal_note: pickEditedText(itemRecord, 'compounded_internal_note', regimen.internal_note),
+            frequency_text: pickEditedText(itemRecord, 'frequency', regimen.frequency_text),
+            duration_text: pickEditedText(itemRecord, 'duration', regimen.duration_text),
             frequency_mode:
               item.frequencyMode === 'times_per_day'
                 ? 'times_per_day'
@@ -149,6 +160,12 @@ function getRuntimeCompoundedV2(item: CompoundedPrescriptionItem): CompoundedMed
             duration_unit: sanitizeVisibleText(item.durationUnit || regimen.duration_unit),
           },
     ),
+    display: {
+      ...safe.display,
+      auto_print_line: presentationMetadata.print_line_mode !== 'manual',
+      print_line_left: pickEditedText(presentationMetadata, 'print_line_left', safe.display.print_line_left),
+      print_line_right: pickEditedText(presentationMetadata, 'print_line_right', safe.display.print_line_right),
+    },
   }
 }
 
@@ -157,28 +174,36 @@ function getRuntimeManipuladoV1(item: CompoundedPrescriptionItem): ManipuladoV1F
   if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return null
 
   const safe = normalizeManipuladoV1(sanitizeDeepText(payload as ManipuladoV1Formula))
+  const itemRecord = item as unknown as Record<string, unknown>
+  const presentationMetadata = ((item.presentation_metadata || {}) as Record<string, unknown>)
   return normalizeManipuladoV1({
     ...safe,
     identity: {
       ...safe.identity,
-      name: sanitizeVisibleText(item.name || safe.identity.name),
-      primary_route: sanitizeVisibleText(item.route || safe.identity.primary_route),
+      name: pickEditedText(itemRecord, 'name', safe.identity.name),
+      primary_route: pickEditedText(itemRecord, 'route', safe.identity.primary_route),
       sale_classification: item.is_controlled ? 'controlled' : safe.identity.sale_classification,
-    },
-    pharmacy: {
-      ...safe.pharmacy,
-      qsp_text: sanitizeVisibleText(item.manualQuantity || safe.pharmacy.qsp_text),
-      total_quantity: sanitizeVisibleText(item.manualQuantity || safe.pharmacy.total_quantity),
     },
     prescribing: {
       ...safe.prescribing,
-      clinical_note: sanitizeVisibleText(item.compounded_internal_note || safe.prescribing.clinical_note),
+      frequency_label: pickEditedText(itemRecord, 'frequency', safe.prescribing.frequency_label),
+      duration_label: pickEditedText(itemRecord, 'duration', safe.prescribing.duration_label),
+      manual_usage_override: pickEditedText(itemRecord, 'instructions', safe.prescribing.manual_usage_override),
+      start_text: pickEditedText(itemRecord, 'start_date', safe.prescribing.start_text),
+      clinical_note: pickEditedText(itemRecord, 'compounded_internal_note', safe.prescribing.clinical_note),
+    },
+    pharmacy: {
+      ...safe.pharmacy,
+      qsp_text: pickEditedText(itemRecord, 'manualQuantity', safe.pharmacy.qsp_text),
+      total_quantity: pickEditedText(itemRecord, 'manualQuantity', safe.pharmacy.total_quantity),
+      compounding_instructions: pickEditedText(itemRecord, 'compounded_pharmacy_guidance', safe.pharmacy.compounding_instructions),
+      pharmaceutic_note: pickEditedText(itemRecord, 'cautionsText', safe.pharmacy.pharmaceutic_note),
     },
     display: {
       ...safe.display,
-      auto_print_line: !item.presentation_metadata || (item.presentation_metadata as Record<string, unknown>).print_line_mode !== 'manual',
-      print_line_left: sanitizeVisibleText(String(((item.presentation_metadata || {}) as Record<string, unknown>).print_line_left || safe.display.print_line_left)),
-      print_line_right: sanitizeVisibleText(String(((item.presentation_metadata || {}) as Record<string, unknown>).print_line_right || safe.display.print_line_right)),
+      auto_print_line: presentationMetadata.print_line_mode !== 'manual',
+      print_line_left: pickEditedText(presentationMetadata, 'print_line_left', safe.display.print_line_left),
+      print_line_right: pickEditedText(presentationMetadata, 'print_line_right', safe.display.print_line_right),
     },
   })
 }

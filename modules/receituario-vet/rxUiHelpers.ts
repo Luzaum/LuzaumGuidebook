@@ -227,13 +227,17 @@ export function calculatePracticalEquivalent(
   }
 
   const concValue = presentation.value;
-  const concUnit = presentation.value_unit;
+  // value_unit pode vir como "mg/comprimido" em vez de "mg" separado de per_unit.
+  const rawConcUnit = String(presentation.value_unit || '').trim();
+  const slashIdx = rawConcUnit.indexOf('/');
+  const concUnit = slashIdx > 0 ? rawConcUnit.slice(0, slashIdx).trim() : rawConcUnit;
+  const inferredPerUnit = slashIdx > 0 ? rawConcUnit.slice(slashIdx + 1).trim() : '';
   if (concValue == null || concValue <= 0 || !concUnit) {
     return fail('missing_presentation_strength', 'Apresentação sem concentração definida (value/value_unit).', pharmacyLabel, steps);
   }
 
   const perValue = presentation.per_value;
-  const perUnit = presentation.per_unit;
+  const perUnit = presentation.per_unit || inferredPerUnit;
   if (perValue == null || perValue <= 0) {
     return fail('missing_per_value', 'Apresentação sem per_value definido.', pharmacyLabel, steps);
   }

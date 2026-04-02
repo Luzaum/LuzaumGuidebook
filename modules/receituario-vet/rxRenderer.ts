@@ -554,15 +554,15 @@ export function calculateMedicationQuantity(item: PrescriptionItem, state: Presc
   }
 
   const supportingLabel = formatSupportDose(baseDosePerAdministration, baseUnitRaw)
-  
-  // ✅ INTEGRATION: Use the new clinical helper
+  const structuredConcentration = resolveStructuredConcentration(item)
+
   const practicalResult = calculatePracticalEquivalent({
     presentation: {
       pharmaceutical_form: item.pharmaceuticalForm || item.presentation,
-      value: toNumber(item.presentationValue),
-      value_unit: item.presentationValueUnit,
-      per_value: toNumber(item.presentationPerValue),
-      per_unit: item.presentationPerUnit,
+      value: structuredConcentration?.amount ?? toNumber(item.presentationValue),
+      value_unit: structuredConcentration?.amountUnit ?? item.presentationValueUnit,
+      per_value: structuredConcentration?.perValue ?? toNumber(item.presentationPerValue),
+      per_unit: structuredConcentration?.perUnit ?? item.presentationPerUnit,
       pharmacy_veterinary: !!item.presentationMetadata?.pharmacy_veterinary,
       pharmacy_human: !!item.presentationMetadata?.pharmacy_human,
       pharmacy_compounding: !!item.presentationMetadata?.pharmacy_compounding,
@@ -708,11 +708,16 @@ function buildItemTitle(item: PrescriptionItem): string {
   const manualMode = getPresentationString({ metadata: item.presentationMetadata || null }, 'print_line_mode')
   const manualLeft = getPresentationString({ metadata: item.presentationMetadata || null }, 'print_line_left')
   if (manualMode === 'manual' && manualLeft) return manualLeft
+  const commercialName = String(item.commercialName || '').trim()
+  const concentrationText = String(item.concentration || '').trim()
+  const shouldAppendConcentration =
+    !!concentrationText &&
+    (!commercialName || !commercialName.toLowerCase().includes(concentrationText.toLowerCase()))
 
   return buildMedicationDisplayName({
     name: item.name,
-    commercialName: item.commercialName,
-    concentrationText: item.concentration,
+    commercialName,
+    concentrationText: shouldAppendConcentration ? concentrationText : '',
   })
 }
 
@@ -724,6 +729,14 @@ function buildItemDispensingLabel(item: PrescriptionItem): string {
 
   const configured = getPresentationString(meta, 'dispensing_label') || getPresentationString(meta, 'package_label')
   if (configured) return configured
+
+  if (item.packageUnit) {
+    return String(item.packageUnit)
+      .trim()
+      .split(/\s+/)
+      .map((part) => part ? part[0].toUpperCase() + part.slice(1).toLowerCase() : '')
+      .join(' ')
+  }
 
   if (item.presentationMetadata?.compounded) {
     return item.pharmaceuticalForm || item.presentation || 'Manipulado'

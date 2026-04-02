@@ -4,7 +4,7 @@ import { listManipuladosV1, type ManipuladoV1Row } from '../../../src/lib/manipu
 import type { PatientInfo, PrescriptionItem } from '../NovaReceita2Page'
 import { normalizeManipuladoV1 } from '../manipuladosV1'
 import { mapManipuladoV1ToPrescriptionItem } from '../manipuladosV1Mapper'
-import { getManipuladoV1CatalogSubtitle, renderManipuladoV1PharmacyInstruction, renderManipuladoV1TutorInstruction } from '../manipuladosV1Render'
+import { getManipuladoV1CatalogSubtitle } from '../manipuladosV1Render'
 import { ManipuladosV1CatalogCard } from './ManipuladosV1CatalogCard'
 
 interface AddCompoundedMedicationModalProps {
@@ -135,13 +135,13 @@ export function AddCompoundedMedicationModal({
                   <div className="rounded-2xl border border-slate-800 bg-black/25 p-5">
                     <p className="text-xs font-black uppercase tracking-widest text-slate-500">Posologia</p>
                     <div className="mt-3 space-y-2 text-sm text-slate-300">
-                      <p>{renderManipuladoV1TutorInstruction(selectedFormula)}</p>
+                      <p>{previewItem.instructions || ''}</p>
                     </div>
                   </div>
                   <div className="rounded-2xl border border-slate-800 bg-black/25 p-5">
                     <p className="text-xs font-black uppercase tracking-widest text-slate-500">Farmácia</p>
                     <div className="mt-3 space-y-2 text-sm text-slate-300">
-                      <p>{renderManipuladoV1PharmacyInstruction(selectedFormula)}</p>
+                      <p>{previewItem.compounded_pharmacy_guidance || ''}</p>
                     </div>
                   </div>
                 </div>

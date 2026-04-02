@@ -20,6 +20,20 @@ const MACRO_COLORS: Record<MacroSlice['key'], string> = {
   carb: '#3b82f6',
 }
 
+// Apenas estes nutrientes são obrigatórios — os demais são opcionais e NÃO geram alerta de ausência
+const REQUIRED_NUTRIENT_KEYS = new Set([
+  'moisturePct',
+  'dryMatterPct',
+  'energyKcalPer100g',
+  'crudeProteinPct',
+  'etherExtractPct',
+  'ashPct',
+  'crudeFiberPct',
+  'nitrogenFreeExtractPct',
+  'calciumPct',
+  'phosphorusPct',
+])
+
 function round(value: number | null | undefined, decimals = 4): number | null {
   if (value == null || Number.isNaN(value) || !Number.isFinite(value)) {
     return null
@@ -206,7 +220,7 @@ export function computeDietPlan(options: {
       if (!food) continue
       const asFedValue = food.nutrientsAsFed[key]
       if (asFedValue == null) {
-        if (contribution.gramsAsFed > 0) {
+        if (contribution.gramsAsFed > 0 && REQUIRED_NUTRIENT_KEYS.has(key)) {
           missingDataFlags.add(key)
         }
         continue
@@ -235,7 +249,7 @@ export function computeDietPlan(options: {
       deliveredPerMetabolicBw[key] = round(totalAmount / options.weightKg ** getMetabolicExponent(options.species), 6)
     }
 
-    if (percentKeys.has(key) && totalDryMatterGrams <= 0) {
+    if (REQUIRED_NUTRIENT_KEYS.has(key) && percentKeys.has(key) && totalDryMatterGrams <= 0) {
       missingDataFlags.add(key)
     }
   }
@@ -279,8 +293,9 @@ export function computeDietPlan(options: {
   if (!appliedProfiles.length) {
     alerts.push('Nenhum perfil de exigência foi selecionado; a adequação clínica não foi calculada.')
   }
-  if (missingDataFlags.size) {
-    alerts.push(`Há ${missingDataFlags.size} nutrientes com dados incompletos nos alimentos selecionados.`)
+  const requiredMissingCount = Array.from(missingDataFlags).filter((k) => REQUIRED_NUTRIENT_KEYS.has(k)).length
+  if (requiredMissingCount > 0) {
+    alerts.push(`Há ${requiredMissingCount} nutriente(s) obrigatório(s) com dados incompletos nos alimentos selecionados.`)
   }
   if (Math.abs(totalKcal - options.targetEnergy) > 2) {
     alerts.push(`Energia entregue (${totalKcal.toFixed(1)} kcal) difere do alvo (${options.targetEnergy.toFixed(1)} kcal).`)
@@ -368,7 +383,8 @@ function evaluateDiet(
           ? getMacroPercent(key, values.macroSplit)
           : null
 
-      const missingData = values.missingDataFlags.has(key) || deliveredValue == null
+      const isRequiredNutrient = REQUIRED_NUTRIENT_KEYS.has(key)
+      const missingData = isRequiredNutrient && (values.missingDataFlags.has(key) || deliveredValue == null)
 
       if (target.kind === 'date_like' || target.kind === 'text' || target.kind === 'error') {
         return {
@@ -383,6 +399,22 @@ function evaluateDiet(
           status: 'manual',
           reason: `Referência '${String(target.raw)}' exige interpretação clínica manual.`,
           missingData,
+        }
+      }
+
+      if (deliveredValue == null && !isRequiredNutrient) {
+        return {
+          key,
+          label,
+          unit,
+          basisType: profile.basisType,
+          profileId: profile.id,
+          profileLabel: profile.label,
+          deliveredValue: null,
+          target,
+          status: 'manual',
+          reason: 'Nutriente opcional sem dado cadastrado; nao gera alerta de ausencia.',
+          missingData: false,
         }
       }
 

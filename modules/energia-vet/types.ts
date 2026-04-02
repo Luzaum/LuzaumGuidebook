@@ -11,7 +11,9 @@ export interface Patient {
   species: Species
   sex: Sex
   ageMonths: number
+  ageWeeks?: number
   isNeutered: boolean
+  isIndoor?: boolean
   breed?: string
   currentWeight: number
   bcs: BCS
@@ -39,6 +41,7 @@ export interface PhysiologicState {
   defaultKcalPerMetabolicBw?: number
   defaultRequirementProfileId?: string
   requiresExpectedAdultWeightKg?: boolean
+  requiresAgeWeeks?: boolean
   requiresLitterSize?: boolean
   requiresLactationWeek?: boolean
   sourceReference?: {
@@ -60,9 +63,16 @@ export interface EnergyCalculation {
   merFactor?: number
   mer?: number
   notes?: string
+  ageWeeks?: number
   expectedAdultWeightKg?: number
+  activityHoursPerDay?: number
+  activityImpact?: 'low' | 'high'
+  obesityProne?: boolean
+  specialBreedObservation?: 'none' | 'great_dane' | 'newfoundland'
   litterSize?: number
   lactationWeek?: number
+  gestationPhase?: 'first_4_weeks' | 'last_5_weeks'
+  energyProfileMode?: 'fediaf' | 'clinical'
   merFormula?: string[]
 }
 
@@ -179,6 +189,8 @@ export interface DietPlan {
   commercialPercent?: number
   naturalPercent?: number
   gramsPerDay?: number
+  formulationMode?: 'manual' | 'complement'
+  programmedFeeding?: ProgrammedFeedingPlan
 }
 
 export interface DietNutrientBreakdown {
@@ -252,6 +264,27 @@ export interface FeedingPlanMeal {
   gramsAsFed: number
 }
 
+export interface ProgrammedFeedingMealItem {
+  foodId: string
+  foodName: string
+  gramsAsFed: number
+}
+
+export interface ProgrammedFeedingMeal {
+  id: string
+  label: string
+  time: string
+  items: ProgrammedFeedingMealItem[]
+  totalGrams: number
+}
+
+export interface ProgrammedFeedingPlan {
+  enabled: boolean
+  mealsPerDay: number
+  roundingRule: string
+  meals: ProgrammedFeedingMeal[]
+}
+
 export interface FeedingPlan {
   patientName: string
   mealsPerDay: number
@@ -295,15 +328,18 @@ export interface RefeedingPlan {
 
 export interface StoredCalculationReport {
   id: string
+  patientKey?: string
   createdAt: string
   patient: Partial<Patient>
   energy: Partial<EnergyCalculation>
   target: Partial<WeightTargetPlan>
   diet: DietPlan
+  hospital?: Partial<HospitalNutritionPlan>
   formula: {
     contributions: FoodContribution[]
     evaluation: DietEvaluation
     feedingPlan: FeedingPlan
+    programmedFeeding?: ProgrammedFeedingPlan
   }
 }
 

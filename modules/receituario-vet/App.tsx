@@ -136,7 +136,7 @@ export default function ReceituarioVetPage() {
             <div className="rxv-home-icon-badge">
               <span className="material-symbols-outlined text-[22px]">inventory_2</span>
             </div>
-            <h4 className="text-xl font-bold">Protocolos 3.0</h4>
+            <h4 className="text-xl font-bold">Protocolos</h4>
             <p className="mt-1 text-sm text-[color:var(--rxv-muted)]">Monte tratamentos prontos por especialidade e importe direto na receita.</p>
           </Link>
 
@@ -313,5 +313,3 @@ export default function ReceituarioVetPage() {
     </ReceituarioChrome>
   )
 }
-
-
