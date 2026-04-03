@@ -1,0 +1,20 @@
+{
+  "ok": false,
+  "routeLoaded": true,
+  "reviewLoaded": true,
+  "hasEditDoseButtonNova": false,
+  "hasEditDoseButtonReview": false,
+  "novaPreviewChanged": true,
+  "reviewPreviewChanged": false,
+  "beforeNova": "RECEITUÁRIO\n\nlocal_hospital\nCLÍNICA VETERINÁRIA VETIUS\n\nDr. Silva - 12345\n\nData: 03/04/2026\n\n• Paciente: Paciente E2E\n\nResponsável: Tutor E2E Manipulados\n\nUSO ORAL\n1.\n\nRepro Dose Faixa 1775217830990 5 mg/kg/dose/petiscos\n\n................................................................................................................................................................................................................................................................................\n\nPetisco\n\nPosologia: Administrar 25 mg, por via oral, a cada 12 horas, por 14 dias.\n\nManipulação: Favor manipular Petisco, contendo Benazepril de acordo com a dose prescrita, q.s.p. 30 unidades, Petisco hipoalergenico, sabor Frango, Manipulação: Favor manipular Petisco, contendo Benazepril de acordo com a dose prescrita, q.s.p. 30 unidades, Petisco hipoalergenico, sabor Frango..\n\nSem assinatura CRMV\n\nDr. Silva\n\nAssinatura CRMV",
+  "afterNova": "RECEITUÁRIO\n\nlocal_hospital\nCLÍNICA VETERINÁRIA VETIUS\n\nDr. Silva - 12345\n\nData: 03/04/2026\n\n• Paciente: Paciente E2E\n\nResponsável: Tutor E2E Manipulados\n\nUSO ORAL\n1.\n\nRepro Dose Faixa 1775217830990 5 mg/kg/dose/petiscos\n\n................................................................................................................................................................................................................................................................................\n\nPetisco\n\nPosologia: Administrar 25 mg, por via oral, 3x ao dia, por 4 dias.\n\nManipulação: Favor manipular Petisco, contendo Benazepril de acordo com a dose prescrita, q.s.p. 30 unidades, Petisco hipoalergenico, sabor Frango, Manipulação: Favor manipular Petisco, contendo Benazepril de acordo com a dose prescrita, q.s.p. 30 unidades, Petisco hipoalergenico, sabor Frango..\n\nSem assinatura CRMV\n\nDr. Silva\n\nAssinatura CRMV",
+  "beforeReview": "RECEITUÁRIO\n\nlocal_hospital\nCLÍNICA VETERINÁRIA VETIUS\n\nDr. Silva - 12345\n\nData: 03/04/2026\n\n• Paciente: Paciente E2E\n\nResponsável: Tutor E2E Manipulados\n\nUSO ORAL\n1.\n\nRepro Dose Faixa 1775217830990 5 mg/kg/dose/petiscos\n\n................................................................................................................................................................................................................................................................................\n\nPetisco\n\nPosologia: Administrar 25 mg, por via oral, 3x ao dia, por 4 dias.\n\nManipulação: Favor manipular Petisco, contendo Benazepril de acordo com a dose prescrita, q.s.p. 30 unidades, Petisco hipoalergenico, sabor Frango, Manipulação: Favor manipular Petisco, contendo Benazepril de acordo com a dose prescrita, q.s.p. 30 unidades, Petisco hipoalergenico, sabor Frango..\n\nSem assinatura CRMV\n\nDr. Silva\n\nAssinatura CRMV",
+  "afterReview": "",
+  "shots": [
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\repro-before-nova.png",
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\repro-after-nova.png",
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\repro-before-review.png",
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\repro-fatal.png"
+  ],
+  "error": "locator.selectOption: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('aside').last().locator('select').nth(1)\u001b[22m\n"
+}

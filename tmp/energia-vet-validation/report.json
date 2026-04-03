@@ -1,25 +1,34 @@
 {
-  "generatedAt": "2026-04-02T11:33:11.728Z",
+  "generatedAt": "2026-04-03T10:46:51.722Z",
   "screenshots": {
     "energy": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\energy-step.png",
     "target": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\target-step.png",
-    "eccModal": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\ecc-modal.png",
     "food": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\food-step.png",
-    "foodModal": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\food-modal.png",
     "summary": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\summary-step.png",
-    "history": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\history-step.png",
     "patientDetail": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\patient-detail.png",
-    "bcsGuide": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\bcs-guide.png"
+    "programmedFeeding": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\programmed-feeding.png"
   },
   "checks": {
-    "summaryReached": true,
-    "macroChartPresent": true,
-    "adequacySectionPresent": true,
-    "eccModalPresent": true,
-    "foodModalPresent": false,
-    "historyPresent": true,
-    "patientDetailPresent": true,
-    "catGuidePresent": true,
-    "profileText": "Perfil clinicoAdulto Padrao"
+    "dogEnergy": {
+      "sedentary": 686,
+      "moderateLow": 838,
+      "moderateHigh": 953,
+      "obesityProne": 686,
+      "gestation": 1006
+    },
+    "catEnergy": {
+      "active": 274,
+      "indoor": 205
+    },
+    "energyChangedByActivity": true,
+    "energyChangedByImpact": true,
+    "energyChangedByObesityProne": true,
+    "energyChangedByReproduction": true,
+    "energyChangedByCatIndoor": true,
+    "manualModeDidNotAutoAdjustSecondPercentage": true,
+    "complementChangedPercentages": true,
+    "stickyPreviewMaintained": true,
+    "programmedSectionPresent": true,
+    "savedReportComplete": true
   }
 }

@@ -79,236 +79,248 @@ export default function ReceituarioVetPage() {
       }
     >
       <div className="rxv-home-shell text-[color:var(--rxv-text)]">
-        <section className="mb-4">
+
+        {/* ── ROW 1 · Date + stats ───────────────────────────────────────── */}
+        <section className="mb-5 flex flex-wrap items-center gap-3">
           <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-3 py-1 text-xs font-semibold text-[color:var(--rxv-muted)]">
             <span className="material-symbols-outlined text-[15px] text-[#61ec4b]">calendar_today</span>
             {todayLabel()}
           </div>
+
+          <div className="ml-auto flex items-center gap-2">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-3 py-1 text-xs font-semibold text-[color:var(--rxv-muted)]">
+              <span className="material-symbols-outlined text-[14px] text-[#61ec4b]">receipt_long</span>
+              <span className="text-[color:var(--rxv-text)]">{history.length}</span>
+              receitas recentes
+            </div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-3 py-1 text-xs font-semibold text-[color:var(--rxv-muted)]">
+              <span className="material-symbols-outlined text-[14px] text-amber-400">draft</span>
+              <span className="text-[color:var(--rxv-text)]">{drafts.length}</span>
+              rascunhos
+            </div>
+          </div>
         </section>
 
-        <section className="rxv-home-grid-primary grid grid-cols-1 gap-3 p-1 lg:grid-cols-12">
+        {/* ── ROW 2 · Hero + 2×2 quick-access ──────────────────────────── */}
+        <section className="mb-4 grid grid-cols-1 gap-3 lg:grid-cols-12">
+
+          {/* Hero CTA */}
           <Link
             to="/receituario-vet/nova-receita-2"
-            className="rxv-home-primary-card rxv-card rxv-premium rxv-fade-up rxv-anim-pulse rxv-shimmer group relative overflow-hidden p-5 sm:p-6 lg:col-span-6 lg:row-span-2"
+            className="rxv-home-primary-card rxv-card rxv-premium rxv-fade-up rxv-anim-pulse rxv-shimmer group relative overflow-hidden p-6 lg:col-span-8"
           >
             <div className={`pointer-events-none absolute inset-0 transition-opacity duration-500 ${isDark ? 'opacity-100' : 'opacity-0'}`} style={{ background: 'linear-gradient(100deg, var(--rxv-primary-soft,#15351b) 0%, var(--rxv-primary-soft-2,#0f2416) 55%, var(--rxv-primary-soft-3,#0d1d13) 100%)' }} />
             <div className={`pointer-events-none absolute inset-0 transition-opacity duration-500 ${isDark ? 'opacity-0' : 'opacity-100'}`} style={{ background: 'linear-gradient(100deg, #f0fdf4 0%, #dcfce7 55%, #bbf7d0 100%)' }} />
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(85%_95%_at_8%_8%,rgba(57,255,20,0.18),transparent_62%)]" />
             <div className="pointer-events-none absolute inset-y-0 right-0 w-[42%] bg-[radial-gradient(70%_80%_at_55%_45%,rgba(57,255,20,0.1),transparent_74%)]" />
 
-            <div className="relative z-10 flex h-full min-h-[180px] flex-col justify-between gap-5 md:flex-row md:items-center">
-              <div className="max-w-[560px]">
+            <div className="relative z-10 flex h-full min-h-[200px] flex-col justify-between gap-4 sm:flex-row sm:items-center">
+              <div className="max-w-[480px]">
                 <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--rxv-primary)]/45 bg-[color:var(--rxv-primary)]/14 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wide text-[color:var(--rxv-primary)]">
                   <span className="h-2 w-2 rounded-full bg-[color:var(--rxv-primary)]" />
                   Ação rápida
                 </span>
-
-                <h3 className="mt-3 text-2xl font-black tracking-tight text-[color:var(--rxv-text)] md:text-[42px]">CRIAR NOVA RECEITA</h3>
-                <p className="mt-2 max-w-[540px] text-sm text-[color:var(--rxv-muted)] md:text-lg">
-                  Prescrever medicamentos para um paciente com modelos inteligentes e verificação de interações.
+                <h3 className="mt-3 text-[28px] font-black leading-tight tracking-tight text-[color:var(--rxv-text)] md:text-[40px]">CRIAR NOVA<br />RECEITA</h3>
+                <p className="mt-2 text-sm text-[color:var(--rxv-muted)] md:text-base">
+                  Prescrever medicamentos com modelos inteligentes e verificação de interações.
                 </p>
-
                 <span className="mt-5 inline-flex items-center gap-2 rounded-[10px] bg-[color:var(--rxv-primary)] px-5 py-3 text-sm font-black text-[#0f1d12] transition-all duration-300 group-hover:brightness-105 group-hover:shadow-[0_0_20px_rgba(57,255,20,0.4)]">
                   <span className="material-symbols-outlined text-[19px]">add_circle</span>
                   Começar Prescrição
                 </span>
               </div>
-
-              <div className="hidden h-full min-h-[190px] flex-1 items-center justify-end pr-1 md:flex">
+              <div className="hidden flex-shrink-0 items-center justify-center sm:flex">
                 <img
                   src={homeIcon.src}
                   alt={homeIcon.name}
-                  className="h-[152px] w-[152px] object-contain drop-shadow-[0_0_16px_rgba(57,255,20,0.34)] transition-transform duration-300 group-hover:scale-[1.03]"
+                  className="h-[160px] w-[160px] object-contain drop-shadow-[0_0_16px_rgba(57,255,20,0.34)] transition-transform duration-300 group-hover:scale-[1.04]"
                 />
               </div>
             </div>
           </Link>
 
-          <Link to="/receituario-vet/clientes" className="rxv-home-link-card rxv-card rxv-fade-up delay-100 rxv-anim-pulse rxv-shimmer lg:col-span-3">
-            <div className="rxv-home-icon-badge">
-              <span className="material-symbols-outlined text-[22px]">group</span>
-            </div>
-            <h4 className="text-xl font-bold">Tutores e Pacientes</h4>
-            <p className="mt-1 text-sm text-[color:var(--rxv-muted)]">Cadastro completo para receitas controladas, com vários animais por tutor.</p>
-          </Link>
+          {/* 2×2 Quick-access panel */}
+          <div className="grid grid-cols-2 gap-3 lg:col-span-4">
+            <Link to="/receituario-vet/clientes" className="rxv-home-link-card rxv-card rxv-fade-up delay-100 rxv-anim-pulse rxv-shimmer flex flex-col gap-2 p-4">
+              <div className="rxv-home-icon-badge self-start">
+                <span className="material-symbols-outlined text-[20px]">group</span>
+              </div>
+              <h4 className="text-sm font-bold leading-snug">Tutores e Pacientes</h4>
+              <p className="text-[11px] text-[color:var(--rxv-muted)] leading-relaxed hidden xl:block">Cadastro completo com vários animais por tutor.</p>
+            </Link>
 
-          <Link to="/receituario-vet/protocolos-3" className="rxv-home-link-card rxv-card rxv-premium rxv-fade-up delay-150 rxv-anim-pulse rxv-shimmer lg:col-span-3">
-            <div className="rxv-home-icon-badge">
-              <span className="material-symbols-outlined text-[22px]">inventory_2</span>
-            </div>
-            <h4 className="text-xl font-bold">Protocolos</h4>
-            <p className="mt-1 text-sm text-[color:var(--rxv-muted)]">Monte tratamentos prontos por especialidade e importe direto na receita.</p>
-          </Link>
+            <Link to="/receituario-vet/protocolos-3" className="rxv-home-link-card rxv-card rxv-premium rxv-fade-up delay-150 rxv-anim-pulse rxv-shimmer flex flex-col gap-2 p-4">
+              <div className="rxv-home-icon-badge self-start">
+                <span className="material-symbols-outlined text-[20px]">inventory_2</span>
+              </div>
+              <h4 className="text-sm font-bold leading-snug">Protocolos</h4>
+              <p className="text-[11px] text-[color:var(--rxv-muted)] leading-relaxed hidden xl:block">Tratamentos prontos por especialidade.</p>
+            </Link>
 
-          <Link to="/receituario-vet/catalogo3" className="rxv-home-link-card rxv-card rxv-fade-up delay-200 rxv-anim-pulse rxv-shimmer lg:col-span-9">
-            <div className="rxv-home-icon-badge">
-              <span className="material-symbols-outlined text-[22px]">vaccines</span>
-            </div>
-            <h4 className="text-xl font-bold">Cadastrar Medicamento</h4>
-            <p className="mt-1 text-sm text-[color:var(--rxv-muted)]">Banco de fármacos persistente, editável e reutilizável.</p>
-          </Link>
+            <Link to="/receituario-vet/catalogo3" className="rxv-home-link-card rxv-card rxv-fade-up delay-200 rxv-anim-pulse rxv-shimmer flex flex-col gap-2 p-4">
+              <div className="rxv-home-icon-badge self-start">
+                <span className="material-symbols-outlined text-[20px]">vaccines</span>
+              </div>
+              <h4 className="text-sm font-bold leading-snug">Cadastrar Medicamento</h4>
+              <p className="text-[11px] text-[color:var(--rxv-muted)] leading-relaxed hidden xl:block">Banco de fármacos reutilizável.</p>
+            </Link>
 
-          <Link to="/receituario-vet/manipulados" className="rxv-home-link-card rxv-card rxv-premium rxv-fade-up delay-250 rxv-anim-pulse rxv-shimmer lg:col-span-3">
-            <div className="rxv-home-icon-badge border-[#39ff14]/45 bg-[#39ff14]/12 text-[#8af77a]">
-              <span className="material-symbols-outlined text-[22px]">science</span>
-            </div>
-            <h4 className="text-xl font-bold">Manipulados</h4>
-            <p className="mt-1 text-sm text-[color:var(--rxv-muted)]">Cadastre fórmulas magistrais com ingredientes, q.s.p. e regimes próprios.</p>
-          </Link>
-        </section>
-
-        <section className="rxv-home-grid-secondary mt-3 grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-6">
-          <Link to="/receituario-vet/historico" className="rxv-home-link-card rxv-card rxv-fade-up delay-150 rxv-anim-pulse rxv-shimmer">
-            <div className="rxv-home-icon-badge">
-              <span className="material-symbols-outlined text-[22px]">history</span>
-            </div>
-            <h4 className="text-base font-bold">Histórico</h4>
-          </Link>
-          <Link to="/receituario-vet/configuração" className="rxv-home-link-card rxv-card rxv-fade-up delay-200 rxv-anim-pulse rxv-shimmer">
-            <div className="rxv-home-icon-badge">
-              <span className="material-symbols-outlined text-[22px]">settings_account_box</span>
-            </div>
-            <h4 className="text-base font-bold">Configurar Médico</h4>
-          </Link>
-
-          <Link to="/receituario-vet/controle-especial" className="rxv-home-link-card rxv-card rxv-premium rxv-fade-up delay-300 rxv-anim-pulse rxv-shimmer">
-            <div className="rxv-home-icon-badge border-amber-400/45 bg-amber-400/12 text-amber-500">
-              <span className="material-symbols-outlined text-[22px]">gpp_maybe</span>
-            </div>
-            <h4 className="text-base font-bold">Controle Especial</h4>
-          </Link>
-
-          <Link to="/receituario-vet/templates" className="rxv-home-link-card rxv-card rxv-fade-up delay-400 rxv-anim-pulse rxv-shimmer">
-            <div className="rxv-home-icon-badge">
-              <span className="material-symbols-outlined text-[22px]">palette</span>
-            </div>
-            <h4 className="text-base font-bold">Templates</h4>
-          </Link>
-
-          <Link to="/receituario-vet/configurações" className="rxv-home-link-card rxv-card rxv-fade-up delay-500 rxv-anim-pulse rxv-shimmer">
-            <div className="rxv-home-icon-badge">
-              <span className="material-symbols-outlined text-[22px]">cloud_upload</span>
-            </div>
-            <h4 className="text-base font-bold">Dados e Backup</h4>
-          </Link>
-
-          <Link to="/receituario-vet/rascunhos" className="rxv-home-link-card rxv-card rxv-fade-up delay-500 rxv-anim-pulse rxv-shimmer">
-            <div className="rxv-home-icon-badge">
-              <span className="material-symbols-outlined text-[22px]">draft</span>
-            </div>
-            <h4 className="text-base font-bold">Rascunhos</h4>
-          </Link>
-        </section>
-
-        <section className="rxv-card rxv-anim-pulse rxv-fade-up delay-500 mt-6 overflow-hidden">
-          <div className="flex items-center justify-between border-b border-[color:var(--rxv-border)] px-4 py-3">
-            <h2 className="text-base font-bold">Rascunhos Salvos</h2>
-            <Link to="/receituario-vet/rascunhos" className="text-sm font-semibold text-[#68df51]">
-              Ver todos
+            <Link to="/receituario-vet/manipulados" className="rxv-home-link-card rxv-card rxv-premium rxv-fade-up delay-250 rxv-anim-pulse rxv-shimmer flex flex-col gap-2 p-4">
+              <div className="rxv-home-icon-badge self-start border-[#39ff14]/45 bg-[#39ff14]/12 text-[#8af77a]">
+                <span className="material-symbols-outlined text-[20px]">science</span>
+              </div>
+              <h4 className="text-sm font-bold leading-snug">Manipulados</h4>
+              <p className="text-[11px] text-[color:var(--rxv-muted)] leading-relaxed hidden xl:block">Fórmulas magistrais e regimes próprios.</p>
             </Link>
           </div>
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[760px] text-left">
-              <thead>
-                <tr className="border-b border-[color:var(--rxv-border)] text-xs uppercase tracking-wide text-[color:var(--rxv-muted)]">
-                  <th className="px-4 py-3">Paciente</th>
-                  <th className="px-4 py-3">Tutor</th>
-                  <th className="px-4 py-3">Dia do rascunho</th>
-                  <th className="px-4 py-3">Status</th>
-                  <th className="px-4 py-3 text-right">Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-                {drafts.length === 0 ? (
-                  <tr>
-                    <td className="px-4 py-4 text-sm text-[color:var(--rxv-muted)]" colSpan={5}>
-                      Nenhum rascunho salvo.
-                    </td>
+        </section>
+
+        {/* ── ROW 3 · Ferramentas strip ─────────────────────────────────── */}
+        <section className="mb-5 grid grid-cols-3 gap-3 sm:grid-cols-6">
+          {[
+            { to: '/receituario-vet/historico', icon: 'history', label: 'Histórico' },
+            { to: '/receituario-vet/configuração', icon: 'settings_account_box', label: 'Config. Médico' },
+            { to: '/receituario-vet/controle-especial', icon: 'gpp_maybe', label: 'Ctrl. Especial', amber: true },
+            { to: '/receituario-vet/templates', icon: 'palette', label: 'Templates' },
+            { to: '/receituario-vet/configurações', icon: 'cloud_upload', label: 'Dados e Backup' },
+            { to: '/receituario-vet/rascunhos', icon: 'draft', label: 'Rascunhos' },
+          ].map(({ to, icon, label, amber }) => (
+            <Link
+              key={to}
+              to={to}
+              className="rxv-home-link-card rxv-card rxv-fade-up rxv-anim-pulse rxv-shimmer flex flex-col items-center gap-2 py-4 px-2 text-center"
+            >
+              <div className={`rxv-home-icon-badge${amber ? ' border-amber-400/45 bg-amber-400/12 text-amber-500' : ''}`}>
+                <span className="material-symbols-outlined text-[20px]">{icon}</span>
+              </div>
+              <h4 className="text-xs font-bold leading-tight">{label}</h4>
+            </Link>
+          ))}
+        </section>
+
+        {/* ── ROW 4 · Tables side by side ───────────────────────────────── */}
+        <section className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+
+          {/* Rascunhos Salvos */}
+          <div className="rxv-card rxv-anim-pulse rxv-fade-up delay-500 overflow-hidden">
+            <div className="flex items-center justify-between border-b border-[color:var(--rxv-border)] px-4 py-3">
+              <div className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-[16px] text-amber-400">draft</span>
+                <h2 className="text-sm font-bold">Rascunhos Salvos</h2>
+                {drafts.length > 0 && (
+                  <span className="rounded-full bg-amber-400/15 px-2 py-0.5 text-[11px] font-bold text-amber-400">{drafts.length}</span>
+                )}
+              </div>
+              <Link to="/receituario-vet/rascunhos" className="text-xs font-semibold text-[#68df51] hover:underline">
+                Ver todos
+              </Link>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-left">
+                <thead>
+                  <tr className="border-b border-[color:var(--rxv-border)] text-[10px] uppercase tracking-wide text-[color:var(--rxv-muted)]">
+                    <th className="px-4 py-2.5">Paciente</th>
+                    <th className="px-4 py-2.5">Tutor</th>
+                    <th className="px-4 py-2.5 hidden sm:table-cell">Data</th>
+                    <th className="px-4 py-2.5 text-right">Ação</th>
                   </tr>
-                ) : (
-                  drafts.map((entry) => (
-                    <tr key={entry.id} className="border-b border-[color:var(--rxv-border)]/50 group transition-colors hover:bg-[color:var(--rxv-primary)]/5">
-                      <td className="px-4 py-3 text-sm font-semibold">{entry.patientName || '-'}</td>
-                      <td className="px-4 py-3 text-sm">{entry.tutorName || '-'}</td>
-                      <td className="px-4 py-3 text-sm">{formatDate(entry.savedAt)}</td>
-                      <td className="px-4 py-3 text-sm">
-                        <span className="rxv-status-badge rxv-status-draft">Pendente</span>
-                      </td>
-                      <td className="px-4 py-3 text-right">
-                        <button
-                          type="button"
-                          className="group/btn rxv-btn-secondary inline-flex items-center gap-1 px-3 py-1.5 text-xs transition-colors hover:border-[#39ff14]/40 hover:bg-[#39ff14]/10 hover:text-white"
-                          onClick={() => navigate(`/receituario-vet/nova-receita-2?draft=${encodeURIComponent(entry.id)}`)}
-                        >
-                          <span className="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-1 group-hover/btn:text-[#39ff14]">open_in_new</span>
-                          Continuar
-                        </button>
+                </thead>
+                <tbody>
+                  {drafts.length === 0 ? (
+                    <tr>
+                      <td className="px-4 py-6 text-sm text-[color:var(--rxv-muted)]" colSpan={4}>
+                        Nenhum rascunho salvo.
                       </td>
                     </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section className="rxv-card rxv-anim-pulse rxv-fade-up delay-500 mt-6 overflow-hidden">
-          <div className="flex items-center justify-between border-b border-[color:var(--rxv-border)] px-4 py-3">
-            <h2 className="text-base font-bold">Últimas Receitas</h2>
-            <Link to="/receituario-vet/nova-receita-2" className="text-sm font-semibold text-[#68df51]">
-              Ver editor
-            </Link>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[760px] text-left">
-              <thead>
-                <tr className="border-b border-[color:var(--rxv-border)] text-xs uppercase tracking-wide text-[color:var(--rxv-muted)]">
-                  <th className="px-4 py-3">Data</th>
-                  <th className="px-4 py-3">Paciente</th>
-                  <th className="px-4 py-3">Tutor</th>
-                  <th className="px-4 py-3">Status</th>
-                  <th className="px-4 py-3 text-right">Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-                {history.length === 0 ? (
-                  <tr>
-                    <td className="px-4 py-4 text-sm text-[color:var(--rxv-muted)]" colSpan={5}>
-                      Nenhuma receita registrada ainda.
-                    </td>
-                  </tr>
-                ) : (
-                  history.map((entry) => (
-                    <tr key={entry.id} className="border-b border-[color:var(--rxv-border)]/50 group transition-colors hover:bg-[color:var(--rxv-primary)]/5">
-                      <td className="px-4 py-3 text-sm">{formatDate(entry.createdAt)}</td>
-                      <td className="px-4 py-3 text-sm font-semibold">{entry.patientName || '-'}</td>
-                      <td className="px-4 py-3 text-sm">{entry.tutorName || '-'}</td>
-                      <td className="px-4 py-3 text-sm">
-                        <span className="rxv-status-badge rxv-status-issued">Emitida</span>
-                      </td>
-                      <td className="px-4 py-3 text-right">
-                        <div className="inline-flex items-center gap-2">
-                          <button type="button" className="group/btn rxv-btn-secondary inline-flex items-center gap-1 px-3 py-1.5 text-xs transition-colors hover:border-[#39ff14]/40 hover:bg-[#39ff14]/10 hover:text-white" onClick={() => navigate('/receituario-vet/nova-receita-2')}>
-                            <span className="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-1 group-hover/btn:text-[#39ff14]">open_in_new</span>
-                            Abrir
-                          </button>
+                  ) : (
+                    drafts.map((entry) => (
+                      <tr key={entry.id} className="border-b border-[color:var(--rxv-border)]/50 transition-colors hover:bg-[color:var(--rxv-primary)]/5">
+                        <td className="px-4 py-2.5 text-sm font-semibold">{entry.patientName || '-'}</td>
+                        <td className="px-4 py-2.5 text-sm text-[color:var(--rxv-muted)]">{entry.tutorName || '-'}</td>
+                        <td className="px-4 py-2.5 text-xs text-[color:var(--rxv-muted)] hidden sm:table-cell">{formatDate(entry.savedAt)}</td>
+                        <td className="px-4 py-2.5 text-right">
                           <button
                             type="button"
-                            className={`group/btn inline-flex items-center gap-1 rounded-lg border px-3 py-1.5 text-xs font-semibold transition-colors ${isDark ? 'border-red-700/60 bg-red-950/20 text-red-300 hover:bg-red-900/30 hover:text-red-100' : 'border-red-200 bg-red-50 text-red-600 hover:bg-red-100'}`}
-                            onClick={() => removeHistoryEntry(entry.id)}
+                            className="group/btn rxv-btn-secondary inline-flex items-center gap-1 px-3 py-1.5 text-xs transition-colors hover:border-[#39ff14]/40 hover:bg-[#39ff14]/10 hover:text-white"
+                            onClick={() => navigate(`/receituario-vet/nova-receita-2?draft=${encodeURIComponent(entry.id)}`)}
                           >
-                            <span className="material-symbols-outlined text-[16px]">delete</span>
-                            Excluir
+                            <span className="material-symbols-outlined text-[14px] transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:text-[#39ff14]">open_in_new</span>
+                            Continuar
                           </button>
-                        </div>
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* Últimas Receitas */}
+          <div className="rxv-card rxv-anim-pulse rxv-fade-up delay-500 overflow-hidden">
+            <div className="flex items-center justify-between border-b border-[color:var(--rxv-border)] px-4 py-3">
+              <div className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-[16px] text-[#61ec4b]">receipt_long</span>
+                <h2 className="text-sm font-bold">Últimas Receitas</h2>
+                {history.length > 0 && (
+                  <span className="rounded-full bg-[#39ff14]/12 px-2 py-0.5 text-[11px] font-bold text-[#61ec4b]">{history.length}</span>
+                )}
+              </div>
+              <Link to="/receituario-vet/nova-receita-2" className="text-xs font-semibold text-[#68df51] hover:underline">
+                Ver editor
+              </Link>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-left">
+                <thead>
+                  <tr className="border-b border-[color:var(--rxv-border)] text-[10px] uppercase tracking-wide text-[color:var(--rxv-muted)]">
+                    <th className="px-4 py-2.5">Paciente</th>
+                    <th className="px-4 py-2.5 hidden sm:table-cell">Tutor</th>
+                    <th className="px-4 py-2.5 hidden md:table-cell">Data</th>
+                    <th className="px-4 py-2.5">Status</th>
+                    <th className="px-4 py-2.5 text-right">Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {history.length === 0 ? (
+                    <tr>
+                      <td className="px-4 py-6 text-sm text-[color:var(--rxv-muted)]" colSpan={5}>
+                        Nenhuma receita registrada ainda.
                       </td>
                     </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
+                  ) : (
+                    history.map((entry) => (
+                      <tr key={entry.id} className="border-b border-[color:var(--rxv-border)]/50 transition-colors hover:bg-[color:var(--rxv-primary)]/5">
+                        <td className="px-4 py-2.5 text-sm font-semibold">{entry.patientName || '-'}</td>
+                        <td className="px-4 py-2.5 text-sm text-[color:var(--rxv-muted)] hidden sm:table-cell">{entry.tutorName || '-'}</td>
+                        <td className="px-4 py-2.5 text-xs text-[color:var(--rxv-muted)] hidden md:table-cell">{formatDate(entry.createdAt)}</td>
+                        <td className="px-4 py-2.5 text-sm">
+                          <span className="rxv-status-badge rxv-status-issued">Emitida</span>
+                        </td>
+                        <td className="px-4 py-2.5 text-right">
+                          <div className="inline-flex items-center gap-1.5">
+                            <button type="button" className="group/btn rxv-btn-secondary inline-flex items-center gap-1 px-2.5 py-1.5 text-xs transition-colors hover:border-[#39ff14]/40 hover:bg-[#39ff14]/10 hover:text-white" onClick={() => navigate('/receituario-vet/nova-receita-2')}>
+                              <span className="material-symbols-outlined text-[14px] transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:text-[#39ff14]">open_in_new</span>
+                              Abrir
+                            </button>
+                            <button
+                              type="button"
+                              className={`group/btn inline-flex items-center gap-1 rounded-lg border px-2.5 py-1.5 text-xs font-semibold transition-colors ${isDark ? 'border-red-700/60 bg-red-950/20 text-red-300 hover:bg-red-900/30 hover:text-red-100' : 'border-red-200 bg-red-50 text-red-600 hover:bg-red-100'}`}
+                              onClick={() => removeHistoryEntry(entry.id)}
+                            >
+                              <span className="material-symbols-outlined text-[14px]">delete</span>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
+
       </div>
     </ReceituarioChrome>
   )

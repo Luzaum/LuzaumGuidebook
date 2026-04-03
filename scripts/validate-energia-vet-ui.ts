@@ -72,7 +72,7 @@ async function buildDogFlow(page: Page) {
 async function buildCatEnergyCheck(browser: Awaited<ReturnType<typeof chromium.launch>>) {
   const page = await browser.newPage({ viewport: { width: 1440, height: 1200 } })
   await page.goto(`${baseUrl}/calculadora-energetica/new`, { waitUntil: 'networkidle' })
-  await page.getByRole('button', { name: /GATO/i }).click()
+  await page.click('#species-card-cat')
   await page.fill('#pat-name', 'Mia UX')
   await page.fill('#pat-owner', 'Tutor Mia')
   await page.fill('#pat-weight', '4.5')
@@ -119,34 +119,47 @@ async function main() {
     await addButtons.nth(0).click()
     await addButtons.nth(1).click()
 
-    const percentInputs = page.locator('input[type="number"]')
+    const percentInputs = page.locator('[data-field="inclusion-pct"]')
     const secondInitial = await percentInputs.nth(1).inputValue()
     await percentInputs.nth(0).fill('60')
     await percentInputs.nth(0).press('Enter')
     await delay(300)
     const secondBefore = await percentInputs.nth(1).inputValue()
 
-    await page.getByRole('button', { name: /Complementar outras %/i }).click()
+    await page.locator('#btn-complement-percentages').click()
     await delay(300)
     const secondAfterComplement = await percentInputs.nth(1).inputValue()
+    const previewPanel = page.locator('#food-preview-panel')
+    const previewTopBeforeScroll = (await previewPanel.boundingBox())?.y ?? null
+    await page.evaluate(() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'instant' }))
+    await delay(300)
+    const previewTopAfterScroll = (await previewPanel.boundingBox())?.y ?? null
 
     await page.screenshot({ path: join(outputDir, 'food-step.png'), fullPage: true })
     await page.getByRole('button', { name: /Ver resumo/i }).click()
 
     await page.waitForURL('**/summary')
     await page.screenshot({ path: join(outputDir, 'summary-step.png'), fullPage: true })
-    const programmedSectionPresent = (await page.locator('text=Alimentação programada').count()) > 0 || (await page.locator('text=Alimentacao programada').count()) > 0
+    const programmedSectionPresent =
+      (await page.locator('text=Alimentação programada').count()) > 0 ||
+      (await page.locator('text=Alimentacao programada').count()) > 0
     await page.screenshot({ path: join(outputDir, 'programmed-feeding.png'), fullPage: true })
-    await page.getByRole('button', { name: /Salvar no módulo|Salvar no modulo/i }).click()
+    await page.locator('#btn-save-plan').scrollIntoViewIfNeeded()
+    await page.locator('#btn-save-plan').click()
 
     await page.waitForURL('**/calculadora-energetica')
     await page.goto(`${baseUrl}/calculadora-energetica/patients`, { waitUntil: 'networkidle' })
-    await page.getByRole('link', { name: /Ver detalhes/i }).first().click()
-    await page.waitForURL('**/patients/**')
+    const patientDetailHref = await page.getByRole('link', { name: /Ver detalhes/i }).first().getAttribute('href')
+    if (!patientDetailHref) {
+      throw new Error('Nao foi possivel localizar o link do detalhe do paciente.')
+    }
+    await page.goto(`${baseUrl}${patientDetailHref}`, { waitUntil: 'networkidle' })
     await page.screenshot({ path: join(outputDir, 'patient-detail.png'), fullPage: true })
     const savedReportComplete =
-      (await page.locator('text=Formula e contribuicao por alimento').count()) > 0 &&
-      (await page.locator('text=Alimentacao programada').count()) > 0
+      ((await page.locator('text=Formula e contribuicao por alimento').count()) > 0 ||
+        (await page.locator('text=Fórmula e contribuição por alimento').count()) > 0) &&
+      ((await page.locator('text=Alimentacao programada').count()) > 0 ||
+        (await page.locator('text=Alimentação programada').count()) > 0)
 
     const catEnergy = await buildCatEnergyCheck(browser)
 
@@ -170,6 +183,10 @@ async function main() {
         energyChangedByCatIndoor: catEnergy.active !== catEnergy.indoor,
         manualModeDidNotAutoAdjustSecondPercentage: secondInitial === secondBefore,
         complementChangedPercentages: secondBefore !== secondAfterComplement,
+        stickyPreviewMaintained:
+          previewTopBeforeScroll != null &&
+          previewTopAfterScroll != null &&
+          Math.abs(previewTopAfterScroll - previewTopBeforeScroll) <= 24,
         programmedSectionPresent,
         savedReportComplete,
       },

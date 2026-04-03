@@ -1,0 +1,49 @@
+{
+  "ok": true,
+  "checked": [
+    {
+      "route": "hub",
+      "found": [],
+      "missing": []
+    },
+    {
+      "route": "nova-receita",
+      "found": [],
+      "missing": []
+    },
+    {
+      "route": "manipulados",
+      "found": [],
+      "missing": []
+    },
+    {
+      "route": "protocolos",
+      "found": [],
+      "missing": []
+    }
+  ],
+  "labelsOk": true,
+  "mojibakeVisible": false,
+  "log": [
+    {
+      "step": "shot",
+      "time": "2026-04-03T11:14:13.963Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\stabilize-labels-hub.png"
+    },
+    {
+      "step": "shot",
+      "time": "2026-04-03T11:14:16.119Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\stabilize-labels-nova-receita.png"
+    },
+    {
+      "step": "shot",
+      "time": "2026-04-03T11:14:17.773Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\stabilize-labels-manipulados.png"
+    },
+    {
+      "step": "shot",
+      "time": "2026-04-03T11:14:21.290Z",
+      "file": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\stabilize-labels-protocolos.png"
+    }
+  ]
+}

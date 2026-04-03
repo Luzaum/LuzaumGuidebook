@@ -208,38 +208,42 @@ export default function PatientStep() {
       </CardHeader>
 
       <CardContent className="space-y-8 pt-6">
-        <section className="space-y-4">
-          <div className="grid gap-4 md:grid-cols-2">
-            {SPECIES_OPTIONS.map((option) => {
-              const Icon = option.icon
+        <section>
+          <p className="mb-4 text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground">Espécie</p>
+          <div className="grid gap-4 grid-cols-2 max-w-lg mx-auto">
+            {([
+              { value: 'dog' as const, emoji: '🐕', title: 'Cão', sub: 'Canino' },
+              { value: 'cat' as const, emoji: '🐈', title: 'Gato', sub: 'Felino' },
+            ] as const).map((option) => {
               const active = species === option.value
               return (
                 <button
                   key={option.value}
+                  id={`species-card-${option.value}`}
                   type="button"
                   onClick={() => handleSpeciesChange(option.value)}
                   className={cn(
-                    'group rounded-3xl border px-6 py-6 text-left transition-all duration-200',
-                    'hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(249,115,22,0.14)] active:scale-[0.99]',
+                    'group flex flex-col items-center justify-center gap-3 rounded-3xl border px-6 py-8 text-center',
+                    'transition-all duration-200 hover:-translate-y-1 active:scale-[0.98]',
+                    'hover:shadow-[0_18px_36px_rgba(249,115,22,0.14)]',
                     active
-                      ? 'border-orange-400/70 bg-gradient-to-br from-orange-500/20 to-orange-500/5 ring-1 ring-orange-400/40'
-                      : 'border-white/10 bg-white/[0.03] hover:border-orange-500/30 hover:bg-orange-500/[0.05]',
+                      ? 'border-orange-400/70 bg-gradient-to-b from-orange-500/18 to-orange-500/5 ring-1 ring-orange-400/40 shadow-[0_12px_32px_rgba(249,115,22,0.16)]'
+                      : 'border-white/10 bg-white/[0.03] hover:border-orange-500/30',
                   )}
                 >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="space-y-2">
-                      <p className="text-2xl font-black tracking-[0.18em] text-white">{option.title}</p>
-                      <p className="max-w-sm text-sm text-muted-foreground">{option.subtitle}</p>
-                    </div>
-                    <div
-                      className={cn(
-                        'rounded-2xl border p-4 transition-transform duration-200 group-hover:scale-105',
-                        active ? 'border-orange-400/40 bg-orange-500/15 text-orange-300' : 'border-white/10 bg-black/20 text-white/70',
-                      )}
-                    >
-                      <Icon className="h-9 w-9" />
-                    </div>
+                  <span
+                    className={cn(
+                      'flex h-20 w-20 items-center justify-center rounded-2xl border text-5xl transition-transform duration-200 group-hover:scale-105',
+                      active ? 'border-orange-400/30 bg-orange-500/10' : 'border-white/10 bg-black/20',
+                    )}
+                  >
+                    {option.emoji}
+                  </span>
+                  <div>
+                    <p className={cn('text-xl font-black tracking-wide', active ? 'text-orange-200' : 'text-white')}>{option.title}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">{option.sub}</p>
                   </div>
+                  {active && <span className="h-1 w-8 rounded-full bg-orange-400" />}
                 </button>
               )
             })}
@@ -280,31 +284,22 @@ export default function PatientStep() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="pat-age">Idade (meses)</Label>
+                <Label htmlFor="pat-age">Idade (anos)</Label>
                 <Input
                   id="pat-age"
                   type="number"
-                  step="1"
+                  step="0.5"
                   min="0"
-                  value={patient.ageMonths ?? ''}
+                  value={patient.ageMonths != null ? Math.round((patient.ageMonths / 12) * 10) / 10 : ''}
                   onChange={(event) => {
-                    const ageMonths = Number(event.target.value) || 0
-                    setPatient({ ageMonths, ageWeeks: ageMonths > 0 ? Math.round(ageMonths * 4.345) : 0 })
+                    const years = Number(event.target.value) || 0
+                    setPatient({ ageMonths: Math.round(years * 12), ageWeeks: Math.round(years * 52) })
                   }}
-                  placeholder="Ex: 24"
+                  placeholder="Ex: 2"
                 />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="pat-age-weeks">Idade (semanas)</Label>
-                <Input
-                  id="pat-age-weeks"
-                  type="number"
-                  step="1"
-                  min="0"
-                  value={patient.ageWeeks ?? ''}
-                  onChange={(event) => setPatient({ ageWeeks: Number(event.target.value) || 0 })}
-                  placeholder="Ex: 16"
-                />
+                {(patient.ageMonths ?? 0) > 0 && (patient.ageMonths ?? 0) < 24 && (
+                  <p className="text-[10px] text-muted-foreground">≈ {patient.ageMonths} meses</p>
+                )}
               </div>
               <div className="space-y-2 md:col-span-2">
                 <Label htmlFor="pat-breed">Raca</Label>

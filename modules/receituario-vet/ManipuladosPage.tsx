@@ -142,7 +142,14 @@ export default function ManipuladosPage() {
 
   useEffect(() => {
     if (!filteredRows.length) {
-      if (selectedId === '__new__' && editorValue) return
+      const restoredNewDraft = loadManipuladoDraft(getManipuladoDraftKey(clinicId, '__new__'))
+      if (selectedId === '__new__' && (editorValue || restoredNewDraft)) {
+        if (!editorValue && restoredNewDraft) {
+          setEditorValue(restoredNewDraft)
+          setDirty(true)
+        }
+        return
+      }
       setSelectedId('')
       setEditorValue(null)
       setDirty(false)
@@ -152,7 +159,25 @@ export default function ManipuladosPage() {
     if (!selectedExists && selectedId !== '__new__') {
       void openItem(filteredRows[0].id)
     }
-  }, [editorValue, filteredRows, openItem, selectedId])
+  }, [clinicId, editorValue, filteredRows, openItem, selectedId])
+
+  useEffect(() => {
+    if (!clinicId || editorValue) return
+    const activeKey = getManipuladoActiveKey(clinicId)
+    if (!activeKey) return
+    try {
+      const activeId = String(localStorage.getItem(activeKey) || '').trim()
+      if (activeId !== '__new__') return
+      const restoredDraft = loadManipuladoDraft(getManipuladoDraftKey(clinicId, '__new__'))
+      if (!restoredDraft) return
+      setSelectedId('__new__')
+      setEditorValue(restoredDraft)
+      setDirty(true)
+      setMessage('Rascunho local restaurado para a nova fórmula.')
+    } catch {
+      // noop
+    }
+  }, [clinicId, editorValue])
 
   const handleNew = () => {
     if (!clinicId) return

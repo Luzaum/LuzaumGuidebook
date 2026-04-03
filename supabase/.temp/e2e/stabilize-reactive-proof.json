@@ -1,0 +1,11 @@
+{
+  "previewReactive": true,
+  "reviewReactive": true,
+  "pdfExported": true,
+  "shots": [
+    "C:/PROJETOS VET/Vetius/supabase/.temp/e2e/shots/stabilize-preview-before.png",
+    "C:/PROJETOS VET/Vetius/supabase/.temp/e2e/shots/stabilize-preview-after.png",
+    "C:/PROJETOS VET/Vetius/supabase/.temp/e2e/shots/stabilize-review-after.png"
+  ],
+  "pdfPath": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\downloads\\stabilize-1775213603408-PACIENTE_E2E_TUTOR_E2E_03-04-2026.pdf"
+}

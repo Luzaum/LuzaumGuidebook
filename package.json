@@ -36,6 +36,7 @@
     "dompurify": "^3.0.8",
     "framer-motion": "^12.26.2",
     "jspdf": "^4.0.0",
+    "jspdf-autotable": "^5.0.7",
     "lucide-react": "^0.539.0",
     "pdfjs-dist": "^5.5.207",
     "react": "^19.1.1",

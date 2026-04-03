@@ -5,6 +5,7 @@ import { toast } from 'sonner'
 import { Button } from '../../components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card'
 import { Badge } from '../../components/ui/badge'
+import { Input } from '../../components/ui/input'
 import { useCalculationStore } from '../../store/calculationStore'
 import { computeDietPlan } from '../../lib/dietEngine'
 import { getFoodById, getNutrientDefinition, getRequirementById } from '../../lib/genutriData'
@@ -13,6 +14,7 @@ import { exportReportPdf } from '../../lib/reportDocument'
 import { calculateRefeedingRisk, getPhysiologicStateById, getProgressionPlan3Days, getProgressionPlan4Days } from '../../lib/nutrition'
 import { getClinicalProfileBadges, getHumanRequirementLabel } from '../../lib/clinicalProfiles'
 import { buildProgrammedFeedingPlan } from '../../lib/programmedFeeding'
+import PrintableReportDocument from '../../components/PrintableReportDocument'
 
 const NEW_ROUTE = '/calculadora-energetica/new'
 const MODULE_ROUTE = '/calculadora-energetica'
@@ -116,8 +118,12 @@ export default function SummaryStep() {
         { label: 'Fibra', value: formatDailyAmount('crudeFiberPct', result.evaluation.totalDelivered.crudeFiberPct) },
         { label: 'Cálcio', value: formatDailyAmount('calciumPct', result.evaluation.totalDelivered.calciumPct) },
         { label: 'Fósforo', value: formatDailyAmount('phosphorusPct', result.evaluation.totalDelivered.phosphorusPct) },
-        { label: 'Taurina', value: formatDailyAmount('taurinePct', result.evaluation.totalDelivered.taurinePct) },
-      ]
+      // opcionais: só aparecem se há valor
+      ...(result.evaluation.totalDelivered.taurinePct != null ? [{ label: 'Taurina', value: formatDailyAmount('taurinePct', result.evaluation.totalDelivered.taurinePct) }] : []),
+      ...(result.evaluation.totalDelivered.omega6Pct != null ? [{ label: 'Ômega-6', value: formatDailyAmount('omega6Pct', result.evaluation.totalDelivered.omega6Pct) }] : []),
+      ...(result.evaluation.totalDelivered.moisturePct != null ? [{ label: 'Umidade', value: formatDailyAmount('moisturePct', result.evaluation.totalDelivered.moisturePct) }] : []),
+      ...(result.evaluation.totalDelivered.ashPct != null ? [{ label: 'Matéria mineral', value: formatDailyAmount('ashPct', result.evaluation.totalDelivered.ashPct) }] : []),
+    ]
     : []
 
   const calcium = result?.evaluation.totalDelivered.calciumPct ?? null
@@ -156,31 +162,10 @@ export default function SummaryStep() {
     [programmedMealsPerDay, programmedTimes, result],
   )
 
-  const adequacyByProfile = useMemo(() => {
-    const groups = new Map<string, typeof result.evaluation.adequacy>()
-    for (const item of result?.evaluation.adequacy ?? []) {
-      if (item.status === 'insufficient_data') continue;
-      const profileLabel = getHumanRequirementLabel(getRequirementById(item.profileId))
-      const current = groups.get(profileLabel) ?? []
-      current.push(item)
-      groups.set(profileLabel, current)
-    }
-    return Array.from(groups.entries())
-  }, [result?.evaluation.adequacy])
-
-  const macroChartStyle = useMemo(() => {
-    const [protein, fat, carb] = result.evaluation.macroSplit
-    const proteinEnd = protein.percent
-    const fatEnd = protein.percent + fat.percent
+  const printableReport = useMemo(() => {
+    if (!result) return null
     return {
-      background: `conic-gradient(${protein.color} 0% ${proteinEnd}%, ${fat.color} ${proteinEnd}% ${fatEnd}%, ${carb.color} ${fatEnd}% 100%)`,
-    }
-  }, [result.evaluation.macroSplit])
-
-  const handleSave = () => {
-    if (!result) return
-    const report = {
-      id: crypto.randomUUID(),
+      id: 'preview-report',
       createdAt: new Date().toISOString(),
       patient,
       energy,
@@ -205,6 +190,41 @@ export default function SummaryStep() {
         programmedFeeding: programmedFeeding ?? undefined,
       },
     }
+  }, [diet, energy, hospital, patient, programmedFeeding, result, target])
+
+  const adequacyByProfile = useMemo(() => {
+    const groups = new Map<string, typeof result.evaluation.adequacy>()
+    for (const item of result?.evaluation.adequacy ?? []) {
+      if (item.status === 'insufficient_data') continue;
+      const profileLabel = getHumanRequirementLabel(getRequirementById(item.profileId))
+      const current = groups.get(profileLabel) ?? []
+      current.push(item)
+      groups.set(profileLabel, current)
+    }
+    return Array.from(groups.entries())
+  }, [result?.evaluation.adequacy])
+
+  const macroChartStyle = useMemo(() => {
+    if (!result) {
+      return {
+        background: 'conic-gradient(#334155 0% 100%)',
+      }
+    }
+    const [protein, fat, carb] = result.evaluation.macroSplit
+    const proteinEnd = protein.percent
+    const fatEnd = protein.percent + fat.percent
+    return {
+      background: `conic-gradient(${protein.color} 0% ${proteinEnd}%, ${fat.color} ${proteinEnd}% ${fatEnd}%, ${carb.color} ${fatEnd}% 100%)`,
+    }
+  }, [result])
+
+  const handleSave = () => {
+    if (!printableReport) return
+    const report = {
+      ...printableReport,
+      id: crypto.randomUUID(),
+      createdAt: new Date().toISOString(),
+    }
     saveReport(report)
     toast.success('Resumo salvo no histórico do Energia Vet.')
     navigate(MODULE_ROUTE)
@@ -224,22 +244,33 @@ export default function SummaryStep() {
     <div className="w-full pb-20">
       <style>{`
         @media print {
-          .no-print, button, nav, header, aside, .sidebar-vetius {
-            display: none !important;
-          }
-          body {
+          body, html {
             background: white !important;
             color: black !important;
             padding: 0 !important;
             margin: 0 !important;
           }
-          @page {
-            margin: 1.5cm;
+          @page { size: A4; margin: 12mm 14mm; }
+          body * {
+            visibility: hidden !important;
           }
+          .no-print, .no-print * {
+            display: none !important;
+          }
+          #print-report-root, #print-report-root * {
+            visibility: visible !important;
+          }
+          #print-report-root {
+            display: block !important;
+            position: absolute;
+            inset: 0;
+            width: 100%;
+          }
+          .rx-page-break { break-before: page; }
         }
       `}</style>
       
-      <div className="no-print space-y-6">
+      <div className="no-print print:hidden space-y-6">
         <Card className="border-border dark:border-orange-400/15 bg-white dark:bg-gradient-to-b from-card via-card to-card/95 shadow-[0_18px_50px_rgba(0,0,0,0.08)] dark:shadow-[0_18px_50px_rgba(0,0,0,0.22)]">
           <CardHeader className="border-b border-border dark:border-white/5 bg-slate-50 dark:bg-orange-500/[0.04]">
             <div className="flex flex-wrap items-center justify-between gap-3">
@@ -251,33 +282,8 @@ export default function SummaryStep() {
               <Button variant="outline" size="sm" className="gap-2" onClick={() => window.print()}>
                 <Printer className="h-4 w-4" /> Imprimir / PDF
               </Button>
-              <Button size="sm" className="gap-2" onClick={() => exportReportPdf({
-                id: crypto.randomUUID(),
-                createdAt: new Date().toISOString(),
-                patient,
-                energy,
-                target,
-                diet: {
-                  ...diet,
-                  entries: diet.entries,
-                  totalDryMatterGrams: result.totalDryMatterGrams,
-                  totalAsFedGrams: result.totalAsFedGrams,
-                  gramsPerDay: result.totalAsFedGrams,
-                  gramsPerMeal: result.feedingPlan.meals[0]?.gramsAsFed ?? 0,
-                  targetEnergy: target.targetEnergy ?? 0,
-                  mealsPerDay: diet.mealsPerDay ?? 2,
-                  dietType: diet.dietType ?? 'commercial',
-                  programmedFeeding: programmedFeeding ?? undefined,
-                },
-                hospital,
-                formula: {
-                  contributions: result.contributions,
-                  evaluation: result.evaluation,
-                  feedingPlan: result.feedingPlan,
-                  programmedFeeding: programmedFeeding ?? undefined,
-                },
-              })}>
-                <Download className="h-4 w-4" /> PDF texto
+              <Button size="sm" className="gap-2" onClick={() => printableReport && exportReportPdf(printableReport)}>
+                <Download className="h-4 w-4" /> Exportar PDF
               </Button>
               </div>
             </div>
@@ -710,56 +716,222 @@ export default function SummaryStep() {
         </Card>
       </div>
 
-      <div className="hidden print:block text-black bg-white">
-        <div className="border-b border-gray-300 pb-4 mb-6">
-          <h1 className="text-3xl font-bold">Relatório Nutricional Vetius</h1>
-          <p className="text-gray-500">Gerado em {new Date().toLocaleDateString('pt-BR')}</p>
+      {/* ═══ TEMPLATE DE IMPRESSÃO — só aparece no print, nunca na tela ═══ */}
+      <div className="hidden print:block" style={{ fontFamily: 'Arial, Helvetica, sans-serif', fontSize: '11px', color: '#111', background: '#fff', lineHeight: 1.5 }}>
+        <style>{`
+          @media print {
+            @page { size: A4; margin: 12mm 14mm; }
+            body * { visibility: hidden !important; }
+            .print\\:block, .print\\:block * { visibility: visible !important; }
+            .print\\:block { position: fixed; top: 0; left: 0; width: 100%; }
+            .rx-page-break { break-before: page; }
+          }
+        `}</style>
+
+        {/* ── Cabeçalho ── */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '2px solid #e5630a', paddingBottom: '8px', marginBottom: '16px' }}>
+          <div>
+            <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#e5630a' }}>NutriçãoVET · Relatório Nutricional</div>
+            <div style={{ fontSize: '11px', color: '#555' }}>Emitido em {new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</div>
+          </div>
+          <div style={{ textAlign: 'right', fontSize: '11px', color: '#555' }}>Vetius — Medicina Veterinária</div>
         </div>
-        
-        <div className="space-y-6 text-sm">
-          <section>
-            <h2 className="text-xl font-bold mb-3 border-b border-gray-200 pb-2">1. Dados do Paciente</h2>
-            <div className="grid grid-cols-2 gap-4">
-              <div><strong>Paciente:</strong> {patient.name || 'Não informado'}</div>
-              <div><strong>Tutor:</strong> {patient.ownerName || '—'}</div>
-              <div><strong>Espécie:</strong> {species === 'dog' ? 'Cão' : 'Gato'}</div>
-              <div><strong>Sexo:</strong> {patient.sex === 'female' ? 'Fêmea' : 'Macho'}</div>
-              <div><strong>Peso Atual:</strong> {currentWeight.toFixed(2)} kg</div>
-              <div><strong>Energia Final Estimada:</strong> {target.targetEnergy?.toFixed(0) ?? '—'} kcal/dia</div>
-              <div><strong>Castrado:</strong> {patient.isNeutered ? 'Sim' : 'Não'}</div>
-              <div><strong>Condição Corporal (ECC):</strong> {patient.bcs ?? 5}/9</div>
-            </div>
-          </section>
 
-          <section>
-            <h2 className="text-xl font-bold mb-3 border-b border-gray-200 pb-2">2. Formulação e Plano Alimentar</h2>
-            <div className="grid grid-cols-2 gap-4">
-              <div><strong>Matéria Seca Total (G/Dia):</strong> {result.totalDryMatterGrams.toFixed(1)} g</div>
-              <div><strong>Matéria Natural Total (G/Dia):</strong> {result.totalAsFedGrams.toFixed(1)} g</div>
-              <div><strong>Refeições por dia:</strong> {diet.mealsPerDay ?? 2}</div>
-              <div><strong>Oferta por refeição:</strong> {result.feedingPlan.meals[0]?.gramsAsFed.toFixed(1) ?? '0.0'} g</div>
-            </div>
-            
-            <div className="mt-4">
-              <h3 className="font-semibold mb-2">Composição da Mistura:</h3>
-              <ul className="list-disc pl-5 space-y-1">
-                {result.contributions.map((item) => (
-                  <li key={item.foodId}>
-                    {item.foodName}: <strong>{item.gramsAsFed.toFixed(1)} g/dia</strong> ({item.inclusionPct.toFixed(1)}% MS)
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </section>
+        {/* ── 1. Paciente ── */}
+        <div style={{ marginBottom: '12px' }}>
+          <div style={{ fontSize: '13px', fontWeight: 'bold', borderBottom: '1px solid #ddd', paddingBottom: '3px', marginBottom: '7px' }}>1. Identificação do Paciente</div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '4px 16px' }}>
+            <div><strong>Paciente:</strong> {patient.name || 'Não informado'}</div>
+            <div><strong>Tutor:</strong> {patient.ownerName || '—'}</div>
+            <div><strong>Espécie:</strong> {species === 'dog' ? 'Cão' : 'Gato'}</div>
+            <div><strong>Sexo:</strong> {patient.sex === 'female' ? 'Fêmea' : 'Macho'}</div>
+            <div><strong>Peso atual:</strong> {currentWeight.toFixed(2)} kg</div>
+            <div><strong>ECC:</strong> {patient.bcs ?? 5}/9</div>
+            <div><strong>Castrado:</strong> {patient.isNeutered ? 'Sim' : 'Não'}</div>
+            <div><strong>Hospitalizado:</strong> {patient.isHospitalized ? 'Sim' : 'Não'}</div>
+            {comorbidityLabels.length > 0 && <div style={{ gridColumn: '1/-1' }}><strong>Comorbidades:</strong> {comorbidityLabels.join(', ')}</div>}
+          </div>
+        </div>
 
-          <section>
-            <h2 className="text-xl font-bold mb-3 border-b border-gray-200 pb-2">3. Análise Nutricional</h2>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-2">
-              {summaryItems.map(item => (
-                <div key={item.label}><strong>{item.label}:</strong> {item.value}</div>
+        {/* ── 2. Energia ── */}
+        <div style={{ marginBottom: '12px' }}>
+          <div style={{ fontSize: '13px', fontWeight: 'bold', borderBottom: '1px solid #ddd', paddingBottom: '3px', marginBottom: '7px' }}>2. Cálculo Energético</div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '4px 16px' }}>
+            <div><strong>RER:</strong> {energy.rer?.toFixed(0) ?? '—'} kcal/dia</div>
+            <div><strong>MER estimado:</strong> {energy.mer?.toFixed(0) ?? '—'} kcal/dia</div>
+            <div><strong>Energia-alvo:</strong> <strong style={{ color: '#e5630a' }}>{target.targetEnergy?.toFixed(0) ?? '—'} kcal/dia</strong></div>
+            <div><strong>Estado fisiológico:</strong> {physiologicStateLabel}</div>
+            <div><strong>Peso usado:</strong> {energy.weightUsed?.toFixed(2) ?? '—'} kg</div>
+            {energy.activityHoursPerDay != null && <div><strong>Atividade:</strong> {energy.activityHoursPerDay}h/dia · {energy.activityImpact === 'high' ? 'alto impacto' : 'baixo impacto'}</div>}
+            {energy.obesityProne && <div><strong>Predisposto a obesidade:</strong> Sim</div>}
+          </div>
+        </div>
+
+        {/* ── 3. Meta nutricional ── */}
+        <div style={{ marginBottom: '12px' }}>
+          <div style={{ fontSize: '13px', fontWeight: 'bold', borderBottom: '1px solid #ddd', paddingBottom: '3px', marginBottom: '7px' }}>3. Meta Nutricional</div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '4px 16px' }}>
+            <div><strong>Objetivo:</strong> {target.goal === 'weight_loss' ? 'Perda de peso' : target.goal === 'weight_gain' ? 'Ganho de peso' : 'Manutenção'}</div>
+            {target.targetWeight && <div><strong>Peso-alvo:</strong> {target.targetWeight.toFixed(2)} kg</div>}
+          </div>
+        </div>
+
+        {/* ── 4. Formulação ── */}
+        <div style={{ marginBottom: '12px' }}>
+          <div style={{ fontSize: '13px', fontWeight: 'bold', borderBottom: '1px solid #ddd', paddingBottom: '3px', marginBottom: '7px' }}>4. Formulação Alimentar</div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '4px 16px', marginBottom: '8px' }}>
+            <div><strong>Tipo de dieta:</strong> {diet.dietType === 'commercial' ? 'Comercial' : diet.dietType === 'natural' ? '100% Natural' : 'Híbrida'}</div>
+            <div><strong>Refeições/dia:</strong> {diet.mealsPerDay ?? 2}</div>
+            <div><strong>Oferta/refeição:</strong> {result.feedingPlan.meals[0]?.gramsAsFed.toFixed(1) ?? '0.0'} g</div>
+            <div><strong>Total diário (MN):</strong> {result.totalAsFedGrams.toFixed(1)} g/dia</div>
+            <div><strong>Total diário (MS):</strong> {result.totalDryMatterGrams.toFixed(1)} g/dia</div>
+          </div>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px' }}>
+            <thead>
+              <tr style={{ backgroundColor: '#f5f5f5' }}>
+                <th style={{ border: '1px solid #ddd', padding: '4px 8px', textAlign: 'left' }}>Alimento</th>
+                <th style={{ border: '1px solid #ddd', padding: '4px 8px', textAlign: 'right' }}>Inclusão (% MS)</th>
+                <th style={{ border: '1px solid #ddd', padding: '4px 8px', textAlign: 'right' }}>Oferta diária (g MN)</th>
+                <th style={{ border: '1px solid #ddd', padding: '4px 8px', textAlign: 'right' }}>Energia (kcal/dia)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {result.contributions.map((item, i) => (
+                <tr key={item.foodId} style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#fafafa' }}>
+                  <td style={{ border: '1px solid #ddd', padding: '4px 8px' }}>{item.foodName}</td>
+                  <td style={{ border: '1px solid #ddd', padding: '4px 8px', textAlign: 'right' }}>{item.inclusionPct.toFixed(2)}%</td>
+                  <td style={{ border: '1px solid #ddd', padding: '4px 8px', textAlign: 'right' }}>{item.gramsAsFed.toFixed(1)} g</td>
+                  <td style={{ border: '1px solid #ddd', padding: '4px 8px', textAlign: 'right' }}>{item.deliveredKcal.toFixed(1)} kcal</td>
+                </tr>
               ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* ── 5. Resumo nutricional ── */}
+        <div style={{ marginBottom: '12px' }}>
+          <div style={{ fontSize: '13px', fontWeight: 'bold', borderBottom: '1px solid #ddd', paddingBottom: '3px', marginBottom: '7px' }}>5. Resumo Nutricional</div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '4px 16px' }}>
+            {summaryItems.map((item) => (
+              <div key={item.label}><strong>{item.label}:</strong> {item.value}</div>
+            ))}
+            {caP && <div><strong>Relação Ca:P:</strong> {caP.toFixed(2)}</div>}
+          </div>
+        </div>
+
+        {/* ── 6. Partição energética ── */}
+        <div style={{ marginBottom: '12px' }}>
+          <div style={{ fontSize: '13px', fontWeight: 'bold', borderBottom: '1px solid #ddd', paddingBottom: '3px', marginBottom: '7px' }}>6. Partição Energética</div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '4px 16px' }}>
+            {result.evaluation.macroSplit.map((slice) => (
+              <div key={slice.key}><strong>{slice.label}:</strong> {slice.percent.toFixed(1)}% · {slice.grams.toFixed(1)} g · {slice.kcal.toFixed(1)} kcal</div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── 7. Alertas ── */}
+        {result.evaluation.alerts.length > 0 && (
+          <div style={{ marginBottom: '12px' }}>
+            <div style={{ fontSize: '13px', fontWeight: 'bold', borderBottom: '1px solid #ddd', paddingBottom: '3px', marginBottom: '7px' }}>7. Alertas e Observações</div>
+            {result.evaluation.alerts.map((alert) => (
+              <div key={alert} style={{ padding: '4px 8px', backgroundColor: '#fff9e6', border: '1px solid #f5c030', borderRadius: '4px', marginBottom: '4px' }}>{alert}</div>
+            ))}
+          </div>
+        )}
+
+        {/* ═══ FICHA DE ALIMENTAÇÃO — página própria ═══ */}
+        <div className="rx-page-break" style={{ paddingTop: '4px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '2px solid #e5630a', paddingBottom: '8px', marginBottom: '16px' }}>
+            <div>
+              <div style={{ fontSize: '16px', fontWeight: 'bold', color: '#e5630a' }}>FICHA DE ALIMENTAÇÃO</div>
+              <div style={{ fontSize: '11px', color: '#555' }}>
+                <strong>Animal:</strong> {patient.name || '_______________'} &nbsp;|&nbsp;
+                <strong>Tutor:</strong> {patient.ownerName || '_______________'} &nbsp;|&nbsp;
+                <strong>Espécie:</strong> {species === 'dog' ? 'Cão' : 'Gato'}
+              </div>
             </div>
-          </section>
+            <div style={{ textAlign: 'right', fontSize: '11px', color: '#555' }}>
+              <div><strong>Peso:</strong> {currentWeight.toFixed(2)} kg</div>
+              <div><strong>Energia-alvo:</strong> {target.targetEnergy?.toFixed(0) ?? '—'} kcal/dia</div>
+            </div>
+          </div>
+
+          {/* Resumo dos alimentos e quantidades */}
+          <div style={{ marginBottom: '14px' }}>
+            <div style={{ fontSize: '12px', fontWeight: 'bold', marginBottom: '6px' }}>Alimentos utilizados</div>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px' }}>
+              <thead>
+                <tr style={{ backgroundColor: '#f5f5f5' }}>
+                  <th style={{ border: '1px solid #ddd', padding: '4px 8px', textAlign: 'left' }}>Alimento</th>
+                  <th style={{ border: '1px solid #ddd', padding: '4px 8px', textAlign: 'right' }}>Oferta diária total</th>
+                  <th style={{ border: '1px solid #ddd', padding: '4px 8px', textAlign: 'right' }}>Por refeição ({diet.mealsPerDay ?? 2} ref.)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {result.contributions.map((item, i) => (
+                  <tr key={item.foodId} style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#fafafa' }}>
+                    <td style={{ border: '1px solid #ddd', padding: '4px 8px' }}>{item.foodName}</td>
+                    <td style={{ border: '1px solid #ddd', padding: '4px 8px', textAlign: 'right' }}>{item.gramsAsFed.toFixed(1)} g</td>
+                    <td style={{ border: '1px solid #ddd', padding: '4px 8px', textAlign: 'right' }}>{((diet.mealsPerDay ?? 2) > 0 ? item.gramsAsFed / (diet.mealsPerDay ?? 2) : 0).toFixed(1)} g</td>
+                  </tr>
+                ))}
+                <tr style={{ backgroundColor: '#e8f4e8', fontWeight: 'bold' }}>
+                  <td style={{ border: '1px solid #ddd', padding: '4px 8px' }}>TOTAL</td>
+                  <td style={{ border: '1px solid #ddd', padding: '4px 8px', textAlign: 'right' }}>{result.totalAsFedGrams.toFixed(1)} g</td>
+                  <td style={{ border: '1px solid #ddd', padding: '4px 8px', textAlign: 'right' }}>{result.feedingPlan.meals[0]?.gramsAsFed.toFixed(1) ?? '0.0'} g</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Tabela de registro diário */}
+          <div style={{ marginBottom: '10px' }}>
+            <div style={{ fontSize: '12px', fontWeight: 'bold', marginBottom: '6px' }}>
+              Registro diário — {diet.mealsPerDay ?? 2} alimentação(ões)/dia
+            </div>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '11px' }}>
+              <thead>
+                <tr style={{ backgroundColor: '#f5f5f5' }}>
+                  <th style={{ border: '1px solid #ddd', padding: '5px 6px', textAlign: 'left', width: '60px' }}>Data</th>
+                  <th style={{ border: '1px solid #ddd', padding: '5px 6px', textAlign: 'left', width: '55px' }}>Horário</th>
+                  <th style={{ border: '1px solid #ddd', padding: '5px 6px', textAlign: 'left' }}>Alimento</th>
+                  <th style={{ border: '1px solid #ddd', padding: '5px 6px', textAlign: 'right', width: '70px' }}>Qde ofertada</th>
+                  <th style={{ border: '1px solid #ddd', padding: '5px 6px', textAlign: 'center', width: '55px' }}>Comeu?</th>
+                  <th style={{ border: '1px solid #ddd', padding: '5px 6px', textAlign: 'right', width: '70px' }}>Sobra (g)</th>
+                  <th style={{ border: '1px solid #ddd', padding: '5px 6px', textAlign: 'left', width: '80px' }}>Obs.</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Array.from({ length: Math.min(7, 3) * (diet.mealsPerDay ?? 2) }).map((_, rowIdx) => {
+                  const mealIdx = rowIdx % (diet.mealsPerDay ?? 2)
+                  const dayIdx = Math.floor(rowIdx / (diet.mealsPerDay ?? 2))
+                  const meal = result.feedingPlan.meals[mealIdx]
+                  return (
+                    <tr key={rowIdx} style={{ backgroundColor: rowIdx % 2 === 0 ? '#fff' : '#fafafa' }}>
+                      <td style={{ border: '1px solid #ddd', padding: '5px 6px' }}>{dayIdx === 0 ? '___/___' : ''}</td>
+                      <td style={{ border: '1px solid #ddd', padding: '5px 6px' }}>{meal?.time ?? '——:——'}</td>
+                      <td style={{ border: '1px solid #ddd', padding: '5px 6px' }}>
+                        {result.contributions.map((c) => `${c.foodName}: ${((diet.mealsPerDay ?? 2) > 0 ? c.gramsAsFed / (diet.mealsPerDay ?? 2) : 0).toFixed(1)}g`).join(' / ')}
+                      </td>
+                      <td style={{ border: '1px solid #ddd', padding: '5px 6px', textAlign: 'right' }}>{meal?.gramsAsFed.toFixed(1) ?? '—'} g</td>
+                      <td style={{ border: '1px solid #ddd', padding: '5px 6px', textAlign: 'center' }}>Sim / Não</td>
+                      <td style={{ border: '1px solid #ddd', padding: '5px 6px' }} />
+                      <td style={{ border: '1px solid #ddd', padding: '5px 6px' }} />
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+            <div style={{ marginTop: '4px', fontSize: '10px', color: '#888' }}>
+              * Pesar sobra após cada refeição. Anotar apetite e comportamento.
+            </div>
+          </div>
+
+          {/* Assinaturas */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginTop: '20px' }}>
+            <div style={{ borderTop: '1px solid #999', paddingTop: '4px', fontSize: '11px', color: '#555' }}>Médico(a) Veterinário(a) responsável</div>
+            <div style={{ borderTop: '1px solid #999', paddingTop: '4px', fontSize: '11px', color: '#555' }}>Tutor do animal</div>
+          </div>
         </div>
       </div>
     </div>

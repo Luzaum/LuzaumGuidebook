@@ -15,7 +15,7 @@ interface RxPrintViewProps {
   prescriberPhone?: string
   prescriberAddressLine?: string
   tutorCpf?: string
-  targetPharmacy?: 'veterinária' | 'humana' | 'manipulacao' | 'mista'
+  targetPharmacy?: 'veterin\u00e1ria' | 'humana' | 'manipulacao' | 'mista'
   inlineEditNote?: string
   interactive?: boolean
   activeZone?: TemplateZoneKey
@@ -26,15 +26,14 @@ interface RxPrintViewProps {
 }
 
 function sanitizePrintText(value: string): string {
-  return sanitizeVisibleText(value || '')
-    .replace(/\s*?\s*/g, ' ? ')
+  return sanitizeVisibleText(String(value || ''))
     .replace(/\s+/g, ' ')
     .trim()
 }
 
 const BASE_TEMPLATE: RxTemplateStyle = {
   id: 'rx_classic_vertical_v1',
-  name: sanitizeVisibleText('Receita clássica vertical'),
+  name: 'Receita cl\u00e1ssica vertical',
   documentKindTarget: 'standard',
   layoutVariant: 'classic-vertical',
   fontFamily: 'Georgia, "Times New Roman", serif',
@@ -333,7 +332,7 @@ export function RxPrintView({
           ) : (
             <>
               <p>
-              {' ? '}{sanitizeVisibleText('Paciente:')} {doc.patientLine}
+              {' • '}{sanitizeVisibleText('Paciente:')} {doc.patientLine}
               </p>
               <p>
                 <span className="font-bold">{sanitizeVisibleText('Responsável:')}</span> {sanitizePrintText(doc.tutorLine)}
@@ -501,8 +500,8 @@ export function RxPrintView({
           <section className="mt-4 space-y-3 rounded border border-slate-300 bg-slate-50 p-3 text-[11px]" style={{ color: '#1f2937' }}>
             <p>
               <strong>Dados do emitente:</strong> {doc.prescriberName} � {doc.prescriberCrmv}
-              {prescriberAddressLine ? ` � ${prescriberAddressLine}` : ''}
-              {prescriberPhone ? ` � ${prescriberPhone}` : ''}
+              {prescriberAddressLine ? ` • ${prescriberAddressLine}` : ''}
+              {prescriberPhone ? ` • ${prescriberPhone}` : ''}
             </p>
             <p>
               <strong>{sanitizeVisibleText('Dados do proprietário e animal:')}</strong> {doc.tutorLine} • CPF: {tutorCpf || '___________________'}
@@ -514,24 +513,24 @@ export function RxPrintView({
 
         {doc.documentKind === 'special-control' ? (
           <section className="mt-4 rounded border border-slate-300 bg-slate-50 p-3 text-[11px]" style={{ color: '#1f2937' }}>
-            <p className="mb-2 font-bold">{sanitizeVisibleText('1? via - Farm?cia | 2? via - Paciente')}</p>
+            <p className="mb-2 font-bold">{sanitizeVisibleText('1ª via - Farmácia | 2ª via - Paciente')}</p>
             <p className="mb-3">
-              {sanitizeVisibleText('Farm?cia veterin?ria')} ({targetPharmacy === 'veterin?ria' || targetPharmacy === 'mista' ? 'X' : ' '}) {'  '}
-              {sanitizeVisibleText('Farm?cia de manipula??o')} ({targetPharmacy === 'manipulacao' || targetPharmacy === 'mista' ? 'X' : ' '}) {'  '}
-              {sanitizeVisibleText('Farm?cia humana')} ({targetPharmacy === 'humana' || targetPharmacy === 'mista' ? 'X' : ' '})
+              {sanitizeVisibleText('Farmácia veterinária')} ({targetPharmacy === 'veterinária' || targetPharmacy === 'mista' ? 'X' : ' '}) {'  '}
+              {sanitizeVisibleText('Farmácia de manipulação')} ({targetPharmacy === 'manipulacao' || targetPharmacy === 'mista' ? 'X' : ' '}) {'  '}
+              {sanitizeVisibleText('Farmácia humana')} ({targetPharmacy === 'humana' || targetPharmacy === 'mista' ? 'X' : ' '})
             </p>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="rounded-lg border border-slate-300 p-3 space-y-2.5">
-                <p className="mb-2 font-bold uppercase tracking-wider text-slate-700 border-b border-slate-200 pb-1">{sanitizeVisibleText('Identifica??o do comprador')}</p>
+                <p className="mb-2 font-bold uppercase tracking-wider text-slate-700 border-b border-slate-200 pb-1">{sanitizeVisibleText('Identificação do comprador')}</p>
                 <div className="flex items-end"><span className="shrink-0 mr-2 font-medium">Nome:</span><div className="flex-1 border-b border-slate-400"></div></div>
                 <div className="flex items-end"><span className="shrink-0 mr-2 font-medium">RG:</span><div className="flex-1 border-b border-slate-400"></div></div>
-                <div className="flex items-end"><span className="shrink-0 mr-2 font-medium">{sanitizeVisibleText('Endere?o:')}</span><div className="flex-1 border-b border-slate-400"></div></div>
+                <div className="flex items-end"><span className="shrink-0 mr-2 font-medium">{sanitizeVisibleText('Endereço:')}</span><div className="flex-1 border-b border-slate-400"></div></div>
                 <div className="flex items-end"><span className="shrink-0 mr-2 font-medium">Cidade/UF:</span><div className="flex-1 border-b border-slate-400"></div></div>
               </div>
               <div className="rounded-lg border border-slate-300 p-3 space-y-2.5">
-                <p className="mb-2 font-bold uppercase tracking-wider text-slate-700 border-b border-slate-200 pb-1">{sanitizeVisibleText('Identifica??o do fornecedor')}</p>
-                <div className="flex items-end"><span className="shrink-0 mr-2 font-medium">{sanitizeVisibleText('Farm?cia:')}</span><div className="flex-1 border-b border-slate-400"></div></div>
-                <div className="flex items-end"><span className="shrink-0 mr-2 font-medium">{sanitizeVisibleText('Farmac?utico:')}</span><div className="flex-1 border-b border-slate-400"></div></div>
+                <p className="mb-2 font-bold uppercase tracking-wider text-slate-700 border-b border-slate-200 pb-1">{sanitizeVisibleText('Identificação do fornecedor')}</p>
+                <div className="flex items-end"><span className="shrink-0 mr-2 font-medium">{sanitizeVisibleText('Farmácia:')}</span><div className="flex-1 border-b border-slate-400"></div></div>
+                <div className="flex items-end"><span className="shrink-0 mr-2 font-medium">{sanitizeVisibleText('Farmacêutico:')}</span><div className="flex-1 border-b border-slate-400"></div></div>
                 <div className="flex items-end"><span className="shrink-0 mr-2 font-medium">Assinatura:</span><div className="flex-1 border-b border-slate-400"></div></div>
                 <div className="flex items-end"><span className="shrink-0 mr-2 font-medium">Data:</span><div className="w-8 border-b border-slate-400 mx-1"></div>/<div className="w-8 border-b border-slate-400 mx-1"></div>/<div className="w-12 border-b border-slate-400 ml-1 flex-1"></div></div>
               </div>

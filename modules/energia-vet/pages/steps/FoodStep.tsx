@@ -117,8 +117,10 @@ export default function FoodStep() {
   const inclusionSum = useMemo(() => entries.reduce((sum, e) => sum + e.inclusionPct, 0), [entries])
   const detailsFood = detailsFoodId ? getFoodById(detailsFoodId) : undefined
 
-  // Modo de formulação: auto = redistribui para somar 100% | locked = edita só o item
+  // Modo de formulação: manual = edita só o item | complement = redistribui para somar 100%
   const [formulationMode, setFormulationMode] = useState<'manual' | 'complement'>(diet.formulationMode ?? 'manual')
+  // Último alimento editado manualmente — preservado no "Completar %"
+  const [lastEditedFoodId, setLastEditedFoodId] = useState<string | null>(null)
 
   // Estado local para inputs em edição (evita o input "pular" enquanto o usuário digita)
   const [editingPct, setEditingPct] = useState<Record<string, string>>({})
@@ -200,6 +202,7 @@ export default function FoodStep() {
       if (Number.isFinite(num) && num >= 0 && num <= 100) {
         const wouldAllBeZero = entries.every((e) => e.foodId === foodId ? num === 0 : e.inclusionPct === 0)
         if (!wouldAllBeZero) {
+          setLastEditedFoodId(foodId)
           if (formulationMode === 'complement') {
             const otherIds = entries.filter((e) => e.foodId !== foodId).map((e) => e.foodId)
             updateInclusionAuto(foodId, num)
@@ -219,6 +222,7 @@ export default function FoodStep() {
     if (raw !== undefined) {
       const num = parseFloat(raw)
       if (Number.isFinite(num) && num > 0) {
+        setLastEditedFoodId(foodId)
         const otherIds = formulationMode === 'complement' ? entries.filter((e) => e.foodId !== foodId).map((e) => e.foodId) : []
         updateGrams(foodId, num)
         flashItem(foodId, otherIds)
@@ -227,18 +231,32 @@ export default function FoodStep() {
     setEditingGrams((p) => { const n = { ...p }; delete n[foodId]; return n })
   }
 
+  // Completar %: fecha a fórmula em 100%, PRESERVANDO o último item editado manualmente.
+  // Os demais itens são redistribuídos proporcionalmente para completar o restante.
   const complementOtherPercentages = () => {
-    const positiveEntries = entries.filter((entry) => entry.inclusionPct > 0)
-    if (!positiveEntries.length) return
-    const total = positiveEntries.reduce((sum, entry) => sum + entry.inclusionPct, 0)
-    if (!total) return
+    if (entries.length === 0) return
+
+    const preserved = lastEditedFoodId ?? entries[entries.length - 1].foodId
+    const preservedEntry = entries.find((e) => e.foodId === preserved)
+    if (!preservedEntry) return
+
+    const preservedPct = preservedEntry.inclusionPct
+    const remainder = Math.max(0, 100 - preservedPct)
+    const others = entries.filter((e) => e.foodId !== preserved)
+    const othersSum = others.reduce((s, e) => s + e.inclusionPct, 0)
+
     setEntries((current) =>
-      current.map((entry) =>
-        entry.inclusionPct > 0
-          ? { ...entry, inclusionPct: (entry.inclusionPct / total) * 100 }
-          : entry,
-      ),
+      current.map((e) => {
+        if (e.foodId === preserved) return e // preserva intocado
+        return {
+          ...e,
+          inclusionPct: othersSum > 0
+            ? (e.inclusionPct / othersSum) * remainder
+            : remainder / Math.max(1, others.length),
+        }
+      }),
     )
+    flashItem(preserved, others.map((e) => e.foodId))
   }
 
   const handleNext = () => {
@@ -265,12 +283,12 @@ export default function FoodStep() {
           <CardDescription>Monte a dieta e acompanhe a prévia nutricional ao vivo.</CardDescription>
         </CardHeader>
 
-        <CardContent className="pt-6">
-          {/* Layout 2 colunas — esquerda: controles | direita: preview */}
-          <div className="grid gap-6 xl:grid-cols-2">
+        <CardContent className="pt-0 px-0">
+          {/* Layout 2 painéis com scroll independente */}
+          <div className="grid xl:grid-cols-2 divide-y xl:divide-y-0 xl:divide-x divide-border dark:divide-white/5">
 
             {/* ─── COLUNA ESQUERDA ─── */}
-            <div className="space-y-5 min-w-0">
+            <div className="space-y-5 min-w-0 px-6 pt-6 pb-6 xl:overflow-y-auto xl:max-h-[calc(100svh-220px)]">
 
               {/* Tipo de dieta */}
               <div>
@@ -447,18 +465,23 @@ export default function FoodStep() {
                   </div>
                 )}
 
-                {selectedFoods.length > 0 && (
+                {selectedFoods.length > 1 && Math.abs(inclusionSum - 100) > 0.5 && (
                   <div className="mb-3 flex flex-wrap items-center gap-2">
                     <Button
                       type="button"
                       variant="outline"
                       size="sm"
-                      className="border-orange-400/30 bg-orange-500/[0.06] text-orange-200"
+                      id="btn-complement-percentages"
+                      className="border-orange-400/30 bg-orange-500/[0.06] text-orange-200 text-[11px]"
                       onClick={complementOtherPercentages}
                     >
-                      Complementar outras %
+                      ⟳ Completar % para 100
                     </Button>
-                    <p className="text-[10px] text-muted-foreground">Só redistribui quando você mandar.</p>
+                    {lastEditedFoodId && (
+                      <p className="text-[10px] text-muted-foreground">
+                        Preserva: <span className="text-orange-300/70">{getFoodById(lastEditedFoodId)?.name ?? lastEditedFoodId}</span>
+                      </p>
+                    )}
                   </div>
                 )}
 
@@ -534,6 +557,8 @@ export default function FoodStep() {
                                 min="0"
                                 max="100"
                                 step="0.1"
+                                data-field="inclusion-pct"
+                                data-food-id={food.id}
                                 value={getPctValue(food.id, entry.inclusionPct)}
                                 onChange={(e) => setEditingPct((p) => ({ ...p, [food.id]: e.target.value }))}
                                 onBlur={() => commitPct(food.id, entry.inclusionPct)}
@@ -551,6 +576,8 @@ export default function FoodStep() {
                                 type="number"
                                 min="0"
                                 step="0.5"
+                                data-field="grams-as-fed"
+                                data-food-id={food.id}
                                 value={getGramsValue(food.id)}
                                 placeholder={preview ? '—' : 'sem prévia'}
                                 disabled={!preview}
@@ -667,8 +694,8 @@ export default function FoodStep() {
             </div>
 
             {/* ─── COLUNA DIREITA — Preview ao vivo ─── */}
-            <div className="min-w-0">
-              <div className="xl:sticky xl:top-5 xl:max-h-[calc(100vh-2.5rem)] xl:overflow-auto xl:pr-1 space-y-4">
+              <div className="min-w-0 px-6 pt-6 pb-6 xl:overflow-y-auto xl:max-h-[calc(100svh-220px)]" id="food-preview-panel">
+                <div className="space-y-4">
                 {/* Header do painel */}
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Prévia nutricional</p>

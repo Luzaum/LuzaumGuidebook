@@ -88,6 +88,7 @@ export default function EnergyStep() {
   const [selectedStateId, setSelectedStateId] = useState<string>(
     energy.stateId && getPhysiologicStateById(energy.stateId)?.species === species ? energy.stateId : suggestedStateId,
   )
+  const [hasManualStateSelection, setHasManualStateSelection] = useState(false)
   const [expectedAdultWeightKg, setExpectedAdultWeightKg] = useState<number>(energy.expectedAdultWeightKg ?? 0)
   const [litterSize, setLitterSize] = useState<number>(energy.litterSize ?? 0)
   const [lactationWeek, setLactationWeek] = useState<number>(energy.lactationWeek ?? 1)
@@ -95,11 +96,13 @@ export default function EnergyStep() {
   useEffect(() => {
     const current = getPhysiologicStateById(selectedStateId)
     if (!current || current.species !== species) {
+      setHasManualStateSelection(false)
       setSelectedStateId(suggestedStateId || fallbackStateId)
     }
   }, [fallbackStateId, selectedStateId, species, suggestedStateId])
 
   useEffect(() => {
+    if (hasManualStateSelection) return
     const current = getPhysiologicStateById(selectedStateId)
     if (!current) return
 
@@ -116,14 +119,18 @@ export default function EnergyStep() {
     if (species === 'cat' && current.id.startsWith('cat_adult')) {
       setSelectedStateId(suggestedStateId)
     }
-  }, [activityHoursPerDay, activityImpact, ageWeeks, obesityProne, selectedStateId, species, suggestedStateId])
+  }, [activityHoursPerDay, activityImpact, ageWeeks, hasManualStateSelection, obesityProne, selectedStateId, species, suggestedStateId])
 
-  const selectedState: PhysiologicState | undefined = getPhysiologicStateById(selectedStateId)
+  // effectiveStateId: quando não há seleção manual, usa o estado sugerido diretamente
+  // (elimina o delay de 1 render que existia com useEffect)
+  const effectiveStateId = hasManualStateSelection ? selectedStateId : suggestedStateId
+
+  const selectedState: PhysiologicState | undefined = getPhysiologicStateById(effectiveStateId)
   const preview = useMemo(
     () =>
       computePhysiologicEnergy({
         species,
-        stateId: selectedStateId,
+        stateId: effectiveStateId,
         weightKg: weight,
         ageWeeks,
         expectedAdultWeightKg,
@@ -134,16 +141,16 @@ export default function EnergyStep() {
         lactationWeek,
         specialBreedObservation,
       }),
-    [activityHoursPerDay, activityImpact, ageWeeks, expectedAdultWeightKg, lactationWeek, litterSize, obesityProne, selectedStateId, specialBreedObservation, species, weight],
+    [activityHoursPerDay, activityImpact, ageWeeks, effectiveStateId, expectedAdultWeightKg, lactationWeek, litterSize, obesityProne, specialBreedObservation, species, weight],
   )
 
   const categories = Array.from(new Set(states.map((state) => state.category)))
   const factorLabel =
     selectedState?.calculationMode === 'kcal_per_metabolic_bw'
-      ? `${selectedState.defaultKcalPerMetabolicBw?.toFixed(0)} kcal por peso metabolico`
+      ? `${selectedState.defaultKcalPerMetabolicBw?.toFixed(0)} kcal/kg metabólico`
       : preview.factor != null
-      ? `${preview.factor.toFixed(2)} x RER`
-      : 'Equacao especifica'
+      ? `Fator ${preview.factor.toFixed(2)} × RER`
+      : 'Equação específica'
 
   const calculationSummary = patient.isHospitalized
     ? 'Plano hospitalar ativo: a progressao alimentar aparecera no resumo final.'
@@ -161,7 +168,7 @@ export default function EnergyStep() {
       merFormula: preview.formulaLines,
       weightUsed: weight,
       isIdealWeight: target.weightToUseForEnergy === 'target',
-      stateId: selectedStateId,
+      stateId: effectiveStateId,
       ageWeeks: selectedState.requiresAgeWeeks ? ageWeeks : undefined,
       expectedAdultWeightKg: selectedState.requiresExpectedAdultWeightKg ? expectedAdultWeightKg : undefined,
       activityHoursPerDay,
@@ -171,9 +178,9 @@ export default function EnergyStep() {
       litterSize: selectedState.requiresLitterSize ? litterSize : undefined,
       lactationWeek: selectedState.requiresLactationWeek ? lactationWeek : undefined,
       gestationPhase:
-        selectedStateId === 'dog_gestation_first_4w'
+        effectiveStateId === 'dog_gestation_first_4w'
           ? 'first_4_weeks'
-          : selectedStateId === 'dog_gestation_last_5w'
+          : effectiveStateId === 'dog_gestation_last_5w'
           ? 'last_5_weeks'
           : undefined,
       energyProfileMode: guidelineMode,
@@ -296,7 +303,13 @@ export default function EnergyStep() {
                 ))}
               </div>
 
-              <Select value={selectedStateId} onValueChange={setSelectedStateId}>
+              <Select
+                value={effectiveStateId}
+                onValueChange={(value) => {
+                  setHasManualStateSelection(true)
+                  setSelectedStateId(value)
+                }}
+              >
                 <SelectTrigger id="sel-physio" className="h-auto min-h-14 rounded-2xl border-white/10 bg-black/15 py-4">
                   <SelectValue placeholder="Selecione o estado fisiologico" />
                 </SelectTrigger>
@@ -323,7 +336,7 @@ export default function EnergyStep() {
                 {patient.isNeutered && <Badge variant="outline">Castracao considerada</Badge>}
                 {species === 'cat' && patient.isIndoor && <Badge variant="outline">Indoor considerado</Badge>}
                 {patient.ageMonths != null && patient.ageMonths > 0 && <Badge variant="outline">Idade: {patient.ageMonths} meses</Badge>}
-                {species === 'dog' && !selectedStateId.startsWith('dog_growth') && <Badge variant="outline">{activityHoursPerDay.toFixed(1)} h/dia</Badge>}
+                {species === 'dog' && !effectiveStateId.startsWith('dog_growth') && <Badge variant="outline">{activityHoursPerDay.toFixed(1)} h/dia</Badge>}
               </div>
             </div>
 
@@ -511,10 +524,13 @@ export default function EnergyStep() {
                   <button
                     key={option.id}
                     type="button"
-                    onClick={() => setSelectedStateId(option.id)}
+                          onClick={() => {
+                            setHasManualStateSelection(true)
+                            setSelectedStateId(option.id)
+                          }}
                     className={cn(
                       'rounded-2xl border px-4 py-4 text-left transition-all',
-                      selectedStateId === option.id
+                      effectiveStateId === option.id
                         ? 'border-orange-400/60 bg-orange-500/12 text-white'
                         : 'border-white/10 bg-black/10 text-muted-foreground hover:border-orange-500/30 hover:text-white',
                     )}
@@ -540,10 +556,13 @@ export default function EnergyStep() {
                   <button
                     key={option.id}
                     type="button"
-                    onClick={() => setSelectedStateId(option.id)}
+                          onClick={() => {
+                            setHasManualStateSelection(true)
+                            setSelectedStateId(option.id)
+                          }}
                     className={cn(
                       'rounded-2xl border px-4 py-4 text-left transition-all',
-                      selectedStateId === option.id
+                      effectiveStateId === option.id
                         ? 'border-orange-400/60 bg-orange-500/12 text-white'
                         : 'border-white/10 bg-black/10 text-muted-foreground hover:border-orange-500/30 hover:text-white',
                     )}

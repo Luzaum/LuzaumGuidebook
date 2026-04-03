@@ -28,6 +28,7 @@ import { loadRxDb, findProfileSettings, createPrescriberProfileFromSettings, typ
 import { loadRxDraftById } from './rxStorage'
 import type { RxTemplateStyle } from './rxDb'
 import { calculateMedicationQuantity } from './rxRenderer'
+import { sanitizeVisibleText } from './textSanitizer'
 import {
     buildCompoundedCardSubtitle,
     buildCompoundedInstruction,
@@ -794,6 +795,7 @@ export default function NovaReceita2Page() {
     const [showPreview, setShowPreview] = useState(true)
     const [isSaving, setIsSaving] = useState(false)
     const [hasDraft, setHasDraft] = useState(false)
+    const [draftHydrated, setDraftHydrated] = useState(false)
     const [quickAddExpanded, setQuickAddExpanded] = useState(false)
     const [quickEntryMode, setQuickEntryMode] = useState<'catalog' | 'manual'>('catalog')
     const [quickCatalogQuery, setQuickCatalogQuery] = useState('')
@@ -829,14 +831,14 @@ export default function NovaReceita2Page() {
     const prescriberProfileOptions = useMemo(() => {
         const baseOptions = availablePrescriberProfiles.map((entry) => ({
             value: entry.id,
-            label: `${entry.profileName} - ${entry.fullName || 'Sem nome'}`,
+            label: sanitizeVisibleText(`${entry.profileName} - ${entry.fullName || 'Sem nome'}`),
         }))
 
         if (state.prescriber?.id && !baseOptions.some((entry) => entry.value === state.prescriber?.id)) {
             return [
                 {
                     value: state.prescriber.id,
-                    label: `${state.prescriber.name || 'Perfil da receita'} - ${state.prescriber.crmv || 'Sem CRMV'}`,
+                    label: sanitizeVisibleText(`${state.prescriber.name || 'Perfil da receita'} - ${state.prescriber.crmv || 'Sem CRMV'}`),
                 },
                 ...baseOptions,
             ]
@@ -849,6 +851,11 @@ export default function NovaReceita2Page() {
     const draftInitRef = useRef(false)
     const hydratedFromNavigationRef = useRef(false)
     const draftKey = getDraftKey(clinicId)
+
+    useEffect(() => {
+        if (!draftKey) return
+        setDraftHydrated(false)
+    }, [draftKey])
 
     useEffect(() => {
         if (!modalStateStorageKey) return
@@ -1234,8 +1241,14 @@ export default function NovaReceita2Page() {
         draftInitRef.current = true
 
         const params = new URLSearchParams(location.search)
-        if (hydratedFromNavigationRef.current) return
-        if (params.get('prescriptionId') || location.state) return // Não sobrepor se está editando ou importando
+        if (hydratedFromNavigationRef.current) {
+            setDraftHydrated(true)
+            return
+        }
+        if (params.get('prescriptionId') || location.state) {
+            setDraftHydrated(true)
+            return // Não sobrepor se está editando ou importando
+        }
         const draftId = params.get('draft')
         if (draftId) {
             const legacyDraft = loadRxDraftById(draftId)
@@ -1333,6 +1346,7 @@ export default function NovaReceita2Page() {
                 })
                 setState(migrated)
                 setHasDraft(true)
+                setDraftHydrated(true)
                 return
             }
         }
@@ -1340,23 +1354,25 @@ export default function NovaReceita2Page() {
         const draft = loadLocalDraft(draftKey)
         if (!draft) {
             setHasDraft(false)
+            setDraftHydrated(true)
             return
         }
 
         setHasDraft(true)
         setState(draft)
+        setDraftHydrated(true)
         if (import.meta.env.DEV) console.log('[RxDraft] rascunho local carregado', draftKey)
     }, [draftKey]) // Só re-roda quando draftKey muda (i.e., clinicId ficou disponível)
 
     // D1: Autosave com debounce de 600ms quando autosave=true e clinicId disponível
     useEffect(() => {
-        if (!autosave || !draftKey) return
+        if (!autosave || !draftKey || !draftHydrated) return
         const t = setTimeout(() => {
             saveLocalDraft(draftKey, state)
             setHasDraft(true)
         }, 600)
         return () => clearTimeout(t)
-    }, [state, autosave, draftKey])
+    }, [state, autosave, draftKey, draftHydrated])
 
     useEffect(() => {
         const t = setTimeout(() => {
@@ -1368,7 +1384,7 @@ export default function NovaReceita2Page() {
     useEffect(() => {
         const flushReviewDraft = () => saveReviewSession(state)
         const flushLocalDraft = () => {
-            if (!autosave || !draftKey) return
+            if (!autosave || !draftKey || !draftHydrated) return
             saveLocalDraft(draftKey, state)
             setHasDraft(true)
         }
@@ -1391,7 +1407,7 @@ export default function NovaReceita2Page() {
             window.removeEventListener('beforeunload', handleBeforeUnload)
             document.removeEventListener('visibilitychange', handleVisibilityChange)
         }
-    }, [autosave, draftKey, state])
+    }, [autosave, draftHydrated, draftKey, state])
 
     useEffect(() => {
         if (!quickMode || !quickAddExpanded || quickEntryMode !== 'catalog' || !clinicId) return
@@ -1796,7 +1812,7 @@ export default function NovaReceita2Page() {
                                         <p className="font-semibold text-[color:var(--rxv-text)]">Fluxo recomendado</p>
                                         <p className="mt-2">
                                             Abra Protocolos, escolha um protocolo da clínica ou global e use a ação
-                                            para enviar itens, recomendacoes, justificativa de exames e exames para esta receita.
+                                            para enviar itens, recomendações, justificativa de exames e exames para esta receita.
                                         </p>
                                         {location.state && (location.state as any)?.sourceProtocol?.name ? (
                                             <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-[#39ff14]">
@@ -1813,7 +1829,7 @@ export default function NovaReceita2Page() {
                                             Abrir Protocolos
                                         </RxvButton>
                                         <div className="rounded-2xl border border-dashed border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/65 px-4 py-4 text-sm text-[color:var(--rxv-muted)]">
-                                            A importacao reinicia a receita atual e aplica o protocolo por cima de um estado limpo.
+                                            {sanitizeVisibleText('A importação reinicia a receita atual e aplica o protocolo por cima de um estado limpo.')}
                                         </div>
                                     </div>
                                 </div>
@@ -1857,7 +1873,7 @@ export default function NovaReceita2Page() {
                                                     : 'border-slate-700 bg-slate-800/40 text-slate-400 hover:border-[#39ff14]/40 hover:text-[#9eff8f]'
                                                     }`}
                                             >
-                                                {quickAddExpanded ? 'Fechar adicao rapida' : 'Adicao rapida de farmacos'}
+                                                {quickAddExpanded ? 'Fechar adição rápida' : 'Adição rápida de fármacos'}
                                             </button>
                                         )}
                                     </div>
@@ -1900,11 +1916,11 @@ export default function NovaReceita2Page() {
                                                         <RxvInput
                                                             value={quickCatalogQuery}
                                                             onChange={(e) => setQuickCatalogQuery(e.target.value)}
-                                                            placeholder="Buscar medicamento para adicao rapida..."
+                                                            placeholder="Buscar medicamento para adição rápida..."
                                                         />
                                                         <div className="max-h-48 space-y-2 overflow-y-auto pr-1">
                                                             {quickCatalogLoading ? (
-                                                                <p className="text-xs text-[color:var(--rxv-muted)]">Buscando no catalogo...</p>
+                                                                <p className="text-xs text-[color:var(--rxv-muted)]">Buscando no catálogo...</p>
                                                             ) : quickCatalogResults.length ? (
                                                                 quickCatalogResults.map((med) => (
                                                                     <button
@@ -1931,13 +1947,13 @@ export default function NovaReceita2Page() {
                                                             <p className="text-sm font-semibold text-[#bfffaf]">{quickSelectedMedication.name}</p>
                                                             <button type="button" className="text-xs text-[color:var(--rxv-muted)] hover:text-[color:var(--rxv-text)]" onClick={() => setQuickSelectedMedication(null)}>Trocar</button>
                                                         </div>
-                                                        <RxvField label="Apresentacao">
+                                                        <RxvField label="Apresentação">
                                                             <RxvSelect
                                                                 value={quickPresentationId}
                                                                 onChange={(e) => setQuickPresentationId(e.target.value)}
                                                                 options={quickPresentations.map((entry) => ({
                                                                     value: entry.id,
-                                                                    label: [entry.pharmaceutical_form || 'Sem forma', buildPresentationConcentrationText(entry) || entry.concentration_text || 'Sem concentracao'].join(' - '),
+                                                                    label: [entry.pharmaceutical_form || 'Sem forma', buildPresentationConcentrationText(entry) || entry.concentration_text || 'Sem concentração'].join(' - '),
                                                                 }))}
                                                             />
                                                         </RxvField>
@@ -1948,7 +1964,7 @@ export default function NovaReceita2Page() {
 
                                         {quickEntryMode === 'manual' && (
                                             <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-                                                <RxvField label="Nome do farmaco">
+                                                <RxvField label="Nome do fármaco">
                                                     <RxvInput value={quickMedicationName} onChange={(e) => setQuickMedicationName(e.target.value)} />
                                                 </RxvField>
                                                 <RxvField label="Controlado">
@@ -1958,13 +1974,13 @@ export default function NovaReceita2Page() {
                                         )}
 
                                         <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-                                            <RxvField label="Concentracao">
+                                            <RxvField label="Concentração">
                                                 <div className="grid grid-cols-[1fr_180px] gap-2">
                                                     <RxvInput value={quickConcentrationValue} onChange={(e) => setQuickConcentrationValue(e.target.value)} placeholder="Ex: 50" />
                                                     <RxvSelect value={quickConcentrationUnit} onChange={(e) => setQuickConcentrationUnit(e.target.value)} options={QUICK_CONCENTRATION_UNIT_OPTIONS.map((x) => ({ value: x, label: x }))} />
                                                 </div>
                                             </RxvField>
-                                            <RxvField label="Forma farmaceutica">
+                                            <RxvField label="Forma farmacêutica">
                                                 <RxvSelect value={quickPharmaceuticalForm} onChange={(e) => setQuickPharmaceuticalForm(e.target.value)} options={QUICK_PHARMACEUTICAL_FORM_OPTIONS.map((x) => ({ value: x, label: x }))} />
                                             </RxvField>
                                             <RxvField label="Dose">
@@ -1973,18 +1989,18 @@ export default function NovaReceita2Page() {
                                                     <RxvSelect value={quickDoseUnit} onChange={(e) => setQuickDoseUnit(e.target.value)} options={QUICK_DOSE_UNIT_OPTIONS.map((x) => ({ value: x, label: x }))} />
                                                 </div>
                                             </RxvField>
-                                            <RxvField label="Frequencia">
+                                            <RxvField label="Frequência">
                                                 <RxvSelect value={quickFrequencyPerDay} onChange={(e) => setQuickFrequencyPerDay(e.target.value)} options={QUICK_FREQUENCY_OPTIONS} />
                                             </RxvField>
                                             <RxvField label="Via">
                                                 <RxvSelect value={quickRoute} onChange={(e) => setQuickRoute(e.target.value)} options={QUICK_ROUTE_OPTIONS} />
                                             </RxvField>
-                                            <RxvField label="Duracao">
+                                            <RxvField label="Duração">
                                                 <div className="space-y-2">
                                                     {!quickContinuousUse ? (
                                                         <RxvInput value={quickDurationDays} onChange={(e) => setQuickDurationDays(e.target.value)} placeholder="Ex: 7" />
                                                     ) : null}
-                                                    <RxvToggle checked={quickContinuousUse} onChange={setQuickContinuousUse} label="Uso continuo" />
+                                                    <RxvToggle checked={quickContinuousUse} onChange={setQuickContinuousUse} label="Uso contínuo" />
                                                 </div>
                                             </RxvField>
                                         </div>
@@ -2411,7 +2427,7 @@ export default function NovaReceita2Page() {
                                                                         <div className="grid grid-cols-[minmax(0,1fr)_minmax(24px,1fr)_auto] items-end gap-3">
                                                                             <p className="min-w-0 truncate whitespace-nowrap text-sm font-semibold leading-6 text-white">{printLineLeft || 'Linha principal da esquerda'}</p>
                                                                             <div aria-hidden="true" className="h-[8px] min-w-[24px] bg-[radial-gradient(circle,rgba(148,163,184,0.72)_1.1px,transparent_1.2px)] bg-[length:10px_8px] bg-repeat-x bg-left-center" />
-                                                                            <p className="shrink-0 whitespace-nowrap text-right text-xs font-black uppercase tracking-[0.18em] text-slate-300">{printLineRight || 'Apresentacao'}</p>
+                                                                            <p className="shrink-0 whitespace-nowrap text-right text-xs font-black uppercase tracking-[0.18em] text-slate-300">{printLineRight || 'Apresentação'}</p>
                                                                         </div>
                                                                     </div>
                                                                     {printLineManual ? (
@@ -2511,7 +2527,7 @@ export default function NovaReceita2Page() {
                                                                         <div className="grid grid-cols-[minmax(0,1fr)_minmax(24px,1fr)_auto] items-end gap-3">
                                                                             <p className="min-w-0 truncate whitespace-nowrap text-sm font-semibold leading-6 text-white">{printLineLeft || 'Linha principal da esquerda'}</p>
                                                                             <div aria-hidden="true" className="h-[8px] min-w-[24px] bg-[radial-gradient(circle,rgba(148,163,184,0.72)_1.1px,transparent_1.2px)] bg-[length:10px_8px] bg-repeat-x bg-left-center" />
-                                                                            <p className="shrink-0 whitespace-nowrap text-right text-xs font-black uppercase tracking-[0.18em] text-slate-300">{printLineRight || 'Apresentacao'}</p>
+                                                                            <p className="shrink-0 whitespace-nowrap text-right text-xs font-black uppercase tracking-[0.18em] text-slate-300">{printLineRight || 'Apresentação'}</p>
                                                                         </div>
                                                                     </div>
                                                                     {printLineManual ? (
@@ -2651,7 +2667,7 @@ export default function NovaReceita2Page() {
                                             Abrir Protocolos
                                         </RxvButton>
                                         <div className="rounded-2xl border border-dashed border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/65 px-4 py-4 text-sm text-[color:var(--rxv-muted)]">
-                                            A importacao mantem os medicamentos no fluxo atual da Nova Receita.
+                                            {sanitizeVisibleText('A importação mantém os medicamentos no fluxo atual da Nova Receita.')}
                                         </div>
                                     </div>
                                 </div>

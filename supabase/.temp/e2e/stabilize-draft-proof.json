@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "persistedOnNavigate": true,
+  "persistedOnReload": true,
+  "shots": [
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\stabilize-draft-before-nav.png",
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\stabilize-draft-after-nav.png",
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\stabilize-draft-after-reload.png"
+  ]
+}
