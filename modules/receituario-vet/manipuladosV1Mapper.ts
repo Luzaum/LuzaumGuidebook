@@ -10,6 +10,16 @@ import {
   renderManipuladoV1Recommendations,
   renderManipuladoV1TutorInstruction,
 } from './manipuladosV1Render'
+import { sanitizeVisibleText } from './textSanitizer'
+
+function defaultDoseEditorUnit(formula: ManipuladoV1Formula): string {
+  const safeUnit = sanitizeVisibleText(formula.prescribing.dose_unit || '')
+  if (formula.prescribing.posology_mode === 'mg_per_kg_dose') return `${safeUnit}/kg`
+  if (formula.prescribing.posology_mode === 'mg_per_m2_dose') return `${safeUnit}/m²`
+  if (formula.prescribing.posology_mode === 'fixed_per_animal') return `${safeUnit}/animal`
+  if (formula.prescribing.posology_mode === 'fixed_per_application') return `${safeUnit}/dose`
+  return safeUnit
+}
 
 function resolveDoseText(formula: ManipuladoV1Formula, patient: PatientInfo | null, targetDose?: number | null): string {
   const dose = targetDose ?? formula.prescribing.dose_min
@@ -79,6 +89,11 @@ export function mapManipuladoV1ToPrescriptionItem(params: {
       print_line_mode: 'manual',
       print_line_left: getManipuladoV1PrintLineLeft(formula),
       print_line_right: getManipuladoV1PrintLineRight(formula),
+      compounded_selected_dose_value: params.targetDose ?? formula.prescribing.dose_min ?? '',
+      compounded_selected_dose_unit: defaultDoseEditorUnit(formula),
+      compounded_recommended_min: formula.prescribing.dose_min ?? '',
+      compounded_recommended_max: formula.prescribing.dose_max ?? '',
+      compounded_recommended_unit: defaultDoseEditorUnit(formula),
     },
     manualQuantity: formula.pharmacy.total_quantity || formula.pharmacy.qsp_text,
     compounded_pharmacy_guidance: renderManipuladoV1PharmacyInstruction(formula),

@@ -20,6 +20,8 @@ import { TutorLookup } from './components/TutorLookup'
 import { PatientLookup } from './components/PatientLookup'
 import { AddMedicationModal2 } from './components/AddMedicationModal2'
 import { AddCompoundedMedicationModal } from './components/AddCompoundedMedicationModal'
+import { CompoundedDoseEditModal } from './components/CompoundedDoseEditModal'
+import { CompoundedStructuredRegimenEditor } from './components/CompoundedStructuredRegimenEditor'
 import { RxPrintView } from './RxPrintView'
 import { buildPrescriptionStateFromNovaReceita2, buildPrintDocsFromNovaReceita2 } from './novaReceita2Adapter'
 import { BUILTIN_TEMPLATES, DEFAULT_NOVA_RECEITA_TEMPLATE_ID } from './builtinTemplates'
@@ -43,6 +45,11 @@ import {
     getCompoundedFrequencySummary,
     getCompoundedInternalNote,
 } from './compoundedUi'
+import {
+    buildAdministrationDoseText,
+    buildDoseRecommendationText,
+    COMPOUNDED_DOSE_UNIT_SELECT_OPTIONS,
+} from './compoundedStructuredEditing'
 import { getClinicalFormulaMetadata, getDosageFamilyLabel, getFormulaTypeLabel, getUniversalFormulaType } from './compoundedClinicalText'
 import {
     searchMedications,
@@ -786,6 +793,9 @@ export default function NovaReceita2Page() {
     const [manualModalOpen, setManualModalOpen] = useState(false)
     const [compoundedModalOpen, setCompoundedModalOpen] = useState(false)
     const [compoundedModalSession, setCompoundedModalSession] = useState(0)
+    const [compoundedDoseEditorItemId, setCompoundedDoseEditorItemId] = useState<string | null>(null)
+    const [compoundedDoseEditorValue, setCompoundedDoseEditorValue] = useState('')
+    const [compoundedDoseEditorUnit, setCompoundedDoseEditorUnit] = useState('mg/kg')
     const [presentationPickerOpen, setPresentationPickerOpen] = useState(false)
     const [presentationPickerItemId, setPresentationPickerItemId] = useState<string | null>(null)
     const [presentationPickerItemName, setPresentationPickerItemName] = useState('')
@@ -969,6 +979,43 @@ export default function NovaReceita2Page() {
             },
         }))
     }, [updateItem])
+
+    const compoundedDoseEditorItem = useMemo(
+        () => state.items.find((entry) => entry.id === compoundedDoseEditorItemId && entry.kind === 'compounded') || null,
+        [compoundedDoseEditorItemId, state.items],
+    )
+
+    const openCompoundedDoseEditor = useCallback((item: PrescriptionItem) => {
+        if (item.kind !== 'compounded') return
+        const metadata = (item.presentation_metadata || {}) as Record<string, unknown>
+        setCompoundedDoseEditorItemId(item.id)
+        setCompoundedDoseEditorValue(String(metadata.compounded_selected_dose_value ?? ''))
+        setCompoundedDoseEditorUnit(String(metadata.compounded_selected_dose_unit || item.compounded_regimen_snapshot?.dose_unit || 'mg/kg'))
+    }, [])
+
+    const closeCompoundedDoseEditor = useCallback(() => {
+        setCompoundedDoseEditorItemId(null)
+        setCompoundedDoseEditorValue('')
+        setCompoundedDoseEditorUnit('mg/kg')
+    }, [])
+
+    const applyCompoundedDoseEditor = useCallback(() => {
+        if (!compoundedDoseEditorItemId) return
+        updateItem(compoundedDoseEditorItemId, (current) => {
+            if (current.kind !== 'compounded') return current
+            const doseLabel = buildAdministrationDoseText(compoundedDoseEditorValue, compoundedDoseEditorUnit, state.patient?.weight_kg) || current.dose || ''
+            return {
+                ...current,
+                dose: doseLabel,
+                presentation_metadata: {
+                    ...(getPresentationMetadata(current) || {}),
+                    compounded_selected_dose_value: compoundedDoseEditorValue,
+                    compounded_selected_dose_unit: compoundedDoseEditorUnit,
+                },
+            }
+        })
+        closeCompoundedDoseEditor()
+    }, [closeCompoundedDoseEditor, compoundedDoseEditorItemId, compoundedDoseEditorUnit, compoundedDoseEditorValue, state.patient, updateItem])
 
     const closePresentationPicker = useCallback(() => {
         setPresentationPickerOpen(false)
@@ -2203,105 +2250,172 @@ export default function NovaReceita2Page() {
                                                         <RxvField label="Nome do fármaco" className="xl:col-span-8">
                                                             <RxvInput value={item.name} onChange={(e) => updateItem(item.id, (current) => ({ ...current, name: e.target.value }))} />
                                                         </RxvField>
-                                                        <RxvField label={item.kind === 'compounded' ? 'Dose final por administração' : 'Dose'} className="xl:col-span-4">
-                                                            <RxvInput value={item.dose || ''} onChange={(e) => updateItem(item.id, (current) => ({ ...current, dose: e.target.value }))} placeholder={item.kind === 'compounded' ? 'Ex: 0,4 mL' : 'Ex: 7 gotas'} />
-                                                        </RxvField>
                                                         <RxvField label="Via" className="xl:col-span-4">
                                                             <RxvSelect value={item.route || 'VO'} onChange={(e) => updateItem(item.id, (current) => ({ ...current, route: e.target.value }))} options={compoundedRouteOptions} disabled={item.kind === 'compounded' && compoundedRouteOptions.length <= 1} />
                                                         </RxvField>
-                                                        <RxvField label="Modo de frequência" className="xl:col-span-4">
-                                                            <RxvSelect
-                                                                value={item.frequencyMode || 'times_per_day'}
-                                                                onChange={(e) => updateItem(item.id, (current) => ({
-                                                                    ...current,
-                                                                    frequencyMode: e.target.value as PrescriptionItem['frequencyMode'],
-                                                                    timesPerDay: e.target.value === 'times_per_day' ? (current.timesPerDay || 2) : undefined,
-                                                                    intervalHours: e.target.value === 'interval_hours' ? (current.intervalHours || 12) : undefined,
-                                                                    frequency: e.target.value === 'interval_hours'
-                                                                        ? formatIntervalHoursValue(current.intervalHours || 12)
-                                                                        : formatFrequencyValue(current.timesPerDay || 2),
-                                                                }))}
-                                                                options={[
-                                                                    { value: 'times_per_day', label: 'Vezes por dia' },
-                                                                    { value: 'interval_hours', label: 'Intervalo em horas' },
-                                                                ]}
-                                                            />
-                                                        </RxvField>
-                                                        <RxvField label={item.frequencyMode === 'interval_hours' ? 'Intervalo (horas)' : 'Frequência'} className="xl:col-span-4">
-                                                            {item.frequencyMode === 'interval_hours' ? (
-                                                                <RxvInput
-                                                                    type="number"
-                                                                    min="1"
-                                                                    step="1"
-                                                                    value={item.intervalHours ?? ''}
-                                                                    onChange={(e) => updateItem(item.id, (current) => ({
-                                                                        ...current,
-                                                                        frequencyMode: 'interval_hours',
-                                                                        intervalHours: e.target.value ? Number(e.target.value) : undefined,
-                                                                        frequency: formatIntervalHoursValue(e.target.value),
-                                                                    }))}
-                                                                    placeholder="Ex: 12"
-                                                                />
-                                                            ) : (
-                                                            <RxvSelect
-                                                                value={item.timesPerDay ? String(item.timesPerDay) : ''}
-                                                                onChange={(e) => updateItem(item.id, (current) => ({
-                                                                    ...current,
-                                                                    frequencyMode: e.target.value ? 'times_per_day' : undefined,
-                                                                    timesPerDay: e.target.value ? Number(e.target.value) : undefined,
-                                                                    intervalHours: undefined,
-                                                                    frequency: formatFrequencyValue(e.target.value),
-                                                                }))}
-                                                                options={ITEM_FREQUENCY_OPTIONS}
-                                                            />
-                                                            )}
-                                                        </RxvField>
                                                     </div>
 
+                                                    {item.kind === 'compounded' ? (
+                                                        <CompoundedStructuredRegimenEditor
+                                                            className="mt-4"
+                                                            doseSummary={
+                                                                buildAdministrationDoseText(
+                                                                    getPresentationMetadata(item).compounded_selected_dose_value ?? '',
+                                                                    String(getPresentationMetadata(item).compounded_selected_dose_unit || ''),
+                                                                    state.patient?.weight_kg,
+                                                                ) || (item.dose || '')
+                                                            }
+                                                            onEditDose={() => openCompoundedDoseEditor(item)}
+                                                            frequencyMode={item.frequencyMode || 'times_per_day'}
+                                                            timesPerDay={item.timesPerDay ?? ''}
+                                                            intervalHours={item.intervalHours ?? ''}
+                                                            onFrequencyModeChange={(value) => updateItem(item.id, (current) => ({
+                                                                ...current,
+                                                                frequencyMode: value as PrescriptionItem['frequencyMode'],
+                                                                timesPerDay: value === 'times_per_day' ? (current.timesPerDay || 2) : undefined,
+                                                                intervalHours: value === 'interval_hours' ? (current.intervalHours || 12) : undefined,
+                                                                frequency: value === 'interval_hours'
+                                                                    ? formatIntervalHoursValue(current.intervalHours || 12)
+                                                                    : formatFrequencyValue(current.timesPerDay || 2),
+                                                            }))}
+                                                            onTimesPerDayChange={(value) => updateItem(item.id, (current) => ({
+                                                                ...current,
+                                                                frequencyMode: value ? 'times_per_day' : undefined,
+                                                                timesPerDay: value ? Number(value) : undefined,
+                                                                intervalHours: undefined,
+                                                                frequency: formatFrequencyValue(value),
+                                                            }))}
+                                                            onIntervalHoursChange={(value) => updateItem(item.id, (current) => ({
+                                                                ...current,
+                                                                frequencyMode: 'interval_hours',
+                                                                intervalHours: value ? Number(value) : undefined,
+                                                                timesPerDay: undefined,
+                                                                frequency: formatIntervalHoursValue(value),
+                                                            }))}
+                                                            durationMode={item.durationMode || 'fixed_days'}
+                                                            durationValue={item.durationValue ?? ''}
+                                                            durationUnit={item.durationUnit || 'dias'}
+                                                            onDurationModeChange={(value) => updateItem(item.id, (current) => ({
+                                                                ...current,
+                                                                durationMode: value as PrescriptionItem['durationMode'],
+                                                                duration: value === 'fixed_days'
+                                                                    ? formatStructuredDuration(current.durationValue, current.durationUnit || 'dias')
+                                                                    : '',
+                                                            }))}
+                                                            onDurationValueChange={(value) => updateItem(item.id, (current) => ({
+                                                                ...current,
+                                                                durationValue: value ? Number(value) : undefined,
+                                                                duration: formatStructuredDuration(value ? Number(value) : undefined, current.durationUnit || 'dias'),
+                                                            }))}
+                                                            onDurationUnitChange={(value) => updateItem(item.id, (current) => ({
+                                                                ...current,
+                                                                durationUnit: value,
+                                                                duration: formatStructuredDuration(current.durationValue, value),
+                                                            }))}
+                                                        />
+                                                    ) : (
+                                                        <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-5 xl:grid-cols-12">
+                                                            <RxvField label="Dose" className="xl:col-span-4">
+                                                                <RxvInput value={item.dose || ''} onChange={(e) => updateItem(item.id, (current) => ({ ...current, dose: e.target.value }))} placeholder="Ex: 7 gotas" />
+                                                            </RxvField>
+                                                            <RxvField label="Modo de frequência" className="xl:col-span-4">
+                                                                <RxvSelect
+                                                                    value={item.frequencyMode || 'times_per_day'}
+                                                                    onChange={(e) => updateItem(item.id, (current) => ({
+                                                                        ...current,
+                                                                        frequencyMode: e.target.value as PrescriptionItem['frequencyMode'],
+                                                                        timesPerDay: e.target.value === 'times_per_day' ? (current.timesPerDay || 2) : undefined,
+                                                                        intervalHours: e.target.value === 'interval_hours' ? (current.intervalHours || 12) : undefined,
+                                                                        frequency: e.target.value === 'interval_hours'
+                                                                            ? formatIntervalHoursValue(current.intervalHours || 12)
+                                                                            : formatFrequencyValue(current.timesPerDay || 2),
+                                                                    }))}
+                                                                    options={[
+                                                                        { value: 'times_per_day', label: 'Vezes por dia' },
+                                                                        { value: 'interval_hours', label: 'Intervalo em horas' },
+                                                                    ]}
+                                                                />
+                                                            </RxvField>
+                                                            <RxvField label={item.frequencyMode === 'interval_hours' ? 'Intervalo (horas)' : 'Frequência'} className="xl:col-span-4">
+                                                                {item.frequencyMode === 'interval_hours' ? (
+                                                                    <RxvInput
+                                                                        type="number"
+                                                                        min="1"
+                                                                        step="1"
+                                                                        value={item.intervalHours ?? ''}
+                                                                        onChange={(e) => updateItem(item.id, (current) => ({
+                                                                            ...current,
+                                                                            frequencyMode: 'interval_hours',
+                                                                            intervalHours: e.target.value ? Number(e.target.value) : undefined,
+                                                                            frequency: formatIntervalHoursValue(e.target.value),
+                                                                        }))}
+                                                                        placeholder="Ex: 12"
+                                                                    />
+                                                                ) : (
+                                                                    <RxvSelect
+                                                                        value={item.timesPerDay ? String(item.timesPerDay) : ''}
+                                                                        onChange={(e) => updateItem(item.id, (current) => ({
+                                                                            ...current,
+                                                                            frequencyMode: e.target.value ? 'times_per_day' : undefined,
+                                                                            timesPerDay: e.target.value ? Number(e.target.value) : undefined,
+                                                                            intervalHours: undefined,
+                                                                            frequency: formatFrequencyValue(e.target.value),
+                                                                        }))}
+                                                                        options={ITEM_FREQUENCY_OPTIONS}
+                                                                    />
+                                                                )}
+                                                            </RxvField>
+                                                        </div>
+                                                    )}
+
                                                     <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-5 xl:grid-cols-12">
-                                                        <RxvField label="Modo de duração" className="xl:col-span-4">
-                                                            <RxvSelect
-                                                                value={item.durationMode || 'fixed_days'}
-                                                                onChange={(e) => updateItem(item.id, (current) => ({
-                                                                    ...current,
-                                                                    durationMode: e.target.value as PrescriptionItem['durationMode'],
-                                                                    duration: e.target.value === 'fixed_days'
-                                                                        ? formatStructuredDuration(current.durationValue, current.durationUnit || 'dias')
-                                                                        : '',
-                                                                }))}
-                                                                options={DURATION_MODE_OPTIONS}
-                                                            />
-                                                        </RxvField>
-                                                        <RxvField label="Valor da duração" className="xl:col-span-4">
-                                                            <RxvInput
-                                                                type="number"
-                                                                min="1"
-                                                                step="1"
-                                                                value={item.durationMode === 'fixed_days' ? (item.durationValue ?? '') : ''}
-                                                                onChange={(e) => updateItem(item.id, (current) => ({
-                                                                    ...current,
-                                                                    durationValue: e.target.value ? Number(e.target.value) : undefined,
-                                                                    duration: formatStructuredDuration(
-                                                                        e.target.value ? Number(e.target.value) : undefined,
-                                                                        current.durationUnit || 'dias',
-                                                                    ),
-                                                                }))}
-                                                                placeholder="Ex: 7"
-                                                                disabled={item.durationMode !== 'fixed_days'}
-                                                            />
-                                                        </RxvField>
-                                                        <RxvField label="Unidade da duração" className="xl:col-span-4">
-                                                            <RxvSelect
-                                                                value={item.durationUnit || 'dias'}
-                                                                onChange={(e) => updateItem(item.id, (current) => ({
-                                                                    ...current,
-                                                                    durationUnit: e.target.value,
-                                                                    duration: formatStructuredDuration(current.durationValue, e.target.value),
-                                                                }))}
-                                                                options={DURATION_UNIT_OPTIONS}
-                                                                disabled={item.durationMode !== 'fixed_days'}
-                                                            />
-                                                        </RxvField>
+                                                        {item.kind !== 'compounded' ? (
+                                                            <>
+                                                                <RxvField label="Modo de duração" className="xl:col-span-4">
+                                                                    <RxvSelect
+                                                                        value={item.durationMode || 'fixed_days'}
+                                                                        onChange={(e) => updateItem(item.id, (current) => ({
+                                                                            ...current,
+                                                                            durationMode: e.target.value as PrescriptionItem['durationMode'],
+                                                                            duration: e.target.value === 'fixed_days'
+                                                                                ? formatStructuredDuration(current.durationValue, current.durationUnit || 'dias')
+                                                                                : '',
+                                                                        }))}
+                                                                        options={DURATION_MODE_OPTIONS}
+                                                                    />
+                                                                </RxvField>
+                                                                <RxvField label="Valor da duração" className="xl:col-span-4">
+                                                                    <RxvInput
+                                                                        type="number"
+                                                                        min="1"
+                                                                        step="1"
+                                                                        value={item.durationMode === 'fixed_days' ? (item.durationValue ?? '') : ''}
+                                                                        onChange={(e) => updateItem(item.id, (current) => ({
+                                                                            ...current,
+                                                                            durationValue: e.target.value ? Number(e.target.value) : undefined,
+                                                                            duration: formatStructuredDuration(
+                                                                                e.target.value ? Number(e.target.value) : undefined,
+                                                                                current.durationUnit || 'dias',
+                                                                            ),
+                                                                        }))}
+                                                                        placeholder="Ex: 7"
+                                                                        disabled={item.durationMode !== 'fixed_days'}
+                                                                    />
+                                                                </RxvField>
+                                                                <RxvField label="Unidade da duração" className="xl:col-span-4">
+                                                                    <RxvSelect
+                                                                        value={item.durationUnit || 'dias'}
+                                                                        onChange={(e) => updateItem(item.id, (current) => ({
+                                                                            ...current,
+                                                                            durationUnit: e.target.value,
+                                                                            duration: formatStructuredDuration(current.durationValue, e.target.value),
+                                                                        }))}
+                                                                        options={DURATION_UNIT_OPTIONS}
+                                                                        disabled={item.durationMode !== 'fixed_days'}
+                                                                    />
+                                                                </RxvField>
+                                                            </>
+                                                        ) : null}
                                                         <RxvField label="Início do item" className="xl:col-span-12">
                                                             <RxvToggle
                                                                 checked={item.inheritStartFromPrescription !== false}
@@ -2873,7 +2987,24 @@ export default function NovaReceita2Page() {
                 defaultStartDate={state.defaultStartDate}
                 defaultStartHour={state.defaultStartHour}
             />
+
+            <CompoundedDoseEditModal
+                open={!!compoundedDoseEditorItem}
+                title={compoundedDoseEditorItem?.name || 'Manipulado'}
+                recommendedRangeText={compoundedDoseEditorItem ? buildDoseRecommendationText(
+                    getPresentationMetadata(compoundedDoseEditorItem).compounded_recommended_min,
+                    getPresentationMetadata(compoundedDoseEditorItem).compounded_recommended_max,
+                    String(getPresentationMetadata(compoundedDoseEditorItem).compounded_recommended_unit || ''),
+                ) : ''}
+                administrationPreview={buildAdministrationDoseText(compoundedDoseEditorValue, compoundedDoseEditorUnit, state.patient?.weight_kg)}
+                value={compoundedDoseEditorValue}
+                unit={compoundedDoseEditorUnit}
+                unitOptions={COMPOUNDED_DOSE_UNIT_SELECT_OPTIONS as unknown as Array<{ value: string; label: string }>}
+                onValueChange={setCompoundedDoseEditorValue}
+                onUnitChange={setCompoundedDoseEditorUnit}
+                onClose={closeCompoundedDoseEditor}
+                onApply={applyCompoundedDoseEditor}
+            />
         </ReceituarioChrome>
     )
 }
-

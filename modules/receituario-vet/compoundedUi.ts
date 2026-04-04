@@ -32,6 +32,13 @@ import {
   renderManipuladoV1TutorInstruction,
 } from './manipuladosV1Render'
 import { sanitizeDeepText, sanitizeVisibleText } from './textSanitizer'
+import {
+  buildAdministrationDoseText,
+  buildCompoundedDurationText,
+  buildCompoundedFrequencyText,
+  buildCompoundedStructuredInstruction,
+  normalizeDoseUnit,
+} from './compoundedStructuredEditing'
 
 type ClinicalRouteOption = { value: string; label: string }
 
@@ -176,6 +183,20 @@ function getRuntimeManipuladoV1(item: CompoundedPrescriptionItem): ManipuladoV1F
   const safe = normalizeManipuladoV1(sanitizeDeepText(payload as ManipuladoV1Formula))
   const itemRecord = item as unknown as Record<string, unknown>
   const presentationMetadata = ((item.presentation_metadata || {}) as Record<string, unknown>)
+  const overriddenDoseValue = toNumber(presentationMetadata.compounded_selected_dose_value ?? safe.prescribing.dose_min)
+  const overriddenDoseUnitRaw = sanitizeVisibleText(String(presentationMetadata.compounded_selected_dose_unit || ''))
+  const overriddenDoseUnit = overriddenDoseUnitRaw || sanitizeVisibleText(safe.prescribing.dose_unit || '')
+  const parsedDoseUnit = normalizeDoseUnit(overriddenDoseUnit)
+  const overriddenPosologyMode =
+    parsedDoseUnit.basis === 'kg'
+      ? 'mg_per_kg_dose'
+      : parsedDoseUnit.basis === 'm2'
+        ? 'mg_per_m2_dose'
+        : parsedDoseUnit.basis === 'animal'
+          ? 'fixed_per_animal'
+          : parsedDoseUnit.basis === 'application' || parsedDoseUnit.basis === 'dose'
+            ? 'fixed_per_application'
+            : safe.prescribing.posology_mode
   return normalizeManipuladoV1({
     ...safe,
     identity: {
@@ -186,6 +207,10 @@ function getRuntimeManipuladoV1(item: CompoundedPrescriptionItem): ManipuladoV1F
     },
     prescribing: {
       ...safe.prescribing,
+      posology_mode: overriddenPosologyMode,
+      dose_min: overriddenDoseValue ?? safe.prescribing.dose_min,
+      dose_max: overriddenDoseValue ?? safe.prescribing.dose_max,
+      dose_unit: parsedDoseUnit.baseUnit || safe.prescribing.dose_unit,
       frequency_label: pickEditedText(itemRecord, 'frequency', safe.prescribing.frequency_label),
       duration_label: pickEditedText(itemRecord, 'duration', safe.prescribing.duration_label),
       manual_usage_override: pickEditedText(itemRecord, 'instructions', safe.prescribing.manual_usage_override),
@@ -223,16 +248,28 @@ function getManipuladoV1DoseText(formula: ManipuladoV1Formula, patient?: Patient
 function buildManipuladoV1Instruction(formula: ManipuladoV1Formula, patient?: PatientInfo | null): string {
   const doseText = getManipuladoV1DoseText(formula, patient) || renderManipuladoV1TutorInstruction(formula)
   const route = routeToClinicalLabel(formula.identity.primary_route)
-  const frequency = sanitizeVisibleText(formula.prescribing.frequency_label || '')
-  const duration =
-    sanitizeVisibleText(formula.prescribing.duration_label || '') ||
-    (formula.prescribing.duration_value ? `${formula.prescribing.duration_value} ${formula.prescribing.duration_unit}` : '')
-  return [
-    `Posologia: ${routeVerb(formula.identity.primary_route)} ${doseText}`,
-    route,
-    frequency,
-    duration ? `por ${duration}` : '',
-  ].filter(Boolean).join(', ').replace(/\s+/g, ' ').trim() + '.'
+  const frequency = buildCompoundedFrequencyText({
+    fallbackText: formula.prescribing.frequency_label,
+  })
+  const duration = buildCompoundedDurationText({
+    durationMode:
+      formula.prescribing.frequency_mode === 'until_recheck'
+        ? 'until_recheck'
+        : formula.prescribing.frequency_mode === 'until_finished'
+          ? 'until_finished'
+          : formula.prescribing.frequency_mode === 'continuous_use'
+            ? 'continuous_use'
+            : 'fixed_days',
+    durationValue: formula.prescribing.duration_value,
+    durationUnit: formula.prescribing.duration_unit,
+    fallbackText: formula.prescribing.duration_label,
+  })
+  return buildCompoundedStructuredInstruction({
+    administrationText: `${routeVerb(formula.identity.primary_route)} ${doseText}`,
+    routeText: route,
+    frequencyText: frequency,
+    durationText: duration,
+  }).replace(/^Posologia:\s*Administrar\s+/i, `Posologia: ${routeVerb(formula.identity.primary_route)} `)
 }
 
 function getManipuladoV1RegimenSummary(formula: ManipuladoV1Formula, patient?: PatientInfo | null): string {
@@ -1168,7 +1205,36 @@ export function buildCompoundedCardSubtitle(item: PrescriptionItem, patient?: Pa
 export function buildCompoundedInstruction(item: PrescriptionItem, patient?: PatientInfo | null): string {
   if (!isCompounded(item)) return String(item.instructions || '').trim()
   const runtimeV1 = getRuntimeManipuladoV1(item)
-  if (runtimeV1) return sanitizeVisibleText(buildManipuladoV1Instruction(runtimeV1, patient))
+  if (runtimeV1) {
+    const administration = String(
+      buildAdministrationDoseText(
+        (item.presentation_metadata as Record<string, unknown> | null)?.compounded_selected_dose_value ?? runtimeV1.prescribing.dose_min,
+        String((item.presentation_metadata as Record<string, unknown> | null)?.compounded_selected_dose_unit || runtimeV1.prescribing.dose_unit),
+        patient?.weight_kg,
+      ) || item.dose || getManipuladoV1DoseText(runtimeV1, patient)
+    ).trim()
+    const route = routeToClinicalLabel(runtimeV1.identity.primary_route)
+    const frequency = buildCompoundedFrequencyText({
+      frequencyMode: item.frequencyMode,
+      timesPerDay: item.timesPerDay,
+      intervalHours: item.intervalHours,
+      fallbackText: item.frequency || runtimeV1.prescribing.frequency_label,
+    })
+    const duration = buildCompoundedDurationText({
+      durationMode: item.durationMode,
+      durationValue: item.durationValue,
+      durationUnit: item.durationUnit,
+      fallbackText: item.duration || runtimeV1.prescribing.duration_label,
+    })
+    return sanitizeVisibleText(
+      buildCompoundedStructuredInstruction({
+        administrationText: administration,
+        routeText: route,
+        frequencyText: frequency,
+        durationText: duration,
+      })
+    )
+  }
   const runtimeV2 = getRuntimeCompoundedV2(item)
   if (runtimeV2) return sanitizeVisibleText(renderV2PrescriptionLine(runtimeV2, patient, item.compounded_regimen_id))
   if (isClinicalDoseOrientedItem(item)) {
@@ -1180,12 +1246,17 @@ export function buildCompoundedInstruction(item: PrescriptionItem, patient?: Pat
     if (!patient?.weight_kg && (calculation?.warnings || []).length) {
       return 'Posologia: peso necessário para confirmar a dose clínica deste paciente.'
     }
-    return [
-      `Posologia: Administrar ${administration}`,
-      route,
-      frequency,
-      duration ? `por ${duration}` : '',
-    ].filter(Boolean).join(', ').replace(/\s+/g, ' ').trim() + '.'
+    return buildCompoundedStructuredInstruction({
+      administrationText: administration,
+      routeText: route,
+      frequencyText: frequency,
+      durationText: buildCompoundedDurationText({
+        durationMode: item.durationMode,
+        durationValue: item.durationValue,
+        durationUnit: item.durationUnit,
+        fallbackText: duration,
+      }),
+    })
   }
 
   const calculation = getCompoundedCalculationSummary(item, patient)
@@ -1212,12 +1283,17 @@ export function buildCompoundedInstruction(item: PrescriptionItem, patient?: Pat
     return 'Posologia: dose final ainda não definida.'
   }
 
-  return [
-    `Posologia: ${verb} ${administration}`,
-    route,
-    frequency,
-    duration ? `por ${duration}` : '',
-  ].filter(Boolean).join(', ').replace(/\s+/g, ' ').trim() + '.'
+  return buildCompoundedStructuredInstruction({
+    administrationText: `${verb} ${administration}`,
+    routeText: route,
+    frequencyText: frequency,
+    durationText: buildCompoundedDurationText({
+      durationMode: item.durationMode,
+      durationValue: item.durationValue,
+      durationUnit: item.durationUnit,
+      fallbackText: duration,
+    }),
+  }).replace(/^Posologia:\s*Administrar\s+/i, 'Posologia: ')
 }
 
 export function buildCompoundedPharmacyInstruction(item: PrescriptionItem, patient?: PatientInfo | null): string {

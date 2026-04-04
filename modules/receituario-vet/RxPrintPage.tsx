@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom'
 import { RxPrintView } from './RxPrintView'
 import { buildAutoInstruction, renderRxToPrintDoc, resolveFrequency, splitPrescriptionByControl } from './rxRenderer'
@@ -17,6 +17,15 @@ import {
   upsertTemplate,
 } from './rxDb'
 import { PrescriptionItem, PrescriptionState, PrintDoc, RouteGroup, SpecialControlPharmacy } from './rxTypes'
+import { CompoundedStructuredRegimenEditor } from './components/CompoundedStructuredRegimenEditor'
+import {
+  buildAdministrationDoseText,
+  buildCompoundedDurationText,
+  buildCompoundedFrequencyText,
+  buildCompoundedStructuredInstruction,
+  buildDoseRecommendationText,
+  COMPOUNDED_DOSE_UNIT_SELECT_OPTIONS,
+} from './compoundedStructuredEditing'
 
 interface ShareState {
   open: boolean
@@ -50,6 +59,58 @@ const ROUTE_OPTIONS: Array<{ value: RouteGroup; label: string }> = [
 ]
 
 const DOSE_UNIT_OPTIONS = ['mg/kg', 'mcg/kg', 'g/kg', 'mL/kg', 'UI/kg', 'comprimido/kg', 'gota/kg', 'mg', 'mL', 'comprimido', 'gota', 'cápsula']
+
+function getReviewPresentationMetadata(item: PrescriptionItem | null | undefined): Record<string, unknown> {
+  return item?.presentationMetadata && typeof item.presentationMetadata === 'object'
+    ? item.presentationMetadata as Record<string, unknown>
+    : {}
+}
+
+function isReviewCompoundedItem(item: PrescriptionItem | null | undefined): boolean {
+  const metadata = getReviewPresentationMetadata(item)
+  return !!metadata.compounded || metadata.runtime_source === 'manipulados_v1' || metadata.manipulados_v1 === true
+}
+
+function reviewRouteLabel(routeGroup: RouteGroup): string {
+  switch (routeGroup) {
+    case 'ORAL': return 'por via oral'
+    case 'OTOLOGICO': return 'por via otológica'
+    case 'OFTALMICO': return 'por via oftálmica'
+    case 'TOPICO': return 'por via tópica'
+    case 'INTRANASAL': return 'por via intranasal'
+    case 'RETAL': return 'por via retal'
+    case 'SC': return 'por via subcutânea'
+    case 'IM': return 'por via intramuscular'
+    case 'IV': return 'por via intravenosa'
+    case 'INALATORIO': return 'por via inalatória'
+    case 'TRANSDERMICO': return 'por via transdérmica'
+    default: return 'conforme orientação clínica'
+  }
+}
+
+function buildReviewCompoundedInstruction(item: PrescriptionItem, patientWeightKg?: string): string {
+  const metadata = getReviewPresentationMetadata(item)
+  const doseValue = metadata.compounded_selected_dose_value ?? item.doseValue
+  const doseUnit = String(metadata.compounded_selected_dose_unit || item.doseUnit || '')
+  const frequencyText = buildCompoundedFrequencyText({
+    frequencyMode: item.frequencyType === 'everyHours' ? 'interval_hours' : 'times_per_day',
+    timesPerDay: item.timesPerDay,
+    intervalHours: item.everyHours,
+    fallbackText: '',
+  })
+  const durationText = buildCompoundedDurationText({
+    durationMode: item.durationMode,
+    durationValue: item.durationDays,
+    durationUnit: 'dias',
+    fallbackText: '',
+  })
+  return buildCompoundedStructuredInstruction({
+    administrationText: buildAdministrationDoseText(doseValue, doseUnit, patientWeightKg),
+    routeText: reviewRouteLabel(item.routeGroup),
+    frequencyText,
+    durationText,
+  })
+}
 
 function resolveDocKindKey(doc?: PrintDoc | null): PrintableDocKind {
   return doc?.documentKind === 'special-control' ? 'special-control' : 'standard'
@@ -393,6 +454,9 @@ export default function RxPrintPage() {
     if (selection?.kind !== 'item') return null
     return prescription.items.find((entry) => entry.id === selection.itemId) || null
   }, [prescription.items, selection])
+  const [compoundedDoseEditorOpen, setCompoundedDoseEditorOpen] = useState(false)
+  const [compoundedDoseEditorValue, setCompoundedDoseEditorValue] = useState('')
+  const [compoundedDoseEditorUnit, setCompoundedDoseEditorUnit] = useState('mg/kg')
   const activeZoneOverrideText =
     selection?.kind === 'zone' ? zoneTextOverrides[activeDocKind]?.[selection.zone] || '' : ''
   const activeZoneDefaultText = useMemo(() => {
@@ -413,6 +477,50 @@ export default function RxPrintPage() {
     if (!selectedItem) return
     updatePrescription((prev) => patchItemInState(prev, selectedItem.id, updater))
   }
+
+  useEffect(() => {
+    if (!selectedItem || !isReviewCompoundedItem(selectedItem)) return
+    const metadata = getReviewPresentationMetadata(selectedItem)
+    setCompoundedDoseEditorValue(String(metadata.compounded_selected_dose_value ?? selectedItem.doseValue ?? ''))
+    setCompoundedDoseEditorUnit(String(metadata.compounded_selected_dose_unit || selectedItem.doseUnit || 'mg/kg'))
+  }, [selectedItem])
+
+  const patchSelectedCompoundedItem = useCallback((updater: (item: PrescriptionItem) => PrescriptionItem) => {
+    if (!selectedItem || !isReviewCompoundedItem(selectedItem)) return
+    updatePrescription((prev) => patchItemInState(prev, selectedItem.id, (current) => {
+      const next = updater(current)
+      return {
+        ...next,
+        autoInstruction: false,
+        manualEdited: true,
+        instruction: buildReviewCompoundedInstruction(next, prev.patient.weightKg),
+      }
+    }))
+  }, [selectedItem])
+
+  const openCompoundedDoseEditor = useCallback(() => {
+    if (!selectedItem || !isReviewCompoundedItem(selectedItem)) return
+    setCompoundedDoseEditorValue(selectedItem.doseValue || '')
+    setCompoundedDoseEditorUnit(selectedItem.doseUnit || 'mg/kg')
+    setCompoundedDoseEditorOpen(true)
+  }, [selectedItem])
+
+  const applyCompoundedDoseEditor = useCallback(() => {
+    patchSelectedCompoundedItem((item) => {
+      const metadata = getReviewPresentationMetadata(item)
+      return {
+        ...item,
+        doseValue: compoundedDoseEditorValue,
+        doseUnit: compoundedDoseEditorUnit,
+        presentationMetadata: {
+          ...metadata,
+          compounded_selected_dose_value: compoundedDoseEditorValue,
+          compounded_selected_dose_unit: compoundedDoseEditorUnit,
+        },
+      }
+    })
+    setCompoundedDoseEditorOpen(false)
+  }, [compoundedDoseEditorUnit, compoundedDoseEditorValue, patchSelectedCompoundedItem])
 
   const saveReviewDraft = () => {
     try {
@@ -676,39 +784,132 @@ export default function RxPrintPage() {
                       <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.commercialName || ''} onChange={(e) => patchSelectedItem((item) => ({ ...item, commercialName: e.target.value }))} />
                     </label>
 
-                    <div className="grid grid-cols-2 gap-2">
-                      <label className="block text-xs text-slate-300">Dose
-                        <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.doseValue} onChange={(e) => patchSelectedItem((item) => ({ ...item, doseValue: e.target.value }))} />
-                      </label>
-                      <label className="block text-xs text-slate-300">Unidade
-                        <select className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.doseUnit} onChange={(e) => patchSelectedItem((item) => ({ ...item, doseUnit: e.target.value }))}>
-                          {DOSE_UNIT_OPTIONS.map((unit) => (<option key={unit} value={unit}>{unit}</option>))}
-                        </select>
-                      </label>
-                    </div>
+                    {isReviewCompoundedItem(selectedItem) ? (
+                      <>
+                        <CompoundedStructuredRegimenEditor
+                          doseSummary={buildAdministrationDoseText(selectedItem.doseValue, selectedItem.doseUnit, prescription.patient.weightKg)}
+                          onEditDose={openCompoundedDoseEditor}
+                          frequencyMode={selectedItem.frequencyType === 'everyHours' ? 'interval_hours' : 'times_per_day'}
+                          timesPerDay={selectedItem.timesPerDay || ''}
+                          intervalHours={selectedItem.everyHours || ''}
+                          onFrequencyModeChange={(value) => patchSelectedCompoundedItem((item) => ({
+                            ...item,
+                            frequencyType: value === 'interval_hours' ? 'everyHours' : 'timesPerDay',
+                            everyHours: value === 'interval_hours' ? (item.everyHours || '12') : '',
+                            timesPerDay: value === 'times_per_day' ? (item.timesPerDay || '2') : '',
+                            frequencyToken: '',
+                          }))}
+                          onTimesPerDayChange={(value) => patchSelectedCompoundedItem((item) => ({
+                            ...item,
+                            frequencyType: 'timesPerDay',
+                            timesPerDay: value,
+                            everyHours: '',
+                            frequencyToken: '',
+                          }))}
+                          onIntervalHoursChange={(value) => patchSelectedCompoundedItem((item) => ({
+                            ...item,
+                            frequencyType: 'everyHours',
+                            everyHours: value,
+                            timesPerDay: '',
+                            frequencyToken: '',
+                          }))}
+                          durationMode={selectedItem.durationMode || 'fixed_days'}
+                          durationValue={selectedItem.durationDays || ''}
+                          durationUnit="dias"
+                          onDurationModeChange={(value) => patchSelectedCompoundedItem((item) => ({
+                            ...item,
+                            durationMode: value as PrescriptionItem['durationMode'],
+                            durationDays: value === 'fixed_days' ? (item.durationDays || '7') : '',
+                            untilFinished: value === 'until_finished',
+                            continuousUse: value === 'continuous_use' || value === 'continuous_until_recheck',
+                          }))}
+                          onDurationValueChange={(value) => patchSelectedCompoundedItem((item) => ({
+                            ...item,
+                            durationMode: 'fixed_days',
+                            durationDays: value,
+                            untilFinished: false,
+                            continuousUse: false,
+                          }))}
+                          onDurationUnitChange={() => {}}
+                        />
+                        <div className="rounded-xl border border-[#315d28] bg-[#10200d] p-4">
+                            <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#9cd78f]">Editar dose</p>
+                            {buildDoseRecommendationText(
+                              getReviewPresentationMetadata(selectedItem).compounded_recommended_min,
+                              getReviewPresentationMetadata(selectedItem).compounded_recommended_max,
+                              String(getReviewPresentationMetadata(selectedItem).compounded_recommended_unit || ''),
+                            ) ? (
+                              <p className="mt-2 text-xs text-slate-300">
+                                Faixa recomendada: {buildDoseRecommendationText(
+                                  getReviewPresentationMetadata(selectedItem).compounded_recommended_min,
+                                  getReviewPresentationMetadata(selectedItem).compounded_recommended_max,
+                                  String(getReviewPresentationMetadata(selectedItem).compounded_recommended_unit || ''),
+                                )}
+                              </p>
+                            ) : null}
+                            <div className="mt-3 grid grid-cols-2 gap-2">
+                              <label className="block text-xs text-slate-300">Dose escolhida
+                                <input
+                                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                                  value={compoundedDoseEditorValue}
+                                  onChange={(e) => setCompoundedDoseEditorValue(e.target.value)}
+                                  placeholder="Ex: 10"
+                                />
+                              </label>
+                              <label className="block text-xs text-slate-300">Unidade
+                                <select
+                                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                                  value={compoundedDoseEditorUnit}
+                                  onChange={(e) => setCompoundedDoseEditorUnit(e.target.value)}
+                                >
+                                  {COMPOUNDED_DOSE_UNIT_SELECT_OPTIONS.map((option) => (<option key={option.value} value={option.value}>{option.label}</option>))}
+                                </select>
+                              </label>
+                            </div>
+                            <p className="mt-3 text-xs text-[#9cd78f]">Dose final: {buildAdministrationDoseText(compoundedDoseEditorValue, compoundedDoseEditorUnit, prescription.patient.weightKg) || '—'}</p>
+                            <div className="mt-3 flex gap-2">
+                              <button type="button" className="rounded-lg bg-[#38ff14] px-3 py-2 text-xs font-bold text-[#10200d]" onClick={applyCompoundedDoseEditor}>Aplicar</button>
+                              <button type="button" className="rounded-lg border border-[#335d2a] px-3 py-2 text-xs font-semibold text-slate-300" onClick={() => setCompoundedDoseEditorOpen(false)}>Cancelar</button>
+                            </div>
+                          </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="grid grid-cols-2 gap-2">
+                          <label className="block text-xs text-slate-300">Dose
+                            <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.doseValue} onChange={(e) => patchSelectedItem((item) => ({ ...item, doseValue: e.target.value }))} />
+                          </label>
+                          <label className="block text-xs text-slate-300">Unidade
+                            <select className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.doseUnit} onChange={(e) => patchSelectedItem((item) => ({ ...item, doseUnit: e.target.value }))}>
+                              {DOSE_UNIT_OPTIONS.map((unit) => (<option key={unit} value={unit}>{unit}</option>))}
+                            </select>
+                          </label>
+                        </div>
 
-                    <div className="grid grid-cols-2 gap-2">
-                      <label className="block text-xs text-slate-300">Frequência
-                        <select className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.frequencyType} onChange={(e) => patchSelectedItem((item) => ({ ...item, frequencyType: e.target.value as PrescriptionItem['frequencyType'] }))}>
-                          <option value="timesPerDay">x vezes ao dia</option>
-                          <option value="everyHours">a cada X horas</option>
-                        </select>
-                      </label>
-                      <label className="block text-xs text-slate-300">{selectedItem.frequencyType === 'everyHours' ? 'Intervalo (h)' : 'Vezes ao dia'}
-                        <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.frequencyType === 'everyHours' ? selectedItem.everyHours : selectedItem.timesPerDay} onChange={(e) => patchSelectedItem((item) => item.frequencyType === 'everyHours' ? { ...item, everyHours: e.target.value, frequencyToken: '' } : { ...item, timesPerDay: e.target.value, frequencyToken: '' })} />
-                      </label>
-                    </div>
+                        <div className="grid grid-cols-2 gap-2">
+                          <label className="block text-xs text-slate-300">Frequência
+                            <select className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.frequencyType} onChange={(e) => patchSelectedItem((item) => ({ ...item, frequencyType: e.target.value as PrescriptionItem['frequencyType'] }))}>
+                              <option value="timesPerDay">x vezes ao dia</option>
+                              <option value="everyHours">a cada X horas</option>
+                            </select>
+                          </label>
+                          <label className="block text-xs text-slate-300">{selectedItem.frequencyType === 'everyHours' ? 'Intervalo (h)' : 'Vezes ao dia'}
+                            <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.frequencyType === 'everyHours' ? selectedItem.everyHours : selectedItem.timesPerDay} onChange={(e) => patchSelectedItem((item) => item.frequencyType === 'everyHours' ? { ...item, everyHours: e.target.value, frequencyToken: '' } : { ...item, timesPerDay: e.target.value, frequencyToken: '' })} />
+                          </label>
+                        </div>
 
-                    <div className="grid grid-cols-2 gap-2">
-                      <label className="block text-xs text-slate-300">Duração (dias)
-                        <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.durationDays} onChange={(e) => patchSelectedItem((item) => ({ ...item, durationDays: e.target.value }))} />
-                      </label>
-                      <label className="block text-xs text-slate-300">Via
-                        <select className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.routeGroup} onChange={(e) => patchSelectedItem((item) => ({ ...item, routeGroup: e.target.value as RouteGroup }))}>
-                          {ROUTE_OPTIONS.map((option) => (<option key={option.value} value={option.value}>{option.label}</option>))}
-                        </select>
-                      </label>
-                    </div>
+                        <div className="grid grid-cols-2 gap-2">
+                          <label className="block text-xs text-slate-300">Duração (dias)
+                            <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.durationDays} onChange={(e) => patchSelectedItem((item) => ({ ...item, durationDays: e.target.value }))} />
+                          </label>
+                          <label className="block text-xs text-slate-300">Via
+                            <select className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.routeGroup} onChange={(e) => patchSelectedItem((item) => ({ ...item, routeGroup: e.target.value as RouteGroup }))}>
+                              {ROUTE_OPTIONS.map((option) => (<option key={option.value} value={option.value}>{option.label}</option>))}
+                            </select>
+                          </label>
+                        </div>
+                      </>
+                    )}
 
                     <label className="block text-xs text-slate-300">Instruções ao tutor
                       <textarea rows={4} className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.instruction} onChange={(e) => patchSelectedItem((item) => ({ ...item, instruction: e.target.value, autoInstruction: false, manualEdited: true }))} />

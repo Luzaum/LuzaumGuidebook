@@ -25,6 +25,7 @@ import type { NovaReceita2State, PrescriptionItem, TutorInfo, PatientInfo } from
 import type { TemplateZoneKey } from './rxDb'
 import { uploadPrescriptionPdf, attachPdfToPresc, savePrescription, savePrescriptionDocuments } from '../../src/lib/prescriptionsRecords'
 import { getStoredClinicId } from '../../src/lib/clinic'
+import { buildAdministrationDoseText } from './compoundedStructuredEditing'
 
 // ==================== SESSION ====================
 
@@ -373,8 +374,28 @@ function EditorItem({
     }
 
     const applyDose = () => {
-        const final = doseValue.trim() ? `${doseValue.trim()} ${doseUnit}` : ''
-        setField('dose', final)
+        if (!doseValue.trim()) {
+            setDoseModalOpen(false)
+            return
+        }
+        const calculated = buildAdministrationDoseText(doseValue.trim(), doseUnit, state.patient?.weight_kg)
+        const doseText = calculated || `${doseValue.trim()} ${doseUnit}`
+        onStateChange((prev) => ({
+            ...prev,
+            items: prev.items.map((i) => {
+                if (i.id !== itemId) return i
+                const prevMeta = (i.presentation_metadata as Record<string, unknown> | null) || {}
+                return {
+                    ...i,
+                    dose: doseText,
+                    presentation_metadata: {
+                        ...prevMeta,
+                        compounded_selected_dose_value: doseValue.trim(),
+                        compounded_selected_dose_unit: doseUnit,
+                    },
+                }
+            }),
+        }))
         setDoseModalOpen(false)
     }
 

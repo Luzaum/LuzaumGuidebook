@@ -1,34 +1,30 @@
 {
-  "generatedAt": "2026-04-03T10:46:51.722Z",
+  "generatedAt": "2026-04-03T23:40:48.324Z",
   "screenshots": {
+    "patient": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\patient-step.png",
     "energy": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\energy-step.png",
-    "target": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\target-step.png",
     "food": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\food-step.png",
-    "summary": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\summary-step.png",
-    "patientDetail": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\patient-detail.png",
-    "programmedFeeding": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\programmed-feeding.png"
+    "printPreview": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\print-preview.png",
+    "feedingSheet": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\feeding-sheet-table.png"
   },
   "checks": {
     "dogEnergy": {
       "sedentary": 686,
+      "lowActivity": 724,
       "moderateLow": 838,
       "moderateHigh": 953,
-      "obesityProne": 686,
-      "gestation": 1006
+      "highActivity": 1220,
+      "obesityProne": 686
     },
     "catEnergy": {
       "active": 274,
       "indoor": 205
     },
-    "energyChangedByActivity": true,
+    "energyChangedSedentaryToLow": true,
+    "energyChangedLowToModerate": true,
     "energyChangedByImpact": true,
+    "energyChangedToHighActivity": true,
     "energyChangedByObesityProne": true,
-    "energyChangedByReproduction": true,
-    "energyChangedByCatIndoor": true,
-    "manualModeDidNotAutoAdjustSecondPercentage": true,
-    "complementChangedPercentages": true,
-    "stickyPreviewMaintained": true,
-    "programmedSectionPresent": true,
-    "savedReportComplete": true
+    "energyChangedByCatIndoor": true
   }
 }
