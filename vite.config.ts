@@ -57,23 +57,10 @@ export default defineConfig(({ mode }) => {
               return undefined
             }
             if (id.includes('modules/receituario-vet')) {
-              // NovaReceita2Page (workflow) imports RxPrintView/rxRenderer/novaReceita2Adapter,
-              // AND NovaReceita2PrintPage (print) imports normalizeNovaReceita2State from NovaReceita2Page.
-              // Splitting them created a circular chunk dependency → TDZ crash in browser.
-              // Merged into one chunk to eliminate the cycle.
-              if (
-                id.includes('RxPrintPage') ||
-                id.includes('NovaReceita2PrintPage') ||
-                id.includes('RxPrintView') ||
-                id.includes('rxRenderer') ||
-                id.includes('novaReceita2Adapter') ||
-                id.includes('NovaReceita2Page') ||
-                id.includes('Catalogo3Page') ||
-                id.includes('Protocolos3Page') ||
-                id.includes('ControleEspecialPage')
-              ) {
-                return 'feature-receituario-workflow'
-              }
+              // Let Rollup handle receituario chunk splitting automatically.
+              // Manual splitting previously caused circular chunk TDZ crashes because
+              // NovaReceita2Page ↔ novaReceita2Adapter ↔ compoundedUi formed cycles
+              // that manifested differently across environments (local vs Netlify).
               return 'feature-receituario'
             }
             return undefined
