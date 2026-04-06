@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "viewport": {
+    "width": 1600,
+    "height": 1200
+  },
+  "shots": {
+    "hub": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\density-pass-20260405\\hub-after.png",
+    "novaReceita": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\density-pass-20260405\\nova-receita-after.png",
+    "catalogo": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\density-pass-20260405\\catalogo-after.png",
+    "manipulados": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\density-pass-20260405\\manipulados-after.png",
+    "protocolos": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\density-pass-20260405\\protocolos-after.png"
+  },
+  "error": ""
+}

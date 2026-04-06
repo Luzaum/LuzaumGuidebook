@@ -4,7 +4,7 @@ export type ReproductiveStatus = 'Castrado' | 'Fértil' | 'Sem dados'
 export type ItemCategory = 'medication' | 'hygiene' | 'other'
 export type PharmacyType = 'humana' | 'veterinária' | 'manipulacao'
 export type PackageType = 'frasco' | 'caixa' | 'bisnaga' | 'ampola' | 'outro'
-export type FrequencyType = 'timesPerDay' | 'everyHours'
+export type FrequencyType = 'timesPerDay' | 'everyHours' | 'singleDose' | 'repeatInterval'
 export type SpecialControlPharmacy = 'veterinária' | 'humana' | 'manipulacao'
 export type DurationMode = 'fixed_days' | 'until_recheck' | 'continuous_use' | 'until_finished' | 'continuous_until_recheck'
 
@@ -109,6 +109,8 @@ export interface PrescriptionItem {
   frequencyToken: '' | 'SID' | 'BID' | 'TID' | 'QID'
   timesPerDay: string
   everyHours: string
+  repeatEveryValue?: string
+  repeatEveryUnit?: string
   durationDays: string
   durationMode?: DurationMode
   untilFinished: boolean

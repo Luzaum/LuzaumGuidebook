@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo, useCallback, useRef } from 'react'
+﻿import React, { useEffect, useState, useMemo, useCallback, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import ReceituarioChrome from './ReceituarioChrome'
@@ -34,6 +34,17 @@ import {
     assertValidMedicationCatalogBundle,
     type CanonicalMedication
 } from '../../src/lib/medicationCatalog'
+import {
+    ADMINISTRATION_BASIS_OPTIONS,
+    ADMINISTRATION_TARGET_OPTIONS,
+    ADMINISTRATION_UNIT_OPTIONS,
+    isApplicationSiteBasis,
+    isCustomAdministrationBasis,
+    normalizeAdministrationBasis,
+    normalizeAdministrationTarget,
+    PHARMACOLOGICAL_DOSE_UNIT_OPTIONS,
+    TOOLTIP,
+} from './vetPosologyShared'
 
 // ==================== TIPOS ====================
 
@@ -88,7 +99,13 @@ interface RecommendedDoseUI {
     frequency_max: number | null
     frequency_mode: string | null
     frequency_text: string | null
+    recurrence_value?: number | null
+    recurrence_unit?: string | null
     duration: string | null
+    administration_basis?: 'weight_based' | 'weight_band' | 'per_animal' | 'per_application_site' | null
+    administration_amount?: number | null
+    administration_unit?: string | null
+    administration_target?: string | null
     calculator_default_dose: number | null
     calculator_default_frequency: number | null
     notes: string | null
@@ -103,25 +120,25 @@ interface MedicationWithPresentations extends Medication {
 // ==================== CONSTANTES ====================
 
 const PHARMACEUTICAL_FORMS = [
-    'Comprimido', 'C�psula', 'Solu��o oral', 'Suspens�o oral', 'Injet�vel',
-    'Pomada/creme', 'Col�rio', 'Otol�gico', 'Shampoo', 'Spray',
-    'Transd�rmico', 'Implante', 'Outros'
+    'Comprimido', 'Cápsula', 'Solução oral', 'Suspensão oral', 'Injetável',
+    'Pomada/creme', 'Colírio', 'Otológico', 'Shampoo', 'Spray',
+    'Transdérmico', 'Implante', 'Outros'
 ]
 
 const VALUE_UNITS = ['mg', 'g', 'mcg', 'mg/mL', 'mcg/mL', '%', 'UI/mL', 'mEq/mL']
 
-const PER_UNITS = ['comprimido', 'mL', 'dose', 'c�psula', 'gota', 'spray', 'bisnaga', 'ampola', 'patch']
+const PER_UNITS = ['comprimido', 'mL', 'dose', 'cápsula', 'gota', 'spray', 'bisnaga', 'ampola', 'patch']
 
 const CLINICAL_TAGS_OPTIONS = [
-    'AINE', 'Antibi�tico', 'Antiem�tico', 'Sedativo', 'Cardioativo',
-    'Antiparasit�rio', 'Antif�ngico', 'Corticoide', 'Analg�sico', 'Outros'
+    'AINE', 'Antibiótico', 'Antiemético', 'Sedativo', 'Cardioativo',
+    'Antiparasitário', 'Antifúngico', 'Corticoide', 'Analgésico', 'Outros'
 ]
 
-const ROUTES_OPTIONS = ['VO', 'IV', 'IM', 'SC', 'T�pica', 'Ocular', 'Otol�gica', 'Inalat�ria', 'Outras']
+const ROUTES_OPTIONS = ['VO', 'IV', 'IM', 'SC', 'Tópica', 'Ocular', 'Otológica', 'Inalatória', 'Outras']
 
-const SPECIES_OPTIONS = ['c�o', 'gato', 'ambos']
+const SPECIES_OPTIONS = ['cão', 'gato', 'ambos']
 
-const DOSE_UNITS = ['mg/kg', 'mg', 'mL/kg', 'mL', 'UI/kg', 'UI', 'mcg/kg', 'mcg', 'g/kg']
+const DOSE_UNITS = PHARMACOLOGICAL_DOSE_UNIT_OPTIONS.map((entry) => entry.value)
 
 const FREQUENCY_OPTIONS = [
     '1x ao dia',
@@ -134,18 +151,32 @@ const FREQUENCY_OPTIONS = [
     '24x ao dia'
 ]
 
+const RECOMMENDED_FREQUENCY_MODE_OPTIONS = [
+    { value: 'times_per_day', label: 'Vezes por dia' },
+    { value: 'every_x_hours', label: 'Intervalo em horas' },
+    { value: 'single_dose', label: 'Dose única' },
+    { value: 'repeat_interval', label: 'Repetir periodicamente' },
+    { value: 'custom', label: 'Texto livre' },
+]
+
+const RECURRENCE_UNIT_OPTIONS = [
+    { value: 'dias', label: 'dias' },
+    { value: 'semanas', label: 'semanas' },
+    { value: 'meses', label: 'meses' },
+]
+
 const DURATION_MODE_OPTIONS = [
-    { value: 'until_recheck', label: 'At� reavalia��o cl�nica' },
-    { value: 'fixed_days', label: 'Dura��o fechada' },
-    { value: 'continuous_use', label: 'Uso cont�nuo' },
-    { value: 'continuous_until_recheck', label: 'Uso cont�nuo at� reavalia��o' },
-    { value: 'until_finished', label: 'At� terminar o medicamento' }
+    { value: 'until_recheck', label: 'Até reavaliação clínica' },
+    { value: 'fixed_days', label: 'Duração fechada' },
+    { value: 'continuous_use', label: 'Uso contínuo' },
+    { value: 'continuous_until_recheck', label: 'Uso contínuo até reavaliação' },
+    { value: 'until_finished', label: 'Até terminar o medicamento' }
 ]
 
 // ==================== HELPERS ====================
 
 /**
- * Normaliza valor num�rico: converte string para number e NaN para null
+ * Normaliza valor numérico: converte string para number e NaN para null
  * @param value - Valor a normalizar
  * @param allowNull - Se true, permite null; se false, retorna 0 para null/NaN
  * @returns Number ou null
@@ -159,6 +190,15 @@ function normalizeNumber(value: any, allowNull = true): number | null {
         return allowNull ? null : 0
     }
     return num
+}
+
+function canonicalDoseUnit(doseUnit: string | null | undefined, perWeightUnit: string | null | undefined): string {
+    const base = String(doseUnit || '').trim()
+    const weight = String(perWeightUnit || '').trim()
+    if (!base) return ''
+    if (base.includes('/')) return base
+    if (weight) return `${base}/${weight}`
+    return base
 }
 
 function createEmptyPresentation(): Presentation {
@@ -188,23 +228,56 @@ function createEmptyPresentation(): Presentation {
 function createEmptyRecommendedDose(): RecommendedDoseUI {
     return {
         client_id: crypto.randomUUID(),
-        species: 'c�o',
+        species: 'cão',
         route: 'VO',
         dose_value: null,
         dose_max: null,
         dose_unit: 'mg/kg',
-        per_weight_unit: 'kg',
+        per_weight_unit: null,
         indication: null,
         frequency: null,
         frequency_min: null,
         frequency_max: null,
         frequency_mode: 'times_per_day',
         frequency_text: null,
+        recurrence_value: null,
+        recurrence_unit: 'semanas',
         duration: null,
+        administration_basis: 'weight_based',
+        administration_amount: 1,
+        administration_unit: null,
+        administration_target: null,
         calculator_default_dose: null,
         calculator_default_frequency: null,
         notes: null
     }
+}
+
+function buildRecommendedFrequencyText(dose: RecommendedDoseUI): string | null {
+    const mode = dose.frequency_mode || 'times_per_day'
+    if (mode === 'single_dose') return 'em dose única'
+    if (mode === 'repeat_interval') {
+        const value = normalizeNumber(dose.recurrence_value, true)
+        const unit = String(dose.recurrence_unit || '').trim()
+        if (value && unit) return `repetir a cada ${value} ${unit}`
+        return null
+    }
+    if (mode === 'every_x_hours') {
+        const min = normalizeNumber(dose.frequency_min, true)
+        const max = normalizeNumber(dose.frequency_max, true)
+        if (min && max && min !== max) return `a cada ${min} a ${max} horas`
+        if (min) return `a cada ${min} horas`
+        return null
+    }
+    if (mode === 'custom') {
+        return String(dose.frequency_text || '').trim() || null
+    }
+
+    const min = normalizeNumber(dose.frequency_min, true)
+    const max = normalizeNumber(dose.frequency_max, true)
+    if (min && max && min !== max) return `${min} a ${max}x ao dia`
+    if (min) return `${min}x ao dia`
+    return null
 }
 
 function createEmptyMedication(): MedicationWithPresentations {
@@ -212,7 +285,7 @@ function createEmptyMedication(): MedicationWithPresentations {
         id: '',
         name: '',
         notes: '',
-        species: ['c�o', 'gato'],
+        species: ['cão', 'gato'],
         routes: [],
         is_active: true,
         is_controlled: false,
@@ -235,8 +308,8 @@ function isRecord(value: unknown): value is Record<string, any> {
 function composeImportedDoseNotes(dose: any): string | null {
     const indication = typeof dose?.metadata?.indication === 'string' ? dose.metadata.indication.trim() : ''
     const notes = typeof dose?.notes === 'string' ? dose.notes.trim() : ''
-    if (indication && notes) return `Indica��o: ${indication}. Observa��es: ${notes}`
-    if (indication) return `Indica��o: ${indication}`
+    if (indication && notes) return `Indicação: ${indication}. Observações: ${notes}`
+    if (indication) return `Indicação: ${indication}`
     return notes || null
 }
 
@@ -311,19 +384,32 @@ function mapImportedMedicationToDraft(medication: CanonicalMedication): Medicati
         ? medication.recommended_doses.map((dose) => ({
             id: dose.id,
             client_id: dose.id || crypto.randomUUID(),
-            species: typeof dose.species === 'string' && dose.species.trim() ? dose.species : 'c�o',
+            species: typeof dose.species === 'string' && dose.species.trim() ? dose.species : 'cão',
             route: typeof dose.route === 'string' && dose.route.trim() ? dose.route : 'VO',
             dose_value: normalizeNumber(dose.dose_value, true),
             dose_max: normalizeNumber((dose as any).dose_max, true),
-            dose_unit: typeof dose.dose_unit === 'string' && dose.dose_unit.trim() ? dose.dose_unit : 'mg/kg',
-            per_weight_unit: typeof (dose as any).per_weight_unit === 'string' ? (dose as any).per_weight_unit : null,
+            dose_unit: canonicalDoseUnit(
+                typeof dose.dose_unit === 'string' && dose.dose_unit.trim() ? dose.dose_unit : 'mg/kg',
+                typeof (dose as any).per_weight_unit === 'string' ? (dose as any).per_weight_unit : null,
+            ) || 'mg/kg',
+            per_weight_unit: null,
             indication: typeof (dose as any).indication === 'string' ? (dose as any).indication : null,
             frequency: typeof dose.frequency === 'string' ? dose.frequency : null,
             frequency_min: normalizeNumber((dose as any).frequency_min, true),
             frequency_max: normalizeNumber((dose as any).frequency_max, true),
             frequency_mode: typeof (dose as any).frequency_mode === 'string' ? (dose as any).frequency_mode : null,
             frequency_text: typeof (dose as any).frequency_text === 'string' ? (dose as any).frequency_text : null,
+            recurrence_value: normalizeNumber((dose as any).recurrence_value, true),
+            recurrence_unit: typeof (dose as any).recurrence_unit === 'string' ? (dose as any).recurrence_unit : null,
             duration: typeof (dose as any).duration === 'string' ? (dose as any).duration : null,
+            administration_basis: normalizeAdministrationBasis(
+                (typeof (dose as any).administration_basis === 'string' ? (dose as any).administration_basis : ((dose as any).metadata?.administration_basis as string | undefined)) || 'weight_based',
+            ),
+            administration_amount: normalizeNumber((dose as any).administration_amount ?? (dose as any).metadata?.administration_amount, true),
+            administration_unit: typeof (dose as any).administration_unit === 'string' ? (dose as any).administration_unit : (typeof (dose as any).metadata?.administration_unit === 'string' ? (dose as any).metadata.administration_unit : null),
+            administration_target: normalizeAdministrationTarget(
+                typeof (dose as any).administration_target === 'string' ? (dose as any).administration_target : (typeof (dose as any).metadata?.administration_target === 'string' ? (dose as any).metadata.administration_target : null),
+            ) || null,
             calculator_default_dose: normalizeNumber((dose as any).calculator_default_dose, true),
             calculator_default_frequency: normalizeNumber((dose as any).calculator_default_frequency, true),
             notes: composeImportedDoseNotes(dose),
@@ -335,7 +421,7 @@ function mapImportedMedicationToDraft(medication: CanonicalMedication): Medicati
         id: '',
         name: medication.name || '',
         notes: medication.notes || '',
-        species: Array.isArray(medication.species) && medication.species.length ? medication.species : ['c�o', 'gato'],
+        species: Array.isArray(medication.species) && medication.species.length ? medication.species : ['cão', 'gato'],
         routes: Array.isArray(medication.routes) ? medication.routes : [],
         is_active: medication.is_active !== false,
         is_controlled: !!medication.is_controlled,
@@ -352,25 +438,25 @@ function mapImportedMedicationToDraft(medication: CanonicalMedication): Medicati
 
 function extractImportableMedications(raw: unknown): CanonicalMedication[] {
     if (!isRecord(raw)) {
-        throw new Error('JSON inv�lido: o conte�do precisa ser um objeto.')
+        throw new Error('JSON inválido: o conteúdo precisa ser um objeto.')
     }
 
     if (Object.prototype.hasOwnProperty.call(raw, 'medications')) {
         if (!Array.isArray(raw.medications)) {
-            throw new Error('JSON inv�lido: "medications" precisa ser um array.')
+            throw new Error('JSON inválido: "medications" precisa ser um array.')
         }
         raw.medications.forEach((entry, index) => {
             if (!isRecord(entry)) {
-                throw new Error(`JSON inv�lido: medications[${index}] precisa ser um objeto.`)
+                throw new Error(`JSON inválido: medications[${index}] precisa ser um objeto.`)
             }
             if (Object.prototype.hasOwnProperty.call(entry, 'presentations') && !Array.isArray(entry.presentations)) {
-                throw new Error(`JSON inv�lido: medications[${index}].presentations precisa ser um array.`)
+                throw new Error(`JSON inválido: medications[${index}].presentations precisa ser um array.`)
             }
             if (Object.prototype.hasOwnProperty.call(entry, 'recommended_doses') && !Array.isArray(entry.recommended_doses)) {
-                throw new Error(`JSON inv�lido: medications[${index}].recommended_doses precisa ser um array.`)
+                throw new Error(`JSON inválido: medications[${index}].recommended_doses precisa ser um array.`)
             }
             if (typeof entry.name !== 'string' || !entry.name.trim()) {
-                throw new Error(`JSON inv�lido: medications[${index}].name � obrigat�rio.`)
+                throw new Error(`JSON inválido: medications[${index}].name é obrigatório.`)
             }
         })
         const bundle = assertValidMedicationCatalogBundle(raw)
@@ -378,13 +464,13 @@ function extractImportableMedications(raw: unknown): CanonicalMedication[] {
     }
 
     if (Object.prototype.hasOwnProperty.call(raw, 'presentations') && !Array.isArray(raw.presentations)) {
-        throw new Error('JSON inv�lido: "presentations" precisa ser um array.')
+        throw new Error('JSON inválido: "presentations" precisa ser um array.')
     }
     if (Object.prototype.hasOwnProperty.call(raw, 'recommended_doses') && !Array.isArray(raw.recommended_doses)) {
-        throw new Error('JSON inv�lido: "recommended_doses" precisa ser um array.')
+        throw new Error('JSON inválido: "recommended_doses" precisa ser um array.')
     }
     if (typeof raw.name !== 'string' || !raw.name.trim()) {
-        throw new Error('JSON inv�lido: o campo "name" � obrigat�rio.')
+        throw new Error('JSON inválido: o campo "name" é obrigatório.')
     }
 
     return [raw as unknown as CanonicalMedication]
@@ -468,7 +554,7 @@ export default function Catalogo3Page() {
                 const fullMed: MedicationWithPresentations = {
                     ...details,
                     is_active: details.is_active ?? true,
-                    species: details.species || ['c�o', 'gato'],
+                    species: details.species || ['cão', 'gato'],
                     routes: details.routes || [],
                     metadata: {
                         ...medMetadata,
@@ -496,15 +582,21 @@ export default function Catalogo3Page() {
                         route: d.route,
                         dose_value: d.dose_value,
                         dose_max: (d as any).dose_max ?? null,
-                        dose_unit: d.dose_unit,
-                        per_weight_unit: (d as any).per_weight_unit ?? null,
+                        dose_unit: canonicalDoseUnit(d.dose_unit, (d as any).per_weight_unit ?? null) || 'mg/kg',
+                        per_weight_unit: null,
                         indication: (d as any).indication ?? null,
                         frequency: d.frequency,
                         frequency_min: (d as any).frequency_min ?? null,
                         frequency_max: (d as any).frequency_max ?? null,
                         frequency_mode: (d as any).frequency_mode ?? null,
                         frequency_text: (d as any).frequency_text ?? null,
+                        recurrence_value: (d as any).recurrence_value ?? null,
+                        recurrence_unit: (d as any).recurrence_unit ?? null,
                         duration: (d as any).duration ?? null,
+            administration_basis: normalizeAdministrationBasis((d as any).administration_basis ?? (d as any).metadata?.administration_basis ?? 'weight_based'),
+                        administration_amount: normalizeNumber((d as any).administration_amount ?? (d as any).metadata?.administration_amount, true),
+                        administration_unit: (d as any).administration_unit ?? (d as any).metadata?.administration_unit ?? null,
+            administration_target: normalizeAdministrationTarget((d as any).administration_target ?? (d as any).metadata?.administration_target ?? null) || null,
                         calculator_default_dose: (d as any).calculator_default_dose ?? null,
                         calculator_default_frequency: (d as any).calculator_default_frequency ?? null,
                         notes: d.notes,
@@ -665,12 +757,12 @@ export default function Catalogo3Page() {
         setImportCandidates(null)
         setValidationErrors({})
         setIsDirty(true)
-        showSuccessMessage('Importa��o conclu�da', 'Medicamento importado para revis�o. Revise e clique em Salvar dados.')
+        showSuccessMessage('Importação concluída', 'Medicamento importado para revisão. Revise e clique em Salvar dados.')
     }, [setDraft])
 
     const handleImportJsonClick = () => {
         if (isSaving) return
-        if (isDirty && !window.confirm('Importar JSON vai substituir o rascunho atual n�o salvo. Deseja continuar?')) {
+        if (isDirty && !window.confirm('Importar JSON vai substituir o rascunho atual não salvo. Deseja continuar?')) {
             return
         }
         importFileInputRef.current?.click()
@@ -687,7 +779,7 @@ export default function Catalogo3Page() {
             try {
                 parsed = JSON.parse(rawText)
             } catch {
-                throw new Error('JSON inv�lido: n�o foi poss�vel interpretar o arquivo selecionado.')
+                throw new Error('JSON inválido: não foi possível interpretar o arquivo selecionado.')
             }
 
             const medicationsToImport = extractImportableMedications(parsed)
@@ -701,7 +793,7 @@ export default function Catalogo3Page() {
                 setImportCandidates(medicationsToImport)
             }
         } catch (error: any) {
-            showValidationWarning('Erro ao importar JSON', error?.message || 'N�o foi poss�vel importar o arquivo JSON.')
+            showValidationWarning('Erro ao importar JSON', error?.message || 'Não foi possível importar o arquivo JSON.')
         } finally {
             if (importFileInputRef.current) {
                 importFileInputRef.current.value = ''
@@ -714,26 +806,26 @@ export default function Catalogo3Page() {
         let firstErrorField: string | null = null
 
         if (!draft.name?.trim()) {
-            errors['name'] = 'Nome obrigat�rio'
+            errors['name'] = 'Nome obrigatório'
             if (!firstErrorField) firstErrorField = 'Nome do Medicamento'
         } else if (draft.name.trim().length < 2) {
-            errors['name'] = 'M�nimo 2 caracteres'
+            errors['name'] = 'Mínimo 2 caracteres'
             if (!firstErrorField) firstErrorField = 'Nome do Medicamento'
         }
 
         draft.presentations.forEach((p, idx) => {
             const prefix = `pres_${p._tempId}`
             if (!p.pharmaceutical_form) {
-                errors[`${prefix}_form`] = 'Obrigat�rio'
-                if (!firstErrorField) firstErrorField = `Forma na apresenta��o ${idx + 1}`
+                errors[`${prefix}_form`] = 'Obrigatório'
+                if (!firstErrorField) firstErrorField = `Forma na apresentação ${idx + 1}`
             }
             if (p.value === null || p.value <= 0) {
-                errors[`${prefix}_value`] = 'Inv�lido'
-                if (!firstErrorField) firstErrorField = `Valor na apresenta��o ${idx + 1}`
+                errors[`${prefix}_value`] = 'Inválido'
+                if (!firstErrorField) firstErrorField = `Valor na apresentação ${idx + 1}`
             }
             if (!p.pharmacy_veterinary && !p.pharmacy_human && !p.pharmacy_compounding) {
-                errors[`${prefix}_pharmacy`] = 'Obrigat�rio'
-                if (!firstErrorField) firstErrorField = `Farm�cia na apresenta��o ${idx + 1}`
+                errors[`${prefix}_pharmacy`] = 'Obrigatório'
+                if (!firstErrorField) firstErrorField = `Farmácia na apresentação ${idx + 1}`
             }
         })
 
@@ -751,7 +843,7 @@ export default function Catalogo3Page() {
         console.log('[Catalogo3] SAVE CLICKED', new Date().toISOString())
 
         if (!isDirty) {
-            showValidationWarning('Nada para salvar', 'Nenhuma altera��o foi detectada.')
+            showValidationWarning('Nada para salvar', 'Nenhuma alteração foi detectada.')
             return false
         }
 
@@ -760,7 +852,7 @@ export default function Catalogo3Page() {
         try {
             setIsSaving(true)
             if (!clinicId || !currentUser?.id) {
-                showValidationWarning('Erro de Acesso', 'N�o foi poss�vel identificar a cl�nica ou usu�rio logado.')
+                showValidationWarning('Erro de Acesso', 'Não foi possível identificar a clínica ou o usuário logado.')
                 setIsSaving(false)
                 return false
             }
@@ -829,15 +921,21 @@ export default function Catalogo3Page() {
                     route: d.route,
                     dose_value: normalizeNumber(d.dose_value, false) || 0,
                     dose_max: normalizeNumber(d.dose_max, true),
-                    dose_unit: d.dose_unit,
-                    per_weight_unit: d.per_weight_unit || null,
+                    dose_unit: canonicalDoseUnit(d.dose_unit, d.per_weight_unit),
+                    per_weight_unit: null,
                     indication: d.indication || null,
                     frequency: d.frequency,
                     frequency_min: normalizeNumber(d.frequency_min, true),
                     frequency_max: normalizeNumber(d.frequency_max, true),
                     frequency_mode: d.frequency_mode || null,
                     frequency_text: d.frequency_text || null,
+                    recurrence_value: normalizeNumber(d.recurrence_value, true),
+                    recurrence_unit: d.recurrence_unit || null,
                     duration: d.duration || null,
+            administration_basis: normalizeAdministrationBasis(d.administration_basis || 'weight_based'),
+                    administration_amount: normalizeNumber(d.administration_amount, true),
+                    administration_unit: d.administration_unit || null,
+            administration_target: normalizeAdministrationTarget(d.administration_target || null) || null,
                     calculator_default_dose: normalizeNumber(d.calculator_default_dose, true),
                     calculator_default_frequency: normalizeNumber(d.calculator_default_frequency, true),
                     notes: d.notes,
@@ -898,7 +996,7 @@ export default function Catalogo3Page() {
             return
         }
 
-        // S� 1 apresenta��o, confirmar diretamente
+        // Só 1 apresentação, confirmar diretamente
         if (!confirm(`Excluir medicamento "${draft.name}"?`)) return
         executeDelete()
     }
@@ -906,7 +1004,7 @@ export default function Catalogo3Page() {
     const executeDelete = async () => {
         try {
             setIsSaving(true)
-            if (!clinicId || !selectedId) throw new Error('Contexto inv�lido')
+            if (!clinicId || !selectedId) throw new Error('Contexto inválido')
 
             console.log('[Catalogo3] ========== DELETE ==========')
             console.log('[Catalogo3] Deleting medication:', selectedId)
@@ -916,7 +1014,7 @@ export default function Catalogo3Page() {
             console.log('[Catalogo3] DELETE SUCCESS')
 
             // Toast + reload
-            showSuccessMessage('Sucesso', 'Medicamento exclu�do com sucesso.')
+            showSuccessMessage('Sucesso', 'Medicamento excluído com sucesso.')
 
             loadMedicationsList()
             setDraft(createEmptyMedication())
@@ -942,8 +1040,8 @@ export default function Catalogo3Page() {
             />
             <ReceituarioChrome
                 section="catalogo3"
-                title="Cat�logo"
-                subtitle="Gerenciamento avan�ado de f�rmacos e apresenta��es comerciais."
+                title="Catálogo"
+                subtitle="Gerenciamento avançado de fármacos e apresentações comerciais."
                 actions={
                     <div className="flex items-center gap-3">
                         <button
@@ -1004,7 +1102,7 @@ export default function Catalogo3Page() {
                                 <span className="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-600 transition-colors group-focus-within:text-[#39ff14]">search</span>
                                 <input
                                     type="text"
-                                    placeholder="Filtrar cat�logo..."
+                                    placeholder="Filtrar catálogo..."
                                     value={searchTerm}
                                     onChange={e => setSearchTerm(e.target.value)}
                                     className="w-full rounded-2xl border border-slate-800 bg-black/40 py-3.5 pl-12 pr-4 text-sm font-medium outline-none transition-all focus:border-[#39ff14]/40 focus:ring-1 focus:ring-[#39ff14]/30"
@@ -1040,7 +1138,7 @@ export default function Catalogo3Page() {
                                                 )}
                                             </div>
                                             <span className="text-[10px] text-slate-500 font-semibold uppercase tracking-tight truncate">
-                                                Ativo: {med.metadata?.active_ingredient || 'N�o informado'}
+                                                Ativo: {med.metadata?.active_ingredient || 'Não informado'}
                                             </span>
                                         </motion.button>
                                     ))}
@@ -1057,11 +1155,11 @@ export default function Catalogo3Page() {
                             <RxvSectionHeader
                                 icon="medication"
                                 title="DADOS DO MEDICAMENTO"
-                                subtitle="Informa��es gen�ricas e classifica��o"
+                                subtitle="Informações genéricas e classificação"
                             >
                                 <RxvPillToggle
                                     value={draft.is_active}
-                                    labels={['CAT�LOGO ATIVO', 'RASCUNHO / INATIVO']}
+                                    labels={['CATÁLOGO ATIVO', 'RASCUNHO / INATIVO']}
                                     onToggle={() => updateDraft({ is_active: !draft.is_active })}
                                 />
                             </RxvSectionHeader>
@@ -1076,7 +1174,7 @@ export default function Catalogo3Page() {
                                     />
                                 </RxvField>
 
-                                <RxvField label="F�rmaco / Princ�pio Ativo">
+                                <RxvField label="Fármaco / Princípio Ativo">
                                     <RxvInput
                                         placeholder="..."
                                         value={draft.metadata?.active_ingredient ?? ''}
@@ -1084,15 +1182,15 @@ export default function Catalogo3Page() {
                                     />
                                 </RxvField>
 
-                                <RxvField label="Classe terap�utica">
+                                <RxvField label="Classe terapêutica">
                                     <RxvInput
-                                        placeholder="Ex: Analg�sico, Antiem�tico, Antibi�tico..."
+                                        placeholder="Ex: Analgésico, Antiemético, Antibiótico..."
                                         value={draft.metadata?.therapeutic_class ?? ''}
                                         onChange={e => updateMetadata({ therapeutic_class: e.target.value })}
                                     />
                                 </RxvField>
 
-                                <RxvField label="Tags de Classifica��o Cl�nica" className="md:col-span-2">
+                                <RxvField label="Tags de Classificação Clínica" className="md:col-span-2">
                                     <RxvChipsMultiSelect
                                         options={CLINICAL_TAGS_OPTIONS}
                                         selected={draft.metadata?.clinical_tags || []}
@@ -1110,7 +1208,7 @@ export default function Catalogo3Page() {
                                     </div>
                                 </RxvField>
 
-                                <RxvField label="Esp�cies Alvo Indicadas">
+                                <RxvField label="Espécies Alvo Indicadas">
                                     <RxvChipsMultiSelect
                                         options={SPECIES_OPTIONS}
                                         selected={draft.species || []}
@@ -1121,7 +1219,7 @@ export default function Catalogo3Page() {
                                     />
                                 </RxvField>
 
-                                <RxvField label="Modo de dura��o padr�o">
+                                <RxvField label="Modo de duração padrão">
                                     <RxvSelect
                                         options={DURATION_MODE_OPTIONS}
                                         value={draft.metadata?.default_duration_mode || 'until_recheck'}
@@ -1129,17 +1227,17 @@ export default function Catalogo3Page() {
                                     />
                                 </RxvField>
 
-                                <RxvField label="Anota��es Gerais / Bula Simplificada" className="md:col-span-2">
+                                <RxvField label="Anotações Gerais / Bula Simplificada" className="md:col-span-2">
                                     <RxvTextarea
-                                        placeholder="Informa��es relevantes para o cl�nico..."
+                                        placeholder="Informações relevantes para o clínico..."
                                         value={draft.notes ?? ''}
                                         onChange={e => updateDraft({ notes: e.target.value })}
                                     />
                                 </RxvField>
 
-                                <RxvField label="Notas de formul�rio / uso interno" className="md:col-span-2">
+                                <RxvField label="Notas de formulário / uso interno" className="md:col-span-2">
                                     <RxvTextarea
-                                        placeholder="Observa��es estruturadas para acervo, uso interno e importa��o."
+                                        placeholder="Observações estruturadas para acervo, uso interno e importação."
                                         value={draft.metadata?.formulary_notes ?? ''}
                                         onChange={e => updateMetadata({ formulary_notes: e.target.value })}
                                     />
@@ -1152,7 +1250,7 @@ export default function Catalogo3Page() {
                             <RxvSectionHeader
                                 icon="clinical_notes"
                                 title="DOSES E PROTOCOLOS INDICADOS"
-                                subtitle="Sugest�es autom�ticas baseadas na esp�cie e via"
+                                subtitle="Sugestões automáticas baseadas na espécie e via"
                             >
                                 <button
                                     onClick={addRecommendedDose}
@@ -1167,7 +1265,7 @@ export default function Catalogo3Page() {
                                 <div className="flex flex-col items-center justify-center p-12 border border-dashed border-slate-800 rounded-2xl bg-black/20">
                                     <span className="material-symbols-outlined text-slate-700 text-[48px] mb-4">info</span>
                                     <p className="text-slate-500 font-bold text-sm">Nenhuma dose recomendada cadastrada.</p>
-                                    <p className="text-[10px] text-slate-600 uppercase mt-1">Crie sugest�es para agilizar a prescri��o cl�nica.</p>
+                                    <p className="text-[10px] text-slate-600 uppercase mt-1">Crie sugestões para agilizar a prescrição clínica.</p>
                                 </div>
                             ) : (
                                 <div className="space-y-4">
@@ -1182,24 +1280,24 @@ export default function Catalogo3Page() {
                                             </button>
 
                                             <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-                                                {/* Row 1: Indica��o cl�nica */}
-                                                <RxvField label="Indica��o Cl�nica" className="md:col-span-12">
+                                                {/* Row 1: Indicação clínica */}
+                                                <RxvField label="Indicação Clínica" className="md:col-span-12">
                                                     <RxvInput
                                                         value={dose.indication ?? ''}
                                                         onChange={(e) => updateRecommendedDose(dose.client_id, { indication: e.target.value || null })}
-                                                        placeholder="Ex: Analgesia cr�nica, Controle de epilepsia..."
+                                                        placeholder="Ex: Analgesia crônica, Controle de epilepsia..."
                                                     />
                                                 </RxvField>
 
-                                                {/* Row 2: Esp�cie + Via */}
-                                                <RxvField label="Esp�cie" className="md:col-span-3">
+                                                {/* Row 2: Espécie + Via */}
+                                                <RxvField label="Espécie-alvo" className="md:col-span-3">
                                                     <RxvSelect
                                                         options={SPECIES_OPTIONS}
                                                         value={dose.species}
                                                         onChange={(e) => updateRecommendedDose(dose.client_id, { species: e.target.value })}
                                                     />
                                                 </RxvField>
-                                                <RxvField label="Via" className="md:col-span-3">
+                                                <RxvField label="Via de administração" className="md:col-span-3" tooltip={TOOLTIP.via_administracao}>
                                                     <RxvSelect
                                                         options={ROUTES_OPTIONS}
                                                         value={dose.route}
@@ -1207,8 +1305,71 @@ export default function Catalogo3Page() {
                                                     />
                                                 </RxvField>
 
-                                                {/* Row 3: Dose range */}
-                                                <RxvField label="Dose m�n" className="md:col-span-2">
+                                                <RxvField label="Base de administração" className="md:col-span-6" tooltip={TOOLTIP.unidade_administracao}>
+                                                    <RxvSelect
+                                                        options={ADMINISTRATION_BASIS_OPTIONS.map((entry) => ({
+                                                            value: entry.value,
+                                                            label: entry.label,
+                                                        }))}
+                                                        value={dose.administration_basis || 'weight_based'}
+                                                        onChange={(e) => updateRecommendedDose(dose.client_id, {
+                                                            administration_basis: normalizeAdministrationBasis(e.target.value) as RecommendedDoseUI['administration_basis'],
+                                                            administration_target:
+                                                                normalizeAdministrationBasis(e.target.value) === 'per_application_site'
+                                                                    ? (dose.administration_target || 'sobre a lesao')
+                                                                    : normalizeAdministrationBasis(e.target.value) === 'per_animal'
+                                                                        ? 'por animal'
+                                                                        : null,
+                                                        })}
+                                                    />
+                                                </RxvField>
+
+                                                {isCustomAdministrationBasis(dose.administration_basis) ? (
+                                                    <>
+                                                        <RxvField label="Quantidade por administração" className="md:col-span-2" tooltip={TOOLTIP.unidade_administracao}>
+                                                            <RxvInput
+                                                                type="number"
+                                                                min="0.5"
+                                                                step="0.5"
+                                                                value={dose.administration_amount ?? ''}
+                                                                onChange={(e) => updateRecommendedDose(dose.client_id, {
+                                                                    administration_amount: e.target.value === '' ? null : Number(e.target.value),
+                                                                })}
+                                                                placeholder="Ex: 1"
+                                                            />
+                                                        </RxvField>
+                                                        <RxvField label="Unidade administrável" className="md:col-span-2" tooltip={TOOLTIP.unidade_administracao}>
+                                                            <RxvSelect
+                                                                options={ADMINISTRATION_UNIT_OPTIONS.map((entry) => ({
+                                                                    value: entry.value,
+                                                                    label: entry.label,
+                                                                }))}
+                                                                value={dose.administration_unit || ''}
+                                                                onChange={(e) => updateRecommendedDose(dose.client_id, {
+                                                                    administration_unit: e.target.value || null,
+                                                                })}
+                                                            />
+                                                        </RxvField>
+                                                        <RxvField label={isApplicationSiteBasis(dose.administration_basis) ? 'Sítio de aplicação' : 'Alvo'} className="md:col-span-2" tooltip={isApplicationSiteBasis(dose.administration_basis) ? TOOLTIP.aplicacao_por_local : TOOLTIP.aplicacao_por_animal}>
+                                                            <RxvSelect
+                                                                options={isApplicationSiteBasis(dose.administration_basis)
+                                                                    ? ADMINISTRATION_TARGET_OPTIONS
+                                                                        .filter((entry) => entry.value !== 'por animal')
+                                                                        .map((entry) => ({ value: entry.value, label: entry.label }))
+                                                                    : [{ value: 'por animal', label: 'por animal' }]}
+                                                                value={dose.administration_target || (isApplicationSiteBasis(dose.administration_basis) ? 'sobre a lesao' : 'por animal')}
+                                                                onChange={(e) => updateRecommendedDose(dose.client_id, {
+                                                                    administration_target: e.target.value || null,
+                                                                })}
+                                                            />
+                                                        </RxvField>
+                                                    </>
+                                                ) : null}
+
+                                                {/* Row 3: Dose range — ocultar para per_animal / per_application_site */}
+                                                {!isCustomAdministrationBasis(dose.administration_basis) && (
+                                                <>
+                                                <RxvField label="Dose mínima" className="md:col-span-2">
                                                     <RxvInput
                                                         type="number"
                                                         value={dose.dose_value ?? ''}
@@ -1217,9 +1378,9 @@ export default function Catalogo3Page() {
                                                     />
                                                 </RxvField>
                                                 <div className="flex items-end justify-center pb-3 md:col-span-1">
-                                                    <span className="text-slate-600 font-black text-base select-none">�</span>
+                                                    <span className="text-slate-600 font-black text-base select-none">–</span>
                                                 </div>
-                                                <RxvField label="Dose m�x" className="md:col-span-2">
+                                                <RxvField label="Dose máxima" className="md:col-span-2">
                                                     <RxvInput
                                                         type="number"
                                                         value={dose.dose_max ?? ''}
@@ -1227,93 +1388,150 @@ export default function Catalogo3Page() {
                                                         placeholder="(opcional)"
                                                     />
                                                 </RxvField>
-                                                <RxvField label="Unidade" className="md:col-span-3">
+                                                <RxvField label="Unidade de medida" className="md:col-span-3" tooltip={TOOLTIP.dose_farmacologica}>
                                                     <RxvSelect
-                                                        options={[
-                                                            ...DOSE_UNITS.map(u => typeof u === 'string' ? u : u.value).flatMap(u => [
-                                                                u,
-                                                                `${u}/kg`,
-                                                            ])
-                                                        ]}
-                                                        value={dose.per_weight_unit ? `${dose.dose_unit}/${dose.per_weight_unit}` : dose.dose_unit}
+                                                        options={DOSE_UNITS}
+                                                        value={canonicalDoseUnit(dose.dose_unit, dose.per_weight_unit)}
                                                         onChange={(e) => {
                                                             const val = e.target.value as string
-                                                            if (val.includes('/')) {
-                                                                const [unit, weight] = val.split('/')
-                                                                updateRecommendedDose(dose.client_id, { dose_unit: unit, per_weight_unit: weight })
-                                                            } else {
-                                                                updateRecommendedDose(dose.client_id, { dose_unit: val, per_weight_unit: null })
-                                                            }
+                                                            updateRecommendedDose(dose.client_id, { dose_unit: val, per_weight_unit: null })
                                                         }}
                                                     />
                                                 </RxvField>
+                                                </>
+                                                )}
 
 
-                                                {/* Row 4: Frequ�ncia range + dura��o */}
-                                                <RxvField label="Freq m�n" className="md:col-span-2">
-                                                    <RxvInput
-                                                        type="number"
-                                                        value={dose.frequency_min ?? ''}
-                                                        onChange={(e) => {
-                                                            const val = e.target.value === '' ? null : Number(e.target.value)
-                                                            const freqText = val !== null
-                                                                ? (dose.frequency_max ? `${val} a ${dose.frequency_max}x ao dia` : `${val}x ao dia`)
-                                                                : null
-                                                            updateRecommendedDose(dose.client_id, {
-                                                                frequency_min: val,
-                                                                frequency: freqText,
-                                                                frequency_text: freqText
-                                                            })
-                                                        }}
-                                                        placeholder="2"
-                                                    />
-                                                </RxvField>
-                                                <div className="flex items-end justify-center pb-3 md:col-span-1">
-                                                    <span className="text-slate-600 font-black text-base select-none">�</span>
-                                                </div>
-                                                <RxvField label="Freq m�x" className="md:col-span-2">
-                                                    <RxvInput
-                                                        type="number"
-                                                        value={dose.frequency_max ?? ''}
-                                                        onChange={(e) => {
-                                                            const val = e.target.value === '' ? null : Number(e.target.value)
-                                                            const freqText = dose.frequency_min !== null
-                                                                ? (val ? `${dose.frequency_min} a ${val}x ao dia` : `${dose.frequency_min}x ao dia`)
-                                                                : null
-                                                            updateRecommendedDose(dose.client_id, {
-                                                                frequency_max: val,
-                                                                frequency: freqText,
-                                                                frequency_text: freqText
-                                                            })
-                                                        }}
-                                                        placeholder="(opc.)"
-                                                    />
-                                                </RxvField>
-                                                <RxvField label="Modo" className="md:col-span-2">
+                                                {/* Row 4: frequência + periodicidade + duração */}
+                                                <RxvField label="Modo de frequência" className="md:col-span-3" tooltip={TOOLTIP.modo_frequencia}>
                                                     <RxvSelect
-                                                        options={[
-                                                            { value: 'times_per_day', label: 'x ao dia' },
-                                                            { value: 'every_x_hours', label: 'a cada Xh' },
-                                                            { value: 'custom', label: 'personalizado' },
-                                                        ]}
+                                                        options={RECOMMENDED_FREQUENCY_MODE_OPTIONS}
                                                         value={dose.frequency_mode || 'times_per_day'}
-                                                        onChange={(e) => updateRecommendedDose(dose.client_id, { frequency_mode: e.target.value })}
+                                                        onChange={(e) => {
+                                                            const nextMode = e.target.value
+                                                            const patch: Partial<RecommendedDoseUI> = {
+                                                                frequency_mode: nextMode,
+                                                                frequency_text: nextMode === 'custom' ? (dose.frequency_text || dose.frequency || '') : buildRecommendedFrequencyText({ ...dose, frequency_mode: nextMode }),
+                                                                frequency: buildRecommendedFrequencyText({ ...dose, frequency_mode: nextMode }),
+                                                            }
+                                                            if (nextMode === 'single_dose') {
+                                                                patch.frequency_min = null
+                                                                patch.frequency_max = null
+                                                            }
+                                                            updateRecommendedDose(dose.client_id, patch)
+                                                        }}
                                                     />
                                                 </RxvField>
-                                                <RxvField label="Dura��o" className="md:col-span-5">
+                                                {dose.frequency_mode === 'repeat_interval' ? (
+                                                    <>
+                                                        <RxvField label="Repetir a cada" className="md:col-span-2">
+                                                            <RxvInput
+                                                                type="number"
+                                                                min="1"
+                                                                step="1"
+                                                                value={dose.recurrence_value ?? ''}
+                                                                onChange={(e) => {
+                                                                    const recurrenceValue = e.target.value === '' ? null : Number(e.target.value)
+                                                                    updateRecommendedDose(dose.client_id, {
+                                                                        recurrence_value: recurrenceValue,
+                                                                        frequency: buildRecommendedFrequencyText({ ...dose, recurrence_value: recurrenceValue }),
+                                                                        frequency_text: buildRecommendedFrequencyText({ ...dose, recurrence_value: recurrenceValue }),
+                                                                    })
+                                                                }}
+                                                                placeholder="12"
+                                                            />
+                                                        </RxvField>
+                                                        <RxvField label="Unidade" className="md:col-span-2">
+                                                            <RxvSelect
+                                                                options={RECURRENCE_UNIT_OPTIONS}
+                                                                value={dose.recurrence_unit || 'semanas'}
+                                                                onChange={(e) => updateRecommendedDose(dose.client_id, {
+                                                                    recurrence_unit: e.target.value,
+                                                                    frequency: buildRecommendedFrequencyText({ ...dose, recurrence_unit: e.target.value }),
+                                                                    frequency_text: buildRecommendedFrequencyText({ ...dose, recurrence_unit: e.target.value }),
+                                                                })}
+                                                            />
+                                                        </RxvField>
+                                                    </>
+                                                ) : dose.frequency_mode === 'single_dose' ? (
+                                                    <div className="md:col-span-4 rounded-xl border border-dashed border-slate-700 bg-slate-900/30 px-3 py-3 text-sm text-slate-300">
+                                                        Em dose única
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <RxvField label={dose.frequency_mode === 'every_x_hours' ? 'Intervalo mínimo (h)' : 'Frequência mínima'} className="md:col-span-2">
+                                                            <RxvInput
+                                                                type="number"
+                                                                value={dose.frequency_min ?? ''}
+                                                                onChange={(e) => {
+                                                                    const val = e.target.value === '' ? null : Number(e.target.value)
+                                                                    const next = { ...dose, frequency_min: val }
+                                                                    const freqText = buildRecommendedFrequencyText(next)
+                                                                    updateRecommendedDose(dose.client_id, {
+                                                                        frequency_min: val,
+                                                                        frequency: freqText,
+                                                                        frequency_text: dose.frequency_mode === 'custom' ? (dose.frequency_text || null) : freqText,
+                                                                    })
+                                                                }}
+                                                                placeholder={dose.frequency_mode === 'every_x_hours' ? '12' : '2'}
+                                                            />
+                                                        </RxvField>
+                                                        <div className="flex items-end justify-center pb-3 md:col-span-1">
+                                                            <span className="text-slate-600 font-black text-base select-none">–</span>
+                                                        </div>
+                                                        <RxvField label={dose.frequency_mode === 'every_x_hours' ? 'Intervalo máximo (h)' : 'Frequência máxima'} className="md:col-span-2">
+                                                            <RxvInput
+                                                                type="number"
+                                                                value={dose.frequency_max ?? ''}
+                                                                onChange={(e) => {
+                                                                    const val = e.target.value === '' ? null : Number(e.target.value)
+                                                                    const next = { ...dose, frequency_max: val }
+                                                                    const freqText = buildRecommendedFrequencyText(next)
+                                                                    updateRecommendedDose(dose.client_id, {
+                                                                        frequency_max: val,
+                                                                        frequency: freqText,
+                                                                        frequency_text: dose.frequency_mode === 'custom' ? (dose.frequency_text || null) : freqText,
+                                                                    })
+                                                                }}
+                                                                placeholder="(opc.)"
+                                                            />
+                                                        </RxvField>
+                                                    </>
+                                                )}
+                                                {dose.frequency_mode === 'single_dose' ? (
+                                                    <div className="md:col-span-5 flex items-end pb-1">
+                                                        <span className="inline-flex items-center gap-1 rounded-full border border-dashed border-slate-700 bg-slate-900/30 px-3 py-1.5 text-xs text-slate-400">
+                                                            Duração: dose única
+                                                        </span>
+                                                    </div>
+                                                ) : (
+                                                <RxvField label="Duração do tratamento" className="md:col-span-5" tooltip={TOOLTIP.modo_duracao}>
                                                     <RxvInput
                                                         value={dose.duration ?? ''}
                                                         onChange={(e) => updateRecommendedDose(dose.client_id, { duration: e.target.value || null })}
                                                         placeholder="7 dias, conforme resposta..."
                                                     />
                                                 </RxvField>
+                                                )}
+                                                {dose.frequency_mode === 'custom' ? (
+                                                    <RxvField label="Texto da frequência" className="md:col-span-12">
+                                                        <RxvInput
+                                                            value={dose.frequency_text ?? ''}
+                                                            onChange={(e) => updateRecommendedDose(dose.client_id, {
+                                                                frequency_text: e.target.value || null,
+                                                                frequency: e.target.value || null,
+                                                            })}
+                                                            placeholder="Ex: repetir a cada 21 dias"
+                                                        />
+                                                    </RxvField>
+                                                ) : null}
 
-                                                {/* Row 5: Observa��es (multiline textarea) */}
-                                                <RxvField label="Observa��es de Uso" className="md:col-span-12">
+                                                {/* Row 5: Observações (multiline textarea) */}
+                                                <RxvField label="Observações de Uso" className="md:col-span-12" tooltip={TOOLTIP.observacoes_uso}>
                                                     <RxvTextarea
                                                         value={dose.notes ?? ''}
                                                         onChange={(e) => updateRecommendedDose(dose.client_id, { notes: e.target.value || null })}
-                                                        placeholder="Ex: Iniciar na extremidade inferior da faixa em pacientes sens�veis. Monitorar fun��o hep�tica ap�s 14 dias..."
+                                                        placeholder="Ex: Iniciar na extremidade inferior da faixa em pacientes sensíveis. Monitorar função hepática após 14 dias..."
                                                         style={{ minHeight: '80px' }}
                                                     />
                                                 </RxvField>
@@ -1328,14 +1546,13 @@ export default function Catalogo3Page() {
                                                     {dose.route}
                                                 </span>
                                                 <span className="px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 font-bold border border-amber-500/20">
-                                                    {dose.dose_value ?? '�'}{dose.dose_max ? `�${dose.dose_max}` : ''} {dose.dose_unit}
-                                                    {dose.per_weight_unit ? `/${dose.per_weight_unit}` : ''}
+                                                    {isCustomAdministrationBasis(dose.administration_basis)
+                                                        ? `${dose.administration_amount ?? 1} ${dose.administration_unit || 'unidade'} ${dose.administration_target || (isApplicationSiteBasis(dose.administration_basis) ? 'sobre a lesao' : 'por animal')}`
+                                                        : `${dose.dose_value ?? '–'}${dose.dose_max ? `–${dose.dose_max}` : ''}${canonicalDoseUnit(dose.dose_unit, dose.per_weight_unit) ? ` ${canonicalDoseUnit(dose.dose_unit, dose.per_weight_unit)}` : ''}`}
                                                 </span>
-                                                {(dose.frequency_min || dose.frequency) && (
+                                                {buildRecommendedFrequencyText(dose) && (
                                                     <span className="px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-400 font-bold border border-purple-500/20">
-                                                        {dose.frequency_min ? (
-                                                            dose.frequency_max ? `${dose.frequency_min}�${dose.frequency_max}x/dia` : `${dose.frequency_min}x/dia`
-                                                        ) : dose.frequency}
+                                                        {buildRecommendedFrequencyText(dose)}
                                                     </span>
                                                 )}
                                                 {dose.indication && (
@@ -1348,14 +1565,14 @@ export default function Catalogo3Page() {
                             )}
                         </RxvCard>
 
-                        {/* 3. LISTA DE APRESENTA��ES */}
+                        {/* 3. LISTA DE APRESENTAÇÕES */}
                         <div className="space-y-4">
                             <div className="flex items-center justify-between px-2">
                                 <div className="flex items-center gap-3">
                                     <div className="h-8 w-1 bg-[#39ff14] rounded-full shadow-[0_0_10px_rgba(57,255,20,0.5)]" />
                                     <div>
-                                        <h2 className="text-lg font-black text-white italic tracking-tight uppercase">APRESENTA��ES COMERCIAIS</h2>
-                                        <p className="text-[10px] font-bold text-slate-600 uppercase tracking-tight">Formas, concentra��es e especifica��es t�cnicas</p>
+                                        <h2 className="text-lg font-black text-white italic tracking-tight uppercase">APRESENTAÇÕES COMERCIAIS</h2>
+                                        <p className="text-[10px] font-bold text-slate-600 uppercase tracking-tight">Formas, concentrações e especificações técnicas</p>
                                     </div>
                                 </div>
                                 <button
@@ -1379,7 +1596,7 @@ export default function Catalogo3Page() {
 
                                             <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
                                                 {/* BASIC INFO */}
-                                                <RxvField label="Forma Farmac�utica *" error={hasFormError} className="md:col-span-3">
+                                                <RxvField label="Forma Farmacêutica *" error={hasFormError} className="md:col-span-3">
                                                     <RxvSelect
                                                         options={PHARMACEUTICAL_FORMS}
                                                         value={pres.pharmaceutical_form ?? ''}
@@ -1390,13 +1607,13 @@ export default function Catalogo3Page() {
 
                                                 <RxvField label="Nome comercial / Identificador" className="md:col-span-6">
                                                     <RxvInput
-                                                        placeholder="Ex: Lab X, Medicamento Gen�rico..."
+                                                        placeholder="Ex: Lab X, Medicamento Genérico..."
                                                         value={pres.commercial_name ?? ''}
                                                         onChange={e => updatePresentation(pres._tempId!, { commercial_name: e.target.value })}
                                                     />
                                                 </RxvField>
 
-                                                <RxvField label="Laborat�rio (Fabricante)" className="md:col-span-3">
+                                                <RxvField label="Laboratório (Fabricante)" className="md:col-span-3">
                                                     <RxvInput
                                                         placeholder="..."
                                                         value={pres.metadata?.manufacturer ?? ''}
@@ -1404,7 +1621,7 @@ export default function Catalogo3Page() {
                                                     />
                                                 </RxvField>
 
-                                                <RxvField label="Unidade de apresenta��o" className="md:col-span-3">
+                                                <RxvField label="Unidade de apresentação" className="md:col-span-3">
                                                     <RxvInput
                                                         placeholder="Ex: comprimido, frasco, bisnaga..."
                                                         value={pres.presentation_unit ?? ''}
@@ -1414,23 +1631,23 @@ export default function Catalogo3Page() {
 
                                                 <RxvField label="Componente adicional" className="md:col-span-6">
                                                     <RxvInput
-                                                        placeholder="Ex: clavulanato, ve�culo, associa��o..."
+                                                        placeholder="Ex: clavulanato, veículo, associação..."
                                                         value={pres.additional_component ?? ''}
                                                         onChange={e => updatePresentation(pres._tempId!, { additional_component: e.target.value || null })}
                                                     />
                                                 </RxvField>
 
-                                                {/* CONCENTRA��O / COMPOSI��O */}
+                                                {/* CONCENTRAÇÃO / COMPOSIÇÃO */}
                                                 <div className="md:col-span-12">
                                                     <div className="flex items-center gap-3 mb-3">
                                                         <div className="h-[1px] flex-1 bg-slate-800/60" />
-                                                        <span className="text-[9px] font-black text-slate-600 uppercase tracking-[0.3em] italic">Composi��o e For�a</span>
+                                                        <span className="text-[9px] font-black text-slate-600 uppercase tracking-[0.3em] italic">Composição e Força</span>
                                                         <div className="h-[1px] flex-1 bg-slate-800/60" />
                                                     </div>
 
                                                     <div className="flex flex-wrap items-center gap-3 rounded-2xl bg-black/40 p-4 border border-slate-800/50">
                                                         <div className="w-28 space-y-1">
-                                                            <label className="text-[8px] font-black text-slate-500 uppercase pl-1">Concentra��o</label>
+                                                            <label className="text-[8px] font-black text-slate-500 uppercase pl-1">Concentração</label>
                                                             <RxvInput
                                                                 type="number"
                                                                 className="text-center font-black text-[#39ff14]"
@@ -1476,7 +1693,7 @@ export default function Catalogo3Page() {
                                                     </div>
                                                 </div>
 
-                                                <RxvField label="Texto de concentra��o exibido" className="md:col-span-6">
+                                                <RxvField label="Texto de concentração exibido" className="md:col-span-6">
                                                     <RxvInput
                                                         placeholder="Ex: 250 mg/comprimido"
                                                         value={pres.concentration_text ?? ''}
@@ -1484,9 +1701,9 @@ export default function Catalogo3Page() {
                                                     />
                                                 </RxvField>
 
-                                                <RxvField label="Observa��es da apresenta��o" className="md:col-span-6">
+                                                <RxvField label="Observações da apresentação" className="md:col-span-6">
                                                     <RxvTextarea
-                                                        placeholder="Ex: comprimido sulcado, suspens�o saborizada, uso preferencial..."
+                                                        placeholder="Ex: comprimido sulcado, suspensão saborizada, uso preferencial..."
                                                         value={pres.metadata?.obs ?? ''}
                                                         onChange={e => updatePresentationMetadata(pres._tempId!, { obs: e.target.value })}
                                                     />
@@ -1494,7 +1711,7 @@ export default function Catalogo3Page() {
 
                                                 {/* EMBALAGEM E VIAS */}
                                                 {/* Embalagem removida do Supabase por enquanto */}
-                                                <RxvField label="Vias de Administra��o Sugeridas" className="md:col-span-8">
+                                                <RxvField label="Vias de Administração Sugeridas" className="md:col-span-8">
                                                     <RxvChipsMultiSelect
                                                         options={ROUTES_OPTIONS}
                                                         selected={pres.metadata?.administration_routes || []}
@@ -1502,9 +1719,9 @@ export default function Catalogo3Page() {
                                                     />
                                                 </RxvField>
 
-                                                {/* FARM�CIA E CUSTO */}
+                                                {/* FARMÁCIA E CUSTO */}
                                                 <RxvField
-                                                    label="Origem da Farm�cia * (Selecione pelo menos um)"
+                                                    label="Origem da Farmácia * (Selecione pelo menos um)"
                                                     error={hasPharmacyError}
                                                     className="md:col-span-6"
                                                 >
@@ -1552,7 +1769,7 @@ export default function Catalogo3Page() {
                                     <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-dashed border-slate-700 bg-slate-900/40 text-slate-600 group-hover:border-[#39ff14]/50 group-hover:text-[#39ff14] group-hover:shadow-[0_0_40px_rgba(57,255,20,0.2)] transition-all">
                                         <span className="material-symbols-outlined text-[36px]">add</span>
                                     </div>
-                                    <span className="text-[11px] font-black text-slate-600 uppercase tracking-[0.4em] group-hover:text-[#39ff14]">Nova Apresenta��o</span>
+                                    <span className="text-[11px] font-black text-slate-600 uppercase tracking-[0.4em] group-hover:text-[#39ff14]">Nova Apresentação</span>
                                 </button>
                             </div>
                         </div>
@@ -1608,8 +1825,8 @@ export default function Catalogo3Page() {
                                 <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-amber-500/10 text-amber-500 border border-amber-500/30 shadow-[0_0_30px_rgba(245,158,11,0.2)]">
                                     <span className="material-symbols-outlined text-[48px]">warning</span>
                                 </div>
-                                <h3 className="text-2xl font-black text-white italic mb-2 tracking-tight">DADOS N�O SALVOS</h3>
-                                <p className="text-sm text-slate-400 font-medium px-4 mb-8">Deseja gravar as altera��es feitas ou descartar?</p>
+                                <h3 className="text-2xl font-black text-white italic mb-2 tracking-tight">DADOS NÃO SALVOS</h3>
+                                <p className="text-sm text-slate-400 font-medium px-4 mb-8">Deseja gravar as alterações feitas ou descartar?</p>
 
                                 <div className="flex flex-col w-full gap-3">
                                     <button
@@ -1622,7 +1839,7 @@ export default function Catalogo3Page() {
                                         onClick={handleDiscardChanges}
                                         className="w-full rounded-2xl border border-slate-800 bg-slate-900/50 py-4 text-xs font-black uppercase tracking-[0.2em] text-white hover:bg-red-500/10 hover:border-red-500/40 transition-all"
                                     >
-                                        Descartar Altera��es
+                                        Descartar Alterações
                                     </button>
                                     <button
                                         onClick={() => setShowUnsavedModal(null)}
@@ -1652,7 +1869,7 @@ export default function Catalogo3Page() {
                                 <h3 className="text-2xl font-black text-white italic mb-2 tracking-tight">EXCLUIR MEDICAMENTO?</h3>
                                 <p className="text-sm text-white font-bold mb-2">Medicamento: <span className="text-[#39ff14]">{draft.name}</span></p>
                                 <p className="text-sm text-slate-400 font-medium px-4 mb-8">
-                                    Possui {draft.presentations.length} apresenta��es. Esta a��o n�o pode ser desfeita.
+                                    Possui {draft.presentations.length} apresentações. Esta ação não pode ser desfeita.
                                 </p>
 
                                 <div className="flex flex-col w-full gap-3">
@@ -1687,7 +1904,7 @@ export default function Catalogo3Page() {
                                 <div>
                                     <h3 className="text-2xl font-black text-white italic tracking-tight">Selecionar medicamento do JSON</h3>
                                     <p className="mt-2 text-sm text-slate-400">
-                                        O arquivo cont�m {importCandidates.length} medicamentos. Escolha 1 para preencher o editor atual.
+                                        O arquivo contém {importCandidates.length} medicamentos. Escolha 1 para preencher o editor atual.
                                     </p>
                                 </div>
                                 <button
@@ -1709,7 +1926,7 @@ export default function Catalogo3Page() {
                                             <div>
                                                 <p className="text-base font-black text-white">{candidate.name}</p>
                                                 <p className="mt-1 text-xs font-bold uppercase tracking-widest text-slate-500">
-                                                    {candidate.active_ingredient || 'Sem princ�pio ativo informado'}
+                                                    {candidate.active_ingredient || 'Sem princípio ativo informado'}
                                                 </p>
                                             </div>
                                             <span className="rounded-full border border-[#39ff14]/30 bg-[#39ff14]/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-[#39ff14]">
@@ -1717,9 +1934,9 @@ export default function Catalogo3Page() {
                                             </span>
                                         </div>
                                         <div className="mt-3 flex flex-wrap gap-2 text-[11px] font-bold uppercase tracking-wide text-slate-400">
-                                            <span>{Array.isArray(candidate.presentations) ? candidate.presentations.length : 0} apresenta��es</span>
+                                            <span>{Array.isArray(candidate.presentations) ? candidate.presentations.length : 0} apresentações</span>
                                             <span>{Array.isArray(candidate.recommended_doses) ? candidate.recommended_doses.length : 0} doses</span>
-                                            <span>{Array.isArray(candidate.species) && candidate.species.length ? candidate.species.join(' � ') : 'Esp�cies n�o informadas'}</span>
+                                            <span>{Array.isArray(candidate.species) && candidate.species.length ? candidate.species.join(' • ') : 'Espécies não informadas'}</span>
                                         </div>
                                     </button>
                                 ))}

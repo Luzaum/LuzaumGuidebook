@@ -1,0 +1,48 @@
+{
+  "ok": true,
+  "timestamp": "2026-04-06T01:17:20.467Z",
+  "routeLoaded": true,
+  "buildPassed": true,
+  "catalogRepresentsPerAnimal": true,
+  "catalogDoseUnitCanonical": true,
+  "recipeCases": {
+    "comprimidoPorAnimal": true,
+    "pipetaPorAnimal": true,
+    "sachePorAnimal": true,
+    "gotasOuvido": true,
+    "gotaOlho": true,
+    "borrifadaNarina": true,
+    "clickLesao": true,
+    "pumpLesao": true
+  },
+  "reviewCases": {
+    "comprimidoPorAnimal": true,
+    "pipetaPorAnimal": true,
+    "sachePorAnimal": true
+  },
+  "noInvalidUnitCombination": true,
+  "reviewMatches": true,
+  "pdfExported": true,
+  "protocolImportRendered": true,
+  "artifacts": {
+    "screenshots": [
+      "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\front-phase2c\\phase2c-receita-preview.png",
+      "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\front-phase2c\\phase2c-review.png",
+      "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\front-phase2c\\phase2c-protocol-list.png",
+      "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\front-phase2c\\phase2c-protocol-applied.png"
+    ],
+    "pdfPath": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\downloads\\front-phase2c-1775438254882-PACIENTE_E2E_TUTOR_E2E_05-04-2026.pdf"
+  },
+  "entities": {
+    "protocolName": "Protocolo Site Phase2C 1775438240467",
+    "protocolId": "c25b170b-2d3e-4c64-a6b6-1c43cc89c7a4",
+    "catalogRecommended": {
+      "administration_basis": "per_animal",
+      "administration_amount": 1,
+      "administration_unit": "comprimido",
+      "administration_target": "por animal",
+      "dose_unit": "mg/kg"
+    }
+  },
+  "errors": []
+}

@@ -6,6 +6,8 @@ import {
   COMPOUNDED_FREQUENCY_MODE_OPTIONS,
   COMPOUNDED_TIMES_PER_DAY_OPTIONS,
 } from '../compoundedStructuredEditing'
+import { AdministrationBasisEditor } from './AdministrationBasisEditor'
+import type { AdministrationBasis } from '../vetPosologyShared'
 
 export function CompoundedStructuredRegimenEditor(props: {
   doseSummary: string
@@ -22,41 +24,112 @@ export function CompoundedStructuredRegimenEditor(props: {
   onDurationModeChange: (value: string) => void
   onDurationValueChange: (value: string) => void
   onDurationUnitChange: (value: string) => void
+  // Administração por unidade / sítio
+  administrationBasis?: AdministrationBasis | string | null
+  administrationAmount?: number | string | null
+  administrationUnit?: string | null
+  administrationTarget?: string | null
+  onAdministrationBasisChange?: (value: AdministrationBasis) => void
+  onAdministrationAmountChange?: (value: string) => void
+  onAdministrationUnitChange?: (value: string) => void
+  onAdministrationTargetChange?: (value: string) => void
   className?: string
 }) {
+  const isDurationFixed = props.durationMode === 'fixed_days'
+  const hasAdminCallbacks = !!props.onAdministrationBasisChange
+
   return (
     <div className={props.className || ''}>
-      <div className="grid grid-cols-1 gap-x-6 gap-y-5 xl:grid-cols-12">
-        <RxvField label="Dose final por administração" className="xl:col-span-4">
-          <div className="flex h-full flex-col gap-3 rounded-2xl border border-slate-800 bg-black/20 p-4">
-            <p className="text-sm font-semibold text-white">{props.doseSummary || 'Dose não definida'}</p>
-            <div>
-              <RxvButton variant="secondary" onClick={props.onEditDose}>Editar dose</RxvButton>
-            </div>
-          </div>
-        </RxvField>
-        <RxvField label="Modo de frequência" className="xl:col-span-4">
-          <RxvSelect value={props.frequencyMode} onChange={(event) => props.onFrequencyModeChange(event.target.value)} options={COMPOUNDED_FREQUENCY_MODE_OPTIONS as unknown as { value: string; label: string }[]} />
-        </RxvField>
-        <RxvField label={props.frequencyMode === 'interval_hours' ? 'Intervalo (horas)' : 'Frequência'} className="xl:col-span-4">
-          {props.frequencyMode === 'interval_hours' ? (
-            <RxvInput type="number" min="1" step="1" value={props.intervalHours ?? ''} onChange={(event) => props.onIntervalHoursChange(event.target.value)} placeholder="Ex: 12" />
-          ) : (
-            <RxvSelect value={props.timesPerDay != null && props.timesPerDay !== '' ? String(props.timesPerDay) : ''} onChange={(event) => props.onTimesPerDayChange(event.target.value)} options={COMPOUNDED_TIMES_PER_DAY_OPTIONS as unknown as { value: string; label: string }[]} />
-          )}
-        </RxvField>
+
+      {/* ── Grupo 0: Administração por unidade / sítio (opcional) ── */}
+      {hasAdminCallbacks && (
+        <AdministrationBasisEditor
+          administrationBasis={props.administrationBasis}
+          administrationAmount={props.administrationAmount}
+          administrationUnit={props.administrationUnit}
+          administrationTarget={props.administrationTarget}
+          onBasisChange={props.onAdministrationBasisChange!}
+          onAmountChange={props.onAdministrationAmountChange!}
+          onUnitChange={props.onAdministrationUnitChange!}
+          onTargetChange={props.onAdministrationTargetChange!}
+          className="mb-4 rounded-xl border border-slate-800 bg-black/15 px-4 py-3"
+        />
+      )}
+
+      {/* ── Grupo 1: Dose ── */}
+      <div className="mb-4 rounded-xl border border-slate-800 bg-black/20 px-4 py-3">
+        <p className="mb-2 text-[10px] font-black uppercase tracking-[0.18em] text-[color:var(--rxv-muted)]">Dose por administração</p>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <p className="text-sm font-semibold text-white">{props.doseSummary || 'Dose não definida'}</p>
+          <RxvButton variant="secondary" onClick={props.onEditDose}>Editar dose</RxvButton>
+        </div>
       </div>
-      <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-5 xl:grid-cols-12">
-        <RxvField label="Modo de duração" className="xl:col-span-4">
-          <RxvSelect value={props.durationMode} onChange={(event) => props.onDurationModeChange(event.target.value)} options={COMPOUNDED_DURATION_MODE_OPTIONS as unknown as { value: string; label: string }[]} />
-        </RxvField>
-        <RxvField label="Valor da duração" className="xl:col-span-4">
-          <RxvInput type="number" min="1" step="1" value={props.durationMode === 'fixed_days' ? (props.durationValue ?? '') : ''} onChange={(event) => props.onDurationValueChange(event.target.value)} placeholder="Ex: 4" disabled={props.durationMode !== 'fixed_days'} />
-        </RxvField>
-        <RxvField label="Unidade da duração" className="xl:col-span-4">
-          <RxvSelect value={props.durationUnit} onChange={(event) => props.onDurationUnitChange(event.target.value)} options={COMPOUNDED_DURATION_UNIT_OPTIONS as unknown as { value: string; label: string }[]} disabled={props.durationMode !== 'fixed_days'} />
-        </RxvField>
+
+      {/* ── Grupo 2: Frequência ── */}
+      <div className="mb-4">
+        <p className="mb-2 text-[10px] font-black uppercase tracking-[0.18em] text-[color:var(--rxv-muted)]">Frequência</p>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <RxvField label="Modo">
+            <RxvSelect
+              value={props.frequencyMode}
+              onChange={(e) => props.onFrequencyModeChange(e.target.value)}
+              options={COMPOUNDED_FREQUENCY_MODE_OPTIONS as unknown as { value: string; label: string }[]}
+            />
+          </RxvField>
+          <RxvField label={props.frequencyMode === 'interval_hours' ? 'Intervalo (horas)' : 'Vezes por dia'}>
+            {props.frequencyMode === 'interval_hours' ? (
+              <RxvInput
+                type="number"
+                min="1"
+                step="1"
+                value={props.intervalHours ?? ''}
+                onChange={(e) => props.onIntervalHoursChange(e.target.value)}
+                placeholder="Ex: 12"
+              />
+            ) : (
+              <RxvSelect
+                value={props.timesPerDay != null && props.timesPerDay !== '' ? String(props.timesPerDay) : ''}
+                onChange={(e) => props.onTimesPerDayChange(e.target.value)}
+                options={COMPOUNDED_TIMES_PER_DAY_OPTIONS as unknown as { value: string; label: string }[]}
+              />
+            )}
+          </RxvField>
+        </div>
       </div>
+
+      {/* ── Grupo 3: Duração ── */}
+      <div>
+        <p className="mb-2 text-[10px] font-black uppercase tracking-[0.18em] text-[color:var(--rxv-muted)]">Duração</p>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+          <RxvField label="Modo">
+            <RxvSelect
+              value={props.durationMode}
+              onChange={(e) => props.onDurationModeChange(e.target.value)}
+              options={COMPOUNDED_DURATION_MODE_OPTIONS as unknown as { value: string; label: string }[]}
+            />
+          </RxvField>
+          <RxvField label="Quantidade">
+            <RxvInput
+              type="number"
+              min="1"
+              step="1"
+              value={isDurationFixed ? (props.durationValue ?? '') : ''}
+              onChange={(e) => props.onDurationValueChange(e.target.value)}
+              placeholder="Ex: 10"
+              disabled={!isDurationFixed}
+            />
+          </RxvField>
+          <RxvField label="Unidade">
+            <RxvSelect
+              value={props.durationUnit}
+              onChange={(e) => props.onDurationUnitChange(e.target.value)}
+              options={COMPOUNDED_DURATION_UNIT_OPTIONS as unknown as { value: string; label: string }[]}
+              disabled={!isDurationFixed}
+            />
+          </RxvField>
+        </div>
+      </div>
+
     </div>
   )
 }

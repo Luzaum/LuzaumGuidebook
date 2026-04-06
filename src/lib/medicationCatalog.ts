@@ -83,7 +83,13 @@ export interface CanonicalRecommendedDose {
   frequency_max?: number | null
   frequency_mode?: string | null
   frequency_text?: string | null
+  recurrence_value?: number | null
+  recurrence_unit?: string | null
   duration?: string | null
+  administration_basis?: string | null
+  administration_amount?: number | null
+  administration_unit?: string | null
+  administration_target?: string | null
   calculator_default_dose?: number | null
   calculator_default_frequency?: number | null
   notes?: string | null
@@ -287,11 +293,16 @@ export function buildConcentrationLabel(input?: PresentationShape | null): strin
 
   if (value !== null && value > 0 && valueUnit) {
     const base = `${formatNumberLabel(value)} ${valueUnit}`
+    const normalizedBase = base.toLowerCase()
+    const normalizedPerUnit = perUnit.toLowerCase()
+    const baseAlreadyHasPerUnit =
+      !!normalizedPerUnit &&
+      (normalizedBase.endsWith(`/${normalizedPerUnit}`) || normalizedBase.includes(`/${normalizedPerUnit} `))
     if (perUnit) {
       const divisor = perValue !== null && perValue > 0 && perValue !== 1
         ? `${formatNumberLabel(perValue)} ${perUnit}`
         : perUnit
-      return `${base}/${divisor}`.trim()
+      return baseAlreadyHasPerUnit ? base.trim() : `${base}/${divisor}`.trim()
     }
     return base
   }
@@ -419,7 +430,13 @@ function normalizeRecommendedDose(raw: unknown, medicationSlug: string, fallback
   const frequency = safeString(resolveAlias(input, 'frequency')) || frequencyText || null
   // Clinical fields
   const indication = safeString(resolveAlias(input, 'indication')) || null
+  const recurrenceValue = toNumberOrNull(resolveAlias(input, 'recurrence_value', 'recurrenceValue'))
+  const recurrenceUnit = safeString(resolveAlias(input, 'recurrence_unit', 'recurrenceUnit')) || null
   const duration = safeString(resolveAlias(input, 'duration')) || null
+  const administrationBasis = safeString(resolveAlias(input, 'administration_basis', 'administrationBasis')) || null
+  const administrationAmount = toNumberOrNull(resolveAlias(input, 'administration_amount', 'administrationAmount'))
+  const administrationUnit = safeString(resolveAlias(input, 'administration_unit', 'administrationUnit')) || null
+  const administrationTarget = safeString(resolveAlias(input, 'administration_target', 'administrationTarget')) || null
   const calculatorDefaultDose = toNumberOrNull(resolveAlias(input, 'calculator_default_dose', 'calculatorDefaultDose'))
   const calculatorDefaultFrequency = toNumberOrNull(resolveAlias(input, 'calculator_default_frequency', 'calculatorDefaultFrequency'))
   const notes = safeString(resolveAlias(input, 'notes')) || null
@@ -438,7 +455,13 @@ function normalizeRecommendedDose(raw: unknown, medicationSlug: string, fallback
     frequency_max: frequencyMax,
     frequency_mode: frequencyMode,
     frequency_text: frequencyText,
+    recurrence_value: recurrenceValue,
+    recurrence_unit: recurrenceUnit,
     duration,
+    administration_basis: administrationBasis,
+    administration_amount: administrationAmount,
+    administration_unit: administrationUnit,
+    administration_target: administrationTarget,
     calculator_default_dose: calculatorDefaultDose,
     calculator_default_frequency: calculatorDefaultFrequency,
     notes,

@@ -1,0 +1,43 @@
+{
+  "ok": true,
+  "timestamp": "2026-04-06T00:23:13.361Z",
+  "catalogRepresentsUnitPerAnimal": true,
+  "manipuladoSiteCasesRendered": true,
+  "protocolCanImportAndRender": true,
+  "recipePreviewCorrect": true,
+  "reviewCorrect": true,
+  "pdfExported": true,
+  "classicModeRegressionOk": true,
+  "phrases": {
+    "unitPerAnimal": "Administrar 1 comprimido por animal",
+    "siteOtic": "Aplicar 4 gotas em cada ouvido",
+    "siteLesion": "Aplicar 1 click sobre a lesão"
+  },
+  "artifacts": {
+    "screenshots": [
+      "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\shared-administration-phase2a\\phase2a-receita-preview.png",
+      "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\shared-administration-phase2a\\phase2a-review.png",
+      "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\shared-administration-phase2a\\phase2a-protocol-list.png"
+    ],
+    "pdfPath": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\downloads\\shared-administration-phase2a-1775435010228-PACIENTE_E2E_TUTOR_E2E_05-04-2026.pdf"
+  },
+  "entities": {
+    "medicationName": "Bravecto UnitPerAnimal E2E 1775434993361",
+    "medicationId": "a01c7c3c-9764-4a17-9269-2ab003c39431",
+    "protocolName": "Protocolo Site Admin E2E 1775434993361",
+    "protocolId": "52292c5c-80d7-46a7-b445-bfa1ac0612f5",
+    "recommendedAdministration": {
+      "administration_basis": "unit_per_animal",
+      "administration_amount": 1,
+      "administration_unit": "comprimido",
+      "administration_target": "por animal"
+    },
+    "protocolAdministration": {
+      "administration_basis": "application_per_site",
+      "administration_amount": 4,
+      "administration_unit": "gota",
+      "administration_target": "em cada ouvido"
+    }
+  },
+  "errors": []
+}

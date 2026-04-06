@@ -381,34 +381,101 @@ export function ManipuladosV1Editor({
           {/* Frequência */}
           <SubsectionDivider label="Frequência" />
 
-          <div className="xl:col-span-4">
-            <div className="flex items-center mb-1">
-              <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Frequência</span>
-              <HelpTooltip>
-                <p className="font-bold text-white mb-1">Frequência de administração</p>
-                <p>Selecione o intervalo padrão. Para frequências personalizadas (ex.: "2x ao dia às 8h e 20h"), use <strong>Personalizada</strong> e edite o texto abaixo.</p>
-              </HelpTooltip>
-            </div>
-            <RxvSelect
-              value={freqSelectValue}
-              onChange={(e) => {
-                const selected = e.target.value
-                if (selected === 'custom') {
-                  setFormula({ prescribing: { ...current.prescribing, frequency_mode: 'custom' as any } })
+          {/* Toggle Dose única */}
+          <div className="xl:col-span-12 flex flex-wrap items-center gap-6">
+            <RxvToggle
+              checked={current.prescribing.frequency_mode === 'single_dose'}
+              onChange={(checked) => {
+                if (checked) {
+                  setFormula({ prescribing: { ...current.prescribing, frequency_mode: 'single_dose' as any, frequency_label: 'em dose única' } })
                 } else {
-                  const mapped = FREQ_OPTION_TO_MODE[selected]
-                  if (mapped) {
-                    setFormula({ prescribing: { ...current.prescribing, frequency_mode: mapped.mode as any, frequency_label: mapped.label } })
-                  }
+                  setFormula({ prescribing: { ...current.prescribing, frequency_mode: 'q12h' as any, frequency_label: 'a cada 12 horas' } })
                 }
               }}
-              options={FREQUENCY_SELECT_OPTIONS}
+              label="Dose única"
             />
+            {current.prescribing.frequency_mode === 'single_dose' && (
+              <RxvToggle
+                checked={!!(current.prescribing as any)._repeat_periodically}
+                onChange={(checked) => {
+                  setFormula({
+                    prescribing: {
+                      ...current.prescribing,
+                      _repeat_periodically: checked,
+                      frequency_label: checked
+                        ? `em dose única, repetir a cada ${(current.prescribing as any)._repeat_every_value || 30} ${(current.prescribing as any)._repeat_every_unit || 'dias'}`
+                        : 'em dose única',
+                    } as any,
+                  })
+                }}
+                label="Repetir periodicamente"
+              />
+            )}
           </div>
-          <RxvField label="Texto da frequência" className="xl:col-span-4">
-            <RxvInput value={current.prescribing.frequency_label} onChange={(e) => setFormula({ prescribing: { ...current.prescribing, frequency_label: e.target.value } })} placeholder="Ex.: a cada 12 horas" />
-            <FieldHint>Preenchido automaticamente ao trocar a frequência. Edite se precisar de texto personalizado.</FieldHint>
-          </RxvField>
+
+          {/* Campos de repetição periódica */}
+          {current.prescribing.frequency_mode === 'single_dose' && (current.prescribing as any)._repeat_periodically && (
+            <>
+              <RxvField label="Repetir a cada" className="xl:col-span-2">
+                <RxvInput
+                  type="number"
+                  min="1"
+                  value={(current.prescribing as any)._repeat_every_value || ''}
+                  onChange={(e) => {
+                    const val = e.target.value
+                    const unit = (current.prescribing as any)._repeat_every_unit || 'dias'
+                    setFormula({ prescribing: { ...current.prescribing, _repeat_every_value: val, frequency_label: val ? `em dose única, repetir a cada ${val} ${unit}` : 'em dose única' } as any })
+                  }}
+                  placeholder="Ex: 30"
+                />
+              </RxvField>
+              <RxvField label="Unidade" className="xl:col-span-2">
+                <RxvSelect
+                  value={(current.prescribing as any)._repeat_every_unit || 'dias'}
+                  onChange={(e) => {
+                    const unit = e.target.value
+                    const val = (current.prescribing as any)._repeat_every_value || ''
+                    setFormula({ prescribing: { ...current.prescribing, _repeat_every_unit: unit, frequency_label: val ? `em dose única, repetir a cada ${val} ${unit}` : 'em dose única' } as any })
+                  }}
+                  options={[{ value: 'dias', label: 'dias' }, { value: 'semanas', label: 'semanas' }, { value: 'meses', label: 'meses' }]}
+                />
+              </RxvField>
+            </>
+          )}
+
+          {/* Select de frequência recorrente — escondido quando dose única */}
+          {current.prescribing.frequency_mode !== 'single_dose' && (
+            <>
+              <div className="xl:col-span-4">
+                <div className="flex items-center mb-1">
+                  <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Modo de frequência</span>
+                  <HelpTooltip>
+                    <p className="font-bold text-white mb-1">Frequência de administração</p>
+                    <p>Selecione o intervalo padrão. Para frequências personalizadas (ex.: "2x ao dia às 8h e 20h"), use <strong>Personalizada</strong> e edite o texto abaixo.</p>
+                  </HelpTooltip>
+                </div>
+                <RxvSelect
+                  value={freqSelectValue}
+                  onChange={(e) => {
+                    const selected = e.target.value
+                    if (selected === 'custom') {
+                      setFormula({ prescribing: { ...current.prescribing, frequency_mode: 'custom' as any } })
+                    } else {
+                      const mapped = FREQ_OPTION_TO_MODE[selected]
+                      if (mapped) {
+                        setFormula({ prescribing: { ...current.prescribing, frequency_mode: mapped.mode as any, frequency_label: mapped.label } })
+                      }
+                    }
+                  }}
+                  options={FREQUENCY_SELECT_OPTIONS}
+                />
+              </div>
+              <RxvField label="Texto da frequência" className="xl:col-span-4">
+                <RxvInput value={current.prescribing.frequency_label} onChange={(e) => setFormula({ prescribing: { ...current.prescribing, frequency_label: e.target.value } })} placeholder="Ex.: a cada 12 horas" />
+                <FieldHint>Preenchido automaticamente ao trocar a frequência. Edite se precisar de texto personalizado.</FieldHint>
+              </RxvField>
+            </>
+          )}
 
           {/* Duração do tratamento */}
           <SubsectionDivider label="Duração do tratamento" />

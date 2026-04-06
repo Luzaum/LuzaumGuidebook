@@ -1,4 +1,4 @@
-// ✅ Protocolos 3.0 — Refatoração Completa (100% Supabase)
+﻿// ✅ Protocolos 3.0 — Refatoração Completa (100% Supabase)
 // 🚫 ZERO localStorage, ZERO rxDb, ZERO mistura de fontes
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react'
@@ -62,6 +62,19 @@ import { useLocalDraft } from '../../hooks/useLocalDraft'
 import { AddMedicationModal2 } from './components/AddMedicationModal2'
 import { ManipuladosV1Editor } from './components/ManipuladosV1Editor'
 import { sanitizeDeepText, sanitizeVisibleText } from './textSanitizer'
+import {
+  type AdministrationBasis,
+  ADMINISTRATION_BASIS_OPTIONS,
+  ADMINISTRATION_TARGET_OPTIONS,
+  ADMINISTRATION_UNIT_OPTIONS,
+  isApplicationSiteBasis,
+  isCustomAdministrationBasis,
+  normalizeAdministrationBasis,
+  normalizeAdministrationTarget,
+  PHARMACOLOGICAL_DOSE_UNIT_OPTIONS,
+  TOOLTIP,
+  buildSharedAdministrationText,
+} from './vetPosologyShared'
 
 // ==================== TYPES ====================
 
@@ -104,20 +117,37 @@ const PROTOCOL_ROUTE_OPTIONS = [
 
 const PROTOCOL_FREQUENCY_OPTIONS = [
   { value: '', label: 'Selecionar frequência' },
-  { value: '1', label: '1x ao dia' },
-  { value: '2', label: '2x ao dia' },
-  { value: '3', label: '3x ao dia' },
-  { value: '4', label: '4x ao dia' },
-  { value: '6', label: '6x ao dia' },
-  { value: '8', label: '8x ao dia' },
-  { value: '12', label: '12x ao dia' },
-  { value: '24', label: '24x ao dia' },
+  { value: '1', label: '1x ao dia  (a cada 24h)' },
+  { value: '2', label: '2x ao dia  (a cada 12h)' },
+  { value: '3', label: '3x ao dia  (a cada 8h)' },
+  { value: '4', label: '4x ao dia  (a cada 6h)' },
+  { value: '6', label: '6x ao dia  (a cada 4h)' },
 ]
 
-const PROTOCOL_DOSE_UNIT_OPTIONS = ['mg/kg', 'mg', 'mcg/kg', 'mcg', 'g', 'mL/kg', 'mL', 'UI/kg', 'UI', 'comprimido', 'capsula', 'gota', 'puff']
+const PROTOCOL_FREQUENCY_MODE_OPTIONS = [
+  { value: 'times_per_day', label: 'Vezes por dia' },
+  { value: 'interval_hours', label: 'Intervalo em horas' },
+  { value: 'repeat_interval', label: 'Repetir periodicamente' },
+]
+
+const PROTOCOL_DOSE_UNIT_OPTIONS = PHARMACOLOGICAL_DOSE_UNIT_OPTIONS.map((entry) => entry.value)
 const PROTOCOL_DURATION_MODE_OPTIONS = [
-  { value: 'fixed_days', label: 'Duração fechada' },
+  { value: 'fixed_days', label: 'Período fixo' },
+  { value: 'single_dose', label: 'Dose única' },
+  { value: 'until_recheck', label: 'Até reavaliação clínica' },
+  { value: 'continuous_use', label: 'Uso contínuo' },
   { value: 'continuous_until_recheck', label: 'Uso contínuo até reavaliação' },
+  { value: 'until_finished', label: 'Até terminar o medicamento' },
+]
+const PROTOCOL_DURATION_UNIT_OPTIONS = [
+  { value: 'dias', label: 'dias' },
+  { value: 'semanas', label: 'semanas' },
+  { value: 'meses', label: 'meses' },
+]
+const PROTOCOL_REPEAT_UNIT_OPTIONS = [
+  { value: 'dias', label: 'dias' },
+  { value: 'semanas', label: 'semanas' },
+  { value: 'meses', label: 'meses' },
 ]
 
 const COMMON_EXAMS = [
@@ -258,6 +288,25 @@ function protocolMedicationToManipuladoV1Draft(item: ProtocolMedicationItem, cli
   const base = createEmptyManipuladoV1(clinicId)
   const doseValue = item.dose_value ?? null
   const route = sanitizeVisibleText(item.route || '') || 'ORAL'
+  const metadata = ((item.metadata || {}) as Record<string, unknown>)
+  const durationMode = String(metadata.duration_mode || '').trim()
+  const durationCustomText = typeof metadata.duration_text_custom === 'string' ? metadata.duration_text_custom : ''
+  const durationValueMeta = Number(metadata.duration_value)
+  const durationUnitMeta = String(metadata.duration_unit || 'dias').trim() || 'dias'
+  const resolvedDurationValue = Number.isFinite(durationValueMeta) && durationValueMeta > 0
+    ? durationValueMeta
+    : (item.duration_days && item.duration_days > 0 ? item.duration_days : null)
+  const resolvedDurationUnit = durationMode === 'fixed_days' ? durationUnitMeta : (resolvedDurationValue ? 'dias' : 'dias')
+  const resolvedDurationLabel = (() => {
+    if (durationCustomText.trim()) return durationCustomText
+    if (durationMode === 'single_dose') return 'dose única'
+    if (durationMode === 'until_recheck' || durationMode === 'continuous_until_recheck') return 'até reavaliação'
+    if (durationMode === 'continuous_use') return 'uso contínuo'
+    if (durationMode === 'until_finished') return 'até terminar o medicamento'
+    if (durationMode === 'fixed_days' && resolvedDurationValue) return `por ${resolvedDurationValue} ${resolvedDurationUnit}`
+    if (item.duration_days === -1) return 'até reavaliação'
+    return ''
+  })()
   const frequencyLabel =
     item.frequency_type === 'interval_hours' && item.interval_hours
       ? `a cada ${item.interval_hours} horas`
@@ -296,9 +345,9 @@ function protocolMedicationToManipuladoV1Draft(item: ProtocolMedicationItem, cli
                 ? 'q6h'
                 : 'custom',
       frequency_label: frequencyLabel,
-      duration_value: item.duration_days && item.duration_days > 0 ? item.duration_days : null,
-      duration_unit: 'dias',
-      duration_label: item.duration_days === -1 ? 'até reavaliação' : '',
+      duration_value: resolvedDurationValue,
+      duration_unit: durationMode === 'single_dose' ? 'dose' : resolvedDurationUnit,
+      duration_label: resolvedDurationLabel,
       clinical_note: sanitizeVisibleText(((item.metadata || {}) as Record<string, unknown>).notes || ''),
     },
     pharmacy: {
@@ -369,16 +418,73 @@ function getMedicationObservation(item: ProtocolMedicationItem): string {
   return typeof notes === 'string' ? notes : ''
 }
 
+function getMedicationAdministrationLabel(item: ProtocolMedicationItem): string {
+  const meta = item.metadata && typeof item.metadata === 'object' ? (item.metadata as Record<string, unknown>) : {}
+  const basis = normalizeAdministrationBasis(meta.administration_basis as string | undefined)
+  if (!isCustomAdministrationBasis(basis)) return ''
+  return buildSharedAdministrationText({
+    administrationBasis: basis,
+    administrationAmount: meta.administration_amount as number | string | null | undefined,
+    administrationUnit: (meta.administration_unit as string | null | undefined) || null,
+    administrationTarget: (meta.administration_target as string | null | undefined) || null,
+  })
+}
+
 function getMedicationFrequencyLabel(item: ProtocolMedicationItem): string {
-  if (item.frequency_type === 'times_per_day' && item.times_per_day) {
-    return `${item.times_per_day}x ao dia`
+  const meta = item.metadata && typeof item.metadata === 'object' ? (item.metadata as Record<string, unknown>) : {}
+
+  // Dose única salva via metadata (sem migração de banco)
+  if (meta.is_single_dose) {
+    if (meta.repeat_periodically && meta.repeat_every_value) {
+      const unit = (meta.repeat_every_unit as string | undefined) || 'dias'
+      return `Dose única, repetir a cada ${meta.repeat_every_value} ${unit}`
+    }
+    return 'Dose única'
   }
+
+  // Repetir periodicamente sem dose única (ex.: profilaxia mensal)
+  if (meta.frequency_mode === 'repeat_interval' && meta.repeat_every_value) {
+    const unit = (meta.repeat_every_unit as string | undefined) || 'dias'
+    return `Repetir a cada ${meta.repeat_every_value} ${unit}`
+  }
+
   if (item.frequency_type === 'interval_hours' && item.interval_hours) {
     return `A cada ${item.interval_hours} horas`
   }
-  if (item.frequency_type === 'once_daily') return '1x ao dia'
+  if (item.frequency_type === 'times_per_day' && item.times_per_day) {
+    const interval = 24 / item.times_per_day
+    if (Number.isInteger(interval)) return `${item.times_per_day}x ao dia (a cada ${interval}h)`
+    return `${item.times_per_day}x ao dia`
+  }
+  if (item.frequency_type === 'once_daily') return '1x ao dia (a cada 24h)'
   if (item.frequency_type === 'as_needed') return 'Se necessário'
   return 'Frequência não definida'
+}
+
+function toDurationDays(value: number | null | undefined, unit: string | null | undefined): number | null {
+  if (!value || value <= 0) return null
+  const normalizedUnit = String(unit || 'dias').trim().toLowerCase()
+  const multiplier = normalizedUnit.startsWith('semana') ? 7 : normalizedUnit.startsWith('mes') ? 30 : 1
+  return Math.round(value * multiplier)
+}
+
+function getMedicationDurationLabel(item: ProtocolMedicationItem): string {
+  const meta = item.metadata && typeof item.metadata === 'object' ? (item.metadata as Record<string, unknown>) : {}
+  const mode = String(meta.duration_mode || '').trim()
+  const customText = typeof meta.duration_text_custom === 'string' ? meta.duration_text_custom : ''
+  const value = Number(meta.duration_value)
+  const unit = String(meta.duration_unit || 'dias').trim() || 'dias'
+
+  if (customText.trim()) return customText
+  if (mode === 'single_dose') return 'Dose única'
+  if (mode === 'until_recheck' || mode === 'continuous_until_recheck') return 'Até reavaliação clínica'
+  if (mode === 'continuous_use') return 'Uso contínuo'
+  if (mode === 'until_finished') return 'Até terminar o medicamento'
+  if (mode === 'fixed_days' && Number.isFinite(value) && value > 0) return `por ${value} ${unit}`
+
+  if (item.duration_days === -1) return 'Até reavaliação clínica'
+  if (item.duration_days && item.duration_days > 0) return `por ${item.duration_days} dias`
+  return 'Duração não definida'
 }
 
 function canUserPublishGlobal(role: 'owner' | 'member' | null, user: any): boolean {
@@ -1515,7 +1621,7 @@ export default function Protocolos3Page() {
                 {scopeLabel(protocol.scope)}
               </span>
             </div>
-            <h3 className="truncate text-lg font-black uppercase italic leading-tight text-white">
+            <h3 className="line-clamp-2 break-words text-lg font-black uppercase italic leading-tight text-white">
               {protocol.name}
             </h3>
             {protocol.description && (
@@ -1859,7 +1965,7 @@ export default function Protocolos3Page() {
                                 {sanitizeVisibleText(med.presentation_text || med.manual_presentation_label || 'Apresentação do manipulado não definida.')}
                               </p>
                               <p className="mt-2 text-xs text-slate-400">
-                                {sanitizeVisibleText(med.route || 'Via não definida')} • {sanitizeVisibleText(getMedicationFrequencyLabel(med))} • {med.duration_days === -1 ? 'Uso contínuo até reavaliação do paciente' : med.duration_days ? `${med.duration_days} dia(s)` : 'Duração não definida'}
+                                {sanitizeVisibleText(med.route || 'Via não definida')} • {sanitizeVisibleText(getMedicationFrequencyLabel(med))} • {sanitizeVisibleText(getMedicationDurationLabel(med))}
                               </p>
                               {getMedicationObservation(med) ? (
                                 <p className="mt-2 text-xs leading-relaxed text-slate-500">
@@ -1880,76 +1986,394 @@ export default function Protocolos3Page() {
                         </div>
                       ) : (
                         <>
-                      <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-6">
-                        <RxvField label="Dose">
-                          <RxvInput
-                            value={med.dose_value ?? ''}
-                            onChange={(e) => updateMedicationAt(idx, (current) => ({
-                              ...current,
-                              dose_value: e.target.value ? Number(String(e.target.value).replace(',', '.')) : null,
-                            }))}
-                            placeholder="Ex: 1 ou 0.5"
-                          />
-                        </RxvField>
-                        <RxvField label="Unidade">
-                          <RxvInput
-                            value={med.dose_unit || ''}
-                            onChange={(e) => updateMedicationAt(idx, (current) => ({ ...current, dose_unit: e.target.value }))}
-                            placeholder="Ex: mg/kg"
-                            list="protocol-dose-unit-options"
-                          />
-                        </RxvField>
-                        <RxvField label="Via">
-                          <RxvSelect
-                            value={med.route || ''}
-                            onChange={(e) => updateMedicationAt(idx, (current) => ({ ...current, route: e.target.value || null }))}
-                            options={PROTOCOL_ROUTE_OPTIONS}
-                          />
-                        </RxvField>
-                        <RxvField label="Frequência">
-                          <RxvSelect
-                            value={med.times_per_day ? String(med.times_per_day) : ''}
-                            onChange={(e) => updateMedicationAt(idx, (current) => ({
-                              ...current,
-                              frequency_type: 'times_per_day',
-                              times_per_day: e.target.value ? Number(e.target.value) : null,
-                              interval_hours: null,
-                            }))}
-                            options={PROTOCOL_FREQUENCY_OPTIONS}
-                          />
-                        </RxvField>
-                        <RxvField label="Modo de duração">
-                          <RxvSelect
-                            value={med.duration_days === -1 ? 'continuous_until_recheck' : 'fixed_days'}
-                            onChange={(e) => updateMedicationAt(idx, (current) => ({
-                              ...current,
-                              duration_days: e.target.value === 'continuous_until_recheck'
-                                ? -1
-                                : (current.duration_days === -1 ? 7 : current.duration_days),
-                            }))}
-                            options={PROTOCOL_DURATION_MODE_OPTIONS}
-                          />
-                        </RxvField>
-                        <RxvField label="Duração (dias)">
-                          <RxvInput
-                            type="number"
-                            value={med.duration_days && med.duration_days > 0 ? med.duration_days : ''}
-                            onChange={(e) => updateMedicationAt(idx, (current) => ({
-                              ...current,
-                              duration_days: e.target.value ? Number(e.target.value) : null,
-                            }))}
-                            placeholder="Ex: 7"
-                            disabled={med.duration_days === -1}
-                          />
-                        </RxvField>
-                        <div className="flex items-end">
-                          <RxvToggle
-                            checked={!!med.is_controlled}
-                            onChange={(checked) => updateMedicationAt(idx, (current) => ({ ...current, is_controlled: checked }))}
-                            label="Controlado"
-                          />
+                      {(() => {
+                        const isSingleDose = !!(med.metadata as Record<string, unknown> | null | undefined)?.is_single_dose
+                        const repeatPeriodically = !!(med.metadata as Record<string, unknown> | null | undefined)?.repeat_periodically
+                        const repeatEveryValue = (med.metadata as Record<string, unknown> | null | undefined)?.repeat_every_value as string | undefined
+                        const repeatEveryUnit = ((med.metadata as Record<string, unknown> | null | undefined)?.repeat_every_unit as string | undefined) || 'dias'
+                        const metaFrequencyMode = ((med.metadata as Record<string, unknown> | null | undefined)?.frequency_mode as string | undefined)
+                        const nonSingleFreqMode: string = metaFrequencyMode === 'repeat_interval'
+                          ? 'repeat_interval'
+                          : med.frequency_type === 'interval_hours'
+                            ? 'interval_hours'
+                            : 'times_per_day'
+                        const durationMode = (med.metadata as Record<string, unknown> | null | undefined)?.duration_mode as string | undefined
+                        const durationValueMeta = (med.metadata as Record<string, unknown> | null | undefined)?.duration_value
+                        const durationUnitMeta = (med.metadata as Record<string, unknown> | null | undefined)?.duration_unit as string | undefined
+                        const durationCustomText = ((med.metadata as Record<string, unknown> | null | undefined)?.duration_text_custom as string | undefined) || ''
+                        const resolvedDurationMode = durationMode || (med.duration_days === -1 ? 'until_recheck' : 'fixed_days')
+                        const resolvedDurationValue = Number.isFinite(Number(durationValueMeta))
+                          ? Number(durationValueMeta)
+                          : (med.duration_days && med.duration_days > 0 ? med.duration_days : null)
+                        const resolvedDurationUnit = durationUnitMeta || 'dias'
+                        const administrationBasis = normalizeAdministrationBasis(((med.metadata as Record<string, unknown> | null | undefined)?.administration_basis as string | undefined) || 'weight_based') as AdministrationBasis
+                        const administrationAmount = (med.metadata as Record<string, unknown> | null | undefined)?.administration_amount as number | string | undefined
+                        const administrationUnit = ((med.metadata as Record<string, unknown> | null | undefined)?.administration_unit as string | undefined) || ''
+                        const administrationTarget = normalizeAdministrationTarget((med.metadata as Record<string, unknown> | null | undefined)?.administration_target as string | undefined) || ''
+                        const customAdministration = isCustomAdministrationBasis(administrationBasis)
+                        return (
+                      <div className="mt-4 space-y-4">
+                        {/* 1. Base de administração — PRIMEIRO, pois os outros campos dependem dela */}
+                        <div className="rounded-xl border border-slate-800 bg-black/15 px-4 py-3">
+                          <p className="mb-3 text-[10px] font-black uppercase tracking-[0.18em] text-[color:var(--rxv-muted)]">Base de administração</p>
+                          <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
+                            <RxvField label="Modo" tooltip={TOOLTIP.unidade_administracao}>
+                              <RxvSelect
+                                value={administrationBasis}
+                                onChange={(e) => updateMedicationAt(idx, (current) => ({
+                                  ...current,
+                                  metadata: {
+                                    ...(current.metadata || {}),
+                                    administration_basis: normalizeAdministrationBasis(e.target.value),
+                                    administration_target:
+                                      normalizeAdministrationBasis(e.target.value) === 'per_animal'
+                                        ? 'por animal'
+                                        : normalizeAdministrationBasis(e.target.value) === 'per_application_site'
+                                          ? (normalizeAdministrationTarget((current.metadata as Record<string, unknown> | null | undefined)?.administration_target as string | undefined) || 'sobre a lesao')
+                                          : null,
+                                    administration_unit:
+                                      isCustomAdministrationBasis(e.target.value)
+                                        ? (current.metadata as Record<string, unknown> | null | undefined)?.administration_unit || null
+                                        : null,
+                                    administration_amount:
+                                      isCustomAdministrationBasis(e.target.value)
+                                        ? (current.metadata as Record<string, unknown> | null | undefined)?.administration_amount || 1
+                                        : null,
+                                  },
+                                }))}
+                                options={ADMINISTRATION_BASIS_OPTIONS}
+                              />
+                            </RxvField>
+                            {customAdministration ? (
+                              <>
+                                <RxvField label="Quantidade" tooltip={TOOLTIP.unidade_administracao}>
+                                  <RxvInput
+                                    type="number"
+                                    min="0.5"
+                                    step="0.5"
+                                    value={administrationAmount ?? ''}
+                                    onChange={(e) => updateMedicationAt(idx, (current) => ({
+                                      ...current,
+                                      metadata: {
+                                        ...(current.metadata || {}),
+                                        administration_amount: e.target.value === '' ? null : Number(e.target.value),
+                                      },
+                                    }))}
+                                    placeholder="Ex: 1"
+                                  />
+                                </RxvField>
+                                <RxvField label="Unidade" tooltip={TOOLTIP.unidade_administracao}>
+                                  <RxvSelect
+                                    value={administrationUnit}
+                                    onChange={(e) => updateMedicationAt(idx, (current) => ({
+                                      ...current,
+                                      metadata: {
+                                        ...(current.metadata || {}),
+                                        administration_unit: e.target.value || null,
+                                      },
+                                    }))}
+                                    options={ADMINISTRATION_UNIT_OPTIONS}
+                                  />
+                                </RxvField>
+                                <RxvField label={isApplicationSiteBasis(administrationBasis) ? 'Sítio de aplicação' : 'Alvo'} tooltip={isApplicationSiteBasis(administrationBasis) ? TOOLTIP.aplicacao_por_local : TOOLTIP.aplicacao_por_animal}>
+                                  <RxvSelect
+                                    value={administrationTarget || (isApplicationSiteBasis(administrationBasis) ? 'sobre a lesao' : 'por animal')}
+                                    onChange={(e) => updateMedicationAt(idx, (current) => ({
+                                      ...current,
+                                      metadata: {
+                                        ...(current.metadata || {}),
+                                        administration_target: normalizeAdministrationTarget(e.target.value) || null,
+                                      },
+                                    }))}
+                                    options={isApplicationSiteBasis(administrationBasis)
+                                      ? ADMINISTRATION_TARGET_OPTIONS.filter((entry) => entry.value !== 'por animal')
+                                      : [{ value: 'por animal', label: 'por animal' }]}
+                                  />
+                                </RxvField>
+                              </>
+                            ) : null}
+                          </div>
                         </div>
+
+                        {/* 2. Dose + Via — só dose farmacológica quando weight_based */}
+                        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
+                          {!customAdministration && (
+                            <>
+                              <RxvField label="Dose" tooltip={TOOLTIP.dose_farmacologica}>
+                                <RxvInput
+                                  value={med.dose_value ?? ''}
+                                  onChange={(e) => updateMedicationAt(idx, (current) => ({
+                                    ...current,
+                                    dose_value: e.target.value ? Number(String(e.target.value).replace(',', '.')) : null,
+                                  }))}
+                                  placeholder="Ex: 10"
+                                />
+                              </RxvField>
+                              <RxvField label="Unidade de medida" tooltip={TOOLTIP.dose_farmacologica}>
+                                <RxvSelect
+                                  value={med.dose_unit || ''}
+                                  onChange={(e) => updateMedicationAt(idx, (current) => ({ ...current, dose_unit: e.target.value || null }))}
+                                  options={[{ value: '', label: 'Selecionar unidade farmacológica' }, ...PROTOCOL_DOSE_UNIT_OPTIONS.map((unit) => ({ value: unit, label: unit }))]}
+                                />
+                              </RxvField>
+                            </>
+                          )}
+                          <RxvField label="Via de administração" tooltip={TOOLTIP.via_administracao}>
+                            <RxvSelect
+                              value={med.route || ''}
+                              onChange={(e) => updateMedicationAt(idx, (current) => ({ ...current, route: e.target.value || null }))}
+                              options={PROTOCOL_ROUTE_OPTIONS}
+                            />
+                          </RxvField>
+                          <div className="flex items-end pb-1">
+                            <RxvToggle
+                              checked={!!med.is_controlled}
+                              onChange={(checked) => updateMedicationAt(idx, (current) => ({ ...current, is_controlled: checked }))}
+                              label="Controlado"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Frequência */}
+                        <div className="rounded-xl border border-slate-800 bg-black/15 px-4 py-3">
+                          <p className="mb-3 text-[10px] font-black uppercase tracking-[0.18em] text-[color:var(--rxv-muted)]">Frequência</p>
+                          <div className="flex flex-wrap items-center gap-4">
+                              <RxvToggle
+                                checked={isSingleDose}
+                              onChange={(checked) => updateMedicationAt(idx, (current) => ({
+                                ...current,
+                                frequency_type: checked ? 'as_needed' : 'times_per_day',
+                                times_per_day: checked ? null : 2,
+                                interval_hours: null,
+                                metadata: {
+                                  ...(current.metadata || {}),
+                                  is_single_dose: checked,
+                                  repeat_periodically: checked ? (current.metadata as Record<string, unknown> | null | undefined)?.repeat_periodically : false,
+                                },
+                              }))}
+                              label="Dose única"
+                            />
+                            {isSingleDose && (
+                              <RxvToggle
+                                checked={repeatPeriodically}
+                                onChange={(checked) => updateMedicationAt(idx, (current) => ({
+                                  ...current,
+                                  metadata: {
+                                    ...(current.metadata || {}),
+                                    repeat_periodically: checked,
+                                    repeat_every_value: checked ? (repeatEveryValue || '30') : null,
+                                    repeat_every_unit: checked ? (repeatEveryUnit || 'dias') : null,
+                                  },
+                                }))}
+                                label="Repetir periodicamente"
+                              />
+                            )}
+                          </div>
+                          {isSingleDose && repeatPeriodically && (
+                            <div className="mt-3 flex flex-wrap items-end gap-3">
+                              <RxvField label="Repetir a cada">
+                                <RxvInput
+                                  type="number"
+                                  min="1"
+                                  value={repeatEveryValue || ''}
+                                  onChange={(e) => updateMedicationAt(idx, (current) => ({
+                                    ...current,
+                                    metadata: { ...(current.metadata || {}), repeat_every_value: e.target.value || null },
+                                  }))}
+                                  placeholder="Ex: 30"
+                                />
+                              </RxvField>
+                              <RxvField label="Unidade">
+                                <RxvSelect
+                                  value={repeatEveryUnit}
+                                  onChange={(e) => updateMedicationAt(idx, (current) => ({
+                                    ...current,
+                                    metadata: { ...(current.metadata || {}), repeat_every_unit: e.target.value },
+                                  }))}
+                                  options={PROTOCOL_REPEAT_UNIT_OPTIONS}
+                                />
+                              </RxvField>
+                            </div>
+                          )}
+                          {!isSingleDose && (
+                            <div className="mt-3 space-y-3">
+                              <RxvField label="Modo de frequência" tooltip={TOOLTIP.modo_frequencia}>
+                                <RxvSelect
+                                  value={nonSingleFreqMode}
+                                  onChange={(e) => {
+                                    const next = e.target.value
+                                    updateMedicationAt(idx, (current) => ({
+                                      ...current,
+                                      frequency_type: next === 'interval_hours' ? 'interval_hours' : 'times_per_day',
+                                      times_per_day: next === 'times_per_day' ? (current.times_per_day || 2) : null,
+                                      interval_hours: next === 'interval_hours' ? (current.interval_hours || 12) : null,
+                                      metadata: {
+                                        ...(current.metadata || {}),
+                                        frequency_mode: next === 'repeat_interval' ? 'repeat_interval' : null,
+                                        repeat_every_value: next === 'repeat_interval' ? ((current.metadata as Record<string, unknown> | null | undefined)?.repeat_every_value || '30') : null,
+                                        repeat_every_unit: next === 'repeat_interval' ? ((current.metadata as Record<string, unknown> | null | undefined)?.repeat_every_unit || 'dias') : null,
+                                      },
+                                    }))
+                                  }}
+                                  options={PROTOCOL_FREQUENCY_MODE_OPTIONS}
+                                />
+                              </RxvField>
+                              {nonSingleFreqMode === 'times_per_day' && (
+                                <RxvField label="Vezes por dia">
+                                  <RxvSelect
+                                    value={med.times_per_day ? String(med.times_per_day) : ''}
+                                    onChange={(e) => updateMedicationAt(idx, (current) => ({
+                                      ...current,
+                                      frequency_type: 'times_per_day',
+                                      times_per_day: e.target.value ? Number(e.target.value) : null,
+                                      interval_hours: null,
+                                    }))}
+                                    options={PROTOCOL_FREQUENCY_OPTIONS}
+                                  />
+                                </RxvField>
+                              )}
+                              {nonSingleFreqMode === 'interval_hours' && (
+                                <RxvField label="A cada X horas">
+                                  <RxvInput
+                                    type="number"
+                                    min="1"
+                                    step="1"
+                                    value={med.interval_hours ?? ''}
+                                    placeholder="Ex: 12"
+                                    onChange={(e) => updateMedicationAt(idx, (current) => ({
+                                      ...current,
+                                      frequency_type: 'interval_hours',
+                                      interval_hours: e.target.value ? Number(e.target.value) : null,
+                                      times_per_day: null,
+                                    }))}
+                                  />
+                                </RxvField>
+                              )}
+                              {nonSingleFreqMode === 'repeat_interval' && (
+                                <div className="flex flex-wrap items-end gap-3">
+                                  <RxvField label="Repetir a cada">
+                                    <RxvInput
+                                      type="number"
+                                      min="1"
+                                      step="1"
+                                      value={repeatEveryValue || ''}
+                                      placeholder="Ex: 30"
+                                      onChange={(e) => updateMedicationAt(idx, (current) => ({
+                                        ...current,
+                                        metadata: { ...(current.metadata || {}), repeat_every_value: e.target.value || null },
+                                      }))}
+                                    />
+                                  </RxvField>
+                                  <RxvField label="Unidade">
+                                    <RxvSelect
+                                      value={repeatEveryUnit}
+                                      onChange={(e) => updateMedicationAt(idx, (current) => ({
+                                        ...current,
+                                        metadata: { ...(current.metadata || {}), repeat_every_unit: e.target.value },
+                                      }))}
+                                      options={PROTOCOL_REPEAT_UNIT_OPTIONS}
+                                    />
+                                  </RxvField>
+                                </div>
+                              )}
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Duração — ocultar quando dose única (a duração é implícita) */}
+                        {isSingleDose ? (
+                          <div className="flex items-center gap-2">
+                            <span className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-slate-700 bg-slate-900/30 px-3 py-1.5 text-xs text-slate-400">
+                              <span className="material-symbols-outlined text-[14px]">schedule</span>
+                              Duração: dose única{repeatPeriodically && repeatEveryValue ? `, repetir a cada ${repeatEveryValue} ${repeatEveryUnit}` : ''}
+                            </span>
+                          </div>
+                        ) : (
+                        <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+                          <RxvField label="Modo de duração" tooltip={TOOLTIP.modo_duracao}>
+                            <RxvSelect
+                              value={resolvedDurationMode}
+                              onChange={(e) => updateMedicationAt(idx, (current) => {
+                                const nextMode = e.target.value
+                                const currentMeta = (current.metadata as Record<string, unknown> | null | undefined) || {}
+                                const nextValue = Number(currentMeta.duration_value) > 0 ? Number(currentMeta.duration_value) : 7
+                                const nextUnit = String(currentMeta.duration_unit || 'dias')
+                                const nextDays =
+                                  nextMode === 'fixed_days'
+                                    ? toDurationDays(nextValue, nextUnit)
+                                    : nextMode === 'single_dose'
+                                      ? null
+                                      : -1
+                                return {
+                                  ...current,
+                                  duration_days: nextDays,
+                                  metadata: {
+                                    ...(current.metadata || {}),
+                                    duration_mode: nextMode,
+                                    duration_value: nextMode === 'fixed_days' ? nextValue : null,
+                                    duration_unit: nextMode === 'fixed_days' ? nextUnit : null,
+                                  },
+                                }
+                              })}
+                              options={PROTOCOL_DURATION_MODE_OPTIONS}
+                            />
+                          </RxvField>
+                          <RxvField label="Duração">
+                            <RxvInput
+                              type="number"
+                              value={resolvedDurationMode === 'fixed_days' ? (resolvedDurationValue ?? '') : ''}
+                              onChange={(e) => updateMedicationAt(idx, (current) => ({
+                                ...current,
+                                duration_days: toDurationDays(
+                                  e.target.value ? Number(e.target.value) : null,
+                                  ((current.metadata as Record<string, unknown> | null | undefined)?.duration_unit as string | undefined) || 'dias',
+                                ),
+                                metadata: {
+                                  ...(current.metadata || {}),
+                                  duration_value: e.target.value ? Number(e.target.value) : null,
+                                },
+                              }))}
+                              placeholder="Ex: 7"
+                              disabled={resolvedDurationMode !== 'fixed_days'}
+                            />
+                          </RxvField>
+                          <RxvField label="Unidade da duração">
+                            <RxvSelect
+                              value={resolvedDurationUnit}
+                              onChange={(e) => updateMedicationAt(idx, (current) => {
+                                const currentMeta = (current.metadata as Record<string, unknown> | null | undefined) || {}
+                                const currentValue = Number(currentMeta.duration_value)
+                                return {
+                                  ...current,
+                                  duration_days: toDurationDays(Number.isFinite(currentValue) ? currentValue : null, e.target.value),
+                                  metadata: {
+                                    ...(current.metadata || {}),
+                                    duration_unit: e.target.value,
+                                  },
+                                }
+                              })}
+                              options={PROTOCOL_DURATION_UNIT_OPTIONS}
+                              disabled={resolvedDurationMode !== 'fixed_days'}
+                            />
+                          </RxvField>
+                          <RxvField label="Texto livre da duração (opcional)" className="md:col-span-3">
+                            <RxvInput
+                              value={durationCustomText}
+                              onChange={(e) => updateMedicationAt(idx, (current) => ({
+                                ...current,
+                                metadata: {
+                                  ...(current.metadata || {}),
+                                  duration_text_custom: e.target.value,
+                                },
+                              }))}
+                              placeholder="Ex: até estabilização clínica"
+                            />
+                          </RxvField>
+                        </div>
+                        )}
                       </div>
+                        )
+                      })()}
 
                       <div className="mt-3">
                         <RxvField label="Observações do medicamento">
@@ -1970,7 +2394,10 @@ export default function Protocolos3Page() {
 
                       <div className="mt-3 rounded-xl border border-slate-800 bg-black/20 px-3 py-3 text-xs text-slate-400">
                         <p className="font-semibold text-slate-200">Resumo</p>
-                        <p>{med.route || 'Via não definida'} • {getMedicationFrequencyLabel(med)} • {med.duration_days === -1 ? 'Uso contínuo até reavaliação do paciente' : med.duration_days ? `${med.duration_days} dia(s)` : 'Duração não definida'}</p>
+                        {getMedicationAdministrationLabel(med) ? (
+                          <p>{getMedicationAdministrationLabel(med)}</p>
+                        ) : null}
+                        <p>{med.route || 'Via não definida'} • {getMedicationFrequencyLabel(med)} • {getMedicationDurationLabel(med)}</p>
                       </div>
                         </>
                       )}
@@ -2156,7 +2583,7 @@ export default function Protocolos3Page() {
                 {scopeLabel(protocol.scope)}
               </span>
             </div>
-            <h3 className="text-lg font-black text-white leading-tight truncate uppercase italic">
+            <h3 className="line-clamp-2 break-words text-lg font-black text-white leading-tight uppercase italic">
               {protocol.name}
             </h3>
             {protocol.description && (
@@ -2782,42 +3209,147 @@ export default function Protocolos3Page() {
                             <span className="material-symbols-outlined text-[20px]">close</span>
                           </button>
                         </div>
-                        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 bg-black/60 p-3 rounded-xl border border-slate-800/80 mt-3">
-                          <RxvField label="Dose">
-                            <RxvInput type="number" value={med.dose_value || ''} onChange={e => {
-                              const up = [...editingProtocol.medications];
-                              up[idx] = { ...med, dose_value: e.target.value ? parseFloat(e.target.value) : null };
-                              setEditingProtocol({ ...editingProtocol, medications: up });
-                            }} placeholder="Ex: 5" />
-                          </RxvField>
-                          <RxvField label="Unid">
-                            <RxvInput value={med.dose_unit || ''} onChange={e => {
-                              const up = [...editingProtocol.medications];
-                              up[idx] = { ...med, dose_unit: e.target.value };
-                              setEditingProtocol({ ...editingProtocol, medications: up });
-                            }} placeholder="mg" />
-                          </RxvField>
-                          <RxvField label="Via">
-                            <RxvInput value={med.route || ''} onChange={e => {
-                              const up = [...editingProtocol.medications];
-                              up[idx] = { ...med, route: e.target.value };
-                              setEditingProtocol({ ...editingProtocol, medications: up });
-                            }} placeholder="Ex: Oral" />
-                          </RxvField>
-                          <RxvField label="Vezes/dia">
-                            <RxvInput type="number" value={med.times_per_day || ''} onChange={e => {
-                              const up = [...editingProtocol.medications];
-                              up[idx] = { ...med, frequency_type: 'times_per_day', times_per_day: e.target.value ? parseInt(e.target.value) : null };
-                              setEditingProtocol({ ...editingProtocol, medications: up });
-                            }} />
-                          </RxvField>
-                          <RxvField label="Dias">
-                            <RxvInput type="number" value={med.duration_days || ''} onChange={e => {
-                              const up = [...editingProtocol.medications];
-                              up[idx] = { ...med, duration_days: e.target.value ? parseInt(e.target.value) : null };
-                              setEditingProtocol({ ...editingProtocol, medications: up });
-                            }} />
-                          </RxvField>
+                        <div className="space-y-3 bg-black/60 p-3 rounded-xl border border-slate-800/80 mt-3">
+                          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                            <RxvField label="Dose">
+                              <RxvInput type="number" value={med.dose_value || ''} onChange={e => {
+                                const up = [...editingProtocol.medications];
+                                up[idx] = { ...med, dose_value: e.target.value ? parseFloat(e.target.value) : null };
+                                setEditingProtocol({ ...editingProtocol, medications: up });
+                              }} placeholder="Ex: 5" />
+                            </RxvField>
+                            <RxvField label="Unidade farmacológica">
+                              <RxvSelect
+                                value={med.dose_unit || ''}
+                                onChange={e => {
+                                  const up = [...editingProtocol.medications];
+                                  up[idx] = { ...med, dose_unit: e.target.value || null };
+                                  setEditingProtocol({ ...editingProtocol, medications: up });
+                                }}
+                                options={[{ value: '', label: 'Selecionar' }, ...PROTOCOL_DOSE_UNIT_OPTIONS.map((unit) => ({ value: unit, label: unit }))]}
+                              />
+                            </RxvField>
+                            <RxvField label="Via de adm.">
+                              <RxvSelect
+                                value={med.route || ''}
+                                onChange={e => {
+                                  const up = [...editingProtocol.medications];
+                                  up[idx] = { ...med, route: e.target.value || null };
+                                  setEditingProtocol({ ...editingProtocol, medications: up });
+                                }}
+                                options={PROTOCOL_ROUTE_OPTIONS}
+                              />
+                            </RxvField>
+                            <RxvField label="Vezes/dia">
+                              <RxvInput type="number" value={med.times_per_day || ''} onChange={e => {
+                                const up = [...editingProtocol.medications];
+                                up[idx] = { ...med, frequency_type: 'times_per_day', times_per_day: e.target.value ? parseInt(e.target.value, 10) : null };
+                                setEditingProtocol({ ...editingProtocol, medications: up });
+                              }} />
+                            </RxvField>
+                            <RxvField label="Modo duração">
+                              <RxvSelect
+                                value={String(((med.metadata as Record<string, unknown> | null | undefined)?.duration_mode as string | undefined) || (med.duration_days === -1 ? 'until_recheck' : 'fixed_days'))}
+                                onChange={e => {
+                                  const up = [...editingProtocol.medications];
+                                  const currentMeta = (med.metadata as Record<string, unknown> | null | undefined) || {};
+                                  const currentValue = Number(currentMeta.duration_value);
+                                  const resolvedValue =
+                                    Number.isFinite(currentValue) && currentValue > 0
+                                      ? currentValue
+                                      : (med.duration_days && med.duration_days > 0 ? med.duration_days : 7);
+                                  const resolvedUnit = String(currentMeta.duration_unit || 'dias') || 'dias';
+                                  const nextMode = e.target.value;
+                                  up[idx] = {
+                                    ...med,
+                                    duration_days:
+                                      nextMode === 'fixed_days'
+                                        ? toDurationDays(resolvedValue, resolvedUnit)
+                                        : nextMode === 'single_dose'
+                                          ? null
+                                          : -1,
+                                    metadata: {
+                                      ...currentMeta,
+                                      duration_mode: nextMode,
+                                      duration_value: nextMode === 'fixed_days' ? resolvedValue : null,
+                                      duration_unit: nextMode === 'fixed_days' ? resolvedUnit : null,
+                                    },
+                                  };
+                                  setEditingProtocol({ ...editingProtocol, medications: up });
+                                }}
+                                options={PROTOCOL_DURATION_MODE_OPTIONS}
+                              />
+                            </RxvField>
+                          </div>
+
+                          <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
+                            <RxvField label="Duração">
+                              <RxvInput
+                                type="number"
+                                value={String(((med.metadata as Record<string, unknown> | null | undefined)?.duration_mode as string | undefined) || (med.duration_days === -1 ? 'until_recheck' : 'fixed_days')) === 'fixed_days'
+                                  ? (Number((med.metadata as Record<string, unknown> | null | undefined)?.duration_value) > 0
+                                    ? Number((med.metadata as Record<string, unknown> | null | undefined)?.duration_value)
+                                    : (med.duration_days && med.duration_days > 0 ? med.duration_days : ''))
+                                  : ''}
+                                onChange={e => {
+                                  const up = [...editingProtocol.medications];
+                                  const currentMeta = (med.metadata as Record<string, unknown> | null | undefined) || {};
+                                  const value = e.target.value ? Number(e.target.value) : null;
+                                  const unit = String(currentMeta.duration_unit || 'dias') || 'dias';
+                                  up[idx] = {
+                                    ...med,
+                                    duration_days: toDurationDays(value, unit),
+                                    metadata: {
+                                      ...currentMeta,
+                                      duration_mode: 'fixed_days',
+                                      duration_value: value,
+                                    },
+                                  };
+                                  setEditingProtocol({ ...editingProtocol, medications: up });
+                                }}
+                                disabled={String(((med.metadata as Record<string, unknown> | null | undefined)?.duration_mode as string | undefined) || (med.duration_days === -1 ? 'until_recheck' : 'fixed_days')) !== 'fixed_days'}
+                              />
+                            </RxvField>
+                            <RxvField label="Unidade">
+                              <RxvSelect
+                                value={String(((med.metadata as Record<string, unknown> | null | undefined)?.duration_unit as string | undefined) || 'dias')}
+                                onChange={e => {
+                                  const up = [...editingProtocol.medications];
+                                  const currentMeta = (med.metadata as Record<string, unknown> | null | undefined) || {};
+                                  const value = Number(currentMeta.duration_value);
+                                  up[idx] = {
+                                    ...med,
+                                    duration_days: toDurationDays(Number.isFinite(value) ? value : null, e.target.value),
+                                    metadata: {
+                                      ...currentMeta,
+                                      duration_unit: e.target.value,
+                                    },
+                                  };
+                                  setEditingProtocol({ ...editingProtocol, medications: up });
+                                }}
+                                options={PROTOCOL_DURATION_UNIT_OPTIONS}
+                                disabled={String(((med.metadata as Record<string, unknown> | null | undefined)?.duration_mode as string | undefined) || (med.duration_days === -1 ? 'until_recheck' : 'fixed_days')) !== 'fixed_days'}
+                              />
+                            </RxvField>
+                            <RxvField label="Texto duração (opcional)" className="sm:col-span-2">
+                              <RxvInput
+                                value={String(((med.metadata as Record<string, unknown> | null | undefined)?.duration_text_custom as string | undefined) || '')}
+                                onChange={e => {
+                                  const up = [...editingProtocol.medications];
+                                  const currentMeta = (med.metadata as Record<string, unknown> | null | undefined) || {};
+                                  up[idx] = {
+                                    ...med,
+                                    metadata: {
+                                      ...currentMeta,
+                                      duration_text_custom: e.target.value,
+                                    },
+                                  };
+                                  setEditingProtocol({ ...editingProtocol, medications: up });
+                                }}
+                                placeholder="Ex: manter por 3 meses e reavaliar"
+                              />
+                            </RxvField>
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -3431,7 +3963,7 @@ export default function Protocolos3Page() {
                       <span className="rounded border border-[#39ff14]/30 bg-[#39ff14]/10 px-2 py-0.5 text-[9px] font-black uppercase tracking-widest text-[#98f98e]">
                         Manipulado
                       </span>
-                      <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Cat?logo V1.0</p>
+                      <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Catálogo V1.0</p>
                     </div>
                     {compoundedMedications.length === 0 ? (
                       <div className="rounded-2xl border border-dashed border-slate-800 bg-slate-900/30 px-4 py-6 text-sm text-slate-500">

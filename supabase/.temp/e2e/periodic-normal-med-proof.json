@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "savedSingleDose": true,
+  "savedPeriodic": true,
+  "reopenedCatalog": true,
+  "importedToRecipe": true,
+  "reviewCorrect": true,
+  "pdfExported": true,
+  "reviewText": "✏️ Revisão Interativa\n\nClique nas seções do preview para editar\n\n← Editor\nWhatsApp\n🖨️ Imprimir\n⬇ Exportar PDF\n\nEDITOR\n\nClique no preview para editar\n\nClique em\nIdentificação\npara editar tutor/paciente\n\nClique em\nRecomendações\npara editar orientações\n\nClique em qualquer\nmedicamento\npara editar dose/instrução\n\nIdentificação (tutor/paciente)\nRecomendações\n#1 Bravecto 250 mg E2\n\nSelecione uma seção ou item no preview →\n\nPREVIEW CLICÁVEL — MODERNO DARK\nNenhuma seleção\nVISUALIZAÇÃO RÁPIDA\n\nRECEITUÁRIO\n\nlocal_hospital\nCLÍNICA VETERINÁRIA VETIUS\n\nDr. Silva - 12345\n\nData: 05/04/2026\n\n• Paciente: Paciente E2E\n\nResponsável: Tutor E2E\n\nUSO ORAL\n1.\n\nBravecto 250 mg 250 mg/comprimido\n\n................................................................................................................................................................................................................................................................................\n\nCaixa\n\nAdministrar 1 comprimido, por via oral, iniciando em 05/04/2026 às 08:00, repetir a cada 12 semanas.\n\nSem assinatura CRMV\n\nDr. Silva\n\nAssinatura CRMV",
+  "shots": [
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\periodic-normal-med-catalog.png",
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\periodic-normal-med-recipe.png",
+    "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\periodic-normal-med-review.png"
+  ],
+  "pdfPath": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\downloads\\periodic-normal-med-1775435043746-PACIENTE_E2E_TUTOR_E2E_05-04-2026.pdf",
+  "error": ""
+}

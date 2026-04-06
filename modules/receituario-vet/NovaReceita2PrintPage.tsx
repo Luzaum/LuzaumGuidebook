@@ -362,7 +362,20 @@ function EditorItem({
     const setField = (field: keyof PrescriptionItem, value: unknown) => {
         onStateChange((prev) => ({
             ...prev,
-            items: prev.items.map((i) => (i.id === itemId ? { ...i, [field]: value } : i)),
+            items: prev.items.map((i) => {
+                if (i.id !== itemId) return i
+                if (field === 'instructions') {
+                    const nextInstructions = String(value ?? '')
+                    const hasManualInstructions = nextInstructions.trim().length > 0
+                    return {
+                        ...i,
+                        instructions: nextInstructions,
+                        manualEdited: hasManualInstructions,
+                        autoInstruction: !hasManualInstructions,
+                    }
+                }
+                return { ...i, [field]: value }
+            }),
         }))
     }
 
@@ -741,7 +754,7 @@ function EditorItem({
             <div className="rounded-xl border border-slate-800 bg-black/40 p-3 space-y-3">
                 <p className="text-[10px] font-black uppercase tracking-widest text-slate-600">Instruções</p>
 
-                <Field label="Instruções de uso">
+                <Field label="Instruções adicionais de uso (opcional)">
                     <textarea
                         className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:border-[#39ff14]/40 focus:outline-none"
                         rows={3}
@@ -749,6 +762,9 @@ function EditorItem({
                         value={item.instructions || ''}
                         onChange={(e) => setField('instructions', e.target.value)}
                     />
+                    <p className="mt-1 text-[10px] text-slate-500">
+                        Texto adicional incluído abaixo da posologia gerada automaticamente ("Administrar X...").
+                    </p>
                 </Field>
 
                 <Field label="Cautelas (uma por linha)">

@@ -5,18 +5,6 @@ import { loadRxDb, removeHistoryRecord, saveRxDb } from './rxDb'
 import { listSavedRxDrafts } from './rxStorage'
 import { readHomeIconSelection } from './rxAssets'
 
-function formatDate(value: string) {
-  const dt = new Date(value)
-  if (Number.isNaN(dt.getTime())) return '-'
-  return dt.toLocaleString('pt-BR', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  })
-}
-
 function todayLabel() {
   const now = new Date()
   return now.toLocaleDateString('pt-BR', { weekday: 'long', day: '2-digit', month: 'short', year: 'numeric' })
@@ -53,6 +41,9 @@ export default function ReceituarioVetPage() {
     saveRxDb(nextDb)
     setHistory(loadRecentHistory())
   }
+  void removeHistoryEntry
+  void history
+  void drafts
 
   return (
     <ReceituarioChrome
@@ -78,248 +69,199 @@ export default function ReceituarioVetPage() {
         </>
       }
     >
-      <div className="rxv-home-shell text-[color:var(--rxv-text)]">
+      <style>{`
+        @keyframes fadeSlideUp {
+          from { opacity: 0; transform: translateY(14px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .hub-card {
+          animation: fadeSlideUp 0.4s ease forwards;
+          opacity: 0;
+        }
+        .hub-card:hover {
+          transform: translateY(-2px);
+          transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+        }
+      `}</style>
 
-        {/* ── ROW 1 · Date + stats ───────────────────────────────────────── */}
-        <section className="mb-5 flex flex-wrap items-center gap-3">
+      {/* wrapper relativo — grade de fundo posicionada absolutamente dentro do flow */}
+      <div className="rxv-home-shell relative pb-12 text-[color:var(--rxv-text)]">
+
+        {/* ── Date pill ────────────────────────────────────────────────── */}
+        <div className="relative z-10 mb-6 flex flex-wrap items-center gap-3">
           <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-3 py-1 text-xs font-semibold text-[color:var(--rxv-muted)]">
             <span className="material-symbols-outlined text-[15px] text-[#61ec4b]">calendar_today</span>
             {todayLabel()}
           </div>
+        </div>
 
-          <div className="ml-auto flex items-center gap-2">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-3 py-1 text-xs font-semibold text-[color:var(--rxv-muted)]">
-              <span className="material-symbols-outlined text-[14px] text-[#61ec4b]">receipt_long</span>
-              <span className="text-[color:var(--rxv-text)]">{history.length}</span>
-              receitas recentes
+        {/* ── HERO ─────────────────────────────────────────────────────── */}
+        <Link
+          to="/receituario-vet/nova-receita-2"
+          className="hub-card relative z-10 group mb-5 flex w-full overflow-hidden rounded-2xl border border-[color:var(--rxv-border)] hover:border-[color:var(--rxv-primary)]/50 hover:shadow-[0_8px_32px_-8px_rgba(57,255,20,0.18)]"
+          style={{ animationDelay: '0ms' }}
+        >
+          <div
+            className={`pointer-events-none absolute inset-0 transition-opacity duration-500 ${isDark ? 'opacity-100' : 'opacity-0'}`}
+            style={{ background: 'linear-gradient(110deg, #0d1f10 0%, #0a160d 60%, #000 100%)' }}
+          />
+          <div
+            className={`pointer-events-none absolute inset-0 transition-opacity duration-500 ${isDark ? 'opacity-0' : 'opacity-100'}`}
+            style={{ background: 'linear-gradient(110deg, #f0fdf4 0%, #dcfce7 60%, #bbf7d0 100%)' }}
+          />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_120%_at_0%_50%,rgba(57,255,20,0.12),transparent_55%)]" />
+
+          <div className="relative z-10 flex w-full flex-col gap-6 p-8 sm:flex-row sm:items-center sm:justify-between">
+            <div className="min-w-0 flex-1">
+              <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-[color:var(--rxv-primary)]/40 bg-[color:var(--rxv-primary)]/10 px-3 py-1 text-[11px] font-extrabold uppercase tracking-widest text-[color:var(--rxv-primary)]">
+                <span className="h-2 w-2 rounded-full bg-[color:var(--rxv-primary)]" />
+                Ação rápida
+              </span>
+              <h3 className="text-3xl font-black leading-tight tracking-tight text-[color:var(--rxv-text)]">
+                Criar Nova Receita
+              </h3>
+              <p className="mt-2 max-w-xl text-sm leading-relaxed text-[color:var(--rxv-muted)]">
+                Prescreva com posologia automática, calcule doses por peso, detecte interações e exporte PDF com texto selecionável — tudo em menos de 2 minutos.
+              </p>
+              <span className="mt-5 inline-flex items-center gap-2 rounded-xl bg-[color:var(--rxv-primary)] px-6 py-3 text-sm font-black text-[#0f1d12] transition-all duration-200 group-hover:brightness-105 group-hover:shadow-[0_0_24px_rgba(57,255,20,0.35)]">
+                <span className="material-symbols-outlined text-[18px]">add_circle</span>
+                Começar Prescrição
+              </span>
             </div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-3 py-1 text-xs font-semibold text-[color:var(--rxv-muted)]">
-              <span className="material-symbols-outlined text-[14px] text-amber-400">draft</span>
-              <span className="text-[color:var(--rxv-text)]">{drafts.length}</span>
-              rascunhos
+            <div className="hidden flex-shrink-0 sm:flex">
+              <img
+                src={homeIcon.src}
+                alt={homeIcon.name}
+                className="h-36 w-36 object-contain drop-shadow-[0_0_20px_rgba(57,255,20,0.28)] transition-transform duration-300 group-hover:scale-[1.05]"
+              />
             </div>
           </div>
-        </section>
+        </Link>
 
-        {/* ── ROW 2 · Hero + 2×2 quick-access ──────────────────────────── */}
-        <section className="mb-4 grid grid-cols-1 gap-3 lg:grid-cols-12">
-
-          {/* Hero CTA */}
-          <Link
-            to="/receituario-vet/nova-receita-2"
-            className="rxv-home-primary-card rxv-card rxv-premium rxv-fade-up rxv-anim-pulse rxv-shimmer group relative overflow-hidden p-6 lg:col-span-8"
-          >
-            <div className={`pointer-events-none absolute inset-0 transition-opacity duration-500 ${isDark ? 'opacity-100' : 'opacity-0'}`} style={{ background: 'linear-gradient(100deg, var(--rxv-primary-soft,#15351b) 0%, var(--rxv-primary-soft-2,#0f2416) 55%, var(--rxv-primary-soft-3,#0d1d13) 100%)' }} />
-            <div className={`pointer-events-none absolute inset-0 transition-opacity duration-500 ${isDark ? 'opacity-0' : 'opacity-100'}`} style={{ background: 'linear-gradient(100deg, #f0fdf4 0%, #dcfce7 55%, #bbf7d0 100%)' }} />
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(85%_95%_at_8%_8%,rgba(57,255,20,0.18),transparent_62%)]" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-[42%] bg-[radial-gradient(70%_80%_at_55%_45%,rgba(57,255,20,0.1),transparent_74%)]" />
-
-            <div className="relative z-10 flex h-full min-h-[200px] flex-col justify-between gap-4 sm:flex-row sm:items-center">
-              <div className="max-w-[480px]">
-                <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--rxv-primary)]/45 bg-[color:var(--rxv-primary)]/14 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wide text-[color:var(--rxv-primary)]">
-                  <span className="h-2 w-2 rounded-full bg-[color:var(--rxv-primary)]" />
-                  Ação rápida
-                </span>
-                <h3 className="mt-3 text-[28px] font-black leading-tight tracking-tight text-[color:var(--rxv-text)] md:text-[40px]">CRIAR NOVA<br />RECEITA</h3>
-                <p className="mt-2 text-sm text-[color:var(--rxv-muted)] md:text-base">
-                  Prescrever medicamentos com modelos inteligentes e verificação de interações.
-                </p>
-                <span className="mt-5 inline-flex items-center gap-2 rounded-[10px] bg-[color:var(--rxv-primary)] px-5 py-3 text-sm font-black text-[#0f1d12] transition-all duration-300 group-hover:brightness-105 group-hover:shadow-[0_0_20px_rgba(57,255,20,0.4)]">
-                  <span className="material-symbols-outlined text-[19px]">add_circle</span>
-                  Começar Prescrição
-                </span>
-              </div>
-              <div className="hidden flex-shrink-0 items-center justify-center sm:flex">
-                <img
-                  src={homeIcon.src}
-                  alt={homeIcon.name}
-                  className="h-[160px] w-[160px] object-contain drop-shadow-[0_0_16px_rgba(57,255,20,0.34)] transition-transform duration-300 group-hover:scale-[1.04]"
-                />
-              </div>
-            </div>
-          </Link>
-
-          {/* 2×2 Quick-access panel */}
-          <div className="grid grid-cols-2 gap-3 lg:col-span-4">
-            <Link to="/receituario-vet/clientes" className="rxv-home-link-card rxv-card rxv-fade-up delay-100 rxv-anim-pulse rxv-shimmer flex flex-col gap-2 p-4">
-              <div className="rxv-home-icon-badge self-start">
-                <span className="material-symbols-outlined text-[20px]">group</span>
-              </div>
-              <h4 className="text-sm font-bold leading-snug">Tutores e Pacientes</h4>
-              <p className="text-[11px] text-[color:var(--rxv-muted)] leading-relaxed hidden xl:block">Cadastro completo com vários animais por tutor.</p>
-            </Link>
-
-            <Link to="/receituario-vet/protocolos-3" className="rxv-home-link-card rxv-card rxv-premium rxv-fade-up delay-150 rxv-anim-pulse rxv-shimmer flex flex-col gap-2 p-4">
-              <div className="rxv-home-icon-badge self-start">
-                <span className="material-symbols-outlined text-[20px]">inventory_2</span>
-              </div>
-              <h4 className="text-sm font-bold leading-snug">Protocolos</h4>
-              <p className="text-[11px] text-[color:var(--rxv-muted)] leading-relaxed hidden xl:block">Tratamentos prontos por especialidade.</p>
-            </Link>
-
-            <Link to="/receituario-vet/catalogo3" className="rxv-home-link-card rxv-card rxv-fade-up delay-200 rxv-anim-pulse rxv-shimmer flex flex-col gap-2 p-4">
-              <div className="rxv-home-icon-badge self-start">
-                <span className="material-symbols-outlined text-[20px]">vaccines</span>
-              </div>
-              <h4 className="text-sm font-bold leading-snug">Cadastrar Medicamento</h4>
-              <p className="text-[11px] text-[color:var(--rxv-muted)] leading-relaxed hidden xl:block">Banco de fármacos reutilizável.</p>
-            </Link>
-
-            <Link to="/receituario-vet/manipulados" className="rxv-home-link-card rxv-card rxv-premium rxv-fade-up delay-250 rxv-anim-pulse rxv-shimmer flex flex-col gap-2 p-4">
-              <div className="rxv-home-icon-badge self-start border-[#39ff14]/45 bg-[#39ff14]/12 text-[#8af77a]">
-                <span className="material-symbols-outlined text-[20px]">science</span>
-              </div>
-              <h4 className="text-sm font-bold leading-snug">Manipulados</h4>
-              <p className="text-[11px] text-[color:var(--rxv-muted)] leading-relaxed hidden xl:block">Fórmulas magistrais e regimes próprios.</p>
-            </Link>
-          </div>
-        </section>
-
-        {/* ── ROW 3 · Ferramentas strip ─────────────────────────────────── */}
-        <section className="mb-5 grid grid-cols-3 gap-3 sm:grid-cols-6">
-          {[
-            { to: '/receituario-vet/historico', icon: 'history', label: 'Histórico' },
-            { to: '/receituario-vet/configuração', icon: 'settings_account_box', label: 'Config. Médico' },
-            { to: '/receituario-vet/controle-especial', icon: 'gpp_maybe', label: 'Ctrl. Especial', amber: true },
-            { to: '/receituario-vet/templates', icon: 'palette', label: 'Templates' },
-            { to: '/receituario-vet/configurações', icon: 'cloud_upload', label: 'Dados e Backup' },
-            { to: '/receituario-vet/rascunhos', icon: 'draft', label: 'Rascunhos' },
-          ].map(({ to, icon, label, amber }) => (
+        {/* ── NAVEGAÇÃO PRIMÁRIA ────────────────────────────────────────── */}
+        <div className="relative z-10 mb-5 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {([
+            {
+              to: '/receituario-vet/clientes',
+              icon: 'group',
+              label: 'Tutores e Pacientes',
+              desc: 'Cadastre tutores com múltiplos animais vinculados. Busque por nome, espécie ou histórico. Acesse receitas anteriores e repita prescrições com um clique. Ex.: "Amoxicilina 10 mg/kg para Rex, 7 dias, 2× ao dia" — reaplicada em segundos.',
+              delay: 80,
+              premium: false,
+              accent: false,
+            },
+            {
+              to: '/receituario-vet/protocolos-3',
+              icon: 'clinical_notes',
+              label: 'Protocolos Clínicos',
+              desc: 'Monte protocolos por especialidade (ortopedia, dermatologia, oncologia…) e aplique com um clique em qualquer receita. Ex.: "Protocolo pós-cirúrgico: Tramadol + Dipirona + Omeprazol" inserido automaticamente, com posologia individual para cada fármaco.',
+              delay: 140,
+              premium: true,
+              accent: false,
+            },
+            {
+              to: '/receituario-vet/catalogo3',
+              icon: 'vaccines',
+              label: 'Cadastrar Medicamento',
+              desc: 'Banco de fármacos com concentração, via de administração, apresentação e alertas de controlado. Ex.: cadastre "Tramadol 50 mg/mL — uso restrito — SC/IM" e ele aparece em todas as receitas com badge laranja de controle especial.',
+              delay: 200,
+              premium: false,
+              accent: false,
+            },
+            {
+              to: '/receituario-vet/manipulados',
+              icon: 'science',
+              label: 'Manipulados V1',
+              desc: 'Fórmulas magistrais com cálculo por kg, m² ou dose fixa. Instrução automática para farmácia incluída. Ex.: "Fenobarbital 2,5 mg/kg — cão 8 kg → 20 mg — xarope 2 mg/mL — QSP 100 mL — Tomar 5 mL/dose a cada 12h".',
+              delay: 260,
+              premium: true,
+              accent: true,
+            },
+          ] as { to: string; icon: string; label: string; desc: string; delay: number; premium: boolean; accent: boolean }[]).map(({ to, icon, label, desc, delay, premium, accent }) => (
             <Link
               key={to}
               to={to}
-              className="rxv-home-link-card rxv-card rxv-fade-up rxv-anim-pulse rxv-shimmer flex flex-col items-center gap-2 py-4 px-2 text-center"
+              className={`hub-card rxv-card${premium ? ' rxv-premium' : ''} flex flex-col gap-3 p-5 hover:shadow-[0_8px_24px_-8px_rgba(57,255,20,0.15)]`}
+              style={{ animationDelay: `${delay}ms` }}
             >
-              <div className={`rxv-home-icon-badge${amber ? ' border-amber-400/45 bg-amber-400/12 text-amber-500' : ''}`}>
-                <span className="material-symbols-outlined text-[20px]">{icon}</span>
+              <div className={`rxv-home-icon-badge self-start${accent ? ' border-[#39ff14]/45 bg-[#39ff14]/12 text-[#8af77a]' : ''}`}>
+                <span className="material-symbols-outlined text-[22px]">{icon}</span>
               </div>
-              <h4 className="text-xs font-bold leading-tight">{label}</h4>
+              <div>
+                <h4 className="text-sm font-bold leading-snug text-[color:var(--rxv-text)]">{label}</h4>
+                <p className="mt-1.5 text-xs leading-relaxed text-[color:var(--rxv-muted)]">{desc}</p>
+              </div>
             </Link>
           ))}
-        </section>
+        </div>
 
-        {/* ── ROW 4 · Tables side by side ───────────────────────────────── */}
-        <section className="grid grid-cols-1 gap-4 xl:grid-cols-2">
-
-          {/* Rascunhos Salvos */}
-          <div className="rxv-card rxv-anim-pulse rxv-fade-up delay-500 overflow-hidden">
-            <div className="flex items-center justify-between border-b border-[color:var(--rxv-border)] px-4 py-3">
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-[16px] text-amber-400">draft</span>
-                <h2 className="text-sm font-bold">Rascunhos Salvos</h2>
-                {drafts.length > 0 && (
-                  <span className="rounded-full bg-amber-400/15 px-2 py-0.5 text-[11px] font-bold text-amber-400">{drafts.length}</span>
-                )}
+        {/* ── FERRAMENTAS ───────────────────────────────────────────────── */}
+        <div className="relative z-10 mb-5 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+          {([
+            {
+              to: '/receituario-vet/historico',
+              icon: 'history',
+              label: 'Histórico',
+              desc: 'Consulte todas as receitas emitidas por paciente, data ou medicamento. Reabra qualquer receita para editar ou reimprimir.',
+              delay: 320,
+            },
+            {
+              to: '/receituario-vet/configuração',
+              icon: 'settings_account_box',
+              label: 'Config. Médico',
+              desc: 'Configure seu CRMV, especialidade, assinatura e logotipo. Esses dados preenchem automaticamente o cabeçalho de toda receita.',
+              delay: 360,
+            },
+            {
+              to: '/receituario-vet/controle-especial',
+              icon: 'gpp_maybe',
+              label: 'Ctrl. Especial',
+              desc: 'Receituários azul e amarelo com rastreabilidade por lote, numeração sequencial e conformidade com a Portaria 344.',
+              delay: 400,
+              amber: true,
+            },
+            {
+              to: '/receituario-vet/templates',
+              icon: 'palette',
+              label: 'Templates',
+              desc: 'Crie modelos visuais de receita com logo, cores e zonas customizadas. Salve e aplique com um clique em qualquer prescrição.',
+              delay: 440,
+            },
+            {
+              to: '/receituario-vet/configurações',
+              icon: 'cloud_upload',
+              label: 'Dados e Backup',
+              desc: 'Exporte ou importe todo o banco local (pacientes, protocolos, histórico) em JSON. Ideal para troca de dispositivo ou backup preventivo.',
+              delay: 480,
+            },
+            {
+              to: '/receituario-vet/rascunhos',
+              icon: 'draft',
+              label: 'Rascunhos',
+              desc: 'Receitas iniciadas e não finalizadas ficam salvas localmente. Retome de onde parou sem perder nenhum dado preenchido.',
+              delay: 520,
+            },
+          ] as { to: string; icon: string; label: string; desc: string; delay: number; amber?: boolean }[]).map(({ to, icon, label, desc, delay, amber }) => (
+            <Link
+              key={to}
+              to={to}
+              className="hub-card rxv-card flex flex-col gap-3 p-5 hover:shadow-[0_8px_24px_-8px_rgba(57,255,20,0.15)]"
+              style={{ animationDelay: `${delay}ms` }}
+            >
+              <div className={`rxv-home-icon-badge self-start${amber ? ' border-amber-400/45 bg-amber-400/12 text-amber-500' : ''}`}>
+                <span className="material-symbols-outlined text-[20px]">{icon}</span>
               </div>
-              <Link to="/receituario-vet/rascunhos" className="text-xs font-semibold text-[#68df51] hover:underline">
-                Ver todos
-              </Link>
-            </div>
-            <div className="overflow-x-auto">
-              <table className="w-full text-left">
-                <thead>
-                  <tr className="border-b border-[color:var(--rxv-border)] text-[10px] uppercase tracking-wide text-[color:var(--rxv-muted)]">
-                    <th className="px-4 py-2.5">Paciente</th>
-                    <th className="px-4 py-2.5">Tutor</th>
-                    <th className="px-4 py-2.5 hidden sm:table-cell">Data</th>
-                    <th className="px-4 py-2.5 text-right">Ação</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {drafts.length === 0 ? (
-                    <tr>
-                      <td className="px-4 py-6 text-sm text-[color:var(--rxv-muted)]" colSpan={4}>
-                        Nenhum rascunho salvo.
-                      </td>
-                    </tr>
-                  ) : (
-                    drafts.map((entry) => (
-                      <tr key={entry.id} className="border-b border-[color:var(--rxv-border)]/50 transition-colors hover:bg-[color:var(--rxv-primary)]/5">
-                        <td className="px-4 py-2.5 text-sm font-semibold">{entry.patientName || '-'}</td>
-                        <td className="px-4 py-2.5 text-sm text-[color:var(--rxv-muted)]">{entry.tutorName || '-'}</td>
-                        <td className="px-4 py-2.5 text-xs text-[color:var(--rxv-muted)] hidden sm:table-cell">{formatDate(entry.savedAt)}</td>
-                        <td className="px-4 py-2.5 text-right">
-                          <button
-                            type="button"
-                            className="group/btn rxv-btn-secondary inline-flex items-center gap-1 px-3 py-1.5 text-xs transition-colors hover:border-[#39ff14]/40 hover:bg-[#39ff14]/10 hover:text-white"
-                            onClick={() => navigate(`/receituario-vet/nova-receita-2?draft=${encodeURIComponent(entry.id)}`)}
-                          >
-                            <span className="material-symbols-outlined text-[14px] transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:text-[#39ff14]">open_in_new</span>
-                            Continuar
-                          </button>
-                        </td>
-                      </tr>
-                    ))
-                  )}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          {/* Últimas Receitas */}
-          <div className="rxv-card rxv-anim-pulse rxv-fade-up delay-500 overflow-hidden">
-            <div className="flex items-center justify-between border-b border-[color:var(--rxv-border)] px-4 py-3">
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-[16px] text-[#61ec4b]">receipt_long</span>
-                <h2 className="text-sm font-bold">Últimas Receitas</h2>
-                {history.length > 0 && (
-                  <span className="rounded-full bg-[#39ff14]/12 px-2 py-0.5 text-[11px] font-bold text-[#61ec4b]">{history.length}</span>
-                )}
+              <div>
+                <h4 className="text-xs font-bold text-[color:var(--rxv-text)]">{label}</h4>
+                <p className="mt-1 text-[11px] leading-relaxed text-[color:var(--rxv-muted)]">{desc}</p>
               </div>
-              <Link to="/receituario-vet/nova-receita-2" className="text-xs font-semibold text-[#68df51] hover:underline">
-                Ver editor
-              </Link>
-            </div>
-            <div className="overflow-x-auto">
-              <table className="w-full text-left">
-                <thead>
-                  <tr className="border-b border-[color:var(--rxv-border)] text-[10px] uppercase tracking-wide text-[color:var(--rxv-muted)]">
-                    <th className="px-4 py-2.5">Paciente</th>
-                    <th className="px-4 py-2.5 hidden sm:table-cell">Tutor</th>
-                    <th className="px-4 py-2.5 hidden md:table-cell">Data</th>
-                    <th className="px-4 py-2.5">Status</th>
-                    <th className="px-4 py-2.5 text-right">Ações</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {history.length === 0 ? (
-                    <tr>
-                      <td className="px-4 py-6 text-sm text-[color:var(--rxv-muted)]" colSpan={5}>
-                        Nenhuma receita registrada ainda.
-                      </td>
-                    </tr>
-                  ) : (
-                    history.map((entry) => (
-                      <tr key={entry.id} className="border-b border-[color:var(--rxv-border)]/50 transition-colors hover:bg-[color:var(--rxv-primary)]/5">
-                        <td className="px-4 py-2.5 text-sm font-semibold">{entry.patientName || '-'}</td>
-                        <td className="px-4 py-2.5 text-sm text-[color:var(--rxv-muted)] hidden sm:table-cell">{entry.tutorName || '-'}</td>
-                        <td className="px-4 py-2.5 text-xs text-[color:var(--rxv-muted)] hidden md:table-cell">{formatDate(entry.createdAt)}</td>
-                        <td className="px-4 py-2.5 text-sm">
-                          <span className="rxv-status-badge rxv-status-issued">Emitida</span>
-                        </td>
-                        <td className="px-4 py-2.5 text-right">
-                          <div className="inline-flex items-center gap-1.5">
-                            <button type="button" className="group/btn rxv-btn-secondary inline-flex items-center gap-1 px-2.5 py-1.5 text-xs transition-colors hover:border-[#39ff14]/40 hover:bg-[#39ff14]/10 hover:text-white" onClick={() => navigate('/receituario-vet/nova-receita-2')}>
-                              <span className="material-symbols-outlined text-[14px] transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:text-[#39ff14]">open_in_new</span>
-                              Abrir
-                            </button>
-                            <button
-                              type="button"
-                              className={`group/btn inline-flex items-center gap-1 rounded-lg border px-2.5 py-1.5 text-xs font-semibold transition-colors ${isDark ? 'border-red-700/60 bg-red-950/20 text-red-300 hover:bg-red-900/30 hover:text-red-100' : 'border-red-200 bg-red-50 text-red-600 hover:bg-red-100'}`}
-                              onClick={() => removeHistoryEntry(entry.id)}
-                            >
-                              <span className="material-symbols-outlined text-[14px]">delete</span>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))
-                  )}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
+            </Link>
+          ))}
+        </div>
+
+        <footer className="relative z-10 mt-4 text-center text-xs text-[color:var(--rxv-muted)]">
+          VETIUS © 2026 — ReceituárioVET
+        </footer>
 
       </div>
     </ReceituarioChrome>

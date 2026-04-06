@@ -896,7 +896,15 @@ export interface RecommendedDose {
   frequency_max?: number | null // freq máxima (vezes/dia)
   frequency_mode?: string | null // 'times_per_day' | 'every_x_hours' | 'custom'
   frequency_text?: string | null // texto livre
+  recurrence_value?: number | null
+  recurrence_unit?: string | null
   duration?: string | null // duração recomendada
+  administration_basis?: string | null
+  administration_amount?: number | null
+  administration_unit?: string | null
+  administration_target?: string | null
+  is_single_dose?: boolean | null
+  repeat_periodically?: boolean | null
   calculator_default_dose?: number | null
   calculator_default_frequency?: number | null
   notes: string | null
@@ -910,6 +918,17 @@ export interface RecommendedDose {
 
 function normalizeRecommendedDoseMetadata(input: any): Record<string, unknown> {
   return (input && typeof input === 'object' && !Array.isArray(input)) ? { ...input } : {}
+}
+
+/** Backward compat: nomes legados → nomes canônicos */
+function normalizeAdministrationBasisValue(raw: unknown): string | null {
+  const s = typeof raw === 'string' ? raw.trim().toLowerCase() : ''
+  if (!s) return null
+  if (s === 'unit_per_animal' || s === 'per_animal') return 'per_animal'
+  if (s === 'application_per_site' || s === 'per_application_site') return 'per_application_site'
+  if (s === 'weight_band') return 'weight_band'
+  if (s === 'weight_based') return 'weight_based'
+  return null
 }
 
 function mapDoseRowToRecommendedDose(row: any, source: CatalogSource = 'clinic'): RecommendedDose {
@@ -936,7 +955,15 @@ function mapDoseRowToRecommendedDose(row: any, source: CatalogSource = 'clinic')
     frequency_max: pick('frequency_max', null) as number | null,
     frequency_mode: pick('frequency_mode', null) as string | null,
     frequency_text: pick('frequency_text', null) as string | null,
+    recurrence_value: pick('recurrence_value', null) as number | null,
+    recurrence_unit: pick('recurrence_unit', null) as string | null,
     duration: pick('duration', null) as string | null,
+    administration_basis: normalizeAdministrationBasisValue(pick('administration_basis', null)),
+    administration_amount: pick('administration_amount', null) as number | null,
+    administration_unit: pick('administration_unit', null) as string | null,
+    administration_target: pick('administration_target', null) as string | null,
+    is_single_dose: pick('is_single_dose', null) as boolean | null,
+    repeat_periodically: pick('repeat_periodically', null) as boolean | null,
     calculator_default_dose: pick('calculator_default_dose', null) as number | null,
     calculator_default_frequency: pick('calculator_default_frequency', null) as number | null,
     notes: pick('notes', null) as string | null,
@@ -969,41 +996,34 @@ export async function getMedicationRecommendedDoses(
       .order('created_at', { ascending: true })
 
     if (!error) {
-      return ((data ?? []) as GlobalMedicationRecommendedDoseRow[]).map((dose) => ({
-        id: dose.id,
-        clinic_id: undefined,
-        medication_id: medicationId,
-        species: dose.species,
-        route: dose.route,
-        dose_value: dose.dose_value,
-        dose_unit: dose.dose_unit,
-        frequency: dose.frequency || null,
-        notes: dose.notes || null,
-        metadata: dose.metadata || {},
-        created_at: dose.created_at,
-        updated_at: dose.updated_at,
-        source: 'global',
-      }))
+      return ((data ?? []) as GlobalMedicationRecommendedDoseRow[]).map((dose) =>
+        mapDoseRowToRecommendedDose(
+          {
+            ...dose,
+            clinic_id: null,
+            medication_id: medicationId,
+          },
+          'global'
+        )
+      )
     }
 
     console.warn('[GlobalRecommendedDoses] fallback to bundled JSON', error)
     const fallback = findGlobalMedicationById(medicationId)
     if (!fallback) return []
-    return (fallback.recommended_doses || []).map((dose, index) => ({
-      id: dose.id || `${medicationId}-dose-${index + 1}`,
-      clinic_id: undefined,
-      medication_id: medicationId,
-      species: dose.species,
-      route: dose.route,
-      dose_value: dose.dose_value,
-      dose_unit: dose.dose_unit,
-      frequency: dose.frequency || null,
-      notes: dose.notes || null,
-      metadata: dose.metadata || {},
-      created_at: '',
-      updated_at: '',
-      source: 'global',
-    }))
+    return (fallback.recommended_doses || []).map((dose, index) =>
+      mapDoseRowToRecommendedDose(
+        {
+          ...dose,
+          id: dose.id || `${medicationId}-dose-${index + 1}`,
+          clinic_id: null,
+          medication_id: medicationId,
+          created_at: '',
+          updated_at: '',
+        },
+        'global'
+      )
+    )
   }
 
   console.log('[RecommendedDoses] GET', { clinicId, medicationId })
@@ -1074,10 +1094,19 @@ export async function saveMedicationRecommendedDoses(
     metadata.frequency_max = dose.frequency_max ?? null
     metadata.frequency_mode = dose.frequency_mode ?? null
     metadata.frequency_text = dose.frequency_text ?? null
+    metadata.recurrence_value = dose.recurrence_value ?? null
+    metadata.recurrence_unit = dose.recurrence_unit ?? null
     metadata.duration = dose.duration ?? null
+    metadata.administration_basis = dose.administration_basis ?? null
+    metadata.administration_amount = dose.administration_amount ?? null
+    metadata.administration_unit = dose.administration_unit ?? null
+    metadata.administration_target = dose.administration_target ?? null
     metadata.calculator_default_dose = dose.calculator_default_dose ?? null
     metadata.calculator_default_frequency = dose.calculator_default_frequency ?? null
 
+    const isSingleDose = dose.is_single_dose ?? (dose.frequency_mode === 'single_dose' || dose.frequency_mode === 'repeat_interval') ?? false
+    const isRepeatPeriodically = dose.repeat_periodically ?? (dose.frequency_mode === 'repeat_interval') ?? false
+    const canonicalBasis = normalizeAdministrationBasisValue(dose.administration_basis)
     const payload = {
       species: dose.species!,
       route: dose.route!,
@@ -1086,6 +1115,16 @@ export async function saveMedicationRecommendedDoses(
       frequency: dose.frequency || null,
       notes: dose.notes || null,
       metadata,
+      // ── Fase 3A: canonical columns ──────────────────────────
+      administration_basis: canonicalBasis,
+      administration_amount: dose.administration_amount ?? null,
+      administration_unit: dose.administration_unit ?? null,
+      administration_target: dose.administration_target ?? null,
+      is_single_dose: isSingleDose,
+      repeat_periodically: isRepeatPeriodically,
+      recurrence_value: dose.recurrence_value ?? null,
+      recurrence_unit: dose.recurrence_unit ?? null,
+      // ────────────────────────────────────────────────────────
       is_active: dose.is_active ?? true,
       sort_order: dose.sort_order ?? null,
       updated_at: new Date().toISOString()
@@ -1119,7 +1158,13 @@ export async function saveMedicationRecommendedDoses(
         metadata.frequency_max = d.frequency_max ?? null
         metadata.frequency_mode = d.frequency_mode ?? null
         metadata.frequency_text = d.frequency_text ?? null
+        metadata.recurrence_value = d.recurrence_value ?? null
+        metadata.recurrence_unit = d.recurrence_unit ?? null
         metadata.duration = d.duration ?? null
+        metadata.administration_basis = d.administration_basis ?? null
+        metadata.administration_amount = d.administration_amount ?? null
+        metadata.administration_unit = d.administration_unit ?? null
+        metadata.administration_target = d.administration_target ?? null
         metadata.calculator_default_dose = d.calculator_default_dose ?? null
         metadata.calculator_default_frequency = d.calculator_default_frequency ?? null
         return { metadata }
@@ -1132,6 +1177,16 @@ export async function saveMedicationRecommendedDoses(
       dose_unit: d.dose_unit!,
       frequency: d.frequency || null,
       notes: d.notes || null,
+      // ── Fase 3A: canonical columns ──────────────────────────
+      administration_basis: normalizeAdministrationBasisValue(d.administration_basis),
+      administration_amount: d.administration_amount ?? null,
+      administration_unit: d.administration_unit ?? null,
+      administration_target: d.administration_target ?? null,
+      is_single_dose: d.is_single_dose ?? (d.frequency_mode === 'single_dose' || d.frequency_mode === 'repeat_interval') ?? false,
+      repeat_periodically: d.repeat_periodically ?? (d.frequency_mode === 'repeat_interval') ?? false,
+      recurrence_value: d.recurrence_value ?? null,
+      recurrence_unit: d.recurrence_unit ?? null,
+      // ────────────────────────────────────────────────────────
       is_active: d.is_active ?? true,
       sort_order: d.sort_order ?? null,
     }))
@@ -1353,6 +1408,8 @@ export type ProtocolMedicationItem = {
   is_controlled?: boolean
   sort_order: number
   // NOTE: `instructions` column does NOT exist — removed
+  /** Snapshot canônico do regime (is_single_dose, repeat_periodically, administration_basis, etc.) */
+  metadata?: Record<string, unknown> | null
 }
 
 /** Uses `text` column (not `recommendation_text`). */
@@ -1554,6 +1611,9 @@ export async function loadProtocol(clinicId: string, userId: string, protocolId:
       is_controlled: !!m.is_controlled,
       sort_order: m.sort_order ?? 0,
       // NOTE: `instructions` does NOT exist in DB - omitted
+      metadata: (m.metadata && typeof m.metadata === 'object' && !Array.isArray(m.metadata))
+        ? m.metadata as Record<string, unknown>
+        : null,
     })) as ProtocolMedicationItem[],
     recommendations: (recommendations || []).map(r => ({
       id: r.id,
@@ -1681,6 +1741,10 @@ export async function saveProtocol(
         manual_medication_name: isCatalog ? null : manualName,
         manual_presentation_label: isCatalog ? null : manualPresentation,
         // NOTE: no `instructions` — column does not exist
+        // Fase 3B: snapshot canônico do regime
+        metadata: (m.metadata && typeof m.metadata === 'object' && !Array.isArray(m.metadata))
+          ? m.metadata
+          : {},
       }
     })
 

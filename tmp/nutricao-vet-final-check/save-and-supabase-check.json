@@ -1,0 +1,47 @@
+{
+  "storageData": {
+    "enabled": true,
+    "mealsPerDay": 2,
+    "roundingRule": "Abaixo de 0,4 g arredonda para 0; 0,4 a 0,5 g arredonda para 0; a partir de 0,5 g arredonda para 1 g ou inteiro mais proximo.",
+    "meals": [
+      {
+        "id": "meal-1",
+        "label": "1a alimentacao",
+        "time": "08:00",
+        "totalGrams": 110,
+        "items": [
+          {
+            "foodId": "racao-all-canis-adultos",
+            "foodName": "Ração All Canis adultos",
+            "gramsAsFed": 110
+          }
+        ]
+      },
+      {
+        "id": "meal-2",
+        "label": "2a alimentacao",
+        "time": "20:00",
+        "totalGrams": 110,
+        "items": [
+          {
+            "foodId": "racao-all-canis-adultos",
+            "foodName": "Ração All Canis adultos",
+            "gramsAsFed": 110
+          }
+        ]
+      }
+    ],
+    "startDate": "2026-04-07",
+    "printRangeMode": "next_3_days",
+    "generatedFeedingDates": [
+      "2026-04-07",
+      "2026-04-08",
+      "2026-04-09"
+    ]
+  },
+  "supabaseCheck": {
+    "ok": false,
+    "error": "Could not find the table 'public.nutrition_reports' in the schema cache",
+    "code": "PGRST205"
+  }
+}

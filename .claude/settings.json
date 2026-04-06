@@ -2,7 +2,27 @@
   "permissions": {
     "allow": [
       "Bash(node -e ':*)",
-      "Bash(node -e:*)"
+      "Bash(node -e:*)",
+      "Bash(npx supabase:*)",
+      "Bash(node scripts/import-quatree.mjs)",
+      "Bash(node tmp/fix-mojibake.js)",
+      "Bash(mv \"c:/PROJETOS VET/Vetius/tmp/fix-mojibake.js\" \"c:/PROJETOS VET/Vetius/tmp/fix-mojibake.cjs\")",
+      "Bash(node tmp/fix-mojibake.cjs)",
+      "Bash(cp \"C:/Users/Public/Pictures/CÃO NUTRI.png\" \"c:/PROJETOS VET/Vetius/public/foto-cao.jpg\")",
+      "Bash(cp \"C:/Users/Public/Pictures/gato nutri.png\" \"c:/PROJETOS VET/Vetius/public/foto-gato.jpg\")",
+      "Bash(grep -l \"uuid_generate_v4\" \"c:/PROJETOS VET/Vetius/supabase/migrations/\"*)",
+      "Bash(sed -i \"s/Relatorios e historico/Relatórios e histórico/g; s/Historico do Energia Vet/Histórico do Energia Vet/g; s/>Especie</>Espécie</g; s/Perfil clinico/Perfil clínico/g\" \"c:/PROJETOS VET/Vetius/modules/energia-vet/pages/Reports.tsx\")",
+      "Bash(sed -i \"s/Historico de pacientes/Histórico de pacientes/g; s/calculo para popular o historico/cálculo para popular o histórico/g; s/>Historico</>Histórico</g\" \"c:/PROJETOS VET/Vetius/modules/energia-vet/pages/Patients.tsx\")",
+      "Bash(sed -i \"s/Historico do paciente/Histórico do paciente/g\" \"c:/PROJETOS VET/Vetius/modules/energia-vet/pages/PatientHistoryDetail.tsx\")",
+      "Bash(sed -i \"s/Resumo clinico/Resumo clínico/g; s/Energia e formulacao/Energia e formulação/g\" \"c:/PROJETOS VET/Vetius/modules/energia-vet/components/ReportDetailView.tsx\")",
+      "Bash(sed -i \"s/NutricaoVET - Relatorio nutricional/NutriçãoVET - Relatório nutricional/g; s/Identificacao do paciente/Identificação do paciente/g; s/Calculo energetico/Cálculo energético/g\" \"c:/PROJETOS VET/Vetius/modules/energia-vet/components/PrintableReportDocument.tsx\")",
+      "Bash(sed -i \"s/NutricaoVET - Relatorio nutricional/NutriçãoVET - Relatório nutricional/g; s/Identificacao do paciente/Identificação do paciente/g; s/Calculo energetico/Cálculo energético/g\" \"c:/PROJETOS VET/Vetius/modules/energia-vet/lib/reportDocument.ts\")",
+      "Bash(sed -i \"s/return 'Femea'/return 'Fêmea'/g; s/label: 'Especie'/label: 'Espécie'/g; s/Perfil clinico final/Perfil clínico final/g; s/Modo de formulacao/Modo de formulação/g; s/return 'Nao informado'/return 'Não informado'/g\" \"c:/PROJETOS VET/Vetius/modules/energia-vet/lib/reportPresentation.ts\")",
+      "Bash(sed -i \"s/return 'Perfil clinico'/return 'Perfil clínico'/g; s/avaliacao nutricional com metas especificas da planilha clinica/avaliação nutricional com metas específicas da planilha clínica/g; s/return 'Perfil nutricional nao selecionado'/return 'Perfil nutricional não selecionado'/g\" \"c:/PROJETOS VET/Vetius/modules/energia-vet/lib/clinicalProfiles.ts\")",
+      "Bash(curl -s http://localhost:5173)",
+      "Bash(grep -n \"buildCompoundedInstruction\\\\|export.*buildCompoundedInstruction\" \"c:/PROJETOS VET/Vetius/modules/receituario-vet/\"*.ts)",
+      "Bash(grep -n \"interface CompoundedRegimenSnapshot\\\\|type CompoundedRegimenSnapshot\" \"c:/PROJETOS VET/Vetius/modules/receituario-vet/\"*.ts*)",
+      "Bash(node scripts/import-purina.mjs)"
     ]
   }
 }

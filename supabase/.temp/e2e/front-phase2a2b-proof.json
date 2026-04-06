@@ -1,0 +1,33 @@
+{
+  "ok": true,
+  "timestamp": "2026-04-06T00:36:30.001Z",
+  "routeLoaded": true,
+  "protocolDurationSupportsWeeksMonths": true,
+  "protocolDurationCustomTextPreserved": true,
+  "protocolDurationSingleDoseAvailable": true,
+  "protocolInputSpacesOk": true,
+  "bravectoNoDuplicatedPerUnit": true,
+  "reviewManualInstructionEditable": true,
+  "previewUsesManualInstruction": true,
+  "pdfUsesManualInstruction": true,
+  "unitSelectorHasNoMgPerKgPerKg": true,
+  "tooltipsVisible": true,
+  "sharedAdministrationProofOk": true,
+  "buildPassed": true,
+  "artifacts": {
+    "screenshots": [
+      "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\front-phase2a2b\\phase2a2b-protocol-list.png",
+      "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\front-phase2a2b\\phase2a2b-protocol-editor-duration.png",
+      "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\front-phase2a2b\\phase2a2b-recipe-preview.png",
+      "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\front-phase2a2b\\phase2a2b-review-before-manual.png",
+      "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\shots\\front-phase2a2b\\phase2a2b-review-after-manual.png"
+    ],
+    "pdfPath": "C:\\PROJETOS VET\\Vetius\\supabase\\.temp\\e2e\\downloads\\front-phase2a2b-1775435819275-PACIENTE_E2E_TUTOR_E2E_MANIPULADOS_05-04-2026.pdf"
+  },
+  "entities": {
+    "protocolId": "a7e84c68-884a-4f2b-88ac-9da5dfd877c1",
+    "medicationId": "2c962eb8-cbb0-4f49-bc1c-fa43ade8fc0d",
+    "presentationId": "097225c3-62b0-464f-8e10-0cbac9aad40a"
+  },
+  "errors": []
+}

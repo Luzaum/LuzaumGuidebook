@@ -1299,7 +1299,10 @@ export function buildCompoundedInstruction(item: PrescriptionItem, patient?: Pat
 export function buildCompoundedPharmacyInstruction(item: PrescriptionItem, patient?: PatientInfo | null): string {
   if (!isCompounded(item)) return ''
   const runtimeV1 = getRuntimeManipuladoV1(item)
-  if (runtimeV1) return sanitizeVisibleText(renderManipuladoV1PharmacyInstruction(runtimeV1))
+  if (runtimeV1) {
+    const userOverride = String(item.compounded_pharmacy_guidance || '').trim()
+    return sanitizeVisibleText(userOverride || renderManipuladoV1PharmacyInstruction(runtimeV1))
+  }
   const runtimeV2 = getRuntimeCompoundedV2(item)
   if (runtimeV2) return sanitizeVisibleText(renderV2PharmacyInstructions(runtimeV2, patient, item.compounded_regimen_id))
   if (isClinicalDoseOrientedItem(item)) {
@@ -1352,10 +1355,15 @@ export function buildCompoundedPreviewCautions(item: PrescriptionItem, patient?:
   if (!isCompounded(item)) return []
   const runtimeV1 = getRuntimeManipuladoV1(item)
   if (runtimeV1) {
-    const lines = [
-      renderManipuladoV1PharmacyInstruction(runtimeV1),
-      ...renderManipuladoV1Recommendations(runtimeV1).map((entry) => `Orientações ao tutor: ${sanitizeVisibleText(entry)}`),
-    ].filter(Boolean)
+    const pharmacyLine = sanitizeVisibleText(
+      String(item.compounded_pharmacy_guidance || '').trim() ||
+      renderManipuladoV1PharmacyInstruction(runtimeV1)
+    )
+    const userCautions = String((item as { cautionsText?: string }).cautionsText || '').trim()
+    const cautionLines: string[] = userCautions
+      ? userCautions.split('\n').map((l) => l.trim()).filter(Boolean).map((l) => `Orientações ao tutor: ${sanitizeVisibleText(l)}`)
+      : renderManipuladoV1Recommendations(runtimeV1).map((entry) => `Orientações ao tutor: ${sanitizeVisibleText(entry)}`)
+    const lines = [pharmacyLine, ...cautionLines].filter(Boolean)
     return Array.from(new Set(lines.map((entry) => sanitizeVisibleText(entry)).filter(Boolean)))
   }
   const runtimeV2 = getRuntimeCompoundedV2(item)

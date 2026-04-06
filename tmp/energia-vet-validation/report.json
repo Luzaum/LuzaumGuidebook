@@ -1,30 +1,37 @@
 {
-  "generatedAt": "2026-04-03T23:40:48.324Z",
+  "generatedAt": "2026-04-05T23:10:02.490Z",
   "screenshots": {
     "patient": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\patient-step.png",
-    "energy": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\energy-step.png",
+    "energyDog": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\energy-step-dog.png",
     "food": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\food-step.png",
-    "printPreview": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\print-preview.png",
-    "feedingSheet": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\feeding-sheet-table.png"
+    "foodModal": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\food-modal.png",
+    "summary": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\summary-step.png"
   },
   "checks": {
-    "dogEnergy": {
-      "sedentary": 686,
-      "lowActivity": 724,
-      "moderateLow": 838,
-      "moderateHigh": 953,
-      "highActivity": 1220,
-      "obesityProne": 686
+    "dogProfiles": {
+      "intact": 838,
+      "neuteredProfile": 724,
+      "obeseProne": 686,
+      "workLight": 838,
+      "workModerate": 953,
+      "workIntense": 1220,
+      "hasSlugVisible": false,
+      "hasPortugueseProfiles": true
     },
-    "catEnergy": {
+    "dogCastration": {
+      "intactUnneutered": 838,
+      "intactNeutered": 724
+    },
+    "catIndoor": {
       "active": 274,
       "indoor": 205
     },
-    "energyChangedSedentaryToLow": true,
-    "energyChangedLowToModerate": true,
-    "energyChangedByImpact": true,
-    "energyChangedToHighActivity": true,
-    "energyChangedByObesityProne": true,
-    "energyChangedByCatIndoor": true
+    "profileOptionsInPortuguese": true,
+    "speciesChangesProfiles": true,
+    "castrationChangedCalculation": true,
+    "catIndoorChangedCalculation": true,
+    "foodHasNoEnergyProfileSelector": true,
+    "foodModalIsClean": true,
+    "summaryUsesResolvedProfile": true
   }
 }

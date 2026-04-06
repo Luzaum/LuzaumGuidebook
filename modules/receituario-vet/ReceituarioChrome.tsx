@@ -214,6 +214,28 @@ export default function ReceituarioChrome({
     }
   }, [dark])
 
+  useEffect(() => {
+    const id = 'rxv-global-grid-style'
+    if (!document.getElementById(id)) {
+      const style = document.createElement('style')
+      style.id = id
+      style.textContent = `
+        @keyframes rxvGridPulse { 0%,100%{opacity:.18} 50%{opacity:.30} }
+        body.rxv-grid-active::before {
+          content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+          background-image:linear-gradient(to right,rgba(57,255,20,0.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(57,255,20,0.04) 1px,transparent 1px);
+          background-size:28px 28px;
+          animation:rxvGridPulse 7s ease-in-out infinite;
+        }
+      `
+      document.head.appendChild(style)
+    }
+    document.body.classList.add('rxv-grid-active')
+    return () => {
+      document.body.classList.remove('rxv-grid-active')
+    }
+  }, [])
+
   const pageClass = dark ? 'rxv-dark' : 'rxv-light'
   const sidebarExpanded = sidebarPinned || sidebarHovered
   const sidebarClass = `rxv-sidebar-shell ${sidebarExpanded ? 'expanded' : 'collapsed'}`
@@ -254,7 +276,8 @@ export default function ReceituarioChrome({
     <div className={`rxv-page ${pageClass}`}>
       <div className="rxv-bg-layer" />
 
-      <div className="rxv-layout">
+      <div className="rxv-scale-shell">
+        <div className="rxv-layout">
         <aside
           className={`rxv-desktop-sidebar ${sidebarClass}`}
           onMouseEnter={() => {
@@ -298,7 +321,7 @@ export default function ReceituarioChrome({
           </header>
 
           <section className="rxv-main">
-            <div className="w-full min-w-0">
+            <div className="rxv-page-frame w-full min-w-0">
               <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
                 <div>
                   <h1 className="text-2xl font-black tracking-tight sm:text-3xl">{title}</h1>
@@ -310,6 +333,7 @@ export default function ReceituarioChrome({
             </div>
           </section>
         </main>
+        </div>
       </div>
 
       {mobileMenuOpen ? (

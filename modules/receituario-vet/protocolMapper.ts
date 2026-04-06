@@ -10,6 +10,7 @@ import { mapCompoundedV2ToPrescriptionItem } from './compoundedV2Mapper'
 import { createEmptyManipuladoV1, normalizeManipuladoV1, type ManipuladoV1Formula } from './manipuladosV1'
 import { mapManipuladoV1ToPrescriptionItem, mapManipuladoV1ToProtocolMedication } from './manipuladosV1Mapper'
 import { sanitizeDeepText, sanitizeVisibleText } from './textSanitizer'
+import { normalizeAdministrationBasis } from './vetPosologyShared'
 
 type StoredProtocolPrescriptionSnapshot = Omit<
   PrescriptionItem,
@@ -83,6 +84,17 @@ function parseDoseString(dose?: string | null): { dose_value: number | null; dos
   }
 }
 
+function readAdministrationBasis(raw: unknown): PrescriptionItem['administrationBasis'] | undefined {
+  if (raw == null) return undefined
+  return normalizeAdministrationBasis(raw as string)
+}
+
+function readAdministrationAmount(raw: unknown): number | undefined {
+  if (raw == null || raw === '') return undefined
+  const parsed = Number(raw)
+  return Number.isFinite(parsed) ? parsed : undefined
+}
+
 function parseFrequencyFields(item: PrescriptionItem): {
   frequency_type: ProtocolMedicationItem['frequency_type']
   times_per_day: number | null
@@ -150,24 +162,90 @@ function parseFrequencyFields(item: PrescriptionItem): {
 
 function parseDurationFields(item: PrescriptionItem): {
   duration_days: number | null
+  duration_mode: string | null
+  duration_value: number | null
+  duration_unit: string | null
+  duration_text_custom: string | null
 } {
   if (item.durationMode === 'continuous_until_recheck') {
-    return { duration_days: -1 }
+    return {
+      duration_days: -1,
+      duration_mode: 'continuous_until_recheck',
+      duration_value: null,
+      duration_unit: null,
+      duration_text_custom: null,
+    }
+  }
+
+  if (item.durationMode === 'until_recheck') {
+    return {
+      duration_days: -1,
+      duration_mode: 'until_recheck',
+      duration_value: null,
+      duration_unit: null,
+      duration_text_custom: null,
+    }
+  }
+
+  if (item.durationMode === 'continuous_use') {
+    return {
+      duration_days: -1,
+      duration_mode: 'continuous_use',
+      duration_value: null,
+      duration_unit: null,
+      duration_text_custom: null,
+    }
+  }
+
+  if (item.durationMode === 'until_finished') {
+    return {
+      duration_days: -1,
+      duration_mode: 'until_finished',
+      duration_value: null,
+      duration_unit: null,
+      duration_text_custom: null,
+    }
   }
 
   if (item.durationValue && item.durationValue > 0) {
     const normalizedUnit = String(item.durationUnit || 'dias').trim().toLowerCase()
     const multiplier = normalizedUnit.startsWith('semana') ? 7 : normalizedUnit.startsWith('mes') ? 30 : 1
-    return { duration_days: item.durationValue * multiplier }
+    return {
+      duration_days: item.durationValue * multiplier,
+      duration_mode: 'fixed_days',
+      duration_value: item.durationValue,
+      duration_unit: item.durationUnit || 'dias',
+      duration_text_custom: null,
+    }
   }
 
   const raw = String(item.duration || '').trim()
-  if (!raw) return { duration_days: null }
+  if (!raw) {
+    return {
+      duration_days: null,
+      duration_mode: null,
+      duration_value: null,
+      duration_unit: null,
+      duration_text_custom: null,
+    }
+  }
   const match = raw.match(/(\d+)/)
-  if (!match) return { duration_days: null }
+  if (!match) {
+    return {
+      duration_days: null,
+      duration_mode: 'fixed_days',
+      duration_value: null,
+      duration_unit: null,
+      duration_text_custom: raw,
+    }
+  }
   const days = Number(match[1])
   return {
     duration_days: Number.isFinite(days) ? days : null,
+    duration_mode: 'fixed_days',
+    duration_value: Number.isFinite(days) ? days : null,
+    duration_unit: 'dias',
+    duration_text_custom: null,
   }
 }
 
@@ -201,6 +279,55 @@ function buildDurationFromProtocol(protocolMed: ProtocolMedicationItem): {
   durationValue?: number
   durationUnit?: string
 } {
+  const meta = (protocolMed.metadata || {}) as Record<string, unknown>
+  const metaMode = String(meta.duration_mode || '').trim()
+  const metaCustomText = typeof meta.duration_text_custom === 'string' ? meta.duration_text_custom.trim() : ''
+  const metaValueRaw = Number(meta.duration_value)
+  const metaValue = Number.isFinite(metaValueRaw) && metaValueRaw > 0 ? metaValueRaw : null
+  const metaUnit = String(meta.duration_unit || '').trim() || 'dias'
+
+  if (metaCustomText) {
+    return {
+      duration: metaCustomText,
+    }
+  }
+
+  if (metaMode === 'single_dose') {
+    return {}
+  }
+  if (metaMode === 'until_recheck') {
+    return {
+      duration: undefined,
+      durationMode: 'until_recheck',
+    }
+  }
+  if (metaMode === 'continuous_use') {
+    return {
+      duration: undefined,
+      durationMode: 'continuous_use',
+    }
+  }
+  if (metaMode === 'until_finished') {
+    return {
+      duration: undefined,
+      durationMode: 'until_finished',
+    }
+  }
+  if (metaMode === 'continuous_until_recheck') {
+    return {
+      duration: undefined,
+      durationMode: 'continuous_until_recheck',
+    }
+  }
+  if (metaMode === 'fixed_days' && metaValue) {
+    return {
+      duration: `${metaValue} ${metaUnit}`,
+      durationMode: 'fixed_days',
+      durationValue: metaValue,
+      durationUnit: metaUnit,
+    }
+  }
+
   if (protocolMed.duration_days === -1) {
     return {
       duration: undefined,
@@ -292,7 +419,7 @@ function applyProtocolMedicationOverridesToV2(
           ? protocolMed.interval_hours ?? entry.frequency_min
           : protocolMed.frequency_type === 'once_daily'
             ? 1
-            : protocolMed.times_per_day ?? entry.frequency_min,
+        : protocolMed.times_per_day ?? entry.frequency_min,
       frequency_text:
         protocolMed.frequency_type === 'interval_hours' && protocolMed.interval_hours
           ? `a cada ${protocolMed.interval_hours} horas`
@@ -301,15 +428,43 @@ function applyProtocolMedicationOverridesToV2(
             : protocolMed.times_per_day
               ? `${protocolMed.times_per_day}x ao dia`
               : entry.frequency_text,
-      duration_mode: protocolMed.duration_days === -1 ? 'continuous_until_recheck' : 'fixed',
-      duration_value: protocolMed.duration_days && protocolMed.duration_days > 0 ? protocolMed.duration_days : entry.duration_value,
-      duration_unit: protocolMed.duration_days === -1 ? 'até reavaliação' : 'dias',
-      duration_text:
-        protocolMed.duration_days === -1
-          ? 'até reavaliação'
+      duration_mode:
+        String(((protocolMed.metadata || {}) as Record<string, unknown>).duration_mode || '').trim() === 'until_recheck'
+          ? 'continuous_until_recheck'
+          : String(((protocolMed.metadata || {}) as Record<string, unknown>).duration_mode || '').trim() === 'continuous_use'
+            ? 'continuous_use'
+            : String(((protocolMed.metadata || {}) as Record<string, unknown>).duration_mode || '').trim() === 'until_finished'
+              ? 'until_finished'
+              : String(((protocolMed.metadata || {}) as Record<string, unknown>).duration_mode || '').trim() === 'single_dose'
+                ? entry.duration_mode
+                : String(((protocolMed.metadata || {}) as Record<string, unknown>).duration_mode || '').trim() === 'fixed_days'
+                  ? 'fixed'
+                  : protocolMed.duration_days === -1
+                    ? 'continuous_until_recheck'
+                    : 'fixed',
+      duration_value:
+        Number(((protocolMed.metadata || {}) as Record<string, unknown>).duration_value) > 0
+          ? Number(((protocolMed.metadata || {}) as Record<string, unknown>).duration_value)
           : protocolMed.duration_days && protocolMed.duration_days > 0
-            ? `${protocolMed.duration_days} dias`
-            : entry.duration_text,
+            ? protocolMed.duration_days
+            : entry.duration_value,
+      duration_unit:
+        typeof ((protocolMed.metadata || {}) as Record<string, unknown>).duration_unit === 'string'
+          ? String(((protocolMed.metadata || {}) as Record<string, unknown>).duration_unit)
+          : protocolMed.duration_days === -1
+            ? 'até reavaliação'
+            : 'dias',
+      duration_text:
+        typeof ((protocolMed.metadata || {}) as Record<string, unknown>).duration_text_custom === 'string' &&
+          String(((protocolMed.metadata || {}) as Record<string, unknown>).duration_text_custom).trim()
+          ? String(((protocolMed.metadata || {}) as Record<string, unknown>).duration_text_custom).trim()
+          : String(((protocolMed.metadata || {}) as Record<string, unknown>).duration_mode || '').trim() === 'single_dose'
+            ? 'dose única'
+            : protocolMed.duration_days === -1
+              ? 'até reavaliação'
+              : protocolMed.duration_days && protocolMed.duration_days > 0
+                ? `${protocolMed.duration_days} dias`
+                : entry.duration_text,
       tutor_observation: notes || entry.tutor_observation,
     }),
   })
@@ -363,9 +518,37 @@ function applyProtocolMedicationOverridesToV1(
       dose_max: protocolMed.dose_value ?? v1.prescribing.dose_max,
       dose_unit: sanitizeVisibleText(protocolMed.dose_unit || v1.prescribing.dose_unit),
       ...frequencyFromProtocolItem(protocolMed),
-      duration_value: protocolMed.duration_days && protocolMed.duration_days > 0 ? protocolMed.duration_days : v1.prescribing.duration_value,
-      duration_unit: protocolMed.duration_days && protocolMed.duration_days > 0 ? 'dias' : v1.prescribing.duration_unit,
-      duration_label: protocolMed.duration_days === -1 ? 'até reavaliação' : v1.prescribing.duration_label,
+      duration_value:
+        Number(((protocolMed.metadata || {}) as Record<string, unknown>).duration_value) > 0
+          ? Number(((protocolMed.metadata || {}) as Record<string, unknown>).duration_value)
+          : protocolMed.duration_days && protocolMed.duration_days > 0
+            ? protocolMed.duration_days
+            : v1.prescribing.duration_value,
+      duration_unit:
+        typeof ((protocolMed.metadata || {}) as Record<string, unknown>).duration_unit === 'string' &&
+          String(((protocolMed.metadata || {}) as Record<string, unknown>).duration_unit).trim()
+          ? String(((protocolMed.metadata || {}) as Record<string, unknown>).duration_unit).trim()
+          : protocolMed.duration_days && protocolMed.duration_days > 0
+            ? 'dias'
+            : v1.prescribing.duration_unit,
+      _duration_label_legacy:
+        typeof ((protocolMed.metadata || {}) as Record<string, unknown>).duration_text_custom === 'string' &&
+          String(((protocolMed.metadata || {}) as Record<string, unknown>).duration_text_custom).trim()
+          ? String(((protocolMed.metadata || {}) as Record<string, unknown>).duration_text_custom).trim()
+          : String(((protocolMed.metadata || {}) as Record<string, unknown>).duration_mode || '').trim() === 'single_dose'
+            ? 'dose única'
+            : protocolMed.duration_days === -1
+              ? 'até reavaliação'
+              : v1.prescribing.duration_label,
+      duration_label:
+        typeof ((protocolMed.metadata || {}) as Record<string, unknown>).duration_text_custom === 'string' &&
+          String(((protocolMed.metadata || {}) as Record<string, unknown>).duration_text_custom).trim()
+          ? String(((protocolMed.metadata || {}) as Record<string, unknown>).duration_text_custom).trim()
+          : String(((protocolMed.metadata || {}) as Record<string, unknown>).duration_mode || '').trim() === 'single_dose'
+            ? 'dose unica'
+            : protocolMed.duration_days === -1
+              ? 'ate reavaliacao'
+              : v1.prescribing.duration_label,
       clinical_note: notes || v1.prescribing.clinical_note,
     },
     pharmacy: {
@@ -405,6 +588,14 @@ export function mapPrescriptionItemToProtocolMedicationItem(
           ...(mapped.metadata || {}),
           notes,
           item_kind: item.kind,
+          administration_basis: item.administrationBasis || 'weight_based',
+          administration_amount: item.administrationAmount ?? null,
+          administration_unit: item.administrationUnit || null,
+          administration_target: item.administrationTarget || null,
+          duration_mode: durationParsed.duration_mode,
+          duration_value: durationParsed.duration_value,
+          duration_unit: durationParsed.duration_unit,
+          duration_text_custom: durationParsed.duration_text_custom,
           presentation_metadata: item.presentation_metadata || null,
           rx_item_snapshot: buildSnapshotFromPrescriptionItem(item),
         },
@@ -436,6 +627,18 @@ export function mapPrescriptionItemToProtocolMedicationItem(
     metadata: {
       notes,
       item_kind: item.kind,
+      administration_basis: item.administrationBasis || 'weight_based',
+      administration_amount: item.administrationAmount ?? null,
+      administration_unit: item.administrationUnit || null,
+      administration_target: item.administrationTarget || null,
+      is_single_dose: (item as any).frequencyMode === 'single_dose' || (item as any).frequencyMode === 'repeat_interval' || false,
+      repeat_periodically: (item as any).frequencyMode === 'repeat_interval' && !!(item.repeatEveryValue),
+      repeat_every_value: item.repeatEveryValue ?? null,
+      repeat_every_unit: item.repeatEveryUnit ?? null,
+      duration_mode: durationParsed.duration_mode,
+      duration_value: durationParsed.duration_value,
+      duration_unit: durationParsed.duration_unit,
+      duration_text_custom: durationParsed.duration_text_custom,
       presentation_metadata: item.presentation_metadata || null,
       rx_item_snapshot: buildSnapshotFromPrescriptionItem(item),
     },
@@ -532,11 +735,45 @@ export function mapProtocolMedicationToPrescriptionItem(
   }
 
   let frequency = ''
-  let frequencyMode: 'times_per_day' | 'interval_hours' | undefined
+  let frequencyMode: 'times_per_day' | 'interval_hours' | 'single_dose' | 'repeat_interval' | undefined
   let timesPerDay: number | undefined
   let intervalHours: number | undefined
-  if (protocolMed.frequency_type === 'times_per_day' && protocolMed.times_per_day) {
-    frequency = `${protocolMed.times_per_day}x ao dia`
+
+  const protocolMeta = protocolMed.metadata && typeof protocolMed.metadata === 'object'
+    ? (protocolMed.metadata as Record<string, unknown>)
+    : {}
+  const protocolAdministrationBasis = readAdministrationBasis(protocolMeta.administration_basis)
+  const protocolAdministrationAmount = readAdministrationAmount(protocolMeta.administration_amount)
+  const protocolAdministrationUnit = typeof protocolMeta.administration_unit === 'string'
+    ? sanitizeVisibleText(protocolMeta.administration_unit).trim() || undefined
+    : undefined
+  const protocolAdministrationTarget = typeof protocolMeta.administration_target === 'string'
+    ? sanitizeVisibleText(protocolMeta.administration_target).trim() || undefined
+    : undefined
+  const isSingleDose = !!protocolMeta.is_single_dose
+  const metaFreqMode = typeof protocolMeta.frequency_mode === 'string' ? protocolMeta.frequency_mode : null
+
+  if (isSingleDose) {
+    const repeatPeriodically = !!protocolMeta.repeat_periodically
+    const repeatVal = protocolMeta.repeat_every_value
+    const repeatUnit = (protocolMeta.repeat_every_unit as string | undefined) || 'dias'
+    if (repeatPeriodically && repeatVal) {
+      frequency = `em dose única, repetir a cada ${repeatVal} ${repeatUnit}`
+      frequencyMode = 'repeat_interval'
+    } else {
+      frequency = 'em dose única'
+      frequencyMode = 'single_dose'
+    }
+  } else if (metaFreqMode === 'repeat_interval' && protocolMeta.repeat_every_value) {
+    const repeatVal = protocolMeta.repeat_every_value
+    const repeatUnit = (protocolMeta.repeat_every_unit as string | undefined) || 'dias'
+    frequency = `repetir a cada ${repeatVal} ${repeatUnit}`
+    frequencyMode = 'repeat_interval'
+  } else if (protocolMed.frequency_type === 'times_per_day' && protocolMed.times_per_day) {
+    const interval = 24 / protocolMed.times_per_day
+    frequency = Number.isInteger(interval)
+      ? `${protocolMed.times_per_day}x ao dia (a cada ${interval}h)`
+      : `${protocolMed.times_per_day}x ao dia`
     frequencyMode = 'times_per_day'
     timesPerDay = protocolMed.times_per_day
   } else if (protocolMed.frequency_type === 'interval_hours' && protocolMed.interval_hours) {
@@ -544,7 +781,7 @@ export function mapProtocolMedicationToPrescriptionItem(
     frequencyMode = 'interval_hours'
     intervalHours = protocolMed.interval_hours
   } else if (protocolMed.frequency_type === 'once_daily') {
-    frequency = '1x ao dia'
+    frequency = '1x ao dia (a cada 24h)'
     frequencyMode = 'times_per_day'
     timesPerDay = 1
   } else if (protocolMed.frequency_type === 'as_needed') {
@@ -573,17 +810,28 @@ export function mapProtocolMedicationToPrescriptionItem(
     return {
       ...mapped,
       id: `protocol-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
+      administrationBasis: protocolAdministrationBasis || mapped.administrationBasis,
+      administrationAmount: protocolAdministrationAmount ?? mapped.administrationAmount,
+      administrationUnit: protocolAdministrationUnit || mapped.administrationUnit,
+      administrationTarget: protocolAdministrationTarget || mapped.administrationTarget,
       cautionsText: notes || mapped.cautionsText,
       cautions: notes ? notes.split(/\r?\n/).filter(Boolean) : mapped.cautions,
     }
   }
 
   if ((protocolMed.item_type === 'compounded' || baseItem.kind === 'compounded') && payloadV2) {
-    return mapCompoundedV2ToPrescriptionItem({
+    const mapped = mapCompoundedV2ToPrescriptionItem({
       v2: applyProtocolMedicationOverridesToV2(payloadV2, protocolMed, notes),
       patient: null,
       regimenId: protocolMed.compounded_regimen_id || undefined,
     })
+    return {
+      ...mapped,
+      administrationBasis: protocolAdministrationBasis || mapped.administrationBasis,
+      administrationAmount: protocolAdministrationAmount ?? mapped.administrationAmount,
+      administrationUnit: protocolAdministrationUnit || mapped.administrationUnit,
+      administrationTarget: protocolAdministrationTarget || mapped.administrationTarget,
+    }
   }
 
   if (protocolMed.item_type === 'compounded' || baseItem.kind === 'compounded') {
@@ -624,11 +872,17 @@ export function mapProtocolMedicationToPrescriptionItem(
       frequencyMode: frequencyMode || compoundedBase.frequencyMode,
       timesPerDay: timesPerDay ?? compoundedBase.timesPerDay,
       intervalHours: intervalHours ?? compoundedBase.intervalHours,
+      repeatEveryValue: (isSingleDose || metaFreqMode === 'repeat_interval') && protocolMeta.repeat_every_value ? Number(protocolMeta.repeat_every_value) : compoundedBase.repeatEveryValue,
+      repeatEveryUnit: (isSingleDose || metaFreqMode === 'repeat_interval') && protocolMeta.repeat_every_unit ? String(protocolMeta.repeat_every_unit) as 'dias' | 'semanas' | 'meses' : compoundedBase.repeatEveryUnit,
       route: protocolMed.route || compoundedBase.route || compoundedBase.compounded_snapshot.default_route || undefined,
       duration: durationState.duration || compoundedBase.duration,
       durationMode: durationState.durationMode || compoundedBase.durationMode,
       durationValue: durationState.durationValue ?? compoundedBase.durationValue,
       durationUnit: durationState.durationUnit || compoundedBase.durationUnit,
+      administrationBasis: protocolAdministrationBasis || compoundedBase.administrationBasis,
+      administrationAmount: protocolAdministrationAmount ?? compoundedBase.administrationAmount,
+      administrationUnit: protocolAdministrationUnit || compoundedBase.administrationUnit,
+      administrationTarget: protocolAdministrationTarget || compoundedBase.administrationTarget,
       cautionsText: notes || compoundedBase.cautionsText || undefined,
       cautions: compoundedBase.cautions || (notes ? notes.split(/\r?\n/).filter(Boolean) : undefined),
       presentation_metadata: metadata.presentation_metadata && typeof metadata.presentation_metadata === 'object'
@@ -670,11 +924,17 @@ export function mapProtocolMedicationToPrescriptionItem(
     frequencyMode: frequencyMode || baseItem.frequencyMode,
     timesPerDay: timesPerDay ?? baseItem.timesPerDay,
     intervalHours: intervalHours ?? baseItem.intervalHours,
+    repeatEveryValue: (isSingleDose || metaFreqMode === 'repeat_interval') && protocolMeta.repeat_every_value ? Number(protocolMeta.repeat_every_value) : baseItem.repeatEveryValue,
+    repeatEveryUnit: (isSingleDose || metaFreqMode === 'repeat_interval') && protocolMeta.repeat_every_unit ? String(protocolMeta.repeat_every_unit) as 'dias' | 'semanas' | 'meses' : baseItem.repeatEveryUnit,
     route: protocolMed.route || baseItem.route || undefined,
     duration: durationState.duration || baseItem.duration,
     durationMode: durationState.durationMode || baseItem.durationMode,
     durationValue: durationState.durationValue ?? baseItem.durationValue,
     durationUnit: durationState.durationUnit || baseItem.durationUnit,
+    administrationBasis: protocolAdministrationBasis || baseItem.administrationBasis,
+    administrationAmount: protocolAdministrationAmount ?? baseItem.administrationAmount,
+    administrationUnit: protocolAdministrationUnit || baseItem.administrationUnit,
+    administrationTarget: protocolAdministrationTarget || baseItem.administrationTarget,
     cautionsText: notes || baseItem.cautionsText || undefined,
     cautions: baseItem.cautions || (notes ? notes.split(/\r?\n/).filter(Boolean) : undefined),
     presentation_metadata: metadata.presentation_metadata && typeof metadata.presentation_metadata === 'object'

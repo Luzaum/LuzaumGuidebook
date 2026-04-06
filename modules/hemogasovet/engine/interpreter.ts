@@ -1,7 +1,6 @@
-import {
+﻿import {
   BloodGasInput,
   ClinicalAlert,
-  ConsistencyCheck,
   DataQualityAssessment,
   DeepAcidBaseInterpretation,
   DeepElectrolyteAssessment,
@@ -17,10 +16,19 @@ import { PARAMETER_INTERACTIONS } from '../data/parameterInteractions';
 import { normalizeFiO2Input } from '../utils/fio2';
 
 type ClinicalActions = InterpretationResult['clinicalActions'];
+type SubmissionIssue = { level: 'warning' | 'critical'; message: string };
 
 function round(value: number, digits = 1): number {
   const factor = 10 ** digits;
   return Math.round(value * factor) / factor;
+}
+
+function inferDataQualityConfidence(quality: DataQualityAssessment): DataQualityAssessment['confidence'] {
+  if (quality.status === 'probable_error' || quality.domainStatus === 'blocked') return 'blocked';
+  if (quality.consistencyChecks.some((c) => c.level === 'critical')) return 'blocked';
+  if (quality.consistencyChecks.filter((c) => c.level === 'warning').length >= 3) return 'low';
+  if (quality.status === 'caution') return 'moderate';
+  return 'high';
 }
 
 function getApproxBarometricPressure(input: BloodGasInput): number {
@@ -64,9 +72,8 @@ function buildTemperatureContext(input: BloodGasInput): TemperatureContext {
       status: 'hypothermia',
       summary: `Hipotermia relevante (${input.temperature} C).`,
       effectOnInterpretation: [
-        'Hipotermia pode alterar a relacao entre os valores reportados pelo analisador e a fisiologia real do paciente.',
-        'O paciente pode produzir menos CO2 e consumir menos O2 do que um paciente normotermico.',
-        'A temperatura deve ser contextualizada na interpretacao, especialmente em pacientes anestesiados, chocados ou muito graves.',
+        'Hipotermia pode alterar a relacao entre valores reportados e fisiologia real.',
+        'A reducao metabolica pode modificar consumo de O2 e producao de CO2.',
       ],
     };
   }
@@ -77,9 +84,8 @@ function buildTemperatureContext(input: BloodGasInput): TemperatureContext {
       status: 'hyperthermia',
       summary: `Hipertermia relevante (${input.temperature} C).`,
       effectOnInterpretation: [
-        'Hipertermia aumenta consumo de O2, producao de CO2 e demanda metabolica.',
-        'Valores gasometricos devem ser lidos junto do contexto de perfusao, sepses, dor, estresse ou hipertermia ambiental.',
-        'O analisador frequentemente reporta valores padronizados; a temperatura deve ser contextualizada clinicamente.',
+        'Hipertermia aumenta consumo de O2 e producao de CO2.',
+        'Interpretar com contexto de sepse, dor, estresse e perfusao.',
       ],
     };
   }
@@ -88,41 +94,46 @@ function buildTemperatureContext(input: BloodGasInput): TemperatureContext {
     domainStatus: 'ok',
     status: 'normal',
     summary: `Temperatura informada (${input.temperature} C) sem alerta termico dominante.`,
-    effectOnInterpretation: ['Temperatura registrada e incorporada como fator de contexto da interpretacao.'],
+    effectOnInterpretation: ['Temperatura incorporada como fator de contexto da interpretacao.'],
   };
 }
 
-function buildQualityAssessment(input: BloodGasInput, fio2Info: ReturnType<typeof normalizeFiO2Input>, temperatureContext: TemperatureContext): DataQualityAssessment {
-  const messages: string[] = [];
+function buildQualityAssessment(
+  input: BloodGasInput,
+  fio2Info: ReturnType<typeof normalizeFiO2Input>,
+  temperatureContext: TemperatureContext,
+  submissionIssues: SubmissionIssue[] = []
+): DataQualityAssessment {
+  const messages: string[] = submissionIssues.map((i) => i.message);
   const suspectFields: string[] = [];
   const missingForComplete: string[] = [];
   const limitations: string[] = [];
-  const consistencyChecks: ConsistencyCheck[] = [];
+  const consistencyChecks: DataQualityAssessment['consistencyChecks'] = [];
 
   const canAssessAcidBase = input.pH !== undefined && input.pCO2 !== undefined && (input.HCO3 !== undefined || input.BE !== undefined);
   const canAssessOxygenation = input.sampleType === 'arterial' && input.pO2 !== undefined;
 
   if (!canAssessAcidBase) missingForComplete.push('pH, pCO2 e HCO3/BE sao necessarios para interpretacao acido-base completa.');
   if (input.sampleType === 'arterial' && input.pO2 === undefined) missingForComplete.push('pO2 e necessario para avaliacao completa da oxigenacao arterial.');
-  if (input.sampleType === 'venous') limitations.push('Amostra venosa nao deve ser usada para julgar desempenho pulmonar com base em pO2/PvO2.');
+  if (input.sampleType === 'venous') limitations.push('Amostra venosa nao deve ser usada para classificar oxigenacao pulmonar arterial.');
 
-  const trackedFields: Array<[string, number | undefined, string]> = [
-    ['pH', input.pH, ''],
-    ['pCO2', input.pCO2, 'mmHg'],
-    ['pO2', input.pO2, 'mmHg'],
-    ['HCO3', input.HCO3, 'mEq/L'],
-    ['BE', input.BE, 'mEq/L'],
-    ['lactate', input.lactate, 'mmol/L'],
-    ['Na', input.Na, 'mEq/L'],
-    ['K', input.K, 'mEq/L'],
-    ['Cl', input.Cl, 'mEq/L'],
-    ['temperature', input.temperature, 'C'],
+  const trackedFields: Array<[string, number | undefined]> = [
+    ['pH', input.pH],
+    ['pCO2', input.pCO2],
+    ['pO2', input.pO2],
+    ['HCO3', input.HCO3],
+    ['BE', input.BE],
+    ['lactate', input.lactate],
+    ['Na', input.Na],
+    ['K', input.K],
+    ['Cl', input.Cl],
+    ['temperature', input.temperature],
   ];
 
-  for (const [field, value, unit] of trackedFields) {
+  for (const [field, value] of trackedFields) {
     if (isImplausible(field, value)) {
       suspectFields.push(field);
-      messages.push(`Valor de ${field} (${value} ${unit}) parece fisiologicamente implausivel e deve ser revisado.`);
+      messages.push(`Valor de ${field} parece fisiologicamente implausivel.`);
     }
   }
 
@@ -134,79 +145,65 @@ function buildQualityAssessment(input: BloodGasInput, fio2Info: ReturnType<typeo
     if (fio2Info.note) messages.push(fio2Info.note);
   }
 
-  if (input.sampleType === 'venous' && input.pO2 !== undefined && input.pO2 > 80) {
-    consistencyChecks.push({
-      level: 'critical',
-      message: 'Amostra venosa com pO2 muito alta para o padrao venoso habitual.',
-      suggestion: 'Confirme se a amostra e realmente venosa ou se houve rotulo/entrada incorretos.',
-      fields: ['sampleType', 'pO2'],
-    });
-  }
-
-  if (input.sampleType === 'arterial' && input.pO2 === undefined) {
-    consistencyChecks.push({
-      level: 'warning',
-      message: 'Amostra arterial sem pO2 informado.',
-      suggestion: 'Sem pO2 nao e possivel qualificar a oxigenacao de forma completa.',
-      fields: ['sampleType', 'pO2'],
-    });
-  }
-
   if (input.HCO3 !== undefined && input.BE !== undefined) {
     if (input.HCO3 < 18 && input.BE > 3) {
       consistencyChecks.push({
         level: 'critical',
-        message: 'HCO3 baixo com BE positivo forte e internamente incoerente.',
-        suggestion: 'Confirme se o sinal do BE foi digitado corretamente ou se o campo pertence a outra coluna.',
+        message: 'HCO3 baixo com BE positivo forte e incoerente.',
+        suggestion: 'Confirme sinal/unidade do BE e origem dos valores.',
         fields: ['HCO3', 'BE'],
       });
     }
     if (input.HCO3 > 28 && input.BE < -3) {
       consistencyChecks.push({
         level: 'critical',
-        message: 'HCO3 alto com BE negativo forte sugere conflito entre parametros.',
-        suggestion: 'Revise unidade, sinal do BE e origem do valor copiado.',
+        message: 'HCO3 alto com BE negativo forte e incoerente.',
+        suggestion: 'Confirme sinal/unidade do BE e origem dos valores.',
         fields: ['HCO3', 'BE'],
       });
     }
   }
 
   if (input.pH !== undefined && input.pCO2 !== undefined && input.HCO3 !== undefined) {
-    const hendersonPlausibility = 6.1 + Math.log10(input.HCO3 / (0.03 * input.pCO2));
-    if (Math.abs(hendersonPlausibility - input.pH) > 0.12) {
+    const expectedPH = 6.1 + Math.log10(input.HCO3 / (0.03 * input.pCO2));
+    if (Math.abs(expectedPH - input.pH) > 0.12) {
       consistencyChecks.push({
         level: 'warning',
-        message: 'pH, pCO2 e HCO3 formam um conjunto com coerencia interna reduzida.',
-        suggestion: 'Confirme casas decimais, erro de OCR ou troca entre HCO3 medido e std HCO3.',
+        message: 'pH, pCO2 e HCO3 com coerencia interna reduzida.',
+        suggestion: 'Revisar casas decimais, unidade e origem dos campos.',
         fields: ['pH', 'pCO2', 'HCO3'],
       });
     }
   }
 
+  if (input.sampleType === 'venous' && input.pO2 !== undefined && input.pO2 > 80) {
+    consistencyChecks.push({
+      level: 'critical',
+      message: 'pO2 venosa muito alta para padrao venoso habitual.',
+      suggestion: 'Confirme se a amostra nao foi rotulada incorretamente.',
+      fields: ['sampleType', 'pO2'],
+    });
+  }
+
   if (input.sampleType === 'arterial' && input.sO2 !== undefined && input.pO2 !== undefined && input.pO2 < 60 && input.sO2 > 98) {
     consistencyChecks.push({
       level: 'warning',
-      message: 'SatO2 muito alta para uma pO2 arterial baixa.',
-      suggestion: 'Confirme se a saturacao pertence ao mesmo exame e se houve erro de parser/unidade.',
+      message: 'SatO2 alta para pO2 arterial baixa.',
+      suggestion: 'Revisar se satO2 e pO2 pertencem ao mesmo exame.',
       fields: ['sO2', 'pO2'],
     });
   }
 
-  if (fio2Info.displayPercent === 21 && input.pO2 !== undefined && input.pO2 > 140 && input.sampleType === 'arterial') {
-    consistencyChecks.push({
-      level: 'critical',
-      message: 'pO2 arterial muito alta para ar ambiente.',
-      suggestion: 'Revise FiO2, tipo de amostra e possivel troca de unidade (0.21 vs 21%).',
-      fields: ['pO2', 'fio2'],
-    });
-  }
+  const probableError = suspectFields.length > 0 || consistencyChecks.some((entry) => entry.level === 'critical') || submissionIssues.some((entry) => entry.level === 'critical');
+  const status: DataQualityAssessment['status'] = probableError
+    ? 'probable_error'
+    : limitations.length > 0 || consistencyChecks.length > 0 || submissionIssues.length > 0
+      ? 'caution'
+      : 'reliable';
 
-  const severeCheck = consistencyChecks.some((entry) => entry.level === 'critical');
-  const probableError = severeCheck || suspectFields.length > 0;
-  const status = probableError ? 'probable_error' : limitations.length > 0 || consistencyChecks.length > 0 ? 'caution' : 'reliable';
-
-  return {
+  const quality: DataQualityAssessment = {
     status,
+    confidence: 'moderate',
     domainStatus: probableError ? 'blocked' : limitations.length > 0 || missingForComplete.length > 0 ? 'limited' : 'ok',
     messages,
     suspectFields,
@@ -216,14 +213,20 @@ function buildQualityAssessment(input: BloodGasInput, fio2Info: ReturnType<typeo
     limitations,
     consistencyChecks,
     temperatureImpact: temperatureContext.effectOnInterpretation,
-    fio2Normalization: fio2Info.fraction !== undefined && input.fio2 !== undefined ? {
-      originalValue: input.fio2,
-      normalizedFraction: fio2Info.fraction,
-      displayPercent: fio2Info.displayPercent || round(fio2Info.fraction * 100, 1),
-      source: fio2Info.source || 'fraction',
-    } : undefined,
+    fio2Normalization: fio2Info.fraction !== undefined && input.fio2 !== undefined
+      ? {
+          originalValue: input.fio2,
+          normalizedFraction: fio2Info.fraction,
+          displayPercent: fio2Info.displayPercent || round(fio2Info.fraction * 100, 1),
+          source: fio2Info.source || 'fraction',
+        }
+      : undefined,
   };
+
+  quality.confidence = inferDataQualityConfidence(quality);
+  return quality;
 }
+
 function interpretAcidBase(input: BloodGasInput, quality: DataQualityAssessment, steps: string[]): DeepAcidBaseInterpretation {
   const result: DeepAcidBaseInterpretation = {
     domainStatus: 'inconclusive',
@@ -231,17 +234,15 @@ function interpretAcidBase(input: BloodGasInput, quality: DataQualityAssessment,
     primaryDisorder: 'unknown',
     primaryLogic: 'Dados insuficientes para definir o disturbio acido-base.',
     compensationStatus: 'not_applicable',
-    physiologicalExplanation: 'Sem pH, pCO2 e HCO3/BE suficientes, a avaliacao acido-base fica incompleta.',
+    physiologicalExplanation: 'Sem pH, pCO2 e HCO3/BE suficientes, a avaliacao acido-base fica limitada.',
     commonCauses: [],
-    summary: 'Equilibrio acido-base inconclusivo com os dados atuais.',
+    summary: 'Equilibrio acido-base inconclusivo.',
   };
 
   if (!quality.canAssessAcidBase) return result;
-
-  if (['pH', 'pCO2', 'HCO3', 'BE'].some((field) => quality.suspectFields.includes(field))) {
+  if (quality.domainStatus === 'blocked') {
     result.domainStatus = 'blocked';
-    result.primaryLogic = 'O dominio acido-base foi bloqueado por valores implausiveis nos parametros centrais.';
-    result.summary = 'Analise acido-base bloqueada por dados implausiveis.';
+    result.summary = 'Analise acido-base bloqueada por dados incoerentes ou implausiveis.';
     return result;
   }
 
@@ -249,22 +250,27 @@ function interpretAcidBase(input: BloodGasInput, quality: DataQualityAssessment,
   const pCO2 = input.pCO2!;
   const hco3 = input.HCO3;
   const be = input.BE;
+  const speciesLabel = input.species === 'feline' ? 'felino' : 'canino';
   const phLow = input.species === 'canine' ? 7.35 : 7.25;
   const phHigh = input.species === 'canine' ? 7.45 : 7.4;
   const pco2Normal = input.species === 'canine' ? 40 : 31;
-  const hco3Normal = input.species === 'canine' ? 22 : 18;
+  const hco3Normal = input.species === 'canine' ? 24 : 18;
 
-  result.domainStatus = hco3 === undefined ? 'limited' : 'ok';
+  result.domainStatus = 'ok';
   result.phStatus = ph < phLow ? 'acidemia' : ph > phHigh ? 'alkalemia' : 'normal';
-  steps.push(`Passo 1: pH ${ph} indica ${result.phStatus === 'normal' ? 'pH aparentemente normal' : result.phStatus}.`);
+  steps.push(`Passo 1: pH ${ph} em ${speciesLabel} indica ${result.phStatus === 'normal' ? 'faixa aparentemente normal' : result.phStatus}.`);
 
-  const metabolicSignal = hco3 !== undefined ? (hco3 < hco3Normal ? 'acidosis' : hco3 > hco3Normal ? 'alkalosis' : 'neutral') : be !== undefined ? (be < -4 ? 'acidosis' : be > 4 ? 'alkalosis' : 'neutral') : 'neutral';
+  const metabolicSignal = hco3 !== undefined
+    ? hco3 < hco3Normal ? 'acidosis' : hco3 > hco3Normal ? 'alkalosis' : 'neutral'
+    : be !== undefined
+      ? be < -4 ? 'acidosis' : be > 4 ? 'alkalosis' : 'neutral'
+      : 'neutral';
   const respiratorySignal = pCO2 > pco2Normal ? 'acidosis' : pCO2 < pco2Normal ? 'alkalosis' : 'neutral';
 
   if (result.phStatus === 'acidemia') {
     if (metabolicSignal === 'acidosis' && respiratorySignal === 'acidosis') {
       result.primaryDisorder = 'mixed';
-      result.mixedDisorderReason = 'HCO3/BE e pCO2 caminham na mesma direcao acidemica.';
+      result.mixedDisorderReason = 'Componente metabolico e respiratorio caminham em direcao acidemica.';
     } else if (metabolicSignal === 'acidosis') {
       result.primaryDisorder = 'metabolic_acidosis';
     } else if (respiratorySignal === 'acidosis') {
@@ -273,82 +279,83 @@ function interpretAcidBase(input: BloodGasInput, quality: DataQualityAssessment,
   } else if (result.phStatus === 'alkalemia') {
     if (metabolicSignal === 'alkalosis' && respiratorySignal === 'alkalosis') {
       result.primaryDisorder = 'mixed';
-      result.mixedDisorderReason = 'HCO3/BE e pCO2 caminham na mesma direcao alcalemica.';
+      result.mixedDisorderReason = 'Componente metabolico e respiratorio caminham em direcao alcalemica.';
     } else if (metabolicSignal === 'alkalosis') {
       result.primaryDisorder = 'metabolic_alkalosis';
     } else if (respiratorySignal === 'alkalosis') {
       result.primaryDisorder = 'respiratory_alkalosis';
     }
-  } else if (metabolicSignal === 'acidosis' && respiratorySignal === 'alkalosis') {
-    result.primaryDisorder = 'mixed';
-    result.mixedDisorderReason = 'pH normal com HCO3 baixo e pCO2 baixo sugere disturbios opostos se anulando.';
-  } else if (metabolicSignal === 'alkalosis' && respiratorySignal === 'acidosis') {
-    result.primaryDisorder = 'mixed';
-    result.mixedDisorderReason = 'pH normal com HCO3 alto e pCO2 alto sugere disturbios opostos se anulando.';
   } else {
-    result.primaryDisorder = 'normal';
+    if (metabolicSignal !== 'neutral' || respiratorySignal !== 'neutral') {
+      result.primaryDisorder = 'mixed';
+      result.mixedDisorderReason = 'pH normal nao exclui disturbio misto quando pCO2 e HCO3/BE estao alterados.';
+    } else {
+      result.primaryDisorder = 'normal';
+    }
   }
 
   result.primaryLogic = result.mixedDisorderReason || `Sinal metabolico: ${metabolicSignal}. Sinal respiratorio: ${respiratorySignal}.`;
-  steps.push(`Passo 2: disturbio primario inferido como ${result.primaryDisorder}.`);
+  steps.push(`Passo 2: processo primario sugerido: ${result.primaryDisorder}.`);
 
-  if (result.primaryDisorder === 'metabolic_acidosis' && hco3 !== undefined) {
-    const expectedPCO2 = round((1.5 * hco3) + 8, 1);
-    result.expectedCompensation = `Compensacao esperada: pCO2 por volta de ${expectedPCO2} mmHg (formula de Winter adaptada).`;
-    result.observedCompensation = `pCO2 observado: ${pCO2} mmHg.`;
-    if (Math.abs(pCO2 - expectedPCO2) <= 3) result.compensationStatus = 'compensated';
-    else if (pCO2 > expectedPCO2 + 3) {
-      result.compensationStatus = 'mixed_suspected';
-      result.mixedDisorderReason = 'pCO2 mais alta que o esperado sugere acidose respiratoria associada.';
+  const tolerance = input.species === 'feline' ? 5 : 3;
+  if (hco3 !== undefined) {
+    if (result.primaryDisorder === 'metabolic_acidosis') {
+      const expected = round(pco2Normal - (0.7 * (hco3Normal - hco3)), 1);
+      result.expectedCompensation = `Compensacao esperada: pCO2 ~ ${expected} mmHg.`;
+      result.observedCompensation = `pCO2 observado: ${pCO2} mmHg.`;
+      result.compensationStatus = Math.abs(pCO2 - expected) <= tolerance ? 'compensated' : 'mixed_suspected';
+    } else if (result.primaryDisorder === 'metabolic_alkalosis') {
+      const expected = round(pco2Normal + (0.7 * (hco3 - hco3Normal)), 1);
+      result.expectedCompensation = `Compensacao esperada: pCO2 ~ ${expected} mmHg.`;
+      result.observedCompensation = `pCO2 observado: ${pCO2} mmHg.`;
+      result.compensationStatus = Math.abs(pCO2 - expected) <= tolerance ? 'compensated' : 'mixed_suspected';
+    } else if (result.primaryDisorder === 'respiratory_acidosis') {
+      const delta = pCO2 - pco2Normal;
+      const acute = round(hco3Normal + (1.5 * (delta / 10)), 1);
+      const chronic = round(hco3Normal + (3.5 * (delta / 10)), 1);
+      result.expectedCompensation = `HCO3 esperado: ${acute} (aguda) a ${chronic} (cronica) mEq/L.`;
+      result.observedCompensation = `HCO3 observado: ${hco3} mEq/L.`;
+      result.compensationStatus = hco3 < acute - tolerance || hco3 > chronic + tolerance ? 'mixed_suspected' : 'partially_compensated';
+    } else if (result.primaryDisorder === 'respiratory_alkalosis') {
+      const delta = pco2Normal - pCO2;
+      const acute = round(hco3Normal - (2.5 * (delta / 10)), 1);
+      const chronic = round(hco3Normal - (5.5 * (delta / 10)), 1);
+      result.expectedCompensation = `HCO3 esperado: ${acute} (aguda) a ${chronic} (cronica) mEq/L.`;
+      result.observedCompensation = `HCO3 observado: ${hco3} mEq/L.`;
+      result.compensationStatus = hco3 > acute + tolerance || hco3 < chronic - tolerance ? 'mixed_suspected' : 'partially_compensated';
     } else {
-      result.compensationStatus = 'mixed_suspected';
-      result.mixedDisorderReason = 'pCO2 mais baixa que o esperado sugere alcalose respiratoria associada.';
+      result.compensationStatus = 'not_applicable';
     }
-  } else if (result.primaryDisorder === 'metabolic_alkalosis' && hco3 !== undefined) {
-    const expectedPCO2 = round((0.7 * hco3) + 21, 1);
-    result.expectedCompensation = `Compensacao esperada: pCO2 por volta de ${expectedPCO2} mmHg.`;
-    result.observedCompensation = `pCO2 observado: ${pCO2} mmHg.`;
-    result.compensationStatus = Math.abs(pCO2 - expectedPCO2) <= 3 ? 'compensated' : 'mixed_suspected';
-  } else if (result.primaryDisorder === 'respiratory_acidosis' && hco3 !== undefined) {
-    const delta = pCO2 - pco2Normal;
-    const acuteExpected = round(hco3Normal + (0.1 * delta), 1);
-    const chronicExpected = round(hco3Normal + (0.35 * delta), 1);
-    result.expectedCompensation = `HCO3 esperado entre ${acuteExpected} (agudo) e ${chronicExpected} (cronico) mEq/L.`;
-    result.observedCompensation = `HCO3 observado: ${hco3} mEq/L.`;
-    result.compensationStatus = hco3 < acuteExpected - 2 || hco3 > chronicExpected + 2 ? 'mixed_suspected' : 'partially_compensated';
-  } else if (result.primaryDisorder === 'respiratory_alkalosis' && hco3 !== undefined) {
-    const delta = pco2Normal - pCO2;
-    const acuteExpected = round(hco3Normal - (0.2 * delta), 1);
-    const chronicExpected = round(hco3Normal - (0.5 * delta), 1);
-    result.expectedCompensation = `HCO3 esperado entre ${acuteExpected} (agudo) e ${chronicExpected} (cronico) mEq/L.`;
-    result.observedCompensation = `HCO3 observado: ${hco3} mEq/L.`;
-    result.compensationStatus = hco3 > acuteExpected + 2 || hco3 < chronicExpected - 2 ? 'mixed_suspected' : 'partially_compensated';
   }
 
-  if (result.primaryDisorder === 'mixed') result.compensationStatus = 'mixed_suspected';
+  if (input.species === 'feline') {
+    result.physiologicalExplanation = `${result.primaryLogic} Em gatos, as formulas de compensacao sao menos previsiveis que em caes; interpretar com cautela clinica adicional.`;
+  } else {
+    result.physiologicalExplanation = `${result.primaryLogic} A relacao pCO2-HCO3 foi usada para avaliar compensacao e suspeita de disturbio misto.`;
+  }
+
+  result.summary = result.primaryDisorder === 'normal'
+    ? 'Sem disturbio acido-base dominante com os dados atuais.'
+    : result.compensationStatus === 'mixed_suspected'
+      ? `${result.primaryDisorder} com suspeita de disturbio misto por compensacao fora do esperado.`
+      : `${result.primaryDisorder} com avaliacao de compensacao realizada.`;
 
   result.commonCauses = (() => {
     switch (result.primaryDisorder) {
-      case 'metabolic_acidosis': return ['DKA', 'choque/hipoperfusao', 'doenca renal', 'diarreia'];
-      case 'metabolic_alkalosis': return ['vomitos', 'obstrucao pilorica', 'diureticos', 'hipocalemia'];
-      case 'respiratory_acidosis': return ['hipoventilacao', 'fadiga respiratoria', 'sedacao', 'doenca pleural'];
-      case 'respiratory_alkalosis': return ['dor', 'ansiedade', 'hipoxemia', 'sepse inicial'];
-      case 'mixed': return ['paciente critico com mecanismos concorrentes', 'disturbio triplo possivel', 'dados que exigem correlacao clinica forte'];
-      default: return [];
+      case 'metabolic_acidosis':
+        return ['hipoperfusao/choque', 'DKA', 'doenca renal', 'perda gastrointestinal de bicarbonato'];
+      case 'metabolic_alkalosis':
+        return ['vomitos', 'obstrucao pilorica', 'diureticos', 'deplecao de cloreto'];
+      case 'respiratory_acidosis':
+        return ['hipoventilacao alveolar', 'sedacao/anestesia', 'doenca pleural', 'fadiga respiratoria'];
+      case 'respiratory_alkalosis':
+        return ['dor', 'ansiedade', 'hipoxemia', 'sepse inicial'];
+      default:
+        return [];
     }
   })();
 
-  result.physiologicalExplanation = [
-    `O pH mudou porque a relacao entre componente respiratorio (pCO2 ${pCO2}) e componente metabolico (${hco3 !== undefined ? `HCO3 ${hco3}` : `BE ${be}`}) se desviou da faixa fisiologica.`,
-    metabolicSignal !== 'neutral' ? 'O componente metabolico sugere alteracao do pool de bicarbonato e dos acidos nao volateis.' : '',
-    respiratorySignal !== 'neutral' ? 'O componente respiratorio sugere alteracao da ventilacao alveolar e da depuracao de CO2.' : '',
-    result.mixedDisorderReason || '',
-  ].filter(Boolean).join(' ');
-
-  result.summary = result.primaryDisorder === 'normal'
-    ? 'Sem disturbio acido-base dominante com os dados disponiveis.'
-    : `${result.primaryDisorder} com ${result.compensationStatus === 'mixed_suspected' ? 'suspeita de disturbio misto' : 'avaliacao de compensacao realizada'}.`;
-
+  steps.push(`Passo 3: avaliacao de compensacao -> ${result.compensationStatus}.`);
   return result;
 }
 
@@ -362,87 +369,99 @@ function interpretOxygenation(input: BloodGasInput, quality: DataQualityAssessme
 
   if (input.sampleType === 'venous') {
     result.domainStatus = 'limited';
-    result.limitationNote = 'Amostra venosa nao deve ser usada para julgar desempenho pulmonar.';
-    result.physiologicalExplanation = 'Em amostra venosa, o componente metabolico pode ser lido, mas PvO2/PvSatO2 nao devem ser interpretados como troca gasosa pulmonar.';
-    result.summary = 'Amostra venosa: interpretar acidobase e contexto metabolico, mas nao desempenho pulmonar.';
+    result.status = 'cannot_assess';
+    result.limitationNote = 'Amostra venosa: pO2 e SatO2 venosos nao devem classificar hipoxemia arterial.';
+    result.summary = 'Avaliacao de oxigenacao pulmonar limitada por uso de amostra venosa.';
+    result.physiologicalExplanation = input.pO2 !== undefined && input.sO2 !== undefined
+      ? `PvO2 ${input.pO2} mmHg e satO2 venosa ${input.sO2}% podem refletir extracao tecidual/consumo de O2; nao equivalem a PaO2/SaO2.`
+      : 'Amostra venosa permite leitura metabolica e acido-base, mas nao classifica oxigenacao pulmonar arterial.';
     return result;
   }
 
-  if (quality.suspectFields.includes('pO2')) {
+  if (quality.domainStatus === 'blocked') {
     result.domainStatus = 'blocked';
-    result.summary = 'Dominio de oxigenacao bloqueado por pO2 implausivel.';
-    result.limitationNote = 'Revise pO2, tipo de amostra e FiO2.';
+    result.limitationNote = 'Dados incoerentes bloqueiam conclusao confiavel de oxigenacao.';
     return result;
   }
 
   if (input.pO2 === undefined) {
-    result.limitationNote = 'Sem pO2, a oxigenacao arterial nao pode ser concluida.';
+    result.domainStatus = 'limited';
+    result.limitationNote = 'Sem PaO2 nao e possivel concluir oxigenacao arterial.';
     return result;
   }
 
   const fio2Fraction = fio2Info.fraction ?? 0.21;
-  const fio2Display = fio2Info.displayPercent ?? 21;
   const pb = getApproxBarometricPressure(input);
   const paO2 = input.pO2;
   const pCO2 = input.pCO2;
-
-  result.domainStatus = fio2Info.warning ? 'limited' : 'ok';
-  result.fio2Context = `FiO2 considerada: ${fio2Display}% (${fio2Info.source === 'assumed' || input.fio2 === undefined ? 'assumida' : 'normalizada'}).`;
+  result.domainStatus = 'ok';
+  result.fio2Context = `FiO2 usada: ${(fio2Info.displayPercent ?? 21).toFixed(1)}% (${fio2Info.source || 'assumed'}).`;
   result.status = paO2 < 60 ? 'hypoxemia' : paO2 > 120 ? 'hyperoxemia' : 'normal';
   result.severity = paO2 < 40 ? 'severe' : paO2 < 50 ? 'moderate' : paO2 < 60 ? 'mild' : undefined;
-  result.paO2Interpretation = `PaO2 ${paO2} mmHg em amostra arterial.`;
-  if (input.sO2 !== undefined) result.saO2Interpretation = `SatO2 ${input.sO2}%.`;
+  result.paO2Interpretation = `PaO2 ${paO2} mmHg.`;
+  if (input.sO2 !== undefined) result.saO2Interpretation = `SaO2 reportada: ${input.sO2}%.`;
   result.pfRatio = round(paO2 / fio2Fraction, 0);
 
   if (pCO2 !== undefined) {
-    const alveolarO2 = (fio2Fraction * (pb - 47)) - (pCO2 / 0.8);
-    result.aaGradient = round(alveolarO2 - paO2, 1);
-    if (result.status === 'hypoxemia') {
-      if (result.aaGradient <= 20 && pCO2 > 45) result.suspectedMechanism = 'Hipoventilacao predominante';
-      else if (result.aaGradient > 20 && result.aaGradient <= 35) result.suspectedMechanism = 'V/Q mismatch';
-      else if (result.aaGradient > 35) result.suspectedMechanism = 'V/Q mismatch importante, shunt ou barreira de difusao';
-    }
+    result.pao2 = round((fio2Fraction * (pb - 47)) - (pCO2 / 0.8), 1);
+    result.aaGradient = round(result.pao2 - paO2, 1);
   }
 
-  result.ventilationConcordance = pCO2 === undefined
-    ? 'Ventilacao nao comparavel sem pCO2.'
-    : result.status === 'hypoxemia' && pCO2 > 45
-      ? 'Hipoxemia e hipercapnia coexistem, sugerindo componente ventilatorio relevante.'
-      : result.status === 'hypoxemia' && pCO2 <= 45
-        ? 'Hipoxemia com pCO2 nao elevada sugere falha primariamente de oxigenacao.'
-        : 'Oxigenacao e ventilacao sem dissociacao dominante.';
+  if (result.status === 'hypoxemia' && result.aaGradient !== undefined) {
+    if (result.aaGradient <= 20 && (pCO2 ?? 0) > 45) result.suspectedMechanism = 'Hipoventilacao alveolar';
+    else if (result.aaGradient > 20 && result.aaGradient <= 35) result.suspectedMechanism = 'V/Q mismatch predominante';
+    else if (result.aaGradient > 35) result.suspectedMechanism = 'Shunt/VQ mismatch importante ou difusao';
+  }
+
+  const pfText = result.pfRatio === undefined
+    ? 'P/F nao calculavel.'
+    : result.pfRatio > 500
+      ? 'P/F dentro de faixa esperada para ar ambiente ao nivel do mar.'
+      : result.pfRatio >= 300
+        ? 'P/F sugere comprometimento leve de oxigenacao.'
+        : result.pfRatio >= 200
+          ? 'P/F sugere comprometimento moderado.'
+          : 'P/F sugere comprometimento importante.';
 
   result.physiologicalExplanation = [
-    result.status === 'hypoxemia' ? `Hipoxemia detectada (${result.severity}).` : result.status === 'hyperoxemia' ? 'Hiperoxia detectada.' : 'Oxigenacao sem hipoxemia dominante.',
-    result.pfRatio !== undefined ? `Relacao P/F aproximada: ${result.pfRatio}.` : '',
-    result.aaGradient !== undefined ? `Gradiente A-a aproximado: ${result.aaGradient} mmHg.` : 'Gradiente A-a nao calculado por dados insuficientes.',
+    result.status === 'hypoxemia' ? `Hipoxemia arterial ${result.severity || ''}.` : result.status === 'hyperoxemia' ? 'Hiperoxia detectada.' : 'Sem hipoxemia arterial dominante.',
+    result.pao2 !== undefined ? `PAO2 aproximada: ${result.pao2} mmHg.` : 'PAO2 nao calculada por falta de PaCO2.',
+    result.aaGradient !== undefined ? `Gradiente A-a aproximado: ${result.aaGradient} mmHg.` : '',
+    pfText,
     result.suspectedMechanism ? `Mecanismo mais provavel: ${result.suspectedMechanism}.` : '',
-    result.ventilationConcordance || '',
   ].filter(Boolean).join(' ');
 
-  result.summary = result.status === 'hypoxemia'
-    ? `Hipoxemia ${result.severity || ''} com interpretacao contextual da FiO2.`
+  result.summary = result.status === 'normal'
+    ? 'Oxigenacao arterial sem alteracao dominante.'
     : result.status === 'hyperoxemia'
-      ? 'Hiperoxia detectada.'
-      : 'Oxigenacao avaliada sem hipoxemia dominante.';
+      ? 'Oxigenacao arterial elevada (hiperoxia).'
+      : `Hipoxemia arterial ${result.severity || ''} com avaliacao de P/F e A-a.`;
 
   return result;
 }
-function buildFinding(parameter: keyof BloodGasInput, value: number, status: 'low' | 'normal' | 'high'): DeepElectrolyteAssessment {
+
+function buildFinding(parameter: keyof BloodGasInput, value: number, status: 'low' | 'normal' | 'high', ratioHint?: string): DeepElectrolyteAssessment {
   const guide = PARAMETER_GUIDE[parameter];
   return {
     parameter: guide?.label || String(parameter),
     status,
     value,
+    ratioHint,
     clinicalExplanation: status === 'high' ? guide?.highMeaning || 'Valor acima da faixa.' : status === 'low' ? guide?.lowMeaning || 'Valor abaixo da faixa.' : 'Sem alteracao dominante.',
-    acidBaseRelation: guide?.relationships?.[0] || 'Interpretar junto do conjunto gasometrico.',
-    physiologicalImpact: guide?.whatItIs || 'Parametro contextual do exame.',
-    mainRisk: guide?.pitfalls?.[0] || 'Correlacionar com o quadro clinico.',
-    monitoring: guide?.relationships?.[1] || 'Monitorar em serie conforme contexto clinico.',
+    acidBaseRelation: guide?.relationships?.[0] || 'Interpretar no conjunto.',
+    physiologicalImpact: guide?.whatItIs || 'Parametro de contexto.',
+    mainRisk: guide?.pitfalls?.[0] || 'Correlacionar com quadro clinico.',
+    monitoring: guide?.relationships?.[1] || 'Monitorar em serie.',
   };
 }
 
-function interpretElectrolytes(input: BloodGasInput, quality: DataQualityAssessment, alerts: ClinicalAlert[], hypotheses: string[], actions: ClinicalActions): { findings: DeepElectrolyteAssessment[]; summary: string; domainStatus: DomainStatus; anionGap?: InterpretationResult['anionGap']; baseExcess?: InterpretationResult['baseExcess']; } {
+function interpretElectrolytes(
+  input: BloodGasInput,
+  quality: DataQualityAssessment,
+  alerts: ClinicalAlert[],
+  hypotheses: string[],
+  actions: ClinicalActions
+): { findings: DeepElectrolyteAssessment[]; summary: string; domainStatus: DomainStatus; anionGap?: InterpretationResult['anionGap']; baseExcess?: InterpretationResult['baseExcess']; } {
   const findings: DeepElectrolyteAssessment[] = [];
   let domainStatus: DomainStatus = 'inconclusive';
 
@@ -453,10 +472,7 @@ function interpretElectrolytes(input: BloodGasInput, quality: DataQualityAssessm
     ['lactate', input.lactate, 0.5, 2.5],
     ['glucose', input.glucose, 70, 130],
     ['iCa', input.iCa, 1.1, 1.4],
-    ['tCa', input.tCa, 8.5, 11.5],
     ['albumin', input.albumin, 2.5, 4.0],
-    ['hematocrit', input.hematocrit, input.species === 'canine' ? 37 : 24, input.species === 'canine' ? 55 : 45],
-    ['hemoglobin', input.hemoglobin, input.species === 'canine' ? 12 : 8, input.species === 'canine' ? 18 : 15],
   ] as const;
 
   for (const [key, value, low, high] of tracked) {
@@ -466,57 +482,72 @@ function interpretElectrolytes(input: BloodGasInput, quality: DataQualityAssessm
     if (status !== 'normal') findings.push(buildFinding(key, value, status));
   }
 
+  if (input.Na !== undefined && input.Cl !== undefined) {
+    const clNaRatio = round(input.Cl / input.Na, 3);
+    const naMinusCl = round(input.Na - input.Cl, 1);
+    let chlorideHint = `Relacao Cl/Na ${clNaRatio} e Na-Cl ${naMinusCl}.`;
+    if (clNaRatio > 0.79 || naMinusCl < 30) {
+      chlorideHint += ' Tendencia acidificante/hipercloremica.';
+    } else if (clNaRatio < 0.72 || naMinusCl > 38) {
+      chlorideHint += ' Tendencia alcalinizante/hipoclorêmica.';
+    }
+    findings.push(buildFinding('Cl', input.Cl, 'normal', chlorideHint));
+  }
+
   if (input.K !== undefined && input.K >= 6) {
-    alerts.push({ level: 'critical', message: 'Hipercalemia clinicamente perigosa. Considere ECG imediato.' });
-    actions.immediate.push('Considerar ECG imediato e reavaliacao seriada do potassio.');
+    alerts.push({ level: 'critical', message: 'Hipercalemia importante com risco eletrico. ECG imediato deve ser considerado.' });
+    actions.immediate.push('Hipercalemia importante: monitorar ECG, considerar cardioprotecao com calcio e medidas de shift transcelular conforme contexto.');
   }
-
+  if (input.K !== undefined && input.K <= 3) {
+    actions.immediate.push('Hipocalemia: revisar reposicao de potassio, perdas gastrointestinais e risco de fraqueza/ileo.');
+  }
   if (input.lactate !== undefined && input.lactate >= 2.5) {
-    actions.serial.push('Repetir lactato em serie para avaliar clearance e resposta terapeutica.');
+    hypotheses.push('Hiperlactatemia sugere hipoperfusao ou metabolismo anaerobio aumentado.');
+    actions.serial.push('Lactato alto: repetir em serie para avaliar depuracao e resposta terapeutica.');
   }
-
-  if (input.hemoglobin !== undefined && input.hemoglobin < (input.species === 'canine' ? 10 : 7)) {
-    hypotheses.push('Anemia clinicamente relevante pode reduzir entrega tecidual de O2 mesmo com PaO2 adequada.');
+  if (input.glucose !== undefined && input.glucose < 70) {
+    actions.immediate.push('Hipoglicemia: considerar bolus de dextrose e monitorizacao seriada.');
+  }
+  if (input.Na !== undefined && input.Na > 160) {
+    actions.serial.push('Hipernatremia: diferenciar quadro agudo vs cronico e corrigir gradualmente para reduzir risco neurologico.');
   }
 
   let anionGap: InterpretationResult['anionGap'];
   if (input.Na !== undefined && input.K !== undefined && input.Cl !== undefined && input.HCO3 !== undefined) {
     const value = round((input.Na + input.K) - (input.Cl + input.HCO3), 1);
-    let status: 'normal' | 'high' | 'low' = 'normal';
-    if (value > (input.species === 'canine' ? 24 : 27)) status = 'high';
-    if (value < (input.species === 'canine' ? 12 : 13)) status = 'low';
+    const upper = input.species === 'canine' ? 24 : 27;
+    const lower = input.species === 'canine' ? 12 : 13;
+    const status = value > upper ? 'high' : value < lower ? 'low' : 'normal';
     anionGap = {
       value,
       status,
       explanation: status === 'high'
-        ? `AG ${value} mEq/L, elevado para a especie, sugerindo acidos nao mensurados.`
+        ? `AG ${value} mEq/L elevado, sugerindo acidos nao mensurados.`
         : status === 'low'
-          ? `AG ${value} mEq/L, baixo; considerar hipoalbuminemia ou erro de entrada.`
+          ? `AG ${value} mEq/L baixo; considerar hipoalbuminemia ou erro de entrada.`
           : `AG ${value} mEq/L dentro da faixa esperada.`,
     };
-
     if (input.albumin !== undefined) {
       const corrected = round(value + (2.5 * (3.5 - input.albumin)), 1);
       anionGap.correctedValue = corrected;
-      anionGap.correctedStatus = corrected > (input.species === 'canine' ? 24 : 27) ? 'high' : corrected < (input.species === 'canine' ? 12 : 13) ? 'low' : 'normal';
+      anionGap.correctedStatus = corrected > upper ? 'high' : corrected < lower ? 'low' : 'normal';
       anionGap.explanation += ` AG corrigido por albumina: ${corrected}.`;
     }
   }
 
-  let baseExcess: InterpretationResult['baseExcess'];
-  if (input.BE !== undefined) {
-    baseExcess = {
-      value: input.BE,
-      status: input.BE < -4 ? 'deficit' : input.BE > 4 ? 'excess' : 'normal',
-      explanation: input.BE < -4 ? 'Deficit de base compativel com componente metabolico acidemico.' : input.BE > 4 ? 'Excesso de base compativel com componente metabolico alcalemico.' : 'BE sem alteracao dominante.',
-    };
-  }
+  const baseExcess = input.BE !== undefined
+    ? {
+        value: input.BE,
+        status: input.BE < -4 ? 'deficit' as const : input.BE > 4 ? 'excess' as const : 'normal' as const,
+        explanation: input.BE < -4 ? 'Deficit de base reforca componente metabolico acidemico.' : input.BE > 4 ? 'Excesso de base reforca componente metabolico alcalemico.' : 'BE sem desvio dominante.',
+      }
+    : undefined;
 
   const summary = findings.length > 0
-    ? `${findings.length} alteracoes eletroliticas/metabolicas relevantes foram integradas a interpretacao.`
+    ? `${findings.length} achados eletroliticos/metabolicos relevantes integrados ao raciocinio.`
     : domainStatus === 'ok'
-      ? 'Sem alteracoes eletroliticas/metabolicas dominantes entre os parametros informados.'
-      : 'Dominio eletrolitico inconclusivo com os dados atuais.';
+      ? 'Sem alteracoes eletroliticas/metabolicas dominantes nos parametros informados.'
+      : 'Dominio eletrolitico inconclusivo por falta de dados.';
 
   return { findings, summary, domainStatus, anionGap, baseExcess };
 }
@@ -529,32 +560,56 @@ function buildHypotheses(input: BloodGasInput, partial: Partial<InterpretationRe
   return Array.from(new Set(hypotheses));
 }
 
-function buildActions(input: BloodGasInput, acidBase: DeepAcidBaseInterpretation, oxygenation: DeepOxygenationAssessment, quality: DataQualityAssessment, temperature: TemperatureContext): ClinicalActions {
+function buildActions(input: BloodGasInput, acidBase: DeepAcidBaseInterpretation, oxygenation: DeepOxygenationAssessment, quality: DataQualityAssessment): ClinicalActions {
   const actions: ClinicalActions = { immediate: [], serial: [], correlativeExams: [], whenToRepeat: [] };
-  if (quality.status !== 'reliable') actions.immediate.push('Revisar digitacao, unidade, tipo de amostra e possivel erro pre-analitico antes de concluir.');
-  if (oxygenation.status === 'hypoxemia') {
-    actions.immediate.push('Considerar oxigenioterapia e reavaliar perfusao e ventilacao.');
-    actions.correlativeExams.push('Correlacionar com imagem toracica e monitorizacao de SpO2/ETCO2 se disponiveis.');
+
+  if (quality.confidence === 'blocked') {
+    actions.immediate.push('Dados incoerentes: revisar digitacao, unidade, tipo de amostra e possibilidade de erro pre-analitico antes de concluir.');
   }
-  if (acidBase.primaryDisorder === 'metabolic_acidosis') actions.correlativeExams.push('Correlacionar com lactato, AG, funcao renal, glicose e cetonas.');
-  if (acidBase.primaryDisorder === 'metabolic_alkalosis') actions.correlativeExams.push('Revisar perdas gastricas, cloro, potassio e estrategia de fluidoterapia.');
-  if (input.K !== undefined && (input.K < 3 || input.K > 6)) actions.immediate.push('Revisar potassio precocemente e considerar ECG se alteracao importante.');
-  if (temperature.status !== 'normal' && temperature.status !== 'unknown') actions.serial.push('Monitorar temperatura em serie e interpretar gasometria junto do contexto termico.');
-  actions.serial.push('Repetir hemogasometria conforme mudanca clinica, intervencao ventilatoria ou ajuste de fluidoterapia.');
-  actions.whenToRepeat?.push('Repetir em 30-60 min se o paciente estiver instavel ou apos intervencoes importantes.');
-  actions.whenToRepeat?.push('Repetir em 2-4 h para acompanhar lactato, pH e tendencia do disturbio principal.');
+  if (acidBase.primaryDisorder === 'respiratory_acidosis') {
+    actions.immediate.push('Acidose respiratoria: revisar via aerea, sedacao/anestesia, ventilacao e fadiga respiratoria. Bicarbonato nao e terapia primaria.');
+  }
+  if (acidBase.primaryDisorder === 'metabolic_acidosis') {
+    actions.immediate.push('Acidose metabolica: priorizar perfusao e causa-base; bicarbonato apenas em cenarios selecionados.');
+    actions.serial.push('Repetir lactato e gasometria para tendencia de resposta.');
+  }
+  if (acidBase.primaryDisorder === 'metabolic_alkalosis') {
+    actions.immediate.push('Alcalose metabolica: revisar deplecao de cloreto/potassio e perdas gastricas; considerar reposicao cloreto-responsiva.');
+  }
+  if (oxygenation.status === 'hypoxemia') {
+    actions.immediate.push('Hipoxemia arterial: iniciar oxigenio suplementar e investigar mecanismo (hipoventilacao, V/Q mismatch, shunt, baixa PiO2, difusao).');
+  }
+  if (input.sampleType === 'venous') {
+    actions.correlativeExams.push('Se ha suspeita respiratoria, correlacionar com SpO2 e considerar gasometria arterial.');
+  }
+
+  actions.whenToRepeat?.push('Repetir hemogasometria em 30-60 min se instabilidade ou apos intervencoes relevantes.');
+  actions.whenToRepeat?.push('Repetir em 2-4 h para acompanhar tendencia de pH, pCO2, lactato e eletrólitos.');
   return actions;
 }
-export function interpretBloodGas(input: BloodGasInput): InterpretationResult {
-  const fio2Info = input.fio2 !== undefined ? normalizeFiO2Input(input.fio2) : { fraction: 0.21, displayPercent: 21, source: 'assumed' as const };
+
+export function interpretBloodGas(
+  input: BloodGasInput,
+  context?: { submissionIssues?: SubmissionIssue[]; submissionConfidence?: DataQualityAssessment['confidence'] }
+): InterpretationResult {
+  const fio2Info = input.fio2 !== undefined
+    ? normalizeFiO2Input(input.fio2)
+    : { fraction: 0.21, displayPercent: 21, source: 'assumed' as const };
   const normalizedInput: BloodGasInput = { ...input, fio2: fio2Info.fraction ?? input.fio2 };
 
   const alerts: ClinicalAlert[] = [];
   const stepByStepLogic: string[] = [];
   const electrolyteHypotheses: string[] = [];
   const electrolyteActions: ClinicalActions = { immediate: [], serial: [], correlativeExams: [], whenToRepeat: [] };
+
   const temperatureContext = buildTemperatureContext(normalizedInput);
-  const dataQuality = buildQualityAssessment(normalizedInput, fio2Info, temperatureContext);
+  const dataQuality = buildQualityAssessment(normalizedInput, fio2Info, temperatureContext, context?.submissionIssues);
+  if (context?.submissionConfidence && context.submissionConfidence === 'blocked') {
+    dataQuality.status = 'probable_error';
+    dataQuality.domainStatus = 'blocked';
+    dataQuality.confidence = 'blocked';
+  }
+
   const deepAcidBase = interpretAcidBase(normalizedInput, dataQuality, stepByStepLogic);
   const deepOxygenation = interpretOxygenation(normalizedInput, dataQuality, fio2Info);
   const electrolyteDomain = interpretElectrolytes(normalizedInput, dataQuality, alerts, electrolyteHypotheses, electrolyteActions);
@@ -564,7 +619,7 @@ export function interpretBloodGas(input: BloodGasInput): InterpretationResult {
     acidBase: deepAcidBase.domainStatus,
     oxygenation: deepOxygenation.domainStatus,
     electrolytes: electrolyteDomain.domainStatus,
-    hypotheses: 'inconclusive',
+    hypotheses: 'limited',
     actionPlan: 'limited',
   };
 
@@ -572,41 +627,50 @@ export function interpretBloodGas(input: BloodGasInput): InterpretationResult {
   const clinicalHypotheses = Array.from(new Set([...electrolyteHypotheses, ...buildHypotheses(normalizedInput, partialResult)]));
   domainStatuses.hypotheses = clinicalHypotheses.length > 0 ? 'ok' : 'limited';
 
-  const derivedActions = buildActions(normalizedInput, deepAcidBase, deepOxygenation, dataQuality, temperatureContext);
+  const baseActions = buildActions(normalizedInput, deepAcidBase, deepOxygenation, dataQuality);
   const clinicalActions: ClinicalActions = {
-    immediate: Array.from(new Set([...electrolyteActions.immediate, ...derivedActions.immediate])),
-    serial: Array.from(new Set([...electrolyteActions.serial, ...derivedActions.serial])),
-    correlativeExams: Array.from(new Set([...electrolyteActions.correlativeExams, ...derivedActions.correlativeExams])),
-    whenToRepeat: Array.from(new Set([...(electrolyteActions.whenToRepeat || []), ...(derivedActions.whenToRepeat || [])])),
+    immediate: Array.from(new Set([...baseActions.immediate, ...electrolyteActions.immediate])),
+    serial: Array.from(new Set([...baseActions.serial, ...electrolyteActions.serial])),
+    correlativeExams: Array.from(new Set([...baseActions.correlativeExams, ...electrolyteActions.correlativeExams])),
+    whenToRepeat: Array.from(new Set([...(baseActions.whenToRepeat || []), ...(electrolyteActions.whenToRepeat || [])])),
   };
   domainStatuses.actionPlan = clinicalActions.immediate.length > 0 || clinicalActions.serial.length > 0 ? 'ok' : 'limited';
 
-  if (temperatureContext.status === 'hypothermia') alerts.push({ level: 'warning', message: 'Hipotermia pode alterar a relacao entre o valor reportado e a fisiologia real do paciente.' });
-  else if (temperatureContext.status === 'hyperthermia') alerts.push({ level: 'warning', message: 'Hipertermia aumenta consumo de O2 e producao de CO2; interpretar com contexto clinico.' });
-
+  if (temperatureContext.status === 'hypothermia') alerts.push({ level: 'warning', message: 'Hipotermia relevante pode alterar interpretacao fisiologica dos gases.' });
+  if (temperatureContext.status === 'hyperthermia') alerts.push({ level: 'warning', message: 'Hipertermia aumenta demanda metabolica e influencia leitura clinica.' });
   for (const check of dataQuality.consistencyChecks) {
     if (check.level === 'critical') alerts.push({ level: 'critical', message: check.message });
   }
 
-  stepByStepLogic.push(`Passo 3: qualidade dos dados classificada como ${dataQuality.status}.`);
-  stepByStepLogic.push(`Passo 4: dominio de oxigenacao classificado como ${deepOxygenation.domainStatus}.`);
-  stepByStepLogic.push(`Passo 5: dominio eletrolitico classificado como ${electrolyteDomain.domainStatus}.`);
+  stepByStepLogic.push(`Passo 4: qualidade dos dados ${dataQuality.status} (confianca ${dataQuality.confidence}).`);
+  stepByStepLogic.push(`Passo 5: dominio de oxigenacao ${deepOxygenation.domainStatus}.`);
+  stepByStepLogic.push(`Passo 6: dominio eletrolitico ${electrolyteDomain.domainStatus}.`);
 
   const executiveSummary = [
-    `Amostra ${normalizedInput.sampleType === 'arterial' ? 'arterial' : 'venosa'} em ${normalizedInput.species === 'canine' ? 'canino' : 'felino'} com confiabilidade ${dataQuality.status === 'reliable' ? 'boa' : dataQuality.status === 'caution' ? 'moderada' : 'reduzida'}.`,
-    `Disturbio principal: ${deepAcidBase.primaryDisorder === 'unknown' ? 'inconclusivo' : deepAcidBase.primaryDisorder.replaceAll('_', ' ')}${deepAcidBase.compensationStatus === 'mixed_suspected' ? ', com suspeita de disturbio misto' : ''}.`,
-    deepOxygenation.status === 'cannot_assess' ? 'Oxigenacao nao avaliavel com os dados atuais.' : deepOxygenation.summary,
+    `Amostra ${normalizedInput.sampleType === 'arterial' ? 'arterial' : 'venosa'} em ${normalizedInput.species === 'canine' ? 'canino' : 'felino'}.`,
+    `Confianca global: ${dataQuality.confidence}.`,
+    `Disturbio acido-base principal: ${deepAcidBase.primaryDisorder === 'unknown' ? 'inconclusivo' : deepAcidBase.primaryDisorder.replaceAll('_', ' ')}.`,
+    deepOxygenation.summary,
     temperatureContext.summary,
   ].filter(Boolean);
 
   const expandedPhysiology = [
-    'O pH reflete a soma do componente respiratorio (pCO2) e do componente metabolico (HCO3/BE).',
+    'O pH resulta da interacao entre ventilacao alveolar (pCO2) e componente metabolico (HCO3/BE).',
     deepAcidBase.physiologicalExplanation,
-    normalizedInput.Cl !== undefined ? 'O cloro ajuda a entender se ha padrao hipercloremico ou hipocloremico e deve ser lido junto do bicarbonato.' : '',
-    normalizedInput.lactate !== undefined ? 'O lactato contextualiza perfusao, metabolismo anaerobio e gravidade, principalmente quando o AG esta elevado.' : '',
+    `Temperatura: ${temperatureContext.summary}`,
+    electrolyteDomain.summary,
     deepOxygenation.physiologicalExplanation,
-    ...temperatureContext.effectOnInterpretation,
-  ].filter(Boolean).join(' ');
+    'Cloro, lactato e AG ajudam a diferenciar causas metabolicas e a detectar acidos nao mensurados.',
+  ].join(' ');
+
+  const referencesUsed = [
+    'Fluid, Electrolyte, and Acid-Base Disorders in Small Animal Practice',
+    'Canine and Feline Respiratory Medicine',
+    "Cunningham\'s Textbook of Veterinary Physiology",
+    'Veterinary Anesthesia and Analgesia (Lumb and Jones)',
+    'Textbook of Small Animal Emergency Medicine',
+    'BSAVA Manual of Canine and Feline Emergency and Critical Care',
+  ];
 
   return {
     id: Date.now().toString(),
@@ -627,5 +691,7 @@ export function interpretBloodGas(input: BloodGasInput): InterpretationResult {
     alerts,
     stepByStepLogic,
     expandedPhysiology,
+    referencesUsed,
   };
 }
+

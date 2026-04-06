@@ -4,6 +4,7 @@ import { cn } from '../../../lib/utils';
 import { BloodGasInput, Species, SampleType, InterpretationResult, ParsedField } from '../types';
 import { parseBloodGasText } from '../engine/parser';
 import { interpretBloodGas } from '../engine/interpreter';
+import { applyOcrFieldsToFormData, buildInterpretationPayload, FieldSource, PayloadIssue } from '../engine/inputPipeline';
 import { useHemoStore } from '../store/useHemoStore';
 import { TOOLTIPS } from '../constants/referenceRanges';
 import { exportToPDF } from '../utils/pdfExport';
@@ -66,9 +67,12 @@ export default function InterpreterPage() {
   const [rawText, setRawText] = useState('');
   
   const [formData, setFormData] = useState<Partial<BloodGasInput>>(getDefaultFormData('canine', 'arterial'));
+  const [fieldSources, setFieldSources] = useState<Partial<Record<keyof BloodGasInput, FieldSource>>>({});
+  const [ocrPending, setOcrPending] = useState(false);
 
   const [parsedFields, setParsedFields] = useState<ParsedField[]>([]);
   const [unrecognizedText, setUnrecognizedText] = useState('');
+  const [submissionIssues, setSubmissionIssues] = useState<PayloadIssue[]>([]);
 
   const [result, setResult] = useState<InterpretationResult | null>(null);
   const [showAdvanced, setShowAdvanced] = useState(false);
@@ -76,16 +80,25 @@ export default function InterpreterPage() {
   const addRecord = useHemoStore(state => state.addRecord);
   const parsedFieldMap = new Map(parsedFields.map((field) => [field.key, field]));
 
+  const setFieldSource = (key: keyof BloodGasInput, source: FieldSource) => {
+    setFieldSources((prev) => ({ ...prev, [key]: source }));
+  };
+
   const handleInputChange = (field: keyof BloodGasInput, value: any) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+    setFieldSource(field, 'manual');
+    setSubmissionIssues([]);
   };
 
   const applyDefaultsForProfile = (nextSpecies: Species, nextSampleType: SampleType) => {
     setSpecies(nextSpecies);
     setSampleType(nextSampleType);
     setFormData(getDefaultFormData(nextSpecies, nextSampleType));
+    setFieldSources({});
     setParsedFields([]);
     setUnrecognizedText('');
+    setOcrPending(false);
+    setSubmissionIssues([]);
     setResult(null);
   };
 
@@ -97,31 +110,55 @@ export default function InterpreterPage() {
         [field]: value
       }
     }));
+    setFieldSource('clinicalContext', 'manual');
+    setSubmissionIssues([]);
+  };
+
+  const switchInputMode = (nextMode: 'manual' | 'text') => {
+    if (nextMode === inputMode) return;
+    if (inputMode === 'text' && nextMode === 'manual') {
+      setParsedFields([]);
+      setUnrecognizedText('');
+      setOcrPending(false);
+    }
+    setInputMode(nextMode);
+    setSubmissionIssues([]);
   };
 
   const handleParseText = () => {
     const parsedResult = parseBloodGasText(rawText, species, sampleType);
     setParsedFields(parsedResult.recognizedFields || []);
     setUnrecognizedText(parsedResult.unrecognizedText?.join('\n') || '');
-    
-    // Apply parsed values to formData
-    const newFormData: Partial<BloodGasInput> = { ...formData };
-    (parsedResult.recognizedFields || []).forEach(field => {
-      if (field.confidence !== 'low') {
-        (newFormData as any)[field.key] = field.value;
-      }
-    });
-    setFormData(newFormData);
+    setOcrPending((parsedResult.recognizedFields || []).length > 0);
+    setSubmissionIssues([]);
+    setResult(null);
+  };
+
+  const handleApplyParsedFields = () => {
+    const nextForm = applyOcrFieldsToFormData(formData, parsedFields, setFieldSource);
+    setFormData(nextForm);
+    setOcrPending(false);
+    setSubmissionIssues([]);
+    setResult(null);
   };
 
   const handleInterpret = () => {
-    const fullInput: BloodGasInput = {
-      ...formData,
+    const prepared = buildInterpretationPayload({
+      formData,
       species,
       sampleType,
-    } as BloodGasInput;
-    
-    const interpretation = interpretBloodGas(fullInput);
+      ocrPending,
+      fieldSources,
+    });
+    setSubmissionIssues(prepared.issues);
+    if (prepared.blocked) {
+      setResult(null);
+      return;
+    }
+    const interpretation = interpretBloodGas(prepared.payload, {
+      submissionIssues: prepared.issues,
+      submissionConfidence: prepared.confidence,
+    });
     setResult(interpretation);
   };
 
@@ -229,7 +266,7 @@ export default function InterpreterPage() {
             {/* Input Mode Toggle */}
             <div className="flex space-x-4 mb-5">
               <button
-                onClick={() => setInputMode('manual')}
+                onClick={() => switchInputMode('manual')}
                 className={cn(
                   "text-xs font-medium pb-1.5 border-b-2 transition-colors",
                   inputMode === 'manual' 
@@ -240,7 +277,7 @@ export default function InterpreterPage() {
                 Entrada Manual
               </button>
               <button
-                onClick={() => setInputMode('text')}
+                onClick={() => switchInputMode('text')}
                 className={cn(
                   "text-xs font-medium pb-1.5 border-b-2 transition-colors",
                   inputMode === 'text' 
@@ -262,7 +299,7 @@ export default function InterpreterPage() {
                   <InputField label="HCO3-" unit="mEq/L" value={formData.HCO3} onChange={(v) => handleInputChange('HCO3', v)} tooltip={TOOLTIPS.HCO3} parsedField={parsedFieldMap.get('HCO3')} />
                   <InputField label="Base Excess" unit="mEq/L" value={formData.BE} onChange={(v) => handleInputChange('BE', v)} tooltip={TOOLTIPS.BE} parsedField={parsedFieldMap.get('BE')} />
                   <InputField label="Lactato" unit="mmol/L" value={formData.lactate} onChange={(v) => handleInputChange('lactate', v)} tooltip={TOOLTIPS.lactate} parsedField={parsedFieldMap.get('lactate')} />
-                  <InputField label="FiO2" unit="%" value={formData.fio2 === undefined ? '' : Number((formData.fio2 * 100).toFixed(1))} onChange={(v) => handleInputChange('fio2', v === undefined ? undefined : Number(v)/100)} tooltip={TOOLTIPS.fio2} parsedField={parsedFieldMap.get('fio2')} hint={formData.fio2 !== undefined ? `Interpretada internamente como fracao (${formatFiO2Percent(formData.fio2)}). Aceita 21 ou 0.21.` : 'Aceita 21 ou 0.21; o motor converte para fracao internamente.'} />
+                  <InputField label="FiO2" unit="%" value={formData.fio2 === undefined ? '' : Number((formData.fio2 * 100).toFixed(1))} onChange={(v) => handleInputChange('fio2', v === undefined ? undefined : (Number(v) <= 1 ? Number(v) : Number(v) / 100))} tooltip={TOOLTIPS.fio2} parsedField={parsedFieldMap.get('fio2')} hint={formData.fio2 !== undefined ? `Interpretada internamente como fracao (${formatFiO2Percent(formData.fio2)}). Aceita 21 ou 0.21.` : 'Aceita 21 ou 0.21; o motor converte para fracao internamente.'} />
                   <InputField label="Temp." unit="°C" value={formData.temperature} onChange={(v) => handleInputChange('temperature', v)} parsedField={parsedFieldMap.get('temperature')} hint="A temperatura entra como fator de contexto da interpretacao." />
                 </div>
 
@@ -328,6 +365,15 @@ export default function InterpreterPage() {
                   Extrair Dados
                 </button>
 
+                {parsedFields.length > 0 && (
+                  <button
+                    onClick={handleApplyParsedFields}
+                    className="w-full py-2 px-4 bg-purple-600 hover:bg-purple-700 text-white rounded-md font-medium text-sm transition-colors"
+                  >
+                    Aplicar Campos Reconhecidos
+                  </button>
+                )}
+
                 {(parsedFields.length > 0 || unrecognizedText.length > 0) && (
                   <div className="mt-4 space-y-4 animate-in fade-in slide-in-from-top-2">
                     <div className="space-y-2">
@@ -373,10 +419,34 @@ export default function InterpreterPage() {
                     )}
                     
                     <p className="text-xs text-slate-500 bg-slate-100 dark:bg-slate-800/50 p-2 rounded-md">
-                      <strong>Dica:</strong> Revise os valores na aba de "Entrada Manual" se algo pareceu estranho antes de Interpretar.
+                      <strong>Dica:</strong> os dados de OCR so entram no formulario apos clicar em "Aplicar Campos Reconhecidos".
                     </p>
                   </div>
                 )}
+              </div>
+            )}
+
+            {ocrPending && (
+              <div className="mt-4 rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-800 dark:border-amber-800/50 dark:bg-amber-900/20 dark:text-amber-300">
+                OCR pendente: confirme ou descarte os campos reconhecidos antes de gerar a interpretacao.
+              </div>
+            )}
+
+            {submissionIssues.length > 0 && (
+              <div className="mt-4 space-y-2">
+                {submissionIssues.map((issue, idx) => (
+                  <div
+                    key={`submission-issue-${idx}`}
+                    className={cn(
+                      "rounded-md border px-3 py-2 text-xs",
+                      issue.level === 'critical'
+                        ? "border-red-200 bg-red-50 text-red-700 dark:border-red-800/50 dark:bg-red-900/20 dark:text-red-300"
+                        : "border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-800/50 dark:bg-amber-900/20 dark:text-amber-300"
+                    )}
+                  >
+                    {issue.message}
+                  </div>
+                ))}
               </div>
             )}
 

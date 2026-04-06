@@ -21,7 +21,7 @@ export const RxvCard = ({ children, className = '', initial = true }: { children
         <motion.div
             initial={initial ? { opacity: 0, y: 20 } : false}
             animate={{ opacity: 1, y: 0 }}
-            className={`rxv-card relative group p-6 transition-all border
+            className={`rxv-card relative group p-5 transition-all border
             ${isDark ? 'bg-[#0a140a]/60 border-slate-800/50' : 'bg-white border-slate-200 shadow-sm'}
             hover:border-[#39ff14]/20 ${className}`}
         >
@@ -36,15 +36,15 @@ export const RxvCard = ({ children, className = '', initial = true }: { children
 const RxvSectionHeaderContent = ({ icon, title, subtitle, colorClass = 'text-[#39ff14]', bgClass = 'bg-[#39ff14]/10', shadowClass = 'shadow-[0_0_20px_rgba(57,255,20,0.1)]', children }: any) => {
     const isDark = getIsDark();
     return (
-        <div className="flex items-center gap-4 mb-8">
+        <div className="mb-6 flex items-center gap-3">
             {icon ? (
-                <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${bgClass} ${colorClass} ${shadowClass}`}>
-                    <span className="material-symbols-outlined text-[28px]">{icon}</span>
+                <div className={`flex h-10 w-10 items-center justify-center rounded-2xl ${bgClass} ${colorClass} ${shadowClass}`}>
+                    <span className="material-symbols-outlined text-[24px]">{icon}</span>
                 </div>
             ) : null}
             <div>
-                <h2 className={`text-xl font-black italic tracking-tight uppercase ${isDark ? 'text-white' : 'text-slate-900'}`}>{title}</h2>
-                {subtitle && <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">{subtitle}</p>}
+                <h2 className={`text-lg font-black italic tracking-tight uppercase ${isDark ? 'text-white' : 'text-slate-900'}`}>{title}</h2>
+                {subtitle && <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.18em]">{subtitle}</p>}
             </div>
             {children && <div className="ml-auto flex items-center gap-3">{children}</div>}
         </div>
@@ -56,12 +56,23 @@ export const RxvSectionHeader = (props: any) => <RxvSectionHeaderContent {...pro
 /**
  * RxvField - Wrapper para label e mensagem de erro
  */
-export const RxvField = ({ label, error, children, className = '' }: { label: string, error?: string, children: React.ReactNode, className?: string }) => {
+export const RxvField = ({ label, error, tooltip, children, className = '' }: { label: string, error?: string, tooltip?: string, children: React.ReactNode, className?: string }) => {
     const isDark = getIsDark();
     return (
         <div className={`space-y-2 ${className}`}>
-            <label className={`text-[10px] font-black uppercase tracking-widest flex items-center justify-between ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
-                {label}
+            <label className={`flex items-center justify-between text-[9px] font-black uppercase tracking-[0.18em] ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
+                <span className="inline-flex items-center gap-1">
+                    {label}
+                    {tooltip ? (
+                        <span
+                            className="inline-flex h-3.5 w-3.5 items-center justify-center rounded-full border border-slate-500/50 text-[8px] font-black text-slate-400"
+                            title={tooltip}
+                            aria-label={tooltip}
+                        >
+                            ?
+                        </span>
+                    ) : null}
+                </span>
                 {error && <span className="text-red-500 text-[9px] animate-pulse">!! {error}</span>}
             </label>
             {children}
@@ -77,7 +88,7 @@ export const RxvInput = ({ ...props }: React.InputHTMLAttributes<HTMLInputElemen
     return (
         <input
             {...props}
-            className={`w-full rounded-xl border px-4 py-3.5 text-sm font-bold outline-none transition-all focus:border-[#39ff14]/50 focus:ring-1 focus:ring-[#39ff14]/20
+            className={`w-full rounded-xl border px-3.5 py-3 text-[13px] font-bold outline-none transition-all focus:border-[#39ff14]/50 focus:ring-1 focus:ring-[#39ff14]/20
         ${isDark
                     ? 'border-slate-800 bg-black/60 text-white placeholder:text-slate-700'
                     : 'border-slate-200 bg-white text-slate-900 placeholder:text-slate-400'}
@@ -96,7 +107,7 @@ export const RxvSelect = ({ options, ...props }: React.SelectHTMLAttributes<HTML
     return (
         <select
             {...props}
-            className={`w-full rounded-xl border px-4 py-3.5 text-sm font-bold outline-none transition-all focus:border-[#39ff14]/50 focus:ring-1 focus:ring-[#39ff14]/20
+            className={`w-full rounded-xl border px-3.5 py-3 text-[13px] font-bold outline-none transition-all focus:border-[#39ff14]/50 focus:ring-1 focus:ring-[#39ff14]/20
                 ${isDark
                     ? 'border-slate-800 bg-black/60 text-white'
                     : 'border-slate-200 bg-white text-slate-900'}
@@ -119,7 +130,7 @@ export const RxvTextarea = ({ ...props }: React.TextareaHTMLAttributes<HTMLTextA
     return (
         <textarea
             {...props}
-            className={`w-full rounded-xl border px-4 py-3.5 text-sm font-bold outline-none transition-all focus:border-[#39ff14]/50 focus:ring-1 focus:ring-[#39ff14]/20 min-h-[100px] resize-none
+            className={`w-full rounded-xl border px-3.5 py-3 text-[13px] font-bold outline-none transition-all focus:border-[#39ff14]/50 focus:ring-1 focus:ring-[#39ff14]/20 min-h-[96px] resize-none
         ${isDark
                     ? 'border-slate-800 bg-black/60 text-white placeholder:text-slate-700'
                     : 'border-slate-200 bg-white text-slate-900 placeholder:text-slate-400'}
@@ -212,15 +223,15 @@ export const RxvPillToggle = ({ value, labels, onToggle, colorClass = 'text-[#39
 type RxvButtonVariant = 'primary' | 'secondary' | 'danger'
 
 const RXV_BTN_CLASSES: Record<RxvButtonVariant, string> = {
-    primary: 'inline-flex items-center gap-2 rounded-xl border border-[#39ff14]/40 bg-[#39ff14]/15 px-4 py-2 text-sm font-bold text-[#39ff14] transition-all hover:bg-[#39ff14]/25 hover:border-[#39ff14]/60 disabled:opacity-50 disabled:cursor-not-allowed',
-    secondary: 'inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/60 px-4 py-2 text-sm font-bold text-slate-300 transition-all hover:border-slate-500 hover:bg-slate-800/60 disabled:opacity-50 disabled:cursor-not-allowed',
-    danger: 'inline-flex items-center gap-2 rounded-xl border border-red-800/60 bg-red-900/20 px-4 py-2 text-sm font-bold text-red-300 transition-all hover:bg-red-900/40 hover:border-red-700/60 disabled:opacity-50 disabled:cursor-not-allowed',
+    primary: 'inline-flex items-center gap-2 rounded-xl border border-[#39ff14]/40 bg-[#39ff14]/15 px-3.5 py-2 text-[13px] font-bold text-[#39ff14] transition-all hover:bg-[#39ff14]/25 hover:border-[#39ff14]/60 disabled:opacity-50 disabled:cursor-not-allowed',
+    secondary: 'inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/60 px-3.5 py-2 text-[13px] font-bold text-slate-300 transition-all hover:border-slate-500 hover:bg-slate-800/60 disabled:opacity-50 disabled:cursor-not-allowed',
+    danger: 'inline-flex items-center gap-2 rounded-xl border border-red-800/60 bg-red-900/20 px-3.5 py-2 text-[13px] font-bold text-red-300 transition-all hover:bg-red-900/40 hover:border-red-700/60 disabled:opacity-50 disabled:cursor-not-allowed',
 }
 
 const RXV_BTN_LIGHT: Record<RxvButtonVariant, string> = {
-    primary: 'inline-flex items-center gap-2 rounded-xl border border-[#39ff14]/40 bg-[#39ff14]/10 px-4 py-2 text-sm font-bold text-[#2fb011] transition-all hover:bg-[#39ff14]/20 hover:border-[#39ff14]/60 disabled:opacity-50 disabled:cursor-not-allowed',
-    secondary: 'inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-600 transition-all hover:border-slate-300 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed',
-    danger: 'inline-flex items-center gap-2 rounded-xl border border-red-100 bg-red-50 px-4 py-2 text-sm font-bold text-red-600 transition-all hover:bg-red-100 disabled:opacity-50 disabled:cursor-not-allowed',
+    primary: 'inline-flex items-center gap-2 rounded-xl border border-[#39ff14]/40 bg-[#39ff14]/10 px-3.5 py-2 text-[13px] font-bold text-[#2fb011] transition-all hover:bg-[#39ff14]/20 hover:border-[#39ff14]/60 disabled:opacity-50 disabled:cursor-not-allowed',
+    secondary: 'inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-[13px] font-bold text-slate-600 transition-all hover:border-slate-300 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed',
+    danger: 'inline-flex items-center gap-2 rounded-xl border border-red-100 bg-red-50 px-3.5 py-2 text-[13px] font-bold text-red-600 transition-all hover:bg-red-100 disabled:opacity-50 disabled:cursor-not-allowed',
 }
 
 export const RxvButton = ({

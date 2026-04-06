@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react'
+﻿import React, { useEffect, useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import ReceituarioChrome from './ReceituarioChrome'
 import { useClinic } from '../../src/components/ClinicProvider'
@@ -26,7 +26,7 @@ interface Presentation {
   pharmacy_veterinary: boolean
   pharmacy_human: boolean
   pharmacy_compounding: boolean
-  // Front-end only fields (MVP - n�o enviados ao Supabase se n�o existirem na schema)
+  // Front-end only fields (MVP - não enviados ao Supabase se não existirem no schema)
   manufacturer?: string
   package_quantity?: number
   package_unit?: string
@@ -40,18 +40,18 @@ interface MedicationWithPresentations extends Medication {
 
 const PHARMACEUTICAL_FORMS = [
   'Comprimido',
-  'C�psula',
-  'Solu��o oral',
-  'Suspens�o oral',
+  'Cápsula',
+  'Solução oral',
+  'Suspensão oral',
   'Gotas',
-  'Injet�vel',
+  'Injetável',
   'Ampola',
   'Pomada',
   'Spray'
 ]
 
 const VALUE_UNITS = ['mg', 'g', 'mcg', 'UI', 'mL', 'L', '%']
-const PER_UNITS = ['comprimido', 'c�psula', 'mL', 'gota', 'ampola', 'sach�', 'envelope', 'frasco']
+const PER_UNITS = ['comprimido', 'cápsula', 'mL', 'gota', 'ampola', 'sachê', 'envelope', 'frasco']
 
 // ==================== HELPERS ====================
 
@@ -147,7 +147,7 @@ export default function Catalogo2Page() {
         return
       }
 
-      // Importar fun��es do clinicRecords
+      // Importar funções do clinicRecords
       const { listMedications, getMedicationPresentations } = await import('../../src/lib/clinicRecords')
 
       // Buscar medications
@@ -263,25 +263,25 @@ export default function Catalogo2Page() {
     }))
   }
 
-  // ==================== VALIDA��O ====================
+  // ==================== VALIDAÇÃO ====================
 
   function validateForm(): boolean {
     const newErrors: Record<string, string> = {}
 
     // Validar nome
     if (!draft.name.trim()) {
-      newErrors.name = 'Nome do medicamento � obrigat�rio'
+      newErrors.name = 'Nome do medicamento é obrigatório'
     }
 
-    // Validar apresenta��es
+    // Validar apresentações
     if (draft.presentations.length === 0) {
-      newErrors.presentations = 'Adicione pelo menos uma apresenta��o'
+      newErrors.presentations = 'Adicione pelo menos uma apresentação'
     }
 
-    // Validar cada apresenta��o
+    // Validar cada apresentação
     draft.presentations.forEach((pres, idx) => {
       if (!pres.pharmacy_veterinary && !pres.pharmacy_human && !pres.pharmacy_compounding) {
-        newErrors[`pres_${idx}_pharmacy`] = 'Selecione pelo menos um tipo de farm�cia'
+        newErrors[`pres_${idx}_pharmacy`] = 'Selecione pelo menos um tipo de farmácia'
       }
     })
 
@@ -306,7 +306,7 @@ export default function Catalogo2Page() {
       setErrors({})
 
       if (!clinicId) {
-        throw new Error('Nenhuma cl�nica ativa. Fa�a login novamente.')
+        throw new Error('Nenhuma clínica ativa. Faça login novamente.')
       }
 
       // Obter userId
@@ -317,7 +317,7 @@ export default function Catalogo2Page() {
       console.log('[Catalogo2] STEP 1: Context:', { clinicId, userId })
 
       if (!userId) {
-        throw new Error('Usu�rio n�o identificado. Fa�a login novamente.')
+        throw new Error('Usuário não identificado. Faça login novamente.')
       }
 
       // Preparar payloads (APENAS campos do Supabase, sem manufacturer/package_*)
@@ -339,7 +339,7 @@ export default function Catalogo2Page() {
         pharmacy_veterinary: !!p.pharmacy_veterinary,
         pharmacy_human: !!p.pharmacy_human,
         pharmacy_compounding: !!p.pharmacy_compounding
-        // N�O enviar: manufacturer, package_quantity, package_unit (front-end only)
+        // NÃO enviar: manufacturer, package_quantity, package_unit (front-end only)
       }))
 
       console.log('[Catalogo2] STEP 2: Payloads')
@@ -366,7 +366,7 @@ export default function Catalogo2Page() {
       console.log('  presentations:', result.presentations)
       console.log('  Saved medication ID:', result.medication.id)
 
-      // Verifica��o post-save
+      // Verificação post-save
       console.log('[Catalogo2] STEP 5: POST-SAVE VERIFY (SELECT)')
       const verifyMed = await getMedicationDetails(clinicId, result.medication.id)
       const verifyPres = await getMedicationPresentations(clinicId, result.medication.id)
@@ -376,7 +376,7 @@ export default function Catalogo2Page() {
 
       if (!verifyMed) {
         console.error('[Catalogo2] ⚠️ POST-SAVE VERIFY FAILED: medication NOT FOUND!')
-        throw new Error('Medicamento n�o foi encontrado no banco ap�s salvar. Verifique RLS policies.')
+        throw new Error('Medicamento não foi encontrado no banco após salvar. Verifique RLS policies.')
       } else {
         console.log('[Catalogo2] ✅ POST-SAVE VERIFY SUCCESS')
       }
@@ -435,7 +435,7 @@ export default function Catalogo2Page() {
 
       if (isRLS) {
         setErrors({
-          save: 'ERRO DE PERMISS�O (RLS): Verifique se voc� est� logado e se � membro da cl�nica ativa.'
+          save: 'ERRO DE PERMISSÃO (RLS): Verifique se você está logado e se é membro da clínica ativa.'
         })
       } else {
         setErrors({
@@ -472,13 +472,13 @@ export default function Catalogo2Page() {
           Catalogo2Page BUILD: 2026-02-24
         </div>
 
-        <ReceituarioChrome section="catalogo2" title="Cat�logo 2.0" subtitle="">
+        <ReceituarioChrome section="catalogo2" title="Catálogo 2.0" subtitle="">
           <div className="flex min-h-[70vh] items-center justify-center">
             <div className="max-w-md rounded-2xl border-2 border-red-500/40 bg-red-500/10 p-8 text-center">
               <span className="material-symbols-outlined mb-4 text-6xl text-red-400">error</span>
-              <h2 className="mb-2 text-xl font-bold text-red-300">Nenhuma cl�nica ativa</h2>
+              <h2 className="mb-2 text-xl font-bold text-red-300">Nenhuma clínica ativa</h2>
               <p className="mb-6 text-sm text-red-200">
-                Voc� precisa estar logado e ter uma cl�nica ativa para usar o Cat�logo 2.0.
+                Você precisa estar logado e ter uma clínica ativa para usar o Catálogo 2.0.
               </p>
               <button
                 type="button"
@@ -486,7 +486,7 @@ export default function Catalogo2Page() {
                 onClick={() => window.location.reload()}
               >
                 <span className="material-symbols-outlined mr-2 text-[18px]">refresh</span>
-                Recarregar p�gina
+                Recarregar página
               </button>
             </div>
           </div>
@@ -523,10 +523,10 @@ export default function Catalogo2Page() {
           <div className="mx-4 w-full max-w-md rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface)] p-6 shadow-2xl">
             <div className="mb-4 flex items-center gap-3">
               <span className="material-symbols-outlined text-3xl text-yellow-400">warning</span>
-              <h3 className="text-lg font-bold">Altera��es n�o salvas</h3>
+              <h3 className="text-lg font-bold">Alterações não salvas</h3>
             </div>
             <p className="mb-6 text-sm text-[color:var(--rxv-muted)]">
-              Voc� tem altera��es n�o salvas. Deseja descart�-las e continuar?
+              Você tem alterações não salvas. Deseja descartá-las e continuar?
             </p>
             <div className="flex gap-3">
               <button
@@ -541,7 +541,7 @@ export default function Catalogo2Page() {
                 className="rxv-btn-primary flex-1 px-4 py-2 text-sm"
                 onClick={discardAndSelect}
               >
-                Descartar altera��es
+                Descartar alterações
               </button>
             </div>
           </div>
@@ -550,8 +550,8 @@ export default function Catalogo2Page() {
 
       <ReceituarioChrome
         section="catalogo2"
-        title="🔥 Cat�logo 2.0"
-        subtitle={clinicName ? `Cl�nica: ${clinicName}` : 'Supabase-only'}
+        title="🔥 Catálogo 2.0"
+        subtitle={clinicName ? `Clínica: ${clinicName}` : 'Supabase-only'}
         actions={
           <>
             <Link
@@ -559,7 +559,7 @@ export default function Catalogo2Page() {
               className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-2 text-sm"
             >
               <span className="material-symbols-outlined text-[18px]">arrow_back</span>
-              Cat�logo v1
+              Catálogo v1
             </Link>
             <button
               type="button"
@@ -658,7 +658,7 @@ export default function Catalogo2Page() {
                       <div className="flex-1">
                         <p className="mb-0.5 text-sm font-semibold leading-tight">{med.name}</p>
                         <p className="text-xs text-[color:var(--rxv-muted)]">
-                          {med.presentations.length} apresenta��o{med.presentations.length !== 1 ? '�es' : ''}
+                          {med.presentations.length} apresentação{med.presentations.length !== 1 ? 'ões' : ''}
                         </p>
                       </div>
                       {med.is_controlled && (
@@ -673,7 +673,7 @@ export default function Catalogo2Page() {
             </div>
           </aside>
 
-          {/* MAIN - FORMUL�RIO */}
+          {/* MAIN - FORMULÁRIO */}
           <main className="space-y-6 xl:col-span-9">
             {/* Status indicator */}
             <div className="flex items-center justify-between text-xs">
@@ -681,7 +681,7 @@ export default function Catalogo2Page() {
                 {isDirty ? (
                   <span className="inline-flex items-center gap-1 text-yellow-400">
                     <span className="material-symbols-outlined text-[14px]">edit</span>
-                    N�o salvo
+                    Não salvo
                   </span>
                 ) : (
                   <span className="inline-flex items-center gap-1 text-green-400">
@@ -738,23 +738,23 @@ export default function Catalogo2Page() {
               </div>
 
               <label className="mt-4 block text-sm">
-                <span className="mb-1 block font-semibold">Observa��es</span>
+                <span className="mb-1 block font-semibold">Observações</span>
                 <textarea
                   className="w-full rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-input-bg)] px-3 py-2 text-sm"
                   value={draft.notes || ''}
                   onChange={(e) => setDraft((prev) => ({ ...prev, notes: e.target.value }))}
                   rows={3}
-                  placeholder="Observa��es internas sobre o medicamento..."
+                  placeholder="Observações internas sobre o medicamento..."
                 />
               </label>
             </section>
 
-            {/* Apresenta��es */}
+            {/* Apresentações */}
             <section className="rxv-card p-6 shadow-xl">
               <div className="mb-5 flex items-center justify-between">
                 <h3 className="flex items-center gap-2 text-lg font-bold">
                   <span className="material-symbols-outlined text-[24px] text-[#61eb48]">inventory</span>
-                  Apresenta��es
+                  Apresentações
                 </h3>
                 <button
                   type="button"
@@ -762,7 +762,7 @@ export default function Catalogo2Page() {
                   onClick={addPresentation}
                 >
                   <span className="material-symbols-outlined text-[16px]">add</span>
-                  Nova apresenta��o
+                  Nova apresentação
                 </button>
               </div>
 
@@ -778,14 +778,14 @@ export default function Catalogo2Page() {
                   >
                     <div className="mb-3 flex items-center justify-between">
                       <span className="text-xs font-bold uppercase tracking-wide text-[color:var(--rxv-muted)]">
-                        Apresenta��o #{idx + 1}
+                        Apresentação #{idx + 1}
                       </span>
                       <button
                         type="button"
                         className="inline-flex items-center gap-1 rounded-lg border border-red-500/30 bg-red-500/10 px-2 py-1 text-xs text-red-300 hover:bg-red-500/20 disabled:opacity-40"
                         onClick={() => removePresentation(pres.client_id)}
                         disabled={draft.presentations.length === 1}
-                        title={draft.presentations.length === 1 ? 'Pelo menos uma apresenta��o � necess�ria' : 'Remover'}
+                        title={draft.presentations.length === 1 ? 'Pelo menos uma apresentação é necessária' : 'Remover'}
                       >
                         <span className="material-symbols-outlined text-[14px]">delete</span>
                         Remover
@@ -793,9 +793,9 @@ export default function Catalogo2Page() {
                     </div>
 
                     <div className="grid grid-cols-1 gap-3 md:grid-cols-12">
-                      {/* Forma farmac�utica */}
+                      {/* Forma farmacêutica */}
                       <label className="text-xs md:col-span-3">
-                        <span className="mb-1 block font-semibold">Forma farmac�utica</span>
+                        <span className="mb-1 block font-semibold">Forma farmacêutica</span>
                         <select
                           className="w-full rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-input-bg)] px-2 py-2 text-sm"
                           value={pres.pharmaceutical_form}
@@ -835,9 +835,9 @@ export default function Catalogo2Page() {
                         />
                       </label>
 
-                      {/* Pre�o m�dio */}
+                      {/* Preço médio */}
                       <label className="text-xs md:col-span-3">
-                        <span className="mb-1 block font-semibold">Pre�o m�dio (R$)</span>
+                        <span className="mb-1 block font-semibold">Preço médio (R$)</span>
                         <input
                           type="number"
                           step="0.01"
@@ -941,10 +941,10 @@ export default function Catalogo2Page() {
                         />
                       </label>
 
-                      {/* Tipos de farm�cia */}
+                      {/* Tipos de farmácia */}
                       <div className="text-xs md:col-span-12">
                         <p className="mb-2 font-semibold">
-                          Tipos de farm�cia <span className="text-red-400">*</span>
+                          Tipos de farmácia <span className="text-red-400">*</span>
                         </p>
                         <div className="flex flex-wrap gap-2">
                           <label
@@ -962,7 +962,7 @@ export default function Catalogo2Page() {
                                 updatePresentation(pres.client_id, { pharmacy_veterinary: e.target.checked })
                               }
                             />
-                            Veterin�ria
+                            Veterinária
                           </label>
 
                           <label
@@ -998,7 +998,7 @@ export default function Catalogo2Page() {
                                 updatePresentation(pres.client_id, { pharmacy_compounding: e.target.checked })
                               }
                             />
-                            Manipula��o
+                            Manipulação
                           </label>
                         </div>
                         {errors[`pres_${idx}_pharmacy`] && (

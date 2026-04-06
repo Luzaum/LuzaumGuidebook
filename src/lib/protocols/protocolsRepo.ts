@@ -195,24 +195,24 @@ const DEFAULT_SPECIALTY_PROTOCOLS: DefaultProtocolSeed[] = [
     iconKey: 'gastroenterology',
     color: '#f97316',
     protocolName: 'Protocolo Exemplo - Gastro',
-    description: 'Esqueleto para gastroenterologia. Selecione os f�rmacos no Cat�logo 3.0.',
-    recommendations: ['Dieta gastrointestinal fracionada por 5-7 dias.', 'Solicitar hemograma, bioqu�mica e ultrassonografia abdominal conforme evolu��o.'],
+    description: 'Esqueleto para gastroenterologia. Selecione os fármacos no Catálogo 3.0.',
+    recommendations: ['Dieta gastrointestinal fracionada por 5-7 dias.', 'Solicitar hemograma, bioquímica e ultrassonografia abdominal conforme evolução.'],
   },
   {
     folderName: 'Nefro/Uro',
     iconKey: 'water_drop',
     color: '#0ea5e9',
     protocolName: 'Protocolo Exemplo - Nefro/Uro',
-    description: 'Esqueleto para nefrologia/urologia. Ajustar condutas ao caso cl�nico.',
-    recommendations: ['Garantir hidrata��o e monitorar d�bito urin�rio.', 'Solicitar ureia, creatinina, SDMA, urin�lise e rela��o prote�na/creatinina urin�ria.'],
+    description: 'Esqueleto para nefrologia/urologia. Ajustar condutas ao caso clínico.',
+    recommendations: ['Garantir hidratação e monitorar débito urinário.', 'Solicitar ureia, creatinina, SDMA, urinálise e relação proteína/creatinina urinária.'],
   },
   {
     folderName: 'Pneumo',
     iconKey: 'air',
     color: '#06b6d4',
     protocolName: 'Protocolo Exemplo - Pneumo',
-    description: 'Esqueleto para pneumologia com recomenda��es iniciais.',
-    recommendations: ['Manter ambiente arejado e reduzir estresse respirat�rio.', 'Solicitar radiografia tor�cica e hemograma; considerar gasometria em casos graves.'],
+    description: 'Esqueleto para pneumologia com recomendações iniciais.',
+    recommendations: ['Manter ambiente arejado e reduzir estresse respiratório.', 'Solicitar radiografia torácica e hemograma; considerar gasometria em casos graves.'],
   },
   {
     folderName: 'Cardio',
@@ -220,23 +220,23 @@ const DEFAULT_SPECIALTY_PROTOCOLS: DefaultProtocolSeed[] = [
     color: '#ef4444',
     protocolName: 'Protocolo Exemplo - Cardio',
     description: 'Esqueleto para cardiologia com exames de triagem.',
-    recommendations: ['Restringir exerc�cio at� estabiliza��o cl�nica.', 'Solicitar ecocardiograma, ECG, press�o arterial e radiografia tor�cica.'],
+    recommendations: ['Restringir exercício até estabilização clínica.', 'Solicitar ecocardiograma, ECG, pressão arterial e radiografia torácica.'],
   },
   {
     folderName: 'Ortopedia',
     iconKey: 'orthopedics',
     color: '#f59e0b',
     protocolName: 'Protocolo Exemplo - Ortopedia',
-    description: 'Esqueleto para ortopedia com orienta��es iniciais.',
-    recommendations: ['Repouso controlado e analgesia conforme avalia��o.', 'Solicitar radiografias ortogonais e exames pr�-operat�rios quando indicado.'],
+    description: 'Esqueleto para ortopedia com orientações iniciais.',
+    recommendations: ['Repouso controlado e analgesia conforme avaliação.', 'Solicitar radiografias ortogonais e exames pré-operatórios quando indicado.'],
   },
   {
     folderName: 'Neuro',
     iconKey: 'neurology',
     color: '#8b5cf6',
     protocolName: 'Protocolo Exemplo - Neuro',
-    description: 'Esqueleto para neurologia. Completar medica��es no cat�logo.',
-    recommendations: ['Monitorar n�vel de consci�ncia e sinais neurol�gicos seriados.', 'Solicitar imagem avan�ada (TC/RM) e l�quor quando pertinente.'],
+    description: 'Esqueleto para neurologia. Completar medicações no catálogo.',
+    recommendations: ['Monitorar nível de consciência e sinais neurológicos seriados.', 'Solicitar imagem avançada (TC/RM) e líquor quando pertinente.'],
   },
   {
     folderName: 'Onco',
@@ -244,23 +244,23 @@ const DEFAULT_SPECIALTY_PROTOCOLS: DefaultProtocolSeed[] = [
     color: '#ec4899',
     protocolName: 'Protocolo Exemplo - Onco',
     description: 'Esqueleto para oncologia com foco em estadiamento.',
-    recommendations: ['Planejar estadiamento completo antes do protocolo definitivo.', 'Solicitar hemograma, bioqu�mica, imagem de t�rax/abd�men e citologia/bi�psia.'],
+    recommendations: ['Planejar estadiamento completo antes do protocolo definitivo.', 'Solicitar hemograma, bioquímica, imagem de tórax/abdômen e citologia/biópsia.'],
   },
   {
-    folderName: 'Nutri��o',
+    folderName: 'Nutrição',
     iconKey: 'nutrition',
     color: '#22c55e',
-    protocolName: 'Protocolo Exemplo - Nutri��o',
-    description: 'Esqueleto para nutri��o cl�nica e suporte diet�tico.',
-    recommendations: ['Definir meta cal�rica di�ria e plano alimentar individual.', 'Reavaliar escore corporal e exames metab�licos em retorno programado.'],
+    protocolName: 'Protocolo Exemplo - Nutrição',
+    description: 'Esqueleto para nutrição clínica e suporte dietético.',
+    recommendations: ['Definir meta calórica diária e plano alimentar individual.', 'Reavaliar escore corporal e exames metabólicos em retorno programado.'],
   },
   {
     folderName: 'Cirurgia',
     iconKey: 'surgical',
     color: '#64748b',
     protocolName: 'Protocolo Exemplo - Cirurgia',
-    description: 'Esqueleto perioperat�rio com exames e recomenda��es.',
-    recommendations: ['Jejum e protocolo anest�sico conforme esp�cie e risco ASA.', 'Solicitar hemograma, bioqu�mica, coagulograma e imagem pr�-operat�ria quando necess�rio.'],
+    description: 'Esqueleto perioperatório com exames e recomendações.',
+    recommendations: ['Jejum e protocolo anestésico conforme espécie e risco ASA.', 'Solicitar hemograma, bioquímica, coagulograma e imagem pré-operatória quando necessário.'],
   },
 ]
 
@@ -326,7 +326,7 @@ function buildProtocolMedicationInsert(
 
   if (!isCatalog && !compoundedMedicationId && !manualName) {
     throw new Error(
-      `Item de protocolo na posi��o ${index + 1}: � necess�rio medication_id+presentation_id (cat�logo) ou manual_medication_name (manual).`
+      `Item de protocolo na posição ${index + 1}: é necessário medication_id+presentation_id (catálogo) ou manual_medication_name (manual).`
     )
   }
 
@@ -353,6 +353,11 @@ function buildProtocolMedicationInsert(
     manual_medication_name: isCatalog ? null : manualName,
     manual_presentation_label: manualPresentation,
     // NOTE: no `instructions` � column does not exist in protocol_medications
+
+    // Fase 3B: snapshot canonico do regime
+    metadata: (input.metadata && typeof input.metadata === 'object' && !Array.isArray(input.metadata))
+      ? input.metadata
+      : {},
   }
 }
 
@@ -380,7 +385,7 @@ export async function createFolder(
   data: { name: string; icon_key?: string | null; color?: string | null; sort_order?: number }
 ): Promise<ProtocolFolderRecord> {
   const name = String(data.name || '').trim()
-  if (!name) throw new Error('Nome da pasta � obrigat�rio.')
+  if (!name) throw new Error('Nome da pasta é obrigatório.')
 
   const { data: created, error } = await supabase
     .from('protocol_folders')
@@ -476,7 +481,7 @@ function buildPresentationText(presentation: {
     String(presentation.commercial_name || '').trim(),
     String(presentation.concentration_text || '').trim(),
   ].filter(Boolean)
-  return bits.join(' � ')
+  return bits.join(' • ')
 }
 
 async function hydrateClinicProtocolMedications(
@@ -713,7 +718,7 @@ export async function publishProtocolAsGlobal(
   }
 
   if (!data || data.ok !== true || !data.globalProtocolId) {
-    throw new Error('Resposta inv�lida da publica��o global.')
+    throw new Error('Resposta inválida da publicação global.')
   }
 
   return data as PublishGlobalProtocolResult
@@ -969,7 +974,7 @@ export async function saveProtocolBundle(
   }
 ): Promise<ProtocolRecord> {
   const name = String(draft.protocol.name || '').trim()
-  if (!name) throw new Error('Nome do protocolo � obrigat�rio.')
+  if (!name) throw new Error('Nome do protocolo é obrigatório.')
 
   const protocolDraftWithSnapshots = {
     ...draft.protocol,
@@ -1006,7 +1011,7 @@ export async function saveProtocolBundle(
     protocolId = savedProtocol.id
   }
 
-  if (!protocolId) throw new Error('Falha ao resolver protocolId ap�s salvar protocolo.')
+  if (!protocolId) throw new Error('Falha ao resolver protocolId após salvar protocolo.')
 
   // ── STEP 2: delete + re-insert protocol_medications ─────────────────
   {
@@ -1095,7 +1100,7 @@ export async function duplicateGlobalProtocolToClinic(
 
   if (error) {
     logSbError('[ProtocolsRepo] duplicateGlobalProtocolToClinic invoke error', error)
-    let message = 'N�o foi poss�vel duplicar o protocolo completo. Nenhuma c�pia v�lida foi mantida.'
+    let message = 'Não foi possível duplicar o protocolo completo. Nenhuma cópia válida foi mantida.'
     const response = (error as any)?.context
     if (response && typeof response.json === 'function') {
       try {
@@ -1111,7 +1116,7 @@ export async function duplicateGlobalProtocolToClinic(
   if (!data || data.ok !== true || !data.protocolId) {
     const errorDetails = JSON.stringify(data || {})
     console.error('[ProtocolsRepo] Retorno inesperado da Edge Function:', errorDetails)
-    throw new Error(`Resposta inv�lida da duplica��o de protocolo global. Detalhes: ${errorDetails}`)
+    throw new Error(`Resposta inválida da duplicação de protocolo global. Detalhes: ${errorDetails}`)
   }
 
   const result = data as DuplicateGlobalProtocolResult
@@ -1139,12 +1144,12 @@ async function duplicateGlobalProtocolToClinicLegacy(
 ): Promise<ProtocolRecord> {
   const bundle = await loadGlobalProtocolBundle(globalProtocolId)
   if (!bundle) {
-    throw new Error('Protocolo global n�o encontrado.')
+    throw new Error('Protocolo global não encontrado.')
   }
 
   const duplicatedProtocol = await saveProtocolBundle(clinicId, userId, {
     protocol: {
-      name: `${bundle.protocol.name} (c�pia)`,
+      name: `${bundle.protocol.name} (cópia)`,
       description: bundle.protocol.description,
       species: bundle.protocol.species,
       duration_summary: null,
@@ -1307,7 +1312,7 @@ export async function ensureDefaultSpecialtyProtocolSeed(clinicId: string, userI
         description: seed.description,
         species: null,
         duration_summary: null,
-        tags: ['exemplo', 'edit�vel'],
+        tags: ['exemplo', 'editável'],
         is_control_special: false,
         exams_justification: null,
       },

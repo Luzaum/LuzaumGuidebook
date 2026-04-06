@@ -32,8 +32,7 @@ export const COMPOUNDED_TIMES_PER_DAY_OPTIONS = [
 
 export const COMPOUNDED_DURATION_MODE_OPTIONS = [
   { value: 'fixed_days', label: 'Período fixo' },
-  { value: 'continuous_until_recheck', label: 'Até reavaliação' },
-  { value: 'until_recheck', label: 'Até reavaliação' },
+  { value: 'until_recheck', label: 'Até reavaliação clínica' },
   { value: 'continuous_use', label: 'Uso contínuo' },
   { value: 'until_finished', label: 'Até terminar o medicamento' },
 ] as const
@@ -101,7 +100,13 @@ export function buildCompoundedFrequencyText(params: {
   }
   if (params.frequencyMode === 'times_per_day') {
     const times = toNumber(params.timesPerDay)
-    if (times && times > 0) return `${formatStructuredDecimal(times)}x ao dia`
+    if (times && times > 0) {
+      const interval = 24 / times
+      if (Number.isFinite(interval) && Math.round(interval) === interval) {
+        return `a cada ${interval} horas`
+      }
+      return `${formatStructuredDecimal(times)}x ao dia`
+    }
   }
   return fallback
 }

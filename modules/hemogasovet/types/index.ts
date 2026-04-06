@@ -81,6 +81,7 @@ export type CompensationStatus =
 
 export interface DataQualityAssessment {
   status: 'reliable' | 'caution' | 'probable_error';
+  confidence: 'high' | 'moderate' | 'low' | 'blocked';
   domainStatus: DomainStatus;
   messages: string[];
   suspectFields: string[];
@@ -116,6 +117,7 @@ export interface DeepOxygenationAssessment {
   domainStatus: DomainStatus;
   status: 'normal' | 'hypoxemia' | 'hyperoxemia' | 'cannot_assess';
   severity?: 'mild' | 'moderate' | 'severe';
+  pao2?: number;
   paO2Interpretation?: string;
   saO2Interpretation?: string;
   fio2Context?: string;
@@ -132,6 +134,7 @@ export interface DeepElectrolyteAssessment {
   parameter: string;
   status: 'low' | 'normal' | 'high';
   value: number;
+  ratioHint?: string;
   clinicalExplanation: string;
   acidBaseRelation: string;
   physiologicalImpact: string;
@@ -205,6 +208,7 @@ export interface InterpretationResult {
   };
   
   alerts: ClinicalAlert[];
+  referencesUsed?: string[];
   
   stepByStepLogic: string[];
   expandedPhysiology: string;

@@ -380,6 +380,17 @@ export function resolveFrequency(item: PrescriptionItem): {
   normalizedTimesPerDay: number | null
   label: string
 } {
+  if (item.frequencyType === 'singleDose') {
+    return { normalizedTimesPerDay: null, label: 'em dose única' }
+  }
+
+  if (item.frequencyType === 'repeatInterval') {
+    const value = toNumber((item as any).repeatEveryValue)
+    const unit = String((item as any).repeatEveryUnit || '').trim()
+    if (!value || value <= 0 || !unit) return { normalizedTimesPerDay: null, label: 'repetição não informada' }
+    return { normalizedTimesPerDay: null, label: `repetir a cada ${formatNumber(value, 0)} ${unit}` }
+  }
+
   if (item.frequencyToken) {
     const times = FREQUENCY_TOKEN_TO_TIMES[item.frequencyToken]
     return {
@@ -403,6 +414,17 @@ export function resolveFrequency(item: PrescriptionItem): {
 }
 
 function frequencyLabelForTutor(item: PrescriptionItem, fallback: string): string {
+  if (item.frequencyType === 'singleDose') {
+    return 'em dose única'
+  }
+
+  if (item.frequencyType === 'repeatInterval') {
+    const value = toNumber((item as any).repeatEveryValue)
+    const unit = String((item as any).repeatEveryUnit || '').trim()
+    if (value && value > 0 && unit) return `repetir a cada ${formatNumber(value, 0)} ${unit}`
+    return fallback
+  }
+
   if (item.frequencyType === 'everyHours') {
     const hours = toNumber(item.everyHours)
     if (hours && hours > 0) return `a cada ${formatNumber(hours, 0)} horas`
@@ -422,6 +444,17 @@ function frequencyLabelForTutor(item: PrescriptionItem, fallback: string): strin
 }
 
 function frequencyEveryHoursLabel(item: PrescriptionItem): string {
+  if (item.frequencyType === 'singleDose') {
+    return 'em dose única'
+  }
+
+  if (item.frequencyType === 'repeatInterval') {
+    const value = toNumber((item as any).repeatEveryValue)
+    const unit = String((item as any).repeatEveryUnit || '').trim()
+    if (value && value > 0 && unit) return `repetir a cada ${formatNumber(value, 0)} ${unit}`
+    return 'repetir periodicamente'
+  }
+
   if (item.frequencyType === 'everyHours') {
     const hours = toNumber(item.everyHours)
     if (hours && hours > 0) return `a cada ${formatNumber(hours, 0)} horas`
@@ -610,7 +643,12 @@ export function calculateMedicationQuantity(item: PrescriptionItem, state: Presc
   const durationDays = toNumber(item.durationDays)
   let total: number | null = null
 
-  if (perDoseOutput !== null && perDoseOutputUnit && !item.untilFinished && !item.continuousUse && item.durationMode !== 'until_recheck' && frequency && durationDays && durationDays > 0) {
+  if (item.frequencyType === 'singleDose' && perDoseOutput !== null && perDoseOutputUnit) {
+    total = perDoseOutput
+    steps.push(`Dose única: total estimado = ${formatNumber(total)} ${perDoseOutputUnit}`)
+  } else if (item.frequencyType === 'repeatInterval') {
+    steps.push('Repetição periódica: total estimado não calculado automaticamente.')
+  } else if (perDoseOutput !== null && perDoseOutputUnit && !item.untilFinished && !item.continuousUse && item.durationMode !== 'until_recheck' && frequency && durationDays && durationDays > 0) {
     total = perDoseOutput * frequency * durationDays
     steps.push(`${formatNumber(perDoseOutput)} × ${formatNumber(frequency)} vezes/dia × ${formatNumber(durationDays, 0)} dias = ${formatNumber(total)} ${perDoseOutputUnit}`)
   } else if (item.continuousUse) {
@@ -662,10 +700,16 @@ export function buildAutoInstruction(item: PrescriptionItem, state: Prescription
   const administrationText = qty.instructionLabel || qty.supportingLabel
   const adminSegment = administrationText ? `Administrar ${administrationText}` : 'Administrar volume conforme orientação clínica'
   const routeSegment = `por via ${routeToText(item.routeGroup)}`
+  const isSingleDose = item.frequencyType === 'singleDose'
+  const isRepeatInterval = item.frequencyType === 'repeatInterval'
   const frequencySegment =
-    freq.label === 'frequência não informada'
-      ? 'a cada 24 horas'
-      : frequencyEveryHoursLabel(item)
+    isSingleDose
+      ? 'em dose única'
+      : isRepeatInterval
+        ? frequencyEveryHoursLabel(item)
+        : freq.label === 'frequência não informada'
+          ? 'a cada 24 horas'
+          : frequencyEveryHoursLabel(item)
 
   let durationSegment = ''
   if (item.durationMode === 'continuous_until_recheck') {
@@ -683,7 +727,13 @@ export function buildAutoInstruction(item: PrescriptionItem, state: Prescription
 
   const startSegment = formatStartSegment(item)
 
-  return [adminSegment, routeSegment, frequencySegment, startSegment, durationSegment]
+  const segments = isSingleDose
+    ? [adminSegment, routeSegment, frequencySegment, startSegment]
+    : isRepeatInterval
+      ? [adminSegment, routeSegment, startSegment, frequencySegment]
+      : [adminSegment, routeSegment, frequencySegment, startSegment, durationSegment]
+
+  return segments
     .filter(Boolean)
     .join(', ')
     .replace(/\s+/g, ' ')

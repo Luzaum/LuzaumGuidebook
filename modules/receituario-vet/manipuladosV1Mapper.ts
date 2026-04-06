@@ -1,7 +1,7 @@
 import type { ProtocolMedicationItem } from '../../src/lib/protocols/protocolsRepo'
 import type { PatientInfo, PrescriptionItem } from './NovaReceita2Page'
 import { sanitizeVisibleText } from './textSanitizer'
-import { formatDurationPhrase, normalizeManipuladoV1, type ManipuladoV1Formula } from './manipuladosV1'
+import { buildAdministrableUnit, formatDurationPhrase, normalizeManipuladoV1, type ManipuladoV1Formula } from './manipuladosV1'
 import {
   getManipuladoV1CatalogSubtitle,
   getManipuladoV1PrintLineLeft,
@@ -10,7 +10,6 @@ import {
   renderManipuladoV1Recommendations,
   renderManipuladoV1TutorInstruction,
 } from './manipuladosV1Render'
-import { sanitizeVisibleText } from './textSanitizer'
 
 function defaultDoseEditorUnit(formula: ManipuladoV1Formula): string {
   const safeUnit = sanitizeVisibleText(formula.prescribing.dose_unit || '')
@@ -52,6 +51,15 @@ function resolveTutorInstruction(formula: ManipuladoV1Formula, patient: PatientI
   )
 }
 
+function resolveApplicationTarget(route?: string): string {
+  const normalized = sanitizeVisibleText(route || '').toLowerCase()
+  if (normalized.includes('oto')) return 'em cada ouvido'
+  if (normalized.includes('oft')) return 'em cada olho'
+  if (normalized.includes('nasa')) return 'em cada narina'
+  if (normalized.includes('top') || normalized.includes('trans')) return 'sobre a lesao'
+  return 'na pele afetada'
+}
+
 export function mapManipuladoV1ToPrescriptionItem(params: {
   formula: ManipuladoV1Formula
   patient: PatientInfo | null
@@ -63,6 +71,30 @@ export function mapManipuladoV1ToPrescriptionItem(params: {
   const doseText = resolveDoseText(formula, params.patient, params.targetDose)
   const instructions = resolveTutorInstruction(formula, params.patient, params.targetDose) || renderManipuladoV1TutorInstruction(formula)
   const cautions = renderManipuladoV1Recommendations(formula)
+  const administrableUnit = buildAdministrableUnit(formula)
+  const selectedAdministrationAmount = params.targetDose ?? formula.prescribing.dose_min ?? 1
+  const administrationBasis: PrescriptionItem['administrationBasis'] =
+    formula.prescribing.posology_mode === 'fixed_per_animal'
+      ? 'per_animal'
+      : formula.prescribing.posology_mode === 'fixed_per_application'
+        ? 'per_application_site'
+        : formula.prescribing.posology_mode === 'variant_table'
+          ? 'weight_band'
+          : 'weight_based'
+  const administrationAmount =
+    administrationBasis === 'per_animal' || administrationBasis === 'per_application_site'
+      ? Number(selectedAdministrationAmount || 1)
+      : undefined
+  const administrationUnit =
+    administrationBasis === 'per_animal' || administrationBasis === 'per_application_site'
+      ? sanitizeVisibleText(administrableUnit || 'unidade')
+      : undefined
+  const administrationTarget =
+    administrationBasis === 'per_animal'
+      ? 'por animal'
+      : administrationBasis === 'per_application_site'
+        ? resolveApplicationTarget(formula.identity.primary_route)
+        : undefined
 
   return {
     id: `item-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
@@ -75,6 +107,10 @@ export function mapManipuladoV1ToPrescriptionItem(params: {
     compounded_regimen_id: null,
     name: formula.identity.name,
     presentation_label: getManipuladoV1CatalogSubtitle(formula),
+    administrationBasis,
+    administrationAmount,
+    administrationUnit,
+    administrationTarget,
     route: formula.identity.primary_route,
     startDate: params.defaultStartDate || '',
     startHour: params.defaultStartHour || '',
@@ -94,6 +130,10 @@ export function mapManipuladoV1ToPrescriptionItem(params: {
       compounded_recommended_min: formula.prescribing.dose_min ?? '',
       compounded_recommended_max: formula.prescribing.dose_max ?? '',
       compounded_recommended_unit: defaultDoseEditorUnit(formula),
+      administration_basis: administrationBasis,
+      administration_amount: administrationAmount,
+      administration_unit: administrationUnit,
+      administration_target: administrationTarget,
     },
     manualQuantity: formula.pharmacy.total_quantity || formula.pharmacy.qsp_text,
     compounded_pharmacy_guidance: renderManipuladoV1PharmacyInstruction(formula),
@@ -169,6 +209,21 @@ export function mapManipuladoV1ToPrescriptionItem(params: {
     },
     dose: doseText,
     frequency: formula.prescribing.frequency_label,
+    // Map qXh frequency_mode to interval_hours so buildCompoundedFrequencyText renders "a cada Xh"
+    frequencyMode: ((): PrescriptionItem['frequencyMode'] => {
+      const fm = formula.prescribing.frequency_mode
+      if (fm === 'single_dose') return 'single_dose'
+      if (fm === 'q6h' || fm === 'q8h' || fm === 'q12h' || fm === 'q24h') return 'interval_hours'
+      return undefined
+    })(),
+    intervalHours: ((): number | undefined => {
+      const fm = formula.prescribing.frequency_mode
+      if (fm === 'q6h') return 6
+      if (fm === 'q8h') return 8
+      if (fm === 'q12h') return 12
+      if (fm === 'q24h') return 24
+      return undefined
+    })(),
     duration: formula.prescribing.duration_label,
     durationValue: formula.prescribing.duration_value || undefined,
     durationUnit: formula.prescribing.duration_unit || undefined,
@@ -206,6 +261,22 @@ export function mapManipuladoV1ToProtocolMedication(params: {
       payload_v1: formula,
       notes: formula.prescribing.clinical_note || '',
       runtime_source: 'manipulados_v1',
+      administration_basis:
+        formula.prescribing.posology_mode === 'fixed_per_animal'
+          ? 'per_animal'
+          : formula.prescribing.posology_mode === 'fixed_per_application'
+            ? 'per_application_site'
+            : formula.prescribing.posology_mode === 'variant_table'
+              ? 'weight_band'
+              : 'weight_based',
+      administration_amount: formula.prescribing.dose_min ?? 1,
+      administration_unit: sanitizeVisibleText(buildAdministrableUnit(formula) || 'unidade'),
+      administration_target:
+        formula.prescribing.posology_mode === 'fixed_per_animal'
+          ? 'por animal'
+          : formula.prescribing.posology_mode === 'fixed_per_application'
+            ? resolveApplicationTarget(formula.identity.primary_route)
+            : null,
     },
   }
 }

@@ -1,0 +1,30 @@
+{
+  "ok": true,
+  "results": [
+    {
+      "name": "hub",
+      "url": "http://127.0.0.1:5173/receituario-vet",
+      "title": "Vetius"
+    },
+    {
+      "name": "nova-receita",
+      "url": "http://127.0.0.1:5173/receituario-vet/nova-receita-2",
+      "title": "Vetius"
+    },
+    {
+      "name": "catalogo",
+      "url": "http://127.0.0.1:5173/receituario-vet/catalogo-3",
+      "title": "Vetius"
+    },
+    {
+      "name": "manipulados",
+      "url": "http://127.0.0.1:5173/receituario-vet/manipulados",
+      "title": "Vetius"
+    },
+    {
+      "name": "protocolos",
+      "url": "http://127.0.0.1:5173/receituario-vet/protocolos-3",
+      "title": "Vetius"
+    }
+  ]
+}

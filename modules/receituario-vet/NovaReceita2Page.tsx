@@ -22,6 +22,7 @@ import { AddMedicationModal2 } from './components/AddMedicationModal2'
 import { AddCompoundedMedicationModal } from './components/AddCompoundedMedicationModal'
 import { CompoundedDoseEditModal } from './components/CompoundedDoseEditModal'
 import { CompoundedStructuredRegimenEditor } from './components/CompoundedStructuredRegimenEditor'
+import { AdministrationBasisEditor } from './components/AdministrationBasisEditor'
 import { RxPrintView } from './RxPrintView'
 import { buildPrescriptionStateFromNovaReceita2, buildPrintDocsFromNovaReceita2 } from './novaReceita2Adapter'
 import { BUILTIN_TEMPLATES, DEFAULT_NOVA_RECEITA_TEMPLATE_ID } from './builtinTemplates'
@@ -66,9 +67,8 @@ import type {
 // ==================== DRAFT LOCAL (D) ====================
 // Chave: rx_draft_v2:<clinicId> — localStorage, por dispositivo
 
-function getDraftKey(clinicId: string | null): string | null {
-    if (!clinicId) return null
-    return `rx_draft_v2:${clinicId}`
+function getDraftKey(clinicId: string | null): string {
+    return `rx_draft_v2:${clinicId ?? 'local'}`
 }
 
 function getSelectedPrescriberProfileKey(clinicId: string | null): string | null {
@@ -238,9 +238,17 @@ export interface PrescriptionItemBase {
     presentation_label?: string
     dose?: string
     frequency?: string
-    frequencyMode?: 'times_per_day' | 'interval_hours'
+    frequencyMode?: 'times_per_day' | 'interval_hours' | 'single_dose' | 'repeat_interval'
+
+    // Administração por unidade / sítio (Fase 2A — sem migração de banco)
+    administrationBasis?: 'weight_based' | 'weight_band' | 'per_animal' | 'per_application_site'
+    administrationAmount?: number
+    administrationUnit?: string
+    administrationTarget?: string
     timesPerDay?: number
     intervalHours?: number
+    repeatEveryValue?: number
+    repeatEveryUnit?: 'dias' | 'semanas' | 'meses'
     route?: string
     duration?: string
     start_date?: string
@@ -354,6 +362,17 @@ const QUICK_FREQUENCY_OPTIONS = [
 ]
 
 const ITEM_FREQUENCY_OPTIONS = [{ value: '', label: 'Selecionar frequência' }, ...QUICK_FREQUENCY_OPTIONS]
+const ITEM_FREQUENCY_MODE_OPTIONS = [
+    { value: 'times_per_day', label: 'Vezes por dia' },
+    { value: 'interval_hours', label: 'Intervalo em horas' },
+    { value: 'single_dose', label: 'Dose única' },
+    { value: 'repeat_interval', label: 'Repetir periodicamente' },
+]
+const ITEM_REPEAT_UNIT_OPTIONS = [
+    { value: 'dias', label: 'dias' },
+    { value: 'semanas', label: 'semanas' },
+    { value: 'meses', label: 'meses' },
+]
 
 const QUICK_DOSE_UNIT_OPTIONS = [
     'mg/kg', 'mcg/kg', 'g/kg', 'UI/kg', 'mL/kg', 'mg', 'mcg', 'g', 'UI', 'mL', 'mg/mL', 'mcg/mL', '%',
@@ -481,6 +500,14 @@ function formatIntervalHoursValue(hours?: string | number | null): string {
     return parsed ? `a cada ${parsed} horas` : ''
 }
 
+function formatRepeatIntervalValue(value?: string | number | null, unit?: string | null): string {
+    const numeric = Number(String(value ?? '').replace(',', '.'))
+    const recurrenceUnit = String(unit || '').trim()
+    return Number.isFinite(numeric) && numeric > 0 && recurrenceUnit
+        ? `repetir a cada ${numeric} ${recurrenceUnit}`
+        : ''
+}
+
 function parseDurationValueAndUnit(raw?: string | null): { value?: number; unit?: string } {
     const value = String(raw || '').trim().toLowerCase()
     if (!value) return {}
@@ -569,6 +596,9 @@ function normalizePrescriptionItem(item: PrescriptionItem, defaultStartDate: str
     const parsedIntervalHours = item.frequencyMode === 'interval_hours'
         ? parseIntervalHoursValue(item.intervalHours ?? item.frequency)
         : parseIntervalHoursValue(item.intervalHours)
+    const parsedRepeatEveryValue = item.frequencyMode === 'repeat_interval'
+        ? parseIntervalHoursValue(item.repeatEveryValue ?? item.frequency)
+        : parseIntervalHoursValue(item.repeatEveryValue)
     const normalizedTimesPerDay = item.frequencyMode === 'times_per_day'
         ? parseTimesPerDayValue(item.timesPerDay ?? item.frequency)
         : parseTimesPerDayValue(item.timesPerDay)
@@ -592,14 +622,28 @@ function normalizePrescriptionItem(item: PrescriptionItem, defaultStartDate: str
         startHour,
         start_date: buildLegacyStartDate(startDate, startHour) || item.start_date,
         durationMode,
-        frequencyMode: parsedIntervalHours ? 'interval_hours' : normalizedTimesPerDay ? 'times_per_day' : item.frequencyMode,
+        frequencyMode: item.frequencyMode === 'single_dose'
+            ? 'single_dose'
+            : item.frequencyMode === 'repeat_interval' && parsedRepeatEveryValue
+                ? 'repeat_interval'
+                : parsedIntervalHours
+                    ? 'interval_hours'
+                    : normalizedTimesPerDay
+                        ? 'times_per_day'
+                        : item.frequencyMode,
         timesPerDay: normalizedTimesPerDay ? Number(normalizedTimesPerDay) : item.timesPerDay,
         intervalHours: parsedIntervalHours ?? item.intervalHours,
-        frequency: parsedIntervalHours
-            ? formatIntervalHoursValue(parsedIntervalHours)
-            : normalizedTimesPerDay
-                ? formatFrequencyValue(normalizedTimesPerDay)
-                : (item.frequency || ''),
+        repeatEveryValue: parsedRepeatEveryValue ?? item.repeatEveryValue,
+        repeatEveryUnit: (item.repeatEveryUnit as PrescriptionItem['repeatEveryUnit']) || 'semanas',
+        frequency: item.frequencyMode === 'single_dose'
+            ? 'em dose única'
+            : item.frequencyMode === 'repeat_interval'
+                ? formatRepeatIntervalValue(parsedRepeatEveryValue ?? item.repeatEveryValue, item.repeatEveryUnit)
+                : parsedIntervalHours
+                    ? formatIntervalHoursValue(parsedIntervalHours)
+                    : normalizedTimesPerDay
+                        ? formatFrequencyValue(normalizedTimesPerDay)
+                        : (item.frequency || ''),
         route: normalizeRouteLabel(item.route),
         routeGroup: routeStringToGroup(item.route),
         durationValue: durationParts.value ?? item.durationValue,
@@ -2274,9 +2318,15 @@ export default function NovaReceita2Page() {
                                                                 frequencyMode: value as PrescriptionItem['frequencyMode'],
                                                                 timesPerDay: value === 'times_per_day' ? (current.timesPerDay || 2) : undefined,
                                                                 intervalHours: value === 'interval_hours' ? (current.intervalHours || 12) : undefined,
-                                                                frequency: value === 'interval_hours'
-                                                                    ? formatIntervalHoursValue(current.intervalHours || 12)
-                                                                    : formatFrequencyValue(current.timesPerDay || 2),
+                                                                repeatEveryValue: value === 'repeat_interval' ? (current.repeatEveryValue || 12) : undefined,
+                                                                repeatEveryUnit: value === 'repeat_interval' ? (current.repeatEveryUnit || 'semanas') : undefined,
+                                                                frequency: value === 'single_dose'
+                                                                    ? 'em dose única'
+                                                                    : value === 'repeat_interval'
+                                                                        ? formatRepeatIntervalValue(current.repeatEveryValue || 12, current.repeatEveryUnit || 'semanas')
+                                                                        : value === 'interval_hours'
+                                                                            ? formatIntervalHoursValue(current.intervalHours || 12)
+                                                                            : formatFrequencyValue(current.timesPerDay || 2),
                                                             }))}
                                                             onTimesPerDayChange={(value) => updateItem(item.id, (current) => ({
                                                                 ...current,
@@ -2312,8 +2362,39 @@ export default function NovaReceita2Page() {
                                                                 durationUnit: value,
                                                                 duration: formatStructuredDuration(current.durationValue, value),
                                                             }))}
+                                                            administrationBasis={item.administrationBasis}
+                                                            administrationAmount={item.administrationAmount}
+                                                            administrationUnit={item.administrationUnit}
+                                                            administrationTarget={item.administrationTarget}
+                                                            onAdministrationBasisChange={(value) => updateItem(item.id, (current) => ({ ...current, administrationBasis: value }))}
+                                                            onAdministrationAmountChange={(value) => updateItem(item.id, (current) => ({ ...current, administrationAmount: value ? Number(value) : undefined }))}
+                                                            onAdministrationUnitChange={(value) => updateItem(item.id, (current) => ({ ...current, administrationUnit: value }))}
+                                                            onAdministrationTargetChange={(value) => updateItem(item.id, (current) => ({ ...current, administrationTarget: value }))}
                                                         />
                                                     ) : (
+                                                        <>
+                                                            <AdministrationBasisEditor
+                                                                className="mt-4 rounded-xl border border-slate-800 bg-black/15 px-4 py-3"
+                                                                administrationBasis={item.administrationBasis}
+                                                                administrationAmount={item.administrationAmount}
+                                                                administrationUnit={item.administrationUnit}
+                                                                administrationTarget={item.administrationTarget}
+                                                                onBasisChange={(value) => updateItem(item.id, (current) => ({
+                                                                    ...current,
+                                                                    administrationBasis: value,
+                                                                    administrationAmount: value === 'weight_based' || value === 'weight_band' ? undefined : (current.administrationAmount || 1),
+                                                                    administrationUnit: value === 'weight_based' || value === 'weight_band' ? undefined : current.administrationUnit,
+                                                                    administrationTarget:
+                                                                        value === 'per_animal'
+                                                                            ? 'por animal'
+                                                                            : value === 'per_application_site'
+                                                                                ? (current.administrationTarget || 'sobre a lesao')
+                                                                                : undefined,
+                                                                }))}
+                                                                onAmountChange={(value) => updateItem(item.id, (current) => ({ ...current, administrationAmount: value ? Number(value) : undefined }))}
+                                                                onUnitChange={(value) => updateItem(item.id, (current) => ({ ...current, administrationUnit: value || undefined }))}
+                                                                onTargetChange={(value) => updateItem(item.id, (current) => ({ ...current, administrationTarget: value || undefined }))}
+                                                            />
                                                         <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-5 xl:grid-cols-12">
                                                             <RxvField label="Dose" className="xl:col-span-4">
                                                                 <RxvInput value={item.dose || ''} onChange={(e) => updateItem(item.id, (current) => ({ ...current, dose: e.target.value }))} placeholder="Ex: 7 gotas" />
@@ -2326,16 +2407,54 @@ export default function NovaReceita2Page() {
                                                                         frequencyMode: e.target.value as PrescriptionItem['frequencyMode'],
                                                                         timesPerDay: e.target.value === 'times_per_day' ? (current.timesPerDay || 2) : undefined,
                                                                         intervalHours: e.target.value === 'interval_hours' ? (current.intervalHours || 12) : undefined,
-                                                                        frequency: e.target.value === 'interval_hours'
-                                                                            ? formatIntervalHoursValue(current.intervalHours || 12)
-                                                                            : formatFrequencyValue(current.timesPerDay || 2),
+                                                                        repeatEveryValue: e.target.value === 'repeat_interval' ? (current.repeatEveryValue || 12) : undefined,
+                                                                        repeatEveryUnit: e.target.value === 'repeat_interval' ? (current.repeatEveryUnit || 'semanas') : undefined,
+                                                                        frequency: e.target.value === 'single_dose'
+                                                                            ? 'em dose única'
+                                                                            : e.target.value === 'repeat_interval'
+                                                                                ? formatRepeatIntervalValue(current.repeatEveryValue || 12, current.repeatEveryUnit || 'semanas')
+                                                                                : e.target.value === 'interval_hours'
+                                                                                    ? formatIntervalHoursValue(current.intervalHours || 12)
+                                                                                    : formatFrequencyValue(current.timesPerDay || 2),
                                                                     }))}
-                                                                    options={[
-                                                                        { value: 'times_per_day', label: 'Vezes por dia' },
-                                                                        { value: 'interval_hours', label: 'Intervalo em horas' },
-                                                                    ]}
+                                                                    options={ITEM_FREQUENCY_MODE_OPTIONS}
                                                                 />
                                                             </RxvField>
+                                                            {item.frequencyMode === 'repeat_interval' ? (
+                                                                <>
+                                                                <RxvField label="Repetir a cada" className="xl:col-span-2">
+                                                                    <RxvInput
+                                                                        type="number"
+                                                                        min="1"
+                                                                        step="1"
+                                                                        value={item.repeatEveryValue ?? ''}
+                                                                        onChange={(e) => updateItem(item.id, (current) => ({
+                                                                            ...current,
+                                                                            repeatEveryValue: e.target.value ? Number(e.target.value) : undefined,
+                                                                            frequency: formatRepeatIntervalValue(e.target.value ? Number(e.target.value) : undefined, current.repeatEveryUnit || 'semanas'),
+                                                                        }))}
+                                                                        placeholder="Ex: 12"
+                                                                    />
+                                                                </RxvField>
+                                                                <RxvField label="Unidade" className="xl:col-span-2">
+                                                                    <RxvSelect
+                                                                        value={item.repeatEveryUnit || 'semanas'}
+                                                                        onChange={(e) => updateItem(item.id, (current) => ({
+                                                                            ...current,
+                                                                            repeatEveryUnit: e.target.value as PrescriptionItem['repeatEveryUnit'],
+                                                                            frequency: formatRepeatIntervalValue(current.repeatEveryValue, e.target.value),
+                                                                        }))}
+                                                                        options={ITEM_REPEAT_UNIT_OPTIONS}
+                                                                    />
+                                                                </RxvField>
+                                                                </>
+                                                            ) : item.frequencyMode === 'single_dose' ? (
+                                                                <div className="xl:col-span-4 flex items-end pb-1">
+                                                                    <span className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-slate-700 bg-slate-900/30 px-3 py-1.5 text-xs text-slate-400">
+                                                                        Em dose única
+                                                                    </span>
+                                                                </div>
+                                                            ) : (
                                                             <RxvField label={item.frequencyMode === 'interval_hours' ? 'Intervalo (horas)' : 'Frequência'} className="xl:col-span-4">
                                                                 {item.frequencyMode === 'interval_hours' ? (
                                                                     <RxvInput
@@ -2365,11 +2484,20 @@ export default function NovaReceita2Page() {
                                                                     />
                                                                 )}
                                                             </RxvField>
+                                                            )}
                                                         </div>
+                                                        </>
                                                     )}
 
                                                     <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-5 xl:grid-cols-12">
                                                         {item.kind !== 'compounded' ? (
+                                                            item.frequencyMode === 'single_dose' ? (
+                                                                <div className="xl:col-span-12 flex items-center gap-2">
+                                                                    <span className="rounded-full bg-amber-500/20 px-3 py-1 text-xs font-semibold text-amber-300">
+                                                                        Dose única — sem duração
+                                                                    </span>
+                                                                </div>
+                                                            ) : (
                                                             <>
                                                                 <RxvField label="Modo de duração" className="xl:col-span-4">
                                                                     <RxvSelect
@@ -2415,6 +2543,7 @@ export default function NovaReceita2Page() {
                                                                     />
                                                                 </RxvField>
                                                             </>
+                                                            )
                                                         ) : null}
                                                         <RxvField label="Início do item" className="xl:col-span-12">
                                                             <RxvToggle
@@ -2519,42 +2648,6 @@ export default function NovaReceita2Page() {
                                                                     }))}
                                                                     placeholder={compoundedCalculation?.estimatedTotalText || 'Ex: q.s.p. 10 mL'}
                                                                 />
-                                                            </RxvField>
-                                                            <RxvField label="Como este item aparece na receita">
-                                                                <div className="space-y-4 rounded-2xl border border-slate-800 bg-black/20 p-4">
-                                                                    <div className="flex flex-wrap items-center justify-between gap-3">
-                                                                        <div>
-                                                                            <p className="text-sm font-semibold text-white">Linha profissional da receita</p>
-                                                                            <p className="mt-1 text-xs text-[color:var(--rxv-muted)]">O lado esquerdo mostra o título profissional; o lado direito mostra a apresentação/dispensação.</p>
-                                                                        </div>
-                                                                        <RxvToggle
-                                                                            checked={!printLineManual}
-                                                                            onChange={(checked) => updateItemPresentationMetadata(item.id, {
-                                                                                print_line_mode: checked ? 'auto' : 'manual',
-                                                                                print_line_left: checked ? '' : String(getPresentationMetadata(item).print_line_left || printLineLeft),
-                                                                                print_line_right: checked ? '' : String(getPresentationMetadata(item).print_line_right || printLineRight),
-                                                                            })}
-                                                                            label="Gerar automaticamente"
-                                                                        />
-                                                                    </div>
-                                                                    <div className="rounded-xl border border-slate-700 bg-slate-950/60 px-4 py-3">
-                                                                        <div className="grid grid-cols-[minmax(0,1fr)_minmax(24px,1fr)_auto] items-end gap-3">
-                                                                            <p className="min-w-0 truncate whitespace-nowrap text-sm font-semibold leading-6 text-white">{printLineLeft || 'Linha principal da esquerda'}</p>
-                                                                            <div aria-hidden="true" className="h-[8px] min-w-[24px] bg-[radial-gradient(circle,rgba(148,163,184,0.72)_1.1px,transparent_1.2px)] bg-[length:10px_8px] bg-repeat-x bg-left-center" />
-                                                                            <p className="shrink-0 whitespace-nowrap text-right text-xs font-black uppercase tracking-[0.18em] text-slate-300">{printLineRight || 'Apresentação'}</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    {printLineManual ? (
-                                                                        <div className="grid grid-cols-1 gap-4 xl:grid-cols-12">
-                                                                            <RxvField label="Linha principal da esquerda" className="xl:col-span-8">
-                                                                                <RxvInput value={String(getPresentationMetadata(item).print_line_left || '')} onChange={(e) => updateItemPresentationMetadata(item.id, { print_line_left: e.target.value })} placeholder={getAutoPrintLineLeft(item, state.patient)} />
-                                                                            </RxvField>
-                                                                            <RxvField label="Linha principal da direita" className="xl:col-span-4">
-                                                                                <RxvInput value={String(getPresentationMetadata(item).print_line_right || '')} onChange={(e) => updateItemPresentationMetadata(item.id, { print_line_right: e.target.value })} placeholder={getAutoPrintLineRight(item)} />
-                                                                            </RxvField>
-                                                                        </div>
-                                                                    ) : null}
-                                                                </div>
                                                             </RxvField>
                                                             <div className="grid grid-cols-1 gap-4 xl:grid-cols-12">
                                                                 <RxvField label="Orientações ao tutor" className="xl:col-span-6">

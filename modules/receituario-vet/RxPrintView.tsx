@@ -499,7 +499,7 @@ export function RxPrintView({
         {doc.documentKind === 'special-control' ? (
           <section className="mt-4 space-y-3 rounded border border-slate-300 bg-slate-50 p-3 text-[11px]" style={{ color: '#1f2937' }}>
             <p>
-              <strong>Dados do emitente:</strong> {doc.prescriberName} � {doc.prescriberCrmv}
+              <strong>Dados do emitente:</strong> {doc.prescriberName} • {doc.prescriberCrmv}
               {prescriberAddressLine ? ` • ${prescriberAddressLine}` : ''}
               {prescriberPhone ? ` • ${prescriberPhone}` : ''}
             </p>

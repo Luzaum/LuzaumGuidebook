@@ -13,6 +13,7 @@ import {
     getCompoundedCalculationSummary,
     buildCompoundedPreviewCautions,
 } from './compoundedUi'
+import { buildSharedAdministrationText, buildSharedFrequencyText } from './vetPosologyShared'
 
 // =====================================================================
 // FIX A3: garante que valores numéricos do DB/sessionStorage
@@ -118,15 +119,39 @@ function parseFrequencyFromText(raw?: string): {
 
 function parseStructuredFrequency(item: {
     frequency?: string
-    frequencyMode?: 'times_per_day' | 'interval_hours'
+    frequencyMode?: 'times_per_day' | 'interval_hours' | 'single_dose' | 'repeat_interval'
     timesPerDay?: number
     intervalHours?: number
+    repeatEveryValue?: number
+    repeatEveryUnit?: string
 }): {
-    frequencyType: 'timesPerDay' | 'everyHours'
+    frequencyType: 'timesPerDay' | 'everyHours' | 'singleDose' | 'repeatInterval'
     frequencyToken: '' | 'SID' | 'BID' | 'TID' | 'QID'
     timesPerDay: string
     everyHours: string
+    repeatEveryValue?: string
+    repeatEveryUnit?: string
 } {
+    if (item.frequencyMode === 'single_dose') {
+        return {
+            frequencyType: 'singleDose',
+            frequencyToken: '',
+            timesPerDay: '',
+            everyHours: '',
+        }
+    }
+
+    if (item.frequencyMode === 'repeat_interval' && item.repeatEveryValue && item.repeatEveryUnit) {
+        return {
+            frequencyType: 'repeatInterval',
+            frequencyToken: '',
+            timesPerDay: '',
+            everyHours: '',
+            repeatEveryValue: String(item.repeatEveryValue),
+            repeatEveryUnit: item.repeatEveryUnit,
+        }
+    }
+
     if (item.frequencyMode === 'interval_hours' && item.intervalHours && item.intervalHours > 0) {
         return {
             frequencyType: 'everyHours',
@@ -208,6 +233,55 @@ function resolveStructuredDuration(item: NovaReceita2State['items'][number]) {
         ...parsed,
         durationMode: item.durationMode || (parsed.continuousUse ? 'continuous_use' : parsed.untilFinished ? 'until_finished' : parsed.durationDays ? 'fixed_days' : 'until_recheck'),
     }
+}
+
+function buildDurationNarrative(item: NovaReceita2State['items'][number]): string {
+    if (item.durationMode === 'continuous_until_recheck' || item.durationMode === 'until_recheck') return 'até reavaliação clínica'
+    if (item.durationMode === 'continuous_use') return 'em uso contínuo'
+    if (item.durationMode === 'until_finished') return 'até terminar o medicamento'
+    if (item.durationMode === 'fixed_days' && item.durationValue && item.durationValue > 0) {
+        return `por ${item.durationValue} ${item.durationUnit || 'dias'}`
+    }
+    const raw = String(item.duration || '').trim()
+    if (!raw) return ''
+    const lowered = raw.toLowerCase()
+    if (lowered.startsWith('por ') || lowered.startsWith('até ') || lowered.startsWith('ate ') || lowered.startsWith('em ')) {
+        return raw
+    }
+    if (lowered.startsWith('uso contínuo') || lowered.startsWith('uso continuo')) return 'em uso contínuo'
+    return `por ${raw}`
+}
+
+function buildSharedAdministrationInstruction(item: NovaReceita2State['items'][number]): string {
+    const basis = item.administrationBasis
+    if (!basis || basis === 'weight_based' || basis === 'weight_band') return ''
+
+    const administrationPrefix = buildSharedAdministrationText({
+        administrationBasis: basis,
+        administrationAmount: item.administrationAmount,
+        administrationUnit: item.administrationUnit,
+        administrationTarget: item.administrationTarget,
+    }).trim()
+    if (!administrationPrefix) return ''
+
+    const route = String(item.route || '').trim()
+    const frequencyText = buildSharedFrequencyText({
+        frequencyMode: item.frequencyMode || 'times_per_day',
+        timesPerDay: item.timesPerDay,
+        intervalHours: item.intervalHours,
+        repeatEveryValue: item.repeatEveryValue,
+        repeatEveryUnit: item.repeatEveryUnit,
+        fallback: item.frequency || '',
+    }).trim() || String(item.frequency || '').trim()
+    const durationText = buildDurationNarrative(item)
+
+    const chunks = [administrationPrefix]
+    if (route) chunks.push(`por via ${route.toLowerCase()}`)
+    if (frequencyText) chunks.push(frequencyText)
+    if (durationText) chunks.push(durationText)
+
+    const sentence = chunks.join(', ').replace(/\s+/g, ' ').trim()
+    return sentence ? `${sentence}.` : ''
 }
 
 // =====================================================================
@@ -373,9 +447,24 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
                 : buildItemSubtitle(item) || item.pharmaceutical_form || item.presentation_label
         // FIX: pre-build a instrução e sempre usar (nunca deixar o renderer substituir
         // por buildAutoInstruction que não consegue parsear dose livre "10 mg/kg")
-        const manualInstruction = item.kind === 'compounded'
-            ? buildCompoundedInstruction(item, state.patient)
-            : toSafeString(item.instructions).trim()
+        const manualItemInstruction = toSafeString(item.instructions).trim()
+        // Phase 2A: when administration is unit_per_animal/application_per_site,
+        // rebuild the full instruction from the current editable fields.
+        const sharedAdministrationInstruction = buildSharedAdministrationInstruction(item)
+        // For compounded items: ALWAYS rebuild from structured fields (frequencyMode, durationMode, etc.)
+        // so that edits to those fields are reflected immediately in the preview.
+        // item.instructions is treated as an additive suffix ("Instruções adicionais").
+        // For standard items: item.instructions is the primary manual text.
+        let manualInstruction: string
+        if (item.kind === 'compounded') {
+            const autoBuilt = buildCompoundedInstruction(item, state.patient)
+            manualInstruction = sharedAdministrationInstruction
+                ? sharedAdministrationInstruction + (manualItemInstruction ? '. ' + manualItemInstruction : '')
+                : autoBuilt + (manualItemInstruction ? '. ' + manualItemInstruction : '')
+        } else {
+            const autoBaseInstruction = ''
+            manualInstruction = manualItemInstruction || sharedAdministrationInstruction || autoBaseInstruction
+        }
         const hasManualInstruction = manualInstruction.length > 0
 
         // FIX G: parsear dose livre para campos estruturados (doseValue numérico + doseUnit)
@@ -454,6 +543,8 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
             frequencyToken: frequency.frequencyToken,
             timesPerDay: frequency.timesPerDay,
             everyHours: frequency.everyHours,
+            repeatEveryValue: frequency.repeatEveryValue,
+            repeatEveryUnit: frequency.repeatEveryUnit,
             durationDays: duration.durationDays,
             durationMode: duration.durationMode,
             untilFinished: duration.untilFinished,
