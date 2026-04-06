@@ -62,6 +62,8 @@ export interface EnergyCalculation {
   rer?: number
   merFactor?: number
   mer?: number
+  resolvedEnergyProfileId?: string
+  resolvedProfileLabel?: string
   notes?: string
   ageWeeks?: number
   expectedAdultWeightKg?: number
@@ -283,6 +285,9 @@ export interface ProgrammedFeedingPlan {
   mealsPerDay: number
   roundingRule: string
   meals: ProgrammedFeedingMeal[]
+  startDate?: string
+  printRangeMode?: 'single_day' | 'next_3_days'
+  generatedFeedingDates?: string[]
 }
 
 export interface FeedingPlan {

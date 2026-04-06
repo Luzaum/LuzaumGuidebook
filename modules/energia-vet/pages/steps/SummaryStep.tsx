@@ -6,14 +6,16 @@ import { Button } from '../../components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card'
 import { Badge } from '../../components/ui/badge'
 import { Input } from '../../components/ui/input'
+import { Label } from '../../components/ui/label'
 import { useCalculationStore } from '../../store/calculationStore'
 import { computeDietPlan } from '../../lib/dietEngine'
 import { getFoodById, getNutrientDefinition, getRequirementById } from '../../lib/genutriData'
-import { saveReport } from '../../lib/persistence'
+import { getSavedReports, saveReport } from '../../lib/persistence'
 import { exportReportPdf } from '../../lib/reportDocument'
 import { calculateRefeedingRisk, getPhysiologicStateById, getProgressionPlan3Days, getProgressionPlan4Days } from '../../lib/nutrition'
 import { getClinicalProfileBadges, getHumanRequirementLabel } from '../../lib/clinicalProfiles'
 import { buildProgrammedFeedingPlan } from '../../lib/programmedFeeding'
+import { migrateLocalReportsToSupabase, saveNutritionReportToSupabase } from '../../lib/supabaseReports'
 import PrintableReportDocument from '../../components/PrintableReportDocument'
 import type { StoredCalculationReport } from '../../types'
 
@@ -58,10 +60,16 @@ export default function SummaryStep() {
   const { patient, energy, target, diet, hospital } = useCalculationStore()
   const [programmedMealsPerDay, setProgrammedMealsPerDay] = useState(diet.programmedFeeding?.mealsPerDay ?? diet.mealsPerDay ?? 2)
   const [programmedTimes, setProgrammedTimes] = useState<string[]>(diet.programmedFeeding?.meals.map((meal) => meal.time) ?? [])
+  const [programmedStartDate, setProgrammedStartDate] = useState(
+    diet.programmedFeeding?.startDate ?? new Date().toISOString().slice(0, 10),
+  )
+  const [printRangeMode, setPrintRangeMode] = useState<'single_day' | 'next_3_days'>(
+    diet.programmedFeeding?.printRangeMode ?? 'single_day',
+  )
 
   const species = patient.species ?? 'dog'
   const currentWeight = patient.currentWeight ?? 0
-  const physiologicStateLabel = getPhysiologicStateById(energy.stateId ?? '')?.label ?? 'Nao informado'
+  const physiologicStateLabel = energy.resolvedProfileLabel ?? getPhysiologicStateById(energy.stateId ?? '')?.label ?? 'Nao informado'
   const requirementLabel = getHumanRequirementLabel(getRequirementById(diet.requirementProfileId))
   const comorbidityLabels = useMemo(() => getClinicalProfileBadges(species, patient.comorbidityIds ?? []), [patient.comorbidityIds, species])
 
@@ -79,15 +87,35 @@ export default function SummaryStep() {
     })
   }, [currentWeight, diet.additionalRequirementProfileIds, diet.entries, diet.mealsPerDay, diet.requirementProfileId, patient.name, species, target.targetEnergy])
 
+  const generatedFeedingDates = useMemo(() => {
+    const start = new Date(`${programmedStartDate}T00:00:00`)
+    if (Number.isNaN(start.getTime())) return [new Date().toISOString().slice(0, 10)]
+    if (printRangeMode === 'single_day') return [programmedStartDate]
+    return [0, 1, 2].map((offset) => {
+      const next = new Date(start)
+      next.setDate(next.getDate() + offset)
+      const y = next.getFullYear()
+      const m = String(next.getMonth() + 1).padStart(2, '0')
+      const d = String(next.getDate()).padStart(2, '0')
+      return `${y}-${m}-${d}`
+    })
+  }, [printRangeMode, programmedStartDate])
+
   const programmedFeeding = useMemo(() => {
     if (!result) return null
-    return buildProgrammedFeedingPlan({
+    const basePlan = buildProgrammedFeedingPlan({
       contributions: result.contributions,
       mealsPerDay: programmedMealsPerDay,
       times: programmedTimes,
       enabled: true,
     })
-  }, [programmedMealsPerDay, programmedTimes, result])
+    return {
+      ...basePlan,
+      startDate: programmedStartDate,
+      printRangeMode,
+      generatedFeedingDates,
+    }
+  }, [generatedFeedingDates, printRangeMode, programmedMealsPerDay, programmedStartDate, programmedTimes, result])
 
   const printableReport = useMemo<StoredCalculationReport | null>(() => {
     if (!result) return null
@@ -165,17 +193,25 @@ export default function SummaryStep() {
     }
   }, [result])
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!printableReport) return
-    saveReport({ ...printableReport, id: crypto.randomUUID(), createdAt: new Date().toISOString() })
-    toast.success('Resumo salvo no historico do Energia Vet.')
-    navigate(MODULE_ROUTE)
+    try {
+      const reportToSave = { ...printableReport, id: crypto.randomUUID(), createdAt: new Date().toISOString() }
+      saveReport(reportToSave)
+      await saveNutritionReportToSupabase(reportToSave)
+      await migrateLocalReportsToSupabase(getSavedReports())
+      toast.success('Resumo salvo no histórico da clínica (Supabase).')
+      navigate(MODULE_ROUTE)
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Falha ao salvar no Supabase.'
+      toast.error(message)
+    }
   }
 
   if (!result) {
     return (
       <Card className="w-full">
-        <CardContent className="p-6 text-sm text-muted-foreground">A formulacao ainda nao foi concluida.</CardContent>
+        <CardContent className="p-6 text-sm text-muted-foreground">A formulação ainda não foi concluída.</CardContent>
       </Card>
     )
   }
@@ -190,7 +226,7 @@ export default function SummaryStep() {
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <CardTitle className="text-2xl text-foreground dark:text-white">Resumo do plano nutricional</CardTitle>
-                <p className="mt-1 text-sm text-muted-foreground">Resumo clinico, formulacao e alimentacao programada.</p>
+                <p className="mt-1 text-sm text-muted-foreground">Resumo clínico, formulação e alimentação programada.</p>
               </div>
               <div className="flex flex-wrap gap-2">
                 <Button variant="outline" size="sm" className="gap-2" onClick={() => window.print()}>
@@ -212,12 +248,12 @@ export default function SummaryStep() {
                 <CardContent className="grid gap-3 md:grid-cols-2">
                   <div className="rounded-2xl border border-white/10 bg-black/10 p-4"><p className="text-xs text-muted-foreground">Paciente</p><p className="mt-1 font-semibold text-white">{patient.name || 'Nao informado'}</p></div>
                   <div className="rounded-2xl border border-white/10 bg-black/10 p-4"><p className="text-xs text-muted-foreground">Tutor</p><p className="mt-1 font-semibold text-white">{patient.ownerName || '--'}</p></div>
-                  <div className="rounded-2xl border border-white/10 bg-black/10 p-4"><p className="text-xs text-muted-foreground">Especie</p><p className="mt-1 font-semibold text-white">{species === 'dog' ? 'Cao' : 'Gato'}</p></div>
+                  <div className="rounded-2xl border border-white/10 bg-black/10 p-4"><p className="text-xs text-muted-foreground">Espécie</p><p className="mt-1 font-semibold text-white">{species === 'dog' ? 'Cao' : 'Gato'}</p></div>
                   <div className="rounded-2xl border border-white/10 bg-black/10 p-4"><p className="text-xs text-muted-foreground">Peso atual</p><p className="mt-1 font-semibold text-white">{currentWeight.toFixed(2)} kg</p></div>
                   <div className="rounded-2xl border border-white/10 bg-black/10 p-4"><p className="text-xs text-muted-foreground">Perfil final</p><p className="mt-1 font-semibold text-white">{physiologicStateLabel}</p></div>
                   <div className="rounded-2xl border border-orange-400/25 bg-orange-500/[0.08] p-4"><p className="text-xs text-muted-foreground">Energia-alvo</p><p className="mt-1 text-2xl font-black text-orange-300">{target.targetEnergy?.toFixed(0) ?? '--'} kcal/dia</p></div>
                   <div className="md:col-span-2 flex flex-wrap gap-2">
-                    <Badge variant="outline">{patient.isNeutered ? 'Castrado' : 'Nao castrado'}</Badge>
+                    <Badge variant="outline">{patient.isNeutered ? 'Castrado' : 'Não castrado'}</Badge>
                     <Badge variant="outline">{patient.isHospitalized ? 'Hospitalizado' : 'Ambulatorial'}</Badge>
                     <Badge variant="outline">{requirementLabel}</Badge>
                     {comorbidityLabels.map((label) => (
@@ -229,7 +265,7 @@ export default function SummaryStep() {
 
               <Card className="border-white/10 bg-white/[0.03]">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg">Particao energetica</CardTitle>
+                  <CardTitle className="text-lg">Partição energética</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex justify-center py-2">
@@ -274,7 +310,7 @@ export default function SummaryStep() {
 
             <Card className="border-white/10 bg-white/[0.03]">
               <CardHeader className="pb-3">
-                <CardTitle className="text-lg">Contribuicao por alimento</CardTitle>
+                <CardTitle className="text-lg">Contribuição por alimento</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 {result.contributions.map((item) => {
@@ -282,8 +318,8 @@ export default function SummaryStep() {
                   return (
                     <div key={item.foodId} className="grid gap-3 rounded-2xl border border-white/10 bg-black/10 p-4 md:grid-cols-4">
                       <div><p className="font-semibold text-white">{item.foodName}</p><p className="text-xs text-muted-foreground">{food?.categoryNormalized ?? 'Sem categoria'}</p></div>
-                      <div><p className="text-xs text-muted-foreground">Inclusao</p><p className="font-medium text-white">{item.inclusionPct.toFixed(2)}%</p></div>
-                      <div><p className="text-xs text-muted-foreground">Oferta diaria</p><p className="font-medium text-white">{item.gramsAsFed.toFixed(2)} g</p></div>
+                      <div><p className="text-xs text-muted-foreground">Inclusão</p><p className="font-medium text-white">{item.inclusionPct.toFixed(2)}%</p></div>
+                      <div><p className="text-xs text-muted-foreground">Oferta diária</p><p className="font-medium text-white">{item.gramsAsFed.toFixed(2)} g</p></div>
                       <div><p className="text-xs text-muted-foreground">Energia</p><p className="font-medium text-white">{item.deliveredKcal.toFixed(2)} kcal</p></div>
                     </div>
                   )
@@ -293,7 +329,7 @@ export default function SummaryStep() {
 
             <Card className="border-white/10 bg-white/[0.03]">
               <CardHeader className="pb-3">
-                <CardTitle className="text-lg">Adequacao frente ao perfil</CardTitle>
+                <CardTitle className="text-lg">Adequação frente ao perfil</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 {result.evaluation.adequacy.filter((item) => item.status !== 'insufficient_data').map((item) => (
@@ -309,16 +345,56 @@ export default function SummaryStep() {
             {programmedFeeding && (
               <Card className="border-white/10 bg-white/[0.03]">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg">6. Alimentacao programada</CardTitle>
+                  <CardTitle className="text-lg">6. Alimentação programada</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="grid gap-4 xl:grid-cols-[0.75fr_1.25fr]">
                     <div className="space-y-4 rounded-2xl border border-white/10 bg-black/10 p-4">
-                      <p className="font-semibold text-white">Configuracao diaria</p>
+                      <p className="font-semibold text-white">Configuração diária</p>
                       <div className="grid grid-cols-4 gap-2">
                         {[1, 2, 3, 4, 5, 6].map((value) => (
                           <button key={value} type="button" onClick={() => setProgrammedMealsPerDay(value)} className={`rounded-xl border px-3 py-3 text-sm transition-all ${programmedMealsPerDay === value ? 'border-orange-400/60 bg-orange-500/12 text-white' : 'border-white/10 bg-black/10 text-muted-foreground hover:border-orange-500/30 hover:text-white'}`}>{value}</button>
                         ))}
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="feeding-start-date">Data inicial da ficha</Label>
+                        <Input
+                          id="feeding-start-date"
+                          type="date"
+                          value={programmedStartDate}
+                          onChange={(event) => setProgrammedStartDate(event.target.value)}
+                          className="max-w-[220px] border-white/10 bg-black/20"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <p className="text-xs font-medium text-muted-foreground">Intervalo de impressão</p>
+                        <div className="grid grid-cols-2 gap-2">
+                          <button
+                            type="button"
+                            onClick={() => setPrintRangeMode('single_day')}
+                            className={`rounded-xl border px-3 py-2 text-xs transition-all ${
+                              printRangeMode === 'single_day'
+                                ? 'border-orange-400/60 bg-orange-500/12 text-white'
+                                : 'border-white/10 bg-black/10 text-muted-foreground hover:border-orange-500/30 hover:text-white'
+                            }`}
+                          >
+                            Imprimir apenas esta data
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setPrintRangeMode('next_3_days')}
+                            className={`rounded-xl border px-3 py-2 text-xs transition-all ${
+                              printRangeMode === 'next_3_days'
+                                ? 'border-orange-400/60 bg-orange-500/12 text-white'
+                                : 'border-white/10 bg-black/10 text-muted-foreground hover:border-orange-500/30 hover:text-white'
+                            }`}
+                          >
+                            Imprimir para os próximos 3 dias
+                          </button>
+                        </div>
+                        <p className="text-[11px] text-muted-foreground">
+                          Fichas geradas: {generatedFeedingDates.map((date) => new Date(`${date}T00:00:00`).toLocaleDateString('pt-BR')).join(' | ')}
+                        </p>
                       </div>
                       <div className="space-y-2">
                         {programmedFeeding.meals.map((meal, index) => (
@@ -363,7 +439,7 @@ export default function SummaryStep() {
                                   <tr key={`${meal.id}-${item.foodId}`} className="border-t border-white/5">
                                     <td className="py-2 text-white">{item.foodName}</td>
                                     <td className="py-2 text-white">{item.gramsAsFed} g</td>
-                                    <td className="py-2 text-muted-foreground">Sim / Nao</td>
+                                    <td className="py-2 text-muted-foreground">Sim / Não</td>
                                     <td className="py-2 text-muted-foreground">Pesar sobra</td>
                                   </tr>
                                 ))}
@@ -381,11 +457,11 @@ export default function SummaryStep() {
             {patient.isHospitalized && (
               <Card className="border-white/10 bg-white/[0.03]">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg">Hospitalizacao e progressao alimentar</CardTitle>
+                  <CardTitle className="text-lg">Hospitalização e progressão alimentar</CardTitle>
                 </CardHeader>
                 <CardContent className="grid gap-3 md:grid-cols-4">
                   <div className="rounded-2xl border border-white/10 bg-black/10 p-4"><p className="text-xs text-muted-foreground">Risco</p><p className="mt-1 font-semibold text-white">{hospitalRisk === 'high' ? 'Alto risco' : hospitalRisk === 'moderate' ? 'Risco moderado' : 'Baixo risco'}</p></div>
-                  <div className="rounded-2xl border border-white/10 bg-black/10 p-4"><p className="text-xs text-muted-foreground">Via</p><p className="mt-1 font-semibold text-white">{hospital.feedingRoute ?? 'Nao informada'}</p></div>
+                  <div className="rounded-2xl border border-white/10 bg-black/10 p-4"><p className="text-xs text-muted-foreground">Via</p><p className="mt-1 font-semibold text-white">{hospital.feedingRoute ?? 'Não informada'}</p></div>
                   <div className="rounded-2xl border border-white/10 bg-black/10 p-4"><p className="text-xs text-muted-foreground">Ingestao recente</p><p className="mt-1 font-semibold text-white">{hospital.recentIntakePercent ?? 0}%</p></div>
                   <div className="rounded-2xl border border-white/10 bg-black/10 p-4"><p className="text-xs text-muted-foreground">Protocolo</p><p className="mt-1 font-semibold text-white">{hospital.progressionProtocol === '3_days' ? '3 dias' : '4 dias'}</p></div>
                   {progressionPlan.map((day) => (
@@ -402,10 +478,10 @@ export default function SummaryStep() {
 
           <div className="flex items-center justify-between border-t border-border pt-6 dark:border-white/5">
             <Button variant="outline" onClick={() => navigate(`${NEW_ROUTE}/food`)} className="gap-2">
-              <ChevronLeft className="h-4 w-4" /> Voltar para formulacao
+              <ChevronLeft className="h-4 w-4" /> Voltar para formulação
             </Button>
             <Button size="lg" className="gap-2" onClick={handleSave} id="btn-save-plan">
-              <Save className="h-5 w-5" /> Salvar no modulo
+              <Save className="h-5 w-5" /> Salvar no módulo
             </Button>
           </div>
         </Card>

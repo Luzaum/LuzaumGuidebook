@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { Button } from '../components/ui/button'
@@ -6,14 +6,34 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { Badge } from '../components/ui/badge'
 import ReportDetailView from '../components/ReportDetailView'
 import { getReportsByPatientKey } from '../lib/persistence'
+import { listNutritionReportsByPatientKeyFromSupabase } from '../lib/supabaseReports'
 
 const BASE_ROUTE = '/calculadora-energetica'
 
 export default function PatientHistoryDetail() {
   const { patientKey = '' } = useParams()
-  const reports = useMemo(() => getReportsByPatientKey(patientKey), [patientKey])
+  const [reports, setReports] = useState(() => getReportsByPatientKey(patientKey))
   const [selectedReportId, setSelectedReportId] = useState(reports[0]?.id ?? '')
   const selectedReport = reports.find((report) => report.id === selectedReportId) ?? reports[0]
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const remote = await listNutritionReportsByPatientKeyFromSupabase(patientKey)
+        if (remote.length) {
+          setReports(remote)
+          setSelectedReportId((current) => current || remote[0].id)
+          return
+        }
+      } catch {
+        // fallback local
+      }
+      const local = getReportsByPatientKey(patientKey)
+      setReports(local)
+      setSelectedReportId((current) => current || local[0]?.id || '')
+    }
+    void load()
+  }, [patientKey])
 
   if (!selectedReport) {
     return (
@@ -32,7 +52,7 @@ export default function PatientHistoryDetail() {
     <div className="space-y-6 pb-20">
       <div className="flex items-center justify-between gap-4">
         <div>
-          <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">Historico do paciente</p>
+          <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">Histórico do paciente</p>
           <h1 className="text-3xl font-bold text-white">{selectedReport.patient.name || 'Paciente sem nome'}</h1>
           <p className="mt-1 text-sm text-muted-foreground">{reports.length} relatorio(s) salvos localmente para este paciente.</p>
         </div>

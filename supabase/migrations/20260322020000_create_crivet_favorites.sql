@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS "public"."crivet_favorites" (
-    "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
+    "id" uuid NOT NULL DEFAULT gen_random_uuid(),
     "user_id" uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
     "name" text NOT NULL,
     "input_data" jsonb NOT NULL,

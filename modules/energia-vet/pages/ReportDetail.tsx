@@ -1,15 +1,33 @@
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { Button } from '../components/ui/button'
 import { Card, CardContent } from '../components/ui/card'
 import ReportDetailView from '../components/ReportDetailView'
 import { getSavedReportById } from '../lib/persistence'
+import { getNutritionReportByIdFromSupabase } from '../lib/supabaseReports'
 
 const BASE_ROUTE = '/calculadora-energetica'
 
 export default function ReportDetail() {
   const { reportId = '' } = useParams()
-  const report = getSavedReportById(reportId)
+  const [report, setReport] = useState(() => getSavedReportById(reportId))
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const remote = await getNutritionReportByIdFromSupabase(reportId)
+        if (remote) {
+          setReport(remote)
+          return
+        }
+      } catch {
+        // fallback local
+      }
+      setReport(getSavedReportById(reportId))
+    }
+    void load()
+  }, [reportId])
 
   if (!report) {
     return (

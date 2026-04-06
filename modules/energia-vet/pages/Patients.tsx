@@ -1,11 +1,13 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Calculator, ChevronRight, Plus, Search, Users } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
 import { Badge } from '../components/ui/badge'
 import { Button } from '../components/ui/button'
 import { Input } from '../components/ui/input'
-import { getSavedPatients } from '../lib/persistence'
+import { getPatientStorageKey, getSavedPatients, getSavedReports } from '../lib/persistence'
+import { listNutritionReportsFromSupabase, migrateLocalReportsToSupabase } from '../lib/supabaseReports'
+import type { StoredCalculationReport } from '../types'
 
 const NEW_ROUTE = '/calculadora-energetica/new'
 const BASE_ROUTE = '/calculadora-energetica'
@@ -13,7 +15,50 @@ const BASE_ROUTE = '/calculadora-energetica'
 export default function Patients() {
   const navigate = useNavigate()
   const [query, setQuery] = useState('')
-  const patients = useMemo(() => getSavedPatients(), [])
+  const [patients, setPatients] = useState(getSavedPatients())
+
+  useEffect(() => {
+    const fromReports = (reports: StoredCalculationReport[]) => {
+      const patientMap = new Map<string, any>()
+      for (const report of reports) {
+        const patientKey = report.patientKey ?? getPatientStorageKey(report.patient)
+        const current = patientMap.get(patientKey)
+        if (!current) {
+          patientMap.set(patientKey, {
+            ...report.patient,
+            patientKey,
+            reportCount: 1,
+            lastReportAt: report.createdAt,
+            latestReportId: report.id,
+          })
+          continue
+        }
+        current.reportCount += 1
+        if (new Date(report.createdAt).getTime() > new Date(current.lastReportAt).getTime()) {
+          current.lastReportAt = report.createdAt
+          current.latestReportId = report.id
+          Object.assign(current, report.patient)
+        }
+      }
+      return Array.from(patientMap.values()).sort(
+        (left, right) => new Date(right.lastReportAt).getTime() - new Date(left.lastReportAt).getTime(),
+      )
+    }
+
+    const sync = async () => {
+      try {
+        const localReports = getSavedReports()
+        if (localReports.length) {
+          await migrateLocalReportsToSupabase(localReports)
+        }
+        const remoteReports = await listNutritionReportsFromSupabase()
+        setPatients(fromReports(remoteReports))
+      } catch {
+        setPatients(getSavedPatients())
+      }
+    }
+    void sync()
+  }, [])
 
   const filteredPatients = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase()
@@ -33,7 +78,7 @@ export default function Patients() {
         <div>
           <h1 className="flex items-center gap-2 text-3xl font-bold tracking-tight text-white">
             <Users className="h-8 w-8 text-orange-300" />
-            Historico de pacientes
+            Histórico de pacientes
           </h1>
           <p className="mt-2 text-muted-foreground">
             Cada paciente pode ter varios relatorios cronologicos. Clique para abrir a prescricao salva e exportar PDF.
@@ -57,7 +102,7 @@ export default function Patients() {
 
           {filteredPatients.length === 0 ? (
             <div className="rounded-2xl border border-dashed border-white/10 p-5 text-sm text-muted-foreground">
-              Nenhum paciente encontrado. Salve um calculo para popular o historico.
+              Nenhum paciente encontrado. Salve um cálculo para popular o histórico.
             </div>
           ) : (
             <div className="grid gap-4 md:grid-cols-2 2xl:grid-cols-3">
@@ -78,7 +123,7 @@ export default function Patients() {
                         <p className="mt-1 font-semibold text-white">{patient.currentWeight != null ? `${patient.currentWeight} kg` : '—'}</p>
                       </div>
                       <div className="rounded-2xl border border-white/10 bg-black/10 p-3">
-                        <p className="text-[11px] text-muted-foreground">Historico</p>
+                        <p className="text-[11px] text-muted-foreground">Histórico</p>
                         <p className="mt-1 font-semibold text-white">{patient.reportCount} relatorio(s)</p>
                       </div>
                     </div>

@@ -35,7 +35,7 @@ export default function ReportDetailView({ report }: { report: StoredCalculation
             <div className="grid gap-6 xl:grid-cols-2">
               <Card className="border-white/10 bg-white/[0.03]">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-white">Resumo clinico</CardTitle>
+                  <CardTitle className="text-lg text-white">Resumo clínico</CardTitle>
                 </CardHeader>
                 <CardContent className="grid gap-3 md:grid-cols-2">
                   {vm.patientFields.concat(vm.clinicalFields).map((field) => (
@@ -49,7 +49,7 @@ export default function ReportDetailView({ report }: { report: StoredCalculation
 
               <Card className="border-white/10 bg-white/[0.03]">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg text-white">Energia e formulacao</CardTitle>
+                  <CardTitle className="text-lg text-white">Energia e formulação</CardTitle>
                 </CardHeader>
                 <CardContent className="grid gap-3 md:grid-cols-2">
                   {vm.energyFields.concat(vm.targetFields).concat(vm.formulaMetaFields).map((field) => (

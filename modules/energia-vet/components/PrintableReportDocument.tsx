@@ -98,7 +98,7 @@ export default function PrintableReportDocument({
     >
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '2px solid #e5630a', paddingBottom: '8px', marginBottom: '16px' }}>
         <div>
-          <div style={{ fontSize: '18px', fontWeight: 700, color: '#e5630a' }}>NutricaoVET • Relatorio nutricional</div>
+          <div style={{ fontSize: '18px', fontWeight: 700, color: '#e5630a' }}>NutriçãoVET - Relatório nutricional</div>
           <div style={{ fontSize: '11px', color: '#62594f' }}>Emitido em {vm.generatedAt}</div>
         </div>
         <div style={{ textAlign: 'right', fontSize: '11px', color: '#62594f' }}>
@@ -107,9 +107,9 @@ export default function PrintableReportDocument({
         </div>
       </div>
 
-      <SectionTable title="1. Identificacao do paciente" fields={vm.patientFields} columns={3} />
+      <SectionTable title="1. Identificação do paciente" fields={vm.patientFields} columns={3} />
       <SectionTable title="2. Dados clinicos" fields={vm.clinicalFields} columns={2} />
-      <SectionTable title="3. Calculo energetico" fields={vm.energyFields} columns={2} />
+      <SectionTable title="3. Cálculo energético" fields={vm.energyFields} columns={2} />
       <SectionTable title="4. Meta nutricional" fields={vm.targetFields} columns={3} />
       <SectionTable title="5. Formula geral" fields={vm.formulaMetaFields} columns={3} />
 
@@ -153,29 +153,37 @@ export default function PrintableReportDocument({
         </section>
       )}
 
-      <div id="print-feeding-sheet" className="rx-page-break" style={{ breakBefore: 'page', paddingTop: '6px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '2px solid #e5630a', paddingBottom: '8px', marginBottom: '16px' }}>
-          <div>
-            <div style={{ fontSize: '18px', fontWeight: 700, color: '#e5630a' }}>{vm.feedingSheetTitle}</div>
-            <div style={{ fontSize: '11px', color: '#62594f' }}>Pagina operacional isolada para rotina diaria</div>
+      {vm.feedingSheets.map((sheet, index) => (
+        <div
+          key={`${sheet.dateLabel}-${index}`}
+          id={`print-feeding-sheet-${index}`}
+          className="rx-page-break"
+          style={{ breakBefore: 'page', paddingTop: '6px' }}
+        >
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '2px solid #e5630a', paddingBottom: '8px', marginBottom: '16px' }}>
+            <div>
+              <div style={{ fontSize: '18px', fontWeight: 700, color: '#e5630a' }}>{vm.feedingSheetTitle}</div>
+              <div style={{ fontSize: '11px', color: '#62594f' }}>Pagina operacional isolada para rotina diaria</div>
+            </div>
+            <div style={{ fontSize: '11px', color: '#62594f', textAlign: 'right' }}>{vm.patientTitle}</div>
           </div>
-          <div style={{ fontSize: '11px', color: '#62594f', textAlign: 'right' }}>{vm.patientTitle}</div>
+
+          <SectionTable title="Dados da ficha" fields={sheet.meta} columns={2} />
+
+          <DataTable
+            title="Alimentos utilizados"
+            headers={['Alimento', 'Oferta diaria total', 'Por refeicao']}
+            rows={sheet.foodRows}
+          />
+
+          <DataTable
+            title="Controle diario"
+            headers={['Horario', 'Quantidade/refeicao', 'Alimentos', 'Comeu? Sim/nao (pesar sobra)', 'Assinatura']}
+            rows={sheet.rows}
+          />
         </div>
-
-        <SectionTable title="Dados da ficha" fields={vm.feedingSheetMeta} columns={2} />
-
-        <DataTable
-          title="Alimentos utilizados"
-          headers={['Alimento', 'Oferta diaria total', 'Por refeicao']}
-          rows={vm.feedingSheetFoodRows}
-        />
-
-        <DataTable
-          title="Controle diario"
-          headers={['Data', 'Horario', 'Quantidade/refeicao', 'Alimentos', 'Comeu? Sim/nao (pesar sobra)', 'Assinatura']}
-          rows={vm.feedingSheetRows}
-        />
-      </div>
+      ))}
     </div>
   )
 }
+

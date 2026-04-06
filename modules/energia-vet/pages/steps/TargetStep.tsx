@@ -31,9 +31,9 @@ const GOAL_OPTIONS: Array<{
   description: string
   icon: typeof Target
 }> = [
-  { value: 'maintenance', label: 'Manutencao', description: 'Mantem o peso e a rotina atual do paciente.', icon: Target },
+  { value: 'maintenance', label: 'Manutenção', description: 'Mantém o peso e a rotina atual do paciente.', icon: Target },
   { value: 'weight_loss', label: 'Perda de peso', description: 'Usa o ECC para definir perda planejada e energia alvo mais restritiva.', icon: TrendingDown },
-  { value: 'weight_gain', label: 'Ganho de peso', description: 'Apoia recuperacao nutricional com peso-alvo acima do atual.', icon: TrendingUp },
+  { value: 'weight_gain', label: 'Ganho de peso', description: 'Apoia recuperação nutricional com peso-alvo acima do atual.', icon: TrendingUp },
 ]
 
 function getGoalMultiplier(goal: TargetGoal) {
@@ -269,7 +269,7 @@ export default function TargetStep() {
                 {
                   value: 'fediaf' as const,
                   title: 'Modo FEDIAF / oficial',
-                  description: 'Usa peso corporal otimo definido clinicamente. Para perda ou ganho, o peso-alvo deve ser informado manualmente.',
+                  description: 'Usa peso corporal ótimo definido clinicamente. Para perda ou ganho, o peso-alvo deve ser informado manualmente.',
                 },
                 {
                   value: 'clinical' as const,
@@ -310,7 +310,7 @@ export default function TargetStep() {
                       setUseManualWeight(true)
                       setManualWeight(Number(event.target.value) || 0)
                     }}
-                    placeholder={ruleMode === 'fediaf' ? 'Informe o peso corporal otimo' : 'Opcional: sobrescrever calculo automatico'}
+                    placeholder={ruleMode === 'fediaf' ? 'Informe o peso corporal ótimo' : 'Opcional: sobrescrever cálculo automático'}
                   />
                 </div>
 
@@ -320,7 +320,7 @@ export default function TargetStep() {
                   </p>
                   <p className="mt-2 text-sm text-muted-foreground">
                     {ruleMode === 'fediaf'
-                      ? 'A referencia oficial usa peso corporal otimo. O percentual automatico por ECC nao e apresentado como regra oficial.'
+                      ? 'A referência oficial usa peso corporal ótimo. O percentual automático por ECC não é apresentado como regra oficial.'
                       : customRulePercent != null
                       ? `ECC ${bcs}/9 aplica ${goal === 'weight_loss' ? `-${customRulePercent}%` : `+${customRulePercent}%`} no modulo da clinica.`
                       : 'O paciente esta em manutencao.'}
@@ -335,7 +335,7 @@ export default function TargetStep() {
               <Scale className="h-5 w-5 text-orange-300" />
               <div>
                 <p className="text-lg font-semibold text-white">Peso usado para energia</p>
-                <p className="text-sm text-muted-foreground">A selecao muda o calculo energetico imediatamente.</p>
+                <p className="text-sm text-muted-foreground">A seleção muda o cálculo energetico imediatamente.</p>
               </div>
             </div>
 
@@ -358,7 +358,7 @@ export default function TargetStep() {
 
             <div className="grid gap-4 xl:grid-cols-[1fr_1fr_1fr]">
               <div className="rounded-2xl border border-white/10 bg-black/15 p-4">
-                <p className="text-xs text-muted-foreground">Estado fisiologico</p>
+                <p className="text-xs text-muted-foreground">Estado fisiológico</p>
                 <p className="mt-1 font-semibold text-white">{state?.label ?? 'Nao informado'}</p>
               </div>
               <div className="rounded-2xl border border-white/10 bg-black/15 p-4">

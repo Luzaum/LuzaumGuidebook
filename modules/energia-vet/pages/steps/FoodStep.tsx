@@ -16,17 +16,27 @@ import {
   getDefaultRequirement,
   getFoodById,
   getFoodCategories,
-  getRequirementOptions,
   GENUTRI_NUTRIENT_CATALOG,
 } from '../../lib/genutriData'
-import { getClinicalProfileBadges, getClinicalProfileIdsFromSelections, getHumanRequirementLabel } from '../../lib/clinicalProfiles'
+import { getClinicalProfileIdsFromSelections } from '../../lib/clinicalProfiles'
 import type { DietFormulaEntry, DietType, FoodItem } from '../../types'
 import { MEALS_OPTIONS } from '../../lib/nutrition'
 import { cn } from '../../lib/utils'
 
 const NEW_ROUTE = '/calculadora-energetica/new'
 
-const DETAIL_NUTRIENTS = GENUTRI_NUTRIENT_CATALOG
+const REQUIRED_NUTRIENT_KEYS = new Set([
+  'moisturePct',
+  'dryMatterPct',
+  'energyKcalPer100g',
+  'crudeProteinPct',
+  'etherExtractPct',
+  'ashPct',
+  'crudeFiberPct',
+  'nitrogenFreeExtractPct',
+  'calciumPct',
+  'phosphorusPct',
+])
 
 const DIET_TYPE_OPTIONS: Array<{ value: DietType; label: string; description: string; emoji: string }> = [
   { value: 'commercial', label: 'Comercial', description: 'Rações secas, úmidas e fórmulas prontas.', emoji: '🥣' },
@@ -51,6 +61,13 @@ function formatKcal(food: FoodItem) {
   return `${kcal.toFixed(0)} kcal/100g`
 }
 
+function getDetailNutrientsForBasis(basis: Record<string, number | null>) {
+  return GENUTRI_NUTRIENT_CATALOG.filter((nutrient) => {
+    if (REQUIRED_NUTRIENT_KEYS.has(nutrient.key)) return true
+    return basis[nutrient.key] != null
+  })
+}
+
 export default function FoodStep() {
   const navigate = useNavigate()
   const { patient, energy, target, diet, setDiet } = useCalculationStore()
@@ -62,18 +79,16 @@ export default function FoodStep() {
     () => getDefaultRequirement(species, energy.stateId, !!patient.isNeutered),
     [energy.stateId, patient.isNeutered, species],
   )
+  const requirementProfileId = diet.requirementProfileId ?? defaultRequirement?.id ?? ''
 
   const [dietType, setDietType] = useState<DietType>(diet.dietType ?? 'commercial')
   const [mealsPerDay, setMealsPerDay] = useState<number>(diet.mealsPerDay ?? 2)
   const [searchQuery, setSearchQuery] = useState('')
   const [categoryFilter, setCategoryFilter] = useState<string>('all')
-  const [requirementProfileId, setRequirementProfileId] = useState<string>(diet.requirementProfileId ?? defaultRequirement?.id ?? '')
   const [entries, setEntries] = useState<DietFormulaEntry[]>(diet.entries ?? [])
   const [detailsFoodId, setDetailsFoodId] = useState<string | null>(null)
 
   const categories = useMemo(() => getFoodCategories(), [])
-  const requirementOptions = useMemo(() => getRequirementOptions(species), [species])
-  const comorbidityLabels = useMemo(() => getClinicalProfileBadges(species, patient.comorbidityIds ?? []), [patient.comorbidityIds, species])
   const additionalRequirementProfileIds = useMemo(
     () => getClinicalProfileIdsFromSelections(species, patient.comorbidityIds ?? []),
     [patient.comorbidityIds, species],
@@ -323,7 +338,7 @@ export default function FoodStep() {
                   <Search className="pointer-events-none absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input placeholder="Buscar alimento..." className="pl-9 bg-[#221a19] border-white/10" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
                 </div>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 gap-3">
                   <Select value={categoryFilter} onValueChange={setCategoryFilter}>
                     <SelectTrigger className="rounded-xl border-white/10 bg-[#221a19] text-sm">
                       <SelectValue placeholder="Categoria" />
@@ -333,18 +348,6 @@ export default function FoodStep() {
                       {categories.map((c) => <SelectItem key={c} value={c}>{c}</SelectItem>)}
                     </SelectContent>
                   </Select>
-                  <Select value={requirementProfileId} onValueChange={setRequirementProfileId}>
-                    <SelectTrigger className="rounded-xl border-white/10 bg-[#221a19] text-sm">
-                      <SelectValue placeholder="Perfil" />
-                    </SelectTrigger>
-                    <SelectContent className="max-h-80">
-                      {requirementOptions.map((p) => <SelectItem key={p.id} value={p.id}>{getHumanRequirementLabel(p)}</SelectItem>)}
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="flex flex-wrap gap-1.5">
-                  <Badge variant="outline" className="text-xs">Perfil: {getHumanRequirementLabel(requirementOptions.find((p) => p.id === requirementProfileId))}</Badge>
-                  {comorbidityLabels.map((label) => <Badge key={label} variant="outline" className="text-xs">{label}</Badge>)}
                 </div>
               </div>
 
@@ -841,13 +844,13 @@ export default function FoodStep() {
 
       {/* Modal informações nutricionais */}
       <Dialog open={!!detailsFood} onOpenChange={(open) => !open && setDetailsFoodId(null)}>
-        <DialogContent className="w-[min(96vw,860px)] max-w-[860px] sm:max-w-[860px] border border-orange-400/20 bg-[#141010]">
+        <DialogContent className="w-[min(96vw,860px)] max-w-[860px] sm:max-w-[860px] max-h-[90vh] overflow-hidden border border-orange-400/20 bg-[#141010]">
           <DialogHeader>
             <DialogTitle className="text-white">{detailsFood?.name ?? 'Informações nutricionais'}</DialogTitle>
           </DialogHeader>
 
           {detailsFood && (
-            <div className="space-y-4">
+            <div className="space-y-4 overflow-y-auto pr-1">
               <div className="rounded-xl border border-white/10 bg-[#1c1514] px-4 py-3">
                 <p className="text-xs text-muted-foreground">Categoria</p>
                 <p className="mt-1 font-semibold text-white">{detailsFood.categoryNormalized ?? 'Dado não cadastrado'}</p>
@@ -861,7 +864,7 @@ export default function FoodStep() {
                   <div key={title} className="rounded-2xl border border-white/10 bg-[#1c1514] p-4">
                     <p className="text-sm font-semibold text-white mb-3">{title}</p>
                     <div className="space-y-1.5">
-                      {DETAIL_NUTRIENTS.map((nutrient) => (
+                      {getDetailNutrientsForBasis(basis).map((nutrient) => (
                         <div key={nutrient.key} className="flex items-center justify-between rounded-lg border border-white/5 px-3 py-2">
                           <p className="text-xs text-muted-foreground">{nutrient.label}</p>
                           <p className="text-xs font-medium text-white">{formatNutrient(basis[nutrient.key], nutrient.unit)}</p>

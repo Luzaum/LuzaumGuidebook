@@ -2,9 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   AlertCircle,
-  Cat,
   ChevronRight,
-  Dog,
   HeartPulse,
   Home,
   Mars,
@@ -32,21 +30,25 @@ const NEW_ROUTE = '/calculadora-energetica/new'
 const SPECIES_OPTIONS = [
   {
     value: 'dog' as const,
-    title: 'CAO',
-    subtitle: 'Perfis caninos, guia ECC do cao e alimentos compativeis.',
-    icon: Dog,
+    title: 'CÃO',
+    subtitle: 'Perfis caninos, guia ECC do cão e alimentos compatíveis.',
+    photo: '/foto-cao.jpg',
+    emoji: '🐕',
+    fallbackGradient: 'from-amber-900/80 via-orange-950/90 to-neutral-950',
   },
   {
     value: 'cat' as const,
     title: 'GATO',
-    subtitle: 'Perfis felinos, guia ECC do gato e catalogo filtrado.',
-    icon: Cat,
+    subtitle: 'Perfis felinos, guia ECC do gato e catálogo filtrado.',
+    photo: '/foto-gato.jpg',
+    emoji: '🐈',
+    fallbackGradient: 'from-slate-700/80 via-slate-900/90 to-neutral-950',
   },
 ]
 
 const SEX_OPTIONS = [
   { value: 'male' as const, label: 'Macho', icon: Mars },
-  { value: 'female' as const, label: 'Femea', icon: Venus },
+  { value: 'female' as const, label: 'Fêmea', icon: Venus },
 ]
 
 const HOSPITAL_ROUTE_OPTIONS = [
@@ -203,12 +205,14 @@ export default function PatientStep() {
       </CardHeader>
 
       <CardContent className="space-y-8 pt-6">
+        {/* ── Seleção de espécie ── */}
         <section>
-          <p className="mb-4 text-center text-xs font-semibold uppercase tracking-[0.28em] text-muted-foreground">Especie</p>
-          <div className="mx-auto grid max-w-2xl gap-5 md:grid-cols-2">
+          <p className="mb-5 text-center text-[11px] font-semibold uppercase tracking-[0.32em] text-muted-foreground">
+            ESPÉCIE
+          </p>
+          <div className="mx-auto grid max-w-2xl gap-4 sm:grid-cols-2">
             {SPECIES_OPTIONS.map((option) => {
               const active = species === option.value
-              const Icon = option.icon
               return (
                 <button
                   key={option.value}
@@ -216,36 +220,67 @@ export default function PatientStep() {
                   type="button"
                   onClick={() => handleSpeciesChange(option.value)}
                   className={cn(
-                    'group relative flex min-h-[270px] flex-col items-center justify-center overflow-hidden rounded-[32px] border px-8 py-10 text-center transition-all duration-200',
-                    'hover:-translate-y-1.5 hover:shadow-[0_22px_44px_rgba(249,115,22,0.16)] active:scale-[0.985]',
+                    'group relative flex flex-col items-center overflow-hidden rounded-[28px] border pb-6 pt-7 text-center',
+                    'transition-all duration-300 hover:-translate-y-1 active:scale-[0.985]',
                     active
-                      ? 'border-orange-400/70 bg-gradient-to-b from-orange-500/18 via-orange-500/[0.08] to-white/[0.02] ring-1 ring-orange-400/40 shadow-[0_18px_40px_rgba(249,115,22,0.18)]'
-                      : 'border-white/10 bg-white/[0.03] hover:border-orange-500/30',
+                      ? 'border-orange-400/60 bg-[#1e1108] shadow-[0_0_0_1px_rgba(251,146,60,0.35),0_24px_56px_rgba(249,115,22,0.22)]'
+                      : 'border-white/10 bg-[#141010] hover:border-orange-500/25 hover:shadow-[0_16px_40px_rgba(0,0,0,0.35)]',
                   )}
                 >
-                  <div className="absolute inset-x-8 top-0 h-24 rounded-b-[32px] bg-gradient-to-b from-orange-400/10 to-transparent" />
+                  {/* Foto / placeholder */}
                   <div
                     className={cn(
-                      'relative z-10 flex h-28 w-28 items-center justify-center rounded-[28px] border transition-transform duration-200 group-hover:scale-105',
+                      'relative mx-auto overflow-hidden transition-all duration-300',
+                      'h-[180px] w-[160px] rounded-[24px]',
                       active
-                        ? 'border-orange-300/40 bg-gradient-to-br from-orange-400/25 to-orange-500/10 text-orange-100'
-                        : 'border-white/10 bg-black/20 text-white/90',
+                        ? 'shadow-[0_0_0_3px_rgba(251,146,60,0.55),0_0_32px_10px_rgba(249,115,22,0.30)]'
+                        : 'shadow-[0_8px_28px_rgba(0,0,0,0.55)] group-hover:shadow-[0_8px_32px_rgba(249,115,22,0.15)]',
                     )}
                   >
-                    <Icon className="h-14 w-14 stroke-[1.7]" />
+                    {/* Fallback gradient + emoji */}
+                    <div
+                      className={cn(
+                        'absolute inset-0 flex items-end justify-center bg-gradient-to-b pb-4 text-[72px] leading-none',
+                        option.fallbackGradient,
+                      )}
+                    >
+                      {option.emoji}
+                    </div>
+                    {/* Foto real — cobre o fallback quando carregada */}
+                    <img
+                      src={option.photo}
+                      alt={option.title}
+                      draggable={false}
+                      className="absolute inset-0 h-full w-full object-cover object-top"
+                      onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
+                    />
+                    {/* Gradiente de base para fundir foto com card */}
+                    <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/60 to-transparent" />
                   </div>
-                  <div className="relative z-10 mt-6 space-y-2">
-                    <p className={cn('text-2xl font-black tracking-[0.16em]', active ? 'text-orange-100' : 'text-white')}>{option.title}</p>
-                    <p className="mx-auto max-w-[18rem] text-sm leading-6 text-muted-foreground">{option.subtitle}</p>
+
+                  {/* Nome */}
+                  <p className={cn('mt-5 text-[26px] font-black tracking-[0.14em]', active ? 'text-white' : 'text-white/80')}>
+                    {option.title}
+                  </p>
+
+                  {/* Subtítulo */}
+                  <p className="mx-6 mt-1.5 text-[13px] leading-5 text-muted-foreground">
+                    {option.subtitle}
+                  </p>
+
+                  {/* Botão */}
+                  <div className="mt-5 px-8 w-full">
+                    <span
+                      className={cn(
+                        'block w-full rounded-full py-2 text-[11px] font-bold uppercase tracking-[0.20em] transition-colors duration-200',
+                        active
+                          ? 'bg-orange-400/20 text-orange-200 ring-1 ring-orange-400/40'
+                          : 'bg-white/[0.07] text-muted-foreground',
+                      )}
+                    >
+                      {active ? 'SELECIONADO' : 'TOQUE PARA ESCOLHER'}
+                    </span>
                   </div>
-                  <span
-                    className={cn(
-                      'relative z-10 mt-5 inline-flex rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em]',
-                      active ? 'bg-orange-400/15 text-orange-100' : 'bg-white/5 text-muted-foreground',
-                    )}
-                  >
-                    {active ? 'Selecionado' : 'Toque para escolher'}
-                  </span>
                 </button>
               )
             })}

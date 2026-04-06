@@ -82,7 +82,7 @@ export function exportReportPdf(report: StoredCalculationReport) {
   doc.setFont('helvetica', 'bold')
   doc.setFontSize(18)
   doc.setTextColor(229, 99, 10)
-  doc.text('NutricaoVET • Relatorio nutricional', 14, 18)
+  doc.text('NutriçãoVET - Relatório nutricional', 14, 18)
 
   doc.setFont('helvetica', 'normal')
   doc.setFontSize(10)
@@ -93,13 +93,13 @@ export function exportReportPdf(report: StoredCalculationReport) {
 
   let nextY = 32
 
-  renderKeyValueTable(doc, '1. Identificacao do paciente', vm.patientFields.map((field) => [field.label, field.value]), nextY)
+  renderKeyValueTable(doc, '1. Identificação do paciente', vm.patientFields.map((field) => [field.label, field.value]), nextY)
   nextY = (doc as jsPDF & { lastAutoTable?: { finalY: number } }).lastAutoTable?.finalY ?? nextY
 
   renderKeyValueTable(doc, '2. Dados clinicos', vm.clinicalFields.map((field) => [field.label, field.value]), nextY + 8)
   nextY = (doc as jsPDF & { lastAutoTable?: { finalY: number } }).lastAutoTable?.finalY ?? nextY
 
-  renderKeyValueTable(doc, '3. Calculo energetico', vm.energyFields.map((field) => [field.label, field.value]), nextY + 8)
+  renderKeyValueTable(doc, '3. Cálculo energético', vm.energyFields.map((field) => [field.label, field.value]), nextY + 8)
   nextY = (doc as jsPDF & { lastAutoTable?: { finalY: number } }).lastAutoTable?.finalY ?? nextY
 
   renderKeyValueTable(doc, '4. Meta nutricional', vm.targetFields.map((field) => [field.label, field.value]), nextY + 8)
@@ -124,32 +124,36 @@ export function exportReportPdf(report: StoredCalculationReport) {
     renderDataTable(doc, '10. Observacoes finais', ['Observacao'], vm.alertNotes.map((note) => [note]), nextY + 8)
   }
 
-  doc.addPage()
-  doc.setFont('helvetica', 'bold')
-  doc.setFontSize(18)
-  doc.setTextColor(229, 99, 10)
-  doc.text(vm.feedingSheetTitle, 14, 18)
+  vm.feedingSheets.forEach((sheet) => {
+    doc.addPage()
+    doc.setFont('helvetica', 'bold')
+    doc.setFontSize(18)
+    doc.setTextColor(229, 99, 10)
+    doc.text(vm.feedingSheetTitle, 14, 18)
 
-  doc.setFont('helvetica', 'normal')
-  doc.setFontSize(10)
-  doc.setTextColor(98, 89, 79)
-  doc.text('Pagina operacional isolada para rotina diaria', 14, 24)
-  doc.text(vm.patientTitle, 196, 18, { align: 'right' })
+    doc.setFont('helvetica', 'normal')
+    doc.setFontSize(10)
+    doc.setTextColor(98, 89, 79)
+    doc.text('Pagina operacional isolada para rotina diaria', 14, 24)
+    doc.text(vm.patientTitle, 196, 18, { align: 'right' })
 
-  renderKeyValueTable(doc, 'Dados da ficha', vm.feedingSheetMeta.map((field) => [field.label, field.value]), 32)
-  let feedingY = (doc as jsPDF & { lastAutoTable?: { finalY: number } }).lastAutoTable?.finalY ?? 32
+    renderKeyValueTable(doc, 'Dados da ficha', sheet.meta.map((field) => [field.label, field.value]), 32)
+    let feedingY = (doc as jsPDF & { lastAutoTable?: { finalY: number } }).lastAutoTable?.finalY ?? 32
 
-  renderDataTable(doc, 'Alimentos utilizados', ['Alimento', 'Oferta diaria total', 'Por refeicao'], vm.feedingSheetFoodRows, feedingY + 8)
-  feedingY = (doc as jsPDF & { lastAutoTable?: { finalY: number } }).lastAutoTable?.finalY ?? feedingY
+    renderDataTable(doc, 'Alimentos utilizados', ['Alimento', 'Oferta diaria total', 'Por refeicao'], sheet.foodRows, feedingY + 8)
+    feedingY = (doc as jsPDF & { lastAutoTable?: { finalY: number } }).lastAutoTable?.finalY ?? feedingY
 
-  renderDataTable(
-    doc,
-    'Controle diario',
-    ['Data', 'Horario', 'Quantidade/refeicao', 'Alimentos', 'Comeu? Sim/nao (pesar sobra)', 'Assinatura'],
-    vm.feedingSheetRows,
-    feedingY + 8,
-  )
+    renderDataTable(
+      doc,
+      'Controle diario',
+      ['Horario', 'Quantidade/refeicao', 'Alimentos', 'Comeu? Sim/nao (pesar sobra)', 'Assinatura'],
+      sheet.rows,
+      feedingY + 8,
+    )
+  })
 
   const patientName = sanitizeFilename(report.patient.name)
   doc.save(`energia-vet_${patientName}_${new Date(report.createdAt).toISOString().slice(0, 10)}.pdf`)
 }
+
+

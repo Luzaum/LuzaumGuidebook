@@ -55,13 +55,25 @@ export function foodMatchesSpecies(scope: SpeciesScope, species: Species): boole
   return scope === 'both' || scope === 'unknown' || scope === species
 }
 
+// Normaliza string: minúsculas + remove acentos + colapsa espaços
+function normalizeSearch(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
 export function filterFoods(options: {
   species?: Species
   query?: string
   category?: string
   foodType?: string
 }): FoodItem[] {
-  const query = options.query?.trim().toLowerCase()
+  // Tokens: cada palavra da query deve aparecer em algum lugar no haystack
+  const tokens = options.query ? normalizeSearch(options.query).split(' ').filter(Boolean) : []
+
   return GENUTRI_FOODS.filter((food) => {
     if (options.species && !foodMatchesSpecies(food.speciesScope, options.species)) {
       return false
@@ -72,21 +84,18 @@ export function filterFoods(options: {
     if (options.foodType && food.foodType !== options.foodType) {
       return false
     }
-    if (!query) {
+    if (!tokens.length) {
       return true
     }
 
-    return [
-      food.name,
-      food.category,
-      food.categoryNormalized,
-      food.presentation,
-      food.foodType,
-    ]
-      .filter(Boolean)
-      .join(' ')
-      .toLowerCase()
-      .includes(query)
+    const haystack = normalizeSearch(
+      [food.name, food.category, food.categoryNormalized, food.presentation, food.foodType]
+        .filter(Boolean)
+        .join(' '),
+    )
+
+    // Todos os tokens devem estar presentes (AND) — mas cada um pode estar em qualquer posição
+    return tokens.every((token) => haystack.includes(token))
   })
 }
 

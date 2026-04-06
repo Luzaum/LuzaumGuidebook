@@ -25,9 +25,12 @@ export type PrintableReportViewModel = {
   contributionRows: TableRow[]
   alertNotes: string[]
   feedingSheetTitle: string
-  feedingSheetMeta: ReportField[]
-  feedingSheetFoodRows: TableRow[]
-  feedingSheetRows: TableRow[]
+  feedingSheets: Array<{
+    dateLabel: string
+    meta: ReportField[]
+    foodRows: TableRow[]
+    rows: TableRow[]
+  }>
 }
 
 const OPTIONAL_NUTRIENT_KEYS = [
@@ -47,23 +50,37 @@ function toDateLabel(value: string) {
   return new Date(value).toLocaleString('pt-BR')
 }
 
+function toIsoDate(value: Date) {
+  const y = value.getFullYear()
+  const m = String(value.getMonth() + 1).padStart(2, '0')
+  const d = String(value.getDate()).padStart(2, '0')
+  return `${y}-${m}-${d}`
+}
+
+function toPtDate(value: string) {
+  if (!value) return '__/__/____'
+  const [y, m, d] = value.split('-')
+  if (!y || !m || !d) return '__/__/____'
+  return `${d}/${m}/${y}`
+}
+
 function getSpeciesLabel(species?: string) {
   if (species === 'dog') return 'Cao'
   if (species === 'cat') return 'Gato'
-  return 'Nao informado'
+  return 'Não informado'
 }
 
 function getSexLabel(sex?: string) {
-  if (sex === 'female') return 'Femea'
+  if (sex === 'female') return 'Fêmea'
   if (sex === 'male') return 'Macho'
-  return 'Nao informado'
+  return 'Não informado'
 }
 
 function getDietTypeLabel(dietType?: string) {
   if (dietType === 'commercial') return 'Comercial'
   if (dietType === 'natural') return '100% natural'
   if (dietType === 'hybrid') return 'Hibrida'
-  return 'Nao informado'
+  return 'Não informado'
 }
 
 function getGoalLabel(goal?: string) {
@@ -73,12 +90,12 @@ function getGoalLabel(goal?: string) {
 }
 
 function formatDailyGrams(value: number | null | undefined, decimals = 1) {
-  if (value == null) return 'Nao informado'
+  if (value == null) return 'Não informado'
   return `${value.toFixed(decimals)} g/dia`
 }
 
 function formatKcal(value: number | null | undefined, decimals = 0) {
-  if (value == null) return 'Nao informado'
+  if (value == null) return 'Não informado'
   return `${value.toFixed(decimals)} kcal/dia`
 }
 
@@ -119,14 +136,26 @@ function buildNutritionRows(report: StoredCalculationReport): TableRow[] {
 
 export function buildPrintableReportViewModel(report: StoredCalculationReport): PrintableReportViewModel {
   const requirement = getRequirementById(report.diet.requirementProfileId)
-  const physiologicState = getPhysiologicStateById(report.energy.stateId ?? '')?.label ?? 'Nao informado'
+  const physiologicState = report.energy.resolvedProfileLabel ?? getPhysiologicStateById(report.energy.stateId ?? '')?.label ?? 'Nao informado'
   const programmed = report.formula.programmedFeeding ?? report.diet.programmedFeeding
   const feedingMealsPerDay = programmed?.mealsPerDay ?? report.diet.mealsPerDay ?? 2
+  const startDateIso = programmed?.startDate || toIsoDate(new Date(report.createdAt))
+  const printRangeMode = programmed?.printRangeMode ?? 'single_day'
+  const feedingDates =
+    programmed?.generatedFeedingDates?.length
+      ? programmed.generatedFeedingDates
+      : printRangeMode === 'next_3_days'
+      ? [0, 1, 2].map((offset) => {
+          const next = new Date(`${startDateIso}T00:00:00`)
+          next.setDate(next.getDate() + offset)
+          return toIsoDate(next)
+        })
+      : [startDateIso]
 
   const patientFields: ReportField[] = [
     { label: 'Paciente', value: safeText(report.patient.name) },
     { label: 'Tutor', value: safeText(report.patient.ownerName) },
-    { label: 'Especie', value: getSpeciesLabel(report.patient.species) },
+    { label: 'Espécie', value: getSpeciesLabel(report.patient.species) },
     { label: 'Sexo', value: getSexLabel(report.patient.sex) },
     { label: 'Peso atual', value: report.patient.currentWeight != null ? `${report.patient.currentWeight.toFixed(2)} kg` : 'Nao informado' },
     { label: 'Idade', value: report.patient.ageMonths != null ? `${(report.patient.ageMonths / 12).toFixed(1)} anos` : 'Nao informado' },
@@ -135,7 +164,7 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
   ]
 
   const clinicalFields: ReportField[] = [
-    { label: 'Perfil clinico final', value: physiologicState },
+    { label: 'Perfil clínico final', value: physiologicState },
     { label: 'Perfil de exigencia', value: getHumanRequirementLabel(requirement) },
     { label: 'Indoor', value: report.patient.isIndoor ? 'Sim' : 'Nao' },
     { label: 'Hospitalizado', value: report.patient.isHospitalized ? 'Sim' : 'Nao' },
@@ -148,26 +177,8 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
     { label: 'Peso usado', value: report.energy.weightUsed != null ? `${report.energy.weightUsed.toFixed(2)} kg` : 'Nao informado' },
   ]
 
-  if (report.energy.activityHoursPerDay != null) {
-    energyFields.push({
-      label: 'Atividade diaria',
-      value: `${report.energy.activityHoursPerDay.toFixed(1)} h/dia`,
-    })
-  }
-
-  if (report.energy.activityImpact) {
-    energyFields.push({
-      label: 'Impacto da atividade',
-      value: report.energy.activityImpact === 'high' ? 'Alto impacto' : 'Baixo impacto',
-    })
-  }
-
-  if (report.energy.obesityProne) {
-    energyFields.push({
-      label: 'Predisposicao a obesidade',
-      value: 'Sim',
-    })
-  }
+  if (report.patient.isNeutered) energyFields.push({ label: 'Castracao considerada', value: 'Sim' })
+  if (report.patient.species === 'cat') energyFields.push({ label: 'Indoor considerado', value: report.patient.isIndoor ? 'Sim' : 'Nao' })
 
   const targetFields: ReportField[] = [
     { label: 'Objetivo', value: getGoalLabel(report.target.goal) },
@@ -183,7 +194,7 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
 
   const formulaMetaFields: ReportField[] = [
     { label: 'Tipo de dieta', value: getDietTypeLabel(report.diet.dietType) },
-    { label: 'Modo de formulacao', value: report.diet.formulationMode === 'complement' ? 'Complementar outras %' : 'Manual' },
+    { label: 'Modo de formulação', value: report.diet.formulationMode === 'complement' ? 'Complementar outras %' : 'Manual' },
     { label: 'Refeicoes por dia', value: String(report.diet.mealsPerDay) },
     { label: 'Quantidade por refeicao', value: report.diet.gramsPerMeal != null ? `${report.diet.gramsPerMeal.toFixed(1)} g` : 'Nao informado' },
     { label: 'Total diario (MN)', value: report.diet.totalAsFedGrams != null ? `${report.diet.totalAsFedGrams.toFixed(1)} g` : 'Nao informado' },
@@ -229,7 +240,7 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
     report.diet.mealsPerDay > 0 ? `${(item.gramsAsFed / report.diet.mealsPerDay).toFixed(1)} g` : 'Nao informado',
   ])
 
-  const feedingSheetRows = (programmed?.meals ?? report.formula.feedingPlan.meals.map((meal, index) => ({
+  const feedingRowsByMeal = (programmed?.meals ?? report.formula.feedingPlan.meals.map((meal, index) => ({
     id: `meal-${index}`,
     label: meal.label,
     time: meal.time,
@@ -240,7 +251,6 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
       gramsAsFed: Math.round(item.gramsAsFed / feedingMealsPerDay),
     })),
   }))).map((meal) => [
-    '__/__/____',
     meal.time,
     `${meal.totalGrams} g`,
     meal.items.map((item) => `${item.foodName}: ${item.gramsAsFed} g`).join(' | '),
@@ -248,10 +258,22 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
     '',
   ])
 
+  const feedingSheets = feedingDates.map((isoDate) => ({
+    dateLabel: toPtDate(isoDate),
+    meta: [
+      { label: 'Data', value: toPtDate(isoDate) },
+      { label: 'Animal', value: safeText(report.patient.name) },
+      { label: 'Alimentacoes por dia', value: String(feedingMealsPerDay) },
+      { label: 'Alimentos utilizados', value: report.formula.contributions.map((item) => item.foodName).join(', ') || 'Nao informado' },
+    ],
+    foodRows: feedingSheetFoodRows,
+    rows: feedingRowsByMeal,
+  }))
+
   return {
     generatedAt: toDateLabel(report.createdAt),
     patientTitle: safeText(report.patient.name),
-    patientSubtitle: `${getSpeciesLabel(report.patient.species)} • ${safeText(report.patient.ownerName)}`,
+    patientSubtitle: `${getSpeciesLabel(report.patient.species)} - ${safeText(report.patient.ownerName)}`,
     patientFields,
     clinicalFields,
     energyFields,
@@ -263,13 +285,7 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
     contributionRows,
     alertNotes,
     feedingSheetTitle: 'FICHA DE ALIMENTACAO',
-    feedingSheetMeta: [
-      { label: 'Data', value: new Date(report.createdAt).toLocaleDateString('pt-BR') },
-      { label: 'Animal', value: safeText(report.patient.name) },
-      { label: 'Alimentacoes por dia', value: String(feedingMealsPerDay) },
-      { label: 'Alimentos utilizados', value: report.formula.contributions.map((item) => item.foodName).join(', ') || 'Nao informado' },
-    ],
-    feedingSheetFoodRows,
-    feedingSheetRows,
+    feedingSheets,
   }
 }
+
