@@ -1,13 +1,34 @@
+import fs from 'node:fs';
 import path from 'path';
+import { fileURLToPath } from 'node:url';
+import react from '@vitejs/plugin-react';
 import { defineConfig, loadEnv } from 'vite';
 
+// Pasta real do projeto (VetiusLink pode ser junction → evita falha "Does the file exist?" + crash do Vite).
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const projectRoot = fs.realpathSync.native(__dirname);
+
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, '.', '');
+  const env = loadEnv(mode, projectRoot, '');
   return {
+    plugins: [react()],
+    // Raiz explícita no caminho físico — alinha com index.html / index.tsx em discos junction (Windows).
+    root: projectRoot,
     base: '/',
     server: {
-      port: 5175,
+      port: 5173,
       host: true,
+      // Com host: true, fixa o cliente HMR em localhost (evita WS falhar ao abrir pelo 127.0.0.1).
+      // NÃO fixar `port` aqui: se 5173 estiver ocupada o Vite sobe em 5174+ e o HMR deve usar a MESMA
+      // porta — senão o browser mistura origens e ainda tenta 5173 (426 Upgrade Required / WS quebrado).
+      hmr: {
+        host: 'localhost',
+      },
+      fs: {
+        // Junction Usuário → PROJETOS VET: permitir servir pelo caminho resolvido.
+        strict: false,
+        allow: [projectRoot],
+      },
       proxy: {
         '/api/deepseek': {
           target: 'https://api.deepseek.com',
@@ -28,7 +49,7 @@ export default defineConfig(({ mode }) => {
     },
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '.'),
+        '@': projectRoot,
       }
     },
     build: {

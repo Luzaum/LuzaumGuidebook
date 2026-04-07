@@ -11,12 +11,13 @@ import { useCalculationStore } from '../../store/calculationStore'
 import { computeDietPlan } from '../../lib/dietEngine'
 import { getFoodById, getNutrientDefinition, getRequirementById } from '../../lib/genutriData'
 import { getSavedReports, saveReport } from '../../lib/persistence'
-import { exportReportPdf } from '../../lib/reportDocument'
+import { exportReportPdf, printReportPdf } from '../../lib/reportDocument'
 import { calculateRefeedingRisk, getPhysiologicStateById, getProgressionPlan3Days, getProgressionPlan4Days } from '../../lib/nutrition'
 import { getClinicalProfileBadges, getHumanRequirementLabel } from '../../lib/clinicalProfiles'
 import { buildProgrammedFeedingPlan } from '../../lib/programmedFeeding'
 import { migrateLocalReportsToSupabase, saveNutritionReportToSupabase } from '../../lib/supabaseReports'
 import PrintableReportDocument from '../../components/PrintableReportDocument'
+import { EnergyPartitionChart } from '../../components/EnergyPartitionChart'
 import type { StoredCalculationReport } from '../../types'
 
 const NEW_ROUTE = '/calculadora-energetica/new'
@@ -49,7 +50,7 @@ function StatusBadge({ status }: { status: 'adequate' | 'below' | 'above' | 'ins
       : status === 'above'
       ? 'Acima do alvo'
       : status === 'manual'
-      ? 'Revisao manual'
+      ? 'Revisão manual'
       : 'Dados insuficientes'
 
   return <span className={`inline-flex rounded-full border px-3 py-1 text-xs font-medium ${classes}`}>{label}</span>
@@ -149,17 +150,22 @@ export default function SummaryStep() {
 
   const summaryItems = useMemo(() => {
     if (!result) return [] as Array<{ label: string; value: string }>
-    const items = [
+    const td = result.evaluation.totalDelivered
+    const items: Array<{ label: string; value: string }> = [
       { label: 'Energia entregue', value: `${result.totalKcal.toFixed(1)} kcal/dia` },
-      { label: 'Proteina total', value: formatDailyAmount('crudeProteinPct', result.evaluation.totalDelivered.crudeProteinPct) },
-      { label: 'Gordura total', value: formatDailyAmount('etherExtractPct', result.evaluation.totalDelivered.etherExtractPct) },
-      { label: 'Carboidrato estimado', value: formatDailyAmount('nitrogenFreeExtractPct', result.evaluation.totalDelivered.nitrogenFreeExtractPct) },
-      { label: 'Fibra', value: formatDailyAmount('crudeFiberPct', result.evaluation.totalDelivered.crudeFiberPct) },
-      { label: 'Calcio', value: formatDailyAmount('calciumPct', result.evaluation.totalDelivered.calciumPct) },
-      { label: 'Fosforo', value: formatDailyAmount('phosphorusPct', result.evaluation.totalDelivered.phosphorusPct) },
     ]
-    if (result.evaluation.totalDelivered.taurinePct != null) {
-      items.push({ label: 'Taurina', value: formatDailyAmount('taurinePct', result.evaluation.totalDelivered.taurinePct) })
+    const pushIf = (label: string, key: string, raw: number | null | undefined) => {
+      if (raw == null) return
+      items.push({ label, value: formatDailyAmount(key, raw) })
+    }
+    pushIf('Proteina total', 'crudeProteinPct', td.crudeProteinPct)
+    pushIf('Gordura total', 'etherExtractPct', td.etherExtractPct)
+    pushIf('Carboidrato estimado', 'nitrogenFreeExtractPct', td.nitrogenFreeExtractPct)
+    pushIf('Fibra', 'crudeFiberPct', td.crudeFiberPct)
+    pushIf('Calcio', 'calciumPct', td.calciumPct)
+    pushIf('Fosforo', 'phosphorusPct', td.phosphorusPct)
+    if (td.taurinePct != null) {
+      items.push({ label: 'Taurina', value: formatDailyAmount('taurinePct', td.taurinePct) })
     }
     return items
   }, [result])
@@ -182,16 +188,6 @@ export default function SummaryStep() {
         ? getProgressionPlan3Days(energy.rer ?? 0)
         : getProgressionPlan4Days(energy.rer ?? 0)
       : []
-
-  const macroChartStyle = useMemo(() => {
-    if (!result) return { background: 'conic-gradient(#334155 0% 100%)' }
-    const [protein, fat, carb] = result.evaluation.macroSplit
-    const proteinEnd = protein.percent
-    const fatEnd = protein.percent + fat.percent
-    return {
-      background: `conic-gradient(${protein.color} 0% ${proteinEnd}%, ${fat.color} ${proteinEnd}% ${fatEnd}%, ${carb.color} ${fatEnd}% 100%)`,
-    }
-  }, [result])
 
   const handleSave = async () => {
     if (!printableReport) return
@@ -229,8 +225,8 @@ export default function SummaryStep() {
                 <p className="mt-1 text-sm text-muted-foreground">Resumo clínico, formulação e alimentação programada.</p>
               </div>
               <div className="flex flex-wrap gap-2">
-                <Button variant="outline" size="sm" className="gap-2" onClick={() => window.print()}>
-                  <Printer className="h-4 w-4" /> Imprimir / PDF
+                <Button variant="outline" size="sm" className="gap-2" onClick={() => printableReport && printReportPdf(printableReport)}>
+                  <Printer className="h-4 w-4" /> Imprimir PDF
                 </Button>
                 <Button size="sm" className="gap-2" onClick={() => printableReport && exportReportPdf(printableReport)}>
                   <Download className="h-4 w-4" /> Exportar PDF
@@ -241,16 +237,16 @@ export default function SummaryStep() {
 
           <CardContent className="space-y-6 pt-6">
             <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
-              <Card className="border-white/10 bg-white/[0.03]">
+              <Card className="border-border bg-muted/25 dark:border-white/10 dark:bg-white/[0.03]">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-lg">Paciente e energia</CardTitle>
                 </CardHeader>
                 <CardContent className="grid gap-3 md:grid-cols-2">
-                  <div className="rounded-2xl border border-white/10 bg-black/10 p-4"><p className="text-xs text-muted-foreground">Paciente</p><p className="mt-1 font-semibold text-white">{patient.name || 'Nao informado'}</p></div>
-                  <div className="rounded-2xl border border-white/10 bg-black/10 p-4"><p className="text-xs text-muted-foreground">Tutor</p><p className="mt-1 font-semibold text-white">{patient.ownerName || '--'}</p></div>
-                  <div className="rounded-2xl border border-white/10 bg-black/10 p-4"><p className="text-xs text-muted-foreground">Espécie</p><p className="mt-1 font-semibold text-white">{species === 'dog' ? 'Cao' : 'Gato'}</p></div>
-                  <div className="rounded-2xl border border-white/10 bg-black/10 p-4"><p className="text-xs text-muted-foreground">Peso atual</p><p className="mt-1 font-semibold text-white">{currentWeight.toFixed(2)} kg</p></div>
-                  <div className="rounded-2xl border border-white/10 bg-black/10 p-4"><p className="text-xs text-muted-foreground">Perfil final</p><p className="mt-1 font-semibold text-white">{physiologicStateLabel}</p></div>
+                  <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4"><p className="text-xs text-muted-foreground">Paciente</p><p className="mt-1 font-semibold text-foreground dark:text-white">{patient.name || 'Nao informado'}</p></div>
+                  <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4"><p className="text-xs text-muted-foreground">Tutor</p><p className="mt-1 font-semibold text-foreground dark:text-white">{patient.ownerName || '--'}</p></div>
+                  <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4"><p className="text-xs text-muted-foreground">Espécie</p><p className="mt-1 font-semibold text-foreground dark:text-white">{species === 'dog' ? 'Cao' : 'Gato'}</p></div>
+                  <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4"><p className="text-xs text-muted-foreground">Peso atual</p><p className="mt-1 font-semibold text-foreground dark:text-white">{currentWeight.toFixed(2)} kg</p></div>
+                  <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4"><p className="text-xs text-muted-foreground">Perfil final</p><p className="mt-1 font-semibold text-foreground dark:text-white">{physiologicStateLabel}</p></div>
                   <div className="rounded-2xl border border-orange-400/25 bg-orange-500/[0.08] p-4"><p className="text-xs text-muted-foreground">Energia-alvo</p><p className="mt-1 text-2xl font-black text-orange-300">{target.targetEnergy?.toFixed(0) ?? '--'} kcal/dia</p></div>
                   <div className="md:col-span-2 flex flex-wrap gap-2">
                     <Badge variant="outline">{patient.isNeutered ? 'Castrado' : 'Não castrado'}</Badge>
@@ -263,52 +259,39 @@ export default function SummaryStep() {
                 </CardContent>
               </Card>
 
-              <Card className="border-white/10 bg-white/[0.03]">
+              <Card className="border-border bg-muted/25 dark:border-white/10 dark:bg-white/[0.03]">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-lg">Partição energética</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="flex justify-center py-2">
-                    <div id="summary-macro-chart" className="relative h-52 w-52 rounded-full border border-white/10 shadow-[0_12px_24px_rgba(0,0,0,0.18)]" style={macroChartStyle}>
-                      <div className="absolute inset-[24%] rounded-full border border-white/10 bg-[#171212]" />
-                      <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-                        <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Macro</p>
-                        <p className="mt-1 text-2xl font-black text-white">{result.totalKcal.toFixed(0)}</p>
-                        <p className="text-xs text-muted-foreground">kcal/dia</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="grid gap-3 md:grid-cols-3">
-                    {result.evaluation.macroSplit.map((slice) => (
-                      <div key={slice.key} className="rounded-2xl border border-white/10 bg-black/10 p-3">
-                        <div className="flex items-center gap-2">
-                          <span className="h-3 w-3 rounded-full" style={{ backgroundColor: slice.color }} />
-                          <p className="text-sm font-semibold text-white">{slice.label}</p>
-                        </div>
-                        <p className="mt-2 text-xl font-black text-white">{slice.percent.toFixed(1)}%</p>
-                        <p className="text-xs text-muted-foreground">{slice.grams.toFixed(1)} g · {slice.kcal.toFixed(1)} kcal</p>
-                      </div>
-                    ))}
-                  </div>
+                  <EnergyPartitionChart
+                    chartId="summary-macro-chart"
+                    totalKcal={result.totalKcal}
+                    macroSplit={result.evaluation.macroSplit}
+                    size="lg"
+                    kcalSuffix="kcal/dia"
+                    showTitle={false}
+                    showMacroKcal
+                  />
                 </CardContent>
               </Card>
             </div>
 
-            <Card className="border-white/10 bg-white/[0.03]">
+            <Card className="border-border bg-muted/25 dark:border-white/10 dark:bg-white/[0.03]">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg">Resumo nutricional</CardTitle>
               </CardHeader>
               <CardContent className="grid gap-3 md:grid-cols-4">
                 {summaryItems.map((item) => (
-                  <div key={item.label} className="rounded-2xl border border-white/10 bg-black/10 p-4">
+                  <div key={item.label} className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4">
                     <p className="text-xs text-muted-foreground">{item.label}</p>
-                    <p className="mt-1 font-semibold text-white">{item.value}</p>
+                    <p className="mt-1 font-semibold text-foreground dark:text-white">{item.value}</p>
                   </div>
                 ))}
               </CardContent>
             </Card>
 
-            <Card className="border-white/10 bg-white/[0.03]">
+            <Card className="border-border bg-muted/25 dark:border-white/10 dark:bg-white/[0.03]">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg">Contribuição por alimento</CardTitle>
               </CardHeader>
@@ -316,44 +299,60 @@ export default function SummaryStep() {
                 {result.contributions.map((item) => {
                   const food = getFoodById(item.foodId)
                   return (
-                    <div key={item.foodId} className="grid gap-3 rounded-2xl border border-white/10 bg-black/10 p-4 md:grid-cols-4">
-                      <div><p className="font-semibold text-white">{item.foodName}</p><p className="text-xs text-muted-foreground">{food?.categoryNormalized ?? 'Sem categoria'}</p></div>
-                      <div><p className="text-xs text-muted-foreground">Inclusão</p><p className="font-medium text-white">{item.inclusionPct.toFixed(2)}%</p></div>
-                      <div><p className="text-xs text-muted-foreground">Oferta diária</p><p className="font-medium text-white">{item.gramsAsFed.toFixed(2)} g</p></div>
-                      <div><p className="text-xs text-muted-foreground">Energia</p><p className="font-medium text-white">{item.deliveredKcal.toFixed(2)} kcal</p></div>
+                    <div key={item.foodId} className="grid gap-3 rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4 md:grid-cols-4">
+                      <div><p className="font-semibold text-foreground dark:text-white">{item.foodName}</p><p className="text-xs text-muted-foreground">{food?.categoryNormalized ?? 'Sem categoria'}</p></div>
+                      <div><p className="text-xs text-muted-foreground">Inclusão</p><p className="font-medium text-foreground dark:text-white">{item.inclusionPct.toFixed(2)}%</p></div>
+                      <div><p className="text-xs text-muted-foreground">Oferta diária</p><p className="font-medium text-foreground dark:text-white">{item.gramsAsFed.toFixed(2)} g</p></div>
+                      <div><p className="text-xs text-muted-foreground">Energia</p><p className="font-medium text-foreground dark:text-white">{item.deliveredKcal.toFixed(2)} kcal</p></div>
                     </div>
                   )
                 })}
               </CardContent>
             </Card>
 
-            <Card className="border-white/10 bg-white/[0.03]">
+            <Card className="border-border bg-muted/25 dark:border-white/10 dark:bg-white/[0.03]">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg">Adequação frente ao perfil</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                {result.evaluation.adequacy.filter((item) => item.status !== 'insufficient_data').map((item) => (
-                  <div key={`${item.profileId}-${item.key}`} className="grid gap-4 rounded-2xl border border-white/10 bg-black/10 p-4 lg:grid-cols-[1.1fr_0.7fr_0.5fr]">
-                    <div><p className="font-semibold text-white">{item.label}</p><p className="mt-2 text-xs text-muted-foreground">{item.reason}</p></div>
-                    <div><p className="text-xs text-muted-foreground">Entregue</p><p className="mt-1 font-semibold text-white">{item.deliveredValue != null ? item.deliveredValue.toFixed(2) : '--'}</p></div>
-                    <div className="flex items-center lg:justify-end"><StatusBadge status={item.status} /></div>
-                  </div>
-                ))}
+                {result.evaluation.adequacy.filter((item) => item.deliveredValue != null).length === 0 ? (
+                  <p className="text-sm text-muted-foreground">
+                    Nenhum nutriente com valor entregue disponível para comparar ao perfil (nutrientes sem dado cadastrado ficam de fora deste resumo).
+                  </p>
+                ) : (
+                  result.evaluation.adequacy
+                    .filter((item) => item.deliveredValue != null)
+                    .map((item) => (
+                      <div key={`${item.profileId}-${item.key}`} className="grid gap-4 rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4 lg:grid-cols-[1.1fr_0.7fr_0.5fr]">
+                        <div>
+                          <p className="font-semibold text-foreground dark:text-white">{item.label}</p>
+                          <p className="mt-2 text-xs text-muted-foreground">{item.reason}</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-muted-foreground">Entregue</p>
+                          <p className="mt-1 font-semibold text-foreground dark:text-white">{item.deliveredValue!.toFixed(2)}</p>
+                        </div>
+                        <div className="flex items-center lg:justify-end">
+                          <StatusBadge status={item.status} />
+                        </div>
+                      </div>
+                    ))
+                )}
               </CardContent>
             </Card>
 
             {programmedFeeding && (
-              <Card className="border-white/10 bg-white/[0.03]">
+              <Card className="border-border bg-muted/25 dark:border-white/10 dark:bg-white/[0.03]">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-lg">6. Alimentação programada</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="grid gap-4 xl:grid-cols-[0.75fr_1.25fr]">
-                    <div className="space-y-4 rounded-2xl border border-white/10 bg-black/10 p-4">
-                      <p className="font-semibold text-white">Configuração diária</p>
+                    <div className="space-y-4 rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4">
+                      <p className="font-semibold text-foreground dark:text-white">Configuração diária</p>
                       <div className="grid grid-cols-4 gap-2">
                         {[1, 2, 3, 4, 5, 6].map((value) => (
-                          <button key={value} type="button" onClick={() => setProgrammedMealsPerDay(value)} className={`rounded-xl border px-3 py-3 text-sm transition-all ${programmedMealsPerDay === value ? 'border-orange-400/60 bg-orange-500/12 text-white' : 'border-white/10 bg-black/10 text-muted-foreground hover:border-orange-500/30 hover:text-white'}`}>{value}</button>
+                          <button key={value} type="button" onClick={() => setProgrammedMealsPerDay(value)} className={`rounded-xl border px-3 py-3 text-sm transition-all ${programmedMealsPerDay === value ? 'border-orange-400/60 bg-orange-500/12 text-foreground dark:text-white' : 'border-border bg-muted/40 text-muted-foreground hover:border-orange-500/40 hover:text-foreground dark:border-white/10 dark:bg-black/10 dark:hover:text-white'}`}>{value}</button>
                         ))}
                       </div>
                       <div className="space-y-2">
@@ -363,7 +362,7 @@ export default function SummaryStep() {
                           type="date"
                           value={programmedStartDate}
                           onChange={(event) => setProgrammedStartDate(event.target.value)}
-                          className="max-w-[220px] border-white/10 bg-black/20"
+                          className="max-w-[220px] border-border bg-muted/50 dark:border-white/10 dark:bg-black/20"
                         />
                       </div>
                       <div className="space-y-2">
@@ -374,8 +373,8 @@ export default function SummaryStep() {
                             onClick={() => setPrintRangeMode('single_day')}
                             className={`rounded-xl border px-3 py-2 text-xs transition-all ${
                               printRangeMode === 'single_day'
-                                ? 'border-orange-400/60 bg-orange-500/12 text-white'
-                                : 'border-white/10 bg-black/10 text-muted-foreground hover:border-orange-500/30 hover:text-white'
+                                ? 'border-orange-400/60 bg-orange-500/12 text-foreground dark:text-white'
+                                : 'border-border bg-muted/40 text-muted-foreground hover:border-orange-500/40 hover:text-foreground dark:border-white/10 dark:bg-black/10 dark:hover:text-white'
                             }`}
                           >
                             Imprimir apenas esta data
@@ -385,8 +384,8 @@ export default function SummaryStep() {
                             onClick={() => setPrintRangeMode('next_3_days')}
                             className={`rounded-xl border px-3 py-2 text-xs transition-all ${
                               printRangeMode === 'next_3_days'
-                                ? 'border-orange-400/60 bg-orange-500/12 text-white'
-                                : 'border-white/10 bg-black/10 text-muted-foreground hover:border-orange-500/30 hover:text-white'
+                                ? 'border-orange-400/60 bg-orange-500/12 text-foreground dark:text-white'
+                                : 'border-border bg-muted/40 text-muted-foreground hover:border-orange-500/40 hover:text-foreground dark:border-white/10 dark:bg-black/10 dark:hover:text-white'
                             }`}
                           >
                             Imprimir para os próximos 3 dias
@@ -398,8 +397,8 @@ export default function SummaryStep() {
                       </div>
                       <div className="space-y-2">
                         {programmedFeeding.meals.map((meal, index) => (
-                          <div key={meal.id} className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/10 px-3 py-2">
-                            <span className="w-28 text-sm text-white">{meal.label}</span>
+                          <div key={meal.id} className="flex items-center gap-3 rounded-xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 px-3 py-2">
+                            <span className="w-28 text-sm text-foreground dark:text-white">{meal.label}</span>
                             <Input
                               type="time"
                               value={programmedTimes[index] ?? meal.time}
@@ -410,18 +409,18 @@ export default function SummaryStep() {
                                   return next
                                 })
                               }
-                              className="max-w-[160px] border-white/10 bg-black/20"
+                              className="max-w-[160px] border-border bg-muted/50 dark:border-white/10 dark:bg-black/20"
                             />
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    <div className="space-y-3 rounded-2xl border border-white/10 bg-black/10 p-4">
+                    <div className="space-y-3 rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4">
                       {programmedFeeding.meals.map((meal) => (
-                        <div key={meal.id} className="rounded-2xl border border-white/10 bg-[#181212] p-4">
+                        <div key={meal.id} className="rounded-2xl border border-border bg-muted/50 p-4 dark:border-white/10 dark:bg-[#181212]">
                           <div className="flex items-center justify-between gap-3">
-                            <div><p className="font-semibold text-white">{meal.label}</p><p className="text-xs text-muted-foreground">{meal.time}</p></div>
+                            <div><p className="font-semibold text-foreground dark:text-white">{meal.label}</p><p className="text-xs text-muted-foreground">{meal.time}</p></div>
                             <p className="text-lg font-black text-orange-300">{meal.totalGrams} g</p>
                           </div>
                           <div className="mt-3 overflow-x-auto">
@@ -436,9 +435,9 @@ export default function SummaryStep() {
                               </thead>
                               <tbody>
                                 {meal.items.map((item) => (
-                                  <tr key={`${meal.id}-${item.foodId}`} className="border-t border-white/5">
-                                    <td className="py-2 text-white">{item.foodName}</td>
-                                    <td className="py-2 text-white">{item.gramsAsFed} g</td>
+                                  <tr key={`${meal.id}-${item.foodId}`} className="border-t border-border/60 dark:border-white/5">
+                                    <td className="py-2 text-foreground dark:text-white">{item.foodName}</td>
+                                    <td className="py-2 text-foreground dark:text-white">{item.gramsAsFed} g</td>
                                     <td className="py-2 text-muted-foreground">Sim / Não</td>
                                     <td className="py-2 text-muted-foreground">Pesar sobra</td>
                                   </tr>
@@ -455,15 +454,15 @@ export default function SummaryStep() {
             )}
 
             {patient.isHospitalized && (
-              <Card className="border-white/10 bg-white/[0.03]">
+              <Card className="border-border bg-muted/25 dark:border-white/10 dark:bg-white/[0.03]">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-lg">Hospitalização e progressão alimentar</CardTitle>
                 </CardHeader>
                 <CardContent className="grid gap-3 md:grid-cols-4">
-                  <div className="rounded-2xl border border-white/10 bg-black/10 p-4"><p className="text-xs text-muted-foreground">Risco</p><p className="mt-1 font-semibold text-white">{hospitalRisk === 'high' ? 'Alto risco' : hospitalRisk === 'moderate' ? 'Risco moderado' : 'Baixo risco'}</p></div>
-                  <div className="rounded-2xl border border-white/10 bg-black/10 p-4"><p className="text-xs text-muted-foreground">Via</p><p className="mt-1 font-semibold text-white">{hospital.feedingRoute ?? 'Não informada'}</p></div>
-                  <div className="rounded-2xl border border-white/10 bg-black/10 p-4"><p className="text-xs text-muted-foreground">Ingestao recente</p><p className="mt-1 font-semibold text-white">{hospital.recentIntakePercent ?? 0}%</p></div>
-                  <div className="rounded-2xl border border-white/10 bg-black/10 p-4"><p className="text-xs text-muted-foreground">Protocolo</p><p className="mt-1 font-semibold text-white">{hospital.progressionProtocol === '3_days' ? '3 dias' : '4 dias'}</p></div>
+                  <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4"><p className="text-xs text-muted-foreground">Risco</p><p className="mt-1 font-semibold text-foreground dark:text-white">{hospitalRisk === 'high' ? 'Alto risco' : hospitalRisk === 'moderate' ? 'Risco moderado' : 'Baixo risco'}</p></div>
+                  <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4"><p className="text-xs text-muted-foreground">Via</p><p className="mt-1 font-semibold text-foreground dark:text-white">{hospital.feedingRoute ?? 'Não informada'}</p></div>
+                  <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4"><p className="text-xs text-muted-foreground">Ingestao recente</p><p className="mt-1 font-semibold text-foreground dark:text-white">{hospital.recentIntakePercent ?? 0}%</p></div>
+                  <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4"><p className="text-xs text-muted-foreground">Protocolo</p><p className="mt-1 font-semibold text-foreground dark:text-white">{hospital.progressionProtocol === '3_days' ? '3 dias' : '4 dias'}</p></div>
                   {progressionPlan.map((day) => (
                     <div key={day.day} className="rounded-2xl border border-orange-400/20 bg-orange-500/[0.08] p-4">
                       <p className="text-xs text-muted-foreground">Dia {day.day}</p>

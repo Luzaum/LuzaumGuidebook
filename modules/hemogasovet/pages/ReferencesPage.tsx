@@ -50,7 +50,7 @@ export default function ReferencesPage() {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in duration-500">
+    <div className="w-full space-y-8 animate-in fade-in duration-500">
       <div className="flex items-center gap-4 mb-8">
         <div className="p-3 bg-purple-100 dark:bg-purple-900/30 rounded-xl">
           <FileText className="w-8 h-8 text-purple-600 dark:text-purple-400" />
@@ -63,7 +63,7 @@ export default function ReferencesPage() {
         </div>
       </div>
 
-      <div className="grid gap-6">
+      <div className="grid gap-6 grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
         {references.map((ref, idx) => (
           <div 
             key={idx} 

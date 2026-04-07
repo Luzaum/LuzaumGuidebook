@@ -22,6 +22,8 @@ import { getClinicalProfileIdsFromSelections } from '../../lib/clinicalProfiles'
 import type { DietFormulaEntry, DietType, FoodItem } from '../../types'
 import { MEALS_OPTIONS } from '../../lib/nutrition'
 import { cn } from '../../lib/utils'
+import { EnergyPartitionChart } from '../../components/EnergyPartitionChart'
+import { DIET_CATALOG_TITLE, DietTypeCards } from '../../components/DietTypeCards'
 
 const NEW_ROUTE = '/calculadora-energetica/new'
 
@@ -37,12 +39,6 @@ const REQUIRED_NUTRIENT_KEYS = new Set([
   'calciumPct',
   'phosphorusPct',
 ])
-
-const DIET_TYPE_OPTIONS: Array<{ value: DietType; label: string; description: string; emoji: string }> = [
-  { value: 'commercial', label: 'Comercial', description: 'Rações secas, úmidas e fórmulas prontas.', emoji: '🥣' },
-  { value: 'natural', label: '100% Natural', description: 'Ingredientes naturais, suplementos e bases.', emoji: '🍃' },
-  { value: 'hybrid', label: 'Híbrida', description: 'Combina comercial e natural no mesmo plano.', emoji: '📋' },
-]
 
 function resolveFoodTypeFilter(dietType: DietType): string[] | undefined {
   if (dietType === 'commercial') return ['commercial']
@@ -120,14 +116,6 @@ export default function FoodStep() {
       additionalRequirementProfileIds,
     })
   }, [additionalRequirementProfileIds, currentWeight, entries, mealsPerDay, patient.name, requirementProfileId, species, targetEnergy])
-
-  const macroChartStyle = useMemo(() => {
-    if (!preview) return {}
-    const [protein, fat, carb] = preview.evaluation.macroSplit
-    const proteinEnd = protein.percent
-    const fatEnd = protein.percent + fat.percent
-    return { background: `conic-gradient(${protein.color} 0% ${proteinEnd}%, ${fat.color} ${proteinEnd}% ${fatEnd}%, ${carb.color} ${fatEnd}% 100%)` }
-  }, [preview])
 
   const inclusionSum = useMemo(() => entries.reduce((sum, e) => sum + e.inclusionPct, 0), [entries])
   const detailsFood = detailsFoodId ? getFoodById(detailsFoodId) : undefined
@@ -305,42 +293,22 @@ export default function FoodStep() {
             {/* ─── COLUNA ESQUERDA ─── */}
             <div className="space-y-5 min-w-0 px-6 pt-6 pb-6 xl:overflow-y-auto xl:max-h-[calc(100svh-220px)]">
 
-              {/* Tipo de dieta */}
-              <div>
-                <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-muted-foreground">Tipo de dieta</p>
-                <div className="grid grid-cols-3 gap-3">
-                  {DIET_TYPE_OPTIONS.map((option) => {
-                    const active = dietType === option.value
-                    return (
-                      <button
-                        key={option.value}
-                        type="button"
-                        onClick={() => setDietType(option.value)}
-                        className={cn(
-                          'flex flex-col items-center gap-2 rounded-2xl border px-3 py-4 text-center transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98]',
-                          active
-                            ? 'border-orange-400/60 bg-orange-500/12 ring-1 ring-orange-400/30 shadow-[0_8px_20px_rgba(249,115,22,0.10)]'
-                            : 'border-border dark:border-white/10 bg-white dark:bg-[#1b1514] hover:border-orange-400/30',
-                        )}
-                      >
-                        <span className="text-2xl">{option.emoji}</span>
-                        <span className={cn('text-xs font-semibold', active ? 'text-orange-200' : 'text-foreground dark:text-white')}>{option.label}</span>
-                        {active && <span className="h-1 w-4 rounded-full bg-orange-400" />}
-                      </button>
-                    )
-                  })}
-                </div>
-              </div>
+              <DietTypeCards value={dietType} onChange={setDietType} />
 
               {/* Filtros de busca */}
-              <div className="rounded-2xl border border-white/10 bg-[#171212] p-4 space-y-3">
+              <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-[#171212] p-4 space-y-3">
                 <div className="relative">
                   <Search className="pointer-events-none absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                  <Input placeholder="Buscar alimento..." className="pl-9 bg-[#221a19] border-white/10" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+                  <Input
+                    placeholder="Buscar alimento..."
+                    className="pl-9 border-border bg-card dark:border-white/10 dark:bg-[#221a19]"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                  />
                 </div>
                 <div className="grid grid-cols-1 gap-3">
                   <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                    <SelectTrigger className="rounded-xl border-white/10 bg-[#221a19] text-sm">
+                    <SelectTrigger className="rounded-xl border-border bg-card text-sm dark:border-white/10 dark:bg-[#221a19]">
                       <SelectValue placeholder="Categoria" />
                     </SelectTrigger>
                     <SelectContent>
@@ -352,19 +320,24 @@ export default function FoodStep() {
               </div>
 
               {/* Catálogo de alimentos */}
-              <div className="rounded-2xl border border-white/10 bg-[#171212] p-4">
+              <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-[#171212] p-4">
                 <div className="flex items-center justify-between mb-3">
-                  <p className="text-sm font-semibold text-white">Catálogo — {visibleFoods.length} opções</p>
+                  <p className="text-sm font-semibold text-foreground dark:text-white">
+                    {DIET_CATALOG_TITLE[dietType]} — {visibleFoods.length} opções
+                  </p>
                   <Badge variant="outline" className="text-xs">{species === 'dog' ? 'Cão' : 'Gato'}</Badge>
                 </div>
                 <div className="max-h-72 space-y-2 overflow-y-auto pr-1">
                   {visibleFoods.map((food) => {
                     const alreadyAdded = entries.some((e) => e.foodId === food.id)
                     return (
-                      <div key={food.id} className="rounded-xl border border-white/10 bg-[#221a19] p-3 hover:border-orange-400/30 transition-colors">
+                      <div
+                        key={food.id}
+                        className="rounded-xl border border-border bg-card p-3 transition-colors hover:border-orange-400/30 dark:border-white/10 dark:bg-[#221a19]"
+                      >
                         <div className="flex items-start justify-between gap-2">
                           <div className="min-w-0 flex-1">
-                            <p className="text-sm font-medium text-white truncate">{food.name}</p>
+                            <p className="text-sm font-medium text-foreground dark:text-white truncate">{food.name}</p>
                             <p className="text-xs text-muted-foreground mt-0.5">{food.categoryNormalized ?? 'Sem categoria'}</p>
                           </div>
                           <div className="flex items-center gap-1.5 shrink-0">
@@ -382,9 +355,9 @@ export default function FoodStep() {
                             { label: 'Proteína', value: formatNutrient(food.nutrientsAsFed.crudeProteinPct, '%', 1) },
                             { label: 'Gordura', value: formatNutrient(food.nutrientsAsFed.etherExtractPct, '%', 1) },
                           ].map((item) => (
-                            <div key={item.label} className="rounded-lg bg-black/20 px-2 py-1.5">
+                            <div key={item.label} className="rounded-lg bg-muted/60 px-2 py-1.5 dark:bg-black/20">
                               <p className="text-[10px] text-muted-foreground">{item.label}</p>
-                              <p className="text-xs font-semibold text-white mt-0.5">{item.value}</p>
+                              <p className="text-xs font-semibold text-foreground dark:text-white mt-0.5">{item.value}</p>
                             </div>
                           ))}
                         </div>
@@ -395,12 +368,12 @@ export default function FoodStep() {
               </div>
 
               {/* Mistura selecionada */}
-              <div className="rounded-2xl border border-white/10 bg-[#171212] p-4">
+              <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-[#171212] p-4">
                 <div className="flex items-center justify-between mb-2">
-                  <p className="text-sm font-semibold text-white">Formulação</p>
+                  <p className="text-sm font-semibold text-foreground dark:text-white">Formulação</p>
                   <div className="flex items-center gap-2">
                     {/* Seletor de modo */}
-                    <div className="flex rounded-xl border border-white/10 overflow-hidden text-[10px] font-semibold">
+                    <div className="flex overflow-hidden rounded-xl border border-border text-[10px] font-semibold dark:border-white/10">
                       <button
                         type="button"
                         onClick={() => setFormulationMode('manual')}
@@ -408,7 +381,7 @@ export default function FoodStep() {
                           'px-2.5 py-1.5 transition-colors',
                           formulationMode === 'manual'
                             ? 'bg-orange-500/20 text-orange-200'
-                            : 'text-muted-foreground hover:text-white',
+                            : 'text-muted-foreground hover:text-foreground dark:hover:text-white',
                         )}
                       >
                         Modo manual
@@ -417,10 +390,10 @@ export default function FoodStep() {
                         type="button"
                         onClick={() => setFormulationMode('complement')}
                         className={cn(
-                          'px-2.5 py-1.5 border-l border-white/10 transition-colors',
+                          'border-l border-border px-2.5 py-1.5 transition-colors dark:border-white/10',
                           formulationMode === 'complement'
                             ? 'bg-sky-500/20 text-sky-200'
-                            : 'text-muted-foreground hover:text-white',
+                            : 'text-muted-foreground hover:text-foreground dark:hover:text-white',
                         )}
                       >
                         Complementar %
@@ -491,22 +464,24 @@ export default function FoodStep() {
                 {/* Totais da formulação */}
                 {preview && selectedFoods.length > 0 && (
                   <div className="grid grid-cols-3 gap-2 mb-3">
-                    <div className="rounded-lg border border-white/5 bg-black/20 px-2.5 py-2 text-center">
+                    <div className="rounded-lg border border-border/60 bg-muted/50 px-2.5 py-2 text-center dark:border-white/5 dark:bg-black/20">
                       <p className="text-[10px] text-muted-foreground">Total incluído</p>
-                        <p className="text-xs font-bold text-white mt-0.5">{inclusionSum.toFixed(1)}%</p>
+                        <p className="text-xs font-bold text-foreground dark:text-white mt-0.5">{inclusionSum.toFixed(1)}%</p>
                     </div>
-                    <div className="rounded-lg border border-white/5 bg-black/20 px-2.5 py-2 text-center">
+                    <div className="rounded-lg border border-border/60 bg-muted/50 px-2.5 py-2 text-center dark:border-white/5 dark:bg-black/20">
                       <p className="text-[10px] text-muted-foreground">Total diário</p>
                       <p className="text-xs font-bold text-orange-300 mt-0.5">{preview.totalAsFedGrams.toFixed(1)} g</p>
                     </div>
-                    <div className="rounded-lg border border-white/5 bg-black/20 px-2.5 py-2 text-center">
+                    <div className="rounded-lg border border-border/60 bg-muted/50 px-2.5 py-2 text-center dark:border-white/5 dark:bg-black/20">
                       <p className="text-[10px] text-muted-foreground">Total kcal</p>
                       <p className="text-xs font-bold text-orange-300 mt-0.5">{preview.totalKcal.toFixed(0)} kcal</p>
                     </div>
                   </div>
                 )}
                 {selectedFoods.length === 0 ? (
-                  <p className="text-sm text-muted-foreground rounded-xl border border-dashed border-white/10 p-3">Nenhum alimento adicionado ainda.</p>
+                  <p className="rounded-xl border border-dashed border-border p-3 text-sm text-muted-foreground dark:border-white/10">
+                    Nenhum alimento adicionado ainda.
+                  </p>
                 ) : (
                   <div className="space-y-3">
                     {selectedFoods.map(({ food, entry }) => {
@@ -524,13 +499,13 @@ export default function FoodStep() {
                               ? 'border-orange-400/60 bg-orange-500/[0.10] shadow-[0_0_12px_rgba(249,115,22,0.15)]'
                               : isFlashedImpacted
                               ? 'border-sky-400/30 bg-sky-500/[0.06]'
-                              : 'border-white/10 bg-[#221a19]',
+                              : 'border-border bg-card dark:border-white/10 dark:bg-[#221a19]',
                           )}
                         >
                           {/* Cabeçalho do alimento */}
                           <div className="flex items-start justify-between gap-2">
                             <div className="min-w-0 flex-1">
-                              <p className="text-sm font-semibold text-white truncate">{food.name}</p>
+                              <p className="text-sm font-semibold text-foreground dark:text-white truncate">{food.name}</p>
                               <p className="text-xs text-muted-foreground">{food.categoryNormalized ?? 'Sem categoria'} · MS: {formatNutrient(food.nutrientsAsFed.dryMatterPct, '%', 1)}</p>
                             </div>
                             <Button variant="ghost" size="icon" className="h-7 w-7 shrink-0" onClick={() => removeFood(food.id)}>
@@ -566,7 +541,7 @@ export default function FoodStep() {
                                 onChange={(e) => setEditingPct((p) => ({ ...p, [food.id]: e.target.value }))}
                                 onBlur={() => commitPct(food.id, entry.inclusionPct)}
                                 onKeyDown={(e) => e.key === 'Enter' && commitPct(food.id, entry.inclusionPct)}
-                                className="h-8 text-sm bg-black/20 border-white/10 focus:border-orange-400/60 transition-colors"
+                                className="h-8 border-border bg-muted/50 text-sm transition-colors focus:border-orange-400/60 dark:border-white/10 dark:bg-black/20"
                               />
                             </div>
 
@@ -587,7 +562,7 @@ export default function FoodStep() {
                                 onChange={(e) => setEditingGrams((p) => ({ ...p, [food.id]: e.target.value }))}
                                 onBlur={() => commitGrams(food.id)}
                                 onKeyDown={(e) => e.key === 'Enter' && commitGrams(food.id)}
-                                className="h-8 text-sm bg-black/20 border-white/10 focus:border-orange-400/60 transition-colors disabled:opacity-40"
+                                className="h-8 border-border bg-muted/50 text-sm transition-colors focus:border-orange-400/60 disabled:opacity-40 dark:border-white/10 dark:bg-black/20"
                               />
                             </div>
                           </div>
@@ -595,13 +570,13 @@ export default function FoodStep() {
                           {/* Stats derivados — somente leitura */}
                           {contribution && (
                             <div className="grid grid-cols-2 gap-2">
-                              <div className="rounded-lg bg-black/20 px-2.5 py-2">
+                              <div className="rounded-lg bg-muted/50 px-2.5 py-2 dark:bg-black/20">
                                 <p className="text-[10px] text-muted-foreground">Quantidade por refeição</p>
-                                <p className="text-xs font-semibold text-white mt-0.5">
+                                <p className="text-xs font-semibold text-foreground dark:text-white mt-0.5">
                                   {gramsPerMeal != null ? `${gramsPerMeal.toFixed(1)} g` : '—'}
                                 </p>
                               </div>
-                              <div className="rounded-lg bg-black/20 px-2.5 py-2">
+                              <div className="rounded-lg bg-muted/50 px-2.5 py-2 dark:bg-black/20">
                                 <p className="text-[10px] text-muted-foreground">Energia entregue</p>
                                 <p className="text-xs font-semibold text-orange-300 mt-0.5">
                                   {contribution.deliveredKcal.toFixed(1)} kcal/dia
@@ -636,9 +611,9 @@ export default function FoodStep() {
               </div>
 
               {/* Refeições + stats */}
-              <div className="rounded-2xl border border-white/10 bg-[#171212] p-4 space-y-4">
+              <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-[#171212] p-4 space-y-4">
                 <div>
-                  <Label className="text-sm font-semibold text-white">Refeições por dia</Label>
+                  <Label className="text-sm font-semibold text-foreground dark:text-white">Refeições por dia</Label>
                   <div className="mt-2 grid grid-cols-5 gap-2">
                     {MEALS_OPTIONS.map((n) => (
                       <button
@@ -647,7 +622,9 @@ export default function FoodStep() {
                         onClick={() => setMealsPerDay(n)}
                         className={cn(
                           'rounded-xl border px-2 py-3 text-center transition-all hover:-translate-y-0.5 active:scale-[0.98]',
-                          mealsPerDay === n ? 'border-orange-400/60 bg-orange-500/12 text-orange-200' : 'border-white/10 bg-[#221a19] text-muted-foreground',
+                          mealsPerDay === n
+                            ? 'border-orange-400/60 bg-orange-500/12 text-orange-900 dark:text-orange-200'
+                            : 'border-border bg-card text-muted-foreground dark:border-white/10 dark:bg-[#221a19]',
                         )}
                       >
                         <p className="text-xl font-black">{n}</p>
@@ -662,14 +639,14 @@ export default function FoodStep() {
                     <p className="text-lg font-black text-orange-300 mt-0.5">{targetEnergy.toFixed(0)}</p>
                     <p className="text-[10px] text-muted-foreground">kcal/dia</p>
                   </div>
-                  <div className="rounded-xl border border-white/10 bg-black/10 p-3 text-center">
+                  <div className="rounded-xl border border-border bg-muted/40 p-3 text-center dark:border-white/10 dark:bg-black/10">
                     <p className="text-[10px] text-muted-foreground">Peso usado</p>
-                    <p className="text-lg font-black text-white mt-0.5">{currentWeight.toFixed(1)}</p>
+                    <p className="mt-0.5 text-lg font-black text-foreground dark:text-white">{currentWeight.toFixed(1)}</p>
                     <p className="text-[10px] text-muted-foreground">kg</p>
                   </div>
-                  <div className="rounded-xl border border-white/10 bg-black/10 p-3 text-center">
+                  <div className="rounded-xl border border-border bg-muted/40 p-3 text-center dark:border-white/10 dark:bg-black/10">
                     <p className="text-[10px] text-muted-foreground">Espécie</p>
-                    <p className="text-base font-black text-white mt-0.5">{species === 'dog' ? '🐕' : '🐈'}</p>
+                    <p className="mt-0.5 text-base font-black text-foreground dark:text-white">{species === 'dog' ? '🐕' : '🐈'}</p>
                     <p className="text-[10px] text-muted-foreground">{species === 'dog' ? 'Cão' : 'Gato'}</p>
                   </div>
                 </div>
@@ -678,7 +655,7 @@ export default function FoodStep() {
               {/* Explicação MS vs MN */}
               <div className="rounded-2xl border border-orange-400/15 bg-orange-500/[0.05] p-4">
                 <div className="flex items-center gap-2 mb-2">
-                  <p className="text-sm font-semibold text-white">Matéria seca vs. natural</p>
+                  <p className="text-sm font-semibold text-foreground dark:text-white">Matéria seca vs. natural</p>
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild>
@@ -708,7 +685,7 @@ export default function FoodStep() {
                 </div>
 
                 {!preview ? (
-                  <div className="rounded-2xl border border-dashed border-white/10 bg-[#171212] p-8 text-center">
+                  <div className="rounded-2xl border border-dashed border-border bg-muted/40 p-8 text-center dark:border-white/10 dark:bg-[#171212]">
                     <p className="text-2xl mb-2">🍽️</p>
                     <p className="text-sm text-muted-foreground">Adicione alimentos para ver a prévia nutricional em tempo real.</p>
                   </div>
@@ -724,46 +701,22 @@ export default function FoodStep() {
                           { label: 'Matéria natural', value: `${preview.totalAsFedGrams.toFixed(1)} g` },
                           { label: 'Por refeição', value: `${preview.feedingPlan.meals[0]?.gramsAsFed.toFixed(1) ?? '0.0'} g` },
                         ].map((item) => (
-                          <div key={item.label} className="rounded-xl bg-black/20 p-3 text-center">
+                          <div key={item.label} className="rounded-xl bg-muted/50 p-3 text-center dark:bg-black/20">
                             <p className="text-[10px] text-muted-foreground">{item.label}</p>
-                            <p className="text-base font-black text-orange-300 mt-1">{item.value}</p>
+                            <p className="mt-1 text-base font-black text-orange-600 dark:text-orange-300">{item.value}</p>
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    {/* Donut + macros */}
-                    <div className="rounded-2xl border border-white/10 bg-[#171212] p-4">
-                      <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">Partição energética</p>
-                      <div className="flex items-center gap-6">
-                        {/* Donut */}
-                        <div className="relative shrink-0 h-28 w-28 rounded-full" style={macroChartStyle}>
-                          <div className="absolute inset-[22%] rounded-full bg-[#171212]" />
-                          <div className="absolute inset-0 flex flex-col items-center justify-center">
-                            <p className="text-xs font-black text-white leading-none">{preview.totalKcal.toFixed(0)}</p>
-                            <p className="text-[9px] text-muted-foreground">kcal</p>
-                          </div>
-                        </div>
-                        {/* Legenda */}
-                        <div className="flex-1 space-y-2">
-                          {preview.evaluation.macroSplit.map((slice) => (
-                            <div key={slice.key} className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="h-2 w-2 rounded-full shrink-0" style={{ backgroundColor: slice.color }} />
-                                <span className="text-xs text-muted-foreground">{slice.label}</span>
-                              </div>
-                              <div className="text-right">
-                                <span className="text-xs font-bold text-white">{slice.percent.toFixed(1)}%</span>
-                                <span className="text-[10px] text-muted-foreground ml-1">{slice.grams.toFixed(1)}g</span>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
+                    <EnergyPartitionChart
+                      totalKcal={preview.totalKcal}
+                      macroSplit={preview.evaluation.macroSplit}
+                      size="sm"
+                    />
 
                     {/* Resumo nutricional */}
-                    <div className="rounded-2xl border border-white/10 bg-[#171212] p-4">
+                    <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-[#171212] p-4">
                       <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">Resumo nutricional</p>
                       <div className="grid grid-cols-2 gap-2">
                         {[
@@ -781,28 +734,31 @@ export default function FoodStep() {
                               : '—',
                           },
                         ].map((item) => (
-                          <div key={item.label} className="rounded-xl border border-white/5 bg-black/15 px-3 py-2.5">
+                          <div key={item.label} className="rounded-xl border border-border/60 bg-muted/40 px-3 py-2.5 dark:border-white/5 dark:bg-black/15">
                             <p className="text-[10px] text-muted-foreground">{item.label}</p>
-                            <p className="text-sm font-semibold text-white mt-0.5">{item.value}</p>
+                            <p className="text-sm font-semibold text-foreground dark:text-white mt-0.5">{item.value}</p>
                           </div>
                         ))}
                       </div>
                     </div>
 
                     {/* Contribuição por alimento */}
-                    <div className="rounded-2xl border border-white/10 bg-[#171212] p-4">
+                    <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-[#171212] p-4">
                       <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">Contribuição por alimento</p>
                       <div className="space-y-2">
                         {preview.contributions.map((item) => (
-                          <div key={item.foodId} className="rounded-xl border border-white/10 bg-[#221a19] px-3 py-2.5">
+                          <div
+                            key={item.foodId}
+                            className="rounded-xl border border-border bg-card px-3 py-2.5 dark:border-white/10 dark:bg-[#221a19]"
+                          >
                             <div className="flex items-center justify-between">
-                              <p className="text-xs font-medium text-white truncate flex-1 pr-2">{item.foodName}</p>
-                              <p className="text-xs font-bold text-white shrink-0">{item.gramsAsFed.toFixed(1)} g/dia</p>
+                              <p className="text-xs font-medium text-foreground dark:text-white truncate flex-1 pr-2">{item.foodName}</p>
+                              <p className="text-xs font-bold text-foreground dark:text-white shrink-0">{item.gramsAsFed.toFixed(1)} g/dia</p>
                             </div>
                             <div className="flex items-center justify-between mt-1">
                               <div className="flex items-center gap-1">
                                 {/* Barra de proporção */}
-                                <div className="w-16 h-1 rounded-full bg-white/10 overflow-hidden">
+                                <div className="h-1 w-16 overflow-hidden rounded-full bg-muted dark:bg-white/10">
                                   <div className="h-full rounded-full bg-orange-400" style={{ width: `${Math.min(item.inclusionPct, 100)}%` }} />
                                 </div>
                                 <p className="text-[10px] text-muted-foreground">{item.inclusionPct.toFixed(1)}% MS</p>
@@ -831,7 +787,7 @@ export default function FoodStep() {
           </div>
 
           {/* Botões de navegação (mobile/tablet) */}
-          <div className="xl:hidden flex justify-between border-t border-white/5 mt-6 pt-4">
+          <div className="mt-6 flex justify-between border-t border-border/60 pt-4 xl:hidden dark:border-white/5">
             <Button variant="outline" onClick={() => navigate(`${NEW_ROUTE}/target`)} className="gap-2">
               <ChevronLeft className="h-4 w-4" /> Anterior
             </Button>
@@ -844,16 +800,16 @@ export default function FoodStep() {
 
       {/* Modal informações nutricionais */}
       <Dialog open={!!detailsFood} onOpenChange={(open) => !open && setDetailsFoodId(null)}>
-        <DialogContent className="w-[min(96vw,860px)] max-w-[860px] sm:max-w-[860px] max-h-[90vh] overflow-hidden border border-orange-400/20 bg-[#141010]">
+        <DialogContent className="max-h-[90vh] w-[min(96vw,860px)] max-w-[860px] overflow-hidden border border-orange-400/20 bg-card sm:max-w-[860px] dark:bg-[#141010]">
           <DialogHeader>
-            <DialogTitle className="text-white">{detailsFood?.name ?? 'Informações nutricionais'}</DialogTitle>
+            <DialogTitle className="text-foreground dark:text-white">{detailsFood?.name ?? 'Informações nutricionais'}</DialogTitle>
           </DialogHeader>
 
           {detailsFood && (
             <div className="space-y-4 overflow-y-auto pr-1">
-              <div className="rounded-xl border border-white/10 bg-[#1c1514] px-4 py-3">
+              <div className="rounded-xl border border-border bg-muted/40 px-4 py-3 dark:border-white/10 dark:bg-[#1c1514]">
                 <p className="text-xs text-muted-foreground">Categoria</p>
-                <p className="mt-1 font-semibold text-white">{detailsFood.categoryNormalized ?? 'Dado não cadastrado'}</p>
+                <p className="mt-1 font-semibold text-foreground dark:text-white">{detailsFood.categoryNormalized ?? 'Dado não cadastrado'}</p>
               </div>
 
               <div className="grid gap-4 xl:grid-cols-2">
@@ -861,13 +817,16 @@ export default function FoodStep() {
                   { title: 'Matéria natural (como fornecido)', basis: detailsFood.nutrientsAsFed },
                   { title: 'Matéria seca', basis: detailsFood.nutrientsDryMatter },
                 ].map(({ title, basis }) => (
-                  <div key={title} className="rounded-2xl border border-white/10 bg-[#1c1514] p-4">
-                    <p className="text-sm font-semibold text-white mb-3">{title}</p>
+                  <div key={title} className="rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-[#1c1514]">
+                    <p className="text-sm font-semibold text-foreground dark:text-white mb-3">{title}</p>
                     <div className="space-y-1.5">
                       {getDetailNutrientsForBasis(basis).map((nutrient) => (
-                        <div key={nutrient.key} className="flex items-center justify-between rounded-lg border border-white/5 px-3 py-2">
+                        <div
+                          key={nutrient.key}
+                          className="flex items-center justify-between rounded-lg border border-border/60 px-3 py-2 dark:border-white/5"
+                        >
                           <p className="text-xs text-muted-foreground">{nutrient.label}</p>
-                          <p className="text-xs font-medium text-white">{formatNutrient(basis[nutrient.key], nutrient.unit)}</p>
+                          <p className="text-xs font-medium text-foreground dark:text-white">{formatNutrient(basis[nutrient.key], nutrient.unit)}</p>
                         </div>
                       ))}
                     </div>
@@ -876,9 +835,9 @@ export default function FoodStep() {
               </div>
 
               {detailsFood.notes.length > 0 && (
-                <div className="rounded-xl border border-white/10 bg-[#1c1514] px-4 py-3">
+                <div className="rounded-xl border border-border bg-muted/40 px-4 py-3 dark:border-white/10 dark:bg-[#1c1514]">
                   <p className="text-xs text-muted-foreground">Observações</p>
-                  <p className="mt-1 text-sm text-white">{detailsFood.notes.join(' · ')}</p>
+                  <p className="mt-1 text-sm text-foreground dark:text-white">{detailsFood.notes.join(' · ')}</p>
                 </div>
               )}
             </div>

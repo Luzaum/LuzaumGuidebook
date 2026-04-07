@@ -101,37 +101,45 @@ function formatKcal(value: number | null | undefined, decimals = 0) {
 
 function buildNutritionRows(report: StoredCalculationReport): TableRow[] {
   const delivered = report.formula.evaluation.totalDelivered
-  const rows: Array<{ label: string; value: string | null }> = [
-    { label: 'Energia entregue', value: formatKcal(report.diet.targetEnergy, 1) },
-    { label: 'Proteina', value: formatDailyGrams(delivered.crudeProteinPct) },
-    { label: 'Gordura', value: formatDailyGrams(delivered.etherExtractPct) },
-    { label: 'Carboidrato', value: formatDailyGrams(delivered.nitrogenFreeExtractPct) },
-    { label: 'Fibra', value: formatDailyGrams(delivered.crudeFiberPct) },
-    { label: 'Calcio', value: formatDailyGrams(delivered.calciumPct, 2) },
-    { label: 'Fosforo', value: formatDailyGrams(delivered.phosphorusPct, 2) },
-  ]
+  const totalKcalDelivered = report.formula.contributions.reduce((sum, c) => sum + c.deliveredKcal, 0)
+
+  const rows: Array<{ label: string; value: string }> = []
+
+  if (Number.isFinite(totalKcalDelivered) && totalKcalDelivered > 0) {
+    rows.push({ label: 'Energia entregue', value: `${totalKcalDelivered.toFixed(1)} kcal/dia` })
+  }
+
+  const pushIf = (label: string, raw: number | null | undefined, decimals = 1) => {
+    if (raw == null) return
+    rows.push({ label, value: formatDailyGrams(raw, decimals) })
+  }
+
+  pushIf('Proteina', delivered.crudeProteinPct)
+  pushIf('Gordura', delivered.etherExtractPct)
+  pushIf('Carboidrato', delivered.nitrogenFreeExtractPct)
+  pushIf('Fibra', delivered.crudeFiberPct)
+  pushIf('Calcio', delivered.calciumPct, 2)
+  pushIf('Fosforo', delivered.phosphorusPct, 2)
 
   for (const key of OPTIONAL_NUTRIENT_KEYS) {
-    const value = delivered[key]
+    const value = delivered[key as keyof typeof delivered] as number | null | undefined
     if (value == null) continue
     const label =
       key === 'taurinePct'
         ? 'Taurina'
         : key === 'omega3Pct'
-        ? 'Omega 3'
-        : key === 'omega6Pct'
-        ? 'Omega 6'
-        : key === 'sodiumPct'
-        ? 'Sodio'
-        : key === 'potassiumPct'
-        ? 'Potassio'
-        : 'Magnesio'
+          ? 'Omega 3'
+          : key === 'omega6Pct'
+            ? 'Omega 6'
+            : key === 'sodiumPct'
+              ? 'Sodio'
+              : key === 'potassiumPct'
+                ? 'Potassio'
+                : 'Magnesio'
     rows.push({ label, value: formatDailyGrams(value, 2) })
   }
 
-  return rows
-    .filter((item) => item.value != null)
-    .map((item) => [item.label, item.value as string])
+  return rows.map((item) => [item.label, item.value])
 }
 
 export function buildPrintableReportViewModel(report: StoredCalculationReport): PrintableReportViewModel {
@@ -263,6 +271,10 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
     meta: [
       { label: 'Data', value: toPtDate(isoDate) },
       { label: 'Animal', value: safeText(report.patient.name) },
+      {
+        label: 'Peso',
+        value: report.patient.currentWeight != null ? `${report.patient.currentWeight.toFixed(2)} kg` : 'Nao informado',
+      },
       { label: 'Alimentacoes por dia', value: String(feedingMealsPerDay) },
       { label: 'Alimentos utilizados', value: report.formula.contributions.map((item) => item.foodName).join(', ') || 'Nao informado' },
     ],

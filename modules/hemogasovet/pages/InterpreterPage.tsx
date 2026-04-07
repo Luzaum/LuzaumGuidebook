@@ -196,7 +196,7 @@ export default function InterpreterPage() {
 
       <div className={cn("grid grid-cols-1 gap-6 transition-all duration-500", result ? "lg:grid-cols-12" : "lg:grid-cols-12")}>
         {/* Input Section */}
-        <div className={cn("space-y-6 transition-all duration-500", result ? "lg:col-span-4" : "lg:col-span-8 lg:col-start-3")}>
+        <div className={cn("space-y-6 transition-all duration-500 min-w-0", result ? "lg:col-span-4" : "lg:col-span-12")}>
           <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-5">
             
             {/* Profile Selection */}
@@ -464,7 +464,7 @@ export default function InterpreterPage() {
 
         {/* Results Section */}
         {result && (
-          <div className="lg:col-span-8">
+          <div className="lg:col-span-8 min-w-0">
             <div className="space-y-4 animate-in slide-in-from-right-8 duration-500">
               
               {/* Data Quality Banner */}
@@ -553,52 +553,87 @@ export default function InterpreterPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 
                 {/* Acid-Base */}
-                <ResultCard title="Equilíbrio Ácido-Base" icon={<Beaker className="w-4 h-4" />}>
+                <ResultCard title="Equilíbrio Ácido-Base" icon={<Beaker className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />}>
                   <div className="space-y-4 text-sm">
-                    {/* Visual Rulers */}
-                    <div className="space-y-3 mb-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
-                      <VisualRuler 
-                        paramName="pH" 
-                        value={result.input.pH!} 
-                        min={7.10} 
-                        max={7.60} 
-                        normalLow={species === 'canine' ? 7.35 : 7.25} 
-                        normalHigh={species === 'canine' ? 7.45 : 7.40} 
-                      />
-                      <VisualRuler 
-                        paramName="pCO2" 
-                        value={result.input.pCO2!} 
-                        min={15} 
-                        max={85} 
-                        normalLow={species === 'canine' ? 35 : 28} 
-                        normalHigh={species === 'canine' ? 45 : 34} 
-                      />
-                      {result.input.HCO3 !== undefined && (
-                        <VisualRuler 
-                          paramName="HCO3" 
-                          value={result.input.HCO3!} 
-                          min={5} 
-                          max={45} 
-                          normalLow={species === 'canine' ? 20 : 16} 
-                          normalHigh={species === 'canine' ? 24 : 20} 
+                    <div className="rounded-xl border border-slate-200/90 dark:border-slate-700/90 bg-gradient-to-b from-slate-50/90 to-white dark:from-slate-900/40 dark:to-slate-950/30 p-4 shadow-sm">
+                      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-200/80 dark:border-slate-700/80">
+                        <div>
+                          <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Painel de referência</p>
+                          <p className="text-xs text-slate-600 dark:text-slate-300 mt-0.5">
+                            Escala clínica · VR para {species === 'canine' ? 'cão' : 'gato'}
+                          </p>
+                        </div>
+                        <div className="flex flex-wrap gap-x-4 gap-y-1 text-[10px] text-slate-500 dark:text-slate-400">
+                          <span className="inline-flex items-center gap-1.5">
+                            <span className="h-2.5 w-6 rounded-sm bg-emerald-500/25 border border-emerald-500/45 dark:border-emerald-400/35" aria-hidden />
+                            Faixa de referência
+                          </span>
+                          <span className="inline-flex items-center gap-1.5">
+                            <span className="relative flex h-3 w-1 justify-center" aria-hidden>
+                              <span className="absolute bottom-0 h-full w-0.5 rounded-full bg-emerald-500 shadow-sm" />
+                              <span className="absolute -top-0.5 h-1.5 w-1.5 rounded-full border-2 border-white dark:border-slate-900 bg-emerald-500" />
+                            </span>
+                            Valor medido (leitura)
+                          </span>
+                        </div>
+                      </div>
+                      <div className="space-y-5">
+                        <VisualRuler
+                          paramName="pH"
+                          unit=""
+                          value={result.input.pH!}
+                          min={7.1}
+                          max={7.6}
+                          normalLow={species === 'canine' ? 7.35 : 7.25}
+                          normalHigh={species === 'canine' ? 7.45 : 7.4}
                         />
-                      )}
+                        <VisualRuler
+                          paramName="pCO₂"
+                          unit="mmHg"
+                          value={result.input.pCO2!}
+                          min={15}
+                          max={85}
+                          normalLow={species === 'canine' ? 35 : 28}
+                          normalHigh={species === 'canine' ? 45 : 34}
+                        />
+                        {result.input.HCO3 !== undefined && (
+                          <VisualRuler
+                            paramName="HCO₃⁻"
+                            unit="mEq/L"
+                            value={result.input.HCO3!}
+                            min={5}
+                            max={45}
+                            normalLow={species === 'canine' ? 20 : 16}
+                            normalHigh={species === 'canine' ? 24 : 20}
+                          />
+                        )}
+                      </div>
                     </div>
 
-                    <div>
-                      <span className="font-semibold text-slate-900 dark:text-white block mb-0.5">Diagnóstico Primário:</span>
-                      <span className="text-slate-700 dark:text-slate-300">{formatPrimaryDisorder(result.deepAcidBase.primaryDisorder)}</span>
-                      <p className="text-xs text-slate-500 mt-0.5">{result.deepAcidBase.summary}</p>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-slate-900 dark:text-white block mb-0.5">Compensação:</span>
-                      <span className="text-slate-700 dark:text-slate-300">{formatCompensationStatus(result.deepAcidBase.compensationStatus)}</span>
-                      <p className="text-xs text-slate-500 mt-0.5">{result.deepAcidBase.expectedCompensation || result.deepAcidBase.observedCompensation || 'Compensacao nao avaliavel com os dados atuais.'}</p>
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      <div className="rounded-lg border border-slate-200 dark:border-slate-700/90 bg-white dark:bg-slate-950/40 p-3.5 shadow-sm">
+                        <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">Diagnóstico primário</p>
+                        <p className="text-[15px] font-semibold leading-snug text-slate-900 dark:text-white">
+                          {formatPrimaryDisorder(result.deepAcidBase.primaryDisorder)}
+                        </p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed border-t border-slate-100 dark:border-slate-800/80 pt-2">
+                          {result.deepAcidBase.summary}
+                        </p>
+                      </div>
+                      <div className="rounded-lg border border-slate-200 dark:border-slate-700/90 bg-white dark:bg-slate-950/40 p-3.5 shadow-sm">
+                        <p className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">Compensação</p>
+                        <p className="text-[15px] font-semibold leading-snug text-slate-900 dark:text-white">
+                          {formatCompensationStatus(result.deepAcidBase.compensationStatus)}
+                        </p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed border-t border-slate-100 dark:border-slate-800/80 pt-2">
+                          {result.deepAcidBase.expectedCompensation || result.deepAcidBase.observedCompensation || 'Compensação não avaliável com os dados atuais.'}
+                        </p>
+                      </div>
                     </div>
                     {result.deepAcidBase.compensationStatus === 'mixed_suspected' && (
-                      <div className="bg-purple-50 dark:bg-purple-900/20 p-2 rounded border border-purple-100 dark:border-purple-800/50">
-                        <span className="font-semibold text-purple-900 dark:text-purple-300 block mb-0.5">Distúrbio Misto:</span>
-                        <span className="text-purple-800 dark:text-purple-400 text-xs">A compensação observada não corresponde à esperada, sugerindo um segundo distúrbio primário.</span>
+                      <div className="rounded-lg bg-purple-50 dark:bg-purple-950/30 px-3.5 py-3 border border-purple-200/80 dark:border-purple-800/50">
+                        <span className="font-semibold text-purple-900 dark:text-purple-200 text-xs block mb-1">Distúrbio misto suspeito</span>
+                        <span className="text-purple-800 dark:text-purple-300/95 text-xs leading-relaxed">A compensação observada não corresponde à esperada, sugerindo um segundo distúrbio primário.</span>
                       </div>
                     )}
                   </div>
@@ -809,37 +844,149 @@ function ResultCard({ title, icon, children }: { title: string, icon: React.Reac
   );
 }
 
-function VisualRuler({ paramName, value, min, max, normalLow, normalHigh }: { paramName: string, value: number, min: number, max: number, normalLow: number, normalHigh: number }) {
-  const percentage = Math.min(Math.max(((value - min) / (max - min)) * 100, 0), 100);
-  const normalLowPercent = ((normalLow - min) / (max - min)) * 100;
-  const normalHighPercent = ((normalHigh - min) / (max - min)) * 100;
-  const normalWidth = normalHighPercent - normalLowPercent;
+function formatRulerValue(paramName: string, n: number): string {
+  const isPh = paramName.toLowerCase().includes('ph') && !paramName.includes('CO');
+  if (isPh) return n.toFixed(2);
+  if (paramName.includes('HCO')) return Number.isInteger(n) ? String(n) : n.toFixed(1);
+  return String(Math.round(n));
+}
 
-  let pointColor = "bg-green-500 border-green-700";
-  if (value < normalLow) pointColor = "bg-blue-500 border-blue-700";
-  if (value > normalHigh) pointColor = "bg-red-500 border-red-700";
+function formatRulerRef(paramName: string, n: number): string {
+  const isPh = paramName.toLowerCase().includes('ph') && !paramName.includes('CO');
+  if (isPh) return n.toFixed(2);
+  if (paramName.includes('HCO')) return n % 1 === 0 ? String(n) : n.toFixed(1);
+  return String(Math.round(n));
+}
+
+function VisualRuler({
+  paramName,
+  unit,
+  value,
+  min,
+  max,
+  normalLow,
+  normalHigh,
+}: {
+  paramName: string;
+  unit: string;
+  value: number;
+  min: number;
+  max: number;
+  normalLow: number;
+  normalHigh: number;
+}) {
+  const span = max - min;
+  const percentage = span <= 0 ? 50 : Math.min(Math.max(((value - min) / span) * 100, 0), 100);
+  const normalLowPercent = ((normalLow - min) / span) * 100;
+  const normalHighPercent = ((normalHigh - min) / span) * 100;
+  const normalWidth = Math.max(normalHighPercent - normalLowPercent, 0.5);
+
+  const status: 'low' | 'normal' | 'high' =
+    value < normalLow ? 'low' : value > normalHigh ? 'high' : 'normal';
+
+  const statusStyles = {
+    low: {
+      badge: 'bg-sky-100 text-sky-900 dark:bg-sky-950/80 dark:text-sky-100 ring-1 ring-sky-400/40',
+      needle: 'bg-sky-500',
+      dot: 'bg-sky-500',
+      label: 'text-sky-700 dark:text-sky-300',
+    },
+    normal: {
+      badge: 'bg-emerald-100 text-emerald-950 dark:bg-emerald-950/70 dark:text-emerald-50 ring-1 ring-emerald-500/35',
+      needle: 'bg-emerald-500',
+      dot: 'bg-emerald-500',
+      label: 'text-emerald-800 dark:text-emerald-300',
+    },
+    high: {
+      badge: 'bg-red-100 text-red-950 dark:bg-red-950/70 dark:text-red-50 ring-1 ring-red-400/40',
+      needle: 'bg-red-500',
+      dot: 'bg-red-500',
+      label: 'text-red-800 dark:text-red-300',
+    },
+  } as const;
+
+  const s = statusStyles[status];
+  const vrLabel = `${formatRulerRef(paramName, normalLow)}–${formatRulerRef(paramName, normalHigh)}`;
+  const ariaLabel = `${paramName}: ${formatRulerValue(paramName, value)}${unit ? ` ${unit}` : ''}. Referência ${vrLabel}.`;
 
   return (
     <div className="w-full">
-      <div className="flex justify-between items-center mb-1">
-        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">{paramName}</span>
-        <span className="text-xs font-bold font-mono" style={{ color: value < normalLow ? '#3b82f6' : value > normalHigh ? '#ef4444' : '#22c55e' }}>{value}</span>
+      <div className="flex flex-wrap items-end justify-between gap-x-3 gap-y-1 mb-2">
+        <div className="min-w-0">
+          <div className="flex items-baseline gap-2 flex-wrap">
+            <span className="text-xs font-bold tracking-wide text-slate-800 dark:text-slate-100">{paramName}</span>
+            {unit ? (
+              <span className="text-[10px] font-medium text-slate-500 dark:text-slate-400">{unit}</span>
+            ) : null}
+          </div>
+          <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5 tabular-nums">
+            VR <span className="font-medium text-slate-600 dark:text-slate-300">{vrLabel}</span>
+            <span className="mx-1.5 text-slate-300 dark:text-slate-600">·</span>
+            escala {formatRulerRef(paramName, min)}–{formatRulerRef(paramName, max)}
+          </p>
+        </div>
+        <div
+          className={cn('tabular-nums rounded-md px-2.5 py-1 text-sm font-bold tracking-tight shrink-0', s.badge)}
+          title="Somente leitura — valor informado na gasometria"
+        >
+          {formatRulerValue(paramName, value)}
+          {unit ? <span className="text-[10px] font-semibold opacity-80 ml-1">{unit}</span> : null}
+        </div>
       </div>
-      <div className="relative h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full w-full overflow-hidden">
-        {/* Normal Range Band */}
-        <div 
-          className="absolute h-full bg-green-200 dark:bg-green-900/40 border-x border-green-300 dark:border-green-800"
-          style={{ left: `${normalLowPercent}%`, width: `${normalWidth}%` }}
-        ></div>
-        {/* Value Point */}
-        <div 
-          className={cn("absolute top-0 h-full w-2.5 -ml-1.5 rounded-full border-2 shadow-sm transition-all duration-500", pointColor)}
-          style={{ left: `${percentage}%` }}
-        ></div>
-      </div>
-      <div className="flex justify-between text-[9px] text-slate-400 mt-0.5">
-        <span>{min}</span>
-        <span>{max}</span>
+
+      <div
+        className="relative"
+        role="img"
+        aria-label={ariaLabel}
+      >
+        <div className="relative h-3 w-full overflow-visible rounded-full bg-slate-200/90 dark:bg-slate-800/90 ring-1 ring-inset ring-slate-300/50 dark:ring-slate-700/60">
+          {/* Faixa abaixo da normal (sutil) */}
+          <div
+            className="absolute inset-y-0 left-0 rounded-l-full bg-slate-300/35 dark:bg-slate-700/40"
+            style={{ width: `${Math.max(normalLowPercent, 0)}%` }}
+            aria-hidden
+          />
+          {/* Faixa acima da normal */}
+          <div
+            className="absolute inset-y-0 right-0 rounded-r-full bg-slate-300/35 dark:bg-slate-700/40"
+            style={{ width: `${Math.max(100 - normalHighPercent, 0)}%` }}
+            aria-hidden
+          />
+          <div
+            className="absolute inset-y-0 bg-emerald-400/35 dark:bg-emerald-500/25 border-x border-emerald-500/45 dark:border-emerald-400/30"
+            style={{ left: `${normalLowPercent}%`, width: `${normalWidth}%` }}
+            aria-hidden
+          />
+          {/* Marcadores nos limites da VR */}
+          <div
+            className="absolute top-0 bottom-0 w-px bg-emerald-600/55 dark:bg-emerald-400/45 z-[1]"
+            style={{ left: `${normalLowPercent}%`, transform: 'translateX(-50%)' }}
+            aria-hidden
+          />
+          <div
+            className="absolute top-0 bottom-0 w-px bg-emerald-600/55 dark:bg-emerald-400/45 z-[1]"
+            style={{ left: `${normalHighPercent}%`, transform: 'translateX(-50%)' }}
+            aria-hidden
+          />
+
+          {/* Indicador tipo medidor (agulha + topo) — não interativo */}
+          <div
+            className="pointer-events-none absolute top-1/2 z-[2] flex -translate-x-1/2 -translate-y-1/2 flex-col items-center"
+            style={{ left: `${percentage}%` }}
+            aria-hidden
+          >
+            <span className={cn('mb-0.5 h-1.5 w-1.5 rounded-full border-2 border-white shadow dark:border-slate-950', s.dot)} />
+            <span className={cn('h-4 w-[3px] rounded-full shadow-sm', s.needle)} />
+          </div>
+        </div>
+
+        <div className="mt-1.5 flex justify-between text-[9px] font-medium tabular-nums text-slate-400 dark:text-slate-500">
+          <span>{formatRulerRef(paramName, min)}</span>
+          <span className={cn('text-[9px] font-semibold', s.label)}>
+            {status === 'low' ? 'Abaixo da VR' : status === 'high' ? 'Acima da VR' : 'Dentro da VR'}
+          </span>
+          <span>{formatRulerRef(paramName, max)}</span>
+        </div>
       </div>
     </div>
   );

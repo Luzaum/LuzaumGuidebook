@@ -39,13 +39,13 @@ export default function ParameterGuidePage() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 h-[calc(100vh-4rem)] flex flex-col">
+    <div className="w-full py-2 h-[calc(100dvh-6.5rem)] min-h-[28rem] flex flex-col">
       <div className="mb-6 shrink-0">
         <h1 className="text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
           <BookOpen className="w-8 h-8 text-purple-600 dark:text-purple-400" />
           Guia de Parâmetros
         </h1>
-        <p className="mt-2 text-slate-600 dark:text-slate-400 max-w-3xl text-lg">
+        <p className="mt-2 text-slate-600 dark:text-slate-400 text-lg">
           Explore a fisiologia profunda, significado clínico e armadilhas de cada componente da hemogasometria.
         </p>
       </div>

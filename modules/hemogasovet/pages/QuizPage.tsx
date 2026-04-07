@@ -54,7 +54,7 @@ export default function QuizPage() {
 
   if (!selectedCase) {
     return (
-      <div className="space-y-6 animate-in fade-in duration-500 max-w-5xl mx-auto">
+      <div className="w-full space-y-6 animate-in fade-in duration-500">
         <div className="bg-gradient-to-br from-purple-900 to-slate-900 rounded-xl p-6 text-white shadow-lg relative overflow-hidden flex items-center justify-between">
           <div className="relative z-10">
             <h1 className="text-2xl font-bold tracking-tight mb-2 flex items-center gap-2">
@@ -70,7 +70,7 @@ export default function QuizPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
           {QUIZ_CASES.map((c, idx) => (
             <button
               key={c.id}
@@ -103,7 +103,7 @@ export default function QuizPage() {
 
   if (caseFinished) {
     return (
-      <div className="max-w-2xl mx-auto text-center space-y-8 animate-in fade-in zoom-in-95 duration-500 py-12">
+      <div className="w-full text-center space-y-8 animate-in fade-in zoom-in-95 duration-500 py-12">
         <div className="w-24 h-24 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full flex items-center justify-center mx-auto mb-6">
           <GraduationCap className="w-12 h-12" />
         </div>
@@ -134,7 +134,7 @@ export default function QuizPage() {
   const question = selectedCase.questions[currentQuestionIdx];
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6 animate-in fade-in duration-500">
+    <div className="w-full space-y-6 animate-in fade-in duration-500">
       <div className="flex items-center justify-between">
         <button 
           onClick={handleBackToList}

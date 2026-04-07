@@ -196,8 +196,8 @@ export default function PatientStep() {
   }
 
   return (
-    <Card className="w-full border-orange-500/10 bg-gradient-to-b from-card via-card to-card/95 shadow-[0_18px_50px_rgba(0,0,0,0.22)]">
-      <CardHeader className="border-b border-white/5 pb-6">
+    <Card className="w-full border-orange-500/10 bg-gradient-to-b from-card via-card to-card/95 shadow-[0_18px_50px_rgba(0,0,0,0.12)] dark:shadow-[0_18px_50px_rgba(0,0,0,0.22)]">
+      <CardHeader className="border-b border-border/60 pb-6">
         <CardTitle className="text-2xl">Identificacao do paciente</CardTitle>
         <CardDescription>
           Defina o perfil clinico do paciente. Especie, sexo, estado reprodutivo, internacao e comorbidades entram no fluxo automaticamente.
@@ -223,8 +223,8 @@ export default function PatientStep() {
                     'group relative flex flex-col items-center overflow-hidden rounded-[28px] border pb-6 pt-7 text-center',
                     'transition-all duration-300 hover:-translate-y-1 active:scale-[0.985]',
                     active
-                      ? 'border-orange-400/60 bg-[#1e1108] shadow-[0_0_0_1px_rgba(251,146,60,0.35),0_24px_56px_rgba(249,115,22,0.22)]'
-                      : 'border-white/10 bg-[#141010] hover:border-orange-500/25 hover:shadow-[0_16px_40px_rgba(0,0,0,0.35)]',
+                      ? 'border-orange-400/60 bg-orange-50 shadow-[0_0_0_1px_rgba(251,146,60,0.35),0_24px_56px_rgba(249,115,22,0.18)] dark:bg-[#1e1108] dark:shadow-[0_0_0_1px_rgba(251,146,60,0.35),0_24px_56px_rgba(249,115,22,0.22)]'
+                      : 'border-border bg-card hover:border-orange-500/35 hover:shadow-md dark:border-white/10 dark:bg-[#141010] dark:hover:shadow-[0_16px_40px_rgba(0,0,0,0.35)]',
                   )}
                 >
                   {/* Foto / placeholder */}
@@ -259,7 +259,12 @@ export default function PatientStep() {
                   </div>
 
                   {/* Nome */}
-                  <p className={cn('mt-5 text-[26px] font-black tracking-[0.14em]', active ? 'text-white' : 'text-white/80')}>
+                  <p
+                    className={cn(
+                      'mt-5 text-[26px] font-black tracking-[0.14em]',
+                      active ? 'text-foreground dark:text-white' : 'text-foreground/90 dark:text-white/80',
+                    )}
+                  >
                     {option.title}
                   </p>
 
@@ -274,8 +279,8 @@ export default function PatientStep() {
                       className={cn(
                         'block w-full rounded-full py-2 text-[11px] font-bold uppercase tracking-[0.20em] transition-colors duration-200',
                         active
-                          ? 'bg-orange-400/20 text-orange-200 ring-1 ring-orange-400/40'
-                          : 'bg-white/[0.07] text-muted-foreground',
+                          ? 'bg-orange-400/25 text-orange-900 ring-1 ring-orange-400/40 dark:bg-orange-400/20 dark:text-orange-200'
+                          : 'bg-muted/60 text-muted-foreground dark:bg-white/[0.07]',
                       )}
                     >
                       {active ? 'SELECIONADO' : 'TOQUE PARA ESCOLHER'}
@@ -288,7 +293,7 @@ export default function PatientStep() {
         </section>
 
         <section className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
-          <div className="space-y-5 rounded-3xl border border-white/10 bg-white/[0.03] p-5">
+          <div className="space-y-5 rounded-3xl border border-border bg-muted/25 p-5 dark:border-white/10 dark:bg-white/[0.03]">
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="pat-name">Nome do paciente</Label>
@@ -348,11 +353,11 @@ export default function PatientStep() {
                       className={cn(
                         'flex items-center gap-3 rounded-2xl border px-4 py-4 text-left transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.99]',
                         active
-                          ? 'border-orange-400/60 bg-orange-500/12 text-white shadow-[0_12px_28px_rgba(249,115,22,0.14)]'
-                          : 'border-white/10 bg-black/15 text-muted-foreground hover:border-orange-500/30 hover:text-white',
+                          ? 'border-orange-400/60 bg-orange-500/15 text-foreground shadow-[0_12px_28px_rgba(249,115,22,0.14)] dark:bg-orange-500/12 dark:text-white'
+                          : 'border-border bg-muted/40 text-muted-foreground hover:border-orange-500/40 hover:text-foreground dark:border-white/10 dark:bg-black/15 dark:hover:text-white',
                       )}
                     >
-                      <span className="rounded-xl border border-current/20 bg-black/20 p-2">
+                      <span className="rounded-xl border border-current/20 bg-muted/50 p-2 dark:bg-black/20">
                         <Icon className="h-5 w-5" />
                       </span>
                       <span className="text-base font-semibold">{option.label}</span>
@@ -363,23 +368,27 @@ export default function PatientStep() {
             </div>
           </div>
 
-          <div className="space-y-4 rounded-3xl border border-orange-400/15 bg-gradient-to-b from-orange-500/[0.08] via-white/[0.02] to-transparent p-5">
+          <div className="space-y-4 rounded-3xl border border-orange-400/20 bg-gradient-to-b from-orange-500/10 via-muted/20 to-transparent p-5 dark:from-orange-500/[0.08] dark:via-white/[0.02]">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-orange-200">Leitura rapida</p>
-              <p className="mt-3 text-2xl font-black text-white">{patient.name || 'Paciente sem nome'}</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-orange-700 dark:text-orange-200">
+                Leitura rapida
+              </p>
+              <p className="mt-3 text-2xl font-black text-foreground">{patient.name || 'Paciente sem nome'}</p>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">
                 A especie escolhida ajusta automaticamente o guia ECC, os perfis energeticos e o catalogo compativel da formula.
               </p>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
-              <div className="rounded-2xl border border-white/10 bg-black/15 p-4">
+              <div className="rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-black/15">
                 <p className="text-xs text-muted-foreground">Especie</p>
-                <p className="mt-1 text-lg font-semibold text-white">{species === 'dog' ? 'Cao' : 'Gato'}</p>
+                <p className="mt-1 text-lg font-semibold text-foreground">{species === 'dog' ? 'Cao' : 'Gato'}</p>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-black/15 p-4">
+              <div className="rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-black/15">
                 <p className="text-xs text-muted-foreground">Peso atual</p>
-                <p className="mt-1 text-lg font-semibold text-white">{patient.currentWeight ? `${patient.currentWeight.toFixed(1)} kg` : 'Nao informado'}</p>
+                <p className="mt-1 text-lg font-semibold text-foreground">
+                  {patient.currentWeight ? `${patient.currentWeight.toFixed(1)} kg` : 'Nao informado'}
+                </p>
               </div>
             </div>
 
@@ -388,7 +397,10 @@ export default function PatientStep() {
                 <p className="mb-2 text-xs uppercase tracking-[0.18em] text-muted-foreground">Comorbidades selecionadas</p>
                 <div className="flex flex-wrap gap-2">
                   {selectedComorbidityBadges.map((label) => (
-                    <Badge key={label} className="rounded-full bg-orange-500/12 text-orange-100">
+                    <Badge
+                      key={label}
+                      className="rounded-full bg-orange-500/15 text-orange-900 dark:bg-orange-500/12 dark:text-orange-100"
+                    >
                       {label}
                     </Badge>
                   ))}
@@ -404,15 +416,24 @@ export default function PatientStep() {
               className={cn(
                 'flex items-start gap-4 rounded-3xl border px-5 py-5 text-left transition-all duration-200 hover:-translate-y-1 active:scale-[0.99]',
                 patient.isNeutered
-                  ? 'border-orange-400/60 bg-orange-500/12 shadow-[0_12px_28px_rgba(249,115,22,0.12)]'
-                  : 'border-white/10 bg-white/[0.03] hover:border-orange-500/30 hover:bg-orange-500/[0.05]',
+                  ? 'border-orange-400/60 bg-orange-500/15 shadow-[0_12px_28px_rgba(249,115,22,0.12)] dark:bg-orange-500/12'
+                  : 'border-border bg-muted/25 hover:border-orange-500/35 hover:bg-orange-500/10 dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-orange-500/[0.05]',
               )}
             >
-              <div className={cn('rounded-2xl border p-3', patient.isNeutered ? 'border-orange-400/40 bg-orange-500/20 text-orange-300' : 'border-white/10 bg-black/20 text-muted-foreground')}>
+              <div
+                className={cn(
+                  'rounded-2xl border p-3',
+                  patient.isNeutered
+                    ? 'border-orange-400/40 bg-orange-500/20 text-orange-700 dark:text-orange-300'
+                    : 'border-border bg-muted/50 text-muted-foreground dark:border-white/10 dark:bg-black/20',
+                )}
+              >
                 <HeartPulse className="h-6 w-6" />
               </div>
               <div>
-                <p className={cn('font-bold', patient.isNeutered ? 'text-white' : 'text-muted-foreground')}>Paciente castrado</p>
+                <p className={cn('font-bold', patient.isNeutered ? 'text-foreground dark:text-white' : 'text-muted-foreground')}>
+                  Paciente castrado
+                </p>
                 <p className="mt-1 text-xs text-muted-foreground">Ajusta energia base e o perfil comparativo.</p>
               </div>
             </button>
@@ -423,15 +444,24 @@ export default function PatientStep() {
               className={cn(
                 'flex items-start gap-4 rounded-3xl border px-5 py-5 text-left transition-all duration-200 hover:-translate-y-1 active:scale-[0.99]',
                 patient.isHospitalized
-                  ? 'border-orange-400/60 bg-orange-500/12 shadow-[0_12px_28px_rgba(249,115,22,0.12)]'
-                  : 'border-white/10 bg-white/[0.03] hover:border-orange-500/30 hover:bg-orange-500/[0.05]',
+                  ? 'border-orange-400/60 bg-orange-500/15 shadow-[0_12px_28px_rgba(249,115,22,0.12)] dark:bg-orange-500/12'
+                  : 'border-border bg-muted/25 hover:border-orange-500/35 hover:bg-orange-500/10 dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-orange-500/[0.05]',
               )}
             >
-              <div className={cn('rounded-2xl border p-3', patient.isHospitalized ? 'border-orange-400/40 bg-orange-500/20 text-orange-300' : 'border-white/10 bg-black/20 text-muted-foreground')}>
+              <div
+                className={cn(
+                  'rounded-2xl border p-3',
+                  patient.isHospitalized
+                    ? 'border-orange-400/40 bg-orange-500/20 text-orange-700 dark:text-orange-300'
+                    : 'border-border bg-muted/50 text-muted-foreground dark:border-white/10 dark:bg-black/20',
+                )}
+              >
                 <Stethoscope className="h-6 w-6" />
               </div>
               <div>
-                <p className={cn('font-bold', patient.isHospitalized ? 'text-white' : 'text-muted-foreground')}>Paciente hospitalizado</p>
+                <p className={cn('font-bold', patient.isHospitalized ? 'text-foreground dark:text-white' : 'text-muted-foreground')}>
+                  Paciente hospitalizado
+                </p>
                 <p className="mt-1 text-xs text-muted-foreground">Ativa risco de realimentacao e progressao clinica.</p>
               </div>
             </button>
@@ -443,15 +473,24 @@ export default function PatientStep() {
                 className={cn(
                   'flex items-start gap-4 rounded-3xl border px-5 py-5 text-left transition-all duration-200 hover:-translate-y-1 active:scale-[0.99]',
                   patient.isIndoor
-                    ? 'border-orange-400/60 bg-orange-500/12 shadow-[0_12px_28px_rgba(249,115,22,0.12)]'
-                    : 'border-white/10 bg-white/[0.03] hover:border-orange-500/30 hover:bg-orange-500/[0.05]',
+                    ? 'border-orange-400/60 bg-orange-500/15 shadow-[0_12px_28px_rgba(249,115,22,0.12)] dark:bg-orange-500/12'
+                    : 'border-border bg-muted/25 hover:border-orange-500/35 hover:bg-orange-500/10 dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-orange-500/[0.05]',
                 )}
               >
-                <div className={cn('rounded-2xl border p-3', patient.isIndoor ? 'border-orange-400/40 bg-orange-500/20 text-orange-300' : 'border-white/10 bg-black/20 text-muted-foreground')}>
+                <div
+                  className={cn(
+                    'rounded-2xl border p-3',
+                    patient.isIndoor
+                      ? 'border-orange-400/40 bg-orange-500/20 text-orange-700 dark:text-orange-300'
+                      : 'border-border bg-muted/50 text-muted-foreground dark:border-white/10 dark:bg-black/20',
+                  )}
+                >
                   <Home className="h-6 w-6" />
                 </div>
                 <div>
-                  <p className={cn('font-bold', patient.isIndoor ? 'text-white' : 'text-muted-foreground')}>Gato indoor</p>
+                  <p className={cn('font-bold', patient.isIndoor ? 'text-foreground dark:text-white' : 'text-muted-foreground')}>
+                    Gato indoor
+                  </p>
                   <p className="mt-1 text-xs text-muted-foreground">Usado para sugerir o perfil energetico felino.</p>
                 </div>
               </button>
@@ -460,11 +499,11 @@ export default function PatientStep() {
         </section>
 
         {patient.isHospitalized && (
-          <section className="space-y-4 rounded-3xl border border-orange-400/25 bg-gradient-to-r from-orange-500/12 via-orange-500/[0.08] to-transparent p-5">
+          <section className="space-y-4 rounded-3xl border border-orange-400/25 bg-gradient-to-r from-orange-500/12 via-orange-500/10 to-transparent p-5 dark:via-orange-500/[0.08]">
             <div className="flex items-start gap-3">
-              <AlertCircle className="mt-0.5 h-5 w-5 text-orange-300" />
+              <AlertCircle className="mt-0.5 h-5 w-5 text-orange-600 dark:text-orange-300" />
               <div>
-                <p className="font-semibold text-white">Plano hospitalar ativo</p>
+                <p className="font-semibold text-foreground">Plano hospitalar ativo</p>
                 <p className="text-sm text-muted-foreground">O resumo final vai incluir progressao alimentar e triagem de risco de realimentacao.</p>
               </div>
             </div>
@@ -496,8 +535,8 @@ export default function PatientStep() {
                       className={cn(
                         'rounded-xl border px-3 py-3 text-sm font-medium transition-all',
                         hospital.progressionProtocol === option.value
-                          ? 'border-orange-400/60 bg-orange-500/15 text-white'
-                          : 'border-white/10 bg-black/10 text-muted-foreground hover:border-orange-500/30 hover:text-white',
+                          ? 'border-orange-400/60 bg-orange-500/15 text-foreground dark:text-white'
+                          : 'border-border bg-muted/40 text-muted-foreground hover:border-orange-500/40 hover:text-foreground dark:border-white/10 dark:bg-black/10 dark:hover:text-white',
                       )}
                     >
                       {option.label}
@@ -508,9 +547,9 @@ export default function PatientStep() {
             </div>
 
             <div className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
-              <div className="space-y-3 rounded-2xl border border-white/10 bg-black/10 p-4">
+              <div className="space-y-3 rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-black/10">
                 <div className="flex items-center gap-2">
-                  <p className="font-semibold text-white">Via de oferta e eletrólitos</p>
+                  <p className="font-semibold text-foreground">Via de oferta e eletrólitos</p>
                 </div>
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="space-y-2">
@@ -524,8 +563,8 @@ export default function PatientStep() {
                           className={cn(
                             'rounded-xl border px-3 py-3 text-sm transition-all',
                             hospital.feedingRoute === option.value
-                              ? 'border-orange-400/60 bg-orange-500/15 text-white'
-                              : 'border-white/10 bg-black/10 text-muted-foreground hover:border-orange-500/30 hover:text-white',
+                              ? 'border-orange-400/60 bg-orange-500/15 text-foreground dark:text-white'
+                              : 'border-border bg-muted/40 text-muted-foreground hover:border-orange-500/40 hover:text-foreground dark:border-white/10 dark:bg-black/10 dark:hover:text-white',
                           )}
                         >
                           {option.label}
@@ -593,9 +632,9 @@ export default function PatientStep() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-orange-400/20 bg-orange-500/[0.08] p-4">
+              <div className="rounded-2xl border border-orange-400/25 bg-orange-500/10 p-4 dark:bg-orange-500/[0.08]">
                 <div className="flex items-center justify-between gap-3">
-                  <p className="font-semibold text-white">Risco de realimentacao</p>
+                  <p className="font-semibold text-foreground">Risco de realimentacao</p>
                   <Badge variant="outline">
                     {refeedingRisk === 'high' ? 'Alto risco' : refeedingRisk === 'moderate' ? 'Risco moderado' : 'Baixo risco'}
                   </Badge>
@@ -608,16 +647,16 @@ export default function PatientStep() {
           </section>
         )}
 
-        <section className="space-y-4 rounded-3xl border border-white/10 bg-white/[0.03] p-5">
+        <section className="space-y-4 rounded-3xl border border-border bg-muted/25 p-5 dark:border-white/10 dark:bg-white/[0.03]">
           <div className="flex items-start justify-between gap-3">
             <div>
-              <p className="text-lg font-semibold text-white">Comorbidades</p>
+              <p className="text-lg font-semibold text-foreground">Comorbidades</p>
               <p className="text-sm text-muted-foreground">Selecione multiplas condicoes. Os perfis terapeuticos da planilha entram na avaliacao final.</p>
             </div>
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <button type="button" className="rounded-full border border-white/10 p-2 text-muted-foreground">
+                  <button type="button" className="rounded-full border border-border p-2 text-muted-foreground dark:border-white/10">
                     <AlertCircle className="h-4 w-4" />
                   </button>
                 </TooltipTrigger>
@@ -628,7 +667,7 @@ export default function PatientStep() {
             </TooltipProvider>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-black/10 px-4 py-3">
+          <div className="rounded-2xl border border-border bg-muted/40 px-4 py-3 dark:border-white/10 dark:bg-black/10">
             <div className="flex items-center gap-3">
               <Search className="h-4 w-4 text-muted-foreground" />
               <Input
@@ -643,7 +682,10 @@ export default function PatientStep() {
           {!!selectedComorbidityBadges.length && (
             <div className="flex flex-wrap gap-2">
               {selectedComorbidityBadges.map((label) => (
-                <Badge key={label} className="rounded-full bg-orange-500/12 text-orange-100">
+                <Badge
+                  key={label}
+                  className="rounded-full bg-orange-500/15 text-orange-900 dark:bg-orange-500/12 dark:text-orange-100"
+                >
                   {label}
                 </Badge>
               ))}
@@ -661,11 +703,11 @@ export default function PatientStep() {
                   className={cn(
                     'rounded-2xl border px-4 py-4 text-left transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.99]',
                     active
-                      ? 'border-orange-400/60 bg-orange-500/12 text-white shadow-[0_10px_24px_rgba(249,115,22,0.12)]'
-                      : 'border-white/10 bg-black/10 text-muted-foreground hover:border-orange-500/30 hover:text-white',
+                      ? 'border-orange-400/60 bg-orange-500/15 text-foreground shadow-[0_10px_24px_rgba(249,115,22,0.12)] dark:bg-orange-500/12 dark:text-white'
+                      : 'border-border bg-muted/40 text-muted-foreground hover:border-orange-500/40 hover:text-foreground dark:border-white/10 dark:bg-black/10 dark:hover:text-white',
                   )}
                 >
-                  <p className="font-semibold">{option.label}</p>
+                  <p className="font-semibold text-foreground dark:text-inherit">{option.label}</p>
                   <p className="mt-1 text-xs leading-5 text-muted-foreground">{option.description}</p>
                 </button>
               )
@@ -673,7 +715,7 @@ export default function PatientStep() {
           </div>
         </section>
 
-        <div className="flex justify-end border-t border-white/5 pt-4">
+        <div className="flex justify-end border-t border-border/60 pt-4">
           <Button onClick={handleNext} className="gap-2" id="btn-next-energy">
             Proximo: Energia <ChevronRight className="h-4 w-4" />
           </Button>

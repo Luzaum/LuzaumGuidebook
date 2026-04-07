@@ -260,8 +260,8 @@ export default function EnergyStep() {
   }
 
   return (
-    <Card className="w-full border-orange-500/10 bg-gradient-to-b from-card via-card to-card/95 shadow-[0_18px_50px_rgba(0,0,0,0.22)]">
-      <CardHeader className="border-b border-white/5 pb-6">
+    <Card className="w-full border-orange-500/10 bg-gradient-to-b from-card via-card to-card/95 shadow-[0_18px_50px_rgba(0,0,0,0.12)] dark:shadow-[0_18px_50px_rgba(0,0,0,0.22)]">
+      <CardHeader className="border-b border-border/60 pb-6">
         <CardTitle className="text-2xl">Perfil clínico energético</CardTitle>
         <CardDescription>
           Resolva aqui o perfil energético final. A formulação de alimentos apenas consome este perfil resolvido.
@@ -270,45 +270,48 @@ export default function EnergyStep() {
 
       <CardContent className="space-y-6 pt-6">
         <div className="grid gap-4 xl:grid-cols-3">
-          <div className="rounded-[30px] border border-orange-400/20 bg-gradient-to-br from-orange-500/12 via-orange-500/[0.06] to-transparent p-5">
+          <div className="rounded-[30px] border border-orange-400/25 bg-gradient-to-br from-orange-500/15 via-orange-500/8 to-transparent p-5 dark:from-orange-500/12 dark:via-orange-500/[0.06]">
             <p className="text-sm text-muted-foreground">RER</p>
-            <p className="mt-1 text-4xl font-black text-white" id="energy-rer-value">
+            <p className="mt-1 text-4xl font-black text-foreground" id="energy-rer-value">
               {rer.toFixed(0)} kcal/dia
             </p>
             <p className="mt-3 text-xs text-muted-foreground">Base energética pelo peso corporal atual.</p>
           </div>
 
-          <div className="rounded-[30px] border border-white/10 bg-white/[0.03] p-5">
+          <div className="rounded-[30px] border border-border bg-muted/25 p-5 dark:border-white/10 dark:bg-white/[0.03]">
             <div className="flex items-center gap-2">
-              <Scale className="h-5 w-5 text-orange-300" />
+              <Scale className="h-5 w-5 text-orange-600 dark:text-orange-300" />
               <p className="text-sm text-muted-foreground">Energia final estimada</p>
             </div>
-            <p className="mt-1 text-4xl font-black text-orange-300" id="energy-preview-kcal">
+            <p
+              className="mt-1 text-4xl font-black text-orange-600 dark:text-orange-300"
+              id="energy-preview-kcal"
+            >
               {preview.mer.toFixed(0)} kcal/dia
             </p>
             <p className="mt-3 text-xs text-muted-foreground">Valor usado diretamente na meta nutricional.</p>
           </div>
 
-          <div className="rounded-[30px] border border-white/10 bg-white/[0.03] p-5">
+          <div className="rounded-[30px] border border-border bg-muted/25 p-5 dark:border-white/10 dark:bg-white/[0.03]">
             <div className="flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-orange-300" />
-              <p className="text-sm font-semibold text-white">Perfil final aplicado</p>
+              <Sparkles className="h-4 w-4 text-orange-600 dark:text-orange-300" />
+              <p className="text-sm font-semibold text-foreground">Perfil final aplicado</p>
             </div>
-            <p className="mt-2 text-xl font-black leading-tight text-white">{resolved.label}</p>
+            <p className="mt-2 text-xl font-black leading-tight text-foreground">{resolved.label}</p>
             <p className="mt-2 text-sm text-muted-foreground">{selectedProfile.description}</p>
           </div>
         </div>
 
-        <section className="rounded-[30px] border border-white/10 bg-white/[0.03] p-5">
+        <section className="rounded-[30px] border border-border bg-muted/25 p-5 dark:border-white/10 dark:bg-white/[0.03]">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <p className="text-lg font-semibold text-white">Perfis energéticos disponíveis</p>
+              <p className="text-lg font-semibold text-foreground">Perfis energéticos disponíveis</p>
               <p className="text-sm text-muted-foreground">Selecione um perfil em português. Nenhum slug técnico aparece na interface.</p>
             </div>
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <button type="button" className="rounded-full border border-white/10 p-2 text-muted-foreground">
+                  <button type="button" className="rounded-full border border-border p-2 text-muted-foreground dark:border-white/10">
                     <Info className="h-4 w-4" />
                   </button>
                 </TooltipTrigger>
@@ -331,8 +334,8 @@ export default function EnergyStep() {
                   className={cn(
                     'rounded-2xl border px-4 py-4 text-left transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.99]',
                     active
-                      ? 'border-orange-400/60 bg-orange-500/12 text-white shadow-[0_12px_24px_rgba(249,115,22,0.12)]'
-                      : 'border-white/10 bg-black/15 text-muted-foreground hover:border-orange-500/30 hover:text-white',
+                      ? 'border-orange-400/60 bg-orange-500/15 text-foreground shadow-[0_12px_24px_rgba(249,115,22,0.15)] dark:bg-orange-500/12 dark:text-white'
+                      : 'border-border bg-muted/40 text-muted-foreground hover:border-orange-500/40 hover:text-foreground dark:border-white/10 dark:bg-black/15 dark:hover:text-white',
                   )}
                 >
                   <p className="font-semibold">{profile.label}</p>
@@ -343,23 +346,26 @@ export default function EnergyStep() {
           </div>
         </section>
 
-        <section className="rounded-[30px] border border-white/10 bg-white/[0.03] p-5">
-          <p className="text-lg font-semibold text-white">Fatores clinicos do paciente</p>
+        <section className="rounded-[30px] border border-border bg-muted/25 p-5 dark:border-white/10 dark:bg-white/[0.03]">
+          <p className="text-lg font-semibold text-foreground">Fatores clinicos do paciente</p>
           <div className="mt-3 flex flex-wrap gap-2">
             <Badge variant="outline">{species === 'dog' ? 'Cao' : 'Gato'}</Badge>
             <Badge variant="outline">{patient.isNeutered ? 'Castrado' : 'Integro'}</Badge>
             {species === 'cat' && <Badge variant="outline">{patient.isIndoor ? 'Indoor' : 'Nao indoor'}</Badge>}
             {comorbidityLabels.map((label) => (
-              <Badge key={label} className="rounded-full bg-orange-500/12 text-orange-100">
+              <Badge
+                key={label}
+                className="rounded-full bg-orange-500/15 text-orange-900 dark:bg-orange-500/12 dark:text-orange-100"
+              >
                 {label}
               </Badge>
             ))}
           </div>
 
           {resolved.adjustments.length > 0 && (
-            <div className="mt-3 space-y-1 rounded-2xl border border-orange-400/20 bg-orange-500/[0.08] p-3">
+            <div className="mt-3 space-y-1 rounded-2xl border border-orange-400/25 bg-orange-500/10 p-3 dark:bg-orange-500/[0.08]">
               {resolved.adjustments.map((item) => (
-                <p key={item} className="text-xs text-orange-100">
+                <p key={item} className="text-xs text-orange-900 dark:text-orange-100">
                   {item}
                 </p>
               ))}
@@ -368,8 +374,8 @@ export default function EnergyStep() {
         </section>
 
         {isGestationProfile && (
-          <section className="rounded-[30px] border border-white/10 bg-white/[0.03] p-5">
-            <p className="text-lg font-semibold text-white">Fase gestacional</p>
+          <section className="rounded-[30px] border border-border bg-muted/25 p-5 dark:border-white/10 dark:bg-white/[0.03]">
+            <p className="text-lg font-semibold text-foreground">Fase gestacional</p>
             <div className="mt-3 grid gap-3 md:grid-cols-2">
               {[
                 { value: 'initial' as const, label: 'Inicio da gestacao' },
@@ -382,8 +388,8 @@ export default function EnergyStep() {
                   className={cn(
                     'rounded-2xl border px-4 py-4 text-left transition-all',
                     gestationPhase === item.value
-                      ? 'border-orange-400/60 bg-orange-500/12 text-white'
-                      : 'border-white/10 bg-black/10 text-muted-foreground hover:border-orange-500/30 hover:text-white',
+                      ? 'border-orange-400/60 bg-orange-500/15 text-foreground dark:bg-orange-500/12 dark:text-white'
+                      : 'border-border bg-muted/40 text-muted-foreground hover:border-orange-500/40 hover:text-foreground dark:border-white/10 dark:bg-black/10 dark:hover:text-white',
                   )}
                 >
                   {item.label}
@@ -394,7 +400,7 @@ export default function EnergyStep() {
         )}
 
         {isGrowthProfile && (
-          <section className="rounded-[30px] border border-white/10 bg-white/[0.03] p-5">
+          <section className="rounded-[30px] border border-border bg-muted/25 p-5 dark:border-white/10 dark:bg-white/[0.03]">
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="expected-adult-weight">Peso adulto esperado (kg)</Label>
@@ -407,8 +413,8 @@ export default function EnergyStep() {
                   onChange={(event) => setExpectedAdultWeightKg(Number(event.target.value) || 0)}
                 />
               </div>
-              <div className="rounded-2xl border border-orange-400/20 bg-orange-500/[0.08] p-4">
-                <p className="font-semibold text-white">Idade derivada internamente</p>
+              <div className="rounded-2xl border border-orange-400/25 bg-orange-500/10 p-4 dark:bg-orange-500/[0.08]">
+                <p className="font-semibold text-foreground">Idade derivada internamente</p>
                 <p className="mt-2 text-sm text-muted-foreground">
                   Idade em anos da secao 1 foi convertida para {ageWeeks} semanas para a curva de crescimento.
                 </p>
@@ -418,7 +424,7 @@ export default function EnergyStep() {
         )}
 
         {isLactationProfile && (
-          <section className="rounded-[30px] border border-white/10 bg-white/[0.03] p-5">
+          <section className="rounded-[30px] border border-border bg-muted/25 p-5 dark:border-white/10 dark:bg-white/[0.03]">
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="litter-size">Numero de filhotes</Label>
@@ -446,11 +452,11 @@ export default function EnergyStep() {
           </section>
         )}
 
-        <section className="rounded-[30px] border border-orange-400/20 bg-gradient-to-r from-orange-500/12 via-black/10 to-transparent p-5">
-          <p className="text-sm font-semibold text-white">Como esta sendo calculado</p>
-          <div className="mt-3 space-y-2 rounded-2xl border border-white/10 bg-black/15 p-4">
+        <section className="rounded-[30px] border border-orange-400/25 bg-gradient-to-r from-orange-500/12 via-muted/50 to-transparent p-5 dark:via-black/10">
+          <p className="text-sm font-semibold text-foreground">Como esta sendo calculado</p>
+          <div className="mt-3 space-y-2 rounded-2xl border border-border bg-muted/50 p-4 dark:border-white/10 dark:bg-black/15">
             {preview.formulaLines.map((line) => (
-              <p key={line} className="text-sm text-white">
+              <p key={line} className="text-sm text-foreground">
                 {line}
               </p>
             ))}
@@ -458,7 +464,7 @@ export default function EnergyStep() {
           <p className="mt-3 text-xs text-muted-foreground">{CLINICAL_ENERGY_DISCLAIMER}</p>
         </section>
 
-        <div className="flex justify-between border-t border-white/5 pt-4">
+        <div className="flex justify-between border-t border-border/60 pt-4">
           <Button variant="outline" onClick={() => navigate(`${NEW_ROUTE}/patient`)} className="gap-2">
             <ChevronLeft className="h-4 w-4" /> Anterior
           </Button>

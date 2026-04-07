@@ -48,16 +48,16 @@ export default function Reports() {
   return (
     <div className="space-y-8 w-full pb-20">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight flex items-center gap-2 text-white">
-          <FileText className="w-8 h-8 text-orange-300" />
+        <h1 className="flex items-center gap-2 text-3xl font-bold tracking-tight text-foreground">
+          <FileText className="h-8 w-8 text-orange-600 dark:text-orange-300" />
           Relatórios e histórico
         </h1>
         <p className="text-muted-foreground mt-2">Relatorios persistidos localmente, com acesso ao detalhe completo e exportacao em PDF textual.</p>
       </div>
 
-      <Card className="border-white/10 bg-[#141010] shadow-[0_18px_50px_rgba(0,0,0,0.22)]">
+      <Card className="border-border bg-card shadow-[0_18px_50px_rgba(0,0,0,0.08)] dark:border-white/10 dark:bg-[#141010] dark:shadow-[0_18px_50px_rgba(0,0,0,0.22)]">
         <CardHeader>
-          <CardTitle className="text-white">Histórico do Energia Vet</CardTitle>
+          <CardTitle className="text-foreground dark:text-white">Histórico do Energia Vet</CardTitle>
           <CardDescription>Busque por paciente ou tutor.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -67,7 +67,7 @@ export default function Reports() {
           </div>
 
           {filteredReports.length === 0 ? (
-            <div className="rounded-2xl border border-dashed border-white/10 p-5 text-sm text-muted-foreground">
+            <div className="rounded-2xl border border-dashed border-border p-5 text-sm text-muted-foreground dark:border-white/10">
               Nenhum relatorio salvo ainda.
             </div>
           ) : (
@@ -75,32 +75,45 @@ export default function Reports() {
               {filteredReports.map((report) => {
                 const requirement = getRequirementById(report.diet.requirementProfileId)
                 return (
-                  <Card key={report.id} className="border-white/10 bg-[#1a1413]">
+                  <Card
+                    key={report.id}
+                    className="border-border bg-muted/30 dark:border-white/10 dark:bg-[#1a1413]"
+                  >
                     <CardContent className="space-y-4 p-5">
                       <div className="flex items-start justify-between gap-3">
                         <div>
-                          <p className="text-lg font-semibold text-white">{report.patient.name ?? 'Paciente sem nome'}</p>
+                          <p className="text-lg font-semibold text-foreground dark:text-white">
+                            {report.patient.name ?? 'Paciente sem nome'}
+                          </p>
                           <p className="text-sm text-muted-foreground">{report.patient.ownerName ?? 'Tutor nao informado'}</p>
                         </div>
                         <Badge variant="outline">{new Date(report.createdAt).toLocaleDateString('pt-BR')}</Badge>
                       </div>
 
                       <div className="grid grid-cols-2 gap-3">
-                        <div className="rounded-2xl border border-white/10 bg-black/10 p-3">
+                        <div className="rounded-2xl border border-border bg-muted/40 p-3 dark:border-white/10 dark:bg-black/10">
                           <p className="text-[11px] text-muted-foreground">Espécie</p>
-                          <p className="mt-1 font-semibold text-white">{report.patient.species === 'dog' ? 'Cao' : report.patient.species === 'cat' ? 'Gato' : 'Nao informado'}</p>
+                          <p className="mt-1 font-semibold text-foreground dark:text-white">
+                            {report.patient.species === 'dog' ? 'Cao' : report.patient.species === 'cat' ? 'Gato' : 'Nao informado'}
+                          </p>
                         </div>
-                        <div className="rounded-2xl border border-white/10 bg-black/10 p-3">
+                        <div className="rounded-2xl border border-border bg-muted/40 p-3 dark:border-white/10 dark:bg-black/10">
                           <p className="text-[11px] text-muted-foreground">Energia-alvo</p>
-                          <p className="mt-1 font-semibold text-white">{report.target.targetEnergy?.toFixed(0) ?? '—'} kcal/dia</p>
+                          <p className="mt-1 font-semibold text-foreground dark:text-white">
+                            {report.target.targetEnergy?.toFixed(0) ?? '—'} kcal/dia
+                          </p>
                         </div>
-                        <div className="rounded-2xl border border-white/10 bg-black/10 p-3">
+                        <div className="rounded-2xl border border-border bg-muted/40 p-3 dark:border-white/10 dark:bg-black/10">
                           <p className="text-[11px] text-muted-foreground">Plano</p>
-                          <p className="mt-1 font-semibold text-white">{report.diet.mealsPerDay} refeicoes · {report.diet.gramsPerMeal?.toFixed(1) ?? '—'} g</p>
+                          <p className="mt-1 font-semibold text-foreground dark:text-white">
+                            {report.diet.mealsPerDay} refeicoes · {report.diet.gramsPerMeal?.toFixed(1) ?? '—'} g
+                          </p>
                         </div>
-                        <div className="rounded-2xl border border-white/10 bg-black/10 p-3">
+                        <div className="rounded-2xl border border-border bg-muted/40 p-3 dark:border-white/10 dark:bg-black/10">
                           <p className="text-[11px] text-muted-foreground">Perfil clínico</p>
-                          <p className="mt-1 font-semibold text-white">{getHumanRequirementLabel(requirement)}</p>
+                          <p className="mt-1 font-semibold text-foreground dark:text-white">
+                            {getHumanRequirementLabel(requirement)}
+                          </p>
                         </div>
                       </div>
 

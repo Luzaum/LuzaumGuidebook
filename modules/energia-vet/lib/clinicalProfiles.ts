@@ -37,6 +37,29 @@ function isClinicalWorkbookProfile(profile: RequirementProfile) {
   return profile.source !== 'FEDIAF 2025'
 }
 
+/**
+ * Planilhas SACN usam "Cães" / "Gatos" no rótulo. Se `species` vier errado como `both`,
+ * ainda filtramos pela espécie escolhida para não misturar listas.
+ */
+function clinicalWorkbookMatchesSelectedSpecies(profile: RequirementProfile, species: Species): boolean {
+  const matchesMeta =
+    profile.species === species || profile.species === 'both' || profile.species === 'unknown'
+  if (!matchesMeta) return false
+
+  const text = `${profile.label ?? ''} ${profile.condition ?? ''}`
+  const hasGatos = /\bGatos\b/i.test(text)
+  const hasCaes = /\bCães\b/i.test(text)
+  const hasGato = /\bGato\b/i.test(text)
+  const hasCao = /\bCão\b/i.test(text)
+
+  if (hasGatos && !hasCaes) return species === 'cat'
+  if (hasCaes && !hasGatos) return species === 'dog'
+  // Rótulos tipo "Gato - %MS" / "Cão - g/PV^0,75" (sem plural na planilha)
+  if (hasGato && !hasCao && !hasCaes && !hasGatos) return species === 'cat'
+  if (hasCao && !hasGato && !hasCaes && !hasGatos) return species === 'dog'
+  return true
+}
+
 function describeProfile(profile: RequirementProfile): string {
   if (profile.condition) return sanitizeClinicalLabel(profile.condition)
   if (profile.lifeStage) return sanitizeClinicalLabel(profile.lifeStage)
@@ -45,9 +68,7 @@ function describeProfile(profile: RequirementProfile): string {
 
 export function getClinicalRequirementProfiles(species: Species): RequirementProfile[] {
   return GENUTRI_REQUIREMENTS.filter(
-    (profile) =>
-      isClinicalWorkbookProfile(profile) &&
-      (profile.species === species || profile.species === 'both' || profile.species === 'unknown'),
+    (profile) => isClinicalWorkbookProfile(profile) && clinicalWorkbookMatchesSelectedSpecies(profile, species),
   )
 }
 

@@ -17,8 +17,9 @@ export default function HemoGasoVetModule() {
       <HemoSidebar />
 
       {/* Main Content Area */}
-      <div className="flex-1 min-h-0 bg-slate-50 dark:bg-slate-950 overflow-auto">
-        <main className="h-full">
+      <div className="flex-1 min-h-0 min-w-0 bg-slate-50 dark:bg-slate-950 overflow-auto">
+        <main className="h-full min-w-0 w-full">
+          <div className="w-full min-w-0 px-4 sm:px-6 lg:px-8 py-6 pb-10 box-border">
           <Routes>
             <Route index element={<InterpreterPage />} />
             <Route path="history" element={<HistoryPage />} />
@@ -29,6 +30,7 @@ export default function HemoGasoVetModule() {
             {/* Fallback */}
             <Route path="*" element={<Navigate to="/hemogasovet" replace />} />
           </Routes>
+          </div>
         </main>
       </div>
     </div>

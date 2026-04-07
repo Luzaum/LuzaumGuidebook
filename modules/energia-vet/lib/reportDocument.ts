@@ -75,7 +75,7 @@ function renderDataTable(doc: jsPDF, title: string, headers: string[], rows: str
   })
 }
 
-export function exportReportPdf(report: StoredCalculationReport) {
+function buildNutritionReportPdfDoc(report: StoredCalculationReport): jsPDF {
   const vm = buildPrintableReportViewModel(report)
   const doc = new jsPDF({ unit: 'mm', format: 'a4' })
 
@@ -152,8 +152,40 @@ export function exportReportPdf(report: StoredCalculationReport) {
     )
   })
 
+  return doc
+}
+
+/** Gera o mesmo PDF que “Exportar PDF” e descarrega o ficheiro. */
+export function exportReportPdf(report: StoredCalculationReport) {
+  const doc = buildNutritionReportPdfDoc(report)
   const patientName = sanitizeFilename(report.patient.name)
   doc.save(`energia-vet_${patientName}_${new Date(report.createdAt).toISOString().slice(0, 10)}.pdf`)
+}
+
+/**
+ * Mesmo conteúdo que export — abre o PDF num separador e dispara a impressão do sistema.
+ * Fallback: descarrega o ficheiro se o popup estiver bloqueado.
+ */
+export function printReportPdf(report: StoredCalculationReport) {
+  const doc = buildNutritionReportPdfDoc(report)
+  const blob = doc.output('blob')
+  const url = URL.createObjectURL(blob)
+  const win = window.open(url, '_blank')
+  if (!win) {
+    URL.revokeObjectURL(url)
+    exportReportPdf(report)
+    return
+  }
+  const tryPrint = () => {
+    try {
+      win.focus()
+      win.print()
+    } catch {
+      /* ignorar — utilizador pode imprimir manualmente no leitor PDF */
+    }
+  }
+  win.addEventListener('load', () => window.setTimeout(tryPrint, 400))
+  window.setTimeout(tryPrint, 1200)
 }
 
 

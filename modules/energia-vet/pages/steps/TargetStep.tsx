@@ -168,22 +168,24 @@ export default function TargetStep() {
 
   return (
     <>
-      <Card className="w-full border-orange-500/10 bg-gradient-to-b from-card via-card to-card/95 shadow-[0_18px_50px_rgba(0,0,0,0.22)]">
-        <CardHeader className="border-b border-white/5 pb-6">
+      <Card className="w-full border-orange-500/10 bg-gradient-to-b from-card via-card to-card/95 shadow-[0_18px_50px_rgba(0,0,0,0.12)] dark:shadow-[0_18px_50px_rgba(0,0,0,0.22)]">
+        <CardHeader className="border-b border-border/60 pb-6">
           <CardTitle className="text-2xl">Meta nutricional</CardTitle>
           <CardDescription>ECC, peso atual, peso-alvo e meta de energia trabalham juntos para definir o plano final.</CardDescription>
         </CardHeader>
 
         <CardContent className="space-y-6 pt-6">
           <div className="grid gap-4 xl:grid-cols-[0.95fr_1.05fr]">
-            <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-5">
+            <div className="rounded-3xl border border-border bg-muted/25 p-5 dark:border-white/10 dark:bg-white/[0.03]">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-sm text-muted-foreground">ECC atual</p>
-                  <p className="mt-1 text-4xl font-black text-white">{bcs}/9</p>
+                  <p className="mt-1 text-4xl font-black text-foreground">{bcs}/9</p>
                   <p className="mt-1 text-sm text-muted-foreground">{bcsInfo.detail}</p>
                 </div>
-                <Badge className="rounded-full bg-orange-500/15 px-3 py-1 text-orange-200">{bcsInfo.label}</Badge>
+                <Badge className="rounded-full bg-orange-500/15 px-3 py-1 text-orange-900 dark:text-orange-200">
+                  {bcsInfo.label}
+                </Badge>
               </div>
 
               <Button
@@ -196,22 +198,22 @@ export default function TargetStep() {
               </Button>
             </div>
 
-            <div className="rounded-3xl border border-orange-400/20 bg-gradient-to-br from-orange-500/12 to-transparent p-5">
+            <div className="rounded-3xl border border-orange-400/25 bg-gradient-to-br from-orange-500/15 to-transparent p-5 dark:from-orange-500/12">
               <div className="grid gap-3 md:grid-cols-3">
-                <div className="rounded-2xl border border-white/10 bg-black/15 p-4">
+                <div className="rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-black/15">
                   <p className="text-xs text-muted-foreground">Peso atual</p>
-                  <p className="mt-1 text-xl font-bold text-white">{currentWeight.toFixed(2)} kg</p>
+                  <p className="mt-1 text-xl font-bold text-foreground">{currentWeight.toFixed(2)} kg</p>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-black/15 p-4">
+                <div className="rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-black/15">
                   <p className="text-xs text-muted-foreground">Peso-alvo</p>
-                  <p className="mt-1 text-xl font-bold text-orange-300">{targetWeight.toFixed(2)} kg</p>
+                  <p className="mt-1 text-xl font-bold text-orange-600 dark:text-orange-300">{targetWeight.toFixed(2)} kg</p>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-black/15 p-4">
+                <div className="rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-black/15">
                   <p className="text-xs text-muted-foreground">Variacao</p>
-                  <p className="mt-1 text-xl font-bold text-white">{diffPct.toFixed(1)}%</p>
+                  <p className="mt-1 text-xl font-bold text-foreground">{diffPct.toFixed(1)}%</p>
                 </div>
               </div>
-              <p className="mt-4 text-sm text-white">
+              <p className="mt-4 text-sm text-foreground">
                 {goal === 'weight_loss'
                   ? `Precisa perder ${diffPct.toFixed(1)}% do peso corporal.`
                   : goal === 'weight_gain'
@@ -221,9 +223,9 @@ export default function TargetStep() {
             </div>
           </div>
 
-          <section className="space-y-4 rounded-3xl border border-white/10 bg-white/[0.03] p-5">
+          <section className="space-y-4 rounded-3xl border border-border bg-muted/25 p-5 dark:border-white/10 dark:bg-white/[0.03]">
             <div>
-              <p className="text-lg font-semibold text-white">Objetivo do plano</p>
+              <p className="text-lg font-semibold text-foreground">Objetivo do plano</p>
               <p className="text-sm text-muted-foreground">Cada meta altera o peso de referencia e a energia diaria sugerida.</p>
             </div>
 
@@ -239,16 +241,16 @@ export default function TargetStep() {
                     className={cn(
                       'rounded-3xl border px-5 py-5 text-left transition-all duration-200 hover:-translate-y-1 active:scale-[0.99]',
                       active
-                        ? 'border-orange-400/60 bg-orange-500/12 shadow-[0_16px_32px_rgba(249,115,22,0.12)]'
-                        : 'border-white/10 bg-black/15 hover:border-orange-500/30 hover:bg-orange-500/[0.05]',
+                        ? 'border-orange-400/60 bg-orange-500/15 text-foreground shadow-[0_16px_32px_rgba(249,115,22,0.12)] dark:bg-orange-500/12 dark:text-white'
+                        : 'border-border bg-muted/40 hover:border-orange-500/40 hover:bg-orange-500/10 dark:border-white/10 dark:bg-black/15 dark:hover:bg-orange-500/[0.05]',
                     )}
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <p className="font-semibold text-white">{option.label}</p>
+                        <p className="font-semibold text-foreground dark:text-inherit">{option.label}</p>
                         <p className="mt-1 text-sm text-muted-foreground">{option.description}</p>
                       </div>
-                      <span className="rounded-2xl border border-white/10 bg-black/20 p-3 text-orange-300">
+                      <span className="rounded-2xl border border-border bg-muted/50 p-3 text-orange-600 dark:border-white/10 dark:bg-black/20 dark:text-orange-300">
                         <Icon className="h-5 w-5" />
                       </span>
                     </div>
@@ -258,9 +260,9 @@ export default function TargetStep() {
             </div>
           </section>
 
-          <section className="space-y-4 rounded-3xl border border-white/10 bg-white/[0.03] p-5">
+          <section className="space-y-4 rounded-3xl border border-border bg-muted/25 p-5 dark:border-white/10 dark:bg-white/[0.03]">
             <div>
-              <p className="text-lg font-semibold text-white">Origem da meta ponderal</p>
+              <p className="text-lg font-semibold text-foreground">Origem da meta ponderal</p>
               <p className="text-sm text-muted-foreground">O app agora separa claramente regra oficial de referencia e regra percentual customizada da clinica.</p>
             </div>
 
@@ -284,11 +286,11 @@ export default function TargetStep() {
                   className={cn(
                     'rounded-2xl border px-4 py-4 text-left transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.99]',
                     ruleMode === option.value
-                      ? 'border-orange-400/60 bg-orange-500/12 text-white'
-                      : 'border-white/10 bg-black/10 text-muted-foreground hover:border-orange-500/30 hover:text-white',
+                      ? 'border-orange-400/60 bg-orange-500/15 text-foreground dark:bg-orange-500/12 dark:text-white'
+                      : 'border-border bg-muted/40 text-muted-foreground hover:border-orange-500/40 hover:text-foreground dark:border-white/10 dark:bg-black/10 dark:hover:text-white',
                   )}
                 >
-                  <p className="font-semibold">{option.title}</p>
+                  <p className="font-semibold text-foreground dark:text-inherit">{option.title}</p>
                   <p className="mt-1 text-sm text-muted-foreground">{option.description}</p>
                 </button>
               ))}
@@ -314,8 +316,8 @@ export default function TargetStep() {
                   />
                 </div>
 
-                <div className="rounded-2xl border border-orange-400/20 bg-orange-500/[0.08] p-4">
-                  <p className="font-semibold text-white">
+                <div className="rounded-2xl border border-orange-400/25 bg-orange-500/10 p-4 dark:bg-orange-500/[0.08]">
+                  <p className="font-semibold text-foreground">
                     {ruleMode === 'fediaf' ? 'Referencia oficial' : 'Regra percentual da clinica'}
                   </p>
                   <p className="mt-2 text-sm text-muted-foreground">
@@ -330,11 +332,11 @@ export default function TargetStep() {
             )}
           </section>
 
-          <section className="space-y-4 rounded-3xl border border-orange-400/20 bg-gradient-to-r from-orange-500/12 via-black/10 to-transparent p-5">
+          <section className="space-y-4 rounded-3xl border border-orange-400/25 bg-gradient-to-r from-orange-500/12 via-muted/50 to-transparent p-5 dark:via-black/10">
             <div className="flex items-center gap-2">
-              <Scale className="h-5 w-5 text-orange-300" />
+              <Scale className="h-5 w-5 text-orange-600 dark:text-orange-300" />
               <div>
-                <p className="text-lg font-semibold text-white">Peso usado para energia</p>
+                <p className="text-lg font-semibold text-foreground">Peso usado para energia</p>
                 <p className="text-sm text-muted-foreground">A seleção muda o cálculo energetico imediatamente.</p>
               </div>
             </div>
@@ -347,30 +349,34 @@ export default function TargetStep() {
                   onClick={() => setWeightForCalc(option)}
                   className={cn(
                     'rounded-2xl border px-4 py-4 text-left transition-all',
-                    weightForCalc === option ? 'border-orange-400/60 bg-orange-500/12 text-white' : 'border-white/10 bg-black/10 text-muted-foreground',
+                    weightForCalc === option
+                      ? 'border-orange-400/60 bg-orange-500/15 text-foreground dark:bg-orange-500/12 dark:text-white'
+                      : 'border-border bg-muted/40 text-muted-foreground dark:border-white/10 dark:bg-black/10',
                   )}
                 >
-                  <p className="font-semibold">{option === 'current' ? 'Usar peso atual' : 'Usar peso-alvo'}</p>
+                  <p className="font-semibold text-foreground dark:text-inherit">
+                    {option === 'current' ? 'Usar peso atual' : 'Usar peso-alvo'}
+                  </p>
                   <p className="mt-1 text-sm text-muted-foreground">{option === 'current' ? `${currentWeight.toFixed(2)} kg` : `${targetWeight.toFixed(2)} kg`}</p>
                 </button>
               ))}
             </div>
 
             <div className="grid gap-4 xl:grid-cols-[1fr_1fr_1fr]">
-              <div className="rounded-2xl border border-white/10 bg-black/15 p-4">
+              <div className="rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-black/15">
                 <p className="text-xs text-muted-foreground">Estado fisiológico</p>
-                <p className="mt-1 font-semibold text-white">{state?.label ?? 'Nao informado'}</p>
+                <p className="mt-1 font-semibold text-foreground">{state?.label ?? 'Nao informado'}</p>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-black/15 p-4">
+              <div className="rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-black/15">
                 <p className="text-xs text-muted-foreground">Energia fisiologica</p>
-                <p className="mt-1 text-2xl font-black text-white">{baseEnergy.mer.toFixed(0)} kcal/dia</p>
+                <p className="mt-1 text-2xl font-black text-foreground">{baseEnergy.mer.toFixed(0)} kcal/dia</p>
               </div>
-              <div className="rounded-2xl border border-orange-400/25 bg-orange-500/[0.08] p-4">
+              <div className="rounded-2xl border border-orange-400/25 bg-orange-500/10 p-4 dark:bg-orange-500/[0.08]">
                 <div className="flex items-center gap-2">
-                  <ArrowRightLeft className="h-4 w-4 text-orange-300" />
+                  <ArrowRightLeft className="h-4 w-4 text-orange-600 dark:text-orange-300" />
                   <p className="text-xs text-muted-foreground">Energia alvo final</p>
                 </div>
-                <p className="mt-1 text-2xl font-black text-orange-300">{targetEnergy.toFixed(0)} kcal/dia</p>
+                <p className="mt-1 text-2xl font-black text-orange-600 dark:text-orange-300">{targetEnergy.toFixed(0)} kcal/dia</p>
                 <p className="mt-1 text-sm text-muted-foreground">
                   {goal === 'maintenance'
                     ? 'Sem ajuste adicional de meta.'
@@ -382,7 +388,7 @@ export default function TargetStep() {
             </div>
           </section>
 
-          <div className="flex justify-between border-t border-white/5 pt-4">
+          <div className="flex justify-between border-t border-border/60 pt-4">
             <Button variant="outline" onClick={() => navigate(`${NEW_ROUTE}/energy`)} className="gap-2">
               <ChevronLeft className="h-4 w-4" /> Anterior
             </Button>
@@ -395,17 +401,17 @@ export default function TargetStep() {
 
       <Dialog open={eccModalOpen} onOpenChange={setEccModalOpen}>
         <DialogContent className="w-[min(98vw,1500px)] max-w-[1500px] sm:max-w-[1500px] overflow-hidden border border-orange-400/20 bg-popover p-0">
-          <DialogHeader className="border-b border-white/5 px-6 py-5">
+          <DialogHeader className="border-b border-border/60 px-6 py-5">
             <DialogTitle className="text-xl">Como saber o escore ideal do seu paciente?</DialogTitle>
           </DialogHeader>
 
           <div className="grid max-h-[85vh] gap-0 overflow-auto lg:grid-cols-[1.05fr_0.95fr]">
-            <div className="border-b border-white/5 bg-black/25 p-5 lg:border-b-0 lg:border-r">
+            <div className="border-b border-border/60 bg-muted/30 p-5 lg:border-b-0 lg:border-r dark:border-white/5 dark:bg-black/25">
               <Dialog>
                 <DialogTrigger asChild>
                   <div className="h-full w-full relative group cursor-zoom-in rounded-2xl overflow-hidden shadow-sm hover:ring-2 ring-orange-500/50 transition-all">
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors z-10 flex items-center justify-center">
-                      <ZoomIn className="origin-center scale-0 group-hover:scale-150 text-white/80 transition-transform duration-300 drop-shadow-md" />
+                      <ZoomIn className="origin-center scale-0 group-hover:scale-150 text-foreground/80 transition-transform duration-300 drop-shadow-md dark:text-white/80" />
                     </div>
                     <img
                       src={eccImageSrc}
@@ -415,7 +421,7 @@ export default function TargetStep() {
                     />
                   </div>
                 </DialogTrigger>
-                <DialogContent className="max-w-[95vw] lg:max-w-[1400px] h-[90vh] p-0 overflow-hidden bg-[#141010] border-white/10 flex flex-col z-[100]">
+                <DialogContent className="max-w-[95vw] lg:max-w-[1400px] h-[90vh] p-0 overflow-hidden flex flex-col z-[100] border-border bg-zinc-950 text-zinc-100 dark:border-white/10">
                   <div className="w-full flex-1 overflow-auto p-4 cursor-move">
                     <img src={eccImageSrc} alt="Guia Ampliado" className="w-full min-w-[1000px] h-auto object-contain" />
                   </div>
@@ -425,7 +431,7 @@ export default function TargetStep() {
 
             <div className="space-y-5 p-6">
               <div>
-                <p className="text-lg font-semibold text-white">Selecione o escore corporal</p>
+                <p className="text-lg font-semibold text-foreground">Selecione o escore corporal</p>
                 <p className="text-sm text-muted-foreground">Ao importar, o ECC entra na engine e o peso-alvo passa a ser usado no modulo de meta.</p>
               </div>
 
@@ -437,43 +443,47 @@ export default function TargetStep() {
                     onClick={() => setModalBcs(score)}
                     className={cn(
                       'rounded-2xl border px-3 py-4 text-center transition-all hover:-translate-y-0.5 active:scale-[0.99]',
-                      modalBcs === score ? 'border-orange-400/60 bg-orange-500/12 text-white' : 'border-white/10 bg-black/10 text-muted-foreground',
+                      modalBcs === score
+                        ? 'border-orange-400/60 bg-orange-500/15 text-foreground dark:bg-orange-500/12 dark:text-white'
+                        : 'border-border bg-muted/40 text-muted-foreground dark:border-white/10 dark:bg-black/10',
                     )}
                   >
-                    <p className="text-2xl font-black">{score}</p>
+                    <p className="text-2xl font-black text-foreground dark:text-inherit">{score}</p>
                     <p className="text-xs">/9</p>
                   </button>
                 ))}
               </div>
 
-              <div className="rounded-2xl border border-orange-400/25 bg-orange-500/[0.08] p-4">
-                <p className="font-semibold text-white">{modalBcsInfo.label}</p>
+              <div className="rounded-2xl border border-orange-400/25 bg-orange-500/10 p-4 dark:bg-orange-500/[0.08]">
+                <p className="font-semibold text-foreground">{modalBcsInfo.label}</p>
                 <p className="mt-1 text-sm text-muted-foreground">{modalBcsInfo.detail}</p>
               </div>
 
               <div className="grid gap-3 md:grid-cols-2">
-                <div className="rounded-2xl border border-white/10 bg-black/10 p-4">
+                <div className="rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-black/10">
                   <p className="text-xs text-muted-foreground">Peso atual</p>
-                  <p className="mt-1 text-xl font-bold text-white">{currentWeight.toFixed(2)} kg</p>
+                  <p className="mt-1 text-xl font-bold text-foreground">{currentWeight.toFixed(2)} kg</p>
                 </div>
-                <div className="rounded-2xl border border-orange-400/25 bg-orange-500/[0.08] p-4">
+                <div className="rounded-2xl border border-orange-400/25 bg-orange-500/10 p-4 dark:bg-orange-500/[0.08]">
                   <p className="text-xs text-muted-foreground">Peso ideal estimado</p>
-                  <p className="mt-1 text-xl font-bold text-orange-300">{modalWeightPreview.targetWeight.toFixed(2)} kg</p>
+                  <p className="mt-1 text-xl font-bold text-orange-600 dark:text-orange-300">
+                    {modalWeightPreview.targetWeight.toFixed(2)} kg
+                  </p>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-black/10 p-4">
+                <div className="rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-black/10">
                   <p className="text-xs text-muted-foreground">Variacao em kg</p>
-                  <p className="mt-1 text-xl font-bold text-white">
+                  <p className="mt-1 text-xl font-bold text-foreground">
                     {modalWeightPreview.diffKg > 0 ? '+' : ''}
                     {modalWeightPreview.diffKg.toFixed(2)} kg
                   </p>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-black/10 p-4">
+                <div className="rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-black/10">
                   <p className="text-xs text-muted-foreground">Variacao em %</p>
-                  <p className="mt-1 text-xl font-bold text-white">{modalWeightPreview.diffPct.toFixed(1)}%</p>
+                  <p className="mt-1 text-xl font-bold text-foreground">{modalWeightPreview.diffPct.toFixed(1)}%</p>
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-white/10 bg-black/10 p-4 text-sm text-white">
+              <div className="rounded-2xl border border-border bg-muted/40 p-4 text-sm text-foreground dark:border-white/10 dark:bg-black/10">
                 {modalWeightPreview.goal === 'weight_loss'
                   ? `Este paciente precisa perder ${modalWeightPreview.diffPct.toFixed(1)}% do peso corporal.`
                   : modalWeightPreview.goal === 'weight_gain'

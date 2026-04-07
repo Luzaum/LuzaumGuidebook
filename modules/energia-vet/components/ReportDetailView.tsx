@@ -2,7 +2,7 @@ import { Download, Printer } from 'lucide-react'
 import { Button } from './ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import type { StoredCalculationReport } from '../types'
-import { exportReportPdf } from '../lib/reportDocument'
+import { exportReportPdf, printReportPdf } from '../lib/reportDocument'
 import { buildPrintableReportViewModel } from '../lib/reportPresentation'
 import PrintableReportDocument from './PrintableReportDocument'
 
@@ -22,8 +22,8 @@ export default function ReportDetailView({ report }: { report: StoredCalculation
                 <p className="mt-1 text-sm text-muted-foreground">Relatorio salvo em {new Date(report.createdAt).toLocaleString('pt-BR')}</p>
               </div>
               <div className="flex gap-2">
-                <Button variant="outline" size="sm" className="gap-2" onClick={() => window.print()}>
-                  <Printer className="h-4 w-4" /> Imprimir
+                <Button variant="outline" size="sm" className="gap-2" onClick={() => printReportPdf(report)}>
+                  <Printer className="h-4 w-4" /> Imprimir PDF
                 </Button>
                 <Button size="sm" className="gap-2" onClick={() => exportReportPdf(report)}>
                   <Download className="h-4 w-4" /> Exportar PDF
