@@ -33,3 +33,6 @@ build/
 .env.local
 .env.production
 .env.*.local
+
+# Windows: arquivo acidental com nome reservado (quebra git add/stash)
+/nul
