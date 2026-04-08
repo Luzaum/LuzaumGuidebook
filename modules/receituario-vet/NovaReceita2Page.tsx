@@ -33,6 +33,13 @@ import type { RxTemplateStyle } from './rxDb'
 import { calculateMedicationQuantity } from './rxRenderer'
 import { sanitizeVisibleText } from './textSanitizer'
 import {
+    SHARED_DURATION_MODE_OPTIONS,
+    SHARED_FREQUENCY_MODE_OPTIONS,
+    SHARED_REPEAT_UNIT_OPTIONS,
+    SHARED_TIMES_PER_DAY_INTERVALS_HOURS,
+    SHARED_TIMES_PER_DAY_OPTIONS,
+} from './vetPosologyShared'
+import {
     buildCompoundedCardSubtitle,
     buildCompoundedInstruction,
     buildCompoundedPharmacyInstruction,
@@ -339,40 +346,13 @@ const COMMON_EXAMS = [
     'Otoscopia',
 ]
 
-const TIMES_PER_DAY_INTERVALS: Record<string, string> = {
-    '1': '24',
-    '2': '12',
-    '3': '8',
-    '4': '6',
-    '6': '4',
-    '8': '3',
-    '12': '2',
-    '24': '1',
-}
+const TIMES_PER_DAY_INTERVALS = SHARED_TIMES_PER_DAY_INTERVALS_HOURS
 
-const QUICK_FREQUENCY_OPTIONS = [
-    { value: '1', label: '1x ao dia (a cada 24 horas)' },
-    { value: '2', label: '2x ao dia (a cada 12 horas)' },
-    { value: '3', label: '3x ao dia (a cada 8 horas)' },
-    { value: '4', label: '4x ao dia (a cada 6 horas)' },
-    { value: '6', label: '6x ao dia (a cada 4 horas)' },
-    { value: '8', label: '8x ao dia (a cada 3 horas)' },
-    { value: '12', label: '12x ao dia (a cada 2 horas)' },
-    { value: '24', label: '24x ao dia (a cada 1 hora)' },
-]
+const QUICK_FREQUENCY_OPTIONS = SHARED_TIMES_PER_DAY_OPTIONS.filter((o) => o.value !== '')
 
-const ITEM_FREQUENCY_OPTIONS = [{ value: '', label: 'Selecionar frequência' }, ...QUICK_FREQUENCY_OPTIONS]
-const ITEM_FREQUENCY_MODE_OPTIONS = [
-    { value: 'times_per_day', label: 'Vezes por dia' },
-    { value: 'interval_hours', label: 'Intervalo em horas' },
-    { value: 'single_dose', label: 'Dose única' },
-    { value: 'repeat_interval', label: 'Repetir periodicamente' },
-]
-const ITEM_REPEAT_UNIT_OPTIONS = [
-    { value: 'dias', label: 'dias' },
-    { value: 'semanas', label: 'semanas' },
-    { value: 'meses', label: 'meses' },
-]
+const ITEM_FREQUENCY_OPTIONS = SHARED_TIMES_PER_DAY_OPTIONS
+const ITEM_FREQUENCY_MODE_OPTIONS = SHARED_FREQUENCY_MODE_OPTIONS
+const ITEM_REPEAT_UNIT_OPTIONS = SHARED_REPEAT_UNIT_OPTIONS
 
 const QUICK_DOSE_UNIT_OPTIONS = [
     'mg/kg', 'mcg/kg', 'g/kg', 'UI/kg', 'mL/kg', 'mg', 'mcg', 'g', 'UI', 'mL', 'mg/mL', 'mcg/mL', '%',
@@ -402,13 +382,7 @@ const QUICK_SPECIES_OPTIONS = [
     { value: 'cão', label: 'Cão' },
     { value: 'gato', label: 'Gato' },
 ]
-const DURATION_MODE_OPTIONS = [
-    { value: 'fixed_days', label: 'Duração fechada' },
-    { value: 'continuous_until_recheck', label: 'Uso contínuo até reavaliação' },
-    { value: 'until_recheck', label: 'Até reavaliação clínica' },
-    { value: 'continuous_use', label: 'Uso contínuo' },
-    { value: 'until_finished', label: 'Até terminar o medicamento' },
-]
+const DURATION_MODE_OPTIONS = SHARED_DURATION_MODE_OPTIONS
 const DURATION_UNIT_OPTIONS = [
     { value: 'dias', label: 'dias' },
     { value: 'semanas', label: 'semanas' },
@@ -504,7 +478,7 @@ function formatRepeatIntervalValue(value?: string | number | null, unit?: string
     const numeric = Number(String(value ?? '').replace(',', '.'))
     const recurrenceUnit = String(unit || '').trim()
     return Number.isFinite(numeric) && numeric > 0 && recurrenceUnit
-        ? `repetir a cada ${numeric} ${recurrenceUnit}`
+        ? `em dose única, repetir a cada ${numeric} ${recurrenceUnit}`
         : ''
 }
 
@@ -578,6 +552,42 @@ function routeStringToGroup(rawRoute?: string | null): RouteGroup {
     return 'OUTROS'
 }
 
+/** Valores do RxvSelect de via (VO, Otologico, …) — evita ORAL/OTOLOGICO incompatíveis com o select. */
+function routeToSelectValue(rawRoute?: string | null): string {
+    const trimmed = String(rawRoute || '').trim()
+    if (QUICK_ROUTE_OPTIONS.some((o) => o.value === trimmed)) return trimmed
+    const normalized = normalizeRouteLabel(trimmed).toUpperCase()
+    const map: Record<string, string> = {
+        ORAL: 'VO',
+        SUBCUTANEA: 'SC',
+        INTRAMUSCULAR: 'IM',
+        INTRAVENOSA: 'IV',
+        TOPICO: 'Topico',
+        OFTALMICO: 'Oftalmico',
+        OTOLOGICO: 'Otologico',
+        INTRANASAL: 'Intranasal',
+        RETAL: 'Retal',
+        INALATORIO: 'Inalatorio',
+        TRANSDERMICO: 'Transdermico',
+    }
+    if (normalized && map[normalized]) return map[normalized]
+    if (trimmed) return trimmed
+    return 'VO'
+}
+
+function parseRepeatIntervalFromFrequencyText(raw?: string | null): { value?: number; unit?: PrescriptionItem['repeatEveryUnit'] } {
+    const text = String(raw ?? '').trim().toLowerCase()
+    if (!text) return {}
+    const m = text.match(/repetir\s+a\s+cada\s+(\d+(?:[.,]\d+)?)\s*(dias?|semanas?|mes(?:es)?)/i)
+        || text.match(/a\s+cada\s+(\d+(?:[.,]\d+)?)\s*(dias?|semanas?|mes(?:es)?)(?:\s|$|[,.])/i)
+    if (!m) return {}
+    const value = Number(String(m[1]).replace(',', '.'))
+    if (!Number.isFinite(value) || value <= 0) return {}
+    const u = String(m[2] || '').toLowerCase()
+    const unit: PrescriptionItem['repeatEveryUnit'] = u.startsWith('semana') ? 'semanas' : u.startsWith('mes') ? 'meses' : 'dias'
+    return { value, unit }
+}
+
 function normalizePrescriptionItem(item: PrescriptionItem, defaultStartDate: string, defaultStartHour: string): PrescriptionItem {
     const parsedStart = parseLegacyStart(item.start_date)
     const startDate = item.startDate ?? parsedStart.startDate
@@ -593,15 +603,54 @@ function normalizePrescriptionItem(item: PrescriptionItem, defaultStartDate: str
         else durationMode = 'fixed_days'
     }
 
-    const parsedIntervalHours = item.frequencyMode === 'interval_hours'
+    const itemFreq = (item as { frequencyMode?: string }).frequencyMode === 'every_x_hours'
+        ? ('interval_hours' as const)
+        : item.frequencyMode
+
+    const parsedIntervalHours = itemFreq === 'interval_hours'
         ? parseIntervalHoursValue(item.intervalHours ?? item.frequency)
         : parseIntervalHoursValue(item.intervalHours)
-    const parsedRepeatEveryValue = item.frequencyMode === 'repeat_interval'
-        ? parseIntervalHoursValue(item.repeatEveryValue ?? item.frequency)
+    const repeatFromText = parseRepeatIntervalFromFrequencyText(item.frequency)
+    const parsedRepeatEveryValue = itemFreq === 'repeat_interval'
+        ? (parseIntervalHoursValue(item.repeatEveryValue)
+            ?? repeatFromText.value
+            ?? parseIntervalHoursValue(item.frequency))
         : parseIntervalHoursValue(item.repeatEveryValue)
-    const normalizedTimesPerDay = item.frequencyMode === 'times_per_day'
+    const normalizedTimesPerDay = itemFreq === 'times_per_day'
         ? parseTimesPerDayValue(item.timesPerDay ?? item.frequency)
         : parseTimesPerDayValue(item.timesPerDay)
+
+    const resolvedRepeatEveryUnit = (item.repeatEveryUnit as PrescriptionItem['repeatEveryUnit'] | undefined)
+        || repeatFromText.unit
+
+    let resolvedFrequencyMode: PrescriptionItem['frequencyMode'] = itemFreq
+    if (itemFreq === 'single_dose') {
+        resolvedFrequencyMode = 'single_dose'
+    } else if (itemFreq === 'repeat_interval') {
+        resolvedFrequencyMode = 'repeat_interval'
+    } else if (itemFreq === 'interval_hours') {
+        resolvedFrequencyMode = (parsedIntervalHours || item.intervalHours) ? 'interval_hours' : itemFreq
+    } else if (itemFreq === 'times_per_day') {
+        resolvedFrequencyMode = normalizedTimesPerDay ? 'times_per_day' : itemFreq
+    } else if (!itemFreq) {
+        const freqLower = String(item.frequency || '').toLowerCase()
+        if (freqLower.includes('dose única') || freqLower.includes('dose unica')) {
+            if (freqLower.includes('repetir') || repeatFromText.value) resolvedFrequencyMode = 'repeat_interval'
+            else resolvedFrequencyMode = 'single_dose'
+        } else if (repeatFromText.value && repeatFromText.unit) {
+            resolvedFrequencyMode = 'repeat_interval'
+        } else if (parsedIntervalHours) {
+            resolvedFrequencyMode = 'interval_hours'
+        } else if (normalizedTimesPerDay) {
+            resolvedFrequencyMode = 'times_per_day'
+        }
+    } else if (parsedIntervalHours) {
+        resolvedFrequencyMode = 'interval_hours'
+    } else if (normalizedTimesPerDay) {
+        resolvedFrequencyMode = 'times_per_day'
+    } else {
+        resolvedFrequencyMode = itemFreq
+    }
     const durationParts = item.durationValue && item.durationUnit
         ? { value: item.durationValue, unit: item.durationUnit }
         : parseDurationValueAndUnit(item.duration)
@@ -622,29 +671,31 @@ function normalizePrescriptionItem(item: PrescriptionItem, defaultStartDate: str
         startHour,
         start_date: buildLegacyStartDate(startDate, startHour) || item.start_date,
         durationMode,
-        frequencyMode: item.frequencyMode === 'single_dose'
-            ? 'single_dose'
-            : item.frequencyMode === 'repeat_interval' && parsedRepeatEveryValue
-                ? 'repeat_interval'
-                : parsedIntervalHours
-                    ? 'interval_hours'
-                    : normalizedTimesPerDay
-                        ? 'times_per_day'
-                        : item.frequencyMode,
-        timesPerDay: normalizedTimesPerDay ? Number(normalizedTimesPerDay) : item.timesPerDay,
-        intervalHours: parsedIntervalHours ?? item.intervalHours,
-        repeatEveryValue: parsedRepeatEveryValue ?? item.repeatEveryValue,
-        repeatEveryUnit: (item.repeatEveryUnit as PrescriptionItem['repeatEveryUnit']) || 'semanas',
-        frequency: item.frequencyMode === 'single_dose'
+        frequencyMode: resolvedFrequencyMode,
+        timesPerDay: resolvedFrequencyMode === 'times_per_day'
+            ? (normalizedTimesPerDay ? Number(normalizedTimesPerDay) : item.timesPerDay)
+            : undefined,
+        intervalHours: resolvedFrequencyMode === 'interval_hours'
+            ? (parsedIntervalHours ?? item.intervalHours)
+            : undefined,
+        repeatEveryValue: resolvedFrequencyMode === 'repeat_interval'
+            ? (parsedRepeatEveryValue ?? item.repeatEveryValue)
+            : undefined,
+        repeatEveryUnit: resolvedFrequencyMode === 'repeat_interval'
+            ? (resolvedRepeatEveryUnit || 'semanas')
+            : undefined,
+        frequency: resolvedFrequencyMode === 'single_dose'
             ? 'em dose única'
-            : item.frequencyMode === 'repeat_interval'
-                ? formatRepeatIntervalValue(parsedRepeatEveryValue ?? item.repeatEveryValue, item.repeatEveryUnit)
+            : resolvedFrequencyMode === 'repeat_interval'
+                ? formatRepeatIntervalValue(parsedRepeatEveryValue ?? item.repeatEveryValue, resolvedRepeatEveryUnit)
+                    || formatRepeatIntervalValue(item.repeatEveryValue, resolvedRepeatEveryUnit)
+                    || (item.frequency || '')
                 : parsedIntervalHours
                     ? formatIntervalHoursValue(parsedIntervalHours)
                     : normalizedTimesPerDay
                         ? formatFrequencyValue(normalizedTimesPerDay)
                         : (item.frequency || ''),
-        route: normalizeRouteLabel(item.route),
+        route: routeToSelectValue(item.route),
         routeGroup: routeStringToGroup(item.route),
         durationValue: durationParts.value ?? item.durationValue,
         durationUnit: durationParts.unit ?? item.durationUnit ?? 'dias',
@@ -2313,6 +2364,18 @@ export default function NovaReceita2Page() {
                                                             frequencyMode={item.frequencyMode || 'times_per_day'}
                                                             timesPerDay={item.timesPerDay ?? ''}
                                                             intervalHours={item.intervalHours ?? ''}
+                                                            repeatEveryValue={item.repeatEveryValue ?? ''}
+                                                            repeatEveryUnit={item.repeatEveryUnit || 'semanas'}
+                                                            onRepeatEveryValueChange={(value) => updateItem(item.id, (current) => ({
+                                                                ...current,
+                                                                repeatEveryValue: value ? Number(value) : undefined,
+                                                                frequency: formatRepeatIntervalValue(value ? Number(value) : undefined, current.repeatEveryUnit || 'semanas'),
+                                                            }))}
+                                                            onRepeatEveryUnitChange={(value) => updateItem(item.id, (current) => ({
+                                                                ...current,
+                                                                repeatEveryUnit: value as PrescriptionItem['repeatEveryUnit'],
+                                                                frequency: formatRepeatIntervalValue(current.repeatEveryValue, value),
+                                                            }))}
                                                             onFrequencyModeChange={(value) => updateItem(item.id, (current) => ({
                                                                 ...current,
                                                                 frequencyMode: value as PrescriptionItem['frequencyMode'],

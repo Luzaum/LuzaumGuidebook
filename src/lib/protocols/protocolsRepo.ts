@@ -632,12 +632,14 @@ function restoreProtocolMedicationMetadataFromHeader(
 
   return medications.map((item, index) => {
     const entry = metadataByOrder.get(item.sort_order ?? index) || metadataByOrder.get(index)
+    const baseMeta =
+      item.metadata && typeof item.metadata === 'object' && !Array.isArray(item.metadata) ? item.metadata : {}
     if (!entry || !entry.metadata || typeof entry.metadata !== 'object' || Array.isArray(entry.metadata)) {
       return item
     }
     return {
       ...item,
-      metadata: entry.metadata,
+      metadata: { ...baseMeta, ...entry.metadata },
     }
   })
 }
@@ -829,6 +831,7 @@ export async function loadProtocolBundle(
       duration_days: m.duration_days ?? null,
       is_controlled: !!m.is_controlled,
       sort_order: m.sort_order ?? 0,
+      metadata: (m as any).metadata ?? null,
     })) as ProtocolMedicationItem[])
   )
   const hydratedMedicationsWithMetadata = restoreProtocolMedicationMetadataFromHeader(

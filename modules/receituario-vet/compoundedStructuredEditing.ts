@@ -1,4 +1,10 @@
 import { sanitizeVisibleText } from './textSanitizer'
+import {
+  SHARED_DURATION_MODE_OPTIONS,
+  SHARED_FREQUENCY_MODE_OPTIONS,
+  SHARED_REPEAT_UNIT_OPTIONS,
+  SHARED_TIMES_PER_DAY_OPTIONS_COMPACT,
+} from './vetPosologyShared'
 
 export const COMPOUNDED_DOSE_UNIT_OPTIONS = [
   'mg/kg',
@@ -17,25 +23,14 @@ export const COMPOUNDED_DOSE_UNIT_OPTIONS = [
 
 export const COMPOUNDED_DOSE_UNIT_SELECT_OPTIONS = COMPOUNDED_DOSE_UNIT_OPTIONS.map((value) => ({ value, label: value }))
 
-export const COMPOUNDED_FREQUENCY_MODE_OPTIONS = [
-  { value: 'times_per_day', label: 'Vezes por dia' },
-  { value: 'interval_hours', label: 'Intervalo em horas' },
-] as const
+/** Paridade com Nova Receita / vetPosologyShared (incl. dose única e repetição). */
+export const COMPOUNDED_FREQUENCY_MODE_OPTIONS = SHARED_FREQUENCY_MODE_OPTIONS
 
-export const COMPOUNDED_TIMES_PER_DAY_OPTIONS = [
-  { value: '1', label: '1x ao dia' },
-  { value: '2', label: '2x ao dia' },
-  { value: '3', label: '3x ao dia' },
-  { value: '4', label: '4x ao dia' },
-  { value: '6', label: '6x ao dia' },
-] as const
+export const COMPOUNDED_TIMES_PER_DAY_OPTIONS = SHARED_TIMES_PER_DAY_OPTIONS_COMPACT
 
-export const COMPOUNDED_DURATION_MODE_OPTIONS = [
-  { value: 'fixed_days', label: 'Período fixo' },
-  { value: 'until_recheck', label: 'Até reavaliação clínica' },
-  { value: 'continuous_use', label: 'Uso contínuo' },
-  { value: 'until_finished', label: 'Até terminar o medicamento' },
-] as const
+export const COMPOUNDED_REPEAT_UNIT_OPTIONS = SHARED_REPEAT_UNIT_OPTIONS
+
+export const COMPOUNDED_DURATION_MODE_OPTIONS = SHARED_DURATION_MODE_OPTIONS
 
 export const COMPOUNDED_DURATION_UNIT_OPTIONS = [
   { value: 'dias', label: 'dias' },

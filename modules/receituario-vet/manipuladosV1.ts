@@ -107,6 +107,21 @@ export interface ManipuladoV1Display {
   print_line_right: string
 }
 
+/**
+ * Contrato canônico alinhado a doses/protocolos (Supabase) — persistido em `payload` (JSON).
+ * Recalculado em todo `normalizeManipuladoV1` a partir de posologia + campos de editor.
+ */
+export interface ManipuladoV1CanonicalPosology {
+  administration_basis: 'weight_based' | 'weight_band' | 'per_animal' | 'per_application_site'
+  administration_amount: number | null
+  administration_unit: string | null
+  administration_target: string | null
+  is_single_dose: boolean
+  repeat_periodically: boolean
+  repeat_every_value: number | null
+  repeat_every_unit: 'dias' | 'semanas' | 'meses' | null
+}
+
 export interface ManipuladoV1Formula {
   identity: ManipuladoV1Identity
   prescribing: ManipuladoV1Prescribing
@@ -114,6 +129,8 @@ export interface ManipuladoV1Formula {
   ingredients: ManipuladoV1Ingredient[]
   variants: ManipuladoV1Variant[]
   display: ManipuladoV1Display
+  /** Snapshot canônico para queries / integrações (espelhado no `payload` do Supabase). */
+  canonical_posology?: ManipuladoV1CanonicalPosology
 }
 
 export const MANIPULADO_V1_FORMS = [
@@ -223,12 +240,73 @@ export function createEmptyManipuladoV1(clinicId = ''): ManipuladoV1Formula {
   }
 }
 
+type PrescribingEditorExtras = ManipuladoV1Prescribing & {
+  _repeat_periodically?: boolean
+  _repeat_every_value?: string | number
+  _repeat_every_unit?: string
+}
+
+function resolveCanonicalAdministrationTarget(formula: ManipuladoV1Formula): string | null {
+  const route = sanitizeVisibleText(formula.identity.primary_route || '').toLowerCase()
+  if (route.includes('oto')) return 'em cada ouvido'
+  if (route.includes('oft')) return 'em cada olho'
+  if (route.includes('nasa')) return 'em cada narina'
+  if (route.includes('top') || route.includes('trans')) return 'sobre a lesao'
+  return 'na pele afetada'
+}
+
+/** Deriva o contrato canônico a partir do estado V1 (incl. toggles `_repeat_*` no prescribing). */
+export function buildCanonicalPosology(formula: ManipuladoV1Formula): ManipuladoV1CanonicalPosology {
+  const pos = formula.prescribing.posology_mode
+  let administration_basis: ManipuladoV1CanonicalPosology['administration_basis'] = 'weight_based'
+  if (pos === 'fixed_per_animal') administration_basis = 'per_animal'
+  else if (pos === 'fixed_per_application') administration_basis = 'per_application_site'
+  else if (pos === 'variant_table') administration_basis = 'weight_band'
+
+  const p = formula.prescribing as PrescribingEditorExtras
+  const isSingle = formula.prescribing.frequency_mode === 'single_dose'
+  const repeatPeriodic = !!(isSingle && p._repeat_periodically)
+
+  let repeat_every_value: number | null = null
+  let repeat_every_unit: ManipuladoV1CanonicalPosology['repeat_every_unit'] = null
+  if (repeatPeriodic && p._repeat_every_value != null && String(p._repeat_every_value).trim() !== '') {
+    const n = Number(String(p._repeat_every_value).replace(',', '.'))
+    if (Number.isFinite(n) && n > 0) {
+      repeat_every_value = n
+      const u = String(p._repeat_every_unit || 'dias').toLowerCase()
+      repeat_every_unit = u.startsWith('semana') ? 'semanas' : u.startsWith('mes') ? 'meses' : 'dias'
+    }
+  }
+
+  const customAmount =
+    administration_basis === 'per_animal' || administration_basis === 'per_application_site'
+  const administrable = sanitizeVisibleText(buildAdministrableUnit(formula) || 'unidade')
+
+  return {
+    administration_basis,
+    administration_amount: customAmount ? (formula.prescribing.dose_min ?? 1) : null,
+    administration_unit: customAmount ? administrable : null,
+    administration_target:
+      administration_basis === 'per_animal'
+        ? 'por animal'
+        : administration_basis === 'per_application_site'
+          ? resolveCanonicalAdministrationTarget(formula)
+          : null,
+    is_single_dose: isSingle,
+    repeat_periodically: repeatPeriodic,
+    repeat_every_value,
+    repeat_every_unit,
+  }
+}
+
 export function normalizeManipuladoV1(raw?: Partial<ManipuladoV1Formula> | null): ManipuladoV1Formula {
   const base = createEmptyManipuladoV1(String(raw?.identity?.clinic_id || ''))
+  const persistedId = String(raw?.identity?.id || '').trim()
   const next: ManipuladoV1Formula = {
     identity: {
       ...base.identity,
       ...sanitizeDeepText(raw?.identity || {}),
+      id: persistedId || base.identity.id,
     },
     prescribing: {
       ...base.prescribing,
@@ -269,7 +347,10 @@ export function normalizeManipuladoV1(raw?: Partial<ManipuladoV1Formula> | null)
     next.display.print_line_left = buildPrintLineLeft(next)
     next.display.print_line_right = buildPrintLineRight(next)
   }
-  return next
+  return {
+    ...next,
+    canonical_posology: buildCanonicalPosology(next),
+  }
 }
 
 export function formatDurationPhrase(text: string): string {

@@ -1,7 +1,7 @@
 .rxv-page {
   min-height: 100dvh;
   position: relative;
-  overflow-x: clip;
+  /* Não usar overflow-x: clip aqui — força overflow-y: auto e quebra o scroll do documento */
   transition: background-color 180ms ease, color 180ms ease;
   --rxv-density-scale: 0.78;
   --rxv-page-max-width: 1680px;
@@ -117,7 +117,6 @@
   z-index: 1;
   min-height: 100dvh;
   display: flex;
-  overflow-x: clip;
 }
 
 .rxv-desktop-sidebar {
@@ -362,7 +361,6 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow-x: clip;
   animation: rxv-page-enter 220ms ease both;
   padding-right: 8px;
 }
@@ -433,7 +431,6 @@
 
 .rxv-main {
   padding: 12px var(--rxv-page-side-padding) 22px;
-  overflow-x: clip;
 }
 
 @media (min-width: 1024px) {

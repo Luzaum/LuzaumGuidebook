@@ -903,11 +903,13 @@ export default function Catalogo3Page() {
             console.log('[Catalogo3] Med:', cleanMedicationPayload)
             console.log('[Catalogo3] Pres:', cleanPresentationsPayload)
 
+            const medicationIdForSave =
+                (selectedId && String(selectedId).trim()) || (draft.id && String(draft.id).trim()) || undefined
             const result = await saveMedication({
                 clinicId,
                 userId: currentUser.id,
                 medication: cleanMedicationPayload,
-                medicationId: selectedId || undefined,
+                medicationId: medicationIdForSave,
                 presentations: cleanPresentationsPayload as any
             })
 

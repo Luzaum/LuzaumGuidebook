@@ -181,12 +181,19 @@ export default function ManipuladosPage() {
 
   const handleNew = () => {
     if (!clinicId) return
-    const restoredDraft = loadManipuladoDraft(getManipuladoDraftKey(clinicId, '__new__'))
-    const next = restoredDraft || createEmptyManipuladoV1(clinicId)
+    const draftKey = getManipuladoDraftKey(clinicId, '__new__')
+    clearManipuladoDraft(draftKey)
+    const next = createEmptyManipuladoV1(clinicId)
     setSelectedId('__new__')
     setEditorValue(next)
-    setDirty(!!restoredDraft)
-    setMessage(restoredDraft ? 'Rascunho local restaurado para a nova fórmula.' : '')
+    setDirty(false)
+    setMessage('')
+    try {
+      const activeKey = getManipuladoActiveKey(clinicId)
+      if (activeKey) localStorage.setItem(activeKey, '__new__')
+    } catch {
+      // noop
+    }
   }
 
   const handleLoadFixture = () => {

@@ -1055,6 +1055,12 @@ export default function Protocolos3Page() {
   const handleSaveProtocol = useCallback(async () => {
     if (!clinicId || !userId || !editingProtocol || isSavingProtocol) return
 
+    const protocolName = String(editingProtocol.protocol.name ?? '').trim()
+    if (!protocolName) {
+      alert('Preencha o nome do protocolo antes de salvar.')
+      return
+    }
+
     try {
       setIsSavingProtocol(true)
       const bundleToSave: ProtocolBundle = {

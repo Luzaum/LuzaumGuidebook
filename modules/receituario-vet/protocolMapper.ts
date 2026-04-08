@@ -752,21 +752,23 @@ export function mapProtocolMedicationToPrescriptionItem(
     : undefined
   const isSingleDose = !!protocolMeta.is_single_dose
   const metaFreqMode = typeof protocolMeta.frequency_mode === 'string' ? protocolMeta.frequency_mode : null
+  /** Colunas canônicas: repeat_every_* (UI legado) ou recurrence_* (DB doses/catálogo) */
+  const repeatValRaw = protocolMeta.repeat_every_value ?? protocolMeta.recurrence_value
+  const repeatUnitRaw = (protocolMeta.repeat_every_unit ?? protocolMeta.recurrence_unit) as string | undefined
+  const repeatPeriodically = !!protocolMeta.repeat_periodically
 
   if (isSingleDose) {
-    const repeatPeriodically = !!protocolMeta.repeat_periodically
-    const repeatVal = protocolMeta.repeat_every_value
-    const repeatUnit = (protocolMeta.repeat_every_unit as string | undefined) || 'dias'
-    if (repeatPeriodically && repeatVal) {
-      frequency = `em dose única, repetir a cada ${repeatVal} ${repeatUnit}`
+    const repeatUnit = (repeatUnitRaw || 'dias').trim() || 'dias'
+    if (repeatPeriodically && repeatValRaw != null && String(repeatValRaw).trim() !== '') {
+      frequency = `em dose única, repetir a cada ${repeatValRaw} ${repeatUnit}`
       frequencyMode = 'repeat_interval'
     } else {
       frequency = 'em dose única'
       frequencyMode = 'single_dose'
     }
-  } else if (metaFreqMode === 'repeat_interval' && protocolMeta.repeat_every_value) {
-    const repeatVal = protocolMeta.repeat_every_value
-    const repeatUnit = (protocolMeta.repeat_every_unit as string | undefined) || 'dias'
+  } else if (metaFreqMode === 'repeat_interval' && repeatValRaw != null && String(repeatValRaw).trim() !== '') {
+    const repeatVal = repeatValRaw
+    const repeatUnit = (repeatUnitRaw || 'dias').trim() || 'dias'
     frequency = `repetir a cada ${repeatVal} ${repeatUnit}`
     frequencyMode = 'repeat_interval'
   } else if (protocolMed.frequency_type === 'times_per_day' && protocolMed.times_per_day) {
@@ -870,10 +872,14 @@ export function mapProtocolMedicationToPrescriptionItem(
       dose: dose || compoundedBase.dose || compoundedBase.compounded_regimen_snapshot?.applied_dose_text || undefined,
       frequency: frequency || compoundedBase.frequency || undefined,
       frequencyMode: frequencyMode || compoundedBase.frequencyMode,
-      timesPerDay: timesPerDay ?? compoundedBase.timesPerDay,
-      intervalHours: intervalHours ?? compoundedBase.intervalHours,
-      repeatEveryValue: (isSingleDose || metaFreqMode === 'repeat_interval') && protocolMeta.repeat_every_value ? Number(protocolMeta.repeat_every_value) : compoundedBase.repeatEveryValue,
-      repeatEveryUnit: (isSingleDose || metaFreqMode === 'repeat_interval') && protocolMeta.repeat_every_unit ? String(protocolMeta.repeat_every_unit) as 'dias' | 'semanas' | 'meses' : compoundedBase.repeatEveryUnit,
+      timesPerDay: (frequencyMode || compoundedBase.frequencyMode) === 'times_per_day' ? (timesPerDay ?? compoundedBase.timesPerDay) : undefined,
+      intervalHours: (frequencyMode || compoundedBase.frequencyMode) === 'interval_hours' ? (intervalHours ?? compoundedBase.intervalHours) : undefined,
+      repeatEveryValue: (isSingleDose || metaFreqMode === 'repeat_interval') && repeatValRaw != null && String(repeatValRaw).trim() !== ''
+        ? Number(repeatValRaw)
+        : compoundedBase.repeatEveryValue,
+      repeatEveryUnit: (isSingleDose || metaFreqMode === 'repeat_interval') && repeatUnitRaw
+        ? String(repeatUnitRaw).trim() as 'dias' | 'semanas' | 'meses'
+        : compoundedBase.repeatEveryUnit,
       route: protocolMed.route || compoundedBase.route || compoundedBase.compounded_snapshot.default_route || undefined,
       duration: durationState.duration || compoundedBase.duration,
       durationMode: durationState.durationMode || compoundedBase.durationMode,
@@ -922,10 +928,14 @@ export function mapProtocolMedicationToPrescriptionItem(
     dose: dose || baseItem.dose || undefined,
     frequency: frequency || baseItem.frequency || undefined,
     frequencyMode: frequencyMode || baseItem.frequencyMode,
-    timesPerDay: timesPerDay ?? baseItem.timesPerDay,
-    intervalHours: intervalHours ?? baseItem.intervalHours,
-    repeatEveryValue: (isSingleDose || metaFreqMode === 'repeat_interval') && protocolMeta.repeat_every_value ? Number(protocolMeta.repeat_every_value) : baseItem.repeatEveryValue,
-    repeatEveryUnit: (isSingleDose || metaFreqMode === 'repeat_interval') && protocolMeta.repeat_every_unit ? String(protocolMeta.repeat_every_unit) as 'dias' | 'semanas' | 'meses' : baseItem.repeatEveryUnit,
+    timesPerDay: (frequencyMode || baseItem.frequencyMode) === 'times_per_day' ? (timesPerDay ?? baseItem.timesPerDay) : undefined,
+    intervalHours: (frequencyMode || baseItem.frequencyMode) === 'interval_hours' ? (intervalHours ?? baseItem.intervalHours) : undefined,
+    repeatEveryValue: (isSingleDose || metaFreqMode === 'repeat_interval') && repeatValRaw != null && String(repeatValRaw).trim() !== ''
+      ? Number(repeatValRaw)
+      : baseItem.repeatEveryValue,
+    repeatEveryUnit: (isSingleDose || metaFreqMode === 'repeat_interval') && repeatUnitRaw
+      ? String(repeatUnitRaw).trim() as 'dias' | 'semanas' | 'meses'
+      : baseItem.repeatEveryUnit,
     route: protocolMed.route || baseItem.route || undefined,
     duration: durationState.duration || baseItem.duration,
     durationMode: durationState.durationMode || baseItem.durationMode,

@@ -75,6 +75,7 @@ function formulaToRow(formula: ManipuladoV1Formula): ManipuladoV1Row {
     is_active: normalized.identity.is_active,
     indication_summary: normalized.identity.indication_summary || null,
     description: normalized.identity.description || null,
+    // `normalized` inclui `canonical_posology` (contrato dose/protocolo) gerado em normalizeManipuladoV1.
     payload: {
       ...normalized,
       display: {
@@ -116,7 +117,7 @@ export async function saveManipuladoV1(formula: ManipuladoV1Formula, userId?: st
   const payload = { ...row, created_by: userId || null }
   const { data, error } = await supabase
     .from('manipulados_v1_formulas')
-    .upsert(payload)
+    .upsert(payload, { onConflict: 'id' })
     .select('*')
     .single()
 

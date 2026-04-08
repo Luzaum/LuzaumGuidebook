@@ -81,6 +81,24 @@ function normalizeRouteText(route?: string): string {
         .trim()
 }
 
+/** Rótulo legível para "por via …" (evita "por via vo" quando o select usa VO). */
+function routePhraseForInstruction(routeRaw?: string): string {
+    const t = normalizeRouteText(routeRaw)
+    if (!t) return ''
+    if (t === 'vo' || t.includes('oral')) return 'oral'
+    if (t.includes('otolog')) return 'otológica'
+    if (t.includes('oftalm')) return 'oftálmica'
+    if (t.includes('topic') || t.includes('cutane')) return 'tópica'
+    if (t === 'sc' || t.includes('subcut')) return 'subcutânea'
+    if (t === 'im' || t.includes('intramusc')) return 'intramuscular'
+    if (t === 'iv' || t.includes('intraven')) return 'intravenosa'
+    if (t.includes('inalat') || t.includes('nebul')) return 'inalatória'
+    if (t.includes('transderm')) return 'transdérmica'
+    if (t.includes('nasal')) return 'intranasal'
+    if (t.includes('retal')) return 'retal'
+    return String(routeRaw || '').trim().toLowerCase()
+}
+
 function parseFrequencyFromText(raw?: string): {
     frequencyType: 'timesPerDay' | 'everyHours'
     frequencyToken: '' | 'SID' | 'BID' | 'TID' | 'QID'
@@ -276,7 +294,10 @@ function buildSharedAdministrationInstruction(item: NovaReceita2State['items'][n
     const durationText = buildDurationNarrative(item)
 
     const chunks = [administrationPrefix]
-    if (route) chunks.push(`por via ${route.toLowerCase()}`)
+    if (route) {
+        const via = routePhraseForInstruction(route)
+        if (via) chunks.push(`por via ${via}`)
+    }
     if (frequencyText) chunks.push(frequencyText)
     if (durationText) chunks.push(durationText)
 

@@ -51,6 +51,99 @@ function resolveTutorInstruction(formula: ManipuladoV1Formula, patient: PatientI
   )
 }
 
+type PrescribingExtras = ManipuladoV1Formula['prescribing'] & {
+  _repeat_periodically?: boolean
+  _repeat_every_value?: string | number
+  _repeat_every_unit?: string
+}
+
+/** Paridade Nova Receita: canonical_posology + frequency_mode V1. */
+function resolveManipuladoFrequencyFields(formula: ManipuladoV1Formula): {
+  frequencyMode: NonNullable<PrescriptionItem['frequencyMode']>
+  timesPerDay?: number
+  intervalHours?: number
+  repeatEveryValue?: number
+  repeatEveryUnit?: PrescriptionItem['repeatEveryUnit']
+  frequency: string
+} {
+  const label = sanitizeVisibleText(formula.prescribing.frequency_label || '')
+  const canon = formula.canonical_posology
+  if (canon) {
+    if (canon.is_single_dose && canon.repeat_periodically && canon.repeat_every_value != null && canon.repeat_every_unit) {
+      return {
+        frequencyMode: 'repeat_interval',
+        repeatEveryValue: canon.repeat_every_value,
+        repeatEveryUnit: canon.repeat_every_unit,
+        frequency: `em dose única, repetir a cada ${canon.repeat_every_value} ${canon.repeat_every_unit}`,
+      }
+    }
+    if (canon.is_single_dose) {
+      return { frequencyMode: 'single_dose', frequency: label || 'em dose única' }
+    }
+  }
+
+  const p = formula.prescribing as PrescribingExtras
+  const fm = formula.prescribing.frequency_mode
+
+  if (fm === 'single_dose') {
+    if (p._repeat_periodically && p._repeat_every_value != null && String(p._repeat_every_value).trim() !== '') {
+      const n = Number(String(p._repeat_every_value).replace(',', '.'))
+      const uRaw = String(p._repeat_every_unit || 'semanas').toLowerCase()
+      const unit: PrescriptionItem['repeatEveryUnit'] = uRaw.startsWith('semana') ? 'semanas' : uRaw.startsWith('mes') ? 'meses' : 'dias'
+      if (Number.isFinite(n) && n > 0) {
+        return {
+          frequencyMode: 'repeat_interval',
+          repeatEveryValue: n,
+          repeatEveryUnit: unit,
+          frequency: `em dose única, repetir a cada ${n} ${unit}`,
+        }
+      }
+    }
+    return { frequencyMode: 'single_dose', frequency: label || 'em dose única' }
+  }
+
+  if (fm === 'q6h') return { frequencyMode: 'interval_hours', intervalHours: 6, frequency: label }
+  if (fm === 'q8h') return { frequencyMode: 'interval_hours', intervalHours: 8, frequency: label }
+  if (fm === 'q12h') return { frequencyMode: 'interval_hours', intervalHours: 12, frequency: label }
+  if (fm === 'q24h') return { frequencyMode: 'interval_hours', intervalHours: 24, frequency: label }
+
+  if (fm === 'one_to_two_daily') {
+    return { frequencyMode: 'times_per_day', timesPerDay: 2, frequency: label }
+  }
+
+  if (fm === 'custom') {
+    const hoursMatch = label.match(/a cada\s*(\d+(?:[.,]\d+)?)\s*h/i)
+    if (hoursMatch) {
+      const h = Number(hoursMatch[1].replace(',', '.'))
+      if (Number.isFinite(h) && h > 0) {
+        return { frequencyMode: 'interval_hours', intervalHours: h, frequency: label }
+      }
+    }
+    const tMatch = label.match(/(\d+)\s*x\s*(?:ao\s*)?dia/i)
+    if (tMatch) {
+      const t = Number(tMatch[1])
+      if (t > 0) return { frequencyMode: 'times_per_day', timesPerDay: t, frequency: label }
+    }
+    return { frequencyMode: 'times_per_day', timesPerDay: 2, frequency: label }
+  }
+
+  if (fm === 'continuous_use' || fm === 'until_recheck' || fm === 'until_finished') {
+    return { frequencyMode: 'times_per_day', timesPerDay: 1, frequency: label || '1x ao dia' }
+  }
+
+  return { frequencyMode: 'times_per_day', timesPerDay: 1, frequency: label || '1x ao dia' }
+}
+
+function resolveManipuladoDurationMode(formula: ManipuladoV1Formula): PrescriptionItem['durationMode'] {
+  const label = String(formula.prescribing.duration_label || '').toLowerCase()
+  if (formula.prescribing.duration_value != null && formula.prescribing.duration_value > 0) return 'fixed_days'
+  if (label.includes('uso contínuo') && label.includes('reavalia')) return 'continuous_until_recheck'
+  if (label.includes('uso contínuo')) return 'continuous_use'
+  if (label.includes('reavalia')) return 'until_recheck'
+  if (label.includes('terminar')) return 'until_finished'
+  return 'continuous_until_recheck'
+}
+
 function resolveApplicationTarget(route?: string): string {
   const normalized = sanitizeVisibleText(route || '').toLowerCase()
   if (normalized.includes('oto')) return 'em cada ouvido'
@@ -68,6 +161,8 @@ export function mapManipuladoV1ToPrescriptionItem(params: {
   targetDose?: number | null
 }): PrescriptionItem {
   const formula = normalizeManipuladoV1(params.formula)
+  const freqResolved = resolveManipuladoFrequencyFields(formula)
+  const durationModeResolved = resolveManipuladoDurationMode(formula)
   const doseText = resolveDoseText(formula, params.patient, params.targetDose)
   const instructions = resolveTutorInstruction(formula, params.patient, params.targetDose) || renderManipuladoV1TutorInstruction(formula)
   const cautions = renderManipuladoV1Recommendations(formula)
@@ -192,7 +287,7 @@ export function mapManipuladoV1ToPrescriptionItem(params: {
       frequency_value_max: null,
       frequency_unit: null,
       frequency_label: formula.prescribing.frequency_label,
-      duration_mode: formula.prescribing.duration_label ? 'fixed_days' : 'continuous_until_recheck',
+      duration_mode: durationModeResolved,
       duration_value: formula.prescribing.duration_value,
       duration_unit: formula.prescribing.duration_unit,
       inherit_default_start: true,
@@ -208,23 +303,14 @@ export function mapManipuladoV1ToPrescriptionItem(params: {
       },
     },
     dose: doseText,
-    frequency: formula.prescribing.frequency_label,
-    // Map qXh frequency_mode to interval_hours so buildCompoundedFrequencyText renders "a cada Xh"
-    frequencyMode: ((): PrescriptionItem['frequencyMode'] => {
-      const fm = formula.prescribing.frequency_mode
-      if (fm === 'single_dose') return 'single_dose'
-      if (fm === 'q6h' || fm === 'q8h' || fm === 'q12h' || fm === 'q24h') return 'interval_hours'
-      return undefined
-    })(),
-    intervalHours: ((): number | undefined => {
-      const fm = formula.prescribing.frequency_mode
-      if (fm === 'q6h') return 6
-      if (fm === 'q8h') return 8
-      if (fm === 'q12h') return 12
-      if (fm === 'q24h') return 24
-      return undefined
-    })(),
+    frequency: freqResolved.frequency,
+    frequencyMode: freqResolved.frequencyMode,
+    timesPerDay: freqResolved.timesPerDay,
+    intervalHours: freqResolved.intervalHours,
+    repeatEveryValue: freqResolved.repeatEveryValue,
+    repeatEveryUnit: freqResolved.repeatEveryUnit,
     duration: formula.prescribing.duration_label,
+    durationMode: durationModeResolved,
     durationValue: formula.prescribing.duration_value || undefined,
     durationUnit: formula.prescribing.duration_unit || undefined,
     instructions,

@@ -3,23 +3,51 @@
  * Catalogo, Manipulados and Protocolos.
  */
 
+/** Contrato único: Catálogo, Manipulados, Protocolos e Nova Receita. */
 export const SHARED_FREQUENCY_MODE_OPTIONS = [
   { value: 'times_per_day', label: 'Vezes por dia' },
   { value: 'interval_hours', label: 'Intervalo em horas' },
-  { value: 'single_dose', label: 'Dose unica' },
-  { value: 'repeat_interval', label: 'Dose unica com repeticao periodica' },
+  { value: 'single_dose', label: 'Dose única' },
+  { value: 'repeat_interval', label: 'Dose única com repetição periódica' },
 ] as const
 
 export type SharedFrequencyMode = typeof SHARED_FREQUENCY_MODE_OPTIONS[number]['value']
 
 export const SHARED_TIMES_PER_DAY_OPTIONS = [
-  { value: '', label: 'Selecionar frequencia' },
+  { value: '', label: 'Selecionar frequência' },
   { value: '1', label: '1x ao dia (a cada 24 horas)' },
   { value: '2', label: '2x ao dia (a cada 12 horas)' },
   { value: '3', label: '3x ao dia (a cada 8 horas)' },
   { value: '4', label: '4x ao dia (a cada 6 horas)' },
   { value: '6', label: '6x ao dia (a cada 4 horas)' },
+  { value: '8', label: '8x ao dia (a cada 3 horas)' },
+  { value: '12', label: '12x ao dia (a cada 2 horas)' },
+  { value: '24', label: '24x ao dia (a cada 1 hora)' },
 ] as const
+
+/** Sem placeholder — manipulado estruturado / selects compactos. */
+export const SHARED_TIMES_PER_DAY_OPTIONS_COMPACT = [
+  { value: '1', label: '1x ao dia (a cada 24 horas)' },
+  { value: '2', label: '2x ao dia (a cada 12 horas)' },
+  { value: '3', label: '3x ao dia (a cada 8 horas)' },
+  { value: '4', label: '4x ao dia (a cada 6 horas)' },
+  { value: '6', label: '6x ao dia (a cada 4 horas)' },
+  { value: '8', label: '8x ao dia (a cada 3 horas)' },
+  { value: '12', label: '12x ao dia (a cada 2 horas)' },
+  { value: '24', label: '24x ao dia (a cada 1 hora)' },
+] as const
+
+/** horas entre doses quando 24h é divisível pelo intervalo. */
+export const SHARED_TIMES_PER_DAY_INTERVALS_HOURS: Record<string, string> = {
+  '1': '24',
+  '2': '12',
+  '3': '8',
+  '4': '6',
+  '6': '4',
+  '8': '3',
+  '12': '2',
+  '24': '1',
+}
 
 export const SHARED_REPEAT_UNIT_OPTIONS = [
   { value: 'dias', label: 'dias' },
@@ -27,11 +55,13 @@ export const SHARED_REPEAT_UNIT_OPTIONS = [
   { value: 'meses', label: 'meses' },
 ] as const
 
+/** Alinhado a PrescriptionItem.durationMode (Nova Receita). */
 export const SHARED_DURATION_MODE_OPTIONS = [
-  { value: 'fixed_days', label: 'Periodo fixo' },
-  { value: 'until_recheck', label: 'Ate reavaliacao clinica' },
-  { value: 'continuous_use', label: 'Uso continuo' },
-  { value: 'until_finished', label: 'Ate terminar o medicamento' },
+  { value: 'fixed_days', label: 'Duração fechada' },
+  { value: 'continuous_until_recheck', label: 'Uso contínuo até reavaliação clínica' },
+  { value: 'until_recheck', label: 'Até reavaliação clínica' },
+  { value: 'continuous_use', label: 'Uso contínuo' },
+  { value: 'until_finished', label: 'Até terminar o medicamento' },
 ] as const
 
 export const TOOLTIP = {
@@ -228,12 +258,12 @@ export function buildSharedFrequencyText(params: {
   repeatEveryUnit?: string | null
   fallback?: string
 }): string {
-  if (params.frequencyMode === 'single_dose') return 'em dose unica'
+  if (params.frequencyMode === 'single_dose') return 'em dose única'
   if (params.frequencyMode === 'repeat_interval') {
     const value = params.repeatEveryValue
     const unit = params.repeatEveryUnit || 'dias'
-    if (value) return `em dose unica, repetir a cada ${value} ${unit}`
-    return 'em dose unica, repetir periodicamente'
+    if (value) return `em dose única, repetir a cada ${value} ${unit}`
+    return 'em dose única, repetir periodicamente'
   }
   if (params.frequencyMode === 'interval_hours') {
     const hours = Number(params.intervalHours)
