@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ChevronLeft, ChevronRight, Info, Scale, Sparkles } from 'lucide-react'
+import { CheckCircle2, ChevronLeft, ChevronRight, Info, Scale, SlidersHorizontal, Sparkles } from 'lucide-react'
 import { Button } from '../../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
 import { Input } from '../../components/ui/input'
@@ -19,6 +19,13 @@ import { getDefaultRequirement } from '../../lib/genutriData'
 import { cn } from '../../lib/utils'
 
 const NEW_ROUTE = '/calculadora-energetica/new'
+
+const CLINICAL_FACTOR_PRESETS = [0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2] as const
+
+function clampClinicalFactor(raw: number): number {
+  if (!Number.isFinite(raw) || raw <= 0) return 1
+  return Math.min(3, Math.max(0.05, raw))
+}
 
 type EnergyProfileOption = {
   id: string
@@ -182,6 +189,13 @@ export default function EnergyStep() {
   const [litterSize, setLitterSize] = useState<number>(energy.litterSize ?? 0)
   const [lactationWeek, setLactationWeek] = useState<number>(energy.lactationWeek ?? 1)
 
+  const [clinicalAdjustEnabled, setClinicalAdjustEnabled] = useState(() => !!energy.clinicalMerAdjustmentEnabled)
+  const [clinicalFactorInput, setClinicalFactorInput] = useState(() =>
+    energy.clinicalMerAdjustmentFactor != null && energy.clinicalMerAdjustmentFactor > 0
+      ? String(energy.clinicalMerAdjustmentFactor)
+      : '1',
+  )
+
   const selectedProfile = profiles.find((item) => item.id === selectedProfileId) ?? profiles[0]
 
   const resolved = useMemo(
@@ -213,6 +227,11 @@ export default function EnergyStep() {
     [ageWeeks, expectedAdultWeightKg, lactationWeek, litterSize, resolved.stateId, species, weightKg],
   )
 
+  const merFromProfile = preview.mer
+  const parsedClinicalFactor = clampClinicalFactor(parseFloat(clinicalFactorInput.replace(',', '.')))
+  const effectiveClinicalFactor = clinicalAdjustEnabled ? parsedClinicalFactor : 1
+  const merAfterClinicalAdjust = merFromProfile * effectiveClinicalFactor
+
   const isGrowthProfile = selectedProfile.id === 'dog_puppy_0_4' || selectedProfile.id === 'dog_puppy_4_adult'
   const isLactationProfile = selectedProfile.id === 'dog_lactation' || selectedProfile.id === 'cat_lactation'
   const isGestationProfile = selectedProfile.id === 'dog_gestation'
@@ -228,11 +247,21 @@ export default function EnergyStep() {
     if (isMissingRequiredInput) return
     const defaultRequirement = getDefaultRequirement(species, resolved.stateId, !!patient.isNeutered)
 
+    const factor = clinicalAdjustEnabled ? parsedClinicalFactor : 1
+    const merFinal = merFromProfile * factor
+    const formulaLines = [...preview.formulaLines]
+    if (clinicalAdjustEnabled && Math.abs(factor - 1) > 1e-6) {
+      formulaLines.push(
+        `Ajuste clínico manual: ${merFromProfile.toFixed(1)} kcal/dia × ${factor.toFixed(2)} = ${merFinal.toFixed(1)} kcal/dia`,
+      )
+    }
+
     setEnergy({
       rer: preview.rer,
-      mer: preview.mer,
+      mer: merFinal,
+      merFromProfile: merFromProfile,
       merFactor: preview.factor ?? undefined,
-      merFormula: preview.formulaLines,
+      merFormula: formulaLines,
       weightUsed: weightKg,
       isIdealWeight: target.weightToUseForEnergy === 'target',
       stateId: resolved.stateId,
@@ -249,13 +278,15 @@ export default function EnergyStep() {
           ? 'last_5_weeks'
           : undefined,
       energyProfileMode: 'clinical',
+      clinicalMerAdjustmentEnabled: clinicalAdjustEnabled && Math.abs(factor - 1) > 1e-6,
+      clinicalMerAdjustmentFactor: clinicalAdjustEnabled && Math.abs(factor - 1) > 1e-6 ? factor : undefined,
     })
 
     setDiet({
       requirementProfileId: defaultRequirement?.id,
       additionalRequirementProfileIds,
     })
-    setTarget({ targetEnergy: preview.mer })
+    setTarget({ targetEnergy: merFinal })
     navigate(`${NEW_ROUTE}/target`)
   }
 
@@ -269,38 +300,32 @@ export default function EnergyStep() {
       </CardHeader>
 
       <CardContent className="space-y-6 pt-6">
-        <div className="grid gap-4 xl:grid-cols-3">
-          <div className="rounded-[30px] border border-orange-400/25 bg-gradient-to-br from-orange-500/15 via-orange-500/8 to-transparent p-5 dark:from-orange-500/12 dark:via-orange-500/[0.06]">
-            <p className="text-sm text-muted-foreground">RER</p>
-            <p className="mt-1 text-4xl font-black text-foreground" id="energy-rer-value">
-              {rer.toFixed(0)} kcal/dia
+        <details className="rounded-[30px] border border-border bg-muted/20 p-5 dark:border-white/10 dark:bg-white/[0.03]">
+          <summary className="cursor-pointer text-base font-semibold text-foreground outline-none">
+            Como cada perfil altera a energia final?
+          </summary>
+          <div className="mt-4 space-y-3 text-sm text-muted-foreground">
+            <p>
+              <span className="font-medium text-foreground">RER</span> (repouso) depende só da espécie e do peso (fórmula
+              alométrica). É a base comum a todos os perfis.
             </p>
-            <p className="mt-3 text-xs text-muted-foreground">Base energética pelo peso corporal atual.</p>
-          </div>
-
-          <div className="rounded-[30px] border border-border bg-muted/25 p-5 dark:border-white/10 dark:bg-white/[0.03]">
-            <div className="flex items-center gap-2">
-              <Scale className="h-5 w-5 text-orange-600 dark:text-orange-300" />
-              <p className="text-sm text-muted-foreground">Energia final estimada</p>
-            </div>
-            <p
-              className="mt-1 text-4xl font-black text-orange-600 dark:text-orange-300"
-              id="energy-preview-kcal"
-            >
-              {preview.mer.toFixed(0)} kcal/dia
+            <p>
+              <span className="font-medium text-foreground">Perfil energético</span> (cada cartão abaixo) escolhe o{' '}
+              <em>estado fisiológico</em> FEDIAF: crescimento, castrado, trabalho, gestação, lactação, indoor etc. Esse
+              estado define multiplicadores sobre o RER, ou kcal por massa metabólica, ou curvas específicas (filhotes /
+              lactação).
             </p>
-            <p className="mt-3 text-xs text-muted-foreground">Valor usado diretamente na meta nutricional.</p>
+            <p>
+              O resultado é a <span className="font-medium text-foreground">MER do perfil</span> — o valor central do
+              cartão laranja. No passo <strong>Meta</strong>, essa energia ainda pode ser multiplicada pela meta (ex. perda
+              ou ganho de peso).
+            </p>
+            <p className="text-xs">
+              Opcionalmente, na secção <strong>«Quer mudar a energia em relação ao perfil?»</strong>, pode multiplicar o
+              valor por um fator — para casos que o protocolo não cubra por completo (sempre com critério clínico).
+            </p>
           </div>
-
-          <div className="rounded-[30px] border border-border bg-muted/25 p-5 dark:border-white/10 dark:bg-white/[0.03]">
-            <div className="flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-orange-600 dark:text-orange-300" />
-              <p className="text-sm font-semibold text-foreground">Perfil final aplicado</p>
-            </div>
-            <p className="mt-2 text-xl font-black leading-tight text-foreground">{resolved.label}</p>
-            <p className="mt-2 text-sm text-muted-foreground">{selectedProfile.description}</p>
-          </div>
-        </div>
+        </details>
 
         <section className="rounded-[30px] border border-border bg-muted/25 p-5 dark:border-white/10 dark:bg-white/[0.03]">
           <div className="flex items-start justify-between gap-4">
@@ -346,12 +371,185 @@ export default function EnergyStep() {
           </div>
         </section>
 
+        <div className="grid gap-4 xl:grid-cols-3">
+          <div className="rounded-[30px] border border-orange-400/25 bg-gradient-to-br from-orange-500/15 via-orange-500/8 to-transparent p-5 dark:from-orange-500/12 dark:via-orange-500/[0.06]">
+            <p className="text-sm text-muted-foreground">RER</p>
+            <p className="mt-1 text-4xl font-black text-foreground" id="energy-rer-value">
+              {rer.toFixed(0)} kcal/dia
+            </p>
+            <p className="mt-3 text-xs text-muted-foreground">Base energética pelo peso corporal atual.</p>
+          </div>
+
+          <div className="rounded-[30px] border border-border bg-muted/25 p-5 dark:border-white/10 dark:bg-white/[0.03]">
+            <div className="flex items-center gap-2">
+              <Scale className="h-5 w-5 text-orange-600 dark:text-orange-300" />
+              <p className="text-sm text-muted-foreground">Energia final estimada</p>
+            </div>
+            <p
+              className="mt-1 text-4xl font-black text-orange-600 dark:text-orange-300"
+              id="energy-preview-kcal"
+            >
+              {merAfterClinicalAdjust.toFixed(0)} kcal/dia
+            </p>
+            {clinicalAdjustEnabled && Math.abs(effectiveClinicalFactor - 1) > 1e-6 ? (
+              <p className="mt-3 text-xs text-muted-foreground">
+                Perfil puro (FEDIAF): <span className="font-medium text-foreground">{merFromProfile.toFixed(0)} kcal/dia</span>
+                {' · '}
+                Fator ×{effectiveClinicalFactor.toFixed(2)}
+              </p>
+            ) : (
+              <p className="mt-3 text-xs text-muted-foreground">Igual à MER calculada pelo perfil selecionado.</p>
+            )}
+            <p className="mt-2 text-xs text-muted-foreground">Base para o passo Meta (antes de meta perda/ganho).</p>
+          </div>
+
+          <div className="rounded-[30px] border border-border bg-muted/25 p-5 dark:border-white/10 dark:bg-white/[0.03]">
+            <div className="flex items-center gap-2">
+              <Sparkles className="h-4 w-4 text-orange-600 dark:text-orange-300" />
+              <p className="text-sm font-semibold text-foreground">Perfil final aplicado</p>
+            </div>
+            <p className="mt-2 text-xl font-black leading-tight text-foreground">{resolved.label}</p>
+            <p className="mt-2 text-sm text-muted-foreground">{selectedProfile.description}</p>
+          </div>
+        </div>
+
+        <section
+          className="rounded-[30px] border border-orange-400/30 bg-orange-500/[0.06] p-5 sm:p-6 dark:border-orange-500/25 dark:bg-orange-500/[0.08]"
+          aria-labelledby="energy-adjust-heading"
+        >
+          <div className="mb-5 text-center sm:text-left">
+            <h3 id="energy-adjust-heading" className="text-lg font-bold tracking-tight text-foreground">
+              Quer mudar a energia em relação ao perfil?
+            </h3>
+            <p className="mt-1.5 text-sm text-muted-foreground">
+              Na maioria dos casos, use o valor do perfil. Só personalize se o caso clínico pedir mais ou menos kcal.
+            </p>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2" role="radiogroup" aria-label="Modo de energia">
+            <button
+              type="button"
+              role="radio"
+              aria-checked={!clinicalAdjustEnabled}
+              onClick={() => setClinicalAdjustEnabled(false)}
+              className={cn(
+                'flex w-full flex-col items-start gap-3 rounded-2xl border-2 px-4 py-4 text-left transition-all',
+                'hover:border-orange-400/50 hover:bg-orange-500/5 dark:hover:bg-orange-500/[0.07]',
+                !clinicalAdjustEnabled
+                  ? 'border-orange-500 bg-orange-500/15 shadow-[0_0_0_1px_rgba(249,115,22,0.35)] dark:border-orange-400 dark:bg-orange-500/12'
+                  : 'border-border bg-card/80 dark:border-white/10 dark:bg-black/20',
+              )}
+            >
+              <div className="flex w-full items-start justify-between gap-2">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300">
+                  <CheckCircle2 className="h-6 w-6" aria-hidden />
+                </span>
+                {!clinicalAdjustEnabled && (
+                  <Badge className="shrink-0 border-orange-400/40 bg-orange-500/20 text-orange-900 dark:text-orange-100">
+                    Ativo
+                  </Badge>
+                )}
+              </div>
+              <div>
+                <p className="font-semibold text-foreground">Não — usar só o perfil</p>
+                <p className="mt-1 text-sm leading-snug text-muted-foreground">
+                  Energia = <strong className="text-foreground">{merFromProfile.toFixed(0)} kcal/dia</strong> (FEDIAF), sem
+                  multiplicador extra.
+                </p>
+              </div>
+            </button>
+
+            <button
+              type="button"
+              role="radio"
+              aria-checked={clinicalAdjustEnabled}
+              onClick={() => setClinicalAdjustEnabled(true)}
+              className={cn(
+                'flex w-full flex-col items-start gap-3 rounded-2xl border-2 px-4 py-4 text-left transition-all',
+                'hover:border-orange-400/50 hover:bg-orange-500/5 dark:hover:bg-orange-500/[0.07]',
+                clinicalAdjustEnabled
+                  ? 'border-orange-500 bg-orange-500/15 shadow-[0_0_0_1px_rgba(249,115,22,0.35)] dark:border-orange-400 dark:bg-orange-500/12'
+                  : 'border-border bg-card/80 dark:border-white/10 dark:bg-black/20',
+              )}
+            >
+              <div className="flex w-full items-start justify-between gap-2">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-orange-500/20 text-orange-800 dark:bg-orange-500/25 dark:text-orange-200">
+                  <SlidersHorizontal className="h-6 w-6" aria-hidden />
+                </span>
+                {clinicalAdjustEnabled && (
+                  <Badge className="shrink-0 border-orange-400/40 bg-orange-500/20 text-orange-900 dark:text-orange-100">
+                    Ativo
+                  </Badge>
+                )}
+              </div>
+              <div>
+                <p className="font-semibold text-foreground">Sim — personalizar energia</p>
+                <p className="mt-1 text-sm leading-snug text-muted-foreground">
+                  Escolha um fator para <strong className="text-foreground">multiplicar</strong> a energia do perfil (ex.{' '}
+                  1,10 = +10%, 0,90 = −10%).
+                </p>
+              </div>
+            </button>
+          </div>
+
+          {clinicalAdjustEnabled && (
+            <div className="mt-5 space-y-4 rounded-2xl border border-orange-400/25 bg-background/80 p-4 dark:border-orange-500/30 dark:bg-black/25">
+              <p className="text-sm text-muted-foreground">
+                Base do perfil: <strong className="text-foreground">{merFromProfile.toFixed(0)} kcal/dia</strong>. Fator
+                entre <strong className="text-foreground">0,05</strong> e <strong className="text-foreground">3,00</strong>.
+              </p>
+              <div>
+                <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Atalhos</p>
+                <div className="flex flex-wrap gap-2">
+                  {CLINICAL_FACTOR_PRESETS.map((preset) => (
+                    <Button
+                      key={preset}
+                      type="button"
+                      size="sm"
+                      variant={Math.abs(parsedClinicalFactor - preset) < 0.001 ? 'default' : 'outline'}
+                      className="rounded-full"
+                      onClick={() => setClinicalFactorInput(String(preset))}
+                    >
+                      ×{preset.toFixed(2).replace('.', ',')}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+              <div className="flex max-w-xs flex-col gap-2">
+                <Label htmlFor="clinical-factor-input">Fator (multiplicador)</Label>
+                <Input
+                  id="clinical-factor-input"
+                  type="text"
+                  inputMode="decimal"
+                  autoComplete="off"
+                  value={clinicalFactorInput}
+                  onChange={(e) => setClinicalFactorInput(e.target.value)}
+                  placeholder="Ex: 1,1 ou 0,9"
+                  className="font-mono text-base h-11"
+                />
+              </div>
+              <p className="rounded-xl border border-orange-400/30 bg-orange-500/10 px-4 py-3 text-sm dark:bg-orange-500/[0.12]">
+                Resultado:{' '}
+                <span className="text-lg font-black text-orange-700 dark:text-orange-300">
+                  {merAfterClinicalAdjust.toFixed(0)} kcal/dia
+                </span>
+                {Math.abs(effectiveClinicalFactor - 1) > 1e-6 && (
+                  <span className="text-muted-foreground">
+                    {' '}
+                    ({((effectiveClinicalFactor - 1) * 100).toFixed(1)}% em relação ao perfil)
+                  </span>
+                )}
+              </p>
+            </div>
+          )}
+        </section>
+
         <section className="rounded-[30px] border border-border bg-muted/25 p-5 dark:border-white/10 dark:bg-white/[0.03]">
-          <p className="text-lg font-semibold text-foreground">Fatores clinicos do paciente</p>
+          <p className="text-lg font-semibold text-foreground">Fatores clínicos do paciente</p>
           <div className="mt-3 flex flex-wrap gap-2">
-            <Badge variant="outline">{species === 'dog' ? 'Cao' : 'Gato'}</Badge>
-            <Badge variant="outline">{patient.isNeutered ? 'Castrado' : 'Integro'}</Badge>
-            {species === 'cat' && <Badge variant="outline">{patient.isIndoor ? 'Indoor' : 'Nao indoor'}</Badge>}
+            <Badge variant="outline">{species === 'dog' ? 'Cão' : 'Gato'}</Badge>
+            <Badge variant="outline">{patient.isNeutered ? 'Castrado' : 'Íntegro'}</Badge>
+            {species === 'cat' && <Badge variant="outline">{patient.isIndoor ? 'Indoor' : 'Não indoor'}</Badge>}
             {comorbidityLabels.map((label) => (
               <Badge
                 key={label}

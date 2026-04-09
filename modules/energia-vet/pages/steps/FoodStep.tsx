@@ -11,58 +11,24 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../../
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../../components/ui/dialog'
 import { useCalculationStore } from '../../store/calculationStore'
 import { computeDietPlan } from '../../lib/dietEngine'
+import { getDefaultRequirement } from '../../lib/genutriData'
+import { getClinicalProfileIdsFromSelections } from '../../lib/clinicalProfiles'
+import type { DietFormulaEntry, DietType } from '../../types'
 import {
   filterFoods,
-  getDefaultRequirement,
+  formatKcal,
+  formatNutrient,
+  getDetailNutrientsForBasis,
   getFoodById,
   getFoodCategories,
-  GENUTRI_NUTRIENT_CATALOG,
-} from '../../lib/genutriData'
-import { getClinicalProfileIdsFromSelections } from '../../lib/clinicalProfiles'
-import type { DietFormulaEntry, DietType, FoodItem } from '../../types'
+  resolveFoodTypeFilter,
+} from './foodStepUtils'
 import { MEALS_OPTIONS } from '../../lib/nutrition'
 import { cn } from '../../lib/utils'
 import { EnergyPartitionChart } from '../../components/EnergyPartitionChart'
 import { DIET_CATALOG_TITLE, DietTypeCards } from '../../components/DietTypeCards'
 
 const NEW_ROUTE = '/calculadora-energetica/new'
-
-const REQUIRED_NUTRIENT_KEYS = new Set([
-  'moisturePct',
-  'dryMatterPct',
-  'energyKcalPer100g',
-  'crudeProteinPct',
-  'etherExtractPct',
-  'ashPct',
-  'crudeFiberPct',
-  'nitrogenFreeExtractPct',
-  'calciumPct',
-  'phosphorusPct',
-])
-
-function resolveFoodTypeFilter(dietType: DietType): string[] | undefined {
-  if (dietType === 'commercial') return ['commercial']
-  if (dietType === 'natural') return ['natural', 'suplemento', 'enteral']
-  return undefined
-}
-
-function formatNutrient(value: number | null | undefined, unit?: string | null, decimals = 2) {
-  if (value == null) return 'Dado não cadastrado'
-  return `${value.toFixed(decimals)} ${unit ?? ''}`.trim()
-}
-
-function formatKcal(food: FoodItem) {
-  const kcal = food.nutrientsAsFed.energyKcalPer100g
-  if (kcal == null) return '—'
-  return `${kcal.toFixed(0)} kcal/100g`
-}
-
-function getDetailNutrientsForBasis(basis: Record<string, number | null>) {
-  return GENUTRI_NUTRIENT_CATALOG.filter((nutrient) => {
-    if (REQUIRED_NUTRIENT_KEYS.has(nutrient.key)) return true
-    return basis[nutrient.key] != null
-  })
-}
 
 export default function FoodStep() {
   const navigate = useNavigate()

@@ -70,7 +70,7 @@ export default function SummaryStep() {
 
   const species = patient.species ?? 'dog'
   const currentWeight = patient.currentWeight ?? 0
-  const physiologicStateLabel = energy.resolvedProfileLabel ?? getPhysiologicStateById(energy.stateId ?? '')?.label ?? 'Nao informado'
+  const physiologicStateLabel = energy.resolvedProfileLabel ?? getPhysiologicStateById(energy.stateId ?? '')?.label ?? 'Não informado'
   const requirementLabel = getHumanRequirementLabel(getRequirementById(diet.requirementProfileId))
   const comorbidityLabels = useMemo(() => getClinicalProfileBadges(species, patient.comorbidityIds ?? []), [patient.comorbidityIds, species])
 
@@ -158,12 +158,12 @@ export default function SummaryStep() {
       if (raw == null) return
       items.push({ label, value: formatDailyAmount(key, raw) })
     }
-    pushIf('Proteina total', 'crudeProteinPct', td.crudeProteinPct)
+    pushIf('Proteína total', 'crudeProteinPct', td.crudeProteinPct)
     pushIf('Gordura total', 'etherExtractPct', td.etherExtractPct)
     pushIf('Carboidrato estimado', 'nitrogenFreeExtractPct', td.nitrogenFreeExtractPct)
     pushIf('Fibra', 'crudeFiberPct', td.crudeFiberPct)
-    pushIf('Calcio', 'calciumPct', td.calciumPct)
-    pushIf('Fosforo', 'phosphorusPct', td.phosphorusPct)
+    pushIf('Cálcio', 'calciumPct', td.calciumPct)
+    pushIf('Fósforo', 'phosphorusPct', td.phosphorusPct)
     if (td.taurinePct != null) {
       items.push({ label: 'Taurina', value: formatDailyAmount('taurinePct', td.taurinePct) })
     }

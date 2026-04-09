@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useLocation, Routes, Route, Link } from 'react-router-dom';
+import { preloadSpeciesPhotos } from '../lib/speciesAssets';
 import PatientStep from './steps/PatientStep';
 import EnergyStep from './steps/EnergyStep';
 import TargetStep from './steps/TargetStep';
@@ -66,6 +68,10 @@ function StepIndicator({ currentStep }: { currentStep: number }) {
 
 export default function NewCalculation() {
   const location = useLocation();
+
+  useEffect(() => {
+    preloadSpeciesPhotos();
+  }, []);
 
   let currentStep = 1;
   if (location.pathname.includes('/energy')) currentStep = 2;

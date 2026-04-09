@@ -120,8 +120,19 @@ export default function TargetStep() {
     [calcWeight, energy.activityHoursPerDay, energy.activityImpact, energy.ageWeeks, energy.expectedAdultWeightKg, energy.lactationWeek, energy.litterSize, energy.obesityProne, energy.specialBreedObservation, energy.stateId, species],
   )
 
+  const clinicalFactor =
+    energy.clinicalMerAdjustmentEnabled &&
+    energy.clinicalMerAdjustmentFactor != null &&
+    Number.isFinite(energy.clinicalMerAdjustmentFactor) &&
+    energy.clinicalMerAdjustmentFactor > 0
+      ? energy.clinicalMerAdjustmentFactor
+      : 1
+
+  const merFromProfile = baseEnergy.mer
+  const merAfterClinical = merFromProfile * clinicalFactor
+
   const goalMultiplier = getGoalMultiplier(goal)
-  const targetEnergy = Math.round(baseEnergy.mer * goalMultiplier)
+  const targetEnergy = Math.round(merAfterClinical * goalMultiplier)
 
   const modalWeightPreview = useMemo(() => {
     const nextGoal = modalBcs >= 6 ? 'weight_loss' : modalBcs <= 4 ? 'weight_gain' : 'maintenance'
@@ -368,8 +379,14 @@ export default function TargetStep() {
                 <p className="mt-1 font-semibold text-foreground">{state?.label ?? 'Nao informado'}</p>
               </div>
               <div className="rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-black/15">
-                <p className="text-xs text-muted-foreground">Energia fisiologica</p>
-                <p className="mt-1 text-2xl font-black text-foreground">{baseEnergy.mer.toFixed(0)} kcal/dia</p>
+                <p className="text-xs text-muted-foreground">Energia do perfil (FEDIAF)</p>
+                <p className="mt-1 text-2xl font-black text-foreground">{merFromProfile.toFixed(0)} kcal/dia</p>
+                {clinicalFactor !== 1 && (
+                  <p className="mt-2 text-xs text-muted-foreground">
+                    Com ajuste × {clinicalFactor.toFixed(2)}:{' '}
+                    <span className="font-semibold text-foreground">{merAfterClinical.toFixed(0)} kcal/dia</span>
+                  </p>
+                )}
               </div>
               <div className="rounded-2xl border border-orange-400/25 bg-orange-500/10 p-4 dark:bg-orange-500/[0.08]">
                 <div className="flex items-center gap-2">
@@ -379,10 +396,12 @@ export default function TargetStep() {
                 <p className="mt-1 text-2xl font-black text-orange-600 dark:text-orange-300">{targetEnergy.toFixed(0)} kcal/dia</p>
                 <p className="mt-1 text-sm text-muted-foreground">
                   {goal === 'maintenance'
-                    ? 'Sem ajuste adicional de meta.'
+                    ? clinicalFactor !== 1
+                      ? 'Meta manutenção sobre a energia já ajustada no passo Energia.'
+                      : 'Sem ajuste adicional de meta.'
                     : goal === 'weight_loss'
-                    ? 'Meta de emagrecimento aplicada sobre a energia fisiologica.'
-                    : 'Meta de ganho aplicada sobre a energia fisiologica.'}
+                    ? 'Meta de emagrecimento aplicada sobre a energia após perfil (e ajuste manual, se houver).'
+                    : 'Meta de ganho aplicada sobre a energia após perfil (e ajuste manual, se houver).'}
                 </p>
               </div>
             </div>

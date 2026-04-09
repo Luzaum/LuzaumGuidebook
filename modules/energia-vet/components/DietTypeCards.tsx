@@ -1,5 +1,6 @@
 import { Check } from 'lucide-react'
 import type { DietType } from '../types'
+import { publicImageUrl } from '../lib/speciesAssets'
 import { cn } from '../lib/utils'
 
 export const DIET_CATALOG_TITLE: Record<DietType, string> = {
@@ -10,9 +11,9 @@ export const DIET_CATALOG_TITLE: Record<DietType, string> = {
 
 /** Ilustrações por tipo (mesma área e escala para as três) */
 const DIET_IMAGES: Record<DietType, string> = {
-  commercial: '/diet-comercial-illustration.png',
-  natural: '/diet-natural-illustration.png',
-  hybrid: '/diet-hibrido-illustration.png',
+  commercial: publicImageUrl('/diet-comercial-illustration.png'),
+  natural: publicImageUrl('/diet-natural-illustration.png'),
+  hybrid: publicImageUrl('/diet-hibrido-illustration.png'),
 }
 
 type Option = {

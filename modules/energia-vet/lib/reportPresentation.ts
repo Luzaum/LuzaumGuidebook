@@ -178,10 +178,19 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
     { label: 'Hospitalizado', value: report.patient.isHospitalized ? 'Sim' : 'Nao' },
   ]
 
+  const profileMer = report.energy.merFromProfile ?? report.energy.mer
+  const hasClinicalFactor =
+    report.energy.clinicalMerAdjustmentEnabled && report.energy.clinicalMerAdjustmentFactor != null
   const energyFields: ReportField[] = [
     { label: 'RER', value: formatKcal(report.energy.rer) },
-    { label: 'Energia final estimada', value: formatKcal(report.energy.mer) },
-    { label: 'Energia-alvo', value: formatKcal(report.target.targetEnergy) },
+    ...(hasClinicalFactor
+      ? [
+          { label: 'MER pelo perfil FEDIAF', value: formatKcal(profileMer) },
+          { label: 'Fator de ajuste clínico', value: `× ${report.energy.clinicalMerAdjustmentFactor!.toFixed(2)}` },
+          { label: 'MER após ajuste clínico', value: formatKcal(report.energy.mer) },
+        ]
+      : [{ label: 'MER (perfil FEDIAF)', value: formatKcal(report.energy.mer) }]),
+    { label: 'Energia-alvo na formulação', value: formatKcal(report.target.targetEnergy) },
     { label: 'Peso usado', value: report.energy.weightUsed != null ? `${report.energy.weightUsed.toFixed(2)} kg` : 'Nao informado' },
   ]
 

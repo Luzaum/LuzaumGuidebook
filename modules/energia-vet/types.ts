@@ -76,6 +76,12 @@ export interface EnergyCalculation {
   gestationPhase?: 'first_4_weeks' | 'last_5_weeks'
   energyProfileMode?: 'fediaf' | 'clinical'
   merFormula?: string[]
+  /** MER calculada pelo perfil FEDIAF antes de qualquer fator manual (para relatório/transparência). */
+  merFromProfile?: number
+  /** Se true, `mer` guarda MER × `clinicalMerAdjustmentFactor` em relação à estimativa pura do perfil. */
+  clinicalMerAdjustmentEnabled?: boolean
+  /** Multiplicador sobre a MER do perfil (1 = sem alteração; 1,1 = +10%; 0,9 = −10%). */
+  clinicalMerAdjustmentFactor?: number
 }
 
 export type TargetGoal = 'maintenance' | 'weight_loss' | 'weight_gain'

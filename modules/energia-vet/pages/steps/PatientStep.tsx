@@ -23,16 +23,61 @@ import { calculateRefeedingRisk, getDefaultStateId } from '../../lib/nutrition'
 import { getClinicalProfileBadges, getClinicalProfileIdsFromSelections, getClinicalProfileOptions } from '../../lib/clinicalProfiles'
 import { getDefaultRequirement } from '../../lib/genutriData'
 import { Species } from '../../types'
+import { SPECIES_PHOTO } from '../../lib/speciesAssets'
 import { DOG_BREEDS_BR, CAT_BREEDS_BR } from '../../../receituario-vet/rxReferenceData'
 
 const NEW_ROUTE = '/calculadora-energetica/new'
+
+function SpeciesCardPhoto({
+  src,
+  alt,
+  fallbackGradient,
+  emoji,
+}: {
+  src: string
+  alt: string
+  fallbackGradient: string
+  emoji: string
+}) {
+  const [photoVisible, setPhotoVisible] = useState(false)
+  return (
+    <>
+      <div
+        className={cn(
+          'absolute inset-0 flex items-end justify-center bg-gradient-to-b pb-4 text-[72px] leading-none transition-opacity duration-500',
+          fallbackGradient,
+          photoVisible ? 'opacity-0' : 'opacity-100',
+        )}
+        aria-hidden
+      >
+        {emoji}
+      </div>
+      <img
+        src={src}
+        alt={alt}
+        decoding="async"
+        fetchPriority="high"
+        loading="eager"
+        draggable={false}
+        onLoad={() => setPhotoVisible(true)}
+        onError={(e) => {
+          ;(e.currentTarget as HTMLImageElement).style.display = 'none'
+        }}
+        className={cn(
+          'absolute inset-0 h-full w-full object-cover object-top transition-opacity duration-500',
+          photoVisible ? 'opacity-100' : 'opacity-0',
+        )}
+      />
+    </>
+  )
+}
 
 const SPECIES_OPTIONS = [
   {
     value: 'dog' as const,
     title: 'CÃO',
     subtitle: 'Perfis caninos, guia ECC do cão e alimentos compatíveis.',
-    photo: '/foto-cao.jpg',
+    photo: SPECIES_PHOTO.dog,
     emoji: '🐕',
     fallbackGradient: 'from-amber-900/80 via-orange-950/90 to-neutral-950',
   },
@@ -40,7 +85,7 @@ const SPECIES_OPTIONS = [
     value: 'cat' as const,
     title: 'GATO',
     subtitle: 'Perfis felinos, guia ECC do gato e catálogo filtrado.',
-    photo: '/foto-gato.jpg',
+    photo: SPECIES_PHOTO.cat,
     emoji: '🐈',
     fallbackGradient: 'from-slate-700/80 via-slate-900/90 to-neutral-950',
   },
@@ -198,9 +243,9 @@ export default function PatientStep() {
   return (
     <Card className="w-full border-orange-500/10 bg-gradient-to-b from-card via-card to-card/95 shadow-[0_18px_50px_rgba(0,0,0,0.12)] dark:shadow-[0_18px_50px_rgba(0,0,0,0.22)]">
       <CardHeader className="border-b border-border/60 pb-6">
-        <CardTitle className="text-2xl">Identificacao do paciente</CardTitle>
+        <CardTitle className="text-2xl">Identificação do paciente</CardTitle>
         <CardDescription>
-          Defina o perfil clinico do paciente. Especie, sexo, estado reprodutivo, internacao e comorbidades entram no fluxo automaticamente.
+          Defina o perfil clínico do paciente. Espécie, sexo, estado reprodutivo, internação e comorbidades entram no fluxo automaticamente.
         </CardDescription>
       </CardHeader>
 
@@ -237,22 +282,11 @@ export default function PatientStep() {
                         : 'shadow-[0_8px_28px_rgba(0,0,0,0.55)] group-hover:shadow-[0_8px_32px_rgba(249,115,22,0.15)]',
                     )}
                   >
-                    {/* Fallback gradient + emoji */}
-                    <div
-                      className={cn(
-                        'absolute inset-0 flex items-end justify-center bg-gradient-to-b pb-4 text-[72px] leading-none',
-                        option.fallbackGradient,
-                      )}
-                    >
-                      {option.emoji}
-                    </div>
-                    {/* Foto real — cobre o fallback quando carregada */}
-                    <img
+                    <SpeciesCardPhoto
                       src={option.photo}
                       alt={option.title}
-                      draggable={false}
-                      className="absolute inset-0 h-full w-full object-cover object-top"
-                      onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
+                      fallbackGradient={option.fallbackGradient}
+                      emoji={option.emoji}
                     />
                     {/* Gradiente de base para fundir foto com card */}
                     <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/60 to-transparent" />
@@ -301,7 +335,7 @@ export default function PatientStep() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="pat-owner">Tutor</Label>
-                <Input id="pat-owner" value={patient.ownerName || ''} onChange={(event) => setPatient({ ownerName: event.target.value })} placeholder="Ex: Joao Silva" />
+                <Input id="pat-owner" value={patient.ownerName || ''} onChange={(event) => setPatient({ ownerName: event.target.value })} placeholder="Ex: João Silva" />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="pat-weight">Peso atual (kg)</Label>
@@ -323,7 +357,7 @@ export default function PatientStep() {
                 />
               </div>
               <div className="space-y-2 md:col-span-2">
-                <Label htmlFor="pat-breed">Raca</Label>
+                <Label htmlFor="pat-breed">Raça</Label>
                 <Input
                   id="pat-breed"
                   list="breed-list"
@@ -375,14 +409,14 @@ export default function PatientStep() {
               </p>
               <p className="mt-3 text-2xl font-black text-foreground">{patient.name || 'Paciente sem nome'}</p>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                A especie escolhida ajusta automaticamente o guia ECC, os perfis energeticos e o catalogo compativel da formula.
+                A espécie escolhida ajusta automaticamente o guia ECC, os perfis energéticos e o catálogo compatível da fórmula.
               </p>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
               <div className="rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-black/15">
                 <p className="text-xs text-muted-foreground">Especie</p>
-                <p className="mt-1 text-lg font-semibold text-foreground">{species === 'dog' ? 'Cao' : 'Gato'}</p>
+                <p className="mt-1 text-lg font-semibold text-foreground">{species === 'dog' ? 'Cão' : 'Gato'}</p>
               </div>
               <div className="rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-black/15">
                 <p className="text-xs text-muted-foreground">Peso atual</p>
