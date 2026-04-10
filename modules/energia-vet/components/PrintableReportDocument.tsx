@@ -98,7 +98,7 @@ export default function PrintableReportDocument({
     >
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '2px solid #e5630a', paddingBottom: '8px', marginBottom: '16px' }}>
         <div>
-          <div style={{ fontSize: '18px', fontWeight: 700, color: '#e5630a' }}>NutriçãoVET - Relatório nutricional</div>
+          <div style={{ fontSize: '18px', fontWeight: 700, color: '#e5630a' }}>NutriçãoVET — Relatório nutricional</div>
           <div style={{ fontSize: '11px', color: '#62594f' }}>Emitido em {vm.generatedAt}</div>
         </div>
         <div style={{ textAlign: 'right', fontSize: '11px', color: '#62594f' }}>
@@ -108,32 +108,32 @@ export default function PrintableReportDocument({
       </div>
 
       <SectionTable title="1. Identificação do paciente" fields={vm.patientFields} columns={3} />
-      <SectionTable title="2. Dados clinicos" fields={vm.clinicalFields} columns={2} />
+      <SectionTable title="2. Dados clínicos" fields={vm.clinicalFields} columns={2} />
       <SectionTable title="3. Cálculo energético" fields={vm.energyFields} columns={2} />
       <SectionTable title="4. Meta nutricional" fields={vm.targetFields} columns={3} />
-      <SectionTable title="5. Formula geral" fields={vm.formulaMetaFields} columns={3} />
+      <SectionTable title="5. Fórmula geral" fields={vm.formulaMetaFields} columns={3} />
 
       <DataTable
-        title="6. Formula alimentar"
-        headers={['Alimento', 'Inclusao', 'Oferta diaria', 'Energia']}
+        title="6. Fórmula alimentar"
+        headers={['Alimento', 'Inclusão', 'Oferta diária', 'Energia']}
         rows={vm.formulaRows}
       />
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '14px' }}>
         <DataTable title="7. Resumo nutricional" headers={['Nutriente', 'Valor']} rows={vm.nutrientRows} />
-        <DataTable title="8. Particao energetica" headers={['Macro', '%', 'Gramas', 'Kcal']} rows={vm.macroRows} />
+        <DataTable title="8. Partição energética" headers={['Macro', '%', 'Gramas', 'Kcal']} rows={vm.macroRows} />
       </div>
 
       <DataTable
-        title="9. Contribuicao por alimento"
-        headers={['Alimento', 'Categoria', 'Oferta diaria', 'Energia', 'Por refeicao']}
+        title="9. Contribuição por alimento"
+        headers={['Alimento', 'Categoria', 'Oferta diária', 'Energia', 'Por refeição']}
         rows={vm.contributionRows}
       />
 
       {vm.alertNotes.length > 0 && (
         <section style={{ marginBottom: '14px' }}>
           <div style={{ fontSize: '13px', fontWeight: 700, borderBottom: '1px solid #d6d6d6', paddingBottom: '4px', marginBottom: '8px' }}>
-            10. Observacoes finais
+            10. Observações finais
           </div>
           <div style={{ display: 'grid', gap: '6px' }}>
             {vm.alertNotes.map((note) => (
@@ -163,7 +163,7 @@ export default function PrintableReportDocument({
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', borderBottom: '2px solid #e5630a', paddingBottom: '8px', marginBottom: '16px' }}>
             <div>
               <div style={{ fontSize: '18px', fontWeight: 700, color: '#e5630a' }}>{vm.feedingSheetTitle}</div>
-              <div style={{ fontSize: '11px', color: '#62594f' }}>Pagina operacional isolada para rotina diaria</div>
+              <div style={{ fontSize: '11px', color: '#62594f' }}>Página operacional para rotina diária</div>
             </div>
             <div style={{ fontSize: '11px', color: '#62594f', textAlign: 'right' }}>{vm.patientTitle}</div>
           </div>
@@ -172,13 +172,13 @@ export default function PrintableReportDocument({
 
           <DataTable
             title="Alimentos utilizados"
-            headers={['Alimento', 'Oferta diaria total', 'Por refeicao']}
+            headers={['Alimento', 'Oferta diária total', 'Por refeição']}
             rows={sheet.foodRows}
           />
 
           <DataTable
-            title="Controle diario"
-            headers={['Horario', 'Quantidade/refeicao', 'Alimentos', 'Comeu? Sim/nao (pesar sobra)', 'Assinatura']}
+            title="Controle diário"
+            headers={['Horário', 'Quantidade/refeição', 'Alimentos', 'Comeu? Sim/não (pesar sobra)', 'Assinatura']}
             rows={sheet.rows}
           />
         </div>

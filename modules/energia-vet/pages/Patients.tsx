@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'sonner'
 import { Calculator, ChevronRight, Plus, Search, Users } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
 import { Badge } from '../components/ui/badge'
@@ -53,8 +54,21 @@ export default function Patients() {
         }
         const remoteReports = await listNutritionReportsFromSupabase()
         setPatients(fromReports(remoteReports))
-      } catch {
+      } catch (e) {
         setPatients(getSavedPatients())
+        const msg = e instanceof Error ? e.message : String(e)
+        if (/nutrition_reports|PGRST205|schema cache|Could not find the table/i.test(msg)) {
+          toast.warning(
+            'Tabela nutrition_reports indisponível no Supabase. A lista mostra só dados deste dispositivo até aplicar a migration no projeto.',
+            { duration: 9000 },
+          )
+        } else if (/Cl[ií]nica ativa|Clinica ativa/i.test(msg)) {
+          toast.warning('Selecione uma clínica ativa para sincronizar. A lista mostra apenas pacientes com relatórios locais.', { duration: 7000 })
+        } else if (/autenticad|Usuario autenticado|User not found/i.test(msg)) {
+          toast.warning('Inicie sessão para carregar dados da clínica na nuvem. A lista mostra apenas dados locais.', { duration: 7000 })
+        } else {
+          toast.warning('Não foi possível sincronizar com a nuvem. Mostrando pacientes a partir deste dispositivo.', { duration: 7000 })
+        }
       }
     }
     void sync()
@@ -80,8 +94,8 @@ export default function Patients() {
             <Users className="h-8 w-8 text-orange-300" />
             Histórico de pacientes
           </h1>
-          <p className="mt-2 text-muted-foreground">
-            Cada paciente pode ter varios relatorios cronologicos. Clique para abrir a prescricao salva e exportar PDF.
+          <p className="mt-2 text-muted-foreground max-w-3xl">
+            Cada paciente pode ter vários relatórios em ordem cronológica. Abra o histórico para rever prescrições e exportar PDF quando precisar — o ficheiro gera-se na hora (não fica armazenado no Supabase).
           </p>
         </div>
         <Button className="gap-2" onClick={() => navigate(NEW_ROUTE)}>
@@ -91,8 +105,8 @@ export default function Patients() {
 
       <Card className="border-white/10 bg-[#141010] shadow-[0_18px_50px_rgba(0,0,0,0.22)]">
         <CardHeader>
-          <CardTitle className="text-white">Pacientes salvos localmente</CardTitle>
-          <CardDescription>Busque por nome, tutor ou raca.</CardDescription>
+          <CardTitle className="text-white">Pacientes com relatórios</CardTitle>
+          <CardDescription>Busque por nome, tutor ou raça. Com sessão e clínica, a lista reflete relatórios sincronizados na nuvem quando disponível.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="relative">

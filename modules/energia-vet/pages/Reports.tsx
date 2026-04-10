@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { toast } from 'sonner'
 import { Download, FileText, Search } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
 import { Badge } from '../components/ui/badge'
@@ -26,8 +27,21 @@ export default function Reports() {
         }
         const remote = await listNutritionReportsFromSupabase()
         setReports(remote)
-      } catch {
+      } catch (e) {
         setReports(getSavedReports())
+        const msg = e instanceof Error ? e.message : String(e)
+        if (/nutrition_reports|PGRST205|schema cache|Could not find the table/i.test(msg)) {
+          toast.warning(
+            'Tabela nutrition_reports indisponível no Supabase. A lista mostra só relatórios deste dispositivo até aplicar a migration no projeto.',
+            { duration: 9000 },
+          )
+        } else if (/Cl[ií]nica ativa|Clinica ativa/i.test(msg)) {
+          toast.warning('Selecione uma clínica ativa para sincronizar. A lista mostra apenas relatórios locais.', { duration: 7000 })
+        } else if (/autenticad|Usuario autenticado|User not found/i.test(msg)) {
+          toast.warning('Inicie sessão para carregar o histórico da clínica na nuvem. A lista mostra apenas relatórios locais.', { duration: 7000 })
+        } else {
+          toast.warning('Não foi possível sincronizar com a nuvem. Mostrando relatórios guardados neste dispositivo.', { duration: 7000 })
+        }
       }
     }
     void sync()
@@ -52,13 +66,18 @@ export default function Reports() {
           <FileText className="h-8 w-8 text-orange-600 dark:text-orange-300" />
           Relatórios e histórico
         </h1>
-        <p className="text-muted-foreground mt-2">Relatorios persistidos localmente, com acesso ao detalhe completo e exportacao em PDF textual.</p>
+        <p className="text-muted-foreground mt-2 max-w-3xl">
+          Com sessão iniciada e clínica selecionada, o histórico sincroniza com o Supabase. O PDF não é guardado na nuvem: gera-se na hora a partir dos dados do relatório — pode exportar quantas vezes quiser a partir desta lista ou do detalhe.
+        </p>
       </div>
 
       <Card className="border-border bg-card shadow-[0_18px_50px_rgba(0,0,0,0.08)] dark:border-white/10 dark:bg-[#141010] dark:shadow-[0_18px_50px_rgba(0,0,0,0.22)]">
         <CardHeader>
           <CardTitle className="text-foreground dark:text-white">Histórico do Energia Vet</CardTitle>
-          <CardDescription>Busque por paciente ou tutor.</CardDescription>
+          <CardDescription>
+            Busque por paciente ou tutor. O ficheiro PDF segue o padrão{' '}
+            <span className="font-mono text-[11px] text-foreground/80">VETIUS_NUTRICAO_PACIENTE_TUTOR_AAAA-MM-DD.pdf</span>.
+          </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="relative">

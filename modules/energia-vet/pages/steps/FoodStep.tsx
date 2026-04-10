@@ -766,13 +766,13 @@ export default function FoodStep() {
 
       {/* Modal informações nutricionais */}
       <Dialog open={!!detailsFood} onOpenChange={(open) => !open && setDetailsFoodId(null)}>
-        <DialogContent className="max-h-[90vh] w-[min(96vw,860px)] max-w-[860px] overflow-hidden border border-orange-400/20 bg-card sm:max-w-[860px] dark:bg-[#141010]">
-          <DialogHeader>
+        <DialogContent className="flex max-h-[90vh] min-h-0 w-[min(96vw,860px)] max-w-[860px] flex-col gap-4 overflow-hidden border border-orange-400/20 bg-card p-4 sm:max-w-[860px] dark:bg-[#141010]">
+          <DialogHeader className="shrink-0 pr-10 text-left">
             <DialogTitle className="text-foreground dark:text-white">{detailsFood?.name ?? 'Informações nutricionais'}</DialogTitle>
           </DialogHeader>
 
           {detailsFood && (
-            <div className="space-y-4 overflow-y-auto pr-1">
+            <div className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-y-contain pr-1 [-webkit-overflow-scrolling:touch]">
               <div className="rounded-xl border border-border bg-muted/40 px-4 py-3 dark:border-white/10 dark:bg-[#1c1514]">
                 <p className="text-xs text-muted-foreground">Categoria</p>
                 <p className="mt-1 font-semibold text-foreground dark:text-white">{detailsFood.categoryNormalized ?? 'Dado não cadastrado'}</p>

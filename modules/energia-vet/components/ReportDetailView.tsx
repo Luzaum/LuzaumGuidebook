@@ -2,7 +2,7 @@ import { Download, Printer } from 'lucide-react'
 import { Button } from './ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import type { StoredCalculationReport } from '../types'
-import { exportReportPdf, printReportPdf } from '../lib/reportDocument'
+import { buildVetiusNutritionPdfFilename, exportReportPdf, printReportPdf } from '../lib/reportDocument'
 import { buildPrintableReportViewModel } from '../lib/reportPresentation'
 import PrintableReportDocument from './PrintableReportDocument'
 
@@ -19,9 +19,13 @@ export default function ReportDetailView({ report }: { report: StoredCalculation
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <CardTitle className="text-2xl text-white">{report.patient.name || 'Paciente sem nome'}</CardTitle>
-                <p className="mt-1 text-sm text-muted-foreground">Relatorio salvo em {new Date(report.createdAt).toLocaleString('pt-BR')}</p>
+                <p className="mt-1 text-sm text-muted-foreground">Relatório salvo em {new Date(report.createdAt).toLocaleString('pt-BR')}</p>
+                <p className="mt-2 text-xs text-muted-foreground">
+                  Nome do ficheiro ao exportar:{' '}
+                  <span className="break-all font-mono text-[11px] text-orange-200/90">{buildVetiusNutritionPdfFilename(report)}</span>
+                </p>
               </div>
-              <div className="flex gap-2">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
                 <Button variant="outline" size="sm" className="gap-2" onClick={() => printReportPdf(report)}>
                   <Printer className="h-4 w-4" /> Imprimir PDF
                 </Button>

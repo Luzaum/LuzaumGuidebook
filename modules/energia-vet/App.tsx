@@ -39,14 +39,31 @@ function Sidebar() {
 
   return (
     <aside className="energia-vet-sidebar hidden w-72 shrink-0 border-r border-border/70 bg-card/95 lg:flex lg:flex-col">
-      <div className="border-b border-border/60 p-6">
-        <div className="flex items-center gap-3">
-          <img src={MODULE_LOGO} alt={MODULE_NAME} className="h-14 w-14 rounded-2xl bg-white/70 p-1 object-contain shadow-sm" />
-          <div>
-            <p className="text-lg font-semibold tracking-tight text-foreground">{MODULE_NAME}</p>
-            <p className="text-sm text-muted-foreground">Nutrição clínica veterinária</p>
+      <div className="border-b border-border/60 px-4 py-6">
+        <Link
+          to={modulePath('/')}
+          className="energia-vet-sidebar-brand group flex flex-col items-center gap-0 rounded-xl py-0.5 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          aria-label={`${MODULE_NAME} — ir para o início`}
+        >
+          <div className="relative flex max-w-full items-center justify-center">
+            <span
+              className="energia-vet-sidebar-logo-glow pointer-events-none absolute left-1/2 top-1/2 z-0 h-[135%] w-[135%] max-w-[min(100%,18rem)] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100"
+              aria-hidden
+            />
+            <img
+              src={MODULE_LOGO}
+              alt=""
+              className="relative z-[1] h-56 w-56 max-h-[min(14rem,calc(100vw-4rem))] max-w-full object-contain transition-transform duration-300 ease-out group-hover:scale-[1.1]"
+              width={224}
+              height={224}
+              decoding="async"
+            />
           </div>
-        </div>
+          <span className="-mt-2.5 text-center text-lg font-semibold leading-none tracking-tight text-foreground">
+            {MODULE_NAME}
+          </span>
+        </Link>
+        <p className="mt-1 text-center text-sm leading-tight text-muted-foreground">Nutrição clínica veterinária</p>
       </div>
       <nav className="flex-1 space-y-2 px-4 py-5">
         {links.map((link) => {
