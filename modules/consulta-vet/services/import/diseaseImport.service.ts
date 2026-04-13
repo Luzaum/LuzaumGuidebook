@@ -1,5 +1,6 @@
 import { ImportPreviewItem, ImportResult } from '../../types/import';
 import { DiseaseUpsertInput } from '../../types/editorial';
+import { mergeDiseaseDiagnosticSections } from '../../utils/diseaseDiagnosticMerge';
 import { getDiseaseRepository } from '../diseaseRepository';
 import { generateSafeSlug, normalizeArray, normalizeBoolean, normalizeString } from './importNormalizers';
 
@@ -33,7 +34,35 @@ export async function previewDiseasesImport(
         // Validar se precisa avisar algo normalizado
         if (!data.slug) warnings.push('Slug ausente. Gerado a partir do título.');
 
-        // Construir obj mapeado
+        const quickDecisionStripRaw = normalizeArray(data.quickDecisionStrip);
+        const quickDecisionStrip = quickDecisionStripRaw.length
+            ? quickDecisionStripRaw.slice(0, 5)
+            : [...normalizeArray(data.thirtySecondView), ...normalizeArray(data.whenToSuspect)]
+                  .map((s) => String(s).trim())
+                  .filter(Boolean)
+                  .slice(0, 5);
+
+        const diagnosisMerged =
+            data.diagnosis !== undefined && data.diagnosis !== null && data.diagnosis !== ''
+                ? data.diagnosis
+                : mergeDiseaseDiagnosticSections(data.diagnostics, data.diagnosticApproach);
+
+        const clinicalSignsPathophysiology =
+            data.clinicalSignsPathophysiology !== undefined && data.clinicalSignsPathophysiology !== null
+                ? data.clinicalSignsPathophysiology
+                : data.physicalExam !== undefined &&
+                    data.physicalExam !== null &&
+                    String(JSON.stringify(data.physicalExam)).replace(/\s/g, '') !== '{}'
+                  ? { apresentacaoClinica: data.clinicalPresentation ?? '', exameFisico: data.physicalExam }
+                  : data.clinicalPresentation ?? '';
+
+        const etiology =
+            data.etiology !== undefined && data.etiology !== null && data.etiology !== ''
+                ? data.etiology
+                : data.introduction ?? '';
+
+        const references = Array.isArray(data.references) ? data.references : [];
+
         const mapped: DiseaseUpsertInput = {
             id: entityId,
             slug,
@@ -44,31 +73,16 @@ export async function previewDiseasesImport(
             tags: normalizeArray(data.tags),
             isPublished: normalizeBoolean(data.isPublished, true),
             quickSummary: normalizeString(data.quickSummary),
-            thirtySecondView: normalizeArray(data.thirtySecondView),
-            doNotForget: normalizeArray(data.dontForget),
-            redFlags: normalizeArray(data.redFlags),
-            whenToSuspect: normalizeArray(data.whenToSuspect),
-            initialApproach: normalizeArray(data.initialApproach),
-            dogVsCatDifferences: normalizeArray(data.dogVsCatDifferences),
-            mostHelpfulTests: normalizeArray(data.mostHelpfulTests),
-            commonMistakes: normalizeArray(data.commonMistakes),
-            clinicalPearls: normalizeArray(data.clinicalPearls),
-            introduction: data.introduction || {},
-            etiology: data.etiology || {},
-            transmission: data.transmission || {},
-            pathophysiology: data.pathophysiology || {},
+            quickDecisionStrip,
+            etiology,
             epidemiology: data.epidemiology || {},
-            clinicalPresentation: data.clinicalPresentation || {},
-            physicalExam: data.physicalExam || {},
-            differentialDiagnoses: data.differentialDiagnoses || {},
-            diagnostics: data.diagnostics || {},
-            diagnosticApproach: data.diagnosticApproach || {},
+            pathogenesisTransmission: data.pathogenesisTransmission || data.transmission || {},
+            pathophysiology: data.pathophysiology || {},
+            clinicalSignsPathophysiology,
+            diagnosis: diagnosisMerged ?? '',
             treatment: data.treatment || {},
-            prognosis: data.prognosis || {},
-            complications: data.complications || {},
             prevention: data.prevention || {},
-            adminNotesRichText: normalizeString(data.adminNotesRichText),
-            references: normalizeArray(data.references),
+            references,
             relatedMedicationSlugs: normalizeArray(data.relatedMedicationSlugs),
             relatedConsensusSlugs: normalizeArray(data.relatedConsensusSlugs),
         };

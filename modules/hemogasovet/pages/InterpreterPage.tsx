@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Activity, AlertCircle, CheckCircle2, HelpCircle, Info, Save, FileText, ChevronDown, ChevronUp, AlertTriangle, ShieldAlert, Stethoscope, Beaker, BrainCircuit } from 'lucide-react';
+import { SpeciesPortraitCards } from '@/components/SpeciesPortraitCards';
 import { cn } from '../../../lib/utils';
 import { BloodGasInput, Species, SampleType, InterpretationResult, ParsedField } from '../types';
 import { parseBloodGasText } from '../engine/parser';
@@ -201,64 +202,50 @@ export default function InterpreterPage() {
             
             {/* Profile Selection */}
             <div className="space-y-4 mb-6 pb-5 border-b border-slate-100 dark:border-slate-800">
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Espécie</label>
-                  <div className="flex rounded-md shadow-sm">
-                    <button
-                      onClick={() => applyDefaultsForProfile('canine', sampleType)}
-                      className={cn(
-                        "flex-1 py-1.5 text-xs font-medium rounded-l-md border transition-colors",
-                        species === 'canine' 
-                          ? "bg-purple-100 border-purple-200 text-purple-700 dark:bg-purple-900/40 dark:border-purple-800 dark:text-purple-300" 
-                          : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50 dark:bg-slate-950 dark:border-slate-800 dark:text-slate-400"
-                      )}
-                    >
-                      Canino
-                    </button>
-                    <button
-                      onClick={() => applyDefaultsForProfile('feline', sampleType)}
-                      className={cn(
-                        "flex-1 py-1.5 text-xs font-medium rounded-r-md border-y border-r transition-colors",
-                        species === 'feline' 
-                          ? "bg-purple-100 border-purple-200 text-purple-700 dark:bg-purple-900/40 dark:border-purple-800 dark:text-purple-300" 
-                          : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50 dark:bg-slate-950 dark:border-slate-800 dark:text-slate-400"
-                      )}
-                    >
-                      Felino
-                    </button>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
-                    Amostra
-                    <TooltipIcon content={TOOLTIPS.sampleType} />
-                  </label>
-                  <div className="flex rounded-md shadow-sm">
-                    <button
-                      onClick={() => applyDefaultsForProfile(species, 'arterial')}
-                      className={cn(
-                        "flex-1 py-1.5 text-xs font-medium rounded-l-md border transition-colors",
-                        sampleType === 'arterial' 
-                          ? "bg-red-100 border-red-200 text-red-700 dark:bg-red-900/40 dark:border-red-800 dark:text-red-300" 
-                          : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50 dark:bg-slate-950 dark:border-slate-800 dark:text-slate-400"
-                      )}
-                    >
-                      Arterial
-                    </button>
-                    <button
-                      onClick={() => applyDefaultsForProfile(species, 'venous')}
-                      className={cn(
-                        "flex-1 py-1.5 text-xs font-medium rounded-r-md border-y border-r transition-colors",
-                        sampleType === 'venous' 
-                          ? "bg-blue-100 border-blue-200 text-blue-700 dark:bg-blue-900/40 dark:border-blue-800 dark:text-blue-300" 
-                          : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50 dark:bg-slate-950 dark:border-slate-800 dark:text-slate-400"
-                      )}
-                    >
-                      Venosa
-                    </button>
-                  </div>
+              <div>
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">Espécie</label>
+                <SpeciesPortraitCards
+                  variant="purple"
+                  size="compact"
+                  showHeading={false}
+                  canineSelected={species === 'canine'}
+                  felineSelected={species === 'feline'}
+                  onSelectCanine={() => applyDefaultsForProfile('canine', sampleType)}
+                  onSelectFeline={() => applyDefaultsForProfile('feline', sampleType)}
+                  canineSubtitle="VR e defaults caninos"
+                  felineSubtitle="VR e defaults felinos"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
+                  Amostra
+                  <TooltipIcon content={TOOLTIPS.sampleType} />
+                </label>
+                <div className="flex rounded-md shadow-sm max-w-md">
+                  <button
+                    type="button"
+                    onClick={() => applyDefaultsForProfile(species, 'arterial')}
+                    className={cn(
+                      "flex-1 py-1.5 text-xs font-medium rounded-l-md border transition-colors",
+                      sampleType === 'arterial' 
+                        ? "bg-red-100 border-red-200 text-red-700 dark:bg-red-900/40 dark:border-red-800 dark:text-red-300" 
+                        : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50 dark:bg-slate-950 dark:border-slate-800 dark:text-slate-400"
+                    )}
+                  >
+                    Arterial
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => applyDefaultsForProfile(species, 'venous')}
+                    className={cn(
+                      "flex-1 py-1.5 text-xs font-medium rounded-r-md border-y border-r transition-colors",
+                      sampleType === 'venous' 
+                        ? "bg-blue-100 border-blue-200 text-blue-700 dark:bg-blue-900/40 dark:border-blue-800 dark:text-blue-300" 
+                        : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50 dark:bg-slate-950 dark:border-slate-800 dark:text-slate-400"
+                    )}
+                  >
+                    Venosa
+                  </button>
                 </div>
               </div>
             </div>

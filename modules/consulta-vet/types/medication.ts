@@ -1,5 +1,8 @@
 import { ContentFlag, EditorialReference, VetSpecies } from './common';
 
+/** Origem / canal de obtenção da apresentação (para cálculo e orientação ao usuário). */
+export type MedicationSupplyChannel = 'human_pharmacy' | 'veterinary' | 'compounded';
+
 export interface MedicationDose {
   id: string;
   species: 'dog' | 'cat' | 'both';
@@ -13,6 +16,8 @@ export interface MedicationDose {
   duration?: string;
   notes?: string;
   calculatorEnabled: boolean;
+  /** Se definido, a calculadora sugere esta apresentação para esta indicação. */
+  presentationId?: string;
 }
 
 export interface MedicationPresentation {
@@ -24,6 +29,7 @@ export interface MedicationPresentation {
   packInfo?: string;
   route?: string;
   scoringInfo?: string;
+  channel?: MedicationSupplyChannel;
 }
 
 export interface MedicationRecord extends ContentFlag {

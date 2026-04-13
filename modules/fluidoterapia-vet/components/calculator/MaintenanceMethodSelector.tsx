@@ -1,6 +1,5 @@
-import type { ElementType } from 'react';
-import { AlertTriangle, Calculator, Clock3, Droplets, Info, Settings2, Stethoscope } from 'lucide-react';
-import { maintenanceGuide } from '../../data/clinicalContent';
+import { useEffect } from 'react';
+import { AlertTriangle, Calculator, Clock3, Droplets, Settings2, Stethoscope } from 'lucide-react';
 import { MaintenanceConfig, MaintenanceMethod, PatientProfile } from '../../types';
 import { cn } from '../../lib/utils';
 import { Badge } from '../ui/badge';
@@ -37,13 +36,26 @@ function clampManual(value: number) {
 }
 export function MaintenanceMethodSelector({ patient, config, onChange, results }: Props) {
   const methods = getMethods(patient.species as 'canine' | 'feline');
+  const calcWeight = patient.isObese && patient.idealWeightKg ? patient.idealWeightKg : patient.weightKg;
+  const showLinearWarning = config.method === 'linear' && (calcWeight < 2 || calcWeight > 40);
 
   const isSpeciesMismatch =
     (config.method === 'preset_dog' && patient.species !== 'canine') ||
     (config.method === 'preset_cat' && patient.species !== 'feline');
 
   const anesthesiaDefault = patient.species === 'canine' ? 5 : 3;
-  const anesthesiaMax = 5;
+  /** Cães até 10 mL/kg/h; felinos até 5 (mais conservador) */
+  const anesthesiaMax = patient.species === 'feline' ? 5 : 10;
+
+  useEffect(() => {
+    if (config.method !== 'anesthesia') return;
+    const safe = Math.min(Math.max(config.anesthesiaMlPerKgHour, 2), anesthesiaMax);
+    if (safe !== config.anesthesiaMlPerKgHour) {
+      onChange({ anesthesiaMlPerKgHour: safe });
+    }
+    // onChange vem do pai; incluir dispara correções quando espécie/teto mudam
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- só sincroniza taxa com teto por espécie
+  }, [config.method, config.anesthesiaMlPerKgHour, anesthesiaMax, patient.species]);
 
   return (
     <Card className="overflow-hidden border-slate-200 shadow-sm dark:border-slate-800">
@@ -90,6 +102,18 @@ export function MaintenanceMethodSelector({ patient, config, onChange, results }
             <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0" />
             <div>
               O preset de espécie não combina com o paciente atual. O alométrico por espécie deve ser o padrão preferencial quando não houver motivo forte para usar outra abordagem.
+            </div>
+          </div>
+        ) : null}
+
+        {showLinearWarning ? (
+          <div className="flex items-start gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800 dark:border-amber-900/50 dark:bg-amber-950/30 dark:text-amber-300">
+            <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0" />
+            <div>
+              <p className="font-semibold">Precisão reduzida neste peso</p>
+              <p className="mt-1">
+                A fórmula linear (30 × peso + 70) perde precisão abaixo de 2 kg ou acima de 40 kg. Prefira o método alométrico por espécie.
+              </p>
             </div>
           </div>
         ) : null}
@@ -156,36 +180,46 @@ export function MaintenanceMethodSelector({ patient, config, onChange, results }
             <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800 dark:border-amber-900/50 dark:bg-amber-950/30 dark:text-amber-300">
               Avaliar profundidade anestésica, temperatura, FC, hemorragia, vasodilatação, analgesia e necessidade de vasopressor ou inotrópico antes de "subir soro" automaticamente.
             </div>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              {patient.species === 'feline'
+                ? 'Em felinos o teto do slider é 5 mL/kg/h (fluidoterapia perioperatória mais conservadora).'
+                : 'Em cães o teto do slider é 10 mL/kg/h; use valores menores quando a fisiologia permitir.'}
+            </p>
           </div>
         ) : null}
 
-        <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950">
-            <div className="mb-4 flex items-center gap-2">
-              <Info className="h-4 w-4 text-slate-400" />
-              <h4 className="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Guia visual de manutenção</h4>
-            </div>
-            <div className="space-y-3">
-              {maintenanceGuide.map((item) => (
-                <div key={item.label} className="rounded-xl border border-slate-200 bg-slate-50/70 p-4 dark:border-slate-800 dark:bg-slate-900/40">
-                  <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">{item.label}</p>
-                  <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{item.detail}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-blue-500 to-cyan-600 p-5 text-white shadow-lg shadow-blue-500/10 dark:border-slate-800">
+        <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-600 p-6 text-white shadow-xl shadow-blue-500/20 dark:border-slate-700">
+          <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-2 text-blue-100">
-              <Clock3 className="h-4 w-4" />
-              <span className="text-xs font-bold uppercase tracking-wider">Preview da manutenção</span>
+              <Clock3 className="h-5 w-5" />
+              <span className="text-xs font-bold uppercase tracking-[0.2em]">Manutenção calculada</span>
             </div>
-            <p className="mt-4 text-5xl font-black tracking-tight">{results.mlPerHour.toFixed(1)} <span className="text-2xl font-semibold opacity-80">mL/h</span></p>
-            <p className="mt-2 text-sm text-blue-100">{results.mlPerDay.toFixed(0)} mL/dia</p>
-            <div className="mt-5 border-t border-white/20 pt-4 text-sm text-blue-50">
-              Fluido e droga: a taxa basal precisa ser revista quando o paciente deixa de ser apenas "manutenção".
+            <Badge className="border-white/30 bg-white/15 text-white hover:bg-white/20">basal</Badge>
+          </div>
+          <p className="mt-5 text-5xl font-black tracking-tight sm:text-6xl">
+            {results.mlPerHour.toFixed(1)} <span className="text-2xl font-semibold opacity-85 sm:text-3xl">mL/h</span>
+          </p>
+          <p className="mt-2 text-sm text-blue-100">{results.mlPerDay.toFixed(0)} mL/dia (24 h)</p>
+          <div className="mt-6 grid grid-cols-2 gap-3 border-t border-white/20 pt-5 sm:grid-cols-3">
+            <div className="rounded-xl bg-white/10 px-3 py-2 text-center backdrop-blur-sm">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-blue-100/90">1×</p>
+              <p className="text-lg font-bold">{results.x1.toFixed(1)}</p>
+              <p className="text-[10px] text-blue-100/80">mL/h</p>
+            </div>
+            <div className="rounded-xl bg-white/10 px-3 py-2 text-center backdrop-blur-sm">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-blue-100/90">1,5×</p>
+              <p className="text-lg font-bold">{results.x1_5.toFixed(1)}</p>
+              <p className="text-[10px] text-blue-100/80">mL/h</p>
+            </div>
+            <div className="col-span-2 rounded-xl bg-white/10 px-3 py-2 text-center backdrop-blur-sm sm:col-span-1">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-blue-100/90">2×</p>
+              <p className="text-lg font-bold">{results.x2.toFixed(1)}</p>
+              <p className="text-[10px] text-blue-100/80">mL/h</p>
             </div>
           </div>
+          <p className="mt-4 text-xs leading-relaxed text-blue-50/95">
+            1,5× e 2× são referências rápidas para reavaliação — não prescrevem ressuscitação nem correção de déficit.
+          </p>
         </div>
       </CardContent>
     </Card>

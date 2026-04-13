@@ -13,6 +13,8 @@ export interface EditorialReference {
   sourceType?: string | null;
   url?: string | null;
   notes?: string | null;
+  /** Ex.: A, B, meta-análise, consenso — livre para o editorial. */
+  evidenceLevel?: string | null;
 }
 
 export interface EditorialDrugProtocol {
@@ -31,6 +33,8 @@ export interface EditorialDiagnosticStep {
   stepNumber?: number;
   title: string;
   description: string;
+  /** Marca o exame / critério como padrão ouro (exibe troféu na UI). */
+  isGoldStandard?: boolean;
 }
 
 export type EditorialSectionValue =

@@ -48,7 +48,7 @@ export function EditorialDashboardPage() {
             <BookOpenCheck className="h-6 w-6" />
           </span>
           <div>
-            <h1 className="text-3xl font-bold tracking-tight text-foreground">Editorial Vetius ALFA</h1>
+            <h1 className="text-3xl font-bold tracking-tight text-foreground">Editorial ConsultaVET</h1>
             <p className="mt-1 text-sm text-muted-foreground">
               CRUD mínimo para conteúdo administrável via Supabase, mantendo fallback local por slug.
             </p>

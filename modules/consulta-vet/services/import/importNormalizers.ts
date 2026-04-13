@@ -46,6 +46,7 @@ export function normalizeMedicationDoseArray(value: any) {
         duration: normalizeString(item?.duration),
         notes: normalizeString(item?.notes),
         calculatorEnabled: normalizeBoolean(item?.calculatorEnabled, true),
+        presentationId: normalizeString(item?.presentationId).trim() || undefined,
     }));
 }
 
@@ -61,6 +62,9 @@ export function normalizeMedicationPresentationArray(value: any) {
         packInfo: normalizeString(item?.packInfo),
         route: normalizeString(item?.route),
         scoringInfo: normalizeString(item?.scoringInfo),
+        channel: ['human_pharmacy', 'veterinary', 'compounded'].includes(String(item?.channel))
+            ? (String(item.channel) as 'human_pharmacy' | 'veterinary' | 'compounded')
+            : 'veterinary',
     }));
 }
 

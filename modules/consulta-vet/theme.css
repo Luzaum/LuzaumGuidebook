@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:wght@400;600&display=swap');
 
+/*
+  Tema ConsultaVET — equivalente à paleta em hexadecimal solicitada
+  (#ffffff, #3b82f6, #171717, etc.). Variáveis em triplas HSL sem função hsl(),
+  pois o Tailwind do projeto usa hsl(var(--token)) e opacidade com / alpha.
+
+  O bloco @theme inline do Tailwind v4 não é usado aqui para manter
+  compatibilidade com Tailwind v3 (tailwind.config.js).
+*/
+
 .consulta-vet-theme {
   --card: 0 0% 100%;
   --ring: 217.2 91.2% 59.8%;

@@ -1298,15 +1298,14 @@ function buildImportedBulletinDrafts(
       content: [
         'BOLETIM TUTOR',
         '',
-        `Prezados, seguem as informações do plantão sobre o quadro do(a) paciente ${displayName || patientLabel}, acompanhado(a) no setor de Internação Clínica de Pequenos Animais do HV-UFMG.`,
+        `Prezados, seguem as informações do plantão sobre o quadro do(a) paciente ${displayName || patientLabel}, acompanhado(a) no serviço de internação clínica de pequenos animais.`,
         '',
         truncateText(tutorDigest || summary || 'Paciente em acompanhamento clínico no plantão.', 260),
         '',
         'Seguimos à disposição e aguardamos o horário de visitas (15 às 16h) para maiores esclarecimentos.',
         '',
         'Atenciosamente,',
-        'Setor de Clínica Médica',
-        'HV-UFMG',
+        'Equipe de Clínica Médica',
       ].join('\n'),
     },
   ];

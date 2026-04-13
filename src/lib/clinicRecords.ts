@@ -534,6 +534,10 @@ export type MedicationSearchResult = {
   metadata: any
   source?: CatalogSource
   scope?: CatalogSource
+  /** Contagem de linhas em medication_recommended_doses (só preenchida na busca da clínica). */
+  recommended_dose_count?: number
+  pharmacy_origin?: string
+  default_route?: string
 }
 
 type GlobalMedicationRow = {
@@ -693,6 +697,14 @@ async function resolveGlobalMedicationBySlug(slug: string): Promise<GlobalMedica
   }
 }
 
+function parseRecommendedDoseCountFromMedicationRow(row: Record<string, unknown>): number {
+  const nested = row.medication_recommended_doses
+  if (!Array.isArray(nested) || nested.length === 0) return 0
+  const c = (nested[0] as { count?: number })?.count
+  const n = typeof c === 'number' ? c : Number(c)
+  return Number.isFinite(n) && n > 0 ? n : 0
+}
+
 export async function searchMedications(
   clinicId: string,
   query: string,
@@ -702,9 +714,20 @@ export async function searchMedications(
 
   const q = query.trim()
 
+  const mapClinicRows = (rows: Record<string, unknown>[]): MedicationSearchResult[] =>
+    rows.map((raw) => {
+      const { medication_recommended_doses: _nested, ...entry } = raw
+      return {
+        ...(entry as Omit<MedicationSearchResult, 'source' | 'scope' | 'recommended_dose_count'>),
+        recommended_dose_count: parseRecommendedDoseCountFromMedicationRow(raw),
+        source: 'clinic' as const,
+        scope: 'clinic' as const,
+      }
+    })
+
   let request = supabase
     .from('medications')
-    .select('id,name,is_controlled,is_private,metadata')
+    .select('id,name,is_controlled,is_private,metadata,medication_recommended_doses(count)')
     .eq('clinic_id', clinicId)
 
   // ✅ OBJ 3: Se tem query, filtra por nome; senão, lista inicial
@@ -716,17 +739,45 @@ export async function searchMedications(
     .order('name', { ascending: true })
     .limit(limit)
 
-  const { data, error } = await request
+  let { data, error } = await request
 
-  console.log('[MedicationSearch] RESULT', { count: data?.length, error })
-  logSbError('[MedicationSearch] ERROR', error)
+  if (error) {
+    console.warn('[MedicationSearch] embed count failed, falling back without doses count', error)
+    let fb = supabase
+      .from('medications')
+      .select('id,name,is_controlled,is_private,metadata')
+      .eq('clinic_id', clinicId)
+    if (q) {
+      fb = fb.ilike('name', `%${q}%`)
+    }
+    fb = fb.order('name', { ascending: true }).limit(limit)
+    const retry = await fb
+    data = retry.data
+    error = retry.error
+    if (error) throw error
+    const clinicResults = (data ?? []).map((entry) => ({
+      ...entry,
+      recommended_dose_count: 0,
+      source: 'clinic' as const,
+      scope: 'clinic' as const,
+    }))
+    const globalRows = await fetchGlobalMedicationRows(q, limit)
+    const globalResults = globalRows.map(mapGlobalMedicationRowToSearchResult)
+    return mergeCatalogSearchResults([...clinicResults, ...globalResults], limit)
+  }
 
-  if (error) throw error
-  const clinicResults = (data ?? []).map((entry) => ({
-    ...entry,
-    source: 'clinic' as const,
-    scope: 'clinic' as const,
-  }))
+  console.log('[MedicationSearch] RESULT', { count: data?.length, error: null })
+  let clinicResults = mapClinicRows((data ?? []) as Record<string, unknown>[])
+
+  // Homônimos da clínica: primeiro quem tem doses no catálogo (evita cair no UUID “vazio”).
+  clinicResults.sort((a, b) => {
+    const ac = (a.recommended_dose_count ?? 0) > 0 ? 1 : 0
+    const bc = (b.recommended_dose_count ?? 0) > 0 ? 1 : 0
+    if (bc !== ac) return bc - ac
+    const na = String(a.name || '').localeCompare(String(b.name || ''), 'pt', { sensitivity: 'base' })
+    if (na !== 0) return na
+    return String(a.id).localeCompare(String(b.id))
+  })
 
   const globalRows = await fetchGlobalMedicationRows(q, limit)
   const globalResults = globalRows.map(mapGlobalMedicationRowToSearchResult)
@@ -895,6 +946,8 @@ export interface RecommendedDose {
   frequency_min?: number | null // freq mínima (vezes/dia)
   frequency_max?: number | null // freq máxima (vezes/dia)
   frequency_mode?: string | null // 'times_per_day' | 'every_x_hours' | 'custom'
+  /** Legado/import: intervalo em horas quando o catálogo não usa só frequency_min */
+  interval_hours?: number | null
   frequency_text?: string | null // texto livre
   recurrence_value?: number | null
   recurrence_unit?: string | null
@@ -920,6 +973,23 @@ function normalizeRecommendedDoseMetadata(input: any): Record<string, unknown> {
   return (input && typeof input === 'object' && !Array.isArray(input)) ? { ...input } : {}
 }
 
+/**
+ * INSERT omitia frequency_mode e o Postgres aplicava DEFAULT 'times_per_day';
+ * o modo real ficava só em metadata — preferir metadata nesse caso legado.
+ */
+function pickFrequencyMode(row: any, metadata: Record<string, unknown>): string | null {
+  const rv = row?.frequency_mode
+  const mv = metadata.frequency_mode
+  const r =
+    rv !== undefined && rv !== null && rv !== '' ? String(rv).trim().toLowerCase() : ''
+  const m =
+    mv !== undefined && mv !== null && mv !== '' ? String(mv).trim().toLowerCase() : ''
+  if (m && r === 'times_per_day' && m !== 'times_per_day') return String(mv).trim()
+  if (r) return String(rv).trim()
+  if (m) return String(mv).trim()
+  return null
+}
+
 /** Backward compat: nomes legados → nomes canônicos */
 function normalizeAdministrationBasisValue(raw: unknown): string | null {
   const s = typeof raw === 'string' ? raw.trim().toLowerCase() : ''
@@ -934,8 +1004,10 @@ function normalizeAdministrationBasisValue(raw: unknown): string | null {
 function mapDoseRowToRecommendedDose(row: any, source: CatalogSource = 'clinic'): RecommendedDose {
   const metadata = normalizeRecommendedDoseMetadata(row?.metadata)
   const pick = (field: string, fallback: any = null) => {
-    if (row?.[field] !== undefined && row?.[field] !== null) return row[field]
-    if (metadata[field] !== undefined && metadata[field] !== null) return metadata[field]
+    const rv = row?.[field]
+    if (rv !== undefined && rv !== null && rv !== '') return rv
+    const mv = metadata[field]
+    if (mv !== undefined && mv !== null && mv !== '') return mv
     return fallback
   }
 
@@ -953,7 +1025,8 @@ function mapDoseRowToRecommendedDose(row: any, source: CatalogSource = 'clinic')
     frequency: pick('frequency', null) as string | null,
     frequency_min: pick('frequency_min', null) as number | null,
     frequency_max: pick('frequency_max', null) as number | null,
-    frequency_mode: pick('frequency_mode', null) as string | null,
+    frequency_mode: pickFrequencyMode(row, metadata) as string | null,
+    interval_hours: pick('interval_hours', null) as number | null,
     frequency_text: pick('frequency_text', null) as string | null,
     recurrence_value: pick('recurrence_value', null) as number | null,
     recurrence_unit: pick('recurrence_unit', null) as string | null,
@@ -1087,34 +1160,51 @@ export async function saveMedicationRecommendedDoses(
   // STEP 5: UPDATE existentes
   for (const dose of toUpdate) {
     const metadata = normalizeRecommendedDoseMetadata(dose.metadata)
-    metadata.dose_max = dose.dose_max ?? null
-    metadata.per_weight_unit = dose.per_weight_unit ?? null
-    metadata.indication = dose.indication ?? null
-    metadata.frequency_min = dose.frequency_min ?? null
-    metadata.frequency_max = dose.frequency_max ?? null
-    metadata.frequency_mode = dose.frequency_mode ?? null
-    metadata.frequency_text = dose.frequency_text ?? null
-    metadata.recurrence_value = dose.recurrence_value ?? null
-    metadata.recurrence_unit = dose.recurrence_unit ?? null
-    metadata.duration = dose.duration ?? null
-    metadata.administration_basis = dose.administration_basis ?? null
-    metadata.administration_amount = dose.administration_amount ?? null
-    metadata.administration_unit = dose.administration_unit ?? null
-    metadata.administration_target = dose.administration_target ?? null
-    metadata.calculator_default_dose = dose.calculator_default_dose ?? null
-    metadata.calculator_default_frequency = dose.calculator_default_frequency ?? null
+    metadata.dose_max = dose.dose_max ?? metadata.dose_max ?? null
+    metadata.per_weight_unit = dose.per_weight_unit ?? metadata.per_weight_unit ?? null
+    metadata.indication = dose.indication ?? metadata.indication ?? null
+    metadata.frequency_min = dose.frequency_min ?? metadata.frequency_min ?? null
+    metadata.frequency_max = dose.frequency_max ?? metadata.frequency_max ?? null
+    metadata.frequency_mode = dose.frequency_mode ?? metadata.frequency_mode ?? null
+    metadata.frequency_text = dose.frequency_text ?? metadata.frequency_text ?? null
+    metadata.recurrence_value = dose.recurrence_value ?? metadata.recurrence_value ?? null
+    metadata.recurrence_unit = dose.recurrence_unit ?? metadata.recurrence_unit ?? null
+    metadata.duration = dose.duration ?? metadata.duration ?? null
+    metadata.administration_basis = dose.administration_basis ?? metadata.administration_basis ?? null
+    metadata.administration_amount = dose.administration_amount ?? metadata.administration_amount ?? null
+    metadata.administration_unit = dose.administration_unit ?? metadata.administration_unit ?? null
+    metadata.administration_target = dose.administration_target ?? metadata.administration_target ?? null
+    metadata.calculator_default_dose = dose.calculator_default_dose ?? metadata.calculator_default_dose ?? null
+    metadata.calculator_default_frequency =
+      dose.calculator_default_frequency ?? metadata.calculator_default_frequency ?? null
 
-    const isSingleDose = dose.is_single_dose ?? (dose.frequency_mode === 'single_dose' || dose.frequency_mode === 'repeat_interval') ?? false
-    const isRepeatPeriodically = dose.repeat_periodically ?? (dose.frequency_mode === 'repeat_interval') ?? false
+    const fm = String(metadata.frequency_mode || '')
+    const isSingleDose =
+      dose.is_single_dose ?? (fm === 'single_dose' || fm === 'repeat_interval') ?? false
+    const isRepeatPeriodically = dose.repeat_periodically ?? (fm === 'repeat_interval') ?? false
     const canonicalBasis = normalizeAdministrationBasisValue(dose.administration_basis)
     const payload = {
       species: dose.species!,
       route: dose.route!,
       dose_value: dose.dose_value!,
       dose_unit: dose.dose_unit!,
-      frequency: dose.frequency || null,
+      frequency: dose.frequency != null && String(dose.frequency).trim() !== '' ? dose.frequency : '',
       notes: dose.notes || null,
       metadata,
+      dose_max: metadata.dose_max != null ? Number(metadata.dose_max) : null,
+      per_weight_unit: (metadata.per_weight_unit as string | null) ?? null,
+      indication: (metadata.indication as string | null) ?? null,
+      frequency_min: metadata.frequency_min != null ? Number(metadata.frequency_min) : null,
+      frequency_max: metadata.frequency_max != null ? Number(metadata.frequency_max) : null,
+      frequency_mode: (metadata.frequency_mode as string | null) ?? null,
+      frequency_text: (metadata.frequency_text as string | null) ?? null,
+      duration: (metadata.duration as string | null) ?? null,
+      calculator_default_dose:
+        metadata.calculator_default_dose != null ? Number(metadata.calculator_default_dose) : null,
+      calculator_default_frequency:
+        metadata.calculator_default_frequency != null
+          ? Number(metadata.calculator_default_frequency)
+          : null,
       // ── Fase 3A: canonical columns ──────────────────────────
       administration_basis: canonicalBasis,
       administration_amount: dose.administration_amount ?? null,
@@ -1148,48 +1238,69 @@ export async function saveMedicationRecommendedDoses(
 
   // STEP 6: INSERT novas
   if (toInsert.length > 0) {
-    const insertPayload = toInsert.map(d => ({
-      ...(() => {
-        const metadata = normalizeRecommendedDoseMetadata(d.metadata)
-        metadata.dose_max = d.dose_max ?? null
-        metadata.per_weight_unit = d.per_weight_unit ?? null
-        metadata.indication = d.indication ?? null
-        metadata.frequency_min = d.frequency_min ?? null
-        metadata.frequency_max = d.frequency_max ?? null
-        metadata.frequency_mode = d.frequency_mode ?? null
-        metadata.frequency_text = d.frequency_text ?? null
-        metadata.recurrence_value = d.recurrence_value ?? null
-        metadata.recurrence_unit = d.recurrence_unit ?? null
-        metadata.duration = d.duration ?? null
-        metadata.administration_basis = d.administration_basis ?? null
-        metadata.administration_amount = d.administration_amount ?? null
-        metadata.administration_unit = d.administration_unit ?? null
-        metadata.administration_target = d.administration_target ?? null
-        metadata.calculator_default_dose = d.calculator_default_dose ?? null
-        metadata.calculator_default_frequency = d.calculator_default_frequency ?? null
-        return { metadata }
-      })(),
-      clinic_id: clinicId,
-      medication_id: medicationId,
-      species: d.species!,
-      route: d.route!,
-      dose_value: d.dose_value!,
-      dose_unit: d.dose_unit!,
-      frequency: d.frequency || null,
-      notes: d.notes || null,
-      // ── Fase 3A: canonical columns ──────────────────────────
-      administration_basis: normalizeAdministrationBasisValue(d.administration_basis),
-      administration_amount: d.administration_amount ?? null,
-      administration_unit: d.administration_unit ?? null,
-      administration_target: d.administration_target ?? null,
-      is_single_dose: d.is_single_dose ?? (d.frequency_mode === 'single_dose' || d.frequency_mode === 'repeat_interval') ?? false,
-      repeat_periodically: d.repeat_periodically ?? (d.frequency_mode === 'repeat_interval') ?? false,
-      recurrence_value: d.recurrence_value ?? null,
-      recurrence_unit: d.recurrence_unit ?? null,
-      // ────────────────────────────────────────────────────────
-      is_active: d.is_active ?? true,
-      sort_order: d.sort_order ?? null,
-    }))
+    const insertPayload = toInsert.map(d => {
+      const metadata = normalizeRecommendedDoseMetadata(d.metadata)
+      metadata.dose_max = d.dose_max ?? metadata.dose_max ?? null
+      metadata.per_weight_unit = d.per_weight_unit ?? metadata.per_weight_unit ?? null
+      metadata.indication = d.indication ?? metadata.indication ?? null
+      metadata.frequency_min = d.frequency_min ?? metadata.frequency_min ?? null
+      metadata.frequency_max = d.frequency_max ?? metadata.frequency_max ?? null
+      metadata.frequency_mode = d.frequency_mode ?? metadata.frequency_mode ?? null
+      metadata.frequency_text = d.frequency_text ?? metadata.frequency_text ?? null
+      metadata.recurrence_value = d.recurrence_value ?? metadata.recurrence_value ?? null
+      metadata.recurrence_unit = d.recurrence_unit ?? metadata.recurrence_unit ?? null
+      metadata.duration = d.duration ?? metadata.duration ?? null
+      metadata.administration_basis = d.administration_basis ?? metadata.administration_basis ?? null
+      metadata.administration_amount = d.administration_amount ?? metadata.administration_amount ?? null
+      metadata.administration_unit = d.administration_unit ?? metadata.administration_unit ?? null
+      metadata.administration_target = d.administration_target ?? metadata.administration_target ?? null
+      metadata.calculator_default_dose = d.calculator_default_dose ?? metadata.calculator_default_dose ?? null
+      metadata.calculator_default_frequency =
+        d.calculator_default_frequency ?? metadata.calculator_default_frequency ?? null
+
+      const fm = String(metadata.frequency_mode || '')
+      const isSingleDose =
+        d.is_single_dose ?? (fm === 'single_dose' || fm === 'repeat_interval') ?? false
+      const isRepeatPeriodically = d.repeat_periodically ?? (fm === 'repeat_interval') ?? false
+
+      return {
+        clinic_id: clinicId,
+        medication_id: medicationId,
+        species: d.species!,
+        route: d.route!,
+        dose_value: d.dose_value!,
+        dose_unit: d.dose_unit!,
+        frequency: d.frequency != null && String(d.frequency).trim() !== '' ? d.frequency : '',
+        notes: d.notes || null,
+        metadata,
+        dose_max: metadata.dose_max != null ? Number(metadata.dose_max) : null,
+        per_weight_unit: (metadata.per_weight_unit as string | null) ?? null,
+        indication: (metadata.indication as string | null) ?? null,
+        frequency_min: metadata.frequency_min != null ? Number(metadata.frequency_min) : null,
+        frequency_max: metadata.frequency_max != null ? Number(metadata.frequency_max) : null,
+        frequency_mode: (metadata.frequency_mode as string | null) ?? null,
+        frequency_text: (metadata.frequency_text as string | null) ?? null,
+        duration: (metadata.duration as string | null) ?? null,
+        calculator_default_dose:
+          metadata.calculator_default_dose != null ? Number(metadata.calculator_default_dose) : null,
+        calculator_default_frequency:
+          metadata.calculator_default_frequency != null
+            ? Number(metadata.calculator_default_frequency)
+            : null,
+        // ── Fase 3A: canonical columns ──────────────────────────
+        administration_basis: normalizeAdministrationBasisValue(d.administration_basis),
+        administration_amount: d.administration_amount ?? null,
+        administration_unit: d.administration_unit ?? null,
+        administration_target: d.administration_target ?? null,
+        is_single_dose: isSingleDose,
+        repeat_periodically: isRepeatPeriodically,
+        recurrence_value: d.recurrence_value ?? null,
+        recurrence_unit: d.recurrence_unit ?? null,
+        // ────────────────────────────────────────────────────────
+        is_active: d.is_active ?? true,
+        sort_order: d.sort_order ?? null,
+      }
+    })
 
     const { error: insertError } = await supabase
       .from('medication_recommended_doses')

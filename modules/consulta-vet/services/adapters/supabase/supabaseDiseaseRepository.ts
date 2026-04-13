@@ -26,6 +26,7 @@ import {
   mapCategoryRow,
   mapDiseaseRow,
 } from './editorialRecordMappers';
+import { buildSupabaseDiseasePayload, cleanTextArrayForDb } from '../../../utils/diseaseSchemaMap';
 
 type ConsensusSlugRow = {
   id: string;
@@ -39,10 +40,6 @@ function matchesDiseaseQuery(record: DiseaseRecord, query: string): boolean {
     record.synonyms.some((item) => item.toLowerCase().includes(normalized)) ||
     record.tags.some((item) => item.toLowerCase().includes(normalized))
   );
-}
-
-function cleanTextArray(values: string[]): string[] {
-  return values.map((value) => String(value || '').trim()).filter(Boolean);
 }
 
 async function fetchSupabaseDiseases(includeDrafts = false): Promise<DiseaseRecord[]> {
@@ -199,42 +196,12 @@ export class SupabaseDiseaseRepository implements DiseaseRepository {
       throw new Error(`Falha ao validar doença existente: ${parseError(existingError)}`);
     }
 
-    const payload = {
-      category_id: categoryRow?.id || null,
-      slug: normalizedSlug,
-      title: input.title,
-      synonyms: cleanTextArray(input.synonyms),
-      species: cleanTextArray(input.species),
-      tags: cleanTextArray(input.tags),
-      quick_summary: String(input.quickSummary || '').trim(),
-      thirty_second_view: cleanTextArray(input.thirtySecondView || []),
-      do_not_forget: cleanTextArray(input.doNotForget || []),
-      when_to_suspect: cleanTextArray(input.whenToSuspect || []),
-      initial_conduct: cleanTextArray(input.initialConduct || []),
-      high_yield_tests: cleanTextArray(input.highYieldTests || []),
-      dog_vs_cat_differences: cleanTextArray(input.dogVsCatDifferences || []),
-      common_mistakes: cleanTextArray(input.commonMistakes || []),
-      red_flags: cleanTextArray(input.redFlags),
-      clinical_pearls: cleanTextArray(input.clinicalPearls),
-      introduction: input.introduction,
-      etiology: input.etiology,
-      transmission: input.transmission,
-      pathophysiology: input.pathophysiology,
-      epidemiology: input.epidemiology,
-      clinical_presentation: input.clinicalPresentation,
-      physical_exam: input.physicalExam,
-      differential_diagnoses: input.differentialDiagnoses,
-      diagnostics: input.diagnostics,
-      diagnostic_approach: input.diagnosticApproach,
-      treatment: input.treatment,
-      prognosis: input.prognosis,
-      complications: input.complications,
-      prevention: input.prevention,
-      references: input.references || [],
-      is_published: input.isPublished ?? true,
-      created_by: existingRow?.created_by || userId,
-      updated_by: userId,
-    };
+    const payload = buildSupabaseDiseasePayload(input, {
+      categoryId: categoryRow?.id || null,
+      normalizedSlug,
+      userId,
+      existingCreatedBy: existingRow?.created_by,
+    });
 
     const { data: savedRow, error: upsertError } = await supabase
       .from(CONSULTA_VET_DISEASE_TABLE)
@@ -247,8 +214,8 @@ export class SupabaseDiseaseRepository implements DiseaseRepository {
     }
 
     const diseaseId = (savedRow as DiseaseRow).id;
-    const medicationSlugs = cleanTextArray(input.relatedMedicationSlugs);
-    const consensoSlugs = cleanTextArray(input.relatedConsensusSlugs);
+    const medicationSlugs = cleanTextArrayForDb(input.relatedMedicationSlugs);
+    const consensoSlugs = cleanTextArrayForDb(input.relatedConsensusSlugs);
 
     const { error: deleteMedicationLinksError } = await supabase
       .from(CONSULTA_VET_DISEASE_MEDICATION_TABLE)

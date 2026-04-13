@@ -1,7 +1,7 @@
 // ✅ AddMedicationModal2 — Modal para adicionar medicamentos (100% Catálogo 3.0)
 // Versão completa com todos os campos de apresentação do schema Supabase
 
-import React, { useState, useEffect, useCallback, useMemo } from 'react'
+import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import {
   RxvField,
   RxvInput,
@@ -17,8 +17,12 @@ import {
   getMedicationRecommendedDoses,
   type RecommendedDose,
   type MedicationPresentationRecord,
+  type MedicationSearchResult,
 } from '../../../src/lib/clinicRecords'
-import { buildPresentationConcentrationText } from '../../../src/lib/medicationCatalog'
+import {
+  buildPresentationConcentrationText,
+  findUniqueHomonymWithRecommendedDoses,
+} from '../../../src/lib/medicationCatalog'
 import type { PrescriptionItem, PatientInfo } from '../NovaReceita2Page'
 import { 
   calculatePracticalEquivalent, 
@@ -29,10 +33,6 @@ import {
   ADMINISTRATION_BASIS_OPTIONS,
   ADMINISTRATION_TARGET_OPTIONS,
   ADMINISTRATION_UNIT_OPTIONS,
-  SHARED_DURATION_MODE_OPTIONS,
-  SHARED_FREQUENCY_MODE_OPTIONS,
-  SHARED_REPEAT_UNIT_OPTIONS,
-  SHARED_TIMES_PER_DAY_OPTIONS_COMPACT,
   isApplicationSiteBasis,
   isCustomAdministrationBasis,
   normalizeAdministrationBasis,
@@ -70,14 +70,31 @@ const TIMES_PER_DAY_INTERVALS: Record<string, string> = {
   '24': '1',
 }
 
-const FREQUENCY_OPTIONS = [...SHARED_TIMES_PER_DAY_OPTIONS_COMPACT]
+const FREQUENCY_OPTIONS = [
+  { value: '1', label: '1x ao dia (a cada 24 horas)' },
+  { value: '2', label: '2x ao dia (a cada 12 horas)' },
+  { value: '3', label: '3x ao dia (a cada 8 horas)' },
+  { value: '4', label: '4x ao dia (a cada 6 horas)' },
+  { value: '6', label: '6x ao dia (a cada 4 horas)' },
+  { value: '8', label: '8x ao dia (a cada 3 horas)' },
+  { value: '12', label: '12x ao dia (a cada 2 horas)' },
+  { value: '24', label: '24x ao dia (a cada 1 hora)' },
+]
 
-/** Alinhado a PrescriptionItem.frequencyMode (usa interval_hours). */
-type StructuredFrequencyMode = 'times_per_day' | 'interval_hours' | 'single_dose' | 'repeat_interval'
+type StructuredFrequencyMode = 'times_per_day' | 'every_x_hours' | 'single_dose' | 'repeat_interval'
 
-const FREQUENCY_MODE_OPTIONS = [...SHARED_FREQUENCY_MODE_OPTIONS]
+const FREQUENCY_MODE_OPTIONS = [
+  { value: 'times_per_day', label: 'Vezes por dia' },
+  { value: 'every_x_hours', label: 'Intervalo em horas' },
+  { value: 'single_dose', label: 'Dose única' },
+  { value: 'repeat_interval', label: 'Repetir periodicamente' },
+]
 
-const RECURRENCE_UNIT_OPTIONS = [...SHARED_REPEAT_UNIT_OPTIONS]
+const RECURRENCE_UNIT_OPTIONS = [
+  { value: 'dias', label: 'dias' },
+  { value: 'semanas', label: 'semanas' },
+  { value: 'meses', label: 'meses' },
+]
 
 // ===================== TYPES =====================
 interface AddMedicationModal2Props {
@@ -90,21 +107,13 @@ interface AddMedicationModal2Props {
   defaultStartHour?: string
   /** Se true, ignora busca no catálogo e exibe apenas o formulário manual */
   manualMode?: boolean
+  /** Espécie do combobox na receita quando ainda não há paciente (evita cair só em ambos/primeira linha) */
+  prescriptionSpeciesHint?: string | null
   storageScope?: string
   title?: string
   subtitle?: string
   confirmLabel?: string
   hideStartControls?: boolean
-}
-
-interface MedicationSearchResult {
-  id: string
-  name: string
-  is_controlled: boolean
-  pharmacy_origin?: string
-  default_route?: string
-  source?: 'clinic' | 'global'
-  scope?: 'clinic' | 'global'
 }
 
 type PresentationRecord = MedicationPresentationRecord & {
@@ -166,20 +175,130 @@ function formatPeriodicFrequency(mode: StructuredFrequencyMode, params: {
   everyHours?: string | number | null
   recurrenceValue?: string | number | null
   recurrenceUnit?: string | null
-  /** Dose única + repetir periodicamente (ex.: Bravecto a cada 12 semanas) */
-  emphasizeSingleDoseRepeat?: boolean
 }): string {
   if (mode === 'single_dose') return 'em dose única'
   if (mode === 'repeat_interval') {
     const recurrenceValue = Number(String(params.recurrenceValue ?? '').replace(',', '.'))
     const recurrenceUnit = String(params.recurrenceUnit || '').trim()
-    if (!Number.isFinite(recurrenceValue) || recurrenceValue <= 0 || !recurrenceUnit) return ''
-    return params.emphasizeSingleDoseRepeat
-      ? `em dose única, repetir a cada ${recurrenceValue} ${recurrenceUnit}`
-      : `repetir a cada ${recurrenceValue} ${recurrenceUnit}`
+    return Number.isFinite(recurrenceValue) && recurrenceValue > 0 && recurrenceUnit
+      ? `repetir a cada ${recurrenceValue} ${recurrenceUnit}`
+      : ''
   }
-  if (mode === 'interval_hours') return formatEveryHoursValue(params.everyHours)
+  if (mode === 'every_x_hours') return formatEveryHoursValue(params.everyHours)
   return formatFrequencyValue(params.timesPerDay)
+}
+
+/** Alinha nomes legados (ex.: interval_hours) ao modo estruturado deste modal */
+function normalizeFrequencyModeForModal(raw?: string | null): StructuredFrequencyMode {
+  const m = String(raw || '').trim()
+  if (m === 'interval_hours' || m === 'every_x_hours') return 'every_x_hours'
+  if (m === 'single_dose' || m === 'repeat_interval' || m === 'times_per_day') return m
+  return 'times_per_day'
+}
+
+function isStructuredNonDefaultFrequencyMode(mode: StructuredFrequencyMode): boolean {
+  return mode !== 'times_per_day'
+}
+
+/** N vezes/dia regular quando frequency_min veio vazio mas o texto tem "2x ao dia" etc. */
+function catalogRegularTimesPerDayN(d: RecommendedDose): number {
+  const nFromMin = Number(d.frequency_min)
+  if (Number.isFinite(nFromMin) && nFromMin > 0) return nFromMin
+  const nFromText = Number(parseTimesPerDayValue(d.frequency || d.frequency_text || ''))
+  return Number.isFinite(nFromText) && nFromText > 0 ? nFromText : 0
+}
+
+/** Paridade com o catálogo: usa flags + texto quando frequency_mode está legado ou inconsistente */
+function resolvedCatalogFrequencyMode(d: RecommendedDose): StructuredFrequencyMode {
+  const fm = String(d.frequency_mode || '').trim().toLowerCase()
+  const blob = `${d.frequency || ''} ${d.frequency_text || ''}`.toLowerCase()
+  if (fm === 'repeat_interval' || d.repeat_periodically) return 'repeat_interval'
+  if (fm === 'single_dose' || (d.is_single_dose && !d.repeat_periodically)) return 'single_dose'
+  if (fm === 'every_x_hours' || fm === 'interval_hours') return 'every_x_hours'
+  if (fm === 'custom') {
+    if (/\ba\s*cada\s*\d+/.test(blob)) return 'every_x_hours'
+    return 'times_per_day'
+  }
+  // Catálogo 3 grava "a cada N horas" em frequency; se o modo coluna/metadata faltar ou for legado, inferir.
+  if (/\ba\s*cada\s*\d+(?:[.,]\d+)?(?:\s*a\s*\d+(?:[.,]\d+)?)?\s*horas\b/i.test(blob)) return 'every_x_hours'
+  if (/\ba\s*cada\s*\d+(?:[.,]\d+)?\s*h\b/i.test(blob)) return 'every_x_hours'
+  // Legado: só N vezes/dia (sem texto de intervalo) — espaçamento regular ⇒ a cada 24/N horas
+  const nDay = catalogRegularTimesPerDayN(d)
+  if (
+    !d.repeat_periodically &&
+    !d.is_single_dose &&
+    nDay > 0 &&
+    24 % nDay === 0 &&
+    (fm === 'times_per_day' || fm === '')
+  ) {
+    return 'every_x_hours'
+  }
+  return normalizeFrequencyModeForModal(d.frequency_mode)
+}
+
+function resolveEveryHoursFromCatalog(d: RecommendedDose): string {
+  const ih = d.interval_hours
+  if (ih != null && Number(ih) > 0) return String(Number(ih))
+  const fm = String(d.frequency_mode || '').trim().toLowerCase()
+  const nCol = Number(d.frequency_min)
+  if (fm === 'every_x_hours' || fm === 'interval_hours') {
+    if (Number.isFinite(nCol) && nCol > 0) return String(nCol)
+  }
+  const n = catalogRegularTimesPerDayN(d)
+  if (n > 0 && 24 % n === 0) {
+    return String(24 / n)
+  }
+  const blob = `${d.frequency || ''} ${d.frequency_text || ''}`
+  const m = blob.match(/a\s*cada\s*(\d+(?:[.,]\d+)?)\s*h/i)
+  if (m) return String(Number(m[1].replace(',', '.')))
+  return ''
+}
+
+/** Catálogo e legados podem usar capitalização ou sinónimos */
+function normalizeCatalogSpecies(raw: string | null | undefined): 'cão' | 'gato' | 'ambos' | null {
+  const s = String(raw || '')
+    .trim()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/\p{M}/gu, '')
+  if (!s) return null
+  if (s === 'ambos' || s === 'both') return 'ambos'
+  if (s === 'gato' || s === 'felino' || s.includes('gata')) return 'gato'
+  if (s === 'cao' || s === 'cão' || s === 'dog' || s.includes('canino')) return 'cão'
+  return null
+}
+
+/** Paridade catálogo → modal: se a linha da espécie for só x/dia mas "ambos" tiver intervalo/repetição, usar ambos */
+function pickBestRecommendedDose(
+  doses: RecommendedDose[],
+  patientSpecies: 'cão' | 'gato' | null,
+): RecommendedDose | undefined {
+  if (!doses.length) return undefined
+  const speciesMatches =
+    patientSpecies != null
+      ? doses.filter((d) => normalizeCatalogSpecies(d.species) === patientSpecies)
+      : []
+  /** Várias linhas cão/gato: preferir a que já tem posologia estruturada (não a primeira só x/dia) */
+  const bySpecies =
+    speciesMatches.length === 0
+      ? undefined
+      : speciesMatches.find((d) =>
+            isStructuredNonDefaultFrequencyMode(resolvedCatalogFrequencyMode(d)),
+          ) || speciesMatches[0]
+  const byAmbos = doses.find((d) => normalizeCatalogSpecies(d.species) === 'ambos')
+  const firstStructured = doses.find((d) =>
+    isStructuredNonDefaultFrequencyMode(resolvedCatalogFrequencyMode(d)),
+  )
+  if (
+    bySpecies &&
+    byAmbos &&
+    isStructuredNonDefaultFrequencyMode(resolvedCatalogFrequencyMode(byAmbos)) &&
+    !isStructuredNonDefaultFrequencyMode(resolvedCatalogFrequencyMode(bySpecies))
+  ) {
+    return byAmbos
+  }
+  if (!bySpecies && !byAmbos && firstStructured) return firstStructured
+  return bySpecies || byAmbos || firstStructured || doses[0]
 }
 
 function canonicalRecommendedDoseUnit(
@@ -215,6 +334,7 @@ export function AddMedicationModal2({
   defaultStartDate = '',
   defaultStartHour = '',
   manualMode = false,
+  prescriptionSpeciesHint,
   storageScope = 'recipe',
   title,
   subtitle,
@@ -242,8 +362,6 @@ export function AddMedicationModal2({
   const [everyHours, setEveryHours] = useState('')
   const [recurrenceValue, setRecurrenceValue] = useState('')
   const [recurrenceUnit, setRecurrenceUnit] = useState('semanas')
-  /** Dose única + recorrência (catálogo canônico) — afeta o texto de frequência exportado */
-  const [emphasizeSingleDoseRepeat, setEmphasizeSingleDoseRepeat] = useState(false)
   const [route, setRoute] = useState('VO')
   const [administrationBasis, setAdministrationBasis] = useState<AdministrationBasis>('weight_based')
   const [administrationAmount, setAdministrationAmount] = useState('1')
@@ -271,6 +389,19 @@ export function AddMedicationModal2({
 
   // Practical Equivalent State
   const [practicalResult, setPracticalResult] = useState<PracticalEquivalentResult | null>(null)
+
+  /** Evita re-hidratar posologia em loop; chave muda com medicamento, doses ou espécie do paciente */
+  const catalogHydrationKeyRef = useRef<string>('')
+  /** Evita auto-selecionar o homônimo com doses mais de uma vez para o mesmo termo de busca */
+  const autoHomonymPickRef = useRef<string>('')
+
+  useEffect(() => {
+    if (open && !manualMode) catalogHydrationKeyRef.current = ''
+  }, [open, manualMode])
+
+  useEffect(() => {
+    if (!open) autoHomonymPickRef.current = ''
+  }, [open])
 
   const clearPersistedDraft = useCallback(() => {
     if (!storageKey) return
@@ -305,15 +436,19 @@ export function AddMedicationModal2({
       setSelectedMedication(parsed.selectedMedication || null)
       setPresentations(Array.isArray(parsed.presentations) ? parsed.presentations : [])
       setSelectedPresentationId(parsed.selectedPresentationId || null)
-      setRecommendedDoses(Array.isArray(parsed.recommendedDoses) ? parsed.recommendedDoses : [])
+      const restoredDoses = Array.isArray(parsed.recommendedDoses) ? parsed.recommendedDoses : []
+      setRecommendedDoses(restoredDoses)
       setDose(String(parsed.dose || ''))
-      setFrequencyMode(
-        (parsed.frequencyMode === 'every_x_hours' ? 'interval_hours' : (parsed.frequencyMode as StructuredFrequencyMode)) || 'times_per_day',
-      )
-      setTimesPerDay(parseTimesPerDayValue(parsed.timesPerDay) || '2')
-      setEveryHours(String(parsed.everyHours || ''))
-      setRecurrenceValue(String(parsed.recurrenceValue || ''))
-      setRecurrenceUnit(String(parsed.recurrenceUnit || 'semanas'))
+      const skipFreqRestore = restoredDoses.length > 0 && !!parsed.selectedMedication
+      if (skipFreqRestore) {
+        catalogHydrationKeyRef.current = ''
+      } else {
+        setFrequencyMode((parsed.frequencyMode as StructuredFrequencyMode) || 'times_per_day')
+        setTimesPerDay(parseTimesPerDayValue(parsed.timesPerDay) || '2')
+        setEveryHours(String(parsed.everyHours || ''))
+        setRecurrenceValue(String(parsed.recurrenceValue || ''))
+        setRecurrenceUnit(String(parsed.recurrenceUnit || 'semanas'))
+      }
       setRoute(String(parsed.route || 'VO'))
       setAdministrationBasis(normalizeAdministrationBasis(parsed.administrationBasis))
       setAdministrationAmount(String(parsed.administrationAmount || '1'))
@@ -485,6 +620,7 @@ export function AddMedicationModal2({
   // Reset on close
   useEffect(() => {
     if (!open) {
+      catalogHydrationKeyRef.current = ''
       setSelectedMedication(null)
       setPresentations([])
       setSelectedPresentationId(null)
@@ -496,7 +632,6 @@ export function AddMedicationModal2({
       setEveryHours('')
       setRecurrenceValue('')
       setRecurrenceUnit('semanas')
-      setEmphasizeSingleDoseRepeat(false)
       setRoute('VO')
       setAdministrationBasis('weight_based')
       setAdministrationAmount('1')
@@ -543,6 +678,76 @@ export function AddMedicationModal2({
     setAdministrationTarget('')
   }, [])
 
+  const applyCatalogRecommendedHydration = useCallback(
+    (doses: RecommendedDose[]) => {
+      const patientSpecies = patient
+        ? (patient.species || '').toLowerCase().includes('felin')
+          ? 'gato'
+          : 'cão'
+        : (() => {
+            const h = normalizeCatalogSpecies(prescriptionSpeciesHint || 'cão')
+            if (h === 'gato') return 'gato'
+            if (h === 'cão') return 'cão'
+            return null
+          })()
+      const bestDose = pickBestRecommendedDose(doses, patientSpecies)
+      if (import.meta.env.DEV) {
+        console.log('[AddMedicationModal2] catalog dose picker', {
+          doseCount: doses.length,
+          patientSpecies,
+          resolvedMode: bestDose ? resolvedCatalogFrequencyMode(bestDose) : null,
+          picked: bestDose
+            ? {
+                id: bestDose.id,
+                species: bestDose.species,
+                route: bestDose.route,
+                frequency_mode: bestDose.frequency_mode,
+                interval_hours: bestDose.interval_hours,
+                is_single_dose: (bestDose as any).is_single_dose,
+                repeat_periodically: (bestDose as any).repeat_periodically,
+                recurrence_value: bestDose.recurrence_value,
+                recurrence_unit: bestDose.recurrence_unit,
+              }
+            : null,
+          rows: doses.map((d) => ({
+            id: d.id,
+            species: d.species,
+            frequency_mode: d.frequency_mode,
+            resolved: resolvedCatalogFrequencyMode(d),
+          })),
+        })
+      }
+      if (!bestDose) return
+
+      const bestBasisRaw = (bestDose as any).administration_basis
+      const bestIsCustom = isCustomAdministrationBasis(String(bestBasisRaw || 'weight_based'))
+      if (!bestIsCustom) setDose(`${bestDose.dose_value} ${bestDose.dose_unit}`)
+      setRoute(bestDose.route || 'VO')
+      const nextMode = resolvedCatalogFrequencyMode(bestDose)
+      setFrequencyMode(nextMode)
+      setTimesPerDay(parseTimesPerDayValue(bestDose.frequency) || '2')
+      setEveryHours(nextMode === 'every_x_hours' ? resolveEveryHoursFromCatalog(bestDose) : '')
+      setRecurrenceValue(nextMode === 'repeat_interval' ? String(bestDose.recurrence_value || '') : '')
+      setRecurrenceUnit(nextMode === 'repeat_interval' ? String(bestDose.recurrence_unit || 'semanas') : 'semanas')
+      if ((bestDose as any).is_single_dose) {
+        setDurationMode('until_finished')
+      } else if ((bestDose as any).repeat_periodically) {
+        // repeat_interval não impõe modo de duração
+      }
+      applyAdministrationFromRecommendedDose(bestDose)
+    },
+    [patient, prescriptionSpeciesHint, applyAdministrationFromRecommendedDose]
+  )
+
+  /** Paridade catálogo → modal após fetch ou após restore do sessionStorage */
+  useEffect(() => {
+    if (!open || !selectedMedication || recommendedDoses.length === 0) return
+    const key = `${selectedMedication.id}:${recommendedDoses.map((d) => d.id || '').join(',')}:${patient?.species || ''}:${prescriptionSpeciesHint || ''}`
+    if (catalogHydrationKeyRef.current === key) return
+    catalogHydrationKeyRef.current = key
+    applyCatalogRecommendedHydration(recommendedDoses)
+  }, [open, selectedMedication?.id, recommendedDoses, patient?.species, prescriptionSpeciesHint, applyCatalogRecommendedHydration])
+
   const handleMedicationSelect = useCallback(
     async (med: MedicationSearchResult) => {
       if (!clinicId) return
@@ -557,67 +762,13 @@ export function AddMedicationModal2({
         setSelectedPresentationId(defaultPresentation?.id || null)
 
         const dosesData = await getMedicationRecommendedDoses(clinicId, med.id)
+        // Nova resposta da API deve sempre re-hidratar (evita skip quando a chave era igual à sessão anterior)
+        catalogHydrationKeyRef.current = ''
         setRecommendedDoses(dosesData)
         setAdministrationBasis('weight_based')
         setAdministrationAmount('1')
         setAdministrationUnit('')
         setAdministrationTarget('')
-        setEmphasizeSingleDoseRepeat(false)
-
-        const patientSpecies = patient
-          ? ((patient.species || '').toLowerCase().includes('felin') ? 'gato' : 'cão')
-          : null
-        const bestDose =
-          (patientSpecies ? dosesData.find((d) => d.species === patientSpecies) : null) ||
-          dosesData.find((d) => d.species === 'ambos') ||
-          dosesData[0]
-
-        if (bestDose) {
-          const meta: Record<string, unknown> =
-            (bestDose as any).metadata && typeof (bestDose as any).metadata === 'object'
-              ? ((bestDose as any).metadata as Record<string, unknown>)
-              : {}
-          const isSingle = Boolean((bestDose as any).is_single_dose ?? meta.is_single_dose)
-          const repeatPeriodic = Boolean((bestDose as any).repeat_periodically ?? meta.repeat_periodically)
-          const recVal = (bestDose as any).recurrence_value ?? meta.recurrence_value
-          const recUnitRaw = String((bestDose as any).recurrence_unit ?? meta.recurrence_unit ?? 'semanas').trim()
-          const freqModeRaw = String((bestDose as any).frequency_mode || meta.frequency_mode || '').trim()
-
-          const bestBasisRaw = (bestDose as any).administration_basis ?? meta.administration_basis
-          const bestIsCustom = isCustomAdministrationBasis(String(bestBasisRaw || 'weight_based'))
-          if (!bestIsCustom) setDose(`${(bestDose as any).dose_value} ${(bestDose as any).dose_unit}`)
-          setRoute((bestDose as any).route || 'VO')
-
-          let nextMode: StructuredFrequencyMode = (freqModeRaw as StructuredFrequencyMode) || 'times_per_day'
-          if (isSingle && repeatPeriodic && recVal != null && String(recVal).trim() !== '') {
-            nextMode = 'repeat_interval'
-            setEmphasizeSingleDoseRepeat(true)
-          } else if (freqModeRaw === 'repeat_interval' && recVal != null && String(recVal).trim() !== '') {
-            nextMode = 'repeat_interval'
-          } else if (isSingle && !repeatPeriodic) {
-            nextMode = 'single_dose'
-          } else if (freqModeRaw === 'interval_hours' || freqModeRaw === 'every_x_hours') {
-            nextMode = 'interval_hours'
-          }
-
-          setFrequencyMode(nextMode)
-          if (nextMode === 'times_per_day') {
-            setTimesPerDay(
-              parseTimesPerDayValue((bestDose as any).frequency)
-                || String((bestDose as any).frequency_min ?? '')
-                || '1',
-            )
-          } else {
-            setTimesPerDay('2')
-          }
-          setEveryHours(nextMode === 'interval_hours' ? String((bestDose as any).frequency_min || '') : '')
-          setRecurrenceValue(nextMode === 'repeat_interval' ? String(recVal ?? '') : '')
-          setRecurrenceUnit(nextMode === 'repeat_interval' ? (recUnitRaw || 'semanas') : 'semanas')
-          if (isSingle) {
-            setDurationMode('until_finished')
-          }
-          applyAdministrationFromRecommendedDose(bestDose)
-        }
 
         setSearchQuery('')
       } catch (err) {
@@ -626,6 +777,27 @@ export function AddMedicationModal2({
     },
     [clinicId, patient, applyAdministrationFromRecommendedDose]
   )
+
+  // Homônimos na clínica: se só um registo com o mesmo nome tem doses, abre direto (sem depender da ordem do clique).
+  useEffect(() => {
+    if (!open || manualMode || selectedMedication || isSearching) return
+    const q = searchQuery.trim()
+    if (!q) return
+    const pick = findUniqueHomonymWithRecommendedDoses(medications)
+    if (!pick) return
+    const sig = `${q}:::${pick.id}`
+    if (autoHomonymPickRef.current === sig) return
+    autoHomonymPickRef.current = sig
+    void handleMedicationSelect(pick)
+  }, [
+    open,
+    manualMode,
+    selectedMedication,
+    isSearching,
+    searchQuery,
+    medications,
+    handleMedicationSelect,
+  ])
 
   const handleAdd = useCallback(() => {
     const safeDefaultStartDate = String(defaultStartDate || '').trim()
@@ -667,16 +839,10 @@ export function AddMedicationModal2({
         concentration_text: manualConcentration || undefined,
         commercial_name: manualCommercialName.trim() || undefined,
         dose,
-        frequency: formatPeriodicFrequency(frequencyMode, {
-          timesPerDay,
-          everyHours,
-          recurrenceValue,
-          recurrenceUnit,
-          emphasizeSingleDoseRepeat,
-        }),
-        frequencyMode: frequencyMode === 'interval_hours' ? 'interval_hours' : frequencyMode,
+        frequency: formatPeriodicFrequency(frequencyMode, { timesPerDay, everyHours, recurrenceValue, recurrenceUnit }),
+        frequencyMode: frequencyMode === 'every_x_hours' ? 'interval_hours' : frequencyMode,
         timesPerDay: frequencyMode === 'times_per_day' ? Number(timesPerDay) : undefined,
-        intervalHours: frequencyMode === 'interval_hours' ? Number(everyHours) : undefined,
+        intervalHours: frequencyMode === 'every_x_hours' ? Number(everyHours) : undefined,
         repeatEveryValue: frequencyMode === 'repeat_interval' ? String(recurrenceValue) : undefined,
         repeatEveryUnit: frequencyMode === 'repeat_interval' ? recurrenceUnit : undefined,
         administrationBasis,
@@ -752,16 +918,10 @@ export function AddMedicationModal2({
 
       // Campos de dosagem
       dose,
-      frequency: formatPeriodicFrequency(frequencyMode, {
-        timesPerDay,
-        everyHours,
-        recurrenceValue,
-        recurrenceUnit,
-        emphasizeSingleDoseRepeat,
-      }),
-      frequencyMode: frequencyMode === 'interval_hours' ? 'interval_hours' : frequencyMode,
+      frequency: formatPeriodicFrequency(frequencyMode, { timesPerDay, everyHours, recurrenceValue, recurrenceUnit }),
+      frequencyMode: frequencyMode === 'every_x_hours' ? 'interval_hours' : frequencyMode,
       timesPerDay: frequencyMode === 'times_per_day' ? Number(timesPerDay) : undefined,
-      intervalHours: frequencyMode === 'interval_hours' ? Number(everyHours) : undefined,
+      intervalHours: frequencyMode === 'every_x_hours' ? Number(everyHours) : undefined,
       repeatEveryValue: frequencyMode === 'repeat_interval' ? String(recurrenceValue) : undefined,
       repeatEveryUnit: frequencyMode === 'repeat_interval' ? recurrenceUnit : undefined,
       administrationBasis,
@@ -898,20 +1058,38 @@ export function AddMedicationModal2({
                   )}
                   {medications.length > 0 && (
                     <div className="max-h-64 space-y-2 overflow-y-auto pr-1">
-                      {medications.map((med) => (
+                      {medications.map((med) => {
+                        const clinicRow = med.source !== 'global' && med.scope !== 'global'
+                        const doseCount =
+                          typeof med.recommended_dose_count === 'number' ? med.recommended_dose_count : null
+                        return (
                         <button
                           key={med.id}
                           type="button"
                           className="w-full rounded-xl border border-slate-800 bg-black/40 px-4 py-3 text-left hover:border-[#39ff14]/50 hover:bg-[#39ff14]/5 transition-all"
                           onClick={() => handleMedicationSelect(med)}
                         >
-                          <p className="text-sm font-bold text-white">{med.name}</p>
+                          <div className="flex items-start justify-between gap-2">
+                            <p className="text-sm font-bold text-white">{med.name}</p>
+                            {clinicRow && doseCount !== null && (
+                              <span
+                                className={
+                                  doseCount > 0
+                                    ? 'shrink-0 rounded-md border border-[#39ff14]/40 bg-[#39ff14]/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-[#39ff14]'
+                                    : 'shrink-0 rounded-md border border-slate-600 bg-slate-900/80 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-400'
+                                }
+                              >
+                                {doseCount > 0 ? 'Com doses do catálogo' : 'Sem doses do catálogo'}
+                              </span>
+                            )}
+                          </div>
                           <p className="text-xs text-slate-500 mt-0.5">
                             {med.source === 'global' ? 'Catálogo global' : (med.pharmacy_origin || 'Catálogo da clínica')}
                             {med.is_controlled && ' • Controlado'}
                           </p>
                         </button>
-                      ))}
+                        )
+                      })}
                     </div>
                   )}
                 </div>
@@ -1005,7 +1183,7 @@ export function AddMedicationModal2({
                             : hasFreqRange
                               ? `${rdAny.frequency_min}–${rdAny.frequency_max}x/dia`
                               : rd.frequency || ''
-                          const freqModeLabel = freqMode === 'interval_hours' ? 'a cada Xh' : freqMode === 'repeat_interval' ? 'periódico' : freqMode === 'custom' ? 'personalizado' : 'x ao dia'
+                          const freqModeLabel = freqMode === 'every_x_hours' ? 'a cada Xh' : freqMode === 'repeat_interval' ? 'periódico' : freqMode === 'custom' ? 'personalizado' : 'x ao dia'
 
                           const handleExpand = () => {
                             if (isExpanded) {
@@ -1021,10 +1199,10 @@ export function AddMedicationModal2({
                           const handleApplyDirect = () => {
                             if (!isCustomBasis) setDose(`${rd.dose_value} ${canonicalDoseUnit}`)
                             setRoute(rd.route || 'VO')
-                            const nextMode = (rd.frequency_mode as StructuredFrequencyMode) || 'times_per_day'
+                            const nextMode = normalizeFrequencyModeForModal(rd.frequency_mode)
                             setFrequencyMode(nextMode)
                             setTimesPerDay(parseTimesPerDayValue(rd.frequency) || '2')
-                            setEveryHours(nextMode === 'interval_hours' ? String(rd.frequency_min || '') : '')
+                            setEveryHours(nextMode === 'every_x_hours' ? String(rd.frequency_min || '') : '')
                             setRecurrenceValue(nextMode === 'repeat_interval' ? String(rd.recurrence_value || '') : '')
                             setRecurrenceUnit(nextMode === 'repeat_interval' ? String(rd.recurrence_unit || 'semanas') : 'semanas')
                             applyAdministrationFromRecommendedDose(rd)
@@ -1036,10 +1214,10 @@ export function AddMedicationModal2({
                             const finalFreq = rangeFreqValue
                             if (!isCustomBasis) setDose(`${finalDose} ${canonicalDoseUnit}`)
                             setRoute(rd.route || 'VO')
-                            const nextMode = (rd.frequency_mode as StructuredFrequencyMode) || 'times_per_day'
+                            const nextMode = normalizeFrequencyModeForModal(rd.frequency_mode)
                             setFrequencyMode(nextMode)
                             setTimesPerDay(finalFreq ? String(finalFreq) : (parseTimesPerDayValue(rd.frequency) || '2'))
-                            setEveryHours(nextMode === 'interval_hours' ? String(finalFreq || rd.frequency_min || '') : '')
+                            setEveryHours(nextMode === 'every_x_hours' ? String(finalFreq || rd.frequency_min || '') : '')
                             setRecurrenceValue(nextMode === 'repeat_interval' ? String(rd.recurrence_value || '') : '')
                             setRecurrenceUnit(nextMode === 'repeat_interval' ? String(rd.recurrence_unit || 'semanas') : 'semanas')
                             applyAdministrationFromRecommendedDose(rd)
@@ -1175,7 +1353,7 @@ export function AddMedicationModal2({
                                             }`}
                                             onClick={() => setRangeFreqValue(freq)}
                                           >
-                                            {freqMode === 'interval_hours' ? `q${Math.round(24/freq)}h` : `${freq}x`}
+                                            {freqMode === 'every_x_hours' ? `q${Math.round(24/freq)}h` : `${freq}x`}
                                           </button>
                                         ))}
                                       </div>
@@ -1368,7 +1546,7 @@ export function AddMedicationModal2({
                         options={FREQUENCY_OPTIONS}
                       />
                     ) : null}
-                    {frequencyMode === 'interval_hours' ? (
+                    {frequencyMode === 'every_x_hours' ? (
                       <RxvInput
                         type="number"
                         min="1"
@@ -1408,7 +1586,13 @@ export function AddMedicationModal2({
                     <RxvSelect
                       value={durationMode}
                       onChange={(e) => setDurationMode(e.target.value as typeof durationMode)}
-                      options={SHARED_DURATION_MODE_OPTIONS as unknown as { value: string; label: string }[]}
+                      options={[
+                        { value: 'fixed_days', label: 'Duração fechada' },
+                        { value: 'until_recheck', label: 'Até reavaliação clínica' },
+                        { value: 'continuous_use', label: 'Uso contínuo' },
+                        { value: 'continuous_until_recheck', label: 'Uso contínuo até reavaliação clínica' },
+                        { value: 'until_finished', label: 'Até terminar o medicamento' },
+                      ]}
                     />
                     {durationMode === 'fixed_days' ? (
                       <RxvInput

@@ -97,12 +97,11 @@ export const modules: Module[] = [
   },
   {
     id: 'antibioticoterapia',
-    title: 'Antibioticoterapia',
+    title: 'Antibioticoterapia Vet',
     description: 'Escolha guiada e racional de antimicrobianos (protocolos, doses e condutas)',
     route: '/antibioticoterapia',
-    status: 'iframe',
+    status: 'internal',
     icon: Pill,
-    iframeUrl: 'https://antibioticoterapia.netlify.app',
     iconImage: '/apps/ATB.png',
   },
   {
@@ -152,8 +151,8 @@ export const modules: Module[] = [
   },
   {
     id: 'consulta-vet',
-    title: 'Vetius ALFA',
-    description: 'Consulta clínica veterinária com doenças, medicamentos, consensos e favoritos.',
+    title: 'ConsultaVET',
+    description: 'Base clínica com doenças, medicamentos, consensos, favoritos e retomada de leitura.',
     route: '/consulta-vet',
     status: 'internal',
     icon: Stethoscope,

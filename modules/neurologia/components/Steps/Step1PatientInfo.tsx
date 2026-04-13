@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { SpeciesPortraitCards } from '@/components/SpeciesPortraitCards'
 import { Card } from '../UI/Card'
 import type { Patient } from '../../stores/caseStore'
 import type { ComorbidityKey, ComorbidityItem, LifeStage } from '../../stores/caseStore'
@@ -87,51 +88,22 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
         <p className="text-muted-foreground">Dados básicos para contextualizar o exame neurológico.</p>
       </motion.div>
 
-      <section className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <motion.button
-          type="button"
-          whileHover={{ y: -2 }}
-          whileTap={{ scale: 0.98 }}
-          onClick={() => handleSetPatient({ species: 'dog' })}
-          className={`h-28 rounded-2xl border p-4 transition-all ${
-            patient.species === 'dog'
-              ? 'border-gold/70 bg-gold/12 shadow-[0_10px_30px_rgba(245,197,66,0.2)]'
-              : 'border-border bg-card hover:border-gold/45'
-          }`}
-        >
-          <div className="flex items-center justify-center gap-3 h-full">
-            <motion.span animate={{ y: [0, -3, 0] }} transition={{ repeat: Infinity, duration: 1.5 }} className="text-4xl">
-              🐶
-            </motion.span>
-            <div className="text-left">
-              <div className="text-lg font-semibold text-foreground">Cão</div>
-              <div className="text-xs text-muted-foreground">Paciente canino</div>
-            </div>
-          </div>
-        </motion.button>
-
-        <motion.button
-          type="button"
-          whileHover={{ y: -2 }}
-          whileTap={{ scale: 0.98 }}
-          onClick={() => handleSetPatient({ species: 'cat' })}
-          className={`h-28 rounded-2xl border p-4 transition-all ${
-            patient.species === 'cat'
-              ? 'border-gold/70 bg-gold/12 shadow-[0_10px_30px_rgba(245,197,66,0.2)]'
-              : 'border-border bg-card hover:border-gold/45'
-          }`}
-        >
-          <div className="flex items-center justify-center gap-3 h-full">
-            <motion.span animate={{ rotate: [0, -6, 6, 0] }} transition={{ repeat: Infinity, duration: 1.8 }} className="text-4xl">
-              🐱
-            </motion.span>
-            <div className="text-left">
-              <div className="text-lg font-semibold text-foreground">Gato</div>
-              <div className="text-xs text-muted-foreground">Paciente felino</div>
-            </div>
-          </div>
-        </motion.button>
-      </section>
+      <motion.section
+        className="w-full"
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.35 }}
+      >
+        <SpeciesPortraitCards
+          variant="gold"
+          canineSelected={patient.species === 'dog'}
+          felineSelected={patient.species === 'cat'}
+          onSelectCanine={() => handleSetPatient({ species: 'dog' })}
+          onSelectFeline={() => handleSetPatient({ species: 'cat' })}
+          canineSubtitle="Paciente canino"
+          felineSubtitle="Paciente felino"
+        />
+      </motion.section>
 
       <Card>
         <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-4 items-end">

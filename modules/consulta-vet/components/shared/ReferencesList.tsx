@@ -6,25 +6,20 @@ interface ReferencesListProps {
   references?: EditorialReference[];
   title?: string;
   className?: string;
+  /** Dentro de DiseaseSectionFrame: sem card externo nem título duplicado */
+  variant?: 'standalone' | 'embedded';
 }
 
 export function ReferencesList({
   references,
   title = 'Referências',
   className,
+  variant = 'standalone',
 }: ReferencesListProps) {
   if (!references || references.length === 0) return null;
 
-  return (
-    <section className={`rounded-[30px] border border-border bg-card/92 p-7 shadow-sm md:p-8 ${className || ''}`.trim()}>
-      <div className="mb-6">
-        <h2 className="text-[28px] font-bold tracking-tight text-foreground">{title}</h2>
-        <p className="mt-2 text-sm leading-7 text-muted-foreground">
-          Referências de apoio organizadas de forma mais compacta e discreta.
-        </p>
-      </div>
-
-      <div className="divide-y divide-border/70">
+  const list = (
+    <div className="divide-y divide-border/70">
         {references.map((reference, index) => (
           <article
             key={reference.id || `${reference.citationText}-${index}`}
@@ -36,6 +31,11 @@ export function ReferencesList({
                   {reference.sourceType ? (
                     <span className="rounded-full border border-primary/20 bg-primary/[0.06] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
                       {reference.sourceType}
+                    </span>
+                  ) : null}
+                  {reference.evidenceLevel ? (
+                    <span className="rounded-full border border-amber-500/25 bg-amber-500/[0.08] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-amber-800 dark:text-amber-200">
+                      Evidência: {reference.evidenceLevel}
                     </span>
                   ) : null}
                 </div>
@@ -60,7 +60,29 @@ export function ReferencesList({
             </div>
           </article>
         ))}
+    </div>
+  );
+
+  if (variant === 'embedded') {
+    return (
+      <div className={className}>
+        <p className="mb-5 max-w-[90ch] text-sm leading-7 text-muted-foreground">
+          Fontes com tipo, nível de evidência quando informado e links para aprofundamento.
+        </p>
+        {list}
       </div>
+    );
+  }
+
+  return (
+    <section className={`rounded-[30px] border border-border bg-card/92 p-7 shadow-sm md:p-8 ${className || ''}`.trim()}>
+      <div className="mb-6">
+        <h2 className="text-[28px] font-bold tracking-tight text-foreground">{title}</h2>
+        <p className="mt-2 text-sm leading-7 text-muted-foreground">
+          Referências de apoio organizadas de forma mais compacta e discreta.
+        </p>
+      </div>
+      {list}
     </section>
   );
 }

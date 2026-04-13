@@ -114,6 +114,7 @@ export function normalizeReferences(value: unknown): EditorialReference[] {
         sourceType: String(row.sourceType || '').trim() || null,
         url: String(row.url || '').trim() || null,
         notes: String(row.notes || '').trim() || null,
+        evidenceLevel: String(row.evidenceLevel || row.evidence_level || '').trim() || null,
       } satisfies EditorialReference;
     })
     .filter(Boolean) as EditorialReference[];

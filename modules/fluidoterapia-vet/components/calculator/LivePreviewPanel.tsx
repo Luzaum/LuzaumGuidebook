@@ -11,6 +11,8 @@ interface Props {
   lossesResults: { mlPerDay: number; hourlyMl: number };
   resuscitationResults: { totalMl: number; mlPerMin: number; mlPerHour: number; timeMinutes: number };
   onApplyAction: (partialState: Partial<CalculatorState>) => void;
+  /** Folha móvel: o cabeçalho fica no container externo */
+  hideHeader?: boolean;
 }
 
 export function LivePreviewPanel({
@@ -21,6 +23,7 @@ export function LivePreviewPanel({
   lossesResults,
   resuscitationResults,
   onApplyAction,
+  hideHeader = false,
 }: Props) {
   const totalHourly = maintenanceResults.mlPerHour + rehydrationResults.hourlyMl + lossesResults.hourlyMl;
   const total24h = totalHourly * 24;
@@ -39,16 +42,18 @@ export function LivePreviewPanel({
   };
 
   return (
-    <div className="flex h-full flex-col">
-      <div className="sticky top-0 z-20 border-b border-slate-200/60 bg-white/80 p-6 backdrop-blur dark:border-slate-800/60 dark:bg-slate-900/80">
-        <h3 className="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-slate-100">
-          <Activity className="h-5 w-5 text-teal-500" />
-          Preview clínico
-        </h3>
-        <p className="mt-1 text-sm text-slate-500">Calcula, justifica e lembra o que precisa ser monitorado.</p>
-      </div>
+    <div className="flex h-full min-h-0 flex-col">
+      {hideHeader ? null : (
+        <div className="sticky top-0 z-20 border-b border-slate-200/60 bg-white/80 p-6 backdrop-blur dark:border-slate-800/60 dark:bg-slate-900/80">
+          <h3 className="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-slate-100">
+            <Activity className="h-5 w-5 text-teal-500" />
+            Preview clínico
+          </h3>
+          <p className="mt-1 text-sm text-slate-500">Calcula, justifica e lembra o que precisa ser monitorado.</p>
+        </div>
+      )}
 
-      <ScrollArea className="flex-1 p-6">
+      <ScrollArea className={hideHeader ? 'flex-1 p-4 sm:p-6' : 'flex-1 p-6'}>
         <div className="space-y-8">
           <section className="space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Prescrição atual</h4>

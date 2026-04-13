@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Bookmark, Clock, FileText, Grid, Pill, ShieldCheck, Stethoscope, X } from 'lucide-react';
+import { Bookmark, Clock, FileText, Grid, Pill, ShieldCheck, Stethoscope, X, Zap } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
 import { canManageConsultaVetEditorial } from '../../services/consultaVetEditorialPermissions';
 
@@ -35,6 +35,7 @@ export function ConsultaVetSidebar({ isOpen, onClose }: ConsultaVetSidebarProps)
       { to: '/consulta-vet/doencas', label: 'Doenças', icon: Stethoscope },
       { to: '/consulta-vet/medicamentos', label: 'Medicamentos', icon: Pill },
       { to: '/consulta-vet/consensos', label: 'Consensos', icon: FileText },
+      { to: '/consulta-vet/manejo-emergencial', label: 'Manejo emergencial', icon: Zap },
       { to: '/consulta-vet/favoritos', label: 'Favoritos', icon: Bookmark },
       { to: '/consulta-vet/recentes', label: 'Recentes', icon: Clock },
     ];
@@ -60,10 +61,10 @@ export function ConsultaVetSidebar({ isOpen, onClose }: ConsultaVetSidebarProps)
           <div>
             <h1 className="flex items-center gap-2 text-xl font-bold tracking-tight text-foreground">
               <Stethoscope className="h-6 w-6 text-primary" />
-              VETIUS
+              ConsultaVET
             </h1>
-            <p className="mt-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-              Vetius ALFA
+            <p className="mt-1 text-xs font-medium text-muted-foreground">
+              Doenças, medicamentos, manejo emergencial e consensos
             </p>
           </div>
 

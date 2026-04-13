@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
-import { Activity, AlertTriangle, Cat, Clock, Dog, Info, Weight, Zap } from 'lucide-react';
+import { Activity, AlertTriangle, Clock, Info, Weight, Zap } from 'lucide-react';
+import { SpeciesPortraitCards } from '@/components/SpeciesPortraitCards';
 import { resuscitationPresets } from '../../data/clinicalContent';
 import { calculateResuscitation } from '../../lib/engines/calculations';
 import { PatientProfile, ResuscitationConfig, Species } from '../../types';
@@ -63,30 +64,24 @@ export function ResuscitationPage() {
                   <CardDescription>Hipovolemia e choque pedem alíquotas, não volume de choque inteiro de uma vez.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6 p-6">
-                  <div className="flex rounded-xl bg-slate-100 p-1 dark:bg-slate-900">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setSpecies('canine');
-                        const preset = getPreset('canine', 'canine-standard');
-                        setConfig((current) => ({ ...current, presetId: preset.id, aliquotMlKg: preset.defaultMlKg }));
-                      }}
-                      className={`flex-1 rounded-lg py-2.5 text-sm font-semibold transition-all ${species === 'canine' ? 'bg-white text-rose-600 shadow-sm dark:bg-slate-800 dark:text-rose-400' : 'text-slate-500'}`}
-                    >
-                      <span className="inline-flex items-center gap-2"><Dog className="h-4 w-4" /> Cão</span>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setSpecies('feline');
-                        const preset = getPreset('feline', 'feline-standard');
-                        setConfig((current) => ({ ...current, presetId: preset.id, aliquotMlKg: preset.defaultMlKg }));
-                      }}
-                      className={`flex-1 rounded-lg py-2.5 text-sm font-semibold transition-all ${species === 'feline' ? 'bg-white text-rose-600 shadow-sm dark:bg-slate-800 dark:text-rose-400' : 'text-slate-500'}`}
-                    >
-                      <span className="inline-flex items-center gap-2"><Cat className="h-4 w-4" /> Gato</span>
-                    </button>
-                  </div>
+                  <SpeciesPortraitCards
+                    variant="rose"
+                    size="compact"
+                    canineSelected={species === 'canine'}
+                    felineSelected={species === 'feline'}
+                    onSelectCanine={() => {
+                      setSpecies('canine');
+                      const preset = getPreset('canine', 'canine-standard');
+                      setConfig((current) => ({ ...current, presetId: preset.id, aliquotMlKg: preset.defaultMlKg }));
+                    }}
+                    onSelectFeline={() => {
+                      setSpecies('feline');
+                      const preset = getPreset('feline', 'feline-standard');
+                      setConfig((current) => ({ ...current, presetId: preset.id, aliquotMlKg: preset.defaultMlKg }));
+                    }}
+                    canineSubtitle="Boluses e presets caninos"
+                    felineSubtitle="Boluses e presets felinos"
+                  />
 
                   <div className="space-y-3">
                     <Label className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">

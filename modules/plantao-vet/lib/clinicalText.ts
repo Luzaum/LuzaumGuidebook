@@ -154,15 +154,14 @@ export function buildBulletinText(
     return [
       'BOLETIM TUTOR',
       '',
-      `Prezados, seguem as informações do plantão ${shiftLabel} sobre o quadro do(a) paciente ${patient.displayName}, acompanhado(a) no setor de Internação Clínica de Pequenos Animais do HV-UFMG.`,
+      `Prezados, seguem as informações do plantão ${shiftLabel} sobre o quadro do(a) paciente ${patient.displayName}, acompanhado(a) no serviço de internação clínica de pequenos animais.`,
       '',
       buildTutorTurnSummary(patient),
       '',
       'Seguimos à disposição e aguardamos o horário de visitas (15 às 16h) para maiores esclarecimentos.',
       '',
       'Atenciosamente,',
-      'Setor de Clínica Médica',
-      'HV-UFMG',
+      'Equipe de Clínica Médica',
     ].join('\n');
   }
 

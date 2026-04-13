@@ -469,7 +469,7 @@ export function EditorialConsensosPage() {
                                 />
                             </EditorialField>
 
-                            <EditorialField label="Descritivo curto (description)">
+                            <EditorialField label="Descritivo curto (campo descrição)">
                                 <textarea
                                     value={form.description}
                                     onChange={(e) => setForm((prev) => ({ ...prev, description: e.target.value }))}
@@ -489,7 +489,7 @@ export function EditorialConsensosPage() {
                                 )}
                             </div>
 
-                            <EditorialField label="Resumo do app (summaryText)" hint="Exibido na aba Resumo do consenso.">
+                            <EditorialField label="Resumo no aplicativo" hint="Exibido na aba Resumo do consenso.">
                                 <textarea
                                     value={form.summaryText}
                                     onChange={(e) => setForm((prev) => ({ ...prev, summaryText: e.target.value }))}

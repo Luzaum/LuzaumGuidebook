@@ -1,6 +1,12 @@
 import React from 'react';
 import { Plus, Trash2 } from 'lucide-react';
-import { MedicationPresentation } from '../../types/medication';
+import { MedicationPresentation, MedicationSupplyChannel } from '../../types/medication';
+
+const CHANNEL_OPTIONS: Array<{ value: MedicationSupplyChannel; label: string }> = [
+  { value: 'veterinary', label: 'Medicina veterinária' },
+  { value: 'human_pharmacy', label: 'Farmácia humana' },
+  { value: 'compounded', label: 'Manipulado' },
+];
 
 interface MedicationPresentationEditorProps {
   value: MedicationPresentation[];
@@ -17,6 +23,7 @@ function createEmptyPresentation(): MedicationPresentation {
     packInfo: '',
     route: '',
     scoringInfo: '',
+    channel: 'veterinary',
   };
 }
 
@@ -53,7 +60,7 @@ export function MedicationPresentationEditor({
             <div>
               <p className="text-sm font-semibold text-foreground">Apresentação {index + 1}</p>
               <p className="mt-1 text-xs text-muted-foreground">
-                {presentation.label || 'Apresentação ainda sem label'}
+                {presentation.label || 'Apresentação ainda sem denominação'}
               </p>
             </div>
             <button
@@ -67,10 +74,26 @@ export function MedicationPresentationEditor({
           </div>
 
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            <div className="xl:col-span-2">
+              <label className="mb-1 block text-xs font-medium text-muted-foreground">Canal / origem</label>
+              <select
+                value={presentation.channel || 'veterinary'}
+                onChange={(e) =>
+                  updateField(index, 'channel', e.target.value as MedicationSupplyChannel)
+                }
+                className="w-full rounded-xl border border-border bg-card px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+              >
+                {CHANNEL_OPTIONS.map((opt) => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
+                ))}
+              </select>
+            </div>
             <input
               value={presentation.label}
               onChange={(e) => updateField(index, 'label', e.target.value)}
-              placeholder="Label"
+              placeholder="Denominação (rótulo)"
               className="w-full rounded-xl border border-border bg-card px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 xl:col-span-2"
             />
             <input
@@ -101,7 +124,7 @@ export function MedicationPresentationEditor({
             <input
               value={presentation.packInfo || ''}
               onChange={(e) => updateField(index, 'packInfo', e.target.value)}
-              placeholder="Pack info"
+              placeholder="Embalagem / quantidade"
               className="w-full rounded-xl border border-border bg-card px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
             />
             <input

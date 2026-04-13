@@ -2,9 +2,10 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { ChevronRight, FileText, Pill, Share2, Stethoscope } from 'lucide-react';
 import { DoseCalculatorCard } from '../components/medication/DoseCalculatorCard';
+import { MedicationSectionFrame } from '../components/medication/MedicationSectionFrame';
 import { FavoriteButton } from '../components/shared/FavoriteButton';
 import { ReferencesList } from '../components/shared/ReferencesList';
-import { SectionAnchorNav } from '../components/shared/SectionAnchorNav';
+import { SectionAnchorNav, type SectionAnchorEntry } from '../components/shared/SectionAnchorNav';
 import { TagPills } from '../components/shared/TagPills';
 import { useRecents } from '../hooks/useRecents';
 import { getConsensoRepository } from '../services/consensoRepository';
@@ -12,9 +13,11 @@ import { getDiseaseRepository } from '../services/diseaseRepository';
 import { getMedicationRepository } from '../services/medicationRepository';
 import { ConsensusRecord } from '../types/consenso';
 import { DiseaseRecord } from '../types/disease';
-import { MedicationPresentation, MedicationRecord } from '../types/medication';
+import { MedicationPresentation, MedicationRecord, MedicationSupplyChannel } from '../types/medication';
 import { formatSpeciesList } from '../utils/navigation';
+import { cn } from '../../../lib/utils';
 import { buildDoseSummaryLabel, formatDoseSpeciesLabel } from '../utils/medicationRules';
+import { getMedicationSectionVisual } from '../utils/medicationSectionVisual';
 
 type ResumeLocationState = {
   sectionId?: string;
@@ -30,9 +33,14 @@ const UI_TEXT = {
   notFoundTitle: 'Medicamento não encontrado',
   notFoundBody: 'Não foi possível localizar o conteúdo solicitado.',
   doseCalculator: 'Calculadora de dose',
+  doseCalculatorLead: 'Peso, espécie, regime e apresentação em um cálculo só.',
   regimens: 'Doses por espécie e regime',
+  regimensLead:
+    'Leitura por espécie, em linhas clínicas expansíveis — comparar regimes com menos ruído visual.',
   pharmacology: 'Informações farmacológicas',
+  pharmacologyLead: 'Mecanismo em destaque; blocos seguintes apoiam a decisão clínica (indicações, cautelas, interações).',
   clinicalNotes: 'Observações clínicas',
+  clinicalNotesLead: 'Texto corrido para leitura prática, com boa largura de linha.',
   references: 'Referências',
   related: 'Relacionados',
   activeIngredient: 'Princípio ativo',
@@ -47,12 +55,19 @@ const UI_TEXT = {
   interactions: 'Interações que mudam conduta',
   routes: 'Vias',
   relatedContent: 'Conteúdo relacionado',
+  relatedLead: 'Materiais associados como apoio à consulta, sem competir com o conteúdo principal.',
   relatedDiseases: 'Doenças relacionadas',
   relatedConsensos: 'Consensos relacionados',
   organizationFallback: 'Organização não informada',
   noTradeName: 'Sem nome comercial de referência',
   presentationInfo: 'Cada apresentação continua disponível para cálculo e comparação, mas em um layout mais limpo.',
 } as const;
+
+function formatSupplyChannel(channel?: MedicationSupplyChannel): string {
+  if (channel === 'human_pharmacy') return 'Farmácia humana';
+  if (channel === 'compounded') return 'Manipulado';
+  return 'Medicina veterinária';
+}
 
 function MetaStat({ label, value }: { label: string; value: React.ReactNode }) {
   return (
@@ -63,40 +78,13 @@ function MetaStat({ label, value }: { label: string; value: React.ReactNode }) {
   );
 }
 
-function EditorialPanel({
-  title,
-  lead,
-  children,
-  tone = 'default',
-  className = '',
-}: {
-  title: string;
-  lead?: string;
-  children: React.ReactNode;
-  tone?: 'default' | 'emerald';
-  className?: string;
-}) {
-  const toneClasses = {
-    default: 'border-border bg-card/92',
-    emerald: 'border-emerald-500/15 bg-emerald-500/[0.045]',
-  } as const;
-
-  return (
-    <section className={`rounded-[30px] border p-7 shadow-sm md:p-8 ${toneClasses[tone]} ${className}`.trim()}>
-      <div className="mb-6">
-        <h2 className="text-[28px] font-bold tracking-tight text-foreground">{title}</h2>
-        {lead ? <p className="mt-2 max-w-[96ch] text-sm leading-7 text-muted-foreground">{lead}</p> : null}
-      </div>
-      {children}
-    </section>
-  );
-}
-
 function BulletList({
   items,
+  bulletDotClass,
   className = '',
 }: {
   items: string[];
+  bulletDotClass: string;
   className?: string;
 }) {
   if (!items.length) return null;
@@ -105,7 +93,7 @@ function BulletList({
     <ul className={`space-y-3.5 ${className}`.trim()}>
       {items.map((item) => (
         <li key={item} className="flex items-start gap-3 text-[15px] leading-7 text-foreground/86">
-          <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" />
+          <span className={`mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full ${bulletDotClass}`} />
           <span>{item}</span>
         </li>
       ))}
@@ -116,10 +104,12 @@ function BulletList({
 function PharmacologyBlock({
   title,
   items,
+  bulletDotClass,
   className = '',
 }: {
   title: string;
   items: string[];
+  bulletDotClass: string;
   className?: string;
 }) {
   if (!items.length) return null;
@@ -128,7 +118,7 @@ function PharmacologyBlock({
     <article className={`rounded-[24px] border border-border/80 bg-background/68 px-6 py-5 ${className}`.trim()}>
       <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground">{title}</h3>
       <div className="mt-4">
-        <BulletList items={items} />
+        <BulletList items={items} bulletDotClass={bulletDotClass} />
       </div>
     </article>
   );
@@ -159,11 +149,6 @@ function DoseRegimenSection({ medication }: { medication: MedicationRecord }) {
   if (!medication.doses.length) return null;
 
   return (
-    <EditorialPanel
-      title={UI_TEXT.regimens}
-      lead="A leitura foi reorganizada por espécie, em linhas clínicas expansíveis. O foco agora é comparar regimes com menos ruído visual e sem uma pilha de cards pesados."
-      className="overflow-hidden"
-    >
       <div className="space-y-6">
         <div className="flex flex-wrap gap-2.5">
           {grouped.map(([speciesLabel]) => (
@@ -253,7 +238,6 @@ function DoseRegimenSection({ medication }: { medication: MedicationRecord }) {
           </div>
         </div>
       </div>
-    </EditorialPanel>
   );
 }
 
@@ -262,6 +246,10 @@ function MobilePresentationCard({ presentation }: { presentation: MedicationPres
     <article className="rounded-[24px] border border-border/80 bg-background/75 p-5">
       <p className="text-base font-semibold text-foreground">{presentation.label}</p>
       <dl className="mt-4 grid gap-3 text-sm leading-6 text-muted-foreground">
+        <div className="flex items-start justify-between gap-4">
+          <dt className="font-medium text-foreground">Canal</dt>
+          <dd className="text-right">{formatSupplyChannel(presentation.channel)}</dd>
+        </div>
         <div className="flex items-start justify-between gap-4">
           <dt className="font-medium text-foreground">Forma</dt>
           <dd className="text-right">{presentation.form}</dd>
@@ -301,10 +289,12 @@ function PresentationsSection({ medication }: { medication: MedicationRecord }) 
   if (!medication.presentations.length) return null;
 
   return (
-    <EditorialPanel title={UI_TEXT.presentations} lead={UI_TEXT.presentationInfo} className="overflow-hidden">
+    <>
+      <p className="mb-6 max-w-[96ch] text-sm leading-7 text-muted-foreground">{UI_TEXT.presentationInfo}</p>
       <div className="hidden overflow-hidden rounded-[24px] border border-border/80 xl:block">
-        <div className="grid grid-cols-[2fr_1.05fr_0.8fr_1.2fr_1.2fr_1.2fr] gap-4 border-b border-border/80 bg-muted/18 px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+        <div className="grid grid-cols-[1.8fr_1.25fr_1fr_0.75fr_1.1fr_1fr_1fr] gap-4 border-b border-border/80 bg-muted/18 px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
           <span>Nome</span>
+          <span>Canal</span>
           <span>Forma</span>
           <span>Via</span>
           <span>Concentração</span>
@@ -316,9 +306,10 @@ function PresentationsSection({ medication }: { medication: MedicationRecord }) 
           {medication.presentations.map((presentation) => (
             <div
               key={presentation.id}
-              className="grid grid-cols-[2fr_1.05fr_0.8fr_1.2fr_1.2fr_1.2fr] gap-4 px-6 py-5 text-sm leading-6 text-foreground/85"
+              className="grid grid-cols-[1.8fr_1.25fr_1fr_0.75fr_1.1fr_1fr_1fr] gap-4 px-6 py-5 text-sm leading-6 text-foreground/85"
             >
               <div className="font-semibold text-foreground">{presentation.label}</div>
+              <div className="text-xs text-muted-foreground">{formatSupplyChannel(presentation.channel)}</div>
               <div>{presentation.form}</div>
               <div>{presentation.route || '—'}</div>
               <div>
@@ -338,7 +329,7 @@ function PresentationsSection({ medication }: { medication: MedicationRecord }) 
           <MobilePresentationCard key={presentation.id} presentation={presentation} />
         ))}
       </div>
-    </EditorialPanel>
+    </>
   );
 }
 
@@ -359,15 +350,42 @@ export function MedicationDetailPage() {
 
   const resumeState = (location.state as ResumeLocationState | null) || null;
 
-  const sections = [
-    { id: 'dose-calculator', label: UI_TEXT.doseCalculator },
-    { id: 'dose-regimens', label: UI_TEXT.regimens },
-    { id: 'presentations', label: UI_TEXT.presentations },
-    { id: 'pharmacology', label: UI_TEXT.pharmacology },
-    { id: 'clinical-notes', label: UI_TEXT.clinicalNotes },
-    medication?.references?.length ? { id: 'references', label: UI_TEXT.references } : null,
-    { id: 'related', label: UI_TEXT.related },
-  ].filter(Boolean) as Array<{ id: string; label: string }>;
+  const sections: SectionAnchorEntry[] = useMemo(() => {
+    if (!medication) return [];
+    const base: SectionAnchorEntry[] = [];
+    if (medication.doses.length > 0) {
+      base.push(
+        { id: 'dose-calculator', label: UI_TEXT.doseCalculator, activeClassName: getMedicationSectionVisual('dose-calculator').navItemActiveClass },
+        { id: 'dose-regimens', label: UI_TEXT.regimens, activeClassName: getMedicationSectionVisual('dose-regimens').navItemActiveClass }
+      );
+    }
+    if (medication.presentations.length > 0) {
+      base.push({
+        id: 'presentations',
+        label: UI_TEXT.presentations,
+        activeClassName: getMedicationSectionVisual('presentations').navItemActiveClass,
+      });
+    }
+    base.push(
+      { id: 'pharmacology', label: UI_TEXT.pharmacology, activeClassName: getMedicationSectionVisual('pharmacology').navItemActiveClass },
+      { id: 'clinical-notes', label: UI_TEXT.clinicalNotes, activeClassName: getMedicationSectionVisual('clinical-notes').navItemActiveClass }
+    );
+    if (medication.references?.length) {
+      base.push({
+        id: 'references',
+        label: UI_TEXT.references,
+        activeClassName: getMedicationSectionVisual('references').navItemActiveClass,
+      });
+    }
+    if (relatedDiseases.length > 0 || relatedConsensos.length > 0) {
+      base.push({
+        id: 'related',
+        label: UI_TEXT.related,
+        activeClassName: getMedicationSectionVisual('related').navItemActiveClass,
+      });
+    }
+    return base;
+  }, [medication, relatedDiseases.length, relatedConsensos.length]);
 
   useEffect(() => {
     let isMounted = true;
@@ -477,6 +495,8 @@ export function MedicationDetailPage() {
     );
   }
 
+  const pharmacologyVisual = getMedicationSectionVisual('pharmacology');
+
   if (!medication) {
     return (
       <div className="mx-auto flex h-full w-full max-w-[860px] items-center justify-center p-6">
@@ -559,27 +579,29 @@ export function MedicationDetailPage() {
         </header>
 
         <div className="space-y-8 pb-10 pt-8 md:space-y-10">
-          <section id="dose-calculator" className="scroll-mt-24">
-            <DoseCalculatorCard doses={medication.doses} presentations={medication.presentations} />
-          </section>
+          {medication.doses.length > 0 ? (
+            <MedicationSectionFrame sectionId="dose-calculator" title={UI_TEXT.doseCalculator} lead={UI_TEXT.doseCalculatorLead}>
+              <DoseCalculatorCard doses={medication.doses} presentations={medication.presentations} variant="embedded" />
+            </MedicationSectionFrame>
+          ) : null}
 
-          <section id="dose-regimens" className="scroll-mt-24">
-            <DoseRegimenSection medication={medication} />
-          </section>
+          {medication.doses.length > 0 ? (
+            <MedicationSectionFrame sectionId="dose-regimens" title={UI_TEXT.regimens} lead={UI_TEXT.regimensLead}>
+              <DoseRegimenSection medication={medication} />
+            </MedicationSectionFrame>
+          ) : null}
 
-          <section id="presentations" className="scroll-mt-24">
-            <PresentationsSection medication={medication} />
-          </section>
+          {medication.presentations.length > 0 ? (
+            <MedicationSectionFrame sectionId="presentations" title={UI_TEXT.presentations}>
+              <PresentationsSection medication={medication} />
+            </MedicationSectionFrame>
+          ) : null}
 
-          <EditorialPanel
-            title={UI_TEXT.pharmacology}
-            lead="A leitura farmacológica foi reorganizada pelo peso clínico. O mecanismo abre a explicação e os blocos seguintes ficam como apoio direto à tomada de decisão."
-            className="scroll-mt-24"
-          >
-            <div id="pharmacology" className="space-y-6">
+          <MedicationSectionFrame sectionId="pharmacology" title={UI_TEXT.pharmacology} lead={UI_TEXT.pharmacologyLead}>
+            <div className="space-y-6">
               <div className="rounded-[28px] border border-border/80 bg-muted/[0.12] px-7 py-7">
                 <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground">
-                  <Pill className="h-4 w-4 text-primary" />
+                  <Pill className={cn('h-4 w-4', pharmacologyVisual.iconClass)} />
                   {UI_TEXT.mechanismOfAction}
                 </h3>
                 <div className="mt-5 max-w-none">
@@ -588,46 +610,66 @@ export function MedicationDetailPage() {
               </div>
 
               <div className="grid gap-5 xl:grid-cols-12">
-                <PharmacologyBlock title={UI_TEXT.indications} items={medication.indications} className="xl:col-span-7" />
-                <PharmacologyBlock title={UI_TEXT.contraindications} items={medication.contraindications} className="xl:col-span-5" />
-                <PharmacologyBlock title={UI_TEXT.cautions} items={medication.cautions} className="xl:col-span-6" />
-                <PharmacologyBlock title={UI_TEXT.adverseEffects} items={medication.adverseEffects} className="xl:col-span-6" />
+                <PharmacologyBlock
+                  title={UI_TEXT.indications}
+                  items={medication.indications}
+                  bulletDotClass={pharmacologyVisual.bulletDotClass}
+                  className="xl:col-span-7"
+                />
+                <PharmacologyBlock
+                  title={UI_TEXT.contraindications}
+                  items={medication.contraindications}
+                  bulletDotClass={pharmacologyVisual.bulletDotClass}
+                  className="xl:col-span-5"
+                />
+                <PharmacologyBlock
+                  title={UI_TEXT.cautions}
+                  items={medication.cautions}
+                  bulletDotClass={pharmacologyVisual.bulletDotClass}
+                  className="xl:col-span-6"
+                />
+                <PharmacologyBlock
+                  title={UI_TEXT.adverseEffects}
+                  items={medication.adverseEffects}
+                  bulletDotClass={pharmacologyVisual.bulletDotClass}
+                  className="xl:col-span-6"
+                />
                 {medication.interactions && medication.interactions.length > 0 ? (
-                  <PharmacologyBlock title={UI_TEXT.interactions} items={medication.interactions} className="xl:col-span-8" />
+                  <PharmacologyBlock
+                    title={UI_TEXT.interactions}
+                    items={medication.interactions}
+                    bulletDotClass={pharmacologyVisual.bulletDotClass}
+                    className="xl:col-span-8"
+                  />
                 ) : null}
                 {medication.routes && medication.routes.length > 0 ? (
-                  <PharmacologyBlock title={UI_TEXT.routes} items={medication.routes} className="xl:col-span-4" />
+                  <PharmacologyBlock
+                    title={UI_TEXT.routes}
+                    items={medication.routes}
+                    bulletDotClass={pharmacologyVisual.bulletDotClass}
+                    className="xl:col-span-4"
+                  />
                 ) : null}
               </div>
             </div>
-          </EditorialPanel>
+          </MedicationSectionFrame>
 
-          <EditorialPanel
-            title={UI_TEXT.clinicalNotes}
-            lead="Texto corrido para leitura prática e confortável, usando melhor a largura disponível do bloco."
-            tone="emerald"
-            className="scroll-mt-24"
-          >
+          <MedicationSectionFrame sectionId="clinical-notes" title={UI_TEXT.clinicalNotes} lead={UI_TEXT.clinicalNotesLead}>
             <div
-              id="clinical-notes"
               className="prose prose-slate max-w-[108ch] text-[15px] leading-8 dark:prose-invert prose-p:my-0 prose-p:leading-8 prose-p:mb-5 prose-strong:text-foreground"
               dangerouslySetInnerHTML={{ __html: medication.clinicalNotesRichText }}
             />
-          </EditorialPanel>
+          </MedicationSectionFrame>
 
           {medication.references && medication.references.length > 0 ? (
-            <div id="references" className="scroll-mt-24">
-              <ReferencesList references={medication.references} title={UI_TEXT.references} />
-            </div>
+            <MedicationSectionFrame sectionId="references" title={UI_TEXT.references}>
+              <ReferencesList references={medication.references} variant="embedded" />
+            </MedicationSectionFrame>
           ) : null}
 
           {(relatedDiseases.length > 0 || relatedConsensos.length > 0) && (
-            <EditorialPanel
-              title={UI_TEXT.relatedContent}
-              lead="Materiais associados aparecem como apoio à consulta, sem competir com o conteúdo principal."
-              className="scroll-mt-24"
-            >
-              <div id="related" className="grid gap-8 xl:grid-cols-2">
+            <MedicationSectionFrame sectionId="related" title={UI_TEXT.relatedContent} lead={UI_TEXT.relatedLead}>
+              <div className="grid gap-8 xl:grid-cols-2">
                 {relatedDiseases.length > 0 && (
                   <div>
                     <h3 className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground">
@@ -673,7 +715,7 @@ export function MedicationDetailPage() {
                   </div>
                 )}
               </div>
-            </EditorialPanel>
+            </MedicationSectionFrame>
           )}
         </div>
       </div>

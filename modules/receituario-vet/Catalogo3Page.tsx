@@ -917,7 +917,9 @@ export default function Catalogo3Page() {
 
             // Salvar doses recomendadas
             if (draft.recommended_doses && draft.recommended_doses.length > 0) {
-                const dosesPayload = draft.recommended_doses.map(d => ({
+                const dosesPayload = draft.recommended_doses.map(d => {
+                    const fm = d.frequency_mode || 'times_per_day'
+                    return {
                     id: d.id,
                     species: d.species,
                     route: d.route,
@@ -926,13 +928,18 @@ export default function Catalogo3Page() {
                     dose_unit: canonicalDoseUnit(d.dose_unit, d.per_weight_unit),
                     per_weight_unit: null,
                     indication: d.indication || null,
-                    frequency: d.frequency,
+                    frequency:
+                        (d.frequency && String(d.frequency).trim()) ||
+                        buildRecommendedFrequencyText(d) ||
+                        '',
                     frequency_min: normalizeNumber(d.frequency_min, true),
                     frequency_max: normalizeNumber(d.frequency_max, true),
-                    frequency_mode: d.frequency_mode || null,
+                    frequency_mode: fm || null,
                     frequency_text: d.frequency_text || null,
                     recurrence_value: normalizeNumber(d.recurrence_value, true),
                     recurrence_unit: d.recurrence_unit || null,
+                    is_single_dose: fm === 'repeat_interval' || fm === 'single_dose',
+                    repeat_periodically: fm === 'repeat_interval',
                     duration: d.duration || null,
             administration_basis: normalizeAdministrationBasis(d.administration_basis || 'weight_based'),
                     administration_amount: normalizeNumber(d.administration_amount, true),
@@ -942,7 +949,8 @@ export default function Catalogo3Page() {
                     calculator_default_frequency: normalizeNumber(d.calculator_default_frequency, true),
                     notes: d.notes,
                     metadata: d.metadata || {}
-                }))
+                }
+                })
 
                 console.log('[Catalogo3] Saving doses...', dosesPayload)
                 await saveMedicationRecommendedDoses(

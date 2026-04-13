@@ -25,6 +25,7 @@ export function AppLayout() {
     isActive('/hub') ||
     isImmersiveModuleRoute ||
     location.pathname.startsWith('/fluidoterapia') ||
+    location.pathname.startsWith('/antibioticoterapia') ||
     location.pathname.startsWith('/hemogasovet') ||
     location.pathname.startsWith('/plantao-vet') ||
     location.pathname.startsWith('/calculadora-energetica') ||

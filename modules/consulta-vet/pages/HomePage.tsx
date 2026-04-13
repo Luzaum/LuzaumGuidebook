@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Bookmark, ChevronRight, Clock, FileText, Grid, Pill, Search, Stethoscope } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Bookmark, ChevronRight, Clock, FileText, Grid, Pill, Search, Stethoscope, Zap } from 'lucide-react';
+import { ConsultaVetShortcutGrid } from '../components/home/ConsultaVetShortcutGrid';
 import { EntityCard } from '../components/shared/EntityCard';
 import { getConsensoRepository } from '../services/consensoRepository';
 import { getDiseaseRepository } from '../services/diseaseRepository';
@@ -18,14 +20,15 @@ type SearchResults = {
 };
 
 const UI_TEXT = {
-  title: 'Vetius ALFA',
+  title: 'ConsultaVET',
   heroBody:
-    'Base cl\u00ednica para consulta r\u00e1pida de doen\u00e7as, medicamentos e consensos com navega\u00e7\u00e3o conectada, favoritos e retomada de leitura.',
+    'Base cl\u00ednica para consulta r\u00e1pida de doen\u00e7as, medicamentos, cartilhas de manejo emergencial e consensos, com navega\u00e7\u00e3o conectada, favoritos e retomada de leitura.',
   searchPlaceholder: 'Buscar doen\u00e7a, medicamento ou consenso...',
   shortcuts: 'Atalhos principais',
   continueTitle: 'Continuar de onde parou',
   diseaseLabel: 'Doen\u00e7as',
   medicationLabel: 'Medicamentos',
+  emergencyLabel: 'Manejo emergencial',
   consensoLabel: 'Consensos',
   favoritesLabel: 'Favoritos',
   recentsLabel: 'Recentes',
@@ -160,6 +163,12 @@ export function HomePage() {
     { to: '/consulta-vet', label: UI_TEXT.homeLabel, icon: Grid, body: 'Vis\u00e3o geral do m\u00f3dulo' },
     { to: '/consulta-vet/doencas', label: UI_TEXT.diseaseLabel, icon: Stethoscope, body: 'Bases editoriais e navega\u00e7\u00e3o cl\u00ednica' },
     { to: '/consulta-vet/medicamentos', label: UI_TEXT.medicationLabel, icon: Pill, body: 'Posologias, apresenta\u00e7\u00f5es e cautelas' },
+    {
+      to: '/consulta-vet/manejo-emergencial',
+      label: UI_TEXT.emergencyLabel,
+      icon: Zap,
+      body: 'Cartilhas r\u00e1pidas com fluxo em p\u00e1ginas',
+    },
     { to: '/consulta-vet/consensos', label: UI_TEXT.consensoLabel, icon: FileText, body: 'PDFs reais e detalhes compartilhados' },
     { to: '/consulta-vet/favoritos', label: UI_TEXT.favoritesLabel, icon: Bookmark, body: 'Biblioteca pessoal r\u00e1pida' },
     { to: '/consulta-vet/recentes', label: UI_TEXT.recentsLabel, icon: Clock, body: 'Retomar do \u00faltimo ponto' },
@@ -167,65 +176,90 @@ export function HomePage() {
 
   return (
     <div className="mx-auto w-full max-w-[1560px] space-y-10 p-4 md:p-8">
-      <section className="overflow-hidden rounded-[30px] border border-border bg-card shadow-sm">
-        <div className="grid gap-6 p-6 md:p-8 xl:grid-cols-[1.4fr_0.9fr] xl:items-end">
+      <motion.section
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: 'spring', stiffness: 260, damping: 28 }}
+        className="relative overflow-hidden rounded-[30px] border border-border bg-card shadow-sm"
+      >
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-24 top-0 h-64 w-64 rounded-full bg-primary/[0.14] blur-3xl dark:bg-primary/[0.18]"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -left-20 bottom-0 h-56 w-56 rounded-full bg-primary/[0.08] blur-3xl"
+        />
+        <div className="relative grid gap-6 p-6 md:p-8 xl:grid-cols-[1.4fr_0.9fr] xl:items-end">
           <div className="space-y-5">
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+            <motion.div
+              initial={{ scale: 0.94, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.05, type: 'spring', stiffness: 400, damping: 22 }}
+              className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-primary shadow-sm shadow-primary/5"
+            >
               {UI_TEXT.title}
-            </div>
+            </motion.div>
             <div className="space-y-3">
               <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">{UI_TEXT.title}</h1>
               <p className="max-w-4xl text-base leading-relaxed text-muted-foreground md:text-lg">{UI_TEXT.heroBody}</p>
             </div>
-            <div className="relative max-w-3xl">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <div className="relative max-w-3xl transition-transform duration-200 ease-out focus-within:scale-[1.01]">
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <input
                 type="text"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder={UI_TEXT.searchPlaceholder}
-                className="w-full rounded-2xl border border-border bg-background py-3 pl-10 pr-4 text-sm text-foreground outline-none transition-all placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20"
+                className="w-full rounded-2xl border border-border bg-background py-3 pl-10 pr-4 text-sm text-foreground outline-none transition-all placeholder:text-muted-foreground hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/25 active:scale-[0.995]"
               />
             </div>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
-            <div className="rounded-2xl border border-border bg-muted/30 p-4">
+            <motion.div
+              whileHover={{ y: -2, transition: { type: 'spring', stiffness: 400, damping: 22 } }}
+              whileTap={{ scale: 0.99 }}
+              className="rounded-2xl border border-border bg-muted/30 p-4 transition-shadow duration-300 hover:border-primary/25 hover:shadow-md hover:shadow-primary/5"
+            >
               <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{UI_TEXT.shortcuts}</p>
               <p className="text-sm leading-relaxed text-foreground/85">{UI_TEXT.shortcutsBody}</p>
-            </div>
-            <div className="rounded-2xl border border-border bg-muted/30 p-4">
+            </motion.div>
+            <motion.div
+              whileHover={{ y: -2, transition: { type: 'spring', stiffness: 400, damping: 22 } }}
+              whileTap={{ scale: 0.99 }}
+              className="rounded-2xl border border-border bg-muted/30 p-4 transition-shadow duration-300 hover:border-primary/25 hover:shadow-md hover:shadow-primary/5"
+            >
               <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{UI_TEXT.searchResults}</p>
               <p className="text-sm leading-relaxed text-foreground/85">{UI_TEXT.searchSectionBody}</p>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section className="space-y-4">
-        <div>
-          <h2 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">{UI_TEXT.shortcuts}</h2>
-        </div>
-        <div className="grid gap-3 md:grid-cols-3 xl:grid-cols-6">
-          {shortcuts.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              className="group rounded-2xl border border-border bg-card p-4 transition-all hover:border-primary/40 hover:shadow-sm"
-            >
-              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                <item.icon className="h-5 w-5" />
-              </div>
-              <p className="text-sm font-semibold text-foreground">{item.label}</p>
-              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{item.body}</p>
-            </Link>
-          ))}
-        </div>
-      </section>
+      <ConsultaVetShortcutGrid title={UI_TEXT.shortcuts} shortcuts={shortcuts} />
 
       {isLoading && (
-        <section className="rounded-2xl border border-border bg-card py-16 text-center">
-          <p className="text-sm text-muted-foreground">Carregando conteúdo do módulo...</p>
+        <section className="rounded-[28px] border border-border bg-card p-6 md:p-8">
+          <div className="mb-6 flex items-center gap-3">
+            <div className="h-10 w-10 animate-pulse rounded-xl bg-primary/15" />
+            <div className="flex-1 space-y-2">
+              <div className="h-3 w-40 animate-pulse rounded-full bg-muted" />
+              <div className="h-3 w-64 max-w-full animate-pulse rounded-full bg-muted/70" />
+            </div>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {[0, 1, 2].map((key) => (
+              <div key={key} className="space-y-3 rounded-2xl border border-border/80 bg-muted/20 p-4">
+                <div className="h-4 w-2/3 animate-pulse rounded-md bg-muted" />
+                <div className="h-3 w-full animate-pulse rounded-md bg-muted/70" />
+                <div className="h-3 w-[92%] animate-pulse rounded-md bg-muted/50" />
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-center text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            Carregando conteúdo do módulo…
+          </p>
         </section>
       )}
 

@@ -15,6 +15,7 @@ function createEmptyReference(): EditorialReference {
     sourceType: '',
     url: '',
     notes: '',
+    evidenceLevel: '',
   };
 }
 
@@ -76,6 +77,15 @@ export function ReferencesEditor({ value, onChange }: ReferencesEditorProps) {
                 onChange={(event) => handleFieldChange(index, 'url', event.target.value)}
                 className="w-full rounded-xl border border-border bg-card px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                 placeholder="https://..."
+              />
+            </EditorialField>
+
+            <EditorialField label="Nível de evidência" hint="Ex.: A, B, meta-análise, consenso.">
+              <input
+                value={reference.evidenceLevel || ''}
+                onChange={(event) => handleFieldChange(index, 'evidenceLevel', event.target.value)}
+                className="w-full rounded-xl border border-border bg-card px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                placeholder="Ex.: nível A"
               />
             </EditorialField>
 

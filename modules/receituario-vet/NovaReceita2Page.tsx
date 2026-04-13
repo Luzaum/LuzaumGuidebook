@@ -1440,7 +1440,57 @@ export default function NovaReceita2Page() {
                         ...legacyDraft.recommendations.exams,
                         ...legacyDraft.recommendations.customExams,
                     ],
-                    items: legacyDraft.items.map((item) => ({
+                    items: legacyDraft.items.map((item) => {
+                        const ft = item.frequencyType
+                        const repNum = item.repeatEveryValue != null && String(item.repeatEveryValue).trim() !== ''
+                            ? Number(String(item.repeatEveryValue).replace(',', '.'))
+                            : NaN
+                        const repRaw = String(item.repeatEveryUnit || '').trim().toLowerCase()
+                        const repUnit: PrescriptionItem['repeatEveryUnit'] =
+                            repRaw.startsWith('semana') ? 'semanas'
+                                : repRaw.startsWith('mes') || repRaw.startsWith('mês') ? 'meses'
+                                    : repRaw === 'dia' || repRaw === 'dias' ? 'dias'
+                                        : (item.repeatEveryUnit as PrescriptionItem['repeatEveryUnit']) || 'semanas'
+
+                        let frequency = ''
+                        let frequencyMode: PrescriptionItem['frequencyMode'] | undefined
+                        let timesPerDay: number | undefined
+                        let intervalHours: number | undefined
+                        let repeatEveryValue: number | undefined
+                        let repeatEveryUnit: PrescriptionItem['repeatEveryUnit'] | undefined
+
+                        if (ft === 'repeatInterval' && Number.isFinite(repNum) && repNum > 0) {
+                            frequencyMode = 'repeat_interval'
+                            repeatEveryValue = repNum
+                            repeatEveryUnit = repUnit
+                            frequency = `repetir a cada ${repNum} ${repUnit}`
+                        } else if (ft === 'singleDose') {
+                            frequencyMode = 'single_dose'
+                            frequency = 'em dose única'
+                        } else if (ft === 'everyHours' && item.everyHours) {
+                            const h = Number(String(item.everyHours).replace(',', '.'))
+                            if (Number.isFinite(h) && h > 0) {
+                                frequencyMode = 'interval_hours'
+                                intervalHours = h
+                                frequency = `a cada ${h} horas`
+                            }
+                        } else if (item.timesPerDay) {
+                            frequencyMode = 'times_per_day'
+                            timesPerDay = Number(item.timesPerDay)
+                            frequency = `${item.timesPerDay}x ao dia`
+                        }
+
+                        const durationMode: PrescriptionItem['durationMode'] = item.durationMode
+                            ? item.durationMode
+                            : item.untilFinished
+                                ? 'until_finished'
+                                : item.continuousUse
+                                    ? 'continuous_use'
+                                    : item.durationDays
+                                        ? 'fixed_days'
+                                        : 'until_recheck'
+
+                        return {
                         id: item.id,
                         type: 'medication',
                         is_controlled: item.controlled,
@@ -1456,24 +1506,19 @@ export default function NovaReceita2Page() {
                         per_unit: item.presentationPerUnit,
                         presentation_metadata: item.presentationMetadata || null,
                         dose: [item.doseValue, item.doseUnit].filter(Boolean).join(' ').trim(),
-                        frequency: item.frequencyType === 'everyHours'
-                            ? `a cada ${item.everyHours} horas`
-                            : (item.timesPerDay ? `${item.timesPerDay}x ao dia` : ''),
-                        frequencyMode: item.timesPerDay ? 'times_per_day' : undefined,
-                        timesPerDay: item.timesPerDay ? Number(item.timesPerDay) : undefined,
+                        frequency,
+                        frequencyMode,
+                        timesPerDay,
+                        intervalHours,
+                        repeatEveryValue,
+                        repeatEveryUnit,
                         route: item.routeGroup,
                         duration: item.untilFinished
                             ? 'até terminar o medicamento'
                             : item.continuousUse
                                 ? 'uso contínuo'
                                 : (item.durationDays ? `${item.durationDays} dias` : ''),
-                        durationMode: item.untilFinished
-                            ? 'until_finished'
-                            : item.continuousUse
-                                ? 'continuous_use'
-                                : item.durationDays
-                                    ? 'fixed_days'
-                                    : 'until_recheck',
+                        durationMode,
                         inheritStartFromPrescription: !(item.startDate || item.startHour || item.start_date),
                         startDate: item.startDate || parseLegacyStart(item.start_date).startDate,
                         startHour: item.startHour || parseLegacyStart(item.start_date).startHour,
@@ -1482,7 +1527,10 @@ export default function NovaReceita2Page() {
                         cautions: item.cautions,
                         cautionsText: Array.isArray(item.cautions) ? item.cautions.join('\n') : '',
                         pharmaceutical_form: item.pharmaceuticalForm || item.presentation,
-                    })),
+                        durationValue: item.durationDays ? Number(item.durationDays) : undefined,
+                        durationUnit: item.durationDays ? 'dias' : undefined,
+                    }
+                    }),
                     createdAt: legacyDraft.updatedAt,
                     updatedAt: legacyDraft.updatedAt,
                 })
@@ -2396,6 +2444,8 @@ export default function NovaReceita2Page() {
                                                                 frequencyMode: value ? 'times_per_day' : undefined,
                                                                 timesPerDay: value ? Number(value) : undefined,
                                                                 intervalHours: undefined,
+                                                                repeatEveryValue: undefined,
+                                                                repeatEveryUnit: undefined,
                                                                 frequency: formatFrequencyValue(value),
                                                             }))}
                                                             onIntervalHoursChange={(value) => updateItem(item.id, (current) => ({
@@ -2403,6 +2453,8 @@ export default function NovaReceita2Page() {
                                                                 frequencyMode: 'interval_hours',
                                                                 intervalHours: value ? Number(value) : undefined,
                                                                 timesPerDay: undefined,
+                                                                repeatEveryValue: undefined,
+                                                                repeatEveryUnit: undefined,
                                                                 frequency: formatIntervalHoursValue(value),
                                                             }))}
                                                             durationMode={item.durationMode || 'fixed_days'}
@@ -3110,6 +3162,7 @@ export default function NovaReceita2Page() {
                 }}
                 clinicId={clinicId || ''}
                 patient={state.patient}
+                prescriptionSpeciesHint={state.patient?.species || 'cão'}
                 defaultStartDate={state.defaultStartDate}
                 defaultStartHour={state.defaultStartHour}
                 manualMode={false}
@@ -3125,6 +3178,7 @@ export default function NovaReceita2Page() {
                 }}
                 clinicId={clinicId || ''}
                 patient={state.patient}
+                prescriptionSpeciesHint={state.patient?.species || 'cão'}
                 defaultStartDate={state.defaultStartDate}
                 defaultStartHour={state.defaultStartHour}
                 manualMode={true}

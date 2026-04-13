@@ -28,7 +28,7 @@ const getProtocolIcon = (id: string) => {
 
 export function ProtocolsPage() {
   return (
-    <ScrollArea className="h-full w-full bg-slate-50 p-6 dark:bg-slate-950 lg:p-10">
+    <ScrollArea className="h-full min-h-0 w-full flex-1 bg-slate-50 p-6 dark:bg-slate-950 lg:p-10">
       <div className="mx-auto w-full space-y-10 pb-20">
         <header>
           <h2 className="flex items-center gap-3 text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-100">

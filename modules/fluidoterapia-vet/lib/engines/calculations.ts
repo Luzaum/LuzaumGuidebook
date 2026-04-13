@@ -33,9 +33,12 @@ export function calculateMaintenance(patient: PatientProfile, config: Maintenanc
     case 'linear':
       mlPerDay = (30 * weight) + 70;
       break;
-    case 'anesthesia':
-      mlPerDay = weight * clamp(config.anesthesiaMlPerKgHour, 2, 10) * 24;
+    case 'anesthesia': {
+      // Felinos: teto mais baixo (até 5 mL/kg/h); cães: até 10 mL/kg/h (alinha com UI)
+      const cap = patient.species === 'feline' ? 5 : 10;
+      mlPerDay = weight * clamp(config.anesthesiaMlPerKgHour, 2, cap) * 24;
       break;
+    }
     default:
       mlPerDay = 0;
   }

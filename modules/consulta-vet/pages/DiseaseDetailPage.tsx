@@ -1,7 +1,9 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { AlertTriangle, ChevronRight, FileText, Pill, Share2 } from 'lucide-react';
+import { DiseaseSectionFrame } from '../components/disease/DiseaseSectionFrame';
 import { DiseaseSectionRenderer } from '../components/disease/DiseaseSectionRenderer';
+import { QuickDecisionStrip } from '../components/disease/QuickDecisionStrip';
 import { FavoriteButton } from '../components/shared/FavoriteButton';
 import { ReferencesList } from '../components/shared/ReferencesList';
 import { SectionAnchorNav } from '../components/shared/SectionAnchorNav';
@@ -19,8 +21,6 @@ type ResumeLocationState = {
   sectionId?: string;
 };
 
-type DecisionPanelTone = 'default' | 'primary' | 'warning';
-
 const UI_TEXT = {
   home: 'Início',
   diseases: 'Doenças',
@@ -31,50 +31,24 @@ const UI_TEXT = {
   notFoundBody: 'Não foi possível localizar o conteúdo solicitado.',
   copyLink: 'Copiar link',
   quickSummary: 'Resumo rápido',
-  quickBlocksTitle: 'Blocos de decisão rápida',
-  quickBlocksBody: 'Visão inicial para triagem, suspeita clínica e primeiros passos.',
-  thirtySecondView: 'Visão em 30 segundos',
-  doNotForget: 'Não esquecer',
-  whenToSuspect: 'Quando suspeitar',
-  initialConduct: 'Conduta inicial',
-  dogVsCatDifferences: 'Diferenças cão x gato',
-  highYieldTests: 'Exames que mais ajudam',
-  commonMistakes: 'Erros comuns',
-  redFlags: 'Red flags',
-  clinicalPearls: 'Pérolas clínicas',
-  understandingDisease: 'Como entender a doença',
-  understandingDiseaseLead: 'A fisiopatologia, os fatores de risco e o contexto clínico ficam reunidos em uma leitura mais contínua e menos fragmentada.',
-  diagnosticPlan: 'Plano diagnóstico',
-  diagnosticPlanLead: 'A investigação foi agrupada em um fluxo prático: quando suspeitar, o que examinar, como confirmar e como adaptar a conduta quando os recursos são limitados.',
-  treatmentPlan: 'Tratamento e monitoramento',
-  treatmentPlanLead: 'O bloco final concentra tratamento, monitoramento, prognóstico, complicações e prevenção para reduzir repetição entre seções.',
-  introduction: 'Introdução',
-  etiology: 'Etiologia',
-  transmission: 'Transmissão',
-  pathophysiology: 'Fisiopatologia',
-  epidemiology: 'Epidemiologia',
-  clinicalPresentation: 'Apresentação clínica',
-  physicalExam: 'Exame físico',
-  differentialDiagnoses: 'Diagnósticos diferenciais',
-  diagnostics: 'Diagnóstico',
-  diagnosticApproach: 'Abordagem diagnóstica',
-  treatment: 'Tratamento',
-  prognosis: 'Prognóstico',
-  complications: 'Complicações',
-  prevention: 'Prevenção',
+  clinicalDeepDive: 'Conteúdo clínico',
+  clinicalDeepDiveLead:
+    'Estrutura fixa em nove blocos: da etiologia às referências, com diagnóstico ordenado por importância e marcação de padrão ouro quando aplicável.',
+  etiology: '1. Etiologia',
+  epidemiology: '2. Epidemiologia',
+  pathogenesisTransmission: '3. Patogênese e transmissão',
+  pathophysiology: '4. Fisiopatologia',
+  clinicalSigns: '5. Sinais clínicos e correlação fisiopatológica',
+  diagnosis: '6. Como diagnosticar',
+  treatment: '7. Como tratar',
+  prevention: '8. Prevenção',
+  references: '9. Referências',
   related: 'Relacionados',
   relatedContent: 'Conteúdo relacionado',
   consensus: 'Consensos',
   medications: 'Medicamentos',
-  references: 'Referências',
   organizationFallback: 'Organização não informada',
 } as const;
-
-const decisionToneClasses: Record<DecisionPanelTone, string> = {
-  default: 'border-border bg-card/92',
-  primary: 'border-primary/15 bg-primary/[0.05]',
-  warning: 'border-amber-500/18 bg-amber-500/[0.05]',
-};
 
 function EditorialPanel({
   id,
@@ -97,59 +71,6 @@ function EditorialPanel({
       </div>
       {children}
     </section>
-  );
-}
-
-function HighlightList({ items }: { items?: string[] }) {
-  if (!items || !items.length) return null;
-
-  return (
-    <ul className="space-y-3.5">
-      {items.map((item) => (
-        <li key={item} className="flex items-start gap-3 text-[15px] leading-7 text-foreground/86">
-          <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-current opacity-70" />
-          <span>{item}</span>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function DecisionListBlock({
-  id,
-  title,
-  items,
-}: {
-  id: string;
-  title: string;
-  items?: string[];
-}) {
-  if (!items || !items.length) return null;
-
-  return (
-    <div id={id} className="scroll-mt-24 border-t border-border/70 pt-5 first:border-t-0 first:pt-0">
-      <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground">{title}</h4>
-      <div className="mt-4 text-foreground/86">
-        <HighlightList items={items} />
-      </div>
-    </div>
-  );
-}
-
-function DecisionPanel({
-  title,
-  tone = 'default',
-  children,
-}: {
-  title: string;
-  tone?: DecisionPanelTone;
-  children: React.ReactNode;
-}) {
-  return (
-    <article className={`rounded-[26px] border px-6 py-6 ${decisionToneClasses[tone]}`}>
-      <h3 className="text-base font-semibold tracking-tight text-foreground">{title}</h3>
-      <div className="mt-5 space-y-5">{children}</div>
-    </article>
   );
 }
 
@@ -243,12 +164,19 @@ export function DiseaseDetailPage() {
   const sections = useMemo(() => {
     if (!disease) return [];
 
+    const strip = disease.quickDecisionStrip?.filter((s) => String(s).trim()) || [];
+
     return [
       { id: 'quick-summary', label: UI_TEXT.quickSummary },
-      { id: 'decision-map', label: UI_TEXT.quickBlocksTitle },
-      { id: 'understanding-disease', label: UI_TEXT.understandingDisease },
-      { id: 'diagnostic-plan', label: UI_TEXT.diagnosticPlan },
-      { id: 'treatment-plan', label: UI_TEXT.treatmentPlan },
+      strip.length ? { id: 'quick-strip', label: 'Decisão rápida' } : null,
+      { id: 'etiology', label: UI_TEXT.etiology },
+      { id: 'epidemiology', label: UI_TEXT.epidemiology },
+      { id: 'pathogenesisTransmission', label: UI_TEXT.pathogenesisTransmission },
+      { id: 'pathophysiology', label: UI_TEXT.pathophysiology },
+      { id: 'clinicalSignsPathophysiology', label: UI_TEXT.clinicalSigns },
+      { id: 'diagnosis', label: UI_TEXT.diagnosis },
+      { id: 'treatment', label: UI_TEXT.treatment },
+      { id: 'prevention', label: UI_TEXT.prevention },
       relatedConsensos.length > 0 || relatedMedications.length > 0 ? { id: 'related', label: UI_TEXT.related } : null,
       disease.references?.length ? { id: 'references', label: UI_TEXT.references } : null,
     ].filter(Boolean) as Array<{ id: string; label: string }>;
@@ -309,18 +237,6 @@ export function DiseaseDetailPage() {
       </div>
     );
   }
-
-  const hasDecisionPanels = Boolean(
-    disease.thirtySecondView?.length ||
-    disease.doNotForget?.length ||
-    disease.whenToSuspect?.length ||
-    disease.initialConduct?.length ||
-    disease.dogVsCatDifferences?.length ||
-    disease.highYieldTests?.length ||
-    disease.commonMistakes?.length ||
-    disease.redFlags.length ||
-    disease.clinicalPearls.length
-  );
 
   return (
     <div className="mx-auto flex h-full w-full max-w-[1840px] flex-col xl:flex-row">
@@ -395,72 +311,44 @@ export function DiseaseDetailPage() {
             </div>
           </section>
 
-          {hasDecisionPanels ? (
-            <EditorialPanel
-              id="decision-map"
-              title={UI_TEXT.quickBlocksTitle}
-              lead={UI_TEXT.quickBlocksBody}
-            >
-              <div className="grid gap-5 xl:grid-cols-3">
-                <DecisionPanel title="Suspeita e triagem" tone="primary">
-                  <DecisionListBlock id="thirty-second-view" title={UI_TEXT.thirtySecondView} items={disease.thirtySecondView} />
-                  <DecisionListBlock id="when-to-suspect" title={UI_TEXT.whenToSuspect} items={disease.whenToSuspect} />
-                  <DecisionListBlock id="high-yield-tests" title={UI_TEXT.highYieldTests} items={disease.highYieldTests} />
-                </DecisionPanel>
+          <QuickDecisionStrip items={disease.quickDecisionStrip || []} />
 
-                <DecisionPanel title="Primeiros passos e conduta" tone="default">
-                  <DecisionListBlock id="initial-conduct" title={UI_TEXT.initialConduct} items={disease.initialConduct} />
-                  <DecisionListBlock id="do-not-forget" title={UI_TEXT.doNotForget} items={disease.doNotForget} />
-                  <DecisionListBlock id="dog-vs-cat-differences" title={UI_TEXT.dogVsCatDifferences} items={disease.dogVsCatDifferences} />
-                </DecisionPanel>
-
-                <DecisionPanel title="Segurança clínica" tone="warning">
-                  <DecisionListBlock id="red-flags" title={UI_TEXT.redFlags} items={disease.redFlags} />
-                  <DecisionListBlock id="common-mistakes" title={UI_TEXT.commonMistakes} items={disease.commonMistakes} />
-                  <DecisionListBlock id="clinical-pearls" title={UI_TEXT.clinicalPearls} items={disease.clinicalPearls} />
-                </DecisionPanel>
-              </div>
-            </EditorialPanel>
-          ) : null}
-
-          <EditorialPanel
-            id="understanding-disease"
-            title={UI_TEXT.understandingDisease}
-            lead={UI_TEXT.understandingDiseaseLead}
-          >
-            <div className="space-y-12">
-              <DiseaseSectionRenderer id="introduction" title={UI_TEXT.introduction} data={disease.introduction} />
-              <DiseaseSectionRenderer id="etiology" title={UI_TEXT.etiology} data={disease.etiology} />
-              <DiseaseSectionRenderer id="transmission" title={UI_TEXT.transmission} data={disease.transmission} />
-              <DiseaseSectionRenderer id="pathophysiology" title={UI_TEXT.pathophysiology} data={disease.pathophysiology} />
-              <DiseaseSectionRenderer id="epidemiology" title={UI_TEXT.epidemiology} data={disease.epidemiology} />
-            </div>
-          </EditorialPanel>
-
-          <EditorialPanel
-            id="diagnostic-plan"
-            title={UI_TEXT.diagnosticPlan}
-            lead={UI_TEXT.diagnosticPlanLead}
-          >
-            <div className="space-y-12">
-              <DiseaseSectionRenderer id="clinicalPresentation" title={UI_TEXT.clinicalPresentation} data={disease.clinicalPresentation} />
-              <DiseaseSectionRenderer id="physicalExam" title={UI_TEXT.physicalExam} data={disease.physicalExam} />
-              <DiseaseSectionRenderer id="differentialDiagnoses" title={UI_TEXT.differentialDiagnoses} data={disease.differentialDiagnoses} />
-              <DiseaseSectionRenderer id="diagnostics" title={UI_TEXT.diagnostics} data={disease.diagnostics} />
-              <DiseaseSectionRenderer id="diagnosticApproach" title={UI_TEXT.diagnosticApproach} data={disease.diagnosticApproach} />
-            </div>
-          </EditorialPanel>
-
-          <EditorialPanel
-            id="treatment-plan"
-            title={UI_TEXT.treatmentPlan}
-            lead={UI_TEXT.treatmentPlanLead}
-          >
-            <div className="space-y-12">
-              <DiseaseSectionRenderer id="treatment" title={UI_TEXT.treatment} data={disease.treatment} />
-              <DiseaseSectionRenderer id="prognosis" title={UI_TEXT.prognosis} data={disease.prognosis} />
-              <DiseaseSectionRenderer id="complications" title={UI_TEXT.complications} data={disease.complications} />
-              <DiseaseSectionRenderer id="prevention" title={UI_TEXT.prevention} data={disease.prevention} />
+          <EditorialPanel title={UI_TEXT.clinicalDeepDive} lead={UI_TEXT.clinicalDeepDiveLead}>
+            <div className="space-y-8 md:space-y-9">
+              <DiseaseSectionFrame sectionId="etiology" title={UI_TEXT.etiology}>
+                <DiseaseSectionRenderer id="etiology" hideTitle title={UI_TEXT.etiology} data={disease.etiology} />
+              </DiseaseSectionFrame>
+              <DiseaseSectionFrame sectionId="epidemiology" title={UI_TEXT.epidemiology}>
+                <DiseaseSectionRenderer id="epidemiology" hideTitle title={UI_TEXT.epidemiology} data={disease.epidemiology} />
+              </DiseaseSectionFrame>
+              <DiseaseSectionFrame sectionId="pathogenesisTransmission" title={UI_TEXT.pathogenesisTransmission}>
+                <DiseaseSectionRenderer
+                  id="pathogenesisTransmission"
+                  hideTitle
+                  title={UI_TEXT.pathogenesisTransmission}
+                  data={disease.pathogenesisTransmission}
+                />
+              </DiseaseSectionFrame>
+              <DiseaseSectionFrame sectionId="pathophysiology" title={UI_TEXT.pathophysiology}>
+                <DiseaseSectionRenderer id="pathophysiology" hideTitle title={UI_TEXT.pathophysiology} data={disease.pathophysiology} />
+              </DiseaseSectionFrame>
+              <DiseaseSectionFrame sectionId="clinicalSignsPathophysiology" title={UI_TEXT.clinicalSigns}>
+                <DiseaseSectionRenderer
+                  id="clinicalSignsPathophysiology"
+                  hideTitle
+                  title={UI_TEXT.clinicalSigns}
+                  data={disease.clinicalSignsPathophysiology}
+                />
+              </DiseaseSectionFrame>
+              <DiseaseSectionFrame sectionId="diagnosis" title={UI_TEXT.diagnosis}>
+                <DiseaseSectionRenderer id="diagnosis" hideTitle title={UI_TEXT.diagnosis} data={disease.diagnosis} />
+              </DiseaseSectionFrame>
+              <DiseaseSectionFrame sectionId="treatment" title={UI_TEXT.treatment}>
+                <DiseaseSectionRenderer id="treatment" hideTitle title={UI_TEXT.treatment} data={disease.treatment} />
+              </DiseaseSectionFrame>
+              <DiseaseSectionFrame sectionId="prevention" title={UI_TEXT.prevention}>
+                <DiseaseSectionRenderer id="prevention" hideTitle title={UI_TEXT.prevention} data={disease.prevention} />
+              </DiseaseSectionFrame>
             </div>
           </EditorialPanel>
 
@@ -520,9 +408,9 @@ export function DiseaseDetailPage() {
           ) : null}
 
           {disease.references && disease.references.length > 0 ? (
-            <div id="references" className="scroll-mt-24">
-              <ReferencesList references={disease.references} />
-            </div>
+            <DiseaseSectionFrame sectionId="references" title={UI_TEXT.references}>
+              <ReferencesList references={disease.references} variant="embedded" />
+            </DiseaseSectionFrame>
           ) : null}
         </div>
       </div>

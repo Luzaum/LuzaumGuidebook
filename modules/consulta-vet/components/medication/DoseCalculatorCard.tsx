@@ -13,6 +13,8 @@ interface DoseCalculatorCardProps {
   doses: MedicationDose[];
   presentations: MedicationPresentation[];
   className?: string;
+  /** Dentro de MedicationSectionFrame: sem card/borda duplicados nem título próprio */
+  variant?: 'standalone' | 'embedded';
 }
 
 const UI_TEXT = {
@@ -64,6 +66,7 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
   doses,
   presentations,
   className,
+  variant = 'standalone',
 }: DoseCalculatorCardProps) {
   const availableSpecies = useMemo(() => {
     const set = new Set<MedicationDoseSpecies>();
@@ -90,9 +93,15 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
     () => filteredDoses.find((item) => item.id === selectedDoseId) || filteredDoses[0],
     [filteredDoses, selectedDoseId]
   );
+  const presentationChoices = useMemo(() => {
+    if (!selectedDose?.presentationId) return presentations;
+    const match = presentations.filter((p) => p.id === selectedDose.presentationId);
+    return match.length ? match : presentations;
+  }, [presentations, selectedDose]);
+
   const selectedPresentation = useMemo(
-    () => presentations.find((item) => item.id === selectedPresentationId),
-    [presentations, selectedPresentationId]
+    () => presentationChoices.find((item) => item.id === selectedPresentationId),
+    [presentationChoices, selectedPresentationId]
   );
 
   const { weight, setWeight, result } = useDoseCalculator(selectedDose, selectedPresentation);
@@ -102,6 +111,12 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
     if (filteredDoses.some((dose) => dose.id === selectedDoseId)) return;
     setSelectedDoseId(filteredDoses[0].id);
   }, [filteredDoses, selectedDoseId]);
+
+  useEffect(() => {
+    const pid = selectedDose?.presentationId;
+    if (!pid || !presentations.some((p) => p.id === pid)) return;
+    setSelectedPresentationId(pid);
+  }, [selectedDose?.id, selectedDose?.presentationId, presentations]);
 
   if (!doses.length || !selectedDose) return null;
 
@@ -118,21 +133,8 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
           single: result?.conversionExactSingle,
         };
 
-  return (
-    <section className={cn('overflow-hidden rounded-[32px] border border-border bg-card/95 shadow-sm', className)}>
-      <div className="border-b border-border/70 px-6 py-5 md:px-8">
-        <div className="flex items-start gap-4">
-          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/[0.08] text-primary">
-            <Calculator className="h-5 w-5" />
-          </div>
-          <div className="min-w-0">
-            <h2 className="text-[28px] font-bold tracking-tight text-foreground">{UI_TEXT.title}</h2>
-            <p className="mt-1 text-sm leading-7 text-muted-foreground">{UI_TEXT.subtitle}</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="space-y-8 px-6 py-6 md:px-8 md:py-8">
+  const calculatorInner = (
+    <div className="space-y-8">
         <div className="rounded-[24px] border border-primary/15 bg-primary/[0.05] px-5 py-4 text-sm leading-7 text-foreground/85">
           {UI_TEXT.explicitSpecies}
         </div>
@@ -189,7 +191,7 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
               className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
             >
               <option value="">{UI_TEXT.mgOnly}</option>
-              {presentations.map((presentation) => (
+              {presentationChoices.map((presentation) => (
                 <option key={presentation.id} value={presentation.id}>
                   {presentation.label}
                 </option>
@@ -264,7 +266,28 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
             </div>
           ) : null}
         </div>
+    </div>
+  );
+
+  if (variant === 'embedded') {
+    return <div className={cn('max-w-none', className)}>{calculatorInner}</div>;
+  }
+
+  return (
+    <section className={cn('overflow-hidden rounded-[32px] border border-border bg-card/95 shadow-sm', className)}>
+      <div className="border-b border-border/70 px-6 py-5 md:px-8">
+        <div className="flex items-start gap-4">
+          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/[0.08] text-primary">
+            <Calculator className="h-5 w-5" />
+          </div>
+          <div className="min-w-0">
+            <h2 className="text-[28px] font-bold tracking-tight text-foreground">{UI_TEXT.title}</h2>
+            <p className="mt-1 text-sm leading-7 text-muted-foreground">{UI_TEXT.subtitle}</p>
+          </div>
+        </div>
       </div>
+
+      <div className="space-y-8 px-6 py-6 md:px-8 md:py-8">{calculatorInner}</div>
     </section>
   );
 });

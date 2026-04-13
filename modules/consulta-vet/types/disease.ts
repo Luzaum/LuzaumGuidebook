@@ -9,28 +9,17 @@ export interface DiseaseRecord extends ContentFlag {
   category: string;
   tags: string[];
   quickSummary: string;
-  thirtySecondView?: string[];
-  doNotForget?: string[];
-  whenToSuspect?: string[];
-  initialConduct?: string[];
-  highYieldTests?: string[];
-  dogVsCatDifferences?: string[];
-  commonMistakes?: string[];
-  redFlags: string[];
-  clinicalPearls: string[];
-  introduction: EditorialSectionValue;
+  /** Até 5 frases curtas — faixa horizontal de decisão rápida na ficha. */
+  quickDecisionStrip: string[];
   etiology: EditorialSectionValue;
-  transmission: EditorialSectionValue;
-  pathophysiology: EditorialSectionValue;
   epidemiology: EditorialSectionValue;
-  clinicalPresentation: EditorialSectionValue;
-  physicalExam: EditorialSectionValue;
-  differentialDiagnoses: EditorialSectionValue;
-  diagnostics: EditorialSectionValue;
-  diagnosticApproach: EditorialSectionValue;
+  pathogenesisTransmission: EditorialSectionValue;
+  pathophysiology: EditorialSectionValue;
+  /** Sinais clínicos correlacionados à fisiopatologia (e exame físico, se aplicável). */
+  clinicalSignsPathophysiology: EditorialSectionValue;
+  /** Diagnóstico: ordem de exames; use passos com `isGoldStandard` para padrão ouro. */
+  diagnosis: EditorialSectionValue;
   treatment: EditorialSectionValue;
-  prognosis: EditorialSectionValue;
-  complications: EditorialSectionValue;
   prevention: EditorialSectionValue;
   relatedConsensusSlugs: string[];
   relatedMedicationSlugs: string[];

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { cn } from '../../../../lib/utils';
 
+export type SectionAnchorEntry = { id: string; label: string; activeClassName?: string };
+
 interface SectionAnchorNavProps {
-  sections: { id: string; label: string }[];
+  sections: SectionAnchorEntry[];
   className?: string;
   onActiveChange?: (id: string) => void;
 }
@@ -48,22 +50,24 @@ export function SectionAnchorNav({ sections, className, onActiveChange }: Sectio
       <div className="rounded-[24px] border border-border/80 bg-card/90 px-4 py-4 shadow-sm">
         <h4 className="mb-4 px-2 text-[11px] font-bold uppercase tracking-[0.22em] text-muted-foreground">Índice</h4>
         <ul className="space-y-1 border-l border-border/80">
-          {sections.map((section) => (
-            <li key={section.id}>
-              <a
-                href={`#${section.id}`}
-                onClick={(event) => handleClick(event, section.id)}
-                className={cn(
-                  'block -ml-px border-l-2 px-4 py-2 text-sm leading-6 transition-all',
-                  activeId === section.id
-                    ? 'border-primary bg-primary/[0.06] font-semibold text-primary'
-                    : 'border-transparent text-muted-foreground hover:border-border/80 hover:text-foreground'
-                )}
-              >
-                {section.label}
-              </a>
-            </li>
-          ))}
+          {sections.map((section) => {
+            const activeDefault = 'border-primary bg-primary/[0.06] font-semibold text-primary';
+            const activeClasses = section.activeClassName || activeDefault;
+            return (
+              <li key={section.id}>
+                <a
+                  href={`#${section.id}`}
+                  onClick={(event) => handleClick(event, section.id)}
+                  className={cn(
+                    'block -ml-px border-l-2 px-4 py-2 text-sm leading-6 transition-all',
+                    activeId === section.id ? activeClasses : 'border-transparent text-muted-foreground hover:border-border/80 hover:text-foreground'
+                  )}
+                >
+                  {section.label}
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </nav>

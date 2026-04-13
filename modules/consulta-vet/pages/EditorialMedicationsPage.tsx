@@ -525,6 +525,10 @@ export function EditorialMedicationsPage() {
               <MedicationDoseEditor
                 value={form.doses}
                 onChange={(nextValue) => setForm((current) => ({ ...current, doses: nextValue }))}
+                presentationOptions={form.presentations.map((p) => ({
+                  id: p.id,
+                  label: p.label || p.id,
+                }))}
               />
             </section>
 

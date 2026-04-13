@@ -2,7 +2,8 @@
 import { Species, PainType, Scale, Question, Option, QuestionType, Drug, Presentation, AgeGroup, Comorbidity } from './types';
 import { PAIN_DATA, DRUG_DATA } from './constants';
 import { PawIcon, GuideIcon, CalculatorIcon } from './components/Icons';
-import { Menu, X, Home, Stethoscope, ListChecks, ClipboardCheck, BarChart3, BookOpenCheck, ShieldCheck, Calculator, Moon, Sun, Dog, Cat } from 'lucide-react';
+import { Menu, X, Home, Stethoscope, ListChecks, ClipboardCheck, BarChart3, BookOpenCheck, ShieldCheck, Calculator, Moon, Sun } from 'lucide-react';
+import { SpeciesPortraitCards } from '@/components/SpeciesPortraitCards';
 import './theme.css';
 
 
@@ -103,16 +104,15 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ onSelectSpecies, onShowGuide, o
         </div>
         <div className="w-full max-w-5xl">
             <h2 className="text-2xl font-bold text-center text-slate-700 mb-6">Comece por aqui</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <button onClick={() => onSelectSpecies(Species.Dog)} className="group flex flex-col items-center justify-center p-8 bg-white rounded-xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 h-48">
-                    <Dog className="h-14 w-14 mb-2 transition-transform duration-300 group-hover:scale-110" />
-                    <span className="text-2xl font-semibold text-slate-800">Cão</span>
-                </button>
-                <button onClick={() => onSelectSpecies(Species.Cat)} className="group flex flex-col items-center justify-center p-8 bg-white rounded-xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 h-48">
-                    <Cat className="h-14 w-14 mb-2 transition-transform duration-300 group-hover:scale-110" />
-                    <span className="text-2xl font-semibold text-slate-800">Gato</span>
-                </button>
-            </div>
+            <SpeciesPortraitCards
+                variant="teal"
+                canineSelected={false}
+                felineSelected={false}
+                onSelectCanine={() => onSelectSpecies(Species.Dog)}
+                onSelectFeline={() => onSelectSpecies(Species.Cat)}
+                canineSubtitle="Escalas e fluxos para cães"
+                felineSubtitle="Escalas e fluxos para gatos"
+            />
              <div className="mt-8 flex flex-col space-y-4">
                 <button onClick={onShowCalculator} className="w-full bg-teal-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-teal-700 transition-colors flex items-center justify-center gap-3 shadow-md hover:shadow-lg">
                     <CalculatorIcon className="h-6 w-6" />
@@ -1246,16 +1246,15 @@ const GuideScreen: React.FC<GuideScreenProps> = ({ onBack, onHome, setModal, ini
                 <div className="flex flex-col items-center justify-center p-4" style={{ minHeight: 'calc(100dvh - 9rem)' }}>
                     <div className="w-full max-w-5xl text-center">
                         <h2 className="text-3xl font-bold text-slate-700 mb-8">Para Qual Espécie?</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <button onClick={() => setSelectedSpecies(Species.Dog)} className="group flex flex-col items-center justify-center p-8 bg-white rounded-xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 h-48">
-                                <Dog className="h-14 w-14 mb-2 transition-transform duration-300 group-hover:scale-110" />
-                                <span className="text-2xl font-semibold text-slate-800">Cão</span>
-                            </button>
-                            <button onClick={() => setSelectedSpecies(Species.Cat)} className="group flex flex-col items-center justify-center p-8 bg-white rounded-xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 h-48">
-                                <Cat className="h-14 w-14 mb-2 transition-transform duration-300 group-hover:scale-110" />
-                                <span className="text-2xl font-semibold text-slate-800">Gato</span>
-                            </button>
-                        </div>
+                        <SpeciesPortraitCards
+                            variant="slate"
+                            canineSelected={false}
+                            felineSelected={false}
+                            onSelectCanine={() => setSelectedSpecies(Species.Dog)}
+                            onSelectFeline={() => setSelectedSpecies(Species.Cat)}
+                            canineSubtitle="Protocolos para cães"
+                            felineSubtitle="Protocolos para gatos"
+                        />
                     </div>
                 </div>
             </>
@@ -1576,12 +1575,18 @@ const CalculatorScreen: React.FC<CalculatorScreenProps> = ({ onBack, onHome, onI
                 <Card className="p-6 md:p-8">
                     <h2 className="text-2xl font-bold text-slate-800 mb-4 border-b pb-2">1. Dados do Paciente</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Espécie</label>
-                            <div className="flex rounded-md shadow-sm">
-                                <button onClick={() => setSpecies(Species.Dog)} className={`px-4 py-2 text-sm font-medium border border-slate-300 rounded-l-md flex-1 inline-flex items-center justify-center gap-2 ${species === 'dog' ? 'bg-teal-600 text-white border-teal-600 z-10' : 'bg-white text-slate-700 hover:bg-slate-50'}`}><Dog className="h-4 w-4" /> Cão</button>
-                                <button onClick={() => setSpecies(Species.Cat)} className={`px-4 py-2 text-sm font-medium border-r border-t border-b border-slate-300 rounded-r-md flex-1 inline-flex items-center justify-center gap-2 ${species === 'cat' ? 'bg-teal-600 text-white border-teal-600 z-10' : 'bg-white text-slate-700 hover:bg-slate-50'}`}><Cat className="h-4 w-4" /> Gato</button>
-                            </div>
+                        <div className="md:col-span-2">
+                            <SpeciesPortraitCards
+                                variant="teal"
+                                size="compact"
+                                showHeading={false}
+                                canineSelected={species === Species.Dog}
+                                felineSelected={species === Species.Cat}
+                                onSelectCanine={() => setSpecies(Species.Dog)}
+                                onSelectFeline={() => setSpecies(Species.Cat)}
+                                canineSubtitle="Doses e alertas para cães"
+                                felineSubtitle="Doses e alertas para gatos"
+                            />
                         </div>
                         <div>
                             <label htmlFor="weight" className="block text-sm font-medium text-slate-700 mb-1">Peso (kg)</label>

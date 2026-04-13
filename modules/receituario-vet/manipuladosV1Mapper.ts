@@ -153,6 +153,34 @@ function resolveApplicationTarget(route?: string): string {
   return 'na pele afetada'
 }
 
+/** Detecta periodicidade livre no texto do manipulado V1 (ex.: "repetir a cada 30 dias"). */
+function parseRepeatIntervalFromManipuladoText(formula: ManipuladoV1Formula): { value: number; unit: 'dias' | 'semanas' | 'meses' } | null {
+  const blob = [
+    formula.prescribing.frequency_label,
+    formula.prescribing.duration_label,
+    formula.prescribing.duration_value != null
+      ? `${formula.prescribing.duration_value} ${formula.prescribing.duration_unit || ''}`
+      : '',
+    formula.prescribing.manual_usage_override,
+    formula.prescribing.generated_usage_text,
+  ]
+    .map((s) => String(s || '').trim())
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase()
+  if (!blob) return null
+  const match =
+    blob.match(/repetir\s+a\s+cada\s+(\d+(?:[.,]\d+)?)\s*(dia|dias|semana|semanas|mês|meses)\b/i)
+    || blob.match(/\ba\s+cada\s+(\d+(?:[.,]\d+)?)\s*(dia|dias|semana|semanas|mês|meses)\b/i)
+  if (!match) return null
+  const value = Number(String(match[1]).replace(',', '.'))
+  if (!Number.isFinite(value) || value <= 0) return null
+  const u = match[2].toLowerCase()
+  if (u.startsWith('semana')) return { value, unit: 'semanas' }
+  if (u.startsWith('mes')) return { value, unit: 'meses' }
+  return { value, unit: 'dias' }
+}
+
 export function mapManipuladoV1ToPrescriptionItem(params: {
   formula: ManipuladoV1Formula
   patient: PatientInfo | null
@@ -190,6 +218,28 @@ export function mapManipuladoV1ToPrescriptionItem(params: {
       : administrationBasis === 'per_application_site'
         ? resolveApplicationTarget(formula.identity.primary_route)
         : undefined
+
+  const repeatFromText = parseRepeatIntervalFromManipuladoText(formula)
+  const fm = formula.prescribing.frequency_mode
+  const frequencyMode: PrescriptionItem['frequencyMode'] = repeatFromText
+    ? 'repeat_interval'
+    : fm === 'single_dose'
+      ? 'single_dose'
+      : fm === 'q6h' || fm === 'q8h' || fm === 'q12h' || fm === 'q24h'
+        ? 'interval_hours'
+        : undefined
+  const intervalHours =
+    !repeatFromText && frequencyMode === 'interval_hours'
+      ? fm === 'q6h'
+        ? 6
+        : fm === 'q8h'
+          ? 8
+          : fm === 'q12h'
+            ? 12
+            : fm === 'q24h'
+              ? 24
+              : undefined
+      : undefined
 
   return {
     id: `item-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,

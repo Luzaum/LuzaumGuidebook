@@ -29,28 +29,14 @@ type DiseaseFormState = {
   synonyms: string;
   tags: string;
   quickSummary: string;
-  thirtySecondView: string;
-  doNotForget: string;
-  redFlags: string;
-  whenToSuspect: string;
-  initialConduct: string;
-  dogVsCatDifferences: string;
-  highYieldTests: string;
-  commonMistakes: string;
-  clinicalPearls: string;
-  introduction: string;
+  quickDecisionStrip: string;
   etiology: string;
-  transmission: string;
-  pathophysiology: string;
   epidemiology: string;
-  clinicalPresentation: string;
-  physicalExam: string;
-  differentialDiagnoses: string;
-  diagnostics: string;
-  diagnosticApproach: string;
+  pathogenesisTransmission: string;
+  pathophysiology: string;
+  clinicalSignsPathophysiology: string;
+  diagnosis: string;
   treatment: string;
-  prognosis: string;
-  complications: string;
   prevention: string;
   relatedMedicationSlugs: string[];
   relatedConsensusSlugs: string[];
@@ -59,32 +45,30 @@ type DiseaseFormState = {
 };
 
 const SECTION_FIELDS: Array<{ key: keyof DiseaseFormState; label: string; hint?: string; rows?: number }> = [
-  { key: 'introduction', label: 'Introdução', rows: 7 },
-  { key: 'etiology', label: 'Etiologia', rows: 6 },
-  { key: 'transmission', label: 'Transmissão', rows: 6 },
-  { key: 'pathophysiology', label: 'Fisiopatologia', hint: 'Aceita texto, lista por linha ou JSON.', rows: 10 },
-  { key: 'epidemiology', label: 'Epidemiologia', rows: 6 },
-  { key: 'clinicalPresentation', label: 'Apresentação clínica', hint: 'Aceita texto, lista por linha ou JSON.', rows: 10 },
-  { key: 'physicalExam', label: 'Exame físico', rows: 7 },
-  { key: 'differentialDiagnoses', label: 'Diagnósticos diferenciais', rows: 7 },
-  { key: 'diagnostics', label: 'Exames', hint: 'Aceita texto, lista por linha ou JSON.', rows: 10 },
-  { key: 'diagnosticApproach', label: 'Abordagem diagnóstica', rows: 7 },
-  { key: 'treatment', label: 'Tratamento', hint: 'Aceita texto, lista por linha ou JSON.', rows: 10 },
-  { key: 'prognosis', label: 'Prognóstico', rows: 6 },
-  { key: 'complications', label: 'Complicações', rows: 6 },
-  { key: 'prevention', label: 'Prevenção', rows: 6 },
-];
-
-const QUICK_FIELDS: Array<{ key: keyof DiseaseFormState; label: string; hint?: string }> = [
-  { key: 'thirtySecondView', label: 'Visão em 30 segundos' },
-  { key: 'doNotForget', label: 'Não esquecer' },
-  { key: 'redFlags', label: 'Red flags' },
-  { key: 'whenToSuspect', label: 'Quando suspeitar' },
-  { key: 'initialConduct', label: 'Conduta inicial' },
-  { key: 'dogVsCatDifferences', label: 'Diferenças cão x gato' },
-  { key: 'highYieldTests', label: 'Exames que mais ajudam' },
-  { key: 'commonMistakes', label: 'Erros comuns' },
-  { key: 'clinicalPearls', label: 'Pérolas clínicas' },
+  { key: 'etiology', label: '1. Etiologia', rows: 8 },
+  { key: 'epidemiology', label: '2. Epidemiologia', rows: 7 },
+  { key: 'pathogenesisTransmission', label: '3. Patogênese / transmissão', rows: 8 },
+  { key: 'pathophysiology', label: '4. Fisiopatologia', hint: 'Aceita texto, lista por linha ou JSON.', rows: 10 },
+  {
+    key: 'clinicalSignsPathophysiology',
+    label: '5. Sinais clínicos (correlacionar com fisiopatologia)',
+    hint: 'Aceita texto, lista por linha ou JSON.',
+    rows: 12,
+  },
+  {
+    key: 'diagnosis',
+    label: '6. Como diagnosticar',
+    hint:
+      'Ordem dos exames por importância. Para passos em JSON, use array com title, description, stepNumber e isGoldStandard: true no padrão ouro.',
+    rows: 12,
+  },
+  {
+    key: 'treatment',
+    label: '7. Como tratar',
+    hint: 'Prioridade do tratamento e terapias adjuvantes. Aceita texto ou JSON.',
+    rows: 12,
+  },
+  { key: 'prevention', label: '8. Prevenção', rows: 7 },
 ];
 
 function createEmptyDisease(): DiseaseFormState {
@@ -96,28 +80,14 @@ function createEmptyDisease(): DiseaseFormState {
     synonyms: '',
     tags: '',
     quickSummary: '',
-    thirtySecondView: '',
-    doNotForget: '',
-    redFlags: '',
-    whenToSuspect: '',
-    initialConduct: '',
-    dogVsCatDifferences: '',
-    highYieldTests: '',
-    commonMistakes: '',
-    clinicalPearls: '',
-    introduction: '',
+    quickDecisionStrip: '',
     etiology: '',
-    transmission: '',
-    pathophysiology: '',
     epidemiology: '',
-    clinicalPresentation: '',
-    physicalExam: '',
-    differentialDiagnoses: '',
-    diagnostics: '',
-    diagnosticApproach: '',
+    pathogenesisTransmission: '',
+    pathophysiology: '',
+    clinicalSignsPathophysiology: '',
+    diagnosis: '',
     treatment: '',
-    prognosis: '',
-    complications: '',
     prevention: '',
     relatedMedicationSlugs: [],
     relatedConsensusSlugs: [],
@@ -136,28 +106,14 @@ function mapDiseaseToForm(record: DiseaseRecord): DiseaseFormState {
     synonyms: formatMultiline(record.synonyms),
     tags: formatMultiline(record.tags),
     quickSummary: record.quickSummary,
-    thirtySecondView: formatMultiline(record.thirtySecondView),
-    doNotForget: formatMultiline(record.doNotForget),
-    redFlags: formatMultiline(record.redFlags),
-    whenToSuspect: formatMultiline(record.whenToSuspect),
-    initialConduct: formatMultiline(record.initialConduct),
-    dogVsCatDifferences: formatMultiline(record.dogVsCatDifferences),
-    highYieldTests: formatMultiline(record.highYieldTests),
-    commonMistakes: formatMultiline(record.commonMistakes),
-    clinicalPearls: formatMultiline(record.clinicalPearls),
-    introduction: formatSectionValue(record.introduction),
+    quickDecisionStrip: formatMultiline(record.quickDecisionStrip),
     etiology: formatSectionValue(record.etiology),
-    transmission: formatSectionValue(record.transmission),
-    pathophysiology: formatSectionValue(record.pathophysiology),
     epidemiology: formatSectionValue(record.epidemiology),
-    clinicalPresentation: formatSectionValue(record.clinicalPresentation),
-    physicalExam: formatSectionValue(record.physicalExam),
-    differentialDiagnoses: formatSectionValue(record.differentialDiagnoses),
-    diagnostics: formatSectionValue(record.diagnostics),
-    diagnosticApproach: formatSectionValue(record.diagnosticApproach),
+    pathogenesisTransmission: formatSectionValue(record.pathogenesisTransmission),
+    pathophysiology: formatSectionValue(record.pathophysiology),
+    clinicalSignsPathophysiology: formatSectionValue(record.clinicalSignsPathophysiology),
+    diagnosis: formatSectionValue(record.diagnosis),
     treatment: formatSectionValue(record.treatment),
-    prognosis: formatSectionValue(record.prognosis),
-    complications: formatSectionValue(record.complications),
     prevention: formatSectionValue(record.prevention),
     relatedMedicationSlugs: record.relatedMedicationSlugs || [],
     relatedConsensusSlugs: record.relatedConsensusSlugs || [],
@@ -284,28 +240,14 @@ export function EditorialDiseasesPage() {
         synonyms: splitMultiline(form.synonyms),
         tags: splitMultiline(form.tags),
         quickSummary: form.quickSummary.trim(),
-        thirtySecondView: splitMultiline(form.thirtySecondView),
-        doNotForget: splitMultiline(form.doNotForget),
-        redFlags: splitMultiline(form.redFlags),
-        whenToSuspect: splitMultiline(form.whenToSuspect),
-        initialConduct: splitMultiline(form.initialConduct),
-        dogVsCatDifferences: splitMultiline(form.dogVsCatDifferences),
-        highYieldTests: splitMultiline(form.highYieldTests),
-        commonMistakes: splitMultiline(form.commonMistakes),
-        clinicalPearls: splitMultiline(form.clinicalPearls),
-        introduction: parseSectionValue(form.introduction),
+        quickDecisionStrip: splitMultiline(form.quickDecisionStrip).slice(0, 5),
         etiology: parseSectionValue(form.etiology),
-        transmission: parseSectionValue(form.transmission),
-        pathophysiology: parseSectionValue(form.pathophysiology),
         epidemiology: parseSectionValue(form.epidemiology),
-        clinicalPresentation: parseSectionValue(form.clinicalPresentation),
-        physicalExam: parseSectionValue(form.physicalExam),
-        differentialDiagnoses: parseSectionValue(form.differentialDiagnoses),
-        diagnostics: parseSectionValue(form.diagnostics),
-        diagnosticApproach: parseSectionValue(form.diagnosticApproach),
+        pathogenesisTransmission: parseSectionValue(form.pathogenesisTransmission),
+        pathophysiology: parseSectionValue(form.pathophysiology),
+        clinicalSignsPathophysiology: parseSectionValue(form.clinicalSignsPathophysiology),
+        diagnosis: parseSectionValue(form.diagnosis),
         treatment: parseSectionValue(form.treatment),
-        prognosis: parseSectionValue(form.prognosis),
-        complications: parseSectionValue(form.complications),
         prevention: parseSectionValue(form.prevention),
         relatedMedicationSlugs: form.relatedMedicationSlugs,
         relatedConsensusSlugs: form.relatedConsensusSlugs,
@@ -415,9 +357,10 @@ export function EditorialDiseasesPage() {
                 <h2 className="text-lg font-semibold text-foreground">
                   {form.id ? 'Editar doença' : 'Nova doença'}
                 </h2>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Os blocos rápidos e as seções extensas usam a mesma estrutura já publicada no front. Texto simples e JSON continuam válidos onde fizer sentido.
-                </p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Modelo em 9 blocos clínicos + faixa de decisão rápida (até 5 frases). Diagnóstico: ordene exames por importância; marque padrão ouro com JSON{' '}
+              <code className="rounded bg-muted px-1">isGoldStandard: true</code> nos passos.
+            </p>
               </div>
               <div className="flex items-center gap-3">
                 <StatusBadge isPublished={form.isPublished} />
@@ -515,23 +458,22 @@ export function EditorialDiseasesPage() {
             </section>
 
             <section className="space-y-4">
-              <h3 className="text-base font-semibold text-foreground">Blocos rápidos</h3>
-              <div className="grid gap-4 md:grid-cols-2">
-                {QUICK_FIELDS.map((field) => (
-                  <EditorialField key={field.key} label={field.label} hint={field.hint || 'Um item por linha.'}>
-                    <textarea
-                      value={form[field.key] as string}
-                      onChange={(event) => setForm((current) => ({ ...current, [field.key]: event.target.value }))}
-                      rows={5}
-                      className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
-                    />
-                  </EditorialField>
-                ))}
-              </div>
+              <h3 className="text-base font-semibold text-foreground">Decisão rápida (horizontal no app)</h3>
+              <EditorialField
+                label="Até 5 frases curtas"
+                hint="Uma frase por linha. Apenas o essencial para triagem — aparecem como cartões horizontais na ficha."
+              >
+                <textarea
+                  value={form.quickDecisionStrip}
+                  onChange={(event) => setForm((current) => ({ ...current, quickDecisionStrip: event.target.value }))}
+                  rows={5}
+                  className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                />
+              </EditorialField>
             </section>
 
             <section className="space-y-4">
-              <h3 className="text-base font-semibold text-foreground">Seções editoriais</h3>
+              <h3 className="text-base font-semibold text-foreground">Conteúdo clínico (ordem fixa)</h3>
               <div className="grid gap-4">
                 {SECTION_FIELDS.map((field) => (
                   <EditorialField key={field.key} label={field.label} hint={field.hint}>
@@ -567,7 +509,7 @@ export function EditorialDiseasesPage() {
             </section>
 
             <section className="space-y-4">
-              <h3 className="text-base font-semibold text-foreground">Referências</h3>
+              <h3 className="text-base font-semibold text-foreground">9. Referências</h3>
               <ReferencesEditor
                 value={form.references}
                 onChange={(nextValue) => setForm((current) => ({ ...current, references: nextValue }))}

@@ -12,6 +12,7 @@ const Hub = lazy(() => import('./pages/Hub').then((m) => ({ default: m.Hub })))
 const ModuleIframe = lazy(() => import('./pages/ModuleIframe').then((m) => ({ default: m.ModuleIframe })))
 const EnergiaVetPage = lazy(() => import('./modules/energia-vet/App'))
 const FluidoterapiaVetPage = lazy(() => import('./modules/fluidoterapia-vet'))
+const AntibioticoterapiaVetPage = lazy(() => import('./modules/antibioticoterapia-vet'))
 const TransfusaoSanguineaPage = lazy(() => import('./pages/TransfusaoSanguineaPage').then((m) => ({ default: m.TransfusaoSanguineaPage })))
 const HemogasoVetPage = lazy(() => import('./modules/hemogasovet'))
 const NeurologiaPage = lazy(() => import('./pages/NeurologiaPage').then((m) => ({ default: m.NeurologiaPage })))
@@ -41,6 +42,12 @@ const ConsultaVetEditorialDiseasesPage = lazy(() => import('./modules/consulta-v
 const ConsultaVetEditorialMedicationsPage = lazy(() => import('./modules/consulta-vet/pages/EditorialMedicationsPage').then((m) => ({ default: m.EditorialMedicationsPage })))
 const ConsultaVetEditorialConsensosPage = lazy(() => import('./modules/consulta-vet/pages/EditorialConsensosPage').then((m) => ({ default: m.EditorialConsensosPage })))
 const ConsultaVetEditorialImportPage = lazy(() => import('./modules/consulta-vet/pages/EditorialImportPage').then((m) => ({ default: m.EditorialImportPage })))
+const ConsultaVetManejoEmergencialPage = lazy(() =>
+  import('./modules/consulta-vet/pages/ManejoEmergencialPage').then((m) => ({ default: m.ManejoEmergencialPage }))
+)
+const ConsultaVetManejoEmergencialGuidePage = lazy(() =>
+  import('./modules/consulta-vet/pages/ManejoEmergencialGuidePage').then((m) => ({ default: m.ManejoEmergencialGuidePage }))
+)
 const NovaReceitaPage = lazy(() => import('./modules/receituario-vet/NovaReceitaPage'))
 const NovaReceita2Page = lazy(() => import('./modules/receituario-vet/NovaReceita2Page'))
 const NovaReceita2PrintPage = lazy(() => import('./modules/receituario-vet/NovaReceita2PrintPage'))
@@ -101,7 +108,7 @@ const appRoutes = (
     <Route path="/emergencias" element={<ModuleIframe />} />
     <Route path="/emergências" element={<ModuleIframe />} />
     <Route path="/peconhentos" element={<AAP2Module />} />
-    <Route path="/antibioticoterapia" element={<ModuleIframe />} />
+    <Route path="/antibioticoterapia" element={<AntibioticoterapiaVetPage />} />
     <Route path="/receituario-vet" element={<ProtectedClinicRoute><ReceituarioVetPage /></ProtectedClinicRoute>} />
     <Route path="/plantao-vet/*" element={<ProtectedClinicRoute><PlantaoVetApp /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/nova-receita" element={<ProtectedClinicRoute><NovaReceitaPage /></ProtectedClinicRoute>} />
@@ -143,6 +150,8 @@ const appRoutes = (
       <Route path="editorial/medicamentos" element={<ConsultaVetEditorialMedicationsPage />} />
       <Route path="editorial/consensos" element={<ConsultaVetEditorialConsensosPage />} />
       <Route path="editorial/importacao" element={<ConsultaVetEditorialImportPage />} />
+      <Route path="manejo-emergencial" element={<ConsultaVetManejoEmergencialPage />} />
+      <Route path="manejo-emergencial/:slug" element={<ConsultaVetManejoEmergencialGuidePage />} />
     </Route>
     <Route path="/rifa" element={<ModuleIframe />} />
     <Route path="/supabase-test" element={<SupabaseTestPage />} />

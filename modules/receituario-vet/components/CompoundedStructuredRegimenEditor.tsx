@@ -16,11 +16,11 @@ export function CompoundedStructuredRegimenEditor(props: {
   frequencyMode: string
   timesPerDay?: string | number | null
   intervalHours?: string | number | null
+  repeatEveryValue?: string | number | null
+  repeatEveryUnit?: string | null
   onFrequencyModeChange: (value: string) => void
   onTimesPerDayChange: (value: string) => void
   onIntervalHoursChange: (value: string) => void
-  repeatEveryValue?: string | number | null
-  repeatEveryUnit?: string | null
   onRepeatEveryValueChange?: (value: string) => void
   onRepeatEveryUnitChange?: (value: string) => void
   durationMode: string
@@ -78,7 +78,7 @@ export function CompoundedStructuredRegimenEditor(props: {
       <div className="mb-4">
         <p className="mb-2 text-[10px] font-black uppercase tracking-[0.18em] text-[color:var(--rxv-muted)]">Frequência</p>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-          <RxvField label="Modo">
+          <RxvField label="Modo" className="sm:col-span-2">
             <RxvSelect
               value={props.frequencyMode}
               onChange={(e) => props.onFrequencyModeChange(e.target.value)}

@@ -133,6 +133,9 @@ export type MergeableCatalogSearchEntry = {
   id: string
   name?: string | null
   metadata?: Record<string, unknown> | null
+  /** clinic | global — usado para dedupe na busca (clínica: um registo por id; global: por slug/nome) */
+  scope?: string | null
+  source?: string | null
 }
 
 type ValidationResult<T> = {
@@ -332,13 +335,54 @@ export function mergeCatalogSearchResults<T extends MergeableCatalogSearchEntry>
   const seen = new Set<string>()
   const deduped: T[] = []
   for (const entry of results) {
-    const key = normalizeCatalogKey(String(entry.metadata?.global_slug || entry.name || entry.id))
+    const scope = String(entry.scope || entry.source || '')
+    // Duplicatas no banco da clínica com o mesmo nome (ex.: vários QA-FLOW-A-12H) não podem
+    // colapsar num único id — senão o modal pode apontar para o medicamento sem doses recomendadas.
+    const key =
+      scope === 'clinic'
+        ? `clinic:${entry.id}`
+        : `global:${normalizeCatalogKey(String(entry.metadata?.global_slug || entry.name || entry.id))}`
     if (!key || seen.has(key)) continue
     seen.add(key)
     deduped.push(entry)
     if (deduped.length >= limit) break
   }
   return deduped
+}
+
+/** Agrupa nomes iguais (trim + lower) entre linhas da clínica na busca. */
+function clinicHomonymKey(name: string | null | undefined): string {
+  return String(name ?? '').trim().toLowerCase()
+}
+
+/**
+ * Entre medicamentos da clínica com o mesmo nome, se só um tiver doses recomendadas no catálogo,
+ * devolve esse registo (para auto-seleção no modal).
+ */
+export function findUniqueHomonymWithRecommendedDoses<
+  T extends {
+    id: string
+    name?: string | null
+    source?: string | null
+    scope?: string | null
+    recommended_dose_count?: number | null
+  },
+>(results: T[]): T | null {
+  const clinic = results.filter((r) => String(r.scope || r.source || '') === 'clinic')
+  const byName = new Map<string, T[]>()
+  for (const row of clinic) {
+    const k = clinicHomonymKey(row.name)
+    if (!k) continue
+    const arr = byName.get(k) ?? []
+    arr.push(row)
+    byName.set(k, arr)
+  }
+  for (const [, items] of byName) {
+    if (items.length < 2) continue
+    const withDoses = items.filter((i) => (Number(i.recommended_dose_count) || 0) > 0)
+    if (withDoses.length === 1) return withDoses[0]
+  }
+  return null
 }
 
 function resolvePharmacyFlags(input: Record<string, unknown>): { pharmacy_veterinary: boolean; pharmacy_human: boolean; pharmacy_compounding: boolean } {

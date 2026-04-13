@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Patient, Species, PhysiologicalState, Comorbidity } from '../../shared/types/patient';
 import { cn } from '../lib/utils';
-import { Dog, Cat, Activity, Heart, Droplets, ActivitySquare, ChevronDown, ChevronUp, AlertCircle } from 'lucide-react';
+import { Activity, Heart, Droplets, ActivitySquare, ChevronDown, ChevronUp, AlertCircle } from 'lucide-react';
+import { SpeciesPortraitCards } from '../../../../../components/SpeciesPortraitCards';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface PatientFormProps {
@@ -54,36 +55,21 @@ export const PatientForm: React.FC<PatientFormProps> = ({ patient, onChange }) =
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {/* Species */}
-        <div className="space-y-3">
+        <div className="space-y-3 md:col-span-3">
           <label className="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1">
             Espécie <span className="text-red-500">*</span>
           </label>
-          <div className="flex gap-3">
-            <button
-              onClick={() => updateField('species', 'dog')}
-              className={cn(
-                "flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl border-2 transition-all text-sm",
-                patient.species === 'dog' 
-                  ? "bg-indigo-50/50 dark:bg-indigo-500/10 border-indigo-500 dark:border-indigo-500 text-indigo-700 dark:text-indigo-400 font-bold shadow-sm" 
-                  : "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800/80 font-medium"
-              )}
-            >
-              <Dog className="w-4 h-4" />
-              Cão
-            </button>
-            <button
-              onClick={() => updateField('species', 'cat')}
-              className={cn(
-                "flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl border-2 transition-all text-sm",
-                patient.species === 'cat' 
-                  ? "bg-indigo-50/50 dark:bg-indigo-500/10 border-indigo-500 dark:border-indigo-500 text-indigo-700 dark:text-indigo-400 font-bold shadow-sm" 
-                  : "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800/80 font-medium"
-              )}
-            >
-              <Cat className="w-4 h-4" />
-              Gato
-            </button>
-          </div>
+          <SpeciesPortraitCards
+            variant="indigo"
+            size="compact"
+            showHeading={false}
+            canineSelected={patient.species === 'dog'}
+            felineSelected={patient.species === 'cat'}
+            onSelectCanine={() => updateField('species', 'dog')}
+            onSelectFeline={() => updateField('species', 'cat')}
+            canineSubtitle="Cálculos e limites para cães"
+            felineSubtitle="Cálculos e limites para gatos"
+          />
         </div>
 
         {/* Weight */}

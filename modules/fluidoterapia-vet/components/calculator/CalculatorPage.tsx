@@ -1,10 +1,10 @@
 import { useMemo, useState } from 'react';
-import { Beaker, Sparkles } from 'lucide-react';
-import { CalculatorState, FluidSelection, MaintenanceConfig, OngoingLossesConfig, PatientProfile, RehydrationConfig } from '../../types';
+import { Activity } from 'lucide-react';
+import { CalculatorState, MaintenanceConfig, OngoingLossesConfig, PatientProfile, RehydrationConfig } from '../../types';
 import { generateAlerts } from '../../lib/engines/alerts';
 import { calculateMaintenance, calculateOngoingLosses, calculateRehydration, calculateResuscitation } from '../../lib/engines/calculations';
-import { FluidSelectionCard } from './FluidSelectionCard';
 import { LivePreviewPanel } from './LivePreviewPanel';
+import { MobileClinicalPreviewSheet } from './MobileClinicalPreviewSheet';
 import { MaintenanceMethodSelector } from './MaintenanceMethodSelector';
 import { OngoingLossesEstimator } from './OngoingLossesEstimator';
 import { PatientProfileForm } from './PatientProfileForm';
@@ -52,6 +52,7 @@ const initialState: CalculatorState = {
 
 export function CalculatorPage() {
   const [state, setState] = useState<CalculatorState>(initialState);
+  const [mobilePreviewOpen, setMobilePreviewOpen] = useState(false);
 
   const updatePatient = (updates: Partial<PatientProfile>) => {
     setState((current) => {
@@ -76,8 +77,6 @@ export function CalculatorPage() {
   const updateMaintenance = (updates: Partial<MaintenanceConfig>) => setState((current) => ({ ...current, maintenance: { ...current.maintenance, ...updates } }));
   const updateRehydration = (updates: Partial<RehydrationConfig>) => setState((current) => ({ ...current, rehydration: { ...current.rehydration, ...updates } }));
   const updateOngoingLosses = (updates: Partial<OngoingLossesConfig>) => setState((current) => ({ ...current, ongoingLosses: { ...current.ongoingLosses, ...updates } }));
-  const updateFluidSelection = (updates: Partial<FluidSelection>) => setState((current) => ({ ...current, fluidSelection: { ...current.fluidSelection, ...updates } }));
-
   const maintenanceResults = useMemo(() => calculateMaintenance(state.patient, state.maintenance), [state.patient, state.maintenance]);
   const rehydrationResults = useMemo(() => calculateRehydration(state.patient, state.rehydration), [state.patient, state.rehydration]);
   const lossesResults = useMemo(() => calculateOngoingLosses(state.patient, state.ongoingLosses), [state.patient, state.ongoingLosses]);
@@ -87,9 +86,19 @@ export function CalculatorPage() {
     [state.patient, state.maintenance, state.rehydration, state.ongoingLosses, state.resuscitation],
   );
 
+  const previewProps = {
+    state,
+    alerts,
+    maintenanceResults,
+    rehydrationResults,
+    lossesResults,
+    resuscitationResults,
+    onApplyAction: (partialState: Partial<CalculatorState>) => setState((current) => ({ ...current, ...partialState })),
+  } as const;
+
   return (
-    <div className="flex h-full w-full flex-col bg-slate-50/50 dark:bg-slate-950/50 lg:flex-row">
-      <div className="flex-1 overflow-y-auto p-4 lg:p-8">
+    <div className="flex h-full min-h-0 w-full flex-col bg-slate-50/50 dark:bg-slate-950/50 lg:flex-row">
+      <div className="min-h-0 flex-1 overflow-y-auto p-4 lg:p-8">
         <div className="mx-auto w-full space-y-8">
           <header className="space-y-4">
             <div>
@@ -111,17 +120,25 @@ export function CalculatorPage() {
         </div>
       </div>
 
-      <div className="sticky top-0 h-full w-full overflow-y-auto border-l border-slate-200/60 bg-white/80 shadow-2xl backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-900/80 lg:w-[420px] xl:w-[470px] lg:shadow-none">
-        <LivePreviewPanel
-          state={state}
-          alerts={alerts}
-          maintenanceResults={maintenanceResults}
-          rehydrationResults={rehydrationResults}
-          lossesResults={lossesResults}
-          resuscitationResults={resuscitationResults}
-          onApplyAction={(partialState) => setState((current) => ({ ...current, ...partialState }))}
-        />
+      <div className="hidden h-full min-h-0 w-full overflow-y-auto border-l border-slate-200/60 bg-white/80 shadow-2xl backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-900/80 lg:block lg:w-[420px] xl:w-[470px] lg:shadow-none">
+        <LivePreviewPanel {...previewProps} />
       </div>
+
+      <button
+        type="button"
+        className="fixed right-4 z-[45] flex items-center gap-2 rounded-full border border-teal-500/40 bg-teal-600 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-teal-900/30 transition hover:bg-teal-500 lg:hidden"
+        style={{ bottom: 'calc(4.75rem + env(safe-area-inset-bottom, 0px))' }}
+        onClick={() => setMobilePreviewOpen(true)}
+      >
+        <Activity className="h-4 w-4" />
+        Preview
+      </button>
+
+      <MobileClinicalPreviewSheet open={mobilePreviewOpen} onOpenChange={setMobilePreviewOpen}>
+        <div className="flex h-[min(72dvh,560px)] min-h-0 flex-col sm:h-[min(75dvh,620px)]">
+          <LivePreviewPanel {...previewProps} hideHeader />
+        </div>
+      </MobileClinicalPreviewSheet>
     </div>
   );
 }

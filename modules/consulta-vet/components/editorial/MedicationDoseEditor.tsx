@@ -6,6 +6,7 @@ import { buildDoseSummaryLabel, formatDoseSpeciesLabel } from '../../utils/medic
 interface MedicationDoseEditorProps {
   value: MedicationDose[];
   onChange: (nextValue: MedicationDose[]) => void;
+  presentationOptions?: { id: string; label: string }[];
 }
 
 function createEmptyDose(): MedicationDose {
@@ -25,7 +26,7 @@ function createEmptyDose(): MedicationDose {
   };
 }
 
-export function MedicationDoseEditor({ value, onChange }: MedicationDoseEditorProps) {
+export function MedicationDoseEditor({ value, onChange, presentationOptions }: MedicationDoseEditorProps) {
   const doses = value || [];
 
   const updateField = <K extends keyof MedicationDose>(
@@ -98,6 +99,28 @@ export function MedicationDoseEditor({ value, onChange }: MedicationDoseEditorPr
               Calculadora ativa para este regime
             </label>
 
+            {presentationOptions && presentationOptions.length > 0 ? (
+              <div className="xl:col-span-2">
+                <label className="mb-1 block text-xs font-medium text-muted-foreground">
+                  Apresentação preferida no cálculo (opcional)
+                </label>
+                <select
+                  value={dose.presentationId || ''}
+                  onChange={(e) =>
+                    updateField(index, 'presentationId', e.target.value.trim() || undefined)
+                  }
+                  className="w-full rounded-xl border border-border bg-card px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                >
+                  <option value="">Qualquer (usuário escolhe)</option>
+                  {presentationOptions.map((p) => (
+                    <option key={p.id} value={p.id}>
+                      {p.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            ) : null}
+
             <input
               type="number"
               value={dose.doseMin}
@@ -115,13 +138,13 @@ export function MedicationDoseEditor({ value, onChange }: MedicationDoseEditorPr
             <input
               value={dose.doseUnit}
               onChange={(e) => updateField(index, 'doseUnit', e.target.value)}
-              placeholder="doseUnit"
+              placeholder="Unidade da dose (ex.: mg)"
               className="w-full rounded-xl border border-border bg-card px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
             />
             <input
               value={dose.perWeightUnit}
               onChange={(e) => updateField(index, 'perWeightUnit', e.target.value)}
-              placeholder="perWeightUnit"
+              placeholder="Por unidade de peso (ex.: kg)"
               className="w-full rounded-xl border border-border bg-card px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
             />
             <input

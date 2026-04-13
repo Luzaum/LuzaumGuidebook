@@ -17,7 +17,7 @@ export class ConsultaVetErrorBoundary extends React.Component<Props, State> {
   }
 
   componentDidCatch(error: unknown) {
-    console.error('Consulta VET crashed', error);
+    console.error('ConsultaVET crashed', error);
 
     const isDynamicImportError =
       error instanceof Error &&

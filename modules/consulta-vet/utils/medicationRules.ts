@@ -1,4 +1,6 @@
-import { MedicationDose, MedicationPresentation } from '../types/medication';
+import { MedicationDose, MedicationPresentation, MedicationSupplyChannel } from '../types/medication';
+
+const SUPPLY_CHANNELS: MedicationSupplyChannel[] = ['human_pharmacy', 'veterinary', 'compounded'];
 import { calculatePracticalEquivalent } from '../../receituario-vet/rxUiHelpers';
 
 const DOSE_SPECIES_LABELS = {
@@ -117,6 +119,15 @@ export function validateMedicationPresentations(presentations: MedicationPresent
 
     if (label && hasAggregatedPresentationPattern(label)) {
       errors.push(`${prefix}: registre apresentações calculáveis em entradas individuais, não em lista agregada.`);
+    }
+
+    if (
+      presentation.channel !== undefined &&
+      presentation.channel !== null &&
+      String(presentation.channel).trim() !== '' &&
+      !SUPPLY_CHANNELS.includes(presentation.channel as MedicationSupplyChannel)
+    ) {
+      errors.push(`${prefix}: canal inválido (use human_pharmacy, veterinary ou compounded).`);
     }
   });
 

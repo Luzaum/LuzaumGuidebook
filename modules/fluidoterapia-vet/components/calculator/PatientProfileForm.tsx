@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
-import { Activity, Cat, Dog, HeartPulse, Info, Weight } from 'lucide-react';
+import { Activity, HeartPulse, Info, Weight } from 'lucide-react';
+import { SpeciesPortraitCards } from '@/components/SpeciesPortraitCards';
 import { comorbidityContent, physiologicStateContent } from '../../data/clinicalContent';
 import { Comorbidity, PatientProfile, PhysiologicState } from '../../types';
 import { cn } from '../../lib/utils';
@@ -72,35 +73,16 @@ export function PatientProfileForm({ patient, onChange }: Props) {
         </CardHeader>
         <CardContent className="space-y-8 p-6">
           <div className="space-y-3">
-            <Label className="text-sm font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300">Espécie</Label>
-            <div className="grid grid-cols-2 gap-4">
-              <button
-                type="button"
-                onClick={() => onChange({ species: 'canine' })}
-                className={cn(
-                  'flex items-center justify-center gap-3 rounded-xl border-2 p-4 transition-all',
-                  patient.species === 'canine'
-                    ? 'border-teal-500 bg-teal-50 text-teal-700 dark:bg-teal-900/20 dark:text-teal-300'
-                    : 'border-slate-200 text-slate-600 hover:border-slate-300 dark:border-slate-800 dark:text-slate-400 dark:hover:border-slate-700',
-                )}
-              >
-                <Dog className="h-6 w-6" />
-                <span className="text-lg font-medium">Cão</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => onChange({ species: 'feline' })}
-                className={cn(
-                  'flex items-center justify-center gap-3 rounded-xl border-2 p-4 transition-all',
-                  patient.species === 'feline'
-                    ? 'border-teal-500 bg-teal-50 text-teal-700 dark:bg-teal-900/20 dark:text-teal-300'
-                    : 'border-slate-200 text-slate-600 hover:border-slate-300 dark:border-slate-800 dark:text-slate-400 dark:hover:border-slate-700',
-                )}
-              >
-                <Cat className="h-6 w-6" />
-                <span className="text-lg font-medium">Gato</span>
-              </button>
-            </div>
+            <SpeciesPortraitCards
+              variant="teal"
+              size="compact"
+              canineSelected={patient.species === 'canine'}
+              felineSelected={patient.species === 'feline'}
+              onSelectCanine={() => onChange({ species: 'canine' })}
+              onSelectFeline={() => onChange({ species: 'feline' })}
+              canineSubtitle="Paciente canino"
+              felineSubtitle="Paciente felino"
+            />
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
