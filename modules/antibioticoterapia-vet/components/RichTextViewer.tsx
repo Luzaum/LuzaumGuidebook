@@ -5,33 +5,33 @@ function bgHighlightStyle(bgName: string): React.CSSProperties {
   switch (bgName) {
     case 'green-100':
       return {
-        background: 'color-mix(in srgb, var(--primary) 20%, var(--card))',
-        color: 'var(--foreground)',
+        background: 'color-mix(in srgb, hsl(var(--primary)) 20%, hsl(var(--card)))',
+        color: 'hsl(var(--foreground))',
       };
     case 'blue-100':
       return {
-        background: 'color-mix(in srgb, var(--secondary) 22%, var(--card))',
-        color: 'var(--foreground)',
+        background: 'color-mix(in srgb, hsl(var(--secondary)) 22%, hsl(var(--card)))',
+        color: 'hsl(var(--foreground))',
       };
     case 'yellow-100':
       return {
-        background: 'color-mix(in srgb, var(--chart-5) 28%, var(--card))',
-        color: 'var(--foreground)',
+        background: 'color-mix(in srgb, var(--chart-5) 28%, hsl(var(--card)))',
+        color: 'hsl(var(--foreground))',
       };
     case 'red-100':
       return {
-        background: 'color-mix(in srgb, var(--destructive) 18%, var(--card))',
-        color: 'var(--foreground)',
+        background: 'color-mix(in srgb, hsl(var(--destructive)) 18%, hsl(var(--card)))',
+        color: 'hsl(var(--foreground))',
       };
     case 'purple-100':
       return {
-        background: 'color-mix(in srgb, var(--chart-4) 22%, var(--card))',
-        color: 'var(--foreground)',
+        background: 'color-mix(in srgb, var(--chart-4) 22%, hsl(var(--card)))',
+        color: 'hsl(var(--foreground))',
       };
     default:
       return {
-        background: 'color-mix(in srgb, var(--foreground) 8%, var(--card))',
-        color: 'var(--foreground)',
+        background: 'color-mix(in srgb, hsl(var(--foreground)) 8%, hsl(var(--card)))',
+        color: 'hsl(var(--foreground))',
       };
   }
 }
@@ -39,29 +39,29 @@ function bgHighlightStyle(bgName: string): React.CSSProperties {
 function textAccentStyle(colorName: string): React.CSSProperties {
   switch (colorName) {
     case 'green-700':
-      return { color: 'var(--primary)' };
+      return { color: 'hsl(var(--primary))' };
     case 'blue-700':
-      return { color: 'var(--secondary)' };
+      return { color: 'hsl(var(--secondary))' };
     case 'purple-700':
       return { color: 'var(--chart-4)' };
     case 'rose-700':
       return { color: 'var(--chart-4)' };
     case 'red-700':
     case 'red-600':
-      return { color: 'var(--destructive)' };
+      return { color: 'hsl(var(--destructive))' };
     case 'orange-700':
       return { color: 'var(--chart-5)' };
     default:
-      return { color: 'var(--foreground)' };
+      return { color: 'hsl(var(--foreground))' };
   }
 }
 
-const MIND_BORDER = ['var(--primary)', 'var(--secondary)', 'var(--accent)', 'var(--chart-4)'] as const;
+const MIND_BORDER = ['hsl(var(--primary))', 'hsl(var(--secondary))', 'hsl(var(--accent))', 'var(--chart-4)'] as const;
 const MIND_DOT = [
-  'color-mix(in srgb, var(--primary) 40%, var(--card))',
-  'color-mix(in srgb, var(--secondary) 40%, var(--card))',
-  'color-mix(in srgb, var(--accent) 45%, var(--card))',
-  'color-mix(in srgb, var(--chart-4) 40%, var(--card))',
+  'color-mix(in srgb, hsl(var(--primary)) 40%, hsl(var(--card)))',
+  'color-mix(in srgb, hsl(var(--secondary)) 40%, hsl(var(--card)))',
+  'color-mix(in srgb, hsl(var(--accent)) 45%, hsl(var(--card)))',
+  'color-mix(in srgb, var(--chart-4) 40%, hsl(var(--card)))',
 ] as const;
 
 const parseInline = (line: string): React.ReactNode => {
@@ -86,7 +86,7 @@ const parseInline = (line: string): React.ReactNode => {
     
     if (boldText !== undefined) {
       parts.push(
-        <strong key={key} className="font-semibold" style={{ color: 'var(--foreground)' }}>
+        <strong key={key} className="font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
           {parseInline(boldText)}
         </strong>,
       );
@@ -126,15 +126,15 @@ const Flowchart: React.FC<{ content: string }> = ({ content }) => {
           <div
             className="m-1 flex-grow rounded-lg border-2 px-4 py-2 text-center font-semibold shadow-sm sm:flex-grow-0"
             style={{
-              borderColor: 'var(--primary)',
-              background: 'color-mix(in srgb, var(--primary) 12%, var(--card))',
-              color: 'var(--foreground)',
+              borderColor: 'hsl(var(--primary))',
+              background: 'color-mix(in srgb, hsl(var(--primary)) 12%, hsl(var(--card)))',
+              color: 'hsl(var(--foreground))',
             }}
           >
             {step}
           </div>
           {index < steps.length - 1 && (
-            <svg className="hidden h-6 w-8 sm:block" style={{ color: 'var(--primary)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="hidden h-6 w-8 sm:block" style={{ color: 'hsl(var(--primary))' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           )}
@@ -148,24 +148,24 @@ const AlertBox: React.FC<{ type: string; children: React.ReactNode }> = ({ type,
   const base = 'my-3 p-3 border-l-4 rounded-r-lg text-sm';
   const palette: { [key: string]: React.CSSProperties } = {
     info: {
-      borderColor: 'var(--secondary)',
-      background: 'color-mix(in srgb, var(--secondary) 10%, var(--card))',
-      color: 'var(--foreground)',
+      borderColor: 'hsl(var(--secondary))',
+      background: 'color-mix(in srgb, hsl(var(--secondary)) 10%, hsl(var(--card)))',
+      color: 'hsl(var(--foreground))',
     },
     success: {
-      borderColor: 'var(--primary)',
-      background: 'var(--card)',
-      color: 'var(--foreground)',
+      borderColor: 'hsl(var(--primary))',
+      background: 'hsl(var(--card))',
+      color: 'hsl(var(--foreground))',
     },
     warning: {
       borderColor: 'var(--chart-5)',
-      background: 'color-mix(in srgb, var(--chart-5) 14%, var(--card))',
-      color: 'var(--foreground)',
+      background: 'color-mix(in srgb, var(--chart-5) 14%, hsl(var(--card)))',
+      color: 'hsl(var(--foreground))',
     },
     danger: {
-      borderColor: 'var(--destructive)',
-      background: 'color-mix(in srgb, var(--destructive) 12%, var(--card))',
-      color: 'var(--foreground)',
+      borderColor: 'hsl(var(--destructive))',
+      background: 'color-mix(in srgb, hsl(var(--destructive)) 12%, hsl(var(--card)))',
+      color: 'hsl(var(--foreground))',
     },
   };
   const style = palette[type] || palette.info;
@@ -195,11 +195,11 @@ const MindMap: React.FC<{ content: string }> = ({ content }) => {
           className="absolute -left-[5px] top-3 h-2 w-2 rounded-full"
           style={{ background: MIND_DOT[i] }}
         />
-        <p className="font-bold" style={{ color: 'var(--foreground)' }}>
+        <p className="font-bold" style={{ color: 'hsl(var(--foreground))' }}>
           {parseInline(title)}
         </p>
         {description && (
-          <p className="text-sm" style={{ color: 'var(--muted-foreground)' }}>
+          <p className="text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
             {parseInline(description)}
           </p>
         )}
@@ -211,8 +211,8 @@ const MindMap: React.FC<{ content: string }> = ({ content }) => {
     <div
       className="my-4 rounded-lg border p-4"
       style={{
-        borderColor: 'var(--border)',
-        background: 'color-mix(in srgb, var(--foreground) 4%, var(--card))',
+        borderColor: 'hsl(var(--border))',
+        background: 'color-mix(in srgb, hsl(var(--foreground)) 4%, hsl(var(--card)))',
       }}
     >
       {lines.map(renderNode)}
@@ -252,7 +252,7 @@ const RichTextViewer: React.FC<{ text: string }> = ({ text }) => {
               <h4
                 key={`${i}-${j}`}
                 className="mt-4 mb-2 border-b pb-1 text-lg font-bold"
-                style={{ color: 'var(--foreground)', borderColor: 'var(--border)' }}
+                style={{ color: 'hsl(var(--foreground))', borderColor: 'hsl(var(--border))' }}
               >
                 {line.replace(/##/g, '').trim()}
               </h4>

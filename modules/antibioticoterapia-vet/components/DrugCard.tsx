@@ -28,10 +28,10 @@ const InfoRow: React.FC<{ label: string; text?: string; children?: React.ReactNo
   if (!text && !children) return null
   return (
     <div className="text-sm">
-      <p className="font-semibold" style={{ color: 'var(--foreground)' }}>
+      <p className="font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
         {label}
       </p>
-      <div className="leading-normal" style={{ color: 'var(--muted-foreground)' }}>
+      <div className="leading-normal" style={{ color: 'hsl(var(--muted-foreground))' }}>
         {text || children}
       </div>
     </div>
@@ -41,7 +41,7 @@ const InfoRow: React.FC<{ label: string; text?: string; children?: React.ReactNo
 const SectionHeader: React.FC<{ title: string }> = ({ title }) => (
   <h4
     className="mb-2 mt-4 border-b pb-1 text-base font-semibold"
-    style={{ color: 'var(--foreground)', borderColor: 'var(--border)' }}
+    style={{ color: 'hsl(var(--foreground))', borderColor: 'hsl(var(--border))' }}
   >
     {title}
   </h4>
@@ -114,9 +114,9 @@ const DrugCard: React.FC<DrugCardProps> = ({
   const comorbWarnings = getComorbidityWarnings(sub, comorbidities)
 
   const statBoxStyle = {
-    borderColor: 'var(--border)',
-    background: 'color-mix(in srgb, var(--muted) 35%, var(--card))',
-    color: 'var(--foreground)',
+    borderColor: 'hsl(var(--border))',
+    background: 'color-mix(in srgb, hsl(var(--muted)) 35%, hsl(var(--card)))',
+    color: 'hsl(var(--foreground))',
   } as const
 
   return (
@@ -126,7 +126,7 @@ const DrugCard: React.FC<DrugCardProps> = ({
         background: st.bg,
         borderColor: st.border,
         boxShadow: highlight
-          ? '0 0 0 3px color-mix(in srgb, var(--ring) 65%, transparent)'
+          ? '0 0 0 3px color-mix(in srgb, hsl(var(--ring)) 65%, transparent)'
           : '0 1px 2px 0 rgb(0 0 0 / 0.05)',
       }}
     >
@@ -135,10 +135,10 @@ const DrugCard: React.FC<DrugCardProps> = ({
           {st.emoji}
         </span>
         <div>
-          <h3 className="text-lg font-bold" style={{ color: 'var(--foreground)' }}>
+          <h3 className="text-lg font-bold" style={{ color: 'hsl(var(--foreground))' }}>
             {drug.name}
           </h3>
-          <p className="text-xs" style={{ color: 'var(--muted-foreground)' }}>
+          <p className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
             Classe: {cls} · PK/PD: <b>{pk.pd}</b> · Perfil: <b>{pk.hydro}</b> · Elim.: <b>{pk.elim}</b>
           </p>
         </div>
@@ -147,13 +147,13 @@ const DrugCard: React.FC<DrugCardProps> = ({
       <div className="grid gap-x-4 md:grid-cols-2">
         <div>
           <SectionHeader title="Mecanismo de Ação" />
-          <p className="text-sm" style={{ color: 'var(--muted-foreground)' }}>
+          <p className="text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
             {drug.mechanism || pk.moa}
           </p>
         </div>
         <div>
           <SectionHeader title="Indicações Comuns" />
-          <p className="text-sm" style={{ color: 'var(--muted-foreground)' }}>
+          <p className="text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
             {drug.indications}
           </p>
         </div>
@@ -162,7 +162,7 @@ const DrugCard: React.FC<DrugCardProps> = ({
       {linkedDiseases.length > 0 && onOpenLegacyDisease && (
         <div className="mt-2">
           <SectionHeader title="No guia por doença (catálogo clássico)" />
-          <p className="mb-2 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+          <p className="mb-2 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
             Abre a condição no fluxo por suspeita, com 1ª linha e alternativas.
           </p>
           <div className="flex flex-wrap gap-1.5">
@@ -172,9 +172,9 @@ const DrugCard: React.FC<DrugCardProps> = ({
                 type="button"
                 className="rounded-full border px-2.5 py-1 text-left text-[11px] font-medium transition hover:opacity-90"
                 style={{
-                  borderColor: 'color-mix(in srgb, var(--primary) 35%, var(--border))',
-                  background: 'color-mix(in srgb, var(--primary) 10%, var(--card))',
-                  color: 'var(--foreground)',
+                  borderColor: 'color-mix(in srgb, hsl(var(--primary)) 35%, hsl(var(--border)))',
+                  background: 'color-mix(in srgb, hsl(var(--primary)) 10%, hsl(var(--card)))',
+                  color: 'hsl(var(--foreground))',
                 }}
                 title={r.system}
                 onClick={() => onOpenLegacyDisease(r.name)}
@@ -183,7 +183,7 @@ const DrugCard: React.FC<DrugCardProps> = ({
               </button>
             ))}
             {linkedDiseases.length > 12 && (
-              <span className="self-center text-[10px]" style={{ color: 'var(--muted-foreground)' }}>
+              <span className="self-center text-[10px]" style={{ color: 'hsl(var(--muted-foreground))' }}>
                 +{linkedDiseases.length - 12} outras
               </span>
             )}
@@ -192,23 +192,23 @@ const DrugCard: React.FC<DrugCardProps> = ({
       )}
 
       <SectionHeader title="Espectro de Ação" />
-      <p className="text-sm" style={{ color: 'var(--muted-foreground)' }}>
+      <p className="text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
         {drug.spectrum}
       </p>
 
       <SectionHeader title="Dosagem Padrão" />
       <div className="mt-1 grid gap-x-4 text-sm md:grid-cols-2">
         <div>
-          <span className="font-semibold" style={{ color: 'var(--foreground)' }}>
+          <span className="font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
             Cão:
           </span>{' '}
-          <span style={{ color: 'var(--muted-foreground)' }}>{drug.dose_dog || '—'}</span>
+          <span style={{ color: 'hsl(var(--muted-foreground))' }}>{drug.dose_dog || '—'}</span>
         </div>
         <div>
-          <span className="font-semibold" style={{ color: 'var(--foreground)' }}>
+          <span className="font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
             Gato:
           </span>{' '}
-          <span style={{ color: 'var(--muted-foreground)' }}>{drug.dose_cat || '—'}</span>
+          <span style={{ color: 'hsl(var(--muted-foreground))' }}>{drug.dose_cat || '—'}</span>
         </div>
       </div>
 
@@ -218,9 +218,9 @@ const DrugCard: React.FC<DrugCardProps> = ({
         <p
           className="mt-1 rounded-md border p-2 text-xs"
           style={{
-            borderColor: 'color-mix(in srgb, var(--chart-2) 35%, var(--border))',
-            background: 'color-mix(in srgb, var(--chart-2) 12%, var(--card))',
-            color: 'var(--foreground)',
+            borderColor: 'color-mix(in srgb, var(--chart-2) 35%, hsl(var(--border)))',
+            background: 'color-mix(in srgb, var(--chart-2) 12%, hsl(var(--card)))',
+            color: 'hsl(var(--foreground))',
           }}
         >
           {drug.infusion_why}
@@ -231,9 +231,9 @@ const DrugCard: React.FC<DrugCardProps> = ({
         <div
           className="mt-3 rounded-md border p-2 text-sm"
           style={{
-            borderColor: 'color-mix(in srgb, var(--chart-5) 35%, var(--border))',
-            background: 'color-mix(in srgb, var(--chart-5) 10%, var(--card))',
-            color: 'var(--foreground)',
+            borderColor: 'color-mix(in srgb, var(--chart-5) 35%, hsl(var(--border)))',
+            background: 'color-mix(in srgb, var(--chart-5) 10%, hsl(var(--card)))',
+            color: 'hsl(var(--foreground))',
           }}
         >
           <b>Cautelas:</b> {drug.cautions}
@@ -243,17 +243,17 @@ const DrugCard: React.FC<DrugCardProps> = ({
       <div
         className="mt-4 flex flex-grow flex-col rounded-lg border p-3"
         style={{
-          borderColor: 'var(--border)',
-          background: 'color-mix(in srgb, var(--card) 92%, var(--foreground) 4%)',
+          borderColor: 'hsl(var(--border))',
+          background: 'color-mix(in srgb, hsl(var(--card)) 92%, hsl(var(--foreground)) 4%)',
         }}
       >
-        <h4 className="mb-3 font-semibold" style={{ color: 'var(--foreground)' }}>
+        <h4 className="mb-3 font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
           Calculadora de dose
         </h4>
         <fieldset disabled={!calcEnabled} className={!calcEnabled ? 'pointer-events-none opacity-50' : ''}>
           <div className="grid grid-cols-2 gap-3 text-sm md:grid-cols-4">
             <div>
-              <label className="mb-1 block font-medium" style={{ color: 'var(--foreground)' }}>
+              <label className="mb-1 block font-medium" style={{ color: 'hsl(var(--foreground))' }}>
                 Espécie
               </label>
               <select value={species} onChange={(e) => setSpecies(e.target.value as Species)} className={inputClass}>
@@ -262,7 +262,7 @@ const DrugCard: React.FC<DrugCardProps> = ({
               </select>
             </div>
             <div>
-              <label className="mb-1 block font-medium" style={{ color: 'var(--foreground)' }}>
+              <label className="mb-1 block font-medium" style={{ color: 'hsl(var(--foreground))' }}>
                 Peso (kg)
               </label>
               <input
@@ -274,7 +274,7 @@ const DrugCard: React.FC<DrugCardProps> = ({
               />
             </div>
             <div>
-              <label className="mb-1 block font-medium" style={{ color: 'var(--foreground)' }}>
+              <label className="mb-1 block font-medium" style={{ color: 'hsl(var(--foreground))' }}>
                 Dose (mg/kg)
               </label>
               <input
@@ -284,12 +284,12 @@ const DrugCard: React.FC<DrugCardProps> = ({
                 step="0.1"
                 className={inputClass}
               />
-              <p className="mt-1 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+              <p className="mt-1 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                 Sugestão: {doseHint}
               </p>
             </div>
             <div>
-              <label className="mb-1 block font-medium" style={{ color: 'var(--foreground)' }}>
+              <label className="mb-1 block font-medium" style={{ color: 'hsl(var(--foreground))' }}>
                 Forma
               </label>
               <select value={form} onChange={(e) => setForm(e.target.value)} className={`${inputClass} mb-1`}>
@@ -308,11 +308,11 @@ const DrugCard: React.FC<DrugCardProps> = ({
           </div>
           <div className="mt-4 grid grid-cols-2 gap-2 text-sm sm:grid-cols-4">
             {(Object.keys(comorbidities) as Array<keyof ComorbidityState>).map((k) => (
-              <label key={k} className="inline-flex items-center gap-2 font-medium" style={{ color: 'var(--foreground)' }}>
+              <label key={k} className="inline-flex items-center gap-2 font-medium" style={{ color: 'hsl(var(--foreground))' }}>
                 <input
                   type="checkbox"
                   className="rounded shadow-sm"
-                  style={{ accentColor: 'var(--primary)' }}
+                  style={{ accentColor: 'hsl(var(--primary))' }}
                   checked={comorbidities[k]}
                   onChange={(e) => setComorbidities({ ...comorbidities, [k]: e.target.checked })}
                 />
@@ -324,9 +324,9 @@ const DrugCard: React.FC<DrugCardProps> = ({
             <div
               className="mt-3 space-y-1 rounded-md border p-2 text-sm"
               style={{
-                borderColor: 'color-mix(in srgb, var(--destructive) 40%, var(--border))',
-                background: 'color-mix(in srgb, var(--destructive) 10%, var(--card))',
-                color: 'var(--foreground)',
+                borderColor: 'color-mix(in srgb, hsl(var(--destructive)) 40%, hsl(var(--border)))',
+                background: 'color-mix(in srgb, hsl(var(--destructive)) 10%, hsl(var(--card)))',
+                color: 'hsl(var(--foreground))',
               }}
             >
               <p className="font-bold">Alertas de comorbidade</p>
@@ -341,19 +341,19 @@ const DrugCard: React.FC<DrugCardProps> = ({
 
         <div className="mt-4 grid grid-cols-1 gap-3 text-center md:grid-cols-3">
           <div className="rounded-lg border p-2" style={statBoxStyle}>
-            <div className="text-xs font-medium" style={{ color: 'var(--muted-foreground)' }}>
+            <div className="text-xs font-medium" style={{ color: 'hsl(var(--muted-foreground))' }}>
               Dose total
             </div>
             <div className="text-lg font-bold">{Number.isFinite(totalMg) ? totalMg.toFixed(2) : '—'} mg</div>
           </div>
           <div
             className="rounded-lg border p-2"
-            style={{ borderColor: 'var(--border)', background: 'color-mix(in srgb, var(--primary) 10%, var(--card))' }}
+            style={{ borderColor: 'hsl(var(--border))', background: 'color-mix(in srgb, hsl(var(--primary)) 10%, hsl(var(--card)))' }}
           >
-            <div className="text-xs font-medium" style={{ color: 'var(--foreground)' }}>
+            <div className="text-xs font-medium" style={{ color: 'hsl(var(--foreground))' }}>
               {form.startsWith('Líquido') ? 'Volume/dose' : 'Comprimidos/dose'}
             </div>
-            <div className="text-lg font-bold" style={{ color: 'var(--foreground)' }}>
+            <div className="text-lg font-bold" style={{ color: 'hsl(var(--foreground))' }}>
               {form.startsWith('Líquido')
                 ? Number.isFinite(vol)
                   ? `${roundVol(vol).toFixed(2)} mL`
@@ -364,7 +364,7 @@ const DrugCard: React.FC<DrugCardProps> = ({
             </div>
           </div>
           <div className="rounded-lg border p-2" style={statBoxStyle}>
-            <div className="text-xs font-medium" style={{ color: 'var(--muted-foreground)' }}>
+            <div className="text-xs font-medium" style={{ color: 'hsl(var(--muted-foreground))' }}>
               Ajuste séptico
             </div>
             <div className="text-lg font-bold">
@@ -373,7 +373,7 @@ const DrugCard: React.FC<DrugCardProps> = ({
           </div>
         </div>
       </div>
-      <div className="mt-auto pt-2 text-[11px]" style={{ color: 'var(--muted-foreground)' }}>
+      <div className="mt-auto pt-2 text-[11px]" style={{ color: 'hsl(var(--muted-foreground))' }}>
         Fontes base: Plumb&apos;s, BSAVA, Nelson &amp; Couto.
       </div>
       <Modal open={!!modalInfo} title={modalInfo?.title || 'Informação'} onClose={() => setModalInfo(null)}>

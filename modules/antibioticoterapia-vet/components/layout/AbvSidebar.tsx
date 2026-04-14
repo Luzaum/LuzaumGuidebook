@@ -52,7 +52,7 @@ export function AbvSidebar({ activeTab, setActiveTab }: AbvSidebarProps) {
           className="overflow-hidden rounded-2xl border p-2"
           style={{
             borderColor: 'var(--sidebar-border)',
-            background: 'color-mix(in srgb, var(--sidebar) 88%, var(--foreground) 4%)',
+            background: 'color-mix(in srgb, var(--sidebar) 88%, hsl(var(--foreground)) 4%)',
           }}
         >
           <button
@@ -105,7 +105,7 @@ export function AbvSidebar({ activeTab, setActiveTab }: AbvSidebarProps) {
             }
             onMouseEnter={(e) => {
               if (activeTab === id) return
-              e.currentTarget.style.background = 'color-mix(in srgb, var(--foreground) 6%, transparent)'
+              e.currentTarget.style.background = 'color-mix(in srgb, hsl(var(--foreground)) 6%, transparent)'
             }}
             onMouseLeave={(e) => {
               if (activeTab === id) return
@@ -123,7 +123,7 @@ export function AbvSidebar({ activeTab, setActiveTab }: AbvSidebarProps) {
           type="button"
           onClick={toggleCollapsed}
           className="flex w-full items-center justify-center gap-2 rounded-lg py-2 text-xs font-medium transition hover:opacity-90"
-          style={{ color: 'var(--muted-foreground)' }}
+          style={{ color: 'hsl(var(--muted-foreground))' }}
           aria-expanded={!collapsed}
         >
           {collapsed ? <PanelLeftOpen className="h-4 w-4" /> : <PanelLeftClose className="h-4 w-4" />}

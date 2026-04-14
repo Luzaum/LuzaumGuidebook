@@ -1,6 +1,5 @@
 import type { AntibioticIndication, RecommendationResult } from '../model/types'
 import { ANTIBIOTIC_MOLECULES } from '../data-v2/molecules'
-import { getAntibioticSheetV2 } from '../data-v2/antibiotics'
 import { getSyndromeInstitutionalMapping } from '../data-v2/institutionalMappings'
 import { getSourceEntry } from '../data-v2/references'
 import { concordanceStateFromMapping, REGIMEN_CONCORDANCE_EXPLANATION } from '../data-v2/institutionalConcordance'
@@ -32,41 +31,34 @@ const INDICATION_EXPLAIN: Record<AntibioticIndication, { title: string; detail: 
 
 interface SyndromeV2PanelProps {
   result: RecommendationResult
-  onOpenMoleculeV2?: (moleculeId: string) => void
+  /** Abre o catálogo legado de antimicrobianos com busca pelo nome exibido (liga engine v2 ao catálogo). */
+  onOpenAntibioticInCatalog?: (legacySearchSeed: string) => void
 }
 
 function MoleculeLinksRow({
   moleculeIds,
-  onOpen,
+  onOpenInCatalog,
 }: {
   moleculeIds: string[]
-  onOpen?: (moleculeId: string) => void
+  onOpenInCatalog?: (legacySearchSeed: string) => void
 }) {
-  if (!moleculeIds.length || !onOpen) return null
+  if (!moleculeIds.length || !onOpenInCatalog) return null
   return (
-    <div className="mt-2 border-t pt-2" style={{ borderColor: 'var(--border)' }}>
-      <span className="text-xs font-medium" style={{ color: 'var(--muted-foreground)' }}>
-        Antimicrobianos (ficha v2):
+    <div className="mt-2 border-t pt-2" style={{ borderColor: 'hsl(var(--border))' }}>
+      <span className="text-xs font-medium" style={{ color: 'hsl(var(--muted-foreground))' }}>
+        Antimicrobianos (catálogo legado):
       </span>
       <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1">
         {moleculeIds.map((mid) => {
           const mol = ANTIBIOTIC_MOLECULES[mid]
-          const sheet = getAntibioticSheetV2(mid)
           const label = mol?.displayName ?? mid
-          if (!sheet) {
-            return (
-              <span key={mid} className="text-xs" style={{ color: 'var(--muted-foreground)' }}>
-                {label}
-              </span>
-            )
-          }
           return (
             <button
               key={mid}
               type="button"
-              className="text-xs font-medium underline-offset-2 hover:underline"
-              style={{ color: 'var(--primary)' }}
-              onClick={() => onOpen(mid)}
+              className="cursor-pointer text-xs font-medium underline-offset-2 hover:underline"
+              style={{ color: 'hsl(var(--primary))' }}
+              onClick={() => onOpenInCatalog(label)}
             >
               {label}
             </button>
@@ -83,23 +75,23 @@ function referenceKeyDisplayLabel(key: string): string {
   return key
 }
 
-export function SyndromeV2Panel({ result, onOpenMoleculeV2 }: SyndromeV2PanelProps) {
+export function SyndromeV2Panel({ result, onOpenAntibioticInCatalog }: SyndromeV2PanelProps) {
   const institutionalMap = getSyndromeInstitutionalMapping(result.syndromeId)
   const syndromeConcordance = concordanceStateFromMapping(institutionalMap)
 
   return (
-    <div className="space-y-5 text-left text-sm" style={{ color: 'var(--foreground)' }}>
+    <div className="space-y-5 text-left text-sm" style={{ color: 'hsl(var(--foreground))' }}>
       <div>
-        <h2 className="font-serif text-xl font-bold" style={{ color: 'var(--foreground)' }}>
+        <h2 className="font-serif text-xl font-bold" style={{ color: 'hsl(var(--foreground))' }}>
           {result.syndromeLabel}
         </h2>
-        <p className="mt-1 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+        <p className="mt-1 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
           Motor v2 · cenário: <strong>{result.scenarioResolved}</strong>
           {result.scenarioFallbackFrom ? ` (ajuste a partir de ${result.scenarioFallbackFrom})` : ''}
         </p>
         {syndromeConcordance && (
           <div className="mt-2 flex flex-wrap items-center gap-2">
-            <span className="text-[10px] font-medium uppercase tracking-wide" style={{ color: 'var(--muted-foreground)' }}>
+            <span className="text-[10px] font-medium uppercase tracking-wide" style={{ color: 'hsl(var(--muted-foreground))' }}>
               Concordância do perfil
             </span>
             <InstitutionalConcordanceChip state={syndromeConcordance} />
@@ -110,23 +102,23 @@ export function SyndromeV2Panel({ result, onOpenMoleculeV2 }: SyndromeV2PanelPro
       <section
         className="rounded-[var(--radius)] border p-3"
         style={{
-          borderColor: 'var(--border)',
-          background: 'color-mix(in srgb, var(--accent) 12%, var(--card))',
+          borderColor: 'hsl(var(--border))',
+          background: 'color-mix(in srgb, hsl(var(--accent)) 12%, hsl(var(--card)))',
         }}
       >
-        <h3 className="text-sm font-semibold" style={{ color: 'var(--foreground)' }}>
+        <h3 className="text-sm font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
           {INDICATION_EXPLAIN[result.antibioticIndication].title}
         </h3>
-        <p className="mt-1 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+        <p className="mt-1 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
           {INDICATION_EXPLAIN[result.antibioticIndication].detail}
         </p>
       </section>
 
       <section className="abv-panel p-3">
-        <h3 className="font-semibold" style={{ color: 'var(--primary)' }}>
+        <h3 className="font-semibold" style={{ color: 'hsl(var(--primary))' }}>
           Racional da recomendação
         </h3>
-        <ul className="mt-2 list-inside list-disc space-y-1" style={{ color: 'var(--muted-foreground)' }}>
+        <ul className="mt-2 list-inside list-disc space-y-1" style={{ color: 'hsl(var(--muted-foreground))' }}>
           {result.rationale.map((line, i) => (
             <li key={i}>{line}</li>
           ))}
@@ -136,13 +128,13 @@ export function SyndromeV2Panel({ result, onOpenMoleculeV2 }: SyndromeV2PanelPro
       <section
         className="rounded-[var(--radius)] border p-3"
         style={{
-          borderColor: 'var(--border)',
-          background: 'color-mix(in srgb, var(--muted) 35%, var(--card))',
+          borderColor: 'hsl(var(--border))',
+          background: 'color-mix(in srgb, hsl(var(--muted)) 35%, hsl(var(--card)))',
         }}
       >
         <h3 className="font-semibold">Cultura e amostragem</h3>
         <p className="mt-1 font-medium">{result.culture.summary}</p>
-        <ul className="mt-2 list-inside list-disc space-y-1" style={{ color: 'var(--muted-foreground)' }}>
+        <ul className="mt-2 list-inside list-disc space-y-1" style={{ color: 'hsl(var(--muted-foreground))' }}>
           {result.culture.because.map((b, i) => (
             <li key={i}>{b}</li>
           ))}
@@ -150,10 +142,10 @@ export function SyndromeV2Panel({ result, onOpenMoleculeV2 }: SyndromeV2PanelPro
       </section>
 
       <section>
-        <h3 className="font-semibold" style={{ color: 'var(--primary)' }}>
+        <h3 className="font-semibold" style={{ color: 'hsl(var(--primary))' }}>
           Recomendação principal (regimes)
         </h3>
-        <p className="mt-1 text-[11px] leading-snug" style={{ color: 'var(--muted-foreground)' }}>
+        <p className="mt-1 text-[11px] leading-snug" style={{ color: 'hsl(var(--muted-foreground))' }}>
           {REGIMEN_CONCORDANCE_EXPLANATION}
         </p>
         <div className="mt-2 space-y-3">
@@ -162,11 +154,11 @@ export function SyndromeV2Panel({ result, onOpenMoleculeV2 }: SyndromeV2PanelPro
               key={r.regimenId}
               className="abv-panel p-3"
               style={{
-                background: 'color-mix(in srgb, var(--primary) 10%, var(--card))',
+                background: 'color-mix(in srgb, hsl(var(--primary)) 10%, hsl(var(--card)))',
               }}
             >
               <div className="font-medium">{r.regimen.label}</div>
-              <div className="font-mono text-xs" style={{ color: 'var(--muted-foreground)' }}>
+              <div className="font-mono text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                 ID regime: {r.regimenId}
               </div>
               {r.modifiersApplied.length > 0 && (
@@ -177,11 +169,11 @@ export function SyndromeV2Panel({ result, onOpenMoleculeV2 }: SyndromeV2PanelPro
                 </ul>
               )}
               {r.regimen.settingNote && (
-                <p className="mt-2 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+                <p className="mt-2 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                   {r.regimen.settingNote}
                 </p>
               )}
-              <MoleculeLinksRow moleculeIds={r.regimen.moleculeIds} onOpen={onOpenMoleculeV2} />
+              <MoleculeLinksRow moleculeIds={r.regimen.moleculeIds} onOpenInCatalog={onOpenAntibioticInCatalog} />
             </div>
           ))}
         </div>
@@ -199,7 +191,7 @@ export function SyndromeV2Panel({ result, onOpenMoleculeV2 }: SyndromeV2PanelPro
                     ({r.modifiersApplied[0]})
                   </span>
                 )}
-                <MoleculeLinksRow moleculeIds={r.regimen.moleculeIds} onOpen={onOpenMoleculeV2} />
+                <MoleculeLinksRow moleculeIds={r.regimen.moleculeIds} onOpenInCatalog={onOpenAntibioticInCatalog} />
               </li>
             ))}
           </ul>
@@ -208,7 +200,7 @@ export function SyndromeV2Panel({ result, onOpenMoleculeV2 }: SyndromeV2PanelPro
 
       {result.avoid.length > 0 && (
         <section>
-          <h3 className="font-semibold" style={{ color: 'var(--destructive)' }}>
+          <h3 className="font-semibold" style={{ color: 'hsl(var(--destructive))' }}>
             Evitar / cautela estrutural
           </h3>
           <ul className="mt-2 space-y-1">
@@ -230,13 +222,13 @@ export function SyndromeV2Panel({ result, onOpenMoleculeV2 }: SyndromeV2PanelPro
                 key={a.id}
                 className="rounded-[var(--radius)] border p-2 text-xs"
                 style={{
-                  borderColor: 'color-mix(in srgb, var(--chart-5) 50%, var(--border))',
-                  background: 'color-mix(in srgb, var(--chart-5) 12%, var(--card))',
+                  borderColor: 'color-mix(in srgb, var(--chart-5) 50%, hsl(var(--border)))',
+                  background: 'color-mix(in srgb, var(--chart-5) 12%, hsl(var(--card)))',
                 }}
               >
                 <div className="font-semibold">{a.title}</div>
-                <div style={{ color: 'var(--foreground)' }}>{a.detail}</div>
-                <div className="mt-1" style={{ color: 'var(--muted-foreground)' }}>
+                <div style={{ color: 'hsl(var(--foreground))' }}>{a.detail}</div>
+                <div className="mt-1" style={{ color: 'hsl(var(--muted-foreground))' }}>
                   Por quê: {a.because}
                 </div>
               </li>
@@ -254,8 +246,8 @@ export function SyndromeV2Panel({ result, onOpenMoleculeV2 }: SyndromeV2PanelPro
                 key={a.id}
                 className="rounded-[var(--radius)] border p-2 text-xs"
                 style={{
-                  borderColor: 'var(--border)',
-                  background: 'color-mix(in srgb, var(--accent) 14%, var(--card))',
+                  borderColor: 'hsl(var(--border))',
+                  background: 'color-mix(in srgb, hsl(var(--accent)) 14%, hsl(var(--card)))',
                 }}
               >
                 {a.detail}
@@ -270,8 +262,8 @@ export function SyndromeV2Panel({ result, onOpenMoleculeV2 }: SyndromeV2PanelPro
       )}
 
       {result.referenceKeys.length > 0 && (
-        <section className="text-xs" style={{ color: 'var(--muted-foreground)' }}>
-          <h3 className="mb-1 font-semibold text-[var(--foreground)]">Registro de fontes (chaves)</h3>
+        <section className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
+          <h3 className="mb-1 font-semibold text-[hsl(var(--foreground))]">Registro de fontes (chaves)</h3>
           <ul className="list-inside list-disc space-y-0.5">
             {result.referenceKeys.map((key) => (
               <li key={key}>

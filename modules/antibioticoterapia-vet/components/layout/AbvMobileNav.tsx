@@ -24,16 +24,16 @@ export function AbvMobileTopBar({ onOpenMenu, activeTab }: AbvMobileTopBarProps)
     <header
       className="flex h-12 shrink-0 items-center justify-between border-b px-3 md:hidden"
       style={{
-        background: 'var(--background)',
-        borderColor: 'var(--border)',
-        color: 'var(--foreground)',
+        background: 'hsl(var(--background))',
+        borderColor: 'hsl(var(--border))',
+        color: 'hsl(var(--foreground))',
       }}
     >
       <button
         type="button"
         onClick={onOpenMenu}
         className="rounded-lg p-2 transition hover:opacity-90"
-        style={{ color: 'var(--foreground)' }}
+        style={{ color: 'hsl(var(--foreground))' }}
         aria-label="Abrir menu do módulo"
       >
         <Menu className="h-5 w-5" />

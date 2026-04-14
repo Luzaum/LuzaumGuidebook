@@ -51,13 +51,13 @@ function VersionedDocCard({ doc }: { doc: VersionedInstitutionalSource }) {
   return (
     <article
       className="abv-panel p-4 text-sm"
-      style={{ color: 'var(--foreground)' }}
+      style={{ color: 'hsl(var(--foreground))' }}
       id={`abv-versioned-${doc.sourceId.replace(/[^a-zA-Z0-9]+/g, '-')}`}
     >
       <div className="flex flex-wrap items-center gap-2">
         <span
           className="rounded-full px-2 py-0.5 text-[10px] font-bold uppercase"
-          style={{ background: 'color-mix(in srgb, var(--primary) 16%, var(--card))', color: 'var(--primary)' }}
+          style={{ background: 'color-mix(in srgb, hsl(var(--primary)) 16%, hsl(var(--card)))', color: 'hsl(var(--primary))' }}
         >
           Documento versionado
         </span>
@@ -65,13 +65,13 @@ function VersionedDocCard({ doc }: { doc: VersionedInstitutionalSource }) {
         <span className="text-[10px] opacity-80">Versão {doc.versionLabel}</span>
         <span
           className="rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase"
-          style={{ background: 'color-mix(in srgb, var(--muted) 35%, var(--card))' }}
+          style={{ background: 'color-mix(in srgb, hsl(var(--muted)) 35%, hsl(var(--card)))' }}
         >
           {doc.lifecycleStatus}
         </span>
         <span
           className="rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase"
-          style={{ background: 'color-mix(in srgb, var(--secondary) 14%, var(--card))', color: 'var(--secondary)' }}
+          style={{ background: 'color-mix(in srgb, hsl(var(--secondary)) 14%, hsl(var(--card)))', color: 'hsl(var(--secondary))' }}
         >
           {doc.accessPolicy}
         </span>
@@ -83,54 +83,54 @@ function VersionedDocCard({ doc }: { doc: VersionedInstitutionalSource }) {
           style={{
             background:
               doc.verificationMode === 'pending_import'
-                ? 'color-mix(in srgb, var(--chart-5) 22%, var(--card))'
-                : 'color-mix(in srgb, var(--chart-2) 22%, var(--card))',
+                ? 'color-mix(in srgb, var(--chart-5) 22%, hsl(var(--card)))'
+                : 'color-mix(in srgb, var(--chart-2) 22%, hsl(var(--card)))',
           }}
         >
           {doc.verificationMode}
         </span>
       </div>
       <h3 className="mt-2 font-serif text-lg font-bold">{doc.title}</h3>
-      <p className="mt-1 text-xs leading-relaxed" style={{ color: 'var(--muted-foreground)' }}>
+      <p className="mt-1 text-xs leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
         {doc.provenance}
       </p>
       <p className="mt-2 font-mono text-[10px] opacity-85">{doc.sourceId}</p>
-      <ul className="mt-2 space-y-1 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+      <ul className="mt-2 space-y-1 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
         <li>
-          <span className="font-semibold text-[var(--foreground)]">Política:</span> {doc.accessPolicy} ·{' '}
-          <span className="font-semibold text-[var(--foreground)]">Distribuição:</span> {doc.distributionMode}
+          <span className="font-semibold text-[hsl(var(--foreground))]">Política:</span> {doc.accessPolicy} ·{' '}
+          <span className="font-semibold text-[hsl(var(--foreground))]">Distribuição:</span> {doc.distributionMode}
         </li>
         <li>
-          <span className="font-semibold text-[var(--foreground)]">Exposto ao cliente:</span>{' '}
+          <span className="font-semibold text-[hsl(var(--foreground))]">Exposto ao cliente:</span>{' '}
           {doc.fileExposedToClient ? 'sim (não aplicável ao CCIH restrito)' : 'não'}
         </li>
         <li>
-          <span className="font-semibold text-[var(--foreground)]">Binário no repo de build:</span>{' '}
+          <span className="font-semibold text-[hsl(var(--foreground))]">Binário no repo de build:</span>{' '}
           {doc.filePresentInRepo ? 'declarado' : 'não declarado'} (não implica download no app)
         </li>
         <li>
-          <span className="font-semibold text-[var(--foreground)]">Auditoria humana:</span>{' '}
+          <span className="font-semibold text-[hsl(var(--foreground))]">Auditoria humana:</span>{' '}
           {doc.auditedByHuman ? 'sim' : 'não registrada'}
         </li>
       </ul>
       {doc.internalStorageDesignation && (
-        <p className="mt-2 text-xs leading-relaxed" style={{ color: 'var(--muted-foreground)' }}>
-          <span className="font-semibold text-[var(--foreground)]">Designação interna (sem URL):</span>{' '}
+        <p className="mt-2 text-xs leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
+          <span className="font-semibold text-[hsl(var(--foreground))]">Designação interna (sem URL):</span>{' '}
           {doc.internalStorageDesignation}
         </p>
       )}
-      <p className="mt-2 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+      <p className="mt-2 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
         Tipo: {doc.sourceType} · Mapeamentos: <span className="font-mono">{doc.mappingsModulePath}</span>
       </p>
-      <p className="mt-2 text-xs leading-relaxed" style={{ color: 'var(--muted-foreground)' }}>
+      <p className="mt-2 text-xs leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
         {doc.notes}
       </p>
       {doc.lastAuditNote && (
         <p
           className="mt-2 rounded border border-dashed p-2 text-xs"
-          style={{ borderColor: 'var(--border)', color: 'var(--muted-foreground)' }}
+          style={{ borderColor: 'hsl(var(--border))', color: 'hsl(var(--muted-foreground))' }}
         >
-          <span className="font-semibold text-[var(--foreground)]">Última nota de auditoria:</span> {doc.lastAuditNote}
+          <span className="font-semibold text-[hsl(var(--foreground))]">Última nota de auditoria:</span> {doc.lastAuditNote}
         </p>
       )}
       {doc.publicationDate && (
@@ -149,7 +149,7 @@ function SourceEntryArticle({ entry }: { entry: SourceEntryV2 }) {
     <article
       id={sourceAnchorId(entry.key)}
       className="abv-panel scroll-mt-24 p-4 text-sm"
-      style={{ color: 'var(--foreground)' }}
+      style={{ color: 'hsl(var(--foreground))' }}
     >
       <div className="flex flex-wrap items-center gap-2">
         <span
@@ -157,11 +157,11 @@ function SourceEntryArticle({ entry }: { entry: SourceEntryV2 }) {
           style={{
             background:
               st.tone === 'ok'
-                ? 'color-mix(in srgb, var(--chart-2) 22%, var(--card))'
+                ? 'color-mix(in srgb, var(--chart-2) 22%, hsl(var(--card)))'
                 : st.tone === 'warn'
-                  ? 'color-mix(in srgb, var(--chart-5) 22%, var(--card))'
-                  : 'color-mix(in srgb, var(--muted) 40%, var(--card))',
-            color: 'var(--foreground)',
+                  ? 'color-mix(in srgb, var(--chart-5) 22%, hsl(var(--card)))'
+                  : 'color-mix(in srgb, hsl(var(--muted)) 40%, hsl(var(--card)))',
+            color: 'hsl(var(--foreground))',
           }}
         >
           {st.label}
@@ -172,11 +172,11 @@ function SourceEntryArticle({ entry }: { entry: SourceEntryV2 }) {
           </span>
         )}
       </div>
-      <div className="mt-1 font-mono text-xs" style={{ color: 'var(--muted-foreground)' }}>
+      <div className="mt-1 font-mono text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
         {entry.key}
       </div>
       <h3 className="mt-1 font-semibold text-base">{entry.title}</h3>
-      <p className="mt-2" style={{ color: 'var(--muted-foreground)' }}>
+      <p className="mt-2" style={{ color: 'hsl(var(--muted-foreground))' }}>
         {entry.description}
       </p>
       {entry.versionedSourceId && (
@@ -186,17 +186,17 @@ function SourceEntryArticle({ entry }: { entry: SourceEntryV2 }) {
         </p>
       )}
       {vs && (
-        <ul className="mt-2 space-y-0.5 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+        <ul className="mt-2 space-y-0.5 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
           <li>
-            <span className="font-semibold text-[var(--foreground)]">Distribuição:</span> {vs.distributionMode}
+            <span className="font-semibold text-[hsl(var(--foreground))]">Distribuição:</span> {vs.distributionMode}
           </li>
           <li>
-            <span className="font-semibold text-[var(--foreground)]">Cliente recebe PDF:</span>{' '}
+            <span className="font-semibold text-[hsl(var(--foreground))]">Cliente recebe PDF:</span>{' '}
             {vs.fileExposedToClient ? 'sim' : 'não'}
           </li>
           {vs.internalStorageDesignation && (
             <li>
-              <span className="font-semibold text-[var(--foreground)]">Arquivo (referência interna):</span>{' '}
+              <span className="font-semibold text-[hsl(var(--foreground))]">Arquivo (referência interna):</span>{' '}
               {vs.internalStorageDesignation}
             </li>
           )}
@@ -205,7 +205,7 @@ function SourceEntryArticle({ entry }: { entry: SourceEntryV2 }) {
       {entry.note && (
         <p
           className="mt-2 rounded border border-dashed p-2 text-xs"
-          style={{ borderColor: 'var(--border)', color: 'var(--muted-foreground)' }}
+          style={{ borderColor: 'hsl(var(--border))', color: 'hsl(var(--muted-foreground))' }}
         >
           {entry.note}
         </p>
@@ -244,13 +244,13 @@ export function ReferencesPage({
   }, [institutionalFocus])
 
   return (
-    <div className="min-h-full bg-[var(--background)] p-4 md:p-8">
+    <div className="min-h-full bg-[hsl(var(--background))] p-4 md:p-8">
       <div className="mx-auto max-w-4xl">
         <button
           type="button"
           onClick={() => setPage('home')}
           className="mb-6 flex items-center text-lg font-semibold transition hover:opacity-90"
-          style={{ color: 'var(--primary)' }}
+          style={{ color: 'hsl(var(--primary))' }}
         >
           <Icon name="back" className="mr-2 h-6 w-6" />
           Voltar ao início
@@ -259,14 +259,14 @@ export function ReferencesPage({
         <header className="mb-8">
           <p
             className="mb-2 text-xs font-semibold uppercase tracking-wide"
-            style={{ color: 'var(--primary)' }}
+            style={{ color: 'hsl(var(--primary))' }}
           >
             Registro de fontes
           </p>
-          <h1 className="font-serif text-3xl font-bold" style={{ color: 'var(--foreground)' }}>
+          <h1 className="font-serif text-3xl font-bold" style={{ color: 'hsl(var(--foreground))' }}>
             Referências, tiers e documentos versionados
           </h1>
-          <p className="mt-3 text-sm" style={{ color: 'var(--muted-foreground)' }}>
+          <p className="mt-3 text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
             O módulo separa <strong>chaves de registro</strong> (<span className="font-mono">referenceKey</span>),{' '}
             <strong>documentos institucionais</strong> (<span className="font-mono">sourceRegistry</span>) e{' '}
             <strong>mapeamentos</strong> (<span className="font-mono">institutionalMappings.ts</span>). Documentos restritos
@@ -276,10 +276,10 @@ export function ReferencesPage({
         </header>
 
         <section className="mb-10 space-y-4">
-          <h2 className="border-b pb-2 text-lg font-semibold" style={{ borderColor: 'var(--border)' }}>
+          <h2 className="border-b pb-2 text-lg font-semibold" style={{ borderColor: 'hsl(var(--border))' }}>
             Documentos versionados (camada central)
           </h2>
-          <p className="text-xs" style={{ color: 'var(--muted-foreground)' }}>
+          <p className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
             <span className="font-mono">fileExposedToClient === false</span> garante que o binário não é entregue pelo
             frontend. <span className="font-mono">filePresentInRepo</span> refere-se a cópia eventual em arquivo interno —
             não implica publicação.
@@ -290,10 +290,10 @@ export function ReferencesPage({
         </section>
 
         <section className="mb-10 space-y-4">
-          <h2 className="border-b pb-2 text-lg font-semibold" style={{ borderColor: 'var(--border)' }}>
+          <h2 className="border-b pb-2 text-lg font-semibold" style={{ borderColor: 'hsl(var(--border))' }}>
             Maturidade da auditoria CCIH (metadados vs páginas)
           </h2>
-          <p className="text-xs" style={{ color: 'var(--muted-foreground)' }}>
+          <p className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
             <span className="font-mono">linked_verified_metadata</span>: sectionRef estável, sem páginas no código.{' '}
             <span className="font-mono">linked_verified_page_locator</span>: páginas registadas em{' '}
             <span className="font-mono">ccih2024PageAudit.ts</span> após leitura do exemplar restrito. O PDF não é
@@ -307,9 +307,9 @@ export function ReferencesPage({
             return (
               <>
                 <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="abv-panel p-3 text-sm" style={{ color: 'var(--foreground)' }}>
+                  <div className="abv-panel p-3 text-sm" style={{ color: 'hsl(var(--foreground))' }}>
                     <p className="font-semibold">Metadados apenas (metadata)</p>
-                    <ul className="mt-2 list-inside list-disc text-xs" style={{ color: 'var(--muted-foreground)' }}>
+                    <ul className="mt-2 list-inside list-disc text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                       <li>Síndromes v2: {meta.syndromes}</li>
                       <li>Cartões hospitalares: {meta.hospitalCards}</li>
                       <li>Resistência / laboratório: {meta.resistance}</li>
@@ -317,37 +317,37 @@ export function ReferencesPage({
                       <li>Temas transversais: {meta.thematic}</li>
                     </ul>
                   </div>
-                  <div className="abv-panel p-3 text-sm" style={{ color: 'var(--foreground)' }}>
+                  <div className="abv-panel p-3 text-sm" style={{ color: 'hsl(var(--foreground))' }}>
                     <p className="font-semibold">Locator com páginas (page_locator)</p>
-                    <ul className="mt-2 list-inside list-disc text-xs" style={{ color: 'var(--muted-foreground)' }}>
+                    <ul className="mt-2 list-inside list-disc text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                       <li>Síndromes v2: {page.syndromes}</li>
                       <li>Cartões hospitalares: {page.hospitalCards}</li>
                       <li>Resistência / laboratório: {page.resistance}</li>
                       <li>Fichas de moléculas: {page.molecules}</li>
                       <li>Temas transversais: {page.thematic}</li>
                     </ul>
-                    <p className="mt-2 text-[10px]" style={{ color: 'var(--muted-foreground)' }}>
+                    <p className="mt-2 text-[10px]" style={{ color: 'hsl(var(--muted-foreground))' }}>
                       Prioridade CCIH: {filledPriority}/{CCIH_PRIORITY_PAGE_AUDIT_KEYS.length} chaves com página válida em{' '}
                       <span className="font-mono">ccih2024PageAudit.ts</span> (demais permanecem só metadados até auditoria).
                     </p>
                   </div>
                 </div>
-                <p className="text-[10px] leading-relaxed" style={{ color: 'var(--muted-foreground)' }}>
-                  <span className="font-semibold text-[var(--foreground)]">Núcleo v2 — moléculas (camada explícita):</span>{' '}
+                <p className="text-[10px] leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
+                  <span className="font-semibold text-[hsl(var(--foreground))]">Núcleo v2 — moléculas (camada explícita):</span>{' '}
                   {molConc.metadataOnly} fichas em <span className="font-mono">linked_verified_metadata</span>;{' '}
                   {molConc.pageLocator} em <span className="font-mono">linked_verified_page_locator</span> (total{' '}
                   {molConc.total}). Nada é marcado como auditado sem entrada correspondente em{' '}
                   <span className="font-mono">ccih2024PageAudit.ts</span>.{' '}
-                  <span className="font-semibold text-[var(--foreground)]">Regimes:</span> {REGIMEN_CONCORDANCE_EXPLANATION}
+                  <span className="font-semibold text-[hsl(var(--foreground))]">Regimes:</span> {REGIMEN_CONCORDANCE_EXPLANATION}
                 </p>
               </>
             )
           })()}
           <div className="space-y-2">
-            <p className="text-xs font-semibold" style={{ color: 'var(--foreground)' }}>
+            <p className="text-xs font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
               Temas transversais — sectionRef e páginas (se auditadas)
             </p>
-            <ul className="space-y-1 font-mono text-[10px]" style={{ color: 'var(--muted-foreground)' }}>
+            <ul className="space-y-1 font-mono text-[10px]" style={{ color: 'hsl(var(--muted-foreground))' }}>
               {listThematicCcInstitutionalMappings().map((m) => (
                 <li key={m.locator.sectionRef ?? m.topicHint}>
                   {m.locator.sectionRef} — {m.topicHint}
@@ -360,10 +360,10 @@ export function ReferencesPage({
             </ul>
           </div>
           <div className="space-y-2">
-            <p className="text-xs font-semibold" style={{ color: 'var(--foreground)' }}>
+            <p className="text-xs font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
               Síndromes prioritárias — estado por id
             </p>
-            <ul className="max-h-48 overflow-y-auto font-mono text-[10px] leading-relaxed" style={{ color: 'var(--muted-foreground)' }}>
+            <ul className="max-h-48 overflow-y-auto font-mono text-[10px] leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
               {Object.entries(SYNDROME_INSTITUTIONAL_MAPPINGS).map(([id, m]) => (
                 <li key={id}>
                   {id}: {m.linkStatus}
@@ -375,10 +375,10 @@ export function ReferencesPage({
             </ul>
           </div>
           <div className="space-y-2">
-            <p className="text-xs font-semibold" style={{ color: 'var(--foreground)' }}>
+            <p className="text-xs font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
               Resistência (prioritário MRSP/MRSA/ESBL/intrínseca)
             </p>
-            <ul className="font-mono text-[10px]" style={{ color: 'var(--muted-foreground)' }}>
+            <ul className="font-mono text-[10px]" style={{ color: 'hsl(var(--muted-foreground))' }}>
               {(['mrsp', 'mrsa', 'esbl', 'intrinsic_resistance'] as const).map((id) => {
                 const m = RESISTANCE_INSTITUTIONAL_MAPPINGS[id]
                 if (!m) return null
@@ -398,10 +398,10 @@ export function ReferencesPage({
         <section className="mb-10 space-y-8">
           {REFERENCE_GROUPS.map((g) => (
             <div key={g.domain}>
-              <h2 className="mb-3 border-b pb-2 text-lg font-semibold" style={{ borderColor: 'var(--border)' }}>
+              <h2 className="mb-3 border-b pb-2 text-lg font-semibold" style={{ borderColor: 'hsl(var(--border))' }}>
                 {g.label}
               </h2>
-              <p className="mb-3 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+              <p className="mb-3 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                 {DOMAIN_LABEL[g.domain]}
               </p>
               <div className="space-y-3">

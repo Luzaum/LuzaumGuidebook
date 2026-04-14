@@ -1,93 +1,50 @@
-/* Fontes do módulo — @import antes de @tailwind (PostCSS) */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600&family=Source+Code+Pro:wght@400;600&display=swap');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /**
- * Tema exclusivo do módulo — não aplicar em :root global.
- * Herda light/dark do documento Vetius (html.dark).
+ * Escopo do módulo Antibioticoterapia — SEM @tailwind aqui (evita reprocessar todo o CSS do app e travadas ao abrir a rota).
+ * Tipografia: Inter já vem do index.html; Montserrat opcional só se necessário.
  */
 .antibioticoterapia-vet-root.abv-theme {
-  --font-sans: Montserrat, system-ui, sans-serif;
-  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  --font-mono: 'Source Code Pro', ui-monospace, SFMono-Regular, monospace;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: ui-serif, Georgia, 'Times New Roman', serif;
+  --font-mono: ui-monospace, 'Cascadia Code', monospace;
 
-  --card: #ffffff;
-  --ring: #34a85a;
-  --input: #d4d4d4;
-  --muted: #ddd9c4;
-  --accent: #66d9ef;
-  --border: #d4d4d4;
-  --radius: 0.5rem;
-  --chart-1: #34a85a;
-  --chart-2: #6495ed;
-  --chart-3: #66d9ef;
-  --chart-4: #ff99cc;
-  --chart-5: #33cc33;
-  --popover: #ffffff;
-  --primary: #34a85a;
-  --sidebar: #f9f9fa;
-  --secondary: #6495ed;
-  --background: #f9f9fa;
-  --foreground: #333333;
-  --destructive: #ef4444;
-  --sidebar-ring: #34a85a;
-  --sidebar-accent: #66d9ef;
-  --sidebar-border: #d4d4d4;
-  --card-foreground: #333333;
-  --sidebar-primary: #34a85a;
-  --muted-foreground: #6e6e6e;
-  --accent-foreground: #333333;
-  --popover-foreground: #333333;
-  --primary-foreground: #ffffff;
-  --sidebar-foreground: #333333;
-  --secondary-foreground: #ffffff;
-  --destructive-foreground: #ffffff;
-  --sidebar-accent-foreground: #333333;
-  --sidebar-primary-foreground: #ffffff;
+  /* Destaques — alinhados ao tema Vetius */
+  --chart-1: hsl(220 70% 42%);
+  --chart-2: hsl(217 91% 58%);
+  --chart-3: hsl(199 89% 48%);
+  --chart-4: hsl(330 75% 62%);
+  --chart-5: hsl(262 83% 56%);
+
+  --sidebar: hsl(210 40% 97%);
+  --sidebar-foreground: hsl(222.2 47.4% 11.2%);
+  --sidebar-primary: hsl(220 70% 35%);
+  --sidebar-primary-foreground: hsl(210 40% 98%);
+  --sidebar-accent: hsl(210 50% 94%);
+  --sidebar-accent-foreground: hsl(222.2 47.4% 11.2%);
+  --sidebar-border: hsl(214.3 31.8% 91.4%);
+  --sidebar-ring: hsl(215 20.2% 65.1%);
 
   font-family: var(--font-sans);
-  color: var(--foreground);
+  color: hsl(var(--foreground));
 }
 
 html.dark .antibioticoterapia-vet-root.abv-theme {
-  --card: #2f3436;
-  --ring: #33cc33;
-  --input: #444444;
-  --muted: #444444;
-  --accent: #66d9ef;
-  --border: #444444;
-  --chart-1: #33cc33;
-  --chart-2: #87ceeb;
-  --chart-3: #66d9ef;
-  --chart-4: #ff99cc;
-  --chart-5: #ffcc00;
-  --popover: #2f3436;
-  --primary: #33cc33;
-  --sidebar: #1a1d23;
-  --secondary: #87ceeb;
-  --background: #1a1d23;
-  --foreground: #e5e5e5;
-  --destructive: #ef4444;
-  --sidebar-ring: #33cc33;
-  --sidebar-accent: #66d9ef;
-  --sidebar-border: #444444;
-  --card-foreground: #e5e5e5;
-  --sidebar-primary: #33cc33;
-  --muted-foreground: #a3a3a3;
-  --accent-foreground: #000000;
-  --popover-foreground: #e5e5e5;
-  --primary-foreground: #000000;
-  --sidebar-foreground: #e5e5e5;
-  --secondary-foreground: #000000;
-  --destructive-foreground: #ffffff;
-  --sidebar-accent-foreground: #000000;
-  --sidebar-primary-foreground: #000000;
+  --chart-1: hsl(196 75% 58%);
+  --chart-2: hsl(213 94% 68%);
+  --chart-3: hsl(199 89% 58%);
+  --chart-4: hsl(330 70% 72%);
+  --chart-5: hsl(263 70% 70%);
+
+  --sidebar: hsl(224 71% 10%);
+  --sidebar-foreground: hsl(213 31% 91%);
+  --sidebar-primary: hsl(196 80% 70%);
+  --sidebar-primary-foreground: hsl(222.2 47.4% 11.2%);
+  --sidebar-accent: hsl(223 47% 18%);
+  --sidebar-accent-foreground: hsl(213 31% 91%);
+  --sidebar-border: hsl(216 34% 17%);
+  --sidebar-ring: hsl(216 34% 17%);
 }
 
-/* Camada decorativa de pills: isolada, não interativa, abaixo do conteúdo */
+/* Camada decorativa de pills */
 .abv-theme .abv-pill-layer {
   position: absolute;
   inset: 0;
@@ -101,7 +58,6 @@ html.dark .abv-theme .abv-pill-layer {
   opacity: 0.55;
 }
 
-/* Hero: stacking context + fade para não “vazar” pills para baixo */
 .abv-theme .abv-hero {
   position: relative;
   isolation: isolate;
@@ -115,9 +71,9 @@ html.dark .abv-theme .abv-pill-layer {
   pointer-events: none;
   background: linear-gradient(
     to bottom,
-    color-mix(in srgb, var(--background) 35%, transparent) 0%,
-    color-mix(in srgb, var(--background) 92%, transparent) 72%,
-    var(--background) 100%
+    color-mix(in srgb, hsl(var(--background)) 35%, transparent) 0%,
+    color-mix(in srgb, hsl(var(--background)) 92%, transparent) 72%,
+    hsl(var(--background)) 100%
   );
 }
 
@@ -126,45 +82,43 @@ html.dark .abv-theme .abv-pill-layer {
   z-index: 2;
 }
 
-/* Conteúdo funcional: superfície limpa, acima de qualquer resíduo visual */
 .abv-theme .abv-content-stack {
   position: relative;
   z-index: 10;
-  background: var(--background);
+  background: hsl(var(--background));
 }
 
 .abv-theme .abv-main-scroll {
   position: relative;
   isolation: isolate;
-  background: var(--background);
+  background: hsl(var(--background));
 }
 
-/* Cartão padrão do módulo */
 .abv-theme .abv-panel {
   border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: var(--card);
-  color: var(--card-foreground);
-  box-shadow: 0 1px 2px color-mix(in srgb, var(--foreground) 6%, transparent);
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  box-shadow: 0 1px 2px color-mix(in srgb, hsl(var(--foreground)) 6%, transparent);
 }
 
 .abv-theme .abv-input {
   border-radius: var(--radius);
-  border: 1px solid var(--input);
-  background: var(--card);
-  color: var(--foreground);
+  border: 1px solid hsl(var(--input));
+  background: hsl(var(--card));
+  color: hsl(var(--foreground));
 }
 
 .abv-theme .abv-input:focus {
   outline: none;
-  border-color: var(--ring);
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--ring) 35%, transparent);
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 2px color-mix(in srgb, hsl(var(--ring)) 35%, transparent);
 }
 
 .abv-theme .abv-btn-primary {
   border-radius: var(--radius);
-  background: var(--primary);
-  color: var(--primary-foreground);
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
 }
 
 .abv-theme .abv-btn-primary:hover {
@@ -177,25 +131,24 @@ html.dark .abv-theme .abv-btn-primary:hover {
 
 .abv-theme .abv-btn-secondary {
   border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: color-mix(in srgb, var(--foreground) 10%, var(--card));
-  color: var(--foreground);
+  border: 1px solid hsl(var(--border));
+  background: color-mix(in srgb, hsl(var(--foreground)) 10%, hsl(var(--card)));
+  color: hsl(var(--foreground));
 }
 
 .abv-theme .abv-btn-secondary:hover {
-  background: color-mix(in srgb, var(--foreground) 16%, var(--card));
+  background: color-mix(in srgb, hsl(var(--foreground)) 16%, hsl(var(--card)));
 }
 
 .abv-theme .abv-badge-soft {
   display: inline-flex;
   align-items: center;
   border-radius: var(--radius);
-  background: color-mix(in srgb, var(--primary) 14%, var(--card));
-  color: var(--foreground);
-  border: 1px solid color-mix(in srgb, var(--primary) 28%, var(--border));
+  background: color-mix(in srgb, hsl(var(--primary)) 14%, hsl(var(--card)));
+  color: hsl(var(--foreground));
+  border: 1px solid color-mix(in srgb, hsl(var(--primary)) 28%, hsl(var(--border)));
 }
 
-/* Tipografia do tema (escopo do módulo) */
 .antibioticoterapia-vet-root.abv-theme .font-serif {
   font-family: var(--font-serif);
 }
@@ -204,7 +157,6 @@ html.dark .abv-theme .abv-btn-primary:hover {
   font-family: var(--font-mono);
 }
 
-/* Logo sidebar: hover scale + brilho na cor do tema (primary) */
 .abv-theme .abv-sidebar-logo-btn {
   position: relative;
   display: block;

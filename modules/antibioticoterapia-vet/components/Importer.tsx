@@ -86,48 +86,48 @@ const Importer: React.FC<ImporterProps> = ({ onMergeAB, onMergeDZ }) => {
 
   return (
     <div className="abv-panel p-6">
-      <h3 className="mb-2 text-xl font-bold" style={{ color: 'var(--foreground)' }}>
+      <h3 className="mb-2 text-xl font-bold" style={{ color: 'hsl(var(--foreground))' }}>
         Importar planilhas (CSV)
       </h3>
-      <p className="mb-4 text-sm" style={{ color: 'var(--muted-foreground)' }}>
+      <p className="mb-4 text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
         Selecione seus arquivos CSV. O importador mescla e <b>desduplica</b> com os dados existentes.
       </p>
       <div className="grid md:grid-cols-2 gap-4 text-sm">
         <label
-          className="block cursor-pointer rounded-lg border p-3 transition-colors hover:bg-[color-mix(in_srgb,var(--foreground)_6%,var(--card))]"
-          style={{ borderColor: 'var(--border)' }}
+          className="block cursor-pointer rounded-lg border p-3 transition-colors hover:bg-[color-mix(in_srgb,hsl(var(--foreground))_6%,hsl(var(--card)))]"
+          style={{ borderColor: 'hsl(var(--border))' }}
         >
-          <div className="font-semibold" style={{ color: 'var(--foreground)' }}>
+          <div className="font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
             Antibióticos
           </div>
           <input
             aria-label="CSV de antibióticos"
             type="file"
             accept=".csv"
-            className="mt-2 w-full text-xs file:mr-4 file:rounded-full file:border-0 file:bg-[color-mix(in_srgb,var(--primary)_12%,var(--card))] file:px-4 file:py-2 file:text-sm file:font-semibold file:text-[var(--primary)] hover:file:opacity-90"
-            style={{ color: 'var(--foreground)' }}
+            className="mt-2 w-full text-xs file:mr-4 file:rounded-full file:border-0 file:bg-[color-mix(in_srgb,hsl(var(--primary))_12%,hsl(var(--card)))] file:px-4 file:py-2 file:text-sm file:font-semibold file:text-[hsl(var(--primary))] hover:file:opacity-90"
+            style={{ color: 'hsl(var(--foreground))' }}
             onChange={(e) => e.target.files?.[0] && handleAB(e.target.files[0])}
           />
         </label>
         <label
-          className="block cursor-pointer rounded-lg border p-3 transition-colors hover:bg-[color-mix(in_srgb,var(--foreground)_6%,var(--card))]"
-          style={{ borderColor: 'var(--border)' }}
+          className="block cursor-pointer rounded-lg border p-3 transition-colors hover:bg-[color-mix(in_srgb,hsl(var(--foreground))_6%,hsl(var(--card)))]"
+          style={{ borderColor: 'hsl(var(--border))' }}
         >
-          <div className="font-semibold" style={{ color: 'var(--foreground)' }}>
+          <div className="font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
             Doenças/Condições
           </div>
           <input
             aria-label="CSV de doenças"
             type="file"
             accept=".csv"
-            className="mt-2 w-full text-xs file:mr-4 file:rounded-full file:border-0 file:bg-[color-mix(in_srgb,var(--primary)_12%,var(--card))] file:px-4 file:py-2 file:text-sm file:font-semibold file:text-[var(--primary)] hover:file:opacity-90"
-            style={{ color: 'var(--foreground)' }}
+            className="mt-2 w-full text-xs file:mr-4 file:rounded-full file:border-0 file:bg-[color-mix(in_srgb,hsl(var(--primary))_12%,hsl(var(--card)))] file:px-4 file:py-2 file:text-sm file:font-semibold file:text-[hsl(var(--primary))] hover:file:opacity-90"
+            style={{ color: 'hsl(var(--foreground))' }}
             onChange={(e) => e.target.files?.[0] && handleDZ(e.target.files[0])}
           />
         </label>
       </div>
       {msg && (
-        <div className="mt-3 text-sm" style={{ color: 'var(--primary)' }}>
+        <div className="mt-3 text-sm" style={{ color: 'hsl(var(--primary))' }}>
           {msg}
         </div>
       )}

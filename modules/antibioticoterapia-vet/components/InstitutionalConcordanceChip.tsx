@@ -9,12 +9,12 @@ export function InstitutionalConcordanceChip({ state }: { state: InstitutionalCo
       className="inline-flex max-w-full items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-semibold leading-tight"
       style={{
         borderColor: isPage
-          ? 'color-mix(in srgb, var(--chart-2) 45%, var(--border))'
-          : 'color-mix(in srgb, var(--muted-foreground) 35%, var(--border))',
+          ? 'color-mix(in srgb, var(--chart-2) 45%, hsl(var(--border)))'
+          : 'color-mix(in srgb, hsl(var(--muted-foreground)) 35%, hsl(var(--border)))',
         background: isPage
-          ? 'color-mix(in srgb, var(--chart-2) 14%, var(--card))'
-          : 'color-mix(in srgb, var(--muted) 28%, var(--card))',
-        color: 'var(--foreground)',
+          ? 'color-mix(in srgb, var(--chart-2) 14%, hsl(var(--card)))'
+          : 'color-mix(in srgb, hsl(var(--muted)) 28%, hsl(var(--card)))',
+        color: 'hsl(var(--foreground))',
       }}
       title={hint}
     >

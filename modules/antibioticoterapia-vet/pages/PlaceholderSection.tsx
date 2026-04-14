@@ -36,27 +36,27 @@ export default function PlaceholderSection({ tab }: PlaceholderSectionProps) {
           <span
             className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border"
             style={{
-              background: 'color-mix(in srgb, var(--chart-5) 18%, var(--card))',
-              borderColor: 'var(--border)',
+              background: 'color-mix(in srgb, var(--chart-5) 18%, hsl(var(--card)))',
+              borderColor: 'hsl(var(--border))',
               color: 'var(--chart-5)',
             }}
           >
             <Construction className="h-6 w-6" />
           </span>
           <div>
-            <h1 className="font-serif text-2xl font-bold" style={{ color: 'var(--foreground)' }}>
+            <h1 className="font-serif text-2xl font-bold" style={{ color: 'hsl(var(--foreground))' }}>
               {c.title}
             </h1>
-            <p className="mt-3" style={{ color: 'var(--muted-foreground)' }}>
+            <p className="mt-3" style={{ color: 'hsl(var(--muted-foreground))' }}>
               {c.body}
             </p>
             {c.foot && (
               <p
                 className="mt-6 rounded-xl border border-dashed px-4 py-3 text-sm"
                 style={{
-                  borderColor: 'var(--border)',
-                  background: 'color-mix(in srgb, var(--muted) 40%, var(--card))',
-                  color: 'var(--foreground)',
+                  borderColor: 'hsl(var(--border))',
+                  background: 'color-mix(in srgb, hsl(var(--muted)) 40%, hsl(var(--card)))',
+                  color: 'hsl(var(--foreground))',
                 }}
               >
                 {c.foot}

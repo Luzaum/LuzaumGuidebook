@@ -78,17 +78,17 @@ export function InstitutionalProvenanceStrip({
       <div
         className="rounded-[var(--radius)] border p-3 text-xs"
         style={{
-          borderColor: 'color-mix(in srgb, var(--primary) 22%, var(--border))',
-          background: 'color-mix(in srgb, var(--primary) 5%, var(--card))',
-          color: 'var(--foreground)',
+          borderColor: 'color-mix(in srgb, hsl(var(--primary)) 22%, hsl(var(--border)))',
+          background: 'color-mix(in srgb, hsl(var(--primary)) 5%, hsl(var(--card)))',
+          color: 'hsl(var(--foreground))',
         }}
       >
         <div className="flex flex-wrap items-center gap-2">
           <span
             className="rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide"
             style={{
-              background: 'color-mix(in srgb, var(--primary) 16%, var(--card))',
-              color: 'var(--primary)',
+              background: 'color-mix(in srgb, hsl(var(--primary)) 16%, hsl(var(--card)))',
+              color: 'hsl(var(--primary))',
             }}
           >
             Fonte · CCIH
@@ -98,11 +98,11 @@ export function InstitutionalProvenanceStrip({
             style={{
               background:
                 stateTone === 'warn'
-                  ? 'color-mix(in srgb, var(--chart-5) 18%, var(--card))'
+                  ? 'color-mix(in srgb, var(--chart-5) 18%, hsl(var(--card)))'
                   : stateTone === 'neutral'
-                    ? 'color-mix(in srgb, var(--muted) 32%, var(--card))'
-                    : 'color-mix(in srgb, var(--chart-2) 18%, var(--card))',
-              color: 'var(--foreground)',
+                    ? 'color-mix(in srgb, hsl(var(--muted)) 32%, hsl(var(--card)))'
+                    : 'color-mix(in srgb, var(--chart-2) 18%, hsl(var(--card)))',
+              color: 'hsl(var(--foreground))',
             }}
           >
             {stateLabel}
@@ -111,14 +111,14 @@ export function InstitutionalProvenanceStrip({
         </div>
         <p className="mt-2 text-sm font-semibold leading-snug">{doc.title}</p>
         {contextLabel && (
-          <p className="mt-1 text-[11px] leading-relaxed" style={{ color: 'var(--muted-foreground)' }}>
-            Tópico no app: <span className="font-medium text-[var(--foreground)]">{contextLabel}</span>
+          <p className="mt-1 text-[11px] leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
+            Tópico no app: <span className="font-medium text-[hsl(var(--foreground))]">{contextLabel}</span>
           </p>
         )}
-        <p className="mt-1 text-[11px] leading-relaxed" style={{ color: 'var(--muted-foreground)' }}>
+        <p className="mt-1 text-[11px] leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
           {mapping.topicHint}
         </p>
-        <details className="mt-2 border-t pt-2" style={{ borderColor: 'var(--border)' }}>
+        <details className="mt-2 border-t pt-2" style={{ borderColor: 'hsl(var(--border))' }}>
           <summary className="cursor-pointer text-[10px] font-semibold uppercase tracking-wide opacity-80">
             Detalhes técnicos (auditoria)
           </summary>
@@ -129,19 +129,19 @@ export function InstitutionalProvenanceStrip({
               {noClientFile ? ' · documento não entregue pelo aplicativo' : ''}
             </p>
             <p>
-              <span className="font-semibold text-[var(--foreground)]">{TIER_LABEL[doc.reliabilityTier] ?? doc.reliabilityTier}</span>
+              <span className="font-semibold text-[hsl(var(--foreground))]">{TIER_LABEL[doc.reliabilityTier] ?? doc.reliabilityTier}</span>
               {' · '}
               Verificação: {doc.verificationMode}
             </p>
             {mapping.locator.sectionRef && (
               <p className="font-mono">
-                <span className="font-sans font-semibold text-[var(--foreground)]">sectionRef:</span>{' '}
+                <span className="font-sans font-semibold text-[hsl(var(--foreground))]">sectionRef:</span>{' '}
                 {mapping.locator.sectionRef}
               </p>
             )}
             {mapping.locator.auditNote && (
               <p>
-                <span className="font-semibold text-[var(--foreground)]">Nota:</span> {mapping.locator.auditNote}
+                <span className="font-semibold text-[hsl(var(--foreground))]">Nota:</span> {mapping.locator.auditNote}
               </p>
             )}
             {pageLocatorOk && hasPages && (
@@ -159,17 +159,17 @@ export function InstitutionalProvenanceStrip({
     <div
       className="rounded-[var(--radius)] border p-3 text-xs"
       style={{
-        borderColor: 'color-mix(in srgb, var(--primary) 28%, var(--border))',
-        background: 'color-mix(in srgb, var(--primary) 6%, var(--card))',
-        color: 'var(--foreground)',
+        borderColor: 'color-mix(in srgb, hsl(var(--primary)) 28%, hsl(var(--border)))',
+        background: 'color-mix(in srgb, hsl(var(--primary)) 6%, hsl(var(--card)))',
+        color: 'hsl(var(--foreground))',
       }}
     >
       <div className="flex flex-wrap items-center gap-2">
         <span
           className="rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide"
           style={{
-            background: 'color-mix(in srgb, var(--primary) 18%, var(--card))',
-            color: 'var(--primary)',
+            background: 'color-mix(in srgb, hsl(var(--primary)) 18%, hsl(var(--card)))',
+            color: 'hsl(var(--primary))',
           }}
         >
           Proveniência
@@ -179,11 +179,11 @@ export function InstitutionalProvenanceStrip({
           style={{
             background:
               stateTone === 'warn'
-                ? 'color-mix(in srgb, var(--chart-5) 22%, var(--card))'
+                ? 'color-mix(in srgb, var(--chart-5) 22%, hsl(var(--card)))'
                 : stateTone === 'neutral'
-                  ? 'color-mix(in srgb, var(--muted) 38%, var(--card))'
-                  : 'color-mix(in srgb, var(--chart-2) 22%, var(--card))',
-            color: 'var(--foreground)',
+                  ? 'color-mix(in srgb, hsl(var(--muted)) 38%, hsl(var(--card)))'
+                  : 'color-mix(in srgb, var(--chart-2) 22%, hsl(var(--card)))',
+            color: 'hsl(var(--foreground))',
           }}
         >
           {stateLabel}
@@ -198,16 +198,16 @@ export function InstitutionalProvenanceStrip({
         {noClientFile && ' · documento não entregue pelo aplicativo'}
       </p>
       {contextLabel && (
-        <p className="mt-1" style={{ color: 'var(--muted-foreground)' }}>
-          Contexto: <span className="font-medium text-[var(--foreground)]">{contextLabel}</span>
+        <p className="mt-1" style={{ color: 'hsl(var(--muted-foreground))' }}>
+          Contexto: <span className="font-medium text-[hsl(var(--foreground))]">{contextLabel}</span>
         </p>
       )}
-      <p className="mt-1 leading-relaxed" style={{ color: 'var(--muted-foreground)' }}>
-        <span className="font-semibold text-[var(--foreground)]">Tópico:</span> {mapping.topicHint}
+      <p className="mt-1 leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
+        <span className="font-semibold text-[hsl(var(--foreground))]">Tópico:</span> {mapping.topicHint}
       </p>
       {mapping.locator.sectionRef && (
         <p className="mt-1 font-mono text-[10px] leading-relaxed opacity-90">
-          <span className="font-semibold text-[var(--foreground)]">sectionRef:</span> {mapping.locator.sectionRef}
+          <span className="font-semibold text-[hsl(var(--foreground))]">sectionRef:</span> {mapping.locator.sectionRef}
         </p>
       )}
       {doc.internalStorageDesignation && (
@@ -216,14 +216,14 @@ export function InstitutionalProvenanceStrip({
         </p>
       )}
       {pageLocatorOk && hasPages && (
-        <p className="mt-2 rounded border px-2 py-1.5 text-[10px] leading-relaxed" style={{ borderColor: 'var(--border)' }}>
-          <span className="font-semibold text-[var(--foreground)]">Páginas (auditoria humana no código):</span>{' '}
+        <p className="mt-2 rounded border px-2 py-1.5 text-[10px] leading-relaxed" style={{ borderColor: 'hsl(var(--border))' }}>
+          <span className="font-semibold text-[hsl(var(--foreground))]">Páginas (auditoria humana no código):</span>{' '}
           {mapping.locator.pageStart}–{mapping.locator.pageEnd}
         </p>
       )}
       {mapping.locator.auditNote && (
-        <p className="mt-2 border-t pt-2 text-[10px] leading-relaxed" style={{ borderColor: 'var(--border)' }}>
-          <span className="font-semibold text-[var(--foreground)]">Nota:</span> {mapping.locator.auditNote}
+        <p className="mt-2 border-t pt-2 text-[10px] leading-relaxed" style={{ borderColor: 'hsl(var(--border))' }}>
+          <span className="font-semibold text-[hsl(var(--foreground))]">Nota:</span> {mapping.locator.auditNote}
         </p>
       )}
     </div>

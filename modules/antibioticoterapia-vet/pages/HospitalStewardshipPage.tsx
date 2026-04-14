@@ -49,13 +49,13 @@ export function HospitalStewardshipPage({
   }, [institutionalFocus])
 
   return (
-    <div className="min-h-full bg-[var(--background)] p-4 md:p-8">
+    <div className="min-h-full bg-[hsl(var(--background))] p-4 md:p-8">
       <div className="mx-auto max-w-4xl">
         <button
           type="button"
           onClick={() => setPage('home')}
           className="mb-6 flex items-center text-lg font-semibold transition hover:opacity-90"
-          style={{ color: 'var(--primary)' }}
+          style={{ color: 'hsl(var(--primary))' }}
         >
           <Icon name="back" className="mr-2 h-6 w-6" />
           Voltar ao início
@@ -64,14 +64,14 @@ export function HospitalStewardshipPage({
         <header className="mb-6">
           <p
             className="mb-2 text-xs font-semibold uppercase tracking-wide"
-            style={{ color: 'var(--primary)' }}
+            style={{ color: 'hsl(var(--primary))' }}
           >
             Camada institucional v2
           </p>
-          <h1 className="font-serif text-3xl font-bold" style={{ color: 'var(--foreground)' }}>
+          <h1 className="font-serif text-3xl font-bold" style={{ color: 'hsl(var(--foreground))' }}>
             Infecção hospitalar e stewardship
           </h1>
-          <p className="mt-3 text-sm leading-relaxed" style={{ color: 'var(--muted-foreground)' }}>
+          <p className="mt-3 text-sm leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
             Os cartões estão alinhados ao guia CCIH (metadados no app). O documento completo é{' '}
             <strong>restrito e não é distribuído</strong> pelo aplicativo; quando aplicável, cada cartão traz um{' '}
             <span className="font-mono text-[10px]">sectionRef</span> simbólico para rastreabilidade interna.
@@ -82,14 +82,14 @@ export function HospitalStewardshipPage({
           <div
             className="mb-6 rounded-[var(--radius)] border p-4 text-sm"
             style={{
-              borderColor: 'var(--border)',
-              background: 'color-mix(in srgb, var(--primary) 8%, var(--card))',
+              borderColor: 'hsl(var(--border))',
+              background: 'color-mix(in srgb, hsl(var(--primary)) 8%, hsl(var(--card)))',
             }}
           >
             <div className="flex flex-wrap items-center gap-2">
               <span
                 className="rounded-full px-2 py-0.5 text-[10px] font-bold uppercase"
-                style={{ background: 'color-mix(in srgb, var(--secondary) 18%, var(--card))', color: 'var(--secondary)' }}
+                style={{ background: 'color-mix(in srgb, hsl(var(--secondary)) 18%, hsl(var(--card)))', color: 'hsl(var(--secondary))' }}
               >
                 Fonte institucional restrita
               </span>
@@ -105,18 +105,18 @@ export function HospitalStewardshipPage({
                 style={{
                   background:
                     centralDoc.verificationMode === 'pending_import'
-                      ? 'color-mix(in srgb, var(--chart-5) 20%, var(--card))'
-                      : 'color-mix(in srgb, var(--chart-2) 20%, var(--card))',
+                      ? 'color-mix(in srgb, var(--chart-5) 20%, hsl(var(--card)))'
+                      : 'color-mix(in srgb, var(--chart-2) 20%, hsl(var(--card)))',
                 }}
               >
                 {centralDoc.verificationMode}
               </span>
             </div>
             <p className="mt-2 font-medium">{centralDoc.title}</p>
-            <p className="mt-1 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+            <p className="mt-1 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
               {centralDoc.provenance}
             </p>
-            <p className="mt-2 text-xs leading-relaxed" style={{ color: 'var(--muted-foreground)' }}>
+            <p className="mt-2 text-xs leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
               PDF não exposto ao cliente ({centralDoc.fileExposedToClient ? 'erro de política' : 'confirmado'}).{' '}
               {centralDoc.internalStorageDesignation}
             </p>
@@ -131,23 +131,23 @@ export function HospitalStewardshipPage({
               key={c.id}
               id={`abv-hospital-${c.id}`}
               className="abv-panel scroll-mt-24 p-4"
-              style={{ color: 'var(--foreground)' }}
+              style={{ color: 'hsl(var(--foreground))' }}
             >
               <div className="mb-2 flex flex-wrap items-center gap-2">
                 <span
                   className="rounded-full px-2 py-0.5 text-[10px] font-bold uppercase"
                   style={{
-                    background: 'color-mix(in srgb, var(--secondary) 16%, var(--card))',
-                    color: 'var(--secondary)',
+                    background: 'color-mix(in srgb, hsl(var(--secondary)) 16%, hsl(var(--card)))',
+                    color: 'hsl(var(--secondary))',
                   }}
                 >
                   {CATEGORY_LABEL[c.category] ?? c.category}
                 </span>
-                <span className="font-mono text-xs" style={{ color: 'var(--muted-foreground)' }}>
+                <span className="font-mono text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                   {c.sourceKey}
                 </span>
                 {c.versionedSourceId && (
-                  <span className="rounded-full px-2 py-0.5 text-[10px] font-medium" style={{ color: 'var(--primary)' }}>
+                  <span className="rounded-full px-2 py-0.5 text-[10px] font-medium" style={{ color: 'hsl(var(--primary))' }}>
                     Guia CCIH · metadados
                   </span>
                 )}
@@ -158,7 +158,7 @@ export function HospitalStewardshipPage({
                   <InstitutionalProvenanceStrip mapping={cardMap} contextLabel={c.title} variant="compact" />
                 </div>
               )}
-              <p className="mt-2 text-sm font-medium" style={{ color: 'var(--muted-foreground)' }}>
+              <p className="mt-2 text-sm font-medium" style={{ color: 'hsl(var(--muted-foreground))' }}>
                 {c.lead}
               </p>
               <ul className="mt-3 list-inside list-disc text-sm">
@@ -166,17 +166,17 @@ export function HospitalStewardshipPage({
                   <li key={i}>{b}</li>
                 ))}
               </ul>
-              <div className="mt-3 rounded-lg border p-3 text-sm" style={{ borderColor: 'var(--border)' }}>
-                <span className="font-semibold" style={{ color: 'var(--primary)' }}>
+              <div className="mt-3 rounded-lg border p-3 text-sm" style={{ borderColor: 'hsl(var(--border))' }}>
+                <span className="font-semibold" style={{ color: 'hsl(var(--primary))' }}>
                   Quando pensar nisto
                 </span>
-                <ul className="mt-1 list-inside list-disc" style={{ color: 'var(--muted-foreground)' }}>
+                <ul className="mt-1 list-inside list-disc" style={{ color: 'hsl(var(--muted-foreground))' }}>
                   {c.whenToThink.map((w, i) => (
                     <li key={i}>{w}</li>
                   ))}
                 </ul>
               </div>
-              <p className="mt-3 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+              <p className="mt-3 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                 Ref.: {c.referenceKeys.join(', ')}
               </p>
             </article>

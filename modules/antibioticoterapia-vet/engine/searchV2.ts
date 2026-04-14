@@ -1,5 +1,4 @@
-import type { AntibioticClass } from '../types'
-import { ANTIBIOTIC_SHEETS_V2 } from '../data-v2/antibiotics'
+import type { AntibioticClass, DiseaseSystem } from '../types'
 import { SYNDROME_PROFILES_V2 } from '../data-v2/syndromes'
 import type { SyndromeId } from '../model/ids'
 import { SYNDROME_IDS } from '../model/ids'
@@ -12,12 +11,12 @@ import { safeList } from '../utils/dataUtils'
 
 export type UnifiedSearchHit =
   | { tier: 'v2'; kind: 'syndrome'; id: SyndromeId; label: string; slug: string; score: number; hint: string }
-  | { tier: 'v2'; kind: 'molecule'; id: string; label: string; slug: string; score: number; hint: string }
   | { tier: 'v2'; kind: 'pathogen'; id: string; label: string; slug: string; score: number; hint: string }
   | { tier: 'v2'; kind: 'resistance'; id: string; label: string; slug: string; score: number; hint: string }
   | { tier: 'v2'; kind: 'hospital'; id: string; label: string; slug: string; score: number; hint: string }
   | { tier: 'v2'; kind: 'reference'; key: string; label: string; score: number; hint: string }
   | { tier: 'legacy'; kind: 'drug'; name: string; className: string; score: number }
+  | { tier: 'legacy'; kind: 'disease'; system: string; name: string; score: number; hint: string }
 
 function norm(s: string): string {
   return s
@@ -72,38 +71,6 @@ export function searchSyndromesV2(query: string): Extract<UnifiedSearchHit, { ki
         slug: p.slug,
         score,
         hint: p.summary.slice(0, 120) + (p.summary.length > 120 ? '…' : ''),
-      })
-    }
-  }
-  return out.sort((a, b) => b.score - a.score)
-}
-
-export function searchMoleculesV2(query: string): Extract<UnifiedSearchHit, { kind: 'molecule' }>[] {
-  const q = query.trim()
-  if (!q) return []
-  const out: Extract<UnifiedSearchHit, { kind: 'molecule' }>[] = []
-  for (const sheet of Object.values(ANTIBIOTIC_SHEETS_V2)) {
-    const fields = [
-      sheet.id,
-      sheet.slug,
-      sheet.displayName,
-      sheet.classLabel,
-      sheet.subclassLabel,
-      sheet.spectrumSummary,
-      sheet.mechanismSummary,
-      ...sheet.synonyms,
-      ...sheet.usesInApp,
-    ]
-    const score = maxScoreForFields(q, fields)
-    if (score > 0) {
-      out.push({
-        tier: 'v2',
-        kind: 'molecule',
-        id: sheet.id,
-        label: sheet.displayName,
-        slug: sheet.slug,
-        score,
-        hint: sheet.spectrumSummary.slice(0, 100) + (sheet.spectrumSummary.length > 100 ? '…' : ''),
       })
     }
   }
@@ -282,15 +249,36 @@ export function searchLegacyDrugs(query: string, abDict: AntibioticClass): Extra
   return dedup
 }
 
-/** Busca unificada: todos os hits v2 ordenados por score; depois legado. */
-export function searchUnifiedClinical(query: string, abDict: AntibioticClass): UnifiedSearchHit[] {
+export function searchLegacyDiseases(
+  query: string,
+  dzDict: DiseaseSystem,
+): Extract<UnifiedSearchHit, { kind: 'disease' }>[] {
+  const q = query.trim()
+  if (!q) return []
+  const out: Extract<UnifiedSearchHit, { kind: 'disease' }>[] = []
+  for (const system of Object.keys(dzDict)) {
+    for (const d of safeList(dzDict[system])) {
+      const fields = [d.name, d.pathogens, d.notes, d.duration, system, d.ccihSummary ?? '']
+      const score = maxScoreForFields(q, fields)
+      if (score > 0) {
+        const hint = (d.notes || d.pathogens).slice(0, 110) + ((d.notes || d.pathogens).length > 110 ? '…' : '')
+        out.push({ tier: 'legacy', kind: 'disease', system, name: d.name, score, hint })
+      }
+    }
+  }
+  return out.sort((a, b) => b.score - a.score)
+}
+
+/** Busca unificada: hits v2 (sem fichas-molécula); legado inclui fármacos e doenças. */
+export function searchUnifiedClinical(query: string, abDict: AntibioticClass, dzDict: DiseaseSystem): UnifiedSearchHit[] {
   const syn = searchSyndromesV2(query)
-  const mol = searchMoleculesV2(query)
   const path = searchPathogensV2(query)
   const res = searchResistanceConceptsV2(query)
   const hosp = searchHospitalCardsV2(query)
   const ref = searchReferencesV2(query)
-  const leg = searchLegacyDrugs(query, abDict)
-  const v2 = [...syn, ...mol, ...path, ...res, ...hosp, ...ref].sort((a, b) => b.score - a.score)
+  const legDrugs = searchLegacyDrugs(query, abDict)
+  const legDiseases = searchLegacyDiseases(query, dzDict)
+  const leg = [...legDrugs, ...legDiseases].sort((a, b) => b.score - a.score)
+  const v2 = [...syn, ...path, ...res, ...hosp, ...ref].sort((a, b) => b.score - a.score)
   return [...v2, ...leg]
 }

@@ -31,12 +31,14 @@ export interface AntibioticClass {
 }
 
 export interface Disease {
-  name:string;
-  pathogens: string;
-  first_line: string[];
-  alternatives: string[];
-  duration: string;
-  notes: string;
+  name: string
+  pathogens: string
+  first_line: string[]
+  alternatives: string[]
+  duration: string
+  notes: string
+  /** Texto curto alinhado ao CCIH / stewardship (opcional; preencher com auditoria). */
+  ccihSummary?: string
 }
 
 export interface DiseaseSystem {

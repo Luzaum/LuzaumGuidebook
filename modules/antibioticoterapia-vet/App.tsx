@@ -8,10 +8,8 @@ import {
   DiseaseSystem,
   Species,
   LifeStageKey,
-  Disease,
   ComorbidityState,
 } from './types'
-import { safeList } from './utils/dataUtils'
 import type { SeverityTier } from './model/types'
 import type { SyndromeId } from './model/ids'
 
@@ -33,7 +31,7 @@ function AbvRouteFallback() {
   return (
     <div
       className="flex min-h-[40vh] items-center justify-center p-8 text-sm"
-      style={{ color: 'var(--muted-foreground)' }}
+      style={{ color: 'hsl(var(--muted-foreground))' }}
     >
       Carregando…
     </div>
@@ -46,7 +44,7 @@ export function App() {
 
   const [legacyDicts, setLegacyDicts] = useState<{ ab: AntibioticClass; dz: DiseaseSystem } | null>(null)
   const [focusDrug, setFocusDrug] = useState<string | null>(null)
-  const [focusMoleculeIdV2, setFocusMoleculeIdV2] = useState<string | null>(null)
+  const [focusDiseaseName, setFocusDiseaseName] = useState<string | null>(null)
   const [sourcePage, setSourcePage] = useState<AbvTab | null>(null)
   const [antibioticsSearchSeed, setAntibioticsSearchSeed] = useState<string | undefined>(undefined)
   const [unifiedSearchSeed, setUnifiedSearchSeed] = useState<string | undefined>(undefined)
@@ -64,7 +62,6 @@ export function App() {
   })
   const [severity, setSeverity] = useState<SeverityTier>('ambulatory_stable')
   const [chosenV2, setChosenV2] = useState<SyndromeId | null>(null)
-  const [chosen, setChosen] = useState<Disease | null>(null)
 
   const needsLegacySeeds = activeTab === 'syndrome' || activeTab === 'antibiotics'
 
@@ -88,24 +85,14 @@ export function App() {
   const onDeepLinkDrug = (drugName: string) => {
     setAntibioticsSearchSeed(undefined)
     setUnifiedSearchSeed(undefined)
-    setFocusMoleculeIdV2(null)
+    setFocusDiseaseName(null)
     setFocusDrug(drugName)
     setSourcePage(activeTab)
     setActiveTab('antibiotics')
   }
 
-  const onOpenMoleculeV2 = useCallback((moleculeId: string) => {
-    setFocusMoleculeIdV2(moleculeId)
-    setFocusDrug(null)
-    setAntibioticsSearchSeed(undefined)
-    setUnifiedSearchSeed(undefined)
-    setSourcePage('syndrome')
-    setActiveTab('antibiotics')
-  }, [])
-
   const onNavigateSyndromeV2 = useCallback((id: SyndromeId) => {
     setChosenV2(id)
-    setChosen(null)
     setStep(3)
     setActiveTab('syndrome')
   }, [])
@@ -117,29 +104,15 @@ export function App() {
     else setActiveTab('references')
   }, [])
 
-  const onOpenLegacyDisease = useCallback(
-    (diseaseName: string) => {
-      const dz = legacyDicts?.dz
-      if (!dz) return
-      let found: Disease | null = null
-      for (const sys of Object.keys(dz)) {
-        const hit = safeList(dz[sys]).find((d) => d.name === diseaseName)
-        if (hit) {
-          found = hit
-          break
-        }
-      }
-      if (!found) return
-      setChosen(found)
-      setChosenV2(null)
-      setStep(4)
-      setFocusDrug(null)
-      setFocusMoleculeIdV2(null)
-      setSourcePage('antibiotics')
-      setActiveTab('syndrome')
-    },
-    [legacyDicts],
-  )
+  const onOpenLegacyDisease = useCallback((diseaseName: string) => {
+    setFocusDrug(null)
+    setAntibioticsSearchSeed(undefined)
+    setUnifiedSearchSeed(undefined)
+    setFocusDiseaseName(diseaseName)
+    setActiveTab('antibiotics')
+  }, [])
+
+  const clearFocusDisease = useCallback(() => setFocusDiseaseName(null), [])
 
   const clearInstitutionalFocus = useCallback(() => setInstitutionalFocus(null), [])
 
@@ -156,7 +129,6 @@ export function App() {
     })
     setSeverity('ambulatory_stable')
     setChosenV2(null)
-    setChosen(null)
   }
 
   const onResetPatientFlow = () => {
@@ -170,7 +142,7 @@ export function App() {
     setUnifiedSearchSeed(query)
     setAntibioticsSearchSeed(undefined)
     setFocusDrug(null)
-    setFocusMoleculeIdV2(null)
+    setFocusDiseaseName(null)
     setSourcePage(null)
     setActiveTab('antibiotics')
   }
@@ -191,7 +163,6 @@ export function App() {
             dzDict={dzDict}
             abDict={abDict}
             onDeepLinkDrug={onDeepLinkDrug}
-            onOpenMoleculeV2={onOpenMoleculeV2}
             onReset={onResetPatientFlow}
             step={step}
             setStep={setStep}
@@ -205,8 +176,6 @@ export function App() {
             setSeverity={setSeverity}
             chosenV2={chosenV2}
             setChosenV2={setChosenV2}
-            chosen={chosen}
-            setChosen={setChosen}
           />
         )
       }
@@ -218,8 +187,8 @@ export function App() {
             abDict={abDict}
             dzDict={dzDict}
             focusDrug={focusDrug}
-            focusMoleculeIdV2={focusMoleculeIdV2}
-            onClearFocusMoleculeV2={() => setFocusMoleculeIdV2(null)}
+            focusDiseaseName={focusDiseaseName}
+            onClearFocusDisease={clearFocusDisease}
             sourcePage={sourcePage}
             searchSeed={antibioticsSearchSeed}
             unifiedSearchSeed={unifiedSearchSeed}
@@ -264,7 +233,7 @@ export function App() {
   }
 
   return (
-    <div className="flex h-full min-h-0 w-full overflow-hidden bg-[var(--background)] text-[var(--foreground)]">
+    <div className="flex h-full min-h-0 w-full overflow-hidden bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
       <AbvSidebar activeTab={activeTab} setActiveTab={setActiveTab} />
       <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
         <AbvMobileTopBar onOpenMenu={() => setMobileNavOpen(true)} activeTab={activeTab} />

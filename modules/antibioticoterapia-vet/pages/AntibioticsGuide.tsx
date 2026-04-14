@@ -1,13 +1,11 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react'
 import Icon from '../components/Icon'
 import DrugCard from '../components/DrugCard'
-import { AntibioticV2Panel } from '../components/AntibioticV2Panel'
-import { AbvTab, AntibioticClass, Antibiotic, DiseaseSystem } from '../types'
+import { AbvTab, AntibioticClass, Antibiotic, DiseaseSystem, Disease } from '../types'
 import { safeList } from '../utils/dataUtils'
 import { buildDrugToDiseasesIndex, lookupDiseasesForDrug } from '../utils/legacyDiseaseDrugIndex'
 import { searchUnifiedClinical } from '../engine/searchV2'
 import type { SyndromeId } from '../model/ids'
-import { listAntibioticSheetsV2, getAntibioticSheetV2 } from '../data-v2/antibiotics'
 import type { AbvInstitutionalFocus } from '../types'
 import type { UnifiedSearchHit } from '../engine/searchV2'
 import { CLASS_STYLE } from '../constants'
@@ -18,8 +16,8 @@ interface AntibioticsGuideProps {
   abDict: AntibioticClass
   dzDict: DiseaseSystem
   focusDrug: string | null
-  focusMoleculeIdV2: string | null
-  onClearFocusMoleculeV2: () => void
+  focusDiseaseName: string | null
+  onClearFocusDisease: () => void
   sourcePage: AbvTab | null
   searchSeed?: string
   unifiedSearchSeed?: string
@@ -35,8 +33,8 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
   abDict,
   dzDict,
   focusDrug,
-  focusMoleculeIdV2,
-  onClearFocusMoleculeV2,
+  focusDiseaseName,
+  onClearFocusDisease,
   sourcePage,
   searchSeed,
   unifiedSearchSeed,
@@ -47,13 +45,13 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
   onOpenLegacyDisease,
 }) => {
   const classes = useMemo(() => Object.keys(abDict).sort((a, b) => a.localeCompare(b, 'pt')), [abDict])
+  const systems = useMemo(() => Object.keys(dzDict).sort((a, b) => a.localeCompare(b, 'pt')), [dzDict])
   const [q, setQ] = useState('')
   const [cls, setCls] = useState('todas')
-  const [showV2Library, setShowV2Library] = useState(false)
-  const [selectedLibraryMoleculeId, setSelectedLibraryMoleculeId] = useState<string | null>(null)
+  const [diseaseSectionOpen, setDiseaseSectionOpen] = useState(true)
   const diseaseDrugIndex = useMemo(() => buildDrugToDiseasesIndex(dzDict), [dzDict])
   const firstHighlightRef = useRef<HTMLDivElement>(null)
-  const sheetTopRef = useRef<HTMLDivElement>(null)
+  const diseaseHighlightRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (searchSeed) {
@@ -82,34 +80,19 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
   }, [focusDrug])
 
   useEffect(() => {
-    if (focusMoleculeIdV2) {
-      setSelectedLibraryMoleculeId(focusMoleculeIdV2)
+    if (focusDiseaseName) {
+      setDiseaseSectionOpen(true)
       setTimeout(() => {
-        sheetTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }, 100)
+        diseaseHighlightRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }, 120)
     }
-  }, [focusMoleculeIdV2])
+  }, [focusDiseaseName])
 
   const unifiedHits = useMemo(() => {
     const t = q.trim()
     if (!t) return [] as UnifiedSearchHit[]
-    return searchUnifiedClinical(t, abDict)
-  }, [q, abDict])
-
-  const v2SheetsFiltered = useMemo(() => {
-    const all = listAntibioticSheetsV2()
-    const t = q.trim().toLowerCase()
-    if (!t) return all
-    const molHits = new Set(
-      unifiedHits.filter((h): h is Extract<UnifiedSearchHit, { kind: 'molecule' }> => h.kind === 'molecule').map((h) => h.id),
-    )
-    if (molHits.size) return all.filter((s) => molHits.has(s.id))
-    return all.filter(
-      (s) =>
-        `${s.displayName} ${s.classLabel} ${s.synonyms.join(' ')}`.toLowerCase().includes(t) ||
-        s.slug.toLowerCase().includes(t),
-    )
-  }, [q, unifiedHits])
+    return searchUnifiedClinical(t, abDict, dzDict)
+  }, [q, abDict, dzDict])
 
   const filteredLegacy = useMemo(() => {
     const res: [string, Antibiotic[]][] = []
@@ -129,48 +112,110 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
   const backTarget: AbvTab = sourcePage === 'syndrome' ? 'syndrome' : 'home'
   const backText = sourcePage === 'syndrome' ? 'Voltar para o guia por suspeita' : 'Voltar ao início'
 
-  const activeSheetId = focusMoleculeIdV2 ?? selectedLibraryMoleculeId
-  const activeSheet = activeSheetId ? getAntibioticSheetV2(activeSheetId) : undefined
+  const renderDiseaseCard = (sys: string, dz: Disease) => {
+    const isFocus = focusDiseaseName === dz.name
+    return (
+      <div
+        key={`${sys}-${dz.name}`}
+        ref={isFocus ? diseaseHighlightRef : undefined}
+        className={`rounded-xl border p-4 transition-shadow ${isFocus ? 'ring-2 ring-[hsl(var(--primary))]' : ''}`}
+        style={{
+          borderColor: 'hsl(var(--border))',
+          background: 'color-mix(in srgb, hsl(var(--foreground)) 4%, hsl(var(--card)))',
+        }}
+      >
+        <div className="flex flex-wrap items-start justify-between gap-2">
+          <div>
+            <h3 className="font-semibold leading-snug" style={{ color: 'hsl(var(--foreground))' }}>
+              {dz.name}
+            </h3>
+            <p className="mt-1 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
+              <span className="font-medium text-[hsl(var(--foreground))]">{sys}</span>
+            </p>
+          </div>
+          {isFocus && (
+            <button
+              type="button"
+              className="shrink-0 text-xs font-medium underline"
+              style={{ color: 'hsl(var(--primary))' }}
+              onClick={() => onClearFocusDisease()}
+            >
+              Limpar destaque
+            </button>
+          )}
+        </div>
+        {dz.ccihSummary ? (
+          <p
+            className="mt-2 rounded-md border px-3 py-2 text-xs leading-relaxed"
+            style={{
+              borderColor: 'color-mix(in srgb, hsl(var(--primary)) 35%, hsl(var(--border)))',
+              background: 'color-mix(in srgb, hsl(var(--primary)) 8%, hsl(var(--card)))',
+              color: 'hsl(var(--foreground))',
+            }}
+          >
+            <span className="font-semibold">CCIH / stewardship:</span> {dz.ccihSummary}
+          </p>
+        ) : null}
+        <p className="mt-2 text-xs leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
+          <span className="font-medium" style={{ color: 'hsl(var(--foreground))' }}>
+            Patógenos:
+          </span>{' '}
+          {dz.pathogens || '—'}
+        </p>
+        <p className="mt-1 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
+          <span className="font-medium" style={{ color: 'hsl(var(--foreground))' }}>
+            1ª linha:
+          </span>{' '}
+          {safeList(dz.first_line).join(', ') || '—'}
+        </p>
+        <p className="mt-1 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
+          <span className="font-medium" style={{ color: 'hsl(var(--foreground))' }}>
+            Duração:
+          </span>{' '}
+          {dz.duration || '—'}
+        </p>
+      </div>
+    )
+  }
 
   return (
-    <div className="relative isolate min-h-full bg-[var(--background)] p-4 md:p-8">
-      <div className="abv-panel relative z-10 mx-auto max-w-6xl p-6 shadow-md">
+    <div className="relative isolate min-h-full bg-[hsl(var(--background))] p-4 md:p-8">
+      <div className="abv-panel relative z-10 mx-auto max-w-6xl p-5 shadow-md md:p-6">
         <button
           type="button"
           onClick={() => setPage(backTarget)}
-          className="mb-6 flex items-center text-lg font-semibold transition hover:opacity-90"
-          style={{ color: 'var(--primary)' }}
+          className="mb-6 flex cursor-pointer items-center text-lg font-semibold transition hover:opacity-90"
+          style={{ color: 'hsl(var(--primary))' }}
         >
           <Icon name="back" className="mr-2 h-6 w-6" />
           {backText}
         </button>
-        <h1 className="mb-2 font-serif text-3xl font-bold" style={{ color: 'var(--foreground)' }}>
+        <h1 className="mb-2 font-serif text-3xl font-bold" style={{ color: 'hsl(var(--foreground))' }}>
           Guia de antimicrobianos
         </h1>
-        <p className="mb-6 text-sm leading-relaxed" style={{ color: 'var(--muted-foreground)' }}>
-          <strong style={{ color: 'var(--foreground)' }}>Catálogo principal:</strong> classes com cores e calculadora de dose
-          (mesmo modelo do guia clássico). Cada ficha pode abrir as <strong>doenças do catálogo legado</strong> que citam o
-          fármaco. As <strong>fichas v2</strong> servem ao motor de síndromes e à concordância institucional — use o bloco
-          opcional abaixo.
+        <p className="mb-6 max-w-3xl text-sm leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
+          Catálogo único: <strong style={{ color: 'hsl(var(--foreground))' }}>doenças</strong> com referência CCIH (quando
+          preenchida), <strong style={{ color: 'hsl(var(--foreground))' }}>fármacos por classe</strong> com cores PK/PD e
+          calculadora. A busca liga ao motor de <strong style={{ color: 'hsl(var(--foreground))' }}>suspeita clínica (v2)</strong>{' '}
+          e às bibliotecas institucionais.
         </p>
 
         <div className="mb-6 flex flex-col gap-3 md:flex-row">
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Busca clínica unificada (síndromes, moléculas, patógenos, hospital, referências, legado…)"
+            placeholder="Buscar doença, antimicrobiano, síndrome, patógeno ou tema hospitalar…"
             className="abv-input flex-1 p-3 text-sm md:text-base"
           />
         </div>
 
         {q.trim() && unifiedHits.length > 0 && (
-          <section className="mb-6 rounded-[var(--radius)] border p-4" style={{ borderColor: 'var(--border)' }}>
-            <h2 className="text-sm font-semibold" style={{ color: 'var(--foreground)' }}>
+          <section className="mb-6 rounded-[var(--radius)] border p-4" style={{ borderColor: 'hsl(var(--border))' }}>
+            <h2 className="text-sm font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
               Resultados da busca
             </h2>
-            <p className="mb-3 text-xs" style={{ color: 'var(--muted-foreground)' }}>
-              Universo v2 (clínico, antimicrobianos, microbiologia, hospital, fontes) ordenado por relevância; legado por
-              último.
+            <p className="mb-3 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
+              Ordem: síndromes e conteúdos v2; em seguida doenças e fármacos do catálogo legado.
             </p>
             <ul className="max-h-56 space-y-2 overflow-y-auto pr-1 text-sm">
               {unifiedHits.map((h, i) => {
@@ -179,52 +224,49 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
                     <li key={`syn-${h.id}-${i}`}>
                       <button
                         type="button"
-                        className="text-left font-medium underline-offset-2 hover:underline"
-                        style={{ color: 'var(--primary)' }}
+                        className="cursor-pointer text-left font-medium underline-offset-2 hover:underline"
+                        style={{ color: 'hsl(var(--primary))' }}
                         onClick={() => onNavigateSyndromeV2(h.id)}
                       >
                         <span
                           className="mr-2 rounded px-1.5 py-0.5 text-[10px] font-bold uppercase"
                           style={{
-                            background: 'color-mix(in srgb, var(--primary) 15%, var(--card))',
-                            color: 'var(--primary)',
+                            background: 'color-mix(in srgb, hsl(var(--primary)) 15%, hsl(var(--card)))',
+                            color: 'hsl(var(--primary))',
                           }}
                         >
-                          Síndrome v2
+                          Síndrome
                         </span>
                         {h.label}
                       </button>
-                      <p className="mt-0.5 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+                      <p className="mt-0.5 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                         {h.hint}
                       </p>
                     </li>
                   )
                 }
-                if (h.kind === 'molecule') {
+                if (h.kind === 'disease') {
                   return (
-                    <li key={`mol-${h.id}-${i}`}>
+                    <li key={`dz-${h.system}-${h.name}-${i}`}>
                       <button
                         type="button"
-                        className="text-left font-medium underline-offset-2 hover:underline"
-                        style={{ color: 'var(--primary)' }}
-                        onClick={() => {
-                          setSelectedLibraryMoleculeId(h.id)
-                          onClearFocusMoleculeV2()
-                          setTimeout(() => sheetTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50)
-                        }}
+                        className="cursor-pointer text-left font-medium underline-offset-2 hover:underline"
+                        style={{ color: 'hsl(var(--primary))' }}
+                        onClick={() => onOpenLegacyDisease(h.name)}
                       >
                         <span
                           className="mr-2 rounded px-1.5 py-0.5 text-[10px] font-bold uppercase"
                           style={{
-                            background: 'color-mix(in srgb, var(--secondary) 18%, var(--card))',
-                            color: 'var(--secondary)',
+                            background: 'color-mix(in srgb, var(--chart-2) 18%, hsl(var(--card)))',
+                            color: 'hsl(var(--foreground))',
                           }}
                         >
-                          Ficha v2
+                          Doença
                         </span>
-                        {h.label}
+                        {h.name}{' '}
+                        <span className="text-xs opacity-80">({h.system})</span>
                       </button>
-                      <p className="mt-0.5 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+                      <p className="mt-0.5 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                         {h.hint}
                       </p>
                     </li>
@@ -235,22 +277,22 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
                     <li key={`path-${h.id}-${i}`}>
                       <button
                         type="button"
-                        className="text-left font-medium underline-offset-2 hover:underline"
-                        style={{ color: 'var(--primary)' }}
+                        className="cursor-pointer text-left font-medium underline-offset-2 hover:underline"
+                        style={{ color: 'hsl(var(--primary))' }}
                         onClick={() => onNavigateInstitutional({ kind: 'pathogen', id: h.id })}
                       >
                         <span
                           className="mr-2 rounded px-1.5 py-0.5 text-[10px] font-bold uppercase"
                           style={{
-                            background: 'color-mix(in srgb, var(--chart-3) 20%, var(--card))',
-                            color: 'var(--foreground)',
+                            background: 'color-mix(in srgb, var(--chart-3) 20%, hsl(var(--card)))',
+                            color: 'hsl(var(--foreground))',
                           }}
                         >
-                          Patógeno v2
+                          Patógeno
                         </span>
                         {h.label}
                       </button>
-                      <p className="mt-0.5 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+                      <p className="mt-0.5 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                         {h.hint}
                       </p>
                     </li>
@@ -261,22 +303,22 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
                     <li key={`res-${h.id}-${i}`}>
                       <button
                         type="button"
-                        className="text-left font-medium underline-offset-2 hover:underline"
-                        style={{ color: 'var(--primary)' }}
+                        className="cursor-pointer text-left font-medium underline-offset-2 hover:underline"
+                        style={{ color: 'hsl(var(--primary))' }}
                         onClick={() => onNavigateInstitutional({ kind: 'resistance', id: h.id })}
                       >
                         <span
                           className="mr-2 rounded px-1.5 py-0.5 text-[10px] font-bold uppercase"
                           style={{
-                            background: 'color-mix(in srgb, var(--chart-4) 22%, var(--card))',
-                            color: 'var(--foreground)',
+                            background: 'color-mix(in srgb, var(--chart-4) 22%, hsl(var(--card)))',
+                            color: 'hsl(var(--foreground))',
                           }}
                         >
-                          Resistência v2
+                          Resistência
                         </span>
                         {h.label}
                       </button>
-                      <p className="mt-0.5 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+                      <p className="mt-0.5 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                         {h.hint}
                       </p>
                     </li>
@@ -287,22 +329,22 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
                     <li key={`hosp-${h.id}-${i}`}>
                       <button
                         type="button"
-                        className="text-left font-medium underline-offset-2 hover:underline"
-                        style={{ color: 'var(--primary)' }}
+                        className="cursor-pointer text-left font-medium underline-offset-2 hover:underline"
+                        style={{ color: 'hsl(var(--primary))' }}
                         onClick={() => onNavigateInstitutional({ kind: 'hospital', id: h.id })}
                       >
                         <span
                           className="mr-2 rounded px-1.5 py-0.5 text-[10px] font-bold uppercase"
                           style={{
-                            background: 'color-mix(in srgb, var(--chart-5) 18%, var(--card))',
-                            color: 'var(--foreground)',
+                            background: 'color-mix(in srgb, var(--chart-5) 18%, hsl(var(--card)))',
+                            color: 'hsl(var(--foreground))',
                           }}
                         >
-                          Hospital v2
+                          Hospital
                         </span>
                         {h.label}
                       </button>
-                      <p className="mt-0.5 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+                      <p className="mt-0.5 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                         {h.hint}
                       </p>
                     </li>
@@ -313,31 +355,31 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
                     <li key={`ref-${h.key}-${i}`}>
                       <button
                         type="button"
-                        className="text-left font-medium underline-offset-2 hover:underline"
-                        style={{ color: 'var(--primary)' }}
+                        className="cursor-pointer text-left font-medium underline-offset-2 hover:underline"
+                        style={{ color: 'hsl(var(--primary))' }}
                         onClick={() => onNavigateInstitutional({ kind: 'reference', key: h.key })}
                       >
                         <span
                           className="mr-2 rounded px-1.5 py-0.5 text-[10px] font-bold uppercase"
                           style={{
-                            background: 'color-mix(in srgb, var(--muted) 50%, var(--card))',
-                            color: 'var(--foreground)',
+                            background: 'color-mix(in srgb, hsl(var(--muted)) 50%, hsl(var(--card)))',
+                            color: 'hsl(var(--foreground))',
                           }}
                         >
                           Fonte
                         </span>
                         {h.label}
                       </button>
-                      <p className="mt-0.5 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+                      <p className="mt-0.5 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                         {h.hint}
                       </p>
                     </li>
                   )
                 }
                 return (
-                  <li key={`leg-${h.name}-${h.className}-${i}`} className="text-xs" style={{ color: 'var(--muted-foreground)' }}>
-                    <span className="font-semibold" style={{ color: 'var(--foreground)' }}>
-                      Legado:
+                  <li key={`leg-${h.name}-${h.className}-${i}`} className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
+                    <span className="font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
+                      Fármaco:
                     </span>{' '}
                     {h.name} <span className="opacity-80">({h.className})</span>
                   </li>
@@ -348,62 +390,77 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
         )}
 
         {q.trim() && unifiedHits.length === 0 && (
-          <p className="mb-4 text-sm" style={{ color: 'var(--muted-foreground)' }}>
-            Nenhum resultado na busca unificada. Ajuste o termo ou percorra o catálogo por classe abaixo.
+          <p className="mb-4 text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
+            Nenhum resultado. Ajuste o termo ou use as secções abaixo.
           </p>
         )}
 
-        {activeSheet && (
-          <div ref={sheetTopRef} className="mb-8">
-            <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+        <section className="mb-10 border-b pb-8" style={{ borderColor: 'hsl(var(--border))' }}>
+          <button
+            type="button"
+            className="mb-4 flex w-full cursor-pointer flex-wrap items-center justify-between gap-2 text-left md:w-auto"
+            onClick={() => setDiseaseSectionOpen((v) => !v)}
+          >
+            <div>
               <span
                 className="rounded-full px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide"
                 style={{
-                  background: 'color-mix(in srgb, var(--secondary) 16%, var(--card))',
-                  color: 'var(--secondary)',
-                  border: '1px solid color-mix(in srgb, var(--secondary) 30%, var(--border))',
+                  background: 'color-mix(in srgb, var(--chart-4) 18%, hsl(var(--card)))',
+                  color: 'hsl(var(--foreground))',
+                  border: '1px solid color-mix(in srgb, var(--chart-4) 35%, hsl(var(--border)))',
                 }}
               >
-                Ficha v2 aberta
+                Doenças · CCIH
               </span>
-              <button
-                type="button"
-                className="text-xs font-medium underline"
-                style={{ color: 'var(--primary)' }}
-                onClick={() => {
-                  setSelectedLibraryMoleculeId(null)
-                  onClearFocusMoleculeV2()
-                }}
-              >
-                Fechar ficha
-              </button>
+              <h2 className="mt-2 font-serif text-xl font-bold" style={{ color: 'hsl(var(--foreground))' }}>
+                Condições por sistema
+              </h2>
+              <p className="mt-1 max-w-3xl text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
+                Referência clínica legada; campo CCIH é preenchido com auditoria institucional. Use os cartões de
+                antibióticos abaixo para doses e calculadora.
+              </p>
             </div>
-            <AntibioticV2Panel sheet={activeSheet} />
-          </div>
-        )}
+            <span className="text-sm font-medium" style={{ color: 'hsl(var(--primary))' }}>
+              {diseaseSectionOpen ? 'Ocultar' : 'Mostrar'}
+            </span>
+          </button>
+          {diseaseSectionOpen && (
+            <div className="space-y-6">
+              {systems.map((sys) => (
+                <div key={sys}>
+                  <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide" style={{ color: 'hsl(var(--muted-foreground))' }}>
+                    {sys}
+                  </h3>
+                  <div className="grid gap-3 md:grid-cols-2">
+                    {safeList(dzDict[sys]).map((dz) => renderDiseaseCard(sys, dz))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
 
-        <section className="mb-10">
+        <section className="mb-6">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
             <div>
               <span
                 className="rounded-full px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide"
                 style={{
-                  background: 'color-mix(in srgb, var(--chart-2) 18%, var(--card))',
-                  color: 'var(--foreground)',
-                  border: '1px solid color-mix(in srgb, var(--chart-2) 35%, var(--border))',
+                  background: 'color-mix(in srgb, var(--chart-2) 18%, hsl(var(--card)))',
+                  color: 'hsl(var(--foreground))',
+                  border: '1px solid color-mix(in srgb, var(--chart-2) 35%, hsl(var(--border)))',
                 }}
               >
-                Catálogo por classe
+                Antimicrobianos por classe
               </span>
-              <p className="mt-2 max-w-3xl text-xs" style={{ color: 'var(--muted-foreground)' }}>
-                Cartões com cores por subclasse PK/PD, doses e calculadora. Links para doenças usam o catálogo clássico do
-                guia por suspeita.
+              <p className="mt-2 max-w-3xl text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
+                PK/PD por cor, doses e calculadora. Chips ligam às doenças do catálogo quando o fármaco aparece na 1ª linha ou alternativas.
               </p>
             </div>
             <select
               value={cls}
               onChange={(e) => setCls(e.target.value)}
-              className="abv-input w-full p-3 md:w-72"
+              className="abv-input w-full cursor-pointer p-3 md:w-72"
             >
               <option value="todas">Todas as classes</option>
               {classes.map((c) => (
@@ -432,13 +489,13 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
                     <span className="text-2xl" aria-hidden>
                       {st.emoji}
                     </span>
-                    <h2 className="text-xl font-bold" style={{ color: 'var(--foreground)' }}>
+                    <h2 className="text-xl font-bold" style={{ color: 'hsl(var(--foreground))' }}>
                       {k}
                     </h2>
                   </div>
                   <div className="grid gap-4 p-5 md:grid-cols-2">
                     {list.map((d) => {
-                      const isHighlighted = !firstHitGiven && !!q && !focusMoleculeIdV2
+                      const isHighlighted = !firstHitGiven && !!q && !focusDiseaseName
                       if (isHighlighted) firstHitGiven = true
                       const linked = lookupDiseasesForDrug(d.name, diseaseDrugIndex)
                       return (
@@ -458,64 +515,12 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
               )
             })}
             {filteredLegacy.length === 0 && (
-              <div className="py-6 text-center text-sm" style={{ color: 'var(--muted-foreground)' }}>
+              <div className="py-6 text-center text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
                 Nenhum fármaco com os filtros atuais.
               </div>
             )}
           </div>
         </section>
-
-        <div className="border-t pt-6" style={{ borderColor: 'var(--border)' }}>
-          <p className="mb-2 text-xs" style={{ color: 'var(--muted-foreground)' }}>
-            <strong style={{ color: 'var(--foreground)' }}>Biblioteca v2 (motor de síndromes):</strong> fichas alinhadas ao
-            bloco clínico estruturado e à trilha de concordância institucional.
-          </p>
-          <button
-            type="button"
-            className="mb-4 text-sm font-medium underline"
-            style={{ color: 'var(--primary)' }}
-            onClick={() => setShowV2Library((v) => !v)}
-          >
-            {showV2Library ? 'Ocultar' : 'Mostrar'} fichas v2 / moléculas do motor
-          </button>
-          {showV2Library && (
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {v2SheetsFiltered.map((s) => (
-                <button
-                  key={s.id}
-                  type="button"
-                  onClick={() => {
-                    setSelectedLibraryMoleculeId(s.id)
-                    onClearFocusMoleculeV2()
-                    setTimeout(() => sheetTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50)
-                  }}
-                  className={`rounded-lg border px-3 py-3 text-left text-sm transition hover:opacity-95 ${
-                    activeSheetId === s.id ? 'ring-2' : ''
-                  }`}
-                  style={
-                    activeSheetId === s.id
-                      ? {
-                          borderColor: 'var(--primary)',
-                          background: 'color-mix(in srgb, var(--primary) 10%, var(--card))',
-                          color: 'var(--foreground)',
-                          boxShadow: '0 0 0 1px color-mix(in srgb, var(--ring) 45%, transparent)',
-                        }
-                      : {
-                          borderColor: 'var(--border)',
-                          background: 'var(--card)',
-                          color: 'var(--foreground)',
-                        }
-                  }
-                >
-                  <span className="font-semibold">{s.displayName}</span>
-                  <p className="mt-1 text-xs" style={{ color: 'var(--muted-foreground)' }}>
-                    {s.classLabel} · {s.subclassLabel}
-                  </p>
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
       </div>
     </div>
   )

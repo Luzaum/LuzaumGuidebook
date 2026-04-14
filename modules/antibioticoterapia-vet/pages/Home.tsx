@@ -15,10 +15,10 @@ const Home: React.FC<HomeProps> = ({ setPage, onMergeAB, onMergeDZ }) => (
             <AnimatedBackground pillCount={150} />
     <div className="relative z-10 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-6">
       <header className="text-center mb-10 max-w-5xl mx-auto">
-      <h1 className="text-4xl font-extrabold md:text-5xl" style={{ color: 'var(--foreground)' }}>
+      <h1 className="text-4xl font-extrabold md:text-5xl" style={{ color: 'hsl(var(--foreground))' }}>
         Antibioticoterapia
       </h1>
-      <p className="mt-2" style={{ color: 'var(--muted-foreground)' }}>
+      <p className="mt-2" style={{ color: 'hsl(var(--muted-foreground))' }}>
         Guia clínico de antibióticos e condições para medicina veterinária.
       </p>
     </header>
@@ -37,7 +37,7 @@ const Home: React.FC<HomeProps> = ({ setPage, onMergeAB, onMergeDZ }) => (
     <div className="max-w-5xl mx-auto mt-8">
       <Importer onMergeAB={onMergeAB} onMergeDZ={onMergeDZ} />
     </div>
-    <footer className="mt-12 text-center text-xs" style={{ color: 'var(--muted-foreground)' }}>
+    <footer className="mt-12 text-center text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
       Ferramenta educacional. Para uso clínico: baseie-se em cultura/antibiograma e consensos atualizados.
     </footer>
     </div>

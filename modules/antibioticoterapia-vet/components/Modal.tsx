@@ -22,27 +22,27 @@ const Modal: React.FC<ModalProps> = ({ open, title, children, onClose }) => {
       <div
         className="w-full max-w-xl rounded-2xl p-6 shadow-2xl"
         style={{
-          background: 'var(--card)',
-          color: 'var(--card-foreground)',
-          border: '1px solid var(--border)',
+          background: 'hsl(var(--card))',
+          color: 'hsl(var(--card-foreground))',
+          border: '1px solid hsl(var(--border))',
         }}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-xl font-bold" style={{ color: 'var(--foreground)' }}>
+          <h3 className="text-xl font-bold" style={{ color: 'hsl(var(--foreground))' }}>
             {title || 'Detalhes'}
           </h3>
           <button
             type="button"
             className="rounded-lg p-1 transition hover:opacity-80"
-            style={{ color: 'var(--muted-foreground)' }}
+            style={{ color: 'hsl(var(--muted-foreground))' }}
             onClick={onClose}
             aria-label="Fechar"
           >
             <Icon name="close" />
           </button>
         </div>
-        <div className="whitespace-pre-line leading-relaxed" style={{ color: 'var(--muted-foreground)' }}>
+        <div className="whitespace-pre-line leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
           {children}
         </div>
       </div>

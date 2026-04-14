@@ -47,13 +47,13 @@ export function PathogenLibraryPage({
   }, [institutionalFocus])
 
   return (
-    <div className="min-h-full bg-[var(--background)] p-4 md:p-8">
+    <div className="min-h-full bg-[hsl(var(--background))] p-4 md:p-8">
       <div className="mx-auto max-w-4xl">
         <button
           type="button"
           onClick={() => setPage('home')}
           className="mb-6 flex items-center text-lg font-semibold transition hover:opacity-90"
-          style={{ color: 'var(--primary)' }}
+          style={{ color: 'hsl(var(--primary))' }}
         >
           <Icon name="back" className="mr-2 h-6 w-6" />
           Voltar ao início
@@ -62,21 +62,21 @@ export function PathogenLibraryPage({
         <header className="mb-8">
           <p
             className="mb-2 text-xs font-semibold uppercase tracking-wide"
-            style={{ color: 'var(--primary)' }}
+            style={{ color: 'hsl(var(--primary))' }}
           >
             Núcleo v2 · microbiologia
           </p>
-          <h1 className="font-serif text-3xl font-bold" style={{ color: 'var(--foreground)' }}>
+          <h1 className="font-serif text-3xl font-bold" style={{ color: 'hsl(var(--foreground))' }}>
             Microrganismos e resistência
           </h1>
-          <p className="mt-3 text-sm" style={{ color: 'var(--muted-foreground)' }}>
+          <p className="mt-3 text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
             Perfis estruturados para apoio ao raciocínio clínico e stewardship — não substituem antibiograma, protocolo
             laboratorial nem diretriz institucional.
           </p>
         </header>
 
         <section className="mb-12">
-          <h2 className="mb-4 text-lg font-semibold" style={{ color: 'var(--foreground)' }}>
+          <h2 className="mb-4 text-lg font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
             Patógenos e agrupamentos
           </h2>
           <div className="space-y-4">
@@ -85,32 +85,32 @@ export function PathogenLibraryPage({
                 key={p.id}
                 id={`abv-pathogen-${p.id}`}
                 className="abv-panel scroll-mt-24 p-4"
-                style={{ color: 'var(--foreground)' }}
+                style={{ color: 'hsl(var(--foreground))' }}
               >
                 <div className="mb-2 flex flex-wrap items-center gap-2">
                   <span
                     className="rounded-full px-2 py-0.5 text-[10px] font-bold uppercase"
                     style={{
-                      background: 'color-mix(in srgb, var(--primary) 14%, var(--card))',
-                      color: 'var(--primary)',
+                      background: 'color-mix(in srgb, hsl(var(--primary)) 14%, hsl(var(--card)))',
+                      color: 'hsl(var(--primary))',
                     }}
                   >
                     {p.kind === 'species' ? 'Espécie' : 'Agrupamento'}
                   </span>
-                  <span className="font-mono text-xs" style={{ color: 'var(--muted-foreground)' }}>
+                  <span className="font-mono text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                     {p.slug}
                   </span>
                 </div>
                 <h3 className="font-serif text-xl font-bold">{p.label}</h3>
-                <p className="mt-2 text-sm" style={{ color: 'var(--muted-foreground)' }}>
+                <p className="mt-2 text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
                   {p.habitatSummary}
                 </p>
                 <p className="mt-2 text-sm">{p.clinicalRoleSummary}</p>
                 <div className="mt-3">
-                  <h4 className="text-xs font-semibold uppercase" style={{ color: 'var(--primary)' }}>
+                  <h4 className="text-xs font-semibold uppercase" style={{ color: 'hsl(var(--primary))' }}>
                     Resistência / alertas
                   </h4>
-                  <ul className="mt-1 list-inside list-disc text-sm" style={{ color: 'var(--muted-foreground)' }}>
+                  <ul className="mt-1 list-inside list-disc text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
                     {p.resistanceHighlights.map((x, i) => (
                       <li key={i}>{x}</li>
                     ))}
@@ -120,7 +120,7 @@ export function PathogenLibraryPage({
                   <h4 className="text-xs font-semibold uppercase" style={{ color: 'var(--chart-5)' }}>
                     Stewardship
                   </h4>
-                  <ul className="mt-1 list-inside list-disc text-sm" style={{ color: 'var(--muted-foreground)' }}>
+                  <ul className="mt-1 list-inside list-disc text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
                     {p.stewardshipBullets.map((x, i) => (
                       <li key={i}>{x}</li>
                     ))}
@@ -128,13 +128,13 @@ export function PathogenLibraryPage({
                 </div>
                 <div className="mt-3">
                   <h4 className="text-xs font-semibold uppercase">Amostragem</h4>
-                  <ul className="mt-1 list-inside list-disc text-sm" style={{ color: 'var(--muted-foreground)' }}>
+                  <ul className="mt-1 list-inside list-disc text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
                     {p.samplingNotes.map((x, i) => (
                       <li key={i}>{x}</li>
                     ))}
                   </ul>
                 </div>
-                <p className="mt-3 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+                <p className="mt-3 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                   Ref.: {p.referenceKeys.join(', ')}
                 </p>
               </article>
@@ -143,7 +143,7 @@ export function PathogenLibraryPage({
         </section>
 
         <section>
-          <h2 className="mb-4 text-lg font-semibold" style={{ color: 'var(--foreground)' }}>
+          <h2 className="mb-4 text-lg font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
             Conceitos de resistência e interpretação
           </h2>
           <div className="space-y-4">
@@ -154,13 +154,13 @@ export function PathogenLibraryPage({
                 key={c.id}
                 id={`abv-resistance-${c.id}`}
                 className="abv-panel scroll-mt-24 p-4"
-                style={{ color: 'var(--foreground)' }}
+                style={{ color: 'hsl(var(--foreground))' }}
               >
-                <span className="font-mono text-xs" style={{ color: 'var(--muted-foreground)' }}>
+                <span className="font-mono text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                   {c.slug}
                 </span>
                 <h3 className="mt-1 font-serif text-xl font-bold">{c.label}</h3>
-                <p className="mt-2 text-sm" style={{ color: 'var(--muted-foreground)' }}>
+                <p className="mt-2 text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
                   {c.definitionShort}
                 </p>
                 <div className="mt-3">
@@ -172,10 +172,10 @@ export function PathogenLibraryPage({
                   </ul>
                 </div>
                 <div className="mt-3">
-                  <h4 className="text-xs font-semibold uppercase" style={{ color: 'var(--accent)' }}>
+                  <h4 className="text-xs font-semibold uppercase" style={{ color: 'hsl(var(--accent))' }}>
                     Stewardship
                   </h4>
-                  <ul className="mt-1 list-inside list-disc text-sm" style={{ color: 'var(--muted-foreground)' }}>
+                  <ul className="mt-1 list-inside list-disc text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
                     {c.stewardshipBullets.map((x, i) => (
                       <li key={i}>{x}</li>
                     ))}
@@ -186,7 +186,7 @@ export function PathogenLibraryPage({
                     <InstitutionalProvenanceStrip mapping={rMap} contextLabel={c.label} variant="compact" />
                   </div>
                 )}
-                <p className="mt-3 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+                <p className="mt-3 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                   Ref.: {c.referenceKeys.join(', ')}
                 </p>
               </article>

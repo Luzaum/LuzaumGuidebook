@@ -108,7 +108,7 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
             <div>
               <h3
                 className={`mb-3 text-lg font-semibold transition-colors ${showSpeciesWarning ? 'text-red-600' : ''}`}
-                style={!showSpeciesWarning ? { color: 'var(--foreground)' } : undefined}
+                style={!showSpeciesWarning ? { color: 'hsl(var(--foreground))' } : undefined}
               >
                 1) Selecione a espécie
               </h3>
@@ -118,38 +118,38 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
                 <button
                   type="button"
                   onClick={() => setSpecies('Cão')}
-                  className={`flex flex-col items-center justify-center overflow-hidden rounded-xl border-2 p-4 transition-transform duration-200 hover:scale-[1.02] ${species === 'Cão' ? 'ring-2' : 'border-[var(--border)] bg-[var(--card)] hover:opacity-95'}`}
+                  className={`flex flex-col items-center justify-center overflow-hidden rounded-xl border-2 p-4 transition-transform duration-200 hover:scale-[1.02] ${species === 'Cão' ? 'ring-2' : 'border-[hsl(var(--border))] bg-[hsl(var(--card))] hover:opacity-95'}`}
                   style={
                     species === 'Cão'
                       ? {
-                          borderColor: 'var(--primary)',
-                          background: 'color-mix(in srgb, var(--primary) 12%, var(--card))',
-                          boxShadow: '0 0 0 1px color-mix(in srgb, var(--ring) 45%, transparent)',
+                          borderColor: 'hsl(var(--primary))',
+                          background: 'color-mix(in srgb, hsl(var(--primary)) 12%, hsl(var(--card)))',
+                          boxShadow: '0 0 0 1px color-mix(in srgb, hsl(var(--ring)) 45%, transparent)',
                         }
-                      : { borderColor: 'var(--border)', background: 'var(--card)' }
+                      : { borderColor: 'hsl(var(--border))', background: 'hsl(var(--card))' }
                   }
                 >
                   <img src={ABV_SPECIES_IMG_DOG} alt="Ilustração de cão" className="h-28 w-full max-w-[140px] object-contain md:h-32" />
-                  <span className="mt-3 text-lg font-bold" style={{ color: 'var(--foreground)' }}>
+                  <span className="mt-3 text-lg font-bold" style={{ color: 'hsl(var(--foreground))' }}>
                     Cão
                   </span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setSpecies('Gato')}
-                  className={`flex flex-col items-center justify-center overflow-hidden rounded-xl border-2 p-4 transition-transform duration-200 hover:scale-[1.02] ${species === 'Gato' ? 'ring-2' : 'border-[var(--border)] bg-[var(--card)] hover:opacity-95'}`}
+                  className={`flex flex-col items-center justify-center overflow-hidden rounded-xl border-2 p-4 transition-transform duration-200 hover:scale-[1.02] ${species === 'Gato' ? 'ring-2' : 'border-[hsl(var(--border))] bg-[hsl(var(--card))] hover:opacity-95'}`}
                   style={
                     species === 'Gato'
                       ? {
-                          borderColor: 'var(--primary)',
-                          background: 'color-mix(in srgb, var(--primary) 12%, var(--card))',
-                          boxShadow: '0 0 0 1px color-mix(in srgb, var(--ring) 45%, transparent)',
+                          borderColor: 'hsl(var(--primary))',
+                          background: 'color-mix(in srgb, hsl(var(--primary)) 12%, hsl(var(--card)))',
+                          boxShadow: '0 0 0 1px color-mix(in srgb, hsl(var(--ring)) 45%, transparent)',
                         }
-                      : { borderColor: 'var(--border)', background: 'var(--card)' }
+                      : { borderColor: 'hsl(var(--border))', background: 'hsl(var(--card))' }
                   }
                 >
                   <img src={ABV_SPECIES_IMG_CAT} alt="Ilustração de gato" className="h-28 w-full max-w-[140px] object-contain md:h-32" />
-                  <span className="mt-3 text-lg font-bold" style={{ color: 'var(--foreground)' }}>
+                  <span className="mt-3 text-lg font-bold" style={{ color: 'hsl(var(--foreground))' }}>
                     Gato
                   </span>
                 </button>
@@ -158,7 +158,7 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
             <div>
               <h3
                 className={`mb-3 text-lg font-semibold transition-colors ${showLifeStageWarning ? 'text-red-600' : ''}`}
-                style={!showLifeStageWarning ? { color: 'var(--foreground)' } : undefined}
+                style={!showLifeStageWarning ? { color: 'hsl(var(--foreground))' } : undefined}
               >
                 2) Selecione a fase da vida
               </h3>
@@ -174,8 +174,8 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
                           className={`flex w-full items-center justify-between rounded-lg p-3 text-left transition ${life === k ? 'font-semibold' : 'hover:opacity-95'}`}
                           style={
                             life === k
-                              ? { background: 'var(--primary)', color: 'var(--primary-foreground)' }
-                              : { background: 'color-mix(in srgb, var(--foreground) 10%, var(--card))', color: 'var(--foreground)' }
+                              ? { background: 'hsl(var(--primary))', color: 'hsl(var(--primary-foreground))' }
+                              : { background: 'color-mix(in srgb, hsl(var(--foreground)) 10%, hsl(var(--card)))', color: 'hsl(var(--foreground))' }
                           }
                         >
                           <span>{v.label}</span>
@@ -195,7 +195,7 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
                               onMouseEnter={(e) => {
                                 if (life !== k) {
                                   e.currentTarget.style.background =
-                                    'color-mix(in srgb, var(--foreground) 14%, transparent)'
+                                    'color-mix(in srgb, hsl(var(--foreground)) 14%, transparent)'
                                 }
                               }}
                               onMouseLeave={(e) => {
@@ -210,9 +210,9 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
                           <div
                             className="mt-2 rounded border p-2 text-xs font-medium"
                             style={{
-                              borderColor: 'color-mix(in srgb, var(--chart-5) 40%, var(--border))',
-                              background: 'color-mix(in srgb, var(--chart-5) 12%, var(--card))',
-                              color: 'var(--foreground)',
+                              borderColor: 'color-mix(in srgb, var(--chart-5) 40%, hsl(var(--border)))',
+                              background: 'color-mix(in srgb, var(--chart-5) 12%, hsl(var(--card)))',
+                              color: 'hsl(var(--foreground))',
                             }}
                           >
                             {v.warn}
@@ -233,7 +233,7 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
               Próximo
             </button>
             {(!species || !life) && (
-              <p className="mt-2 text-center text-sm" style={{ color: 'var(--muted-foreground)' }}>
+              <p className="mt-2 text-center text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
                 Por favor, selecione a espécie e a fase da vida para continuar.
               </p>
             )}
@@ -244,13 +244,13 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
         return (
           <div className="space-y-6">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-semibold" style={{ color: 'var(--foreground)' }}>
+              <h3 className="text-lg font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
                 3) Comorbidades
               </h3>
               <button
                 type="button"
                 className="inline-flex items-center gap-1 text-sm opacity-90 hover:opacity-100"
-                style={{ color: 'var(--primary)' }}
+                style={{ color: 'hsl(var(--primary))' }}
                 onClick={() => setModalInfo({ title: 'Ajustes por Comorbidade', content: COMORB_HELP_TEXT })}
               >
                 <Icon name="help" /> Dúvidas
@@ -264,14 +264,14 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
                   style={
                     co[k]
                       ? {
-                          borderColor: 'var(--primary)',
-                          background: 'color-mix(in srgb, var(--primary) 14%, var(--card))',
-                          color: 'var(--foreground)',
+                          borderColor: 'hsl(var(--primary))',
+                          background: 'color-mix(in srgb, hsl(var(--primary)) 14%, hsl(var(--card)))',
+                          color: 'hsl(var(--foreground))',
                         }
                       : {
-                          borderColor: 'var(--border)',
-                          background: 'color-mix(in srgb, var(--foreground) 6%, var(--card))',
-                          color: 'var(--foreground)',
+                          borderColor: 'hsl(var(--border))',
+                          background: 'color-mix(in srgb, hsl(var(--foreground)) 6%, hsl(var(--card)))',
+                          color: 'hsl(var(--foreground))',
                         }
                   }
                 >
@@ -286,10 +286,10 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
               ))}
             </div>
             <div>
-              <h3 className="mb-2 text-lg font-semibold" style={{ color: 'var(--foreground)' }}>
+              <h3 className="mb-2 text-lg font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
                 4) Gravidade assistencial
               </h3>
-              <p className="mb-2 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+              <p className="mb-2 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                 Usado pela engine v2 para escolher o cenário (não infere automaticamente a gravidade clínica).
               </p>
               <select
@@ -322,28 +322,28 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
                 <span
                   className="rounded-full px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide"
                   style={{
-                    background: 'color-mix(in srgb, var(--chart-2) 20%, var(--card))',
-                    color: 'var(--foreground)',
-                    border: '1px solid color-mix(in srgb, var(--chart-2) 35%, var(--border))',
+                    background: 'color-mix(in srgb, var(--chart-2) 20%, hsl(var(--card)))',
+                    color: 'hsl(var(--foreground))',
+                    border: '1px solid color-mix(in srgb, var(--chart-2) 35%, hsl(var(--border)))',
                   }}
                 >
                   Catálogo clássico
                 </span>
-                <span className="text-xs" style={{ color: 'var(--muted-foreground)' }}>
+                <span className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                   Por sistema · liga aos ATBs do guia (cores + calculadora)
                 </span>
               </div>
-              <h3 className="text-lg font-semibold" style={{ color: 'var(--foreground)' }}>
+              <h3 className="text-lg font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
                 1) Escolha por doença
               </h3>
-              <p className="mt-1 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+              <p className="mt-1 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                 Lista tradicional por aparelho. Depois de ver recomendações, use <strong>Guia</strong> em cada ATB ou o{' '}
                 <strong>Guia de antimicrobianos</strong> para a ficha completa. O bloco v2 fica abaixo.
               </p>
               <button
                 type="button"
                 className="mt-2 text-sm font-medium underline"
-                style={{ color: 'var(--primary)' }}
+                style={{ color: 'hsl(var(--primary))' }}
                 onClick={() => setShowLegacyCatalog((v) => !v)}
               >
                 {showLegacyCatalog ? 'Ocultar' : 'Mostrar'} lista de doenças por sistema
@@ -355,14 +355,14 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
                       key={sys}
                       className="rounded-lg border"
                       style={{
-                        borderColor: 'var(--border)',
-                        background: 'color-mix(in srgb, var(--foreground) 4%, var(--card))',
+                        borderColor: 'hsl(var(--border))',
+                        background: 'color-mix(in srgb, hsl(var(--foreground)) 4%, hsl(var(--card)))',
                       }}
                     >
-                      <div className="px-3 py-2 font-semibold" style={{ color: 'var(--foreground)' }}>
+                      <div className="px-3 py-2 font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
                         {sys}
                       </div>
-                      <div className="grid gap-2 border-t p-3 md:grid-cols-2" style={{ borderColor: 'var(--border)' }}>
+                      <div className="grid gap-2 border-t p-3 md:grid-cols-2" style={{ borderColor: 'hsl(var(--border))' }}>
                         {safeList(dzDict[sys]).map((dz: Disease) => (
                           <button
                             key={dz.name}
@@ -375,15 +375,15 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
                             style={
                               chosen?.name === dz.name
                                 ? {
-                                    borderColor: 'var(--primary)',
-                                    background: 'var(--primary)',
-                                    color: 'var(--primary-foreground)',
-                                    boxShadow: '0 0 0 1px color-mix(in srgb, var(--ring) 50%, transparent)',
+                                    borderColor: 'hsl(var(--primary))',
+                                    background: 'hsl(var(--primary))',
+                                    color: 'hsl(var(--primary-foreground))',
+                                    boxShadow: '0 0 0 1px color-mix(in srgb, hsl(var(--ring)) 50%, transparent)',
                                   }
                                 : {
-                                    borderColor: 'var(--border)',
-                                    background: 'var(--card)',
-                                    color: 'var(--foreground)',
+                                    borderColor: 'hsl(var(--border))',
+                                    background: 'hsl(var(--card))',
+                                    color: 'hsl(var(--foreground))',
                                   }
                             }
                           >
@@ -397,26 +397,26 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
               )}
             </div>
 
-            <div className="border-t pt-4" style={{ borderColor: 'var(--border)' }}>
+            <div className="border-t pt-4" style={{ borderColor: 'hsl(var(--border))' }}>
               <div className="mb-2 flex flex-wrap items-center gap-2">
                 <span
                   className="rounded-full px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide"
                   style={{
-                    background: 'color-mix(in srgb, var(--primary) 18%, var(--card))',
-                    color: 'var(--primary)',
-                    border: '1px solid color-mix(in srgb, var(--primary) 35%, var(--border))',
+                    background: 'color-mix(in srgb, hsl(var(--primary)) 18%, hsl(var(--card)))',
+                    color: 'hsl(var(--primary))',
+                    border: '1px solid color-mix(in srgb, hsl(var(--primary)) 35%, hsl(var(--border)))',
                   }}
                 >
                   Fluxo v2
                 </span>
-                <span className="text-xs" style={{ color: 'var(--muted-foreground)' }}>
+                <span className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                   Síndromes com cultura, cenários e concordância institucional
                 </span>
               </div>
-              <h3 className="text-lg font-semibold" style={{ color: 'var(--foreground)' }}>
+              <h3 className="text-lg font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
                 2) Ou escolha por síndrome (motor estruturado)
               </h3>
-              <p className="mt-1 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+              <p className="mt-1 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
                 Modelo v2 com IDs estáveis; não substitui o catálogo por doença acima — complementa com regimes e
                 stewardship.
               </p>
@@ -433,15 +433,15 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
                     style={
                       chosenV2 === id
                         ? {
-                            borderColor: 'var(--primary)',
-                            background: 'var(--primary)',
-                            color: 'var(--primary-foreground)',
-                            boxShadow: '0 0 0 1px color-mix(in srgb, var(--ring) 55%, transparent)',
+                            borderColor: 'hsl(var(--primary))',
+                            background: 'hsl(var(--primary))',
+                            color: 'hsl(var(--primary-foreground))',
+                            boxShadow: '0 0 0 1px color-mix(in srgb, hsl(var(--ring)) 55%, transparent)',
                           }
                         : {
-                            borderColor: 'var(--border)',
-                            background: 'var(--card)',
-                            color: 'var(--foreground)',
+                            borderColor: 'hsl(var(--border))',
+                            background: 'hsl(var(--card))',
+                            color: 'hsl(var(--foreground))',
                           }
                     }
                   >
@@ -451,10 +451,10 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
                         className="shrink-0 rounded px-1.5 py-0.5 text-[10px] font-bold uppercase"
                         style={
                           chosenV2 === id
-                            ? { background: 'rgba(255,255,255,0.25)', color: 'var(--primary-foreground)' }
+                            ? { background: 'rgba(255,255,255,0.25)', color: 'hsl(var(--primary-foreground))' }
                             : {
-                                background: 'color-mix(in srgb, var(--secondary) 22%, var(--card))',
-                                color: 'var(--secondary)',
+                                background: 'color-mix(in srgb, hsl(var(--secondary)) 22%, hsl(var(--card)))',
+                                color: 'hsl(var(--secondary))',
                               }
                         }
                       >
@@ -471,7 +471,7 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
               </div>
             </div>
 
-            <div className="flex gap-3 border-t pt-4" style={{ borderColor: 'var(--border)' }}>
+            <div className="flex gap-3 border-t pt-4" style={{ borderColor: 'hsl(var(--border))' }}>
               <button type="button" onClick={() => setStep(2)} className="abv-btn-secondary w-full py-3 font-semibold transition">
                 Voltar
               </button>
@@ -499,7 +499,7 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
           }
           return (
             <div>
-              <h2 className="mb-3 font-serif text-2xl font-bold" style={{ color: 'var(--foreground)' }}>
+              <h2 className="mb-3 font-serif text-2xl font-bold" style={{ color: 'hsl(var(--foreground))' }}>
                 Recomendações (v2): {v2Result.syndromeLabel}
               </h2>
               <SyndromeV2Panel result={v2Result} onOpenMoleculeV2={onOpenMoleculeV2} />
@@ -512,18 +512,18 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
         if (!chosen) return null
         return (
           <div>
-            <h2 className="mb-3 font-serif text-2xl font-bold" style={{ color: 'var(--foreground)' }}>
+            <h2 className="mb-3 font-serif text-2xl font-bold" style={{ color: 'hsl(var(--foreground))' }}>
               Recomendações para {chosen.name}
             </h2>
             <div
               className="abv-panel mb-4 p-3 text-sm"
               style={{
-                background: 'color-mix(in srgb, var(--primary) 8%, var(--card))',
+                background: 'color-mix(in srgb, hsl(var(--primary)) 8%, hsl(var(--card)))',
               }}
             >
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="mb-1 text-base font-bold" style={{ color: 'var(--foreground)' }}>
+                  <div className="mb-1 text-base font-bold" style={{ color: 'hsl(var(--foreground))' }}>
                     {chosen.name}
                   </div>
                   <div>
@@ -541,7 +541,7 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
                 <button
                   type="button"
                   className="flex-shrink-0 opacity-90 hover:opacity-100"
-                  style={{ color: 'var(--primary)' }}
+                  style={{ color: 'hsl(var(--primary))' }}
                   title="Ver explicações detalhadas"
                   onClick={() => setModalInfo(getDzExplainBlock(chosen.name))}
                 >
@@ -552,7 +552,7 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
             <div className="space-y-4">
               {safeList(chosen.first_line).length > 0 && (
                 <div>
-                  <h4 className="mb-2 text-lg font-semibold" style={{ color: 'var(--foreground)' }}>
+                  <h4 className="mb-2 text-lg font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
                     Primeira Escolha (Empírico)
                   </h4>
                   <div className="space-y-2">
@@ -564,7 +564,7 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
               )}
               {safeList(chosen.alternatives).length > 0 && (
                 <div>
-                  <h4 className="mb-2 mt-4 text-lg font-semibold" style={{ color: 'var(--foreground)' }}>
+                  <h4 className="mb-2 mt-4 text-lg font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
                     Alternativas / Escalonamento
                   </h4>
                   <div className="space-y-2">
@@ -579,7 +579,7 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
               type="button"
               onClick={() => setPage('antibiotics')}
               className="abv-btn-secondary mt-4 w-full rounded-lg border py-3 font-semibold transition"
-              style={{ borderColor: 'var(--border)', color: 'var(--foreground)' }}
+              style={{ borderColor: 'hsl(var(--border))', color: 'hsl(var(--foreground))' }}
             >
               Abrir catálogo de antimicrobianos (classes coloridas e calculadora)
             </button>
@@ -594,26 +594,26 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
   }
 
   return (
-    <div className="relative isolate min-h-full overflow-hidden bg-[var(--background)] p-4 md:p-8">
+    <div className="relative isolate min-h-full overflow-hidden bg-[hsl(var(--background))] p-4 md:p-8">
       <div className="abv-panel relative z-10 mx-auto max-w-4xl p-6 shadow-md">
         <button
           type="button"
           onClick={() => setPage('home')}
           className="mb-6 flex items-center font-semibold transition hover:opacity-90"
-          style={{ color: 'var(--primary)' }}
+          style={{ color: 'hsl(var(--primary))' }}
         >
           <Icon name="back" className="mr-2 h-5 w-5" />
           Voltar
         </button>
-        <h1 className="mb-2 font-serif text-3xl font-bold" style={{ color: 'var(--foreground)' }}>
+        <h1 className="mb-2 font-serif text-3xl font-bold" style={{ color: 'hsl(var(--foreground))' }}>
           Guia por suspeita clínica
         </h1>
-        <p className="mb-6 text-sm" style={{ color: 'var(--muted-foreground)' }}>
+        <p className="mb-6 text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
           O primeiro bloco de síndromes usa o motor v2; o catálogo antigo permanece como fallback explícito.
         </p>
         <div
           className="rounded-[var(--radius)] border p-6 shadow-sm"
-          style={{ borderColor: 'var(--border)', background: 'var(--card)', color: 'var(--card-foreground)' }}
+          style={{ borderColor: 'hsl(var(--border))', background: 'hsl(var(--card))', color: 'hsl(var(--card-foreground))' }}
         >
           {renderStep()}
         </div>

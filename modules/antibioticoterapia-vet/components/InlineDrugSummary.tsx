@@ -26,7 +26,7 @@ const DrugItem: React.FC<{
 
   if (!foundDrug || !foundClass) {
     return (
-      <div className="mt-2 p-3 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+      <div className="mt-2 p-3 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
         (Sem dados da ficha de antibiótico para: {name})
       </div>
     )
@@ -41,10 +41,10 @@ const DrugItem: React.FC<{
     <div className="mt-2 rounded-lg border p-3 text-sm shadow-sm" style={{ background: st.bg, borderColor: st.border }}>
       <div className="flex items-start justify-between">
         <div>
-          <div className="text-base font-bold" style={{ color: 'var(--foreground)' }}>
+          <div className="text-base font-bold" style={{ color: 'hsl(var(--foreground))' }}>
             {foundDrug.name}
           </div>
-          <div className="text-xs" style={{ color: 'var(--muted-foreground)' }}>
+          <div className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
             Classe: {foundClass} · PK/PD: {pk.pd} · Eliminação: {pk.elim}
           </div>
         </div>
@@ -52,22 +52,22 @@ const DrugItem: React.FC<{
           type="button"
           onClick={() => onSeeGuide(foundDrug!.name)}
           className="ml-2 inline-flex flex-shrink-0 items-center gap-1 text-xs underline-offset-2 hover:underline"
-          style={{ color: 'var(--primary)' }}
+          style={{ color: 'hsl(var(--primary))' }}
         >
           <Icon name="open" className="h-4 w-4" /> Guia
         </button>
       </div>
 
-      <div className="mt-2 space-y-1 text-xs" style={{ color: 'var(--muted-foreground)' }}>
+      <div className="mt-2 space-y-1 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
         <div>
-          <b style={{ color: 'var(--foreground)' }}>MOA:</b> {foundDrug.mechanism || pk.moa}
+          <b style={{ color: 'hsl(var(--foreground))' }}>MOA:</b> {foundDrug.mechanism || pk.moa}
         </div>
         <div>
-          <b style={{ color: 'var(--foreground)' }}>Espectro:</b> {foundDrug.spectrum || '—'}
+          <b style={{ color: 'hsl(var(--foreground))' }}>Espectro:</b> {foundDrug.spectrum || '—'}
         </div>
       </div>
 
-      <div className="mt-2 grid gap-x-4 gap-y-1 text-xs md:grid-cols-2" style={{ color: 'var(--foreground)' }}>
+      <div className="mt-2 grid gap-x-4 gap-y-1 text-xs md:grid-cols-2" style={{ color: 'hsl(var(--foreground))' }}>
         <div>
           <b>Dose cão:</b> {foundDrug.dose_dog || '—'}
         </div>
@@ -80,9 +80,9 @@ const DrugItem: React.FC<{
         <div
           className="mt-2 space-y-1 rounded-md border p-2 text-sm"
           style={{
-            borderColor: 'color-mix(in srgb, var(--destructive) 40%, var(--border))',
-            background: 'color-mix(in srgb, var(--destructive) 10%, var(--card))',
-            color: 'var(--foreground)',
+            borderColor: 'color-mix(in srgb, hsl(var(--destructive)) 40%, hsl(var(--border)))',
+            background: 'color-mix(in srgb, hsl(var(--destructive)) 10%, hsl(var(--card)))',
+            color: 'hsl(var(--foreground))',
           }}
         >
           <div className="font-bold">Alertas de comorbidade</div>
@@ -97,9 +97,9 @@ const DrugItem: React.FC<{
         <div
           className="mt-2 rounded-md border p-2 text-sm"
           style={{
-            borderColor: 'color-mix(in srgb, var(--chart-5) 35%, var(--border))',
-            background: 'color-mix(in srgb, var(--chart-5) 10%, var(--card))',
-            color: 'var(--foreground)',
+            borderColor: 'color-mix(in srgb, var(--chart-5) 35%, hsl(var(--border)))',
+            background: 'color-mix(in srgb, var(--chart-5) 10%, hsl(var(--card)))',
+            color: 'hsl(var(--foreground))',
           }}
         >
           <b>Cautelas:</b> {foundDrug.cautions}
