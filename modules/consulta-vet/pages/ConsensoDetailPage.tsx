@@ -1,6 +1,7 @@
 ﻿import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { ChevronRight, LoaderCircle, Pill, Save, Share2, SquarePen, Stethoscope, X } from 'lucide-react';
+import { ConsultaVetSurface } from '../components/layout/ConsultaVetSurface';
 import { PdfViewerShell } from '../components/consensus/PdfViewerShell';
 import { ReferencesEditor } from '../components/editorial/ReferencesEditor';
 import { FavoriteButton } from '../components/shared/FavoriteButton';
@@ -327,7 +328,7 @@ export function ConsensoDetailPage() {
           <span className="truncate text-foreground">{consenso.title}</span>
         </nav>
 
-        <header className="rounded-2xl border border-border bg-card p-6 md:p-8">
+        <ConsultaVetSurface accent="violet" className="p-6 md:p-8">
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0">
               <h1 className="mb-2 text-3xl font-bold leading-tight tracking-tight text-foreground md:text-4xl">
@@ -371,7 +372,7 @@ export function ConsensoDetailPage() {
               <FavoriteButton entityType="consensus" entityId={consenso.id} className="h-12 w-12 p-3" />
             </div>
           </div>
-        </header>
+        </ConsultaVetSurface>
 
         <PdfViewerShell
           url={consenso.fileUrl}

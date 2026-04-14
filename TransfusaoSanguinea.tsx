@@ -484,7 +484,7 @@ const TransfusaoSanguinea = ({ onBack }: { onBack: () => void }) => {
             </header>
 
             <div className="mb-6 border-b border-border sticky top-0 bg-background z-10">
-                <nav className="flex -mb-px space-x-4 md:space-x-8 overflow-x-auto">
+                <nav className="flex -mb-px space-x-4 md:space-x-8 overflow-x-auto overscroll-x-contain pb-px [-webkit-overflow-scrolling:touch]">
                     {['calculator', 'prep', 'crossmatch', 'reactions', 'drugs'].map(tab => (
                         <button 
                             key={tab}
@@ -571,7 +571,7 @@ const CalculatorTab = React.memo(function CalculatorTab({
 }: CalculatorTabProps) {
     return (
         <div className="space-y-8">
-            <div className="bg-card text-card-foreground border border-border p-6 rounded-xl shadow-lg space-y-6">
+            <div className="space-y-6 rounded-xl border border-border bg-card p-4 text-card-foreground shadow-lg sm:p-6">
                 <h3 className="text-2xl font-semibold text-foreground border-b border-border pb-2">Calculadora de Volume e Taxas</h3>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <div className="space-y-4">

@@ -30,7 +30,7 @@ export default function PlaceholderSection({ tab }: PlaceholderSectionProps) {
   if (!c) return null
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8 md:py-12">
+    <div className="mx-auto w-full max-w-none px-4 py-8 md:px-8 md:py-12">
       <div className="abv-panel rounded-3xl p-8 shadow-lg">
         <div className="mb-6 flex items-start gap-4">
           <span
@@ -44,7 +44,7 @@ export default function PlaceholderSection({ tab }: PlaceholderSectionProps) {
             <Construction className="h-6 w-6" />
           </span>
           <div>
-            <h1 className="font-serif text-2xl font-bold" style={{ color: 'hsl(var(--foreground))' }}>
+            <h1 className="text-2xl font-bold tracking-tight" style={{ color: 'hsl(var(--foreground))' }}>
               {c.title}
             </h1>
             <p className="mt-3" style={{ color: 'hsl(var(--muted-foreground))' }}>

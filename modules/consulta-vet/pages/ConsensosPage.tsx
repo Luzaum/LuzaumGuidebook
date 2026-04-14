@@ -1,6 +1,7 @@
 ﻿import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Plus, Search, FileText } from 'lucide-react';
+import { ConsultaVetPageHero } from '../components/layout/ConsultaVetPageHero';
 import { ConsensusRecord, ConsensusSpecies } from '../types/consenso';
 import { getConsensoRepository } from '../services/consensoRepository';
 
@@ -18,6 +19,12 @@ function formatSpecies(species: ConsensusSpecies): string {
   if (species === 'cat') return 'Felino';
   return 'Ambos';
 }
+
+const UI = {
+  eyebrow: 'Diretrizes',
+  title: 'Consensos',
+  lead: 'Diretrizes e consensos clínicos para consulta rápida no atendimento.',
+} as const;
 
 function formatCategory(category: string | null): string {
   if (!category) return 'Sem categoria';
@@ -72,59 +79,62 @@ export function ConsensosPage() {
 
   return (
     <div className="mx-auto w-full max-w-[1500px] space-y-8 p-4 md:p-8">
-      <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-        <div>
-          <h1 className="mb-2 text-3xl font-bold tracking-tight text-foreground">Consensos</h1>
-          <p className="text-muted-foreground">Diretrizes e consensos clínicos para consulta rápida no atendimento.</p>
-        </div>
-
-        <Link
-          to="/consulta-vet/consensos/novo"
-          className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-        >
-          <Plus className="h-4 w-4" />
-          Adicionar consenso
-        </Link>
-      </div>
-
-      <div className="grid gap-3 md:grid-cols-3">
-        <div className="relative md:col-span-2">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <input
-            type="text"
-            placeholder="Buscar por título ou organização..."
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            className="w-full rounded-xl border border-border bg-card py-2.5 pl-10 pr-4 text-sm text-foreground outline-none transition-all placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20"
-          />
-        </div>
-
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-2">
-          <select
-            value={category}
-            onChange={(event) => setCategory(event.target.value)}
-            className="rounded-xl border border-border bg-card px-3 py-2.5 text-sm text-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+      <ConsultaVetPageHero
+        eyebrow={UI.eyebrow}
+        title={UI.title}
+        description={UI.lead}
+        icon={FileText}
+        accent="violet"
+        aside={
+          <Link
+            to="/consulta-vet/consensos/novo"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground shadow-md shadow-primary/20 transition-opacity hover:opacity-95 md:w-auto"
           >
-            {categoryOptions.map((option) => (
-              <option key={option.value || 'all'} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
+            <Plus className="h-4 w-4" />
+            Adicionar consenso
+          </Link>
+        }
+        footer={
+          <div className="grid gap-3 md:grid-cols-3">
+            <div className="relative md:col-span-2">
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-primary/60" />
+              <input
+                type="text"
+                placeholder="Buscar por título ou organização..."
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                className="w-full rounded-xl border border-border/90 bg-background/95 py-2.5 pl-10 pr-4 text-sm text-foreground shadow-inner outline-none transition-all placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20"
+              />
+            </div>
 
-          <select
-            value={species}
-            onChange={(event) => setSpecies(event.target.value as SpeciesFilter)}
-            className="rounded-xl border border-border bg-card px-3 py-2.5 text-sm text-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
-          >
-            {SPECIES_OPTIONS.map((option) => (
-              <option key={option.value || 'all'} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-2">
+              <select
+                value={category}
+                onChange={(event) => setCategory(event.target.value)}
+                className="rounded-xl border border-border/90 bg-background/95 px-3 py-2.5 text-sm text-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+              >
+                {categoryOptions.map((option) => (
+                  <option key={option.value || 'all'} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+
+              <select
+                value={species}
+                onChange={(event) => setSpecies(event.target.value as SpeciesFilter)}
+                className="rounded-xl border border-border/90 bg-background/95 px-3 py-2.5 text-sm text-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+              >
+                {SPECIES_OPTIONS.map((option) => (
+                  <option key={option.value || 'all'} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+        }
+      />
 
       {isLoading && (
         <div className="rounded-2xl border border-border bg-card py-16 text-center">

@@ -156,7 +156,7 @@ export const modules: Module[] = [
     route: '/consulta-vet',
     status: 'internal',
     icon: Stethoscope,
-    iconImage: '/apps/vet.png',
+    iconImage: '/apps/consulta-vet-logo.png',
   },
 
 ]

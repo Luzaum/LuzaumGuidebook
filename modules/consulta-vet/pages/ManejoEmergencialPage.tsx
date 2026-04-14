@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, Zap } from 'lucide-react';
+import { ConsultaVetPageHero } from '../components/layout/ConsultaVetPageHero';
 import { EmergencyGuideListCard } from '../components/emergency/EmergencyGuideListCard';
 import { getEmergencyGuideRepository } from '../services/emergencyGuideRepository';
 import { EmergencyGuide } from '../types/emergencyGuide';
@@ -46,27 +47,19 @@ export function ManejoEmergencialPage() {
         <span className="text-foreground">{UI_TEXT.title}</span>
       </nav>
 
-      <header className="relative overflow-hidden rounded-[28px] border border-border/80 bg-card/90 p-6 shadow-sm md:p-8">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-16 top-0 h-48 w-48 rounded-full bg-amber-500/15 blur-3xl"
-        />
-        <div className="relative flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-          <div className="min-w-0">
-            <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-amber-800 dark:text-amber-200">
-              <Zap className="h-3.5 w-3.5" />
-              {UI_TEXT.previewBadge}
-            </div>
-            <h1 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">{UI_TEXT.title}</h1>
-            <p className="mt-3 max-w-[85ch] text-base leading-relaxed text-muted-foreground md:text-lg">{UI_TEXT.lead}</p>
+      <ConsultaVetPageHero
+        eyebrow={UI_TEXT.previewBadge}
+        title={UI_TEXT.title}
+        description={UI_TEXT.lead}
+        icon={Zap}
+        accent="orange"
+        footer={
+          <div className="rounded-2xl border border-primary/18 bg-primary/[0.06] px-5 py-5 md:px-6">
+            <h2 className="text-sm font-bold text-foreground">{UI_TEXT.howTitle}</h2>
+            <p className="mt-2 text-sm leading-7 text-muted-foreground">{UI_TEXT.howBody}</p>
           </div>
-        </div>
-      </header>
-
-      <section className="rounded-2xl border border-primary/15 bg-primary/[0.04] px-5 py-5 md:px-6">
-        <h2 className="text-sm font-bold text-foreground">{UI_TEXT.howTitle}</h2>
-        <p className="mt-2 text-sm leading-7 text-muted-foreground">{UI_TEXT.howBody}</p>
-      </section>
+        }
+      />
 
       {error ? (
         <div className="rounded-2xl border border-destructive/30 bg-destructive/10 px-5 py-4 text-sm text-destructive">{error}</div>

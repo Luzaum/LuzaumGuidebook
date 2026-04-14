@@ -1,0 +1,1472 @@
+
+--- PAGE 1 ---
+BRASILEISH
+BRASILEISH
+BRASILEISH
+BRASILEISH
+DIRETRIZES
+               PARA O      DIAGNÓSTICO, TRATAMENTO E PREVENÇÃO
+DA LEISHMANIOSE CANINA NA AMÉRICA LATINA
+EDIÇÃO  BRASILEISH 2025
+--- PAGE 2 ---
+BRASILEISH
+DIRETRIZES
+EDIÇÃO  BRASILEISH 2025
+
+--- PAGE 3 ---
+Índice
+Membros do Brasileish
+Sobre o Brasileish
+Introdução
+Etiologia e Transmissão
+Distribuição Geográgica
+Prevalência e Incidência
+Principais Manifestações Clínicas
+Diagnóstico
+Tratamento
+Prevenção e Controle
+Controle em Abrigos e Situações Especiais
+Referências Bibliográficas04
+05
+06
+ 07
+  08
+      09
+    09
+    15
+       17
+      20
+     23
+24
+--- PAGE 4 ---
+Ingrid Menz
+Manfredo Werkhäuser
+Octávio Estevez
+Paulo Tabanez
+Sydnei Magno da Silva
+Vitor Márcio RibeiroFabio dos Santos Nogueira Antônio RodriguezCentro de Diagnóstico Veterinário del 
+Paraguay (Cedivep), Paraguai
+Faculdade de Medicina
+Veterinária de Andradina - SP - FEA/ Hospital
+Veterinário Mundo Animal - Andradina - SP, Brasil
+Filipe Dantas TorresInstituto Aggeu Magalhães, Fiocruz, 
+Recife - PE, Brasil
+Autônoma, Campinas - SP, Brasil
+IN MEMORIAN
+Veterinária Del Oeste, Possadas
+Missiones, Argentina
+Clínica Veterinária Tabanez, Brasilia - DF, Brasil 
+Santo Agostinho 
+Hospital Veterinário, Belo Horizonte - MG, Brasil 
+4
+Da esquerda para a direita: André Luiz, Antônio Rodrigues, Fábio dos Santos, Filipe Dantas, Ingrid Menz, Leucio Câmara Alves,
+Manfredo Werkhäuser, Octávio Estevez, Paulo Tabanez, Romeika Reis, Sydnei Magno e Vitor Márcio.  MEMBROS DO BRASILEISH
+4André Luiz Soares da Fonseca Autônomo, Campo Grande - MS, Brasil
+Romeika Reis Lima Leucio Câmara AlvesUniversidade Federal Rural de Pernambuco,
+Recife - PE, Brasil
+Canis e Catus Especialidades, Natal
+RN, Brasil
+IN MEMORIAN
+--- PAGE 5 ---
+O Brasileish foi fundado em 17 de junho de 2011, constituindo-se como uma organização não
+governamental, sem fins lucrativos, formada por médicos veterinários comprometidos com o
+enfrentamento da leishmaniose animal no Brasil e em outros países das Américas. Entre seus membros
+fundadores estão André Luiz Soares da Fonseca, Antônio Rodriguez, Fábio dos Santos Nogueira, Filipe
+Dantas Torres, Ingrid Menz, Manfredo Werkhäuser (in memorian), Octávio Estevez, Paulo Tabanez,
+Sydnei Magno da Silva (in memorian) e Vitor Márcio Ribeiro. 
+Mais recentemente, integraram-se ao grupo os médicos veterinários Leucio Câmara e Romeika Reis
+Lima, ampliando ainda mais o conhecimento e o compromisso técnico da equipe. Todos os membros se
+dedicaram à elaboração das novas diretrizes para o diagnóstico, estadiamento, tratamento e prevenção
+da leishmaniose, sempre pautados pelo respeito e defesa das vidas animal e humana. Desde sua
+criação, o principal objetivo do Brasileish tem sido promover a educação continuada de médicos
+veterinários, além de fomentar o diálogo com as autoridades de saúde pública sobre os avanços
+científicos relacionados ao diagnóstico, tratamento e prevenção da leishmaniose animal.  
+O grupo busca também sensibilizar e informar as organizações de classe, como o Conselho Federal de
+Medicina Veterinária (CFMV) e os Conselhos Regionais de Medicina Veterinária (CRMVs), acerca das
+evidências científicas mais recentes sobre a doença. Além de sua atuação técnica e científica, o
+Brasileish participa de ações populares voltadas ao controle da leishmaniose animal e mantém diálogo
+constante com instituições profissionais e outras organizações não governamentais que compartilham o
+mesmo propósito. Anualmente, o grupo organiza o Simpósio Internacional de Leishmaniose Visceral
+Canina, evento que reúne especialistas nacionais e internacionais para palestras e discussões sobre os
+mais diversos aspectos relacionados à doença no Brasil e em outros países. 
+Com base em evidências científicas atualizadas, tanto nacionais quanto internacionais, e na experiência
+clínica de seus membros, o Brasileish apresenta à comunidade uma versão atualizada das diretrizes
+voltadas ao diagnóstico, estadiamento, tratamento e prevenção da leishmaniose canina (LCan),
+reforçando seu compromisso com a saúde única, que integra as esferas animal, humana e ambiental.Sobre o B r a s i l e i s h
+5
+--- PAGE 6 ---
+INTRODUÇÃO
+As leishmanioses são doenças parasitárias que
+acometem humanos, animais domésticos e
+silvestres, incluindo cães e gatos (Ratzlaff et al.,
+2023). A doença é causada por protozoários do
+gênero Leishmania (família Trypanosomatidae), os
+quais são transmitidos biologicamente por fêmeas
+de flebotomíneos (dípteros da subfamília
+Phlebotominae) infectadas, quando essas realizam
+o repasto sanguíneo (Serafim et al., 2021; Sousa-
+Paula et al., 2021). Na leishmaniose visceral (LV),
+formas de transmissão secundárias têm sido
+relatadas, incluindo por transfusão sanguínea,
+compartilhamento de agulhas contaminadas,
+congênita e venérea (apenas em cães) (Symmers,
+1960; Meinecke et al., 1999; Molina et al., 2003;
+Jimenez-Marco et al., 2016; Karampas et al., 2024).
+Clinicamente, as leishmanioses em humanos
+podem ser classificadas em três formas principais:
+cutânea, mucosa (ou mucocutânea) e visceral
+(Alvar et al., 2012). As formas cutânea e mucosa
+podem variar de pequenas úlceras localizadas a
+lesões mucosas desfigurantes, ao passo que a LV
+é uma doença sistêmica grave que acomete
+principalmente indivíduos imunossuprimidos e
+crianças. Assim como em humanos, as
+leishmanioses em animais podem variar de uma
+doença cutânea autolimitante até uma doença
+sistêmica potencialmente fatal (Solano-Gallego et
+al., 2011; Baneth e Solano-Gallego, 2022). Nos
+cães, dependendo da resposta imune do animal e
+da espécie de Leishmania envolvida, a doença
+inclui desde lesões cutâneas localizadas até sinais
+clínicos sistêmicos, como hepatomegalia e
+esplenomegalia (Baneth e Solano-Gallego, 2022;
+Dantas-Torres, 2024).
+No mundo, as leishmanioses em humanos são
+consideradas um importante problema de saúde
+pública em quatro regiões principais: 1) Américas,
+2) África Oriental, 3) Norte da África e 4) Oeste e
+Sudeste Asiático (Alvar et al., 2012). Nessas
+regiões, os cães e gatos são frequentemente
+acometidos (Baneth e Solano-Gallego, 2022;
+Dantas-Torres, 2024).
+Nas Américas, as leishmanioses são zoonoses
+causadas por várias espécies de Leishmania, as
+quais possuem um complexo ciclo de
+transmissão, envolvendo várias espécies de
+flebotomíneos vetores e hospedeiros silvestres e
+domésticos. As leishmanioses estão fortemente
+ligadas a fatores de risco como a pobreza,
+desnutrição, movimentos populacionais e pressão
+antrópica sobre o meio ambiente (Wilke et al.,
+2025). 
+.
+6O Brasil, junto com a Etiópia, Quênia e Sudão,
+concentra 60% de casos de LV no mundo. Dos 11
+países que reportam 90% dos casos de
+leishmaniose cutânea a nível global, três estão
+nas Américas: Brasil, Colômbia e Peru.
+A leishmaniose canina (LCan) tem se expandido
+geograficamente nas Américas, principalmente no
+Cone Sul (Oliveira et al., 2017; Satragno et al.,
+2017; Dias et al., 2019; Chiyo et al., 2023; Dantas-
+Torres, 2024). A doença já foi registrada na
+maioria dos países, desde o Uruguai até os
+Estados Unidos e Canadá (Dantas-Torres, 2024).
+As espécies de Leishmania envolvidas na
+etiologia da LCan, bem como os vetores
+envolvidos, podem variar regionalmente (Dantas-
+Torres, 2024). Contudo, as espécies Leishmania
+infantum e Leishmania braziliensis são as mais
+frequentemente relatadas em cães e estão
+amplamente distribuídas no continente americano
+(Dantas-Torres, 2024).
+Devido à variedade de espécies de Leishmania
+envolvidas na etiologia e o amplo espectro de
+possíveis sinais clínicos presentes no curso da
+LCan, o diagnóstico da doença permanece sendo
+um desafio para os clínicos veterinários. Da
+mesma forma, as opções de tratamento são
+limitadas em alguns países e virtualmente
+inexistentes em outros, reforçando a importância
+da sua prevenção (Otranto et al., 2024).
+As presentes diretrizes foram elaboradas com
+base na literatura científica atual, com o objetivo
+de instrumentar o clínico veterinário sobre o
+diagnóstico, tratamento e prevenção da LCan nas
+Américas, com foco na América Latina. Embora
+outras espécies sejam mencionadas em várias
+partes dessas diretrizes, nosso foco será a L.
+infantum, devido à importância clínica e zoonótica
+dessa espécie. Ademais, a maior parte dos
+estudos sobre diagnóstico, tratamento e
+prevenção da LCan foram dedicados a essa
+espécie.
+--- PAGE 7 ---
+ETIOLOGIA
+Várias espécies de Leishmania já foram relatadas em cães nas Américas, incluindo Leishmania
+amazonensis, L. braziliensis, Leishmania guyanensis, L. infantum, Leishmania mexicana, Leishmania
+panamensis, Leishmania peruviana e Leishmania naiffi (Dantas-Torres, 2024). Leishmania braziliensis e
+L. infantum são as espécies mais frequentemente relatadas em cães no continente americano. Porém, em
+alguns países, outras espécies podem ser mais frequentes, como é o caso da Colômbia, onde L.
+panamensis e L. braziliensis são relativamente comuns em cães (Vélez et al., 2012). Casos de infecções
+por L. amazonensis em cães têm se tornado cada vez mais frequentes no Brasil (Tolezano et al., 2007;
+Valdivia et al., 2017).
+Os protozoários causadores da leishmaniose são
+transmitidos primariamente pelas fêmeas de
+algumas espécies de flebotomíneos, conhecidos
+popularmente como mosquito-palha, tatuquira, asa
+branca, birigui e cangalhinha. Ao realizar o repasto
+de sangue em um hospedeiro infectado, a fêmea
+ingere as formas amastigotas de Leishmania spp
+presentes principalmente em células do sistema
+fagocítico mononuclear. Essas formas se
+diferenciam em promastigotas e passam por uma
+série de etapas de diferenciação e multiplicação
+dentro do vetor, até atingirem a forma infectante:
+promastigota metacíclica. Essas são transmitidas
+para o novo hospedeiro, quando a fêmea realiza
+um novo repasto de sangue.
+Até pouco tempo, todos os flebotomíneos vetores
+eram incluídos no gênero Lutzomyia, mas com a
+mudança da classificação dos flebotomíneos
+americanos, eles foram reclassificados em vários
+gêneros (Galati, 2018). Alguns flebotomíneos são
+capazes de transmitir apenas uma espécie de
+Leishmania e são chamados de vetores
+específicos ou restritivos. Por outro lado, alguns
+flebotomíneos podem transmitir várias espécies de
+Leishmania e são chamados de vetores
+permissivos (exemplos: Lutzomyia longipalpis e
+Migonemyia migonei). 
+As espécies de vetores podem variar
+regionalmente. Lutzomyia longipalpis é o principal
+vector de L. infantum no Brasil, mas outras
+espécies têm sido incriminadas na transmissão em
+algumas regiões, como é o caso de Lutzomyia
+cruzi no Mato Grosso do Sul (Brazil et al., 2015). TRANSMISSÃO
+7Várias espécies estão envolvidas na transmissão
+de L. braziliensis, incluindo Nyssomyia intermedia,
+Nyssomyia neivai, Nyssomyia whitmani,
+Migonemyia migonei, Psychodopygus wellcomei e
+Psychodopygus complexus (Brazil et al., 2015). Em
+alguns focos de L. braziliensis, uma ou outra
+espécie de flebotomíneo vetor pode predominar,
+mas em outros focos diferentes espécies podem
+estar presentes simultaneamente (Dantas-Torres et
+al., 2017; Sales et al., 2019).
+Formas secundárias de transmissão de L. infantum
+têm sido relatadas em cães. Essas incluem
+transmissão vertical (transplacentária) (Mancianti e
+Sozzi, 1995; Rosypal et al., 2005; da Silva et al.,
+2009; Svobodova et al., 2017; Salant et al., 2021),
+venérea (sexual) (Silva et al., 2009; Naucke and
+Lorentz, 2012) e por transfusão sanguínea (Owens
+et al., 2001; Freitas et al., 2006). Os filhotes
+infectados por essas vias podem desenvolver
+sinais clínicos (Salant et al., 2021) e infectar
+flebotomíneos (Ben Slimane et al., 2014), o que
+reforça a importância dessas formas secundárias
+de transmissão na perspectiva do controle. 
+Outras formas de transmissão (por exemplo,
+através da mordedura ou por carrapatos) têm sido
+aventadas, mas carecem de mais estudos (Dantas-
+Torres, 2011; Solano-Gallego et al., 2011; Naucke et
+al., 2016).
+--- PAGE 8 ---
+DISTRIBUIÇÃO GEOGRÁFICA
+A LCan está amplamente distribuída no continente americano, ocorrendo desde o Uruguai até os Estados Unidos
+e Canadá. De fato, a LCan continua a se difundir geograficamente no continente americano. Por exemplo, até
+pouco tempo o Uruguai era considerado livre da doença, mas casos caninos (Satragno et al., 2017) e humanos
+(Cabrera et al., 2023) autóctones já foram relatados. De mesma forma, casos autóctones de infecção por L.
+infantum em cães foram descritos recentemente na Guiana Francesa (Medkour et al., 2019), 13 anos após um caso
+supostamente importado (Rotureau et al., 2006). No Panamá, a presença de L. longipalpis (o principal vetor de L.
+infantum) é conhecida há anos (Alvar et al., 2012). Casos supostamente importados de infecção por L. infantum
+foram relatados em cães do Panamá (Terrero et al., 2022), indicando que o risco de estabelecimento dessa
+espécie nesse país, se ainda não estiver estabelecido, é elevado (Dantas-Torres, 2024).
+No Brasil, a LCan se encontra amplamente distribuída em todas as regiões, inclusive na região sul onde por muito
+tempo a doença era considerada ausente.
+Leishmania infantum e L. braziliensis são as espécies mais amplamente difundidas em cães nas Américas.
+Infecções caninas causadas por L. infantum foram relatadas em 17 países, enquanto L. braziliensis já foi relatada
+em nove países (Dantas-Torres, 2024). A aparente ausência de cães infectados por L. braziliensis em alguns
+países (por exemplo, Belize, Costa Rica, Equador, Guiana Francesa, Guatemala, Honduras e Nicarágua) pode ser
+devida à falta de artigos científicos publicados, já que L. braziliensis ocorre em humanos nesses países (Alvar et al.,
+2012; Dantas-Torres, 2024).
+As infecções por outras espécies em
+cães são aparentemente mais restritas
+geograficamente, mas considerando a
+sua distribuição em humanos, os
+casos caninos causados por algumas
+espécies (por exemplo, L.
+amazonensis, L. mexicana e L.
+panamensis) podem atualmente estar
+subestimados (Dantas-Torres, 2024).
+Informações sobre a presença de
+cães infectados por L. braziliensis ou
+outras Leishmania spp. é limitada ou
+praticamente inexistente em muitos
+países americanos. No entanto,
+investigações adicionais em alguns
+destes países provavelmente
+revelarão que as infecções caninas
+causadas por espécies como L.
+braziliensis e L. panamensis são
+relativamente comuns (Dantas-Torres,
+2024).
+8
+Figura 1 - Distribuição de Leishmania infantum em cães na América do Sul
+--- PAGE 9 ---
+PREVALÊNCIA INCIDÊNCIA
+A prevalência da infecção por Leishmania spp. em cães pode variar de região para região. Estudos tem revelado
+prevalências relativamente altas em algumas regiões de países como Argentina, Brasil e Paraguai (Reithinger e
+Davies, 1999; Maggi and Krämer, 2019; Dantas-Torres, 2024). Um estudo conduzido no município de Sobral, Ceará,
+nordeste do Brasil, um foco tradicional de endemicidade da leishmaniose visceral humana, analisou dados de
+73.964 cães examinados de 2008 a 2017 pelas autoridades estaduais de saúde pública (Sousa-Paula et al., 2019).
+A soroprevalência média no município foi de 3,8%, variando 1,6% a 13,1% entre os diferentes bairros. Em cada
+bairro, a soroprevalência variou anualmente, ultrapassando os 50% em diversas ocasiões (Sousa-Paula et al.,
+2019).
+A soroprevalência canina pode variar amplamente de acordo com o teste utilizado. Em áreas de transmissão ativa
+de leishmaniose cutânea em humanos, os valores médios de soroprevalência em cães foram estimados em 32,1%
+(variação de 14,7 a 58,9%) e 16,6% (variação de 0 a 63,2%) usando o ensaio imunoenzimático (ELISA) e a reação de
+imunofluorescência indireta (RIFI), respectivamente (Reithinger e Davies, 1999). A porcentagem média de cães
+positivos de acordo com o teste cutâneo de Montenegro foi de 25,5% (variação de 0 a 66,7%). Outra questão
+relativa aos estudos sorológicos é a possível reatividade cruzada entre diferentes espécies de Leishmania e
+Trypanosoma, que pode levar ao diagnóstico sorológico falso positivo (Silva et al., 2011; Alves et al., 2012).
+Embora estudos de prevalência sejam comumente conduzidos na América Latina, existe pouca informação sobre
+a incidência anual da LCan na região (Quinnell e Courtenay, 1997; Dantas-Torres et al., 2020). Um estudo realizado
+em Goiana (Pernambuco, nordeste do Brasil) e São Joaquim de Bicas (Minas Gerais, sudeste do Brasil) relatou
+incidências brutas anuais de 19,6% e 43,8%, respectivamente (Dantas-Torres et al., 2020). Isso significa que uma
+proporção relativamente alta de cães que vivem nessas áreas se tornam positivos na sorologia, ou na reação em
+cadeia de polimerase (PCR) ou em ambos.
+9
+PRINCIPAIS MANIFESTAÇÕES CLÍNICAS
+A LCan é uma doença complexa que se manifesta de formas variadas, afetando diferentes órgãos do animal e
+apresentando quadros clínicos agudos, crônicos, subclínicos e regressivos. Alguns cães infectados por L.
+infantum podem apresentar uma forte resposta imune celular, capaz de controlar a multiplicação dos parasitos
+intracelulares. Isso pode resultar em um quadro assintomático (Tabela 1), dificultando a detecção precoce da
+infecção pelo médico veterinário.
+--- PAGE 10 ---
+Classificação geral dos animais quanto à exposição, infecção e doença.
+Infectado sadio (Estágio II)
+Infectado doente (Estágios
+III, IV, V, VI)
+Classificação
+Exposto (Estágio I)
+Animal sem manifestações clínicas ou alterações
+laboratoriais, positivo na sorologia, porém negativo em testes
+parasitológicos e/ou moleculares
+Animal sem manifestações clínicas ou alterações laboratoriais,
+positivo ou negativo na sorologia, porém positivo em testes
+parasitológicos e/ou moleculares
+Animal com manifestações clínicas e/ou alterações laboratoriais,
+positivo ou negativo na sorologia, porém positivo em testes
+parasitológicos e/ou moleculares
+Características
+As lesões observadas na LCan são causadas pela
+multiplicação do parasito e pela resposta imune
+humoral exacerbada do cão (Ciaramella et al., 1997;
+Baneth et al., 2008; Miró et al., 2008). A presença dos
+parasitos em órgãos linfoides (como linfonodos, baço e
+medula óssea) e não linfoides (especialmente o fígado)
+induz um aumento de linfócitos B, histiócitos,
+macrófagos e plasmócitos, resultando em
+linfadenomegalia generalizada (poplíteos,
+submandibulares e cervicais superficiais) e
+hepatoesplenomegalia. Com a progressão da
+infecção, dentro de um período variável, as
+manifestações clínicas se tornam mais evidentes
+(Mancianti et al., 1988; Slappendel e Ferrer, 1990;
+Ciaramella et al., 1997). A presença de coinfecções por
+patógenos transmitidos por vetores, particularmente
+por Ehrlichia canis, pode agravar o quadro clínico
+(Cortese et al., 2006; De Tommasi et al., 2013; Attipa et
+al., 2018, 2019).Os sinais clínicos podem se manifestar de diversas
+formas, variando desde quadros localizados até formas
+mais disseminadas. Em alguns casos, a doença
+compromete predominantemente um único órgão ou
+sistema, apresentando-se na forma de dermatopatias
+(didaticamente chamada de “dermatoleish”),
+oftalmopatias (“oftalmoleish”), nefropatias (“nefroleish”),
+envolvimento do sistema locomotor (“ortoleish”),
+disfunções hematológicas (“hematoleish”), dentre
+outras. No entanto, também podem ocorrer
+manifestações associadas e disseminadas, agravando
+o quadro clínico do paciente (Mancianti et al., 1988;
+Feitosa et al., 2000; Nogueira e Ribeiro, 2023). Nas
+sessões abaixo, abordaremos as principais
+manifestações clínicas da LCan, ressaltando que essas
+condições podem se apresentar de forma isolada ou
+concomitante, em diferentes fases da doença. 
+10Tabela 1
+--- PAGE 11 ---
+DERMATOPATIAS
+12
+Dentre as dermatopatias mais frequentes estão a dermatite descamativa seca do tipo furfurácea
+(localizada principalmente na região periocular, parte dorsal da narina, margem de pavilhão auricular e
+regiões de saliências ósseas como cotovelo e calcanhar), dermatite ulcerativa (localizada
+predominantemente em saliências ósseas, junção mucocutânea, focinho, região interdigital e margem
+interna da orelha), dermatite papular, dermatite pustular, dermatite nodular multifocal, alopecia, vasculite
+de ponta de orelha, hiperqueratose nasal e digital, despigmentação nasal, onicopatias, adenite sebácea e
+astenia cutânea (Mancianti et al., 1988; Feitosa et al., 2000; Solano-Gallego et al., 2004; Nogueira e
+Ribeiro, 2023).
+11
+--- PAGE 12 ---
+OFTALMOPATIAS NEFROPATIAS
+12
+O comprometimento do sistema urinário em geral
+se expressa sob a forma de nefrite intersticial,
+glomerulonefrites e cistites. Clinicamente, observa-
+se proteinúria, azotemia, hipercalciúria, hematúria e
+insuficiência renal aguda, eventualmente com
+evolução para doença renal crônica. Geralmente é
+observada uma glomerulonefrite secundária ao
+depósito de imunocomplexos ou a alta carga
+parasitária, resultando em processos inflamatórios
+e falência renal, a qual é apontada como uma das
+principais causas de óbito em cães com
+leishmaniose (Ribeiro, 2022; Nogueira e Ribeiro,
+2023).As alterações oftálmicas comumente incluem
+conjuntivites do tipo folicular ou membranosa;
+ceratites granulomatosas e estromais com
+pigmentação e neovascularização, ceratopatias
+lipídicas e calcárias, uveítes exsudativas e
+granulomatosas, esclerites e episclerites,
+ceratoconjuntivite seca (CCS), coriorretinites e
+panoftalmites, e blefarites do tipo úmida, alopécica,
+esfoliativa, ulcerativa ou nodular. Endoftalmite e
+formação de glaucoma, com consequente perda
+do globo ocular, têm sido relatadas em casos
+graves (Slappendel e Ferrer, 1990; Ciaramella et al.,
+1997; Solano-Gallego et al., 2004; Nogueira e
+Ribeiro, 2023).
+--- PAGE 13 ---
+ALTERAÇÕES DO SISTEMA LOCOMOTOR 
+O comprometimento do sistema locomotor é uma complicação frequente da LCan e é caracterizado pela
+presença de polimiosite, poliartrite erosiva, osteomielite, osteólise e proliferação periosteal. Essas
+alterações resultam do depósito de imunocomplexos e das intensas reações inflamatórias desencadeadas
+pela presença do parasito, o que impacta significativamente a mobilidade e a qualidade de vida do
+paciente. Além dessas manifestações, também são observadas miosites, perda de peso progressiva
+(caquexia) e atrofia muscular, especialmente nos músculos esqueléticos mastigatórios e temporais,
+comprometendo ainda mais o estado geral dos cães doentes (Slappendel e Ferrer, 1990; Ciaramella et al.,
+1997; Feitosa et al., 2000; Nogueira e Ribeiro, 2023).
+As discrasias sanguíneas, como vasculites, síndrome da hiperviscosidade, trombocitopatias e anemia
+normocítica e normocrômica são frequentes na LCan. O aumento da viscosidade sanguínea, associada a
+elevação das globulinas, marcadamente as gamaglobulinas e a formação dos imunocomplexos,
+compromete a circulação e eleva o risco de eventos hemorrágicos, enquanto as trombocitopatias podem
+causar petéquias, hematúria e sangramentos espontâneos, principalmente epistaxe. As trombocitopenias,
+frequentemente imunomediadas ou causadas por destruição plaquetária, prejudicam a coagulação. Além
+disso, anemias hemolíticas imunomediadas também podem ocorrer, assim como coagulopatia secundária
+pela alteração dos fatores de coagulação (Mancianti et al., 1988; Feitosa et al., 2000; Nogueira e Ribeiro,
+2023).DISFUNÇÕES HEMATOLÓGICAS
+13
+--- PAGE 14 ---
+OUTRAS MANIFESTAÇÕES
+As manifestações neurológicas da LCan são raras, mas podem incluir convulsões, ataxia, paresias e paralisias
+devido ao comprometimento do sistema nervoso central (SNC) e/ou periférico. Essas alterações estão associadas
+à presença das formas amastigotas do parasito no encéfalo, medula espinhal e nervos periféricos, além de fatores
+inflamatórios, imunocomplexos, desencadeados pela infecção no SNC (Slappendel e Ferrer, 1990; Ciaramella et
+al., 1997; Feitosa et al., 2000; Giannuzzi et al., 2017; Nogueira e Ribeiro, 2023).
+As alterações gastrintestinais são variáveis, mas a diarreia crônica é um dos sinais mais comuns. A colite
+granulomatosa erosiva e ulcerativa, caracterizada por diarreia hemorrágica, é a manifestação entérica mais
+frequente. Estudos indicam a presença de parasitos na mucosa do cólon, detectado por colonoscopia,
+imunohistoquímica e PCR, mesmo em cães infectados e sadios. Além disso, há relatos de granulomas gástricos,
+ressaltando a importância da investigação do trato digestório no diagnóstico da LCan (Nogueira e Ribeiro, 2023).Além das manifestações descritas acima, sinais clínicos menos frequentes também exigem atenção do médico
+veterinário, especialmente em regiões endêmicas. Dentre essas manifestações, destacam-se as alterações
+neurológicas centrais ou periféricas (neuroleish), gastropatias (gastroleish) e cardiopatias (cardioleish) (Nogueira e
+Ribeiro, 2023). 
+ALTERAÇÕES NEUROLÓGICAS CENTRAIS 
+OU PERIFÉRICAS
+GASTROENTEROPATIAS 
+CARDIOPATIAS
+As lesões cardíacas associadas a LCan ainda não são totalmente compreendidas, mas estudos sugerem que o
+parasito pode provocar danos diretos e indiretos ao coração. Em cães infectados, há relatos de miocardite,
+vasculite e necrose, acompanhadas de inflamação com infiltrado mononuclear, levando à degeneração das fibras
+miocárdicas (Torrent et al., 2005; López-Peña et al., 2009; Nogueira e Ribeiro, 2023; Souza et al., 2025).
+14
+--- PAGE 15 ---
+DIAGNÓSTICO
+O diagnóstico da LCan se baseia na presença de
+sinais clínicos e alterações laboratoriais sugestivos
+da doença, com a confirmação através de exames
+parasitológicos, sorológicos e/ou moleculares. É
+importante salientar que não existe sinal clínico
+patognomônico na LCan. As alterações
+laboratoriais também são inespecíficas e são por
+vezes encontradas em outras doenças infecciosas
+e parasitárias. Portanto, a confirmação laboratorial
+é fundamental para o diagnóstico.
+A citologia para pesquisa de formas amastigotas é
+o exame mais simples e definitivo da infecção por
+Leishmania spp. em cães. Os principais tipos de
+amostras incluem medula óssea, linfonodo e pele
+lesionada. A sensibilidade da citologia pode variar
+bastante com o tipo de amostra e carga parasitária
+do animal. Por exemplo, embora as formas
+amastigotas possam ser encontradas no sangue
+(Oikonomidis et al., 2019), esse tipo de amostra não
+é o mais adequado.
+Os testes moleculares baseados na PCR ou outros
+métodos de amplificação de DNA tem se tornado
+cada vez mais acessíveis na rede de laboratórios
+veterinários no Brasil e em outros países da
+América Latina. Esses testes geralmente
+apresentam boa sensibilidade e especificidade,
+mas isso depende de vários fatores, incluindo tipo
+de amostra e protocolo utilizado. É importante que
+o clínico veterinário, ao solicitar esse tipo de teste,
+solicite ao laboratório informações básicas sobre a
+sensibilidade e especificidade do teste. 
+As amostras mais adequadas para os testes
+moleculares são as mesmas recomendadas para
+citologia, incluído medula óssea, linfonodo e pele
+(Martínez et al., 2011; Latrofa et al., 2024). Amostras
+menos invasivas como swab conjuntival ou sangue
+(Strauss-Ayali et al., 2004; Francino et al., 2006;
+Dantas-Torres et al., 2017) são opções alternativas
+em alguns casos em que amostras mais invasivas
+não podem ser obtidas, mas o clínico veterinário
+deve estar ciente que a quantidade de DNA nesse
+tipo de amostra é frequentemente mais baixa. Nesse caso, o uso de testes mais sensíveis como
+PCR em tempo real deve ser preferido (Francino et
+al., 2006; Dantas-Torres et al., 2017). Além de mais
+sensível, a PCR em tempo real permite a
+quantificação da carga parasitária que é um
+parâmetro importante para avaliar a evolução do
+tratamento e a necessidade de novo ciclo de
+medicação. 
+Testes moleculares rápidos para uso remoto (point-
+of-care) têm sido desenvolvidos (Latrofa et al.,
+2024; Luna et al., 2025), mas ainda não estão
+amplamente disponíveis.
+Os testes sorológicos são ferramentas amplamente
+utilizadas em estudos de campo e no diagnóstico
+da LCan. Eles apresentam sensibilidade e
+especificidade bastante variadas e devem ser
+interpretados com cautela. De fato, reações
+cruzadas são descritas com diferentes espécies de
+Leishmania e até mesmo com outros
+tripanossomatídeos (Silva et al., 2011; Alves et al.,
+2012). 
+De modo geral, a sorologia indica que o animal foi
+exposto ao parasito, mas não necessariamente
+confirma uma infecção ativa, principalmente
+quando são usados testes qualitativos (testes
+rápidos). Entretanto, nos testes quantitativos, a
+presença de altos títulos de anticorpos é um forte
+indício de uma infecção ativa ou de um diagnóstico
+de LCan. Na Reação de Imunofluorescência
+Indireta (RIFI), por exemplo, níveis de anticorpos
+duas a quatro vezes acima do ponto de corte são
+considerados altos (Paltrinieri et al., 2010). Por
+exemplo, se o laboratório considerar “positivo” um
+título igual ou superior a 1:40, um título de 1:40 é
+indicativo de exposição, 1:160 de infecção e 1:320
+de doença em cães clinicamente suspeitos
+(Paltrinieri et al., 2010). É importante salientar que
+essas são indicações que devem ser sempre
+interpretadas em conjunto com o estadiamento
+físico do animal e outros testes laboratoriais, bem
+como pela carga parasitária presente.
+15
+--- PAGE 16 ---
+16
+--- PAGE 17 ---
+TRATAMENTO
+O tratamento da LCan se baseia em protocolos
+terapêuticos que consistem em uma combinação
+de medicamentos divididos em três categorias:
+leishmanicidas, leishmaniostáticos e
+imunomoduladores. A escolha do protocolo
+adequado depende de fatores como a confirmação
+da infecção e a gravidade da doença (Solano-
+Gallego et al., 2009). Com base nesses critérios,
+determina-se o estadiamento da infecção e doença
+e seleciona-se o protocolo terapêutico mais
+adequado.
+No Brasil, os únicos fármacos registrados e
+autorizados são a miltefosina (Milteforan®, SP
+000175-9.000003) e a marbofloxacina (Marbox
+Leish®, SP 000022-0.000020). Os cães tratados
+com a miltefosina apresentaram melhora clínica,
+redução da carga parasitária e da infecciosidade
+(Nogueira et al., 2019; Rosar et al., 2025). A eficácia
+da marbofloxacina já havia sido demonstrada em
+estudos conduzidos em outros países, inclusive no
+tratamento de cães com leishmaniose e doença
+renal (Pineda et al., 2017).
+O alopurinol é um fármaco leishmaniostático que
+potencializa a eficácia do tratamento quando
+associado a outras drogas (Solano-Gallego et al.,
+2009). Ele tem sido recomendado em terapias
+combinadas com as drogas leishmanicidas, com o
+objetivo de manter a carga parasitária em níveis
+baixos e reduzir a ocorrência de recidivas (Solano-
+Gallego et al., 2009). No entanto, seu uso exige acompanhamento
+veterinário, pois pode favorecer a formação de
+urólitos de xantina e aumenta o risco de
+calcificação renal e de obstruções que podem
+levar a hidronefrose, lesões renais e até mesmo a
+perda do rim (Solano-Gallego et al., 2009; Ribeiro,
+2022).
+A imunomodulação tem sido uma estratégia
+terapêutica frequentemente adotada e entre os
+imunoestimulantes mais utilizados, destacam-se
+domperidona, nucleotídeos e composto
+correlacionado de hexose ativa (AHCC),
+(suplemento dietético derivado do cogumelo
+shitake) (Baixarias et al., 2023; Miró et al., 2024).
+Em alguns casos, o uso de corticosteroides, como
+prednisona, prednisolona e dexametasona tem
+sido adotado devido ao seu efeito
+imunossupressor (Solano-Gallego et al., 2009).
+Várias outras terapias alternativas têm sido
+utilizadas, embora careçam de mais estudos que
+comprovem cientificamente a sua eficácia. Isso
+inclui o uso de betaglucanas, spirulina, glutamina,
+sulfato de zinco, artesunato
++sulfamethoxypyrazine+pyrimethamine, além das
+imunoterapias com antígenos de Leishmania spp.
+com ou sem adjuvantes. Embora os resultados de
+alguns desses estudos sejam promissores (Ramos
+et al., 2023; Clasta et al., 2024), mais estudos são
+necessários para que essas alternativas possam
+ser recomendadas em larga escala.
+17
+Principais fármacos utilizados para o tratamento da leishmaniose canina no
+BrasilTabela 2
+Fármacos                 Doses              Efeitos adversos mais frequentes / considerações
+Miltefosina             2 mg/kg SID, por 28 dias                                             Vômito / diarreia / disorexia1
+Marbofloxacina         2 mg/kg SID, por 28 dias                                  Possibilidade de resistência bacteriana1
+Alopurinol           10 mg/kg BID, por 6-12 meses                            Urolitíase de xantina / mineralização renal
+Domperidona        0,5 mg/kg SID, por 30 dias                                                          Galactorréia
+Milteforan® e Marbox Leish®- Registrados no Brasil para o tratamento da leishmaniose canina.1 
+A escolha do protocolo terapêutico também se baseia no estadiamento da infecção de cada paciente.
+Esse estadiamento se baseia nos resultados de testes sorológicos, parasitológicos e moleculares e nos
+achados clínicos e laboratoriais (Tabela 3).
+--- PAGE 18 ---
+Tabela 3
+Abreviações: RPC (razão proteína-creatinina urinárias). DRC (doença renal crônica). SDMA (dimetilarginina simétrica). IRIS (International Renal Interest Society).
+Em cães soropositivos, a infecção deve ser confirmada por meio exames parasitológicos e/ou moleculares. 1 
+Se o laboratório considerar “positivo” um título igual ou superior a 1:40, um título igual ou superior a 1:320 deve ser considerado “alto”.2 
+Monitorar o paciente com exames sorológicos, parasitológicos e/ou moleculares, além de exames laboratoriais para estadiamento e revisão de tratamento.3 
+O uso de um leishmaniostático e/ou um leishmanicida nesses casos (cão infectado e sadio) dependerá da decisão do médico veterinário responsável. 4 
+Não existem ensaios clínicos para avaliar a eficácia do tratamento em animais infectados sadios.
+18Estadiamento clínico, manejo e tratamento de cães soropositivos, infectados sem
+doença e com doença, baseado na sorologia, sinais clínicos e achados
+laboratoriais. Essa tabela foi adaptada das diretrizes do grupo LeishVet
+(https://www.leishvet.org/leishmaniose-canina-e-felina/), levando em consideração
+os protocolos terapêuticos atualmente disponíveis no Brasil.
+Estádios clínicos                                                                                   Sinais clínicos                Achados laboratoriais            Tratamento ³            Prognóstico
+I - Exposto
+Anticorpos presentes,
+parasitológico e/ou
+molecular negativo
+Ausentes
+Sem anormalidades
+laboratoriais
+Apenas
+monitoramento ou
+imunomodulação
+Bom 
+II – Infectado sadio
+Anticorpos presentes ou
+ausentes, parasitológico
+e/ou molecular positivo
+Ausentes
+Sem anormalidades
+laboratoriais
+Apenas
+monitoramento ou
+imunomodulação 
+Bom 
+III – Doença leve
+Anticorpos presentes ou
+ausentes, parasitológico
+e/ou molecular positivo
+Linfadenopatia,
+dermatite papular,
+emagrecimento
+discreto
+Sem anormalidades
+laboratoriais. Perfil
+renal (morfologia
+renal / urinálise /
+RPC / SDMA / ureia
+e creatinina) normal. 
+Imunomodulação +
+leishmaniostático
++ leishmanicida
+Bom 
+IV – Doença 
+moderada 
+Níveis de anticorpos
+usualmente baixos a altos²,
+parasitológico e/ou
+molecular positivo
+Sinais do estádio III,
+além de outros como
+lesões cutâneas
+difusas ou simétricas,
+onicogrifose,
+ulcerações, anorexia
+e emagrecimento
+Sinais leves de anemia não
+regenerativa ou anemia
+hemolítica imunomediada,
+discreta elevação de
+gamaglobulina e da
+proteína C reativa e
+diminuição da albumina.
+Subestádios: 
+a) Perfil renal normal; 
+b) sinais de alterações leves
+do perfil renal (alteração da
+morfologia renal, redução
+de densidade urinária,
+elevação do SDMA,
+proteinúria discreta – RPC
+0,5-1). 
+Imunomodulação +
+leishmaniostático +
+leishmanicida
+ 
+Subestádio b: 
+Seguir diretrizes da
+IRIS para manejo da
+doença renal
+Bom a 
+reservado
+V – Doença grave 
+Níveis de anticorpos
+usualmente elevados,
+parasitológico e/ou
+molecular positivo
+Sinais do estádio IV,
+além de sinais
+associados à
+deposição de
+imunocomplexos
+(glomerulonefrite,
+uveíte, entre outros)
+Sinais evidentes de anemia
+não regenerativa ou
+anemia hemolítica
+imunomediada,
+hipergamaglobulinemia,
+hipoalbuminemia e
+elevação da proteína C
+reativa. Alterações do
+perfil renal compatíveis
+com DRC no estádio 1 (RPC
+>1) ou 2 (creatinina 1,4-2,8
+mg/dl) da IRIS
+Imunomodulação +
+leishmaniostático
++ leishmanicida
+ 
+Seguir diretrizes
+da IRIS para
+manejo da doença
+renal
+Reservado 
+a pobre
+VI – Doença 
+muito grave
+Níveis de anticorpos
+usualmente elevados,
+parasitológico e/ou 
+molecular positivo
+Sinais dos Estádio
+V, além de
+tromboembolismo
+pulmonar ou
+síndrome nefrótica
+com doença renal
+em estádio final
+Alterações laboratoriais
+apresentadas no
+estadiamento V. 
+DRC no estádio 3
+(creatinina 2.9-5 mg/dl)
+ou 4 (creatinina >5
+mg/dl), e/ou síndrome
+nefrótica) e/ou marcada
+proteinúria (RPC >5)
+Imunomodulação +
+leishmaniostático +
+leishmanicida
+ 
+Seguir diretrizes da
+IRIS para manejo da
+doença renal.
+Considerar
+tratamento dialítico.
+Pobre
+4
+parasitológico 1
+Diagnóstico sorológico/ 
+Níveis de anticorpos
+usualmente elevados,
+parasitológico e/ou
+molecular positivo
+V – Doença 
+grave 
+--- PAGE 19 ---
+1 9
+Infectado doente
+Frequência
+Infectado sadio
+Parâmetros/testes
+Exame físico
+Hemograma e perfil bioquímico – avaliação renal 
+e hepática¹
+Proteínas séricas – Albumina, Globulinas, Razão A/G,
+Proteína C Reativa 
+Urinálise e razão proteína creatinina 
+urinárias (RPC)
+Sorologia quantitativa
+PCR quantitativo
+Ultrassom abdominal 
+Após o 1 mês de tratamento e
+a cada 3-4 meses durante o
+primeiro ano. A cada 6-12
+meses em cães clinicamente
+recuperados
+A cada 6-12 meses
+A cada 6-12 meses
+A cada 6-12 meses
+A cada 3-6 meses
+A cada 6-12 meses
+A escolha dos marcadores de função renal e hepática a serem examinados dependerá do médico veterinário responsável pelo animal1 
+Adaptado de LeishVet Canine leishmaniosis (https://www.leishvet.org/wp-content/uploads/2024/04/FS-ALIVE24-canine.pdf)O acompanhamento dos cães infectados por L. infantum, antes, durante e após o tratamento é
+fundamental para avaliar o status clínico do animal e o sucesso do tratamento (Tabela 4). Além dos
+parâmetros e testes descritos abaixo, exames de imagem (exemplos, radiografia e ultrassonografia)
+podem ser úteis para avaliar alguns parâmetros como a presença de cálculos, principalmente em animais
+submetidos a tratamentos prolongados com alopurinol. 
+Tabela 4
+Monitoramento de cães infectados com Leishmania Infantum
+19
+--- PAGE 20 ---
+PREVENÇÃO E CONTROLE
+Apesar dos tratamentos disponíveis apresentarem bons resultados com a melhora clínica e da qualidade
+de vida dos cães doentes, os parasitos raramente são eliminados completamente. Isso reforça a
+importância das medidas de prevenção para evitar reinfecções e a disseminação dos parasitos para
+outros animais e humanos. As estratégias de prevenção das leishmanioses humana e animal devem
+contemplar ações que reduzam o contato com o vetor. 
+O controle da leishmaniose visceral humana através da eliminação de cães soropositivos é considerado
+como medida ineficiente (Costa, 2011; Dantas-Torres et al., 2019a, 2019b; Duarte et al., 2025). O uso de
+produtos repelentes, manejo ambiental e redução de atividades externas no período de maior atividade
+dos flebotomíneos (período crepuscular e noturno) devem ser recomendados. 
+O uso de mosquiteiros impregnados com deltametrina reduziu o contato com L. longipalpis na Amazônia
+brasileira, mas a efetividade dessa medida na redução do risco da infecção ou doença no Brasil ainda não
+foi demonstrada (Courtenay et al., 2007).
+A principal forma de prevenção da infecção por L. infantum em cães consiste no uso de inseticidas
+tópicos com propriedade repelente, reduzindo a exposição aos vetores (Miró et al., 2017; Dantas-Torres et
+al., 2019a, 2019b; Yimam e Mohebali, 2020). Recomenda-se o uso de piretróides sintéticos (Tabela 5),
+incluindo coleiras com deltametrina 4% (Coura-Vital et al., 2018; Kazimoto et al., 2018; Leite et al., 2018;
+Alves et al., 2020; Silva et al., 2020; Matsumoto et al., 2022; Werneck et al., 2024), permetrina 8,5% +
+fipronil 4% + piriproxifen 4% ou flumetrina 4,5% + imidacloprida 10% (Otranto et al., 2013; Brianti et al., 2014,
+2016; Alves et al., 2022), sendo essa última também disponível para gatos (Brianti et al., 2017). 
+Pipetas com permetrina 50% + imidacloprida 10% também foram eficazes na redução do risco de infecção
+por L. infantum em condições de campo (Otranto et al., 2007). Existem vários outros produtos à base de
+piretróides ou isoxazolinas (Tabela 5) com eficácia repelente ou inseticida comprovada contra
+flebotomíneos (Cutolo et al., 2018; Queiroga et al., 2020), os quais podem ser recomendados para esse
+fim. Contudo, estudos de campo (ensaios clínicos randomizados e controlados) são necessários para
+confirmar a eficácia desses produtos na redução do risco de infecção por L. infantum em cães.
+20
+--- PAGE 21 ---
+Tabela 5
+Produtos com efeito repelente e/ou inseticida contra flebotomíneos, com ou sem
+eficácia comprovada na prevenção da transmissão de Leishmania infantum em
+cães.
+21
+ 
+Permetrina 
+65% (Pulvex®) ²
+Produtos          Efeito repelente         Efeito inseticida        Estudo de campo ¹       Idade (semanas)                  
+Pipetas
+(uso tópico)
+Período
+de eficácia
+Sim
+Sim
+Não
+≥4 semanas
+1 mês
+Permetrina 50% +
+imidacloprida 10%
+(Advantage Max-3) ®2
+Sim
+Sim
+Sim
+≥7 semanas
+1 mês
+Permetrina 36% +
+dinotefuran 4,95% +
+piriproxifen 0,44%
+(Vectra 3D) ®2
+Sim
+Sim
+Não
+≥7 semanas
+1 mês
+Imidacloprida 6% +
+permetrina 30% +
+fluazuron 2,5% 
+(Efipet 3+) ®2
+Sim
+Sim
+Não
+≥8 semanas
+1 mês
+Colares (uso tópico)
+Deltametrina 4% +
+propoxur 12%
+(Leevre) ®2
+Sim
+Sim
+Sim
+≥12 semanas
+Até
+4 meses
+Sim
+Sim
+Sim
+≥40 semanas
+Até
+6 meses
+Permetrina 8,5% +
+fipronil 4% +
+piriproxifen 4%
+(Frontmax) ®2
+Sim
+Sim
+Não
+≥40 semanas
+Até
+8 meses
+Imidacloprida 10% +
+flumetrina 4,5%
+(Seresto) ®3
+Sim
+Sim
+Sim
+≥7 semanas
+Até
+8 meses
+Comprimidos (uso oral)
+Afoxolaner
+(NexGard) ®3
+Não
+Sim
+Sim 4
+≥8 semanas
+1 mês
+Fluralaner 
+(Bravecto) ®3
+Não
+Sim
+Não
+≥8 semanas
+Até
+5 meses
+ Ensaios clínicos randomizados para avaliar a eficácia do produto na prevenção da transmissão de Leishmania infantum em cães.1
+ Produtos registrados no Brasil, com indicação em bula de eficácia contra flebotomíneos.2
+ Produtos registrados no Brasil, atualmente sem indicação em bula de eficácia contra flebotomíneos, mas com eficácia comprovada contra flebotomíneos em
+condições de laboratório ou na redução do risco de infecção por L. infantum em ensaios clínicos (randomizados e controlados) em estudos de campo.3
+Um estudo de campo (não randomizado e não controlado) relatou a redução do risco de infecção por L. infantum com o uso mensal de afoxolaner (NexGard) em
+cães em um canil na Itália (Panarese et al., 2021).4 ®
+Sim
+Não
+Não
+≥10 semanas
+Até
+7 meses
+Deltametrina 4%
+(Ectofend)²®
+Deltametrina 4% 
+(Scalibor) ¹ ²®
+,
+--- PAGE 22 ---
+Em áreas endêmicas, tanto os cães não infectados
+quanto os infectados devem utilizar inseticidas
+tópicos, o que também está recomendado para os
+gatos, ressalvando sua sensibilidade aos
+piretróides, exceto a flumetrina 4,5% +
+imidacloprida 10% (Brianti et al., 2017). Estudos em
+larga escala têm demonstrado a efetividade do uso
+de coleiras impregnadas com deltametrina 4% na
+prevenção e controle da LCan como medida de
+saúde pública (Sevá et al., 2016; Leite et al., 2018;
+Duarte et al., 2025). As isoxazolinas têm
+demonstrado efeito inseticida contra flebotomíneos
+e são utilizadas como ferramenta auxiliar para
+reduzir o risco de transmissão (Gomez et al., 2018;
+Perier et al., 2019; Bongiorno et al., 2020; Queiroga
+et al., 2020; Panarese et al., 2021). Neste sentido,
+formas de transmissão secundárias (por exemplo,
+transfusão sanguínea, coito e via transplacentária),
+já abordadas anteriormente, devem ser levadas em
+consideração. Cães infectados, doentes ou não,
+devem ser excluídos de programas de doação de
+sangue e reprodução.
+Os responsáveis por cães infectados, sejam esses
+sadios ou doentes, podem optar entre o tratamento
+ou a eutanásia, de acordo com a legislação vigente
+em cada país. No caso de cães em tratamento, as
+medidas de proteção contra o vetor devem ser
+mantidas ininterruptamente (Duarte et al., 2025).
+Quando a opção for pela eutanásia, ela deve ser
+praticada somente por médico veterinário
+conforme os princípios éticos e recomendações
+que evitem o sofrimento animal (Ribeiro et al.,
+2013).
+Na América Latina, existe grande contingente de
+cães errantes ou semidomiciliados e, entre esses,
+existem cães infectados que continuam atuando
+como fonte de infecção para flebotomíneos. O
+controle da população de cães deve ser
+estimulado através da posse responsável e de
+programas de esterilização em larga escala. Essas
+medidas devem ser fomentadas pelos órgãos
+públicos, com apoio de setores privados e
+organizações não governamentais (Toepp et al.,
+2019). O movimento de animais também deve ser
+monitorado, uma vez que a introdução de um
+animal infectado em uma região não endêmica
+pode contribuir para criação de um novo foco da
+doença. Para tanto, a identificação precoce de
+animais infectados é fundamental para que as
+medidas de proteção sejam adotadas nesses
+animais. A triagem sorológica de animais que irão
+viajar de uma área endêmica para outra não
+endêmica pode ajudar a detectar precocemente
+animais infectados. Animais em trânsito entre
+regiões endêmicas e não endêmicas (e vice-versa)
+devem estar protegidos com repelentes tópicos a
+fim de reduzir o risco de transmissão (Baneth et al.,
+2008). 
+A educação em saúde é fundamental, pois a
+participação da comunidade é a base do sucesso
+de qualquer programa de controle. Nesse
+contexto, exames de triagem sorológica semestrais
+podem oferecer diagnósticos precoces, permitindo
+uma melhor abordagem no tratamento. O médico
+veterinário desempenha um papel importante,
+considerando a interface entre a medicina
+veterinária e a saúde pública. A educação da
+população sobre a LCan e suas formas de
+transmissão é essencial para reduzir a incidência
+dessa doença na América Latina (Esch et al., 2012).
+Nesse contexto, exames de triagem sorológica
+semestrais podem oferecer diagnósticos precoces,
+que permitem melhor abordagem de tratamento. 
+A vacinação contra LCan não está atualmente
+disponível na América Latina. Contudo, estudos em
+desenvolvimento poderão resultar no registro de
+novas vacinas ou a volta de vacinas previamente
+registradas.
+22
+--- PAGE 23 ---
+CONTROLE EM ABRIGOS E EM 
+SITUAÇÕES ESPECIAIS
+O efeito residual dos piretróides em superfícies de
+paredes tem duração aproximada de três meses,
+sendo recomendados dois ciclos de borrifação
+durante o ano. O primeiro ciclo deverá ser
+realizado ao final do período chuvoso e o segundo
+três a quatro meses após o primeiro (Brasil, 2014).
+Esse controle ambiental deve ser sempre realizado
+por profissional capacitado.
+Em ambientes de abrigos é importante salientar
+que os cães estão expostos a outros agentes de
+doenças, incluindo protozoários, helmintos,
+artrópodes, vírus e bactérias, sendo alguns de
+caráter zoonótico. Isso pode dificultar ainda mais o
+diagnóstico e manejo da LCan nesses ambientes.
+A situação se agrava uma vez que os recursos
+necessários para esse controle não estão na lista
+de prioridades das autoridades veterinárias e de
+saúde pública na maior parte dos países (Otranto
+et al., 2017). Entretanto, parcerias público-privadas
+e campanhas promovidas por organizações não
+governamentais podem contribuir para fomentar o
+controle de zoonoses como a LCan em abrigos de
+animais.
+23
+A ocorrência da LCan em abrigos é frequente no
+Brasil e em outras partes do mundo (Paradies et al.,
+2010; Brianti et al., 2016; Estevam et al., 2022;
+Panarese et al., 2022; da Silva et al., 2024).
+Situações atípicas geradas por desastres
+ambientais ocorridos no Brasil nas últimas duas
+décadas, trouxeram muitos desafios pela
+complexidade em relação ao manejo dos animais
+desabrigados. Dentre as ações tomadas, incluem-
+se a criação de abrigos de animais organizados por
+espécies e categorias, visando a minimização do
+estresse e a manutenção de seu bem-estar e
+saúde física (Bastos et al., 2019).
+ 
+No tocante à LCan, a triagem sorológica é
+recomendada na admissão dos animais em
+abrigos. A separação dos soropositivos, para
+posterior confirmação da infecção através de
+testes parasitológicos e/ou moleculares, pode ser
+uma medida de precaução. O acompanhamento
+dos cães em abrigos por meio da triagem
+sorológica periódica poderia ajudar na detecção
+de novas infecções. O tratamento e o manejo da
+LCan em abrigos devem ser realizados conforme
+estadiamento de cada animal, sempre vinculado a
+utilização de repelentes tópicos para reduzir o
+risco de disseminação.
+O controle químico no ambiente por meio da
+utilização de inseticidas de ação residual pode ser
+recomendado como medida de controle vetorial,
+conforme orientações do Ministério da Saúde
+(Brasil, 2014). 
+--- PAGE 24 ---
+REFERÊNCIAS
+Alvar J, Vélez ID, Bern C, Herrero M, Desjeux P, Cano J, Jannin J, den Boer M; WHO Leishmaniasis
+Control Team. Leishmaniasis worldwide and global estimates of its incidence. PLoS One.
+2012;7(5):e35671.
+Alves AS, Mouta-Confort E, Figueiredo FB, Oliveira RV, Schubach AO, Madeira MF. Evaluation of
+serological cross-reactivity between canine visceral leishmaniasis and natural infection by Trypanosoma
+caninum. Res Vet Sci. 2012;93(3):1329-33.
+Alves EB, Figueiredo FB, Rocha MF, Castro MC, Werneck GL. Effectiveness of insecticide-impregnated
+collars for the control of canine visceral leishmaniasis. Prev Vet Med. 2020; 182:105104.
+Alves GB, de Oliveira TCB, Rodas LC, Rozza DB, Nakamura AA, Ferrari ED, da Silva DRR, Santos GMD,
+Calemes EB, Requena KAML, Nagata WB, Santos-Doni TR, Bresciani KDS. Efficacy of
+imidacloprid/flumethrin collar in preventing canine leishmaniosis in Brazil. Transbound Emerg Dis.
+2022;69(5):e2302-e2311.
+Attipa C, Solano-Gallego L, Leutenegger CM, Papasouliotis K, Soutter F, Balzer J, Carver S, Buch JS,
+Tasker S. Associations between clinical canine leishmaniosis and multiple vector-borne co-infections: a
+case-control serological study. BMC Vet Res. 2019;15(1):331
+Attipa C, Solano-Gallego L, Papasouliotis K, Soutter F, Morris D, Helps C, Carver S, Tasker S. Association
+between canine leishmaniosis and Ehrlichia canis co-infection: a prospective case-control study. Parasit
+Vectors. 2018;11(1):184.
+Baltensperger M, Grätz K, Bruder E, Lebeda R, Makek M, Eyrich G. Is primary chronic osteomyelitis a
+uniform disease? Proposal of a classification based on a retrospective analysis of patients treated in the
+past 30 years. J Craniomaxillofac Surg. 2004;32(1):43-50.
+Baneth G, Koutinas AF, Solano-Gallego L, Bourdeau P, Ferrer L. Canine leishmaniosis - new concepts and
+insights on an expanding zoonosis: part one. Trends Parasitol. 2008;24(7):324-30.
+Baneth G, Solano-Gallego L. Leishmaniasis. Vet Clin North Am Small Anim Pract. 2022;52(6):1359-1375.
+Bastos AL, Gomes LB, Nunes VFP. Medicina Veterinária de Desastres. In: Garcia RCM, Calderón N,
+Brandespim DF. Medicina Veterinária do Coletivo: Fundamentos e Práticas. 1ª edição. São Paulo.
+Integrativa Vet – 2019.p.357-363. 
+Baxarias M, Donato G, Mateu C, Salichs M, Homedes J, Miró G, Pennisi MG, Solano-Gallego L. A blinded,
+randomized and controlled multicenter clinical trial to assess the efficacy and safety of Leisguard® as an
+immunotherapeutic treatment for healthy Leishmania infantum-seropositive dogs. Parasit Vectors. 2023;
+16:344.
+Ben Slimane T, Chouihi E, Ben Hadj Ahmed S, Chelbi I, Barhoumi W, Cherni S, Zoghlami Z, Gharbi M,
+Zhioua E. An investigation on vertical transmission of Leishmania infantum in experimentally infected
+dogs and assessment of offspring's infectiousness potential by xenodiagnosis. Vet Parasitol. 2014;206(3-
+4):282-6.
+Bongiorno G, Meyer L, Evans A, Lekouch N, Bianchi R, Khoury C, Chiummo R, Thomas E, Gradoni L. A
+single oral dose of fluralaner (Bravecto®) in dogs rapidly kills 100% of blood-fed Phlebotomus perniciosus,
+a main visceral leishmaniasis vector, for at least 1 month after treatment. Med Vet Entomol.
+2020;34(2):240-243.
+Brasil. Ministério da Saúde. Secretaria de Vigilância em Saúde. Departamento de Vigilância
+Epidemiológica. Manual de vigilância e controle da leishmaniose visceral / Ministério da Saúde,
+Secretaria de Vigilância em Saúde, Departamento de Vigilância Epidemiológica. – 1. ed., 5. reimpr. –
+Brasília: Ministério da Saúde, 2014. 120 p.
+24
+--- PAGE 25 ---
+Brazil RP, Rodrigues AAF, Filho JDA. Sand fly vectors of Leishmania in the Americas - A Mini Review.
+Entomol Ornithol Herpetol 2015; 4:144.
+Brianti E, Falsone L, Napoli E, Gaglio G, Giannetto S, Pennisi MG, Priolo V, Latrofa MS, Tarallo VD, Solari
+Basano F, Nazzari R, Deuster K, Pollmeier M, Gulotta L, Colella V, Dantas-Torres F, Capelli G, Otranto D.
+Prevention of feline leishmaniosis with an imidacloprid 10%/flumethrin 4.5% polymer matrix collar. Parasit
+Vectors. 2017;10(1):334.
+Brianti E, Gaglio G, Napoli E, Falsone L, Prudente C, Solari Basano F, Latrofa MS, Tarallo VD, Dantas-
+Torres F, Capelli G, Stanneck D, Giannetto S, Otranto D. Efficacy of a slow-release imidacloprid (10%)
+/flumethrin (4.5%) collar for the prevention of canine leishmaniosis. Parasit Vectors. 2014; 7:327.
+Brianti E, Napoli E, Gaglio G, Falsone L, Giannetto S, Solari Basano F, Nazzari R, Latrofa MS, Annoscia G,
+Tarallo VD, Stanneck D, Dantas-Torres F, Otranto D. Field Evaluation of Two Different Treatment
+Approaches and Their Ability to Control Fleas and Prevent Canine Leishmaniosis in a Highly Endemic
+Area. PLoS Negl Trop Dis. 2016;10(9):e0004987.
+Cabrera A, Pita S, González T, Viera A, Verger L, Piegas S, et al. Genetic variability highlights the invasion
+route of the Lutzomyia longipalpis complex, the main vector of Visceral Leishmaniasis in Uruguay.
+Zoonoses Public Health. 2023; 70:383–92.
+Chiyo L, Dos Santos AG, de Souza AB, Rivas AV, Valle SB, Sevá ADP, Viana KF. Cross-sectional spatial
+and epidemiological analysis of canine visceral leishmaniasis cases in the triple border region, Brazil,
+Argentina and Paraguay, between 2015 and 2020. Acta Trop. 2023; 239:106811.
+Ciaramella P, Oliva G, Luna RD, Gradoni L, Ambrosio R, Cortese L, Scalone A, Persechino A. A
+retrospective clinical study of canine leishmaniasis in 150 dogs naturally infected by Leishmania infantum.
+Vet Rec. 1997;141(21):539-43.
+Clasta RB, Rivas AV, Souza AB, Dos Santos AGV, Le Quesne AHM, Gonçalves AAM, Cangussu ASR,
+Giunchetti RC, Viana KF. LaSap vaccine: Immunotherapy and immunochemotherapy associated with
+allopurinol in dogs naturally infected with Leishmania infantum. Parasite Immunol. 2024;46(2):e13028.
+Cortese L, Pelagalli A, Piantedosi D, Mastellone V, Manco A, Lombardi P, Ciaramella P, Avallone L.
+Platelet aggregation and haemostatic response in dogs naturally co-infected by Leishmania infantum and
+Ehrlichia canis. J Vet Med A Physiol Pathol Clin Med. 2006;53(10):546-8.
+Costa CH. How effective is dog culling in controlling zoonotic visceral leishmaniasis? A critical evaluation
+of the science, politics and ethics behind this public health policy. Rev Soc Bras Med Trop. 2011;44(2):232-
+42. 
+Coura-Vital W, Leal GGA, Marques LA, Pinheiro ADC, Carneiro M, Reis AB. Effectiveness of deltamethrin-
+impregnated dog collars on the incidence of canine infection by Leishmania infantum: A large scale
+intervention study in an endemic area in Brazil. PLoS One. 2018;13(12):e0208613.
+Courtenay O, Gillingwater K, Gomes PA, Garcez LM, Davies CR. Deltamethrin-impregnated bednets
+reduce human landing rates of sandfly vector Lutzomyia longipalpis in Amazon households. Med Vet
+Entomol. 2007;21(2):168-76.
+Cutolo AA, Galvis-Ovallos F, de Souza Neves E, Silva FO, Chester ST, Fankhauser B. Repellent efficacy of
+a new combination of fipronil and permethrin against Lutzomyia longipalpis. Parasit Vectors. 2018; 11:247.
+da Silva AS, de Medeiros Silva MM, de Oliveira Mendes Aguiar C, Nascimento PRP, da Costa EG,
+Jeronimo SMB, de Melo Ximenes MFF. Challenges of animals shelters in caring for dogs infected with
+Leishmania and other pathogens. Vet Parasitol Reg Stud Reports. 2024; 49:100988.
+Dantas-Torres F, Figueredo LA, Sales KGDS, Miranda DEO, Alexandre JLA, da Silva YY, da Silva LG, Valle
+GR, Ribeiro VM, Otranto D, Deuster K, Pollmeier M, Altreuther G. Prevalence and incidence of vector-
+borne pathogens in unprotected dogs in two Brazilian regions. Parasit Vectors. 2020; 13:195.
+25
+--- PAGE 26 ---
+Dantas-Torres F, Miró G, Baneth G, Bourdeau P, Breitschwerdt E, Capelli G, Cardoso L, Day MJ, Dobler G,
+Ferrer L, Irwin P, Jongejan F, Kempf VAJ, Kohn B, Lappin M, Little S, Madder M, Maggi R, Maia C,
+Marcondes M, Naucke T, Oliva G, Pennisi MG, Penzhorn BL, Peregrine A, Pfeffer M, Roura X, Sainz A, Shin
+S, Solano-Gallego L, Straubinger RK, Tasker S, Traub R, Wright I, Bowman DD, Gradoni L, Otranto D.
+Canine Leishmaniasis Control in the Context of One Health. Emerg Infect Dis. 2019a;25(12):1-4. 
+Dantas-Torres F, Miró G, Bowman DD, Gradoni L, Otranto D. Culling Dogs for Zoonotic Visceral
+Leishmaniasis Control: The Wind of Change. Trends Parasitol. 2019b;35(2):97-101.
+Dantas-Torres F, Sales KG, Miranda DE, da Silva FJ, Figueredo LA, de Melo FL, de Brito ME, Andrade MS,
+Brandão-Filho SP. Sand fly population dynamics and cutaneous leishmaniasis among soldiers in an
+Atlantic forest remnant in northeastern Brazil. PLoS Negl Trop Dis. 2017;11(2):e0005406.
+Dantas-Torres F. Canine leishmaniasis in the Americas: etiology, distribution, and clinical and zoonotic
+importance. Parasit Vectors. 2024; 17:198.
+Dantas-Torres F. Ticks as vectors of Leishmania parasites. Trends Parasitol. 2011;27(4):155-9.
+De Tommasi AS, Otranto D, Dantas-Torres F, Capelli G, Breitschwerdt EB, de Caprariis D. Are vector-
+borne pathogen co-infections complicating the clinical presentation in dogs? Parasit Vectors. 2013; 6:97.
+Dias RCF, Pasquali AKS, Thomaz-Soccol V, Pozzolo EM, Chiyo L, Alban SM, Fendrich RC, Almeida RAA,
+Ferreira FP, Caldart ET, Freire RL, Mitsuka-Breganó R, Bisetto Júnior A, Navarro IT. Autochthonous canine
+visceral leishmaniasis cases occur in Paraná state since 2012: isolation and identification of Leishmania
+infantum. Rev Bras Parasitol Vet. 2019;29(1):e009819.
+Duarte AGS, Werneck GL, de Farias Lelis S, Mendonça TS, Vasconcelos DD, Gontijo TS, Dos Santos ÁO,
+Donato LE, Belo VS. An updated systematic review with meta-analysis and meta-regression of the factors
+associated with human visceral leishmaniasis in the Americas. Infect Dis Poverty. 2025;14(1):4.
+Esch KJ, Pontes NN, Arruda P, O'Connor A, Morais L, Jeronimo SM, Petersen CA. Preventing zoonotic
+canine leishmaniasis in northeastern Brazil: pet attachment and adoption of community Leishmania
+prevention. Am J Trop Med Hyg. 2012;87(5):822-31.
+Estevam LGTM, Veloso LB, Silva GG, Mori CC, Franco PF, Lima ACVMR, Ássimos GR, Reis IA, Andrade-
+Filho JD, Araújo MSS, Ribeiro VM, Almeida APMM, Paz GF. Leishmania infantum infection rate in dogs
+housed in open-admission shelters is higher than of domiciled dogs in an endemic area of canine visceral
+leishmaniasis. Epidemiological implications. Acta Trop. 2022; 232:106492. 
+Feitosa MM, Ikeda FA, Luvizotto MC, Perri SH. Aspectos clínicos de cães com leishmaniose visceral no
+município de Araçatuba – São Paulo. Clin Vet. 2000; 28:36-44.
+Francino O, Altet L, Sánchez-Robert E, Rodriguez A, Solano-Gallego L, Alberola J, Ferrer L, Sánchez A,
+Roura X. Advantages of real-time PCR assay for diagnosis and monitoring of canine leishmaniosis. Vet
+Parasitol. 2006;137(3-4):214-21.
+Freitas E, Melo MN, da Costa-Val AP, Michalick MS. Transmission of Leishmania infantum via blood
+transfusion in dogs: potential for infection and importance of clinical factors. Vet Parasitol. 2006;137(1-
+2):159-67.
+Galati EAB. Phlebotominae (Diptera, Psychodidae): Classification, Morphology and Terminology of Adults
+and Identification of American Taxa. In: Rangel E, Shaw J. (eds) Brazilian Sand Flies. 2018. Springer,
+Cham.
+Giannuzzi AP, Ricciardi M, De Simone A, Gernone F. Neurological manifestations in dogs naturally
+infected by Leishmania infantum: descriptions of 10 cases and a review of the literature. J Small Anim
+Pract. 2017;58(3):125-138.
+26
+--- PAGE 27 ---
+Gomez SA, Lucientes J, Castillo JA, Peris MP, Delacour S, Ortega P, Oropeza RV, Picado A. A
+randomized, blinded, controlled trial to assess sand fly mortality of fluralaner administered orally in dogs.
+Parasit Vectors. 2018; 11:627.
+Jimenez-Marco T, Fisa R, Girona-Llobera E, Cancino-Faure B, Tomás-Pérez M, Berenguer D, Guillen C,
+Pujol A, Iniesta L, Serra T, Mascaró M, Gascó J, Riera C. Transfusion-transmitted leishmaniasis: a practical
+review. Transfusion. 2016;56 Suppl 1:S45-51.
+Karampas G, Koulouraki S, Daikos GL, Nanou C, Aravantinos L, Eleftheriades M, Metallinou D,
+Christopoulos P. Visceral Leishmaniasis in a Twin Pregnancy: A Case Report and Review of the Literature.
+J Clin Med. 2024;13(8):2400.
+Kazimoto TA, Amora SSA, Figueiredo FB, Magalhães JME, Freitas YBN, Sousa MLR, Melo AECDS,
+Campos MP, Alves ND, Werneck GL. Impact of 4% Deltamethrin-Impregnated Dog Collars on the
+Prevalence and Incidence of Canine Visceral Leishmaniasis. Vector Borne Zoonotic Dis. 2018;18(7):356-
+363.
+Lainson R. Espécies neotropicais de Leishmania: uma breve revisão histórica sobre sua descoberta,
+ecologia e taxonomia. Rev Pan-Amaz Saude. 2010; 1:13–32.
+Latrofa MS, Cereda M, Louzada-Flores VN, Dantas-Torres F, Otranto D. Q3 lab-on-chip real-time PCR for
+the diagnosis of Leishmania infantum infection in dogs. J Clin Microbiol. 2024;62(6):e0010424.
+Leite BMM, Solcà MDS, Santos LCS, Coelho LB, Amorim LDAF, Donato LE, Passos SMS, Almeida AO,
+Veras PST, Fraga DBM. The mass use of deltamethrin collars to control and prevent canine visceral
+leishmaniasis: A field effectiveness study in a highly endemic area. PLoS Negl Trop Dis.
+2018;12(5):e0006496.
+López-Peña M, Alemañ N, Muñoz F, Fondevila D, Suárez ML, Goicoa A, Nieto JM. Visceral leishmaniasis
+with cardiac involvement in a dog: a case report. Acta Vet Scand. 2009;51(1):20.
+Luna RLN, Sales KGDS, Bonifácio LLN, Figueredo LA, Shelite TR, Nogueira FDS, Otranto D, Dantas-Torres
+F. Rapid isothermal molecular tests to discriminate between Leishmania braziliensis and Leishmania
+infantum infections in dogs. Parasit Vectors. 2025; 18:2.
+Maggi RG, Krämer F. A review on the occurrence of companion vector-borne diseases in pet animals in
+Latin America. Parasit Vectors. 2019; 12:145.
+Mancianti F, Gramiccia M, Gradoni L, Pieri S. Studies on canine leishmaniasis control. 1. Evolution of
+infection of different clinical forms of canine leishmaniasis following antimonial treatment. Trans R Soc
+Trop Med Hyg. 1988;82(4):566-7.
+Mancianti F, Sozzi S. Isolation of Leishmania from a newborn puppy. Trans R Soc Trop Med Hyg.
+1995;89(4):402.
+Martínez V, Quilez J, Sanchez A, Roura X, Francino O, Altet L. Canine leishmaniasis: the key points for
+qPCR result interpretation. Parasit Vectors. 2011 Apr 13; 4:57.
+Matsumoto PSS, Taniguchi HH, Pereira VBR, Hiramoto RM, Seviero Rampazzi KL, de Raeffray Barbosa JE,
+Puci Neto RA, Camprigher VM, de Barros Cortez LRP, Rahaman KR, Novak M, Tolezano JE. Efficacies of
+insecticide dog collars against visceral leishmaniasis in low and high-income areas and the effects for
+non-collared neighbor dogs. Acta Trop. 2022; 235:106626.
+27
+--- PAGE 28 ---
+Medkour H, Davoust B, Dulieu F, Maurizi L, Lamour T, Marié JL, et al. Potential animal reservoirs (dogs
+and bats) of human visceral leishmaniasis due to Leishmania infantum in French Guiana. PLoS Negl Trop
+Dis. 2019;13:e0007456.
+Meinecke CK, Schottelius J, Oskam L, Fleischer B. Congenital transmission of visceral leishmaniasis (Kala
+Azar) from an asymptomatic mother to her child. Pediatrics. 1999;104(5):e65.
+Mekuzas Y, Gradoni L, Oliva G, Foglia Manzillo V, Baneth G. Ehrlichia canis and Leishmania infantum co-
+infection: a 3-year longitudinal study in naturally exposed dogs. Clin Microbiol Infect. 2009;15 Suppl 2:30-
+1.
+Miró G, Cardoso L, Pennisi MG, Oliva G, Baneth G. Canine leishmaniosis--new concepts and insights on
+an expanding zoonosis: part two. Trends Parasitol. 2008;24(8):371-7.
+Miró G, Petersen C, Cardoso L, Bourdeau P, Baneth G, Solano-Gallego L, Pennisi MG, Ferrer L, Oliva G.
+Novel Areas for Prevention and Control of Canine Leishmaniosis. Trends Parasitol. 2017;33(9):718-730.
+Molina R, Gradoni L, Alvar J. HIV and the transmission of Leishmania. Ann Trop Med Parasitol. 2003;97
+Suppl 1:29-45.
+Naucke TJ, Lorentz S. First report of venereal and vertical transmission of canine leishmaniosis from
+naturally infected dogs in Germany. Parasit Vectors. 2012; 5:67.
+Naucke TJ, Amelung S, Lorentz S. First report of transmission of canine leishmaniosis through bite
+wounds from a naturally infected dog in Germany. Parasit Vectors. 2016; 9:256.
+Nogueira F.S., Ribeiro V.M. Leishmaniose Visceral. In: Jericó M.M., Andrade Neto JPA, Kogika MM (2ª
+edição). Tratado de Medicina Interna de Cães e Gatos. Rio de Janeiro: Roca; 2022.
+Nogueira FS, Avino VC, Galvis-Ovallos F, Pereira-Chioccola VL, Moreira MAB, Romariz APPL, Molla LM,
+Menz I. Use of miltefosine to treat canine visceral leishmaniasis caused by Leishmania infantum in Brazil.
+Parasit Vectors. 2019; 12:79.
+Oikonomidis IL, Tsouloufi TK, Mylonakis ME, Psalla D, Soubasis N, Rallis T, Kritsepi-Konstantinou M.
+Circulating and bone marrow myeloid cells containing Leishmania amastigotes in a case of advanced
+canine leishmaniosis. J Vet Diagn Invest. 2019;31(5):726-731.
+Oliveira VVG, Ramos RAN, Ramos CAN, Guerra NR, Maia FCL, Alves LC. Molecular evidence of early
+vertical transmission of Leishmania (Leishmania) infantum in a dog. Ciênc Rural. 2017; 47(1):1-4.
+Otranto D, Dantas-Torres F, de Caprariis D, Di Paola G, Tarallo VD, Latrofa MS, Lia RP, Annoscia G,
+Breitshwerdt EB, Cantacessi C, Capelli G, Stanneck D. Prevention of canine leishmaniosis in a hyper-
+endemic area using a combination of 10% imidacloprid/4.5% flumethrin. PLoS One. 2013;8(2):e56374.
+Otranto D, Dantas-Torres F, Mihalca AD, Traub RJ, Lappin M, Baneth G. Zoonotic Parasites of Sheltered
+and Stray Dogs in the Era of the Global Economic and Political Crisis. Trends Parasitol. 2017;33(10):813-
+825.
+Otranto D, Mendoza-Roldan JA, Beugnet F, Baneth G, Dantas-Torres F. New paradigms in the prevention
+of canine vector-borne diseases. Trends Parasitol. 2024;40(6):500-510.
+Otranto D, Paradies P, Lia RP, Latrofa MS, Testini G, Cantacessi C, Mencke N, Galli G, Capelli G, Stanneck
+D. Efficacy of a combination of 10% imidacloprid/50% permethrin for the prevention of leishmaniasis in
+kennelled dogs in an endemic area. Vet Parasitol. 2007 Mar 31;144(3-4):270-8.
+Owens SD, Oakley DA, Marryott K, Hatchett W, Walton R, Nolan TJ, Newton A, Steurer F, Schantz P, Giger
+U. Transmission of visceral leishmaniasis through blood transfusions from infected English foxhounds to
+anemic dogs. J Am Vet Med Assoc. 2001;219(8):1076-83.
+28
+--- PAGE 29 ---
+Paltrinieri S, Solano-Gallego L, Fondati A, Lubas G, Gradoni L, Castagnaro M, Crotti A, Maroli M, Oliva G,
+Roura X, Zatelli A, Zini E; Canine Leishmaniasis Working Group, Italian Society of Veterinarians of
+Companion Animals. Guidelines for diagnosis and clinical classification of leishmaniasis in dogs. J Am Vet
+Med Assoc. 2010;236(11):1184-91.
+Panarese R, Iatta R, Beugnet F, Otranto D. Incidence of Dirofilaria immitis and Leishmania infantum
+infections in sheltered dogs from Southern Italy. Transbound Emerg Dis. 2022;69(2):891-894.
+Panarese R, Iatta R, Mendoza-Roldan JA, Zatelli A, Beugnet F, Otranto D. Efficacy of afoxolaner
+(NexGard®) in preventing the transmission of Leishmania infantum and Dirofilaria immitis to sheltered
+dogs in a highly endemic area. Parasit Vectors. 2021; 14:381.
+Paradies P, Sasanelli M, de Caprariis D, Testini G, Traversa D, Lia RP, Dantas-Torres F, Otranto D. Clinical
+and laboratory monitoring of dogs naturally infected by Leishmania infantum. Vet J. 2010;186(3):370-3.
+Perier N, Lebon W, Meyer L, Lekouch N, Aouiche N, Beugnet F. Assessment of the insecticidal activity of
+oral afoxolaner against Phlebotomus perniciosus in dogs. Parasite. 2019; 26:63. 
+Pineda C, Aguilera-Tejero E, Morales MC, Belinchon-Lorenzo S, Gomez-Nieto LC, Garcia P, Martinez-
+Moreno JM, Rodriguez-Ortiz ME, Lopez I. Treatment of canine leishmaniasis with marbofloxacin in dogs
+with renal disease. PLoS One. 2017;12(10):e0185981.
+Queiroga TBD, Ferreira HRP, Dos Santos WV, de Assis ABL, de Araújo Neto VT, da Câmara ACJ,
+Fagundes Neto JC, Dos Reis RK, Nascimento MSL, Gama RA, Guedes PMM. Fluralaner (Bravecto)
+induces long-term mortality of Lutzomyia longipalpis after a blood meal in treated dogs. Parasit Vectors.
+2020; 13:609. ®
+Quinnell RJ, Courtenay O, Garcez L, Dye C. The epidemiology of canine leishmaniasis: transmission rates
+estimated from a cohort study in Amazonian Brazil. Parasitology. 1997; 115:143–56.
+Ramos RAN, Giannelli A, Fasquelle F, Scuotto A, Betbeder D. Effective immuno-therapeutic treatment of
+Canine Leishmaniasis. PLoS Negl Trop Dis. 2023;17(5):e0011360.
+Ratzlaff FR, Osmari V, da Silva D, de Paula Vasconcellos JS, Pötter L, Fernandes FD, de Mello Filho JA, de
+Avila Botton S, Vogel FSF, Sangioni LA. Identification of infection by Leishmania spp. in wild and domestic
+animals in Brazil: a systematic review with meta-analysis (2001-2021). Parasitol Res. 2023;122(7):1605-
+1619.
+Reithinger R, Davies CR. Is the domestic dog (Canis familiaris) a reservoir host of American cutaneous
+leishmaniasis? A critical review of the current evidence. Am J Trop Med Hyg. 1999; 61:530–41.
+Ribeiro VM, da Silva SM, Menz I, Tabanez P, Nogueira Fdos S, Werkhaüser M, da Fonseca AL, Dantas-
+Torres F; Brasileish –A Study Group about Animal Leishmaniasis. Control of visceral leishmaniasis in
+Brazil: recommendations from Brasileish. Parasit Vectors. 2013; 6:8.
+Ribeiro VM. Leishmaniose e os rins. In: Giovaninni LH, Crivellenti LZ. Tratado de nefrologia e urologia em
+cães e gatos. São Paulo: MedVet; 2022. p. 544-53.
+Ribeiro VM, Silva SM, Menz I, Tabanez P, Nogueira FS, Werkhaüser M, et al. Control of visceral
+leishmaniasis in Brazil: recommendations from Brasileish. Parasit Vectors. 2013 Jan;6(1):8.
+Rosar AS, Martins CL, Menin Á, Reck C, Grisard EC, Wagner G, Steindel M, Stoco PH, Quaresma PF.
+Clinical, histopathological and parasitological follow-up of dogs naturally infected by Leishmania infantum
+before and after miltefosine treatment and associated therapies. PLoS One. 2025;20(1):e0313167.
+29
+--- PAGE 30 ---
+Rosypal AC, Troy GC, Zajac AM, Frank G, Lindsay DS. Transplacental transmission of a North American
+isolate of Leishmania infantum in an experimentally infected beagle. J Parasitol. 2005;91(4):970-2.
+Rotureau B, Ravel C, Aznar C, Carme B, Dedet JP. First report of Leishmania infantum in French Guiana:
+canine visceral leishmaniasis imported from the Old World. J Clin Microbiol. 2006; 44:1120–2.
+Salant H, Nachum-Biala Y, Feinmesser B, Perelmutter M, Baneth G. Early onset of clinical leishmaniosis in
+a litter of pups with evidence of in utero transmission. Parasit Vectors. 2021; 14:326.
+Sales KGDS, de Oliveira Miranda DE, Costa PL, da Silva FJ, Figueredo LA, Brandão-Filho SP, Dantas-
+Torres F. Home sweet home: sand flies find a refuge in remote indigenous villages in north-eastern Brazil,
+where leishmaniasis is endemic. Parasit Vectors. 2019;12(1):118.
+Satragno D, Faral-Tello P, Canneva B, Verger L, Lozano A, Vitale E, Greif G, Soto C, Robello C,
+Basmadjián Y. Autochthonous Outbreak and Expansion of Canine Visceral Leishmaniasis, Uruguay.
+Emerg Infect Dis. 2017;23(3):536-538.
+Serafim TD, Coutinho-Abreu IV, Dey R, Kissinger R, Valenzuela JG, Oliveira F, Kamhawi S. Leishmaniasis:
+the act of transmission. Trends Parasitol. 2021;37(11):976-987.
+Sevá AP, Ovallos FG, Amaku M, Carrillo E, Moreno J, Galati EA, Lopes EG, Soares RM, Ferreira F. Canine-
+based strategies for prevention and control of visceral leishmaniasis in Brazil. PLoS One.
+2016;11(7):e0160058.
+Silva DA, Madeira MF, Teixeira AC, de Souza CM, Figueiredo FB. Laboratory tests performed on
+Leishmania seroreactive dogs euthanized by the leishmaniasis control program. Vet Parasitol. 2011;
+179:257–61.
+Silva FL, Oliveira RG, Silva TM, Xavier MN, Nascimento EF, Santos RL. Venereal transmission of canine
+visceral leishmaniasis. Vet Parasitol. 2009;160(1-2):55-9.
+Silva SCPFE, Gomes LB, Carvalho PCFB, Santos AGRC, Borges LFNM, Oliveira CSF, Morais MHF, Pereira
+PLL, Amaral Haddad JP, Soares DFM. Effectiveness of the mass use of deltamethrin-impregnated dog
+collars for preventing transmission of canine leishmaniasis by Lutzomyia spp.: A cluster randomized
+controlled trial. Prev Vet Med. 2019; 171:104770.
+Silva SM, Ribeiro VM, Ribeiro RR, Tafuri WL, Melo MN, Michalick MS. First report of vertical transmission of
+Leishmania (Leishmania) infantum in a naturally infected bitch from Brazil. Vet Parasitol. 2009;166(1-2):159-
+62.
+Slappendel RJ, Ferrer L. Leishmaniasis. In: Greene, CE. Clinical Microbiology and Infectious Disease of the
+Dog and Cat. Philadelphia: WB. Saunders; 1990. p. 450-58.
+Solano-Gallego L, Fernández-Bellon H, Morell P, Fondevila D, Alberola J, Ramis A, Ferrer L. Histological
+and immunohistochemical study of clinically normal skin of Leishmania infantum-infected dogs. J Comp
+Pathol. 2004;130(1):7-12.
+Solano-Gallego L, Koutinas A, Miró G, Cardoso L, Pennisi MG, Ferrer L, Bourdeau P, Oliva G, Baneth G.
+Directions for the diagnosis, clinical staging, treatment and prevention of canine leishmaniosis. Vet
+Parasitol. 2009;165(1-2):1-18. 
+Solano-Gallego L, Miró G, Koutinas A, Cardoso L, Pennisi MG, Ferrer L, Bourdeau P, Oliva G, Baneth G,
+The LeishVet Group. LeishVet guidelines for the practical management of canine leishmaniosis. Parasit
+Vectors. 2011; 4:86.
+30
+--- PAGE 31 ---
+Sousa-Paula LC, Pessoa FAC, Otranto D, Dantas-Torres F. Beyond taxonomy: species complexes in New
+World phlebotomine sand flies. Med Vet Entomol. 2021;35(3):267-283.
+Sousa-Paula LC, Silva LGD, Sales KGS, Dantas-Torres F. Failure of the dog culling strategy in controlling
+human visceral leishmaniasis in Brazil: a screening coverage issue? PLoS Negl Trop Dis.
+2019;13:e0007553.
+Sousa FG, Queiroz FSF, de Araújo RB, Beier SL. Leishmania sp. can affect the cardiovascular system of
+dogs - A systematic review of over 80 years. Vet Parasitol. 2025; 334:110388.
+Strauss-Ayali D, Jaffe CL, Burshtain O, Gonen L, Baneth G. Polymerase chain reaction using noninvasively
+obtained samples, for the detection of Leishmania infantum DNA in dogs. J Infect Dis. 2004;189(9):1729-
+33.
+Svobodova V, Svoboda M, Friedlaenderova L, Drahotsky P, Bohacova E, Baneth G. Canine leishmaniosis
+in three consecutive generations of dogs in Czech Republic. Vet Parasitol. 2017; 237:122-124.
+Symmers WS. Leishmaniasis acquired by contagion: a case of marital infection in Britain. Lancet.
+1960;1(7116):127-32.
+Terrero I, Pineda V, Vásquez V, Miranda A, Saldaña A, Calzada JE, et al. First report of imported canine
+visceral leishmaniasis cases in Panama, Central America: public health implications. Vet Parasitol Reg
+Stud Reports. 2022; 32:100745.
+Toepp AJ, Bennett C, Scott B, Senesac R, Oleson JJ, Petersen CA. Maternal Leishmania infantum
+infection status has significant impact on leishmaniasis in offspring. PLoS Negl Trop Dis.
+2019;13(2):e0007058.
+Tolezano JE, Uliana SR, Taniguchi HH, Araújo MF, Barbosa JA, Barbosa JE, Floeter-Winter LM, Shaw JJ.
+The first records of Leishmania (Leishmania) amazonensis in dogs (Canis familiaris) diagnosed clinically as
+having canine visceral leishmaniasis from Araçatuba County, São Paulo State, Brazil. Vet Parasitol.
+2007;149(3-4):280-4.
+Torrent E, Leiva M, Segalés J, Franch J, Peña T, Cabrera B, Pastor J. Myocarditis and generalised
+vasculitis associated with leishmaniosis in a dog. J Small Anim Pract. 2005;46(11):549-52.
+Valdivia HO, Almeida LV, Roatt BM, Reis-Cunha JL, Pereira AA, Gontijo C, Fujiwara RT, Reis AB, Sanders
+MJ, Cotton JA, Bartholomeu DC. Comparative genomics of canine-isolated Leishmania (Leishmania)
+amazonensis from an endemic focus of visceral leishmaniasis in Governador Valadares, southeastern
+Brazil. Sci Rep. 2017; 7:40804.
+Vaz TP, Quaresma PF, Rêgo FD, Souza CB, Fontes G, Gontijo CMF. Clinical and laboratory response of
+domiciled dogs with visceral leishmaniasis treated with miltefosine and allopurinol. Trop Med Infect Dis.
+2023;8(10):472
+Vélez ID, Carrillo LM, López L, Rodríguez E, Robledo SM. An epidemic outbreak of canine cutaneous
+leishmaniasis in Colombia caused by Leishmania braziliensis and Leishmania panamensis. Am J Trop
+Med Hyg. 2012; 86:807-11.
+Werneck GL, Figueiredo FB, Cruz MDSPE. Impact of 4% deltamethrin-impregnated dog collars on the
+incidence of human visceral leishmaniasis: a community intervention trial in Brazil. Pathogens.
+2024;13(2):135.
+Wilke ABB, Farina P, Ajelli M, Canale A, Dantas-Torres F, Otranto D, Benelli G. Human migrations,
+anthropogenic changes, and insect-borne diseases in Latin America. Parasit Vectors. 2025; 18:4.
+Yimam Y, Mohebali M. Effectiveness of insecticide-impregnated dog collars in reducing incidence rate of
+canine visceral leishmaniasis: A systematic review and meta-analysis. PLoS One. 2020;15(9):e0238601
+31
+--- PAGE 32 ---
+“ TUDO QUE VIVE, QUER VIVER. ”
+ São Francisco de Assis

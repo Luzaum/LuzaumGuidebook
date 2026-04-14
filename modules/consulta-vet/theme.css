@@ -108,3 +108,13 @@
 .dark .consulta-vet-theme .consulta-vet-sidebar-panel {
   background-color: hsl(var(--sidebar) / 0.92);
 }
+
+/* Textura leve no conteúdo — reduz sensação de área “vazia” sem pesar na GPU */
+.consulta-vet-theme .consulta-vet-main-scroll {
+  background-image: radial-gradient(hsl(var(--foreground) / 0.04) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+.dark .consulta-vet-theme .consulta-vet-main-scroll {
+  background-image: radial-gradient(hsl(var(--foreground) / 0.07) 1px, transparent 0);
+}

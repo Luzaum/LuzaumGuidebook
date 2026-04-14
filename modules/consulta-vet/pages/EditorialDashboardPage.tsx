@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpenCheck, DatabaseZap, FolderTree, Pill, ScrollText, Stethoscope } from 'lucide-react';
+import { ConsultaVetPageHero } from '../components/layout/ConsultaVetPageHero';
 import { EditorialPermissionGate } from '../components/editorial/EditorialPermissionGate';
 import { useConsultaVetEditorialAccess } from '../hooks/useConsultaVetEditorialAccess';
 
@@ -42,19 +43,13 @@ export function EditorialDashboardPage() {
 
   return (
     <div className="mx-auto w-full max-w-[1560px] space-y-8 p-4 md:p-8">
-      <header className="rounded-[30px] border border-border bg-card p-6 shadow-sm md:p-8">
-        <div className="flex items-center gap-3">
-          <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-            <BookOpenCheck className="h-6 w-6" />
-          </span>
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight text-foreground">Editorial ConsultaVET</h1>
-            <p className="mt-1 text-sm text-muted-foreground">
-              CRUD mínimo para conteúdo administrável via Supabase, mantendo fallback local por slug.
-            </p>
-          </div>
-        </div>
-      </header>
+      <ConsultaVetPageHero
+        eyebrow="Editorial"
+        title="Painel editorial"
+        description="ConsultaVET — CRUD mínimo para conteúdo administrável via Supabase, mantendo fallback local por slug."
+        icon={BookOpenCheck}
+        accent="primary"
+      />
 
       <EditorialPermissionGate isLoading={isLoading} canManage={canManage}>
         <div className="grid gap-4 md:grid-cols-3">

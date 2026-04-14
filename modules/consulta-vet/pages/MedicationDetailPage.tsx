@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { ChevronRight, FileText, Pill, Share2, Stethoscope } from 'lucide-react';
+import { ConsultaVetSurface } from '../components/layout/ConsultaVetSurface';
 import { DoseCalculatorCard } from '../components/medication/DoseCalculatorCard';
 import { MedicationSectionFrame } from '../components/medication/MedicationSectionFrame';
 import { FavoriteButton } from '../components/shared/FavoriteButton';
@@ -529,7 +530,7 @@ export function MedicationDetailPage() {
           <span className="truncate text-foreground">{medication.title}</span>
         </nav>
 
-        <header className="rounded-[34px] border border-border bg-card/95 p-6 shadow-sm md:p-8 xl:p-10">
+        <ConsultaVetSurface accent="emerald" className="p-6 shadow-md md:p-8 xl:p-10">
           <div className="flex flex-col gap-6 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
               <div className="flex flex-wrap items-center gap-3">
@@ -576,7 +577,7 @@ export function MedicationDetailPage() {
             />
             <MetaStat label={UI_TEXT.presentations} value={medication.presentations.length} />
           </div>
-        </header>
+        </ConsultaVetSurface>
 
         <div className="space-y-8 pb-10 pt-8 md:space-y-10">
           {medication.doses.length > 0 ? (

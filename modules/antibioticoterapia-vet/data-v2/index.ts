@@ -45,3 +45,13 @@ export {
   countLinkedVerifiedMetadataMappings,
   countLinkedVerifiedPageLocatorMappings,
 } from './institutionalMappings'
+export {
+  getMoleculeTherapeuticAudit,
+  getRegimenTherapeuticAuditInSyndrome,
+  listSyndromeRegimenPairsV2,
+  summarizeMoleculeAuditStatesV2,
+  summarizeRegimenAuditStatesInV2Syndromes,
+  countV2MoleculeMappingRows,
+  THERAPEUTIC_AUDIT_LABEL,
+  type TherapeuticInstitutionalAuditState,
+} from './therapeuticInstitutionalAudit'

@@ -320,7 +320,7 @@ export default function ManipuladosPage() {
         </div>
 
         <div className="min-w-0 space-y-5">
-          {message ? <div className="rounded-2xl border border-[#39ff14]/20 bg-[#143118] px-4 py-3 text-sm text-[#b7f6ad]">{message}</div> : null}
+          {message ? <div className="rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_20%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,var(--rxv-surface))] px-4 py-3 text-sm text-[color:color-mix(in_srgb,var(--rxv-primary)_70%,#f1f5f9)]">{message}</div> : null}
           {dirty ? (
             <div className="rounded-2xl border border-amber-400/25 bg-amber-400/10 px-4 py-3 text-sm text-amber-200">
               Rascunho local ativo. As alterações serão restauradas se você sair da tela ou recarregar a página.

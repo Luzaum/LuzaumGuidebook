@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { FileText, Plus, Save, Upload, X } from 'lucide-react';
+import { ConsultaVetPageHero } from '../components/layout/ConsultaVetPageHero';
 import { EditorialField } from '../components/editorial/EditorialField';
 import { EditorialPermissionGate } from '../components/editorial/EditorialPermissionGate';
 import { ReferencesEditor } from '../components/editorial/ReferencesEditor';
@@ -278,12 +279,13 @@ export function EditorialConsensosPage() {
 
     return (
         <div className="mx-auto w-full max-w-[1680px] space-y-8 p-4 md:p-8">
-            <header className="rounded-[28px] border border-border bg-card p-6 shadow-sm md:p-8">
-                <h1 className="text-3xl font-bold tracking-tight text-foreground">Editorial de consensos</h1>
-                <p className="mt-2 max-w-4xl text-sm text-muted-foreground">
-                    CRUD editorial completo para consensos: metadados, detalhes, PDF, referências e relacionamentos. Preserva fallback local para consensos seed.
-                </p>
-            </header>
+            <ConsultaVetPageHero
+                eyebrow="Editorial"
+                title="Consensos"
+                description="CRUD editorial completo para consensos: metadados, detalhes, PDF, referências e relacionamentos. Preserva fallback local para consensos seed."
+                icon={FileText}
+                accent="violet"
+            />
 
             <EditorialPermissionGate isLoading={isLoadingAccess} canManage={canManage}>
                 <div className="grid gap-6 xl:grid-cols-[380px_1fr]">

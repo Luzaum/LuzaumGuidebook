@@ -25,7 +25,13 @@ export type PrintableReportViewModel = {
   contributionRows: TableRow[]
   alertNotes: string[]
   feedingSheetTitle: string
+  /** Texto explicativo na impressão quando aplicável (9 dias, 3 por folha). */
+  feedingSheetPrintBanner?: string
+  /** PDF/HTML: dados + alimentos uma vez; três blocos de controle por folha. */
+  feedingSheetTripleDayLayout: boolean
   feedingSheets: Array<{
+    /** ISO YYYY-MM-DD (para períodos e PDF). */
+    dateIso: string
     dateLabel: string
     meta: ReportField[]
     foodRows: TableRow[]
@@ -99,6 +105,28 @@ function formatKcal(value: number | null | undefined, decimals = 0) {
   return `${value.toFixed(decimals)} kcal/dia`
 }
 
+/** Meta “Dados da ficha” uma vez por folha (modo 9 dias / 3 por página). */
+export function buildSharedFeedingSheetMetaFields(
+  report: StoredCalculationReport,
+  slice: PrintableReportViewModel['feedingSheets'],
+): ReportField[] {
+  if (slice.length === 0) return []
+  const programmed = report.formula.programmedFeeding ?? report.diet.programmedFeeding
+  const feedingMealsPerDay = programmed?.mealsPerDay ?? report.diet.mealsPerDay ?? 2
+  const first = slice[0].dateIso
+  const last = slice[slice.length - 1].dateIso
+  return [
+    { label: 'Período (esta folha)', value: `${toPtDate(first)} a ${toPtDate(last)}` },
+    { label: 'Animal', value: safeText(report.patient.name) },
+    {
+      label: 'Peso',
+      value: report.patient.currentWeight != null ? `${report.patient.currentWeight.toFixed(2)} kg` : 'Nao informado',
+    },
+    { label: 'Alimentacoes por dia', value: String(feedingMealsPerDay) },
+    { label: 'Alimentos utilizados', value: report.formula.contributions.map((item) => item.foodName).join(', ') || 'Nao informado' },
+  ]
+}
+
 function buildNutritionRows(report: StoredCalculationReport): TableRow[] {
   const delivered = report.formula.evaluation.totalDelivered
   const totalKcalDelivered = report.formula.contributions.reduce((sum, c) => sum + c.deliveredKcal, 0)
@@ -148,17 +176,25 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
   const programmed = report.formula.programmedFeeding ?? report.diet.programmedFeeding
   const feedingMealsPerDay = programmed?.mealsPerDay ?? report.diet.mealsPerDay ?? 2
   const startDateIso = programmed?.startDate || toIsoDate(new Date(report.createdAt))
-  const printRangeMode = programmed?.printRangeMode ?? 'single_day'
+  const rawMode = programmed?.printRangeMode ?? 'next_9_days'
+  /** Relatórios antigos (3 ou 6 dias) passam a usar o bloco de 9 dias / 3 por folha. */
+  const printRangeMode =
+    rawMode === 'next_3_days' || rawMode === 'next_6_days' ? 'next_9_days' : rawMode
   const feedingDates =
-    programmed?.generatedFeedingDates?.length
-      ? programmed.generatedFeedingDates
-      : printRangeMode === 'next_3_days'
-      ? [0, 1, 2].map((offset) => {
+    printRangeMode === 'next_9_days'
+      ? [0, 1, 2, 3, 4, 5, 6, 7, 8].map((offset) => {
           const next = new Date(`${startDateIso}T00:00:00`)
           next.setDate(next.getDate() + offset)
           return toIsoDate(next)
         })
-      : [startDateIso]
+      : programmed?.generatedFeedingDates?.length
+        ? programmed.generatedFeedingDates
+        : [startDateIso]
+
+  const feedingSheetPrintBanner =
+    printRangeMode === 'next_9_days'
+      ? 'Próximos 9 dias — 3 dias por folha (3 folhas). Dados da ficha e alimentos uma vez por folha; controle diário por dia.'
+      : undefined
 
   const patientFields: ReportField[] = [
     { label: 'Paciente', value: safeText(report.patient.name) },
@@ -276,6 +312,7 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
   ])
 
   const feedingSheets = feedingDates.map((isoDate) => ({
+    dateIso: isoDate,
     dateLabel: toPtDate(isoDate),
     meta: [
       { label: 'Data', value: toPtDate(isoDate) },
@@ -295,6 +332,7 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
     generatedAt: toDateLabel(report.createdAt),
     patientTitle: safeText(report.patient.name),
     patientSubtitle: `${getSpeciesLabel(report.patient.species)} - ${safeText(report.patient.ownerName)}`,
+    feedingSheetTripleDayLayout: printRangeMode === 'next_9_days',
     patientFields,
     clinicalFields,
     energyFields,
@@ -306,6 +344,7 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
     contributionRows,
     alertNotes,
     feedingSheetTitle: 'FICHA DE ALIMENTACAO',
+    feedingSheetPrintBanner,
     feedingSheets,
   }
 }

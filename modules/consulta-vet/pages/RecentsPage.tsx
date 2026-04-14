@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Clock, FileText, Pill, Stethoscope } from 'lucide-react';
+import { ConsultaVetPageHero } from '../components/layout/ConsultaVetPageHero';
 import { EntityCard } from '../components/shared/EntityCard';
 import { useRecents } from '../hooks/useRecents';
 import { getConsensoRepository } from '../services/consensoRepository';
@@ -20,6 +21,7 @@ type RecentItem = {
 };
 
 const UI_TEXT = {
+  eyebrow: 'Hist\u00f3rico',
   title: 'Recentes',
   body: 'Retome rapidamente os \u00faltimos conte\u00fados acessados e continue do ponto em que parou.',
   emptyTitle: 'Nenhum hist\u00f3rico recente',
@@ -112,17 +114,13 @@ export function RecentsPage() {
 
   return (
     <div className="mx-auto w-full max-w-[1560px] space-y-8 p-4 md:p-8">
-      <section className="rounded-[28px] border border-border bg-card p-6 shadow-sm md:p-8">
-        <div className="flex items-start gap-4">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-muted/50 text-muted-foreground">
-            <Clock className="h-6 w-6" />
-          </div>
-          <div>
-            <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">{UI_TEXT.title}</h1>
-            <p className="mt-3 text-base leading-relaxed text-muted-foreground">{UI_TEXT.body}</p>
-          </div>
-        </div>
-      </section>
+      <ConsultaVetPageHero
+        eyebrow={UI_TEXT.eyebrow}
+        title={UI_TEXT.title}
+        description={UI_TEXT.body}
+        icon={Clock}
+        accent="cyan"
+      />
 
       {isLoading ? (
         <div className="rounded-2xl border border-border bg-card py-16 text-center">

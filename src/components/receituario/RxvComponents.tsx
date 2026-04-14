@@ -3,27 +3,34 @@ import { motion } from 'framer-motion'
 import { createPortal } from 'react-dom'
 
 /**
- * Detect current theme from localStorage or CSS class
+ * Tema do receituário: prioriza a classe real em `.rxv-page` (fonte de verdade),
+ * depois localStorage. Evita cartões/inputs claros quando o chrome está em modo escuro.
  */
-const getIsDark = () => {
+const getIsDark = (): boolean => {
     try {
-        if (typeof document !== 'undefined' && document.querySelector('.rxv-page.rxv-light')) return false;
+        if (typeof document === 'undefined') return true
+        const page = document.querySelector('.rxv-page')
+        if (page?.classList.contains('rxv-dark')) return true
+        if (page?.classList.contains('rxv-light')) return false
         return localStorage.getItem('receituario-vet:theme:v1') !== 'light'
-    } catch { return true }
+    } catch {
+        return true
+    }
 }
 
+/** Classes base — herdam --rxv-* do ancestral `.rxv-page` (claro ou escuro). */
+const RXV_CARD_BASE =
+    'rxv-card relative group p-5 transition-all border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] shadow-sm hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,var(--rxv-border))]'
+
 /**
- * RxvCard - Container principal com estilo Neon/Dark
+ * RxvCard - Container principal (tema via CSS variables)
  */
 export const RxvCard = ({ children, className = '', initial = true }: { children: React.ReactNode, className?: string, initial?: boolean }) => {
-    const isDark = getIsDark();
     return (
         <motion.div
             initial={initial ? { opacity: 0, y: 20 } : false}
             animate={{ opacity: 1, y: 0 }}
-            className={`rxv-card relative group p-5 transition-all border
-            ${isDark ? 'bg-[#0a140a]/60 border-slate-800/50' : 'bg-white border-slate-200 shadow-sm'}
-            hover:border-[#39ff14]/20 ${className}`}
+            className={`${RXV_CARD_BASE} ${className}`}
         >
             {children}
         </motion.div>
@@ -34,7 +41,6 @@ export const RxvCard = ({ children, className = '', initial = true }: { children
  * RxvSectionHeader - Cabeçalho de seção com ícone
  */
 const RxvSectionHeaderContent = ({ icon, title, subtitle, colorClass = 'text-[#39ff14]', bgClass = 'bg-[#39ff14]/10', shadowClass = 'shadow-[0_0_20px_rgba(57,255,20,0.1)]', children }: any) => {
-    const isDark = getIsDark();
     return (
         <div className="mb-6 flex items-center gap-3">
             {icon ? (
@@ -43,8 +49,8 @@ const RxvSectionHeaderContent = ({ icon, title, subtitle, colorClass = 'text-[#3
                 </div>
             ) : null}
             <div>
-                <h2 className={`text-lg font-black italic tracking-tight uppercase ${isDark ? 'text-white' : 'text-slate-900'}`}>{title}</h2>
-                {subtitle && <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.18em]">{subtitle}</p>}
+                <h2 className="text-lg font-black italic tracking-tight uppercase text-[color:var(--rxv-text)]">{title}</h2>
+                {subtitle && <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[color:var(--rxv-muted)]">{subtitle}</p>}
             </div>
             {children && <div className="ml-auto flex items-center gap-3">{children}</div>}
         </div>
@@ -57,10 +63,9 @@ export const RxvSectionHeader = (props: any) => <RxvSectionHeaderContent {...pro
  * RxvField - Wrapper para label e mensagem de erro
  */
 export const RxvField = ({ label, error, tooltip, children, className = '' }: { label: string, error?: string, tooltip?: string, children: React.ReactNode, className?: string }) => {
-    const isDark = getIsDark();
     return (
         <div className={`space-y-2 ${className}`}>
-            <label className={`flex items-center justify-between text-[9px] font-black uppercase tracking-[0.18em] ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
+            <label className="flex items-center justify-between text-[9px] font-black uppercase tracking-[0.18em] text-[color:var(--rxv-muted)]">
                 <span className="inline-flex items-center gap-1">
                     {label}
                     {tooltip ? (
@@ -83,16 +88,14 @@ export const RxvField = ({ label, error, tooltip, children, className = '' }: { 
 /**
  * RxvInput - Input padrão com estilo Neon
  */
+const RXV_INPUT_BASE =
+    'w-full rounded-xl border px-3.5 py-3 text-[13px] font-bold outline-none transition-all border-[color:var(--rxv-border)] bg-[color:var(--rxv-input-bg)] text-[color:var(--rxv-text)] placeholder:text-[color:color-mix(in_srgb,var(--rxv-muted)_72%,transparent)] focus:border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,var(--rxv-border))] focus:ring-1 focus:ring-[color:color-mix(in_srgb,var(--rxv-primary)_22%,transparent)]'
+
 export const RxvInput = ({ ...props }: React.InputHTMLAttributes<HTMLInputElement> & { error?: boolean }) => {
-    const isDark = getIsDark();
     return (
         <input
             {...props}
-            className={`w-full rounded-xl border px-3.5 py-3 text-[13px] font-bold outline-none transition-all focus:border-[#39ff14]/50 focus:ring-1 focus:ring-[#39ff14]/20
-        ${isDark
-                    ? 'border-slate-800 bg-black/60 text-white placeholder:text-slate-700'
-                    : 'border-slate-200 bg-white text-slate-900 placeholder:text-slate-400'}
-        ${props.error ? 'border-red-500/50 focus:border-red-500' : ''} ${props.className || ''}`}
+            className={`${RXV_INPUT_BASE} ${props.error ? 'border-red-500/50 focus:border-red-500' : ''} ${props.className || ''}`}
         />
     )
 }
@@ -101,22 +104,18 @@ export const RxvInput = ({ ...props }: React.InputHTMLAttributes<HTMLInputElemen
  * RxvSelect - Select padrão com estilo Neon
  */
 export const RxvSelect = ({ options, ...props }: React.SelectHTMLAttributes<HTMLSelectElement> & { options?: { value: string, label: string }[] | string[], error?: boolean }) => {
-    const isDark = getIsDark();
     const safeOptions = options ?? []
+    const optSurface = 'bg-[color:var(--rxv-surface)] text-[color:var(--rxv-text)]'
 
     return (
         <select
             {...props}
-            className={`w-full rounded-xl border px-3.5 py-3 text-[13px] font-bold outline-none transition-all focus:border-[#39ff14]/50 focus:ring-1 focus:ring-[#39ff14]/20
-                ${isDark
-                    ? 'border-slate-800 bg-black/60 text-white'
-                    : 'border-slate-200 bg-white text-slate-900'}
-                ${props.error ? 'border-red-500/50 focus:border-red-500' : ''} ${props.className || ''}`}
+            className={`${RXV_INPUT_BASE} ${props.error ? 'border-red-500/50 focus:border-red-500' : ''} ${props.className || ''}`}
         >
             {safeOptions.map(opt => typeof opt === 'string' ? (
-                <option key={opt} value={opt} className={isDark ? "bg-slate-900" : "bg-white"}>{opt}</option>
+                <option key={opt} value={opt} className={optSurface}>{opt}</option>
             ) : (
-                <option key={opt.value} value={opt.value} className={isDark ? "bg-slate-900" : "bg-white"}>{opt.label}</option>
+                <option key={opt.value} value={opt.value} className={optSurface}>{opt.label}</option>
             ))}
         </select>
     )
@@ -126,15 +125,10 @@ export const RxvSelect = ({ options, ...props }: React.SelectHTMLAttributes<HTML
  * RxvTextarea - Textarea padrão com estilo Neon
  */
 export const RxvTextarea = ({ ...props }: React.TextareaHTMLAttributes<HTMLTextAreaElement> & { error?: boolean }) => {
-    const isDark = getIsDark();
     return (
         <textarea
             {...props}
-            className={`w-full rounded-xl border px-3.5 py-3 text-[13px] font-bold outline-none transition-all focus:border-[#39ff14]/50 focus:ring-1 focus:ring-[#39ff14]/20 min-h-[96px] resize-none
-        ${isDark
-                    ? 'border-slate-800 bg-black/60 text-white placeholder:text-slate-700'
-                    : 'border-slate-200 bg-white text-slate-900 placeholder:text-slate-400'}
-        ${props.error ? 'border-red-500/50 focus:border-red-500' : ''} ${props.className || ''}`}
+            className={`${RXV_INPUT_BASE} min-h-[96px] resize-none ${props.error ? 'border-red-500/50 focus:border-red-500' : ''} ${props.className || ''}`}
         />
     )
 }
@@ -222,16 +216,14 @@ export const RxvPillToggle = ({ value, labels, onToggle, colorClass = 'text-[#39
  */
 type RxvButtonVariant = 'primary' | 'secondary' | 'danger'
 
-const RXV_BTN_CLASSES: Record<RxvButtonVariant, string> = {
-    primary: 'inline-flex items-center gap-2 rounded-xl border border-[#39ff14]/40 bg-[#39ff14]/15 px-3.5 py-2 text-[13px] font-bold text-[#39ff14] transition-all hover:bg-[#39ff14]/25 hover:border-[#39ff14]/60 disabled:opacity-50 disabled:cursor-not-allowed',
-    secondary: 'inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/60 px-3.5 py-2 text-[13px] font-bold text-slate-300 transition-all hover:border-slate-500 hover:bg-slate-800/60 disabled:opacity-50 disabled:cursor-not-allowed',
-    danger: 'inline-flex items-center gap-2 rounded-xl border border-red-800/60 bg-red-900/20 px-3.5 py-2 text-[13px] font-bold text-red-300 transition-all hover:bg-red-900/40 hover:border-red-700/60 disabled:opacity-50 disabled:cursor-not-allowed',
-}
-
-const RXV_BTN_LIGHT: Record<RxvButtonVariant, string> = {
-    primary: 'inline-flex items-center gap-2 rounded-xl border border-[#39ff14]/40 bg-[#39ff14]/10 px-3.5 py-2 text-[13px] font-bold text-[#2fb011] transition-all hover:bg-[#39ff14]/20 hover:border-[#39ff14]/60 disabled:opacity-50 disabled:cursor-not-allowed',
-    secondary: 'inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-[13px] font-bold text-slate-600 transition-all hover:border-slate-300 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed',
-    danger: 'inline-flex items-center gap-2 rounded-xl border border-red-100 bg-red-50 px-3.5 py-2 text-[13px] font-bold text-red-600 transition-all hover:bg-red-100 disabled:opacity-50 disabled:cursor-not-allowed',
+/** Botões derivados de --rxv-* (claro/escuro automático no receituário). */
+const RXV_BTN_TOKEN: Record<RxvButtonVariant, string> = {
+    primary:
+        'inline-flex items-center gap-2 rounded-xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_42%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_14%,transparent)] px-3.5 py-2 text-[13px] font-bold text-[color:var(--rxv-primary)] transition-all hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_22%,transparent)] hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_55%,transparent)] disabled:opacity-50 disabled:cursor-not-allowed',
+    secondary:
+        'inline-flex items-center gap-2 rounded-xl border border-[color:var(--rxv-border)] bg-[color:color-mix(in_srgb,var(--rxv-surface-2)_94%,var(--rxv-surface)_6%)] px-3.5 py-2 text-[13px] font-bold text-[color:var(--rxv-text)] transition-all hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_28%,var(--rxv-border))] hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_8%,var(--rxv-surface-2))] disabled:opacity-50 disabled:cursor-not-allowed',
+    danger:
+        'inline-flex items-center gap-2 rounded-xl border border-red-500/35 bg-red-500/10 px-3.5 py-2 text-[13px] font-bold text-red-700 transition-all hover:bg-red-500/15 hover:border-red-500/45 dark:border-red-800/50 dark:bg-red-950/40 dark:text-red-300 dark:hover:bg-red-950/55 disabled:opacity-50 disabled:cursor-not-allowed',
 }
 
 export const RxvButton = ({
@@ -245,13 +237,12 @@ export const RxvButton = ({
     variant?: RxvButtonVariant
     loading?: boolean
 }) => {
-    const isDark = getIsDark();
     return (
         <button
             type={type}
             {...props}
             disabled={props.disabled || loading}
-            className={`${isDark ? RXV_BTN_CLASSES[variant] : RXV_BTN_LIGHT[variant]} ${className}`}
+            className={`${RXV_BTN_TOKEN[variant]} ${className}`}
         >
             {loading ? (
                 <span className="material-symbols-outlined animate-spin text-[16px]">sync</span>

@@ -69,6 +69,7 @@
   /* min-height (não height fixo) permite o documento crescer e o scroll da página funcionar */
   html {
     min-height: 100%;
+    overflow-x: clip;
   }
 
   body {

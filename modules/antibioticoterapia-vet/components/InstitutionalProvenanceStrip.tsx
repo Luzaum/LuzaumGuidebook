@@ -1,5 +1,6 @@
 import type { InstitutionalContentMapping } from '../model/versionedSource'
 import { getVersionedSource } from '../data-v2/sourceRegistry'
+import { InlineRichText } from './RichTextViewer'
 
 const TIER_LABEL: Record<string, string> = {
   institutional: 'Tier institucional',
@@ -112,11 +113,14 @@ export function InstitutionalProvenanceStrip({
         <p className="mt-2 text-sm font-semibold leading-snug">{doc.title}</p>
         {contextLabel && (
           <p className="mt-1 text-[11px] leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
-            Tópico no app: <span className="font-medium text-[hsl(var(--foreground))]">{contextLabel}</span>
+            Tópico no app:{' '}
+            <span className="font-medium text-[hsl(var(--foreground))]">
+              <InlineRichText text={contextLabel} />
+            </span>
           </p>
         )}
         <p className="mt-1 text-[11px] leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
-          {mapping.topicHint}
+          <InlineRichText text={mapping.topicHint} />
         </p>
         <details className="mt-2 border-t pt-2" style={{ borderColor: 'hsl(var(--border))' }}>
           <summary className="cursor-pointer text-[10px] font-semibold uppercase tracking-wide opacity-80">
@@ -199,11 +203,15 @@ export function InstitutionalProvenanceStrip({
       </p>
       {contextLabel && (
         <p className="mt-1" style={{ color: 'hsl(var(--muted-foreground))' }}>
-          Contexto: <span className="font-medium text-[hsl(var(--foreground))]">{contextLabel}</span>
+          Contexto:{' '}
+          <span className="font-medium text-[hsl(var(--foreground))]">
+            <InlineRichText text={contextLabel} />
+          </span>
         </p>
       )}
       <p className="mt-1 leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
-        <span className="font-semibold text-[hsl(var(--foreground))]">Tópico:</span> {mapping.topicHint}
+        <span className="font-semibold text-[hsl(var(--foreground))]">Tópico:</span>{' '}
+        <InlineRichText text={mapping.topicHint} />
       </p>
       {mapping.locator.sectionRef && (
         <p className="mt-1 font-mono text-[10px] leading-relaxed opacity-90">

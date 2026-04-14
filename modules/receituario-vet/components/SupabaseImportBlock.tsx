@@ -50,7 +50,7 @@ export const SupabaseImportBlock: React.FC<SupabaseImportBlockProps> = ({ adapte
     <div className="flex flex-col gap-2">
       <label className="text-xs text-slate-400">Buscar paciente</label>
       <input
-        className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+        className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
         value={query}
         onChange={handleInput}
         placeholder="Digite o nome do paciente"
@@ -58,7 +58,7 @@ export const SupabaseImportBlock: React.FC<SupabaseImportBlockProps> = ({ adapte
       {loading && <div className="text-xs text-slate-400">Buscando…</div>}
       {error && <div className="text-xs text-red-400">{error}</div>}
       {results.length > 0 && (
-        <ul className="mt-2 rounded-lg border border-[#335d2a] bg-[#12230f] p-2 text-sm text-white">
+        <ul className="mt-2 rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] p-2 text-sm text-white">
           {results.map((patient) => (
             <li key={patient.patientRecordId} className="flex items-center justify-between py-1">
               <span>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { sanitizeInternalRegimenIds } from '../utils/clinicalCopy';
 
 /** Destaques inline alinhados ao tema do módulo (tokens --primary / --secondary / charts). */
 function bgHighlightStyle(bgName: string): React.CSSProperties {
@@ -67,6 +68,7 @@ const MIND_DOT = [
 const parseInline = (line: string): React.ReactNode => {
   // Guard for non-string, null, or undefined inputs
   if (typeof line !== 'string') return line;
+  line = sanitizeInternalRegimenIds(line);
 
   const parts: React.ReactNode[] = [];
   let lastIndex = 0;
@@ -116,9 +118,15 @@ const parseInline = (line: string): React.ReactNode => {
   return parts.length === 1 && typeof parts[0] === 'string' ? parts[0] : <>{parts}</>;
 };
 
+/** Uma linha com `**negrito**` e tags [color:] / [bg:] — para cards compactos (catálogo de doenças). */
+export function InlineRichText({ text, className }: { text: string; className?: string }) {
+  if (!text) return null
+  const line = text.replace(/\s+/g, ' ').trim()
+  return <span className={className}>{parseInline(line)}</span>
+}
 
 const Flowchart: React.FC<{ content: string }> = ({ content }) => {
-  const steps = content.split('->').map(s => s.trim());
+  const steps = content.split('->').map(s => sanitizeInternalRegimenIds(s.trim()));
   return (
     <div className="flex items-center justify-center flex-wrap my-4 -mx-1">
       {steps.map((step, index) => (
@@ -254,7 +262,7 @@ const RichTextViewer: React.FC<{ text: string }> = ({ text }) => {
                 className="mt-4 mb-2 border-b pb-1 text-lg font-bold"
                 style={{ color: 'hsl(var(--foreground))', borderColor: 'hsl(var(--border))' }}
               >
-                {line.replace(/##/g, '').trim()}
+                {sanitizeInternalRegimenIds(line).replace(/##/g, '').trim()}
               </h4>
             );
           }

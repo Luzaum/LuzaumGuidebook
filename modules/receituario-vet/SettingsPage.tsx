@@ -159,10 +159,10 @@ export default function SettingsPage() {
     >
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-12">
         <section className="rxv-card p-6 xl:col-span-8">
-          <div className="mb-5 rounded-xl border border-[#39ff14]/30 bg-[#39ff14]/10 p-4">
+          <div className="mb-5 rounded-xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] p-4">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div className="flex items-start gap-3">
-                <span className="material-symbols-outlined text-2xl text-[#39ff14]">cloud_off</span>
+                <span className="material-symbols-outlined text-2xl text-[color:var(--rxv-primary)]">cloud_off</span>
                 <div>
                   <h3 className="text-lg font-bold text-[color:var(--rxv-text)]">Modo Local-First Ativo</h3>
                   <p className="text-sm text-[color:var(--rxv-muted)]">
@@ -187,7 +187,7 @@ export default function SettingsPage() {
             <article className="rounded-xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] p-4">
               <h4 className="mb-2 text-base font-bold">Restaurar Backup</h4>
               <p className="text-sm text-[color:var(--rxv-muted)]">Substitui o banco atual por um arquivo de backup VETIUS.</p>
-              <label className="mt-4 flex min-h-[130px] cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-[color:var(--rxv-border)] bg-black/10 px-4 text-center text-sm text-[color:var(--rxv-muted)] hover:border-[#39ff14]/60">
+              <label className="mt-4 flex min-h-[130px] cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-[color:var(--rxv-border)] bg-black/10 px-4 text-center text-sm text-[color:var(--rxv-muted)] hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_60%,transparent)]">
                 <span className="material-symbols-outlined mb-2 text-2xl">upload_file</span>
                 Clique para selecionar arquivo .JSON
                 <input
@@ -226,7 +226,7 @@ export default function SettingsPage() {
               <p className="text-xs font-semibold uppercase tracking-wide text-[color:var(--rxv-muted)]">Armazenamento IndexedDB/local</p>
               <p className="mt-1 text-lg font-black">{formatBytes(stats.dbSize)}</p>
               <div className="mt-2 h-2 w-full overflow-hidden rounded bg-black/20">
-                <div className="h-full bg-[#39ff14]" style={{ width: `${Math.max(3, stats.usagePct)}%` }} />
+                <div className="h-full bg-[color:var(--rxv-primary)]" style={{ width: `${Math.max(3, stats.usagePct)}%` }} />
               </div>
               <p className="mt-1 text-xs text-[color:var(--rxv-muted)]">~{stats.usagePct.toFixed(1)}% de 50 MB estimados</p>
             </div>

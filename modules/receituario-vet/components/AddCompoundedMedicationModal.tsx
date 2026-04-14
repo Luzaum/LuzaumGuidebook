@@ -91,7 +91,7 @@ export function AddCompoundedMedicationModal({
 
   return (
     <RxvModalShell zIndexClass="z-[90]" overlayClassName="bg-black/85 backdrop-blur-sm">
-      <div className="mx-auto flex max-h-[92vh] w-full max-w-[1320px] flex-col overflow-hidden rounded-3xl border border-[#39ff14]/30 bg-[#0a0f0a] text-slate-100">
+      <div className="mx-auto flex max-h-[92vh] w-full max-w-[1320px] flex-col overflow-hidden rounded-3xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] bg-[#0a0f0a] text-slate-100">
         <div className="flex items-center justify-between border-b border-slate-800 bg-black/60 px-6 py-4">
           <div>
             <h2 className="text-lg font-black uppercase italic tracking-tight text-white">Adicionar manipulado</h2>
@@ -103,7 +103,7 @@ export function AddCompoundedMedicationModal({
         </div>
 
         <div className="grid min-h-0 flex-1 grid-cols-1 xl:grid-cols-[320px_minmax(0,1fr)]">
-          <div className="border-b border-slate-800 bg-[#0d140d] p-5 xl:border-b-0 xl:border-r">
+          <div className="border-b border-slate-800 bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] p-5 xl:border-b-0 xl:border-r">
             <RxvField label="Buscar manipulado">
               <RxvInput value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Nome, forma, indicação..." data-testid="compounded-modal-search" />
             </RxvField>
@@ -125,7 +125,7 @@ export function AddCompoundedMedicationModal({
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
                     <h3 className="text-xl font-black text-white">{selectedFormula.identity.name}</h3>
-                    <span className="rounded border border-[#39ff14]/30 bg-[#39ff14]/10 px-2 py-0.5 text-[10px] font-black uppercase tracking-widest text-[#98f98e]">Manipulado V1</span>
+                    <span className="rounded border border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] px-2 py-0.5 text-[10px] font-black uppercase tracking-widest text-[color:color-mix(in_srgb,var(--rxv-primary)_72%,#e2e8f0)]">Manipulado V1</span>
                     {selectedFormula.identity.sale_classification === 'controlled' ? <span className="rounded border border-red-500/30 bg-red-500/10 px-2 py-0.5 text-[10px] font-black uppercase tracking-widest text-red-300">Controlado</span> : null}
                   </div>
                   <p className="mt-2 text-sm text-slate-400">{getManipuladoV1CatalogSubtitle(selectedFormula)}</p>
@@ -147,8 +147,8 @@ export function AddCompoundedMedicationModal({
                 </div>
 
                 {hasDoseRange && selectedFormula ? (
-                  <div className="rounded-2xl border border-[#39ff14]/20 bg-[#39ff14]/5 p-5">
-                    <p className="text-xs font-black uppercase tracking-widest text-[#98f98e] mb-3">
+                  <div className="rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_20%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_5%,transparent)] p-5">
+                    <p className="text-xs font-black uppercase tracking-widest text-[color:color-mix(in_srgb,var(--rxv-primary)_72%,#e2e8f0)] mb-3">
                       Escolher dose dentro da faixa
                     </p>
                     <p className="text-xs text-slate-400 mb-3">
@@ -162,7 +162,7 @@ export function AddCompoundedMedicationModal({
                         step="0.5"
                         value={targetDoseValue}
                         onChange={(e) => setTargetDoseValue(e.target.value)}
-                        className="w-28 rounded-xl border border-[#39ff14]/30 bg-black/30 px-3 py-2 text-sm text-white focus:border-[#39ff14]/60 focus:outline-none"
+                        className="w-28 rounded-xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] bg-black/30 px-3 py-2 text-sm text-white focus:border-[color:color-mix(in_srgb,var(--rxv-primary)_60%,transparent)] focus:outline-none"
                       />
                       <span className="text-sm text-slate-400">{selectedFormula.prescribing.dose_unit}</span>
                     </div>

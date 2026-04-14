@@ -1082,7 +1082,7 @@ export default function Catalogo3Page() {
                         <button
                             onClick={handleSave}
                             disabled={!isDirty || isSaving}
-                            className={`rxv-btn-primary flex items-center gap-2 px-6 py-2 text-sm font-black uppercase tracking-widest transition-all ${(!isDirty || isSaving) ? 'opacity-40 grayscale pointer-events-none' : 'shadow-[0_0_20px_rgba(57,255,20,0.4)]'
+                            className={`rxv-btn-primary flex items-center gap-2 px-6 py-2 text-sm font-black uppercase tracking-widest transition-all ${(!isDirty || isSaving) ? 'opacity-40 grayscale pointer-events-none' : 'shadow-[0_0_20px_color-mix(in_srgb,var(--rxv-primary)_35%,transparent)]'
                                 }`}
                         >
                             <span className="material-symbols-outlined text-[20px]">{isSaving ? 'sync' : 'save'}</span>
@@ -1109,20 +1109,22 @@ export default function Catalogo3Page() {
                             className="sticky top-6 flex flex-col gap-4"
                         >
                             <div className="relative group">
-                                <span className="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-600 transition-colors group-focus-within:text-[#39ff14]">search</span>
+                                <span className="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-600 transition-colors group-focus-within:text-[color:var(--rxv-primary)]">search</span>
                                 <input
                                     type="text"
                                     placeholder="Filtrar catálogo..."
                                     value={searchTerm}
                                     onChange={e => setSearchTerm(e.target.value)}
-                                    className="w-full rounded-2xl border border-slate-800 bg-black/40 py-3.5 pl-12 pr-4 text-sm font-medium outline-none transition-all focus:border-[#39ff14]/40 focus:ring-1 focus:ring-[#39ff14]/30"
+                                    className="w-full rounded-2xl border border-slate-800 bg-black/40 py-3.5 pl-12 pr-4 text-sm font-medium outline-none transition-all focus:border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)] focus:ring-1 focus:ring-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)]/30"
                                 />
                             </div>
 
-                            <div className="rxv-card max-h-[70vh] overflow-y-auto p-1.5 custom-scrollbar bg-[#0a140a]/80">
-                                <div className="px-3 py-3 border-b border-slate-800/50 mb-1">
+                            {/* Scroll no filho: .rxv-card usa overflow:hidden e anula overflow-y no mesmo nó */}
+                            <div className="rxv-card flex max-h-[min(70vh,calc(100dvh-200px))] min-h-0 flex-col bg-[#0a140a]/80 p-0">
+                                <div className="shrink-0 border-b border-slate-800/50 px-3 py-3">
                                     <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Medicamentos ({medications.length})</span>
                                 </div>
+                                <div className="custom-scrollbar min-h-0 flex-1 overflow-y-auto p-1.5">
                                 <AnimatePresence mode="popLayout">
                                     {filteredMedications.map((med, idx) => (
                                         <motion.button
@@ -1132,15 +1134,15 @@ export default function Catalogo3Page() {
                                             transition={{ delay: idx * 0.03 }}
                                             onClick={() => handleSelectMedication(med.id)}
                                             className={`group relative flex w-full flex-col gap-1 rounded-xl px-4 py-3 text-left transition-all ${selectedId === med.id
-                                                ? 'bg-[#39ff14]/10 shadow-[inset_0_0_20px_rgba(57,255,20,0.05)] border border-[#39ff14]/30'
+                                                ? 'bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] shadow-[inset_0_0_20px_color-mix(in_srgb,var(--rxv-primary)_8%,transparent)] border border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)]'
                                                 : 'hover:bg-slate-800/30 border border-transparent'
                                                 }`}
                                         >
                                             {selectedId === med.id && (
-                                                <motion.div layoutId="active-pill" className="absolute left-0 top-1/4 h-1/2 w-1 rounded-r-full bg-[#39ff14]" />
+                                                <motion.div layoutId="active-pill" className="absolute left-0 top-1/4 h-1/2 w-1 rounded-r-full bg-[color:var(--rxv-primary)]" />
                                             )}
                                             <div className="flex items-center justify-between">
-                                                <span className={`text-sm font-black truncate ${selectedId === med.id ? 'text-[#39ff14]' : 'text-slate-300 group-hover:text-white'}`}>
+                                                <span className={`text-sm font-black truncate ${selectedId === med.id ? 'text-[color:var(--rxv-primary)]' : 'text-slate-300 group-hover:text-white'}`}>
                                                     {med.name}
                                                 </span>
                                                 {med.is_controlled && (
@@ -1153,6 +1155,7 @@ export default function Catalogo3Page() {
                                         </motion.button>
                                     ))}
                                 </AnimatePresence>
+                                </div>
                             </div>
                         </motion.div>
                     </aside>
@@ -1264,7 +1267,7 @@ export default function Catalogo3Page() {
                             >
                                 <button
                                     onClick={addRecommendedDose}
-                                    className="flex items-center gap-2 rounded-xl bg-[#39ff14]/5 px-4 py-2 text-xs font-black text-[#39ff14] ring-1 ring-[#39ff14]/30 hover:bg-[#39ff14]/10 transition-all active:scale-95"
+                                    className="flex items-center gap-2 rounded-xl bg-[color:color-mix(in_srgb,var(--rxv-primary)_5%,transparent)] px-4 py-2 text-xs font-black text-[color:var(--rxv-primary)] ring-1 ring-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] transition-all active:scale-95"
                                 >
                                     <span className="material-symbols-outlined text-[18px]">add</span>
                                     ADICIONAR DOSE
@@ -1280,8 +1283,8 @@ export default function Catalogo3Page() {
                             ) : (
                                 <div className="space-y-4">
                                     {draft.recommended_doses.map((dose, idx) => (
-                                        <div key={dose.client_id} className="relative group p-6 bg-black/40 border border-slate-800 rounded-2xl hover:border-[#39ff14]/20 transition-all">
-                                            <div className="absolute -left-1 top-1/2 -translate-y-1/2 h-1/2 w-1 rounded-full bg-slate-800 group-hover:bg-[#39ff14]/40" />
+                                        <div key={dose.client_id} className="relative group p-6 bg-black/40 border border-slate-800 rounded-2xl hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_20%,transparent)] transition-all">
+                                            <div className="absolute -left-1 top-1/2 -translate-y-1/2 h-1/2 w-1 rounded-full bg-slate-800 group-hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)]" />
                                             <button
                                                 onClick={() => removeRecommendedDose(dose.client_id)}
                                                 className="absolute top-4 right-4 text-slate-600 hover:text-red-500 transition-colors"
@@ -1549,7 +1552,7 @@ export default function Catalogo3Page() {
 
                                             {/* Summary badges */}
                                             <div className="mt-3 flex flex-wrap items-center gap-2 text-[10px]">
-                                                <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 font-bold border border-emerald-500/20">
+                                                <span className="px-2 py-0.5 rounded-full bg-sky-500/10 text-sky-400 font-bold border border-sky-500/20">
                                                     {dose.species}
                                                 </span>
                                                 <span className="px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 font-bold border border-blue-500/20">
@@ -1579,7 +1582,7 @@ export default function Catalogo3Page() {
                         <div className="space-y-4">
                             <div className="flex items-center justify-between px-2">
                                 <div className="flex items-center gap-3">
-                                    <div className="h-8 w-1 bg-[#39ff14] rounded-full shadow-[0_0_10px_rgba(57,255,20,0.5)]" />
+                                    <div className="h-8 w-1 bg-[color:var(--rxv-primary)] rounded-full shadow-[0_0_10px_color-mix(in_srgb,var(--rxv-primary)_30%,transparent)]" />
                                     <div>
                                         <h2 className="text-lg font-black text-white italic tracking-tight uppercase">APRESENTAÇÕES COMERCIAIS</h2>
                                         <p className="text-[10px] font-bold text-slate-600 uppercase tracking-tight">Formas, concentrações e especificações técnicas</p>
@@ -1587,7 +1590,7 @@ export default function Catalogo3Page() {
                                 </div>
                                 <button
                                     onClick={addPresentation}
-                                    className="flex items-center gap-2 rounded-xl bg-[#39ff14]/5 px-4 py-2 text-xs font-black text-[#39ff14] ring-1 ring-[#39ff14]/30 hover:bg-[#39ff14]/10 transition-all active:scale-95"
+                                    className="flex items-center gap-2 rounded-xl bg-[color:color-mix(in_srgb,var(--rxv-primary)_5%,transparent)] px-4 py-2 text-xs font-black text-[color:var(--rxv-primary)] ring-1 ring-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] transition-all active:scale-95"
                                 >
                                     <span className="material-symbols-outlined text-[18px]">add_task</span>
                                     ADICIONAR LINHA
@@ -1602,7 +1605,7 @@ export default function Catalogo3Page() {
 
                                     return (
                                         <RxvCard key={pres._tempId} className="bg-[#0a140a]/40">
-                                            <div className="absolute -left-1.5 top-8 h-8 w-1 rounded-full bg-slate-800 group-hover:bg-[#39ff14]/50 transition-colors" />
+                                            <div className="absolute -left-1.5 top-8 h-8 w-1 rounded-full bg-slate-800 group-hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_50%,transparent)] transition-colors" />
 
                                             <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
                                                 {/* BASIC INFO */}
@@ -1660,7 +1663,7 @@ export default function Catalogo3Page() {
                                                             <label className="text-[8px] font-black text-slate-500 uppercase pl-1">Concentração</label>
                                                             <RxvInput
                                                                 type="number"
-                                                                className="text-center font-black text-[#39ff14]"
+                                                                className="text-center font-black text-[color:var(--rxv-primary)]"
                                                                 value={pres.value === null ? '' : pres.value}
                                                                 onChange={e => updatePresentation(pres._tempId!, { value: e.target.value === '' ? null : Number(e.target.value) })}
                                                             />
@@ -1694,9 +1697,9 @@ export default function Catalogo3Page() {
                                                             />
                                                         </div>
 
-                                                        <div className="flex flex-col items-center justify-center bg-[#39ff14]/5 rounded-xl px-6 py-2 border border-[#39ff14]/30 min-w-[150px]">
-                                                            <span className="text-[8px] font-black text-[#39ff14]/60 uppercase tracking-tighter mb-0.5">RESUMO DA LINHA</span>
-                                                            <span className="text-sm font-black text-[#39ff14] italic">
+                                                        <div className="flex flex-col items-center justify-center bg-[color:color-mix(in_srgb,var(--rxv-primary)_5%,transparent)] rounded-xl px-6 py-2 border border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] min-w-[150px]">
+                                                            <span className="text-[8px] font-black text-[color:var(--rxv-primary)]/60 uppercase tracking-tighter mb-0.5">RESUMO DA LINHA</span>
+                                                            <span className="text-sm font-black text-[color:var(--rxv-primary)] italic">
                                                                 {pres.value || '0'} {pres.value_unit} / {pres.per_value} {pres.per_unit}
                                                             </span>
                                                         </div>
@@ -1746,7 +1749,7 @@ export default function Catalogo3Page() {
                                                                 type="button"
                                                                 onClick={() => updatePresentation(pres._tempId!, { [ph.key]: !pres[ph.key as keyof Presentation] })}
                                                                 className={`flex-1 flex items-center justify-center gap-2 rounded-xl border px-3 py-3 text-[10px] font-black uppercase transition-all ${pres[ph.key as keyof Presentation]
-                                                                    ? 'bg-[#39ff14]/20 border-[#39ff14]/60 text-[#39ff14]'
+                                                                    ? 'bg-[color:color-mix(in_srgb,var(--rxv-primary)_20%,transparent)] border-[color:color-mix(in_srgb,var(--rxv-primary)_60%,transparent)] text-[color:var(--rxv-primary)]'
                                                                     : 'bg-slate-950 border-slate-900 text-slate-700'
                                                                     } ${hasPharmacyError ? 'border-red-500/50' : ''}`}
                                                             >
@@ -1776,10 +1779,10 @@ export default function Catalogo3Page() {
                                     onClick={addPresentation}
                                     className="group flex flex-col items-center gap-4 transition-transform hover:scale-105"
                                 >
-                                    <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-dashed border-slate-700 bg-slate-900/40 text-slate-600 group-hover:border-[#39ff14]/50 group-hover:text-[#39ff14] group-hover:shadow-[0_0_40px_rgba(57,255,20,0.2)] transition-all">
+                                    <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-dashed border-slate-700 bg-slate-900/40 text-slate-600 group-hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_50%,transparent)] group-hover:text-[color:var(--rxv-primary)] group-hover:shadow-[0_0_40px_color-mix(in_srgb,var(--rxv-primary)_20%,transparent)] transition-all">
                                         <span className="material-symbols-outlined text-[36px]">add</span>
                                     </div>
-                                    <span className="text-[11px] font-black text-slate-600 uppercase tracking-[0.4em] group-hover:text-[#39ff14]">Nova Apresentação</span>
+                                    <span className="text-[11px] font-black text-slate-600 uppercase tracking-[0.4em] group-hover:text-[color:var(--rxv-primary)]">Nova Apresentação</span>
                                 </button>
                             </div>
                         </div>
@@ -1794,14 +1797,14 @@ export default function Catalogo3Page() {
                         initial={{ opacity: 0, y: 50, x: '-50%' }}
                         animate={{ opacity: 1, y: 0, x: '-50%' }}
                         exit={{ opacity: 0, scale: 0.9, x: '-50%' }}
-                        className="fixed bottom-10 left-1/2 z-[500] flex items-center gap-4 rounded-2xl bg-[#091509] border border-[#39ff14]/40 px-6 py-4 shadow-2xl"
+                        className="fixed bottom-10 left-1/2 z-[500] flex items-center gap-4 rounded-2xl bg-[color:color-mix(in_srgb,var(--rxv-primary)_8%,var(--rxv-bg))] border border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)] px-6 py-4 shadow-2xl"
                     >
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#39ff14] text-black">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[color:var(--rxv-primary)] text-black">
                             <span className="material-symbols-outlined font-black">verified</span>
                         </div>
                         <div>
                             <p className="text-sm font-black text-white italic uppercase">{successToast.title}</p>
-                            <p className="text-[10px] font-bold text-[#39ff14] uppercase tracking-widest">{successToast.msg}</p>
+                            <p className="text-[10px] font-bold text-[color:var(--rxv-primary)] uppercase tracking-widest">{successToast.msg}</p>
                         </div>
                     </motion.div>
                 )}
@@ -1877,7 +1880,7 @@ export default function Catalogo3Page() {
                                     <span className="material-symbols-outlined text-[48px]">warning</span>
                                 </div>
                                 <h3 className="text-2xl font-black text-white italic mb-2 tracking-tight">EXCLUIR MEDICAMENTO?</h3>
-                                <p className="text-sm text-white font-bold mb-2">Medicamento: <span className="text-[#39ff14]">{draft.name}</span></p>
+                                <p className="text-sm text-white font-bold mb-2">Medicamento: <span className="text-[color:var(--rxv-primary)]">{draft.name}</span></p>
                                 <p className="text-sm text-slate-400 font-medium px-4 mb-8">
                                     Possui {draft.presentations.length} apresentações. Esta ação não pode ser desfeita.
                                 </p>
@@ -1930,7 +1933,7 @@ export default function Catalogo3Page() {
                                     <button
                                         key={candidate.slug || `${candidate.name}-${index}`}
                                         onClick={() => applyImportedMedication(candidate)}
-                                        className="w-full rounded-2xl border border-slate-800 bg-black/40 p-4 text-left transition hover:border-[#39ff14]/40 hover:bg-[#091509]"
+                                        className="w-full rounded-2xl border border-slate-800 bg-black/40 p-4 text-left transition hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)] hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_8%,var(--rxv-bg))]"
                                     >
                                         <div className="flex items-start justify-between gap-4">
                                             <div>
@@ -1939,7 +1942,7 @@ export default function Catalogo3Page() {
                                                     {candidate.active_ingredient || 'Sem princípio ativo informado'}
                                                 </p>
                                             </div>
-                                            <span className="rounded-full border border-[#39ff14]/30 bg-[#39ff14]/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-[#39ff14]">
+                                            <span className="rounded-full border border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-[color:var(--rxv-primary)]">
                                                 Selecionar
                                             </span>
                                         </div>

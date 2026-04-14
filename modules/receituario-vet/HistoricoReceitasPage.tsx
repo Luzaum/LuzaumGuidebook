@@ -166,7 +166,7 @@ export default function HistoricoReceitasPage() {
                                             </td>
                                             <td className="px-4 py-3 text-xs">
                                                 <span className={`rounded-full px-2 py-0.5 font-bold uppercase tracking-tighter ${px.status === 'void' ? 'bg-red-900/40 text-red-400' :
-                                                    px.status === 'signed' ? 'bg-green-900/40 text-green-400' :
+                                                    px.status === 'signed' ? 'bg-sky-900/40 text-sky-400' :
                                                         'bg-blue-900/40 text-blue-400'
                                                     }`}>
                                                     {px.status}
@@ -188,7 +188,7 @@ export default function HistoricoReceitasPage() {
                                                     </button>
                                                     <button
                                                         onClick={() => handleExport(px)}
-                                                        className="rounded bg-emerald-900/40 px-2 py-1 text-[10px] font-black text-emerald-400 hover:bg-emerald-900/60"
+                                                        className="rounded bg-sky-900/40 px-2 py-1 text-[10px] font-black text-sky-400 hover:bg-sky-900/60"
                                                     >
                                                         Exportar
                                                     </button>

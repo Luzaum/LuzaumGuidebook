@@ -661,8 +661,9 @@ export default function Protocolos3Page() {
     const timer = setTimeout(async () => {
       try {
         setIsSearchingMedications(true)
+        const medLimit = q ? 120 : 500
         const [standardResults, compoundedResults] = await Promise.all([
-          searchMedications(clinicId, q || '', q ? 50 : 20),
+          searchMedications(clinicId, q || '', medLimit),
           listManipuladosV1(clinicId).then((rows) =>
             rows
               .map((row) => normalizeManipuladoV1(row.payload as Partial<ManipuladoV1Formula>))
@@ -1610,7 +1611,7 @@ export default function Protocolos3Page() {
       <RxvCard
         className={`h-full border-l-4 p-6 transition-all ${
           selectedProtocolKey === `${protocol.scope}:${protocol.id}`
-            ? 'border-l-[#39ff14] bg-[#39ff14]/10 shadow-[0_0_30px_rgba(57,255,20,0.1)]'
+            ? 'border-l-[color:var(--rxv-primary)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] shadow-[0_0_30px_color-mix(in_srgb,var(--rxv-primary)_15%,transparent)]'
             : 'border-l-transparent hover:border-l-slate-700'
         }`}
       >
@@ -1621,13 +1622,13 @@ export default function Protocolos3Page() {
                 className={`rounded-full px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.18em] ${
                   protocol.scope === 'global'
                     ? 'border border-cyan-400/25 bg-cyan-500/12 text-cyan-200'
-                    : 'border border-[#39ff14]/20 bg-[#39ff14]/12 text-[#9CFF87]'
+                    : 'border border-[color:color-mix(in_srgb,var(--rxv-primary)_20%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_12%,transparent)] text-[#9CFF87]'
                 }`}
               >
                 {scopeLabel(protocol.scope)}
               </span>
             </div>
-            <h3 className="line-clamp-2 break-words text-lg font-black uppercase italic leading-tight text-white">
+            <h3 className="line-clamp-2 break-words text-lg font-black uppercase italic leading-tight text-[color:var(--rxv-text)]">
               {protocol.name}
             </h3>
             {protocol.description && (
@@ -1752,11 +1753,11 @@ export default function Protocolos3Page() {
 
     return (
       <RxvModalShell zIndexClass="z-[90]" overlayClassName="bg-black/90 backdrop-blur-sm">
-        <div className="mx-auto flex max-h-[92vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-[#2f5b25] bg-[#0a0f0a] text-slate-100 shadow-[0_0_60px_rgba(57,255,20,0.2)]">
+        <div className="mx-auto flex max-h-[92vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,var(--rxv-border))] bg-[#0a0f0a] text-slate-100 shadow-[0_0_60px_color-mix(in_srgb,var(--rxv-primary)_18%,transparent)]">
           <div className="flex items-center justify-between border-b border-slate-800 bg-black/60 px-8 py-6">
             <div>
               <div className="mb-2 flex items-center gap-2">
-                <span className="rounded bg-[#39ff14]/10 px-2.5 py-1 text-[9px] font-black uppercase tracking-wider text-[#7CFF64] border border-[#39ff14]/20">
+                <span className="rounded bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] px-2.5 py-1 text-[9px] font-black uppercase tracking-wider text-[color:color-mix(in_srgb,var(--rxv-primary)_82%,#f1f5f9)] border border-[color:color-mix(in_srgb,var(--rxv-primary)_20%,transparent)]">
                   CLÍNICA
                 </span>
               </div>
@@ -1884,7 +1885,7 @@ export default function Protocolos3Page() {
 
             <div className="space-y-4">
               <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-                <h3 className="text-sm font-black uppercase tracking-widest italic text-[#39ff14]">
+                <h3 className="text-sm font-black uppercase tracking-widest italic text-[color:var(--rxv-primary)]">
                   Medicamentos do protocolo
                 </h3>
                 <div className="flex items-center gap-2">
@@ -1922,7 +1923,7 @@ export default function Protocolos3Page() {
                               {med.medication_name || med.manual_medication_name || 'Medicamento'}
                             </p>
                             {isCompoundedProtocolMedication(med) ? (
-                              <span className="rounded border border-[#39ff14]/35 bg-[#39ff14]/12 px-2 py-0.5 text-[9px] font-black uppercase tracking-widest text-[#9ef98b]">
+                              <span className="rounded border border-[color:color-mix(in_srgb,var(--rxv-primary)_35%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_12%,transparent)] px-2 py-0.5 text-[9px] font-black uppercase tracking-widest text-[color:color-mix(in_srgb,var(--rxv-primary)_78%,#e2e8f0)]">
                                 Manipulado
                               </span>
                             ) : (
@@ -1953,8 +1954,8 @@ export default function Protocolos3Page() {
                       {isCompoundedProtocolMedication(med) ? (
                         <div className="mt-4 space-y-3">
                           <div className="grid grid-cols-1 gap-3 xl:grid-cols-[minmax(0,1fr)_auto]">
-                            <div className="rounded-2xl border border-[#39ff14]/15 bg-[#112114] px-4 py-4 text-sm text-slate-200">
-                              <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#98f98e]">
+                            <div className="rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_15%,transparent)] bg-[#112114] px-4 py-4 text-sm text-slate-200">
+                              <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[color:color-mix(in_srgb,var(--rxv-primary)_72%,#e2e8f0)]">
                                 Fluxo V1.0 do manipulado no protocolo
                               </p>
                               <div className="mt-2 flex flex-wrap gap-2 text-[10px] font-black uppercase tracking-widest">
@@ -2415,7 +2416,7 @@ export default function Protocolos3Page() {
 
             <div className="space-y-4">
               <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-                <h3 className="text-sm font-black uppercase tracking-widest italic text-[#39ff14]">
+                <h3 className="text-sm font-black uppercase tracking-widest italic text-[color:var(--rxv-primary)]">
                   Recomendações e orientações
                 </h3>
                 <RxvButton variant="secondary" onClick={addRecommendationField} className="h-8 text-[10px]">
@@ -2454,7 +2455,7 @@ export default function Protocolos3Page() {
 
             <div className="space-y-4">
               <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-                <h3 className="text-sm font-black uppercase tracking-widest italic text-[#39ff14]">
+                <h3 className="text-sm font-black uppercase tracking-widest italic text-[color:var(--rxv-primary)]">
                   Exames do protocolo
                 </h3>
               </div>
@@ -2469,7 +2470,7 @@ export default function Protocolos3Page() {
                         onClick={() => toggleCommonExam(exam)}
                         className={`rounded-full border px-3 py-1 text-xs font-semibold transition-all ${
                           selected
-                            ? 'border-[#39ff14]/60 bg-[#39ff14]/10 text-[#39ff14]'
+                            ? 'border-[color:color-mix(in_srgb,var(--rxv-primary)_60%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] text-[color:var(--rxv-primary)]'
                             : 'border-slate-700 bg-slate-800/30 text-slate-400 hover:border-slate-600 hover:text-slate-300'
                         }`}
                       >
@@ -2572,7 +2573,7 @@ export default function Protocolos3Page() {
       <RxvCard
         className={`p-6 h-full transition-all border-l-4 ${
           selectedProtocolKey === `${protocol.scope}:${protocol.id}`
-            ? 'border-l-[#39ff14] bg-[#39ff14]/10 shadow-[0_0_30px_rgba(57,255,20,0.1)]'
+            ? 'border-l-[color:var(--rxv-primary)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] shadow-[0_0_30px_color-mix(in_srgb,var(--rxv-primary)_15%,transparent)]'
             : 'border-l-transparent hover:border-l-slate-700'
         }`}
       >
@@ -2583,13 +2584,13 @@ export default function Protocolos3Page() {
                 className={`text-[9px] font-black uppercase px-2.5 py-1 rounded-full tracking-[0.18em] ${
                   protocol.scope === 'global'
                     ? 'bg-cyan-500/12 text-cyan-200 border border-cyan-400/25'
-                    : 'bg-[#39ff14]/12 text-[#9CFF87] border border-[#39ff14]/20'
+                    : 'bg-[color:color-mix(in_srgb,var(--rxv-primary)_12%,transparent)] text-[#9CFF87] border border-[color:color-mix(in_srgb,var(--rxv-primary)_20%,transparent)]'
                 }`}
               >
                 {scopeLabel(protocol.scope)}
               </span>
             </div>
-            <h3 className="line-clamp-2 break-words text-lg font-black text-white leading-tight uppercase italic">
+            <h3 className="line-clamp-2 break-words text-lg font-black leading-tight uppercase italic text-[color:var(--rxv-text)]">
               {protocol.name}
             </h3>
             {protocol.description && (
@@ -2623,7 +2624,7 @@ export default function Protocolos3Page() {
                 {clinicProtocolsVisible.length > 0 && (
                   <section className="space-y-5">
                     <div className="flex items-center gap-3 border-b border-slate-800/80 pb-3">
-                      <span className="text-[10px] font-black uppercase tracking-[0.24em] text-[#7CFF64]">
+                      <span className="text-[10px] font-black uppercase tracking-[0.24em] text-[color:color-mix(in_srgb,var(--rxv-primary)_82%,#f1f5f9)]">
                         Protocolos da clínica
                       </span>
                       <span className="h-px flex-1 bg-slate-800" />
@@ -2655,7 +2656,7 @@ export default function Protocolos3Page() {
                 {clinicProtocolsVisible.length > 0 && (
                   <section className="space-y-5">
                     <div className="flex items-center gap-3 border-b border-slate-800/80 pb-3">
-                      <span className="text-[10px] font-black uppercase tracking-[0.24em] text-[#7CFF64]">
+                      <span className="text-[10px] font-black uppercase tracking-[0.24em] text-[color:color-mix(in_srgb,var(--rxv-primary)_82%,#f1f5f9)]">
                         Protocolos da clínica
                       </span>
                       <span className="h-px flex-1 bg-slate-800" />
@@ -2745,7 +2746,7 @@ export default function Protocolos3Page() {
 
   if (!clinicId) {
     return (
-      <ReceituarioChrome section="protocolos" title="Carregando...">
+      <ReceituarioChrome section="protocolos3" title="Carregando...">
         <div className="flex items-center justify-center min-h-screen">
           <p className="text-slate-500">Carregando clínica...</p>
         </div>
@@ -2755,7 +2756,7 @@ export default function Protocolos3Page() {
 
   return (
     <ReceituarioChrome
-      section="protocolos"
+      section="protocolos3"
       title="Protocolos"
       actions={
         <button
@@ -2774,14 +2775,14 @@ export default function Protocolos3Page() {
         </button>
       }
     >
-      <div className="flex min-h-[calc(100vh-64px)] bg-[#0a0f0a]">
+      <div className="flex min-h-[calc(100vh-64px)] bg-[color:var(--rxv-bg-soft)]">
         {/* Sidebar: Pastas */}
-        <aside className="w-64 border-r border-slate-800/50 bg-black/40 p-4 shrink-0 overflow-y-auto">
+        <aside className="w-64 shrink-0 overflow-y-auto border-r border-[color:var(--rxv-border)] bg-[color:color-mix(in_srgb,var(--rxv-surface)_92%,transparent)] p-4">
           <div className="flex items-center justify-between mb-6 px-2">
             <h2 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
               Pastas
             </h2>
-            <button className="p-1 hover:bg-slate-800 rounded text-[#39ff14]">
+            <button className="p-1 hover:bg-slate-800 rounded text-[color:var(--rxv-primary)]">
               <span className="material-symbols-outlined text-[18px]">add</span>
             </button>
           </div>
@@ -2789,7 +2790,7 @@ export default function Protocolos3Page() {
           <nav className="space-y-1">
             <button
               onClick={() => setSelectedFolderId(null)}
-              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-bold transition-all ${selectedFolderId === null ? 'bg-[#39ff14]/10 text-[#39ff14] border border-[#39ff14]/20' : 'text-slate-400 hover:bg-slate-800/50'
+              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-bold transition-all ${selectedFolderId === null ? 'bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] text-[color:var(--rxv-primary)] border border-[color:color-mix(in_srgb,var(--rxv-primary)_20%,transparent)]' : 'text-slate-400 hover:bg-slate-800/50'
                 }`}
             >
               <span className="material-symbols-outlined text-[18px]">inventory_2</span>
@@ -2805,7 +2806,7 @@ export default function Protocolos3Page() {
                 <div key={folder.id} className="group relative">
                   <button
                     onClick={() => setSelectedFolderId(folder.id)}
-                    className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-bold transition-all pr-8 ${selectedFolderId === folder.id ? 'bg-[#39ff14]/10 text-[#39ff14] border border-[#39ff14]/20' : 'text-slate-400 hover:bg-slate-800/50'
+                    className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-bold transition-all pr-8 ${selectedFolderId === folder.id ? 'bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] text-[color:var(--rxv-primary)] border border-[color:color-mix(in_srgb,var(--rxv-primary)_20%,transparent)]' : 'text-slate-400 hover:bg-slate-800/50'
                       }`}
                   >
                     <span className="material-symbols-outlined text-[18px]" style={{ color: folder.color || undefined }}>{folder.icon_key || 'folder'}</span>
@@ -2827,16 +2828,16 @@ export default function Protocolos3Page() {
         {/* Main Content */}
         <main className="flex-1 overflow-y-auto">
           {/* Topbar intermediária */}
-          <div className="sticky top-0 z-30 border-b border-slate-800/50 bg-black/60 backdrop-blur-md px-8 py-6">
+          <div className="sticky top-0 z-30 border-b border-[color:var(--rxv-border)] bg-[color:color-mix(in_srgb,var(--rxv-surface)_93%,transparent)] px-8 py-6 backdrop-blur-md">
             <div className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
               <div>
-              <h1 className="text-2xl font-black text-white italic tracking-tight uppercase leading-none">
+              <h1 className="text-2xl font-black uppercase italic leading-none tracking-tight text-[color:var(--rxv-text)]">
                 {selectedFolderId ? folders.find(f => f.id === selectedFolderId)?.name : 'Todos os Protocolos'}
               </h1>
               <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 opacity-80">
                 {visibleProtocols.length} protocolos encontrados
               </p>
-              <div className="mt-4 inline-flex rounded-2xl border border-slate-800 bg-black/40 p-1">
+              <div className="mt-4 inline-flex rounded-2xl border border-[color:var(--rxv-border)] bg-[color:color-mix(in_srgb,var(--rxv-surface-2)_88%,transparent)] p-1">
                 {[
                   { value: 'all', label: 'Todos' },
                   { value: 'clinic', label: 'Da clínica' },
@@ -2848,7 +2849,7 @@ export default function Protocolos3Page() {
                     onClick={() => setScopeFilter(option.value as ProtocolScopeFilter)}
                     className={`rounded-xl px-3 py-2 text-[10px] font-black uppercase tracking-[0.18em] transition-colors ${
                       scopeFilter === option.value
-                        ? 'bg-[#39ff14]/15 text-[#7CFF64] border border-[#39ff14]/25'
+                        ? 'bg-[color:color-mix(in_srgb,var(--rxv-primary)_15%,transparent)] text-[color:color-mix(in_srgb,var(--rxv-primary)_82%,#f1f5f9)] border border-[color:color-mix(in_srgb,var(--rxv-primary)_25%,transparent)]'
                         : 'text-slate-500 hover:text-slate-200'
                     }`}
                   >
@@ -2867,7 +2868,7 @@ export default function Protocolos3Page() {
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder="Buscar protocolo por nome, descrição ou tag"
-                      className="w-full rounded-2xl border border-slate-800 bg-black/40 py-3 pl-12 pr-4 text-sm text-white outline-none transition-colors placeholder:text-slate-600 focus:border-[#39ff14]/35"
+                      className="w-full rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-input-bg)] py-3 pl-12 pr-4 text-sm text-[color:var(--rxv-text)] outline-none transition-colors placeholder:text-[color:var(--rxv-muted)] focus:border-[color:color-mix(in_srgb,var(--rxv-primary)_35%,transparent)]"
                     />
                   </div>
                 </label>
@@ -2883,7 +2884,7 @@ export default function Protocolos3Page() {
           <div className="p-8">
             {isLoadingProtocols ? (
               <div className="flex flex-col items-center justify-center py-20">
-                <span className="material-symbols-outlined animate-spin text-[#39ff14] text-[48px]">sync</span>
+                <span className="material-symbols-outlined animate-spin text-[color:var(--rxv-primary)] text-[48px]">sync</span>
                 <p className="mt-4 text-slate-500 text-sm font-bold uppercase tracking-widest">Carregando protocolos...</p>
               </div>
             ) : visibleProtocols.length === 0 ? (
@@ -2908,7 +2909,7 @@ export default function Protocolos3Page() {
                   {clinicProtocolsVisible.length > 0 && (
                     <section className="space-y-5">
                       <div className="flex items-center gap-3 border-b border-slate-800/80 pb-3">
-                        <span className="text-[10px] font-black uppercase tracking-[0.24em] text-[#7CFF64]">
+                        <span className="text-[10px] font-black uppercase tracking-[0.24em] text-[color:color-mix(in_srgb,var(--rxv-primary)_82%,#f1f5f9)]">
                           Protocolos da clínica
                         </span>
                         <span className="h-px flex-1 bg-slate-800" />
@@ -2966,7 +2967,7 @@ export default function Protocolos3Page() {
       )}
       {protocolCompoundedEditorOpen && editingProtocol && (
         <RxvModalShell zIndexClass="z-[115]" overlayClassName="bg-black/95 backdrop-blur-sm">
-          <div className="mx-auto flex max-h-[92vh] w-full max-w-[1400px] flex-col overflow-hidden rounded-3xl border border-[#39ff14]/20 bg-[#071007] shadow-[0_0_60px_rgba(57,255,20,0.15)]">
+          <div className="mx-auto flex max-h-[92vh] w-full max-w-[1400px] flex-col overflow-hidden rounded-3xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_20%,transparent)] bg-[#071007] shadow-[0_0_60px_color-mix(in_srgb,var(--rxv-primary)_18%,transparent)]">
             <div className="border-b border-slate-800 bg-black/50 px-6 py-4">
               <div className="flex items-center justify-between gap-4">
                 <div>
@@ -3003,12 +3004,12 @@ export default function Protocolos3Page() {
 
       {false && modalOpen && editingProtocol && (
         <RxvModalShell zIndexClass="z-[90]" overlayClassName="bg-black/90 backdrop-blur-sm">
-          <div className="mx-auto max-h-[92vh] w-full max-w-4xl overflow-hidden rounded-2xl border border-[#2f5b25] bg-[#0a0f0a] text-slate-100 shadow-[0_0_60px_rgba(57,255,20,0.2)] flex flex-col">
+          <div className="mx-auto max-h-[92vh] w-full max-w-4xl overflow-hidden rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,var(--rxv-border))] bg-[#0a0f0a] text-slate-100 shadow-[0_0_60px_color-mix(in_srgb,var(--rxv-primary)_18%,transparent)] flex flex-col">
             {/* Header */}
             <div className="flex items-center justify-between border-b border-slate-800 bg-black/60 px-8 py-6">
               <div>
                 <div className="mb-2 flex items-center gap-2">
-                  <span className="text-[9px] font-black uppercase px-2.5 py-1 rounded bg-[#39ff14]/10 text-[#7CFF64] border border-[#39ff14]/20 tracking-wider">
+                  <span className="text-[9px] font-black uppercase px-2.5 py-1 rounded bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] text-[color:color-mix(in_srgb,var(--rxv-primary)_82%,#f1f5f9)] border border-[color:color-mix(in_srgb,var(--rxv-primary)_20%,transparent)] tracking-wider">
                     CLÍNICA
                   </span>
                 </div>
@@ -3168,7 +3169,7 @@ export default function Protocolos3Page() {
               {/* Medicamentos */}
               <div className="space-y-4">
                 <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-                  <h3 className="text-sm font-black text-[#39ff14] uppercase tracking-widest italic">
+                  <h3 className="text-sm font-black text-[color:var(--rxv-primary)] uppercase tracking-widest italic">
                     Medicamentos do Protocolo
                   </h3>
                   <RxvButton
@@ -3195,7 +3196,7 @@ export default function Protocolos3Page() {
                         className="flex items-center gap-4 p-4 rounded-2xl bg-black/40 border border-slate-800 hover:border-slate-700 transition-all group"
                       >
                         <div className="flex items-center gap-4">
-                          <div className="h-10 w-10 shrink-0 flex items-center justify-center rounded-xl bg-slate-800 text-slate-400 group-hover:bg-[#39ff14]/10 group-hover:text-[#39ff14] transition-colors">
+                          <div className="h-10 w-10 shrink-0 flex items-center justify-center rounded-xl bg-slate-800 text-slate-400 group-hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] group-hover:text-[color:var(--rxv-primary)] transition-colors">
                             <span className="material-symbols-outlined text-[20px]">pill</span>
                           </div>
                           <div className="flex-1 min-w-0">
@@ -3366,7 +3367,7 @@ export default function Protocolos3Page() {
               {/* Recomendações */}
               <div className="space-y-4">
                 <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-                  <h3 className="text-sm font-black text-[#39ff14] uppercase tracking-widest italic">
+                  <h3 className="text-sm font-black text-[color:var(--rxv-primary)] uppercase tracking-widest italic">
                     Recomendações e orientações
                   </h3>
                 </div>
@@ -3407,9 +3408,9 @@ export default function Protocolos3Page() {
                         ],
                       })
                     }
-                    className="w-full py-4 border border-dashed border-slate-800 rounded-2xl hover:border-[#39ff14]/30 hover:bg-[#39ff14]/5 transition-all group"
+                    className="w-full py-4 border border-dashed border-slate-800 rounded-2xl hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_5%,transparent)] transition-all group"
                   >
-                    <span className="text-[10px] font-black text-slate-500 group-hover:text-[#39ff14] uppercase tracking-widest">
+                    <span className="text-[10px] font-black text-slate-500 group-hover:text-[color:var(--rxv-primary)] uppercase tracking-widest">
                       + Adicionar campo de recomendação
                     </span>
                   </button>
@@ -3594,7 +3595,7 @@ export default function Protocolos3Page() {
 
       {publishGlobalOpen && publishGlobalDraft && editingProtocol && (
         <RxvModalShell zIndexClass="z-[110]" overlayClassName="bg-black/95 backdrop-blur-sm">
-          <div className="mx-auto w-full max-w-2xl rounded-2xl border border-[#2f5b25] bg-[#0a0f0a] text-slate-100 shadow-[0_0_60px_rgba(57,255,20,0.15)]">
+          <div className="mx-auto w-full max-w-2xl rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,var(--rxv-border))] bg-[#0a0f0a] text-slate-100 shadow-[0_0_60px_color-mix(in_srgb,var(--rxv-primary)_18%,transparent)]">
             <div className="flex items-center justify-between border-b border-slate-800 bg-black/60 px-8 py-6">
               <div>
                 <h2 className="text-xl font-black text-white italic uppercase tracking-tight">
@@ -3759,7 +3760,7 @@ export default function Protocolos3Page() {
       {/* Modal Buscar Medicamentos */}
       {medicationSearchOpen && (
         <RxvModalShell zIndexClass="z-[100]" overlayClassName="bg-black/95 backdrop-blur-md">
-          <div className="mx-auto flex max-h-[86vh] w-full max-w-4xl flex-col overflow-hidden rounded-3xl border border-[#39ff14]/30 bg-black shadow-[0_0_80px_rgba(57,255,20,0.2)]">
+          <div className="mx-auto flex max-h-[86vh] w-full max-w-4xl flex-col overflow-hidden rounded-3xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] bg-black shadow-[0_0_80px_color-mix(in_srgb,var(--rxv-primary)_20%,transparent)]">
             <div className="flex items-center justify-between border-b border-slate-800 bg-slate-900/50 px-8 py-5">
               <div>
                 <h2 className="text-lg font-black uppercase italic tracking-tight text-white">
@@ -3811,7 +3812,7 @@ export default function Protocolos3Page() {
                     value={medicationSearchQuery}
                     onChange={(e) => setMedicationSearchQuery(e.target.value)}
                     autoFocus
-                    className="w-full rounded-2xl border border-slate-800 bg-slate-900 py-4 pl-12 pr-4 font-bold text-white outline-none transition-all placeholder:text-slate-700 focus:border-[#39ff14]/50"
+                    className="w-full rounded-2xl border border-slate-800 bg-slate-900 py-4 pl-12 pr-4 font-bold text-white outline-none transition-all placeholder:text-slate-700 focus:border-[color:color-mix(in_srgb,var(--rxv-primary)_50%,transparent)]"
                   />
                 </div>
                 <p className="mt-3 text-[11px] font-semibold uppercase tracking-widest text-slate-500">
@@ -3842,9 +3843,9 @@ export default function Protocolos3Page() {
                   <button
                     type="button"
                     onClick={handleSelectMedicationWithoutPresentation}
-                    className="w-full rounded-2xl border border-dashed border-[#39ff14]/30 bg-[#39ff14]/6 p-4 text-left transition-all hover:border-[#39ff14]/60 hover:bg-[#39ff14]/10"
+                    className="w-full rounded-2xl border border-dashed border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,transparent)] p-4 text-left transition-all hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_60%,transparent)] hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)]"
                   >
-                    <p className="text-sm font-black uppercase italic text-[#9eff8f]">
+                    <p className="text-sm font-black uppercase italic text-[color:color-mix(in_srgb,var(--rxv-primary)_78%,#f1f5f9)]">
                       Adicionar sem apresentação definida
                     </p>
                     <p className="mt-1 text-xs text-slate-400">
@@ -3854,7 +3855,7 @@ export default function Protocolos3Page() {
 
                   {isLoadingPresentationOptions ? (
                     <div className="flex flex-col items-center justify-center py-10 opacity-50">
-                      <span className="material-symbols-outlined animate-spin text-[#39ff14]">sync</span>
+                      <span className="material-symbols-outlined animate-spin text-[color:var(--rxv-primary)]">sync</span>
                       <p className="mt-2 text-[10px] font-black uppercase tracking-widest text-slate-500">Carregando apresentações...</p>
                     </div>
                   ) : presentationOptions.length === 0 ? (
@@ -3869,9 +3870,9 @@ export default function Protocolos3Page() {
                         key={presentation.id}
                         type="button"
                         onClick={() => handleSelectMedicationPresentation(presentation)}
-                        className="w-full rounded-2xl border border-slate-800 bg-slate-900/50 p-4 text-left transition-all group hover:border-[#39ff14]/40 hover:bg-slate-900"
+                        className="w-full rounded-2xl border border-slate-800 bg-slate-900/50 p-4 text-left transition-all group hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)] hover:bg-slate-900"
                       >
-                        <p className="text-sm font-black uppercase italic text-white transition-colors group-hover:text-[#39ff14]">
+                        <p className="text-sm font-black uppercase italic text-white transition-colors group-hover:text-[color:var(--rxv-primary)]">
                           {buildPresentationLabel(presentation) || "Apresentação"}
                         </p>
                       </button>
@@ -3918,7 +3919,7 @@ export default function Protocolos3Page() {
                       <p className="text-xs font-black uppercase tracking-widest text-slate-500">Ingredientes</p>
                       <div className="mt-3 flex flex-wrap gap-2">
                         {compoundedPickerFormula.ingredients.map((entry) => (
-                          <span key={entry.id} className="rounded-full border border-[#39ff14]/25 bg-[#39ff14]/8 px-3 py-1 text-xs text-[#98f98e]">
+                          <span key={entry.id} className="rounded-full border border-[color:color-mix(in_srgb,var(--rxv-primary)_25%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_8%,transparent)] px-3 py-1 text-xs text-[color:color-mix(in_srgb,var(--rxv-primary)_72%,#e2e8f0)]">
                             {entry.name}
                           </span>
                         ))}
@@ -3931,7 +3932,7 @@ export default function Protocolos3Page() {
                 </>
               ) : isSearchingMedications ? (
                 <div className="flex flex-col items-center justify-center py-10 opacity-50">
-                  <span className="material-symbols-outlined animate-spin text-[#39ff14]">sync</span>
+                  <span className="material-symbols-outlined animate-spin text-[color:var(--rxv-primary)]">sync</span>
                   <p className="mt-2 text-[10px] font-black uppercase tracking-widest text-slate-500">Pesquisando catálogo...</p>
                 </div>
               ) : medications.length === 0 && compoundedMedications.length === 0 ? (
@@ -3955,18 +3956,18 @@ export default function Protocolos3Page() {
                       </div>
                     ) : (
                       medications.map((med) => (
-                        <button key={med.id} type="button" onClick={() => handleAddMedicationToDraft(med)} className="group flex w-full items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/50 p-4 text-left transition-all hover:border-[#39ff14]/40 hover:bg-slate-900">
+                        <button key={med.id} type="button" onClick={() => handleAddMedicationToDraft(med)} className="group flex w-full items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/50 p-4 text-left transition-all hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)] hover:bg-slate-900">
                           <div>
-                            <p className="text-sm font-black uppercase italic text-white transition-colors group-hover:text-[#39ff14]">{med.name}</p>
+                            <p className="text-sm font-black uppercase italic text-white transition-colors group-hover:text-[color:var(--rxv-primary)]">{med.name}</p>
                           </div>
-                          <span className="material-symbols-outlined text-slate-700 transition-colors group-hover:text-[#39ff14]">add_circle</span>
+                          <span className="material-symbols-outlined text-slate-700 transition-colors group-hover:text-[color:var(--rxv-primary)]">add_circle</span>
                         </button>
                       ))
                     )}
                   </div>
                   <div className="space-y-3">
                     <div className="flex items-center gap-2">
-                      <span className="rounded border border-[#39ff14]/30 bg-[#39ff14]/10 px-2 py-0.5 text-[9px] font-black uppercase tracking-widest text-[#98f98e]">
+                      <span className="rounded border border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] px-2 py-0.5 text-[9px] font-black uppercase tracking-widest text-[color:color-mix(in_srgb,var(--rxv-primary)_72%,#e2e8f0)]">
                         Manipulado
                       </span>
                       <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Catálogo V1.0</p>
@@ -3977,18 +3978,18 @@ export default function Protocolos3Page() {
                       </div>
                     ) : (
                       compoundedMedications.map((formula) => (
-                        <button key={formula.identity.id} type="button" onClick={() => handleSelectCompoundedMedication(formula)} className="group flex w-full items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/50 p-4 text-left transition-all hover:border-[#39ff14]/40 hover:bg-slate-900">
+                        <button key={formula.identity.id} type="button" onClick={() => handleSelectCompoundedMedication(formula)} className="group flex w-full items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/50 p-4 text-left transition-all hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)] hover:bg-slate-900">
                           <div>
-                            <p className="text-sm font-black uppercase italic text-white transition-colors group-hover:text-[#39ff14]">{formula.identity.name}</p>
+                            <p className="text-sm font-black uppercase italic text-white transition-colors group-hover:text-[color:var(--rxv-primary)]">{formula.identity.name}</p>
                             <div className="mt-1 flex flex-wrap items-center gap-2">
-                              <span className="rounded border border-[#39ff14]/30 bg-[#39ff14]/10 px-2 py-0.5 text-[8px] font-black uppercase tracking-widest text-[#98f98e]">Manipulado</span>
+                              <span className="rounded border border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] px-2 py-0.5 text-[8px] font-black uppercase tracking-widest text-[color:color-mix(in_srgb,var(--rxv-primary)_72%,#e2e8f0)]">Manipulado</span>
                               {formula.identity.sale_classification === "controlled" ? (
                                 <span className="rounded border border-red-500/20 bg-red-500/10 px-2 py-0.5 text-[8px] font-black uppercase text-red-500">Controlado</span>
                               ) : null}
                               <span className="text-[9px] font-black uppercase tracking-widest text-slate-500">{formula.identity.pharmaceutical_form}</span>
                             </div>
                           </div>
-                          <span className="material-symbols-outlined text-slate-700 transition-colors group-hover:text-[#39ff14]">add_circle</span>
+                          <span className="material-symbols-outlined text-slate-700 transition-colors group-hover:text-[color:var(--rxv-primary)]">add_circle</span>
                         </button>
                       ))
                     )}

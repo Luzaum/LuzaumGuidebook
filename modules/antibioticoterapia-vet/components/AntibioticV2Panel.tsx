@@ -3,8 +3,10 @@ import type { AntibioticSheetV2 } from '../data-v2/antibiotics'
 import { getMoleculeInstitutionalMapping } from '../data-v2/institutionalMappings'
 import { getSourceEntry } from '../data-v2/references'
 import { concordanceStateFromMapping } from '../data-v2/institutionalConcordance'
+import { getMoleculeTherapeuticAudit } from '../data-v2/therapeuticInstitutionalAudit'
 import { InstitutionalProvenanceStrip } from './InstitutionalProvenanceStrip'
 import { InstitutionalConcordanceChip } from './InstitutionalConcordanceChip'
+import { TherapeuticInstitutionalAuditNote } from './TherapeuticInstitutionalAuditNote'
 
 interface AntibioticV2PanelProps {
   sheet: AntibioticSheetV2
@@ -52,6 +54,7 @@ function SectionCard({
 export function AntibioticV2Panel({ sheet }: AntibioticV2PanelProps) {
   const institutionalMap = getMoleculeInstitutionalMapping(sheet.id)
   const concordance = concordanceStateFromMapping(institutionalMap)
+  const therapeuticAudit = getMoleculeTherapeuticAudit(sheet.id)
   return (
     <article
       className="abv-panel space-y-5 p-4 text-left text-sm md:p-6"
@@ -61,7 +64,7 @@ export function AntibioticV2Panel({ sheet }: AntibioticV2PanelProps) {
         <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: 'hsl(var(--primary))' }}>
           Ficha clínica v2
         </p>
-        <h2 className="mt-1 font-serif text-2xl font-bold md:text-3xl">{sheet.displayName}</h2>
+        <h2 className="mt-1 text-2xl font-bold tracking-tight md:text-3xl">{sheet.displayName}</h2>
         <p className="mt-2 text-xs leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
           <span className="font-medium text-[hsl(var(--foreground))]">{sheet.classLabel}</span>
           {' · '}
@@ -70,11 +73,16 @@ export function AntibioticV2Panel({ sheet }: AntibioticV2PanelProps) {
         {concordance && (
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <span className="text-[10px] font-medium uppercase tracking-wide" style={{ color: 'hsl(var(--muted-foreground))' }}>
-              Concordância institucional
+              Concordância institucional (CCIH)
             </span>
             <InstitutionalConcordanceChip state={concordance} />
           </div>
         )}
+        <TherapeuticInstitutionalAuditNote
+          variant="molecule"
+          state={therapeuticAudit.state}
+          clinicianNote={therapeuticAudit.clinicianNote}
+        />
       </header>
 
       <SectionCard title="Mecanismo de ação" accent="primary">

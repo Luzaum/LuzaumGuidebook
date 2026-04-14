@@ -1,11 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Pill } from 'lucide-react';
+import { ConsultaVetPageHero } from '../components/layout/ConsultaVetPageHero';
 import { EntityCard } from '../components/shared/EntityCard';
 import { ModuleSearchInput } from '../components/shared/ModuleSearchInput';
 import { getMedicationRepository } from '../services/medicationRepository';
 import { MedicationRecord } from '../types/medication';
 
 const UI_TEXT = {
+  eyebrow: 'Farmacologia',
   title: 'Medicamentos',
   body: 'Posologias, apresenta\u00e7\u00f5es e observa\u00e7\u00f5es essenciais para decis\u00e3o cl\u00ednica.',
   placeholder: 'Buscar por princ\u00edpio ativo, nome comercial ou indica\u00e7\u00e3o...',
@@ -53,27 +55,21 @@ export function MedicationsPage() {
 
   return (
     <div className="mx-auto w-full max-w-[1560px] space-y-8 p-4 md:p-8">
-      <section className="rounded-[28px] border border-border bg-card p-6 shadow-sm md:p-8">
-        <div className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
-          <div className="max-w-3xl">
-            <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-emerald-600 dark:text-emerald-400">
-              <Pill className="h-3.5 w-3.5" />
-              {UI_TEXT.title}
-            </div>
-            <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">{UI_TEXT.title}</h1>
-            <p className="mt-3 text-base leading-relaxed text-muted-foreground">{UI_TEXT.body}</p>
-          </div>
-
-          <div className="w-full xl:max-w-[420px]">
-            <ModuleSearchInput
-              value={query}
-              onChange={setQuery}
-              placeholder={UI_TEXT.placeholder}
-              className="w-full"
-            />
-          </div>
-        </div>
-      </section>
+      <ConsultaVetPageHero
+        eyebrow={UI_TEXT.eyebrow}
+        title={UI_TEXT.title}
+        description={UI_TEXT.body}
+        icon={Pill}
+        accent="emerald"
+        aside={
+          <ModuleSearchInput
+            value={query}
+            onChange={setQuery}
+            placeholder={UI_TEXT.placeholder}
+            className="w-full"
+          />
+        }
+      />
 
       <section className="space-y-4">
         <div className="flex items-center justify-between">

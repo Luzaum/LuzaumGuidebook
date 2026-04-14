@@ -291,7 +291,7 @@ export default function ProfilePage() {
         <label className="text-xs text-slate-400 lg:col-span-2">
           Perfil ativo
           <select
-            className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+            className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
             value={selectedProfileId}
             onChange={(e) => loadProfile(e.target.value)}
           >
@@ -304,7 +304,7 @@ export default function ProfilePage() {
         </label>
         <div className="rxv-card flex items-center justify-between px-4 py-3">
           <p className="text-sm">
-            ID do sistema: <span className="font-bold text-[#61eb48]">ADMIN</span>
+            ID do sistema: <span className="font-bold text-[color:var(--rxv-primary)]">ADMIN</span>
           </p>
         </div>
       </div>
@@ -436,7 +436,7 @@ export default function ProfilePage() {
             <label className="mt-4 block text-xs text-slate-400">
               Nome do perfil
               <input
-                className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                 value={profileName}
                 onChange={(e) => setProfileName(e.target.value)}
                 placeholder="Ex.: Clínica Central - Dr. Carlos"

@@ -1,21 +1,53 @@
 import { useEffect, useRef } from 'react'
+import {
+  Bell,
+  Building2,
+  ClipboardCheck,
+  FileWarning,
+  Hospital,
+  Microscope,
+  Pill,
+  Shield,
+  Syringe,
+  TrendingDown,
+} from 'lucide-react'
 import Icon from '../components/Icon'
-import { InstitutionalProvenanceStrip } from '../components/InstitutionalProvenanceStrip'
+import { InlineRichText } from '../components/RichTextViewer'
+import { SOURCE_REGISTRY } from '../data-v2/references'
 import { listHospitalStewardshipCardsV2 } from '../data-v2/hospitalAlerts'
 import { getHospitalCardInstitutionalMapping } from '../data-v2/institutionalMappings'
 import { INSTITUTIONAL_SOURCE_CCIH_2024, getVersionedSource } from '../data-v2/sourceRegistry'
 import type { AbvInstitutionalFocus, AbvTab } from '../types'
 
 const CATEGORY_LABEL: Record<string, string> = {
-  risk: 'Risco / internação',
-  precaution: 'Precaução / isolamento',
+  risk: 'Risco e internação',
+  precaution: 'Precaução e isolamento',
   culture: 'Cultura e timing',
-  deescalation: 'Reavaliação / descalonamento',
-  indication: 'Indicação de ATB',
-  nosocomial: 'Nosocomial',
+  deescalation: 'Reavaliação e desescalonamento',
+  indication: 'Indicação de antimicrobianos',
+  nosocomial: 'Infecção nosocomial',
   mdr: 'Multirresistência',
-  notification: 'Vigilância / notificação',
-  catheter_uti: 'Cateter urinário / ITU hospitalar',
+  notification: 'Vigilância e notificação',
+  catheter_uti: 'Cateter urinário e ITU hospitalar',
+}
+
+const CATEGORY_ICON: Record<string, typeof Hospital> = {
+  risk: Building2,
+  precaution: Shield,
+  culture: Microscope,
+  deescalation: TrendingDown,
+  indication: Pill,
+  nosocomial: Hospital,
+  mdr: FileWarning,
+  notification: Bell,
+  catheter_uti: Syringe,
+}
+
+function sourceTitlesForKeys(keys: string[]): string {
+  return keys
+    .map((k) => SOURCE_REGISTRY[k]?.title)
+    .filter(Boolean)
+    .join(' · ')
 }
 
 interface HospitalStewardshipPageProps {
@@ -49,8 +81,8 @@ export function HospitalStewardshipPage({
   }, [institutionalFocus])
 
   return (
-    <div className="min-h-full bg-[hsl(var(--background))] p-4 md:p-8">
-      <div className="mx-auto max-w-4xl">
+    <div className="min-h-full w-full bg-[hsl(var(--background))] p-4 md:p-8">
+      <div className="mx-auto w-full max-w-none">
         <button
           type="button"
           onClick={() => setPage('home')}
@@ -61,125 +93,170 @@ export function HospitalStewardshipPage({
           Voltar ao início
         </button>
 
-        <header className="mb-6">
+        <header className="mb-8 max-w-3xl">
           <p
             className="mb-2 text-xs font-semibold uppercase tracking-wide"
             style={{ color: 'hsl(var(--primary))' }}
           >
-            Camada institucional v2
+            Hospital e controle de infecção
           </p>
-          <h1 className="font-serif text-3xl font-bold" style={{ color: 'hsl(var(--foreground))' }}>
-            Infecção hospitalar e stewardship
+          <h1 className="text-3xl font-bold tracking-tight" style={{ color: 'hsl(var(--foreground))' }}>
+            Infecção hospitalar e uso racional de antimicrobianos
           </h1>
           <p className="mt-3 text-sm leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
-            Os cartões estão alinhados ao guia CCIH (metadados no app). O documento completo é{' '}
-            <strong>restrito e não é distribuído</strong> pelo aplicativo; quando aplicável, cada cartão traz um{' '}
-            <span className="font-mono text-[10px]">sectionRef</span> simbólico para rastreabilidade interna.
+            Cartões educacionais para apoiar decisões na internação. Eles{' '}
+            <strong className="font-semibold text-[hsl(var(--foreground))]">não substituem</strong> o protocolo da sua
+            unidade nem o prontuário — servem para organizar o raciocínio clínico e o stewardship.
           </p>
         </header>
 
-        {centralDoc && (
-          <div
-            className="mb-6 rounded-[var(--radius)] border p-4 text-sm"
+        {centralDoc ? (
+          <aside
+            className="mb-10 max-w-3xl rounded-2xl border px-4 py-4 sm:px-5"
             style={{
-              borderColor: 'hsl(var(--border))',
-              background: 'color-mix(in srgb, hsl(var(--primary)) 8%, hsl(var(--card)))',
+              borderColor: 'color-mix(in srgb, hsl(var(--primary)) 28%, hsl(var(--border)))',
+              background: 'color-mix(in srgb, hsl(var(--primary)) 7%, hsl(var(--card)))',
             }}
           >
-            <div className="flex flex-wrap items-center gap-2">
-              <span
-                className="rounded-full px-2 py-0.5 text-[10px] font-bold uppercase"
-                style={{ background: 'color-mix(in srgb, hsl(var(--secondary)) 18%, hsl(var(--card)))', color: 'hsl(var(--secondary))' }}
-              >
-                Fonte institucional restrita
-              </span>
-              <span className="text-[10px] opacity-80">Versão {centralDoc.versionLabel}</span>
-              <span className="rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase opacity-90">
-                {centralDoc.accessPolicy}
-              </span>
-              <span className="rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase opacity-90">
-                {centralDoc.distributionMode}
-              </span>
-              <span
-                className="rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase"
-                style={{
-                  background:
-                    centralDoc.verificationMode === 'pending_import'
-                      ? 'color-mix(in srgb, var(--chart-5) 20%, hsl(var(--card)))'
-                      : 'color-mix(in srgb, var(--chart-2) 20%, hsl(var(--card)))',
-                }}
-              >
-                {centralDoc.verificationMode}
-              </span>
+            <div className="flex items-start gap-3">
+              <ClipboardCheck
+                className="mt-0.5 h-5 w-5 shrink-0"
+                style={{ color: 'hsl(var(--primary))' }}
+                aria-hidden
+              />
+              <div>
+                <p className="text-sm font-semibold leading-snug" style={{ color: 'hsl(var(--foreground))' }}>
+                  Alinhamento ao guia institucional (CCIH)
+                </p>
+                <p className="mt-2 text-sm leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
+                  O conteúdo desta secção segue a mesma linha temática do{' '}
+                  <span className="font-medium text-[hsl(var(--foreground))]">{centralDoc.title}</span>
+                  {centralDoc.versionLabel ? ` (${centralDoc.versionLabel})` : ''}. O ficheiro PDF completo é{' '}
+                  <strong className="font-medium text-[hsl(var(--foreground))]">interno e restrito</strong> — não é
+                  enviado nem mostrado nesta aplicação; aqui vê apenas resumos redigidos para o contexto veterinário.
+                </p>
+              </div>
             </div>
-            <p className="mt-2 font-medium">{centralDoc.title}</p>
-            <p className="mt-1 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-              {centralDoc.provenance}
-            </p>
-            <p className="mt-2 text-xs leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
-              PDF não exposto ao cliente ({centralDoc.fileExposedToClient ? 'erro de política' : 'confirmado'}).{' '}
-              {centralDoc.internalStorageDesignation}
-            </p>
-          </div>
-        )}
+          </aside>
+        ) : null}
 
-        <div className="space-y-4">
+        <div className="space-y-6">
           {cards.map((c) => {
             const cardMap = getHospitalCardInstitutionalMapping(c.id)
+            const refLine = sourceTitlesForKeys(c.referenceKeys)
+            const CatIcon = CATEGORY_ICON[c.category] ?? Hospital
+            const categoryLabel = CATEGORY_LABEL[c.category] ?? c.category
+
             return (
-            <article
-              key={c.id}
-              id={`abv-hospital-${c.id}`}
-              className="abv-panel scroll-mt-24 p-4"
-              style={{ color: 'hsl(var(--foreground))' }}
-            >
-              <div className="mb-2 flex flex-wrap items-center gap-2">
-                <span
-                  className="rounded-full px-2 py-0.5 text-[10px] font-bold uppercase"
+              <article
+                key={c.id}
+                id={`abv-hospital-${c.id}`}
+                className="abv-panel scroll-mt-24 overflow-hidden rounded-2xl shadow-sm"
+                style={{ color: 'hsl(var(--foreground))' }}
+              >
+                <header
+                  className="border-b px-4 py-4 sm:px-6"
                   style={{
-                    background: 'color-mix(in srgb, hsl(var(--secondary)) 16%, hsl(var(--card)))',
-                    color: 'hsl(var(--secondary))',
+                    borderColor: 'hsl(var(--border))',
+                    background: 'color-mix(in srgb, hsl(var(--secondary)) 6%, hsl(var(--card)))',
                   }}
                 >
-                  {CATEGORY_LABEL[c.category] ?? c.category}
-                </span>
-                <span className="font-mono text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                  {c.sourceKey}
-                </span>
-                {c.versionedSourceId && (
-                  <span className="rounded-full px-2 py-0.5 text-[10px] font-medium" style={{ color: 'hsl(var(--primary))' }}>
-                    Guia CCIH · metadados
-                  </span>
-                )}
-              </div>
-              <h2 className="font-serif text-xl font-bold">{c.title}</h2>
-              {cardMap && (
-                <div className="mt-3">
-                  <InstitutionalProvenanceStrip mapping={cardMap} contextLabel={c.title} variant="compact" />
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span
+                      className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide"
+                      style={{
+                        background: 'color-mix(in srgb, hsl(var(--primary)) 14%, hsl(var(--card)))',
+                        color: 'hsl(var(--primary))',
+                      }}
+                    >
+                      <CatIcon className="h-3.5 w-3.5" aria-hidden />
+                      {categoryLabel}
+                    </span>
+                  </div>
+                  <h2 className="mt-3 text-xl font-bold tracking-tight sm:text-2xl">{c.title}</h2>
+                  {cardMap?.topicHint && cardMap.topicHint.trim() !== c.title.trim() ? (
+                    <p className="mt-2 text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
+                      Tema no guia:{' '}
+                      <span className="font-medium text-[hsl(var(--foreground))]">
+                        <InlineRichText text={cardMap.topicHint} />
+                      </span>
+                    </p>
+                  ) : null}
+                </header>
+
+                <div className="space-y-5 px-4 py-5 sm:px-6">
+                  <section>
+                    <h3 className="mb-2 text-sm font-semibold" style={{ color: 'hsl(var(--primary))' }}>
+                      Em resumo
+                    </h3>
+                    <p className="text-sm leading-relaxed">
+                      <InlineRichText text={c.lead} />
+                    </p>
+                  </section>
+
+                  <section
+                    className="rounded-xl border p-4"
+                    style={{ borderColor: 'hsl(var(--border))', background: 'hsl(var(--card))' }}
+                  >
+                    <h3 className="mb-3 text-sm font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
+                      Na prática
+                    </h3>
+                    <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
+                      {c.bullets.map((b, i) => (
+                        <li key={i}>
+                          <InlineRichText text={b} />
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+
+                  <section
+                    className="rounded-xl border p-4"
+                    style={{
+                      borderColor: 'color-mix(in srgb, hsl(var(--chart-3)) 35%, hsl(var(--border)))',
+                      background: 'color-mix(in srgb, hsl(var(--chart-3)) 6%, hsl(var(--card)))',
+                    }}
+                  >
+                    <h3 className="mb-3 text-sm font-semibold" style={{ color: 'hsl(var(--chart-3))' }}>
+                      Quando pensar neste tema
+                    </h3>
+                    <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed" style={{ color: 'hsl(var(--foreground))' }}>
+                      {c.whenToThink.map((w, i) => (
+                        <li key={i}>
+                          <InlineRichText text={w} />
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+
+                  <footer className="border-t pt-4" style={{ borderColor: 'hsl(var(--border))' }}>
+                    {refLine ? (
+                      <p className="text-xs leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
+                        <span className="font-medium" style={{ color: 'hsl(var(--foreground))' }}>
+                          Base de conteúdo:{' '}
+                        </span>
+                        {refLine}
+                      </p>
+                    ) : null}
+
+                    {cardMap?.locator?.sectionRef ? (
+                      <details className="mt-3">
+                        <summary className="cursor-pointer text-xs font-medium" style={{ color: 'hsl(var(--muted-foreground))' }}>
+                          Referência interna (auditoria)
+                        </summary>
+                        <p className="mt-2 rounded-md border px-2 py-1.5 font-mono text-[10px] leading-relaxed" style={{ borderColor: 'hsl(var(--border))', color: 'hsl(var(--muted-foreground))' }}>
+                          {cardMap.locator.sectionRef}
+                        </p>
+                        {cardMap.locator.auditNote ? (
+                          <p className="mt-2 text-[10px] leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
+                            {cardMap.locator.auditNote}
+                          </p>
+                        ) : null}
+                      </details>
+                    ) : null}
+                  </footer>
                 </div>
-              )}
-              <p className="mt-2 text-sm font-medium" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                {c.lead}
-              </p>
-              <ul className="mt-3 list-inside list-disc text-sm">
-                {c.bullets.map((b, i) => (
-                  <li key={i}>{b}</li>
-                ))}
-              </ul>
-              <div className="mt-3 rounded-lg border p-3 text-sm" style={{ borderColor: 'hsl(var(--border))' }}>
-                <span className="font-semibold" style={{ color: 'hsl(var(--primary))' }}>
-                  Quando pensar nisto
-                </span>
-                <ul className="mt-1 list-inside list-disc" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                  {c.whenToThink.map((w, i) => (
-                    <li key={i}>{w}</li>
-                  ))}
-                </ul>
-              </div>
-              <p className="mt-3 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                Ref.: {c.referenceKeys.join(', ')}
-              </p>
-            </article>
+              </article>
             )
           })}
         </div>

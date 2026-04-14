@@ -604,7 +604,9 @@ export function AddMedicationModal2({
     const timer = setTimeout(async () => {
       try {
         setIsSearching(true)
-        const results = await searchMedications(clinicId, q || '', q ? 50 : 20)
+        // Com busca vazia, o limite 20 cortava o catálogo completo da clínica (ex.: 36 itens).
+        const limit = q ? 120 : 500
+        const results = await searchMedications(clinicId, q || '', limit)
         setMedications(results)
       } catch (err) {
         console.error('[AddMedicationModal2] Search failed', err)
@@ -1000,7 +1002,7 @@ export function AddMedicationModal2({
 
   return (
     <RxvModalShell zIndexClass="z-[90]" overlayClassName="bg-black/80 backdrop-blur-sm">
-      <div className="mx-auto max-h-[92vh] w-full max-w-4xl overflow-hidden rounded-2xl border border-[#2f5b25] bg-[#0a0f0a] text-slate-100 shadow-[0_0_60px_rgba(57,255,20,0.2)]">
+      <div className="mx-auto max-h-[92vh] w-full max-w-4xl overflow-hidden rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,var(--rxv-border))] bg-[#0a0f0a] text-slate-100 shadow-[0_0_60px_color-mix(in_srgb,var(--rxv-primary)_18%,transparent)]">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-800 bg-black/60 px-6 py-4">
           <div>
@@ -1039,7 +1041,7 @@ export function AddMedicationModal2({
                         onChange={(e) => setSearchQuery(e.target.value)}
                       />
                       {isSearching && (
-                        <span className="absolute right-3 top-1/2 -translate-y-1/2 material-symbols-outlined animate-spin text-[#39ff14] text-[18px]">
+                        <span className="absolute right-3 top-1/2 -translate-y-1/2 material-symbols-outlined animate-spin text-[color:var(--rxv-primary)] text-[18px]">
                           sync
                         </span>
                       )}
@@ -1057,7 +1059,7 @@ export function AddMedicationModal2({
                     </p>
                   )}
                   {medications.length > 0 && (
-                    <div className="max-h-64 space-y-2 overflow-y-auto pr-1">
+                    <div className="max-h-[min(50vh,22rem)] space-y-2 overflow-y-auto pr-1 custom-scrollbar">
                       {medications.map((med) => {
                         const clinicRow = med.source !== 'global' && med.scope !== 'global'
                         const doseCount =
@@ -1066,7 +1068,7 @@ export function AddMedicationModal2({
                         <button
                           key={med.id}
                           type="button"
-                          className="w-full rounded-xl border border-slate-800 bg-black/40 px-4 py-3 text-left hover:border-[#39ff14]/50 hover:bg-[#39ff14]/5 transition-all"
+                          className="w-full rounded-xl border border-slate-800 bg-black/40 px-4 py-3 text-left hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_50%,transparent)] hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_5%,transparent)] transition-all"
                           onClick={() => handleMedicationSelect(med)}
                         >
                           <div className="flex items-start justify-between gap-2">
@@ -1075,7 +1077,7 @@ export function AddMedicationModal2({
                               <span
                                 className={
                                   doseCount > 0
-                                    ? 'shrink-0 rounded-md border border-[#39ff14]/40 bg-[#39ff14]/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-[#39ff14]'
+                                    ? 'shrink-0 rounded-md border border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-[color:var(--rxv-primary)]'
                                     : 'shrink-0 rounded-md border border-slate-600 bg-slate-900/80 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-400'
                                 }
                               >
@@ -1098,7 +1100,7 @@ export function AddMedicationModal2({
               {/* Medicamento selecionado */}
               {selectedMedication && (
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between rounded-xl border border-[#39ff14]/30 bg-[#39ff14]/5 px-4 py-3">
+                  <div className="flex items-center justify-between rounded-xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_5%,transparent)] px-4 py-3">
                     <div>
                       <p className="text-base font-bold text-white">{selectedMedication.name}</p>
                       <p className="text-xs text-slate-500">{selectedMedication.source === 'global' ? 'Catálogo global' : (selectedMedication.pharmacy_origin || 'Catálogo da clínica')}</p>
@@ -1234,7 +1236,7 @@ export function AddMedicationModal2({
                               >
                                 <div className="space-y-1">
                                   <div className="flex items-center gap-2">
-                                    <span className="px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-[9px] font-bold border border-emerald-500/20">
+                                    <span className="px-1.5 py-0.5 rounded bg-sky-500/10 text-sky-400 text-[9px] font-bold border border-sky-500/20">
                                       {needsSpeciesChoice ? 'cão/gato' : rd.species}
                                     </span>
                                     <span className="px-1.5 py-0.5 rounded bg-blue-500/10 text-blue-400 text-[9px] font-bold border border-blue-500/20">
@@ -1607,10 +1609,10 @@ export function AddMedicationModal2({
 
               {/* ✅ EQUIVALENTE PRÁTICO DISPLAY */}
               {practicalResult && practicalResult.success && (
-                <div className="rounded-2xl border border-[#39ff14]/20 bg-[#39ff14]/[0.03] p-5 space-y-4 shadow-[0_0_20px_rgba(57,255,20,0.05)]">
+                <div className="rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_20%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_3%,transparent)] p-5 space-y-4 shadow-[0_0_20px_color-mix(in_srgb,var(--rxv-primary)_35%,transparent)]">
                   <div className="flex items-start justify-between">
                     <div>
-                      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#39ff14]/70 mb-1">Equivalente Prático</p>
+                      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[color:var(--rxv-primary)]/70 mb-1">Equivalente Prático</p>
                       <h3 className="text-2xl font-bold text-white tracking-tight">
                         {practicalResult.label}
                       </h3>
@@ -1620,7 +1622,7 @@ export function AddMedicationModal2({
                         </p>
                       )}
                     </div>
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#39ff14]/10 text-[#39ff14]">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] text-[color:var(--rxv-primary)]">
                       <span className="material-symbols-outlined">calculate</span>
                     </div>
                   </div>

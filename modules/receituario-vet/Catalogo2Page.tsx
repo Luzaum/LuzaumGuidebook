@@ -649,8 +649,8 @@ export default function Catalogo2Page() {
                     key={med.id}
                     className={`w-full rounded-xl border px-3 py-2.5 text-left transition-all ${
                       selectedId === med.id
-                        ? 'border-[#61eb48]/50 bg-[#61eb48]/15 shadow-lg shadow-[#61eb48]/20'
-                        : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/60 hover:border-[#61eb48]/30 hover:bg-[#61eb48]/5'
+                        ? 'border-[color:color-mix(in_srgb,var(--rxv-primary)_50%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_15%,transparent)] shadow-lg shadow-[color:color-mix(in_srgb,var(--rxv-primary)_20%,transparent)]'
+                        : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/60 hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_5%,transparent)]'
                     }`}
                     onClick={() => attemptSelectMedication(med)}
                   >
@@ -684,7 +684,7 @@ export default function Catalogo2Page() {
                     Não salvo
                   </span>
                 ) : (
-                  <span className="inline-flex items-center gap-1 text-green-400">
+                  <span className="inline-flex items-center gap-1 text-sky-400">
                     <span className="material-symbols-outlined text-[14px]">check_circle</span>
                     Salvo
                   </span>
@@ -698,7 +698,7 @@ export default function Catalogo2Page() {
             {/* Dados do medicamento */}
             <section className="rxv-card p-6 shadow-xl">
               <h3 className="mb-5 flex items-center gap-2 text-lg font-bold">
-                <span className="material-symbols-outlined text-[24px] text-[#61eb48]">medication</span>
+                <span className="material-symbols-outlined text-[24px] text-[color:var(--rxv-primary)]">medication</span>
                 Dados do medicamento
               </h3>
 
@@ -753,7 +753,7 @@ export default function Catalogo2Page() {
             <section className="rxv-card p-6 shadow-xl">
               <div className="mb-5 flex items-center justify-between">
                 <h3 className="flex items-center gap-2 text-lg font-bold">
-                  <span className="material-symbols-outlined text-[24px] text-[#61eb48]">inventory</span>
+                  <span className="material-symbols-outlined text-[24px] text-[color:var(--rxv-primary)]">inventory</span>
                   Apresentações
                 </h3>
                 <button
@@ -950,8 +950,8 @@ export default function Catalogo2Page() {
                           <label
                             className={`inline-flex cursor-pointer items-center gap-2 rounded-full border px-3 py-1.5 text-xs transition-all ${
                               pres.pharmacy_veterinary
-                                ? 'border-[#61eb48]/50 bg-[#61eb48]/15 text-[#c8ffc0] shadow-md shadow-[#61eb48]/10'
-                                : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/50 text-[color:var(--rxv-muted)] hover:border-[#61eb48]/30'
+                                ? 'border-[color:color-mix(in_srgb,var(--rxv-primary)_50%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_15%,transparent)] text-[color:color-mix(in_srgb,var(--rxv-primary)_75%,#f1f5f9)] shadow-md shadow-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)]'
+                                : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/50 text-[color:var(--rxv-muted)] hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)]'
                             }`}
                           >
                             <input
@@ -968,8 +968,8 @@ export default function Catalogo2Page() {
                           <label
                             className={`inline-flex cursor-pointer items-center gap-2 rounded-full border px-3 py-1.5 text-xs transition-all ${
                               pres.pharmacy_human
-                                ? 'border-[#61eb48]/50 bg-[#61eb48]/15 text-[#c8ffc0] shadow-md shadow-[#61eb48]/10'
-                                : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/50 text-[color:var(--rxv-muted)] hover:border-[#61eb48]/30'
+                                ? 'border-[color:color-mix(in_srgb,var(--rxv-primary)_50%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_15%,transparent)] text-[color:color-mix(in_srgb,var(--rxv-primary)_75%,#f1f5f9)] shadow-md shadow-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)]'
+                                : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/50 text-[color:var(--rxv-muted)] hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)]'
                             }` }
                           >
                             <input
@@ -986,8 +986,8 @@ export default function Catalogo2Page() {
                           <label
                             className={`inline-flex cursor-pointer items-center gap-2 rounded-full border px-3 py-1.5 text-xs transition-all ${
                               pres.pharmacy_compounding
-                                ? 'border-[#61eb48]/50 bg-[#61eb48]/15 text-[#c8ffc0] shadow-md shadow-[#61eb48]/10'
-                                : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/50 text-[color:var(--rxv-muted)] hover:border-[#61eb48]/30'
+                                ? 'border-[color:color-mix(in_srgb,var(--rxv-primary)_50%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_15%,transparent)] text-[color:color-mix(in_srgb,var(--rxv-primary)_75%,#f1f5f9)] shadow-md shadow-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)]'
+                                : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/50 text-[color:var(--rxv-muted)] hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)]'
                             }`}
                           >
                             <input
@@ -1015,7 +1015,7 @@ export default function Catalogo2Page() {
 
         {/* Toast de sucesso */}
         {saveSuccess && (
-          <div className="fixed bottom-6 right-6 z-[120] flex items-center gap-2 rounded-xl border border-green-500/40 bg-green-500/20 px-5 py-3 text-sm font-semibold text-green-300 shadow-2xl">
+          <div className="fixed bottom-6 right-6 z-[120] flex items-center gap-2 rounded-xl border border-sky-500/40 bg-sky-500/20 px-5 py-3 text-sm font-semibold text-sky-300 shadow-2xl">
             <span className="material-symbols-outlined text-[20px]">check_circle</span>
             Medicamento salvo com sucesso!
           </div>

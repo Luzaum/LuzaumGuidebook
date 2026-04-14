@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import Icon from '../components/Icon'
+import RichTextViewer from '../components/RichTextViewer'
 import {
   CCIH_PRIORITY_PAGE_AUDIT_KEYS,
   countValidPriorityPageAuditEntries,
@@ -12,6 +13,12 @@ import {
   listThematicCcInstitutionalMappings,
 } from '../data-v2/institutionalMappings'
 import { REGIMEN_CONCORDANCE_EXPLANATION, summarizeV2MoleculeConcordance } from '../data-v2/institutionalConcordance'
+import {
+  THERAPEUTIC_AUDIT_LABEL,
+  summarizeMoleculeAuditStatesV2,
+  summarizeRegimenAuditStatesInV2Syndromes,
+  type TherapeuticInstitutionalAuditState,
+} from '../data-v2/therapeuticInstitutionalAudit'
 import { REFERENCE_GROUPS, SOURCE_REGISTRY, getSourceEntry } from '../data-v2/references'
 import { getVersionedSource, listVersionedSources } from '../data-v2/sourceRegistry'
 import type { ReferenceDomain, SourceEntryStatus, SourceEntryV2 } from '../model/institutional'
@@ -22,7 +29,7 @@ const DOMAIN_LABEL: Record<ReferenceDomain, string> = {
   clinical_v2: 'Domínio: clínico v2',
   molecules_v2: 'Domínio: biblioteca de moléculas v2',
   microbiology_v2: 'Domínio: microbiologia / resistência v2',
-  hospital_institutional_pending: 'Domínio: hospital / CCIH (mapeamentos v2)',
+  hospital_institutional_pending: 'Domínio: hospital / institucional (mapeamentos v2)',
   institutional_versioned: 'Domínio: documento institucional versionado',
 }
 
@@ -90,7 +97,7 @@ function VersionedDocCard({ doc }: { doc: VersionedInstitutionalSource }) {
           {doc.verificationMode}
         </span>
       </div>
-      <h3 className="mt-2 font-serif text-lg font-bold">{doc.title}</h3>
+      <h3 className="mt-2 text-lg font-bold tracking-tight">{doc.title}</h3>
       <p className="mt-1 text-xs leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
         {doc.provenance}
       </p>
@@ -102,7 +109,7 @@ function VersionedDocCard({ doc }: { doc: VersionedInstitutionalSource }) {
         </li>
         <li>
           <span className="font-semibold text-[hsl(var(--foreground))]">Exposto ao cliente:</span>{' '}
-          {doc.fileExposedToClient ? 'sim (não aplicável ao CCIH restrito)' : 'não'}
+          {doc.fileExposedToClient ? 'sim (documento normativo restrito)' : 'não'}
         </li>
         <li>
           <span className="font-semibold text-[hsl(var(--foreground))]">Binário no repo de build:</span>{' '}
@@ -122,9 +129,11 @@ function VersionedDocCard({ doc }: { doc: VersionedInstitutionalSource }) {
       <p className="mt-2 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
         Tipo: {doc.sourceType} · Mapeamentos: <span className="font-mono">{doc.mappingsModulePath}</span>
       </p>
-      <p className="mt-2 text-xs leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
-        {doc.notes}
-      </p>
+      {doc.notes ? (
+        <div className="mt-2 text-xs leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
+          <RichTextViewer text={doc.notes} />
+        </div>
+      ) : null}
       {doc.lastAuditNote && (
         <p
           className="mt-2 rounded border border-dashed p-2 text-xs"
@@ -244,8 +253,8 @@ export function ReferencesPage({
   }, [institutionalFocus])
 
   return (
-    <div className="min-h-full bg-[hsl(var(--background))] p-4 md:p-8">
-      <div className="mx-auto max-w-4xl">
+    <div className="min-h-full w-full bg-[hsl(var(--background))] p-4 md:p-8">
+      <div className="mx-auto w-full max-w-none">
         <button
           type="button"
           onClick={() => setPage('home')}
@@ -263,7 +272,7 @@ export function ReferencesPage({
           >
             Registro de fontes
           </p>
-          <h1 className="font-serif text-3xl font-bold" style={{ color: 'hsl(var(--foreground))' }}>
+          <h1 className="text-3xl font-bold tracking-tight" style={{ color: 'hsl(var(--foreground))' }}>
             Referências, tiers e documentos versionados
           </h1>
           <p className="mt-3 text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
@@ -291,7 +300,7 @@ export function ReferencesPage({
 
         <section className="mb-10 space-y-4">
           <h2 className="border-b pb-2 text-lg font-semibold" style={{ borderColor: 'hsl(var(--border))' }}>
-            Maturidade da auditoria CCIH (metadados vs páginas)
+            Maturidade da auditoria institucional (metadados vs páginas)
           </h2>
           <p className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
             <span className="font-mono">linked_verified_metadata</span>: sectionRef estável, sem páginas no código.{' '}
@@ -327,7 +336,7 @@ export function ReferencesPage({
                       <li>Temas transversais: {page.thematic}</li>
                     </ul>
                     <p className="mt-2 text-[10px]" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                      Prioridade CCIH: {filledPriority}/{CCIH_PRIORITY_PAGE_AUDIT_KEYS.length} chaves com página válida em{' '}
+                      Prioridade de auditoria: {filledPriority}/{CCIH_PRIORITY_PAGE_AUDIT_KEYS.length} chaves com página válida em{' '}
                       <span className="font-mono">ccih2024PageAudit.ts</span> (demais permanecem só metadados até auditoria).
                     </p>
                   </div>
@@ -340,6 +349,44 @@ export function ReferencesPage({
                   <span className="font-mono">ccih2024PageAudit.ts</span>.{' '}
                   <span className="font-semibold text-[hsl(var(--foreground))]">Regimes:</span> {REGIMEN_CONCORDANCE_EXPLANATION}
                 </p>
+                {(() => {
+                  const molA = summarizeMoleculeAuditStatesV2()
+                  const regA = summarizeRegimenAuditStatesInV2Syndromes()
+                  const lines = (c: Record<TherapeuticInstitutionalAuditState, number>) =>
+                    (Object.entries(c) as [TherapeuticInstitutionalAuditState, number][])
+                      .filter(([, n]) => n > 0)
+                      .map(([k, n]) => (
+                        <li key={k}>
+                          {THERAPEUTIC_AUDIT_LABEL[k]}: {n}
+                        </li>
+                      ))
+                  return (
+                    <div
+                      className="abv-panel mt-4 p-3 text-sm"
+                      style={{ color: 'hsl(var(--foreground))' }}
+                    >
+                      <p className="font-semibold">Trilha terapêutica institucional (matriz v2)</p>
+                      <p className="mt-1 text-[10px] leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
+                        Derivado de <span className="font-mono">therapeuticInstitutionalAudit.ts</span>: separa concordância da
+                        ficha de molécula da auditoria do regime sob perfil de síndrome (sem locator CCIH por regime no código).
+                      </p>
+                      <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                        <div>
+                          <p className="text-xs font-medium">Domínio: moléculas (biblioteca v2)</p>
+                          <ul className="mt-1 list-inside list-disc text-[10px]" style={{ color: 'hsl(var(--muted-foreground))' }}>
+                            {lines(molA)}
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="text-xs font-medium">Domínio: regimes (pares síndrome×regime)</p>
+                          <ul className="mt-1 list-inside list-disc text-[10px]" style={{ color: 'hsl(var(--muted-foreground))' }}>
+                            {lines(regA)}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })()}
               </>
             )
           })()}

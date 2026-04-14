@@ -116,7 +116,7 @@ export function TutorQuickSelect({
   // Renderizar dropdown
   const dropdownContent = open ? (
     <div
-      className="fixed z-[9999] overflow-hidden rounded-xl border border-[#2f5b25] bg-[#0f1e0d] shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+      className="fixed z-[9999] overflow-hidden rounded-xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,var(--rxv-border))] bg-[#0f1e0d] shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
       style={{
         top: `${dropdownPos.top}px`,
         left: `${dropdownPos.left}px`,
@@ -166,7 +166,7 @@ export function TutorQuickSelect({
         type="text"
         value={query}
         disabled={disabled}
-        className="w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white outline-none ring-[#3cff1a] placeholder:text-slate-500 focus:ring-1 disabled:cursor-not-allowed disabled:opacity-60"
+        className="w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white outline-none ring-[#3cff1a] placeholder:text-slate-500 focus:ring-1 disabled:cursor-not-allowed disabled:opacity-60"
         placeholder={placeholder}
         onFocus={() => {
           if (results.length > 0 && !disabled) setOpen(true)

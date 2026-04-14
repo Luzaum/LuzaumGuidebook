@@ -1,5 +1,6 @@
 ﻿import React, { useEffect, useMemo, useState } from 'react';
-import { Plus, Save } from 'lucide-react';
+import { Plus, Save, Stethoscope } from 'lucide-react';
+import { ConsultaVetPageHero } from '../components/layout/ConsultaVetPageHero';
 import { EditorialField } from '../components/editorial/EditorialField';
 import { EditorialPermissionGate } from '../components/editorial/EditorialPermissionGate';
 import { ReferencesEditor } from '../components/editorial/ReferencesEditor';
@@ -266,12 +267,13 @@ export function EditorialDiseasesPage() {
 
   return (
     <div className="mx-auto w-full max-w-[1680px] space-y-8 p-4 md:p-8">
-      <header className="rounded-[28px] border border-border bg-card p-6 shadow-sm md:p-8">
-        <h1 className="text-3xl font-bold tracking-tight text-foreground">Editorial de doenças</h1>
-        <p className="mt-2 max-w-4xl text-sm text-muted-foreground">
-          Edição estruturada dos blocos rápidos, seções clínicas, referências e relacionamentos, preservando a UI pública e o fallback híbrido do módulo.
-        </p>
-      </header>
+      <ConsultaVetPageHero
+        eyebrow="Editorial"
+        title="Doenças"
+        description="Edição estruturada dos blocos rápidos, seções clínicas, referências e relacionamentos, preservando a UI pública e o fallback híbrido do módulo."
+        icon={Stethoscope}
+        accent="primary"
+      />
 
       <EditorialPermissionGate isLoading={isLoadingAccess} canManage={canManage}>
         <div className="grid gap-6 xl:grid-cols-[380px_1fr]">

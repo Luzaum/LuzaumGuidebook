@@ -292,7 +292,7 @@ export interface ProgrammedFeedingPlan {
   roundingRule: string
   meals: ProgrammedFeedingMeal[]
   startDate?: string
-  printRangeMode?: 'single_day' | 'next_3_days'
+  printRangeMode?: 'single_day' | 'next_3_days' | 'next_6_days' | 'next_9_days'
   generatedFeedingDates?: string[]
 }
 

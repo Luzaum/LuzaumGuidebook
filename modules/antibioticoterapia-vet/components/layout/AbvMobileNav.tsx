@@ -75,7 +75,11 @@ export function AbvMobileDrawer({ open, onClose, activeTab, setActiveTab }: AbvM
             }}
             aria-label="Ir para início"
           >
-            <img src="/apps/ATB.png" alt="" className="h-9 w-auto shrink-0 rounded-md object-contain" />
+            <img
+              src="/apps/ATB.png"
+              alt=""
+              className="h-[6.75rem] w-auto max-w-[min(15rem,55%)] shrink-0 rounded-md object-contain"
+            />
             <span className="truncate text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--sidebar-primary)' }}>
               Antibioticoterapia Vet
             </span>

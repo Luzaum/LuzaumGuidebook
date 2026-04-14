@@ -25,12 +25,12 @@ export default function ReportDetailView({ report }: { report: StoredCalculation
                   <span className="break-all font-mono text-[11px] text-orange-200/90">{buildVetiusNutritionPdfFilename(report)}</span>
                 </p>
               </div>
-              <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-                <Button variant="outline" size="sm" className="gap-2" onClick={() => printReportPdf(report)}>
-                  <Printer className="h-4 w-4" /> Imprimir PDF
+              <div className="flex flex-wrap items-center justify-end gap-2 rounded-xl border border-white/10 bg-black/20 p-1.5">
+                <Button variant="ghost" size="sm" className="gap-2 text-white hover:bg-white/10" onClick={() => printReportPdf(report)}>
+                  <Printer className="h-4 w-4 shrink-0" /> Imprimir
                 </Button>
-                <Button size="sm" className="gap-2" onClick={() => exportReportPdf(report)}>
-                  <Download className="h-4 w-4" /> Exportar PDF
+                <Button size="sm" className="gap-2 bg-orange-600 text-white hover:bg-orange-500" onClick={() => exportReportPdf(report)}>
+                  <Download className="h-4 w-4 shrink-0" /> Exportar PDF
                 </Button>
               </div>
             </div>

@@ -2,19 +2,22 @@ import { MedicationRecord } from '../../../types/medication';
 import { MedicationUpsertInput } from '../../../types/editorial';
 import { MedicationRepository } from '../../repositories/medication.repository';
 import { medicationsSeed } from '../../../data/seed/medications.seed';
+import { filterPublicMedications } from '../../../constants/publicCatalog';
 
 export class LocalMedicationRepository implements MedicationRepository {
-  async list(): Promise<MedicationRecord[]> {
-    return medicationsSeed;
+  async list(options?: { includeDrafts?: boolean }): Promise<MedicationRecord[]> {
+    return filterPublicMedications(medicationsSeed, Boolean(options?.includeDrafts));
   }
 
-  async getBySlug(slug: string): Promise<MedicationRecord | null> {
-    return medicationsSeed.find((m) => m.slug === slug) || null;
+  async getBySlug(slug: string, options?: { includeDrafts?: boolean }): Promise<MedicationRecord | null> {
+    const items = await this.list(options);
+    return items.find((m) => m.slug === slug) || null;
   }
 
   async search(query: string): Promise<MedicationRecord[]> {
     const q = query.toLowerCase();
-    return medicationsSeed.filter(
+    const base = await this.list();
+    return base.filter(
       (m) =>
         m.title.toLowerCase().includes(q) ||
         m.activeIngredient.toLowerCase().includes(q) ||
@@ -24,7 +27,8 @@ export class LocalMedicationRepository implements MedicationRepository {
   }
 
   async listByCategory(categorySlug: string): Promise<MedicationRecord[]> {
-    return medicationsSeed.filter((m) => m.category === categorySlug);
+    const base = await this.list();
+    return base.filter((m) => m.category === categorySlug);
   }
 
   async upsert(_input: MedicationUpsertInput): Promise<MedicationRecord> {

@@ -46,7 +46,7 @@ export default function DevelopmentPage() {
                   key={item.id}
                   className={`rounded-xl border p-3 transition-all ${
                     active
-                      ? 'border-[color:var(--rxv-primary)] bg-[color:var(--rxv-primary)]/10 shadow-[0_0_24px_rgba(57,255,20,0.2)]'
+                      ? 'border-[color:var(--rxv-primary)] bg-[color:var(--rxv-primary)]/10 shadow-[0_0_24px_rgba(59, 130, 246,0.2)]'
                       : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/70'
                   }`}
                 >

@@ -377,7 +377,7 @@ function StatusChip({ status }: { status: SaveStatus }) {
     )
   }
   return (
-    <span className="rxv-status-chip border-emerald-700/60 bg-emerald-500/10 text-emerald-300">
+    <span className="rxv-status-chip border-sky-700/60 bg-sky-500/10 text-sky-300">
       <span className="material-symbols-outlined text-[14px]">check_circle</span>
       Salvo
     </span>
@@ -1319,7 +1319,7 @@ export default function NovaReceitaPage() {
         <>
           <StatusChip status={saveStatus} />
           <label className="hidden items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/60 px-3 py-2 text-xs font-bold text-slate-300 sm:flex cursor-pointer transition-colors hover:border-slate-500">
-            <input type="checkbox" className="h-4 w-4 rounded border-slate-600 bg-slate-800 text-[#39ff14] focus:ring-offset-slate-900" checked={autosaveEnabled} onChange={(e) => setAutosaveEnabled(e.target.checked)} />
+            <input type="checkbox" className="h-4 w-4 rounded border-slate-600 bg-slate-800 text-[color:var(--rxv-primary)] focus:ring-offset-slate-900" checked={autosaveEnabled} onChange={(e) => setAutosaveEnabled(e.target.checked)} />
             Autosave
           </label>
 
@@ -1400,10 +1400,10 @@ export default function NovaReceitaPage() {
       }
     >
       <div className="flex items-center gap-2 rounded-xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] p-3 text-sm lg:hidden">
-        <button type="button" className={`flex-1 rounded-lg px-3 py-1.5 ${mobileTab === 'editor' ? 'bg-[#38ff14] font-semibold text-[#10200d]' : 'bg-[#22381d]'}`} onClick={() => setMobileTab('editor')}>
+        <button type="button" className={`flex-1 rounded-lg px-3 py-1.5 ${mobileTab === 'editor' ? 'bg-[color:var(--rxv-primary)] font-semibold text-[color:var(--rxv-on-primary)]' : 'bg-[color:color-mix(in_srgb,var(--rxv-primary)_12%,var(--rxv-surface))]'}`} onClick={() => setMobileTab('editor')}>
           Editor
         </button>
-        <button type="button" className={`flex-1 rounded-lg px-3 py-1.5 ${mobileTab === 'preview' ? 'bg-[#38ff14] font-semibold text-[#10200d]' : 'bg-[#22381d]'}`} onClick={() => setMobileTab('preview')}>
+        <button type="button" className={`flex-1 rounded-lg px-3 py-1.5 ${mobileTab === 'preview' ? 'bg-[color:var(--rxv-primary)] font-semibold text-[color:var(--rxv-on-primary)]' : 'bg-[color:color-mix(in_srgb,var(--rxv-primary)_12%,var(--rxv-surface))]'}`} onClick={() => setMobileTab('preview')}>
           Prévia
         </button>
       </div>
@@ -1529,13 +1529,13 @@ export default function NovaReceitaPage() {
                         {supabasePatientsLoading && <span className="ml-2 text-slate-500">carregando...</span>}
                       </label>
                       {!supabasePatientsLoading && supabasePatientsForTutor.length === 0 && (
-                        <p className="rounded-lg border border-[#3b6c2f]/60 bg-[#12270f] px-3 py-2 text-xs text-[#a8e79b]">
+                        <p className="rounded-lg border border-[color:color-mix(in_srgb,var(--rxv-primary)_38%,var(--rxv-border))]/60 bg-[#12270f] px-3 py-2 text-xs text-[#a8e79b]">
                           Nenhum paciente cadastrado para este tutor. Cadastre um na aba Tutores e Pacientes.
                         </p>
                       )}
                       {supabasePatientsForTutor.length > 0 && (
                         <select
-                          className="w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white outline-none ring-[#3cff1a] focus:ring-1"
+                          className="w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white outline-none ring-[#3cff1a] focus:ring-1"
                           value={prescription.patient.patientRecordId || ''}
                           onChange={(e) => {
                             const pid = e.target.value
@@ -1604,7 +1604,7 @@ export default function NovaReceitaPage() {
               <label className="text-xs text-slate-400 md:col-span-2">
                 Perfil de médico veterinário / clínica
                 <select
-                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                   value={prescription.prescriber.profileId || 'default'}
                   onChange={(e) => applyPrescriberProfile(e.target.value)}
                 >
@@ -1617,25 +1617,25 @@ export default function NovaReceitaPage() {
               </label>
               <label className="text-xs text-slate-400">
                 ID
-                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.adminId ?? 'ADMIN'} readOnly />
+                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={prescription.prescriber.adminId ?? 'ADMIN'} readOnly />
               </label>
               <label className="text-xs text-slate-400">
                 Nome do prescritor
-                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.name ?? ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, name: e.target.value } }))} />
+                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={prescription.prescriber.name ?? ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, name: e.target.value } }))} />
               </label>
               <label className="text-xs text-slate-400">
                 CRMV
-                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.crmv ?? ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, crmv: e.target.value } }))} />
+                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={prescription.prescriber.crmv ?? ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, crmv: e.target.value } }))} />
               </label>
               <label className="text-xs text-slate-400">
                 Clínica
-                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.clinicName ?? ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, clinicName: e.target.value } }))} />
+                <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={prescription.prescriber.clinicName ?? ''} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, clinicName: e.target.value } }))} />
               </label>
             </div>
 
             {/* ── BLOCO A: TUTOR / RESPONSÁVEL ── */}
             <div className="mb-3 mt-5 flex items-center gap-2 rounded-xl border border-[#2f5a25] bg-[#142712] px-4 py-2.5">
-              <span className="material-symbols-outlined text-[18px] text-[#39ff14]">person</span>
+              <span className="material-symbols-outlined text-[18px] text-[color:var(--rxv-primary)]">person</span>
               <span className="text-xs font-black uppercase tracking-widest text-[color:var(--rxv-text)]">
                 Tutor / Responsável {hasSpecialControlItems ? '(controle especial)' : ''}
               </span>
@@ -1649,7 +1649,7 @@ export default function NovaReceitaPage() {
               <div className="mb-3 grid grid-cols-1 gap-3 md:grid-cols-2">
                 <RxvField label="Importar do banco de tutores/pacientes" className="md:col-span-2">
                   <select
-                    className="w-full rounded-xl border border-slate-800 bg-black/60 px-4 py-3.5 text-sm font-bold text-white outline-none transition-all focus:border-[#39ff14]/50 focus:ring-1 focus:ring-[#39ff14]/20"
+                    className="w-full rounded-xl border border-slate-800 bg-black/60 px-4 py-3.5 text-sm font-bold text-white outline-none transition-all focus:border-[color:color-mix(in_srgb,var(--rxv-primary)_50%,transparent)] focus:ring-1 focus:ring-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)]/20"
                     value={selectedClient?.id ?? ''}
                     onChange={(e) => {
                       const clientId = e.target.value
@@ -1668,7 +1668,7 @@ export default function NovaReceitaPage() {
                 {selectedClient && selectedClientAnimals.length > 0 ? (
                   <RxvField label="Paciente do tutor selecionado" className="md:col-span-2">
                     <select
-                      className="w-full rounded-xl border border-slate-800 bg-black/60 px-4 py-3.5 text-sm font-bold text-white outline-none transition-all focus:border-[#39ff14]/50 focus:ring-1 focus:ring-[#39ff14]/20"
+                      className="w-full rounded-xl border border-slate-800 bg-black/60 px-4 py-3.5 text-sm font-bold text-white outline-none transition-all focus:border-[color:color-mix(in_srgb,var(--rxv-primary)_50%,transparent)] focus:ring-1 focus:ring-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)]/20"
                       value={prescription.patient.patientRecordId ?? ''}
                       onChange={(e) => applyClientFromBank(selectedClient.id, e.target.value)}
                     >
@@ -1681,7 +1681,7 @@ export default function NovaReceitaPage() {
                   </RxvField>
                 ) : null}
                 {selectedClient && selectedClientAnimals.length === 0 ? (
-                  <p className="rounded-xl border border-[#3b6c2f]/60 bg-[#12270f] px-4 py-3 text-xs font-semibold text-[#a8e79b] md:col-span-2">
+                  <p className="rounded-xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_38%,var(--rxv-border))]/60 bg-[#12270f] px-4 py-3 text-xs font-semibold text-[#a8e79b] md:col-span-2">
                     Este tutor ainda não possui paciente cadastrado. Você pode preencher os dados do paciente manualmente abaixo.
                   </p>
                 ) : null}
@@ -1712,7 +1712,7 @@ export default function NovaReceitaPage() {
                   </RxvButton>
                 </div>
                 {cepLookupMessage && (
-                  <p className="mt-1 text-[10px] font-bold text-[#38ff14] uppercase tracking-tighter">
+                  <p className="mt-1 text-[10px] font-bold text-[color:var(--rxv-primary)] uppercase tracking-tighter">
                     {cepLookupMessage}
                   </p>
                 )}
@@ -1810,7 +1810,7 @@ export default function NovaReceitaPage() {
 
             {/* ── BLOCO B: PACIENTE ── */}
             <div className="mb-3 mt-5 flex items-center gap-2 rounded-xl border border-[#2f5a25] bg-[#142712] px-4 py-2.5">
-              <span className="material-symbols-outlined text-[18px] text-[#39ff14]">pets</span>
+              <span className="material-symbols-outlined text-[18px] text-[color:var(--rxv-primary)]">pets</span>
               <span className="text-xs font-black uppercase tracking-widest text-[color:var(--rxv-text)]">Paciente</span>
             </div>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -1823,7 +1823,7 @@ export default function NovaReceitaPage() {
               {selectedClient && selectedClientAnimals.length > 0 ? (
                 <RxvField label="Selecionar paciente deste tutor">
                   <select
-                    className="w-full rounded-xl border border-slate-800 bg-black/60 px-4 py-3.5 text-sm font-bold text-white outline-none transition-all focus:border-[#39ff14]/50 focus:ring-1 focus:ring-[#39ff14]/20"
+                    className="w-full rounded-xl border border-slate-800 bg-black/60 px-4 py-3.5 text-sm font-bold text-white outline-none transition-all focus:border-[color:color-mix(in_srgb,var(--rxv-primary)_50%,transparent)] focus:ring-1 focus:ring-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)]/20"
                     value={prescription.patient.patientRecordId ?? ''}
                     onChange={(e) => applyClientFromBank(selectedClient.id, e.target.value)}
                   >
@@ -1952,12 +1952,12 @@ export default function NovaReceitaPage() {
                     onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, weightKg: e.target.value } }))}
                   />
                   {patientWeights.length > 1 && (
-                    <div className="relative h-12 flex-1 rounded-lg border border-[#315d28] bg-black/40 overflow-hidden">
+                    <div className="relative h-12 flex-1 rounded-lg border border-[color:color-mix(in_srgb,var(--rxv-primary)_35%,var(--rxv-border))] bg-black/40 overflow-hidden">
                       <svg className="absolute inset-0 h-full w-full">
                         <path
                           d={sparklinePath(patientWeights, 240, 48)}
                           fill="none"
-                          stroke="#39ff14"
+                          stroke="var(--rxv-primary)"
                           strokeWidth="2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -1969,7 +1969,7 @@ export default function NovaReceitaPage() {
                       </div>
                     </div>
                   )}
-                  {loadingWeights && <span className="material-symbols-outlined animate-spin text-[#39ff14] text-sm">sync</span>}
+                  {loadingWeights && <span className="material-symbols-outlined animate-spin text-[color:var(--rxv-primary)] text-sm">sync</span>}
                 </div>
               </RxvField>
 
@@ -2003,7 +2003,7 @@ export default function NovaReceitaPage() {
               <label className="text-xs text-slate-400">
                 Modelo da receita normal
                 <select
-                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                   value={prescription.recommendations.standardTemplateId || activeTemplate?.id || ''}
                   onChange={(e) =>
                     updatePrescription((prev) => ({
@@ -2267,7 +2267,7 @@ export default function NovaReceitaPage() {
                 <label className="text-xs text-slate-400">
                   Tipo de farmácia da receita controlada
                   <select
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                     value={prescription.recommendations.specialControlPharmacy ?? 'veterinária'}
                     onChange={(e) =>
                       updatePrescription((prev) => ({
@@ -2287,7 +2287,7 @@ export default function NovaReceitaPage() {
                 <label className="text-xs text-slate-400">
                   Template da receita controlada
                   <select
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                     value={prescription.recommendations.specialControlTemplateId || specialControlTemplate?.id || ''}
                     onChange={(e) =>
                       updatePrescription((prev) => ({
@@ -2371,7 +2371,7 @@ export default function NovaReceitaPage() {
 
       {protocolModalOpen && (
         <div className="fixed inset-0 z-[82] flex items-center justify-center bg-black/70 px-4 py-8 backdrop-blur-sm" onClick={() => setProtocolModalOpen(false)}>
-          <div className="max-h-[92vh] w-full max-w-5xl overflow-hidden rounded-2xl border border-[#2f5b25] bg-[#13220f] text-slate-100 shadow-[0_0_40px_rgba(56,255,20,0.18)]" onClick={(e) => e.stopPropagation()}>
+          <div className="max-h-[92vh] w-full max-w-5xl overflow-hidden rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,var(--rxv-border))] bg-[#13220f] text-slate-100 shadow-[0_0_40px_rgba(56,255,20,0.18)]" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between border-b border-[#274b20] bg-[#11200e] px-5 py-4">
               <div>
                 <h2 className="text-lg font-bold">Visualizar lista de protocolos prontos</h2>
@@ -2383,7 +2383,7 @@ export default function NovaReceitaPage() {
             </div>
             <div className="max-h-[calc(92vh-72px)] overflow-y-auto p-5">
               <input
-                className="mb-4 w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1"
+                className="mb-4 w-full rounded-lg border border-[color:color-mix(in_srgb,var(--rxv-primary)_38%,var(--rxv-border))] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm outline-none ring-[color:var(--rxv-primary)] focus:ring-1"
                 value={protocolSearch}
                 onChange={(e) => setProtocolSearch(e.target.value)}
                 placeholder="Buscar protocolo..."
@@ -2392,7 +2392,7 @@ export default function NovaReceitaPage() {
                 {filteredProtocols.map((protocol) => {
                   const folder = protocolFolderMap.get(protocol.folderId)
                   return (
-                    <article key={protocol.id} className="rounded-xl border border-[#315d28] bg-[#132510] p-4">
+                    <article key={protocol.id} className="rounded-xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_35%,var(--rxv-border))] bg-[#132510] p-4">
                       <div className="flex flex-wrap items-start justify-between gap-3">
                         <div>
                           <h3 className="text-base font-bold text-white">{protocol.name}</h3>
@@ -2421,7 +2421,7 @@ export default function NovaReceitaPage() {
                       </div>
 
                       <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2">
-                        <div className="rounded-lg border border-[#315d28] bg-[#10210d] p-3">
+                        <div className="rounded-lg border border-[color:color-mix(in_srgb,var(--rxv-primary)_35%,var(--rxv-border))] bg-[#10210d] p-3">
                           <p className="mb-2 text-xs font-bold uppercase tracking-wide text-slate-400">Fármacos</p>
                           <ul className="space-y-1 text-sm text-slate-200">
                             {protocol.items.slice(0, 6).map((item) => (
@@ -2432,7 +2432,7 @@ export default function NovaReceitaPage() {
                             {protocol.items.length > 6 ? <li className="text-xs text-slate-400">+ {protocol.items.length - 6} itens</li> : null}
                           </ul>
                         </div>
-                        <div className="rounded-lg border border-[#315d28] bg-[#10210d] p-3">
+                        <div className="rounded-lg border border-[color:color-mix(in_srgb,var(--rxv-primary)_35%,var(--rxv-border))] bg-[#10210d] p-3">
                           <p className="mb-2 text-xs font-bold uppercase tracking-wide text-slate-400">Recomendações</p>
                           <ul className="space-y-1 text-sm text-slate-200">
                             {protocol.recommendations.slice(0, 4).map((line, idx) => (
@@ -2490,7 +2490,7 @@ export default function NovaReceitaPage() {
 
       {toast ? (
         <div className="fixed bottom-6 right-6 z-[85] rounded-lg border border-[#3b6f31] bg-[#1a2e16] px-4 py-3 shadow-[0_10px_40px_rgba(0,0,0,0.35)]">
-          <p className={`text-sm font-semibold ${toast.type === 'error' ? 'text-red-300' : toast.type === 'success' ? 'text-emerald-300' : 'text-slate-100'}`}>{toast.message}</p>
+          <p className={`text-sm font-semibold ${toast.type === 'error' ? 'text-red-300' : toast.type === 'success' ? 'text-sky-300' : 'text-slate-100'}`}>{toast.message}</p>
         </div>
       ) : null}
     </ReceituarioChrome>

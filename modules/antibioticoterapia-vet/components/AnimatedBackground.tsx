@@ -52,8 +52,8 @@ const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({ pillCount = 120
           duration: ((seed2 * 61) % 54) + 13.5,
           color: Math.floor(((seed1 % 1000) / 1000) * pillColors.length),
           rotation: (seed2 * 137) % 360,
-          opacity: ((seed5 * 29) % 20) / 100 + 0.05,
-          scale: ((seed1 * 47) % 20) / 10 + 0.4,
+          opacity: ((seed5 * 29) % 18) / 100 + 0.14,
+          scale: ((seed1 * 47) % 18) / 10 + 0.52,
         })
       }
       globalPills = initialPills
@@ -91,8 +91,8 @@ const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({ pillCount = 120
             duration: ((seed2 * 61) % 54) + 13.5,
             color: Math.floor(((seed1 % 1000) / 1000) * pillColors.length),
             rotation: (seed2 * 137) % 360,
-            opacity: ((seed5 * 29) % 20) / 100 + 0.05,
-            scale: ((seed1 * 47) % 20) / 10 + 0.4,
+            opacity: ((seed5 * 29) % 18) / 100 + 0.14,
+            scale: ((seed1 * 47) % 18) / 10 + 0.52,
           })
           lastPillTimeRef.current = currentTime
         }
@@ -121,9 +121,10 @@ const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({ pillCount = 120
               opacity: pill.opacity,
               transform: `rotate(${pill.rotation}deg) scale(${pill.scale})`,
               transition: 'transform 0.1s ease-out',
+              filter: 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.14))',
             }}
           >
-            <svg width="60" height="24" viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="72" height="28" viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M12 0C5.373 0 0 5.373 0 12C0 18.627 5.373 24 12 24H48C54.627 24 60 18.627 60 12C60 5.373 54.627 0 48 0H12Z"
                 fill={color.primary}

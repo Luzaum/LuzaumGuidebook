@@ -30,15 +30,82 @@ export interface AntibioticClass {
   [className: string]: Antibiotic[];
 }
 
+/** Fármaco citado com a justificativa naquela condição. */
+export interface DiseaseTreatmentDrug {
+  name: string
+  rationale: string
+}
+
+/**
+ * - `combinacao_simultanea`: os fármacos listados são usados em associação (mesmo período / conjunto).
+ * - `opcoes_exclusivas`: cada fármaco (ou subconjunto futuro) representa uma alternativa — escolher um esquema.
+ */
+export type TreatmentRegimeMode = 'combinacao_simultanea' | 'opcoes_exclusivas'
+
+export interface TreatmentRegime {
+  label?: string
+  mode: TreatmentRegimeMode
+  drugs: DiseaseTreatmentDrug[]
+}
+
+/** Bloco: 1ª linha, 2ª linha, 3ª linha… */
+export interface TreatmentLineBlock {
+  title: string
+  /** Como ler: associação vs opções, simultâneo vs sequencial, etc. */
+  presentation: string
+  regimes: TreatmentRegime[]
+}
+
+/** Conteúdo visual para o modal de fisiopatologia (tabelas, fluxos, destaques). */
+export interface PathophysiologyTable {
+  caption?: string
+  columns: string[]
+  rows: string[][]
+}
+
+export interface PathophysiologyFlowStep {
+  title: string
+  subtitle?: string
+}
+
+export interface PathophysiologySection {
+  id: string
+  title: string
+  lead?: string
+  paragraphs?: string[]
+  bullets?: string[]
+  highlightTerms?: { term: string; description: string }[]
+  table?: PathophysiologyTable
+  flow?: {
+    title?: string
+    steps: PathophysiologyFlowStep[]
+  }
+  callout?: {
+    kind: 'info' | 'clinical'
+    title?: string
+    text: string
+  }
+}
+
+export interface PathophysiologyVisual {
+  intro?: string
+  /** @deprecated opcional — preferir texto corrido nas seções */
+  keyConcepts?: { label: string; short: string }[]
+  sections: PathophysiologySection[]
+}
+
 export interface Disease {
   name: string
   pathogens: string
-  first_line: string[]
-  alternatives: string[]
+  firstLine: TreatmentLineBlock
+  secondLine?: TreatmentLineBlock
+  thirdLine?: TreatmentLineBlock
   duration: string
   notes: string
-  /** Texto curto alinhado ao CCIH / stewardship (opcional; preencher com auditoria). */
-  ccihSummary?: string
+  /** Fisiopatologia e quadro clínico completos (modal); conteúdo clássico/consensos, sem resumo forçado. */
+  pathophysiologyFull: string
+  /** Versão rica (tabelas, fluxogramas) para o mesmo modal; quando ausente, usa só pathophysiologyFull. */
+  pathophysiologyVisual?: PathophysiologyVisual
 }
 
 export interface DiseaseSystem {

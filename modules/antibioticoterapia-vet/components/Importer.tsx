@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { parseCSV } from '../utils/csvParser';
-import { AntibioticClass, DiseaseSystem } from '../types';
+import type { AntibioticClass, Disease, DiseaseSystem } from '../types'
 
 interface ImporterProps {
   onMergeAB: (data: AntibioticClass) => void;
@@ -70,11 +70,36 @@ const Importer: React.FC<ImporterProps> = ({ onMergeAB, onMergeDZ }) => {
         const sys = r[sysI]?.trim() || 'Outros';
         const name = r[nameI]?.trim();
         if (!name) continue;
-        const first = (r[firstI] || '').split(/;|\||,/).map(s => s.trim()).filter(Boolean);
-        const alt = (r[altI] || '').split(/;|\||,/).map(s => s.trim()).filter(Boolean);
-        const o = { name, pathogens: r[pathI] || '', first_line: first, alternatives: alt, duration: r[duraI] || '', notes: r[notesI] || '' };
-        out[sys] = out[sys] || [];
-        out[sys].push(o);
+        const first = (r[firstI] || '').split(/;|\||,/).map((s) => s.trim()).filter(Boolean)
+        const alt = (r[altI] || '').split(/;|\||,/).map((s) => s.trim()).filter(Boolean)
+        const o: Disease = {
+          name,
+          pathogens: r[pathI] || '',
+          duration: r[duraI] || '',
+          notes: r[notesI] || '',
+          pathophysiologyFull: '',
+          firstLine: {
+            title: '1ª linha de tratamento',
+            presentation:
+              'Dados importados de planilha: revise se os fármacos são opções excludentes ou associação; ajuste o texto e as justificativas no cadastro.',
+            regimes: [
+              {
+                mode: 'opcoes_exclusivas',
+                drugs: (first.length ? first : ['(definir na revisão)']).map((nm) => ({ name: nm, rationale: '' })),
+              },
+            ],
+          },
+          secondLine:
+            alt.length > 0
+              ? {
+                  title: '2ª linha de tratamento',
+                  presentation: 'Importado de planilha (coluna de alternativas).',
+                  regimes: [{ mode: 'opcoes_exclusivas', drugs: alt.map((nm) => ({ name: nm, rationale: '' })) }],
+                }
+              : undefined,
+        }
+        out[sys] = out[sys] || []
+        out[sys].push(o)
       }
       onMergeDZ(out);
       setMsg(`Doenças importadas: ${Object.values(out).flat().length}`);

@@ -805,7 +805,7 @@ function normalizeProtocolFolder(raw: Partial<RxProtocolFolder>, index: number):
   return {
     id: raw.id || uid('folder'),
     name: repairMojibake(raw.name || `PASTA ${index + 1}`),
-    color: raw.color || '#39ff14',
+    color: raw.color || '#3b82f6',
     icon: raw.icon || 'folder_open',
     sortOrder: raw.sortOrder || index + 1,
   }
@@ -1262,7 +1262,7 @@ export function createEmptyProtocol(folderId?: string): RxProtocol {
   }
 }
 
-export function createProtocolFolder(name: string, color = '#39ff14', icon = 'folder_open'): RxProtocolFolder {
+export function createProtocolFolder(name: string, color = '#3b82f6', icon = 'folder_open'): RxProtocolFolder {
   return {
     id: uid('folder'),
     name,

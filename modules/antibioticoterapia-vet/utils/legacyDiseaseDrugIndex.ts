@@ -1,6 +1,7 @@
 import type { Disease, DiseaseSystem } from '../types'
 import { canonicalDrugName } from './textUtils'
 import { safeList } from './dataUtils'
+import { collectDrugNamesFromDisease } from './diseaseTreatment'
 
 /** Extrai nomes de ATB a partir de uma linha do catálogo de doenças (combinações comuns). */
 export function tokenizeDrugLine(line: string): string[] {
@@ -31,8 +32,7 @@ export function buildDrugToDiseasesIndex(dzDict: DiseaseSystem): Map<string, Dis
   const map = new Map<string, DiseaseRef[]>()
   for (const [system, diseases] of Object.entries(dzDict)) {
     for (const d of safeList(diseases) as Disease[]) {
-      const fields = [...safeList(d.first_line), ...safeList(d.alternatives)]
-      for (const raw of fields) {
+      for (const raw of collectDrugNamesFromDisease(d)) {
         for (const token of tokenizeDrugLine(String(raw))) {
           const key = canonicalDrugName(token)
           if (!key) continue

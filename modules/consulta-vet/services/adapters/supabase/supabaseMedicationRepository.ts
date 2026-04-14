@@ -24,6 +24,7 @@ import {
   mapCategoryRow,
   mapMedicationRow,
 } from './editorialRecordMappers';
+import { filterPublicMedications } from '../../../constants/publicCatalog';
 
 function matchesMedicationQuery(record: MedicationRecord, query: string): boolean {
   const normalized = query.toLowerCase();
@@ -102,7 +103,7 @@ async function fetchSupabaseMedications(includeDrafts = false): Promise<Medicati
 export class SupabaseMedicationRepository implements MedicationRepository {
   async list(options?: { includeDrafts?: boolean }): Promise<MedicationRecord[]> {
     if (!hasSupabaseEnv()) {
-      return localMedicationRepository.list();
+      return localMedicationRepository.list(options);
     }
 
     try {
@@ -110,16 +111,17 @@ export class SupabaseMedicationRepository implements MedicationRepository {
         fetchSupabaseMedications(Boolean(options?.includeDrafts)),
         'carregar medicamentos editoriais'
       );
-      return mergeBySlug(medicationsSeed, remote).sort((left, right) =>
+      const merged = mergeBySlug(medicationsSeed, remote).sort((left, right) =>
         left.title.localeCompare(right.title, 'pt-BR')
       );
+      return filterPublicMedications(merged, Boolean(options?.includeDrafts));
     } catch {
-      return localMedicationRepository.list();
+      return localMedicationRepository.list(options);
     }
   }
 
-  async getBySlug(slug: string): Promise<MedicationRecord | null> {
-    const items = await this.list();
+  async getBySlug(slug: string, options?: { includeDrafts?: boolean }): Promise<MedicationRecord | null> {
+    const items = await this.list(options);
     return items.find((item) => item.slug === slug) || null;
   }
 
@@ -238,7 +240,7 @@ export class SupabaseMedicationRepository implements MedicationRepository {
       }
     }
 
-    const result = await this.getBySlug(normalizedSlug);
+    const result = await this.getBySlug(normalizedSlug, { includeDrafts: true });
     if (!result) {
       throw new Error('Medicamento salvo, mas não foi possível reler o registro editorial.');
     }

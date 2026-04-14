@@ -1130,7 +1130,7 @@ export default function ClientesPage() {
                     {isBulkMode && (
                       <input
                         type="checkbox"
-                        className="h-4 w-4 rounded border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] text-[#61eb48] focus:ring-0 focus:ring-offset-0"
+                        className="h-4 w-4 rounded border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] text-[color:var(--rxv-primary)] focus:ring-0 focus:ring-offset-0"
                         checked={selectedTutorIds.has(tutor.tutorRecordId)}
                         onChange={() => toggleTutorSelection(tutor.tutorRecordId)}
                       />
@@ -1138,7 +1138,7 @@ export default function ClientesPage() {
                     <div
                       role="button"
                       tabIndex={isBulkMode || isDeleting ? -1 : 0}
-                      className={`flex-1 rounded-xl border px-3 py-2 text-left transition-all ${tutor.tutorRecordId === selectedId ? 'border-[#61eb48]/45 bg-[#61eb48]/10' : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/60'
+                      className={`flex-1 rounded-xl border px-3 py-2 text-left transition-all ${tutor.tutorRecordId === selectedId ? 'border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)]' : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/60'
                         } ${(isBulkMode || isDeleting) ? 'opacity-60 cursor-default' : 'hover:border-[color:var(--rxv-primary)]/40 pointer-events-auto cursor-pointer'}`}
                       onClick={() => {
                         if (!isBulkMode && !isDeleting) selectSupabaseTutor(tutor)
@@ -1184,7 +1184,7 @@ export default function ClientesPage() {
                   <button
                     type="button"
                     key={client.id}
-                    className={`w-full rounded-xl border px-3 py-2 text-left ${client.id === selectedId ? 'border-[#61eb48]/45 bg-[#61eb48]/10' : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/60'
+                    className={`w-full rounded-xl border px-3 py-2 text-left ${client.id === selectedId ? 'border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)]' : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/60'
                       }`}
                     onClick={() => selectClient(client.id)}
                   >
@@ -1499,7 +1499,7 @@ export default function ClientesPage() {
                             <rect x="0" y="0" width="360" height="120" fill="transparent" />
                             <line x1="20" y1="100" x2="340" y2="100" stroke="rgba(151,206,141,0.25)" strokeWidth="1" />
                             {weightLine ? (
-                              <path d={weightLine} fill="none" stroke="#61eb48" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+                              <path d={weightLine} fill="none" stroke="var(--rxv-primary)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
                             ) : (
                               <text x="20" y="60" fill="rgba(151,206,141,0.72)" fontSize="12">
                                 Sem dados de peso para plotar.

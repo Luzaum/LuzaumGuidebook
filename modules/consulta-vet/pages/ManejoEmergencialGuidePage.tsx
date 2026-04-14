@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
+import { ConsultaVetSurface } from '../components/layout/ConsultaVetSurface';
 import { EmergencyGuideReader } from '../components/emergency/EmergencyGuideReader';
 import { getEmergencyGuideRepository } from '../services/emergencyGuideRepository';
 import { EmergencyGuide } from '../types/emergencyGuide';
@@ -74,10 +75,10 @@ export function ManejoEmergencialGuidePage() {
         <span className="truncate text-foreground">{guide.title}</span>
       </nav>
 
-      <div className="rounded-[28px] border border-border/80 bg-card/80 p-5 shadow-sm md:p-8">
-        <p className="text-sm font-medium text-muted-foreground">{guide.subtitle}</p>
-        <p className="mt-2 max-w-[95ch] text-[15px] leading-7 text-foreground/85">{guide.description}</p>
-      </div>
+      <ConsultaVetSurface accent="orange" className="p-5 shadow-md md:p-8">
+        <p className="text-sm font-semibold text-orange-800 dark:text-orange-200">{guide.subtitle}</p>
+        <p className="mt-2 max-w-[95ch] text-[15px] leading-7 text-foreground/90">{guide.description}</p>
+      </ConsultaVetSurface>
 
       <EmergencyGuideReader guide={guide} />
     </div>

@@ -33,13 +33,13 @@ const SCREEN_ICONS: Record<Screen, React.ComponentType<{ className?: string }>> 
 
 // Helper Components defined outside the main App component
 const Header = ({ title, onBack, onHome }: { title: string; onBack?: () => void; onHome?: () => void; }) => (
-    <header className="bg-white shadow-md p-4 flex items-center justify-between sticky top-0 z-10">
-        <div className="flex items-center">
-            {onBack && <button onClick={onBack} className="text-slate-700 hover:text-slate-900 mr-4 p-2 rounded-full hover:bg-slate-100 font-semibold">&larr; Voltar</button>}
-            <PawIcon className="h-8 w-8 text-teal-600 mr-3" />
-            <h1 className="text-2xl font-bold text-slate-800">{title}</h1>
+    <header className="sticky top-0 z-10 flex flex-wrap items-center justify-between gap-2 bg-white p-3 shadow-md sm:p-4">
+        <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
+            {onBack && <button type="button" onClick={onBack} className="shrink-0 rounded-full p-2 font-semibold text-slate-700 hover:bg-slate-100 hover:text-slate-900">&larr; Voltar</button>}
+            <PawIcon className="h-7 w-7 shrink-0 text-teal-600 sm:h-8 sm:w-8" />
+            <h1 className="min-w-0 truncate text-lg font-bold text-slate-800 sm:text-2xl">{title}</h1>
         </div>
-        {onHome && <button onClick={onHome} className="text-slate-700 hover:text-slate-900 p-2 rounded-full hover:bg-slate-100 font-semibold">Início</button>}
+        {onHome && <button type="button" onClick={onHome} className="shrink-0 rounded-full p-2 font-semibold text-slate-700 hover:bg-slate-100 hover:text-slate-900">Início</button>}
     </header>
 );
 

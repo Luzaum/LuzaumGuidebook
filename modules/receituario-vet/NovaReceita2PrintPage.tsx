@@ -176,7 +176,7 @@ function EditorIdentification({
                 <p className="text-sm text-slate-500">Nenhum tutor ou paciente selecionado.</p>
                 <Link
                     to="/receituario-vet/nova-receita-2"
-                    className="mt-2 inline-block text-xs text-[#39ff14] hover:underline"
+                    className="mt-2 inline-block text-xs text-[color:var(--rxv-primary)] hover:underline"
                 >
                     ← Voltar ao editor para selecionar
                 </Link>
@@ -311,7 +311,7 @@ function EditorRecommendations({
         <div className="space-y-3">
             <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Recomendações gerais</p>
             <textarea
-                className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2.5 text-sm text-white placeholder:text-slate-600 focus:border-[#39ff14]/40 focus:outline-none"
+                className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2.5 text-sm text-white placeholder:text-slate-600 focus:border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)] focus:outline-none"
                 rows={8}
                 placeholder="Digite orientações ao tutor..."
                 value={state.recommendations}
@@ -486,7 +486,7 @@ function EditorItem({
                     <button
                         type="button"
                         onClick={openDoseModal}
-                        className="shrink-0 rounded-lg border border-[#39ff14]/40 bg-[#39ff14]/10 px-3 py-2 text-xs font-bold text-[#39ff14] hover:bg-[#39ff14]/20 transition-colors"
+                        className="shrink-0 rounded-lg border border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] px-3 py-2 text-xs font-bold text-[color:var(--rxv-primary)] hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_20%,transparent)] transition-colors"
                     >
                         Editar dose
                     </button>
@@ -500,8 +500,8 @@ function EditorItem({
 
                 {/* Modal de edição de dose */}
                 {doseModalOpen && (
-                    <div className="rounded-xl border border-[#39ff14]/30 bg-[#0d1f0b] p-4 space-y-4">
-                        <p className="text-xs font-black uppercase tracking-widest text-[#39ff14]">Editar dose</p>
+                    <div className="rounded-xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] bg-[#0d1f0b] p-4 space-y-4">
+                        <p className="text-xs font-black uppercase tracking-widest text-[color:var(--rxv-primary)]">Editar dose</p>
 
                         {regimenDoseRange && (
                             <div className="rounded-lg border border-slate-700 bg-black/30 px-3 py-2">
@@ -523,7 +523,7 @@ function EditorItem({
                             </Field>
                             <Field label="Unidade">
                                 <select
-                                    className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white focus:border-[#39ff14]/40 focus:outline-none"
+                                    className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white focus:border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)] focus:outline-none"
                                     value={doseUnit}
                                     onChange={(e) => setDoseUnit(e.target.value)}
                                 >
@@ -542,7 +542,7 @@ function EditorItem({
                             <button
                                 type="button"
                                 onClick={applyDose}
-                                className="flex-1 rounded-lg bg-[#39ff14] px-4 py-2 text-sm font-bold text-[#0f1d12] hover:bg-[#2bd010] transition-colors"
+                                className="flex-1 rounded-lg bg-[color:var(--rxv-primary)] px-4 py-2 text-sm font-bold text-[color:var(--rxv-on-primary)] hover:brightness-110 transition-colors"
                             >
                                 Aplicar
                             </button>
@@ -564,7 +564,7 @@ function EditorItem({
 
                 <Field label="Via de administração">
                     <select
-                        className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white focus:border-[#39ff14]/40 focus:outline-none"
+                        className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white focus:border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)] focus:outline-none"
                         value={item.route || 'VO'}
                         onChange={(e) => setField('route', e.target.value)}
                     >
@@ -579,7 +579,7 @@ function EditorItem({
                 {/* Modo de frequência */}
                 <Field label="Modo de frequência">
                     <select
-                        className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white focus:border-[#39ff14]/40 focus:outline-none"
+                        className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white focus:border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)] focus:outline-none"
                         value={item.frequencyMode || 'times_per_day'}
                         onChange={(e) => {
                             const mode = e.target.value as 'times_per_day' | 'interval_hours'
@@ -628,7 +628,7 @@ function EditorItem({
                 ) : (
                     <Field label="Frequência">
                         <select
-                            className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white focus:border-[#39ff14]/40 focus:outline-none"
+                            className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white focus:border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)] focus:outline-none"
                             value={item.timesPerDay ? String(item.timesPerDay) : ''}
                             onChange={(e) => {
                                 const times = e.target.value ? Number(e.target.value) : undefined
@@ -667,7 +667,7 @@ function EditorItem({
 
                 <Field label="Modo de duração">
                     <select
-                        className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white focus:border-[#39ff14]/40 focus:outline-none"
+                        className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white focus:border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)] focus:outline-none"
                         value={item.durationMode || 'fixed_days'}
                         onChange={(e) => {
                             const mode = e.target.value as typeof item.durationMode
@@ -714,7 +714,7 @@ function EditorItem({
                         </Field>
                         <Field label="Unidade">
                             <select
-                                className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white focus:border-[#39ff14]/40 focus:outline-none"
+                                className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white focus:border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)] focus:outline-none"
                                 value={item.durationUnit || 'dias'}
                                 onChange={(e) => {
                                     const unit = e.target.value
@@ -756,7 +756,7 @@ function EditorItem({
 
                 <Field label="Instruções adicionais de uso (opcional)">
                     <textarea
-                        className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:border-[#39ff14]/40 focus:outline-none"
+                        className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)] focus:outline-none"
                         rows={3}
                         placeholder="Instruções específicas para o tutor..."
                         value={item.instructions || ''}
@@ -769,7 +769,7 @@ function EditorItem({
 
                 <Field label="Cautelas (uma por linha)">
                     <textarea
-                        className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:border-[#39ff14]/40 focus:outline-none"
+                        className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)] focus:outline-none"
                         rows={2}
                         placeholder={`Não usar em fêmeas prenhes\nMonitorar função renal`}
                         value={(item.cautions || []).join('\n')}
@@ -800,7 +800,7 @@ function Input(props: React.InputHTMLAttributes<HTMLInputElement>) {
     return (
         <input
             {...props}
-            className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:border-[#39ff14]/40 focus:outline-none"
+            className="w-full rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)] focus:outline-none"
         />
     )
 }
@@ -1056,7 +1056,7 @@ export default function NovaReceita2PrintPage() {
                     <p className="text-slate-400 mb-4">Nenhuma receita carregada para revisão.</p>
                     <Link
                         to="/receituario-vet/nova-receita-2"
-                        className="rounded-lg border border-[#39ff14]/40 px-4 py-2 text-sm font-bold text-[#39ff14] hover:bg-[#39ff14]/10"
+                        className="rounded-lg border border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)] px-4 py-2 text-sm font-bold text-[color:var(--rxv-primary)] hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)]"
                     >
                         ← Voltar ao editor
                     </Link>
@@ -1104,7 +1104,7 @@ export default function NovaReceita2PrintPage() {
                     <button
                         type="button"
                         disabled={isExporting}
-                        className="rounded-lg bg-[#38ff14] px-3 py-2 text-sm font-bold text-[#10200d] hover:bg-[#2bd010] disabled:opacity-50"
+                        className="rounded-lg bg-[color:var(--rxv-primary)] px-3 py-2 text-sm font-bold text-[color:var(--rxv-on-primary)] hover:brightness-110 disabled:opacity-50"
                         onClick={handleDownloadPdf}
                     >
                         {isExporting ? 'Gerando...' : '⬇ Exportar PDF'}
@@ -1135,15 +1135,15 @@ export default function NovaReceita2PrintPage() {
                                 {!editorFocus && (
                                     <div className="space-y-2 text-xs text-slate-500 mt-3">
                                         <p className="flex items-center gap-2">
-                                            <span className="inline-block w-3 h-3 rounded-full border border-[#39ff14]/50 bg-[#39ff14]/10" />
+                                            <span className="inline-block w-3 h-3 rounded-full border border-[color:color-mix(in_srgb,var(--rxv-primary)_50%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)]" />
                                             Clique em <strong className="text-slate-400">Identificação</strong> para editar tutor/paciente
                                         </p>
                                         <p className="flex items-center gap-2">
-                                            <span className="inline-block w-3 h-3 rounded-full border border-[#39ff14]/50 bg-[#39ff14]/10" />
+                                            <span className="inline-block w-3 h-3 rounded-full border border-[color:color-mix(in_srgb,var(--rxv-primary)_50%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)]" />
                                             Clique em <strong className="text-slate-400">Recomendações</strong> para editar orientações
                                         </p>
                                         <p className="flex items-center gap-2">
-                                            <span className="inline-block w-3 h-3 rounded-full border border-[#39ff14]/50 bg-[#39ff14]/10" />
+                                            <span className="inline-block w-3 h-3 rounded-full border border-[color:color-mix(in_srgb,var(--rxv-primary)_50%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)]" />
                                             Clique em qualquer <strong className="text-slate-400">medicamento</strong> para editar dose/instrução
                                         </p>
                                     </div>
@@ -1158,7 +1158,7 @@ export default function NovaReceita2PrintPage() {
                                         type="button"
                                         onClick={() => handleZoneSelect(zone)}
                                         className={`rounded-lg border px-3 py-1.5 text-xs font-bold transition-all ${activeZone === zone && !selectedItemId
-                                            ? 'border-[#39ff14]/60 bg-[#39ff14]/10 text-[#39ff14]'
+                                            ? 'border-[color:color-mix(in_srgb,var(--rxv-primary)_60%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] text-[color:var(--rxv-primary)]'
                                             : 'border-slate-700 bg-slate-800/30 text-slate-400 hover:border-slate-600 hover:text-slate-200'
                                             }`}
                                     >
@@ -1171,7 +1171,7 @@ export default function NovaReceita2PrintPage() {
                                         type="button"
                                         onClick={() => handleItemSelect(item.id)}
                                         className={`rounded-lg border px-3 py-1.5 text-xs font-bold transition-all ${selectedItemId === item.id
-                                            ? 'border-[#39ff14]/60 bg-[#39ff14]/10 text-[#39ff14]'
+                                            ? 'border-[color:color-mix(in_srgb,var(--rxv-primary)_60%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] text-[color:var(--rxv-primary)]'
                                             : 'border-slate-700 bg-slate-800/30 text-slate-400 hover:border-slate-600 hover:text-slate-200'
                                             }`}
                                     >
@@ -1280,7 +1280,7 @@ export default function NovaReceita2PrintPage() {
 
                 {/* Toast */}
                 {toast && (
-                    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 rounded-xl border border-[#3b6c2f] bg-[#12230f] px-6 py-3 text-sm font-semibold text-[#9eff8f] shadow-xl print:hidden">
+                    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 rounded-xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_38%,var(--rxv-border))] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-6 py-3 text-sm font-semibold text-[color:color-mix(in_srgb,var(--rxv-primary)_78%,#f1f5f9)] shadow-xl print:hidden">
                         {toast}
                     </div>
                 )}
@@ -1319,7 +1319,7 @@ export default function NovaReceita2PrintPage() {
                 </div>
 
                 {toast && (
-                    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 rounded-xl border border-[#3b6c2f] bg-[#12230f] px-6 py-3 text-sm font-semibold text-[#9eff8f] shadow-xl">
+                    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 rounded-xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_38%,var(--rxv-border))] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-6 py-3 text-sm font-semibold text-[color:color-mix(in_srgb,var(--rxv-primary)_78%,#f1f5f9)] shadow-xl">
                         {toast}
                     </div>
                 )}

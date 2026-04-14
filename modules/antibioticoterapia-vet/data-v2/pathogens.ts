@@ -31,19 +31,26 @@ export const PATHOGEN_PROFILES_V2: Record<string, PathogenProfileV2> = {
     slug: 'staphylococcus-aureus',
     label: 'Staphylococcus aureus',
     kind: 'species',
-    synonyms: ['S. aureus', 'estafilococo aureus', 'MRSA'],
-    habitatSummary: 'Pode colonizar narinas, pele e feridas; relevância hospitalar e comunitária conforme contexto.',
+    synonyms: ['S. aureus', 'estafilococo dourado', 'MRSA', 'estafilococo resistente a meticilina'],
+    habitatSummary:
+      'Coco Gram-positivo facultativamente anaeróbio. Coloniza de forma assintomática narinas, pele e região perineal (humanos e animais); pode contaminar feridas e dispositivos. A importância epidemiológica varia: em ambiente hospitalar há vigilância de cepas multirresistentes e precauções de contato; na comunidade o perfil de sensibilidade costuma ser distinto. Em medicina veterinária também ocorre em cães e gatos; o estafilococo mais típico de pele canina é muitas vezes Staphylococcus pseudintermedius — o laboratório diferencia espécies.',
     clinicalRoleSummary:
-      'Patógeno de pele/tecido mole, osteomielite, septicemia e focos profundos; gravidade depende do sítio e do hospedeiro.',
+      'Quando há correlação clínica e laboratorial, pode atuar como patógeno em piodermites e infecções de partes moles, artrite séptica, osteomielite, infecção de sítio cirúrgico, ITU (com origem ascendente ou hematogênica), pneumonia aspirativa em contextos específicos e bacteremia. A gravidade depende do foco, da extensão, da presença de corpo estranho ou implante e do estado imunológico do paciente — não basta o isolamento da cultura sem o quadro.',
     resistanceHighlights: [
-      'MRSA exige cobertura e isolamento conforme protocolo local.',
-      'Beta-lactâmicos clássicos frequentemente inadequados empiricamente se MRSA suspeito ou confirmado.',
+      'O perfil MRSA (resistência a meticilina ou oxacilina) implica que beta-lactâmicos clássicos não são opção empírica adequada quando a resistência já está confirmada ou é muito provável.',
+      'A decisão empírica inicial deve alinhar-se ao protocolo local (mapa de resistência, perfil comunitário versus hospitalar) e ser revisada com o antibiograma.',
+      'Em ambiente hospitalar, MRSA costuma acionar precauções de contato e comunicação entre serviços; confirme o fluxo da sua instituição.',
     ],
     stewardshipBullets: [
-      'Hemocultura e material de foco antes de mudanças repetidas de esquema.',
-      'Descalonar após identificação e desbridamento quando aplicável.',
+      'Antes de trocar repetidamente o esquema antimicrobiano, garanta hemoculturas (se bacteremia suspeita) e material representativo do foco (pus, tecido, líquido articular, etc.), conforme indicação.',
+      'Após identificação do germe, sensibilidade e controle do foco (drenagem, desbridamento, remoção de corpo estranho), desescalone para o espectro mais estreito compatível com a evolução.',
+      'Colonização nasal ou superficial sem doença compatível não justifica, por si só, tratamento prolongado — evita pressão seletiva desnecessária.',
     ],
-    samplingNotes: ['Múltiplas hemoculturas quando sepse; material de foco sempre que possível.'],
+    samplingNotes: [
+      'Em suspeita de bacteremia ou endocardite: coletar hemoculturas em séries (horários escalonados), seguindo o protocolo laboratorial (volume por frasco, número de pares).',
+      'Para infecção de pele/partes moles: preferir aspirado, biópsia ou swab profundo de lesão representativa a swab superficial de crosta isolada, quando o quadro permitir.',
+      'Registrar sítio e data; resultados devem ser confrontados com o quadro clínico atual (não tratar culturas antigas “por hábito”).',
+    ],
     referenceKeys: ['ref_registry.microbiology_v2_general'],
   },
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Database, FileJson, Loader2 } from 'lucide-react';
+import { ConsultaVetPageHero } from '../components/layout/ConsultaVetPageHero';
 import { EditorialPermissionGate } from '../components/editorial/EditorialPermissionGate';
 import { useConsultaVetEditorialAccess } from '../hooks/useConsultaVetEditorialAccess';
 import { ImportEntityType, ImportPreviewItem } from '../types/import';
@@ -111,16 +112,13 @@ export function EditorialImportPage() {
 
     return (
         <div className="mx-auto w-full max-w-5xl space-y-8 p-4 md:p-8">
-            <header className="rounded-[28px] border border-border bg-card p-6 shadow-sm md:p-8">
-                <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                    <div>
-                        <h1 className="text-3xl font-bold tracking-tight text-foreground">Importar via JSON</h1>
-                        <p className="mt-2 max-w-3xl text-sm text-muted-foreground">
-                            Ferramenta administrativa para upload massivo e atualização por batch gerados por IAs (NeuroVet, GenAI).
-                        </p>
-                    </div>
-                </div>
-            </header>
+            <ConsultaVetPageHero
+                eyebrow="Editorial"
+                title="Importar via JSON"
+                description="Ferramenta administrativa para upload massivo e atualização por batch gerados por IAs (NeuroVet, GenAI)."
+                icon={Database}
+                accent="cyan"
+            />
 
             <EditorialPermissionGate isLoading={isLoadingAccess} canManage={canManage}>
 

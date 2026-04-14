@@ -1,5 +1,5 @@
 
-import { Antibiotic, AntibioticClass, Disease, DiseaseSystem } from '../types';
+import { Antibiotic, AntibioticClass, Disease, DiseaseSystem, PathophysiologyVisual } from '../types';
 import { canonicalDrugName, canonicalDiseaseName } from './textUtils';
 
 export const safeList = <T,>(v: T[] | undefined, fb: T[] = []): T[] => Array.isArray(v) ? v : fb;
@@ -8,6 +8,16 @@ const mergeTextPref = (a: string | undefined, b: string | undefined): string => 
   const strA = String(a || '').trim();
   const strB = String(b || '').trim();
   return strB.length > strA.length ? strB : strA;
+}
+
+const pickRicherPathophysiologyVisual = (
+  a: PathophysiologyVisual | undefined,
+  b: PathophysiologyVisual | undefined,
+): PathophysiologyVisual | undefined => {
+  const sa = a ? JSON.stringify(a).length : 0
+  const sb = b ? JSON.stringify(b).length : 0
+  if (sb > sa) return b
+  return a ?? b
 }
 
 // Deduplicates a list of drug names, respecting aliases.
@@ -65,38 +75,42 @@ export function dedupeABDict(dict: AntibioticClass): AntibioticClass {
 
 // Merges and deduplicates disease dictionaries.
 export function dedupeDZDict(dict: DiseaseSystem): DiseaseSystem {
-  const map = new Map<string, { sys: string, data: Disease }>();
+  const map = new Map<string, { sys: string; data: Disease }>()
   for (const sys of Object.keys(dict || {})) {
     for (const dz of dict[sys] || []) {
-      const key = canonicalDiseaseName(dz.name);
-      if (!key) continue;
-      const prev = map.get(key);
+      const key = canonicalDiseaseName(dz.name)
+      if (!key) continue
+      const prev = map.get(key)
       if (!prev) {
-        map.set(key, { sys, data: { ...dz, first_line: uniqDrugList(dz.first_line), alternatives: uniqDrugList(dz.alternatives) } });
+        map.set(key, { sys, data: { ...dz } })
       } else {
-        const score = (o: object) => JSON.stringify(o || '').length;
-        const keepPrev = score(prev.data) >= score(dz);
-        const base = keepPrev ? prev.data : dz;
-        const other = keepPrev ? dz : prev.data;
+        const score = (o: object) => JSON.stringify(o || '').length
+        const keepPrev = score(prev.data) >= score(dz)
+        const base = keepPrev ? prev.data : dz
+        const other = keepPrev ? dz : prev.data
         const merged: Disease = {
+          ...base,
           name: base.name,
           pathogens: mergeTextPref(base.pathogens, other.pathogens),
-          first_line: uniqDrugList([...safeList(base.first_line), ...safeList(other.first_line)]),
-          alternatives: uniqDrugList([...safeList(base.alternatives), ...safeList(other.alternatives)]),
           duration: mergeTextPref(base.duration, other.duration),
-          notes: mergeTextPref(base.notes, other.notes)
-        };
-        map.set(key, { sys: keepPrev ? prev.sys : sys, data: merged });
+          notes: mergeTextPref(base.notes, other.notes),
+          pathophysiologyFull: mergeTextPref(base.pathophysiologyFull, other.pathophysiologyFull),
+          pathophysiologyVisual: pickRicherPathophysiologyVisual(base.pathophysiologyVisual, other.pathophysiologyVisual),
+          firstLine: other.firstLine && score(other.firstLine) > score(base.firstLine) ? other.firstLine : base.firstLine,
+          secondLine: other.secondLine ? (base.secondLine ? base.secondLine : other.secondLine) : base.secondLine,
+          thirdLine: other.thirdLine ? (base.thirdLine ? base.thirdLine : other.thirdLine) : base.thirdLine,
+        }
+        map.set(key, { sys: keepPrev ? prev.sys : sys, data: merged })
       }
     }
   }
-  const out: DiseaseSystem = {};
+  const out: DiseaseSystem = {}
   for (const { sys, data } of map.values()) {
-    out[sys] = out[sys] || [];
-    out[sys].push(data);
+    out[sys] = out[sys] || []
+    out[sys].push(data)
   }
   for (const k of Object.keys(out)) {
-    out[k].sort((a, b) => a.name.localeCompare(b.name, 'pt'));
+    out[k].sort((a, b) => a.name.localeCompare(b.name, 'pt'))
   }
-  return out;
+  return out
 }

@@ -64,8 +64,9 @@ export default function SummaryStep() {
   const [programmedStartDate, setProgrammedStartDate] = useState(
     diet.programmedFeeding?.startDate ?? new Date().toISOString().slice(0, 10),
   )
-  const [printRangeMode, setPrintRangeMode] = useState<'single_day' | 'next_3_days'>(
-    diet.programmedFeeding?.printRangeMode ?? 'single_day',
+  const initialPrintMode = diet.programmedFeeding?.printRangeMode
+  const [printRangeMode, setPrintRangeMode] = useState<'single_day' | 'next_9_days'>(() =>
+    initialPrintMode === 'single_day' ? 'single_day' : 'next_9_days',
   )
 
   const species = patient.species ?? 'dog'
@@ -92,7 +93,7 @@ export default function SummaryStep() {
     const start = new Date(`${programmedStartDate}T00:00:00`)
     if (Number.isNaN(start.getTime())) return [new Date().toISOString().slice(0, 10)]
     if (printRangeMode === 'single_day') return [programmedStartDate]
-    return [0, 1, 2].map((offset) => {
+    return [0, 1, 2, 3, 4, 5, 6, 7, 8].map((offset) => {
       const next = new Date(start)
       next.setDate(next.getDate() + offset)
       const y = next.getFullYear()
@@ -224,12 +225,23 @@ export default function SummaryStep() {
                 <CardTitle className="text-2xl text-foreground dark:text-white">Resumo do plano nutricional</CardTitle>
                 <p className="mt-1 text-sm text-muted-foreground">Resumo clínico, formulação e alimentação programada.</p>
               </div>
-              <div className="flex flex-wrap gap-2">
-                <Button variant="outline" size="sm" className="gap-2" onClick={() => printableReport && printReportPdf(printableReport)}>
-                  <Printer className="h-4 w-4" /> Imprimir PDF
+              <div className="flex flex-wrap items-center justify-end gap-2 rounded-xl border border-border/70 bg-muted/35 p-1.5 shadow-sm dark:border-white/10 dark:bg-black/25">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="gap-2 text-foreground hover:bg-muted/80 dark:text-white dark:hover:bg-white/10"
+                  onClick={() => printableReport && printReportPdf(printableReport)}
+                >
+                  <Printer className="h-4 w-4 shrink-0" />
+                  Imprimir
                 </Button>
-                <Button size="sm" className="gap-2" onClick={() => printableReport && exportReportPdf(printableReport)}>
-                  <Download className="h-4 w-4" /> Exportar PDF
+                <Button
+                  size="sm"
+                  className="gap-2 bg-orange-500 text-white shadow-sm hover:bg-orange-600 dark:bg-orange-600 dark:hover:bg-orange-500"
+                  onClick={() => printableReport && exportReportPdf(printableReport)}
+                >
+                  <Download className="h-4 w-4 shrink-0" />
+                  Exportar PDF
                 </Button>
               </div>
             </div>
@@ -366,33 +378,38 @@ export default function SummaryStep() {
                         />
                       </div>
                       <div className="space-y-2">
-                        <p className="text-xs font-medium text-muted-foreground">Intervalo de impressão</p>
-                        <div className="grid grid-cols-2 gap-2">
+                        <p className="text-xs font-medium text-muted-foreground">Ficha no PDF</p>
+                        <div className="grid gap-2 sm:grid-cols-2">
+                          <button
+                            type="button"
+                            onClick={() => setPrintRangeMode('next_9_days')}
+                            className={`rounded-xl border px-3 py-2 text-left text-xs transition-all ${
+                              printRangeMode === 'next_9_days'
+                                ? 'border-orange-400/60 bg-orange-500/12 text-foreground dark:text-white'
+                                : 'border-border bg-muted/40 text-muted-foreground hover:border-orange-500/40 hover:text-foreground dark:border-white/10 dark:bg-black/10 dark:hover:text-white'
+                            }`}
+                          >
+                            Próximos 9 dias (recomendado)
+                            <span className="mt-1 block text-[10px] text-muted-foreground">3 dias por folha · 3 folhas</span>
+                          </button>
                           <button
                             type="button"
                             onClick={() => setPrintRangeMode('single_day')}
-                            className={`rounded-xl border px-3 py-2 text-xs transition-all ${
+                            className={`rounded-xl border px-3 py-2 text-left text-xs transition-all ${
                               printRangeMode === 'single_day'
                                 ? 'border-orange-400/60 bg-orange-500/12 text-foreground dark:text-white'
                                 : 'border-border bg-muted/40 text-muted-foreground hover:border-orange-500/40 hover:text-foreground dark:border-white/10 dark:bg-black/10 dark:hover:text-white'
                             }`}
                           >
-                            Imprimir apenas esta data
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => setPrintRangeMode('next_3_days')}
-                            className={`rounded-xl border px-3 py-2 text-xs transition-all ${
-                              printRangeMode === 'next_3_days'
-                                ? 'border-orange-400/60 bg-orange-500/12 text-foreground dark:text-white'
-                                : 'border-border bg-muted/40 text-muted-foreground hover:border-orange-500/40 hover:text-foreground dark:border-white/10 dark:bg-black/10 dark:hover:text-white'
-                            }`}
-                          >
-                            Imprimir para os próximos 3 dias
+                            Só o dia inicial
+                            <span className="mt-1 block text-[10px] text-muted-foreground">Uma folha de ficha</span>
                           </button>
                         </div>
                         <p className="text-[11px] text-muted-foreground">
-                          Fichas geradas: {generatedFeedingDates.map((date) => new Date(`${date}T00:00:00`).toLocaleDateString('pt-BR')).join(' | ')}
+                          Dados da ficha e alimentos aparecem uma vez por folha; abaixo, controle diário por dia.
+                        </p>
+                        <p className="text-[11px] text-muted-foreground">
+                          Datas: {generatedFeedingDates.map((date) => new Date(`${date}T00:00:00`).toLocaleDateString('pt-BR')).join(' · ')}
                         </p>
                       </div>
                       <div className="space-y-2">

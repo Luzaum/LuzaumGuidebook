@@ -299,7 +299,7 @@ export default function ProtocolosPage() {
   const [saved, setSaved] = useState(false)
   const [folderModalOpen, setFolderModalOpen] = useState(false)
   const [newFolderName, setNewFolderName] = useState('')
-  const [newFolderColor, setNewFolderColor] = useState('#39ff14')
+  const [newFolderColor, setNewFolderColor] = useState('#3b82f6')
   const [customExamDraft, setCustomExamDraft] = useState('')
   const [examReasonDraft, setExamReasonDraft] = useState('')
   const [selectedDrugId, setSelectedDrugId] = useState(initialDb.catalog[0]?.id || '')
@@ -376,7 +376,7 @@ export default function ProtocolosPage() {
       const mappedFolders: RxProtocolFolder[] = sbFolders.map((folder) => ({
         id: folder.id,
         name: folder.name,
-        color: '#39ff14',
+        color: '#3b82f6',
         icon: folder.icon_key || 'folder',
         sortOrder: folder.sort_order || 0,
       }))
@@ -709,7 +709,7 @@ export default function ProtocolosPage() {
       const nextDb = upsertProtocolFolder(loadRxDb(), createProtocolFolder(name, newFolderColor))
       writeDb(nextDb)
       setNewFolderName('')
-      setNewFolderColor('#39ff14')
+      setNewFolderColor('#3b82f6')
       return
     }
 
@@ -727,13 +727,13 @@ export default function ProtocolosPage() {
       const mappedFolders: RxProtocolFolder[] = sbFolders.map((folder) => ({
         id: folder.id,
         name: folder.name,
-        color: '#39ff14',
+        color: '#3b82f6',
         icon: folder.icon_key || 'folder',
         sortOrder: folder.sort_order || 0,
       }))
       setFolders(orderFolders(mappedFolders))
       setNewFolderName('')
-      setNewFolderColor('#39ff14')
+      setNewFolderColor('#3b82f6')
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Falha ao criar pasta.'
       alert(message)
@@ -832,11 +832,11 @@ export default function ProtocolosPage() {
             <button type="button" className="rxv-btn-secondary px-2 py-1 text-xs" onClick={() => setFolderModalOpen(true)}>Gerenciar</button>
           </div>
           <div className="mb-3 grid grid-cols-1 gap-2">
-            <button type="button" className={`rxv-protocol-chip rounded-lg border px-3 py-2 text-left text-xs font-semibold ${selectedFolderId === 'all' ? 'border-[#39ff14]/50 bg-[#39ff14]/12' : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]'}`} onClick={() => setSelectedFolderId('all')}>
+            <button type="button" className={`rxv-protocol-chip rounded-lg border px-3 py-2 text-left text-xs font-semibold ${selectedFolderId === 'all' ? 'border-[color:color-mix(in_srgb,var(--rxv-primary)_50%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_12%,transparent)]' : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]'}`} onClick={() => setSelectedFolderId('all')}>
               Todos
             </button>
             {folders.map((folder) => (
-              <button key={folder.id} type="button" className={`rxv-protocol-chip rounded-lg border px-3 py-2 text-left text-xs font-semibold ${selectedFolderId === folder.id ? 'border-[#39ff14]/50 bg-[#39ff14]/12' : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]'}`} onClick={() => setSelectedFolderId(folder.id)}>
+              <button key={folder.id} type="button" className={`rxv-protocol-chip rounded-lg border px-3 py-2 text-left text-xs font-semibold ${selectedFolderId === folder.id ? 'border-[color:color-mix(in_srgb,var(--rxv-primary)_50%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_12%,transparent)]' : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]'}`} onClick={() => setSelectedFolderId(folder.id)}>
                 <span className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-[15px]" style={{ color: folder.color }}>{folder.icon}</span>
                   {folder.name}
@@ -1105,7 +1105,7 @@ export default function ProtocolosPage() {
 
           <section className="rxv-card rxv-protocol-glass p-5">
             <div className="mb-3 flex items-center gap-2">
-              <span className="material-symbols-outlined text-[#39ff14]">science</span>
+              <span className="material-symbols-outlined text-[color:var(--rxv-primary)]">science</span>
               <h3 className="text-sm font-black uppercase tracking-wide text-[color:var(--rxv-muted)]">Simulação de Dose</h3>
               <HelpConceptButton
                 title="Memória de cálculo da simulação"
@@ -1118,9 +1118,9 @@ export default function ProtocolosPage() {
                     <p className="text-sm text-slate-300">Adicione medicamentos para exibir a memória de cálculo.</p>
                   ) : (
                     draft.items.map((item, index) => (
-                      <article key={`memory-${item.id}`} className={`rounded-xl border p-4 transition-colors ${isDark ? 'border-[#376b2e] bg-[#12230f]' : 'border-emerald-200 bg-emerald-50/50'}`}>
+                      <article key={`memory-${item.id}`} className={`rounded-xl border p-4 transition-colors ${isDark ? 'border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,var(--rxv-border))] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))]' : 'border-sky-200 bg-sky-50/50'}`}>
                         <h4 className={`text-sm font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>{index + 1}. {item.name || 'Item sem nome'}</h4>
-                        <p className={`text-xs ${isDark ? 'text-[#97ce8d]' : 'text-emerald-700'}`}>{item.presentation || 'Sem apresentação'} · {item.concentration || 'Sem concentração'}</p>
+                        <p className={`text-xs ${isDark ? 'text-[color:color-mix(in_srgb,var(--rxv-primary)_65%,var(--rxv-muted))]' : 'text-sky-700'}`}>{item.presentation || 'Sem apresentação'} · {item.concentration || 'Sem concentração'}</p>
                         <ul className={`mt-2 space-y-1 text-sm ${isDark ? 'text-slate-200' : 'text-slate-600'}`}>
                           {buildCalculationMemory(item, simulationState).map((step, idx) => (
                             <li key={`${item.id}-step-${idx}`}>• {step}</li>
@@ -1139,7 +1139,7 @@ export default function ProtocolosPage() {
                   type="range"
                   min={1}
                   max={60}
-                  className="w-full accent-[#39ff14]"
+                  className="w-full accent-[color:var(--rxv-primary)]"
                   value={simulationWeightKg}
                   onChange={(e) => onSimulationWeightSlider(Number(e.target.value))}
                 />

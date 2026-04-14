@@ -37,12 +37,20 @@ export interface EditorialDiagnosticStep {
   isGoldStandard?: boolean;
 }
 
+/** Tabela comparativa clínica (ex.: tipos de HAC) — renderizada com `<table>` acessível. */
+export interface EditorialClinicalTable {
+  kind: 'clinicalTable';
+  headers: string[];
+  /** Uma linha por tipo; número de células = número de colunas. */
+  rows: string[][];
+}
+
 export type EditorialSectionValue =
   | string
   | string[]
   | EditorialDrugProtocol[]
   | EditorialDiagnosticStep[]
-  | Record<string, string | string[] | EditorialSystemGroup[] | EditorialDrugProtocol[] | EditorialDiagnosticStep[] | any>;
+  | Record<string, string | string[] | EditorialSystemGroup[] | EditorialDrugProtocol[] | EditorialDiagnosticStep[] | EditorialClinicalTable | any>;
 
 export type ContentFlag = {
   isDemonstrative?: boolean;

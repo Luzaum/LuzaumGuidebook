@@ -40,17 +40,17 @@ export default function HelpConceptButton({
       {open ? (
         <div className="fixed inset-0 z-[98] flex items-center justify-center bg-black/70 px-4 py-8 backdrop-blur-sm" onClick={() => setOpen(false)}>
           <div
-            className="max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-2xl border border-[#376b2e] bg-[#12240f] text-slate-100 shadow-2xl"
+            className="max-h-[90vh] w-full max-w-3xl overflow-hidden rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,var(--rxv-border))] bg-[#12240f] text-slate-100 shadow-2xl"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="flex items-start justify-between border-b border-[#376b2e] bg-[#182f14] px-6 py-4">
+            <div className="flex items-start justify-between border-b border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,var(--rxv-border))] bg-[#182f14] px-6 py-4">
               <div>
                 <h3 className="text-xl font-bold">{title}</h3>
-                {subtitle ? <p className="text-sm text-[#97ce8d]">{subtitle}</p> : null}
+                {subtitle ? <p className="text-sm text-[color:color-mix(in_srgb,var(--rxv-primary)_65%,var(--rxv-muted))]">{subtitle}</p> : null}
               </div>
               <button
                 type="button"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#376b2e] text-[#b7e7af] hover:bg-[#26431f] hover:text-white"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,var(--rxv-border))] text-[#b7e7af] hover:bg-[#26431f] hover:text-white"
                 onClick={() => setOpen(false)}
                 aria-label="Fechar janela"
               >

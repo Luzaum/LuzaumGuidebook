@@ -1,5 +1,7 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import Logo from '@/components/Logo'
+import { TopRightAuthMenu } from '@/src/components/TopRightAuthMenu'
 import './receituarioChrome.css'
 
 type RxSection =
@@ -86,7 +88,7 @@ function readSidebarUserIdentity(): SidebarUserIdentity {
 
 interface ReceituarioChromeProps {
   section: RxSection
-  title: string
+  title?: string
   subtitle?: string
   actions?: React.ReactNode
   children: React.ReactNode
@@ -148,8 +150,10 @@ function SidebarContent({
           title={pinned ? 'Guardar menu lateral' : 'Fixar menu lateral'}
           onClick={onTogglePin}
         >
-          <span className="material-symbols-outlined text-[20px]">{pinned ? 'left_panel_close' : 'right_panel_open'}</span>
-          <span className="rxv-nav-label">{pinned ? 'Guardar menu' : 'Fixar menu'}</span>
+          <span className="rxv-nav-toggle-icon-wrap" aria-hidden="true">
+            <span className="material-symbols-outlined rxv-nav-toggle-icon">{pinned ? 'left_panel_close' : 'right_panel_open'}</span>
+          </span>
+          <span className="rxv-nav-label rxv-nav-toggle-label-text">{pinned ? 'Guardar menu' : 'Fixar menu'}</span>
         </button>
       </nav>
 
@@ -184,6 +188,27 @@ export default function ReceituarioChrome({
   const [sidebarPinned, setSidebarPinned] = useState(true)
   const [sidebarHovered, setSidebarHovered] = useState(false)
   const [sidebarUser] = useState<SidebarUserIdentity>(() => readSidebarUserIdentity())
+  const htmlDarkBeforeRxvRef = useRef<boolean | null>(null)
+  const dark = theme === 'dark'
+
+  useLayoutEffect(() => {
+    if (htmlDarkBeforeRxvRef.current === null) {
+      htmlDarkBeforeRxvRef.current = document.documentElement.classList.contains('dark')
+    }
+  }, [])
+
+  useLayoutEffect(() => {
+    document.documentElement.classList.toggle('dark', dark)
+  }, [dark])
+
+  useEffect(() => {
+    return () => {
+      const prev = htmlDarkBeforeRxvRef.current
+      if (prev !== null) {
+        document.documentElement.classList.toggle('dark', prev)
+      }
+    }
+  }, [])
 
   useEffect(() => {
     saveTheme(theme)
@@ -204,37 +229,12 @@ export default function ReceituarioChrome({
     if (!sidebarPinned) setSidebarHovered(false)
   }, [sidebarPinned])
 
-  const dark = theme === 'dark'
-
   useEffect(() => {
-    // Keep body background synced with this module to avoid visual bleed.
-    document.body.style.backgroundColor = dark ? '#091108' : '#eef6ea'
+    document.body.style.backgroundColor = dark ? '#050a12' : '#f0f5fc'
     return () => {
       document.body.style.backgroundColor = ''
     }
   }, [dark])
-
-  useEffect(() => {
-    const id = 'rxv-global-grid-style'
-    if (!document.getElementById(id)) {
-      const style = document.createElement('style')
-      style.id = id
-      style.textContent = `
-        @keyframes rxvGridPulse { 0%,100%{opacity:.18} 50%{opacity:.30} }
-        body.rxv-grid-active::before {
-          content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
-          background-image:linear-gradient(to right,rgba(57,255,20,0.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(57,255,20,0.04) 1px,transparent 1px);
-          background-size:28px 28px;
-          animation:rxvGridPulse 7s ease-in-out infinite;
-        }
-      `
-      document.head.appendChild(style)
-    }
-    document.body.classList.add('rxv-grid-active')
-    return () => {
-      document.body.classList.remove('rxv-grid-active')
-    }
-  }, [])
 
   const pageClass = dark ? 'rxv-dark' : 'rxv-light'
   const sidebarExpanded = sidebarPinned || sidebarHovered
@@ -250,7 +250,7 @@ export default function ReceituarioChrome({
 
   const topRight = useMemo(
     () => (
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1 sm:gap-2">
         <button
           type="button"
           className="rxv-icon-btn"
@@ -267,6 +267,7 @@ export default function ReceituarioChrome({
         >
           <span className="material-symbols-outlined text-[20px]">home</span>
         </button>
+        <TopRightAuthMenu />
       </div>
     ),
     [dark, navigate]
@@ -278,61 +279,85 @@ export default function ReceituarioChrome({
 
       <div className="rxv-scale-shell">
         <div className="rxv-layout">
-        <aside
-          className={`rxv-desktop-sidebar ${sidebarClass}`}
-          onMouseEnter={() => {
-            if (!sidebarPinned) setSidebarHovered(true)
-          }}
-          onMouseLeave={() => {
-            if (!sidebarPinned) setSidebarHovered(false)
-          }}
-        >
-          <SidebarContent
-            section={section}
-            locationPath={location.pathname}
-            expanded={sidebarExpanded}
-            pinned={sidebarPinned}
-            onTogglePin={() => setSidebarPinned((prev) => !prev)}
-            user={sidebarUser}
-          />
-        </aside>
-
-        <main className="rxv-main-content">
-          <header className="rxv-topbar">
-            <div className="rxv-topbar-row">
-              <div className="flex items-center gap-2">
-                <button type="button" className="rxv-icon-btn rxv-top-menu-btn" onClick={handleTopbarMenuClick} title={sidebarPinned ? 'Guardar menu lateral' : 'Abrir menu lateral'}>
-                  <span className="material-symbols-outlined text-[20px]">menu</span>
-                </button>
-              </div>
-
+          {/* Barra Vetius em largura total; sidebar e conteúdo ficam só abaixo disto */}
+          <header className="rxv-app-topbar sticky top-0 z-[60] w-full shrink-0 border-b">
+            <div className="flex items-center justify-between gap-2 px-3 py-2 sm:px-4">
               <button
                 type="button"
-                className="rxv-top-logo"
-                title="Ir para página inicial do VETIUS"
-                onClick={() => navigate('/hub')}
+                className="rxv-icon-btn rxv-top-menu-btn shrink-0 rounded-lg"
+                onClick={handleTopbarMenuClick}
+                title={sidebarPinned ? 'Guardar menu lateral' : 'Abrir menu lateral'}
+                aria-label={sidebarPinned ? 'Guardar menu lateral' : 'Abrir menu lateral'}
               >
-                <img src="/apps/VETIUS.png" alt="Ícone VETIUS" className="rxv-top-logo-image" />
-                <span className="rxv-top-logo-text">VETIUS</span>
+                <span className="material-symbols-outlined text-[20px]">menu</span>
               </button>
 
-              <div className="flex justify-end">{topRight}</div>
+              <Link
+                to="/hub"
+                className="flex min-w-0 flex-col items-center gap-0 cursor-pointer select-none"
+                aria-label="Ir para o hub VETIUS"
+              >
+                <div className="h-9 w-9 sm:h-10 sm:w-10">
+                  <Logo size={40} />
+                </div>
+                <span className="neon-wave neon-wave-glow -mt-2 text-xs font-semibold tracking-wide">Vetius</span>
+              </Link>
+
+              <div className="flex min-w-0 justify-end">{topRight}</div>
             </div>
           </header>
 
-          <section className="rxv-main">
-            <div className="rxv-page-frame w-full min-w-0">
-              <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
-                <div>
-                  <h1 className="text-2xl font-black tracking-tight sm:text-3xl">{title}</h1>
-                  {subtitle ? <p className="text-sm text-[color:var(--rxv-muted)]">{subtitle}</p> : null}
+          <div className="rxv-layout-body">
+            <aside
+              className={`rxv-desktop-sidebar ${sidebarClass}`}
+              onMouseEnter={() => {
+                if (!sidebarPinned) setSidebarHovered(true)
+              }}
+              onMouseLeave={() => {
+                if (!sidebarPinned) setSidebarHovered(false)
+              }}
+            >
+              <SidebarContent
+                section={section}
+                locationPath={location.pathname}
+                expanded={sidebarExpanded}
+                pinned={sidebarPinned}
+                onTogglePin={() => setSidebarPinned((prev) => !prev)}
+                user={sidebarUser}
+              />
+            </aside>
+
+            <main className="rxv-main-content">
+              <section className="rxv-main">
+                <div className="rxv-page-frame w-full min-w-0">
+                  {section === 'home' ? (
+                    <div className="rxv-home-chrome-head mb-6 flex flex-col gap-4 border-b border-[color:var(--rxv-border)]/55 pb-5 sm:flex-row sm:items-end sm:justify-between">
+                      <div className="min-w-0">
+                        <h1 className="text-xl font-bold tracking-tight text-[color:var(--rxv-text)] sm:text-2xl">{title}</h1>
+                        {subtitle ? (
+                          <p className="mt-1 max-w-2xl text-sm leading-relaxed text-[color:var(--rxv-muted)]">{subtitle}</p>
+                        ) : null}
+                      </div>
+                      {actions ? <div className="rxv-action-row shrink-0">{actions}</div> : null}
+                    </div>
+                  ) : title || subtitle ? (
+                    <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
+                      <div>
+                        {title ? (
+                          <h1 className="text-2xl font-black tracking-tight sm:text-3xl">{title}</h1>
+                        ) : null}
+                        {subtitle ? <p className="text-sm text-[color:var(--rxv-muted)]">{subtitle}</p> : null}
+                      </div>
+                      {actions ? <div className="rxv-action-row">{actions}</div> : null}
+                    </div>
+                  ) : actions ? (
+                    <div className="mb-5 flex flex-wrap justify-end gap-3">{actions}</div>
+                  ) : null}
+                  <div className="rxv-form">{children}</div>
                 </div>
-                {actions ? <div className="rxv-action-row">{actions}</div> : null}
-              </div>
-              <div className="rxv-form">{children}</div>
-            </div>
-          </section>
-        </main>
+              </section>
+            </main>
+          </div>
         </div>
       </div>
 

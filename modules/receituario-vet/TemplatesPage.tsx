@@ -299,7 +299,7 @@ export default function TemplatesPage() {
               <button
                 type="button"
                 key={template.id}
-                className={`w-full rounded-xl border px-3 py-2 text-left ${selectedId === template.id ? 'border-[#61eb48]/45 bg-[#61eb48]/10' : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/60'}`}
+                className={`w-full rounded-xl border px-3 py-2 text-left ${selectedId === template.id ? 'border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)]' : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/60'}`}
                 onClick={() => selectTemplate(template.id)}
               >
                 <p className="max-w-[25ch] break-words text-sm font-semibold leading-tight">{formatTemplateName(template.name)}</p>
@@ -372,7 +372,7 @@ export default function TemplatesPage() {
                 <button
                   type="button"
                   key={zone.key}
-                  className={`rounded-full border px-3 py-1.5 text-xs font-semibold ${activeZone === zone.key ? 'border-[#61eb48]/45 bg-[#61eb48]/10 text-[#61eb48]' : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]'}`}
+                  className={`rounded-full border px-3 py-1.5 text-xs font-semibold ${activeZone === zone.key ? 'border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] text-[color:var(--rxv-primary)]' : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]'}`}
                   onClick={() => setActiveZone(zone.key)}
                 >
                   {zone.label}

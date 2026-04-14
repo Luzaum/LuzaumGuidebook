@@ -130,7 +130,8 @@ export function MedicationModalV3({
       try {
         setIsSearching(true)
         // Se vazio: carrega primeiros 20; senão: busca até 50
-        const results = await searchMedications(clinicId, q || '', q ? 50 : 20)
+        const limit = q ? 120 : 500
+        const results = await searchMedications(clinicId, q || '', limit)
         setMedications(results)
       } catch (err) {
         console.error('[MedicationModalV3] Search failed', err)
@@ -315,7 +316,7 @@ export function MedicationModalV3({
 
   return (
     <RxvModalShell zIndexClass="z-[80]" overlayClassName="bg-black/70 backdrop-blur-sm">
-      <div className="mx-auto max-h-[92vh] w-full max-w-6xl overflow-hidden rounded-2xl border border-[#2f5b25] bg-[#13220f] text-slate-100 shadow-[0_0_40px_rgba(56,255,20,0.18)]">
+      <div className="mx-auto max-h-[92vh] w-full max-w-6xl overflow-hidden rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,var(--rxv-border))] bg-[#13220f] text-slate-100 shadow-[0_0_40px_rgba(56,255,20,0.18)]">
         {/* ==================== HEADER ==================== */}
         <div className="flex items-center justify-between border-b border-[#274b20] bg-[#11200e] px-5 py-4">
           <div>
@@ -336,7 +337,7 @@ export function MedicationModalV3({
             </button>
             <button
               type="button"
-              className="rounded-lg bg-[#38ff14] px-3 py-1.5 text-sm font-bold text-[#0c1908] hover:bg-[#2cd20f]"
+              className="rounded-lg bg-[color:var(--rxv-primary)] px-3 py-1.5 text-sm font-bold text-[color:var(--rxv-on-primary)] hover:brightness-110"
               onClick={onSave}
             >
               Salvar
@@ -351,18 +352,18 @@ export function MedicationModalV3({
             {/* ==================== BUSCA DE MEDICAMENTOS ==================== */}
             <section className="space-y-3 rounded-xl border border-[#2e5525] bg-[#152913] p-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-sm font-bold text-[#39ff14] text-left">
+                <h3 className="text-sm font-bold text-[color:var(--rxv-primary)] text-left">
                   Catálogo de Medicamentos
                 </h3>
                 {isSearching && (
-                  <span className="material-symbols-outlined animate-spin text-[#39ff14] text-sm">
+                  <span className="material-symbols-outlined animate-spin text-[color:var(--rxv-primary)] text-sm">
                     sync
                   </span>
                 )}
               </div>
 
               <input
-                className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1 text-left"
+                className="w-full rounded-lg border border-[color:color-mix(in_srgb,var(--rxv-primary)_38%,var(--rxv-border))] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm outline-none ring-[color:var(--rxv-primary)] focus:ring-1 text-left"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Digite para buscar ou veja a lista abaixo..."
@@ -384,8 +385,8 @@ export function MedicationModalV3({
                       type="button"
                       key={med.id}
                       className={`flex w-full items-start justify-between rounded-lg border px-3 py-2 text-left transition-all ${selectedMedicationId === med.id
-                        ? 'border-[#39ff14] bg-[#1a3316]'
-                        : 'border-[#335c29] bg-[#0c1a0c] hover:border-[#39ff14]'
+                        ? 'border-[color:var(--rxv-primary)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_12%,var(--rxv-surface))]'
+                        : 'border-[color:color-mix(in_srgb,var(--rxv-primary)_35%,var(--rxv-border))] bg-[color:color-mix(in_srgb,var(--rxv-primary)_5%,var(--rxv-surface))] hover:border-[color:var(--rxv-primary)]'
                         }`}
                       onClick={() => handleMedicationSelect(med)}
                     >
@@ -417,7 +418,7 @@ export function MedicationModalV3({
 
                 {presentations.length > 0 ? (
                   <select
-                    className="w-full rounded-lg border border-[#3b6c2f] bg-[#12230f] px-3 py-2 text-sm outline-none ring-[#38ff14] focus:ring-1 text-left"
+                    className="w-full rounded-lg border border-[color:color-mix(in_srgb,var(--rxv-primary)_38%,var(--rxv-border))] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm outline-none ring-[color:var(--rxv-primary)] focus:ring-1 text-left"
                     value={selectedPresentationId || ''}
                     onChange={(e) => handlePresentationChange(e.target.value)}
                   >
@@ -429,13 +430,13 @@ export function MedicationModalV3({
                     ))}
                   </select>
                 ) : (
-                  <div className="rounded-lg border border-dashed border-[#335c29] p-3 text-center">
+                  <div className="rounded-lg border border-dashed border-[color:color-mix(in_srgb,var(--rxv-primary)_35%,var(--rxv-border))] p-3 text-center">
                     <p className="text-xs text-slate-500 italic">Nenhuma apresentação detalhada cadastrada.</p>
                   </div>
                 )}
 
                 {selectedPresentation?.avg_price_brl && (
-                  <p className="text-xs text-[#97ce8d] text-left">
+                  <p className="text-xs text-[color:color-mix(in_srgb,var(--rxv-primary)_65%,var(--rxv-muted))] text-left">
                     Preço médio de referência: R$ {selectedPresentation.avg_price_brl.toFixed(2)}
                   </p>
                 )}
@@ -453,7 +454,7 @@ export function MedicationModalV3({
                     <button
                       key={dose.id || idx}
                       type="button"
-                      className="flex w-full items-center justify-between rounded-lg bg-[#0c1a0c] px-3 py-2 text-left border border-transparent hover:border-amber-500/50 transition-all"
+                      className="flex w-full items-center justify-between rounded-lg bg-[color:color-mix(in_srgb,var(--rxv-primary)_5%,var(--rxv-surface))] px-3 py-2 text-left border border-transparent hover:border-amber-500/50 transition-all"
                       onClick={() => handleDoseClick(dose)}
                     >
                       <div className="text-left">
@@ -479,7 +480,7 @@ export function MedicationModalV3({
 
             {/* ==================== CAMPOS DO ITEM ==================== */}
             <section className="space-y-3 rounded-xl border border-[#2e5525] bg-[#152913] p-4">
-              <h3 className="text-sm font-bold text-[#39ff14] text-left">Detalhes do Item</h3>
+              <h3 className="text-sm font-bold text-[color:var(--rxv-primary)] text-left">Detalhes do Item</h3>
 
               <RxvField label="Nome do Medicamento">
                 <RxvInput
@@ -586,7 +587,7 @@ export function MedicationModalV3({
                   <RxvInput
                     value={typeof quantity === 'string' ? quantity : quantity.label}
                     disabled
-                    className="bg-[#0c1608] text-[#97ce8d]"
+                    className="bg-[#0c1608] text-[color:color-mix(in_srgb,var(--rxv-primary)_65%,var(--rxv-muted))]"
                   />
                 </RxvField>
               </div>
@@ -606,9 +607,9 @@ export function MedicationModalV3({
 
           {/* ==================== COLUNA DIREITA: PREVIEW ==================== */}
           <div className="space-y-4 bg-[#0f1c0d] p-5">
-            <h3 className="text-sm font-bold text-[#39ff14] text-left">Preview do Item</h3>
+            <h3 className="text-sm font-bold text-[color:var(--rxv-primary)] text-left">Preview do Item</h3>
 
-            <div className="rounded-xl border border-[#2e5525] bg-[#12230f] p-4 space-y-2 text-left">
+            <div className="rounded-xl border border-[#2e5525] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] p-4 space-y-2 text-left">
               <p className="text-xs font-bold text-white uppercase">{draft.name || '(Sem nome)'}</p>
               <p className="text-[10px] text-slate-400">
                 {draft.presentation || '(Sem apresentação)'} •{' '}

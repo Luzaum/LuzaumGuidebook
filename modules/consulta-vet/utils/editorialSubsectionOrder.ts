@@ -3,6 +3,11 @@
  * exames da triagem aos mais confirmatórios; recursos limitados por último.
  */
 export const DIAGNOSTIC_SUBSECTION_PRIORITY: string[] = [
+  'tabelaClassificacaoExposicaoInfeccao',
+  'fundamentosDiagnosticoLCan',
+  'citologiaFormasAmastigotas',
+  'testesMolecularesPcr',
+  'sorologiaEInterpretacao',
   'teachingOverview',
   'diagnosticReasoning',
   'pathophysiologyExplanation',

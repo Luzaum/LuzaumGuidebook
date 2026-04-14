@@ -1,16 +1,13 @@
 import type { AntibioticClass, DiseaseSystem } from '../types'
-import { SYNDROME_PROFILES_V2 } from '../data-v2/syndromes'
-import type { SyndromeId } from '../model/ids'
-import { SYNDROME_IDS } from '../model/ids'
 import { PATHOGEN_PROFILES_V2 } from '../data-v2/pathogens'
 import { RESISTANCE_CONCEPTS_V2 } from '../data-v2/resistance'
 import { HOSPITAL_STEWARDSHIP_CARDS_V2 } from '../data-v2/hospitalAlerts'
 import { SOURCE_REGISTRY, getSourceEntry } from '../data-v2/references'
 import { listVersionedSources } from '../data-v2/sourceRegistry'
 import { safeList } from '../utils/dataUtils'
+import { diseaseSearchBlob } from '../utils/diseaseTreatment'
 
 export type UnifiedSearchHit =
-  | { tier: 'v2'; kind: 'syndrome'; id: SyndromeId; label: string; slug: string; score: number; hint: string }
   | { tier: 'v2'; kind: 'pathogen'; id: string; label: string; slug: string; score: number; hint: string }
   | { tier: 'v2'; kind: 'resistance'; id: string; label: string; slug: string; score: number; hint: string }
   | { tier: 'v2'; kind: 'hospital'; id: string; label: string; slug: string; score: number; hint: string }
@@ -44,37 +41,6 @@ function maxScoreForFields(needle: string, fields: string[]): number {
     m = Math.max(m, scoreTokenMatch(f, needle))
   }
   return m
-}
-
-export function searchSyndromesV2(query: string): Extract<UnifiedSearchHit, { kind: 'syndrome' }>[] {
-  const q = query.trim()
-  if (!q) return []
-  const out: Extract<UnifiedSearchHit, { kind: 'syndrome' }>[] = []
-  for (const id of SYNDROME_IDS) {
-    const p = SYNDROME_PROFILES_V2[id]
-    if (!p) continue
-    const fields = [
-      id,
-      p.slug,
-      p.label,
-      p.summary,
-      p.likelyMicrobiologySummary,
-      ...p.synonyms,
-    ]
-    const score = maxScoreForFields(q, fields)
-    if (score > 0) {
-      out.push({
-        tier: 'v2',
-        kind: 'syndrome',
-        id,
-        label: p.label,
-        slug: p.slug,
-        score,
-        hint: p.summary.slice(0, 120) + (p.summary.length > 120 ? '…' : ''),
-      })
-    }
-  }
-  return out.sort((a, b) => b.score - a.score)
 }
 
 export function searchPathogensV2(query: string): Extract<UnifiedSearchHit, { kind: 'pathogen' }>[] {
@@ -258,7 +224,7 @@ export function searchLegacyDiseases(
   const out: Extract<UnifiedSearchHit, { kind: 'disease' }>[] = []
   for (const system of Object.keys(dzDict)) {
     for (const d of safeList(dzDict[system])) {
-      const fields = [d.name, d.pathogens, d.notes, d.duration, system, d.ccihSummary ?? '']
+      const fields = [d.name, diseaseSearchBlob(d), d.pathogens, d.notes, d.duration, system]
       const score = maxScoreForFields(q, fields)
       if (score > 0) {
         const hint = (d.notes || d.pathogens).slice(0, 110) + ((d.notes || d.pathogens).length > 110 ? '…' : '')
@@ -269,9 +235,8 @@ export function searchLegacyDiseases(
   return out.sort((a, b) => b.score - a.score)
 }
 
-/** Busca unificada: hits v2 (sem fichas-molécula); legado inclui fármacos e doenças. */
+/** Busca unificada: conteúdos v2 (patógenos, resistência, hospital, fontes) + legado (fármacos e doenças). Sem síndromes v2. */
 export function searchUnifiedClinical(query: string, abDict: AntibioticClass, dzDict: DiseaseSystem): UnifiedSearchHit[] {
-  const syn = searchSyndromesV2(query)
   const path = searchPathogensV2(query)
   const res = searchResistanceConceptsV2(query)
   const hosp = searchHospitalCardsV2(query)
@@ -279,6 +244,6 @@ export function searchUnifiedClinical(query: string, abDict: AntibioticClass, dz
   const legDrugs = searchLegacyDrugs(query, abDict)
   const legDiseases = searchLegacyDiseases(query, dzDict)
   const leg = [...legDrugs, ...legDiseases].sort((a, b) => b.score - a.score)
-  const v2 = [...syn, ...path, ...res, ...hosp, ...ref].sort((a, b) => b.score - a.score)
+  const v2 = [...path, ...res, ...hosp, ...ref].sort((a, b) => b.score - a.score)
   return [...v2, ...leg]
 }

@@ -324,7 +324,7 @@ export default function ControleEspecialPage() {
             </span>
             <button
               type="button"
-              className="rounded-full border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-2.5 py-1 font-semibold hover:border-[#61eb48]/45 hover:bg-[#61eb48]/10"
+              className="rounded-full border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-2.5 py-1 font-semibold hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,transparent)] hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)]"
               onClick={() => void refreshControlledCatalog()}
             >
               Atualizar lista
@@ -354,7 +354,7 @@ export default function ControleEspecialPage() {
                         <div>
                           <div className="flex flex-wrap items-center gap-2">
                             <h3 className="text-base font-bold text-[color:var(--rxv-text)]">{entry.bundle.medication.name}</h3>
-                            <span className="rounded border border-[#39ff14]/30 bg-[#39ff14]/10 px-2 py-0.5 text-[8px] font-black uppercase tracking-widest text-[#98f98e]">
+                            <span className="rounded border border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] px-2 py-0.5 text-[8px] font-black uppercase tracking-widest text-[color:color-mix(in_srgb,var(--rxv-primary)_72%,#e2e8f0)]">
                               Manipulado
                             </span>
                             <span className="rounded border border-red-500/30 bg-red-500/10 px-2 py-0.5 text-[8px] font-black uppercase tracking-widest text-red-300">
@@ -367,7 +367,7 @@ export default function ControleEspecialPage() {
                         </div>
                         <button
                           type="button"
-                          className="rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-3 py-1.5 text-xs font-semibold hover:border-[#61eb48]/45 hover:bg-[#61eb48]/10"
+                          className="rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-3 py-1.5 text-xs font-semibold hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,transparent)] hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)]"
                           onClick={() => navigate('/receituario-vet/manipulados')}
                         >
                           Ver manipulado
@@ -406,7 +406,7 @@ export default function ControleEspecialPage() {
                       </div>
                       <button
                         type="button"
-                        className="rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-3 py-1.5 text-xs font-semibold hover:border-[#61eb48]/45 hover:bg-[#61eb48]/10"
+                        className="rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-3 py-1.5 text-xs font-semibold hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,transparent)] hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)]"
                         onClick={() => navigate('/receituario-vet/catalogo3')}
                       >
                         Ver no catálogo
@@ -437,7 +437,7 @@ export default function ControleEspecialPage() {
             </span>
           </div>
 
-          <div className="rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/50 p-3">
+          <div className="max-h-[min(70vh,720px)] overflow-y-auto overflow-x-hidden rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/50 p-3">
             <RxPrintView doc={previewDoc} template={specialTemplate} compact />
           </div>
 

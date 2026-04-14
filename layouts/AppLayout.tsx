@@ -30,7 +30,12 @@ export function AppLayout() {
     location.pathname.startsWith('/plantao-vet') ||
     location.pathname.startsWith('/calculadora-energetica') ||
     location.pathname.startsWith('/crivet') ||
-    location.pathname.startsWith('/consulta-vet')
+    location.pathname.startsWith('/consulta-vet') ||
+    location.pathname.startsWith('/dor') ||
+    location.pathname.startsWith('/neurologia') ||
+    location.pathname.startsWith('/veteletrolitico') ||
+    location.pathname.startsWith('/transfusao-sanguinea') ||
+    location.pathname.startsWith('/transfusão-sanguinea')
 
   if (isImmersiveModuleRoute) {
     return (

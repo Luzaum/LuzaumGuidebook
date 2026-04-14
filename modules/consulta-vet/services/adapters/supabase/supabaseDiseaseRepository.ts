@@ -27,6 +27,7 @@ import {
   mapDiseaseRow,
 } from './editorialRecordMappers';
 import { buildSupabaseDiseasePayload, cleanTextArrayForDb } from '../../../utils/diseaseSchemaMap';
+import { filterPublicDiseases } from '../../../constants/publicCatalog';
 
 type ConsensusSlugRow = {
   id: string;
@@ -134,7 +135,7 @@ async function fetchSupabaseDiseases(includeDrafts = false): Promise<DiseaseReco
 export class SupabaseDiseaseRepository implements DiseaseRepository {
   async list(options?: { includeDrafts?: boolean }): Promise<DiseaseRecord[]> {
     if (!hasSupabaseEnv()) {
-      return localDiseaseRepository.list();
+      return localDiseaseRepository.list(options);
     }
 
     try {
@@ -142,16 +143,17 @@ export class SupabaseDiseaseRepository implements DiseaseRepository {
         fetchSupabaseDiseases(Boolean(options?.includeDrafts)),
         'carregar doenças editoriais'
       );
-      return mergeBySlug(diseasesSeed, remote).sort((left, right) =>
+      const merged = mergeBySlug(diseasesSeed, remote).sort((left, right) =>
         left.title.localeCompare(right.title, 'pt-BR')
       );
+      return filterPublicDiseases(merged, Boolean(options?.includeDrafts));
     } catch {
-      return localDiseaseRepository.list();
+      return localDiseaseRepository.list(options);
     }
   }
 
-  async getBySlug(slug: string): Promise<DiseaseRecord | null> {
-    const items = await this.list();
+  async getBySlug(slug: string, options?: { includeDrafts?: boolean }): Promise<DiseaseRecord | null> {
+    const items = await this.list(options);
     return items.find((item) => item.slug === slug) || null;
   }
 
@@ -287,7 +289,7 @@ export class SupabaseDiseaseRepository implements DiseaseRepository {
       }
     }
 
-    const result = await this.getBySlug(normalizedSlug);
+    const result = await this.getBySlug(normalizedSlug, { includeDrafts: true });
     if (!result) {
       throw new Error('Doença salva, mas não foi possível reler o registro editorial.');
     }

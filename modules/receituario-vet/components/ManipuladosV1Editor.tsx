@@ -235,12 +235,12 @@ function HelpTooltip({ children }: { children: React.ReactNode }) {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex h-[18px] w-[18px] items-center justify-center rounded-full border border-slate-600 text-[10px] font-bold text-slate-400 hover:border-[#39ff14]/60 hover:text-[#98f98e]"
+        className="flex h-[18px] w-[18px] items-center justify-center rounded-full border border-slate-600 text-[10px] font-bold text-slate-400 hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_60%,transparent)] hover:text-[color:color-mix(in_srgb,var(--rxv-primary)_72%,#e2e8f0)]"
       >?</button>
       {open && (
         <>
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
-          <div className="absolute left-6 top-0 z-50 w-72 rounded-2xl border border-[#39ff14]/20 bg-[#0d140d] p-4 shadow-2xl text-xs text-slate-300 leading-5">
+          <div className="absolute left-6 top-0 z-50 w-72 rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_20%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] p-4 shadow-2xl text-xs text-slate-300 leading-5">
             {children}
             <button type="button" onClick={() => setOpen(false)} className="mt-3 block text-[10px] text-slate-500 hover:text-slate-300">Fechar ✕</button>
           </div>
@@ -544,7 +544,7 @@ export function ManipuladosV1Editor({
           {/* Texto gerado */}
           <div className="xl:col-span-12">
             <p className="mb-1 text-xs font-bold uppercase tracking-widest text-slate-500">Texto clínico gerado automaticamente</p>
-            <div className="rounded-xl border border-[#39ff14]/18 bg-black/20 px-4 py-3 text-sm text-slate-200">{previewUsage}</div>
+            <div className="rounded-xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_18%,transparent)] bg-black/20 px-4 py-3 text-sm text-slate-200">{previewUsage}</div>
           </div>
 
           {/* Campos avançados (início + override) */}
@@ -620,7 +620,7 @@ export function ManipuladosV1Editor({
                 value={current.pharmacy.base_text}
                 onChange={(e) => setFormula({ pharmacy: { ...current.pharmacy, base_text: e.target.value } })}
                 placeholder="Ex.: pasta oral palatável, gel transdérmico"
-                className="w-full rounded-xl border border-slate-700 bg-black/30 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-600 focus:border-[#39ff14]/50 focus:outline-none"
+                className="w-full rounded-xl border border-slate-700 bg-black/30 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-600 focus:border-[color:color-mix(in_srgb,var(--rxv-primary)_50%,transparent)] focus:outline-none"
               />
               <datalist id="manipulado-base-suggestions">
                 {BASE_VEHICLE_SUGGESTIONS.map((s) => <option key={s} value={s} />)}
@@ -670,7 +670,7 @@ export function ManipuladosV1Editor({
                           list="manipulado-ingredient-units"
                           value={ingredient.unit}
                           onChange={(e) => onChange(updateIngredient(current, ingredient.id, { unit: e.target.value }))}
-                          className="w-full rounded-xl border border-slate-700 bg-black/30 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-600 focus:border-[#39ff14]/50 focus:outline-none"
+                          className="w-full rounded-xl border border-slate-700 bg-black/30 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-600 focus:border-[color:color-mix(in_srgb,var(--rxv-primary)_50%,transparent)] focus:outline-none"
                         />
                       </RxvField>
                     </div>
@@ -686,7 +686,7 @@ export function ManipuladosV1Editor({
                           list="manipulado-ingredient-units"
                           value={ingredient.unit}
                           onChange={(e) => onChange(updateIngredient(current, ingredient.id, { unit: e.target.value }))}
-                          className="w-full rounded-xl border border-slate-700 bg-black/30 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-600 focus:border-[#39ff14]/50 focus:outline-none"
+                          className="w-full rounded-xl border border-slate-700 bg-black/30 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-600 focus:border-[color:color-mix(in_srgb,var(--rxv-primary)_50%,transparent)] focus:outline-none"
                         />
                       </RxvField>
                     </div>
@@ -711,7 +711,7 @@ export function ManipuladosV1Editor({
       {/* ── Bloco 4 — Preview ── */}
       <RxvCard className="p-6">
         <RxvSectionHeader icon="preview" title="Bloco 4 • Preview final" subtitle="Exatamente o que vai para a receita impressa." />
-        <div className="space-y-4 rounded-2xl border border-[#39ff14]/18 bg-black/20 p-5 text-sm text-slate-200">
+        <div className="space-y-4 rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_18%,transparent)] bg-black/20 p-5 text-sm text-slate-200">
           <p className="font-semibold text-white">
             <span>{getManipuladoV1PrintLineLeft(previewFormula)}</span>
             <span className="mx-2 text-slate-600">{'......................................................................................'}</span>

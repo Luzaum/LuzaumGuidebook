@@ -47,38 +47,18 @@ export function AbvSidebar({ activeTab, setActiveTab }: AbvSidebarProps) {
         color: 'var(--sidebar-foreground)',
       }}
     >
-      <div className={cn('border-b p-4', collapsed && 'px-2')} style={{ borderColor: 'var(--sidebar-border)' }}>
-        <div
-          className="overflow-hidden rounded-2xl border p-2"
-          style={{
-            borderColor: 'var(--sidebar-border)',
-            background: 'color-mix(in srgb, var(--sidebar) 88%, hsl(var(--foreground)) 4%)',
-          }}
+      <div className="border-b px-2 py-2.5" style={{ borderColor: 'var(--sidebar-border)' }}>
+        <button
+          type="button"
+          className={cn('abv-sidebar-logo-btn', collapsed && 'abv-sidebar-logo-btn--collapsed')}
+          onClick={() => setActiveTab('home')}
+          aria-label="Ir para início — Antibioticoterapia Vet"
         >
-          <button
-            type="button"
-            className="abv-sidebar-logo-btn"
-            onClick={() => setActiveTab('home')}
-            aria-label="Ir para início"
-          >
-            <img
-              src="/apps/ATB.png"
-              alt=""
-              className={cn(
-                'mx-auto w-full rounded-lg object-contain',
-                collapsed ? 'h-14 max-h-[3.25rem] max-w-[3.25rem]' : 'h-72 max-h-[min(18rem,calc(100vh-14rem))] max-w-[min(100%,12rem)]',
-              )}
-            />
-          </button>
-        </div>
-        {!collapsed && (
-          <p
-            className="mt-3 text-center text-[11px] font-bold uppercase leading-tight tracking-[0.12em] sm:text-xs sm:tracking-[0.18em]"
-            style={{ color: 'var(--sidebar-primary)' }}
-          >
-            Antibioticoterapia Vet
-          </p>
-        )}
+          <img src="/apps/ATB.png" alt="Antibioticoterapia Vet" className="abv-sidebar-logo-img" />
+          {!collapsed ? (
+            <span className="abv-sidebar-brand-text px-1">Antibioticoterapia Vet</span>
+          ) : null}
+        </button>
       </div>
 
       <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-2 py-3">

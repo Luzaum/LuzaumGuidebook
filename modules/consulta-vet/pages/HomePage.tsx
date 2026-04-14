@@ -1,7 +1,18 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Bookmark, ChevronRight, Clock, FileText, Grid, Pill, Search, Stethoscope, Zap } from 'lucide-react';
+import {
+  Bookmark,
+  ChevronRight,
+  Clock,
+  FileText,
+  Grid,
+  LayoutGrid,
+  Pill,
+  Search,
+  Sparkles,
+  Stethoscope,
+  Zap,
+} from 'lucide-react';
 import { ConsultaVetShortcutGrid } from '../components/home/ConsultaVetShortcutGrid';
 import { EntityCard } from '../components/shared/EntityCard';
 import { getConsensoRepository } from '../services/consensoRepository';
@@ -12,6 +23,7 @@ import { DiseaseRecord } from '../types/disease';
 import { MedicationRecord } from '../types/medication';
 import { useRecents } from '../hooks/useRecents';
 import { buildResumeState, formatSpeciesList } from '../utils/navigation';
+import { RecentRecord } from '../types/recents';
 
 type SearchResults = {
   diseases: DiseaseRecord[];
@@ -46,16 +58,62 @@ const UI_TEXT = {
   searchSectionBody: 'Resultados curtos e objetivos para triagem de conte\u00fado.',
 } as const;
 
+type ListCache = {
+  diseases: DiseaseRecord[];
+  medications: MedicationRecord[];
+  consensos: ConsensusRecord[];
+};
+
+function buildContinueItem(
+  latest: RecentRecord | undefined,
+  cache: ListCache | null
+):
+  | {
+      kind: 'disease';
+      item: DiseaseRecord;
+      state?: { pageNumber?: number; sectionId?: string };
+    }
+  | {
+      kind: 'medication';
+      item: MedicationRecord;
+      state?: { pageNumber?: number; sectionId?: string };
+    }
+  | {
+      kind: 'consensus';
+      item: ConsensusRecord;
+      state?: { pageNumber?: number; sectionId?: string };
+    }
+  | null {
+  if (!latest || !cache) return null;
+
+  const resumeState = buildResumeState(latest);
+
+  if (latest.entityType === 'disease') {
+    const found = cache.diseases.find((item) => item.id === latest.entityId);
+    return found ? { kind: 'disease', item: found, state: resumeState } : null;
+  }
+
+  if (latest.entityType === 'medication') {
+    const found = cache.medications.find((item) => item.id === latest.entityId);
+    return found ? { kind: 'medication', item: found, state: resumeState } : null;
+  }
+
+  const found = cache.consensos.find((item) => item.id === latest.entityId);
+  return found ? { kind: 'consensus', item: found, state: resumeState } : null;
+}
+
 export function HomePage() {
   const diseaseRepository = useMemo(() => getDiseaseRepository(), []);
   const medicationRepository = useMemo(() => getMedicationRepository(), []);
   const consensoRepository = useMemo(() => getConsensoRepository(), []);
   const { recents } = useRecents();
+  const listsCacheRef = useRef<ListCache | null>(null);
 
   const [diseases, setDiseases] = useState<DiseaseRecord[]>([]);
   const [medications, setMedications] = useState<MedicationRecord[]>([]);
   const [consensos, setConsensos] = useState<ConsensusRecord[]>([]);
   const [query, setQuery] = useState('');
+  const deferredQuery = useDeferredValue(query);
   const [searchResults, setSearchResults] = useState<SearchResults>({ diseases: [], medications: [], consensos: [] });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -82,34 +140,19 @@ export function HomePage() {
 
         if (!isMounted) return;
 
+        listsCacheRef.current = {
+          diseases: loadedDiseases,
+          medications: loadedMedications,
+          consensos: loadedConsensos,
+        };
+
         setDiseases(loadedDiseases.slice(0, 3));
         setMedications(loadedMedications.slice(0, 3));
         setConsensos(loadedConsensos.slice(0, 3));
-
-        const latestRecent = recents[0];
-        if (!latestRecent) {
-          setContinueItem(null);
-          return;
-        }
-
-        const resumeState = buildResumeState(latestRecent);
-        if (latestRecent.entityType === 'disease') {
-          const found = loadedDiseases.find((item) => item.id === latestRecent.entityId);
-          setContinueItem(found ? { kind: 'disease', item: found, state: resumeState } : null);
-          return;
-        }
-
-        if (latestRecent.entityType === 'medication') {
-          const found = loadedMedications.find((item) => item.id === latestRecent.entityId);
-          setContinueItem(found ? { kind: 'medication', item: found, state: resumeState } : null);
-          return;
-        }
-
-        const found = loadedConsensos.find((item) => item.id === latestRecent.entityId);
-        setContinueItem(found ? { kind: 'consensus', item: found, state: resumeState } : null);
       } catch (loadError) {
         if (!isMounted) return;
         setError(loadError instanceof Error ? loadError.message : 'Falha ao carregar o módulo.');
+        listsCacheRef.current = null;
       } finally {
         if (isMounted) setIsLoading(false);
       }
@@ -120,10 +163,15 @@ export function HomePage() {
     return () => {
       isMounted = false;
     };
-  }, [consensoRepository, diseaseRepository, medicationRepository, recents]);
+  }, [consensoRepository, diseaseRepository, medicationRepository]);
 
   useEffect(() => {
-    const normalizedQuery = query.trim();
+    if (isLoading || !listsCacheRef.current) return;
+    setContinueItem(buildContinueItem(recents[0], listsCacheRef.current));
+  }, [recents, isLoading]);
+
+  useEffect(() => {
+    const normalizedQuery = deferredQuery.trim();
     if (!normalizedQuery) {
       setSearchResults({ diseases: [], medications: [], consensos: [] });
       return;
@@ -157,85 +205,113 @@ export function HomePage() {
     return () => {
       isMounted = false;
     };
-  }, [consensoRepository, diseaseRepository, medicationRepository, query]);
+  }, [consensoRepository, diseaseRepository, medicationRepository, deferredQuery]);
 
   const shortcuts = [
-    { to: '/consulta-vet', label: UI_TEXT.homeLabel, icon: Grid, body: 'Vis\u00e3o geral do m\u00f3dulo' },
-    { to: '/consulta-vet/doencas', label: UI_TEXT.diseaseLabel, icon: Stethoscope, body: 'Bases editoriais e navega\u00e7\u00e3o cl\u00ednica' },
-    { to: '/consulta-vet/medicamentos', label: UI_TEXT.medicationLabel, icon: Pill, body: 'Posologias, apresenta\u00e7\u00f5es e cautelas' },
+    { to: '/consulta-vet', label: UI_TEXT.homeLabel, icon: Grid, body: 'Vis\u00e3o geral do m\u00f3dulo', accent: 'sky' as const },
+    {
+      to: '/consulta-vet/doencas',
+      label: UI_TEXT.diseaseLabel,
+      icon: Stethoscope,
+      body: 'Bases editoriais e navega\u00e7\u00e3o cl\u00ednica',
+      accent: 'emerald' as const,
+    },
+    {
+      to: '/consulta-vet/medicamentos',
+      label: UI_TEXT.medicationLabel,
+      icon: Pill,
+      body: 'Posologias, apresenta\u00e7\u00f5es e cautelas',
+      accent: 'amber' as const,
+    },
     {
       to: '/consulta-vet/manejo-emergencial',
       label: UI_TEXT.emergencyLabel,
       icon: Zap,
       body: 'Cartilhas r\u00e1pidas com fluxo em p\u00e1ginas',
+      accent: 'orange' as const,
     },
-    { to: '/consulta-vet/consensos', label: UI_TEXT.consensoLabel, icon: FileText, body: 'PDFs reais e detalhes compartilhados' },
-    { to: '/consulta-vet/favoritos', label: UI_TEXT.favoritesLabel, icon: Bookmark, body: 'Biblioteca pessoal r\u00e1pida' },
-    { to: '/consulta-vet/recentes', label: UI_TEXT.recentsLabel, icon: Clock, body: 'Retomar do \u00faltimo ponto' },
+    {
+      to: '/consulta-vet/consensos',
+      label: UI_TEXT.consensoLabel,
+      icon: FileText,
+      body: 'PDFs reais e detalhes compartilhados',
+      accent: 'violet' as const,
+    },
+    {
+      to: '/consulta-vet/favoritos',
+      label: UI_TEXT.favoritesLabel,
+      icon: Bookmark,
+      body: 'Biblioteca pessoal r\u00e1pida',
+      accent: 'rose' as const,
+    },
+    {
+      to: '/consulta-vet/recentes',
+      label: UI_TEXT.recentsLabel,
+      icon: Clock,
+      body: 'Retomar do \u00faltimo ponto',
+      accent: 'cyan' as const,
+    },
   ];
 
   return (
-    <div className="mx-auto w-full max-w-[1560px] space-y-10 p-4 md:p-8">
-      <motion.section
-        initial={{ opacity: 0, y: 14 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ type: 'spring', stiffness: 260, damping: 28 }}
-        className="relative overflow-hidden rounded-[30px] border border-border bg-card shadow-sm"
-      >
+    <div className="mx-auto w-full max-w-[1560px] space-y-12 p-4 md:p-8">
+      <section className="relative overflow-hidden rounded-3xl border border-primary/15 bg-gradient-to-br from-card via-card to-primary/[0.04] shadow-lg shadow-primary/[0.07] ring-1 ring-primary/10">
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-24 top-0 h-64 w-64 rounded-full bg-primary/[0.14] blur-3xl dark:bg-primary/[0.18]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_0%_-30%,hsl(var(--primary)/0.14),transparent_55%),radial-gradient(ellipse_70%_50%_at_100%_100%,hsl(199_89%_48%/0.09),transparent_50%)]"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -left-20 bottom-0 h-56 w-56 rounded-full bg-primary/[0.08] blur-3xl"
+          className="pointer-events-none absolute -right-16 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-primary/[0.09] blur-3xl"
         />
-        <div className="relative grid gap-6 p-6 md:p-8 xl:grid-cols-[1.4fr_0.9fr] xl:items-end">
-          <div className="space-y-5">
-            <motion.div
-              initial={{ scale: 0.94, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.05, type: 'spring', stiffness: 400, damping: 22 }}
-              className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-primary shadow-sm shadow-primary/5"
-            >
-              {UI_TEXT.title}
-            </motion.div>
-            <div className="space-y-3">
-              <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">{UI_TEXT.title}</h1>
-              <p className="max-w-4xl text-base leading-relaxed text-muted-foreground md:text-lg">{UI_TEXT.heroBody}</p>
+        <div className="relative grid gap-8 p-6 md:p-10 lg:grid-cols-[1.2fr_0.85fr] lg:items-stretch">
+          <div className="flex flex-col justify-center space-y-6">
+            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-primary shadow-sm shadow-primary/10">
+              <Sparkles className="h-3.5 w-3.5 shrink-0" aria-hidden />
+              Base clínica integrada
             </div>
-            <div className="relative max-w-3xl transition-transform duration-200 ease-out focus-within:scale-[1.01]">
-              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <h1 className="m-0 text-4xl font-extrabold tracking-tight text-foreground md:text-5xl lg:text-[2.65rem] lg:leading-[1.1]">
+              <span className="text-foreground">Consulta</span>
+              <span className="bg-gradient-to-r from-primary via-sky-500 to-cyan-500 bg-clip-text text-transparent">
+                VET
+              </span>
+            </h1>
+            <p className="max-w-xl text-base leading-relaxed text-muted-foreground md:text-[1.05rem]">{UI_TEXT.heroBody}</p>
+            <div className="relative max-w-xl pt-1">
+              <Search
+                className="pointer-events-none absolute left-4 top-1/2 h-[1.125rem] w-[1.125rem] -translate-y-1/2 text-primary/70"
+                aria-hidden
+              />
               <input
                 type="text"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder={UI_TEXT.searchPlaceholder}
-                className="w-full rounded-2xl border border-border bg-background py-3 pl-10 pr-4 text-sm text-foreground outline-none transition-all placeholder:text-muted-foreground hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/25 active:scale-[0.995]"
+                className="w-full rounded-2xl border border-border/90 bg-background/95 py-3.5 pl-11 pr-4 text-sm text-foreground shadow-inner shadow-black/[0.03] outline-none ring-0 transition-all placeholder:text-muted-foreground hover:border-primary/35 focus:border-primary focus:shadow-md focus:shadow-primary/10 md:text-[15px]"
               />
             </div>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
-            <motion.div
-              whileHover={{ y: -2, transition: { type: 'spring', stiffness: 400, damping: 22 } }}
-              whileTap={{ scale: 0.99 }}
-              className="rounded-2xl border border-border bg-muted/30 p-4 transition-shadow duration-300 hover:border-primary/25 hover:shadow-md hover:shadow-primary/5"
-            >
-              <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{UI_TEXT.shortcuts}</p>
-              <p className="text-sm leading-relaxed text-foreground/85">{UI_TEXT.shortcutsBody}</p>
-            </motion.div>
-            <motion.div
-              whileHover={{ y: -2, transition: { type: 'spring', stiffness: 400, damping: 22 } }}
-              whileTap={{ scale: 0.99 }}
-              className="rounded-2xl border border-border bg-muted/30 p-4 transition-shadow duration-300 hover:border-primary/25 hover:shadow-md hover:shadow-primary/5"
-            >
-              <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{UI_TEXT.searchResults}</p>
-              <p className="text-sm leading-relaxed text-foreground/85">{UI_TEXT.searchSectionBody}</p>
-            </motion.div>
+          <div className="flex flex-col justify-center gap-4">
+            <div className="rounded-2xl border border-primary/20 bg-primary/[0.07] p-5 shadow-sm transition-transform duration-200 hover:-translate-y-0.5">
+              <div className="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/20 text-primary shadow-inner">
+                <LayoutGrid className="h-5 w-5" aria-hidden />
+              </div>
+              <p className="text-xs font-bold uppercase tracking-wider text-primary">{UI_TEXT.shortcuts}</p>
+              <p className="mt-1.5 text-sm leading-relaxed text-foreground/90">{UI_TEXT.shortcutsBody}</p>
+            </div>
+            <div className="rounded-2xl border border-violet-500/25 bg-violet-500/[0.08] p-5 shadow-sm transition-transform duration-200 hover:-translate-y-0.5 dark:bg-violet-500/[0.12]">
+              <div className="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-violet-500/20 text-violet-700 shadow-inner dark:text-violet-300">
+                <Search className="h-5 w-5" aria-hidden />
+              </div>
+              <p className="text-xs font-bold uppercase tracking-wider text-violet-700 dark:text-violet-300">
+                {UI_TEXT.searchResults}
+              </p>
+              <p className="mt-1.5 text-sm leading-relaxed text-foreground/90">{UI_TEXT.searchSectionBody}</p>
+            </div>
           </div>
         </div>
-      </motion.section>
+      </section>
 
       <ConsultaVetShortcutGrid title={UI_TEXT.shortcuts} shortcuts={shortcuts} />
 
@@ -270,9 +346,11 @@ export function HomePage() {
       )}
 
       {!isLoading && !error && continueItem && !query.trim() && (
-        <section className="rounded-[28px] border border-primary/20 bg-primary/5 p-5 md:p-6">
-          <div className="mb-4 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-primary">
-            <Clock className="h-4 w-4" />
+        <section className="rounded-3xl border border-primary/25 bg-gradient-to-br from-primary/[0.07] to-primary/[0.02] p-6 shadow-md shadow-primary/10 md:p-7">
+          <div className="mb-5 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-primary">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/15">
+              <Clock className="h-4 w-4" />
+            </span>
             {UI_TEXT.continueTitle}
           </div>
 

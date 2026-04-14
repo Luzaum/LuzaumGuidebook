@@ -1,5 +1,6 @@
 ﻿import React, { useEffect, useMemo, useState } from 'react';
-import { Plus, Save } from 'lucide-react';
+import { Pill, Plus, Save } from 'lucide-react';
+import { ConsultaVetPageHero } from '../components/layout/ConsultaVetPageHero';
 import { EditorialField } from '../components/editorial/EditorialField';
 import { EditorialPermissionGate } from '../components/editorial/EditorialPermissionGate';
 import { MedicationDoseEditor } from '../components/editorial/MedicationDoseEditor';
@@ -249,12 +250,13 @@ export function EditorialMedicationsPage() {
 
   return (
     <div className="mx-auto w-full max-w-[1680px] space-y-8 p-4 md:p-8">
-      <header className="rounded-[28px] border border-border bg-card p-6 shadow-sm md:p-8">
-        <h1 className="text-3xl font-bold tracking-tight text-foreground">Editorial de medicamentos</h1>
-        <p className="mt-2 max-w-4xl text-sm text-muted-foreground">
-          Formulário estruturado para farmacologia, doses, apresentações, referências e vínculos clínicos sem depender de JSON cru no dia a dia.
-        </p>
-      </header>
+      <ConsultaVetPageHero
+        eyebrow="Editorial"
+        title="Medicamentos"
+        description="Formulário estruturado para farmacologia, doses, apresentações, referências e vínculos clínicos sem depender de JSON cru no dia a dia."
+        icon={Pill}
+        accent="emerald"
+      />
 
       <EditorialPermissionGate isLoading={isLoadingAccess} canManage={canManage}>
         <div className="grid gap-6 xl:grid-cols-[380px_1fr]">

@@ -4,12 +4,13 @@ import DrugCard from '../components/DrugCard'
 import { AbvTab, AntibioticClass, Antibiotic, DiseaseSystem, Disease } from '../types'
 import { safeList } from '../utils/dataUtils'
 import { buildDrugToDiseasesIndex, lookupDiseasesForDrug } from '../utils/legacyDiseaseDrugIndex'
+import { collectDrugNamesFromDisease } from '../utils/diseaseTreatment'
 import { searchUnifiedClinical } from '../engine/searchV2'
-import type { SyndromeId } from '../model/ids'
 import type { AbvInstitutionalFocus } from '../types'
 import type { UnifiedSearchHit } from '../engine/searchV2'
 import { CLASS_STYLE } from '../constants'
 import { subclassFor } from '../utils/pkpdUtils'
+import { InlineRichText } from '../components/RichTextViewer'
 
 interface AntibioticsGuideProps {
   setPage: (page: AbvTab) => void
@@ -23,7 +24,6 @@ interface AntibioticsGuideProps {
   unifiedSearchSeed?: string
   onSearchSeedConsumed?: () => void
   onUnifiedSearchSeedConsumed?: () => void
-  onNavigateSyndromeV2: (id: SyndromeId) => void
   onNavigateInstitutional: (target: AbvInstitutionalFocus) => void
   onOpenLegacyDisease: (diseaseName: string) => void
 }
@@ -40,7 +40,6 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
   unifiedSearchSeed,
   onSearchSeedConsumed,
   onUnifiedSearchSeedConsumed,
-  onNavigateSyndromeV2,
   onNavigateInstitutional,
   onOpenLegacyDisease,
 }) => {
@@ -114,6 +113,7 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
 
   const renderDiseaseCard = (sys: string, dz: Disease) => {
     const isFocus = focusDiseaseName === dz.name
+    const atbPreview = collectDrugNamesFromDisease(dz)
     return (
       <div
         key={`${sys}-${dz.name}`}
@@ -144,43 +144,40 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
             </button>
           )}
         </div>
-        {dz.ccihSummary ? (
-          <p
-            className="mt-2 rounded-md border px-3 py-2 text-xs leading-relaxed"
-            style={{
-              borderColor: 'color-mix(in srgb, hsl(var(--primary)) 35%, hsl(var(--border)))',
-              background: 'color-mix(in srgb, hsl(var(--primary)) 8%, hsl(var(--card)))',
-              color: 'hsl(var(--foreground))',
-            }}
-          >
-            <span className="font-semibold">CCIH / stewardship:</span> {dz.ccihSummary}
-          </p>
-        ) : null}
         <p className="mt-2 text-xs leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
           <span className="font-medium" style={{ color: 'hsl(var(--foreground))' }}>
             Patógenos:
           </span>{' '}
-          {dz.pathogens || '—'}
+          {dz.pathogens ? <InlineRichText text={dz.pathogens} /> : '—'}
         </p>
         <p className="mt-1 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
           <span className="font-medium" style={{ color: 'hsl(var(--foreground))' }}>
-            1ª linha:
+            ATB (1ª linha, resumo):
           </span>{' '}
-          {safeList(dz.first_line).join(', ') || '—'}
+          {atbPreview.slice(0, 6).join(', ') || '—'}
+          {atbPreview.length > 6 ? '…' : ''}
         </p>
         <p className="mt-1 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
           <span className="font-medium" style={{ color: 'hsl(var(--foreground))' }}>
             Duração:
           </span>{' '}
-          {dz.duration || '—'}
+          {dz.duration ? <InlineRichText text={dz.duration} /> : '—'}
         </p>
+        <button
+          type="button"
+          className="mt-3 cursor-pointer text-xs font-semibold underline"
+          style={{ color: 'hsl(var(--primary))' }}
+          onClick={() => onOpenLegacyDisease(dz.name)}
+        >
+          Abrir no guia por suspeita clínica
+        </button>
       </div>
     )
   }
 
   return (
-    <div className="relative isolate min-h-full bg-[hsl(var(--background))] p-4 md:p-8">
-      <div className="abv-panel relative z-10 mx-auto max-w-6xl p-5 shadow-md md:p-6">
+    <div className="relative isolate min-h-full w-full bg-[hsl(var(--background))] px-3 py-4 sm:px-6 md:px-8 md:py-8">
+      <div className="abv-panel relative z-10 w-full max-w-none p-4 shadow-md sm:p-6 md:p-8">
         <button
           type="button"
           onClick={() => setPage(backTarget)}
@@ -190,21 +187,24 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
           <Icon name="back" className="mr-2 h-6 w-6" />
           {backText}
         </button>
-        <h1 className="mb-2 font-serif text-3xl font-bold" style={{ color: 'hsl(var(--foreground))' }}>
+        <h1 className="mb-2 text-3xl font-bold tracking-tight" style={{ color: 'hsl(var(--foreground))' }}>
           Guia de antimicrobianos
         </h1>
-        <p className="mb-6 max-w-3xl text-sm leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
-          Catálogo único: <strong style={{ color: 'hsl(var(--foreground))' }}>doenças</strong> com referência CCIH (quando
-          preenchida), <strong style={{ color: 'hsl(var(--foreground))' }}>fármacos por classe</strong> com cores PK/PD e
-          calculadora. A busca liga ao motor de <strong style={{ color: 'hsl(var(--foreground))' }}>suspeita clínica (v2)</strong>{' '}
-          e às bibliotecas institucionais.
+        <p className="mb-6 max-w-4xl text-sm leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
+          <strong style={{ color: 'hsl(var(--foreground))' }}>Fármacos por classe</strong> com cores PK/PD e calculadora.
+          O catálogo por sistema está em expansão; entre as fichas com linhas de tratamento e ligação aos antibióticos
+          estão <strong style={{ color: 'hsl(var(--foreground))' }}>piometra</strong>,{' '}
+          <strong style={{ color: 'hsl(var(--foreground))' }}>sepse</strong>,{' '}
+          <strong style={{ color: 'hsl(var(--foreground))' }}>pneumonia</strong> e{' '}
+          <strong style={{ color: 'hsl(var(--foreground))' }}>pielonefrite</strong>. A busca inclui patógenos, resistência,
+          hospital, fontes e o legado de fármacos e condições cadastradas.
         </p>
 
         <div className="mb-6 flex flex-col gap-3 md:flex-row">
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Buscar doença, antimicrobiano, síndrome, patógeno ou tema hospitalar…"
+            placeholder="Buscar doença, antimicrobiano, patógeno, resistência ou tema hospitalar…"
             className="abv-input flex-1 p-3 text-sm md:text-base"
           />
         </div>
@@ -215,36 +215,10 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
               Resultados da busca
             </h2>
             <p className="mb-3 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-              Ordem: síndromes e conteúdos v2; em seguida doenças e fármacos do catálogo legado.
+              Ordem: patógenos, resistência, hospital e fontes; em seguida doenças e fármacos do catálogo.
             </p>
             <ul className="max-h-56 space-y-2 overflow-y-auto pr-1 text-sm">
               {unifiedHits.map((h, i) => {
-                if (h.kind === 'syndrome') {
-                  return (
-                    <li key={`syn-${h.id}-${i}`}>
-                      <button
-                        type="button"
-                        className="cursor-pointer text-left font-medium underline-offset-2 hover:underline"
-                        style={{ color: 'hsl(var(--primary))' }}
-                        onClick={() => onNavigateSyndromeV2(h.id)}
-                      >
-                        <span
-                          className="mr-2 rounded px-1.5 py-0.5 text-[10px] font-bold uppercase"
-                          style={{
-                            background: 'color-mix(in srgb, hsl(var(--primary)) 15%, hsl(var(--card)))',
-                            color: 'hsl(var(--primary))',
-                          }}
-                        >
-                          Síndrome
-                        </span>
-                        {h.label}
-                      </button>
-                      <p className="mt-0.5 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                        {h.hint}
-                      </p>
-                    </li>
-                  )
-                }
                 if (h.kind === 'disease') {
                   return (
                     <li key={`dz-${h.system}-${h.name}-${i}`}>
@@ -410,14 +384,14 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
                   border: '1px solid color-mix(in srgb, var(--chart-4) 35%, hsl(var(--border)))',
                 }}
               >
-                Doenças · CCIH
+                Doenças por sistema
               </span>
-              <h2 className="mt-2 font-serif text-xl font-bold" style={{ color: 'hsl(var(--foreground))' }}>
+              <h2 className="mt-2 text-xl font-bold tracking-tight" style={{ color: 'hsl(var(--foreground))' }}>
                 Condições por sistema
               </h2>
-              <p className="mt-1 max-w-3xl text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                Referência clínica legada; campo CCIH é preenchido com auditoria institucional. Use os cartões de
-                antibióticos abaixo para doses e calculadora.
+              <p className="mt-1 max-w-none text-xs sm:max-w-4xl" style={{ color: 'hsl(var(--muted-foreground))' }}>
+                Fichas com linhas de tratamento e justificativas por fármaco. Use os cartões de antibióticos abaixo para doses
+                e calculadora.
               </p>
             </div>
             <span className="text-sm font-medium" style={{ color: 'hsl(var(--primary))' }}>
@@ -453,8 +427,9 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
               >
                 Antimicrobianos por classe
               </span>
-              <p className="mt-2 max-w-3xl text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                PK/PD por cor, doses e calculadora. Chips ligam às doenças do catálogo quando o fármaco aparece na 1ª linha ou alternativas.
+              <p className="mt-2 max-w-none text-xs sm:max-w-4xl" style={{ color: 'hsl(var(--muted-foreground))' }}>
+                PK/PD por cor, doses e calculadora. Chips ligam às condições em que o fármaco entra nas linhas de tratamento
+                cadastradas.
               </p>
             </div>
             <select

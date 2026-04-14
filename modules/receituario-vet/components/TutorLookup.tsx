@@ -237,7 +237,7 @@ export function TutorLookup({ value, onChange, placeholder = 'Buscar tutor...', 
             setIsOpen(true)
           }}
           onFocus={() => setIsOpen(true)}
-          className={`w-full rounded-xl border border-slate-800 bg-black/60 px-4 py-3.5 text-sm font-bold text-white outline-none transition-all focus:border-[#39ff14]/50 focus:ring-1 focus:ring-[#39ff14]/20 placeholder:text-slate-700 ${error ? 'border-red-500/50 focus:border-red-500' : ''} ${value ? 'text-[#39ff14] font-black' : ''}`}
+          className={`w-full rounded-xl border border-slate-800 bg-black/60 px-4 py-3.5 text-sm font-bold text-white outline-none transition-all focus:border-[color:color-mix(in_srgb,var(--rxv-primary)_50%,transparent)] focus:ring-1 focus:ring-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)]/20 placeholder:text-slate-700 ${error ? 'border-red-500/50 focus:border-red-500' : ''} ${value ? 'text-[color:var(--rxv-primary)] font-black' : ''}`}
         />
 
         {/* Ícone/Loader */}
@@ -252,7 +252,7 @@ export function TutorLookup({ value, onChange, placeholder = 'Buscar tutor...', 
             </button>
           )}
           {isSearching && (
-            <span className="material-symbols-outlined animate-spin text-[#39ff14] text-[18px]">
+            <span className="material-symbols-outlined animate-spin text-[color:var(--rxv-primary)] text-[18px]">
               sync
             </span>
           )}
@@ -312,7 +312,7 @@ export function TutorLookup({ value, onChange, placeholder = 'Buscar tutor...', 
                       e.preventDefault()
                       handleSelect(tutor)
                     }}
-                    className="w-full px-4 py-2.5 text-left hover:bg-[#39ff14]/10 transition-colors border-b border-slate-900 last:border-b-0"
+                    className="w-full px-4 py-2.5 text-left hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] transition-colors border-b border-slate-900 last:border-b-0"
                   >
                     <p className="text-sm font-bold text-white">{tutor.full_name}</p>
                     {tutor.phone && (

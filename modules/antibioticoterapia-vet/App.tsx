@@ -9,9 +9,9 @@ import {
   Species,
   LifeStageKey,
   ComorbidityState,
+  Disease,
 } from './types'
-import type { SeverityTier } from './model/types'
-import type { SyndromeId } from './model/ids'
+import { safeList } from './utils/dataUtils'
 
 const HomePage = lazy(() => import('./pages/HomePage').then((m) => ({ default: m.HomePage })))
 const PatientGuide = lazy(() => import('./pages/PatientGuide'))
@@ -38,6 +38,14 @@ function AbvRouteFallback() {
   )
 }
 
+function findDiseaseByName(dzDict: DiseaseSystem, diseaseName: string): Disease | null {
+  for (const sys of Object.keys(dzDict)) {
+    const found = safeList(dzDict[sys]).find((d) => d.name === diseaseName)
+    if (found) return found
+  }
+  return null
+}
+
 export function App() {
   const [activeTab, setActiveTab] = useState<AbvTab>('home')
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
@@ -60,8 +68,7 @@ export function App() {
     cardiac: false,
     neurological: false,
   })
-  const [severity, setSeverity] = useState<SeverityTier>('ambulatory_stable')
-  const [chosenV2, setChosenV2] = useState<SyndromeId | null>(null)
+  const [chosen, setChosen] = useState<Disease | null>(null)
 
   const needsLegacySeeds = activeTab === 'syndrome' || activeTab === 'antibiotics'
 
@@ -91,12 +98,6 @@ export function App() {
     setActiveTab('antibiotics')
   }
 
-  const onNavigateSyndromeV2 = useCallback((id: SyndromeId) => {
-    setChosenV2(id)
-    setStep(3)
-    setActiveTab('syndrome')
-  }, [])
-
   const onNavigateInstitutional = useCallback((target: AbvInstitutionalFocus) => {
     setInstitutionalFocus(target)
     if (target.kind === 'pathogen' || target.kind === 'resistance') setActiveTab('pathogens')
@@ -104,13 +105,22 @@ export function App() {
     else setActiveTab('references')
   }, [])
 
-  const onOpenLegacyDisease = useCallback((diseaseName: string) => {
-    setFocusDrug(null)
-    setAntibioticsSearchSeed(undefined)
-    setUnifiedSearchSeed(undefined)
-    setFocusDiseaseName(diseaseName)
-    setActiveTab('antibiotics')
-  }, [])
+  const onOpenLegacyDisease = useCallback(
+    (diseaseName: string) => {
+      if (!legacyDicts) return
+      const found = findDiseaseByName(legacyDicts.dz, diseaseName)
+      if (!found) return
+      setFocusDrug(null)
+      setAntibioticsSearchSeed(undefined)
+      setUnifiedSearchSeed(undefined)
+      setFocusDiseaseName(null)
+      setSourcePage('antibiotics')
+      setChosen(found)
+      setStep(species && life ? 4 : 1)
+      setActiveTab('syndrome')
+    },
+    [legacyDicts, species, life],
+  )
 
   const clearFocusDisease = useCallback(() => setFocusDiseaseName(null), [])
 
@@ -127,8 +137,7 @@ export function App() {
       cardiac: false,
       neurological: false,
     })
-    setSeverity('ambulatory_stable')
-    setChosenV2(null)
+    setChosen(null)
   }
 
   const onResetPatientFlow = () => {
@@ -160,8 +169,6 @@ export function App() {
         return (
           <PatientGuide
             setPage={setActiveTab}
-            dzDict={dzDict}
-            abDict={abDict}
             onDeepLinkDrug={onDeepLinkDrug}
             onReset={onResetPatientFlow}
             step={step}
@@ -172,10 +179,10 @@ export function App() {
             setLife={setLife}
             co={co}
             setCo={setCo}
-            severity={severity}
-            setSeverity={setSeverity}
-            chosenV2={chosenV2}
-            setChosenV2={setChosenV2}
+            chosen={chosen}
+            setChosen={setChosen}
+            dzDict={dzDict}
+            abDict={abDict}
           />
         )
       }
@@ -194,7 +201,6 @@ export function App() {
             unifiedSearchSeed={unifiedSearchSeed}
             onSearchSeedConsumed={consumeAntibioticsSearchSeed}
             onUnifiedSearchSeedConsumed={consumeUnifiedSearchSeed}
-            onNavigateSyndromeV2={onNavigateSyndromeV2}
             onNavigateInstitutional={onNavigateInstitutional}
             onOpenLegacyDisease={onOpenLegacyDisease}
           />

@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Bookmark, FileText, Pill, Stethoscope } from 'lucide-react';
+import { ConsultaVetPageHero } from '../components/layout/ConsultaVetPageHero';
 import { EntityCard } from '../components/shared/EntityCard';
 import { useFavorites } from '../hooks/useFavorites';
 import { getConsensoRepository } from '../services/consensoRepository';
@@ -11,6 +12,7 @@ import { MedicationRecord } from '../types/medication';
 import { formatSpeciesList } from '../utils/navigation';
 
 const UI_TEXT = {
+  eyebrow: 'Sua biblioteca',
   title: 'Favoritos',
   body: 'Acesso r\u00e1pido aos conte\u00fados que voc\u00ea salvou para consulta recorrente.',
   emptyTitle: 'Nenhum favorito salvo',
@@ -84,17 +86,13 @@ export function FavoritesPage() {
 
   return (
     <div className="mx-auto w-full max-w-[1560px] space-y-10 p-4 md:p-8">
-      <section className="rounded-[28px] border border-border bg-card p-6 shadow-sm md:p-8">
-        <div className="flex items-start gap-4">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-rose-500/10 text-rose-600">
-            <Bookmark className="h-6 w-6" />
-          </div>
-          <div>
-            <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">{UI_TEXT.title}</h1>
-            <p className="mt-3 text-base leading-relaxed text-muted-foreground">{UI_TEXT.body}</p>
-          </div>
-        </div>
-      </section>
+      <ConsultaVetPageHero
+        eyebrow={UI_TEXT.eyebrow}
+        title={UI_TEXT.title}
+        description={UI_TEXT.body}
+        icon={Bookmark}
+        accent="rose"
+      />
 
       {isLoading ? (
         <div className="rounded-2xl border border-border bg-card py-16 text-center">

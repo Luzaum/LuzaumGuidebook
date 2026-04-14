@@ -626,7 +626,7 @@ export default function RxPrintPage() {
   }
 
   return (
-    <div className="min-h-dvh bg-[#12230f] text-slate-100">
+    <div className="min-h-dvh bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] text-slate-100">
       <div className="mx-auto flex min-h-dvh w-full max-w-[1920px] flex-col overflow-hidden md:flex-row">
         <section className="flex-1 preview-bg overflow-y-auto p-4 md:p-8" style={{ backgroundImage: 'radial-gradient(#274b20 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
           <div className="mx-auto max-w-[1160px]">
@@ -640,14 +640,14 @@ export default function RxPrintPage() {
                 <Link to="/receituario-vet/nova-receita-2" className="rounded-lg border border-[#345d2a] bg-[#1a2e16] px-3 py-2 text-sm font-semibold hover:bg-[#22381d]">Voltar ao editor</Link>
                 <button type="button" className="rounded-lg border border-[#345d2a] bg-[#1a2e16] px-3 py-2 text-sm font-semibold hover:bg-[#22381d]" onClick={() => setShare((prev) => ({ ...prev, open: true }))}>Compartilhar receita</button>
                 <button type="button" className="rounded-lg border border-[#345d2a] bg-[#1a2e16] px-3 py-2 text-sm font-semibold hover:bg-[#22381d]" onClick={() => window.print()}>Imprimir direto</button>
-                <button type="button" className="rounded-lg bg-[#38ff14] px-3 py-2 text-sm font-bold text-[#10200d] hover:bg-[#2bd010]" onClick={downloadPdf}>Gerar PDF</button>
+                <button type="button" className="rounded-lg bg-[color:var(--rxv-primary)] px-3 py-2 text-sm font-bold text-[color:var(--rxv-on-primary)] hover:brightness-110" onClick={downloadPdf}>Gerar PDF</button>
               </div>
             </div>
 
             {printDocs.length > 1 ? (
-              <div className="mb-3 flex flex-wrap items-center justify-between gap-2 rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2">
+              <div className="mb-3 flex flex-wrap items-center justify-between gap-2 rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2">
                 <div className="text-xs text-slate-300">
-                  Página {activeDocIndex + 1} de {printDocs.length} · <span className="font-semibold text-[#9eff8f]">{activeDocLabel}</span>
+                  Página {activeDocIndex + 1} de {printDocs.length} · <span className="font-semibold text-[color:color-mix(in_srgb,var(--rxv-primary)_78%,#f1f5f9)]">{activeDocLabel}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   {!isReviewMode ? (
@@ -687,7 +687,7 @@ export default function RxPrintPage() {
                     ref={(el) => {
                       previewSheetRefs.current[idx] = el
                     }}
-                    className={idx === activeDocIndex ? 'rounded-lg ring-2 ring-[#39ff14]/35' : ''}
+                    className={idx === activeDocIndex ? 'rounded-lg ring-2 ring-[color:color-mix(in_srgb,var(--rxv-primary)_35%,transparent)]/35' : ''}
                   >
                     <RxPrintView
                       doc={doc}
@@ -778,10 +778,10 @@ export default function RxPrintPage() {
                 {selectedItem ? (
                   <div className="space-y-3">
                     <label className="block text-xs text-slate-300">Medicamento
-                      <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.name} onChange={(e) => patchSelectedItem((item) => ({ ...item, name: e.target.value }))} />
+                      <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={selectedItem.name} onChange={(e) => patchSelectedItem((item) => ({ ...item, name: e.target.value }))} />
                     </label>
                     <label className="block text-xs text-slate-300">Nome comercial (opcional)
-                      <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.commercialName || ''} onChange={(e) => patchSelectedItem((item) => ({ ...item, commercialName: e.target.value }))} />
+                      <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={selectedItem.commercialName || ''} onChange={(e) => patchSelectedItem((item) => ({ ...item, commercialName: e.target.value }))} />
                     </label>
 
                     {isReviewCompoundedItem(selectedItem) ? (
@@ -850,7 +850,7 @@ export default function RxPrintPage() {
                             <div className="mt-3 grid grid-cols-2 gap-2">
                               <label className="block text-xs text-slate-300">Dose escolhida
                                 <input
-                                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                                   value={compoundedDoseEditorValue}
                                   onChange={(e) => setCompoundedDoseEditorValue(e.target.value)}
                                   placeholder="Ex: 10"
@@ -858,7 +858,7 @@ export default function RxPrintPage() {
                               </label>
                               <label className="block text-xs text-slate-300">Unidade
                                 <select
-                                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                                   value={compoundedDoseEditorUnit}
                                   onChange={(e) => setCompoundedDoseEditorUnit(e.target.value)}
                                 >
@@ -868,7 +868,7 @@ export default function RxPrintPage() {
                             </div>
                             <p className="mt-3 text-xs text-[#9cd78f]">Dose final: {buildAdministrationDoseText(compoundedDoseEditorValue, compoundedDoseEditorUnit, prescription.patient.weightKg) || '—'}</p>
                             <div className="mt-3 flex gap-2">
-                              <button type="button" className="rounded-lg bg-[#38ff14] px-3 py-2 text-xs font-bold text-[#10200d]" onClick={applyCompoundedDoseEditor}>Aplicar</button>
+                              <button type="button" className="rounded-lg bg-[color:var(--rxv-primary)] px-3 py-2 text-xs font-bold text-[color:var(--rxv-on-primary)]" onClick={applyCompoundedDoseEditor}>Aplicar</button>
                               <button type="button" className="rounded-lg border border-[#335d2a] px-3 py-2 text-xs font-semibold text-slate-300" onClick={() => setCompoundedDoseEditorOpen(false)}>Cancelar</button>
                             </div>
                           </div>
@@ -877,10 +877,10 @@ export default function RxPrintPage() {
                       <>
                         <div className="grid grid-cols-2 gap-2">
                           <label className="block text-xs text-slate-300">Dose
-                            <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.doseValue} onChange={(e) => patchSelectedItem((item) => ({ ...item, doseValue: e.target.value }))} />
+                            <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={selectedItem.doseValue} onChange={(e) => patchSelectedItem((item) => ({ ...item, doseValue: e.target.value }))} />
                           </label>
                           <label className="block text-xs text-slate-300">Unidade
-                            <select className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.doseUnit} onChange={(e) => patchSelectedItem((item) => ({ ...item, doseUnit: e.target.value }))}>
+                            <select className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={selectedItem.doseUnit} onChange={(e) => patchSelectedItem((item) => ({ ...item, doseUnit: e.target.value }))}>
                               {DOSE_UNIT_OPTIONS.map((unit) => (<option key={unit} value={unit}>{unit}</option>))}
                             </select>
                           </label>
@@ -888,22 +888,22 @@ export default function RxPrintPage() {
 
                         <div className="grid grid-cols-2 gap-2">
                           <label className="block text-xs text-slate-300">Frequência
-                            <select className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.frequencyType} onChange={(e) => patchSelectedItem((item) => ({ ...item, frequencyType: e.target.value as PrescriptionItem['frequencyType'] }))}>
+                            <select className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={selectedItem.frequencyType} onChange={(e) => patchSelectedItem((item) => ({ ...item, frequencyType: e.target.value as PrescriptionItem['frequencyType'] }))}>
                               <option value="timesPerDay">x vezes ao dia</option>
                               <option value="everyHours">a cada X horas</option>
                             </select>
                           </label>
                           <label className="block text-xs text-slate-300">{selectedItem.frequencyType === 'everyHours' ? 'Intervalo (h)' : 'Vezes ao dia'}
-                            <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.frequencyType === 'everyHours' ? selectedItem.everyHours : selectedItem.timesPerDay} onChange={(e) => patchSelectedItem((item) => item.frequencyType === 'everyHours' ? { ...item, everyHours: e.target.value, frequencyToken: '' } : { ...item, timesPerDay: e.target.value, frequencyToken: '' })} />
+                            <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={selectedItem.frequencyType === 'everyHours' ? selectedItem.everyHours : selectedItem.timesPerDay} onChange={(e) => patchSelectedItem((item) => item.frequencyType === 'everyHours' ? { ...item, everyHours: e.target.value, frequencyToken: '' } : { ...item, timesPerDay: e.target.value, frequencyToken: '' })} />
                           </label>
                         </div>
 
                         <div className="grid grid-cols-2 gap-2">
                           <label className="block text-xs text-slate-300">Duração (dias)
-                            <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.durationDays} onChange={(e) => patchSelectedItem((item) => ({ ...item, durationDays: e.target.value }))} />
+                            <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={selectedItem.durationDays} onChange={(e) => patchSelectedItem((item) => ({ ...item, durationDays: e.target.value }))} />
                           </label>
                           <label className="block text-xs text-slate-300">Via
-                            <select className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.routeGroup} onChange={(e) => patchSelectedItem((item) => ({ ...item, routeGroup: e.target.value as RouteGroup }))}>
+                            <select className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={selectedItem.routeGroup} onChange={(e) => patchSelectedItem((item) => ({ ...item, routeGroup: e.target.value as RouteGroup }))}>
                               {ROUTE_OPTIONS.map((option) => (<option key={option.value} value={option.value}>{option.label}</option>))}
                             </select>
                           </label>
@@ -912,11 +912,11 @@ export default function RxPrintPage() {
                     )}
 
                     <label className="block text-xs text-slate-300">Instruções ao tutor
-                      <textarea rows={4} className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.instruction} onChange={(e) => patchSelectedItem((item) => ({ ...item, instruction: e.target.value, autoInstruction: false, manualEdited: true }))} />
+                      <textarea rows={4} className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={selectedItem.instruction} onChange={(e) => patchSelectedItem((item) => ({ ...item, instruction: e.target.value, autoInstruction: false, manualEdited: true }))} />
                     </label>
 
                     <label className="block text-xs text-slate-300">Cautelas (uma por linha)
-                      <textarea rows={3} className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={selectedItem.cautions.join('\n')} onChange={(e) => patchSelectedItem((item) => ({ ...item, cautions: e.target.value.split('\n').map((line) => line.trim()).filter(Boolean) }))} />
+                      <textarea rows={3} className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={selectedItem.cautions.join('\n')} onChange={(e) => patchSelectedItem((item) => ({ ...item, cautions: e.target.value.split('\n').map((line) => line.trim()).filter(Boolean) }))} />
                     </label>
 
                     <div className="grid grid-cols-2 gap-2 text-sm">
@@ -933,13 +933,13 @@ export default function RxPrintPage() {
                     {selection.zone === 'header' ? (
                       <>
                         <label className="block text-xs text-slate-300">Nome da clínica
-                          <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.clinicName} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, clinicName: e.target.value } }))} />
+                          <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={prescription.prescriber.clinicName} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, clinicName: e.target.value } }))} />
                         </label>
                         <label className="block text-xs text-slate-300">Nome do prescritor
-                          <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.name} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, name: e.target.value } }))} />
+                          <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={prescription.prescriber.name} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, name: e.target.value } }))} />
                         </label>
                         <label className="block text-xs text-slate-300">CRMV
-                          <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.prescriber.crmv} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, crmv: e.target.value } }))} />
+                          <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={prescription.prescriber.crmv} onChange={(e) => updatePrescription((prev) => ({ ...prev, prescriber: { ...prev.prescriber, crmv: e.target.value } }))} />
                         </label>
                       </>
                     ) : null}
@@ -947,10 +947,10 @@ export default function RxPrintPage() {
                     {selection.zone === 'patient' ? (
                       <>
                         <label className="block text-xs text-slate-300">Paciente
-                          <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.patient.name} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, name: e.target.value } }))} />
+                          <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={prescription.patient.name} onChange={(e) => updatePrescription((prev) => ({ ...prev, patient: { ...prev.patient, name: e.target.value } }))} />
                         </label>
                         <label className="block text-xs text-slate-300">Tutor / responsável
-                          <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.tutor.name} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, name: e.target.value } }))} />
+                          <input className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={prescription.tutor.name} onChange={(e) => updatePrescription((prev) => ({ ...prev, tutor: { ...prev.tutor, name: e.target.value } }))} />
                         </label>
                       </>
                     ) : null}
@@ -958,13 +958,13 @@ export default function RxPrintPage() {
                     {selection.zone === 'recommendations' ? (
                       <>
                         <label className="block text-xs text-slate-300">Recomendações (uma por linha)
-                          <textarea rows={4} className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.recommendations.bullets.join('\n')} onChange={(e) => updatePrescription((prev) => ({ ...prev, recommendations: { ...prev.recommendations, bullets: e.target.value.split('\n').map((line) => line.trim()).filter(Boolean) } }))} />
+                          <textarea rows={4} className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={prescription.recommendations.bullets.join('\n')} onChange={(e) => updatePrescription((prev) => ({ ...prev, recommendations: { ...prev.recommendations, bullets: e.target.value.split('\n').map((line) => line.trim()).filter(Boolean) } }))} />
                         </label>
                         <label className="block text-xs text-slate-300">Exames personalizados (uma por linha)
-                          <textarea rows={3} className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={prescription.recommendations.customExams.join('\n')} onChange={(e) => updatePrescription((prev) => ({ ...prev, recommendations: { ...prev.recommendations, customExams: e.target.value.split('\n').map((line) => line.trim()).filter(Boolean) } }))} />
+                          <textarea rows={3} className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={prescription.recommendations.customExams.join('\n')} onChange={(e) => updatePrescription((prev) => ({ ...prev, recommendations: { ...prev.recommendations, customExams: e.target.value.split('\n').map((line) => line.trim()).filter(Boolean) } }))} />
                         </label>
                         <label className="block text-xs text-slate-300">Observação adicional de revisão
-                          <textarea rows={3} className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={inlineEditNote} onChange={(e) => setInlineEditNote(e.target.value)} />
+                          <textarea rows={3} className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={inlineEditNote} onChange={(e) => setInlineEditNote(e.target.value)} />
                         </label>
                       </>
                     ) : null}
@@ -976,7 +976,7 @@ export default function RxPrintPage() {
                       </div>
                     ) : null}
 
-                    <div className="rounded-xl border border-[#335d2a] bg-[#12230f] p-3">
+                    <div className="rounded-xl border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] p-3">
                       <p className="mb-1 text-xs font-bold uppercase tracking-wide text-[#9cd78f]">Edição manual da seção</p>
                       <p className="mb-2 text-[11px] text-slate-400">
                         Ao preencher, este texto substitui o conteúdo padrão da seção selecionada.
@@ -999,7 +999,7 @@ export default function RxPrintPage() {
                       <div className="mt-2 flex justify-end">
                         <button
                           type="button"
-                          className="rounded border border-[#3b6c2f] px-2 py-1 text-xs hover:bg-[#1f3619]"
+                          className="rounded border border-[color:color-mix(in_srgb,var(--rxv-primary)_38%,var(--rxv-border))] px-2 py-1 text-xs hover:bg-[#1f3619]"
                           onClick={() =>
                             setZoneTextOverrides((prev) => ({
                               ...prev,
@@ -1026,7 +1026,7 @@ export default function RxPrintPage() {
                 <label className="block text-xs text-slate-400">
                   Tipo de farmácia da receita controlada
                   <select
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                     value={prescription.recommendations.specialControlPharmacy}
                     onChange={(e) =>
                       updatePrescription((prev) => ({
@@ -1046,7 +1046,7 @@ export default function RxPrintPage() {
                 <label className="block text-xs text-slate-400">
                   Template da receita controlada
                   <select
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                     value={prescription.recommendations.specialControlTemplateId || specialControlTemplate.id}
                     onChange={(e) =>
                       updatePrescription((prev) => ({
@@ -1068,7 +1068,7 @@ export default function RxPrintPage() {
                 {specialDocIndex >= 0 ? (
                   <button
                     type="button"
-                    className="rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm font-semibold hover:bg-[#1a2f15]"
+                    className="rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm font-semibold hover:bg-[#1a2f15]"
                     onClick={() => {
                       setActiveDocIndex(specialDocIndex)
                       setSelection({ kind: 'zone', zone: 'body' })
@@ -1082,7 +1082,7 @@ export default function RxPrintPage() {
 
             <label className="block text-xs text-slate-400">Template
               <select
-                className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                 value={templateDraft.id}
                 onChange={(e) => {
                   const selected = selectableTemplates.find((entry) => entry.id === e.target.value)
@@ -1102,7 +1102,7 @@ export default function RxPrintPage() {
             </label>
 
             <label className="block text-xs text-slate-400">Fonte
-              <select className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white" value={templateDraft.fontFamily} onChange={(e) => setTemplateDraft((prev) => ({ ...prev, fontFamily: e.target.value }))}>
+              <select className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white" value={templateDraft.fontFamily} onChange={(e) => setTemplateDraft((prev) => ({ ...prev, fontFamily: e.target.value }))}>
                 <option value="Manrope, Arial, sans-serif">Manrope</option>
                 <option value="Arial, Helvetica, sans-serif">Arial</option>
                 <option value="'Times New Roman', serif">Times New Roman</option>
@@ -1112,15 +1112,15 @@ export default function RxPrintPage() {
 
             <div className="grid grid-cols-2 gap-2">
               <label className="block text-xs text-slate-400">Fonte base
-                <input type="range" min={10} max={16} value={templateDraft.fontSizePt} onChange={(e) => setTemplateDraft((prev) => ({ ...prev, fontSizePt: Number(e.target.value) }))} className="mt-1 w-full accent-[#38ff14]" />
+                <input type="range" min={10} max={16} value={templateDraft.fontSizePt} onChange={(e) => setTemplateDraft((prev) => ({ ...prev, fontSizePt: Number(e.target.value) }))} className="mt-1 w-full accent-[color:var(--rxv-primary)]" />
               </label>
               <label className="block text-xs text-slate-400">Título
-                <input type="range" min={14} max={24} value={templateDraft.headingSizePt} onChange={(e) => setTemplateDraft((prev) => ({ ...prev, headingSizePt: Number(e.target.value) }))} className="mt-1 w-full accent-[#38ff14]" />
+                <input type="range" min={14} max={24} value={templateDraft.headingSizePt} onChange={(e) => setTemplateDraft((prev) => ({ ...prev, headingSizePt: Number(e.target.value) }))} className="mt-1 w-full accent-[color:var(--rxv-primary)]" />
               </label>
             </div>
 
             <div className="grid grid-cols-1 gap-2">
-              <button type="button" className="rounded-lg bg-[#38ff14] px-3 py-2 text-sm font-bold text-[#10200d] hover:bg-[#2bd010]" onClick={saveTemplateDraft}>Salvar ajustes no template</button>
+              <button type="button" className="rounded-lg bg-[color:var(--rxv-primary)] px-3 py-2 text-sm font-bold text-[color:var(--rxv-on-primary)] hover:brightness-110" onClick={saveTemplateDraft}>Salvar ajustes no template</button>
               <Link
                 to="/receituario-vet/templates"
                 state={{ from: `${location.pathname}${location.search}` }}
@@ -1135,45 +1135,45 @@ export default function RxPrintPage() {
 
       {share.open ? (
         <div className="fixed inset-0 z-[90] flex items-center justify-center bg-black/60 px-4 py-8" onClick={() => setShare((prev) => ({ ...prev, open: false }))}>
-          <div className="w-full max-w-5xl rounded-2xl border border-[#376b2e] bg-[#12230f] text-slate-100 shadow-2xl" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center justify-between border-b border-[#376b2e] px-6 py-4">
+          <div className="w-full max-w-5xl rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,var(--rxv-border))] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] text-slate-100 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between border-b border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,var(--rxv-border))] px-6 py-4">
               <div>
                 <h3 className="text-xl font-bold">Compartilhar Receita</h3>
                 <p className="text-sm text-slate-400">Envie por WhatsApp ou e-mail com anexo PDF.</p>
               </div>
-              <button type="button" className="rounded-lg border border-[#376b2e] px-3 py-1.5 text-sm" onClick={() => setShare((prev) => ({ ...prev, open: false }))}>Fechar</button>
+              <button type="button" className="rounded-lg border border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,var(--rxv-border))] px-3 py-1.5 text-sm" onClick={() => setShare((prev) => ({ ...prev, open: false }))}>Fechar</button>
             </div>
 
             <div className="grid grid-cols-1 gap-4 p-6 md:grid-cols-2">
-              <section className="rounded-xl border border-[#376b2e] bg-[#1c3617] p-4">
+              <section className="rounded-xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,var(--rxv-border))] bg-[#1c3617] p-4">
                 <h4 className="mb-3 text-lg font-bold">WhatsApp</h4>
                 <label className="block text-xs text-slate-300">Telefone do tutor
-                  <input className="mt-1 w-full rounded-lg border border-[#376b2e] bg-[#12230f] px-3 py-2 text-sm" value={share.whatsappPhone} onChange={(e) => setShare((prev) => ({ ...prev, whatsappPhone: e.target.value }))} />
+                  <input className="mt-1 w-full rounded-lg border border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,var(--rxv-border))] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm" value={share.whatsappPhone} onChange={(e) => setShare((prev) => ({ ...prev, whatsappPhone: e.target.value }))} />
                 </label>
                 <label className="mt-3 block text-xs text-slate-300">Mensagem personalizada
-                  <textarea className="mt-1 w-full rounded-lg border border-[#376b2e] bg-[#12230f] px-3 py-2 text-sm" rows={5} value={share.whatsappMessage} onChange={(e) => setShare((prev) => ({ ...prev, whatsappMessage: e.target.value }))} />
+                  <textarea className="mt-1 w-full rounded-lg border border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,var(--rxv-border))] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm" rows={5} value={share.whatsappMessage} onChange={(e) => setShare((prev) => ({ ...prev, whatsappMessage: e.target.value }))} />
                 </label>
-                <button type="button" className="mt-4 w-full rounded-lg bg-[#38ff14] px-3 py-2 text-sm font-bold text-[#10200d]" onClick={openWhatsApp}>Enviar via WhatsApp</button>
+                <button type="button" className="mt-4 w-full rounded-lg bg-[color:var(--rxv-primary)] px-3 py-2 text-sm font-bold text-[color:var(--rxv-on-primary)]" onClick={openWhatsApp}>Enviar via WhatsApp</button>
               </section>
 
-              <section className="rounded-xl border border-[#376b2e] bg-[#1c3617] p-4">
+              <section className="rounded-xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,var(--rxv-border))] bg-[#1c3617] p-4">
                 <h4 className="mb-3 text-lg font-bold">E-mail</h4>
                 <label className="block text-xs text-slate-300">E-mail do tutor
-                  <input className="mt-1 w-full rounded-lg border border-[#376b2e] bg-[#12230f] px-3 py-2 text-sm" value={share.email} onChange={(e) => setShare((prev) => ({ ...prev, email: e.target.value }))} />
+                  <input className="mt-1 w-full rounded-lg border border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,var(--rxv-border))] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm" value={share.email} onChange={(e) => setShare((prev) => ({ ...prev, email: e.target.value }))} />
                 </label>
                 <label className="mt-3 block text-xs text-slate-300">Assunto
-                  <input className="mt-1 w-full rounded-lg border border-[#376b2e] bg-[#12230f] px-3 py-2 text-sm" value={share.emailSubject} onChange={(e) => setShare((prev) => ({ ...prev, emailSubject: e.target.value }))} />
+                  <input className="mt-1 w-full rounded-lg border border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,var(--rxv-border))] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm" value={share.emailSubject} onChange={(e) => setShare((prev) => ({ ...prev, emailSubject: e.target.value }))} />
                 </label>
                 <label className="mt-3 flex items-center gap-2 text-sm"><input type="checkbox" checked={share.includeBcc} onChange={(e) => setShare((prev) => ({ ...prev, includeBcc: e.target.checked }))} className="h-4 w-4 rounded" />Enviar cópia para a clínica</label>
                 <div className="mt-4 space-y-2">
-                  <button type="button" className="w-full rounded-lg border border-[#376b2e] bg-[#12230f] px-3 py-2 text-sm font-semibold" onClick={openEmail}>
+                  <button type="button" className="w-full rounded-lg border border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,var(--rxv-border))] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm font-semibold" onClick={openEmail}>
                     Enviar por e-mail (padrão)
                   </button>
                   <div className="grid grid-cols-2 gap-2">
-                    <button type="button" className="rounded-lg border border-[#376b2e] bg-[#1a2f16] px-3 py-2 text-sm font-semibold hover:bg-[#223b1e]" onClick={openGmail}>
+                    <button type="button" className="rounded-lg border border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,var(--rxv-border))] bg-[#1a2f16] px-3 py-2 text-sm font-semibold hover:bg-[#223b1e]" onClick={openGmail}>
                       Abrir no Gmail
                     </button>
-                    <button type="button" className="rounded-lg border border-[#376b2e] bg-[#1a2f16] px-3 py-2 text-sm font-semibold hover:bg-[#223b1e]" onClick={openOutlook}>
+                    <button type="button" className="rounded-lg border border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,var(--rxv-border))] bg-[#1a2f16] px-3 py-2 text-sm font-semibold hover:bg-[#223b1e]" onClick={openOutlook}>
                       Abrir no Outlook
                     </button>
                   </div>
@@ -1184,7 +1184,7 @@ export default function RxPrintPage() {
         </div>
       ) : null}
 
-      {toast ? <div className="fixed bottom-6 right-6 z-[95] rounded-xl border border-[#376b2e] bg-[#1a2e16] px-4 py-3 text-sm font-semibold text-[#9dff8d]">{toast}</div> : null}
+      {toast ? <div className="fixed bottom-6 right-6 z-[95] rounded-xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,var(--rxv-border))] bg-[#1a2e16] px-4 py-3 text-sm font-semibold text-[#9dff8d]">{toast}</div> : null}
     </div>
   )
 }

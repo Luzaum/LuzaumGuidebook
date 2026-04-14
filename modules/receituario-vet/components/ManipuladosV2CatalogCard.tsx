@@ -9,7 +9,7 @@ interface ManipuladosV2CatalogCardProps {
 }
 
 const TONE_CLASS: Record<string, string> = {
-  green: 'border-[#39ff14]/30 bg-[#39ff14]/10 text-[#98f98e]',
+  green: 'border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] text-[color:color-mix(in_srgb,var(--rxv-primary)_72%,#e2e8f0)]',
   red: 'border-red-500/30 bg-red-500/10 text-red-300',
   blue: 'border-cyan-500/30 bg-cyan-500/10 text-cyan-200',
   slate: 'border-slate-700 bg-slate-900/40 text-slate-300',
@@ -24,8 +24,8 @@ export function ManipuladosV2CatalogCard({ item, active = false, onClick }: Mani
       onClick={onClick}
       className={`w-full rounded-[22px] border px-4 py-3.5 text-left transition ${
         active
-          ? 'border-[#39ff14]/45 bg-[#143118] shadow-[0_0_18px_rgba(57,255,20,0.10)]'
-          : 'border-slate-800/90 bg-black/25 hover:border-[#39ff14]/20 hover:bg-black/35'
+          ? 'border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,var(--rxv-surface))] shadow-[0_0_18px_rgba(59, 130, 246,0.10)]'
+          : 'border-slate-800/90 bg-black/25 hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_20%,transparent)] hover:bg-black/35'
       }`}
     >
       <p className="text-[13px] font-black uppercase italic leading-5 text-white">{getCompoundedCatalogTitle(item)}</p>

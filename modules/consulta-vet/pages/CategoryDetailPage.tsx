@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ChevronRight, FileText, Grid, Pill, Stethoscope } from 'lucide-react';
+import { ConsultaVetPageHero } from '../components/layout/ConsultaVetPageHero';
 import { EntityCard } from '../components/shared/EntityCard';
 import { getCategoryRepository } from '../services/categoryRepository';
 import { getConsensoRepository } from '../services/consensoRepository';
@@ -128,13 +129,13 @@ export function CategoryDetailPage() {
         <span className="truncate capitalize text-foreground">{category.title}</span>
       </nav>
 
-      <header>
-        <h1 className="mb-2 flex items-center gap-3 text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-          <Grid className="h-8 w-8 text-amber-600 dark:text-amber-400" />
-          {category.title}
-        </h1>
-        <p className="text-muted-foreground">{UI_TEXT.body} {category.title.toLowerCase()}.</p>
-      </header>
+      <ConsultaVetPageHero
+        eyebrow="Categoria"
+        title={category.title}
+        description={`${UI_TEXT.body} ${category.title.toLowerCase()}.`}
+        icon={Grid}
+        accent="amber"
+      />
 
       <div className="space-y-10">
         {diseases.length > 0 && (

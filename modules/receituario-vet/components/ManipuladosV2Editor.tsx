@@ -176,7 +176,7 @@ function removeRegimen(value: CompoundedMedicationV2, id: string): CompoundedMed
 function toneClass(tone: string): string {
   if (tone === 'red') return 'border-red-500/30 bg-red-500/10 text-red-300'
   if (tone === 'blue') return 'border-cyan-500/30 bg-cyan-500/10 text-cyan-200'
-  if (tone === 'green') return 'border-[#39ff14]/30 bg-[#39ff14]/10 text-[#98f98e]'
+  if (tone === 'green') return 'border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] text-[color:color-mix(in_srgb,var(--rxv-primary)_72%,#e2e8f0)]'
   return 'border-slate-700 bg-slate-900/40 text-slate-300'
 }
 
@@ -332,7 +332,7 @@ export function ManipuladosV2Editor(props: ManipuladosV2EditorProps) {
                 type="button"
                 onClick={() => onSelectRegimen(regimen.id)}
                 className={`w-full rounded-2xl border px-4 py-3 text-left transition ${
-                  activeRegimen?.id === regimen.id ? 'border-[#39ff14]/45 bg-[#143118]' : 'border-slate-800 bg-black/20 hover:border-[#39ff14]/20'
+                  activeRegimen?.id === regimen.id ? 'border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,var(--rxv-surface))]' : 'border-slate-800 bg-black/20 hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_20%,transparent)]'
                 }`}
               >
                 <p className="text-sm font-black text-white">{regimen.name || 'Regime sem nome'}</p>
@@ -450,7 +450,7 @@ export function ManipuladosV2Editor(props: ManipuladosV2EditorProps) {
                               onChange(patchRegimen(value, activeRegimen.id, { tutor_observation: joinTutorRecommendations(next) }))
                             }}
                             className={`rounded-full border px-3 py-1 text-[11px] font-black uppercase tracking-wider ${
-                              isActive ? 'border-[#39ff14]/40 bg-[#39ff14]/10 text-[#98f98e]' : 'border-slate-700 bg-slate-900/40 text-slate-400'
+                              isActive ? 'border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] text-[color:color-mix(in_srgb,var(--rxv-primary)_72%,#e2e8f0)]' : 'border-slate-700 bg-slate-900/40 text-slate-400'
                             }`}
                           >
                             {entry}
@@ -462,10 +462,10 @@ export function ManipuladosV2Editor(props: ManipuladosV2EditorProps) {
                 </RxvField>
               </div>
 
-              <div className="rounded-2xl border border-slate-800 bg-[linear-gradient(180deg,rgba(57,255,20,0.08),rgba(0,0,0,0.12))] p-6 xl:col-span-12">
+              <div className="rounded-2xl border border-slate-800 bg-[linear-gradient(180deg,rgba(59, 130, 246,0.08),rgba(0,0,0,0.12))] p-6 xl:col-span-12">
                 <p className="text-xs font-black uppercase tracking-widest text-slate-500">Preview imediato</p>
                 <div className="mt-4 space-y-4 text-sm text-slate-300">
-                  <div className="rounded-2xl border border-[#39ff14]/18 bg-black/30 px-4 py-4">
+                  <div className="rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_18%,transparent)] bg-black/30 px-4 py-4">
                     <div className="flex items-end gap-3">
                       <p className="min-w-0 flex-none text-base font-black text-white">{value.formula.name || 'Fórmula sem nome'}</p>
                       <div className="hidden h-px flex-1 bg-[radial-gradient(circle,rgba(148,163,184,0.75)_1px,transparent_1.5px)] bg-[length:10px_1px] bg-repeat-x xl:block" />

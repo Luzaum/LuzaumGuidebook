@@ -1,11 +1,13 @@
 /**
  * Escopo do módulo Antibioticoterapia — SEM @tailwind aqui (evita reprocessar todo o CSS do app e travadas ao abrir a rota).
- * Tipografia: Inter já vem do index.html; Montserrat opcional só se necessário.
+ * Tipografia única: Plus Jakarta Sans (UI + títulos) para consistência no módulo.
  */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
 .antibioticoterapia-vet-root.abv-theme {
-  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-serif: ui-serif, Georgia, 'Times New Roman', serif;
-  --font-mono: ui-monospace, 'Cascadia Code', monospace;
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'Consolas', monospace;
 
   /* Destaques — alinhados ao tema Vetius */
   --chart-1: hsl(220 70% 42%);
@@ -25,6 +27,22 @@
 
   font-family: var(--font-sans);
   color: hsl(var(--foreground));
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+
+.antibioticoterapia-vet-root.abv-theme h1,
+.antibioticoterapia-vet-root.abv-theme h2 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+/* Hero da home: peso forte, sem serif separado */
+.antibioticoterapia-vet-root.abv-theme .abv-hero-title {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
 }
 
 html.dark .antibioticoterapia-vet-root.abv-theme {
@@ -44,18 +62,18 @@ html.dark .antibioticoterapia-vet-root.abv-theme {
   --sidebar-ring: hsl(216 34% 17%);
 }
 
-/* Camada decorativa de pills */
+/* Camada decorativa de pills — mais visíveis no hero */
 .abv-theme .abv-pill-layer {
   position: absolute;
   inset: 0;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
-  opacity: 0.78;
+  opacity: 0.88;
 }
 
 html.dark .abv-theme .abv-pill-layer {
-  opacity: 0.55;
+  opacity: 0.62;
 }
 
 .abv-theme .abv-hero {
@@ -100,6 +118,200 @@ html.dark .abv-theme .abv-pill-layer {
   background: hsl(var(--card));
   color: hsl(var(--card-foreground));
   box-shadow: 0 1px 2px color-mix(in srgb, hsl(var(--foreground)) 6%, transparent);
+}
+
+/* Cartões da home: bento suave, menos “quadrado”, hover premium */
+.abv-theme .abv-home-feature-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in srgb, hsl(var(--border)) 85%, transparent);
+  background: linear-gradient(
+    155deg,
+    color-mix(in srgb, hsl(var(--card)) 92%, hsl(var(--primary)) 4%) 0%,
+    hsl(var(--card)) 48%,
+    color-mix(in srgb, hsl(var(--card)) 94%, hsl(var(--foreground)) 3%) 100%
+  );
+  box-shadow:
+    0 1px 0 color-mix(in srgb, hsl(var(--foreground)) 8%, transparent),
+    0 12px 40px -18px color-mix(in srgb, hsl(var(--foreground)) 35%, transparent);
+  color: hsl(var(--card-foreground));
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform 0.22s cubic-bezier(0.34, 1.2, 0.64, 1),
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .abv-theme .abv-home-feature-card {
+    transition: none;
+  }
+}
+
+.abv-theme .abv-home-feature-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, hsl(var(--primary)) 35%, hsl(var(--border)));
+  box-shadow:
+    0 1px 0 color-mix(in srgb, hsl(var(--foreground)) 10%, transparent),
+    0 20px 48px -16px color-mix(in srgb, hsl(var(--primary)) 28%, transparent);
+}
+
+html.dark .abv-theme .abv-home-feature-card {
+  border-color: color-mix(in srgb, hsl(var(--border)) 70%, hsl(var(--primary)) 12%);
+  box-shadow:
+    0 1px 0 color-mix(in srgb, hsl(var(--foreground)) 6%, transparent),
+    0 16px 48px -20px rgba(0, 0, 0, 0.45);
+}
+
+html.dark .abv-theme .abv-home-feature-card:hover {
+  box-shadow:
+    0 1px 0 color-mix(in srgb, hsl(var(--foreground)) 8%, transparent),
+    0 24px 56px -18px color-mix(in srgb, hsl(var(--primary)) 22%, transparent);
+}
+
+.abv-theme .abv-home-feature-card:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 3px;
+}
+
+.abv-theme .abv-home-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.875rem;
+  background: color-mix(in srgb, hsl(var(--primary)) 16%, hsl(var(--card)));
+  border: 1px solid color-mix(in srgb, hsl(var(--primary)) 28%, hsl(var(--border)));
+  box-shadow: inset 0 1px 0 color-mix(in srgb, hsl(var(--foreground)) 8%, transparent);
+}
+
+/* Barra de busca da home: um único bloco (sem input “caixa dentro da caixa”), vidro suave, botão integrado */
+.abv-theme .abv-home-search-shell {
+  border-radius: 2rem;
+  border: 1px solid color-mix(in srgb, hsl(var(--primary)) 26%, hsl(var(--border)));
+  background: color-mix(in srgb, hsl(var(--card)) 58%, hsl(var(--background)) 42%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow:
+    0 1px 0 color-mix(in srgb, hsl(var(--foreground)) 9%, transparent),
+    0 18px 50px -22px color-mix(in srgb, hsl(var(--primary)) 32%, transparent),
+    inset 0 1px 0 color-mix(in srgb, hsl(var(--foreground)) 12%, transparent);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.abv-theme .abv-home-search-shell:focus-within {
+  border-color: color-mix(in srgb, hsl(var(--primary)) 48%, hsl(var(--border)));
+  box-shadow:
+    0 1px 0 color-mix(in srgb, hsl(var(--foreground)) 10%, transparent),
+    0 0 0 3px color-mix(in srgb, hsl(var(--ring)) 38%, transparent),
+    0 22px 56px -20px color-mix(in srgb, hsl(var(--primary)) 38%, transparent),
+    inset 0 1px 0 color-mix(in srgb, hsl(var(--foreground)) 12%, transparent);
+}
+
+.abv-theme .abv-home-search-field {
+  display: flex;
+  min-height: 3.25rem;
+  flex: 1;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+  padding-left: 0.25rem;
+  padding-right: 0.5rem;
+}
+
+.abv-theme .abv-home-search-icon-wrap {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background: color-mix(in srgb, hsl(var(--primary)) 16%, transparent);
+  color: hsl(var(--primary));
+  box-shadow: inset 0 1px 0 color-mix(in srgb, hsl(var(--foreground)) 8%, transparent);
+}
+
+.abv-theme .abv-home-search-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  padding: 0.5rem 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  font-family: var(--font-sans);
+  color: hsl(var(--foreground));
+  outline: none;
+}
+
+.abv-theme .abv-home-search-input::placeholder {
+  color: hsl(var(--muted-foreground));
+  opacity: 0.88;
+}
+
+.abv-theme .abv-home-search-btn {
+  display: inline-flex;
+  min-height: 3.25rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  padding: 0 1.35rem;
+  border-radius: 1.35rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  color: hsl(var(--primary-foreground));
+  background: linear-gradient(
+    148deg,
+    hsl(var(--primary)) 0%,
+    color-mix(in srgb, hsl(var(--primary)) 78%, black) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, white 22%, transparent),
+    0 6px 20px -6px color-mix(in srgb, hsl(var(--primary)) 55%, transparent);
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease;
+}
+
+.abv-theme .abv-home-search-btn:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.abv-theme .abv-home-search-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .abv-theme .abv-home-search-btn:active:not(:disabled) {
+    transform: none;
+  }
+}
+
+.abv-theme .abv-home-search-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+  filter: grayscale(0.15);
+}
+
+html.dark .abv-theme .abv-home-search-shell {
+  background: color-mix(in srgb, hsl(var(--card)) 45%, hsl(var(--background)) 55%);
+}
+
+.abv-theme .abv-home-footer-note {
+  border-radius: 1rem;
+  border: 1px solid color-mix(in srgb, hsl(var(--border)) 80%, transparent);
+  background: color-mix(in srgb, hsl(var(--card)) 70%, hsl(var(--background)) 30%);
 }
 
 .abv-theme .abv-input {
@@ -157,29 +369,35 @@ html.dark .abv-theme .abv-btn-primary:hover {
   font-family: var(--font-mono);
 }
 
+/* Logo acima do nome, centralizado; área clicável ampla */
 .abv-theme .abv-sidebar-logo-btn {
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
   width: 100%;
+  min-height: auto;
   cursor: pointer;
   border: none;
   background: transparent;
-  padding: 0;
-  border-radius: 1rem;
+  padding: 0.5rem 0.375rem 0.75rem;
+  border-radius: 0.875rem;
   transition:
-    transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.28s ease,
-    filter 0.28s ease;
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.abv-theme .abv-sidebar-logo-btn.abv-sidebar-logo-btn--collapsed {
+  flex-direction: column;
+  padding: 0.5rem 0.25rem;
 }
 
 .abv-theme .abv-sidebar-logo-btn:hover,
 .abv-theme .abv-sidebar-logo-btn:focus-visible {
-  transform: scale(1.08);
-  box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--sidebar-primary) 45%, transparent),
-    0 0 28px color-mix(in srgb, var(--sidebar-primary) 50%, transparent),
-    0 0 56px color-mix(in srgb, var(--sidebar-primary) 28%, transparent);
-  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--sidebar-primary) 55%, transparent));
+  background: color-mix(in srgb, var(--sidebar-primary) 8%, transparent);
+  box-shadow: none;
 }
 
 .abv-theme .abv-sidebar-logo-btn:focus-visible {
@@ -188,13 +406,39 @@ html.dark .abv-theme .abv-btn-primary:hover {
 }
 
 .abv-theme .abv-sidebar-logo-btn:active {
-  transform: scale(1.02);
+  opacity: 0.92;
 }
 
 html.dark .abv-theme .abv-sidebar-logo-btn:hover,
 html.dark .abv-theme .abv-sidebar-logo-btn:focus-visible {
-  box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--sidebar-primary) 55%, transparent),
-    0 0 32px color-mix(in srgb, var(--sidebar-primary) 42%, transparent),
-    0 0 64px color-mix(in srgb, var(--sidebar-primary) 22%, transparent);
+  background: color-mix(in srgb, var(--sidebar-primary) 12%, transparent);
+}
+
+/* Logo ~3× o tamanho anterior (pedido UI); limita ao largo da sidebar */
+.abv-theme .abv-sidebar-logo-img {
+  flex-shrink: 0;
+  width: min(15rem, 100%);
+  height: auto;
+  aspect-ratio: 1;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 0.75rem;
+}
+
+.abv-theme .abv-sidebar-logo-btn--collapsed .abv-sidebar-logo-img {
+  width: min(8.25rem, 100%);
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.abv-theme .abv-sidebar-brand-text {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sidebar-primary);
+  text-align: center;
+  max-width: 100%;
 }

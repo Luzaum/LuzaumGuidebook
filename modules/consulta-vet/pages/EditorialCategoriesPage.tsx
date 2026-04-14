@@ -1,5 +1,6 @@
 ﻿import React, { useEffect, useMemo, useState } from 'react';
-import { Plus, Save } from 'lucide-react';
+import { FolderTree, Plus, Save } from 'lucide-react';
+import { ConsultaVetPageHero } from '../components/layout/ConsultaVetPageHero';
 import { EditorialField } from '../components/editorial/EditorialField';
 import { EditorialPermissionGate } from '../components/editorial/EditorialPermissionGate';
 import { ModuleSearchInput } from '../components/shared/ModuleSearchInput';
@@ -131,16 +132,13 @@ export function EditorialCategoriesPage() {
 
   return (
     <div className="mx-auto w-full max-w-[1620px] space-y-8 p-4 md:p-8">
-      <header className="rounded-[28px] border border-border bg-card p-6 shadow-sm md:p-8">
-        <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight text-foreground">Editorial de categorias</h1>
-            <p className="mt-2 max-w-3xl text-sm text-muted-foreground">
-              Taxonomia do módulo com status claro, fallback híbrido preservado e edição segura apenas para owner.
-            </p>
-          </div>
-        </div>
-      </header>
+      <ConsultaVetPageHero
+        eyebrow="Editorial"
+        title="Categorias"
+        description="Taxonomia do módulo com status claro, fallback híbrido preservado e edição segura apenas para owner."
+        icon={FolderTree}
+        accent="amber"
+      />
 
       <EditorialPermissionGate isLoading={isLoadingAccess} canManage={canManage}>
         <div className="grid gap-6 xl:grid-cols-[380px_1fr]">

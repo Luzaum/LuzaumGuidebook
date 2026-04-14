@@ -62,8 +62,8 @@ function weightFromPreset(weight?: 'normal' | 'medium' | 'bold'): number | undef
 
 function zoneRing(interactive: boolean, activeZone: TemplateZoneKey | undefined, zone: TemplateZoneKey) {
   if (!interactive) return ''
-  if (activeZone === zone) return 'ring-2 ring-[#39ff14] ring-offset-2 ring-offset-white'
-  return 'hover:ring-1 hover:ring-[#39ff14]/70 cursor-pointer'
+  if (activeZone === zone) return 'ring-2 ring-[color:color-mix(in_srgb,var(--rxv-primary)_35%,transparent)] ring-offset-2 ring-offset-white'
+  return 'hover:ring-1 hover:ring-[color:color-mix(in_srgb,var(--rxv-primary)_70%,transparent)] cursor-pointer'
 }
 
 function parseHexColor(value: string): [number, number, number] | null {
@@ -105,7 +105,7 @@ function ensureReadableColor(color: string, background: string, fallback = '#1f2
   return contrast >= 4.5 ? color : fallback
 }
 
-function highlightInstructionSegments(text: string): React.ReactNode[] {
+function highlightInstructionSegments(text: string, softEmphasis?: boolean): React.ReactNode[] {
   const source = text || ''
   if (!source.trim()) return [source]
 
@@ -122,7 +122,16 @@ function highlightInstructionSegments(text: string): React.ReactNode[] {
     if (start > lastIndex) {
       nodes.push(<React.Fragment key={`t-${key++}`}>{source.slice(lastIndex, start)}</React.Fragment>)
     }
-    nodes.push(<strong key={`b-${key++}`}>{source.slice(start, end)}</strong>)
+    const slice = source.slice(start, end)
+    nodes.push(
+      softEmphasis ? (
+        <span key={`b-${key++}`} className="font-medium text-slate-800">
+          {slice}
+        </span>
+      ) : (
+        <strong key={`b-${key++}`}>{slice}</strong>
+      )
+    )
     lastIndex = end
   }
   if (lastIndex < source.length) {
@@ -175,6 +184,16 @@ export function RxPrintView({
   const safeTextColor = ensureReadableColor(cfg.textColor, cfg.paperBg, '#1f2937')
   const zoneFontPt = (zone: TemplateZoneKey, fallback: number) => cfg.zoneStyles?.[zone]?.fontSizePt || fallback
   const zoneWeight = (zone: TemplateZoneKey, fallback: number) => weightFromPreset(cfg.zoneStyles?.[zone]?.fontWeight) || fallback
+
+  /** Prévia em painel (ex.: Controle Especial): corpo mais legível, sem “gritar” */
+  const previewTight = compact
+  const ptScale = (pt: number) =>
+    previewTight ? Math.max(Math.round(pt * 0.9 * 10) / 10, 8.5) : pt
+  const baseBodyPt = Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)
+  const instructionPt = ptScale(baseBodyPt)
+  const patientBasePt = Math.max(cfg.fontSizePt - 1, 10)
+  const patientPt = ptScale(zoneFontPt('patient', patientBasePt))
+  const headingPx = previewTight ? Math.min(cfg.headingSizePt, 15) : cfg.headingSizePt
 
   const paperStyle: React.CSSProperties = {
     fontFamily: cfg.fontFamily,
@@ -252,8 +271,8 @@ export function RxPrintView({
 
   const itemRing = (itemId: string) => {
     if (!interactive) return ''
-    if (selectedItemId === itemId) return 'ring-2 ring-[#39ff14] ring-offset-2 ring-offset-white'
-    return 'hover:ring-1 hover:ring-[#39ff14]/70 cursor-pointer'
+    if (selectedItemId === itemId) return 'ring-2 ring-[color:color-mix(in_srgb,var(--rxv-primary)_35%,transparent)] ring-offset-2 ring-offset-white'
+    return 'hover:ring-1 hover:ring-[color:color-mix(in_srgb,var(--rxv-primary)_70%,transparent)] cursor-pointer'
   }
 
   const rootStyle = zoom ? ({ zoom } as React.CSSProperties) : undefined
@@ -271,50 +290,58 @@ export function RxPrintView({
           {sanitizeVisibleText('Visualização rápida')}
         </div>
       ) : null}
-      <div className={(compact || fitToWidth) ? 'w-full p-5 xl:p-6' : 'p-6'} style={sheetStyle} data-rx-print-canvas="sheet">
+      <div
+        className={(compact || fitToWidth) ? 'w-full p-4 sm:p-5 xl:p-6' : 'p-6'}
+        style={sheetStyle}
+        data-rx-print-canvas="sheet"
+      >
         {cfg.showLetterhead ? (
           <>
             <p
-              className="mb-2 text-center text-[11px] font-black uppercase tracking-[0.28em]"
+              className={`mb-2 text-center font-black uppercase ${previewTight ? 'text-[10px] tracking-[0.22em]' : 'text-[11px] tracking-[0.28em]'}`}
               style={{ color: doc.documentKind === 'special-control' ? '#1f2937' : '#334155' }}
             >
               {doc.documentKind === 'special-control' ? sanitizeVisibleText('RECEITUÁRIO DE CONTROLE ESPECIAL') : sanitizeVisibleText('RECEITUÁRIO')}
             </p>
             <div
-              className={`mb-6 ${isClassic ? 'border-b border-slate-400 pb-4' : 'rounded-lg border-2 border-slate-300 p-4'} transition ${zoneRing(interactive, activeZone, 'header')}`}
+              className={`${previewTight ? 'mb-4' : 'mb-6'} ${isClassic ? 'border-b border-slate-400 pb-4' : 'rounded-lg border-2 border-slate-300 p-4'} transition ${zoneRing(interactive, activeZone, 'header')}`}
               style={zoneStyle('header')}
               {...makeZoneProps('header')}
             >
               {headerOverride ? (
                 <p className="whitespace-pre-line">{headerOverride}</p>
               ) : (
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex items-start gap-3">
-                    <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-slate-300 bg-slate-50">
+                <div className="flex items-start justify-between gap-3 sm:gap-4">
+                  <div className="flex min-w-0 items-start gap-2 sm:gap-3">
+                    <div
+                      className={`flex shrink-0 items-center justify-center overflow-hidden rounded-lg border border-slate-300 bg-slate-50 ${previewTight ? 'h-14 w-14' : 'h-20 w-20'}`}
+                    >
                       {logoDataUrl ? (
                         <img src={logoDataUrl} alt={sanitizeVisibleText('Logo da clínica')} className="h-full w-full object-cover" />
                       ) : (
-                        <span className="material-symbols-outlined text-[26px] text-slate-400">local_hospital</span>
+                        <span className={`material-symbols-outlined text-slate-400 ${previewTight ? 'text-[22px]' : 'text-[26px]'}`}>local_hospital</span>
                       )}
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <h2
-                        className="uppercase tracking-wide"
+                        className="uppercase tracking-wide leading-tight"
                         style={{
-                          fontSize: `${cfg.headingSizePt}px`,
+                          fontSize: `${headingPx}px`,
                           color: zoneStyle('header').color,
                           fontWeight: zoneWeight('header', 800),
                         }}
                       >
                         {sanitizePrintText(doc.clinicName)}
                       </h2>
-                      <p className="text-xs text-slate-600">
+                      <p className={previewTight ? 'text-[11px] leading-snug text-slate-600' : 'text-xs text-slate-600'}>
                         {sanitizePrintText(doc.prescriberName)} - {sanitizePrintText(doc.prescriberCrmv)}
                       </p>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <p className="text-xs text-slate-500">Data: {sanitizePrintText(doc.dateLabel)}</p>
+                  <div className="shrink-0 text-right">
+                    <p className={previewTight ? 'text-[11px] text-slate-500' : 'text-xs text-slate-500'}>
+                      Data: {sanitizePrintText(doc.dateLabel)}
+                    </p>
                   </div>
                 </div>
               )}
@@ -323,8 +350,8 @@ export function RxPrintView({
         ) : null}
 
         <div
-          className={`mb-6 ${isClassic ? 'border-b border-slate-300 pb-3' : 'rounded-lg border border-slate-200 bg-slate-50 p-3'} transition ${zoneRing(interactive, activeZone, 'patient')}`}
-          style={zoneStyle('patient', { fontSize: `${zoneFontPt('patient', Math.max(cfg.fontSizePt - 1, 10))}pt` })}
+          className={`${previewTight ? 'mb-4 space-y-1.5' : 'mb-6 space-y-1'} ${isClassic ? 'border-b border-slate-300 pb-3' : 'rounded-lg border border-slate-200 bg-slate-50 p-3'} transition ${zoneRing(interactive, activeZone, 'patient')}`}
+          style={zoneStyle('patient', { fontSize: `${patientPt}pt`, lineHeight: previewTight ? 1.45 : undefined })}
           {...makeZoneProps('patient')}
         >
           {patientOverride ? (
@@ -332,14 +359,14 @@ export function RxPrintView({
           ) : (
             <>
               <p>
-              {' • '}{sanitizeVisibleText('Paciente:')} {doc.patientLine}
+                <span className="font-semibold">{sanitizeVisibleText('Paciente:')}</span> {doc.patientLine}
               </p>
               <p>
-                <span className="font-bold">{sanitizeVisibleText('Responsável:')}</span> {sanitizePrintText(doc.tutorLine)}
+                <span className="font-semibold">{sanitizeVisibleText('Responsável:')}</span> {sanitizePrintText(doc.tutorLine)}
               </p>
               {doc.addressLine ? (
                 <p>
-                  <span className="font-bold">{sanitizeVisibleText('Endereço:')}</span> {sanitizePrintText(doc.addressLine)}
+                  <span className="font-semibold">{sanitizeVisibleText('Endereço:')}</span> {sanitizePrintText(doc.addressLine)}
                 </p>
               ) : null}
             </>
@@ -347,8 +374,8 @@ export function RxPrintView({
         </div>
 
         <div
-          className={`space-y-5 rounded transition ${zoneRing(interactive, activeZone, 'body')}`}
-          style={zoneStyle('body', { fontSize: `${zoneFontPt('body', cfg.fontSizePt)}pt` })}
+          className={`${previewTight ? 'space-y-4' : 'space-y-5'} rounded transition ${zoneRing(interactive, activeZone, 'body')}`}
+          style={zoneStyle('body', { fontSize: `${ptScale(zoneFontPt('body', cfg.fontSizePt))}pt` })}
           {...makeZoneProps('body')}
         >
           {bodyOverride ? (
@@ -360,13 +387,16 @@ export function RxPrintView({
             return (
               <div key={section.key}>
                 {isClassic ? (
-                  <div className="mb-3 border-b border-slate-300 pb-1">
-                    <h3 className="text-[11px] font-black uppercase tracking-[0.18em]" style={{ color: safeTextColor }}>
+                  <div className={`${previewTight ? 'mb-2' : 'mb-3'} border-b border-slate-300 pb-1`}>
+                    <h3
+                      className={`font-black uppercase ${previewTight ? 'text-[10px] tracking-[0.14em]' : 'text-[11px] tracking-[0.18em]'}`}
+                      style={{ color: safeTextColor }}
+                    >
                       {sanitizePrintText(section.title)}
                     </h3>
                   </div>
                 ) : (
-                  <div className="mb-3 flex items-center gap-3">
+                  <div className={`${previewTight ? 'mb-2' : 'mb-3'} flex items-center gap-3`}>
                     <div className="h-px flex-1 bg-slate-300"></div>
                     <h3
                       className="rounded-full border px-3 py-1 text-xs font-black uppercase tracking-[0.2em]"
@@ -381,69 +411,82 @@ export function RxPrintView({
                     <div className="h-px flex-1 bg-slate-300"></div>
                   </div>
                 )}
-                <div className="space-y-3">
+                <div className={previewTight ? 'space-y-2.5' : 'space-y-3'}>
                   {section.items.map((item) => (
                     <article
                       key={item.id}
                       className={`${isClassic ? 'border-b border-slate-200 pb-3 last:border-b-0' : 'rounded border border-slate-200 p-3'} transition ${itemRing(item.id)}`}
                       {...makeItemProps(item.id)}
                     >
-                      <div className="mb-1 flex items-center justify-end gap-2">
-                        {item.status !== 'ok' ? (
-                          <span className="rounded bg-amber-100 px-2 py-0.5 text-[10px] font-bold uppercase text-amber-700">
-                            incompleto
-                          </span>
-                        ) : null}
-                      </div>
-                      <div className="mb-2 space-y-2">
-                        <div className="flex w-full items-end gap-3 overflow-hidden">
-                          <h4
-                            className="shrink-0 text-[11pt]"
-                            style={{
-                              color: '#111827',
-                              textDecoration: item.titleUnderline ? 'underline' : 'none',
-                              textDecorationColor: sectionAccent,
-                              textDecorationThickness: item.titleUnderline ? '2px' : undefined,
-                              textUnderlineOffset: item.titleUnderline ? '2px' : undefined,
-                              fontWeight: item.titleBold ? 700 : 400,
-                            }}
-                          >
-                            {item.index}.
-                          </h4>
+                      <div className="mb-2 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                        <div className="min-w-0 flex-1 space-y-2">
+                          <div className="flex w-full items-end gap-2 overflow-hidden sm:gap-3">
+                            <h4
+                              className="shrink-0 text-[10pt] sm:text-[11pt]"
+                              style={{
+                                color: '#111827',
+                                textDecoration: item.titleUnderline ? 'underline' : 'none',
+                                textDecorationColor: sectionAccent,
+                                textDecorationThickness: item.titleUnderline ? '2px' : undefined,
+                                textUnderlineOffset: item.titleUnderline ? '2px' : undefined,
+                                fontWeight: item.titleBold ? 700 : 500,
+                              }}
+                            >
+                              {item.index}.
+                            </h4>
+                            <p
+                              className="min-w-0 shrink whitespace-normal text-[9.5pt] font-semibold tracking-[0.02em] sm:text-[10pt]"
+                              style={{ color: '#0f172a' }}
+                            >
+                              {sanitizePrintText(item.title)}
+                            </p>
+                            <span
+                              className="min-w-[16px] flex-1 overflow-hidden whitespace-nowrap self-end leading-none"
+                              style={{ color: 'rgba(51,65,85,0.55)', letterSpacing: '0.1em', fontSize: previewTight ? '9pt' : '10pt' }}
+                            >{'................................................................................................................................................................................................................................................................................'}</span>
+                            <p
+                              className="hidden shrink-0 whitespace-nowrap text-right text-[8.8pt] font-medium sm:block sm:text-[9.6pt]"
+                              style={{ color: '#475569' }}
+                            >
+                              {sanitizePrintText(item.subtitle || sanitizeVisibleText('Dispensação'))}
+                            </p>
+                          </div>
                           <p
-                            className="shrink-0 whitespace-nowrap text-[10pt] font-semibold tracking-[0.02em]"
-                            style={{ color: '#0f172a' }}
-                          >
-                            {sanitizePrintText(item.title)}
-                          </p>
-                          <span
-                            className="min-w-[16px] flex-1 overflow-hidden whitespace-nowrap self-end leading-none"
-                            style={{ color: 'rgba(51,65,85,0.7)', letterSpacing: '0.12em', fontSize: '10pt' }}
-                          >{'................................................................................................................................................................................................................................................................................'}</span>
-                          <p
-                            className="shrink-0 whitespace-nowrap text-right text-[9.6pt] font-semibold"
-                            style={{ color: '#1e293b' }}
+                            className="text-[8.8pt] font-medium sm:hidden"
+                            style={{ color: '#475569' }}
                           >
                             {sanitizePrintText(item.subtitle || sanitizeVisibleText('Dispensação'))}
                           </p>
                         </div>
+                        {item.status !== 'ok' ? (
+                          <span className="shrink-0 self-start rounded border border-amber-200 bg-amber-50 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-amber-800">
+                            incompleto
+                          </span>
+                        ) : null}
                       </div>
-                      <p className="whitespace-pre-line leading-relaxed" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt`, color: '#111827' }}>
-                        {highlightInstructionSegments(sanitizePrintText(item.instruction))}
+                      <p
+                        className={`whitespace-pre-line ${previewTight ? 'leading-normal' : 'leading-relaxed'}`}
+                        style={{ fontSize: `${instructionPt}pt`, color: '#334155', fontWeight: 400 }}
+                      >
+                        {highlightInstructionSegments(sanitizePrintText(item.instruction), previewTight)}
                       </p>
                       {item.cautions.length ? (
-                        <div className="mt-2 space-y-1">
+                        <div className={`mt-2 ${previewTight ? 'space-y-1' : 'space-y-1'}`}>
                           {item.cautions
                             .filter((line) => /^manipula/i.test(sanitizePrintText(line)))
                             .map((line, idx) => (
-                              <p key={`${item.id}-m-${idx}`} className="whitespace-pre-wrap" style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt`, color: '#111827' }}>
+                              <p key={`${item.id}-m-${idx}`} className="whitespace-pre-wrap text-slate-700" style={{ fontSize: `${instructionPt}pt` }}>
                                 {sanitizePrintText(line)}
                               </p>
                             ))}
                           {item.cautions
                             .filter((line) => !/^manipula/i.test(sanitizePrintText(line)))
                             .map((line, idx) => (
-                              <p key={`${item.id}-c-${idx}`} className={isClassic ? 'whitespace-pre-wrap' : 'font-bold whitespace-pre-wrap'} style={{ fontSize: `${Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)}pt`, color: '#111827' }}>
+                              <p
+                                key={`${item.id}-c-${idx}`}
+                                className={`whitespace-pre-wrap ${previewTight || isClassic ? 'font-medium text-slate-600' : 'font-bold text-slate-800'}`}
+                                style={{ fontSize: `${Math.max(instructionPt - 0.5, 8.5)}pt` }}
+                              >
                                 • {sanitizePrintText(line).replace(/^Orientações ao tutor:\s*/i, '')}
                               </p>
                             ))}

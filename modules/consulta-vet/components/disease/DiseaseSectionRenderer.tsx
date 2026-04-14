@@ -1,10 +1,17 @@
 import React from 'react';
 import { AlertTriangle, BookOpen, Cat, ShieldAlert, Trophy } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
-import { EditorialDiagnosticStep, EditorialDrugProtocol, EditorialSectionValue, EditorialSystemGroup } from '../../types/common';
+import {
+  EditorialClinicalTable,
+  EditorialDiagnosticStep,
+  EditorialDrugProtocol,
+  EditorialSectionValue,
+  EditorialSystemGroup,
+} from '../../types/common';
 import { translateEditorialSubsectionKey, translateSystemGroupTitle } from '../../utils/editorialSubsectionLabels';
 import { sortDiagnosticSubsectionEntries } from '../../utils/editorialSubsectionOrder';
 import { type DiseaseSectionVisual, getDiseaseSectionVisual } from '../../utils/diseaseSectionVisual';
+import { TreatmentMonitoringPanel, TreatmentPriorityPanel } from './TreatmentSectionVisual';
 
 interface DiseaseSectionRendererProps {
   id: string;
@@ -25,6 +32,61 @@ function isDrugProtocolArray(value: unknown): value is EditorialDrugProtocol[] {
 
 function isDiagnosticStepArray(value: unknown): value is EditorialDiagnosticStep[] {
   return Array.isArray(value) && value.length > 0 && value.every((item) => item && typeof item === 'object' && 'title' in item && 'description' in item);
+}
+
+function isClinicalTable(value: unknown): value is EditorialClinicalTable {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
+  const v = value as Record<string, unknown>;
+  if (v.kind !== 'clinicalTable') return false;
+  if (!Array.isArray(v.headers) || v.headers.length === 0 || !v.headers.every((h) => typeof h === 'string')) return false;
+  if (!Array.isArray(v.rows) || v.rows.length === 0) return false;
+  const n = v.headers.length;
+  return v.rows.every((row) => Array.isArray(row) && row.length === n && row.every((cell) => typeof cell === 'string'));
+}
+
+function ClinicalComparisonTable({ table, visual }: { table: EditorialClinicalTable; visual: DiseaseSectionVisual }) {
+  return (
+    <div className="overflow-x-auto rounded-xl border border-border/55 bg-card/30 shadow-sm ring-1 ring-black/[0.04] dark:ring-white/[0.06]">
+      <table className="w-full min-w-[52rem] border-collapse text-left text-[13px] leading-snug md:text-[14px] md:leading-relaxed">
+        <thead>
+          <tr className={cn('border-b border-border/80', visual.headerTintClass)}>
+            {table.headers.map((h) => (
+              <th
+                key={h}
+                scope="col"
+                className="px-3 py-3 text-[11px] font-bold uppercase tracking-[0.12em] text-muted-foreground first:pl-4 last:pr-4 md:px-4"
+              >
+                {h}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {table.rows.map((row, i) => (
+            <tr
+              key={i}
+              className={cn(
+                'border-b border-border/35 last:border-b-0',
+                i % 2 === 0 ? 'bg-background/40' : 'bg-muted/[0.2]'
+              )}
+            >
+              {row.map((cell, j) => (
+                <td
+                  key={j}
+                  className={cn(
+                    'px-3 py-2.5 align-top text-foreground/90 first:pl-4 last:pr-4 md:px-4',
+                    j === 0 && 'font-semibold text-foreground'
+                  )}
+                >
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
 function NarrativeText({ value }: { value: string }) {
@@ -66,48 +128,61 @@ function isLimitedResourceStep(step: EditorialDiagnosticStep): boolean {
 
 function DiagnosticStepList({ steps, visual }: { steps: EditorialDiagnosticStep[]; visual: DiseaseSectionVisual }) {
   return (
-    <div className={cn('space-y-6 border-l-2 pl-5', visual.diagnosticRailClass)}>
+    <ol className="space-y-0">
       {steps.map((step, index) => {
         const limited = isLimitedResourceStep(step);
+        const num = step.stepNumber || index + 1;
+        const isLast = index === steps.length - 1;
         return (
-          <div
-            key={`${step.title}-${index}`}
-            className={cn(
-              'relative rounded-xl pr-1',
-              limited ? 'border border-amber-500/25 bg-amber-500/[0.06] py-3 pl-3 dark:bg-amber-500/[0.08]' : ''
-            )}
-          >
-            <div
-              className={cn(
-                'absolute -left-[1.4rem] top-3 flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold shadow-sm ring-1 ring-black/[0.06] dark:ring-white/[0.08]',
-                visual.diagnosticNumBgClass,
-                visual.diagnosticNumTextClass
-              )}
-            >
-              {step.stepNumber || index + 1}
-            </div>
-            <div className="flex flex-wrap items-center gap-2">
-              <h4 className="text-base font-semibold tracking-tight text-foreground">{step.title}</h4>
-              {step.isGoldStandard ? (
-                <span
-                  className="inline-flex items-center gap-1 rounded-full border border-amber-400/40 bg-gradient-to-r from-amber-400/20 to-amber-500/15 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-900 shadow-sm dark:from-amber-400/25 dark:to-amber-500/20 dark:text-amber-100"
-                  title="Padrão ouro"
-                >
-                  <Trophy className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" aria-hidden />
-                  Padrão ouro
-                </span>
-              ) : null}
-              {limited ? (
-                <span className="inline-flex items-center gap-1 rounded-full border border-amber-600/30 bg-amber-600/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-900 dark:text-amber-100">
-                  Recursos limitados
-                </span>
+          <li key={`${step.title}-${index}`} className="flex items-stretch gap-4 md:gap-5">
+            <div className="flex w-11 shrink-0 flex-col items-center md:w-12">
+              <span
+                className={cn(
+                  'flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-bold shadow-sm ring-1 ring-black/[0.06] dark:ring-white/[0.08] md:h-10 md:w-10 md:text-sm',
+                  visual.diagnosticNumBgClass,
+                  visual.diagnosticNumTextClass
+                )}
+              >
+                {num}
+              </span>
+              {!isLast ? (
+                <div
+                  className="mt-2 w-px flex-1 min-h-[1.5rem] bg-gradient-to-b from-border via-border/70 to-border/25"
+                  aria-hidden
+                />
               ) : null}
             </div>
-            <p className="mt-2 max-w-[98ch] text-[15px] leading-8 text-foreground/85">{step.description}</p>
-          </div>
+            <div className={cn('min-w-0 flex-1', !isLast && 'pb-8')}>
+              <div
+                className={cn(
+                  'rounded-xl border border-border/50 bg-card/50 p-4 shadow-sm md:p-5',
+                  limited ? 'border-amber-500/30 bg-amber-500/[0.06] dark:bg-amber-500/[0.08]' : ''
+                )}
+              >
+                <div className="flex flex-wrap items-start gap-x-2 gap-y-2">
+                  <h4 className="text-base font-semibold tracking-tight text-foreground">{step.title}</h4>
+                  {step.isGoldStandard ? (
+                    <span
+                      className="inline-flex shrink-0 items-center gap-1 rounded-full border border-amber-400/40 bg-gradient-to-r from-amber-400/20 to-amber-500/15 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-900 shadow-sm dark:from-amber-400/25 dark:to-amber-500/20 dark:text-amber-100"
+                      title="Padrão ouro"
+                    >
+                      <Trophy className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" aria-hidden />
+                      Padrão ouro
+                    </span>
+                  ) : null}
+                  {limited ? (
+                    <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-amber-600/30 bg-amber-600/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-900 dark:text-amber-100">
+                      Recursos limitados
+                    </span>
+                  ) : null}
+                </div>
+                <p className="mt-3 max-w-[98ch] text-[15px] leading-relaxed text-foreground/88 md:leading-8">{step.description}</p>
+              </div>
+            </div>
+          </li>
         );
       })}
-    </div>
+    </ol>
   );
 }
 
@@ -172,6 +247,16 @@ function DrugProtocolList({ protocols }: { protocols: EditorialDrugProtocol[] })
 
 type SubsectionTone = 'default' | 'warning' | 'danger' | 'teaching' | 'species';
 
+/** Ordem editorial dos blocos longos do tratamento (Cushing) após a timeline de prioridade. */
+const TREATMENT_NARRATIVE_AFTER_PRIORITY = [
+  'trilostanoNoCao',
+  'mitotanoNoCao',
+  'cetoconazolNoCao',
+  'cirurgiaEspecializada',
+  'tratamentoFelino',
+  'iatrogenicoManejo',
+] as const;
+
 function subsectionToneForKey(key: string): SubsectionTone {
   if (key === 'notaFelinos') return 'species';
   if (key === 'diagnosticPlanIfLimitedResources') return 'warning';
@@ -231,6 +316,73 @@ function FlowSubsection({ title, tone, children }: { title: string; tone: Subsec
   );
 }
 
+function tryRenderTreatmentRichObject(
+  obj: Record<string, unknown>,
+  visual: DiseaseSectionVisual
+): React.ReactNode | null {
+  const ordem = Array.isArray(obj.ordemDePrioridade)
+    ? (obj.ordemDePrioridade as string[]).map((s) => String(s).trim()).filter(Boolean)
+    : [];
+  const monitor = Array.isArray(obj.monitoramento)
+    ? (obj.monitoramento as string[]).map((s) => String(s).trim()).filter(Boolean)
+    : [];
+  if (ordem.length === 0 && monitor.length === 0) return null;
+
+  const renderLeaf = (value: unknown): React.ReactNode => {
+    if (typeof value === 'string') return <NarrativeText value={value} />;
+    if (Array.isArray(value) && value.length > 0 && value.every((x) => typeof x === 'string')) {
+      return <BulletList items={value as string[]} visual={visual} />;
+    }
+    return <NarrativeText value={String(value ?? '')} />;
+  };
+
+  const pushNarrative = (key: string, blocks: React.ReactNode[]) => {
+    const value = obj[key];
+    if (value === null || value === undefined) return;
+    if (typeof value === 'string' && !value.trim()) return;
+    if (Array.isArray(value) && value.length === 0) return;
+    blocks.push(
+      <FlowSubsection key={key} title={translateEditorialSubsectionKey(key)} tone={subsectionToneForKey(key)}>
+        {renderLeaf(value)}
+      </FlowSubsection>
+    );
+  };
+
+  const blocks: React.ReactNode[] = [];
+
+  if (obj.decisaoInicial) pushNarrative('decisaoInicial', blocks);
+
+  if (ordem.length > 0) {
+    blocks.push(<TreatmentPriorityPanel key="ordem" items={ordem} visual={visual} />);
+  }
+
+  for (const key of TREATMENT_NARRATIVE_AFTER_PRIORITY) {
+    if (obj[key]) pushNarrative(key, blocks);
+  }
+
+  const handled = new Set<string>([
+    'ordemDePrioridade',
+    'monitoramento',
+    'decisaoInicial',
+    'prognosticoResumo',
+    ...TREATMENT_NARRATIVE_AFTER_PRIORITY,
+  ]);
+  const extras = Object.keys(obj)
+    .filter((k) => !handled.has(k))
+    .sort((a, b) => a.localeCompare(b, 'pt'));
+  for (const key of extras) {
+    if (obj[key]) pushNarrative(key, blocks);
+  }
+
+  if (monitor.length > 0) {
+    blocks.push(<TreatmentMonitoringPanel key="monitor" items={monitor} visual={visual} />);
+  }
+
+  if (obj.prognosticoResumo) pushNarrative('prognosticoResumo', blocks);
+
+  return <div className="space-y-10">{blocks}</div>;
+}
+
 export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }: DiseaseSectionRendererProps) {
   const visual = getDiseaseSectionVisual(id);
 
@@ -253,6 +405,15 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
     }
 
     if (content && typeof content === 'object') {
+      if (isClinicalTable(content)) {
+        return <ClinicalComparisonTable table={content} visual={visual} />;
+      }
+
+      if (id === 'treatment') {
+        const rich = tryRenderTreatmentRichObject(content as Record<string, unknown>, visual);
+        if (rich !== null) return rich;
+      }
+
       let entries = Object.entries(content).filter(([, value]) => {
         if (value === null || value === undefined) return false;
         if (Array.isArray(value) && value.length === 0) return false;

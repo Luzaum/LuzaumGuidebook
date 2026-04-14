@@ -1,8 +1,11 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { AlertTriangle, ChevronRight, FileText, Pill, Share2 } from 'lucide-react';
+import { cn } from '../../../lib/utils';
+import { ConsultaVetSurface } from '../components/layout/ConsultaVetSurface';
 import { DiseaseSectionFrame } from '../components/disease/DiseaseSectionFrame';
 import { DiseaseSectionRenderer } from '../components/disease/DiseaseSectionRenderer';
+import { DiseaseQuickSummaryPanel } from '../components/disease/DiseaseQuickSummaryPanel';
 import { QuickDecisionStrip } from '../components/disease/QuickDecisionStrip';
 import { FavoriteButton } from '../components/shared/FavoriteButton';
 import { ReferencesList } from '../components/shared/ReferencesList';
@@ -253,7 +256,7 @@ export function DiseaseDetailPage() {
           <span className="truncate text-foreground">{disease.title}</span>
         </nav>
 
-        <header className="rounded-[34px] border border-border bg-card/95 p-6 shadow-sm md:p-8 xl:p-10">
+        <ConsultaVetSurface accent="primary" className="p-6 shadow-md md:p-8 xl:p-10">
           {disease.isDemonstrative && disease.warningLabel ? (
             <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-amber-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
               <AlertTriangle className="h-3 w-3" />
@@ -282,7 +285,7 @@ export function DiseaseDetailPage() {
               ) : null}
 
               <div className="mt-5">
-                <TagPills tags={disease.tags} />
+                <TagPills tags={disease.tags} maxVisible="all" />
               </div>
             </div>
 
@@ -298,15 +301,36 @@ export function DiseaseDetailPage() {
               <FavoriteButton entityType="disease" entityId={disease.id} className="h-12 w-12 border border-border bg-background/80 p-3" />
             </div>
           </div>
-        </header>
+        </ConsultaVetSurface>
 
         <div className="space-y-8 pb-10 pt-8 md:space-y-10">
           <section id="quick-summary" className="scroll-mt-24">
-            <div className="relative overflow-hidden rounded-[34px] border border-primary/15 bg-primary p-6 text-primary-foreground shadow-lg md:p-8 xl:p-10">
-              <div className="absolute right-0 top-0 h-56 w-56 translate-x-1/4 -translate-y-1/2 rounded-full bg-white/20 blur-3xl" />
-              <div className="relative z-10 max-w-[108ch]">
-                <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.24em] text-primary-foreground/80">{UI_TEXT.quickSummary}</p>
-                <p className="text-xl leading-9 md:text-[28px] md:leading-[1.45]">{disease.quickSummary}</p>
+            <div
+              className={cn(
+                'relative overflow-hidden rounded-[34px] border border-primary/20 p-6 text-white shadow-lg md:p-8 xl:p-10',
+                'bg-gradient-to-br from-primary via-primary to-sky-700/90 dark:from-primary dark:via-primary/95 dark:to-slate-900',
+                'ring-1 ring-white/10 dark:ring-white/5'
+              )}
+            >
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -left-20 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-cyan-400/25 blur-3xl dark:bg-cyan-500/15"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -right-10 -top-10 h-64 w-64 rounded-full bg-white/25 blur-3xl dark:bg-sky-400/10"
+              />
+              <div className="relative z-10">
+                <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-white/85 drop-shadow-sm">
+                  {UI_TEXT.quickSummary}
+                </p>
+                {disease.quickSummaryRich ? (
+                  <DiseaseQuickSummaryPanel data={disease.quickSummaryRich} />
+                ) : (
+                  <div className="max-w-[108ch] text-white/95">
+                    <p className="text-xl leading-9 drop-shadow-sm md:text-[28px] md:leading-[1.45]">{disease.quickSummary}</p>
+                  </div>
+                )}
               </div>
             </div>
           </section>

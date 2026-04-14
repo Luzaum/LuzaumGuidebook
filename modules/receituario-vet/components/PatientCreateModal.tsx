@@ -191,7 +191,7 @@ export function PatientCreateModal({
       }}
     >
       <div
-        className="mx-auto max-h-[92vh] w-full max-w-4xl overflow-y-auto rounded-2xl border border-[#2f5b25] bg-[#13220f] text-slate-100 shadow-[0_0_40px_rgba(56,255,20,0.18)]"
+        className="mx-auto max-h-[92vh] w-full max-w-4xl overflow-y-auto rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,var(--rxv-border))] bg-[#13220f] text-slate-100 shadow-[0_0_40px_rgba(56,255,20,0.18)]"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="sticky top-0 z-10 flex items-center justify-between border-b border-[#274b20] bg-[#11200e] px-5 py-4">
@@ -217,7 +217,7 @@ export function PatientCreateModal({
               <label className="text-xs text-slate-300 md:col-span-2">
                 Nome do paciente *
                 <input
-                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                   value={patientForm.name}
                   onChange={(event) => setPatientForm((prev) => ({ ...prev, name: event.target.value }))}
                   placeholder="Ex.: Jade"
@@ -227,7 +227,7 @@ export function PatientCreateModal({
               <label className="text-xs text-slate-300">
                 Espécie
                 <select
-                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                   value={patientForm.species}
                   onChange={(event) =>
                     setPatientForm((prev) => ({ ...prev, species: event.target.value as PatientInfo['species'] }))
@@ -240,7 +240,7 @@ export function PatientCreateModal({
               <label className="text-xs text-slate-300">
                 Raça
                 <input
-                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                   value={patientForm.breed}
                   onChange={(event) => setPatientForm((prev) => ({ ...prev, breed: event.target.value }))}
                 />
@@ -248,7 +248,7 @@ export function PatientCreateModal({
               <label className="text-xs text-slate-300">
                 Sexo
                 <select
-                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                   value={patientForm.sex}
                   onChange={(event) => setPatientForm((prev) => ({ ...prev, sex: event.target.value as PatientInfo['sex'] }))}
                 >
@@ -260,7 +260,7 @@ export function PatientCreateModal({
               <label className="text-xs text-slate-300">
                 Condição reprodutiva
                 <select
-                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                   value={patientForm.reproductiveStatus}
                   onChange={(event) =>
                     setPatientForm((prev) => ({
@@ -277,7 +277,7 @@ export function PatientCreateModal({
               <label className="text-xs text-slate-300">
                 Idade (texto)
                 <input
-                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                   value={patientForm.ageText}
                   onChange={(event) => setPatientForm((prev) => ({ ...prev, ageText: event.target.value }))}
                   placeholder="Ex.: 4 anos"
@@ -287,7 +287,7 @@ export function PatientCreateModal({
                 Data de nascimento
                 <input
                   type="date"
-                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                   value={patientForm.birthDate}
                   onChange={(event) => setPatientForm((prev) => ({ ...prev, birthDate: event.target.value }))}
                 />
@@ -295,7 +295,7 @@ export function PatientCreateModal({
               <label className="text-xs text-slate-300">
                 Pelagem
                 <input
-                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                   value={patientForm.coat}
                   onChange={(event) => setPatientForm((prev) => ({ ...prev, coat: event.target.value }))}
                 />
@@ -303,7 +303,7 @@ export function PatientCreateModal({
               <label className="text-xs text-slate-300">
                 Peso (kg)
                 <input
-                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                   value={patientForm.weightKg}
                   onChange={(event) => setPatientForm((prev) => ({ ...prev, weightKg: event.target.value }))}
                   placeholder="Ex.: 12.4"
@@ -313,7 +313,7 @@ export function PatientCreateModal({
                 Data do peso
                 <input
                   type="date"
-                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                   value={patientForm.weightDate}
                   onChange={(event) => setPatientForm((prev) => ({ ...prev, weightDate: event.target.value }))}
                 />
@@ -323,7 +323,7 @@ export function PatientCreateModal({
                 Anamnese / Histórico
                 <textarea
                   rows={2}
-                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                   value={patientForm.anamnesis}
                   onChange={(event) => setPatientForm((prev) => ({ ...prev, anamnesis: event.target.value }))}
                 />
@@ -332,7 +332,7 @@ export function PatientCreateModal({
                 Observações do paciente
                 <textarea
                   rows={2}
-                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                  className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                   value={patientForm.notes}
                   onChange={(event) => setPatientForm((prev) => ({ ...prev, notes: event.target.value }))}
                 />
@@ -390,7 +390,7 @@ export function PatientCreateModal({
                 <label className="text-xs text-slate-300 md:col-span-2">
                   Nome do tutor *
                   <input
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                     value={newTutorForm.name}
                     onChange={(event) => setNewTutorForm((prev) => ({ ...prev, name: event.target.value }))}
                     required={mode === 'new'}
@@ -399,7 +399,7 @@ export function PatientCreateModal({
                 <label className="text-xs text-slate-300">
                   Telefone
                   <input
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                     value={newTutorForm.phone}
                     onChange={(event) => setNewTutorForm((prev) => ({ ...prev, phone: event.target.value }))}
                   />
@@ -407,7 +407,7 @@ export function PatientCreateModal({
                 <label className="text-xs text-slate-300">
                   E-mail
                   <input
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                     value={newTutorForm.email}
                     onChange={(event) => setNewTutorForm((prev) => ({ ...prev, email: event.target.value }))}
                   />
@@ -415,7 +415,7 @@ export function PatientCreateModal({
                 <label className="text-xs text-slate-300">
                   CPF
                   <input
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                     value={newTutorForm.cpf}
                     onChange={(event) => setNewTutorForm((prev) => ({ ...prev, cpf: event.target.value }))}
                   />
@@ -423,7 +423,7 @@ export function PatientCreateModal({
                 <label className="text-xs text-slate-300">
                   RG
                   <input
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                     value={newTutorForm.rg}
                     onChange={(event) => setNewTutorForm((prev) => ({ ...prev, rg: event.target.value }))}
                   />
@@ -431,7 +431,7 @@ export function PatientCreateModal({
                 <label className="text-xs text-slate-300 md:col-span-2">
                   Rua
                   <input
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                     value={newTutorForm.addressStreet}
                     onChange={(event) => setNewTutorForm((prev) => ({ ...prev, addressStreet: event.target.value }))}
                   />
@@ -439,7 +439,7 @@ export function PatientCreateModal({
                 <label className="text-xs text-slate-300">
                   Número
                   <input
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                     value={newTutorForm.addressNumber}
                     onChange={(event) => setNewTutorForm((prev) => ({ ...prev, addressNumber: event.target.value }))}
                   />
@@ -447,7 +447,7 @@ export function PatientCreateModal({
                 <label className="text-xs text-slate-300">
                   Complemento
                   <input
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                     value={newTutorForm.addressComplement}
                     onChange={(event) => setNewTutorForm((prev) => ({ ...prev, addressComplement: event.target.value }))}
                   />
@@ -455,7 +455,7 @@ export function PatientCreateModal({
                 <label className="text-xs text-slate-300">
                   Bairro
                   <input
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                     value={newTutorForm.addressDistrict}
                     onChange={(event) => setNewTutorForm((prev) => ({ ...prev, addressDistrict: event.target.value }))}
                   />
@@ -463,7 +463,7 @@ export function PatientCreateModal({
                 <label className="text-xs text-slate-300">
                   Cidade
                   <input
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                     value={newTutorForm.addressCity}
                     onChange={(event) => setNewTutorForm((prev) => ({ ...prev, addressCity: event.target.value }))}
                   />
@@ -471,7 +471,7 @@ export function PatientCreateModal({
                 <label className="text-xs text-slate-300">
                   Estado
                   <input
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                     value={newTutorForm.addressState}
                     onChange={(event) => setNewTutorForm((prev) => ({ ...prev, addressState: event.target.value }))}
                   />
@@ -479,7 +479,7 @@ export function PatientCreateModal({
                 <label className="text-xs text-slate-300">
                   CEP
                   <input
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                     value={newTutorForm.addressZip}
                     onChange={(event) => setNewTutorForm((prev) => ({ ...prev, addressZip: event.target.value }))}
                   />
@@ -488,7 +488,7 @@ export function PatientCreateModal({
                   Observações
                   <textarea
                     rows={2}
-                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[#12230f] px-3 py-2 text-sm text-white"
+                    className="mt-1 w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white"
                     value={newTutorForm.notes}
                     onChange={(event) => setNewTutorForm((prev) => ({ ...prev, notes: event.target.value }))}
                   />

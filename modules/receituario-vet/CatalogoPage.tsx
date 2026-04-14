@@ -477,7 +477,7 @@ export default function CatalogoPage() {
                   key={drug.id}
                   className={`w-full rounded-xl border px-3 py-2 text-left ${
                     selectedId === drug.id
-                      ? 'border-[#61eb48]/45 bg-[#61eb48]/10'
+                      ? 'border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)]'
                       : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/60'
                   }`}
                   onClick={() => selectDrug(drug)}
@@ -541,7 +541,7 @@ export default function CatalogoPage() {
                         key={option.value}
                         className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs ${
                           checked
-                            ? 'border-[#61eb48]/45 bg-[#61eb48]/12 text-[#c8ffc0]'
+                            ? 'border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_12%,transparent)] text-[color:color-mix(in_srgb,var(--rxv-primary)_78%,#f1f5f9)]'
                             : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/50 text-[color:var(--rxv-muted)]'
                         }`}
                       >
@@ -690,7 +690,7 @@ export default function CatalogoPage() {
                         <label
                           className={`inline-flex items-center gap-2 rounded-full border px-2.5 py-1 text-xs ${
                             presentation.pharmacy_veterinary
-                              ? 'border-[#61eb48]/45 bg-[#61eb48]/12 text-[#c8ffc0]'
+                              ? 'border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_12%,transparent)] text-[color:color-mix(in_srgb,var(--rxv-primary)_78%,#f1f5f9)]'
                               : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/50 text-[color:var(--rxv-muted)]'
                           }`}
                         >
@@ -705,7 +705,7 @@ export default function CatalogoPage() {
                         <label
                           className={`inline-flex items-center gap-2 rounded-full border px-2.5 py-1 text-xs ${
                             presentation.pharmacy_human
-                              ? 'border-[#61eb48]/45 bg-[#61eb48]/12 text-[#c8ffc0]'
+                              ? 'border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_12%,transparent)] text-[color:color-mix(in_srgb,var(--rxv-primary)_78%,#f1f5f9)]'
                               : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/50 text-[color:var(--rxv-muted)]'
                           }`}
                         >
@@ -720,7 +720,7 @@ export default function CatalogoPage() {
                         <label
                           className={`inline-flex items-center gap-2 rounded-full border px-2.5 py-1 text-xs ${
                             presentation.pharmacy_compounding
-                              ? 'border-[#61eb48]/45 bg-[#61eb48]/12 text-[#c8ffc0]'
+                              ? 'border-[color:color-mix(in_srgb,var(--rxv-primary)_45%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_12%,transparent)] text-[color:color-mix(in_srgb,var(--rxv-primary)_78%,#f1f5f9)]'
                               : 'border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/50 text-[color:var(--rxv-muted)]'
                           }`}
                         >

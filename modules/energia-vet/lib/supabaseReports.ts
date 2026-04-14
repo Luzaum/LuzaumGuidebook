@@ -42,12 +42,20 @@ function toStoredReport(row: NutritionReportRow): StoredCalculationReport {
   return row.report_payload_json as StoredCalculationReport
 }
 
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+
+function patientIdForFk(patientId: string | undefined): string | null {
+  const id = String(patientId ?? '').trim()
+  if (!id || !UUID_RE.test(id)) return null
+  return id
+}
+
 function toDbRow(report: StoredCalculationReport, clinicId: string, userId: string) {
   return {
     id: report.id,
     clinic_id: clinicId,
     created_by_user_id: userId,
-    patient_id: report.patient.id ?? null,
+    patient_id: patientIdForFk(report.patient.id),
     patient_key: report.patientKey ?? 'sem-patient-key',
     source_report_id: report.id,
     patient_snapshot_json: report.patient ?? {},
@@ -108,9 +116,8 @@ export async function saveNutritionReportToSupabase(report: StoredCalculationRep
   const userId = await getCurrentUserIdOrThrow()
   const row = toDbRow(report, clinicId, userId)
 
-  const { error } = await supabase
-    .from(NUTRITION_REPORTS_TABLE)
-    .upsert(row, { onConflict: 'source_report_id' })
+  /** `onConflict: id` — a chave única parcial em `source_report_id` pode falhar no upsert do PostgREST (400). */
+  const { error } = await supabase.from(NUTRITION_REPORTS_TABLE).upsert(row, { onConflict: 'id' })
 
   if (error) throw error
 }
@@ -125,9 +132,7 @@ export async function migrateLocalReportsToSupabase(localReports: StoredCalculat
 
   for (const report of localReports) {
     const row = toDbRow(report, clinicId, userId)
-    const { error } = await supabase
-      .from(NUTRITION_REPORTS_TABLE)
-      .upsert(row, { onConflict: 'source_report_id' })
+    const { error } = await supabase.from(NUTRITION_REPORTS_TABLE).upsert(row, { onConflict: 'id' })
     if (error) {
       skipped += 1
       continue

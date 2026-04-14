@@ -1,6 +1,7 @@
 ﻿import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, Grid } from 'lucide-react';
+import { ConsultaVetPageHero } from '../components/layout/ConsultaVetPageHero';
 import { getCategoryRepository } from '../services/categoryRepository';
 import { Category } from '../types/category';
 
@@ -39,13 +40,13 @@ export function CategoriesPage() {
 
   return (
     <div className="mx-auto w-full max-w-[1500px] space-y-8 p-4 md:p-8">
-      <header>
-        <h1 className="mb-2 flex items-center gap-3 text-3xl font-bold tracking-tight text-foreground">
-          <Grid className="h-8 w-8 text-amber-600 dark:text-amber-400" />
-          Categorias
-        </h1>
-        <p className="text-muted-foreground">Navegue por especialidades e sistemas clínicos.</p>
-      </header>
+      <ConsultaVetPageHero
+        eyebrow="Taxonomia clínica"
+        title="Categorias"
+        description="Navegue por especialidades e sistemas clínicos."
+        icon={Grid}
+        accent="amber"
+      />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {isLoading && (

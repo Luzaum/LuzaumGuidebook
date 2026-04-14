@@ -138,7 +138,7 @@ function Layout({ children }: { children: React.ReactNode }) {
     <div className="energia-vet-shell flex min-h-dvh bg-background">
       <Sidebar />
       <div className="flex min-h-dvh min-w-0 flex-1 flex-col">
-        <main className="flex-1 overflow-y-auto px-4 py-8 lg:px-10 lg:py-10">
+        <main className="flex-1 overflow-y-auto px-4 py-8 pb-24 lg:px-10 lg:py-10 lg:pb-10">
           <div className="w-full max-w-none">
             {children}
           </div>

@@ -1,7 +1,11 @@
 import { jsPDF } from 'jspdf'
 import autoTable from 'jspdf-autotable'
 import type { StoredCalculationReport } from '../types'
-import { buildPrintableReportViewModel } from './reportPresentation'
+import {
+  buildPrintableReportViewModel,
+  buildSharedFeedingSheetMetaFields,
+  type PrintableReportViewModel,
+} from './reportPresentation'
 
 /** Segmento seguro para nome de ficheiro (ASCII, maiúsculas, underscores). */
 function slugifyFilenameSegment(value: string | null | undefined, fallback: string) {
@@ -61,26 +65,26 @@ function addNutritionPdfPageFooters(doc: jsPDF, report: StoredCalculationReport)
   }
 }
 
-function drawSectionTitle(doc: jsPDF, title: string, startY: number) {
+function drawSectionTitle(doc: jsPDF, title: string, startY: number, compact = false, micro = false) {
   doc.setFont('helvetica', 'bold')
-  doc.setFontSize(12)
+  doc.setFontSize(micro ? 8 : compact ? 10 : 12)
   doc.text(title, 14, startY)
   doc.setDrawColor(229, 99, 10)
-  doc.setLineWidth(0.5)
+  doc.setLineWidth(compact ? 0.35 : 0.5)
   doc.line(14, startY + 2, 196, startY + 2)
 }
 
-function renderKeyValueTable(doc: jsPDF, title: string, rows: string[][], startY: number) {
-  drawSectionTitle(doc, title, startY)
+function renderKeyValueTable(doc: jsPDF, title: string, rows: string[][], startY: number, compact = false) {
+  drawSectionTitle(doc, title, startY, compact)
   autoTable(doc, {
-    startY: startY + 6,
+    startY: startY + (compact ? 5 : 6),
     head: [['Campo', 'Valor']],
     body: rows,
     theme: 'grid',
     styles: {
       font: 'helvetica',
-      fontSize: 10,
-      cellPadding: 2.4,
+      fontSize: compact ? 8 : 10,
+      cellPadding: compact ? 1.5 : 2.4,
       lineColor: [222, 217, 208],
       lineWidth: 0.2,
       textColor: [29, 26, 23],
@@ -94,24 +98,34 @@ function renderKeyValueTable(doc: jsPDF, title: string, rows: string[][], startY
       fillColor: [251, 250, 248],
     },
     columnStyles: {
-      0: { cellWidth: 54, fontStyle: 'bold' },
-      1: { cellWidth: 128 },
+      0: { cellWidth: compact ? 48 : 54, fontStyle: 'bold' },
+      1: { cellWidth: compact ? 134 : 128 },
     },
     margin: { left: 14, right: 14 },
   })
 }
 
-function renderDataTable(doc: jsPDF, title: string, headers: string[], rows: string[][], startY: number) {
-  drawSectionTitle(doc, title, startY)
+function renderDataTable(
+  doc: jsPDF,
+  title: string,
+  headers: string[],
+  rows: string[][],
+  startY: number,
+  compact = false,
+  micro = false,
+) {
+  drawSectionTitle(doc, title, startY, compact, micro)
+  const fontSize = micro ? 6.5 : compact ? 7.5 : 9.5
+  const cellPad = micro ? 1.05 : compact ? 1.4 : 2.3
   autoTable(doc, {
-    startY: startY + 6,
+    startY: startY + (micro ? 4 : compact ? 5 : 6),
     head: [headers],
     body: rows,
     theme: 'grid',
     styles: {
       font: 'helvetica',
-      fontSize: 9.5,
-      cellPadding: 2.3,
+      fontSize,
+      cellPadding: cellPad,
       lineColor: [222, 217, 208],
       lineWidth: 0.2,
       textColor: [29, 26, 23],
@@ -121,12 +135,150 @@ function renderDataTable(doc: jsPDF, title: string, headers: string[], rows: str
       fillColor: [246, 244, 241],
       textColor: [29, 26, 23],
       fontStyle: 'bold',
+      fontSize,
     },
     alternateRowStyles: {
       fillColor: [251, 250, 248],
     },
     margin: { left: 14, right: 14 },
+    tableWidth: compact || micro ? 182 : undefined,
   })
+}
+
+function getLastTableFinalY(doc: jsPDF): number {
+  return (doc as jsPDF & { lastAutoTable?: { finalY: number } }).lastAutoTable?.finalY ?? 0
+}
+
+/** Títulos de secção na ficha compacta (3 dias / folha). */
+function drawTripleSheetSectionTitle(doc: jsPDF, title: string, startY: number) {
+  doc.setFont('helvetica', 'bold')
+  doc.setFontSize(11)
+  doc.setTextColor(229, 99, 10)
+  doc.text(title, 14, startY)
+  doc.setDrawColor(229, 99, 10)
+  doc.setLineWidth(0.45)
+  doc.line(14, startY + 2.5, 196, startY + 2.5)
+}
+
+/** Dados da ficha + alimentos com tipografia maior (aproveita altura da folha). */
+function renderTripleSheetKeyValueTable(doc: jsPDF, title: string, rows: string[][], startY: number) {
+  drawTripleSheetSectionTitle(doc, title, startY)
+  autoTable(doc, {
+    startY: startY + 7,
+    head: [['Campo', 'Valor']],
+    body: rows,
+    theme: 'grid',
+    styles: {
+      font: 'helvetica',
+      fontSize: 9.5,
+      cellPadding: { top: 2.4, bottom: 2.4, left: 2.2, right: 2.2 },
+      lineColor: [222, 217, 208],
+      lineWidth: 0.2,
+      textColor: [29, 26, 23],
+    },
+    headStyles: {
+      fillColor: [246, 244, 241],
+      textColor: [29, 26, 23],
+      fontStyle: 'bold',
+      fontSize: 9.5,
+    },
+    alternateRowStyles: { fillColor: [251, 250, 248] },
+    columnStyles: {
+      0: { cellWidth: 52, fontStyle: 'bold' },
+      1: { cellWidth: 128 },
+    },
+    margin: { left: 14, right: 14 },
+  })
+}
+
+function renderTripleSheetFoodTable(doc: jsPDF, title: string, headers: string[], rows: string[][], startY: number) {
+  drawTripleSheetSectionTitle(doc, title, startY)
+  autoTable(doc, {
+    startY: startY + 7,
+    head: [headers],
+    body: rows,
+    theme: 'grid',
+    styles: {
+      font: 'helvetica',
+      fontSize: 9,
+      cellPadding: { top: 2.2, bottom: 2.2, left: 2, right: 2 },
+      lineColor: [222, 217, 208],
+      lineWidth: 0.2,
+      textColor: [29, 26, 23],
+      overflow: 'linebreak',
+      minCellHeight: 8,
+    },
+    headStyles: {
+      fillColor: [246, 244, 241],
+      textColor: [29, 26, 23],
+      fontStyle: 'bold',
+      fontSize: 9,
+    },
+    alternateRowStyles: { fillColor: [251, 250, 248] },
+    margin: { left: 14, right: 14 },
+    tableWidth: 182,
+  })
+}
+
+/** Controle diário: linhas mais altas; `minCellHeight` reparte o espaço vertical da folha. */
+function renderTripleSheetControlTable(
+  doc: jsPDF,
+  title: string,
+  headers: string[],
+  rows: string[][],
+  startY: number,
+  minCellHeight = 10,
+) {
+  drawTripleSheetSectionTitle(doc, title, startY)
+  autoTable(doc, {
+    startY: startY + 7,
+    head: [headers],
+    body: rows,
+    theme: 'grid',
+    styles: {
+      font: 'helvetica',
+      fontSize: 8.8,
+      cellPadding: { top: 2.6, bottom: 2.6, left: 1.8, right: 1.8 },
+      lineColor: [222, 217, 208],
+      lineWidth: 0.2,
+      textColor: [29, 26, 23],
+      overflow: 'linebreak',
+      minCellHeight,
+    },
+    headStyles: {
+      fillColor: [246, 244, 241],
+      textColor: [29, 26, 23],
+      fontStyle: 'bold',
+      fontSize: 8.5,
+    },
+    alternateRowStyles: { fillColor: [251, 250, 248] },
+    margin: { left: 14, right: 14 },
+    tableWidth: 182,
+  })
+}
+
+/** Uma ficha completa (dados + alimentos + controle); `compact` para caber 2 dias na mesma folha A4. */
+function renderFeedingSheetBlock(
+  doc: jsPDF,
+  sheet: PrintableReportViewModel['feedingSheets'][0],
+  startY: number,
+  compact: boolean,
+): number {
+  const gap = compact ? 5 : 8
+  renderKeyValueTable(doc, 'Dados da ficha', sheet.meta.map((field) => [field.label, field.value]), startY, compact)
+  let y = getLastTableFinalY(doc)
+  renderDataTable(doc, 'Alimentos utilizados', ['Alimento', 'Oferta diária total', 'Por refeição'], sheet.foodRows, y + gap, compact)
+  y = getLastTableFinalY(doc)
+  renderDataTable(
+    doc,
+    'Controle diário',
+    ['Horário', 'Quantidade/refeição', 'Alimentos', 'Comeu? Sim/não (pesar sobra)', 'Assinatura'],
+    sheet.rows,
+    y + gap,
+    compact,
+    false,
+  )
+  return getLastTableFinalY(doc)
 }
 
 function buildNutritionReportPdfDoc(report: StoredCalculationReport): jsPDF {
@@ -193,33 +345,92 @@ function buildNutritionReportPdfDoc(report: StoredCalculationReport): jsPDF {
     renderDataTable(doc, '10. Observações finais', ['Observação'], vm.alertNotes.map((note) => [note]), nextY + 8)
   }
 
-  vm.feedingSheets.forEach((sheet) => {
-    doc.addPage()
-    doc.setFont('helvetica', 'bold')
-    doc.setFontSize(18)
-    doc.setTextColor(229, 99, 10)
-    doc.text(vm.feedingSheetTitle, 14, 18)
+  if (vm.feedingSheetTripleDayLayout && vm.feedingSheets.length > 0) {
+    const sheets = vm.feedingSheets
+    const perPage = 3
+    const folhas = Math.ceil(sheets.length / perPage)
+    for (let f = 0; f < folhas; f++) {
+      doc.addPage()
+      let y = 12
+      doc.setFont('helvetica', 'bold')
+      doc.setFontSize(18)
+      doc.setTextColor(229, 99, 10)
+      doc.text(vm.feedingSheetTitle, 14, y)
+      y += 7
+      doc.setFont('helvetica', 'normal')
+      doc.setFontSize(9)
+      doc.setTextColor(98, 89, 79)
+      doc.text('Página operacional para rotina diária', 14, y)
+      y += 4.5
+      if (vm.feedingSheetPrintBanner) {
+        doc.setFontSize(8)
+        doc.setTextColor(120, 110, 100)
+        const lines = doc.splitTextToSize(vm.feedingSheetPrintBanner, 132)
+        doc.text(lines, 14, y)
+        y += lines.length * 3.6
+      }
+      doc.setFontSize(8.5)
+      doc.setTextColor(98, 89, 79)
+      doc.text(`Folha de ficha ${f + 1} de ${folhas} — 3 dias por folha`, 196, 17, { align: 'right' })
+      doc.text(vm.patientTitle, 196, 24, { align: 'right' })
 
-    doc.setFont('helvetica', 'normal')
-    doc.setFontSize(10)
-    doc.setTextColor(98, 89, 79)
-    doc.text('Página operacional para rotina diária', 14, 24)
-    doc.text(vm.patientTitle, 196, 18, { align: 'right' })
+      const slice = sheets.slice(f * perPage, f * perPage + perPage)
+      y = Math.max(y + 3, 30)
 
-    renderKeyValueTable(doc, 'Dados da ficha', sheet.meta.map((field) => [field.label, field.value]), 32)
-    let feedingY = (doc as jsPDF & { lastAutoTable?: { finalY: number } }).lastAutoTable?.finalY ?? 32
+      const sharedRows = buildSharedFeedingSheetMetaFields(report, slice).map((field) => [field.label, field.value])
+      renderTripleSheetKeyValueTable(doc, 'Dados da ficha', sharedRows, y)
+      y = getLastTableFinalY(doc)
+      renderTripleSheetFoodTable(
+        doc,
+        'Alimentos utilizados',
+        ['Alimento', 'Oferta diária total', 'Por refeição'],
+        slice[0].foodRows,
+        y + 6,
+      )
+      y = getLastTableFinalY(doc)
 
-    renderDataTable(doc, 'Alimentos utilizados', ['Alimento', 'Oferta diária total', 'Por refeição'], sheet.foodRows, feedingY + 8)
-    feedingY = (doc as jsPDF & { lastAutoTable?: { finalY: number } }).lastAutoTable?.finalY ?? feedingY
+      /** Distribui altura das linhas de controle para preencher até ~8 mm acima do rodapé. */
+      const PAGE_MAX_CONTENT_Y = 278
+      const gapBetweenControlBlocks = 8
+      const yFirstControl = y + 5
+      const roughFixedOverheadMm = 46
+      const bodyRowsTotal = slice.length * 5
+      const budgetForBodyRows =
+        PAGE_MAX_CONTENT_Y - yFirstControl - gapBetweenControlBlocks * (slice.length - 1) - roughFixedOverheadMm
+      const controlMinRow = Math.max(9, Math.min(13.5, budgetForBodyRows / Math.max(bodyRowsTotal, 1)))
 
-    renderDataTable(
-      doc,
-      'Controle diário',
-      ['Horário', 'Quantidade/refeição', 'Alimentos', 'Comeu? Sim/não (pesar sobra)', 'Assinatura'],
-      sheet.rows,
-      feedingY + 8,
-    )
-  })
+      y = yFirstControl
+      for (let di = 0; di < slice.length; di++) {
+        const daySheet = slice[di]
+        if (di > 0) y += gapBetweenControlBlocks
+        renderTripleSheetControlTable(
+          doc,
+          `Controle diário — Dia ${daySheet.dateLabel}`,
+          ['Horário', 'Quantidade/refeição', 'Alimentos', 'Comeu? Sim/não (pesar sobra)', 'Assinatura'],
+          daySheet.rows,
+          y,
+          controlMinRow,
+        )
+        y = getLastTableFinalY(doc)
+      }
+    }
+  } else {
+    vm.feedingSheets.forEach((sheet) => {
+      doc.addPage()
+      doc.setFont('helvetica', 'bold')
+      doc.setFontSize(18)
+      doc.setTextColor(229, 99, 10)
+      doc.text(vm.feedingSheetTitle, 14, 18)
+
+      doc.setFont('helvetica', 'normal')
+      doc.setFontSize(10)
+      doc.setTextColor(98, 89, 79)
+      doc.text('Página operacional para rotina diária', 14, 24)
+      doc.text(vm.patientTitle, 196, 18, { align: 'right' })
+
+      renderFeedingSheetBlock(doc, sheet, 32, false)
+    })
+  }
 
   addNutritionPdfPageFooters(doc, report)
 
@@ -232,10 +443,6 @@ export function exportReportPdf(report: StoredCalculationReport) {
   doc.save(buildVetiusNutritionPdfFilename(report))
 }
 
-/**
- * Mesmo conteúdo que export — abre o PDF num separador e dispara a impressão do sistema.
- * Fallback: descarrega o ficheiro se o popup estiver bloqueado.
- */
 export function printReportPdf(report: StoredCalculationReport) {
   const doc = buildNutritionReportPdfDoc(report)
   const blob = doc.output('blob')

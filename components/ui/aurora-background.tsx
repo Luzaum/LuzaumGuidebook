@@ -6,6 +6,11 @@ interface AuroraBackgroundProps extends React.HTMLProps<HTMLDivElement> {
   showRadialGradient?: boolean;
   as?: "main" | "div";
   fullScreen?: boolean;
+  /**
+   * `solid` = fundo estático (sem blur/gradiente animado). Muito mais leve na GPU.
+   * Use em módulos com muito conteúdo rolável (ex.: ConsultaVET).
+   */
+  variant?: "aurora" | "solid";
 }
 
 export const AuroraBackground = ({
@@ -14,6 +19,7 @@ export const AuroraBackground = ({
   showRadialGradient = true,
   as = "main",
   fullScreen = true,
+  variant = "aurora",
   ...props
 }: AuroraBackgroundProps) => {
   const Wrapper = as;
@@ -29,10 +35,11 @@ export const AuroraBackground = ({
         )}
         {...props}
       >
-        <div className="absolute inset-0 overflow-hidden">
-          <div
-            className={cn(
-              `[--white-gradient:repeating-linear-gradient(100deg,var(--white)_0%,var(--white)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--white)_16%)]
+        {variant === "aurora" ? (
+          <div className="absolute inset-0 overflow-hidden">
+            <div
+              className={cn(
+                `[--white-gradient:repeating-linear-gradient(100deg,var(--white)_0%,var(--white)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--white)_16%)]
                [--dark-gradient:repeating-linear-gradient(100deg,var(--black)_0%,var(--black)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--black)_16%)]
                [--aurora:repeating-linear-gradient(100deg,var(--sky-400)_10%,var(--blue-300)_18%,var(--cyan-300)_25%,var(--blue-400)_33%,var(--sky-500)_42%)]
                [background-image:var(--white-gradient),var(--aurora)] dark:[background-image:var(--dark-gradient),var(--aurora)]
@@ -42,11 +49,17 @@ export const AuroraBackground = ({
                after:dark:[background-image:var(--dark-gradient),var(--aurora)]
                after:[background-size:200%,_100%] after:animate-aurora after:[background-attachment:fixed]
                after:mix-blend-difference pointer-events-none absolute -inset-[10px] opacity-40 will-change-transform`,
-              showRadialGradient &&
-                `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`
-            )}
-          ></div>
-        </div>
+                showRadialGradient &&
+                  `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`
+              )}
+            ></div>
+          </div>
+        ) : (
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-gradient-to-br from-sky-100/40 via-transparent to-blue-100/30 dark:from-sky-950/40 dark:to-blue-950/25"
+          />
+        )}
         {children}
       </div>
     </Wrapper>
