@@ -5,9 +5,16 @@ export const CONSULTA_VET_PUBLIC_DISEASE_SLUGS = [
   'fistula-perianal-furunculose-anal',
   'hiperadrenocorticismo-sindrome-cushing',
   'leishmaniose-visceral-canina',
+  'erliquiose-monocitica-canina',
+  'colapso-traqueal-canino',
+  'micoplasmoses-hemotropicas',
 ] as const;
 
-export const CONSULTA_VET_PUBLIC_MEDICATION_SLUGS = ['prednisolona'] as const;
+export const CONSULTA_VET_PUBLIC_MEDICATION_SLUGS = [
+  'prednisolona',
+  'sulfametoxazol-trimetoprima',
+  'amoxicilina-clavulanato',
+] as const;
 
 export function isPublicDiseaseSlug(slug: string): boolean {
   return (CONSULTA_VET_PUBLIC_DISEASE_SLUGS as readonly string[]).includes(slug);

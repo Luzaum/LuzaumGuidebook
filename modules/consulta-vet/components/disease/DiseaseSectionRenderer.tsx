@@ -259,6 +259,7 @@ const TREATMENT_NARRATIVE_AFTER_PRIORITY = [
 
 function subsectionToneForKey(key: string): SubsectionTone {
   if (key === 'notaFelinos') return 'species';
+  if (key === 'hemoTabelaDoxiciclinaGatoAlerta') return 'warning';
   if (key === 'diagnosticPlanIfLimitedResources') return 'warning';
   if (key === 'commonClinicalMistakesExpanded' || key === 'falsePositiveConsiderations' || key === 'falseNegativeConsiderations') {
     return 'danger';

@@ -1,4 +1,7 @@
 ﻿import { DiseaseRecord } from '../../types/disease';
+import { colapsoTraquealCaninoRecord } from './diseases.colapso-traqueal.seed';
+import { erliquioseMonociticaCaninaRecord } from './diseases.erlichia.seed';
+import { micoplasmosesHemotropicasRecord } from './diseases.hemoplasma.seed';
 import { leishmanioseVisceralCaninaRecord } from './diseases.leishmaniose.seed';
 
 export const diseasesSeed: DiseaseRecord[] = [
@@ -625,4 +628,7 @@ export const diseasesSeed: DiseaseRecord[] = [
     source: 'seed',
   },
   leishmanioseVisceralCaninaRecord,
+  erliquioseMonociticaCaninaRecord,
+  colapsoTraquealCaninoRecord,
+  micoplasmosesHemotropicasRecord,
 ];

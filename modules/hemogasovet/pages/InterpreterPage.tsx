@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { Activity, AlertCircle, CheckCircle2, HelpCircle, Info, Save, FileText, ChevronDown, ChevronUp, AlertTriangle, ShieldAlert, Stethoscope, Beaker, BrainCircuit } from 'lucide-react';
 import { SpeciesPortraitCards } from '@/components/SpeciesPortraitCards';
 import { cn } from '../../../lib/utils';
@@ -12,6 +12,76 @@ import { exportToPDF } from '../utils/pdfExport';
 import { formatFiO2Percent } from '../utils/fio2';
 import { formatCompensationStatus, formatDomainStatus, formatOxygenationStatus, formatPrimaryDisorder, formatQualityStatus } from '../utils/presentation';
 import * as Tooltip from '@radix-ui/react-tooltip';
+
+const HEMO_MOBILE_ANCHORS_INPUT_MANUAL = [
+  { id: 'hemo-input-perfil', label: 'Perfil' },
+  { id: 'hemo-input-valores', label: 'Valores' },
+  { id: 'hemo-input-eletrolitos', label: 'Eletrólitos' },
+  { id: 'hemo-input-clinico', label: 'Clínico' },
+  { id: 'hemo-input-interpretar', label: 'Interpretar' },
+] as const
+
+const HEMO_MOBILE_ANCHORS_INPUT_TEXT = [
+  { id: 'hemo-input-perfil', label: 'Perfil' },
+  { id: 'hemo-input-valores', label: 'OCR / texto' },
+  { id: 'hemo-input-interpretar', label: 'Interpretar' },
+] as const
+
+const HEMO_MOBILE_ANCHORS_RESULT = [
+  { id: 'hemo-result-qualidade', label: 'Qualidade' },
+  { id: 'hemo-result-resumo', label: 'Resumo' },
+  { id: 'hemo-result-acidobase', label: 'Ácido-base' },
+  { id: 'hemo-result-oxigenacao', label: 'O₂' },
+  { id: 'hemo-result-eletrolitos', label: 'Eletrólitos' },
+  { id: 'hemo-result-hipoteses', label: 'Hipóteses' },
+  { id: 'hemo-result-plano', label: 'Plano' },
+  { id: 'hemo-result-passos', label: 'Passo a passo' },
+] as const
+
+function HemoInterpreterMobileSectionNav({
+  variant,
+  inputMode,
+  result,
+}: {
+  variant: 'input' | 'result'
+  inputMode: 'manual' | 'text'
+  result: InterpretationResult | null
+}) {
+  const links = useMemo(() => {
+    if (variant === 'result' && result) {
+      let list = [...HEMO_MOBILE_ANCHORS_RESULT]
+      if (!result.deepElectrolytes?.length) {
+        list = list.filter((l) => l.id !== 'hemo-result-eletrolitos')
+      }
+      if (!result.clinicalHypotheses.length) {
+        list = list.filter((l) => l.id !== 'hemo-result-hipoteses')
+      }
+      return list
+    }
+    return inputMode === 'text' ? HEMO_MOBILE_ANCHORS_INPUT_TEXT : HEMO_MOBILE_ANCHORS_INPUT_MANUAL
+  }, [variant, inputMode, result])
+  const scrollTo = useCallback((id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [])
+
+  return (
+    <nav
+      aria-label={variant === 'input' ? 'Seções da entrada' : 'Seções do resultado'}
+      className="lg:hidden sticky top-14 z-20 -mx-1 mb-4 flex gap-1 overflow-x-auto overscroll-x-contain rounded-xl border border-slate-200 bg-white/95 px-2 py-2 shadow-sm backdrop-blur-sm dark:border-slate-800 dark:bg-slate-900/95 [-webkit-overflow-scrolling:touch]"
+    >
+      {links.map((item) => (
+        <button
+          key={item.id}
+          type="button"
+          onClick={() => scrollTo(item.id)}
+          className="shrink-0 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1.5 text-[11px] font-semibold text-slate-800 transition hover:border-purple-400 hover:bg-purple-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:border-purple-500 dark:hover:bg-purple-950/40"
+        >
+          {item.label}
+        </button>
+      ))}
+    </nav>
+  )
+}
 
 function getDefaultFormData(species: Species, sampleType: SampleType): Partial<BloodGasInput> {
   const canineDefaults: Partial<BloodGasInput> = {
@@ -195,13 +265,15 @@ export default function InterpreterPage() {
         </div>
       </div>
 
+      <HemoInterpreterMobileSectionNav variant={result ? 'result' : 'input'} inputMode={inputMode} result={result} />
+
       <div className={cn("grid grid-cols-1 gap-6 transition-all duration-500", result ? "lg:grid-cols-12" : "lg:grid-cols-12")}>
         {/* Input Section */}
         <div className={cn("space-y-6 transition-all duration-500 min-w-0", result ? "lg:col-span-4" : "lg:col-span-12")}>
           <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-5">
             
             {/* Profile Selection */}
-            <div className="space-y-4 mb-6 pb-5 border-b border-slate-100 dark:border-slate-800">
+            <div id="hemo-input-perfil" className="mb-6 space-y-4 scroll-mt-28 border-b border-slate-100 pb-5 dark:border-slate-800 lg:scroll-mt-8">
               <div>
                 <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">Espécie</label>
                 <SpeciesPortraitCards
@@ -250,8 +322,9 @@ export default function InterpreterPage() {
               </div>
             </div>
 
+            <div id="hemo-input-valores" className="scroll-mt-28 space-y-5 lg:scroll-mt-8">
             {/* Input Mode Toggle */}
-            <div className="flex space-x-4 mb-5">
+            <div className="mb-5 flex space-x-4">
               <button
                 onClick={() => switchInputMode('manual')}
                 className={cn(
@@ -290,7 +363,7 @@ export default function InterpreterPage() {
                   <InputField label="Temp." unit="°C" value={formData.temperature} onChange={(v) => handleInputChange('temperature', v)} parsedField={parsedFieldMap.get('temperature')} hint="A temperatura entra como fator de contexto da interpretacao." />
                 </div>
 
-                <div className="space-y-2">
+                <div id="hemo-input-eletrolitos" className="scroll-mt-28 space-y-2 lg:scroll-mt-8">
                   <button 
                     onClick={() => setShowAdvanced(!showAdvanced)}
                     className="flex items-center text-xs font-medium text-purple-600 dark:text-purple-400 hover:underline w-full justify-between bg-purple-50 dark:bg-purple-900/20 p-2 rounded-md"
@@ -313,7 +386,7 @@ export default function InterpreterPage() {
                   )}
                 </div>
 
-                <div className="space-y-2">
+                <div id="hemo-input-clinico" className="scroll-mt-28 space-y-2 lg:scroll-mt-8">
                   <button 
                     onClick={() => setShowClinical(!showClinical)}
                     className="flex items-center text-xs font-medium text-blue-600 dark:text-blue-400 hover:underline w-full justify-between bg-blue-50 dark:bg-blue-900/20 p-2 rounded-md"
@@ -412,6 +485,7 @@ export default function InterpreterPage() {
                 )}
               </div>
             )}
+            </div>
 
             {ocrPending && (
               <div className="mt-4 rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-800 dark:border-amber-800/50 dark:bg-amber-900/20 dark:text-amber-300">
@@ -437,7 +511,7 @@ export default function InterpreterPage() {
               </div>
             )}
 
-            <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
+            <div id="hemo-input-interpretar" className="mt-6 scroll-mt-28 border-t border-slate-100 pt-4 dark:border-slate-800 lg:scroll-mt-8">
               <button
                 onClick={handleInterpret}
                 className="w-full py-2.5 px-4 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
@@ -455,12 +529,15 @@ export default function InterpreterPage() {
             <div className="space-y-4 animate-in slide-in-from-right-8 duration-500">
               
               {/* Data Quality Banner */}
-              <div className={cn(
-                "rounded-xl p-4 border flex items-start gap-3 shadow-sm",
-                result.dataQuality.status === 'probable_error' ? "bg-red-50 border-red-200 dark:bg-red-900/20 dark:border-red-800/50" :
-                result.dataQuality.status === 'caution' ? "bg-amber-50 border-amber-200 dark:bg-amber-900/20 dark:border-amber-800/50" :
-                "bg-emerald-50 border-emerald-200 dark:bg-emerald-900/20 dark:border-emerald-800/50"
-              )}>
+              <div
+                id="hemo-result-qualidade"
+                className={cn(
+                  'scroll-mt-28 rounded-xl border p-4 shadow-sm lg:scroll-mt-8 flex items-start gap-3',
+                  result.dataQuality.status === 'probable_error' ? "bg-red-50 border-red-200 dark:bg-red-900/20 dark:border-red-800/50" :
+                  result.dataQuality.status === 'caution' ? "bg-amber-50 border-amber-200 dark:bg-amber-900/20 dark:border-amber-800/50" :
+                  "bg-emerald-50 border-emerald-200 dark:bg-emerald-900/20 dark:border-emerald-800/50"
+                )}
+              >
                 {result.dataQuality.status === 'probable_error' ? <ShieldAlert className="w-6 h-6 text-red-600 dark:text-red-400 shrink-0" /> :
                  result.dataQuality.status === 'caution' ? <AlertTriangle className="w-6 h-6 text-amber-600 dark:text-amber-400 shrink-0" /> :
                  <CheckCircle2 className="w-6 h-6 text-emerald-600 dark:text-emerald-400 shrink-0" />}
@@ -497,7 +574,7 @@ export default function InterpreterPage() {
               </div>
 
               {/* Executive Summary */}
-              <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+              <div id="hemo-result-resumo" className="scroll-mt-28 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 lg:scroll-mt-8">
                 <div className="bg-slate-900 dark:bg-slate-950 px-5 py-3 flex justify-between items-center">
                   <h2 className="text-sm font-bold text-white flex items-center gap-2">
                     <Activity className="w-4 h-4 text-purple-400" />
@@ -540,6 +617,7 @@ export default function InterpreterPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 
                 {/* Acid-Base */}
+                <div id="hemo-result-acidobase" className="min-w-0 scroll-mt-28 lg:scroll-mt-8">
                 <ResultCard title="Equilíbrio Ácido-Base" icon={<Beaker className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />}>
                   <div className="space-y-4 text-sm">
                     <div className="rounded-xl border border-slate-200/90 dark:border-slate-700/90 bg-gradient-to-b from-slate-50/90 to-white dark:from-slate-900/40 dark:to-slate-950/30 p-4 shadow-sm">
@@ -625,8 +703,10 @@ export default function InterpreterPage() {
                     )}
                   </div>
                 </ResultCard>
+                </div>
 
                 {/* Oxygenation */}
+                <div id="hemo-result-oxigenacao" className="min-w-0 scroll-mt-28 lg:scroll-mt-8">
                 <ResultCard title="Oxigenação e Ventilação" icon={<Activity className="w-4 h-4" />}>
                   <div className="space-y-3 text-sm">
                     <div>
@@ -652,10 +732,11 @@ export default function InterpreterPage() {
                     )}
                   </div>
                 </ResultCard>
+                </div>
 
                 {/* Electrolytes */}
                 {result.deepElectrolytes && result.deepElectrolytes.length > 0 && (
-                  <div className="md:col-span-2">
+                  <div id="hemo-result-eletrolitos" className="scroll-mt-28 md:col-span-2 lg:scroll-mt-8">
                     <ResultCard title="Eletrólitos e Metabólitos" icon={<Activity className="w-4 h-4" />}>
                       <p className="text-xs text-slate-500 dark:text-slate-400 mb-3">{result.electrolyteSummary}</p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -681,8 +762,9 @@ export default function InterpreterPage() {
                 )}
 
                 {/* Clinical Hypotheses & Action Plan */}
-                <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="md:col-span-2 grid grid-cols-1 gap-4 md:grid-cols-2">
                   {result.clinicalHypotheses.length > 0 && (
+                    <div id="hemo-result-hipoteses" className="min-w-0 scroll-mt-28 lg:scroll-mt-8">
                     <ResultCard title="Hipóteses Clínicas" icon={<Stethoscope className="w-4 h-4" />}>
                       <ul className="list-disc pl-4 space-y-1.5 text-sm text-slate-700 dark:text-slate-300">
                         {result.clinicalHypotheses.map((hyp, idx) => (
@@ -690,8 +772,16 @@ export default function InterpreterPage() {
                         ))}
                       </ul>
                     </ResultCard>
+                    </div>
                   )}
 
+                  <div
+                    id="hemo-result-plano"
+                    className={cn(
+                      'min-w-0 scroll-mt-28 lg:scroll-mt-8',
+                      result.clinicalHypotheses.length === 0 && 'md:col-span-2',
+                    )}
+                  >
                   <ResultCard title="Plano de Ação" icon={<CheckCircle2 className="w-4 h-4" />}>
                     <div className="space-y-3">
                       {result.clinicalActions.immediate.length > 0 && (
@@ -713,9 +803,10 @@ export default function InterpreterPage() {
                     </div>
                   </ResultCard>
                 </div>
+                </div>
 
                 {/* Step by Step Logic */}
-                <div className="md:col-span-2 bg-slate-50 dark:bg-slate-900/30 rounded-xl border border-slate-200 dark:border-slate-800 p-5">
+                <div id="hemo-result-passos" className="scroll-mt-28 md:col-span-2 rounded-xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-900/30 lg:scroll-mt-8">
                   <h3 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
                     <BrainCircuit className="w-4 h-4" />
                     Raciocínio Clínico Passo a Passo

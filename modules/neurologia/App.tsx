@@ -11,6 +11,15 @@ import { ThemeSync } from './components/ThemeSync'
 import { Modal } from './components/UI/Modal'
 import { Button } from './components/UI/Button'
 import { useCaseStore } from './stores/caseStore'
+import { NeuroMobileWizardNav, type NeuroWizardStepItem } from './components/NeuroMobileWizardNav'
+
+const NEURO_WIZARD_STEPS: NeuroWizardStepItem[] = [
+  { step: 1, label: 'Paciente', desc: 'Dados básicos', icon: UserRound },
+  { step: 2, label: 'Queixa', desc: 'História e contexto', icon: Stethoscope },
+  { step: 3, label: 'Exame', desc: 'Exame neurológico', icon: Brain },
+  { step: 4, label: 'Revisão', desc: 'Resumo dos achados', icon: ClipboardCheck },
+  { step: 5, label: 'Análise IA', desc: 'Relatório final', icon: Sparkles },
+]
 
 export function NeurologiaApp() {
   const [showResetModal, setShowResetModal] = useState(false)
@@ -94,13 +103,7 @@ export function NeurologiaApp() {
             <div className="rounded-xl border border-border bg-background/50 px-3 py-2 mb-2">
               <p className="text-xs font-semibold text-foreground">Barra de navegação</p>
             </div>
-            {[
-              { step: 1, label: 'Paciente', desc: 'Dados básicos', icon: UserRound },
-              { step: 2, label: 'Queixa', desc: 'História e contexto', icon: Stethoscope },
-              { step: 3, label: 'Exame', desc: 'Exame neurológico', icon: Brain },
-              { step: 4, label: 'Revisão', desc: 'Resumo dos achados', icon: ClipboardCheck },
-              { step: 5, label: 'Análise IA', desc: 'Relatório final', icon: Sparkles },
-            ].map((item) => {
+            {NEURO_WIZARD_STEPS.map((item) => {
               const isActive = item.step === currentStep
               const isDone = item.step < currentStep
               const Icon = item.icon
@@ -134,7 +137,12 @@ export function NeurologiaApp() {
         </aside>
 
         <div className="w-full lg:pl-80">
-          <main className="w-full px-4 lg:px-8 pt-12 pb-32 relative z-10 pointer-events-auto">
+          <main className="relative z-10 w-full px-4 pb-32 pt-6 lg:px-8 lg:pt-12 pointer-events-auto">
+            <NeuroMobileWizardNav
+              steps={NEURO_WIZARD_STEPS}
+              currentStep={currentStep}
+              onSelectStep={(step) => setCurrentStep(step)}
+            />
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentStep}

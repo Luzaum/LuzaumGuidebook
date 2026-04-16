@@ -1,8 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronDown, ChevronUp, CheckCircle2, Circle } from 'lucide-react'
 import { HelpButton } from '../help/HelpButton'
 import { useUiStore } from '../../stores/uiStore'
+import { cn } from '../../../../lib/utils'
+
+const NEURO_EXAM_SECTIONS = [
+  { id: 1 as const, short: 'Mentação', title: '1. Mentação e Comportamento' },
+  { id: 2 as const, short: 'Marcha', title: '2. Marcha e Postura' },
+  { id: 3 as const, short: 'Propriocep.', title: '3. Reações Posturais' },
+  { id: 4 as const, short: 'NC', title: '4. Nervos Cranianos' },
+  { id: 5 as const, short: 'Reflexos', title: '5. Reflexos Espinhais' },
+  { id: 6 as const, short: 'Dor', title: '6. Dor e Nocicepção' },
+]
 
 interface Step3Props {
   exam: Record<string, any>
@@ -188,6 +198,19 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
     }))
   }
 
+  const scrollToExamSection = useCallback((sectionId: number) => {
+    setOpenSections((prev) => ({
+      ...prev,
+      [sectionId]: true,
+    }))
+    window.requestAnimationFrame(() => {
+      document.getElementById(`neuro-exam-section-${sectionId}`)?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+    })
+  }, [])
+
   // Wrapper para manter compatibilidade com chamadas handleUpdateExam(key, value)
   const handleUpdateExam = (key: string, value: any) => {
     updateExam({
@@ -227,8 +250,36 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
         </p>
       </motion.div>
 
+      <nav
+        aria-label="Seções do exame neurológico"
+        className="lg:hidden sticky top-[7.25rem] z-20 -mx-4 mb-4 flex gap-1.5 overflow-x-auto overscroll-x-contain border-b border-border bg-background/95 px-3 py-2 backdrop-blur-sm [-webkit-overflow-scrolling:touch]"
+      >
+        {NEURO_EXAM_SECTIONS.map((s) => {
+          const active = openSections[s.id]
+          return (
+            <button
+              key={s.id}
+              type="button"
+              onClick={() => scrollToExamSection(s.id)}
+              title={s.title}
+              className={cn(
+                'shrink-0 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors',
+                active
+                  ? 'border-gold/60 bg-gold/15 text-foreground shadow-sm'
+                  : 'border-border bg-card/80 text-muted-foreground hover:border-gold/40 hover:text-foreground',
+              )}
+            >
+              {s.short}
+            </button>
+          )
+        })}
+      </nav>
+
       {/* SEÇÃO 1: MENTAÇÃO E COMPORTAMENTO */}
-      <div className="bg-card border border-border rounded-xl overflow-hidden shadow-lg">
+      <div
+        id="neuro-exam-section-1"
+        className="scroll-mt-[7.5rem] bg-card border border-border rounded-xl shadow-lg lg:scroll-mt-6 overflow-hidden"
+      >
         <SectionHeader
           title="1. Mentação e Comportamento"
           helpTopicId="s1-mentacao-comportamento-geral"
@@ -342,7 +393,10 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
       </div>
 
       {/* SEÇÃO 2: MARCHA E POSTURA */}
-      <div className="bg-card border border-border rounded-xl overflow-hidden shadow-lg">
+      <div
+        id="neuro-exam-section-2"
+        className="scroll-mt-[7.5rem] bg-card border border-border rounded-xl shadow-lg lg:scroll-mt-6 overflow-hidden"
+      >
         <SectionHeader
           title="2. Marcha e Postura"
           helpTopicId="s2-marcha-postura-geral"
@@ -497,7 +551,10 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
       </div>
 
       {/* SEÇÃO 3: REAÇÕES POSTURAIS */}
-      <div className="bg-card border border-border rounded-xl overflow-hidden shadow-lg">
+      <div
+        id="neuro-exam-section-3"
+        className="scroll-mt-[7.5rem] bg-card border border-border rounded-xl shadow-lg lg:scroll-mt-6 overflow-hidden"
+      >
         <SectionHeader
           title="3. Reações Posturais (Propriocepção)"
           helpTopicId="s3-propriocepcao-geral"
@@ -628,7 +685,10 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
       </div>
 
       {/* SEÇÃO 4: NERVOS CRANIANOS */}
-      <div className="bg-card border border-border rounded-xl overflow-hidden shadow-lg">
+      <div
+        id="neuro-exam-section-4"
+        className="scroll-mt-[7.5rem] bg-card border border-border rounded-xl shadow-lg lg:scroll-mt-6 overflow-hidden"
+      >
         <SectionHeader
           title="4. Nervos Cranianos"
           helpTopicId="s4-nervos-cranianos-geral"
@@ -850,7 +910,10 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
       </div>
 
       {/* SEÇÃO 5: REFLEXOS ESPINHAIS */}
-      <div className="bg-card border border-border rounded-xl overflow-hidden shadow-lg">
+      <div
+        id="neuro-exam-section-5"
+        className="scroll-mt-[7.5rem] bg-card border border-border rounded-xl shadow-lg lg:scroll-mt-6 overflow-hidden"
+      >
         <SectionHeader
           title="5. Reflexos Espinhais"
           helpTopicId="s5-reflexos-geral"
@@ -1060,7 +1123,10 @@ export function Step3NeuroExam({ exam, updateExam }: Step3Props) {
       </div>
 
       {/* SEÇÃO 6: DOR E NOCICEPÇÃO */}
-      <div className="bg-card border border-border rounded-xl overflow-hidden shadow-lg">
+      <div
+        id="neuro-exam-section-6"
+        className="scroll-mt-[7.5rem] bg-card border border-border rounded-xl shadow-lg lg:scroll-mt-6 overflow-hidden"
+      >
         <SectionHeader
           title="6. Dor e Nocicepção"
           helpTopicId="s6-dor-nocicepcao-geral"
