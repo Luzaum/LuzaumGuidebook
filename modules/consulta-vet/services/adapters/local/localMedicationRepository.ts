@@ -1,17 +1,26 @@
 import { MedicationRecord } from '../../../types/medication';
 import { MedicationUpsertInput } from '../../../types/editorial';
 import { MedicationRepository } from '../../repositories/medication.repository';
-import { medicationsSeed } from '../../../data/seed/medications.seed';
-import { filterPublicMedications } from '../../../constants/publicCatalog';
+import { PUBLIC_CATALOG_MEDICATION_CARD_STUBS } from '../../../data/publicCatalogCardStubs';
+import { loadMedicationsEditorialSeed } from '../../../data/seed/editorialSeedLazy';
+import { filterPublicMedications, isPublicMedicationSlug } from '../../../constants/publicCatalog';
 
 export class LocalMedicationRepository implements MedicationRepository {
   async list(options?: { includeDrafts?: boolean }): Promise<MedicationRecord[]> {
-    return filterPublicMedications(medicationsSeed, Boolean(options?.includeDrafts));
+    if (!options?.includeDrafts) {
+      return [...PUBLIC_CATALOG_MEDICATION_CARD_STUBS];
+    }
+    const medicationsSeed = await loadMedicationsEditorialSeed();
+    return [...medicationsSeed];
   }
 
   async getBySlug(slug: string, options?: { includeDrafts?: boolean }): Promise<MedicationRecord | null> {
-    const items = await this.list(options);
-    return items.find((m) => m.slug === slug) || null;
+    const medicationsSeed = await loadMedicationsEditorialSeed();
+    if (!options?.includeDrafts) {
+      if (!isPublicMedicationSlug(slug)) return null;
+      return filterPublicMedications(medicationsSeed, false).find((m) => m.slug === slug) || null;
+    }
+    return medicationsSeed.find((m) => m.slug === slug) || null;
   }
 
   async search(query: string): Promise<MedicationRecord[]> {

@@ -1,4 +1,5 @@
 import type { AntibioticIndication, RecommendationResult } from '../model/types'
+import type { ClassStyle } from '../types'
 import { ANTIBIOTIC_MOLECULES } from '../data-v2/molecules'
 import { getSyndromeInstitutionalMapping } from '../data-v2/institutionalMappings'
 import { getSourceEntry } from '../data-v2/references'
@@ -8,6 +9,7 @@ import { InstitutionalProvenanceStrip } from './InstitutionalProvenanceStrip'
 import { InlineRichText } from './RichTextViewer'
 import { InstitutionalConcordanceChip } from './InstitutionalConcordanceChip'
 import { TherapeuticInstitutionalAuditNote } from './TherapeuticInstitutionalAuditNote'
+import { getClassStyleForMoleculeClassId } from '../utils/moleculeClassVisual'
 
 const INDICATION_EXPLAIN: Record<AntibioticIndication, { title: string; detail: string }> = {
   yes_empiric: {
@@ -38,6 +40,15 @@ interface SyndromeV2PanelProps {
   onOpenAntibioticInCatalog?: (legacySearchSeed: string) => void
 }
 
+/** Cor do cartão de regime: mesma lógica visual do guia de antimicrobianos (`CLASS_STYLE`), pela 1.ª molécula do esquema. */
+function regimenClassStyle(moleculeIds: string[]): ClassStyle | null {
+  const first = moleculeIds[0]
+  if (!first) return null
+  const mol = ANTIBIOTIC_MOLECULES[first]
+  if (!mol?.classId) return null
+  return getClassStyleForMoleculeClassId(mol.classId)
+}
+
 function MoleculeLinksRow({
   moleculeIds,
   onOpenInCatalog,
@@ -51,16 +62,29 @@ function MoleculeLinksRow({
       <span className="text-xs font-medium" style={{ color: 'hsl(var(--muted-foreground))' }}>
         Antimicrobianos (catálogo legado):
       </span>
-      <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1">
+      <div className="mt-1 flex flex-wrap gap-2">
         {moleculeIds.map((mid) => {
           const mol = ANTIBIOTIC_MOLECULES[mid]
           const label = mol?.displayName ?? mid
+          const st = mol?.classId ? getClassStyleForMoleculeClassId(mol.classId) : null
           return (
             <button
               key={mid}
               type="button"
-              className="cursor-pointer text-xs font-medium underline-offset-2 hover:underline"
-              style={{ color: 'hsl(var(--primary))' }}
+              className="cursor-pointer rounded-lg border px-2 py-1 text-xs font-semibold underline-offset-2 hover:underline"
+              style={
+                st
+                  ? {
+                      color: 'hsl(var(--foreground))',
+                      background: st.bg,
+                      borderColor: st.border,
+                    }
+                  : {
+                      color: 'hsl(var(--primary))',
+                      borderColor: 'hsl(var(--border))',
+                      background: 'hsl(var(--card))',
+                    }
+              }
               onClick={() => onOpenInCatalog(label)}
             >
               {label}
@@ -160,13 +184,26 @@ export function SyndromeV2Panel({ result, onOpenAntibioticInCatalog }: SyndromeV
         <div className="mt-2 space-y-3">
           {result.firstLine.map((r) => {
             const regAudit = getRegimenTherapeuticAuditInSyndrome(result.syndromeId, r.regimenId)
+            const cls = regimenClassStyle(r.regimen.moleculeIds)
             return (
               <div
                 key={r.regimenId}
                 className="abv-panel p-3"
-                style={{
-                  background: 'color-mix(in srgb, hsl(var(--primary)) 10%, hsl(var(--card)))',
-                }}
+                style={
+                  cls
+                    ? {
+                        background: cls.bg,
+                        borderColor: cls.border,
+                        borderWidth: 1,
+                        borderStyle: 'solid',
+                      }
+                    : {
+                        background: 'color-mix(in srgb, hsl(var(--muted)) 14%, hsl(var(--card)))',
+                        borderColor: 'hsl(var(--border))',
+                        borderWidth: 1,
+                        borderStyle: 'solid',
+                      }
+                }
               >
                 <div className="font-medium">{r.regimen.label}</div>
                 {r.modifiersApplied.length > 0 && (
@@ -199,8 +236,22 @@ export function SyndromeV2Panel({ result, onOpenAntibioticInCatalog }: SyndromeV
           <ul className="mt-2 space-y-2">
             {result.alternatives.map((r) => {
               const altAudit = getRegimenTherapeuticAuditInSyndrome(result.syndromeId, r.regimenId)
+              const cls = regimenClassStyle(r.regimen.moleculeIds)
               return (
-                <li key={r.regimenId} className="abv-panel p-2 text-sm">
+                <li
+                  key={r.regimenId}
+                  className="abv-panel p-2 text-sm"
+                  style={
+                    cls
+                      ? {
+                          background: cls.bg,
+                          borderColor: cls.border,
+                          borderWidth: 1,
+                          borderStyle: 'solid',
+                        }
+                      : undefined
+                  }
+                >
                   <span className="font-medium">{r.regimen.label}</span>
                   {r.modifiersApplied.length > 0 && (
                     <span className="ml-2 text-xs" style={{ color: 'var(--chart-5)' }}>
@@ -226,11 +277,23 @@ export function SyndromeV2Panel({ result, onOpenAntibioticInCatalog }: SyndromeV
             Evitar / cautela estrutural
           </h3>
           <ul className="mt-2 space-y-1">
-            {result.avoid.map((a, i) => (
-              <li key={i} className="text-sm">
-                {a.molecule?.displayName ?? a.moleculeId}: <InlineRichText text={a.reason} />
-              </li>
-            ))}
+            {result.avoid.map((a, i) => {
+              const mol = a.molecule ?? (a.moleculeId ? ANTIBIOTIC_MOLECULES[a.moleculeId] : undefined)
+              const cls = mol?.classId ? getClassStyleForMoleculeClassId(mol.classId) : null
+              return (
+                <li
+                  key={i}
+                  className="rounded-[var(--radius)] border px-2 py-1.5 text-sm"
+                  style={
+                    cls
+                      ? { background: cls.bg, borderColor: cls.border }
+                      : { borderColor: 'hsl(var(--border))', background: 'hsl(var(--card))' }
+                  }
+                >
+                  {a.molecule?.displayName ?? a.moleculeId}: <InlineRichText text={a.reason} />
+                </li>
+              )
+            })}
           </ul>
         </section>
       )}

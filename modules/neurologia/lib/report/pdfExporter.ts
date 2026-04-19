@@ -1,51 +1,7 @@
 import jsPDF from 'jspdf'
 import type { CaseReport } from '../../types/analysis'
 import { parseAiClinicalReport } from './aiClinicalReportParser'
-
-const CHIEF_COMPLAINT_LABELS: Record<string, string> = {
-  ConvulsaoFocal: 'Convulsão focal',
-  ConvulsaoGeneralizada: 'Convulsão generalizada',
-  ClusterConvulsoes: 'Cluster de convulsões',
-  Sincope: 'Síncope / colapso',
-  AlteracaoConsciencia: 'Alteração do nível de consciência',
-  Comportamento: 'Alteração comportamental',
-  AndarCirculos: 'Andar em círculos / head pressing',
-  Cegueira: 'Cegueira aguda',
-  Anisocoria: 'Anisocoria / alteração pupilar',
-  HeadTilt: 'Head tilt',
-  Vertigem: 'Vertigem / vômito vestibular',
-  Nistagmo: 'Nistagmo',
-  Ataxia: 'Ataxia / descoordenação',
-  Paresia: 'Paresia / paralisia',
-  Tetraparesia: 'Tetraparesia',
-  Paraparesia: 'Paraparesia',
-  Hipermetria: 'Hipermetria / tremor de intenção',
-  DorCervical: 'Dor espinhal cervical',
-  DorToracolombar: 'Dor espinhal toracolombar',
-  DorLombossacra: 'Dor espinhal lombossacra',
-  DisfuncaoFacial: 'Disfunção de nervo facial',
-  Disfagia: 'Disfagia / regurgitação',
-  Disfonia: 'Disfonia / alteração de voz',
-  DisfuncaoUrinaria: 'Disfunção urinária / fecal',
-  IncontinenciaUrinaria: 'Incontinência urinária',
-  RetencaoUrinaria: 'Retenção urinária',
-  Tremores: 'Tremores / mioclonias',
-  FraquezaFlacida: 'Fraqueza flácida / intolerância ao exercício',
-  Colapso: 'Colapso recorrente',
-  Outros: 'Outros sinais',
-}
-
-const RED_FLAG_LABELS: Record<string, string> = {
-  coma_estupor: 'Coma / estupor',
-  status_epilepticus: 'Status epilepticus / cluster grave',
-  severe_progression_24h: 'Piora neurológica rápida (<24h)',
-  acute_nonambulatory: 'Não ambulatório agudo',
-  respiratory_compromise: 'Sinais respiratórios / aspiração',
-  deep_pain_loss: 'Dor profunda ausente',
-  severe_cervical_pain: 'Cervicalgia intensa',
-  anisocoria_acute: 'Anisocoria aguda',
-  dysphagia_aspiration_risk: 'Disfagia com risco de aspiração',
-}
+import { CHIEF_COMPLAINT_LABELS, RED_FLAG_LABELS } from '../../data/complaintDictionaries'
 
 const EXAM_FIELD_LABELS: Record<string, string> = {
   mentation: 'Mentação',
@@ -250,10 +206,14 @@ function buildSignsSection(caseState: any): string[] {
     subagudo: 'Subagudo',
     cronico: 'Crônico',
     episodico: 'Episódico',
+    insidioso: 'Insidioso',
+    oscilante: 'Oscilante',
+    recorrente: 'Recorrente',
   }
   const evolutionMap: Record<string, string> = {
     melhorando: 'Melhorando',
-    estatico: 'Estático',
+    melhora_parcial: 'Melhora parcial',
+    estático: 'Estático',
     flutuante: 'Flutuante',
     progressivo: 'Progressivo',
   }
@@ -274,6 +234,9 @@ function buildSignsSection(caseState: any): string[] {
     complaint.ectoparasiticideExposure ? 'Exposição a ectoparasiticidas' : null,
     complaint.systemicDisease ? 'Doença sistêmica recente' : null,
     complaint.recentSurgeryAnesthesia ? 'Cirurgia / anestesia recente' : null,
+    complaint.vaccinationOrTravel ? 'Vacinação / viagem / endêmico' : null,
+    complaint.videoOfEpisode ? 'Vídeo do episódio' : null,
+    complaint.respiratoryGiSigns ? 'Sinais respiratórios ou GI' : null,
   ].filter(Boolean)
 
   return [

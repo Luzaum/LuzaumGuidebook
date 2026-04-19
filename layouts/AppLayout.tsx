@@ -17,13 +17,13 @@ export function AppLayout() {
 
   const isActive = (route: string) => location.pathname === route
   const isImmersiveModuleRoute =
-    location.pathname.startsWith('/peconhentos') ||
     location.pathname.startsWith('/receituario-vet') ||
     location.pathname.startsWith('/dados-veterinarios')
   const isFullBleedRoute =
     isActive('/') ||
     isActive('/hub') ||
     isImmersiveModuleRoute ||
+    location.pathname.startsWith('/peconhentos') ||
     location.pathname.startsWith('/fluidoterapia') ||
     location.pathname.startsWith('/antibioticoterapia') ||
     location.pathname.startsWith('/hemogasovet') ||
@@ -39,7 +39,7 @@ export function AppLayout() {
 
   if (isImmersiveModuleRoute) {
     return (
-      <div className="min-h-dvh w-full bg-background">
+      <div className="h-dvh min-h-0 w-full overflow-hidden bg-background">
         <Outlet />
       </div>
     )

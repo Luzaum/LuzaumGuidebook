@@ -135,7 +135,7 @@ interface DrLuzaumHistoryPageProps {
 
 export const DrLuzaumHistoryPage: React.FC<DrLuzaumHistoryPageProps> = ({ onBack, onNewTriage, onViewReport }) => {
     return (
-        <div className="bg-[#f6f5f8] dark:bg-[#161022] text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-display selection:bg-[#6a25f4] selection:text-white">
+        <div className="flex min-h-0 w-full flex-col rounded-2xl border border-border bg-[#f6f5f8] font-display text-slate-900 selection:bg-[#6a25f4] selection:text-white dark:bg-[#161022] dark:text-slate-100">
             {/* Header */}
             <header className="sticky top-0 z-50 px-6 py-4 border-b border-white/10" style={{ background: 'rgba(30, 27, 46, 0.6)', backdropFilter: 'blur(12px)' }}>
                 <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -166,7 +166,10 @@ export const DrLuzaumHistoryPage: React.FC<DrLuzaumHistoryPageProps> = ({ onBack
                 </div>
             </header>
 
-            <main className="flex-grow p-6 lg:p-8 max-w-7xl mx-auto w-full flex flex-col gap-6">
+            <main className="mx-auto flex w-full max-w-7xl flex-grow flex-col gap-6 p-6 lg:p-8">
+                <p className="rounded-xl border border-amber-500/25 bg-amber-500/10 px-4 py-3 text-sm text-amber-950 dark:border-amber-400/30 dark:bg-amber-500/10 dark:text-amber-50">
+                    <strong className="font-semibold">Nota:</strong> a lista abaixo é <strong>demonstrativa</strong> (dados de exemplo). O histórico persistente ligado à sua conta será disponibilizado numa versão futura do módulo.
+                </p>
 
                 {/* Automatic Cleaning Policy Card */}
                 <div className="rounded-xl p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 relative overflow-hidden group"

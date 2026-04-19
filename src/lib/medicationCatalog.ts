@@ -345,9 +345,22 @@ export function mergeCatalogSearchResults<T extends MergeableCatalogSearchEntry>
     if (!key || seen.has(key)) continue
     seen.add(key)
     deduped.push(entry)
-    if (deduped.length >= limit) break
   }
-  return deduped
+
+  // Ordenação única: nome (pt), depois prioridade a quem tem dose no catálogo, depois id.
+  // Antes: o limite era aplicado durante o loop com [clínica…][global…], o que escondia
+  // o catálogo global inteiro quando a clínica tinha mais itens que o limite.
+  deduped.sort((a, b) => {
+    const na = String(a.name || '').localeCompare(String(b.name || ''), 'pt', { sensitivity: 'base' })
+    if (na !== 0) return na
+    const ac = (a.recommended_dose_count ?? 0) > 0 ? 1 : 0
+    const bc = (b.recommended_dose_count ?? 0) > 0 ? 1 : 0
+    if (bc !== ac) return bc - ac
+    return String(a.id).localeCompare(String(b.id))
+  })
+
+  if (!Number.isFinite(limit) || limit <= 0) return deduped
+  return deduped.slice(0, limit)
 }
 
 /** Agrupa nomes iguais (trim + lower) entre linhas da clínica na busca. */

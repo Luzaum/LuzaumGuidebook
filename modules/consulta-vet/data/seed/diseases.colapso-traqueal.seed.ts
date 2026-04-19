@@ -22,7 +22,7 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
     'Hidrocodona',
   ],
   quickSummary:
-    'Doença crônica degenerativa das vias aéreas (condromalácia dos anéis traqueais, membrana dorsal redundante), frequentemente com broncomalácia associada. Clássica em raças pequenas: tosse seca em “grasnado de ganso”, piora com excitação, calor, umidade e tração cervical. Radiografia subestima gravidade dinâmica; fluoroscopia documenta colapso em movimento; traqueoscopia/broncoscopia é padrão ouro para graduar. Tratamento multimodal (peso, peitoral, controle da tosse, corticoide curto ou inalado, broncodilatadores quando há componente brônquico); anéis extraluminais ou stent em falha clínica selecionada — stent com taxa relevante de complicações.',
+    'O colapso traqueal e a traqueobroncomalácia (TBM) são manifestações de perda de rigidez da parede traqueobrônquica: anéis cartilaginosos em C amolecidos e membrana dorsal redundante passam a invaginar com as variações de pressão transpulmonar — na inspiração predomina colapso cervical (pressão intratraqueal mais negativa que pleural), na expiração e na tosse predomina colapso intratorácico e brônquico (pressão pleural positiva). O resultado clínico é tosse seca em “honking”, piora com excitação, calor, umidade e tração de coleira, às vezes síncope por reflexo vagal ou hipóxia. Toy breeds e miniaturas são o epicentro epidemiológico; obesidade e comorbidades respiratórias (bronquite, BOAS, cardiomegalia comprimindo brônquio esquerdo) são agravantes massivos. A radiografia é triagem estática que frequentemente subestima o grau funcional; a fluoroscopia mostra o comportamento dinâmico; a broncoscopia gradua severidade (escalas ACVS) e permite BAL quando seguro. O manejo conservador (perda de peso, peitoral, antitussígenos, corticoide curto sistêmico ou inalado) deve esgotar-se antes de stent ou anéis — intervenções têm complicações frequentes (tosse pós-stent, granuloma, infecção, fratura de stent em proporções alarmantes nas revisões sistemáticas recentes).',
   quickDecisionStrip: [
     'Pequeno porte + tosse “honking” + piora com excitação/coleira: pense colapso traqueal.',
     'Cervical costuma piorar na inspiração; intratorácico/brônquico na expiração e na tosse.',
@@ -32,8 +32,8 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
   ],
   quickSummaryRich: {
     lead:
-      'A traqueia é sustentada por anéis em C e membrana dorsal. Perda de rigidez cartilagiosa + membrana dorsal frouxa → estreitamento dinâmico do lúmen. A pressão intrapleural negativa na inspiração favorece colapso cervical; a expiração/tosse positiva favorece colapso intratorácico e bronquial. Muitos casos são na verdade traqueobroncomalácia primária (predisposto) ou secundária a inflamação crônica, obesidade ou comorbidades de vias aéreas superiores.',
-    leadHighlights: ['honking', 'fluoroscopia', 'broncoscopia', 'traqueobroncomalácia'],
+      'TBM é física aplicada à medicina: o mesmo animal pode ter componente cervical inspiratório e intratorácico expiratório — o ruído muda de tom conforme a fase respiratória. Por isso “RX normal” não tranquiliza se a história é clássica; e stent traqueal não “cura” broncomalácia distal dominante. O núcleo do manejo longo prazo é quebrar o ciclo tosse–inflamação–colapso e retirar cargas mecânicas (peso, coleira, irritantes).',
+    leadHighlights: ['honking', 'inspiração', 'expiração', 'stent', 'peso'],
     pillars: [
       {
         title: 'Dinâmica',
@@ -57,19 +57,61 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
     diagnosticFlow: {
       title: 'Diagnóstico (ordem prática)',
       steps: [
-        { label: 'História + exame', detail: 'Honking, gatilhos, palpação traqueal sensível.' },
-        { label: 'Banco mínimo', detail: 'Bioquímica (hepático comum); preparar terapia futura.' },
-        { label: 'RX + fluoroscopia', detail: 'RX triagem; fluoroscopia para dinâmica.' },
-        { label: 'Endoscopia', detail: 'Graduação, BAL/cultura quando seguro anestésico.' },
+        {
+          label: '1. História e prova traqueal',
+          detail:
+            'Toy com tosse seca episódica, pior com coleira e excitação; palpação traqueal sensível induz paroxismo — útil, não patognomônico.',
+        },
+        {
+          label: '2. Banco mínimo e cardiologia',
+          detail:
+            'Bioquímica para suporte medicamentoso; ausculta cardíaca — DMVD com AE grande pode comprimir brônquio esquerdo e somar ruído expiratório.',
+        },
+        {
+          label: '3. Radiografia',
+          detail:
+            'VHS, padrão bronquial, aspiração; inspiração para cervical, expiração para intratorácico — lembre que exame estático subestima doença dinâmica.',
+        },
+        {
+          label: '4. Fluoroscopia',
+          detail:
+            'Documenta colapso durante respiração natural e tosse induzida; comparar com RX quando há discrepância clínico-radiológica.',
+        },
+        {
+          label: '5. Broncoscopia',
+          detail:
+            'Padrão ouro para grau ACVS e decisão de stent; planejar anestesia com equipe experiente em vias aéreas dinâmicas.',
+        },
       ],
     },
     treatmentFlow: {
       title: 'Tratamento (prioridades)',
       steps: [
-        { label: 'Conservador', detail: 'Peso, ambiente, peitoral, comorbidades.' },
-        { label: 'Antitussígenos', detail: 'Eixo principal quando a tosse domina.' },
-        { label: 'Anti-inflamatório', detail: 'Curso curto sistêmico ou inalado de manutenção.' },
-        { label: 'Intervenção', detail: 'Anéis cervicais / stent intratorácico conforme local e grau.' },
+        {
+          label: 'Camada 1 — Ambiente e mecânica',
+          detail:
+            'Perda de peso agressiva se BCS elevado; peitoral; evitar calor úmido e fumaça; tratar rinite/bronquite concomitante.',
+        },
+        {
+          label: 'Camada 2 — Antitussígenos',
+          detail:
+            'Hidrocodona ou butorfanol conforme protocolo; objetivo é reduzir trauma mucoso, não sedar excessivamente.',
+        },
+        {
+          label: 'Camada 3 — Anti-inflamatório',
+          detail:
+            'Corticoide sistêmico curto para crise; considerar budesonida inalado para manutenção com menos efeito sistêmico.',
+        },
+        {
+          label: 'Camada 4 — Broncodilatadores',
+          detail:
+            'Reservados a componente broncoespástico/bronquite; uso rotineiro no colapso “puro” é menos fundamentado.',
+        },
+        {
+          label: 'Camada 5 — Cirurgia',
+          detail:
+            'Anéis extraluminais para segmento cervical; stent intratorácico após falha médica documentada — consentimento informado sobre tosse e complicações tardias.',
+        },
       ],
     },
   },
@@ -100,7 +142,8 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
       'Crises podem cursar com hipoxemia, cianose, síncope (reflexo vagal ou obstrução) e, em doença respiratória crônica associada, hipertensão pulmonar descrita na literatura especializada.',
   },
   pathophysiology:
-    'O trauma repetido da membrana dorsal na mucosa gera edema e secreção; obstrução dinâmica piora esforço respiratório. Associação com broncomalácia reduz previsibilidade se apenas a traqueia for tratada (ex.: expectativa irreal com stent quando o gargalo é distal).',
+    'O trauma repetido da membrana dorsal na mucosa gera edema e secreção; obstrução dinâmica piora o esforço respiratório. A associação com broncomalácia reduz a previsibilidade se apenas a traqueia for tratada (por exemplo expectativa irreal com stent quando o gargalo é distal).\n\n' +
+    'Dica de estudo: para a prova, memorize inspiração → colapso cervical; expiração/tosse → colapso intratorácico/brônquico — isso orienta RX e fluoroscopia.',
   clinicalSignsPathophysiology: [
     {
       system: 'respiratory',
@@ -174,6 +217,19 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
       'Bronquite crônica e broncomalácia isolada; paralisia/colapso laríngeo, palato alongado, BOAS, colapso nasofaríngeo; compressão de brônquio principal esquerdo por aumento de AE (DMVD); corpo estranho, neoplasia, estenose; parenquimatoso, pneumonia, edema.',
   },
   treatment: {
+    ordemDePrioridade: [
+      '1) Estabilizar crises com oxigênio, sedação leve e antitussígeno — minimizar estresse físico e térmico.',
+      '2) Perda de peso e troca coleira → peitoral: medidas com maior relação custo/benefício na literatura recente.',
+      '3) Antitussígenos adequados como eixo crônico; corticoide curto para exacerbações ou inalado para manutenção.',
+      '4) Broncoscopia/fluoroscopia para decidir grau real antes de prometer stent ao tutor.',
+      '5) Encaminhar cirurgia de anéis ou stent apenas após falha documentada do máximo médico e consentimento sobre complicações.',
+    ],
+    monitoramento: [
+      'Frequência respiratória em repouso e padrão de esforço abdominal a cada revisão.',
+      'Peso corporal e BCS — objetivo numérico quando possível.',
+      'Episódios de síncope ou cianose: despertar investigação de grau piorado ou comorbidade cardíaca.',
+      'Pós-stent: tosse, febre, padrão torácico novo (complicações infecciosas ou granulomatosas).',
+    ],
     tcPrincipioConservador:
       'Manejo médico deve ser tentado na maioria, exceto obstrução iminente à vida. Literatura de emergência cita controle clínico prolongado em grande proporção de cães; estudo retrospectivo 2024 com melhora após peso + ambiente + farmacoterapia na grande maioria.',
     tcMedidasNaoFarmacologicas: [
@@ -204,7 +260,7 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
     tcAntibioticos:
       'Não rotina. Usar com citologia/cultura compatíveis ou pneumonia. Doxiciclina empírica citada em texto respiratório para trial quando não se pode amostrar (efeito anti-inflamatório leve + Mycoplasma).',
     tcCriseAguda:
-      'Oxigénio, mínimo estresse, sedação/antitussígenos, anti-inflamatório; excluir edema/pneumonia. Traqueostomia raramente resolve colapso difuso extenso.',
+      'Oxigênio, mínimo estresse, sedação/antitussígenos, anti-inflamatório; excluir edema/pneumonia. Traqueostomia raramente resolve colapso difuso extenso.',
     tcAnéisExtraluminais:
       'Indicação clássica para colapso cervical/inlet; risco de lesão do nervo laríngeo recorrente (paralisia laríngea iatrogênica possível).',
     tcStentIntraluminal:

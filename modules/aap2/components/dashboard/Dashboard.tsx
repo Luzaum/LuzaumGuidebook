@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zap, BrainCircuit, Stethoscope, BookOpen, BriefcaseMedical, ArrowRight } from 'lucide-react';
+import { Zap, BrainCircuit, Stethoscope, BookOpen, BriefcaseMedical, ArrowRight, Eye, ExternalLink } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import type { AnimalCategoryId, AppPage } from '../../types';
 import './dashboard.css';
@@ -22,14 +22,14 @@ const IDENTIFICATION_CARDS: Array<{
         subtitle: 'Bothrops, Crotalus, Micrurus, Lachesis',
         bg: '/images/aap2/home-jararaca.jpg',
         categoryId: 'cobras',
-        desc: 'Identifique jararacas, cascaveis, corais e surucucus por características visuais e sintomas.',
+        desc: 'Identifique jararacas, cascavéis, corais e surucucus por características visuais e sintomas.',
     },
     {
-        label: 'Escorpioes',
-        subtitle: 'Tityus serrulatus (Amarelo), Tityus bahiensis',
+        label: 'Escorpiões',
+        subtitle: 'Tityus serrulatus (amarelo), Tityus bahiensis',
         bg: '/images/aap2/home-escorpiao-amarelo.jpg',
         categoryId: 'escorpioes',
-        desc: 'Escorpiao amarelo e o mais perigoso. Identifique pelo serrilhado na cauda e coloracao.',
+        desc: 'O escorpião-amarelo é o mais perigoso no Brasil. Identifique pelo serrilhado na cauda e coloração.',
     },
     {
         label: 'Aranhas',
@@ -43,14 +43,14 @@ const IDENTIFICATION_CARDS: Array<{
         subtitle: 'Rhinella (Sapo-cururu), Phyllomedusa',
         bg: '/images/aap2/home-sapo-cururu.jpg',
         categoryId: 'sapos',
-        desc: 'Intoxicação por bufotoxinas. Contato com mucosas ou ingestao acidental por caes.',
+        desc: 'Intoxicação por bufotoxinas. Contato com mucosas ou ingestão acidental por cães.',
     },
     {
         label: 'Outros & Invertebrados',
         subtitle: 'Lagartas (Lonomia), Caramujos, Abelhas',
         bg: '/images/aap2/home-snail.jpg',
         categoryId: 'outros',
-        desc: 'Acidentes com animais peconhentos atipicos e invertebrados terrestres.',
+        desc: 'Acidentes com animais peçonhentos atípicos e invertebrados terrestres.',
     },
 ];
 
@@ -74,11 +74,11 @@ const actionCards: Array<{
     linkText: string;
 }> = [
     {
-        id: 'histórico',
-        title: 'Dr. Luzaum AI',
-        description: 'Triagem inteligente: informe sinais e receba análise e protocolo.',
+        id: 'nova_consulta',
+        title: 'Dr. Luzaum — Nova triagem',
+        description: 'Fluxo guiado: dados do paciente, sinais e relatório de apoio à decisão.',
         icon: BrainCircuit,
-        badge: 'NOVO',
+        badge: 'IA',
         theme: {
             text: 'text-[#7e40e7]',
             textDark: 'text-[#a78bfa]',
@@ -113,8 +113,8 @@ const actionCards: Array<{
     },
     {
         id: 'enciclopedia',
-        title: 'Enciclopedia',
-        description: 'Categorias, fichas completas e protocolos em cards.',
+        title: 'Enciclopédia',
+        description: 'Categorias, fichas completas e referências cruzadas.',
         icon: BookOpen,
         badge: null,
         theme: {
@@ -153,18 +153,32 @@ const actionCards: Array<{
 
 export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenEncyclopedia, isDarkMode }) => {
     return (
-        <div className="w-full h-full">
+        <div className="w-full">
+            <div
+                role="note"
+                className="mb-8 rounded-2xl border border-primary/20 bg-primary/5 px-4 py-3 text-sm leading-relaxed text-foreground md:px-5"
+            >
+                <strong className="text-primary">Como usar:</strong> escolha uma categoria abaixo para abrir a enciclopédia filtrada, ou use as ações rápidas para triagem, protocolos e Dr. Luzaum. O módulo é educativo e não substitui o protocolo da sua instituição.
+            </div>
             <section className="mb-10">
-                <h3 className={`text-lg font-bold mb-5 flex items-center gap-2 ${isDarkMode ? 'text-white' : 'text-slate-800'}`}>
-                    <span className="material-symbols-outlined text-[#7e40e7]">visibility</span>
-                    Guia de Identificação Rapida
+                <h3 className={`mb-5 flex items-center gap-2 text-lg font-bold ${isDarkMode ? 'text-white' : 'text-slate-800'}`}>
+                    <Eye className="h-5 w-5 shrink-0 text-aap-primary" aria-hidden />
+                    Guia de identificação rápida
                 </h3>
-                <div className="species-card-container flex gap-4 h-[450px] w-full">
+                <div className="species-card-container flex h-auto max-h-[min(70vh,520px)] w-full flex-col gap-4 overflow-x-auto pb-2 md:h-[450px] md:max-h-none md:flex-row md:overflow-visible md:pb-0">
                     {IDENTIFICATION_CARDS.map((card) => (
                         <div
                             key={card.label}
-                            className="species-card rounded-2xl group/link relative flex cursor-pointer"
+                            role="button"
+                            tabIndex={0}
+                            className="species-card group/link relative flex min-h-[280px] w-full min-w-[min(100%,280px)] shrink-0 cursor-pointer snap-center rounded-2xl md:min-h-0 md:min-w-0 md:flex-1"
                             onClick={() => onOpenEncyclopedia({ categoryId: card.categoryId })}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    onOpenEncyclopedia({ categoryId: card.categoryId });
+                                }
+                            }}
                         >
                             <div
                                 className="image-bg absolute inset-0 bg-cover bg-center transition-transform duration-700"
@@ -180,8 +194,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenEncyclop
                                     <p className="text-xs leading-relaxed mb-4 text-slate-200 line-clamp-3">
                                         {card.desc}
                                     </p>
-                                    <span className="inline-flex items-center gap-2 text-xs font-bold bg-white/20 hover:bg-white/30 transition px-3 py-1.5 rounded-lg backdrop-blur-sm">
-                                        Ver na Enciclopedia <span className="material-symbols-outlined text-xs">open_in_new</span>
+                                    <span className="inline-flex items-center gap-2 rounded-lg bg-white/20 px-3 py-1.5 text-xs font-bold backdrop-blur-sm transition hover:bg-white/30">
+                                        Ver na enciclopédia <ExternalLink className="h-3.5 w-3.5" aria-hidden />
                                     </span>
                                 </div>
                             </div>
@@ -196,7 +210,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenEncyclop
                         <Zap size={20} strokeWidth={2.5} />
                     </div>
                     <h3 className={`text-xl font-bold tracking-tight ${isDarkMode ? 'text-white' : 'text-slate-800'}`}>
-                        Ações Rapidas
+                        Ações rápidas
                     </h3>
                 </div>
 

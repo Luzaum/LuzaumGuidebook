@@ -1,4 +1,4 @@
-import { Suspense, lazy, useCallback, useEffect, useState } from 'react'
+import { Suspense, lazy, useCallback, useEffect, useRef, useState } from 'react'
 import { AbvSidebar } from './components/layout/AbvSidebar'
 import { AbvMobileDrawer, AbvMobileTopBar } from './components/layout/AbvMobileNav'
 import {
@@ -12,6 +12,54 @@ import {
   Disease,
 } from './types'
 import { safeList } from './utils/dataUtils'
+import {
+  clearAllAbvSessionStorage,
+  loadAbvAppPersist,
+  saveAbvAppPersist,
+  type AbvAppPersistV1,
+} from './utils/abvSessionPersistence'
+
+const VALID_ABV_TABS: AbvTab[] = [
+  'home',
+  'syndrome',
+  'diseases',
+  'antibiotics',
+  'pathogens',
+  'perioperative',
+  'patient-context',
+  'references',
+]
+
+const LIFE_KEYS: LifeStageKey[] = ['filhote', 'adulto', 'gestante', 'lactante', 'idoso']
+
+function readInitialAbvShell(): Omit<AbvAppPersistV1, 'v' | 'chosenDiseaseName'> & { chosenDiseaseName: string | null } {
+  const p = loadAbvAppPersist()
+  const activeTab =
+    p.activeTab && VALID_ABV_TABS.includes(p.activeTab) ? p.activeTab : 'home'
+  const step = typeof p.step === 'number' ? Math.min(4, Math.max(1, Math.round(p.step))) : 1
+  const species = p.species === 'Cão' || p.species === 'Gato' ? p.species : null
+  const life = p.life && LIFE_KEYS.includes(p.life) ? p.life : null
+  const co: ComorbidityState = {
+    renal: !!p.co?.renal,
+    hepatic: !!p.co?.hepatic,
+    septic: !!p.co?.septic,
+    cardiac: !!p.co?.cardiac,
+    neurological: !!p.co?.neurological,
+  }
+  return {
+    activeTab,
+    step,
+    species,
+    life,
+    co,
+    chosenDiseaseName: typeof p.chosenDiseaseName === 'string' ? p.chosenDiseaseName : null,
+    focusDrug: typeof p.focusDrug === 'string' ? p.focusDrug : null,
+    sourcePage: p.sourcePage && VALID_ABV_TABS.includes(p.sourcePage) ? p.sourcePage : null,
+    institutionalFocus: p.institutionalFocus ?? null,
+  }
+}
+
+const INITIAL_ABV = readInitialAbvShell()
 
 const HomePage = lazy(() => import('./pages/HomePage').then((m) => ({ default: m.HomePage })))
 const PatientGuide = lazy(() => import('./pages/PatientGuide'))
@@ -19,13 +67,12 @@ const AntibioticsGuide = lazy(() => import('./pages/AntibioticsGuide'))
 const PathogenLibraryPage = lazy(() =>
   import('./pages/PathogenLibraryPage').then((m) => ({ default: m.PathogenLibraryPage })),
 )
-const HospitalStewardshipPage = lazy(() =>
-  import('./pages/HospitalStewardshipPage').then((m) => ({ default: m.HospitalStewardshipPage })),
-)
 const ReferencesPage = lazy(() =>
   import('./pages/ReferencesPage').then((m) => ({ default: m.ReferencesPage })),
 )
 const PlaceholderSection = lazy(() => import('./pages/PlaceholderSection'))
+const DiseasesBySystemPage = lazy(() => import('./pages/DiseasesBySystemPage'))
+const PerioperativePage = lazy(() => import('./pages/PerioperativePage'))
 
 function AbvRouteFallback() {
   return (
@@ -47,30 +94,28 @@ function findDiseaseByName(dzDict: DiseaseSystem, diseaseName: string): Disease 
 }
 
 export function App() {
-  const [activeTab, setActiveTab] = useState<AbvTab>('home')
+  const [activeTab, setActiveTab] = useState<AbvTab>(() => INITIAL_ABV.activeTab)
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
 
   const [legacyDicts, setLegacyDicts] = useState<{ ab: AntibioticClass; dz: DiseaseSystem } | null>(null)
-  const [focusDrug, setFocusDrug] = useState<string | null>(null)
-  const [focusDiseaseName, setFocusDiseaseName] = useState<string | null>(null)
-  const [sourcePage, setSourcePage] = useState<AbvTab | null>(null)
+  const [focusDrug, setFocusDrug] = useState<string | null>(() => INITIAL_ABV.focusDrug)
+  const [diseasesFocusDiseaseName, setDiseasesFocusDiseaseName] = useState<string | null>(null)
+  const [sourcePage, setSourcePage] = useState<AbvTab | null>(() => INITIAL_ABV.sourcePage)
   const [antibioticsSearchSeed, setAntibioticsSearchSeed] = useState<string | undefined>(undefined)
   const [unifiedSearchSeed, setUnifiedSearchSeed] = useState<string | undefined>(undefined)
-  const [institutionalFocus, setInstitutionalFocus] = useState<AbvInstitutionalFocus | null>(null)
+  const [institutionalFocus, setInstitutionalFocus] = useState<AbvInstitutionalFocus | null>(
+    () => INITIAL_ABV.institutionalFocus,
+  )
 
-  const [step, setStep] = useState(1)
-  const [species, setSpecies] = useState<Species | null>(null)
-  const [life, setLife] = useState<LifeStageKey | null>(null)
-  const [co, setCo] = useState<ComorbidityState>({
-    renal: false,
-    hepatic: false,
-    septic: false,
-    cardiac: false,
-    neurological: false,
-  })
+  const [step, setStep] = useState(() => INITIAL_ABV.step)
+  const [species, setSpecies] = useState<Species | null>(() => INITIAL_ABV.species)
+  const [life, setLife] = useState<LifeStageKey | null>(() => INITIAL_ABV.life)
+  const [co, setCo] = useState<ComorbidityState>(() => INITIAL_ABV.co)
   const [chosen, setChosen] = useState<Disease | null>(null)
+  const chosenHydratedRef = useRef(false)
 
-  const needsLegacySeeds = activeTab === 'syndrome' || activeTab === 'antibiotics'
+  const needsLegacySeeds =
+    activeTab === 'syndrome' || activeTab === 'antibiotics' || activeTab === 'diseases' || activeTab === 'perioperative'
 
   useEffect(() => {
     if (!needsLegacySeeds || legacyDicts) return
@@ -86,13 +131,43 @@ export function App() {
     }
   }, [needsLegacySeeds, legacyDicts])
 
+  /** Reidrata condição escolhida no assistente após carregar catálogo (F5). */
+  useEffect(() => {
+    if (!legacyDicts || chosenHydratedRef.current) return
+    const name = INITIAL_ABV.chosenDiseaseName
+    if (name) {
+      const found = findDiseaseByName(legacyDicts.dz, name)
+      if (found) setChosen(found)
+    }
+    chosenHydratedRef.current = true
+  }, [legacyDicts])
+
+  /** Persiste estado do shell após recarregar a página (mesma aba do navegador). */
+  useEffect(() => {
+    const id = window.setTimeout(() => {
+      const payload: AbvAppPersistV1 = {
+        v: 1,
+        activeTab,
+        step,
+        species,
+        life,
+        co,
+        chosenDiseaseName: chosen?.name ?? null,
+        focusDrug,
+        sourcePage,
+        institutionalFocus,
+      }
+      saveAbvAppPersist(payload)
+    }, 250)
+    return () => window.clearTimeout(id)
+  }, [activeTab, step, species, life, co, chosen, focusDrug, sourcePage, institutionalFocus])
+
   const consumeAntibioticsSearchSeed = useCallback(() => setAntibioticsSearchSeed(undefined), [])
   const consumeUnifiedSearchSeed = useCallback(() => setUnifiedSearchSeed(undefined), [])
 
   const onDeepLinkDrug = (drugName: string) => {
     setAntibioticsSearchSeed(undefined)
     setUnifiedSearchSeed(undefined)
-    setFocusDiseaseName(null)
     setFocusDrug(drugName)
     setSourcePage(activeTab)
     setActiveTab('antibiotics')
@@ -101,28 +176,21 @@ export function App() {
   const onNavigateInstitutional = useCallback((target: AbvInstitutionalFocus) => {
     setInstitutionalFocus(target)
     if (target.kind === 'pathogen' || target.kind === 'resistance') setActiveTab('pathogens')
-    else if (target.kind === 'hospital') setActiveTab('hospital')
     else setActiveTab('references')
   }, [])
 
-  const onOpenLegacyDisease = useCallback(
-    (diseaseName: string) => {
-      if (!legacyDicts) return
-      const found = findDiseaseByName(legacyDicts.dz, diseaseName)
-      if (!found) return
-      setFocusDrug(null)
-      setAntibioticsSearchSeed(undefined)
-      setUnifiedSearchSeed(undefined)
-      setFocusDiseaseName(null)
-      setSourcePage('antibiotics')
-      setChosen(found)
-      setStep(species && life ? 4 : 1)
-      setActiveTab('syndrome')
-    },
-    [legacyDicts, species, life],
-  )
+  const onOpenLegacyDisease = useCallback((diseaseName: string) => {
+    if (!legacyDicts) return
+    const found = findDiseaseByName(legacyDicts.dz, diseaseName)
+    if (!found) return
+    setFocusDrug(null)
+    setAntibioticsSearchSeed(undefined)
+    setUnifiedSearchSeed(undefined)
+    setDiseasesFocusDiseaseName(diseaseName)
+    setActiveTab('diseases')
+  }, [legacyDicts])
 
-  const clearFocusDisease = useCallback(() => setFocusDiseaseName(null), [])
+  const clearDiseasesFocusDisease = useCallback(() => setDiseasesFocusDiseaseName(null), [])
 
   const clearInstitutionalFocus = useCallback(() => setInstitutionalFocus(null), [])
 
@@ -141,6 +209,8 @@ export function App() {
   }
 
   const onResetPatientFlow = () => {
+    clearAllAbvSessionStorage()
+    chosenHydratedRef.current = true
     setFocusDrug(null)
     setSourcePage(null)
     resetWizard()
@@ -151,9 +221,8 @@ export function App() {
     setUnifiedSearchSeed(query)
     setAntibioticsSearchSeed(undefined)
     setFocusDrug(null)
-    setFocusDiseaseName(null)
     setSourcePage(null)
-    setActiveTab('antibiotics')
+    setActiveTab('diseases')
   }
 
   const renderMain = () => {
@@ -186,6 +255,22 @@ export function App() {
           />
         )
       }
+      case 'diseases': {
+        const { ab: abDict, dz: dzDict } = legacyDicts!
+        return (
+          <DiseasesBySystemPage
+            setPage={setActiveTab}
+            abDict={abDict}
+            dzDict={dzDict}
+            unifiedSearchSeed={unifiedSearchSeed}
+            onUnifiedSearchSeedConsumed={consumeUnifiedSearchSeed}
+            onNavigateInstitutional={onNavigateInstitutional}
+            onDeepLinkDrug={onDeepLinkDrug}
+            focusDiseaseName={diseasesFocusDiseaseName}
+            onClearFocusDisease={clearDiseasesFocusDisease}
+          />
+        )
+      }
       case 'antibiotics': {
         const { ab: abDict, dz: dzDict } = legacyDicts!
         return (
@@ -194,14 +279,9 @@ export function App() {
             abDict={abDict}
             dzDict={dzDict}
             focusDrug={focusDrug}
-            focusDiseaseName={focusDiseaseName}
-            onClearFocusDisease={clearFocusDisease}
             sourcePage={sourcePage}
             searchSeed={antibioticsSearchSeed}
-            unifiedSearchSeed={unifiedSearchSeed}
             onSearchSeedConsumed={consumeAntibioticsSearchSeed}
-            onUnifiedSearchSeedConsumed={consumeUnifiedSearchSeed}
-            onNavigateInstitutional={onNavigateInstitutional}
             onOpenLegacyDisease={onOpenLegacyDisease}
           />
         )
@@ -209,14 +289,6 @@ export function App() {
       case 'pathogens':
         return (
           <PathogenLibraryPage
-            setPage={setActiveTab}
-            institutionalFocus={institutionalFocus}
-            onConsumedInstitutionalFocus={clearInstitutionalFocus}
-          />
-        )
-      case 'hospital':
-        return (
-          <HospitalStewardshipPage
             setPage={setActiveTab}
             institutionalFocus={institutionalFocus}
             onConsumedInstitutionalFocus={clearInstitutionalFocus}
@@ -230,7 +302,10 @@ export function App() {
             onConsumedInstitutionalFocus={clearInstitutionalFocus}
           />
         )
-      case 'perioperative':
+      case 'perioperative': {
+        const { ab: abDict, dz: dzDict } = legacyDicts!
+        return <PerioperativePage setPage={setActiveTab} abDict={abDict} dzDict={dzDict} onDeepLinkDrug={onDeepLinkDrug} />
+      }
       case 'patient-context':
         return <PlaceholderSection tab={activeTab} />
       default:

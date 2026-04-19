@@ -2,6 +2,7 @@ import React, { useState, useRef, useCallback } from 'react'
 import { Clock } from 'lucide-react'
 import { motion } from 'framer-motion'
 import type { TemporalPattern } from '../../stores/caseStore'
+import { TEMPORAL_LABELS } from '../../data/complaintDictionaries'
 
 interface ClockTimelinePickerProps {
   value: TemporalPattern | null
@@ -9,26 +10,51 @@ interface ClockTimelinePickerProps {
   disabled?: boolean
 }
 
-const PATTERNS: Array<{ id: TemporalPattern; label: string; position: number; color: string }> = [
-  { id: 'peragudo', label: 'Peragudo (<24h)', position: 5, color: '#ef4444' }, // vermelho
-  { id: 'agudo', label: 'Agudo (24-48h)', position: 20, color: '#f97316' }, // laranja
-  { id: 'subagudo', label: 'Subagudo (dias)', position: 43, color: '#fb923c' }, // laranja claro
-  { id: 'cronico', label: 'Crônico (semanas/meses)', position: 68, color: '#fbbf24' }, // amarelo
-  { id: 'episodico', label: 'Episódico', position: 90, color: '#facc15' }, // amarelo claro
+/** Padrões principais no slider (curso temporal clássico). */
+const MAIN_PATTERNS: Array<{ id: TemporalPattern; label: string; position: number; color: string }> = [
+  { id: 'peragudo', label: TEMPORAL_LABELS.peragudo, position: 5, color: '#ef4444' },
+  { id: 'agudo', label: TEMPORAL_LABELS.agudo, position: 20, color: '#f97316' },
+  { id: 'subagudo', label: TEMPORAL_LABELS.subagudo, position: 43, color: '#fb923c' },
+  { id: 'cronico', label: TEMPORAL_LABELS.cronico, position: 68, color: '#fbbf24' },
+  { id: 'episodico', label: TEMPORAL_LABELS.episodico, position: 90, color: '#facc15' },
 ]
 
+const REFINEMENT_PATTERNS: Array<{ id: TemporalPattern; label: string; position: number }> = [
+  { id: 'insidioso', label: TEMPORAL_LABELS.insidioso, position: 62 },
+  { id: 'oscilante', label: TEMPORAL_LABELS.oscilante, position: 78 },
+  { id: 'recorrente', label: TEMPORAL_LABELS.recorrente, position: 94 },
+]
+
+const MAIN_IDS = new Set(MAIN_PATTERNS.map((p) => p.id))
+
+function getMainPatternFromPosition(pos: number): TemporalPattern {
+  let nearest = MAIN_PATTERNS[0]
+  let min = 100
+  for (const p of MAIN_PATTERNS) {
+    const d = Math.abs(pos - p.position)
+    if (d < min) {
+      min = d
+      nearest = p
+    }
+  }
+  return nearest.id
+}
+
 function getPatternFromPosition(pos: number): TemporalPattern {
-  if (pos <= 10) return 'peragudo'
-  if (pos <= 30) return 'agudo'
-  if (pos <= 55) return 'subagudo'
-  if (pos <= 80) return 'cronico'
-  return 'episodico'
+  return getMainPatternFromPosition(pos)
 }
 
 function getPositionFromPattern(pattern: TemporalPattern | null): number {
   if (!pattern) return 0
-  const found = PATTERNS.find((p) => p.id === pattern)
-  return found?.position || 0
+  const main = MAIN_PATTERNS.find((p) => p.id === pattern)
+  if (main) return main.position
+  const ref = REFINEMENT_PATTERNS.find((p) => p.id === pattern)
+  return ref?.position ?? 0
+}
+
+function labelForPattern(pattern: TemporalPattern | null): string | undefined {
+  if (!pattern) return undefined
+  return TEMPORAL_LABELS[pattern]
 }
 
 export function ClockTimelinePicker({
@@ -39,6 +65,7 @@ export function ClockTimelinePicker({
   const [isDragging, setIsDragging] = useState(false)
   const [hoverPosition, setHoverPosition] = useState<number | null>(null)
   const sliderRef = useRef<HTMLDivElement>(null)
+  const lastPctRef = useRef(0)
 
   const currentPosition = getPositionFromPattern(value)
   const displayPosition = hoverPosition ?? currentPosition
@@ -48,12 +75,11 @@ export function ClockTimelinePicker({
       if (!sliderRef.current || disabled) return
       const rect = sliderRef.current.getBoundingClientRect()
       const x = clientX - rect.left
-      const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100))
-      const pattern = getPatternFromPosition(percentage)
-      onChange(pattern)
-      setHoverPosition(null)
+      const pct = Math.max(0, Math.min(100, (x / rect.width) * 100))
+      lastPctRef.current = pct
+      setHoverPosition(pct)
     },
-    [onChange, disabled],
+    [disabled],
   )
 
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -64,17 +90,18 @@ export function ClockTimelinePicker({
 
   const handleMouseMoveGlobal = useCallback(
     (e: MouseEvent) => {
-      if (isDragging) {
-        handleMouseMove(e.clientX)
-      }
+      handleMouseMove(e.clientX)
     },
-    [isDragging, handleMouseMove],
+    [handleMouseMove],
   )
 
   const handleMouseUp = useCallback(() => {
     setIsDragging(false)
+    if (!disabled) {
+      onChange(getPatternFromPosition(lastPctRef.current))
+    }
     setHoverPosition(null)
-  }, [])
+  }, [disabled, onChange])
 
   React.useEffect(() => {
     if (isDragging) {
@@ -104,17 +131,24 @@ export function ClockTimelinePicker({
     }
   }
 
+  const handleRefinementClick = (id: TemporalPattern) => {
+    if (disabled) return
+    if (value === id) {
+      onChange('cronico')
+      return
+    }
+    onChange(id)
+  }
+
   return (
     <div className="space-y-4">
       <div className="flex items-start gap-6">
-        {/* Relógio Grande */}
         <div className="flex-shrink-0">
-          <div className="w-24 h-24 rounded-full bg-gold/20 border-2 border-gold/40 flex items-center justify-center">
-            <Clock className="w-12 h-12 text-gold" />
+          <div className="flex h-24 w-24 items-center justify-center rounded-full border-2 border-gold/40 bg-gold/20">
+            <Clock className="h-12 w-12 text-gold" />
           </div>
         </div>
 
-        {/* Barra Gradiente */}
         <div className="flex-1 pt-2">
           <div
             ref={sliderRef}
@@ -122,7 +156,6 @@ export function ClockTimelinePicker({
             onMouseDown={handleMouseDown}
             onMouseLeave={handleMouseLeave}
           >
-            {/* Gradiente de Fundo */}
             <div
               className="absolute inset-0 rounded-full"
               style={{
@@ -131,7 +164,6 @@ export function ClockTimelinePicker({
               }}
             />
 
-            {/* Barra Preenchida */}
             <div
               className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-red-500 via-orange-500 to-yellow-400 transition-all duration-200"
               style={{
@@ -140,10 +172,9 @@ export function ClockTimelinePicker({
               }}
             />
 
-            {/* Marcador Atual */}
             {displayPosition > 0 && (
               <motion.div
-                className="absolute top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-gold border-2 border-white shadow-lg"
+                className="absolute top-1/2 h-6 w-6 -translate-y-1/2 rounded-full border-2 border-white bg-gold shadow-lg"
                 style={{
                   left: `calc(${displayPosition}% - 12px)`,
                 }}
@@ -154,20 +185,26 @@ export function ClockTimelinePicker({
               />
             )}
 
-            {/* Indicadores de Posições */}
-            {PATTERNS.map((pattern) => (
+            {MAIN_PATTERNS.map((pattern) => (
               <div
                 key={pattern.id}
-                className="absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-white/60"
+                className="absolute top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-white/60"
                 style={{ left: `calc(${pattern.position}% - 4px)` }}
                 onMouseEnter={() => handleMouseEnter(pattern.position)}
               />
             ))}
+            {REFINEMENT_PATTERNS.map((pattern) => (
+              <div
+                key={`r-${pattern.id}`}
+                className="absolute top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-cyan-400/80 ring-1 ring-cyan-300/50"
+                style={{ left: `calc(${pattern.position}% - 3px)` }}
+                title={pattern.label}
+              />
+            ))}
           </div>
 
-          {/* Labels */}
           <div className="relative mt-4 h-12">
-            {PATTERNS.map((pattern) => {
+            {MAIN_PATTERNS.map((pattern) => {
               const isActive = value === pattern.id
               return (
                 <button
@@ -175,7 +212,7 @@ export function ClockTimelinePicker({
                   type="button"
                   onClick={() => handleLabelClick(pattern.id)}
                   disabled={disabled}
-                  className="absolute top-0 text-xs font-medium transition-all transform -translate-x-1/2 cursor-pointer"
+                  className="absolute top-0 -translate-x-1/2 transform cursor-pointer text-xs font-medium transition-all"
                   style={{
                     left: `${pattern.position}%`,
                     color: isActive ? '#f5c542' : '#a3a3a3',
@@ -184,9 +221,9 @@ export function ClockTimelinePicker({
                   onMouseLeave={() => !isDragging && setHoverPosition(null)}
                 >
                   <div
-                    className={`px-2 py-1 rounded transition-all ${
+                    className={`rounded px-2 py-1 transition-all ${
                       isActive
-                        ? 'bg-gold/20 text-gold scale-110'
+                        ? 'scale-110 bg-gold/20 text-gold'
                         : 'hover:bg-white/5 hover:text-white/80'
                     }`}
                   >
@@ -199,16 +236,44 @@ export function ClockTimelinePicker({
         </div>
       </div>
 
-      {/* Label Completo do Padrão Selecionado */}
+      <div className="rounded-xl border border-border/60 bg-background/40 p-3">
+        <p className="mb-2 text-xs font-medium text-muted-foreground">Refinamentos temporais (cap. 1 — curso em exceções)</p>
+        <div className="flex flex-wrap gap-2">
+          {REFINEMENT_PATTERNS.map((p) => {
+            const active = value === p.id
+            return (
+              <button
+                key={p.id}
+                type="button"
+                disabled={disabled}
+                onClick={() => handleRefinementClick(p.id)}
+                className={`rounded-lg border px-3 py-2 text-left text-xs transition ${
+                  active
+                    ? 'border-cyan-400/60 bg-cyan-500/15 text-cyan-100'
+                    : 'border-border bg-background/60 text-muted-foreground hover:border-cyan-500/40'
+                }`}
+              >
+                {p.label}
+              </button>
+            )
+          })}
+        </div>
+        <p className="mt-2 text-[11px] text-muted-foreground/90">
+          Arrastar a barra define peragudo → episódico; use os refinamentos para insidioso, oscilante ou recorrente. Clicar
+          novamente no refinamento ativo volta a um padrão crônico como referência.
+        </p>
+      </div>
+
       {value && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center"
         >
-          <span className="text-sm font-semibold text-gold">
-            {PATTERNS.find((p) => p.id === value)?.label}
-          </span>
+          <span className="text-sm font-semibold text-gold">{labelForPattern(value)}</span>
+          {value && !MAIN_IDS.has(value) && (
+            <span className="mt-1 block text-xs text-muted-foreground">Refinamento ativo (compatível com DDx do livro-base)</span>
+          )}
         </motion.div>
       )}
     </div>

@@ -6,10 +6,10 @@ import { ABV_NAV_ITEMS } from './abvNavConfig'
 const shortLabels: Partial<Record<AbvTab, string>> = {
   home: 'Início',
   syndrome: 'Suspeita clínica',
+  diseases: 'Doenças',
   antibiotics: 'Antimicrobianos',
   pathogens: 'Microrganismos',
   perioperative: 'Perioperatório',
-  hospital: 'Hospitalar',
   'patient-context': 'Alertas',
   references: 'Referências',
 }

@@ -129,7 +129,7 @@ const appRoutes = (
     <Route path="/receituario-vet/configurações" element={<ProtectedClinicRoute><SettingsPage /></ProtectedClinicRoute>} />
     <Route path="/receituario-vet/rx/:id/print" element={<ProtectedClinicRoute><RxPrintPage /></ProtectedClinicRoute>} />
     <Route path="/crivet" element={<CrivetPage />} />
-    <Route path="/neurologia" element={<NeurologiaPage />} />
+    <Route path="/neurologia/*" element={<NeurologiaPage />} />
     <Route path="/veteletrolitico" element={<VeteletroliticoPage />} />
     <Route path="/consulta-vet" element={<ConsultaVetShell />}>
       <Route index element={<ConsultaVetHomePage />} />

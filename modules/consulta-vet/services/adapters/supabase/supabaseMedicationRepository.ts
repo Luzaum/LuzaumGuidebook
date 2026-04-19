@@ -1,5 +1,5 @@
 import { supabase } from '@/src/lib/supabaseClient';
-import { medicationsSeed } from '../../../data/seed/medications.seed';
+import { loadMedicationsEditorialSeed } from '../../../data/seed/editorialSeedLazy';
 import { MedicationRecord } from '../../../types/medication';
 import { MedicationUpsertInput } from '../../../types/editorial';
 import { MedicationRepository } from '../../repositories/medication.repository';
@@ -111,6 +111,7 @@ export class SupabaseMedicationRepository implements MedicationRepository {
         fetchSupabaseMedications(Boolean(options?.includeDrafts)),
         'carregar medicamentos editoriais'
       );
+      const medicationsSeed = await loadMedicationsEditorialSeed();
       const merged = mergeBySlug(medicationsSeed, remote).sort((left, right) =>
         left.title.localeCompare(right.title, 'pt-BR')
       );
@@ -185,6 +186,7 @@ export class SupabaseMedicationRepository implements MedicationRepository {
       doses: input.doses,
       presentations: input.presentations,
       clinical_notes_rich_text: input.clinicalNotesRichText,
+      clinical_structured_blocks: input.clinicalStructuredBlocks ?? null,
       admin_notes_text: String(input.adminNotesText || '').trim(),
       references: input.references || [],
       is_published: input.isPublished ?? true,

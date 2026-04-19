@@ -119,7 +119,7 @@ function TreatmentLinesAppendix({
                       >
                         <span className="font-semibold text-[hsl(var(--foreground))]">{d.name}</span>
                         <p className="mt-1 text-xs">
-                          Mesmo fármaco já descrito numa linha anterior — mantém-se neste esquema.{' '}
+                          <span className="font-medium text-[hsl(var(--foreground))]">Por que nesta condição: </span>
                           <InlineRichText text={d.rationale} />
                         </p>
                       </li>

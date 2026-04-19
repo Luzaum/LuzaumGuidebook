@@ -15,7 +15,9 @@
     "lint:sql-comments": "node scripts/check-sql-comments.mjs",
     "validate:dbpayloads": "tsx scripts/validate-supabase-payloads.ts",
     "import:global-catalog": "tsx scripts/import-global-catalog.ts",
-    "import:energia-vet-data": "python scripts/import_genutri_dataset.py"
+    "seed:admin-users": "tsx scripts/seed-admin-users.ts",
+    "import:energia-vet-data": "python scripts/import_genutri_dataset.py",
+    "extract:neuro-pdf": "node scripts/extract-neuro-pdf-outline.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.3.0",
@@ -35,6 +37,7 @@
     "clsx": "^2.1.1",
     "dompurify": "^3.0.8",
     "framer-motion": "^12.26.2",
+    "gradflow": "^0.1.0",
     "jspdf": "^4.0.0",
     "jspdf-autotable": "^5.0.7",
     "lucide-react": "^0.539.0",

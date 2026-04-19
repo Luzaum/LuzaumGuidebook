@@ -3,12 +3,19 @@ import { motion } from 'framer-motion'
 import { AlertTriangle, Brain, CheckCircle2, FileText } from 'lucide-react'
 import { Card } from '../UI/Card'
 import { InlineBanner } from '../UI/InlineBanner'
+import { SaveToHistoryButton } from '../SaveToHistoryButton'
 import { useCaseStore } from '../../stores/caseStore'
 import { buildCaseReport } from '../../lib/analysis/report'
 import { buildLocalClinicalCompanionReport } from '../../lib/report/localClinicalCompanion'
 import { exportToPDF } from '../../lib/report/pdfExporter'
 import { parseAiClinicalReport } from '../../lib/report/aiClinicalReportParser'
 import type { CaseReport } from '../../types/analysis'
+import {
+  DISTRIBUTION_LABELS_PT,
+  MOTOR_PATTERN_LABELS_PT,
+  NEURO_AXIS_LABELS_PT,
+} from '../../data/axisLabelsPt'
+import { LOCALIZATION_PRINCIPLES_BULLETS, LOCALIZATION_PRINCIPLES_INTRO } from '../../data/localizationPrinciplesPt'
 
 function sleep(ms: number) {
   return new Promise((resolve) => window.setTimeout(resolve, ms))
@@ -203,6 +210,7 @@ function formatCategoryLabel(category: string) {
 }
 
 export function Step5Analysis() {
+  const [compactAi, setCompactAi] = React.useState(true)
   const analysis = useCaseStore((s) => s.analysis)
   const setAnalysis = useCaseStore((s) => s.setAnalysis)
   const patient = useCaseStore((s) => s.patient)
@@ -369,6 +377,10 @@ export function Step5Analysis() {
           <Brain className="mr-2 inline-block h-5 w-5" />
           Analisar Caso
         </motion.button>
+
+        <div className="flex justify-center">
+          <SaveToHistoryButton />
+        </div>
       </div>
     )
   }
@@ -487,6 +499,80 @@ export function Step5Analysis() {
           </motion.button>
         </div>
 
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <SaveToHistoryButton />
+          <button
+            type="button"
+            onClick={() => setCompactAi((v) => !v)}
+            className="rounded-xl border border-cyan-500/35 bg-cyan-950/30 px-4 py-2 text-sm font-medium text-cyan-100 transition hover:border-cyan-400/50"
+          >
+            {compactAi ? 'Ver análise detalhada' : 'Modo resumo (recomendado)'}
+          </button>
+        </div>
+
+        {report.neuroLocalization.status === 'ok' && (
+          <Card className="border-emerald-500/30 bg-[linear-gradient(135deg,rgba(6,78,59,0.35),rgba(15,23,42,0.92))] p-6 shadow-[0_20px_50px_rgba(16,185,129,0.12)]">
+            <h3 className="text-lg font-semibold text-emerald-100">Resumo clínico (motor de regras)</h3>
+            <p className="mt-1 text-xs leading-relaxed text-emerald-100/75">
+              Leitura automática da neurolocalização e dos diferenciais priorizados — útil como checklist antes do texto
+              detalhado abaixo.
+            </p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              <MetricCard
+                label="Localização principal"
+                value={NEURO_AXIS_LABELS_PT[report.neuroLocalization.primary]}
+              />
+              <MetricCard
+                label="Distribuição"
+                value={DISTRIBUTION_LABELS_PT[report.neuroLocalization.distribution]}
+              />
+              <MetricCard
+                label="Padrão motor"
+                value={MOTOR_PATTERN_LABELS_PT[report.neuroLocalization.motorPattern]}
+              />
+              <MetricCard label="Confiança" value={`${report.neuroLocalization.confidence}%`} />
+            </div>
+            {report.neuroLocalization.secondary && report.neuroLocalization.secondary.length > 0 && (
+              <p className="mt-3 text-sm text-emerald-50/90">
+                <span className="font-semibold text-emerald-200/90">Sobreposições: </span>
+                {report.neuroLocalization.secondary.map((a) => NEURO_AXIS_LABELS_PT[a]).join(', ')}
+              </p>
+            )}
+            <p className="mt-4 text-sm leading-relaxed text-slate-100/90">{report.neuroLocalization.narrative}</p>
+            {report.differentials.length > 0 && (
+              <div className="mt-5 rounded-xl border border-emerald-500/25 bg-black/25 p-4">
+                <p className="text-xs font-semibold uppercase tracking-wide text-emerald-200/90">
+                  Três diferenciais mais prováveis (escore do motor)
+                </p>
+                <ul className="mt-3 space-y-2 text-sm text-slate-100/90">
+                  {report.differentials.slice(0, 3).map((d) => (
+                    <li key={d.id} className="flex flex-wrap items-baseline gap-2">
+                      <span className="font-medium text-emerald-100">{d.name}</span>
+                      <span className="text-xs text-slate-400">~{d.likelihood}%</span>
+                      <span className="text-emerald-200/70">· {formatCategoryLabel(d.category)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </Card>
+        )}
+
+        <Card className="border-white/10 bg-slate-950/40 p-5">
+          <h3 className="text-base font-semibold text-foreground">Princípios de neurolocalização (referência)</h3>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{LOCALIZATION_PRINCIPLES_INTRO}</p>
+          <details className="mt-3 rounded-xl border border-white/10 bg-black/20 p-3">
+            <summary className="cursor-pointer text-sm font-medium text-gold/90">
+              Ver segmentos e padrões (lista rápida)
+            </summary>
+            <ul className="mt-3 list-inside list-disc space-y-2 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+              {LOCALIZATION_PRINCIPLES_BULLETS.map((line, idx) => (
+                <li key={`loc-principle-${idx}`}>{line}</li>
+              ))}
+            </ul>
+          </details>
+        </Card>
+
         <Card className="p-6">
           <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold text-gold">
             <FileText className="h-5 w-5" />
@@ -526,9 +612,9 @@ export function Step5Analysis() {
               <div>
                 <h3 className="text-xl font-bold text-cyan-100">Relatorio Clinico</h3>
                 <p className="mt-2 max-w-4xl text-sm leading-relaxed text-cyan-50/80">
-                  Leitura integrada do caso para plantao: neurolocalizacao, prioridades imediatas e
-                  diferenciais do mais provavel ao menos provavel, sempre cruzando exame, comorbidades,
-                  exames prioritarios e conduta inicial.
+                  {compactAi
+                    ? 'Síntese: localização provável, DDx priorizados e conduta — expanda para listas completas de achados e exames.'
+                    : 'Leitura integrada do caso para plantao: neurolocalizacao, prioridades imediatas e diferenciais do mais provavel ao menos provavel, sempre cruzando exame, comorbidades, exames prioritarios e conduta inicial.'}
                 </p>
               </div>
             </Card>
@@ -549,27 +635,54 @@ export function Step5Analysis() {
                 <MetricCard label="Confianca" value={parsedClinicalReport.neurolocalization.confidence} />
               </div>
 
-              <div className="mt-5 rounded-2xl border border-cyan-500/20 bg-black/20 p-5">
-                <p className="mb-2 text-sm font-semibold text-cyan-200">Raciocinio de neurolocalizacao</p>
-                <p className="text-sm leading-relaxed text-cyan-50/90">
-                  {parsedClinicalReport.neurolocalization.reasoning || 'Nao informado'}
-                </p>
-              </div>
+              {compactAi ? (
+                <details className="mt-5 rounded-2xl border border-cyan-500/20 bg-black/20 p-4">
+                  <summary className="cursor-pointer text-sm font-semibold text-cyan-200">
+                    Raciocínio e achados (expandir)
+                  </summary>
+                  <p className="mt-3 text-sm leading-relaxed text-cyan-50/90">
+                    {parsedClinicalReport.neurolocalization.reasoning || 'Nao informado'}
+                  </p>
+                  <div className="mt-4 grid gap-4 lg:grid-cols-2">
+                    <DifferentialSection
+                      title="Achados que sustentam"
+                      items={parsedClinicalReport.neurolocalization.supportiveFindings}
+                      dotClassName="bg-emerald-400"
+                      textClassName="text-emerald-50/90"
+                    />
+                    <DifferentialSection
+                      title="Achados contraditorios"
+                      items={parsedClinicalReport.neurolocalization.contradictoryFindings}
+                      dotClassName="bg-orange-400"
+                      textClassName="text-orange-50/90"
+                    />
+                  </div>
+                </details>
+              ) : (
+                <>
+                  <div className="mt-5 rounded-2xl border border-cyan-500/20 bg-black/20 p-5">
+                    <p className="mb-2 text-sm font-semibold text-cyan-200">Raciocinio de neurolocalizacao</p>
+                    <p className="text-sm leading-relaxed text-cyan-50/90">
+                      {parsedClinicalReport.neurolocalization.reasoning || 'Nao informado'}
+                    </p>
+                  </div>
 
-              <div className="mt-5 grid gap-4 lg:grid-cols-2">
-                <DifferentialSection
-                  title="Achados que sustentam"
-                  items={parsedClinicalReport.neurolocalization.supportiveFindings}
-                  dotClassName="bg-emerald-400"
-                  textClassName="text-emerald-50/90"
-                />
-                <DifferentialSection
-                  title="Achados contraditorios"
-                  items={parsedClinicalReport.neurolocalization.contradictoryFindings}
-                  dotClassName="bg-orange-400"
-                  textClassName="text-orange-50/90"
-                />
-              </div>
+                  <div className="mt-5 grid gap-4 lg:grid-cols-2">
+                    <DifferentialSection
+                      title="Achados que sustentam"
+                      items={parsedClinicalReport.neurolocalization.supportiveFindings}
+                      dotClassName="bg-emerald-400"
+                      textClassName="text-emerald-50/90"
+                    />
+                    <DifferentialSection
+                      title="Achados contraditorios"
+                      items={parsedClinicalReport.neurolocalization.contradictoryFindings}
+                      dotClassName="bg-orange-400"
+                      textClassName="text-orange-50/90"
+                    />
+                  </div>
+                </>
+              )}
             </Card>
 
             {(parsedClinicalReport.priorities.length > 0 || parsedClinicalReport.criticalAlerts.length > 0) && (
@@ -617,9 +730,14 @@ export function Step5Analysis() {
 
                     <div className="mt-5 rounded-2xl border border-cyan-500/10 bg-cyan-950/10 p-4">
                       <p className="mb-2 text-sm font-semibold text-cyan-200">Sintese clinica</p>
-                      <p className="text-sm leading-relaxed text-slate-100/90">{dx.clinicalFit || 'Nao informado'}</p>
+                      <p
+                        className={`text-sm leading-relaxed text-slate-100/90 ${compactAi ? 'line-clamp-4' : ''}`}
+                      >
+                        {dx.clinicalFit || 'Nao informado'}
+                      </p>
                     </div>
 
+                    {compactAi ? null : (
                     <div className="mt-5 grid gap-4 xl:grid-cols-2">
                       <DifferentialSection
                         title="Achados a favor"
@@ -664,8 +782,9 @@ export function Step5Analysis() {
                         dotClassName="bg-rose-400"
                       />
                     </div>
+                    )}
 
-                    {dx.comorbidityIntegration.length > 0 && (
+                    {!compactAi && dx.comorbidityIntegration.length > 0 && (
                       <div className="mt-5 rounded-2xl border border-indigo-500/20 bg-indigo-950/10 p-4">
                         <p className="mb-3 text-sm font-semibold text-indigo-200">
                           Como as comorbidades mudam a conduta

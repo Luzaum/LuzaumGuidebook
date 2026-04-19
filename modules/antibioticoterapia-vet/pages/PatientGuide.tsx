@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import {
   AbvTab,
   Species,
@@ -7,8 +7,6 @@ import {
   DiseaseSystem,
   Disease,
   AntibioticClass,
-  PathophysiologyVisual,
-  TreatmentLineBlock,
 } from '../types'
 import { ABV_SPECIES_IMG_CAT, ABV_SPECIES_IMG_DOG } from '../constants/speciesAssets'
 import Icon from '../components/Icon'
@@ -24,9 +22,9 @@ import {
   groupCatalogBySystemKey,
   type ClinicalSystemTagId,
 } from '../data/clinicalSystemTags'
-import { PathophysiologyVisualView } from '../components/PathophysiologyVisualView'
-import { DiseaseTreatmentBlocks } from '../components/DiseaseTreatmentBlocks'
+import { DiseaseDetailView } from '../components/DiseaseDetailView'
 import { safeList } from '../utils/dataUtils'
+import { ABV_SESSION_KEYS, readSessionJson, writeSessionJson } from '../utils/abvSessionPersistence'
 
 const comorbLabels: { [key in keyof ComorbidityState]: string } = {
   renal: 'Renal',
@@ -71,21 +69,19 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
   dzDict,
   abDict,
 }) => {
-  const [modalInfo, setModalInfo] = useState<{
-    title: string
-    content: string
-    visual?: PathophysiologyVisual
-    treatmentAppendix?: TreatmentLineBlock[]
-    wide?: boolean
-  } | null>(null)
+  const [modalInfo, setModalInfo] = useState<{ title: string; content: string } | null>(null)
 
-  /** Filtro multi-tag (OR) no passo do catálogo */
-  const [catalogTagFilter, setCatalogTagFilter] = useState<Set<string>>(() => new Set())
+  /** Filtro multi-tag (OR) no passo do catálogo — reposto após F5. */
+  const [catalogTagFilter, setCatalogTagFilter] = useState<Set<string>>(() => {
+    const raw = readSessionJson<{ v: 1; tags: string[] }>(ABV_SESSION_KEYS.syndromeUi)
+    return raw?.v === 1 && Array.isArray(raw.tags) ? new Set(raw.tags) : new Set()
+  })
+
+  useEffect(() => {
+    writeSessionJson(ABV_SESSION_KEYS.syndromeUi, { v: 1, tags: [...catalogTagFilter] })
+  }, [catalogTagFilter])
 
   const tagDiseaseCounts = useMemo(() => countDiseasesPerTag(dzDict), [dzDict])
-
-  /** Evita repetir a mesma ficha longa do mesmo fármaco ao percorrer 1ª→2ª→3ª linha. */
-  const drugDetailDedupeSet = useMemo(() => new Set<string>(), [chosen?.name])
 
   const filteredCatalogGrouped = useMemo(() => {
     const entries = filterDiseaseCatalogByTags(dzDict, catalogTagFilter)
@@ -327,7 +323,16 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
             </h3>
             <p className="text-xs leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
               Filtre por um ou mais sistemas (a lista mostra fichas de <strong className="font-semibold">qualquer</strong>{' '}
-              sistema selecionado). Para comparar doses e calculadora, use o{' '}
+              sistema selecionado). Para o catálogo completo sem este assistente, abra{' '}
+              <button
+                type="button"
+                className="cursor-pointer font-semibold underline"
+                style={{ color: 'hsl(var(--primary))' }}
+                onClick={() => setPage('diseases')}
+              >
+                Doenças por sistema
+              </button>
+              ; para só fármacos e calculadora,{' '}
               <button
                 type="button"
                 className="cursor-pointer font-semibold underline"
@@ -500,126 +505,20 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
           )
         }
         return (
-          <div className="space-y-4">
-            {!species || !life ? (
-              <div
-                className="rounded-lg border p-3 text-sm"
-                style={{
-                  borderColor: 'color-mix(in srgb, hsl(var(--chart-5)) 40%, hsl(var(--border)))',
-                  background: 'color-mix(in srgb, hsl(var(--chart-5)) 10%, hsl(var(--card)))',
-                  color: 'hsl(var(--foreground))',
-                }}
-              >
-                <p className="font-medium">Complete o perfil do paciente para ver alertas de dose/comorbidade nos fármacos.</p>
-                <button
-                  type="button"
-                  className="mt-2 text-sm font-semibold underline"
-                  style={{ color: 'hsl(var(--primary))' }}
-                  onClick={() => setStep(1)}
-                >
-                  Definir espécie e fase da vida
-                </button>
-              </div>
-            ) : null}
-
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-              <h2 className="text-2xl font-bold tracking-tight sm:flex-1" style={{ color: 'hsl(var(--foreground))' }}>
-                {chosen.name}
-              </h2>
-              {chosen.pathophysiologyFull || chosen.pathophysiologyVisual ? (
-                <button
-                  type="button"
-                  className="inline-flex shrink-0 cursor-pointer items-center gap-2 self-start rounded-xl border px-3 py-2 text-sm font-semibold shadow-sm transition hover:opacity-90 sm:ml-4"
-                  style={{
-                    borderColor: 'hsl(var(--primary))',
-                    color: 'hsl(var(--primary))',
-                    background: 'color-mix(in srgb, hsl(var(--primary)) 8%, hsl(var(--card)))',
-                  }}
-                  onClick={() =>
-                    setModalInfo({
-                      title: `Fisiopatologia — ${chosen.name}`,
-                      content: chosen.pathophysiologyFull,
-                      visual: chosen.pathophysiologyVisual,
-                      treatmentAppendix: [chosen.firstLine, chosen.secondLine, chosen.thirdLine].filter(
-                        (b): b is TreatmentLineBlock => Boolean(b),
-                      ),
-                      wide: true,
-                    })
-                  }
-                >
-                  <Icon name="help" className="h-4 w-4" />
-                  Fisiopatologia completa
-                </button>
-              ) : null}
-            </div>
-
-            <p className="text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
-              <span className="font-medium text-[hsl(var(--foreground))]">Patógenos:</span>{' '}
-              {chosen.pathogens ? <InlineRichText text={chosen.pathogens} /> : '—'}
-            </p>
-            <p className="text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
-              <span className="font-medium text-[hsl(var(--foreground))]">Duração sugerida:</span>{' '}
-              {chosen.duration ? <InlineRichText text={chosen.duration} /> : '—'}
-            </p>
-
-            <DiseaseTreatmentBlocks
-              block={chosen.firstLine}
-              abDict={abDict}
-              onSeeGuide={onDeepLinkDrug}
-              comorbidities={co}
-              drugDetailDedupeSet={drugDetailDedupeSet}
-            />
-
-            {chosen.secondLine ? (
-              <DiseaseTreatmentBlocks
-                block={chosen.secondLine}
-                abDict={abDict}
-                onSeeGuide={onDeepLinkDrug}
-                comorbidities={co}
-                drugDetailDedupeSet={drugDetailDedupeSet}
-              />
-            ) : null}
-
-            {chosen.thirdLine ? (
-              <DiseaseTreatmentBlocks
-                block={chosen.thirdLine}
-                abDict={abDict}
-                onSeeGuide={onDeepLinkDrug}
-                comorbidities={co}
-                drugDetailDedupeSet={drugDetailDedupeSet}
-              />
-            ) : null}
-
-            {chosen.notes ? (
-              <div>
-                <h3 className="mb-2 text-sm font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
-                  Notas clínicas
-                </h3>
-                <div
-                  className="rounded-lg border p-3 text-sm leading-relaxed"
-                  style={{ borderColor: 'hsl(var(--border))', color: 'hsl(var(--foreground))' }}
-                >
-                  <RichTextViewer text={chosen.notes} />
-                </div>
-              </div>
-            ) : null}
-
-            <div className="flex flex-wrap gap-3 pt-2">
-              <button
-                type="button"
-                onClick={() => {
-                  setChosen(null)
-                  setStep(3)
-                }}
-                className="abv-btn-secondary cursor-pointer rounded-lg px-4 py-2 font-semibold"
-              >
-                Outra condição
-              </button>
-              <button type="button" onClick={onReset} className="abv-btn-primary cursor-pointer rounded-lg px-4 py-2 font-semibold">
-                Nova consulta
-              </button>
-            </div>
-          </div>
+          <DiseaseDetailView
+            disease={chosen}
+            abDict={abDict}
+            comorbidities={co}
+            onDeepLinkDrug={onDeepLinkDrug}
+            showPatientProfilePrompt={!species || !life}
+            onRequestPatientProfile={() => setStep(1)}
+            footerMode="wizard"
+            onWizardAnotherCondition={() => {
+              setChosen(null)
+              setStep(3)
+            }}
+            onWizardNewConsult={onReset}
+          />
         )
       default:
         return null
@@ -652,21 +551,8 @@ const PatientGuide: React.FC<PatientGuideProps> = ({
           {renderStep()}
         </div>
       </div>
-      <Modal
-        open={!!modalInfo}
-        title={modalInfo?.title || 'Ajuda'}
-        onClose={() => setModalInfo(null)}
-        wide={modalInfo?.wide}
-      >
-        {modalInfo?.visual ? (
-          <PathophysiologyVisualView
-            doc={modalInfo.visual}
-            treatmentAppendix={modalInfo.treatmentAppendix}
-            treatmentAppendixDedupeKey={chosen?.name}
-          />
-        ) : (
-          <RichTextViewer text={modalInfo?.content || ''} />
-        )}
+      <Modal open={!!modalInfo} title={modalInfo?.title || 'Ajuda'} onClose={() => setModalInfo(null)}>
+        <RichTextViewer text={modalInfo?.content || ''} />
       </Modal>
     </div>
   )

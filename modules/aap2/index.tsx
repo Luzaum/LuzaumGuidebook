@@ -49,11 +49,9 @@ const AAP2Module: React.FC = () => {
     const [selectedCategoryId, setSelectedCategoryId] = useState<AnimalCategoryId | null>(null);
     const [encyclopediaSearch, setEncyclopediaSearch] = useState('');
 
-    // --- Global Theme Integration ---
-    const { theme, toggleTheme } = useTheme();
+    const { theme } = useTheme();
     const isDarkMode = theme === 'dark';
 
-    // Dr. Luzaum state
     const [luzaumPatient, setLuzaumPatient] = useState<LuzaumPatient>({ species: null, weight: '', age: '', breed: '', history: '' });
     const [luzaumSigns, setLuzaumSigns] = useState<string[]>([]);
 
@@ -64,6 +62,11 @@ const AAP2Module: React.FC = () => {
         if (finalContent) {
             setHelpModal({ title, content: finalContent });
         }
+    }, []);
+
+    const showModuleHelp = useCallback(() => {
+        const content = EXPLANATIONS['Sobre o AAP2'];
+        if (content) setHelpModal({ title: 'Sobre este módulo', content });
     }, []);
 
     const closeHelp = useCallback(() => setHelpModal(null), []);
@@ -157,8 +160,7 @@ const AAP2Module: React.FC = () => {
                     <DrLuzaumHistoryPage
                         onBack={() => setPage('home')}
                         onNewTriage={handleNewConsulta}
-                        onViewReport={(id) => {
-                            // detailed view not linked to specific ID yet, going to generic view
+                        onViewReport={() => {
                             setPage('relatorio_detalhado');
                         }}
                     />
@@ -168,17 +170,8 @@ const AAP2Module: React.FC = () => {
         }
     };
 
-    // Full-page chrome-free view for Dr. Luzaum pages
-    if (page === 'nova_consulta' || page === 'relatório' || page === 'relatorio_detalhado') {
-        return (
-            <div id="aap2-module-root">
-                {renderPage()}
-            </div>
-        );
-    }
-
     return (
-        <div id="aap2-module-root">
+        <div id="aap2-module-root" className="flex h-full min-h-0 flex-1 flex-col bg-background">
             {helpModal && (
                 <Modal onClose={closeHelp}>
                     <h3 className="modal-title">{helpModal.title}</h3>
@@ -193,8 +186,7 @@ const AAP2Module: React.FC = () => {
                 currentPage={page}
                 onNavigate={setPage}
                 onOpenEncyclopedia={openEncyclopedia}
-                isDarkMode={isDarkMode}
-                toggleTheme={toggleTheme}
+                onAjuda={showModuleHelp}
                 onBackToHub={() => navigate('/hub')}
             >
                 {renderPage()}

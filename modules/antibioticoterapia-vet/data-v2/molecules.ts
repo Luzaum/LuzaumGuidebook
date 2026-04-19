@@ -86,4 +86,20 @@ export const ANTIBIOTIC_MOLECULES: Record<string, AntibioticMolecule> = {
     ruleTags: ['beta_lactam'],
     referenceKey: 'ref_placeholders.v2_periop',
   },
+  /** Referência de classe para futuros regimes / exemplos didáticos (carbapeném). */
+  mol_meropenem: {
+    id: 'mol_meropenem',
+    displayName: 'Meropenem',
+    classId: 'carbapenem',
+    ruleTags: ['beta_lactam'],
+    referenceKey: 'ref_placeholders.v2_general',
+  },
+  /** Referência de classe (aminoglicosídeo). */
+  mol_tobramycin: {
+    id: 'mol_tobramycin',
+    displayName: 'Tobramicina',
+    classId: 'aminoglycoside',
+    ruleTags: ['aminoglycoside'],
+    referenceKey: 'ref_placeholders.v2_general',
+  },
 }

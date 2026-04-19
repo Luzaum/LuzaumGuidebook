@@ -34,6 +34,9 @@ export interface AntibioticClass {
 export interface DiseaseTreatmentDrug {
   name: string
   rationale: string
+  /** Dose resumida quando não há ficha legada correspondente em `AB_SEED`. */
+  doseHintDog?: string
+  doseHintCat?: string
 }
 
 /**
@@ -103,7 +106,7 @@ export interface Disease {
   duration: string
   notes: string
   /** Fisiopatologia e quadro clínico completos (modal); conteúdo clássico/consensos, sem resumo forçado. */
-  pathophysiologyFull: string
+  pathophysiologyFull?: string
   /** Versão rica (tabelas, fluxogramas) para o mesmo modal; quando ausente, usa só pathophysiologyFull. */
   pathophysiologyVisual?: PathophysiologyVisual
 }
@@ -136,17 +139,16 @@ export interface DiseaseExplanation {
 export type AbvInstitutionalFocus =
   | { kind: 'pathogen'; id: string }
   | { kind: 'resistance'; id: string }
-  | { kind: 'hospital'; id: string }
   | { kind: 'reference'; key: string }
 
 /** Navegação principal do módulo (shell interno; sem router). */
 export type AbvTab =
   | 'home'
   | 'syndrome'
+  | 'diseases'
   | 'antibiotics'
   | 'pathogens'
   | 'perioperative'
-  | 'hospital'
   | 'patient-context'
   | 'references'
 

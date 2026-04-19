@@ -25,6 +25,14 @@ const PROGRESSION_OPTIONS: Array<{
     textColor: 'text-green-400',
   },
   {
+    id: 'melhora_parcial',
+    label: 'Melhora parcial',
+    color: '#4ade80',
+    bgColor: 'bg-emerald-900/25',
+    borderColor: 'border-emerald-500',
+    textColor: 'text-emerald-300',
+  },
+  {
     id: 'estático',
     label: 'Estático',
     color: '#eab308',
@@ -47,6 +55,14 @@ const PROGRESSION_OPTIONS: Array<{
     bgColor: 'bg-red-900/30',
     borderColor: 'border-red-500',
     textColor: 'text-red-400',
+  },
+  {
+    id: 'assintomatico_entre_episodios',
+    label: 'Assintomático entre episódios',
+    color: '#06b6d4',
+    bgColor: 'bg-cyan-900/25',
+    borderColor: 'border-cyan-500',
+    textColor: 'text-cyan-300',
   },
 ]
 

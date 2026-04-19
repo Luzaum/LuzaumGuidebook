@@ -4,50 +4,12 @@ import { generateDifferentials } from './differentialsV2'
 import { replaceForbiddenEnglish, auditCaseReport } from '../quality/noEnglish'
 import { applyComorbidityRules } from '../engine/comorbidityRules'
 import type { CaseReport } from '../../types/analysis'
-
-const CHIEF_COMPLAINT_LABELS: Record<string, string> = {
-  ConvulsaoFocal: 'Convulsao focal',
-  ConvulsaoGeneralizada: 'Convulsao generalizada',
-  ClusterConvulsoes: 'Cluster de convulsoes',
-  Sincope: 'Sincope/colapso',
-  AlteracaoConsciencia: 'Alteracao do nivel de consciencia',
-  Comportamento: 'Alteracao comportamental',
-  AndarCirculos: 'Andar em circulos/head pressing',
-  Cegueira: 'Cegueira aguda',
-  Anisocoria: 'Anisocoria/alteracao pupilar',
-  HeadTilt: 'Head tilt',
-  Vertigem: 'Vertigem/vomito vestibular',
-  Nistagmo: 'Nistagmo',
-  Ataxia: 'Ataxia/descoordenacao',
-  Paresia: 'Paresia/paralisia',
-  Tetraparesia: 'Tetraparesia',
-  Paraparesia: 'Paraparesia',
-  Hipermetria: 'Hipermetria/tremor de intencao',
-  DorCervical: 'Dor cervical',
-  DorToracolombar: 'Dor toracolombar',
-  DorLombossacra: 'Dor lombossacra',
-  DisfuncaoFacial: 'Disfuncao facial',
-  Disfagia: 'Disfagia/regurgitacao',
-  Disfonia: 'Disfonia/alteracao de voz',
-  DisfuncaoUrinaria: 'Disfuncao urinaria/fecal',
-  IncontinenciaUrinaria: 'Incontinencia urinaria',
-  RetencaoUrinaria: 'Retencao urinaria',
-  Tremores: 'Tremores/mioclonias',
-  FraquezaFlacida: 'Fraqueza flacida/intolerancia ao exercicio',
-  Colapso: 'Colapso recorrente',
-}
-
-const RED_FLAG_LABELS: Record<string, string> = {
-  coma_estupor: 'Coma/estupor',
-  status_epilepticus: 'Status epilepticus/cluster grave',
-  severe_progression_24h: 'Piora neurologica rapida (<24h)',
-  acute_nonambulatory: 'Nao ambulatorio agudo',
-  respiratory_compromise: 'Comprometimento respiratorio/aspiracao',
-  deep_pain_loss: 'Dor profunda ausente',
-  severe_cervical_pain: 'Dor cervical intensa',
-  anisocoria_acute: 'Anisocoria aguda',
-  dysphagia_aspiration_risk: 'Disfagia com risco de aspiracao',
-}
+import {
+  CHIEF_COMPLAINT_LABELS,
+  RED_FLAG_LABELS,
+  TEMPORAL_LABELS,
+  EVOLUTION_LABELS,
+} from '../../data/complaintDictionaries'
 
 const EXAM_VALUE_LABELS: Record<string, string> = {
   Alerta: 'Alerta',
@@ -79,7 +41,7 @@ function humanizeComplaint(id: string): string {
 }
 
 function humanizeRedFlag(id: string): string {
-  return RED_FLAG_LABELS[id] || id
+  return RED_FLAG_LABELS[id as keyof typeof RED_FLAG_LABELS] || id
 }
 
 function humanizeExamValue(value: unknown): string {
@@ -242,24 +204,11 @@ function buildHistorySummary(s: any): string {
     Array.isArray(s?.complaint?.chiefComplaintIds) && s.complaint.chiefComplaintIds.length
       ? s.complaint.chiefComplaintIds.map(humanizeComplaint)
       : []
-  const temporalLabels: Record<string, string> = {
-    peragudo: 'Peragudo',
-    agudo: 'Agudo',
-    subagudo: 'Subagudo',
-    cronico: 'Cronico',
-    episodico: 'Episodico',
-  }
-  const evolutionLabels: Record<string, string> = {
-    melhorando: 'Melhorando',
-    estatico: 'Estatico',
-    flutuante: 'Flutuante',
-    progressivo: 'Progressivo',
-  }
   const temporalPattern = s?.complaint?.temporalPattern
-    ? temporalLabels[s.complaint.temporalPattern] || 'Nao informado'
+    ? TEMPORAL_LABELS[s.complaint.temporalPattern as keyof typeof TEMPORAL_LABELS] || 'Nao informado'
     : 'Nao informado'
   const evolutionPattern = s?.complaint?.evolutionPattern
-    ? evolutionLabels[s.complaint.evolutionPattern] || 'Nao informado'
+    ? EVOLUTION_LABELS[s.complaint.evolutionPattern as keyof typeof EVOLUTION_LABELS] || 'Nao informado'
     : 'Nao informado'
 
   const contextFlags: string[] = []
@@ -269,6 +218,9 @@ function buildHistorySummary(s: any): string {
   if (s?.complaint?.ectoparasiticideExposure) contextFlags.push('Exposicao a ectoparasiticidas')
   if (s?.complaint?.systemicDisease) contextFlags.push('Doenca sistemica')
   if (s?.complaint?.recentSurgeryAnesthesia) contextFlags.push('Cirurgia/anestesia recente')
+  if (s?.complaint?.vaccinationOrTravel) contextFlags.push('Vacinacao/viagem/endemico')
+  if (s?.complaint?.videoOfEpisode) contextFlags.push('Video do episodio')
+  if (s?.complaint?.respiratoryGiSigns) contextFlags.push('Sinais respiratorios ou GI')
 
   const redFlags =
     Array.isArray(s?.complaint?.redFlags) && s.complaint.redFlags.length

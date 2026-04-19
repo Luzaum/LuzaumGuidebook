@@ -8,6 +8,11 @@ export const section1Mentacao: HelpTopic[] = [
       {
         type: 'paragraph',
         content: [
+          {
+            type: 'text',
+            value:
+              'No exame neurológico estruturado, mentação e comportamento são avaliados antes de manobras dolorosas; nível e conteúdo da consciência são distintos (conforme capítulo de exame neurológico do guia de referência). ',
+          },
           { type: 'text', value: 'Avalia o ' },
           { type: 'highlight', color: 'yellow', value: 'nível de consciência (arousal)' },
           { type: 'text', value: ' e a qualidade do ' },

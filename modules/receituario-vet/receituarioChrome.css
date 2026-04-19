@@ -1,9 +1,12 @@
 .rxv-page {
+  /* Uma viewport só: o scroll fica na .rxv-main (evita faixa vazia sob o rodapé + scroll duplo no body). */
   min-height: 100dvh;
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
-  /* Não usar overflow-x: clip aqui — força overflow-y: auto e quebra o scroll do documento */
   transition: background-color 180ms ease, color 180ms ease;
   --rxv-density-scale: 0.78;
   --rxv-page-max-width: 1680px;
@@ -57,9 +60,69 @@
   color: var(--rxv-text);
 }
 
+/* Portais (modais): mesmos tokens — sem min-height/flex da .rxv-page (evita “tela vazia” no body). */
+.rxv-modal-theme-surface.rxv-dark {
+  --rxv-bg: #050a12;
+  --rxv-bg-soft: #070f18;
+  --rxv-surface: #0a111a;
+  --rxv-surface-2: #0f1724;
+  --rxv-border: #1e2d3f;
+  --rxv-text: #f1f5f9;
+  --rxv-muted: #94a3b8;
+  --rxv-primary: #5ecfff;
+  --rxv-primary-strong: #38bdf8;
+  --rxv-input-bg: #111a26;
+  --rxv-warning-bg: rgba(245, 158, 11, 0.14);
+  --rxv-warning-border: rgba(245, 158, 11, 0.38);
+  --rxv-warning-text: #f5d08b;
+  --rxv-shadow: rgba(0, 0, 0, 0.65);
+  --rxv-primary-soft: #0c1828;
+  --rxv-primary-soft-2: #0a1520;
+  --rxv-primary-soft-3: #071018;
+  --rxv-on-primary: #04121c;
+  color: var(--rxv-text);
+}
+
+.rxv-modal-theme-surface.rxv-light {
+  --rxv-bg: #ffffff;
+  --rxv-bg-soft: #f8fafc;
+  --rxv-surface: #ffffff;
+  --rxv-surface-2: #f1f5f9;
+  --rxv-border: #e2e8f0;
+  --rxv-text: #0f172a;
+  --rxv-muted: #475569;
+  --rxv-primary: #1d4ed8;
+  --rxv-primary-strong: #1e40af;
+  --rxv-input-bg: #ffffff;
+  --rxv-warning-bg: #fff4dd;
+  --rxv-warning-border: #e0be73;
+  --rxv-warning-text: #6f4a00;
+  --rxv-shadow: rgba(0, 0, 0, 0.08);
+  --rxv-primary-soft: #eff6ff;
+  --rxv-primary-soft-2: #dbeafe;
+  --rxv-primary-soft-3: #e0f2fe;
+  --rxv-on-primary: #ffffff;
+  color: var(--rxv-text);
+}
+
+/* Fixos à viewport: ao rolar a .rxv-main o fundo continua por trás de todo o conteúdo. */
+.rxv-gradflow-host {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.rxv-gradflow-host canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
 .rxv-bg-layer {
   pointer-events: none;
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: 0;
   background-image:
@@ -156,6 +219,10 @@
     animation: none;
     opacity: 0.65;
   }
+
+  .rxv-gradflow-host {
+    display: none;
+  }
 }
 
 .rxv-scale-shell {
@@ -171,6 +238,27 @@
 .rxv-page-frame {
   width: min(100%, var(--rxv-page-max-width));
   margin: 0 auto;
+}
+
+/* Coluna preenche a .rxv-main; o rodapé do hub cola no fundo da área útil (sem “vazio” preto). */
+.rxv-main > .rxv-page-frame {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.rxv-main > .rxv-page-frame > .rxv-form {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+}
+
+.rxv-main > .rxv-page-frame > .rxv-form > *:first-child {
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 @media (min-width: 1024px) {
@@ -531,6 +619,8 @@
 .rxv-main {
   flex: 1;
   min-height: 0;
+  display: flex;
+  flex-direction: column;
   overflow: auto;
   padding: 12px var(--rxv-page-side-padding) 22px;
 }
@@ -603,6 +693,12 @@
   transition: transform 180ms ease;
 }
 
+.rxv-home-icon-badge--sm {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+}
+
 .rxv-hub-tile .rxv-home-icon-badge {
   margin-bottom: 0;
 }
@@ -615,22 +711,12 @@
   position: relative;
   isolation: isolate;
   color: var(--rxv-text);
+  display: flex;
+  flex-direction: column;
 }
 
-/* Fundo do hub: wash estático (sem grelha pesada nem “card” animado) */
-.rxv-home-shell::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  border-radius: 12px;
-  background: radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--rxv-primary) 14%, transparent), transparent 55%);
-  opacity: 1;
-}
-
-.rxv-page.rxv-light .rxv-home-shell::after {
-  background: radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--rxv-primary) 10%, transparent), transparent 55%);
+.rxv-home-shell > footer {
+  margin-top: auto;
 }
 
 .rxv-home-shell>* {
@@ -687,7 +773,31 @@
 
 .rxv-hub-tile-desc {
   flex: 1 1 auto;
-  min-height: 6.5rem;
+  min-height: 0;
+}
+
+.rxv-hub-tile-summary {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 0;
+}
+
+.rxv-hub-tile-summary--tool {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.rxv-hub-tile--tool {
+  border-radius: 15px;
+}
+
+.rxv-hub-tile--tool:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 32px -24px rgba(0, 0, 0, 0.55),
+    0 0 0 1px color-mix(in srgb, var(--rxv-primary) 12%, transparent);
 }
 
 .rxv-hub-section-label {
@@ -698,9 +808,36 @@
   color: var(--rxv-muted);
 }
 
+.rxv-hub-section-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  color: var(--rxv-text);
+}
+
+.rxv-hub-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--rxv-primary) 82%, var(--rxv-muted));
+}
+
 .rxv-hub-hero {
   border-radius: 20px;
   transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.rxv-hub-hero--featured {
+  border-radius: 22px;
+}
+
+.rxv-hub-hero--featured:hover {
+  border-color: color-mix(in srgb, var(--rxv-primary) 38%, var(--rxv-border));
+  box-shadow:
+    0 24px 56px -32px rgba(0, 0, 0, 0.5),
+    0 0 0 1px color-mix(in srgb, var(--rxv-primary) 14%, transparent);
 }
 
 .rxv-hub-hero:hover {
@@ -1234,11 +1371,45 @@
   color: var(--rxv-muted);
 }
 
-.rxv-form select {
-  color-scheme: light dark;
+/* Evita lista nativa clara + texto claro (ilegível). Um esquema por tema. */
+.rxv-page.rxv-dark .rxv-form select {
+  color-scheme: dark;
+  color: var(--rxv-text) !important;
+  background-color: var(--rxv-input-bg) !important;
+}
+
+.rxv-modal-theme-surface.rxv-dark select,
+.rxv-modal-portal.rxv-dark select {
+  color-scheme: dark;
+  color: var(--rxv-text) !important;
+  background-color: var(--rxv-input-bg) !important;
+}
+
+.rxv-page.rxv-light .rxv-form select {
+  color-scheme: light;
+}
+
+.rxv-modal-theme-surface.rxv-dark select,
+.rxv-modal-theme-surface.rxv-dark select option,
+.rxv-modal-portal.rxv-dark select,
+.rxv-modal-portal.rxv-dark select option {
+  color-scheme: dark;
+}
+
+.rxv-modal-theme-surface.rxv-light select,
+.rxv-modal-theme-surface.rxv-light select option,
+.rxv-modal-portal.rxv-light select,
+.rxv-modal-portal.rxv-light select option {
+  color-scheme: light;
 }
 
 .rxv-form select option {
+  background: var(--rxv-surface) !important;
+  color: var(--rxv-text) !important;
+}
+
+.rxv-modal-theme-surface select option,
+.rxv-modal-portal select option {
   background: var(--rxv-surface) !important;
   color: var(--rxv-text) !important;
 }
@@ -1248,7 +1419,9 @@
   color: #0f172a !important;
 }
 
-.rxv-page.rxv-dark .rxv-form select option {
+.rxv-page.rxv-dark .rxv-form select option,
+.rxv-modal-theme-surface.rxv-dark select option,
+.rxv-modal-portal.rxv-dark select option {
   background: #0f172a !important;
   color: #e2e8f0 !important;
 }

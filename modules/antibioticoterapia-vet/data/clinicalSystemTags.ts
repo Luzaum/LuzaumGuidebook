@@ -66,6 +66,8 @@ export const DISEASE_SYSTEM_KEY_TO_TAG_IDS: Record<string, ClinicalSystemTagId[]
   'Sistema Reprodutor': ['reprodutor'],
   'Sepse e instabilidade sistémica': ['vascular_sepse'],
   'Sistema Urinário': ['urinario', 'renal'],
+  /** Profilaxia e cenários cirúrgicos (alinhado v2 perioperatorio + CCIH). */
+  Perioperatório: ['cirurgia'],
 }
 
 export function tagIdsForDiseaseSystemKey(systemKey: string): ClinicalSystemTagId[] {

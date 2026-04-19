@@ -17,9 +17,9 @@ export const TratamentosPage: React.FC<TratamentosPageProps> = ({ onHelpClick })
     if (!selectedTopic) {
         return (
             <>
-                <h2 className="page-title">Protocolos de Tratamento</h2>
+                <h2 className="page-title">Protocolos de tratamento</h2>
                 <p className="page-description">
-                    Selecione o tipo de acidente para consultar o guia de tratamento detalhado.
+                    Selecione o tipo de acidente para consultar o guia. Os textos são referência educativa — adapte à realidade do paciente, disponibilidade de antiveneno e protocolo institucional.
                 </p>
                 <div className="card-grid">
                     {TREATMENT_TOPICS.map(topic => (

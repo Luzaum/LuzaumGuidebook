@@ -1,9 +1,11 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
+import type { LucideIcon } from 'lucide-react';
 import { ChevronRight, FileText, Pill, Share2, Stethoscope } from 'lucide-react';
 import { ConsultaVetSurface } from '../components/layout/ConsultaVetSurface';
 import { DoseCalculatorCard } from '../components/medication/DoseCalculatorCard';
 import { MedicationSectionFrame } from '../components/medication/MedicationSectionFrame';
+import { MedicationStructuredBlocks } from '../components/medication/MedicationStructuredBlocks';
 import { FavoriteButton } from '../components/shared/FavoriteButton';
 import { ReferencesList } from '../components/shared/ReferencesList';
 import { SectionAnchorNav, type SectionAnchorEntry } from '../components/shared/SectionAnchorNav';
@@ -18,6 +20,7 @@ import { MedicationPresentation, MedicationRecord, MedicationSupplyChannel } fro
 import { formatSpeciesList } from '../utils/navigation';
 import { cn } from '../../../lib/utils';
 import { buildDoseSummaryLabel, formatDoseSpeciesLabel } from '../utils/medicationRules';
+import { medicationPharmacologyBlockIcons } from '../utils/editorialSubsectionIcons';
 import { getMedicationSectionVisual } from '../utils/medicationSectionVisual';
 
 type ResumeLocationState = {
@@ -107,17 +110,23 @@ function PharmacologyBlock({
   items,
   bulletDotClass,
   className = '',
+  icon: Icon,
 }: {
   title: string;
   items: string[];
   bulletDotClass: string;
   className?: string;
+  /** Ícone minimalista alinhado ao tema do bloco */
+  icon?: LucideIcon;
 }) {
   if (!items.length) return null;
 
   return (
     <article className={`rounded-[24px] border border-border/80 bg-background/68 px-6 py-5 ${className}`.trim()}>
-      <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground">{title}</h3>
+      <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground">
+        {Icon ? <Icon className="h-4 w-4 shrink-0 opacity-90" strokeWidth={2} aria-hidden /> : null}
+        <span>{title}</span>
+      </h3>
       <div className="mt-4">
         <BulletList items={items} bulletDotClass={bulletDotClass} />
       </div>
@@ -614,24 +623,28 @@ export function MedicationDetailPage() {
                 <PharmacologyBlock
                   title={UI_TEXT.indications}
                   items={medication.indications}
+                  icon={medicationPharmacologyBlockIcons.indications}
                   bulletDotClass={pharmacologyVisual.bulletDotClass}
                   className="xl:col-span-7"
                 />
                 <PharmacologyBlock
                   title={UI_TEXT.contraindications}
                   items={medication.contraindications}
+                  icon={medicationPharmacologyBlockIcons.contraindications}
                   bulletDotClass={pharmacologyVisual.bulletDotClass}
                   className="xl:col-span-5"
                 />
                 <PharmacologyBlock
                   title={UI_TEXT.cautions}
                   items={medication.cautions}
+                  icon={medicationPharmacologyBlockIcons.cautions}
                   bulletDotClass={pharmacologyVisual.bulletDotClass}
                   className="xl:col-span-6"
                 />
                 <PharmacologyBlock
                   title={UI_TEXT.adverseEffects}
                   items={medication.adverseEffects}
+                  icon={medicationPharmacologyBlockIcons.adverseEffects}
                   bulletDotClass={pharmacologyVisual.bulletDotClass}
                   className="xl:col-span-6"
                 />
@@ -639,6 +652,7 @@ export function MedicationDetailPage() {
                   <PharmacologyBlock
                     title={UI_TEXT.interactions}
                     items={medication.interactions}
+                    icon={medicationPharmacologyBlockIcons.interactions}
                     bulletDotClass={pharmacologyVisual.bulletDotClass}
                     className="xl:col-span-8"
                   />
@@ -647,6 +661,7 @@ export function MedicationDetailPage() {
                   <PharmacologyBlock
                     title={UI_TEXT.routes}
                     items={medication.routes}
+                    icon={medicationPharmacologyBlockIcons.routes}
                     bulletDotClass={pharmacologyVisual.bulletDotClass}
                     className="xl:col-span-4"
                   />
@@ -656,10 +671,15 @@ export function MedicationDetailPage() {
           </MedicationSectionFrame>
 
           <MedicationSectionFrame sectionId="clinical-notes" title={UI_TEXT.clinicalNotes} lead={UI_TEXT.clinicalNotesLead}>
-            <div
-              className="prose prose-slate max-w-[108ch] text-[15px] leading-8 dark:prose-invert prose-p:my-0 prose-p:leading-8 prose-p:mb-5 prose-strong:text-foreground"
-              dangerouslySetInnerHTML={{ __html: medication.clinicalNotesRichText }}
-            />
+            <div className="space-y-8">
+              {medication.clinicalStructuredBlocks?.length ? (
+                <MedicationStructuredBlocks blocks={medication.clinicalStructuredBlocks} />
+              ) : null}
+              <div
+                className="prose prose-slate max-w-[108ch] text-[15px] leading-8 dark:prose-invert prose-p:my-0 prose-p:leading-8 prose-p:mb-5 prose-strong:text-foreground"
+                dangerouslySetInnerHTML={{ __html: medication.clinicalNotesRichText }}
+              />
+            </div>
           </MedicationSectionFrame>
 
           {medication.references && medication.references.length > 0 ? (

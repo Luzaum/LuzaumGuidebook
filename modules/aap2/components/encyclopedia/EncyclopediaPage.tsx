@@ -17,7 +17,7 @@ const CATEGORY_ORDER: AnimalCategoryId[] = ['cobras', 'aranhas', 'escorpioes', '
 const CATEGORY_LABELS: Record<AnimalCategoryId, string> = {
     cobras: 'Cobras',
     aranhas: 'Aranhas',
-    escorpioes: 'Escorpioes',
+    escorpioes: 'Escorpiões',
     sapos: 'Sapos',
     outros: 'Outros & Invertebrados',
 };

@@ -8,7 +8,8 @@ export const TREATMENT_PROTOCOLS: Record<string, TreatmentProtocol> = {
         accidentName: 'Acidente Botrópico',
         keyTherapy: {
             title: 'Terapia Essencial (Antiveneno)',
-            content: '<strong>Soro Antibotrópico (SAB):</strong> Essencial e urgente. Dose de 2 a 12 frascos IV, dependendo da gravidade.',
+            content:
+                '<strong>Primeiros passos:</strong> estabilizar via aérea/hemodinâmica, obter acesso venoso e iniciar fluidoterapia conforme gravidade; registrar horário do acidente e TC se disponível.<br/><br/><strong>Soro Antibotrópico (SAB):</strong> Essencial e urgente. Dose de 2 a 12 frascos IV, dependendo da gravidade (seguir protocolo institucional e bula).',
         },
         supportiveCare: {
             title: 'Cuidados de Suporte',

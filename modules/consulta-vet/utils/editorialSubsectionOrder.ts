@@ -3,6 +3,14 @@
  * exames da triagem aos mais confirmatórios; recursos limitados por último.
  */
 export const DIAGNOSTIC_SUBSECTION_PRIORITY: string[] = [
+  'drcAlertaEstadiamentoIRIS',
+  'drcFiguraIrisStaging',
+  'drcCronicoVersusAgudo',
+  'drcPacoteInvestigacao',
+  'drcTabelaComparativaEspecies',
+  'drcPressaoSubstadiamento',
+  'drcEstadiamentoPassos',
+  'drcExamesLaboratoriaisContexto',
   'tabelaClassificacaoExposicaoInfeccao',
   'fundamentosDiagnosticoLCan',
   'citologiaFormasAmastigotas',
@@ -74,6 +82,15 @@ export const DIAGNOSTIC_SUBSECTION_PRIORITY: string[] = [
   'drugProtocolExamples',
   'abordagemDiagnostica',
   'examesEConfirmacao',
+  /* DMVD / MMVD — ordem clínica sugerida */
+  'dmvdClinicaAusculta',
+  'dmvdEcocardiografiaPadraoOuro',
+  'dmvdEstadiamentoAcvimTabela',
+  'dmvdRadiografiaTorax',
+  'dmvdRadiografiaToraxNormalVsCardiomegalia',
+  'dmvdBiomarcadoresLaboratorio',
+  'dmvdDiferenciaisDiagnosticos',
+  'dmvdSeguimentoMonitorizacao',
 ];
 
 export function sortDiagnosticSubsectionEntries(entries: [string, unknown][]): [string, unknown][] {

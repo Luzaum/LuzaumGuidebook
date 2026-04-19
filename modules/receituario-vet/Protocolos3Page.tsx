@@ -661,7 +661,7 @@ export default function Protocolos3Page() {
     const timer = setTimeout(async () => {
       try {
         setIsSearchingMedications(true)
-        const medLimit = q ? 120 : 500
+        const medLimit = q ? 120 : 12000
         const [standardResults, compoundedResults] = await Promise.all([
           searchMedications(clinicId, q || '', medLimit),
           listManipuladosV1(clinicId).then((rows) =>

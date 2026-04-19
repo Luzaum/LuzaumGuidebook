@@ -1,5 +1,5 @@
 import { supabase } from '@/src/lib/supabaseClient';
-import { diseasesSeed } from '../../../data/seed/diseases.seed';
+import { loadDiseasesEditorialSeed } from '../../../data/seed/editorialSeedLazy';
 import { DiseaseRecord } from '../../../types/disease';
 import { DiseaseUpsertInput } from '../../../types/editorial';
 import { DiseaseRepository } from '../../repositories/disease.repository';
@@ -143,6 +143,7 @@ export class SupabaseDiseaseRepository implements DiseaseRepository {
         fetchSupabaseDiseases(Boolean(options?.includeDrafts)),
         'carregar doenças editoriais'
       );
+      const diseasesSeed = await loadDiseasesEditorialSeed();
       const merged = mergeBySlug(diseasesSeed, remote).sort((left, right) =>
         left.title.localeCompare(right.title, 'pt-BR')
       );

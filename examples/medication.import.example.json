@@ -8,6 +8,7 @@
       "activeIngredient": "Pregabalina",
       "tradeNames": [
         "Lyrica",
+        "Dorene (solução oral 25 mg/mL)",
         "Genéricos"
       ],
       "species": [
@@ -48,9 +49,9 @@
       ],
       "presentations": [
         {
-          "id": "pres-pregabalina-solucao-20",
-          "label": "Solução oral 20 mg/mL",
-          "concentrationValue": 20,
+          "id": "pres-pregabalina-solucao-25",
+          "label": "Solução oral 25 mg/mL (Dorene®)",
+          "concentrationValue": 25,
           "concentrationUnit": "mg/mL",
           "form": "Solução oral",
           "packInfo": "Frasco",

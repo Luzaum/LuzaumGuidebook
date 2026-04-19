@@ -3,6 +3,10 @@
 // ============================================================
 
 export const EXPLANATIONS: Record<string, string> = {
+    'Sobre o AAP2': `<p><strong>Animais Peçonhentos (AAP2)</strong> reúne enciclopédia de espécies, triagem por suspeitas clínica, protocolos de tratamento e a ferramenta <strong>Dr. Luzaum</strong> para apoio à análise de sinais.</p>
+<p>Use sempre o julgamento clínico, exame físico e recursos da sua clínica. Em emergência, priorize estabilização hemodinâmica, via aérea e antiveneno quando indicado, conforme protocolo local.</p>
+<p>Atalhos: <strong>Enciclopédia</strong> para identificação e toxinas; <strong>Suspeitas</strong> para pontuar diagnósticos diferenciais; <strong>Protocolos</strong> para conduta; <strong>Nova triagem</strong> para o fluxo guiado com Dr. Luzaum.</p>`,
+
     'Coagulopatia': `<strong>Coagulopatia por Consumo:</strong><br/>
 <strong>Bioquímica:</strong> O veneno botrópico contém serinaproteases com atividade "trombina-símile". Diferente da trombina fisiológica, essas enzimas clivam o fibrinogênio diretamente em monômeros de fibrina instável, sem ativar o Fator XIII.<br/>
 <strong>Fisiopatologia:</strong> Essa conversão descontrolada e sistêmica de fibrinogênio leva a um consumo agudo e massivo deste e de outros fatores de coagulação (Fator V, Fator VIII). O resultado é a hipofibrinogenemia e a incoagulabilidade sanguínea, um achado diagnóstico chave.<br/>

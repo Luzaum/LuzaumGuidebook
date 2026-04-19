@@ -1,4 +1,5 @@
 import { supabase } from './supabaseClient'
+import { resolveSupabaseAuthEmail } from './authIdentifier'
 
 function resolveAppBaseUrl() {
   const explicitAppUrl = String(import.meta.env.VITE_PUBLIC_APP_URL || '').trim()
@@ -33,7 +34,8 @@ function resolveAuthCallbackUrl(nextPath?: string) {
   return callbackUrl.toString()
 }
 
-export async function signUp(email: string, password: string) {
+export async function signUp(identifier: string, password: string) {
+  const email = resolveSupabaseAuthEmail(identifier)
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -49,7 +51,8 @@ export async function signUp(email: string, password: string) {
   return data
 }
 
-export async function signIn(email: string, password: string) {
+export async function signIn(identifier: string, password: string) {
+  const email = resolveSupabaseAuthEmail(identifier)
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
@@ -77,7 +80,8 @@ export async function signInWithGoogle(nextPath = '/app') {
   return data
 }
 
-export async function requestPasswordReset(email: string, nextPath = '/login') {
+export async function requestPasswordReset(identifier: string, nextPath = '/login') {
+  const email = resolveSupabaseAuthEmail(identifier)
   const redirectPath = nextPath.startsWith('/') ? nextPath : '/login'
   const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
     redirectTo: resolveAppUrl('/reset-password') + `?next=${encodeURIComponent(redirectPath)}`,

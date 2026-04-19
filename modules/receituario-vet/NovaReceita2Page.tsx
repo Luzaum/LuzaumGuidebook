@@ -1605,7 +1605,7 @@ export default function NovaReceita2Page() {
         const timer = setTimeout(async () => {
             try {
                 setQuickCatalogLoading(true)
-                const rows = await searchMedications(clinicId, query, query ? 30 : 15)
+                const rows = await searchMedications(clinicId, query, query ? 80 : 12000)
                 setQuickCatalogResults(rows)
             } catch (err) {
                 console.error('[QuickRx] Catalog search failed', err)
@@ -1801,10 +1801,10 @@ export default function NovaReceita2Page() {
 
     return (
         <ReceituarioChrome section="nova">
-            <div className="min-h-screen bg-[color:var(--rxv-bg)] pb-16">
+            <div className="relative pb-16">
 
                 {/* ==================== TOPBAR (ações) ==================== */}
-                <div className="sticky top-0 z-50 border-b border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface)]/90 backdrop-blur-md px-4 py-3 sm:px-6 sm:py-4">
+                <div className="sticky top-0 z-50 border-b border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface)] px-4 py-3 sm:px-6 sm:py-4">
                     <div className="flex items-center justify-end gap-2 flex-wrap">
                             <RxvToggle
                                 checked={autosave}
@@ -1989,9 +1989,8 @@ export default function NovaReceita2Page() {
                                 <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_280px]">
                                     <div className="rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/75 px-4 py-4 text-sm text-[color:var(--rxv-text)]">
                                         <p className="font-semibold text-[color:var(--rxv-text)]">Fluxo recomendado</p>
-                                        <p className="mt-2">
-                                            Abra Protocolos, escolha um protocolo da clínica ou global e use a ação
-                                            para enviar itens, recomendações, justificativa de exames e exames para esta receita.
+                                        <p className="mt-2 text-sm leading-snug text-[color:var(--rxv-muted)] lg:whitespace-nowrap">
+                                            Abra Protocolos, importe um protocolo e aplique itens, recomendações e exames nesta receita.
                                         </p>
                                         {location.state && (location.state as any)?.sourceProtocol?.name ? (
                                             <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-[color:var(--rxv-primary)]">

@@ -3,6 +3,9 @@ import { colapsoTraquealCaninoRecord } from './diseases.colapso-traqueal.seed';
 import { erliquioseMonociticaCaninaRecord } from './diseases.erlichia.seed';
 import { micoplasmosesHemotropicasRecord } from './diseases.hemoplasma.seed';
 import { leishmanioseVisceralCaninaRecord } from './diseases.leishmaniose.seed';
+import { doencaRenalCronicaCaesGatosRecord } from './diseases.drc.seed';
+import { hipertensaoArterialSistemicaRecord } from './diseases.hipertensao.seed';
+import { doencaValvarMitralDegenerativaRecord } from './diseases.dmvd.seed';
 
 export const diseasesSeed: DiseaseRecord[] = [
   {
@@ -14,7 +17,7 @@ export const diseasesSeed: DiseaseRecord[] = [
     category: 'dermatologia',
     tags: ['Períneo', 'Imunomediada', 'Pastor alemão', 'Disquesia', 'Ciclosporina'],
     quickSummary:
-      'Doença inflamatória crônica e muito dolorosa em cães, com ulcerações e tratos drenantes perianais. Evidência atual forte para base imunomediada (não só infecciosa ou anatômica). Classicamente Pastor Alemão de meia-idade a idoso. Diagnóstico sobretudo clínico (inspeção minuciosa + toque retal, muitas vezes sob sedação). Tratamento moderno prioriza imunomodulação (ciclosporina em primeira linha), higiene local, analgesia, manejo intestinal/alimentar; cirurgia para casos selecionados.',
+      'A furunculose anal / fístula perianal é doença imunomediada crônica da região perianal e pararretal em que a resposta inflamatória desregulada destrói a arquitetura tecidual normal, gerando ulcerações dolorosas, tratos fistulosos e, nos casos avançados, estenose ou incontinência. Classicamente sobredimensionada em Pastor Alemão, mas descrita em outros grandes; não é “abscesso de saco anal simples” — embora saculite possa coexistir ou mimetizar. O diagnóstico permanece fundamentalmente clínico: inspeção após tosa e limpeza, palpação digital e toque retal sob sedação/analgesia quando a dor impede exame consciente. Exames de imagem ou histopatologia entram em casos atípicos. O tratamento contemporâneo ancora-se na ciclosporina (consenso 2025 e estudos clássicos), com suporte local, analgesia multimodal, controle de infecção secundária quando documentada e dieta de eliminação em subset de pacientes com componente gastrointestinal. Cirurgia deixou de ser primeira linha e reserva-se a fibrose, estenose ou falha terapêutica documentada após curso médico adequado.',
     quickDecisionStrip: [
       'Dor perianal intensa com tratos drenantes = suspeita forte.',
       'Inspeção minuciosa e toque retal, muitas vezes com sedação.',
@@ -24,7 +27,7 @@ export const diseasesSeed: DiseaseRecord[] = [
     ],
     quickSummaryRich: {
       lead:
-        'Doença inflamatória crônica e muito dolorosa em cães, com ulcerações e tratos drenantes perianais. Hoje há forte evidência de base imunomediada (não só infecção). Classicamente em Pastor Alemão de meia-idade a idoso. O diagnóstico é sobretudo clínico (inspeção minuciosa + toque retal, muitas vezes sob sedação); o tratamento moderno prioriza imunomodulação com ciclosporina em primeira linha, higiene local e analgesia.',
+        'A furunculose perianal dói de verdade — muitos cães são eutanasiados cedo por mal controle da dor ou por confundir com “simples infecção de pele”. O eixo moderno é imunomediado: sem ciclosporina (ou equivalente terapêutico bem conduzido), antibiótico isolado falha. O exame adequado exige humildade clínica: sedar, ver todos os tratos, palpar sacos anais e documentar.',
       leadHighlights: ['imunomediada', 'Pastor Alemão', 'ciclosporina', 'inspeção', 'toque retal'],
       pillars: [
         {
@@ -49,22 +52,29 @@ export const diseasesSeed: DiseaseRecord[] = [
         title: 'Fluxo diagnóstico (consultório)',
         steps: [
           {
-            label: 'Compatibilidade clínica',
+            label: '1. Triagem de compatibilidade',
             detail:
-              'Dor perianal, secreção, odor, tenesmo/disquesia — padrão sugestivo de furunculose/fístulas perianais.',
+              'Dor perianal intensa, lambedura persistente, odor, tratos purulentos, tenesmo ou disquesia — soma sugestiva; ausência de prurido generalizado tipo alérgico.',
           },
           {
-            label: 'Exame direto (padrão ouro)',
+            label: '2. Exame direto',
             detail:
-              'Inspeção minuciosa e toque retal cuidadoso; avaliar profundidade dos tratos, estenose e sacos anais.',
+              'Tosa higiênica, limpeza suave, inspeção de todos os quadrantes perianais; digitalizar orifícios fistulosos quando seguro; toque retal para extensão pararretal, espessamento, massas e integridade dos sacos anais — sedar se necessário.',
           },
           {
-            label: 'Diferenciais locais',
-            detail: 'Sacos anais, neoplasia, corpo estranho, proctite/colite — conforme achados.',
+            label: '3. Diferenciais obrigatórios',
+            detail:
+              'Sacos anais obstruídos ou abscesso, neoplasia anal/retal, fistula por corpo estranho, proctite ulcerativa, trauma — cada um muda prognóstico e cirurgia.',
           },
           {
-            label: 'Exames adicionais sob indicação',
-            detail: 'Endoscopia se sinais GI difusos; citologia/cultura para infecção secundária; biópsia se atípico.',
+            label: '4. Exames complementares',
+            detail:
+              'Citologia/cultura se secreção purulenta exuberante; colonoscopia se diarreia hemorrágica difusa; biópsia se idade atípica, lesão nodular ou falha terapêutica inesperada.',
+          },
+          {
+            label: '5. Documentação',
+            detail:
+              'Fotografias seriadas (com consentimento) aceleram comparação objetiva sem depender de memória clínica.',
           },
         ],
       },
@@ -72,21 +82,29 @@ export const diseasesSeed: DiseaseRecord[] = [
         title: 'Fluxo terapêutico (linha geral)',
         steps: [
           {
-            label: 'Imunomodulação de base',
-            detail: 'Ciclosporina na maioria dos protocolos modernos; resposta pode levar semanas a meses.',
-          },
-          {
-            label: 'Suporte local e dor',
-            detail: 'Higiene perianal, antissépticos tópicos se necessário, analgesia e manejo fecal.',
-          },
-          {
-            label: 'Adjuvantes',
+            label: 'Camada 1 — Imunomodulação',
             detail:
-              'Prednisolona como ponte ou adjuvante em alguns casos; dieta de eliminação se componente alimentar.',
+              'Ciclosporina como espinha dorsal; expectativa de resposta em semanas a meses — combinar com monitorização de pressão arterial e função renal conforme protocolo.',
           },
           {
-            label: 'Cirurgia',
-            detail: 'Reservada para refratários, estenose grave ou anatomia que não responda ao tratamento médico.',
+            label: 'Camada 2 — Dor e pele',
+            detail:
+              'Analgesia multimodal, higiene diária, banhos de assento/antissépticos diluídos; evitar irritantes.',
+          },
+          {
+            label: 'Camada 3 — Trato gastrointestinal',
+            detail:
+              'Amolecedores fecais se dor à evacuação; dieta hidrolisada ou nova proteína se história compatível com sensibilidade alimentar.',
+          },
+          {
+            label: 'Camada 4 — Corticoide ponte',
+            detail:
+              'Prednisolona em curso curto pode acelerar melhora inicial em protocolos selecionados — transparência com tutor sobre efeitos adversos.',
+          },
+          {
+            label: 'Camada 5 — Cirurgia',
+            detail:
+              'Reservada a estenose sintomática, anatomia fistulosa que não fecha com imunomodulação prolongada ou suspeita neoplásica — nunca como atalho antes de ciclosporina adequada.',
           },
         ],
       },
@@ -128,7 +146,8 @@ export const diseasesSeed: DiseaseRecord[] = [
       'Hematochezia e secreção mucopurulenta — mucosa/ pele ulcerada + exsudato e contaminação local.\n' +
       'Fibrose e estenose — reparação desorganizada.\n' +
       'Lambedura/automutilação — dor, prurido inflamatório.\n' +
-      'Perda de peso/hiporexia — dor crônica e inflamação (Nelson & Couto: letargia, inapetência, perda de peso nos casos dolorosos).',
+      'Perda de peso/hiporexia — dor crônica e inflamação (Nelson & Couto: letargia, inapetência, perda de peso nos casos dolorosos).\n\n' +
+      'Dica de estudo: na prova, ligue “Pastor Alemão + tratos ulcerados perianais + ciclosporina” — é o triângulo mnemônico da furunculose atual.',
     clinicalSignsPathophysiology: [
       {
         system: 'behavioral',
@@ -258,6 +277,15 @@ export const diseasesSeed: DiseaseRecord[] = [
         notes: 'Disquesia, exame perianal/retal, tacrolimo/ciclosporina em contexto GI.',
         evidenceLevel: 'Referência prática',
       },
+      {
+        id: 'ref-plumb-cyclosporine',
+        citationText:
+          'Budde JA, McCluskey DM. Plumb’s Veterinary Drug Handbook, 10th ed., 2023 — ciclosporina (doses, monitorização, interações).',
+        sourceType: 'Formulário',
+        url: null,
+        notes: 'Base farmacológica da imunomodulação na furunculose.',
+        evidenceLevel: 'Alta (referência prática)',
+      },
     ],
     isPublished: true,
     source: 'seed',
@@ -305,20 +333,29 @@ export const diseasesSeed: DiseaseRecord[] = [
         title: 'Fluxo diagnóstico (simplificado)',
         steps: [
           {
-            label: 'Suspeita clínica + banco mínimo',
-            detail: 'Compatibilidade, eletrolitos, urinálise e bioquímica conforme o caso.',
+            label: '1. Decidir se há indicação de testar',
+            detail:
+              'PU/PD, polifagia, abdômen pendular, dermatopatia endócrina, fraqueza — ou gato diabético com pele de papel; não triar só por fosfatase alcalina isolada.',
           },
           {
-            label: 'Confirmar hipercortisolismo',
-            detail: 'LDDST, ACTH estimulado ou cortisol urinário — escolha conforme protocolo e comorbidades.',
+            label: '2. Banco mínimo contextual',
+            detail:
+              'Bioquímica, urinálise, pressão arterial se possível; identificar diabetes, hipertensão ou doença renal que modulam interpretação.',
           },
           {
-            label: 'Diferenciar PDH vs ADH',
-            detail: 'ACTH, imagem adrenal e testes de discriminação quando indicados.',
+            label: '3. Confirmar hipercortisolismo',
+            detail:
+              'Cão estável: LDDST frequentemente primeira escolha; ACTH stim se iatrogenia suspeita ou comorbidade que invalida supressão; UCCR para triagem/exclusão com colheita domiciliar.',
           },
           {
-            label: 'Planejar tratamento e monitoramento',
-            detail: 'Trilostano, cirurgia na forma adrenal dependente selecionada ou desmame de glicocorticoide na iatrogenia; vigilância a hipocortisolismo.',
+            label: '4. Diferenciar PDH, ADH e iatrogenia',
+            detail:
+              'Ultrassom adrenal (assimetria), ACTH endógeno, história minuciosa de corticoide tópico/ótico/injetável; erro aqui leva a cirurgia errada ou trilostano desnecessário.',
+          },
+          {
+            label: '5. Imagem hipofisária selecionada',
+            detail:
+              'Macrotumor neurológico ou candidato a radioterapia/hipofisectomia — planejar antes de prometer apenas trilostano vitalício.',
           },
         ],
       },
@@ -326,20 +363,29 @@ export const diseasesSeed: DiseaseRecord[] = [
         title: 'Linhas de tratamento (visão geral)',
         steps: [
           {
-            label: 'Controle do excesso de cortisol',
-            detail: 'Trilostano é a base em muitos cães e gatos; mitotano em cenários selecionados.',
+            label: '1. Terapia médica (maioria)',
+            detail:
+              'Trilostano: ajuste por teste de estimulação com ACTH e clínica; mitotano se intolerância ou segunda linha experiente.',
           },
           {
-            label: 'ADH unilateral',
-            detail: 'Adrenalectomia quando indicada e viável.',
+            label: '2. Cirurgia adrenal',
+            detail:
+              'ADH unilateral operável com equipe preparada para manejo perioperatório de hipertensão e hipocalemia.',
           },
           {
-            label: 'Iatrogênico',
-            detail: 'Reduzir ou suspender prednisolona ou outro glicocorticoide com plano gradual — não é tratar as formas hipófise- ou adrenal-dependentes com mais glicocorticoide sistêmico.',
+            label: '3. Iatrogenia',
+            detail:
+              'Mapa de desmame do glicocorticoide exógeno; suporte se insuficiência adrenal relativa — não “somar trilostano” sem critério.',
           },
           {
-            label: 'Segurança',
-            detail: 'Vigiar hipocortisolismo, apetite, eletrolitos e sinais de baixa cortisolemia.',
+            label: '4. Felino',
+            detail:
+              'Trilostano + controle agressivo de glicemia e fragilidade cutânea; discutir radioterapia/hipofisectomia em centros.',
+          },
+          {
+            label: '5. Segurança contínua',
+            detail:
+              'Sinais de hipocortisolismo medicamentoso (anorexia, vômito, colapso) são emergência — tutor deve reconhecer.',
           },
         ],
       },
@@ -631,4 +677,7 @@ export const diseasesSeed: DiseaseRecord[] = [
   erliquioseMonociticaCaninaRecord,
   colapsoTraquealCaninoRecord,
   micoplasmosesHemotropicasRecord,
+  doencaRenalCronicaCaesGatosRecord,
+  hipertensaoArterialSistemicaRecord,
+  doencaValvarMitralDegenerativaRecord,
 ];

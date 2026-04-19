@@ -119,9 +119,9 @@ export const NovaConsultaPage: React.FC<NovaConsultaPageProps> = ({ onNavigateTo
     const canSubmit = !!patient.species && signArray.length > 0;
 
     return (
-        <div className="flex flex-col h-screen bg-[#0f0f12] text-slate-100 font-sans overflow-hidden">
+        <div className="flex h-[min(920px,calc(100dvh-10rem))] min-h-[420px] w-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0f0f12] font-sans text-slate-100">
             {/* ── Header ─────────────────────────────────────────── */}
-            <header className="dl-glass h-16 flex items-center justify-between px-6 border-b border-white/10 shrink-0 z-50">
+            <header className="dl-glass z-50 flex h-16 shrink-0 items-center justify-between border-b border-white/10 px-6">
                 <div className="flex items-center gap-3">
                     <button
                         onClick={onBack}
@@ -132,9 +132,9 @@ export const NovaConsultaPage: React.FC<NovaConsultaPageProps> = ({ onNavigateTo
                             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
                         </svg>
                     </button>
-                    <div className="w-8 h-8 rounded-lg bg-[#6a25f4] flex items-center justify-center text-white font-bold text-sm">🐾</div>
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#6a25f4] text-sm font-bold text-white" aria-hidden>DL</div>
                     <h1 className="text-base font-bold tracking-tight text-white">
-                        Nova Consulta <span className="text-slate-400 font-normal ml-2 text-sm">| Triagem de Envenenamento</span>
+                        Nova consulta <span className="ml-2 text-sm font-normal text-slate-400">| Triagem de envenenamento</span>
                     </h1>
                 </div>
                 <div className="flex gap-3">
@@ -146,9 +146,12 @@ export const NovaConsultaPage: React.FC<NovaConsultaPageProps> = ({ onNavigateTo
                     </button>
                 </div>
             </header>
+            <p className="border-b border-white/10 bg-black/25 px-4 py-2 text-center text-[11px] leading-snug text-slate-400 sm:px-6">
+                Conteúdo educativo de apoio à decisão — não substitui julgamento clínico, protocolo institucional nem indicação formal de soro ou fármacos.
+            </p>
 
             {/* ── Main: Split Screen ──────────────────────────────── */}
-            <main className="flex flex-1 overflow-hidden">
+            <main className="flex min-h-0 flex-1 overflow-hidden">
 
                 {/* Left: Patient Profile */}
                 <aside className="w-full lg:w-[400px] xl:w-[460px] shrink-0 flex flex-col border-r border-white/10 bg-[#120d1a] overflow-y-auto dl-scroll">

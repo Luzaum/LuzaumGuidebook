@@ -1,5 +1,7 @@
 /**
  * Catálogo visível no app (listagens e fichas públicas). Editorial com `includeDrafts: true` ignora este filtro.
+ *
+ * Ao adicionar/remover slugs públicos, atualizar também `data/publicCatalogCardStubs.ts` (cartões de lista sem carregar seed completo).
  */
 export const CONSULTA_VET_PUBLIC_DISEASE_SLUGS = [
   'fistula-perianal-furunculose-anal',
@@ -8,12 +10,21 @@ export const CONSULTA_VET_PUBLIC_DISEASE_SLUGS = [
   'erliquiose-monocitica-canina',
   'colapso-traqueal-canino',
   'micoplasmoses-hemotropicas',
+  'doenca-renal-cronica-caes-gatos',
+  'hipertensao-arterial-sistemica-caes-gatos',
+  'doenca-valvar-mitral-degenerativa-caes',
 ] as const;
 
+/** Mesma regra de sincronização com `data/publicCatalogCardStubs.ts`. */
 export const CONSULTA_VET_PUBLIC_MEDICATION_SLUGS = [
   'prednisolona',
   'sulfametoxazol-trimetoprima',
   'amoxicilina-clavulanato',
+  'pregabalina',
+  'maropitant',
+  'benazepril',
+  'pimobendan',
+  'benzafibrato',
 ] as const;
 
 export function isPublicDiseaseSlug(slug: string): boolean {

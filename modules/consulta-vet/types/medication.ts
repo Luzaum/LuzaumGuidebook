@@ -1,4 +1,17 @@
-import { ContentFlag, EditorialReference, VetSpecies } from './common';
+import { ContentFlag, EditorialClinicalTable, EditorialReference, VetSpecies } from './common';
+
+/** Destaque contextual na ficha de medicamento (além de tabelas). */
+export type MedicationCalloutVariant = 'info' | 'caution' | 'brazil';
+
+export interface MedicationClinicalCallout {
+  kind: 'clinicalCallout';
+  variant: MedicationCalloutVariant;
+  title: string;
+  body: string;
+}
+
+/** Tabelas editoriais + callouts — ordem preservada no array. */
+export type MedicationStructuredBlock = EditorialClinicalTable | MedicationClinicalCallout;
 
 /** Origem / canal de obtenção da apresentação (para cálculo e orientação ao usuário). */
 export type MedicationSupplyChannel = 'human_pharmacy' | 'veterinary' | 'compounded';
@@ -52,6 +65,8 @@ export interface MedicationRecord extends ContentFlag {
   doses: MedicationDose[];
   presentations: MedicationPresentation[];
   clinicalNotesRichText: string;
+  /** Blocos estruturados (tabelas, destaques) renderizados antes do HTML de observações clínicas. */
+  clinicalStructuredBlocks?: MedicationStructuredBlock[];
   adminNotesText?: string;
   relatedDiseaseSlugs: string[];
   references?: EditorialReference[];

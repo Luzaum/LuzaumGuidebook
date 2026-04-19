@@ -83,9 +83,12 @@ export const SuspeitasPage: React.FC<SuspeitasPageProps> = ({ onHelpClick }) => 
 
     return (
         <>
-            <h2 className="page-title">Ferramenta de Suspeitas</h2>
+            <h2 className="page-title">Ferramenta de suspeitas</h2>
             <p className="page-description">
-                Insira os dados do paciente, selecione os sinais clínicos e obtenha diagnósticos diferenciais instantâneos.
+                Insira os dados do paciente, selecione os sinais clínicos e obtenha um ranking de hipóteses compatíveis com a enciclopédia local.
+            </p>
+            <p className="mb-6 rounded-xl border border-border bg-muted/40 px-4 py-3 text-sm text-muted-foreground">
+                A pontuação reflete sobreposição de sinais com fichas descritas — não substitui exame físico, histórico nem exames complementares. Use a Enciclopédia e os Protocolos para aprofundar.
             </p>
 
             {/* ---- DADOS DO PACIENTE ---- */}
@@ -266,7 +269,7 @@ const DiagnosisResultCard: React.FC<{
                 <span className="result-probability" title="Compatibilidade clínica relativa">
                     Compatibilidade: {result.probability}%
                 </span>
-                <button className="btn btn--ghost btn--sm" onClick={onPreview}>Ver na Enciclopedia</button>
+                <button className="btn btn--ghost btn--sm" onClick={onPreview}>Ver na enciclopédia</button>
             </div>
         </div>
         <div className="result-signs">

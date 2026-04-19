@@ -129,8 +129,7 @@ export function MedicationModalV3({
     const timer = setTimeout(async () => {
       try {
         setIsSearching(true)
-        // Se vazio: carrega primeiros 20; senão: busca até 50
-        const limit = q ? 120 : 500
+        const limit = q ? 120 : 12000
         const results = await searchMedications(clinicId, q || '', limit)
         setMedications(results)
       } catch (err) {

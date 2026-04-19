@@ -139,7 +139,7 @@ export default function ControleEspecialPage() {
     setError(null)
     try {
       const [medications, compoundedRows] = await Promise.all([
-        searchMedications(clinicId, '', 200),
+        searchMedications(clinicId, '', 12000),
         listCompoundedMedications(clinicId, { controlledOnly: true }),
       ])
 

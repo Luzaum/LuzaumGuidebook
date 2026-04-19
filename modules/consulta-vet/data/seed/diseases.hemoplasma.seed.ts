@@ -24,7 +24,7 @@ export const micoplasmosesHemotropicasRecord: DiseaseRecord = {
     'FIV',
   ],
   quickSummary:
-    'Infecção por micoplasmas sem parede que aderem à superfície das hemácias → hemólise principalmente extravascular (esplenomegalia, regeneração). Em gatos, Mycoplasma haemofelis é o mais patogênico; Candidatus M. haemominutum costuma ser subclínico. Em cães, M. haemocanis é frequentemente assintomático até haver asplenia, imunossupressão ou coinfecção. Diagnóstico moderno: PCR em sangue. Tratamento: doxiciclina (atenção crítica à administração em gatos); marbofloxacina/pradofloxacina em esquemas selecionados; transfusão quando anemia ameaça vida. Triagem de doadores por PCR.',
+    'Os hemoplasmas (micoplasmas hemotrópicos) são bactérias sem parede que aderem à membrana eritrocitária e alteram o destino da hemácia no baço e no fígado: predomina hemólise extravascular com anemia regenerativa, esplenomegalia e, no gato com Mycoplasma haemofelis, quadro agudo potencialmente fulminante (febre, icterícia, queda rápida do hematócrito). Candidatus M. haemominutum e Candidatus M. turicensis costumam ser menos dramáticos. No cão, M. haemocanis e agentes relacionados frequentemente permanecem subclínicos enquanto o baço remove parasitados “silenciosamente”; a doença franca aparece com asplenia congênica ou cirúrgica, imunossupressão, coinfecções (babesiose, erliquiose) ou iatrogenia transfusional. O diagnóstico contemporâneo privilegia PCR em sangue (EDTA), pois o esfregaco tem sensibilidade limitada e a parasitemia oscila. O tratamento de primeira linha é doxiciclina com técnica segura em felinos (evitar pílula “seca”); alternativas incluem marbofloxacina ou esquemas com pradofloxacina em refratários. Transfusão quando há hipóxia ou anemia vitalmente baixa; triagem PCR de doadores é pilar de biossegurança.',
   quickDecisionStrip: [
     'Gato anêmico regenerativo + febre/letargia: hemoplasmose no radar; M. haemofelis é o mais agressivo.',
     'Cão com anemia hemolítica exuberante: pensar asplenia, imunossupressão, babesiose/erliquiose.',
@@ -34,44 +34,86 @@ export const micoplasmosesHemotropicasRecord: DiseaseRecord = {
   ],
   quickSummaryRich: {
     lead:
-      'Os hemoplasmas induzem remoção acelerada de eritrócitos “marcados” pelo parasitismo superficial e resposta imune. A parasitemia pode ser cíclica — hematócrito e esfregaco variam rapidamente. O manejo integra suporte (transfusão), antimicrobiano e decisão informada sobre tentativa de clearance vs portador crônico.',
-    leadHighlights: ['PCR', 'hemólise', 'doxiciclina', 'gato'],
+      'Hemoplasma não é “só anemia regenerativa”: é infecção eritrocitária com ciclo parasitário que pode oscilar no sangue periférico, imitando IMHA primária ou piorando coinfecções vetoriais. O PCR fecha o diagnóstico etiológico quando o esfregaco falha; a doxiciclina funciona, mas no gato a rota de administração importa tanto quanto a dose. O tutor precisa entender que PCR positivo persistente pode significar portador — nem todo animal exige antibiótico eterno.',
+    leadHighlights: ['PCR', 'hemólise', 'doxiciclina', 'ciclo', 'portador'],
     pillars: [
       {
         title: 'Gato vs cão',
         body:
-          'Felino: doença clássica e guideline ABCD robusto. Canino: clínica mais rara em imunocompetente com baço; investigar causa de imunocomprometimento e coinfecções.',
-        highlights: ['ABCD', 'baço'],
+          'Felino: M. haemofelis domina a gravidade aguda; FeLV/FIV pioram desfecho. Canino: pense hemoplasma quando há anemia hemolítica em cão esplenectomizado, politransfundido ou doente sistêmico — o baço competente mascara clínica.',
+        highlights: ['FeLV', 'asplenia'],
       },
       {
         title: 'Segurança medicamentosa',
         body:
-          'Doxiciclina em felino exige técnica que evite esofagite/estenose (August’s; Plumb’s).',
-        highlights: ['esofagite'],
+          'Doxiciclina em felino: água ou slurry após comprimido, ou formulação líquida; esofagite por pílula seca é complicação evitável e documentada (August’s; Plumb’s).',
+        highlights: ['esofagite', 'slurry'],
       },
       {
-        title: 'Banco de sangue',
+        title: 'Banco de sangue e iatrogenia',
         body:
-          'Doadores devem ser rastreados por PCR periodicamente — medida preventiva mais sólida em hospital.',
-        highlights: ['PCR', 'doador'],
+          'Doador PCR-negativo (e sorologia quando protocolo exige) reduz surtos nosocomiais. Documente lote e data de transfusão se anemia surge dias depois.',
+        highlights: ['doador', 'transfusão'],
       },
     ],
     diagnosticFlow: {
-      title: 'Diagnóstico',
+      title: 'Diagnóstico (ordem racional)',
       steps: [
-        { label: 'Contexto', detail: 'Anemia regenerativa; exposição; doador; asplenia (cão).' },
-        { label: 'Hemograma + esfregaco', detail: 'Regeneração; organismos se sorte.' },
-        { label: 'PCR sangue', detail: 'Preferido; diferencia espécies.' },
-        { label: 'FeLV/FIV (gato)', detail: 'Muda gravidade e prognóstico.' },
+        {
+          label: '1. Compatibilidade e risco',
+          detail:
+            'Anemia regenerativa com icterícia ou esplenomegalia; história de doação, brigas, rua (gato) ou asplenia/coinfecção (cão). Não atribua regeneração apenas a “parasita intestinal” sem excluir hemólise.',
+        },
+        {
+          label: '2. Hemograma e morfologia',
+          detail:
+            'Reticulócitos/regeneração; esfregaco: anéis, bastonetes ou “stippling” sugestivos — sensibilidade baixa; repetir se suspeita alta.',
+        },
+        {
+          label: '3. PCR (preferido)',
+          detail:
+            'Sangue EDTA antes de antibiótico prolongado; painéis diferenciam M. haemofelis, haemominutum, turicensis, haemocanis. Quantitativo ajuda seguimento em pesquisa/protocolos.',
+        },
+        {
+          label: '4. FeLV/FIV no gato',
+          detail:
+            'Coinfecção altera prognóstico e intensidade de monitorização; não substitui PCR para hemoplasma.',
+        },
+        {
+          label: '5. Diferencial IMHA',
+          detail:
+            'Coombs, aglutinação, spherócitos — hemoplasma pode coexistir ou precipitar IMHA; corticoide não é primeira linha sem critério.',
+        },
       ],
     },
     treatmentFlow: {
-      title: 'Tratamento',
+      title: 'Tratamento (camadas)',
       steps: [
-        { label: 'Estabilizar', detail: 'Oxigénio, fluido criterioso, transfusão se grave.' },
-        { label: 'Doxiciclina 2–4 sem', detail: '10 mg/kg q24h ou 5 mg/kg q12h; prolongar se objetivo clearance.' },
-        { label: 'Persistência PCR+', detail: 'Estratégias com marbofloxacina (ABCD/Plumb’s).' },
-        { label: 'Corticoide', detail: 'Não de base; exceção se IMHA dominante não responsiva ao ATB.' },
+        {
+          label: 'Camada 0 — Oxigenação e perfusão',
+          detail:
+            'Oxigênio se dispneia; fluidoterapia criteriosa (hemólise + sobrecarga); transfusão se Ht muito baixo ou hipóxia — não “esperar só antibiótico”.',
+        },
+        {
+          label: 'Camada 1 — Doxiciclina',
+          detail:
+            '10 mg/kg q24h ou 5 mg/kg q12h VO 2–4 semanas; 4 semanas se objetivo clearance; técnica felina obrigatória.',
+        },
+        {
+          label: 'Camada 2 — Fluoroquinolonas',
+          detail:
+            'Marbofloxacina ou sequências ABCD se falha/intolerância; pradofloxacina reservada a cenários específicos; enrofloxacina: risco retiniano felino.',
+        },
+        {
+          label: 'Camada 3 — Corticoide',
+          detail:
+            'Só se componente imunomediado dominante após antibiótico adequado — não rotina “por anemia”.',
+        },
+        {
+          label: 'Camada 4 — Portador assintomático',
+          detail:
+            'PCR+ sem clínica: não tratar de rotina (ABCD/Merck); exceções: doador, imunodeprimido, multicat com animais naïf.',
+        },
       ],
     },
   },
@@ -98,7 +140,8 @@ export const micoplasmosesHemotropicasRecord: DiseaseRecord = {
       'Transfusão iatrogênica documentada; agressões/contaminação com sangue plausíveis; vertical possível. Vetores: evidência variável — carrapato experimental em cão; pulgas em gato com evidência fraca no guideline ABCD. Resumo honesto: sangue é comprovado; vetores naturais ainda debatidos em felinos.',
   },
   pathophysiology:
-    'Anemia hemolítica regenerativa → palidez, fraqueza, taquicardia/taquipneia; icterícia e esplenomegalia quando hemólise rápida/intensa. Febre e letargia por inflamação sistémica (agudo felino clássico com M. haemofelis).',
+    'Anemia hemolítica regenerativa → palidez, fraqueza, taquicardia/taquipneia; icterícia e esplenomegalia quando a hemólise é rápida ou intensa. Febre e letargia por inflamação sistêmica (agudo felino clássico com M. haemofelis).\n\n' +
+    'Dica de estudo: diferencie na prova hemólise extracelular com esplenomegalia (hemoplasma) de IMHA sem parasita — o PCR resolve a dúvida no paciente suspeito.',
   clinicalSignsPathophysiology: [
     {
       system: 'general',
@@ -139,13 +182,26 @@ export const micoplasmosesHemotropicasRecord: DiseaseRecord = {
         ],
         [
           'Monitorar deglutição e apetite',
-          'Deteção precoce de disfagia/pain',
+          'Detecção precoce de disfagia/dor',
           'Se sinais esofágicos, reavaliar com veterinário',
         ],
       ],
     },
   },
   treatment: {
+    ordemDePrioridade: [
+      '1) Avaliar necessidade de transfusão e oxigenoterapia antes de “só iniciar doxiciclina” — anemia aguda felina pode deteriorar em horas.',
+      '2) Iniciar doxiciclina com técnica segura (felino); definir duração (2–4 semanas) conforme espécie, gravidade e objetivo de clearance.',
+      '3) Repetir hemograma e, se disponível, PCR quantitativo em pontos acordados — interpretar queda de carga vs portador.',
+      '4) Se falha clínica ou intolerância: transicionar para marbofloxacina ou esquema combinado segundo ABCD/centro.',
+      '5) Triagem de doadores e educação do tutor sobre recidiva, brigas e novas transfusões.',
+    ],
+    monitoramento: [
+      'Hematócrito 24–48 h após início se grave; depois semanal até estabilizar.',
+      'Apetite, icterícia, esplenomegalia ao toque (se cooperativo).',
+      'Sinais de esofagite se doxiciclina oral em felino (salivação, regurgitação, dor).',
+      'FeLV/FIV: reavaliar se novo declínio imunológico.',
+    ],
     hemoEstabilizar:
       'Anemia grave com dispneia, prostração ou choque: suporte primeiro — transfusão quando indicada (Merck; ABCD). Eritrócitos transfundidos podem estar infectados; monitorizar.',
     hemoDoxiciclina: {

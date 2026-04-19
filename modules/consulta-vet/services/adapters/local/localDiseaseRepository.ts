@@ -1,17 +1,26 @@
 import { DiseaseRecord } from '../../../types/disease';
 import { DiseaseUpsertInput } from '../../../types/editorial';
 import { DiseaseRepository } from '../../repositories/disease.repository';
-import { diseasesSeed } from '../../../data/seed/diseases.seed';
-import { filterPublicDiseases } from '../../../constants/publicCatalog';
+import { PUBLIC_CATALOG_DISEASE_CARD_STUBS } from '../../../data/publicCatalogCardStubs';
+import { loadDiseasesEditorialSeed } from '../../../data/seed/editorialSeedLazy';
+import { filterPublicDiseases, isPublicDiseaseSlug } from '../../../constants/publicCatalog';
 
 export class LocalDiseaseRepository implements DiseaseRepository {
   async list(options?: { includeDrafts?: boolean }): Promise<DiseaseRecord[]> {
-    return filterPublicDiseases(diseasesSeed, Boolean(options?.includeDrafts));
+    if (!options?.includeDrafts) {
+      return [...PUBLIC_CATALOG_DISEASE_CARD_STUBS];
+    }
+    const diseasesSeed = await loadDiseasesEditorialSeed();
+    return [...diseasesSeed];
   }
 
   async getBySlug(slug: string, options?: { includeDrafts?: boolean }): Promise<DiseaseRecord | null> {
-    const items = await this.list(options);
-    return items.find((d) => d.slug === slug) || null;
+    const diseasesSeed = await loadDiseasesEditorialSeed();
+    if (!options?.includeDrafts) {
+      if (!isPublicDiseaseSlug(slug)) return null;
+      return filterPublicDiseases(diseasesSeed, false).find((d) => d.slug === slug) || null;
+    }
+    return diseasesSeed.find((d) => d.slug === slug) || null;
   }
 
   async search(query: string): Promise<DiseaseRecord[]> {

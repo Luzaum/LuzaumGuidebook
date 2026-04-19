@@ -156,6 +156,7 @@ export function determineNeuroLocalization(caseState: any): NeuroLocalizationRes
 
   const patellarIncreased = equalsOneOf(exam.reflex_patellar_left, 'Aumentado') || equalsOneOf(exam.reflex_patellar_right, 'Aumentado')
   const patellarReduced = equalsOneOf(exam.reflex_patellar_left, 'Diminuido', 'Ausente') || equalsOneOf(exam.reflex_patellar_right, 'Diminuido', 'Ausente')
+  const panniculusCutoff = equalsOneOf(exam.reflex_panniculus, 'Cutoff')
   const withdrawalReduced =
     equalsOneOf(exam.reflex_withdrawal_left_thoracic, 'Diminuido', 'Ausente') ||
     equalsOneOf(exam.reflex_withdrawal_right_thoracic, 'Diminuido', 'Ausente')
@@ -180,6 +181,29 @@ export function determineNeuroLocalization(caseState: any): NeuroLocalizationRes
     prosencephalonScore += 22
     prosencephalonEvidence.push('cegueira cortical/ameaca ausente com reflexo pupilar preservado')
     supportiveFindings.push('Resposta a ameaca ausente com reflexo pupilar preservado favorece via visual central')
+  }
+  /** Padrão cruzado: ameaça ausente em um olho + propriocepção torácica contralateral alterada — sugere prosencéfalo (integração cortical). */
+  const menaceLeftAbsentOnly =
+    equalsOneOf(exam.menace_left, 'Ausente') && !equalsOneOf(exam.menace_right, 'Ausente')
+  const menaceRightAbsentOnly =
+    equalsOneOf(exam.menace_right, 'Ausente') && !equalsOneOf(exam.menace_left, 'Ausente')
+  const propThoracicRightBad =
+    equalsOneOf(exam.proprioception_thoracic_right, 'Diminuido', 'Ausente')
+  const propThoracicLeftBad =
+    equalsOneOf(exam.proprioception_thoracic_left, 'Diminuido', 'Ausente')
+  if (menaceLeftAbsentOnly && propThoracicRightBad) {
+    prosencephalonScore += 14
+    prosencephalonEvidence.push('ameaca olho esquerdo ausente com propriocepcao toracica direita alterada')
+    supportiveFindings.push(
+      'Padrao cruzado (ameaca a esquerda ausente com propriocepcao toracica direita alterada) pode indicar prosencefalo',
+    )
+  }
+  if (menaceRightAbsentOnly && propThoracicLeftBad) {
+    prosencephalonScore += 14
+    prosencephalonEvidence.push('ameaca olho direito ausente com propriocepcao toracica esquerda alterada')
+    supportiveFindings.push(
+      'Padrao cruzado (ameaca a direita ausente com propriocepcao toracica esquerda alterada) pode indicar prosencefalo',
+    )
   }
   if (alteredMentation || alteredBehavior) {
     prosencephalonScore += 15
@@ -279,6 +303,20 @@ export function determineNeuroLocalization(caseState: any): NeuroLocalizationRes
       score: 68,
       evidence: ['toracicos preservados com pelvicos UMN'],
     })
+  }
+
+  if (panniculusCutoff && !thoracicAffected && pelvicAffected && !patellarReduced) {
+    supportiveFindings.push('Cutoff do panniculus com deficit pelvico e padrao UMN reforca segmento T3-L3')
+    scores.push({
+      axis: 'MEDULA_T3_L3',
+      score: 58,
+      evidence: ['cutoff panniculus + pelvicos UMN + toracicos preservados'],
+    })
+  }
+  if (panniculusCutoff && patellarReduced && !thoracicAffected && pelvicAffected) {
+    contradictoryFindings.push(
+      'Cutoff do panniculus com reflexos pelvicos diminuidos: ponderar tambem L4-S3/cauda em paralelo ao T3-L3',
+    )
   }
 
   if (!thoracicAffected && pelvicAffected && patellarReduced) {

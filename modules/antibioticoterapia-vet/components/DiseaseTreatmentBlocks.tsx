@@ -4,6 +4,7 @@ import InlineDrugSummary from './InlineDrugSummary'
 import RichTextViewer, { InlineRichText } from './RichTextViewer'
 import { normalizeDrugDisplayName } from '../utils/clinicalCopy'
 import { regimeModeLabel } from '../utils/diseaseTreatment'
+import { getClassStyleForDrugLine } from '../utils/drugClassVisual'
 
 export const DiseaseTreatmentBlocks: React.FC<{
   block: TreatmentLineBlock
@@ -23,77 +24,95 @@ export const DiseaseTreatmentBlocks: React.FC<{
           <RichTextViewer text={block.presentation} />
         </div>
       </div>
-      {block.regimes.map((reg, ri) => (
-        <div
-          key={ri}
-          className="rounded-2xl border p-4 shadow-sm"
-          style={{
-            borderColor: 'hsl(var(--border))',
-            background: 'color-mix(in srgb, hsl(var(--foreground)) 3%, hsl(var(--card)))',
-          }}
-        >
-          {reg.label ? (
-            <p className="mb-2 text-sm font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
-              {reg.label}
-            </p>
-          ) : null}
-          <p
-            className="mb-3 inline-flex rounded-full border px-2.5 py-1 text-xs font-semibold"
-            style={{
-              color: 'hsl(var(--primary))',
-              borderColor: 'color-mix(in srgb, hsl(var(--primary)) 45%, hsl(var(--border)))',
-              background: 'color-mix(in srgb, hsl(var(--primary)) 12%, hsl(var(--card)))',
-            }}
+      {block.regimes.map((reg, ri) => {
+        const firstDrug = reg.drugs[0]?.name
+        const classSt = firstDrug ? getClassStyleForDrugLine(firstDrug, abDict) : null
+        return (
+          <div
+            key={ri}
+            className="rounded-2xl border p-4 shadow-sm"
+            style={
+              classSt
+                ? {
+                    borderColor: classSt.border,
+                    background: classSt.bg,
+                    boxShadow: `inset 4px 0 0 0 ${classSt.border}`,
+                  }
+                : {
+                    borderColor: 'hsl(var(--border))',
+                    background: 'color-mix(in srgb, hsl(var(--foreground)) 3%, hsl(var(--card)))',
+                  }
+            }
           >
-            {regimeModeLabel(reg.mode)}
-          </p>
-          <div className="space-y-4">
-            {reg.drugs.map((drug, di) => {
-              const key = normalizeDrugDisplayName(drug.name)
-              const alreadyDetailed = Boolean(drugDetailDedupeSet?.has(key))
-              if (alreadyDetailed) {
+            {reg.label ? (
+              <p className="mb-2 text-sm font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
+                {reg.label}
+              </p>
+            ) : null}
+            <p
+              className="mb-3 inline-flex rounded-full border px-2.5 py-1 text-xs font-semibold"
+              style={{
+                color: 'hsl(var(--primary))',
+                borderColor: 'color-mix(in srgb, hsl(var(--primary)) 45%, hsl(var(--border)))',
+                background: 'color-mix(in srgb, hsl(var(--primary)) 12%, hsl(var(--card)))',
+              }}
+            >
+              {regimeModeLabel(reg.mode)}
+            </p>
+            <div className="space-y-4">
+              {reg.drugs.map((drug, di) => {
+                const key = normalizeDrugDisplayName(drug.name)
+                const alreadyDetailed = Boolean(drugDetailDedupeSet?.has(key))
+                if (alreadyDetailed) {
+                  return (
+                    <div
+                      key={di}
+                      className="rounded-xl border border-dashed px-3 py-3 text-sm"
+                      style={{
+                        borderColor: 'color-mix(in srgb, hsl(var(--muted-foreground)) 35%, hsl(var(--border)))',
+                        background: 'color-mix(in srgb, hsl(var(--muted)) 12%, hsl(var(--card)))',
+                        color: 'hsl(var(--muted-foreground))',
+                      }}
+                    >
+                      <span className="font-semibold text-[hsl(var(--foreground))]">{drug.name}</span>
+                      <p className="mt-1 text-xs leading-relaxed">
+                        <span className="font-medium text-[hsl(var(--foreground))]">Por que nesta condição: </span>
+                        <InlineRichText text={drug.rationale} />
+                      </p>
+                    </div>
+                  )
+                }
+
+                drugDetailDedupeSet?.add(key)
+
                 return (
-                  <div
-                    key={di}
-                    className="rounded-xl border border-dashed px-3 py-3 text-sm"
-                    style={{
-                      borderColor: 'color-mix(in srgb, hsl(var(--muted-foreground)) 35%, hsl(var(--border)))',
-                      background: 'color-mix(in srgb, hsl(var(--muted)) 12%, hsl(var(--card)))',
-                      color: 'hsl(var(--muted-foreground))',
-                    }}
-                  >
-                    <span className="font-semibold text-[hsl(var(--foreground))]">{drug.name}</span>
-                    <p className="mt-1 text-xs leading-relaxed">
-                      Mesmo fármaco já descrito numa linha anterior — mantém-se neste esquema (associação ou continuação).{' '}
+                  <div key={di}>
+                    <InlineDrugSummary name={drug.name} abDict={abDict} onSeeGuide={onSeeGuide} comorbidities={comorbidities} />
+                    {drug.doseHintDog || drug.doseHintCat ? (
+                      <p className="mt-1 text-xs leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
+                        <span className="font-semibold text-[hsl(var(--foreground))]">Doses (resumo):</span> cão:{' '}
+                        {drug.doseHintDog ?? '—'} · gato: {drug.doseHintCat ?? '—'}
+                      </p>
+                    ) : null}
+                    <div
+                      className="mt-2 rounded-lg border px-3 py-2 text-sm leading-relaxed"
+                      style={{
+                        borderColor: 'color-mix(in srgb, hsl(var(--border)) 80%, transparent)',
+                        color: 'hsl(var(--foreground))',
+                      }}
+                    >
+                      <span className="font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
+                        Por que nesta condição:{' '}
+                      </span>
                       <InlineRichText text={drug.rationale} />
-                    </p>
+                    </div>
                   </div>
                 )
-              }
-
-              drugDetailDedupeSet?.add(key)
-
-              return (
-                <div key={di}>
-                  <InlineDrugSummary name={drug.name} abDict={abDict} onSeeGuide={onSeeGuide} comorbidities={comorbidities} />
-                  <div
-                    className="mt-2 rounded-lg border px-3 py-2 text-sm leading-relaxed"
-                    style={{
-                      borderColor: 'color-mix(in srgb, hsl(var(--border)) 80%, transparent)',
-                      color: 'hsl(var(--foreground))',
-                    }}
-                  >
-                    <span className="font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
-                      Por que nesta condição:{' '}
-                    </span>
-                    <InlineRichText text={drug.rationale} />
-                  </div>
-                </div>
-              )
-            })}
+              })}
+            </div>
           </div>
-        </div>
-      ))}
+        )
+      })}
     </section>
   )
 }

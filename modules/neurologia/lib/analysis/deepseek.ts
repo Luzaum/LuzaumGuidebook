@@ -808,9 +808,13 @@ function getHistoryTokens(caseState: CaseStateInput): string[] {
     subagudo: 'subagudo',
     cronico: 'cronico',
     episodico: 'episodico',
+    insidioso: 'insidioso',
+    oscilante: 'oscilante',
+    recorrente: 'recorrente',
   }
   const evolutionMap: Record<string, string> = {
     melhorando: 'melhorando',
+    melhora_parcial: 'melhora parcial',
     estatico: 'estatico',
     'estático': 'estatico',
     flutuante: 'flutuante',
@@ -823,6 +827,9 @@ function getHistoryTokens(caseState: CaseStateInput): string[] {
     ectoparasiticideExposure: 'exposicao a ectoparasiticidas',
     systemicDisease: 'doenca sistemica',
     recentSurgeryAnesthesia: 'cirurgia anestesia recente',
+    vaccinationOrTravel: 'vacinacao viagem endemico',
+    videoOfEpisode: 'video episodio',
+    respiratoryGiSigns: 'sinais respiratorios gi',
   }
   const chiefComplaints = Array.isArray(complaint.chiefComplaintIds)
     ? complaint.chiefComplaintIds.slice(0, 6)

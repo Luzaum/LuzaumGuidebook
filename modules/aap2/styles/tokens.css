@@ -5,6 +5,9 @@
    ============================================================ */
 
 #aap2-module-root {
+    /* Alinha texto ao tema Vetius quando o módulo usa classes utilitárias */
+    color: hsl(var(--foreground));
+
     /* --- Paleta Principal --- */
     --color-primary: #7C3AED;
     /* Violet 600 */
@@ -975,4 +978,23 @@
 
 .dark #aap2-module-root .tooltip-modal-body {
     color: #cbd5e1;
+}
+
+/* Acessibilidade: reduzir animações nas cartas do dashboard */
+@media (prefers-reduced-motion: reduce) {
+    #aap2-module-root .species-card,
+    #aap2-module-root .species-card .image-bg {
+        transition: none !important;
+    }
+
+    #aap2-module-root .species-card-container:hover .species-card:not(:hover) {
+        opacity: 1 !important;
+        flex: 1 1 0% !important;
+        transform: none !important;
+    }
+
+    #aap2-module-root .species-card:hover {
+        flex: 1 1 0% !important;
+        transform: none !important;
+    }
 }

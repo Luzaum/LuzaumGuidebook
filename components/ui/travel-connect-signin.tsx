@@ -238,7 +238,7 @@ export default function TravelConnectSignIn({
     try {
       const normalizedEmail = email.trim()
       if (!normalizedEmail) {
-        throw new Error('Informe seu email para recuperar a senha.')
+        throw new Error('Informe seu usuário ou email para recuperar a senha.')
       }
       await onForgotPassword(normalizedEmail)
       setResetMessage('Enviamos um link de recuperacao para seu email.')
@@ -375,15 +375,15 @@ export default function TravelConnectSignIn({
               <form className="space-y-5" onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor={`${mode}-email`} className="mb-1 block text-sm font-medium text-slate-300">
-                    Email <span className="text-blue-400">*</span>
+                    Usuário ou e-mail <span className="text-blue-400">*</span>
                   </label>
                   <Input
                     id={`${mode}-email`}
-                    type="email"
-                    placeholder="seuemail@clínica.com"
+                    type="text"
+                    placeholder="ex.: rani ou seuemail@clinica.com"
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
-                    autoComplete="email"
+                    autoComplete="username"
                     required
                   />
                 </div>

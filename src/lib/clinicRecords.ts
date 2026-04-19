@@ -697,6 +697,19 @@ async function resolveGlobalMedicationBySlug(slug: string): Promise<GlobalMedica
   }
 }
 
+/**
+ * Medicamentos de homologação / QA (ex.: "QA FLOW A 12H") não entram na busca para prescrição.
+ */
+export function isQaFlowHomologMedicationName(name: string | null | undefined): boolean {
+  const n = String(name || '').trim().toLowerCase()
+  if (!n) return false
+  return /\bqa[\s_-]*flow\b/.test(n) || n.startsWith('qa flow')
+}
+
+function filterPrescriptionCatalogSearch<T extends { name?: string | null }>(rows: T[]): T[] {
+  return rows.filter((row) => !isQaFlowHomologMedicationName(row.name))
+}
+
 function parseRecommendedDoseCountFromMedicationRow(row: Record<string, unknown>): number {
   const nested = row.medication_recommended_doses
   if (!Array.isArray(nested) || nested.length === 0) return 0
@@ -705,14 +718,25 @@ function parseRecommendedDoseCountFromMedicationRow(row: Record<string, unknown>
   return Number.isFinite(n) && n > 0 ? n : 0
 }
 
+/** Limite de linhas ao listar catálogo da clínica sem filtro (alinha ao Catálogo 3 / listMedications). */
+const SEARCH_CLINIC_BROWSE_MAX = 20000
+/** Limite de globais quando não há query (browse). */
+const SEARCH_GLOBAL_BROWSE_MAX = 4000
+
 export async function searchMedications(
   clinicId: string,
   query: string,
-  limit = 50 // ✅ OBJ 3: limit opcional (default 50)
+  limit = 50 // máximo de resultados devolvidos após mesclar + ordenar
 ): Promise<MedicationSearchResult[]> {
   console.log('[MedicationSearch] START', { clinicId, query, limit })
 
   const q = query.trim()
+  const browseMode = !q
+  /** Quantas linhas buscar em cada fonte antes de mesclar (não confundir com `limit` final). */
+  const clinicFetchLimit = browseMode
+    ? SEARCH_CLINIC_BROWSE_MAX
+    : Math.min(Math.max(limit, 1), 600)
+  const globalFetchLimit = browseMode ? SEARCH_GLOBAL_BROWSE_MAX : Math.min(Math.max(limit, 1), 600)
 
   const mapClinicRows = (rows: Record<string, unknown>[]): MedicationSearchResult[] =>
     rows.map((raw) => {
@@ -735,9 +759,7 @@ export async function searchMedications(
     request = request.ilike('name', `%${q}%`)
   }
 
-  request = request
-    .order('name', { ascending: true })
-    .limit(limit)
+  request = request.order('name', { ascending: true }).limit(clinicFetchLimit)
 
   let { data, error } = await request
 
@@ -750,7 +772,7 @@ export async function searchMedications(
     if (q) {
       fb = fb.ilike('name', `%${q}%`)
     }
-    fb = fb.order('name', { ascending: true }).limit(limit)
+    fb = fb.order('name', { ascending: true }).limit(clinicFetchLimit)
     const retry = await fb
     data = retry.data
     error = retry.error
@@ -761,28 +783,22 @@ export async function searchMedications(
       source: 'clinic' as const,
       scope: 'clinic' as const,
     }))
-    const globalRows = await fetchGlobalMedicationRows(q, limit)
+    const globalRows = await fetchGlobalMedicationRows(q, globalFetchLimit)
     const globalResults = globalRows.map(mapGlobalMedicationRowToSearchResult)
-    return mergeCatalogSearchResults([...clinicResults, ...globalResults], limit)
+    return filterPrescriptionCatalogSearch(
+      mergeCatalogSearchResults([...clinicResults, ...globalResults], limit)
+    )
   }
 
   console.log('[MedicationSearch] RESULT', { count: data?.length, error: null })
-  let clinicResults = mapClinicRows((data ?? []) as Record<string, unknown>[])
+  const clinicResults = mapClinicRows((data ?? []) as Record<string, unknown>[])
 
-  // Homônimos da clínica: primeiro quem tem doses no catálogo (evita cair no UUID “vazio”).
-  clinicResults.sort((a, b) => {
-    const ac = (a.recommended_dose_count ?? 0) > 0 ? 1 : 0
-    const bc = (b.recommended_dose_count ?? 0) > 0 ? 1 : 0
-    if (bc !== ac) return bc - ac
-    const na = String(a.name || '').localeCompare(String(b.name || ''), 'pt', { sensitivity: 'base' })
-    if (na !== 0) return na
-    return String(a.id).localeCompare(String(b.id))
-  })
-
-  const globalRows = await fetchGlobalMedicationRows(q, limit)
+  const globalRows = await fetchGlobalMedicationRows(q, globalFetchLimit)
   const globalResults = globalRows.map(mapGlobalMedicationRowToSearchResult)
 
-  return mergeCatalogSearchResults([...clinicResults, ...globalResults], limit)
+  return filterPrescriptionCatalogSearch(
+    mergeCatalogSearchResults([...clinicResults, ...globalResults], limit)
+  )
 }
 
 export async function loadMedicationsList(clinicId: string): Promise<{ id: string; name: string }[]> {
@@ -945,7 +961,8 @@ export interface RecommendedDose {
   frequency: string | null // texto legível
   frequency_min?: number | null // freq mínima (vezes/dia)
   frequency_max?: number | null // freq máxima (vezes/dia)
-  frequency_mode?: string | null // 'times_per_day' | 'every_x_hours' | 'custom'
+  /** Modo semântico (metadata + pick); pode ser single_dose/repeat_interval; coluna no DB pode ser `custom` por compat. */
+  frequency_mode?: string | null
   /** Legado/import: intervalo em horas quando o catálogo não usa só frequency_min */
   interval_hours?: number | null
   frequency_text?: string | null // texto livre
@@ -973,9 +990,41 @@ function normalizeRecommendedDoseMetadata(input: any): Record<string, unknown> {
   return (input && typeof input === 'object' && !Array.isArray(input)) ? { ...input } : {}
 }
 
+/** Modos semânticos suportados pela UI / catálogo (metadata é fonte de verdade). */
+const MRD_SEMANTIC_FREQUENCY_MODES = new Set([
+  'times_per_day',
+  'every_x_hours',
+  'custom',
+  'single_dose',
+  'repeat_interval',
+])
+
+/**
+ * Normaliza o modo vindo da UI ou importações antigas.
+ * Valores desconhecidos viram `custom` para não quebrar o CHECK do Postgres.
+ */
+function normalizeSemanticMrdFrequencyMode(raw: unknown): string {
+  const s = typeof raw === 'string' ? raw.trim().toLowerCase() : String(raw ?? '').trim().toLowerCase()
+  if (MRD_SEMANTIC_FREQUENCY_MODES.has(s)) return s
+  return 'custom'
+}
+
+/**
+ * Valor gravado na coluna `frequency_mode` do Supabase.
+ * Constraints antigas (migration 20260319) só aceitam times_per_day | every_x_hours | custom.
+ * Modos `single_dose` e `repeat_interval` (migration 20260405) ficam em metadata; na coluna usamos `custom`.
+ * Assim o save funciona com ou sem a migration 20260405193000 aplicada no remoto.
+ */
+function coerceMrdFrequencyModeForDbColumn(semantic: string): string | null {
+  if (!semantic) return null
+  if (semantic === 'single_dose' || semantic === 'repeat_interval') return 'custom'
+  return semantic
+}
+
 /**
  * INSERT omitia frequency_mode e o Postgres aplicava DEFAULT 'times_per_day';
  * o modo real ficava só em metadata — preferir metadata nesse caso legado.
+ * Quando a coluna foi persistida como `custom` por compatibilidade, o modo semântico está em metadata.
  */
 function pickFrequencyMode(row: any, metadata: Record<string, unknown>): string | null {
   const rv = row?.frequency_mode
@@ -984,6 +1033,11 @@ function pickFrequencyMode(row: any, metadata: Record<string, unknown>): string 
     rv !== undefined && rv !== null && rv !== '' ? String(rv).trim().toLowerCase() : ''
   const m =
     mv !== undefined && mv !== null && mv !== '' ? String(mv).trim().toLowerCase() : ''
+
+  if (m && MRD_SEMANTIC_FREQUENCY_MODES.has(m)) {
+    return String(metadata.frequency_mode).trim()
+  }
+
   if (m && r === 'times_per_day' && m !== 'times_per_day') return String(mv).trim()
   if (r) return String(rv).trim()
   if (m) return String(mv).trim()
@@ -1165,7 +1219,11 @@ export async function saveMedicationRecommendedDoses(
     metadata.indication = dose.indication ?? metadata.indication ?? null
     metadata.frequency_min = dose.frequency_min ?? metadata.frequency_min ?? null
     metadata.frequency_max = dose.frequency_max ?? metadata.frequency_max ?? null
-    metadata.frequency_mode = dose.frequency_mode ?? metadata.frequency_mode ?? null
+    const semanticFm = normalizeSemanticMrdFrequencyMode(
+      dose.frequency_mode ?? metadata.frequency_mode ?? 'times_per_day',
+    )
+    metadata.frequency_mode = semanticFm
+    const frequencyModeColumn = coerceMrdFrequencyModeForDbColumn(semanticFm)
     metadata.frequency_text = dose.frequency_text ?? metadata.frequency_text ?? null
     metadata.recurrence_value = dose.recurrence_value ?? metadata.recurrence_value ?? null
     metadata.recurrence_unit = dose.recurrence_unit ?? metadata.recurrence_unit ?? null
@@ -1178,7 +1236,7 @@ export async function saveMedicationRecommendedDoses(
     metadata.calculator_default_frequency =
       dose.calculator_default_frequency ?? metadata.calculator_default_frequency ?? null
 
-    const fm = String(metadata.frequency_mode || '')
+    const fm = semanticFm
     const isSingleDose =
       dose.is_single_dose ?? (fm === 'single_dose' || fm === 'repeat_interval') ?? false
     const isRepeatPeriodically = dose.repeat_periodically ?? (fm === 'repeat_interval') ?? false
@@ -1196,7 +1254,7 @@ export async function saveMedicationRecommendedDoses(
       indication: (metadata.indication as string | null) ?? null,
       frequency_min: metadata.frequency_min != null ? Number(metadata.frequency_min) : null,
       frequency_max: metadata.frequency_max != null ? Number(metadata.frequency_max) : null,
-      frequency_mode: (metadata.frequency_mode as string | null) ?? null,
+      frequency_mode: frequencyModeColumn,
       frequency_text: (metadata.frequency_text as string | null) ?? null,
       duration: (metadata.duration as string | null) ?? null,
       calculator_default_dose:
@@ -1245,7 +1303,11 @@ export async function saveMedicationRecommendedDoses(
       metadata.indication = d.indication ?? metadata.indication ?? null
       metadata.frequency_min = d.frequency_min ?? metadata.frequency_min ?? null
       metadata.frequency_max = d.frequency_max ?? metadata.frequency_max ?? null
-      metadata.frequency_mode = d.frequency_mode ?? metadata.frequency_mode ?? null
+      const semanticFm = normalizeSemanticMrdFrequencyMode(
+        d.frequency_mode ?? metadata.frequency_mode ?? 'times_per_day',
+      )
+      metadata.frequency_mode = semanticFm
+      const frequencyModeColumn = coerceMrdFrequencyModeForDbColumn(semanticFm)
       metadata.frequency_text = d.frequency_text ?? metadata.frequency_text ?? null
       metadata.recurrence_value = d.recurrence_value ?? metadata.recurrence_value ?? null
       metadata.recurrence_unit = d.recurrence_unit ?? metadata.recurrence_unit ?? null
@@ -1258,7 +1320,7 @@ export async function saveMedicationRecommendedDoses(
       metadata.calculator_default_frequency =
         d.calculator_default_frequency ?? metadata.calculator_default_frequency ?? null
 
-      const fm = String(metadata.frequency_mode || '')
+      const fm = semanticFm
       const isSingleDose =
         d.is_single_dose ?? (fm === 'single_dose' || fm === 'repeat_interval') ?? false
       const isRepeatPeriodically = d.repeat_periodically ?? (fm === 'repeat_interval') ?? false
@@ -1278,7 +1340,7 @@ export async function saveMedicationRecommendedDoses(
         indication: (metadata.indication as string | null) ?? null,
         frequency_min: metadata.frequency_min != null ? Number(metadata.frequency_min) : null,
         frequency_max: metadata.frequency_max != null ? Number(metadata.frequency_max) : null,
-        frequency_mode: (metadata.frequency_mode as string | null) ?? null,
+        frequency_mode: frequencyModeColumn,
         frequency_text: (metadata.frequency_text as string | null) ?? null,
         duration: (metadata.duration as string | null) ?? null,
         calculator_default_dose:

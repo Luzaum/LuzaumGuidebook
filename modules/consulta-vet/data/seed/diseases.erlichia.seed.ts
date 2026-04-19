@@ -22,7 +22,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
     'Coinfecção',
   ],
   quickSummary:
-    'Doença transmitida principalmente por carrapatos (Rhipicephalus sanguineus), com Ehrlichia canis infectando monócitos. Cursa em fases aguda, subclínica e crônica; trombocitopenia é achado clássico, com evolução possível para hiperglobulinemia, proteinúria, uveíte, poliartrite e pancitopenia medular. Diagnóstico é integrado (clínica + hemograma + sorologia + PCR). Tratamento de primeira linha: doxiciclina 10 mg/kg SID por pelo menos 28 dias. Transfusão e triagem de doadores são pontos críticos de segurança.',
+    'A erliquiose monocítica canina (CME) é riquetsiose sistêmica transmitida sobretudo pelo carrapato marrom Rhipicephalus sanguineus: Ehrlichia canis infecta monócitos, replica no sistema fagocítico mononuclear e evolui em três grandes fases — aguda (febre, linfadenomegalia, trombocitopenia marcada), subclínica (animal aparentemente saudável com laboratório oculto ou sorologia/PCR positivas) e crônica (pancitopenia, hemorragias, proteinúria, uveíte, poliartrite, sinais neurológicos). A trombocitopenia é o achado hematológico mais lembrado, mas o sangramento pode ser desproporcional à contagem por vasculite, disfunção plaquetária e hiperglobulinemia. O diagnóstico não se resume a um exame: integra contexto epidemiológico, hemograma seriado, visualização de mórulas (quando presente), sorologia com interpretação temporal e PCR em sangue antes do antibiótico. A doxiciclina 10 mg/kg SID VO por pelo menos 28 dias é tratamento de primeira linha com base em consenso ACVIM; cursos curtos podem melhorar a clínica sem eliminar o risco de persistência e transmissão vetorial. Suporte transfusional, controle de dor hemorrágica e triagem de doadores (sorologia e PCR) são medidas de segurança essenciais.',
   quickDecisionStrip: [
     'Cão com carrapato (ou histórico) + trombocitopenia: pense forte em erliquiose.',
     'Agudo: febre, apatia, anorexia, linfadenomegalia; crônico: pancitopenia, hemorragia, uveíte, proteinúria.',
@@ -32,44 +32,86 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
   ],
   quickSummaryRich: {
     lead:
-      'A CME é uma riquetsiose sistémica: após inoculação pelo carrapato, E. canis replica em monócitos e dissemina pelo sistema mononuclear fagocítico. O quadro varia de agudo febril a subclínico sorológico/PCR+ e a crônico multissistêmico com imunocomplexos e hipoplasia medular. Nenhum exame isolado substitui o raciocínio temporal (soroconversão, carga parasitária, fase da doença).',
-    leadHighlights: ['trombocitopenia', '28 dias', 'PCR', 'integrado'],
+      'CME é doença do tempo: na primeira semana você pode ter PCR positiva e sorologia ainda negativa; meses depois, sorologia alta com PCR negativa não prova necessariamente cura sem contexto. O carrapato é o elo epidemiológico, mas transfusão e coinfecções mudam o roteiro terapêutico. O tratamento com doxiciclina é altamente eficaz na maioria dos agudos — a armadilha é parar cedo ou ignorar pancitopenia crônica que precisa de meses para remontar medula.',
+    leadHighlights: ['fases', '28 dias', 'PCR', 'carrapato', 'pancitopenia'],
     pillars: [
       {
         title: 'Vetor e sangue',
         body:
-          'Rhipicephalus sanguineus é o vetor mais citado para E. canis. Transmissão transfusional é documentada: doadores devem ser sorologicamente (e idealmente PCR) negativos.',
-        highlights: ['sanguineus', 'transfusão'],
+          'R. sanguineus permanece o vetor clássico; ausência de carrapato no exame não exclui doença. Doadores devem ser PCR e sorologia negativos quando o banco adota esse padrão — erliquiose é transfusível.',
+        highlights: ['transfusão', 'doador'],
       },
       {
         title: 'Plaquetas e sangramento',
         body:
-          'A contagem plaquetária não conta a história toda: vasculite, disfunção plaquetária e hiperglobulinemia explicam sangramento desproporcional ao número.',
-        highlights: ['vasculite', 'disfunção plaquetária'],
+          'Epistaxe com plaquetas “não tão baixas” é pista de vasculite ou disfunção plaquetária; não complacência só com contagem.',
+        highlights: ['epistaxe', 'hiperglobulinemia'],
       },
       {
         title: 'Coinfecções',
         body:
-          'Anaplasma platys, Babesia, Bartonella e outras infecções vetoriais podem agravar ou confundir o quadro — reabrir o diagnóstico se a resposta for atípica.',
-        highlights: ['coinfecção'],
+          'Babesia, Anaplasma, Bartonella compartilham vetor ou geograficamente sobrepõem-se — se não melhorar como esperado, amplie painel molecular e revise carrapaticida.',
+        highlights: ['Babesia', 'Anaplasma'],
       },
     ],
     diagnosticFlow: {
-      title: 'Fluxo diagnóstico (prática)',
+      title: 'Fluxo diagnóstico (consultório → laboratório)',
       steps: [
-        { label: 'Contexto + hemograma', detail: 'Área de carrapato; trombocitopenia; pancitopenia no crônico.' },
-        { label: 'Esfregaco + teste rápido/IFA', detail: 'Mórulas = bônus; sorologia pode atrasar na fase aguda.' },
-        { label: 'PCR (EDTA, antes de ATB)', detail: 'Melhor para infecção ativa; interpretar com clínica.' },
-        { label: 'Integração', detail: 'Quadro + hematologia + sorologia/PCR no tempo correto.' },
+        {
+          label: '1. Pré-teste probabilístico',
+          detail:
+            'Cão de área endêmica com febre, linfadenomegalia e plaquetas baixas = CME alta na lista; pancitopenia com hiperglobulinemia puxa fase crônica.',
+        },
+        {
+          label: '2. Hemograma e esfregaco',
+          detail:
+            'Trombocitopenia é quase universal no agudo; mórulas em monócitos confirmam quando vistas — sensibilidade insuficiente para exclusão.',
+        },
+        {
+          label: '3. Sorologia com calendário',
+          detail:
+            'IFAT/ELISA/rápidos: falso-negativo precoce; comparar títulos em 2–4 semanas se suspeita alta. Título persistente não igual a infecção ativa isolada.',
+        },
+        {
+          label: '4. PCR pré-tratamento',
+          detail:
+            'Colher EDTA antes da primeira dose de doxiciclina quando possível; negativa não exclui se antibiótico prévio ou baixa carga.',
+        },
+        {
+          label: '5. Integração e estágio',
+          detail:
+            'Classificar agudo vs subclínico vs crônico orienta prognóstico (medula deprimida recupera lentamente) e necessidade de suporte.',
+        },
       ],
     },
     treatmentFlow: {
-      title: 'Tratamento e suporte',
+      title: 'Tratamento, suporte e armadilhas',
       steps: [
-        { label: 'Doxiciclina 28 d', detail: '10 mg/kg SID PO (alternativa 5 mg/kg BID).' },
-        { label: 'Resposta aguda', detail: 'Muitos melhoram em 24–48 h; se não em ~7 d, rever diagnóstico/coinfecção.' },
-        { label: 'Adjuvantes', detail: 'Minociclina se não houver doxiciclina; imidocarb resgate; prednisona só com critério imunomediado.' },
-        { label: 'Grave', detail: 'Transfusão, fluido com cautela renal/hemorrágico.' },
+        {
+          label: 'Antibiótico de base',
+          detail:
+            'Doxiciclina 10 mg/kg SID VO ≥28 dias (ou 5 mg/kg BID); minociclina se indisponível; imidocarb reservado a protocolos específicos.',
+        },
+        {
+          label: 'Reavaliação precoce',
+          detail:
+            'Febre e apetite costumam responder em 24–72 h; ausência de melhora em ~7 dias: revisite diagnóstico, dose e coinfecção.',
+        },
+        {
+          label: 'Hemorragia e anemia',
+          detail:
+            'Transfusão quando indicado; fluidos com cautela se risco de sobrecarga ou proteinúria; antifibrinolíticos não substituem controle da infecção.',
+        },
+        {
+          label: 'Corticoide',
+          detail:
+            'Prednisona curta só com IMHA/ITP dominante documentada — não “empacotar” todo erliquiose com esteroide.',
+        },
+        {
+          label: 'Prevenção recidiva',
+          detail:
+            'Carrapaticida contínuo no paciente e contatos caninos; educação sobre persistência sorológica.',
+        },
       ],
     },
   },
@@ -102,7 +144,8 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
       'Agudo: medula pode estar hipercelular. Crônico: hipocelularidade / hipoplasia de linhagens → pancitopenia (marca de gravidade).',
   },
   pathophysiology:
-    'Fisiopatologia por fases: (1) Agudo (1–3 semanas pós-infecção): comportamento de riquetsiose com vasculite sistémica — febre, anorexia, perda de peso, linfadenomegalia, hemorragias leves, serosidade ocular/nasal, trombocitopenia; carrapatos frequentemente evidentes (Merck; Nelson). (2) Subclínico: sem sinais evidentes, mas pode haver trombocitopenia discreta, hiperglobulinemia, neutropenia, linfocitose ou monocitose, sorologia/PCR positivas — pode prolongar-se. (3) Crônico: pancitopenia, palidez, emagrecimento, epistaxe, hemorragias retinianas, uveíte, esplenomegalia, proteinúria, glomerulonefrite, eventual neurológico/articular — mistura de falência medular, imunocomplexos e inflamação persistente.',
+    'Fisiopatologia por fases: (1) Agudo (1–3 semanas pós-infecção): comportamento de riquetsiose com vasculite sistêmica — febre, anorexia, perda de peso, linfadenomegalia, hemorragias leves, serosidade ocular/nasal, trombocitopenia; carrapatos frequentemente evidentes (Merck; Nelson). (2) Subclínico: sem sinais evidentes, mas pode haver trombocitopenia discreta, hiperglobulinemia, neutropenia, linfocitose ou monocitose, sorologia/PCR positivas — pode prolongar-se. (3) Crônico: pancitopenia, palidez, emagrecimento, epistaxe, hemorragias retinianas, uveíte, esplenomegalia, proteinúria, glomerulonefrite, eventual neurológico/articular — mistura de falência medular, imunocomplexos e inflamação persistente.\n\n' +
+    'Dica de estudo: decore a tríade temporal (agudo → subclínico → crônico) e ligue cada fase ao mecanismo dominante (vasculite/plaquetas → soroconversão discreta → pancitopenia/imunocomplexos).',
   clinicalSignsPathophysiology: [
     {
       system: 'general',
@@ -182,6 +225,19 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
       'Não há um único “padrão ouro” em todos os cenários. Conceito prático: diagnóstico integrado = quadro clínico + hematologia compatível + sorologia e/ou PCR interpretados no tempo da doença. PCR positiva documenta melhor infecção ativa; sorologia apoia exposição e evolução temporal; mórulas quando presentes são diagnóstico morfológico direto.',
   },
   treatment: {
+    ordemDePrioridade: [
+      '1) Confirmar ou tratar empiricamente com alta suspeita + hemograma compatível — atrasar doxiciclina em agudo febril típico pode ser pior que iniciar e integrar exames depois.',
+      '2) Doxiciclina 28 dias mínimo; explicar ao tutor que cursos curtos são biologicamente insuficientes para eliminação confiável.',
+      '3) Hospitalizar se hemorragia ativa, anemia profunda ou necessidade de transfusão; estabilizar antes de alta ambulatorial precipitada.',
+      '4) Repetir hemograma durante e após terapia — pancitopenia crônica pode exiguir semanas de observação.',
+      '5) Carrapaticida e revisão ambiental; triagem de doadores se o animal participa de banco.',
+    ],
+    monitoramento: [
+      'Plaquetas e hematócrito aos 7–14 dias e ao fim do tratamento.',
+      'Proteinúria e creatinina se quadro prolongado ou uso de AINE prévio.',
+      'Sinais oculares e articulares no crônico após controle da infecção.',
+      'Recaída clínica: novo PCR/sorologia conforme protocolo.',
+    ],
     cmeDoxiciclinaPrimeiraLinha:
       'Dose clássica: 10 mg/kg PO SID por pelo menos 28 dias (Nelson; Plumb’s; Merck; ACVIM). Alternativa estudada: 5 mg/kg PO q12h por 28 dias. Por que 28 e não 14 dias: cursos curtos podem melhorar a clínica sem eliminar adequadamente a infecção — há evidência de que carrapatos ainda podem adquirir E. canis de cães tratados só 14 dias (Nelson).',
     cmeTabelaAntimicrobianos: {

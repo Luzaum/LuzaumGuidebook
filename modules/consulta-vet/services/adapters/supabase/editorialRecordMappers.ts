@@ -4,6 +4,7 @@ import {
   MedicationDose,
   MedicationPresentation,
   MedicationRecord,
+  MedicationStructuredBlock,
   MedicationSupplyChannel,
 } from '../../../types/medication';
 import {
@@ -48,6 +49,8 @@ export type MedicationRow = {
   doses: unknown;
   presentations: unknown;
   clinical_notes_rich_text: string;
+  /** JSON opcional — tabelas e callouts; pode estar ausente em bases antigas. */
+  clinical_structured_blocks?: unknown;
   admin_notes_text: string;
   references: unknown;
   is_published: boolean;
@@ -118,6 +121,7 @@ export function mapMedicationRow(
         }))
       : [],
     clinicalNotesRichText: row.clinical_notes_rich_text,
+    clinicalStructuredBlocks: parseMedicationStructuredBlocks(row.clinical_structured_blocks),
     adminNotesText: row.admin_notes_text,
     relatedDiseaseSlugs,
     references: normalizeReferences(row.references),
@@ -126,4 +130,37 @@ export function mapMedicationRow(
     createdAt: row.created_at,
     updatedAt: row.updated_at,
   };
+}
+
+function parseMedicationStructuredBlocks(raw: unknown): MedicationStructuredBlock[] | undefined {
+  if (!raw || !Array.isArray(raw)) return undefined;
+  const out: MedicationStructuredBlock[] = [];
+  for (const item of raw) {
+    if (!item || typeof item !== 'object') continue;
+    const o = item as Record<string, unknown>;
+    if (o.kind === 'clinicalTable' && Array.isArray(o.headers) && Array.isArray(o.rows)) {
+      out.push({
+        kind: 'clinicalTable',
+        headers: o.headers.map((h) => String(h)),
+        rows: (o.rows as unknown[]).map((row) =>
+          Array.isArray(row) ? row.map((c) => String(c)) : []
+        ),
+      });
+      continue;
+    }
+    if (
+      o.kind === 'clinicalCallout' &&
+      (o.variant === 'info' || o.variant === 'caution' || o.variant === 'brazil') &&
+      typeof o.title === 'string' &&
+      typeof o.body === 'string'
+    ) {
+      out.push({
+        kind: 'clinicalCallout',
+        variant: o.variant,
+        title: o.title,
+        body: o.body,
+      });
+    }
+  }
+  return out.length ? out : undefined;
 }

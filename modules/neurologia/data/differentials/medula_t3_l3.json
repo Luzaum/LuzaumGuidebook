@@ -182,5 +182,46 @@
         "cautions": []
       }
     }
+  },
+  {
+    "name": "Mielopatia degenerativa (ex.: DM canina)",
+    "category": "DEGENERATIVA",
+    "rules": {
+      "course": ["CRONICO", "SUBAGUDO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO"],
+      "redFlagsBoost": ["progressivo"],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "Paraparesia/ataxia proprioceptiva pélvica com padrão UMN (T3–L3), curso insidioso ou progressivo lento.",
+      "Dor espinhal ausente ou discreta em muitos casos; raças predispostas aumentam a suspeita."
+    ],
+    "diagnostics": [
+      {
+        "test": "Exclusão de compressão (RM/TC de coluna toracolombar)",
+        "priority": "ALTA",
+        "whatItAssesses": "Confirma ausência de lesão cirúrgica antes de atribuir DM.",
+        "expectedFindings": "Sem compressão extradural significativa.",
+        "limitations": "DM é diagnóstico de exclusão clínico-laboratorial em muitos serviços."
+      },
+      {
+        "test": "Genética SOD1 (quando disponível)",
+        "priority": "MEDIA",
+        "whatItAssesses": "Apoio em raças predispostas.",
+        "expectedFindings": "Alelos de risco em algumas linhagens.",
+        "limitations": "Resultado negativo não exclui outras mielopatias degenerativas."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Esclarecimento ao tutor", "Suporte e segurança (quedas)", "Manter mobilidade quando possível"],
+        "cautions": ["Não atribuir DM sem excluir IVDD/FCE quando curso ou exame sugerem compressão"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Fisioterapia de manutenção", "Acessórios (carrinho, tapetes antiderrapantes)", "Seguimento para qualidade de vida"],
+        "cautions": ["Prognóstico de progressão; decisões éticas conforme grau de déficit"]
+      }
+    }
   }
 ]

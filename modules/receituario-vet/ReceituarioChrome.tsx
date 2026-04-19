@@ -1,6 +1,7 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Logo from '@/components/Logo'
+import { StripeLikeGradientBackground } from '@/components/ui/stripe-like-gradient-shader'
 import { TopRightAuthMenu } from '@/src/components/TopRightAuthMenu'
 import './receituarioChrome.css'
 
@@ -275,6 +276,9 @@ export default function ReceituarioChrome({
 
   return (
     <div className={`rxv-page ${pageClass}`}>
+      <div className="rxv-gradflow-host" aria-hidden>
+        <StripeLikeGradientBackground />
+      </div>
       <div className="rxv-bg-layer" />
 
       <div className="rxv-scale-shell">

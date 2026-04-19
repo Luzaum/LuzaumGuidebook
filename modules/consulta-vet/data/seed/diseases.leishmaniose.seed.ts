@@ -26,7 +26,7 @@ export const leishmanioseVisceralCaninaRecord: DiseaseRecord = {
     'Estadiamento I–VI',
   ],
   quickSummary:
-    'Doença parasitária sistêmica por Leishmania spp., com foco clínico em L. infantum: transmissão principal por flebotomíneos, espectro que vai de assintomático a multissistêmico (pele, olhos, rins, músculo-esquelético, sangue). Diagnóstico integra clínica, parasitológico (citologia), molecular (PCR, quantificação quando possível) e sorologia (interpretação cautelosa). No Brasil, miltefosina e marbofloxacina são registrados; alopurinol e imunomoduladores entram conforme estadiamento. Prevenção centrada em redução de contato com vetor (repelentes/inseticidas, manejo) e vigilância em áreas endêmicas.',
+    'A leishmaniose visceral canina por Leishmania infantum é zoonose de ciclo vetorial cujo principal elo urbano e periurbano no Brasil são flebotomíneos (ex.: Lutzomyia longipalpis), com transmissão secundária documentada por transfusão, vertical e venérea em cães. O espectro clínico vai do cão infectado assintomático (importante reservatório parasitológico) ao quadro multissistêmico com dermatopatia, uveíte, linfadenomegalia, anemia, proteinúria e insuficiência renal progressiva — nefropatia e IRIS avançado são determinantes centrais de morbimortalidade. Não existe sinal patognomônico isolado: a sorologia indica exposição e memória humoral, mas positividade cruzada, vacinas e tratamentos prévios exigem confirmação direta (amastigotas em citologia/histologia) ou molecular (PCR) com interpretação integrada ao estádio clínico-laboratorial. O estadiamento I–VI (Brasileish e adaptações clínicas) organiza leishmanicidas registrados no país (miltefosina, associações com marbofloxacina conforme bula), leishmaniostáticos como alopurinol e imunomodulação quando indicada, sempre com monitorização renal, hematológica e oftálmica. Prevenção combina produtos com efeito comprovado contra flebotomíneos, manejo ambiental (reduzir criadouros), testagem em áreas endêmicas e educação sobre limites de vacinas e sorologia em campanhas.',
   quickDecisionStrip: [
     'Área endêmica ou viagem + perda de peso, dermatopatia, linfonodomegalia ou proteinúria = investigar LCan.',
     'Citologia com amastigotas em medula, linfonodo ou pele lesada é confirmação direta; PCR útil e quantitativa ajuda seguimento.',
@@ -36,7 +36,7 @@ export const leishmanioseVisceralCaninaRecord: DiseaseRecord = {
   ],
   quickSummaryRich: {
     lead:
-      'A leishmaniose canina (LCan), incluindo a forma visceral associada a L. infantum, é uma zoonose de transmissão vetorial (flebotomíneos) com transmissão secundária descrita em cães (vertical, venérea, transfusão). O diagnóstico exige integração clínico-laboratorial; o tratamento no Brasil usa fármacos registrados e combinações conforme gravidade e função renal.',
+      'LCan é doença de interface: interface vetor–cão–humano em saúde pública, e interface sorologia–PCR–citologia na clínica individual. Tutores ouvem “positivo” e assumem tratamento imediato; o médico veterinário precisa separar infecção documentada, estágio clínico e dano renal antes de escolher miltefosina, alopurinol ou apenas vigilância. No Brasil, a bula e o MAPA importam tanto quanto o artigo científico.',
     leadHighlights: ['L. infantum', 'flebotomíneos', 'PCR', 'estadiamento', 'Brasileish'],
     pillars: [
       {
@@ -59,21 +59,63 @@ export const leishmanioseVisceralCaninaRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Fluxo diagnóstico (resumo)',
+      title: 'Fluxo diagnóstico (resumo expandido)',
       steps: [
-        { label: 'Suspeita clínica + epidemiologia', detail: 'Sinais inespecíficos; considerar coinfecções (ex.: Ehrlichia).' },
-        { label: 'Confirmação direta', detail: 'Citologia (amastigotas) ou PCR em amostra adequada.' },
-        { label: 'Sorologia quantitativa', detail: 'Interpretar títulos com cautela; cruzar com exames diretos.' },
-        { label: 'Estadiamento e função renal', detail: 'Hemograma, bioquímica, urinálise, RPC/SDMA conforme fase.' },
+        {
+          label: '1. Probabilidade pré-laboratorial',
+          detail:
+            'Residir/viajar para área endêmica + perda de peso, dermatopatia sugestiva, linfonodos, uveíte ou proteinúria coloca LCan no topo do diferencial; coinfecção por Ehrlichia canis pode somar plaquetopenia e confundir gravidade.',
+        },
+        {
+          label: '2. Confirmação parasitológica direta',
+          detail:
+            'Citologia ou histopatologia com amastigotas em linfonodo, medula óssea, pele lesada ou outro tecido adequado — prova de infecção ativa quando a morfologia é típica e o contexto compatível.',
+        },
+        {
+          label: '3. PCR e quantificação',
+          detail:
+            'Sangue, tecido ou fluidos conforme protocolo; útil para seguimento em serviços que padronizam ciclos de amplificação; interpretar carga junto à clínica (não é “jogo de números” isolado).',
+        },
+        {
+          label: '4. Sorologia (IFAT, ELISA, testes rápidos)',
+          detail:
+            'Indica exposição/imunidade humoral; títulos altos apoiam mas não substituem confirmação direta em muitos protocolos oficiais; vacinas e tratamentos prévios alteram leitura.',
+        },
+        {
+          label: '5. Estadiamento e dano orgânico',
+          detail:
+            'Hemograma, creatinina, SDMA, urinálise, RPC, fundo de olho, peso e escore corporal; estádios IV–VI exigem lógica nefroproteção IRIS paralela.',
+        },
       ],
     },
     treatmentFlow: {
       title: 'Lógica terapêutica (Brasil)',
       steps: [
-        { label: 'Classes', detail: 'Leishmanicida, leishmaniostático, imunomodulador — escolha pelo estádio.' },
-        { label: 'Registrados', detail: 'Miltefosina (Milteforan) e marbofloxacina (Marbox Leish) conforme bula/legislação.' },
-        { label: 'Alopurinol', detail: 'Associações frequentes; monitorar trato urinário (xantina).' },
-        { label: 'Seguimento', detail: 'Exames seriados (Tabela 4 das diretrizes) e ajuste conforme resposta.' },
+        {
+          label: '1. Estadiar antes de prescrever',
+          detail:
+            'I–VI orientam intensidade: cão I assintomático soropositivo não se trata como estádio VI renal — evite politoxicidade desnecessária.',
+        },
+        {
+          label: '2. Leishmanicidas registrados',
+          detail:
+            'Miltefosina e esquemas com marbofloxacina conforme registro ANVISA e bula vigente; respeitar contraindicações reprodutivas e monitorização hepática/renal.',
+        },
+        {
+          label: '3. Alopurinol e eixo purinas',
+          detail:
+            'Papel consolidado como leishmaniostático; atenção a urolitíase por xantina — hidratação, urinálise e ultrassom quando indicado.',
+        },
+        {
+          label: '4. Imunomoduladores e adjuvantes',
+          detail:
+            'Domperidona e outras classes entram em protocolos específicos; integrar com estado imune e legislação local.',
+        },
+        {
+          label: '5. Seguimento objetivo',
+          detail:
+            'Repetir painel clínico-laboratorial em intervalos definidos (vide tabelas Brasileish); ajustar terapia por resposta renal e não só por sorologia.',
+        },
       ],
     },
   },
@@ -101,10 +143,12 @@ export const leishmanioseVisceralCaninaRecord: DiseaseRecord = {
     formasClinicasDidaticas:
       'Manifestações podem ser predominantes em um sistema — dermatopatias (“dermatoleish”), olhos (“oftalmoleish”), rins (“nefroleish”), locomotor (“ortoleish”), hematológico (“hematoleish”) — ou associadas e disseminadas.',
     transmissaoResumo:
-      'Transmissão primária: flebotomíneo infectado. Secundária em cães: vertical, venérea, transfusional — relevante para biossegurança (reprodução, doação de sangue) e controle.',
+      'Transmissão primária: flebotomíneo infectado. Secundária em cães: vertical, venérea, transfusional — relevante para biossegurança (reprodução, doação de sangue) e controle.\n\n' +
+      'Dica de estudo: memorize o par “vetor principal (flebotomíneo)” + “transfusão como via iatrogênica” — é padrão em questões de biossegurança em banco de sangue.',
   },
   pathophysiology:
-    'A deposição de imunocomplexos e a inflamação contribuem para glomerulonefrite, uveíte e outros sinais de doença imunomediada; a proteinúria e a azotemia são marcas frequentes de gravidade. Discrasias (anemia, trombocitopenia, hiperviscosidade) e vasculites podem ocorrer. Dermatopatias incluem dermatite descamativa seca (periocular, dorso nasal, pavilhão, saliências ósseas), úlceras, pústulas, onicopatias e outros. Nefropatias incluem proteinúria, azotemia, hematúria e progressão para DRC. O comprometimento locomotor inclui poliartrite, miosite e alterações ósseas. Manifestações neurológicas são raras mas descritas; GI frequentemente com diarreia crônica/colite; cardiopatias descritas com miocardite/vasculite.',
+    'A deposição de imunocomplexos e a inflamação contribuem para glomerulonefrite, uveíte e outros sinais de doença imunomediada; a proteinúria e a azotemia são marcas frequentes de gravidade. Discrasias (anemia, trombocitopenia, hiperviscosidade) e vasculites podem ocorrer. Dermatopatias incluem dermatite descamativa seca (periocular, dorso nasal, pavilhão, saliências ósseas), úlceras, pústulas, onicopatias e outros. Nefropatias incluem proteinúria, azotemia, hematúria e progressão para DRC. O comprometimento locomotor inclui poliartrite, miosite e alterações ósseas. Manifestações neurológicas são raras mas descritas; trato gastrointestinal frequentemente com diarreia crônica ou colite; cardiopatias descritas com miocardite ou vasculite.\n\n' +
+    'Dica de estudo: organize mentalmente por “sistemas” — pele, olhos, rins, sangue — porque a banca costuma cobrar a forma “dermato‑/oftalmo‑/nefro‑leish” como eixos mnemônicos.',
   clinicalSignsPathophysiology: [
     {
       system: 'dermatologic',
@@ -452,6 +496,33 @@ export const leishmanioseVisceralCaninaRecord: DiseaseRecord = {
       url: null,
       notes: 'Documento-base desta ficha (tabelas 1–5, estadiamento, fármacos registrados no Brasil, prevenção).',
       evidenceLevel: 'Consenso nacional-regional',
+    },
+    {
+      id: 'ref-nelson-leish-2020',
+      citationText:
+        'Nelson RW, Couto CG. Small Animal Internal Medicine, 6th ed., 2020 — leishmaniose e parasitoses sistêmicas (quadro clínico e abordagem).',
+      sourceType: 'Livro-texto',
+      url: null,
+      notes: 'Complemento clínico às diretrizes regionais.',
+      evidenceLevel: 'Alta',
+    },
+    {
+      id: 'ref-plumb-leish-drugs',
+      citationText:
+        'Budde JA, McCluskey DM. Plumb’s Veterinary Drug Handbook, 10th ed., 2023 — miltefosina, alopurinol, antimicrobianos associados (conferir monografias).',
+      sourceType: 'Formulário',
+      url: null,
+      notes: 'Doses e interações — cruzar com bulas BR.',
+      evidenceLevel: 'Alta (referência prática)',
+    },
+    {
+      id: 'ref-bsava-nu-proteinuria',
+      citationText:
+        'BSAVA Manual of Canine and Feline Nephrology and Urology, 3rd ed., 2017 — proteinúria e comorbidades renais em doenças sistêmicas.',
+      sourceType: 'Manual',
+      url: null,
+      notes: 'Contexto nefrológico quando há proteinúria/IRIS.',
+      evidenceLevel: 'Alta',
     },
   ],
   isPublished: true,

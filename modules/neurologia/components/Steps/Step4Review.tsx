@@ -3,40 +3,20 @@ import { motion } from 'framer-motion'
 import { ActivitySquare, AlertTriangle, CheckCircle, Clock3, Edit2, PawPrint, ShieldAlert } from 'lucide-react'
 import { EvaluationStatus } from '../../types'
 import { Card } from '../UI/Card'
+import { SaveToHistoryButton } from '../SaveToHistoryButton'
 import type { ComplaintContext, Patient } from '../../stores/caseStore'
+import {
+  CHIEF_COMPLAINT_LABELS,
+  RED_FLAG_LABELS,
+  TEMPORAL_LABELS,
+  EVOLUTION_LABELS,
+} from '../../data/complaintDictionaries'
 
 interface Step4Props {
   patient: Patient
   complaint: ComplaintContext
   exam: Record<string, any>
   onEditStep: (step: number) => void
-}
-
-const TEMPORAL_LABELS: Record<string, string> = {
-  peragudo: 'Peragudo (<24h)',
-  agudo: 'Agudo (24-48h)',
-  subagudo: 'Subagudo (dias)',
-  cronico: 'Crônico (semanas/meses)',
-  episodico: 'Episódico',
-}
-
-const EVOLUTION_LABELS: Record<string, string> = {
-  melhorando: 'Melhorando',
-  estático: 'Estático',
-  flutuante: 'Flutuante',
-  progressivo: 'Progressivo',
-}
-
-const RED_FLAG_LABELS: Record<string, string> = {
-  coma_estupor: 'Coma / estupor',
-  status_epilepticus: 'Status epilepticus / cluster grave',
-  severe_progression_24h: 'Piora neurológica rápida (<24h)',
-  acute_nonambulatory: 'Não ambulatório agudo',
-  respiratory_compromise: 'Sinais respiratórios / aspiração',
-  deep_pain_loss: 'Dor profunda ausente',
-  severe_cervical_pain: 'Cervicalgia intensa',
-  anisocoria_acute: 'Anisocoria aguda',
-  dysphagia_aspiration_risk: 'Disfagia com risco de aspiração',
 }
 
 const LIFE_STAGE_LABELS: Record<string, string> = {
@@ -63,10 +43,17 @@ export function Step4Review({ patient, complaint, exam, onEditStep }: Step4Props
 
   return (
     <div className="space-y-6 pb-24">
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-        <h2 className="text-2xl font-bold text-foreground mb-2">Revisão dos achados</h2>
-        <p className="text-muted-foreground">Confirme os dados clínicos antes da análise por IA.</p>
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-2">
+        <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">Revisão dos achados</h2>
+        <p className="max-w-2xl text-muted-foreground">
+          Confirme anamnese, curso temporal e exame antes da análise. Estrutura alinhada ao fluxo clínico do livro-base
+          (história → exame → síntese).
+        </p>
       </motion.div>
+
+      <div className="flex flex-wrap gap-2">
+        <SaveToHistoryButton />
+      </div>
 
       <Card className="relative overflow-hidden">
         <button
@@ -126,39 +113,86 @@ export function Step4Review({ patient, complaint, exam, onEditStep }: Step4Props
           <h3 className="text-lg font-semibold text-foreground">Queixas e contexto clínico</h3>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-5">
           {complaint.chiefComplaintIds.length > 0 && (
             <div>
-              <span className="text-muted-foreground text-sm block mb-2">Queixas principais</span>
+              <span className="mb-2 block text-sm font-medium text-muted-foreground">Queixas / sinais relatados</span>
               <div className="flex flex-wrap gap-2">
                 {complaint.chiefComplaintIds.map((c) => (
-                  <span key={c} className="px-2 py-1 rounded-lg text-xs border border-border bg-background text-foreground">
-                    {c}
+                  <span
+                    key={c}
+                    className="rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-medium text-foreground"
+                  >
+                    {CHIEF_COMPLAINT_LABELS[c] || c}
                   </span>
                 ))}
               </div>
             </div>
           )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className="rounded-xl border border-border bg-background/70 p-3">
-              <div className="text-xs text-muted-foreground">Padrão temporal</div>
-              <div className="text-sm font-semibold text-foreground mt-1">
-                {complaint.temporalPattern ? TEMPORAL_LABELS[complaint.temporalPattern] || complaint.temporalPattern : 'Não informado'}
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="rounded-xl border border-border bg-background/70 p-4 shadow-sm">
+              <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Padrão temporal</div>
+              <div className="mt-1 text-sm font-semibold text-foreground">
+                {complaint.temporalPattern
+                  ? TEMPORAL_LABELS[complaint.temporalPattern] || complaint.temporalPattern
+                  : 'Não informado'}
               </div>
             </div>
-            <div className="rounded-xl border border-border bg-background/70 p-3">
-              <div className="text-xs text-muted-foreground">Evolução do quadro</div>
-              <div className="text-sm font-semibold text-foreground mt-1">
-                {complaint.evolutionPattern ? EVOLUTION_LABELS[complaint.evolutionPattern] || complaint.evolutionPattern : 'Não informado'}
+            <div className="rounded-xl border border-border bg-background/70 p-4 shadow-sm">
+              <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Evolução</div>
+              <div className="mt-1 text-sm font-semibold text-foreground">
+                {complaint.evolutionPattern
+                  ? EVOLUTION_LABELS[complaint.evolutionPattern] || complaint.evolutionPattern
+                  : 'Não informado'}
+              </div>
+            </div>
+            <div className="rounded-xl border border-border bg-background/70 p-4 shadow-sm sm:col-span-2 lg:col-span-1">
+              <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Contexto marcado</div>
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {[
+                  complaint.trauma && 'Trauma',
+                  complaint.toxin && 'Toxina',
+                  complaint.fever && 'Febre',
+                  complaint.ectoparasiticideExposure && 'Ectoparasiticida',
+                  complaint.systemicDisease && 'Doença sistêmica',
+                  complaint.recentSurgeryAnesthesia && 'Cirurgia/anestesia',
+                  complaint.vaccinationOrTravel && 'Vacina/viagem',
+                  complaint.videoOfEpisode && 'Vídeo',
+                  complaint.respiratoryGiSigns && 'Resp./GI',
+                  complaint.anticonvulsantOrNeuroMeds && 'Anticonvulsivante/neuro',
+                  complaint.recentMedChange && 'Mudança de meds',
+                ]
+                  .filter(Boolean)
+                  .map((tag) => (
+                    <span
+                      key={String(tag)}
+                      className="rounded-md border border-gold/25 bg-gold/10 px-2 py-0.5 text-[11px] font-medium text-gold"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                {!complaint.trauma &&
+                  !complaint.toxin &&
+                  !complaint.fever &&
+                  !complaint.ectoparasiticideExposure &&
+                  !complaint.systemicDisease &&
+                  !complaint.recentSurgeryAnesthesia &&
+                  !complaint.vaccinationOrTravel &&
+                  !complaint.videoOfEpisode &&
+                  !complaint.respiratoryGiSigns &&
+                  !complaint.anticonvulsantOrNeuroMeds &&
+                  !complaint.recentMedChange && (
+                    <span className="text-xs text-muted-foreground">Nenhum item marcado</span>
+                  )}
               </div>
             </div>
           </div>
 
           {complaint.contextNotes && (
-            <div className="rounded-xl border border-border bg-background/70 p-3">
-              <div className="text-xs text-muted-foreground">Observações</div>
-              <p className="text-sm text-foreground mt-1">{complaint.contextNotes}</p>
+            <div className="rounded-xl border border-border bg-background/70 p-4">
+              <div className="text-xs font-medium text-muted-foreground">Observações livres</div>
+              <p className="mt-2 text-sm leading-relaxed text-foreground">{complaint.contextNotes}</p>
             </div>
           )}
         </div>
@@ -169,9 +203,9 @@ export function Step4Review({ patient, complaint, exam, onEditStep }: Step4Props
               <ShieldAlert size={16} />
               <span className="font-bold text-xs uppercase">Red flags</span>
             </div>
-            <ul className="list-disc list-inside text-sm text-red-100">
+            <ul className="list-inside list-disc text-sm text-red-100">
               {complaint.redFlags.map((flag) => (
-                <li key={flag}>{RED_FLAG_LABELS[flag] || flag}</li>
+                <li key={flag}>{RED_FLAG_LABELS[flag as keyof typeof RED_FLAG_LABELS] || flag}</li>
               ))}
             </ul>
           </div>

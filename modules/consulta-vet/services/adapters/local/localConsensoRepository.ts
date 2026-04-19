@@ -6,7 +6,6 @@ import {
   UpsertConsensusDocumentDetailsInput,
 } from '../../../types/consenso';
 import { ConsensusUpsertInput } from '../../../types/editorial';
-import { consensosSeed } from '../../../data/seed/consensos.seed';
 import { ConsensoRepository } from '../../repositories/consenso.repository';
 
 function mapSeedRecord(record: any): ConsensusRecord {
@@ -41,31 +40,48 @@ function mapSeedRecord(record: any): ConsensusRecord {
   };
 }
 
-const mappedSeed = consensosSeed.map(mapSeedRecord);
-const seedDetailsByConsensusId = new Map<string, ConsensusDocumentDetails>();
+type ConsensoSeedState = {
+  mappedSeed: ConsensusRecord[];
+  seedDetailsByConsensusId: Map<string, ConsensusDocumentDetails>;
+};
 
-for (const item of mappedSeed) {
-  const summaryText = String(item.summary || '').trim() || null;
-  const appNotesText = String(item.adminNotesRichText || '').trim() || null;
-  if (!summaryText && !appNotesText) continue;
+let consensoSeedPromise: Promise<ConsensoSeedState> | null = null;
 
-  seedDetailsByConsensusId.set(item.id, {
-    id: `seed-details-${item.id}`,
-    consensusDocumentId: item.id,
-    summaryText,
-    keyPointsText: null,
-    practicalApplicationText: null,
-    appNotesText,
-    references: [],
-    createdBy: null,
-    updatedBy: null,
-    createdAt: item.createdAt,
-    updatedAt: item.updatedAt,
-  });
+function loadConsensoSeedState(): Promise<ConsensoSeedState> {
+  if (!consensoSeedPromise) {
+    consensoSeedPromise = import('../../../data/seed/consensos.seed').then((mod) => {
+      const mappedSeed = mod.consensosSeed.map(mapSeedRecord);
+      const seedDetailsByConsensusId = new Map<string, ConsensusDocumentDetails>();
+
+      for (const item of mappedSeed) {
+        const summaryText = String(item.summary || '').trim() || null;
+        const appNotesText = String(item.adminNotesRichText || '').trim() || null;
+        if (!summaryText && !appNotesText) continue;
+
+        seedDetailsByConsensusId.set(item.id, {
+          id: `seed-details-${item.id}`,
+          consensusDocumentId: item.id,
+          summaryText,
+          keyPointsText: null,
+          practicalApplicationText: null,
+          appNotesText,
+          references: [],
+          createdBy: null,
+          updatedBy: null,
+          createdAt: item.createdAt,
+          updatedAt: item.updatedAt,
+        });
+      }
+
+      return { mappedSeed, seedDetailsByConsensusId };
+    });
+  }
+  return consensoSeedPromise;
 }
 
 export class LocalConsensoRepository implements ConsensoRepository {
   async list(filters?: ListConsensusFilters, _options?: { includeDrafts?: boolean }): Promise<ConsensusRecord[]> {
+    const { mappedSeed } = await loadConsensoSeedState();
     const base = [...mappedSeed];
 
     if (!filters) return base;
@@ -88,6 +104,7 @@ export class LocalConsensoRepository implements ConsensoRepository {
   }
 
   async getBySlug(slug: string, _options?: { includeDrafts?: boolean }): Promise<ConsensusRecord | null> {
+    const { mappedSeed } = await loadConsensoSeedState();
     const found = mappedSeed.find((item) => item.slug === slug);
     return found || null;
   }
@@ -113,6 +130,7 @@ export class LocalConsensoRepository implements ConsensoRepository {
   }
 
   async getSharedDetailsByConsensusId(consensusDocumentId: string): Promise<ConsensusDocumentDetails | null> {
+    const { seedDetailsByConsensusId } = await loadConsensoSeedState();
     return seedDetailsByConsensusId.get(consensusDocumentId) || null;
   }
 

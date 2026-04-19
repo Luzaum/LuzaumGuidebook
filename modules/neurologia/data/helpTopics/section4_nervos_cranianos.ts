@@ -167,6 +167,57 @@ export const section4NervosCranianos: HelpTopic[] = [
     cranialNerves: [5],
   },
   {
+    id: 's4-facial-v-normal',
+    title: 'Sensibilidade facial (V) — Normal',
+    whatItAssesses:
+      'Resposta proporcional ao toque leve/pressão nas regiões inervadas pelo trigêmeo, com retração ou evitação simétrica em relação ao lado oposto. Indica aferência e integração adequadas para o nível de estímulo usado.',
+    neuroanatomy:
+      'Vias sensitivas faciais (V) e integração no tronco/prosencéfalo preservadas no território testado. Resposta comportamental depende também de estado de alerta e ausência de dor dominante em outro local.',
+    howToPerform:
+      'Aplicar estímulo leve e repetir nos dois lados com a mesma intensidade. Observar se a reação é consistente e simétrica.',
+    interpretation:
+      'Compatível com função sensitiva facial globalmente preservada nesse teste. Não exclui déficits sutis ou lesão central se outros sinais (NC, mentação) apontarem disfunção.',
+    pitfalls:
+      'Estímulo mais forte de um lado que do outro; animal muito calmo que reage pouco; confundir com hiperestesia comportamental.',
+    diagnosticWeight: 1,
+    neuroLocalization: ['brainstem', 'forebrain', 'peripheral_nerve'],
+    cranialNerves: [5],
+  },
+  {
+    id: 's4-facial-v-diminuido',
+    title: 'Sensibilidade facial (V) — Diminuído',
+    whatItAssesses:
+      'Resposta claramente menor que no lado oposto ou que o esperado para o estímulo, sem ausência total. Sugere disfunção parcial da aferência V ou alteração central de integração, dependendo do contexto.',
+    neuroanatomy:
+      'Possível comprometimento parcial de fibras sensitivas periféricas ou núcleo/trato do V, ou inibição central. Comparar sempre com o outro lado no mesmo exame.',
+    howToPerform:
+      'Padronizar intensidade e área; repetir; se possível, filmar para revisão. Evitar regiões com ferida ou dermatite.',
+    interpretation:
+      'Unilateral: pensar em lesão do V ipsilateral ou tronco conforme outros déficits. Bilateral: causas difusas, medicamentos, estresse extremo — reavaliar.',
+    pitfalls:
+      'Concluir lesão grave com um único estímulo fraco; ignorar dor cervical que altera movimento da cabeça e a exposição da face ao teste.',
+    diagnosticWeight: 2,
+    neuroLocalization: ['brainstem', 'forebrain', 'peripheral_nerve'],
+    cranialNerves: [5],
+  },
+  {
+    id: 's4-facial-v-ausente',
+    title: 'Sensibilidade facial (V) — Ausente',
+    whatItAssesses:
+      'Falta de resposta comportamental a estímulos que deveriam ser perceptíveis no território facial. É achado mais grave que “diminuído” e exige confirmar técnica, sedação e integridade ocular/periocular antes de atribuir a lesão neurológica.',
+    neuroanatomy:
+      'Interrupção mais completa da via sensitiva facial (V), lesão nuclear/trato ou, em casos centrais, déficits que impedem resposta dirigida. Sempre correlacionar com outros NC e mentação.',
+    howToPerform:
+      'Aumentar gradualmente o estímulo de forma segura; confirmar que o paciente está acordado o suficiente para reagir; comparar lados. Se ausente bilateral com animal alerta, considerar método e estresse.',
+    interpretation:
+      'Unilateral ausente: forte pista de lesão do V ipsilateral ou tronco. Bilateral: raro; investigar difuso, tóxico-metabólico ou limitação do teste.',
+    pitfalls:
+      'Diagnóstico falso em animal sedado, com neuropatia periférica generalizada não testada, ou com resposta apenas refleja não observada.',
+    diagnosticWeight: 3,
+    neuroLocalization: ['brainstem', 'forebrain', 'peripheral_nerve'],
+    cranialNerves: [5],
+  },
+  {
     id: 's4-degluticao-ix-x',
     title: 'Reflexo de deglutição (IX/X) — o que avalia',
     whatItAssesses:

@@ -161,9 +161,9 @@ const DrugCard: React.FC<DrugCardProps> = ({
 
       {linkedDiseases.length > 0 && onOpenLegacyDisease && (
         <div className="mt-2">
-          <SectionHeader title="No guia por doença (catálogo clássico)" />
+          <SectionHeader title="Condições do catálogo (linhas de tratamento)" />
           <p className="mb-2 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-            Abre a condição no fluxo por suspeita, com 1ª linha e alternativas.
+            Abre a ficha em Doenças por sistema (1ª linha e alternativas).
           </p>
           <div className="flex flex-wrap gap-1.5">
             {linkedDiseases.slice(0, 12).map((r) => (

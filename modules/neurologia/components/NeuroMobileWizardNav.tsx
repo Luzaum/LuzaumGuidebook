@@ -1,13 +1,8 @@
 import React from 'react'
 import { Menu, X } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import type { NeuroWizardStepItem } from '../neuroWizardSteps'
 
-export type NeuroWizardStepItem = {
-  step: number
-  label: string
-  desc: string
-  icon: LucideIcon
-}
+export type { NeuroWizardStepItem }
 
 type NeuroMobileWizardNavProps = {
   steps: NeuroWizardStepItem[]

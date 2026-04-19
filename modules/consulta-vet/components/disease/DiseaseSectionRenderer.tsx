@@ -1,16 +1,41 @@
 import React from 'react';
-import { AlertTriangle, BookOpen, Cat, ShieldAlert, Trophy } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  Apple,
+  BookOpen,
+  Brain,
+  Cat,
+  Dog,
+  Dumbbell,
+  Droplets,
+  Eye,
+  Flame,
+  HeartPulse,
+  LayoutGrid,
+  Lightbulb,
+  Shield,
+  ShieldAlert,
+  Sparkles,
+  Stethoscope,
+  Trophy,
+  Wind,
+} from 'lucide-react';
 import { cn } from '../../../../lib/utils';
 import {
+  EditorialClinicalFigure,
   EditorialClinicalTable,
   EditorialDiagnosticStep,
   EditorialDrugProtocol,
   EditorialSectionValue,
   EditorialSystemGroup,
 } from '../../types/common';
+import { getEditorialSubsectionIcon } from '../../utils/editorialSubsectionIcons';
 import { translateEditorialSubsectionKey, translateSystemGroupTitle } from '../../utils/editorialSubsectionLabels';
 import { sortDiagnosticSubsectionEntries } from '../../utils/editorialSubsectionOrder';
 import { type DiseaseSectionVisual, getDiseaseSectionVisual } from '../../utils/diseaseSectionVisual';
+import { EditorialClinicalTableBlock } from '../editorial/EditorialClinicalTableBlock';
 import { TreatmentMonitoringPanel, TreatmentPriorityPanel } from './TreatmentSectionVisual';
 
 interface DiseaseSectionRendererProps {
@@ -44,53 +69,119 @@ function isClinicalTable(value: unknown): value is EditorialClinicalTable {
   return v.rows.every((row) => Array.isArray(row) && row.length === n && row.every((cell) => typeof cell === 'string'));
 }
 
-function ClinicalComparisonTable({ table, visual }: { table: EditorialClinicalTable; visual: DiseaseSectionVisual }) {
+function isClinicalFigure(value: unknown): value is EditorialClinicalFigure {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
+  const v = value as Record<string, unknown>;
+  return v.kind === 'clinicalFigure' && typeof v.src === 'string' && v.src.length > 0 && typeof v.alt === 'string' && v.alt.length > 0;
+}
+
+function ClinicalFigureBlock({ figure }: { figure: EditorialClinicalFigure }) {
   return (
-    <div className="overflow-x-auto rounded-xl border border-border/55 bg-card/30 shadow-sm ring-1 ring-black/[0.04] dark:ring-white/[0.06]">
-      <table className="w-full min-w-[52rem] border-collapse text-left text-[13px] leading-snug md:text-[14px] md:leading-relaxed">
-        <thead>
-          <tr className={cn('border-b border-border/80', visual.headerTintClass)}>
-            {table.headers.map((h) => (
-              <th
-                key={h}
-                scope="col"
-                className="px-3 py-3 text-[11px] font-bold uppercase tracking-[0.12em] text-muted-foreground first:pl-4 last:pr-4 md:px-4"
-              >
-                {h}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {table.rows.map((row, i) => (
-            <tr
-              key={i}
-              className={cn(
-                'border-b border-border/35 last:border-b-0',
-                i % 2 === 0 ? 'bg-background/40' : 'bg-muted/[0.2]'
-              )}
-            >
-              {row.map((cell, j) => (
-                <td
-                  key={j}
-                  className={cn(
-                    'px-3 py-2.5 align-top text-foreground/90 first:pl-4 last:pr-4 md:px-4',
-                    j === 0 && 'font-semibold text-foreground'
-                  )}
-                >
-                  {cell}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <figure className="space-y-3">
+      <div className="overflow-x-auto rounded-xl border border-border/55 bg-muted/20 p-2 shadow-sm ring-1 ring-black/[0.04] dark:ring-white/[0.06] md:p-3">
+        <img
+          src={figure.src}
+          alt={figure.alt}
+          loading="lazy"
+          className="mx-auto h-auto w-full max-w-5xl rounded-lg"
+        />
+      </div>
+      {figure.caption ? (
+        <figcaption className="text-center text-sm leading-relaxed text-muted-foreground">{figure.caption}</figcaption>
+      ) : null}
+    </figure>
   );
 }
 
-function NarrativeText({ value }: { value: string }) {
-  return <p className="max-w-[106ch] whitespace-pre-line text-[15px] leading-8 text-foreground/88">{value}</p>;
+function ClinicalComparisonTable({ table, visual }: { table: EditorialClinicalTable; visual: DiseaseSectionVisual }) {
+  return <EditorialClinicalTableBlock table={table} headerTintClass={visual.headerTintClass} />;
+}
+
+function systemTopicIcon(system: string): LucideIcon {
+  const s = system.toLowerCase();
+  if (s.includes('cardio')) return HeartPulse;
+  if (s.includes('respir') || s.includes('pulmon') || s.includes('thorac')) return Wind;
+  if (s.includes('renal') || s.includes('urinar')) return Droplets;
+  if (s.includes('neuro')) return Brain;
+  if (s.includes('ocular') || s.includes('ophthalm')) return Eye;
+  if (s.includes('hepat')) return Activity;
+  if (s.includes('hemat') || s.includes('lymph')) return Droplets;
+  if (s.includes('dermat')) return Sparkles;
+  if (s.includes('immun') || s.includes('imune')) return Shield;
+  if (s.includes('gastro') || s.includes('oral')) return Apple;
+  if (s.includes('metabol')) return Flame;
+  if (s.includes('musculo') || s.includes('orthop')) return Dumbbell;
+  if (s.includes('multi')) return LayoutGrid;
+  if (s.includes('behavior')) return Brain;
+  return Stethoscope;
+}
+
+const BULLET_LINE_RE = /^\s*[-•*]\s+/;
+const NUMBERED_LINE_RE = /^\s*\d+[\).]\s+/;
+
+/**
+ * Quebra narrativas longas em blocos visuais: parágrafos, listas automáticas e callouts de “Dica de estudo”.
+ */
+function StructuredNarrative({ value, visual }: { value: string; visual: DiseaseSectionVisual }) {
+  const blocks = value
+    .split(/\n\n+/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  return (
+    <div className="max-w-[106ch] space-y-4">
+      {blocks.map((block, i) => {
+        if (/^Dica de estudo:/i.test(block)) {
+          const body = block.replace(/^Dica de estudo:\s*/i, '').trim();
+          return (
+            <aside
+              key={i}
+              className="flex gap-3 rounded-2xl border border-amber-500/35 bg-gradient-to-br from-amber-500/[0.09] to-amber-500/[0.03] px-4 py-3.5 shadow-sm dark:from-amber-500/15 dark:to-amber-500/5"
+            >
+              <Lightbulb className="mt-0.5 h-5 w-5 shrink-0 text-amber-600 dark:text-amber-400" aria-hidden />
+              <div className="min-w-0">
+                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-amber-800 dark:text-amber-200">Dica de estudo</p>
+                <p className="mt-1.5 whitespace-pre-line text-[15px] leading-relaxed text-foreground/90">{body}</p>
+              </div>
+            </aside>
+          );
+        }
+
+        const lines = block.split('\n').map((l) => l.trim()).filter(Boolean);
+        if (lines.length >= 2 && lines.every((l) => BULLET_LINE_RE.test(l))) {
+          const items = lines.map((l) => l.replace(BULLET_LINE_RE, ''));
+          return <BulletList key={i} items={items} visual={visual} />;
+        }
+        if (lines.length >= 2 && lines.every((l) => NUMBERED_LINE_RE.test(l))) {
+          const items = lines.map((l) => l.replace(NUMBERED_LINE_RE, ''));
+          return (
+            <ol key={i} className="space-y-2.5">
+              {items.map((item, j) => (
+                <li key={j} className="flex items-start gap-3 text-[15px] leading-7 text-foreground/86">
+                  <span
+                    className={cn(
+                      'mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg text-[11px] font-bold shadow-sm ring-1 ring-black/[0.05] dark:ring-white/[0.08]',
+                      visual.diagnosticNumBgClass,
+                      visual.diagnosticNumTextClass
+                    )}
+                  >
+                    {j + 1}
+                  </span>
+                  <span className="min-w-0 pt-0.5">{item}</span>
+                </li>
+              ))}
+            </ol>
+          );
+        }
+
+        return (
+          <p key={i} className="text-[15px] leading-8 text-foreground/88 [text-wrap:pretty]">
+            {block}
+          </p>
+        );
+      })}
+    </div>
+  );
 }
 
 function BulletList({ items, visual }: { items: string[]; visual: DiseaseSectionVisual }) {
@@ -108,15 +199,35 @@ function BulletList({ items, visual }: { items: string[]; visual: DiseaseSection
 
 function SystemGroupList({ groups, visual }: { groups: EditorialSystemGroup[]; visual: DiseaseSectionVisual }) {
   return (
-    <div className={cn('space-y-8 border-l-2 pl-5', visual.systemRailClass)}>
-      {groups.map((item) => (
-        <div key={item.system}>
-          <h4 className="text-base font-semibold tracking-tight text-foreground">{translateSystemGroupTitle(item.system)}</h4>
-          <div className="mt-3">
-            <BulletList items={item.findings} visual={visual} />
+    <div className="grid gap-4 sm:grid-cols-2">
+      {groups.map((item) => {
+        const SysIcon = systemTopicIcon(item.system);
+        return (
+          <div
+            key={item.system}
+            className="rounded-2xl border border-border/55 bg-card/45 p-4 shadow-sm ring-1 ring-black/[0.04] dark:bg-card/35 dark:ring-white/[0.06] md:p-5"
+          >
+            <div className="flex items-start gap-3 border-b border-border/45 pb-3">
+              <span
+                className={cn(
+                  'flex h-10 w-10 shrink-0 items-center justify-center rounded-xl shadow-sm ring-1 ring-black/[0.04] dark:ring-white/[0.06]',
+                  visual.iconWrapClass
+                )}
+                aria-hidden
+              >
+                <SysIcon className={cn('h-5 w-5', visual.iconClass)} strokeWidth={2} />
+              </span>
+              <div className="min-w-0 pt-0.5">
+                <h4 className="text-base font-semibold tracking-tight text-foreground">{translateSystemGroupTitle(item.system)}</h4>
+                <p className="mt-0.5 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">Sinais correlacionados</p>
+              </div>
+            </div>
+            <div className="mt-3">
+              <BulletList items={item.findings} visual={visual} />
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
@@ -245,9 +356,9 @@ function DrugProtocolList({ protocols }: { protocols: EditorialDrugProtocol[] })
   );
 }
 
-type SubsectionTone = 'default' | 'warning' | 'danger' | 'teaching' | 'species';
+type SubsectionTone = 'default' | 'warning' | 'danger' | 'teaching' | 'species' | 'speciesDog';
 
-/** Ordem editorial dos blocos longos do tratamento (Cushing) após a timeline de prioridade. */
+/** Ordem editorial dos blocos longos do tratamento após a timeline de prioridade (Cushing, DRC, etc.). */
 const TREATMENT_NARRATIVE_AFTER_PRIORITY = [
   'trilostanoNoCao',
   'mitotanoNoCao',
@@ -255,64 +366,160 @@ const TREATMENT_NARRATIVE_AFTER_PRIORITY = [
   'cirurgiaEspecializada',
   'tratamentoFelino',
   'iatrogenicoManejo',
+  'drcAlertaEstadiamentoInstavel',
+  'drcDietaRenal',
+  'drcMetasFosforoIRIS',
+  'drcFosforoQuelantes',
+  'drcProteinuriaRaas',
+  'drcHipertensao',
+  'drcSintomasUremicos',
+  'drcHipocalemiaAcidose',
+  'drcAnemia',
+  'drcSuplementacaoFerro',
+  'drcFluidoterapiaSc',
+  'drcNutricaoAssistida',
+  'drcCalcitriol',
+  'drcUtiOculta',
+  'drcTabelaPrognosticoFelino',
+  'notaFelinos',
+  'notaCaninos',
+  /* DMVD — ordem editorial do detalhamento terapêutico (só rende se a chave existir no registo) */
+  'farmacos',
+  'dmvdPimobendanFormaJeJumMarcas',
+  'dmvdFurosemidaAgudaCronicaTorasemida',
+  'dmvdUrgenciaHospitalarVasodilatadoresInotropicos',
+  'dmvdIsosorbidaVasodilatadorOral',
+  'dmvdEspironolactonaBloqueioNefron',
+  'dmvdIecaBenazeprilEnalapril',
+  'dmvdAnlodipinoHipertensao',
 ] as const;
 
 function subsectionToneForKey(key: string): SubsectionTone {
   if (key === 'notaFelinos') return 'species';
+  if (key === 'notaCaninos') return 'speciesDog';
+  if (key === 'drcAlertaEstadiamentoInstavel' || key === 'drcAlertaEstadiamentoIRIS') return 'warning';
   if (key === 'hemoTabelaDoxiciclinaGatoAlerta') return 'warning';
   if (key === 'diagnosticPlanIfLimitedResources') return 'warning';
   if (key === 'commonClinicalMistakesExpanded' || key === 'falsePositiveConsiderations' || key === 'falseNegativeConsiderations') {
     return 'danger';
   }
   if (key === 'teachingOverview' || key === 'diagnosticReasoning' || key === 'treatmentReasoning') return 'teaching';
+  if (key === 'dmvdPimobendanFormaJeJumMarcas' || key === 'dmvdUrgenciaHospitalarVasodilatadoresInotropicos') return 'warning';
   return 'default';
 }
 
-function FlowSubsection({ title, tone, children }: { title: string; tone: SubsectionTone; children: React.ReactNode }) {
+function FlowSubsection({
+  title,
+  tone,
+  children,
+  subsectionKey,
+  visual,
+}: {
+  title: string;
+  tone: SubsectionTone;
+  children: React.ReactNode;
+  subsectionKey?: string;
+  visual?: DiseaseSectionVisual;
+}) {
+  const TopicGlyph =
+    subsectionKey && tone !== 'species' && tone !== 'speciesDog'
+      ? getEditorialSubsectionIcon(subsectionKey)
+      : undefined;
+
   if (tone === 'default') {
     return (
-      <div>
-        <h4 className="text-base font-semibold tracking-tight text-foreground">{title}</h4>
-        <div className="mt-3">{children}</div>
+      <div className="rounded-2xl border border-border/55 bg-background/70 p-4 shadow-md ring-1 ring-black/[0.04] dark:bg-background/45 dark:ring-white/[0.07] md:p-5">
+        <h4 className="flex items-center gap-3 text-base font-semibold tracking-tight text-foreground">
+          {TopicGlyph && visual ? (
+            <span
+              className={cn(
+                'flex h-10 w-10 shrink-0 items-center justify-center rounded-xl shadow-sm ring-1 ring-black/[0.04] dark:ring-white/[0.06]',
+                visual.iconWrapClass
+              )}
+              aria-hidden
+            >
+              <TopicGlyph className={cn('h-5 w-5', visual.iconClass)} strokeWidth={2} />
+            </span>
+          ) : TopicGlyph ? (
+            <TopicGlyph className="h-5 w-5 shrink-0 text-muted-foreground opacity-90" strokeWidth={2} aria-hidden />
+          ) : null}
+          <span className="min-w-0 leading-snug">{title}</span>
+        </h4>
+        <div className="mt-4 border-t border-border/50 pt-4">{children}</div>
       </div>
     );
   }
 
   if (tone === 'species') {
     return (
-      <div className="rounded-xl border-l-4 border-l-violet-500 bg-violet-500/[0.06] py-3 pl-4 pr-3 dark:border-l-violet-400 dark:bg-violet-400/[0.08]">
-        <h4 className="flex items-center gap-2 text-base font-semibold tracking-tight text-violet-950 dark:text-violet-100">
-          <Cat className="h-5 w-5 shrink-0 text-violet-600 dark:text-violet-300" aria-hidden />
+      <div className="rounded-2xl border border-violet-500/25 border-l-4 border-l-violet-500 bg-violet-500/[0.06] p-4 shadow-sm dark:border-l-violet-400 dark:bg-violet-400/[0.09] md:p-5">
+        <h4 className="flex items-center gap-3 text-base font-semibold tracking-tight text-violet-950 dark:text-violet-100">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-500/20 dark:bg-violet-400/25" aria-hidden>
+            <Cat className="h-5 w-5 text-violet-600 dark:text-violet-300" />
+          </span>
           {title}
         </h4>
-        <div className="mt-3 text-foreground/90">{children}</div>
+        <div className="mt-4 border-t border-violet-500/20 pt-4 text-foreground/90 dark:border-violet-400/20">{children}</div>
       </div>
     );
   }
 
-  const accent =
-    tone === 'warning'
-      ? 'border-l-amber-500/75 bg-amber-500/[0.05]'
-      : tone === 'danger'
-        ? 'border-l-destructive/75 bg-destructive/[0.05]'
-        : 'border-l-primary/75 bg-primary/[0.05]';
-
-  const icon =
-    tone === 'warning' ? (
-      <AlertTriangle className="h-4 w-4 shrink-0 text-amber-600 dark:text-amber-400" />
-    ) : tone === 'danger' ? (
-      <ShieldAlert className="h-4 w-4 shrink-0 text-destructive" />
-    ) : (
-      <BookOpen className="h-4 w-4 shrink-0 text-primary" />
+  if (tone === 'speciesDog') {
+    return (
+      <div className="rounded-2xl border border-sky-500/25 border-l-4 border-l-sky-600 bg-sky-500/[0.06] p-4 shadow-sm dark:border-l-sky-400 dark:bg-sky-400/[0.09] md:p-5">
+        <h4 className="flex items-center gap-3 text-base font-semibold tracking-tight text-sky-950 dark:text-sky-100">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-500/20 dark:bg-sky-400/25" aria-hidden>
+            <Dog className="h-5 w-5 text-sky-700 dark:text-sky-300" />
+          </span>
+          {title}
+        </h4>
+        <div className="mt-4 border-t border-sky-500/20 pt-4 text-foreground/90 dark:border-sky-400/20">{children}</div>
+      </div>
     );
+  }
+
+  const shell =
+    tone === 'warning'
+      ? 'border-amber-500/30 border-l-amber-500 bg-amber-500/[0.06] dark:bg-amber-500/[0.08]'
+      : tone === 'danger'
+        ? 'border-destructive/30 border-l-destructive bg-destructive/[0.06]'
+        : 'border-primary/25 border-l-primary bg-primary/[0.04] dark:bg-primary/[0.07]';
+
+  const ToneIcon =
+    tone === 'warning' ? AlertTriangle : tone === 'danger' ? ShieldAlert : BookOpen;
+  const LeadIcon = TopicGlyph ?? ToneIcon;
+  const leadIconClass =
+    TopicGlyph != null && visual
+      ? cn('h-5 w-5', visual.iconClass)
+      : TopicGlyph != null
+        ? 'h-5 w-5 shrink-0 text-muted-foreground opacity-90'
+        : tone === 'warning'
+          ? 'h-5 w-5 shrink-0 text-amber-600 dark:text-amber-400'
+          : tone === 'danger'
+            ? 'h-5 w-5 shrink-0 text-destructive'
+            : 'h-5 w-5 shrink-0 text-primary';
 
   return (
-    <div className={cn('rounded-lg border-l-4 py-2 pl-4', accent)}>
-      <h4 className="flex items-center gap-2 text-base font-semibold tracking-tight text-foreground">
-        {icon}
-        {title}
+    <div className={cn('rounded-2xl border border-l-4 p-4 shadow-md ring-1 ring-black/[0.03] dark:ring-white/[0.06] md:p-5', shell)}>
+      <h4 className="flex items-center gap-3 text-base font-semibold tracking-tight text-foreground">
+        {TopicGlyph && visual ? (
+          <span
+            className={cn(
+              'flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ring-1 ring-black/[0.05] dark:ring-white/[0.08]',
+              visual.iconWrapClass
+            )}
+            aria-hidden
+          >
+            <LeadIcon className={leadIconClass} strokeWidth={2} />
+          </span>
+        ) : (
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-muted/50 ring-1 ring-border/60" aria-hidden>
+            <LeadIcon className={leadIconClass} strokeWidth={2} />
+          </span>
+        )}
+        <span className="min-w-0 leading-snug">{title}</span>
       </h4>
-      <div className="mt-3">{children}</div>
+      <div className="mt-4 border-t border-border/40 pt-4">{children}</div>
     </div>
   );
 }
@@ -330,11 +537,22 @@ function tryRenderTreatmentRichObject(
   if (ordem.length === 0 && monitor.length === 0) return null;
 
   const renderLeaf = (value: unknown): React.ReactNode => {
-    if (typeof value === 'string') return <NarrativeText value={value} />;
-    if (Array.isArray(value) && value.length > 0 && value.every((x) => typeof x === 'string')) {
-      return <BulletList items={value as string[]} visual={visual} />;
+    if (typeof value === 'string') return <StructuredNarrative value={value} visual={visual} />;
+    if (isClinicalFigure(value)) {
+      return <ClinicalFigureBlock figure={value as EditorialClinicalFigure} />;
     }
-    return <NarrativeText value={String(value ?? '')} />;
+    if (isClinicalTable(value)) {
+      return <ClinicalComparisonTable table={value as EditorialClinicalTable} visual={visual} />;
+    }
+    if (Array.isArray(value) && value.length > 0) {
+      if (value.every((x) => typeof x === 'string')) {
+        return <BulletList items={value as string[]} visual={visual} />;
+      }
+      if (isDrugProtocolArray(value)) {
+        return <DrugProtocolList protocols={value as EditorialDrugProtocol[]} />;
+      }
+    }
+    return <StructuredNarrative value={String(value ?? '')} visual={visual} />;
   };
 
   const pushNarrative = (key: string, blocks: React.ReactNode[]) => {
@@ -343,7 +561,13 @@ function tryRenderTreatmentRichObject(
     if (typeof value === 'string' && !value.trim()) return;
     if (Array.isArray(value) && value.length === 0) return;
     blocks.push(
-      <FlowSubsection key={key} title={translateEditorialSubsectionKey(key)} tone={subsectionToneForKey(key)}>
+      <FlowSubsection
+        key={key}
+        title={translateEditorialSubsectionKey(key)}
+        tone={subsectionToneForKey(key)}
+        subsectionKey={key}
+        visual={visual}
+      >
         {renderLeaf(value)}
       </FlowSubsection>
     );
@@ -381,7 +605,7 @@ function tryRenderTreatmentRichObject(
 
   if (obj.prognosticoResumo) pushNarrative('prognosticoResumo', blocks);
 
-  return <div className="space-y-10">{blocks}</div>;
+  return <div className="space-y-8 md:space-y-10">{blocks}</div>;
 }
 
 export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }: DiseaseSectionRendererProps) {
@@ -394,7 +618,7 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
 
   const renderContent = (content: EditorialSectionValue | string | string[] | unknown): React.ReactNode => {
     if (typeof content === 'string') {
-      return <NarrativeText value={content} />;
+      return <StructuredNarrative value={content} visual={visual} />;
     }
 
     if (Array.isArray(content)) {
@@ -406,6 +630,9 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
     }
 
     if (content && typeof content === 'object') {
+      if (isClinicalFigure(content)) {
+        return <ClinicalFigureBlock figure={content} />;
+      }
       if (isClinicalTable(content)) {
         return <ClinicalComparisonTable table={content} visual={visual} />;
       }
@@ -426,11 +653,17 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
       }
 
       return (
-        <div className="space-y-10">
+        <div className="space-y-8 md:space-y-10">
           {entries.map(([key, value]) => {
             const tone = subsectionToneForKey(key);
             return (
-              <FlowSubsection key={key} title={translateEditorialSubsectionKey(key)} tone={tone}>
+              <FlowSubsection
+                key={key}
+                title={translateEditorialSubsectionKey(key)}
+                tone={tone}
+                subsectionKey={key}
+                visual={visual}
+              >
                 {renderContent(value as EditorialSectionValue)}
               </FlowSubsection>
             );

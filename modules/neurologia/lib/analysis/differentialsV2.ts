@@ -18,8 +18,24 @@ type PatientData = {
 }
 
 type HistoryData = {
-  temporalPattern: 'peragudo' | 'agudo' | 'subagudo' | 'cronico' | 'episodico' | null
-  evolutionPattern: 'melhorando' | 'estático' | 'flutuante' | 'progressivo' | null
+  temporalPattern:
+    | 'peragudo'
+    | 'agudo'
+    | 'subagudo'
+    | 'cronico'
+    | 'episodico'
+    | 'insidioso'
+    | 'oscilante'
+    | 'recorrente'
+    | null
+  evolutionPattern:
+    | 'melhorando'
+    | 'melhora_parcial'
+    | 'estático'
+    | 'flutuante'
+    | 'progressivo'
+    | 'assintomatico_entre_episodios'
+    | null
   trauma: boolean
   toxin: boolean
   fever: boolean
@@ -34,7 +50,14 @@ type DifferentialCandidate = {
   species?: ('dog' | 'cat')[]
   lifeStages?: ('neonate' | 'pediatric' | 'adult' | 'geriatric')[]
   temporalPreference?: ('peragudo' | 'agudo' | 'subagudo' | 'cronico' | 'episodico')[]
-  evolutionPreference?: ('melhorando' | 'estático' | 'flutuante' | 'progressivo')[]
+  evolutionPreference?: (
+    | 'melhorando'
+    | 'melhora_parcial'
+    | 'estático'
+    | 'flutuante'
+    | 'progressivo'
+    | 'assintomatico_entre_episodios'
+  )[]
   traumaBoost?: boolean
   comorbidityBoost?: string[]
 }
@@ -73,6 +96,32 @@ const DIFFERENTIAL_CANDIDATES: DifferentialCandidate[] = [
     baseScore: 35,
     axes: ['PROSENCEFALO'],
     temporalPreference: ['peragudo', 'agudo'],
+  },
+  {
+    name: 'Epilepsia idiopática',
+    category: 'IDIOPATICA',
+    baseScore: 58,
+    axes: ['PROSENCEFALO'],
+    species: ['dog', 'cat'],
+    lifeStages: ['pediatric', 'adult'],
+    temporalPreference: ['episodico', 'agudo'],
+    evolutionPreference: ['estático', 'assintomatico_entre_episodios', 'melhorando', 'melhora_parcial', 'flutuante'],
+  },
+  {
+    name: 'Epilepsia estrutural (malformação ou massa encefálica)',
+    category: 'COMPRESSIVA',
+    baseScore: 46,
+    axes: ['PROSENCEFALO'],
+    temporalPreference: ['episodico', 'agudo', 'subagudo', 'cronico'],
+    evolutionPreference: ['progressivo', 'flutuante', 'melhora_parcial'],
+  },
+  {
+    name: 'Encefalopatia metabólica ou tóxica',
+    category: 'TOXICO_METABOLICA',
+    baseScore: 48,
+    axes: ['PROSENCEFALO', 'MULTIFOCAL_OU_DIFUSA'],
+    temporalPreference: ['peragudo', 'agudo', 'subagudo'],
+    evolutionPreference: ['flutuante', 'progressivo', 'melhorando'],
   },
 
   // TRONCO_ENCEFALICO
@@ -585,7 +634,10 @@ function scoreTemporalMatch(
       (evolution === 'progressivo' && /progressive/.test(courseText)) ||
       (evolution === 'flutuante' && /fluctuating|intermittent|progressive_or_intermittent/.test(courseText)) ||
       (evolution === 'melhorando' && /improving|improving_with_treatment|non_progressive/.test(courseText)) ||
-      (evolution === 'estatico' && /static|non_progressive/.test(courseText))
+      (evolution === 'melhora_parcial' && /improving|intermittent|non_progressive/.test(courseText)) ||
+      (evolution === 'estatico' && /static|non_progressive/.test(courseText)) ||
+      (evolution === 'assintomatico_entre_episodios' &&
+        /intermittent|episodic|variable|non_progressive/.test(courseText))
     ) {
       score += 8
     } else if (!/variable/.test(courseText)) {

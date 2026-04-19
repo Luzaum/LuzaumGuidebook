@@ -16,7 +16,12 @@ import { getMedicationRepository } from '../services/medicationRepository';
 import { Category } from '../types/category';
 import { EditorialReference } from '../types/common';
 import { DiseaseRecord } from '../types/disease';
-import { MedicationDose, MedicationPresentation, MedicationRecord } from '../types/medication';
+import {
+  MedicationDose,
+  MedicationPresentation,
+  MedicationRecord,
+  MedicationStructuredBlock,
+} from '../types/medication';
 import { validateMedicationDoses, validateMedicationPresentations } from '../utils/medicationRules';
 import { editorTextToHtml, formatMultiline, htmlToEditorText, splitMultiline } from '../utils/editorialForm';
 
@@ -42,6 +47,8 @@ type MedicationFormState = {
   doses: MedicationDose[];
   presentations: MedicationPresentation[];
   clinicalNotesText: string;
+  /** Preservado do registro; edição JSON avançada pode ser feita fora do formulário por ora. */
+  clinicalStructuredBlocks?: MedicationStructuredBlock[];
   adminNotesText: string;
   relatedDiseaseSlugs: string[];
   references: EditorialReference[];
@@ -68,6 +75,7 @@ function createEmptyMedication(): MedicationFormState {
     doses: [],
     presentations: [],
     clinicalNotesText: '',
+    clinicalStructuredBlocks: undefined,
     adminNotesText: '',
     relatedDiseaseSlugs: [],
     references: [],
@@ -96,6 +104,7 @@ function mapMedicationToForm(record: MedicationRecord): MedicationFormState {
     doses: record.doses || [],
     presentations: record.presentations || [],
     clinicalNotesText: htmlToEditorText(record.clinicalNotesRichText),
+    clinicalStructuredBlocks: record.clinicalStructuredBlocks,
     adminNotesText: record.adminNotesText || '',
     relatedDiseaseSlugs: record.relatedDiseaseSlugs || [],
     references: record.references || [],
@@ -233,6 +242,7 @@ export function EditorialMedicationsPage() {
         doses: form.doses,
         presentations: form.presentations,
         clinicalNotesRichText: editorTextToHtml(form.clinicalNotesText),
+        clinicalStructuredBlocks: form.clinicalStructuredBlocks,
         adminNotesText: form.adminNotesText.trim(),
         relatedDiseaseSlugs: form.relatedDiseaseSlugs,
         references: form.references,

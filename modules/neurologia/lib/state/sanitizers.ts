@@ -1,4 +1,5 @@
-import type { Patient, ComplaintContext } from '../../stores/caseStore'
+import type { Patient, ComplaintContext, RedFlagId } from '../../stores/caseStore'
+import { RED_FLAG_LABELS } from '../../data/complaintDictionaries'
 
 /**
  * Sanitiza e normaliza dados do paciente para garantir coerência
@@ -73,7 +74,16 @@ export function sanitizeHistory(complaint: Partial<ComplaintContext>): Partial<C
   // Temporal pattern: garantir único (radio)
   if (
     sanitized.temporalPattern &&
-    !['peragudo', 'agudo', 'subagudo', 'cronico', 'episodico'].includes(sanitized.temporalPattern)
+    ![
+      'peragudo',
+      'agudo',
+      'subagudo',
+      'cronico',
+      'episodico',
+      'insidioso',
+      'oscilante',
+      'recorrente',
+    ].includes(sanitized.temporalPattern)
   ) {
     sanitized.temporalPattern = null
   }
@@ -81,7 +91,14 @@ export function sanitizeHistory(complaint: Partial<ComplaintContext>): Partial<C
   // Evolution pattern: garantir único (radio)
   if (
     sanitized.evolutionPattern &&
-    !['melhorando', 'estático', 'flutuante', 'progressivo'].includes(sanitized.evolutionPattern)
+    ![
+      'melhorando',
+      'melhora_parcial',
+      'estático',
+      'flutuante',
+      'progressivo',
+      'assintomatico_entre_episodios',
+    ].includes(sanitized.evolutionPattern)
   ) {
     sanitized.evolutionPattern = null
   }
@@ -93,9 +110,10 @@ export function sanitizeHistory(complaint: Partial<ComplaintContext>): Partial<C
     sanitized.chiefComplaintIds = []
   }
 
-  // Red flags: garantir array e remover duplicatas
+  // Red flags: garantir array, duplicatas e IDs válidos
+  const allowedRed = new Set(Object.keys(RED_FLAG_LABELS))
   if (Array.isArray(sanitized.redFlags)) {
-    sanitized.redFlags = [...new Set(sanitized.redFlags)]
+    sanitized.redFlags = [...new Set(sanitized.redFlags)].filter((f) => allowedRed.has(f)) as RedFlagId[]
   } else {
     sanitized.redFlags = []
   }
@@ -113,6 +131,11 @@ export function sanitizeHistory(complaint: Partial<ComplaintContext>): Partial<C
     'ectoparasiticideExposure',
     'systemicDisease',
     'recentSurgeryAnesthesia',
+    'vaccinationOrTravel',
+    'videoOfEpisode',
+    'respiratoryGiSigns',
+    'anticonvulsantOrNeuroMeds',
+    'recentMedChange',
   ]
 
   for (const toggle of toggles) {

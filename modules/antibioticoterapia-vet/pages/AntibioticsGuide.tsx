@@ -1,30 +1,23 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react'
 import Icon from '../components/Icon'
 import DrugCard from '../components/DrugCard'
-import { AbvTab, AntibioticClass, Antibiotic, DiseaseSystem, Disease } from '../types'
+import { AbvTab, AntibioticClass, Antibiotic, DiseaseSystem } from '../types'
 import { safeList } from '../utils/dataUtils'
 import { buildDrugToDiseasesIndex, lookupDiseasesForDrug } from '../utils/legacyDiseaseDrugIndex'
-import { collectDrugNamesFromDisease } from '../utils/diseaseTreatment'
-import { searchUnifiedClinical } from '../engine/searchV2'
+import { searchLegacyDrugs } from '../engine/searchV2'
 import type { AbvInstitutionalFocus } from '../types'
-import type { UnifiedSearchHit } from '../engine/searchV2'
 import { CLASS_STYLE } from '../constants'
 import { subclassFor } from '../utils/pkpdUtils'
-import { InlineRichText } from '../components/RichTextViewer'
+import { ABV_SESSION_KEYS, readSessionJson, writeSessionJson } from '../utils/abvSessionPersistence'
 
 interface AntibioticsGuideProps {
   setPage: (page: AbvTab) => void
   abDict: AntibioticClass
   dzDict: DiseaseSystem
   focusDrug: string | null
-  focusDiseaseName: string | null
-  onClearFocusDisease: () => void
   sourcePage: AbvTab | null
   searchSeed?: string
-  unifiedSearchSeed?: string
   onSearchSeedConsumed?: () => void
-  onUnifiedSearchSeedConsumed?: () => void
-  onNavigateInstitutional: (target: AbvInstitutionalFocus) => void
   onOpenLegacyDisease: (diseaseName: string) => void
 }
 
@@ -33,24 +26,29 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
   abDict,
   dzDict,
   focusDrug,
-  focusDiseaseName,
-  onClearFocusDisease,
   sourcePage,
   searchSeed,
-  unifiedSearchSeed,
   onSearchSeedConsumed,
-  onUnifiedSearchSeedConsumed,
-  onNavigateInstitutional,
   onOpenLegacyDisease,
 }) => {
   const classes = useMemo(() => Object.keys(abDict).sort((a, b) => a.localeCompare(b, 'pt')), [abDict])
-  const systems = useMemo(() => Object.keys(dzDict).sort((a, b) => a.localeCompare(b, 'pt')), [dzDict])
-  const [q, setQ] = useState('')
+  const [q, setQ] = useState(() => {
+    const raw = readSessionJson<{ v: 1; q: string }>(ABV_SESSION_KEYS.antibioticsUi)
+    return raw?.v === 1 && typeof raw.q === 'string' ? raw.q : ''
+  })
   const [cls, setCls] = useState('todas')
-  const [diseaseSectionOpen, setDiseaseSectionOpen] = useState(true)
   const diseaseDrugIndex = useMemo(() => buildDrugToDiseasesIndex(dzDict), [dzDict])
   const firstHighlightRef = useRef<HTMLDivElement>(null)
-  const diseaseHighlightRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const raw = readSessionJson<{ v: 1; cls: string }>(ABV_SESSION_KEYS.antibioticsUi)
+    if (raw?.v !== 1 || typeof raw.cls !== 'string') return
+    if (raw.cls === 'todas' || classes.includes(raw.cls)) setCls(raw.cls)
+  }, [classes])
+
+  useEffect(() => {
+    writeSessionJson(ABV_SESSION_KEYS.antibioticsUi, { v: 1, q, cls })
+  }, [q, cls])
 
   useEffect(() => {
     if (searchSeed) {
@@ -59,14 +57,6 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
       onSearchSeedConsumed?.()
     }
   }, [searchSeed, onSearchSeedConsumed])
-
-  useEffect(() => {
-    if (unifiedSearchSeed) {
-      setQ(unifiedSearchSeed)
-      setCls('todas')
-      onUnifiedSearchSeedConsumed?.()
-    }
-  }, [unifiedSearchSeed, onUnifiedSearchSeedConsumed])
 
   useEffect(() => {
     if (focusDrug) {
@@ -78,20 +68,11 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
     }
   }, [focusDrug])
 
-  useEffect(() => {
-    if (focusDiseaseName) {
-      setDiseaseSectionOpen(true)
-      setTimeout(() => {
-        diseaseHighlightRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
-      }, 120)
-    }
-  }, [focusDiseaseName])
-
-  const unifiedHits = useMemo(() => {
+  const drugHits = useMemo(() => {
     const t = q.trim()
-    if (!t) return [] as UnifiedSearchHit[]
-    return searchUnifiedClinical(t, abDict, dzDict)
-  }, [q, abDict, dzDict])
+    if (!t) return []
+    return searchLegacyDrugs(t, abDict)
+  }, [q, abDict])
 
   const filteredLegacy = useMemo(() => {
     const res: [string, Antibiotic[]][] = []
@@ -108,72 +89,20 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
 
   let firstHitGiven = false
 
-  const backTarget: AbvTab = sourcePage === 'syndrome' ? 'syndrome' : 'home'
-  const backText = sourcePage === 'syndrome' ? 'Voltar para o guia por suspeita' : 'Voltar ao início'
-
-  const renderDiseaseCard = (sys: string, dz: Disease) => {
-    const isFocus = focusDiseaseName === dz.name
-    const atbPreview = collectDrugNamesFromDisease(dz)
-    return (
-      <div
-        key={`${sys}-${dz.name}`}
-        ref={isFocus ? diseaseHighlightRef : undefined}
-        className={`rounded-xl border p-4 transition-shadow ${isFocus ? 'ring-2 ring-[hsl(var(--primary))]' : ''}`}
-        style={{
-          borderColor: 'hsl(var(--border))',
-          background: 'color-mix(in srgb, hsl(var(--foreground)) 4%, hsl(var(--card)))',
-        }}
-      >
-        <div className="flex flex-wrap items-start justify-between gap-2">
-          <div>
-            <h3 className="font-semibold leading-snug" style={{ color: 'hsl(var(--foreground))' }}>
-              {dz.name}
-            </h3>
-            <p className="mt-1 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-              <span className="font-medium text-[hsl(var(--foreground))]">{sys}</span>
-            </p>
-          </div>
-          {isFocus && (
-            <button
-              type="button"
-              className="shrink-0 text-xs font-medium underline"
-              style={{ color: 'hsl(var(--primary))' }}
-              onClick={() => onClearFocusDisease()}
-            >
-              Limpar destaque
-            </button>
-          )}
-        </div>
-        <p className="mt-2 text-xs leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
-          <span className="font-medium" style={{ color: 'hsl(var(--foreground))' }}>
-            Patógenos:
-          </span>{' '}
-          {dz.pathogens ? <InlineRichText text={dz.pathogens} /> : '—'}
-        </p>
-        <p className="mt-1 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-          <span className="font-medium" style={{ color: 'hsl(var(--foreground))' }}>
-            ATB (1ª linha, resumo):
-          </span>{' '}
-          {atbPreview.slice(0, 6).join(', ') || '—'}
-          {atbPreview.length > 6 ? '…' : ''}
-        </p>
-        <p className="mt-1 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-          <span className="font-medium" style={{ color: 'hsl(var(--foreground))' }}>
-            Duração:
-          </span>{' '}
-          {dz.duration ? <InlineRichText text={dz.duration} /> : '—'}
-        </p>
-        <button
-          type="button"
-          className="mt-3 cursor-pointer text-xs font-semibold underline"
-          style={{ color: 'hsl(var(--primary))' }}
-          onClick={() => onOpenLegacyDisease(dz.name)}
-        >
-          Abrir no guia por suspeita clínica
-        </button>
-      </div>
-    )
-  }
+  const backTarget: AbvTab =
+    sourcePage === 'syndrome'
+      ? 'syndrome'
+      : sourcePage === 'diseases' || sourcePage === 'perioperative'
+        ? sourcePage
+        : 'home'
+  const backText =
+    sourcePage === 'syndrome'
+      ? 'Voltar para o guia por suspeita'
+      : sourcePage === 'diseases'
+        ? 'Voltar para doenças por sistema'
+        : sourcePage === 'perioperative'
+          ? 'Voltar para perioperatório'
+          : 'Voltar ao início'
 
   return (
     <div className="relative isolate min-h-full w-full bg-[hsl(var(--background))] px-3 py-4 sm:px-6 md:px-8 md:py-8">
@@ -191,228 +120,54 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
           Guia de antimicrobianos
         </h1>
         <p className="mb-6 max-w-4xl text-sm leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
-          <strong style={{ color: 'hsl(var(--foreground))' }}>Fármacos por classe</strong> com cores PK/PD e calculadora.
-          O catálogo por sistema está em expansão; entre as fichas com linhas de tratamento e ligação aos antibióticos
-          estão <strong style={{ color: 'hsl(var(--foreground))' }}>piometra</strong>,{' '}
-          <strong style={{ color: 'hsl(var(--foreground))' }}>sepse</strong>,{' '}
-          <strong style={{ color: 'hsl(var(--foreground))' }}>pneumonia</strong> e{' '}
-          <strong style={{ color: 'hsl(var(--foreground))' }}>pielonefrite</strong>. A busca inclui patógenos, resistência,
-          hospital, fontes e o legado de fármacos e condições cadastradas.
+          <strong style={{ color: 'hsl(var(--foreground))' }}>Apenas fármacos</strong> por classe, com cores PK/PD e
+          calculadora. Para condições clínicas, patógenos e busca alargada, use{' '}
+          <button
+            type="button"
+            className="font-semibold underline"
+            style={{ color: 'hsl(var(--primary))' }}
+            onClick={() => setPage('diseases')}
+          >
+            Doenças por sistema
+          </button>
+          .
         </p>
 
         <div className="mb-6 flex flex-col gap-3 md:flex-row">
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Buscar doença, antimicrobiano, patógeno, resistência ou tema hospitalar…"
+            placeholder="Buscar antimicrobiano por nome, classe ou indicação…"
             className="abv-input flex-1 p-3 text-sm md:text-base"
           />
         </div>
 
-        {q.trim() && unifiedHits.length > 0 && (
+        {q.trim() && drugHits.length > 0 && (
           <section className="mb-6 rounded-[var(--radius)] border p-4" style={{ borderColor: 'hsl(var(--border))' }}>
             <h2 className="text-sm font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
-              Resultados da busca
+              Resultados (fármacos)
             </h2>
             <p className="mb-3 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-              Ordem: patógenos, resistência, hospital e fontes; em seguida doenças e fármacos do catálogo.
+              Correspondências no catálogo legado de antimicrobianos.
             </p>
             <ul className="max-h-56 space-y-2 overflow-y-auto pr-1 text-sm">
-              {unifiedHits.map((h, i) => {
-                if (h.kind === 'disease') {
-                  return (
-                    <li key={`dz-${h.system}-${h.name}-${i}`}>
-                      <button
-                        type="button"
-                        className="cursor-pointer text-left font-medium underline-offset-2 hover:underline"
-                        style={{ color: 'hsl(var(--primary))' }}
-                        onClick={() => onOpenLegacyDisease(h.name)}
-                      >
-                        <span
-                          className="mr-2 rounded px-1.5 py-0.5 text-[10px] font-bold uppercase"
-                          style={{
-                            background: 'color-mix(in srgb, var(--chart-2) 18%, hsl(var(--card)))',
-                            color: 'hsl(var(--foreground))',
-                          }}
-                        >
-                          Doença
-                        </span>
-                        {h.name}{' '}
-                        <span className="text-xs opacity-80">({h.system})</span>
-                      </button>
-                      <p className="mt-0.5 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                        {h.hint}
-                      </p>
-                    </li>
-                  )
-                }
-                if (h.kind === 'pathogen') {
-                  return (
-                    <li key={`path-${h.id}-${i}`}>
-                      <button
-                        type="button"
-                        className="cursor-pointer text-left font-medium underline-offset-2 hover:underline"
-                        style={{ color: 'hsl(var(--primary))' }}
-                        onClick={() => onNavigateInstitutional({ kind: 'pathogen', id: h.id })}
-                      >
-                        <span
-                          className="mr-2 rounded px-1.5 py-0.5 text-[10px] font-bold uppercase"
-                          style={{
-                            background: 'color-mix(in srgb, var(--chart-3) 20%, hsl(var(--card)))',
-                            color: 'hsl(var(--foreground))',
-                          }}
-                        >
-                          Patógeno
-                        </span>
-                        {h.label}
-                      </button>
-                      <p className="mt-0.5 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                        {h.hint}
-                      </p>
-                    </li>
-                  )
-                }
-                if (h.kind === 'resistance') {
-                  return (
-                    <li key={`res-${h.id}-${i}`}>
-                      <button
-                        type="button"
-                        className="cursor-pointer text-left font-medium underline-offset-2 hover:underline"
-                        style={{ color: 'hsl(var(--primary))' }}
-                        onClick={() => onNavigateInstitutional({ kind: 'resistance', id: h.id })}
-                      >
-                        <span
-                          className="mr-2 rounded px-1.5 py-0.5 text-[10px] font-bold uppercase"
-                          style={{
-                            background: 'color-mix(in srgb, var(--chart-4) 22%, hsl(var(--card)))',
-                            color: 'hsl(var(--foreground))',
-                          }}
-                        >
-                          Resistência
-                        </span>
-                        {h.label}
-                      </button>
-                      <p className="mt-0.5 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                        {h.hint}
-                      </p>
-                    </li>
-                  )
-                }
-                if (h.kind === 'hospital') {
-                  return (
-                    <li key={`hosp-${h.id}-${i}`}>
-                      <button
-                        type="button"
-                        className="cursor-pointer text-left font-medium underline-offset-2 hover:underline"
-                        style={{ color: 'hsl(var(--primary))' }}
-                        onClick={() => onNavigateInstitutional({ kind: 'hospital', id: h.id })}
-                      >
-                        <span
-                          className="mr-2 rounded px-1.5 py-0.5 text-[10px] font-bold uppercase"
-                          style={{
-                            background: 'color-mix(in srgb, var(--chart-5) 18%, hsl(var(--card)))',
-                            color: 'hsl(var(--foreground))',
-                          }}
-                        >
-                          Hospital
-                        </span>
-                        {h.label}
-                      </button>
-                      <p className="mt-0.5 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                        {h.hint}
-                      </p>
-                    </li>
-                  )
-                }
-                if (h.kind === 'reference') {
-                  return (
-                    <li key={`ref-${h.key}-${i}`}>
-                      <button
-                        type="button"
-                        className="cursor-pointer text-left font-medium underline-offset-2 hover:underline"
-                        style={{ color: 'hsl(var(--primary))' }}
-                        onClick={() => onNavigateInstitutional({ kind: 'reference', key: h.key })}
-                      >
-                        <span
-                          className="mr-2 rounded px-1.5 py-0.5 text-[10px] font-bold uppercase"
-                          style={{
-                            background: 'color-mix(in srgb, hsl(var(--muted)) 50%, hsl(var(--card)))',
-                            color: 'hsl(var(--foreground))',
-                          }}
-                        >
-                          Fonte
-                        </span>
-                        {h.label}
-                      </button>
-                      <p className="mt-0.5 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                        {h.hint}
-                      </p>
-                    </li>
-                  )
-                }
-                return (
-                  <li key={`leg-${h.name}-${h.className}-${i}`} className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                    <span className="font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
-                      Fármaco:
-                    </span>{' '}
-                    {h.name} <span className="opacity-80">({h.className})</span>
-                  </li>
-                )
-              })}
+              {drugHits.map((h, i) => (
+                <li key={`${h.name}-${h.className}-${i}`} className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
+                  <span className="font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
+                    Fármaco:
+                  </span>{' '}
+                  {h.name} <span className="opacity-80">({h.className})</span>
+                </li>
+              ))}
             </ul>
           </section>
         )}
 
-        {q.trim() && unifiedHits.length === 0 && (
+        {q.trim() && drugHits.length === 0 && (
           <p className="mb-4 text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
-            Nenhum resultado. Ajuste o termo ou use as secções abaixo.
+            Nenhum fármaco encontrado. Ajuste o termo ou use as classes abaixo.
           </p>
         )}
-
-        <section className="mb-10 border-b pb-8" style={{ borderColor: 'hsl(var(--border))' }}>
-          <button
-            type="button"
-            className="mb-4 flex w-full cursor-pointer flex-wrap items-center justify-between gap-2 text-left md:w-auto"
-            onClick={() => setDiseaseSectionOpen((v) => !v)}
-          >
-            <div>
-              <span
-                className="rounded-full px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide"
-                style={{
-                  background: 'color-mix(in srgb, var(--chart-4) 18%, hsl(var(--card)))',
-                  color: 'hsl(var(--foreground))',
-                  border: '1px solid color-mix(in srgb, var(--chart-4) 35%, hsl(var(--border)))',
-                }}
-              >
-                Doenças por sistema
-              </span>
-              <h2 className="mt-2 text-xl font-bold tracking-tight" style={{ color: 'hsl(var(--foreground))' }}>
-                Condições por sistema
-              </h2>
-              <p className="mt-1 max-w-none text-xs sm:max-w-4xl" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                Fichas com linhas de tratamento e justificativas por fármaco. Use os cartões de antibióticos abaixo para doses
-                e calculadora.
-              </p>
-            </div>
-            <span className="text-sm font-medium" style={{ color: 'hsl(var(--primary))' }}>
-              {diseaseSectionOpen ? 'Ocultar' : 'Mostrar'}
-            </span>
-          </button>
-          {diseaseSectionOpen && (
-            <div className="space-y-6">
-              {systems.map((sys) => (
-                <div key={sys}>
-                  <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                    {sys}
-                  </h3>
-                  <div className="grid gap-3 md:grid-cols-2">
-                    {safeList(dzDict[sys]).map((dz) => renderDiseaseCard(sys, dz))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </section>
 
         <section className="mb-6">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
@@ -428,8 +183,8 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
                 Antimicrobianos por classe
               </span>
               <p className="mt-2 max-w-none text-xs sm:max-w-4xl" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                PK/PD por cor, doses e calculadora. Chips ligam às condições em que o fármaco entra nas linhas de tratamento
-                cadastradas.
+                PK/PD por cor, doses e calculadora. Os chips ligam às condições em que o fármaco entra nas linhas de
+                tratamento cadastradas.
               </p>
             </div>
             <select
@@ -470,7 +225,7 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
                   </div>
                   <div className="grid gap-4 p-5 md:grid-cols-2">
                     {list.map((d) => {
-                      const isHighlighted = !firstHitGiven && !!q && !focusDiseaseName
+                      const isHighlighted = !firstHitGiven && !!q
                       if (isHighlighted) firstHitGiven = true
                       const linked = lookupDiseasesForDrug(d.name, diseaseDrugIndex)
                       return (

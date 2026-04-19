@@ -324,6 +324,43 @@ function normalizeCautionsText(raw: string): string[] {
     .filter((line) => line.trim().length > 0)
 }
 
+/** Arredonda dose na grade 0,1 (slider + input). */
+function roundDoseStep01(n: number): number {
+  if (!Number.isFinite(n)) return n
+  return Math.round(n * 10) / 10
+}
+
+/** Mesma lógica do efeito do “Equivalente prático” global, para preview inline na faixa do catálogo. */
+function computePracticalPreviewFromInputs(
+  dose: string,
+  selectedPresentation: MedicationPresentationRecord | undefined,
+  patient: PatientInfo | null,
+): PracticalEquivalentResult | null {
+  if (!selectedPresentation || !dose.trim()) return null
+
+  const doseMatch = dose.match(/(\d+(?:[.,]\d+)?)/)
+  const doseVal = doseMatch ? parseFloat(doseMatch[1].replace(',', '.')) : 0
+  const doseUnit = dose.replace(doseMatch ? doseMatch[0] : '', '').trim().split('/')[0] || 'mg'
+  const isPerKg = dose.toLowerCase().includes('/kg')
+
+  if (!doseVal || isNaN(doseVal)) return null
+
+  const weightVal = parseFloat(String(patient?.weight_kg || '').replace(',', '.'))
+  const totalDosePerAdmin = isPerKg ? (weightVal ? doseVal * weightVal : 0) : doseVal
+
+  if (totalDosePerAdmin <= 0) return null
+
+  return calculatePracticalEquivalent({
+    presentation: {
+      ...selectedPresentation,
+      value: selectedPresentation.value != null ? Number(selectedPresentation.value) : undefined,
+      per_value: selectedPresentation.per_value != null ? Number(selectedPresentation.per_value) : undefined,
+    } as any,
+    totalDosePerAdmin,
+    doseUnit,
+  })
+}
+
 // ===================== COMPONENT =====================
 export function AddMedicationModal2({
   open,
@@ -521,6 +558,53 @@ export function AddMedicationModal2({
     setPracticalResult(result)
   }, [open, dose, selectedPresentationId, presentations, patient?.weight_kg])
 
+  /** Preview do equivalente na apresentação escolhida, alinhado à dose da faixa em edição (logo abaixo de Confirmar). */
+  const catalogExpandedPracticalPreview = useMemo(() => {
+    if (!open || !expandedDoseId || !selectedPresentationId) return null
+    const selectedPresentation = presentations.find((p) => p.id === selectedPresentationId)
+    if (!selectedPresentation) return null
+
+    const idx = recommendedDoses.findIndex((rd, i) => (rd.id || `rd-${i}`) === expandedDoseId)
+    if (idx < 0) return null
+    const rd = recommendedDoses[idx]
+    const rdAny = rd as Record<string, unknown>
+    const isCustomBasis = isCustomAdministrationBasis(String(rdAny.administration_basis ?? 'weight_based'))
+    if (isCustomBasis) return null
+
+    const needsSpeciesChoice =
+      String(rd.species || '').toLowerCase() === 'ambos' ||
+      String(rd.species || '').toLowerCase() === 'both'
+    if (needsSpeciesChoice && !rangeSpecies) return { kind: 'need_species' as const }
+
+    const hasDoseRange =
+      rdAny.dose_max != null && Number(rdAny.dose_max) > Number(rd.dose_value ?? 0)
+    const canonicalDoseUnit = canonicalRecommendedDoseUnit(
+      rd.dose_unit,
+      rdAny.per_weight_unit as string | null,
+    )
+    const baseVal = hasDoseRange
+      ? roundDoseStep01(Number(rangeDoseValue ?? rd.dose_value))
+      : roundDoseStep01(Number(rd.dose_value))
+    const doseStr = `${baseVal} ${canonicalDoseUnit}`.trim()
+
+    const isPerKgDose = doseStr.toLowerCase().includes('/kg')
+    const w = parseFloat(String(patient?.weight_kg || '').replace(',', '.'))
+    if (isPerKgDose && (!w || w <= 0)) return { kind: 'need_weight' as const, doseStr }
+
+    const result = computePracticalPreviewFromInputs(doseStr, selectedPresentation, patient)
+    return { kind: 'result' as const, doseStr, result }
+  }, [
+    open,
+    expandedDoseId,
+    selectedPresentationId,
+    presentations,
+    recommendedDoses,
+    rangeDoseValue,
+    rangeSpecies,
+    patient?.weight_kg,
+    patient,
+  ])
+
   useEffect(() => {
     if (!open || !storageKey) return
     try {
@@ -604,8 +688,8 @@ export function AddMedicationModal2({
     const timer = setTimeout(async () => {
       try {
         setIsSearching(true)
-        // Com busca vazia, o limite 20 cortava o catálogo completo da clínica (ex.: 36 itens).
-        const limit = q ? 120 : 500
+        // Lista inicial = mesmo universo do Catálogo 3 (clínica completa + global após merge).
+        const limit = q ? 120 : 12000
         const results = await searchMedications(clinicId, q || '', limit)
         setMedications(results)
       } catch (err) {
@@ -1061,9 +1145,6 @@ export function AddMedicationModal2({
                   {medications.length > 0 && (
                     <div className="max-h-[min(50vh,22rem)] space-y-2 overflow-y-auto pr-1 custom-scrollbar">
                       {medications.map((med) => {
-                        const clinicRow = med.source !== 'global' && med.scope !== 'global'
-                        const doseCount =
-                          typeof med.recommended_dose_count === 'number' ? med.recommended_dose_count : null
                         return (
                         <button
                           key={med.id}
@@ -1073,17 +1154,6 @@ export function AddMedicationModal2({
                         >
                           <div className="flex items-start justify-between gap-2">
                             <p className="text-sm font-bold text-white">{med.name}</p>
-                            {clinicRow && doseCount !== null && (
-                              <span
-                                className={
-                                  doseCount > 0
-                                    ? 'shrink-0 rounded-md border border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-[color:var(--rxv-primary)]'
-                                    : 'shrink-0 rounded-md border border-slate-600 bg-slate-900/80 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-400'
-                                }
-                              >
-                                {doseCount > 0 ? 'Com doses do catálogo' : 'Sem doses do catálogo'}
-                              </span>
-                            )}
                           </div>
                           <p className="text-xs text-slate-500 mt-0.5">
                             {med.source === 'global' ? 'Catálogo global' : (med.pharmacy_origin || 'Catálogo da clínica')}
@@ -1193,7 +1263,9 @@ export function AddMedicationModal2({
                               return
                             }
                             setExpandedDoseId(doseKey)
-                            setRangeDoseValue(rdAny.calculator_default_dose ?? rd.dose_value)
+                            setRangeDoseValue(
+                              roundDoseStep01(Number(rdAny.calculator_default_dose ?? rd.dose_value)),
+                            )
                             setRangeFreqValue(rdAny.calculator_default_frequency ?? rdAny.frequency_min ?? (parseTimesPerDayValue(rd.frequency) ? Number(parseTimesPerDayValue(rd.frequency)) : null))
                             setRangeSpecies(needsSpeciesChoice ? null : rd.species)
                           }
@@ -1212,7 +1284,7 @@ export function AddMedicationModal2({
 
                           const handleApplyRange = () => {
                             if (needsSpeciesChoice && !rangeSpecies) return
-                            const finalDose = rangeDoseValue ?? rd.dose_value
+                            const finalDose = roundDoseStep01(Number(rangeDoseValue ?? rd.dose_value))
                             const finalFreq = rangeFreqValue
                             if (!isCustomBasis) setDose(`${finalDose} ${canonicalDoseUnit}`)
                             setRoute(rd.route || 'VO')
@@ -1312,9 +1384,14 @@ export function AddMedicationModal2({
                                           type="range"
                                           min={rd.dose_value}
                                           max={rdAny.dose_max}
-                                          step={0.5}
+                                          step={0.1}
                                           value={rangeDoseValue ?? rd.dose_value}
-                                          onChange={(e) => setRangeDoseValue(Number(e.target.value))}
+                                          onChange={(e) => {
+                                            const raw = Number(e.target.value)
+                                            const lo = Number(rd.dose_value)
+                                            const hi = Number(rdAny.dose_max)
+                                            setRangeDoseValue(roundDoseStep01(Math.min(hi, Math.max(lo, raw))))
+                                          }}
                                           className="flex-1 h-2 appearance-none bg-slate-700 rounded-full cursor-pointer"
                                           style={{'accentColor': '#f59e0b'} as any}
                                         />
@@ -1323,9 +1400,15 @@ export function AddMedicationModal2({
                                             type="number"
                                             min={rd.dose_value}
                                             max={rdAny.dose_max}
-                                            step={0.5}
+                                            step={0.1}
                                             value={rangeDoseValue ?? rd.dose_value}
-                                            onChange={(e) => setRangeDoseValue(Number(e.target.value))}
+                                            onChange={(e) => {
+                                              const v = parseFloat(e.target.value)
+                                              if (Number.isNaN(v)) return
+                                              const lo = Number(rd.dose_value)
+                                              const hi = Number(rdAny.dose_max)
+                                              setRangeDoseValue(roundDoseStep01(Math.min(hi, Math.max(lo, v))))
+                                            }}
                                             className="w-16 bg-transparent text-amber-200 text-sm font-bold text-center outline-none"
                                           />
                                           <span className="text-[10px] text-slate-500">{canonicalDoseUnit}</span>
@@ -1379,9 +1462,83 @@ export function AddMedicationModal2({
                                   >
                                     <span className="flex items-center justify-center gap-2">
                                       <span className="material-symbols-outlined text-[16px]">check_circle</span>
-                                      Confirmar: {isCustomBasis ? doseLabel : `${rangeDoseValue ?? rd.dose_value} ${canonicalDoseUnit}`} • {freqMode === 'repeat_interval' ? freqLabel : freqMode === 'single_dose' ? 'dose única' : `${rangeFreqValue ?? '?'}x/dia`}
+                                      Confirmar:{' '}
+                                      {isCustomBasis
+                                        ? doseLabel
+                                        : `${roundDoseStep01(Number(rangeDoseValue ?? rd.dose_value))} ${canonicalDoseUnit}`}{' '}
+                                      •{' '}
+                                      {freqMode === 'repeat_interval'
+                                        ? freqLabel
+                                        : freqMode === 'single_dose'
+                                          ? 'dose única'
+                                          : `${rangeFreqValue ?? '?'}x/dia`}
                                     </span>
                                   </button>
+
+                                  {isExpanded &&
+                                    !isCustomBasis &&
+                                    selectedPresentationId &&
+                                    catalogExpandedPracticalPreview && (
+                                      <div className="mt-3 space-y-2 rounded-xl border border-amber-500/20 bg-black/30 px-3 py-2.5">
+                                        {catalogExpandedPracticalPreview.kind === 'need_species' && (
+                                          <p className="text-[10px] text-slate-500">
+                                            Selecione a espécie acima para ver o equivalente na apresentação escolhida.
+                                          </p>
+                                        )}
+                                        {catalogExpandedPracticalPreview.kind === 'need_weight' && (
+                                          <p className="text-[10px] text-amber-100/90 leading-relaxed">
+                                            Informe o peso do paciente na receita para calcular o equivalente prático (
+                                            {catalogExpandedPracticalPreview.doseStr}).
+                                          </p>
+                                        )}
+                                        {catalogExpandedPracticalPreview.kind === 'result' &&
+                                          catalogExpandedPracticalPreview.result?.success && (
+                                            <div className="space-y-1">
+                                              <p className="text-[9px] font-black uppercase tracking-widest text-amber-500/90">
+                                                Prévia na apresentação
+                                              </p>
+                                              <p className="text-base font-bold text-white leading-snug">
+                                                {catalogExpandedPracticalPreview.result.label}
+                                              </p>
+                                              {catalogExpandedPracticalPreview.result.pharmacyLabel ? (
+                                                <p className="text-[9px] text-slate-500 uppercase font-bold tracking-wider">
+                                                  Origem:{' '}
+                                                  <span className="text-slate-400 normal-case font-semibold">
+                                                    {catalogExpandedPracticalPreview.result.pharmacyLabel}
+                                                  </span>
+                                                </p>
+                                              ) : null}
+                                              {catalogExpandedPracticalPreview.result.alert ? (
+                                                <p
+                                                  className={`text-[10px] leading-relaxed ${
+                                                    catalogExpandedPracticalPreview.result.alertSeverity === 'danger'
+                                                      ? 'text-red-300'
+                                                      : catalogExpandedPracticalPreview.result.alertSeverity === 'warning'
+                                                        ? 'text-amber-200'
+                                                        : 'text-slate-400'
+                                                  }`}
+                                                >
+                                                  {catalogExpandedPracticalPreview.result.alert}
+                                                </p>
+                                              ) : null}
+                                            </div>
+                                          )}
+                                        {catalogExpandedPracticalPreview.kind === 'result' &&
+                                          catalogExpandedPracticalPreview.result &&
+                                          !catalogExpandedPracticalPreview.result.success && (
+                                            <p className="text-[10px] text-slate-500 leading-relaxed">
+                                              Não foi possível calcular o equivalente:{' '}
+                                              {catalogExpandedPracticalPreview.result.failReason ?? 'verifique dose e apresentação.'}
+                                            </p>
+                                          )}
+                                        {catalogExpandedPracticalPreview.kind === 'result' &&
+                                          !catalogExpandedPracticalPreview.result && (
+                                            <p className="text-[10px] text-slate-500">
+                                              Não foi possível calcular o equivalente para esta combinação.
+                                            </p>
+                                          )}
+                                      </div>
+                                    )}
                                 </div>
                               )}
                             </div>
@@ -1607,8 +1764,8 @@ export function AddMedicationModal2({
                 </RxvField>
               </div>
 
-              {/* ✅ EQUIVALENTE PRÁTICO DISPLAY */}
-              {practicalResult && practicalResult.success && (
+              {/* ✅ EQUIVALENTE PRÁTICO DISPLAY (oculto enquanto edita dose na faixa do catálogo — prévia fica no cartão expandido) */}
+              {!expandedDoseId && practicalResult && practicalResult.success && (
                 <div className="rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_20%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_3%,transparent)] p-5 space-y-4 shadow-[0_0_20px_color-mix(in_srgb,var(--rxv-primary)_35%,transparent)]">
                   <div className="flex items-start justify-between">
                     <div>
@@ -1645,7 +1802,7 @@ export function AddMedicationModal2({
               )}
 
               {/* Erros de cálculo */}
-              {practicalResult && !practicalResult.success && dose && selectedPresentationId && (
+              {!expandedDoseId && practicalResult && !practicalResult.success && dose && selectedPresentationId && (
                 <div className="rounded-xl border border-slate-800 bg-black/40 p-3 flex items-center gap-3 text-xs text-slate-500 italic">
                   <span className="material-symbols-outlined text-[16px]">help</span>
                   <p>Não foi possível calcular o equivalente prático: {practicalResult.failReason}</p>

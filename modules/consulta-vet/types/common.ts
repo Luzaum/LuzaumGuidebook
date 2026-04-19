@@ -45,12 +45,30 @@ export interface EditorialClinicalTable {
   rows: string[][];
 }
 
+/** Figura editorial (ex.: pôster IRIS) — `src` relativo à pasta `public/` (ex.: `/assets/consulta-vet/iris.png`). */
+export interface EditorialClinicalFigure {
+  kind: 'clinicalFigure';
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
 export type EditorialSectionValue =
   | string
   | string[]
   | EditorialDrugProtocol[]
   | EditorialDiagnosticStep[]
-  | Record<string, string | string[] | EditorialSystemGroup[] | EditorialDrugProtocol[] | EditorialDiagnosticStep[] | EditorialClinicalTable | any>;
+  | Record<
+      string,
+      | string
+      | string[]
+      | EditorialSystemGroup[]
+      | EditorialDrugProtocol[]
+      | EditorialDiagnosticStep[]
+      | EditorialClinicalTable
+      | EditorialClinicalFigure
+      | any
+    >;
 
 export type ContentFlag = {
   isDemonstrative?: boolean;

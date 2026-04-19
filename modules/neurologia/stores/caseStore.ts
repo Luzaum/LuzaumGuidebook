@@ -12,11 +12,17 @@ export type TemporalPattern =
   | 'subagudo'
   | 'cronico'
   | 'episodico'
+  | 'insidioso'
+  | 'oscilante'
+  | 'recorrente'
 export type EvolutionPattern =
   | 'melhorando'
+  | 'melhora_parcial'
   | 'estático'
   | 'flutuante'
   | 'progressivo'
+  /** Entre episódios assintomático (ex.: epilepsia fora da crise) */
+  | 'assintomatico_entre_episodios'
 
 export type RedFlagId =
   | 'coma_estupor'
@@ -28,6 +34,13 @@ export type RedFlagId =
   | 'severe_cervical_pain'
   | 'anisocoria_acute'
   | 'dysphagia_aspiration_risk'
+  | 'seizures_uncontrolled'
+  | 'suspected_intracranial_hipertension'
+  | 'active_coagulopathy'
+  | 'septic_or_systemic_shock'
+  | 'acute_blindness'
+  | 'hypoglycemia_suspect'
+  | 'cervical_instability_trauma'
 
 export type ComorbidityKey =
   | 'renal'
@@ -74,6 +87,16 @@ export type ComplaintContext = {
   ectoparasiticideExposure: boolean
   systemicDisease: boolean
   recentSurgeryAnesthesia: boolean
+  /** Vacinação / viagem / área endêmica (perguntas do cap. 1) */
+  vaccinationOrTravel: boolean
+  /** Vídeo do episódio disponível */
+  videoOfEpisode: boolean
+  /** Sinais respiratórios ou GI concomitantes */
+  respiratoryGiSigns: boolean
+  /** Uso de anticonvulsivante ou medicação neurológica (historial cap. 1) */
+  anticonvulsantOrNeuroMeds: boolean
+  /** Nova medicação ou mudança de dose recente */
+  recentMedChange: boolean
 }
 
 type NeuroExam = Record<string, any> // mantém compatível com seu modelo atual
@@ -147,6 +170,11 @@ const emptyComplaint: ComplaintContext = {
   ectoparasiticideExposure: false,
   systemicDisease: false,
   recentSurgeryAnesthesia: false,
+  vaccinationOrTravel: false,
+  videoOfEpisode: false,
+  respiratoryGiSigns: false,
+  anticonvulsantOrNeuroMeds: false,
+  recentMedChange: false,
 }
 
 const emptyCase: Omit<

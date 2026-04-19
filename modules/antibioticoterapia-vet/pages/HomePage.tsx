@@ -1,5 +1,5 @@
 import { useState, FormEvent, type CSSProperties } from 'react'
-import { ArrowRight, Hospital, Pill, Scissors, Stethoscope, Search } from 'lucide-react'
+import { ArrowRight, Layers, Pill, Scissors, Stethoscope, Search } from 'lucide-react'
 import AnimatedBackground from '../components/AnimatedBackground'
 import type { AbvTab } from '../types'
 
@@ -26,25 +26,25 @@ const FEATURE_CARDS: FeatureCardDef[] = [
     Icon: Stethoscope,
   },
   {
-    tab: 'antibiotics',
-    title: 'Antimicrobianos',
-    description: 'Condições clínicas e classes com calculadora integrada.',
-    Icon: Pill,
+    tab: 'diseases',
+    title: 'Doenças por sistema',
+    description: 'Fichas clínicas por sistema, busca alargada e linhas de tratamento.',
+    Icon: Layers,
+    iconWrapStyle: {
+      background: 'color-mix(in srgb, var(--chart-2) 16%, hsl(var(--card)))',
+      borderColor: 'color-mix(in srgb, var(--chart-2) 32%, hsl(var(--border)))',
+    },
   },
   {
-    tab: 'hospital',
-    title: 'Cenário hospitalar',
-    description: 'Resistência, isolamento e cenários críticos.',
-    Icon: Hospital,
-    iconWrapStyle: {
-      background: 'color-mix(in srgb, var(--chart-4) 18%, hsl(var(--card)))',
-      borderColor: 'color-mix(in srgb, var(--chart-4) 35%, hsl(var(--border)))',
-    },
+    tab: 'antibiotics',
+    title: 'Antimicrobianos',
+    description: 'Classes terapêuticas, doses e calculadora — apenas fármacos.',
+    Icon: Pill,
   },
   {
     tab: 'perioperative',
     title: 'Perioperatório',
-    description: 'Profilaxia e conduta cirúrgica (em construção).',
+    description: 'Profilaxia e cenários cirúrgicos (motor v2 e referência CCIH).',
     Icon: Scissors,
     iconWrapStyle: {
       background: 'color-mix(in srgb, hsl(var(--secondary)) 22%, hsl(var(--card)))',
@@ -123,8 +123,8 @@ export function HomePage({ onNavigate, onSearch }: HomePageProps) {
               </div>
             </div>
             <p className="mt-3 text-center text-xs leading-relaxed sm:text-[0.8125rem]" style={{ color: 'hsl(var(--muted-foreground))' }}>
-              Busca: fármacos, patógenos, resistência, hospital e fontes; condições clínicas do catálogo incluem, entre
-              outras, piometra, sepse, pneumonia e pielonefrite — em expansão contínua.
+              Busca: fármacos, patógenos, resistência e fontes; condições clínicas do catálogo incluem, entre outras,
+              piometra, sepse, pneumonia, pielonefrite, cistite, piotórax e perioperatório — em expansão contínua.
             </p>
           </form>
         </div>
@@ -148,10 +148,10 @@ export function HomePage({ onNavigate, onSearch }: HomePageProps) {
                     className="h-6 w-6"
                     style={{
                       color:
-                        tab === 'hospital'
-                          ? 'var(--chart-4)'
-                          : tab === 'perioperative'
-                            ? 'hsl(var(--secondary))'
+                        tab === 'perioperative'
+                          ? 'hsl(var(--secondary))'
+                          : tab === 'diseases'
+                            ? 'var(--chart-2)'
                             : 'hsl(var(--primary))',
                     }}
                   />

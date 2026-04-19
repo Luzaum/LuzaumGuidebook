@@ -1,6 +1,6 @@
 ﻿import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { modules } from '../modules/registry'
+import { modules, type Module } from '../modules/registry'
 import { ModuleCard } from '../components/ModuleCard'
 import { ArrowLeft, Layers } from 'lucide-react'
 import { AuroraBackground } from '../components/ui/aurora-background'
@@ -8,11 +8,15 @@ import { AuroraBackground } from '../components/ui/aurora-background'
 export function Hub() {
     const navigate = useNavigate()
 
-    const premiumIds = ['neurologia', 'peconhentos', 'antibioticoterapia', 'transfusão-sanguinea', 'crivet', 'receituario-vet', 'plantao-vet']
-    const developmentIds = ['veteletrolitico']
+    const premiumIds = ['neurologia', 'peconhentos', 'antibioticoterapia', 'transfusão-sanguinea', 'crivet', 'receituario-vet']
+    /** Módulos em construção / experimentais — fora das grelhas principal e premium. */
+    const developmentIds = ['plantao-vet', 'veteletrolitico', 'emergências-veterinarias']
 
-    const premiumModules = modules.filter(m => premiumIds.includes(m.id))
-    const freeModules = modules.filter(m => !premiumIds.includes(m.id))
+    const developmentModules = developmentIds
+        .map((id) => modules.find((m) => m.id === id))
+        .filter((m): m is Module => Boolean(m))
+    const premiumModules = modules.filter((m) => premiumIds.includes(m.id))
+    const freeModules = modules.filter((m) => !premiumIds.includes(m.id) && !developmentIds.includes(m.id))
 
     return (
         <AuroraBackground className="w-full relative min-h-screen">
@@ -80,6 +84,31 @@ export function Hub() {
                             ))}
                         </div>
                     </div>
+
+                    {/* DESENVOLVIMENTO — no final da página */}
+                    {developmentModules.length > 0 ? (
+                        <div className="border-t border-border/80 pt-14 sm:pt-16">
+                            <div className="flex justify-center mb-8">
+                                <span className="inline-flex items-center gap-1.5 rounded-md border border-slate-500/35 bg-slate-500/10 px-3 py-1 text-sm font-semibold uppercase tracking-widest text-slate-600 dark:text-slate-400">
+                                    <span className="h-2 w-2 rounded-full bg-slate-500" />
+                                    Desenvolvimento
+                                </span>
+                            </div>
+                            <p className="text-center text-sm text-muted-foreground max-w-2xl mx-auto mb-8">
+                                Módulos em evolução ou integração; acesso mantido para testes e feedback.
+                            </p>
+                            <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 opacity-95">
+                                {developmentModules.map((module) => (
+                                    <div
+                                        key={module.id}
+                                        className="transform transition-all duration-300 hover:-translate-y-1 active:scale-[0.99]"
+                                    >
+                                        <ModuleCard module={module} />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ) : null}
                 </div>
             </section>
         </AuroraBackground>

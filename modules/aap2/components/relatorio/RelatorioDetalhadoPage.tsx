@@ -115,7 +115,7 @@ export const RelatorioDetalhadoPage: React.FC<RelatorioDetalhadoPageProps> = ({
     const isNSAIDDanger = selectedSigns.some(s => ['hemorragia', 'equimose', 'mioglobinuria', 'edema'].includes(s));
 
     return (
-        <div className="min-h-screen bg-[#0f0f12] text-slate-100 font-sans flex flex-col">
+        <div className="flex min-h-0 w-full flex-col rounded-2xl border border-white/10 bg-[#0f0f12] font-sans text-slate-100">
             {/* ── Header ─────────────────────────────────────────── */}
             <header className="dl-glass sticky top-0 z-50 border-b border-white/10 px-6 py-3.5">
                 <div className="max-w-7xl mx-auto flex items-center justify-between">

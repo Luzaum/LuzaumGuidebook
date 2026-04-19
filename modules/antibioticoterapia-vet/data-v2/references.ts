@@ -92,6 +92,42 @@ export const SOURCE_REGISTRY: Record<string, SourceEntryV2> = {
     versionedSourceId: INSTITUTIONAL_SOURCE_CCIH_2024,
     note: 'Ligação explícita ao documento central; sem publicação do binário no bundle.',
   },
+  /** Síntese educacional das fichas de fisiopatologia — metadado; PDFs dos manuais não são distribuídos no app. */
+  'ref_registry.textbook_nelson_couto_siim_6': {
+    key: 'ref_registry.textbook_nelson_couto_siim_6',
+    domain: 'clinical_v2',
+    title: 'Nelson & Couto — Small Animal Internal Medicine (6.ª ed.)',
+    description:
+      'Base conceitual para condições sistémicas, reprodutivas e infecciosas descritas nas fichas; conteúdo do app é paráfrase clínica, não transcrição.',
+    status: 'placeholder',
+    note: 'Obra em suporte físico/digital da equipa; sem link no frontend.',
+  },
+  'ref_registry.textbook_cunningham_physiology_6': {
+    key: 'ref_registry.textbook_cunningham_physiology_6',
+    domain: 'clinical_v2',
+    title: "Cunningham's Textbook of Veterinary Physiology (6.ª ed.)",
+    description:
+      'Fundamentos de inflamação sistémica, febre, resposta vascular e fisiologia respiratória integrados nas explicações de sepse e pneumonia.',
+    status: 'placeholder',
+    note: 'Síntese educacional; doses e decisões seguem bula e protocolo local.',
+  },
+  'ref_registry.textbook_neuro_practical_3': {
+    key: 'ref_registry.textbook_neuro_practical_3',
+    domain: 'clinical_v2',
+    title: 'Practical Guide to Canine and Feline Neurology (3.ª ed.)',
+    description:
+      'Referência para localização neurológica e abordagem de processos neurológicos infecciosos/inflamatórios quando relevantes ao raciocínio clínico global do doente séptico ou com complicações neurológicas.',
+    status: 'placeholder',
+    note: 'O módulo antibiótico foca infecção e antimicrobianos; neuro é apoio conceitual transversal.',
+  },
+  'ref_registry.pathophysiology_excluded_pathologic_basis': {
+    key: 'ref_registry.pathophysiology_excluded_pathologic_basis',
+    domain: 'clinical_v2',
+    title: 'Exclusão editorial — Pathologic Basis of Veterinary Disease',
+    description:
+      'As fichas de fisiopatologia deste módulo não utilizam esta obra como fonte de síntese; evita-se dependência de texto unicamente anátomo-patológico para decisões terapêuticas no app.',
+    status: 'placeholder',
+  },
 }
 
 export const REFERENCE_GROUPS: ReferenceGroupV2[] = [
@@ -104,6 +140,16 @@ export const REFERENCE_GROUPS: ReferenceGroupV2[] = [
     domain: 'clinical_v2',
     label: 'Bloco clínico v2',
     sourceKeys: ['ref_registry.clinical_syndromes_v2'],
+  },
+  {
+    domain: 'clinical_v2',
+    label: 'Literatura de apoio — síntese das fichas de fisiopatologia',
+    sourceKeys: [
+      'ref_registry.textbook_nelson_couto_siim_6',
+      'ref_registry.textbook_cunningham_physiology_6',
+      'ref_registry.textbook_neuro_practical_3',
+      'ref_registry.pathophysiology_excluded_pathologic_basis',
+    ],
   },
   {
     domain: 'molecules_v2',

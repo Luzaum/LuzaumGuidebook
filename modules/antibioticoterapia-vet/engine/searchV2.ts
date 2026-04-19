@@ -1,7 +1,6 @@
 import type { AntibioticClass, DiseaseSystem } from '../types'
 import { PATHOGEN_PROFILES_V2 } from '../data-v2/pathogens'
 import { RESISTANCE_CONCEPTS_V2 } from '../data-v2/resistance'
-import { HOSPITAL_STEWARDSHIP_CARDS_V2 } from '../data-v2/hospitalAlerts'
 import { SOURCE_REGISTRY, getSourceEntry } from '../data-v2/references'
 import { listVersionedSources } from '../data-v2/sourceRegistry'
 import { safeList } from '../utils/dataUtils'
@@ -10,7 +9,6 @@ import { diseaseSearchBlob } from '../utils/diseaseTreatment'
 export type UnifiedSearchHit =
   | { tier: 'v2'; kind: 'pathogen'; id: string; label: string; slug: string; score: number; hint: string }
   | { tier: 'v2'; kind: 'resistance'; id: string; label: string; slug: string; score: number; hint: string }
-  | { tier: 'v2'; kind: 'hospital'; id: string; label: string; slug: string; score: number; hint: string }
   | { tier: 'v2'; kind: 'reference'; key: string; label: string; score: number; hint: string }
   | { tier: 'legacy'; kind: 'drug'; name: string; className: string; score: number }
   | { tier: 'legacy'; kind: 'disease'; system: string; name: string; score: number; hint: string }
@@ -96,36 +94,6 @@ export function searchResistanceConceptsV2(query: string): Extract<UnifiedSearch
         slug: c.slug,
         score,
         hint: c.definitionShort.slice(0, 120) + (c.definitionShort.length > 120 ? '…' : ''),
-      })
-    }
-  }
-  return out.sort((a, b) => b.score - a.score)
-}
-
-export function searchHospitalCardsV2(query: string): Extract<UnifiedSearchHit, { kind: 'hospital' }>[] {
-  const q = query.trim()
-  if (!q) return []
-  const out: Extract<UnifiedSearchHit, { kind: 'hospital' }>[] = []
-  for (const c of Object.values(HOSPITAL_STEWARDSHIP_CARDS_V2)) {
-    const fields = [
-      c.id,
-      c.slug,
-      c.title,
-      c.lead,
-      ...c.bullets,
-      ...c.whenToThink,
-      c.sourceKey,
-    ]
-    const score = maxScoreForFields(q, fields)
-    if (score > 0) {
-      out.push({
-        tier: 'v2',
-        kind: 'hospital',
-        id: c.id,
-        label: c.title,
-        slug: c.slug,
-        score,
-        hint: c.lead.slice(0, 120) + (c.lead.length > 120 ? '…' : ''),
       })
     }
   }
@@ -235,15 +203,14 @@ export function searchLegacyDiseases(
   return out.sort((a, b) => b.score - a.score)
 }
 
-/** Busca unificada: conteúdos v2 (patógenos, resistência, hospital, fontes) + legado (fármacos e doenças). Sem síndromes v2. */
+/** Busca unificada: conteúdos v2 (patógenos, resistência, fontes) + legado (fármacos e doenças). Sem síndromes v2. */
 export function searchUnifiedClinical(query: string, abDict: AntibioticClass, dzDict: DiseaseSystem): UnifiedSearchHit[] {
   const path = searchPathogensV2(query)
   const res = searchResistanceConceptsV2(query)
-  const hosp = searchHospitalCardsV2(query)
   const ref = searchReferencesV2(query)
   const legDrugs = searchLegacyDrugs(query, abDict)
   const legDiseases = searchLegacyDiseases(query, dzDict)
   const leg = [...legDrugs, ...legDiseases].sort((a, b) => b.score - a.score)
-  const v2 = [...path, ...res, ...hosp, ...ref].sort((a, b) => b.score - a.score)
+  const v2 = [...path, ...res, ...ref].sort((a, b) => b.score - a.score)
   return [...v2, ...leg]
 }

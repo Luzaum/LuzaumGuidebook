@@ -193,7 +193,7 @@ export const DrLuzaumReportPage: React.FC<DrLuzaumReportPageProps> = ({
     } as React.CSSProperties;
 
     return (
-        <div className="min-h-screen bg-[#120e16] text-slate-100 font-sans flex flex-col">
+        <div className="flex min-h-0 w-full flex-col rounded-2xl border border-white/10 bg-[#120e16] font-sans text-slate-100">
             {/* ── Header ─────────────────────────────────────────── */}
             <header className="sticky top-0 z-50 dl-glass border-b border-white/10">
                 <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -208,8 +208,8 @@ export const DrLuzaumReportPage: React.FC<DrLuzaumReportPageProps> = ({
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
                                 </svg>
                             </button>
-                            <div className="flex items-center justify-center w-8 h-8 rounded bg-[#6a25f4] text-white shadow-lg shadow-[#6a25f4]/30">
-                                <span className="text-sm">🐾</span>
+                            <div className="flex h-8 w-8 items-center justify-center rounded bg-[#6a25f4] text-xs font-bold text-white shadow-lg shadow-[#6a25f4]/30" aria-hidden>
+                                DL
                             </div>
                             <div>
                                 <h1 className="text-white text-base font-bold tracking-tight leading-none">Dr. Luzaum AI</h1>
@@ -243,9 +243,12 @@ export const DrLuzaumReportPage: React.FC<DrLuzaumReportPageProps> = ({
                     </div>
                 </div>
             </header>
+            <p className="border-b border-white/10 px-4 py-2 text-center text-[11px] leading-snug text-slate-400 sm:px-8">
+                Relatório educativo de apoio — confirme com exame físico, monitorização e protocolo institucional antes de decisões terapêuticas.
+            </p>
 
             {/* ── Main ─────────────────────────────────────────────── */}
-            <main className="flex-grow p-4 sm:p-6 lg:p-8 max-w-[1400px] mx-auto w-full">
+            <main className="mx-auto w-full max-w-[1400px] flex-grow p-4 sm:p-6 lg:p-8">
                 {/* Page header */}
                 <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
                     <div>

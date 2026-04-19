@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { createPortal } from 'react-dom'
 
@@ -252,6 +252,23 @@ export const RxvButton = ({
     )
 }
 
+/** Tokens --rxv-* no portal sem classes de layout da `.rxv-page` (flex + 100dvh quebravam o modal). */
+function RxvPortalThemeWrap({ children }: { children: React.ReactNode }) {
+    const ref = useRef<HTMLDivElement>(null)
+    useLayoutEffect(() => {
+        const el = ref.current
+        const page = typeof document !== 'undefined' ? document.querySelector('.rxv-page') : null
+        if (!el) return
+        const light = page?.classList.contains('rxv-light')
+        el.className = `rxv-modal-theme-surface ${light ? 'rxv-light' : 'rxv-dark'} rxv-modal-portal min-w-0 w-full max-w-full`
+    }, [])
+    return (
+        <div ref={ref} className="rxv-modal-theme-surface rxv-dark rxv-modal-portal min-w-0 w-full max-w-full">
+            {children}
+        </div>
+    )
+}
+
 export const RxvModalShell = ({
     children,
     zIndexClass = 'z-[90]',
@@ -282,7 +299,7 @@ export const RxvModalShell = ({
                     aria-hidden="true"
                 />
                 <div className="relative my-auto w-full">
-                    {children}
+                    <RxvPortalThemeWrap>{children}</RxvPortalThemeWrap>
                 </div>
             </div>
         </div>,
