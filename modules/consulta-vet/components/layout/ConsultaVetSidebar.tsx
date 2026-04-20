@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { LayoutGroup, motion, useReducedMotion } from 'framer-motion';
-import { Bookmark, Clock, FileText, Grid, LucideIcon, Pill, ShieldCheck, Stethoscope, X, Zap } from 'lucide-react';
+import { Bookmark, BookOpen, Clock, FileText, Grid, LucideIcon, Pill, ShieldCheck, Stethoscope, X, Zap } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
 import { CONSULTA_VET_LOGO_ALT, CONSULTA_VET_LOGO_SIDEBAR_CLASS, CONSULTA_VET_LOGO_SRC } from '../../constants/branding';
 import { canManageConsultaVetEditorial } from '../../services/consultaVetEditorialPermissions';
@@ -47,6 +47,7 @@ export function ConsultaVetSidebar({ isOpen, onClose }: ConsultaVetSidebarProps)
       { to: '/consulta-vet/doencas', label: 'Doenças', icon: Stethoscope, accent: 'emerald' },
       { to: '/consulta-vet/medicamentos', label: 'Medicamentos', icon: Pill, accent: 'amber' },
       { to: '/consulta-vet/manejo-emergencial', label: 'Manejo emergencial', icon: Zap, accent: 'orange' },
+      { to: '/consulta-vet/guias-rapidos', label: 'Guia rápido clínico', icon: BookOpen, accent: 'slate' },
       { to: '/consulta-vet/consensos', label: 'Consensos', icon: FileText, accent: 'violet' },
       { to: '/consulta-vet/favoritos', label: 'Favoritos', icon: Bookmark, accent: 'rose' },
       { to: '/consulta-vet/recentes', label: 'Recentes', icon: Clock, accent: 'cyan' },

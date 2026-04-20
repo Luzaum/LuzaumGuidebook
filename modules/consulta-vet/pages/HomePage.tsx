@@ -2,6 +2,7 @@ import React, { useDeferredValue, useEffect, useMemo, useRef, useState } from 'r
 import { Link } from 'react-router-dom';
 import {
   Bookmark,
+  BookOpen,
   ChevronRight,
   Clock,
   FileText,
@@ -34,7 +35,7 @@ type SearchResults = {
 const UI_TEXT = {
   title: 'ConsultaVET',
   heroBody:
-    'Base cl\u00ednica para consulta r\u00e1pida de doen\u00e7as, medicamentos, cartilhas de manejo emergencial e consensos, com navega\u00e7\u00e3o conectada, favoritos e retomada de leitura.',
+    'Base cl\u00ednica para consulta r\u00e1pida de doen\u00e7as, medicamentos, guias r\u00e1pidos por sistema, cartilhas de manejo emergencial e consensos, com navega\u00e7\u00e3o conectada, favoritos e retomada de leitura.',
   searchPlaceholder: 'Buscar doen\u00e7a, medicamento ou consenso...',
   shortcuts: 'Atalhos principais',
   continueTitle: 'Continuar de onde parou',
@@ -222,6 +223,13 @@ export function HomePage() {
       icon: Pill,
       body: 'Posologias, apresenta\u00e7\u00f5es e cautelas',
       accent: 'amber' as const,
+    },
+    {
+      to: '/consulta-vet/guias-rapidos',
+      label: 'Guia r\u00e1pido cl\u00ednico',
+      icon: BookOpen,
+      body: 'Conceitos por sistema, figuras e v\u00eddeos',
+      accent: 'slate' as const,
     },
     {
       to: '/consulta-vet/manejo-emergencial',

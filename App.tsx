@@ -48,6 +48,12 @@ const ConsultaVetManejoEmergencialPage = lazy(() =>
 const ConsultaVetManejoEmergencialGuidePage = lazy(() =>
   import('./modules/consulta-vet/pages/ManejoEmergencialGuidePage').then((m) => ({ default: m.ManejoEmergencialGuidePage }))
 )
+const ConsultaVetClinicalQuickGuidesPage = lazy(() =>
+  import('./modules/consulta-vet/pages/ClinicalQuickGuidesPage').then((m) => ({ default: m.ClinicalQuickGuidesPage }))
+)
+const ConsultaVetClinicalQuickGuideDetailPage = lazy(() =>
+  import('./modules/consulta-vet/pages/ClinicalQuickGuideDetailPage').then((m) => ({ default: m.ClinicalQuickGuideDetailPage }))
+)
 const NovaReceitaPage = lazy(() => import('./modules/receituario-vet/NovaReceitaPage'))
 const NovaReceita2Page = lazy(() => import('./modules/receituario-vet/NovaReceita2Page'))
 const NovaReceita2PrintPage = lazy(() => import('./modules/receituario-vet/NovaReceita2PrintPage'))
@@ -152,6 +158,8 @@ const appRoutes = (
       <Route path="editorial/importacao" element={<ConsultaVetEditorialImportPage />} />
       <Route path="manejo-emergencial" element={<ConsultaVetManejoEmergencialPage />} />
       <Route path="manejo-emergencial/:slug" element={<ConsultaVetManejoEmergencialGuidePage />} />
+      <Route path="guias-rapidos" element={<ConsultaVetClinicalQuickGuidesPage />} />
+      <Route path="guias-rapidos/:slug" element={<ConsultaVetClinicalQuickGuideDetailPage />} />
     </Route>
     <Route path="/rifa" element={<ModuleIframe />} />
     <Route path="/supabase-test" element={<SupabaseTestPage />} />

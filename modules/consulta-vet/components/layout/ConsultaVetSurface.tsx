@@ -3,6 +3,7 @@ import { cn } from '../../../../lib/utils';
 
 export type ConsultaVetHeroAccent =
   | 'primary'
+  | 'sky'
   | 'emerald'
   | 'amber'
   | 'violet'
@@ -23,6 +24,12 @@ const ACCENT: Record<ConsultaVetHeroAccent, AccentDef> = {
     ring: 'ring-primary/10',
     orb: 'bg-primary/[0.11]',
     gradient: 'bg-gradient-to-br from-card via-card to-primary/[0.04]',
+  },
+  sky: {
+    border: 'border-sky-500/20',
+    ring: 'ring-sky-500/10',
+    orb: 'bg-sky-500/[0.12]',
+    gradient: 'bg-gradient-to-br from-card via-card to-sky-500/[0.05]',
   },
   emerald: {
     border: 'border-emerald-500/20',
@@ -64,6 +71,7 @@ const ACCENT: Record<ConsultaVetHeroAccent, AccentDef> = {
 
 const EYEBROW: Record<ConsultaVetHeroAccent, string> = {
   primary: 'border-primary/25 bg-primary/10 text-primary',
+  sky: 'border-sky-500/25 bg-sky-500/10 text-sky-800 dark:text-sky-300',
   emerald: 'border-emerald-500/25 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400',
   amber: 'border-amber-500/30 bg-amber-500/10 text-amber-800 dark:text-amber-300',
   violet: 'border-violet-500/25 bg-violet-500/10 text-violet-800 dark:text-violet-300',
@@ -89,7 +97,7 @@ type ConsultaVetSurfaceProps = {
  * Cartão de superfície com gradiente leve + orbes (mesmo vocabulário visual da home).
  */
 export function ConsultaVetSurface({ children, className, accent = 'primary' }: ConsultaVetSurfaceProps) {
-  const a = ACCENT[accent];
+  const a = ACCENT[accent] ?? ACCENT.primary;
   return (
     <div
       className={cn(
