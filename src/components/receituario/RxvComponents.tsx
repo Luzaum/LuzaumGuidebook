@@ -103,7 +103,7 @@ export const RxvInput = ({ ...props }: React.InputHTMLAttributes<HTMLInputElemen
 /**
  * RxvSelect - Select padrão com estilo Neon
  */
-export const RxvSelect = ({ options, ...props }: React.SelectHTMLAttributes<HTMLSelectElement> & { options?: { value: string, label: string }[] | string[], error?: boolean }) => {
+export const RxvSelect = ({ options, ...props }: React.SelectHTMLAttributes<HTMLSelectElement> & { options?: readonly ({ value: string, label: string } | string)[], error?: boolean }) => {
     const safeOptions = options ?? []
     const optSurface = 'bg-[color:var(--rxv-surface)] text-[color:var(--rxv-text)]'
 
@@ -214,7 +214,7 @@ export const RxvPillToggle = ({ value, labels, onToggle, colorClass = 'text-[#39
 /**
  * RxvButton - Botão padronizado com variantes primary/secondary/danger + loading state
  */
-type RxvButtonVariant = 'primary' | 'secondary' | 'danger'
+type RxvButtonVariant = 'primary' | 'secondary' | 'danger' | 'ghost'
 
 /** Botões derivados de --rxv-* (claro/escuro automático no receituário). */
 const RXV_BTN_TOKEN: Record<RxvButtonVariant, string> = {
@@ -224,6 +224,8 @@ const RXV_BTN_TOKEN: Record<RxvButtonVariant, string> = {
         'inline-flex items-center gap-2 rounded-xl border border-[color:var(--rxv-border)] bg-[color:color-mix(in_srgb,var(--rxv-surface-2)_94%,var(--rxv-surface)_6%)] px-3.5 py-2 text-[13px] font-bold text-[color:var(--rxv-text)] transition-all hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_28%,var(--rxv-border))] hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_8%,var(--rxv-surface-2))] disabled:opacity-50 disabled:cursor-not-allowed',
     danger:
         'inline-flex items-center gap-2 rounded-xl border border-red-500/35 bg-red-500/10 px-3.5 py-2 text-[13px] font-bold text-red-700 transition-all hover:bg-red-500/15 hover:border-red-500/45 dark:border-red-800/50 dark:bg-red-950/40 dark:text-red-300 dark:hover:bg-red-950/55 disabled:opacity-50 disabled:cursor-not-allowed',
+    ghost:
+        'inline-flex items-center gap-2 rounded-xl border border-transparent bg-transparent px-3.5 py-2 text-[13px] font-bold text-[color:var(--rxv-muted)] transition-all hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_22%,transparent)] hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_8%,transparent)] hover:text-[color:var(--rxv-text)] disabled:opacity-50 disabled:cursor-not-allowed',
 }
 
 export const RxvButton = ({

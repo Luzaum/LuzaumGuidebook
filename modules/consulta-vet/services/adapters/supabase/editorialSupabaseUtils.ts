@@ -19,7 +19,7 @@ export function parseError(error: unknown): string {
 }
 
 export async function withTimeout<T>(
-  operation: Promise<T>,
+  operation: PromiseLike<T>,
   label: string,
   timeoutMs = 7000
 ): Promise<T> {
@@ -32,7 +32,7 @@ export async function withTimeout<T>(
   });
 
   try {
-    return await Promise.race([operation, timeoutPromise]);
+    return await Promise.race([Promise.resolve(operation), timeoutPromise]);
   } finally {
     if (timeoutId) {
       clearTimeout(timeoutId);

@@ -49,7 +49,7 @@ type DifferentialCandidate = {
   axes: NeuroAxis[]
   species?: ('dog' | 'cat')[]
   lifeStages?: ('neonate' | 'pediatric' | 'adult' | 'geriatric')[]
-  temporalPreference?: ('peragudo' | 'agudo' | 'subagudo' | 'cronico' | 'episodico')[]
+  temporalPreference?: NonNullable<HistoryData['temporalPattern']>[]
   evolutionPreference?: (
     | 'melhorando'
     | 'melhora_parcial'

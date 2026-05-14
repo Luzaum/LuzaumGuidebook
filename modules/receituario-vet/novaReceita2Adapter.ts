@@ -3,7 +3,7 @@
 // para uso com rxRenderer e RxPrintView
 
 import type { NovaReceita2State } from './NovaReceita2Page'
-import type { PrescriptionState, RouteGroup, PrintDoc } from './rxTypes'
+import type { DurationMode, PrescriptionState, RouteGroup, PrintDoc } from './rxTypes'
 import { renderRxToPrintDoc, splitPrescriptionByControl } from './rxRenderer'
 import type { RxTemplateStyle } from './rxDb'
 import { buildPresentationConcentrationText } from '../../src/lib/medicationCatalog'
@@ -223,7 +223,12 @@ function parseDurationFromText(raw?: string): {
     return { durationDays: '', continuousUse: false, untilFinished: false }
 }
 
-function resolveStructuredDuration(item: NovaReceita2State['items'][number]) {
+function resolveStructuredDuration(item: NovaReceita2State['items'][number]): {
+    durationDays: string
+    continuousUse: boolean
+    untilFinished: boolean
+    durationMode: DurationMode
+} {
     if (item.durationMode === 'continuous_until_recheck') {
         return { durationDays: '', continuousUse: false, untilFinished: false, durationMode: item.durationMode }
     }

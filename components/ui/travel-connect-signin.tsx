@@ -313,7 +313,7 @@ export default function TravelConnectSignIn({
               </div>
 
               {slideCount > 1 ? (
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-1.5">
                   {AUTH_SLIDES_4K.map((slide, index) => (
                     <button
                       key={slide.id}
@@ -324,10 +324,17 @@ export default function TravelConnectSignIn({
                         setActiveSlide(index)
                       }}
                       className={cn(
-                        'h-2 rounded-full transition-all',
-                        activeSlide === index ? 'w-8 bg-white' : 'w-2 bg-white/45 hover:bg-white/70'
+                        'flex h-8 min-w-8 items-center justify-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80',
+                        activeSlide === index ? 'bg-white/15' : 'bg-transparent hover:bg-white/10'
                       )}
-                    />
+                    >
+                      <span
+                        className={cn(
+                          'block h-2 rounded-full transition-all',
+                          activeSlide === index ? 'w-8 bg-white' : 'w-2 bg-white/45'
+                        )}
+                      />
+                    </button>
                   ))}
                 </div>
               ) : null}

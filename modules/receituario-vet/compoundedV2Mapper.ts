@@ -1,5 +1,5 @@
 ﻿import type { ProtocolMedicationItem } from '../../src/lib/protocols/protocolsRepo'
-import type { CompoundedMedicationBundle } from '../../src/lib/compoundedRecords'
+import type { CompoundedIngredientRole, CompoundedMedicationBundle } from '../../src/lib/compoundedRecords'
 import type { CompoundedPrescriptionItem, PatientInfo, PrescriptionItem } from './NovaReceita2Page'
 import { legacyManipulatedToV2, type CompoundedMedicationV2 } from './compoundedV2'
 import { resolveCompoundedInstance } from './compoundedV2Engine'
@@ -88,7 +88,7 @@ function buildLegacySnapshotFromV2(v2: CompoundedMedicationV2) {
     ingredients: v2.ingredients.map((ingredient) => ({
       id: ingredient.id,
       ingredient_name: ingredient.name,
-      ingredient_role: ingredient.role === 'base' ? 'other' : ingredient.role,
+      ingredient_role: (ingredient.role === 'base' ? 'other' : ingredient.role) as CompoundedIngredientRole,
       quantity_value: ingredient.amount,
       quantity_unit: ingredient.unit || null,
       concentration_value: ingredient.concentration_value ?? null,

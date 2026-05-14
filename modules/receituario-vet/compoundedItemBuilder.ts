@@ -150,7 +150,7 @@ export function buildCompoundedPrescriptionItem(params: {
       calculation_mode: regimen.dosing_mode === 'calculated' ? 'weight_based' : 'fixed_per_animal',
       applied_dose_text: '',
       applied_quantity_text: '',
-      metadata: clinicalRegimen || null,
+      metadata: clinicalRegimen ? (clinicalRegimen as unknown as Record<string, unknown>) : null,
     },
   }
 

@@ -75,8 +75,8 @@ export default function HemoGasoVetModule() {
       </div>
 
       {/* Main Content Area */}
-      <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden bg-slate-50 dark:bg-slate-950">
-        <main className="h-full min-w-0 w-full">
+      <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-y-auto bg-slate-50 dark:bg-slate-950">
+        <main className="min-h-full min-w-0 w-full">
           <div className="box-border w-full min-w-0 px-4 py-6 pb-10 sm:px-6 lg:px-8">
             <Routes>
               <Route index element={<InterpreterPage />} />

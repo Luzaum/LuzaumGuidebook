@@ -138,7 +138,7 @@ export function parseBloodGasText(text: string, species: Species, sampleType: Sa
     }
 
     const first = values[0];
-    (result as Record<string, unknown>)[key] = first;
+    (result as unknown as Record<string, unknown>)[key] = first;
   }
 
   const residualText = working

@@ -774,7 +774,7 @@ export async function searchMedications(
     }
     fb = fb.order('name', { ascending: true }).limit(clinicFetchLimit)
     const retry = await fb
-    data = retry.data
+    data = retry.data as typeof data
     error = retry.error
     if (error) throw error
     const clinicResults = (data ?? []).map((entry) => ({

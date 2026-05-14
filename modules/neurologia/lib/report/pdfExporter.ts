@@ -269,8 +269,8 @@ function buildExamSections(caseState: any): Array<{ title: string; lines: string
 
 function buildFallbackClinicalSections(report: CaseReport): Array<{ title: string; lines: string[]; bullets?: string[] }> {
   const supportFindings =
-    Array.isArray(report.neuroLocalization.supportingFindings) && report.neuroLocalization.supportingFindings.length > 0
-      ? report.neuroLocalization.supportingFindings.map((item) => formatValue(item)).filter(Boolean)
+    Array.isArray(report.neuroLocalization.supportiveFindings) && report.neuroLocalization.supportiveFindings.length > 0
+      ? report.neuroLocalization.supportiveFindings.map((item) => formatValue(item)).filter(Boolean)
       : []
 
   const differentialLines = report.differentials.slice(0, 5).map((item, index) => {

@@ -8,10 +8,36 @@ import { defineConfig, loadEnv } from 'vite';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = fs.realpathSync.native(__dirname);
 
+function spaDevFallbackPlugin() {
+  return {
+    name: 'vetius-spa-dev-fallback',
+    configureServer(server) {
+      server.middlewares.use((req, _res, next) => {
+        const method = req.method || 'GET';
+        const accept = String(req.headers.accept || '');
+        const pathname = new URL(req.url || '/', 'http://localhost').pathname;
+
+        if (
+          (method === 'GET' || method === 'HEAD') &&
+          accept.includes('text/html') &&
+          pathname !== '/' &&
+          !pathname.startsWith('/api/') &&
+          !pathname.startsWith('/@') &&
+          !pathname.includes('.')
+        ) {
+          req.url = '/index.html';
+        }
+
+        next();
+      });
+    },
+  };
+}
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, projectRoot, '');
   return {
-    plugins: [react()],
+    plugins: [spaDevFallbackPlugin(), react()],
     // Raiz explícita no caminho físico — alinha com index.html / index.tsx em discos junction (Windows).
     root: projectRoot,
     base: '/',

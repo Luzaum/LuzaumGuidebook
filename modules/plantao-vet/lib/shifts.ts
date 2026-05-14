@@ -3,16 +3,19 @@ import { Shift, ShiftType } from '../types';
 export const SHIFT_TYPE_LABELS: Record<ShiftType, string> = {
   diurno: 'Plantao diurno',
   noturno: 'Plantao noturno',
+  night: 'Plantao noturno',
 };
 
 export const SHIFT_WINDOW_LABELS: Record<ShiftType, string> = {
   diurno: '07:00 - 19:00',
   noturno: '19:00 - 07:00',
+  night: '19:00 - 07:00',
 };
 
 const SHIFT_SORT_ORDER: Record<ShiftType, number> = {
   diurno: 0,
   noturno: 1,
+  night: 1,
 };
 
 export function buildShiftLabel(dateISO: string, shiftType: ShiftType) {

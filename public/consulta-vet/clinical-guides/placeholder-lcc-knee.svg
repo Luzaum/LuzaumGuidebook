@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280" fill="none" role="img" aria-labelledby="t d">
-  <title id="t">Esquema joelho  avaliação LCC</title>
-  <desc id="d">Silhueta de membro posterior com destaque ao joelho e setas de movimento cranial da tíbia.</desc>
+  <title id="t">Esquema joelho  avaliaï¿½ï¿½o LCC</title>
+  <desc id="d">Silhueta de membro posterior com destaque ao joelho e setas de movimento cranial da tï¿½bia.</desc>
   <rect width="480" height="280" rx="16" fill="#0f172a"/>
   <path d="M120 220 L120 80 Q140 40 200 50 L280 55 Q340 45 360 90 L365 220" stroke="#38bdf8" stroke-width="3" fill="none" opacity="0.9"/>
   <circle cx="240" cy="120" r="28" stroke="#5eead4" stroke-width="2.5" fill="#0c4a6e" opacity="0.85"/>
@@ -12,5 +12,5 @@
     </marker>
   </defs>
   <text x="330" y="88" fill="#94a3b8" font-size="10" font-family="system-ui,sans-serif">cranial</text>
-  <text x="40" y="260" fill="#64748b" font-size="10" font-family="system-ui,sans-serif">Placeholder  substituir por figura clínica</text>
+  <text x="40" y="260" fill="#64748b" font-size="10" font-family="system-ui,sans-serif">Placeholder  substituir por figura clï¿½nica</text>
 </svg>

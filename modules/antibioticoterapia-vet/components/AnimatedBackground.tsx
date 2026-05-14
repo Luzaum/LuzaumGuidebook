@@ -32,7 +32,7 @@ let nextPillId = 0
 
 const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({ pillCount = 120 }) => {
   const [pills, setPills] = useState<Pill[]>([])
-  const animationRef = useRef<number>()
+  const animationRef = useRef<number | null>(null)
   const lastPillTimeRef = useRef<number>(Date.now())
   const count = Math.min(Math.max(pillCount, 24), 160)
 

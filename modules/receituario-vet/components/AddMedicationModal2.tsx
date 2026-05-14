@@ -361,6 +361,68 @@ function computePracticalPreviewFromInputs(
   })
 }
 
+function conversionFactor(fromUnit: string, toUnit: string): number | null {
+  const normalize = (unit: string) => unit.trim().toLowerCase().replace('μ', 'mc').replace('µ', 'mc')
+  const from = normalize(fromUnit)
+  const to = normalize(toUnit)
+  if (!from || !to) return null
+  if (from === to) return 1
+  const factorsToMg: Record<string, number> = {
+    mg: 1,
+    g: 1000,
+    mcg: 0.001,
+    ug: 0.001,
+  }
+  if (from in factorsToMg && to in factorsToMg) {
+    return factorsToMg[from] / factorsToMg[to]
+  }
+  const factorsToUi: Record<string, number> = {
+    ui: 1,
+    iu: 1,
+    u: 1,
+  }
+  if (from in factorsToUi && to in factorsToUi) return 1
+  return null
+}
+
+function calculateDoseFromPresentationAmount(params: {
+  amount: number
+  presentation: MedicationPresentationRecord | undefined
+  targetDoseUnit: string
+  patient: PatientInfo | null
+}): { value: number; unit: string; totalDoseLabel: string; usedWeight: boolean } | null {
+  const { amount, presentation, targetDoseUnit, patient } = params
+  if (!presentation || !Number.isFinite(amount) || amount <= 0) return null
+
+  const rawConcUnit = String(presentation.value_unit || '').trim()
+  const slashIdx = rawConcUnit.indexOf('/')
+  const concUnit = slashIdx > 0 ? rawConcUnit.slice(0, slashIdx).trim() : rawConcUnit
+  const concValue = presentation.value != null ? Number(presentation.value) : 0
+  const perValue = presentation.per_value != null ? Number(presentation.per_value) : 1
+  if (!concUnit || !concValue || concValue <= 0 || !perValue || perValue <= 0) return null
+
+  const targetBaseUnit = String(targetDoseUnit || '').split('/')[0]?.trim() || concUnit
+  const factor = conversionFactor(concUnit, targetBaseUnit)
+  if (factor == null) return null
+
+  const totalInConcUnit = amount * (concValue / perValue)
+  const totalInTargetUnit = totalInConcUnit * factor
+  const isPerKg = String(targetDoseUnit || '').toLowerCase().includes('/kg')
+  const weight = Number(String(patient?.weight_kg || '').replace(',', '.'))
+
+  const canUseWeight = isPerKg && Number.isFinite(weight) && weight > 0
+  const doseValue = canUseWeight ? totalInTargetUnit / weight : totalInTargetUnit
+  const resolvedUnit = canUseWeight ? targetDoseUnit : targetBaseUnit
+  if (!Number.isFinite(doseValue) || doseValue <= 0) return null
+
+  return {
+    value: roundDoseStep01(doseValue),
+    unit: resolvedUnit,
+    totalDoseLabel: `${roundDoseStep01(totalInTargetUnit)} ${targetBaseUnit}`,
+    usedWeight: canUseWeight,
+  }
+}
+
 // ===================== COMPONENT =====================
 export function AddMedicationModal2({
   open,
@@ -421,8 +483,10 @@ export function AddMedicationModal2({
   // Range selector state for recommended doses
   const [expandedDoseId, setExpandedDoseId] = useState<string | null>(null)
   const [rangeDoseValue, setRangeDoseValue] = useState<number | null>(null)
+  const [rangeDoseUnitOverride, setRangeDoseUnitOverride] = useState<string | null>(null)
   const [rangeFreqValue, setRangeFreqValue] = useState<number | null>(null)
   const [rangeSpecies, setRangeSpecies] = useState<string | null>(null)
+  const [presentationAmountValue, setPresentationAmountValue] = useState('')
 
   // Practical Equivalent State
   const [practicalResult, setPracticalResult] = useState<PracticalEquivalentResult | null>(null)
@@ -567,7 +631,7 @@ export function AddMedicationModal2({
     const idx = recommendedDoses.findIndex((rd, i) => (rd.id || `rd-${i}`) === expandedDoseId)
     if (idx < 0) return null
     const rd = recommendedDoses[idx]
-    const rdAny = rd as Record<string, unknown>
+    const rdAny = rd as unknown as Record<string, unknown>
     const isCustomBasis = isCustomAdministrationBasis(String(rdAny.administration_basis ?? 'weight_based'))
     if (isCustomBasis) return null
 
@@ -582,10 +646,9 @@ export function AddMedicationModal2({
       rd.dose_unit,
       rdAny.per_weight_unit as string | null,
     )
-    const baseVal = hasDoseRange
-      ? roundDoseStep01(Number(rangeDoseValue ?? rd.dose_value))
-      : roundDoseStep01(Number(rd.dose_value))
-    const doseStr = `${baseVal} ${canonicalDoseUnit}`.trim()
+    const effectiveDoseUnit = rangeDoseUnitOverride || canonicalDoseUnit
+    const baseVal = roundDoseStep01(Number(rangeDoseValue ?? rd.dose_value))
+    const doseStr = `${baseVal} ${effectiveDoseUnit}`.trim()
 
     const isPerKgDose = doseStr.toLowerCase().includes('/kg')
     const w = parseFloat(String(patient?.weight_kg || '').replace(',', '.'))
@@ -600,6 +663,7 @@ export function AddMedicationModal2({
     presentations,
     recommendedDoses,
     rangeDoseValue,
+    rangeDoseUnitOverride,
     rangeSpecies,
     patient?.weight_kg,
     patient,
@@ -929,8 +993,8 @@ export function AddMedicationModal2({
         frequencyMode: frequencyMode === 'every_x_hours' ? 'interval_hours' : frequencyMode,
         timesPerDay: frequencyMode === 'times_per_day' ? Number(timesPerDay) : undefined,
         intervalHours: frequencyMode === 'every_x_hours' ? Number(everyHours) : undefined,
-        repeatEveryValue: frequencyMode === 'repeat_interval' ? String(recurrenceValue) : undefined,
-        repeatEveryUnit: frequencyMode === 'repeat_interval' ? recurrenceUnit : undefined,
+        repeatEveryValue: frequencyMode === 'repeat_interval' ? Number(recurrenceValue) : undefined,
+        repeatEveryUnit: frequencyMode === 'repeat_interval' ? recurrenceUnit as 'dias' | 'semanas' | 'meses' : undefined,
         administrationBasis,
         administrationAmount: isCustomAdministrationBasis(administrationBasis)
           ? (administrationAmount ? Number(administrationAmount) : 1)
@@ -1008,8 +1072,8 @@ export function AddMedicationModal2({
       frequencyMode: frequencyMode === 'every_x_hours' ? 'interval_hours' : frequencyMode,
       timesPerDay: frequencyMode === 'times_per_day' ? Number(timesPerDay) : undefined,
       intervalHours: frequencyMode === 'every_x_hours' ? Number(everyHours) : undefined,
-      repeatEveryValue: frequencyMode === 'repeat_interval' ? String(recurrenceValue) : undefined,
-      repeatEveryUnit: frequencyMode === 'repeat_interval' ? recurrenceUnit : undefined,
+      repeatEveryValue: frequencyMode === 'repeat_interval' ? Number(recurrenceValue) : undefined,
+      repeatEveryUnit: frequencyMode === 'repeat_interval' ? recurrenceUnit as 'dias' | 'semanas' | 'meses' : undefined,
       administrationBasis,
       administrationAmount: isCustomAdministrationBasis(administrationBasis)
         ? (administrationAmount ? Number(administrationAmount) : 1)
@@ -1235,10 +1299,13 @@ export function AddMedicationModal2({
                           const hasDoseRange = rdAny.dose_max != null && rdAny.dose_max > rd.dose_value
                           const hasFreqRange = rdAny.frequency_max != null && rdAny.frequency_min != null && rdAny.frequency_max > rdAny.frequency_min
                           const needsSpeciesChoice = (rd.species || '').toLowerCase() === 'ambos' || (rd.species || '').toLowerCase() === 'both'
-                          const needsInteraction = hasDoseRange || hasFreqRange || needsSpeciesChoice
                           const isExpanded = expandedDoseId === doseKey
                           const canonicalDoseUnit = canonicalRecommendedDoseUnit(rd.dose_unit, rdAny.per_weight_unit)
+                          const effectiveDoseUnit = isExpanded && rangeDoseUnitOverride ? rangeDoseUnitOverride : canonicalDoseUnit
                           const isCustomBasis = isCustomAdministrationBasis(rdAny.administration_basis)
+                          const needsInteraction = !isCustomBasis || hasFreqRange || needsSpeciesChoice
+                          const selectedPresentationForDose = presentations.find((p) => p.id === selectedPresentationId)
+                          const presentationUnitForDose = selectedPresentationForDose?.per_unit || 'unidade'
                           const doseLabel = isCustomBasis
                             ? `${rdAny.administration_amount ?? 1} ${rdAny.administration_unit || 'unidade'}${rdAny.administration_target ? ' ' + rdAny.administration_target : ' por animal'}`
                             : hasDoseRange
@@ -1263,11 +1330,25 @@ export function AddMedicationModal2({
                               return
                             }
                             setExpandedDoseId(doseKey)
-                            setRangeDoseValue(
-                              roundDoseStep01(Number(rdAny.calculator_default_dose ?? rd.dose_value)),
-                            )
+                            setRangeDoseValue(roundDoseStep01(Number(rdAny.calculator_default_dose ?? rd.dose_value)))
+                            setRangeDoseUnitOverride(null)
                             setRangeFreqValue(rdAny.calculator_default_frequency ?? rdAny.frequency_min ?? (parseTimesPerDayValue(rd.frequency) ? Number(parseTimesPerDayValue(rd.frequency)) : null))
                             setRangeSpecies(needsSpeciesChoice ? null : rd.species)
+                            setPresentationAmountValue('')
+                          }
+
+                          const handlePresentationAmountChange = (rawValue: string) => {
+                            setPresentationAmountValue(rawValue)
+                            const amount = Number(rawValue.replace(',', '.'))
+                            const calculated = calculateDoseFromPresentationAmount({
+                              amount,
+                              presentation: selectedPresentationForDose,
+                              targetDoseUnit: canonicalDoseUnit,
+                              patient,
+                            })
+                            if (!calculated) return
+                            setRangeDoseValue(calculated.value)
+                            setRangeDoseUnitOverride(calculated.unit === canonicalDoseUnit ? null : calculated.unit)
                           }
 
                           const handleApplyDirect = () => {
@@ -1286,7 +1367,7 @@ export function AddMedicationModal2({
                             if (needsSpeciesChoice && !rangeSpecies) return
                             const finalDose = roundDoseStep01(Number(rangeDoseValue ?? rd.dose_value))
                             const finalFreq = rangeFreqValue
-                            if (!isCustomBasis) setDose(`${finalDose} ${canonicalDoseUnit}`)
+                            if (!isCustomBasis) setDose(`${finalDose} ${effectiveDoseUnit}`)
                             setRoute(rd.route || 'VO')
                             const nextMode = normalizeFrequencyModeForModal(rd.frequency_mode)
                             setFrequencyMode(nextMode)
@@ -1333,7 +1414,7 @@ export function AddMedicationModal2({
                                         {isExpanded ? 'expand_less' : 'tune'}
                                       </span>
                                       <span className="text-[9px] text-amber-500/60 uppercase font-bold">
-                                        {isExpanded ? 'Fechar' : 'Configurar'}
+                                        {isExpanded ? 'Fechar' : 'Ajustar'}
                                       </span>
                                     </>
                                   ) : (
@@ -1373,13 +1454,16 @@ export function AddMedicationModal2({
                                     </div>
                                   )}
 
-                                  {/* Dose range selector */}
-                                  {hasDoseRange && (
+                                  {/* Dose selector */}
+                                  {!isCustomBasis && (
                                     <div>
                                       <p className="text-[10px] font-bold text-amber-400 uppercase tracking-wider mb-2">
-                                        Dose: {rd.dose_value}–{rdAny.dose_max} {canonicalDoseUnit}
+                                        {hasDoseRange
+                                          ? `Dose: ${rd.dose_value}-${rdAny.dose_max} ${canonicalDoseUnit}`
+                                          : `Dose: ${rd.dose_value} ${canonicalDoseUnit}`}
                                       </p>
                                       <div className="flex items-center gap-3">
+                                        {hasDoseRange ? (
                                         <input
                                           type="range"
                                           min={rd.dose_value}
@@ -1391,29 +1475,85 @@ export function AddMedicationModal2({
                                             const lo = Number(rd.dose_value)
                                             const hi = Number(rdAny.dose_max)
                                             setRangeDoseValue(roundDoseStep01(Math.min(hi, Math.max(lo, raw))))
+                                            setRangeDoseUnitOverride(null)
+                                            setPresentationAmountValue('')
                                           }}
                                           className="flex-1 h-2 appearance-none bg-slate-700 rounded-full cursor-pointer"
                                           style={{'accentColor': '#f59e0b'} as any}
                                         />
+                                        ) : (
+                                          <div className="flex-1 rounded-lg border border-slate-800 bg-black/30 px-3 py-2 text-[10px] text-slate-500">
+                                            Dose fixa do catálogo. Ajuste pelo campo ao lado ou pela quantidade administrada abaixo.
+                                          </div>
+                                        )}
                                         <div className="flex items-center gap-1.5 bg-black/40 rounded-lg px-3 py-1.5 border border-amber-500/20">
                                           <input
                                             type="number"
-                                            min={rd.dose_value}
-                                            max={rdAny.dose_max}
+                                            min={0}
                                             step={0.1}
                                             value={rangeDoseValue ?? rd.dose_value}
                                             onChange={(e) => {
                                               const v = parseFloat(e.target.value)
                                               if (Number.isNaN(v)) return
-                                              const lo = Number(rd.dose_value)
-                                              const hi = Number(rdAny.dose_max)
-                                              setRangeDoseValue(roundDoseStep01(Math.min(hi, Math.max(lo, v))))
+                                              const next = hasDoseRange
+                                                ? Math.min(Number(rdAny.dose_max), Math.max(Number(rd.dose_value), v))
+                                                : Math.max(0, v)
+                                              setRangeDoseValue(roundDoseStep01(next))
+                                              setRangeDoseUnitOverride(null)
+                                              setPresentationAmountValue('')
                                             }}
                                             className="w-16 bg-transparent text-amber-200 text-sm font-bold text-center outline-none"
                                           />
-                                          <span className="text-[10px] text-slate-500">{canonicalDoseUnit}</span>
+                                          <span className="text-[10px] text-slate-500">{effectiveDoseUnit}</span>
                                         </div>
                                       </div>
+                                      {selectedPresentationForDose && (
+                                        <div className="mt-3 rounded-xl border border-slate-800 bg-black/25 p-3">
+                                          <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                                            Ou ajustar pela quantidade administrada
+                                          </p>
+                                          <div className="flex flex-wrap items-center gap-2">
+                                            <input
+                                              type="number"
+                                              min={0}
+                                              step={0.01}
+                                              value={presentationAmountValue}
+                                              onChange={(e) => handlePresentationAmountChange(e.target.value)}
+                                              placeholder="Ex: 1 ou 0,5"
+                                              className="w-28 rounded-lg border border-slate-700 bg-black/40 px-3 py-2 text-sm font-bold text-white outline-none focus:border-amber-500/60"
+                                            />
+                                            <span className="text-xs font-semibold text-slate-300">
+                                              {presentationUnitForDose}
+                                            </span>
+                                            {(() => {
+                                              const amount = Number(presentationAmountValue.replace(',', '.'))
+                                              const calculated = calculateDoseFromPresentationAmount({
+                                                amount,
+                                                presentation: selectedPresentationForDose,
+                                                targetDoseUnit: effectiveDoseUnit,
+                                                patient,
+                                              })
+                                              if (!presentationAmountValue) return null
+                                              if (!calculated) {
+                                                return (
+                                                  <span className="text-[10px] text-amber-200">
+                                                    Não foi possível converter. Verifique peso, concentração e unidade.
+                                                  </span>
+                                                )
+                                              }
+                                              return (
+                                                <span className="text-[10px] text-slate-400">
+                                                  = {calculated.totalDoseLabel} por administração, dose ajustada para{' '}
+                                                  <strong className="text-amber-200">{calculated.value} {calculated.unit}</strong>
+                                                  {!calculated.usedWeight && canonicalDoseUnit.toLowerCase().includes('/kg') ? (
+                                                    <span className="text-slate-500"> (sem peso informado, usando dose total)</span>
+                                                  ) : null}
+                                                </span>
+                                              )
+                                            })()}
+                                          </div>
+                                        </div>
+                                      )}
                                     </div>
                                   )}
 
@@ -1465,7 +1605,7 @@ export function AddMedicationModal2({
                                       Confirmar:{' '}
                                       {isCustomBasis
                                         ? doseLabel
-                                        : `${roundDoseStep01(Number(rangeDoseValue ?? rd.dose_value))} ${canonicalDoseUnit}`}{' '}
+                                        : `${roundDoseStep01(Number(rangeDoseValue ?? rd.dose_value))} ${effectiveDoseUnit}`}{' '}
                                       •{' '}
                                       {freqMode === 'repeat_interval'
                                         ? freqLabel

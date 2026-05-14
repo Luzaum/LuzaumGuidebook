@@ -792,7 +792,7 @@ export function mapProtocolMedicationToPrescriptionItem(
 
   const durationState = buildDurationFromProtocol(protocolMed)
 
-  const baseItem: PrescriptionItem = storedSnapshot
+  const baseItem = (storedSnapshot
     ? {
       ...storedSnapshot,
       id: `protocol-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
@@ -803,6 +803,7 @@ export function mapProtocolMedicationToPrescriptionItem(
       kind: protocolMed.item_type === 'compounded' ? 'compounded' : 'standard',
       type: 'medication',
     }
+  ) as PrescriptionItem
 
   if ((protocolMed.item_type === 'compounded' || baseItem.kind === 'compounded') && payloadV1) {
     const mapped = mapManipuladoV1ToPrescriptionItem({

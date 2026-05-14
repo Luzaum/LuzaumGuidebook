@@ -1282,13 +1282,13 @@ export default function Protocolos3Page() {
           console.log('[Protocolos3] Protocolo carregado com sucesso', bundle.protocol.name)
         } else {
           console.error('[Protocolos3] Protocolo não encontrado', protocolId)
-          setSelectedProtocolId(null)
+          setSelectedProtocolKey(null)
         }
       } catch (err) {
         console.error('[Protocolos3] Erro ao carregar detalhes do protocolo', err)
         const errorDetails = safeStringify(err)
         alert(`Falha ao carregar protocolo\n\nDetalhes:\n${errorDetails}`)
-        setSelectedProtocolId(null)
+        setSelectedProtocolKey(null)
       }
     },
     [clinicId, userId]
@@ -2619,7 +2619,7 @@ export default function Protocolos3Page() {
                   <span className="material-symbols-outlined text-[20px]">delete</span>
                 </button>
               </>
-            ) : scopeFilter === 'all' ? (
+            ) : (scopeFilter as ProtocolScopeFilter) === 'all' ? (
               <div className="space-y-10">
                 {clinicProtocolsVisible.length > 0 && (
                   <section className="space-y-5">

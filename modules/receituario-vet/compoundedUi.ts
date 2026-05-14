@@ -125,6 +125,7 @@ function getRuntimeCompoundedV2(item: CompoundedPrescriptionItem): CompoundedMed
   if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return null
 
   const safe = sanitizeDeepText(payload as CompoundedMedicationV2)
+  const safeDisplay = safe.display || {}
   const itemRecord = item as unknown as Record<string, unknown>
   const presentationMetadata = ((item.presentation_metadata || {}) as Record<string, unknown>)
   const regimenId = item.compounded_regimen_id || item.compounded_regimen_snapshot?.id || null
@@ -168,10 +169,10 @@ function getRuntimeCompoundedV2(item: CompoundedPrescriptionItem): CompoundedMed
           },
     ),
     display: {
-      ...safe.display,
+      ...safeDisplay,
       auto_print_line: presentationMetadata.print_line_mode !== 'manual',
-      print_line_left: pickEditedText(presentationMetadata, 'print_line_left', safe.display.print_line_left),
-      print_line_right: pickEditedText(presentationMetadata, 'print_line_right', safe.display.print_line_right),
+      print_line_left: pickEditedText(presentationMetadata, 'print_line_left', safeDisplay.print_line_left || ''),
+      print_line_right: pickEditedText(presentationMetadata, 'print_line_right', safeDisplay.print_line_right || ''),
     },
   }
 }
@@ -300,7 +301,7 @@ function getClinicalRegimen(item: CompoundedPrescriptionItem): ClinicalRegimenSe
     !Array.isArray(direct) &&
     ('ingredientRules' in direct || 'scenarioTitle' in direct || 'pharmaceuticalForm' in direct)
   ) {
-    return sanitizeDeepText(direct as ClinicalRegimenSemantics)
+    return sanitizeDeepText(direct as unknown as ClinicalRegimenSemantics)
   }
   const formula = getClinicalFormula(item)
   const regimenId = item.compounded_regimen_id || item.compounded_regimen_snapshot?.id
@@ -308,7 +309,7 @@ function getClinicalRegimen(item: CompoundedPrescriptionItem): ClinicalRegimenSe
   return sanitizeDeepText(formula.regimen_semantics[String(regimenId)] || null)
 }
 
-function isClinicalDoseOrientedItem(item: PrescriptionItem): item is CompoundedPrescriptionItem {
+function isClinicalDoseOrientedItem(item: PrescriptionItem): boolean {
   if (!isCompounded(item)) return false
   const runtimeV2 = getRuntimeCompoundedV2(item)
   if (runtimeV2) return runtimeV2.formula.formula_type === 'clinical_dose_oriented'
@@ -698,7 +699,7 @@ export function getCompoundedCalculationSummary(
     if (weightBased && (!weightKg || weightKg <= 0)) {
       status = 'missing_weight'
       warnings.push('Peso necessário para cálculo da dose final.')
-    } else if (doseValue == null && runtimeV1.prescribing.posology_mode !== 'clinical_variant_table') {
+    } else if (doseValue == null && String(runtimeV1.prescribing.posology_mode) !== 'clinical_variant_table') {
       status = 'missing_dose'
       warnings.push('Dose clínica não definida.')
     } else if (!weightBased) {
@@ -963,7 +964,7 @@ export function getCompoundedCalculationSummary(
         }
       }
     }
-    if ((normalizedDoseUnit === 'mL' || normalizedDoseUnit === 'L') && dosePerAdmin < 0.1) {
+    if ((String(normalizedDoseUnit) === 'mL' || String(normalizedDoseUnit) === 'L') && dosePerAdmin < 0.1) {
       warnings.push(`Volume muito pequeno por administração (${formatDecimal(dosePerAdmin)} ${normalizedDoseUnit}). Considere diluição ou concentração diferente.`)
     }
     return {

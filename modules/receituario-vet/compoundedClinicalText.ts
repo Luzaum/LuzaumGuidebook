@@ -417,7 +417,7 @@ export function getClinicalFormulaMetadata(input: unknown): ClinicalFormulaMetad
     }
   }
   return metadata.formula_model === 'clinical_dose_oriented' || metadata.formula_type === 'clinical_dose_oriented' || metadata.formula_type === 'procedural_topical'
-    ? metadata as ClinicalFormulaMetadata
+    ? metadata as unknown as ClinicalFormulaMetadata
     : null
 }
 
@@ -604,7 +604,7 @@ export function parseClinicalTextImport(text: string): ParsedClinicalTextImport 
       default_qsp_text: effectiveScenarios[0]?.qspText || '',
       notes: effectiveScenarios.map((scenario) => scenario.internalNote).filter(Boolean).join(' '),
       manipulation_instructions: '',
-      metadata,
+      metadata: metadata as unknown as Record<string, unknown>,
     },
     ingredients: buildUniqueIngredientsSummary(effectiveScenarios),
     regimens,

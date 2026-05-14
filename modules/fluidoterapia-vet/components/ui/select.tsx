@@ -16,6 +16,9 @@ type SelectContextValue = {
 }
 
 const SelectContext = React.createContext<SelectContextValue | null>(null)
+type SelectValueProps = { placeholder?: string }
+type SelectItemProps = React.PropsWithChildren<{ value: string }>
+type SelectContentProps = React.PropsWithChildren<Record<string, unknown>>
 
 function textFromNode(node: React.ReactNode): string {
   if (typeof node === 'string' || typeof node === 'number') {
@@ -26,7 +29,7 @@ function textFromNode(node: React.ReactNode): string {
     return node.map(textFromNode).join('').trim()
   }
 
-  if (React.isValidElement(node)) {
+  if (React.isValidElement<React.PropsWithChildren>(node)) {
     return textFromNode(node.props.children)
   }
 
@@ -43,15 +46,17 @@ function collectItems(
     }
 
     if (child.type === SelectItem) {
+      const item = child as React.ReactElement<SelectItemProps>
       bucket.push({
-        value: String(child.props.value ?? ''),
-        label: textFromNode(child.props.children) || String(child.props.value ?? ''),
+        value: String(item.props.value ?? ''),
+        label: textFromNode(item.props.children) || String(item.props.value ?? ''),
       })
       return
     }
 
-    if (child.props?.children) {
-      collectItems(child.props.children, bucket)
+    const nested = child as React.ReactElement<React.PropsWithChildren>
+    if (nested.props.children) {
+      collectItems(nested.props.children, bucket)
     }
   })
 
@@ -66,13 +71,17 @@ function findPlaceholder(children: React.ReactNode): string | undefined {
       return
     }
 
-    if (child.type === SelectValue && typeof child.props.placeholder === 'string') {
-      result = child.props.placeholder
+    if (child.type === SelectValue) {
+      const valueChild = child as React.ReactElement<SelectValueProps>
+      if (typeof valueChild.props.placeholder === 'string') {
+        result = valueChild.props.placeholder
+      }
       return
     }
 
-    if (child.props?.children) {
-      result = findPlaceholder(child.props.children)
+    const nested = child as React.ReactElement<React.PropsWithChildren>
+    if (nested.props.children) {
+      result = findPlaceholder(nested.props.children)
     }
   })
 
@@ -160,23 +169,23 @@ function SelectTrigger({
   )
 }
 
-function SelectValue(_props: { placeholder?: string }) {
+function SelectValue(_props: SelectValueProps) {
   return null
 }
 
-function SelectContent(_props: React.PropsWithChildren<Record<string, unknown>>) {
+function SelectContent(_props: SelectContentProps) {
   return null
 }
 
-function SelectGroup(_props: React.PropsWithChildren<Record<string, unknown>>) {
+function SelectGroup(_props: SelectContentProps) {
   return null
 }
 
-function SelectLabel(_props: React.PropsWithChildren<Record<string, unknown>>) {
+function SelectLabel(_props: SelectContentProps) {
   return null
 }
 
-function SelectItem(_props: React.PropsWithChildren<{ value: string }>) {
+function SelectItem(_props: SelectItemProps) {
   return null
 }
 

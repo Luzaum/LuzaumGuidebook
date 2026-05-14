@@ -106,8 +106,15 @@ export interface DeepAcidBaseInterpretation {
   primaryLogic: string;
   expectedCompensation?: string;
   observedCompensation?: string;
+  compensationFormula?: string;
+  compensationInterpretation?: string;
   compensationStatus: CompensationStatus;
   physiologicalExplanation: string;
+  physiologicMechanisms?: string[];
+  clinicalCorrelation?: string[];
+  examCorrelation?: string[];
+  mixedDisorderClues?: string[];
+  severity?: 'mild' | 'moderate' | 'severe' | 'life_threatening';
   commonCauses: string[];
   summary: string;
   mixedDisorderReason?: string;
@@ -200,6 +207,12 @@ export interface InterpretationResult {
   };
 
   clinicalHypotheses: string[];
+  clinicalSynthesis?: {
+    physiology: string[];
+    clinicalCorrelation: string[];
+    examCorrelation: string[];
+    pitfalls: string[];
+  };
   clinicalActions: {
     immediate: string[];
     serial: string[];

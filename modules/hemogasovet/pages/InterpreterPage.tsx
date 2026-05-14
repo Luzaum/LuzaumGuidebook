@@ -30,6 +30,7 @@ const HEMO_MOBILE_ANCHORS_INPUT_TEXT = [
 const HEMO_MOBILE_ANCHORS_RESULT = [
   { id: 'hemo-result-qualidade', label: 'Qualidade' },
   { id: 'hemo-result-resumo', label: 'Resumo' },
+  { id: 'hemo-result-sintese', label: 'Sintese' },
   { id: 'hemo-result-acidobase', label: 'Ácido-base' },
   { id: 'hemo-result-oxigenacao', label: 'O₂' },
   { id: 'hemo-result-eletrolitos', label: 'Eletrólitos' },
@@ -67,7 +68,7 @@ function HemoInterpreterMobileSectionNav({
   return (
     <nav
       aria-label={variant === 'input' ? 'Seções da entrada' : 'Seções do resultado'}
-      className="lg:hidden sticky top-14 z-20 -mx-1 mb-4 flex gap-1 overflow-x-auto overscroll-x-contain rounded-xl border border-slate-200 bg-white/95 px-2 py-2 shadow-sm backdrop-blur-sm dark:border-slate-800 dark:bg-slate-900/95 [-webkit-overflow-scrolling:touch]"
+      className="sticky top-14 z-20 -mx-1 mb-4 flex gap-1 overflow-x-auto overscroll-x-contain rounded-xl border border-slate-200 bg-white/95 px-2 py-2 shadow-sm backdrop-blur-sm dark:border-slate-800 dark:bg-slate-900/95 sm:hidden [-webkit-overflow-scrolling:touch]"
     >
       {links.map((item) => (
         <button
@@ -284,8 +285,8 @@ export default function InterpreterPage() {
                   felineSelected={species === 'feline'}
                   onSelectCanine={() => applyDefaultsForProfile('canine', sampleType)}
                   onSelectFeline={() => applyDefaultsForProfile('feline', sampleType)}
-                  canineSubtitle="VR e defaults caninos"
-                  felineSubtitle="VR e defaults felinos"
+                  canineSubtitle=""
+                  felineSubtitle=""
                 />
               </div>
               <div>
@@ -293,12 +294,12 @@ export default function InterpreterPage() {
                   Amostra
                   <TooltipIcon content={TOOLTIPS.sampleType} />
                 </label>
-                <div className="flex rounded-md shadow-sm max-w-md">
+                <div className="flex max-w-md rounded-md shadow-sm">
                   <button
                     type="button"
                     onClick={() => applyDefaultsForProfile(species, 'arterial')}
                     className={cn(
-                      "flex-1 py-1.5 text-xs font-medium rounded-l-md border transition-colors",
+                      "min-h-11 flex-1 rounded-l-md border px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300/80",
                       sampleType === 'arterial' 
                         ? "bg-red-100 border-red-200 text-red-700 dark:bg-red-900/40 dark:border-red-800 dark:text-red-300" 
                         : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50 dark:bg-slate-950 dark:border-slate-800 dark:text-slate-400"
@@ -310,7 +311,7 @@ export default function InterpreterPage() {
                     type="button"
                     onClick={() => applyDefaultsForProfile(species, 'venous')}
                     className={cn(
-                      "flex-1 py-1.5 text-xs font-medium rounded-r-md border-y border-r transition-colors",
+                      "min-h-11 flex-1 rounded-r-md border-y border-r px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300/80",
                       sampleType === 'venous' 
                         ? "bg-blue-100 border-blue-200 text-blue-700 dark:bg-blue-900/40 dark:border-blue-800 dark:text-blue-300" 
                         : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50 dark:bg-slate-950 dark:border-slate-800 dark:text-slate-400"
@@ -324,11 +325,11 @@ export default function InterpreterPage() {
 
             <div id="hemo-input-valores" className="scroll-mt-28 space-y-5 lg:scroll-mt-8">
             {/* Input Mode Toggle */}
-            <div className="mb-5 flex space-x-4">
+            <div className="mb-5 flex flex-wrap gap-2">
               <button
                 onClick={() => switchInputMode('manual')}
                 className={cn(
-                  "text-xs font-medium pb-1.5 border-b-2 transition-colors",
+                  "min-h-11 rounded-lg border-b-2 px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-300/80",
                   inputMode === 'manual' 
                     ? "border-purple-600 text-purple-600 dark:text-purple-400 dark:border-purple-400" 
                     : "border-transparent text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
@@ -339,7 +340,7 @@ export default function InterpreterPage() {
               <button
                 onClick={() => switchInputMode('text')}
                 className={cn(
-                  "text-xs font-medium pb-1.5 border-b-2 transition-colors",
+                  "min-h-11 rounded-lg border-b-2 px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-300/80",
                   inputMode === 'text' 
                     ? "border-purple-600 text-purple-600 dark:text-purple-400 dark:border-purple-400" 
                     : "border-transparent text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
@@ -613,6 +614,35 @@ export default function InterpreterPage() {
                 </div>
               </div>
 
+              {result.clinicalSynthesis && (
+                <div id="hemo-result-sintese" className="scroll-mt-28 lg:scroll-mt-8">
+                  <ResultCard title="Sintese Clinico-Fisiologica" icon={<Stethoscope className="w-4 h-4 text-purple-600 dark:text-purple-400" />}>
+                    <div className="grid gap-4 text-sm lg:grid-cols-2">
+                      <SynthesisBlock
+                        title="Fisiologia do disturbio"
+                        tone="purple"
+                        items={result.clinicalSynthesis.physiology}
+                      />
+                      <SynthesisBlock
+                        title="Correlacao clinica"
+                        tone="blue"
+                        items={result.clinicalSynthesis.clinicalCorrelation.length ? result.clinicalSynthesis.clinicalCorrelation : ['Nenhum contexto clinico especifico foi marcado; correlacione com exame fisico, perfusao, ventilacao, historico e tendencia seriada.']}
+                      />
+                      <SynthesisBlock
+                        title="Correlacao com exames"
+                        tone="emerald"
+                        items={result.clinicalSynthesis.examCorrelation}
+                      />
+                      <SynthesisBlock
+                        title="Armadilhas de interpretacao"
+                        tone="amber"
+                        items={result.clinicalSynthesis.pitfalls.length ? result.clinicalSynthesis.pitfalls : ['Sem armadilha dominante detectada; ainda assim, interpretar sempre junto do tipo de amostra, FiO2, temperatura e estado hemodinamico.']}
+                      />
+                    </div>
+                  </ResultCard>
+                </div>
+              )}
+
               {/* Detailed Analysis Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 
@@ -701,6 +731,24 @@ export default function InterpreterPage() {
                         <span className="text-purple-800 dark:text-purple-300/95 text-xs leading-relaxed">A compensação observada não corresponde à esperada, sugerindo um segundo distúrbio primário.</span>
                       </div>
                     )}
+                    {(result.deepAcidBase.compensationFormula || result.deepAcidBase.compensationInterpretation) && (
+                      <div className="rounded-lg border border-slate-200 bg-slate-50 p-3.5 text-xs leading-relaxed text-slate-700 dark:border-slate-800 dark:bg-slate-950/40 dark:text-slate-300">
+                        {result.deepAcidBase.compensationFormula && (
+                          <p><span className="font-semibold text-slate-900 dark:text-white">Formula usada:</span> {result.deepAcidBase.compensationFormula}</p>
+                        )}
+                        {result.deepAcidBase.compensationInterpretation && (
+                          <p className="mt-2"><span className="font-semibold text-slate-900 dark:text-white">Leitura clinica:</span> {result.deepAcidBase.compensationInterpretation}</p>
+                        )}
+                      </div>
+                    )}
+                    {result.deepAcidBase.mixedDisorderClues && result.deepAcidBase.mixedDisorderClues.length > 0 && (
+                      <div className="rounded-lg border border-amber-200 bg-amber-50 p-3.5 dark:border-amber-800/50 dark:bg-amber-950/20">
+                        <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">Pistas de disturbio misto</p>
+                        <ul className="list-disc space-y-1 pl-4 text-xs leading-relaxed text-amber-900 dark:text-amber-200">
+                          {result.deepAcidBase.mixedDisorderClues.map((item, idx) => <li key={idx}>{item}</li>)}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 </ResultCard>
                 </div>
@@ -717,6 +765,16 @@ export default function InterpreterPage() {
                     <p className="text-slate-500 dark:text-slate-400 text-xs">{result.deepOxygenation.physiologicalExplanation}</p>
                     {result.deepOxygenation.fio2Context && (
                       <p className="text-xs text-slate-500 dark:text-slate-400">{result.deepOxygenation.fio2Context}</p>
+                    )}
+                    {result.input.sampleType === 'arterial' && (
+                      <div className="grid grid-cols-2 gap-2">
+                        <OxygenMetric label="PaO2 medida" value={result.input.pO2 !== undefined ? `${result.input.pO2} mmHg` : 'Nao informada'} />
+                        <OxygenMetric label="FiO2" value={result.dataQuality.fio2Normalization ? `${result.dataQuality.fio2Normalization.displayPercent}%` : '21% estimada'} />
+                        <OxygenMetric label="PAO2 calculada" value={result.deepOxygenation.pao2 !== undefined ? `${result.deepOxygenation.pao2} mmHg` : 'Precisa de PaCO2'} />
+                        <OxygenMetric label="Gradiente A-a" value={result.deepOxygenation.aaGradient !== undefined ? `${result.deepOxygenation.aaGradient} mmHg` : 'Precisa de PaO2/PaCO2'} />
+                        <OxygenMetric label="Relacao P/F" value={result.deepOxygenation.pfRatio !== undefined ? String(result.deepOxygenation.pfRatio) : 'Nao calculada'} />
+                        <OxygenMetric label="Mecanismo" value={result.deepOxygenation.suspectedMechanism || 'Sem mecanismo dominante'} />
+                      </div>
                     )}
                     {result.deepOxygenation.limitationNote && (
                       <div className="bg-slate-50 dark:bg-slate-900/60 p-2 rounded border border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-300">
@@ -797,6 +855,22 @@ export default function InterpreterPage() {
                           <h4 className="font-semibold text-xs uppercase text-blue-600 dark:text-blue-400 mb-1">Monitoramento</h4>
                           <ul className="list-disc pl-4 space-y-1 text-xs text-slate-700 dark:text-slate-300">
                             {result.clinicalActions.serial.map((action, idx) => <li key={idx}>{action}</li>)}
+                          </ul>
+                        </div>
+                      )}
+                      {result.clinicalActions.correlativeExams.length > 0 && (
+                        <div>
+                          <h4 className="font-semibold text-xs uppercase text-emerald-600 dark:text-emerald-400 mb-1">Exames e correlacao</h4>
+                          <ul className="list-disc pl-4 space-y-1 text-xs text-slate-700 dark:text-slate-300">
+                            {result.clinicalActions.correlativeExams.map((action, idx) => <li key={idx}>{action}</li>)}
+                          </ul>
+                        </div>
+                      )}
+                      {result.clinicalActions.whenToRepeat && result.clinicalActions.whenToRepeat.length > 0 && (
+                        <div>
+                          <h4 className="font-semibold text-xs uppercase text-purple-600 dark:text-purple-400 mb-1">Quando repetir</h4>
+                          <ul className="list-disc pl-4 space-y-1 text-xs text-slate-700 dark:text-slate-300">
+                            {result.clinicalActions.whenToRepeat.map((action, idx) => <li key={idx}>{action}</li>)}
                           </ul>
                         </div>
                       )}
@@ -890,7 +964,7 @@ function TooltipIcon({ content }: { content: string }) {
     <Tooltip.Provider delayDuration={300}>
       <Tooltip.Root>
         <Tooltip.Trigger asChild>
-          <button type="button" className="ml-1 text-slate-400 hover:text-purple-500 focus:outline-none">
+          <button type="button" className="ml-1 inline-flex h-8 w-8 items-center justify-center rounded-full text-slate-400 hover:bg-purple-50 hover:text-purple-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-300 dark:hover:bg-purple-950/30">
             <HelpCircle className="w-3 h-3" />
           </button>
         </Tooltip.Trigger>
@@ -905,6 +979,46 @@ function TooltipIcon({ content }: { content: string }) {
         </Tooltip.Portal>
       </Tooltip.Root>
     </Tooltip.Provider>
+  );
+}
+
+function SynthesisBlock({
+  title,
+  items,
+  tone,
+}: {
+  title: string;
+  items: string[];
+  tone: 'purple' | 'blue' | 'emerald' | 'amber';
+}) {
+  const toneClass = {
+    purple: 'border-purple-200 bg-purple-50/80 text-purple-950 dark:border-purple-800/50 dark:bg-purple-950/20 dark:text-purple-100',
+    blue: 'border-blue-200 bg-blue-50/80 text-blue-950 dark:border-blue-800/50 dark:bg-blue-950/20 dark:text-blue-100',
+    emerald: 'border-emerald-200 bg-emerald-50/80 text-emerald-950 dark:border-emerald-800/50 dark:bg-emerald-950/20 dark:text-emerald-100',
+    amber: 'border-amber-200 bg-amber-50/80 text-amber-950 dark:border-amber-800/50 dark:bg-amber-950/20 dark:text-amber-100',
+  }[tone];
+
+  return (
+    <section className={cn('rounded-xl border p-3.5', toneClass)}>
+      <h4 className="mb-2 text-[11px] font-black uppercase tracking-[0.16em] opacity-80">{title}</h4>
+      <ul className="space-y-2 text-xs leading-relaxed">
+        {items.map((item, idx) => (
+          <li key={`${title}-${idx}`} className="flex gap-2">
+            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-current opacity-55" aria-hidden />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function OxygenMetric({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-lg border border-blue-100 bg-blue-50/70 px-3 py-2 dark:border-blue-900/40 dark:bg-blue-950/20">
+      <div className="text-[10px] font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">{label}</div>
+      <div className="mt-1 text-xs font-semibold leading-snug text-slate-900 dark:text-slate-100">{value}</div>
+    </div>
   );
 }
 

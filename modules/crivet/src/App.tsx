@@ -64,6 +64,7 @@ export default function App() {
                   customPresentationConcentration={config.customPresentationConcentration}
                   customPresentationUnit={config.customPresentationUnit}
                   customVolumeEnabled={config.customVolumeEnabled}
+                  usePreDilution={config.usePreDilution}
                   onChange={handleConfigChange}
                 />
 

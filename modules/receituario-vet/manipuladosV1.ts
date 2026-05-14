@@ -60,6 +60,7 @@ export interface ManipuladoV1Prescribing {
   duration_value: number | null
   duration_unit: string
   duration_label: string
+  _duration_label_legacy?: string
   start_text: string
   generated_usage_text: string
   manual_usage_override: string

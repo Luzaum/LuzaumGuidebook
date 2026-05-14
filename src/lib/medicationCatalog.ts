@@ -282,7 +282,15 @@ export function getPresentationNumber(
 
 export function getPresentationString(
   input: { metadata?: Record<string, unknown> | null } | null | undefined,
-  key: 'administration_mode' | 'dose_per_actuation_unit' | 'actuation_label'
+  key:
+    | 'administration_mode'
+    | 'dose_per_actuation_unit'
+    | 'actuation_label'
+    | 'print_line_mode'
+    | 'print_line_left'
+    | 'print_line_right'
+    | 'dispensing_label'
+    | 'package_label'
 ): string {
   return safeString(getDoseEngineMetadata(input)[key])
 }
@@ -353,8 +361,8 @@ export function mergeCatalogSearchResults<T extends MergeableCatalogSearchEntry>
   deduped.sort((a, b) => {
     const na = String(a.name || '').localeCompare(String(b.name || ''), 'pt', { sensitivity: 'base' })
     if (na !== 0) return na
-    const ac = (a.recommended_dose_count ?? 0) > 0 ? 1 : 0
-    const bc = (b.recommended_dose_count ?? 0) > 0 ? 1 : 0
+    const ac = (((a as { recommended_dose_count?: number }).recommended_dose_count) ?? 0) > 0 ? 1 : 0
+    const bc = (((b as { recommended_dose_count?: number }).recommended_dose_count) ?? 0) > 0 ? 1 : 0
     if (bc !== ac) return bc - ac
     return String(a.id).localeCompare(String(b.id))
   })

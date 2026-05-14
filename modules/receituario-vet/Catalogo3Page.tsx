@@ -81,7 +81,17 @@ interface Presentation {
         administration_routes?: string[]
         obs?: string
     }
+    concentrations?: PresentationConcentration[]
     _tempId?: string
+}
+
+interface PresentationConcentration {
+    id: string
+    value: number | null
+    value_unit: string
+    per_value: number
+    per_unit: string
+    avg_price_brl: number | null
 }
 
 interface RecommendedDoseUI {
@@ -192,6 +202,92 @@ function normalizeNumber(value: any, allowNull = true): number | null {
     return num
 }
 
+function createEmptyConcentration(): PresentationConcentration {
+    return {
+        id: crypto.randomUUID(),
+        value: null,
+        value_unit: 'mg',
+        per_value: 1,
+        per_unit: 'comprimido',
+        avg_price_brl: null
+    }
+}
+
+function buildConcentrationText(concentration: Pick<PresentationConcentration, 'value' | 'value_unit' | 'per_value' | 'per_unit'>): string | null {
+    const value = normalizeNumber(concentration.value, true)
+    const unit = String(concentration.value_unit || '').trim()
+    if (value === null || value <= 0 || !unit) return null
+
+    const perValue = normalizeNumber(concentration.per_value, false) || 1
+    const perUnit = String(concentration.per_unit || '').trim()
+    const perPart = perUnit ? `/${perValue > 1 ? `${perValue} ` : ''}${perUnit}` : ''
+    return `${value} ${unit}${perPart}`
+}
+
+function getPresentationConcentrations(presentation: Presentation): PresentationConcentration[] {
+    if (Array.isArray(presentation.concentrations) && presentation.concentrations.length > 0) {
+        return presentation.concentrations
+    }
+
+    return [{
+        id: presentation.id || presentation._tempId || crypto.randomUUID(),
+        value: presentation.value,
+        value_unit: presentation.value_unit || 'mg',
+        per_value: presentation.per_value || 1,
+        per_unit: presentation.per_unit || 'comprimido',
+        avg_price_brl: presentation.avg_price_brl ?? null
+    }]
+}
+
+function makePresentationGroupKey(presentation: Presentation): string {
+    const metadata = presentation.metadata || {}
+    return [
+        presentation.pharmaceutical_form || '',
+        presentation.commercial_name || '',
+        metadata.manufacturer || '',
+        presentation.pharmacy_veterinary ? 'vet' : '',
+        presentation.pharmacy_human ? 'hum' : '',
+        presentation.pharmacy_compounding ? 'manip' : '',
+        Array.isArray(metadata.administration_routes) ? metadata.administration_routes.join('|') : ''
+    ].map(part => String(part).trim().toLowerCase()).join('::')
+}
+
+function groupPresentationRows(rows: Presentation[]): Presentation[] {
+    const grouped: Presentation[] = []
+    const groupIndex = new Map<string, number>()
+
+    rows.forEach((row) => {
+        const concentrations = getPresentationConcentrations(row)
+        const key = makePresentationGroupKey(row)
+        const existingIndex = groupIndex.get(key)
+
+        if (existingIndex === undefined) {
+            groupIndex.set(key, grouped.length)
+            grouped.push({
+                ...row,
+                _tempId: row._tempId || row.id || crypto.randomUUID(),
+                value: concentrations[0]?.value ?? null,
+                value_unit: concentrations[0]?.value_unit || row.value_unit || 'mg',
+                per_value: concentrations[0]?.per_value || row.per_value || 1,
+                per_unit: concentrations[0]?.per_unit || row.per_unit || 'comprimido',
+                avg_price_brl: concentrations[0]?.avg_price_brl ?? row.avg_price_brl ?? null,
+                concentration_text: null,
+                additional_component: null,
+                presentation_unit: null,
+                concentrations
+            })
+            return
+        }
+
+        grouped[existingIndex] = {
+            ...grouped[existingIndex],
+            concentrations: [...getPresentationConcentrations(grouped[existingIndex]), ...concentrations]
+        }
+    })
+
+    return grouped
+}
+
 function canonicalDoseUnit(doseUnit: string | null | undefined, perWeightUnit: string | null | undefined): string {
     const base = String(doseUnit || '').trim()
     const weight = String(perWeightUnit || '').trim()
@@ -202,6 +298,7 @@ function canonicalDoseUnit(doseUnit: string | null | undefined, perWeightUnit: s
 }
 
 function createEmptyPresentation(): Presentation {
+    const concentration = createEmptyConcentration()
     return {
         _tempId: crypto.randomUUID(),
         pharmaceutical_form: 'Comprimido',
@@ -209,19 +306,19 @@ function createEmptyPresentation(): Presentation {
         additional_component: null,
         presentation_unit: null,
         commercial_name: '',
-        value: null,
-        value_unit: 'mg',
-        per_value: 1,
-        per_unit: 'comprimido',
+        value: concentration.value,
+        value_unit: concentration.value_unit,
+        per_value: concentration.per_value,
+        per_unit: concentration.per_unit,
         avg_price_brl: null,
         pharmacy_veterinary: true,
         pharmacy_human: false,
         pharmacy_compounding: false,
         metadata: {
             manufacturer: '',
-            administration_routes: [],
-            obs: ''
-        }
+            administration_routes: []
+        },
+        concentrations: [concentration]
     }
 }
 
@@ -318,8 +415,6 @@ function mapImportedPresentationToDraft(presentation: any): Presentation {
     // Resolve camelCase aliases from JSON
     const pharmaForm = presentation?.pharmaceutical_form || presentation?.pharmaceuticalForm || ''
     const concText = presentation?.concentration_text || presentation?.concentrationText || null
-    const addComp = presentation?.additional_component || presentation?.additionalComponent || null
-    const presUnit = presentation?.presentation_unit || presentation?.presentationUnit || null
     const commName = presentation?.commercial_name || presentation?.commercialName || ''
     const rawValue = normalizeNumber(presentation?.value ?? presentation?.concentration_value ?? presentation?.concentrationValue, true)
     const rawValueUnit = (presentation?.value_unit || presentation?.concentration_unit || presentation?.concentrationUnit || '').toString().trim()
@@ -339,24 +434,26 @@ function mapImportedPresentationToDraft(presentation: any): Presentation {
         pharmHuman = pharmacyType === 'human' || pharmacyType === 'humana'
         pharmComp = pharmacyType === 'compounding' || pharmacyType === 'manipulacao'
     }
-    // Auto-build concentration_text
-    let finalConcText = typeof concText === 'string' ? concText : null
-    if (!finalConcText && rawValue !== null && rawValue > 0 && rawValueUnit) {
-        const perPart = rawPerUnit ? `/${rawPerValue > 1 ? `${rawPerValue} ` : ''}${rawPerUnit}` : ''
-        finalConcText = `${rawValue} ${rawValueUnit}${perPart}`
-    }
-    return {
-        _tempId: crypto.randomUUID(),
-        pharmaceutical_form: typeof pharmaForm === 'string' && pharmaForm.trim() ? pharmaForm.trim() : 'Comprimido',
-        concentration_text: finalConcText,
-        additional_component: typeof addComp === 'string' ? addComp : null,
-        presentation_unit: typeof presUnit === 'string' ? presUnit : null,
-        commercial_name: typeof commName === 'string' ? commName : '',
+    const concentration = {
+        id: crypto.randomUUID(),
         value: rawValue,
         value_unit: rawValueUnit || 'mg',
         per_value: rawPerValue,
         per_unit: rawPerUnit || 'comprimido',
-        avg_price_brl: normalizeNumber(presentation?.avg_price_brl ?? presentation?.avgPriceBrl, true),
+        avg_price_brl: normalizeNumber(presentation?.avg_price_brl ?? presentation?.avgPriceBrl, true)
+    }
+    return {
+        _tempId: crypto.randomUUID(),
+        pharmaceutical_form: typeof pharmaForm === 'string' && pharmaForm.trim() ? pharmaForm.trim() : 'Comprimido',
+        concentration_text: typeof concText === 'string' ? concText : null,
+        additional_component: null,
+        presentation_unit: null,
+        commercial_name: typeof commName === 'string' ? commName : '',
+        value: concentration.value,
+        value_unit: concentration.value_unit,
+        per_value: concentration.per_value,
+        per_unit: concentration.per_unit,
+        avg_price_brl: concentration.avg_price_brl,
         pharmacy_veterinary: pharmVet,
         pharmacy_human: pharmHuman,
         pharmacy_compounding: pharmComp,
@@ -364,9 +461,9 @@ function mapImportedPresentationToDraft(presentation: any): Presentation {
             ...metadata,
             manufacturer: manufacturer,
             administration_routes: Array.isArray(metadata.administration_routes) ? metadata.administration_routes.filter(Boolean) : [],
-            obs: typeof metadata.obs === 'string' ? metadata.obs : '',
             summary: summary || undefined
-        }
+        },
+        concentrations: [concentration]
     }
 }
 
@@ -562,19 +659,35 @@ export default function Catalogo3Page() {
                         therapeutic_class: medMetadata.therapeutic_class || '',
                         clinical_tags: medMetadata.clinical_tags || []
                     },
-                    presentations: presentations.map(p => {
+                    presentations: groupPresentationRows(presentations.map(p => {
                         const pMetadata = p.metadata || {}
+                        const concentration = {
+                            id: p.id || crypto.randomUUID(),
+                            value: p.value ?? null,
+                            value_unit: p.value_unit || 'mg',
+                            per_value: p.per_value || 1,
+                            per_unit: p.per_unit || 'comprimido',
+                            avg_price_brl: p.avg_price_brl ?? null
+                        }
                         return {
                             ...p,
                             _tempId: p.id,
+                            additional_component: null,
+                            presentation_unit: null,
+                            concentration_text: null,
+                            value: concentration.value,
+                            value_unit: concentration.value_unit,
+                            per_value: concentration.per_value,
+                            per_unit: concentration.per_unit,
+                            avg_price_brl: concentration.avg_price_brl,
                             metadata: {
                                 ...pMetadata,
                                 manufacturer: pMetadata.manufacturer || '',
-                                administration_routes: pMetadata.administration_routes || [],
-                                obs: pMetadata.obs || ''
-                            }
+                                administration_routes: pMetadata.administration_routes || []
+                            },
+                            concentrations: [concentration]
                         }
-                    }),
+                    })),
                     recommended_doses: doses.map(d => ({
                         id: d.id,
                         client_id: d.id || crypto.randomUUID(),
@@ -688,6 +801,68 @@ export default function Catalogo3Page() {
             presentations: prev.presentations.map(p =>
                 p._tempId === tempId ? { ...p, metadata: { ...p.metadata, ...updates } } : p
             )
+        }))
+        setIsDirty(true)
+    }
+
+    const updatePresentationConcentration = (
+        tempId: string,
+        concentrationId: string,
+        updates: Partial<PresentationConcentration>
+    ) => {
+        setDraft(prev => ({
+            ...prev,
+            presentations: prev.presentations.map(p => {
+                if (p._tempId !== tempId) return p
+                const nextConcentrations = getPresentationConcentrations(p).map(concentration =>
+                    concentration.id === concentrationId ? { ...concentration, ...updates } : concentration
+                )
+                const first = nextConcentrations[0] || createEmptyConcentration()
+                return {
+                    ...p,
+                    concentrations: nextConcentrations,
+                    value: first.value,
+                    value_unit: first.value_unit,
+                    per_value: first.per_value,
+                    per_unit: first.per_unit,
+                    avg_price_brl: first.avg_price_brl
+                }
+            })
+        }))
+        setIsDirty(true)
+    }
+
+    const addPresentationConcentration = (tempId: string) => {
+        setDraft(prev => ({
+            ...prev,
+            presentations: prev.presentations.map(p =>
+                p._tempId === tempId
+                    ? { ...p, concentrations: [...getPresentationConcentrations(p), createEmptyConcentration()] }
+                    : p
+            )
+        }))
+        setIsDirty(true)
+    }
+
+    const removePresentationConcentration = (tempId: string, concentrationId: string) => {
+        setDraft(prev => ({
+            ...prev,
+            presentations: prev.presentations.map(p => {
+                if (p._tempId !== tempId) return p
+                const current = getPresentationConcentrations(p)
+                if (current.length <= 1) return p
+                const nextConcentrations = current.filter(concentration => concentration.id !== concentrationId)
+                const first = nextConcentrations[0] || createEmptyConcentration()
+                return {
+                    ...p,
+                    concentrations: nextConcentrations,
+                    value: first.value,
+                    value_unit: first.value_unit,
+                    per_value: first.per_value,
+                    per_unit: first.per_unit,
+                    avg_price_brl: first.avg_price_brl
+                }
+            })
         }))
         setIsDirty(true)
     }
@@ -819,10 +994,12 @@ export default function Catalogo3Page() {
                 errors[`${prefix}_form`] = 'Obrigatório'
                 if (!firstErrorField) firstErrorField = `Forma na apresentação ${idx + 1}`
             }
-            if (p.value === null || p.value <= 0) {
-                errors[`${prefix}_value`] = 'Inválido'
-                if (!firstErrorField) firstErrorField = `Valor na apresentação ${idx + 1}`
-            }
+            getPresentationConcentrations(p).forEach((concentration, concentrationIndex) => {
+                if (concentration.value === null || concentration.value <= 0) {
+                    errors[`${prefix}_value_${concentration.id}`] = 'Inválido'
+                    if (!firstErrorField) firstErrorField = `Concentração ${concentrationIndex + 1} na apresentação ${idx + 1}`
+                }
+            })
             if (!p.pharmacy_veterinary && !p.pharmacy_human && !p.pharmacy_compounding) {
                 errors[`${prefix}_pharmacy`] = 'Obrigatório'
                 if (!firstErrorField) firstErrorField = `Farmácia na apresentação ${idx + 1}`
@@ -874,27 +1051,26 @@ export default function Catalogo3Page() {
                 }
             }
 
-            const presentationsPayload = draft.presentations.map(p => ({
+            const presentationsPayload = draft.presentations.flatMap(p => getPresentationConcentrations(p).map(concentration => ({
                 pharmaceutical_form: p.pharmaceutical_form,
-                concentration_text: p.concentration_text || null,
-                additional_component: p.additional_component || null,
-                presentation_unit: p.presentation_unit || null,
+                concentration_text: buildConcentrationText(concentration),
+                additional_component: null,
+                presentation_unit: null,
                 commercial_name: p.commercial_name?.trim() || null,
-                value: normalizeNumber(p.value, false) || 1,
-                value_unit: p.value_unit,
-                per_value: normalizeNumber(p.per_value, false) || 1,
-                per_unit: p.per_unit,
-                avg_price_brl: normalizeNumber(p.avg_price_brl, true),
+                value: normalizeNumber(concentration.value, false) || 1,
+                value_unit: concentration.value_unit,
+                per_value: normalizeNumber(concentration.per_value, false) || 1,
+                per_unit: concentration.per_unit,
+                avg_price_brl: normalizeNumber(concentration.avg_price_brl, true),
                 pharmacy_veterinary: !!p.pharmacy_veterinary,
                 pharmacy_human: !!p.pharmacy_human,
                 pharmacy_compounding: !!p.pharmacy_compounding,
                 metadata: {
                     ...(p.metadata || {}),
                     manufacturer: p.metadata?.manufacturer || '',
-                    administration_routes: p.metadata?.administration_routes || [],
-                    obs: p.metadata?.obs
+                    administration_routes: p.metadata?.administration_routes || []
                 }
-            }))
+            })))
 
             const cleanMedicationPayload = pickMedicationFields(medicationPayload)
             const cleanPresentationsPayload = presentationsPayload.map(p => pickPresentationFields(p))
@@ -1178,9 +1354,9 @@ export default function Catalogo3Page() {
                             </RxvSectionHeader>
 
                             <div className="grid grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2">
-                                <RxvField label="Nome comercial / Nome do item *" error={validationErrors.name}>
+                                <RxvField label="Nome no catálogo *" error={validationErrors.name}>
                                     <RxvInput
-                                        placeholder="Ex: Carbamazepina"
+                                        placeholder="Ex: Enrofloxacina"
                                         value={draft.name ?? ''}
                                         onChange={e => updateDraft({ name: e.target.value })}
                                         error={!!validationErrors.name}
@@ -1248,13 +1424,6 @@ export default function Catalogo3Page() {
                                     />
                                 </RxvField>
 
-                                <RxvField label="Notas de formulário / uso interno" className="md:col-span-2">
-                                    <RxvTextarea
-                                        placeholder="Observações estruturadas para acervo, uso interno e importação."
-                                        value={draft.metadata?.formulary_notes ?? ''}
-                                        onChange={e => updateMetadata({ formulary_notes: e.target.value })}
-                                    />
-                                </RxvField>
                             </div>
                         </RxvCard>
 
@@ -1618,9 +1787,9 @@ export default function Catalogo3Page() {
                                                     />
                                                 </RxvField>
 
-                                                <RxvField label="Nome comercial / Identificador" className="md:col-span-6">
+                                                <RxvField label="Apresentação comercial" className="md:col-span-6">
                                                     <RxvInput
-                                                        placeholder="Ex: Lab X, Medicamento Genérico..."
+                                                        placeholder="Ex: Flotril, genérico..."
                                                         value={pres.commercial_name ?? ''}
                                                         onChange={e => updatePresentation(pres._tempId!, { commercial_name: e.target.value })}
                                                     />
@@ -1634,93 +1803,91 @@ export default function Catalogo3Page() {
                                                     />
                                                 </RxvField>
 
-                                                <RxvField label="Unidade de apresentação" className="md:col-span-3">
-                                                    <RxvInput
-                                                        placeholder="Ex: comprimido, frasco, bisnaga..."
-                                                        value={pres.presentation_unit ?? ''}
-                                                        onChange={e => updatePresentation(pres._tempId!, { presentation_unit: e.target.value || null })}
-                                                    />
-                                                </RxvField>
-
-                                                <RxvField label="Componente adicional" className="md:col-span-6">
-                                                    <RxvInput
-                                                        placeholder="Ex: clavulanato, veículo, associação..."
-                                                        value={pres.additional_component ?? ''}
-                                                        onChange={e => updatePresentation(pres._tempId!, { additional_component: e.target.value || null })}
-                                                    />
-                                                </RxvField>
-
                                                 {/* CONCENTRAÇÃO / COMPOSIÇÃO */}
                                                 <div className="md:col-span-12">
                                                     <div className="flex items-center gap-3 mb-3">
                                                         <div className="h-[1px] flex-1 bg-slate-800/60" />
-                                                        <span className="text-[9px] font-black text-slate-600 uppercase tracking-[0.3em] italic">Composição e Força</span>
+                                                        <span className="text-[9px] font-black text-slate-600 uppercase tracking-[0.3em] italic">Concentrações</span>
                                                         <div className="h-[1px] flex-1 bg-slate-800/60" />
                                                     </div>
 
-                                                    <div className="flex flex-wrap items-center gap-3 rounded-2xl bg-black/40 p-4 border border-slate-800/50">
-                                                        <div className="w-28 space-y-1">
-                                                            <label className="text-[8px] font-black text-slate-500 uppercase pl-1">Concentração</label>
-                                                            <RxvInput
-                                                                type="number"
-                                                                className="text-center font-black text-[color:var(--rxv-primary)]"
-                                                                value={pres.value === null ? '' : pres.value}
-                                                                onChange={e => updatePresentation(pres._tempId!, { value: e.target.value === '' ? null : Number(e.target.value) })}
-                                                            />
-                                                        </div>
-                                                        <div className="w-28 space-y-1">
-                                                            <label className="text-[8px] font-black text-slate-500 uppercase pl-1">Unidade</label>
-                                                            <RxvSelect
-                                                                options={VALUE_UNITS}
-                                                                value={pres.value_unit ?? ''}
-                                                                onChange={e => updatePresentation(pres._tempId!, { value_unit: e.target.value })}
-                                                            />
-                                                        </div>
+                                                    <div className="space-y-3 rounded-2xl bg-black/40 p-4 border border-slate-800/50">
+                                                        {getPresentationConcentrations(pres).map((concentration, concentrationIndex) => {
+                                                            const concentrationError = validationErrors[`${prefix}_value_${concentration.id}`]
+                                                            return (
+                                                                <div key={concentration.id} className="flex flex-wrap items-end gap-3 rounded-xl border border-slate-900 bg-black/30 p-3">
+                                                                    <div className="w-10 pb-3 text-center text-xs font-black text-slate-600">
+                                                                        #{concentrationIndex + 1}
+                                                                    </div>
+                                                                    <div className="w-28 space-y-1">
+                                                                        <label className="text-[8px] font-black text-slate-500 uppercase pl-1">Concentração</label>
+                                                                        <RxvInput
+                                                                            type="number"
+                                                                            className="text-center font-black text-[color:var(--rxv-primary)]"
+                                                                            value={concentration.value === null ? '' : concentration.value}
+                                                                            onChange={e => updatePresentationConcentration(pres._tempId!, concentration.id, { value: e.target.value === '' ? null : Number(e.target.value) })}
+                                                                            error={!!concentrationError}
+                                                                        />
+                                                                    </div>
+                                                                    <div className="w-28 space-y-1">
+                                                                        <label className="text-[8px] font-black text-slate-500 uppercase pl-1">Unidade</label>
+                                                                        <RxvSelect
+                                                                            options={VALUE_UNITS}
+                                                                            value={concentration.value_unit ?? ''}
+                                                                            onChange={e => updatePresentationConcentration(pres._tempId!, concentration.id, { value_unit: e.target.value })}
+                                                                        />
+                                                                    </div>
 
-                                                        <div className="mt-4 px-2 text-[11px] font-black text-slate-600 uppercase italic">por</div>
+                                                                    <div className="pb-3 px-2 text-[11px] font-black text-slate-600 uppercase italic">por</div>
 
-                                                        <div className="w-20 space-y-1">
-                                                            <label className="text-[8px] font-black text-slate-500 uppercase pl-1">Quantidade</label>
-                                                            <RxvInput
-                                                                type="number"
-                                                                className="text-center"
-                                                                value={pres.per_value ?? ''}
-                                                                onChange={e => updatePresentation(pres._tempId!, { per_value: Number(e.target.value) })}
-                                                            />
-                                                        </div>
-                                                        <div className="flex-1 min-w-[140px] space-y-1">
-                                                            <label className="text-[8px] font-black text-slate-500 uppercase pl-1">Unidade por Quantidade</label>
-                                                            <RxvSelect
-                                                                options={PER_UNITS}
-                                                                value={pres.per_unit ?? ''}
-                                                                onChange={e => updatePresentation(pres._tempId!, { per_unit: e.target.value })}
-                                                            />
-                                                        </div>
+                                                                    <div className="w-20 space-y-1">
+                                                                        <label className="text-[8px] font-black text-slate-500 uppercase pl-1">Quantidade</label>
+                                                                        <RxvInput
+                                                                            type="number"
+                                                                            className="text-center"
+                                                                            value={concentration.per_value ?? ''}
+                                                                            onChange={e => updatePresentationConcentration(pres._tempId!, concentration.id, { per_value: Number(e.target.value) || 1 })}
+                                                                        />
+                                                                    </div>
+                                                                    <div className="flex-1 min-w-[140px] space-y-1">
+                                                                        <label className="text-[8px] font-black text-slate-500 uppercase pl-1">Unidade por Quantidade</label>
+                                                                        <RxvSelect
+                                                                            options={PER_UNITS}
+                                                                            value={concentration.per_unit ?? ''}
+                                                                            onChange={e => updatePresentationConcentration(pres._tempId!, concentration.id, { per_unit: e.target.value })}
+                                                                        />
+                                                                    </div>
 
-                                                        <div className="flex flex-col items-center justify-center bg-[color:color-mix(in_srgb,var(--rxv-primary)_5%,transparent)] rounded-xl px-6 py-2 border border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] min-w-[150px]">
-                                                            <span className="text-[8px] font-black text-[color:var(--rxv-primary)]/60 uppercase tracking-tighter mb-0.5">RESUMO DA LINHA</span>
-                                                            <span className="text-sm font-black text-[color:var(--rxv-primary)] italic">
-                                                                {pres.value || '0'} {pres.value_unit} / {pres.per_value} {pres.per_unit}
-                                                            </span>
-                                                        </div>
+                                                                    <div className="min-w-[150px] rounded-xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_5%,transparent)] px-5 py-2 text-center">
+                                                                        <span className="text-sm font-black text-[color:var(--rxv-primary)] italic">
+                                                                            {buildConcentrationText(concentration) || 'Informe a concentração'}
+                                                                        </span>
+                                                                    </div>
+
+                                                                    {getPresentationConcentrations(pres).length > 1 && (
+                                                                        <button
+                                                                            type="button"
+                                                                            onClick={() => removePresentationConcentration(pres._tempId!, concentration.id)}
+                                                                            className="mb-1 rounded-lg p-2 text-slate-600 transition-colors hover:bg-red-500/10 hover:text-red-400"
+                                                                            title="Remover concentração"
+                                                                        >
+                                                                            <span className="material-symbols-outlined text-[20px]">delete</span>
+                                                                        </button>
+                                                                    )}
+                                                                </div>
+                                                            )
+                                                        })}
+
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => addPresentationConcentration(pres._tempId!)}
+                                                            className="flex items-center gap-2 rounded-xl border border-slate-800 px-3 py-2 text-[10px] font-black uppercase text-[color:var(--rxv-primary)] transition-colors hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_8%,transparent)]"
+                                                        >
+                                                            <span className="material-symbols-outlined text-[18px]">add</span>
+                                                            Adicionar concentração
+                                                        </button>
                                                     </div>
                                                 </div>
-
-                                                <RxvField label="Texto de concentração exibido" className="md:col-span-6">
-                                                    <RxvInput
-                                                        placeholder="Ex: 250 mg/comprimido"
-                                                        value={pres.concentration_text ?? ''}
-                                                        onChange={e => updatePresentation(pres._tempId!, { concentration_text: e.target.value || null })}
-                                                    />
-                                                </RxvField>
-
-                                                <RxvField label="Observações da apresentação" className="md:col-span-6">
-                                                    <RxvTextarea
-                                                        placeholder="Ex: comprimido sulcado, suspensão saborizada, uso preferencial..."
-                                                        value={pres.metadata?.obs ?? ''}
-                                                        onChange={e => updatePresentationMetadata(pres._tempId!, { obs: e.target.value })}
-                                                    />
-                                                </RxvField>
 
                                                 {/* EMBALAGEM E VIAS */}
                                                 {/* Embalagem removida do Supabase por enquanto */}

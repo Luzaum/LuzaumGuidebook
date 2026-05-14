@@ -65,7 +65,17 @@ const PRIMARY_LINKS = [
   },
 ] as const
 
-const TOOL_LINKS = [
+type ToolLink = {
+  to: string
+  icon: string
+  label: string
+  summary: string
+  desc: string
+  delay: number
+  amber?: boolean
+}
+
+const TOOL_LINKS: readonly ToolLink[] = [
   {
     to: '/receituario-vet/historico',
     icon: 'history',

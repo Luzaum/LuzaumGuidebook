@@ -30,6 +30,7 @@ import { savePrescription, getPrescriptionById } from '../../src/lib/prescriptio
 import { loadRxDb, findProfileSettings, createPrescriberProfileFromSettings, type PrescriberProfile as StoredPrescriberProfile } from './rxDb'
 import { loadRxDraftById } from './rxStorage'
 import type { RxTemplateStyle } from './rxDb'
+import type { RouteGroup } from './rxTypes'
 import { calculateMedicationQuantity } from './rxRenderer'
 import { sanitizeVisibleText } from './textSanitizer'
 import {
@@ -175,6 +176,7 @@ export interface TutorInfo {
     city?: string
     state?: string
     zipcode?: string
+    addressLine?: string
     notes?: string
 }
 
@@ -257,6 +259,7 @@ export interface PrescriptionItemBase {
     repeatEveryValue?: number
     repeatEveryUnit?: 'dias' | 'semanas' | 'meses'
     route?: string
+    routeGroup?: RouteGroup
     duration?: string
     start_date?: string
     startDate?: string
@@ -281,8 +284,15 @@ export interface PrescriptionItemBase {
     avg_price_brl?: number
     package_quantity?: string
     package_unit?: string
+    packageUnit?: string
     presentation_metadata?: Record<string, unknown> | null
     manualQuantity?: string
+    compounded_medication_id?: string
+    compounded_regimen_id?: string
+    compounded_snapshot?: CompoundedMedicationSnapshot
+    compounded_regimen_snapshot?: CompoundedRegimenSnapshot | null
+    compounded_pharmacy_guidance?: string
+    compounded_internal_note?: string
 }
 
 export interface StandardPrescriptionItem extends PrescriptionItemBase {
@@ -704,7 +714,7 @@ function normalizePrescriptionItem(item: PrescriptionItem, defaultStartDate: str
             : item.duration || '',
         cautionsText,
         cautions: normalizeCautionsText(cautionsText, item.cautions),
-    }
+    } as PrescriptionItem
 }
 
 export function normalizeNovaReceita2State(raw?: Partial<NovaReceita2State> | null): NovaReceita2State {
@@ -1492,6 +1502,7 @@ export default function NovaReceita2Page() {
 
                         return {
                         id: item.id,
+                        kind: 'standard' as const,
                         type: 'medication',
                         is_controlled: item.controlled,
                         catalog_source: 'clinic',

@@ -185,9 +185,11 @@ export function SpeciesPortraitCards({
               >
                 {option.title}
               </p>
-              <p className="mx-4 mt-1 max-w-[14rem] text-[12px] leading-5 text-muted-foreground sm:mx-6 sm:text-[13px]">
-                {option.subtitle}
-              </p>
+              {option.subtitle ? (
+                <p className="mx-4 mt-1 max-w-[14rem] text-[12px] leading-5 text-muted-foreground sm:mx-6 sm:text-[13px]">
+                  {option.subtitle}
+                </p>
+              ) : null}
               <div className="mt-4 w-full px-6 sm:mt-5">
                 <span
                   className={cn(

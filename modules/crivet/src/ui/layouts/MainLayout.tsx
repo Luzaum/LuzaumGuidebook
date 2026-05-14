@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Calculator, Database, FileText, Star, History, Settings, Info, Menu, X } from 'lucide-react';
+import { Calculator, Database, FileText, Star, History, Settings, Info, Menu, X, type LucideIcon } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 interface NavItem {
   id: string;
   label: string;
-  icon: React.ElementType;
+  icon: LucideIcon;
 }
 
 const navItems: NavItem[] = [

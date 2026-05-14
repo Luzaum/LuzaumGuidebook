@@ -25,14 +25,16 @@ export function FluidMobileNav({ activeTab, setActiveTab }: FluidMobileNavProps)
       className="fixed bottom-0 left-0 right-0 z-40 flex border-t border-slate-800 bg-slate-950/95 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-1 backdrop-blur-md lg:hidden"
       aria-label="Navegação Fluidoterapia"
     >
-      <div className="flex w-full snap-x snap-mandatory gap-0 overflow-x-auto px-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-slate-950 to-transparent" aria-hidden />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-slate-950 to-transparent" aria-hidden />
+      <div className="flex w-full snap-x snap-mandatory gap-1 overflow-x-auto px-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {MOBILE_TABS.map((tab) => (
           <button
             key={tab.id}
             type="button"
             onClick={() => setActiveTab(tab.id)}
             className={cn(
-              'flex min-w-[4.25rem] shrink-0 snap-center flex-col items-center justify-center gap-0.5 rounded-lg px-1 py-1.5 text-[10px] font-medium transition-colors',
+              'flex min-h-14 min-w-[4.75rem] shrink-0 snap-center flex-col items-center justify-center gap-0.5 rounded-xl px-1.5 py-1.5 text-[10px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300/80',
               activeTab === tab.id ? 'text-teal-400' : 'text-slate-500 hover:text-slate-300',
             )}
           >

@@ -12,7 +12,24 @@ export interface ParameterGuideEntry {
   sampleLimitations?: string;
 }
 
-export const PARAMETER_GUIDE: Partial<Record<keyof BloodGasInput | 'barometricPressure' | 'altitude', ParameterGuideEntry>> = {
+type ComputedHemogasParameter =
+  | 'PAO2'
+  | 'aaGradient'
+  | 'pfRatio'
+  | 'ctO2'
+  | 'FO2Hb'
+  | 'COHb'
+  | 'MetHb'
+  | 'HHb'
+  | 'tHb'
+  | 'osmolality'
+  | 'SID'
+  | 'strongIonGap'
+  | 'standardBaseExcess'
+  | 'actualBaseExcess'
+  | 'respiratoryQuotient';
+
+export const PARAMETER_GUIDE: Partial<Record<keyof BloodGasInput | 'barometricPressure' | 'altitude' | ComputedHemogasParameter, ParameterGuideEntry>> = {
   pH: {
     label: 'pH',
     unit: 'adimensional',
@@ -43,6 +60,39 @@ export const PARAMETER_GUIDE: Partial<Record<keyof BloodGasInput | 'barometricPr
     scenarios: ['Pneumonia', 'edema pulmonar', 'hipoventilacao', 'derrame pleural'],
     pitfalls: ['Sem FiO2 a interpretacao fica limitada.', 'Em amostra venosa nao indica troca gasosa pulmonar.'],
     sampleLimitations: 'Confiavel para desempenho pulmonar apenas em amostra arterial.',
+  },
+  PAO2: {
+    label: 'PAO2 alveolar calculada',
+    unit: 'mmHg',
+    whatItIs: 'Estimativa da pressao alveolar de oxigenio pela equacao dos gases alveolares: PAO2 = FiO2 x (Pb - PH2O) - PaCO2/R.',
+    highMeaning: 'Geralmente reflete FiO2 alta, pressao barometrica adequada e/ou PaCO2 baixa.',
+    lowMeaning: 'Pode cair por FiO2 baixa, altitude/baixa pressao barometrica ou hipoventilacao com PaCO2 alta.',
+    relationships: ['Usada para calcular o gradiente A-a.', 'Depende de FiO2, pressao barometrica, vapor de agua e PaCO2.'],
+    scenarios: ['Hipoxemia arterial', 'anestesia', 'ventilacao mecanica', 'oxigenioterapia'],
+    pitfalls: ['E calculada, nao medida; se FiO2 estiver errada, PAO2 e A-a tambem ficam errados.'],
+    sampleLimitations: 'So faz sentido com amostra arterial quando PaO2 e PaCO2 pertencem ao mesmo momento clinico.',
+  },
+  aaGradient: {
+    label: 'Gradiente alvéolo-arterial (A-a)',
+    unit: 'mmHg',
+    whatItIs: 'Diferenca entre PAO2 calculada e PaO2 medida. Mostra quanto oxigenio saiu do alveolo e efetivamente chegou ao sangue arterial.',
+    highMeaning: 'Aumento sugere defeito de troca pulmonar: desequilibrio V/Q, shunt, difusao prejudicada, edema, pneumonia, atelectasia ou tromboembolismo.',
+    lowMeaning: 'Gradiente normal com hipoxemia favorece hipoventilacao pura, baixa FiO2 ou baixa pressao inspirada de O2.',
+    relationships: ['Interpretar junto de PaCO2: hipercapnia com A-a normal aponta para hipoventilacao.', 'Interpretar junto de P/F e imagem toracica.'],
+    scenarios: ['Pneumonia', 'edema pulmonar', 'atelectasia', 'shunt', 'hipoventilacao anestesica'],
+    pitfalls: ['Nao calcular em sangue venoso.', 'FiO2 estimada errada distorce o gradiente.', 'Em FiO2 alta, o gradiente tende a aumentar e precisa de contexto.'],
+    sampleLimitations: 'Calcular somente em amostra arterial com PaO2, PaCO2 e FiO2 confiaveis.',
+  },
+  pfRatio: {
+    label: 'Relação PaO2/FiO2 (P/F)',
+    unit: 'mmHg',
+    whatItIs: 'Indice simples de eficiencia de oxigenacao arterial: PaO2 dividida pela FiO2 em fracao.',
+    highMeaning: 'Melhor eficiencia de oxigenacao; em ar ambiente normal costuma ser alto.',
+    lowMeaning: 'Sugere comprometimento de oxigenacao, especialmente se persistente apesar de oxigenio.',
+    relationships: ['Complementa A-a, mas nao identifica mecanismo sozinho.', 'Usar com FiO2 real e tipo de amostra arterial.'],
+    scenarios: ['Triagem de insuficiencia respiratoria', 'monitoracao de oxigenoterapia', 'ventilacao mecanica'],
+    pitfalls: ['Nao usar PvO2/FiO2.', 'P/F pode parecer melhor ou pior se FiO2 informada for aproximada.'],
+    sampleLimitations: 'Somente com PaO2 arterial.',
   },
   HCO3: {
     label: 'HCO3',
@@ -134,6 +184,36 @@ export const PARAMETER_GUIDE: Partial<Record<keyof BloodGasInput | 'barometricPr
     scenarios: ['DKA', 'sepse', 'filhotes graves'],
     pitfalls: ['Hiperglicemia de estresse e comum em gatos.'],
   },
+  osmolality: {
+    label: 'Osmolalidade calculada',
+    unit: 'mOsm/kg',
+    whatItIs: 'Estimativa da carga osmotica plasmática, geralmente dominada por sodio, glicose e ureia quando disponivel.',
+    highMeaning: 'Hiperosmolalidade pode indicar deficit de agua livre, hipernatremia, hiperglicemia grave ou intoxicacoes osmoticamente ativas.',
+    lowMeaning: 'Hipo-osmolalidade ocorre em excesso de agua livre e hiponatremia verdadeira.',
+    relationships: ['Interpretar com Na, glicose, ureia e estado neurologico.', 'Ajuda a diferenciar hiponatremia verdadeira de pseudohiponatremia/hiperglicemia.'],
+    scenarios: ['DKA/HHS', 'hipernatremia', 'hiponatremia neurologica', 'intoxicacoes'],
+    pitfalls: ['Muitos gasometros nao reportam ureia; formula incompleta e apenas estimativa.'],
+  },
+  SID: {
+    label: 'Strong ion difference (SID)',
+    unit: 'mEq/L',
+    whatItIs: 'Diferenca entre cations fortes e anions fortes, principalmente Na + K - Cl. Relaciona eletrólitos com acidose/alcalose pelo modelo fisico-quimico.',
+    highMeaning: 'SID alto favorece alcalinizacao, frequentemente por hipocloremia relativa.',
+    lowMeaning: 'SID baixo favorece acidificacao, frequentemente por hipercloremia relativa.',
+    relationships: ['Na-Cl e Cl/Na sao atalhos praticos para perceber o efeito do cloro.', 'Complementa HCO3, BE e AG.'],
+    scenarios: ['Vomitos hipocloremicos', 'diarreia', 'fluidoterapia com NaCl 0.9%', 'doenca renal'],
+    pitfalls: ['Nao substitui a abordagem tradicional; integra principalmente a interpretacao de cloro e sodio.'],
+  },
+  strongIonGap: {
+    label: 'Strong ion gap (SIG)',
+    unit: 'mEq/L',
+    whatItIs: 'Estimativa de anions fortes nao mensurados no modelo fisico-quimico.',
+    highMeaning: 'Sugere anions nao mensurados, semelhante ao raciocinio de AG alto, mas com mais variaveis.',
+    lowMeaning: 'Pode ocorrer por erro de dados ou alteracoes de proteinas/fosfato conforme formula usada.',
+    relationships: ['Relaciona-se com AG, lactato, albumina e fosfato.', 'Pode refinar a avaliacao em pacientes criticos.'],
+    scenarios: ['Sepse', 'choque', 'uremia', 'intoxicacoes', 'DKA'],
+    pitfalls: ['Depende de formula e parametros nem sempre disponiveis no gasometro.'],
+  },
   iCa: {
     label: 'Calcio ionizado',
     unit: 'mmol/L',
@@ -174,6 +254,66 @@ export const PARAMETER_GUIDE: Partial<Record<keyof BloodGasInput | 'barometricPr
     scenarios: ['Anemia hemorrágica', 'hemolise', 'doenca cronica'],
     pitfalls: ['Nao confundir boa saturacao com adequada entrega de oxigenio.'],
   },
+  tHb: {
+    label: 'Hemoglobina total (tHb)',
+    unit: 'g/dL',
+    whatItIs: 'Hemoglobina total medida por co-oximetria; define capacidade maxima de transporte de oxigenio.',
+    highMeaning: 'Hemoconcentracao ou policitemia; pode aumentar viscosidade.',
+    lowMeaning: 'Anemia reduz conteudo arterial de O2 mesmo com PaO2 e SaO2 normais.',
+    relationships: ['Conteudo arterial de O2 depende muito mais de Hb e SaO2 do que do O2 dissolvido.', 'Interpretar com Ht, lactato e perfusao.'],
+    scenarios: ['Hemorragia', 'hemolise', 'desidratacao', 'choque'],
+    pitfalls: ['PaO2 normal nao garante entrega de oxigenio se tHb esta baixa.'],
+  },
+  ctO2: {
+    label: 'Conteudo de oxigenio (ctO2/CaO2)',
+    unit: 'mL/dL',
+    whatItIs: 'Quantidade total de oxigenio no sangue, somando O2 ligado a hemoglobina e pequena fracao dissolvida.',
+    highMeaning: 'Pode refletir Hb alta e saturacao adequada.',
+    lowMeaning: 'Indica risco de baixa entrega de O2 por anemia, dessaturacao ou ambas.',
+    relationships: ['DO2 depende de ctO2 e debito cardiaco.', 'Relacionar com lactato, perfusao, Hb e SaO2.'],
+    scenarios: ['Anemia critica', 'choque', 'hipoxemia', 'transfusao'],
+    pitfalls: ['Nao confundir oxigenacao pulmonar (PaO2/A-a) com entrega sistêmica de O2 (ctO2/DO2).'],
+  },
+  FO2Hb: {
+    label: 'Oxi-hemoglobina fracional (FO2Hb)',
+    unit: '%',
+    whatItIs: 'Percentual de hemoglobina total que esta ligada ao oxigenio, considerando dis-hemoglobinas.',
+    highMeaning: 'Boa fracao oxigenada quando co-oximetria e confiavel.',
+    lowMeaning: 'Pode indicar dessaturacao real ou competicao por COHb/MetHb.',
+    relationships: ['Diferente de sO2 calculada se houver COHb ou MetHb.', 'Importante em intoxicacoes e anestesia.'],
+    scenarios: ['Intoxicacao por monoxido de carbono', 'metemoglobinemia', 'hipoxemia'],
+    pitfalls: ['Saturacao de pulso pode enganar em COHb/MetHb.'],
+  },
+  COHb: {
+    label: 'Carboxi-hemoglobina (COHb)',
+    unit: '%',
+    whatItIs: 'Hemoglobina ligada a monoxido de carbono, incapaz de transportar O2 adequadamente.',
+    highMeaning: 'Intoxicacao por CO/fumaca; reduz conteudo de O2 e desloca curva de dissociacao.',
+    lowMeaning: 'Normal/sem impacto clinico relevante.',
+    relationships: ['PaO2 pode estar normal apesar de hipoxia tecidual.', 'Correlacionar com incendio, aquecedores, fumaca e sinais neurologicos.'],
+    scenarios: ['Inalacao de fumaca', 'ambiente fechado com combustao'],
+    pitfalls: ['SpO2 pode parecer falsamente normal. Precisa de co-oximetria.'],
+  },
+  MetHb: {
+    label: 'Metemoglobina (MetHb)',
+    unit: '%',
+    whatItIs: 'Hemoglobina oxidada que nao carrega O2 de forma efetiva.',
+    highMeaning: 'Metemoglobinemia por oxidantes, toxicos ou farmacos; causa hipoxia funcional.',
+    lowMeaning: 'Normal/sem impacto clinico relevante.',
+    relationships: ['Cianose com PaO2 normal deve levantar suspeita.', 'Correlacionar com chocolate/cebola/alho, benzocaina, nitratos e alguns farmacos.'],
+    scenarios: ['Toxicologia', 'cianose refrataria', 'sangue achocolatado'],
+    pitfalls: ['Oxigenio pode nao corrigir completamente a hipoxia funcional se MetHb estiver alta.'],
+  },
+  HHb: {
+    label: 'Desoxi-hemoglobina (HHb)',
+    unit: '%',
+    whatItIs: 'Fracao de hemoglobina nao ligada ao oxigenio.',
+    highMeaning: 'Aumenta em dessaturacao, baixa PaO2 ou extracao tecidual elevada em amostras venosas.',
+    lowMeaning: 'Fracao desoxigenada baixa, geralmente com boa saturacao ou oxigenioterapia.',
+    relationships: ['Em venosa reflete extracao tecidual e fluxo regional.', 'Em arterial acompanha hipoxemia/dessaturacao.'],
+    scenarios: ['Choque', 'hipoxemia', 'monitoracao venosa'],
+    pitfalls: ['Interpretar sempre pelo tipo de amostra.'],
+  },
   sO2: {
     label: 'Saturacao de O2',
     unit: '%',
@@ -213,6 +353,36 @@ export const PARAMETER_GUIDE: Partial<Record<keyof BloodGasInput | 'barometricPr
     relationships: ['Complementa HCO3.', 'Comparar com HCO3 e pCO2.'],
     scenarios: ['Painel bioquimico/hemogas ampliado'],
     pitfalls: ['Nao substitui sozinho a analise completa.'],
+  },
+  standardBaseExcess: {
+    label: 'Standard base excess (SBE)',
+    unit: 'mEq/L',
+    whatItIs: 'Base excess padronizado para condicoes de CO2, estimando componente metabolico extracelular.',
+    highMeaning: 'Excesso de base metabolico.',
+    lowMeaning: 'Deficit de base metabolico.',
+    relationships: ['Mais estavel para componente metabolico do que pH isolado.', 'Comparar com HCO3 e BE reportado.'],
+    scenarios: ['Choque', 'diarreia', 'vomitos', 'doenca renal'],
+    pitfalls: ['A nomenclatura varia por aparelho: SBE, BEecf, BE(B). Conferir campo e unidade.'],
+  },
+  actualBaseExcess: {
+    label: 'Actual base excess (ABE)',
+    unit: 'mEq/L',
+    whatItIs: 'Base excess calculado nas condicoes reais da amostra.',
+    highMeaning: 'Excesso de base nas condicoes medidas.',
+    lowMeaning: 'Deficit de base nas condicoes medidas.',
+    relationships: ['Pode diferir do SBE.', 'Usar junto de HCO3 e pCO2 para nao confundir componente respiratorio.'],
+    scenarios: ['Aparelhos que reportam BE(B)/ABE e BEecf/SBE separadamente'],
+    pitfalls: ['Nao misturar ABE e SBE sem saber o que o aparelho esta reportando.'],
+  },
+  respiratoryQuotient: {
+    label: 'Quociente respiratorio (R)',
+    unit: 'adimensional',
+    whatItIs: 'Razao entre producao de CO2 e consumo de O2. Na equacao alveolar costuma-se usar 0,8 como padrao.',
+    highMeaning: 'Pode subir com metabolismo de carboidrato predominante ou superalimentacao; raramente medido no gasometro comum.',
+    lowMeaning: 'Pode cair com oxidacao de gordura/jejum; raramente usado diretamente na rotina.',
+    relationships: ['Entra no calculo da PAO2 e, portanto, do gradiente A-a.', 'Na pratica clinica, R=0,8 e uma aproximacao aceitavel na maioria dos casos.'],
+    scenarios: ['Calculo refinado de A-a', 'ventilacao mecanica e metabolismo intensivo'],
+    pitfalls: ['Nao alterar R sem motivo; isso pode criar falsa precisao.'],
   },
   fio2: {
     label: 'FiO2',
@@ -273,8 +443,8 @@ type ParameterGuideCard = {
 };
 
 function inferCategory(id: string): ParameterGuideCard['category'] {
-  if (['pH', 'pCO2', 'HCO3', 'BE', 'AG', 'H', 'cHCO3', 'tCO2'].includes(id)) return 'acid-base';
-  if (['pO2', 'sO2', 'fio2', 'barometricPressure', 'altitude'].includes(id)) return 'oxygenation';
+  if (['pH', 'pCO2', 'HCO3', 'BE', 'AG', 'H', 'cHCO3', 'tCO2', 'SID', 'strongIonGap', 'standardBaseExcess', 'actualBaseExcess'].includes(id)) return 'acid-base';
+  if (['pO2', 'sO2', 'fio2', 'barometricPressure', 'altitude', 'PAO2', 'aaGradient', 'pfRatio', 'ctO2', 'FO2Hb', 'COHb', 'MetHb', 'HHb', 'tHb', 'respiratoryQuotient'].includes(id)) return 'oxygenation';
   if (['Na', 'K', 'Cl', 'iCa', 'tCa'].includes(id)) return 'electrolyte';
   return 'metabolite';
 }

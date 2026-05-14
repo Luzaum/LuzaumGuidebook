@@ -33,7 +33,7 @@ export function normalizeSpeciesList(value: any): Array<'dog' | 'cat'> {
 export function normalizeMedicationDoseArray(value: any) {
     return normalizeArray(value, (item) => ({
         id: normalizeString(item?.id, `dose-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`),
-        species: normalizeString(item?.species).toLowerCase(),
+        species: normalizeMedicationDoseSpecies(item?.species),
         indication: normalizeString(item?.indication),
         doseMin: Number(item?.doseMin ?? 0),
         doseMax: item?.doseMax === null || item?.doseMax === undefined || item?.doseMax === ''
@@ -48,6 +48,11 @@ export function normalizeMedicationDoseArray(value: any) {
         calculatorEnabled: normalizeBoolean(item?.calculatorEnabled, true),
         presentationId: normalizeString(item?.presentationId).trim() || undefined,
     }));
+}
+
+function normalizeMedicationDoseSpecies(value: any): 'dog' | 'cat' | 'both' {
+    const species = normalizeString(value, 'both').toLowerCase();
+    return species === 'dog' || species === 'cat' || species === 'both' ? species : 'both';
 }
 
 export function normalizeMedicationPresentationArray(value: any) {

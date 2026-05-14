@@ -170,10 +170,13 @@ const appRoutes = (
 function AppContent() {
   useEffect(() => {
     const prefetchCriticalRoutes = () => {
-      void import('./pages/Hub')
-      void import('./src/routes/Login')
-      void import('./src/routes/Signup')
-      void import('./modules/energia-vet/App')
+      const imports = [
+        import('./pages/Hub'),
+        import('./src/routes/Login'),
+        import('./src/routes/Signup'),
+        import('./modules/energia-vet/App'),
+      ]
+      void Promise.allSettled(imports)
     }
 
     const win = window as Window & {

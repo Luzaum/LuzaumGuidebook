@@ -33,7 +33,7 @@ export type CompoundedV2Archetype =
 
 export type CompoundedV2DoseMode = 'fixed' | 'by_weight'
 export type CompoundedV2FrequencyMode = 'times_per_day' | 'interval_hours' | 'free_text'
-export type CompoundedV2DurationMode = 'fixed' | 'continuous_until_recheck' | 'free_text'
+export type CompoundedV2DurationMode = 'fixed' | 'continuous_until_recheck' | 'free_text' | 'continuous_use' | 'until_finished'
 export type CompoundedV2IngredientMode =
   | 'fixed_per_unit'
   | 'fixed_total_formula'
@@ -124,6 +124,11 @@ export interface CompoundedMedicationV2 {
   formula: CompoundedV2Formula
   ingredients: CompoundedV2Ingredient[]
   regimens: CompoundedV2Regimen[]
+  display?: {
+    auto_print_line?: boolean
+    print_line_left?: string
+    print_line_right?: string
+  }
 }
 
 export interface CompoundedV2PersistencePayload {
@@ -264,11 +269,11 @@ function inferIngredientMode(
   }
 
   if (ingredient.ingredient_role === 'vehicle') {
-    return { definition_mode: 'vehicle_or_base', target_unit: administrationUnit, calculation_basis: 'na' }
+    return { definition_mode: 'vehicle_or_base', target_unit: administrationUnit, calculation_basis: 'na', amount: null, unit: '' }
   }
 
   if (ingredient.ingredient_role === 'excipient') {
-    return { definition_mode: 'excipient', target_unit: administrationUnit, calculation_basis: 'na' }
+    return { definition_mode: 'excipient', target_unit: administrationUnit, calculation_basis: 'na', amount: null, unit: '' }
   }
 
   return {

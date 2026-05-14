@@ -211,7 +211,7 @@ export function EditorialMedicationsPage() {
     setSuccess(null);
 
     try {
-      const medicationSpecies = form.species.length ? form.species : ['dog'];
+      const medicationSpecies: MedicationFormState['species'] = form.species.length ? form.species : ['dog'];
       const doseErrors = validateMedicationDoses(form.doses, medicationSpecies);
       const presentationErrors = validateMedicationPresentations(form.presentations);
 

@@ -1,5 +1,6 @@
 ﻿import {
   BloodGasInput,
+  AcidBasePrimaryDisorder,
   ClinicalAlert,
   DataQualityAssessment,
   DeepAcidBaseInterpretation,
@@ -227,6 +228,198 @@ function buildQualityAssessment(
   return quality;
 }
 
+type AcidBaseReference = {
+  phLow: number;
+  phHigh: number;
+  pco2Low: number;
+  pco2High: number;
+  pco2Normal: number;
+  hco3Low: number;
+  hco3High: number;
+  hco3Normal: number;
+  compensationTolerance: number;
+  anionGapLow: number;
+  anionGapHigh: number;
+};
+
+function getAcidBaseReference(input: BloodGasInput): AcidBaseReference {
+  if (input.species === 'feline') {
+    return {
+      phLow: 7.25,
+      phHigh: 7.4,
+      pco2Low: input.sampleType === 'venous' ? 33 : 28,
+      pco2High: input.sampleType === 'venous' ? 40 : 34,
+      pco2Normal: input.sampleType === 'venous' ? 36 : 31,
+      hco3Low: input.sampleType === 'venous' ? 15 : 14,
+      hco3High: input.sampleType === 'venous' ? 23 : 22,
+      hco3Normal: 18,
+      compensationTolerance: 5,
+      anionGapLow: 13,
+      anionGapHigh: 27,
+    };
+  }
+
+  return {
+    phLow: 7.35,
+    phHigh: 7.45,
+    pco2Low: input.sampleType === 'venous' ? 40 : 35,
+    pco2High: input.sampleType === 'venous' ? 50 : 45,
+    pco2Normal: input.sampleType === 'venous' ? 45 : 40,
+    hco3Low: input.sampleType === 'venous' ? 21 : 20,
+    hco3High: input.sampleType === 'venous' ? 26 : 24,
+    hco3Normal: 24,
+    compensationTolerance: 3,
+    anionGapLow: 12,
+    anionGapHigh: 24,
+  };
+}
+
+function acidBaseSeverity(ph: number, phStatus: DeepAcidBaseInterpretation['phStatus']): DeepAcidBaseInterpretation['severity'] {
+  if (phStatus === 'acidemia') {
+    if (ph < 7.1) return 'life_threatening';
+    if (ph < 7.2) return 'severe';
+    if (ph < 7.3) return 'moderate';
+    return 'mild';
+  }
+  if (phStatus === 'alkalemia') {
+    if (ph > 7.65) return 'life_threatening';
+    if (ph > 7.55) return 'severe';
+    if (ph > 7.5) return 'moderate';
+    return 'mild';
+  }
+  return undefined;
+}
+
+function severityText(severity?: DeepAcidBaseInterpretation['severity']): string {
+  if (severity === 'life_threatening') return 'potencialmente ameacadora a vida';
+  if (severity === 'severe') return 'grave';
+  if (severity === 'moderate') return 'moderada';
+  if (severity === 'mild') return 'leve';
+  return 'sem gravidade definida pelo pH';
+}
+
+function getCalculatedAnionGap(input: BloodGasInput): number | undefined {
+  if (input.AG !== undefined) return round(input.AG, 1);
+  if (input.Na !== undefined && input.K !== undefined && input.Cl !== undefined && input.HCO3 !== undefined) {
+    return round((input.Na + input.K) - (input.Cl + input.HCO3), 1);
+  }
+  if (input.Na !== undefined && input.Cl !== undefined && input.HCO3 !== undefined) {
+    return round(input.Na - (input.Cl + input.HCO3), 1);
+  }
+  return undefined;
+}
+
+function buildClinicalContextPhrases(input: BloodGasInput): string[] {
+  const ctx = input.clinicalContext || {};
+  const phrases: string[] = [];
+  if (ctx.vomiting) phrases.push('Vomito favorece perda de HCl gastrico, hipocloremia, deplecao de volume e alcalose metabolica cloro-responsiva.');
+  if (ctx.diarrhea) phrases.push('Diarreia favorece perda intestinal de bicarbonato, acidose metabolica hipercloremica e hipovolemia.');
+  if (ctx.shock) phrases.push('Choque/hipoperfusao favorece metabolismo anaerobio, hiperlactatemia e acidose metabolica com anions nao mensurados.');
+  if (ctx.dyspnea) phrases.push('Dispneia pode gerar hiperventilacao com alcalose respiratoria; fadiga ventilatoria pode inverter para retencao de CO2.');
+  if (ctx.suspectedDKA) phrases.push('Suspeita de cetoacidose diabetica exige correlacionar glicose, cetonas, potassio e anion gap.');
+  if (ctx.urethralObstruction) phrases.push('Obstrucao uretral favorece acidose metabolica, hipercalemia e risco eletrico cardiaco.');
+  if (ctx.oxygenTherapy) phrases.push('Uso de oxigenio exige interpretar PaO2 pela FiO2 e nao por valor absoluto isolado.');
+  if (ctx.mechanicalVentilation) phrases.push('Ventilacao mecanica torna pCO2 um alvo terapeutico direto; ajustar ventilacao minuto conforme tendencia.');
+  return phrases;
+}
+
+function buildAcidBaseExamCorrelation(input: BloodGasInput, ref: AcidBaseReference): string[] {
+  const items: string[] = [];
+  const ag = getCalculatedAnionGap(input);
+  if (ag !== undefined) {
+    if (ag > ref.anionGapHigh) {
+      items.push(`Anion gap ${ag} acima da faixa esperada: procurar acidos nao mensurados, especialmente lactato, cetonas, toxicos ou uremia.`);
+    } else if (ag < ref.anionGapLow) {
+      items.push(`Anion gap ${ag} baixo: correlacionar com albumina baixa, hemodiluicao ou erro analitico antes de concluir.`);
+    } else {
+      items.push(`Anion gap ${ag} dentro da faixa: se ha acidose metabolica, perda de bicarbonato/hipercloremia ganha peso no diferencial.`);
+    }
+  } else {
+    items.push('Sem Na/K/Cl/HCO3 completos, o anion gap nao foi calculado; isso limita a diferenciacao entre acidose hipercloremica e acidose por acidos nao mensurados.');
+  }
+
+  if (input.albumin !== undefined && ag !== undefined) {
+    const corrected = round(ag + (2.5 * (3.5 - input.albumin)), 1);
+    if (input.albumin < 2.5) {
+      items.push(`Albumina ${input.albumin} g/dL pode mascarar aumento do anion gap; AG corrigido aproximado ${corrected}.`);
+    }
+  }
+
+  if (input.lactate !== undefined) {
+    if (input.lactate >= 4) items.push(`Lactato ${input.lactate} mmol/L e alto: correlacionar com perfusao, pressao arterial, temperatura, dor, sepse, hipoxemia e depuracao seriada.`);
+    else if (input.lactate >= 2.5) items.push(`Lactato ${input.lactate} mmol/L esta aumentado: repetir em serie e procurar hipoperfusao regional ou sistemica.`);
+    else items.push(`Lactato ${input.lactate} mmol/L nao sustenta acidose lactica importante neste momento.`);
+  }
+
+  if (input.Na !== undefined && input.Cl !== undefined) {
+    const ratio = round(input.Cl / input.Na, 3);
+    const difference = round(input.Na - input.Cl, 1);
+    if (ratio > 0.79 || difference < 30) {
+      items.push(`Cl/Na ${ratio} e Na-Cl ${difference}: padrao relativamente hipercloremico, coerente com efeito acidificante por reducao do strong ion difference.`);
+    } else if (ratio < 0.72 || difference > 38) {
+      items.push(`Cl/Na ${ratio} e Na-Cl ${difference}: padrao hipocloremico, que sustenta alcalose metabolica cloro-responsiva quando o HCO3 esta alto.`);
+    }
+  }
+
+  if (input.K !== undefined) {
+    if (input.K >= 6) items.push(`Potassio ${input.K} mEq/L: risco arritmico; acidemia e obstrucao urinaria podem deslocar K para o extracelular.`);
+    if (input.K <= 3) items.push(`Potassio ${input.K} mEq/L: risco de fraqueza, ileo e agravamento de alcalose; corrigir antes de terapias que empurrem K para dentro da celula.`);
+  }
+
+  if (input.glucose !== undefined && input.glucose >= 250) {
+    items.push(`Glicose ${input.glucose} mg/dL: se houver acidose metabolica e AG elevado, investigar cetose/cetoacidose e deficit corporal de potassio.`);
+  }
+
+  return items;
+}
+
+function buildMixedDisorderClues(input: BloodGasInput, ref: AcidBaseReference, disorder: AcidBasePrimaryDisorder, expectedLow?: number, expectedHigh?: number): string[] {
+  const clues: string[] = [];
+  const pCO2 = input.pCO2;
+  const hco3 = input.HCO3;
+  const ag = getCalculatedAnionGap(input);
+
+  if (expectedLow !== undefined && expectedHigh !== undefined && pCO2 !== undefined) {
+    if (disorder === 'metabolic_acidosis') {
+      if (pCO2 > expectedHigh) clues.push('pCO2 acima do esperado para acidose metabolica: componente de acidose respiratoria por hipoventilacao/fadiga deve ser considerado.');
+      if (pCO2 < expectedLow) clues.push('pCO2 abaixo do esperado para acidose metabolica: alcalose respiratoria concomitante por dor, sepse, hipoxemia ou hiperventilacao e provavel.');
+    }
+    if (disorder === 'metabolic_alkalosis') {
+      if (pCO2 > expectedHigh) clues.push('pCO2 acima do esperado para alcalose metabolica: hipoventilacao/acidose respiratoria concomitante pode estar presente.');
+      if (pCO2 < expectedLow) clues.push('pCO2 abaixo do esperado para alcalose metabolica: alcalose respiratoria concomitante deve ser considerada.');
+    }
+  }
+
+  if (disorder === 'respiratory_acidosis' && hco3 !== undefined) {
+    const delta = (pCO2 ?? ref.pco2Normal) - ref.pco2Normal;
+    const acute = ref.hco3Normal + (1.5 * (delta / 10));
+    const chronic = ref.hco3Normal + (3.5 * (delta / 10));
+    if (hco3 < acute - ref.compensationTolerance) clues.push('HCO3 menor que a compensacao renal esperada: acidose metabolica associada deve ser procurada.');
+    if (hco3 > chronic + ref.compensationTolerance) clues.push('HCO3 maior que a compensacao cronica esperada: alcalose metabolica associada e possivel.');
+  }
+
+  if (disorder === 'respiratory_alkalosis' && hco3 !== undefined) {
+    const delta = ref.pco2Normal - (pCO2 ?? ref.pco2Normal);
+    const acute = ref.hco3Normal - (2.5 * (delta / 10));
+    const chronic = ref.hco3Normal - (5.5 * (delta / 10));
+    if (hco3 > acute + ref.compensationTolerance) clues.push('HCO3 maior que o esperado para alcalose respiratoria: alcalose metabolica associada e possivel.');
+    if (hco3 < chronic - ref.compensationTolerance) clues.push('HCO3 menor que o esperado para alcalose respiratoria: acidose metabolica associada deve ser procurada.');
+  }
+
+  if (disorder === 'metabolic_acidosis' && ag !== undefined && hco3 !== undefined) {
+    const deltaAg = Math.max(0, ag - ref.anionGapHigh);
+    const deltaHco3 = Math.max(0.1, ref.hco3Normal - hco3);
+    const deltaRatio = round(deltaAg / deltaHco3, 2);
+    if (ag > ref.anionGapHigh) {
+      clues.push(`Delta ratio aproximado ${deltaRatio}: ajuda a separar acidose por AG alto pura de disturbio metabolico misto.`);
+      if (deltaRatio < 0.8 && input.Cl !== undefined) clues.push('Delta ratio baixo sugere componente hipercloremico adicional por perda de bicarbonato ou carga de cloreto.');
+      if (deltaRatio > 2) clues.push('Delta ratio alto sugere alcalose metabolica associada ou HCO3 mais alto que o esperado para o AG.');
+    }
+  }
+
+  return clues;
+}
+
 function interpretAcidBase(input: BloodGasInput, quality: DataQualityAssessment, steps: string[]): DeepAcidBaseInterpretation {
   const result: DeepAcidBaseInterpretation = {
     domainStatus: 'inconclusive',
@@ -235,6 +428,10 @@ function interpretAcidBase(input: BloodGasInput, quality: DataQualityAssessment,
     primaryLogic: 'Dados insuficientes para definir o disturbio acido-base.',
     compensationStatus: 'not_applicable',
     physiologicalExplanation: 'Sem pH, pCO2 e HCO3/BE suficientes, a avaliacao acido-base fica limitada.',
+    physiologicMechanisms: [],
+    clinicalCorrelation: [],
+    examCorrelation: [],
+    mixedDisorderClues: [],
     commonCauses: [],
     summary: 'Equilibrio acido-base inconclusivo.',
   };
@@ -251,21 +448,20 @@ function interpretAcidBase(input: BloodGasInput, quality: DataQualityAssessment,
   const hco3 = input.HCO3;
   const be = input.BE;
   const speciesLabel = input.species === 'feline' ? 'felino' : 'canino';
-  const phLow = input.species === 'canine' ? 7.35 : 7.25;
-  const phHigh = input.species === 'canine' ? 7.45 : 7.4;
-  const pco2Normal = input.species === 'canine' ? 40 : 31;
-  const hco3Normal = input.species === 'canine' ? 24 : 18;
+  const ref = getAcidBaseReference(input);
+  const { phLow, phHigh, pco2Normal, hco3Normal } = ref;
 
   result.domainStatus = 'ok';
   result.phStatus = ph < phLow ? 'acidemia' : ph > phHigh ? 'alkalemia' : 'normal';
+  result.severity = acidBaseSeverity(ph, result.phStatus);
   steps.push(`Passo 1: pH ${ph} em ${speciesLabel} indica ${result.phStatus === 'normal' ? 'faixa aparentemente normal' : result.phStatus}.`);
 
   const metabolicSignal = hco3 !== undefined
-    ? hco3 < hco3Normal ? 'acidosis' : hco3 > hco3Normal ? 'alkalosis' : 'neutral'
+    ? hco3 < ref.hco3Low ? 'acidosis' : hco3 > ref.hco3High ? 'alkalosis' : 'neutral'
     : be !== undefined
       ? be < -4 ? 'acidosis' : be > 4 ? 'alkalosis' : 'neutral'
       : 'neutral';
-  const respiratorySignal = pCO2 > pco2Normal ? 'acidosis' : pCO2 < pco2Normal ? 'alkalosis' : 'neutral';
+  const respiratorySignal = pCO2 > ref.pco2High ? 'acidosis' : pCO2 < ref.pco2Low ? 'alkalosis' : 'neutral';
 
   if (result.phStatus === 'acidemia') {
     if (metabolicSignal === 'acidosis' && respiratorySignal === 'acidosis') {
@@ -297,41 +493,121 @@ function interpretAcidBase(input: BloodGasInput, quality: DataQualityAssessment,
   result.primaryLogic = result.mixedDisorderReason || `Sinal metabolico: ${metabolicSignal}. Sinal respiratorio: ${respiratorySignal}.`;
   steps.push(`Passo 2: processo primario sugerido: ${result.primaryDisorder}.`);
 
-  const tolerance = input.species === 'feline' ? 5 : 3;
+  const tolerance = ref.compensationTolerance;
   if (hco3 !== undefined) {
     if (result.primaryDisorder === 'metabolic_acidosis') {
       const expected = round(pco2Normal - (0.7 * (hco3Normal - hco3)), 1);
-      result.expectedCompensation = `Compensacao esperada: pCO2 ~ ${expected} mmHg.`;
+      const low = round(expected - tolerance, 1);
+      const high = round(expected + tolerance, 1);
+      result.compensationFormula = `pCO2 esperada = pCO2 normal - 0,7 x (HCO3 normal - HCO3 observado), tolerancia aproximada +/- ${tolerance} mmHg.`;
+      result.expectedCompensation = `Compensacao esperada: pCO2 ~ ${expected} mmHg (faixa ${low}-${high}).`;
       result.observedCompensation = `pCO2 observado: ${pCO2} mmHg.`;
       result.compensationStatus = Math.abs(pCO2 - expected) <= tolerance ? 'compensated' : 'mixed_suspected';
+      result.compensationInterpretation = pCO2 > high
+        ? 'Ventilacao menor que a esperada para compensar a acidose metabolica; considerar acidose respiratoria concomitante.'
+        : pCO2 < low
+          ? 'Ventilacao maior que a esperada; considerar alcalose respiratoria concomitante.'
+          : 'Resposta ventilatoria coerente: a queda da pCO2 reduz acido carbonico e tenta elevar o pH.';
+      result.mixedDisorderClues = buildMixedDisorderClues(input, ref, result.primaryDisorder, low, high);
     } else if (result.primaryDisorder === 'metabolic_alkalosis') {
       const expected = round(pco2Normal + (0.7 * (hco3 - hco3Normal)), 1);
-      result.expectedCompensation = `Compensacao esperada: pCO2 ~ ${expected} mmHg.`;
+      const low = round(expected - tolerance, 1);
+      const high = round(expected + tolerance, 1);
+      result.compensationFormula = `pCO2 esperada = pCO2 normal + 0,7 x (HCO3 observado - HCO3 normal), tolerancia aproximada +/- ${tolerance} mmHg.`;
+      result.expectedCompensation = `Compensacao esperada: pCO2 ~ ${expected} mmHg (faixa ${low}-${high}).`;
       result.observedCompensation = `pCO2 observado: ${pCO2} mmHg.`;
       result.compensationStatus = Math.abs(pCO2 - expected) <= tolerance ? 'compensated' : 'mixed_suspected';
+      result.compensationInterpretation = pCO2 > high
+        ? 'Retencao de CO2 maior que a esperada; avaliar hipoventilacao, sedacao, doenca pulmonar ou fadiga.'
+        : pCO2 < low
+          ? 'pCO2 baixa demais para compensacao; considerar alcalose respiratoria concomitante.'
+          : 'Hipoventilacao compensatoria coerente, limitada pela necessidade de manter oxigenacao.';
+      result.mixedDisorderClues = buildMixedDisorderClues(input, ref, result.primaryDisorder, low, high);
     } else if (result.primaryDisorder === 'respiratory_acidosis') {
       const delta = pCO2 - pco2Normal;
       const acute = round(hco3Normal + (1.5 * (delta / 10)), 1);
       const chronic = round(hco3Normal + (3.5 * (delta / 10)), 1);
+      result.compensationFormula = 'Acidose respiratoria: HCO3 aumenta pouco no quadro agudo e mais no cronico por retencao renal de bicarbonato.';
       result.expectedCompensation = `HCO3 esperado: ${acute} (aguda) a ${chronic} (cronica) mEq/L.`;
       result.observedCompensation = `HCO3 observado: ${hco3} mEq/L.`;
       result.compensationStatus = hco3 < acute - tolerance || hco3 > chronic + tolerance ? 'mixed_suspected' : 'partially_compensated';
+      result.compensationInterpretation = hco3 < acute - tolerance
+        ? 'Bicarbonato baixo demais para acidose respiratoria isolada; acidose metabolica associada deve ser investigada.'
+        : hco3 > chronic + tolerance
+          ? 'Bicarbonato alto demais para compensacao renal esperada; alcalose metabolica associada e possivel.'
+          : 'HCO3 compativel com resposta renal esperada para retencao de CO2.';
+      result.mixedDisorderClues = buildMixedDisorderClues(input, ref, result.primaryDisorder);
     } else if (result.primaryDisorder === 'respiratory_alkalosis') {
       const delta = pco2Normal - pCO2;
       const acute = round(hco3Normal - (2.5 * (delta / 10)), 1);
       const chronic = round(hco3Normal - (5.5 * (delta / 10)), 1);
+      result.compensationFormula = 'Alcalose respiratoria: HCO3 cai por tamponamento e, se cronica, por maior excrecao renal de bicarbonato.';
       result.expectedCompensation = `HCO3 esperado: ${acute} (aguda) a ${chronic} (cronica) mEq/L.`;
       result.observedCompensation = `HCO3 observado: ${hco3} mEq/L.`;
       result.compensationStatus = hco3 > acute + tolerance || hco3 < chronic - tolerance ? 'mixed_suspected' : 'partially_compensated';
+      result.compensationInterpretation = hco3 > acute + tolerance
+        ? 'HCO3 alto demais para alcalose respiratoria isolada; alcalose metabolica associada e possivel.'
+        : hco3 < chronic - tolerance
+          ? 'HCO3 baixo demais para compensacao esperada; acidose metabolica associada deve ser procurada.'
+          : 'HCO3 compativel com resposta metabolica/renal a queda de CO2.';
+      result.mixedDisorderClues = buildMixedDisorderClues(input, ref, result.primaryDisorder);
     } else {
       result.compensationStatus = 'not_applicable';
     }
   }
 
+  if (result.primaryDisorder === 'mixed' && !result.mixedDisorderClues?.length) {
+    result.mixedDisorderClues = [
+      result.mixedDisorderReason || 'pH, pCO2 e componente metabolico nao seguem um unico disturbio simples.',
+      'Em disturbios mistos, o pH pode parecer menos alterado que a gravidade real porque processos opostos se anulam parcialmente.',
+    ];
+  }
+
+  result.examCorrelation = buildAcidBaseExamCorrelation(input, ref);
+  result.clinicalCorrelation = buildClinicalContextPhrases(input);
+
+  result.physiologicMechanisms = (() => {
+    switch (result.primaryDisorder) {
+      case 'metabolic_acidosis':
+        return [
+          'O HCO3/BE representa o tampao metabolico. Quando cai, ha consumo ou perda de base e aumento relativo de H+.',
+          'A compensacao imediata e hiperventilar para reduzir pCO2; isso desloca o equilibrio CO2-H2CO3-H+ para menor acidez.',
+          'A separacao entre AG alto e AG normal define se ha acidos nao mensurados ou perda de bicarbonato com hipercloremia.',
+        ];
+      case 'metabolic_alkalosis':
+        return [
+          'O aumento de HCO3 geralmente vem de perda de H+ gastrico, contracao de volume, deplecao de cloreto/potassio ou carga alcalina.',
+          'A resposta respiratoria e reter CO2 por hipoventilacao relativa, mas essa compensacao e limitada pela necessidade de oxigenar.',
+          'Hipocloremia mantem alcalose porque reduz a capacidade renal de excretar bicarbonato.',
+        ];
+      case 'respiratory_acidosis':
+        return [
+          'pCO2 alto indica hipoventilacao alveolar: o CO2 produzido nos tecidos nao esta sendo eliminado adequadamente.',
+          'O aumento de CO2 eleva acido carbonico e H+, reduzindo o pH rapidamente em quadros agudos.',
+          'A compensacao renal por retencao de bicarbonato leva horas a dias; HCO3 normal em hipercapnia importante sugere quadro agudo.',
+        ];
+      case 'respiratory_alkalosis':
+        return [
+          'pCO2 baixo indica hiperventilacao alveolar, comum em dor, ansiedade, hipoxemia, febre ou sepse inicial.',
+          'A queda de CO2 reduz acido carbonico e H+, elevando o pH.',
+          'Se persistente, o rim aumenta excrecao de bicarbonato para reduzir a alcalemia.',
+        ];
+      case 'mixed':
+        return [
+          'Mais de um processo primario parece atuar ao mesmo tempo; a avaliacao de compensacao deixa de seguir uma unica formula simples.',
+          'pH normal ou pouco alterado nao garante seguranca quando pCO2, HCO3, cloro, lactato ou AG estao desviados.',
+        ];
+      default:
+        return [
+          'pH, pCO2 e HCO3/BE foram avaliados em conjunto; sem desvio dominante, a interpretacao depende da tendencia seriada e do quadro clinico.',
+        ];
+    }
+  })();
+
   if (input.species === 'feline') {
-    result.physiologicalExplanation = `${result.primaryLogic} Em gatos, as formulas de compensacao sao menos previsiveis que em caes; interpretar com cautela clinica adicional.`;
+    result.physiologicalExplanation = `${result.primaryLogic} Gravidade pelo pH: ${severityText(result.severity)}. Em gatos, as formulas de compensacao sao menos previsiveis que em caes; interpretar com cautela clinica adicional. ${result.physiologicMechanisms.join(' ')}`;
   } else {
-    result.physiologicalExplanation = `${result.primaryLogic} A relacao pCO2-HCO3 foi usada para avaliar compensacao e suspeita de disturbio misto.`;
+    result.physiologicalExplanation = `${result.primaryLogic} Gravidade pelo pH: ${severityText(result.severity)}. A relacao pCO2-HCO3 foi usada para avaliar compensacao e suspeita de disturbio misto. ${result.physiologicMechanisms.join(' ')}`;
   }
 
   result.summary = result.primaryDisorder === 'normal'
@@ -356,6 +632,8 @@ function interpretAcidBase(input: BloodGasInput, quality: DataQualityAssessment,
   })();
 
   steps.push(`Passo 3: avaliacao de compensacao -> ${result.compensationStatus}.`);
+  if (result.compensationInterpretation) steps.push(`Passo 3A: ${result.compensationInterpretation}`);
+  if (result.mixedDisorderClues.length > 0) steps.push(`Passo 3B: pistas de disturbio misto: ${result.mixedDisorderClues.join(' ')}`);
   return result;
 }
 
@@ -568,19 +846,34 @@ function buildActions(input: BloodGasInput, acidBase: DeepAcidBaseInterpretation
   }
   if (acidBase.primaryDisorder === 'respiratory_acidosis') {
     actions.immediate.push('Acidose respiratoria: revisar via aerea, sedacao/anestesia, ventilacao e fadiga respiratoria. Bicarbonato nao e terapia primaria.');
+    actions.correlativeExams.push('Correlacionar com oximetria, capnografia/EtCO2, imagem toracica e avaliacao de sedacao, obstrucao de via aerea ou fadiga muscular.');
   }
   if (acidBase.primaryDisorder === 'metabolic_acidosis') {
     actions.immediate.push('Acidose metabolica: priorizar perfusao e causa-base; bicarbonato apenas em cenarios selecionados.');
     actions.serial.push('Repetir lactato e gasometria para tendencia de resposta.');
+    actions.correlativeExams.push('Correlacionar com lactato seriado, pressao arterial, perfusao periferica, creatinina/ureia, glicose/cetonas, urinalise e anion gap corrigido por albumina.');
   }
   if (acidBase.primaryDisorder === 'metabolic_alkalosis') {
     actions.immediate.push('Alcalose metabolica: revisar deplecao de cloreto/potassio e perdas gastricas; considerar reposicao cloreto-responsiva.');
+    actions.correlativeExams.push('Correlacionar com Cl, K, Na-Cl, historico de vomito/diuretico, suspeita de obstrucao gastrica e resposta a reposicao de NaCl/KCl quando indicada.');
+  }
+  if (acidBase.primaryDisorder === 'respiratory_alkalosis') {
+    actions.correlativeExams.push('Correlacionar com dor, febre, sepse inicial, hipoxemia, anemia e qualquer causa de drive ventilatorio aumentado.');
+  }
+  if (acidBase.compensationStatus === 'mixed_suspected' || acidBase.primaryDisorder === 'mixed') {
+    actions.serial.push('Disturbio misto suspeito: repetir gasometria apos intervencoes e comparar pH, pCO2, HCO3/BE, Cl, AG e lactato.');
   }
   if (oxygenation.status === 'hypoxemia') {
     actions.immediate.push('Hipoxemia arterial: iniciar oxigenio suplementar e investigar mecanismo (hipoventilacao, V/Q mismatch, shunt, baixa PiO2, difusao).');
   }
   if (input.sampleType === 'venous') {
     actions.correlativeExams.push('Se ha suspeita respiratoria, correlacionar com SpO2 e considerar gasometria arterial.');
+  }
+  if (input.clinicalContext?.suspectedDKA || (input.glucose !== undefined && input.glucose >= 250)) {
+    actions.correlativeExams.push('Suspeita de CAD/hiperglicemia: medir cetonas/beta-hidroxibutirato, urinalise, potassio seriado e osmolaridade efetiva quando disponivel.');
+  }
+  if (input.clinicalContext?.urethralObstruction || (input.K !== undefined && input.K >= 6)) {
+    actions.correlativeExams.push('Hipercalemia/obstrucao urinaria: ECG, creatinina/ureia, urinalise e reavaliacao de K apos desobstrucao/terapia.');
   }
 
   actions.whenToRepeat?.push('Repetir hemogasometria em 30-60 min se instabilidade ou apos intervencoes relevantes.');
@@ -636,6 +929,31 @@ export function interpretBloodGas(
   };
   domainStatuses.actionPlan = clinicalActions.immediate.length > 0 || clinicalActions.serial.length > 0 ? 'ok' : 'limited';
 
+  const clinicalSynthesis: InterpretationResult['clinicalSynthesis'] = {
+    physiology: Array.from(new Set([
+      ...(deepAcidBase.physiologicMechanisms || []),
+      deepOxygenation.physiologicalExplanation,
+      temperatureContext.summary,
+    ].filter(Boolean))),
+    clinicalCorrelation: Array.from(new Set([
+      ...(deepAcidBase.clinicalCorrelation || []),
+      ...clinicalHypotheses,
+      ...(normalizedInput.clinicalNotes ? [normalizedInput.clinicalNotes] : []),
+    ].filter(Boolean))),
+    examCorrelation: Array.from(new Set([
+      ...(deepAcidBase.examCorrelation || []),
+      electrolyteDomain.summary,
+      deepAcidBase.expectedCompensation || '',
+      deepAcidBase.observedCompensation || '',
+      deepAcidBase.compensationInterpretation || '',
+    ].filter(Boolean))),
+    pitfalls: Array.from(new Set([
+      normalizedInput.sampleType === 'venous' ? 'Amostra venosa e excelente para pH/HCO3/lactato/eletrólitos, mas nao deve ser usada para diagnosticar hipoxemia arterial por pO2 venosa.' : '',
+      ...(deepAcidBase.mixedDisorderClues || []),
+      dataQuality.confidence !== 'high' ? 'Confianca nao alta: revisar tipo de amostra, unidade, temperatura, FiO2 e coerencia pH-pCO2-HCO3 antes de decisoes irreversiveis.' : '',
+    ].filter(Boolean))),
+  };
+
   if (temperatureContext.status === 'hypothermia') alerts.push({ level: 'warning', message: 'Hipotermia relevante pode alterar interpretacao fisiologica dos gases.' });
   if (temperatureContext.status === 'hyperthermia') alerts.push({ level: 'warning', message: 'Hipertermia aumenta demanda metabolica e influencia leitura clinica.' });
   for (const check of dataQuality.consistencyChecks) {
@@ -664,11 +982,8 @@ export function interpretBloodGas(
   ].join(' ');
 
   const referencesUsed = [
+    'Guia Pratico da Hemogasometria de Caes e Gatos',
     'Fluid, Electrolyte, and Acid-Base Disorders in Small Animal Practice',
-    'Canine and Feline Respiratory Medicine',
-    "Cunningham\'s Textbook of Veterinary Physiology",
-    'Veterinary Anesthesia and Analgesia (Lumb and Jones)',
-    'Textbook of Small Animal Emergency Medicine',
     'BSAVA Manual of Canine and Feline Emergency and Critical Care',
   ];
 
@@ -682,6 +997,7 @@ export function interpretBloodGas(
     deepAcidBase,
     deepOxygenation,
     deepElectrolytes: electrolyteDomain.findings,
+    clinicalSynthesis,
     temperatureContext,
     electrolyteSummary: electrolyteDomain.summary,
     anionGap: electrolyteDomain.anionGap,

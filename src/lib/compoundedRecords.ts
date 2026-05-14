@@ -266,7 +266,14 @@ function normalizeRegimenRecord(
   }
 }
 
-function normalizeBundle(raw: Partial<CompoundedMedicationBundle>, clinicId?: string): CompoundedMedicationBundle {
+function normalizeBundle(
+  raw: {
+    medication?: Partial<CompoundedMedicationRecord> | null
+    ingredients?: Array<Partial<CompoundedMedicationIngredientRecord>> | null
+    regimens?: Array<Partial<CompoundedMedicationRegimenRecord>> | null
+  },
+  clinicId?: string
+): CompoundedMedicationBundle {
   const medication = normalizeMedicationRecord(raw.medication || {})
   const resolvedClinicId = clinicId || medication.clinic_id
   const resolvedMedicationId = medication.id

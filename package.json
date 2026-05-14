@@ -9,6 +9,7 @@
     "dev": "node scripts/vite-dev-realpath.mjs",
     "build": "vite build",
     "preview": "vite preview",
+    "typecheck": "tsc -p tsconfig.app.json --pretty false",
     "validate:hemogasovet": "tsx scripts/validate-hemogasovet.ts",
     "validate:fluidoterapia-vet": "tsx scripts/validate-fluidoterapia-vet.ts",
     "validate:energia-vet-ui": "tsx scripts/validate-energia-vet-ui.ts",

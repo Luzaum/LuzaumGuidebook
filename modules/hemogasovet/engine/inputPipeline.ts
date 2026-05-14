@@ -44,7 +44,7 @@ function collectPlausibilityIssues(payload: BloodGasInput): PayloadIssue[] {
 
   for (const [field, limits] of Object.entries(PLAUSIBILITY_LIMITS) as Array<[keyof BloodGasInput, [number, number]]>) {
     const value = payload[field];
-    if (value === undefined || limits === undefined) continue;
+    if (typeof value !== 'number' || limits === undefined) continue;
     if (value < limits[0] || value > limits[1]) {
       issues.push({
         level: 'critical',
@@ -90,7 +90,7 @@ export function applyOcrFieldsToFormData(
   const next: Partial<BloodGasInput> = { ...current };
   for (const field of fields) {
     if (field.confidence === 'low') continue;
-    next[field.key] = field.value;
+    (next as Record<keyof BloodGasInput, BloodGasInput[keyof BloodGasInput]>)[field.key] = field.value;
     setFieldSource(field.key, 'ocr');
   }
   return next;

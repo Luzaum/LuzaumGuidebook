@@ -39,7 +39,7 @@ export default function ParameterGuidePage() {
   };
 
   return (
-    <div className="w-full py-2 h-[calc(100dvh-6.5rem)] min-h-[28rem] flex flex-col">
+    <div className="w-full py-2 lg:h-[calc(100dvh-6.5rem)] lg:min-h-[28rem] flex flex-col">
       <div className="mb-6 shrink-0">
         <h1 className="text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
           <BookOpen className="w-8 h-8 text-purple-600 dark:text-purple-400" />
@@ -50,9 +50,9 @@ export default function ParameterGuidePage() {
         </p>
       </div>
       
-      <div className="flex flex-1 gap-6 min-h-0">
+      <div className="flex flex-1 flex-col gap-4 min-h-0 lg:flex-row lg:gap-6">
         {/* Sidebar parameters list */}
-        <div className="w-64 shrink-0 flex flex-col gap-2 overflow-y-auto pr-2 pb-8 scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-slate-700">
+        <div className="flex max-h-[18rem] shrink-0 flex-col gap-2 overflow-y-auto rounded-2xl border border-slate-200 bg-white/70 p-3 dark:border-slate-800 dark:bg-slate-900/50 lg:max-h-none lg:w-64 lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:pr-2 lg:pb-8 scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-slate-700">
           {['acid-base', 'oxygenation', 'electrolyte', 'metabolite'].map(category => {
              const items = parameterGuide.filter(p => p.category === category);
              if(items.length === 0) return null;
@@ -85,8 +85,8 @@ export default function ParameterGuidePage() {
         </div>
 
         {/* Main content display */}
-        <div className="flex-1 overflow-y-auto pb-8 pr-2 scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-slate-700">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 shadow-sm">
+        <div className="flex-1 overflow-y-auto pb-8 lg:pr-2 scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-slate-700">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 shadow-sm sm:p-6 lg:p-8">
             
             {/* Header */}
             <div className="flex items-start justify-between border-b border-slate-100 dark:border-slate-800 pb-6 mb-6">
@@ -97,7 +97,7 @@ export default function ParameterGuidePage() {
                   </div>
                   {getCategoryIcon(selectedParam.category)}
                 </div>
-                <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-2">
+                <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white mb-2 sm:text-4xl">
                   {selectedParam.name}
                   {selectedParam.unit && <span className="text-xl font-normal text-slate-400 dark:text-slate-500 ml-3">{selectedParam.unit}</span>}
                 </h2>

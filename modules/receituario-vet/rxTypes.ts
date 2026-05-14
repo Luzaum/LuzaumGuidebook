@@ -3,7 +3,7 @@ export type Sex = 'Macho' | 'Fêmea' | 'Sem dados' | 'M' | 'F' | 'MN' | 'FN' | '
 export type ReproductiveStatus = 'Castrado' | 'Fértil' | 'Sem dados'
 export type ItemCategory = 'medication' | 'hygiene' | 'other'
 export type PharmacyType = 'humana' | 'veterinária' | 'manipulacao'
-export type PackageType = 'frasco' | 'caixa' | 'bisnaga' | 'ampola' | 'outro'
+export type PackageType = 'frasco' | 'caixa' | 'bisnaga' | 'ampola' | 'outro' | string
 export type FrequencyType = 'timesPerDay' | 'everyHours' | 'singleDose' | 'repeatInterval'
 export type SpecialControlPharmacy = 'veterinária' | 'humana' | 'manipulacao'
 export type DurationMode = 'fixed_days' | 'until_recheck' | 'continuous_use' | 'until_finished' | 'continuous_until_recheck'
@@ -69,6 +69,7 @@ export interface TutorInfo {
   addressCity?: string
   addressState?: string
   addressZip?: string
+  addressLine?: string
   notes: string
 }
 
@@ -85,6 +86,7 @@ export interface PrescriptionItem {
   category: ItemCategory
   catalogDrugId?: string
   medication_id?: string // Alias for catalogDrugId
+  presentation_id?: string
   controlled?: boolean
   is_controlled?: boolean // Alias for controlled
   name: string
@@ -99,6 +101,7 @@ export interface PrescriptionItem {
   presentationMetadata?: Record<string, unknown> | null
   pharmacyType: PharmacyType
   packageType: PackageType
+  packageUnit?: string
   pharmacyName: string
   observations: string
   routeGroup: RouteGroup

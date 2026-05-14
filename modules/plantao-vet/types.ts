@@ -1,4 +1,4 @@
-export type ShiftType = 'diurno' | 'noturno';
+export type ShiftType = 'diurno' | 'noturno' | 'night';
 export type ShiftStatus = 'open' | 'closed';
 export type Species = 'canina' | 'felina' | 'outra';
 export type PatientStatus = 'critical' | 'watch' | 'stable' | 'discharge_today';
@@ -83,6 +83,8 @@ export interface Problem {
   origin: RecordOrigin;
   sourceLabel: string;
   reviewRequired: boolean;
+  createdAt?: string;
+  updatedAt?: string;
   deletedAt?: string | null;
 }
 
@@ -122,8 +124,8 @@ export interface PatientExamRecord {
   summary: string;
   findings: string;
   observations: string;
-  mainFinding: string;
-  originalText: string;
+  mainFinding?: string;
+  originalText?: string;
   deletedAt?: string | null;
 }
 

@@ -40,6 +40,7 @@ export interface DiseaseRecord extends ContentFlag {
   treatment: EditorialSectionValue;
   prevention: EditorialSectionValue;
   relatedConsensusSlugs: string[];
+  relatedDiseaseSlugs?: string[];
   relatedMedicationSlugs: string[];
   references?: EditorialReference[];
   isPublished?: boolean;

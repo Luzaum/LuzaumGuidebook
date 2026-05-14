@@ -2,7 +2,7 @@ import { ImportPreviewItem, ImportResult } from '../../types/import';
 import { DiseaseUpsertInput } from '../../types/editorial';
 import { mergeDiseaseDiagnosticSections } from '../../utils/diseaseDiagnosticMerge';
 import { getDiseaseRepository } from '../diseaseRepository';
-import { generateSafeSlug, normalizeArray, normalizeBoolean, normalizeString } from './importNormalizers';
+import { generateSafeSlug, normalizeArray, normalizeBoolean, normalizeSpeciesList, normalizeString } from './importNormalizers';
 
 export async function previewDiseasesImport(
     validItems: { originalIndex: number; data: any }[]
@@ -34,10 +34,10 @@ export async function previewDiseasesImport(
         // Validar se precisa avisar algo normalizado
         if (!data.slug) warnings.push('Slug ausente. Gerado a partir do título.');
 
-        const quickDecisionStripRaw = normalizeArray(data.quickDecisionStrip);
+        const quickDecisionStripRaw = normalizeArray<string>(data.quickDecisionStrip, (item) => normalizeString(item));
         const quickDecisionStrip = quickDecisionStripRaw.length
-            ? quickDecisionStripRaw.slice(0, 5)
-            : [...normalizeArray(data.thirtySecondView), ...normalizeArray(data.whenToSuspect)]
+                ? quickDecisionStripRaw.slice(0, 5)
+            : [...normalizeArray<string>(data.thirtySecondView), ...normalizeArray<string>(data.whenToSuspect)]
                   .map((s) => String(s).trim())
                   .filter(Boolean)
                   .slice(0, 5);
@@ -68,7 +68,7 @@ export async function previewDiseasesImport(
             slug,
             title,
             synonyms: normalizeArray(data.synonyms),
-            species: normalizeArray(data.species),
+            species: normalizeSpeciesList(data.species),
             category: normalizeString(data.category, 'Não categorizado'),
             tags: normalizeArray(data.tags),
             isPublished: normalizeBoolean(data.isPublished, true),

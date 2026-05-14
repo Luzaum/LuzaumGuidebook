@@ -21,7 +21,7 @@ export default function DevelopmentPage() {
 
   return (
     <ReceituarioChrome
-      section="dev"
+      section="home"
       title="Desenvolvimento"
       subtitle="Preview e seleção do icone de receita usado no card principal da Home."
       actions={
