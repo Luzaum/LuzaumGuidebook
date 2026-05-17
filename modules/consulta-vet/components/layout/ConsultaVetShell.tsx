@@ -11,6 +11,9 @@ export function ConsultaVetShell() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
+    document.documentElement.classList.remove('dark');
+    document.documentElement.classList.add('light');
+    localStorage.setItem('theme', 'light');
     prefetchConsultaVetEditorialSeeds();
   }, []);
 

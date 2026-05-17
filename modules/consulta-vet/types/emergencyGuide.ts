@@ -32,6 +32,38 @@ export type EmergencyGuideBlock =
       items: string[];
     }
   | {
+      type: 'targetStrip';
+      title?: string;
+      items: Array<{
+        label: string;
+        value: string;
+        detail?: string;
+      }>;
+    }
+  | {
+      type: 'formula';
+      title: string;
+      expression: string;
+      note?: string;
+      variables?: string[];
+    }
+  | {
+      type: 'table';
+      title?: string;
+      columns: string[];
+      rows: string[][];
+      caption?: string;
+    }
+  | {
+      type: 'comparison';
+      title?: string;
+      columns: string[];
+      rows: Array<{
+        label: string;
+        values: string[];
+      }>;
+    }
+  | {
       type: 'placeholder';
       message: string;
     };
