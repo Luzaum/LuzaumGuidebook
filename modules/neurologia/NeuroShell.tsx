@@ -15,7 +15,6 @@ import { ThemeSync } from './components/ThemeSync'
 import { NEURO_WIZARD_STEPS } from './neuroWizardSteps'
 import { useCaseStore } from './stores/caseStore'
 import { cn } from '../../lib/utils'
-import { AnimatedShaderBackground } from '@/components/ui/animated-shader-background'
 import { NeuroSidebarIconWrap, neuroSidebarNavItemClassName } from './components/NeuroSidebarNavStyles'
 
 const MAIN_NAV = [
@@ -68,11 +67,8 @@ export function NeuroShell() {
       <ThemeSync />
       <div className="relative min-h-[100dvh] w-full overflow-x-hidden bg-transparent font-sans text-foreground selection:bg-gold/30">
         {/* Fundo shader em tela cheia (área do módulo) */}
-        <div className="pointer-events-none absolute inset-0 z-0 min-h-[100dvh] w-full">
-          <AnimatedShaderBackground className="h-full min-h-[100dvh] w-full" />
-        </div>
         <div
-          className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-background/80 via-background/65 to-background/85"
+          className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_left,rgba(245,197,66,0.16),transparent_34%),linear-gradient(180deg,hsl(var(--background))_0%,hsl(var(--background))_100%)]"
           aria-hidden
         />
         <aside className="fixed bottom-0 left-0 top-12 z-30 hidden w-80 border-r border-border/60 bg-card/55 backdrop-blur-xl lg:block">
