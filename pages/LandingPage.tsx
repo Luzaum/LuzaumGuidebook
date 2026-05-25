@@ -190,8 +190,8 @@ export function LandingPage() {
                             </h1>
 
                             <p className="text-base sm:text-lg md:text-xl text-blue-100/90 leading-relaxed font-medium mb-6 sm:mb-8 drop-shadow-sm">
-                                Ferramentas de decisão clínica baseadas nas últimas evidências de{' '}
-                                <strong className="text-white">Plumb's, Nelson & Couto, Ettinger, BSAVA, ACVIM</strong> e muito mais!
+                                Ferramentas de decisão clínica baseadas nas últimas evidências, consensos e literatura atualizada (
+                                <strong className="text-white">Plumb's, Nelson & Couto, Ettinger, BSAVA, ACVIM, iCatCare, IRIS</strong> e muito mais!)
                             </p>
 
                             <button

@@ -13,7 +13,11 @@ export const CONSULTA_VET_PUBLIC_DISEASE_SLUGS = [
   'doenca-renal-cronica-caes-gatos',
   'hipertensao-arterial-sistemica-caes-gatos',
   'doenca-valvar-mitral-degenerativa-caes',
+  'hipoadrenocorticismo-addison',
+  'hipertireoidismo-felino',
+  'hipotireoidismo-canino',
 ] as const;
+
 
 /** Mesma regra de sincronização com `data/publicCatalogCardStubs.ts`. */
 export const CONSULTA_VET_PUBLIC_MEDICATION_SLUGS = [

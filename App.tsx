@@ -171,14 +171,16 @@ const appRoutes = (
 
 function AppContent() {
   useEffect(() => {
-    const prefetchCriticalRoutes = () => {
+    const prefetchAuthRoutes = () => {
       const imports = [
-        import('./pages/Hub'),
         import('./src/routes/Login'),
         import('./src/routes/Signup'),
-        import('./modules/energia-vet/App'),
       ]
       void Promise.allSettled(imports)
+    }
+
+    const prefetchHubRoute = () => {
+      void import('./pages/Hub')
     }
 
     const win = window as Window & {
@@ -186,17 +188,27 @@ function AppContent() {
       cancelIdleCallback?: (id: number) => void
     }
 
+    let authTimeoutId: number | undefined
+    let hubTimeoutId: number | undefined
+    let idleId: number | undefined
+
     if (typeof win.requestIdleCallback === 'function') {
-      const idleId = win.requestIdleCallback(prefetchCriticalRoutes, { timeout: 2200 })
-      return () => {
-        if (typeof win.cancelIdleCallback === 'function') {
-          win.cancelIdleCallback(idleId)
-        }
-      }
+      idleId = win.requestIdleCallback(() => {
+        prefetchAuthRoutes()
+        hubTimeoutId = window.setTimeout(prefetchHubRoute, 4000)
+      }, { timeout: 2500 })
+    } else {
+      authTimeoutId = window.setTimeout(prefetchAuthRoutes, 1500)
+      hubTimeoutId = window.setTimeout(prefetchHubRoute, 5500)
     }
 
-    const timeoutId = window.setTimeout(prefetchCriticalRoutes, 1400)
-    return () => window.clearTimeout(timeoutId)
+    return () => {
+      if (idleId !== undefined && typeof win.cancelIdleCallback === 'function') {
+        win.cancelIdleCallback(idleId)
+      }
+      if (authTimeoutId !== undefined) window.clearTimeout(authTimeoutId)
+      if (hubTimeoutId !== undefined) window.clearTimeout(hubTimeoutId)
+    }
   }, [])
 
   return (

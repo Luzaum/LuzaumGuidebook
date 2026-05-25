@@ -10,6 +10,7 @@ module.exports = {
     './App.tsx',
     './components/**/*.{ts,tsx}',
     './pages/**/*.{ts,tsx}',
+    './layouts/**/*.{ts,tsx}',
     // Só .tsx em modules: evita varrer centenas de .ts (dados/geradores) e reduz risco de padrões largos.
     './modules/**/*.tsx',
     './src/**/*.{ts,tsx}',

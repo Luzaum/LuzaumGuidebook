@@ -42,6 +42,19 @@ export type CommercialMedicationSubclass =
   | 'skin_antifungal_shampoo'
   | 'skin_wound_healing'
   | 'skin_seborrhea'
+  | 'parasite_oral_isoxazoline_dog'
+  | 'parasite_oral_endectocide_dog'
+  | 'parasite_topical_isoxazoline_cat'
+  | 'parasite_oral_antifleas_cat'
+  | 'parasite_oral_adulticide_flea'
+  | 'parasite_topical_classic'
+  | 'parasite_topical_endectocide'
+  | 'parasite_collar'
+  | 'parasite_vector_repellent_dog'
+  | 'parasite_dewormer_dog'
+  | 'parasite_dewormer_cat'
+  | 'parasite_heartworm_prevention'
+  | 'parasite_giardia'
   | 'gi_antiemetic'
   | 'gi_antidiarrheal'
   | 'gi_gastric_protector'
@@ -56,7 +69,8 @@ export type CommercialMedicationSubclass =
   | 'uro_urinary_support'
   | 'renal_ckd_support'
   | 'ortho_joint_support'
-  | 'ortho_antiinflammatory';
+  | 'ortho_antiinflammatory'
+  | 'nutra_omega3';
 
 export interface CommercialMedicationPrice {
   averageLabel: string;
@@ -89,4 +103,5 @@ export interface CommercialMedicationProduct {
   evidenceLevel?: string;
   imageUrl?: string;
   productPageUrl?: string;
+  labelUrl?: string;
 }

@@ -1,6 +1,14 @@
 import { CommercialMedicationProduct } from '../types/commercialMedication';
 
 const PRICE_SOURCE_DATE = '2026-05-16';
+const ECTO_PRICE_SOURCE_DATE = '2026-05-24';
+const OMEGA_PRICE_SOURCE_DATE = '2026-05-16';
+
+const OMEGA3_PLUMBS_CONTEXT =
+  'Ômega 3 deve ser calculado pela soma EPA + DHA, não pelo peso total da cápsula ou do óleo. Plumb’s descreve uso como adjuvante em dermatopatias inflamatórias, DRC, osteoartrite, doença cardiovascular, hiperlipidemia e outras condições, com resposta em semanas a meses.';
+
+const OMEGA3_SAFETY_ALERT =
+  'Usar com cautela em pancreatite prévia, diarreia crônica, coagulopatias, trombocitopenia ou uso de AINEs, antiagregantes e anticoagulantes. Evitar óleo de fígado de bacalhau para dose terapêutica e não usar óleo de linhaça como substituto de EPA/DHA em gatos.';
 
 export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
   {
@@ -1887,5 +1895,1909 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
       sourceDate: PRICE_SOURCE_DATE,
     },
     evidenceLevel: 'Fonte comercial; concentração e bula oficial não confirmadas.',
+  },
+  {
+    id: 'nexgard-caes-boehringer',
+    slug: 'nexgard-caes-afoxolaner',
+    name: 'NexGard Cães',
+    manufacturer: 'Boehringer Ingelheim',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_oral_isoxazoline_dog',
+    commercialSubclasses: ['parasite_oral_isoxazoline_dog'],
+    productPageUrl: 'https://nexgardbrasil.com.br/cachorro/produtos/nexgard',
+    labelUrl: 'https://nexgardbrasil.com.br/sites/default/files/2024-01/Bula_NexGard.pdf',
+    imageUrl:
+      'https://cobasi.vtexassets.com/arquivos/ids/1101149/Antipulgas-e-Carrapatos-de-41-a-10kg-para-Caes-Frontal.webp?v=639130781516770000',
+    species: ['dog'],
+    presentations: [
+      '2 a 4 kg: afoxolaner 11,3 mg',
+      '4,1 a 10 kg: afoxolaner 28,3 mg',
+      '10,1 a 25 kg: afoxolaner 68 mg',
+      '25,1 a 50 kg: afoxolaner 136 mg',
+    ],
+    activeComponents: ['afoxolaner'],
+    labelCompositionSummary:
+      'Ectoparasiticida oral da classe das isoxazolinas. A bula informa dose mínima em torno de 2,5 mg/kg de afoxolaner.',
+    labelDirections:
+      'Administrar 1 tablete mastigável inteiro por via oral, uma vez ao mês, conforme faixa de peso da embalagem.',
+    plumbsContext:
+      'Isoxazolina oral para controle mensal de pulgas e carrapatos. A classe exige cautela em pacientes com histórico neurológico.',
+    clinicalUse:
+      'Controle mensal de pulgas e carrapatos em cães. Útil quando o tutor prefere comprimido mastigável em vez de tópico.',
+    reassessment:
+      'Reavaliar infestação ambiental, adesão mensal e exposição a carrapatos. Se houver prurido persistente, investigar DAPP, piodermite e Malassezia.',
+    prescriptionExample:
+      'Administrar 1 tablete de NexGard correspondente ao peso do cão, VO, a cada 30 dias.',
+    safetyAlert:
+      'Não usar em gatos. Usar com cautela em cães com histórico de convulsões, tremores, ataxia ou doença neurológica.',
+    price: {
+      averageLabel: 'R$ 170,00 a R$ 300,00 por tablete',
+      rangeLabel:
+        'Estimativa por faixa de peso: cerca de R$ 171,50 para 2-4 kg, R$ 219,50 para 4,1-10 kg, R$ 256,50 para 10,1-25 kg e R$ 301,50 para 25,1-50 kg em compra programada',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+      notes: 'Bula oficial NexGard consultada.',
+    },
+  },
+  {
+    id: 'nexgard-spectra-caes-boehringer',
+    slug: 'nexgard-spectra-caes',
+    name: 'NexGard Spectra Cães',
+    manufacturer: 'Boehringer Ingelheim',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_oral_endectocide_dog',
+    commercialSubclasses: [
+      'parasite_oral_endectocide_dog',
+      'parasite_oral_isoxazoline_dog',
+      'parasite_dewormer_dog',
+      'parasite_heartworm_prevention',
+    ],
+    productPageUrl: 'https://nexgardbrasil.com.br/cachorro/produtos/nexgard-spectra',
+    labelUrl: 'https://www.disprovel.com.br/uploads/produtos/Bula-NexGard-Spectra.pdf',
+    imageUrl:
+      'https://cobasi.vtexassets.com/arquivos/ids/1101225/Nexgard_spectra_Antipulgas-e-Vermifugo-3-tabletes_FRENTE.webp?v=639131649123030000',
+    species: ['dog'],
+    presentations: [
+      '2 a 3,5 kg: afoxolaner 9,4 mg + milbemicina oxima 1,9 mg',
+      '3,6 a 7,5 kg: afoxolaner 18,8 mg + milbemicina oxima 3,8 mg',
+      '7,6 a 15 kg: afoxolaner 37,5 mg + milbemicina oxima 7,5 mg',
+      '15,1 a 30 kg: afoxolaner 75 mg + milbemicina oxima 15 mg',
+      '30,1 a 60 kg: afoxolaner 150 mg + milbemicina oxima 30 mg',
+    ],
+    activeComponents: ['afoxolaner', 'milbemicina oxima'],
+    labelCompositionSummary:
+      'Endectocida oral com isoxazolina e lactona macrocíclica. Dose mínima descrita: 2,5 mg/kg de afoxolaner e 0,5 mg/kg de milbemicina oxima.',
+    labelDirections:
+      'Administrar 1 tablete inteiro por via oral, uma vez ao mês, conforme faixa de peso. Não fracionar sem respaldo de bula.',
+    plumbsContext:
+      'Opção mensal ampla quando se deseja cobrir ectoparasitas, nematódeos e prevenção de dirofilariose.',
+    clinicalUse:
+      'Cães com necessidade de cobertura mensal para pulgas, carrapatos, ácaros, vermes gastrointestinais e prevenção de Dirofilaria quando indicada.',
+    reassessment:
+      'Antes de prevenção de dirofilariose em animal de risco, avaliar histórico regional e status do paciente. Reavaliar controle ambiental de pulgas.',
+    prescriptionExample:
+      'Administrar 1 tablete de NexGard Spectra correspondente ao peso, VO, a cada 30 dias.',
+    safetyAlert:
+      'Não usar em gatos. Cautela neurológica por conter afoxolaner; avaliar uso de lactona macrocíclica em pacientes com suspeita de dirofilariose.',
+    price: {
+      averageLabel: 'R$ 80,00 a R$ 335,00 por tablete',
+      rangeLabel:
+        'Estimativa conforme faixa e promoção: Petlove exibiu faixas menores perto de R$ 80-92 no clube; Cobasi exibiu 15,1-30 kg perto de R$ 333,50 em compra programada',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'nexgard-combo-gatos-boehringer',
+    slug: 'nexgard-combo-gatos',
+    name: 'NexGard Combo Gatos',
+    manufacturer: 'Boehringer Ingelheim',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_topical_isoxazoline_cat',
+    commercialSubclasses: ['parasite_topical_isoxazoline_cat', 'parasite_topical_endectocide', 'parasite_dewormer_cat'],
+    productPageUrl: 'https://nexgardbrasil.com.br/gato/produto/nexgard-combo',
+    labelUrl: 'https://www.boehringer-ingelheim.com/br/pdf/nexgard-combo',
+    imageUrl:
+      'https://cobasi.vtexassets.com/arquivos/ids/1101297/Nexgard Combo Antipulgas com 3_frente.webp?v=639131550986000000',
+    species: ['cat'],
+    presentations: ['Aplicadores tópicos mensais por faixa de peso, a partir de 2 meses e 0,8 kg'],
+    activeComponents: ['esafoxolaner', 'eprinomectina', 'praziquantel'],
+    labelCompositionSummary:
+      'Endectocida tópico felino combinando isoxazolina, lactona macrocíclica e cestocida.',
+    labelDirections:
+      'Aplicar 1 aplicador tópico na pele, conforme faixa de peso, uma vez ao mês.',
+    plumbsContext:
+      'Produto felino de amplo espectro para ectoparasitas e vermes, útil quando há risco misto ou administração oral difícil.',
+    clinicalUse:
+      'Pulgas, sarna de ouvido e vermes redondos/chatos em gatos, especialmente pacientes com acesso externo ou risco parasitário combinado.',
+    reassessment:
+      'Reavaliar controle de pulgas e vermes; em Dipylidium, associar controle ambiental e de pulgas.',
+    prescriptionExample:
+      'Aplicar 1 pipeta de NexGard Combo correspondente ao peso do gato, tópica, a cada 30 dias.',
+    safetyAlert:
+      'Não usar em cães. Evitar lambedura após aplicação e cautela em gatos debilitados ou com histórico neurológico.',
+    price: {
+      averageLabel: 'R$ 113,00 a R$ 167,00 por pipeta',
+      rangeLabel:
+        'Estimativa conforme faixa e loja: Petlove exibiu 2,5-7,5 kg perto de R$ 113,00 no clube; Cobasi exibiu 0,8-2,5 kg perto de R$ 162,50 e 2,5-7,5 kg perto de R$ 166,90 em compra programada',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'bravecto-caes-msd',
+    slug: 'bravecto-comprimido-caes',
+    name: 'Bravecto Comprimido Mastigável',
+    manufacturer: 'MSD Saúde Animal',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_oral_isoxazoline_dog',
+    commercialSubclasses: ['parasite_oral_isoxazoline_dog'],
+    productPageUrl: 'https://www.msd-saude-animal.com.br/produto/bravecto/',
+    labelUrl: 'https://cobasiblog.blob.core.windows.net/production-ofc/2024/07/bula_bravecto_compressed.pdf',
+    imageUrl:
+      'https://cobasi.vtexassets.com/arquivos/ids/1068318/Bravecto-Caes-Comp-1000mg-2.png?v=638756777568700000',
+    species: ['dog'],
+    presentations: [
+      '2 a 4,5 kg: fluralaner 112,5 mg',
+      '>4,5 a 10 kg: fluralaner 250 mg',
+      '>10 a 20 kg: fluralaner 500 mg',
+      '>20 a 40 kg: fluralaner 1000 mg',
+      '>40 a 56 kg: fluralaner 1400 mg',
+    ],
+    activeComponents: ['fluralaner'],
+    labelCompositionSummary:
+      'Isoxazolina oral com dose de bula de 25 a 56 mg/kg de fluralaner, conforme faixa de peso.',
+    labelDirections:
+      'Administrar 1 comprimido por via oral a cada 12 semanas. Não administrar em intervalo menor que 8 semanas.',
+    plumbsContext:
+      'Fluralaner oferece controle prolongado de ectoparasitas; por ser isoxazolina, manter alerta neurológico.',
+    clinicalUse:
+      'Pulgas e carrapatos com proteção prolongada em cães; também usado em sarnas conforme indicação de bula/fabricante.',
+    reassessment:
+      'Reavaliar exposição a carrapatos e resposta clínica antes do próximo ciclo de 12 semanas.',
+    prescriptionExample:
+      'Administrar 1 comprimido de Bravecto correspondente ao peso, VO, a cada 12 semanas.',
+    safetyAlert:
+      'Não usar em gatos na apresentação canina. Cautela em histórico de convulsão, tremores ou ataxia.',
+    price: {
+      averageLabel: 'R$ 158,00 a R$ 282,00 por comprimido',
+      rangeLabel:
+        'Estimativa por faixa: 2-4,5 kg cerca de R$ 157,90; 4,5-10 kg R$ 190,50; 10-20 kg R$ 224,50; 20-40 kg R$ 257,90; 40-56 kg R$ 281,90',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'bravecto-transdermal-gatos-msd',
+    slug: 'bravecto-transdermal-gatos',
+    name: 'Bravecto Transdermal Gatos',
+    manufacturer: 'MSD Saúde Animal',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_topical_isoxazoline_cat',
+    commercialSubclasses: ['parasite_topical_isoxazoline_cat'],
+    productPageUrl: 'https://www.msd-saude-animal.com.br/produto/bravecto-transdermal-gatos/',
+    labelUrl: 'https://consultaremedios.com.br/antipulgas-bravecto-transdermal-para-gatos/bula',
+    imageUrl: 'https://www.msd-saude-animal.com.br/wp-content/uploads/sites/55/2021/06/transdermal-gatos.png',
+    species: ['cat'],
+    presentations: [
+      '1,2 a 2,8 kg: 0,4 mL, fluralaner 112,5 mg',
+      '>2,8 a 6,25 kg: 0,89 mL, fluralaner 250 mg',
+      '>6,25 a 12,5 kg: 1,79 mL, fluralaner 500 mg',
+    ],
+    activeComponents: ['fluralaner'],
+    labelCompositionSummary: 'Isoxazolina tópica felina à base de fluralaner.',
+    labelDirections:
+      'Aplicar topicamente na pele conforme faixa de peso, com intervalo de proteção de até 12 semanas.',
+    plumbsContext:
+      'Opção tópica felina de longa duração contra pulgas. Não confundir com Bravecto Plus, que inclui moxidectina.',
+    clinicalUse:
+      'Controle de pulgas em gatos por período prolongado, quando não é necessária cobertura para vermes.',
+    reassessment:
+      'Reavaliar se houver pulgas no ambiente; considerar produto endectocida se houver risco de vermes ou ácaros.',
+    prescriptionExample:
+      'Aplicar 1 pipeta correspondente ao peso do gato, tópica, a cada 12 semanas.',
+    safetyAlert:
+      'Produto para gatos. Cautela neurológica por conter fluralaner; evitar lambedura e aplicação em pele lesionada.',
+    price: {
+      averageLabel: 'R$ 150,00 a R$ 200,00 por pipeta',
+      rangeLabel: 'Estimativa por faixa: 1,2-2,8 kg cerca de R$ 149,90; 2,8-6,25 kg R$ 168,50; 6,25-12,5 kg R$ 199,90',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'bravecto-plus-gatos-msd',
+    slug: 'bravecto-plus-gatos',
+    name: 'Bravecto Plus Gatos',
+    manufacturer: 'MSD Saúde Animal',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_topical_isoxazoline_cat',
+    commercialSubclasses: ['parasite_topical_isoxazoline_cat', 'parasite_topical_endectocide', 'parasite_dewormer_cat'],
+    productPageUrl: 'https://www.msd-saude-animal.com.br/produto/bravecto-plus-gatos/',
+    labelUrl: 'https://cobasiblog.blob.core.windows.net/production-ofc/2024/07/bula_bravecto_plus_gatos_compressed.pdf',
+    imageUrl: 'https://www.msd-saude-animal.com.br/wp-content/uploads/sites/55/2021/06/bravecto-gatos.png',
+    species: ['cat'],
+    presentations: [
+      '1,2 a 2,8 kg: 0,4 mL, fluralaner 112,5 mg + moxidectina 5,6 mg',
+      '>2,8 a 6,25 kg: 0,89 mL, fluralaner 250 mg + moxidectina 12,5 mg',
+      '>6,25 a 12,5 kg: 1,79 mL, fluralaner 500 mg + moxidectina 25 mg',
+    ],
+    activeComponents: ['fluralaner', 'moxidectina'],
+    labelCompositionSummary:
+      'Endectocida tópico felino com fluralaner e moxidectina; bula descreve 40 a 94 mg/kg de fluralaner e 2 a 4,7 mg/kg de moxidectina.',
+    labelDirections:
+      'Aplicar topicamente conforme faixa de peso. Usar quando houver ou houver risco de infestação mista.',
+    plumbsContext:
+      'Cobre pulgas e alguns endoparasitas/ácaros, mas não substitui produto com praziquantel quando o alvo for cestódeo.',
+    clinicalUse:
+      'Gatos com risco de pulgas, nematódeos gastrointestinais e ácaro de ouvido.',
+    reassessment:
+      'Se houver suspeita de Dipylidium ou Taenia, considerar cestocida específico e controle de pulgas.',
+    prescriptionExample:
+      'Aplicar 1 pipeta de Bravecto Plus correspondente ao peso do gato, tópica, conforme bula.',
+    safetyAlert:
+      'Não cobre cestódeos como produtos com praziquantel. Cautela neurológica por fluralaner.',
+    price: {
+      averageLabel: 'R$ 166,00 a R$ 220,00 por pipeta',
+      rangeLabel: 'Estimativa por faixa: 1,2-2,8 kg cerca de R$ 165,90; 2,8-6,25 kg R$ 185,90; 6,25-12,5 kg R$ 219,90',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'simparic-caes-zoetis',
+    slug: 'simparic-caes-sarolaner',
+    name: 'Simparic Cães',
+    manufacturer: 'Zoetis',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_oral_isoxazoline_dog',
+    commercialSubclasses: ['parasite_oral_isoxazoline_dog'],
+    productPageUrl: 'https://www2.zoetis.com.br/especies/caes-e-gatos/caes/antipulgas-e-outros-parasitas/simparic/',
+    labelUrl: 'https://www2.zoetis.com.br/content/pt/pages/Especies/Caes-e-Gatos/Simparic/pdf/bula-simparic.pdf',
+    imageUrl:
+      'https://cobasi.vteximg.com.br/arquivos/ids/1089387/Antipulgas-Simparic-80mg-para-Caes-20-a-40kg.webp?v=639107572824830000',
+    species: ['dog'],
+    presentations: [
+      '1,3 a 2,5 kg: sarolaner 5 mg',
+      '2,6 a 5 kg: sarolaner 10 mg',
+      '5,1 a 10 kg: sarolaner 20 mg',
+      '10,1 a 20 kg: sarolaner 40 mg',
+      '20,1 a 40 kg: sarolaner 80 mg',
+      '40,1 a 60 kg: sarolaner 120 mg',
+    ],
+    activeComponents: ['sarolaner'],
+    labelCompositionSummary: 'Isoxazolina oral mensal à base de sarolaner.',
+    labelDirections:
+      'Administrar por via oral, 1 comprimido conforme faixa de peso, mensalmente. Informações técnicas indicam efeito sustentado por até 35 dias.',
+    plumbsContext:
+      'Isoxazolina mensal para ectoparasitas e sarnas; manter cautela em pacientes com histórico neurológico.',
+    clinicalUse:
+      'Pulgas, carrapatos, sarna sarcóptica, otodécica e demodécica em cães, conforme bula/fabricante.',
+    reassessment:
+      'Reavaliar lesões de sarna e controle de carrapatos após o primeiro mês; investigar ambiente se houver reinfestação.',
+    prescriptionExample:
+      'Administrar 1 comprimido de Simparic correspondente ao peso, VO, a cada 30 dias.',
+    safetyAlert:
+      'Não usar em gatos. Cautela em histórico de convulsão, tremores ou ataxia.',
+    price: {
+      averageLabel: 'R$ 84,00 a R$ 130,00 por comprimido',
+      rangeLabel: 'Estimativa conforme faixa de peso e caixa; Petlove exibiu 2,6-5 kg perto de R$ 93,59 por comprimido',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'simparic-trio-caes-zoetis',
+    slug: 'simparic-trio-caes',
+    name: 'Simparic Trio Cães',
+    manufacturer: 'Zoetis',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_oral_endectocide_dog',
+    commercialSubclasses: [
+      'parasite_oral_endectocide_dog',
+      'parasite_oral_isoxazoline_dog',
+      'parasite_dewormer_dog',
+      'parasite_heartworm_prevention',
+    ],
+    productPageUrl: 'https://www2.zoetis.com.br/especies/caes-e-gatos/caes/antipulgas-e-outros-parasitas/simparic-trio',
+    labelUrl: 'https://www2.zoetis.com.br/content/pt/pages/Especies/Caes-e-Gatos/Veterinario/Bulario/_assets/Simparic-TRIO.pdf',
+    imageUrl:
+      'https://cobasi.vteximg.com.br/arquivos/ids/1099304/antipulgas-simparic-trio-72mg-para-caes-40-1-a-60kg-1comp.webp?v=639110722024300000',
+    species: ['dog'],
+    presentations: [
+      '1,25 a 2,5 kg: sarolaner 3 mg + moxidectina 0,06 mg + pirantel 12,5 mg',
+      '2,6 a 5 kg: sarolaner 6 mg + moxidectina 0,12 mg + pirantel 25 mg',
+      '5,1 a 10 kg: sarolaner 12 mg + moxidectina 0,24 mg + pirantel 50 mg',
+      '10,1 a 20 kg: sarolaner 24 mg + moxidectina 0,48 mg + pirantel 100 mg',
+      '20,1 a 40 kg: sarolaner 48 mg + moxidectina 0,96 mg + pirantel 200 mg',
+      '40,1 a 60 kg: sarolaner 72 mg + moxidectina 1,44 mg + pirantel 300 mg',
+    ],
+    activeComponents: ['sarolaner', 'moxidectina', 'pamoato de pirantel'],
+    labelCompositionSummary:
+      'Endectocida oral com isoxazolina, lactona macrocíclica e pirantel para cobertura de ectoparasitas, nematódeos e dirofilariose.',
+    labelDirections:
+      'Administrar 1 comprimido por via oral, uma vez ao mês, conforme faixa de peso.',
+    plumbsContext:
+      'Produto mensal amplo para cães; útil quando se deseja reduzir múltiplas medicações preventivas em uma tomada.',
+    clinicalUse:
+      'Pulgas, carrapatos, nematódeos gastrointestinais, prevenção de dirofilariose e prevenção de Angiostrongylus vasorum conforme bula.',
+    reassessment:
+      'Testar/avaliar Dirofilaria em regiões de risco antes de iniciar preventivo em paciente suspeito. Reavaliar fezes quando há diarreia persistente.',
+    prescriptionExample:
+      'Administrar 1 comprimido de Simparic Trio correspondente ao peso, VO, a cada 30 dias.',
+    safetyAlert:
+      'Não usar em gatos. Segurança em reprodução/prenhez/lactação deve ser avaliada; cautela neurológica por sarolaner.',
+    price: {
+      averageLabel: 'R$ 111,00 a R$ 168,00 por comprimido',
+      rangeLabel: 'Estimativa conforme faixa: 5,1-10 kg perto de R$ 111,05 e 20,1-40 kg perto de R$ 168,00 em Petlove',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'credeli-caes-elanco',
+    slug: 'credeli-caes-lotilaner',
+    name: 'Credeli Cães',
+    manufacturer: 'Elanco',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_oral_isoxazoline_dog',
+    commercialSubclasses: ['parasite_oral_isoxazoline_dog'],
+    productPageUrl: 'https://meupet.elanco.com/br/nossos-produtos/credeli',
+    labelUrl: 'https://meupet.elanco.com/br/nossos-produtos/credeli',
+    imageUrl:
+      'https://cobasi.vtexassets.com/arquivos/ids/1082144/Antipulgas Credeli 225mg Caes 5,5 a 11kg 3 comprimidos.webp?v=638899140307630000',
+    species: ['dog'],
+    presentations: ['Comprimidos mastigáveis por faixa de peso'],
+    activeComponents: ['lotilaner'],
+    labelCompositionSummary:
+      'Isoxazolina oral à base de lotilaner. Dose mínima referenciada em Plumb’s: 20 mg/kg VO mensal com alimento.',
+    labelDirections:
+      'Administrar por via oral uma vez ao mês, com alimento ou logo após refeição, conforme faixa de peso.',
+    plumbsContext:
+      'Lotilaner é isoxazolina; administrar com alimento melhora exposição. Manter cautela neurológica.',
+    clinicalUse:
+      'Controle mensal de pulgas e carrapatos em cães.',
+    reassessment:
+      'Reavaliar adesão com alimento, controle ambiental de pulgas e exposição a carrapatos.',
+    prescriptionExample:
+      'Administrar 1 comprimido de Credeli correspondente ao peso, VO, mensalmente com alimento.',
+    safetyAlert:
+      'Não usar em gatos na apresentação canina. Cautela em pacientes com histórico neurológico.',
+    price: {
+      averageLabel: 'R$ 85,00 a R$ 100,00 por comprimido',
+      rangeLabel: 'Estimativa em caixa com 3 comprimidos; exemplo 450 mg para 11-22 kg perto de R$ 261,45, cerca de R$ 87,15 por comprimido',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'credeli-gatos-elanco',
+    slug: 'credeli-gatos-lotilaner',
+    name: 'Credeli Gatos',
+    manufacturer: 'Elanco',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_oral_antifleas_cat',
+    commercialSubclasses: ['parasite_oral_antifleas_cat'],
+    productPageUrl: 'https://vet.elanco.com/br/produtos/credeli-gatos',
+    labelUrl:
+      'https://assets-us-01.kc-usercontent.com/0cec44ed-3eaa-0009-2029-666567e7e4de/15c9b7b3-72a4-4559-ad2f-7507d0b50450/bula-credeli-gatos.pdf',
+    imageUrl: 'https://cobasi.vtexassets.com/arquivos/ids/1050427/Credeli-gatos-48mg.png?v=638306661277100000',
+    species: ['cat'],
+    presentations: [
+      '0,9 a 2,0 kg: lotilaner 12 mg',
+      '2,1 a 8,0 kg: lotilaner 48 mg',
+      '>=8,1 kg: combinação adequada conforme peso',
+    ],
+    activeComponents: ['lotilaner'],
+    labelCompositionSummary:
+      'Isoxazolina oral felina à base de lotilaner para controle de pulgas por 30 dias.',
+    labelDirections:
+      'Administrar 1 comprimido por via oral mensalmente, por faixa de peso, preferencialmente com alimento.',
+    plumbsContext:
+      'Opção oral felina antipulgas; não cobre carrapatos, ácaros ou vermes como produtos endectocidas.',
+    clinicalUse:
+      'Controle mensal de pulgas em gatos quando se deseja evitar aplicação tópica.',
+    reassessment:
+      'Se houver sinais de vermes, ácaro de ouvido ou acesso externo, considerar produto de espectro maior.',
+    prescriptionExample:
+      'Administrar 1 comprimido de Credeli Gatos correspondente ao peso, VO, a cada 30 dias com alimento.',
+    safetyAlert:
+      'Usar somente apresentação felina. Cautela neurológica por lotilaner.',
+    price: {
+      averageLabel: 'R$ 80,00 a R$ 130,00 por comprimido',
+      rangeLabel: 'Estimativa conforme dose de 12 mg ou 48 mg e disponibilidade da loja',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'revolution-zoetis',
+    slug: 'revolution-selamectina',
+    name: 'Revolution 6%/12%',
+    manufacturer: 'Zoetis',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_topical_endectocide',
+    commercialSubclasses: ['parasite_topical_endectocide', 'parasite_heartworm_prevention'],
+    productPageUrl: 'https://www.zoetis.com.br/especies/animais-de-companhia/revolution.aspx',
+    labelUrl: 'https://www.zoetis.com.br/global-assets/private/revolution-6.pdf',
+    imageUrl: 'https://www.zoetis.com.br/_locale-assets/img/animais-de-companhia/fotos-produtos/revolution-pack-1-pipeta-a-zoetis.jpg',
+    species: ['dog', 'cat'],
+    presentations: ['Revolution 6% e 12%, pipetas por espécie e peso'],
+    activeComponents: ['selamectina'],
+    labelCompositionSummary:
+      'Endectocida tópico à base de selamectina; dose mínima de bula de 6 mg/kg.',
+    labelDirections:
+      'Aplicar topicamente uma vez ao mês, conforme espécie, concentração e faixa de peso.',
+    plumbsContext:
+      'Lactona macrocíclica tópica útil em gatos para pulgas e ácaro de ouvido; não é a opção mais forte para carrapatos.',
+    clinicalUse:
+      'Pulgas, DAPP, dirofilariose, sarna de ouvido, sarna sarcóptica em cães, vermes intestinais e piolhos conforme espécie/bula.',
+    reassessment:
+      'Reavaliar resposta em otite por Otodectes e risco de dirofilariose; confirmar apresentação correta 6% ou 12%.',
+    prescriptionExample:
+      'Aplicar 1 pipeta de Revolution correspondente ao peso, tópica, mensalmente.',
+    safetyAlert:
+      'Confirmar espécie, concentração e peso. Avaliar status de dirofilariose quando indicado regionalmente.',
+    price: {
+      averageLabel: 'R$ 95,00 a R$ 130,00 por pipeta',
+      rangeLabel: 'Estimativa conforme espécie/faixa; Petlove exibiu Revolution 6% até 2,5 kg perto de R$ 94,85 a unidade',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'advocate-elanco',
+    slug: 'advocate-caes-gatos',
+    name: 'Advocate Cães e Gatos',
+    manufacturer: 'Elanco',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_topical_endectocide',
+    commercialSubclasses: ['parasite_topical_endectocide', 'parasite_heartworm_prevention'],
+    productPageUrl: 'https://vet.elanco.com/br/produtos/advocate',
+    labelUrl: 'https://www.bayer.com/sites/default/files/2020-11/AdvocateCao.pdf',
+    imageUrl: 'https://assets.elanco.com/0cec44ed-3eaa-0009-2029-666567e7e4de/798dbb9f-252c-41be-8399-ed8c24603bd6/Pack-Advocate.png?w=828&q=75&auto=format',
+    species: ['dog', 'cat'],
+    presentations: ['Pipetas por espécie e faixa de peso'],
+    activeComponents: ['imidacloprida', 'moxidectina'],
+    labelCompositionSummary:
+      'Endectocida tópico com neonicotinoide e lactona macrocíclica. Apresentações são separadas para cães e gatos.',
+    labelDirections:
+      'Aplicar topicamente uma vez ao mês, conforme espécie e faixa de peso.',
+    plumbsContext:
+      'Boa opção tópica quando se deseja cobertura contra pulgas, sarnas/nematódeos e prevenção de Dirofilaria.',
+    clinicalUse:
+      'Pulgas, vermes, sarnas e prevenção de Dirofilaria immitis em cães e gatos conforme apresentação.',
+    reassessment:
+      'Confirmar apresentação correta para espécie; avaliar risco regional de dirofilariose.',
+    prescriptionExample:
+      'Aplicar 1 pipeta de Advocate correspondente ao peso e espécie, tópica, a cada 30 dias.',
+    safetyAlert:
+      'Não trocar apresentação cão/gato sem conferir bula. Evitar lambedura e aplicar em pele íntegra.',
+    price: {
+      averageLabel: 'R$ 115,00 a R$ 220,00 por pipeta/caixa',
+      rangeLabel: 'Estimativa conforme espécie e faixa; Cobasi exibiu Advocate Gatos 4-8 kg perto de R$ 114,75 em compra programada',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'advantage-elanco',
+    slug: 'advantage-caes-gatos',
+    name: 'Advantage Cães e Gatos',
+    manufacturer: 'Elanco',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_topical_classic',
+    commercialSubclasses: ['parasite_topical_classic'],
+    productPageUrl: 'https://www.cobasi.com.br/antipulgas-advantage-caes-gatos-ate-4kg-elanco-3940267/p',
+    labelUrl: 'https://uploads.consultaremedios.com.br/drug_leaflet/Bula-Advantage-para-Caes-e-Gatos-Paciente-Consulta-Remedios.pdf',
+    imageUrl:
+      'https://cobasi.vteximg.com.br/arquivos/ids/210453-368-368/Antipulgas-Advantage-Caes-e-Gatos-04ml-ate-4kg-Bayer.jpg?v=638455256431530000',
+    species: ['dog', 'cat'],
+    presentations: ['Pipetas tópicas por faixa de peso'],
+    activeComponents: ['imidacloprida'],
+    labelCompositionSummary:
+      'Ectoparasiticida tópico à base de imidacloprida para prevenção e tratamento de infestações por pulgas.',
+    labelDirections:
+      'Aplicar topicamente, mensalmente, conforme faixa de peso e bula.',
+    plumbsContext:
+      'Produto antipulgas simples; não cobre carrapatos nem vermes.',
+    clinicalUse:
+      'Controle de pulgas em cães e gatos quando não há necessidade de espectro mais amplo.',
+    reassessment:
+      'Se houver carrapatos, ácaros ou vermes, escolher outro espectro. Em DAPP, controlar ambiente e contactantes.',
+    prescriptionExample:
+      'Aplicar 1 pipeta de Advantage correspondente ao peso, tópica, mensalmente.',
+    safetyAlert:
+      'Não usar como cobertura para carrapatos ou vermes. Evitar contato com olhos e lambedura do local.',
+    price: {
+      averageLabel: 'R$ 45,00 a R$ 90,00',
+      rangeLabel: 'Estimativa conforme espécie, faixa de peso e quantidade de pipetas; disponibilidade varia bastante',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'advantage-max3-caes-elanco',
+    slug: 'advantage-max3-caes',
+    name: 'Advantage Max3 Cães',
+    manufacturer: 'Elanco',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_vector_repellent_dog',
+    commercialSubclasses: ['parasite_vector_repellent_dog', 'parasite_topical_classic'],
+    productPageUrl: 'https://vet.elanco.com/br/produtos/advantage-max3',
+    labelUrl: 'https://uploads.consultaremedios.com.br/drug_leaflet/Bula-Advantage-Max3-para-Caes-Paciente-Consulta-Remedios.pdf',
+    imageUrl: 'https://assets.elanco.com/0cec44ed-3eaa-0009-2029-666567e7e4de/d20d50b4-c66f-40e4-a91a-cd262a734033/Pack_Max3.png?w=828&q=75&auto=format',
+    species: ['dog'],
+    presentations: ['Pipetas tópicas mensais por faixa de peso'],
+    activeComponents: ['imidacloprida', 'permetrina'],
+    labelCompositionSummary:
+      'Ectoparasiticida tópico com imidacloprida 100 mg/mL e permetrina 500 mg/mL conforme bula reproduzida.',
+    labelDirections:
+      'Aplicar topicamente uma vez ao mês, conforme faixa de peso do cão.',
+    plumbsContext:
+      'Produto com permetrina, útil como repelente vetorial em cães, mas perigoso para gatos.',
+    clinicalUse:
+      'Pulgas, carrapatos, piolhos e mosquitos em cães, especialmente quando há necessidade de repelência.',
+    reassessment:
+      'Reavaliar exposição a vetores e presença de gatos contactantes no domicílio.',
+    prescriptionExample:
+      'Aplicar 1 pipeta de Advantage Max3 correspondente ao peso do cão, tópica, mensalmente.',
+    safetyAlert:
+      'Alerta vermelho: não usar em gatos e evitar contato de gatos com cães recém-tratados até secagem completa.',
+    price: {
+      averageLabel: 'R$ 142,00 a R$ 221,00 por caixa com 3 pipetas',
+      rangeLabel: 'Estimativa conforme faixa: até 4 kg perto de R$ 142,11; 10-25 kg perto de R$ 210,50; acima de 25 kg perto de R$ 220,95',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'seresto-elanco',
+    slug: 'seresto-coleira',
+    name: 'Seresto Coleira',
+    manufacturer: 'Elanco',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_collar',
+    commercialSubclasses: ['parasite_collar'],
+    productPageUrl: 'https://meupet.elanco.com/br/nossos-produtos/seresto/seresto-caes',
+    labelUrl: 'https://products-info-public.s3-sa-east-1.amazonaws.com/bulas/bayer/B%2B-%2B86136708-LF%2BSERESTO%2BCOLLAR_SAC.pdf',
+    imageUrl:
+      'https://assets.elanco.com/8e0bf1c2-1ae4-001f-9257-f2be3c683fb1/04eb16f8-ce93-4c58-9721-f7aa0510f938/Embalagens_Seresto%202025.png?w=1920&q=75&auto=format',
+    species: ['dog', 'cat'],
+    presentations: ['Coleira para cães até 8 kg/gatos', 'Coleira para cães acima de 8 kg'],
+    activeComponents: ['imidacloprida', 'flumetrina'],
+    labelCompositionSummary:
+      'Coleira de liberação contínua com imidacloprida e flumetrina.',
+    labelDirections:
+      'Colocar 1 coleira ajustada ao pescoço e substituir conforme período de proteção indicado, até 8 meses.',
+    plumbsContext:
+      'Útil para adesão prolongada; risco prático importante é produto falsificado ou irritação local.',
+    clinicalUse:
+      'Controle prolongado de pulgas e carrapatos em cães; em gatos, modelo indicado para proteção contra pulgas conforme bula/modelo.',
+    reassessment:
+      'Verificar ajuste, irritação local, validade, autenticidade e eficácia em ambiente com alta infestação.',
+    prescriptionExample:
+      'Colocar 1 coleira Seresto apropriada para espécie/peso e substituir no prazo indicado pelo fabricante.',
+    safetyAlert:
+      'Confirmar modelo para cão/gato e procedência. Suspender se houver dermatite de contato importante.',
+    price: {
+      averageLabel: 'R$ 150,00 a R$ 250,00',
+      rangeLabel: 'Estimativa conforme modelo/tamanho; Cobasi exibiu cães e gatos até 8 kg perto de R$ 150,50 em compra programada',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'scalibor-msd',
+    slug: 'scalibor-coleira-caes',
+    name: 'Scalibor Coleira',
+    manufacturer: 'MSD Saúde Animal',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_vector_repellent_dog',
+    commercialSubclasses: ['parasite_vector_repellent_dog', 'parasite_collar'],
+    productPageUrl: 'https://www.msd-saude-animal.com.br/produto/scalibor/',
+    labelUrl: 'https://www.msd-saude-animal.com.br/produto/scalibor/',
+    imageUrl: 'https://www.msd-saude-animal.com.br/wp-content/uploads/sites/55/2020/07/scalibor-e1594307847267.jpg',
+    species: ['dog'],
+    presentations: ['Coleira 48 cm', 'Coleira 65 cm'],
+    activeComponents: ['deltametrina'],
+    labelCompositionSummary:
+      'Coleira ectoparasiticida/repelente à base de deltametrina.',
+    labelDirections:
+      'Colocar 1 coleira no pescoço do cão, ajustar e cortar a sobra conforme orientação do fabricante.',
+    plumbsContext:
+      'Piretroide canino com foco vetorial; não usar em gatos.',
+    clinicalUse:
+      'Prevenção de exposição a flebótomos em áreas de leishmaniose e auxílio no controle de mosquitos, moscas, carrapatos e pulgas.',
+    reassessment:
+      'Verificar ajuste, irritação local e estratégia de prevenção de leishmaniose conforme risco regional.',
+    prescriptionExample:
+      'Colocar 1 coleira Scalibor do tamanho adequado no cão e substituir conforme período de proteção do fabricante.',
+    safetyAlert:
+      'Não usar em gatos. Atenção a domicílios com gatos contactantes e a irritação local.',
+    price: {
+      averageLabel: 'R$ 90,00 a R$ 180,00',
+      rangeLabel: 'Estimativa conforme tamanho e loja; Petlove descreveu proteção por até 6 meses em apresentações da linha',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'vectra-3d-caes-ceva',
+    slug: 'vectra-3d-caes',
+    name: 'Vectra 3D Cães',
+    manufacturer: 'Ceva',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_vector_repellent_dog',
+    commercialSubclasses: ['parasite_vector_repellent_dog', 'parasite_topical_classic'],
+    productPageUrl: 'https://www.vectrapet.com/br/',
+    labelUrl: 'https://www.ceva.com.br/solucoes-e-inovacoes/animais-de-companhia/nossos-produtos-para-animais-de-companhia',
+    imageUrl:
+      'https://cobasi.vtexassets.com/arquivos/ids/927800/antipulgas-vectra-3d-caes-10-a-25-kg-ceva-36-ml.jpg?v=638421324517470000',
+    species: ['dog'],
+    presentations: ['Pipetas tópicas por faixa de peso'],
+    activeComponents: ['permetrina', 'dinotefuran', 'piriproxifen'],
+    labelCompositionSummary:
+      'Tópico canino com permetrina, dinotefuran e piriproxifen.',
+    labelDirections:
+      'Aplicar pipeta tópica conforme faixa de peso e bula Ceva.',
+    plumbsContext:
+      'Produto repelente/ectoparasiticida para cães com permetrina; alerta vermelho para gatos.',
+    clinicalUse:
+      'Cães expostos a pulgas, carrapatos, flebótomos e mosquitos.',
+    reassessment:
+      'Reavaliar risco vetorial, presença de gatos contactantes e eficácia em carrapatos.',
+    prescriptionExample:
+      'Aplicar 1 pipeta de Vectra 3D correspondente ao peso do cão, tópica, conforme bula.',
+    safetyAlert:
+      'Não usar em gatos por conter permetrina. Evitar contato com gatos até secagem completa.',
+    price: {
+      averageLabel: 'R$ 77,00 a R$ 145,00 por pipeta',
+      rangeLabel: 'Estimativa conforme faixa: Cobasi exibiu 4-10 kg perto de R$ 76,90; Petlove exibiu faixas maiores perto de R$ 132,30 a R$ 143,33',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'vectra-gatos-ceva',
+    slug: 'vectra-gatos',
+    name: 'Vectra Gatos',
+    manufacturer: 'Ceva',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_topical_classic',
+    commercialSubclasses: ['parasite_topical_classic'],
+    productPageUrl: 'https://www.vectrapet.com/br/',
+    labelUrl: 'https://www.ceva.com.br/solucoes-e-inovacoes/animais-de-companhia/nossos-produtos-para-animais-de-companhia',
+    imageUrl: 'https://cobasi.vtexassets.com/arquivos/ids/927801/antipulgas-vectra-gatos-ate-10-kg-ceva-1-ml.jpg?v=638421322197230000',
+    species: ['cat'],
+    presentations: ['Pipetas tópicas para gatos'],
+    activeComponents: ['dinotefuran', 'piriproxifen'],
+    labelCompositionSummary:
+      'Ectoparasiticida tópico felino com adulticida e regulador de crescimento de pulgas.',
+    labelDirections:
+      'Aplicar pipeta tópica conforme faixa de peso e bula Ceva.',
+    plumbsContext:
+      'Produto felino para pulgas, sem cobertura para vermes ou ácaros como Revolution/NexGard Combo.',
+    clinicalUse:
+      'Controle de pulgas adultas e formas imaturas em gatos.',
+    reassessment:
+      'Se houver otite por ácaro ou verminose, escolher produto de espectro maior.',
+    prescriptionExample:
+      'Aplicar 1 pipeta de Vectra Gatos correspondente ao peso, tópica, conforme bula.',
+    safetyAlert:
+      'Usar apenas apresentação felina. Não substituir por Vectra 3D, que é canino e contém permetrina.',
+    price: {
+      averageLabel: 'R$ 60,00 a R$ 90,00 por pipeta',
+      rangeLabel: 'Estimativa conforme varejo e estoque para apresentação felina',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'frontline-plus-boehringer',
+    slug: 'frontline-plus-caes-gatos',
+    name: 'Frontline Plus Cães/Gatos',
+    manufacturer: 'Boehringer Ingelheim',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_topical_classic',
+    commercialSubclasses: ['parasite_topical_classic'],
+    productPageUrl: 'https://www.boehringer-ingelheim.com/br/saude-animal/produtos/frontline-plus-caes-p',
+    labelUrl: 'https://integracao.bartofil.com.br/manual-bula/Frontline_Plus_C%C3%A3o_M_10a20kg_97849.pdf',
+    imageUrl: 'https://cobasi.vtexassets.com/arquivos/ids/1011408/941514--1-.jpg?v=638138072976430000',
+    species: ['dog', 'cat'],
+    presentations: ['Pipetas tópicas separadas por espécie e faixa de peso'],
+    activeComponents: ['fipronil', 'S-metopreno'],
+    labelCompositionSummary:
+      'Ectoparasiticida tópico com fipronil e regulador de crescimento S-metopreno.',
+    labelDirections:
+      'Aplicar 1 pipeta tópica conforme espécie e faixa de peso, seguindo intervalo de bula.',
+    plumbsContext:
+      'Tópico clássico com ação em adultos e fases ambientais de pulgas; menos abrangente que endectocidas modernos.',
+    clinicalUse:
+      'Pulgas, carrapatos, piolhos mastigadores e auxílio no controle ambiental por ovos/larvas de pulgas.',
+    reassessment:
+      'Reavaliar infestação ambiental e uso em todos contactantes; falhas costumam envolver ambiente ou banho inadequado.',
+    prescriptionExample:
+      'Aplicar 1 pipeta de Frontline Plus correta para espécie/peso, tópica, conforme bula.',
+    safetyAlert:
+      'Não trocar apresentação cão/gato sem conferir bula. Não cobre vermes.',
+    price: {
+      averageLabel: 'R$ 54,00 a R$ 120,00 por pipeta',
+      rangeLabel: 'Estimativa conforme espécie/faixa; Cobasi exibiu Frontline Plus Gatos perto de R$ 54,00 em compra programada',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'frontline-topspot-boehringer',
+    slug: 'frontline-topspot-caes-gatos',
+    name: 'Frontline TopSpot Cães/Gatos',
+    manufacturer: 'Boehringer Ingelheim',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_topical_classic',
+    commercialSubclasses: ['parasite_topical_classic'],
+    productPageUrl: 'https://frontline.com.br/produtos/gatos/frontline-topspot',
+    labelUrl: 'https://www.boehringer-ingelheim.com/br/pdf/frontline-topspot-gatospdf',
+    imageUrl: 'https://cobasi.vtexassets.com/arquivos/ids/1011400/920681--1-.jpg?v=638137317579700000',
+    species: ['dog', 'cat'],
+    presentations: ['Pipetas tópicas por espécie e faixa de peso'],
+    activeComponents: ['fipronil'],
+    labelCompositionSummary:
+      'Ectoparasiticida tópico clássico à base de fipronil.',
+    labelDirections:
+      'Aplicar 1 pipeta tópica conforme espécie e peso, no intervalo definido em bula.',
+    plumbsContext:
+      'Fipronil tópico para ectoparasitas; sem ação contra vermes.',
+    clinicalUse:
+      'Pulgas, carrapatos, piolhos mastigadores e DAPP conforme espécie e bula.',
+    reassessment:
+      'Reavaliar banho, aplicação correta e carga ambiental se houver reinfestação.',
+    prescriptionExample:
+      'Aplicar 1 pipeta de Frontline TopSpot correta para espécie/peso, tópica, conforme bula.',
+    safetyAlert:
+      'Não cobre vermes. Confirmar apresentação correta e evitar lambedura.',
+    price: {
+      averageLabel: 'R$ 33,00 a R$ 80,00 por pipeta',
+      rangeLabel: 'Estimativa conforme espécie/faixa; Cobasi exibiu TopSpot Gatos 0,5 mL perto de R$ 33,21 em compra programada',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'frontline-spray-boehringer',
+    slug: 'frontline-spray-caes-gatos',
+    name: 'Frontline Spray Cães/Gatos',
+    manufacturer: 'Boehringer Ingelheim',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_topical_classic',
+    commercialSubclasses: ['parasite_topical_classic'],
+    productPageUrl: 'https://frontline.com.br/',
+    labelUrl: 'https://frontline.com.br/',
+    imageUrl: 'https://cobasi.vtexassets.com/arquivos/ids/1011402/929603--1-.jpg?v=639130713224070000',
+    species: ['dog', 'cat'],
+    presentations: ['Spray 100 mL', 'Spray 250 mL'],
+    activeComponents: ['fipronil'],
+    labelCompositionSummary:
+      'Fenilpirazol em apresentação spray para cães e gatos. A dose depende do volume e do número de borrifadas por kg descrito na bula da apresentação.',
+    labelDirections:
+      'Aplicar conforme número de borrifadas indicado na bula para o peso do animal, contra o sentido do pelo, evitando olhos, boca e mucosas.',
+    plumbsContext:
+      'Spray de fipronil pode ser útil em pacientes pequenos/filhotes quando a apresentação é indicada e o cálculo de borrifadas é feito corretamente.',
+    clinicalUse:
+      'Controle de pulgas e carrapatos em cães e gatos, especialmente quando a apresentação spray é mais adequada que pipeta.',
+    reassessment:
+      'Reavaliar controle ambiental, contactantes e técnica de aplicação. Conferir se o tutor consegue aplicar com luvas e evitar mucosas.',
+    prescriptionExample:
+      'Frontline Spray: aplicar conforme número de borrifadas por kg indicado na bula, usando luvas, evitando olhos, boca e mucosas. Deixar secar naturalmente e repetir conforme orientação veterinária.',
+    safetyAlert:
+      'Não aplicar em olhos, boca ou mucosas. Usar luvas e seguir exatamente a bula da apresentação comprada para número de borrifadas por kg.',
+    price: {
+      averageLabel: 'R$ 135,00 a R$ 210,00',
+      rangeLabel: 'Estimativa conforme volume: Cobasi exibiu 100 mL perto de R$ 135,00 e 250 mL perto de R$ 210,39 em compra programada',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'drontal-plus-caes-elanco',
+    slug: 'drontal-plus-caes',
+    name: 'Drontal Plus Cães',
+    manufacturer: 'Elanco',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_dewormer_dog',
+    commercialSubclasses: ['parasite_dewormer_dog', 'parasite_giardia'],
+    productPageUrl: 'https://vet.elanco.com/br/produtos/drontal',
+    labelUrl:
+      'https://products-info-public.s3-sa-east-1.amazonaws.com/bulas/bayer/81350779_V9_Leaflet_DRONTAL%2BPL_bula-SAC.pdf',
+    imageUrl: 'https://cobasi.vtexassets.com/arquivos/ids/1077297/DrontalPlus-Sabor_10kg-2cps-1.webp?v=638862988851730000',
+    species: ['dog'],
+    presentations: ['Comprimidos por faixa de peso'],
+    activeComponents: ['praziquantel', 'pamoato de pirantel', 'febantel'],
+    labelCompositionSummary:
+      'Vermífugo oral amplo para cães, combinando cestocida, nematocida e febantel.',
+    labelDirections:
+      'Em geral, 1 comprimido por 10 kg em dose única para verminoses; para Giardia spp., administrar por 3 dias consecutivos conforme bula.',
+    plumbsContext:
+      'Boa opção para nematódeos, cestódeos e indicação de Giardia por bula, lembrando que giardíase exige manejo ambiental.',
+    clinicalUse:
+      'Vermes redondos, vermes chatos e Giardia em cães conforme indicação de bula.',
+    reassessment:
+      'Em Giardia, reavaliar fezes/sinais, higiene ambiental, banho e contactantes.',
+    prescriptionExample:
+      'Administrar Drontal Plus conforme peso em dose única; em Giardia, repetir por 3 dias consecutivos conforme bula.',
+    safetyAlert:
+      'Não usar em gatos na apresentação canina. Giardia não é vermifugação comum: exige diagnóstico e manejo ambiental.',
+    price: {
+      averageLabel: 'Variável por apresentação',
+      rangeLabel: 'Confirmar preço atual no varejo',
+      sourceDate: PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'drontal-gatos-comprimidos-elanco',
+    slug: 'drontal-gatos-comprimidos',
+    name: 'Drontal Gatos Comprimidos',
+    manufacturer: 'Elanco',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_dewormer_cat',
+    commercialSubclasses: ['parasite_dewormer_cat'],
+    productPageUrl: 'https://vet.elanco.com/br/produtos/drontal',
+    labelUrl: 'https://vet.elanco.com/br/produtos/drontal',
+    imageUrl: 'https://cobasi.vtexassets.com/arquivos/ids/1004506/Drontal-Gatos-4-comprimidos.jpg?v=638866303578270000',
+    species: ['cat'],
+    presentations: ['Comprimidos para gatos por faixa de peso'],
+    activeComponents: ['praziquantel', 'pamoato de pirantel'],
+    labelCompositionSummary:
+      'Vermífugo oral felino para cestódeos e nematódeos.',
+    labelDirections:
+      'Administrar comprimido por faixa de peso conforme bula da apresentação adquirida.',
+    plumbsContext:
+      'Opção oral para vermes redondos e chatos em gatos; não cobre pulgas, ácaros ou dirofilariose.',
+    clinicalUse:
+      'Vermifugação felina quando há alvo de nematódeos e cestódeos.',
+    reassessment:
+      'Se houver Dipylidium, controlar pulgas; se gato não aceita comprimido, considerar apresentação tópica.',
+    prescriptionExample:
+      'Administrar Drontal Gatos conforme peso e bula da apresentação comprada.',
+    safetyAlert:
+      'Confirmar peso e apresentação. Não substitui controle de pulgas em Dipylidium.',
+    price: {
+      averageLabel: 'Variável por apresentação',
+      rangeLabel: 'Confirmar preço atual no varejo',
+      sourceDate: PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'drontal-gatos-spoton-elanco',
+    slug: 'drontal-gatos-spoton',
+    name: 'Drontal Gatos SpotOn',
+    manufacturer: 'Elanco',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_dewormer_cat',
+    commercialSubclasses: ['parasite_dewormer_cat'],
+    productPageUrl: 'https://meupet.elanco.com/br/nossos-produtos/drontal/drontal-gatos-spoton',
+    labelUrl:
+      'https://assets-us-01.kc-usercontent.com/0cec44ed-3eaa-0009-2029-666567e7e4de/6e7e5ad4-b244-45ce-9831-25103aa3fa96/bula-drontal-gatos-spoton.pdf',
+    imageUrl:
+      'https://assets.elanco.com/8e0bf1c2-1ae4-001f-9257-f2be3c683fb1/1df3ee4c-219e-4ebe-9a73-2f601535f86d/drontal_gatos_spoton_elanco-removebg-preview.png',
+    species: ['cat'],
+    presentations: ['Pipetas tópicas por faixa de peso'],
+    activeComponents: ['praziquantel', 'emodepsida'],
+    labelCompositionSummary:
+      'Vermífugo tópico felino com praziquantel e emodepsida.',
+    labelDirections:
+      'Aplicar todo o conteúdo da pipeta diretamente sobre a pele seca na nuca, conforme faixa de peso.',
+    plumbsContext:
+      'Alternativa tópica útil quando o gato não aceita comprimido.',
+    clinicalUse:
+      'Vermes intestinais redondos e achatados em gatos, em dose única conforme bula.',
+    reassessment:
+      'Reavaliar reinfecção, pulgas e contactantes; repetir conforme risco e orientação veterinária.',
+    prescriptionExample:
+      'Aplicar 1 pipeta de Drontal Gatos SpotOn correspondente ao peso, tópica, em dose única.',
+    safetyAlert:
+      'Evitar lambedura após aplicação. Aplicar na pele, não sobre o pelo.',
+    price: {
+      averageLabel: 'Variável por faixa de peso',
+      rangeLabel: 'Confirmar preço atual no varejo',
+      sourceDate: PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'profender-gatos-elanco',
+    slug: 'profender-spoton-gatos',
+    name: 'Profender SpotOn Gatos',
+    manufacturer: 'Elanco/Bayer',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_dewormer_cat',
+    commercialSubclasses: ['parasite_dewormer_cat'],
+    productPageUrl: 'https://yourpetandyou.elanco.com/us/our-products/profender-for-cats',
+    labelUrl: 'https://assets.elanco.com/8e0bf1c2-1ae4-001f-9257-f2be3c683fb1/1f993677-46a0-433f-8338-9cc45cd4b668/Profender.pdf',
+    imageUrl:
+      'https://assets.elanco.com/8e0bf1c2-1ae4-001f-9257-f2be3c683fb1/290e150a-3eec-4fb0-ab13-d39775118369/profender-packshot-desktop-632x375-update.jpg',
+    species: ['cat'],
+    presentations: ['Pipetas tópicas 0,35 mL, 0,70 mL e 1,12 mL conforme peso'],
+    activeComponents: ['emodepsida', 'praziquantel'],
+    labelCompositionSummary:
+      'Vermífugo tópico felino para nematódeos e cestódeos. Bula técnica descreve dose mínima de 3 mg/kg de emodepsida e 12 mg/kg de praziquantel.',
+    labelDirections:
+      'Aplicar 0,14 mL/kg ou pipeta correspondente ao peso, diretamente na pele da nuca.',
+    plumbsContext:
+      'Produto tópico para vermes em gatos, útil em pacientes de difícil administração oral.',
+    clinicalUse:
+      'Tratamento e controle de verminoses mistas por cestódeos e nematódeos em gatos.',
+    reassessment:
+      'Controlar pulgas quando houver Dipylidium e reavaliar exposição ambiental.',
+    prescriptionExample:
+      'Aplicar 1 pipeta de Profender correspondente ao peso do gato, tópica, em dose única conforme bula.',
+    safetyAlert:
+      'Evitar lambedura e contato ocular. Usar com cautela em gatos debilitados; confirmar peso mínimo e apresentação.',
+    price: {
+      averageLabel: 'Variável por faixa de peso',
+      rangeLabel: 'Confirmar disponibilidade e preço no Brasil',
+      sourceDate: PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'milbemax-elanco',
+    slug: 'milbemax-caes-gatos',
+    name: 'Milbemax Cães e Gatos',
+    manufacturer: 'Elanco',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_dewormer_dog',
+    commercialSubclasses: ['parasite_dewormer_dog', 'parasite_dewormer_cat', 'parasite_heartworm_prevention'],
+    productPageUrl: 'https://vet.elanco.com/br/produtos/milbemax',
+    labelUrl: 'https://vet.elanco.com/br/produtos/milbemax',
+    imageUrl:
+      'https://assets.elanco.com/0cec44ed-3eaa-0009-2029-666567e7e4de/8b787fc9-0b65-4f94-a4e2-19e88ab38315/Milbemax_Familia_SKUs.png?w=828&q=75&auto=format',
+    species: ['dog', 'cat'],
+    presentations: ['Minicomprimidos por espécie e peso'],
+    activeComponents: ['milbemicina oxima', 'praziquantel'],
+    labelCompositionSummary:
+      'Vermífugo oral com milbemicina oxima e praziquantel, com apresentações separadas para cães e gatos.',
+    labelDirections:
+      'Administrar por faixa de peso conforme bula; mensal quando o objetivo for prevenção de dirofilariose.',
+    plumbsContext:
+      'Combina vermífugo para redondos/chatos com prevenção de Dirofilaria quando usado mensalmente.',
+    clinicalUse:
+      'Vermes redondos, vermes achatados e prevenção de dirofilariose em cães e gatos conforme apresentação.',
+    reassessment:
+      'Avaliar risco regional de Dirofilaria e status do paciente antes de protocolo preventivo em animal de risco.',
+    prescriptionExample:
+      'Administrar Milbemax correspondente à espécie/peso conforme bula; para dirofilariose, usar mensalmente quando indicado.',
+    safetyAlert:
+      'Não cobre pulgas/carrapatos. Confirmar apresentação para espécie e peso.',
+    price: {
+      averageLabel: 'R$ 40,00 a R$ 68,00 por pipeta',
+      rangeLabel: 'Estimativa conforme espécie/faixa; Cobasi exibiu Fiprolex Gatos 0,5 mL perto de R$ 57,50 e Petlove exibiu cães acima de 41 kg perto de R$ 60,75',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'endogard-caes-virbac',
+    slug: 'endogard-caes',
+    name: 'Endogard Cães',
+    manufacturer: 'Virbac',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_dewormer_dog',
+    commercialSubclasses: ['parasite_dewormer_dog', 'parasite_heartworm_prevention', 'parasite_giardia'],
+    productPageUrl: 'https://br.virbac.com/products/antiparasitarios-internos/endogard',
+    labelUrl: 'https://br.virbac.com/files/live/sites/virbac-br/files/predefined-files/products/Bula%20Endogar.pdf',
+    imageUrl: 'https://cobasi.vtexassets.com/arquivos/ids/1062543/Vermifugo-Endogard-Caes-ate-10kg-2-comprimidos.png?v=638647061240100000',
+    species: ['dog'],
+    presentations: ['Comprimidos para 2,5 kg', '10 kg', '30 kg'],
+    activeComponents: ['pamoato de pirantel', 'praziquantel', 'febantel', 'ivermectina'],
+    labelCompositionSummary:
+      'Vermífugo oral amplo para cães com pirantel, praziquantel, febantel e ivermectina.',
+    labelDirections:
+      'Administrar conforme faixa de peso e bula. Programas de dirofilariose devem seguir orientação veterinária.',
+    plumbsContext:
+      'Produto amplo para vermes intestinais, Giardia e prevenção de verme do coração conforme bula/programa.',
+    clinicalUse:
+      'Cães com necessidade de cobertura contra nematódeos, cestódeos, Giardia e prevenção de Dirofilaria conforme risco.',
+    reassessment:
+      'Em Giardia, associar higiene ambiental e reavaliação. Em dirofilariose, avaliar risco e testagem.',
+    prescriptionExample:
+      'Administrar Endogard na apresentação correspondente ao peso, conforme bula e objetivo clínico.',
+    safetyAlert:
+      'Não usar em gatos. Atenção a raças/pacientes com risco MDR1 por conter ivermectina.',
+    price: {
+      averageLabel: 'Variável por apresentação',
+      rangeLabel: 'Confirmar preço atual no varejo',
+      sourceDate: PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'canex-premium-caes-ceva',
+    slug: 'canex-premium-caes',
+    name: 'Canex Premium Cães',
+    manufacturer: 'Ceva',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_dewormer_dog',
+    commercialSubclasses: ['parasite_dewormer_dog', 'parasite_heartworm_prevention'],
+    productPageUrl: 'https://www.ceva.com.br/solucoes-e-inovacoes/animais-de-companhia/nossos-produtos-para-animais-de-companhia',
+    labelUrl: 'https://www.ceva.com.br/solucoes-e-inovacoes/animais-de-companhia/nossos-produtos-para-animais-de-companhia',
+    imageUrl: 'https://cobasi.vtexassets.com/arquivos/ids/924447/vermifugo-canex-premium-caes-ate-40kg-nova-embalagem.jpg?v=638133010331200000',
+    species: ['dog'],
+    presentations: ['Comprimidos por faixa de peso'],
+    activeComponents: ['ivermectina', 'pamoato de pirantel', 'febantel', 'praziquantel'],
+    labelCompositionSummary:
+      'Vermífugo oral amplo canino com ivermectina, pirantel, febantel e praziquantel.',
+    labelDirections:
+      'Administrar conforme faixa de peso e bula Ceva. Alguns varejos listam apresentação de 1 comprimido para até 40 kg.',
+    plumbsContext:
+      'Cobre nematódeos, cestódeos e larvas de Dirofilaria conforme bula, mas exige cautela por ivermectina.',
+    clinicalUse:
+      'Vermífugo amplo para cães, incluindo contexto de prevenção/controle de formas larvais de Dirofilaria conforme indicação.',
+    reassessment:
+      'Avaliar risco de dirofilariose e repetir exames/protocolo conforme plano preventivo.',
+    prescriptionExample:
+      'Administrar Canex Premium conforme faixa de peso e bula da apresentação adquirida.',
+    safetyAlert:
+      'Não usar em gatos. Alerta para raças MDR1 e uso responsável de ivermectina.',
+    price: {
+      averageLabel: 'Variável por apresentação',
+      rangeLabel: 'Confirmar preço atual no varejo',
+      sourceDate: PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'canex-giardia-caes-ceva',
+    slug: 'canex-giardia-caes',
+    name: 'Canex Giárdia Cães',
+    manufacturer: 'Ceva',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_giardia',
+    commercialSubclasses: ['parasite_giardia', 'parasite_dewormer_dog'],
+    productPageUrl: 'https://www.ceva.com.br/solucoes-e-inovacoes/animais-de-companhia/nossos-produtos-para-animais-de-companhia',
+    labelUrl: 'https://www.ceva.com.br/solucoes-e-inovacoes/animais-de-companhia/nossos-produtos-para-animais-de-companhia',
+    imageUrl: 'https://cobasi.vtexassets.com/arquivos/ids/1050424/Vermifugo-Canex-Giardia-30-comprimidos.jpg?v=638306597921800000',
+    species: ['dog'],
+    presentations: ['Comprimidos por faixa de peso'],
+    activeComponents: ['pamoato de pirantel', 'febantel', 'praziquantel'],
+    labelCompositionSummary:
+      'Vermífugo oral palatável para cães com pirantel, febantel e praziquantel.',
+    labelDirections:
+      'Administrar conforme faixa de peso e esquema de bula, incluindo protocolo específico para Giardia quando indicado.',
+    plumbsContext:
+      'Febantel dá suporte à indicação para Giardia por bula, mas giardíase exige diagnóstico e manejo ambiental.',
+    clinicalUse:
+      'Nematódeos, cestódeos e Giardia spp. em cães conforme bula.',
+    reassessment:
+      'Em diarreia recorrente, confirmar diagnóstico, banho, limpeza ambiental, contactantes e reavaliação clínica.',
+    prescriptionExample:
+      'Administrar Canex Giárdia conforme peso e esquema de bula para o alvo clínico.',
+    safetyAlert:
+      'Não tratar Giardia como vermifugação comum isolada; exige higiene ambiental e reavaliação.',
+    price: {
+      averageLabel: 'Variável por apresentação',
+      rangeLabel: 'Confirmar preço atual no varejo',
+      sourceDate: PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'canex-original-ceva',
+    slug: 'canex-original-caes-gatos',
+    name: 'Canex Original Cães e Gatos',
+    manufacturer: 'Ceva',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_dewormer_dog',
+    commercialSubclasses: ['parasite_dewormer_dog', 'parasite_dewormer_cat'],
+    productPageUrl: 'https://www.ceva.com.br/solucoes-e-inovacoes/animais-de-companhia/nossos-produtos-para-animais-de-companhia',
+    labelUrl: 'https://www.ceva.com.br/content/download/2818/file/Bula%20-%20Canex%20Original.pdf?version=1',
+    imageUrl: 'https://www.bartofil.com.br/media/catalog/product/1/1/115499_a.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=800&width=800&canvas=800:800',
+    species: ['dog', 'cat'],
+    presentations: ['Comprimidos'],
+    activeComponents: ['pamoato de pirantel'],
+    labelCompositionSummary:
+      'Anti-helmíntico oral à base de pamoato de pirantel; bula Ceva lista 145 mg de pamoato de pirantel por comprimido.',
+    labelDirections:
+      'Bula reproduzida informa 1 comprimido para cada 10 kg em cães e 1 comprimido para cada 2,5 kg em gatos.',
+    plumbsContext:
+      'Vermífugo mais simples para nematódeos; não cobre cestódeos como produtos com praziquantel.',
+    clinicalUse:
+      'Vermífugo simples para cães e gatos quando o alvo são vermes sensíveis ao pirantel.',
+    reassessment:
+      'Se houver suspeita de Dipylidium/Taenia, escolher produto com praziquantel e controlar pulgas.',
+    prescriptionExample:
+      'Administrar Canex Original conforme peso e bula: cães 1 comp/10 kg; gatos 1 comp/2,5 kg.',
+    safetyAlert:
+      'Não cobre cestódeos; evitar escolha automática quando há segmentos de tênia ou pulgas.',
+    price: {
+      averageLabel: 'Variável por apresentação',
+      rangeLabel: 'Confirmar preço atual no varejo',
+      sourceDate: PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'fiprolex-drop-spot-ceva',
+    slug: 'fiprolex-drop-spot',
+    name: 'Fiprolex Drop Spot',
+    manufacturer: 'Ceva',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_topical_classic',
+    commercialSubclasses: ['parasite_topical_classic'],
+    productPageUrl: 'https://www.ceva.com.br/solucoes-e-inovacoes/animais-de-companhia/nossos-produtos-para-animais-de-companhia',
+    labelUrl: 'https://www.ceva.com.br/solucoes-e-inovacoes/animais-de-companhia/nossos-produtos-para-animais-de-companhia',
+    imageUrl: 'https://cobasi.vtexassets.com/arquivos/ids/184349/Antipulgas-Fiprolex-Drop-Spot-0.67ml-ate-10kg-Caes-Ceva--2-.jpg?v=638152836343300000',
+    species: ['dog', 'cat'],
+    presentations: ['Pipetas tópicas por espécie e peso'],
+    activeComponents: ['fipronil'],
+    labelCompositionSummary:
+      'Ectoparasiticida tópico à base de fipronil, com apresentações específicas para cães e gatos.',
+    labelDirections:
+      'Aplicar pipeta tópica conforme espécie e faixa de peso, seguindo bula Ceva.',
+    plumbsContext:
+      'Alternativa tópica clássica à base de fipronil; não cobre vermes.',
+    clinicalUse:
+      'Pulgas e carrapatos em cães; pulgas em gatos, conforme bula/apresentação.',
+    reassessment:
+      'Reavaliar aplicação, banho e ambiente se houver falha de controle.',
+    prescriptionExample:
+      'Aplicar 1 pipeta de Fiprolex correta para espécie/peso, tópica, conforme bula.',
+    safetyAlert:
+      'Confirmar apresentação para espécie. Não cobre vermes nem dirofilariose.',
+    price: {
+      averageLabel: 'R$ 40,00 a R$ 68,00 por pipeta',
+      rangeLabel:
+        'Estimativa conforme espécie/faixa; Cobasi exibiu Fiprolex Gatos 0,5 mL perto de R$ 57,50 e Petlove exibiu cães acima de 41 kg perto de R$ 60,75',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'capstar-elanco',
+    slug: 'capstar-caes-gatos-nitenpiram',
+    name: 'Capstar Cães/Gatos',
+    manufacturer: 'Elanco',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_oral_adulticide_flea',
+    commercialSubclasses: ['parasite_oral_adulticide_flea'],
+    productPageUrl: 'https://vet.elanco.com/br/produtos/capstar',
+    labelUrl: 'https://integracao.bartofil.com.br/manual-bula/Capstar_Elanco_Pet_57mg_Para_Caes_de_11%2C5kg_a_57kg_124731.pdf',
+    imageUrl: 'https://cobasi.vtexassets.com/arquivos/ids/1042272/capstar-57-mg-frente.jpg?v=638918952347000000',
+    species: ['dog', 'cat'],
+    presentations: ['Comprimidos 11,4 mg', 'Comprimidos 57 mg'],
+    activeComponents: ['nitenpiram'],
+    labelCompositionSummary:
+      'Neonicotinoide oral adulticida contra pulgas. Apresentações usuais de 11,4 mg e 57 mg conforme peso/espécie.',
+    labelDirections:
+      'Administrar por via oral em dose única, com ou sem alimento. Pode repetir após 24 horas se indicado, conforme bula e avaliação veterinária.',
+    plumbsContext:
+      'Produto para derrubar pulgas adultas rapidamente; não tem duração mensal/trimestral e deve ser associado a estratégia preventiva quando há risco de reinfestação.',
+    clinicalUse:
+      'Eliminação rápida de pulgas adultas em cães e gatos; também há indicação de bula para miíase por Cochliomyia hominivorax em cães.',
+    reassessment:
+      'Se usado em DAPP ou infestação intensa, associar controle ambiental, contactantes e produto residual mensal/trimestral.',
+    prescriptionExample:
+      'Capstar 11,4 mg ou 57 mg conforme peso: dar 1 comprimido por via oral, dose única, para eliminação rápida de pulgas adultas. Pode repetir após 24 horas se necessário, conforme orientação veterinária.',
+    safetyAlert:
+      'Não usar como único controle de pulgas em ambiente infestado. Associar produto residual e controle ambiental para prevenir reinfestação.',
+    price: {
+      averageLabel: 'R$ 80,00 a R$ 100,00 por caixa com 6 comprimidos',
+      rangeLabel: 'Estimativa conforme apresentação; varejos exibiram Capstar 57 mg com 6 comprimidos perto de R$ 80-100',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'banni-caes-ourofino',
+    slug: 'banni-caes-fipronil-moxidectina',
+    name: 'Banni Cães',
+    manufacturer: 'Ourofino',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_topical_endectocide',
+    commercialSubclasses: ['parasite_topical_endectocide', 'parasite_topical_classic', 'parasite_dewormer_dog'],
+    productPageUrl: 'https://www.ourofinopet.com/produtos/prevencao-e-protecao/banni/',
+    labelUrl: 'https://ourofino.com/wp-content/uploads/2024/10/BUL_50006142_0624_OF00_BANNI-BD.pdf',
+    imageUrl:
+      'https://www.ourofinopet.com/media/uploads/produtos/apresentacao/2024/20241001082550_5bF8oeM.png',
+    species: ['dog'],
+    presentations: [
+      'Até 5 kg: flaconete 0,31 mL',
+      '5,1 a 10 kg: flaconete 0,67 mL',
+      '10,1 a 20 kg: flaconete 1,34 mL',
+      '20,1 a 40 kg: flaconete 2,68 mL',
+      '40,1 a 60 kg: flaconete 4,02 mL',
+    ],
+    activeComponents: ['fipronil 12,5%', 'moxidectina 3%'],
+    labelCompositionSummary:
+      'Cada 100 mL contém fipronil 12,500 g, moxidectina 3,000 g e veículo q.s.p. 100,000 mL.',
+    labelDirections:
+      'Aplicar 1 flaconete por via tópica, conforme faixa de peso, diretamente sobre a pele seca entre a nuca e as escápulas. Aplicar todo o conteúdo e não fracionar.',
+    plumbsContext:
+      'Associação tópica de fenilpirazol com lactona macrocíclica. Útil quando se deseja ectoparasiticida com cobertura adicional para helmintos gastrintestinais em cães.',
+    clinicalUse:
+      'Tratamento de infestações por pulgas, carrapatos e helmintos gastrintestinais como Ancylostoma spp., Toxocara spp. e Trichuris vulpis em cães.',
+    reassessment:
+      'Reavaliar controle ambiental de pulgas, exposição a carrapatos e parasitismo intestinal. Em Dipylidium ou DAPP, controlar pulgas em contactantes e ambiente.',
+    prescriptionExample:
+      'Banni Cães [faixa de peso correta], aplicar 1 flaconete por via tópica, diretamente sobre a pele seca, afastando os pelos na região entre a nuca e as escápulas. Aplicar todo o conteúdo. Não fracionar. Evitar banho por 48 horas após a aplicação. Repetir conforme protocolo indicado pelo médico-veterinário e bula. Não usar em gatos.',
+    safetyAlert:
+      'Não usar em gatos. Confirmar peso atual e apresentação correta; não fracionar flaconete de outra faixa de peso.',
+    price: {
+      averageLabel: 'R$ 42,00 a R$ 98,00 por flaconete',
+      rangeLabel:
+        'Estimativa por faixa: 0,31 mL R$ 47-67; 0,67 mL R$ 50-71; 1,34 mL R$ 52-75; 2,68 mL R$ 42-84; 4,02 mL R$ 69-98',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+      notes: 'Preços variam bastante por promoção/recorrência; salvar como faixa estimada.',
+    },
+  },
+  {
+    id: 'banni-3-gatos-ourofino',
+    slug: 'banni-3-gatos-fipronil-moxidectina-praziquantel',
+    name: 'Banni 3 Gatos',
+    manufacturer: 'Ourofino',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_topical_endectocide',
+    commercialSubclasses: ['parasite_topical_endectocide', 'parasite_topical_classic', 'parasite_dewormer_cat'],
+    productPageUrl: 'https://www.ourofinopet.com/produtos/prevencao-e-protecao/banni-3/',
+    labelUrl: 'https://ourofino.com/wp-content/uploads/2024/07/COMBO-BANNI-3_BULA.pdf',
+    imageUrl: 'https://www.ourofinopet.com/media/uploads/produtos/apresentacao/2023/20231025164840.png',
+    species: ['cat'],
+    presentations: [
+      'Até 2,5 kg: flaconete 0,3 mL',
+      '2,6 a 7,5 kg: flaconete 0,9 mL',
+      'Acima de 7,5 kg: combinação de flaconetes conforme peso',
+    ],
+    activeComponents: ['praziquantel 8,3%', 'moxidectina 0,83%', 'fipronil 12,5%'],
+    labelCompositionSummary:
+      'Cada 100 mL contém praziquantel 8,300 g, moxidectina 0,830 g, fipronil 12,500 g e veículo q.s.p. 100,000 mL.',
+    labelDirections:
+      'Aplicar 1 flaconete por via tópica diretamente sobre a pele seca da nuca, próximo à base do crânio, afastando bem os pelos. Aplicar todo o conteúdo em um único ponto.',
+    plumbsContext:
+      'Endectocida tópico felino com cobertura combinada para ectoparasitas, nematódeos e cestódeos. A presença de praziquantel diferencia de produtos que cobrem apenas nematódeos.',
+    clinicalUse:
+      'Gatos filhotes e adultos com ou em risco de infestações por pulgas, nematódeos gastrintestinais, cestódeos, ácaro da sarna otodécica e piolhos.',
+    reassessment:
+      'Reavaliar risco de reinfestação por pulgas e Dipylidium. Em gatos acima de 7,5 kg, calcular combinação de flaconetes conforme bula e peso atual.',
+    prescriptionExample:
+      'Banni 3 Gatos [faixa de peso correta], aplicar 1 flaconete por via tópica, diretamente sobre a pele seca da nuca, próximo à base do crânio, afastando bem os pelos para garantir contato com a pele. Aplicar todo o conteúdo em um único ponto. Não fracionar. Evitar banho ou lambedura da região até secagem completa. Repetir conforme protocolo indicado, respeitando a bula.',
+    safetyAlert:
+      'Produto felino. Evitar lambedura até secagem completa. Para gatos acima de 7,5 kg, usar combinação de flaconetes conforme peso e bula.',
+    price: {
+      averageLabel: 'R$ 52,00 a R$ 112,00',
+      rangeLabel:
+        'Estimativa: 0,3 mL até 2,5 kg R$ 52-58; 0,9 mL 2,6-7,5 kg R$ 52-67; combo com 3 pipetas 0,9 mL R$ 95-112',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+      notes: 'Intervalo de proteção contra pulgas informado em varejo/fonte comercial: até 49 dias.',
+    },
+  },
+  {
+    id: 'vetmax-plus-comprimido-vetnil',
+    slug: 'vetmax-plus-comprimido',
+    name: 'Vetmax Plus Comprimido',
+    manufacturer: 'Vetnil',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_dewormer_dog',
+    commercialSubclasses: ['parasite_dewormer_dog', 'parasite_dewormer_cat', 'parasite_giardia'],
+    productPageUrl: 'https://vetnil.com.br/produto/vetmax-r-plus/',
+    labelUrl: 'https://vetnil.com.br/produto/vetmax-r-plus/',
+    imageUrl: 'https://vetnil.com.br/wp-content/uploads/2023/12/Vetmax-Plus-4-comp_site_V3.png',
+    species: ['dog', 'cat'],
+    presentations: ['Caixa com 4 comprimidos de 700 mg'],
+    activeComponents: ['fembendazol 200 mg/comprimido', 'pamoato de pirantel 144 mg/comprimido', 'praziquantel 50 mg/comprimido'],
+    labelCompositionSummary:
+      'Cada comprimido de 700 mg contém fembendazol 200 mg, pamoato de pirantel 144 mg, praziquantel 50 mg e excipiente q.s.p. 700 mg.',
+    labelDirections:
+      'Verminose comum: dose única VO conforme peso. Giardíase: 1 comprimido para cada 4 kg, VO, a cada 24 horas, por 3 dias consecutivos.',
+    plumbsContext:
+      'Associação de benzimidazol, pirantel e praziquantel para nematódeos e cestódeos. Em Giardia, protocolo de bula exige 3 dias e manejo ambiental.',
+    clinicalUse:
+      'Tratamento de infecções por Ancylostoma spp., Toxocara spp., Trichuris spp., Dipylidium caninum e Giardia spp. em cães e gatos.',
+    reassessment:
+      'Repetir em 15 a 30 dias quando indicado. Em Dipylidium caninum, tratar pulgas no animal, contactantes e ambiente. Em giardíase, reavaliar fezes, higiene ambiental e contactantes.',
+    prescriptionExample:
+      'Vetmax Plus 700 mg, administrar por via oral, dose única, conforme peso: até 5 kg, 1/2 comprimido; 6 a 10 kg, 1 comprimido; 11 a 20 kg, 2 comprimidos; 21 a 30 kg, 3 comprimidos; 31 a 40 kg, 4 comprimidos; acima de 40 kg, 1 comprimido para cada 10 kg. Para giardíase: 1 comprimido para cada 4 kg, VO, a cada 24 horas, durante 3 dias consecutivos.',
+    safetyAlert:
+      'Ajustar dose pelo peso atual. Para Giardia, associar higiene ambiental, remoção de fezes, banho no último dia quando indicado e manejo dos contactantes.',
+    price: {
+      averageLabel: 'R$ 46,00 a R$ 66,00 por caixa com 4 comprimidos',
+      rangeLabel: 'Petlove/Cobasi perto de R$ 52-58; anúncios em marketplace variando cerca de R$ 46-66',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'vetmax-plus-suspensao-vetnil',
+    slug: 'vetmax-plus-suspensao-oral',
+    name: 'Vetmax Plus Suspensão Oral',
+    manufacturer: 'Vetnil',
+    commercialClass: 'parasiticide',
+    commercialSubclass: 'parasite_dewormer_dog',
+    commercialSubclasses: ['parasite_dewormer_dog', 'parasite_dewormer_cat'],
+    productPageUrl: 'https://vetnil.com.br/produto/vetmax-r-plus-suspensao/',
+    labelUrl: 'https://vetnil.com.br/produto/vetmax-r-plus-suspensao/',
+    imageUrl: 'https://vetnil.com.br/wp-content/uploads/2023/12/vetmax-r-plus-suspensao.webp',
+    species: ['dog', 'cat'],
+    presentations: ['Frasco 30 mL com seringa dosadora'],
+    activeComponents: ['fembendazol 200 mg/5 mL', 'pamoato de pirantel 144 mg/5 mL', 'praziquantel 50 mg/5 mL'],
+    labelCompositionSummary:
+      'Cada 5 mL contém fembendazol 200 mg, pamoato de pirantel 144 mg, praziquantel 50 mg e excipiente q.s.p. 5 mL.',
+    labelDirections:
+      'Administrar por via oral, em dose única, puro ou misturado a pequena quantidade de alimento, sem necessidade de jejum. Pode repetir após 15 ou 30 dias se indicado.',
+    plumbsContext:
+      'Mesma associação anti-helmíntica do comprimido em apresentação líquida, útil para pacientes pequenos, filhotes ou dificuldade de administração de comprimidos.',
+    clinicalUse:
+      'Vermífugo de amplo espectro contra nematódeos e cestódeos de cães e gatos, incluindo Ancylostoma spp., Toxocara spp., Trichuris vulpis, Dipylidium caninum, Taenia spp. e outros conforme bula.',
+    reassessment:
+      'Reavaliar carga parasitária, coproparasitológico e necessidade de repetição em 15 a 30 dias. Em cestódeos associados a pulgas, tratar pulgas junto.',
+    prescriptionExample:
+      'Vetmax Plus Suspensão Oral, administrar por via oral, dose única, conforme peso: até 5 kg, 2,5 mL; 6 a 10 kg, 5 mL; 11 a 20 kg, 10 mL; 21 a 30 kg, 15 mL; 31 a 40 kg, 20 mL; acima de 40 kg, 5 mL para cada 10 kg. Pode ser oferecido puro ou misturado a pequena quantidade de alimento. Repetir em 15 a 30 dias se indicado.',
+    safetyAlert:
+      'Agitar antes do uso quando aplicável e medir com seringa dosadora. Ajustar pelo peso atual para evitar subdose.',
+    price: {
+      averageLabel: 'R$ 58,00 a R$ 80,00 por frasco 30 mL',
+      rangeLabel: 'Cobasi perto de R$ 79,90, Petlove perto de R$ 65,61 em recorrência e varejos menores perto de R$ 57,99',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'ograx-3-500-avert',
+    slug: 'ograx-3-500',
+    name: 'Ograx-3 500',
+    manufacturer: 'Avert',
+    commercialClass: 'nutraceutical',
+    commercialSubclass: 'nutra_omega3',
+    productPageUrl: 'https://avertsaudeanimal.com.br/linhas/omegas/ograx-3-500-30-capsulas',
+    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/ograx-3-500_1733927824.jpg',
+    species: ['dog', 'cat'],
+    presentations: ['Cápsulas twist-off de 500 mg, frasco com 30 cápsulas'],
+    activeComponents: ['EPA 162 mg/cápsula', 'DHA 108 mg/cápsula', 'EPA + DHA 270 mg/cápsula'],
+    labelCompositionSummary: 'Cada cápsula contém EPA 162 mg e DHA 108 mg, totalizando EPA + DHA 270 mg.',
+    labelDirections: 'Dose de rótulo: 1 cápsula para cada 9 kg, por via oral, a cada 24 horas.',
+    plumbsContext: OMEGA3_PLUMBS_CONTEXT,
+    clinicalUse: 'Suplementação geral de EPA/DHA em cães e gatos; adjuvante em pele, pelagem e condições inflamatórias quando indicado.',
+    reassessment: 'Reavaliar resposta clínica após 8 a 12 semanas e ajustar pela meta de EPA + DHA conforme objetivo clínico.',
+    prescriptionExample:
+      'Ograx-3 500 mg, administrar 1 cápsula para cada 9 kg, por via oral, a cada 24 horas, junto à alimentação, por no mínimo 8 a 12 semanas, ou conforme reavaliação. A cápsula pode ser oferecida inteira ou aberta e misturada ao alimento.',
+    safetyAlert: OMEGA3_SAFETY_ALERT,
+    price: {
+      averageLabel: 'R$ 98,00 a R$ 109,00',
+      rangeLabel: 'Cobasi listou perto de R$ 108,90 e compra programada perto de R$ 98,01',
+      sourceDate: OMEGA_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'ograx-3-1000-avert',
+    slug: 'ograx-3-1000',
+    name: 'Ograx-3 1000',
+    manufacturer: 'Avert',
+    commercialClass: 'nutraceutical',
+    commercialSubclass: 'nutra_omega3',
+    productPageUrl: 'https://avertsaudeanimal.com.br/linhas/omegas/ograx-3-1000',
+    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/ograx-3-1000_1733935288.jpg',
+    species: ['dog', 'cat'],
+    presentations: ['Cápsulas de 1000 mg'],
+    activeComponents: ['EPA 324 mg/cápsula', 'DHA 216 mg/cápsula', 'EPA + DHA 540 mg/cápsula'],
+    labelCompositionSummary: 'Cada cápsula contém EPA 324 mg e DHA 216 mg, totalizando EPA + DHA 540 mg.',
+    labelDirections: 'Dose de rótulo: 1 cápsula para cada 18 kg, por via oral, a cada 24 horas.',
+    plumbsContext: OMEGA3_PLUMBS_CONTEXT,
+    clinicalUse: 'Suplementação geral de EPA/DHA em cães e gatos; entrega cerca de 30 mg/kg de EPA + DHA na dose de rótulo.',
+    reassessment: 'Reavaliar em 8 a 12 semanas; para osteoartrite, DRC, cardiopatia ou hiperlipidemia, calcular EPA + DHA individualmente.',
+    prescriptionExample:
+      'Ograx-3 1000 mg, administrar 1 cápsula para cada 18 kg, por via oral, a cada 24 horas, junto à alimentação, por no mínimo 8 a 12 semanas, ou conforme reavaliação.',
+    safetyAlert: OMEGA3_SAFETY_ALERT,
+    price: {
+      averageLabel: 'R$ 138,00 a R$ 154,00',
+      rangeLabel: 'Petlove/Cobasi em torno de R$ 153,90 e recorrência perto de R$ 138,51',
+      sourceDate: OMEGA_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'ograx-3-1500-avert',
+    slug: 'ograx-3-1500',
+    name: 'Ograx-3 1500',
+    manufacturer: 'Avert',
+    commercialClass: 'nutraceutical',
+    commercialSubclass: 'nutra_omega3',
+    productPageUrl: 'https://avertsaudeanimal.com.br/linhas/omegas/ograx-3-1500',
+    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/ograx-3-1500_1733935306.jpg',
+    species: ['dog'],
+    presentations: ['Cápsulas de 1500 mg'],
+    activeComponents: ['EPA 605 mg/cápsula', 'DHA 462 mg/cápsula', 'EPA + DHA 1067 mg/cápsula'],
+    labelCompositionSummary: 'Cada cápsula contém EPA 605 mg e DHA 462 mg, totalizando EPA + DHA 1067 mg.',
+    labelDirections: 'Dose de rótulo: 1 cápsula para cada 33 kg, por via oral, a cada 24 horas.',
+    plumbsContext: OMEGA3_PLUMBS_CONTEXT,
+    clinicalUse: 'Opção mais concentrada para cães de maior porte quando se deseja suplementação de EPA/DHA com menor número de cápsulas.',
+    reassessment: 'Reavaliar em 8 a 12 semanas e recalcular dose se o objetivo for renal, articular, cardiovascular ou hiperlipidemia.',
+    prescriptionExample:
+      'Ograx-3 1500 mg, administrar 1 cápsula para cada 33 kg, por via oral, a cada 24 horas, junto à alimentação, por no mínimo 8 a 12 semanas, ou conforme reavaliação.',
+    safetyAlert: OMEGA3_SAFETY_ALERT,
+    price: {
+      averageLabel: 'Preço variável / confirmar varejo',
+      rangeLabel: 'Não foi encontrado preço estável em grandes varejos no trecho pesquisado',
+      sourceDate: OMEGA_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'ograx-plus-5-avert',
+    slug: 'ograx-plus-5',
+    name: 'Ograx Plus 5',
+    manufacturer: 'Avert',
+    commercialClass: 'nutraceutical',
+    commercialSubclass: 'nutra_omega3',
+    productPageUrl: 'https://avertsaudeanimal.com.br/linhas/omegas/ograx-plus-5',
+    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/ograx-plus-5-1746g-30cpl-packshot-500px.png',
+    species: ['dog', 'cat'],
+    presentations: ['Cápsulas palatáveis'],
+    activeComponents: ['EPA 200 mg/cápsula', 'DHA 80 mg/cápsula', 'EPA + DHA 280 mg/cápsula'],
+    labelCompositionSummary: 'Cada cápsula contém EPA 200 mg e DHA 80 mg, totalizando EPA + DHA 280 mg.',
+    labelDirections: 'Dose de rótulo: 1 cápsula para cada 5 kg, por via oral, a cada 24 horas.',
+    plumbsContext: OMEGA3_PLUMBS_CONTEXT,
+    clinicalUse: 'Dose de rótulo entrega cerca de 56 mg/kg de EPA + DHA; opção mais concentrada que Ograx-3 para suporte anti-inflamatório moderado.',
+    reassessment: 'Reavaliar pele, prurido, articulações ou objetivo clínico em 8 a 12 semanas.',
+    prescriptionExample:
+      'Ograx Plus 5, administrar 1 cápsula para cada 5 kg, por via oral, a cada 24 horas, junto à alimentação, por no mínimo 8 a 12 semanas.',
+    safetyAlert: OMEGA3_SAFETY_ALERT,
+    price: {
+      averageLabel: 'R$ 118,00 a R$ 131,00',
+      rangeLabel: 'Petz/Cobasi em torno de R$ 130,90 e recorrência/assinatura perto de R$ 117,81 a R$ 117,89',
+      sourceDate: OMEGA_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'ograx-plus-15-avert',
+    slug: 'ograx-plus-15',
+    name: 'Ograx Plus 15',
+    manufacturer: 'Avert',
+    commercialClass: 'nutraceutical',
+    commercialSubclass: 'nutra_omega3',
+    productPageUrl: 'https://avertsaudeanimal.com.br/linhas/omegas/ograx-plus-15',
+    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/ograx-plus-15-4909g-30cpl-packshot-500px_1757074554.png',
+    species: ['dog', 'cat'],
+    presentations: ['Cápsulas palatáveis'],
+    activeComponents: ['EPA/DHA por cápsula não confirmado em fonte aberta'],
+    labelCompositionSummary:
+      'Página oficial informa dose por peso, mas o trecho público consultado não exibiu EPA e DHA por cápsula. Confirmar rótulo do lote antes de cálculo terapêutico.',
+    labelDirections: 'Dose de rótulo: 1 cápsula para cada 15 kg, por via oral, a cada 24 horas.',
+    plumbsContext: OMEGA3_PLUMBS_CONTEXT,
+    clinicalUse: 'Suplementação de ômega 3 para cães e gatos; usar como dose de rótulo até confirmar EPA/DHA por cápsula.',
+    reassessment: 'Antes de usar para meta terapêutica de EPA + DHA, preencher concentração confirmada no app.',
+    prescriptionExample:
+      'Ograx Plus 15, administrar 1 cápsula para cada 15 kg, por via oral, a cada 24 horas, junto à alimentação, por no mínimo 8 a 12 semanas.',
+    safetyAlert: OMEGA3_SAFETY_ALERT,
+    price: {
+      averageLabel: 'R$ 167,00 a R$ 186,00',
+      rangeLabel: 'Petlove/Cobasi em torno de R$ 185,90 e recorrência perto de R$ 167,31',
+      sourceDate: OMEGA_PRICE_SOURCE_DATE,
+    },
+    evidenceLevel: 'Dose de rótulo confirmada; EPA/DHA por cápsula pendente de rótulo oficial aberto.',
+  },
+  {
+    id: 'ograx-gatos-avert',
+    slug: 'ograx-gatos',
+    name: 'Ograx Gatos',
+    manufacturer: 'Avert',
+    commercialClass: 'nutraceutical',
+    commercialSubclass: 'nutra_omega3',
+    productPageUrl: 'https://avertsaudeanimal.com.br/linhas/omegas/ograx-gatos',
+    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/ograx-gatos_1733935430.jpg',
+    species: ['cat'],
+    presentations: ['Frasco com 30 cápsulas'],
+    activeComponents: ['EPA/DHA por cápsula não confirmado em fonte aberta'],
+    labelCompositionSummary:
+      'Página oficial informa óleo de peixe, glicerina, gelatina e água, mas o trecho público consultado não mostrou EPA e DHA por cápsula.',
+    labelDirections: 'Dose de rótulo: 1 cápsula ao dia para gatos até 5 kg, por via oral.',
+    plumbsContext:
+      'Em gatos, fontes marinhas são preferíveis para EPA/DHA. Se o óleo reduzir aceitação alimentar, especialmente em cardiopata, renal ou caquético, suspender ou trocar estratégia.',
+    clinicalUse: 'Suplementação felina de ômega 3 para pele, pelagem e suporte nutricional conforme avaliação.',
+    reassessment: 'Monitorar aceitação alimentar e fezes; confirmar EPA/DHA por cápsula antes de dose terapêutica calculada.',
+    prescriptionExample:
+      'Ograx Gatos, administrar 1 cápsula por via oral, a cada 24 horas, junto à alimentação, por no mínimo 8 a 12 semanas, ou conforme reavaliação. Pode abrir a cápsula e misturar pequena quantidade ao alimento, se o gato aceitar o sabor.',
+    safetyAlert: OMEGA3_SAFETY_ALERT,
+    price: {
+      averageLabel: 'R$ 86,00 a R$ 115,00',
+      rangeLabel: 'Petlove/Cobasi listaram perto de R$ 114,90 e recorrência/clube em torno de R$ 86,18 a R$ 103,41',
+      sourceDate: OMEGA_PRICE_SOURCE_DATE,
+    },
+    evidenceLevel: 'Dose de rótulo confirmada; EPA/DHA por cápsula pendente de rótulo oficial aberto.',
+  },
+  {
+    id: 'ograx-baby-avert',
+    slug: 'ograx-baby',
+    name: 'Ograx Baby',
+    manufacturer: 'Avert',
+    commercialClass: 'nutraceutical',
+    commercialSubclass: 'nutra_omega3',
+    productPageUrl: 'https://avertsaudeanimal.com.br/linhas/omegas/ograx-baby',
+    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/babyox.png',
+    species: ['dog', 'cat'],
+    presentations: ['Frasco 30 mL com seringa dosadora'],
+    activeComponents: ['DHA 200 mg/mL', 'EPA 46 mg/mL', 'EPA + DHA 246 mg/mL', 'vitamina E 14,8 UI/mL'],
+    labelCompositionSummary: 'Cada mL contém DHA 200 mg, EPA 46 mg, total EPA + DHA 246 mg/mL, além de vitamina E 14,8 UI/mL.',
+    labelDirections: 'Dose de rótulo: 0,1 mL para cada 0,5 kg, por via oral, a cada 24 horas.',
+    plumbsContext: OMEGA3_PLUMBS_CONTEXT,
+    clinicalUse: 'Suporte de desenvolvimento, crescimento, pele/pelagem e aporte de DHA em filhotes de cães e gatos.',
+    reassessment: 'Ajustar pela evolução do peso do filhote; não é primeira escolha para metas terapêuticas altas em adultos.',
+    prescriptionExample:
+      'Ograx Baby, administrar 0,1 mL para cada 0,5 kg, por via oral, a cada 24 horas, junto à alimentação, usando a seringa dosadora, conforme peso atual.',
+    safetyAlert: OMEGA3_SAFETY_ALERT,
+    price: {
+      averageLabel: 'R$ 110,00 a R$ 122,00',
+      rangeLabel: 'Cobasi listou perto de R$ 121,90 e compra programada perto de R$ 109,71',
+      sourceDate: OMEGA_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'ograx-derme-10-avert',
+    slug: 'ograx-derme-10',
+    name: 'Ograx Derme 10',
+    manufacturer: 'Avert',
+    commercialClass: 'nutraceutical',
+    commercialSubclass: 'nutra_omega3',
+    commercialSubclasses: ['nutra_omega3', 'skin_pruritus', 'skin_atopy'],
+    productPageUrl: 'https://avertsaudeanimal.com.br/linhas/dermatologia/ograx-derme-10',
+    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/ograx-derme-10-30cpl-309g-packshot.png',
+    species: ['dog', 'cat'],
+    presentations: ['Cápsulas dermatológicas'],
+    activeComponents: ['óleo de peixe', 'óleo de borragem', 'vitamina E', 'EPA/DHA por cápsula não confirmado em fonte aberta'],
+    labelCompositionSummary:
+      'Produto dermatológico multimodal com óleo de peixe, óleo de borragem e vitamina E. EPA/DHA por cápsula deve ser confirmado no rótulo para cálculo terapêutico.',
+    labelDirections: 'Dose de rótulo: cães, 1 cápsula para cada 10 kg SID; gatos, 1 cápsula SID; por no mínimo 4 semanas.',
+    plumbsContext: OMEGA3_PLUMBS_CONTEXT,
+    clinicalUse: 'Adjuvante dermatológico para pele, pelagem, prurido leve e barreira cutânea, com ômega 3 + GLA/ômega 6.',
+    reassessment: 'Reavaliar resposta dermatológica em 4 a 8 semanas; não substituir controle de pulgas, piodermite, Malassezia ou terapia anti-inflamatória quando indicada.',
+    prescriptionExample:
+      'Ograx Derme 10, administrar 1 cápsula para cada 10 kg em cães, ou 1 cápsula ao dia em gatos, por via oral, a cada 24 horas, por no mínimo 4 a 8 semanas, junto à alimentação.',
+    safetyAlert: OMEGA3_SAFETY_ALERT,
+    price: {
+      averageLabel: 'R$ 125,00 a R$ 139,00',
+      rangeLabel: 'Cobasi listou perto de R$ 138,90 e compra programada perto de R$ 125,01',
+      sourceDate: OMEGA_PRICE_SOURCE_DATE,
+    },
+    evidenceLevel: 'Produto dermatológico com composição geral confirmada; EPA/DHA por cápsula pendente no trecho aberto.',
+  },
+  {
+    id: 'ograx-artro-10-avert',
+    slug: 'ograx-artro-10',
+    name: 'Ograx Artro 10',
+    manufacturer: 'Avert',
+    commercialClass: 'nutraceutical',
+    commercialSubclass: 'nutra_omega3',
+    commercialSubclasses: ['nutra_omega3', 'ortho_joint_support'],
+    productPageUrl: 'https://avertsaudeanimal.com.br/linhas/articular/ograx-artro-10',
+    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/ograx-artro-10-30cpl-3067g-packshot-660-x-540.png',
+    species: ['dog', 'cat'],
+    presentations: ['Cápsulas articulares'],
+    activeComponents: ['EPA 200 mg/cápsula', 'DHA 150 mg/cápsula', 'EPA + DHA 350 mg/cápsula', 'UC-II 40 mg/cápsula'],
+    labelCompositionSummary: 'Cada cápsula contém EPA 200 mg, DHA 150 mg, total EPA + DHA 350 mg, além de UC-II 40 mg.',
+    labelDirections: 'Dose de rótulo: 1 cápsula para cada 10 kg, por via oral, a cada 24 horas.',
+    plumbsContext: OMEGA3_PLUMBS_CONTEXT,
+    clinicalUse: 'Suporte articular com ômega 3 e UC-II em cães e gatos; útil em plano multimodal de osteoartrite.',
+    reassessment: 'Reavaliar dor, mobilidade e tolerância gastrointestinal em 8 a 12 semanas.',
+    prescriptionExample:
+      'Ograx Artro 10, administrar 1 cápsula para cada 10 kg, por via oral, a cada 24 horas, junto à alimentação, por no mínimo 8 a 12 semanas, ou conforme reavaliação ortopédica.',
+    safetyAlert: OMEGA3_SAFETY_ALERT,
+    price: {
+      averageLabel: 'R$ 210,00 a R$ 262,00',
+      rangeLabel: 'Petz/Cobasi em torno de R$ 261,90 e promoção/recorrência perto de R$ 209,50',
+      sourceDate: OMEGA_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'ograx-artro-20-avert',
+    slug: 'ograx-artro-20',
+    name: 'Ograx Artro 20',
+    manufacturer: 'Avert',
+    commercialClass: 'nutraceutical',
+    commercialSubclass: 'nutra_omega3',
+    commercialSubclasses: ['nutra_omega3', 'ortho_joint_support'],
+    productPageUrl: 'https://avertsaudeanimal.com.br/linhas/articular/ograx-artro-20',
+    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/ograx-artro-20-30cpl-5377g-packshot-660x540.png',
+    species: ['dog', 'cat'],
+    presentations: ['Cápsulas articulares'],
+    activeComponents: ['EPA 400 mg/cápsula', 'DHA 300 mg/cápsula', 'EPA + DHA 700 mg/cápsula', 'UC-II 40 mg/cápsula'],
+    labelCompositionSummary: 'Cada cápsula contém EPA 400 mg, DHA 300 mg, total EPA + DHA 700 mg, além de UC-II 40 mg.',
+    labelDirections: 'Dose de rótulo: 1 cápsula para cada 20 kg, por via oral, a cada 24 horas.',
+    plumbsContext: OMEGA3_PLUMBS_CONTEXT,
+    clinicalUse: 'Suporte articular para pacientes de maior porte, combinando ômega 3 e UC-II.',
+    reassessment: 'Reavaliar dor, mobilidade e tolerância gastrointestinal em 8 a 12 semanas.',
+    prescriptionExample:
+      'Ograx Artro 20, administrar 1 cápsula para cada 20 kg, por via oral, a cada 24 horas, junto à alimentação, por no mínimo 8 a 12 semanas, ou conforme reavaliação.',
+    safetyAlert: OMEGA3_SAFETY_ALERT,
+    price: {
+      averageLabel: 'Preço variável / confirmar varejo',
+      rangeLabel: 'Não foi encontrado preço estável em grandes varejos no trecho pesquisado',
+      sourceDate: OMEGA_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'ograx-cell-5-avert',
+    slug: 'ograx-cell-5',
+    name: 'Ograx Cell 5',
+    manufacturer: 'Avert',
+    commercialClass: 'nutraceutical',
+    commercialSubclass: 'nutra_omega3',
+    productPageUrl: 'https://avertsaudeanimal.com.br/linhas/omegas/ograx-cell-5',
+    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/ograx-cell-5-30cpl-packshot-500px.png',
+    species: ['dog', 'cat'],
+    presentations: ['Cápsulas'],
+    activeComponents: ['EPA 45 mg/cápsula', 'DHA 150 mg/cápsula', 'EPA + DHA 195 mg/cápsula'],
+    labelCompositionSummary: 'Cada cápsula contém EPA 45 mg e DHA 150 mg, totalizando EPA + DHA 195 mg.',
+    labelDirections: 'Dose de rótulo: 1 cápsula para cada 5 kg, por via oral, a cada 24 horas.',
+    plumbsContext: OMEGA3_PLUMBS_CONTEXT,
+    clinicalUse: 'Suporte celular/neurológico/geriátrico conforme avaliação, com maior proporção de DHA.',
+    reassessment: 'Reavaliar objetivo clínico e aceitação em 8 a 12 semanas.',
+    prescriptionExample:
+      'Ograx Cell 5, administrar 1 cápsula para cada 5 kg, por via oral, a cada 24 horas, junto à alimentação, pelo período recomendado conforme objetivo clínico.',
+    safetyAlert: OMEGA3_SAFETY_ALERT,
+    price: {
+      averageLabel: 'R$ 68,00 a R$ 76,00',
+      rangeLabel: 'Petlove listou perto de R$ 75,90 e recorrência perto de R$ 68,31',
+      sourceDate: OMEGA_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'ograx-cell-15-avert',
+    slug: 'ograx-cell-15',
+    name: 'Ograx Cell 15',
+    manufacturer: 'Avert',
+    commercialClass: 'nutraceutical',
+    commercialSubclass: 'nutra_omega3',
+    productPageUrl: 'https://avertsaudeanimal.com.br/linhas/omegas/ograx-cell-15',
+    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/ograx-cell-15-30cpl-packshot-500px.png',
+    species: ['dog', 'cat'],
+    presentations: ['Cápsulas'],
+    activeComponents: ['EPA 135 mg/cápsula', 'DHA 450 mg/cápsula', 'EPA + DHA 585 mg/cápsula'],
+    labelCompositionSummary: 'Cada cápsula contém EPA 135 mg e DHA 450 mg, totalizando EPA + DHA 585 mg.',
+    labelDirections: 'Dose de rótulo: 1 cápsula para cada 15 kg, por via oral, a cada 24 horas.',
+    plumbsContext: OMEGA3_PLUMBS_CONTEXT,
+    clinicalUse: 'Suporte com maior aporte de DHA; pode ser escolhido quando esse perfil é desejado.',
+    reassessment: 'Reavaliar objetivo clínico e tolerância em 8 a 12 semanas.',
+    prescriptionExample:
+      'Ograx Cell 15, administrar 1 cápsula para cada 15 kg, por via oral, a cada 24 horas, junto à alimentação, conforme objetivo clínico e reavaliação.',
+    safetyAlert: OMEGA3_SAFETY_ALERT,
+    price: {
+      averageLabel: 'R$ 204,00 a R$ 227,00',
+      rangeLabel: 'Cobasi/Petlove em torno de R$ 226,90 e recorrência perto de R$ 204,21',
+      sourceDate: OMEGA_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'ograx-senior-5-avert',
+    slug: 'ograx-senior-5',
+    name: 'Ograx Senior 5',
+    manufacturer: 'Avert',
+    commercialClass: 'nutraceutical',
+    commercialSubclass: 'nutra_omega3',
+    productPageUrl: 'https://avertsaudeanimal.com.br/linhas/omegas/ograx-senior-5',
+    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/ograx-senior-5-30cpl-packshot-500px.png',
+    species: ['dog', 'cat'],
+    presentations: ['Cápsulas sênior'],
+    activeComponents: ['DHA 130 mg/cápsula', 'EPA 39 mg/cápsula', 'EPA + DHA 169 mg/cápsula', 'vitamina E 120 UI', 'selênio 30 mcg'],
+    labelCompositionSummary: 'Cada cápsula contém DHA 130 mg, EPA 39 mg, vitamina E 120 UI e selênio 30 mcg.',
+    labelDirections: 'Dose de rótulo: 1 cápsula para cada 5 kg, por via oral, a cada 24 horas.',
+    plumbsContext: OMEGA3_PLUMBS_CONTEXT,
+    clinicalUse: 'Suporte geriátrico com DHA predominante, vitamina E e selênio.',
+    reassessment: 'Reavaliar objetivo geriátrico, apetite e fezes em 8 a 12 semanas.',
+    prescriptionExample:
+      'Ograx Senior 5, administrar 1 cápsula para cada 5 kg, por via oral, a cada 24 horas, junto à alimentação, conforme protocolo de suporte geriátrico.',
+    safetyAlert: OMEGA3_SAFETY_ALERT,
+    price: {
+      averageLabel: 'R$ 88,00 a R$ 98,00',
+      rangeLabel: 'Cobasi listou perto de R$ 97,90 e compra programada perto de R$ 88,11',
+      sourceDate: OMEGA_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'ograx-senior-10-avert',
+    slug: 'ograx-senior-10',
+    name: 'Ograx Senior 10',
+    manufacturer: 'Avert',
+    commercialClass: 'nutraceutical',
+    commercialSubclass: 'nutra_omega3',
+    productPageUrl: 'https://avertsaudeanimal.com.br/linhas/omegas/ograx-senior-10',
+    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/ograx-senior-10-30cpl-packshot-500px.png',
+    species: ['dog', 'cat'],
+    presentations: ['Cápsulas sênior'],
+    activeComponents: ['DHA 260 mg/cápsula', 'EPA 78 mg/cápsula', 'EPA + DHA 338 mg/cápsula', 'vitamina E 240 UI', 'selênio 60 mcg'],
+    labelCompositionSummary: 'Cada cápsula contém DHA 260 mg, EPA 78 mg, vitamina E 240 UI e selênio 60 mcg.',
+    labelDirections: 'Dose de rótulo: 1 cápsula para cada 10 kg, por via oral, a cada 24 horas.',
+    plumbsContext: OMEGA3_PLUMBS_CONTEXT,
+    clinicalUse: 'Suporte geriátrico com DHA predominante, vitamina E e selênio.',
+    reassessment: 'Reavaliar objetivo geriátrico, apetite e fezes em 8 a 12 semanas.',
+    prescriptionExample:
+      'Ograx Senior 10, administrar 1 cápsula para cada 10 kg, por via oral, a cada 24 horas, junto à alimentação.',
+    safetyAlert: OMEGA3_SAFETY_ALERT,
+    price: {
+      averageLabel: 'R$ 175,00 a R$ 195,00',
+      rangeLabel: 'Petlove/Cobasi em torno de R$ 194,90 e recorrência perto de R$ 175,41',
+      sourceDate: OMEGA_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'omega-3-se-550-vetnil',
+    slug: 'omega-3-se-550',
+    name: 'Ômega 3 + SE 550',
+    manufacturer: 'Vetnil',
+    commercialClass: 'nutraceutical',
+    commercialSubclass: 'nutra_omega3',
+    productPageUrl: 'https://vetnil.com.br/produto/omega-3-se-r-550-e-1100/',
+    imageUrl: 'https://vetnil.com.br/wp-content/uploads/2023/12/omega-3-se-r-550-e-1100_63e6671811039.webp',
+    species: ['dog', 'cat'],
+    presentations: ['Cápsulas de 550 mg'],
+    activeComponents: ['DHA 121 mg/cápsula', 'EPA 181,5 mg/cápsula', 'EPA + DHA 302,5 mg/cápsula', 'selênio 0,06 mg', 'vitamina E 50 UI'],
+    labelCompositionSummary: 'Cada cápsula contém DHA 121 mg, EPA 181,5 mg, selênio 0,06 mg e vitamina E 50 UI.',
+    labelDirections: 'Dose de rótulo: 1 cápsula ao dia para animais até 8 kg.',
+    plumbsContext: OMEGA3_PLUMBS_CONTEXT,
+    clinicalUse: 'Suplementação de EPA/DHA com selênio e vitamina E para cães e gatos pequenos.',
+    reassessment: 'Reavaliar em 8 a 12 semanas; calcular EPA e DHA se objetivo for cardiopatia, DRC, osteoartrite ou hiperlipidemia.',
+    prescriptionExample:
+      'Ômega 3 + SE 550, administrar 1 cápsula por via oral, a cada 24 horas, para animais até 8 kg, junto à alimentação. Pode administrar inteira ou abrir e misturar ao alimento, conforme aceitação.',
+    safetyAlert: OMEGA3_SAFETY_ALERT,
+    price: {
+      averageLabel: 'R$ 90,00 a R$ 125,00',
+      rangeLabel: 'Petlove/Mercado Livre variando nessa faixa para 550 mg',
+      sourceDate: OMEGA_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'omega-3-se-1100-vetnil',
+    slug: 'omega-3-se-1100',
+    name: 'Ômega 3 + SE 1100',
+    manufacturer: 'Vetnil',
+    commercialClass: 'nutraceutical',
+    commercialSubclass: 'nutra_omega3',
+    productPageUrl: 'https://vetnil.com.br/produto/omega-3-se-r-550-e-1100/',
+    imageUrl: 'https://vetnil.com.br/wp-content/uploads/2023/12/omega-3-se-r-550-e-1100_63e6671811039.webp',
+    species: ['dog', 'cat'],
+    presentations: ['Cápsulas de 1100 mg'],
+    activeComponents: ['DHA 242 mg/cápsula', 'EPA 363 mg/cápsula', 'EPA + DHA 605 mg/cápsula', 'selênio 0,12 mg', 'vitamina E 100 UI'],
+    labelCompositionSummary: 'Cada cápsula contém DHA 242 mg, EPA 363 mg, selênio 0,12 mg e vitamina E 100 UI.',
+    labelDirections: 'Dose de rótulo: 1 cápsula ao dia para animais de 8 a 16 kg.',
+    plumbsContext: OMEGA3_PLUMBS_CONTEXT,
+    clinicalUse: 'Suplementação de EPA/DHA com selênio e vitamina E para cães e gatos de 8 a 16 kg.',
+    reassessment: 'Reavaliar em 8 a 12 semanas; calcular EPA e DHA se objetivo for cardiopatia, DRC, osteoartrite ou hiperlipidemia.',
+    prescriptionExample:
+      'Ômega 3 + SE 1100, administrar 1 cápsula por via oral, a cada 24 horas, para animais de 8 a 16 kg, junto à alimentação.',
+    safetyAlert: OMEGA3_SAFETY_ALERT,
+    price: {
+      averageLabel: 'R$ 145,00 a R$ 185,00',
+      rangeLabel: 'Petlove perto de R$ 184,71; Agromeyer/Semeve entre R$ 144,90 e R$ 166,49',
+      sourceDate: OMEGA_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'omega-3-dog-500-organnact',
+    slug: 'omega-3-dog-500-organnact',
+    name: 'Omega 3 Dog 500 mg',
+    manufacturer: 'Organnact',
+    commercialClass: 'nutraceutical',
+    commercialSubclass: 'nutra_omega3',
+    productPageUrl: 'https://organnact.com.br/caes/suplemento-para-caes/omega-3-dog/',
+    imageUrl: 'https://organnact.com.br/wp-content/uploads/2020/04/OMEGA-3-DOG_TODAS-1.png',
+    species: ['dog'],
+    presentations: ['500 mg com 30 ou 90 cápsulas'],
+    activeComponents: ['EPA ~90 mg/cápsula', 'DHA ~60 mg/cápsula', 'EPA + DHA ~150 mg/cápsula'],
+    labelCompositionSummary:
+      'Composição por kg: DHA 120 g/kg, EPA 180 g/kg, ômega 3 total 350 g/kg e vitamina E 20.000 UI/kg; cápsula 500 mg equivale aproximadamente a EPA 90 mg + DHA 60 mg.',
+    labelDirections: 'Dose de rótulo: 1 a 2 cápsulas ao dia para cada 10 kg.',
+    plumbsContext: OMEGA3_PLUMBS_CONTEXT,
+    clinicalUse: 'Suplementação canina de EPA/DHA; 2 cápsulas/10 kg se aproximam de dose de manutenção de 30 mg/kg de EPA + DHA.',
+    reassessment: 'Reavaliar em 8 a 12 semanas e calcular EPA/DHA para metas terapêuticas.',
+    prescriptionExample:
+      'Omega 3 Dog 500 mg, administrar 1 a 2 cápsulas para cada 10 kg, por via oral, a cada 24 horas, junto à alimentação, conforme orientação veterinária.',
+    safetyAlert: OMEGA3_SAFETY_ALERT,
+    price: {
+      averageLabel: 'R$ 190,00 a R$ 195,00 para 90 cápsulas',
+      rangeLabel: 'Cobasi listou 90 cápsulas perto de R$ 193,90',
+      sourceDate: OMEGA_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'omega-3-dog-1000-organnact',
+    slug: 'omega-3-dog-1000-organnact',
+    name: 'Omega 3 Dog 1000 mg',
+    manufacturer: 'Organnact',
+    commercialClass: 'nutraceutical',
+    commercialSubclass: 'nutra_omega3',
+    productPageUrl: 'https://organnact.com.br/caes/suplemento-para-caes/omega-3-dog/',
+    imageUrl: 'https://organnact.com.br/wp-content/uploads/2020/04/OMEGA-3-DOG_TODAS-1.png',
+    species: ['dog'],
+    presentations: ['1000 mg com 30 ou 90 cápsulas'],
+    activeComponents: ['EPA ~180 mg/cápsula', 'DHA ~120 mg/cápsula', 'EPA + DHA ~300 mg/cápsula'],
+    labelCompositionSummary:
+      'Pela concentração por kg do produto, cápsula de 1000 mg equivale aproximadamente a EPA 180 mg + DHA 120 mg.',
+    labelDirections: 'Dose de rótulo: 1 a 2 cápsulas ao dia para cada 20 kg.',
+    plumbsContext: OMEGA3_PLUMBS_CONTEXT,
+    clinicalUse: 'Suplementação canina de EPA/DHA; 2 cápsulas/20 kg se aproximam de dose de manutenção de 30 mg/kg de EPA + DHA.',
+    reassessment: 'Reavaliar em 8 a 12 semanas e calcular EPA/DHA para metas terapêuticas.',
+    prescriptionExample:
+      'Omega 3 Dog 1000 mg, administrar 1 a 2 cápsulas para cada 20 kg, por via oral, a cada 24 horas, junto à alimentação.',
+    safetyAlert: OMEGA3_SAFETY_ALERT,
+    price: {
+      averageLabel: 'R$ 109,00 a R$ 235,00',
+      rangeLabel: 'Varia conforme 30 ou 90 cápsulas; Petlove mostrou 30 cápsulas perto de R$ 108,93 e 90 cápsulas perto de R$ 234,90',
+      sourceDate: OMEGA_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'omega-3-6-d-cat-organnact',
+    slug: 'omega-3-6-d-cat',
+    name: 'Omega 3+6+D Cat',
+    manufacturer: 'Organnact',
+    commercialClass: 'nutraceutical',
+    commercialSubclass: 'nutra_omega3',
+    productPageUrl: 'https://organnact.com.br/gatos/suplemento-para-gatos/omega-36d-cat/',
+    imageUrl: 'https://organnact.com.br/wp-content/uploads/2020/04/OMEGA-3-CAT_CONJUNTO-1-1024x976.png',
+    species: ['cat'],
+    presentations: ['Líquido 30 mL'],
+    activeComponents: ['DHA 48 g/kg', 'EPA 72 g/kg', 'ácido linolênico 140 g/kg', 'ácido linoleico 34 g/kg', 'vitamina D3 130.000 UI/kg', 'vitamina E 2.500 UI/kg'],
+    labelCompositionSummary:
+      'Produto líquido com ômega 3, ômega 6 e vitamina D3. Composição por kg: DHA 48 g, EPA 72 g, ácido linolênico 140 g, ácido linoleico 34 g, vitamina D3 130.000 UI e vitamina E 2.500 UI.',
+    labelDirections: 'Dose de rótulo: gatos até 10 kg, 1 mL SID; acima de 10 kg, 1,5 mL SID.',
+    plumbsContext:
+      'Em gatos, fontes marinhas são preferíveis para EPA/DHA, mas este produto também contém ômega 6 e vitamina D3; evitar perseguir doses altas sem cálculo e monitoramento.',
+    clinicalUse: 'Suplementação felina líquida de pele/pelagem e suporte nutricional com ômega 3, ômega 6 e vitamina D.',
+    reassessment: 'Monitorar palatabilidade, apetite, fezes e necessidade de uso prolongado.',
+    prescriptionExample:
+      'Omega 3+6+D Cat, administrar 1 mL por via oral, a cada 24 horas, para gatos até 10 kg, junto à alimentação. Para gatos acima de 10 kg, administrar 1,5 mL a cada 24 horas.',
+    safetyAlert: OMEGA3_SAFETY_ALERT,
+    price: {
+      averageLabel: 'Preço variável / confirmar varejo',
+      rangeLabel: 'Não foi localizado preço estável em grandes varejos no trecho pesquisado',
+      sourceDate: OMEGA_PRICE_SOURCE_DATE,
+    },
+  },
+  {
+    id: 'omega-3-vet-botupharma',
+    slug: 'omega-3-vet-botupharma',
+    name: 'Omega 3 Vet',
+    manufacturer: 'Botupharma Pet',
+    commercialClass: 'nutraceutical',
+    commercialSubclass: 'nutra_omega3',
+    productPageUrl: 'https://botupharmapet.com.br/omega-3-vet/',
+    imageUrl: 'https://botupharmapet.com.br/wp-content/uploads/2024/02/omega_3_vet_junto_novo-1024x1024.webp',
+    species: ['dog', 'cat'],
+    presentations: ['Cápsulas de 500 mg e 1000 mg, frascos com 30 ou 60 cápsulas'],
+    activeComponents: ['óleo de peixe ultrapuro', 'relação EPA:DHA 1,5:1', 'EPA/DHA por cápsula não confirmado em fonte aberta'],
+    labelCompositionSummary:
+      'Óleo de peixe ultrapuro com relação EPA:DHA 1,5:1. A página aberta não informou EPA e DHA exatos por cápsula.',
+    labelDirections: 'Dose técnica encontrada: animais até 10 kg podem receber 1 a 3 cápsulas ao dia, conforme orientação veterinária.',
+    plumbsContext: OMEGA3_PLUMBS_CONTEXT,
+    clinicalUse: 'Suplementação de EPA/DHA em cães e gatos; confirmar teor por cápsula antes de cálculo terapêutico.',
+    reassessment: 'Reavaliar em 8 a 12 semanas; preencher EPA/DHA do rótulo se for calcular dose alvo.',
+    prescriptionExample:
+      'Omega 3 Vet [500 mg ou 1000 mg], administrar conforme peso e objetivo clínico, por via oral, a cada 24 horas, junto à alimentação. Dose usual de rótulo/técnica: 1 a 3 cápsulas ao dia para animais até 10 kg, ajustando conforme orientação veterinária.',
+    safetyAlert: OMEGA3_SAFETY_ALERT,
+    price: {
+      averageLabel: 'R$ 69,00 a R$ 120,00',
+      rangeLabel: '500 mg em torno de R$ 69-77; 1000 mg com 60 cápsulas perto de R$ 120',
+      sourceDate: OMEGA_PRICE_SOURCE_DATE,
+    },
+    evidenceLevel: 'Relação EPA:DHA confirmada; EPA/DHA exatos por cápsula pendentes de rótulo.',
+  },
+  {
+    id: 'omegatop-3-500-agener',
+    slug: 'omegatop-3-500',
+    name: 'OmegaTop 3 500 mg',
+    manufacturer: 'Agener União',
+    commercialClass: 'nutraceutical',
+    commercialSubclass: 'nutra_omega3',
+    productPageUrl: 'https://vetsmart.com.br/cg/produto/5330/omegatop-3',
+    imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/933089-368-368/suplemento-para-caes-e-gatos-omega-top-3-500-mg.jpg?v=638134522113030000',
+    species: ['dog', 'cat'],
+    presentations: ['Cápsulas 500 mg, frasco com 40 cápsulas'],
+    activeComponents: ['EPA/DHA por cápsula não confirmado em fonte aberta'],
+    labelCompositionSummary:
+      'Suplemento com EPA e DHA. Não foi encontrada página oficial aberta da Agener com rótulo completo; confirmar EPA/DHA por cápsula antes de cálculo terapêutico.',
+    labelDirections: 'Dose comercial: 1 cápsula para cada 9 kg, por via oral, a cada 24 horas.',
+    plumbsContext: OMEGA3_PLUMBS_CONTEXT,
+    clinicalUse: 'Suplementação de EPA/DHA em cães e gatos, com fonte comercial/técnica pendente de rótulo oficial completo.',
+    reassessment: 'Reavaliar em 8 a 12 semanas; anexar rótulo oficial antes de habilitar cálculo terapêutico fino.',
+    prescriptionExample:
+      'OmegaTop 3 500 mg, administrar 1 cápsula para cada 9 kg, por via oral, a cada 24 horas, junto à alimentação, por no mínimo 8 a 12 semanas.',
+    safetyAlert: OMEGA3_SAFETY_ALERT,
+    price: {
+      averageLabel: 'R$ 83,00 a R$ 104,00',
+      rangeLabel: 'Cobasi listou perto de R$ 103,90 e compra programada perto de R$ 82,90',
+      sourceDate: OMEGA_PRICE_SOURCE_DATE,
+    },
+    evidenceLevel: 'Fonte técnica/comercial; concentração EPA/DHA não confirmada em bula oficial aberta.',
+  },
+  {
+    id: 'omegatop-3-1000-agener',
+    slug: 'omegatop-3-1000',
+    name: 'OmegaTop 3 1000 mg',
+    manufacturer: 'Agener União',
+    commercialClass: 'nutraceutical',
+    commercialSubclass: 'nutra_omega3',
+    productPageUrl: 'https://vetsmart.com.br/cg/produto/5330/omegatop-3',
+    imageUrl: 'https://images.tcdn.com.br/img/img_prod/799317/omega_top_3_1000_mg_40_caps_8847_1_954feafa716aebeb6a3378b0cd792f21.jpg',
+    species: ['dog', 'cat'],
+    presentations: ['Cápsulas 1000 mg, frasco com 40 cápsulas'],
+    activeComponents: ['EPA/DHA por cápsula não confirmado em fonte aberta'],
+    labelCompositionSummary:
+      'Suplemento com EPA e DHA. Não foi encontrada página oficial aberta da Agener com rótulo completo; confirmar EPA/DHA por cápsula antes de cálculo terapêutico.',
+    labelDirections: 'Dose comercial: 1 cápsula para cada 18 kg, por via oral, a cada 24 horas.',
+    plumbsContext: OMEGA3_PLUMBS_CONTEXT,
+    clinicalUse: 'Suplementação de EPA/DHA em cães e gatos, com fonte comercial/técnica pendente de rótulo oficial completo.',
+    reassessment: 'Reavaliar em 8 a 12 semanas; anexar rótulo oficial antes de habilitar cálculo terapêutico fino.',
+    prescriptionExample:
+      'OmegaTop 3 1000 mg, administrar 1 cápsula para cada 18 kg, por via oral, a cada 24 horas, junto à alimentação.',
+    safetyAlert: OMEGA3_SAFETY_ALERT,
+    price: {
+      averageLabel: 'R$ 128,00 a R$ 160,00',
+      rangeLabel: 'Cobasi indicou produto de 1000 mg/40 cápsulas em torno de R$ 159,90 e compra programada perto de R$ 127,90',
+      sourceDate: OMEGA_PRICE_SOURCE_DATE,
+    },
+    evidenceLevel: 'Fonte técnica/comercial; concentração EPA/DHA não confirmada em bula oficial aberta.',
   },
 ];

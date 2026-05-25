@@ -2,6 +2,12 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { ArrowRight, ChevronLeft, ChevronRight, Eye, EyeOff, Loader2 } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 
+declare global {
+  interface Window {
+    google?: any
+  }
+}
+
 const cn = (...classes: Array<string | false | null | undefined>) => classes.filter(Boolean).join(' ')
 
 const Button = React.forwardRef<
@@ -136,6 +142,7 @@ type TravelConnectSignInProps = {
   successMessage?: string
   onSubmit: (payload: { email: string; password: string }) => Promise<void> | void
   onGoogleSignIn?: () => Promise<void> | void
+  onGoogleSignInToken?: (idToken: string) => Promise<void> | void
   onForgotPassword?: (email: string) => Promise<void> | void
   onGoToSignup?: () => void
   onGoToLogin?: () => void
@@ -167,6 +174,7 @@ export default function TravelConnectSignIn({
   successMessage = '',
   onSubmit,
   onGoogleSignIn,
+  onGoogleSignInToken,
   onForgotPassword,
   onGoToSignup,
   onGoToLogin,
@@ -182,6 +190,65 @@ export default function TravelConnectSignIn({
   const [resetMessage, setResetMessage] = useState('')
   const [googleLoading, setGoogleLoading] = useState(false)
   const [forgotLoading, setForgotLoading] = useState(false)
+
+  const googleBtnRef = React.useRef<HTMLDivElement>(null)
+  const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined
+
+  useEffect(() => {
+    if (!clientId) return
+
+    let alive = true
+
+    if (!window.google) {
+      const script = document.createElement('script')
+      script.src = 'https://accounts.google.com/gsi/client'
+      script.async = true
+      script.defer = true
+      script.onload = () => {
+        if (alive) initializeGoogleSignIn()
+      }
+      document.body.appendChild(script)
+
+      return () => {
+        alive = false
+      }
+    } else {
+      initializeGoogleSignIn()
+    }
+
+    function initializeGoogleSignIn() {
+      if (!window.google || !alive) return
+      try {
+        window.google.accounts.id.initialize({
+          client_id: clientId,
+          callback: async (response: any) => {
+            if (!alive) return
+            try {
+              if (onGoogleSignInToken) {
+                await onGoogleSignInToken(response.credential)
+              }
+            } catch (err) {
+              // ignore
+            }
+          },
+        })
+
+        if (googleBtnRef.current) {
+          window.google.accounts.id.renderButton(googleBtnRef.current, {
+            theme: 'filled_black',
+            size: 'large',
+            type: 'standard',
+            shape: 'rectangular',
+            text: isLogin ? 'signin_with' : 'signup_with',
+            logo_alignment: 'left',
+            width: 320,
+          })
+        }
+      } catch (e) {
+        console.error('Error initializing Google GSI:', e)
+      }
+    }
+  }, [clientId, isLogin, onGoogleSignInToken])
 
   const slideCount = AUTH_SLIDES_4K.length
   const currentError = errorMessage || localError
@@ -212,21 +279,6 @@ export default function TravelConnectSignIn({
     } catch (error) {
       const message = error instanceof Error ? error.message : isLogin ? 'Falha ao entrar.' : 'Falha ao criar conta.'
       setLocalError(message)
-    }
-  }
-
-  async function handleGoogleSignIn() {
-    if (!onGoogleSignIn) return
-    setGoogleLoading(true)
-    setLocalError('')
-    setResetMessage('')
-    try {
-      await onGoogleSignIn()
-    } catch (error) {
-      const message = error instanceof Error ? error.message : 'Falha ao autenticar com Google.'
-      setLocalError(message)
-    } finally {
-      setGoogleLoading(false)
     }
   }
 
@@ -267,6 +319,7 @@ export default function TravelConnectSignIn({
           transition={{ duration: 0.45 }}
           className="grid w-full overflow-hidden rounded-3xl border border-slate-800 bg-[#090b13] text-white shadow-[0_24px_90px_rgba(0,0,0,0.45)] md:grid-cols-2"
         >
+          {/* Column 1: Carousel Banner */}
           <div className="relative hidden h-[640px] overflow-hidden border-r border-slate-800 md:block">
             <AnimatePresence mode="wait" custom={slideDirection}>
               <motion.img
@@ -341,6 +394,7 @@ export default function TravelConnectSignIn({
             </div>
           </div>
 
+          {/* Column 2: Form */}
           <div className="flex min-h-[640px] flex-col justify-center p-6 sm:p-10">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -357,17 +411,19 @@ export default function TravelConnectSignIn({
                 </p>
               </div>
 
-              <div className="mb-6">
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="h-11 w-full rounded-lg border-slate-700 bg-slate-900 text-slate-100 hover:bg-slate-800"
-                  onClick={handleGoogleSignIn}
-                  disabled={!onGoogleSignIn || googleLoading || loading}
-                >
-                  {googleLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
-                  <span>{googleLoading ? 'Conectando...' : isLogin ? 'Entrar com Google' : 'Criar conta com Google'}</span>
-                </Button>
+              <div className="mb-6 flex justify-center w-full min-h-[44px]">
+                {clientId ? (
+                  <div ref={googleBtnRef} className="w-full flex justify-center" />
+                ) : (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="h-11 w-full rounded-lg border-slate-700 bg-slate-900 text-slate-100 hover:bg-slate-800"
+                    disabled
+                  >
+                    <span>Google desabilitado</span>
+                  </Button>
+                )}
               </div>
 
               <div className="relative my-6">
@@ -423,12 +479,12 @@ export default function TravelConnectSignIn({
 
                 <Button
                   type="submit"
-                  className="h-11 w-full rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-500 hover:to-indigo-500"
+                  className="h-11 w-full rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-500 hover:to-indigo-500 justify-center"
                   disabled={loading}
                 >
                   {loading ? (
                     <>
-                      <Loader2 className="h-4 w-4 animate-spin" />
+                      <Loader2 className="h-4 w-4 animate-spin mr-2" />
                       {isLogin ? 'Entrando...' : 'Criando conta...'}
                     </>
                   ) : (

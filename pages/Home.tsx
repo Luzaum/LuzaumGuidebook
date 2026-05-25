@@ -57,8 +57,8 @@ export function Home() {
               </h1>
 
               <p className="text-lg md:text-xl text-blue-50 dark:text-blue-100/90 leading-relaxed font-medium mb-8 drop-shadow-sm">
-                Ferramentas de decisão clínica baseadas nas últimas evidências de
-                <strong className="text-white"> Plumb's, Nelson & Couto, Ettinger, BSAVA, ACVIM</strong> e muito mais!
+                Ferramentas de decisão clínica baseadas nas últimas evidências, consensos e literatura atualizada (
+                <strong className="text-white">Plumb's, Nelson & Couto, Ettinger, BSAVA, ACVIM, iCatCare, IRIS</strong> e muito mais!)
                 Torne seu dia a dia mais eficiente, aprendendo muito no processo!
               </p>
 

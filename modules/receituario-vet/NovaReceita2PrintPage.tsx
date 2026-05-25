@@ -950,6 +950,10 @@ export default function NovaReceita2PrintPage() {
                 const img = renderedCanvas.toDataURL('image/png')
                 if (i > 0) pdf.addPage()
                 pdf.addImage(img, 'PNG', 0, 0, pageW, pageH, undefined, 'FAST')
+
+                // Immediately release massive canvas bitmap memory buffer in browser
+                renderedCanvas.width = 0
+                renderedCanvas.height = 0
             }
 
             const fileName = buildPdfFileName(

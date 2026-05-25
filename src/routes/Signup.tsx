@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import TravelConnectSignIn from '@/components/ui/travel-connect-signin'
-import { getSession, signInWithGoogle, signUp } from '../lib/auth'
+import { getSession, signInWithGoogle, signInWithGoogleToken, signUp } from '../lib/auth'
 
 function normalizeTargetPath(value: string | null | undefined) {
   const target = String(value || '').trim()
@@ -70,6 +70,21 @@ export default function Signup() {
     }
   }
 
+  async function handleGoogleSignInToken(idToken: string) {
+    setLoading(true)
+    setErr('')
+    setMsg('')
+    try {
+      await signInWithGoogleToken(idToken)
+      nav(nextPath, { replace: true })
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Falha ao autenticar com Google.'
+      setErr(message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   async function handleGoogleSignIn() {
     setErr('')
     setMsg('')
@@ -88,6 +103,7 @@ export default function Signup() {
       successMessage={msg}
       onSubmit={handleSubmit}
       onGoogleSignIn={handleGoogleSignIn}
+      onGoogleSignInToken={handleGoogleSignInToken}
       onGoToLogin={() => nav(`/login?next=${encodeURIComponent(nextPath)}`)}
       onBackToVetius={() => nav('/hub')}
     />

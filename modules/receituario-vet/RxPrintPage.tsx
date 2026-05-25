@@ -239,6 +239,10 @@ async function buildPdfFileFromPreview(args: {
     const pageW = pdf.internal.pageSize.getWidth()
     const pageH = pdf.internal.pageSize.getHeight()
     pdf.addImage(img, 'PNG', 0, 0, pageW, pageH, undefined, 'FAST')
+
+    // Immediately release massive canvas bitmap memory buffer in browser
+    canvas.width = 0
+    canvas.height = 0
   }
 
   const fileName = `${buildPdfFileBaseName(patientName, tutorName)}.pdf`

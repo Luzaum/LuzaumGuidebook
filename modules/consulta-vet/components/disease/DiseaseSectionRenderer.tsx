@@ -76,20 +76,70 @@ function isClinicalFigure(value: unknown): value is EditorialClinicalFigure {
 }
 
 function ClinicalFigureBlock({ figure }: { figure: EditorialClinicalFigure }) {
+  const [isOpen, setIsOpen] = React.useState(false);
+
   return (
-    <figure className="space-y-3">
-      <div className="overflow-x-auto rounded-xl border border-border/55 bg-muted/20 p-2 shadow-sm ring-1 ring-black/[0.04] dark:ring-white/[0.06] md:p-3">
-        <img
-          src={figure.src}
-          alt={figure.alt}
-          loading="lazy"
-          className="mx-auto h-auto w-full max-w-5xl rounded-lg"
-        />
-      </div>
-      {figure.caption ? (
-        <figcaption className="text-center text-sm leading-relaxed text-muted-foreground">{figure.caption}</figcaption>
-      ) : null}
-    </figure>
+    <>
+      <figure className="space-y-3">
+        <div
+          onClick={() => setIsOpen(true)}
+          className="group relative overflow-hidden rounded-xl border border-border/55 bg-muted/20 p-2 shadow-sm ring-1 ring-black/[0.04] dark:ring-white/[0.06] md:p-3 cursor-zoom-in transition-all duration-200 hover:border-primary/30 hover:bg-muted/30"
+        >
+          <div className="relative w-full h-64 md:h-72 flex items-center justify-center bg-black/5 dark:bg-black/20 rounded-lg overflow-hidden">
+            <img
+              src={figure.src}
+              alt={figure.alt}
+              loading="lazy"
+              className="h-full w-full object-contain rounded-lg transition-transform duration-300 group-hover:scale-[1.01]"
+            />
+          </div>
+          <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/5 dark:group-hover:bg-white/5 flex items-center justify-center">
+            <span className="opacity-0 group-hover:opacity-100 transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 bg-background/85 dark:bg-background/90 text-foreground text-xs px-3 py-1.5 rounded-full font-medium shadow-md border border-border/50">
+              Clique para ampliar
+            </span>
+          </div>
+        </div>
+        {figure.caption ? (
+          <figcaption className="text-center text-sm leading-relaxed text-muted-foreground">{figure.caption}</figcaption>
+        ) : null}
+      </figure>
+
+      {isOpen && (
+        <div
+          onClick={() => setIsOpen(false)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm transition-opacity duration-300 cursor-zoom-out"
+        >
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsOpen(false);
+            }}
+            className="absolute top-4 right-4 text-white hover:text-gray-300 bg-white/10 hover:bg-white/20 p-2.5 rounded-full transition-all duration-200 hover:scale-105"
+            aria-label="Fechar ampliação"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          
+          <div 
+            onClick={(e) => e.stopPropagation()}
+            className="relative flex flex-col items-center justify-center max-w-[95vw] md:max-w-6xl max-h-[90vh] overflow-hidden rounded-2xl border border-white/15 bg-neutral-950 p-2.5 shadow-2xl transition-all duration-300"
+          >
+            <div className="flex items-center justify-center w-full h-full">
+              <img
+                src={figure.src}
+                alt={figure.alt}
+                className="max-w-full max-h-[75vh] md:max-h-[80vh] h-auto object-contain rounded-xl mx-auto"
+              />
+            </div>
+            {figure.caption ? (
+              <p className="mt-3 text-center text-sm text-neutral-300 leading-relaxed px-4 pb-1.5 max-w-3xl mx-auto">{figure.caption}</p>
+            ) : null}
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -652,21 +702,64 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
         entries = sortDiagnosticSubsectionEntries(entries);
       }
 
+      const groupedEntries: (
+        | { type: 'single'; entry: [string, unknown] }
+        | { type: 'figures'; entries: [string, unknown][] }
+      )[] = [];
+
+      for (const entry of entries) {
+        const [, value] = entry;
+        const isFig = isClinicalFigure(value);
+
+        if (isFig) {
+          const lastGroup = groupedEntries[groupedEntries.length - 1];
+          if (lastGroup && lastGroup.type === 'figures') {
+            lastGroup.entries.push(entry);
+          } else {
+            groupedEntries.push({ type: 'figures', entries: [entry] });
+          }
+        } else {
+          groupedEntries.push({ type: 'single', entry });
+        }
+      }
+
       return (
         <div className="space-y-8 md:space-y-10">
-          {entries.map(([key, value]) => {
-            const tone = subsectionToneForKey(key);
-            return (
-              <FlowSubsection
-                key={key}
-                title={translateEditorialSubsectionKey(key)}
-                tone={tone}
-                subsectionKey={key}
-                visual={visual}
-              >
-                {renderContent(value as EditorialSectionValue)}
-              </FlowSubsection>
-            );
+          {groupedEntries.map((group, idx) => {
+            if (group.type === 'single') {
+              const [key, value] = group.entry;
+              const tone = subsectionToneForKey(key);
+              return (
+                <FlowSubsection
+                  key={key}
+                  title={translateEditorialSubsectionKey(key)}
+                  tone={tone}
+                  subsectionKey={key}
+                  visual={visual}
+                >
+                  {renderContent(value as EditorialSectionValue)}
+                </FlowSubsection>
+              );
+            } else {
+              return (
+                <div key={`figures-grid-${idx}`} className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
+                  {group.entries.map(([key, value]) => {
+                    const tone = subsectionToneForKey(key);
+                    return (
+                      <FlowSubsection
+                        key={key}
+                        title={translateEditorialSubsectionKey(key)}
+                        tone={tone}
+                        subsectionKey={key}
+                        visual={visual}
+                      >
+                        {renderContent(value as EditorialSectionValue)}
+                      </FlowSubsection>
+                    );
+                  })}
+                </div>
+              );
+            }
           })}
         </div>
       );

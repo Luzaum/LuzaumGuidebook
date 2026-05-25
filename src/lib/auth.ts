@@ -80,6 +80,20 @@ export async function signInWithGoogle(nextPath = '/app') {
   return data
 }
 
+export async function signInWithGoogleToken(idToken: string) {
+  const { data, error } = await supabase.auth.signInWithIdToken({
+    provider: 'google',
+    token: idToken,
+  })
+
+  if (error) {
+    throw error
+  }
+
+  return data
+}
+
+
 export async function requestPasswordReset(identifier: string, nextPath = '/login') {
   const email = resolveSupabaseAuthEmail(identifier)
   const redirectPath = nextPath.startsWith('/') ? nextPath : '/login'

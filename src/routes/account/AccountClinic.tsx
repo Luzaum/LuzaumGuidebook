@@ -1,8 +1,9 @@
-import { Link, useNavigate } from 'react-router-dom'
-import { Building2, ShieldCheck } from 'lucide-react'
-import { AccountPageShell } from '@/src/components/account/AccountPageShell'
+import { useNavigate } from 'react-router-dom'
 import { useClinic } from '@/src/components/ClinicProvider'
 import { useAuthSession } from '@/src/components/AuthSessionProvider'
+import { AccountPageShell } from '@/src/components/account/AccountPageShell'
+import { Building2, ShieldCheck, ArrowRight, Sparkles } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 function formatDateTime(value: string | null | undefined) {
   if (!value) return '-'
@@ -12,87 +13,106 @@ function formatDateTime(value: string | null | undefined) {
 }
 
 export default function AccountClinic() {
-  const nav = useNavigate()
+  const navigate = useNavigate()
   const { loading, clinicId, clinicName, role, membership } = useClinic()
   const { user } = useAuthSession()
 
   if (loading) {
-    return <div className="p-6">Carregando clínica...</div>
+    return (
+      <div className="flex h-48 items-center justify-center text-slate-400">
+        <span>Carregando clínica...</span>
+      </div>
+    )
   }
 
   return (
     <AccountPageShell
-      title="Minha clínica"
-      subtitle="Dados da clínica vinculada a sua conta e status de acesso multitenancy."
+      title="Espaço Clínico"
+      subtitle="Informações sobre o seu espaço de atendimento clínico ativo."
     >
       {clinicId ? (
-        <section className="grid gap-4 md:grid-cols-2">
-          <article className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
-            <div className="flex items-center gap-2 text-slate-700 dark:text-slate-200">
-              <Building2 className="h-4 w-4" />
-              <h2 className="text-sm font-semibold">Dados da clínica</h2>
+        <section className="grid gap-5 md:grid-cols-2">
+          
+          <article className="rounded-2xl border border-slate-800 bg-slate-950/40 p-6 shadow-inner backdrop-blur-md">
+            <div className="flex items-center gap-2.5 text-slate-300 mb-5">
+              <Building2 className="h-5 w-5 text-emerald-400" />
+              <h2 className="text-sm font-bold uppercase tracking-wider">Seu Espaço Clínico</h2>
             </div>
-            <div className="mt-3 space-y-1 text-sm text-slate-600 dark:text-slate-300">
-              <p>
-                <strong>Nome:</strong> {clinicName || '-'}
-              </p>
-              <p>
-                <strong>clinic_id:</strong> {clinicId}
-              </p>
-              <p>
-                <strong>Papel:</strong> {role || '-'}
-              </p>
+            <div className="space-y-4 text-sm text-slate-300">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">Identificação</span>
+                <span className="text-slate-100 font-extrabold text-lg mt-1 block">{clinicName || '-'}</span>
+              </div>
+              
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">Sua Atribuição</span>
+                <span className="inline-flex items-center gap-1.5 mt-1.5 rounded-full border border-emerald-500/35 bg-emerald-500/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-emerald-400">
+                  {role === 'owner' ? 'Veterinário Responsável' : 'Veterinário Colaborador'}
+                </span>
+              </div>
             </div>
           </article>
 
-          <article className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
-            <div className="flex items-center gap-2 text-slate-700 dark:text-slate-200">
-              <ShieldCheck className="h-4 w-4" />
-              <h2 className="text-sm font-semibold">Vínculo de segurança</h2>
+          <article className="rounded-2xl border border-slate-800 bg-slate-950/40 p-6 shadow-inner backdrop-blur-md">
+            <div className="flex items-center gap-2.5 text-slate-300 mb-5">
+              <ShieldCheck className="h-5 w-5 text-emerald-400" />
+              <h2 className="text-sm font-bold uppercase tracking-wider">Status do Ambiente</h2>
             </div>
-            <div className="mt-3 space-y-1 text-sm text-slate-600 dark:text-slate-300">
-              <p>
-                <strong>membership_id:</strong> {membership?.membershipId || '-'}
-              </p>
-              <p>
-                <strong>user_id:</strong> {user?.id || '-'}
-              </p>
-              <p>
-                <strong>Criado em:</strong> {formatDateTime(membership?.membershipId ? user?.created_at : '')}
-              </p>
+            <div className="space-y-4 text-sm text-slate-300">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">Conexão na Nuvem</span>
+                <div className="flex items-center gap-2 mt-1.5">
+                  <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="text-slate-200 font-bold">Ativo & Sincronizado</span>
+                </div>
+              </div>
+
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">Configurado em</span>
+                <span className="text-slate-200 font-semibold mt-1 block">
+                  {formatDateTime(membership?.membershipId ? user?.created_at : '')}
+                </span>
+              </div>
             </div>
           </article>
+          
         </section>
       ) : (
-        <section className="rounded-xl border border-amber-300 bg-amber-50 p-4 dark:border-amber-700 dark:bg-amber-900/20">
-          <h2 className="text-sm font-semibold text-amber-900 dark:text-amber-200">Nenhuma clínica ativa</h2>
-          <p className="mt-2 text-sm text-amber-800 dark:text-amber-300">
-            Esta conta ainda não possui clínica configurada. Para continuar com o fluxo SaaS, finalize o setup.
+        <section className="rounded-2xl border border-amber-500/25 bg-amber-500/10 p-6 backdrop-blur-md">
+          <div className="flex items-center gap-2 text-amber-400">
+            <Sparkles className="h-5 w-5" />
+            <h2 className="text-sm font-bold uppercase tracking-wider">Nenhum Espaço Configurado</h2>
+          </div>
+          <p className="mt-3 text-sm text-slate-300 leading-relaxed">
+            Esta conta ainda não possui um consultório ou clínica ativa. Para emitir receitas, gerenciar prontuários e acessar as ferramentas do Vetius, você precisa configurar seu espaço.
           </p>
           <button
             type="button"
-            onClick={() => nav('/clinic/setup')}
-            className="mt-3 rounded-lg bg-amber-600 px-3 py-2 text-sm font-medium text-white hover:bg-amber-500"
+            onClick={() => navigate('/clinic/setup')}
+            className="mt-4 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs px-4 py-2.5 transition-all shadow-md active:scale-[0.98]"
           >
-            Ir para setup de clínica
+            Configurar Espaço de Trabalho
           </button>
         </section>
       )}
 
-      <section className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
-        <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Navegação relacionada</h2>
-        <div className="mt-3 grid gap-2 sm:grid-cols-2">
+      {/* Navigation section */}
+      <section className="rounded-2xl border border-slate-800 bg-slate-950/40 p-5 backdrop-blur-md">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-slate-300">Navegação relacionada</h2>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
           <Link
             to="/app"
-            className="rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+            className="group flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-3 text-sm text-slate-300 transition-all duration-300 hover:bg-slate-800 hover:text-white hover:border-slate-700"
           >
-            Voltar para área logada
+            <span>Voltar para área logada</span>
+            <ArrowRight className="h-4 w-4 text-slate-500 group-hover:text-emerald-400 transition-colors" />
           </Link>
           <Link
             to="/conta/perfil"
-            className="rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+            className="group flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-3 text-sm text-slate-300 transition-all duration-300 hover:bg-slate-800 hover:text-white hover:border-slate-700"
           >
-            Atualizar perfil da conta
+            <span>Atualizar perfil da conta</span>
+            <ArrowRight className="h-4 w-4 text-slate-500 group-hover:text-emerald-400 transition-colors" />
           </Link>
         </div>
       </section>

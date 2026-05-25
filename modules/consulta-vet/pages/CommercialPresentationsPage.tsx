@@ -63,6 +63,19 @@ const SUBCLASS_LABELS: Record<CommercialMedicationSubclass, string> = {
   skin_antifungal_shampoo: 'Shampoo antifúngico/antisséptico',
   skin_wound_healing: 'Feridas e cicatrização',
   skin_seborrhea: 'Seborreia',
+  parasite_oral_isoxazoline_dog: 'Isoxazolina oral para cão',
+  parasite_oral_endectocide_dog: 'Endectocida oral para cão',
+  parasite_topical_isoxazoline_cat: 'Isoxazolina tópica para gato',
+  parasite_oral_antifleas_cat: 'Antipulgas oral para gato',
+  parasite_oral_adulticide_flea: 'Adulticida oral para pulgas',
+  parasite_topical_classic: 'Tópicos clássicos',
+  parasite_topical_endectocide: 'Tópicos endectocidas',
+  parasite_collar: 'Coleiras antiparasitárias',
+  parasite_vector_repellent_dog: 'Repelentes vetoriais para cães',
+  parasite_dewormer_dog: 'Vermífugos para cães',
+  parasite_dewormer_cat: 'Vermífugos para gatos',
+  parasite_heartworm_prevention: 'Prevenção de dirofilariose',
+  parasite_giardia: 'Giardia',
   gi_antiemetic: 'Antieméticos',
   gi_antidiarrheal: 'Antidiarreicos',
   gi_gastric_protector: 'Protetores gástricos',
@@ -78,6 +91,7 @@ const SUBCLASS_LABELS: Record<CommercialMedicationSubclass, string> = {
   renal_ckd_support: 'Doença renal crônica',
   ortho_joint_support: 'Suporte articular',
   ortho_antiinflammatory: 'Anti-inflamatórios ortopédicos',
+  nutra_omega3: 'Ômega 3 / EPA + DHA',
 };
 
 const SUBCLASSES_BY_CLASS: Record<CommercialMedicationClass, CommercialMedicationSubclass[]> = {
@@ -106,11 +120,25 @@ const SUBCLASSES_BY_CLASS: Record<CommercialMedicationClass, CommercialMedicatio
   infectious: [],
   analgesic: [],
   anesthetic: [],
-  nutraceutical: [],
+  nutraceutical: ['nutra_omega3'],
   reproductive: [],
   oncologic: [],
   emergency: [],
-  parasiticide: [],
+  parasiticide: [
+    'parasite_oral_isoxazoline_dog',
+    'parasite_oral_endectocide_dog',
+    'parasite_topical_isoxazoline_cat',
+    'parasite_oral_antifleas_cat',
+    'parasite_oral_adulticide_flea',
+    'parasite_topical_classic',
+    'parasite_topical_endectocide',
+    'parasite_collar',
+    'parasite_vector_repellent_dog',
+    'parasite_dewormer_dog',
+    'parasite_dewormer_cat',
+    'parasite_heartworm_prevention',
+    'parasite_giardia',
+  ],
   behavioral: [],
   dental: [],
 };
@@ -238,6 +266,17 @@ function ProductCard({
                 <ExternalLink className="h-3.5 w-3.5" />
               </a>
             ) : null}
+            {product.labelUrl ? (
+              <a
+                href={product.labelUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/[0.08] px-2.5 py-1 text-xs font-semibold text-emerald-800 transition-colors hover:bg-emerald-500/[0.14]"
+              >
+                Bula
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            ) : null}
           </div>
         </div>
       </div>
@@ -256,8 +295,8 @@ function ProductCard({
 
       <div className="mt-5 rounded-xl border border-amber-500/25 bg-amber-500/[0.07] p-4">
         <div className="flex gap-3">
-          <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-700" />
-          <p className="text-sm leading-6 text-amber-900">{product.safetyAlert}</p>
+          <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-700 dark:text-amber-300" />
+          <p className="text-sm leading-6 text-amber-900 dark:text-amber-100">{product.safetyAlert}</p>
         </div>
       </div>
 
@@ -287,18 +326,21 @@ export function CommercialPresentationsPage() {
   const [zoomedProduct, setZoomedProduct] = useState<CommercialMedicationProduct | null>(null);
 
   const availableSubclasses = commercialClass ? SUBCLASSES_BY_CLASS[commercialClass] : [];
+  const normalizedQuery = query.trim().toLowerCase();
+  const hasTextSearch = normalizedQuery.length > 0;
+  const shouldShowProducts = Boolean(commercialClass) || hasTextSearch;
 
   const products = useMemo(() => {
-    if (!commercialClass) return [];
+    if (!commercialClass && !normalizedQuery) return [];
 
-    const normalized = query.trim().toLowerCase();
     return commercialOticProductsSeed.filter((product) => {
       const productSubclasses = product.commercialSubclasses || [product.commercialSubclass];
-      const matchesClass = product.commercialClass === commercialClass;
-      const matchesSubclass = commercialSubclass === 'all' || productSubclasses.includes(commercialSubclass);
+      const matchesClass = !commercialClass || product.commercialClass === commercialClass;
+      const matchesSubclass =
+        !commercialClass || commercialSubclass === 'all' || productSubclasses.includes(commercialSubclass);
       const matchesSpecies = species === 'all' || product.species.includes(species);
       const matchesQuery =
-        !normalized ||
+        !normalizedQuery ||
         [
           product.name,
           product.manufacturer,
@@ -309,11 +351,11 @@ export function CommercialPresentationsPage() {
         ]
           .join(' ')
           .toLowerCase()
-          .includes(normalized);
+          .includes(normalizedQuery);
 
       return matchesClass && matchesSubclass && matchesSpecies && matchesQuery;
     });
-  }, [commercialClass, commercialSubclass, query, species]);
+  }, [commercialClass, commercialSubclass, normalizedQuery, species]);
 
   return (
     <div className="mx-auto w-full max-w-[1560px] space-y-8 p-4 md:p-8">
@@ -393,7 +435,7 @@ export function CommercialPresentationsPage() {
         <div className="flex items-end">
           <div className="flex h-11 w-full items-center rounded-xl border border-border bg-muted/25 px-4 text-sm text-muted-foreground">
             <Filter className="mr-2 h-4 w-4 text-cyan-700" />
-            {commercialClass ? `${products.length} resultado(s)` : 'Aguardando classe'}
+            {shouldShowProducts ? `${products.length} resultado(s)` : 'Aguardando classe'}
           </div>
         </div>
       </section>
@@ -402,11 +444,11 @@ export function CommercialPresentationsPage() {
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h2 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
             <FlaskConical className="h-4 w-4" />
-            {commercialClass ? CLASS_LABELS[commercialClass] : 'Produtos comerciais'}
+            {commercialClass ? CLASS_LABELS[commercialClass] : hasTextSearch ? 'Resultados da busca' : 'Produtos comerciais'}
           </h2>
         </div>
 
-        {!commercialClass ? (
+        {!shouldShowProducts ? (
           <div className="rounded-2xl border border-dashed border-cyan-500/35 bg-cyan-500/[0.06] py-16 text-center">
             <PackageSearch className="mx-auto h-9 w-9 text-cyan-700" />
             <p className="mt-3 text-sm font-semibold text-cyan-900">Escolha uma classe comercial para começar.</p>

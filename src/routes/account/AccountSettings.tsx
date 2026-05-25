@@ -1,30 +1,30 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { AccountPageShell } from '@/src/components/account/AccountPageShell'
 import { useAuthSession } from '@/src/components/AuthSessionProvider'
 
-type AccountSettingsState = {
+type SettingsShape = {
   emailAlerts: boolean
   productUpdates: boolean
   autoOpenLastModule: boolean
   compactHeader: boolean
 }
 
-const defaultSettings: AccountSettingsState = {
+const defaultSettings: SettingsShape = {
   emailAlerts: true,
   productUpdates: false,
   autoOpenLastModule: true,
   compactHeader: false,
 }
 
-function getStorageKey(userId: string | null | undefined) {
+function buildStorageKey(userId: string | null | undefined): string {
   return `vetius:account:settings:${String(userId || 'anon')}`
 }
 
-function readSettings(userId: string | null | undefined): AccountSettingsState {
+function loadSettings(userId: string | null | undefined): SettingsShape {
   try {
-    const raw = localStorage.getItem(getStorageKey(userId))
+    const raw = localStorage.getItem(buildStorageKey(userId))
     if (!raw) return defaultSettings
-    const parsed = JSON.parse(raw) as Partial<AccountSettingsState>
+    const parsed = JSON.parse(raw)
     return {
       emailAlerts: Boolean(parsed.emailAlerts ?? defaultSettings.emailAlerts),
       productUpdates: Boolean(parsed.productUpdates ?? defaultSettings.productUpdates),
@@ -36,108 +36,112 @@ function readSettings(userId: string | null | undefined): AccountSettingsState {
   }
 }
 
-function saveSettings(userId: string | null | undefined, value: AccountSettingsState) {
-  localStorage.setItem(getStorageKey(userId), JSON.stringify(value))
+function saveSettings(userId: string | null | undefined, value: SettingsShape) {
+  localStorage.setItem(buildStorageKey(userId), JSON.stringify(value))
 }
 
 export default function AccountSettings() {
   const { user } = useAuthSession()
-  const [settings, setSettings] = useState<AccountSettingsState>(defaultSettings)
-  const [message, setMessage] = useState('')
+  const [settings, setSettings] = useState<SettingsShape>(defaultSettings)
+  const [successMessage, setSuccessMessage] = useState('')
 
   const userId = useMemo(() => user?.id || null, [user?.id])
 
   useEffect(() => {
-    setSettings(readSettings(userId))
+    setSettings(loadSettings(userId))
   }, [userId])
 
-  function updateSettings(next: AccountSettingsState, feedback = 'Configurações atualizadas.') {
+  function updateSetting(next: SettingsShape, feedback = 'Configurações atualizadas com sucesso!') {
     setSettings(next)
     saveSettings(userId, next)
-    setMessage(feedback)
+    setSuccessMessage(feedback)
+    
+    // Clear message after 3 seconds
+    const timer = setTimeout(() => setSuccessMessage(''), 3000)
+    return () => clearTimeout(timer)
   }
 
   return (
     <AccountPageShell
       title="Configurações"
-      subtitle="Controle preferencias da conta para melhorar seu fluxo diario."
+      subtitle="Controle preferências da conta para melhorar seu fluxo diário."
     >
-      <section className="space-y-4 rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
-        <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Preferencias da conta</h2>
+      <section className="space-y-4 rounded-2xl border border-slate-800 bg-slate-950/40 p-6 backdrop-blur-md shadow-inner">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-slate-300 mb-4">
+          Preferências da conta
+        </h2>
 
-        <label className="flex items-start justify-between gap-4 rounded-lg border border-slate-200 p-3 dark:border-slate-700">
-          <div>
-            <p className="text-sm font-medium text-slate-900 dark:text-slate-100">Notificações por email</p>
-            <p className="text-xs text-slate-500">Receber avisos importantes sobre segurança e acesso.</p>
-          </div>
-          <input
-            type="checkbox"
-            checked={settings.emailAlerts}
-            onChange={(event) => {
-              updateSettings({ ...settings, emailAlerts: event.target.checked })
-            }}
-            className="mt-1 h-4 w-4"
-          />
-        </label>
+        <div className="space-y-3">
+          
+          <label className="flex items-center justify-between gap-4 rounded-xl border border-slate-800 bg-slate-900/30 p-4 transition-all hover:bg-slate-900/60 select-none cursor-pointer">
+            <div className="min-w-0">
+              <p className="text-sm font-semibold text-slate-200">Notificações por e-mail</p>
+              <p className="text-xs text-slate-500 mt-0.5">Receber avisos importantes sobre segurança e acesso à plataforma.</p>
+            </div>
+            <input
+              type="checkbox"
+              checked={settings.emailAlerts}
+              onChange={(e) => updateSetting({ ...settings, emailAlerts: e.target.checked })}
+              className="h-5 w-5 rounded-md border-slate-800 bg-slate-950 text-emerald-500 accent-emerald-500 focus:ring-emerald-500/30 cursor-pointer"
+            />
+          </label>
 
-        <label className="flex items-start justify-between gap-4 rounded-lg border border-slate-200 p-3 dark:border-slate-700">
-          <div>
-            <p className="text-sm font-medium text-slate-900 dark:text-slate-100">Atualizacoes de produto</p>
-            <p className="text-xs text-slate-500">Ser avisado sobre novos modulos e melhorias.</p>
-          </div>
-          <input
-            type="checkbox"
-            checked={settings.productUpdates}
-            onChange={(event) => {
-              updateSettings({ ...settings, productUpdates: event.target.checked })
-            }}
-            className="mt-1 h-4 w-4"
-          />
-        </label>
+          <label className="flex items-center justify-between gap-4 rounded-xl border border-slate-800 bg-slate-900/30 p-4 transition-all hover:bg-slate-900/60 select-none cursor-pointer">
+            <div className="min-w-0">
+              <p className="text-sm font-semibold text-slate-200">Atualizações de produto</p>
+              <p className="text-xs text-slate-500 mt-0.5">Ser notificado sobre o lançamento de novos módulos e melhorias gerais.</p>
+            </div>
+            <input
+              type="checkbox"
+              checked={settings.productUpdates}
+              onChange={(e) => updateSetting({ ...settings, productUpdates: e.target.checked })}
+              className="h-5 w-5 rounded-md border-slate-800 bg-slate-950 text-emerald-500 accent-emerald-500 focus:ring-emerald-500/30 cursor-pointer"
+            />
+          </label>
 
-        <label className="flex items-start justify-between gap-4 rounded-lg border border-slate-200 p-3 dark:border-slate-700">
-          <div>
-            <p className="text-sm font-medium text-slate-900 dark:text-slate-100">Reabrir último modulo</p>
-            <p className="text-xs text-slate-500">Ao entrar, ir direto para o último modulo usado.</p>
-          </div>
-          <input
-            type="checkbox"
-            checked={settings.autoOpenLastModule}
-            onChange={(event) => {
-              updateSettings({ ...settings, autoOpenLastModule: event.target.checked })
-            }}
-            className="mt-1 h-4 w-4"
-          />
-        </label>
+          <label className="flex items-center justify-between gap-4 rounded-xl border border-slate-800 bg-slate-900/30 p-4 transition-all hover:bg-slate-900/60 select-none cursor-pointer">
+            <div className="min-w-0">
+              <p className="text-sm font-semibold text-slate-200">Reabrir último módulo</p>
+              <p className="text-xs text-slate-500 mt-0.5">Ir direto para o último módulo utilizado ao acessar a plataforma.</p>
+            </div>
+            <input
+              type="checkbox"
+              checked={settings.autoOpenLastModule}
+              onChange={(e) => updateSetting({ ...settings, autoOpenLastModule: e.target.checked })}
+              className="h-5 w-5 rounded-md border-slate-800 bg-slate-950 text-emerald-500 accent-emerald-500 focus:ring-emerald-500/30 cursor-pointer"
+            />
+          </label>
 
-        <label className="flex items-start justify-between gap-4 rounded-lg border border-slate-200 p-3 dark:border-slate-700">
-          <div>
-            <p className="text-sm font-medium text-slate-900 dark:text-slate-100">Cabecalho compacto</p>
-            <p className="text-xs text-slate-500">Usar um cabecalho menor para maior area util de tela.</p>
-          </div>
-          <input
-            type="checkbox"
-            checked={settings.compactHeader}
-            onChange={(event) => {
-              updateSettings({ ...settings, compactHeader: event.target.checked })
-            }}
-            className="mt-1 h-4 w-4"
-          />
-        </label>
+          <label className="flex items-center justify-between gap-4 rounded-xl border border-slate-800 bg-slate-900/30 p-4 transition-all hover:bg-slate-900/60 select-none cursor-pointer">
+            <div className="min-w-0">
+              <p className="text-sm font-semibold text-slate-200">Cabeçalho compacto</p>
+              <p className="text-xs text-slate-500 mt-0.5">Reduzir o tamanho do cabeçalho global do app para obter mais área útil na tela.</p>
+            </div>
+            <input
+              type="checkbox"
+              checked={settings.compactHeader}
+              onChange={(e) => updateSetting({ ...settings, compactHeader: e.target.checked })}
+              className="h-5 w-5 rounded-md border-slate-800 bg-slate-950 text-emerald-500 accent-emerald-500 focus:ring-emerald-500/30 cursor-pointer"
+            />
+          </label>
 
-        <div className="flex items-center gap-2 pt-1">
-          <button
-            type="button"
-            className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
-            onClick={() => {
-              updateSettings(defaultSettings, 'Configurações restauradas para o padrao.')
-            }}
-          >
-            Restaurar padrao
-          </button>
         </div>
 
-        {message ? <p className="text-sm text-emerald-600">{message}</p> : null}
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between pt-4 border-t border-slate-800/80">
+          <button
+            type="button"
+            className="rounded-xl border border-slate-800 bg-slate-900/60 hover:bg-slate-800 hover:text-white text-xs font-bold text-slate-300 px-4 py-2.5 transition-all w-fit"
+            onClick={() => updateSetting(defaultSettings, 'Configurações restauradas para o padrão.')}
+          >
+            Restaurar padrão
+          </button>
+          
+          {successMessage && (
+            <p className="text-xs font-semibold text-emerald-400">
+              {successMessage}
+            </p>
+          )}
+        </div>
       </section>
     </AccountPageShell>
   )

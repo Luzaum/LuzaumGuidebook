@@ -222,7 +222,85 @@ export const PUBLIC_CATALOG_DISEASE_CARD_STUBS: DiseaseRecord[] = [
     quickSummary:
       'A DMVD (endocardiose mixomatosa da valva mitral) é a cardiopatia adquirida mais frequente em cães de pequeno porte: as folhetos mitrais tornam-se espessados, encurtados e incompetentes, permitindo regurgitação sistólica da câmara esquerda para o átrio esquerdo. Com o tempo, aumenta o volume regurgitante, a sobrecarga de volume do ventrículo esquerdo (VE) e a pressão no leito capilar pulmonar — primeiro com remodelação compensatória (hipertrofia excêntrica, aumento diastólico), depois com disfunção sistólica, taquiarritmias (especialmente fibrilação atrial) e insuficiência cardíaca congestiva (ICC). O sopro sistólico em foco mitral esquerdo é o achado mais comum, mas a intensidade do ruído não traduz de forma linear a gravidade hemodinâmica. O estadiamento ACVIM (A–D) integra presença de lesão, grau de remodelação ao ecocardiograma e presença de sinais de ICC; em B2, quando critérios ecocardiográficos de remodelação relevante são atingidos, há base de evidência e consenso para considerar pimobendan antes do aparecimento de ICC clínica (estudo EPIC e diretriz ACVIM). O tratamento da ICC congestiva combina diuréticos, inodilatação (pimobendan), modulação do sistema renina–angiotensina–aldosterona (RAAS) quando tolerado, controle de frequência em taquiarritmias e manejo de comorbidades; a monitorização de creatinina e eletrólitos é obrigatória ao associar IECA, diurético e baixo débito.',
   }),
+  diseaseListCard({
+    id: 'disease-hipoadrenocorticismo-addison',
+    slug: 'hipoadrenocorticismo-addison',
+    title: 'Hipoadrenocorticismo (Doença de Addison)',
+    synonyms: [
+      'Doença de Addison',
+      'Addison canino',
+      'Insuficiência adrenal primária',
+      'Hypoadrenocorticism',
+      'Addisonian crisis',
+    ],
+    species: ['dog'],
+    category: 'endocrinologia',
+    tags: [
+      'Adrenal',
+      'Aldosterona',
+      'Cortisol',
+      'DOCP',
+      'ACTH',
+      'Hipercalemia',
+      'Hiponatremia',
+      'Fludrocortisona',
+    ],
+    quickSummary:
+      'O hipoadrenocorticismo (doença de Addison) é uma síndrome multissistêmica caracterizada pela produção deficiente de hormônios adrenocorticais (glicocorticoides e/ou mineralocorticoides). A forma primária (destruição autoimune de ~90% do córtex adrenal) é a mais comum em cães, afetando tanto o cortisol quanto a aldosterona. A deficiência de aldosterona leva a graves desvios eletrolíticos (hipercalemia, hiponatremia, hipocloratemia) com colapso circulatório, hipovolemia e bradicardia ameaçadora à vida (Crise Addisoniana). A deficiência de cortisol provoca distúrbios gastrointestinais intermitentes, hipoglicemia e incapacidade absoluta de responder ao estresse. O diagnóstico definitivo baseia-se na ausência de resposta no teste de estimulação com ACTH. O tratamento inicial da crise aguda é emergência médica e exige expansão rápida de volume com NaCl 0.9% e Dexametasona, enquanto a manutenção é realizada com DOCP e baixas doses diárias de Prednisona/Prednisolona.',
+  }),
+  diseaseListCard({
+    id: 'disease-hipertireoidismo-felino',
+    slug: 'hipertireoidismo-felino',
+    title: 'Hipertireoidismo Felino',
+    synonyms: [
+      'Hipertireoidismo',
+      'Adenoma tireóideo felino',
+      'Feline hyperthyroidism',
+      'Bócio felino',
+      'Tireotoxicose',
+    ],
+    species: ['cat'],
+    category: 'endocrinologia',
+    tags: [
+      'Tireóide',
+      'T4 Total',
+      'Metimazol',
+      'Bócio',
+      'I-131',
+      'Perda de peso',
+      'Polifagia',
+      'Taquicardia',
+    ],
+    quickSummary:
+      'O hipertireoidismo felino é a endocrinopatia mais comum em gatos idosos, caracterizada pela produção excessiva e autônoma dos hormônios tireoidianos tiroxina (T4) e triiodotironina (T3). Em mais de 98% dos casos, decorre de hiperplasia adenomatosa multinodular benigna ou adenoma de um ou ambos os lobos tireoidianos; o carcinoma tireoidiano é raro (<2%). O quadro clássico inclui perda de peso progressiva apesar de apetite voraz (polifagia), hiperatividade, poliúria/polidipsia, distúrbios gastrointestinais (vômitos/diarreia por hipermotilidade), taquicardia severa e bócio palpável (thyroid slip). O diagnóstico baseia-se na dosagem de T4 Total elevado, utilizando T4 Livre por diálise em casos limítrofes. O tratamento pode ser controle clínico (metimazol oral/transdérmico), curativo definitivo (Iodo radioativo I-131 ou tireoidectomia bilateral) ou dietético (baixo iodo). Um pilar crítico é a monitorização renal pós-tratamento, pois o restabelecimento do eutireoidismo reduz o fluxo sanguíneo renal e pode desmascarar Doença Renal Crônica (DRC) preexistente.',
+  }),
+  diseaseListCard({
+    id: 'disease-hipotireoidismo-canino',
+    slug: 'hipotireoidismo-canino',
+    title: 'Hipotireoidismo Canino',
+    synonyms: [
+      'Hipotireoidismo',
+      'Canine hypothyroidism',
+      'Tireoidite linfocítica',
+      'Atrofia tireóidea idiopática',
+    ],
+    species: ['dog'],
+    category: 'endocrinologia',
+    tags: [
+      'Tireóide',
+      'Levotiroxina',
+      'T4 Livre',
+      'cTSH',
+      'Letargia',
+      'Ganho de peso',
+      'Alopecia simétrica',
+      'Fáceis trágica',
+    ],
+    quickSummary:
+      'O hipotireoidismo canino é uma das endocrinopatias mais comuns em cães, caracterizada pelo decréscimo da produção e secreção dos hormônios tireoidianos (T4 e T3). Na quase totalidade dos casos, é uma afecção primária decorrente de tireoidite linfocítica imunomediada (destruição ativa com presença de autoanticorpos antitiroglobulina) ou atrofia tireóidea idiopática (substituição por tecido adiposo). O hipotireoidismo secundário (pituitário) é muito raro (<5%). A deficiência hormonal diminui a atividade metabólica celular de quase todos os sistemas corporais, manifestando-se clinicamente por letargia profunda, ganho de peso sem aumento de ingestão calórica, intolerância ao exercício, busca por fontes de calor, e graves distúrbios dermatológicos (alopecia simétrica bilateral não pruriginosa, cauda de rato, hiperpigmentação e fácies trágica por mixedema facial). O diagnóstico é desafiador devido à inespecificidade dos sinais e à supressão do T4 sérico por doenças não tireoidianas (Euthyroid Sick Syndrome). A confirmação exige a combinação de T4 Livre por diálise baixo e cTSH elevado. O tratamento consiste na reposição vitalícia com Levotiroxina sódica oral.',
+  }),
 ];
+
 
 export const PUBLIC_CATALOG_MEDICATION_CARD_STUBS: MedicationRecord[] = [
   medicationListCard({
