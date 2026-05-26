@@ -133,21 +133,37 @@ async function fetchSupabaseDiseases(includeDrafts = false): Promise<DiseaseReco
 }
 
 export class SupabaseDiseaseRepository implements DiseaseRepository {
+  private listCache: { data: DiseaseRecord[]; timestamp: number; includeDrafts: boolean } | null = null;
+
   async list(options?: { includeDrafts?: boolean }): Promise<DiseaseRecord[]> {
     if (!hasSupabaseEnv()) {
       return localDiseaseRepository.list(options);
     }
 
+    const includeDrafts = Boolean(options?.includeDrafts);
+    const now = Date.now();
+    if (this.listCache && this.listCache.includeDrafts === includeDrafts && (now - this.listCache.timestamp) < 15000) {
+      return this.listCache.data;
+    }
+
     try {
       const remote = await withTimeout(
-        fetchSupabaseDiseases(Boolean(options?.includeDrafts)),
+        fetchSupabaseDiseases(includeDrafts),
         'carregar doenças editoriais'
       );
       const diseasesSeed = await loadDiseasesEditorialSeed();
       const merged = mergeBySlug(diseasesSeed, remote).sort((left, right) =>
         left.title.localeCompare(right.title, 'pt-BR')
       );
-      return filterPublicDiseases(merged, Boolean(options?.includeDrafts));
+      const result = filterPublicDiseases(merged, includeDrafts);
+      
+      this.listCache = {
+        data: result,
+        timestamp: now,
+        includeDrafts,
+      };
+      
+      return result;
     } catch {
       return localDiseaseRepository.list(options);
     }
@@ -290,6 +306,7 @@ export class SupabaseDiseaseRepository implements DiseaseRepository {
       }
     }
 
+    this.listCache = null;
     const result = await this.getBySlug(normalizedSlug, { includeDrafts: true });
     if (!result) {
       throw new Error('Doença salva, mas não foi possível reler o registro editorial.');

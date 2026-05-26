@@ -177,10 +177,11 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
         ],
         [
           'Técnica',
-          'Cervical preferencialmente em inspiração; intratorácica/brônquios mais evidentes em expiração.',
+          'Cervical preferencialmente inalação/inspiração; intratorácica/brônquios mais evidentes em expiração.',
         ],
       ],
     },
+
     tcFluoroscopia:
       'Melhor imagem funcional para documentar colapso com respiração e tosse; avalia também vias aéreas superiores e fenômenos associados (Johnson; texto de emergência).',
     tcTraqueoBroncoscopia:
@@ -263,6 +264,7 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
       'Oxigênio, mínimo estresse, sedação/antitussígenos, anti-inflamatório; excluir edema/pneumonia. Traqueostomia raramente resolve colapso difuso extenso.',
     tcAnéisExtraluminais:
       'Indicação clássica para colapso cervical/inlet; risco de lesão do nervo laríngeo recorrente (paralisia laríngea iatrogênica possível).',
+
     tcStentIntraluminal:
       'Considerar quando obstrução respiratória relevante persiste apesar de manejo médico máximo; resultados menos satisfatórios se a queixa principal for apenas tosse sem obstrução funcional grave. Nelson cita sobrevida mediana ~502 dias em série complicada por taxa relevante de eventos adversos; alinhar expectativas com meta-análise 2024 (tosse/complicações frequentes, medicação e revisões contínuas).',
   },

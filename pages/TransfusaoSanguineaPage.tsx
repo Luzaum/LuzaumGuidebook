@@ -1,8 +1,6 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import TransfusaoSanguinea from '../TransfusaoSanguinea'
+import React from 'react';
+import { TransfusionLayout } from '../modules/transfusao-sanguinea/TransfusionLayout';
 
 export function TransfusaoSanguineaPage() {
-  const navigate = useNavigate()
-  return <TransfusaoSanguinea onBack={() => navigate('/')} />
+  return <TransfusionLayout />;
 }

@@ -101,21 +101,37 @@ async function fetchSupabaseMedications(includeDrafts = false): Promise<Medicati
 }
 
 export class SupabaseMedicationRepository implements MedicationRepository {
+  private listCache: { data: MedicationRecord[]; timestamp: number; includeDrafts: boolean } | null = null;
+
   async list(options?: { includeDrafts?: boolean }): Promise<MedicationRecord[]> {
     if (!hasSupabaseEnv()) {
       return localMedicationRepository.list(options);
     }
 
+    const includeDrafts = Boolean(options?.includeDrafts);
+    const now = Date.now();
+    if (this.listCache && this.listCache.includeDrafts === includeDrafts && (now - this.listCache.timestamp) < 15000) {
+      return this.listCache.data;
+    }
+
     try {
       const remote = await withTimeout(
-        fetchSupabaseMedications(Boolean(options?.includeDrafts)),
+        fetchSupabaseMedications(includeDrafts),
         'carregar medicamentos editoriais'
       );
       const medicationsSeed = await loadMedicationsEditorialSeed();
       const merged = mergeBySlug(medicationsSeed, remote).sort((left, right) =>
         left.title.localeCompare(right.title, 'pt-BR')
       );
-      return filterPublicMedications(merged, Boolean(options?.includeDrafts));
+      const result = filterPublicMedications(merged, includeDrafts);
+      
+      this.listCache = {
+        data: result,
+        timestamp: now,
+        includeDrafts,
+      };
+      
+      return result;
     } catch {
       return localMedicationRepository.list(options);
     }
@@ -242,6 +258,7 @@ export class SupabaseMedicationRepository implements MedicationRepository {
       }
     }
 
+    this.listCache = null;
     const result = await this.getBySlug(normalizedSlug, { includeDrafts: true });
     if (!result) {
       throw new Error('Medicamento salvo, mas não foi possível reler o registro editorial.');

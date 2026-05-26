@@ -22,6 +22,7 @@ import { cn } from '../../../lib/utils';
 import { buildDoseSummaryLabel, formatDoseSpeciesLabel } from '../utils/medicationRules';
 import { medicationPharmacologyBlockIcons } from '../utils/editorialSubsectionIcons';
 import { getMedicationSectionVisual } from '../utils/medicationSectionVisual';
+import { sanitizeHTML } from '../../../utils/sanitize';
 
 type ResumeLocationState = {
   sectionId?: string;
@@ -677,7 +678,7 @@ export function MedicationDetailPage() {
               ) : null}
               <div
                 className="prose prose-slate max-w-[108ch] text-[15px] leading-8 dark:prose-invert prose-p:my-0 prose-p:leading-8 prose-p:mb-5 prose-strong:text-foreground"
-                dangerouslySetInnerHTML={{ __html: medication.clinicalNotesRichText }}
+                dangerouslySetInnerHTML={{ __html: sanitizeHTML(medication.clinicalNotesRichText) }}
               />
             </div>
           </MedicationSectionFrame>

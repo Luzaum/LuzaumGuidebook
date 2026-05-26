@@ -73,6 +73,33 @@ interface PresentationRecord {
   }
 }
 
+function canonicalRecommendedDoseUnit(
+  doseUnit?: string | null,
+  perWeightUnit?: string | null,
+  administrationBasis?: string | null,
+): string {
+  const baseUnit = String(doseUnit || '').trim()
+  const suffix = String(perWeightUnit || '').trim()
+  if (!baseUnit) return ''
+  const normalizedBase = baseUnit.toLowerCase()
+  if (normalizedBase.includes('/')) return baseUnit
+  if (!suffix) {
+    const basis = String(administrationBasis || 'weight_based').trim().toLowerCase()
+    if (
+      (!basis || basis === 'weight_based' || basis === 'weight') &&
+      /^(mg|g|mcg|µg|ug|ui|iu|u|ml|mcl)$/i.test(baseUnit)
+    ) {
+      return `${baseUnit}/kg`
+    }
+    return baseUnit
+  }
+  const normalizedSuffix = suffix.toLowerCase()
+  if (normalizedBase.endsWith(`/${normalizedSuffix}`) || normalizedBase.includes(`/${normalizedSuffix} `)) {
+    return baseUnit
+  }
+  return `${baseUnit}/${suffix}`
+}
+
 // ==================== COMPONENT ====================
 
 export function MedicationModalV3({
@@ -241,7 +268,7 @@ export function MedicationModalV3({
           routeGroup: (bestDose?.route || med.default_route || 'ORAL') as RouteGroup,
           // Dose sugerida (se existir)
           doseValue: bestDose ? String(bestDose.dose_value) : prev.doseValue,
-          doseUnit: bestDose ? bestDose.dose_unit : prev.doseUnit,
+          doseUnit: bestDose ? canonicalRecommendedDoseUnit(bestDose.dose_unit, bestDose.per_weight_unit, bestDose.administration_basis) : prev.doseUnit,
           // Frequência parseada
           frequencyToken: freqToken,
           timesPerDay,
@@ -294,7 +321,7 @@ export function MedicationModalV3({
       onDraftChange((prev) => ({
         ...prev,
         doseValue: String(dose.dose_value),
-        doseUnit: dose.dose_unit,
+        doseUnit: canonicalRecommendedDoseUnit(dose.dose_unit, dose.per_weight_unit, dose.administration_basis),
         routeGroup: (dose.route || prev.routeGroup) as RouteGroup,
       }))
     },
@@ -461,7 +488,7 @@ export function MedicationModalV3({
                           {dose.species} • {dose.route || 'VO'}
                         </p>
                         <p className="text-[10px] text-slate-400">
-                          {dose.dose_value} {dose.dose_unit}
+                          {dose.dose_value} {canonicalRecommendedDoseUnit(dose.dose_unit, dose.per_weight_unit, dose.administration_basis)}
                           {dose.frequency && ` • ${dose.frequency}`}
                         </p>
                       </div>

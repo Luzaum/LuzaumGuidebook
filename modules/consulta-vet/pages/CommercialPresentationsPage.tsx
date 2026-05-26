@@ -16,6 +16,7 @@ import { ConsultaVetPageHero } from '../components/layout/ConsultaVetPageHero';
 import { commercialOticProductsSeed } from '../data/commercialOticProducts.seed';
 import {
   CommercialMedicationClass,
+  CommercialMedicationDoseEntry,
   CommercialMedicationProduct,
   CommercialMedicationSubclass,
 } from '../types/commercialMedication';
@@ -83,6 +84,10 @@ const SUBCLASS_LABELS: Record<CommercialMedicationSubclass, string> = {
   neuro_anticonvulsant: 'Anticonvulsivantes',
   neuro_pain: 'Dor neuropática',
   cardio_inotrope: 'Inotrópicos',
+  cardio_loop_diuretic: 'Diuréticos de alça',
+  cardio_raas_aldosterone: 'SRAA / aldosterona',
+  cardio_antithrombotic: 'Antitrombóticos',
+  cardio_pulmonary_vasodilator: 'Vasodilatadores pulmonares',
   cardio_antiarrhythmic: 'Antiarrítmicos',
   cardio_antihypertensive: 'Anti-hipertensivos',
   pneumo_bronchodilator: 'Broncodilatadores',
@@ -92,6 +97,12 @@ const SUBCLASS_LABELS: Record<CommercialMedicationSubclass, string> = {
   ortho_joint_support: 'Suporte articular',
   ortho_antiinflammatory: 'Anti-inflamatórios ortopédicos',
   nutra_omega3: 'Ômega 3 / EPA + DHA',
+  dental_chlorhexidine: 'Antissépticos bucais com clorexidina',
+  dental_water_additive: 'Aditivos para água',
+  dental_toothpaste_gel: 'Pasta, gel e escovação',
+  dental_gum_support: 'Gengiva sensível / pós-procedimento',
+  dental_plaque_supplement: 'Suporte contra placa e halitose',
+  dental_antibiotic: 'Antibióticos odontológicos',
 };
 
 const SUBCLASSES_BY_CLASS: Record<CommercialMedicationClass, CommercialMedicationSubclass[]> = {
@@ -110,7 +121,15 @@ const SUBCLASSES_BY_CLASS: Record<CommercialMedicationClass, CommercialMedicatio
   ],
   gastrointestinal: ['gi_antiemetic', 'gi_antidiarrheal', 'gi_gastric_protector', 'gi_probiotic'],
   neurologic: ['neuro_anticonvulsant', 'neuro_pain'],
-  cardiologic: ['cardio_inotrope', 'cardio_antiarrhythmic', 'cardio_antihypertensive'],
+  cardiologic: [
+    'cardio_inotrope',
+    'cardio_loop_diuretic',
+    'cardio_raas_aldosterone',
+    'cardio_antihypertensive',
+    'cardio_antithrombotic',
+    'cardio_pulmonary_vasodilator',
+    'cardio_antiarrhythmic',
+  ],
   pneumologic: ['pneumo_bronchodilator', 'pneumo_antitussive'],
   urologic: ['uro_urinary_support'],
   renal: ['renal_ckd_support'],
@@ -140,13 +159,22 @@ const SUBCLASSES_BY_CLASS: Record<CommercialMedicationClass, CommercialMedicatio
     'parasite_giardia',
   ],
   behavioral: [],
-  dental: [],
+  dental: [
+    'dental_chlorhexidine',
+    'dental_water_additive',
+    'dental_toothpaste_gel',
+    'dental_gum_support',
+    'dental_plaque_supplement',
+    'dental_antibiotic',
+  ],
 };
 
-const classOptions = Object.entries(CLASS_LABELS).map(([value, label]) => ({
-  value: value as CommercialMedicationClass,
-  label,
-}));
+const classOptions = Object.entries(CLASS_LABELS)
+  .map(([value, label]) => ({
+    value: value as CommercialMedicationClass,
+    label,
+  }))
+  .sort((a, b) => a.label.localeCompare(b.label, 'pt-BR'));
 
 const speciesOptions: Array<{ value: 'all' | VetSpecies; label: string }> = [
   { value: 'all', label: 'Cão e gato' },
@@ -179,6 +207,119 @@ function FieldBlock({ label, children }: { label: string; children: React.ReactN
       <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">{label}</p>
       <div className="mt-2 text-sm leading-6 text-foreground/86">{children}</div>
     </div>
+  );
+}
+
+function DoseEntryList({ entries }: { entries: CommercialMedicationDoseEntry[] }) {
+  return (
+    <div className="mt-3 space-y-2.5">
+      {entries.map((entry) => (
+        <div key={`${entry.title}-${entry.dose}`} className="rounded-lg border border-border/70 bg-background/70 p-3">
+          <p className="text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground">{entry.title}</p>
+          <p className="mt-1 text-base font-extrabold leading-6 text-foreground">{entry.dose}</p>
+          {entry.note ? <p className="mt-1 text-xs leading-5 text-muted-foreground">{entry.note}</p> : null}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function DosageGuidance({ product }: { product: CommercialMedicationProduct }) {
+  if (!product.dosageGuidance) {
+    return (
+      <div className="mt-5 grid gap-5 xl:grid-cols-4">
+        <FieldBlock label="Apresentação">{product.presentations.join(', ')}</FieldBlock>
+        <FieldBlock label="Preço médio">
+          <span className="font-semibold text-foreground">{product.price.averageLabel}</span>
+          <span className="block text-xs text-muted-foreground">
+            {product.price.rangeLabel} - {product.price.sourceDate}
+          </span>
+        </FieldBlock>
+        <FieldBlock label="Ativos">{product.activeComponents.join(', ')}</FieldBlock>
+        <FieldBlock label="Uso por bula">{product.labelDirections}</FieldBlock>
+      </div>
+    );
+  }
+
+  const dogEntries = product.dosageGuidance.plumbs?.dog || [];
+  const catEntries = product.dosageGuidance.plumbs?.cat || [];
+
+  return (
+    <>
+      <div className="mt-5 grid gap-5 xl:grid-cols-3">
+        <FieldBlock label="Apresentação">{product.presentations.join(', ')}</FieldBlock>
+        <FieldBlock label="Preço médio">
+          <span className="font-semibold text-foreground">{product.price.averageLabel}</span>
+          <span className="block text-xs text-muted-foreground">
+            {product.price.rangeLabel} - {product.price.sourceDate}
+          </span>
+        </FieldBlock>
+        <FieldBlock label="Ativos">{product.activeComponents.join(', ')}</FieldBlock>
+      </div>
+
+      <section className="mt-5 overflow-hidden rounded-xl border border-cyan-500/25 bg-cyan-500/[0.06]">
+        <div className="border-b border-cyan-500/20 bg-cyan-500/[0.08] px-4 py-3">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-900 dark:text-cyan-100">
+            Dosagem em destaque
+          </p>
+        </div>
+        <div className="grid lg:grid-cols-[minmax(260px,0.82fr)_minmax(0,1fr)_minmax(0,1fr)]">
+          <div className="border-b border-cyan-500/15 p-4 lg:border-b-0 lg:border-r">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">Uso por bula / rótulo</p>
+            <p className="mt-2 text-base font-bold leading-7 text-foreground">
+              {product.dosageGuidance.labelDose || product.labelDirections}
+            </p>
+          </div>
+
+          <div className="border-b border-cyan-500/15 p-4 lg:border-b-0 lg:border-r">
+            <div className="flex items-center gap-2">
+              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-sky-500/30 bg-sky-500/15 text-sky-800 dark:text-sky-100">
+                <Dog className="h-5 w-5" />
+              </span>
+              <div>
+                <p className="text-sm font-extrabold text-foreground">Cão</p>
+                <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">Leitura Plumb&apos;s</p>
+              </div>
+            </div>
+            {dogEntries.length > 0 ? (
+              <DoseEntryList entries={dogEntries} />
+            ) : (
+              <p className="mt-3 rounded-lg border border-dashed border-border/80 bg-background/60 p-3 text-sm leading-6 text-muted-foreground">
+                Sem dose específica para cão nesta leitura.
+              </p>
+            )}
+          </div>
+
+          <div className="p-4">
+            <div className="flex items-center gap-2">
+              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-violet-500/30 bg-violet-500/15 text-violet-800 dark:text-violet-100">
+                <Cat className="h-5 w-5" />
+              </span>
+              <div>
+                <p className="text-sm font-extrabold text-foreground">Gato</p>
+                <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">Leitura Plumb&apos;s</p>
+              </div>
+            </div>
+            {catEntries.length > 0 ? (
+              <DoseEntryList entries={catEntries} />
+            ) : (
+              <p className="mt-3 rounded-lg border border-dashed border-border/80 bg-background/60 p-3 text-sm leading-6 text-muted-foreground">
+                Sem dose específica para gato nesta leitura.
+              </p>
+            )}
+          </div>
+        </div>
+        {product.dosageGuidance.notes?.length ? (
+          <div className="border-t border-cyan-500/20 px-4 py-3">
+            <ul className="space-y-1 text-xs leading-5 text-muted-foreground">
+              {product.dosageGuidance.notes.map((note) => (
+                <li key={note}>{note}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+      </section>
+    </>
   );
 }
 
@@ -281,17 +422,7 @@ function ProductCard({
         </div>
       </div>
 
-      <div className="mt-5 grid gap-5 xl:grid-cols-4">
-        <FieldBlock label="Apresentação">{product.presentations.join(', ')}</FieldBlock>
-        <FieldBlock label="Preço médio">
-          <span className="font-semibold text-foreground">{product.price.averageLabel}</span>
-          <span className="block text-xs text-muted-foreground">
-            {product.price.rangeLabel} - {product.price.sourceDate}
-          </span>
-        </FieldBlock>
-        <FieldBlock label="Ativos">{product.activeComponents.join(', ')}</FieldBlock>
-        <FieldBlock label="Uso por bula">{product.labelDirections}</FieldBlock>
-      </div>
+      <DosageGuidance product={product} />
 
       <div className="mt-5 rounded-xl border border-amber-500/25 bg-amber-500/[0.07] p-4">
         <div className="flex gap-3">
@@ -325,7 +456,16 @@ export function CommercialPresentationsPage() {
   const [species, setSpecies] = useState<'all' | VetSpecies>('all');
   const [zoomedProduct, setZoomedProduct] = useState<CommercialMedicationProduct | null>(null);
 
-  const availableSubclasses = commercialClass ? SUBCLASSES_BY_CLASS[commercialClass] : [];
+  const availableSubclasses = useMemo(() => {
+    if (!commercialClass) return [];
+    const keys = SUBCLASSES_BY_CLASS[commercialClass] || [];
+    return [...keys].sort((a, b) => {
+      const labelA = SUBCLASS_LABELS[a] || '';
+      const labelB = SUBCLASS_LABELS[b] || '';
+      return labelA.localeCompare(labelB, 'pt-BR');
+    });
+  }, [commercialClass]);
+
   const normalizedQuery = query.trim().toLowerCase();
   const hasTextSearch = normalizedQuery.length > 0;
   const shouldShowProducts = Boolean(commercialClass) || hasTextSearch;
@@ -333,7 +473,7 @@ export function CommercialPresentationsPage() {
   const products = useMemo(() => {
     if (!commercialClass && !normalizedQuery) return [];
 
-    return commercialOticProductsSeed.filter((product) => {
+    const filtered = commercialOticProductsSeed.filter((product) => {
       const productSubclasses = product.commercialSubclasses || [product.commercialSubclass];
       const matchesClass = !commercialClass || product.commercialClass === commercialClass;
       const matchesSubclass =
@@ -355,6 +495,8 @@ export function CommercialPresentationsPage() {
 
       return matchesClass && matchesSubclass && matchesSpecies && matchesQuery;
     });
+
+    return [...filtered].sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'));
   }, [commercialClass, commercialSubclass, normalizedQuery, species]);
 
   return (

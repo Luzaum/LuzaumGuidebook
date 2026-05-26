@@ -304,12 +304,23 @@ function pickBestRecommendedDose(
 function canonicalRecommendedDoseUnit(
   doseUnit?: string | null,
   perWeightUnit?: string | null,
+  administrationBasis?: string | null,
 ): string {
   const baseUnit = String(doseUnit || '').trim()
   const suffix = String(perWeightUnit || '').trim()
   if (!baseUnit) return ''
-  if (!suffix) return baseUnit
   const normalizedBase = baseUnit.toLowerCase()
+  if (normalizedBase.includes('/')) return baseUnit
+  if (!suffix) {
+    const basis = normalizeAdministrationBasis(administrationBasis || 'weight_based')
+    if (
+      basis === 'weight_based' &&
+      /^(mg|g|mcg|µg|ug|ui|iu|u|ml|mcl)$/i.test(baseUnit)
+    ) {
+      return `${baseUnit}/kg`
+    }
+    return baseUnit
+  }
   const normalizedSuffix = suffix.toLowerCase()
   if (normalizedBase.endsWith(`/${normalizedSuffix}`) || normalizedBase.includes(`/${normalizedSuffix} `)) {
     return baseUnit
@@ -335,13 +346,31 @@ function computePracticalPreviewFromInputs(
   dose: string,
   selectedPresentation: MedicationPresentationRecord | undefined,
   patient: PatientInfo | null,
+  fallbackDoseUnit?: string | null,
+  preferFallbackPerWeight = false,
 ): PracticalEquivalentResult | null {
   if (!selectedPresentation || !dose.trim()) return null
 
   const doseMatch = dose.match(/(\d+(?:[.,]\d+)?)/)
   const doseVal = doseMatch ? parseFloat(doseMatch[1].replace(',', '.')) : 0
-  const doseUnit = dose.replace(doseMatch ? doseMatch[0] : '', '').trim().split('/')[0] || 'mg'
-  const isPerKg = dose.toLowerCase().includes('/kg')
+  const explicitDoseUnit = dose.replace(doseMatch ? doseMatch[0] : '', '').trim()
+  const presentationDoseBaseUnit = String(selectedPresentation.value_unit || '')
+    .split('/')[0]
+    ?.trim()
+  const inferredPerWeightUnit =
+    preferFallbackPerWeight && presentationDoseBaseUnit
+      ? `${presentationDoseBaseUnit}/kg`
+      : ''
+  const normalizedFallbackUnit = String(fallbackDoseUnit || inferredPerWeightUnit || '').trim()
+  const shouldUseFallbackUnit =
+    !!normalizedFallbackUnit &&
+    (!explicitDoseUnit ||
+      (preferFallbackPerWeight && !explicitDoseUnit.includes('/') && normalizedFallbackUnit.includes('/')))
+  const effectiveDoseUnit = shouldUseFallbackUnit
+    ? normalizedFallbackUnit
+    : explicitDoseUnit || 'mg'
+  const doseUnit = effectiveDoseUnit.split('/')[0] || 'mg'
+  const isPerKg = effectiveDoseUnit.toLowerCase().includes('/kg')
 
   if (!doseVal || isNaN(doseVal)) return null
 
@@ -491,6 +520,22 @@ export function AddMedicationModal2({
   // Practical Equivalent State
   const [practicalResult, setPracticalResult] = useState<PracticalEquivalentResult | null>(null)
 
+  const catalogDefaultDoseUnit = useMemo(() => {
+    if (!recommendedDoses.length) return null
+    const patientSpecies = patient
+      ? (patient.species === 'cat' || String(patient.species).toLowerCase().includes('gato') ? 'gato' :
+        patient.species === 'dog' || String(patient.species).toLowerCase().includes('cão') || String(patient.species).toLowerCase().includes('cao') ? 'cão' :
+        null)
+      : (prescriptionSpeciesHint === 'cat' ? 'gato' : prescriptionSpeciesHint === 'dog' ? 'cão' : null)
+    const bestDose = pickBestRecommendedDose(recommendedDoses, patientSpecies)
+    if (!bestDose) return null
+    return canonicalRecommendedDoseUnit(
+      bestDose.dose_unit,
+      (bestDose as unknown as Record<string, unknown>).per_weight_unit as string | null,
+      (bestDose as unknown as Record<string, unknown>).administration_basis as string | null,
+    ) || null
+  }, [recommendedDoses, patient?.species, prescriptionSpeciesHint])
+
   /** Evita re-hidratar posologia em loop; chave muda com medicamento, doses ou espécie do paciente */
   const catalogHydrationKeyRef = useRef<string>('')
   /** Evita auto-selecionar o homônimo com doses mais de uma vez para o mesmo termo de busca */
@@ -584,43 +629,16 @@ export function AddMedicationModal2({
       return
     }
 
-    // Parse weight
-    const weightVal = parseFloat(String(patient?.weight_kg || '').replace(',', '.'))
-    
-    // Parse dose (extract numeric part if it's like "10 mg/kg" or just "10")
-    // Simple extraction for the helper
-    const doseMatch = dose.match(/(\d+(?:[.,]\d+)?)/)
-    const doseVal = doseMatch ? parseFloat(doseMatch[1].replace(',', '.')) : 0
-    const doseUnit = dose.replace(doseMatch ? doseMatch[0] : '', '').trim().split('/')[0] || 'mg'
-
-    const isPerKg = dose.toLowerCase().includes('/kg')
-
-    if (!doseVal || isNaN(doseVal)) {
-      setPracticalResult(null)
-      return
-    }
-
-    const totalDosePerAdmin = isPerKg ? (weightVal ? doseVal * weightVal : 0) : doseVal
-
-    if (totalDosePerAdmin <= 0) {
-      setPracticalResult(null)
-      return
-    }
-
-    // Map PresentationRecord to Presentation expected by helper
-    const result = calculatePracticalEquivalent({
-      presentation: {
-        ...selectedPresentation,
-        // Ensure numeric fields
-        value: selectedPresentation.value != null ? Number(selectedPresentation.value) : undefined,
-        per_value: selectedPresentation.per_value != null ? Number(selectedPresentation.per_value) : undefined,
-      } as any,
-      totalDosePerAdmin,
-      doseUnit,
-    })
+    const result = computePracticalPreviewFromInputs(
+      dose,
+      selectedPresentation,
+      patient,
+      catalogDefaultDoseUnit,
+      !isCustomAdministrationBasis(administrationBasis),
+    )
 
     setPracticalResult(result)
-  }, [open, dose, selectedPresentationId, presentations, patient?.weight_kg])
+  }, [open, dose, selectedPresentationId, presentations, patient, catalogDefaultDoseUnit, administrationBasis])
 
   /** Preview do equivalente na apresentação escolhida, alinhado à dose da faixa em edição (logo abaixo de Confirmar). */
   const catalogExpandedPracticalPreview = useMemo(() => {
@@ -645,6 +663,7 @@ export function AddMedicationModal2({
     const canonicalDoseUnit = canonicalRecommendedDoseUnit(
       rd.dose_unit,
       rdAny.per_weight_unit as string | null,
+      rdAny.administration_basis as string | null,
     )
     const effectiveDoseUnit = rangeDoseUnitOverride || canonicalDoseUnit
     const baseVal = roundDoseStep01(Number(rangeDoseValue ?? rd.dose_value))
@@ -654,7 +673,7 @@ export function AddMedicationModal2({
     const w = parseFloat(String(patient?.weight_kg || '').replace(',', '.'))
     if (isPerKgDose && (!w || w <= 0)) return { kind: 'need_weight' as const, doseStr }
 
-    const result = computePracticalPreviewFromInputs(doseStr, selectedPresentation, patient)
+    const result = computePracticalPreviewFromInputs(doseStr, selectedPresentation, patient, effectiveDoseUnit)
     return { kind: 'result' as const, doseStr, result }
   }, [
     open,
@@ -871,7 +890,12 @@ export function AddMedicationModal2({
 
       const bestBasisRaw = (bestDose as any).administration_basis
       const bestIsCustom = isCustomAdministrationBasis(String(bestBasisRaw || 'weight_based'))
-      if (!bestIsCustom) setDose(`${bestDose.dose_value} ${bestDose.dose_unit}`)
+      const bestDoseUnit = canonicalRecommendedDoseUnit(
+        bestDose.dose_unit,
+        (bestDose as any).per_weight_unit,
+        (bestDose as any).administration_basis,
+      )
+      if (!bestIsCustom) setDose(`${bestDose.dose_value} ${bestDoseUnit}`)
       setRoute(bestDose.route || 'VO')
       const nextMode = resolvedCatalogFrequencyMode(bestDose)
       setFrequencyMode(nextMode)
@@ -1150,7 +1174,7 @@ export function AddMedicationModal2({
 
   return (
     <RxvModalShell zIndexClass="z-[90]" overlayClassName="bg-black/80 backdrop-blur-sm">
-      <div className="mx-auto max-h-[92vh] w-full max-w-4xl overflow-hidden rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,var(--rxv-border))] bg-[#0a0f0a] text-slate-100 shadow-[0_0_60px_color-mix(in_srgb,var(--rxv-primary)_18%,transparent)]">
+      <div className="mx-auto max-h-[92vh] w-full max-w-4xl overflow-hidden rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,var(--rxv-border))] bg-slate-950 text-slate-100 shadow-[0_0_60px_color-mix(in_srgb,var(--rxv-primary)_18%,transparent)]">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-800 bg-black/60 px-6 py-4">
           <div>
@@ -1300,7 +1324,7 @@ export function AddMedicationModal2({
                           const hasFreqRange = rdAny.frequency_max != null && rdAny.frequency_min != null && rdAny.frequency_max > rdAny.frequency_min
                           const needsSpeciesChoice = (rd.species || '').toLowerCase() === 'ambos' || (rd.species || '').toLowerCase() === 'both'
                           const isExpanded = expandedDoseId === doseKey
-                          const canonicalDoseUnit = canonicalRecommendedDoseUnit(rd.dose_unit, rdAny.per_weight_unit)
+                          const canonicalDoseUnit = canonicalRecommendedDoseUnit(rd.dose_unit, rdAny.per_weight_unit, rdAny.administration_basis)
                           const effectiveDoseUnit = isExpanded && rangeDoseUnitOverride ? rangeDoseUnitOverride : canonicalDoseUnit
                           const isCustomBasis = isCustomAdministrationBasis(rdAny.administration_basis)
                           const needsInteraction = !isCustomBasis || hasFreqRange || needsSpeciesChoice
@@ -1354,10 +1378,10 @@ export function AddMedicationModal2({
                           const handleApplyDirect = () => {
                             if (!isCustomBasis) setDose(`${rd.dose_value} ${canonicalDoseUnit}`)
                             setRoute(rd.route || 'VO')
-                            const nextMode = normalizeFrequencyModeForModal(rd.frequency_mode)
+                            const nextMode = resolvedCatalogFrequencyMode(rd)
                             setFrequencyMode(nextMode)
                             setTimesPerDay(parseTimesPerDayValue(rd.frequency) || '2')
-                            setEveryHours(nextMode === 'every_x_hours' ? String(rd.frequency_min || '') : '')
+                            setEveryHours(nextMode === 'every_x_hours' ? resolveEveryHoursFromCatalog(rd) : '')
                             setRecurrenceValue(nextMode === 'repeat_interval' ? String(rd.recurrence_value || '') : '')
                             setRecurrenceUnit(nextMode === 'repeat_interval' ? String(rd.recurrence_unit || 'semanas') : 'semanas')
                             applyAdministrationFromRecommendedDose(rd)
@@ -1369,10 +1393,10 @@ export function AddMedicationModal2({
                             const finalFreq = rangeFreqValue
                             if (!isCustomBasis) setDose(`${finalDose} ${effectiveDoseUnit}`)
                             setRoute(rd.route || 'VO')
-                            const nextMode = normalizeFrequencyModeForModal(rd.frequency_mode)
+                            const nextMode = resolvedCatalogFrequencyMode(rd)
                             setFrequencyMode(nextMode)
                             setTimesPerDay(finalFreq ? String(finalFreq) : (parseTimesPerDayValue(rd.frequency) || '2'))
-                            setEveryHours(nextMode === 'every_x_hours' ? String(finalFreq || rd.frequency_min || '') : '')
+                            setEveryHours(nextMode === 'every_x_hours' ? String(finalFreq || resolveEveryHoursFromCatalog(rd)) : '')
                             setRecurrenceValue(nextMode === 'repeat_interval' ? String(rd.recurrence_value || '') : '')
                             setRecurrenceUnit(nextMode === 'repeat_interval' ? String(rd.recurrence_unit || 'semanas') : 'semanas')
                             applyAdministrationFromRecommendedDose(rd)

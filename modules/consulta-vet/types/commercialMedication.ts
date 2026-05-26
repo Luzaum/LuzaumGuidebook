@@ -62,6 +62,10 @@ export type CommercialMedicationSubclass =
   | 'neuro_anticonvulsant'
   | 'neuro_pain'
   | 'cardio_inotrope'
+  | 'cardio_loop_diuretic'
+  | 'cardio_raas_aldosterone'
+  | 'cardio_antithrombotic'
+  | 'cardio_pulmonary_vasodilator'
   | 'cardio_antiarrhythmic'
   | 'cardio_antihypertensive'
   | 'pneumo_bronchodilator'
@@ -70,13 +74,31 @@ export type CommercialMedicationSubclass =
   | 'renal_ckd_support'
   | 'ortho_joint_support'
   | 'ortho_antiinflammatory'
-  | 'nutra_omega3';
+  | 'nutra_omega3'
+  | 'dental_chlorhexidine'
+  | 'dental_water_additive'
+  | 'dental_toothpaste_gel'
+  | 'dental_gum_support'
+  | 'dental_plaque_supplement'
+  | 'dental_antibiotic';
 
 export interface CommercialMedicationPrice {
   averageLabel: string;
   rangeLabel: string;
   sourceDate: string;
   notes?: string;
+}
+
+export interface CommercialMedicationDoseEntry {
+  title: string;
+  dose: string;
+  note?: string;
+}
+
+export interface CommercialMedicationDosageGuidance {
+  labelDose?: string;
+  plumbs?: Partial<Record<VetSpecies, CommercialMedicationDoseEntry[]>>;
+  notes?: string[];
 }
 
 export interface CommercialMedicationProduct {
@@ -94,6 +116,7 @@ export interface CommercialMedicationProduct {
   activeComponents: string[];
   labelCompositionSummary: string;
   labelDirections: string;
+  dosageGuidance?: CommercialMedicationDosageGuidance;
   plumbsContext: string;
   clinicalUse: string;
   reassessment: string;

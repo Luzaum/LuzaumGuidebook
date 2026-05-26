@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Hub } from './pages/Hub'
 import { Identification } from './pages/Identification'
 import { Configuration } from './pages/Configuration'
@@ -27,7 +28,18 @@ export default function VeteletroliticoPage() {
 
     return (
         <div className="w-full min-h-[100dvh] overflow-x-hidden bg-vet-bg-light dark:bg-vet-bg-dark">
-            {renderScreen()}
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={currentScreen}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.25, ease: 'easeInOut' }}
+                    className="w-full"
+                >
+                    {renderScreen()}
+                </motion.div>
+            </AnimatePresence>
         </div>
     )
 }

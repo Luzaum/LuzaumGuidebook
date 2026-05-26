@@ -91,7 +91,7 @@ export function AddCompoundedMedicationModal({
 
   return (
     <RxvModalShell zIndexClass="z-[90]" overlayClassName="bg-black/85 backdrop-blur-sm">
-      <div className="mx-auto flex max-h-[92vh] w-full max-w-[1320px] flex-col overflow-hidden rounded-3xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] bg-[#0a0f0a] text-slate-100">
+      <div className="mx-auto flex max-h-[92vh] w-full max-w-[1320px] flex-col overflow-hidden rounded-3xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] bg-slate-950 text-slate-100">
         <div className="flex items-center justify-between border-b border-slate-800 bg-black/60 px-6 py-4">
           <div>
             <h2 className="text-lg font-black uppercase italic tracking-tight text-white">Adicionar manipulado</h2>

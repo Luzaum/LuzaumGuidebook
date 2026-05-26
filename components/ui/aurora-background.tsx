@@ -36,7 +36,7 @@ export const AuroraBackground = ({
         {...props}
       >
         {variant === "aurora" ? (
-          <div className="absolute inset-0 overflow-hidden">
+          <div className="fixed inset-0 overflow-hidden">
             <div
               className={cn(
                 `[--white-gradient:repeating-linear-gradient(100deg,var(--white)_0%,var(--white)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--white)_16%)]
@@ -47,7 +47,7 @@ export const AuroraBackground = ({
                filter blur-[10px] invert dark:invert-0
                after:content-[""] after:absolute after:inset-0 after:[background-image:var(--white-gradient),var(--aurora)]
                after:dark:[background-image:var(--dark-gradient),var(--aurora)]
-               after:[background-size:200%,_100%] after:animate-aurora after:[background-attachment:fixed]
+               after:[background-size:200%,_100%] after:animate-aurora
                after:mix-blend-difference pointer-events-none absolute -inset-[10px] opacity-40 will-change-transform`,
                 showRadialGradient &&
                   `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`
@@ -57,7 +57,7 @@ export const AuroraBackground = ({
         ) : (
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 bg-gradient-to-br from-sky-100/40 via-transparent to-blue-100/30 dark:from-sky-950/40 dark:to-blue-950/25"
+            className="pointer-events-none fixed inset-0 bg-gradient-to-br from-sky-100/40 via-transparent to-blue-100/30 dark:from-sky-950/40 dark:to-blue-950/25"
           />
         )}
         {children}

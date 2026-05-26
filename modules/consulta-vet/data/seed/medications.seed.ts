@@ -1702,7 +1702,7 @@ export const medicationsSeed: MedicationRecord[] = [
     ],
     pharmacologicClass: 'Agonista PPAR — fármaco hipolipemiante',
     species: ['dog', 'cat'],
-    category: 'hepatologia-pancreas',
+    category: 'endocrinologia',
     tags: ['Hiperlipidemia', 'Triglicéridos', 'Pancreatite', 'Extra-label'],
     mechanismOfAction:
       'Ativa receptores PPAR, modulando síntese e clearance de lipoproteínas e ácidos graxos. Em medicina veterinária o uso é sobretudo extra-label para hipertrigliceridemia severa ou síndromes associadas — evidência menor que para IECA ou anti-infecciosos. Monitorizar enzimas hepáticas e perfil lipídico; gravidez e hepatopatia descompensada são contraindicações relativas.',

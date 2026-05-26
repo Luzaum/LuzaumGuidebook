@@ -4,6 +4,27 @@ import ReceituarioChrome from './ReceituarioChrome'
 import { loadRxDb, removeHistoryRecord, saveRxDb } from './rxDb'
 import { listSavedRxDrafts } from './rxStorage'
 import { readHomeIconSelection } from './rxAssets'
+import { 
+  Sparkles, 
+  FileText, 
+  ChevronRight, 
+  Users, 
+  Settings, 
+  Trash2, 
+  History, 
+  ShieldAlert, 
+  Palette, 
+  HardDriveUpload, 
+  FolderLock, 
+  ArrowRight,
+  ClipboardList,
+  Pill,
+  Syringe,
+  Calendar,
+  Layers,
+  Wrench,
+  BookOpen
+} from 'lucide-react'
 
 function todayLabel() {
   const now = new Date()
@@ -18,119 +39,13 @@ function loadRecentHistory() {
 }
 
 function loadRecentDrafts() {
-  return listSavedRxDrafts().slice(0, 6)
+  return listSavedRxDrafts().slice(0, 3)
 }
-
-const PRIMARY_LINKS = [
-  {
-    to: '/receituario-vet/clientes',
-    icon: 'group',
-    label: 'Tutores e Pacientes',
-    summary:
-      'Cadastro de tutores e pacientes, busca por nome ou espécie e reaplicação rápida de prescrições anteriores.',
-    desc: 'Cadastre tutores com múltiplos animais vinculados. Busque por nome, espécie ou histórico. Acesse receitas anteriores e repita prescrições com um clique. Ex.: "Amoxicilina 10 mg/kg para Rex, 7 dias, 2× ao dia" — reaplicada em segundos.',
-    delay: 80,
-    premium: false,
-    accent: false,
-  },
-  {
-    to: '/receituario-vet/protocolos-3',
-    icon: 'clinical_notes',
-    label: 'Protocolos Clínicos',
-    summary: 'Monte protocolos por especialidade e insira vários medicamentos na receita de uma vez, com posologia por item.',
-    desc: 'Monte protocolos por especialidade (ortopedia, dermatologia, oncologia…) e aplique com um clique em qualquer receita. Ex.: "Protocolo pós-cirúrgico: Tramadol + Dipirona + Omeprazol" inserido automaticamente, com posologia individual para cada fármaco.',
-    delay: 140,
-    premium: true,
-    accent: false,
-  },
-  {
-    to: '/receituario-vet/catalogo3',
-    icon: 'vaccines',
-    label: 'Cadastrar Medicamento',
-    summary: 'Catálogo da clínica com concentração, vias, apresentações e marcação de medicamentos controlados.',
-    desc: 'Banco de fármacos com concentração, via de administração, apresentação e alertas de controlado. Ex.: cadastre "Tramadol 50 mg/mL — uso restrito — SC/IM" e ele aparece em todas as receitas com badge laranja de controle especial.',
-    delay: 200,
-    premium: false,
-    accent: false,
-  },
-  {
-    to: '/receituario-vet/manipulados',
-    icon: 'science',
-    label: 'Manipulados V1',
-    summary: 'Fórmulas magistrais com cálculo por peso, m² ou dose fixa e texto orientado à manipulação.',
-    desc: 'Fórmulas magistrais com cálculo por kg, m² ou dose fixa. Instrução automática para farmácia incluída. Ex.: "Fenobarbital 2,5 mg/kg — cão 8 kg → 20 mg — xarope 2 mg/mL — QSP 100 mL — Tomar 5 mL/dose a cada 12h".',
-    delay: 260,
-    premium: true,
-    accent: true,
-  },
-] as const
-
-type ToolLink = {
-  to: string
-  icon: string
-  label: string
-  summary: string
-  desc: string
-  delay: number
-  amber?: boolean
-}
-
-const TOOL_LINKS: readonly ToolLink[] = [
-  {
-    to: '/receituario-vet/historico',
-    icon: 'history',
-    label: 'Histórico',
-    summary: 'Liste receitas por paciente, data ou fármaco; reabra para editar ou gerar PDF.',
-    desc: 'Consulte todas as receitas emitidas por paciente, data ou medicamento. Reabra qualquer receita para editar ou reimprimir.',
-    delay: 320,
-  },
-  {
-    to: '/receituario-vet/configuração',
-    icon: 'settings_account_box',
-    label: 'Config. Médico',
-    summary: 'CRMV, especialidade, assinatura e dados que entram no cabeçalho de toda receita.',
-    desc: 'Configure seu CRMV, especialidade, assinatura e logotipo. Esses dados preenchem automaticamente o cabeçalho de toda receita.',
-    delay: 360,
-  },
-  {
-    to: '/receituario-vet/controle-especial',
-    icon: 'gpp_maybe',
-    label: 'Ctrl. Especial',
-    summary: 'Receituário de controle especial com rastreio e conformidade à Portaria 344.',
-    desc: 'Receituários azul e amarelo com rastreabilidade por lote, numeração sequencial e conformidade com a Portaria 344.',
-    delay: 400,
-    amber: true,
-  },
-  {
-    to: '/receituario-vet/templates',
-    icon: 'palette',
-    label: 'Templates',
-    summary: 'Layouts de receita com logo e zonas personalizadas; aplique em qualquer prescrição.',
-    desc: 'Crie modelos visuais de receita com logo, cores e zonas customizadas. Salve e aplique com um clique em qualquer prescrição.',
-    delay: 440,
-  },
-  {
-    to: '/receituario-vet/configurações',
-    icon: 'cloud_upload',
-    label: 'Dados e Backup',
-    summary: 'Exportação e importação dos dados locais em JSON para backup ou troca de equipamento.',
-    desc: 'Exporte ou importe todo o banco local (pacientes, protocolos, histórico) em JSON. Ideal para troca de dispositivo ou backup preventivo.',
-    delay: 480,
-  },
-  {
-    to: '/receituario-vet/rascunhos',
-    icon: 'draft',
-    label: 'Rascunhos',
-    summary: 'Receitas em andamento salvas neste navegador; retome sem perder o que já preencheu.',
-    desc: 'Receitas iniciadas e não finalizadas ficam salvas localmente. Retome de onde parou sem perder nenhum dado preenchido.',
-    delay: 520,
-  },
-] as const
 
 export default function ReceituarioVetPage() {
   const navigate = useNavigate()
   const [history, setHistory] = useState(loadRecentHistory)
-  const [drafts] = useState(loadRecentDrafts)
+  const [drafts, setDrafts] = useState(loadRecentDrafts)
   const homeIcon = useMemo(() => readHomeIconSelection(), [])
 
   const [rxTheme, setRxTheme] = useState<'dark' | 'light'>(() => {
@@ -149,180 +64,337 @@ export default function ReceituarioVetPage() {
     saveRxDb(nextDb)
     setHistory(loadRecentHistory())
   }
-  void removeHistoryEntry
-  void history
-  void drafts
+
+  const primaryLinks = [
+    {
+      to: '/receituario-vet/clientes',
+      icon: Users,
+      color: 'blue',
+      label: 'Tutores e Pacientes',
+      summary: 'Cadastro unificado de tutores e animais com reaplicação rápida de receitas.',
+      premium: false,
+    },
+    {
+      to: '/receituario-vet/protocolos-3',
+      icon: ClipboardList,
+      color: 'violet',
+      label: 'Protocolos Clínicos',
+      summary: 'Monte protocolos por especialidade e insira múltiplos fármacos em segundos.',
+      premium: true,
+    },
+    {
+      to: '/receituario-vet/catalogo3',
+      icon: Pill,
+      color: 'emerald',
+      label: 'Cadastrar Medicamento',
+      summary: 'Catálogo avançado com regras de dose recomendada e controle especial.',
+      premium: false,
+    },
+    {
+      to: '/receituario-vet/manipulados',
+      icon: Syringe,
+      color: 'amber',
+      label: 'Manipulados V1',
+      summary: 'Fórmulas magistrais estruturadas com cálculo por peso ou m² corporal.',
+      premium: true,
+    },
+  ]
+
+  const toolLinks = [
+    {
+      to: '/receituario-vet/historico',
+      icon: History,
+      color: 'slate',
+      label: 'Histórico',
+      summary: 'Busca e reimpressão de PDFs anteriores.',
+    },
+    {
+      to: '/receituario-vet/configuração',
+      icon: Wrench,
+      color: 'sky',
+      label: 'Config. Médico',
+      summary: 'Assinatura digital, CRMV e logotipos.',
+    },
+    {
+      to: '/receituario-vet/controle-especial',
+      icon: ShieldAlert,
+      color: 'orange',
+      label: 'Ctrl. Especial',
+      summary: 'Receituário restrito Portaria 344 e MAPA.',
+    },
+    {
+      to: '/receituario-vet/templates',
+      icon: Palette,
+      color: 'pink',
+      label: 'Templates',
+      summary: 'Modelos visuais e estilos A4/A5.',
+    },
+    {
+      to: '/receituario-vet/configurações',
+      icon: HardDriveUpload,
+      color: 'teal',
+      label: 'Dados e Backup',
+      summary: 'Exportação e migração local em JSON.',
+    },
+    {
+      to: '/receituario-vet/rascunhos',
+      icon: FolderLock,
+      color: 'rose',
+      label: 'Rascunhos',
+      summary: 'Projetos locais salvos no navegador.',
+    },
+  ]
 
   return (
     <ReceituarioChrome
       section="home"
       title="Início"
-      subtitle="Receituário veterinário — prescrever, catalogar e acompanhar em um fluxo só."
+      subtitle="Prescrição digital de alto padrão — simplificada para rotinas veterinárias de alto fluxo."
       forcedTheme={rxTheme}
       onThemeChange={setRxTheme}
       actions={
-        <>
+        <div className="flex items-center gap-2">
           <button
             type="button"
-            className="rxv-btn-secondary inline-flex items-center gap-2 px-4 py-2 text-sm"
-            onClick={() => navigate('/receituario-vet/protocolos-3')}
-          >
-            <span className="material-symbols-outlined text-[18px]">inventory_2</span>
-            Protocolos
-          </button>
-          <button
-            type="button"
-            className="rxv-btn-primary inline-flex items-center gap-2 px-4 py-2 text-sm"
-            onClick={() => navigate('/receituario-vet/nova-receita-2')}
-          >
-            <span className="material-symbols-outlined text-[18px]">add</span>
-            Nova Receita
-          </button>
-          <button
-            type="button"
-            className="rxv-btn-secondary inline-flex items-center gap-2 px-4 py-2 text-sm"
+            className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-1.5 text-xs font-semibold"
             onClick={() => navigate('/receituario-vet/rascunhos')}
           >
-            <span className="material-symbols-outlined text-[18px]">draft</span>
+            <FolderLock className="h-3.5 w-3.5 shrink-0" />
             Rascunhos
           </button>
-        </>
+          <button
+            type="button"
+            className="rxv-btn-primary inline-flex items-center gap-2 px-4 py-1.5 text-xs font-semibold shadow-md shadow-primary/20"
+            onClick={() => navigate('/receituario-vet/nova-receita-2')}
+          >
+            <FileText className="h-3.5 w-3.5 shrink-0" />
+            Nova Receita
+          </button>
+        </div>
       }
     >
-      <div className="rxv-home-shell relative pb-6 text-[color:var(--rxv-text)] sm:pb-8">
-        <div className="relative z-10 mb-8 flex flex-wrap items-center justify-between gap-3">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[color:color-mix(in_srgb,var(--rxv-border)_88%,var(--rxv-primary)_12%)] bg-[color:color-mix(in_srgb,var(--rxv-surface-2)_92%,transparent)] px-4 py-2 text-[13px] text-[color:var(--rxv-muted)]">
-            <span className="material-symbols-outlined text-[18px] text-[color:var(--rxv-primary)]">calendar_today</span>
-            <span className="font-medium text-[color:var(--rxv-text)]">{todayLabel()}</span>
-          </div>
-        </div>
-
-        <Link
-          to="/receituario-vet/nova-receita-2"
-          className="rxv-hub-hero rxv-hub-hero--featured group relative z-10 mb-5 flex w-full overflow-hidden rounded-[22px] border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface)] shadow-[0_4px_40px_-12px_rgba(0,0,0,0.45)]"
-          title="Abrir Nova Receita"
-        >
+      <div className="mx-auto w-full max-w-[1560px] space-y-10 pb-10">
+        
+        {/* HERO SECTION REDESIGNED */}
+        <section className="relative overflow-hidden rounded-3xl border border-primary/15 bg-gradient-to-br from-[color:var(--rxv-surface)] via-[color:var(--rxv-surface)] to-primary/[0.04] shadow-lg shadow-primary/[0.06] ring-1 ring-primary/5">
           <div
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background: isDark
-                ? 'linear-gradient(125deg, #0c1828 0%, #081018 48%, #050a12 100%)'
-                : 'linear-gradient(125deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%)',
-            }}
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_0%_-30%,rgba(59,130,246,0.12),transparent_55%),radial-gradient(ellipse_70%_50%_at_100%_100%,rgba(6,182,212,0.06),transparent_50%)]"
           />
-          <div className="rxv-hub-hero-wash pointer-events-none absolute inset-0 opacity-90" aria-hidden />
-
-          <div className="relative z-10 flex w-full flex-col gap-8 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-9 lg:p-10">
-            <div className="min-w-0 flex-1">
-              <span className="rxv-hub-eyebrow mb-4 inline-flex items-center gap-2 text-[color:var(--rxv-primary)]">
-                <span className="h-px w-6 bg-[color:color-mix(in_srgb,var(--rxv-primary)_55%,transparent)]" aria-hidden />
-                Nova prescrição
-              </span>
-              <h2 className="text-[1.65rem] font-semibold leading-[1.15] tracking-tight text-[color:var(--rxv-text)] sm:text-3xl lg:text-[2rem]">
-                Criar nova receita
-              </h2>
-              <p className="mt-3 max-w-[34rem] text-[15px] leading-relaxed text-[color:var(--rxv-muted)] sm:text-base">
-                Posologia estruturada, dose por peso, catálogo da clínica e PDF com texto selecionável — num fluxo único.
-              </p>
-              <span className="rxv-hub-hero-cta mt-7 inline-flex cursor-pointer items-center gap-2 rounded-full bg-[color:var(--rxv-primary)] px-6 py-3 text-sm font-semibold text-[color:var(--rxv-on-primary)] shadow-[0_8px_28px_-6px_color-mix(in_srgb,var(--rxv-primary)_50%,transparent)] transition duration-200 group-hover:brightness-[1.06]">
-                <span className="material-symbols-outlined text-[20px]">edit_document</span>
-                Abrir editor de receita
-                <span className="material-symbols-outlined text-[18px] opacity-90 transition group-hover:translate-x-0.5" aria-hidden>
-                  arrow_forward
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -right-16 top-1/2 h-72 w-72 -translate-y-1/2 bg-primary/[0.08] blur-3xl rounded-full"
+          />
+          <div className="relative grid gap-8 p-6 sm:p-8 md:p-10 lg:grid-cols-[1.3fr_0.7fr] lg:items-stretch">
+            <div className="flex flex-col justify-center space-y-5">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-primary shadow-sm">
+                <Sparkles className="h-3.5 w-3.5 shrink-0" aria-hidden />
+                Geração Inteligente de Prescrições
+              </div>
+              
+              <h1 className="m-0 text-3xl font-extrabold tracking-tight text-[color:var(--rxv-text)] sm:text-4xl lg:text-[2.5rem] lg:leading-[1.1]">
+                <span>Receituário </span>
+                <span className="bg-gradient-to-r from-primary via-sky-500 to-cyan-500 bg-clip-text text-transparent">
+                  VET
                 </span>
-              </span>
+              </h1>
+              
+              <p className="max-w-xl text-[14px] leading-relaxed text-[color:var(--rxv-muted)] sm:text-base">
+                Emissão simplificada com cálculos posológicos automáticos, catálogo robusto integrado e controle especial em conformidade com as normas MAPA e Portaria 344.
+              </p>
+              
+              <div className="pt-2 flex flex-wrap items-center gap-4">
+                <button
+                  onClick={() => navigate('/receituario-vet/nova-receita-2')}
+                  className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-primary to-sky-600 px-5 py-3 text-sm font-semibold text-white shadow-md shadow-primary/20 transition-all hover:scale-[1.01] hover:brightness-[1.05]"
+                >
+                  <FileText className="h-4.5 w-4.5 shrink-0" />
+                  Emitir nova receita
+                  <ChevronRight className="h-4 w-4 shrink-0" />
+                </button>
+                
+                <div className="inline-flex items-center gap-2 rounded-xl border border-[color:var(--rxv-border)]/60 bg-[color:var(--rxv-surface-2)]/40 px-4 py-2 text-xs font-semibold text-[color:var(--rxv-muted)]">
+                  <Calendar className="h-3.5 w-3.5 text-primary" />
+                  <span>{todayLabel()}</span>
+                </div>
+              </div>
             </div>
-            <div className="hidden flex-shrink-0 sm:flex">
-              <img
-                src={homeIcon.src}
-                alt={homeIcon.name}
-                className="rxv-hub-hero-icon h-28 w-28 object-contain transition-transform duration-300 group-hover:scale-[1.03] sm:h-32 sm:w-32 lg:h-36 lg:w-36"
-              />
+
+            <div className="hidden lg:flex items-center justify-center p-4">
+              <div className="relative flex items-center justify-center h-48 w-48 rounded-3xl border border-primary/10 bg-primary/[0.03] shadow-inner">
+                <img
+                  src={homeIcon.src}
+                  alt={homeIcon.name}
+                  className="h-28 w-28 object-contain transition-transform duration-300 hover:scale-[1.04]"
+                />
+                <div className="absolute -bottom-2 px-3 py-1 rounded-lg border border-primary/25 bg-[color:var(--rxv-surface)] text-[10px] font-bold text-primary tracking-wide shadow-sm">
+                  VETIUS ECOSYSTEM
+                </div>
+              </div>
             </div>
           </div>
-        </Link>
+        </section>
 
-        <section className="relative z-10 mb-10" aria-labelledby="hub-primary-heading">
-          <header className="mb-4 max-w-4xl">
-            <h2 id="hub-primary-heading" className="rxv-hub-section-title">
-              Fluxo clínico
-            </h2>
-            <p className="mt-1 text-sm leading-snug text-[color:var(--rxv-muted)] lg:whitespace-nowrap">
-              Cadastros mestres e protocolos — mesma base, leitura mais direta.
-            </p>
-          </header>
-          <div className="grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 xl:grid-cols-4">
-            {PRIMARY_LINKS.map(({ to, icon, label, summary, desc, delay, premium, accent }) => (
-              <Link
-                key={to}
-                to={to}
-                title={`${label}\n\n${desc}`}
-                className={`rxv-hub-tile rxv-hub-tile--primary rxv-card gap-4 p-6${premium ? ' rxv-premium' : ''}${accent ? ' rxv-hub-tile-accent' : ''}`}
-                style={{ animationDelay: `${delay}ms` }}
-              >
-                <div className="flex items-start justify-between gap-2">
-                  <div className="rxv-home-icon-badge mb-0 shrink-0">
-                    <span className="material-symbols-outlined text-[22px]">{icon}</span>
+        {/* RECENT DRAFTS SECTION */}
+        {drafts.length > 0 && (
+          <section className="space-y-4 rounded-3xl border border-primary/15 bg-gradient-to-br from-primary/[0.05] to-transparent p-6 shadow-sm shadow-primary/5">
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-primary">
+                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10">
+                  <FolderLock className="h-4 w-4" />
+                </span>
+                Rascunhos Pendentes
+              </div>
+              <Link to="/receituario-vet/rascunhos" className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline">
+                Ver todos <ChevronRight className="h-3 w-3" />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+              {drafts.map((draft) => (
+                <Link
+                  to={`/receituario-vet/nova-receita-2?draft=${draft.id}`}
+                  key={draft.id}
+                  className="flex flex-col justify-between rounded-2xl border border-[color:var(--rxv-border)]/70 bg-[color:var(--rxv-surface)] p-4 hover:border-primary/30 hover:shadow-md transition-all group shadow-sm"
+                >
+                  <div>
+                    <h4 className="font-bold text-[color:var(--rxv-text)] group-hover:text-primary transition-colors line-clamp-1">
+                      {draft.patientName || 'Paciente sem nome'}
+                    </h4>
+                    <p className="text-xs text-[color:var(--rxv-muted)] mt-1.5 line-clamp-1">
+                      Tutor: {draft.tutorName || 'Não informado'}
+                    </p>
                   </div>
-                  {premium ? (
-                    <span className="shrink-0 rounded-md border border-[color:color-mix(in_srgb,var(--rxv-primary)_35%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_8%,transparent)] px-2 py-0.5 text-[10px] font-medium text-[color:var(--rxv-primary)]">
+                  <div className="flex items-center justify-between gap-2 mt-4 pt-3 border-t border-[color:var(--rxv-border)]/40">
+                    <span className="text-[11px] text-[color:var(--rxv-muted)]">
+                      {new Date(draft.savedAt).toLocaleDateString('pt-BR')}
+                    </span>
+                    <span className="text-xs font-semibold text-primary inline-flex items-center gap-0.5">
+                      Retomar <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* PRIMARY CLINICAL LINKS */}
+        <section className="space-y-4">
+          <div className="flex flex-col gap-1">
+            <h2 className="text-lg font-bold tracking-tight text-[color:var(--rxv-text)]">Fluxo clínico central</h2>
+            <p className="text-sm text-[color:var(--rxv-muted)]">Gerenciamento de fichas de pacientes, cadastros de fármacos e protocolos clínicos.</p>
+          </div>
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {primaryLinks.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className="group relative overflow-hidden rounded-2xl border border-[color:var(--rxv-border)]/80 bg-[color:var(--rxv-surface)] p-6 shadow-sm hover:shadow-md hover:border-primary/25 transition-all duration-200"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className={`flex h-11 w-11 items-center justify-center rounded-xl bg-${item.color}-500/15 text-${item.color}-600 dark:text-${item.color}-400 shadow-inner`}>
+                    <item.icon className="h-5.5 w-5.5" />
+                  </div>
+                  {item.premium && (
+                    <span className="rounded-md border border-primary/20 bg-primary/10 px-2 py-0.5 text-[9px] font-semibold text-primary uppercase tracking-wide">
                       Avançado
                     </span>
-                  ) : null}
+                  )}
                 </div>
-                <h3 className="text-[15px] font-semibold leading-snug text-[color:var(--rxv-text)]">{label}</h3>
-                <p className="rxv-hub-tile-summary text-[13px] leading-relaxed text-[color:var(--rxv-muted)]">{summary}</p>
-                <span className="mt-auto inline-flex items-center gap-1 text-sm font-medium text-[color:var(--rxv-primary)]">
-                  Entrar
-                  <span className="material-symbols-outlined text-[16px] transition group-hover:translate-x-0.5" aria-hidden>
-                    chevron_right
-                  </span>
-                </span>
+                
+                <h3 className="mt-5 text-15px font-bold text-[color:var(--rxv-text)] group-hover:text-primary transition-colors">{item.label}</h3>
+                <p className="mt-2 text-13px text-[color:var(--rxv-muted)] leading-relaxed line-clamp-3">{item.summary}</p>
+                
+                <div className="mt-5 pt-3 border-t border-[color:var(--rxv-border)]/20 flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                  Acessar <ArrowRight className="h-3.5 w-3.5" />
+                </div>
               </Link>
             ))}
           </div>
         </section>
 
-        <section className="relative z-10 mb-8" aria-labelledby="hub-tools-heading">
-          <header className="mb-6 max-w-2xl">
-            <h2 id="hub-tools-heading" className="rxv-hub-section-title">
-              Operação e conta
-            </h2>
-            <p className="mt-1.5 text-sm leading-relaxed text-[color:var(--rxv-muted)]">
-              Histórico, documentos especiais, modelo visual e backup — atalhos para o dia a dia.
-            </p>
-          </header>
-          <div className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-            {TOOL_LINKS.map(({ to, icon, label, summary, desc, delay, amber }) => (
+        {/* UTILITIES & TOOLS */}
+        <section className="space-y-4">
+          <div className="flex flex-col gap-1">
+            <h2 className="text-lg font-bold tracking-tight text-[color:var(--rxv-text)]">Utilitários e conta</h2>
+            <p className="text-sm text-[color:var(--rxv-muted)]">Históricos, documentos especiais, configuração de templates e backups.</p>
+          </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+            {toolLinks.map((item) => (
               <Link
-                key={to}
-                to={to}
-                title={`${label}\n\n${desc}`}
-                className="rxv-hub-tile rxv-hub-tile--tool rxv-card gap-3 p-4"
-                style={{ animationDelay: `${delay}ms` }}
+                key={item.to}
+                to={item.to}
+                className="group relative overflow-hidden rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface)] p-5 shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-200"
               >
-                <div
-                  className={`rxv-home-icon-badge rxv-home-icon-badge--sm mb-0 h-10 w-10 shrink-0 self-start [&_.material-symbols-outlined]:text-[20px]${amber ? ' !border-amber-400/40 !bg-amber-400/10 !text-amber-500' : ''}`}
-                >
-                  <span className="material-symbols-outlined">{icon}</span>
+                <div className={`flex h-10 w-10 items-center justify-center rounded-xl bg-${item.color}-500/10 text-${item.color}-600 dark:text-${item.color}-400 shadow-inner`}>
+                  <item.icon className="h-5 w-5" />
                 </div>
-                <h3 className="text-[13px] font-semibold leading-snug text-[color:var(--rxv-text)]">{label}</h3>
-                <p className="rxv-hub-tile-summary rxv-hub-tile-summary--tool text-[12px] leading-relaxed text-[color:var(--rxv-muted)]">
-                  {summary}
-                </p>
-                <span className="mt-auto inline-flex items-center gap-0.5 text-xs font-medium text-[color:var(--rxv-primary)]">
-                  Abrir
-                  <span className="material-symbols-outlined text-[14px] opacity-80" aria-hidden>
-                    north_east
-                  </span>
-                </span>
+                
+                <h3 className="mt-4 text-[13px] font-bold text-[color:var(--rxv-text)] group-hover:text-primary transition-colors">{item.label}</h3>
+                <p className="mt-1.5 text-12px text-[color:var(--rxv-muted)] leading-normal line-clamp-2">{item.summary}</p>
+                
+                <div className="mt-4 flex items-center gap-0.5 text-[10px] font-bold uppercase tracking-wider text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                  Abrir <ArrowRight className="h-3 w-3" />
+                </div>
               </Link>
             ))}
           </div>
         </section>
 
-        <footer className="relative z-10 mt-2 border-t border-[color:color-mix(in_srgb,var(--rxv-border)_70%,transparent)] pt-5 pb-1 text-center text-[13px] text-[color:var(--rxv-muted)]">
-          VETIUS © 2026 — ReceituárioVET
+        {/* PRINT HISTORY SECTION */}
+        {history.length > 0 && (
+          <section className="space-y-4">
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--rxv-text)]">
+                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[color:var(--rxv-surface-2)] text-[color:var(--rxv-text)]">
+                  <History className="h-4 w-4" />
+                </span>
+                Prescrições Recentes
+              </div>
+              <Link to="/receituario-vet/historico" className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline">
+                Ver completo <ChevronRight className="h-3 w-3" />
+              </Link>
+            </div>
+            
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+              {history.map((record) => (
+                <div
+                  key={record.id}
+                  className="flex flex-col justify-between rounded-2xl border border-[color:var(--rxv-border)]/65 bg-[color:var(--rxv-surface)] p-4 hover:border-primary/20 transition-all shadow-sm"
+                >
+                  <div>
+                    <div className="flex items-start justify-between gap-2">
+                      <h4 className="font-bold text-[color:var(--rxv-text)] line-clamp-1">{record.patientName}</h4>
+                      <button
+                        onClick={() => removeHistoryEntry(record.id)}
+                        className="text-[color:var(--rxv-muted)] hover:text-red-500 p-0.5 rounded transition-colors"
+                        title="Excluir do histórico"
+                      >
+                        <Trash2 className="h-3.5 w-3.5" />
+                      </button>
+                    </div>
+                    <p className="text-xs text-[color:var(--rxv-muted)] mt-1.5 line-clamp-1">Tutor: {record.tutorName}</p>
+                  </div>
+                  <div className="flex items-center justify-between gap-2 mt-4 pt-3 border-t border-[color:var(--rxv-border)]/40">
+                    <span className="text-[11px] text-[color:var(--rxv-muted)]">
+                      {new Date(record.createdAt).toLocaleDateString('pt-BR')}
+                    </span>
+                    <Link
+                      to={`/receituario-vet/print?id=${record.prescriptionId}`}
+                      className="text-xs font-semibold text-primary hover:underline inline-flex items-center gap-0.5"
+                    >
+                      Ver PDF <ArrowRight className="h-3 w-3" />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* FOOTER */}
+        <footer className="relative mt-4 border-t border-[color:var(--rxv-border)]/40 pt-6 pb-2 text-center text-xs text-[color:var(--rxv-muted)]">
+          VETIUS © 2026 — Receituário Veterinário de Alto Padrão
         </footer>
       </div>
     </ReceituarioChrome>

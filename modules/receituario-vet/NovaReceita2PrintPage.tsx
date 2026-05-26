@@ -1055,7 +1055,7 @@ export default function NovaReceita2PrintPage() {
 
     if (!state || !printDocs?.length) {
         return (
-            <div className="flex min-h-screen items-center justify-center bg-[#0a0f0a] text-white">
+            <div className="flex min-h-screen items-center justify-center bg-slate-950 text-white">
                 <div className="text-center">
                     <p className="text-slate-400 mb-4">Nenhuma receita carregada para revisão.</p>
                     <Link
@@ -1122,7 +1122,7 @@ export default function NovaReceita2PrintPage() {
 
     if (isReviewMode) {
         return (
-            <div className="min-h-screen bg-[#0a0f0a] text-slate-100">
+            <div className="min-h-screen bg-slate-950 text-slate-100">
                 {topbar}
 
                 <div className="mx-auto max-w-[1600px] px-4 py-6">

@@ -1,8 +1,23 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import Logo from '@/components/Logo'
-import { StripeLikeGradientBackground } from '@/components/ui/stripe-like-gradient-shader'
 import { TopRightAuthMenu } from '@/src/components/TopRightAuthMenu'
+import Logo from '../../components/Logo'
+import {
+  Grid,
+  FilePlus2,
+  BookOpen,
+  FlaskConical,
+  FileClock,
+  Users,
+  ShieldAlert,
+  ClipboardList,
+  UserCog,
+  Layers,
+  Settings,
+  PanelLeftClose,
+  PanelRightOpen
+} from 'lucide-react'
+import { LayoutGroup, motion } from 'framer-motion'
 import './receituarioChrome.css'
 
 type RxSection =
@@ -24,22 +39,51 @@ type RxSection =
   | 'historico'
   | 'print'
 type RxTheme = 'dark' | 'light'
+type RxAccent = 'sky' | 'emerald' | 'amber' | 'violet' | 'rose' | 'indigo' | 'orange' | 'cyan' | 'slate' | 'pink' | 'teal'
+
+interface RxNavItem {
+  key: RxSection
+  label: string
+  to: string
+  icon: React.ComponentType<{ className?: string }>
+  accent: RxAccent
+}
+
+interface RxNavGroup {
+  title: string
+  items: RxNavItem[]
+}
 
 const THEME_KEY = 'receituario-vet:theme:v1'
 
-// ✅ Menu atualizado: Nova Receita 2.0 + apenas Catálogo 3.0 + Protocolos 3.0
-const NAV_ITEMS: Array<{ key: RxSection; label: string; to: string; icon: string }> = [
-  { key: 'hub', label: 'HUB', to: '/receituario-vet', icon: 'hub' },
-  { key: 'nova', label: 'Nova Receita', to: '/receituario-vet/nova-receita-2', icon: 'description' },
-  { key: 'catalogo3', label: 'Catálogo', to: '/receituario-vet/catalogo3', icon: 'inventory_2' },
-  { key: 'manipulados', label: 'Manipulados', to: '/receituario-vet/manipulados', icon: 'science' },
-  { key: 'drafts', label: 'Rascunhos', to: '/receituario-vet/rascunhos', icon: 'draft' },
-  { key: 'clientes', label: 'Tutores e Pacientes', to: '/receituario-vet/clientes', icon: 'group' },
-  { key: 'controle', label: 'Controle Especial', to: '/receituario-vet/controle-especial', icon: 'shield' },
-  { key: 'protocolos3', label: 'Protocolos', to: '/receituario-vet/protocolos-3', icon: 'clinical_notes' },
-  { key: 'perfil', label: 'Configurar Médico', to: '/receituario-vet/configuração', icon: 'assignment_ind' },
-  { key: 'templates', label: 'Templates', to: '/receituario-vet/templates', icon: 'palette' },
-  { key: 'settings', label: 'Configurações', to: '/receituario-vet/configurações', icon: 'settings' },
+// ✅ Menu agrupado e modernizado com ícones Lucide e cores accents customizadas
+const NAV_GROUPS: RxNavGroup[] = [
+  {
+    title: 'Atendimento Clínico',
+    items: [
+      { key: 'hub', label: 'HUB', to: '/receituario-vet', icon: Grid, accent: 'sky' },
+      { key: 'nova', label: 'Nova Receita', to: '/receituario-vet/nova-receita-2', icon: FilePlus2, accent: 'emerald' },
+      { key: 'clientes', label: 'Tutores e Pacientes', to: '/receituario-vet/clientes', icon: Users, accent: 'indigo' },
+      { key: 'drafts', label: 'Rascunhos', to: '/receituario-vet/rascunhos', icon: FileClock, accent: 'rose' },
+    ],
+  },
+  {
+    title: 'Bases & Protocolos',
+    items: [
+      { key: 'catalogo3', label: 'Catálogo', to: '/receituario-vet/catalogo3', icon: BookOpen, accent: 'amber' },
+      { key: 'manipulados', label: 'Manipulados', to: '/receituario-vet/manipulados', icon: FlaskConical, accent: 'violet' },
+      { key: 'protocolos3', label: 'Protocolos', to: '/receituario-vet/protocolos-3', icon: ClipboardList, accent: 'cyan' },
+      { key: 'controle', label: 'Controle Especial', to: '/receituario-vet/controle-especial', icon: ShieldAlert, accent: 'orange' },
+    ],
+  },
+  {
+    title: 'Preferências',
+    items: [
+      { key: 'perfil', label: 'Configurar Médico', to: '/receituario-vet/configuração', icon: UserCog, accent: 'slate' },
+      { key: 'templates', label: 'Templates', to: '/receituario-vet/templates', icon: Layers, accent: 'pink' },
+      { key: 'settings', label: 'Configurações', to: '/receituario-vet/configurações', icon: Settings, accent: 'teal' },
+    ],
+  },
 ]
 
 function readTheme(): RxTheme {
@@ -103,14 +147,12 @@ function SidebarContent({
   expanded,
   pinned,
   onTogglePin,
-  user,
 }: {
   section: RxSection
   locationPath: string
   expanded: boolean
   pinned: boolean
   onTogglePin: () => void
-  user: SidebarUserIdentity
 }) {
   return (
     <div className={`rxv-sidebar h-full ${expanded ? 'expanded' : 'collapsed'}`}>
@@ -121,52 +163,80 @@ function SidebarContent({
           title={expanded ? 'Guardar menu lateral' : 'Abrir menu lateral'}
           onClick={onTogglePin}
         >
-          <span className="material-symbols-outlined text-[18px]">{expanded ? 'left_panel_close' : 'right_panel_open'}</span>
+          {expanded ? (
+            <PanelLeftClose className="h-[18px] w-[18px] stroke-[2.5]" />
+          ) : (
+            <PanelRightOpen className="h-[18px] w-[18px] stroke-[2.5]" />
+          )}
           <span className="rxv-sidebar-toggle-label">{pinned ? 'Guardar menu' : 'Fixar menu'}</span>
         </button>
       </div>
 
       <div className="rxv-sidebar-rail-top" />
 
-      <nav className="rxv-sidebar-nav">
-        <Link to="/receituario-vet" className="rxv-sidebar-app-logo" title="Voltar para página inicial do Receituário">
+      <Link to="/receituario-vet" className="rxv-sidebar-app-logo" title="Voltar para página inicial do Receituário">
+        <div className="rxv-sidebar-app-logo-icon-wrapper">
           <img src="/apps/REECEITA.png" alt="Logo do app Receituário Vet" className="rxv-sidebar-app-logo-image" />
-          <span className="rxv-sidebar-app-logo-title">ReceituarioVET</span>
-        </Link>
+        </div>
+        <span className="rxv-sidebar-app-logo-title">ReceituarioVET</span>
+      </Link>
 
-        {NAV_ITEMS.map((item) => {
-          const active = section === item.key || locationPath === item.to
-          return (
-            <Link key={item.key} to={item.to} className={`rxv-nav-item ${active ? 'active' : ''}`} title={item.label}>
-              <span className="material-symbols-outlined text-[20px]">{item.icon}</span>
-              <span className="rxv-nav-label">{item.label}</span>
-              {active ? <span className="rxv-nav-active-dot" aria-hidden="true" /> : null}
-            </Link>
-          )
-        })}
+      <LayoutGroup id="receituario-sidebar-nav">
+        <nav className="rxv-sidebar-nav">
+          {NAV_GROUPS.map((group) => (
+            <div key={group.title} className="rxv-nav-group-container">
+              {expanded && (
+                <div className="rxv-nav-group-header">
+                  {group.title}
+                </div>
+              )}
+              <div className="rxv-nav-group-items">
+                {group.items.map((item) => {
+                  const active = section === item.key || locationPath === item.to
+                  const Icon = item.icon
+                  return (
+                    <Link
+                      key={item.key}
+                      to={item.to}
+                      className={`rxv-nav-item rxv-nav-item-${item.accent} ${active ? 'active' : ''}`}
+                      title={item.label}
+                    >
+                      {active && (
+                        <motion.span
+                          layout
+                          layoutId="receituario-sidebar-active-bubble"
+                          className="rxv-nav-active-pill"
+                          transition={{ type: 'spring', stiffness: 420, damping: 33 }}
+                          aria-hidden="true"
+                        />
+                      )}
+                      <Icon className="rxv-nav-icon stroke-[2.5]" />
+                      <span className="rxv-nav-label">{item.label}</span>
+                      {active && !expanded && <span className="rxv-nav-active-dot" aria-hidden="true" />}
+                    </Link>
+                  )
+                })}
+              </div>
+            </div>
+          ))}
 
-        <button
-          type="button"
-          className="rxv-nav-item rxv-nav-toggle"
-          title={pinned ? 'Guardar menu lateral' : 'Fixar menu lateral'}
-          onClick={onTogglePin}
-        >
-          <span className="rxv-nav-toggle-icon-wrap" aria-hidden="true">
-            <span className="material-symbols-outlined rxv-nav-toggle-icon">{pinned ? 'left_panel_close' : 'right_panel_open'}</span>
-          </span>
-          <span className="rxv-nav-label rxv-nav-toggle-label-text">{pinned ? 'Guardar menu' : 'Fixar menu'}</span>
-        </button>
-      </nav>
-
-      <div className="rxv-sidebar-footer">
-        <Link to="/hub" className="rxv-sidebar-user" title={`${user.name} - ID ${user.id}`}>
-          <span className="material-symbols-outlined text-[18px]">account_circle</span>
-          <span className="rxv-sidebar-user-copy">
-            <strong>{user.name}</strong>
-            <small>ID {user.id}</small>
-          </span>
-        </Link>
-      </div>
+          <button
+            type="button"
+            className="rxv-nav-item rxv-nav-item-slate rxv-nav-toggle"
+            title={pinned ? 'Guardar menu lateral' : 'Fixar menu lateral'}
+            onClick={onTogglePin}
+          >
+            <span className="rxv-nav-toggle-icon-wrap" aria-hidden="true">
+              {pinned ? (
+                <PanelLeftClose className="h-5 w-5 rxv-nav-toggle-icon stroke-[2.5]" />
+              ) : (
+                <PanelRightOpen className="h-5 w-5 rxv-nav-toggle-icon stroke-[2.5]" />
+              )}
+            </span>
+            <span className="rxv-nav-label rxv-nav-toggle-label-text">{pinned ? 'Guardar menu' : 'Fixar menu'}</span>
+          </button>
+        </nav>
+      </LayoutGroup>
 
       <div className="rxv-sidebar-rail-bottom" />
     </div>
@@ -187,8 +257,6 @@ export default function ReceituarioChrome({
   const [theme, setTheme] = useState<RxTheme>(() => readTheme())
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [sidebarPinned, setSidebarPinned] = useState(true)
-  const [sidebarHovered, setSidebarHovered] = useState(false)
-  const [sidebarUser] = useState<SidebarUserIdentity>(() => readSidebarUserIdentity())
   const htmlDarkBeforeRxvRef = useRef<boolean | null>(null)
   const dark = theme === 'dark'
 
@@ -227,10 +295,6 @@ export default function ReceituarioChrome({
   }, [location.pathname])
 
   useEffect(() => {
-    if (!sidebarPinned) setSidebarHovered(false)
-  }, [sidebarPinned])
-
-  useEffect(() => {
     document.body.style.backgroundColor = dark ? '#050a12' : '#f0f5fc'
     return () => {
       document.body.style.backgroundColor = ''
@@ -238,12 +302,11 @@ export default function ReceituarioChrome({
   }, [dark])
 
   const pageClass = dark ? 'rxv-dark' : 'rxv-light'
-  const sidebarExpanded = sidebarPinned || sidebarHovered
+  const sidebarExpanded = sidebarPinned
   const sidebarClass = `rxv-sidebar-shell ${sidebarExpanded ? 'expanded' : 'collapsed'}`
   const handleTopbarMenuClick = () => {
     if (typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches) {
       setSidebarPinned((prev) => !prev)
-      setSidebarHovered(false)
       return
     }
     setMobileMenuOpen(true)
@@ -276,9 +339,6 @@ export default function ReceituarioChrome({
 
   return (
     <div className={`rxv-page ${pageClass}`}>
-      <div className="rxv-gradflow-host" aria-hidden>
-        <StripeLikeGradientBackground />
-      </div>
       <div className="rxv-bg-layer" />
 
       <div className="rxv-scale-shell">
@@ -314,12 +374,6 @@ export default function ReceituarioChrome({
           <div className="rxv-layout-body">
             <aside
               className={`rxv-desktop-sidebar ${sidebarClass}`}
-              onMouseEnter={() => {
-                if (!sidebarPinned) setSidebarHovered(true)
-              }}
-              onMouseLeave={() => {
-                if (!sidebarPinned) setSidebarHovered(false)
-              }}
             >
               <SidebarContent
                 section={section}
@@ -327,7 +381,6 @@ export default function ReceituarioChrome({
                 expanded={sidebarExpanded}
                 pinned={sidebarPinned}
                 onTogglePin={() => setSidebarPinned((prev) => !prev)}
-                user={sidebarUser}
               />
             </aside>
 
@@ -374,7 +427,6 @@ export default function ReceituarioChrome({
               expanded={true}
               pinned={true}
               onTogglePin={() => setMobileMenuOpen(false)}
-              user={sidebarUser}
             />
           </aside>
         </div>

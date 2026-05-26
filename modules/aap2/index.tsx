@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../../utils/theme';
 import type { AnimalCategoryId, AppPage } from './types';
 import { EXPLANATIONS } from './data/explanations';
@@ -189,7 +190,18 @@ const AAP2Module: React.FC = () => {
                 onAjuda={showModuleHelp}
                 onBackToHub={() => navigate('/hub')}
             >
-                {renderPage()}
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={page}
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -12 }}
+                        transition={{ duration: 0.22, ease: 'easeInOut' }}
+                        className="w-full flex-1 min-h-0 flex flex-col"
+                    >
+                        {renderPage()}
+                    </motion.div>
+                </AnimatePresence>
             </AAP2Layout>
         </div>
     );

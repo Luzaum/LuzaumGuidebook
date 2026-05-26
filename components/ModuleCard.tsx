@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { Module } from '../modules/registry'
 
 interface ModuleCardProps {
@@ -24,12 +25,14 @@ export function ModuleCard({ module }: ModuleCardProps) {
   }
 
   return (
-    <div
+    <motion.div
       className={`relative overflow-hidden rounded-2xl border bg-surface-2/60 dark:bg-surface-2/40 backdrop-blur transition-all duration-300 ${isPlanned
         ? 'opacity-60 cursor-not-allowed'
         : 'cursor-pointer hover:border-primary/50 hover:shadow-lg'
         }`}
       onClick={handleClick}
+      whileHover={isPlanned ? {} : { scale: 1.015 }}
+      whileTap={isPlanned ? {} : { scale: 0.985 }}
     >
       <div className="flex flex-col">
         {/* TAG */}
@@ -99,6 +102,6 @@ export function ModuleCard({ module }: ModuleCardProps) {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }

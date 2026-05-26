@@ -550,7 +550,7 @@ export function calculateMedicationQuantity(item: PrescriptionItem, state: Presc
     }
   }
 
-  const weightKg = toNumber(state.patient.weightKg)
+  const weightKg = toNumber(state.patient.weightKg ?? (state.patient as any).weight_kg)
   const doseUnitRaw = (item.doseUnit || '').trim()
   const dosePerKg = isDosePerKg(doseUnitRaw)
   const baseUnitRaw = dosePerKg ? getDoseBaseUnit(doseUnitRaw) : doseUnitRaw

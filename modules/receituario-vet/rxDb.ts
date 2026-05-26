@@ -1,4 +1,4 @@
-﻿import { formatStructuredConcentration } from './rxConcentration'
+import { formatStructuredConcentration, parseStructuredConcentration } from './rxConcentration'
 import { PharmacyType, PrescriptionItem, PrescriptionState, RouteGroup } from './rxTypes'
 
 export interface ProfileSettings {
@@ -37,6 +37,8 @@ export interface CatalogPresentation {
   pharmacy_veterinary?: boolean
   pharmacy_human?: boolean
   pharmacy_compounding?: boolean
+  package_quantity?: number | null
+  package_unit?: string
   // Legacy fields (localStorage compatibility)
   name?: string
   presentation?: string
@@ -755,31 +757,75 @@ function normalizeCatalogPresentation(
   raw: Partial<CatalogPresentation>,
   fallbackPharmacyType: PharmacyType = 'veterinária'
 ): CatalogPresentation {
-  const concentrationValue = repairMojibake(raw.concentrationValue || '')
-  const concentrationUnit = repairMojibake(raw.concentrationUnit || '')
-  const concentrationPerValue = repairMojibake(raw.concentrationPerValue || '1')
-  const concentrationPerUnit = repairMojibake(raw.concentrationPerUnit || '')
+  let concentrationValue = repairMojibake(raw.concentrationValue || '')
+  let concentrationUnit = repairMojibake(raw.concentrationUnit || '')
+  let concentrationPerValue = repairMojibake(raw.concentrationPerValue || '1')
+  let concentrationPerUnit = repairMojibake(raw.concentrationPerUnit || '')
+
+  const rawConcentration = repairMojibake(raw.concentration || '')
+
+  if (!concentrationValue && !concentrationUnit && rawConcentration) {
+    const parsed = parseStructuredConcentration(rawConcentration)
+    if (parsed) {
+      concentrationValue = parsed.value
+      concentrationUnit = parsed.unit
+      concentrationPerValue = parsed.perValue
+      concentrationPerUnit = parsed.perUnit
+    }
+  }
+
   const structuredConcentration = formatStructuredConcentration({
     value: concentrationValue,
     unit: concentrationUnit,
     perValue: concentrationPerValue,
     perUnit: concentrationPerUnit,
   })
-  const rawConcentration = repairMojibake(raw.concentration || '')
+
+  const tags = normalizePharmacyTags((raw as Partial<CatalogPresentation>).pharmacyTags, fallbackPharmacyType)
+  
+  const value = raw.value !== undefined && raw.value !== null ? raw.value : (concentrationValue ? Number(concentrationValue) : null)
+  const value_unit = raw.value_unit || concentrationUnit || ''
+  const per_value = raw.per_value !== undefined && raw.per_value !== null ? raw.per_value : (concentrationPerValue ? Number(concentrationPerValue) : 1)
+  const per_unit = raw.per_unit || concentrationPerUnit || raw.unitLabel || ''
+  const pharmaceutical_form = raw.pharmaceutical_form || raw.name || 'Comprimido'
+  const commercial_name = raw.commercial_name || raw.commercialName || ''
+  const avg_price_brl = raw.avg_price_brl !== undefined ? raw.avg_price_brl : (raw.averagePrice ? Number(raw.averagePrice) : null)
+
+  const pharmacy_compounding = raw.pharmacy_compounding !== undefined ? raw.pharmacy_compounding : tags.includes('manipulacao')
+  const pharmacy_veterinary = raw.pharmacy_veterinary !== undefined ? raw.pharmacy_veterinary : tags.includes('veterinária')
+  const pharmacy_human = raw.pharmacy_human !== undefined ? raw.pharmacy_human : tags.includes('humana')
+
+  const package_quantity = raw.package_quantity !== undefined ? raw.package_quantity : null
+  const package_unit = raw.package_unit || ''
 
   return {
     id: raw.id || uid('pres'),
-    name: repairMojibake(raw.name || 'Comprimido'),
+    client_id: raw.client_id,
+    name: repairMojibake(raw.name || pharmaceutical_form),
     concentration: rawConcentration || structuredConcentration,
     secondaryConcentration: repairMojibake((raw as Partial<CatalogPresentation>).secondaryConcentration || ''),
     concentrationValue,
     concentrationUnit,
     concentrationPerValue,
     concentrationPerUnit,
-    unitLabel: repairMojibake(raw.unitLabel || 'comprimido'),
-    commercialName: repairMojibake(raw.commercialName || ''),
-    averagePrice: repairMojibake(raw.averagePrice || ''),
-    pharmacyTags: normalizePharmacyTags((raw as Partial<CatalogPresentation>).pharmacyTags, fallbackPharmacyType),
+    unitLabel: repairMojibake(raw.unitLabel || per_unit),
+    commercialName: repairMojibake(raw.commercialName || commercial_name),
+    averagePrice: repairMojibake(raw.averagePrice || (avg_price_brl ? String(avg_price_brl) : '')),
+    pharmacyTags: tags,
+
+    // New schema fields
+    pharmaceutical_form,
+    commercial_name,
+    value,
+    value_unit,
+    per_value,
+    per_unit,
+    avg_price_brl,
+    pharmacy_veterinary,
+    pharmacy_human,
+    pharmacy_compounding,
+    package_quantity,
+    package_unit
   }
 }
 

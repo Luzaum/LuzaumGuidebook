@@ -1,4 +1,4 @@
-﻿// ✅ Protocolos 3.0 — Refatoração Completa (100% Supabase)
+// ✅ Protocolos 3.0 — Refatoração Completa (100% Supabase)
 // 🚫 ZERO localStorage, ZERO rxDb, ZERO mistura de fontes
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react'
@@ -1628,7 +1628,7 @@ export default function Protocolos3Page() {
                 {scopeLabel(protocol.scope)}
               </span>
             </div>
-            <h3 className="line-clamp-2 break-words text-lg font-black uppercase italic leading-tight text-[color:var(--rxv-text)]">
+            <h3 className="line-clamp-2 break-words text-lg font-extrabold uppercase leading-tight tracking-tight text-[color:var(--rxv-text)]">
               {protocol.name}
             </h3>
             {protocol.description && (
@@ -1753,7 +1753,7 @@ export default function Protocolos3Page() {
 
     return (
       <RxvModalShell zIndexClass="z-[90]" overlayClassName="bg-black/90 backdrop-blur-sm">
-        <div className="mx-auto flex max-h-[92vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,var(--rxv-border))] bg-[#0a0f0a] text-slate-100 shadow-[0_0_60px_color-mix(in_srgb,var(--rxv-primary)_18%,transparent)]">
+        <div className="mx-auto flex max-h-[92vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,var(--rxv-border))] bg-slate-950 text-slate-100 shadow-[0_0_60px_color-mix(in_srgb,var(--rxv-primary)_18%,transparent)]">
           <div className="flex items-center justify-between border-b border-slate-800 bg-black/60 px-8 py-6">
             <div>
               <div className="mb-2 flex items-center gap-2">
@@ -1761,7 +1761,7 @@ export default function Protocolos3Page() {
                   CLÍNICA
                 </span>
               </div>
-              <h2 className="text-xl font-black uppercase italic tracking-tight text-white">
+              <h2 className="text-xl font-extrabold uppercase tracking-tight text-white">
                 {editingProtocol.protocol.id ? 'Editar protocolo' : 'Novo protocolo'}
               </h2>
                 <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-500">
@@ -1937,7 +1937,7 @@ export default function Protocolos3Page() {
                               </span>
                             ) : null}
                           </div>
-                          <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                          <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-500 rxv-commercial-presentation">
                             {repairMojibakeText(med.manual_presentation_label || med.presentation_text || 'Apresentação não definida')}
                           </p>
                         </div>
@@ -2590,7 +2590,7 @@ export default function Protocolos3Page() {
                 {scopeLabel(protocol.scope)}
               </span>
             </div>
-            <h3 className="line-clamp-2 break-words text-lg font-black leading-tight uppercase italic text-[color:var(--rxv-text)]">
+            <h3 className="line-clamp-2 break-words text-lg font-extrabold leading-tight uppercase tracking-tight text-[color:var(--rxv-text)]">
               {protocol.name}
             </h3>
             {protocol.description && (
@@ -2831,7 +2831,7 @@ export default function Protocolos3Page() {
           <div className="sticky top-0 z-30 border-b border-[color:var(--rxv-border)] bg-[color:color-mix(in_srgb,var(--rxv-surface)_93%,transparent)] px-8 py-6 backdrop-blur-md">
             <div className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
               <div>
-              <h1 className="text-2xl font-black uppercase italic leading-none tracking-tight text-[color:var(--rxv-text)]">
+              <h1 className="text-2xl font-extrabold uppercase leading-none tracking-tight text-[color:var(--rxv-text)]">
                 {selectedFolderId ? folders.find(f => f.id === selectedFolderId)?.name : 'Todos os Protocolos'}
               </h1>
               <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 opacity-80">
@@ -2967,11 +2967,11 @@ export default function Protocolos3Page() {
       )}
       {protocolCompoundedEditorOpen && editingProtocol && (
         <RxvModalShell zIndexClass="z-[115]" overlayClassName="bg-black/95 backdrop-blur-sm">
-          <div className="mx-auto flex max-h-[92vh] w-full max-w-[1400px] flex-col overflow-hidden rounded-3xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_20%,transparent)] bg-[#071007] shadow-[0_0_60px_color-mix(in_srgb,var(--rxv-primary)_18%,transparent)]">
+          <div className="mx-auto flex max-h-[92vh] w-full max-w-[1400px] flex-col overflow-hidden rounded-3xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_20%,transparent)] bg-slate-950 shadow-[0_0_60px_color-mix(in_srgb,var(--rxv-primary)_18%,transparent)]">
             <div className="border-b border-slate-800 bg-black/50 px-6 py-4">
               <div className="flex items-center justify-between gap-4">
                 <div>
-                  <h2 className="text-lg font-black uppercase italic tracking-tight text-white">
+                  <h2 className="text-lg font-extrabold uppercase tracking-tight text-white">
                     Editar manipulado no protocolo
                   </h2>
                   <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
@@ -3004,7 +3004,7 @@ export default function Protocolos3Page() {
 
       {false && modalOpen && editingProtocol && (
         <RxvModalShell zIndexClass="z-[90]" overlayClassName="bg-black/90 backdrop-blur-sm">
-          <div className="mx-auto max-h-[92vh] w-full max-w-4xl overflow-hidden rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,var(--rxv-border))] bg-[#0a0f0a] text-slate-100 shadow-[0_0_60px_color-mix(in_srgb,var(--rxv-primary)_18%,transparent)] flex flex-col">
+          <div className="mx-auto max-h-[92vh] w-full max-w-4xl overflow-hidden rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,var(--rxv-border))] bg-slate-950 text-slate-100 shadow-[0_0_60px_color-mix(in_srgb,var(--rxv-primary)_18%,transparent)] flex flex-col">
             {/* Header */}
             <div className="flex items-center justify-between border-b border-slate-800 bg-black/60 px-8 py-6">
               <div>
@@ -3203,7 +3203,7 @@ export default function Protocolos3Page() {
                             <p className="text-sm font-black text-white uppercase italic truncate">
                               {med.medication_name || med.manual_medication_name}
                             </p>
-                            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-0.5 truncate">
+                            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-0.5 truncate rxv-commercial-presentation">
                               {repairMojibakeText(med.manual_presentation_label || med.presentation_text || 'Apresentação não definida')}
                             </p>
                           </div>
@@ -3423,7 +3423,7 @@ export default function Protocolos3Page() {
 
       {globalProtocolViewer && (
         <RxvModalShell zIndexClass="z-[100]" overlayClassName="bg-black/90 backdrop-blur-sm">
-          <div className="mx-auto max-h-[92vh] w-full max-w-4xl overflow-hidden rounded-2xl border border-cyan-500/30 bg-[#071014] text-slate-100 shadow-[0_0_60px_rgba(34,211,238,0.15)] flex flex-col">
+          <div className="mx-auto max-h-[92vh] w-full max-w-4xl overflow-hidden rounded-2xl border border-cyan-500/30 bg-slate-950 text-slate-100 shadow-[0_0_60px_rgba(34,211,238,0.15)] flex flex-col">
             <div className="flex items-center justify-between border-b border-slate-800 bg-black/60 px-8 py-6">
               <div>
                 <div className="mb-2 flex items-center gap-2">
@@ -3500,7 +3500,7 @@ export default function Protocolos3Page() {
                         <p className="text-sm font-black text-white uppercase italic truncate">
                           {med.medication_name || med.manual_medication_name}
                         </p>
-                        <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-500 truncate">
+                        <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-500 truncate rxv-commercial-presentation">
                           {repairMojibakeText(med.manual_presentation_label || med.presentation_text || 'Apresentação não definida')}
                         </p>
                         <div className="mt-3 grid grid-cols-2 md:grid-cols-5 gap-3 text-xs text-slate-300">
@@ -3595,7 +3595,7 @@ export default function Protocolos3Page() {
 
       {publishGlobalOpen && publishGlobalDraft && editingProtocol && (
         <RxvModalShell zIndexClass="z-[110]" overlayClassName="bg-black/95 backdrop-blur-sm">
-          <div className="mx-auto w-full max-w-2xl rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,var(--rxv-border))] bg-[#0a0f0a] text-slate-100 shadow-[0_0_60px_color-mix(in_srgb,var(--rxv-primary)_18%,transparent)]">
+          <div className="mx-auto w-full max-w-2xl rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,var(--rxv-border))] bg-slate-950 text-slate-100 shadow-[0_0_60px_color-mix(in_srgb,var(--rxv-primary)_18%,transparent)]">
             <div className="flex items-center justify-between border-b border-slate-800 bg-black/60 px-8 py-6">
               <div>
                 <h2 className="text-xl font-black text-white italic uppercase tracking-tight">
@@ -3763,7 +3763,7 @@ export default function Protocolos3Page() {
           <div className="mx-auto flex max-h-[86vh] w-full max-w-4xl flex-col overflow-hidden rounded-3xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] bg-black shadow-[0_0_80px_color-mix(in_srgb,var(--rxv-primary)_20%,transparent)]">
             <div className="flex items-center justify-between border-b border-slate-800 bg-slate-900/50 px-8 py-5">
               <div>
-                <h2 className="text-lg font-black uppercase italic tracking-tight text-white">
+                <h2 className="text-lg font-extrabold uppercase tracking-tight text-white">
                   {presentationPickerMedication
                     ? 'Escolher apresentação'
                     : compoundedPickerFormula
@@ -3845,7 +3845,7 @@ export default function Protocolos3Page() {
                     onClick={handleSelectMedicationWithoutPresentation}
                     className="w-full rounded-2xl border border-dashed border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,transparent)] p-4 text-left transition-all hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_60%,transparent)] hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)]"
                   >
-                    <p className="text-sm font-black uppercase italic text-[color:color-mix(in_srgb,var(--rxv-primary)_78%,#f1f5f9)]">
+                    <p className="text-sm font-semibold uppercase tracking-normal text-[color:color-mix(in_srgb,var(--rxv-primary)_78%,#f1f5f9)]">
                       Adicionar sem apresentação definida
                     </p>
                     <p className="mt-1 text-xs text-slate-400">
@@ -3872,7 +3872,7 @@ export default function Protocolos3Page() {
                         onClick={() => handleSelectMedicationPresentation(presentation)}
                         className="w-full rounded-2xl border border-slate-800 bg-slate-900/50 p-4 text-left transition-all group hover:border-[color:color-mix(in_srgb,var(--rxv-primary)_40%,transparent)] hover:bg-slate-900"
                       >
-                        <p className="text-sm font-black uppercase italic text-white transition-colors group-hover:text-[color:var(--rxv-primary)]">
+                        <p className="text-sm font-semibold uppercase tracking-normal text-white transition-colors group-hover:text-[color:var(--rxv-primary)]">
                           {buildPresentationLabel(presentation) || "Apresentação"}
                         </p>
                       </button>

@@ -84,6 +84,32 @@ function parseDoseString(dose?: string | null): { dose_value: number | null; dos
   }
 }
 
+function doseUnitLooksPharmacological(unit?: string | null): boolean {
+  const normalized = String(unit || '').trim().toLowerCase()
+  if (!normalized || normalized.includes('/')) return false
+  return /^(mg|g|mcg|µg|ug|ui|iu|u|ml|mcl)$/.test(normalized)
+}
+
+function inferProtocolDoseUnit(
+  doseUnit: string | null | undefined,
+  administrationBasis: PrescriptionItem['administrationBasis'] | undefined,
+  metadata: Record<string, unknown>,
+): string | null {
+  const rawUnit = sanitizeVisibleText(doseUnit || '').trim()
+  if (!rawUnit) return null
+  const explicitPerWeightUnit = sanitizeVisibleText(String(metadata.per_weight_unit || '')).trim()
+  if (explicitPerWeightUnit && !rawUnit.toLowerCase().includes(`/${explicitPerWeightUnit.toLowerCase()}`)) {
+    return `${rawUnit}/${explicitPerWeightUnit}`
+  }
+  if (
+    (administrationBasis === 'weight_based' || !administrationBasis) &&
+    doseUnitLooksPharmacological(rawUnit)
+  ) {
+    return `${rawUnit}/kg`
+  }
+  return rawUnit
+}
+
 function readAdministrationBasis(raw: unknown): PrescriptionItem['administrationBasis'] | undefined {
   if (raw == null) return undefined
   return normalizeAdministrationBasis(raw as string)
@@ -658,6 +684,8 @@ function getStoredSnapshot(protocolMed: ProtocolMedicationItem): StoredProtocolP
 export function mapProtocolMedicationToRxPrescriptionItem(
   protocolMed: ProtocolMedicationItem
 ): RxPrescriptionItem {
+  const metadata = (protocolMed.metadata || {}) as Record<string, unknown>
+  const protocolAdministrationBasis = readAdministrationBasis(metadata.administration_basis)
   const routeGroup = mapRouteToRouteGroup(protocolMed.route)
   const item = createDefaultItem('medication', routeGroup)
 
@@ -670,8 +698,9 @@ export function mapProtocolMedicationToRxPrescriptionItem(
   if (protocolMed.dose_value !== null && protocolMed.dose_value !== undefined) {
     item.doseValue = protocolMed.dose_value.toString()
   }
-  if (protocolMed.dose_unit) {
-    item.doseUnit = protocolMed.dose_unit
+  const effectiveDoseUnit = inferProtocolDoseUnit(protocolMed.dose_unit, protocolAdministrationBasis, metadata)
+  if (effectiveDoseUnit) {
+    item.doseUnit = effectiveDoseUnit
   }
 
   if (protocolMed.frequency_type === 'times_per_day' && protocolMed.times_per_day) {
@@ -750,6 +779,10 @@ export function mapProtocolMedicationToPrescriptionItem(
   const protocolAdministrationTarget = typeof protocolMeta.administration_target === 'string'
     ? sanitizeVisibleText(protocolMeta.administration_target).trim() || undefined
     : undefined
+  if (protocolMed.dose_value !== null && protocolMed.dose_value !== undefined) {
+    const effectiveDoseUnit = inferProtocolDoseUnit(protocolMed.dose_unit, protocolAdministrationBasis, protocolMeta)
+    dose = `${protocolMed.dose_value}${effectiveDoseUnit ? ` ${effectiveDoseUnit}` : ''}`
+  }
   const isSingleDose = !!protocolMeta.is_single_dose
   const metaFreqMode = typeof protocolMeta.frequency_mode === 'string' ? protocolMeta.frequency_mode : null
   /** Colunas canônicas: repeat_every_* (UI legado) ou recurrence_* (DB doses/catálogo) */

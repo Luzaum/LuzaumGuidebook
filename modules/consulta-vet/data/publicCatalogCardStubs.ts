@@ -459,7 +459,7 @@ export const PUBLIC_CATALOG_MEDICATION_CARD_STUBS: MedicationRecord[] = [
     ],
     pharmacologicClass: 'Agonista PPAR — fármaco hipolipemiante',
     species: ['dog', 'cat'],
-    category: 'hepatologia-pancreas',
+    category: 'endocrinologia',
     tags: ['Hiperlipidemia', 'Triglicéridos', 'Pancreatite', 'Extra-label'],
     indications: [
       'Hipertrigliceridemia severa ou persistente quando dieta e manejo de causa de base foram otimizados.',

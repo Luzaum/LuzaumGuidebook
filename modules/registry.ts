@@ -91,7 +91,7 @@ export const modules: Module[] = [
     title: 'Animais Peçonhentos',
     description: 'Condutas em acidentes por serpentes, aranhas, escorpiões e outros animais peçonhentos',
     route: '/peconhentos',
-    status: 'internal',
+    status: 'planned',
     icon: Worm,
     iconImage: '/apps/aap.png',
   },

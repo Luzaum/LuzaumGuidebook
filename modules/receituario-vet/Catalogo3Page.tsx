@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState, useMemo, useCallback, useRef } from 'react'
+import React, { useEffect, useState, useMemo, useCallback, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import ReceituarioChrome from './ReceituarioChrome'
@@ -1296,7 +1296,7 @@ export default function Catalogo3Page() {
                             </div>
 
                             {/* Scroll no filho: .rxv-card usa overflow:hidden e anula overflow-y no mesmo nó */}
-                            <div className="rxv-card flex max-h-[min(70vh,calc(100dvh-200px))] min-h-0 flex-col bg-[#0a140a]/80 p-0">
+                            <div className="rxv-card flex max-h-[min(70vh,calc(100dvh-200px))] min-h-0 flex-col bg-slate-950/80 p-0">
                                 <div className="shrink-0 border-b border-slate-800/50 px-3 py-3">
                                     <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Medicamentos ({medications.length})</span>
                                 </div>
@@ -1335,12 +1335,11 @@ export default function Catalogo3Page() {
                             </div>
                         </motion.div>
                     </aside>
-
+ 
                     {/* EDITOR PRINCIPAL */}
                     <main className="lg:col-span-9 space-y-8">
-
-                        {/* 1. DADOS DO MEDICAMENTO */}
-                        <RxvCard className="p-8 bg-[#0a140a]/60">
+ 
+                        <RxvCard className="p-8 bg-slate-900/60">
                             <RxvSectionHeader
                                 icon="medication"
                                 title="DADOS DO MEDICAMENTO"
@@ -1428,7 +1427,7 @@ export default function Catalogo3Page() {
                         </RxvCard>
 
                         {/* 2. DOSES RECOMENDADAS */}
-                        <RxvCard className="p-8 bg-[#0a140a]/60">
+                        <RxvCard className="p-8 bg-slate-900/60">
                             <RxvSectionHeader
                                 icon="clinical_notes"
                                 title="DOSES E PROTOCOLOS INDICADOS"
@@ -1773,7 +1772,7 @@ export default function Catalogo3Page() {
                                     const hasFormError = validationErrors[`${prefix}_form`]
 
                                     return (
-                                        <RxvCard key={pres._tempId} className="bg-[#0a140a]/40">
+                                        <RxvCard key={pres._tempId} className="bg-slate-900/40">
                                             <div className="absolute -left-1.5 top-8 h-8 w-1 rounded-full bg-slate-800 group-hover:bg-[color:color-mix(in_srgb,var(--rxv-primary)_50%,transparent)] transition-colors" />
 
                                             <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
@@ -1790,6 +1789,7 @@ export default function Catalogo3Page() {
                                                 <RxvField label="Apresentação comercial" className="md:col-span-6">
                                                     <RxvInput
                                                         placeholder="Ex: Flotril, genérico..."
+                                                        className="rxv-commercial-presentation"
                                                         value={pres.commercial_name ?? ''}
                                                         onChange={e => updatePresentation(pres._tempId!, { commercial_name: e.target.value })}
                                                     />
@@ -1823,7 +1823,7 @@ export default function Catalogo3Page() {
                                                                         <label className="text-[8px] font-black text-slate-500 uppercase pl-1">Concentração</label>
                                                                         <RxvInput
                                                                             type="number"
-                                                                            className="text-center font-black text-[color:var(--rxv-primary)]"
+                                                                            className="text-center font-black text-[color:var(--rxv-primary)] rxv-commercial-presentation"
                                                                             value={concentration.value === null ? '' : concentration.value}
                                                                             onChange={e => updatePresentationConcentration(pres._tempId!, concentration.id, { value: e.target.value === '' ? null : Number(e.target.value) })}
                                                                             error={!!concentrationError}
@@ -1998,7 +1998,7 @@ export default function Catalogo3Page() {
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="mx-auto w-full max-w-md rounded-3xl bg-[#0a140a] border border-slate-800 p-8 shadow-2xl relative"
+                            className="mx-auto w-full max-w-md rounded-3xl bg-slate-950 border border-slate-800 p-8 shadow-2xl relative"
                         >
                             <div className="absolute top-0 left-0 w-full h-1 bg-amber-500" />
                             <div className="flex flex-col items-center text-center">
@@ -2039,7 +2039,7 @@ export default function Catalogo3Page() {
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="mx-auto w-full max-w-md rounded-3xl bg-[#0a140a] border border-red-500/40 p-8 shadow-2xl relative"
+                            className="mx-auto w-full max-w-md rounded-3xl bg-slate-950 border border-red-500/40 p-8 shadow-2xl relative"
                         >
                             <div className="absolute top-0 left-0 w-full h-1 bg-red-500" />
                             <div className="flex flex-col items-center text-center">
@@ -2078,7 +2078,7 @@ export default function Catalogo3Page() {
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="mx-auto w-full max-w-3xl rounded-3xl border border-slate-800 bg-[#0a140a] p-8 shadow-2xl"
+                            className="mx-auto w-full max-w-3xl rounded-3xl border border-slate-800 bg-slate-950 p-8 shadow-2xl"
                         >
                             <div className="mb-6 flex items-start justify-between gap-4">
                                 <div>

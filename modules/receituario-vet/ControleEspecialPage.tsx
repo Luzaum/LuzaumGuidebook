@@ -373,9 +373,8 @@ export default function ControleEspecialPage() {
                           Ver manipulado
                         </button>
                       </div>
-
                       <div className="mt-3 rounded-xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/50 px-3 py-3 text-sm">
-                        <p className="font-semibold text-[color:var(--rxv-text)]">
+                        <p className="font-semibold text-[color:var(--rxv-text)] rxv-commercial-presentation">
                           {[entry.bundle.medication.pharmaceutical_form, entry.bundle.medication.default_qsp_text || entry.bundle.medication.default_quantity_text].filter(Boolean).join(' • ')}
                         </p>
                         <p className="mt-1 text-xs text-[color:var(--rxv-muted)]">
@@ -385,7 +384,7 @@ export default function ControleEspecialPage() {
                     </article>
                   )
                 }
-
+ 
                 const presentation = entry.presentations[0]
                 return (
                   <article key={entry.id} className="rounded-xl border border-amber-500/25 bg-amber-500/5 p-4">
@@ -412,9 +411,9 @@ export default function ControleEspecialPage() {
                         Ver no catálogo
                       </button>
                     </div>
-
+ 
                     <div className="mt-3 rounded-xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/50 px-3 py-3 text-sm">
-                      <p className="font-semibold text-[color:var(--rxv-text)]">{buildPresentationSummary(presentation)}</p>
+                      <p className="font-semibold text-[color:var(--rxv-text)] rxv-commercial-presentation">{buildPresentationSummary(presentation)}</p>
                       <p className="mt-1 text-xs text-[color:var(--rxv-muted)]">
                         Origem de farmácia: {inferPharmacyType(presentation)}
                       </p>

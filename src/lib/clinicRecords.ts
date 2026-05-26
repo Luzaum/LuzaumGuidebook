@@ -1055,6 +1055,16 @@ function normalizeAdministrationBasisValue(raw: unknown): string | null {
   return null
 }
 
+function doseUnitLooksPharmacological(raw: unknown): boolean {
+  const unit = String(raw || '')
+    .trim()
+    .toLowerCase()
+    .replace('µ', 'u')
+    .replace('ui', 'u')
+  if (!unit || unit.includes('/')) return false
+  return ['mg', 'mcg', 'ug', 'g', 'ml', 'u'].includes(unit)
+}
+
 function mapDoseRowToRecommendedDose(row: any, source: CatalogSource = 'clinic'): RecommendedDose {
   const metadata = normalizeRecommendedDoseMetadata(row?.metadata)
   const pick = (field: string, fallback: any = null) => {
@@ -1065,6 +1075,17 @@ function mapDoseRowToRecommendedDose(row: any, source: CatalogSource = 'clinic')
     return fallback
   }
 
+  const administrationBasis = normalizeAdministrationBasisValue(pick('administration_basis', null))
+  const rawDoseUnit = String(pick('dose_unit', 'mg/kg'))
+  const rawPerWeightUnit = pick('per_weight_unit', null) as string | null
+  const inferredPerWeightUnit =
+    rawPerWeightUnit ||
+    (administrationBasis !== 'per_animal' &&
+      administrationBasis !== 'per_application_site' &&
+      doseUnitLooksPharmacological(rawDoseUnit)
+      ? 'kg'
+      : null)
+
   return {
     id: row?.id,
     clinic_id: row?.clinic_id,
@@ -1073,8 +1094,8 @@ function mapDoseRowToRecommendedDose(row: any, source: CatalogSource = 'clinic')
     route: String(pick('route', 'VO')),
     dose_value: Number(pick('dose_value', 0)),
     dose_max: pick('dose_max', null) as number | null,
-    dose_unit: String(pick('dose_unit', 'mg/kg')),
-    per_weight_unit: pick('per_weight_unit', null) as string | null,
+    dose_unit: rawDoseUnit,
+    per_weight_unit: inferredPerWeightUnit,
     indication: pick('indication', null) as string | null,
     frequency: pick('frequency', null) as string | null,
     frequency_min: pick('frequency_min', null) as number | null,
@@ -1085,7 +1106,7 @@ function mapDoseRowToRecommendedDose(row: any, source: CatalogSource = 'clinic')
     recurrence_value: pick('recurrence_value', null) as number | null,
     recurrence_unit: pick('recurrence_unit', null) as string | null,
     duration: pick('duration', null) as string | null,
-    administration_basis: normalizeAdministrationBasisValue(pick('administration_basis', null)),
+    administration_basis: administrationBasis,
     administration_amount: pick('administration_amount', null) as number | null,
     administration_unit: pick('administration_unit', null) as string | null,
     administration_target: pick('administration_target', null) as string | null,

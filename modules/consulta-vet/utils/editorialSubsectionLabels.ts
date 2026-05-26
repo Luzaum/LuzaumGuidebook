@@ -46,6 +46,8 @@ const FULL_KEY_LABELS: Record<string, string> = {
   hiperFiguraNorsworthy: 'Técnica de Norsworthy (Exame Físico)',
   hiperFiguraScintigraphy: 'Cintilografia Tireoidiana: Padrões de Hipertireoidismo',
   hiperFiguraScintigraphyEctopic: 'Cintilografia Tireoidiana: Hiperplasia vs. Tecido Ectópico',
+
+  tcFiguraCirurgiaImplante: 'Implante Traqueal Extraluminal (Transoperatório e Pós-operatório)',
   notaCaninos: 'Nota sobre cães',
   visaoGeralFenotipoFinal: 'Visão geral — fenótipo histológico final',
   causasEmCaes: 'Causas em cães',

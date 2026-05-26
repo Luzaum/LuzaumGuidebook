@@ -2816,11 +2816,11 @@ export default function NovaReceita2Page() {
                                                             <div className="rounded-2xl border border-slate-800 bg-black/20 px-4 py-4 text-xs text-[color:var(--rxv-muted)]">
                                                                 <p className="font-semibold text-[color:var(--rxv-text)]">Texto final da receita</p>
                                                                 <div className="mt-3 grid grid-cols-[minmax(0,1fr)_minmax(24px,1fr)_auto] items-end gap-3">
-                                                                    <p className="min-w-0 truncate whitespace-nowrap text-sm font-semibold leading-6 text-white">{printLineLeft}</p>
+                                                                    <p className="min-w-0 truncate whitespace-nowrap text-sm font-semibold leading-6 text-white rxv-commercial-presentation">{printLineLeft}</p>
                                                                     <div aria-hidden="true" className="h-[8px] min-w-[24px] bg-[radial-gradient(circle,rgba(148,163,184,0.72)_1.1px,transparent_1.2px)] bg-[length:10px_8px] bg-repeat-x bg-left-center" />
-                                                                    <p className="shrink-0 whitespace-nowrap text-right text-[11px] font-black uppercase tracking-[0.18em] text-slate-300">{printLineRight}</p>
+                                                                    <p className="shrink-0 whitespace-nowrap text-right text-[11px] font-black uppercase tracking-[0.18em] text-slate-300 rxv-commercial-presentation">{printLineRight}</p>
                                                                 </div>
-                                                                <p className="mt-3 text-sm leading-7 text-white">{livePrintItem?.instruction || buildCompoundedInstruction(item, state.patient)}</p>
+                                                                <p className="mt-3 text-sm leading-7 text-white rxv-posology-protocol">{livePrintItem?.instruction || buildCompoundedInstruction(item, state.patient)}</p>
                                                                 {item.cautionsText?.trim() ? <p className="mt-1">Orientações ao tutor: {item.cautionsText.trim()}</p> : null}
                                                                 <p className="mt-1">{buildCompoundedPharmacyInstruction(item, state.patient)}</p>
                                                             </div>
@@ -2846,9 +2846,9 @@ export default function NovaReceita2Page() {
                                                                     </div>
                                                                     <div className="rounded-xl border border-slate-700 bg-slate-950/60 px-4 py-3">
                                                                         <div className="grid grid-cols-[minmax(0,1fr)_minmax(24px,1fr)_auto] items-end gap-3">
-                                                                            <p className="min-w-0 truncate whitespace-nowrap text-sm font-semibold leading-6 text-white">{printLineLeft || 'Linha principal da esquerda'}</p>
+                                                                            <p className="min-w-0 truncate whitespace-nowrap text-sm font-semibold leading-6 text-white rxv-commercial-presentation">{printLineLeft || 'Linha principal da esquerda'}</p>
                                                                             <div aria-hidden="true" className="h-[8px] min-w-[24px] bg-[radial-gradient(circle,rgba(148,163,184,0.72)_1.1px,transparent_1.2px)] bg-[length:10px_8px] bg-repeat-x bg-left-center" />
-                                                                            <p className="shrink-0 whitespace-nowrap text-right text-xs font-black uppercase tracking-[0.18em] text-slate-300">{printLineRight || 'Apresentação'}</p>
+                                                                            <p className="shrink-0 whitespace-nowrap text-right text-xs font-black uppercase tracking-[0.18em] text-slate-300 rxv-commercial-presentation">{printLineRight || 'Apresentação'}</p>
                                                                         </div>
                                                                     </div>
                                                                     {printLineManual ? (
@@ -3107,7 +3107,7 @@ export default function NovaReceita2Page() {
                     <div className="mx-auto flex max-h-[80vh] w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-cyan-400/30 bg-[color:var(--rxv-surface)] shadow-[0_0_80px_rgba(34,211,238,0.12)]">
                         <div className="flex items-center justify-between border-b border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/90 px-8 py-5">
                             <div>
-                                <h2 className="text-lg font-black uppercase italic tracking-tight text-[color:var(--rxv-text)]">Escolher apresentação</h2>
+                                <h2 className="text-lg font-extrabold uppercase tracking-tight text-[color:var(--rxv-text)]">Escolher apresentação</h2>
                                 <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-500">{presentationPickerItemName}</p>
                             </div>
                             <button
@@ -3138,7 +3138,7 @@ export default function NovaReceita2Page() {
                                             onClick={() => applyPresentationToItem(presentation)}
                                             className="w-full rounded-2xl border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/85 p-4 text-left transition-all hover:border-cyan-400/40 hover:bg-[color:var(--rxv-surface-2)]"
                                         >
-                                            <p className="text-sm font-black uppercase italic text-white">
+                                            <p className="text-sm font-semibold uppercase tracking-normal text-[color:var(--rxv-text)]">
                                                 {[presentation.pharmaceutical_form || 'Apresentação', presentation.commercial_name || 'Sem nome comercial'].join(' • ')}
                                             </p>
                                             <p className="mt-2 text-xs text-[color:var(--rxv-muted)]">{concentration}</p>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Outlet, useNavigate, useLocation, Link } from 'react-router-dom'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { modules } from '../modules/registry'
@@ -8,10 +8,104 @@ import { useAuthSession } from '@/src/components/AuthSessionProvider'
 import { useClinic } from '@/src/components/ClinicProvider'
 import { TopRightAuthMenu } from '@/src/components/TopRightAuthMenu'
 
+const APP_FORM_DRAFT_PREFIX = 'vetius:app-form-draft:v1:'
+const NON_DRAFT_FIELD_TYPES = new Set(['button', 'submit', 'reset', 'file', 'image', 'password'])
+
+type DraftableField = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+
+function isDraftableAppRoute(pathname: string): boolean {
+  if (!pathname || pathname === '/' || pathname === '/hub') return false
+  const routeAliases = ['/transfusao-sanguinea', '/emergencias']
+  return (
+    modules.some((module) => pathname === module.route || pathname.startsWith(`${module.route}/`)) ||
+    routeAliases.some((route) => pathname === route || pathname.startsWith(`${route}/`))
+  )
+}
+
+function getAppFormDraftKey(pathname: string): string | null {
+  if (!isDraftableAppRoute(pathname)) return null
+  return `${APP_FORM_DRAFT_PREFIX}${pathname}`
+}
+
+function isDraftableField(element: Element | null): element is DraftableField {
+  if (!element) return false
+  const tag = element.tagName.toLowerCase()
+  if (tag === 'textarea' || tag === 'select') return true
+  if (tag !== 'input') return false
+  const type = (element as HTMLInputElement).type?.toLowerCase() || 'text'
+  return !NON_DRAFT_FIELD_TYPES.has(type)
+}
+
+function getFieldKey(field: DraftableField, index: number): string {
+  const stable =
+    field.getAttribute('data-draft-key') ||
+    field.getAttribute('name') ||
+    field.getAttribute('id') ||
+    field.getAttribute('aria-label') ||
+    field.getAttribute('placeholder')
+  return `${field.tagName.toLowerCase()}:${stable || index}`
+}
+
+function collectFormDraft(root: HTMLElement): Record<string, unknown> {
+  const draft: Record<string, unknown> = {}
+  const fields = Array.from(root.querySelectorAll('input, textarea, select')).filter(isDraftableField)
+
+  fields.forEach((field, index) => {
+    const key = getFieldKey(field, index)
+    if (field instanceof HTMLInputElement && (field.type === 'checkbox' || field.type === 'radio')) {
+      draft[key] = field.checked
+      return
+    }
+    if (field instanceof HTMLSelectElement && field.multiple) {
+      draft[key] = Array.from(field.selectedOptions).map((option) => option.value)
+      return
+    }
+    draft[key] = field.value
+  })
+
+  return draft
+}
+
+function restoreFormDraft(root: HTMLElement, draft: Record<string, unknown>): void {
+  const fields = Array.from(root.querySelectorAll('input, textarea, select')).filter(isDraftableField)
+
+  fields.forEach((field, index) => {
+    const key = getFieldKey(field, index)
+    if (!Object.prototype.hasOwnProperty.call(draft, key)) return
+    const value = draft[key]
+
+    if (field instanceof HTMLInputElement && (field.type === 'checkbox' || field.type === 'radio')) {
+      const nextChecked = Boolean(value)
+      if (field.checked !== nextChecked) {
+        field.checked = nextChecked
+        field.dispatchEvent(new Event('change', { bubbles: true }))
+      }
+      return
+    }
+
+    if (field instanceof HTMLSelectElement && field.multiple && Array.isArray(value)) {
+      const selected = new Set(value.map(String))
+      Array.from(field.options).forEach((option) => {
+        option.selected = selected.has(option.value)
+      })
+      field.dispatchEvent(new Event('change', { bubbles: true }))
+      return
+    }
+
+    const nextValue = String(value ?? '')
+    if (field.value !== nextValue) {
+      field.value = nextValue
+      field.dispatchEvent(new Event(field instanceof HTMLSelectElement ? 'change' : 'input', { bubbles: true }))
+    }
+  })
+}
+
 export function AppLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const navigate = useNavigate()
   const location = useLocation()
+  const appContentRef = useRef<HTMLDivElement | null>(null)
+  const saveDraftTimerRef = useRef<number | null>(null)
   
   const { profile } = useAuthSession()
   const { clinicName } = useClinic()
@@ -20,31 +114,90 @@ export function AppLayout() {
   const iframeModules = modules.filter((m) => m.status === 'iframe')
   const plannedModules = modules.filter((m) => m.status === 'planned')
 
-  const isActive = (route: string) => location.pathname === route
+  const decodedPathname = decodeURIComponent(location.pathname)
+  const isActive = (route: string) => decodedPathname === route
   const isImmersiveModuleRoute =
-    location.pathname.startsWith('/receituario-vet') ||
-    location.pathname.startsWith('/dados-veterinarios')
+    decodedPathname.startsWith('/receituario-vet') ||
+    decodedPathname.startsWith('/dados-veterinarios')
   const isFullBleedRoute =
     isActive('/') ||
     isActive('/hub') ||
     isImmersiveModuleRoute ||
-    location.pathname.startsWith('/peconhentos') ||
-    location.pathname.startsWith('/fluidoterapia') ||
-    location.pathname.startsWith('/antibioticoterapia') ||
-    location.pathname.startsWith('/hemogasovet') ||
-    location.pathname.startsWith('/plantao-vet') ||
-    location.pathname.startsWith('/calculadora-energetica') ||
-    location.pathname.startsWith('/crivet') ||
-    location.pathname.startsWith('/consulta-vet') ||
-    location.pathname.startsWith('/dor') ||
-    location.pathname.startsWith('/neurologia') ||
-    location.pathname.startsWith('/veteletrolitico') ||
-    location.pathname.startsWith('/transfusao-sanguinea') ||
-    location.pathname.startsWith('/transfusão-sanguinea')
+    decodedPathname.startsWith('/peconhentos') ||
+    decodedPathname.startsWith('/fluidoterapia') ||
+    decodedPathname.startsWith('/antibioticoterapia') ||
+    decodedPathname.startsWith('/hemogasovet') ||
+    decodedPathname.startsWith('/plantao-vet') ||
+    decodedPathname.startsWith('/calculadora-energetica') ||
+    decodedPathname.startsWith('/crivet') ||
+    decodedPathname.startsWith('/consulta-vet') ||
+    decodedPathname.startsWith('/dor') ||
+    decodedPathname.startsWith('/neurologia') ||
+    decodedPathname.startsWith('/veteletrolitico') ||
+    decodedPathname.startsWith('/transfusao-sanguinea') ||
+    decodedPathname.startsWith('/transfusão-sanguinea')
+
+  const saveCurrentFormDraft = useCallback(() => {
+    const root = appContentRef.current
+    const key = getAppFormDraftKey(location.pathname)
+    if (!root || !key) return
+    try {
+      localStorage.setItem(key, JSON.stringify(collectFormDraft(root)))
+    } catch (error) {
+      if (import.meta.env?.DEV) console.warn('[AppLayout] Failed to persist app form draft', error)
+    }
+  }, [location.pathname])
+
+  const scheduleFormDraftSave = useCallback(() => {
+    if (saveDraftTimerRef.current !== null) window.clearTimeout(saveDraftTimerRef.current)
+    saveDraftTimerRef.current = window.setTimeout(saveCurrentFormDraft, 120)
+  }, [saveCurrentFormDraft])
+
+  useEffect(() => {
+    return () => {
+      if (saveDraftTimerRef.current !== null) window.clearTimeout(saveDraftTimerRef.current)
+    }
+  }, [])
+
+  useEffect(() => {
+    const root = appContentRef.current
+    const key = getAppFormDraftKey(location.pathname)
+    if (!root || !key) return
+
+    let cancelled = false
+    const restore = () => {
+      if (cancelled) return
+      try {
+        const raw = localStorage.getItem(key)
+        if (!raw) return
+        const parsed = JSON.parse(raw)
+        if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+          restoreFormDraft(root, parsed as Record<string, unknown>)
+        }
+      } catch (error) {
+        if (import.meta.env?.DEV) console.warn('[AppLayout] Failed to restore app form draft', error)
+      }
+    }
+
+    const frame = window.requestAnimationFrame(() => {
+      restore()
+      window.setTimeout(restore, 250)
+    })
+
+    return () => {
+      cancelled = true
+      window.cancelAnimationFrame(frame)
+    }
+  }, [location.pathname])
 
   if (isImmersiveModuleRoute) {
     return (
-      <div className="h-dvh min-h-0 w-full overflow-hidden bg-background">
+      <div
+        ref={appContentRef}
+        onInputCapture={scheduleFormDraftSave}
+        onChangeCapture={scheduleFormDraftSave}
+        className="h-dvh min-h-0 w-full overflow-hidden bg-background"
+      >
         <Outlet />
       </div>
     )
@@ -323,7 +476,12 @@ export function AppLayout() {
         </header>
 
         {/* Page Content viewport */}
-        <main className="relative flex w-full flex-1 flex-col min-h-0 overflow-auto bg-slate-950/20">
+        <main
+          ref={appContentRef}
+          onInputCapture={scheduleFormDraftSave}
+          onChangeCapture={scheduleFormDraftSave}
+          className="relative flex w-full flex-1 flex-col min-h-0 overflow-auto bg-slate-50/50 dark:bg-slate-950/20"
+        >
           {isFullBleedRoute ? (
             <div className="flex min-h-0 flex-1 w-full">
               <Outlet />

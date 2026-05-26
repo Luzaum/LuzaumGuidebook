@@ -63,6 +63,24 @@ function parseDoseString(dose: string): { numericStr: string; unit: string; perK
     }
 }
 
+function doseUnitLooksPharmacological(raw: string): boolean {
+    const unit = String(raw || '')
+        .trim()
+        .toLowerCase()
+        .replace('µ', 'u')
+        .replace('ui', 'u')
+    if (!unit || unit.includes('/')) return false
+    return ['mg', 'mcg', 'ug', 'g', 'ml', 'u'].includes(unit)
+}
+
+function shouldTreatStandardDoseAsPerKg(item: NovaReceita2State['items'][number], parsedDose: { unit: string; perKg: boolean } | null): boolean {
+    if (!parsedDose || parsedDose.perKg) return false
+    if (item.kind !== 'standard') return false
+    if (!item.medication_id && item.catalog_source !== 'clinic' && item.catalog_source !== 'global') return false
+    if (item.administrationBasis && item.administrationBasis !== 'weight_based' && item.administrationBasis !== 'weight_band') return false
+    return doseUnitLooksPharmacological(parsedDose.unit)
+}
+
 function normalizeLooseText(value: string): string {
     return String(value || '')
         .normalize('NFD')
@@ -495,17 +513,23 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
 
         // FIX G: parsear dose livre para campos estruturados (doseValue numérico + doseUnit)
         // Permite que calculateMedicationQuantity exiba "Dose calculada: X mg / Volume: Y mL"
+        const rawItem = item as any
         const parsedDose = item.kind === 'compounded'
             ? (
                 compoundedCalculation?.mode === 'weight_based'
                     ? parseDoseString(toSafeString(compoundedCalculation?.doseDescriptorText))
                     : parseDoseString(toSafeString(compoundedCalculation?.perAdministrationText || item.dose))
             )
-            : parseDoseString(toSafeString(item.dose))
-        const doseValue = parsedDose ? parsedDose.numericStr : toSafeString(item.dose)
-        const doseUnit = parsedDose
-            ? parsedDose.perKg ? `${parsedDose.unit}/kg` : parsedDose.unit
+            : parseDoseString(toSafeString(item.dose || (rawItem.doseValue && rawItem.doseUnit ? `${rawItem.doseValue} ${rawItem.doseUnit}` : '')))
+        let doseValue = parsedDose ? parsedDose.numericStr : toSafeString(item.dose)
+        let doseUnit = parsedDose
+            ? parsedDose.perKg || shouldTreatStandardDoseAsPerKg(item, parsedDose) ? `${parsedDose.unit}/kg` : parsedDose.unit
             : ''
+
+        if (!doseValue && rawItem.doseValue) {
+            doseValue = toSafeString(rawItem.doseValue)
+            doseUnit = toSafeString(rawItem.doseUnit)
+        }
         const frequency = parseStructuredFrequency(item)
         const duration = resolveStructuredDuration(item)
         const legacyStart =
@@ -520,7 +544,7 @@ export function buildPrescriptionStateFromNovaReceita2(state: NovaReceita2State)
         // FIX A3: garantir que weight_kg do patient seja sempre string
         // (Supabase pode retornar como number dependendo da versão do schema)
 
-        if (import.meta.env.DEV) {
+        if (import.meta.env?.DEV) {
             console.log('[novaReceita2Adapter] item mapped', {
                 id: item.id,
                 name: item.name,

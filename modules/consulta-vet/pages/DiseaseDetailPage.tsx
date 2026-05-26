@@ -305,34 +305,109 @@ export function DiseaseDetailPage() {
 
         <div className="space-y-8 pb-10 pt-8 md:space-y-10">
           <section id="quick-summary" className="scroll-mt-24">
-            <div
-              className={cn(
-                'relative overflow-hidden rounded-[34px] border border-primary/20 p-6 text-white shadow-lg md:p-8 xl:p-10',
-                'bg-gradient-to-br from-primary via-primary to-sky-700/90 dark:from-primary dark:via-primary/95 dark:to-slate-900',
-                'ring-1 ring-white/10 dark:ring-white/5'
-              )}
-            >
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -left-20 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-cyan-400/25 blur-3xl dark:bg-cyan-500/15"
-              />
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -right-10 -top-10 h-64 w-64 rounded-full bg-white/25 blur-3xl dark:bg-sky-400/10"
-              />
-              <div className="relative z-10">
-                <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-white/85 drop-shadow-sm">
-                  {UI_TEXT.quickSummary}
-                </p>
-                {disease.quickSummaryRich ? (
-                  <DiseaseQuickSummaryPanel data={disease.quickSummaryRich} />
-                ) : (
-                  <div className="max-w-[108ch] text-white/95">
-                    <p className="text-xl leading-9 drop-shadow-sm md:text-[28px] md:leading-[1.45]">{disease.quickSummary}</p>
+            {(() => {
+              const SUMMARY_THEMES: Record<string, { gradient: string; border: string; glow: string }> = {
+                endocrinologia: {
+                  gradient: 'bg-gradient-to-br from-purple-900/95 via-indigo-950/98 to-slate-950/98',
+                  border: 'border-purple-500/30 dark:border-purple-400/20',
+                  glow: 'bg-purple-500/12',
+                },
+                respiratorio: {
+                  gradient: 'bg-gradient-to-br from-sky-900/95 via-slate-900/98 to-slate-950/98',
+                  border: 'border-sky-500/30 dark:border-sky-400/20',
+                  glow: 'bg-sky-500/12',
+                },
+                cardiologia: {
+                  gradient: 'bg-gradient-to-br from-rose-900/95 via-slate-900/98 to-slate-950/98',
+                  border: 'border-rose-500/30 dark:border-rose-400/20',
+                  glow: 'bg-rose-500/12',
+                },
+                infecciosas: {
+                  gradient: 'bg-gradient-to-br from-emerald-900/95 via-slate-900/98 to-slate-950/98',
+                  border: 'border-emerald-500/30 dark:border-emerald-400/20',
+                  glow: 'bg-emerald-500/12',
+                },
+                infectologia: {
+                  gradient: 'bg-gradient-to-br from-emerald-900/95 via-slate-900/98 to-slate-950/98',
+                  border: 'border-emerald-500/30 dark:border-emerald-400/20',
+                  glow: 'bg-emerald-500/12',
+                },
+                'nefrologia-urologia': {
+                  gradient: 'bg-gradient-to-br from-amber-900/95 via-slate-900/98 to-slate-950/98',
+                  border: 'border-amber-500/30 dark:border-amber-400/20',
+                  glow: 'bg-amber-500/12',
+                },
+                dermatologia: {
+                  gradient: 'bg-gradient-to-br from-pink-900/95 via-slate-900/98 to-slate-950/98',
+                  border: 'border-pink-500/30 dark:border-pink-400/20',
+                  glow: 'bg-pink-500/12',
+                },
+                neurologia: {
+                  gradient: 'bg-gradient-to-br from-indigo-900/95 via-slate-900/98 to-slate-950/98',
+                  border: 'border-indigo-500/30 dark:border-indigo-400/20',
+                  glow: 'bg-indigo-500/12',
+                },
+                oncologia: {
+                  gradient: 'bg-gradient-to-br from-yellow-900/95 via-slate-900/98 to-slate-950/98',
+                  border: 'border-yellow-500/30 dark:border-yellow-400/20',
+                  glow: 'bg-yellow-500/12',
+                },
+                ortopedia: {
+                  gradient: 'bg-gradient-to-br from-teal-900/95 via-slate-900/98 to-slate-950/98',
+                  border: 'border-teal-500/30 dark:border-teal-400/20',
+                  glow: 'bg-teal-500/12',
+                },
+                imunologia: {
+                  gradient: 'bg-gradient-to-br from-violet-900/95 via-slate-900/98 to-slate-950/98',
+                  border: 'border-violet-500/30 dark:border-violet-400/20',
+                  glow: 'bg-violet-500/12',
+                },
+                odontologia: {
+                  gradient: 'bg-gradient-to-br from-cyan-900/95 via-slate-900/98 to-slate-950/98',
+                  border: 'border-cyan-500/30 dark:border-cyan-400/20',
+                  glow: 'bg-cyan-500/12',
+                },
+              };
+
+              const displayCategory = disease.category === 'infecciosas' ? 'infectologia' : disease.category;
+              const theme = SUMMARY_THEMES[displayCategory] || {
+                gradient: 'bg-gradient-to-br from-primary via-primary to-sky-700/90 dark:from-primary dark:via-primary/95 dark:to-slate-900',
+                border: 'border-primary/20',
+                glow: 'bg-cyan-400/25 dark:bg-cyan-500/15',
+              };
+
+              return (
+                <div
+                  className={cn(
+                    'relative overflow-hidden rounded-[34px] border p-6 text-white shadow-lg md:p-8 xl:p-10 transition-all duration-300',
+                    theme.border,
+                    theme.gradient,
+                    'ring-1 ring-white/10 dark:ring-white/5'
+                  )}
+                >
+                  <div
+                    aria-hidden
+                    className={cn("pointer-events-none absolute -left-20 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full blur-3xl", theme.glow)}
+                  />
+                  <div
+                    aria-hidden
+                    className={cn("pointer-events-none absolute -right-10 -top-10 h-64 w-64 rounded-full blur-3xl opacity-40", theme.glow)}
+                  />
+                  <div className="relative z-10">
+                    <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-white/85 drop-shadow-sm">
+                      {UI_TEXT.quickSummary}
+                    </p>
+                    {disease.quickSummaryRich ? (
+                      <DiseaseQuickSummaryPanel data={disease.quickSummaryRich} slug={disease.slug} />
+                    ) : (
+                      <div className="max-w-[108ch] text-white/95">
+                        <p className="text-xl leading-9 drop-shadow-sm md:text-[28px] md:leading-[1.45]">{disease.quickSummary}</p>
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-            </div>
+                </div>
+              );
+            })()}
           </section>
 
           <QuickDecisionStrip items={disease.quickDecisionStrip || []} />

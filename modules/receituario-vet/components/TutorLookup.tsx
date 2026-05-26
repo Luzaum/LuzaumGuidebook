@@ -265,7 +265,7 @@ export function TutorLookup({ value, onChange, placeholder = 'Buscar tutor...', 
       {/* ✅ Dropdown usando Portal (nunca é cortado por overflow) */}
       {isOpen && (
         <Portal.Root>
-          <div ref={dropdownRef} style={dropdownStyle} className="rounded-xl border border-slate-800 bg-[#0a0f0a] shadow-[0_10px_40px_rgba(0,0,0,0.6)]">
+          <div ref={dropdownRef} style={dropdownStyle} className="rounded-xl border border-slate-800 bg-slate-950 shadow-[0_10px_40px_rgba(0,0,0,0.6)]">
             {/* B4: Aguardar bootstrap da clínica antes de exibir resultados */}
             {clinicLoading && (
               <div className="px-4 py-3 text-center">

@@ -31,6 +31,83 @@ function sanitizePrintText(value: string): string {
     .trim()
 }
 
+function buildPlainPrescriptionText(doc: PrintDoc): string {
+  const lines: string[] = []
+  lines.push('RECEITUARIO')
+  if (doc.clinicName) lines.push(sanitizePrintText(doc.clinicName))
+  if (doc.dateLabel) lines.push(`Data: ${sanitizePrintText(doc.dateLabel)}`)
+  if (doc.prescriberName || doc.prescriberCrmv) {
+    lines.push([doc.prescriberName, doc.prescriberCrmv].map(sanitizePrintText).filter(Boolean).join(' - '))
+  }
+  lines.push('')
+  if (doc.patientLine) lines.push(`Paciente: ${sanitizePrintText(doc.patientLine)}`)
+  if (doc.tutorLine) lines.push(`Responsavel: ${sanitizePrintText(doc.tutorLine)}`)
+  if (doc.addressLine) lines.push(`Endereco: ${sanitizePrintText(doc.addressLine)}`)
+
+  doc.sections.forEach((section) => {
+    lines.push('')
+    if (section.title) lines.push(sanitizePrintText(section.title).toUpperCase())
+    section.items.forEach((item) => {
+      lines.push(`${item.index}. ${sanitizePrintText(item.title)}${item.subtitle ? ` - ${sanitizePrintText(item.subtitle)}` : ''}`)
+      if (item.instruction) lines.push(sanitizePrintText(item.instruction))
+      item.cautions.forEach((caution) => {
+        const text = sanitizePrintText(caution)
+        if (text) lines.push(text)
+      })
+    })
+  })
+
+  if (doc.recommendations.length) {
+    lines.push('', 'RECOMENDACOES')
+    doc.recommendations.map(sanitizePrintText).filter(Boolean).forEach((line) => lines.push(line))
+  }
+  if (doc.exams.length) {
+    lines.push('', 'EXAMES')
+    doc.exams.map(sanitizePrintText).filter(Boolean).forEach((line) => lines.push(line))
+  }
+  return lines.join('\n').replace(/\n{3,}/g, '\n\n').trim()
+}
+
+function normalizeSelectedPrescriptionText(raw: string): string {
+  const lines = sanitizeVisibleText(raw)
+    .split(/\r?\n/)
+    .map((line) => line.replace(/\s+/g, ' ').trim())
+    .filter(Boolean)
+    .filter((line) => !/^\.{3,}$/.test(line))
+    .filter((line) => !/^incompleto$/i.test(line))
+    .filter((line) => !/^visualiza/i.test(line))
+
+  if (!lines.length) return ''
+
+  const formatted: string[] = []
+  for (let idx = 0; idx < lines.length; idx += 1) {
+    const current = lines[idx]
+    const next = lines[idx + 1]
+    const afterNext = lines[idx + 2]
+
+    if (/^\d+\.$/.test(current) && next) {
+      let itemLine = `${current} ${next}`
+      const subtitleLooksLikePresentation =
+        !!afterNext &&
+        !/^(administrar|recomenda|orienta|manipula|uso\s|paciente|responsavel|responsável|data|receituario|receituário)/i.test(afterNext) &&
+        !/^[-•]/.test(afterNext) &&
+        afterNext.length <= 80
+      if (subtitleLooksLikePresentation) {
+        itemLine += ` - ${afterNext}`
+        idx += 2
+      } else {
+        idx += 1
+      }
+      formatted.push(itemLine)
+      continue
+    }
+
+    formatted.push(current)
+  }
+
+  return formatted.join('\n').replace(/\n{3,}/g, '\n\n').trim()
+}
+
 const BASE_TEMPLATE: RxTemplateStyle = {
   id: 'rx_classic_vertical_v1',
   name: 'Receita cl\u00e1ssica vertical',
@@ -188,16 +265,16 @@ export function RxPrintView({
   /** Prévia em painel (ex.: Controle Especial): corpo mais legível, sem “gritar” */
   const previewTight = compact
   const ptScale = (pt: number) =>
-    previewTight ? Math.max(Math.round(pt * 0.9 * 10) / 10, 8.5) : pt
+    previewTight ? Math.min(Math.max(Math.round(pt * 0.58 * 10) / 10, 5.5), 9.0) : pt
   const baseBodyPt = Math.max(zoneFontPt('body', cfg.fontSizePt) - 1, 10)
-  const instructionPt = ptScale(baseBodyPt)
+  const instructionPt = previewTight ? Math.min(ptScale(baseBodyPt), 8.8) : ptScale(baseBodyPt)
   const patientBasePt = Math.max(cfg.fontSizePt - 1, 10)
-  const patientPt = ptScale(zoneFontPt('patient', patientBasePt))
-  const headingPx = previewTight ? Math.min(cfg.headingSizePt, 15) : cfg.headingSizePt
+  const patientPt = previewTight ? Math.min(ptScale(zoneFontPt('patient', patientBasePt)), 8.8) : ptScale(zoneFontPt('patient', patientBasePt))
+  const headingPx = previewTight ? Math.min(Math.max(Math.round(cfg.headingSizePt * 0.58 * 10) / 10, 9.0), 13.0) : cfg.headingSizePt
 
   const paperStyle: React.CSSProperties = {
     fontFamily: cfg.fontFamily,
-    fontSize: `${cfg.fontSizePt}pt`,
+    fontSize: `${previewTight ? ptScale(cfg.fontSizePt) : cfg.fontSizePt}pt`,
     lineHeight: cfg.lineHeight,
     color: safeTextColor,
     background: cfg.paperBg,
@@ -222,10 +299,13 @@ export function RxPrintView({
     const custom = cfg.zoneStyles?.[zone]
     const baseColor = typeof base.color === 'string' ? base.color : safeTextColor
     const candidateColor = custom?.textColor || baseColor
+    const rawSize = custom?.fontSizePt
+      ? `${previewTight ? ptScale(custom.fontSizePt) : custom.fontSizePt}pt`
+      : base.fontSize
     return {
       ...base,
       fontFamily: custom?.fontFamily || base.fontFamily,
-      fontSize: custom?.fontSizePt ? `${custom.fontSizePt}pt` : base.fontSize,
+      fontSize: rawSize,
       color: ensureReadableColor(candidateColor, cfg.paperBg, '#1f2937'),
       fontWeight: weightFromPreset(custom?.fontWeight) || base.fontWeight,
       fontStyle: custom?.italic ? 'italic' : base.fontStyle,
@@ -282,9 +362,18 @@ export function RxPrintView({
   const bodyOverride = zoneOverride('body')
   const recommendationsOverride = zoneOverride('recommendations')
   const signatureOverride = zoneOverride('signature')
+  const handleCopyPlainText = (event: React.ClipboardEvent<HTMLDivElement>) => {
+    const selectedText = window.getSelection()?.toString().trim()
+    const plainText = selectedText
+      ? normalizeSelectedPrescriptionText(selectedText)
+      : buildPlainPrescriptionText(doc)
+    if (!plainText) return
+    event.preventDefault()
+    event.clipboardData.setData('text/plain', plainText)
+  }
 
   return (
-    <div className={`rxv-print-preview bg-white text-slate-900 ${(compact || fitToWidth) ? 'w-full overflow-hidden rounded-none border-0 shadow-none' : 'rounded-xl border border-slate-300 shadow-2xl'}`} style={rootStyle}>
+    <div className={`rxv-print-preview bg-white text-slate-900 ${(compact || fitToWidth) ? 'w-full overflow-hidden rounded-none border-0 shadow-none' : 'rounded-xl border border-slate-300 shadow-2xl'}`} style={rootStyle} onCopy={handleCopyPlainText}>
       {!compact && !fitToWidth ? (
         <div className="border-b border-slate-200 bg-slate-100 px-4 py-2 text-xs font-bold uppercase tracking-widest text-slate-500">
           {sanitizeVisibleText('Visualização rápida')}
@@ -422,7 +511,7 @@ export function RxPrintView({
                         <div className="min-w-0 flex-1 space-y-2">
                           <div className="flex w-full items-end gap-2 overflow-hidden sm:gap-3">
                             <h4
-                              className="shrink-0 text-[10pt] sm:text-[11pt]"
+                              className="shrink-0"
                               style={{
                                 color: '#111827',
                                 textDecoration: item.titleUnderline ? 'underline' : 'none',
@@ -430,30 +519,40 @@ export function RxPrintView({
                                 textDecorationThickness: item.titleUnderline ? '2px' : undefined,
                                 textUnderlineOffset: item.titleUnderline ? '2px' : undefined,
                                 fontWeight: item.titleBold ? 700 : 500,
+                                fontSize: `${previewTight ? '8.0pt' : '10pt'}`,
                               }}
                             >
                               {item.index}.
                             </h4>
                             <p
-                              className="min-w-0 shrink whitespace-normal text-[9.5pt] font-semibold tracking-[0.02em] sm:text-[10pt]"
-                              style={{ color: '#0f172a' }}
+                              className="min-w-0 shrink whitespace-normal font-semibold tracking-[0.02em]"
+                              style={{ 
+                                color: '#0f172a',
+                                fontSize: `${previewTight ? '8.0pt' : '9.5pt'}`,
+                              }}
                             >
                               {sanitizePrintText(item.title)}
                             </p>
                             <span
                               className="min-w-[16px] flex-1 overflow-hidden whitespace-nowrap self-end leading-none"
-                              style={{ color: 'rgba(51,65,85,0.55)', letterSpacing: '0.1em', fontSize: previewTight ? '9pt' : '10pt' }}
+                              style={{ color: 'rgba(51,65,85,0.55)', letterSpacing: '0.1em', fontSize: previewTight ? '6.5pt' : '10pt' }}
                             >{'................................................................................................................................................................................................................................................................................'}</span>
                             <p
-                              className="hidden shrink-0 whitespace-nowrap text-right text-[8.8pt] font-medium sm:block sm:text-[9.6pt]"
-                              style={{ color: '#475569' }}
+                              className="hidden shrink-0 whitespace-nowrap text-right font-medium sm:block rxv-commercial-presentation"
+                              style={{ 
+                                color: '#475569',
+                                fontSize: `${previewTight ? '7.2pt' : '8.8pt'}`,
+                              }}
                             >
                               {sanitizePrintText(item.subtitle || sanitizeVisibleText('Dispensação'))}
                             </p>
                           </div>
                           <p
-                            className="text-[8.8pt] font-medium sm:hidden"
-                            style={{ color: '#475569' }}
+                            className="font-medium sm:hidden rxv-commercial-presentation"
+                            style={{ 
+                              color: '#475569',
+                              fontSize: `${previewTight ? '7.2pt' : '8.8pt'}`,
+                            }}
                           >
                             {sanitizePrintText(item.subtitle || sanitizeVisibleText('Dispensação'))}
                           </p>
@@ -485,7 +584,7 @@ export function RxPrintView({
                               <p
                                 key={`${item.id}-c-${idx}`}
                                 className={`whitespace-pre-wrap ${previewTight || isClassic ? 'font-medium text-slate-600' : 'font-bold text-slate-800'}`}
-                                style={{ fontSize: `${Math.max(instructionPt - 0.5, 8.5)}pt` }}
+                                style={{ fontSize: `${previewTight ? Math.min(instructionPt - 0.5, 8.0) : Math.max(instructionPt - 0.5, 8.5)}pt` }}
                               >
                                 • {sanitizePrintText(line).replace(/^Orientações ao tutor:\s*/i, '')}
                               </p>
