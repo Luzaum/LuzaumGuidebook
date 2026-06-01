@@ -4249,6 +4249,465 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     price: { averageLabel: 'R$ 118,00 a R$ 256,00', rangeLabel: 'Stomorgyl 2 R$ 118-132; Stomorgyl 10/20 R$ 230-256', sourceDate: DENTAL_PRICE_SOURCE_DATE },
   },
   {
+    id: 'cerenia-zoetis',
+    slug: 'cerenia',
+    name: 'Cerenia',
+    manufacturer: 'Zoetis',
+    commercialClass: 'gastrointestinal',
+    commercialSubclass: 'gi_antiemetic',
+    productPageUrl: 'https://www.zoetis.com.br/pesquisa-de-produtos/produtos/cerenia%C2%A0comprimidos.aspx',
+    labelUrl: 'https://www.zoetis.com.br/global-assets/private/cerenia_comprimidos.pdf',
+    species: ['dog'],
+    presentations: ['Cerenia 16 mg', 'Cerenia 24 mg', 'Cerenia 60 mg', 'Cerenia 160 mg'],
+    activeComponents: ['citrato de maropitant'],
+    labelCompositionSummary: 'Maropitant 16, 24, 60 ou 160 mg por comprimido. Antiemético NK1 para cães.',
+    labelDirections: 'Cães: vômito agudo 2 mg/kg VO a cada 24 h por até 5 dias. Enjoo por movimento: dose mínima de 8 mg/kg VO cerca de 2 h antes da viagem, por até 2 dias.',
+    dosageGuidance: { labelDose: 'Cães: 2 mg/kg VO SID para vômito; 8 mg/kg VO antes de viagem.', plumbs: { dog: [{ title: 'Vômito agudo', dose: '2 mg/kg VO SID por até 5 dias', note: 'Dose de bula oral domiciliar.' }, { title: 'Cinetose', dose: '8 mg/kg VO 2 h antes da viagem', note: 'Não usar para mascarar vômito persistente sem diagnóstico.' }] } },
+    plumbsContext: 'Maropitant é antiemético central/periférico por bloqueio NK1. Dose oral de casa para cães é maior que a dose injetável hospitalar.',
+    clinicalUse: 'Vômito agudo, cinetose, gastroenterite, pancreatite como antiemético adjuvante e vômito associado a medicações.',
+    reassessment: 'Reavaliar se vômito persistir, houver sangue, melena, dor abdominal, apatia, desidratação ou suspeita de corpo estranho.',
+    prescriptionExample: 'Cerenia [16, 24, 60 ou 160 mg], administrar por via oral na dose calculada, a cada 24 horas, pelo período prescrito.',
+    safetyAlert: 'Cautela em hepatopatas. Não trata obstrução, corpo estranho, sepse, intoxicação ou pancreatite grave sozinho.',
+    price: { averageLabel: 'R$ 123 a R$ 283', rangeLabel: '24 mg/60 mg/160 mg variam conforme apresentação e varejo', sourceDate: '2026-05-28' },
+    imageUrl: 'https://www.zoetis.com.br/pesquisa-de-produtos/images/caes/cerenia-comprimidos-embalagens.png'
+  },
+  {
+    id: 'vonau-vet-avert',
+    slug: 'vonau-vet',
+    name: 'Vonau Vet',
+    manufacturer: 'Avert',
+    commercialClass: 'gastrointestinal',
+    commercialSubclass: 'gi_antiemetic',
+    productPageUrl: 'https://avertsaudeanimal.com.br/linhas/medicamentos/vonau-vet',
+    labelUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/vonau.pdf',
+    species: ['dog'],
+    presentations: ['Vonau Vet solução oral 5 mg/mL (30 mL)'],
+    activeComponents: ['cloridrato de ondansetrona di-hidratado'],
+    labelCompositionSummary: 'Ondansetrona 5 mg/mL em solução oral veterinária.',
+    labelDirections: 'Cães: 0,5 a 1 mg/kg VO, conforme bula/fonte técnica, usualmente a cada 8 a 12 h conforme prescrição.',
+    dosageGuidance: { labelDose: 'Cães: 0,5 a 1 mg/kg VO q8-12h.', plumbs: { dog: [{ title: 'Náusea/vômito', dose: '0,5 a 1 mg/kg VO q8-12h', note: 'Dentro da faixa literária de 0,1 a 1 mg/kg.' }] } },
+    plumbsContext: 'Ondansetrona é antagonista 5-HT3 útil para náusea forte e vômito refratário; cautela em hepatopatas e risco de QT.',
+    clinicalUse: 'Náusea, vômito refratário ao maropitant, uremia, gastroenterite, quimioterapia e paciente nauseado sem vômito evidente.',
+    reassessment: 'Monitorar constipação, salivação, apatia, piora do vômito, dor abdominal e hidratação.',
+    prescriptionExample: 'Vonau Vet 5 mg/mL, administrar por via oral na dose calculada, a cada 8 a 12 horas, conforme prescrição.',
+    safetyAlert: 'Cautela em hepatopatia, arritmias, prolongamento de QT, hipocalemia/hipomagnesemia e uso com fármacos serotonérgicos.',
+    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço variou por loja; checar Petz/Cobasi/Petlove no momento da prescrição', sourceDate: '2026-05-28', notes: 'Dados incompletos' },
+    imageUrl: 'https://amepettatix.vtexassets.com/arquivos/ids/188344-800-450?v=638559755954400000&width=800&height=450&aspect=true'
+  },
+  {
+    id: 'vonau-flash-biolab',
+    slug: 'vonau-flash',
+    name: 'Vonau Flash',
+    manufacturer: 'Biolab',
+    commercialClass: 'gastrointestinal',
+    commercialSubclass: 'gi_antiemetic',
+    productPageUrl: 'https://www.drogasil.com.br/vonau-flash-4mg-10-comprimidos-orodisperciveis.html',
+    labelUrl: 'https://static-webv8.jet.com.br/drogaosuper/Bulas/7896241296400.pdf',
+    species: ['dog', 'cat'],
+    presentations: ['Vonau Flash 4 mg', 'Vonau Flash 8 mg'],
+    activeComponents: ['ondansetrona'],
+    labelCompositionSummary: 'Ondansetrona humana em comprimido orodispersível de 4 mg ou 8 mg.',
+    labelDirections: 'Uso humano extra-bula em cães e gatos; usar dose veterinária, não a bula humana.',
+    dosageGuidance: { labelDose: 'Cães e gatos: 0,1 a 1 mg/kg VO q8-12h conforme literatura.', plumbs: { dog: [{ title: 'Náusea/vômito', dose: '0,1 a 1 mg/kg VO q8-12h', note: 'Extra-bula com produto humano.' }], cat: [{ title: 'Náusea/vômito', dose: '0,1 a 1 mg/kg VO q8-12h', note: 'Extra-bula; cautela em hepatopatas e arritmias.' }] } },
+    plumbsContext: 'A bula humana não orienta dose veterinária. Ondansetrona pode ser útil quando náusea persiste apesar de controle do vômito.',
+    clinicalUse: 'Alternativa oral humana quando ondansetrona veterinária não está disponível.',
+    reassessment: 'Reavaliar se vômito persistente, constipação, apatia ou dor abdominal.',
+    prescriptionExample: 'Vonau Flash [4 mg ou 8 mg], administrar por via oral na dose calculada, a cada 8 a 12 horas, conforme prescrição.',
+    safetyAlert: 'Conferir excipientes. Cautela em hepatopatia, arritmias e fármacos que prolongam QT.',
+    price: { averageLabel: 'R$ 35 a R$ 47', rangeLabel: 'Vonau Flash 4 mg 10 comp. em varejo humano', sourceDate: '2026-05-28' },
+    imageUrl: 'https://pfarma.com.br/images/noticias/vonau-flash-biolab-usp.jpg'
+  },
+  {
+    id: 'nausetrat-oral-ucbvet',
+    slug: 'nausetrat-oral',
+    name: 'Nausetrat Oral',
+    manufacturer: 'UCBVET',
+    commercialClass: 'gastrointestinal',
+    commercialSubclass: 'gi_prokinetic',
+    productPageUrl: 'https://ucbvet.com/produto/nausetrat-oral/',
+    labelUrl: 'https://ucbvet.com/wp-content/uploads/2024/11/IS12A790-Bula-Nausetrat-Oral-Encartuchadeira-curvas.pdf',
+    species: ['dog', 'cat'],
+    presentations: ['Nausetrat Oral solução 20 mL'],
+    activeComponents: ['cloridrato de metoclopramida'],
+    labelCompositionSummary: 'Metoclopramida oral para cães e gatos.',
+    labelDirections: 'Administrar por via oral. Referência de bula/página: 1 a 4 gotas/kg, equivalente a 0,1 a 0,4 mg/kg, podendo repetir conforme prescrição.',
+    dosageGuidance: { labelDose: 'Cães e gatos: 0,1 a 0,4 mg/kg VO, geralmente q8h.', plumbs: { dog: [{ title: 'Procinético/antiemético', dose: '0,1 a 0,5 mg/kg VO q6-8h', note: 'Usar quando houver componente de hipomotilidade.' }], cat: [{ title: 'Procinético/antiemético', dose: '0,1 a 0,5 mg/kg VO q6-8h', note: 'Eficácia antiemética felina pode ser limitada.' }] } },
+    plumbsContext: 'Metoclopramida é mais útil em hipomotilidade, refluxo/regurgitação e retardo de esvaziamento gástrico.',
+    clinicalUse: 'Náusea/vômito com suspeita de estase gástrica, refluxo e gastroparesia selecionada.',
+    reassessment: 'Suspender e reavaliar se houver tremores, agitação, sonolência intensa, piora do vômito ou suspeita de obstrução.',
+    prescriptionExample: 'Nausetrat Oral, administrar por via oral na dose calculada, a cada 8 horas ou conforme prescrição.',
+    safetyAlert: 'Contraindicado em obstrução/perfuração/hemorragia gastrointestinal e epilepsia.',
+    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não consolidado em grandes varejos', sourceDate: '2026-05-28', notes: 'Dados incompletos' },
+    imageUrl: 'https://ucbvet.com/wp-content/uploads/2025/10/nausetrat-or-20.png'
+  },
+  {
+    id: 'drasil-vansil',
+    slug: 'drasil',
+    name: 'Drasil',
+    manufacturer: 'Vansil / Mundo Animal',
+    commercialClass: 'gastrointestinal',
+    commercialSubclass: 'gi_prokinetic',
+    productPageUrl: 'https://vetsmart.com.br/cg/produto/165/drasil',
+    labelUrl: 'https://consultaremedios.com.br/drasil-para-caes-e-gatos/bula',
+    species: ['dog', 'cat'],
+    presentations: ['Drasil solução oral 4 mg/mL'],
+    activeComponents: ['cloridrato de metoclopramida'],
+    labelCompositionSummary: 'Metoclopramida 400 mg/100 mL, equivalente a 4 mg/mL.',
+    labelDirections: 'Cães e gatos: fonte comercial descreve 1 a 2 gotas/kg VO a cada 8 horas. Converter gotas com cautela conforme frasco.',
+    dosageGuidance: { labelDose: 'Cães e gatos: 1 a 2 gotas/kg q8h por bula; literatura 0,1 a 0,5 mg/kg q6-8h.', plumbs: { dog: [{ title: 'Hipomotilidade/vômito', dose: '0,1 a 0,5 mg/kg VO q6-8h', note: 'Evitar se obstrução.' }], cat: [{ title: 'Hipomotilidade/vômito', dose: '0,1 a 0,5 mg/kg VO q6-8h', note: 'Usar com cautela em gatos.' }] } },
+    plumbsContext: 'Mesma lógica da metoclopramida: procinético, não antiemético universal.',
+    clinicalUse: 'Procinético/antiemético domiciliar quando não há suspeita de obstrução e existe hipomotilidade.',
+    reassessment: 'Monitorar sinais extrapiramidais, sedação, agitação e piora clínica.',
+    prescriptionExample: 'Drasil solução oral 4 mg/mL, administrar por via oral conforme dose calculada, a cada 8 horas.',
+    safetyAlert: 'Evitar em obstrução, perfuração, hemorragia GI, convulsões e uso com fenotiazínicos sem cautela.',
+    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não consolidado', sourceDate: '2026-05-28', notes: 'Dados incompletos' }
+  },
+  {
+    id: 'gaviz-v-agener',
+    slug: 'gaviz-v',
+    name: 'Gaviz V',
+    manufacturer: 'Agener União',
+    commercialClass: 'gastrointestinal',
+    commercialSubclass: 'gi_gastric_protector',
+    productPageUrl: 'https://agener.com.br/produtos/pequenos-animais/gastro/gaviz-v/',
+    labelUrl: 'https://agener.com.br/wp-content/uploads/2020/01/4034938-Gaviz-V.pdf',
+    species: ['dog', 'cat'],
+    presentations: ['Gaviz V 5 mg', 'Gaviz V 10 mg', 'Gaviz V 20 mg'],
+    activeComponents: ['omeprazol'],
+    labelCompositionSummary: 'Omeprazol 5, 10 ou 20 mg por comprimido.',
+    labelDirections: 'Cães e gatos: aproximadamente 0,7 a 1 mg/kg VO a cada 24 h; 5 mg/5 kg, 10 mg/10 kg ou 20 mg/20 kg, por 10 a 14 dias ou conforme bula/prescrição.',
+    dosageGuidance: { labelDose: 'Cães e gatos: ~1 mg/kg VO SID por bula.', plumbs: { dog: [{ title: 'Úlcera/esofagite', dose: '1 mg/kg VO SID; em casos graves pode ser BID', note: 'Não triturar pellets gastroresistentes quando aplicável.' }], cat: [{ title: 'Úlcera/esofagite', dose: '0,7 a 1 mg/kg VO SID', note: 'Usar dose de bula e reavaliar resposta.' }] } },
+    plumbsContext: 'IBP mais potente que bloqueadores H2 para elevar pH gástrico; esofagite grave/úlcera ativa pode exigir BID e reavaliação.',
+    clinicalUse: 'Esofagite, úlcera, gastrite erosiva, refluxo e lesão ácido-péptica.',
+    reassessment: 'Retornar se melena, hematêmese, apatia intensa, dor abdominal ou vômito persistente.',
+    prescriptionExample: 'Gaviz V [5, 10 ou 20 mg], administrar por via oral na dose calculada, a cada 24 horas, antes da alimentação.',
+    safetyAlert: 'Interage com fármacos dependentes de pH ácido e pode afetar absorção de cetoconazol, itraconazol, ferro e outros.',
+    price: { averageLabel: 'R$ 16 a R$ 184', rangeLabel: 'Varia conforme apresentação e número de comprimidos', sourceDate: '2026-05-28' },
+    imageUrl: 'https://agener.com.br/wp-content/uploads/2020/01/novo-gaviz-1.jpg'
+  },
+  {
+    id: 'sucrafilm-sucralfato',
+    slug: 'sucrafilm-sucralfato',
+    name: 'Sucrafilm / Sucralfato',
+    manufacturer: 'EMS / similares humanos',
+    commercialClass: 'gastrointestinal',
+    commercialSubclass: 'gi_gastric_protector',
+    productPageUrl: 'https://www.drogasil.com.br/sucrafilm-1-g-30-comprimido-mastigavel.html',
+    labelUrl: 'https://img.drogaraia.com.br/raiadrogasil_bula/72722.pdf',
+    species: ['dog', 'cat'],
+    presentations: ['Sucrafilm 1 g comprimido mastigável', 'Sucralfato suspensão 200 mg/mL conforme produto'],
+    activeComponents: ['sucralfato'],
+    labelCompositionSummary: 'Sucralfato humano; protetor local de mucosa.',
+    labelDirections: 'Bula humana não define dose veterinária. Dissolver a fração em água e separar de outros medicamentos por pelo menos 2 horas.',
+    dosageGuidance: { labelDose: 'Cães: 500 mg a 2 g por dose; gatos: 250 mg por dose, q8-12h.', plumbs: { dog: [{ title: 'Até 20 kg', dose: '500 mg/cão VO q6-8h', note: 'Dissolver em água.' }, { title: '>20 kg', dose: '1 a 2 g/cão VO q6-8h', note: 'Separar de antibióticos e outros fármacos.' }], cat: [{ title: 'Úlcera/esofagite', dose: '250 mg/gato VO q8-12h', note: 'Dissolver em água antes de administrar.' }] } },
+    plumbsContext: 'Barreira local para mucosa ulcerada; reduz absorção de vários fármacos orais.',
+    clinicalUse: 'Úlcera/erosão gástrica, duodenal ou esofágica, esofagite por refluxo e lesão por comprimido.',
+    reassessment: 'Monitorar constipação, melena, hematêmese e apetite.',
+    prescriptionExample: 'Sucralfato 1 g, dissolver a fração prescrita em pequena quantidade de água e administrar por via oral em jejum.',
+    safetyAlert: 'Separar por pelo menos 2 h de fluoroquinolonas, tetraciclinas, digoxina, levotiroxina, azitromicina e outros.',
+    price: { averageLabel: 'Cerca de R$ 77', rangeLabel: 'Sucrafilm 1 g 30 comprimidos', sourceDate: '2026-05-28' },
+    imageUrl: 'https://www.drogariaminasbrasil.com.br/media/catalog/product/cache/74c1057f7991b4edb2bc7bdaa94de933/image/1207345861/sucrafilm-sucralfato-200mg-ml-suspensao-oral-200ml-e-1-seringa-dosadora-ems.jpg'
+  },
+  {
+    id: 'famox-famotidina',
+    slug: 'famox-famotidina',
+    name: 'Famox / Famotidina',
+    manufacturer: 'Aché / genéricos humanos',
+    commercialClass: 'gastrointestinal',
+    commercialSubclass: 'gi_gastric_protector',
+    productPageUrl: 'https://www.drogasil.com.br/famox-20mg-30-comprimidos.html',
+    labelUrl: 'https://www.ache.com.br/wp-content/uploads/application/pdf/Bula-Famox.pdf',
+    species: ['dog', 'cat'],
+    presentations: ['Famox 20 mg', 'Famox 40 mg'],
+    activeComponents: ['famotidina'],
+    labelCompositionSummary: 'Famotidina humana 20 mg ou 40 mg por comprimido.',
+    labelDirections: 'Bula humana não orienta dose veterinária; usar literatura veterinária.',
+    dosageGuidance: { labelDose: 'Cães e gatos: 0,5 a 1 mg/kg VO q12-24h.', plumbs: { dog: [{ title: 'Redutor de acidez', dose: '0,5 a 1 mg/kg VO q12-24h', note: 'Menos potente que IBP.' }], cat: [{ title: 'Redutor de acidez', dose: '0,5 a 1 mg/kg VO q12-24h', note: 'Ajustar/cautela em DRC.' }] } },
+    plumbsContext: 'Bloqueador H2. Pode ter tolerância com uso contínuo e menor potência que omeprazol.',
+    clinicalUse: 'Gastrite/refluxo leve, alternativa quando PPI não é desejado.',
+    reassessment: 'Reavaliar se vômito, melena, dor abdominal ou falta de resposta.',
+    prescriptionExample: 'Famotidina [20 ou 40 mg], administrar por via oral na dose calculada, a cada 12 a 24 horas.',
+    safetyAlert: 'Ajustar/cautela em DRC; separar de sucralfato quando usado junto.',
+    price: { averageLabel: 'R$ 62 a R$ 107', rangeLabel: 'Famox 20/40 mg 30 comprimidos', sourceDate: '2026-05-28' },
+    imageUrl: 'https://dmvfarma.vtexassets.com/arquivos/ids/245603/FAMOX-40MG-SUSP-50ML.jpg?v=638561466532030000'
+  },
+  {
+    id: 'lactulose-lactulona-colact',
+    slug: 'lactulose-lactulona-colact',
+    name: 'Lactulose / Lactulona / Colact',
+    manufacturer: 'Humano / manipulado',
+    commercialClass: 'gastrointestinal',
+    commercialSubclass: 'gi_laxative',
+    productPageUrl: 'https://www.drogasil.com.br/lactulona-xarope-ameixa-120-ml.html',
+    labelUrl: 'https://img.drogasil.com.br/raiadrogasil_bula/Lactulona-Daiichi.pdf',
+    species: ['dog', 'cat'],
+    presentations: ['Lactulose 667 mg/mL 120 mL', 'Colact 120 mL', 'Manipulado'],
+    activeComponents: ['lactulose'],
+    labelCompositionSummary: 'Lactulose 667 mg/mL em xarope humano ou manipulado.',
+    labelDirections: 'Bula humana não define dose veterinária; titular por efeito fecal.',
+    dosageGuidance: { labelDose: 'Cães: 0,5 a 1 mL/kg q8-12h. Gatos: 0,5 a 5 mL/gato q8-12h.', plumbs: { dog: [{ title: 'Constipação / HE', dose: '0,5 a 1 mL/kg VO q8-12h', note: 'Ajustar para 2 a 3 fezes macias/dia.' }], cat: [{ title: 'Constipação / HE', dose: '0,5 a 5 mL/gato VO q8-12h', note: 'Ajustar por consistência fecal.' }] } },
+    plumbsContext: 'Laxante osmótico e redutor de amônia; evitar em obstrução intestinal.',
+    clinicalUse: 'Constipação, megacólon selecionado e encefalopatia hepática crônica.',
+    reassessment: 'Reduzir se diarreia, cólica, distensão, desidratação ou alteração eletrolítica.',
+    prescriptionExample: 'Lactulose 667 mg/mL, administrar por via oral na dose calculada, a cada 8 a 12 horas, ajustando para fezes macias.',
+    safetyAlert: 'Bloquear em obstrução intestinal ou risco de perfuração. Cautela em diabéticos e desidratados.',
+    price: { averageLabel: 'R$ 15 a R$ 58', rangeLabel: 'Lactulona/Colact 120 mL conforme marca', sourceDate: '2026-05-28' },
+    imageUrl: 'https://product-data.raiadrogasil.io/images/13519332.webp'
+  },
+  {
+    id: 'enterex-vetnil',
+    slug: 'enterex',
+    name: 'Enterex',
+    manufacturer: 'Vetnil',
+    commercialClass: 'gastrointestinal',
+    commercialSubclass: 'gi_antidiarrheal',
+    productPageUrl: 'https://vetnil.com.br/produto/enterex-r-pet/',
+    labelUrl: 'https://consultaremedios.com.br/enterex-uso-veterinario/bula',
+    species: ['dog', 'cat'],
+    presentations: ['Enterex sachê 8 g'],
+    activeComponents: ['adsorvente intestinal'],
+    labelCompositionSummary: 'Adsorvente oral em sachê para diluição em água.',
+    labelDirections: 'Diluir 1 sachê em 40 mL de água. Diarreia/gastroenterite até 20 kg: 40 mL q8-12h. Intoxicações até 20 kg: 80 mL q4-6h até melhora clínica.',
+    dosageGuidance: { labelDose: 'Até 20 kg: 40 mL q8-12h para diarreia; 80 mL q4-6h em intoxicações.', plumbs: { dog: [{ title: 'Diarreia/gastroenterite', dose: '1 sachê em 40 mL; administrar 40 mL q8-12h', note: 'Dose de bula.' }], cat: [{ title: 'Diarreia/gastroenterite', dose: '1 sachê em 40 mL; administrar 40 mL q8-12h', note: 'Dose de bula para animais até 20 kg.' }] } },
+    plumbsContext: 'Produto sem monografia Plumb’s própria; seguir dose de bula como adsorvente intestinal.',
+    clinicalUse: 'Diarreia aguda leve/moderada, toxinas entéricas, ingestão alimentar inadequada e suporte em intoxicação oral orientada.',
+    reassessment: 'Reavaliar se vômito persistente, sangue, melena, febre, dor abdominal ou desidratação.',
+    prescriptionExample: 'Enterex sachê 8 g, diluir em 40 mL de água e administrar conforme prescrição, separando de outros medicamentos.',
+    safetyAlert: 'Pode reduzir absorção de outros fármacos; separar por pelo menos 2 horas.',
+    price: { averageLabel: 'R$ 17 a R$ 20', rangeLabel: 'Sachê 8 g', sourceDate: '2026-05-28' },
+    imageUrl: 'https://vetnil.com.br/wp-content/uploads/2023/12/enterex-r-pet.webp'
+  },
+  {
+    id: 'florentero-act-bioctal',
+    slug: 'florentero-act',
+    name: 'Florentero ACT',
+    manufacturer: 'Bioctal / Candioli',
+    commercialClass: 'gastrointestinal',
+    commercialSubclass: 'gi_probiotic',
+    productPageUrl: 'https://www.cobasi.com.br/florentero-10-comprimidos-bioctal-3857971/p',
+    labelUrl: 'https://vetsmart.com.br/cg/produto/3473/florentero-act',
+    species: ['dog', 'cat'],
+    presentations: ['Florentero ACT comprimidos', 'Florentero pasta 12 g'],
+    activeComponents: ['probióticos', 'FOS', 'MOS', 'vitaminas do complexo B', 'eletrólitos'],
+    labelCompositionSummary: 'Simbiótico com cepas probióticas, prebióticos FOS/MOS, vitaminas B e eletrólitos.',
+    labelDirections: 'Comprimidos: 1 comprimido/10 kg/dia, dividido em 2 administrações, por pelo menos 10 dias.',
+    dosageGuidance: { labelDose: 'Cães e gatos: 1 comp/10 kg/dia dividido BID por pelo menos 10 dias.', plumbs: { dog: [{ title: 'Disbiose/diarreia leve', dose: '1 comp/10 kg/dia dividido BID', note: 'Dose de fabricante.' }], cat: [{ title: 'Disbiose/diarreia leve', dose: 'Dose proporcional por peso; dividir em 2 administrações', note: 'Usar como adjuvante.' }] } },
+    plumbsContext: 'Probióticos dependem de cepa, UFC e qualidade do produto; não há dose Plumb’s universal.',
+    clinicalUse: 'Diarreia leve, disbiose, pós-antibiótico, troca alimentar e suporte em enteropatia crônica.',
+    reassessment: 'Reavaliar fezes, apetite, hidratação e sinais sistêmicos.',
+    prescriptionExample: 'Florentero ACT, administrar por via oral conforme peso, dividindo a dose diária em duas administrações.',
+    safetyAlert: 'Adjuvante; cautela em imunossupressão intensa, sepse ou barreira intestinal gravemente comprometida.',
+    price: { averageLabel: 'R$ 58 a R$ 65', rangeLabel: '10 comprimidos ou pasta 12 g', sourceDate: '2026-05-28' },
+    imageUrl: 'https://acdn-us.mitiendanube.com/stores/006/374/568/products/1683827141132-2ne8fc33tj-c130f0a98a625825b417606716205317-1024-1024.webp'
+  },
+  {
+    id: 'probiotico-vetnil',
+    slug: 'probiotico-vetnil',
+    name: 'Probiótico Vetnil',
+    manufacturer: 'Vetnil',
+    commercialClass: 'gastrointestinal',
+    commercialSubclass: 'gi_probiotic',
+    productPageUrl: 'https://vetnil.com.br/produto/probiotico-r-vetnil-caes-e-gatos/',
+    labelUrl: 'https://vetnil.com.br/produto/probiotico-r-vetnil-caes-e-gatos/',
+    species: ['dog', 'cat'],
+    presentations: ['Probiótico Vetnil pasta 14 g'],
+    activeComponents: ['Bifidobacterium bifidum', 'Enterococcus faecium', 'Lactobacillus acidophilus', 'Lactobacillus plantarum', 'Saccharomyces cerevisiae'],
+    labelCompositionSummary: 'Pasta probiótica/simbiótica com bactérias benéficas, levedura e excipientes.',
+    labelDirections: 'Dose de fabricante: pequenos recém-nascidos 1 g; pequenos adultos 2 g; grandes recém-nascidos 2 g; grandes adultos 4 g.',
+    dosageGuidance: { labelDose: '1 a 4 g VO SID conforme porte e idade.', plumbs: { dog: [{ title: 'Microbiota/diarreia leve', dose: '2 a 4 g VO SID conforme porte', note: 'Dose de fabricante.' }], cat: [{ title: 'Microbiota/diarreia leve', dose: '1 a 2 g VO SID conforme porte/idade', note: 'Dose de fabricante.' }] } },
+    plumbsContext: 'Produto probiótico; efeito depende de cepa, UFC e qualidade. Usar como adjuvante.',
+    clinicalUse: 'Diarreia leve, disbiose, pós-antibiótico, mudança alimentar e suporte intestinal.',
+    reassessment: 'Reavaliar resposta fecal em 3 a 5 dias ou antes se sinais sistêmicos.',
+    prescriptionExample: 'Probiótico Vetnil pasta, administrar por via oral conforme porte e idade, uma vez ao dia, por 5 a 10 dias.',
+    safetyAlert: 'Não substitui tratamento de parvovirose, AHDS grave, giardíase, sepse ou desidratação.',
+    price: { averageLabel: 'Cerca de R$ 67', rangeLabel: 'Pasta 14 g', sourceDate: '2026-05-28' },
+    imageUrl: 'https://vetnil.com.br/wp-content/uploads/2023/12/probiotico-r-vetnil-caes-e-gatos.webp'
+  },
+  {
+    id: 'organew-pet-vetnil',
+    slug: 'organew-pet',
+    name: 'Organew Pet',
+    manufacturer: 'Vetnil',
+    commercialClass: 'gastrointestinal',
+    commercialSubclass: 'gi_probiotic',
+    productPageUrl: 'https://vetnil.com.br/produto/organew-r-pet/',
+    labelUrl: 'https://vetnil.com.br/produto/organew-r-pet/',
+    species: ['dog', 'cat'],
+    presentations: ['Organew Pet pó'],
+    activeComponents: ['vitaminas', 'aminoácidos', 'FOS', 'MOS', 'leveduras vivas'],
+    labelCompositionSummary: 'Suplemento nutricional/prebiótico com vitaminas, aminoácidos, FOS, MOS e leveduras.',
+    labelDirections: 'Cães: 2,5 g/10 kg SID misturado ao alimento. Gatos: 1 g SID.',
+    dosageGuidance: { labelDose: 'Cães: 2,5 g/10 kg SID. Gatos: 1 g SID.', plumbs: { dog: [{ title: 'Suporte digestivo', dose: '2,5 g/10 kg VO SID', note: 'Misturar ao alimento.' }], cat: [{ title: 'Suporte digestivo', dose: '1 g/gato VO SID', note: 'Misturar ao alimento.' }] } },
+    plumbsContext: 'Suplemento adjuvante; não há dose Plumb’s universal para a marca.',
+    clinicalUse: 'Suporte de digestibilidade, microbiota, troca alimentar e convalescença.',
+    reassessment: 'Reavaliar fezes e aceitação alimentar.',
+    prescriptionExample: 'Organew Pet, misturar ao alimento uma vez ao dia conforme peso/espécie.',
+    safetyAlert: 'Suplemento, não tratamento único para diarreia grave ou doença sistêmica.',
+    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não consolidado', sourceDate: '2026-05-28', notes: 'Dados incompletos' },
+    imageUrl: 'https://vetnil.com.br/wp-content/uploads/2023/12/Organew_100g_site_V2.png'
+  },
+  {
+    id: 'giardicid-cepav',
+    slug: 'giardicid',
+    name: 'Giardicid',
+    manufacturer: 'Cepav',
+    commercialClass: 'gastrointestinal',
+    commercialSubclass: 'gi_antiprotozoal',
+    productPageUrl: 'https://cepav.com.br/produtos/giardicid/',
+    labelUrl: 'https://consultaremedios.com.br/giardicid-para-caes-e-gatos-cepav/bula',
+    species: ['dog', 'cat'],
+    presentations: ['Giardicid suspensão 50 mL', 'Giardicid 50', 'Giardicid 500'],
+    activeComponents: ['metronidazol', 'sulfadimethoxina'],
+    labelCompositionSummary: 'Metronidazol + sulfadimethoxina em suspensão ou comprimidos.',
+    labelDirections: 'Comprimidos: 12,5 a 25 mg/kg de cada ativo q12h por 5 dias; Giardicid 500 em cães usualmente 25 mg/kg q12h. Suspensão: cães 0,5 mL/kg q12h; gatos 0,5 a 1 mL/2 kg q12h por 5 dias.',
+    dosageGuidance: { labelDose: 'Cães/gatos: q12h por 5 dias conforme apresentação.', plumbs: { dog: [{ title: 'Giardíase/protozoários', dose: '12,5 a 25 mg/kg de cada ativo VO q12h por 5 dias', note: 'Evitar uso prolongado.' }], cat: [{ title: 'Giardíase/protozoários', dose: '12,5 a 25 mg/kg de cada ativo VO q12h por 5 dias', note: 'Monitorar neurotoxicidade.' }] } },
+    plumbsContext: 'Metronidazol tem risco de neurotoxicidade em doses altas/prolongadas; reduzir muito em hepatopatia importante.',
+    clinicalUse: 'Giardíase, coccidiose/protozoários e infecções entéricas sensíveis quando há diagnóstico ou forte suspeita.',
+    reassessment: 'Suspender e reavaliar se ataxia, tremores, nistagmo, vômitos persistentes ou apatia importante.',
+    prescriptionExample: 'Giardicid [suspensão, 50 ou 500], administrar por via oral conforme peso, a cada 12 horas, por 5 dias.',
+    safetyAlert: 'Não usar como antidiarreico genérico. Cautela em hepatopatas, gestantes, filhotes jovens e pacientes neurológicos.',
+    price: { averageLabel: 'R$ 88 a R$ 191', rangeLabel: 'Giardicid 50/500 conforme apresentação', sourceDate: '2026-05-28' },
+    imageUrl: 'https://images.tcdn.com.br/img/img_prod/1087789/giardicid_suspensao_50ml_71_2_13642f5a6f1b02fa5d45a5edbdf77bbf.jpg'
+  },
+  {
+    id: 'metronidazol-flagyl',
+    slug: 'metronidazol-flagyl',
+    name: 'Metronidazol / Flagyl',
+    manufacturer: 'Humano / manipulado',
+    commercialClass: 'gastrointestinal',
+    commercialSubclass: 'gi_antiprotozoal',
+    productPageUrl: 'https://consultaremedios.com.br/flagyl-comprimido/bula',
+    labelUrl: 'https://consultaremedios.com.br/flagyl-comprimido/bula',
+    species: ['dog', 'cat'],
+    presentations: ['Flagyl 250 mg', 'Suspensão humana conforme produto', 'Metronidazol manipulado'],
+    activeComponents: ['metronidazol'],
+    labelCompositionSummary: 'Nitroimidazol humano/manipulado; antibacteriano anaeróbio e antiprotozoário.',
+    labelDirections: 'Bula humana não orienta dose veterinária; usar literatura e diagnóstico.',
+    dosageGuidance: { labelDose: 'Cães e gatos: 7 a 15 mg/kg VO q12-24h conforme indicação.', plumbs: { dog: [{ title: 'Anaeróbios/protozoários', dose: '7 a 15 mg/kg VO q12-24h', note: 'Evitar doses altas/prolongadas.' }], cat: [{ title: 'Anaeróbios/protozoários', dose: '7 a 15 mg/kg VO q12-24h', note: 'Sabor ruim; considerar manipulado.' }] } },
+    plumbsContext: 'Pode causar neurotoxicidade mesmo em doses moderadas/prolongadas; sinais incluem ataxia e nistagmo.',
+    clinicalUse: 'Giardíase selecionada, anaeróbios e colite específica quando há indicação.',
+    reassessment: 'Suspender se ataxia, nistagmo, tremores, convulsões, hipersalivação, apatia ou vômitos persistentes.',
+    prescriptionExample: 'Metronidazol [concentração], administrar por via oral na dose calculada, pelo intervalo e duração prescritos.',
+    safetyAlert: 'Não usar como remédio genérico para diarreia. Evitar/cautela em hepatopatia grave, encefalopatia hepática, gestação e pacientes neurológicos.',
+    price: { averageLabel: 'Variável', rangeLabel: 'Depende de concentração, marca e manipulação', sourceDate: '2026-05-28' },
+    imageUrl: 'https://www.drogariaminasbrasil.com.br/media/catalog/product/cache/74c1057f7991b4edb2bc7bdaa94de933/image/320696f8b/metronidazol-250-mg-c-20-comprimidos.jpg'
+  },
+  {
+    id: 'creon-pancreatina',
+    slug: 'creon-pancreatina',
+    name: 'Pancreatina / Creon',
+    manufacturer: 'Abbott / manipulado',
+    commercialClass: 'gastrointestinal',
+    commercialSubclass: 'gi_pancreatic_enzyme',
+    productPageUrl: 'https://www.drogasil.com.br/creon-25000-ui-frasco-30-capsulas.html',
+    labelUrl: 'https://img.drogasil.com.br/raiadrogasil_bula/CREON.pdf',
+    species: ['dog', 'cat'],
+    presentations: ['Creon 10.000', 'Creon 25.000', 'Pancreatina/pancrelipase manipulada'],
+    activeComponents: ['pancreatina', 'pancrelipase'],
+    labelCompositionSummary: 'Enzimas pancreáticas de origem suína: lipase, protease e amilase.',
+    labelDirections: 'Produto humano; dose veterinária deve ser individualizada e administrada junto a todas as refeições.',
+    dosageGuidance: { labelDose: 'Cães e gatos: individualizar; administrar junto a todas as refeições.', plumbs: { dog: [{ title: 'Insuficiência pancreática exócrina', dose: 'Junto a todas as refeições; preferir pó não entérico em muitos cães', note: 'Ajustar por fezes, peso e resposta.' }], cat: [{ title: 'Insuficiência pancreática exócrina', dose: 'Junto a todas as refeições; individualizar formulação', note: 'Atenção a aceitação e risco esofágico.' }] } },
+    plumbsContext: 'Produtos humanos entéricos não são diretamente intercambiáveis com pó pancreático veterinário; enzimas podem irritar boca/esôfago e vias respiratórias.',
+    clinicalUse: 'Insuficiência pancreática exócrina com emagrecimento, polifagia e fezes volumosas/esteatorreicas.',
+    reassessment: 'Monitorar ganho de peso, fezes, apetite e irritação oral/esofágica.',
+    prescriptionExample: 'Pancreatina/pancrelipase, administrar misturada a todas as refeições, conforme dose prescrita.',
+    safetyAlert: 'Contraindicado em hipersensibilidade a produtos suínos. Evitar inalar pó; lavar mãos após manipulação.',
+    price: { averageLabel: 'R$ 75 a R$ 185', rangeLabel: 'Creon 10.000/25.000 conforme apresentação', sourceDate: '2026-05-28' },
+    imageUrl: 'https://d1jgmae0hcnr1i.cloudfront.net/Custom/Content/Products/96/41/96418_creon-25-000-c-30-cps-p125745_m1_638290674672574982.webp'
+  },
+  {
+    id: 'ursacol-udca',
+    slug: 'ursacol-udca',
+    name: 'Ursacol / Ácido ursodesoxicólico',
+    manufacturer: 'Humano',
+    commercialClass: 'gastrointestinal',
+    commercialSubclass: 'gi_hepatobiliary',
+    productPageUrl: 'https://www.drogasil.com.br/ursacol-300-mg-30-comprimidos.html',
+    labelUrl: 'https://www.drogasil.com.br/bulas/ursacol',
+    species: ['dog', 'cat'],
+    presentations: ['Ursacol 50 mg', 'Ursacol 150 mg', 'Ursacol 300 mg'],
+    activeComponents: ['ácido ursodesoxicólico'],
+    labelCompositionSummary: 'Ácido biliar hidrofílico humano para uso veterinário extra-bula.',
+    labelDirections: 'Bula humana não orienta dose veterinária.',
+    dosageGuidance: { labelDose: 'Cães e gatos: 10 a 15 mg/kg VO SID ou dividido.', plumbs: { dog: [{ title: 'Colestase/hepatobiliar', dose: '10 a 15 mg/kg VO SID', note: 'Não usar se obstrução biliar.' }], cat: [{ title: 'Colestase/hepatobiliar', dose: '10 a 15 mg/kg VO SID', note: 'Adjuvante; investigar causa.' }] } },
+    plumbsContext: 'UDCA é citoprotetor/colerético em colestase sem obstrução; antiácidos com alumínio reduzem eficácia.',
+    clinicalUse: 'Colestase sem obstrução, lama biliar/mucocele selecionada sem obstrução, colangite/colangio-hepatite como adjuvante.',
+    reassessment: 'Reavaliar se piora de vômito, dor abdominal, icterícia ou suspeita de obstrução.',
+    prescriptionExample: 'Ácido ursodesoxicólico [50, 150 ou 300 mg], administrar por via oral na dose calculada, a cada 24 horas.',
+    safetyAlert: 'Bloquear se suspeita de obstrução biliar. Cautela com antiácidos contendo alumínio e ciclosporina.',
+    price: { averageLabel: 'R$ 114 a R$ 225', rangeLabel: 'Ursacol 150/300 mg 30 comprimidos', sourceDate: '2026-05-28' },
+    imageUrl: 'https://d1jgmae0hcnr1i.cloudfront.net/Custom/Content/Products/92/62/92623_ursacol-50mg-c-30cpr-p122480_m1_638375493666484706.webp'
+  },
+  {
+    id: 'hepvet-vetnil',
+    slug: 'hepvet',
+    name: 'Hepvet',
+    manufacturer: 'Vetnil',
+    commercialClass: 'gastrointestinal',
+    commercialSubclass: 'gi_hepatobiliary',
+    productPageUrl: 'https://vetnil.com.br/produto/hepvet-r/',
+    labelUrl: 'https://vetnil.com.br/produto/hepvet-r/',
+    species: ['dog', 'cat'],
+    presentations: ['Hepvet comprimidos/mastigáveis', 'Hepvet suspensão 60 mL'],
+    activeComponents: ['arginina', 'cisteína', 'colina', 'silimarina', 'taurina', 'vitaminas B', 'zinco', 'selênio'],
+    labelCompositionSummary: 'Suplemento hepatoprotetor/metabólico com aminoácidos, colina, silimarina, vitaminas e minerais.',
+    labelDirections: 'Comprimidos: cães 1 comp/10 kg/dia; gatos filhotes 1/4 comp/dia; gatos adultos 1/2 comp/dia. Suspensão: cães e gatos 0,2 mL/kg/dia.',
+    dosageGuidance: { labelDose: 'Cães: 1 comp/10 kg SID ou 0,2 mL/kg SID. Gatos: 1/4 a 1/2 comp SID ou 0,2 mL/kg SID.', plumbs: { dog: [{ title: 'Suporte hepático', dose: '1 comp/10 kg SID ou 0,2 mL/kg SID', note: 'Dose de fabricante.' }], cat: [{ title: 'Suporte hepático', dose: 'Filhote 1/4 comp; adulto 1/2 comp SID; ou 0,2 mL/kg SID', note: 'Dose de fabricante.' }] } },
+    plumbsContext: 'Produto sem dose Plumb’s própria; antioxidantes/hepatoprotetores são adjuvantes e não substituem diagnóstico.',
+    clinicalUse: 'Suporte em hepatopatias leves/moderadas, colestase em conjunto com tratamento principal e convalescença.',
+    reassessment: 'Reavaliar enzimas, apetite, vômito, icterícia, dor abdominal e coagulopatia conforme caso.',
+    prescriptionExample: 'Hepvet [comprimido ou suspensão], administrar por via oral conforme peso e apresentação, uma vez ao dia.',
+    safetyAlert: 'Não manejar icterícia, vômito persistente, dor abdominal ou suspeita de obstrução só com hepatoprotetor.',
+    price: { averageLabel: 'R$ 104 a R$ 138', rangeLabel: 'Suspensão 60 mL; comprimidos cerca de R$ 127', sourceDate: '2026-05-28' },
+    imageUrl: 'https://vetnil.com.br/wp-content/uploads/2023/12/hepvet-r_63e664a52d752.webp'
+  },
+  {
+    id: 'hep-same-pet-tabs-soft-care',
+    slug: 'hep-same-pet-tabs',
+    name: 'HEP SAMe Pet Tabs',
+    manufacturer: 'Soft Care',
+    commercialClass: 'gastrointestinal',
+    commercialSubclass: 'gi_hepatobiliary',
+    productPageUrl: 'https://softcare.com.br/produtos/nutri/hep-same-pet-tabs/',
+    labelUrl: 'https://softcare.com.br/produtos/nutri/hep-same-pet-tabs/',
+    species: ['dog', 'cat'],
+    presentations: ['HEP SAMe Pet Tabs'],
+    activeComponents: ['SAMe', 'silimarina', 'vitamina E'],
+    labelCompositionSummary: 'Suplemento hepatoprotetor/antioxidante com SAMe, silimarina e vitamina E.',
+    labelDirections: 'Cães e gatos: 1 tablete para cada 10 kg SID, idealmente 1 h antes do alimento ou 2 h após.',
+    dosageGuidance: { labelDose: 'Cães e gatos: 1 tablete/10 kg VO SID em jejum.', plumbs: { dog: [{ title: 'Suporte hepático', dose: '1 tablete/10 kg VO SID', note: 'Dose de fabricante.' }], cat: [{ title: 'Suporte hepático', dose: '1 tablete/10 kg VO SID', note: 'Dose de fabricante; ajustar aceitação.' }] } },
+    plumbsContext: 'SAMe e antioxidantes são adjuvantes hepatobiliares; tratar causa de base.',
+    clinicalUse: 'Suporte antioxidante em hepatopatias, colestase/hepatite e elevação de enzimas com plano diagnóstico.',
+    reassessment: 'Reavaliar enzimas, icterícia, vômito, apetite e adesão.',
+    prescriptionExample: 'HEP SAMe Pet Tabs, administrar 1 tablete para cada 10 kg, uma vez ao dia, preferencialmente em jejum.',
+    safetyAlert: 'Suplemento, não substitui investigação de vômito persistente, icterícia, coagulopatia ou obstrução biliar.',
+    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não consolidado', sourceDate: '2026-05-28', notes: 'Dados incompletos' },
+    imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/1095021/Soft-Care-Hep-Same-Pet-Tabs.webp?v=639013955217900000'
+  },
+  {
+    id: 'mirtz-agener',
+    slug: 'mirtz',
+    name: 'Mirtz',
+    manufacturer: 'Agener União',
+    commercialClass: 'gastrointestinal',
+    commercialSubclass: 'gi_orexigenic',
+    productPageUrl: 'https://agener.com.br/produtos/pequenos-animais/especialidades-pt/mirtz/',
+    labelUrl: 'https://consultaremedios.com.br/mirtz-para-gatos-agener-uniao/bula',
+    species: ['cat'],
+    presentations: ['Mirtz 2 mg (12 comprimidos)'],
+    activeComponents: ['mirtazapina'],
+    labelCompositionSummary: 'Mirtazapina 2 mg por comprimido para gatos.',
+    labelDirections: 'Gatos: 1 comprimido VO a cada 48 horas, por até 3 semanas ou conforme critério veterinário.',
+    dosageGuidance: { labelDose: 'Gatos: 2 mg/gato VO q48h por até 3 semanas.', plumbs: { cat: [{ title: 'Hiporexia/anorexia', dose: '2 mg/gato VO q48h', note: 'Apresentação felina evita superdosagem de comprimidos humanos.' }] } },
+    plumbsContext: 'Mirtazapina é orexígena e pode auxiliar náusea; gatos modernos usam doses menores/intervalos maiores que protocolos antigos, especialmente em DRC/hepatopatia.',
+    clinicalUse: 'Gato hiporéxico/anoréxico após controlar náusea, dor, desidratação e causa primária.',
+    reassessment: 'Monitorar vocalização, agitação, tremores, taquicardia, vômitos, salivação e comportamento.',
+    prescriptionExample: 'Mirtz 2 mg, administrar 1 comprimido por via oral a cada 48 horas, por até 3 semanas ou conforme prescrição.',
+    safetyAlert: 'Não usar como atalho em gato instável, desidratado, obstruído ou com dor/náusea sem controle. Cautela em hepatopatas, nefropatas e serotonérgicos.',
+    price: { averageLabel: 'R$ 74 a R$ 120', rangeLabel: 'Mirtz 2 mg 12 comprimidos', sourceDate: '2026-05-28' },
+    imageUrl: 'https://www.petlove.com.br/images/products/251641/product/Orex%C3%ADgeno_Mirtz_Mirtazapina_Agener_Uni%C3%A3o_para_Gatos_-_12_Comprimidos.jpg?1770885088'
+  },
+  {
     id: 'vetmedin-boehringer',
     slug: 'vetmedin-pimobendan',
     name: 'Vetmedin',
@@ -4593,4 +5052,842 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     safetyAlert: 'Bloquear/alertar em ICC descompensada, bradicardia, hipotensão, bloqueio atrioventricular, baixo débito e paciente sem ECG/eco. Pode piorar congestão se iniciado no momento errado.',
     price: { averageLabel: 'R$ 3,00 a R$ 10,00', rangeLabel: 'Atenolol 25 mg com 30 comprimidos em varejo humano varia conforme laboratório e promoção', sourceDate: CARDIO_PRICE_SOURCE_DATE },
   },
+  {
+    id: 'maxicam-ourofino',
+    slug: 'maxicam',
+    name: 'Maxicam',
+    manufacturer: 'Ourofino',
+    commercialClass: 'orthopedic',
+    commercialSubclass: 'ortho_antiinflammatory',
+    productPageUrl: 'https://www.ourofinopet.com/produtos/medicamentos/maxicam/',
+    labelUrl: 'https://www.ourofinopet.com/produtos/medicamentos/maxicam/90/',
+    species: ['dog', 'cat'],
+    presentations: [
+      'Maxicam 0,5 mg comprimidos (10 comp.)',
+      'Maxicam 2 mg comprimidos (10 comp.)',
+      'Maxicam solução oral 0,1% (frasco)',
+      'Maxicam injetável 0,2% (frasco)'
+    ],
+    activeComponents: ['meloxicam'],
+    labelCompositionSummary: 'Meloxicam. Comprimidos: 0,5 mg ou 2,0 mg por comprimido. Solução oral 0,1%: 1 mg/mL. Injetável 0,2%: 2 mg/mL.',
+    labelDirections: 'Comprimidos cães: 0,2 mg/kg no 1º dia, depois 0,1 mg/kg SID por 5 a 7 dias (agudo) ou até 28 dias (crônico). Comprimidos gatos: 0,1 mg/kg SID por até 4 dias. Solução oral cães: 1º dia 0,2 mL/kg, depois 0,1 mL/kg SID. Solução oral gatos: 1º dia 0,1 mL/kg, depois 0,05 mL/kg SID.',
+    dosageGuidance: {
+      labelDose: 'Cães: 1º dia 0,2 mg/kg, depois 0,1 mg/kg SID. Gatos: 0,1 mg/kg SID, geralmente até 4 dias.',
+      plumbs: {
+        dog: [
+          { title: 'Dor/inflamação aguda', dose: '0,2 mg/kg VO no 1º dia, depois 0,1 mg/kg VO SID', note: 'Usualmente por 5 a 7 dias.' },
+          { title: 'Uso contínuo (osteartrite)', dose: '0,1 mg/kg VO SID', note: 'Procurar menor dose efetiva em uso prolongado.' }
+        ],
+        cat: [
+          { title: 'Dor/inflamação aguda', dose: '0,1 mg/kg VO SID por até 4 dias', note: 'Uso de curta duração conforme bula.' },
+          { title: 'Osteoartrite crônica (Plumb\'s)', dose: '0,05 mg/kg VO SID', note: 'Usar com cautela máxima e monitoramento renal.' }
+        ]
+      }
+    },
+    plumbsContext: 'AINE classicamente usado para controle de inflamação e dor musculoesquelética. Gatos possuem maior risco com AINEs, exigindo hidratação adequada e monitoramento renal.',
+    clinicalUse: 'Analgésico, anti-inflamatório e antiexsudativo para artrites, osteoartrites, displasias coxofemorais, reparação de fraturas e pós-operatório ortopédico.',
+    reassessment: 'Monitorar sinais de vômito, diarreia, fezes escuras, inapetência, redução de urina ou piora clínica.',
+    prescriptionExample: 'Maxicam [0,5 mg ou 2 mg], administrar por via oral na dose calculada pelo peso, a cada 24 horas, preferencialmente junto ou logo após alimento, pelo período prescrito. Não associar com outro anti-inflamatório, corticoide ou AINE sem orientação.',
+    safetyAlert: 'Evitar em desidratação, hipovolemia, hipotensão, DRC/IRA, hepatopatia importante, ulceração gastrointestinal, gestação/lactação ou associação com corticoide.',
+    price: { averageLabel: 'R$ 37,72 a R$ 59,50', rangeLabel: 'Maxicam 0,5 mg 10 comp: R$ 37,72-37,90; Maxicam 2 mg 10 comp: R$ 59,18-59,50 (Cobasi/varejo online)', sourceDate: '2026-05-25' },
+    imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/1055787/maxicam-0_5-mg-ourofino-10-comprimidos.jpg'
+  },
+  {
+    id: 'maxicam-plus-ourofino',
+    slug: 'maxicam-plus',
+    name: 'Maxicam Plus',
+    manufacturer: 'Ourofino',
+    commercialClass: 'orthopedic',
+    commercialSubclass: 'ortho_joint_support',
+    commercialSubclasses: ['ortho_joint_support', 'ortho_antiinflammatory'],
+    productPageUrl: 'https://www.ourofinopet.com/produtos/medicamentos/maxicam-plus/',
+    labelUrl: 'https://uploads.consultaremedios.com.br/drug_leaflet/Bula-Maxicam-Plus-Ourofino-Paciente-Consulta-Remedios.pdf',
+    species: ['dog', 'cat'],
+    presentations: [
+      'Maxicam Plus 0,5 mg comprimidos (8 comp.)',
+      'Maxicam Plus 2 mg comprimidos (8 comp.)'
+    ],
+    activeComponents: ['meloxicam', 'sulfato de condroitina A'],
+    labelCompositionSummary: 'Composição por comprimido: Meloxicam + sulfato de condroitina A. 0,5 mg (meloxicam 0,5 mg + condroitina 100 mg); 2 mg (meloxicam 2 mg + condroitina 400 mg).',
+    labelDirections: 'Cães: 1º dia: 2 comprimidos para cada 5 kg (0,5 mg) ou 20 kg (2 mg) SID. 2º dia em diante: 1 comprimido para cada 5 kg ou 20 kg SID. Gatos (0,5 mg): 1 comprimido para cada 5 kg SID.',
+    dosageGuidance: {
+      labelDose: 'Cães: 1º dia dose dupla (0,2 mg/kg meloxicam), depois dose simples (0,1 mg/kg) SID. Gatos: 1 comp/5 kg SID.',
+      plumbs: {
+        dog: [
+          { title: 'AINE + Condroprotetor', dose: '1º dia 0,2 mg/kg, depois 0,1 mg/kg VO SID', note: 'Condroitina associada como adjuvante de suporte estrutural.' }
+        ],
+        cat: [
+          { title: 'AINE + Condroprotetor', dose: '1 comprimido de 0,5 mg para cada 5 kg VO SID', note: 'Uso curto com cautela devido ao componente meloxicam.' }
+        ]
+      }
+    },
+    plumbsContext: 'O efeito analgésico vem do meloxicam. A condroitina é um adjuvante de suporte estrutural/articular sem efeito imediato de reparação.',
+    clinicalUse: 'Analgésico, anti-inflamatório e regenerador articular para osteoartrites, artrites, displasias coxofemorais e discopatias em cães e gatos.',
+    reassessment: 'Mesmo monitoramento do meloxicam. A presença de condroitina não protege contra a toxicidade renal ou gástrica do AINE.',
+    prescriptionExample: 'Maxicam Plus [0,5 mg ou 2 mg], administrar por via oral conforme o peso, a cada 24 horas, pelo período prescrito. Administrar junto ou após o alimento.',
+    safetyAlert: 'A presença de condroitina não reduz o risco de toxicidade renal ou gástrica do meloxicam. Contraindicado em renais, desidratados ou com úlcera.',
+    price: { averageLabel: 'Variável', rangeLabel: 'Menor transparência de preço online; cotação direta no carrinho recomendada', sourceDate: '2026-05-25', notes: 'Dados incompletos' },
+    imageUrl: 'https://http2.mlstatic.com/D_Q_NP_624717-MLB51087903448_082022-O.webp'
+  },
+  {
+    id: 'meloxivet-duprat',
+    slug: 'meloxivet',
+    name: 'Meloxivet',
+    manufacturer: 'Duprat',
+    commercialClass: 'orthopedic',
+    commercialSubclass: 'ortho_antiinflammatory',
+    productPageUrl: 'https://www.cobasi.com.br/meloxivet-10-comprimidos-duprat-3326615/p',
+    labelUrl: 'https://consultaremedios.com.br/meloxivet-para-caes-e-gatos/bula',
+    species: ['dog', 'cat'],
+    presentations: [
+      'Meloxivet 1 mg (10 comp.)',
+      'Meloxivet 2 mg (10 comp.)',
+      'Meloxivet 6 mg (10 comp.)'
+    ],
+    activeComponents: ['meloxicam'],
+    labelCompositionSummary: 'Meloxicam. Comprimidos contendo 1 mg, 2 mg ou 6 mg de ingrediente ativo.',
+    labelDirections: 'Seguir tabela por peso do fabricante. Dose inicial de ataque no primeiro dia (0,2 mg/kg) e dose menor nos dias seguintes (0,1 mg/kg SID), com tratamento curto em gatos.',
+    dosageGuidance: {
+      labelDose: 'Cães: 1º dia 0,2 mg/kg, depois 0,1 mg/kg SID. Gatos: dose curta e menor dose efetiva com cautela.',
+      plumbs: {
+        dog: [
+          { title: 'Osteoartrite / Dor aguda', dose: '1º dia 0,2 mg/kg VO, depois 0,1 mg/kg VO SID', note: 'Utilizar comprimidos de 1 mg, 2 mg ou 6 mg de acordo com o peso.' }
+        ],
+        cat: [
+          { title: 'Analgésico e anti-inflamatório', dose: '0,1 mg/kg VO SID por tempo curto', note: 'Gatos têm risco elevado de toxicidade com AINEs se houver DRC ou desidratação.' }
+        ]
+      }
+    },
+    plumbsContext: 'Meloxicam. anti-inflamatório musculoesquelético de inibição COX. Unificar com outros meloxicams na avaliação de interações.',
+    clinicalUse: 'Tratamento e alívio da dor e inflamação em patologias agudas ou crônicas do sistema musculoesquelético de cães e gatos.',
+    reassessment: 'Observar vômitos, diarreia, inapetência, fezes escurecidas e monitorar parâmetros renais em uso continuado.',
+    prescriptionExample: 'Meloxivet [1 mg, 2 mg ou 6 mg], administrar por via oral conforme peso, a cada 24 horas, pelo período prescrito, preferencialmente junto ou após alimento.',
+    safetyAlert: 'Mesmos alertas do meloxicam. Evitar uso prolongado em gatos sem plano formal de monitoramento renal e pressão.',
+    price: { averageLabel: 'R$ 49,31 a R$ 90,90', rangeLabel: '1 mg 10 comp: R$ 49,31-74,90; 2 mg 10 comp: R$ 73,35-81,50; 6 mg 10 comp: R$ 81,81-90,90', sourceDate: '2026-05-25' },
+    imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/1008690/Meloxivet-1g.jpg?v=638398973097000000'
+  },
+  {
+    id: 'carproflan-agener-uniao',
+    slug: 'carproflan',
+    name: 'Carproflan',
+    manufacturer: 'Agener União',
+    commercialClass: 'orthopedic',
+    commercialSubclass: 'ortho_antiinflammatory',
+    productPageUrl: 'https://agener.com.br/produtos/pequenos-animais/linha-dor/carproflan/',
+    labelUrl: 'https://www.uniaoquimica.com.br/wp-content/uploads/2020/01/4021986-BU-CARPROFLAN-25MG.pdf',
+    species: ['dog'],
+    presentations: [
+      'Carproflan 25 mg (14 comp.)',
+      'Carproflan 75 mg (14 comp.)',
+      'Carproflan 100 mg (14 comp.)'
+    ],
+    activeComponents: ['carprofeno'],
+    labelCompositionSummary: 'Carprofeno. Comprimidos contendo 25 mg, 75 mg ou 100 mg de ingrediente ativo.',
+    labelDirections: 'Carproflan 25 mg: 1 comp/10 kg VO a cada 12 h ou 1 comp/6 kg VO a cada 24 h. Carproflan 75 mg: 1 comp/30 kg VO a cada 12 h ou 1 comp/17 kg VO a cada 24 h. Carproflan 100 mg: 1 comp/40 kg VO a cada 12 h ou 1 comp/22 kg VO a cada 24 h.',
+    dosageGuidance: {
+      labelDose: 'Cães: dose diária aproximada de 4,4 mg/kg, podendo ser dividida a cada 12 horas ou administrada em dose única a cada 24 horas.',
+      plumbs: {
+        dog: [
+          { title: 'Dor/inflamação musculoesquelética', dose: '4,4 mg/kg VO SID ou 2,2 mg/kg VO BID', note: 'Administrar com alimento. Bloquear uso em gatos para fins domésticos.' }
+        ]
+      }
+    },
+    plumbsContext: 'Carprofeno em cães é classicamente usado a 4,4 mg/kg/dia. Em gatos tem meia-vida muito longa e não é escolha domiciliar rotineira.',
+    clinicalUse: 'Anti-inflamatório, analgésico e antitérmico para cães, indicado em osteoartrite, processos degenerativos articulares e pós-operatórios.',
+    reassessment: 'Checar função hepática e renal em tratamentos prolongados. Suspender se inapetência, vômitos ou melena.',
+    prescriptionExample: 'Carproflan [25 mg, 75 mg ou 100 mg], administrar por via oral conforme o peso, a cada 12 ou 24 horas, com alimento, pelo período recomendado.',
+    safetyAlert: 'Contraindicado em cães com desordens coagulatórias, renais/hepáticos, desidratação e hipovolemia. Evitar em gatos.',
+    price: { averageLabel: 'R$ 72,00 a R$ 108,90', rangeLabel: '25 mg 14 comp em torno de R$ 72,00; 75/100 mg 14 comp em torno de R$ 108,90', sourceDate: '2026-05-25' },
+    imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/1053256/Carproflan-25.png?v=638436005468530000'
+  },
+  {
+    id: 'previcox-boehringer-ingelheim',
+    slug: 'previcox',
+    name: 'Previcox',
+    manufacturer: 'Boehringer Ingelheim',
+    commercialClass: 'orthopedic',
+    commercialSubclass: 'ortho_antiinflammatory',
+    productPageUrl: 'https://www.boehringer-ingelheim.com/br/saude-animal/produtos/previcox',
+    labelUrl: 'https://www.disprovel.com.br/uploads/produtos/Bula-Previcox.pdf',
+    species: ['dog'],
+    presentations: [
+      'Previcox 57 mg (10 comp.)',
+      'Previcox 227 mg (10 comp.)'
+    ],
+    activeComponents: ['firocoxib'],
+    labelCompositionSummary: 'Firocoxib. Comprimidos mastigáveis e sulcados contendo 57 mg ou 227 mg de firocoxib.',
+    labelDirections: 'Cães: 5 mg/kg por via oral, a cada 24 horas. Administrar apenas a cães conforme peso clínico.',
+    dosageGuidance: {
+      labelDose: 'Cães: 5 mg/kg VO a cada 24 horas. Administrar de acordo com a faixa de peso indicada.',
+      plumbs: {
+        dog: [
+          { title: 'Osteoartrite e pós-operatório', dose: '5 mg/kg VO SID', note: 'Inibidor altamente seletivo de COX-2. Evitar uso em gatos.' }
+        ]
+      }
+    },
+    plumbsContext: 'Firocoxib é inibidor seletivo de COX-2 (COXib). Oferece menor interferência em COX-1, mas ainda requer cuidados de rim, fígado e trato gastrointestinal.',
+    clinicalUse: 'Auxiliar no tratamento da osteoartrite canina, com alívio da dor e inflamação. Também indicado em cirurgias ortopédicas e tecidos moles.',
+    reassessment: 'Avaliar a eficácia na locomoção e dor. Suspender se inapetência, diarreia ou vômito ativos.',
+    prescriptionExample: 'Previcox [57 mg ou 227 mg], administrar por via oral na dose calculada pelo peso, a cada 24 horas, pelo período determinado.',
+    safetyAlert: 'Não usar em gatos no app como prescrição domiciliar. Evitar em doentes renais, hepáticos ou com desidratação.',
+    price: { averageLabel: 'R$ 174,60 a R$ 284,00', rangeLabel: 'Previcox 57 mg 10 comp: R$ 174,60-194,00; Previcox 227 mg 10 comp: R$ 255,60-284,00', sourceDate: '2026-05-25' },
+    imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/1068010/previcox-57mg-10-comprimidos.png.png?v=638751300200100000'
+  },
+  {
+    id: 'galliprant-elanco',
+    slug: 'galliprant',
+    name: 'Galliprant',
+    manufacturer: 'Elanco',
+    commercialClass: 'orthopedic',
+    commercialSubclass: 'ortho_antiinflammatory',
+    productPageUrl: 'https://vet.elanco.com/br/produtos/galliprant',
+    labelUrl: 'https://ec.europa.eu/health/documents/community-register/2018/20180525141118/anx_141118_pt.pdf',
+    species: ['dog'],
+    presentations: [
+      'Galliprant 20 mg (7 ou 30 comp.)',
+      'Galliprant 60 mg (7 ou 30 comp.)',
+      'Galliprant 100 mg (7 ou 30 comp.)'
+    ],
+    activeComponents: ['grapiprant'],
+    labelCompositionSummary: 'Grapiprant. Comprimidos contendo 20 mg, 60 mg ou 100 mg de ingrediente ativo.',
+    labelDirections: 'Cães: 2 mg/kg por via oral, a cada 24 horas (uma vez ao dia). Indicado para osteoartrite leve a moderada.',
+    dosageGuidance: {
+      labelDose: 'Cães: 2 mg/kg VO a cada 24 horas. Dose única diária.',
+      plumbs: {
+        dog: [
+          { title: 'Osteoartrite canina', dose: '2 mg/kg VO SID', note: 'Atua bloqueando o receptor EP4 da prostaglandina E2.' }
+        ]
+      }
+    },
+    plumbsContext: 'Piprant, antagonista seletivo do receptor EP4. Diferencia-se de COXibs por não inibir a síntese de prostaglandinas, apresentando perfil de segurança renal/gástrico favorável.',
+    clinicalUse: 'Manejo da dor associada à osteoartrite leve a moderada em cães, indicado para tratamento continuado sob avaliação periódica.',
+    reassessment: 'Monitorar tolerância e reações gastrointestinais ocasionais (como vômito ou fezes amolecidas).',
+    prescriptionExample: 'Galliprant [20 mg, 60 mg ou 100 mg], administrar por via oral na dose calculada pelo peso, a cada 24 horas, para controle de dor da osteoartrite.',
+    safetyAlert: 'Não usar em gatos. Não usar em animais gestantes, lactantes ou destinados à reprodução. Cautela em hipoproteinêmicos.',
+    price: { averageLabel: 'R$ 85,41 a R$ 256,90', rangeLabel: '20 mg 7 comp: R$ 85,41-94,90; 20 mg 30 comp: cerca de R$ 256,90; 60 mg 7 comp: cerca de R$ 169,09', sourceDate: '2026-05-25' },
+    imageUrl: 'https://assets.elanco.com/0cec44ed-3eaa-0009-2029-666567e7e4de/e337329f-90c4-4ca4-9d80-d057f985e745/Galliprant%20image%20-%20Wed%20May%2024%202023'
+  },
+  {
+    id: 'onsior-elanco',
+    slug: 'onsior',
+    name: 'Onsior',
+    manufacturer: 'Elanco',
+    commercialClass: 'orthopedic',
+    commercialSubclass: 'ortho_antiinflammatory',
+    productPageUrl: 'https://vet.elanco.com/br/produtos/onsior',
+    labelUrl: 'https://consultaremedios.com.br/onsior-elanco/bula',
+    species: ['dog', 'cat'],
+    presentations: [
+      'Onsior 6 mg para gatos (6 comp.)',
+      'Onsior 10 mg para cães (7 comp.)',
+      'Onsior 20 mg para cães (7 comp.)',
+      'Onsior 40 mg para cães (7 comp.)'
+    ],
+    activeComponents: ['robenacoxib'],
+    labelCompositionSummary: 'Robenacoxib. Comprimidos contendo 6 mg (gatos); 10 mg, 20 mg ou 40 mg (cães).',
+    labelDirections: 'Gatos: 1 a 2,4 mg/kg VO a cada 24 horas. Cães: 1 a 2 mg/kg VO a cada 24 horas. Não administrar com alimentos para melhor biodisponibilidade.',
+    dosageGuidance: {
+      labelDose: 'Gatos (>2,5 kg e >4 meses): 1 a 2,4 mg/kg SID. Cães (>2,5 kg e >3 meses): 1 a 2 mg/kg SID.',
+      plumbs: {
+        dog: [
+          { title: 'Dor e osteoartrite canina', dose: '1 a 2 mg/kg VO SID', note: 'Inibidor altamente seletivo de COX-2. Administrar comprimido inteiro.' }
+        ],
+        cat: [
+          { title: 'Osteoartrite crônica / Dor aguda', dose: '1 comprimido de 6 mg VO SID', note: 'Bula nacional permite uso para dor crônica. Exige cautela em cardiopatas e renais.' }
+        ]
+      }
+    },
+    plumbsContext: 'Robenacoxib é inibidor seletivo de COX-2. Permanece por menor tempo na circulação sistêmica e mais tempo nos tecidos inflamados. Em gatos idosos ou com DRC, usar com cautela e monitoramento.',
+    clinicalUse: 'Controle de dor e inflamação decorrentes de osteoartrites, cirurgias ortopédicas ou cirurgias de tecidos moles em cães e gatos.',
+    reassessment: 'Em felinos sob terapia crônica, reavaliar rotineiramente creatinina, ureia, eletrólitos, peso e hidratação.',
+    prescriptionExample: 'Onsior [6, 10, 20 ou 40 mg], administrar por via oral conforme peso, a cada 24 horas, de preferência em jejum ou longe das refeições, pelo período prescrito.',
+    safetyAlert: 'Respeitar peso mínimo (2,5 kg) e idade mínima de 3 meses (cães) e 4 meses (gatos). Cautela em doentes renais.',
+    price: { averageLabel: 'R$ 75,15 a R$ 160,50', rangeLabel: 'Gatos 6 mg 6 comp: R$ 80,01-88,90; Cães 10 mg: R$ 75,15-83,50; Cães 20 mg: R$ 84,68-112,90; Cães 40 mg: R$ 120,38-160,50', sourceDate: '2026-05-25' },
+    imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/1004624/Novo-Projeto--10-.jpg?v=637955580183770000'
+  },
+  {
+    id: 'ketojet-agener-uniao',
+    slug: 'ketojet',
+    name: 'Ketojet',
+    manufacturer: 'Agener União',
+    commercialClass: 'orthopedic',
+    commercialSubclass: 'ortho_antiinflammatory',
+    productPageUrl: 'https://agener.com.br/produtos/pequenos-animais/linha-dor/ketojet/',
+    labelUrl: 'https://www.uniaoquimica.com.br/wp-content/uploads/2020/01/4008297-BU-KETOJET-20MG.pdf',
+    species: ['dog', 'cat'],
+    presentations: [
+      'Ketojet 5 mg (10 comp.)',
+      'Ketojet 20 mg (10 comp.)'
+    ],
+    activeComponents: ['cetoprofeno'],
+    labelCompositionSummary: 'Cetoprofeno. Comprimidos contendo 5 mg ou 20 mg de ingrediente ativo.',
+    labelDirections: 'Cães e gatos: 1 comprimido de 5 mg para cada 5 kg VO a cada 24 horas; ou 1 comprimido de 20 mg para cada 20 kg VO a cada 24 horas. Tratar por 3 a 5 dias.',
+    dosageGuidance: {
+      labelDose: 'Cães e gatos: 1 mg/kg VO a cada 24 horas, por no máximo 3 a 5 dias.',
+      plumbs: {
+        dog: [
+          { title: 'Dor inflamatória aguda', dose: '1 mg/kg VO SID por 3 a 5 dias', note: 'AINE clássico de uso curto, não seletivo.' }
+        ],
+        cat: [
+          { title: 'Trauma / Analgesia aguda', dose: '1 mg/kg VO SID por 3 a 5 dias', note: 'Não recomendado para uso de longo prazo em felinos.' }
+        ]
+      }
+    },
+    plumbsContext: 'Cetoprofeno é um anti-inflamatório não seletivo (AINE clássico). Oferece boa analgesia aguda e antitérmica, mas tem risco gástrico e renal superior em uso crônico.',
+    clinicalUse: 'Processos dolorosos e inflamatórios agudos, claudicação por traumas, entorses, luxações e controle de edema pós-operatório curto.',
+    reassessment: 'Avaliar a ocorrência de sinais gástricos. Evitar prorrogar o tratamento além de 5 dias sem reavaliação.',
+    prescriptionExample: 'Ketojet [5 mg ou 20 mg], administrar por via oral conforme peso, a cada 24 horas, junto com alimento, por 3 a 5 dias.',
+    safetyAlert: 'Evitar em renais, cardiopatas, desidratados, hipovolêmicos ou histórico de úlceras. Gatos exigem tempo restrito.',
+    price: { averageLabel: 'R$ 54,89 a R$ 60,99', rangeLabel: 'Ketojet 20 mg 10 comp: R$ 54,89-60,99 (Petlove/varejo online)', sourceDate: '2026-05-25' },
+    imageUrl: 'https://agener.com.br/wp-content/uploads/2020/01/novo-ketojet-1.jpg'
+  },
+  {
+    id: 'nulli-ourofino',
+    slug: 'nulli',
+    name: 'Nulli',
+    manufacturer: 'Ourofino',
+    commercialClass: 'orthopedic',
+    commercialSubclass: 'ortho_antiinflammatory',
+    productPageUrl: 'https://www.ourofinopet.com/produtos/medicamentos/nulli/',
+    labelUrl: 'https://consultaremedios.com.br/nulli/bula',
+    species: ['dog', 'cat'],
+    presentations: ['Nulli solução oral 40 mg/mL (frasco 10 mL)'],
+    activeComponents: ['cloridrato de tramadol'],
+    labelCompositionSummary: 'Cloridrato de tramadol 40 mg/mL. Analgésico opioide oral.',
+    labelDirections: 'Cães e gatos: dose geral de 1 a 4 mg/kg VO a cada 8 a 12 horas. Medicação sob controle especial.',
+    dosageGuidance: {
+      labelDose: 'Cães e gatos: 1 a 4 mg/kg VO a cada 8 ou 12 horas conforme grau de dor.',
+      plumbs: {
+        dog: [
+          { title: 'Dor musculoesquelética (adjuvante)', dose: '2 a 5 mg/kg VO a cada 8 ou 12 horas', note: 'Opioide fraco. Eficácia de metabolização variável. Associar a AINE se viável.' }
+        ],
+        cat: [
+          { title: 'Analgesia multimodal / Dor aguda', dose: '2 a 4 mg/kg VO a cada 12 horas', note: 'Atenção à baixa palatabilidade, salivação e efeitos comportamentais.' }
+        ]
+      }
+    },
+    plumbsContext: 'Opioide de ação central. A eficiência analgésica isolada em cães com dor inflamatória é considerada limitada devido à rápida depuração. Atua melhor como adjuvante multimodal.',
+    clinicalUse: 'Analgésico opioide para controle de dor aguda ou crônica musculoesquelética leve a moderada de forma multimodal.',
+    reassessment: 'Monitorar sonolência, salivação (especialmente felinos), constipação, náusea ou inapetência.',
+    prescriptionExample: 'Nulli solução oral, administrar por via oral na dose calculada pelo peso, a cada 8 a 12 horas, conforme prescrição. Medicamento controlado.',
+    safetyAlert: 'Medicamento controlado. Cautela na coadministração com serotonérgicos, trazodona, antidepressivos e sedativos.',
+    price: { averageLabel: 'Variável', rangeLabel: 'Frasco 10 mL; preço público sujeito a variações regionais e de estoque; checar no carrinho', sourceDate: '2026-05-25', notes: 'Dados incompletos' },
+    imageUrl: 'https://images.tcdn.com.br/img/img_prod/953490/nulli_10ml_5281_1_fadf860680493dda2e6afd5e8ec21e36.jpg'
+  },
+  {
+    id: 'sindolor-caes-avert',
+    slug: 'sindolor-caes',
+    name: 'Sindolor Cães',
+    manufacturer: 'Avert',
+    commercialClass: 'analgesic',
+    commercialSubclass: 'analgesic_opioid_combo',
+    productPageUrl: 'https://avertsaudeanimal.com.br/linhas/medicamentos/sindolor-25020-mg',
+    labelUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/me272566-sindolor.pdf',
+    species: ['dog'],
+    presentations: [
+      'Sindolor 250/20 mg - dipirona sódica 250 mg + cloridrato de tramadol 20 mg (10 comp. bissulcados)',
+      'Sindolor 750/60 mg - dipirona sódica 750 mg + cloridrato de tramadol 60 mg (10 comp. bissulcados)'
+    ],
+    activeComponents: ['dipirona sódica', 'cloridrato de tramadol'],
+    labelCompositionSummary: 'Associação analgésica oral de dipirona sódica + cloridrato de tramadol. Apresentações caninas: 250/20 mg e 750/60 mg.',
+    labelDirections: 'Cães: 25 mg/kg de dipirona sódica + 2 mg/kg de cloridrato de tramadol VO a cada 8 horas, por até 7 dias. Sindolor 250/20 mg: 1 comp/10 kg; Sindolor 750/60 mg: 1 comp/30 kg.',
+    dosageGuidance: {
+      labelDose: 'Cães: 25 mg/kg dipirona + 2 mg/kg tramadol VO q8h por até 7 dias.',
+      plumbs: {
+        dog: [
+          { title: 'Sindolor 250/20 mg', dose: 'A cada 8 h: 2,5 kg = 1/4 comp | 5 kg = 1/2 comp | 10 kg = 1 comp | 20 kg = 2 comp', note: 'Dose de bula equivalente a 25 mg/kg de dipirona + 2 mg/kg de tramadol. Melhor para cães menores.' },
+          { title: 'Sindolor 750/60 mg', dose: 'A cada 8 h: 7,5 kg = 1/4 comp | 15 kg = 1/2 comp | 30 kg = 1 comp | 60 kg = 2 comp', note: 'Dose de bula equivalente a 25 mg/kg de dipirona + 2 mg/kg de tramadol. Melhor para cães maiores.' },
+          { title: 'Leitura Plumb’s', dose: 'Tramadol em cães: 4 a 10 mg/kg VO q8h. Dipirona: referência parenteral de 25 mg/kg em analgesia perioperatória.', note: 'A dose de Sindolor é a dose de bula do produto; Plumb’s reforça que tramadol isolado em cães tem eficácia variável.' }
+        ]
+      },
+      notes: [
+        'Indicação de bula: dor aguda pós-operatória em cães.',
+        'Não associar com outros opioides, AINEs/corticoides ou serotonérgicos sem avaliação do risco.'
+      ]
+    },
+    plumbsContext: 'Plumb’s descreve tramadol como agonista opioide parcial com ação serotoninérgica/noradrenérgica; em cães, a evidência de analgesia isolada é conflitante. Dipirona é descrita como analgésico/antipirético com potencial utilidade em cães e gatos, mas com cautela hematológica, renal/hepática e de coagulação.',
+    clinicalUse: 'Analgésico multimodal oral para dor aguda pós-operatória em cães, especialmente quando se deseja associação dipirona + tramadol em dose padronizada por peso.',
+    reassessment: 'Reavaliar dor, sedação, salivação, vômito, constipação, ataxia, agitação, tremores, apetite e sinais gastrointestinais durante o uso.',
+    prescriptionExample: 'Sindolor Cães [250/20 mg ou 750/60 mg], administrar por via oral conforme faixa de peso, a cada 8 horas, por até 7 dias ou conforme prescrição.',
+    safetyAlert: 'Medicamento com tramadol. Cautela em pacientes com convulsões, uso de antidepressivos/serotonérgicos, hepatopatia, nefropatia, alterações hematológicas, desidratação, coagulopatia, gestação/lactação e dor sem controle adequado.',
+    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço público não consolidado; checar varejo no momento da prescrição', sourceDate: '2026-05-31', notes: 'Dados incompletos' },
+    imageUrl: 'https://femalepet.vteximg.com.br/arquivos/ids/169583-412-412/sindolor-caes-250mg-10-comprimidos_0.png?v=638791299915730000'
+  },
+  {
+    id: 'sindolor-gatos-avert',
+    slug: 'sindolor-gatos',
+    name: 'Sindolor Gatos',
+    manufacturer: 'Avert',
+    commercialClass: 'analgesic',
+    commercialSubclass: 'analgesic_opioid_combo',
+    productPageUrl: 'https://avertsaudeanimal.com.br/linhas/medicamentos/sindolor-gatos',
+    labelUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/sindolor-gatos.pdf',
+    species: ['cat'],
+    presentations: [
+      'Sindolor Gatos 50/8 mg - dipirona 50 mg + cloridrato de tramadol 8 mg (10 comp. bissulcados)'
+    ],
+    activeComponents: ['dipirona', 'cloridrato de tramadol'],
+    labelCompositionSummary: 'Associação analgésica oral felina de dipirona 50 mg + cloridrato de tramadol 8 mg por comprimido.',
+    labelDirections: 'Gatos: 12,5 mg/kg de dipirona + 2 mg/kg de cloridrato de tramadol VO a cada 12 horas, por até 7 dias. Equivalência: 1 comprimido para 4 kg.',
+    dosageGuidance: {
+      labelDose: 'Gatos: 12,5 mg/kg dipirona + 2 mg/kg tramadol VO q12h por até 7 dias.',
+      plumbs: {
+        cat: [
+          { title: 'Bula - 50/8 mg', dose: '1/4 comp/1 kg; 1/2 comp/2 kg; 3/4 comp/3 kg; 1 comp/4 kg; 1,5 comp/6 kg VO q12h', note: 'Comprimido bissulcado para ajuste por faixa de peso.' },
+          { title: 'Leitura Plumb’s', dose: 'Tramadol em gatos: geralmente 1 a 2 mg/kg VO q12h; alguns casos usam até 4 mg/kg', note: 'Plumb’s ressalta sabor desagradável e efeitos neurológicos/opioides, especialmente geriátricos acima de 2 mg/kg.' },
+          { title: 'Dipirona no Plumb’s', dose: 'Relatos de analgesia felina parenteral: 25 mg/kg IV q24h ou 12,5 mg/kg IV q12h', note: 'Sindolor Gatos usa dose oral de bula; monitorar salivação, vômito e tolerância.' }
+        ]
+      },
+      notes: [
+        'Indicação de bula: dor aguda pós-operatória em gatos.',
+        'Não extrapolar apresentação canina para gatos.'
+      ]
+    },
+    plumbsContext: 'Plumb’s descreve tramadol como mais consistente em gatos do que em cães, mas com palatabilidade ruim e risco de efeitos neurológicos/opioides. Para dipirona, cita utilidade analgésica em gatos, com cautela por efeitos hematológicos, gastrointestinais e de coagulação.',
+    clinicalUse: 'Analgésico multimodal oral para dor aguda pós-operatória em gatos, usando apresentação felina específica para evitar erro de dose.',
+    reassessment: 'Monitorar sedação, euforia/disforia, midríase, salivação, vômito, constipação, ataxia, apetite e controle real da dor.',
+    prescriptionExample: 'Sindolor Gatos 50/8 mg, administrar por via oral conforme faixa de peso, a cada 12 horas, por até 7 dias ou conforme prescrição.',
+    safetyAlert: 'Não usar apresentação canina em gatos. Cautela em geriátricos, DRC/hepatopatia, alterações hematológicas, pacientes convulsivos, uso de serotonérgicos ou sinais de sedação/ataxia.',
+    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço público não consolidado; checar varejo no momento da prescrição', sourceDate: '2026-05-31', notes: 'Dados incompletos' },
+    imageUrl: 'https://petcaesecia.fbitsstatic.net/img/p/analgesico-avert-sindolor-gatos-50-8-mg-85721/270637.jpg?w=1200&h=1200&v=202603120918&qs=ignore'
+  },
+  {
+    id: 'gabapentina-humana-manipulada',
+    slug: 'gabapentina',
+    name: 'Gabapentina',
+    manufacturer: 'Genéricos humanos / manipulado veterinário',
+    commercialClass: 'orthopedic',
+    commercialSubclass: 'ortho_antiinflammatory',
+    commercialSubclasses: ['ortho_antiinflammatory', 'neuro_pain'],
+    productPageUrl: 'https://www.drogasil.com.br/bulas/gabapentina',
+    labelUrl: 'https://www.drogasil.com.br/bulas/gabapentina',
+    species: ['dog', 'cat'],
+    presentations: [
+      'Cápsulas humanas 300 mg',
+      'Cápsulas humanas 400 mg',
+      'Fórmulas manipuladas sob medida (cápsula ou suspensão oral)'
+    ],
+    activeComponents: ['gabapentina'],
+    labelCompositionSummary: 'Gabapentina. Concentrações comerciais humanas comuns de 300 e 400 mg. Fórmulas veterinárias manipuláveis com dosagens sob medida.',
+    labelDirections: 'Uso extra-bula / literatura veterinária. Dor crônica: cães e gatos, 5 a 15 mg/kg por via oral, a cada 8 a 12 horas, titulando de acordo com a tolerância e grau de sedação.',
+    dosageGuidance: {
+      labelDose: 'Sem dose em bula humana. Dor crônica: 5 a 15 mg/kg VO a cada 8 ou 12 horas. Iniciar com dose baixa e titular.',
+      plumbs: {
+        dog: [
+          { title: 'Dor crônica / Neuropática', dose: '5 a 15 mg/kg VO a cada 8 ou 12 horas', note: 'Iniciar baixo (ex: 5 mg/kg) e subir gradualmente para evitar ataxia grave.' }
+        ],
+        cat: [
+          { title: 'Dor crônica / Osteoartrite', dose: '5 a 10 mg/kg VO a cada 12 ou 24 horas', note: 'Adjuvante excelente em gatos idosos com restrição a AINE.' },
+          { title: 'Ansiedade situacional (ex: clínica)', dose: '50 a 100 mg/gato VO dose única', note: 'Fornecer 2 a 3 horas antes da viagem ou procedimento.' }
+        ]
+      }
+    },
+    plumbsContext: 'Gabapentinoide. Modulador dos canais de cálcio dependentes de voltagem. Excelente adjuvante para dor de osteoartrite quando há sensibilização central e hiperalgesia.',
+    clinicalUse: 'Manejo de dor neuropática, dor crônica persistente de osteoartrite (em associação com AINE ou Librela/Solensia) e espasticidade ou dor de coluna.',
+    reassessment: 'Monitorar relaxamento muscular, sedação ou ataxia nas primeiras 72 horas. Evitar suspender abruptamente.',
+    prescriptionExample: 'Gabapentina [concentração manipulada], administrar por via oral na dose calculada pelo peso, a cada 12 horas, pelo período recomendado.',
+    safetyAlert: 'Ajustar em DRC progressiva. Atenção: soluções orais comerciais humanas podem conter xilitol, que é altamente tóxico para cães.',
+    price: { averageLabel: 'Variável', rangeLabel: 'Genéricos humanos e manipulados variam de acordo com dosagem e fornecedor local', sourceDate: '2026-05-25', notes: 'Dados incompletos' },
+    imageUrl: 'https://www.drogariaminasbrasil.com.br/media/webp/catalog/product/cache/74c1057f7991b4edb2bc7bdaa94de933/image/294918bf3/gabapentina-300mg-c-30-capsulas_jpg.webp'
+  },
+  {
+    id: 'amantadina-humana-manipulada',
+    slug: 'amantadina',
+    name: 'Amantadina',
+    manufacturer: 'Uso humano / manipulado veterinário',
+    commercialClass: 'orthopedic',
+    commercialSubclass: 'ortho_antiinflammatory',
+    productPageUrl: 'https://vetsmart.com.br/cg/produto/1679/amantadina',
+    labelUrl: 'https://vetsmart.com.br/cg/produto/1679/amantadina',
+    species: ['dog', 'cat'],
+    presentations: [
+      'Amantadina humana 100 mg (comprimido)',
+      'Amantadina manipulada em dosagens veterinárias customizadas'
+    ],
+    activeComponents: ['cloridrato de amantadina'],
+    labelCompositionSummary: 'Cloridrato de amantadina. Comprimidos humanos de 100 mg ou manipulado em doses sob medida.',
+    labelDirections: 'Uso extra-bula / literatura veterinária. Cães e gatos: 3 a 5 mg/kg por via oral, a cada 24 horas (uma vez ao dia), por no mínimo 28 dias para avaliação de eficácia.',
+    dosageGuidance: {
+      labelDose: 'Uso extra-bula. Literatura: 3 a 5 mg/kg VO a cada 24 horas. Utilizar associado a AINE ou gabapentina.',
+      plumbs: {
+        dog: [
+          { title: 'Dor crônica refratária (artrose)', dose: '3 a 5 mg/kg VO a cada 12 ou 24 horas', note: 'Atua bloqueando a sensibilização central. Utilizar associado a AINE.' }
+        ],
+        cat: [
+          { title: 'Dor crônica persistente', dose: '3 a 5 mg/kg VO a cada 24 horas', note: 'Adjuvante seguro em felinos com dor crônica.' }
+        ]
+      }
+    },
+    plumbsContext: 'Antagonista dos receptores NMDA. Auxilia na reversão da sensibilização central ("wind-up"). Não é analgésico de resgate imediato; necessita semanas de uso.',
+    clinicalUse: 'Adjuvante na dor crônica severa refratária de osteoartrites, dor neuropática de coluna ou dores oncológicas espinhais persistentes.',
+    reassessment: 'Reavaliar após 28 dias de uso contínuo para julgar a eficácia analgésica. Monitorar diarreia ou agitação.',
+    prescriptionExample: 'Amantadina [concentração manipulada], administrar por via oral na dose calculada pelo peso, a cada 24 horas, por pelo menos 28 dias.',
+    safetyAlert: 'Ajustar dosagem em nefropatas crônicos. Não administrar isoladamente em quadros de dor aguda excruciante.',
+    price: { averageLabel: 'Variável', rangeLabel: 'Genéricos humanos e manipulados veterinários sob orçamento direto', sourceDate: '2026-05-25', notes: 'Dados incompletos' },
+    imageUrl: 'https://www.drogariaminasbrasil.com.br/media/catalog/product/cache/74c1057f7991b4edb2bc7bdaa94de933/image/91643239a/mantidan-100mg-com-30-comprimidos-momenta.jpg'
+  },
+  {
+    id: 'pregabalina-humana-manipulada',
+    slug: 'pregabalina',
+    name: 'Pregabalina',
+    manufacturer: 'Genéricos humanos / manipulado veterinário',
+    commercialClass: 'orthopedic',
+    commercialSubclass: 'ortho_antiinflammatory',
+    productPageUrl: 'https://consultaremedios.com.br/pregabalina/bula',
+    labelUrl: 'https://consultaremedios.com.br/pregabalina/bula',
+    species: ['dog', 'cat'],
+    presentations: [
+      'Pregabalina humana 25 mg, 50 mg, 75 mg e 150 mg',
+      'Fórmulas manipuladas sob medida (cápsula ou suspensão oral)'
+    ],
+    activeComponents: ['pregabalina'],
+    labelCompositionSummary: 'Pregabalina. Cápsulas comerciais humanas comuns (25 mg, 50 mg, 75 mg, 150 mg) ou manipulação customizada.',
+    labelDirections: 'Uso extra-bula / literatura veterinária. Cães e gatos: 1 a 2 mg/kg por via oral, a cada 12 horas (duas vezes ao dia), conforme tolerância e grau de sedação.',
+    dosageGuidance: {
+      labelDose: 'Uso extra-bula. Literatura: 1 a 2 mg/kg VO a cada 12 horas. Alternativa à gabapentina.',
+      plumbs: {
+        dog: [
+          { title: 'Dor neuropática / Sensibilização', dose: '1 a 2 mg/kg VO a cada 12 horas', note: 'Iniciar no limite baixo e titular. Tem perfil de absorção mais previsível que gabapentina.' }
+        ],
+        cat: [
+          { title: 'Dor crônica de osteoartrite', dose: '1 a 2 mg/kg VO a cada 12 ou 24 horas', note: 'Acompanhar sedação e ataxia. Útil quando há má aceitação da gabapentina.' }
+        ]
+      }
+    },
+    plumbsContext: 'Gabapentinoide com ligação de alta afinidade aos canais de cálcio voltagem-dependentes. Pode propiciar absorção mais linear que gabapentina em alguns indivíduos.',
+    clinicalUse: 'Adjuvante avançado na dor neuropática severa, dor crônica de osteoartrite com sensibilização central e dores em coluna com radiculopatias.',
+    reassessment: 'Monitorar letargia, ataxia ou fraqueza pélvica. Não suspender o uso prolongado de forma abrupta.',
+    prescriptionExample: 'Pregabalina [concentração], administrar por via oral na dose calculada pelo peso, a cada 12 horas, pelo período determinado.',
+    safetyAlert: 'Ajustar a dose em portadores de disfunção renal progressiva. Monitorar a coadministração com outros agentes sedativos.',
+    price: { averageLabel: 'Variável', rangeLabel: 'Genéricos humanos e manipulados veterinários variam sob consulta local', sourceDate: '2026-05-25', notes: 'Dados incompletos' },
+    imageUrl: 'https://www.drogariaminasbrasil.com.br/media/catalog/product/cache/74c1057f7991b4edb2bc7bdaa94de933/image/92197694f/dorene-liquido-25mg-ml-solucao-oral-60ml-ache.jpg'
+  },
+  {
+    id: 'librela-zoetis',
+    slug: 'librela',
+    name: 'Librela',
+    manufacturer: 'Zoetis',
+    commercialClass: 'orthopedic',
+    commercialSubclass: 'ortho_antiinflammatory',
+    productPageUrl: 'https://www2.zoetis.com.br/especies/caes-e-gatos/veterinario/dor-e-inflamacao/librela/',
+    labelUrl: 'https://www2.zoetis.com.br/content/pt/pages/Especies/Caes-e-Gatos/Veterinario/Dor-e-inflamacao/Librela/_assets/Bula-Librela-v3-080221.pdf',
+    species: ['dog'],
+    presentations: [
+      'Librela 5 mg / 1 mL (frasco)',
+      'Librela 10 mg / 1 mL (frasco)',
+      'Librela 15 mg / 1 mL (frasco)',
+      'Librela 20 mg / 1 mL (frasco)',
+      'Librela 30 mg / 1 mL (frasco)'
+    ],
+    activeComponents: ['bedinvetmab'],
+    labelCompositionSummary: 'Bedinvetmab. Solução injetável contendo 5 mg, 10 mg, 15 mg, 20 mg ou 30 mg de bedinvetmab por frasco de 1 mL.',
+    labelDirections: 'Cães: 0,5 a 1,0 mg/kg por via subcutânea, uma vez ao mês (a cada 30 dias). Administrar o conteúdo inteiro do frasco correspondente à faixa de peso.',
+    dosageGuidance: {
+      labelDose: 'Cães: 0,5 a 1 mg/kg SC mensal. Faixas de peso: 5-10kg (5mg), 10.1-20kg (10mg), 20.1-30kg (15mg), 30.1-40kg (20mg), 40.1-60kg (30mg).',
+      plumbs: {
+        dog: [
+          { title: 'Dor associada à osteoartrite', dose: '0,5 a 1 mg/kg SC mensal', note: 'Anticorpo monoclonal caninizado que neutraliza o NGF. Não depende de metabolismo hepático ou renal convencional.' }
+        ]
+      }
+    },
+    plumbsContext: 'Bedinvetmab é um anticorpo monoclonal caninizado anti-NGF (Fator de Crescimento Nervoso). NGF está superregulado na osteoartrite e estimula a via de dor. Excelente opção para renais e cardiopatas.',
+    clinicalUse: 'Alívio e controle da dor crônica associada à osteoartrite em cães de todas as idades (acima de 12 meses).',
+    reassessment: 'Avaliar a resposta clínica em mobilidade, comportamento e dor após 1 a 2 aplicações consecutivas.',
+    prescriptionExample: 'Librela [apresentação conforme peso], aplicação subcutânea mensal de 1 frasco por via subcutânea executada por médico-veterinário.',
+    safetyAlert: 'Não usar em cães com menos de 12 meses de idade. Não indicado para gestantes, lactantes ou animais de reprodução. Risco de formação de anticorpos secundários.',
+    price: { averageLabel: 'Variável', rangeLabel: 'Uso clínico exclusivo; valores por ampola sob consulta em clínicas ou distribuidores', sourceDate: '2026-05-25', notes: 'Dados incompletos' },
+    imageUrl: 'https://www.veterinaria-atual.pt/wp-content/uploads/sites/4/2021/04/Librela-All-Sizes-Carton-Beauty-Shot-White-Background-UK-IE-LV-LT-ET-PNG-Image-Global-e1618506384851.jpg'
+  },
+  {
+    id: 'solensia-zoetis',
+    slug: 'solensia',
+    name: 'Solensia',
+    manufacturer: 'Zoetis',
+    commercialClass: 'orthopedic',
+    commercialSubclass: 'ortho_antiinflammatory',
+    productPageUrl: 'https://www2.zoetis.com.br/especies/caes-e-gatos/veterinario/dor-e-inflamacao/solensia/',
+    labelUrl: 'https://www2.zoetis.com.br/content/pt/pages/Especies/Caes-e-Gatos/Veterinario/Bulario/_assets/Solensia.pdf',
+    species: ['cat'],
+    presentations: ['Solensia 7 mg / 1 mL (frasco)'],
+    activeComponents: ['frunevetmab'],
+    labelCompositionSummary: 'Frunevetmab 7 mg por mL. Anticorpo monoclonal felinizado anti-NGF.',
+    labelDirections: 'Gatos: 1 a 2,8 mg/kg por via subcutânea, uma vez ao mês (a cada 30 dias). Dose: gatos de 2,5 a 7,0 kg recebem 1 frasco de 1 mL; gatos de 7,1 a 14,0 kg recebem 2 frascos.',
+    dosageGuidance: {
+      labelDose: 'Gatos: 1 a 2,8 mg/kg SC mensal. Gatos de 2,5 a 7 kg: 1 frasco (7mg). Gatos de 7,1 a 14 kg: 2 frascos (14mg).',
+      plumbs: {
+        cat: [
+          { title: 'Dor associada à osteoartrite felina', dose: '1 frasco (7 mg) SC a cada 30 dias para gatos até 7 kg', note: 'Anticorpo monoclonal felinizado anti-NGF. Reduz drasticamente a alodinia e sensibilização sem toxicidade renal.' }
+        ]
+      }
+    },
+    plumbsContext: 'Frunevetmab é um anticorpo monoclonal felinizado anti-NGF. Oferece controle analgésico revolucionário para osteoartrite felina crônica, especialmente em gatos geriátricos com DRC.',
+    clinicalUse: 'Tratamento e controle da dor crônica associada à osteoartrite felina, promovendo ganho rápido de mobilidade e vitalidade.',
+    reassessment: 'Avaliar o comportamento, capacidade de saltar e qualidade de vida do felino a cada aplicação mensal.',
+    prescriptionExample: 'Solensia 7 mg/mL, aplicar 1 frasco por via subcutânea a cada 30 dias. Aplicação realizada em ambiente clínico por médico-veterinário.',
+    safetyAlert: 'Não usar em gatos com menos de 12 meses de idade ou com peso inferior a 2,5 kg. Contraindicado em gestação, lactação e reprodução.',
+    price: { averageLabel: 'Variável', rangeLabel: 'Produto hospitalar/clínico; cotação por frasco em clínicas cadastradas', sourceDate: '2026-05-25', notes: 'Dados incompletos' },
+    imageUrl: 'https://rbldistribuidora.agilecdn.com.br/80969.jpg'
+  },
+  {
+    id: 'cartrophen-vet-biopharm',
+    slug: 'cartrophen',
+    name: 'Cartrophen Vet',
+    manufacturer: 'Biopharm / Covetrus',
+    commercialClass: 'orthopedic',
+    commercialSubclass: 'ortho_joint_support',
+    productPageUrl: 'https://cartrophen.com.br/cartrophen-caes-2/',
+    labelUrl: 'https://abasevet.com.br/wp-content/uploads/2022/05/CARTROPHEN_CAES_FOLHETO-A4_PDF_email.pdf',
+    species: ['dog'],
+    presentations: ['Cartrophen Vet 10% (frasco 10 mL)'],
+    activeComponents: ['pentosano polissulfato sódico'],
+    labelCompositionSummary: 'Pentosano polissulfato sódico 100 mg/mL. DMOAD injetável.',
+    labelDirections: 'Cães: 3 mg/kg por via subcutânea, em intervalos de 5 a 7 dias, completando ciclo de 4 aplicações. Protocolo executado por médico-veterinário.',
+    dosageGuidance: {
+      labelDose: 'Cães: 3 mg/kg por via subcutânea, completando ciclo de 4 aplicações com intervalo semanal.',
+      plumbs: {
+        dog: [
+          { title: 'Doença articular degenerativa (DMOAD)', dose: '3 mg/kg SC semanal por 4 semanas', note: 'Droga modificadora da osteoartrite (DMOAD). Pode repetir o ciclo após alguns meses conforme avaliação.' }
+        ]
+      }
+    },
+    plumbsContext: 'Pentosano polissulfato sódico (PPS) estimula a síntese de cartilagem e ácido hialurônico, além de atenuar enzimas degradativas. Possui atividade anticoagulante/fibrinolítica leve.',
+    clinicalUse: 'Tratamento de osteoartrites, osteocondrose, traumas articulares e pós-operatórios de procedimentos intra-articulares em cães.',
+    reassessment: 'Acompanhar claudicação e grau de dor durante e após a conclusão do ciclo de 4 semanas.',
+    prescriptionExample: 'Cartrophen Vet 10%, aplicação de 3 mg/kg por via subcutânea, uma vez por semana, por 4 semanas consecutivas. Aplicação clínica.',
+    safetyAlert: 'Contraindicado em cães com coagulopatias, trombocitopenia, hemorragia ativa ou cirurgia de grande porte planejada. Não associar com aspirina ou outros anticoagulantes.',
+    price: { averageLabel: 'Variável', rangeLabel: 'Frasco 10 mL de uso clínico exclusivo; preço sob consulta direta no distribuidor', sourceDate: '2026-05-25', notes: 'Dados incompletos' },
+    imageUrl: 'https://cdn.awsli.com.br/2500x2500/2643/2643862/produto/2466679626b21b83904.jpg'
+  },
+  {
+    id: 'condroplex-avert',
+    slug: 'condroplex',
+    name: 'CondroPlex',
+    manufacturer: 'Avert',
+    commercialClass: 'orthopedic',
+    commercialSubclass: 'ortho_joint_support',
+    productPageUrl: 'https://www.avertsaudeanimal.com.br/linhas/articular/condroplex-500-capsulas',
+    labelUrl: 'https://avertsaudeanimal.com.br/linhas/articular/condroplex-lb',
+    species: ['dog', 'cat'],
+    presentations: [
+      'CondroPlex 500 cápsulas (60 cáps.)',
+      'CondroPlex 1000 cápsulas (60 cáps.)',
+      'CondroPlex LB comprimidos (60 comp.)',
+      'CondroPlex Pasta (bisnaga 60 g)',
+      'CondroPlex Sticks (sachê 315 g)'
+    ],
+    activeComponents: ['sulfato de condroitina', 'sulfato de glicosamina', 'colágeno hidrolisado', 'zinco', 'manganês'],
+    labelCompositionSummary: 'Nutrientes articulares. Contém sulfato de condroitina, sulfato de glicosamina, colágeno hidrolisado, zinco e manganês queratados.',
+    labelDirections: 'Suplementação inicial por 42 dias: CondroPlex 500: 1 cápsula/5 kg de peso SID. CondroPlex 1000: 1 cápsula/10 kg de peso SID. CondroPlex LB: 1 comprimido/25 kg de peso SID. CondroPlex Pasta gatos: 1 g para cada 5 kg SID.',
+    dosageGuidance: {
+      labelDose: 'Suplementação inicial por 42 dias na dosagem do fabricante; depois iniciar dose de manutenção (geralmente metade ou em dias alternados).',
+      plumbs: {
+        dog: [
+          { title: 'Suplementação articular', dose: 'CondroPlex 1000: 1 cápsula para cada 10 kg VO SID', note: 'Glucosamina e condroitina atuam como precursores de cartilagem.' }
+        ],
+        cat: [
+          { title: 'Suporte articular felino', dose: 'CondroPlex 500 ou Pasta: 1 cápsula ou 1 g para cada 5 kg VO SID', note: 'Altamente palatável. Ajuda na manutenção de cartilagem e viscosidade sinovial.' }
+        ]
+      }
+    },
+    plumbsContext: 'Glucosamina e condroitina são suplementos nutricionais. Atuam como blocos de construção para glicosaminoglicanos. Eficácia clínica individual é variável; resposta lenta (2 a 6 semanas).',
+    clinicalUse: 'Suplemento alimentar com nutrientes articulares, indicado como adjuvante em osteoartrites, displasias coxofemorais, pós-operatórios ortopédicos e animais sob exercício intenso.',
+    reassessment: 'Avaliar o conforto e a mobilidade do animal após o período inicial de 42 dias para decidir sobre a manutenção.',
+    prescriptionExample: 'CondroPlex 1000, administrar 1 cápsula por via oral a cada 24 horas, inicialmente por 42 dias consecutivos ou conforme prescrição.',
+    safetyAlert: 'Suplemento. Usar com cautela em animais diabéticos ou com histórico de hipersensibilidade gastrointestinal aos componentes.',
+    price: { averageLabel: 'R$ 59,90 a R$ 222,90', rangeLabel: '500 comp: R$ 59,90-74,90; 1000 comp: R$ 87,90-109,90; LB: R$ 160,50-200,90; Sticks: R$ 177,90-222,90; Pasta gatos: R$ 107,90-134,90', sourceDate: '2026-05-25' },
+    imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/1008541/condroplex-1000-60-comprimidos-caes-avert-Principal.jpg?v=638132740118630000'
+  },
+  {
+    id: 'condromax-pet-ourofino',
+    slug: 'condromax-pet',
+    name: 'Condromax Pet',
+    manufacturer: 'Ourofino',
+    commercialClass: 'orthopedic',
+    commercialSubclass: 'ortho_joint_support',
+    productPageUrl: 'https://www.ourofinopet.com/produtos/suplementos/condromax-pet/',
+    labelUrl: 'https://www.ourofinopet.com/produtos/suplementos/condromax-pet/304/',
+    species: ['dog', 'cat'],
+    presentations: ['Condromax Pet tabletes mastigáveis (30 ou 90 tabletes)'],
+    activeComponents: ['sulfato de condroitina', 'glucosamina', 'cobre', 'manganês', 'zinco'],
+    labelCompositionSummary: 'Mucopolissacarídeos (condroitina e glucosamina), cobre quelatado, manganês quelatado, zinco quelatado.',
+    labelDirections: 'Cães e gatos: administrar por via oral, uma vez ao dia antes das refeições, por no mínimo 30 dias. Dose inicial: Até 10 kg: 1/2 tablete; De 11 a 20 kg: 1 tablete; De 21 a 40 kg: 2 tabletes; Acima de 40 kg: 3 tabletes.',
+    dosageGuidance: {
+      labelDose: 'Cães e gatos: Administrar 1 vez ao dia antes das refeições por 30 dias consecutivos. Dose conforme faixas de peso.',
+      plumbs: {
+        dog: [
+          { title: 'Condroproteção e suporte mineral', dose: '11 a 20 kg: 1 tablete mastigável VO SID', note: 'Fornece mucopolissacarídeos e minerais essenciais à saúde da cartilagem.' }
+        ],
+        cat: [
+          { title: 'Condroproteção em gatos', dose: 'Gatos até 10 kg: 1/2 tablete mastigável VO SID', note: 'Altamente palatável. Tabletes podem ser oferecidos diretamente ou misturados ao alimento.' }
+        ]
+      }
+    },
+    plumbsContext: 'Nutrientes e glicosaminoglicanos que dão suporte à estrutura da matriz cartilaginosa e do líquido sinovial. Bem tolerados por via oral.',
+    clinicalUse: 'Suplementação de condroitina, glucosamina e minerais em cães e gatos sob constante exercício físico, crescimento ou osteoartrites.',
+    reassessment: 'Reavaliar após o primeiro ciclo de 30 dias para decidir sobre suspensão ou manutenção.',
+    prescriptionExample: 'Condromax Pet tabletes, administrar 1/2 tablete por via oral a cada 24 horas, antes da refeição, por no mínimo 30 dias.',
+    safetyAlert: 'Suplemento mineral com condroitina e glucosamina. Usar com cautela em portadores de diabetes mellitus ou alergia a crustáceos.',
+    price: { averageLabel: 'R$ 67,41 a R$ 180,00', rangeLabel: 'Frasco 30 tabletes: R$ 67,41 a R$ 74,90; Frasco 90 tabletes: R$ 162,00 a R$ 180,00', sourceDate: '2026-05-25' },
+    imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/1097756/Suplemento-para-Caes-e-Gatos-Condromax-Pet-30-comp.webp?v=639078082419630000'
+  },
+  {
+    id: 'condroton-vetnil',
+    slug: 'condroton',
+    name: 'Condroton',
+    manufacturer: 'Vetnil',
+    commercialClass: 'orthopedic',
+    commercialSubclass: 'ortho_joint_support',
+    productPageUrl: 'https://vetnil.com.br/produto/condroton-r/',
+    labelUrl: 'https://consultaremedios.com.br/condroton-uso-veterinario/bula',
+    species: ['dog'],
+    presentations: ['Condroton 500 mg (60 comp.)', 'Condroton 1000 mg (60 comp.)', 'Condroton injetável 10 mL'],
+    activeComponents: ['sulfato de condroitina A'],
+    labelCompositionSummary: 'Condroprotetor à base de sulfato de glicosamina + sulfato de condroitina, em comprimidos de 500 mg ou 1000 mg.',
+    labelDirections: 'Uso oral em cães. Condroton 500 mg: até 5 kg, 1 comp SID na dose inicial e 1 comp em dias alternados na manutenção; 5 a 10 kg, 1 comp BID inicialmente e 1 comp SID na manutenção. Condroton 1000 mg: 10 a 15 kg, 1 comp BID inicialmente e 1 comp SID na manutenção; 15 a 25 kg, 1,5 comp BID inicialmente e 1 comp SID na manutenção; 25 a 50 kg, 2 comp BID inicialmente e 2 comp SID na manutenção; acima de 50 kg, 3 comp BID inicialmente e 2 comp SID na manutenção.',
+    dosageGuidance: {
+      labelDose: 'Cães: dose por faixa de peso e apresentação. Usar dose inicial mais intensa e reduzir para manutenção conforme bula e resposta clínica.',
+      plumbs: {
+        dog: [
+          { title: 'Até 10 kg - Condroton 500 mg', dose: 'Até 5 kg: 1 comp SID; 5 a 10 kg: 1 comp BID', note: 'Manutenção: até 5 kg em dias alternados; 5 a 10 kg, 1 comp SID.' },
+          { title: '10 a 25 kg - Condroton 1000 mg', dose: '10 a 15 kg: 1 comp BID; 15 a 25 kg: 1,5 comp BID', note: 'Manutenção usual: 1 comp SID.' },
+          { title: 'Acima de 25 kg - Condroton 1000 mg', dose: '25 a 50 kg: 2 comp BID; >50 kg: 3 comp BID', note: 'Manutenção: 2 comp SID; pode reduzir conforme resposta e orientação.' }
+        ]
+      }
+    },
+    plumbsContext: 'Condroitina/glucosamina são suplementos/condroprotetores com evidência variável. Usar como adjuvante, não como substituto de analgesia, controle de peso e reabilitação.',
+    clinicalUse: 'Suporte em osteoartrite, displasia, pós-operatório articular e animais com esforço físico, como parte de manejo multimodal.',
+    reassessment: 'Reavaliar dor, claudicação e mobilidade após 4 a 8 semanas; ajustar o plano se não houver ganho funcional.',
+    prescriptionExample: 'Condroton [500 mg ou 1000 mg], administrar por via oral conforme faixa de peso e orientação do fabricante, pelo período prescrito.',
+    safetyAlert: 'Suplemento/condroprotetor. Não substitui AINE, anticorpo monoclonal, reabilitação ou cirurgia quando indicados.',
+    price: { averageLabel: 'R$ 177,90 a R$ 304,90', rangeLabel: 'Condroton 500 mg 60 comp. cerca de R$ 177,90-204,90; 1000 mg 60 comp. cerca de R$ 267,90-304,90', sourceDate: '2026-05-25' },
+    imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/1056588/condroton-500mg-vetnil-60-comprimidos.jpg'
+  },
+  {
+    id: 'flexadin-advanced-vetoquinol',
+    slug: 'flexadin-advanced',
+    name: 'Flexadin Advanced',
+    manufacturer: 'Vetoquinol',
+    commercialClass: 'orthopedic',
+    commercialSubclass: 'ortho_joint_support',
+    productPageUrl: 'https://www.vetoquinol.com.br/products/flexadinr-advanced-caes',
+    labelUrl: 'https://www.vetoquinol.com.br/products/flexadinr-advanced-caes',
+    species: ['dog'],
+    presentations: ['Flexadin Advanced Cães tabletes mastigáveis'],
+    activeComponents: ['UC-II', 'colágeno tipo II não desnaturado', 'ômega 3', 'vitamina E'],
+    labelCompositionSummary: 'Suplemento articular com colágeno tipo II não desnaturado, ômega 3 e vitamina E.',
+    labelDirections: 'Cães: oferecer 1 tablete por via oral, uma vez ao dia, independentemente do tamanho do cão. Uso inicial recomendado por 3 meses.',
+    dosageGuidance: {
+      labelDose: 'Cães: 1 tablete VO SID, independentemente do peso, por período inicial de 3 meses ou conforme prescrição.',
+      plumbs: {
+        dog: [
+          { title: 'Suporte articular com UC-II', dose: '1 tablete VO SID conforme fabricante', note: 'Adjuvante para mobilidade; não é analgésico de resgate.' }
+        ]
+      }
+    },
+    plumbsContext: 'UC-II e suplementos articulares são adjuvantes; benefício depende do produto e do paciente, com resposta lenta.',
+    clinicalUse: 'Suporte de mobilidade e flexibilidade em cães com risco articular ou osteoartrite, junto a controle de peso e reabilitação.',
+    reassessment: 'Reavaliar mobilidade e conforto após 4 a 8 semanas.',
+    prescriptionExample: 'Flexadin Advanced Cães, administrar 1 tablete por via oral, uma vez ao dia, diretamente na boca ou misturado ao alimento, pelo período prescrito.',
+    safetyAlert: 'Suplemento. Cautela em alergia a frango/aves ou componentes da fórmula. Não prometer efeito imediato.',
+    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não consolidado nesta rodada', sourceDate: '2026-05-25', notes: 'Dados incompletos' },
+    imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/307150/FLEXADIN.jpg?v=638265190104100000'
+  },
+  {
+    id: 'osteosyn-konig',
+    slug: 'osteosyn',
+    name: 'Osteosyn',
+    manufacturer: 'König',
+    commercialClass: 'orthopedic',
+    commercialSubclass: 'ortho_joint_support',
+    productPageUrl: 'https://www.cobasi.com.br/osteosyn-60-comprimidos-konig-3627836/p',
+    labelUrl: 'https://www.cobasi.com.br/osteosyn-60-comprimidos-konig-3627836/p',
+    species: ['dog', 'cat'],
+    presentations: ['Osteosyn 660 mg (60 comp.)', 'Osteosyn 2000 mg (60 comp.)'],
+    activeComponents: ['sulfato de condroitina', 'glucosamina', 'aminoácidos', 'ômega 3', 'vitamina E', 'probióticos'],
+    labelCompositionSummary: 'Suplemento articular com condroitina, glucosamina, aminoácidos, ômega 3, vitamina E e probióticos, conforme descrição comercial.',
+    labelDirections: 'Dose diária recomendada conforme peso: até 10 kg, 1 comprimido de 660 mg SID; 10,1 a 20 kg, 2 comprimidos de 660 mg SID; 20,1 a 30 kg, 1 comprimido de 2000 mg SID; acima de 30,1 kg, 2 comprimidos de 2000 mg SID. Pode fracionar no período de 24 horas conforme orientação veterinária.',
+    dosageGuidance: {
+      labelDose: 'Cães e gatos: dose por faixa de peso. Até 20 kg usar apresentação 660 mg; acima de 20 kg usar 2000 mg.',
+      plumbs: {
+        dog: [
+          { title: 'Até 20 kg', dose: 'Até 10 kg: 1 comp 660 mg SID; 10,1 a 20 kg: 2 comp 660 mg SID', note: 'Pode ser administrado direto na boca ou misturado ao alimento.' },
+          { title: 'Acima de 20 kg', dose: '20,1 a 30 kg: 1 comp 2000 mg SID; >30,1 kg: 2 comp 2000 mg SID', note: 'Suplemento adjuvante; avaliar resposta em 4 a 8 semanas.' }
+        ],
+        cat: [
+          { title: 'Até 10 kg', dose: '1 comp 660 mg VO SID', note: 'Usar como suporte articular adjuvante, não como analgesia de resgate.' }
+        ]
+      }
+    },
+    plumbsContext: 'Suplemento articular. Condroitina/glucosamina são adjuvantes com benefício individual variável.',
+    clinicalUse: 'Suporte articular em cães e gatos, como adjuvante em degeneração cartilaginosa/óssea e osteoartrite.',
+    reassessment: 'Reavaliar em 4 a 8 semanas; não usar como substituto de analgesia em paciente doloroso.',
+    prescriptionExample: 'Osteosyn [660 mg ou 2000 mg], administrar por via oral conforme faixa de peso, a cada 24 horas, diretamente na boca ou misturado ao alimento, pelo período prescrito.',
+    safetyAlert: 'Suplemento, não analgésico de resgate. Cautela em intolerância gastrointestinal ou alergia alimentar.',
+    price: { averageLabel: 'R$ 148,95 a R$ 247,90', rangeLabel: 'Osteosyn 660 mg cerca de R$ 148,95-165,50; 2000 mg cerca de R$ 198,32-247,90', sourceDate: '2026-05-25' },
+    imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/942433/suplemento-alimentar-osteosyn-60-comprimidos-660-mg.jpg?v=638157174133000000'
+  },
+  {
+    id: 'gerioox-labyes',
+    slug: 'gerioox',
+    name: 'Gerioox',
+    manufacturer: 'Labyes',
+    commercialClass: 'orthopedic',
+    commercialSubclass: 'ortho_joint_support',
+    productPageUrl: 'https://labyes.com/pt-br/productos/gerioox/',
+    labelUrl: 'https://consultaremedios.com.br/gerioox-para-caes-e-gatos/bula',
+    species: ['dog', 'cat'],
+    presentations: ['Gerioox 30 comprimidos'],
+    activeComponents: ['ômega 3', 'antioxidantes', 'condroprotetores'],
+    labelCompositionSummary: 'Suplemento/medicamento geriátrico com ácidos graxos ômega 3, antioxidantes e componentes condroprotetores.',
+    labelDirections: 'Cães e gatos até 10 kg: 1/2 comprimido SID. Cães 10 a 25 kg: 1 comprimido SID. Cães acima de 25 kg: 2 comprimidos SID.',
+    dosageGuidance: {
+      labelDose: 'Até 10 kg: 1/2 comp VO SID; cães 10-25 kg: 1 comp VO SID; cães >25 kg: 2 comp VO SID.',
+      plumbs: {
+        dog: [
+          { title: 'Suporte geriátrico/articular', dose: '10 a 25 kg: 1 comprimido VO SID', note: 'Adjuvante com ômega 3, antioxidantes e condroprotetores.' }
+        ],
+        cat: [
+          { title: 'Suporte geriátrico/articular', dose: 'até 10 kg: 1/2 comprimido VO SID', note: 'Adjuvante; confirmar aceitação e tolerância gastrointestinal.' }
+        ]
+      }
+    },
+    plumbsContext: 'Produto adjuvante geriátrico. Para ômega 3 terapêutico, calcular EPA + DHA quando o rótulo estiver disponível.',
+    clinicalUse: 'Suporte em pacientes idosos, artrose, doença degenerativa, nefropatas/cardiopatas crônicos e convalescentes, sem substituir tratamento específico.',
+    reassessment: 'Reavaliar mobilidade, disposição, escore corporal, fezes e apetite após 4 a 8 semanas.',
+    prescriptionExample: 'Gerioox, administrar por via oral conforme faixa de peso, a cada 24 horas, como adjuvante no manejo geriátrico/articular.',
+    safetyAlert: 'Adjuvante. Se houver dose relevante de ômega 3, cautela em pancreatite, coagulopatias e uso com anticoagulantes/antiagregantes.',
+    price: { averageLabel: 'R$ 375,45 a R$ 441,50', rangeLabel: 'Gerioox 30 comprimidos em varejo online nessa faixa', sourceDate: '2026-05-25' },
+    imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/224922/gerioox_x30_BRASIL_2019_-1-.jpg?v=638814678959230000'
+  },
+  {
+    id: 'elura-elanco',
+    slug: 'elura',
+    name: 'Elura',
+    manufacturer: 'Elanco',
+    commercialClass: 'gastrointestinal',
+    commercialSubclass: 'gi_orexigenic',
+    productPageUrl: 'https://vet.elanco.com/br/produtos/elura',
+    labelUrl: 'https://assets.elanco.com/0cec44ed-3eaa-0009-2029-666567e7e4de/685da15e-09cf-49da-a5f8-cee645a035d8/lamina%20dosagem%20Web.pdf',
+    imageUrl: 'https://assets.elanco.com/0cec44ed-3eaa-0009-2029-666567e7e4de/691d310f-e23e-48bb-a69d-a845f67bf346/Asset15%20%281%29.png',
+    species: ['cat'],
+    presentations: ['Elura 20 mg/mL (solução oral 15 mL)'],
+    activeComponents: ['capromorelina'],
+    labelCompositionSummary: 'Capromorelina 20 mg/mL em solução oral para gatos.',
+    labelDirections: 'Administrar 2 mg/kg (0,1 mL/kg) por via oral, uma vez ao dia (SID), utilizando a seringa dosadora fornecida.',
+    dosageGuidance: {
+      labelDose: 'Gatos: 2 mg/kg (0,1 mL/kg) VO SID.',
+      plumbs: {
+        dog: [],
+        cat: [
+          { title: 'Estímulo de apetite / DRC', dose: '2 mg/kg (0,1 mL/kg) VO SID', note: 'Administrar com seringa dosadora; preferencialmente com o estômago vazio para melhor absorção (30 min antes da refeição).' }
+        ]
+      }
+    },
+    plumbsContext: 'Agonista seletivo do receptor de grelina. Estimula a liberação de hormônio do crescimento e o apetite.',
+    clinicalUse: 'Estímulo de apetite e controle da perda de peso em gatos com Doença Renal Crônica (DRC).',
+    reassessment: 'Monitorar peso corporal, consumo alimentar, hidratação, comportamento e glicemia (principalmente em diabéticos).',
+    prescriptionExample: 'Elura 20 mg/mL, administrar por via oral na dose de 0,1 mL para cada kg de peso (2 mg/kg), uma vez ao dia, utilizando a seringa dosadora.',
+    safetyAlert: 'Contraindicado em gatos com hipersensibilidade à capromorelina. Usar com cautela em gatos com disfunção hepática grave, doença cardíaca grave ou diabetes mellitus (pode elevar a glicemia transitoriamente). Segurança não avaliada em filhotes com menos de 5 meses, gatas gestantes ou lactantes.',
+    price: { averageLabel: 'R$ 290 a R$ 480', rangeLabel: 'Frasco de 15 mL', sourceDate: '2026-05-28' }
+  }
 ];

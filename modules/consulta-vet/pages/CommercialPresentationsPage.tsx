@@ -26,7 +26,7 @@ const UI_TEXT = {
   eyebrow: 'Catálogo comercial',
   title: 'Apresentações comerciais',
   body: 'Comparação clínica de apresentações comerciais por classe, subclasse, espécie e uso prático.',
-  searchPlaceholder: 'Buscar produto, fabricante, ativo ou uso clínico...',
+  searchPlaceholder: 'Buscar produto, classe, subclasse, ativo ou uso clínico...',
 } as const;
 
 const CLASS_LABELS: Record<CommercialMedicationClass, string> = {
@@ -42,7 +42,7 @@ const CLASS_LABELS: Record<CommercialMedicationClass, string> = {
   ophthalmologic: 'Oftalmológicas',
   infectious: 'Infecciosas / antimicrobianos',
   analgesic: 'Analgésicas',
-  anesthetic: 'Anestésicas',
+  antiinflammatory: 'Anti-inflamatórios',
   nutraceutical: 'Nutracêuticas',
   reproductive: 'Reprodutivas',
   oncologic: 'Oncológicas',
@@ -78,9 +78,16 @@ const SUBCLASS_LABELS: Record<CommercialMedicationSubclass, string> = {
   parasite_heartworm_prevention: 'Prevenção de dirofilariose',
   parasite_giardia: 'Giardia',
   gi_antiemetic: 'Antieméticos',
+  gi_prokinetic: 'Procinéticos',
   gi_antidiarrheal: 'Antidiarreicos',
   gi_gastric_protector: 'Protetores gástricos',
+  gi_laxative: 'Laxantes / encefalopatia hepática',
   gi_probiotic: 'Probióticos',
+  gi_antiprotozoal: 'Antiprotozoários gastrointestinais',
+  gi_pancreatic_enzyme: 'Enzimas pancreáticas',
+  gi_hepatobiliary: 'Hepatobiliares',
+  gi_orexigenic: 'Orexígenos',
+  analgesic_opioid_combo: 'Analgésicos multimodais',
   neuro_anticonvulsant: 'Anticonvulsivantes',
   neuro_pain: 'Dor neuropática',
   cardio_inotrope: 'Inotrópicos',
@@ -119,7 +126,18 @@ const SUBCLASSES_BY_CLASS: Record<CommercialMedicationClass, CommercialMedicatio
     'skin_wound_healing',
     'skin_seborrhea',
   ],
-  gastrointestinal: ['gi_antiemetic', 'gi_antidiarrheal', 'gi_gastric_protector', 'gi_probiotic'],
+  gastrointestinal: [
+    'gi_antiemetic',
+    'gi_prokinetic',
+    'gi_gastric_protector',
+    'gi_antidiarrheal',
+    'gi_laxative',
+    'gi_probiotic',
+    'gi_antiprotozoal',
+    'gi_pancreatic_enzyme',
+    'gi_hepatobiliary',
+    'gi_orexigenic',
+  ],
   neurologic: ['neuro_anticonvulsant', 'neuro_pain'],
   cardiologic: [
     'cardio_inotrope',
@@ -137,8 +155,8 @@ const SUBCLASSES_BY_CLASS: Record<CommercialMedicationClass, CommercialMedicatio
   endocrine: [],
   ophthalmologic: [],
   infectious: [],
-  analgesic: [],
-  anesthetic: [],
+  analgesic: ['analgesic_opioid_combo', 'neuro_pain'],
+  antiinflammatory: ['ortho_antiinflammatory'],
   nutraceutical: ['nutra_omega3'],
   reproductive: [],
   oncologic: [],
@@ -181,6 +199,16 @@ const speciesOptions: Array<{ value: 'all' | VetSpecies; label: string }> = [
   { value: 'dog', label: 'Cão' },
   { value: 'cat', label: 'Gato' },
 ];
+
+function normalizeSearchText(value: string) {
+  return value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-zA-Z0-9]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
+}
 
 function SpeciesBadges({ species }: { species: VetSpecies[] }) {
   return (
@@ -225,24 +253,35 @@ function DoseEntryList({ entries }: { entries: CommercialMedicationDoseEntry[] }
 }
 
 function DosageGuidance({ product }: { product: CommercialMedicationProduct }) {
-  if (!product.dosageGuidance) {
-    return (
-      <div className="mt-5 grid gap-5 xl:grid-cols-4">
-        <FieldBlock label="Apresentação">{product.presentations.join(', ')}</FieldBlock>
-        <FieldBlock label="Preço médio">
-          <span className="font-semibold text-foreground">{product.price.averageLabel}</span>
-          <span className="block text-xs text-muted-foreground">
-            {product.price.rangeLabel} - {product.price.sourceDate}
-          </span>
-        </FieldBlock>
-        <FieldBlock label="Ativos">{product.activeComponents.join(', ')}</FieldBlock>
-        <FieldBlock label="Uso por bula">{product.labelDirections}</FieldBlock>
-      </div>
-    );
-  }
+  const hasDogDose = product.species.includes('dog');
+  const hasCatDose = product.species.includes('cat');
+  const dosageGridClass =
+    hasDogDose && hasCatDose
+      ? 'grid lg:grid-cols-[minmax(260px,0.82fr)_minmax(0,1fr)_minmax(0,1fr)]'
+      : 'grid lg:grid-cols-[minmax(260px,0.82fr)_minmax(0,1fr)]';
 
-  const dogEntries = product.dosageGuidance.plumbs?.dog || [];
-  const catEntries = product.dosageGuidance.plumbs?.cat || [];
+  // If we have explicit dosageGuidance, use it. Otherwise, construct virtual fallback entries dynamically.
+  const dogEntries = product.dosageGuidance?.plumbs?.dog || (
+    hasDogDose ? [
+      {
+        title: 'Diretriz / Uso clínico',
+        dose: product.plumbsContext || 'Consultar posologia específica de bula.',
+        note: product.clinicalUse || undefined
+      }
+    ] : []
+  );
+
+  const catEntries = product.dosageGuidance?.plumbs?.cat || (
+    hasCatDose ? [
+      {
+        title: 'Diretriz / Uso clínico',
+        dose: product.plumbsContext || 'Consultar posologia específica de bula.',
+        note: product.clinicalUse || undefined
+      }
+    ] : []
+  );
+
+  const notes = product.dosageGuidance?.notes || [];
 
   return (
     <>
@@ -263,15 +302,16 @@ function DosageGuidance({ product }: { product: CommercialMedicationProduct }) {
             Dosagem em destaque
           </p>
         </div>
-        <div className="grid lg:grid-cols-[minmax(260px,0.82fr)_minmax(0,1fr)_minmax(0,1fr)]">
+        <div className={dosageGridClass}>
           <div className="border-b border-cyan-500/15 p-4 lg:border-b-0 lg:border-r">
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">Uso por bula / rótulo</p>
             <p className="mt-2 text-base font-bold leading-7 text-foreground">
-              {product.dosageGuidance.labelDose || product.labelDirections}
+              {product.dosageGuidance?.labelDose || product.labelDirections}
             </p>
           </div>
 
-          <div className="border-b border-cyan-500/15 p-4 lg:border-b-0 lg:border-r">
+          {hasDogDose ? (
+          <div className={`border-b border-cyan-500/15 p-4 lg:border-b-0 ${hasCatDose ? 'lg:border-r' : ''}`}>
             <div className="flex items-center gap-2">
               <span className="flex h-9 w-9 items-center justify-center rounded-full border border-sky-500/30 bg-sky-500/15 text-sky-800 dark:text-sky-100">
                 <Dog className="h-5 w-5" />
@@ -289,7 +329,9 @@ function DosageGuidance({ product }: { product: CommercialMedicationProduct }) {
               </p>
             )}
           </div>
+          ) : null}
 
+          {hasCatDose ? (
           <div className="p-4">
             <div className="flex items-center gap-2">
               <span className="flex h-9 w-9 items-center justify-center rounded-full border border-violet-500/30 bg-violet-500/15 text-violet-800 dark:text-violet-100">
@@ -308,11 +350,12 @@ function DosageGuidance({ product }: { product: CommercialMedicationProduct }) {
               </p>
             )}
           </div>
+          ) : null}
         </div>
-        {product.dosageGuidance.notes?.length ? (
+        {notes.length ? (
           <div className="border-t border-cyan-500/20 px-4 py-3">
             <ul className="space-y-1 text-xs leading-5 text-muted-foreground">
-              {product.dosageGuidance.notes.map((note) => (
+              {notes.map((note) => (
                 <li key={note}>{note}</li>
               ))}
             </ul>
@@ -369,6 +412,15 @@ function ProductCard({
 }) {
   const productSubclasses = product.commercialSubclasses || [product.commercialSubclass];
 
+  const isControlled =
+    product.id === 'nulli-ourofino' ||
+    product.id === 'gabapentina-humana-manipulada' ||
+    product.id === 'pregabalina-humana-manipulada' ||
+    product.activeComponents.some((comp) => {
+      const norm = comp.toLowerCase();
+      return norm.includes('tramadol') || norm.includes('gabapentina') || norm.includes('pregabalina');
+    });
+
   return (
     <article className="rounded-2xl border border-border/85 bg-card p-5 shadow-sm transition-colors hover:border-primary/25">
       <div className="flex flex-col gap-4 lg:flex-row">
@@ -380,6 +432,12 @@ function ProductCard({
               <p className="mt-1 text-sm text-muted-foreground">{product.manufacturer}</p>
             </div>
             <div className="flex flex-wrap justify-end gap-2">
+              {isControlled && (
+                <span className="inline-flex items-center gap-1 rounded-full border border-red-500/30 bg-red-500/10 px-3 py-1 text-xs font-bold text-red-600 dark:text-red-400 animate-pulse">
+                  <AlertTriangle className="h-3.5 w-3.5 shrink-0" />
+                  Controle Especial (MAPA / SVS 344/98)
+                </span>
+              )}
               {productSubclasses.map((subclass) => (
                 <span
                   key={subclass}
@@ -424,6 +482,21 @@ function ProductCard({
 
       <DosageGuidance product={product} />
 
+      {isControlled && (
+        <div className="mt-5 rounded-xl border border-red-500/25 bg-red-500/[0.07] p-4">
+          <div className="flex gap-3">
+            <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-red-700 dark:text-red-300" />
+            <div>
+              <p className="text-sm font-bold text-red-950 dark:text-red-200">Atenção: Medicamento de Controle Especial</p>
+              <p className="mt-1 text-sm leading-6 text-red-900 dark:text-red-100">
+                Este medicamento exige **Receita de Controle Especial em Duas Vias** com retenção obrigatória da primeira via no ato da venda.
+                A prescrição e uso veterinário de produtos sob controle especial do **MAPA (Portaria 837/2025)** devem ser emitidas exclusivamente por profissional cadastrado no sistema do ministério.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="mt-5 rounded-xl border border-amber-500/25 bg-amber-500/[0.07] p-4">
         <div className="flex gap-3">
           <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-700 dark:text-amber-300" />
@@ -466,7 +539,7 @@ export function CommercialPresentationsPage() {
     });
   }, [commercialClass]);
 
-  const normalizedQuery = query.trim().toLowerCase();
+  const normalizedQuery = normalizeSearchText(query.trim());
   const hasTextSearch = normalizedQuery.length > 0;
   const shouldShowProducts = Boolean(commercialClass) || hasTextSearch;
 
@@ -475,24 +548,30 @@ export function CommercialPresentationsPage() {
 
     const filtered = commercialOticProductsSeed.filter((product) => {
       const productSubclasses = product.commercialSubclasses || [product.commercialSubclass];
-      const matchesClass = !commercialClass || product.commercialClass === commercialClass;
+      const selectedClassSubclasses = commercialClass ? SUBCLASSES_BY_CLASS[commercialClass] || [] : [];
+      const matchesClass =
+        !commercialClass ||
+        product.commercialClass === commercialClass ||
+        productSubclasses.some((subclass) => selectedClassSubclasses.includes(subclass));
       const matchesSubclass =
         !commercialClass || commercialSubclass === 'all' || productSubclasses.includes(commercialSubclass);
       const matchesSpecies = species === 'all' || product.species.includes(species);
-      const matchesQuery =
-        !normalizedQuery ||
-        [
-          product.name,
-          product.manufacturer,
-          product.labelCompositionSummary,
-          product.clinicalUse,
-          product.activeComponents.join(' '),
-          productSubclasses.map((subclass) => SUBCLASS_LABELS[subclass]).join(' '),
-        ]
-          .join(' ')
-          .toLowerCase()
-          .includes(normalizedQuery);
+      const searchHaystack = [
+        product.name,
+        product.manufacturer,
+        CLASS_LABELS[product.commercialClass],
+        product.commercialClass,
+        product.labelCompositionSummary,
+        product.clinicalUse,
+        product.activeComponents.join(' '),
+        productSubclasses.join(' '),
+        productSubclasses.map((subclass) => SUBCLASS_LABELS[subclass]).join(' '),
+      ]
+        .join(' ')
+        .concat(' ortopedicos antiinflamatorios anti inflamatorios analgesicos ');
+      const normalizedSearchHaystack = normalizeSearchText(searchHaystack);
 
+      const matchesQuery = !normalizedQuery || normalizedSearchHaystack.includes(normalizedQuery);
       return matchesClass && matchesSubclass && matchesSpecies && matchesQuery;
     });
 
