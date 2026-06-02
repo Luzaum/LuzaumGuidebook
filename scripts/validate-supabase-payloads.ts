@@ -266,7 +266,7 @@ async function validateSupabasePayloads(): Promise<ValidationResult> {
         .map((dir) => path.join(process.cwd(), dir))
         .filter((dir) => fs.existsSync(dir));
     const fileLists = await Promise.all(
-        roots.map((cwd) => glob('**/*.{ts,tsx,js,jsx}', { cwd, absolute: true }))
+        roots.map((cwd) => glob('**/*.{ts,tsx,js,jsx}', { cwd, absolute: true, ignore: ['**/node_modules/**'] }))
     );
     const files = fileLists.flat();
 
