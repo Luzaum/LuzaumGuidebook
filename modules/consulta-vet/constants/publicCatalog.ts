@@ -4,6 +4,7 @@
  * Ao adicionar/remover slugs públicos, atualizar também `data/publicCatalogCardStubs.ts` (cartões de lista sem carregar seed completo).
  */
 export const CONSULTA_VET_PUBLIC_DISEASE_SLUGS = [
+  'doencas-trato-urinario-inferior-felino-dtuif',
   'fistula-perianal-furunculose-anal',
   'hiperadrenocorticismo-sindrome-cushing',
   'leishmaniose-visceral-canina',
@@ -14,6 +15,8 @@ export const CONSULTA_VET_PUBLIC_DISEASE_SLUGS = [
   'hipertensao-arterial-sistemica-caes-gatos',
   'doenca-valvar-mitral-degenerativa-caes',
   'hipoadrenocorticismo-addison',
+  'diabetes-mellitus-canina',
+  'diabetes-mellitus-felina',
   'hipertireoidismo-felino',
   'hipotireoidismo-canino',
 ] as const;

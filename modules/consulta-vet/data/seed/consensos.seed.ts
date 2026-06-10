@@ -1,5 +1,28 @@
 ﻿export const consensosSeed: Array<Record<string, any>> = [
   {
+    id: 'con-icatcare-dtuif-felina-2025',
+    slug: 'icatcare-dtuif-felina-2025',
+    title: '2025 iCatCare consensus guidelines on the diagnosis and management of lower urinary tract diseases in cats',
+    shortTitle: 'DTUIF felina (iCatCare 2025)',
+    sourceOrganization: 'International Cat Care / iCatCare Veterinary Society',
+    year: 2025,
+    species: 'cat',
+    category: 'nefrologia-urologia',
+    tags: ['DTUIF', 'FIC', 'Obstrução uretral', 'Urolitíase', 'ITU', 'Manejo ambiental'],
+    pdfUrl: '/documents/consulta-vet/consensos/icatcare-dtuif-felina-2025.pdf',
+    pdfFileName: 'icatcare-dtuif-felina-2025.pdf',
+    storagePath: 'consulta-vet/consensos/icatcare-dtuif-felina-2025.pdf',
+    summary:
+      'Consenso iCatCare 2025 para abordagem de gatos com sinais do trato urinário inferior, com foco em diagnóstico por causa, cistite idiopática felina, urolitíase, ITU, obstrução uretral, manejo ambiental e comunicação com cuidadores.',
+    articleSummaryRichText:
+      '<p>O consenso iCatCare 2025 recomenda tratar sinais urinários baixos como ponto de partida, não como diagnóstico final. A abordagem central é separar rapidamente obstrução uretral de apresentações não obstrutivas e, em seguida, investigar FIC, urolitíase, ITU e causas menos comuns.</p><p>A ficha de DTUIF no app usa este documento como base editorial e identifica as figuras incorporadas como material do consenso.</p>',
+    adminNotesRichText:
+      '<p><strong>Alerta editorial:</strong> DTUIF/FLUTD não deve ser usado como diagnóstico definitivo. Macho com bexiga distendida e tentativas improdutivas de urinar deve ser conduzido como emergência por suspeita de obstrução uretral.</p>',
+    relatedDiseaseSlugs: ['doencas-trato-urinario-inferior-felino-dtuif'],
+    relatedMedicationSlugs: ['amoxicilina-clavulanato', 'sulfametoxazol-trimetoprima', 'pregabalina', 'maropitant'],
+    isDemonstrative: false,
+  },
+  {
     id: 'con-1',
     slug: 'leishmaniose-brasileiro-2020',
     title: 'Diretrizes Brasileiras para o Manejo da Leishmaniose Visceral Canina',

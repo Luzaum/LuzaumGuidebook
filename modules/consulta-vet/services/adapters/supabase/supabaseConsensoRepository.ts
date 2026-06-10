@@ -168,6 +168,7 @@ export class SupabaseConsensoRepository implements ConsensoRepository {
     options?: { includeDrafts?: boolean }
   ): Promise<ConsensusRecord[]> {
     try {
+      const localItems = await localConsensoRepository.list(filters, options);
       let query = supabase
         .from(TABLE)
         .select('*')
@@ -200,7 +201,11 @@ export class SupabaseConsensoRepository implements ConsensoRepository {
         throw new Error(`Falha ao carregar consensos: ${parseError(error)}`);
       }
 
-      return ((data ?? []) as ConsensusRow[]).map(mapRow);
+      const remoteItems = ((data ?? []) as ConsensusRow[]).map(mapRow);
+      const mergedBySlug = new Map<string, ConsensusRecord>();
+      localItems.forEach((item) => mergedBySlug.set(item.slug, item));
+      remoteItems.forEach((item) => mergedBySlug.set(item.slug, item));
+      return [...mergedBySlug.values()];
     } catch (error) {
       console.warn('[ConsultaVet] consensus fallback', error);
       return localConsensoRepository.list(filters);
@@ -225,7 +230,7 @@ export class SupabaseConsensoRepository implements ConsensoRepository {
         throw new Error(`Falha ao carregar consenso: ${parseError(error)}`);
       }
 
-      if (!data) return null;
+      if (!data) return localConsensoRepository.getBySlug(slug, options);
       return mapRow(data as ConsensusRow);
     } catch (error) {
       console.warn('[ConsultaVet] consensus fallback', error);

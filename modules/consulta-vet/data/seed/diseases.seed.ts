@@ -10,8 +10,12 @@ import { hiperadrenocorticismoCushingRecord } from './diseases.hiperadrenocortic
 import { hipoadrenocorticismoAddisonRecord } from './diseases.hipoadrenocorticismo.seed';
 import { hipertireoidismoFelinoRecord } from './diseases.hipertireoidismo.seed';
 import { hipotireoidismoCaninoRecord } from './diseases.hipotireoidismo.seed';
+import { dtuifFelinaRecord } from './diseases.dtuif-felina.seed';
+import { diabetesMellitusCaninaRecord } from './diseases.diabetes-mellitus-canina.seed';
+import { diabetesMellitusFelinaRecord } from './diseases.diabetes-mellitus-felina.seed';
 
 export const diseasesSeed: DiseaseRecord[] = [
+  dtuifFelinaRecord,
   {
     id: 'disease-fistula-perianal',
     slug: 'fistula-perianal-furunculose-anal',
@@ -303,6 +307,8 @@ export const diseasesSeed: DiseaseRecord[] = [
   hipertensaoArterialSistemicaRecord,
   doencaValvarMitralDegenerativaRecord,
   hipoadrenocorticismoAddisonRecord,
+  diabetesMellitusCaninaRecord,
+  diabetesMellitusFelinaRecord,
   hipertireoidismoFelinoRecord,
   hipotireoidismoCaninoRecord,
 ];

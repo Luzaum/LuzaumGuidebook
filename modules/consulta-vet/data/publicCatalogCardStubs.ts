@@ -59,6 +59,33 @@ function medicationListCard(
 
 export const PUBLIC_CATALOG_DISEASE_CARD_STUBS: DiseaseRecord[] = [
   diseaseListCard({
+    id: 'disease-dtuif-felina',
+    slug: 'doencas-trato-urinario-inferior-felino-dtuif',
+    title: 'Doenças do trato urinário inferior felino (DTUIF)',
+    synonyms: [
+      'DTUIF',
+      'FLUTD',
+      'LUTS felino',
+      'Doenças do trato urinário baixo em gatos',
+      'Cistite idiopática felina',
+      'Obstrução uretral felina',
+    ],
+    species: ['cat'],
+    category: 'nefrologia-urologia',
+    tags: [
+      'iCatCare 2025',
+      'FIC',
+      'Obstrução uretral',
+      'Urolitíase',
+      'ITU',
+      'Periúria',
+      'Manejo ambiental',
+      'Hipercalemia',
+    ],
+    quickSummary:
+      'DTUIF é um guarda-chuva clínico para gatos com disúria, hematúria, periúria, polaciúria e/ou estrangúria. O consenso iCatCare 2025 recomenda abandonar a ideia de "FLUTD" como diagnóstico final: os sinais são parecidos, mas as causas mudam completamente a conduta. A ficha separa rapidamente gato obstruído de gato não obstruído, depois organiza os principais diferenciais: FIC, urolitíase, ITU, tampão uretral, neoplasia, trauma e alterações congênitas. FIC é comum, mas é diagnóstico de exclusão; ITU é incomum em gatos adultos saudáveis e não justifica antibiótico automático. Macho com bexiga grande, firme e dolorida é emergência até provar o contrário.',
+  }),
+  diseaseListCard({
     id: 'disease-fistula-perianal',
     slug: 'fistula-perianal-furunculose-anal',
     title: 'Fístula perianal / furunculose anal',
@@ -247,6 +274,46 @@ export const PUBLIC_CATALOG_DISEASE_CARD_STUBS: DiseaseRecord[] = [
     ],
     quickSummary:
       'O hipoadrenocorticismo (doença de Addison) é uma síndrome multissistêmica caracterizada pela produção deficiente de hormônios adrenocorticais (glicocorticoides e/ou mineralocorticoides). A forma primária (destruição autoimune de ~90% do córtex adrenal) é a mais comum em cães, afetando tanto o cortisol quanto a aldosterona. A deficiência de aldosterona leva a graves desvios eletrolíticos (hipercalemia, hiponatremia, hipocloratemia) com colapso circulatório, hipovolemia e bradicardia ameaçadora à vida (Crise Addisoniana). A deficiência de cortisol provoca distúrbios gastrointestinais intermitentes, hipoglicemia e incapacidade absoluta de responder ao estresse. O diagnóstico definitivo baseia-se na ausência de resposta no teste de estimulação com ACTH. O tratamento inicial da crise aguda é emergência médica e exige expansão rápida de volume com NaCl 0.9% e Dexametasona, enquanto a manutenção é realizada com DOCP e baixas doses diárias de Prednisona/Prednisolona.',
+  }),
+  diseaseListCard({
+    id: 'disease-diabetes-mellitus-canina',
+    slug: 'diabetes-mellitus-canina',
+    title: 'Diabetes Mellitus em Cães',
+    synonyms: ['Diabetes canina', 'DM canina', 'Diabetes mellitus canina', 'Canine diabetes mellitus'],
+    species: ['dog'],
+    category: 'endocrinologia',
+    tags: [
+      'Insulina',
+      'PU/PD',
+      'Hiperglicemia',
+      'Glicosuria',
+      'Catarata',
+      'Cetoacidose',
+      'Pancreatite',
+      'HAC',
+    ],
+    quickSummary:
+      'Diabetes mellitus canina é uma síndrome endócrino-metabólica causada por deficiência absoluta ou relativa de ação da insulina. A consequência é hiperglicemia persistente; quando a glicose ultrapassa o limiar renal, surge glicosúria com diurese osmótica, poliúria, polidipsia, desidratação e perda calórica urinária. O cão típico apresenta poliúria/polidipsia, polifagia, perda de peso, fraqueza e catarata bilateral de instalação rápida. Diferentemente do gato, a maioria dos cães apresenta perda funcional importante de células beta e precisa de insulinoterapia por toda a vida, exceto quando há diabetes secundária reversível reconhecida muito cedo.',
+  }),
+  diseaseListCard({
+    id: 'disease-diabetes-mellitus-felina',
+    slug: 'diabetes-mellitus-felina',
+    title: 'Diabetes Mellitus em Gatos',
+    synonyms: ['Diabetes felina', 'DM felina', 'Diabetes mellitus felina', 'Feline diabetes mellitus'],
+    species: ['cat'],
+    category: 'endocrinologia',
+    tags: [
+      'Insulina',
+      'Glargina',
+      'PZI',
+      'SGLT2i',
+      'Remissao',
+      'CGM',
+      'Hiperglicemia',
+      'Cetoacidose',
+    ],
+    quickSummary:
+      'Diabetes mellitus felina é uma síndrome endócrino-metabólica caracterizada por hiperglicemia sustentada causada por resistência à insulina, disfunção de células beta ou ambos. Em muitos gatos o fenótipo se aproxima do diabetes tipo 2 humano: obesidade, sedentarismo, pancreatopatia, hipersomatotropismo, hiperadrenocorticismo, doença renal, hipertireoidismo, infecção, dor e glicocorticoides podem aumentar resistência insulinica. Diferentemente do cão, remissão diabética é possível quando a toxicidade glicêmica e a resistência insulinica são revertidas cedo.',
   }),
   diseaseListCard({
     id: 'disease-hipertireoidismo-felino',
