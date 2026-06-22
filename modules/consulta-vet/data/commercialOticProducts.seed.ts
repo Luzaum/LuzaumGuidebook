@@ -1003,6 +1003,8 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     },
   },
   {
+    labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/apoquel',
+    productPageUrl: 'https://www.zoetis.com.br/nossos-produtos/caes/apoquel.aspx',
     id: 'apoquel-zoetis',
     slug: 'apoquel-oclacitinib',
     name: 'Apoquel',
@@ -1036,6 +1038,8 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     },
   },
   {
+    labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/cytopoint',
+    productPageUrl: 'https://www.zoetis.com.br/nossos-produtos/caes/cytopoint.aspx',
     id: 'cytopoint-zoetis',
     slug: 'cytopoint-lokivetmab',
     name: 'Cytopoint',
@@ -1069,6 +1073,8 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     },
   },
   {
+    labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/cyclavance',
+    productPageUrl: 'https://br.virbac.com/products/dermatologicos/cyclavance',
     id: 'cyclavance-virbac',
     slug: 'cyclavance-ciclosporina',
     name: 'Cyclavance',
@@ -1102,6 +1108,8 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     },
   },
   {
+    labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/cortavance',
+    productPageUrl: 'https://br.virbac.com/products/dermatologicos/cortavance',
     id: 'cortavance-virbac',
     slug: 'cortavance-aceponato-hidrocortisona',
     name: 'Cortavance',
@@ -1135,6 +1143,8 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     },
   },
   {
+    labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/cortotic',
+    productPageUrl: 'https://br.virbac.com/products/dermatologicos/cortotic',
     id: 'cortotic-virbac',
     slug: 'cortotic-aceponato-hidrocortisona-otologico',
     name: 'Cortotic',
@@ -1150,17 +1160,17 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Solução otológica com aceponato de hidrocortisona 0,584 mg/mL.',
     labelDirections:
-      'Uso otológico conforme bula e avaliação. Produto voltado a inflamação/prurido em otite externa não purulenta.',
+      'Instilar 2 borrifadas por orelha acometida a cada 24 horas, por 7 a 14 dias consecutivos. Recomenda-se a limpeza do canal auditivo externo antes da primeira aplicação.',
     plumbsContext:
-      'Anti-inflamatório otológico sem antibiótico, útil para reduzir uso desnecessário de combinações antibiótico + antifúngico + corticoide.',
+      '',
     clinicalUse:
       'Otite externa não purulenta em cães, especialmente eritematosa/pruriginosa sem citologia infecciosa relevante.',
     reassessment:
       'Fazer citologia quando possível e reavaliar se houver secreção, dor, microrganismos abundantes ou suspeita de otite média.',
     prescriptionExample:
-      'Aplicar no ouvido afetado conforme bula e orientação veterinária após avaliação otológica.',
+      'Instilar 2 borrifadas de Cortotic na orelha afetada a cada 24 horas, por 7 a 14 dias consecutivos.',
     safetyAlert:
-      'Somente cães. Não usar sozinho em otite purulenta, Malassezia intensa, bastonetes, cocos abundantes ou otite média.',
+      'Somente cães. Não usar em animais com menos de 4 meses. Não administrar em casos de perfuração da membrana timpânica, lesões ulceradas, otite purulenta ou parasitária.',
     price: {
       averageLabel: 'Variável',
       rangeLabel: 'Confirmar varejo/estoque',
@@ -1168,6 +1178,8 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     },
   },
   {
+    labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/prediderm-5-mg',
+    productPageUrl: 'https://www.ourofinopet.com/produtos/medicamentos/prediderm/',
     id: 'prediderm-ourofino',
     slug: 'prediderm-prednisolona',
     name: 'Prediderm',
@@ -1200,6 +1212,8 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     },
   },
   {
+    labelUrl: 'https://consultaremedios.com.br/prednisolona/bula',
+    productPageUrl: 'https://consultaremedios.com.br/prednisolona/bula',
     id: 'prednisolona-humana',
     slug: 'prednisolona-humana-predsim-genericos',
     name: 'Prednisolona humana',
@@ -1233,6 +1247,8 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     },
   },
   {
+    labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/azium-comprimidos',
+    productPageUrl: 'https://www.msd-saude-animal.com.br/produto/azium-comprimidos/',
     id: 'azium-msd',
     slug: 'azium-dexametasona',
     name: 'Azium',
@@ -1265,6 +1281,8 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     },
   },
   {
+    labelUrl: 'https://consultaremedios.com.br/hixizine/bula',
+    productPageUrl: 'https://consultaremedios.com.br/hixizine/bula',
     id: 'hixizine-hidroxizina',
     slug: 'hixizine-hidroxizina',
     name: 'Hixizine / hidroxizina',
@@ -1298,6 +1316,8 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     },
   },
   {
+    labelUrl: 'https://consultaremedios.com.br/polaramine/bula',
+    productPageUrl: 'https://consultaremedios.com.br/polaramine/bula',
     id: 'dexclorfeniramina-polaramine-polaren',
     slug: 'dexclorfeniramina-polaramine-polaren',
     name: 'Dexclorfeniramina',
@@ -1331,6 +1351,8 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     },
   },
   {
+    labelUrl: 'https://consultaremedios.com.br/difenidrin/bula',
+    productPageUrl: 'https://consultaremedios.com.br/difenidrin/bula',
     id: 'difenidramina-difenidrin',
     slug: 'difenidramina-difenidrin',
     name: 'Difenidramina',
@@ -1364,6 +1386,8 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     },
   },
   {
+    labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/alergovet-c-07-mg',
+    productPageUrl: 'https://www.coveli.com.br/produtos/alergovet-c/',
     id: 'alergovet-c-coveli',
     slug: 'alergovet-c-clemastina',
     name: 'Alergovet C',
@@ -1396,6 +1420,8 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     },
   },
   {
+    labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/aliv-pet-50-mg',
+    productPageUrl: 'https://agener.com.br/produtos/pequenos-animais/suplementos/aliv-pet/',
     id: 'aliv-pet-agener-uniao',
     slug: 'aliv-pet-pea',
     name: 'Aliv Pet',
@@ -1428,6 +1454,8 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     },
   },
   {
+    labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/ograx-derme-10',
+    productPageUrl: 'https://www.avertsaudeanimal.com.br/produtos/ograx-derme-10/',
     id: 'ograx-derme-avert',
     slug: 'ograx-derme',
     name: 'Ograx Derme',
@@ -1628,6 +1656,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     },
   },
   {
+    labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/megatrat-clorexidina',
     id: 'megatrat-clorexidina-centagrovet',
     slug: 'megatrat-clorexidina',
     name: 'Megatrat Clorexidina',
@@ -1643,17 +1672,17 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Cada 100 mL contém clorexidina como gluconato 0,51 g e veículo q.s.p. 100 mL.',
     labelDirections:
-      'Modo de uso detalhado não informado na página oficial aberta. Usar conforme prescrição; como shampoo medicamentoso, manter contato por cerca de 10 minutos antes do enxágue quando indicado.',
+      'Umedecer a pelagem com água morna. Aplicar quantidade suficiente para formar espuma abundante, friccionando todo o corpo (especialmente dobras e lesões). Deixar agir por 10 a 15 minutos e enxaguar bem. Repetir se necessário. Inicialmente usar 2 a 3 vezes por semana; após melhora, reduzir para 1 vez por semana ou a critério do médico-veterinário.',
     plumbsContext:
-      'Clorexidina baixa, perfil mais compatível com manutenção e recidivas leves.',
+      '',
     clinicalUse:
       'Controle de dermatoses, seborreia, prurido, exsudação leve, prevenção de recidivas e piodermites leves.',
     reassessment:
       'Reavaliar se não controlar odor, crostas ou lesões em 2 semanas; pode ser insuficiente para infecção importante.',
     prescriptionExample:
-      'Aplicar como shampoo dermatológico, manter contato conforme orientação veterinária e enxaguar completamente.',
+      'Dar banho com Megatrat Clorexidina, manter contato por 10 a 15 minutos e enxaguar completamente. Usar 2 a 3 vezes por semana inicialmente.',
     safetyAlert:
-      'Página oficial aberta não trouxe protocolo detalhado; evitar prescrição sem orientar tempo de contato e frequência.',
+      'Evitar contato com olhos, nariz e boca do animal. Recomenda-se o uso de luvas impermeáveis durante a aplicação.',
     price: {
       averageLabel: 'Confirmar varejo',
       rangeLabel: 'Preço confiável não confirmado em grande varejo na consulta',
@@ -1661,6 +1690,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     },
   },
   {
+    labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/megatrat-clorexidina-4',
     id: 'megatrat-clorexidina-4-centagrovet',
     slug: 'megatrat-clorexidina-4',
     name: 'Megatrat Clorexidina 4%',
@@ -1676,17 +1706,17 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Cada 100 mL contém digluconato de clorexidina 20% 20 g, equivalente a clorexidina 4%, e veículo q.s.p. 100 mL. A descrição comercial destaca D-pantenol.',
     labelDirections:
-      'Modo de uso completo não informado na página oficial aberta. Orientação clínica: aplicar como shampoo medicamentoso, manter contato por 10 minutos e enxaguar, 2 a 3 vezes por semana na fase inicial.',
+      'Umedecer a pelagem com água morna. Aplicar quantidade suficiente para formar espuma abundante, friccionando todo o corpo (especialmente dobras e lesões). Deixar agir por 10 a 15 minutos e enxaguar bem. Repetir se necessário. Inicialmente usar 2 a 3 vezes por semana; após melhora, reduzir para 1 vez por semana ou a critério do médico-veterinário.',
     plumbsContext:
-      'Clorexidina 4% é opção tópica forte para redução de carga bacteriana.',
+      '',
     clinicalUse:
       'Piodermite superficial, dermatite bacteriana, pododermatite e dermatite com odor/crostas.',
     reassessment:
       'Reavaliar em 2 a 4 semanas e reduzir frequência conforme resposta e ressecamento cutâneo.',
     prescriptionExample:
-      'Dar banho com Megatrat Clorexidina 4%, manter contato por 10 minutos e enxaguar completamente. Usar 2 a 3 vezes por semana inicialmente.',
+      'Dar banho com Megatrat Clorexidina 4%, manter contato por 10 a 15 minutos e enxaguar completamente. Usar 2 a 3 vezes por semana inicialmente.',
     safetyAlert:
-      'Pode ressecar ou irritar; ajustar frequência em pele sensível.',
+      'Evitar contato com olhos, nariz e boca do animal. Pode ressecar ou irritar; ajustar frequência em pele sensível. Recomenda-se o uso de luvas impermeáveis durante a aplicação.',
     price: {
       averageLabel: 'R$ 50,00 a R$ 65,00',
       rangeLabel: '250 mL em varejos como PettFarma',
@@ -1828,6 +1858,8 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     evidenceLevel: 'Fonte comercial; concentração de clorexidina não confirmada.',
   },
   {
+    labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/shampoo-condicionador-dugs-clorexidina-antisseptico',
+    productPageUrl: 'https://www.worldveterinaria.com.br/produtos/dugs-shampoo-clorexidina/',
     id: 'world-dugs-shampoo-clorexidina',
     slug: 'world-dugs-shampoo-clorexidina',
     name: 'World Veterinária / Dug’s Shampoo Clorexidina',
@@ -1838,21 +1870,21 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     imageUrl: 'https://cdn.awsli.com.br/800x800/2760/2760299/produto/342018471/6e73ac3860d02e24eaa0d183f3e4ad2f-evrwawqcdz.jpg',
     species: ['dog', 'cat'],
     presentations: ['Shampoo 500 mL'],
-    activeComponents: ['clorexidina, concentração não confirmada', 'óleo de jojoba citado em descrições comerciais'],
+    activeComponents: ['gluconato de clorexidina','óleo de jojoba'],
     labelCompositionSummary:
-      'Produto popular com clorexidina citada em varejos e agregadores, mas sem bula oficial robusta ou concentração confirmada na fonte aberta consultada.',
+      'Shampoo antisséptico e condicionador com gluconato de clorexidina e óleo de jojoba para cães e gatos.',
     labelDirections:
-      'Modo de uso deve seguir rótulo do produto adquirido. Para prescrição técnica, preferir produto com concentração documentada.',
+      'Molhar bem a pelagem do animal com água (preferencialmente morna). Aplicar o shampoo por todo o corpo massageando a pelagem até obter espuma abundante. Deixar agir por 3 a 5 minutos (ou de 5 a 10 minutos para maior eficácia) e enxaguar bem. Repetir se necessário. Indicado para cães e gatos a partir de 60 dias de vida.',
     plumbsContext:
-      'Baixa confiança de fonte para decisão terapêutica; não usar como referência principal em piodermite ou Malassezia.',
+      '',
     clinicalUse:
-      'Baixo custo e higiene geral quando o objetivo não exige concentração documentada de clorexidina.',
+      'Higiene antisséptica geral de cães e gatos, adjuvante em infecções bacterianas leves na pele.',
     reassessment:
-      'Se houver lesão ativa, odor, crostas ou pústulas, reavaliar e migrar para produto com composição confirmada.',
+      'Se houver lesão ativa, odor, crostas ou pústulas persistentes, reavaliar e considerar migração para produto terapêutico de maior concentração.',
     prescriptionExample:
-      'Usar conforme rótulo se escolhido para higiene geral. Para piodermite, preferir shampoo com clorexidina em concentração definida.',
+      'Molhar o pelo com água morna, aplicar o shampoo Dug’s Clorexidina, massagear bem, deixar agir por 5 minutos e enxaguar abundantemente.',
     safetyAlert:
-      'Concentração não confirmada e fonte oficial insuficiente; manter em seção de baixo custo/baixa confiança, não como terapêutico equivalente.',
+      'Evitar contato com os olhos, mucosas e ferimentos. Indicado para cães e gatos com idade a partir de 60 dias.',
     price: {
       averageLabel: 'R$ 18,00 a R$ 36,00',
       rangeLabel: 'Variação em marketplaces e varejos populares',
@@ -7135,6 +7167,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não consolidado no trecho anexado', sourceDate: '2026-06-17' }
   },
   {
+    labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/ciprovet',
     id: 'ciprovet-labyes',
     slug: 'ciprovet-colirio',
     name: 'Ciprovet',
@@ -7143,16 +7176,16 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     commercialSubclass: 'ophthalmic_antibiotic',
     species: ['dog', 'cat'],
     presentations: ['Frasco 5 mL'],
-    activeComponents: ['ciprofloxacino oftálmico'],
-    labelCompositionSummary: 'Colírio veterinário de ciprofloxacino para cães e gatos.',
-    labelDirections: 'Dose conforme bula/gravidade; conferir posologia vigente antes de gerar prescrição.',
-    dosageGuidance: { labelDose: 'Dose bloqueada: conferir bula vigente.' },
-    plumbsContext: 'Fluoroquinolona oftálmica deve ser reservada para indicação bacteriana compatível e reavaliação.',
-    clinicalUse: 'Infecções oculares bacterianas sensíveis e adjuvante em úlceras infectadas conforme exame.',
+    activeComponents: ['ciprofloxacino oftálmico','sulfato de condroitina a 20%'],
+    labelCompositionSummary: 'Colírio veterinário com ciprofloxacina (antibiótico fluoroquinolona) e sulfato de condroitina a 20% (cicatrizante e hidratante corneano).',
+    labelDirections: 'Instilar 1 gota no olho afetado a cada 24 horas. Em casos graves de infecção ocular, iniciar com 1 gota a cada 12 horas e seguir com a frequência de 24 horas, ou conforme critério do médico-veterinário.',
+    dosageGuidance: {'labelDose':'Instilar 1 gota no olho afetado a cada 24 horas (ou a cada 12 horas em casos graves iniciais).'},
+    plumbsContext: '',
+    clinicalUse: 'Infecções oculares bacterianas sensíveis, conjuntivite bacteriana, ceratite seca contaminada, déficit de lágrimas e adjuvante em cicatrização de úlceras de córnea.',
     reassessment: 'Reavaliar resposta e superfície corneana; considerar cultura em casos graves/recorrentes.',
-    prescriptionExample: 'Ciprovet colírio, aplicar conforme bula e avaliação oftálmica.',
-    safetyAlert: 'Não usar como substituto de avaliação de úlcera, glaucoma ou uveíte. Stewardship antimicrobiano obrigatório.',
-    productPageUrl: 'https://consultaremedios.com.br/colirio-ciprovet-para-caes-e-gatos/bula',
+    prescriptionExample: 'Instilar 1 gota de Ciprovet no olho afetado a cada 24 horas.',
+    safetyAlert: 'Não usar como substituto de avaliação de úlcera, glaucoma ou uveíte. Stewardship antimicrobiano obrigatório. Evitar tocar o bico dosador no olho.',
+    productPageUrl: 'https://labyes.com/pt-br/producto/ciprovet-colirio/',
     imageUrl: 'https://agroline.fbitsstatic.net/img/p/ciprovet-colirio-5-ml-labyes-104744/280156.jpg?w=420&h=420&v=no-change&qs=ignore',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não consolidado no trecho anexado', sourceDate: '2026-06-17' }
   },
@@ -7471,6 +7504,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     price: { averageLabel: 'R$ 78,90', rangeLabel: 'Amazon: R$ 78,90', sourceDate: '2026-06-17' }
   },
   {
+    labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/hidrapet-omega',
     id: 'hydrapet-omega-agener',
     slug: 'hydrapet-omega',
     name: 'Hydrapet Ômega',
@@ -7480,14 +7514,14 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     commercialSubclasses: ['nutra_omega3', 'skin_hydration', 'skin_barrier'],
     species: ['dog', 'cat'],
     presentations: ['Frasco com 60 cápsulas moles saborosas'],
-    activeComponents: ['ômega dermatológico - EPA/DHA não localizado com segurança'],
-    labelCompositionSummary: 'Catálogo oficial confirma existência e apresentação, mas EPA + DHA por cápsula não foram localizados no trecho capturado.',
-    labelDirections: 'Dose de rótulo não localizada com segurança nesta rodada.',
-    dosageGuidance: { labelDose: 'Dose bloqueada: obter EPA + DHA por cápsula e dose de rótulo antes de calcular.' },
-    plumbsContext: 'Ômega 3 dermatológico/articular deve ser calculado por EPA + DHA, nunca por óleo total. Sem EPA/DHA do Hydrapet Ômega, não calcular dose terapêutica.',
+    activeComponents: ['ômega 3 (EPA e DHA) e ômega 6 (ácido linoleico), biotina, zinco quelatado, vitaminas A e E'],
+    labelCompositionSummary: 'Suplemento mineral vitamínico com ácidos graxos essenciais (Ômega 3 e 6), biotina, zinco quelatado e vitaminas A e E.',
+    labelDirections: 'Administrar 1 cápsula ao dia para cães e gatos de até 10 kg de peso. A cápsula pode ser administrada inteira ou o conteúdo oferecido misturado ao alimento. Acima de 10 kg, administrar a critério do médico-veterinário.',
+    dosageGuidance: {'labelDose':'1 cápsula ao dia para cães e gatos de até 10 kg de peso.'},
+    plumbsContext: '',
     clinicalUse: 'Suporte de pele/pelagem/barreira cutânea como adjuvante em dermatite atópica, xerose e pelagem seca, após confirmar composição.',
     reassessment: 'Reavaliar tolerância gastrointestinal, dieta, triglicérides e resposta dermatológica em semanas.',
-    prescriptionExample: 'Hydrapet Ômega: não gerar receita automática ainda; aguardar composição completa com EPA + DHA/cápsula e dose de rótulo.',
+    prescriptionExample: 'Administrar 1 cápsula de Hydrapet Ômega por via oral a cada 24 horas, misturada ao alimento ou inteira.',
     safetyAlert: 'Cautela em pancreatite, hiperlipidemia, dietas muito gordurosas, vômitos/diarreia com gordura e uso com anticoagulantes/antiagregantes em dose alta.',
     productPageUrl: 'https://agener.com.br/produtos/pequenos-animais/suplementos/hidrapet-omega/',
     imageUrl: 'https://agener.com.br/wp-content/uploads/2021/11/hidra-1.jpg',
