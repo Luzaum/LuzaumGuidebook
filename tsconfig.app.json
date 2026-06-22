@@ -31,6 +31,7 @@
     "tmp",
     ".claude/worktrees",
     "modules/**/node_modules",
+    "modules/**/vite.config.ts",
     "src/modules/dados-veterinarios",
     "rx_print_page_tail.tsx",
     "scripts/**/*.py",

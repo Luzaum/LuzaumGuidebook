@@ -21,7 +21,7 @@ export function Hub() {
         .filter((m): m is Module => Boolean(m))
 
     return (
-        <AuroraBackground className="w-full relative min-h-screen !h-auto">
+        <AuroraBackground className="w-full relative min-h-screen !h-auto" variant="solid">
             <section className="py-10 sm:py-14 lg:py-16 relative">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 

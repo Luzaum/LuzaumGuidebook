@@ -10,7 +10,8 @@ export type ClinicalQuickGuideCategoryId =
   | 'cardiologia'
   | 'ortopedia'
   | 'nefro_urologia'
-  | 'nutrologia';
+  | 'nutrologia'
+  | 'procedimentos';
 
 export type ClinicalQuickGuideBlock =
   | { type: 'heading'; level: 2 | 3 | 4; text: string }

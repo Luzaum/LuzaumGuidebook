@@ -55,4 +55,10 @@ export const CLINICAL_QUICK_GUIDE_CATEGORIES: ClinicalQuickGuideCategoryMeta[] =
     shortLabel: 'Nutro',
     description: 'Nutrição e condição corporal.',
   },
+  {
+    id: 'procedimentos',
+    label: 'Procedimentos Ambulatoriais',
+    shortLabel: 'Procedimentos',
+    description: 'Procedimentos clínicos, punções e drenagens.',
+  },
 ];

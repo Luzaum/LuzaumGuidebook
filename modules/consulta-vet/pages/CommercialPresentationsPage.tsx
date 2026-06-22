@@ -57,9 +57,20 @@ const SUBCLASS_LABELS: Record<CommercialMedicationSubclass, string> = {
   otic_antifungal: 'Otológico antifúngico',
   otic_antibacterial: 'Otológico antibacteriano',
   otic_corticosteroid: 'Corticóide otológico',
+  ophthalmic_lubricant: 'Oftálmico lubrificante',
+  ophthalmic_immunomodulator: 'Oftálmico imunomodulador',
+  ophthalmic_antibiotic: 'Oftálmico antibiótico',
+  ophthalmic_epithelial: 'Oftálmico reparador/epitelizante',
+  ophthalmic_mydriatic: 'Oftálmico midriático/cicloplégico',
+  ophthalmic_glaucoma: 'Glaucoma / pressão intraocular',
+  ophthalmic_corticosteroid: 'Corticóide oftálmico',
+  ophthalmic_antibiotic_steroid: 'Oftálmico antibiótico + corticóide',
+  ophthalmic_nsaid: 'AINE oftálmico',
   skin_pruritus: 'Prurido de pele',
   skin_pyoderma: 'Piodermites',
   skin_atopy: 'Dermatite atópica',
+  skin_hydration: 'Hidratação cutânea',
+  skin_barrier: 'Barreira cutânea',
   skin_chlorhexidine_shampoo: 'Shampoo antisséptico com clorexidina',
   skin_antifungal_shampoo: 'Shampoo antifúngico/antisséptico',
   skin_wound_healing: 'Feridas e cicatrização',
@@ -131,6 +142,8 @@ const SUBCLASSES_BY_CLASS: Record<CommercialMedicationClass, CommercialMedicatio
     'skin_pruritus',
     'skin_pyoderma',
     'skin_atopy',
+    'skin_hydration',
+    'skin_barrier',
     'skin_chlorhexidine_shampoo',
     'skin_antifungal_shampoo',
     'skin_wound_healing',
@@ -163,7 +176,17 @@ const SUBCLASSES_BY_CLASS: Record<CommercialMedicationClass, CommercialMedicatio
   renal: ['renal_ckd_support', 'endocrine_erythropoiesis'],
   orthopedic: ['ortho_joint_support', 'ortho_antiinflammatory'],
   endocrine: ['endocrine_adrenal', 'endocrine_thyroid', 'endocrine_erythropoiesis', 'endocrine_diagnostic'],
-  ophthalmologic: [],
+  ophthalmologic: [
+    'ophthalmic_lubricant',
+    'ophthalmic_immunomodulator',
+    'ophthalmic_antibiotic',
+    'ophthalmic_epithelial',
+    'ophthalmic_mydriatic',
+    'ophthalmic_glaucoma',
+    'ophthalmic_corticosteroid',
+    'ophthalmic_antibiotic_steroid',
+    'ophthalmic_nsaid',
+  ],
   infectious: ['infectious_antibiotic'],
   analgesic: ['analgesic_opioid_combo', 'neuro_pain', 'sedative_anesthetic'],
   antiinflammatory: ['ortho_antiinflammatory'],
@@ -262,36 +285,34 @@ function DoseEntryList({ entries }: { entries: CommercialMedicationDoseEntry[] }
   );
 }
 
+const PRACTICAL_DOSE_PATTERN =
+  /(\d|gota|gotas|mg\/kg|mcg\/kg|ug\/kg|µg\/kg|ml\/kg|mL\/kg|UI\/kg|U\/kg|\/kg|q\d|q\s*\d|sid|bid|tid|qid|cada|horas|aplicar|administrar|pipeta|comprimido|comprimidos|capsula|capsulas|cápsula|cápsulas|spray|jato|cm|ml|mL|mg|mcg|µg|UI|%)/i;
+
+const NON_PRACTICAL_DOSE_PATTERN =
+  /(diretriz|uso cl[ií]nico|conforme protocolo|crit[eé]rio|indica[cç][aã]o cl[ií]nica|dose bloqueada|bloquear receita|conferir bula|ajustar por diagn[oó]stico)/i;
+
+function hasPracticalDoseText(dose: string | undefined): dose is string {
+  return Boolean(dose && PRACTICAL_DOSE_PATTERN.test(dose) && !NON_PRACTICAL_DOSE_PATTERN.test(dose));
+}
+
+function hasPracticalDose(entry: CommercialMedicationDoseEntry) {
+  return hasPracticalDoseText(entry.dose);
+}
+
 function DosageGuidance({ product }: { product: CommercialMedicationProduct }) {
-  const hasDogDose = product.species.includes('dog');
-  const hasCatDose = product.species.includes('cat');
+  const dogEntries = (product.dosageGuidance?.plumbs?.dog || []).filter(hasPracticalDose);
+  const catEntries = (product.dosageGuidance?.plumbs?.cat || []).filter(hasPracticalDose);
+  const hasDogDose = dogEntries.length > 0;
+  const hasCatDose = catEntries.length > 0;
   const dosageGridClass =
     hasDogDose && hasCatDose
       ? 'grid lg:grid-cols-[minmax(260px,0.82fr)_minmax(0,1fr)_minmax(0,1fr)]'
       : 'grid lg:grid-cols-[minmax(260px,0.82fr)_minmax(0,1fr)]';
 
-  // If we have explicit dosageGuidance, use it. Otherwise, construct virtual fallback entries dynamically.
-  const dogEntries = product.dosageGuidance?.plumbs?.dog || (
-    hasDogDose ? [
-      {
-        title: 'Diretriz / Uso clínico',
-        dose: product.plumbsContext || 'Consultar posologia específica de bula.',
-        note: product.clinicalUse || undefined
-      }
-    ] : []
-  );
-
-  const catEntries = product.dosageGuidance?.plumbs?.cat || (
-    hasCatDose ? [
-      {
-        title: 'Diretriz / Uso clínico',
-        dose: product.plumbsContext || 'Consultar posologia específica de bula.',
-        note: product.clinicalUse || undefined
-      }
-    ] : []
-  );
-
   const notes = product.dosageGuidance?.notes || [];
+  const labelDose = hasPracticalDoseText(product.dosageGuidance?.labelDose)
+    ? product.dosageGuidance?.labelDose
+    : 'Posologia de bula não cadastrada para este produto.';
 
   return (
     <>
@@ -316,7 +337,7 @@ function DosageGuidance({ product }: { product: CommercialMedicationProduct }) {
           <div className="border-b border-cyan-500/15 p-4 lg:border-b-0 lg:border-r">
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">Uso por bula / rótulo</p>
             <p className="mt-2 text-base font-bold leading-7 text-foreground">
-              {product.dosageGuidance?.labelDose || product.labelDirections}
+              {labelDose}
             </p>
           </div>
 
