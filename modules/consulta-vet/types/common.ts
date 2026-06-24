@@ -51,6 +51,8 @@ export interface EditorialClinicalFigure {
   src: string;
   alt: string;
   caption?: string;
+  /** Ajuste editorial da visualizacao: diagramas/citologia podem precisar de mais area que fotos clinicas simples. */
+  display?: 'compact' | 'default' | 'wide' | 'full';
 }
 
 export type EditorialSectionValue =

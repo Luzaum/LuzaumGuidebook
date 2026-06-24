@@ -286,33 +286,66 @@ function DoseEntryList({ entries }: { entries: CommercialMedicationDoseEntry[] }
 }
 
 const PRACTICAL_DOSE_PATTERN =
-  /(\d|gota|gotas|mg\/kg|mcg\/kg|ug\/kg|µg\/kg|ml\/kg|mL\/kg|UI\/kg|U\/kg|\/kg|q\d|q\s*\d|sid|bid|tid|qid|cada|horas|aplicar|administrar|pipeta|comprimido|comprimidos|capsula|capsulas|cápsula|cápsulas|spray|jato|cm|ml|mL|mg|mcg|µg|UI|%)/i;
+  /(\d+(?:[,.]\d+)?\s*(?:a|-)?\s*\d*(?:[,.]\d+)?\s*(?:mg|mcg|ug|µg|ml|mL|UI|U|%)\s*(?:\/\s*(?:kg|5 kg|10 kg|20 kg|40 kg))?|\d+(?:[,.]\d+)?\s*(?:cm|min|minuto|minutos|h|hora|horas|dia|dias|semana|semanas)\b|\d+\s*(?:a|-)\s*\d+\s*(?:x|vez|vezes)\s*(?:\/|por)?\s*(?:dia|semana)|\d+\s*(?:x|vez|vezes)\s*(?:\/|por)?\s*(?:dia|semana)|\b(?:q\s*\d+\s*h?|q\d+h?|sid|bid|tid|qid)\b|\b(?:a\s+)?cada\s+\d+|\d+\s*(?:gota|gotas|pipeta|pipetas|comprimido|comprimidos|comp|capsula|capsulas|cápsula|cápsulas|spray|jato|jatos|coleira)\b|(?:preencher|instilar)\s+(?:o\s+)?conduto|quantidade\s+suficiente|fina\s+camada|todas\s+as\s+refeições|número\s+de\s+borrifadas|diariamente|semanal(?:mente)?|mensal(?:mente)?)/i;
 
-const NON_PRACTICAL_DOSE_PATTERN =
-  /(diretriz|uso cl[ií]nico|conforme protocolo|crit[eé]rio|indica[cç][aã]o cl[ií]nica|dose bloqueada|bloquear receita|conferir bula|ajustar por diagn[oó]stico)/i;
+const BLOCKED_DOSE_PATTERN =
+  /(dose bloqueada|bloquear receita|conferir bula|pendente de bula|posologia de bula n[aã]o cadastrada|sem dose padr[aã]o|sem dose espec[ií]fica)/i;
 
 function hasPracticalDoseText(dose: string | undefined): dose is string {
-  return Boolean(dose && PRACTICAL_DOSE_PATTERN.test(dose) && !NON_PRACTICAL_DOSE_PATTERN.test(dose));
+  if (!dose || BLOCKED_DOSE_PATTERN.test(dose)) return false;
+
+  return PRACTICAL_DOSE_PATTERN.test(dose);
 }
 
 function hasPracticalDose(entry: CommercialMedicationDoseEntry) {
   return hasPracticalDoseText(entry.dose);
 }
 
+function SourceTextBlock({
+  label,
+  children,
+  tone = 'default',
+}: {
+  label: string;
+  children: React.ReactNode;
+  tone?: 'default' | 'strong';
+}) {
+  return (
+    <div className={`rounded-lg border p-3 ${tone === 'strong' ? 'border-cyan-500/25 bg-cyan-500/[0.08]' : 'border-border/70 bg-background/70'}`}>
+      <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">{label}</p>
+      <div className={`mt-1 leading-6 ${tone === 'strong' ? 'text-base font-extrabold text-foreground' : 'text-sm text-foreground/86'}`}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function getPrimaryDoseSources(product: CommercialMedicationProduct) {
+  const sources: Array<{ label: string; text: string }> = [];
+  const labelDose = product.dosageGuidance?.labelDose;
+
+  if (hasPracticalDoseText(labelDose)) {
+    sources.push({ label: 'Bula / rótulo', text: labelDose });
+  } else if (hasPracticalDoseText(product.labelDirections)) {
+    sources.push({ label: 'Modo de uso da bula', text: product.labelDirections });
+  } else if (hasPracticalDoseText(product.prescriptionExample)) {
+    sources.push({ label: 'Receita prática cadastrada', text: product.prescriptionExample });
+  }
+
+  return sources;
+}
+
 function DosageGuidance({ product }: { product: CommercialMedicationProduct }) {
   const dogEntries = (product.dosageGuidance?.plumbs?.dog || []).filter(hasPracticalDose);
   const catEntries = (product.dosageGuidance?.plumbs?.cat || []).filter(hasPracticalDose);
-  const hasDogDose = dogEntries.length > 0;
-  const hasCatDose = catEntries.length > 0;
-  const dosageGridClass =
-    hasDogDose && hasCatDose
-      ? 'grid lg:grid-cols-[minmax(260px,0.82fr)_minmax(0,1fr)_minmax(0,1fr)]'
-      : 'grid lg:grid-cols-[minmax(260px,0.82fr)_minmax(0,1fr)]';
-
+  const primaryDoseSources = getPrimaryDoseSources(product);
+  const speciesDoseGroups = [
+    product.species.includes('dog') ? { species: 'dog' as VetSpecies, label: 'Cão', icon: Dog, entries: dogEntries } : null,
+    product.species.includes('cat') ? { species: 'cat' as VetSpecies, label: 'Gato', icon: Cat, entries: catEntries } : null,
+  ].filter(Boolean) as Array<{ species: VetSpecies; label: string; icon: typeof Dog; entries: CommercialMedicationDoseEntry[] }>;
   const notes = product.dosageGuidance?.notes || [];
-  const labelDose = hasPracticalDoseText(product.dosageGuidance?.labelDose)
-    ? product.dosageGuidance?.labelDose
-    : 'Posologia de bula não cadastrada para este produto.';
+  const hasPracticalDirections = hasPracticalDoseText(product.labelDirections);
+  const hasPracticalPrescription = hasPracticalDoseText(product.prescriptionExample);
 
   return (
     <>
@@ -330,68 +363,81 @@ function DosageGuidance({ product }: { product: CommercialMedicationProduct }) {
       <section className="mt-5 overflow-hidden rounded-xl border border-cyan-500/25 bg-cyan-500/[0.06]">
         <div className="border-b border-cyan-500/20 bg-cyan-500/[0.08] px-4 py-3">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-900 dark:text-cyan-100">
-            Dosagem em destaque
+            Dose e uso rápido
           </p>
         </div>
-        <div className={dosageGridClass}>
-          <div className="border-b border-cyan-500/15 p-4 lg:border-b-0 lg:border-r">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">Uso por bula / rótulo</p>
-            <p className="mt-2 text-base font-bold leading-7 text-foreground">
-              {labelDose}
-            </p>
+
+        <div className="grid gap-4 p-4 xl:grid-cols-[minmax(280px,0.95fr)_minmax(0,1.35fr)]">
+          <div className="space-y-3">
+            {primaryDoseSources.length ? (
+              primaryDoseSources.map((source) => (
+                <SourceTextBlock key={`${source.label}-${source.text}`} label={source.label} tone="strong">
+                  {source.text}
+                </SourceTextBlock>
+              ))
+            ) : (
+              <SourceTextBlock label="Bula / rótulo" tone="strong">
+                Posologia de bula não cadastrada para este produto.
+              </SourceTextBlock>
+            )}
+
+            {notes.length ? (
+              <SourceTextBlock label="Notas de dose">
+                <ul className="space-y-1">
+                  {notes.map((note) => (
+                    <li key={note}>{note}</li>
+                  ))}
+                </ul>
+              </SourceTextBlock>
+            ) : null}
           </div>
 
-          {hasDogDose ? (
-          <div className={`border-b border-cyan-500/15 p-4 lg:border-b-0 ${hasCatDose ? 'lg:border-r' : ''}`}>
-            <div className="flex items-center gap-2">
-              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-sky-500/30 bg-sky-500/15 text-sky-800 dark:text-sky-100">
-                <Dog className="h-5 w-5" />
-              </span>
-              <div>
-                <p className="text-sm font-extrabold text-foreground">Cão</p>
-                <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">Leitura Plumb&apos;s</p>
+          <div className={`grid gap-3 ${speciesDoseGroups.length > 1 ? 'lg:grid-cols-2' : ''}`}>
+            {speciesDoseGroups.map(({ species, label, icon: SpeciesIcon, entries }) => (
+              <div key={species} className="rounded-lg border border-border/70 bg-background/70 p-3">
+                <div className="flex items-center gap-2">
+                  <span
+                    className={`flex h-9 w-9 items-center justify-center rounded-full border ${
+                      species === 'dog'
+                        ? 'border-sky-500/30 bg-sky-500/15 text-sky-800 dark:text-sky-100'
+                        : 'border-violet-500/30 bg-violet-500/15 text-violet-800 dark:text-violet-100'
+                    }`}
+                  >
+                    <SpeciesIcon className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <p className="text-sm font-extrabold text-foreground">{label}</p>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">Plumb&apos;s / leitura clínica</p>
+                  </div>
+                </div>
+                {entries.length > 0 ? (
+                  <DoseEntryList entries={entries} />
+                ) : (
+                  <p className="mt-3 rounded-lg border border-dashed border-border/80 bg-background/60 p-3 text-sm leading-6 text-muted-foreground">
+                    Dose Plumb&apos;s prática não cadastrada para {label.toLowerCase()}.
+                  </p>
+                )}
               </div>
-            </div>
-            {dogEntries.length > 0 ? (
-              <DoseEntryList entries={dogEntries} />
-            ) : (
-              <p className="mt-3 rounded-lg border border-dashed border-border/80 bg-background/60 p-3 text-sm leading-6 text-muted-foreground">
-                Sem dose específica para cão nesta leitura.
-              </p>
-            )}
+            ))}
           </div>
-          ) : null}
-
-          {hasCatDose ? (
-          <div className="p-4">
-            <div className="flex items-center gap-2">
-              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-violet-500/30 bg-violet-500/15 text-violet-800 dark:text-violet-100">
-                <Cat className="h-5 w-5" />
-              </span>
-              <div>
-                <p className="text-sm font-extrabold text-foreground">Gato</p>
-                <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">Leitura Plumb&apos;s</p>
-              </div>
-            </div>
-            {catEntries.length > 0 ? (
-              <DoseEntryList entries={catEntries} />
-            ) : (
-              <p className="mt-3 rounded-lg border border-dashed border-border/80 bg-background/60 p-3 text-sm leading-6 text-muted-foreground">
-                Sem dose específica para gato nesta leitura.
-              </p>
-            )}
-          </div>
-          ) : null}
         </div>
-        {notes.length ? (
-          <div className="border-t border-cyan-500/20 px-4 py-3">
-            <ul className="space-y-1 text-xs leading-5 text-muted-foreground">
-              {notes.map((note) => (
-                <li key={note}>{note}</li>
-              ))}
-            </ul>
+
+        <div className="grid gap-4 border-t border-cyan-500/20 p-4 lg:grid-cols-2">
+          <SourceTextBlock label={hasPracticalDirections ? 'Modo de uso / bula' : 'Modo de uso'}>
+            {product.labelDirections}
+          </SourceTextBlock>
+          <SourceTextBlock label={hasPracticalPrescription ? 'Receita pronta' : 'Receita / orientação'}>
+            {product.prescriptionExample}
+          </SourceTextBlock>
+          <div className="lg:col-span-2">
+            <SourceTextBlock label="Leitura clínica e uso">
+              <div className="grid gap-3 lg:grid-cols-2">
+                <p>{product.plumbsContext}</p>
+                <p>{product.clinicalUse}</p>
+              </div>
+            </SourceTextBlock>
           </div>
-        ) : null}
+        </div>
       </section>
     </>
   );
@@ -537,16 +583,12 @@ function ProductCard({
 
       <details className="mt-4 rounded-xl border border-border bg-background/65">
         <summary className="cursor-pointer list-none px-4 py-3 text-sm font-semibold text-foreground marker:hidden">
-          Ver leitura clínica, Plumb&apos;s e receita
+          Ver composição, reavaliação e evidência
         </summary>
         <div className="grid gap-5 border-t border-border px-4 py-4 lg:grid-cols-2">
           <FieldBlock label="Composição">{product.labelCompositionSummary}</FieldBlock>
-          <FieldBlock label="Leitura Plumb's">{product.plumbsContext}</FieldBlock>
-          <FieldBlock label="Indicação prática">{product.clinicalUse}</FieldBlock>
           <FieldBlock label="Reavaliar">{product.reassessment}</FieldBlock>
-          <div className="lg:col-span-2">
-            <FieldBlock label="Como escrever na receita">{product.prescriptionExample}</FieldBlock>
-          </div>
+          {product.evidenceLevel ? <FieldBlock label="Evidência / ressalva">{product.evidenceLevel}</FieldBlock> : null}
         </div>
       </details>
     </article>

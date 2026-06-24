@@ -28,9 +28,9 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, activePage, on
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen font-sans text-slate-900 transition-colors duration-200 dark:bg-slate-950 dark:text-slate-100">
-      <aside className="fixed hidden h-full w-60 flex-col border-r border-transparent bg-slate-900 text-slate-300 dark:border-slate-800 md:flex">
-        <div className="border-b border-slate-800 px-5 py-6">
+    <div className="flex min-h-dvh font-sans text-slate-900 transition-colors duration-200 dark:bg-slate-950 dark:text-slate-100">
+      <aside className="fixed hidden h-dvh w-60 flex-col border-r border-transparent bg-slate-900 text-slate-300 dark:border-slate-800 md:flex">
+        <div className="border-b border-slate-800 px-4 py-4">
           <div className="flex flex-col items-center text-center">
             <button 
               onClick={() => onNavigate('calculator')}
@@ -40,14 +40,14 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, activePage, on
               <img
                 src="/apps/CRIVET.png"
                 alt="Logo do CRI VET"
-                className="h-56 w-56 rounded-full object-contain drop-shadow-[0_0_40px_rgba(56,189,248,0.5)] transition-all duration-300 group-hover:drop-shadow-[0_0_60px_rgba(56,189,248,0.95)]"
+                className="h-20 w-20 rounded-full object-contain drop-shadow-[0_0_28px_rgba(56,189,248,0.45)] transition-all duration-300 group-hover:drop-shadow-[0_0_44px_rgba(56,189,248,0.85)]"
               />
             </button>
-            <h1 className="mt-4 text-lg font-bold tracking-tight text-white">CRI VET</h1>
+            <h1 className="mt-3 text-lg font-bold tracking-tight text-white">CRI VET</h1>
           </div>
         </div>
 
-        <nav className="flex-1 space-y-1 overflow-y-auto px-3 py-5">
+        <nav className="flex-1 space-y-1 overflow-y-auto px-3 py-4">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = activePage === item.id;
@@ -74,39 +74,63 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, activePage, on
         </div>
       </aside>
 
-      <div className="fixed left-0 right-0 top-0 z-50 grid h-20 grid-cols-[56px_1fr_56px] items-center bg-slate-900 px-2 text-white shadow-md md:hidden">
+      <div className="fixed left-0 right-0 top-0 z-50 grid h-14 grid-cols-[52px_1fr_52px] items-center bg-slate-900 px-2 text-white shadow-md md:hidden">
         <button
           type="button"
           onClick={() => setIsMobileMenuOpen((value) => !value)}
-          className="flex h-11 w-11 items-center justify-center rounded-2xl text-slate-200 transition-colors hover:bg-slate-800"
+          className="flex h-11 w-11 items-center justify-center rounded-xl text-slate-200 transition-colors hover:bg-slate-800"
           aria-label={isMobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
         >
-          {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
 
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex items-center justify-center gap-2">
           <button 
             onClick={() => {
               onNavigate('calculator');
               setIsMobileMenuOpen(false);
             }} 
-            className="group mt-4 transition-transform duration-300 hover:scale-110"
+            className="group transition-transform duration-300 hover:scale-105"
           >
             <img
               src="/apps/CRIVET.png"
               alt="Logo do CRI VET"
-              className="h-40 w-40 rounded-full object-contain drop-shadow-[0_0_24px_rgba(56,189,248,0.4)] transition-all duration-300 group-hover:drop-shadow-[0_0_40px_rgba(56,189,248,0.9)]"
+              className="h-9 w-9 rounded-full object-contain drop-shadow-[0_0_18px_rgba(56,189,248,0.45)] transition-all duration-300 group-hover:drop-shadow-[0_0_28px_rgba(56,189,248,0.9)]"
             />
           </button>
-          <span className="mt-1 flex-1 text-sm font-bold tracking-tight text-white">CRI VET</span>
+          <span className="text-sm font-bold tracking-tight text-white">CRI VET</span>
         </div>
 
         <div />
       </div>
 
+      <nav className="fixed left-0 right-0 top-14 z-40 flex gap-2 overflow-x-auto border-b border-slate-200 bg-white/95 px-3 py-2 shadow-sm backdrop-blur scrollbar-hide dark:border-slate-800 dark:bg-slate-950/95 md:hidden">
+        {navItems.map((item) => {
+          const Icon = item.icon;
+          const isActive = activePage === item.id;
+
+          return (
+            <button
+              key={item.id}
+              type="button"
+              onClick={() => onNavigate(item.id)}
+              className={cn(
+                'flex min-h-10 shrink-0 items-center gap-2 rounded-xl border px-3 text-xs font-bold transition-all',
+                isActive
+                  ? 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-500/30 dark:bg-emerald-500/15 dark:text-emerald-300'
+                  : 'border-slate-200 bg-slate-50 text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300',
+              )}
+            >
+              <Icon className="h-4 w-4" />
+              <span className="whitespace-nowrap">{item.label}</span>
+            </button>
+          );
+        })}
+      </nav>
+
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 flex flex-col bg-slate-900/95 pt-20 md:hidden">
-          <nav className="flex-1 space-y-2 p-4">
+        <div className="fixed inset-0 z-40 flex flex-col bg-slate-900/95 pt-16 md:hidden">
+          <nav className="flex-1 space-y-2 overflow-y-auto p-4">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = activePage === item.id;
@@ -120,7 +144,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, activePage, on
                     setIsMobileMenuOpen(false);
                   }}
                   className={cn(
-                    'flex w-full items-center gap-4 rounded-xl px-4 py-4 text-base font-medium transition-all',
+                    'flex min-h-12 w-full items-center gap-4 rounded-xl px-4 py-3 text-base font-medium transition-all',
                     isActive
                       ? 'bg-emerald-500/20 text-emerald-400'
                       : 'text-slate-300 hover:bg-slate-800 hover:text-white',
@@ -135,8 +159,8 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, activePage, on
         </div>
       )}
 
-      <main className="flex min-h-screen min-w-0 flex-1 flex-col bg-slate-50 pt-20 dark:bg-slate-950 md:ml-60 md:pt-0">
-        <div className="min-w-0 flex-1 w-full p-4 md:p-6 xl:p-7">{children}</div>
+      <main className="flex min-h-dvh min-w-0 flex-1 flex-col bg-slate-50 pt-[7.25rem] dark:bg-slate-950 md:ml-60 md:pt-0">
+        <div className="min-w-0 flex-1 w-full px-3 py-3 pb-8 sm:px-4 md:p-6 xl:p-7">{children}</div>
       </main>
     </div>
   );

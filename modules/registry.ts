@@ -77,6 +77,15 @@ export const modules: Module[] = [
     iconImage: '/apps/dor.png',
   },
   {
+    id: 'escalas-dor-mobile',
+    title: 'Escalas de Dor MOBILE',
+    description: 'Interface App Native (clone focado em dispositivos móveis)',
+    route: '/dor-mobile',
+    status: 'internal',
+    icon: Cat,
+    iconImage: '/apps/dor.png',
+  },
+  {
     id: 'emergências-veterinarias',
     title: 'Emergências Veterinárias',
     description: 'Protocolos de emergência e primeiros socorros',

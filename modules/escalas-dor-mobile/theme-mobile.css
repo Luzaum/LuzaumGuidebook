@@ -1,0 +1,85 @@
+.dorvet-mobile-shell {
+  --dv-bg: #f4fffd;
+  --dv-bg-2: #e6fbf8;
+  --dv-surface: rgba(255, 255, 255, 1);
+  --dv-surface-strong: rgba(255, 255, 255, 1);
+  --dv-text: #0f172a;
+  --dv-text-muted: #334155;
+  --dv-border: rgba(15, 23, 42, 0.08);
+  --dv-primary: #14b8a6;
+  --dv-primary-2: #0d9488;
+  --dv-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+  color: var(--dv-text);
+  background: var(--dv-bg);
+  /* padding-bottom for the safe area of notch devices */
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.dorvet-mobile-shell.dark {
+  --dv-bg: #0b1220;
+  --dv-bg-2: #0f1b2e;
+  --dv-surface: #0f172a;
+  --dv-surface-strong: #0f172a;
+  --dv-text: #e6fffb;
+  --dv-text-muted: #cbd5e1;
+  --dv-border: rgba(148, 163, 184, 0.15);
+  --dv-primary: #2dd4bf;
+  --dv-primary-2: #14b8a6;
+  --dv-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Base resets inside the module */
+.dorvet-mobile-shell .bg-white {
+  background-color: var(--dv-surface) !important;
+}
+
+.dorvet-mobile-shell .bg-slate-50,
+.dorvet-mobile-shell .bg-slate-100 {
+  background-color: var(--dv-bg-2) !important;
+}
+
+.dorvet-mobile-shell .text-slate-900,
+.dorvet-mobile-shell .text-slate-800,
+.dorvet-mobile-shell .text-slate-700 {
+  color: var(--dv-text) !important;
+}
+
+.dorvet-mobile-shell .text-slate-600,
+.dorvet-mobile-shell .text-slate-500 {
+  color: var(--dv-text-muted) !important;
+}
+
+.dorvet-mobile-shell .border-slate-300,
+.dorvet-mobile-shell .border-slate-200 {
+  border-color: var(--dv-border) !important;
+}
+
+.dorvet-mobile-shell .bg-teal-600 {
+  background-color: var(--dv-primary) !important;
+}
+
+.dorvet-mobile-shell .text-teal-700,
+.dorvet-mobile-shell .text-teal-800,
+.dorvet-mobile-shell .text-teal-900 {
+  color: var(--dv-primary-2) !important;
+}
+
+/* Animations */
+.dorvet-screen-frame {
+  animation: dorvetScreenIn 200ms ease-out both;
+}
+
+@keyframes dorvetScreenIn {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}

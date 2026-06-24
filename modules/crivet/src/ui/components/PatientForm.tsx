@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Patient, Species, PhysiologicalState, Comorbidity } from '../../shared/types/patient';
 import { cn } from '../lib/utils';
-import { Activity, Heart, Droplets, ActivitySquare, ChevronDown, ChevronUp, AlertCircle } from 'lucide-react';
-import { SpeciesPortraitCards } from '../../../../../components/SpeciesPortraitCards';
+import { Activity, ChevronDown, ChevronUp, AlertCircle, Cat, Dog } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface PatientFormProps {
@@ -42,38 +41,65 @@ export const PatientForm: React.FC<PatientFormProps> = ({ patient, onChange }) =
   ];
 
   return (
-    <div className="space-y-5 bg-white dark:bg-slate-900 p-5 md:p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 transition-colors duration-200">
-      <div className="flex items-center gap-3 mb-5">
-        <div className="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-500/20">
+    <div className="space-y-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-colors duration-200 dark:border-slate-800 dark:bg-slate-900 md:p-6">
+      <div className="mb-3 flex items-center gap-3 md:mb-5">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-indigo-100 bg-indigo-50 text-indigo-600 dark:border-indigo-500/20 dark:bg-indigo-500/10 dark:text-indigo-400 md:h-10 md:w-10">
           <Activity className="w-5 h-5" />
         </div>
-        <div>
+        <div className="min-w-0">
           <h2 className="text-lg font-bold text-slate-800 dark:text-white tracking-tight">1. Dados do Paciente</h2>
           <p className="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">Informações base para cálculo e segurança</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
         {/* Species */}
-        <div className="space-y-3 md:col-span-3">
+        <div className="space-y-2 md:col-span-3 md:space-y-3">
           <label className="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1">
             Espécie <span className="text-red-500">*</span>
           </label>
-          <SpeciesPortraitCards
-            variant="indigo"
-            size="compact"
-            showHeading={false}
-            canineSelected={patient.species === 'dog'}
-            felineSelected={patient.species === 'cat'}
-            onSelectCanine={() => updateField('species', 'dog')}
-            onSelectFeline={() => updateField('species', 'cat')}
-            canineSubtitle="Cálculos e limites para cães"
-            felineSubtitle="Cálculos e limites para gatos"
-          />
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { id: 'dog' as Species, label: 'Cao', subtitle: 'Canino', icon: Dog },
+              { id: 'cat' as Species, label: 'Gato', subtitle: 'Felino', icon: Cat },
+            ].map((option) => {
+              const Icon = option.icon;
+              const isActive = patient.species === option.id;
+
+              return (
+                <button
+                  key={option.id}
+                  type="button"
+                  onClick={() => updateField('species', option.id)}
+                  className={cn(
+                    'flex min-h-28 flex-col items-center justify-center rounded-2xl border-2 p-3 text-center transition-all',
+                    isActive
+                      ? 'border-indigo-500 bg-indigo-50 text-indigo-800 shadow-sm dark:border-indigo-400/70 dark:bg-indigo-500/15 dark:text-indigo-100'
+                      : 'border-slate-200 bg-white text-slate-600 hover:border-indigo-200 hover:bg-indigo-50/40 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:border-indigo-500/40',
+                  )}
+                >
+                  <span
+                    className={cn(
+                      'mb-2 flex h-12 w-12 items-center justify-center rounded-full border',
+                      isActive
+                        ? 'border-indigo-200 bg-white text-indigo-600 dark:border-indigo-400/30 dark:bg-slate-900 dark:text-indigo-300'
+                        : 'border-slate-200 bg-slate-50 text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400',
+                    )}
+                  >
+                    <Icon className="h-6 w-6" />
+                  </span>
+                  <span className="text-sm font-black">{option.label}</span>
+                  <span className="mt-1 text-[10px] font-bold uppercase tracking-[0.16em] opacity-70">
+                    {option.subtitle}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Weight */}
-        <div className="space-y-3">
+        <div className="space-y-2 md:space-y-3">
           <label className="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1">
             Peso <span className="text-red-500">*</span>
           </label>
@@ -88,7 +114,7 @@ export const PatientForm: React.FC<PatientFormProps> = ({ patient, onChange }) =
                 updateField('weight', val === '' ? 0 : parseFloat(val));
               }}
               className={cn(
-                "w-full py-2.5 pl-3 pr-10 rounded-xl border-2 focus:outline-none focus:ring-4 transition-all text-lg font-bold",
+                "w-full rounded-xl border-2 py-3 pl-3 pr-10 text-lg font-bold transition-all focus:outline-none focus:ring-4",
                 patient.weight <= 0 
                   ? "border-red-300 dark:border-red-500/50 focus:border-red-500 focus:ring-red-500/10 bg-red-50 dark:bg-red-500/10 text-slate-800 dark:text-white" 
                   : "border-slate-200 dark:border-slate-700 focus:border-indigo-500 focus:ring-indigo-500/10 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-white"
@@ -103,9 +129,9 @@ export const PatientForm: React.FC<PatientFormProps> = ({ patient, onChange }) =
         </div>
 
         {/* State */}
-        <div className="space-y-3">
+        <div className="space-y-2 md:space-y-3">
           <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Fase de Vida (Opcional)</label>
-          <div className="flex flex-col gap-2">
+          <div className="grid grid-cols-2 gap-2 md:flex md:flex-col">
             {(['neonate', 'pediatric', 'adult', 'senior'] as PhysiologicalState[]).map((state) => {
               const labels: Record<PhysiologicalState, string> = {
                 neonate: 'Neonato',
@@ -118,7 +144,7 @@ export const PatientForm: React.FC<PatientFormProps> = ({ patient, onChange }) =
                   key={state}
                   onClick={() => updateField('state', state)}
                   className={cn(
-                    "py-2 px-3 rounded-xl border-2 text-xs transition-all font-medium text-left",
+                    "min-h-11 rounded-xl border-2 px-3 py-2 text-left text-xs font-bold transition-all",
                     patient.state === state
                       ? "bg-slate-800 dark:bg-slate-700 border-slate-800 dark:border-slate-600 text-white shadow-sm"
                       : "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800/80"
@@ -133,10 +159,10 @@ export const PatientForm: React.FC<PatientFormProps> = ({ patient, onChange }) =
       </div>
 
       {/* Advanced Clinical Data */}
-      <div className="pt-6 border-t border-slate-100 dark:border-slate-800/50">
+      <div className="border-t border-slate-100 pt-4 dark:border-slate-800/50 md:pt-6">
         <button 
           onClick={() => setShowAdvanced(!showAdvanced)}
-          className="flex items-center gap-2 text-sm font-bold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors w-full"
+          className="flex min-h-11 w-full items-center gap-2 text-left text-sm font-bold text-indigo-600 transition-colors hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300"
         >
           <div className="w-8 h-8 rounded-full bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center">
             {showAdvanced ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -163,7 +189,7 @@ export const PatientForm: React.FC<PatientFormProps> = ({ patient, onChange }) =
                   <p className="leading-relaxed font-medium">Selecione as condições clínicas do paciente. Isso ativará alertas de segurança específicos para os fármacos escolhidos.</p>
                 </div>
                 
-                <div className="flex flex-wrap gap-2.5">
+                <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-2.5">
                   {comorbidityOptions.map((c) => {
                     const isActive = patient.comorbidities.includes(c.id);
                     return (
@@ -171,7 +197,7 @@ export const PatientForm: React.FC<PatientFormProps> = ({ patient, onChange }) =
                         key={c.id}
                         onClick={() => toggleComorbidity(c.id)}
                         className={cn(
-                          "py-2 px-4 rounded-xl border-2 text-xs transition-all font-bold",
+                          "min-h-11 rounded-xl border-2 px-3 py-2 text-xs font-bold transition-all",
                           isActive
                             ? "bg-rose-50 dark:bg-rose-500/10 border-rose-200 dark:border-rose-500/30 text-rose-700 dark:text-rose-400 shadow-sm"
                             : "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800/80"

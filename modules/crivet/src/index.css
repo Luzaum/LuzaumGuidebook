@@ -8,7 +8,63 @@
 }
 
 html {
-  zoom: 0.75;
+  min-width: 320px;
+  background: #f8fafc;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+html.dark {
+  background: #020617;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+input,
+select,
+textarea {
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  input,
+  select,
+  textarea {
+    font-size: inherit;
+  }
+}
+
+@media (max-width: 767px) {
+  * {
+    min-width: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  p,
+  button,
+  span,
+  label {
+    overflow-wrap: anywhere;
+  }
 }
 
 @layer utilities {

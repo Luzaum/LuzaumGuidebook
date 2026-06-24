@@ -83,20 +83,20 @@ export const ResultsDisplay: React.FC<ResultsProps> = ({ input, result, safety }
   const hasWarnings = safety.alerts.length > 0 || safety.warnings.length > 0;
 
   return (
-    <div className="grid gap-5 xl:grid-cols-[minmax(0,1.16fr)_minmax(360px,0.84fr)] 2xl:grid-cols-[minmax(0,1.22fr)_minmax(380px,0.78fr)]">
-      <div className="space-y-5">
+    <div className="grid gap-4 xl:grid-cols-[minmax(0,1.16fr)_minmax(360px,0.84fr)] xl:gap-5 2xl:grid-cols-[minmax(0,1.22fr)_minmax(380px,0.78fr)]">
+      <div className="space-y-4 xl:space-y-5">
         {!result.isImpossible && (
           <motion.div
             initial={{ opacity: 0, scale: 0.985 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="relative overflow-hidden rounded-[28px] border border-slate-800 bg-slate-900 p-5 text-white shadow-xl md:p-6"
+            className="relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 p-4 text-white shadow-xl md:p-6"
           >
             <div className="pointer-events-none absolute -right-16 -top-16 opacity-[0.04]">
               <FlaskConical className="h-64 w-64 rotate-12" />
             </div>
 
             <div className="relative z-10">
-              <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+              <div className="mb-4 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                 <div className="flex items-center gap-3">
                   <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-emerald-500/30 bg-emerald-500/15 text-emerald-300">
                     <CheckCircle2 className="h-5 w-5" />
@@ -109,23 +109,23 @@ export const ResultsDisplay: React.FC<ResultsProps> = ({ input, result, safety }
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-2.5">
+                <div className="grid grid-cols-1 gap-2 sm:flex sm:flex-wrap sm:gap-2.5">
                   <button
                     onClick={handleCopySummary}
-                    className="flex min-h-10 items-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm font-semibold text-emerald-100 transition-all hover:bg-emerald-500/20"
+                    className="flex min-h-11 items-center justify-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm font-semibold text-emerald-100 transition-all hover:bg-emerald-500/20"
                   >
                     <Copy className="h-4 w-4" /> Copiar Resumo
                   </button>
                   <button
                     onClick={handleCopyCalculations}
-                    className="flex min-h-10 items-center gap-2 rounded-xl border border-slate-700 bg-slate-800 px-4 py-2 text-sm font-semibold text-white transition-all hover:border-slate-600 hover:bg-slate-700"
+                    className="flex min-h-11 items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-800 px-4 py-2 text-sm font-semibold text-white transition-all hover:border-slate-600 hover:bg-slate-700"
                   >
                     <Calculator className="h-4 w-4" /> Copiar Memória
                   </button>
                   <button
                     onClick={initiateSave}
                     className={cn(
-                      'flex min-h-10 items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-all',
+                      'flex min-h-11 items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-all',
                       isSaved ? 'bg-amber-500 text-amber-950' : 'bg-slate-800 text-white hover:bg-slate-700 border border-slate-700',
                     )}
                   >
@@ -178,19 +178,19 @@ export const ResultsDisplay: React.FC<ResultsProps> = ({ input, result, safety }
               <div className="rounded-2xl border border-slate-700/60 bg-slate-800/40 p-4 backdrop-blur-md md:p-5">
                 {result.practicalSummary ? (
                   result.practicalSummary.map((line, idx) => (
-                    <p key={idx} className="text-base font-semibold leading-relaxed text-slate-100 md:text-lg mb-1">{line}</p>
+                    <p key={idx} className="mb-1 text-sm font-semibold leading-relaxed text-slate-100 md:text-lg">{line}</p>
                   ))
                 ) : (
-                  <p className="text-base font-semibold leading-relaxed text-slate-100 md:text-lg">{result.instructions}</p>
+                  <p className="text-sm font-semibold leading-relaxed text-slate-100 md:text-lg">{result.instructions}</p>
                 )}
               </div>
 
-              <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+              <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-2 xl:grid-cols-4">
                 <div className="rounded-2xl border border-slate-700/50 bg-slate-800/35 p-4">
                   <p className="mb-1.5 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.24em] text-slate-400">
                     <FlaskConical className="h-3.5 w-3.5 text-emerald-400/80" /> Vol. farmaco
                   </p>
-                  <div className="flex items-baseline gap-1">
+                  <div className="flex min-w-0 flex-wrap items-baseline gap-1">
                     {result.nonApplicableFields?.includes('drugVolume') ? (
                       <span className="text-lg font-bold tracking-tight text-slate-500">Não se aplica</span>
                     ) : (
@@ -206,7 +206,7 @@ export const ResultsDisplay: React.FC<ResultsProps> = ({ input, result, safety }
                   <p className="mb-1.5 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.24em] text-slate-400">
                     <Droplets className="h-3.5 w-3.5 text-blue-400/80" /> Vol. diluente
                   </p>
-                  <div className="flex items-baseline gap-1">
+                  <div className="flex min-w-0 flex-wrap items-baseline gap-1">
                     {result.nonApplicableFields?.includes('diluent') ? (
                       <span className="text-lg font-bold tracking-tight text-slate-500">Sem diluição</span>
                     ) : (
@@ -222,7 +222,7 @@ export const ResultsDisplay: React.FC<ResultsProps> = ({ input, result, safety }
                   <p className="mb-1.5 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.24em] text-slate-400">
                     <Activity className="h-3.5 w-3.5 text-amber-400/80" /> Conc. final
                   </p>
-                  <div className="flex items-baseline gap-1">
+                  <div className="flex min-w-0 flex-wrap items-baseline gap-1">
                     <span className="text-2xl font-bold tracking-tight text-amber-400">{result.finalConcentration.toFixed(2)}</span>
                     <span className="text-xs text-slate-500">{result.finalConcentrationUnit}</span>
                   </div>
@@ -232,7 +232,7 @@ export const ResultsDisplay: React.FC<ResultsProps> = ({ input, result, safety }
                   <p className="mb-1.5 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.24em] text-slate-400">
                     <Gauge className="h-3.5 w-3.5 text-white/80" /> Taxa bomba
                   </p>
-                  <div className="flex items-baseline gap-1">
+                  <div className="flex min-w-0 flex-wrap items-baseline gap-1">
                     {result.nonApplicableFields?.includes('infusionRate') ? (
                       <span className="text-lg font-bold tracking-tight text-slate-500">Não se aplica</span>
                     ) : (
@@ -281,7 +281,7 @@ export const ResultsDisplay: React.FC<ResultsProps> = ({ input, result, safety }
         )}
 
         {!result.isImpossible && result.steps.length > 0 && (
-          <div className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm transition-colors duration-200 dark:border-slate-800 dark:bg-slate-900 md:p-6">
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-colors duration-200 dark:border-slate-800 dark:bg-slate-900 md:p-6">
             <div className="mb-5 flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-indigo-100 bg-indigo-50 text-indigo-600 dark:border-indigo-500/20 dark:bg-indigo-500/10 dark:text-indigo-400">
                 <Calculator className="h-5 w-5" />
@@ -356,12 +356,12 @@ export const ResultsDisplay: React.FC<ResultsProps> = ({ input, result, safety }
         )}
       </div>
 
-      <div className="space-y-5">
+      <div className="space-y-4 xl:space-y-5">
 
 
         <AnimatePresence>
           {(safety.alerts.length > 0 || safety.warnings.length > 0 || result.isImpossible) && (
-            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-4 rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900 md:p-6">
+            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900 md:p-6">
               <div className="flex items-center gap-3 border-b border-slate-100 pb-4 dark:border-slate-800">
                 <ShieldAlert className="h-5 w-5 text-amber-500" />
                 <h3 className="text-lg font-bold tracking-tight text-slate-800 dark:text-white">Avisos e Segurança</h3>
@@ -435,7 +435,7 @@ export const ResultsDisplay: React.FC<ResultsProps> = ({ input, result, safety }
         </AnimatePresence>
 
         {result.clinicalPearls && result.clinicalPearls.length > 0 && (
-          <div className="rounded-[28px] border border-amber-200 bg-amber-50/50 p-5 shadow-sm dark:border-amber-500/20 dark:bg-amber-500/5 md:p-6">
+          <div className="rounded-2xl border border-amber-200 bg-amber-50/50 p-4 shadow-sm dark:border-amber-500/20 dark:bg-amber-500/5 md:p-6">
             <div className="mb-4 flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400">
                 <Star className="h-5 w-5 fill-current" />

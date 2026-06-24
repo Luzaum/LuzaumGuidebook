@@ -1162,7 +1162,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     labelDirections:
       'Instilar 2 borrifadas por orelha acometida a cada 24 horas, por 7 a 14 dias consecutivos. Recomenda-se a limpeza do canal auditivo externo antes da primeira aplicação.',
     plumbsContext:
-      '',
+      'Corticosteroide otológico tópico para inflamação/prurido de otite externa não purulenta; não substitui citologia quando há secreção, dor ou suspeita infecciosa.',
     clinicalUse:
       'Otite externa não purulenta em cães, especialmente eritematosa/pruriginosa sem citologia infecciosa relevante.',
     reassessment:
@@ -1455,7 +1455,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
   },
   {
     labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/ograx-derme-10',
-    productPageUrl: 'https://www.avertsaudeanimal.com.br/produtos/ograx-derme-10/',
+    productPageUrl: 'https://avertsaudeanimal.com.br/linhas/omegas/ograx-derme-10',
     id: 'ograx-derme-avert',
     slug: 'ograx-derme',
     name: 'Ograx Derme',
@@ -1597,7 +1597,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     commercialSubclasses: ['skin_chlorhexidine_shampoo', 'skin_pyoderma'],
     productPageUrl: 'https://br.virbac.com/products/dermatologicos/hexadene-spherulites',
     imageUrl:
-      'https://br.virbac.com/files/live/sites/virbac-br/files/predefined-files/products/News%20Packshoots/Hexadene%20500mL%20BR-22B.png',
+      'https://br.virbac.com/files/live/sites/virbac-br/files/predefined-files/products/News%20Packshoots/4408-R0+4995-R4_ROTULO%20HEXADENE%20250+500ml-packshot_WEB_600X600_left.png',
     species: ['dog', 'cat'],
     presentations: ['Shampoo 500 mL, conforme disponibilidade'],
     activeComponents: ['clorexidina como gluconato 3%', 'sistema Spherulites'],
@@ -1674,7 +1674,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     labelDirections:
       'Umedecer a pelagem com água morna. Aplicar quantidade suficiente para formar espuma abundante, friccionando todo o corpo (especialmente dobras e lesões). Deixar agir por 10 a 15 minutos e enxaguar bem. Repetir se necessário. Inicialmente usar 2 a 3 vezes por semana; após melhora, reduzir para 1 vez por semana ou a critério do médico-veterinário.',
     plumbsContext:
-      '',
+      'Clorexidina em baixa concentração para banho antisséptico de manutenção/adjuvante; efeito depende de contato adequado e enxágue completo.',
     clinicalUse:
       'Controle de dermatoses, seborreia, prurido, exsudação leve, prevenção de recidivas e piodermites leves.',
     reassessment:
@@ -1708,7 +1708,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     labelDirections:
       'Umedecer a pelagem com água morna. Aplicar quantidade suficiente para formar espuma abundante, friccionando todo o corpo (especialmente dobras e lesões). Deixar agir por 10 a 15 minutos e enxaguar bem. Repetir se necessário. Inicialmente usar 2 a 3 vezes por semana; após melhora, reduzir para 1 vez por semana ou a critério do médico-veterinário.',
     plumbsContext:
-      '',
+      'Clorexidina 4% é concentração terapêutica para controle tópico de bactérias/leveduras em piodermites superficiais e dermatites com sobrecrescimento microbiano.',
     clinicalUse:
       'Piodermite superficial, dermatite bacteriana, pododermatite e dermatite com odor/crostas.',
     reassessment:
@@ -1876,7 +1876,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     labelDirections:
       'Molhar bem a pelagem do animal com água (preferencialmente morna). Aplicar o shampoo por todo o corpo massageando a pelagem até obter espuma abundante. Deixar agir por 3 a 5 minutos (ou de 5 a 10 minutos para maior eficácia) e enxaguar bem. Repetir se necessário. Indicado para cães e gatos a partir de 60 dias de vida.',
     plumbsContext:
-      '',
+      'Shampoo antisséptico com clorexidina descrito em fonte comercial; usar como adjuvante e confirmar concentração quando a intenção for tratar piodermite.',
     clinicalUse:
       'Higiene antisséptica geral de cães e gatos, adjuvante em infecções bacterianas leves na pele.',
     reassessment:
@@ -2960,7 +2960,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     commercialSubclasses: ['parasite_dewormer_dog', 'parasite_dewormer_cat'],
     productPageUrl: 'https://www.ceva.com.br/solucoes-e-inovacoes/animais-de-companhia/nossos-produtos-para-animais-de-companhia',
     labelUrl: 'https://www.ceva.com.br/content/download/2818/file/Bula%20-%20Canex%20Original.pdf?version=1',
-    imageUrl: 'https://www.bartofil.com.br/media/catalog/product/1/1/115499_a.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=800&width=800&canvas=800:800',
+    imageUrl: 'https://www.ceva.com.br/var/site/storage/images/_aliases/large/5/1/5/4/44515-1-por-BR/e5cc68db56b6-CANEX-ORIGINAL.webp',
     species: ['dog', 'cat'],
     presentations: ['Comprimidos'],
     activeComponents: ['pamoato de pirantel'],
@@ -3373,7 +3373,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     commercialClass: 'nutraceutical',
     commercialSubclass: 'nutra_omega3',
     productPageUrl: 'https://avertsaudeanimal.com.br/linhas/omegas/ograx-baby',
-    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/babyox.png',
+    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/ograx-baby-mudanca.png',
     species: ['dog', 'cat'],
     presentations: ['Frasco 30 mL com seringa dosadora'],
     activeComponents: ['DHA 200 mg/mL', 'EPA 46 mg/mL', 'EPA + DHA 246 mg/mL', 'vitamina E 14,8 UI/mL'],
@@ -3482,7 +3482,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     commercialClass: 'nutraceutical',
     commercialSubclass: 'nutra_omega3',
     productPageUrl: 'https://avertsaudeanimal.com.br/linhas/omegas/ograx-cell-5',
-    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/ograx-cell-5-30cpl-packshot-500px.png',
+    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/ograx-cell-5.jpg',
     species: ['dog', 'cat'],
     presentations: ['Cápsulas'],
     activeComponents: ['EPA 45 mg/cápsula', 'DHA 150 mg/cápsula', 'EPA + DHA 195 mg/cápsula'],
@@ -3508,7 +3508,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     commercialClass: 'nutraceutical',
     commercialSubclass: 'nutra_omega3',
     productPageUrl: 'https://avertsaudeanimal.com.br/linhas/omegas/ograx-cell-15',
-    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/ograx-cell-15-30cpl-packshot-500px.png',
+    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/ograx-cell-15.jpg',
     species: ['dog', 'cat'],
     presentations: ['Cápsulas'],
     activeComponents: ['EPA 135 mg/cápsula', 'DHA 450 mg/cápsula', 'EPA + DHA 585 mg/cápsula'],
@@ -3534,7 +3534,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     commercialClass: 'nutraceutical',
     commercialSubclass: 'nutra_omega3',
     productPageUrl: 'https://avertsaudeanimal.com.br/linhas/omegas/ograx-senior-5',
-    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/ograx-senior-5-30cpl-packshot-500px.png',
+    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/senior-senior-5.jpg',
     species: ['dog', 'cat'],
     presentations: ['Cápsulas sênior'],
     activeComponents: ['DHA 130 mg/cápsula', 'EPA 39 mg/cápsula', 'EPA + DHA 169 mg/cápsula', 'vitamina E 120 UI', 'selênio 30 mcg'],
@@ -3560,7 +3560,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     commercialClass: 'nutraceutical',
     commercialSubclass: 'nutra_omega3',
     productPageUrl: 'https://avertsaudeanimal.com.br/linhas/omegas/ograx-senior-10',
-    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/ograx-senior-10-30cpl-packshot-500px.png',
+    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/seniox-senior-10.jpg',
     species: ['dog', 'cat'],
     presentations: ['Cápsulas sênior'],
     activeComponents: ['DHA 260 mg/cápsula', 'EPA 78 mg/cápsula', 'EPA + DHA 338 mg/cápsula', 'vitamina E 240 UI', 'selênio 60 mcg'],
@@ -4762,9 +4762,6 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
           { title: 'ICC por DCM/DMVM', dose: '0,5 mg/kg/dia VO dividido a cada 12 h', note: 'Arredondar para a apresentação mais próxima.' },
           { title: 'DMVM estágio B2', dose: '0,4 a 0,6 mg/kg/dia VO dividido a cada 12 h', note: 'Faixa usada em estudos como EPIC.' },
         ],
-        cat: [
-          { title: 'Uso extra-bula seletivo', dose: 'Sem dose padrão única', note: 'Considerar apenas em casos selecionados, geralmente com furosemida e/ou IECA quando indicado.' },
-        ],
       },
     },
     plumbsContext: CARDIOLOGY_CONTEXT,
@@ -4828,10 +4825,6 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
           { title: 'Dose inicial', dose: '0,1 a 0,3 mg/kg VO SID', note: 'Útil especialmente quando a resposta à furosemida é insuficiente.' },
           { title: 'Troca da furosemida', dose: '5% a 10% da dose diária total de furosemida', note: 'Torasemida é cerca de 10 a 20 vezes mais potente.' },
         ],
-        cat: [
-          { title: 'Dose inicial', dose: '0,1 a 0,3 mg/kg VO SID', note: 'Usar com seleção criteriosa e monitoramento renal/eletrolítico.' },
-          { title: 'Troca da furosemida', dose: '5% a 10% da dose diária total de furosemida', note: 'Reduzir e titular pela resposta clínica.' },
-        ],
       },
     },
     plumbsContext: CARDIOLOGY_CONTEXT,
@@ -4894,10 +4887,6 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     dosageGuidance: {
       labelDose: 'Semintra 4 mg/mL: dose conforme indicação registrada/local; medir com seringa dosadora e agitar antes do uso.',
       plumbs: {
-        dog: [
-          { title: 'Proteinúria por DRC', dose: '1 mg/kg VO SID', note: 'Pode titular até 3 mg/kg SID em proteinúria persistente.' },
-          { title: 'Hipertensão sistêmica', dose: '1 mg/kg VO SID', note: 'Monitorar pressão e função renal.' },
-        ],
         cat: [
           { title: 'Hipertensão sistêmica', dose: '1,5 mg/kg VO BID por 14 dias; depois 2 mg/kg VO SID', note: 'Reduzir em 0,5 mg/kg se houver hipotensão.' },
           { title: 'Proteinúria por DRC', dose: '1 mg/kg VO SID', note: 'Pode administrar direto na boca ou sobre pequena quantidade de alimento.' },
@@ -5910,7 +5899,6 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     dosageGuidance: {
       labelDose: 'Gatos: 2 mg/kg (0,1 mL/kg) VO SID.',
       plumbs: {
-        dog: [],
         cat: [
           { title: 'Estímulo de apetite / DRC', dose: '2 mg/kg (0,1 mL/kg) VO SID', note: 'Administrar com seringa dosadora; preferencialmente com o estômago vazio para melhor absorção (30 min antes da refeição).' }
         ]
@@ -6231,12 +6219,12 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     productPageUrl: 'https://my.elanco.com/us/atopica-dog',
     imageUrl: 'https://assets.elanco.com/0cec44ed-3eaa-0009-2029-666567e7e4de/20ecde4d-45f4-4421-ae7b-0252212cb737/AtopicaDogPackaging.png',
     labelCompositionSummary: 'Ciclosporina veterinária; apresentação brasileira deve ser confirmada antes de regra automática.',
-    labelDirections: 'Usar bula/protocolo por espécie e indicação. Não copiar dose entre cão e gato sem confirmar apresentação.',
-    dosageGuidance: { labelDose: 'Dose pendente de bula brasileira; usar protocolo individualizado.', plumbs: { dog: [{ title: 'Dermatite atópica', dose: 'Confirmar bula/protocolo de ciclosporina', note: 'Efeito pleno demora semanas.' }], cat: [{ title: 'Uso selecionado', dose: 'Confirmar bula/protocolo felino', note: 'A apresentação felina varia por mercado.' }] } },
+    labelDirections: 'Plumb\'s/Atopica: cães com dermatite atópica 5 mg/kg VO SID por 30 dias e depois reduzir para dias alternados/2x semana; gatos com dermatite alérgica 7 mg/kg VO SID.',
+    dosageGuidance: { labelDose: 'Cães: 5 mg/kg VO SID por 30 dias; depois reduzir frequência. Gatos: 7 mg/kg VO SID para dermatite alérgica.', plumbs: { dog: [{ title: 'Dermatite atópica', dose: '5 mg/kg VO SID por 30 dias', note: 'Depois reduzir para dias alternados ou 2x/semana na menor frequência eficaz.' }], cat: [{ title: 'Dermatite alérgica felina', dose: '7 mg/kg VO SID', note: 'Após controle, tentar reduzir para dias alternados ou 2x/semana; testar FeLV/FIV e evitar carne crua/caça.' }] } },
     plumbsContext: 'Ciclosporina é inibidor de calcineurina imunomodulador/imunossupressor; há interações relevantes com azóis e outros fármacos.',
     clinicalUse: 'Dermatite atópica canina e doença alérgica/inflamatória selecionada conforme espécie/apresentação.',
     reassessment: 'Reavaliar prurido, infecções secundárias, vômitos/diarreia, hiperplasia gengival e necessidade de associação terapêutica.',
-    prescriptionExample: 'Atopica [apresentação], administrar conforme bula/protocolo e peso, pelo período prescrito.',
+    prescriptionExample: 'Atopica [apresentação], administrar por via oral na dose calculada: cães 5 mg/kg SID; gatos 7 mg/kg SID, com reavaliação para reduzir frequência.',
     safetyAlert: 'Cautela com neoplasia, infecção sistêmica, demodicose, vacinas vivas, azóis e hepatopatia.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Fonte brasileira/foto não consolidada', sourceDate: '2026-06-07', notes: 'Sem imagem direta confiável encontrada.' }
   },
@@ -6275,12 +6263,12 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Vetoryl 5 mg', 'Vetoryl 10 mg', 'Vetoryl 30 mg', 'Vetoryl 60 mg'],
     activeComponents: ['trilostano'],
     labelCompositionSummary: 'Trilostano em cápsulas para hiperadrenocorticismo canino.',
-    labelDirections: 'Dose inicial e ajustes devem seguir protocolo endocrinológico, sinais clínicos, cortisol/ACTH e eletrólitos.',
-    dosageGuidance: { labelDose: 'Cães: iniciar/ajustar por protocolo endocrinológico.', plumbs: { dog: [{ title: 'Hiperadrenocorticismo', dose: 'Dose individualizada por peso, ACTH/cortisol e resposta', note: 'Monitoramento obrigatório.' }] } },
+    labelDirections: 'Plumb\'s: cães, iniciar baixo em 0,5-1 mg/kg VO q12h ou cerca de 2 mg/kg VO SID com alimento; ajustar por sinais clínicos e teste ACTH/cortisol.',
+    dosageGuidance: { labelDose: 'Cães: 0,5-1 mg/kg VO q12h ou ~2 mg/kg VO SID com alimento; ajustar por ACTH/cortisol e sinais.', plumbs: { dog: [{ title: 'Hiperadrenocorticismo', dose: '0,5-1 mg/kg VO q12h', note: 'Esquema BID de dose menor pode reduzir eventos adversos; monitoramento obrigatório.' }, { title: 'Alternativa SID', dose: '~2 mg/kg VO SID com alimento', note: 'Titular lentamente pela menor dose que controla sinais.' }] } },
     plumbsContext: 'Trilostano inibe síntese adrenal; risco de hipoadrenocorticismo iatrogênico se dose excessiva.',
     clinicalUse: 'Hiperadrenocorticismo hipófise-dependente ou adrenal-dependente em cães.',
     reassessment: 'Monitorar sinais clínicos, Na/K, ureia/creatinina, cortisol/ACTH e sinais de crise addisoniana.',
-    prescriptionExample: 'Vetoryl [força], administrar por via oral conforme protocolo endocrinológico e reavaliações programadas.',
+    prescriptionExample: 'Vetoryl [força], administrar com alimento na dose calculada, iniciando 0,5-1 mg/kg q12h ou ~2 mg/kg SID conforme plano endocrinológico.',
     safetyAlert: 'Não usar em doença hepática primária, insuficiência renal importante, gestantes/lactantes/reprodução. Risco de hipercalemia, vômitos, diarreia e colapso.',
     price: { averageLabel: 'R$ 315 a R$ 420', rangeLabel: 'Vetoryl 10 mg 30 cápsulas em varejo citado', sourceDate: '2026-06-07' }
   },
@@ -6291,8 +6279,8 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     manufacturer: 'Dechra',
     commercialClass: 'endocrine',
     commercialSubclass: 'endocrine_thyroid',
-    productPageUrl: 'https://www.petz.com.br/produto/medicamento-dechra-felimazole-2-5mg-100-comprimidos-para-gatos',
-    imageUrl: 'https://www.dechra-us.com/Files/Images/Ecom/Products/US/C220130-Felimazole-Updated-2.5-mg-Pack-Shot-new.jpg',
+    productPageUrl: 'https://www.dechra-us.com/our-products/us/companion-animal/cat/prescription/felimazole-coated-tablets-methimazole-tablets',
+    imageUrl: 'https://www.dechra-us.com/Files/Images/Ecom/Products/US/C220130-Felimazole-Updated-25-mg-Pack-Shot-new.jpg',
     species: ['cat'],
     presentations: ['Felimazole 2,5 mg', 'Felimazole 5 mg'],
     activeComponents: ['tiamazol', 'metimazol'],
@@ -6319,12 +6307,12 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Zycortal 25 mg/mL suspensão injetável'],
     activeComponents: ['pivalato de desoxicorticosterona', 'DOCP'],
     labelCompositionSummary: 'DOCP 25 mg/mL, mineralocorticoide de reposição injetável.',
-    labelDirections: 'Uso clínico. Dose inicial e intervalo devem ser ajustados por sódio, potássio, hidratação e resposta clínica.',
-    dosageGuidance: { labelDose: 'Cães: protocolo injetável individualizado por Na/K e resposta.', plumbs: { dog: [{ title: 'Hipoadrenocorticismo primário', dose: 'Dose/intervalo por protocolo DOCP', note: 'Monitorar Na/K e necessidade de glicocorticoide.' }] } },
+    labelDirections: 'Plumb\'s/Zycortal: cães, DOCP 2,2 mg/kg IM ou SC a cada 25 dias inicialmente; ajustar dose/intervalo por sódio, potássio, hidratação e resposta.',
+    dosageGuidance: { labelDose: 'Cães: 2,2 mg/kg IM/SC a cada 25 dias inicialmente; ajustar por Na/K e resposta clínica.', plumbs: { dog: [{ title: 'Hipoadrenocorticismo primário', dose: '2,2 mg/kg IM ou SC a cada 25 dias', note: 'DOCP não tem ação glicocorticoide; associar prednisolona quando indicado e monitorar Na/K.' }] } },
     plumbsContext: 'DOCP repõe mineralocorticoide, mas não substitui glicocorticoide quando necessário.',
     clinicalUse: 'Hipoadrenocorticismo primário canino com deficiência mineralocorticoide.',
     reassessment: 'Monitorar Na, K, hidratação, pressão arterial, ureia/creatinina e sinais de Addison.',
-    prescriptionExample: 'Zycortal 25 mg/mL, aplicação por médico-veterinário conforme protocolo e eletrólitos.',
+    prescriptionExample: 'Zycortal 25 mg/mL: aplicar 2,2 mg/kg IM ou SC inicialmente a cada 25 dias; ajustar por eletrólitos e resposta.',
     safetyAlert: 'Uso clínico. Não substitui prednisolona em pacientes que precisam reposição glicocorticoide.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Produto de alto custo/uso clínico', sourceDate: '2026-06-07' }
   },
@@ -6336,18 +6324,18 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     commercialClass: 'analgesic',
     commercialSubclass: 'sedative_anesthetic',
     species: ['dog', 'cat'],
-    presentations: ['Sedalex apresentação pendente de bula'],
-    activeComponents: ['dados de composição pendentes'],
+    presentations: ['Sedalex 2% frasco-ampola 10 mL'],
+    activeComponents: ['cloridrato de xilazina 2,3% (equivalente a xilazina base 2%)'],
     productPageUrl: 'https://www.dechra.com.br/medicamentos/134/sedalex',
     imageUrl: 'https://www.dechra.com.br/common/uploads/produtos/sedalex-1200x73802.jpg',
-    labelCompositionSummary: 'Analgésico/sedativo/relaxante muscular citado em fonte Dechra; composição pendente de bula acessível.',
-    labelDirections: 'Não liberar cálculo automático sem bula oficial completa.',
-    dosageGuidance: { labelDose: 'Dose bloqueada: bula/composição não confirmadas.', plumbs: { dog: [{ title: 'Dados incompletos', dose: 'Dose bloqueada até conferência de bula', note: 'Não prescrever automaticamente.' }], cat: [{ title: 'Dados incompletos', dose: 'Dose bloqueada até conferência de bula', note: 'Não prescrever automaticamente.' }] } },
-    plumbsContext: 'Sem composição/dose confiáveis nesta rodada; classificado apenas para busca e revisão posterior.',
+    labelCompositionSummary: 'Xilazina 2% para cães e gatos; sedativo, analgésico e relaxante muscular de uso clínico.',
+    labelDirections: 'Bula/rótulo Sedalex: sedação e relaxamento 1 mg/kg IM (0,425 mL/10 kg). Analgesia: 0,5 mg/kg IV (0,213 mL/10 kg) precedida de 1 mg/kg IM e associada à cetamina.',
+    dosageGuidance: { labelDose: 'Cães/gatos: sedação 1 mg/kg IM (0,425 mL/10 kg). Analgesia: 0,5 mg/kg IV (0,213 mL/10 kg) após 1 mg/kg IM + cetamina.', plumbs: { dog: [{ title: 'Sedação/relaxamento', dose: '1 mg/kg IM', note: 'Uso clínico; monitorar bradicardia, arritmias, vômitos e depressão respiratória.' }, { title: 'Analgesia em protocolo', dose: '0,5 mg/kg IV após 1 mg/kg IM', note: 'Usar em associação à cetamina conforme protocolo anestésico.' }], cat: [{ title: 'Sedação/relaxamento', dose: '1 mg/kg IM', note: 'Uso clínico; vômitos e bradicardia são relevantes em gatos.' }, { title: 'Analgesia em protocolo', dose: '0,5 mg/kg IV após 1 mg/kg IM', note: 'Associar à cetamina e monitorar.' }] } },
+    plumbsContext: 'Xilazina é agonista alfa-2; exige monitoramento cardiovascular/respiratório e cautela em idosos, debilitados, cardiopatas, braquicefálicos e gestantes.',
     clinicalUse: 'Analgésico, sedativo e relaxante muscular conforme descrição preliminar.',
-    reassessment: 'Revisar bula antes de uso clínico.',
-    prescriptionExample: 'Não gerar receita automática: conferir bula oficial e protocolo.',
-    safetyAlert: 'Dose bloqueada por dados incompletos. Sedativos exigem cautela em cardiopatas, hepatopatas, debilitados e polifarmácia.',
+    reassessment: 'Monitorar frequência cardíaca, ritmo, pressão, respiração, temperatura, vômitos e recuperação.',
+    prescriptionExample: 'Sedalex 2%: sedação 1 mg/kg IM (0,425 mL/10 kg), em ambiente clínico e com monitoramento.',
+    safetyAlert: 'Uso clínico com retenção de receita. Evitar em neonatos, obstrução esofágica, torção gástrica, hérnia diafragmática e reduzir dose em idosos/debilitados.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Bula/foto não consolidadas', sourceDate: '2026-06-07', notes: 'Sem imagem direta confiável encontrada.' }
   },
   {
@@ -6357,8 +6345,8 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     manufacturer: 'Dechra',
     commercialClass: 'infectious',
     commercialSubclass: 'infectious_antibiotic',
-    productPageUrl: 'https://www.petlove.com.br/antibiotico-dechra-doxiven-100-mg-para-caes/p',
-    imageUrl: 'https://polipet.fbitsstatic.net/img/p/antibiotico-doxiven-dechra-para-caes-100-mg-com-7-comprimidos-101199/295280-1.jpg?w=350&h=350&v=no-value',
+    productPageUrl: 'https://www.dechra.com.br/medicamentos/12/doxiven-100-mg',
+    imageUrl: 'https://www.dechra.com.br/common/uploads/produtos/doxiven-100mg-1200x73950.jpg',
     species: ['dog'],
     presentations: ['Doxiven 100 mg'],
     activeComponents: ['doxiciclina'],
@@ -6385,12 +6373,12 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     productPageUrl: 'https://www.dechra.com.br/medicamentos/31/enrofloxacina-50-mg',
     imageUrl: 'https://www.dechra.com.br/common/uploads/produtos/enrofloxacina-50mg-1200x78127.jpg',
     labelCompositionSummary: 'Fluoroquinolona oral em comprimidos; apresentação/espécie deve ser confirmada pela bula específica.',
-    labelDirections: 'Dose depende da apresentação e espécie; usar bula. Em gatos, respeitar cautela por risco ocular em dose alta.',
-    dosageGuidance: { labelDose: 'Dose por bula específica; cautela em gatos.', plumbs: { dog: [{ title: 'Infecção sensível', dose: 'Usar dose de bula/protocolo para enrofloxacina', note: 'Antibiótico crítico.' }], cat: [{ title: 'Infecção sensível', dose: 'Dose bloqueada sem bula específica', note: 'Cautela ocular em doses altas.' }] } },
+    labelDirections: 'Plumb\'s: cães 5-20 mg/kg VO q24h para infecções sensíveis; gatos 5 mg/kg VO q24h ou dividido q12h, sem exceder 5 mg/kg/dia.',
+    dosageGuidance: { labelDose: 'Cães: 5-20 mg/kg VO q24h. Gatos: 5 mg/kg/dia VO (preferir q24h; máximo 5 mg/kg/dia).', plumbs: { dog: [{ title: 'Infecção sensível', dose: '5-20 mg/kg VO q24h', note: 'Reservar para indicação/cultura; reavaliar se sem melhora em 5 dias.' }], cat: [{ title: 'Infecção sensível', dose: '5 mg/kg/dia VO', note: 'Não exceder 5 mg/kg/dia por risco de toxicidade retiniana.' }] } },
     plumbsContext: 'Fluoroquinolona crítica; usar cultura/antibiograma quando possível e evitar uso empírico indiscriminado.',
     clinicalUse: 'Infecções urinárias, dermatológicas, respiratórias, gastrointestinais e por bactérias sensíveis.',
     reassessment: 'Reavaliar cultura, resposta, efeitos neurológicos, GI e dose em nefropatas/gatos.',
-    prescriptionExample: 'Enrofloxacina Dechra [50 ou 150 mg], administrar conforme bula/protocolo e diagnóstico.',
+    prescriptionExample: 'Enrofloxacina Dechra [50 ou 150 mg]: calcular por peso; cães 5-20 mg/kg VO q24h; gatos máximo 5 mg/kg/dia.',
     safetyAlert: 'Cautela em filhotes em crescimento, gatos, epilepsia, DRC e uso com cátions/sucralfato.',
     price: { averageLabel: 'R$ 21,90 a R$ 49,43', rangeLabel: 'Estimativa para 50/150 mg em varejo', sourceDate: '2026-06-07', notes: 'Sem imagem direta confiável encontrada.' }
   },
@@ -6407,12 +6395,12 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     productPageUrl: 'https://www.dechra.com.br/medicamentos/33/enrofloxacino-2-5-',
     imageUrl: 'https://www.dechra.com.br/common/uploads/produtos/enroflaxacino-25-1200x76315.jpg',
     labelCompositionSummary: 'Enrofloxacina 2,5% injetável para uso clínico.',
-    labelDirections: 'Dose de bula não consolidada nesta rodada; não liberar cálculo automático.',
-    dosageGuidance: { labelDose: 'Dose bloqueada: conferir bula específica.', plumbs: { dog: [{ title: 'Uso clínico', dose: 'Dose bloqueada até bula', note: 'Antibiótico crítico.' }], cat: [{ title: 'Uso clínico', dose: 'Dose bloqueada até bula', note: 'Cautela especial em gatos.' }] } },
+    labelDirections: 'Plumb\'s: cães, solução injetável 2,27% 2,5 mg/kg IM uma vez, seguida de enrofloxacina oral; extra-label 10-20 mg/kg q24h IM/SC diluída ou IV lenta. Gatos: até 5 mg/kg/dia IM/IV.',
+    dosageGuidance: { labelDose: 'Cães: 2,5 mg/kg IM dose única e seguir VO; extra-label 10-20 mg/kg q24h. Gatos: até 5 mg/kg/dia IM/IV.', plumbs: { dog: [{ title: 'Injetável rotulado/ponte para VO', dose: '2,5 mg/kg IM dose única', note: 'Depois seguir com enrofloxacina oral; usar cultura quando possível.' }, { title: 'Uso hospitalar extra-label', dose: '10-20 mg/kg q24h IM/SC diluída ou IV lenta', note: 'Ajustar por sítio, gravidade e susceptibilidade.' }], cat: [{ title: 'Uso parenteral felino', dose: '5 mg/kg/dia ou menos IM/IV', note: 'Não exceder 5 mg/kg/dia; monitorar midríase/retina.' }] } },
     plumbsContext: 'Mesma lógica de fluoroquinolona; dose incorreta em gatos pode ser grave.',
     clinicalUse: 'Infecções bacterianas sensíveis em ambiente clínico/hospitalar.',
     reassessment: 'Revisar bula, cultura, função renal e tolerância antes de liberar posologia.',
-    prescriptionExample: 'Não gerar receita automática: uso clínico conforme bula/protocolo.',
+    prescriptionExample: 'Enrofloxacino injetável: cães 2,5 mg/kg IM dose única e seguir VO; gatos não exceder 5 mg/kg/dia.',
     safetyAlert: 'Dose bloqueada por dados incompletos. Não usar empiricamente sem critério.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não consolidado', sourceDate: '2026-06-07', notes: 'Sem imagem direta confiável encontrada.' }
   },
@@ -6423,8 +6411,8 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     manufacturer: 'Dechra',
     commercialClass: 'parasiticide',
     commercialSubclass: 'parasite_oral_adulticide_flea',
-    productPageUrl: 'https://www.petlove.com.br/antipulgas-dechra-invicto-57mg-para-caes/p',
-    imageUrl: 'https://images.tcdn.com.br/img/img_prod/469080/invicto_57mg_antipulgas_caes_11_4kg_a_57kg_1_comprimido_dechra_845_1_dc34651e41844d28c314421fbf302235.png',
+    productPageUrl: 'https://www.invictopet.com.br/',
+    imageUrl: 'https://www.invictopet.com.br/common/default/img/img-produtos-todos.png',
     species: ['dog', 'cat'],
     presentations: ['Invicto 11,4 mg', 'Invicto 57 mg'],
     activeComponents: ['nitenpiram'],
@@ -6511,9 +6499,9 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     manufacturer: 'Avert',
     commercialClass: 'cardiologic',
     commercialSubclass: 'cardio_loop_diuretic',
-    productPageUrl: 'https://avertsaudeanimal.com.br/linhas/medicamentos',
-    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/torzemin2mg_1642163868.png',
-    labelUrl: 'https://consultaremedios.com.br/torzemin/bula',
+    productPageUrl: 'https://avertsaudeanimal.com.br/linhas/medicamentos/torzemin-20-mg',
+    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/torzemin2mg.png',
+    labelUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/bula-torzemin.pdf',
     species: ['dog'],
     presentations: ['Torzemin 2 mg', 'Torzemin 4 mg', 'Torzemin 8 mg'],
     activeComponents: ['torasemida'],
@@ -6562,8 +6550,8 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Beneflora Vet seringa graduada 14 g'],
     activeComponents: ['probiótico', 'prebiótico', 'zinco', 'vitamina E'],
     labelCompositionSummary: 'Probiótico + prebiótico + zinco + vitamina E em pasta/seringa graduada.',
-    labelDirections: 'Dose por graduação da seringa conforme rótulo; dose completa não confirmada no texto-base.',
-    dosageGuidance: { labelDose: 'Dose bloqueada: usar rótulo da seringa.', plumbs: { dog: [{ title: 'Disbiose/diarreia leve', dose: 'Dose de rótulo por graduação', note: 'Não há dose Plumb’s universal para probiótico.' }], cat: [{ title: 'Disbiose/diarreia leve', dose: 'Dose de rótulo por graduação', note: 'Produto adjuvante.' }] } },
+    labelDirections: 'Bula/rótulo Avert: administrar por via oral usando a seringa graduada; cães e gatos recebem dose por graduação conforme peso e condição, seguindo o rótulo.',
+    dosageGuidance: { labelDose: 'Cães/gatos: administrar VO pela seringa graduada, na graduação correspondente ao peso no rótulo.', plumbs: { dog: [{ title: 'Disbiose/diarreia leve', dose: 'Usar a graduação da seringa correspondente ao peso', note: 'Não há dose Plumb’s universal para probiótico; seguir rótulo do produto.' }], cat: [{ title: 'Disbiose/diarreia leve', dose: 'Usar a graduação da seringa correspondente ao peso', note: 'Produto adjuvante; reavaliar diarreia persistente.' }] } },
     plumbsContext: 'Probióticos dependem de cepa, UFC e formulação; seguir rótulo do produto.',
     clinicalUse: 'Disbiose, diarreia leve, pós-antibiótico, transição alimentar e suporte de microbiota.',
     reassessment: 'Reavaliar se diarreia persiste, há sangue, vômitos, desidratação, febre ou apatia.',
@@ -6716,12 +6704,12 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Zelotril conforme apresentação'],
     activeComponents: ['enrofloxacina'],
     labelCompositionSummary: 'Fluoroquinolona veterinária; apresentação/dose deve ser conferida por bula direta.',
-    labelDirections: 'Dose de bula direta não consolidada no texto-base; não liberar cálculo automático sem bula específica.',
-    dosageGuidance: { labelDose: 'Dose bloqueada: conferir bula específica.', plumbs: { dog: [{ title: 'Infecção sensível', dose: 'Dose por bula/diagnóstico', note: 'Fluoroquinolona crítica.' }], cat: [{ title: 'Infecção sensível', dose: 'Dose bloqueada sem bula específica', note: 'Cautela ocular em gatos.' }] } },
+    labelDirections: 'Referência Plumb\'s para enrofloxacina: cães 5-20 mg/kg VO q24h; gatos 5 mg/kg/dia VO, sem exceder 5 mg/kg/dia.',
+    dosageGuidance: { labelDose: 'Cães: 5-20 mg/kg VO q24h. Gatos: 5 mg/kg/dia VO (máximo 5 mg/kg/dia).', plumbs: { dog: [{ title: 'Infecção sensível', dose: '5-20 mg/kg VO q24h', note: 'Usar com cultura/antibiograma quando possível.' }], cat: [{ title: 'Infecção sensível', dose: '5 mg/kg/dia VO', note: 'Evitar doses altas; risco de toxicidade retiniana.' }] } },
     plumbsContext: 'Enrofloxacina exige uso criterioso, idealmente com cultura, e cautela em gatos/doses altas.',
     clinicalUse: 'Infecções sensíveis urinárias, respiratórias, dermatológicas, gastrointestinais e sistêmicas conforme diagnóstico.',
     reassessment: 'Reavaliar cultura, resposta, efeitos neurológicos/GI e risco ocular em gatos.',
-    prescriptionExample: 'Zelotril [apresentação], usar apenas após conferir bula e dose por espécie.',
+    prescriptionExample: 'Zelotril/enrofloxacina: calcular por peso; cães 5-20 mg/kg VO q24h; gatos máximo 5 mg/kg/dia.',
     safetyAlert: 'Não usar empiricamente sem critério. Cautela em filhotes, gatos, epilepsia, DRC e uso com cátions/sucralfato.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não localizado com segurança', sourceDate: '2026-06-07' }
   },
@@ -6734,16 +6722,16 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     commercialSubclass: 'ortho_antiinflammatory',
     productPageUrl: 'https://agener.com.br/produtos/pequenos-animais/linha-dor/flamavet/',
     imageUrl: 'https://agener.com.br/wp-content/uploads/2020/01/img_pet_linhador_flamavet.jpg',
-    species: ['dog'],
-    presentations: ['Flamavet conforme apresentação'],
-    activeComponents: ['AINE - ativo conforme bula'],
-    labelCompositionSummary: 'Anti-inflamatório/analgésico veterinário; conferir apresentação e ativo na bula antes de cálculo.',
-    labelDirections: 'Dados completos de dose não consolidados no trecho anexado.',
-    dosageGuidance: { labelDose: 'Dose bloqueada: conferir bula específica.', plumbs: { dog: [{ title: 'Dor/inflamação', dose: 'Dose por bula', note: 'Não associar AINE/corticoide.' }] } },
-    plumbsContext: 'AINEs exigem cautela renal, hepática e gastrointestinal.',
-    clinicalUse: 'Dor inflamatória conforme indicação de bula.',
+    species: ['dog', 'cat'],
+    presentations: ['Flamavet 0,5 mg cães', 'Flamavet 2 mg cães', 'Flamavet 0,2 mg gatos', 'Flamavet 0,2% injetável'],
+    activeComponents: ['meloxicam'],
+    labelCompositionSummary: 'AINE à base de meloxicam em comprimidos/injetável para cães e gatos, conforme apresentação.',
+    labelDirections: 'Bula Agener: cães VO D1 0,2 mg/kg SID e depois 0,1 mg/kg SID; gatos VO D1 0,1 mg/kg SID e depois 0,05 mg/kg SID. Injetável: cães 0,2/0,1 mg/kg IV ou SC; gatos 0,1/0,05 mg/kg SC.',
+    dosageGuidance: { labelDose: 'Cães: D1 0,2 mg/kg SID, depois 0,1 mg/kg SID. Gatos: D1 0,1 mg/kg SID, depois 0,05 mg/kg SID.', plumbs: { dog: [{ title: 'Dor/inflamação', dose: '0,2 mg/kg D1; depois 0,1 mg/kg q24h', note: 'VO; injetável IV/SC conforme apresentação.' }], cat: [{ title: 'Dor/inflamação felina', dose: '0,1 mg/kg D1; depois 0,05 mg/kg q24h', note: 'VO/SC conforme apresentação; usar pelo menor tempo e com cautela renal.' }] } },
+    plumbsContext: 'Meloxicam/AINE exige cautela renal, hepática e gastrointestinal; não associar com corticoide ou outro AINE.',
+    clinicalUse: 'Dor e inflamação ortopédica/tecidual conforme indicação de bula e avaliação clínica.',
     reassessment: 'Monitorar dor, vômitos, diarreia, melena, apetite e função renal/hepática quando indicado.',
-    prescriptionExample: 'Flamavet: conferir bula/apresentação antes de gerar receita automática.',
+    prescriptionExample: 'Flamavet/meloxicam: cães D1 0,2 mg/kg q24h e depois 0,1 mg/kg q24h; gatos D1 0,1 mg/kg e depois 0,05 mg/kg q24h.',
     safetyAlert: 'Não associar com corticoide ou outro AINE. Evitar em DRC/IRA, desidratação, úlcera GI e hepatopatia importante.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Dados de dose/preço não consolidados', sourceDate: '2026-06-07' }
   },
@@ -6824,15 +6812,15 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     imageUrl: 'https://agener.com.br/wp-content/uploads/2020/01/novo-hel-1.jpg',
     species: ['cat'],
     presentations: ['Helfine Plus Gatos 2 comprimidos'],
-    activeComponents: ['composição pendente de bula específica'],
-    labelCompositionSummary: 'Vermífugo oral felino; composição deve ser confirmada por bula específica.',
-    labelDirections: 'Dose não capturada com segurança; não extrapolar dose canina.',
-    dosageGuidance: { labelDose: 'Dose bloqueada: conferir bula felina.', plumbs: { cat: [{ title: 'Vermifugação felina', dose: 'Dose bloqueada até bula específica', note: 'Não usar dose de cão em gato.' }] } },
+    activeComponents: ['praziquantel', 'pamoato de pirantel'],
+    labelCompositionSummary: 'Vermífugo oral felino com praziquantel e pamoato de pirantel.',
+    labelDirections: 'Bula Agener: gatos, 1 comprimido/4 kg VO em dose única; repetir após 15 dias. Até 1 kg: 1/4 comp; 1,1-2 kg: 1/2 comp; 2,1-3 kg: 3/4 comp; 3,1-4 kg: 1 comp.',
+    dosageGuidance: { labelDose: 'Gatos: 1 comp/4 kg VO dose única; repetir após 15 dias.', plumbs: { cat: [{ title: 'Vermifugação felina', dose: '1 comprimido/4 kg VO dose única', note: 'Até 1 kg: 1/4 comp; 1,1-2 kg: 1/2; 2,1-3 kg: 3/4; 3,1-4 kg: 1 comp.' }] } },
     plumbsContext: 'Antiparasitários felinos devem respeitar ativo, peso, idade e segurança por espécie.',
     clinicalUse: 'Vermifugação felina conforme espectro do produto.',
     reassessment: 'Reavaliar fezes, peso, idade, risco ambiental e coproparasitológico.',
-    prescriptionExample: 'Helfine Plus Gatos: conferir bula específica antes de gerar receita automática.',
-    safetyAlert: 'Não usar dose canina em gatos. Confirmar idade/peso mínimos e composição.',
+    prescriptionExample: 'Helfine Plus Gatos: administrar 1 comprimido para cada 4 kg VO em dose única; repetir em 15 dias.',
+    safetyAlert: 'Não usar dose canina em gatos. Confirmar peso, idade e estado clínico antes de vermifugar.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Dose/preço não consolidados', sourceDate: '2026-06-07' }
   },
   {
@@ -6868,15 +6856,15 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     imageUrl: 'https://agener.com.br/wp-content/uploads/2024/04/ECTOCID-familia-e-pipetas.png',
     species: ['dog'],
     presentations: ['Ectocid 0,67 mL', 'Ectocid 1,34 mL', 'Ectocid 2,68 mL', 'Ectocid 4,02 mL'],
-    activeComponents: ['composição pendente de bula'],
-    labelCompositionSummary: 'Ectoparasiticida tópico para cães; ativo não confirmado no texto-base.',
-    labelDirections: 'Dose por pipeta/faixa de peso; não capturada com segurança.',
-    dosageGuidance: { labelDose: 'Dose bloqueada: conferir bula e ativo.', plumbs: { dog: [{ title: 'Pulgas/carrapatos', dose: 'Dose por pipeta/faixa de peso', note: 'Confirmar ativo antes de liberar.' }] } },
-    plumbsContext: 'Sem ativo confirmado, não é seguro atribuir dose nem permitir uso em gatos.',
+    activeComponents: ['fipronil 13%'],
+    labelCompositionSummary: 'Ectoparasiticida tópico spot-on para cães à base de fipronil 13%.',
+    labelDirections: 'Bula Agener: dose única tópica. Até 10 kg: pipeta 0,67 mL; 10-20 kg: 1,34 mL; 20-40 kg: 2,68 mL; acima de 40 kg: 4,02 mL.',
+    dosageGuidance: { labelDose: 'Cães: dose única spot-on por peso: até 10 kg 0,67 mL; 10-20 kg 1,34 mL; 20-40 kg 2,68 mL; >40 kg 4,02 mL.', plumbs: { dog: [{ title: 'Pulgas/carrapatos', dose: '1 pipeta tópica conforme peso', note: 'Até 10 kg 0,67 mL; 10-20 kg 1,34 mL; 20-40 kg 2,68 mL; >40 kg 4,02 mL.' }] } },
+    plumbsContext: 'Fipronil tópico para cães; evitar exposição de gatos ao produto recém-aplicado até secagem e seguir intervalo de reaplicação da bula.',
     clinicalUse: 'Tratamento e controle de pulgas e carrapatos em cães.',
     reassessment: 'Reavaliar infestação, reação cutânea e risco de exposição de gatos ao produto.',
-    prescriptionExample: 'Ectocid: conferir bula/ativo e faixa de peso antes de orientar aplicação.',
-    safetyAlert: 'Não usar em gatos até confirmar composição. Se houver piretroide, destacar: NÃO USAR EM GATOS.',
+    prescriptionExample: 'Ectocid: aplicar 1 pipeta spot-on conforme peso do cão, afastando os pelos e depositando sobre a pele.',
+    safetyAlert: 'Produto para cães. Não aplicar em gatos. Evitar lambedura e contato com gatos até secagem completa.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Composição/dose/preço não consolidados', sourceDate: '2026-06-07' }
   },
   {
@@ -7133,12 +7121,18 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Frasco conta-gotas 5 mL'],
     activeComponents: ['tobramicina 0,3%'],
     labelCompositionSummary: 'Colírio veterinário à base de sulfato de tobramicina 0,3% (3 mg/mL).',
-    labelDirections: 'Dose conforme bula e gravidade da infecção ocular; confirmar posologia no rótulo vigente.',
-    dosageGuidance: { labelDose: 'Dose bloqueada: conferir bula vigente e gravidade antes de gerar receita automática.' },
-    plumbsContext: 'Aminoglicosídeo oftálmico útil contra bactérias sensíveis; frequência depende de gravidade e presença de úlcera/infeção.',
+    labelDirections: 'Plumb\'s: infecções de superfície ocular sensíveis, 1 gota no olho afetado 4-6x ao dia; infecções importantes podem exigir aplicação a cada 30-60 min sob monitoramento.',
+    dosageGuidance: {
+      labelDose: 'Plumb\'s: 1 gota no olho afetado 4-6x/dia; casos importantes podem exigir q30-60 min sob monitoramento oftálmico.',
+      plumbs: {
+        dog: [{ title: 'Infecção ocular sensível', dose: '1 gota no olho afetado 4-6x/dia', note: 'Em infecção importante pode exigir q30-60 min; reavaliar superfície ocular e cultura quando indicado.' }],
+        cat: [{ title: 'Infecção ocular sensível', dose: '1 gota no olho afetado 4-6x/dia', note: 'Mesma leitura extra-label; acompanhar resposta e tolerância local.' }]
+      }
+    },
+    plumbsContext: 'Plumb\'s descreve tobramicina oftálmica para infecções de superfície ocular por bactérias sensíveis; ajustar frequência por gravidade, citologia/cultura e presença de úlcera.',
     clinicalUse: 'Infecções oculares bacterianas e suporte em úlceras infectadas por microrganismos sensíveis.',
     reassessment: 'Reavaliar rapidamente se não houver melhora, se houver úlcera, dor ou secreção purulenta.',
-    prescriptionExample: 'Tobrasyn colírio: aplicar conforme bula/gravidade após exame oftálmico e reavaliar resposta.',
+    prescriptionExample: 'Tobrasyn colírio: instilar 1 gota no olho afetado 4-6 vezes ao dia; ajustar para casos graves apenas com monitoramento oftálmico.',
     safetyAlert: 'Não usar empiricamente em olho doloroso sem fluoresceína. Investigar úlcera profunda, corpo estranho e perfuração.',
     productPageUrl: 'https://syntec.com.br/produtos/tobrasyn-tobramicina-syntec',
     imageUrl: 'https://syntec.com.br/storage/produtos/Tobrasyn-5-mL-15-53-26.webp',
@@ -7155,12 +7149,18 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Solução oftálmica 0,3% 5 mL'],
     activeComponents: ['tobramicina 0,3%'],
     labelCompositionSummary: 'Colírio humano de tobramicina 3 mg/mL usado extra-label em veterinária.',
-    labelDirections: 'Bula humana conforme infecção; em veterinária usar somente com prescrição e protocolo do caso.',
-    dosageGuidance: { labelDose: 'Extra-label: frequência por gravidade e diagnóstico; não liberar receita automática sem avaliação.' },
-    plumbsContext: 'Aminoglicosídeo tópico; escolha e intervalo dependem da citologia, cultura, úlcera e resposta clínica.',
+    labelDirections: 'Plumb\'s: infecções de superfície ocular sensíveis, 1 gota no olho afetado 4-6x ao dia; infecções importantes podem exigir q30-60 min sob monitoramento.',
+    dosageGuidance: {
+      labelDose: 'Plumb\'s: 1 gota no olho afetado 4-6x/dia; casos importantes podem exigir q30-60 min sob monitoramento oftálmico.',
+      plumbs: {
+        dog: [{ title: 'Infecção ocular sensível', dose: '1 gota no olho afetado 4-6x/dia', note: 'Dose extra-label; ajustar por gravidade, cultura/citologia e evolução.' }],
+        cat: [{ title: 'Infecção ocular sensível', dose: '1 gota no olho afetado 4-6x/dia', note: 'Dose extra-label; reavaliar se dor, secreção ou piora.' }]
+      }
+    },
+    plumbsContext: 'Aminoglicosídeo tópico citado no Plumb\'s para infecções oculares sensíveis; escolha e intervalo dependem da citologia, cultura, úlcera e resposta clínica.',
     clinicalUse: 'Alternativa humana de tobramicina para infecção bacteriana ocular sensível.',
     reassessment: 'Reavaliar em 24-72 h ou antes se piora, dor ou úlcera.',
-    prescriptionExample: 'Tobramicina/Tobrex 0,3%: usar conforme protocolo oftálmico e reavaliação.',
+    prescriptionExample: 'Tobramicina/Tobrex 0,3%: instilar 1 gota no olho afetado 4-6 vezes ao dia, com reavaliação conforme gravidade.',
     safetyAlert: 'Produto humano extra-label. Não tratar olho vermelho doloroso sem descartar úlcera, uveíte, glaucoma e corpo estranho.',
     productPageUrl: 'https://consultaremedios.com.br/tobrex/bula',
     imageUrl: 'https://imgcdn.mckesson.com/CumulusWeb/Images/High_Res/256058.jpg',
@@ -7179,8 +7179,14 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     activeComponents: ['ciprofloxacino oftálmico','sulfato de condroitina a 20%'],
     labelCompositionSummary: 'Colírio veterinário com ciprofloxacina (antibiótico fluoroquinolona) e sulfato de condroitina a 20% (cicatrizante e hidratante corneano).',
     labelDirections: 'Instilar 1 gota no olho afetado a cada 24 horas. Em casos graves de infecção ocular, iniciar com 1 gota a cada 12 horas e seguir com a frequência de 24 horas, ou conforme critério do médico-veterinário.',
-    dosageGuidance: {'labelDose':'Instilar 1 gota no olho afetado a cada 24 horas (ou a cada 12 horas em casos graves iniciais).'},
-    plumbsContext: '',
+    dosageGuidance: {
+      labelDose: 'Bula Ciprovet: 1 gota no olho afetado q24h; em casos graves, iniciar q12h e depois q24h conforme critério veterinário.',
+      plumbs: {
+        dog: [{ title: 'Ciprofloxacino oftálmico', dose: '1 gota no olho afetado q2-8h', note: 'Referência Plumb\'s para conjuntivite/ceratite bacteriana sensível; o rótulo do Ciprovet traz esquema próprio q24h/q12h.' }],
+        cat: [{ title: 'Ciprofloxacino oftálmico', dose: '1 gota no olho afetado q2-8h', note: 'Referência Plumb\'s extra-label; comparar com bula veterinária do produto e gravidade.' }]
+      }
+    },
+    plumbsContext: 'Fluoroquinolona tópica ocular; Plumb\'s lista ciprofloxacino q2-8h para conjuntivite/ceratite sensível, enquanto o rótulo veterinário do Ciprovet usa posologia própria.',
     clinicalUse: 'Infecções oculares bacterianas sensíveis, conjuntivite bacteriana, ceratite seca contaminada, déficit de lágrimas e adjuvante em cicatrização de úlceras de córnea.',
     reassessment: 'Reavaliar resposta e superfície corneana; considerar cultura em casos graves/recorrentes.',
     prescriptionExample: 'Instilar 1 gota de Ciprovet no olho afetado a cada 24 horas.',
@@ -7200,12 +7206,18 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Solução oftálmica 0,3% 5 mL'],
     activeComponents: ['ciprofloxacino 0,3%'],
     labelCompositionSummary: 'Produto humano de ciprofloxacino oftálmico usado extra-label em cães e gatos.',
-    labelDirections: 'Bula humana por indicação; em veterinária, protocolo individual conforme exame.',
-    dosageGuidance: { labelDose: 'Extra-label: dose/frequência por gravidade; bloquear receita automática sem avaliação.' },
-    plumbsContext: 'Fluoroquinolona tópica; frequência depende de gravidade, úlcera e suspeita bacteriana.',
+    labelDirections: 'Plumb\'s: conjuntivite ou ceratite bacteriana sensível, 1 gota no olho afetado a cada 2-8 horas.',
+    dosageGuidance: {
+      labelDose: 'Plumb\'s: 1 gota no olho afetado q2-8h para conjuntivite/ceratite bacteriana sensível.',
+      plumbs: {
+        dog: [{ title: 'Conjuntivite/ceratite bacteriana sensível', dose: '1 gota no olho afetado q2-8h', note: 'Dose extra-label; considerar citologia/cultura e reavaliar resposta.' }],
+        cat: [{ title: 'Conjuntivite/ceratite bacteriana sensível', dose: '1 gota no olho afetado q2-8h', note: 'Dose extra-label; acompanhar dor, secreção e superfície corneana.' }]
+      }
+    },
+    plumbsContext: 'Plumb\'s descreve ciprofloxacino oftálmico para conjuntivite/ceratite por bactérias sensíveis; evitar uso sem diagnóstico e reavaliar se não houver resposta.',
     clinicalUse: 'Opção extra-label para infecção ocular bacteriana sensível.',
     reassessment: 'Reavaliar cedo em úlcera, dor ou ausência de resposta.',
-    prescriptionExample: 'Ciloxan/ciprofloxacino 0,3%: usar conforme protocolo oftálmico individual.',
+    prescriptionExample: 'Ciloxan/ciprofloxacino 0,3%: instilar 1 gota no olho afetado a cada 2-8 horas conforme gravidade e reavaliação.',
     safetyAlert: 'Produto humano extra-label. Evitar uso sem diagnóstico; considerar cultura em casos graves/recorrentes.',
     productPageUrl: 'https://consultaremedios.com.br/ciloxan-solucao-oftalmica/bula',
     imageUrl: 'https://d163axztg8am2h.cloudfront.net/static/img/82/d6/738534207368db5396e1ef1b3fd9.webp',
@@ -7222,12 +7234,24 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Solução oftálmica 5 mL'],
     activeComponents: ['moxifloxacino oftálmico'],
     labelCompositionSummary: 'Fluoroquinolona oftálmica humana usada extra-label em veterinária.',
-    labelDirections: 'Bula humana; em veterinária usar conforme diagnóstico e prescrição.',
-    dosageGuidance: { labelDose: 'Extra-label: frequência por gravidade; bloquear receita automática sem avaliação.' },
-    plumbsContext: 'Fluoroquinolona tópica de amplo espectro; usar com stewardship e reavaliação.',
-    clinicalUse: 'Infecções oculares bacterianas selecionadas quando há indicação clínica para fluoroquinolona.',
-    reassessment: 'Reavaliar resposta em 24-72 h e antes se dor/piora.',
-    prescriptionExample: 'Vigamox/moxifloxacino oftálmico: usar conforme protocolo oftálmico individual.',
+    labelDirections: 'Plumb\'s: conjuntivite, 1 gota no olho afetado q2-8h; ceratite, 1 gota ou 0,1 mL via cateter SPL q2-8h.',
+    dosageGuidance: {
+      labelDose: 'Plumb\'s: conjuntivite 1 gota q2-8h; ceratite 1 gota ou 0,1 mL via SPL q2-8h.',
+      plumbs: {
+        dog: [
+          { title: 'Conjuntivite bacteriana sensível', dose: '1 gota no olho afetado q2-8h', note: 'Uso extra-label; idealmente guiado por citologia/cultura e resposta clínica.' },
+          { title: 'Ceratite bacteriana sensível', dose: '1 gota ou 0,1 mL via cateter SPL q2-8h', note: 'Reavaliar se blefaroespasmo, uveíte, piora de úlcera ou ausência de melhora.' }
+        ],
+        cat: [
+          { title: 'Conjuntivite bacteriana sensível', dose: '1 gota no olho afetado q2-8h', note: 'Uso extra-label; confirmar indicação para fluoroquinolona.' },
+          { title: 'Ceratite bacteriana sensível', dose: '1 gota ou 0,1 mL via cateter SPL q2-8h', note: 'Monitorar dor, úlcera e resposta; considerar cultura.' }
+        ]
+      }
+    },
+    plumbsContext: 'Plumb\'s descreve moxifloxacino oftálmico para conjuntivite/ceratite bacteriana confirmada ou sensível; evitar profilaxia e não misturar diretamente com outros colírios.',
+    clinicalUse: 'Conjuntivite ou ceratite bacteriana por microrganismos sensíveis quando há indicação clínica para fluoroquinolona.',
+    reassessment: 'Reavaliar citologia/cultura e resposta; se não houver melhora em até 7 dias ou houver piora/dor, rever diagnóstico e suscetibilidade.',
+    prescriptionExample: 'Vigamox/moxifloxacino oftálmico: instilar 1 gota no olho afetado a cada 2-8 horas conforme indicação e gravidade.',
     safetyAlert: 'Produto humano extra-label. Não usar para olho vermelho sem exame, fluoresceína e avaliação de PIO quando indicado.',
     productPageUrl: 'https://www.drogasil.com.br/bulas/vigamox',
     imageUrl: 'https://drogaseconomicas.com/cdn/shop/files/46673_1_VIGAMOX_5MG_ML05_SOL_OFT_FCO_X_5ML.webp?v=1723131034',
@@ -7242,15 +7266,21 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     commercialSubclass: 'ophthalmic_epithelial',
     species: ['dog', 'cat'],
     presentations: ['Pomada oftálmica 3,5 g'],
-    activeComponents: ['retinol/vitamina A conforme apresentação'],
-    labelCompositionSummary: 'Pomada oftálmica humana epitelizante/lubrificante; conferir composição vigente.',
-    labelDirections: 'Bula humana; em veterinária usar como adjuvante conforme diagnóstico.',
-    dosageGuidance: { labelDose: 'Extra-label: dose bloqueada; conferir bula e indicação.' },
-    plumbsContext: 'Adjuvante de superfície ocular; não substitui antibiótico, analgesia ou tratamento da causa em úlcera.',
+    activeComponents: ['acetato de retinol 10.000 UI/g', 'aminoácidos 25 mg/g', 'metionina 5 mg/g', 'cloranfenicol 5 mg/g'],
+    labelCompositionSummary: 'Pomada oftálmica humana com acetato de retinol, aminoácidos, metionina e cloranfenicol; usada extra-label como epitelizante com antibiótico.',
+    labelDirections: 'Bula Regencel: aplicar cerca de 1 cm da pomada no saco conjuntival inferior, 3-4x ao dia, de acordo com a indicação.',
+    dosageGuidance: {
+      labelDose: 'Bula Regencel: 1 cm da pomada no saco conjuntival inferior 3-4x/dia.',
+      plumbs: {
+        dog: [{ title: 'Adjuvante epitelizante com antibiótico', dose: '1 cm no saco conjuntival inferior 3-4x/dia', note: 'Dose de bula humana; em veterinária, usar após diagnóstico da lesão e controle da causa.' }],
+        cat: [{ title: 'Adjuvante epitelizante com antibiótico', dose: '1 cm no saco conjuntival inferior 3-4x/dia', note: 'Dose de bula humana; acompanhar tolerância e resposta corneana.' }]
+      }
+    },
+    plumbsContext: 'Regencel não substitui antibiótico sistêmico/tópico dirigido, analgesia ou tratamento da causa em úlcera; o cloranfenicol exige evitar uso prolongado sem reavaliação.',
     clinicalUse: 'Suporte epitelizante/lubrificante em alterações superficiais selecionadas sob acompanhamento.',
     reassessment: 'Reavaliar cicatrização corneana com fluoresceína quando houver lesão.',
-    prescriptionExample: 'Regencel pomada oftálmica: aplicar conforme orientação oftálmica e reavaliação.',
-    safetyAlert: 'Produto humano extra-label. Não usar como tratamento único em úlcera infectada, profunda, melting ou perfuração.',
+    prescriptionExample: 'Regencel pomada oftálmica: aplicar cerca de 1 cm no saco conjuntival inferior 3-4 vezes ao dia, com reavaliação da cicatrização.',
+    safetyAlert: 'Produto humano extra-label com cloranfenicol. Não usar como tratamento único em úlcera infectada, profunda, melting ou perfuração.',
     productPageUrl: 'https://consultaremedios.com.br/regencel/bula',
     imageUrl: 'https://m.media-amazon.com/images/I/41IYvlaugBS.jpg',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não consolidado no trecho anexado', sourceDate: '2026-06-17' }
@@ -7266,12 +7296,18 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Solução oftálmica 1% 5 mL'],
     activeComponents: ['atropina 1%'],
     labelCompositionSummary: 'Antimuscarínico midriático/cicloplégico humano usado extra-label em cães e gatos.',
-    labelDirections: 'Bula humana; em veterinária usar conforme indicação oftálmica e espécie.',
-    dosageGuidance: { labelDose: 'Extra-label: dose/frequência por indicação; bloquear receita automática sem avaliação.' },
-    plumbsContext: 'Usada para cicloplegia e dor por uveíte selecionada; não é tratamento para glaucoma.',
+    labelDirections: 'Plumb\'s: midríase/cicloplegia, inicialmente 1 gota ou faixa de 1/4-1/2 pol no olho afetado 2-3x/dia; depois SID ou em dias alternados para manter efeito.',
+    dosageGuidance: {
+      labelDose: 'Plumb\'s: 1 gota ou faixa de 1/4-1/2 pol 2-3x/dia inicialmente; depois SID ou em dias alternados para manter midríase.',
+      plumbs: {
+        dog: [{ title: 'Uveíte anterior / espasmo ciliar', dose: '1 gota ou faixa de 1/4-1/2 pol no olho afetado 2-3x/dia inicialmente', note: 'Depois reduzir para SID ou dias alternados conforme midríase e conforto; evitar em glaucoma.' }],
+        cat: [{ title: 'Uveíte anterior / espasmo ciliar', dose: '1 gota ou faixa de 1/4-1/2 pol no olho afetado 2-3x/dia inicialmente', note: 'Depois reduzir; salivação pode ocorrer pelo gosto amargo. Evitar em glaucoma.' }]
+      }
+    },
+    plumbsContext: 'Plumb\'s descreve atropina oftálmica para reverter miose e tratar espasmo do corpo ciliar na uveíte anterior; não é tratamento para glaucoma e pode reduzir produção lacrimal.',
     clinicalUse: 'Dor/cicloplegia em uveíte anterior e espasmo ciliar quando indicado após exame.',
     reassessment: 'Reavaliar PIO, dor e resposta; evitar se glaucoma/suspeita de glaucoma.',
-    prescriptionExample: 'Atropina 1% oftálmica: aplicar conforme protocolo oftálmico, com controle de PIO e reavaliação.',
+    prescriptionExample: 'Atropina 1% oftálmica: instilar 1 gota no olho afetado 2-3 vezes ao dia inicialmente; reduzir para SID ou dias alternados após midríase adequada.',
     safetyAlert: 'Contraindicada/evitar em glaucoma ou suspeita de glaucoma. Pode piorar olho seco; exige diagnóstico.',
     productPageUrl: 'https://img.drogasil.com.br/raiadrogasil_bula/Atropina.pdf',
     imageUrl: 'https://www.drogariaminasbrasil.com.br/media/catalog/product/cache/74c1057f7991b4edb2bc7bdaa94de933/image/14695c6f/atropina-1-solucao-oftalmica-esteril-5ml.jpg',
@@ -7288,9 +7324,15 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Solução oftálmica 2%'],
     activeComponents: ['cloridrato de dorzolamida 2%'],
     labelCompositionSummary: 'Inibidor tópico da anidrase carbônica usado extra-label para reduzir produção de humor aquoso.',
-    labelDirections: 'Bula humana; em veterinária, geralmente a cada 8-12 h conforme PIO e resposta.',
-    dosageGuidance: { labelDose: 'Extra-label: q8-12h conforme PIO e indicação.' },
-    plumbsContext: 'BSAVA cita CAIs tópicos como dorzolamida 2% e brinzolamida 1% reduzindo PIO em cães e gatos a cada 8-12 h.',
+    labelDirections: 'Plumb\'s: glaucoma, 1 gota no olho afetado q8-12h; alternativa via cateter SPL 0,1 mL q8-12h.',
+    dosageGuidance: {
+      labelDose: 'Plumb\'s: 1 gota no olho afetado q8-12h para glaucoma; alternativa 0,1 mL via SPL q8-12h.',
+      plumbs: {
+        dog: [{ title: 'Glaucoma/hipertensão ocular', dose: '1 gota no olho afetado q8-12h', note: 'Ajustar por tonometria, dor e resposta clínica.' }],
+        cat: [{ title: 'Glaucoma/hipertensão ocular', dose: '1 gota no olho afetado q8-12h', note: 'Monitorar PIO, conforto ocular e doença primária.' }]
+      }
+    },
+    plumbsContext: 'Plumb\'s descreve dorzolamida oftálmica como inibidor tópico da anidrase carbônica para glaucoma, com monitoramento de PIO, eficácia clínica e edema corneano.',
     clinicalUse: 'Glaucoma/hipertensão ocular quando se busca reduzir produção de humor aquoso.',
     reassessment: 'Reavaliar PIO, dor, visão e causa primária; glaucoma é urgência.',
     prescriptionExample: 'Dorzolamida 2%, aplicar 1 gota no olho afetado a cada 8-12 horas conforme PIO e reavaliação.',
@@ -7310,12 +7352,24 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Solução oftálmica 5 mL'],
     activeComponents: ['dorzolamida 2%', 'timolol 0,5%'],
     labelCompositionSummary: 'Associação humana de inibidor da anidrase carbônica + betabloqueador tópico.',
-    labelDirections: 'Bula humana; em veterinária, usar conforme PIO, diagnóstico e contraindicações sistêmicas.',
-    dosageGuidance: { labelDose: 'Extra-label: dose bloqueada; ajustar por PIO e estado cardiovascular/respiratório.' },
-    plumbsContext: 'Timolol tópico pode causar bradicardia, hipotensão e broncoespasmo; dorzolamida reduz produção de humor aquoso.',
+    labelDirections: 'Base Plumb\'s dos componentes: dorzolamida 1 gota q8-12h e timolol 1 gota BID; na associação, ajustar por PIO e risco cardiorrespiratório.',
+    dosageGuidance: {
+      labelDose: 'Referência Plumb\'s dos componentes: dorzolamida 1 gota q8-12h; timolol 1 gota BID. Para Cosopt, ajustar por PIO e risco sistêmico.',
+      plumbs: {
+        dog: [
+          { title: 'Dorzolamida componente', dose: '1 gota no olho afetado q8-12h', note: 'Monitorar PIO e conforto ocular.' },
+          { title: 'Timolol componente', dose: '1 gota no olho afetado BID', note: 'Avaliar frequência cardíaca, respiração e contraindicações.' }
+        ],
+        cat: [
+          { title: 'Dorzolamida componente', dose: '1 gota no olho afetado q8-12h', note: 'Monitorar PIO e doença primária.' },
+          { title: 'Timolol componente', dose: '1 gota no olho afetado BID', note: 'Maior cautela com efeitos sistêmicos, especialmente cardiorrespiratórios.' }
+        ]
+      }
+    },
+    plumbsContext: 'Cosopt combina dorzolamida e timolol; Plumb\'s traz as doses dos componentes para glaucoma. Timolol tópico pode causar bradicardia, hipotensão e broncoespasmo.',
     clinicalUse: 'Glaucoma/hipertensão ocular quando combinação é indicada e segura para o paciente.',
     reassessment: 'Monitorar PIO, frequência cardíaca, pressão arterial, respiração e dor ocular.',
-    prescriptionExample: 'Cosopt: aplicar conforme protocolo oftálmico após avaliação de PIO e risco sistêmico.',
+    prescriptionExample: 'Cosopt: usar a partir das doses dos componentes (dorzolamida q8-12h; timolol BID) e ajustar por PIO, frequência cardíaca e respiração.',
     safetyAlert: 'Cautela/evitar em bradicardia, bloqueios, ICC descompensada, asma/broncoespasmo e pacientes debilitados.',
     productPageUrl: 'https://br.mundipharma.com/sites/mundi-pharma-brazil/files/2025-07/cosopt%20bula%20profissional%20ve0125.pdf',
     imageUrl: 'https://unidrogas.vtexassets.com/arquivos/ids/364073/3556610000208.jpg?v=638891185271200000',
@@ -7328,16 +7382,21 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     manufacturer: 'Pfizer / genéricos',
     commercialClass: 'ophthalmologic',
     commercialSubclass: 'ophthalmic_glaucoma',
-    species: ['dog', 'cat'],
+    species: ['dog'],
     presentations: ['Solução oftálmica 0,005% 2,5 mL'],
     activeComponents: ['latanoprosta 0,005%'],
     labelCompositionSummary: 'Análogo de prostaglandina humano que aumenta drenagem uveoescleral; uso extra-label.',
-    labelDirections: 'Bula humana; em veterinária usar conforme espécie e tipo de glaucoma.',
-    dosageGuidance: { labelDose: 'Extra-label: dose bloqueada; usar conforme PIO e diagnóstico.' },
-    plumbsContext: 'Prostaglandinas aumentam drenagem uveoescleral, diferindo de CAIs/timolol que reduzem produção.',
+    labelDirections: 'Plumb\'s: cães com glaucoma primário/hipertensão ocular, 1 gota no olho afetado 1-2x ao dia.',
+    dosageGuidance: {
+      labelDose: 'Plumb\'s: cães, 1 gota no olho afetado SID-BID para glaucoma primário/hipertensão ocular.',
+      plumbs: {
+        dog: [{ title: 'Glaucoma primário/hipertensão ocular', dose: '1 gota no olho afetado SID-BID', note: 'Monitorar PIO rapidamente; evitar quando uveíte/inflamação ou bloqueio pupilar forem risco.' }]
+      }
+    },
+    plumbsContext: 'Plumb\'s descreve latanoprosta principalmente para cães com glaucoma primário/hipertensão ocular; geralmente não é indicada para a maioria dos glaucomas felinos, que costumam ser secundários.',
     clinicalUse: 'Glaucoma canino selecionado, especialmente quando se busca redução rápida de PIO por drenagem.',
     reassessment: 'Reavaliar PIO rapidamente e tratar como urgência quando há dor/visão ameaçada.',
-    prescriptionExample: 'Latanoprosta/Xalatan: aplicar conforme protocolo oftálmico e controle de PIO.',
+    prescriptionExample: 'Latanoprosta/Xalatan: em cães, instilar 1 gota no olho afetado 1-2 vezes ao dia com controle de PIO.',
     safetyAlert: 'Produto humano extra-label. Pode ser inadequado em uveíte anterior/luxação de lente e tem resposta felina variável.',
     productPageUrl: 'https://www.drogasil.com.br/latanoprosta-0-005-mg-ems-genericos-2-5-ml.html',
     imageUrl: 'https://product-data.raiadrogasil.io/images/16452984.webp',
@@ -7354,12 +7413,18 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Suspensão oftálmica 1% 5 mL'],
     activeComponents: ['acetato de prednisolona 1%'],
     labelCompositionSummary: 'Corticosteroide oftálmico humano usado extra-label em cães e gatos.',
-    labelDirections: 'Usar somente após excluir úlcera corneana e conforme diagnóstico.',
-    dosageGuidance: { labelDose: 'Extra-label: BSAVA cita 3-6x/dia em uveíte anterior após fluoresceína negativa.' },
-    plumbsContext: 'Corticoide tópico em uveíte deve ser iniciado somente após descartar úlcera de córnea.',
+    labelDirections: 'Plumb\'s: conjuntivite/ceratite/uveíte anterior, 1 gota ou faixa de 1/4 pol no olho afetado q6h até melhora; depois reduzir gradualmente.',
+    dosageGuidance: {
+      labelDose: 'Plumb\'s: 1 gota ou faixa de 1/4 pol q6h até melhora; reduzir gradualmente. Usar só com fluoresceína negativa.',
+      plumbs: {
+        dog: [{ title: 'Inflamação ocular não ulcerativa', dose: '1 gota ou faixa de 1/4 pol no olho afetado q6h', note: 'Após melhora, reduzir gradualmente; monitorar PIO e superfície ocular.' }],
+        cat: [{ title: 'Inflamação ocular não ulcerativa', dose: '1 gota ou faixa de 1/4 pol no olho afetado q6h', note: 'Monitorar PIO, superfície ocular e risco infeccioso/herpesvírus.' }]
+      }
+    },
+    plumbsContext: 'Plumb\'s descreve prednisolona oftálmica para conjuntivite, ceratite e uveíte anterior não ulcerativas; contraindicar se houver úlcera ou infecção ocular não controlada.',
     clinicalUse: 'Uveíte anterior e inflamação ocular não ulcerativa sob acompanhamento.',
     reassessment: 'Reavaliar fluoresceína, PIO e resposta inflamatória; monitorar risco infeccioso.',
-    prescriptionExample: 'Pred Fort/prednisolona acetato 1%: aplicar conforme protocolo oftálmico apenas com fluoresceína negativa.',
+    prescriptionExample: 'Pred Fort/prednisolona acetato 1%: instilar 1 gota no olho afetado q6h até melhora, depois reduzir, apenas com fluoresceína negativa.',
     safetyAlert: 'Bloquear se úlcera/suspeita de úlcera, trauma, perfuração, infecção não controlada ou herpesvírus felino ativo suspeito.',
     productPageUrl: 'https://www.drogasil.com.br/bulas/acetato-de-prednisolona',
     imageUrl: 'https://static.salcobrandonline.cl/spree/products/122904/large/215350.jpg?1727969790',
@@ -7377,12 +7442,18 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Suspensão oftálmica 5 mL'],
     activeComponents: ['tobramicina 0,3%', 'dexametasona 0,1%'],
     labelCompositionSummary: 'Associação humana de antibiótico aminoglicosídeo + corticosteroide usada extra-label.',
-    labelDirections: 'Usar somente após exame oftálmico e fluoresceína negativa.',
-    dosageGuidance: { labelDose: 'Extra-label: dose bloqueada; exige fluoresceína negativa e indicação clara.' },
-    plumbsContext: 'Combina antibiótico e corticoide; o componente corticoide torna obrigatório descartar úlcera corneana.',
+    labelDirections: 'Plumb\'s: combinação tobramicina + glicocorticoide, 1 gota ou faixa de 1/4-1/2 pol no olho afetado 3-4x/dia; reduzir após controle.',
+    dosageGuidance: {
+      labelDose: 'Plumb\'s: 1 gota ou faixa de 1/4-1/2 pol 3-4x/dia; reduzir após controle. Exige fluoresceína negativa.',
+      plumbs: {
+        dog: [{ title: 'Combinação tobramicina + corticoide', dose: '1 gota ou faixa de 1/4-1/2 pol no olho afetado 3-4x/dia', note: 'Reduzir após controle; usar somente sem úlcera corneana.' }],
+        cat: [{ title: 'Combinação tobramicina + corticoide', dose: '1 gota ou faixa de 1/4-1/2 pol no olho afetado 3-4x/dia', note: 'Cautela com herpesvírus/infecção; exigir fluoresceína negativa.' }]
+      }
+    },
+    plumbsContext: 'Plumb\'s traz posologia para combinação tobramicina + glicocorticoide; o componente corticoide torna obrigatório descartar úlcera corneana.',
     clinicalUse: 'Inflamação ocular não ulcerativa com necessidade de cobertura antibiótica tópica, quando indicado.',
     reassessment: 'Reavaliar em curto prazo; monitorar PIO e sinais de úlcera/infeção.',
-    prescriptionExample: 'Tobradex: aplicar conforme protocolo oftálmico apenas com fluoresceína negativa e reavaliação.',
+    prescriptionExample: 'Tobradex: instilar 1 gota no olho afetado 3-4 vezes ao dia, reduzindo após controle, apenas com fluoresceína negativa.',
     safetyAlert: 'Corticoide tópico é contraindicado em úlcera de córnea ou suspeita. Produto humano extra-label.',
     productPageUrl: 'https://img.drogasil.com.br/raiadrogasil_bula/Tobradex.pdf',
     imageUrl: 'https://beta.cruzverde.cl/on/demandware.static/-/Sites-masterCatalog_Chile/default/dwfc1fa545/images/large/68023-tobradex-gotas-solucion-oftalmica-5-ml-tobramicina-03.jpg',
@@ -7400,12 +7471,18 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Suspensão oftálmica 5 mL'],
     activeComponents: ['dexametasona', 'neomicina', 'polimixina B'],
     labelCompositionSummary: 'Associação humana de corticosteroide + antibióticos usada extra-label em veterinária.',
-    labelDirections: 'Usar somente após exame oftálmico e fluoresceína negativa.',
-    dosageGuidance: { labelDose: 'Extra-label: dose bloqueada; exige fluoresceína negativa e indicação clara.' },
-    plumbsContext: 'Associação com corticoide exige descartar úlcera; antibiótico tópico não substitui diagnóstico.',
+    labelDirections: 'Base Plumb\'s para dexametasona oftálmica: 1 gota ou faixa de 1/4 pol até q2h inicialmente em inflamação não ulcerativa; reduzir após melhora.',
+    dosageGuidance: {
+      labelDose: 'Plumb\'s dexametasona: 1 gota ou faixa de 1/4 pol até q2h inicialmente; reduzir após melhora. Exige fluoresceína negativa.',
+      plumbs: {
+        dog: [{ title: 'Inflamação ocular não ulcerativa', dose: '1 gota ou faixa de 1/4 pol no olho afetado até q2h inicialmente', note: 'Reduzir gradualmente após melhora; não usar em úlcera ou infecção não controlada.' }],
+        cat: [{ title: 'Inflamação ocular não ulcerativa', dose: '1 gota ou faixa de 1/4 pol no olho afetado até q2h inicialmente', note: 'Cautela com herpesvírus e monitorar PIO/superfície ocular.' }]
+      }
+    },
+    plumbsContext: 'Maxitrol combina antibióticos com dexametasona; Plumb\'s descreve a dose da dexametasona oftálmica e reforça contraindicação em úlcera ou infecção ocular não controlada.',
     clinicalUse: 'Inflamação ocular não ulcerativa com cobertura antibiótica selecionada.',
     reassessment: 'Reavaliar superfície ocular, PIO e resposta em curto prazo.',
-    prescriptionExample: 'Maxitrol: aplicar conforme protocolo oftálmico apenas com fluoresceína negativa e reavaliação.',
+    prescriptionExample: 'Maxitrol: instilar 1 gota no olho afetado conforme intensidade inflamatória, podendo iniciar até q2h e reduzir após melhora, apenas com fluoresceína negativa.',
     safetyAlert: 'Bloquear em úlcera/suspeita de úlcera, trauma, perfuração ou infecção viral/fúngica não controlada.',
     productPageUrl: 'https://img.drogasil.com.br/raiadrogasil_bula/MaxitrolColirio.pdf',
     imageUrl: 'https://siman.vtexassets.com/arquivos/ids/4695327/image-3195141f37d64906af252bac24996d87.jpg?v=638307497774870000',
@@ -7422,12 +7499,18 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Solução oftálmica 0,4% 5 mL'],
     activeComponents: ['cetorolaco trometamol 0,4%'],
     labelCompositionSummary: 'AINE oftálmico humano usado extra-label em cães e gatos.',
-    labelDirections: 'Usar conforme inflamação/dor ocular e integridade corneana.',
-    dosageGuidance: { labelDose: 'Extra-label: dose bloqueada; ajustar por diagnóstico e reavaliação.' },
-    plumbsContext: 'AINE tópico pode ser opção anti-inflamatória quando corticoide é indesejado, mas também exige avaliação de superfície ocular.',
+    labelDirections: 'Plumb\'s: conjuntivite alérgica ou inflamação de segmento anterior, 1 gota no olho afetado 2-4x/dia; analgesia pós-operatória 1 gota 2-4x/dia.',
+    dosageGuidance: {
+      labelDose: 'Plumb\'s: 1 gota no olho afetado 2-4x/dia para conjuntivite alérgica/inflamação anterior; pós-op 2-4x/dia.',
+      plumbs: {
+        dog: [{ title: 'Inflamação/alergia ocular', dose: '1 gota no olho afetado 2-4x/dia', note: 'Monitorar dor, fluoresceína e cicatrização corneana.' }],
+        cat: [{ title: 'Inflamação/alergia ocular', dose: '1 gota no olho afetado 2-4x/dia', note: 'Usar com avaliação de superfície ocular e reavaliação curta.' }]
+      }
+    },
+    plumbsContext: 'Plumb\'s descreve cetorolaco oftálmico para conjuntivite alérgica, inflamação de segmento anterior e analgesia pós-operatória; monitorar cicatrização e superfície ocular.',
     clinicalUse: 'Inflamação/dor ocular selecionada, especialmente quando corticoide tópico é contraindicado ou indesejado.',
     reassessment: 'Reavaliar dor, fluoresceína e resposta; suspender se houver piora corneana.',
-    prescriptionExample: 'Acular LS/cetorolaco 0,4%: aplicar conforme protocolo oftálmico individual e reavaliação.',
+    prescriptionExample: 'Acular LS/cetorolaco 0,4%: instilar 1 gota no olho afetado 2-4 vezes ao dia conforme indicação e reavaliação.',
     safetyAlert: 'Produto humano extra-label. Cautela em úlcera, olho seco importante e cicatrização corneana comprometida.',
     productPageUrl: 'https://img.drogasil.com.br/raiadrogasil_bula/AcularAlergan.pdf',
     imageUrl: 'https://www.farmaciasahumada.cl/on/demandware.static/-/Sites-ahumada-master-catalog/default/dw03de2a7d/images/products/47817/47817.jpg',
@@ -7518,7 +7601,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Suplemento mineral vitamínico com ácidos graxos essenciais (Ômega 3 e 6), biotina, zinco quelatado e vitaminas A e E.',
     labelDirections: 'Administrar 1 cápsula ao dia para cães e gatos de até 10 kg de peso. A cápsula pode ser administrada inteira ou o conteúdo oferecido misturado ao alimento. Acima de 10 kg, administrar a critério do médico-veterinário.',
     dosageGuidance: {'labelDose':'1 cápsula ao dia para cães e gatos de até 10 kg de peso.'},
-    plumbsContext: '',
+    plumbsContext: 'Suplemento dermatológico com ácidos graxos e micronutrientes; não equivale automaticamente a dose terapêutica calculada de EPA + DHA.',
     clinicalUse: 'Suporte de pele/pelagem/barreira cutânea como adjuvante em dermatite atópica, xerose e pelagem seca, após confirmar composição.',
     reassessment: 'Reavaliar tolerância gastrointestinal, dieta, triglicérides e resposta dermatológica em semanas.',
     prescriptionExample: 'Administrar 1 cápsula de Hydrapet Ômega por via oral a cada 24 horas, misturada ao alimento ou inteira.',

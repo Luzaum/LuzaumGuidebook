@@ -126,16 +126,16 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
   };
 
   const chipButtonClass =
-    'min-h-10 rounded-xl border-2 px-3.5 py-2 text-sm font-bold transition-all';
+    'min-h-11 rounded-xl border-2 px-3.5 py-2 text-sm font-bold transition-all';
 
   return (
     <>
-      <div className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm transition-colors duration-200 dark:border-slate-800 dark:bg-slate-900 md:p-6 xl:p-7">
-        <div className="mb-6 flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-amber-100 bg-amber-50 text-amber-600 dark:border-amber-500/20 dark:bg-amber-500/10 dark:text-amber-400">
+      <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-colors duration-200 dark:border-slate-800 dark:bg-slate-900 md:p-6 xl:p-7">
+        <div className="mb-4 flex items-center gap-3 md:mb-6">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-amber-100 bg-amber-50 text-amber-600 dark:border-amber-500/20 dark:bg-amber-500/10 dark:text-amber-400 md:h-10 md:w-10">
             <Settings2 className="h-5 w-5" />
           </div>
-          <div>
+          <div className="min-w-0">
             <h2 className="text-lg font-bold tracking-tight text-slate-800 dark:text-white">3. Configuracao da infusao</h2>
             <p className="mt-0.5 text-xs font-medium text-slate-500 dark:text-slate-400">
               Ajuste dose, estoque, preparo e administracao em uma malha mais ampla.
@@ -143,20 +143,20 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
           </div>
         </div>
 
-        <div className="grid gap-5 xl:grid-cols-[minmax(0,1.3fr)_minmax(340px,0.9fr)] 2xl:grid-cols-[minmax(0,1.38fr)_minmax(360px,0.85fr)]">
-          <div className="space-y-5">
-            <section className="rounded-3xl border border-slate-200 bg-slate-50/80 p-4 dark:border-slate-800 dark:bg-slate-950/35">
+        <div className="grid gap-4 xl:grid-cols-[minmax(0,1.3fr)_minmax(340px,0.9fr)] xl:gap-5 2xl:grid-cols-[minmax(0,1.38fr)_minmax(360px,0.85fr)]">
+          <div className="space-y-4 xl:space-y-5">
+            <section className="rounded-2xl border border-slate-200 bg-slate-50/80 p-3.5 dark:border-slate-800 dark:bg-slate-950/35 md:p-4">
               <label className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
                 <Activity className="h-4 w-4 text-slate-400 dark:text-slate-500" /> Regime terapêutico <span className="text-red-500 dark:text-red-400">*</span>
               </label>
-              <div className="mt-3 flex flex-wrap gap-2.5">
+              <div className="mt-3 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-2.5">
                 {supportedRegimes.map((item) => (
                   <button
                     key={item}
                     type="button"
                     onClick={() => onChange('regime', item)}
                     className={cn(
-                      'min-h-10 min-w-[132px] rounded-xl border-2 px-4 py-2 text-sm font-bold uppercase tracking-[0.18em] transition-all',
+                      'min-h-11 rounded-xl border-2 px-3 py-2 text-sm font-bold uppercase tracking-[0.12em] transition-all sm:min-w-[132px] sm:px-4 sm:tracking-[0.18em]',
                       activeRegime === item
                         ? 'border-amber-500 bg-amber-50/70 text-amber-700 shadow-sm dark:border-amber-500/50 dark:bg-amber-500/20 dark:text-amber-300'
                         : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400 dark:hover:border-slate-600 dark:hover:bg-slate-800',
@@ -168,8 +168,8 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
               </div>
             </section>
 
-            <div className="grid gap-5 2xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-              <section className="space-y-3 rounded-3xl border border-slate-200 bg-slate-50/80 p-4 dark:border-slate-800 dark:bg-slate-950/35">
+            <div className="grid gap-4 2xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] 2xl:gap-5">
+              <section className="space-y-3 rounded-2xl border border-slate-200 bg-slate-50/80 p-3.5 dark:border-slate-800 dark:bg-slate-950/35 md:p-4">
                 <div className="flex items-center justify-between gap-3">
                   <label className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
                     <BadgeCheck className="h-4 w-4 text-slate-400 dark:text-slate-500" /> Dose alvo <span className="text-red-500 dark:text-red-400">*</span>
@@ -187,7 +187,7 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
                       onChange('dose', val === '' ? 0 : parseFloat(val));
                     }}
                     className={cn(
-                      'rounded-xl border-2 px-3 py-2.5 text-base font-bold transition-all focus:outline-none focus:ring-4',
+                      'min-h-11 rounded-xl border-2 px-3 py-2.5 text-base font-bold transition-all focus:outline-none focus:ring-4',
                       dose <= 0
                         ? 'border-red-300 bg-red-50 text-red-900 focus:border-red-500 focus:ring-red-500/10 dark:border-red-500/50 dark:bg-red-500/10 dark:text-red-100 dark:focus:border-red-500 dark:focus:ring-red-500/20'
                         : 'border-slate-200 bg-white text-slate-800 focus:border-amber-500 focus:ring-amber-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:focus:border-amber-500 dark:focus:ring-amber-500/20',
@@ -197,7 +197,7 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
                   <select
                     value={doseUnit}
                     onChange={(event) => onChange('doseUnit', event.target.value as DoseUnit)}
-                    className="rounded-xl border-2 border-slate-200 bg-white px-3 py-2.5 text-sm font-bold text-slate-800 transition-all focus:border-amber-500 focus:outline-none focus:ring-4 focus:ring-amber-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:focus:border-amber-500 dark:focus:ring-amber-500/20"
+                    className="min-h-11 rounded-xl border-2 border-slate-200 bg-white px-3 py-2.5 text-sm font-bold text-slate-800 transition-all focus:border-amber-500 focus:outline-none focus:ring-4 focus:ring-amber-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:focus:border-amber-500 dark:focus:ring-amber-500/20"
                   >
                     {(['bolus', 'bolus_maintenance'].includes(regime)
                       ? ['mcg/kg', 'mg/kg', 'mL/kg']
@@ -251,14 +251,14 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
                 {dose <= 0 && <p className="text-xs font-medium text-red-500 dark:text-red-400">A dose deve ser maior que zero.</p>}
               </section>
 
-              <section className="space-y-3 rounded-3xl border border-slate-200 bg-slate-50/80 p-4 dark:border-slate-800 dark:bg-slate-950/35">
+              <section className="space-y-3 rounded-2xl border border-slate-200 bg-slate-50/80 p-3.5 dark:border-slate-800 dark:bg-slate-950/35 md:p-4">
                 <label className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
                   <Droplets className="h-4 w-4 text-slate-400 dark:text-slate-500" /> Apresentação <span className="text-red-500 dark:text-red-400">*</span>
                 </label>
                 <select
                   value={presentationId}
                   onChange={(event) => onChange('presentationId', event.target.value)}
-                  className="w-full rounded-xl border-2 border-slate-200 bg-white px-3 py-2.5 text-sm font-medium text-slate-800 transition-all focus:border-indigo-500 focus:outline-none focus:ring-4 focus:ring-indigo-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:focus:border-indigo-500 dark:focus:ring-indigo-500/20"
+                  className="min-h-11 w-full rounded-xl border-2 border-slate-200 bg-white px-3 py-2.5 text-sm font-medium text-slate-800 transition-all focus:border-indigo-500 focus:outline-none focus:ring-4 focus:ring-indigo-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:focus:border-indigo-500 dark:focus:ring-indigo-500/20"
                 >
                   {presentationOptions.map((presentation) => (
                     <option key={presentation.id} value={presentation.id}>
@@ -289,7 +289,7 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
                           );
                         }}
                         className={cn(
-                          'rounded-xl border-2 px-3 py-2.5 text-base font-bold transition-all focus:outline-none focus:ring-4',
+                          'min-h-11 rounded-xl border-2 px-3 py-2.5 text-base font-bold transition-all focus:outline-none focus:ring-4',
                           customPresentationConcentration <= 0
                             ? 'border-red-300 bg-white text-red-900 focus:border-red-500 focus:ring-red-500/10 dark:border-red-500/50 dark:bg-slate-900 dark:text-red-100 dark:focus:border-red-500 dark:focus:ring-red-500/20'
                             : 'border-slate-200 bg-white text-slate-800 focus:border-indigo-500 focus:ring-indigo-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:focus:border-indigo-500 dark:focus:ring-indigo-500/20',
@@ -299,7 +299,7 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
                       <select
                         value={customPresentationUnit}
                         onChange={(event) => onChange('customPresentationUnit', event.target.value)}
-                        className="rounded-xl border-2 border-slate-200 bg-white px-3 py-2.5 text-sm font-bold text-slate-800 transition-all focus:border-indigo-500 focus:outline-none focus:ring-4 focus:ring-indigo-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:focus:border-indigo-500 dark:focus:ring-indigo-500/20"
+                        className="min-h-11 rounded-xl border-2 border-slate-200 bg-white px-3 py-2.5 text-sm font-bold text-slate-800 transition-all focus:border-indigo-500 focus:outline-none focus:ring-4 focus:ring-indigo-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:focus:border-indigo-500 dark:focus:ring-indigo-500/20"
                       >
                         {['mg/mL', 'mcg/mL', 'U/mL', 'mU/mL'].map((unit) => (
                           <option key={unit} value={unit}>
@@ -331,7 +331,7 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
               </section>
             </div>
 
-            <section className="space-y-4 rounded-3xl border border-slate-200 bg-slate-50/80 p-4 dark:border-slate-800 dark:bg-slate-950/35">
+            <section className="space-y-3 rounded-2xl border border-slate-200 bg-slate-50/80 p-3.5 dark:border-slate-800 dark:bg-slate-950/35 md:space-y-4 md:p-4">
               <label className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
                 <Droplets className="h-4 w-4 text-slate-400 dark:text-slate-500" /> Recipiente de preparo
               </label>
@@ -426,8 +426,8 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
             </section>
           </div>
 
-          <div className="space-y-5">
-            <section className="space-y-3 rounded-3xl border border-slate-200 bg-slate-50/80 p-4 dark:border-slate-800 dark:bg-slate-950/35">
+          <div className="space-y-4 xl:space-y-5">
+            <section className="space-y-3 rounded-2xl border border-slate-200 bg-slate-50/80 p-3.5 dark:border-slate-800 dark:bg-slate-950/35 md:p-4">
               <div className="flex items-center justify-between gap-3">
                 <label className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
                   <Droplets className="h-4 w-4 text-slate-400 dark:text-slate-500" /> Diluente <span className="text-red-500 dark:text-red-400">*</span>
@@ -437,7 +437,7 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
               <select
                 value={diluent}
                 onChange={(event) => onChange('diluent', event.target.value as Diluent)}
-                className="w-full rounded-xl border-2 border-slate-200 bg-white px-3 py-2.5 text-sm font-medium text-slate-800 transition-all focus:border-amber-500 focus:outline-none focus:ring-4 focus:ring-amber-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:focus:border-amber-500 dark:focus:ring-amber-500/20"
+                className="min-h-11 w-full rounded-xl border-2 border-slate-200 bg-white px-3 py-2.5 text-sm font-medium text-slate-800 transition-all focus:border-amber-500 focus:outline-none focus:ring-4 focus:ring-amber-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:focus:border-amber-500 dark:focus:ring-amber-500/20"
               >
                 {availableDiluents.map((item) => (
                   <option key={item} value={item}>
@@ -450,7 +450,7 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
               </div>
             </section>
 
-            <section className="space-y-4 rounded-3xl border border-slate-200 bg-slate-50/80 p-4 dark:border-slate-800 dark:bg-slate-950/35">
+            <section className="space-y-3 rounded-2xl border border-slate-200 bg-slate-50/80 p-3.5 dark:border-slate-800 dark:bg-slate-950/35 md:space-y-4 md:p-4">
               <div className="flex items-center justify-between gap-3">
                 <label className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
                   <Activity className="h-4 w-4 text-slate-400 dark:text-slate-500" /> Via de acesso
@@ -486,7 +486,7 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
               <p className="text-xs font-medium text-slate-500 dark:text-slate-400">{formatAccessLabel(accessType)}</p>
             </section>
 
-            <section className="space-y-4 rounded-3xl border border-slate-200 bg-slate-50/80 p-4 dark:border-slate-800 dark:bg-slate-950/35">
+            <section className="space-y-3 rounded-2xl border border-slate-200 bg-slate-50/80 p-3.5 dark:border-slate-800 dark:bg-slate-950/35 md:space-y-4 md:p-4">
               <label className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
                 <Gauge className="h-4 w-4 text-slate-400 dark:text-slate-500" /> Tipo de bomba
               </label>
@@ -519,7 +519,7 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
             </section>
 
             {activeRegime !== 'bolus' && (
-              <section className="space-y-3 rounded-3xl border border-slate-200 bg-slate-50/80 p-4 dark:border-slate-800 dark:bg-slate-950/35">
+              <section className="space-y-3 rounded-2xl border border-slate-200 bg-slate-50/80 p-3.5 dark:border-slate-800 dark:bg-slate-950/35 md:p-4">
                 <div className="flex items-center justify-between gap-3">
                   <label className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
                     <Gauge className="h-4 w-4 text-slate-400 dark:text-slate-500" /> Taxa de infusão na bomba (mL/h)
@@ -536,7 +536,7 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
                     onChange('infusionRate', val === '' ? 0 : parseFloat(val));
                   }}
                   className={cn(
-                    'w-full rounded-xl border-2 px-3 py-2.5 text-base font-bold transition-all focus:outline-none focus:ring-4',
+                    'min-h-11 w-full rounded-xl border-2 px-3 py-2.5 text-base font-bold transition-all focus:outline-none focus:ring-4',
                     infusionRate <= 0
                       ? 'border-red-300 bg-red-50 text-red-900 focus:border-red-500 focus:ring-red-500/10 dark:border-red-500/50 dark:bg-red-500/10 dark:text-red-100 dark:focus:border-red-500 dark:focus:ring-red-500/20'
                       : 'border-slate-200 bg-white text-slate-800 focus:border-amber-500 focus:ring-amber-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:focus:border-amber-500 dark:focus:ring-amber-500/20',

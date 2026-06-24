@@ -75,6 +75,23 @@ function isClinicalFigure(value: unknown): value is EditorialClinicalFigure {
   return v.kind === 'clinicalFigure' && typeof v.src === 'string' && v.src.length > 0 && typeof v.alt === 'string' && v.alt.length > 0;
 }
 
+function figureViewportClass(display: EditorialClinicalFigure['display']) {
+  switch (display) {
+    case 'compact':
+      return 'h-52 md:h-60';
+    case 'wide':
+      return 'h-80 md:h-[30rem]';
+    case 'full':
+      return 'h-96 md:h-[36rem]';
+    default:
+      return 'h-64 md:h-72';
+  }
+}
+
+function figureGridSpanClass(figure: EditorialClinicalFigure) {
+  return figure.display === 'full' || figure.display === 'wide' ? 'sm:col-span-2' : '';
+}
+
 function ClinicalFigureBlock({ figure }: { figure: EditorialClinicalFigure }) {
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -85,11 +102,12 @@ function ClinicalFigureBlock({ figure }: { figure: EditorialClinicalFigure }) {
           onClick={() => setIsOpen(true)}
           className="group relative overflow-hidden rounded-xl border border-border/55 bg-muted/20 p-2 shadow-sm ring-1 ring-black/[0.04] dark:ring-white/[0.06] md:p-3 cursor-zoom-in transition-all duration-200 hover:border-primary/30 hover:bg-muted/30"
         >
-          <div className="relative w-full h-64 md:h-72 flex items-center justify-center bg-black/5 dark:bg-black/20 rounded-lg overflow-hidden">
+          <div className={cn('relative w-full flex items-center justify-center bg-black/5 dark:bg-black/20 rounded-lg overflow-hidden', figureViewportClass(figure.display))}>
             <img
               src={figure.src}
               alt={figure.alt}
               loading="lazy"
+              decoding="async"
               className="h-full w-full object-contain rounded-lg transition-transform duration-300 group-hover:scale-[1.01]"
             />
           </div>
@@ -464,12 +482,14 @@ function FlowSubsection({
   children,
   subsectionKey,
   visual,
+  className,
 }: {
   title: string;
   tone: SubsectionTone;
   children: React.ReactNode;
   subsectionKey?: string;
   visual?: DiseaseSectionVisual;
+  className?: string;
 }) {
   const TopicGlyph =
     subsectionKey && tone !== 'species' && tone !== 'speciesDog'
@@ -478,7 +498,7 @@ function FlowSubsection({
 
   if (tone === 'default') {
     return (
-      <div className="rounded-2xl border border-border/55 bg-background/70 p-4 shadow-md ring-1 ring-black/[0.04] dark:bg-background/45 dark:ring-white/[0.07] md:p-5">
+      <div className={cn('rounded-2xl border border-border/55 bg-background/70 p-4 shadow-md ring-1 ring-black/[0.04] dark:bg-background/45 dark:ring-white/[0.07] md:p-5', className)}>
         <h4 className="flex items-center gap-3 text-base font-semibold tracking-tight text-foreground">
           {TopicGlyph && visual ? (
             <span
@@ -502,7 +522,7 @@ function FlowSubsection({
 
   if (tone === 'species') {
     return (
-      <div className="rounded-2xl border border-violet-500/25 border-l-4 border-l-violet-500 bg-violet-500/[0.06] p-4 shadow-sm dark:border-l-violet-400 dark:bg-violet-400/[0.09] md:p-5">
+      <div className={cn('rounded-2xl border border-violet-500/25 border-l-4 border-l-violet-500 bg-violet-500/[0.06] p-4 shadow-sm dark:border-l-violet-400 dark:bg-violet-400/[0.09] md:p-5', className)}>
         <h4 className="flex items-center gap-3 text-base font-semibold tracking-tight text-violet-950 dark:text-violet-100">
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-500/20 dark:bg-violet-400/25" aria-hidden>
             <Cat className="h-5 w-5 text-violet-600 dark:text-violet-300" />
@@ -516,7 +536,7 @@ function FlowSubsection({
 
   if (tone === 'speciesDog') {
     return (
-      <div className="rounded-2xl border border-sky-500/25 border-l-4 border-l-sky-600 bg-sky-500/[0.06] p-4 shadow-sm dark:border-l-sky-400 dark:bg-sky-400/[0.09] md:p-5">
+      <div className={cn('rounded-2xl border border-sky-500/25 border-l-4 border-l-sky-600 bg-sky-500/[0.06] p-4 shadow-sm dark:border-l-sky-400 dark:bg-sky-400/[0.09] md:p-5', className)}>
         <h4 className="flex items-center gap-3 text-base font-semibold tracking-tight text-sky-950 dark:text-sky-100">
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-500/20 dark:bg-sky-400/25" aria-hidden>
             <Dog className="h-5 w-5 text-sky-700 dark:text-sky-300" />
@@ -550,7 +570,7 @@ function FlowSubsection({
             : 'h-5 w-5 shrink-0 text-primary';
 
   return (
-    <div className={cn('rounded-2xl border border-l-4 p-4 shadow-md ring-1 ring-black/[0.03] dark:ring-white/[0.06] md:p-5', shell)}>
+    <div className={cn('rounded-2xl border border-l-4 p-4 shadow-md ring-1 ring-black/[0.03] dark:ring-white/[0.06] md:p-5', shell, className)}>
       <h4 className="flex items-center gap-3 text-base font-semibold tracking-tight text-foreground">
         {TopicGlyph && visual ? (
           <span
@@ -744,6 +764,7 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
               return (
                 <div key={`figures-grid-${idx}`} className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
                   {group.entries.map(([key, value]) => {
+                    const figure = value as EditorialClinicalFigure;
                     const tone = subsectionToneForKey(key);
                     return (
                       <FlowSubsection
@@ -752,6 +773,7 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
                         tone={tone}
                         subsectionKey={key}
                         visual={visual}
+                        className={figureGridSpanClass(figure)}
                       >
                         {renderContent(value as EditorialSectionValue)}
                       </FlowSubsection>
