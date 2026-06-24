@@ -286,7 +286,7 @@ function DoseEntryList({ entries }: { entries: CommercialMedicationDoseEntry[] }
 }
 
 const PRACTICAL_DOSE_PATTERN =
-  /(\d+(?:[,.]\d+)?\s*(?:a|-)?\s*\d*(?:[,.]\d+)?\s*(?:mg|mcg|ug|µg|ml|mL|UI|U|%)\s*(?:\/\s*(?:kg|5 kg|10 kg|20 kg|40 kg))?|\d+(?:[,.]\d+)?\s*(?:cm|min|minuto|minutos|h|hora|horas|dia|dias|semana|semanas)\b|\d+\s*(?:a|-)\s*\d+\s*(?:x|vez|vezes)\s*(?:\/|por)?\s*(?:dia|semana)|\d+\s*(?:x|vez|vezes)\s*(?:\/|por)?\s*(?:dia|semana)|\b(?:q\s*\d+\s*h?|q\d+h?|sid|bid|tid|qid)\b|\b(?:a\s+)?cada\s+\d+|\d+\s*(?:gota|gotas|pipeta|pipetas|comprimido|comprimidos|comp|capsula|capsulas|cápsula|cápsulas|spray|jato|jatos|coleira)\b|(?:preencher|instilar)\s+(?:o\s+)?conduto|quantidade\s+suficiente|fina\s+camada|todas\s+as\s+refeições|número\s+de\s+borrifadas|diariamente|semanal(?:mente)?|mensal(?:mente)?)/i;
+  /(\d+(?:[,.]\d+)?\s*(?:a|-)?\s*\d*(?:[,.]\d+)?\s*(?:mg|mcg|ug|µg|m²|m2|ml|mL|UI|U|%)\s*(?:\/\s*(?:kg|m²|m2|5 kg|10 kg|20 kg|40 kg))?|\d+(?:[,.]\d+)?\s*(?:cm|min|minuto|minutos|h|hora|horas|dia|dias|semana|semanas)\b|\d+\s*(?:a|-)\s*\d+\s*(?:x|vez|vezes)\s*(?:\/|por)?\s*(?:dia|semana)|\d+\s*(?:x|vez|vezes)\s*(?:\/|por)?\s*(?:dia|semana)|(?:uma|duas|tres|três)\s+vez(?:es)?\s+(?:ao|por)\s+(?:dia|mes|mês|semana)|\b(?:q\s*\d+\s*h?|q\d+h?|sid|bid|tid|qid)\b|\b(?:a\s+)?cada\s+\d+|\d+\s*(?:gota|gotas|pipeta|pipetas|tablete|tabletes|aplicador|aplicadores|flaconete|flaconetes|comprimido|comprimidos|comp|capsula|capsulas|cápsula|cápsulas|spray|jato|jatos|borrifada|borrifadas|aplicação|aplicações|aplicacao|aplicacoes|coleira)\b|(?:preencher|instilar)\s+(?:o\s+)?conduto|quantidade\s+suficiente|fina\s+camada|faixa\s+de\s+peso|dose\s+do\s+medidor|diretamente\s+(?:na|no)|todas\s+as\s+refeições|número\s+de\s+borrifadas|(?:borrifar|borrifação|embeber\s+algodão|seringa\s+graduada|pós-banho)|(?:deixar\s+agir|tempo\s+de\s+contato|banhar|molhar|umedecer|massagear|enxaguar|aplicar\s+no\s+banho|escovar)|diariamente|semanal(?:mente)?|mensal(?:mente)?)/i;
 
 const BLOCKED_DOSE_PATTERN =
   /(dose bloqueada|bloquear receita|conferir bula|pendente de bula|posologia de bula n[aã]o cadastrada|sem dose padr[aã]o|sem dose espec[ií]fica)/i;
@@ -342,7 +342,7 @@ function DosageGuidance({ product }: { product: CommercialMedicationProduct }) {
   const speciesDoseGroups = [
     product.species.includes('dog') ? { species: 'dog' as VetSpecies, label: 'Cão', icon: Dog, entries: dogEntries } : null,
     product.species.includes('cat') ? { species: 'cat' as VetSpecies, label: 'Gato', icon: Cat, entries: catEntries } : null,
-  ].filter(Boolean) as Array<{ species: VetSpecies; label: string; icon: typeof Dog; entries: CommercialMedicationDoseEntry[] }>;
+  ].filter((group): group is { species: VetSpecies; label: string; icon: typeof Dog; entries: CommercialMedicationDoseEntry[] } => Boolean(group && group.entries.length > 0));
   const notes = product.dosageGuidance?.notes || [];
   const hasPracticalDirections = hasPracticalDoseText(product.labelDirections);
   const hasPracticalPrescription = hasPracticalDoseText(product.prescriptionExample);
@@ -410,13 +410,7 @@ function DosageGuidance({ product }: { product: CommercialMedicationProduct }) {
                     <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">Plumb&apos;s / leitura clínica</p>
                   </div>
                 </div>
-                {entries.length > 0 ? (
-                  <DoseEntryList entries={entries} />
-                ) : (
-                  <p className="mt-3 rounded-lg border border-dashed border-border/80 bg-background/60 p-3 text-sm leading-6 text-muted-foreground">
-                    Dose Plumb&apos;s prática não cadastrada para {label.toLowerCase()}.
-                  </p>
-                )}
+                <DoseEntryList entries={entries} />
               </div>
             ))}
           </div>

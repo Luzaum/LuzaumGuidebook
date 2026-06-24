@@ -1,6 +1,6 @@
 import { DiseaseRecord } from '../../types/disease';
 
-const ASSET_BASE = '/assets/consulta-vet/diseases/erliquiose';
+const ASSET_BASE = '/assets/consulta-vet';
 
 /** Erliquiose monocitica canina (CME) - atualizada a partir do material VIN 2025 + imagens fornecidas. */
 export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
@@ -131,17 +131,17 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
       kind: 'clinicalFigure',
       src: `${ASSET_BASE}/ciclo-rhipicephalus-sanguineus-1600.jpg`,
       alt: 'Ciclo de vida do carrapato Rhipicephalus sanguineus em caes',
-      display: 'full',
+      display: 'wide',
       caption:
-        'Ciclo de Rhipicephalus sanguineus: femeas ingurgitadas caem no ambiente, ovipositam em locais protegidos, larvas/ninfas/adultos fazem repasto em caes e retornam ao ambiente para muda ou postura. Em condicoes favoraveis, o ciclo pode fechar em cerca de 2 meses. Fonte da imagem: Ferrolho et al., "The Complexities of Canine Monocytic Ehrlichiosis", Microbiology Research 2025, Fig. 2; criada com BioRender.',
+        'Diagrama do ciclo biologico de tres hospedeiros do carrapato-marrom (Rhipicephalus sanguineus), detalhando as fases de ovo, larva, ninfa e adulto, destacando a infestacao em ambientes internos (indoor) e externos (outdoor) e a transmissao do patogeno aos caes.',
     },
     figuraCarrapato: {
       kind: 'clinicalFigure',
       src: `${ASSET_BASE}/fig-26-2-carrapato-marrom.jpg`,
-      alt: 'Carrapato-marrom-do-cao Rhipicephalus sanguineus macho e femea ingurgitada',
+      alt: 'Macho e femea ingurgitada de Rhipicephalus sanguineus',
       display: 'wide',
       caption:
-        'Carrapato-marrom-do-cao, Rhipicephalus sanguineus: macho a esquerda e femea ingurgitada a direita. E o vetor classico de E. canis. Fonte da imagem: Harrus, Waner e Neer, capitulo "Ehrlichia and Anaplasma Infections", Infectious Diseases of the Dog and Cat, Fig. 26-2, via Veterian Key.',
+        'Comparativo morfologico do vetor Rhipicephalus sanguineus: macho a esquerda (pequeno, plano e escuro) e femea ingurgitada a direita (aumentada de tamanho e repleta de sangue apos o repasto sanguineo).',
     },
     patogeneseInicial:
       'No hospedeiro, E. canis se aloja em monocitos e macrofagos, forma morulas e se dissemina para baco, figado, linfonodos e endotelio vascular. A vasculite, a ativacao imune e a disfuncao plaquetaria explicam boa parte dos sinais iniciais.',
@@ -155,7 +155,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
       alt: 'Ciclo de desenvolvimento de Ehrlichia canis em celulas do cao',
       display: 'full',
       caption:
-        'Desenvolvimento de E. canis em celulas do cao: entrada em celulas mononucleares, multiplicacao em vacuolos/morulas e liberacao para infectar novas celulas. Fonte da imagem: Harrus, Waner e Neer, "Ehrlichia and Anaplasma Infections", Infectious Diseases of the Dog and Cat, Fig. 26-3, via Veterian Key.',
+        'Esquema do ciclo intracelular de desenvolvimento de Ehrlichia canis: fixacao e entrada no monocito, replicacao binaria em vacuolos formando morulas, maturacao e liberacao atraves da lise ou exocitose para infectar novas celulas.',
     },
     faseAguda:
       'Na fase aguda, o agente se multiplica em macrofagos e se dissemina. A chegada a figado, baco e linfonodos pode causar organomegalia; o envolvimento vascular contribui para vasculite, febre, edema e sangramentos.',
@@ -208,45 +208,49 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         ],
       ],
     },
-    petequiasAbdominais: {
-      kind: 'clinicalFigure',
-      src: `${ASSET_BASE}/fig-26-4-petequias-abdominais.jpg`,
-      alt: 'Petequias em pele abdominal ventral de cadela com Ehrlichia canis',
-      display: 'compact',
-      caption:
-        'Petequias em pele abdominal ventral por trombocitopenia em cadela infectada por E. canis. Fonte da imagem: Harrus, Waner e Neer, "Ehrlichia and Anaplasma Infections", Fig. 26-4, via Veterian Key.',
+    sinaisHemorragicosCutaneoMucosos: {
+      petequiasAbdominais: {
+        kind: 'clinicalFigure',
+        src: `${ASSET_BASE}/fig-26-4-petequias-abdominais.jpg`,
+        alt: 'Petequias cutaneas no abdomen ventral de um cao',
+        display: 'wide',
+        caption:
+          'Petequias e sufoes hemorragicas difusas na pele da regiao abdominal ventral de um cao, caracteristicas de trombocitopenia grave e vasculite na fase aguda da infeccao.',
+      },
+      petequiasMucosas: {
+        kind: 'clinicalFigure',
+        src: `${ASSET_BASE}/fig-26-5-petequias-mucosas.jpg`,
+        alt: 'Petequias na mucosa gengival de um cao',
+        display: 'wide',
+        caption:
+          'Presenca de multiplas petequias (pequenos pontos hemorragicos avermelhados) na mucosa gengival oral de um cao, reforcando a importancia da inspecao de mucosas.',
+      },
     },
-    petequiasMucosas: {
-      kind: 'clinicalFigure',
-      src: `${ASSET_BASE}/fig-26-5-petequias-mucosas.jpg`,
-      alt: 'Petequias em mucosa por infeccao por Ehrlichia canis',
-      display: 'compact',
-      caption:
-        'Petequias em mucosa por infeccao por E. canis. Boa imagem para lembrar que a inspecao de mucosas ajuda a detectar sangramento discreto. Fonte da imagem: Harrus, Waner e Neer, "Ehrlichia and Anaplasma Infections", Fig. 26-5, via Veterian Key.',
-    },
-    epistaxe: {
-      kind: 'clinicalFigure',
-      src: `${ASSET_BASE}/fig-26-6-epistaxe.jpg`,
-      alt: 'Epistaxe em cao por Ehrlichia canis',
-      display: 'compact',
-      caption:
-        'Epistaxe em cao por E. canis. Em CME, sangramento nasal pode refletir trombocitopenia, trombocitopatia e vasculite. Fonte da imagem: Harrus, Waner e Neer, "Ehrlichia and Anaplasma Infections", Fig. 26-6, via Veterian Key.',
-    },
-    hifema: {
-      kind: 'clinicalFigure',
-      src: `${ASSET_BASE}/fig-26-7-hifema.jpg`,
-      alt: 'Hifema em cao com infeccao por Ehrlichia canis',
-      display: 'compact',
-      caption:
-        'Hifema em cao com E. canis. Alteracoes oculares podem ser apresentacao inicial e exigem exame oftalmico cuidadoso. Fonte da imagem: Harrus, Waner e Neer, "Ehrlichia and Anaplasma Infections", Fig. 26-7, via Veterian Key.',
-    },
-    hemorragiaEscleral: {
-      kind: 'clinicalFigure',
-      src: `${ASSET_BASE}/fig-26-8-hemorragia-escleral.jpg`,
-      alt: 'Hemorragia escleral em cao por Ehrlichia canis',
-      display: 'compact',
-      caption:
-        'Hemorragia escleral em cao por E. canis. Agrupada com hifema por representar manifestacoes oculares/hemorragicas de alto valor visual. Fonte da imagem: Harrus, Waner e Neer, "Ehrlichia and Anaplasma Infections", Fig. 26-8, via Veterian Key.',
+    sinaisCavidadesEOculares: {
+      epistaxe: {
+        kind: 'clinicalFigure',
+        src: `${ASSET_BASE}/fig-26-6-epistaxe.jpg`,
+        alt: 'Sangramento nasal ativo (epistaxe) em cao',
+        display: 'wide',
+        caption:
+          'Fluxo ativo de sangue pelas narinas (epistaxe unilateral) em um cao acometido, decorrente de disfuncao plaquetaria, trombocitopenia acentuada e lesao endotelial.',
+      },
+      hifema: {
+        kind: 'clinicalFigure',
+        src: `${ASSET_BASE}/fig-26-7-hifema.jpg`,
+        alt: 'Acumulo de sangue na camara anterior do olho (hifema)',
+        display: 'wide',
+        caption:
+          'Hifema unilateral caracterizado pelo acumulo de sangue livre na camara anterior do olho de um cao, resultante de uveite anterior grave e vasculite associadas a erliquiose.',
+      },
+      hemorragiaEscleral: {
+        kind: 'clinicalFigure',
+        src: `${ASSET_BASE}/fig-26-8-hemorragia-escleral.jpg`,
+        alt: 'Hemorragia escleral e conjuntival',
+        display: 'wide',
+        caption:
+          'Hemorragia subconjuntival e escleral evidente na esclera de um cao, representando outra manifestacao ocular comum das alteracoes vasculares e plaquetarias da doenca.',
+      },
     },
   },
   diagnosis: {
@@ -321,15 +325,15 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
       alt: 'Morula de Ehrlichia canis em monocito no esfregaco sanguineo de um cao',
       display: 'wide',
       caption:
-        'Esfregaco sanguineo periferico de cao: monocito na borda da cauda com morula citoplasmatica, consistente com E. canis. Fonte da imagem: Piccione e Schroeder, estudo de caso "Ehrlichia canis discovered in dog", Texas A&M TVMDL, Fig. 1.',
+        'Esfregaco de sangue periferico corado demonstrando uma morula basofilica tipica de Ehrlichia canis no citoplasma de um monocito (estrutura arredondada composta por multiplos organismos agrupados).',
     },
     morulaDetalhada: {
       kind: 'clinicalFigure',
       src: `${ASSET_BASE}/fig-26-1-morula-e-ciclo-celular.jpg`,
       alt: 'Morula de Ehrlichia canis em monocito e em cultura DH82',
-      display: 'full',
+      display: 'wide',
       caption:
-        'E. canis em morula: A) morula no citoplasma de monocito em esfregaco sanguineo; B) morulas em celulas DH82; C) morula em microscopia eletronica, com multiplos organismos e fissao binaria. Fonte da imagem: Harrus, Waner e Neer, "Ehrlichia and Anaplasma Infections", Infectious Diseases of the Dog and Cat, Fig. 26-1, via Veterian Key.',
+        'Morfologia e ultraestrutura de E. canis: (A) Morula no citoplasma de monocito; (B) Multiplas morulas em cultura de celulas DH82; (C) Microscopia eletronica de transmissao revelando a morfologia individual e divisao binaria dos organismos.',
     },
     diferenciais: [
       'Anaplasmose granulocitica',

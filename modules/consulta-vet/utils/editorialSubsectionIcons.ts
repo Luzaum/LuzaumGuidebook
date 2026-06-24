@@ -98,6 +98,8 @@ const TOPIC_ICONS: Record<string, LucideIcon> = {
   figuraCarrapato: Target,
   desenvolvimentoCelular: Microscope,
   tabelaSinaisClinicos: Table2,
+  sinaisHemorragicosCutaneoMucosos: Droplets,
+  sinaisCavidadesEOculares: Eye,
   petequiasAbdominais: Droplets,
   petequiasMucosas: Droplets,
   epistaxe: Droplets,

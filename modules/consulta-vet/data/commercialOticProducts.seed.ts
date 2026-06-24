@@ -529,6 +529,10 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
       'Empresa/Vetsmart listam Melaleuca alternifolia oil, propylene glycol, polysorbate 20, aloe vera, cereal alcohol, disodium EDTA e purified water, sem quantidades ou porcentagens por 100 mL.',
     labelDirections:
       'Agitar. Embeber algodão e limpar toda a área acessível da orelha; seguir orientação veterinária.',
+    dosageGuidance: {
+      labelDose:
+        'Cães/gatos: 1 aplicação por limpeza; embeber algodão e limpar toda a área acessível da orelha.',
+    },
     plumbsContext:
       'Pode atuar como removedor de cerúmen e pré-medicação; EDTA pode ser útil como adjuvante.',
     clinicalUse:
@@ -704,7 +708,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Por 100 g: ciprofloxacina 0,30 g, cetoconazol 1,00 g, acetonido de fluocinolona 0,02 g, lidocaína 2,00 g e excipientes.',
     labelDirections:
-      'Aplicar no canal auditivo externo após limpeza. Dose detalhada deve ser confirmada na bula/material do fabricante.',
+      'Bula Auritop: cães <15 kg, 4 gotas no ouvido afetado; cães >15 kg, 8 gotas; gatos, 3 gotas. Aplicar BID por 7-10 dias.',
     plumbsContext:
       'Cetoconazol + fluoroquinolona + corticoide + anestésico; reservar fluoroquinolona para indicação racional.',
     clinicalUse:
@@ -809,7 +813,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Por 100 mL: cetoconazol 1,0 g, sulfato de tobramicina 0,38 g, dexametasona 0,132 g, lidocaína 1,9 g e veículo.',
     labelDirections:
-      'Dose precisa necessita confirmação manual na bula completa/embalagem; PDF público consultado trouxe fórmula e indicação.',
+      'Bula/material Otoguard: aplicar 5-15 gotas no canal auditivo e massagear cerca de 20 s. Infecção aguda: 2-3x/dia por 7 dias; crônica: até 21 dias.',
     plumbsContext:
       'Cetoconazol + aminoglicosídeo + corticoide + anestésico; atenção a tímpano íntegro.',
     clinicalUse:
@@ -2725,7 +2729,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Vermífugo oral felino para cestódeos e nematódeos.',
     labelDirections:
-      'Administrar comprimido por faixa de peso conforme bula da apresentação adquirida.',
+      'Drontal Gatos: administrar por via oral conforme peso; dose usual 1 comprimido/4 kg em dose única.',
     plumbsContext:
       'Opção oral para vermes redondos e chatos em gatos; não cobre pulgas, ácaros ou dirofilariose.',
     clinicalUse:
@@ -2865,7 +2869,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Vermífugo oral amplo para cães com pirantel, praziquantel, febantel e ivermectina.',
     labelDirections:
-      'Administrar conforme faixa de peso e bula. Programas de dirofilariose devem seguir orientação veterinária.',
+      'Bula Endogard: Endogard 2,5 = 1 comp/2,5 kg; Endogard 10 = 1 comp/10 kg; Endogard 30 = 1 comp/30 kg. Giardia: uma dose q24h por 3 dias.',
     plumbsContext:
       'Produto amplo para vermes intestinais, Giardia e prevenção de verme do coração conforme bula/programa.',
     clinicalUse:
@@ -2933,7 +2937,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Vermífugo oral palatável para cães com pirantel, febantel e praziquantel.',
     labelDirections:
-      'Administrar conforme faixa de peso e esquema de bula, incluindo protocolo específico para Giardia quando indicado.',
+      'Canex Giárdia: cada comprimido trata 10 kg. Verminoses: dose única. Giardia spp.: 1 comprimido/10 kg VO q24h por 3 dias consecutivos.',
     plumbsContext:
       'Febantel dá suporte à indicação para Giardia por bula, mas giardíase exige diagnóstico e manejo ambiental.',
     clinicalUse:
@@ -3811,7 +3815,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Spray 100 mL'],
     activeComponents: ['digluconato de clorexidina 0,12%'],
     labelCompositionSummary: 'Higienizador bucal veterinário à base de digluconato de clorexidina; varejo técnico lista clorexidina 0,12% para o spray.',
-    labelDirections: 'Aplicar para atingir superfícies dentárias e gengivais; gazes ou escovas podem facilitar a aplicação. Pode ser usado antes, durante e após avaliações/procedimentos orais.',
+    labelDirections: 'Aplicar quantidade suficiente para atingir superfícies dentárias e gengivais; gazes ou escovas podem facilitar a aplicação. Pode ser usado antes, durante e após avaliações/procedimentos orais.',
     plumbsContext: DENTAL_HYGIENE_CONTEXT,
     clinicalUse: 'Rotina pós-limpeza, higiene oral, controle de halitose leve e suporte antisséptico oral em cães e gatos.',
     reassessment: 'Reavaliar gengivite, halitose, cálculo e adesão à escovação. Se houver cálculo mineralizado, indicar profilaxia.',
@@ -3834,7 +3838,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Gel 25 g'],
     activeComponents: ['clorexidina'],
     labelCompositionSummary: 'Gel higienizador bucal veterinário à base de clorexidina.',
-    labelDirections: 'Aplicar diretamente em dentes e gengivas, com gaze, dedeira ou escova macia, conforme orientação veterinária.',
+    labelDirections: 'Aplicar quantidade suficiente diretamente em dentes e gengivas, com gaze, dedeira ou escova macia, conforme orientação veterinária.',
     plumbsContext: DENTAL_HYGIENE_CONTEXT,
     clinicalUse: 'Contato local mais prolongado em gengiva/dentes, especialmente pós-profilaxia ou quando o responsável consegue manipular a boca.',
     reassessment: 'Reavaliar resposta gengival, halitose e tolerância à aplicação. Se houver cálculo, dor ou sangramento, investigar doença periodontal.',
@@ -5952,7 +5956,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     activeComponents: ['carprofeno'],
     labelCompositionSummary: 'Carprofeno em apresentação injetável para uso clínico em cães.',
     labelDirections: 'Uso clínico/hospitalar. Aplicação por médico-veterinário conforme bula e protocolo perioperatório.',
-    dosageGuidance: { labelDose: 'Uso hospitalar: seguir bula e protocolo anestésico/analgésico.', plumbs: { dog: [{ title: 'Perioperatório / hospitalar', dose: 'Dose conforme bula/protocolo do carprofeno injetável', note: 'Não é medicação domiciliar.' }] } },
+    dosageGuidance: { labelDose: 'Cães: carprofeno injetável 4,4 mg/kg SC/IV dose única perioperatória; seguir com VO se indicado.', plumbs: { dog: [{ title: 'Perioperatório / hospitalar', dose: '4,4 mg/kg SC ou IV dose única', note: 'Não é medicação domiciliar; evitar com outro AINE/corticoide.' }] } },
     plumbsContext: 'Mesmos cuidados farmacológicos do carprofeno; risco renal, gastrointestinal e hepático aumenta em hipovolemia/hipotensão.',
     clinicalUse: 'Dor e inflamação associadas à osteoartrite, cirurgias ortopédicas e tecidos moles em cães, em ambiente clínico.',
     reassessment: 'Monitorar dor, hidratação, perfusão, vômitos, melena e parâmetros laboratoriais quando indicado.',
@@ -6066,7 +6070,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     activeComponents: ['dexmedetomidina'],
     labelCompositionSummary: 'Sedativo alfa-2 agonista injetável para cães e gatos.',
     labelDirections: 'Uso hospitalar. Dose varia por espécie, via, objetivo de sedação/analgesia e protocolo anestésico.',
-    dosageGuidance: { labelDose: 'Uso hospitalar: calcular por protocolo anestésico.', plumbs: { dog: [{ title: 'Sedação/analgesia', dose: 'Dose conforme protocolo, via e estado do paciente', note: 'Monitorar cardiovascular/respiratório.' }], cat: [{ title: 'Sedação/analgesia', dose: 'Dose conforme protocolo, via e estado do paciente', note: 'Uso clínico com monitoramento.' }] } },
+    dosageGuidance: { labelDose: 'Cães: 125-375 µg/m² IV/IM conforme profundidade; gatos: 40 µg/kg IM para sedação/analgesia.', plumbs: { dog: [{ title: 'Sedação/analgesia', dose: '125-375 µg/m² IV ou IM', note: 'Dose por superfície corporal e combinação; reduzir em pacientes frágeis.' }], cat: [{ title: 'Sedação/analgesia', dose: '40 µg/kg IM', note: 'Uso clínico com monitoramento; reverter com atipamezol quando indicado.' }] } },
     plumbsContext: 'Alfa-2 agonistas produzem sedação/analgesia, mas podem causar bradicardia, vasoconstrição e depressão cardiorrespiratória.',
     clinicalUse: 'Sedação, contenção química, analgesia e composição de protocolos anestésicos em ambiente clínico.',
     reassessment: 'Monitorar FC, ritmo, pressão, perfusão, temperatura, ventilação e profundidade anestésica.',
@@ -6110,7 +6114,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     activeComponents: ['tiletamina', 'zolazepam'],
     labelCompositionSummary: 'Anestésico dissociativo com benzodiazepínico para cães e gatos.',
     labelDirections: 'Uso hospitalar. Dose depende de espécie, via, contenção/anestesia e associação com outros fármacos.',
-    dosageGuidance: { labelDose: 'Uso hospitalar: dose por protocolo anestésico.', plumbs: { dog: [{ title: 'Contenção/anestesia', dose: 'Dose conforme protocolo e via', note: 'Monitorar recuperação e depressão respiratória.' }], cat: [{ title: 'Contenção/anestesia', dose: 'Dose conforme protocolo e via', note: 'Uso clínico com monitoramento.' }] } },
+    dosageGuidance: { labelDose: 'Plumb\'s: cães 6,6-9,9 mg/kg IM contenção ou 2,2-4,4 mg/kg IV indução; gatos 9,7-11,9 mg/kg IM, com doses menores em muitos casos.', plumbs: { dog: [{ title: 'Contenção diagnóstica', dose: '6,6-9,9 mg/kg IM', note: 'Dose de bula é alta para muitos casos; considerar menor dose com anestesista.' }, { title: 'Indução anestésica', dose: '2,2-4,4 mg/kg IV lento', note: 'Não exceder 4,4 mg/kg IV total antes de manutenção inalatória.' }], cat: [{ title: 'Procedimentos/contensão', dose: '9,7-11,9 mg/kg IM', note: 'Plumb\'s observa que doses de bula podem ser maiores que o necessário.' }, { title: 'Dor leve extra-label', dose: '2-5 mg/kg IV ou 5-10 mg/kg IM', note: 'Ajustar ao procedimento e monitorar recuperação.' }] } },
     plumbsContext: 'Associação dissociativa/benzodiazepínica usada em contenção e anestesia; recuperação pode variar conforme espécie e dose.',
     clinicalUse: 'Contenção química e anestesia em procedimentos clínicos/cirúrgicos.',
     reassessment: 'Monitorar plano anestésico, temperatura, ventilação, analgesia e recuperação.',
@@ -6401,7 +6405,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     clinicalUse: 'Infecções bacterianas sensíveis em ambiente clínico/hospitalar.',
     reassessment: 'Revisar bula, cultura, função renal e tolerância antes de liberar posologia.',
     prescriptionExample: 'Enrofloxacino injetável: cães 2,5 mg/kg IM dose única e seguir VO; gatos não exceder 5 mg/kg/dia.',
-    safetyAlert: 'Dose bloqueada por dados incompletos. Não usar empiricamente sem critério.',
+    safetyAlert: 'Antibiótico crítico. Não usar empiricamente sem critério; respeitar limite felino de enrofloxacina e preferir cultura/antibiograma.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não consolidado', sourceDate: '2026-06-07', notes: 'Sem imagem direta confiável encontrada.' }
   },
   {
@@ -6440,7 +6444,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     activeComponents: ['tetracosactida', 'cosintropina'],
     labelCompositionSummary: 'ACTH sintético para teste de estimulação adrenal.',
     labelDirections: 'Produto diagnóstico, não terapêutico domiciliar. Usar conforme protocolo de teste endócrino.',
-    dosageGuidance: { labelDose: 'Cães: dose conforme protocolo de teste ACTH.', plumbs: { dog: [{ title: 'Teste ACTH', dose: 'Dose/protocolo diagnóstico conforme laboratório e referência', note: 'Coletar tempos corretos.' }] } },
+    dosageGuidance: { labelDose: 'Plumb\'s: teste ACTH em cães 5 µg/kg IV (máx. 250 µg) e cortisol 60 min; monitoramento de trilostano/mitotano 1 µg/kg IV.', plumbs: { dog: [{ title: 'Triagem hiperadrenocorticismo', dose: '5 µg/kg IV; máximo 250 µg/cão', note: 'Coletar cortisol basal e pós-ACTH em 60 min.' }, { title: 'Monitoramento trilostano/mitotano', dose: '1 µg/kg IV', note: 'Coletar cortisol basal e 60 min após.' }] } },
     plumbsContext: 'Cosintropina/tetracosactida é usada para avaliar função adrenocortical.',
     clinicalUse: 'Diagnóstico/monitoramento de insuficiência adrenocortical e avaliação adrenal conforme protocolo.',
     reassessment: 'Interpretar com cortisol basal/pós, sinais clínicos, eletrólitos e histórico de fármacos.',
@@ -6484,7 +6488,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     activeComponents: ['IECA - princípio ativo pendente de bula'],
     labelCompositionSummary: 'Cardiovascular IECA listado pela Avert; princípio ativo não confirmado no texto-base.',
     labelDirections: 'Cães: 0,5 mg/kg VO a cada 24 h, conforme dado de página oficial citado. Ativo pendente de confirmação por bula.',
-    dosageGuidance: { labelDose: 'Cães: 0,5 mg/kg VO SID; ativo pendente de confirmação.', plumbs: { dog: [{ title: 'IECA / SRAA', dose: '0,5 mg/kg VO SID', note: 'Dose bloqueada para cálculo final até confirmar ativo.' }] } },
+    dosageGuidance: { labelDose: 'Cães: 0,5 mg/kg VO SID; ativo pendente de confirmação.', plumbs: { dog: [{ title: 'IECA / SRAA', dose: '0,5 mg/kg VO SID', note: 'Confirmar ativo/apresentação antes de cálculo final.' }] } },
     plumbsContext: 'IECAs como benazepril/enalapril exigem monitoramento de pressão arterial, ureia, creatinina e potássio.',
     clinicalUse: 'Bloqueio do SRAA em cardiopatas ou nefropatas/proteinúricos, dependendo do ativo confirmado.',
     reassessment: 'Monitorar pressão arterial, hidratação, creatinina, ureia, potássio e sinais de hipotensão.',
@@ -6660,12 +6664,12 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Clinbacter 75 mg', 'Clinbacter 150 mg'],
     activeComponents: ['cloridrato de clindamicina'],
     labelCompositionSummary: 'Clindamicina oral, lincosamida para cães e gatos.',
-    labelDirections: 'Dose deve seguir bula/indicação. Usar com diagnóstico e duração definida.',
-    dosageGuidance: { labelDose: 'Cães e gatos: usar dose de bula conforme indicação.', plumbs: { dog: [{ title: 'Pele/oral/anaeróbios', dose: 'Dose por bula/indicação', note: 'Antibiótico; evitar uso empírico longo.' }], cat: [{ title: 'Pele/oral/anaeróbios', dose: 'Dose por bula/indicação', note: 'Monitorar tolerância GI.' }] } },
+    labelDirections: 'Cães e gatos: 10 mg/kg VO a cada 12 h, conforme diagnóstico e duração definida.',
+    dosageGuidance: { labelDose: 'Cães e gatos: 10 mg/kg VO q12h.', plumbs: { dog: [{ title: 'Pele/oral/anaeróbios', dose: '10 mg/kg VO q12h', note: 'Antibiótico; evitar uso empírico longo.' }], cat: [{ title: 'Pele/oral/anaeróbios', dose: '10 mg/kg VO q12h', note: 'Monitorar tolerância GI.' }] } },
     plumbsContext: 'Clindamicina é lincosamida para anaeróbios e cocos Gram-positivos sensíveis; pode causar vômitos/diarreia.',
     clinicalUse: 'Infecções orais, pele/tecidos moles, feridas, abscessos e anaeróbios conforme sensibilidade.',
     reassessment: 'Reavaliar resposta e tolerância gastrointestinal; cultura em falha/recorrência.',
-    prescriptionExample: 'Clinbacter [75 ou 150 mg], administrar por via oral conforme bula e peso, pelo período prescrito.',
+    prescriptionExample: 'Clinbacter [75 ou 150 mg], administrar por via oral a cada 12 horas na dose calculada, pelo período prescrito.',
     safetyAlert: 'Antibiótico. Não usar sem diagnóstico; cautela em doença GI importante.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não localizado com segurança', sourceDate: '2026-06-07' }
   },
@@ -6682,12 +6686,12 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Doxitrat conforme apresentação'],
     activeComponents: ['doxiciclina'],
     labelCompositionSummary: 'Doxiciclina veterinária; tetraciclina oral.',
-    labelDirections: 'Dose deve seguir bula/apresentação; separar de cátions e sucralfato.',
+    labelDirections: 'Cães e gatos: 5 a 10 mg/kg VO q12-24h conforme indicação; separar de cátions e sucralfato.',
     dosageGuidance: { labelDose: 'Cães e gatos: dose por bula; literatura usual 5 a 10 mg/kg q12-24h.', plumbs: { dog: [{ title: 'Infecção sensível', dose: '5 a 10 mg/kg VO q12-24h conforme indicação', note: 'Separar de sucralfato/cátions.' }], cat: [{ title: 'Infecção sensível', dose: '5 a 10 mg/kg VO q12-24h conforme indicação', note: 'Dar água/alimento para reduzir lesão esofágica.' }] } },
     plumbsContext: 'Doxiciclina interage com sucralfato, ferro, zinco, cálcio, magnésio e alumínio.',
     clinicalUse: 'Infecções sensíveis, hemoparasitoses/respiratórias e outras indicações conforme diagnóstico.',
     reassessment: 'Reavaliar resposta, vômitos, esofagite, aderência e necessidade de cultura/testes.',
-    prescriptionExample: 'Doxitrat [apresentação], administrar conforme bula e diagnóstico, separando de quelantes.',
+    prescriptionExample: 'Doxitrat [apresentação], administrar por via oral na dose calculada, q12-24h conforme diagnóstico, separando de quelantes.',
     safetyAlert: 'Antibiótico. Em gatos, administrar com água/alimento para reduzir risco de esofagite.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não localizado com segurança', sourceDate: '2026-06-07' }
   },
@@ -7575,12 +7579,12 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Frasco borrifador 20 mL'],
     activeComponents: ['ceramidas 2,5 g/100 mL', 'fitoesfingosina 0,1 g/100 mL', 'colesterol 2,5 g/100 mL', 'ácidos graxos 11,4 g/100 mL', 'óleo de macadâmia 0,2 g/100 mL', 'aloe vera 5 g/100 mL'],
     labelCompositionSummary: 'Spray de barreira cutânea com ceramidas, fitoesfingosina, colesterol, ácidos graxos, macadâmia e aloe vera.',
-    labelDirections: 'Borrifar nas áreas indicadas, massagear suavemente até espalhar e não enxaguar.',
-    dosageGuidance: { labelDose: 'Uso tópico por borrifação; frequência conforme orientação veterinária.' },
+    labelDirections: 'Borrifar 1 borrifada/kg nas áreas indicadas a cada 7 dias por no mínimo 4 semanas; massagear suavemente e não enxaguar.',
+    dosageGuidance: { labelDose: 'Cães/gatos: 1 borrifada/kg tópica a cada 7 dias por no mínimo 4 semanas.' },
     plumbsContext: 'Sem dose Plumb’s. Produto adjuvante de restauração de barreira cutânea.',
     clinicalUse: 'Uso entre banhos em pele seca, dermatite atópica, descamação e áreas localizadas de ressecamento.',
     reassessment: 'Reavaliar se houver lesões infectadas, prurido intenso, otite, mau cheiro ou piora das áreas.',
-    prescriptionExample: 'Hydrapet Skin On, borrifar sobre áreas ressecadas/sensíveis da pele e pelagem, massageando suavemente. Não enxaguar.',
+    prescriptionExample: 'Hydrapet Skin On, aplicar 1 borrifada/kg nas áreas ressecadas/sensíveis a cada 7 dias por no mínimo 4 semanas. Não enxaguar.',
     safetyAlert: 'Evitar olhos, mucosas e feridas abertas. Em contato ocular acidental, lavar com água corrente abundante.',
     productPageUrl: 'https://agener.com.br/produtos/pequenos-animais/dermatologicos/hidrapet-skin-on/',
     imageUrl: 'https://agener.com.br/wp-content/uploads/2021/07/MicrosoftTeams-image-34-1.png',

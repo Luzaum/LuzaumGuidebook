@@ -5,10 +5,11 @@ import { ArrowLeft, BookOpen, Shield, ShieldCheck, Activity, AlertTriangle } fro
 
 interface GuideScreenProps {
   onBack: () => void;
+  activeTabId: string;
+  setActiveTabId: (id: string) => void;
 }
 
-const GuideScreen: React.FC<GuideScreenProps> = ({ onBack }) => {
-  const [activeTabId, setActiveTabId] = useState(PAIN_GUIDE_SECTIONS[0].id);
+const GuideScreen: React.FC<GuideScreenProps> = ({ onBack, activeTabId, setActiveTabId }) => {
 
   const activeSection = PAIN_GUIDE_SECTIONS.find((sec) => sec.id === activeTabId) || PAIN_GUIDE_SECTIONS[0];
 
@@ -147,40 +148,63 @@ const GuideScreen: React.FC<GuideScreenProps> = ({ onBack }) => {
 
                 case 'table':
                   return (
-                    <div key={index} className="space-y-3">
+                    <div key={index} className="space-y-4">
                       {block.title && (
                         <h4 className="text-sm font-black text-slate-800 dark:text-teal-50">
                           {block.title}
                         </h4>
                       )}
                       
-                      {/* Responsive Table Container with Horizontal Scroll */}
-                      <div className="overflow-x-auto border border-slate-200 dark:border-slate-800 rounded-xl">
-                        <table className="w-full border-collapse text-left text-xs text-slate-700 dark:text-slate-300">
-                          <thead>
-                            <tr className="bg-slate-50 dark:bg-slate-950/40 border-b border-slate-200 dark:border-slate-800 font-bold uppercase tracking-wider text-slate-500 text-[10px]">
-                              {block.headers?.map((header, hIdx) => (
-                                <th key={hIdx} className="px-4 py-3">
-                                  {header}
-                                </th>
-                              ))}
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {block.rows?.map((row, rIdx) => (
-                              <tr
-                                key={rIdx}
-                                className="border-b border-slate-150 dark:border-slate-800/60 last:border-0 hover:bg-slate-50/50 dark:hover:bg-slate-950/20"
-                              >
-                                {row.map((cell, cIdx) => (
-                                  <td key={cIdx} className="px-4 py-3 leading-relaxed font-medium">
-                                    {cell}
-                                  </td>
-                                ))}
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
+                      {/* Responsive Stack of Cards */}
+                      <div className="grid grid-cols-1 gap-4">
+                        {block.rows?.map((row, rIdx) => {
+                          const classe = row[0];
+                          const farmacos = row[1];
+                          const mecanismo = row[2];
+                          const cuidados = row[3];
+                          
+                          return (
+                            <div
+                              key={rIdx}
+                              className="flex flex-col p-4 bg-white/50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm space-y-3"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="font-bold text-teal-650 dark:text-teal-400 text-sm">
+                                  {classe}
+                                </span>
+                              </div>
+                              
+                              <div className="grid grid-cols-1 gap-2.5 pt-2.5 border-t border-slate-150 dark:border-slate-800/60 text-xs">
+                                <div>
+                                  <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 block">
+                                    Fármacos Comuns
+                                  </span>
+                                  <span className="font-semibold text-slate-700 dark:text-slate-350">
+                                    {farmacos}
+                                  </span>
+                                </div>
+                                
+                                <div>
+                                  <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 block">
+                                    Mecanismo Principal
+                                  </span>
+                                  <span className="text-slate-650 dark:text-slate-350">
+                                    {mecanismo}
+                                  </span>
+                                </div>
+                                
+                                <div>
+                                  <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 block">
+                                    Principais Indicações / Cuidados
+                                  </span>
+                                  <span className="text-slate-600 dark:text-slate-450 leading-relaxed font-semibold">
+                                    {cuidados}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                   );

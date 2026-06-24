@@ -9,15 +9,24 @@ import RescueScreen from './screens/RescueScreen';
 import ReferencesScreen from './screens/ReferencesScreen';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, BookOpen, AlertTriangle, Bookmark, ArrowLeft, Award } from 'lucide-react';
+import { useSearchParams, useNavigate } from 'react-router-dom';
+import { PAIN_GUIDE_SECTIONS } from './data/pain-guide';
 import './theme-mobile.css';
 
 type Screen = 'home' | 'scaleSelect' | 'assessment' | 'result' | 'guide' | 'rescue' | 'references';
 
 export default function App() {
-  const [screen, setScreen] = useState<Screen>('home');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const screen = (searchParams.get('screen') as Screen) || 'home';
+
   const [species, setSpecies] = useState<Species | null>(null);
   const [selectedScale, setSelectedScale] = useState<Scale | null>(null);
   const [result, setResult] = useState<InterpretationResult | null>(null);
+
+  // Lifted states for tabs to preserve user reading state
+  const [lastAssessmentScreen, setLastAssessmentScreen] = useState<Screen>('home');
+  const [activeGuideTabId, setActiveGuideTabId] = useState<string>(() => PAIN_GUIDE_SECTIONS[0].id);
 
   const [themeMode, setThemeMode] = useState<'dark' | 'light'>(() => {
     if (typeof window === 'undefined') return 'dark';
@@ -42,54 +51,74 @@ export default function App() {
     return () => observer.disconnect();
   }, []);
 
+  // Update last active assessment screen
+  useEffect(() => {
+    if (['home', 'scaleSelect', 'assessment', 'result'].includes(screen)) {
+      setLastAssessmentScreen(screen);
+    }
+  }, [screen]);
+
+  // Clean species and scales when going back/re-routing
+  useEffect(() => {
+    if (screen === 'home') {
+      setSpecies(null);
+      setSelectedScale(null);
+      setResult(null);
+    } else if (screen === 'scaleSelect') {
+      setSelectedScale(null);
+      setResult(null);
+    } else if (screen === 'assessment') {
+      setResult(null);
+    }
+  }, [screen]);
+
   const handleSelectSpecies = useCallback((selectedSp: Species) => {
     setSpecies(selectedSp);
-    setScreen('scaleSelect');
-  }, []);
+    setSearchParams({ screen: 'scaleSelect' });
+  }, [setSearchParams]);
 
   const handleSelectScale = useCallback((scale: Scale) => {
     setSelectedScale(scale);
-    setScreen('assessment');
-  }, []);
+    setSearchParams({ screen: 'assessment' });
+  }, [setSearchParams]);
 
   const handleAssessmentSubmit = useCallback((answers: Record<string, number | string>) => {
     if (!selectedScale) return;
     const calcResult = selectedScale.interpretation(answers);
     setResult(calcResult);
-    setScreen('result');
-  }, [selectedScale]);
+    setSearchParams({ screen: 'result' });
+  }, [selectedScale, setSearchParams]);
 
   const handleRestart = useCallback(() => {
-    setScreen('assessment');
     setResult(null);
-  }, []);
+    setSearchParams({ screen: 'assessment' });
+  }, [setSearchParams]);
 
   const handleNewAssessment = useCallback(() => {
-    setScreen('scaleSelect');
     setResult(null);
     setSelectedScale(null);
-  }, []);
+    setSearchParams({ screen: 'scaleSelect' });
+  }, [setSearchParams]);
 
   const handleShowGuide = useCallback(() => {
-    setScreen('guide');
-  }, []);
+    setSearchParams({ screen: 'guide' });
+  }, [setSearchParams]);
 
   const handleBackToHome = useCallback(() => {
-    setScreen('home');
-    setSpecies(null);
-    setSelectedScale(null);
-    setResult(null);
-  }, []);
+    setSearchParams({ screen: 'home' });
+  }, [setSearchParams]);
 
   const handleBack = useCallback(() => {
-    if (screen === 'assessment') {
-      setScreen('scaleSelect');
-    } else if (screen === 'scaleSelect' || screen === 'result') {
-      handleBackToHome();
+    navigate(-1);
+  }, [navigate]);
+
+  const handleAvaliarTabClick = useCallback(() => {
+    if (['home', 'scaleSelect', 'assessment', 'result'].includes(screen)) {
+      setSearchParams({ screen: 'home' });
     } else {
-      handleBackToHome();
+      setSearchParams({ screen: lastAssessmentScreen });
     }
-  }, [screen, handleBackToHome]);
+  }, [screen, lastAssessmentScreen, setSearchParams]);
 
   const getHeaderTitle = () => {
     switch (screen) {
@@ -149,7 +178,7 @@ export default function App() {
               <HomeScreen
                 selectedSpecies={species}
                 onSelectSpecies={handleSelectSpecies}
-                onNavigate={(scr) => setScreen(scr as Screen)}
+                onNavigate={(scr) => setSearchParams({ screen: scr })}
               />
             )}
 
@@ -165,7 +194,7 @@ export default function App() {
               <AssessmentScreen
                 scale={selectedScale}
                 onSubmit={handleAssessmentSubmit}
-                onBack={() => setScreen('scaleSelect')}
+                onBack={() => setSearchParams({ screen: 'scaleSelect' })}
               />
             )}
 
@@ -181,7 +210,11 @@ export default function App() {
             )}
 
             {screen === 'guide' && (
-              <GuideScreen onBack={handleBackToHome} />
+              <GuideScreen
+                activeTabId={activeGuideTabId}
+                setActiveTabId={setActiveGuideTabId}
+                onBack={handleBackToHome}
+              />
             )}
 
             {screen === 'rescue' && (
@@ -198,9 +231,9 @@ export default function App() {
       {/* BOTTOM NAVIGATION BAR */}
       <nav className="flex-shrink-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex justify-around items-center h-16 pb-safe">
         <button
-          onClick={() => setScreen('home')}
+          onClick={handleAvaliarTabClick}
           className={`flex flex-col items-center justify-center w-full h-full space-y-1 ${
-            screen === 'home' || screen === 'scaleSelect' || screen === 'assessment' || screen === 'result'
+            ['home', 'scaleSelect', 'assessment', 'result'].includes(screen)
               ? 'text-teal-600 dark:text-teal-400'
               : 'text-slate-500 dark:text-slate-400'
           }`}
@@ -210,7 +243,7 @@ export default function App() {
         </button>
 
         <button
-          onClick={() => setScreen('guide')}
+          onClick={() => setSearchParams({ screen: 'guide' })}
           className={`flex flex-col items-center justify-center w-full h-full space-y-1 ${
             screen === 'guide' ? 'text-teal-600 dark:text-teal-400' : 'text-slate-500 dark:text-slate-400'
           }`}
@@ -220,7 +253,7 @@ export default function App() {
         </button>
 
         <button
-          onClick={() => setScreen('rescue')}
+          onClick={() => setSearchParams({ screen: 'rescue' })}
           className={`flex flex-col items-center justify-center w-full h-full space-y-1 ${
             screen === 'rescue' ? 'text-teal-600 dark:text-teal-400' : 'text-slate-500 dark:text-slate-400'
           }`}
@@ -230,7 +263,7 @@ export default function App() {
         </button>
 
         <button
-          onClick={() => setScreen('references')}
+          onClick={() => setSearchParams({ screen: 'references' })}
           className={`flex flex-col items-center justify-center w-full h-full space-y-1 ${
             screen === 'references' ? 'text-teal-600 dark:text-teal-400' : 'text-slate-500 dark:text-slate-400'
           }`}

@@ -26,60 +26,104 @@ const RescueScreen: React.FC<RescueScreenProps> = ({ onBack }) => {
         </div>
       </div>
 
-      {/* Table of Thresholds */}
-      <div className="space-y-3">
+      {/* Table of Thresholds (Refactored to Card Stacks for Mobile) */}
+      <div className="space-y-4">
         <h4 className="text-xs font-black uppercase tracking-widest text-slate-400 flex items-center gap-1.5">
-          <Award className="h-4.5 w-4.5" />
+          <Award className="h-4.5 w-4.5 text-rose-500" />
           <span>Limiares Clínicos para Intervenção Analgésica</span>
         </h4>
 
-        <div className="overflow-x-auto border border-slate-200 dark:border-slate-800 rounded-2xl bg-white/70 dark:bg-slate-900/60 backdrop-blur-md">
-          <table className="w-full border-collapse text-left text-xs text-slate-700 dark:text-slate-350">
-            <thead>
-              <tr className="bg-slate-50 dark:bg-slate-950/40 border-b border-slate-200 dark:border-slate-800 font-bold uppercase tracking-wider text-slate-500 text-[10px]">
-                <th className="px-5 py-3.5">Escala Utilizada</th>
-                <th className="px-5 py-3.5">Espécie</th>
-                <th className="px-5 py-3.5">Limiar de Intervenção (Resgate)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-slate-150 dark:border-slate-800/60 hover:bg-slate-50/50 dark:hover:bg-slate-950/20">
-                <td className="px-5 py-3.5 font-bold text-slate-850 dark:text-teal-50">Glasgow CMPS-SF</td>
-                <td className="px-5 py-3.5 font-semibold text-slate-500">🐕 Cão</td>
-                <td className="px-5 py-3.5 font-black text-rose-600 dark:text-rose-455 text-xs">≥ 6/24 (ou ≥ 5/20 se sem mobilidade)</td>
-              </tr>
-              <tr className="border-b border-slate-150 dark:border-slate-800/60 hover:bg-slate-50/50 dark:hover:bg-slate-950/20">
-                <td className="px-5 py-3.5 font-bold text-slate-850 dark:text-teal-50">UMPS Melbourne</td>
-                <td className="px-5 py-3.5 font-semibold text-slate-500">🐕 Cão</td>
-                <td className="px-5 py-3.5 font-black text-rose-600 dark:text-rose-455 text-xs">≥ 8/27 (ou ≥ 10/27)</td>
-              </tr>
-              <tr className="border-b border-slate-150 dark:border-slate-800/60 hover:bg-slate-50/50 dark:hover:bg-slate-950/20">
-                <td className="px-5 py-3.5 font-bold text-slate-850 dark:text-teal-50">4A-VET</td>
-                <td className="px-5 py-3.5 font-semibold text-slate-500">🐕 Cão</td>
-                <td className="px-5 py-3.5 font-black text-rose-600 dark:text-rose-455 text-xs">≥ 8/18</td>
-              </tr>
-              <tr className="border-b border-slate-150 dark:border-slate-800/60 hover:bg-slate-50/50 dark:hover:bg-slate-950/20">
-                <td className="px-5 py-3.5 font-bold text-slate-850 dark:text-teal-50">UNESP-Botucatu Completa</td>
-                <td className="px-5 py-3.5 font-semibold text-slate-500">🐱 Gato</td>
-                <td className="px-5 py-3.5 font-black text-rose-600 dark:text-rose-455 text-xs">≥ 8/30</td>
-              </tr>
-              <tr className="border-b border-slate-150 dark:border-slate-800/60 hover:bg-slate-50/50 dark:hover:bg-slate-950/20">
-                <td className="px-5 py-3.5 font-bold text-slate-850 dark:text-teal-50">UNESP-Botucatu Simplificada (UFEPS-SF)</td>
-                <td className="px-5 py-3.5 font-semibold text-slate-500">🐱 Gato</td>
-                <td className="px-5 py-3.5 font-black text-rose-600 dark:text-rose-455 text-xs">≥ 4/12</td>
-              </tr>
-              <tr className="border-b border-slate-150 dark:border-slate-800/60 hover:bg-slate-50/50 dark:hover:bg-slate-950/20">
-                <td className="px-5 py-3.5 font-bold text-slate-850 dark:text-teal-50">Grimace Scale (FGS)</td>
-                <td className="px-5 py-3.5 font-semibold text-slate-500">🐱 Gato</td>
-                <td className="px-5 py-3.5 font-black text-rose-600 dark:text-rose-455 text-xs">≥ 4/10 (ou média ≥ 0.8)</td>
-              </tr>
-              <tr className="border-b border-slate-150 dark:border-slate-800/60 hover:bg-slate-50/50 dark:hover:bg-slate-950/20">
-                <td className="px-5 py-3.5 font-bold text-slate-850 dark:text-teal-50">Glasgow CMPS-Feline</td>
-                <td className="px-5 py-3.5 font-semibold text-slate-500">🐱 Gato</td>
-                <td className="px-5 py-3.5 font-black text-rose-600 dark:text-rose-455 text-xs">≥ 5/20</td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="grid grid-cols-1 gap-4">
+          <div className="flex flex-col p-4 bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm space-y-3 backdrop-blur-md hover:border-teal-500/20 transition-colors">
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-slate-850 dark:text-teal-50 text-sm">Glasgow CMPS-SF</span>
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-650 dark:text-slate-300">
+                🐕 Cão
+              </span>
+            </div>
+            <div className="flex flex-col gap-1 pt-1.5 border-t border-slate-150 dark:border-slate-800/60">
+              <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500">Limiar de Intervenção (Resgate)</span>
+              <span className="text-xs font-black text-rose-600 dark:text-rose-400">≥ 6/24 (ou ≥ 5/20 se sem mobilidade)</span>
+            </div>
+          </div>
+
+          <div className="flex flex-col p-4 bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm space-y-3 backdrop-blur-md hover:border-teal-500/20 transition-colors">
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-slate-850 dark:text-teal-50 text-sm">UMPS Melbourne</span>
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-650 dark:text-slate-300">
+                🐕 Cão
+              </span>
+            </div>
+            <div className="flex flex-col gap-1 pt-1.5 border-t border-slate-150 dark:border-slate-800/60">
+              <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500">Limiar de Intervenção (Resgate)</span>
+              <span className="text-xs font-black text-rose-600 dark:text-rose-400">≥ 8/27 (ou ≥ 10/27)</span>
+            </div>
+          </div>
+
+          <div className="flex flex-col p-4 bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm space-y-3 backdrop-blur-md hover:border-teal-500/20 transition-colors">
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-slate-850 dark:text-teal-50 text-sm">4A-VET</span>
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-650 dark:text-slate-300">
+                🐕 Cão
+              </span>
+            </div>
+            <div className="flex flex-col gap-1 pt-1.5 border-t border-slate-150 dark:border-slate-800/60">
+              <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500">Limiar de Intervenção (Resgate)</span>
+              <span className="text-xs font-black text-rose-600 dark:text-rose-400">≥ 8/18</span>
+            </div>
+          </div>
+
+          <div className="flex flex-col p-4 bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm space-y-3 backdrop-blur-md hover:border-teal-500/20 transition-colors">
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-slate-850 dark:text-teal-50 text-sm">UNESP-Botucatu Completa</span>
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-650 dark:text-slate-300">
+                🐱 Gato
+              </span>
+            </div>
+            <div className="flex flex-col gap-1 pt-1.5 border-t border-slate-150 dark:border-slate-800/60">
+              <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500">Limiar de Intervenção (Resgate)</span>
+              <span className="text-xs font-black text-rose-600 dark:text-rose-400">≥ 8/30</span>
+            </div>
+          </div>
+
+          <div className="flex flex-col p-4 bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm space-y-3 backdrop-blur-md hover:border-teal-500/20 transition-colors">
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-slate-850 dark:text-teal-50 text-sm">UNESP-Botucatu Simplificada (UFEPS-SF)</span>
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-650 dark:text-slate-300">
+                🐱 Gato
+              </span>
+            </div>
+            <div className="flex flex-col gap-1 pt-1.5 border-t border-slate-150 dark:border-slate-800/60">
+              <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500">Limiar de Intervenção (Resgate)</span>
+              <span className="text-xs font-black text-rose-600 dark:text-rose-400">≥ 4/12</span>
+            </div>
+          </div>
+
+          <div className="flex flex-col p-4 bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm space-y-3 backdrop-blur-md hover:border-teal-500/20 transition-colors">
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-slate-850 dark:text-teal-50 text-sm">Grimace Scale (FGS)</span>
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-650 dark:text-slate-300">
+                🐱 Gato
+              </span>
+            </div>
+            <div className="flex flex-col gap-1 pt-1.5 border-t border-slate-150 dark:border-slate-800/60">
+              <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500">Limiar de Intervenção (Resgate)</span>
+              <span className="text-xs font-black text-rose-600 dark:text-rose-400">≥ 4/10 (ou média ≥ 0.8)</span>
+            </div>
+          </div>
+
+          <div className="flex flex-col p-4 bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm space-y-3 backdrop-blur-md hover:border-teal-500/20 transition-colors">
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-slate-850 dark:text-teal-50 text-sm">Glasgow CMPS-Feline</span>
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-650 dark:text-slate-300">
+                🐱 Gato
+              </span>
+            </div>
+            <div className="flex flex-col gap-1 pt-1.5 border-t border-slate-150 dark:border-slate-800/60">
+              <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500">Limiar de Intervenção (Resgate)</span>
+              <span className="text-xs font-black text-rose-600 dark:text-rose-400">≥ 5/20</span>
+            </div>
+          </div>
         </div>
       </div>
 

@@ -154,6 +154,8 @@ const FULL_KEY_LABELS: Record<string, string> = {
   figuraCarrapato: 'Vetor: Rhipicephalus sanguineus',
   desenvolvimentoCelular: 'Desenvolvimento intracelular de E. canis',
   tabelaSinaisClinicos: 'Sinais clínicos em tabela',
+  sinaisHemorragicosCutaneoMucosos: 'Sinais hemorrágicos cutâneo-mucosos',
+  sinaisCavidadesEOculares: 'Sinais hemorrágicos oculares e de cavidades',
   petequiasAbdominais: 'Petéquias cutâneas',
   petequiasMucosas: 'Petéquias em mucosa',
   epistaxe: 'Epistaxe',
