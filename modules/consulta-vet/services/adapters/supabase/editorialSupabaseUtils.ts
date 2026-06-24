@@ -15,6 +15,10 @@ export function hasSupabaseEnv(): boolean {
 
 export function parseError(error: unknown): string {
   if (error instanceof Error) return error.message;
+  if (error && typeof error === 'object') {
+    if ('message' in error) return String((error as { message: unknown }).message);
+    if ('error_description' in error) return String((error as { error_description: unknown }).error_description);
+  }
   return String(error || 'Erro desconhecido');
 }
 

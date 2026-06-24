@@ -13,6 +13,7 @@ import {
   X,
 } from 'lucide-react';
 import { ConsultaVetPageHero } from '../components/layout/ConsultaVetPageHero';
+import { commercialProductImageAssets } from '../data/commercialProductImageAssets';
 import { commercialOticProductsSeed } from '../data/commercialOticProducts.seed';
 import {
   CommercialMedicationClass,
@@ -20,7 +21,6 @@ import {
   CommercialMedicationProduct,
   CommercialMedicationSubclass,
 } from '../types/commercialMedication';
-import { VetSpecies } from '../types/common';
 
 const UI_TEXT = {
   eyebrow: 'Catálogo comercial',
@@ -335,17 +335,86 @@ function getPrimaryDoseSources(product: CommercialMedicationProduct) {
   return sources;
 }
 
-function DosageGuidance({ product }: { product: CommercialMedicationProduct }) {
+type SpeciesDoseGroup = {
+  key: string;
+  label: string;
+  tone: 'shared' | 'dog' | 'cat' | 'missing';
+  icon: typeof Dog;
+  entries: CommercialMedicationDoseEntry[];
+  missingMessage?: string;
+};
+
+function normalizeDoseEntries(entries: CommercialMedicationDoseEntry[]) {
+  return entries
+    .map((entry) => entry.dose.trim())
+    .join('||')
+    .toLocaleLowerCase('pt-BR');
+}
+
+function getSpeciesDoseGroups(product: CommercialMedicationProduct): SpeciesDoseGroup[] {
   const dogEntries = (product.dosageGuidance?.plumbs?.dog || []).filter(hasPracticalDose);
   const catEntries = (product.dosageGuidance?.plumbs?.cat || []).filter(hasPracticalDose);
+  const hasDog = product.species.includes('dog') || dogEntries.length > 0 || product.species.includes('cat');
+  const hasCat = product.species.includes('cat') || catEntries.length > 0 || product.species.includes('dog');
+
+  if (hasDog && hasCat && dogEntries.length && catEntries.length && normalizeDoseEntries(dogEntries) === normalizeDoseEntries(catEntries)) {
+    return [
+      {
+        key: 'dog-cat-shared',
+        label: 'Cão e gato (mesma dosagem)',
+        tone: 'shared',
+        icon: Dog,
+        entries: dogEntries,
+      },
+    ];
+  }
+
+  const groups: SpeciesDoseGroup[] = [];
+
+  if (hasDog) {
+    groups.push(
+      dogEntries.length
+        ? { key: 'dog', label: 'Cão', tone: 'dog', icon: Dog, entries: dogEntries }
+        : {
+            key: 'dog-missing',
+            label: 'Cão',
+            tone: 'missing',
+            icon: Dog,
+            entries: [],
+            missingMessage: 'Sem indicação de uso para essa espécie.',
+          },
+    );
+  }
+
+  if (hasCat) {
+    groups.push(
+      catEntries.length
+        ? { key: 'cat', label: 'Gato', tone: 'cat', icon: Cat, entries: catEntries }
+        : {
+            key: 'cat-missing',
+            label: 'Gato',
+            tone: 'missing',
+            icon: Cat,
+            entries: [],
+            missingMessage: 'Sem indicação de uso para essa espécie.',
+          },
+    );
+  }
+
+  return groups;
+}
+
+function getProductImageUrl(product: CommercialMedicationProduct) {
+  return commercialProductImageAssets[product.id] || product.imageUrl;
+}
+
+function DosageGuidance({ product }: { product: CommercialMedicationProduct }) {
   const primaryDoseSources = getPrimaryDoseSources(product);
-  const speciesDoseGroups = [
-    product.species.includes('dog') ? { species: 'dog' as VetSpecies, label: 'Cão', icon: Dog, entries: dogEntries } : null,
-    product.species.includes('cat') ? { species: 'cat' as VetSpecies, label: 'Gato', icon: Cat, entries: catEntries } : null,
-  ].filter((group): group is { species: VetSpecies; label: string; icon: typeof Dog; entries: CommercialMedicationDoseEntry[] } => Boolean(group && group.entries.length > 0));
+  const speciesDoseGroups = getSpeciesDoseGroups(product);
   const notes = product.dosageGuidance?.notes || [];
   const hasPracticalDirections = hasPracticalDoseText(product.labelDirections);
   const hasPracticalPrescription = hasPracticalDoseText(product.prescriptionExample);
+  const hasSpeciesDosePanel = speciesDoseGroups.length > 0;
 
   return (
     <>
@@ -367,8 +436,8 @@ function DosageGuidance({ product }: { product: CommercialMedicationProduct }) {
           </p>
         </div>
 
-        <div className="grid gap-4 p-4 xl:grid-cols-[minmax(280px,0.95fr)_minmax(0,1.35fr)]">
-          <div className="space-y-3">
+        <div className={`grid gap-4 p-4 ${hasSpeciesDosePanel ? 'xl:grid-cols-[minmax(320px,1.1fr)_minmax(0,1.35fr)]' : ''}`}>
+          <div className="grid gap-3">
             {primaryDoseSources.length ? (
               primaryDoseSources.map((source) => (
                 <SourceTextBlock key={`${source.label}-${source.text}`} label={source.label} tone="strong">
@@ -392,13 +461,19 @@ function DosageGuidance({ product }: { product: CommercialMedicationProduct }) {
             ) : null}
           </div>
 
-          <div className={`grid gap-3 ${speciesDoseGroups.length > 1 ? 'lg:grid-cols-2' : ''}`}>
-            {speciesDoseGroups.map(({ species, label, icon: SpeciesIcon, entries }) => (
-              <div key={species} className="rounded-lg border border-border/70 bg-background/70 p-3">
+          {hasSpeciesDosePanel ? (
+            <div className={`grid gap-3 ${speciesDoseGroups.length > 1 ? 'lg:grid-cols-2' : ''}`}>
+              {speciesDoseGroups.map(({ key, label, tone, icon: SpeciesIcon, entries, missingMessage }) => (
+              <div
+                key={key}
+                className={`rounded-lg border p-3 ${
+                  tone === 'missing' ? 'border-dashed border-border/80 bg-background/45' : 'border-border/70 bg-background/70'
+                }`}
+              >
                 <div className="flex items-center gap-2">
                   <span
                     className={`flex h-9 w-9 items-center justify-center rounded-full border ${
-                      species === 'dog'
+                      tone === 'dog' || tone === 'shared'
                         ? 'border-sky-500/30 bg-sky-500/15 text-sky-800 dark:text-sky-100'
                         : 'border-violet-500/30 bg-violet-500/15 text-violet-800 dark:text-violet-100'
                     }`}
@@ -410,10 +485,17 @@ function DosageGuidance({ product }: { product: CommercialMedicationProduct }) {
                     <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">Plumb&apos;s / leitura clínica</p>
                   </div>
                 </div>
-                <DoseEntryList entries={entries} />
+                {entries.length ? (
+                  <DoseEntryList entries={entries} />
+                ) : (
+                  <p className="mt-3 rounded-md border border-border/60 bg-muted/40 p-3 text-sm font-semibold text-muted-foreground">
+                    {missingMessage}
+                  </p>
+                )}
               </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : null}
         </div>
 
         <div className="grid gap-4 border-t border-cyan-500/20 p-4 lg:grid-cols-2">
@@ -444,7 +526,9 @@ function ProductImage({
   product: CommercialMedicationProduct;
   onZoom: (product: CommercialMedicationProduct) => void;
 }) {
-  if (product.imageUrl) {
+  const imageUrl = getProductImageUrl(product);
+
+  if (imageUrl) {
     return (
       <button
         type="button"
@@ -453,7 +537,7 @@ function ProductImage({
         aria-label={`Ampliar foto de ${product.name}`}
       >
         <img
-          src={product.imageUrl}
+          src={imageUrl}
           alt={`Embalagem de ${product.name}`}
           className="h-full w-full object-contain transition-transform group-hover:scale-[1.03]"
           loading="lazy"
@@ -759,7 +843,7 @@ export function CommercialPresentationsPage() {
         )}
       </section>
 
-      {zoomedProduct?.imageUrl ? (
+      {zoomedProduct && getProductImageUrl(zoomedProduct) ? (
         <div
           className="fixed inset-0 z-[80] flex items-center justify-center bg-black/70 p-4"
           role="dialog"
@@ -787,7 +871,7 @@ export function CommercialPresentationsPage() {
             </div>
             <div className="flex max-h-[72vh] items-center justify-center rounded-xl bg-white p-4">
               <img
-                src={zoomedProduct.imageUrl}
+                src={getProductImageUrl(zoomedProduct)}
                 alt={`Embalagem de ${zoomedProduct.name}`}
                 className="max-h-[66vh] w-full object-contain"
               />

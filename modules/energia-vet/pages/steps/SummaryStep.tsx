@@ -192,17 +192,21 @@ export default function SummaryStep() {
 
   const handleSave = async () => {
     if (!printableReport) return
+    const reportToSave = { ...printableReport, id: crypto.randomUUID(), createdAt: new Date().toISOString() }
+    
+    // Always save locally first
+    saveReport(reportToSave)
+    
     try {
-      const reportToSave = { ...printableReport, id: crypto.randomUUID(), createdAt: new Date().toISOString() }
-      saveReport(reportToSave)
       await saveNutritionReportToSupabase(reportToSave)
       await migrateLocalReportsToSupabase(getSavedReports())
-      toast.success('Resumo salvo no histórico da clínica (Supabase).')
-      navigate(MODULE_ROUTE)
+      toast.success('Resumo salvo e sincronizado no Supabase.')
     } catch (error) {
-      const message = error instanceof Error ? error.message : 'Falha ao salvar no Supabase.'
-      toast.error(message)
+      console.warn('[NutriçãoVET] Supabase sync skipped or failed:', error)
+      toast.success('Resumo salvo localmente no navegador.')
     }
+    
+    navigate(MODULE_ROUTE)
   }
 
   if (!result) {

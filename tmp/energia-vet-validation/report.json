@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-04-05T23:10:02.490Z",
+  "generatedAt": "2026-06-24T22:32:32.147Z",
   "screenshots": {
-    "patient": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\patient-step.png",
-    "energyDog": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\energy-step-dog.png",
-    "food": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\food-step.png",
-    "foodModal": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\food-modal.png",
-    "summary": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\summary-step.png"
+    "patient": "C:\\Users\\luzau\\OneDrive\\Documentos\\GitHub\\LuzaumGuidebook\\tmp\\energia-vet-validation\\patient-step.png",
+    "energyDog": "C:\\Users\\luzau\\OneDrive\\Documentos\\GitHub\\LuzaumGuidebook\\tmp\\energia-vet-validation\\energy-step-dog.png",
+    "food": "C:\\Users\\luzau\\OneDrive\\Documentos\\GitHub\\LuzaumGuidebook\\tmp\\energia-vet-validation\\food-step.png",
+    "foodModal": "C:\\Users\\luzau\\OneDrive\\Documentos\\GitHub\\LuzaumGuidebook\\tmp\\energia-vet-validation\\food-modal.png",
+    "summary": "C:\\Users\\luzau\\OneDrive\\Documentos\\GitHub\\LuzaumGuidebook\\tmp\\energia-vet-validation\\summary-step.png"
   },
   "checks": {
     "dogProfiles": {
@@ -15,8 +15,8 @@
       "workLight": 838,
       "workModerate": 953,
       "workIntense": 1220,
-      "hasSlugVisible": false,
-      "hasPortugueseProfiles": true
+      "hasSlugVisible": true,
+      "hasPortugueseProfiles": false
     },
     "dogCastration": {
       "intactUnneutered": 838,
@@ -26,12 +26,12 @@
       "active": 274,
       "indoor": 205
     },
-    "profileOptionsInPortuguese": true,
+    "profileOptionsInPortuguese": false,
     "speciesChangesProfiles": true,
     "castrationChangedCalculation": true,
     "catIndoorChangedCalculation": true,
     "foodHasNoEnergyProfileSelector": true,
-    "foodModalIsClean": true,
+    "foodModalIsClean": false,
     "summaryUsesResolvedProfile": true
   }
 }

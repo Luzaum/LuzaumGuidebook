@@ -39,7 +39,8 @@ async function readEnergyValue(page: Page) {
 }
 
 async function goToNewCalculation(page: Page) {
-  await page.goto(`${baseUrl}/calculadora-energetica/new`, { waitUntil: 'networkidle' })
+  await page.goto(`${baseUrl}/calculadora-energetica/new`, { waitUntil: 'domcontentloaded' })
+  await page.waitForSelector('#species-card-dog', { timeout: 60000 })
 }
 
 async function fillPatientDog(page: Page, neutered = false) {
@@ -189,7 +190,13 @@ async function main() {
 
   try {
     await waitForServer(`${baseUrl}/calculadora-energetica/new`)
-    const browser = await chromium.launch({ headless: true })
+    let browser
+    try {
+      browser = await chromium.launch({ headless: true, channel: 'chrome' })
+    } catch (e) {
+      console.log('Google Chrome não encontrado localmente, tentando Microsoft Edge...')
+      browser = await chromium.launch({ headless: true, channel: 'msedge' })
+    }
     const context = await browser.newContext({ viewport: { width: 1440, height: 1400 }, acceptDownloads: true })
     const page = await context.newPage()
 
