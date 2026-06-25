@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import type { LucideIcon } from 'lucide-react';
-import { ChevronRight, FileText, Pill, Share2, Stethoscope } from 'lucide-react';
+import { ChevronRight, ExternalLink, FileText, Pill, Share2, ShoppingBag, Stethoscope } from 'lucide-react';
 import { ConsultaVetSurface } from '../components/layout/ConsultaVetSurface';
 import { DoseCalculatorCard } from '../components/medication/DoseCalculatorCard';
 import { MedicationSectionFrame } from '../components/medication/MedicationSectionFrame';
@@ -52,6 +52,12 @@ const UI_TEXT = {
   pharmacologicClass: 'Classe farmacológica',
   tradeNames: 'Nomes comerciais',
   presentations: 'Apresentações',
+  officialSite: 'Site oficial',
+  leaflet: 'Bula',
+  productImageAlt: 'Imagem comercial do medicamento',
+  priceReference: 'Preço online de referência',
+  priceCheckedAt: 'Checado em',
+  priceSource: 'Ver fonte',
   mechanismOfAction: 'Como esse fármaco funciona',
   indications: 'Quando usar',
   contraindications: 'Quando evitar',
@@ -79,6 +85,67 @@ function MetaStat({ label, value }: { label: string; value: React.ReactNode }) {
     <div className="border-l border-border/70 pl-4 first:border-l-0 first:pl-0">
       <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">{label}</p>
       <div className="mt-2 text-sm leading-6 text-foreground">{value}</div>
+    </div>
+  );
+}
+
+function ProductResourceLink({ href, label }: { href?: string | null; label: string }) {
+  if (!href) return null;
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-background/80 px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:border-primary/40 hover:text-primary"
+    >
+      <ExternalLink className="h-4 w-4" />
+      {label}
+    </a>
+  );
+}
+
+function formatCheckedAt(date: string): string {
+  const parsed = new Date(`${date}T00:00:00`);
+  if (Number.isNaN(parsed.getTime())) return date;
+  return new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short' }).format(parsed);
+}
+
+function PriceReferenceCard({ medication }: { medication: MedicationRecord }) {
+  const price = medication.priceReference;
+  if (!price) return null;
+
+  return (
+    <div className="rounded-[24px] border border-emerald-500/20 bg-emerald-500/[0.06] p-4">
+      <div className="flex items-start gap-3">
+        <span className="mt-0.5 rounded-2xl bg-emerald-500/12 p-2 text-emerald-700 dark:text-emerald-300">
+          <ShoppingBag className="h-4 w-4" />
+        </span>
+        <div className="min-w-0 flex-1">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-emerald-700/80 dark:text-emerald-300/80">
+            {UI_TEXT.priceReference}
+          </p>
+          <p className="mt-2 text-2xl font-bold tracking-tight text-foreground">{price.label}</p>
+          <p className="mt-1 text-sm leading-6 text-muted-foreground">{price.presentation}</p>
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+            <span>{price.sourceName}</span>
+            <span aria-hidden>•</span>
+            <span>
+              {UI_TEXT.priceCheckedAt} {formatCheckedAt(price.checkedAt)}
+            </span>
+          </div>
+          {price.notes ? <p className="mt-3 text-xs leading-5 text-muted-foreground">{price.notes}</p> : null}
+          <a
+            href={price.sourceUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 transition-colors hover:text-emerald-600 dark:text-emerald-300"
+          >
+            <ExternalLink className="h-4 w-4" />
+            {UI_TEXT.priceSource}
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
@@ -541,7 +608,7 @@ export function MedicationDetailPage() {
         </nav>
 
         <ConsultaVetSurface accent="emerald" className="p-6 shadow-md md:p-8 xl:p-10">
-          <div className="flex flex-col gap-6 xl:flex-row xl:items-start xl:justify-between">
+          <div className="flex flex-col gap-8 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
               <div className="flex flex-wrap items-center gap-3">
                 <span className="rounded-full border border-primary/20 bg-primary/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-primary">
@@ -565,16 +632,33 @@ export function MedicationDetailPage() {
               </div>
             </div>
 
-            <div className="flex shrink-0 items-center gap-2 self-start">
-              <button
-                className="rounded-full border border-border bg-background/80 p-3 text-muted-foreground transition-colors hover:border-primary/30 hover:text-foreground"
-                title={UI_TEXT.copyLink}
-                type="button"
-                onClick={handleCopyLink}
-              >
-                <Share2 className="h-5 w-5" />
-              </button>
-              <FavoriteButton entityType="medication" entityId={medication.id} className="h-12 w-12 border border-border bg-background/80 p-3" />
+            <div className="flex w-full shrink-0 flex-col gap-4 xl:w-[300px]">
+              {medication.imageUrl ? (
+                <div className="flex min-h-[190px] items-center justify-center rounded-[28px] border border-border/80 bg-background/70 p-5">
+                  <img
+                    src={medication.imageUrl}
+                    alt={`${UI_TEXT.productImageAlt}: ${medication.title}`}
+                    className="max-h-44 w-full object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              ) : null}
+
+              <div className="flex flex-wrap items-center justify-start gap-2 xl:justify-end">
+                <ProductResourceLink href={medication.officialSiteUrl} label={UI_TEXT.officialSite} />
+                <ProductResourceLink href={medication.leafletUrl} label={UI_TEXT.leaflet} />
+                <button
+                  className="rounded-full border border-border bg-background/80 p-3 text-muted-foreground transition-colors hover:border-primary/30 hover:text-foreground"
+                  title={UI_TEXT.copyLink}
+                  type="button"
+                  onClick={handleCopyLink}
+                >
+                  <Share2 className="h-5 w-5" />
+                </button>
+                <FavoriteButton entityType="medication" entityId={medication.id} className="h-12 w-12 border border-border bg-background/80 p-3" />
+              </div>
+
+              <PriceReferenceCard medication={medication} />
             </div>
           </div>
 

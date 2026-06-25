@@ -32,6 +32,11 @@ export interface ConsensusRecord {
   warningLabel?: string;
   source?: 'seed' | 'supabase';
   storagePath?: string;
+
+  keyPointsText?: string | null;
+  practicalApplicationText?: string | null;
+  appNotesText?: string | null;
+  references?: EditorialReference[];
 }
 
 export interface ListConsensusFilters {

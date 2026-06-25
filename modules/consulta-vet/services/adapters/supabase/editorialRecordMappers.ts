@@ -36,6 +36,16 @@ export type MedicationRow = {
   title: string;
   active_ingredient: string;
   trade_names: string[] | null;
+  official_site_url?: string | null;
+  leaflet_url?: string | null;
+  image_url?: string | null;
+  price_reference_amount_brl?: number | string | null;
+  price_reference_label?: string | null;
+  price_reference_presentation?: string | null;
+  price_reference_source_name?: string | null;
+  price_reference_source_url?: string | null;
+  price_reference_checked_at?: string | null;
+  price_reference_notes?: string | null;
   pharmacologic_class: string;
   species: string[] | null;
   tags: string[] | null;
@@ -102,6 +112,10 @@ export function mapMedicationRow(
     title: row.title,
     activeIngredient: row.active_ingredient,
     tradeNames: normalizeStringArray(row.trade_names),
+    officialSiteUrl: row.official_site_url || null,
+    leafletUrl: row.leaflet_url || null,
+    imageUrl: row.image_url || null,
+    priceReference: mapMedicationPriceReference(row),
     pharmacologicClass: row.pharmacologic_class,
     species: normalizeSpeciesArray(row.species),
     category: categorySlug,
@@ -129,6 +143,31 @@ export function mapMedicationRow(
     source: 'supabase',
     createdAt: row.created_at,
     updatedAt: row.updated_at,
+  };
+}
+
+function mapMedicationPriceReference(row: MedicationRow): MedicationRecord['priceReference'] {
+  const amount = Number(row.price_reference_amount_brl);
+  if (
+    !Number.isFinite(amount) ||
+    amount < 0 ||
+    !row.price_reference_label ||
+    !row.price_reference_presentation ||
+    !row.price_reference_source_name ||
+    !row.price_reference_source_url ||
+    !row.price_reference_checked_at
+  ) {
+    return null;
+  }
+
+  return {
+    amountBrl: amount,
+    label: row.price_reference_label,
+    presentation: row.price_reference_presentation,
+    sourceName: row.price_reference_source_name,
+    sourceUrl: row.price_reference_source_url,
+    checkedAt: row.price_reference_checked_at,
+    notes: row.price_reference_notes || null,
   };
 }
 

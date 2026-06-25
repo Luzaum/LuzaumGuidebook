@@ -60,7 +60,7 @@ export const PatientForm: React.FC<PatientFormProps> = ({ patient, onChange }) =
           </label>
           <div className="grid grid-cols-2 gap-3">
             {[
-              { id: 'dog' as Species, label: 'Cao', subtitle: 'Canino', icon: Dog },
+              { id: 'dog' as Species, label: 'Cão', subtitle: 'Canino', icon: Dog },
               { id: 'cat' as Species, label: 'Gato', subtitle: 'Felino', icon: Cat },
             ].map((option) => {
               const Icon = option.icon;
@@ -71,16 +71,19 @@ export const PatientForm: React.FC<PatientFormProps> = ({ patient, onChange }) =
                   key={option.id}
                   type="button"
                   onClick={() => updateField('species', option.id)}
-                  className={cn(
-                    'flex min-h-28 flex-col items-center justify-center rounded-2xl border-2 p-3 text-center transition-all',
-                    isActive
-                      ? 'border-indigo-500 bg-indigo-50 text-indigo-800 shadow-sm dark:border-indigo-400/70 dark:bg-indigo-500/15 dark:text-indigo-100'
-                      : 'border-slate-200 bg-white text-slate-600 hover:border-indigo-200 hover:bg-indigo-50/40 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:border-indigo-500/40',
-                  )}
+                  className="relative flex min-h-28 flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white p-3 text-center transition-all hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800/80 overflow-hidden"
                 >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeSpecies"
+                      className="absolute inset-0 border-2 border-indigo-500 bg-indigo-50/50 dark:border-indigo-400 dark:bg-indigo-500/15"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  
                   <span
                     className={cn(
-                      'mb-2 flex h-12 w-12 items-center justify-center rounded-full border',
+                      'relative z-10 mb-2 flex h-12 w-12 items-center justify-center rounded-full border transition-colors duration-200',
                       isActive
                         ? 'border-indigo-200 bg-white text-indigo-600 dark:border-indigo-400/30 dark:bg-slate-900 dark:text-indigo-300'
                         : 'border-slate-200 bg-slate-50 text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400',
@@ -88,8 +91,8 @@ export const PatientForm: React.FC<PatientFormProps> = ({ patient, onChange }) =
                   >
                     <Icon className="h-6 w-6" />
                   </span>
-                  <span className="text-sm font-black">{option.label}</span>
-                  <span className="mt-1 text-[10px] font-bold uppercase tracking-[0.16em] opacity-70">
+                  <span className={cn("relative z-10 text-sm font-black transition-colors duration-200", isActive ? "text-indigo-900 dark:text-white" : "text-slate-700 dark:text-slate-300")}>{option.label}</span>
+                  <span className={cn("relative z-10 mt-1 text-[10px] font-bold uppercase tracking-[0.16em] opacity-70 transition-colors duration-200", isActive ? "text-indigo-700 dark:text-indigo-300/80" : "text-slate-500")}>
                     {option.subtitle}
                   </span>
                 </button>
@@ -139,18 +142,24 @@ export const PatientForm: React.FC<PatientFormProps> = ({ patient, onChange }) =
                 adult: 'Adulto',
                 senior: 'Idoso'
               };
+              const isActive = patient.state === state;
               return (
                 <button
                   key={state}
+                  type="button"
                   onClick={() => updateField('state', state)}
-                  className={cn(
-                    "min-h-11 rounded-xl border-2 px-3 py-2 text-left text-xs font-bold transition-all",
-                    patient.state === state
-                      ? "bg-slate-800 dark:bg-slate-700 border-slate-800 dark:border-slate-600 text-white shadow-sm"
-                      : "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800/80"
-                  )}
+                  className="relative min-h-11 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2.5 text-left text-xs font-bold transition-all hover:bg-slate-50 dark:hover:bg-slate-800/60 overflow-hidden"
                 >
-                  {labels[state]}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeState"
+                      className="absolute inset-0 bg-slate-800 dark:bg-slate-700"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  <span className={cn("relative z-10 transition-colors duration-200", isActive ? "text-white" : "text-slate-600 dark:text-slate-400")}>
+                    {labels[state]}
+                  </span>
                 </button>
               );
             })}

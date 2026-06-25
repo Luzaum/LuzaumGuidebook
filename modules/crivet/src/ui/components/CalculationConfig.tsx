@@ -3,6 +3,7 @@ import { AccessType, Diluent, DoseUnit, Drug, PumpType, RegimeType } from '../..
 import { Species } from '../../shared/types/patient';
 import { Activity, BadgeCheck, Droplets, Gauge, Settings2 } from 'lucide-react';
 import { cn } from '../lib/utils';
+import { motion } from 'framer-motion';
 import { InfoModal } from './InfoModal';
 import { TipButton } from './TipButton';
 import {
@@ -136,9 +137,9 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
             <Settings2 className="h-5 w-5" />
           </div>
           <div className="min-w-0">
-            <h2 className="text-lg font-bold tracking-tight text-slate-800 dark:text-white">3. Configuracao da infusao</h2>
+            <h2 className="text-lg font-bold tracking-tight text-slate-800 dark:text-white">3. Configuração da infusão</h2>
             <p className="mt-0.5 text-xs font-medium text-slate-500 dark:text-slate-400">
-              Ajuste dose, estoque, preparo e administracao em uma malha mais ampla.
+              Ajuste dose, estoque, preparo e administração em uma malha mais ampla.
             </p>
           </div>
         </div>
@@ -150,21 +151,28 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
                 <Activity className="h-4 w-4 text-slate-400 dark:text-slate-500" /> Regime terapêutico <span className="text-red-500 dark:text-red-400">*</span>
               </label>
               <div className="mt-3 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-2.5">
-                {supportedRegimes.map((item) => (
-                  <button
-                    key={item}
-                    type="button"
-                    onClick={() => onChange('regime', item)}
-                    className={cn(
-                      'min-h-11 rounded-xl border-2 px-3 py-2 text-sm font-bold uppercase tracking-[0.12em] transition-all sm:min-w-[132px] sm:px-4 sm:tracking-[0.18em]',
-                      activeRegime === item
-                        ? 'border-amber-500 bg-amber-50/70 text-amber-700 shadow-sm dark:border-amber-500/50 dark:bg-amber-500/20 dark:text-amber-300'
-                        : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400 dark:hover:border-slate-600 dark:hover:bg-slate-800',
-                    )}
-                  >
-                    {formatRegimeLabel(item)}
-                  </button>
-                ))}
+                {supportedRegimes.map((item) => {
+                  const isActive = activeRegime === item;
+                  return (
+                    <button
+                      key={item}
+                      type="button"
+                      onClick={() => onChange('regime', item)}
+                      className="relative min-h-11 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-2 text-sm font-bold uppercase tracking-[0.12em] transition-all sm:min-w-[132px] sm:px-4 sm:tracking-[0.18em] text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/80 overflow-hidden"
+                    >
+                      {isActive && (
+                        <motion.div
+                          layoutId="activeRegime"
+                          className="absolute inset-0 border-2 border-amber-500 bg-amber-50 dark:border-amber-500/50 dark:bg-amber-500/20"
+                          transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                        />
+                      )}
+                      <span className={cn("relative z-10 transition-colors duration-200", isActive ? "text-amber-700 dark:text-amber-300" : "")}>
+                        {formatRegimeLabel(item)}
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
             </section>
 
@@ -341,24 +349,31 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
                   Bolsas
                 </span>
                 <div className="flex flex-wrap gap-2">
-                  {bags.map((value) => (
-                    <button
-                      key={`bag-${value}`}
-                      type="button"
-                      onClick={() => {
-                        onChange('customVolumeEnabled', false);
-                        onChange('totalVolume', value);
-                      }}
-                      className={cn(
-                        chipButtonClass,
-                        totalVolume === value && !customVolumeEnabled
-                          ? 'border-amber-500 bg-amber-50 text-amber-700 dark:bg-amber-500/20 dark:text-amber-400'
-                          : 'border-slate-200 bg-white text-slate-600 hover:border-amber-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400',
-                      )}
-                    >
-                      {value} mL
-                    </button>
-                  ))}
+                  {bags.map((value) => {
+                    const isActive = totalVolume === value && !customVolumeEnabled;
+                    return (
+                      <button
+                        key={`bag-${value}`}
+                        type="button"
+                        onClick={() => {
+                          onChange('customVolumeEnabled', false);
+                          onChange('totalVolume', value);
+                        }}
+                        className="relative min-h-11 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3.5 py-2 text-sm font-bold text-slate-600 hover:border-amber-300 dark:text-slate-400 overflow-hidden"
+                      >
+                        {isActive && (
+                          <motion.div
+                            layoutId="activeVolume"
+                            className="absolute inset-0 border-2 border-amber-500 bg-amber-50 dark:border-amber-500/50 dark:bg-amber-500/20"
+                            transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                          />
+                        )}
+                        <span className={cn("relative z-10 transition-colors duration-200", isActive ? "text-amber-700 dark:text-amber-400" : "")}>
+                          {value} mL
+                        </span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -367,24 +382,31 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
                   Seringas
                 </span>
                 <div className="flex flex-wrap gap-2">
-                  {syringes.map((value) => (
-                    <button
-                      key={`syringe-${value}`}
-                      type="button"
-                      onClick={() => {
-                        onChange('customVolumeEnabled', false);
-                        onChange('totalVolume', value);
-                      }}
-                      className={cn(
-                        chipButtonClass,
-                        totalVolume === value && !customVolumeEnabled
-                          ? 'border-amber-500 bg-amber-50 text-amber-700 dark:bg-amber-500/20 dark:text-amber-400'
-                          : 'border-slate-200 bg-white text-slate-600 hover:border-amber-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400',
-                      )}
-                    >
-                      {value} mL
-                    </button>
-                  ))}
+                  {syringes.map((value) => {
+                    const isActive = totalVolume === value && !customVolumeEnabled;
+                    return (
+                      <button
+                        key={`syringe-${value}`}
+                        type="button"
+                        onClick={() => {
+                          onChange('customVolumeEnabled', false);
+                          onChange('totalVolume', value);
+                        }}
+                        className="relative min-h-11 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3.5 py-2 text-sm font-bold text-slate-600 hover:border-amber-300 dark:text-slate-400 overflow-hidden"
+                      >
+                        {isActive && (
+                          <motion.div
+                            layoutId="activeVolume"
+                            className="absolute inset-0 border-2 border-amber-500 bg-amber-50 dark:border-amber-500/50 dark:bg-amber-500/20"
+                            transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                          />
+                        )}
+                        <span className={cn("relative z-10 transition-colors duration-200", isActive ? "text-amber-700 dark:text-amber-400" : "")}>
+                          {value} mL
+                        </span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -458,30 +480,31 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
                 <TipButton compact label="Guia" onClick={() => setActiveModal('access')} />
               </div>
               <div className="grid gap-2 sm:grid-cols-2">
-                <button
-                  type="button"
-                  onClick={() => onChange('accessType', 'peripheral')}
-                  className={cn(
-                    chipButtonClass,
-                    accessType === 'peripheral'
-                      ? 'border-slate-800 bg-slate-800 text-white shadow-sm dark:border-slate-600 dark:bg-slate-700'
-                      : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800',
-                  )}
-                >
-                  Periférico
-                </button>
-                <button
-                  type="button"
-                  onClick={() => onChange('accessType', 'central')}
-                  className={cn(
-                    chipButtonClass,
-                    accessType === 'central'
-                      ? 'border-slate-800 bg-slate-800 text-white shadow-sm dark:border-slate-600 dark:bg-slate-700'
-                      : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800',
-                  )}
-                >
-                  Central
-                </button>
+                {[
+                  { id: 'peripheral' as AccessType, label: 'Periférico' },
+                  { id: 'central' as AccessType, label: 'Central' },
+                ].map((option) => {
+                  const isActive = accessType === option.id;
+                  return (
+                    <button
+                      key={option.id}
+                      type="button"
+                      onClick={() => onChange('accessType', option.id)}
+                      className="relative min-h-11 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3.5 py-2 text-sm font-bold text-slate-600 hover:bg-slate-50 dark:text-slate-400 overflow-hidden"
+                    >
+                      {isActive && (
+                        <motion.div
+                          layoutId="activeAccess"
+                          className="absolute inset-0 bg-slate-800 dark:bg-slate-700"
+                          transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                        />
+                      )}
+                      <span className={cn("relative z-10 transition-colors duration-200", isActive ? "text-white" : "")}>
+                        {option.label}
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
               <p className="text-xs font-medium text-slate-500 dark:text-slate-400">{formatAccessLabel(accessType)}</p>
             </section>
@@ -491,30 +514,31 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
                 <Gauge className="h-4 w-4 text-slate-400 dark:text-slate-500" /> Tipo de bomba
               </label>
               <div className="grid gap-2 sm:grid-cols-2">
-                <button
-                  type="button"
-                  onClick={() => onChange('pumpType', 'syringe')}
-                  className={cn(
-                    chipButtonClass,
-                    pumpType === 'syringe'
-                      ? 'border-slate-800 bg-slate-800 text-white shadow-sm dark:border-slate-600 dark:bg-slate-700'
-                      : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800',
-                  )}
-                >
-                  Seringa
-                </button>
-                <button
-                  type="button"
-                  onClick={() => onChange('pumpType', 'volumetric')}
-                  className={cn(
-                    chipButtonClass,
-                    pumpType === 'volumetric'
-                      ? 'border-slate-800 bg-slate-800 text-white shadow-sm dark:border-slate-600 dark:bg-slate-700'
-                      : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800',
-                  )}
-                >
-                  Infusão
-                </button>
+                {[
+                  { id: 'syringe' as PumpType, label: 'Seringa' },
+                  { id: 'volumetric' as PumpType, label: 'Infusão' },
+                ].map((option) => {
+                  const isActive = pumpType === option.id;
+                  return (
+                    <button
+                      key={option.id}
+                      type="button"
+                      onClick={() => onChange('pumpType', option.id)}
+                      className="relative min-h-11 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3.5 py-2 text-sm font-bold text-slate-600 hover:bg-slate-50 dark:text-slate-400 overflow-hidden"
+                    >
+                      {isActive && (
+                        <motion.div
+                          layoutId="activePump"
+                          className="absolute inset-0 bg-slate-800 dark:bg-slate-700"
+                          transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                        />
+                      )}
+                      <span className={cn("relative z-10 transition-colors duration-200", isActive ? "text-white" : "")}>
+                        {option.label}
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
             </section>
 
@@ -577,30 +601,30 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
         open={activeModal === 'diluent'}
         onClose={() => setActiveModal(null)}
         title={`Diluente • ${drug.namePt}`}
-        subtitle="Compatibilidade, estabilidade e raciocinio de preparo"
+        subtitle="Compatibilidade, estabilidade e raciocínio de preparo"
         icon={<Droplets className="h-5 w-5" />}
       >
-        {renderSections(diluentSections, 'Nenhuma orientacao de diluente cadastrada para este farmaco.')}
+        {renderSections(diluentSections, 'Nenhuma orientação de diluente cadastrada para este fármaco.')}
       </InfoModal>
 
       <InfoModal
         open={activeModal === 'access'}
         onClose={() => setActiveModal(null)}
         title={`Via de acesso • ${drug.namePt}`}
-        subtitle="Orientacao clinica para via central, periferica e linha dedicada"
+        subtitle="Orientação clínica para via central, periférica e linha dedicada"
         icon={<Activity className="h-5 w-5" />}
       >
-        {renderSections(accessSections, 'Nenhuma orientacao de acesso cadastrada para este farmaco.')}
+        {renderSections(accessSections, 'Nenhuma orientação de acesso cadastrada para este fármaco.')}
       </InfoModal>
 
       <InfoModal
         open={activeModal === 'infusion'}
         onClose={() => setActiveModal(null)}
         title={`Taxa de infusão • ${drug.namePt}`}
-        subtitle="Faixas de administracao, monitorização e logica operacional"
+        subtitle="Faixas de administração, monitorização e lógica operacional"
         icon={<Gauge className="h-5 w-5" />}
       >
-        {renderSections(infusionSections, 'Nenhuma orientacao de infusao cadastrada para este farmaco.')}
+        {renderSections(infusionSections, 'Nenhuma orientação de infusão cadastrada para este fármaco.')}
       </InfoModal>
     </>
   );

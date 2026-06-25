@@ -1,4 +1,4 @@
-﻿export const consensosSeed: Array<Record<string, any>> = [
+export const consensosSeed: Array<Record<string, any>> = [
   {
     id: 'con-icatcare-dtuif-felina-2025',
     slug: 'icatcare-dtuif-felina-2025',
@@ -64,4 +64,48 @@
     isDemonstrative: true,
     warningLabel: 'Demonstração',
   },
+  {
+    id: 'con-acvim-cie-caes-2026',
+    slug: 'acvim-cie-caes-2026',
+    title: 'ACVIM–endorsed statement: consensus statement and systematic review on guidelines for the diagnosis and treatment of chronic inflammatory enteropathy in dogs',
+    shortTitle: 'Enteropatia Inflamatória Crônica (ACVIM 2026)',
+    sourceOrganization: 'ACVIM',
+    year: 2026,
+    species: 'dog',
+    category: 'gastroenterologia',
+    tags: ['CIE', 'PLE', 'EII', 'Dietoterapia', 'Imunomodulação', 'Biomarcadores'],
+    pdfUrl: '/documents/consulta-vet/consensos/acvim-cie-caes-2026.pdf',
+    pdfFileName: 'acvim-cie-caes-2026.pdf',
+    storagePath: 'consulta-vet/consensos/acvim-cie-caes-2026.pdf',
+    summary: 'Consenso ACVIM 2026 sobre diagnóstico e tratamento de enteropatia inflamatória crônica (CIE) em cães, incluindo fenótipos clínicos (responsivo a alimento, responsivo a imunossupressor, não responsivo), papel da PLE e diretrizes de manejo e dietoterapia.',
+    adminNotesRichText:
+      '<p><strong>Importante:</strong> Glicocorticoides e outros imunossupressores só devem ser iniciados após exclusão de outras patologias extra-GI (como hipoadrenocorticismo atípico ou insuficiência pancreática) e após testes terapêuticos dietéticos adequados em cães estáveis.</p>',
+    keyPointsText:
+      '• Terminologia: O termo Enteropatia Inflamatória Crônica (CIE) deve ser preferido em relação a IBD para evitar confusão com a patologia humana.\n' +
+      '• Abordagem em 2 Níveis (CIE-I vs. CIE-II): Permite classificar a gravidade clínica com base no escore CCECAI (CIE-I: ≤ 5, CIE-II: ≥ 6 e/ou perda de peso importante/apetite ruim/alteração de PE).\n' +
+      '• Dietoterapia como Primeira Escolha: Testes dietéticos exclusivos com dietas terapêuticas (hidrolisada ou novel protein) devem ser tentados primeiro em cães clinicamente estáveis. Recomenda-se realizar até 3 tentativas dietéticas de no mínimo 2 semanas cada antes de declarar falha.\n' +
+      '• Rejeição ao Uso Empírico de Antibióticos: O uso empírico de metronidazol ou tilosina é fortemente desencorajado por induzir disbiose duradoura e apresentar altas taxas de recidiva. Reservado apenas para colites granulomatosas associadas a Escherichia coli invasiva (AIEC) com base em cultura e antibiograma de biópsia.\n' +
+      '• Biópsia e Endoscopia: Indicadas na falha dos testes dietéticos ou em cães graves e hipoalbuminêmicos (suspeita de PLE ou linfoma). A colheita deve incluir estômago (n=6), duodeno (n=10-15), íleo (n=3-5) e cólon (n=9-12).',
+    practicalApplicationText:
+      '• Manejo Inicial: Desparasitação completa e avaliação inicial. Em cães estáveis, conduzir teste com dieta terapêutica de eliminação (hidrolisada ou proteína nova) por no mínimo 2 semanas. Se responsivo, manter por pelo menos 12 semanas antes de transição.\n' +
+      '• Manejo de PLE: Dietas com gordura ultra-baixa (< 2 g/100 kcal) e alta digestibilidade são cruciais, principalmente em casos associados a linfangiectasia intestinal.\n' +
+      '• Imunomodulação: Indicada em cães com CIE-IR (responsiva a imunossupressor) ou PLE grave. A prednisolona (1-2 mg/kg q24h) é a primeira linha de indução. Casos refratários ou PLE graves podem exigir ciclosporina (3-5 mg/kg q12-24h) ou clorambucil.\n' +
+      '• Suporte de Cobalamina (B12): A suplementação oral ou parenteral deve ser instituída sempre que os níveis séricos estiverem baixos.',
+    appNotesText:
+      '• Alerta de Coagulopatia: Cães com enteropatia perdedora de proteína (PLE) têm alto risco de eventos tromboembólicos. Considerar terapia com anticoagulantes (ex: rivaroxabana).\n' +
+      '• Addison Atípico: Sempre realizar cortisol basal ou estimulação por ACTH em cães com sintomas GI crônicos e flutuantes antes de iniciar doses imunossupressoras de corticoides.',
+    references: [
+      {
+        id: 'ref-acvim-cie-2026',
+        citationText: 'Heilmann R. M. et al. ACVIM–endorsed statement: consensus statement and systematic review on guidelines for the diagnosis and treatment of chronic inflammatory enteropathy in dogs. Journal of Veterinary Internal Medicine, 2026;40(1):aalaf017.',
+        sourceType: 'Consenso ACVIM / Revisão Sistemática',
+        url: 'https://doi.org/10.1093/jvimsj/aalaf017',
+        notes: 'Diretriz de consenso atualizada e revisão sistemática sobre a abordagem diagnóstica e conduta na enteropatia inflamatória crônica em cães.',
+        evidenceLevel: 'Consenso de Especialistas'
+      }
+    ],
+    relatedMedicationSlugs: ['prednisolona'],
+    relatedDiseaseSlugs: [],
+    isDemonstrative: false
+  }
 ];

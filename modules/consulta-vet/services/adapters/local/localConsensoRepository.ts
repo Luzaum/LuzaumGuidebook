@@ -37,6 +37,10 @@ function mapSeedRecord(record: any): ConsensusRecord {
     warningLabel: record.warningLabel,
     source: 'seed',
     storagePath: record.storagePath,
+    keyPointsText: record.keyPointsText ?? null,
+    practicalApplicationText: record.practicalApplicationText ?? null,
+    appNotesText: record.appNotesText ?? null,
+    references: Array.isArray(record.references) ? record.references : [],
   };
 }
 
@@ -55,17 +59,21 @@ function loadConsensoSeedState(): Promise<ConsensoSeedState> {
 
       for (const item of mappedSeed) {
         const summaryText = String(item.summary || '').trim() || null;
-        const appNotesText = String(item.adminNotesRichText || '').trim() || null;
-        if (!summaryText && !appNotesText) continue;
+        const appNotesText = String(item.appNotesText || item.adminNotesRichText || '').trim() || null;
+        const keyPointsText = String(item.keyPointsText || '').trim() || null;
+        const practicalApplicationText = String(item.practicalApplicationText || '').trim() || null;
+        const references = Array.isArray(item.references) ? item.references : [];
+
+        if (!summaryText && !appNotesText && !keyPointsText && !practicalApplicationText) continue;
 
         seedDetailsByConsensusId.set(item.id, {
           id: `seed-details-${item.id}`,
           consensusDocumentId: item.id,
           summaryText,
-          keyPointsText: null,
-          practicalApplicationText: null,
+          keyPointsText,
+          practicalApplicationText,
           appNotesText,
-          references: [],
+          references,
           createdBy: null,
           updatedBy: null,
           createdAt: item.createdAt,

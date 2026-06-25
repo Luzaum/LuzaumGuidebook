@@ -60,7 +60,7 @@ export const DrugDatabase: React.FC<DrugDatabaseProps> = ({ onUseInCalculator })
                 type="button"
                 onClick={() => setSelectedCategory(category.id)}
                 className={cn(
-                  'whitespace-nowrap rounded-lg border px-3 py-1.5 text-xs font-semibold transition-all',
+                  'whitespace-nowrap shrink-0 min-w-max w-auto rounded-lg border px-3 py-1.5 text-xs font-semibold transition-all cursor-pointer',
                   selectedCategory === category.id
                     ? 'border-indigo-200 bg-indigo-50 text-indigo-700 dark:border-indigo-500/30 dark:bg-indigo-500/20 dark:text-indigo-400'
                     : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700',

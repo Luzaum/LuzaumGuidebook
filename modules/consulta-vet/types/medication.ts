@@ -45,12 +45,26 @@ export interface MedicationPresentation {
   channel?: MedicationSupplyChannel;
 }
 
+export interface MedicationPriceReference {
+  amountBrl: number;
+  label: string;
+  presentation: string;
+  sourceName: string;
+  sourceUrl: string;
+  checkedAt: string;
+  notes?: string | null;
+}
+
 export interface MedicationRecord extends ContentFlag {
   id: string;
   slug: string;
   title: string;
   activeIngredient: string;
   tradeNames: string[];
+  officialSiteUrl?: string | null;
+  leafletUrl?: string | null;
+  imageUrl?: string | null;
+  priceReference?: MedicationPriceReference | null;
   pharmacologicClass: string;
   species: VetSpecies[];
   category: string;

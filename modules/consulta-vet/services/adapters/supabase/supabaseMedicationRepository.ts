@@ -25,6 +25,7 @@ import {
   mapMedicationRow,
 } from './editorialRecordMappers';
 import { filterPublicMedications } from '../../../constants/publicCatalog';
+import { withMedicationPriceReferences } from '../../../data/medicationPriceReferences';
 
 function matchesMedicationQuery(record: MedicationRecord, query: string): boolean {
   const normalized = query.toLowerCase();
@@ -123,7 +124,7 @@ export class SupabaseMedicationRepository implements MedicationRepository {
       const merged = mergeBySlug(medicationsSeed, remote).sort((left, right) =>
         left.title.localeCompare(right.title, 'pt-BR')
       );
-      const result = filterPublicMedications(merged, includeDrafts);
+      const result = withMedicationPriceReferences(filterPublicMedications(merged, includeDrafts));
       
       this.listCache = {
         data: result,
@@ -189,6 +190,16 @@ export class SupabaseMedicationRepository implements MedicationRepository {
       title: input.title,
       active_ingredient: input.activeIngredient,
       trade_names: cleanTextArray(input.tradeNames),
+      official_site_url: String(input.officialSiteUrl || '').trim() || null,
+      leaflet_url: String(input.leafletUrl || '').trim() || null,
+      image_url: String(input.imageUrl || '').trim() || null,
+      price_reference_amount_brl: input.priceReference?.amountBrl ?? null,
+      price_reference_label: input.priceReference?.label?.trim() || null,
+      price_reference_presentation: input.priceReference?.presentation?.trim() || null,
+      price_reference_source_name: input.priceReference?.sourceName?.trim() || null,
+      price_reference_source_url: input.priceReference?.sourceUrl?.trim() || null,
+      price_reference_checked_at: input.priceReference?.checkedAt || null,
+      price_reference_notes: input.priceReference?.notes?.trim() || null,
       pharmacologic_class: input.pharmacologicClass,
       species: cleanTextArray(input.species),
       tags: cleanTextArray(input.tags),

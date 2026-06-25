@@ -4,23 +4,26 @@ import { MedicationRepository } from '../../repositories/medication.repository';
 import { PUBLIC_CATALOG_MEDICATION_CARD_STUBS } from '../../../data/publicCatalogCardStubs';
 import { loadMedicationsEditorialSeed } from '../../../data/seed/editorialSeedLazy';
 import { filterPublicMedications, isPublicMedicationSlug } from '../../../constants/publicCatalog';
+import { withMedicationPriceReference, withMedicationPriceReferences } from '../../../data/medicationPriceReferences';
 
 export class LocalMedicationRepository implements MedicationRepository {
   async list(options?: { includeDrafts?: boolean }): Promise<MedicationRecord[]> {
     if (!options?.includeDrafts) {
-      return [...PUBLIC_CATALOG_MEDICATION_CARD_STUBS];
+      return withMedicationPriceReferences([...PUBLIC_CATALOG_MEDICATION_CARD_STUBS]);
     }
     const medicationsSeed = await loadMedicationsEditorialSeed();
-    return [...medicationsSeed];
+    return withMedicationPriceReferences([...medicationsSeed]);
   }
 
   async getBySlug(slug: string, options?: { includeDrafts?: boolean }): Promise<MedicationRecord | null> {
     const medicationsSeed = await loadMedicationsEditorialSeed();
     if (!options?.includeDrafts) {
       if (!isPublicMedicationSlug(slug)) return null;
-      return filterPublicMedications(medicationsSeed, false).find((m) => m.slug === slug) || null;
+      const found = filterPublicMedications(medicationsSeed, false).find((m) => m.slug === slug) || null;
+      return found ? withMedicationPriceReference(found) : null;
     }
-    return medicationsSeed.find((m) => m.slug === slug) || null;
+    const found = medicationsSeed.find((m) => m.slug === slug) || null;
+    return found ? withMedicationPriceReference(found) : null;
   }
 
   async search(query: string): Promise<MedicationRecord[]> {

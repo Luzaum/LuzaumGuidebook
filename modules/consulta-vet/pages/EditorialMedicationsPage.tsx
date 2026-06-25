@@ -18,6 +18,7 @@ import { EditorialReference } from '../types/common';
 import { DiseaseRecord } from '../types/disease';
 import {
   MedicationDose,
+  MedicationPriceReference,
   MedicationPresentation,
   MedicationRecord,
   MedicationStructuredBlock,
@@ -36,6 +37,16 @@ type MedicationFormState = {
   category: string;
   species: Array<'dog' | 'cat'>;
   tradeNames: string;
+  officialSiteUrl: string;
+  leafletUrl: string;
+  imageUrl: string;
+  priceAmountBrl: string;
+  priceLabel: string;
+  pricePresentation: string;
+  priceSourceName: string;
+  priceSourceUrl: string;
+  priceCheckedAt: string;
+  priceNotes: string;
   tags: string;
   mechanismOfAction: string;
   indications: string;
@@ -64,6 +75,16 @@ function createEmptyMedication(): MedicationFormState {
     category: '',
     species: ['dog'],
     tradeNames: '',
+    officialSiteUrl: '',
+    leafletUrl: '',
+    imageUrl: '',
+    priceAmountBrl: '',
+    priceLabel: '',
+    pricePresentation: '',
+    priceSourceName: '',
+    priceSourceUrl: '',
+    priceCheckedAt: '',
+    priceNotes: '',
     tags: '',
     mechanismOfAction: '',
     indications: '',
@@ -93,6 +114,16 @@ function mapMedicationToForm(record: MedicationRecord): MedicationFormState {
     category: record.category,
     species: record.species,
     tradeNames: formatMultiline(record.tradeNames),
+    officialSiteUrl: record.officialSiteUrl || '',
+    leafletUrl: record.leafletUrl || '',
+    imageUrl: record.imageUrl || '',
+    priceAmountBrl: record.priceReference?.amountBrl?.toString() || '',
+    priceLabel: record.priceReference?.label || '',
+    pricePresentation: record.priceReference?.presentation || '',
+    priceSourceName: record.priceReference?.sourceName || '',
+    priceSourceUrl: record.priceReference?.sourceUrl || '',
+    priceCheckedAt: record.priceReference?.checkedAt || '',
+    priceNotes: record.priceReference?.notes || '',
     tags: formatMultiline(record.tags),
     mechanismOfAction: record.mechanismOfAction,
     indications: formatMultiline(record.indications),
@@ -204,6 +235,40 @@ export function EditorialMedicationsPage() {
     }));
   };
 
+  const buildPriceReference = (): MedicationPriceReference | null => {
+    const amountText = form.priceAmountBrl.trim().replace(',', '.');
+    const amount = Number(amountText);
+    const hasAnyPriceField = [
+      form.priceAmountBrl,
+      form.priceLabel,
+      form.pricePresentation,
+      form.priceSourceName,
+      form.priceSourceUrl,
+      form.priceCheckedAt,
+      form.priceNotes,
+    ].some((value) => value.trim());
+
+    if (!hasAnyPriceField) return null;
+
+    if (!Number.isFinite(amount) || amount < 0) {
+      throw new Error('Informe um valor numérico válido para o preço de referência.');
+    }
+
+    if (!form.priceLabel.trim() || !form.pricePresentation.trim() || !form.priceSourceName.trim() || !form.priceSourceUrl.trim() || !form.priceCheckedAt.trim()) {
+      throw new Error('Preço de referência exige: rótulo, apresentação, fonte, URL da fonte e data de checagem.');
+    }
+
+    return {
+      amountBrl: amount,
+      label: form.priceLabel.trim(),
+      presentation: form.pricePresentation.trim(),
+      sourceName: form.priceSourceName.trim(),
+      sourceUrl: form.priceSourceUrl.trim(),
+      checkedAt: form.priceCheckedAt.trim(),
+      notes: form.priceNotes.trim() || null,
+    };
+  };
+
   const handleSave = async (event: React.FormEvent) => {
     event.preventDefault();
     setIsSaving(true);
@@ -231,6 +296,10 @@ export function EditorialMedicationsPage() {
         category: form.category,
         species: medicationSpecies,
         tradeNames: splitMultiline(form.tradeNames),
+        officialSiteUrl: form.officialSiteUrl.trim(),
+        leafletUrl: form.leafletUrl.trim(),
+        imageUrl: form.imageUrl.trim(),
+        priceReference: buildPriceReference(),
         tags: splitMultiline(form.tags),
         mechanismOfAction: form.mechanismOfAction.trim(),
         indications: splitMultiline(form.indications),
@@ -439,6 +508,105 @@ export function EditorialMedicationsPage() {
                     value={form.tags}
                     onChange={(event) => setForm((current) => ({ ...current, tags: event.target.value }))}
                     rows={4}
+                    className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                  />
+                </EditorialField>
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-3">
+                <EditorialField label="Site oficial" hint="URL pública do produto/fabricante.">
+                  <input
+                    type="url"
+                    value={form.officialSiteUrl}
+                    onChange={(event) => setForm((current) => ({ ...current, officialSiteUrl: event.target.value }))}
+                    className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                  />
+                </EditorialField>
+
+                <EditorialField label="Bula" hint="URL da bula ou página de bula.">
+                  <input
+                    type="url"
+                    value={form.leafletUrl}
+                    onChange={(event) => setForm((current) => ({ ...current, leafletUrl: event.target.value }))}
+                    className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                  />
+                </EditorialField>
+
+                <EditorialField label="Imagem do produto" hint="URL direta de imagem fiel à apresentação.">
+                  <input
+                    type="url"
+                    value={form.imageUrl}
+                    onChange={(event) => setForm((current) => ({ ...current, imageUrl: event.target.value }))}
+                    className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                  />
+                </EditorialField>
+              </div>
+
+              <div className="rounded-2xl border border-border bg-muted/20 p-4">
+                <div className="mb-4">
+                  <h4 className="text-sm font-semibold text-foreground">Preço online de referência</h4>
+                  <p className="mt-1 text-xs leading-5 text-muted-foreground">
+                    Campo comercial informativo. Não altera dose, cálculo ou apresentação clínica.
+                  </p>
+                </div>
+                <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                  <EditorialField label="Valor numérico (BRL)" hint="Ex.: 65.61">
+                    <input
+                      inputMode="decimal"
+                      value={form.priceAmountBrl}
+                      onChange={(event) => setForm((current) => ({ ...current, priceAmountBrl: event.target.value }))}
+                      className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                    />
+                  </EditorialField>
+
+                  <EditorialField label="Rótulo do preço" hint="Ex.: R$ 65,61">
+                    <input
+                      value={form.priceLabel}
+                      onChange={(event) => setForm((current) => ({ ...current, priceLabel: event.target.value }))}
+                      className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                    />
+                  </EditorialField>
+
+                  <EditorialField label="Data de checagem">
+                    <input
+                      type="date"
+                      value={form.priceCheckedAt}
+                      onChange={(event) => setForm((current) => ({ ...current, priceCheckedAt: event.target.value }))}
+                      className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                    />
+                  </EditorialField>
+
+                  <EditorialField label="Apresentação cotada">
+                    <input
+                      value={form.pricePresentation}
+                      onChange={(event) => setForm((current) => ({ ...current, pricePresentation: event.target.value }))}
+                      className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                    />
+                  </EditorialField>
+
+                  <EditorialField label="Fonte">
+                    <input
+                      value={form.priceSourceName}
+                      onChange={(event) => setForm((current) => ({ ...current, priceSourceName: event.target.value }))}
+                      className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                    />
+                  </EditorialField>
+
+                  <EditorialField label="URL da fonte">
+                    <input
+                      type="url"
+                      value={form.priceSourceUrl}
+                      onChange={(event) => setForm((current) => ({ ...current, priceSourceUrl: event.target.value }))}
+                      className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                    />
+                  </EditorialField>
+                </div>
+
+                <EditorialField label="Observação do preço" className="mt-4">
+                  <textarea
+                    value={form.priceNotes}
+                    onChange={(event) => setForm((current) => ({ ...current, priceNotes: event.target.value }))}
+                    rows={2}
                     className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                   />
                 </EditorialField>
