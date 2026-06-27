@@ -21,18 +21,19 @@ import {
   CommercialMedicationProduct,
   CommercialMedicationSubclass,
 } from '../types/commercialMedication';
+import { VetSpecies } from '../types/common';
 
 const UI_TEXT = {
-  eyebrow: 'Catálogo comercial',
-  title: 'Apresentações comerciais',
-  body: 'Comparação clínica de apresentações comerciais por classe, subclasse, espécie e uso prático.',
-  searchPlaceholder: 'Buscar produto, classe, subclasse, ativo ou uso clínico...',
+  eyebrow: 'ConsultaVET',
+  title: 'Apresentações Comerciais',
+  body: 'Busca rápida de apresentações comerciais de medicamentos veterinários e humanos.',
+  searchPlaceholder: 'Buscar por produto, fabricante, princípio ativo ou indicação...',
 } as const;
 
 const CLASS_LABELS: Record<CommercialMedicationClass, string> = {
-  dermatologic: 'Dermatológicos',
-  gastrointestinal: 'Trato gastrointestinal',
-  neurologic: 'Neurológicos',
+  dermatologic: 'Dermatológicas',
+  gastrointestinal: 'Gastrointestinais',
+  neurologic: 'Neurológicas',
   cardiologic: 'Cardiológicos',
   pneumologic: 'Medicações pneumo',
   urologic: 'Urológicas',
@@ -701,11 +702,15 @@ export function CommercialPresentationsPage() {
       const productSubclasses = product.commercialSubclasses || [product.commercialSubclass];
       const selectedClassSubclasses = commercialClass ? SUBCLASSES_BY_CLASS[commercialClass] || [] : [];
       const matchesClass =
+        hasTextSearch ||
         !commercialClass ||
         product.commercialClass === commercialClass ||
         productSubclasses.some((subclass) => selectedClassSubclasses.includes(subclass));
       const matchesSubclass =
-        !commercialClass || commercialSubclass === 'all' || productSubclasses.includes(commercialSubclass);
+        hasTextSearch ||
+        !commercialClass ||
+        commercialSubclass === 'all' ||
+        productSubclasses.includes(commercialSubclass);
       const matchesSpecies = species === 'all' || product.species.includes(species);
       const searchHaystack = [
         product.name,

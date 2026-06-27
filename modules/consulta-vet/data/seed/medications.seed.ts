@@ -1,4 +1,5 @@
 import { MedicationRecord } from '../../types/medication';
+import { hepatoprotectorMedicationsSeed } from './medications.hepatoprotectors.seed';
 
 export const medicationsSeed: MedicationRecord[] = [
   {
@@ -51,31 +52,18 @@ export const medicationsSeed: MedicationRecord[] = [
     routes: ['VO', 'IV (hospitalar — succinato/fosfato)'],
     presentations: [
       {
-        id: 'pres-preni-cp-5',
-        label: 'Preni — comprimido 5 mg (Eurofarma, uso humano)',
+        id: 'pres-preni-cp',
+        label: 'Preni - comprimido (Eurofarma, uso humano)',
         form: 'Comprimido',
         concentrationValue: 5,
         concentrationUnit: 'mg/comprimido',
         channel: 'human_pharmacy',
-        packInfo: 'Embalagens 5 mg (10 ou 20 cp)',
-      },
-      {
-        id: 'pres-preni-cp-20',
-        label: 'Preni — comprimido 20 mg (Eurofarma, uso humano)',
-        form: 'Comprimido',
-        concentrationValue: 20,
-        concentrationUnit: 'mg/comprimido',
-        channel: 'human_pharmacy',
-        packInfo: '20 mg — 10 cp',
-      },
-      {
-        id: 'pres-preni-cp-40',
-        label: 'Preni — comprimido 40 mg (Eurofarma, uso humano)',
-        form: 'Comprimido',
-        concentrationValue: 40,
-        concentrationUnit: 'mg/comprimido',
-        channel: 'human_pharmacy',
-        packInfo: '40 mg — 7 cp',
+        packInfo: 'Apresentacoes 5 mg, 20 mg e 40 mg',
+        concentrationOptions: [
+          { id: '5', label: '5 mg', concentrationValue: 5, concentrationUnit: 'mg/comprimido' },
+          { id: '20', label: '20 mg', concentrationValue: 20, concentrationUnit: 'mg/comprimido' },
+          { id: '40', label: '40 mg', concentrationValue: 40, concentrationUnit: 'mg/comprimido' },
+        ],
       },
       {
         id: 'pres-pred-sol-3mg-ml',
@@ -96,38 +84,30 @@ export const medicationsSeed: MedicationRecord[] = [
         packInfo: '10 ou 20 mL',
       },
       {
-        id: 'pres-prediderm-5',
-        label: 'Prediderm — comprimido 5 mg (Ourofino, vet)',
+        id: 'pres-prediderm',
+        label: 'Prediderm - comprimido (Ourofino, vet)',
         form: 'Comprimido',
         concentrationValue: 5,
         concentrationUnit: 'mg/comprimido',
         channel: 'veterinary',
-        packInfo: '10 comprimidos',
+        packInfo: 'Apresentacoes 5 mg e 20 mg; 10 comprimidos',
+        concentrationOptions: [
+          { id: '5', label: '5 mg', concentrationValue: 5, concentrationUnit: 'mg/comprimido' },
+          { id: '20', label: '20 mg', concentrationValue: 20, concentrationUnit: 'mg/comprimido' },
+        ],
       },
       {
-        id: 'pres-prediderm-20',
-        label: 'Prediderm — comprimido 20 mg (Ourofino, vet)',
-        form: 'Comprimido',
-        concentrationValue: 20,
-        concentrationUnit: 'mg/comprimido',
-        channel: 'veterinary',
-        packInfo: '10 comprimidos',
-      },
-      {
-        id: 'pres-predivet-5',
-        label: 'Predivet — comprimido 5 mg (Mundo Animal, vet)',
+        id: 'pres-predivet',
+        label: 'Predivet - comprimido (Mundo Animal, vet)',
         form: 'Comprimido',
         concentrationValue: 5,
         concentrationUnit: 'mg/comprimido',
         channel: 'veterinary',
-      },
-      {
-        id: 'pres-predivet-20',
-        label: 'Predivet — comprimido 20 mg (Mundo Animal, vet)',
-        form: 'Comprimido',
-        concentrationValue: 20,
-        concentrationUnit: 'mg/comprimido',
-        channel: 'veterinary',
+        packInfo: 'Apresentacoes 5 mg e 20 mg',
+        concentrationOptions: [
+          { id: '5', label: '5 mg', concentrationValue: 5, concentrationUnit: 'mg/comprimido' },
+          { id: '20', label: '20 mg', concentrationValue: 20, concentrationUnit: 'mg/comprimido' },
+        ],
       },
     ],
     doses: [
@@ -145,7 +125,8 @@ export const medicationsSeed: MedicationRecord[] = [
         notes:
           'Plumb’s: não ultrapassar ~40 mg/dia como dose anti-inflamatória inicial total em cães grandes. Evitar uso prolongado alto sem monitoração.',
         calculatorEnabled: true,
-        presentationId: 'pres-preni-cp-20',
+        presentationId: 'pres-preni-cp',
+        presentationConcentrationId: '20',
       },
       {
         id: 'dose-pred-cat-anti',
@@ -178,7 +159,8 @@ export const medicationsSeed: MedicationRecord[] = [
         notes:
           'Muitos iniciam ~2 mg/kg/d; totais diários em gigantes muitas vezes não precisam ultrapassar ~60–80 mg (experiência clínica citada).',
         calculatorEnabled: true,
-        presentationId: 'pres-prediderm-20',
+        presentationId: 'pres-prediderm',
+        presentationConcentrationId: '20',
       },
       {
         id: 'dose-pred-cat-imuno',
@@ -210,7 +192,8 @@ export const medicationsSeed: MedicationRecord[] = [
         notes:
           'Estresse: necessidade pode subir (2–5× basal moderado; 5–20× estresse maior — ver protocolo de crise e preferências hospitalares; dexametasona antes de ACTH stim).',
         calculatorEnabled: true,
-        presentationId: 'pres-preni-cp-5',
+        presentationId: 'pres-preni-cp',
+        presentationConcentrationId: '5',
       },
       {
         id: 'dose-pred-dog-onc',
@@ -225,7 +208,8 @@ export const medicationsSeed: MedicationRecord[] = [
         duration: 'Depende do protocolo oncológico; monoterapia paliativa linfoma — resposta muitas vezes limitada no tempo.',
         notes: 'Sempre integrar ao protocolo de oncologia; risco de resistência/induzir iatrogenias.',
         calculatorEnabled: true,
-        presentationId: 'pres-prediderm-20',
+        presentationId: 'pres-prediderm',
+        presentationConcentrationId: '20',
       },
       {
         id: 'dose-pred-dog-paliativo',
@@ -240,7 +224,8 @@ export const medicationsSeed: MedicationRecord[] = [
         duration: 'Conforme conforto e tolerância.',
         notes: 'Feldman et al.: faixa citada para suporte em câncer.',
         calculatorEnabled: true,
-        presentationId: 'pres-preni-cp-5',
+        presentationId: 'pres-preni-cp',
+        presentationConcentrationId: '5',
       },
       {
         id: 'dose-pred-cat-paliativo',
@@ -722,21 +707,17 @@ export const medicationsSeed: MedicationRecord[] = [
     routes: ['VO'],
     presentations: [
       {
-        id: 'pres-synulox-50',
-        label: 'Synulox® 50 mg total (40 mg amoxicilina + 10 mg clavulanato) — Zoetis BR',
-        form: 'Comprimido palatável',
+        id: 'pres-synulox',
+        label: 'Synulox - comprimido palatavel (Zoetis BR)',
+        form: 'Comprimido palatavel',
         concentrationValue: 40,
         concentrationUnit: 'mg amoxicilina/comprimido',
         channel: 'veterinary',
-        packInfo: 'Bula BR: 10 mg/kg amoxicilina + 2,5 mg/kg clavulanato BID',
-      },
-      {
-        id: 'pres-synulox-250',
-        label: 'Synulox® 250 mg total (200 mg amoxicilina + 50 mg clavulanato) — Zoetis BR',
-        form: 'Comprimido palatável',
-        concentrationValue: 200,
-        concentrationUnit: 'mg amoxicilina/comprimido',
-        channel: 'veterinary',
+        packInfo: 'Bula BR: 10 mg/kg amoxicilina + 2,5 mg/kg clavulanato BID; apresentacoes 50 mg e 250 mg totais',
+        concentrationOptions: [
+          { id: '50', label: '50 mg total (40 + 10)', concentrationValue: 40, concentrationUnit: 'mg amoxicilina/comprimido' },
+          { id: '250', label: '250 mg total (200 + 50)', concentrationValue: 200, concentrationUnit: 'mg amoxicilina/comprimido' },
+        ],
       },
       {
         id: 'pres-amox-clav-vet-62-5',
@@ -779,7 +760,8 @@ export const medicationsSeed: MedicationRecord[] = [
         duration: 'Conforme foco infeccioso; piodermite frequentemente 7–14+ dias.',
         notes: 'Expressa em mg de amoxicilina por kg (componente). Synulox BR oficial: 10 mg/kg amoxicilina + 2,5 mg/kg clav BID.',
         calculatorEnabled: true,
-        presentationId: 'pres-synulox-250',
+        presentationId: 'pres-synulox',
+        presentationConcentrationId: '250',
       },
       {
         id: 'dose-amox-clav-dog-synulox',
@@ -794,7 +776,8 @@ export const medicationsSeed: MedicationRecord[] = [
         duration: '5–7 d usuais; até 21 d piodermite; não >30 d sem reavaliação (material técnico).',
         notes: 'Sempre 2,5 mg/kg de clavulanato associados na mesma relação do comprimido.',
         calculatorEnabled: true,
-        presentationId: 'pres-synulox-50',
+        presentationId: 'pres-synulox',
+        presentationConcentrationId: '50',
       },
       {
         id: 'dose-amox-clav-cat-nelson',
@@ -854,7 +837,8 @@ export const medicationsSeed: MedicationRecord[] = [
         duration: 'Conforme resolução radiológica/clínica.',
         notes: 'Referência citada no acervo do utilizador (Drobatz et al.).',
         calculatorEnabled: true,
-        presentationId: 'pres-synulox-250',
+        presentationId: 'pres-synulox',
+        presentationConcentrationId: '250',
       },
     ],
     clinicalStructuredBlocks: [
@@ -986,29 +970,18 @@ export const medicationsSeed: MedicationRecord[] = [
     routes: ['VO'],
     presentations: [
       {
-        id: 'pres-preg-25',
-        label: 'Cápsula 25 mg (humano — uso extra-label)',
-        form: 'Cápsula',
+        id: 'pres-preg-caps',
+        label: 'Capsula de pregabalina (humano - uso extra-label)',
+        form: 'Capsula',
         concentrationValue: 25,
-        concentrationUnit: 'mg/cápsula',
+        concentrationUnit: 'mg/capsula',
         channel: 'human_pharmacy',
-        packInfo: 'Fracionar com cautela; confirmar viabilidade farmacêutica',
-      },
-      {
-        id: 'pres-preg-75',
-        label: 'Cápsula 75 mg (humano)',
-        form: 'Cápsula',
-        concentrationValue: 75,
-        concentrationUnit: 'mg/cápsula',
-        channel: 'human_pharmacy',
-      },
-      {
-        id: 'pres-preg-150',
-        label: 'Cápsula 150 mg (humano)',
-        form: 'Cápsula',
-        concentrationValue: 150,
-        concentrationUnit: 'mg/cápsula',
-        channel: 'human_pharmacy',
+        packInfo: 'Apresentacoes comuns 25 mg, 75 mg e 150 mg; confirmar viabilidade farmaceutica antes de fracionar',
+        concentrationOptions: [
+          { id: '25', label: '25 mg', concentrationValue: 25, concentrationUnit: 'mg/capsula' },
+          { id: '75', label: '75 mg', concentrationValue: 75, concentrationUnit: 'mg/capsula' },
+          { id: '150', label: '150 mg', concentrationValue: 150, concentrationUnit: 'mg/capsula' },
+        ],
       },
       {
         id: 'pres-preg-sol-25',
@@ -1036,7 +1009,8 @@ export const medicationsSeed: MedicationRecord[] = [
         notes:
           'Plumb’s: 3–4 mg/kg q8h. Para reduzir sedação: pode iniciar 2 mg/kg q12h e aumentar ~1 mg/kg/semana até 3–4 mg/kg q8–12h. Nelson: exemplo 4 mg/kg q8–12h; t½ ~7 h; eliminação renal.',
         calculatorEnabled: true,
-        presentationId: 'pres-preg-75',
+        presentationId: 'pres-preg-caps',
+        presentationConcentrationId: '75',
       },
       {
         id: 'dose-preg-dog-neuro',
@@ -1050,7 +1024,8 @@ export const medicationsSeed: MedicationRecord[] = [
         frequency: 'q8–12h',
         duration: 'Conforme resposta; multimodalidade.',
         calculatorEnabled: true,
-        presentationId: 'pres-preg-75',
+        presentationId: 'pres-preg-caps',
+        presentationConcentrationId: '75',
       },
       {
         id: 'dose-preg-dog-periop',
@@ -1066,7 +1041,8 @@ export const medicationsSeed: MedicationRecord[] = [
         notes:
           'Plumb’s: 4 mg/kg VO cerca de 1 h antes da anestesia; em seguida 4 mg/kg VO três vezes ao dia por 5 dias no pós-operatório. Não substitui analgesia multimodal. Calculadora reflete mg/kg por administração — ajustar ao protocolo.',
         calculatorEnabled: false,
-        presentationId: 'pres-preg-75',
+        presentationId: 'pres-preg-caps',
+        presentationConcentrationId: '75',
       },
       {
         id: 'dose-preg-dog-ortho',
@@ -1079,7 +1055,8 @@ export const medicationsSeed: MedicationRecord[] = [
         route: 'VO',
         frequency: 'q8–12h',
         calculatorEnabled: true,
-        presentationId: 'pres-preg-75',
+        presentationId: 'pres-preg-caps',
+        presentationConcentrationId: '75',
       },
       {
         id: 'dose-preg-cat-epi',
@@ -1093,7 +1070,8 @@ export const medicationsSeed: MedicationRecord[] = [
         frequency: 'q12h',
         notes: 'Início conservador; gatos variam na sedação.',
         calculatorEnabled: true,
-        presentationId: 'pres-preg-25',
+        presentationId: 'pres-preg-caps',
+        presentationConcentrationId: '25',
       },
       {
         id: 'dose-preg-cat-neuro',
@@ -1106,7 +1084,8 @@ export const medicationsSeed: MedicationRecord[] = [
         route: 'VO',
         frequency: 'q8–12h',
         calculatorEnabled: true,
-        presentationId: 'pres-preg-25',
+        presentationId: 'pres-preg-caps',
+        presentationConcentrationId: '25',
       },
       {
         id: 'dose-preg-cat-transport',
@@ -1243,36 +1222,19 @@ export const medicationsSeed: MedicationRecord[] = [
         packInfo: 'Zoetis BR / Plumb’s',
       },
       {
-        id: 'pres-maro-cp-16',
-        label: 'Comprimido 16 mg (cão — Cerenia)',
+        id: 'pres-maro-cp',
+        label: 'Cerenia - comprimido (cao)',
         form: 'Comprimido',
         concentrationValue: 16,
         concentrationUnit: 'mg/comprimido',
         channel: 'veterinary',
-      },
-      {
-        id: 'pres-maro-cp-24',
-        label: 'Comprimido 24 mg',
-        form: 'Comprimido',
-        concentrationValue: 24,
-        concentrationUnit: 'mg/comprimido',
-        channel: 'veterinary',
-      },
-      {
-        id: 'pres-maro-cp-60',
-        label: 'Comprimido 60 mg',
-        form: 'Comprimido',
-        concentrationValue: 60,
-        concentrationUnit: 'mg/comprimido',
-        channel: 'veterinary',
-      },
-      {
-        id: 'pres-maro-cp-160',
-        label: 'Comprimido 160 mg',
-        form: 'Comprimido',
-        concentrationValue: 160,
-        concentrationUnit: 'mg/comprimido',
-        channel: 'veterinary',
+        packInfo: 'Apresentacoes 16 mg, 24 mg, 60 mg e 160 mg',
+        concentrationOptions: [
+          { id: '16', label: '16 mg', concentrationValue: 16, concentrationUnit: 'mg/comprimido' },
+          { id: '24', label: '24 mg', concentrationValue: 24, concentrationUnit: 'mg/comprimido' },
+          { id: '60', label: '60 mg', concentrationValue: 60, concentrationUnit: 'mg/comprimido' },
+          { id: '160', label: '160 mg', concentrationValue: 160, concentrationUnit: 'mg/comprimido' },
+        ],
       },
     ],
     doses: [
@@ -1302,7 +1264,8 @@ export const medicationsSeed: MedicationRecord[] = [
         frequency: 'q24h',
         duration: 'Conforme rótulo; cães 2–7 meses: limite oral 5 d',
         calculatorEnabled: true,
-        presentationId: 'pres-maro-cp-60',
+        presentationId: 'pres-maro-cp',
+        presentationConcentrationId: '60',
       },
       {
         id: 'dose-maro-dog-motion',
@@ -1316,7 +1279,8 @@ export const medicationsSeed: MedicationRecord[] = [
         frequency: 'q24h',
         duration: 'Máx. 2 dias consecutivos; com pouco alimento (não refeição grande)',
         calculatorEnabled: true,
-        presentationId: 'pres-maro-cp-160',
+        presentationId: 'pres-maro-cp',
+        presentationConcentrationId: '160',
       },
       {
         id: 'dose-maro-cat-vomito',
@@ -1345,7 +1309,8 @@ export const medicationsSeed: MedicationRecord[] = [
         duration: 'Até ~2 semanas em referências citadas; reavaliar',
         notes: 'Plumb’s: 4 mg/gato q24h — não usar calculadora mg/kg para esta linha.',
         calculatorEnabled: false,
-        presentationId: 'pres-maro-cp-16',
+        presentationId: 'pres-maro-cp',
+        presentationConcentrationId: '16',
       },
     ],
     clinicalStructuredBlocks: [
@@ -1468,20 +1433,17 @@ export const medicationsSeed: MedicationRecord[] = [
     routes: ['VO'],
     presentations: [
       {
-        id: 'pres-benza-5',
-        label: 'Comprimido 5 mg (humano — exemplo)',
+        id: 'pres-benza-cp',
+        label: 'Comprimido de benazepril (humano - exemplo)',
         form: 'Comprimido',
         concentrationValue: 5,
         concentrationUnit: 'mg/comprimido',
         channel: 'human_pharmacy',
-      },
-      {
-        id: 'pres-benza-10',
-        label: 'Comprimido 10 mg (humano — exemplo)',
-        form: 'Comprimido',
-        concentrationValue: 10,
-        concentrationUnit: 'mg/comprimido',
-        channel: 'human_pharmacy',
+        packInfo: 'Apresentacoes 5 mg e 10 mg',
+        concentrationOptions: [
+          { id: '5', label: '5 mg', concentrationValue: 5, concentrationUnit: 'mg/comprimido' },
+          { id: '10', label: '10 mg', concentrationValue: 10, concentrationUnit: 'mg/comprimido' },
+        ],
       },
     ],
     doses: [
@@ -1498,7 +1460,8 @@ export const medicationsSeed: MedicationRecord[] = [
         duration: 'Crônico com reavaliação laboratorial',
         notes: 'Plumb’s: faixa habitual 0,25–0,5 mg/kg q24h VO; ajustar a creatinina e tolerância.',
         calculatorEnabled: true,
-        presentationId: 'pres-benza-5',
+        presentationId: 'pres-benza-cp',
+        presentationConcentrationId: '5',
       },
       {
         id: 'dose-benza-cat',
@@ -1513,7 +1476,8 @@ export const medicationsSeed: MedicationRecord[] = [
         duration: 'Crónico com reavaliação',
         notes: 'Literatura cita frequentemente 0,5–1 mg/kg q24h em felinos — confirmar contexto clínico.',
         calculatorEnabled: true,
-        presentationId: 'pres-benza-5',
+        presentationId: 'pres-benza-cp',
+        presentationConcentrationId: '5',
       },
     ],
     clinicalStructuredBlocks: [
@@ -1597,28 +1561,18 @@ export const medicationsSeed: MedicationRecord[] = [
     routes: ['VO'],
     presentations: [
       {
-        id: 'pres-pimo-125',
-        label: 'Comprimido mastigável 1,25 mg (vet)',
+        id: 'pres-pimo-cp',
+        label: 'Comprimido mastigavel de pimobendan (vet)',
         form: 'Comprimido',
         concentrationValue: 1.25,
         concentrationUnit: 'mg/comprimido',
         channel: 'veterinary',
-      },
-      {
-        id: 'pres-pimo-25',
-        label: 'Comprimido mastigável 2,5 mg (vet)',
-        form: 'Comprimido',
-        concentrationValue: 2.5,
-        concentrationUnit: 'mg/comprimido',
-        channel: 'veterinary',
-      },
-      {
-        id: 'pres-pimo-5',
-        label: 'Comprimido mastigável 5 mg (vet)',
-        form: 'Comprimido',
-        concentrationValue: 5,
-        concentrationUnit: 'mg/comprimido',
-        channel: 'veterinary',
+        packInfo: 'Apresentacoes 1,25 mg, 2,5 mg e 5 mg',
+        concentrationOptions: [
+          { id: '1_25', label: '1,25 mg', concentrationValue: 1.25, concentrationUnit: 'mg/comprimido' },
+          { id: '2_5', label: '2,5 mg', concentrationValue: 2.5, concentrationUnit: 'mg/comprimido' },
+          { id: '5', label: '5 mg', concentrationValue: 5, concentrationUnit: 'mg/comprimido' },
+        ],
       },
     ],
     doses: [
@@ -1635,7 +1589,8 @@ export const medicationsSeed: MedicationRecord[] = [
         duration: 'Crônico com reavaliação cardiológica',
         notes: 'Dividir dose em duas administrações diárias na maioria dos protocolos.',
         calculatorEnabled: true,
-        presentationId: 'pres-pimo-25',
+        presentationId: 'pres-pimo-cp',
+        presentationConcentrationId: '2_5',
       },
       {
         id: 'dose-pimo-cat',
@@ -1649,7 +1604,8 @@ export const medicationsSeed: MedicationRecord[] = [
         frequency: 'q12h',
         notes: 'Doses felinas citadas na literatura especializada — confirmar caso a caso; evidência menor que no cão.',
         calculatorEnabled: true,
-        presentationId: 'pres-pimo-125',
+        presentationId: 'pres-pimo-cp',
+        presentationConcentrationId: '1_25',
       },
     ],
     clinicalStructuredBlocks: [
@@ -1811,4 +1767,5 @@ export const medicationsSeed: MedicationRecord[] = [
     isPublished: true,
     source: 'seed',
   },
+  ...hepatoprotectorMedicationsSeed,
 ];

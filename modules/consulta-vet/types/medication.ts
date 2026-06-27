@@ -31,6 +31,8 @@ export interface MedicationDose {
   calculatorEnabled: boolean;
   /** Se definido, a calculadora sugere esta apresentação para esta indicação. */
   presentationId?: string;
+  /** Se a apresentação tiver concentrationOptions, sugere a concentração inicial. */
+  presentationConcentrationId?: string;
 }
 
 export interface MedicationPresentation {
@@ -39,6 +41,12 @@ export interface MedicationPresentation {
   form: string;
   concentrationValue?: number;
   concentrationUnit?: string;
+  concentrationOptions?: Array<{
+    id: string;
+    label: string;
+    concentrationValue: number;
+    concentrationUnit: string;
+  }>;
   packInfo?: string;
   route?: string;
   scoringInfo?: string;

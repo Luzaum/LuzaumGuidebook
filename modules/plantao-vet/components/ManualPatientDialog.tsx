@@ -61,15 +61,15 @@ function speciesToRx(species: Species) {
 
 function repairLabel(value: string) {
   return value
-    .replace(/Ã§/g, 'ç')
-    .replace(/Ã£/g, 'ã')
-    .replace(/Ã©/g, 'é')
-    .replace(/Ãª/g, 'ê')
-    .replace(/Ã¡/g, 'á')
-    .replace(/Ã³/g, 'ó')
-    .replace(/Ãµ/g, 'õ')
-    .replace(/Ãº/g, 'ú')
-    .replace(/Ã­/g, 'í');
+    .replace(/\u00C3\u00A7/g, 'ç')
+    .replace(/\u00C3\u00A3/g, 'ã')
+    .replace(/\u00C3\u00A9/g, 'é')
+    .replace(/\u00C3\u00AA/g, 'ê')
+    .replace(/\u00C3\u00A1/g, 'á')
+    .replace(/\u00C3\u00B3/g, 'ó')
+    .replace(/\u00C3\u00B5/g, 'õ')
+    .replace(/\u00C3\u00BA/g, 'ú')
+    .replace(/\u00C3\u00AD/g, 'í');
 }
 
 export function ManualPatientDialog({ open, onClose }: ManualPatientDialogProps) {

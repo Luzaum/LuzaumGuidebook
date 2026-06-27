@@ -85,7 +85,7 @@ type RenderState = {
 }
 
 function fixMojibake(value: string): string {
-  if (!/[ÃÂâ]/.test(value)) {
+  if (!/[\uFFFD\u00C3\u00C2\u00E2]/.test(value)) {
     return value
   }
 
@@ -93,24 +93,25 @@ function fixMojibake(value: string): string {
     return decodeURIComponent(escape(value))
   } catch {
     return value
-      .replace(/Ã§/g, 'ç')
-      .replace(/Ã£/g, 'ã')
-      .replace(/Ã¡/g, 'á')
-      .replace(/Ã /g, 'à')
-      .replace(/Ã¢/g, 'â')
-      .replace(/Ãª/g, 'ê')
-      .replace(/Ã©/g, 'é')
-      .replace(/Ã­/g, 'í')
-      .replace(/Ã³/g, 'ó')
-      .replace(/Ã´/g, 'ô')
-      .replace(/Ãµ/g, 'õ')
-      .replace(/Ãº/g, 'ú')
-      .replace(/Ã‰/g, 'É')
-      .replace(/Ã“/g, 'Ó')
-      .replace(/Ã/g, 'à')
-      .replace(/Â/g, '')
-      .replace(/â€¢/g, '-')
-      .replace(/â€“|â€”/g, '-')
+      .replace(/\u00C3\u00A7/g, '?')
+      .replace(/\u00C3\u00A3/g, '?')
+      .replace(/\u00C3\u00A1/g, '?')
+      .replace(/\u00C3 /g, '?')
+      .replace(/\u00C3\u00A0/g, '?')
+      .replace(/\u00C3\u00A2/g, '?')
+      .replace(/\u00C3\u00AA/g, '?')
+      .replace(/\u00C3\u00A9/g, '?')
+      .replace(/\u00C3\u00AD/g, '?')
+      .replace(/\u00C3\u00B3/g, '?')
+      .replace(/\u00C3\u00B4/g, '?')
+      .replace(/\u00C3\u00B5/g, '?')
+      .replace(/\u00C3\u00BA/g, '?')
+      .replace(/\u00C3\u0192\u00E2\u20AC\u00B0/g, '?')
+      .replace(/\u00C3\u0192\u00E2\u20AC\u0152/g, '?')
+      .replace(/\u00C3\u0192/g, '?')
+      .replace(/\u00C3\u201A/g, '')
+      .replace(/\u00E3\u20AC\u00A2/g, '-')
+      .replace(/\u00E3\u20AC\u201C|\u00E3\u20AC\u201D/g, '-')
   }
 }
 

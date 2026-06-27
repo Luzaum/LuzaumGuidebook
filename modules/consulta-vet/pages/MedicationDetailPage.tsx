@@ -80,6 +80,18 @@ function formatSupplyChannel(channel?: MedicationSupplyChannel): string {
   return 'Medicina veterinária';
 }
 
+function formatPresentationConcentration(presentation: MedicationPresentation): string {
+  if (presentation.concentrationOptions?.length) {
+    return presentation.concentrationOptions
+      .map((option) => `${option.label} (${option.concentrationValue} ${option.concentrationUnit})`)
+      .join(', ');
+  }
+  if (presentation.concentrationValue) {
+    return `${presentation.concentrationValue} ${presentation.concentrationUnit}`;
+  }
+  return '—';
+}
+
 function MetaStat({ label, value }: { label: string; value: React.ReactNode }) {
   return (
     <div className="border-l border-border/70 pl-4 first:border-l-0 first:pl-0">
@@ -338,12 +350,10 @@ function MobilePresentationCard({ presentation }: { presentation: MedicationPres
             <dd className="text-right">{presentation.route}</dd>
           </div>
         ) : null}
-        {presentation.concentrationValue ? (
+        {formatPresentationConcentration(presentation) !== '—' ? (
           <div className="flex items-start justify-between gap-4">
             <dt className="font-medium text-foreground">Concentração</dt>
-            <dd className="text-right">
-              {presentation.concentrationValue} {presentation.concentrationUnit}
-            </dd>
+            <dd className="text-right">{formatPresentationConcentration(presentation)}</dd>
           </div>
         ) : null}
         {presentation.packInfo ? (
@@ -390,11 +400,7 @@ function PresentationsSection({ medication }: { medication: MedicationRecord }) 
               <div className="text-xs text-muted-foreground">{formatSupplyChannel(presentation.channel)}</div>
               <div>{presentation.form}</div>
               <div>{presentation.route || '—'}</div>
-              <div>
-                {presentation.concentrationValue
-                  ? `${presentation.concentrationValue} ${presentation.concentrationUnit}`
-                  : '—'}
-              </div>
+              <div>{formatPresentationConcentration(presentation)}</div>
               <div>{presentation.packInfo || '—'}</div>
               <div>{presentation.scoringInfo || '—'}</div>
             </div>

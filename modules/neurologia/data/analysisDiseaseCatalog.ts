@@ -31,7 +31,7 @@ function repairText(value: unknown): string {
   const text = String(value || '').trim()
   if (!text) return ''
 
-  if (!/[ÃÂâ]/.test(text)) {
+  if (!/[\u00C3\u00C2\u00E2]/.test(text)) {
     return text
   }
 

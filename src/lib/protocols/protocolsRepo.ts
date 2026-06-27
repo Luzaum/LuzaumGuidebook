@@ -2,7 +2,7 @@ import { supabase } from '../supabaseClient'
 import { logSbError } from '../clinicScopedDb'
 
 // ============================================================
-// TYPE DEFINITIONS � aligned to REAL Supabase schema
+// TYPE DEFINITIONS - aligned to REAL Supabase schema
 // ============================================================
 
 export type ProtocolFolderRecord = {
@@ -56,11 +56,11 @@ export type ProtocolMedicationItem = {
   compounded_medication_id?: string | null
   compounded_regimen_id?: string | null
   global_medication_id?: string | null
-  /** UI-only display name � NOT sent to DB */
+  /** UI-only display name - NOT sent to DB */
   medication_name?: string
   presentation_id: string | null
   presentation_slug?: string | null
-  /** UI-only display text � NOT sent to DB */
+  /** UI-only display text - NOT sent to DB */
   presentation_text?: string
   // Manual mode (when catalog IDs missing)
   manual_medication_name: string | null
@@ -330,7 +330,7 @@ function buildProtocolMedicationInsert(
     )
   }
 
-  // STRICT WHITELIST � only columns that exist in protocol_medications
+  // STRICT WHITELIST - only columns that exist in protocol_medications
   return {
     clinic_id: clinicId,
     protocol_id: protocolId,
@@ -352,7 +352,7 @@ function buildProtocolMedicationInsert(
     is_controlled: !!input.is_controlled,
     manual_medication_name: isCatalog ? null : manualName,
     manual_presentation_label: manualPresentation,
-    // NOTE: no `instructions` � column does not exist in protocol_medications
+    // NOTE: no `instructions` - column does not exist in protocol_medications
 
     // Fase 3B: snapshot canonico do regime
     metadata: (input.metadata && typeof input.metadata === 'object' && !Array.isArray(input.metadata))
@@ -1285,7 +1285,7 @@ export async function ensureDefaultSpecialtyProtocolSeed(clinicId: string, userI
     if (!error && created) {
       folderByName.set(key, created as ProtocolFolderRecord)
     } else {
-      // Fallback if upsert constraint doesn't exist � manual check already done
+      // Fallback if upsert constraint doesn't exist - manual check already done
       const fallback = await createFolder(clinicId, userId, {
         name: seed.folderName,
         icon_key: seed.iconKey,

@@ -90,7 +90,7 @@ Deno.serve(async (request) => {
   }
 
   if (request.method !== 'POST') {
-    return json(405, { error: 'MÃ©todo nÃ£o suportado.' })
+    return json(405, { error: 'Método não suportado.' })
   }
 
   let createdProtocolId: string | null = null
@@ -152,7 +152,7 @@ Deno.serve(async (request) => {
     }
 
     if (!membership) {
-      return json(403, { error: 'Sem permissÃ£o para duplicar protocolos para esta clÃ­nica.' })
+      return json(403, { error: 'Sem permissão para duplicar protocolos para esta clínica.' })
     }
 
     const { data: globalProtocol, error: protocolError } = await adminClient
@@ -163,7 +163,7 @@ Deno.serve(async (request) => {
       .single()
 
     if (protocolError || !globalProtocol) {
-      return json(404, { error: 'Protocolo global nÃ£o encontrado.' })
+      return json(404, { error: 'Protocolo global não encontrado.' })
     }
 
     const [medicationsResponse, recommendationsResponse, examsResponse] = await Promise.all([
@@ -199,7 +199,7 @@ Deno.serve(async (request) => {
         clinic_id: clinicId,
         owner_user_id: user.id,
         folder_id: null,
-        name: `${bundleProtocol.name} (cÃ³pia)`,
+        name: `${bundleProtocol.name} (cópia)`,
         description: bundleProtocol.description ?? null,
         species: bundleProtocol.species ?? null,
         duration_summary: null,
@@ -318,7 +318,7 @@ Deno.serve(async (request) => {
     console.error('[duplicate-global-protocol] unexpected error', error)
     const message = error instanceof Error ? error.message : String(error)
     return json(500, {
-      error: `NÃ£o foi possÃ­vel duplicar o protocolo completo. Nenhuma cÃ³pia vÃ¡lida foi mantida. Motivo: ${message}`,
+      error: `Não foi possível duplicar o protocolo completo. Nenhuma cópia válida foi mantida. Motivo: ${message}`,
     })
   }
 })

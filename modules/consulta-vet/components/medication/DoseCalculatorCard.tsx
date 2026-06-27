@@ -6,6 +6,7 @@ import { MedicationDose, MedicationPresentation } from '../../types/medication';
 import {
   buildDoseSummaryLabel,
   formatDoseSpeciesLabel,
+  getPresentationConcentrationOptions,
   MedicationDoseSpecies,
 } from '../../utils/medicationRules';
 
@@ -24,6 +25,7 @@ const UI_TEXT = {
   weight: 'Peso (kg)',
   doseBase: 'Regime clínico',
   presentation: 'Apresentação',
+  concentration: 'Concentração',
   mgOnly: 'Apenas em mg',
   referenceDose: 'Regime selecionado',
   safeConversion: 'Conversão pela apresentação',
@@ -88,6 +90,7 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
   );
   const [selectedDoseId, setSelectedDoseId] = useState<string>(filteredDoses[0]?.id || doses[0]?.id || '');
   const [selectedPresentationId, setSelectedPresentationId] = useState<string>('');
+  const [selectedConcentrationId, setSelectedConcentrationId] = useState<string>('');
 
   const selectedDose = useMemo(
     () => filteredDoses.find((item) => item.id === selectedDoseId) || filteredDoses[0],
@@ -103,8 +106,17 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
     () => presentationChoices.find((item) => item.id === selectedPresentationId),
     [presentationChoices, selectedPresentationId]
   );
+  const concentrationChoices = useMemo(
+    () => (selectedPresentation ? getPresentationConcentrationOptions(selectedPresentation) : []),
+    [selectedPresentation]
+  );
+  const effectivePresentation = useMemo(() => {
+    if (!selectedPresentation) return undefined;
+    if (!selectedPresentation.concentrationOptions?.length) return selectedPresentation;
+    return concentrationChoices.find((item) => item.id === selectedConcentrationId) || concentrationChoices[0];
+  }, [concentrationChoices, selectedConcentrationId, selectedPresentation]);
 
-  const { weight, setWeight, result } = useDoseCalculator(selectedDose, selectedPresentation);
+  const { weight, setWeight, result } = useDoseCalculator(selectedDose, effectivePresentation);
 
   useEffect(() => {
     if (!filteredDoses.length) return;
@@ -117,6 +129,22 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
     if (!pid || !presentations.some((p) => p.id === pid)) return;
     setSelectedPresentationId(pid);
   }, [selectedDose?.id, selectedDose?.presentationId, presentations]);
+
+  useEffect(() => {
+    if (!concentrationChoices.length) {
+      setSelectedConcentrationId('');
+      return;
+    }
+    if (concentrationChoices.some((item) => item.id === selectedConcentrationId)) return;
+    const preferredConcentrationId = selectedDose?.presentationConcentrationId
+      ? `${selectedPresentation?.id}__${selectedDose.presentationConcentrationId}`
+      : '';
+    if (preferredConcentrationId && concentrationChoices.some((item) => item.id === preferredConcentrationId)) {
+      setSelectedConcentrationId(preferredConcentrationId);
+      return;
+    }
+    setSelectedConcentrationId(concentrationChoices[0].id);
+  }, [concentrationChoices, selectedConcentrationId, selectedDose?.presentationConcentrationId, selectedPresentation?.id]);
 
   if (!doses.length || !selectedDose) return null;
 
@@ -168,11 +196,14 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
             />
           </div>
 
-          <div className="space-y-2 xl:col-span-5">
+          <div className="space-y-2 xl:col-span-4">
             <Label>{UI_TEXT.doseBase}</Label>
             <select
               value={selectedDoseId}
-              onChange={(event) => setSelectedDoseId(event.target.value)}
+              onChange={(event) => {
+                setSelectedDoseId(event.target.value);
+                setSelectedConcentrationId('');
+              }}
               className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
             >
               {filteredDoses.map((dose) => (
@@ -183,11 +214,14 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
             </select>
           </div>
 
-          <div className="space-y-2 xl:col-span-3">
+          <div className="space-y-2 xl:col-span-2">
             <Label>{UI_TEXT.presentation}</Label>
             <select
               value={selectedPresentationId}
-              onChange={(event) => setSelectedPresentationId(event.target.value)}
+              onChange={(event) => {
+                setSelectedPresentationId(event.target.value);
+                setSelectedConcentrationId('');
+              }}
               className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
             >
               <option value="">{UI_TEXT.mgOnly}</option>
@@ -198,6 +232,23 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
               ))}
             </select>
           </div>
+
+          {selectedPresentation?.concentrationOptions?.length ? (
+            <div className="space-y-2 xl:col-span-2">
+              <Label>{UI_TEXT.concentration}</Label>
+              <select
+                value={selectedConcentrationId}
+                onChange={(event) => setSelectedConcentrationId(event.target.value)}
+                className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
+              >
+                {concentrationChoices.map((presentation) => (
+                  <option key={presentation.id} value={presentation.id}>
+                    {presentation.label.replace(`${selectedPresentation.label} - `, '')}
+                  </option>
+                ))}
+              </select>
+            </div>
+          ) : null}
         </div>
 
         <div className="grid gap-5 xl:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]">

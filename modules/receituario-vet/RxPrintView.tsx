@@ -187,7 +187,7 @@ function highlightInstructionSegments(text: string, softEmphasis?: boolean): Rea
   if (!source.trim()) return [source]
 
   const pattern =
-    /(Administrar [^,.;]*|\d+(?:[.,]\d+)?\s*[a-zA-Z�-�%�/]+(?:\s+por dose)?|por via [^,.;]*|a cada \d+\s*horas|uma vez por dia|\d+\s*vez(?:es)? por dia|durante \d+\s*dias|em uso cont[i�]nuo|at[e�] reavalia[c�][a�]o cl[i�]nica|at[e�] terminar o medicamento|iniciando em \d{2}\/\d{2}\/\d{4} �s \d{2}:\d{2}|iniciando �s \d{2}:\d{2})/gi
+    /(Administrar [^,.;]*|\d+(?:[.,]\d+)?\s*[a-zA-Z?-?%?/]+(?:\s+por dose)?|por via [^,.;]*|a cada \d+\s*horas|uma vez por dia|\d+\s*vez(?:es)? por dia|durante \d+\s*dias|em uso cont[i?]nuo|at[e?] reavalia[c?][a?]o cl[i?]nica|at[e?] terminar o medicamento|iniciando em \d{2}\/\d{2}\/\d{4} ?s \d{2}:\d{2}|iniciando ?s \d{2}:\d{2})/gi
 
   const nodes: React.ReactNode[] = []
   let lastIndex = 0
@@ -227,11 +227,11 @@ function renderPlainRecommendation(line: string): string {
 function splitItemMeta(subtitle: string): { presentation: string; meta: string } {
   const raw = sanitizePrintText(subtitle || '').trim()
   if (!raw) return { presentation: '', meta: '' }
-  const parts = raw.split(/\s+�\s+/).map((entry) => entry.trim()).filter(Boolean)
+  const parts = raw.split(/\s+-\s+/).map((entry) => entry.trim()).filter(Boolean)
   if (parts.length === 1) return { presentation: parts[0], meta: '' }
   return {
     presentation: parts[0],
-    meta: parts.slice(1).join(' � '),
+    meta: parts.slice(1).join(' - '),
   }
 }
 

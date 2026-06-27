@@ -205,7 +205,7 @@ function repairMojibakeText(value: string): string {
     next = next.replaceAll(from, to)
   }
 
-  if (/�/.test(next)) {
+  if (/\uFFFD/.test(next)) {
     try {
       next = decodeURIComponent(escape(next))
     } catch {

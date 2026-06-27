@@ -1,4 +1,5 @@
 import { CommercialMedicationProduct } from '../types/commercialMedication';
+import { hepatoprotectiveCommercialProductsSeed } from './hepatoprotectiveCommercialProducts.seed';
 
 const PRICE_SOURCE_DATE = '2026-05-16';
 const ECTO_PRICE_SOURCE_DATE = '2026-05-24';
@@ -33,6 +34,7 @@ const CARDIO_DIURETIC_ALERT =
   'Diurético de alça trata congestão, não a causa estrutural. Usar a menor dose eficaz e monitorar desidratação, azotemia pré-renal, hipocalemia, hipocloremia, hiponatremia, alcalose metabólica, pressão arterial e interação com AINE.';
 
 export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
+  ...hepatoprotectiveCommercialProductsSeed,
   {
     id: 'epiotic-sis-virbac',
     slug: 'epiotic-sis',
@@ -4294,7 +4296,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     productPageUrl: 'https://www.zoetis.com.br/pesquisa-de-produtos/produtos/cerenia%C2%A0comprimidos.aspx',
     labelUrl: 'https://www.zoetis.com.br/global-assets/private/cerenia_comprimidos.pdf',
     species: ['dog'],
-    presentations: ['Cerenia 16 mg', 'Cerenia 24 mg', 'Cerenia 60 mg', 'Cerenia 160 mg'],
+    presentations: ['Cerenia comprimidos 16 mg, 24 mg, 60 mg e 160 mg'],
     activeComponents: ['citrato de maropitant'],
     labelCompositionSummary: 'Maropitant 16, 24, 60 ou 160 mg por comprimido. Antiemético NK1 para cães.',
     labelDirections: 'Cães: vômito agudo 2 mg/kg VO a cada 24 h por até 5 dias. Enjoo por movimento: dose mínima de 8 mg/kg VO cerca de 2 h antes da viagem, por até 2 dias.',
@@ -4662,7 +4664,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     productPageUrl: 'https://www.drogasil.com.br/ursacol-300-mg-30-comprimidos.html',
     labelUrl: 'https://www.drogasil.com.br/bulas/ursacol',
     species: ['dog', 'cat'],
-    presentations: ['Ursacol 50 mg', 'Ursacol 150 mg', 'Ursacol 300 mg'],
+    presentations: ['Ursacol comprimidos 50 mg, 150 mg e 300 mg'],
     activeComponents: ['ácido ursodesoxicólico'],
     labelCompositionSummary: 'Ácido biliar hidrofílico humano para uso veterinário extra-bula.',
     labelDirections: 'Bula humana não orienta dose veterinária.',

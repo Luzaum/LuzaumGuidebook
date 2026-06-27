@@ -43,11 +43,6 @@ function includesSingleDosePattern(value: string): boolean {
   return /(dose\s*[úu]nica|dose\s*unica|pr[eé]-?operat|pr[eé]\s*transporte|90\s*min|1\s*h(?:ora)?\s*antes)/i.test(value);
 }
 
-function hasAggregatedPresentationPattern(label: string): boolean {
-  const matches = label.match(/\d+(?:[.,]\d+)?\s*mg/gi) || [];
-  return matches.length >= 3;
-}
-
 export function validateMedicationDoses(
   doses: MedicationDose[],
   medicationSpecies: Array<'dog' | 'cat'>
@@ -117,10 +112,6 @@ export function validateMedicationPresentations(presentations: MedicationPresent
       seenIds.add(presentation.id);
     }
 
-    if (label && hasAggregatedPresentationPattern(label)) {
-      errors.push(`${prefix}: registre apresentações calculáveis em entradas individuais, não em lista agregada.`);
-    }
-
     if (
       presentation.channel !== undefined &&
       presentation.channel !== null &&
@@ -132,6 +123,19 @@ export function validateMedicationPresentations(presentations: MedicationPresent
   });
 
   return errors;
+}
+
+export function getPresentationConcentrationOptions(presentation: MedicationPresentation): MedicationPresentation[] {
+  if (!presentation.concentrationOptions?.length) return [presentation];
+
+  return presentation.concentrationOptions.map((option) => ({
+    ...presentation,
+    id: `${presentation.id}__${option.id}`,
+    label: `${presentation.label} - ${option.label}`,
+    concentrationValue: option.concentrationValue,
+    concentrationUnit: option.concentrationUnit,
+    concentrationOptions: undefined,
+  }));
 }
 
 function normalizePresentationForm(form: string): string {

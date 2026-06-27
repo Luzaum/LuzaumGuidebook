@@ -151,7 +151,7 @@ function repairImportedText(rawText: string) {
     repaired = repaired.replace(pattern, replacement);
   });
 
-  if (/[ÃÂ][\w]/.test(repaired)) {
+  if (/[\u00C3\u00C2][\w]/.test(repaired)) {
     try {
       const reparsed = decodeURIComponent(escape(repaired));
       if ((reparsed.match(/[áéíóúãõçâêô]/gi) || []).length >= (repaired.match(/[áéíóúãõçâêô]/gi) || []).length) {

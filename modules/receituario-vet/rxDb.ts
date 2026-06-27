@@ -298,7 +298,7 @@ function normalizePharmacyTags(
 function repairMojibake(value: string): string {
   if (!value) return ''
   const hasReplacementChar = value.includes('\uFFFD')
-  const hasCommonMojibakeMarkers = /[���]/.test(value)
+  const hasCommonMojibakeMarkers = /[\u00C3\u00C2\u00E2]/.test(value)
   if (!hasReplacementChar && !hasCommonMojibakeMarkers) return value
 
   const replacements: Record<string, string> = {
@@ -311,7 +311,7 @@ function repairMojibake(value: string): string {
     '”': '"',
     '‘': "'",
     '’': "'",
-    '� ': ' ',
+    '\uFFFD ': ' ',
   }
 
   try {
@@ -1150,7 +1150,7 @@ export function loadRxDb(): RxDatabase {
     }
 
     // Persist one-way cleanup for legacy corrupted strings.
-    if (/[���]/.test(raw) || raw.includes('\uFFFD')) {
+    if (/[\u00C3\u00C2\u00E2]/.test(raw) || raw.includes('\uFFFD')) {
       localStorage.setItem(scopedKey, JSON.stringify(normalized))
     } else if (!rawScoped && rawLegacy) {
       // Migrate legacy shared database to user-scoped key.

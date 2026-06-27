@@ -28,17 +28,17 @@ export function exportToPDF(record: SavedBloodGasRecord) {
 
   doc.setFontSize(20);
   doc.setFont('helvetica', 'bold');
-  doc.text('HemoGasoVet - Laudo ClÃ­nico', 105, 20, { align: 'center' });
+  doc.text('HemoGasoVet - Laudo Clínico', 105, 20, { align: 'center' });
 
   doc.setFontSize(11);
   doc.setFont('helvetica', 'normal');
   doc.text(`Paciente: ${record.patientName}`, 20, 34);
   if (record.tutorName) doc.text(`Tutor: ${record.tutorName}`, 20, 41);
   doc.text(`Data/Hora: ${new Date(record.date).toLocaleString('pt-BR')}`, 20, 48);
-  doc.text(`EspÃ©cie: ${input.species === 'canine' ? 'Canino' : 'Felino'}`, 120, 34);
+  doc.text(`Espécie: ${input.species === 'canine' ? 'Canino' : 'Felino'}`, 120, 34);
   doc.text(`Amostra: ${input.sampleType === 'arterial' ? 'Arterial' : 'Venosa'}`, 120, 41);
   doc.text(`FiO2: ${input.fio2 !== undefined ? formatFiO2Percent(input.fio2) : '--'}`, 120, 48);
-  doc.text(`Temperatura: ${input.temperature !== undefined ? `${input.temperature} Â°C` : '--'}`, 120, 55);
+  doc.text(`Temperatura: ${input.temperature !== undefined ? `${input.temperature} °C` : '--'}`, 120, 55);
 
   doc.setLineWidth(0.5);
   doc.line(20, 62, 190, 62);
@@ -58,26 +58,26 @@ export function exportToPDF(record: SavedBloodGasRecord) {
     `Albumina: ${input.albumin ?? '--'} g/dL`,
     `Glicose: ${input.glucose ?? '--'} mg/dL`,
   ];
-  y = writeSection(doc, 'ParÃ¢metros Informados', params, y);
+  y = writeSection(doc, 'Parâmetros Informados', params, y);
 
   y = writeSection(doc, 'Resumo Executivo', result.executiveSummary, y);
   y = writeSection(doc, 'Qualidade e Confiabilidade', [
     formatQualityStatus(result.dataQuality.status),
     ...result.dataQuality.messages,
-    ...result.dataQuality.consistencyChecks.map((check) => `${check.message} SugestÃ£o: ${check.suggestion}`),
+    ...result.dataQuality.consistencyChecks.map((check) => `${check.message} Sugestão: ${check.suggestion}`),
     result.temperatureContext.summary,
   ], y);
 
-  y = writeSection(doc, 'EquilÃ­brio Ãcido-Base', [
-    `DistÃºrbio principal: ${formatPrimaryDisorder(result.deepAcidBase.primaryDisorder)}`,
-    `CompensaÃ§Ã£o: ${formatCompensationStatus(result.deepAcidBase.compensationStatus)}`,
+  y = writeSection(doc, 'Equilíbrio Ácido-Base', [
+    `Distúrbio principal: ${formatPrimaryDisorder(result.deepAcidBase.primaryDisorder)}`,
+    `Compensação: ${formatCompensationStatus(result.deepAcidBase.compensationStatus)}`,
     result.deepAcidBase.summary,
     result.deepAcidBase.expectedCompensation || '',
     result.deepAcidBase.observedCompensation || '',
     result.deepAcidBase.physiologicalExplanation,
   ], y);
 
-  y = writeSection(doc, 'OxigenaÃ§Ã£o e VentilaÃ§Ã£o', [
+  y = writeSection(doc, 'Oxigenação e Ventilação', [
     `Status: ${formatOxygenationStatus(result.deepOxygenation)}`,
     result.deepOxygenation.summary,
     result.deepOxygenation.fio2Context || '',
@@ -85,14 +85,14 @@ export function exportToPDF(record: SavedBloodGasRecord) {
     result.deepOxygenation.physiologicalExplanation,
   ], y);
 
-  y = writeSection(doc, 'EletrÃ³litos e MetabÃ³litos', [
+  y = writeSection(doc, 'Eletrólitos e Metabólitos', [
     result.electrolyteSummary,
     ...result.deepElectrolytes.map((item) => `${item.parameter}: ${item.value} (${item.status}) - ${item.clinicalExplanation}`),
     result.anionGap?.explanation || '',
     result.baseExcess?.explanation || '',
   ], y);
 
-  y = writeSection(doc, 'HipÃ³teses e Plano de AÃ§Ã£o', [
+  y = writeSection(doc, 'Hipóteses e Plano de Ação', [
     ...result.clinicalHypotheses,
     ...result.clinicalActions.immediate,
     ...result.clinicalActions.serial,

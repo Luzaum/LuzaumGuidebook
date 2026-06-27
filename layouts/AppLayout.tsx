@@ -2,11 +2,12 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Outlet, useNavigate, useLocation, Link } from 'react-router-dom'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { modules } from '../modules/registry'
-import { Menu, X, Home } from 'lucide-react'
+import { Menu, X, Home, Stethoscope, FileText } from 'lucide-react'
 import Logo from '../components/Logo'
 import { useAuthSession } from '@/src/components/AuthSessionProvider'
 import { useClinic } from '@/src/components/ClinicProvider'
 import { TopRightAuthMenu } from '@/src/components/TopRightAuthMenu'
+import { useIsMobile } from '../hooks/useIsMobile'
 
 const APP_FORM_DRAFT_PREFIX = 'vetius:app-form-draft:v1:'
 const NON_DRAFT_FIELD_TYPES = new Set(['button', 'submit', 'reset', 'file', 'image', 'password'])
@@ -109,6 +110,8 @@ export function AppLayout() {
   
   const { profile } = useAuthSession()
   const { clinicName } = useClinic()
+
+  const isMobile = useIsMobile(768)
 
   const internalModules = modules.filter((m) => m.status === 'internal')
   const iframeModules = modules.filter((m) => m.status === 'iframe')
@@ -439,20 +442,22 @@ export function AppLayout() {
       )}
 
       {/* Main Content Pane */}
-      <div className="flex min-h-0 min-w-0 flex-1 flex-col">
+      <div className={`flex min-h-0 min-w-0 flex-1 flex-col ${isMobile ? 'pb-16' : ''}`}>
         {/* Header */}
         <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm shrink-0">
           <div className="flex items-center justify-between px-4 py-2 h-14">
             
             {/* Left Side: Toggle and Branding */}
             <div className="flex items-center gap-3">
-              <button
-                onClick={() => setSidebarOpen(true)}
-                className="p-2 hover:bg-slate-900/50 rounded-lg text-slate-350 hover:text-white transition-colors"
-                aria-label="Abrir menu"
-              >
-                <Menu className="h-5 w-5" />
-              </button>
+              {!isMobile && (
+                <button
+                  onClick={() => setSidebarOpen(true)}
+                  className="p-2 hover:bg-slate-900/50 rounded-lg text-slate-350 hover:text-white transition-colors"
+                  aria-label="Abrir menu"
+                >
+                  <Menu className="h-5 w-5" />
+                </button>
+              )}
               
               <Link
                 to="/"
@@ -493,6 +498,56 @@ export function AppLayout() {
             </div>
           )}
         </main>
+
+        {/* Mobile Bottom Navigation Bar */}
+        {isMobile && (
+          <div className="fixed bottom-0 left-0 right-0 z-40 bg-[#05060b] border-t border-slate-850 h-16 flex items-center justify-around px-2 pb-safe shadow-lg">
+            {/* Hub */}
+            <button
+              onClick={() => navigate('/hub')}
+              className={`flex flex-col items-center justify-center w-16 h-12 rounded-xl transition-all ${
+                isActive('/hub') ? 'text-emerald-400 font-bold' : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <Home className="h-5 w-5" />
+              <span className="text-[10px] mt-1">Hub</span>
+            </button>
+
+            {/* ConsultaVET */}
+            <button
+              onClick={() => navigate('/consulta-vet')}
+              className={`flex flex-col items-center justify-center w-16 h-12 rounded-xl transition-all ${
+                isActive('/consulta-vet') || decodedPathname.startsWith('/consulta-vet/') ? 'text-emerald-400 font-bold' : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <Stethoscope className="h-5 w-5" />
+              <span className="text-[10px] mt-1">Consulta</span>
+            </button>
+
+            {/* Receituário VET */}
+            <button
+              onClick={() => navigate('/receituario-vet')}
+              className={`flex flex-col items-center justify-center w-16 h-12 rounded-xl transition-all ${
+                decodedPathname.startsWith('/receituario-vet') ? 'text-emerald-400 font-bold' : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <FileText className="h-5 w-5" />
+              <span className="text-[10px] mt-1">Receituário</span>
+            </button>
+
+            {/* Menu Drawer */}
+            <button
+              onClick={() => setSidebarOpen(true)}
+              className={`flex flex-col items-center justify-center w-16 h-12 rounded-xl transition-all ${
+                sidebarOpen ? 'text-emerald-400 font-bold' : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <Menu className="h-5 w-5" />
+              <span className="text-[10px] mt-1">Mais</span>
+            </button>
+          </div>
+        )}
+
       </div>
     </div>
   )

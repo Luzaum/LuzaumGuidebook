@@ -13,8 +13,10 @@ import { hipotireoidismoCaninoRecord } from './diseases.hipotireoidismo.seed';
 import { dtuifFelinaRecord } from './diseases.dtuif-felina.seed';
 import { diabetesMellitusCaninaRecord } from './diseases.diabetes-mellitus-canina.seed';
 import { diabetesMellitusFelinaRecord } from './diseases.diabetes-mellitus-felina.seed';
+import { babesioseCaninaRecord } from './diseases.babesiose.seed';
 
 export const diseasesSeed: DiseaseRecord[] = [
+  babesioseCaninaRecord,
   dtuifFelinaRecord,
   {
     id: 'disease-fistula-perianal',

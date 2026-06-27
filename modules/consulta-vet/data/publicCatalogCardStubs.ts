@@ -1,5 +1,6 @@
 import type { DiseaseRecord } from '../types/disease';
 import type { MedicationRecord } from '../types/medication';
+import { PUBLIC_HEPATOPROTECTOR_MEDICATION_CARD_STUBS } from './publicHepatoprotectorMedicationStubs';
 
 /**
  * Metadados mínimos para listagens do catálogo público — evita importar diseases.seed/medications.seed (~260 kB gzip) só para montar cartões.
@@ -58,6 +59,33 @@ function medicationListCard(
 }
 
 export const PUBLIC_CATALOG_DISEASE_CARD_STUBS: DiseaseRecord[] = [
+  diseaseListCard({
+    id: 'disease-babesiose-canina',
+    slug: 'babesiose-canina',
+    title: 'Babesiose canina',
+    synonyms: [
+      'Babesiosis',
+      'Nambiuvu',
+      'Febre do carrapato',
+      'Anemia hemolitica por Babesia',
+      'Piroplasmose canina',
+    ],
+    species: ['dog'],
+    category: 'infectologia',
+    tags: [
+      'Carrapato',
+      'Rhipicephalus sanguineus',
+      'Babesia canis',
+      'Babesia vogeli',
+      'Babesia gibsoni',
+      'Anemia hemolitica',
+      'Trombocitopenia',
+      'Imidocarb',
+      'Atovaquona',
+    ],
+    quickSummary:
+      'A babesiose canina e uma hemoparasitose por protozoarios intraeritrocitarios do genero Babesia, transmitida principalmente por carrapatos, mas tambem possivel por transfusao, mordeduras com sangue e via transplacentaria. O quadro combina febre, apatia, anemia hemolitica, ictericia/pigmenturia e trombocitopenia; casos complicados podem evoluir com SIRS, CIVD, lesao renal aguda, pancreatite e sinais neurologicos. O diagnostico integra hemograma, esfregaco sanguineo de sangue periferico ou ponta de orelha e PCR para confirmar e diferenciar especies. Babesias grandes como B. canis/B. vogeli direcionam para imidocarb; babesias pequenas como B. gibsoni exigem atovaquona + azitromicina e monitoramento de persistencia.',
+  }),
   diseaseListCard({
     id: 'disease-dtuif-felina',
     slug: 'doencas-trato-urinario-inferior-felino-dtuif',
@@ -821,4 +849,5 @@ export const PUBLIC_CATALOG_MEDICATION_CARD_STUBS: MedicationRecord[] = [
       'Componente adjuvante em síndromes de lipoproteínas anómalas (com critério especializado).',
     ],
   }),
+  ...PUBLIC_HEPATOPROTECTOR_MEDICATION_CARD_STUBS,
 ];

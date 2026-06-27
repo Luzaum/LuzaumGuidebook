@@ -35,7 +35,7 @@ function toSafeString(v: unknown): string {
  */
 function parseDoseString(dose: string): { numericStr: string; unit: string; perKg: boolean } | null {
     if (!dose) return null
-    const ratioMatch = dose.match(/(\d+(?:[.,]\d+)?)\s*([a-zA-ZÀ-ÿ%Âµ]+)\s*\/\s*(\d+(?:[.,]\d+)?)\s*kg/i)
+    const ratioMatch = dose.match(/(\d+(?:[.,]\d+)?)\s*([a-zA-ZÀ-ÿ%µ]+)\s*\/\s*(\d+(?:[.,]\d+)?)\s*kg/i)
     if (ratioMatch) {
         const numerator = Number(ratioMatch[1].replace(',', '.'))
         const denominatorKg = Number(ratioMatch[3].replace(',', '.'))

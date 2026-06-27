@@ -47,6 +47,13 @@ export const MEDICATION_CLASSES = [
     theme: 'gastroenterologia', 
     matches: ['maropitant'] 
   },
+  {
+    slug: 'hepatobiliar',
+    label: 'Hepatobiliares & Nutracêuticos',
+    icon: Sparkles,
+    theme: 'gastroenterologia',
+    matches: ['same-sadenosilmetionina', 'suplementos-hepaticos-silimarina', 'acido-ursodesoxicolico', 'n-acetilcisteina'],
+  },
   { 
     slug: 'cardiovascular', 
     label: 'Cardiovasculares & Inodilatadores', 
