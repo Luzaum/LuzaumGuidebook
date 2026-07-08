@@ -154,9 +154,14 @@ export function ClinicalQuickGuideBody({ blocks, youtubeVideoId, youtubeTitle }:
             );
           case 'figure':
             return (
-              <figure key={key} className="space-y-2">
+              <figure key={key} className="mx-auto w-full max-w-[34rem] space-y-2">
                 <div className="overflow-hidden rounded-2xl border border-border/80 bg-muted/20">
-                  <img src={block.src} alt={block.alt} className="h-auto w-full object-contain" loading="lazy" />
+                  <img
+                    src={block.src}
+                    alt={block.alt}
+                    className="max-h-[34rem] w-full object-contain"
+                    loading="lazy"
+                  />
                 </div>
                 {block.caption ? (
                   <figcaption className="text-xs leading-relaxed text-muted-foreground">{block.caption}</figcaption>

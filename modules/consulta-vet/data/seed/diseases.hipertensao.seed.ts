@@ -123,6 +123,83 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
       'Anemia severa compensada com hipervolemia; politransfusão; eritropoietina exógena — mecanismo de “excesso de fluido para o circuito” ou alteração da viscosidade.',
     causasIatrogenicas:
       'Glicocorticoides sistémicos ou tópicos absorvíveis em dose elevada; mineralocorticoides; descongestionantes simpaticomiméticos; certos anabolizantes ou eritropoietina; excesso de fluidos IV em cardiopata ou nefropata sem ajuste.',
+    principaisCausasCaes: {
+      kind: 'clinicalTable',
+      headers: ['Causa principal', 'Quando suspeitar', 'Como investigar'],
+      rows: [
+        [
+          'Doença renal crônica ou lesão renal aguda',
+          'Azotemia, isostenúria, proteinúria, alterações renais ao ultrassom, histórico de nefropatia ou piora após insulto renal.',
+          'Ureia, creatinina, SDMA, eletrólitos, urinálise com densidade/sedimento, UPC, urocultura quando indicada e imagem renal.',
+        ],
+        [
+          'Proteinúria/glomerulopatia',
+          'UPC elevado, hipoalbuminemia, edema/ascite em alguns casos, raça predisposta ou doença inflamatória/infecciosa sistêmica.',
+          'UPC em amostra adequada, sedimento urinário, albumina, colesterol, pressão seriada e investigação de doença infecciosa/imune/neoplásica.',
+        ],
+        [
+          'Hiperadrenocorticismo (Cushing)',
+          'PU/PD, polifagia, abdômen pendular, alopecia endócrina, FA elevada, hepatomegalia e infecções recorrentes.',
+          'Triagem endócrina conforme caso (LDDST, ACTH stim, UCCR), ultrassom abdominal e avaliação de comorbidades.',
+        ],
+        [
+          'Feocromocitoma',
+          'Hipertensão marcada ou paroxística, colapso/fraqueza episódica, taquiarritmia, massa adrenal ou sinais vagos intermitentes.',
+          'Ultrassom/TC abdominal, metanefrinas quando disponível, avaliação adrenal e planejamento cirúrgico/especializado.',
+        ],
+        [
+          'Diabetes mellitus e doença metabólica associada',
+          'Hiperglicemia persistente, glicosúria, PU/PD, infecções urinárias, nefropatia ou resistência insulínica.',
+          'Glicemia seriada, frutosamina quando útil, urinálise/urocultura, UPC e rastreio de Cushing/pancreatite conforme fenótipo.',
+        ],
+        [
+          'Iatrogenia ou excesso de volume',
+          'Uso de glicocorticoides/mineralocorticoides, eritropoietina, simpaticomiméticos, fluidoterapia excessiva ou transfusões recentes.',
+          'Revisão completa de medicações, dose e tempo de uso; avaliar volemia, hematócrito, função renal, eletrólitos e necessidade de ajuste/suspensão.',
+        ],
+        [
+          'Hipertensão essencial/idiopática',
+          'Rara no cão; considerar apenas após medições repetidas e exclusão cuidadosa de causas renais, endócrinas, iatrogênicas e de volume.',
+          'Diagnóstico de exclusão: repetir PA padronizada, banco mínimo completo, UPC, investigação renal/endócrina e revisão medicamentosa.',
+        ],
+      ],
+    },
+    principaisCausasGatos: {
+      kind: 'clinicalTable',
+      headers: ['Causa principal', 'Quando suspeitar', 'Como investigar'],
+      rows: [
+        [
+          'Doença renal crônica (DRC)',
+          'Gato idoso, perda de peso, PU/PD, creatinina/SDMA alterados, densidade urinária inadequada, proteinúria ou rins alterados à imagem.',
+          'Creatinina, SDMA, ureia, fósforo, potássio, urinálise, UPC, urocultura quando indicada, ultrassom renal e subestadiamento IRIS por PA.',
+        ],
+        [
+          'Hipertireoidismo',
+          'Perda de peso com apetite aumentado, taquicardia, sopro, hiperatividade, vômitos/diarreia, massa cervical palpável ou gato geriátrico hipertenso.',
+          'T4 total; se limítrofe e suspeita alta, repetir T4, considerar T4 livre/TSH conforme disponibilidade e reavaliar rim após controle da tireoide.',
+        ],
+        [
+          'Hipertensão idiopática',
+          'PAS persistentemente elevada, especialmente em gato idoso, com triagem renal/tireoidiana inicialmente sem causa suficiente.',
+          'Diagnóstico de exclusão: PA seriada padronizada, bioquímica/SDMA, urinálise, UPC, T4 total e seguimento renal contínuo.',
+        ],
+        [
+          'Hiperaldosteronismo primário',
+          'Hipertensão com hipocalemia, fraqueza cervical/ventroflexão, arritmias, massa adrenal ou alcalose metabólica.',
+          'Potássio, aldosterona/renina quando disponível, ultrassom/TC adrenal e avaliação especializada.',
+        ],
+        [
+          'Diabetes mellitus/acromegalia ou resistência insulínica',
+          'Diabetes difícil de controlar, dose alta de insulina, ganho de peso ou sinais de hipersomatotropismo em gato diabético.',
+          'Glicemia/frutosamina, urinálise/urocultura, IGF-1 quando indicado, avaliação renal e proteinúria.',
+        ],
+        [
+          'Iatrogenia, dor, estresse ou comorbidade aguda',
+          'Corticoides, fluidos em excesso, dor intensa, internação, manipulação estressante ou doença aguda que eleva PA transitoriamente.',
+          'Repetir PA em ambiente calmo, revisar medicações/fluidos, tratar dor/ansiedade e confirmar persistência antes de rotular HAS crônica.',
+        ],
+      ],
+    },
     causasCao:
       'Resumo prático: renal (crônico ou agudo complicado), endócrino (Cushing, feocromocitoma, tireoide), volume (anemia, transfusão), iatrogenia. HAS essencial idiopática no cão é diagnóstico raro e de exclusão cuidadosa.',
     causasGato:

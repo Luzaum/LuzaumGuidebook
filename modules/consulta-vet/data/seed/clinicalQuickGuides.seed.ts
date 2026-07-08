@@ -913,8 +913,322 @@ const guiaAbdominocentese: ClinicalQuickGuide = {
   isPublished: true
 };
 
+const guiaBandagemRobertJones: ClinicalQuickGuide = {
+  id: 'cqg-robert-jones-001',
+  slug: 'bandagem-robert-jones',
+  title: 'Bandagem Robert Jones',
+  subtitle:
+    'Ortopedia - imobilização temporária acolchoada para fraturas e luxações distais em cães e gatos.',
+  summary:
+    'Guia visual, em ordem prática, para montar uma bandagem Robert Jones: quando usar, materiais, estribos, algodão, gaze, acabamento, dedos visíveis e revisão final.',
+  category: 'ortopedia',
+  species: ['dog', 'cat'],
+  searchKeywords: [
+    'robert jones',
+    'bandagem robert jones',
+    'bandagem',
+    'imobilizacao',
+    'imobilização',
+    'coaptacao',
+    'coaptação',
+    'fratura',
+    'luxacao',
+    'luxação',
+    'tala',
+    'splint',
+    'ortopedia',
+    'primeiros socorros',
+    'membro',
+    'algodao',
+    'algodão',
+    'gaze',
+    'vetrap',
+    'estribos',
+    'dedos',
+    'curativo'
+  ],
+  youtubeVideoId: null,
+  heroImageSrc: '/consulta-vet/clinical-guides/robert-jones-fig-09-camada-elastica.png',
+  heroImageAlt:
+    'Bandagem Robert Jones finalizada em membro pélvico de cão, com camada externa elástica e dedos centrais visíveis.',
+  quickBullets: [
+    'Pense nela como uma almofada firme e temporária: muito acolchoamento por dentro, compressão uniforme por fora.',
+    'Serve melhor para ganhar tempo em fraturas ou luxações abaixo do cotovelo ou do joelho.',
+    'A ferida vem antes da bandagem: limpar, lavar, proteger e só então imobilizar.',
+    'A estrutura nasce do algodão volumoso comprimido pela gaze; a faixa colorida externa é acabamento, não é a força principal.',
+    'Sempre deixe os dois dedos centrais visíveis para monitorar inchaço, frio, dor, umidade e aperto.'
+  ],
+  sections: [
+    { type: 'heading', level: 2, text: 'Quando usar' },
+    {
+      type: 'paragraph',
+      text:
+        'A Robert Jones é uma bandagem temporária, grossa e acolchoada. Ela não conserta a fratura: ela compra tempo com conforto, diminui movimento doloroso, ajuda a controlar edema e protege o membro até radiografia, cirurgia, encaminhamento ou tratamento definitivo.'
+    },
+    {
+      type: 'callout',
+      variant: 'warning',
+      title: 'Regra de ouro da imobilização',
+      text:
+        'Para segurar bem, a bandagem precisa controlar a articulação acima e a articulação abaixo da lesão. Se a fratura está muito alta no membro, ela vira peso e volume, mas não imobiliza de verdade.'
+    },
+    {
+      type: 'table',
+      caption: 'Seleção rápida do caso',
+      headers: ['Situação', 'Conduta prática'],
+      rows: [
+        [
+          'Fratura ou luxação distal ao cotovelo ou joelho',
+          'Boa opção temporária se a bandagem conseguir incluir as articulações adjacentes e o paciente tolerar o procedimento.'
+        ],
+        [
+          'Ferida aberta associada',
+          'Trate a ferida antes: tricotomia, limpeza, lavagem, desbridamento quando indicado e curativo primário/secundário antes da bandagem.'
+        ],
+        [
+          'Fratura proximal ao cotovelo ou joelho',
+          'Não use Robert Jones como imobilização principal. Considere analgesia, repouso, spica quando apropriado ou estabilização definitiva.'
+        ],
+        [
+          'Paciente com dor intensa ou instável',
+          'Faça analgesia e estabilização sistêmica primeiro; sedação ou anestesia podem ser necessárias para aplicar sem sofrimento e sem piorar a lesão.'
+        ]
+      ]
+    },
+    { type: 'heading', level: 2, text: 'Materiais' },
+    {
+      type: 'table',
+      caption: 'Monte tudo antes de começar',
+      headers: ['Material', 'Uso'],
+      rows: [
+        ['Fita adesiva porosa de 1 polegada', 'Estribos medial e lateral, com abas distais não aderentes.'],
+        ['Rolo de algodão de 12 polegadas', 'Cães médios e grandes; pode ser dividido em largura ou espessura conforme o membro.'],
+        ['Algodão ortopédico de 2 a 4 polegadas', 'Gatos e cães pequenos, geralmente em 3 a 4 rolos.'],
+        ['Gaze em rolo de 3 a 6 polegadas', 'Compressão firme e uniforme do algodão; normalmente 2 a 3 rolos.'],
+        ['Faixa elástica autoaderente', 'Camada externa protetora, aplicada com sobreposição e tensão moderada.'],
+        ['Tesoura para bandagem e fita elástica adesiva de 2 polegadas', 'Acabamento, reforço das margens e remoção segura.'],
+        ['Proteção contra água e sujeira', 'Saco plástico, manga cirúrgica ou bota impermeável apenas para saídas controladas.']
+      ]
+    },
+    {
+      type: 'callout',
+      variant: 'info',
+      title: 'Antes da primeira volta',
+      text:
+        'Radiografe quando isso não atrasar analgesia/estabilização essenciais. Se houver ferida, ela vem antes da bandagem. A Robert Jones não "corrige" contaminação, necrose ou curativo mal feito.'
+    },
+    { type: 'heading', level: 2, text: 'Passo a passo visual' },
+    {
+      type: 'paragraph',
+      text:
+        'Use a sequência como uma receita de bancada: preparar o paciente, criar as alças de fita, construir volume com algodão, comprimir com gaze, prender os estribos e fechar com a camada externa.'
+    },
+    {
+      type: 'steps',
+      title: 'Antes de encostar a bandagem',
+      items: [
+        'Controle dor antes de manipular. Se o paciente resiste, sente muita dor ou a fratura está instável, sedação ou anestesia deixam a aplicação mais segura.',
+        'Coloque o paciente em decúbito lateral, com o membro afetado para cima e bem apoiado.',
+        'Se existir ferida, faça tricotomia, lavagem, curativo primário/secundário e proteção antes da Robert Jones.',
+        'Tenha um auxiliar para segurar o membro e manter tração suave. Isso evita torção enquanto você enrola.'
+      ]
+    },
+    {
+      type: 'heading',
+      level: 3,
+      text: '1. Estribos de fita: suas alças de controle'
+    },
+    {
+      type: 'paragraph',
+      text:
+        'Cole duas tiras longas de fita porosa, uma de cada lado do membro, começando no carpo ou tarso e passando além dos dedos. Dobre as pontas para elas não grudarem nelas mesmas. Essas tiras funcionam como alças: ajudam o auxiliar a manter o membro alinhado e, no final, prendem a bandagem.'
+    },
+    {
+      type: 'figure',
+      src: '/consulta-vet/clinical-guides/robert-jones-fig-02-estribos.png',
+      alt:
+        'Tiras de fita adesiva medial e lateral estendidas além dos dedos.'
+    },
+    {
+      type: 'heading',
+      level: 3,
+      text: '2. Preparar o algodão: o volume precisa nascer antes'
+    },
+    {
+      type: 'paragraph',
+      text:
+        'Abra o rolo de algodão e ajuste a espessura antes de aplicar no animal. Não tente corrigir falta de acolchoamento apertando mais a faixa externa; isso aumenta risco de compressão ruim, desconforto e pontos de pressão.'
+    },
+    {
+      type: 'figure',
+      src: '/consulta-vet/clinical-guides/robert-jones-fig-03-algodao-espessura.png',
+      alt:
+        'Algodão sendo aberto para ajustar a espessura.'
+    },
+    {
+      type: 'paragraph',
+      text:
+        'Se o rolo estiver largo demais para o paciente, rasgue no comprimento. Para gatos e cães pequenos, rolos menores ou algodão ortopédico de 2 a 4 polegadas costumam ficar mais fáceis de controlar.'
+    },
+    {
+      type: 'figure',
+      src: '/consulta-vet/clinical-guides/robert-jones-fig-04-algodao-largura.png',
+      alt:
+        'Algodão sendo dividido no comprimento para ajustar a largura.'
+    },
+    {
+      type: 'heading',
+      level: 3,
+      text: '3. Algodão no membro: construir uma almofada uniforme'
+    },
+    {
+      type: 'paragraph',
+      text:
+        'Comece perto dos dedos e suba em direção ao corpo, sempre sobrepondo cerca de metade da volta anterior. Imagine que você está formando um cilindro acolchoado, sem degraus, buracos ou faixas estreitas apertadas.'
+    },
+    {
+      type: 'figure',
+      src: '/consulta-vet/clinical-guides/robert-jones-fig-05-algodao-membro.png',
+      alt:
+        'Algodão sendo enrolado no membro de distal para proximal.'
+    },
+    {
+      type: 'callout',
+      variant: 'tip',
+      title: 'Imagem mental útil',
+      text:
+        'O algodão é o colchão da bandagem. Se ele fica fino, irregular ou com falhas, a gaze e a faixa externa não salvam o resultado.'
+    },
+    {
+      type: 'heading',
+      level: 3,
+      text: '4. Gaze: transformar algodão fofo em suporte firme'
+    },
+    {
+      type: 'paragraph',
+      text:
+        'A gaze é aplicada por cima do algodão com pressão firme e constante. Ela comprime o acolchoamento e dá corpo à Robert Jones. Evite terminar uma volta muito apertada diretamente sobre a pele nas extremidades.'
+    },
+    {
+      type: 'figure',
+      src: '/consulta-vet/clinical-guides/robert-jones-fig-06-gaze-compressao.png',
+      alt:
+        'Gaze em rolo sendo aplicada sobre o algodão.'
+    },
+    {
+      type: 'paragraph',
+      text:
+        'Quando fizer o padrão cruzado, mantenha a tensão igual de um lado ao outro. Esse cruzamento ajuda a deixar o diâmetro mais uniforme, principalmente em membros cônicos ou quando o algodão tende a abrir.'
+    },
+    {
+      type: 'figure',
+      src: '/consulta-vet/clinical-guides/robert-jones-fig-07-gaze-cruzada.png',
+      alt:
+        'Aplicação cruzada da gaze sobre a bandagem.'
+    },
+    {
+      type: 'heading',
+      level: 3,
+      text: '5. Prender os estribos e deixar os dedos visíveis'
+    },
+    {
+      type: 'paragraph',
+      text:
+        'Separe as abas de fita, torça para a face adesiva encostar na gaze e puxe sobre a bandagem. Os dois dedos centrais devem ficar visíveis; eles são a janela de monitoramento para edema, cor, temperatura e dor.'
+    },
+    {
+      type: 'figure',
+      src: '/consulta-vet/clinical-guides/robert-jones-fig-08-estribos-dedos.png',
+      alt:
+        'Estribos sendo puxados por cima da bandagem com dedos centrais visíveis.'
+    },
+    {
+      type: 'heading',
+      level: 3,
+      text: '6. Camada externa: proteger sem esmagar'
+    },
+    {
+      type: 'paragraph',
+      text:
+        'Finalize com faixa elástica autoaderente de distal para proximal, com cerca de 50% de sobreposição. Use tensão moderada: a bandagem deve ficar firme, mas não estrangular o acolchoamento.'
+    },
+    {
+      type: 'figure',
+      src: '/consulta-vet/clinical-guides/robert-jones-fig-09-camada-elastica.png',
+      alt:
+        'Camada externa elástica sendo aplicada sobre a bandagem Robert Jones.'
+    },
+    { type: 'heading', level: 2, text: 'Como saber se ficou boa' },
+    {
+      type: 'callout',
+      variant: 'tip',
+      title: 'Teste do "thump"',
+      text:
+        'Uma Robert Jones bem aplicada fica firme, não mole ou maleável. Ao percutir com os dedos, deve ter sensação de "thump", como uma melancia madura. Se está fofa, frouxa ou escorregando, a compressão não está adequada.'
+    },
+    {
+      type: 'table',
+      caption: 'Checklist antes de liberar o paciente',
+      headers: ['Ponto de checagem', 'O que procurar'],
+      rows: [
+        ['Dedos centrais', 'Os dois dedos centrais devem ficar visíveis para avaliação de edema, cor, temperatura e conforto.'],
+        ['Tensão', 'Firme e uniforme, sem sulcos, pregas, anéis apertados ou pontos de pressão.'],
+        ['Extensão', 'A bandagem deve cruzar a articulação acima e abaixo da lesão quando essa for a estratégia de imobilização.'],
+        ['Margens', 'Extremidades proximal e distal reforçadas, sem gaze ou faixa fazendo garrote na pele.'],
+        ['Conforto', 'Paciente com analgesia adequada, sem piora de dor, mordedura persistente da bandagem ou inquietação progressiva.'],
+        ['Proteção', 'Manter seca e limpa; proteção impermeável apenas para deslocamentos curtos e retirada ao repouso.']
+      ]
+    },
+    { type: 'heading', level: 2, text: 'Monitoramento e retorno' },
+    {
+      type: 'table',
+      caption: 'Sinais que exigem reavaliação rápida',
+      headers: ['Achado', 'Por que importa'],
+      rows: [
+        ['Dedos inchados, frios, cianóticos ou doloridos', 'Pode indicar constrição, edema progressivo ou comprometimento vascular.'],
+        ['Bandagem molhada, suja ou com odor', 'Aumenta risco de dermatite, maceração, infecção e perda de proteção da ferida.'],
+        ['Bandagem escorregando ou girando', 'Perde imobilização e pode criar pontos de pressão.'],
+        ['Dor crescente, vocalização ou tentativa intensa de remover', 'Pode ser compressão excessiva, progressão da lesão ou analgesia insuficiente.'],
+        ['Margens apertadas ou feridas por atrito', 'Precisam de troca; não "ajuste por fora" uma bandagem mal posicionada.']
+      ]
+    },
+    {
+      type: 'callout',
+      variant: 'warning',
+      title: 'Não é tratamento definitivo',
+      text:
+        'Rotule e registre como imobilização temporária. Se o paciente for encaminhado, deixe claro que ele precisa de avaliação veterinária definitiva dentro do prazo combinado, mesmo que pareça confortável.'
+    },
+    { type: 'heading', level: 2, text: 'Erros comuns' },
+    {
+      type: 'steps',
+      items: [
+        'Usar Robert Jones para lesão proximal ao cotovelo ou joelho, onde ela não consegue controlar adequadamente o foco.',
+        'Fazer pouco volume de algodão e tentar compensar apertando demais a faixa externa.',
+        'Deixar a gaze frouxa: a bandagem fica bonita por fora, mas mole e sem efeito de imobilização.',
+        'Esconder todos os dedos, perdendo a principal janela de monitoramento.',
+        'Permitir contato direto de gaze/faixa apertada com pele nas margens, criando efeito de garrote.',
+        'Aplicar sobre ferida aberta sem limpeza, lavagem e curativo adequados.'
+      ]
+    },
+    { type: 'heading', level: 2, text: 'Fontes' },
+    {
+      type: 'paragraph',
+      text:
+        'Palmer RH, Goh CSS. First Aid/Temporary Immobilization of Limb Fractures With Bandages and Splints. Today’s Veterinary Practice. Novembro/dezembro de 2019;40-51.'
+    },
+    {
+      type: 'paragraph',
+      text:
+        'Imagens deste guia: figuras técnicas do mesmo artigo de Palmer RH e Goh CSS, Today’s Veterinary Practice, 2019, usadas como referência visual para aplicação da bandagem Robert Jones.'
+    }
+  ],
+  isPublished: true
+};
+
 export const clinicalQuickGuidesSeed: ClinicalQuickGuide[] = [
   guiaRupturaLcc,
+  guiaBandagemRobertJones,
   guiaToracocentese,
   guiaAbdominocentese
 ];

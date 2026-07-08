@@ -1,25 +1,36 @@
-import { Activity, BookOpen, Brain, Droplet, Settings, Stethoscope, Syringe, Zap } from 'lucide-react';
+import type { ReactNode } from 'react';
+import { Activity, Beaker, BookOpen, Brain, Droplet, Settings, Stethoscope, Syringe, Zap } from 'lucide-react';
 import { cn } from '../../lib/utils';
 
-export type Tab = 'calculator' | 'resuscitation' | 'osmotherapy' | 'guide' | 'protocols' | 'dilutions' | 'monitoring' | 'settings';
+export type Tab =
+  | 'calculator'
+  | 'resuscitation'
+  | 'osmotherapy'
+  | 'guide'
+  | 'protocols'
+  | 'dilutions'
+  | 'glucoseSolutions'
+  | 'monitoring'
+  | 'settings';
 
 interface FluidSidebarProps {
   activeTab: Tab;
   setActiveTab: (tab: Tab) => void;
 }
 
-export function FluidSidebar({ activeTab, setActiveTab }: FluidSidebarProps) {
-  const tabs = [
-    { id: 'calculator', label: 'Calculadora', icon: <Activity className="w-5 h-5" /> },
-    { id: 'resuscitation', label: 'Ressuscitação Volêmica', icon: <Zap className="w-5 h-5" /> },
-    { id: 'osmotherapy', label: 'TCE / Osmoterapia', icon: <Brain className="w-5 h-5" /> },
-    { id: 'guide', label: 'Guia Clínico', icon: <BookOpen className="w-5 h-5" /> },
-    { id: 'protocols', label: 'Doenças e Protocolos', icon: <Stethoscope className="w-5 h-5" /> },
-    { id: 'dilutions', label: 'Diluições e Soluções', icon: <Syringe className="w-5 h-5" /> },
-    { id: 'monitoring', label: 'Monitorização e Alertas', icon: <Droplet className="w-5 h-5" /> },
-    { id: 'settings', label: 'Configurações', icon: <Settings className="w-5 h-5" /> },
-  ];
+const tabs: { id: Tab; label: string; icon: ReactNode }[] = [
+  { id: 'calculator', label: 'Calculadora', icon: <Activity className="w-5 h-5" /> },
+  { id: 'resuscitation', label: 'Ressuscitacao Volemica', icon: <Zap className="w-5 h-5" /> },
+  { id: 'osmotherapy', label: 'TCE / Osmoterapia', icon: <Brain className="w-5 h-5" /> },
+  { id: 'guide', label: 'Guia Clinico', icon: <BookOpen className="w-5 h-5" /> },
+  { id: 'protocols', label: 'Doencas e Protocolos', icon: <Stethoscope className="w-5 h-5" /> },
+  { id: 'dilutions', label: 'Diluicoes e Solucoes', icon: <Syringe className="w-5 h-5" /> },
+  { id: 'glucoseSolutions', label: 'Solução glicosada', icon: <Beaker className="w-5 h-5" /> },
+  { id: 'monitoring', label: 'Monitorizacao e Alertas', icon: <Droplet className="w-5 h-5" /> },
+  { id: 'settings', label: 'Configuracoes', icon: <Settings className="w-5 h-5" /> },
+];
 
+export function FluidSidebar({ activeTab, setActiveTab }: FluidSidebarProps) {
   return (
     <div className="flex h-full w-64 flex-col border-r border-slate-800 bg-slate-900 text-slate-300">
       <div className="p-6">
@@ -31,14 +42,14 @@ export function FluidSidebar({ activeTab, setActiveTab }: FluidSidebarProps) {
           />
         </div>
         <p className="mt-3 text-center text-sm font-bold uppercase tracking-[0.18em] text-teal-400">Fluidoterapia Vet</p>
-        <p className="mt-1 text-center text-xs text-slate-500">Módulo Clínico VETIUS</p>
+        <p className="mt-1 text-center text-xs text-slate-500">Modulo Clinico VETIUS</p>
       </div>
 
       <nav className="flex-1 space-y-2 px-4">
         {tabs.map((tab) => (
           <button
             key={tab.id}
-            onClick={() => setActiveTab(tab.id as Tab)}
+            onClick={() => setActiveTab(tab.id)}
             className={cn(
               'w-full rounded-xl px-4 py-3 text-left text-sm font-medium transition-all duration-200 flex items-center gap-3',
               activeTab === tab.id ? 'bg-teal-500/10 text-teal-400 shadow-sm' : 'hover:bg-slate-800 hover:text-slate-100',
@@ -52,7 +63,7 @@ export function FluidSidebar({ activeTab, setActiveTab }: FluidSidebarProps) {
 
       <div className="border-t border-slate-800 p-4">
         <div className="rounded-lg bg-slate-800/50 p-3 text-xs text-slate-400">
-          <p className="mb-1 font-medium text-slate-300">Baseado em evidências</p>
+          <p className="mb-1 font-medium text-slate-300">Baseado em evidencias</p>
           <p>AAHA 2024 Fluid Therapy Guidelines</p>
         </div>
       </div>

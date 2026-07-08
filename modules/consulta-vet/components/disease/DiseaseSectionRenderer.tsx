@@ -14,7 +14,6 @@ import {
   Flame,
   HeartPulse,
   LayoutGrid,
-  Lightbulb,
   Shield,
   ShieldAlert,
   Sparkles,
@@ -188,7 +187,7 @@ const BULLET_LINE_RE = /^\s*[-•*]\s+/;
 const NUMBERED_LINE_RE = /^\s*\d+[\).]\s+/;
 
 /**
- * Quebra narrativas longas em blocos visuais: parágrafos, listas automáticas e callouts de “Dica de estudo”.
+ * Quebra narrativas longas em blocos visuais: paragrafos e listas automaticas.
  */
 function StructuredNarrative({ value, visual }: { value: string; visual: DiseaseSectionVisual }) {
   const blocks = value
@@ -199,21 +198,6 @@ function StructuredNarrative({ value, visual }: { value: string; visual: Disease
   return (
     <div className="max-w-[106ch] space-y-4">
       {blocks.map((block, i) => {
-        if (/^Dica de estudo:/i.test(block)) {
-          const body = block.replace(/^Dica de estudo:\s*/i, '').trim();
-          return (
-            <aside
-              key={i}
-              className="flex gap-3 rounded-2xl border border-amber-500/35 bg-gradient-to-br from-amber-500/[0.09] to-amber-500/[0.03] px-4 py-3.5 shadow-sm dark:from-amber-500/15 dark:to-amber-500/5"
-            >
-              <Lightbulb className="mt-0.5 h-5 w-5 shrink-0 text-amber-600 dark:text-amber-400" aria-hidden />
-              <div className="min-w-0">
-                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-amber-800 dark:text-amber-200">Dica de estudo</p>
-                <p className="mt-1.5 whitespace-pre-line text-[15px] leading-relaxed text-foreground/90">{body}</p>
-              </div>
-            </aside>
-          );
-        }
 
         const lines = block.split('\n').map((l) => l.trim()).filter(Boolean);
         if (lines.length >= 2 && lines.every((l) => BULLET_LINE_RE.test(l))) {

@@ -70,6 +70,7 @@ export type CommercialMedicationSubclass =
   | 'gi_prokinetic'
   | 'gi_antidiarrheal'
   | 'gi_gastric_protector'
+  | 'gi_antiflatulent'
   | 'gi_laxative'
   | 'gi_probiotic'
   | 'gi_antiprotozoal'

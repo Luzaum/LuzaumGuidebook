@@ -7,7 +7,6 @@ import {
   Clock,
   FileText,
   Grid,
-  LayoutGrid,
   Pill,
   Search,
   Sparkles,
@@ -272,51 +271,30 @@ export function HomePage() {
           aria-hidden
           className="pointer-events-none absolute -right-16 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-primary/[0.09] blur-3xl"
         />
-        <div className="relative grid gap-8 p-6 md:p-10 lg:grid-cols-[1.2fr_0.85fr] lg:items-stretch">
-          <div className="flex flex-col justify-center space-y-6">
-            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-primary shadow-sm shadow-primary/10">
-              <Sparkles className="h-3.5 w-3.5 shrink-0" aria-hidden />
-              Base clínica integrada
-            </div>
-            <h1 className="m-0 text-4xl font-extrabold tracking-tight text-foreground md:text-5xl lg:text-[2.65rem] lg:leading-[1.1]">
-              <span className="text-foreground">Consulta</span>
-              <span className="bg-gradient-to-r from-primary via-sky-500 to-cyan-500 bg-clip-text text-transparent">
-                VET
-              </span>
-            </h1>
-            <p className="max-w-xl text-base leading-relaxed text-muted-foreground md:text-[1.05rem]">{UI_TEXT.heroBody}</p>
-            <div className="relative max-w-xl pt-1">
-              <Search
-                className="pointer-events-none absolute left-4 top-1/2 h-[1.125rem] w-[1.125rem] -translate-y-1/2 text-primary/70"
-                aria-hidden
-              />
-              <input
-                type="text"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder={UI_TEXT.searchPlaceholder}
-                className="w-full rounded-2xl border border-border/90 bg-background/95 py-3.5 pl-11 pr-4 text-sm text-foreground shadow-inner shadow-black/[0.03] outline-none ring-0 transition-all placeholder:text-muted-foreground hover:border-primary/35 focus:border-primary focus:shadow-md focus:shadow-primary/10 md:text-[15px]"
-              />
-            </div>
+        <div className="relative max-w-4xl mx-auto p-6 md:p-8 flex flex-col items-center text-center space-y-4">
+          <div className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-2.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-primary shadow-sm shadow-primary/10">
+            <Sparkles className="h-3.5 w-3.5 shrink-0" aria-hidden />
+            Base clínica integrada
           </div>
-
-          <div className="flex flex-col justify-center gap-4">
-            <div className="rounded-2xl border border-primary/20 bg-primary/[0.07] p-5 shadow-sm transition-transform duration-200 hover:-translate-y-0.5">
-              <div className="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/20 text-primary shadow-inner">
-                <LayoutGrid className="h-5 w-5" aria-hidden />
-              </div>
-              <p className="text-xs font-bold uppercase tracking-wider text-primary">{UI_TEXT.shortcuts}</p>
-              <p className="mt-1.5 text-sm leading-relaxed text-foreground/90">{UI_TEXT.shortcutsBody}</p>
-            </div>
-            <div className="rounded-2xl border border-violet-500/25 bg-violet-500/[0.08] p-5 shadow-sm transition-transform duration-200 hover:-translate-y-0.5 dark:bg-violet-500/[0.12]">
-              <div className="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-violet-500/20 text-violet-700 shadow-inner dark:text-violet-300">
-                <Search className="h-5 w-5" aria-hidden />
-              </div>
-              <p className="text-xs font-bold uppercase tracking-wider text-violet-700 dark:text-violet-300">
-                {UI_TEXT.searchResults}
-              </p>
-              <p className="mt-1.5 text-sm leading-relaxed text-foreground/90">{UI_TEXT.searchSectionBody}</p>
-            </div>
+          <h1 className="m-0 text-3xl font-extrabold tracking-tight text-foreground md:text-4xl">
+            <span className="text-foreground">Consulta</span>
+            <span className="bg-gradient-to-r from-primary via-sky-500 to-cyan-500 bg-clip-text text-transparent">
+              VET
+            </span>
+          </h1>
+          <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">{UI_TEXT.heroBody}</p>
+          <div className="relative w-full max-w-xl pt-1">
+            <Search
+              className="pointer-events-none absolute left-4 top-1/2 h-[1.125rem] w-[1.125rem] -translate-y-1/2 text-primary/70"
+              aria-hidden
+            />
+            <input
+              type="text"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder={UI_TEXT.searchPlaceholder}
+              className="w-full rounded-2xl border border-border/90 bg-background/95 py-3 pl-11 pr-4 text-sm text-foreground shadow-inner shadow-black/[0.03] outline-none ring-0 transition-all placeholder:text-muted-foreground hover:border-primary/35 focus:border-primary focus:shadow-md focus:shadow-primary/10 md:text-[15px]"
+            />
           </div>
         </div>
       </section>

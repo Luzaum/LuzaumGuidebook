@@ -92,22 +92,31 @@ export function ClinicalQuickGuideDetailPage() {
         <span className="truncate text-foreground">{guide.title}</span>
       </nav>
 
-      <ConsultaVetSurface accent="emerald" className="p-5 shadow-md md:p-8">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="rounded-full border border-teal-500/35 bg-teal-500/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-teal-800 dark:text-teal-200">
-            {categoryMeta?.label ?? guide.category}
-          </span>
-        </div>
-        <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-foreground md:text-3xl">{guide.title}</h1>
-        <p className="mt-2 text-sm font-semibold text-muted-foreground">{guide.subtitle}</p>
-        <p className="mt-3 max-w-[75ch] text-[15px] leading-7 text-foreground/90">{guide.summary}</p>
-      </ConsultaVetSurface>
+      <ConsultaVetSurface accent="emerald" className="p-5 shadow-md md:p-6">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="rounded-full border border-teal-500/35 bg-teal-500/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-teal-800 dark:text-teal-200">
+                {categoryMeta?.label ?? guide.category}
+              </span>
+            </div>
+            <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-foreground md:text-3xl">{guide.title}</h1>
+            <p className="mt-2 text-sm font-semibold text-muted-foreground">{guide.subtitle}</p>
+            <p className="mt-3 max-w-[62ch] text-[15px] leading-7 text-foreground/90">{guide.summary}</p>
+          </div>
 
-      {guide.heroImageSrc ? (
-        <div className="overflow-hidden rounded-2xl border border-border/80 bg-muted/20">
-          <img src={guide.heroImageSrc} alt={guide.heroImageAlt ?? ''} className="h-auto w-full object-cover" loading="lazy" />
+          {guide.heroImageSrc ? (
+            <div className="w-28 shrink-0 overflow-hidden rounded-xl border border-border/80 bg-muted/20 shadow-sm sm:w-32 md:w-36">
+              <img
+                src={guide.heroImageSrc}
+                alt={guide.heroImageAlt ?? ''}
+                className="aspect-square h-full w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          ) : null}
         </div>
-      ) : null}
+      </ConsultaVetSurface>
 
       <ConsultaVetSurface accent="sky" className="p-5 md:p-6">
         <div className="mb-4 flex items-center gap-2">

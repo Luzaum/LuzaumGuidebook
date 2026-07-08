@@ -71,7 +71,7 @@ const UI_TEXT = {
   relatedConsensos: 'Consensos relacionados',
   organizationFallback: 'Organização não informada',
   noTradeName: 'Sem nome comercial de referência',
-  presentationInfo: 'Cada apresentação continua disponível para cálculo e comparação, mas em um layout mais limpo.',
+  presentationInfo: 'Cada apresentação cont?nua disponível para cálculo e comparação, mas em um layout mais limpo.',
 } as const;
 
 function formatSupplyChannel(channel?: MedicationSupplyChannel): string {

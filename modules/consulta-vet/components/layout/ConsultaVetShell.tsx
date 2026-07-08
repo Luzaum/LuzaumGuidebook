@@ -9,6 +9,7 @@ import '../../theme.css';
 
 export function ConsultaVetShell() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
   useEffect(() => {
     prefetchConsultaVetEditorialSeeds();
@@ -22,7 +23,12 @@ export function ConsultaVetShell() {
       className="consulta-vet-theme relative flex h-full min-h-0 flex-1 w-full items-stretch justify-start overflow-hidden text-foreground"
     >
       <div className="relative z-10 flex h-full min-h-0 w-full flex-1">
-        <ConsultaVetSidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+        <ConsultaVetSidebar
+          isOpen={isSidebarOpen}
+          isCollapsed={isSidebarCollapsed}
+          onClose={() => setIsSidebarOpen(false)}
+          onToggleCollapsed={() => setIsSidebarCollapsed((value) => !value)}
+        />
         <div className="consulta-vet-content-panel relative flex min-h-0 flex-1 flex-col overflow-hidden">
           <button
             type="button"

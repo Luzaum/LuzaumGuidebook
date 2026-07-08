@@ -140,8 +140,7 @@ export const micoplasmosesHemotropicasRecord: DiseaseRecord = {
       'Transfusão iatrogênica documentada; agressões/contaminação com sangue plausíveis; vertical possível. Vetores: evidência variável — carrapato experimental em cão; pulgas em gato com evidência fraca no guideline ABCD. Resumo honesto: sangue é comprovado; vetores naturais ainda debatidos em felinos.',
   },
   pathophysiology:
-    'Anemia hemolítica regenerativa → palidez, fraqueza, taquicardia/taquipneia; icterícia e esplenomegalia quando a hemólise é rápida ou intensa. Febre e letargia por inflamação sistêmica (agudo felino clássico com M. haemofelis).\n\n' +
-    'Dica de estudo: diferencie na prova hemólise extracelular com esplenomegalia (hemoplasma) de IMHA sem parasita — o PCR resolve a dúvida no paciente suspeito.',
+    'Anemia hemolítica regenerativa → palidez, fraqueza, taquicardia/taquipneia; icterícia e esplenomegalia quando a hemólise é rápida ou intensa. Febre e letargia por inflamação sistêmica (agudo felino clássico com M. haemofelis).',
   clinicalSignsPathophysiology: [
     {
       system: 'general',

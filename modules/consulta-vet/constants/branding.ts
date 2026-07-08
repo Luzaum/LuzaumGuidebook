@@ -7,7 +7,7 @@ export const CONSULTA_VET_LOGO_ALT = 'ConsultaVET — base clínica para consult
  * Sidebar estreita (~18rem): a arte escala com a coluna (largura total, altura máxima modesta).
  */
 export const CONSULTA_VET_LOGO_SIDEBAR_CLASS =
-  'h-auto w-full max-h-[3.25rem] object-contain object-left md:max-h-[3.5rem]';
+  'h-full w-full object-contain object-center';
 
 /** Barra superior do módulo: marca visível mas sem competir com o conteúdo. */
 export const CONSULTA_VET_LOGO_HEADER_CLASS =

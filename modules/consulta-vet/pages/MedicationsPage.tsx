@@ -52,7 +52,7 @@ export const MEDICATION_CLASSES = [
     label: 'Hepatobiliares & Nutracêuticos',
     icon: Sparkles,
     theme: 'gastroenterologia',
-    matches: ['same-sadenosilmetionina', 'suplementos-hepaticos-silimarina', 'acido-ursodesoxicolico', 'n-acetilcisteina'],
+    matches: ['same-sadenosilmetionina', 'acido-ursodesoxicolico', 'n-acetilcisteina'],
   },
   { 
     slug: 'cardiovascular', 

@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import { CalculatorPage } from './components/calculator/CalculatorPage'
 import { DilutionsPage } from './components/dilutions/DilutionsPage'
+import { GlucoseSolutionsPage } from './components/glucose-solutions/GlucoseSolutionsPage'
 import { GuidePage } from './components/guide/GuidePage'
 import { FluidMobileNav } from './components/layout/FluidMobileNav'
 import { FluidSidebar, Tab } from './components/layout/FluidSidebar'
@@ -28,6 +29,7 @@ export function FluidoterapiaVetModule() {
           {activeTab === 'guide' && <GuidePage />}
           {activeTab === 'protocols' && <ProtocolsPage />}
           {activeTab === 'dilutions' && <DilutionsPage />}
+          {activeTab === 'glucoseSolutions' && <GlucoseSolutionsPage />}
           {activeTab === 'monitoring' && <MonitoringPage />}
           {activeTab === 'settings' && <SettingsPage />}
         </div>

@@ -129,7 +129,7 @@ export const babesioseCaninaRecord: DiseaseRecord = {
       alt: 'Macho e femea de Rhipicephalus sanguineus em vista dorsal',
       display: 'wide',
       caption:
-        'Rhipicephalus sanguineus, carrapato-marrom-do-cao. Imagem de Daktaridudu/Wikimedia Commons (CC BY-SA 4.0), util para reconhecer o vetor associado a B. vogeli no contexto brasileiro.'
+        'Rhipicephalus sanguineus, carrapato-marrom-do-cao. Imagem de Daktaridudu/Wikimedia Commons (CC BY-SA 4.0), ?til para reconhecer o vetor associado a B. vogeli no contexto brasileiro.'
     },
     outrasVias:
       'Transfusão sanguínea (doadores assintomáticos), brigas com ferimentos/mordeduras (especialmente B. gibsoni em Pit Bulls) e transmissão transplacentária.',

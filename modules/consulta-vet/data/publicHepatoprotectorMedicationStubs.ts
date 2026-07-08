@@ -41,7 +41,7 @@ export const PUBLIC_HEPATOPROTECTOR_MEDICATION_CARD_STUBS: MedicationRecord[] = 
     species: ['dog', 'cat'],
     category: 'gastroenterologia',
     tags: ['SAMe', 'Hepatobiliar', 'Antioxidante', 'Glutationa', 'Nutraceutico'],
-    indications: ['Suporte antioxidante adjuvante em hepatopatias e colestase quando ha plano diagnostico e tratamento da causa.'],
+    indications: ['Suporte antioxidante adjuvante em hepatopatias e colestase quando ha plano diagn?stico e tratamento da causa.'],
   }),
   medicationListCard({
     id: 'med-suplementos-hepaticos-silimarina',

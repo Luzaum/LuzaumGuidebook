@@ -19,6 +19,7 @@ const NeurologiaPage = lazy(() => import('./pages/NeurologiaPage').then((m) => (
 const SupabaseTestPage = lazy(() => import('./pages/SupabaseTestPage'))
 const EscalasDorPage = lazy(() => import('./modules/escalas-dor/App'))
 const EscalasDorMobilePage = lazy(() => import('./modules/escalas-dor-mobile/App'))
+const NeurologiaMobilePage = lazy(() => import('./pages/NeurologiaMobilePage').then((m) => ({ default: m.NeurologiaMobilePage })))
 
 const CrivetPage = lazy(() => import('./pages/Crivet').then((m) => ({ default: m.Crivet })))
 const VeteletroliticoPage = lazy(() => import('./modules/veteletrolitico/App'))
@@ -114,6 +115,7 @@ const appRoutes = (
     <Route path="/hemogasovet/*" element={<HemogasoVetPage />} />
     <Route path="/dor" element={<EscalasDorPage />} />
     <Route path="/dor-mobile" element={<EscalasDorMobilePage />} />
+    <Route path="/neuro-mobile/*" element={<NeurologiaMobilePage />} />
     <Route path="/emergencias" element={<ModuleIframe />} />
     <Route path="/emergências" element={<ModuleIframe />} />
     <Route path="/peconhentos" element={<AAP2Module />} />

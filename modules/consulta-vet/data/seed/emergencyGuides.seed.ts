@@ -1,9 +1,6 @@
 import { EmergencyGuide } from '../../types/emergencyGuide';
 
-/**
- * Cartilhas de manejo emergencial — conteúdo editorial em expansão.
- * Por enquanto: previews estruturais; substituir blocos `placeholder` quando a pesquisa estiver pronta.
- */
+/** Cartilhas de manejo emergencial em fluxo único para consulta rápida de plantão. */
 export const emergencyGuidesSeed: EmergencyGuide[] = [
   {
     id: 'eg-cetoacidose',
@@ -62,8 +59,122 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
       },
       {
         id: 'ca-p2',
-        title: 'Primeiros 15 minutos',
+        title: 'Diagnóstico e gravidade',
         stepOrder: 2,
+        phase: 'reconhecimento',
+        intro:
+          'Depois de suspeitar de CAD, confirme a tríade e estime gravidade. A função deste passo é responder rápido: é diabetes? tem cetose? tem acidose? se sim, trate como CAD enquanto investiga o gatilho.',
+        blocks: [
+          {
+            type: 'targetStrip',
+            title: 'CAD fecha quando os 3 eixos estão presentes',
+            items: [
+              { label: 'Diabetes/hiperglicemia', value: '>200 cão / >300 gato', detail: 'Com sinais clínicos e glicosúria; gato exige cuidado com hiperglicemia de estresse.' },
+              { label: 'Cetose', value: 'BHB >=2,4-3,8 mmol/L', detail: 'Faixa compatível com CAD conforme espécie/estudo; quanto maior, maior suspeita.' },
+              { label: 'Acidose', value: 'pH <7,30 ou HCO3 <15', detail: 'Fecha o “A” da CAD e separa cetose diabética de cetoacidose.' },
+            ],
+          },
+          {
+            type: 'steps',
+            title: 'Como usar no plantão',
+            items: [
+              'Se glicose alta + BHB alto/cetonúria moderada a intensa + pH/HCO3 baixos: trate como CAD.',
+              'Se glicose alta + cetose, mas pH/HCO3 normais: é cetose diabética; monitorar de perto porque pode evoluir.',
+              'Se acidose grave sem cetose importante: procure lactato, uremia, choque, toxinas e outras causas de acidose metabólica.',
+              'Se gato tem glicose alta sem cetose/acidose: diferenciar estresse de diabetes com glicosúria persistente, frutosamina e sinais clínicos.',
+              'Se paciente está chocado, hipovolêmico ou com K crítico: estabilize antes de esperar todos os resultados.',
+            ],
+          },
+          {
+            type: 'table',
+            title: 'Diabetes/hiperglicemia: valores de referência prática',
+            columns: ['Marcador', 'Valor', 'Interpretação'],
+            rows: [
+              ['Glicemia normal esperada', '~80-120 mg/dL', 'Varia por laboratório e contexto; use como referência mental, não como único critério.'],
+              ['Limiar renal cão', '~180-220 mg/dL', 'Acima disso tende a aparecer glicosúria.'],
+              ['Limiar renal gato', '~250-300 mg/dL', 'Gatos podem ter hiperglicemia de estresse; glicosúria persistente pesa mais.'],
+              ['Diabetes provável em cão', '>200 mg/dL persistente + glicosúria + PU/PD/perda de peso', 'Repetir/confirmar se o paciente estiver estável.'],
+              ['Diabetes provável em gato', '>300 mg/dL + glicosúria + sinais clínicos', 'Se dúvida por estresse, repetir e/ou dosar frutosamina.'],
+              ['CAD euglicêmica', 'Glicose normal ou pouco alta + BHB alto + acidose', 'Rara; considerar com terapia prévia ou inibidor de SGLT2.'],
+            ],
+            caption: 'A CAD clássica costuma cursar com hiperglicemia, mas a definição crítica é diabetes/deficiência de insulina + cetose + acidose metabólica.',
+          },
+          {
+            type: 'table',
+            title: 'Cetose: BHB sanguíneo e cetonúria',
+            columns: ['Teste', 'Valor', 'Interpretação prática'],
+            rows: [
+              ['BHB', '<0,6 mmol/L', 'Normal ou cetose improvável; se há acidose, procurar outra causa.'],
+              ['BHB', '0,6-1,5 mmol/L', 'Cetose leve/jejum/doença inicial; repetir se paciente diabético está doente.'],
+              ['BHB', '1,6-2,3 mmol/L', 'Zona de alerta; checar pH/HCO3 e monitorar evolução.'],
+              ['BHB', '>=2,4 mmol/L', 'Compatível com CAD em gatos quando há diabetes/hiperglicemia e acidose.'],
+              ['BHB', '>3,0 mmol/L', 'Forte suspeita de CAD em cão/gato doente; confirmar acidose e eletrólitos.'],
+              ['BHB', '>3,8 mmol/L', 'Cutoff estudado para CAD canina por medidor portátil; alta suspeita.'],
+              ['Cetonúria', 'Negativa', 'Não exclui CAD, porque a fita não mede bem BHB.'],
+              ['Cetonúria', 'Traços / 1+', 'Cetose leve; cruzar com glicose, sinais e gasometria.'],
+              ['Cetonúria', '2+', 'Cetose clinicamente relevante; investigar acidose imediatamente.'],
+              ['Cetonúria', '3+ / 4+', 'Cetose intensa; em diabético doente, tratar como alto risco de CAD.'],
+            ],
+            caption: 'BHB é melhor para diagnóstico e resolução. A fita urinária detecta principalmente acetoacetato e pode subestimar CAD grave/inicial.',
+          },
+          {
+            type: 'table',
+            title: 'Acidose: pH e bicarbonato',
+            columns: ['pH / HCO3', 'Interpretação', 'Implicação prática'],
+            rows: [
+              ['pH >=7,35 e HCO3 normal', 'Sem acidose metabólica', 'Diabetes + cetose sem acidose = cetose diabética, não CAD completa.'],
+              ['pH 7,30-7,34 ou HCO3 15-18', 'Acidose leve/limítrofe', 'Pode ser CAD inicial ou acidose mista; repetir gasometria.'],
+              ['pH 7,20-7,29 ou HCO3 10-14', 'CAD moderada', 'Fluido, eletrólitos e insulina gradual com monitorização intensiva.'],
+              ['pH 7,10-7,19 ou HCO3 5-9', 'CAD grave', 'Maior risco de choque, alteração mental e hipocalemia durante tratamento.'],
+              ['pH <7,10 ou HCO3 <5', 'Acidose crítica', 'Reavaliar perfusão, ventilação, K, lactato e renal; considerar UTI.'],
+              ['HCO3 <11 ou CO2 total <12', 'Faixa para considerar bicarbonato', 'Não é automático; pesar riscos, ventilação, K e resposta ao tratamento.'],
+            ],
+            caption: 'CAD típica: acidose metabólica com anion gap aumentado. Lactato, uremia e hipercloremia podem somar ou confundir a interpretação.',
+          },
+          {
+            type: 'table',
+            title: 'Exames que fecham o raciocínio',
+            columns: ['Eixo', 'O que pedir', 'Como interpretar'],
+            rows: [
+              ['Glicose', 'Glicemia seriada', 'Confirma hiperglicemia e permite monitorar queda. Queda rápida demais aumenta risco osmótico.'],
+              ['Cetonas', 'Beta-hidroxibutirato sanguíneo se disponível; cetonúria como triagem', 'Fita urinária detecta mais acetoacetato e pode subestimar CAD grave com BHB predominante.'],
+              ['Ácido-base', 'Hemogasometria venosa ou arterial, HCO3, pH, CO2, anion gap quando possível', 'CAD típica: acidose metabólica com HCO3 baixo; lactato/uremia podem somar acidose.'],
+              ['Eletrólitos', 'Na, K, Cl, fósforo, Mg, Ca', 'K pode parecer normal/alto apesar de déficit corporal; insulina pode precipitar hipocalemia. Fósforo e Mg caem durante tratamento.'],
+              ['Renal/perfusão', 'Ureia, creatinina, lactato, débito urinário, densidade urinária', 'Azotemia pode ser pré-renal, renal ou mista; perfusão define fluido e segurança da insulina.'],
+              ['Gatilhos', 'Hemograma, bioquímica, urinálise, urocultura, imagem conforme caso, avaliação pancreática quando indicado', 'ITU, pancreatite, sepse, cio, HAC, neoplasia, DRC e lipidose em gatos são causas que mantêm CAD.'],
+            ],
+          },
+          {
+            type: 'comparison',
+            title: 'Gravidade e quadro misto',
+            columns: ['CAD menos grave', 'CAD grave', 'CAD + EHH/misto'],
+            rows: [
+              {
+                label: 'Mentação',
+                values: ['Alerta ou deprimido leve', 'Deprimido, estupor, choque ou respiração compensatória marcada', 'Alteração neurológica desproporcional à acidose'],
+              },
+              {
+                label: 'Osmolalidade',
+                values: ['Aumentada, mas sem predomínio neurológico', 'Pode estar aumentada junto de hipovolemia importante', 'Muito aumentada; risco maior se glicose extrema e Na corrigido alto'],
+              },
+              {
+                label: 'Prioridade',
+                values: ['Fluido, eletrólitos, insulina gradual', 'Perfusão e K antes de insulina; monitorização intensiva', 'Reidratação e queda osmótica ainda mais lentas'],
+              },
+            ],
+          },
+          {
+            type: 'callout',
+            variant: 'warning',
+            title: 'Não espere todos os exames para estabilizar',
+            text: 'Se há hipovolemia, choque, alteração de consciência ou K crítico, trate enquanto confirma. A coleta inicial deve acontecer cedo, mas não deve atrasar oxigenação, acesso venoso, perfusão e correção eletrolítica segura.',
+          },
+        ],
+      },
+      {
+        id: 'ca-p3',
+        title: 'Primeiros 15 minutos',
+        stepOrder: 3,
         phase: 'estabilizacao',
         intro: 'Organize o atendimento para estabilizar perfusão e coletar os dados que mudam a conduta antes de insulinizar agressivamente.',
         blocks: [
@@ -96,9 +207,9 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
         ],
       },
       {
-        id: 'ca-p3',
+        id: 'ca-p4',
         title: 'Fluidoterapia',
-        stepOrder: 3,
+        stepOrder: 4,
         phase: 'estabilizacao',
         intro: 'Fluido é o primeiro pilar: melhora perfusão renal, reduz glicemia por excreção urinária e ajuda a remover cetoácidos.',
         blocks: [
@@ -133,9 +244,9 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
         ],
       },
       {
-        id: 'ca-p4',
+        id: 'ca-p5',
         title: 'Potássio, fósforo e magnésio',
-        stepOrder: 4,
+        stepOrder: 5,
         phase: 'tratamento_especifico',
         intro: 'O potássio sérico pode estar baixo, normal ou alto, mas o estoque corporal total quase sempre está reduzido. A insulina pode revelar hipocalemia grave.',
         blocks: [
@@ -171,9 +282,9 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
         ],
       },
       {
-        id: 'ca-p5',
+        id: 'ca-p6',
         title: 'Bicarbonato',
-        stepOrder: 5,
+        stepOrder: 6,
         phase: 'tratamento_especifico',
         intro: 'Bicarbonato é exceção, não rotina. A maior parte da acidose melhora com fluido, perfusão, eletrólitos e insulina.',
         blocks: [
@@ -203,9 +314,9 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
         ],
       },
       {
-        id: 'ca-p6',
+        id: 'ca-p7',
         title: 'Insulinoterapia',
-        stepOrder: 6,
+        stepOrder: 7,
         phase: 'tratamento_especifico',
         intro: 'A insulina interrompe cetogênese, mas deve entrar com perfusão e potássio minimamente seguros. O alvo é queda gradual, não normoglicemia imediata.',
         blocks: [
@@ -245,9 +356,9 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
         ],
       },
       {
-        id: 'ca-p7',
+        id: 'ca-p8',
         title: 'Monitoramento e transição',
-        stepOrder: 7,
+        stepOrder: 8,
         phase: 'monitoramento',
         intro: 'CAD muda rápido. A monitorização precisa antecipar hipoglicemia, hipoK, hipoP, mudança osmótica e persistência do gatilho.',
         blocks: [
@@ -320,7 +431,7 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
           },
           {
             type: 'checklist',
-            title: 'Sinais que chamam atenção',
+            title: 'Sinais que chamam aténção',
             items: [
               'Letargia, anorexia, vômito, fraqueza, PU/PD e desidratação intensa.',
               'Alteração neurológica, andar em círculo ou convulsões.',
@@ -368,7 +479,7 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
         title: 'Fluidoterapia lenta e segura',
         stepOrder: 3,
         phase: 'estabilizacao',
-        intro: 'A fluidoterapia é o tratamento inicial. Ela sozinha pode reduzir bastante a glicemia; por isso a insulina entra com cautela.',
+        intro: 'A fluidoterapia é o tratamento inicial. Ela sozinhá pode reduzir bastante a glicemia; por isso a insulina entra com cautela.',
         blocks: [
           {
             type: 'callout',
@@ -494,11 +605,11 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
   },
   {
     id: 'eg-edema-pulmonar',
-    slug: 'edema-pulmonar-cardiogenico',
+    slug: 'edema-pulmonar-cardiogênico',
     title: 'Manejo de edema pulmonar cardiogênico agudo',
     subtitle: 'Congestão aguda — oxigenação, redução de pré-carga e suporte',
     description:
-      'Fluxo focado em oxigenar, reduzir estresse cardíaco e tratar gatilhos. Conteúdo detalhado e doses na próxima versão.',
+      'Fluxo focado em oxigenar, reduzir estresse cardiorrespiratório, aliviar congestão e monitorar resposta sem precipitar piora renal ou respiratória.',
     tags: ['Cardiologia', 'Respiratório', 'Emergência', 'ICC'],
     species: ['dog', 'cat'],
     isPublished: true,
@@ -514,11 +625,11 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
             type: 'callout',
             variant: 'critical',
             title: 'Estabilizar respiração',
-            text: 'Preview: posicionamento, oxigenoterapia, caixa de O₂ vs fluxo; quando considerar sedação leve.',
+            text: 'Dispneia grave deve ser estabilizada antes de radiografia. Priorize mínimo estresse, posição confortável, oxigênio por método tolerado e sedação leve quando a ansiedade piora o trabalho respiratório.',
           },
           {
             type: 'checklist',
-            title: 'Achados compatíveis (expandir)',
+            title: 'Achados compatíveis',
             items: [
               'Dispneia aguda com ruídos pulmonares úmidos / crackles',
               'História de cardiopatia ou murmúrio relevante',
@@ -526,20 +637,22 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
             ],
           },
           {
-            type: 'placeholder',
-            message: 'Preview: algoritmo imagem (rápido) vs estabilização primeiro.',
+            type: 'callout',
+            variant: 'warning',
+            title: 'Imagem depois da estabilizacao',
+            text: 'Se o paciente piora com manipulação, adie radiografia e trate primeiro a hipoxemia. Use POCUS/eco focado quando disponível e seguro.',
           },
         ],
       },
       {
         id: 'ep-p2',
-        title: 'Tratamento farmacológico e monitorização',
+        title: 'Tratamento fármacológico e monitorização',
         stepOrder: 2,
         phase: 'tratamento_especifico',
         blocks: [
           {
             type: 'steps',
-            title: 'Eixo terapêutico (a detalhar)',
+            title: 'Eixo terapêutico',
             items: [
               'Diurético de alça — dose e cautelas renais/hepáticas',
               'Vasodilatador / nitrato quando indicado no seu protocolo',
@@ -550,11 +663,16 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
             type: 'callout',
             variant: 'info',
             title: 'Gato',
-            text: 'Preview: nuances felinas (ex.: cautela com alguns vasodilatadores) — texto a incorporar.',
+            text: 'Gato dispneico descompensa com contenção. Oxigênio, ambiente quieto, dose cautelosa de diurético e reavaliação frequente costumam valer mais que exames completos imediatos.',
           },
           {
-            type: 'placeholder',
-            message: 'Preview: frequência de reavaliação, meta de FR, quando encaminhar UTI.',
+            type: 'targetStrip',
+            title: 'Monitorização prática',
+            items: [
+              { label: 'FR/esforço', value: 'q15-30 min', detail: 'Até reduzir esforço e ansiedade.' },
+              { label: 'Perfusão/renal', value: 'seriado', detail: 'Diuretico e vasodilatador exigem vigilância.' },
+              { label: 'Escalar', value: 'hipoxemia persistente', detail: 'Considerar UTI, suporte ventilatório ou diagnóstico alternativo.' },
+            ],
           },
         ],
       },
@@ -566,7 +684,7 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
     title: 'Manejo de TCE',
     subtitle: 'Traumatismo cranioencefálico — neuroproteção e suporte',
     description:
-      'Sequência: estabilização geral, controle de pressão intracraniana e suporte. Detalhes neuro e farmacológicos na versão completa.',
+      'Sequência para reduzir lesão secundária: oxigenação, perfusão, avaliação neurológica seriada, controle de pressão intracraniana quando indicado e monitorização intensiva.',
     tags: ['Neurologia', 'Trauma', 'Emergência', 'Anestesia'],
     species: ['dog', 'cat'],
     isPublished: true,
@@ -582,7 +700,7 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
             type: 'callout',
             variant: 'critical',
             title: 'Coluna e via aérea',
-            text: 'Preview: imobilização cervical quando indicado; priorizar oxigenação sem hiperventilar de rotina.',
+            text: 'Presuma trauma cervical quando o mecanismo permitir. Imobilize com bom senso, priorize oxigenação e perfusão, e evite hiperventilação de rotina.',
           },
           {
             type: 'checklist',
@@ -594,8 +712,14 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
             ],
           },
           {
-            type: 'placeholder',
-            message: 'Preview: escore de coma modificado e fotos/desenho de pupilas para equipe.',
+            type: 'table',
+            title: 'Série neurológica mínima',
+            columns: ['Eixo', 'Registrar'],
+            rows: [
+              ['Consciência', 'Alerta, deprimido, estupor ou coma; usar escala do serviço quando houver.'],
+              ['Pupilas', 'Tamanho, simetria e PLR; repetir em série.'],
+              ['Motor', 'Postura, paresia, lateralização e dor espinhal quando avaliável.'],
+            ],
           },
         ],
       },
@@ -607,7 +731,7 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
         blocks: [
           {
             type: 'steps',
-            title: 'Pilares (completar com evidência)',
+            title: 'Pilares de suporte intracraniano',
             items: [
               'Elevar cabeceira moderadamente quando seguro',
               'Manitol ou hipertônico — indicações e doses',
@@ -618,7 +742,7 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
             type: 'callout',
             variant: 'warning',
             title: 'Fluidoterapia',
-            text: 'Preview: equilíbrio entre perfusão cerebral e edema — diretrizes do centro.',
+            text: 'A prioridade e manter perfusão cerebral sem piorar edema. Hipotensão e hipoxemia são inimigas imediatas; osmoterapia entra quando há sinais de hipertensão intracraniana ou herniação iminente.',
           },
         ],
       },
@@ -638,8 +762,381 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
             ],
           },
           {
-            type: 'placeholder',
-            message: 'Preview: plano de analgesia segura, anticonvulsivante de resgate e prognóstico conversado com tutor.',
+            type: 'checklist',
+            title: 'Plano de continuidade',
+            items: [
+              'Analgesia que não comprometa avaliação neurológica ou ventilação.',
+              'Anticonvulsivante de resgaté disponível se crise ocorrer.',
+              'Reavaliação seriada de pupilas, consciência, respiração, temperatura e pressão.',
+              'Conversa objetiva com tutor sobre risco de deterioração nas primeiras horas.',
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'eg-hipertensão-sistêmica-grave',
+    slug: 'hipertensão-sistêmica-grave',
+    title: 'Hipertensão arterial sistêmica grave',
+    subtitle: 'Crise hipertensiva em cães e gatos - olho, SNC, rim e coração',
+    description:
+      'Guia de plantão para confirmar PAS real, diferenciar urgência de emergência hipertensiva, reconhecer lesão em órgão-alvo, reduzir pressão sem derrubar perfusão e transicionar para tratamento oral.',
+    tags: ['Cardiorrenal', 'UTI', 'Pressão arterial', 'Oftalmo'],
+    species: ['dog', 'cat'],
+    isPublished: true,
+    pages: [
+      {
+        id: 'has-p1',
+        title: 'Definir gravidade',
+        stepOrder: 1,
+        phase: 'reconhecimento',
+        intro:
+          'A emergência hipertensiva não e definida apenas pelo número. O ponto decisivo é PAS muito alta associada a lesão aguda ou progressiva em órgão-alvo, principalmente retina, SNC, rim ou coração.',
+        blocks: [
+          {
+            type: 'table',
+            title: 'Classificação prática por PAS',
+            columns: ['PAS/SBP', 'Interpretação', 'Risco de lesão em órgão-alvo'],
+            rows: [
+              ['<140-150 mmHg', 'Normotenso ou baixo risco', 'Mínimo'],
+              ['150-159 mmHg', 'Limítrofe', 'Baixo'],
+              ['160-179 mmHg', 'Hipertensão', 'Moderado'],
+              ['>=180 mmHg', 'Hipertensão grave', 'Alto'],
+            ],
+          },
+          {
+            type: 'comparison',
+            title: 'Urgência vs emergência hipertensiva',
+            columns: ['Urgência', 'Emergência'],
+            rows: [
+              {
+                label: 'Definição',
+                values: ['PAS muito alta sem lesão progressiva evidente', 'PAS geralmente >=180 + lesão aguda/progressiva em órgão-alvo'],
+              },
+              {
+                label: 'Tempo de ação',
+                values: ['Confirmar, iniciar VO e reavaliar em dias', 'Internar e reduzir em horas com monitorização'],
+              },
+              {
+                label: 'Exemplo',
+                values: ['Gato calmo PAS 190 sem sinais oculares, neuro, cardíacos ou renais agudos', 'PAS 190 + cegueira súbita, hifema, convulsão, edema pulmonar ou piora renal aguda'],
+              },
+            ],
+          },
+          {
+            type: 'callout',
+            variant: 'critical',
+            title: 'Regra mental do plantão',
+            text: 'PAS >=180 mmHg com cegueira súbita, hifema, descolamento de retina, convulsão, alteração mental, sinal vestibular central, edema pulmonar ou piora renal aguda deve ser tratada como emergência hipertensiva.',
+          },
+        ],
+      },
+      {
+        id: 'has-p2',
+        title: 'Confirmar que a PAS é real',
+        stepOrder: 2,
+        phase: 'reconhecimento',
+        intro:
+          'Antes de terapia agressiva, reduza artefato de estresse, dor, manguito inadequado e técnica inconsistente. A medida isolada não deve comandar todo o caso.',
+        blocks: [
+          {
+            type: 'steps',
+            title: 'Técnica de mensuração',
+            items: [
+              'Ambiente calmo, tutor presente se ajudar, e 5-10 minutos de aclimatação; em gatos muito estressados, prolongar.',
+              'Medir antes de procedimentos dolorosos, coleta, contenção intensa ou manipulação.',
+              'Usar mesmo método, mesmo local, mesma posição e manguito de largura aproximada de 30-40% da circunferência do membro ou cauda.',
+              'Descartar a primeira medida, obter 5-7 leituras, remover valores muito discrepantes e registrar a média.',
+              'Registrar método, local do manguito, posição, comportamento e operador para comparação seriada.',
+            ],
+          },
+          {
+            type: 'comparison',
+            title: 'Método de pressão',
+            columns: ['Melhor uso', 'Limitação'],
+            rows: [
+              {
+                label: 'Doppler',
+                values: ['Gatos e cães pequenos; muito útil em clínica', 'Fornece principalmente PAS; PAD pouco confiável'],
+              },
+              {
+                label: 'Oscilométrico/HDO',
+                values: ['Monitorização seriada ou automática', 'Pode falhar com gato, cão pequeno, arritmia, tremor, vasoconstrição ou choque'],
+              },
+              {
+                label: 'Invasiva arterial',
+                values: ['Padrão-ouro para CRI de vasodilatador potente', 'Exige catéter arterial, monitor e equipe treinada'],
+              },
+            ],
+          },
+          {
+            type: 'callout',
+            variant: 'warning',
+            title: 'Não trate o número isolado',
+            text: 'Interprete PAS junto com pulso, perfusão, TPC, lactato, dor, estresse, consciência, frequência cardíaca e consistência das leituras.',
+          },
+        ],
+      },
+      {
+        id: 'has-p3',
+        title: 'Procurar órgão-alvo',
+        stepOrder: 3,
+        phase: 'reconhecimento',
+        intro:
+          'A busca ativa por lesão em órgão-alvo transforma a decisão. Olho e SNC costumam denunciar a crise, mas rim e coração definem risco e monitorização.',
+        blocks: [
+          {
+            type: 'table',
+            title: 'Checklist de TOD',
+            columns: ['Órgão', 'O que procurar', 'Como muda a conduta'],
+            rows: [
+              ['Olho', 'Ameaça, PLR, fundoscopia, hifema, hemorragia, edema, tortuosidade, papiledema, descolamento de retina', 'Cegueira súbita + PAS alta = emergência; prognóstico visual depende da duração e severidade'],
+              ['SNC', 'Mentação, convulsão, ataxia, head tilt, nistagmo central, anisocoria, paresia, cegueira central', 'Sugere encefalopatia hipertensiva; preferir controle titulável se grave'],
+              ['Rim', 'Ureia, creatinina, SDMA se disponível, eletrólitos, fósforo, urinálise, densidade, sedimento, UPC e débito urinário', 'DRC/AKI pode ser causa e consequência; UPC muda prognóstico e terapia'],
+              ['Coração', 'Sopro, galope, arritmia, ECG, radiografia se dispneia, eco quando possível, sinais de edema pulmonar', 'Hipertensão aumenta pós-carga; dispneia muda prioridade para oxigênio e descongestão'],
+            ],
+          },
+          {
+            type: 'callout',
+            variant: 'critical',
+            title: 'Cuidado com hipertensão compensatória',
+            text: 'Se houver suspeita de aumento de pressão intracraniana por TCE, massa, edema cerebral ou reflexo de Cushing, a hipertensão pode estar mantendo perfusão cerebral. Não reduza agressivamente sem avaliar o contexto.',
+          },
+        ],
+      },
+      {
+        id: 'has-p4',
+        title: 'Algoritmo de conduta',
+        stepOrder: 4,
+        phase: 'estabilizacao',
+        intro:
+          'A redução deve ser gradual. Em hipertensão crônica, cérebro e rim se adaptam a pressão alta; queda brusca pode causar hipoperfusão, síncope, piora renal e colapso.',
+        blocks: [
+          {
+            type: 'table',
+            title: 'Decisão por faixa e TOD',
+            columns: ['Cenário', 'Classificação', 'Conduta'],
+            rows: [
+              ['PAS 160-179 sem TOD', 'Hipertensão / risco moderado', 'Repetir técnica, investigar causa, hemograma, bioquímica, urinálise, UPC e fundoscopia; tratar base'],
+              ['PAS >=180 sem TOD aguda', 'Urgência hipertensiva', 'Confirmar se estável, iniciar VO, reavaliar em dias e procurar causa primária'],
+              ['PAS >=180 + TOD aguda/progressiva', 'Emergência hipertensiva', 'Internar, acesso venoso, monitorizar PAS frequente e reduzir em horas'],
+            ],
+          },
+          {
+            type: 'targetStrip',
+            title: 'Metas iniciais',
+            items: [
+              { label: 'Primeiras 2-4 h', value: '-20 a -25%', detail: 'Ou trazer PAS para cerca de 160-170 mmHg.' },
+              { label: 'Depois', value: '<160 mmHg', detail: 'Se perfusão, rim e SNC tolerarem.' },
+              { label: 'Evitar', value: '<120 mmHg', detail: 'Fraqueza/síncope com PAS <120 sugere hipotensão clínica.' },
+            ],
+          },
+          {
+            type: 'steps',
+            title: 'Emergência verdadeira',
+            items: [
+              'Internar e minimizar estresse.',
+              'Instalar acesso venoso; considerar catéter arterial se usar vasodilatador potente.',
+              'PAS a cada 5-15 min em fármaco IV titulável; depois a cada 30-60 min conforme estabilidade.',
+              'Escolher fármaco pela espécie, gravidade, possibilidade de VO, comorbidades e capacidade de monitorização.',
+              'Transicionar para anti-hipertensivo VO assim que seguro.',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'has-p5',
+        title: 'Escolher o fármaco',
+        stepOrder: 5,
+        phase: 'tratamento_especifico',
+        intro:
+          'A escolhá depende do fenótipo. Gatos com lesão ocular e VO possível frequentemente respondem a amlodipina; encefalopatia, convulsão, edema pulmonar ou crise catécolaminergica podem exigir terapia IV titulável.',
+        blocks: [
+          {
+            type: 'table',
+            title: 'Doses rápidas',
+            columns: ['Fármaco', 'Cão', 'Gato', 'Observação'],
+            rows: [
+              ['Amlodipina', '0,1-0,3 mg/kg VO SID; até 0,5 mg/kg/dia', '0,625 mg/gato SID ou 0,1-0,2 mg/kg SID; casos graves podem precisar 1,25 mg/gato SID/BID', 'Base em gato; em cao renal/proteinúrico, considerar associar bloqueio RAAS'],
+              ['Amlodipina ataque felino', '-', '0,1-0,2 mg/kg VO q2h até PAS <170 ou máximo cumulativo 1 mg/kg', 'Apenas com monitorização próxima; risco de hipotensão tardia'],
+              ['Nitroprussiato', 'Iniciar 0,5-1 mcg/kg/min IV CRI; titular; algumas fontes até 5-10/15', 'Iniciar 0,5-1 mcg/kg/min; geralmente até 2-5', 'UTI, bomba, proteger da luz, D5W, nunca bolus'],
+              ['Hidralazina bolus', '0,1-0,2 mg/kg IV/IM q2h se necessário', '1-2,5 mg/gato SC; pode repetir em 15-30 min', 'Resposta menos previsível que nitroprussiato'],
+              ['Hidralazina CRI', 'Bolus 0,1 mg/kg IV + 1,5-5 mcg/kg/min', 'Similar, com cautela', 'Monitorar PAS e FC'],
+              ['Esmolol', 'Bolus 250-500 mcg/kg; depois 25-200 mcg/kg/min CRI', 'Similar', 'Útil se componente simpático/taquicárdico; não e universal'],
+              ['Fentolamina', '0,02-0,1 mg/kg IV bolus + CRI a efeito', 'Similar', 'Crise por feocromocitoma/catécolaminas'],
+              ['Fenoxibenzamina', '0,25-0,5 mg/kg VO BID; titular até 1-2 mg/kg BID', 'Pouco usada', 'Preparo/controle de feocromocitoma'],
+            ],
+            caption: 'Doses devem ser individualizadas por perfusão, função renal/hepática, resposta pressórica e capacidade de monitorização.',
+          },
+          {
+            type: 'callout',
+            variant: 'warning',
+            title: 'Feocromocitoma',
+            text: 'Se suspeitar de feocromocitoma, não use beta-bloqueador isolado. Alfa-bloqueio deve vir antes para evitar vasoconstrição alfa sem oposição.',
+          },
+        ],
+      },
+      {
+        id: 'has-p6',
+        title: 'Nitroprussiato e CRI',
+        stepOrder: 6,
+        phase: 'tratamento_especifico',
+        intro:
+          'Nitroprussiato e rápido, potente e titulável. Ele é excelente para emergência real quando existe bomba e monitorização intensiva, mas perigoso se usado como bolus ou sem vigilância.',
+        blocks: [
+          {
+            type: 'checklist',
+            title: 'Cuidados obrigatórios',
+            items: [
+              'Usar bomba de infusão e linhá dedicada quando possível.',
+              'Diluir preferencialmente em glicose 5%/D5W e proteger da luz.',
+              'Não administrar em bolus e não flushar a linha.',
+              'Idealmente monitorar pressão arterial invasiva; se indireta, medir muito frequentemente.',
+              'Evitar uso prolongado e vigiar acidose metabólica, renal/hepático grave e sinais de toxicidade por cianeto/tiocianato.',
+            ],
+          },
+          {
+            type: 'formula',
+            title: 'Fórmula universal para mcg/kg/min',
+            expression: 'mL/h = dose (mcg/kg/min) x peso (kg) x 60 / concentração (mcg/mL)',
+            variables: ['Exemplo: solução 100 mcg/mL -> mL/h = dose x peso x 0,6.', 'Exemplo: 10 kg a 0,5 mcg/kg/min em 100 mcg/mL = 3 mL/h.'],
+          },
+          {
+            type: 'formula',
+            title: 'Preparo prático 100 mcg/mL',
+            expression: '50 mg em volume final de 500 mL = 100 mcg/mL',
+            note: '50 mg = 50.000 mcg; 50.000 mcg / 500 mL = 100 mcg/mL.',
+          },
+          {
+            type: 'formula',
+            title: 'Preparo prático 200 mcg/mL',
+            expression: '50 mg em volume final de 250 mL = 200 mcg/mL',
+            note: 'Para pacientes maiores ou restrição de volume; recalcular sempre a taxa.',
+          },
+        ],
+      },
+      {
+        id: 'has-p7',
+        title: 'Cenários de plantão',
+        stepOrder: 7,
+        phase: 'tratamento_especifico',
+        intro:
+          'Use o fenótipo para não tratar todos os hipertensos iguais. A mesma PAS pode pedir amlodipina VO, CRI titulável, controle cardiorrespiratório ou bloqueio alfa.',
+        blocks: [
+          {
+            type: 'table',
+            title: 'Conduta por apresentação',
+            columns: ['Cenário', 'Raciocínio', 'Conduta prática'],
+            rows: [
+              ['Gato PAS 220 + cegueira/descolamento de retina', 'Emergência hipertensiva ocular; DRC/hipertireoidismo comuns', 'Amlodipina 0,625-1,25 mg/gato VO se estável; reavaliar PAS em 2-4 h; se encefalopatia/convulsão, considerar nitroprussiato CRI'],
+              ['Cão DRC + proteinúria + PAS 200 sem TOD aguda', 'Urgência grave com componente renal/glomerular', 'Bloqueio RAAS conforme caso; adicionar amlodipina 0,1-0,2 mg/kg VO SID se PAS muito alta; recheck 3-7 dias se instável'],
+              ['Cão massa adrenal + PAS 260 + taquicardia paroxística', 'Suspeita de feocromocitoma', 'ECG e PAS seriada; crise com nitroprussiato ou fentolamina se disponível; preparo com fenoxibenzamina; beta apenas após alfa'],
+              ['Hipertensão + dispneia/edema pulmonar', 'Pós-carga alta e congestão podem piorar troca gasosa', 'Oxigênio, mínima contenção, furosemida se edema cardiogênico, considerar nitroprussiato se monitorável; evitar fluidos automáticos'],
+            ],
+          },
+          {
+            type: 'callout',
+            variant: 'info',
+            title: 'Prescrição hospitalar quando há UTI',
+            text: 'Nitroprussiato 0,5 mcg/kg/min IV CRI, aumentar 0,5-1 mcg/kg/min a cada 5-10 min até redução progressiva. Meta: queda de 20-25% em 2-4 h. Associar VO quando possível: gato com amlodipina; cão com IECA/ARB +/- amlodipina conforme renal/proteinúria.',
+          },
+        ],
+      },
+      {
+        id: 'has-p8',
+        title: 'Exames complementares',
+        stepOrder: 8,
+        phase: 'monitoramento',
+        intro:
+          'Os exames procuram causa primária, lesão secundária e limitadores de tratamento. Hipertensão grave sem investigação vira tratamento cego.',
+        blocks: [
+          {
+            type: 'table',
+            title: 'Painel inicial e interpretação',
+            columns: ['Exame', 'Achados úteis'],
+            rows: [
+              ['Hemograma', 'Anemia não regenerativa sugere DRC; policitemia pode aumentar viscosidade; leucograma de estresse pode aparecer em dor, HAC ou estresse'],
+              ['Bioquímica', 'Ureia/creatinina/fósforo para DRC/AKI; ALT/FA em HAC/hepatopatia; colesterol/triglicérides em endocrinopatias; glicose para DM/estresse'],
+              ['Eletrólitos', 'Hipocalemia em hiperaldosteronismo felino, DRC ou diurético; hipernatremia + hipocalemia aumenta suspeita de mineralocorticoide'],
+              ['Urinálise + UPC', 'Densidade baixa, sedimento e proteinúria; UPC é indispensável no hipertenso renal/proteinúrico'],
+              ['T4 total em gato', 'Hipertireoidismo e causa importante de hipertensão felina'],
+            ],
+          },
+          {
+            type: 'table',
+            title: 'Imagem e cardiologia',
+            columns: ['Método', 'Quando ajuda'],
+            rows: [
+              ['Ultrassom abdominal', 'Rins crúnicos/AKI, alterações adrenais, massa adrenal, trombo ou invasão vascular em suspeita de feocromocitoma'],
+              ['Radiografia torácica', 'Dispneia, tosse, sopro, crepitação ou suspeita de edema pulmonar'],
+              ['Ecocardiograma', 'Hipertrofia ventricular esquerda, alteração diastólica, átrio esquerdo, cardiomiopatia primária vs hipertensão secundária'],
+              ['Fundoscopia', 'Documenta retinopatia hipertensiva e urgência de controle pressórico'],
+            ],
+          },
+        ],
+      },
+      {
+        id: 'has-p9',
+        title: 'Monitorizar e ajustar',
+        stepOrder: 9,
+        phase: 'monitoramento',
+        intro:
+          'A fase perigosa e tanto a pressão persistente quanto a redução excessiva. Ajuste pelo paciente, não por uma meta numérica rígida.',
+        blocks: [
+          {
+            type: 'table',
+            title: 'Frequência em terapia titulável',
+            columns: ['Parâmetro', 'Frequência prática'],
+            rows: [
+              ['PAS/PAM', 'A cada 5-10 min até dose efetiva; depois 15-30 min; estável, a cada 1 h'],
+              ['ECG e FC', 'Contínuo se possível, especialmente com vasodilatador, esmolol ou arritmia'],
+              ['Perfusão', 'Pulso, TPC, extremidades, lactato quando crítico'],
+              ['Neurológico', 'Mentação, convulsão, pupilas, vestibular e resposta visual'],
+              ['Renal', 'Débito urinário, creatinina, ureia e eletrólitos seriados'],
+            ],
+          },
+          {
+            type: 'checklist',
+            title: 'Sinais de queda excessiva',
+            items: [
+              'Fraqueza, síncope ou colapso.',
+              'Pulso fraco, extremidades frias, TPC prolongado.',
+              'Bradicardia ou taquicardia reflexa.',
+              'Oligúria ou piora de creatinina.',
+              'Alteração mental após redução pressórica.',
+              'PAS <120 mmHg, especialmente se sintomática.',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'has-p10',
+        title: 'Resumo de bolso',
+        stepOrder: 10,
+        phase: 'monitoramento',
+        intro:
+          'Use este bloco quando precisar decidir rápido. Depois volte aos detalhes para dose, preparo, exames e transição.',
+        blocks: [
+          {
+            type: 'keyPoints',
+            title: 'Essenciais',
+            items: [
+              'Hipertensão grave: PAS >=180 mmHg.',
+              'Emergência hipertensiva: PAS >=180 + lesão ocular, neurológica, cardíaca ou renal aguda/progressiva.',
+              'Confirmar técnica: ambiente calmo, manguito correto, 5-7 medidas e média registrada.',
+              'Olho, cérebro, rim e coração são os órgãos-alvo que mudam urgência e prognóstico.',
+              'Meta inicial: reduzir 20-25% em 2-4 h ou para 160-170 mmHg; não normalizar de uma vez.',
+              'Gato: amlodipina é base; crise neurológica pode exigir nitroprussiato.',
+              'Cão renal/proteinúrico: pensar em bloqueio RAAS +/- amlodipina; crise com TOD pede fármaco IV titulável.',
+              'Nitroprussiato: excelente, mas exige bomba, proteção da luz, D5W e monitorização intensa; nunca bolus ou flush.',
+            ],
+          },
+          {
+            type: 'callout',
+            variant: 'critical',
+            title: 'Frase de segurança',
+            text: 'O objetivo não e transformar PAS 220 em PAS 120 rapidamente; é interromper lesão em órgão-alvo mantendo perfusão cerebral e renal.',
           },
         ],
       },

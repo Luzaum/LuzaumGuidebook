@@ -54,7 +54,7 @@ export class SupabaseCategoryRepository implements CategoryRepository {
 
   async upsert(input: CategoryUpsertInput): Promise<Category> {
     if (!hasSupabaseEnv()) {
-      throw new Error('Supabase nao configurado para edicao editorial.');
+      throw new Error('Supabase n?o configurado para edicao editorial.');
     }
 
     const userId = await ensureOwnerUserId();

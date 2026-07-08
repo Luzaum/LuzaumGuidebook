@@ -528,7 +528,7 @@ export const medicationsSeed: MedicationRecord[] = [
         route: 'VO',
         frequency: 'q12h',
         duration: '4 semanas (Plumb’s); integrar ao protocolo clínico.',
-        notes: 'Nelson: sulfa potencializada como alternativa; clindamicina continua referência em muitos contextos.',
+        notes: 'Nelson: sulfa potencializada como alternativa; clindamicina cont?nua referência em muitos contextos.',
         calculatorEnabled: true,
         presentationId: 'pres-tmp-smx-susp-br',
       },

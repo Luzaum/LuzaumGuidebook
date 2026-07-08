@@ -109,6 +109,47 @@
   background-color: hsl(var(--sidebar) / 0.92);
 }
 
+.consulta-vet-theme .consulta-vet-sidebar-surface {
+  background-color: hsl(var(--sidebar) / 0.96);
+}
+
+.dark .consulta-vet-theme .consulta-vet-sidebar-surface {
+  background-color: hsl(var(--sidebar) / 0.98);
+}
+
+.consulta-vet-theme .consulta-vet-sidebar-nav-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--sidebar-border) / 0.35) transparent;
+}
+
+.consulta-vet-theme .consulta-vet-sidebar-nav-scroll::-webkit-scrollbar {
+  width: 0.45rem;
+}
+
+.consulta-vet-theme .consulta-vet-sidebar-nav-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.consulta-vet-theme .consulta-vet-sidebar-nav-scroll::-webkit-scrollbar-thumb {
+  min-height: 3rem;
+  border-radius: 999px;
+  background: hsl(var(--sidebar-foreground) / 0.14);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.consulta-vet-theme .consulta-vet-sidebar-nav-scroll:hover::-webkit-scrollbar-thumb {
+  background: hsl(var(--sidebar-foreground) / 0.28);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.consulta-vet-theme .consulta-vet-sidebar-nav-scroll::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.5);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
 /* Textura leve no conteúdo — reduz sensação de área “vazia” sem pesar na GPU */
 .consulta-vet-theme .consulta-vet-main-scroll {
   background-image: radial-gradient(hsl(var(--foreground) / 0.04) 1px, transparent 0);

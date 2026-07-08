@@ -126,47 +126,51 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
   },
   etiology: {
     visaoGeralFenotipoFinal:
-      'Na maioria dos casos de pequenos animais o exame histológico final converge para fibrose tubulointersticial com inflamação, independentemente do evento inicial — por isso o “fenótipo” costuma parecer semelhante mesmo quando a causa raiz foi glomerular, infeciosa ou tóxica. O gatilho original muitas vezes já não é identificável na biopsia tardia ou na necropsia.\n\n' +
-      'Dica de estudo: associe mentalmente “DRC = perda de massa renal funcional ao longo do tempo”; não confunda o fenótipo histológico tardio com a etiologia que levou à lesão.',
+      'Na maioria dos casos de pequenos animais o exame histológico final converge para fibrose tubulointersticial com inflamação, independentemente do evento inicial — por isso o “fenótipo” costuma parecer semelhante mesmo quando a causa raiz foi glomerular, infeciosa ou tóxica. O gatilho original muitas vezes já não é identificável na biopsia tardia ou na necropsia.',
     causasEmCaes:
-      'Entre as causas mais citadas em cães: nefrite intersticial crônica de causa não determinada, pielonefrite crônica, glomerulonefrite crônica, amiloidose, nefropatias familiares ou hereditárias (por exemplo shunts portossistêmicos tratados tardiamente, displasias) e sequela de injúria renal aguda. Na prática, investigue sempre componente glomerular proteinúrico, histórico de infecção do trato urinário alto de repetição, linhagem e DRC pós-AKI em animais previamente estáveis.\n\n' +
-      'Dica de estudo: em provas, “proteinúria importante em cão adulto” → pense glomérulo antes de rotular só “DRC intersticial idiopática”.',
+      'Entre as causas mais citadas em cães: nefrite intersticial crônica de causa não determinada, pielonefrite crônica, glomerulonefrite crônica, amiloidose, nefropatias familiares ou hereditárias (por exemplo shunts portossistêmicos tratados tardiamente, displasias) e sequela de injúria renal aguda. Na prática, investigue sempre componente glomerular proteinúrico, histórico de infecção do trato urinário alto de repetição, linhagem e DRC pós-AKI em animais previamente estáveis.',
     causasEmGatos:
-      'Em gatos destacam-se nefrite intersticial crônica idiopática, pielonefrite crônica, glomerulonefrite crônica, amiloidose, doença renal policística em Persas, neoplasia (por exemplo linfoma renal), piogranulomatose associada à infecção pelo vírus da imunodeficiência felina e sequela de injúria renal aguda.\n\n' +
-      'Dica de estudo: FIV não “causa” DRC diretamente como o vírus da imunodeficiência humana causa nefropatia, mas associa-se a nefrite intersticial imunomediada — saiba explicar essa nuance.',
+      'Em gatos destacam-se nefrite intersticial crônica idiopática, pielonefrite crônica, glomerulonefrite crônica, amiloidose, doença renal policística em Persas, neoplasia (por exemplo linfoma renal), piogranulomatose associada à infecção pelo vírus da imunodeficiência felina e sequela de injúria renal aguda.',
   },
   epidemiology: {
     perfilFelino:
-      'A DRC é um dos principais problemas da geriatria felina; muitos animais atravessam um continuum de fase não azotêmica (IRIS estádio 1 ou “pré‑azotêmico”) até estádio urêmico terminal. Revisões abertas citam prevalências da ordem de cerca de três em cada dez gatos com mais de doze anos — número útil para contextualizar custo assistencial e comunicação com o tutor.\n\n' +
-      'Dica de estudo: alta prevalência não significa “tratar todos igual”: o estádio IRIS e a proteinúria/pressão definem prioridades.',
+      'A DRC é um dos principais problemas da geriatria felina; muitos animais atravessam um continuum de fase não azotêmica (IRIS estádio 1 ou “pré‑azotêmico”) até estádio urêmico terminal. Revisões abertas citam prevalências da ordem de cerca de três em cada dez gatos com mais de doze anos — número útil para contextualizar custo assistencial e comunicação com o tutor.',
     perfilCanino:
-      'Em cães a DRC também é relevante em idosos, mas tende a ser menos frequente que em gatos e mais heterogênea quanto à causa subjacente. Quando o quadro é clinicamente marcante, proteinúria sustentada, hipertensão sistêmica e doença glomerular relevante costumam puxar o prognóstico e ditar intensidade de monitorização.\n\n' +
-      'Dica de estudo: compare mentalmente “gato idoso magro com USG baixo e K+ baixo” (fenótipo clássico) com “cão com UPC alto” (alerta glomerular).',
+      'Em cães a DRC também é relevante em idosos, mas tende a ser menos frequente que em gatos e mais heterogênea quanto à causa subjacente. Quando o quadro é clinicamente marcante, proteinúria sustentada, hipertensão sistêmica e doença glomerular relevante costumam puxar o prognóstico e ditar intensidade de monitorização.',
   },
   pathogenesisTransmission: {
     naoContagiosa:
-      'A DRC não se transmite de animal para animal como uma infecção respiratória ou dermatológica clássica: reflete processos crônicos de dano renal, malformações, sequelas de episódios agudos ou exposições individuais (medicamentos, toxinas). Urinatórios de repetição podem contribuir para morbidade mas não “contagiam” a própria DRC.\n\n' +
-      'Dica de estudo: se a banca perguntar transmissão, responda “não contagiosa” e cite apenas transmissão vertical ou iatrogenia em situações muito específicas (não o padrão da DRC idiopática).',
+      'A DRC não se transmite de animal para animal como uma infecção respiratória ou dermatológica clássica: reflete processos crônicos de dano renal, malformações, sequelas de episódios agudos ou exposições individuais (medicamentos, toxinas). Urinatórios de repetição podem contribuir para morbidade mas não “contagiam” a própria DRC.',
     duracaoMinima:
-      'Critérios operacionais em medicina de pequenos animais usam persistência de alterações estruturais ou funcionais por pelo menos três meses para distinguir padrão crônico de flutuações agudas isoladas ou de descompensações sobrepostas.\n\n' +
-      'Dica de estudo: o número “3 meses” é convenção clínica — na prova, explique que estabilização e repetição de exames importam mais que o calendário exato.',
+      'Critérios operacionais em medicina de pequenos animais usam persistência de alterações estruturais ou funcionais por pelo menos três meses para distinguir padrão crônico de flutuações agudas isoladas ou de descompensações sobrepostas.',
   },
   pathophysiology: {
+    drcGraficoPerfusaoCortical: {
+      kind: 'clinicalFigure',
+      src: '/assets/consulta-vet/drc/jvim-ckd-cortex-curve.jpg',
+      alt: 'Curvas de intensidade-tempo do cortex renal em gatos saudaveis e gatos com DRC',
+      caption:
+        'Grafico de artigo JVIM/PMC: curvas de intensidade-tempo do cortex renal; gatos com DRC apresentam atraso do pico e menor tempo medio de transito. Fonte: Stock et al., J Vet Intern Med 2018, CC BY-NC.',
+      display: 'wide',
+    },
+    drcGraficoPerfusaoMedular: {
+      kind: 'clinicalFigure',
+      src: '/assets/consulta-vet/drc/jvim-ckd-medulla-curve.jpg',
+      alt: 'Curvas de intensidade-tempo da medula renal em gatos saudaveis e gatos com DRC',
+      caption:
+        'Grafico de artigo JVIM/PMC: curvas de intensidade-tempo da medula renal durante 90 segundos apos contraste, comparando gatos saudaveis e gatos com DRC. Fonte: Stock et al., J Vet Intern Med 2018, CC BY-NC.',
+      display: 'wide',
+    },
     perdaNefronsHiperfiltracao:
-      'À medida que os néfrons são perdidos, os remanescentes hiperfiltram para preservar a taxa de filtração global aparente; a pressão intraglomerular aumenta e, com o tempo, isso favorece proteinúria e esclerose glomerular residual — um círculo vicioso que acelera o declínio. Daí a importância de bloqueio do RAAS quando há proteinúria clinicamente relevante.\n\n' +
-      'Dica de estudo: ligue “hiperfiltração” → proteinúria progressiva → pior prognóstico; é o raciocínio que justifica IECA/ARB quando indicados.',
+      'À medida que os néfrons são perdidos, os remanescentes hiperfiltram para preservar a taxa de filtração global aparente; a pressão intraglomerular aumenta e, com o tempo, isso favorece proteinúria e esclerose glomerular residual — um círculo vicioso que acelera o declínio. Daí a importância de bloqueio do RAAS quando há proteinúria clinicamente relevante.',
     perdaConcentracaoUrina:
-      'Entre as primeiras funções a deteriorar está a capacidade de concentrar a urina: poliúria com urina diluída e polidipsia compensatória frequentemente antecedem azotemia marcada. Em gatos, massa urinária aumentada com densidade urinária abaixo de 1,035 (em amostra adequada) pode ser pista precoce, embora não seja patognomônica (diabetes, iatrogenia com diuréticos, etc.).\n\n' +
-      'Dica de estudo: PU/PD sem hiperglicemia nem uso de diurético → DRC entra forte no raciocínio diferencial em felino idoso.',
+      'Entre as primeiras funções a deteriorar está a capacidade de concentrar a urina: poliúria com urina diluída e polidipsia compensatória frequentemente antecedem azotemia marcada. Em gatos, massa urinária aumentada com densidade urinária abaixo de 1,035 (em amostra adequada) pode ser pista precoce, embora não seja patognomônica (diabetes, iatrogenia com diuréticos, etc.).',
     retencaoUremica:
-      'A queda da taxa de filtração glomerular acumula ureia, creatinina e outros solutos urémicos — associando-se a náuseas, vômito, halitose, ulceração oral, apatia e mal-estar sistêmico nas fases mais avançadas.\n\n' +
-      'Dica de estudo: uréia e creatinina são marcadores de filtração, não de “toxina única”; os sintomas urêmicos são multifatoriais (ácido-base, hormônios, inflamação).',
+      'A queda da taxa de filtração glomerular acumula ureia, creatinina e outros solutos urémicos — associando-se a náuseas, vômito, halitose, ulceração oral, apatia e mal-estar sistêmico nas fases mais avançadas.',
     fosforoMineralBone:
-      'A hiperfosfatemia estimula alterações na regulação do eixo mineral (por exemplo PTH aumentado relativamente, FGF23) com impacto ósseo e vascular; o controle do fósforo dietético e medicamentoso é central para retardar progressão e complicações secundárias.\n\n' +
-      'Dica de estudo: na oral, “fósforo alto + PTH/FGF23” liga-se a remodelação óssea e risco cardiovascular — não decore valores, entenda o mecanismo.',
+      'A hiperfosfatemia estimula alterações na regulação do eixo mineral (por exemplo PTH aumentado relativamente, FGF23) com impacto ósseo e vascular; o controle do fósforo dietético e medicamentoso é central para retardar progressão e complicações secundárias.',
     acidoseAnemiaHipertensao:
-      'A acidose metabólica pode agravar-se em estádios tardios; a anemia costuma ser normocítica e não regenerativa (deficiência relativa de eritropoietina, uremia e inflamação). A hipertensão sistêmica é frequente e pode ser causa ou consequência — por isso a medição de pressão arterial faz parte do pacote inicial em DRC documentada.\n\n' +
-      'Dica de estudo: monte uma tabela mental “estádio IRIS alto ↔ acidose / anemia / PA” para lembrar o pacote de complicações do exame.',
+      'A acidose metabólica pode agravar-se em estádios tardios; a anemia costuma ser normocítica e não regenerativa (deficiência relativa de eritropoietina, uremia e inflamação). A hipertensão sistêmica é frequente e pode ser causa ou consequência — por isso a medição de pressão arterial faz parte do pacote inicial em DRC documentada.',
   },
   clinicalSignsPathophysiology: [
     {
@@ -201,10 +205,30 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
       'O estadiamento IRIS 2023 aplica-se a doença renal crônica estável. Não estadiar quando a creatinina ou o SDMA oscilam rapidamente, quando ainda há suspeita forte de azotemia pré-renal ou pós-renal não resolvida, ou quando o paciente está desidratado ou em choque — primeiro estabilize e corrija volume.',
     drcFiguraIrisStaging: {
       kind: 'clinicalFigure',
-      src: '/assets/consulta-vet/iris-staging-ckd.png',
-      alt: 'Quadro IRIS — estadiamento da DRC em cães e gatos: estádios 1 a 4 (sem azotemia a azotemia grave), creatinina e SDMA por espécie, substadiamento por UPC e por pressão arterial sistólica',
+      src: '/assets/consulta-vet/drc/jvim-ckd-contrast-ultrasound.jpg',
+      alt: 'Ultrassom contrastado seriado comparando rim de gato saudavel e gato com DRC',
       caption:
-        'Referência visual IRIS — creatinina, SDMA (teste IDEXX SDMA), razão proteinúria/creatinina (UPC) e PA. Se creatinina e SDMA não coincidirem no estádio, considere massa muscular e repita ambos em 2–4 semanas; em discordância persistente, use o estádio mais elevado. Diretrizes: iris-kidney.com.',
+        'Imagem representativa de ultrassom contrastado seriado: gato com DRC (esquerda) versus gato saudavel (direita), com chegada de contraste cortical atrasada e realce mais curto no paciente DRC. Fonte: Stock et al., J Vet Intern Med 2018, CC BY-NC.',
+      display: 'wide',
+    },
+    drcTabelaAchadosImagem: {
+      kind: 'clinicalTable',
+      headers: ['Achado de imagem', 'Como interpretar na DRC', 'Observacao cl?nica'],
+      rows: [
+        ['Rins pequenos ou irregulares', 'Sugere cronicidade e fibrose/atrofia', 'N?o exclui agudizacao sobre DRC'],
+        ['Perda de distincao corticomedular', 'Compat?vel com alteracao arquitetural cr?nica', 'Integrar com urinalise, creatinina/SDMA e historia'],
+        ['Hiperecogenicidade/mineralizacao', 'Pode acompanhar nefropatia cr?nica', 'N?o e especifico isoladamente'],
+        ['Pieliectasia, ureterolitos ou nefrolitase', 'Pode indicar componente obstrutivo ou causa tratavel', 'Evitar estadiar antes de corrigir pos-renal quando relevante'],
+      ],
+    },
+    drcTabelaPredisponentesImagem: {
+      kind: 'clinicalTable',
+      headers: ['Condicao', 'Relevancia para DRC', 'Quando procurar'],
+      rows: [
+        ['Doenca renal policistica', 'Causa hereditaria/predisponente, especialmente em Persas e racas relacionadas', 'Rins aumentados/irregulares, cistos em ultrassom, historico familiar'],
+        ['Ureterolitos', 'Causa potencialmente tratavel de obstrucao parcial ou intermitente', 'Pieliectasia, dor, piora abrupta de azotemia'],
+        ['Pielonefrite cr?nica', 'Pode manter inflamacao e progressao renal', 'Sedimento ativo, cultura positiva, febre/dor renal ou piora sem explicacao'],
+      ],
     },
     drcCronicoVersusAgudo: {
       kind: 'clinicalTable',
@@ -297,6 +321,24 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
       'O hemograma pode mostrar anemia não regenerativa em fases tardias; a bioquímica revela azotemia, hiperfosfatemia e alterações de potássio, bicarbonato e cálcio conforme o caso. A urinálise com USG baixo é altamente sugestiva de incapacidade de concentração; cultura periódica ajuda a identificar infecções assintomáticas.',
   },
   treatment: {
+    drcTabelaSubestadiamentoPressaoInicial: {
+      kind: 'clinicalTable',
+      headers: ['Medi??o de PA', 'Por que importa na DRC', 'Conduta pratica'],
+      rows: [
+        ['T?cnica padronizada e repetida', 'Evita tratar estresse como hipertens?o verdadeira', 'Ambiente calmo, manguito adequado, varias leituras'],
+        ['PAS >=160 mmHg persistente', 'Risco moderado/alto de les?o em ?rg?o-alvo', 'Tratar e reavaliar PA em 7-14 dias'],
+        ['Lesao em ?rg?o-alvo', 'Retina, c?rebro, cora??o e rins podem ser afetados', 'Tratar sem aguardar nova persistencia'],
+      ],
+    },
+    drcTabelaPriorizacaoTutor: {
+      kind: 'clinicalTable',
+      headers: ['Prioridade', 'Maior beneficio esperado', 'Como preservar adesao'],
+      rows: [
+        ['Alimentacao e calorias', 'Melhora qualidade de vida e reduz crise por inapetencia', 'Dieta renal se aceita; se n?o aceita, priorizar comer'],
+        ['Hidratacao', 'Reduz descompensacoes pre-renais', 'Plano simples e reavaliavel'],
+        ['PA, UPC e fosforo', 'Alvos com impacto prognostico', 'Poucos medicamentos por vez, com retorno marcado'],
+      ],
+    },
     decisaoInicial:
       'Planeie terapia nutricional, metas laboratoriais e frequência de revisão por estádio IRIS (após confirmar estabilidade). Integre comorbidades cardíacas e risco de hipercalemia ao escolher fármacos e fluidos.',
     drcAlertaEstadiamentoInstavel:
@@ -345,6 +387,34 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
     drcHipertensao:
       'Gatos: amlodipina é frequentemente a primeira escolha prática — faixas IRIS 2023 citam cerca de 0,125–0,25 mg/kg VO q24h com possibilidade de aumentar até cerca de 0,25–0,5 mg/kg q24h; telmisartan cerca de 2 mg/kg q24h para hipertensão felina segundo referências citadas pela IRIS; combinar amlodipina com telmisartan se monoterapia insuficiente.\n\n' +
       'Cães: abordagem escalonada com IECA em dose adequada, depois aumento de dose, posterior associação com amlodipina e outras classes se necessário — resposta menos previsível que em muitos gatos.',
+    drcGraficoParametrosPerfusao: {
+      kind: 'clinicalFigure',
+      src: '/assets/consulta-vet/drc/jvim-perfusion-parameters.jpg',
+      alt: 'Curva intensidade-tempo de ultrassom contrastado renal com parametros de perfus?o',
+      caption:
+        'Grafico de artigo JVIM/PMC: curva intensidade-tempo apos bolus de contraste ultrassonografico, com parametros de perfus?o renal. Fonte: Stock et al., J Vet Intern Med 2018, CC BY-NC.',
+      display: 'wide',
+    },
+    drcTabelaAlvosFosforo: {
+      kind: 'clinicalTable',
+      headers: ['Estagio IRIS', 'Alvo pr?tico de fosforo', 'Conduta se acima do alvo'],
+      rows: [
+        ['1', 'Avaliar tendencia, causa e sinais de DRC-MBD', 'Corrigir dieta e investigar progressao quando indicado'],
+        ['2', '<4,5-4,6 mg/dL', 'Dieta renal; quelante se persistir elevado apos transicao alimentar'],
+        ['3', '<5,0 mg/dL', 'Dieta renal + quelante com refeicoes se necessario; monitorar calcio'],
+        ['4', '<6,0 mg/dL', 'Meta realista, priorizando apetite, calorias e bem-estar'],
+      ],
+    },
+    drcTabelaSubestadiamentoPressao: {
+      kind: 'clinicalTable',
+      headers: ['PAS', 'Subestagio/risco', 'Conduta'],
+      rows: [
+        ['<140 mmHg', 'Normotenso / risco minimo', 'Monitorar em reavaliacoes'],
+        ['140-159 mmHg', 'Pre-hipertenso / baixo risco', 'Repetir t?cnica padronizada e procurar tendencia'],
+        ['160-179 mmHg', 'Hipertenso / risco moderado', 'Tratar se persistente ou se houver les?o em ?rg?o-alvo'],
+        ['>=180 mmHg', 'Hipertens?o grave / alto risco', 'Intervir com prioridade apos confirmar t?cnica; avaliar retina, c?rebro, cora??o e rins'],
+      ],
+    },
     drcSintomasUremicos: [
       {
         drug: 'Maropitant',

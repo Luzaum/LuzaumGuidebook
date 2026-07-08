@@ -49,25 +49,35 @@ function Callout({
   );
 }
 
+function blockLayoutClass(type: EmergencyGuideBlock['type'], variant?: 'critical' | 'warning' | 'info') {
+  if (type === 'table' || type === 'comparison' || type === 'formula' || type === 'targetStrip') return 'lg:col-span-2';
+  if (type === 'callout' && variant === 'critical') return 'lg:col-span-2';
+  return '';
+}
+
 export function EmergencyGuideBlockRenderer({ blocks }: { blocks: EmergencyGuideBlock[] }) {
   return (
-    <div className="space-y-5">
+    <div className="grid gap-4 lg:grid-cols-2">
       {blocks.map((block, i) => {
         if (block.type === 'callout') {
-          return <Callout key={i} variant={block.variant} title={block.title} text={block.text} />;
+          return (
+            <div key={i} className={blockLayoutClass(block.type, block.variant)}>
+              <Callout variant={block.variant} title={block.title} text={block.text} />
+            </div>
+          );
         }
         if (block.type === 'checklist') {
           return (
-            <div key={i} className="rounded-2xl border border-border/80 bg-card/60 px-5 py-5">
+            <div key={i} className={cn('rounded-2xl border border-border/80 bg-card/60 px-4 py-4', blockLayoutClass(block.type))}>
               {block.title ? (
-                <p className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.14em] text-muted-foreground">
+                <p className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-primary" />
                   {block.title}
                 </p>
               ) : null}
-              <ul className="space-y-3">
+              <ul className="space-y-2.5">
                 {block.items.map((item) => (
-                  <li key={item} className="flex gap-3 text-[15px] leading-7 text-foreground/88">
+                  <li key={item} className="flex gap-3 text-sm leading-6 text-foreground/88">
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/75" />
                     <span>{item}</span>
                   </li>
@@ -79,14 +89,14 @@ export function EmergencyGuideBlockRenderer({ blocks }: { blocks: EmergencyGuide
         if (block.type === 'steps' || block.type === 'keyPoints') {
           const Icon = block.type === 'steps' ? ListOrdered : Sparkles;
           return (
-            <div key={i} className="rounded-2xl border border-border/80 bg-muted/[0.2] px-5 py-5">
+            <div key={i} className={cn('rounded-2xl border border-border/80 bg-muted/[0.2] px-4 py-4', blockLayoutClass(block.type))}>
               {block.title ? (
-                <p className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.14em] text-muted-foreground">
+                <p className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground">
                   <Icon className="h-4 w-4 text-primary" />
                   {block.title}
                 </p>
               ) : null}
-              <ol className="list-decimal space-y-3 pl-5 text-[15px] leading-7 text-foreground/88 marker:font-semibold marker:text-primary">
+              <ol className="list-decimal space-y-2.5 pl-5 text-sm leading-6 text-foreground/88 marker:font-semibold marker:text-primary">
                 {block.items.map((item) => (
                   <li key={item} className="pl-1">
                     {item}
@@ -98,14 +108,14 @@ export function EmergencyGuideBlockRenderer({ blocks }: { blocks: EmergencyGuide
         }
         if (block.type === 'targetStrip') {
           return (
-            <div key={i} className="rounded-2xl border border-emerald-500/25 bg-emerald-500/[0.06] px-5 py-5">
+            <div key={i} className={cn('rounded-2xl border border-emerald-500/25 bg-emerald-500/[0.06] px-4 py-4', blockLayoutClass(block.type))}>
               {block.title ? (
-                <p className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.14em] text-emerald-800 dark:text-emerald-200">
+                <p className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-emerald-800 dark:text-emerald-200">
                   <Target className="h-4 w-4" />
                   {block.title}
                 </p>
               ) : null}
-              <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+              <div className="grid gap-3 sm:grid-cols-2 2xl:grid-cols-3">
                 {block.items.map((item) => (
                   <div key={`${item.label}-${item.value}`} className="rounded-xl border border-emerald-500/20 bg-background/70 px-4 py-3">
                     <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">{item.label}</p>
@@ -119,8 +129,8 @@ export function EmergencyGuideBlockRenderer({ blocks }: { blocks: EmergencyGuide
         }
         if (block.type === 'formula') {
           return (
-            <div key={i} className="rounded-2xl border border-sky-500/25 bg-sky-500/[0.06] px-5 py-5">
-              <p className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.14em] text-sky-800 dark:text-sky-200">
+            <div key={i} className={cn('rounded-2xl border border-sky-500/25 bg-sky-500/[0.06] px-4 py-4', blockLayoutClass(block.type))}>
+              <p className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-sky-800 dark:text-sky-200">
                 <FunctionSquare className="h-4 w-4" />
                 {block.title}
               </p>
@@ -143,9 +153,9 @@ export function EmergencyGuideBlockRenderer({ blocks }: { blocks: EmergencyGuide
         }
         if (block.type === 'table') {
           return (
-            <div key={i} className="rounded-2xl border border-border/80 bg-card/60 px-5 py-5">
+            <div key={i} className={cn('rounded-2xl border border-border/80 bg-card/60 px-4 py-4', blockLayoutClass(block.type))}>
               {block.title ? (
-                <p className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.14em] text-muted-foreground">
+                <p className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground">
                   <ClipboardList className="h-4 w-4 text-primary" />
                   {block.title}
                 </p>
@@ -180,9 +190,9 @@ export function EmergencyGuideBlockRenderer({ blocks }: { blocks: EmergencyGuide
         }
         if (block.type === 'comparison') {
           return (
-            <div key={i} className="rounded-2xl border border-primary/20 bg-primary/[0.04] px-5 py-5">
+            <div key={i} className={cn('rounded-2xl border border-primary/20 bg-primary/[0.04] px-4 py-4', blockLayoutClass(block.type))}>
               {block.title ? (
-                <p className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.14em] text-primary">
+                <p className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
                   <Sparkles className="h-4 w-4" />
                   {block.title}
                 </p>
@@ -224,7 +234,7 @@ export function EmergencyGuideBlockRenderer({ blocks }: { blocks: EmergencyGuide
           return (
             <div
               key={i}
-              className="rounded-2xl border border-dashed border-primary/35 bg-primary/[0.04] px-5 py-4 text-sm leading-7 text-muted-foreground"
+              className={cn('rounded-2xl border border-dashed border-primary/35 bg-primary/[0.04] px-4 py-4 text-sm leading-7 text-muted-foreground', blockLayoutClass(block.type))}
             >
               <span className="font-semibold text-primary/90">Conteúdo em preparação — </span>
               {block.message}

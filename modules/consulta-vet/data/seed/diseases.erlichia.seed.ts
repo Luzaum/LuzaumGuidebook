@@ -31,17 +31,17 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
     'Coinfeccao',
   ],
   quickSummary:
-    'A erliquiose monocitica canina e uma doenca infecciosa transmitida por carrapatos, causada por Ehrlichia canis. O agente infecta monocitos e macrofagos, forma morulas intracitoplasmaticas e dissemina pelo sistema mononuclear fagocitico. O quadro pode ser agudo, subclinico ou cronico. A pista laboratorial mais importante e trombocitopenia, mas a doenca tambem pode cursar com anemia nao regenerativa, hiperglobulinemia, proteinuria, sinais hemorragicos, uveite, sinais neurologicos e, na fase cronica grave, mielossupressao com pancitopenia.',
+    'A erliquiose monocitica canina e uma doenca infecciosa transmitida por carrapatos, causada por Ehrlichia canis. O agente infecta monocitos e macrofagos, forma morulas intracitoplasmaticas e dissemina pelo sistema mononuclear fagocitico. O quadro pode ser agudo, subclinico ou cr?nico. A pista laboratorial mais importante e trombocitopenia, mas a doenca tambem pode cursar com anemia n?o regenerativa, hiperglobulinemia, proteinuria, sinais hemorragicos, uveite, sinais neurologicos e, na fase cr?nica grave, mielossupressao com pancitopenia.',
   quickDecisionStrip: [
     'Cao + carrapatos + trombocitopenia = erliquiose sempre entra alto na lista.',
-    'Sorologia positiva sozinha indica exposicao; nao prova doenca ativa sem contexto.',
-    'PCR positiva antes de antibiotico confirma infeccao; PCR negativa nao exclui fases cronicas/subclinicas.',
+    'Sorologia positiva sozinha indica exposicao; n?o prova doenca ativa sem contexto.',
+    'PCR positiva antes de antibiotico confirma infeccao; PCR negativa n?o exclui fases cronicas/subclinicas.',
     'Doxiciclina por 28 dias e o eixo terapeutico preferencial.',
-    'Pancitopenia cronica, Pastor Alemao e falta de resposta em 48-72 h pioram o cenario.',
+    'Pancitopenia cr?nica, Pastor Alemao e falta de resposta em 48-72 h pioram o cenario.',
   ],
   quickSummaryRich: {
     lead:
-      'Pense na CME como uma doenca de tres tempos: aguda com febre e plaquetas baixas; subclinica silenciosa, muitas vezes apenas com trombocitopenia discreta; cronica com medula cansada, imunocomplexos e sangramentos. O segredo da ficha e nao tratar o SNAP isolado, e sim o paciente inteiro.',
+      'Pense na CME como uma doenca de tres tempos: aguda com febre e plaquetas baixas; subclinica silenciosa, muitas vezes apenas com trombocitopenia discreta; cr?nica com medula cansada, imunocomplexos e sangramentos. O segredo da ficha e n?o tratar o SNAP isolado, e sim o paciente inteiro.',
     leadHighlights: ['tres tempos', 'plaquetas baixas', 'subclinica', 'cronica', 'SNAP isolado'],
     pillars: [
       {
@@ -51,7 +51,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         highlights: ['Trombocitopenia', 'epistaxe'],
       },
       {
-        title: 'Onde a prova e a clinica confundem',
+        title: 'Onde a prova e a cl?nica confundem',
         body:
           'IFA, ELISA/SNAP e titulos altos podem refletir exposicao passada. PCR ajuda a documentar infeccao ativa, principalmente antes de iniciar doxiciclina.',
         highlights: ['exposicao passada', 'PCR'],
@@ -64,7 +64,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Fluxo pratico de diagnostico',
+      title: 'Fluxo pr?tico de diagn?stico',
       steps: [
         {
           label: '1. Suspeita',
@@ -74,7 +74,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         {
           label: '2. Hemograma e bioquimica',
           detail:
-            'Buscar trombocitopenia, anemia nao regenerativa, leucopenia/pancitopenia, hiperglobulinemia, hipoalbuminemia e enzimas hepaticas aumentadas.',
+            'Buscar trombocitopenia, anemia n?o regenerativa, leucopenia/pancitopenia, hiperglobulinemia, hipoalbuminemia e enzimas hepaticas aumentadas.',
         },
         {
           label: '3. Teste especifico',
@@ -84,7 +84,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         {
           label: '4. Estadiar gravidade',
           detail:
-            'Avaliar olhos, urina, rim, neurologico, sangramentos e medula quando houver pancitopenia.',
+            'Avaliar olhos, urina, rim, neurol?gico, sangramentos e medula quando houver pancitopenia.',
         },
       ],
     },
@@ -101,7 +101,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         },
         {
           label: 'Reavaliar',
-          detail: 'Plaquetas costumam subir em 24-48 h e normalizar em ate 14 dias. Falha de resposta exige revisar diagnostico e coinfeccoes.',
+          detail: 'Plaquetas costumam subir em 24-48 h e normalizar em ate 14 dias. Falha de resposta exige revisar diagn?stico e coinfeccoes.',
         },
       ],
     },
@@ -112,7 +112,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
     alvoCelular:
       'A afinidade por celulas do sistema mononuclear fagocitico explica a disseminacao sistemica, a relacao com baco, figado, linfonodos, medula ossea e a dificuldade de interpretar testes isolados em fases diferentes.',
     sinonimiaClinica:
-      'Os nomes febre hemorragica canina e pancitopenia tropical canina refletem duas faces importantes da doenca: sangramento por alteracao plaquetaria/vascular e falencia medular na fase cronica.',
+      'Os nomes febre hemorragica canina e pancitopenia tropical canina refletem duas faces importantes da doenca: sangramento por alteracao plaquetaria/vascular e falencia medular na fase cr?nica.',
   },
   epidemiology: {
     distribuicao:
@@ -130,10 +130,10 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
     figuraCicloCarrapato: {
       kind: 'clinicalFigure',
       src: `${ASSET_BASE}/ciclo-rhipicephalus-sanguineus-1600.jpg`,
-      alt: 'Ciclo de vida do carrapato Rhipicephalus sanguineus em caes',
+      alt: 'Ciclo de vida do carrapato Rhipicephalus sanguineus em c?es',
       display: 'wide',
       caption:
-        'Diagrama do ciclo biologico de tres hospedeiros do carrapato-marrom (Rhipicephalus sanguineus), detalhando as fases de ovo, larva, ninfa e adulto, destacando a infestacao em ambientes internos (indoor) e externos (outdoor) e a transmissao do patogeno aos caes.',
+        'Diagrama do ciclo biologico de tres hospedeiros do carrapato-marrom (Rhipicephalus sanguineus), detalhando as fases de ovo, larva, ninfa e adulto, destacando a infestacao em ambientes internos (indoor) e externos (outdoor) e a transmissao do patogeno aos c?es.',
     },
     figuraCarrapato: {
       kind: 'clinicalFigure',
@@ -146,7 +146,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
     patogeneseInicial:
       'No hospedeiro, E. canis se aloja em monocitos e macrofagos, forma morulas e se dissemina para baco, figado, linfonodos e endotelio vascular. A vasculite, a ativacao imune e a disfuncao plaquetaria explicam boa parte dos sinais iniciais.',
     fases:
-      'Fase aguda: multiplicacao sistemica, febre, organomegalia, vasculite e trombocitopenia. Fase subclinica: animal clinicamente normal, mas com possivel trombocitopenia discreta e sequestro esplenico do agente. Fase cronica: resposta imune persistente, imunocomplexos, hipoplasia medular, pancitopenia, glomerulonefrite, uveite e sinais neurologicos/articulares.',
+      'Fase aguda: multiplicacao sistemica, febre, organomegalia, vasculite e trombocitopenia. Fase subclinica: animal clinicamente normal, mas com poss?vel trombocitopenia discreta e sequestro esplenico do agente. Fase cr?nica: resposta imune persistente, imunocomplexos, hipoplasia medular, pancitopenia, glomerulonefrite, uveite e sinais neurologicos/articulares.',
   },
   pathophysiology: {
     desenvolvimentoCelular: {
@@ -162,9 +162,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
     faseSubclinica:
       'Na fase subclinica, o cao pode parecer saudavel. A bacteria pode permanecer sequestrada no baco e escapar da resposta imune por mecanismos como inibicao da fusao fagolisossomal, modulacao de MHC II e variacao antigenica.',
     faseCronica:
-      'Na fase cronica, a marca de maior gravidade e a mielossupressao. Hipoplasia de medula ossea pode causar pancitopenia. Imunocomplexos contribuem para glomerulonefrite, poliartrite, meningite e alteracoes oculares.',
-    dicaDeEstudo:
-      'Dica de estudo: conecte cada fase ao mecanismo dominante: aguda = vasculite e plaquetas; subclinica = baco e silencio clinico; cronica = medula, imunocomplexos e pancitopenia.',
+      'Na fase cr?nica, a marca de maior gravidade e a mielossupressao. Hipoplasia de medula ossea pode causar pancitopenia. Imunocomplexos contribuem para glomerulonefrite, poliartrite, meningite e alteracoes oculares.',
   },
   clinicalSignsPathophysiology: {
     tabelaSinaisClinicos: {
@@ -174,7 +172,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         [
           'Gerais',
           'Febre, letargia, depressao, anorexia, perda de peso, desidratacao, vomito, diarreia.',
-          'Inflamacao sistemica, fase aguda ou cronica e possiveis coinfeccoes.',
+          'Inflamacao sistemica, fase aguda ou cr?nica e possiveis coinfeccoes.',
         ],
         [
           'Linfoide/abdominal',
@@ -184,12 +182,12 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         [
           'Hemorragicos',
           'Mucosas palidas, petequias, equimoses, epistaxe, hematuria, sangramento em multiplos locais.',
-          'Trombocitopenia, disfuncao plaquetaria, vasculite e, na fase cronica, falencia medular.',
+          'Trombocitopenia, disfuncao plaquetaria, vasculite e, na fase cr?nica, falencia medular.',
         ],
         [
           'Oculares',
           'Secrecao ocular, uveite, hifema, glaucoma secundario, hemorragia retiniana, descolamento de retina, KCS, ulcera de cornea, cegueira.',
-          'Uveite/vasculite, imunocomplexos, hipertensao/hiperviscosidade e sangramento ocular.',
+          'Uveite/vasculite, imunocomplexos, hipertens?o/hiperviscosidade e sangramento ocular.',
         ],
         [
           'Neurologicos',
@@ -204,7 +202,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         [
           'Cardiorrespiratorios',
           'Taquicardia, sopro, arritmias, dispneia, taquipneia, descarga nasal.',
-          'Febre, anemia, vasculite, possivel lesao miocardica e complicacoes pulmonares.',
+          'Febre, anemia, vasculite, poss?vel les?o miocardica e complicacoes pulmonares.',
         ],
       ],
     },
@@ -233,7 +231,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         alt: 'Sangramento nasal ativo (epistaxe) em cao',
         display: 'wide',
         caption:
-          'Fluxo ativo de sangue pelas narinas (epistaxe unilateral) em um cao acometido, decorrente de disfuncao plaquetaria, trombocitopenia acentuada e lesao endotelial.',
+          'Fluxo ativo de sangue pelas narinas (epistaxe unilateral) em um cao acometido, decorrente de disfuncao plaquetaria, trombocitopenia acentuada e les?o endotelial.',
       },
       hifema: {
         kind: 'clinicalFigure',
@@ -255,11 +253,11 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
   },
   diagnosis: {
     raciocinio:
-      'O diagnostico e integrado. Nenhum teste isolado deve substituir a combinacao de epidemiologia, exame fisico, hemograma, bioquimica/urina e teste especifico. Historico de carrapatos ajuda, mas a ausencia de relato nao exclui.',
+      'O diagn?stico e integrado. Nenhum teste isolado deve substituir a combinacao de epidemiologia, exame fisico, hemograma, bioquimica/urina e teste especifico. Historico de carrapatos ajuda, mas a ausencia de relato n?o exclui.',
     planoDiagnostico: [
       {
         stepNumber: 1,
-        title: 'Suspeita clinica e triagem',
+        title: 'Suspeita cl?nica e triagem',
         description:
           'Procurar carrapatos, exposicao ambiental, febre, anorexia, perda de peso, linfadenomegalia, esplenomegalia, petequias, epistaxe, uveite ou sinais neurologicos.',
       },
@@ -267,7 +265,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         stepNumber: 2,
         title: 'Hemograma, bioquimica e urinalise',
         description:
-          'CBC: trombocitopenia, anemia nao regenerativa, leucopenia/leucocitose variavel e pancitopenia cronica. Bioquimica: hiperglobulinemia, hiperproteinemia, hipoalbuminemia, ALT/ALP aumentadas. Urina: proteinuria e hematuria.',
+          'CBC: trombocitopenia, anemia n?o regenerativa, leucopenia/leucocitose variavel e pancitopenia cr?nica. Bioquimica: hiperglobulinemia, hiperproteinemia, hipoalbuminemia, ALT/ALP aumentadas. Urina: proteinuria e hematuria.',
       },
       {
         stepNumber: 3,
@@ -277,45 +275,45 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
       },
       {
         stepNumber: 4,
-        title: 'Sorologia com interpretacao temporal',
+        title: 'Sorologia com interpreta??o temporal',
         description:
-          'IFA e ELISA/SNAP detectam anticorpos. Resultados podem ser negativos no inicio da fase aguda; repetir em 2-3 semanas quando a suspeita for alta. Positivo indica exposicao e pode persistir por meses.',
+          'IFA e ELISA/SNAP detectam anticorpos. Resultados podem ser negativos no in?cio da fase aguda; repetir em 2-3 semanas quando a suspeita for alta. Positivo indica exposicao e pode persistir por meses.',
       },
       {
         stepNumber: 5,
         title: 'PCR',
         description:
-          'PCR pode positivar cedo e confirma infeccao em animal nao tratado. Colher preferencialmente antes da doxiciclina. Em fases subclinicas/cronicas, a sensibilidade pode cair.',
+          'PCR pode positivar cedo e confirma infeccao em animal n?o tratado. Colher preferencialmente antes da doxiciclina. Em fases subclinicas/cronicas, a sensibilidade pode cair.',
         isGoldStandard: true,
       },
       {
         stepNumber: 6,
-        title: 'Aprofundar conforme orgao-alvo',
+        title: 'Aprofundar conforme ?rg?o-alvo',
         description:
           'Liquor se sinais neurologicos; ultrassonografia se organomegalia/abdome; ECG se arritmia; eletroforese de proteinas se hiperglobulinemia, principalmente monoclonal.',
       },
     ],
     fasesELaboratorio: {
       kind: 'clinicalTable',
-      headers: ['Fase', 'Achado clinico comum', 'Laboratorio que ajuda', 'Armadilha'],
+      headers: ['Fase', 'Achado cl?nico comum', 'Laboratorio que ajuda', 'Armadilha'],
       rows: [
         [
           'Aguda',
           'Febre, letargia, anorexia, linfadenomegalia, esplenomegalia, hemorragias discretas.',
-          'Trombocitopenia; anemia nao regenerativa; PCR pode ser positiva cedo.',
+          'Trombocitopenia; anemia n?o regenerativa; PCR pode ser positiva cedo.',
           'Sorologia pode vir negativa nos primeiros dias/semanas.',
         ],
         [
           'Subclinica',
           'Cao aparentemente saudavel.',
           'Trombocitopenia discreta, hiperglobulinemia; sorologia positiva.',
-          'Tratar todo soropositivo saudavel pode nao trazer beneficio e favorece uso desnecessario de antibiotico.',
+          'Tratar todo soropositivo saudavel pode n?o trazer beneficio e favorece uso desnecessario de antibiotico.',
         ],
         [
           'Cronica',
           'Emagrecimento, sangramentos, uveite, edema, sinais neurologicos/articulares.',
           'Pancitopenia, hipoplasia medular, proteinuria, hiperglobulinemia.',
-          'PCR pode ser menos confiavel e a resposta hematologica pode ser lenta ou incompleta.',
+          'PCR pode ser menos confi?vel e a resposta hematologica pode ser lenta ou incompleta.',
         ],
       ],
     },
@@ -352,8 +350,8 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
   },
   treatment: {
     ordemDePrioridade: [
-      '1) Decidir se ha doenca ativa: sinais clinicos + alteracoes laboratoriais + exposicao/teste especifico. Nao basear tratamento apenas em sorologia positiva de cao saudavel.',
-      '2) Iniciar doxiciclina quando a suspeita clinica for forte, principalmente em agudos febris com trombocitopenia.',
+      '1) Decidir se ha doenca ativa: sinais clinicos + alteracoes laboratoriais + exposicao/teste especifico. N?o basear tratamento apenas em sorologia positiva de cao saudavel.',
+      '2) Iniciar doxiciclina quando a suspeita cl?nica for forte, principalmente em agudos febris com trombocitopenia.',
       '3) Tratar suporte e complicacoes: hemorragia, anemia, desidratacao, uveite, proteinuria, sinais neurologicos e coinfeccoes.',
       '4) Reavaliar resposta em 24-72 horas para febre/apetite e em 7-14 dias para plaquetas.',
       '5) Manter prevencao de carrapatos durante todo o ano para evitar reinfeccao.',
@@ -365,7 +363,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         [
           'Doxiciclina',
           '10 mg/kg VO q24h por 28 dias ou 5 mg/kg VO q12h por 28 dias.',
-          'Primeira escolha; melhor sustentacao para CME em caes.',
+          'Primeira escolha; melhor sustentacao para CME em c?es.',
         ],
         [
           'Tetraciclina',
@@ -375,16 +373,16 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         [
           'Minociclina',
           '10 mg/kg VO q12h por 21-28 dias.',
-          'Alternativa quando doxiciclina nao puder ser usada.',
+          'Alternativa quando doxiciclina n?o puder ser usada.',
         ],
         [
           'Cloranfenicol',
           '25-50 mg/kg VO q8h por 21-28 dias.',
-          'Alternativa, mas nao primeira escolha; considerar seguranca ocupacional e perfil do paciente.',
+          'Alternativa, mas n?o primeira escolha; considerar seguran?a ocupacional e perfil do paciente.',
         ],
         [
           'Imidocarb / enrofloxacina',
-          'Nao usar como eixo de primeira linha para E. canis.',
+          'N?o usar como eixo de primeira linha para E. canis.',
           'Imidocarb foi recomendado no passado, mas estudos recentes apontam baixa eficacia; enrofloxacina geralmente e ineficaz.',
         ],
       ],
@@ -392,19 +390,19 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
     suporte:
       'Casos graves podem precisar de fluidoterapia intravenosa, transfusao, manejo de hemorragias, suporte nutricional e tratamento de complicacoes oculares, renais, cardiacas ou neurologicas.',
     corticoide:
-      'Prednisona em dose imunossupressora curta pode ser considerada em trombocitopenia com risco de vida quando houver suspeita de componente imunomediado importante. Nao deve ser automatica para todo paciente com erliquiose.',
+      'Prednisona em dose imunossupressora curta pode ser considerada em trombocitopenia com risco de vida quando houver suspeita de componente imunomediado importante. N?o deve ser automatica para todo paciente com erliquiose.',
     mielossupressao:
-      'Na forma cronica com hipoplasia/aplasia medular, ferro, folato, analogos de eritropoietina ou estimuladores de granulocitos podem ser considerados em casos selecionados, mas o prognostico permanece reservado quando ha pancitopenia grave.',
+      'Na forma cr?nica com hipoplasia/aplasia medular, ferro, folato, analogos de eritropoietina ou estimuladores de granulocitos podem ser considerados em casos selecionados, mas o prognostico permanece reservado quando ha pancitopenia grave.',
     monitoramento: [
       'Hemograma e bioquimica durante e apos o tratamento.',
       'Plaquetas costumam subir em 24-48 horas e normalizar em ate 14 dias.',
-      'Manter vigilancia por 1-3 meses apos o fim do tratamento quando havia trombocitopenia importante.',
+      'Manter vigil?ncia por 1-3 meses apos o fim do tratamento quando havia trombocitopenia importante.',
       'Hiperglobulinemia pode demorar 6-12 meses para resolver.',
-      'Titulos sorologicos podem persistir positivos; queda clinica/laboratorial e mais importante que negativacao imediata.',
+      'Titulos sorologicos podem persistir positivos; queda cl?nica/laboratorial e mais importante que negativacao imediata.',
       'PCR pode ser repetida cerca de 2 semanas apos o fim da terapia quando houver necessidade de documentar eliminacao.',
     ],
     prognostico:
-      'Fase aguda tratada cedo costuma ter bom prognostico, com melhora em 24-48 horas. Fase cronica com pancitopenia tem prognostico reservado a ruim; anemia intensa, leucopenia grave, TTPA prolongado e hipocalemia foram associados a mortalidade elevada.',
+      'Fase aguda tratada cedo costuma ter bom prognostico, com melhora em 24-48 horas. Fase cr?nica com pancitopenia tem prognostico reservado a ruim; anemia intensa, leucopenia grave, TTPA prolongado e hipocalemia foram associados a mortalidade elevada.',
   },
   prevention: {
     carrapatos:
@@ -412,9 +410,9 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
     ambiente:
       'R. sanguineus pode completar o ciclo em ambientes internos, como casas e canis. Por isso, controle ambiental e tao importante quanto produto no cao.',
     saudePublica:
-      'E. canis nao e considerada atualmente uma zoonose comprovada por transmissao direta de caes para pessoas. O risco compartilhado e o carrapato: controlar ectoparasitas protege o animal e reduz exposicao humana.',
+      'E. canis n?o e considerada atualmente uma zoonose comprovada por transmissao direta de c?es para pessoas. O risco compartilhado e o carrapato: controlar ectoparasitas protege o animal e reduz exposicao humana.',
     educacaoTutor:
-      'Explicar que reinfeccao pode ocorrer e que teste sorologico positivo pode permanecer por meses. O objetivo e controlar clinica, laboratorio e exposicao a carrapatos.',
+      'Explicar que reinfeccao pode ocorrer e que teste sorologico positivo pode permanecer por meses. O objetivo e controlar cl?nica, laboratorio e exposicao a carrapatos.',
   },
   relatedConsensusSlugs: [],
   relatedMedicationSlugs: [],
@@ -423,9 +421,9 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
       id: 'ref-vin-cme-2025',
       citationText:
         'Rothrock K. Ehrlichiosis, Monocytic (Canine). VIN, revised April 21, 2025.',
-      sourceType: 'Revisao clinica',
+      sourceType: 'Revisao cl?nica',
       url: null,
-      notes: 'Base principal enviada pelo usuario: etiologia, diagnostico, tratamento, monitoramento e prognostico.',
+      notes: 'Base principal enviada pelo usuario: etiologia, diagn?stico, tratamento, monitoramento e prognostico.',
       evidenceLevel: 'B',
     },
     {
@@ -461,7 +459,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         'Neer TM et al. Consensus statement on ehrlichial disease of small animals. J Vet Intern Med. 2002;16(3):309-315.',
       sourceType: 'Consenso',
       url: null,
-      notes: 'Duracao da terapia, interpretacao de monitoramento e raciocinio diagnostico.',
+      notes: 'Duracao da terapia, interpreta??o de monitoramento e racioc?nio diagn?stico.',
       evidenceLevel: 'A (consenso)',
     },
     {

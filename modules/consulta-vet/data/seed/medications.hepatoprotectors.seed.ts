@@ -11,7 +11,7 @@ const HEPATOPROTECTOR_REFERENCES = [
   {
     id: 'ref-bsava-hepatobiliary',
     citationText: 'BSAVA Manual of Canine and Feline Gastroenterology / Emergency and Critical Care - suporte hepatobiliar e intoxicacoes.',
-    sourceType: 'Manual clinico',
+    sourceType: 'Manual cl?nico',
     url: null,
     evidenceLevel: 'Alta',
   },
@@ -34,21 +34,21 @@ export const hepatoprotectorMedicationsSeed: MedicationRecord[] = [
     pharmacologicClass: 'Hepatoprotetor nutraceutico; precursor de glutationa / suporte antioxidante',
     species: ['dog', 'cat'],
     category: 'gastroenterologia',
-    tags: ['SAMe', 'Hepatobiliar', 'Antioxidante', 'Glutationa', 'Nutraceutico', 'Lipidose hepatica'],
+    tags: ['SAMe', 'Hepatobiliar', 'Antioxidante', 'Glutationa', 'Nutraceutico', 'Lipidose hep?tica'],
     mechanismOfAction:
-      'A SAMe participa de vias de transmetilacao e transulfuracao e atua como precursor de glutationa, importante defesa antioxidante hepatocelular. Em caes e gatos e usada como suporte adjuvante em hepatopatias, colestase e exposicao a farmacos potencialmente hepatotoxicos; nao substitui investigacao etiologica.',
+      'A SAMe participa de vias de transmetilacao e transulfuracao e atua como precursor de glutationa, importante defesa antioxidante hepatocelular. Em c?es e gatos e usada como suporte adjuvante em hepatopatias, colestase e exposicao a farmacos potencialmente hepatotoxicos; n?o substitui investigacao etiologica.',
     indications: [
       'Suporte antioxidante em hepatopatias cronicas ou colestaticas, junto ao tratamento da causa.',
-      'Adjuvante em pacientes sob uso prolongado de farmacos potencialmente hepatotoxicos quando ha justificativa clinica.',
-      'Suporte em lipidose hepatica felina e convalescenca hepatobiliar, sempre associado a suporte nutricional e monitorizacao.',
+      'Adjuvante em pacientes sob uso prolongado de farmacos potencialmente hepatotoxicos quando ha justificativa cl?nica.',
+      'Suporte em lipidose hep?tica felina e convalescenca hepatobiliar, sempre associado a suporte nutricional e monitoriza??o.',
     ],
     contraindications: [
       'Hipersensibilidade ao produto ou excipientes da apresentacao.',
-      'Nao usar como substituto de manejo emergencial em ictericia intensa, coagulopatia, vomito persistente ou obstrucao biliar suspeita.',
+      'N?o usar como substituto de manejo emergencial em ictericia intensa, coagulopatia, vomito persistente ou obstrucao biliar suspeita.',
     ],
     cautions: [
       'Preferir administracao em jejum; se houver vomito ou baixa adesao, individualizar com o tutor.',
-      'Nao partir, abrir, triturar ou mastigar capsulas/comprimidos gastrorresistentes ou revestidos quando o fabricante orientar protecao enterica.',
+      'N?o partir, abrir, triturar ou mastigar capsulas/comprimidos gastrorresistentes ou revestidos quando o fabricante orientar protecao enterica.',
       'Confirmar a quantidade real de SAMe por comprimido/capsula, pois produtos combinados podem incluir silimarina ou vitaminas.',
     ],
     adverseEffects: ['Desconforto gastrointestinal leve, vomito, inapetencia ou rejeicao palatavel podem ocorrer.'],
@@ -116,8 +116,8 @@ export const hepatoprotectorMedicationsSeed: MedicationRecord[] = [
       {
         kind: 'clinicalCallout',
         variant: 'info',
-        title: 'Adjuvante, nao diagnostico',
-        body: 'SAMe pode apoiar a defesa antioxidante hepatica, mas ALT/FA altas exigem padrao clinico, imagem, acidos biliares e investigacao da causa quando indicado.',
+        title: 'Adjuvante, n?o diagn?stico',
+        body: 'SAMe pode apoiar a defesa antioxidante hep?tica, mas ALT/FA altas exigem padrao cl?nico, imagem, acidos biliares e investigacao da causa quando indicado.',
       },
       {
         kind: 'clinicalTable',
@@ -132,8 +132,8 @@ export const hepatoprotectorMedicationsSeed: MedicationRecord[] = [
       },
     ],
     clinicalNotesRichText:
-      '<p><strong>Prescricao pratica:</strong> administrar por via oral 1 vez ao dia, preferencialmente em jejum. Para capsulas gastrorresistentes, orientar o tutor a nao abrir, partir ou mastigar.</p>' +
-      '<p><strong>Gatos:</strong> avaliar aceitacao e tamanho da apresentacao; em lipidose hepatica, suporte nutricional e controle da causa pesam mais que qualquer nutraceutico isolado.</p>',
+      '<p><strong>Prescricao pratica:</strong> administrar por via oral 1 vez ao dia, preferencialmente em jejum. Para capsulas gastrorresistentes, orientar o tutor a n?o abrir, partir ou mastigar.</p>' +
+      '<p><strong>Gatos:</strong> avaliar aceitacao e tamanho da apresentacao; em lipidose hep?tica, suporte nutricional e controle da causa pesam mais que qualquer nutraceutico isolado.</p>',
     adminNotesText: 'Imagens e apresentacoes conforme paginas oficiais Nutripharme/Avert e varejo tecnico consultado em 2026-06-27.',
     relatedDiseaseSlugs: [],
     references: [...HEPATOPROTECTOR_REFERENCES],
@@ -162,7 +162,7 @@ export const hepatoprotectorMedicationsSeed: MedicationRecord[] = [
     category: 'gastroenterologia',
     tags: ['Silimarina', 'Cardo-mariano', 'Hepatobiliar', 'Colina', 'Alcachofra', 'Nutraceutico'],
     mechanismOfAction:
-      'Produtos mistos podem combinar silimarina/cardo-mariano, alcachofra, colina, inositol, aminoacidos sulfurados, taurina, BCAA, vitaminas e minerais. O racional e suporte antioxidante, nutricional e lipotropico, com evidencia clinica variavel e dependente de formulacao/biodisponibilidade.',
+      'Produtos mistos podem combinar silimarina/cardo-mariano, alcachofra, colina, inositol, aminoacidos sulfurados, taurina, BCAA, vitaminas e minerais. O racional e suporte antioxidante, nutricional e lipotropico, com evidencia cl?nica variavel e dependente de formulacao/biodisponibilidade.',
     indications: [
       'Suporte nutricional adjuvante em hepatopatias e convalescenca, quando a dieta e o tratamento da causa ja estao planejados.',
       'Pacientes pequenos, felinos ou com baixa adesao a comprimidos podem se beneficiar de suspensao, pasta ou liquido conforme produto.',
@@ -170,12 +170,12 @@ export const hepatoprotectorMedicationsSeed: MedicationRecord[] = [
     ],
     contraindications: [
       'Hipersensibilidade a componentes da formula.',
-      'Nao substituir avaliacao de ictericia, dor abdominal, vomito persistente, encefalopatia hepatica ou suspeita de obstrucao biliar.',
+      'N?o substituir avaliacao de ictericia, dor abdominal, vomito persistente, encefalopatia hep?tica ou suspeita de obstrucao biliar.',
     ],
     cautions: [
-      'Seguir dose de rotulo para associacoes; nao extrapolar dose de silimarina pura para produtos mistos.',
-      'Trihepat contem metionina; avaliar dieta, encefalopatia hepatica e status nutricional antes de tratar como hepatoprotetor universal.',
-      'Hepguard e produto canino; nao cadastrar automaticamente para gatos.',
+      'Seguir dose de rotulo para associacoes; n?o extrapolar dose de silimarina pura para produtos mistos.',
+      'Trihepat contem metionina; avaliar dieta, encefalopatia hep?tica e status nutricional antes de tratar como hepatoprotetor universal.',
+      'Hepguard e produto canino; n?o cadastrar automaticamente para gatos.',
       'Separar Vitasil Hep liquido e comprimidos, pois dose e apresentacao diferem.',
     ],
     adverseEffects: ['Alteracoes gastrointestinais leves, rejeicao palatavel ou salivacao podem ocorrer conforme formulacao.'],
@@ -190,7 +190,7 @@ export const hepatoprotectorMedicationsSeed: MedicationRecord[] = [
         label: 'Hepvet - comprimidos (Vetnil)',
         form: 'Comprimido',
         channel: 'veterinary',
-        packInfo: 'Rotulo: caes 1 comp/10 kg SID; gatos filhotes 1/4 comp SID; gatos adultos 1/2 comp SID.',
+        packInfo: 'Rotulo: c?es 1 comp/10 kg SID; gatos filhotes 1/4 comp SID; gatos adultos 1/2 comp SID.',
       },
       {
         id: 'pres-hepvet-susp',
@@ -198,14 +198,14 @@ export const hepatoprotectorMedicationsSeed: MedicationRecord[] = [
         form: 'Suspensao oral',
         concentrationUnit: 'mL',
         channel: 'veterinary',
-        packInfo: 'Rotulo: caes e gatos 0,2 mL/kg SID.',
+        packInfo: 'Rotulo: c?es e gatos 0,2 mL/kg SID.',
       },
       {
         id: 'pres-hepguard',
         label: 'Hepguard - comprimidos bissulcados (Avert)',
         form: 'Comprimido',
         channel: 'veterinary',
-        packInfo: 'Caes: 1 comprimido/10 kg SID. Nao administrar em gatos.',
+        packInfo: 'C?es: 1 comprimido/10 kg SID. N?o administrar em gatos.',
       },
       {
         id: 'pres-prohep-cat',
@@ -219,7 +219,7 @@ export const hepatoprotectorMedicationsSeed: MedicationRecord[] = [
         label: 'Prohep Dog Pasta 31 mL (Organnact)',
         form: 'Pasta oral',
         channel: 'veterinary',
-        packInfo: 'Caes: 1 a 4 mL SID por faixa de peso conforme rotulo.',
+        packInfo: 'C?es: 1 a 4 mL SID por faixa de peso conforme rotulo.',
       },
       {
         id: 'pres-vitasil-hep-liquido',
@@ -233,7 +233,7 @@ export const hepatoprotectorMedicationsSeed: MedicationRecord[] = [
         label: 'Trihepat 100 mL (Labyes)',
         form: 'Suspensao oral',
         channel: 'veterinary',
-        packInfo: 'Fonte comercial: caes 4 mL/15 kg ate TID; gatos 2 a 4 mL ate TID.',
+        packInfo: 'Fonte comercial: c?es 4 mL/15 kg ate TID; gatos 2 a 4 mL ate TID.',
       },
     ],
     doses: [
@@ -270,26 +270,26 @@ export const hepatoprotectorMedicationsSeed: MedicationRecord[] = [
       {
         kind: 'clinicalCallout',
         variant: 'caution',
-        title: 'Nao vender como evidencia forte',
-        body: 'Silimarina e mistos hepaticos sao adjuvantes nutricionais. A eficacia depende de formulacao e biodisponibilidade, e nao substitui diagnostico da causa hepatobiliar.',
+        title: 'N?o vender como evidencia forte',
+        body: 'Silimarina e mistos hepaticos sao adjuvantes nutricionais. A eficacia depende de formulacao e biodisponibilidade, e n?o substitui diagn?stico da causa hepatobiliar.',
       },
       {
         kind: 'clinicalTable',
         headers: ['Produto', 'Especie', 'Rotulo resumido'],
         rows: [
-          ['Hepvet comprimidos', 'Caes/gatos', 'Cao 1 comp/10 kg SID; gato 1/4 a 1/2 comp SID'],
-          ['Hepvet Suspensao', 'Caes/gatos', '0,2 mL/kg SID'],
+          ['Hepvet comprimidos', 'C?es/gatos', 'Cao 1 comp/10 kg SID; gato 1/4 a 1/2 comp SID'],
+          ['Hepvet Suspensao', 'C?es/gatos', '0,2 mL/kg SID'],
           ['Hepguard', 'Caes', '1 comp/10 kg SID'],
           ['Prohep Cat', 'Gatos', '2 mL SID ate 5 kg; 3 mL SID acima de 5 kg'],
           ['Prohep Dog Pasta', 'Caes', '1 a 4 mL SID por faixa de peso'],
-          ['Vitasil Hep liquido', 'Caes/gatos', '2 mL/10 kg SID'],
-          ['Trihepat', 'Caes/gatos', 'Caes 4 mL/15 kg ate TID; gatos 2 a 4 mL ate TID'],
+          ['Vitasil Hep liquido', 'C?es/gatos', '2 mL/10 kg SID'],
+          ['Trihepat', 'C?es/gatos', 'C?es 4 mL/15 kg ate TID; gatos 2 a 4 mL ate TID'],
         ],
       },
     ],
     clinicalNotesRichText:
-      '<p><strong>Como prescrever:</strong> selecionar produto e apresentacao, seguir rotulo e definir prazo ate reavaliacao. Em hepatopata sintomatico, combinar com plano diagnostico e monitorizacao laboratorial.</p>' +
-      '<p><strong>Silimarina:</strong> doses de literatura para silimarina pura nao devem ser aplicadas automaticamente a misturas comerciais.</p>',
+      '<p><strong>Como prescrever:</strong> selecionar produto e apresentacao, seguir rotulo e definir prazo ate reavaliacao. Em hepatopata sintomatico, combinar com plano diagn?stico e monitoriza??o laboratorial.</p>' +
+      '<p><strong>Silimarina:</strong> doses de literatura para silimarina pura n?o devem ser aplicadas automaticamente a misturas comerciais.</p>',
     adminNotesText: 'Produtos comerciais revisados a partir do briefing do usuario e paginas oficiais/varejo tecnico em 2026-06-27.',
     relatedDiseaseSlugs: [],
     references: [...HEPATOPROTECTOR_REFERENCES],
@@ -310,11 +310,11 @@ export const hepatoprotectorMedicationsSeed: MedicationRecord[] = [
     category: 'gastroenterologia',
     tags: ['UDCA', 'Ursodiol', 'Colestase', 'Vesicula biliar', 'Extra-label', 'Hepatobiliar'],
     mechanismOfAction:
-      'O UDCA e um acido biliar hidrofilico com acao coleretica e citoprotetora biliar. Em pequenos animais e usado extra-label em colestase e hepatopatias biliares selecionadas, desde que obstrucao biliar completa e cenarios cirurgicos tenham sido excluidos.',
+      'O UDCA e um acido biliar hidrofilico com acao coleretica e citoprotetora biliar. Em pequenos animais e usado extra-label em colestase e hepatopatias biliares selecionadas, desde que obstrucao biliar completa e cen?rios cirurgicos tenham sido excluidos.',
     indications: [
       'Colestase e hepatopatias colestaticas sem obstrucao biliar completa.',
       'Colangite/colangiohepatite selecionada como adjuvante ao tratamento da causa.',
-      'Lama biliar ou doenca de vesicula biliar quando ha justificativa clinica e ausencia de sinais de ruptura/obstrucao.',
+      'Lama biliar ou doenca de vesicula biliar quando ha justificativa cl?nica e ausencia de sinais de ruptura/obstrucao.',
     ],
     contraindications: [
       'Obstrucao biliar completa.',
@@ -322,11 +322,11 @@ export const hepatoprotectorMedicationsSeed: MedicationRecord[] = [
       'Hipersensibilidade ao fármaco.',
     ],
     cautions: [
-      'Nao usar automaticamente para qualquer aumento de ALT/FA sem classificar padrao hepatocelular, colestatico, vascular, toxico, infeccioso, endocrino/metabolico ou biliar.',
+      'N?o usar automaticamente para qualquer aumento de ALT/FA sem classificar padrao hepatocelular, colestatico, vascular, toxico, infeccioso, endocrino/metab?lico ou biliar.',
       'Administrar com alimento para melhor tolerancia.',
       'Monitorar sinais de dor abdominal, vomito, ictericia progressiva e enzimas/ bilirrubina.',
     ],
-    adverseEffects: ['Diarreia, vomito ou desconforto gastrointestinal; piora clinica se usado em obstrucao biliar.'],
+    adverseEffects: ['Diarreia, vomito ou desconforto gastrointestinal; piora cl?nica se usado em obstrucao biliar.'],
     interactions: [
       'Antiácidos contendo aluminio e sequestrantes de acidos biliares podem reduzir absorcao/efeito.',
       'Revisar interacao com ciclosporina e outros farmacos hepatobiliares caso a caso.',
@@ -359,8 +359,8 @@ export const hepatoprotectorMedicationsSeed: MedicationRecord[] = [
         perWeightUnit: 'kg',
         route: 'VO',
         frequency: 'SID com alimento',
-        duration: 'Conforme causa e resposta clinico-laboratorial.',
-        notes: 'Uso humano extra-label em caes e gatos; documentar criterio clinico.',
+        duration: 'Conforme causa e resposta cl?nico-laboratorial.',
+        notes: 'Uso humano extra-label em c?es e gatos; documentar criterio cl?nico.',
         calculatorEnabled: true,
         presentationId: 'pres-ursacol',
         presentationConcentrationId: '50',
@@ -370,8 +370,8 @@ export const hepatoprotectorMedicationsSeed: MedicationRecord[] = [
       {
         kind: 'clinicalCallout',
         variant: 'caution',
-        title: 'Bloqueio clinico',
-        body: 'Nao usar UDCA se houver suspeita de obstrucao biliar completa, ruptura de vesicula, peritonite biliar ou mucocele instavel sem avaliacao cirurgica.',
+        title: 'Bloqueio cl?nico',
+        body: 'N?o usar UDCA se houver suspeita de obstrucao biliar completa, ruptura de vesicula, peritonite biliar ou mucocele instavel sem avaliacao cirurgica.',
       },
     ],
     clinicalNotesRichText:
@@ -398,22 +398,22 @@ export const hepatoprotectorMedicationsSeed: MedicationRecord[] = [
     mechanismOfAction:
       'A acetilcisteina fornece grupos sulfidrila e repoe precursores de glutationa, auxiliando detoxificacao de metabolitos reativos, especialmente na intoxicacao por paracetamol. Tambem e mucolitica em medicina humana, mas no Consulta Vet deve ser destacada como fármaco hospitalar/antidoto quando usada nesse contexto.',
     indications: [
-      'Intoxicacao por paracetamol/acetaminofeno em caes e gatos.',
-      'Hepatotoxicidade aguda selecionada por toxicos como xilitol, Amanita, aflatoxinas ou outros cenarios conforme protocolo hospitalar.',
-      'Uso hospitalar com monitorizacao, nao suplemento domiciliar.',
+      'Intoxicacao por paracetamol/acetaminofeno em c?es e gatos.',
+      'Hepatotoxicidade aguda selecionada por toxicos como xilitol, Amanita, aflatoxinas ou outros cen?rios conforme protocolo hospitalar.',
+      'Uso hospitalar com monitoriza??o, n?o suplemento domiciliar.',
     ],
     contraindications: [
       'Hipersensibilidade conhecida.',
-      'Nao atrasar descontaminacao, suporte hemodinamico, controle de metemoglobinemia/anemia ou encaminhamento por depender apenas de NAC.',
+      'N?o atrasar descontaminacao, suporte hemodinamico, controle de metemoglobinemia/anemia ou encaminhamento por depender apenas de NAC.',
     ],
     cautions: [
       'Uso IV deve ser diluido e monitorado; pode causar nauseas, vomito e reacoes anafilactoides.',
-      'Gatos com paracetamol sao emergencia critica; combinar NAC com suporte, oxigenio, controle de metemoglobinemia e monitorizacao.',
+      'Gatos com paracetamol sao emerg?ncia critica; combinar NAC com suporte, oxigenio, controle de metemoglobinemia e monitoriza??o.',
       'Evitar prescricao domiciliar comum para "proteger o figado".',
     ],
     adverseEffects: ['Vomito, nauseas, broncoespasmo ou reacao anafilactoide, especialmente IV; odor sulfurado e baixa palatabilidade por VO.'],
     interactions: ['Pode ser combinada a protocolos de intoxicacao; revisar compatibilidade de diluicao e acesso IV no hospital.'],
-    routes: ['IV', 'VO', 'inalatoria (humano; nao foco hepatotoxico)'],
+    routes: ['IV', 'VO', 'inalatoria (humano; n?o foco hepatotoxico)'],
     presentations: [
       {
         id: 'pres-fluimucil-inj-100',
@@ -447,11 +447,11 @@ export const hepatoprotectorMedicationsSeed: MedicationRecord[] = [
         kind: 'clinicalCallout',
         variant: 'caution',
         title: 'Hospitalar/intoxicacao',
-        body: 'NAC entra como antidoto e suporte em intoxicacao/hepatotoxicidade aguda. Nao e suplemento hepaticoprotetor domiciliar.',
+        body: 'NAC entra como antidoto e suporte em intoxicacao/hepatotoxicidade aguda. N?o e suplemento hepaticoprotetor domiciliar.',
       },
     ],
     clinicalNotesRichText:
-      '<p><strong>Prescricao interna:</strong> N-acetilcisteina 100 mg/mL: administrar dose de ataque ___ mg/kg, seguida de ___ mg/kg q6h, por via ___, conforme protocolo hospitalar e monitorizacao.</p>',
+      '<p><strong>Prescricao interna:</strong> N-acetilcisteina 100 mg/mL: administrar dose de ataque ___ mg/kg, seguida de ___ mg/kg q6h, por via ___, conforme protocolo hospitalar e monitoriza??o.</p>',
     adminNotesText: 'Imagem usada de embalagem Fluimucil 100 mg/mL solucao injetavel; bula oficial Zambon anexada como fonte principal.',
     relatedDiseaseSlugs: [],
     references: [...HEPATOPROTECTOR_REFERENCES],

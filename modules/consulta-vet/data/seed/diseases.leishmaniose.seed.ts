@@ -143,12 +143,10 @@ export const leishmanioseVisceralCaninaRecord: DiseaseRecord = {
     formasClinicasDidaticas:
       'Manifestações podem ser predominantes em um sistema — dermatopatias (“dermatoleish”), olhos (“oftalmoleish”), rins (“nefroleish”), locomotor (“ortoleish”), hematológico (“hematoleish”) — ou associadas e disseminadas.',
     transmissaoResumo:
-      'Transmissão primária: flebotomíneo infectado. Secundária em cães: vertical, venérea, transfusional — relevante para biossegurança (reprodução, doação de sangue) e controle.\n\n' +
-      'Dica de estudo: memorize o par “vetor principal (flebotomíneo)” + “transfusão como via iatrogênica” — é padrão em questões de biossegurança em banco de sangue.',
+      'Transmissão primária: flebotomíneo infectado. Secundária em cães: vertical, venérea, transfusional — relevante para biossegurança (reprodução, doação de sangue) e controle.',
   },
   pathophysiology:
-    'A deposição de imunocomplexos e a inflamação contribuem para glomerulonefrite, uveíte e outros sinais de doença imunomediada; a proteinúria e a azotemia são marcas frequentes de gravidade. Discrasias (anemia, trombocitopenia, hiperviscosidade) e vasculites podem ocorrer. Dermatopatias incluem dermatite descamativa seca (periocular, dorso nasal, pavilhão, saliências ósseas), úlceras, pústulas, onicopatias e outros. Nefropatias incluem proteinúria, azotemia, hematúria e progressão para DRC. O comprometimento locomotor inclui poliartrite, miosite e alterações ósseas. Manifestações neurológicas são raras mas descritas; trato gastrointestinal frequentemente com diarreia crônica ou colite; cardiopatias descritas com miocardite ou vasculite.\n\n' +
-    'Dica de estudo: organize mentalmente por “sistemas” — pele, olhos, rins, sangue — porque a banca costuma cobrar a forma “dermato‑/oftalmo‑/nefro‑leish” como eixos mnemônicos.',
+    'A deposição de imunocomplexos e a inflamação contribuem para glomerulonefrite, uveíte e outros sinais de doença imunomediada; a proteinúria e a azotemia são marcas frequentes de gravidade. Discrasias (anemia, trombocitopenia, hiperviscosidade) e vasculites podem ocorrer. Dermatopatias incluem dermatite descamativa seca (periocular, dorso nasal, pavilhão, saliências ósseas), úlceras, pústulas, onicopatias e outros. Nefropatias incluem proteinúria, azotemia, hematúria e progressão para DRC. O comprometimento locomotor inclui poliartrite, miosite e alterações ósseas. Manifestações neurológicas são raras mas descritas; trato gastrointestinal frequentemente com diarreia crônica ou colite; cardiopatias descritas com miocardite ou vasculite.',
   clinicalSignsPathophysiology: [
     {
       system: 'dermatologic',

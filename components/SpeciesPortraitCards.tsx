@@ -1,4 +1,3 @@
-import { SPECIES_IMAGE_CANINE, SPECIES_IMAGE_FELINE } from '@/lib/speciesImages';
 import { cn } from '@/lib/utils';
 
 export type SpeciesPortraitVariant = 'teal' | 'purple' | 'indigo' | 'rose' | 'gold' | 'slate';
@@ -102,8 +101,7 @@ export function SpeciesPortraitCards({
       onClick: onSelectCanine,
       title: canineLabel,
       subtitle: canineSubtitle,
-      src: SPECIES_IMAGE_CANINE,
-      alt: canineLabel,
+      emoji: '\u{1F415}',
     },
     {
       key: 'feline' as const,
@@ -111,8 +109,7 @@ export function SpeciesPortraitCards({
       onClick: onSelectFeline,
       title: felineLabel,
       subtitle: felineSubtitle,
-      src: SPECIES_IMAGE_FELINE,
-      alt: felineLabel,
+      emoji: '\u{1F408}',
     },
   ];
 
@@ -138,7 +135,6 @@ export function SpeciesPortraitCards({
               onClick={option.onClick}
               className={cn(
                 'group relative flex w-full max-w-full flex-col items-center overflow-hidden rounded-[28px] border pb-5 pt-6 text-center touch-manipulation sm:pb-6 sm:pt-7',
-                // Sem transform no cartão: translate/scale no pai reamostra o <img> na GPU e deixa a foto “embaçada”.
                 'transition-[box-shadow,border-color,background-color] duration-300 hover:shadow-lg hover:shadow-black/10 dark:hover:shadow-black/40',
                 active
                   ? v.active
@@ -154,25 +150,13 @@ export function SpeciesPortraitCards({
               >
                 <div
                   className={cn(
-                    'absolute inset-0 flex items-end justify-center bg-gradient-to-b pb-3 text-[56px] leading-none sm:pb-4 sm:text-[64px]',
+                    'absolute inset-0 flex items-center justify-center bg-gradient-to-b text-[72px] leading-none sm:text-[88px]',
                     v.fallbackGradient,
                   )}
                   aria-hidden
                 >
-                  {option.key === 'canine' ? '🐕' : '🐈'}
+                  {option.emoji}
                 </div>
-                <img
-                  src={option.src}
-                  alt={option.alt}
-                  width={1024}
-                  height={1024}
-                  draggable={false}
-                  decoding="async"
-                  className="absolute inset-0 h-full w-full object-cover object-top [image-rendering:auto] [backface-visibility:hidden] [transform:translateZ(0)]"
-                  onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).style.display = 'none';
-                  }}
-                />
                 <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-black/55 to-transparent sm:h-12" />
               </div>
 

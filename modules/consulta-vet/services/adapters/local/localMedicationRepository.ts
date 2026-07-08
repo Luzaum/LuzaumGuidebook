@@ -9,7 +9,7 @@ import { withMedicationPriceReference, withMedicationPriceReferences } from '../
 export class LocalMedicationRepository implements MedicationRepository {
   async list(options?: { includeDrafts?: boolean }): Promise<MedicationRecord[]> {
     if (!options?.includeDrafts) {
-      return withMedicationPriceReferences([...PUBLIC_CATALOG_MEDICATION_CARD_STUBS]);
+      return withMedicationPriceReferences(filterPublicMedications([...PUBLIC_CATALOG_MEDICATION_CARD_STUBS], false));
     }
     const medicationsSeed = await loadMedicationsEditorialSeed();
     return withMedicationPriceReferences([...medicationsSeed]);
@@ -44,7 +44,7 @@ export class LocalMedicationRepository implements MedicationRepository {
   }
 
   async upsert(_input: MedicationUpsertInput): Promise<MedicationRecord> {
-    throw new Error('Edicao editorial disponivel apenas com Supabase configurado.');
+    throw new Error('Edicao editorial dispon?vel apenas com Supabase configurado.');
   }
 }
 

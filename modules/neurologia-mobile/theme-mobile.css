@@ -1,0 +1,111 @@
+.neurologia-mobile-shell {
+  --nm-bg: #080d16;
+  --nm-bg-2: #0f1826;
+  --nm-surface: #121c2c;
+  --nm-surface-hover: #172439;
+  --nm-text: #f8fafc;
+  --nm-text-muted: #94a3b8;
+  --nm-border: rgba(245, 197, 66, 0.15);
+  --nm-gold: #f5c542;
+  --nm-gold-dim: rgba(245, 197, 66, 0.15);
+  --nm-shadow: 0 -4px 12px rgba(0, 0, 0, 0.35);
+  color: var(--nm-text);
+  background: var(--nm-bg);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.neurologia-mobile-shell.light {
+  --nm-bg: #faf9f6;
+  --nm-bg-2: #f4f2eb;
+  --nm-surface: #ffffff;
+  --nm-surface-hover: #f9f8f4;
+  --nm-text: #0f172a;
+  --nm-text-muted: #475569;
+  --nm-border: rgba(120, 90, 10, 0.12);
+  --nm-gold: #ca8a04;
+  --nm-gold-dim: rgba(202, 138, 4, 0.1);
+  --nm-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Scroll adjustments */
+.neurologia-mobile-content-container {
+  min-height: calc(100vh - 3.5rem - env(safe-area-inset-bottom) - 3rem);
+}
+
+/* Touch targets and cards */
+.nm-card {
+  background-color: var(--nm-surface);
+  border: 1px solid var(--nm-border);
+  border-radius: 1rem;
+  padding: 1rem;
+  transition: all 0.2s ease;
+}
+
+.nm-card:active {
+  background-color: var(--nm-surface-hover);
+  transform: scale(0.98);
+}
+
+.nm-btn {
+  min-height: 2.75rem; /* ~44px minimum touch target */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.nm-btn-primary {
+  background-color: var(--nm-gold);
+  color: #000000;
+}
+
+.nm-btn-primary:active {
+  opacity: 0.9;
+  transform: scale(0.98);
+}
+
+.nm-btn-secondary {
+  background-color: var(--nm-bg-2);
+  border: 1px solid var(--nm-border);
+  color: var(--nm-text);
+}
+
+.nm-btn-secondary:active {
+  background-color: var(--nm-surface);
+  transform: scale(0.98);
+}
+
+/* Bottom Tab Bar styling */
+.nm-tabbar {
+  background-color: var(--nm-surface);
+  border-top: 1px solid var(--nm-border);
+  box-shadow: var(--nm-shadow);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.nm-tabbar-item {
+  color: var(--nm-text-muted);
+  transition: color 0.2s ease;
+}
+
+.nm-tabbar-item.active {
+  color: var(--nm-gold);
+}
+
+/* Animations */
+.nm-fade-in {
+  animation: nmFadeIn 0.25s ease-out both;
+}
+
+@keyframes nmFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

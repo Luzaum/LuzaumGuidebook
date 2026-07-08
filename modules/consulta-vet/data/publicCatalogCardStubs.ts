@@ -84,7 +84,7 @@ export const PUBLIC_CATALOG_DISEASE_CARD_STUBS: DiseaseRecord[] = [
       'Atovaquona',
     ],
     quickSummary:
-      'A babesiose canina e uma hemoparasitose por protozoarios intraeritrocitarios do genero Babesia, transmitida principalmente por carrapatos, mas tambem possivel por transfusao, mordeduras com sangue e via transplacentaria. O quadro combina febre, apatia, anemia hemolitica, ictericia/pigmenturia e trombocitopenia; casos complicados podem evoluir com SIRS, CIVD, lesao renal aguda, pancreatite e sinais neurologicos. O diagnostico integra hemograma, esfregaco sanguineo de sangue periferico ou ponta de orelha e PCR para confirmar e diferenciar especies. Babesias grandes como B. canis/B. vogeli direcionam para imidocarb; babesias pequenas como B. gibsoni exigem atovaquona + azitromicina e monitoramento de persistencia.',
+      'A babesiose canina e uma hemoparasitose por protozoarios intraeritrocitarios do genero Babesia, transmitida principalmente por carrapatos, mas tambem poss?vel por transfusao, mordeduras com sangue e via transplacentaria. O quadro combina febre, apatia, anemia hemolitica, ictericia/pigmenturia e trombocitopenia; casos complicados podem evoluir com SIRS, CIVD, les?o renal aguda, pancreatite e sinais neurologicos. O diagn?stico integra hemograma, esfregaco sanguineo de sangue periferico ou ponta de orelha e PCR para confirmar e diferenciar especies. Babesias grandes como B. canis/B. vogeli direcionam para imidocarb; babesias pequenas como B. gibsoni exigem atovaquona + azitromicina e monitoramento de persistencia.',
   }),
   diseaseListCard({
     id: 'disease-dtuif-felina',

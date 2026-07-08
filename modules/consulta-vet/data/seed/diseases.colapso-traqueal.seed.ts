@@ -142,8 +142,7 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
       'Crises podem cursar com hipoxemia, cianose, síncope (reflexo vagal ou obstrução) e, em doença respiratória crônica associada, hipertensão pulmonar descrita na literatura especializada.',
   },
   pathophysiology:
-    'O trauma repetido da membrana dorsal na mucosa gera edema e secreção; obstrução dinâmica piora o esforço respiratório. A associação com broncomalácia reduz a previsibilidade se apenas a traqueia for tratada (por exemplo expectativa irreal com stent quando o gargalo é distal).\n\n' +
-    'Dica de estudo: para a prova, memorize inspiração → colapso cervical; expiração/tosse → colapso intratorácico/brônquico — isso orienta RX e fluoroscopia.',
+    'O trauma repetido da membrana dorsal na mucosa gera edema e secreção; obstrução dinâmica piora o esforço respiratório. A associação com broncomalácia reduz a previsibilidade se apenas a traqueia for tratada (por exemplo expectativa irreal com stent quando o gargalo é distal).',
   clinicalSignsPathophysiology: [
     {
       system: 'respiratory',

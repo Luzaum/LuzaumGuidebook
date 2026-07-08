@@ -1,5 +1,6 @@
 import { CommercialMedicationProduct } from '../types/commercialMedication';
 import { hepatoprotectiveCommercialProductsSeed } from './hepatoprotectiveCommercialProducts.seed';
+import { simethiconeCommercialProductsSeed } from './simethiconeCommercialProducts.seed';
 
 const PRICE_SOURCE_DATE = '2026-05-16';
 const ECTO_PRICE_SOURCE_DATE = '2026-05-24';
@@ -34,6 +35,7 @@ const CARDIO_DIURETIC_ALERT =
   'Diurético de alça trata congestão, não a causa estrutural. Usar a menor dose eficaz e monitorar desidratação, azotemia pré-renal, hipocalemia, hipocloremia, hiponatremia, alcalose metabólica, pressão arterial e interação com AINE.';
 
 export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
+  ...simethiconeCommercialProductsSeed,
   ...hepatoprotectiveCommercialProductsSeed,
   {
     id: 'epiotic-sis-virbac',

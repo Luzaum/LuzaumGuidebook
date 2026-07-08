@@ -6,6 +6,7 @@ import { ConsultaVetSurface } from '../components/layout/ConsultaVetSurface';
 import { DiseaseSectionFrame } from '../components/disease/DiseaseSectionFrame';
 import { DiseaseSectionRenderer } from '../components/disease/DiseaseSectionRenderer';
 import { DiseaseQuickSummaryPanel } from '../components/disease/DiseaseQuickSummaryPanel';
+import { CKDStagingCalculator } from '../components/disease/CKDStagingCalculator';
 import { QuickDecisionStrip } from '../components/disease/QuickDecisionStrip';
 import { FavoriteButton } from '../components/shared/FavoriteButton';
 import { ReferencesList } from '../components/shared/ReferencesList';
@@ -411,6 +412,12 @@ export function DiseaseDetailPage() {
           </section>
 
           <QuickDecisionStrip items={disease.quickDecisionStrip || []} />
+
+          {disease.slug === 'doenca-renal-cronica-caes-gatos' ||
+          disease.id === 'disease-drc-caes-gatos' ||
+          disease.title.toLowerCase().includes('renal cr') ? (
+            <CKDStagingCalculator />
+          ) : null}
 
           <EditorialPanel title={UI_TEXT.clinicalDeepDive} lead={UI_TEXT.clinicalDeepDiveLead}>
             <div className="space-y-8 md:space-y-9">

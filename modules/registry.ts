@@ -150,6 +150,15 @@ export const modules: Module[] = [
     iconImage: '/apps/NEURO.png',
   },
   {
+    id: 'neuro-mobile',
+    title: 'Neuro Mobile',
+    description: 'Interface focado em dispositivos móveis da Neurologia Veterinária',
+    route: '/neuro-mobile',
+    status: 'internal',
+    icon: Brain,
+    iconImage: '/apps/NEURO.png',
+  },
+  {
     id: 'veteletrolitico',
     title: 'Hidroeletrovet',
     description: 'Cálculo e reposição de eletrólitos (K+, Na+, Mg2+, etc.)',

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Activity, BookOpen, Brain, Droplet, Settings, Stethoscope, Syringe, Zap } from 'lucide-react';
+import { Activity, Beaker, BookOpen, Brain, Droplet, Settings, Stethoscope, Syringe, Zap } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import type { Tab } from './FluidSidebar';
 
@@ -9,7 +9,8 @@ const MOBILE_TABS: { id: Tab; label: string; icon: ReactNode }[] = [
   { id: 'osmotherapy', label: 'TCE', icon: <Brain className="h-5 w-5" /> },
   { id: 'guide', label: 'Guia', icon: <BookOpen className="h-5 w-5" /> },
   { id: 'protocols', label: 'Protocolos', icon: <Stethoscope className="h-5 w-5" /> },
-  { id: 'dilutions', label: 'Diluições', icon: <Syringe className="h-5 w-5" /> },
+  { id: 'dilutions', label: 'Diluicoes', icon: <Syringe className="h-5 w-5" /> },
+  { id: 'glucoseSolutions', label: 'Glicosada', icon: <Beaker className="h-5 w-5" /> },
   { id: 'monitoring', label: 'Monitor.', icon: <Droplet className="h-5 w-5" /> },
   { id: 'settings', label: 'Ajustes', icon: <Settings className="h-5 w-5" /> },
 ];
@@ -23,7 +24,7 @@ export function FluidMobileNav({ activeTab, setActiveTab }: FluidMobileNavProps)
   return (
     <nav
       className="fixed bottom-0 left-0 right-0 z-40 flex border-t border-slate-800 bg-slate-950/95 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-1 backdrop-blur-md lg:hidden"
-      aria-label="Navegação Fluidoterapia"
+      aria-label="Navegacao Fluidoterapia"
     >
       <div className="pointer-events-none absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-slate-950 to-transparent" aria-hidden />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-slate-950 to-transparent" aria-hidden />

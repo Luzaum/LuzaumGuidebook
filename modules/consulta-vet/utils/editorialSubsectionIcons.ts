@@ -42,6 +42,8 @@ import {
 const TOPIC_ICONS: Record<string, LucideIcon> = {
   // DRC — etiologia, epidemiologia, patogênese, fisiopatologia
   visaoGeralFenotipoFinal: Microscope,
+  principaisCausasCaes: Dog,
+  principaisCausasGatos: Cat,
   causasEmCaes: Dog,
   causasEmGatos: Cat,
   perfilFelino: Cat,

@@ -156,8 +156,7 @@ export const diseasesSeed: DiseaseRecord[] = [
       'Hematochezia e secreção mucopurulenta — mucosa/ pele ulcerada + exsudato e contaminação local.\n' +
       'Fibrose e estenose — reparação desorganizada.\n' +
       'Lambedura/automutilação — dor, prurido inflamatório.\n' +
-      'Perda de peso/hiporexia — dor crônica e inflamação (Nelson & Couto: letargia, inapetência, perda de peso nos casos dolorosos).\n\n' +
-      'Dica de estudo: na prova, ligue “Pastor Alemão + tratos ulcerados perianais + ciclosporina” — é o triângulo mnemônico da furunculose atual.',
+      'Perda de peso/hiporexia — dor crônica e inflamação (Nelson & Couto: letargia, inapetência, perda de peso nos casos dolorosos).',
     clinicalSignsPathophysiology: [
       {
         system: 'behavioral',
@@ -232,7 +231,7 @@ export const diseasesSeed: DiseaseRecord[] = [
         '8) Cirurgia — reservada a casos residuais ou refratários após terapia médica adequada, envolvimento importante de sacos anais, fibrose ou estenose, ou anatomia que impeça boa resposta clínica.',
       ],
       monitoramento: [
-        'Dor à evacuação — observar se o animal continua tenso, resistente ou vocaliza ao defecar.',
+        'Dor à evacuação — observar se o animal cont?nua tenso, resistente ou vocaliza ao defecar.',
         'Lesões locais — número e profundidade dos tratos, secreção e odor; fotos seriadas ajudam a acompanhar evolução.',
         'Toque retal — reavaliar periodicamente quando indicado e seguro (sedar se necessário).',
         'Função digestiva e estado geral — consistência fecal, peso, apetite e hidratação.',
